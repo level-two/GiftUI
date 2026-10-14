@@ -56,14 +56,19 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
   **SO-01 evidence:** [caller/necessity inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
   records P08 applicability and I4-07 residuals; all criteria remain unmet.
-  **Current helper outcome:** source/clean native entry `ef46dd4b`; all 42
-  compiler/oracle cells, 27 focused probes and link pass; sole execute exits -5
-  with empty output. [Frozen result/independent handoff](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/result.md).
-  No runtime completion/location is established. Hashes/43 argv match; source and
-  historical evidence unchanged. New allowance 1/1 consumed, 0 remaining; earlier
-  native allowances each 1/1, corrections 2, automatic follow-up repairs 0; no
-  reset. Stop for separate independent Strong read-only classification; all
-  criteria/fit/P08/R07/T8.1/I4-07/P09–P12 stay open, SO-04–09 unapproved.
+  **Current independent helper review:** [Strong review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/independent-review.md)
+  passes exact helper scope/frozen evidence and 42 native compiler oracles
+  (30 zero exits, 12 intended negative rejections; all 27 focused cells and link).
+  SO-03 runtime remains blocked: execute -5/empty output; cause/location and
+  contract defect unproved. Source `ef46dd4b` frozen; 122/128/24/130 identities,
+  84 historical files and 43 argv/oracles match. Productive correction 2 yields
+  29 new compiler/oracle passes over the preceding 13; no historical guard reset.
+  All three native allowances remain 1/1 consumed, 0 remaining; corrections 2,
+  automatic follow-up repairs 0. Proposed only, NOT AUTHORIZED: one diagnostic
+  debugger launch of the existing pinned binary, first-stop stack/PC/image
+  evidence then independent review; no compile/source repair/relaunch. No further
+  source/compiler/run authority. All nine criteria/fit/P08/R07/T8.1/HC-RD-003/
+  I4-07/P09–P12 stay open; Specs implementing/plans active, SO-04–09 unapproved.
   **Historical independent correction review:** [Strong review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/independent-review.md)
   identifies a local initializer-call lifetime error, no demonstrated contract
   defect. Common-session factory source follows the reviewed owner/token/descriptor

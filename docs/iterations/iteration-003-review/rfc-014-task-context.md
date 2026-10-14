@@ -1,15 +1,20 @@
 # RFC-014 task context guide
 
-Current helper outcome — 2026-10-14: source/clean entry `ef46dd4b`; the single
-native rerun passed all 42 compiler/oracle cells (all 27 focused probes and link),
-then execute exited -5 with empty output. [Frozen outcome/independent handoff](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/result.md).
-All 43 argv and 122/128/24/130 input/pin/artifact identities match; 84 historical
-files unchanged. No runtime completion or precise failure location established.
-Correction-2 allowance 1/1 consumed, 0 remaining; earlier allowances each 1/1,
-corrections 2, automatic follow-up repairs 0. Stop for fresh independent Strong
-read-only classification; no further repair/run authority or historical reset.
-All criteria/fit/P08/R07/T8.1/I4-07/P09–P12 remain open; Specs implementing,
-plans active, SO-04–09 unapproved.
+Current independent helper review — 2026-10-14: [Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/independent-review.md)
+passes exact helper scope/frozen evidence and all 42 native compiler oracles
+(30 zero exits, 12 intended negative rejections; 27 focused cells and link).
+SO-03 runtime remains blocked: sole execute -5, empty output, no established
+cause/location or demonstrated contract defect. 122/128/24/130 identities,
+84 historical files and all 43 argv/oracles match; source `ef46dd4b` stays frozen.
+Correction 2 is productive: 29 new compiler/oracle passes over the preceding 13;
+no new unproductive increment is justified; historical guard/counters stay closed.
+All three native allowances remain 1/1 consumed, 0 remaining; corrections 2,
+automatic follow-up repairs 0. Proposed only, NOT AUTHORIZED: one debugger launch
+of the existing pinned executable, first-stop backtrace/PC/image evidence, no
+compile/rebuild/source repair/relaunch, then independent Strong review. No
+further source/compiler/run authority remains. All nine criteria, fit, P08/R07/
+T8.1/HC-RD-003 and I4-07/P09–P12 remain open; Specs implementing/plans active,
+SO-04–09 unapproved. [Frozen native outcome](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/result.md).
 
 Historical independent correction review — 2026-10-13: [Strong source/result review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/independent-review.md)
 classifies the failure as a local initializer-call lifetime error, no demonstrated
