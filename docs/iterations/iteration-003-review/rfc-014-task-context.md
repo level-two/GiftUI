@@ -1,5 +1,12 @@
 # RFC-014 task context guide
 
+Next concrete handoff — 2026-10-14: [SO-04→06 source proposal](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-source-execution-proposal.md)
+records the exact coherent migration boundary and per-step commits. Proposed only:
+one sequential source pass, zero automatic repairs, independent Strong source
+review, with no compiler/build/run/debugger/image allowance. SO-04 alone can be a
+provisional checkpoint; its selected old-slot replacement depends on SO-05 carriers
+and SO-06 corpus before whole-host validation. All SO-04–09 remain unapproved.
+
 Current SO-03 fixture stabilization — 2026-10-14: [Joint source review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/fixture-stabilization/source-review.md)
 and one checked Canvas record append are committed at `57175025` under the
 maintainer's bounded package authorization. [One fresh macOS Dynamic result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/fixture-stabilization/result.md)

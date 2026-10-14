@@ -1,5 +1,24 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-04 coherent source handoff preparation — 2026-10-14
+
+Clean input `de51b8a5`; read-only authority/design/current-source inspection and
+documentation edits only. The [concrete SO-04→06 proposal](scoped-storage/so04-source-execution-proposal.md)
+records bounded paths, sequential source commits, zero automatic repairs and
+independent Strong source review before any separately allowed numerical
+validation. Current selected `.take()`/`withGeometry` callers and Embedded Keys
+Optional inventory prevent claiming a usable SO-04 owner replacement without
+SO-05's carriers/retirement; SO-04 stays a provisional source checkpoint within
+the existing coherent SO-04→06 sequence. No source/compiler/build/run/debugger
+action, approval, criterion closure or counter reset occurred. The shared plan
+header now reflects the passing `de51b8a5` fixture review. SO-04–09 remain
+unapproved; all fit/P08/R07/T8.1/I4-07/P09–P12 obligations stay open.
+
+Documentation checks pass: `scripts/validate-governance.rb` (198 nodes, 2,019
+edges and existing registered task manifests), 335 local Markdown file links
+across the four changed files, and `git diff --check`. No maintained Swift
+change, formatter or repository test gate was needed or run.
+
 ## SO-03 fixture stabilization validation — 2026-10-14
 
 The maintainer authorized one bounded review/correction/validation/review
