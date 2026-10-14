@@ -1,5 +1,15 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+Current integrated activity — 2026-10-14: Eugene explicitly authorized the
+broader P08 implementation/review/validation activity instead of micro-step
+approval loops. The [activity record](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-activity.md) supersedes prior current per-file/
+source-only stops for necessary existing-contract P08 work, preserving historical
+budgets/evidence. Sequential initial pass plus at most two corrective cycles;
+predefined 14-cell profile matrix and two early images, affected reruns only.
+No contract/resource/platform relaxation, P09 expansion or hardware operation.
+Escalate material decisions/exhausted budget; commit meaningful steps and report
+at the P08 boundary. All criteria/fit remain open at entry.
+
 Current derived repeated-host handoff — 2026-10-14:
 [Design/source-boundary proposal](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-repeated-host-design-handoff.md)
 selects fresh logical hosts and private original-producer checks using existing

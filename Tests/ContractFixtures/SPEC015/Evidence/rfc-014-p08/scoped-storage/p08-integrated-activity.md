@@ -1,0 +1,104 @@
+# P08 integrated completion activity — 2026-10-14
+
+## Current authorization and boundary
+
+Eugene requested a broader activity instead of repeated file-level/micro-step
+approvals and then explicitly instructed: “Please proceed with this broader
+activity.” This accepts completion of the remaining host-reuse/internal work,
+integrated review and predefined validation with bounded repairs, meaningful
+step commits and reporting at the P08 package boundary. Input is clean
+`f89ff220`; implementation baseline `369906ab` and every historical receipt
+remain immutable evidence.
+
+This current instruction supersedes the earlier per-file/source-only and
+per-invocation permission stops **for necessary existing-contract P08 work**.
+It does not retroactively reopen or reset a historical allowance. The reviewed
+[repeated-host handoff](so04-06-repeated-host-design-handoff.md) and
+[independent design review](so04-06-repeated-host-independent-design-review.md)
+are the starting realization, not a new five-file approval fence. Necessary
+internal fixture, library consumer, test, driver and existing build-recipe edits
+may proceed when justified against accepted ADRs/approved Specifications and
+recorded in the receipt. No accepted contract, workload, resource limit,
+compiler/SDK/board, ownership architecture or P08/P09 boundary changes implicitly.
+
+Execution stays sequential. Strong implementation/ownership/resource and
+independent review use Sol 6.1 High; fixed Standard assignments use Sol 6.1
+Medium; fixed Economy extraction/run assignments use Luna 6 Medium. Commit
+meaningful implementation, correction and evidence/review steps. Delegation
+never changes allowances or resets guards. Report completion or a material
+stop at the package boundary rather than requesting routine file permission.
+
+## Work and bounded repair policy
+
+1. Finish the reviewed private producer-origin realization and actual repeated
+   Static/Dynamic host corpus. Preserve fresh logical owners, persistent model
+   namespace, runtime-local raw identities, no terminal resurrection, all
+   source/callback guards, and original physical backing inventory.
+2. Conduct independent Strong integrated source review. Correct implementation
+   findings within this activity, including necessary internal related files.
+3. Format maintained Swift before the repository validation boundary (fixtures
+   remain formatter-excluded). Freeze exact sources, flags, module/compiler/
+   macro/input identities and actual finite positive/negative labels. Run the
+   predefined SO-07 matrix below in dependency order.
+4. After four-profile success, run SO-08 early images and complete physical/
+   nested construction/IRQ/ABI/allocator/resource inspection using platform
+   skills. No deployment, flashing, restart or connected execution.
+5. Independent Strong P08 exit review reconciles every applicable criterion,
+   I4-07 residual and remaining P10–12/hardware/timing obligation. Never mark a
+   Specification implemented or P08 passed from partial evidence.
+
+Budget: initial integrated source/validation pass plus **at most two corrective
+cycles** after a frozen source review or validation failure. One cycle is one
+cause-based source correction, its independent Strong assessment and at most
+one rerun of each affected matrix/image cell. Bundle related findings before
+correcting; do not create a new cycle for each edit or ordinary draft mistake.
+No unbounded candidate search. Preserve failed logs/identities before any edit.
+Stop earlier after two consecutive unproductive corrections under the existing
+guard; independent review records progress/narrowed cause and the cumulative
+history. Historical helper/B03/GOT/image/phase/IR/SPIKE-075/source-correction
+budgets stay closed, including correction `369906ab` 1/1 consumed. This is a
+new explicit broader continuation, not a reset. Current corrective cycles:
+**0/2 consumed**. Initial matrix/image cells: **0 consumed**.
+
+Escalate actual contract/architecture decisions, work beyond P08, changed
+resource/workload/platform limits, exhausted correction allowance or stop guard,
+and evidence that the selected contract cannot be realized. Ordinary internal
+file additions, fixing source defects, dependent test/driver registration and
+review rework within the stated budget do not require another human approval.
+Record them concretely before execution; preserve independent review.
+
+## Predefined validation
+
+Use the [existing exact SO-07 forms, profiles and pinned dependencies](so02-execution-proposal.md#known-pinned-identities-and-ordered-so-07-proposal):
+macOS Dynamic, macOS Static, Raspberry Pi ARMv6 Dynamic, nRF Embedded Static.
+For each profile run SPEC-011, SPEC-013, native-only scoped-host component, then
+actual SPEC-015 counter. This is **14 initial driver cells**, including each
+registered finite internal compilation/oracle set; no unrelated P10 suite.
+Register/freeze the final source-derived label list before the first invocation.
+Use actual successful predecessor receipts, never guessed output paths. Reuse
+unchanged qualifying evidence explicitly; never repeat a passed cell solely
+because the agent or model changed. Refresh only required stale build inputs
+with the same registered recipe, record the dependency reason/commands/hashes
+before execution, and count a failed attempted check against the same cycle.
+No new toolchain/feature or exploratory compiler/IR diagnostic.
+
+Use the [existing exact SO-08 images](so02-execution-proposal.md#so-08-early-images-measurement-and-independent-exit):
+one Pi counter-image link and one supported nRF counter firmware build, after
+platform skill orientation and read-only doctor checks. Keep artifacts under
+existing per-target `.build` roots. Derive required actual target layout facts
+and compare real C backing; a necessary same-contract reservation correction
+counts as a corrective cycle, not a resource ceiling relaxation. No arbitrary
+extra builds/variants or new compiler probe. Preserve 27,648-byte main-stack
+ceiling and historical 58,648-byte failure until passing replacement evidence.
+
+Formatting, documentation/governance/whitespace, read-only source/receipt/hash/
+ELF/map/disassembly inspections are permitted. Any additionally required
+hardware-free regression check must have a concrete P08 applicability reason,
+exact command and finite once-per-affected-source record; no indiscriminate
+legacy/full-suite expansion. SDK/architecture mismatch or unavailable necessary
+fixed toolchain is a blocker, not permission to install/substitute globally.
+
+All nine SO criteria, HC-RD-003/P08/R07/T8.1 and actual fit remain open at entry.
+SPEC-011/013/015 remain implementing, plans active. I4-07/P09–12, timing and
+hardware obligations retain their separate scope. No authority change or new
+acceptance evidence follows merely from this activity record.

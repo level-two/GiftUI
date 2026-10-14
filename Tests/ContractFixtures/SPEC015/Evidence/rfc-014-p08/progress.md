@@ -1,5 +1,15 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+Current integrated activity — 2026-10-14: Eugene explicitly authorized the
+broader P08 implementation/review/validation activity instead of micro-step
+approval loops. The [activity record](scoped-storage/p08-integrated-activity.md) supersedes prior current per-file/
+source-only stops for necessary existing-contract P08 work, preserving historical
+budgets/evidence. Sequential initial pass plus at most two corrective cycles;
+predefined 14-cell profile matrix and two early images, affected reruns only.
+No contract/resource/platform relaxation, P09 expansion or hardware operation.
+Escalate material decisions/exhausted budget; commit meaningful steps and report
+at the P08 boundary. All criteria/fit remain open at entry.
+
 ## SO-04→06 repeated-host independent Strong design review PASS — 2026-10-14
 
 Independent Sol 6.1 High [design review](scoped-storage/so04-06-repeated-host-independent-design-review.md)
