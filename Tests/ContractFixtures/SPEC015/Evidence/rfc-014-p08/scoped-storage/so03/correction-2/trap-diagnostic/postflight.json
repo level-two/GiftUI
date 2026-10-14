@@ -1,0 +1,23 @@
+{
+  "time_utc": "2026-10-14T08:35:17.397917+00:00",
+  "checks": {
+    "source_freeze_inputs": 122,
+    "driver_inputs": 128,
+    "unaffected_pins": 24,
+    "artifacts": 130,
+    "historical_evidence_files": 84
+  },
+  "compiler_macro_core_and_tool_identities_match": true,
+  "executable_bytes": 2215848,
+  "executable_sha256": "58eaf79ee44ae030de2c51ddfb1c23650337da05dc70f9a930f34b7b0aca8a48",
+  "logs": {
+    "stdout.log": {
+      "bytes": 10293,
+      "sha256": "1beebb78909fc5f18b321205ac6d010c5e17bdf43556f1323281d35c70d1bcaf"
+    },
+    "stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

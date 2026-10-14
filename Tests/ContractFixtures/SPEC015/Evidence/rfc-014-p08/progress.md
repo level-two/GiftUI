@@ -1,5 +1,48 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-03 first-trap diagnostic authorization and dispatch — 2026-10-14
+
+Eugene explicitly authorized the parent proposal: “Okay, please go ahead.”
+Clean entry `b16b4116`; sequential implementation-executor task
+`p08_so03_trap_diagnostic`, inherited configuration, no subagents. This dispatch
+precedes the single debugger attempt. Follow the exact bounded command in
+[the independent review](scoped-storage/so03/correction-2/independent-review.md):
+one launch of the frozen executable, first abnormal stop, raw status/all-thread
+backtrace (32 frames/thread)/PC/images/16 instructions, then kill; no continue,
+restart or fallback. [Dispatch](scoped-storage/so03/correction-2/trap-diagnostic/dispatch.json)
+and [preflight](scoped-storage/so03/correction-2/trap-diagnostic/preflight.json)
+record exact argv, identities, 122 source inputs/128 driver inputs/24 pins/130
+artifacts/84 historical files, and the 2,215,848-byte executable SHA-256
+`58eaf79ee44ae030de2c51ddfb1c23650337da05dc70f9a930f34b7b0aca8a48`.
+Debugger identity commands did not launch a target. Check all pins after stopping.
+Denied/unavailable/clean/non-crash/insufficient details means inconclusive; no
+second launch. No compiler/rebuild/source or driver edit/repair/probe/test suite,
+target/image/hardware or SO-04+ authority. New diagnostic allowance 0/1 consumed
+before attempt; all three native allowances remain 1/1 consumed, corrections 2,
+automatic repairs 0, historical budgets/guard closed. All nine criteria, physical
+fit/58,648-versus-27,648 stack failure/P08/R07/T8.1/HC-RD-003 and mandatory
+I4-07/P09–P12 stay open; Specs implementing/plans active. Freeze outcome and stop
+before any repair proposal; separate review remains the recorded next procedure.
+
+### First-trap diagnostic result
+
+[Diagnostic result](scoped-storage/so03/correction-2/trap-diagnostic/result.md):
+**first trap located; exact failed condition/root cause inconclusive**. The stalled
+worker escalation was cancelled before execution: parent confirmed no prelaunch
+marker or logs. Parent then ran the exact reviewed argv once with explicit
+escalation; tool exit 0 (debugger), inferior PID 75302 stopped at EXC_BREAKPOINT
+`0x100084810`, `specialized so03RecordOperations(_:) + 260`, then killed/status9.
+Raw six-frame all-thread backtrace, PC, image slide0/mapping and sixteen instructions
+are retained; no continue/restart/fallback. This establishes the real scoped-operation
+family location, not a particular assertion, thrown error or contract defect.
+Postflight matches 122/128/24/130/84 identities and unchanged 2,215,848-byte binary.
+No source/driver/compiler/probe/test/repair or target/hardware action. New diagnostic
+1/1 consumed, 0 remaining; all three native allowances remain 1/1, corrections 2,
+automatic repairs 0, historical budgets/guard preserved. All nine criteria/physical
+fit/58,648-vs-27,648/HC-RD-003/P08/R07/T8.1 and I4-07/P09–P12 remain open;
+Specs implementing/plans active, SO-04–09 unapproved. Freeze and stop for separate
+independent Strong read-only review before any repair proposal or further action.
+
 ## SO-03 correction-2 independent Strong review dispatch — 2026-10-14
 
 Entry `bb2029a7`, clean; sequential independent Strong task

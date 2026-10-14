@@ -1,0 +1,111 @@
+(lldb) target create ".build/contracts/spec-011-owned-keys/tmpiggjdqn4/macos-dynamic/interaction"
+Current executable set to '/Users/eugene/work/GiftUI/.build/contracts/spec-011-owned-keys/tmpiggjdqn4/macos-dynamic/interaction' (arm64).
+(lldb) settings set auto-confirm true
+(lldb) process launch
+Process 75302 launched: '/Users/eugene/work/GiftUI/.build/contracts/spec-011-owned-keys/tmpiggjdqn4/macos-dynamic/interaction' (arm64)
+Process 75302 stopped
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BREAKPOINT (code=1, subcode=0x100084810)
+    frame #0: 0x0000000100084810 interaction`specialized so03RecordOperations(_:) + 260
+interaction`generic specialization <OwnedKeyProbe.SO03SessionCandidate, OwnedKeyProbe.SO03SessionCommitted, OwnedKeyProbe.SO03SessionHits> of OwnedKeyProbe.so03RecordOperations<τ_0_0, τ_0_1, τ_0_2 where τ_0_0: GiftUIInteraction.InteractionCandidateRecordStorage, τ_0_1: GiftUIInteraction.InteractionCommittedRecordStorage, τ_0_2: GiftUIInteraction.InteractionHitRegionStorage, τ_0_0.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_1.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_2.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_0: ~Swift.Copyable, τ_0_0: ~Swift.Escapable, τ_0_1: ~Swift.Copyable, τ_0_1: ~Swift.Escapable, τ_0_2: ~Swift.Copyable, τ_0_2: ~Swift.Escapable>(inout GiftUIInteraction.InteractionOwnedKeyState<τ_0_0, τ_0_1, τ_0_2>) -> Swift.UInt32:
+->  0x100084810 <+260>: brk    #0x1
+    0x100084814 <+264>: bl     0x100091900               ; symbol stub for: __stack_chk_fail
+
+interaction`so03RecordOperations:
+    0x100084818 <+0>:   mov    x7, x30
+    0x10008481c <+4>:   bl     0x1000916e0               ; OUTLINED_FUNCTION_417
+Target 0: (interaction) stopped.
+(lldb) process status
+Process 75302 stopped
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BREAKPOINT (code=1, subcode=0x100084810)
+    frame #0: 0x0000000100084810 interaction`specialized so03RecordOperations(_:) + 260
+interaction`generic specialization <OwnedKeyProbe.SO03SessionCandidate, OwnedKeyProbe.SO03SessionCommitted, OwnedKeyProbe.SO03SessionHits> of OwnedKeyProbe.so03RecordOperations<τ_0_0, τ_0_1, τ_0_2 where τ_0_0: GiftUIInteraction.InteractionCandidateRecordStorage, τ_0_1: GiftUIInteraction.InteractionCommittedRecordStorage, τ_0_2: GiftUIInteraction.InteractionHitRegionStorage, τ_0_0.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_1.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_2.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_0: ~Swift.Copyable, τ_0_0: ~Swift.Escapable, τ_0_1: ~Swift.Copyable, τ_0_1: ~Swift.Escapable, τ_0_2: ~Swift.Copyable, τ_0_2: ~Swift.Escapable>(inout GiftUIInteraction.InteractionOwnedKeyState<τ_0_0, τ_0_1, τ_0_2>) -> Swift.UInt32:
+->  0x100084810 <+260>: brk    #0x1
+    0x100084814 <+264>: bl     0x100091900               ; symbol stub for: __stack_chk_fail
+
+interaction`so03RecordOperations:
+    0x100084818 <+0>:   mov    x7, x30
+    0x10008481c <+4>:   bl     0x1000916e0               ; OUTLINED_FUNCTION_417
+(lldb) thread backtrace -c 32 all
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BREAKPOINT (code=1, subcode=0x100084810)
+  * frame #0: 0x0000000100084810 interaction`specialized so03RecordOperations(_:) + 260
+    frame #1: 0x0000000100087a94 interaction`so03ScopedChecks(_:) + 2940
+    frame #2: 0x0000000100087d54 interaction`giftuiSO03ScopedStorage() + 48
+    frame #3: 0x0000000100000c38 interaction`static Main.main() + 56
+    frame #4: 0x0000000100000e04 interaction`main + 12
+    frame #5: 0x00000001829444e4 dyld`start + 6992
+(lldb) register read pc
+      pc = 0x0000000100084810  interaction`generic specialization <OwnedKeyProbe.SO03SessionCandidate, OwnedKeyProbe.SO03SessionCommitted, OwnedKeyProbe.SO03SessionHits> of OwnedKeyProbe.so03RecordOperations<τ_0_0, τ_0_1, τ_0_2 where τ_0_0: GiftUIInteraction.InteractionCandidateRecordStorage, τ_0_1: GiftUIInteraction.InteractionCommittedRecordStorage, τ_0_2: GiftUIInteraction.InteractionHitRegionStorage, τ_0_0.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_1.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_2.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_0: ~Swift.Copyable, τ_0_0: ~Swift.Escapable, τ_0_1: ~Swift.Copyable, τ_0_1: ~Swift.Escapable, τ_0_2: ~Swift.Copyable, τ_0_2: ~Swift.Escapable>(inout GiftUIInteraction.InteractionOwnedKeyState<τ_0_0, τ_0_1, τ_0_2>) -> Swift.UInt32 + 260
+(lldb) image list -o -f
+[  0] 0x0000000000000000 /Users/eugene/work/GiftUI/.build/contracts/spec-011-owned-keys/tmpiggjdqn4/macos-dynamic/interaction
+[  1] 0x0000000002810000 /usr/lib/dyld
+[  2] 0x0000000002810000 /usr/lib/libSystem.B.dylib
+[  3] 0x0000000002810000 /usr/lib/system/libcommonCrypto.dylib
+[  4] 0x0000000002810000 /usr/lib/system/libsystem_blocks.dylib
+[  5] 0x0000000002810000 /usr/lib/system/libcopyfile.dylib
+[  6] 0x0000000002810000 /usr/lib/system/libcorecrypto.dylib
+[  7] 0x0000000002810000 /usr/lib/system/libdispatch.dylib
+[  8] 0x0000000002810000 /usr/lib/system/libsystem_configuration.dylib
+[  9] 0x0000000002810000 /usr/lib/system/libsystem_containermanager.dylib
+[ 10] 0x0000000002810000 /usr/lib/system/libkeymgr.dylib
+[ 11] 0x0000000002810000 /usr/lib/system/libsystem_coreservices.dylib
+[ 12] 0x0000000002810000 /usr/lib/system/libsystem_darwin.dylib
+[ 13] 0x0000000002810000 /usr/lib/system/libdyld.dylib
+[ 14] 0x0000000002810000 /usr/lib/system/libquarantine.dylib
+[ 15] 0x0000000002810000 /usr/lib/system/libsystem_darwindirectory.dylib
+[ 16] 0x0000000002810000 /usr/lib/system/libsystem_asl.dylib
+[ 17] 0x0000000002810000 /usr/lib/system/libsystem_collections.dylib
+[ 18] 0x0000000002810000 /usr/lib/system/libsystem_m.dylib
+[ 19] 0x0000000002810000 /usr/lib/system/libsystem_malloc.dylib
+[ 20] 0x0000000002810000 /usr/lib/system/libmacho.dylib
+[ 21] 0x0000000002810000 /usr/lib/system/libsystem_c.dylib
+[ 22] 0x0000000002810000 /usr/lib/system/libsystem_notify.dylib
+[ 23] 0x0000000002810000 /usr/lib/system/libsystem_sandbox.dylib
+[ 24] 0x0000000002810000 /usr/lib/system/libsystem_networkextension.dylib
+[ 25] 0x0000000002810000 /usr/lib/system/libsystem_dnssd.dylib
+[ 26] 0x0000000002810000 /usr/lib/system/libsystem_sanitizers.dylib
+[ 27] 0x0000000002810000 /usr/lib/system/libsystem_secinit.dylib
+[ 28] 0x0000000002810000 /usr/lib/system/libsystem_platform.dylib
+[ 29] 0x0000000002810000 /usr/lib/system/libsystem_info.dylib
+[ 30] 0x0000000002810000 /usr/lib/system/libsystem_eligibility.dylib
+[ 31] 0x0000000002810000 /usr/lib/system/libremovefile.dylib
+[ 32] 0x0000000002810000 /usr/lib/system/libsystem_kernel.dylib
+[ 33] 0x0000000002810000 /usr/lib/system/libunwind.dylib
+[ 34] 0x0000000002810000 /usr/lib/system/libsystem_featureflags.dylib
+[ 35] 0x0000000002810000 /usr/lib/system/libsystem_pthread.dylib
+[ 36] 0x0000000002810000 /usr/lib/system/libsystem_trace.dylib
+[ 37] 0x0000000002810000 /usr/lib/libc++abi.dylib
+[ 38] 0x0000000002810000 /usr/lib/system/libxpc.dylib
+[ 39] 0x0000000002810000 /usr/lib/system/libsystem_symptoms.dylib
+[ 40] 0x0000000002810000 /usr/lib/system/libsystem_trial.dylib
+[ 41] 0x0000000002810000 /usr/lib/system/libcache.dylib
+[ 42] 0x0000000002810000 /usr/lib/libswiftPrespecialized.dylib
+[ 43] 0x0000000002810000 /usr/lib/libobjc.A.dylib
+[ 44] 0x0000000002810000 /usr/lib/libRosetta.dylib
+[ 45] 0x0000000002810000 /usr/lib/system/libcompiler_rt.dylib
+[ 46] 0x0000000002810000 /usr/lib/swift/libswiftCore.dylib
+[ 47] 0x0000000002810000 /usr/lib/libc++.1.dylib
+(lldb) image lookup -a $pc
+      Address: interaction[0x0000000100084810] (interaction.__TEXT.__text + 539664)
+      Summary: interaction`generic specialization <OwnedKeyProbe.SO03SessionCandidate, OwnedKeyProbe.SO03SessionCommitted, OwnedKeyProbe.SO03SessionHits> of OwnedKeyProbe.so03RecordOperations<τ_0_0, τ_0_1, τ_0_2 where τ_0_0: GiftUIInteraction.InteractionCandidateRecordStorage, τ_0_1: GiftUIInteraction.InteractionCommittedRecordStorage, τ_0_2: GiftUIInteraction.InteractionHitRegionStorage, τ_0_0.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_1.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_2.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_0: ~Swift.Copyable, τ_0_0: ~Swift.Escapable, τ_0_1: ~Swift.Copyable, τ_0_1: ~Swift.Escapable, τ_0_2: ~Swift.Copyable, τ_0_2: ~Swift.Escapable>(inout GiftUIInteraction.InteractionOwnedKeyState<τ_0_0, τ_0_1, τ_0_2>) -> Swift.UInt32 + 260
+(lldb) disassemble --pc --count 16
+interaction`generic specialization <OwnedKeyProbe.SO03SessionCandidate, OwnedKeyProbe.SO03SessionCommitted, OwnedKeyProbe.SO03SessionHits> of OwnedKeyProbe.so03RecordOperations<τ_0_0, τ_0_1, τ_0_2 where τ_0_0: GiftUIInteraction.InteractionCandidateRecordStorage, τ_0_1: GiftUIInteraction.InteractionCommittedRecordStorage, τ_0_2: GiftUIInteraction.InteractionHitRegionStorage, τ_0_0.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_1.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_2.Identity == GiftUISemanticCore.SemanticCompleteIdentity, τ_0_0: ~Swift.Copyable, τ_0_0: ~Swift.Escapable, τ_0_1: ~Swift.Copyable, τ_0_1: ~Swift.Escapable, τ_0_2: ~Swift.Copyable, τ_0_2: ~Swift.Escapable>(inout GiftUIInteraction.InteractionOwnedKeyState<τ_0_0, τ_0_1, τ_0_2>) -> Swift.UInt32:
+->  0x100084810 <+260>: brk    #0x1
+    0x100084814 <+264>: bl     0x100091900               ; symbol stub for: __stack_chk_fail
+
+interaction`so03RecordOperations:
+    0x100084818 <+0>:   mov    x7, x30
+    0x10008481c <+4>:   bl     0x1000916e0               ; OUTLINED_FUNCTION_417
+    0x100084820 <+8>:   mov    x30, x7
+    0x100084824 <+12>:  stp    x29, x30, [sp, #0x50]
+    0x100084828 <+16>:  add    x29, sp, #0x50
+    0x10008482c <+20>:  sub    sp, sp, #0xea0
+    0x100084830 <+24>:  mov    x24, x6
+    0x100084834 <+28>:  mov    x25, x5
+    0x100084838 <+32>:  mov    x26, x4
+    0x10008483c <+36>:  mov    x22, x3
+    0x100084840 <+40>:  mov    x23, x2
+    0x100084844 <+44>:  mov    x27, x1
+    0x100084848 <+48>:  mov    x28, x0
+    0x10008484c <+52>:  bl     0x1000900dc               ; OUTLINED_FUNCTION_43
+(lldb) process kill
+Process 75302 exited with status = 9 (0x00000009) killed

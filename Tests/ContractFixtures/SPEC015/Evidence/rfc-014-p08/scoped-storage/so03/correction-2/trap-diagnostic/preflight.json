@@ -1,0 +1,46 @@
+{
+  "time_utc": "2026-10-14T07:02:57.492653+00:00",
+  "entry_commit": "b16b4116a85e53d7e1b48c921ec5a546fb437b24",
+  "checks": {
+    "source_freeze_inputs": 122,
+    "driver_inputs": 128,
+    "unaffected_pins": 24,
+    "artifacts": 130,
+    "historical_evidence_files": 84
+  },
+  "executable": ".build/contracts/spec-011-owned-keys/tmpiggjdqn4/macos-dynamic/interaction",
+  "executable_bytes": 2215848,
+  "executable_sha256": "58eaf79ee44ae030de2c51ddfb1c23650337da05dc70f9a930f34b7b0aca8a48",
+  "xcrun": {
+    "path": "/usr/bin/xcrun",
+    "sha256": "178e19cfe796ce33815195c42d34562c20ec4d5131534fb7e6a55b91f14371d5"
+  },
+  "lldb": {
+    "path": "/Applications/Xcode.app/Contents/Developer/usr/bin/lldb",
+    "bytes": 554848,
+    "sha256": "0035650adb4c8278122f70771e2e052a2b6e6d644a76745ffecf8c3a0bd686ca"
+  },
+  "identity_commands": [
+    {
+      "argv": [
+        "/usr/bin/xcrun",
+        "--find",
+        "lldb"
+      ],
+      "exit": 0,
+      "stdout": "/Applications/Xcode.app/Contents/Developer/usr/bin/lldb\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/xcrun",
+        "lldb",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "lldb-2100.0.17.203\nApple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\n",
+      "stderr": ""
+    }
+  ],
+  "inferior_launches": 0
+}

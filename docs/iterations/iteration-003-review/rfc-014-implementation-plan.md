@@ -1,6 +1,23 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current independent helper review — 2026-10-14: [Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/independent-review.md)
+Current frozen-executable diagnostic — 2026-10-14: [First-trap result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/trap-diagnostic/result.md)
+locates the first stop at EXC_BREAKPOINT `0x100084810`, specialized
+`so03RecordOperations(_:) + 260`, with actual SO03Session storage types. Exact
+failed condition/root cause remains inconclusive from optimized symbols/window.
+One authorized launch/PID 75302, six-frame backtrace/PC/images/16 instructions,
+then kill/status 9; debugger exit 0 is not runtime acceptance. Stalled worker
+permission request was cancelled before execution; parent ran exact reviewed argv
+once after confirming no launch marker/logs. No continue/restart/fallback/source/
+compiler/probe/repair. All 122/128/24/130/84 identities match pre/post; frozen
+source `ef46dd4b` and binary unchanged. Diagnostic 1/1 consumed, 0 remaining;
+three native allowances each 1/1, corrections 2, automatic repairs 0, historical
+budgets/guard preserved. STOP for separate independent Strong read-only review
+before any repair proposal. All nine criteria, physical fit/58,648-vs-27,648,
+HC-RD-003/P08/R07/T8.1 and mandatory I4-07/P09–P12 remain open; Specs
+implementing/plans active, SO-04–09 unapproved. No further run/compiler/source
+or instrumentation authority remains.
+
+Historical independent helper review — 2026-10-14: [Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/independent-review.md)
 passes exact helper scope/frozen evidence and all 42 native compiler oracles
 (30 zero exits, 12 intended negative rejections; 27 focused cells and link).
 SO-03 runtime remains blocked: sole execute -5, empty output, no established
