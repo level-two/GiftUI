@@ -1,5 +1,12 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+Current corrective source dispatch — 2026-10-14: Eugene approved one bounded
+source correction of the five findings at `0e047ee4`, with “Please go ahead”.
+Use the [reviewed correction boundary](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-independent-source-review.md#criteria-disposition-and-next-bounded-decision),
+then freeze/commit and independent Sol 6.1 High review; zero automatic follow-up
+repairs. No compiler/build/formatter/runtime/IR/image/target allowance. Earlier
+source freezes and budgets remain historical evidence; all criteria/fit stay open.
+
 Current source review STOP — 2026-10-14: independent Sol 6.1 High
 [review of `0bb4d9ca`](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-independent-source-review.md)
 finds five source-readiness blockers in the frozen SO-04→06 package: Embedded

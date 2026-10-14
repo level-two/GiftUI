@@ -1,5 +1,22 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-04→06 corrective source pass authorized — 2026-10-14
+
+At clean `0e047ee4`, Eugene replied “Please go ahead” to the explicit request
+for one bounded source correction of the five independent review findings,
+followed by independent Strong review, with zero automatic follow-up repairs.
+This accepts the [review's bounded correction proposal](scoped-storage/so04-06-independent-source-review.md#criteria-disposition-and-next-bounded-decision):
+`CounterScopedStorage.swift` and `check-spec-015-counter.py`, corresponding
+fixture/label/receipt documentation, findings 1–5, checked surplus slice, and
+explicit partial-byte-span and symbolic accounting dispositions. No new
+architecture or unlisted source path is authorized. One corrective source pass,
+then freeze/commit and independent Sol 6.1 High review; no automatic further
+correction. Ordinary editing completes this single draft before its freeze.
+No compiler/build/formatter/harness/executable/debugger/IR/image/hardware action.
+Historical consumed allowances and cumulative guard remain unchanged; this
+explicit new source allowance does not reset them. All criteria and fit remain
+open; SO-07–09 remain separately gated.
+
 ## SO-04→06 independent Strong source review STOP — 2026-10-14
 
 At clean `0bb4d9ca`, independent Sol 6.1 High review (no subagents) inspected
