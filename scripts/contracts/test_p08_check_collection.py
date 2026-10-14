@@ -145,6 +145,40 @@ class CollectionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'invalid structured'):
             diagnostic_matches(oracle | dict(any_of=[[]]), '', 1)
 
+    def test_preserved_swift_rendered_closure_log_and_negative_mutations(self):
+        packet = pathlib.Path(__file__).resolve().parents[2] / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/compiler-compatibility2-counter'
+        label = 'so06-erasure-static-generic-active-host-closure-negative'
+        output = (packet / 'controls' / (label + '.log')).read_text()
+        self.assertEqual(output.count('error:'), 4)
+        oracle = dict(any_of=[["'input' is borrowed and cannot be consumed"],
+                              ["lifetime-dependent variable 'input' escapes its scope"]],
+                      error_site=dict(filename=label + '.swift', first_line=2519))
+        # Historical packet records a nonzero class; 1 is representative, not its unknown numeric exit.
+        self.assertTrue(diagnostic_matches(oracle, output, 1))
+        mutations = {
+            'unlocated': output + 'error: unrelated driver failure\n',
+            'wrong-site': output.replace(':2520:38: error:', ':2518:38: error:'),
+            'wrong-file': output.replace(label + '.swift:2520:38: error:', 'Trusted.swift:2520:38: error:'),
+            'wrong-message': output.replace("error: 'input' is borrowed and cannot be consumed", 'error: unrelated type mismatch'),
+            'unexpected-primary': output + '/tmp/' + label + '.swift:2520:1: error: unrelated type mismatch\n',
+            'unpaired-gutter': output + '     | `- error: unrelated compiler failure\n',
+            'unrecognized-gutter': output + '     | error: unrelated compiler failure\n',
+            'crash': output + 'Stack dump:\n',
+        }
+        for name, mutated in mutations.items():
+            with self.subTest(name=name):
+                self.assertFalse(diagnostic_matches(oracle, mutated, 1))
+        self.assertFalse(diagnostic_matches(oracle, output, -6))
+        self.assertFalse(diagnostic_matches(oracle, output, 0))
+        # The baseline matcher still rejects this historical oracle mismatch.
+        self.assertFalse(diagnostic_matches(('escaping',), output, 1))
+
+    def test_numbered_source_gutter_error_literal_is_not_a_primary_error(self):
+        oracle = dict(any_of=[['lifetime']], error_site=dict(filename='probe.swift', first_line=1))
+        output = '/tmp/probe.swift:2:3: error: lifetime failure\n2 | print("error: literal in source")\n3 | print("/tmp/other.swift:1:1: error: literal header")\n  | `- error: lifetime failure\n'
+        self.assertTrue(diagnostic_matches(oracle, output, 1))
+        self.assertFalse(diagnostic_matches(oracle, '2 | error: unpaired source\n' + output, 1))
+
     def legacy_identity(self):
         return dict(profile='macos-dynamic', selected_host_profile='macos-dynamic', raster_realization='full-surface',
                     runtime_receipt_sha256='ec640f13aedd202725ad02e52a5e56e56357b5d3e034b3792788fe95feae4446',

@@ -157,3 +157,33 @@ Current setup freeze hashes (shell forwarding remains the initial hash):
 Independent rereview, baseline whole-suite collection, grouped suite corrections,
 focused aggregate evidence and all previously open P08/fit obligations remain
 pending. Source mechanics tests do not establish Swift or target conformance.
+
+### Same-cycle rendered diagnostic parser refinement
+
+The [focused setup rereview](p08-suite-collection-setup-rereview.md) at `6426d120`
+closes B01–B03 and identifies the sole rendered-gutter parser issue. The helper
+now separates located primary diagnostics from numbered Swift source excerpts
+and recognizes gutter error repetitions only when they exactly match the active
+primary error. Unlocated/unrecognized errors, wrong primary sites/messages,
+unpaired gutter errors, crashes and invalid exits still fail the structured
+oracle. No baseline tuple matcher or corpus registration changes.
+
+The regression reads the preserved actual closure-negative log: two primary
+errors/four textual `error:` occurrences. A representative positive nonzero code
+tests its recorded nonzero class; it does not invent the unknown historical
+numeric exit. Negative mutations and source excerpts containing diagnostic-shaped
+string literals are covered. **22 compiler-free Python tests**, Python AST and
+whitespace checks pass. No compiler/suite/runtime/formatter/delegation occurred.
+
+This remains the same productive coherent pre-run **setup cycle 1/2**; cycle 2
+remains for grouped collected-suite corrections. Final focused parser assessment
+and baseline collection remain pending without another per-barrier approval gate.
+Earlier freeze hashes remain historical; current helper/test hashes are:
+
+| File | SHA-256 |
+| --- | --- |
+| `scripts/contracts/p08_check_collection.py` | `0dbd112c26d292273444a606ea882b396e57f0501fe626ed713b94421aa9c105` |
+| `scripts/contracts/test_p08_check_collection.py` | `0df3e4c3b790569dc670d05ebbaa1fc9a27d4944c18a8a6946679f5950d1af3d` |
+
+Driver/shell identities, historical budgets, two-unproductive guard, P08/fit and
+all open contract/platform obligations remain unchanged.

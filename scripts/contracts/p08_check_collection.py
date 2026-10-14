@@ -39,8 +39,26 @@ def diagnostic_matches(diagnostic, output, exit_code):
         raise ValueError('invalid structured diagnostic oracle')
     if exit_code is None or exit_code <= 0 or any(value in output.lower() for value in ('stack dump', 'please submit a bug report', 'compiler crash')):
         return False
-    errors = re.findall(r'^(.+?):(\d+):\d+: error: (.*)$', output, re.MULTILINE)
-    if not errors or output.count('error:') != len(errors):
+    errors = []
+    rendered_block, rendered_error = False, None
+    for line in output.splitlines():
+        # Source excerpts may themselves contain text shaped like a diagnostic header.
+        if rendered_block and re.fullmatch(r'\s*\d+\s+\|(?: .*)?', line):
+            continue
+        primary = re.fullmatch(r'(.+?):(\d+):\d+: (error|warning|note): (.*)', line)
+        if primary:
+            path, number, kind, message = primary.groups()
+            rendered_block, rendered_error = True, message if kind == 'error' else None
+            if kind == 'error':
+                errors.append((path, number, message))
+        elif 'error:' in line:
+            repeated = re.fullmatch(r'\s*\|\s*[| \t]*(?:`-|\|-)\s+error: (.*)', line)
+            if repeated and rendered_error is not None and repeated.group(1) == rendered_error:
+                continue
+            return False
+        elif not line.strip():
+            rendered_block, rendered_error = False, None
+    if not errors:
         return False
     if any(pathlib.Path(path).name != site['filename'] or int(line) < site['first_line'] for path, line, _ in errors):
         return False
