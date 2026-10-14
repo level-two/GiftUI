@@ -52,6 +52,9 @@ commands, checks, plan, module_names = [], [], [], []
 inputs = [pathlib.Path(__file__).resolve(), ROOT / 'Package.swift',
           ROOT / 'scripts/contracts/run-spec-011.sh', ROOT / 'scripts/contracts/driver-registry.tsv',
           ROOT / 'scripts/contracts/check-spec-013-runtime-cycle.py', macro]
+# Selected SO-06 delivery remains the separately invoked counter driver; hash its
+# source boundary without importing fixture-private access types into owned routes.
+inputs.extend([ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift', ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift'])
 # Freeze the edited noncompiled measurement callers as source applicability,
 # without pretending this component route compiles the later Counter/Cycle graph.
 for spec, names in (

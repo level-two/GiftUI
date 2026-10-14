@@ -41,6 +41,9 @@ flags[flags.index('-module-cache-path') + 1] = str(out / 'cache')
 flags += ['-I', str(out), '-I', str(base), '-enable-testing']
 commands = []
 inputs = [pathlib.Path(__file__).resolve(), ROOT / 'Package.swift', ROOT / 'scripts/contracts/run-spec-013.sh', ROOT / 'scripts/contracts/driver-registry.tsv']
+# Selected SO-06 delivery remains the separately invoked counter driver; hash its
+# source boundary without importing fixture-private access types into owned routes.
+inputs.extend([ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift', ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift'])
 checks = []
 
 def run(label, args, failure=None):

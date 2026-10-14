@@ -34,6 +34,9 @@ flags[flags.index('-module-cache-path') + 1] = str(out / 'cache')
 flags += ['-I', str(out)]
 commands, checks = [], []
 inputs = [pathlib.Path(__file__).resolve()]
+# Selected SO-06 delivery remains the separately invoked counter driver; hash its
+# source boundary without importing fixture-private access types into owned routes.
+inputs.extend([ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift', ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift'])
 def run(label, command, diagnostic=None):
     command = list(map(str, command))
     commands.append(shlex.join(command))

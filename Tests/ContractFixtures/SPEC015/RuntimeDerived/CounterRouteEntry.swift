@@ -37,8 +37,8 @@ func giftuiRFC014CounterEntry(_ write: CounterTiledPixelWrite?) -> UInt32 {
 
 package func p08CounterRoute(write: CounterTiledPixelWrite? = nil, backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
     #if GIFTUI_COUNTER_ROUTE_DYNAMIC
-    p08CounterGraph() + p08CounterDynamicHost()
+    p08CounterGraph() + p08CounterScopedStorage() + p08CounterDynamicHost()
     #else
-    p08CounterGraph(backing: backing) + p08CounterHost(write: write, backing: backing)
+    p08CounterGraph(backing: backing) + p08CounterScopedStorage(backing: backing, write: write) + p08CounterHost(write: write, backing: backing)
     #endif
 }

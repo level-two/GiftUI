@@ -1,6 +1,16 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current resumption — 2026-10-14: Eugene approved the exact reviewed
+Current source freeze — 2026-10-14: approved initial SO-04→06 source pass
+has reached its package boundary. SO-04 `fd879ad0`, SO-05 `825603a2`, and the
+SO-06 commit containing this header are source checkpoints only. The
+[freeze ledger](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so06-source-freeze.md)
+records exact planned labels and known coverage/arithmetic/layout gaps. No
+compiler/build/executable/formatter/debugger/IR/image/target/hardware invocation;
+no criterion or fit closure, budget reset or post-freeze corrective pass.
+Independent Strong SOURCE review is next; SO-07–09 remain separately gated.
+All historic evidence, budgets/guard and I4-07/P09–P12 obligations persist.
+
+Historical resumption — 2026-10-14: Eugene approved the exact reviewed
 CounterAdmission.swift conformance-clause addition with “Ok, please then go ahead
 with it”. Resume the existing sequential SO-04→06 source pass, per-step commits,
 zero automatic repairs and independent Sol 6.1 High source review. Witness bodies

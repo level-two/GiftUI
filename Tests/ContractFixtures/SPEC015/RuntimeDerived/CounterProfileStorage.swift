@@ -121,7 +121,7 @@ where G: CounterGeometry, C: CounterCandidateBacking & InteractionOwnedBankMeasu
 
 func counterValidatePhysicalBacking<G, C, R, H, GR: CounterStorageRegionSource>(profile: RuntimeProfileKind, limits: RuntimeProfileLimits,
     root: CounterRootLayout, rootMetadataRegion: CounterStorageRegion, semantic: CounterSemanticMeasurement, geometry: CounterGeometryMeasurement,
-    interactionFacts: CounterPhysicalInteractionFacts, identityCapacities: (perKey: UInt16, perBank: UInt16),
+    interactionFacts: CounterPhysicalInteractionFacts, identityCapacities: (perKey: UInt16, perBank: UInt32),
     descriptorBytes: Int = 0, geometryType: G.Type, candidateType: C.Type, committedType: R.Type, hitType: H.Type,
     canvasCount: Int, canvasCapacity: UInt16, canvasControlBytes: Int,
     factoryRegion: CounterStorageRegion,

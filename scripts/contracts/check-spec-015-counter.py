@@ -70,7 +70,7 @@ if args.raster_realization == 'tiled' or is_target:
 fixture = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
 inputs = [pathlib.Path(__file__).resolve(), revision_path, fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
 storage_sources = sorted(fixture.glob('StaticCounter*.swift'))
-join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterTiledRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift', 'CounterRouteEntry.swift')]
+join_sources = [fixture / name for name in ('CounterScopedStorage.swift', 'CounterScopedStorageProbe.swift', 'CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterTiledRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift', 'CounterRouteEntry.swift')]
 inputs.extend(join_sources)
 inputs.extend(storage_sources)
 commands, checks = [], []
@@ -126,54 +126,97 @@ for name, source in (('P08CounterSchema', 'CounterSchema.swift'), ('P08CounterPr
 run('counter-model', [compiler, *flags, '-module-name', 'P08CounterRuntime', '-emit-module', '-emit-object',
                       fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift', *storage_sources, *join_sources,
                       '-emit-module-path', out / 'P08CounterRuntime.swiftmodule', '-o', out / 'P08CounterRuntime.o'])
-copy_negative = out / 'CounterHostCopyNegative.swift'
-copy_negative.write_text('import GiftUIHostConfiguration\nfunc reject(_ host: borrowing SignalAnalyzerPresetHostInstance<CounterHostOwner>) { let duplicate = copy host; _ = duplicate }\n')
-backing_negative = out / 'CounterHostBackingNegative.swift'
-positive = (fixture / 'CounterHostProbe.swift').read_text().split('package func p08CounterHost(')[0]
-static_negative_seam_counts = {}
-def replace_static_line(old, new, label):
-    global positive
-    lines = positive.splitlines()
-    count = lines.count(old)
-    static_negative_seam_counts[label] = count
-    assert count == 1, 'Static negative source seam absent/ambiguous: ' + label
-    positive = '\n'.join(new if line == old else line for line in lines) + '\n'
-replace_static_line('            let ownedChecks = counterOwnedSchedulerCompatibility(assembly.report)', '            let ownedChecks = 0', 'owned_projection')
-replace_static_line('    mutating func runCounterHost(failAfterRuntime: Bool) -> Int {', '    mutating func rejectCounterHostEscape(failAfterRuntime: Bool) -> Int {', 'method_name')
-replace_static_line('        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }', '        var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil\n        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }', 'escaped_declaration')
-replace_static_line('                                        return counterRunHostLifecycle(host: &host, control: pointer, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joinChecks)', '                                        _ = host.activate()\n                                        escaped = consume host\n                                        return 1', 'lifecycle_call')
-replace_static_line('            return checks + ownedChecks + 4', '            var escapedOwner = escaped.take()!\n            _ = escapedOwner.runOpportunity()\n            escapedOwner.teardown()\n            return checks + ownedChecks + 4', 'post_scope_return')
-backing_negative.write_text(positive)
-dynamic_backing_negative = out / 'CounterDynamicHostBackingNegative.swift'
-dynamic_positive = (fixture / 'CounterDynamicHostProbe.swift').read_text().split('package func p08CounterDynamicHost()')[0] + '#endif\n'
-dynamic_positive = dynamic_positive.replace('runCounterDynamicHost(failAfterRuntime: Bool)', 'rejectCounterDynamicHostEscape(failAfterRuntime: Bool)')
-dynamic_positive = dynamic_positive.replace('        guard case .valid(let audit)', '        var escaped: SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner>? = nil\n        guard case .valid(let audit)', 1)
-begin = dynamic_positive.index('                                        precondition(host.lifecycleState')
-end = dynamic_positive.index('                                        return count + 13', begin) + len('                                        return count + 13')
-dynamic_positive = dynamic_positive[:begin] + '                                        _ = host.activate()\n                                        escaped = consume host\n                                        return 1' + dynamic_positive[end:]
-dynamic_positive = dynamic_positive.replace('            return checks', '            var escapedOwner = escaped.take()!\n            _ = escapedOwner.runOpportunity()\n            escapedOwner.teardown()\n            return checks')
-dynamic_backing_negative.write_text(dynamic_positive)
+# All variants use the same trusted source; each intended negative first compiles
+# its exact positive twin. No stale moved-body line substitution is reused.
+trusted = fixture / 'CounterScopedStorage.swift'
+trusted_source = trusted.read_text()
 counter_sources = [fixture / name for name in ('CounterModel.swift', 'CounterModelProbe.swift', 'CounterSemantic.swift', 'CounterSemanticProbe.swift', 'CounterGeometry.swift', 'CounterStaticGeometry.swift', 'CounterRender.swift', 'CounterFixedStorageProbe.swift')]
-for label, negative, diagnostic in (
-    ('counter-host-copy', copy_negative, ('noncopyable',)),
-    ('counter-host-backing', backing_negative, ("lifetime-dependent variable 'escaped' escapes its scope", "activationBacking", "root.withLifetime", "semantic.withLifetime", "canvas.withLifetime", "withUnsafeMutablePointer")),
-    ('counter-dynamic-host-backing', dynamic_backing_negative, ("lifetime-dependent variable 'escaped' escapes its scope", "activationBacking", "root.withLifetime", "semantic.withLifetime", "canvas.withLifetime", "withUnsafeMutablePointer")),
-):
-    if is_embedded and label == 'counter-dynamic-host-backing':
-        continue  # Dynamic composition does not exist in the Embedded route.
-    run(label, [compiler, *flags, '-module-name', 'P08CounterRuntime', '-emit-object', *counter_sources, *storage_sources, *join_sources, negative, '-o', out / (label + '.o')], diagnostic)
+without_trusted = [path for path in join_sources if path != trusted]
+planned_scoped_labels = []
+def scoped_variant(label, source, diagnostic=None):
+    path = out / (label + '.swift')
+    path.write_text(trusted_source + '\n' + source + '\n')
+    planned_scoped_labels.append(label)
+    run(label, [compiler, *flags, '-module-name', 'P08CounterRuntime', '-emit-object', *counter_sources, *storage_sources, *without_trusted, path, '-o', out / (label + '.o')], diagnostic)
+    # Positive variant objects are diagnostic controls, never extra linked owners.
+    object_path = out / (label + '.o')
+    if object_path.exists(): object_path.unlink()
+
+origins = ('geometry', 'candidateRecords', 'candidateHitRegions', 'candidateCommittedRecords',
+           'committedRecords', 'committedHitRegions', 'models', 'root', 'semantic', 'values', 'control', 'activationSpan')
+constraints = 'where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & ~Copyable & ~Escapable, R: CounterCommittedBacking & ~Copyable & ~Escapable, H: CounterHitBacking & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity'
+for route in ('static', 'dynamic'):
+    if route == 'dynamic' and is_embedded: continue
+    owner = 'CounterHostOwner' if route == 'static' else 'CounterDynamicHostOwner'
+    supplied = 'CounterHostSuppliedStorage' if route == 'static' else 'CounterDynamicHostSuppliedStorage'
+    for mode in ('direct', 'generic'):
+        types = ('P08GeometryAccess', 'P08CandidateAccess', 'P08CommittedAccess', 'P08HitAccess') if mode == 'direct' else ('G', 'C', 'R', 'H')
+        generic = '' if mode == 'direct' else '<G, C, R, H>'
+        where = '' if mode == 'direct' else constraints
+        g, c, r, h = types
+        parameters = ('geometry: consuming ' + g + ', candidateRecords: consuming ' + c + ', candidateHitRegions: consuming ' + h + ', candidateCommittedRecords: consuming ' + r + ', committedRecords: consuming ' + r + ', committedHitRegions: consuming ' + h + ', models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: consuming CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly')
+        result = owner + '<' + ', '.join(types) + '>'
+        body = ('let state = InteractionState(candidateRecords: candidateRecords, candidateHitRegions: candidateHitRegions, candidateCommittedRecords: candidateCommittedRecords, committedRecords: committedRecords, committedHitRegions: committedHitRegions)\n'
+                'let interaction = InteractionOwnedKeyState(state: state, maximumComponentsPerKey: 24, maximumComponents: 48)!\n'
+                'let supplied = ' + supplied + '<' + ', '.join(types) + '>(models: models, root: root, semantic: semantic, values: values, scopedControl: control, audit: assembly.report.storageAudit, geometry: geometry, interaction: interaction)\n'
+                'return ' + result + '(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: false)')
+        for origin in origins:
+            stem = 'so06-union-' + route + '-' + mode + '-' + origin
+            for negative in (False, True):
+                union = ', '.join('copy ' + name for name in origins if not negative or name != origin)
+                source = '@_lifetime(' + union + ')\nfileprivate func unionProbe' + generic + '(' + parameters + ') -> ' + result + ' ' + where + ' {\n' + body + '\n}'
+                scoped_variant(stem + ('-negative' if negative else '-positive'), source,
+                               ('lifetime', origin) if negative else None)
+
+pairs = (
+    ('counter-host-copy', 'fileprivate func probe(_ host: consuming P08StaticHost) { _ = consume host }', 'fileprivate func probe(_ host: borrowing P08StaticHost) { let duplicate = copy host; _ = duplicate }', ("'copy' cannot be applied to noncopyable types",)),
+    ('counter-host-backing', 'fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { withP08Storage(backing: &owner) { session in var current = consume session; current.reset(); return 1 } }', 'fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { var escaped: P08StorageSession? = nil; _ = withP08Storage(backing: &owner) { session in escaped = consume session; return 1 }; var current = escaped.take()!; current.reset(); return 1 }', ('lifetime', 'escaped')),
+    ('so06-use-after-consume', 'fileprivate func probe(_ input: consuming P08StorageSession) { var first = consume input; first.reset() }', 'fileprivate func probe(_ input: consuming P08StorageSession) { let first = consume input; let second = consume input; _ = consume first; _ = consume second }', ('consumed',)),
+    ('so06-owned-return', 'fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<StaticCounterGeometry, CounterStaticCandidate, CounterStaticCommitted, CounterStaticHits>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }', 'fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }', ('Copyable', 'returnWorkspaces')),
+    ('so06-private-construction', '@_lifetime(copy token)\nfileprivate func probe(_ token: borrowing P08SessionLifetime, _ descriptor: P08GeometryDescriptor) -> P08GeometryAccess { P08GeometryAccess.lend(sessionLifetime: token, descriptor: descriptor) }', '@_lifetime(copy token)\nfileprivate func probe(_ token: borrowing P08SessionLifetime, _ descriptor: P08GeometryDescriptor) -> P08GeometryAccess { P08GeometryAccess(sessionLifetime: token, descriptor: descriptor) }', ('private',)),
+    ('so06-private-extraction', 'fileprivate func probe(_ session: borrowing P08StorageSession) -> Int { 1 }', 'fileprivate func probe(_ session: borrowing P08StorageSession) -> Int { session.interaction.committedRecordCount }', ('private', 'interaction')),
+    ('so06-arbitrary-factory', 'fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { withP08Storage(backing: &owner) { session in var current = consume session; current.reset(); return 1 } }', 'fileprivate struct ForeignOwner: ~Copyable {}\nfileprivate func probe(_ owner: inout ForeignOwner) -> Int { withP08Storage(backing: &owner) { session in var current = consume session; current.reset(); return 1 } }', ('P08TypedBackingOwner', 'ForeignOwner')),
+    ('so06-optional-erasure', 'fileprivate struct Box<T: ~Copyable>: ~Copyable { var value: T? }\nfileprivate func probe(_ value: Int) { _ = Box(value: value) }', 'fileprivate struct Box<T: ~Copyable>: ~Copyable { var value: T? }\nfileprivate func probe(_ value: consuming P08StorageSession) { _ = Box(value: value) }', ('Escapable',)),
+    ('so06-tuple-erasure', 'fileprivate func probe(_ value: Int) -> (Int, Int) { (value, 1) }', 'fileprivate func probe(_ value: consuming P08StorageSession) -> (P08StorageSession, Int) { (value, 1) }', ('Escapable',)),
+    ('so06-generic-erasure', 'fileprivate func erase<T: ~Copyable>(_ value: consuming T) {}\nfileprivate func probe(_ value: Int) { erase(value) }', 'fileprivate func erase<T: ~Copyable>(_ value: consuming T) {}\nfileprivate func probe(_ value: consuming P08StorageSession) { erase(value) }', ('Escapable',)),
+    ('so06-closure-erasure', 'fileprivate func probe(_ value: Int) -> () -> Int { { value } }', 'fileprivate func probe(_ input: consuming P08StorageSession) -> () -> Int { var value = consume input; return { value.reset(); return 1 } }', ('escaping',)),
+    ('so06-sendable', 'fileprivate func send<T: Sendable & ~Copyable & ~Escapable>(_ value: borrowing T) {}\nfileprivate func probe(_ value: Int) { send(value) }', 'fileprivate func send<T: Sendable & ~Copyable & ~Escapable>(_ value: borrowing T) {}\nfileprivate func probe(_ value: borrowing P08StorageSession) { send(value) }', ('Sendable',)),
+    ('so06-static-overlap', 'fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { let count = withP08Storage(backing: &owner) { session in var current = consume session; current.reset(); return 1 }; owner.release(); return count }', 'fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { withP08Storage(backing: &owner) { session in owner.release(); var current = consume session; current.reset(); return 1 } }', ('overlapping accesses',)),
+)
+for stem, positive, negative, diagnostic in pairs:
+    scoped_variant(stem + '-positive', positive)
+    scoped_variant(stem + '-negative', negative, diagnostic)
+if not is_embedded:
+    scoped_variant('counter-dynamic-host-backing-positive', 'fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { withP08Storage(backing: &owner) { session in var current = consume session; current.reset(); return 1 } }')
+    scoped_variant('counter-dynamic-host-backing-negative', 'fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { var escaped: P08StorageSession? = nil; _ = withP08Storage(backing: &owner) { session in escaped = consume session; return 1 }; var current = escaped.take()!; current.reset(); return 1 }', ('lifetime', 'escaped'))
+    for stem, positive, negative in (
+        ('so06-task', 'fileprivate func probe(_ value: Int) { _ = Task { value } }', 'fileprivate func probe(_ input: consuming P08StorageSession) { _ = Task { _ = consume input; return 1 } }'),
+        ('so06-async', 'fileprivate func probe(_ input: consuming P08StorageSession) -> Int { var value = consume input; value.reset(); return 1 }', 'fileprivate func probe(_ input: consuming P08StorageSession) async -> Int { var value = consume input; value.reset(); return 1 }'),
+    ):
+        scoped_variant(stem + '-positive', positive)
+        scoped_variant(stem + '-negative', negative, ('Escapable',))
 if not is_target:
     main = out / 'Main.swift'
-    expression = 'p08CounterRoute() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator()' if args.profile else 'p08CounterGraph() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator() + p08CounterHost() + p08CounterDynamicHost()'
+    expression = 'p08CounterRoute() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator()' if args.profile else 'p08CounterGraph() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterScopedStorage() + p08CounterCoordinator() + p08CounterHost() + p08CounterDynamicHost()'
     main.write_text('import P08CounterRuntime\nimport Darwin\n@main struct Main { static func main() { setbuf(stdout, nil); print("P08 counter components assertions=\\(' + expression + ') failures=0") } }\n')
     host_objects = [path for path in sorted(host.glob('GiftUI*.o')) if path.name != 'GiftUIHostConfiguration.o']
     run('link', [compiler, *flags, main, core / 'GiftUI.o', *host_objects, *sorted(out.glob('*.o')), '-o', out / 'counter'])
     execution = run('execute', [out / 'counter']).strip()
+    trap_flags = [*flags, '-D', 'GIFTUI_COUNTER_NATIVE_EXCLUSIVITY']
+    run('so06-native-exclusivity-module', [compiler, *trap_flags, '-module-name', 'P08CounterNativeExclusivity', '-emit-module', '-emit-object', *counter_sources, *storage_sources, *join_sources, '-emit-module-path', out / 'P08CounterNativeExclusivity.swiftmodule', '-o', out / 'P08CounterNativeExclusivity.o'])
+    trap_objects = [path for path in sorted(out.glob('*.o')) if path.name != 'P08CounterRuntime.o']
+    for negative in (False, True):
+        stem = 'so06-native-exclusivity-' + ('negative' if negative else 'positive')
+        main = out / (stem + '.swift')
+        main.write_text('import P08CounterNativeExclusivity\n@main struct Main { @MainActor static func main() { let count = p08CounterScopedExclusivity(negative: ' + ('true' if negative else 'false') + '); precondition(count == 1) } }\n')
+        run(stem + '-link', [compiler, *trap_flags, main, core / 'GiftUI.o', *host_objects, *trap_objects, '-o', out / stem])
+        run(stem + '-execute', [out / stem], ('Simultaneous accesses', 'Fatal access conflict') if negative else None)
+
 else:
     execution = 'cross-compiled current selected counter host only; no target execution or linked-image claim'
     (out / 'objects.list').write_text('\n'.join(map(str, [core / 'GiftUI.o', *sorted(out.glob('*.o'))])) + '\n')
-receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, execution=execution)
-receipt['static_negative_seam_counts'] = static_negative_seam_counts
+receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, planned_scoped_labels=planned_scoped_labels, execution=execution)
+receipt['scoped_negative_source'] = str(trusted.relative_to(ROOT))
 receipt['artifacts'] = {str(p.relative_to(out)): dict(sha256=digest(p), bytes=p.stat().st_size) for p in out.iterdir() if p.is_file()}
 (out / 'result.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print(execution.splitlines()[-1])

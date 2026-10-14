@@ -1,6 +1,8 @@
 import GiftUI
 import GiftUIRenderCore
 
+// SO-06 physical/session corpus is separately registered as p08CounterScopedStorage;
+// these independent byte-codec controls remain unchanged.
 package func p08CounterFixedStorage() -> Int {
     var checks = 0
     var pathBytes: InlineArray<20, UInt8> = .init(repeating: 0)

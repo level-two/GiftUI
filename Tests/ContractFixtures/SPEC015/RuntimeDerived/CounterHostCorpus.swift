@@ -83,6 +83,7 @@ func counterCheckHostFrame(_ control: borrowing CounterControl, value: UInt8) ->
     return checks
 }
 
+// Selected scoped and ordinary owned hosts share this exact independent oracle.
 // Source/input callback delivery uses the coordinator's same admission owner.
 // The callback owns no model alias/ticket, performs no body read or mutation.
 func counterHostCorpus<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inout H, control: UnsafeMutablePointer<CounterControl>) -> Int where H.OwnerFailure == RuntimeOwnerFailure {

@@ -50,8 +50,8 @@ struct CounterEmbeddedLayout {
     private(set) var fields = 0
     private(set) var slotBytes = 0
     private(set) var totalBytes = 0
-    init?(suppliedByteCount: Int) {
-        guard suppliedByteCount > 0 else { return nil }
+    init?(suppliedByteCount: Int, r1Surplus: Int = 0) {
+        guard suppliedByteCount > 0, r1Surplus >= 0 else { return nil }
         guard append(RuntimeProfileLimits.self, count: 1, limit: suppliedByteCount) else { return nil }
         guard append(StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, count: 1, limit: suppliedByteCount) else { return nil }
         guard append(StaticSemanticRecordStorage.self, count: 1, limit: suppliedByteCount) else { return nil }
@@ -73,7 +73,7 @@ struct CounterEmbeddedLayout {
         guard append(CounterStaticCandidate.self, count: 1, limit: suppliedByteCount) else { return nil }
         guard append(CounterStaticHits.self, count: 1, limit: suppliedByteCount) else { return nil }
         guard append(CounterStaticCommitted.self, count: 1, limit: suppliedByteCount) else { return nil }
-        guard append(CounterStaticCommitted.self, count: 1, limit: suppliedByteCount) else { return nil }
+        guard append(CounterStaticCommitted.self, count: 1, limit: suppliedByteCount, surplus: r1Surplus) else { return nil }
         guard append(CounterStaticHits.self, count: 1, limit: suppliedByteCount) else { return nil }
         guard append(CounterControl.self, count: 1, limit: suppliedByteCount) else { return nil }
         guard append(Bool.self, count: 1, limit: suppliedByteCount) else { return nil }
@@ -86,16 +86,18 @@ struct CounterEmbeddedLayout {
         guard !total.overflow else { return nil }
         totalBytes = total.partialValue
     }
-    private mutating func append<T: ~Copyable>(_ type: T.Type, count: Int, limit: Int) -> Bool {
+    private mutating func append<T: ~Copyable>(_ type: T.Type, count: Int, limit: Int, surplus: Int = 0) -> Bool {
         let size = MemoryLayout<T>.size, stride = MemoryLayout<T>.stride, alignment = MemoryLayout<T>.alignment
         guard count >= 0, stride >= size, alignment > 0, fields < regions.count else { return false }
         let product = stride.multipliedReportingOverflow(by: count)
         let remainder = cursor % alignment
         let start = cursor.addingReportingOverflow(remainder == 0 ? 0 : alignment - remainder)
         guard !product.overflow, !start.overflow else { return false }
-        let end = start.partialValue.addingReportingOverflow(product.partialValue)
+        let retained = product.partialValue.addingReportingOverflow(surplus)
+        guard !retained.overflow else { return false }
+        let end = start.partialValue.addingReportingOverflow(retained.partialValue)
         guard !end.overflow, end.partialValue <= limit else { return false }
-        regions[fields] = .init(offset: start.partialValue, count: count, size: size, stride: stride, alignment: alignment, extent: product.partialValue)
+        regions[fields] = .init(offset: start.partialValue, count: count, size: size, stride: stride, alignment: alignment, extent: retained.partialValue)
         fields += 1; cursor = end.partialValue; maximumAlignment = max(maximumAlignment, alignment)
         return true
     }

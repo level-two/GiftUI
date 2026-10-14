@@ -1,5 +1,17 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-04→06 initial source package frozen — 2026-10-14
+
+SO-04 `fd879ad0` and SO-05 `825603a2` are sequential source checkpoints.
+The SO-06 commit containing this record freezes the initial source pass and
+registrations at the parent's imposed package boundary. The
+[freeze ledger](scoped-storage/so06-source-freeze.md) records exact planned
+labels, source-present cases and known gaps. Independent Strong SOURCE review
+is next; no source edits/corrective pass follows this freeze. No compiler,
+build, harness/executable, formatter, debugger, IR, image, target or hardware
+invocation occurred. All criteria/fit remain open; budgets/guard and lifecycle
+statuses remain unchanged. SO-07–09 require separate authorization.
+
 ## SO-04→06 scope addition approved — 2026-10-14
 
 Eugene replied “Ok, please then go ahead with it” after the explanation of the

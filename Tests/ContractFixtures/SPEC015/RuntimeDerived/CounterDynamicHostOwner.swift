@@ -111,7 +111,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
             let control = supplied.borrowedControl()
             let audit = construction.root.audit(supplied.audit)
             let report = assembly.report
-            if let error = counterBindingJoinError(expectedModels: models, expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: .macOSDynamic, profile: .dynamic, models: models, root: root, control: control.pointer, audit: audit, report: report) {
+            if let error = counterBindingJoinError(expectedModels: models, expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: counterDynamicHostKind, profile: .dynamic, models: models, root: root, control: control.pointer, audit: audit, report: report) {
                 self = .inert(consume supplied, span)
                 return error
             }
@@ -128,7 +128,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     mutating func activate(assembly: CounterHostAssembly, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> HostConfigurationError? {
         switch self {
         case .inert(let supplied, _):
-            if let error = counterBindingJoinError(expectedModels: supplied.borrowedModels(), expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: .macOSDynamic, profile: .dynamic, models: models, root: root, control: control, audit: audit, report: report) { return error }
+            if let error = counterBindingJoinError(expectedModels: supplied.borrowedModels(), expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: counterDynamicHostKind, profile: .dynamic, models: models, root: root, control: control, audit: audit, report: report) { return error }
         case .active: return .invariantViolation
         case .retired: return .invariantViolation
         }
