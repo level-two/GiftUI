@@ -21,6 +21,27 @@ No contract/resource/platform relaxation, P09 expansion or hardware operation.
 Escalate material decisions/exhausted budget; commit meaningful steps and report
 at the P08 boundary. All criteria/fit remain open at entry.
 
+## P08 integrated corrective cycle 1 source freeze — 2026-10-14
+
+[Cycle 1 source freeze](scoped-storage/p08-integrated-cycle1-source-freeze.md)
+and [new nine-file manifest](scoped-storage/p08-integrated-cycle1-source-manifest.json)
+bundle C01–C05 with B01/O01. Original retained action now traverses guarded real
+down/up admission, existing capture/seal and actual mutating dispatch; owned
+observations correlate one sealed action/cycle/bridge/model effect. Stale guards
+include prepare/delivery and all application counters. Typed sizing, initialized
+MutableSpan field scopes, consumed local stages, explicit scoped conformances and
+Dynamic schema import preserve contracts. Exact pinned noncompiled applicability
+qualification reuses the three passed native component cells; original complete
+source applicability manifests remain historical, and all compiled inputs/checks
+remain enforced. No compiler/runtime/build/formatter/probe in this correction.
+Cycle1/2 started/consumed, assessment and one affected macOS Dynamic counter
+rerun pending; initialcells4 (3passed/1failed), images0. Independent Strong
+assessment is next within broader authorization. All criteria/P08/fit remain open.
+Permitted checks pass: nine source hashes/six changed sources, qualification
+hash/three pinned receipts and excluded recorded inputs, 26 labels, driver AST
+without invocation, 194 local Markdown targets and whitespace. No compiler or
+Swift typechecking is inferred from these consistency checks.
+
 ## P08 integrated initial source freeze — 2026-10-14
 
 The [initial source freeze](scoped-storage/p08-integrated-source-freeze.md) and

@@ -902,12 +902,17 @@ fileprivate struct P08GeometryAccess: ~Copyable, ~Escapable, CounterGeometry {
                 planBytes: UInt64(d.byteCounts[3] + MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>.stride))
         #if !hasFeature(Embedded)
         case .dynamic(let d):
+            let layoutInline: UInt64 = UInt64(MemoryLayout<DynamicLayoutWorkspace>.stride + MemoryLayout<DynamicResolvedLayoutStorage>.stride)
+            let layoutPayload: UInt64 = d.g0.pointee.reservedPayloadBytes + d.g1.pointee.reservedPayloadBytes
+            let layoutBytes: UInt64 = layoutInline + layoutPayload
+            let renderInline: UInt64 = UInt64(MemoryLayout<DynamicRenderWorkspace>.stride)
+            let renderBytes: UInt64 = renderInline + d.g4.pointee.reservedPayloadBytes
+            let pathBytes: UInt64 = d.g3.pointee.livePathReservedPayloadBytes
+            let planInline: UInt64 = UInt64(MemoryLayout<DynamicDrawingPlanWorkspace>.stride)
+            let planBytes: UInt64 = planInline + d.g3.pointee.planReservedPayloadBytes
             return .init(layout: counterLayoutLimits, render: d.g4.pointee.capacity,
                 renderWorkspace: d.g4.pointee.structuralCapacity, drawing: d.g3.pointee.capacity,
-                layoutBytes: UInt64(MemoryLayout<DynamicLayoutWorkspace>.stride + MemoryLayout<DynamicResolvedLayoutStorage>.stride) + d.g0.pointee.reservedPayloadBytes + d.g1.pointee.reservedPayloadBytes,
-                renderBytes: UInt64(MemoryLayout<DynamicRenderWorkspace>.stride) + d.g4.pointee.reservedPayloadBytes,
-                pathBytes: d.g3.pointee.livePathReservedPayloadBytes,
-                planBytes: UInt64(MemoryLayout<DynamicDrawingPlanWorkspace>.stride) + d.g3.pointee.planReservedPayloadBytes)
+                layoutBytes: layoutBytes, renderBytes: renderBytes, pathBytes: pathBytes, planBytes: planBytes)
         #endif
         }
     }
@@ -1433,12 +1438,25 @@ fileprivate protocol P08ReuseObservation: ~Copyable, ~Escapable {
     var teardownStep: UInt8 { get }
     borrowing func observeModelValue() -> UInt8
     borrowing func observeProducedAction() -> CounterProducedAction
+    borrowing func prepareProducedAction(_ action: CounterProducedAction) -> Bool
     borrowing func deliverProducedAction(_ action: CounterProducedAction) -> Bool
     borrowing func observeApplicationProducer() -> CounterApplicationOwners
 }
-extension CounterHostOwner: P08ReuseObservation {}
+extension CounterHostOwner: P08ReuseObservation
+where Geometry: CounterGeometry & ~Copyable & ~Escapable,
+      Candidate: CounterCandidateBacking & ~Copyable & ~Escapable,
+      Committed: CounterCommittedBacking & ~Copyable & ~Escapable,
+      Hits: CounterHitBacking & ~Copyable & ~Escapable,
+      Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity,
+      Hits.Identity == SemanticCompleteIdentity {}
 #if !hasFeature(Embedded)
-extension CounterDynamicHostOwner: P08ReuseObservation {}
+extension CounterDynamicHostOwner: P08ReuseObservation
+where Geometry: CounterGeometry & ~Copyable & ~Escapable,
+      Candidate: CounterCandidateBacking & ~Copyable & ~Escapable,
+      Committed: CounterCommittedBacking & ~Copyable & ~Escapable,
+      Hits: CounterHitBacking & ~Copyable & ~Escapable,
+      Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity,
+      Hits.Identity == SemanticCompleteIdentity {}
 #endif
 fileprivate struct P08HostReuseTranscript {
     var action: CounterProducedAction?
@@ -1455,6 +1473,7 @@ fileprivate func p08ReuseLabel(_ route: StaticString, _ suffix: StaticString) {
 }
 fileprivate func p08RequireFreshControl(_ control: UnsafeMutablePointer<CounterControl>) {
     precondition(control.pointee.admissionController == nil && control.pointee.wake == nil && control.pointee.scheduler == nil)
+    precondition(control.pointee.lastSealedAction == nil && control.pointee.lastDispatchedAction == nil && control.pointee.lastDispatchContext == nil && control.pointee.actionDispatches == 0)
     precondition(!control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled && control.pointee.finalized == 0)
 }
 fileprivate func p08RequireRetiredControl(_ control: UnsafeMutablePointer<CounterControl>) {
@@ -1488,6 +1507,15 @@ fileprivate struct P08ReuseFingerprint: Equatable {
     let schedulerDeadline: HostScheduledOpportunityBeginResult?
     let wakeTakes: Int
     let disabledWakeRejections: Int
+    let applicationCallbacks: Int
+    let observationsInstalled: Int
+    let observationsDetached: Int
+    let reentrantApplicationRejections: Int
+    let stoppedApplicationChecks: Int
+    let lastSealedAction: CapturedAction<SemanticCompleteIdentity>?
+    let lastDispatchedAction: CapturedAction<SemanticCompleteIdentity>?
+    let lastDispatchContext: ExecutionContext?
+    let actionDispatches: Int
     init(_ control: UnsafeMutablePointer<CounterControl>) {
         joins = counterJoinSnapshot(control); context = control.pointee.context
         capture = control.pointee.runtime.pointer.capture.current; source = control.pointee.runtime.pointer.source
@@ -1507,6 +1535,12 @@ fileprivate struct P08ReuseFingerprint: Equatable {
         schedulerNow = now?.begin(at: control.pointee.wakeClockMicroseconds, lifecycleState: .active, assemblyReport: schedulerReport!)
         schedulerDeadline = deadline?.begin(at: boundary.partialValue, lifecycleState: .active, assemblyReport: schedulerReport!)
         wakeTakes = control.pointee.wakeTakes; disabledWakeRejections = control.pointee.disabledWakeRejections
+        applicationCallbacks = control.pointee.applicationCallbacks
+        observationsInstalled = control.pointee.observationsInstalled; observationsDetached = control.pointee.observationsDetached
+        reentrantApplicationRejections = control.pointee.reentrantApplicationRejections
+        stoppedApplicationChecks = control.pointee.stoppedApplicationChecks
+        lastSealedAction = control.pointee.lastSealedAction; lastDispatchedAction = control.pointee.lastDispatchedAction
+        lastDispatchContext = control.pointee.lastDispatchContext; actionDispatches = control.pointee.actionDispatches
     }
 }
 fileprivate func p08RunReuseHost<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>) -> Int
@@ -1527,6 +1561,8 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
         p08ReuseLabel(route, "raw-namespace-collision")
         let modelBefore = host.owner.observeModelValue()
         let before = P08ReuseFingerprint(control)
+        precondition(!host.owner.prepareProducedAction(oldAction))
+        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore)
         precondition(!host.owner.deliverProducedAction(oldAction))
         precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore); count += counterCheckHostFrame(control.pointee, value: 0)
         p08ReuseLabel(route, "action-stale")
@@ -1561,9 +1597,20 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     if transcript.pointee.hosts == 1 {
         p08ReuseLabel(route, "input-current")
         let currentAction = host.owner.observeProducedAction()
-        let applied = control.pointee.applied
-        precondition(host.owner.deliverProducedAction(currentAction) && control.pointee.applied == applied + 1)
-        guard case .cycle(.success) = host.runOpportunity() else { preconditionFailure("reuse current action cycle") }
+        let applied = control.pointee.applied, dispatched = control.pointee.actionDispatches
+        precondition(host.owner.prepareProducedAction(currentAction))
+        guard case .cycle(.success(let downSummary)) = host.runOpportunity() else { preconditionFailure("reuse current action down cycle") }
+        precondition(downSummary.admission.inputEventCount == 1 && downSummary.admission.semanticActionCount == 0)
+        precondition(control.pointee.applied == applied && control.pointee.actionDispatches == dispatched)
+        precondition(control.pointee.runtime.pointer.capture.current == currentAction.captured && host.owner.observeModelValue() == 1)
+        precondition(host.owner.deliverProducedAction(currentAction))
+        precondition(control.pointee.applied == applied && control.pointee.actionDispatches == dispatched)
+        guard case .cycle(.success(let upSummary)) = host.runOpportunity() else { preconditionFailure("reuse current action up cycle") }
+        precondition(upSummary.admission.inputEventCount == 1 && upSummary.admission.semanticActionCount == 1)
+        precondition(control.pointee.lastSealedAction == currentAction.captured && control.pointee.lastDispatchedAction == currentAction.captured)
+        precondition(control.pointee.lastDispatchContext?.phase == .mutating && control.pointee.lastDispatchContext?.cycle == upSummary.cycle)
+        precondition(control.pointee.applied == applied + 1 && control.pointee.actionDispatches == dispatched + 1)
+        precondition(control.pointee.runtime.pointer.capture.current == nil && host.owner.observeModelValue() == 2)
         count += counterCheckHostFrame(control.pointee, value: 2); p08ReuseLabel(route, "action-current")
         let wake = control.pointee.acceptedFactWakeRecords
         precondition(admission.submit(stateChange: 3).result == .queued)
@@ -1655,11 +1702,21 @@ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerI
         withUnsafeMutablePointer(to: &outer.semantic) { semantic in
         withUnsafeMutablePointer(to: &outer.canvas) { canvas in
         withUnsafeMutablePointer(to: &outer.control) { control in
-        outer.semanticBacking.records.withUnsafeMutableBufferPointer { records in
-        outer.semanticBacking.paths.withUnsafeMutableBufferPointer { paths in
-        outer.semanticBacking.payloads.withUnsafeMutableBufferPointer { payloads in
-        outer.semanticBacking.scalars.withUnsafeMutableBufferPointer { scalars in
-        outer.canvasBacking.withUnsafeMutableBufferPointer { entries in
+        withUnsafeMutablePointer(to: &outer.semanticBacking.records) { recordsStorage in
+        var recordsSpan = recordsStorage.pointee.mutableSpan
+        return recordsSpan.withUnsafeMutableBufferPointer { records in
+        withUnsafeMutablePointer(to: &outer.semanticBacking.paths) { pathsStorage in
+        var pathsSpan = pathsStorage.pointee.mutableSpan
+        return pathsSpan.withUnsafeMutableBufferPointer { paths in
+        withUnsafeMutablePointer(to: &outer.semanticBacking.payloads) { payloadsStorage in
+        var payloadsSpan = payloadsStorage.pointee.mutableSpan
+        return payloadsSpan.withUnsafeMutableBufferPointer { payloads in
+        withUnsafeMutablePointer(to: &outer.semanticBacking.scalars) { scalarsStorage in
+        var scalarsSpan = scalarsStorage.pointee.mutableSpan
+        return scalarsSpan.withUnsafeMutableBufferPointer { scalars in
+        withUnsafeMutablePointer(to: &outer.canvasBacking) { entriesStorage in
+        var entriesSpan = entriesStorage.pointee.mutableSpan
+        return entriesSpan.withUnsafeMutableBufferPointer { entries in
             withP08StaticReservation { owner in
                 precondition(initializeP08Backing(&owner) == nil)
                 defer { owner.finishReservation() }
@@ -1667,7 +1724,7 @@ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerI
                 let view = P08StaticOuterView(limits: limits, root: root, semantic: semantic, records: records, paths: paths, payloads: payloads, scalars: scalars, canvas: canvas, entries: entries, control: control, outerMetadataBytes: metadata)
                 return body(&owner, view)
             }
-        } } } } } } } } }
+        } } } } } } } } } } } } } }
     #endif
 }
 
@@ -1713,7 +1770,8 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
     init(session: consuming P08StorageSession, control: borrowing UnsafeMutablePointer<CounterControl>) { stage = .session(session); self.control = copy control }
     @_lifetime(self: copy self, copy models, copy root, copy semantic, copy values, copy control)
     mutating func supply(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: consuming CounterHostControl, audit: RuntimeStorageAudit, dynamic: Bool) {
-        switch consume stage.take()! {
+        let current = stage.take()!
+        switch consume current {
         case .session(let session):
             #if !hasFeature(Embedded)
             if dynamic { stage = .dynamicSupplied(session.intoDynamicSupplied(models: models, root: root, semantic: semantic, values: values, control: control, audit: audit)); return }
@@ -1724,7 +1782,8 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
     }
     @_lifetime(self: copy self, copy activationSpan)
     mutating func constructOwner(activationSpan: Span<UInt8>, assembly: CounterHostAssembly, failAfterRuntime: Bool) {
-        switch consume stage.take()! {
+        let current = stage.take()!
+        switch consume current {
         case .supplied(let supplied): stage = .owner(P08StaticHostOwner(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: failAfterRuntime))
         #if !hasFeature(Embedded)
         case .dynamicSupplied(let supplied): stage = .dynamicOwner(P08DynamicHostOwner(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: failAfterRuntime))
@@ -1735,7 +1794,8 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
     @_lifetime(self: copy self)
     mutating func checkJoins(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> Int {
         let expected = counterJoinSnapshot(control), foreignExpected = counterJoinSnapshot(foreignControl)
-        switch consume stage.take()! {
+        let current = stage.take()!
+        switch consume current {
         case .owner(var owner):
             let checks = counterCheckRejectedBindings(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, report: report, expected: expected, foreignExpected: foreignExpected)
             stage = .owner(consume owner); return checks
@@ -1749,7 +1809,8 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
     }
     @_lifetime(self: copy self)
     mutating func constructHost(report: HostAssemblyReport) {
-        switch consume stage.take()! {
+        let current = stage.take()!
+        switch consume current {
         case .owner(let owner):
             #if hasFeature(Embedded)
             stage = .host(SignalAnalyzerPresetHostInstances.nrf52840Static(report: report, owner: owner)!)
@@ -1770,7 +1831,8 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
     @_lifetime(self: copy self)
     mutating func run(control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil) -> Int {
         activationAttempted = true
-        switch consume stage.take()! {
+        let current = stage.take()!
+        switch consume current {
         case .host(var host):
             let checks: Int
             if let reuse {

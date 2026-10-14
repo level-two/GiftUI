@@ -58,6 +58,16 @@ struct CounterControl {
     #else
     var backend = CounterNativeBackendStorage()
     #endif
+    private(set) var lastSealedAction: CapturedAction<SemanticCompleteIdentity>?
+    private(set) var lastDispatchedAction: CapturedAction<SemanticCompleteIdentity>?
+    private(set) var lastDispatchContext: ExecutionContext?
+    private(set) var actionDispatches = 0
+    mutating func observeSealedAction(_ action: CapturedAction<SemanticCompleteIdentity>?) { lastSealedAction = action }
+    mutating func observeActionDispatch(_ action: CapturedAction<SemanticCompleteIdentity>, context: ExecutionContext) {
+        precondition(context.phase == .mutating && lastSealedAction == action)
+        let next = actionDispatches.addingReportingOverflow(1); precondition(!next.overflow)
+        actionDispatches = next.partialValue; lastDispatchedAction = action; lastDispatchContext = context
+    }
     var runtime = CounterRuntimeControl()
     // The coordinator and finite callback adapter share this single controller.
     var admissionController: CounterAdmission.Controller?
@@ -271,16 +281,26 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         guard case .activationAdmitted(let captured) = ExecutionGestureAdapter.up(at: point, capture: &capture, resolver: interaction) else { preconditionFailure("actual selected capture") }
         return .init(origin: origin, captured: captured, targetGeneration: targetGeneration, targetIdentity: rootIdentity)
     }
-    // Owned adversarial observation only; the real scoped bridge stays here.
+    // The original owned capture enters the existing pointer capture/seal path.
+    // No target capability, dispatch callback or second pending owner is retained.
+    borrowing func prepareProducedAction(_ produced: CounterProducedAction) -> Bool {
+        guard control.pointee.acceptsProducer(produced.origin) else { return false }
+        guard !control.pointee.unavailable && control.pointee.context.phase == .idle else { return false }
+        var admission = CounterAdmission(borrowing: control)
+        let result = control.pointee.inputGate.submit(phase: .down, position: control.pointee.actionPoints[0], source: .init(rawValue: 0), observedPresentationRevision: control.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission)
+        guard case .queued = result else { return false }
+        return true
+    }
     borrowing func deliverProducedAction(_ produced: CounterProducedAction) -> Bool {
         guard control.pointee.acceptsProducer(produced.origin) else { return false }
-        guard !control.pointee.unavailable, let rootIdentity else { return false }
-        let target = ObservableStateRootTargetAccess(root: root, identity: rootIdentity, ordinal: 0)
-        let result = RuntimeRecordInteractionBridge.dispatch(produced.captured, records: interaction, target: target, actionType: CounterAction.self, operation: CounterHandler.operation)
-        guard case .interaction(.dispatched) = result else { return false }
-        control.pointee.applied += 1
-        control.pointee.runtime.changed = true
-        control.pointee.emitCounterWake(.semanticDirty)
+        guard !control.pointee.unavailable && control.pointee.context.phase == .idle,
+              control.pointee.runtime.pointer.capture.current == produced.captured else { return false }
+        // Use the retained original value itself after the real down established
+        // this sequence. The actual up resolver, seal and mutation revalidate it.
+        control.pointee.runtime.pointer.capture.replace(with: produced.captured)
+        var admission = CounterAdmission(borrowing: control)
+        let result = control.pointee.inputGate.submit(phase: .up, position: control.pointee.actionPoints[0], source: .init(rawValue: 0), observedPresentationRevision: control.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: false, to: &admission)
+        guard case .queued = result else { return false }
         return true
     }
     mutating func admitAndSeal() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
@@ -327,6 +347,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
             guard control.pointee.admission.seal(selection.summary) else { return .failure(.execution(.invariantViolation)) }
             control.pointee.runtime.pointer = staged
             control.pointee.admission.sealedAction = activation
+            control.pointee.observeSealedAction(activation)
             sealedAdmission = selection.summary
         }
         return .advanced
@@ -353,12 +374,14 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         return .applied(applied)
     }
     mutating func dispatch(_ captured: CapturedAction<SemanticCompleteIdentity>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
+        precondition(phase.context.phase == .mutating)
         guard let rootIdentity else { return .applied(false) }
         let target = ObservableStateRootTargetAccess(root: root, identity: rootIdentity, ordinal: 0)
         let result = RuntimeRecordInteractionBridge.dispatch(captured, records: interaction, target: target, actionType: CounterAction.self, operation: CounterHandler.operation)
         counterTrace("dispatch", result)
         switch result {
         case .interaction(.dispatched):
+            control.pointee.observeActionDispatch(captured, context: phase.context)
             control.pointee.applied += 1; changed = true
             if control.pointee.failAfterMutation { return .failure(.execution(.capacityExhausted), mutationApplied: true) }
             return .applied(true)

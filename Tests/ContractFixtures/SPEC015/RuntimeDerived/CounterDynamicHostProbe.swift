@@ -1,4 +1,5 @@
 #if !hasFeature(Embedded)
+import P08CounterSchema
 import GiftUI
 import GiftUIDrawing
 import GiftUIExecution

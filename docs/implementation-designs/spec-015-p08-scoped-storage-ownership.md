@@ -27,20 +27,21 @@ Current integrated independent SOURCE review — 2026-10-14: [Strong review of `
 > design review; it is not implemented code, source authorization, compiler
 > acceptance or target-fit evidence.
 
-## Current integrated source candidate — 2026-10-14
+## Current integrated corrective source candidate — 2026-10-14
 
 The [broader authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-activity.md)
-now governs necessary existing-contract completion and predefined validation.
-The [initial source freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-source-freeze.md)
-records the realized private origin guards and actual two-host/same-inventory/
-same-control corpus, necessary existing host-state observation forwarding and
-symbolic accounting. The single existing dirty flag resides in runtime control;
-the pipeline uses a computed view, and the guarded operation-only bridge test
-marks that same flag. No duplicate dirty/transaction state or scoped getter is
-introduced. This is an unreviewed source candidate, with no compiler/runtime/fit
-claim; independent Strong review and the predefined validation are next under
-cycles0/2. The dated design proposal below preserves its historical decision
-boundary and does not reinstate obsolete per-file/source-only permission stops.
+governs necessary existing-contract completion and predefined validation. The
+[cycle 1 source freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-cycle1-source-freeze.md)
+bundles diagnosed compiler fixes and B01/O01. Guarded prepare admits a real down;
+after its actual zero-action cycle, guarded delivery puts the original retained
+capture into existing pointer capture and admits a real up. Existing gesture/seal/
+mutating dispatch consumes that original once; owned observations correlate the
+sealed action, actual dispatch phase/cycle and effect. There is no idle dispatch,
+new pending transaction owner, scoped getter or duplicate dirty authority.
+Fresh control reconstruction resets observation fields; actual family24/stack/
+layout accounting remains required. Cycle1/2 consumed, source candidate unreviewed/
+unexecuted. Historical initial freeze/design/receipts remain evidence; their dated
+file/source-only stops do not reinstate obsolete current permission gates.
 
 ## Repeated Full Hosts — Derived Addendum, 2026-10-14
 

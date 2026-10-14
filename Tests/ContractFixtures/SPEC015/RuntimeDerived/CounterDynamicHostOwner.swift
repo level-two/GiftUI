@@ -178,6 +178,12 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         default: preconditionFailure("selected active observation")
         }
     }
+    borrowing func prepareProducedAction(_ action: CounterProducedAction) -> Bool {
+        switch self {
+        case .active(let coordinator, _, _): return coordinator.opportunity.prepareProducedAction(action)
+        default: return false
+        }
+    }
     borrowing func deliverProducedAction(_ action: CounterProducedAction) -> Bool {
         switch self {
         case .active(let coordinator, _, _): return coordinator.opportunity.deliverProducedAction(action)
@@ -336,6 +342,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     private mutating func quiesceOnce() { if !quiesced { state.quiesce(); quiesced = true } }
     borrowing func observeModelValue() -> UInt8 { state.observeModelValue() }
     borrowing func observeProducedAction() -> CounterProducedAction { state.observeProducedAction() }
+    borrowing func prepareProducedAction(_ action: CounterProducedAction) -> Bool { state.prepareProducedAction(action) }
     borrowing func deliverProducedAction(_ action: CounterProducedAction) -> Bool { state.deliverProducedAction(action) }
     borrowing func observeApplicationProducer() -> CounterApplicationOwners { application! }
     mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure> { precondition(reportValid && activationStep == 7); return state.runOpportunity() }

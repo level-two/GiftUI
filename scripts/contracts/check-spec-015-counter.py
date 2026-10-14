@@ -26,8 +26,38 @@ def digest(path):
 revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
 revision_receipt = json.loads(revision_path.read_text())
 reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
-def verify_recipe_source(name, expected):
+applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-cycle1-applicability.json'
+applicability = json.loads(applicability_path.read_text())
+qualified_applicability = []
+def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
+    source = 'Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift'
+    if name != source or receipt_path is None:
+        return False
+    assert applicability['kind'] == 'exact-noncompiled-source-applicability-qualification'
+    assert applicability['source'] == source and applicability['cycle'] == 1
+    relative_receipt = str(receipt_path.relative_to(ROOT))
+    entry = next((value for value in applicability['receipts'] if value['receipt'] == relative_receipt), None)
+    if entry is None:
+        return False
+    assert digest(receipt_path) == entry['receipt_sha256'], source + ': unqualified predecessor receipt'
+    assert expected == entry['original_source_sha256'] == receipt['inputs'][source]
+    assert digest(ROOT / source) == applicability['corrected_source_sha256'], source + ': unqualified corrected source'
+    recorded = sorted(set(str(pathlib.Path(token).resolve().relative_to(ROOT))
+                          for command in receipt['commands'] for token in shlex.split(command)
+                          if token.endswith('.swift')))
+    assert source not in recorded and entry['source_compiled'] is False
+    assert len(recorded) == entry['recorded_swift_inputs_count']
+    recorded_digest = hashlib.sha256(json.dumps(recorded, separators=(',', ':')).encode()).hexdigest()
+    assert recorded_digest == entry['recorded_swift_inputs_sha256'], source + ': compilation applicability changed'
+    qualified_applicability.append(dict(receipt=relative_receipt, receipt_sha256=entry['receipt_sha256'],
+                                       source=source, original_source_sha256=expected,
+                                       corrected_source_sha256=applicability['corrected_source_sha256'],
+                                       compiled=False, original_manifest_current=False))
+    return True
+def verify_recipe_source(name, expected, receipt_path=None, receipt=None):
     if digest(ROOT / name) == expected:
+        return
+    if qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
         return
     if name in reviewed_revisions:
         revision = reviewed_revisions[name]
@@ -37,7 +67,7 @@ def verify_recipe_source(name, expected):
         assert digest(ROOT / name) == expected, name
 for name, expected in prior['inputs'].items():
     if name not in ('Sources/GiftUISemanticCore/SemanticRecordStore.swift', 'Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift', 'Sources/GiftUIExecution/ExecutionAdmissionController.swift', 'Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift'):
-        verify_recipe_source(name, expected)
+        verify_recipe_source(name, expected, base / 'result.json', prior)
 for name, expected in prior['artifacts'].items():
     assert digest(base / name) == expected['sha256'], name
 command = next(shlex.split(c) for c in prior['commands'] if '-module-name RuntimeCycleProbe ' in c)
@@ -55,7 +85,7 @@ host_receipt = json.loads((host / 'result.json').read_text())
 assert host_receipt['compiler_sha256'] == prior['compiler_sha256']
 for name, expected in host_receipt['inputs'].items():
     if name not in ('Sources/GiftUISemanticCore/SemanticRecordStore.swift', 'Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift', 'Sources/GiftUIExecution/ExecutionAdmissionController.swift', 'Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift'):
-        verify_recipe_source(name, expected)
+        verify_recipe_source(name, expected, host / 'result.json', host_receipt)
 for name, expected in host_receipt['artifacts'].items():
     assert digest(host / name) == expected['sha256'], name
 output_root = ROOT / ('.build/raspberry-pi/contracts' if args.profile == 'raspberry-pi-armv6' else '.build/nrf52840/contracts' if is_embedded else '.build/contracts')
@@ -70,7 +100,7 @@ if is_embedded:
 if args.raster_realization == 'tiled' or is_target:
     flags += ['-D', 'GIFTUI_COUNTER_TILED']
 fixture = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
-inputs = [pathlib.Path(__file__).resolve(), revision_path, fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
+inputs = [pathlib.Path(__file__).resolve(), revision_path, applicability_path, fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
 storage_sources = sorted(fixture.glob('StaticCounter*.swift'))
 join_sources = [fixture / name for name in ('CounterScopedStorage.swift', 'CounterScopedStorageProbe.swift', 'CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterTiledRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift', 'CounterRouteEntry.swift')]
 inputs.extend(join_sources)
@@ -299,7 +329,7 @@ if not is_target:
 else:
     execution = 'cross-compiled current selected counter host only; no target execution or linked-image claim'
     (out / 'objects.list').write_text('\n'.join(map(str, [core / 'GiftUI.o', *sorted(out.glob('*.o'))])) + '\n')
-receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, planned_scoped_labels=planned_scoped_labels, registered_reuse_labels=registered_reuse_labels, reuse_execution=not is_target, execution=execution)
+receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, planned_scoped_labels=planned_scoped_labels, registered_reuse_labels=registered_reuse_labels, reuse_execution=not is_target, qualified_noncompiled_applicability=qualified_applicability, execution=execution)
 receipt['scoped_negative_source'] = str(trusted.relative_to(ROOT))
 receipt['artifacts'] = {str(p.relative_to(out)): dict(sha256=digest(p), bytes=p.stat().st_size) for p in out.iterdir() if p.is_file()}
 (out / 'result.json').write_text(json.dumps(receipt, indent=2) + '\n')
