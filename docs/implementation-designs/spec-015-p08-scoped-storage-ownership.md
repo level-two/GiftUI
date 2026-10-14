@@ -32,7 +32,10 @@ reviewed in `5ba87bd0`. The
 confirms findings 1–4 corrected as source and leaves finding 5 open. This
 addendum replaces no frozen evidence and authorizes no source pass. Its exact
 [bounded handoff](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-repeated-host-design-handoff.md)
-defines the next review and proposed whitelist.
+defines the proposed whitelist. Independent Strong
+[design review PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-repeated-host-independent-design-review.md)
+validates the bounded realization and actual ingress dispositions; the next step
+is a concrete human source-allowance decision, with source allowance still zero.
 
 ### Contract classification and guarantee
 

@@ -2,7 +2,8 @@
 
 **Current 2026-10-14 derived repeat-host handoff:** the
 [bounded design and exact proposed source boundary](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-repeated-host-design-handoff.md)
-is ready for independent Strong design review. It selects fresh complete logical
+has an independent Strong [design PASS](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-repeated-host-independent-design-review.md)
+and is ready for a concrete human source-allowance decision. It selects fresh complete logical
 hosts and original-producer ingress guards over one initialized inventory; raw
 runtime-local identities and terminal lifecycle remain exact. Finding 5 remains
 open, frozen source `369906ab` unchanged, correction1/1 consumed. Source allowance

@@ -1,11 +1,12 @@
 # SO-04→06 repeated full-host design handoff — 2026-10-14
 
-**Derived design prepared; independent design review next; source allowance zero.**
+**Independent design PASS; ready for concrete human source-allowance decision; allowance zero.**
 Input source remains `369906abf54f6341b0f0287e09d3dfeec28ab005`; corrective
 [independent review](so04-06-corrective-independent-review.md) is recorded in
 `5ba87bd0`. Findings 1–4 remain source-corrected/unexecuted; finding 5 remains
-open. This is a docs-only Sol 6.1 High implementation-designer pass without
-subagents. The selected direction and exact authority analysis are in the
+open. The independent Sol 6.1 High [design review](so04-06-repeated-host-independent-design-review.md)
+passes the exact five-file proposal and thirteen labels per route, with explicit
+actual ingress/mint-site source-review duties. This remains a docs-only handoff. The selected direction and exact authority analysis are in the
 [physical design addendum](../../../../../../docs/implementation-designs/spec-015-p08-scoped-storage-ownership.md#repeated-full-hosts--derived-addendum-2026-10-14).
 
 ## Authority and precise claim
@@ -141,6 +142,6 @@ Finding 5 is required current correctness, so it cannot be deferred to FW-037
 or an Exploration. No new out-of-scope idea is introduced.
 
 This handoff's permitted checks and docs commit are reported with the current
-navigation receipt; they provide documentation consistency only. Independent
-design review still must validate every ingress disposition, the five-file
-minimum and the exact claim boundary before any source allowance is requested.
+navigation receipt; they provide documentation consistency only. Independent design review validates the finite ingress dispositions, five-file
+boundary and exact claim. A concrete human source-allowance decision is next;
+this pass authorizes neither source work nor execution.

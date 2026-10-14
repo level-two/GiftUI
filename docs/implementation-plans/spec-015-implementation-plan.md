@@ -49,7 +49,8 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 [Exact derived proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-repeated-host-design-handoff.md)
 selects fresh logical hosts plus private original-producer origin checks. The
 runtime-local raw-value limit and five-file source-only boundary are explicit.
-Independent Strong design review is next; no source pass is authorized. Frozen
+Independent Strong [design review PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-repeated-host-independent-design-review.md);
+ready for a concrete human source-allowance decision. No source pass is authorized. Frozen
 `369906ab`/review `5ba87bd0`, correction1/1 consumed, finding5/criteria/fit/P08/
 R07/T8.1 remain open, zero automatic repairs and all historical guards preserved.
 
