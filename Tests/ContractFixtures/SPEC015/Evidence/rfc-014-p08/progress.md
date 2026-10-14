@@ -1,5 +1,34 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-03 correction-2 single native outcome — 2026-10-14
+
+Source/clean native entry `ef46dd4b`; [exact outcome and independent handoff](scoped-storage/so03/correction-2/result.md).
+One driver exit 1: all 42 compiler cells meet their exact oracles (30 successful
+compilations, 12 expected-negative rejections), including all 27 focused probes
+and link; existing 14-value layout IR passes. Sole execute exits -5, empty stdout/
+stderr, no completion/count. No precise failure location/runtime compatibility/
+resource acceptance inferred. No compiler/probe/debug/execute/repair or retry after
+stop. All 122 source/128 driver/24 pins/130 artifacts and 43 argv verified; 84
+historical files unchanged, 63 text outputs copied byte-for-byte; binaries stay in
+fresh immutable `.build/contracts/spec-011-owned-keys/tmpiggjdqn4/macos-dynamic`.
+
+Correction-2 native allowance 1/1 consumed, 0 remaining; prior original/correction-1
+each 1/1 remain closed; corrections 2, automatic follow-up repairs 0. All historical
+budgets and two-consecutive-unproductive guard persist without reset. New compiler
+passes recorded; independent Strong read-only review owns cause/contract/guard and
+next concrete proposal. Commit outcome then stop for parent-arranged fresh reviewer.
+All nine criteria/HC-RD-003/P08/R07/T8.1/58,648-vs-27,648 stack failure and mandatory
+I4-07/P09–P12 stay open; Specs implementing/plans active, SO-04–09 unapproved.
+No suite/target/image/hardware or new deferred item/contract/manifest/status change.
+
+
+Outcome checks PASS: governance 198 nodes/2,019 edges/all task manifests, 532 local
+file links, 63 text/raw invocation byte comparisons, unchanged source/driver.
+Maintained/document staged diff passes. Only exact raw log whitespace remains in
+standard diff (terminal blank line and six compiler source-line spaces); complete
+staged check passes with blank-at-eof/blank-at-eol disabled. Evidence is preserved
+without trimming. Separate outcome commit precedes independent review.
+
 ## SO-03 correction-2 authorization and dispatch — 2026-10-14
 
 Entry `7531e5c3`, clean. Eugene explicitly approved “one fixture-only helper

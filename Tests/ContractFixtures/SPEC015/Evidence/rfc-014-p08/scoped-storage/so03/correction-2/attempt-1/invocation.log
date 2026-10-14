@@ -1,0 +1,6 @@
+SO-03 frozen failure: /Users/eugene/work/GiftUI/.build/contracts/spec-011-owned-keys/tmpiggjdqn4/macos-dynamic/result.json
+Traceback (most recent call last):
+  File "/Users/eugene/work/GiftUI/scripts/contracts/check-spec-011-owned-keys.py", line 194, in <module>
+    raise RuntimeError(label + ': ' + str(out) + '\n' + output)
+RuntimeError: execute: /Users/eugene/work/GiftUI/.build/contracts/spec-011-owned-keys/tmpiggjdqn4/macos-dynamic
+

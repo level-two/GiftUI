@@ -1,0 +1,25 @@
+{
+  "command": [
+    "scripts/contracts/run-spec-011.sh",
+    "--profile",
+    "macos-dynamic",
+    "--compiler-baseline",
+    "rfc-014",
+    "--giftui-build",
+    ".build/contracts/spec-006-rfc-014-swift64/af66aaf967e3fe8f-__4p5wu2/macos-dynamic"
+  ],
+  "start_unix": 1791959893.567544,
+  "source_commit": "ef46dd4b673e6036a9e5d33d80294031a73df582",
+  "source_dirty": false,
+  "previous_outputs": [
+    ".build/contracts/spec-011-owned-keys/tmpg36aookh/macos-dynamic",
+    ".build/contracts/spec-011-owned-keys/tmplootrts9/macos-dynamic",
+    ".build/contracts/spec-011-owned-keys/tmptnart08h/macos-dynamic",
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic"
+  ],
+  "exit": 1,
+  "end_unix": 1791959940.206759,
+  "new_outputs": [
+    ".build/contracts/spec-011-owned-keys/tmpiggjdqn4/macos-dynamic"
+  ]
+}

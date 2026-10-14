@@ -56,13 +56,14 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
   **SO-01 evidence:** [caller/necessity inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
   records P08 applicability and I4-07 residuals; all criteria remain unmet.
-  **Current helper correction:** Eugene approved the exact private consuming
-  helper and one fresh native rerun, zero further automatic repairs, then separate
-  independent Strong review. [Unvalidated source freeze/command](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/result.md)
-  preserves all independent inputs/annotations/27 labels and common-session family.
-  New allowance 0/1; prior native allowances each 1/1 consumed, corrections 2,
-  automatic follow-up repairs 0; no historical reset. All criteria/fit/P08/R07/
-  T8.1/I4-07/P09–P12 remain open; source commit precedes single native entry.
+  **Current helper outcome:** source/clean native entry `ef46dd4b`; all 42
+  compiler/oracle cells, 27 focused probes and link pass; sole execute exits -5
+  with empty output. [Frozen result/independent handoff](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/result.md).
+  No runtime completion/location is established. Hashes/43 argv match; source and
+  historical evidence unchanged. New allowance 1/1 consumed, 0 remaining; earlier
+  native allowances each 1/1, corrections 2, automatic follow-up repairs 0; no
+  reset. Stop for separate independent Strong read-only classification; all
+  criteria/fit/P08/R07/T8.1/I4-07/P09–P12 stay open, SO-04–09 unapproved.
   **Historical independent correction review:** [Strong review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/independent-review.md)
   identifies a local initializer-call lifetime error, no demonstrated contract
   defect. Common-session factory source follows the reviewed owner/token/descriptor
