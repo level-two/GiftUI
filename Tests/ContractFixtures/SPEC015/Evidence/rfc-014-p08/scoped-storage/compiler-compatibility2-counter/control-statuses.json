@@ -1,0 +1,3214 @@
+[
+  {
+    "index": 1,
+    "command_index": 20,
+    "label": "so06-union-static-direct-geometry-positive",
+    "source_sha256": "f2e78de992895529b4fa55980ad4420312c0190e1fbfd926b509779702ddbe1f",
+    "source_bytes": 167410,
+    "log": "controls/so06-union-static-direct-geometry-positive.log",
+    "log_sha256": "2496ce72d726959923f3315952d911139595efd77bad2f11586d3809bcd68de6",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 2,
+    "command_index": 21,
+    "label": "so06-union-static-direct-geometry-negative",
+    "source_sha256": "9dceede61b91c6c2364ac99b6c6879c947833b3d300cc14e28de470ebf7fd653",
+    "source_bytes": 167395,
+    "log": "controls/so06-union-static-direct-geometry-negative.log",
+    "log_sha256": "c17e0a08f712a30db4557633fb6143fe4e5cb3fdb1b76c9a7c052e2f3d70445d",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-direct-geometry-negative.swift:2524:96",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "command_index": 22,
+    "label": "so06-union-static-direct-candidateRecords-positive",
+    "source_sha256": "f2e78de992895529b4fa55980ad4420312c0190e1fbfd926b509779702ddbe1f",
+    "source_bytes": 167410,
+    "log": "controls/so06-union-static-direct-candidateRecords-positive.log",
+    "log_sha256": "0983d5741485405a5f137cce6def3097eaac789d2089269ddd17cc900bf8e602",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 4,
+    "command_index": 23,
+    "label": "so06-union-static-direct-candidateRecords-negative",
+    "source_sha256": "24fb6397cfb5520418cf6cf44fb5b6ba8dda2b5a6681294574c226d5b91cee4a",
+    "source_bytes": 167387,
+    "log": "controls/so06-union-static-direct-candidateRecords-negative.log",
+    "log_sha256": "ec26ce5c33b34285dfa0b4b2b9141c0fee3a61c13ef88f484d3948d9d56f1506",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-direct-candidateRecords-negative.swift:2524:96",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "command_index": 24,
+    "label": "so06-union-static-direct-candidateHitRegions-positive",
+    "source_sha256": "f2e78de992895529b4fa55980ad4420312c0190e1fbfd926b509779702ddbe1f",
+    "source_bytes": 167410,
+    "log": "controls/so06-union-static-direct-candidateHitRegions-positive.log",
+    "log_sha256": "b3aef3c67fb3ed9aab18726905519788de4f45927f7fabd954f0ca7d877dd203",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 6,
+    "command_index": 25,
+    "label": "so06-union-static-direct-candidateHitRegions-negative",
+    "source_sha256": "edaa31fe993bf8d23e6298ff1e914197af16f93c96fceeb291a22d84c829ac90",
+    "source_bytes": 167384,
+    "log": "controls/so06-union-static-direct-candidateHitRegions-negative.log",
+    "log_sha256": "4e8526772dfa4e1fc683f8b12e685f9dba2e045efa49f09168d60bb836f788a9",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-direct-candidateHitRegions-negative.swift:2524:96",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 7,
+    "command_index": 26,
+    "label": "so06-union-static-direct-candidateCommittedRecords-positive",
+    "source_sha256": "f2e78de992895529b4fa55980ad4420312c0190e1fbfd926b509779702ddbe1f",
+    "source_bytes": 167410,
+    "log": "controls/so06-union-static-direct-candidateCommittedRecords-positive.log",
+    "log_sha256": "1fb63ceef41f14e4e7799c6864d572a15317c432c4e0d7ebe587cdb6760ca95e",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 8,
+    "command_index": 27,
+    "label": "so06-union-static-direct-candidateCommittedRecords-negative",
+    "source_sha256": "5fca1be1723f397277041284b79adcee3656736058975d653fd02346d41f8c5d",
+    "source_bytes": 167378,
+    "log": "controls/so06-union-static-direct-candidateCommittedRecords-negative.log",
+    "log_sha256": "fbff4d1257c0b361489287d1a082e140231815bd345b4ca8fbf6a8ce4478d476",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-direct-candidateCommittedRecords-negative.swift:2524:96",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "command_index": 28,
+    "label": "so06-union-static-direct-committedRecords-positive",
+    "source_sha256": "f2e78de992895529b4fa55980ad4420312c0190e1fbfd926b509779702ddbe1f",
+    "source_bytes": 167410,
+    "log": "controls/so06-union-static-direct-committedRecords-positive.log",
+    "log_sha256": "3ea7906fd34db580ed4d6910fbf1eeeddb9c0f63d6b38ab08d9f71f0435fbb06",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 10,
+    "command_index": 29,
+    "label": "so06-union-static-direct-committedRecords-negative",
+    "source_sha256": "b0bfbf91d8fea8e2ad487d1e924f95ca25cd9cae2ad19306b31812de85b6f98d",
+    "source_bytes": 167387,
+    "log": "controls/so06-union-static-direct-committedRecords-negative.log",
+    "log_sha256": "c5c2c755ba1d59fe1a79cc64a70510cc1a601f232ca3bc3d0fdf45039aac0f7e",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-direct-committedRecords-negative.swift:2524:96",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 11,
+    "command_index": 30,
+    "label": "so06-union-static-direct-committedHitRegions-positive",
+    "source_sha256": "f2e78de992895529b4fa55980ad4420312c0190e1fbfd926b509779702ddbe1f",
+    "source_bytes": 167410,
+    "log": "controls/so06-union-static-direct-committedHitRegions-positive.log",
+    "log_sha256": "a0d3285a7615f07f47e309b28f69d19bebd190053e94fcaf442b662cb50dc399",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 12,
+    "command_index": 31,
+    "label": "so06-union-static-direct-committedHitRegions-negative",
+    "source_sha256": "84b25249e061c59a3dbd9b635164bb9a0fa4845b69ae7e216c2f7b6b44b6b30c",
+    "source_bytes": 167384,
+    "log": "controls/so06-union-static-direct-committedHitRegions-negative.log",
+    "log_sha256": "4e7d305acb9a8f675ae22f7e05105eb92b34bd979362be510cadb4ec7bd2f741",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-direct-committedHitRegions-negative.swift:2524:96",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "command_index": 32,
+    "label": "so06-union-static-direct-models-positive",
+    "source_sha256": "f2e78de992895529b4fa55980ad4420312c0190e1fbfd926b509779702ddbe1f",
+    "source_bytes": 167410,
+    "log": "controls/so06-union-static-direct-models-positive.log",
+    "log_sha256": "96cd1a96f67611c5fe1a94466e0d85776d1be5b0015546a9c4acf44d91f1e78f",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 14,
+    "command_index": 33,
+    "label": "so06-union-static-direct-models-negative",
+    "source_sha256": "977f142819df20cbe6a375b31da7cab85e5e8d71feb273f6663d7d2fcef298e4",
+    "source_bytes": 167397,
+    "log": "controls/so06-union-static-direct-models-negative.log",
+    "log_sha256": "390604d996b9cc2d6991d09d977c6480f56d4595283152557d8141d08ef2d9c9",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-direct-models-negative.swift:2524:96",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 15,
+    "command_index": 34,
+    "label": "so06-union-static-direct-root-positive",
+    "source_sha256": "f2e78de992895529b4fa55980ad4420312c0190e1fbfd926b509779702ddbe1f",
+    "source_bytes": 167410,
+    "log": "controls/so06-union-static-direct-root-positive.log",
+    "log_sha256": "2fe3dad9fec5cfc5a541a1a15d037eb05e94fcb1739b2a5750da4591daf4be16",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 16,
+    "command_index": 35,
+    "label": "so06-union-static-direct-root-negative",
+    "source_sha256": "e1881a44d31ef90e9da670c3b4f9988f2b4c362df2e3fecec484ca7547637c47",
+    "source_bytes": 167399,
+    "log": "controls/so06-union-static-direct-root-negative.log",
+    "log_sha256": "46cfe638af85834840988329940e375671f112f32a95c213669588fd40ace079",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-direct-root-negative.swift:2524:96",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 17,
+    "command_index": 36,
+    "label": "so06-union-static-direct-semantic-positive",
+    "source_sha256": "f2e78de992895529b4fa55980ad4420312c0190e1fbfd926b509779702ddbe1f",
+    "source_bytes": 167410,
+    "log": "controls/so06-union-static-direct-semantic-positive.log",
+    "log_sha256": "40ee076a756d26707e88f8c78c6950807cdd35cadd8114cd165741f568ef87c0",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 18,
+    "command_index": 37,
+    "label": "so06-union-static-direct-semantic-negative",
+    "source_sha256": "35c31a48240298c647931ed8cfc6e0352ab101fb0d11df176658a239da0ad22e",
+    "source_bytes": 167395,
+    "log": "controls/so06-union-static-direct-semantic-negative.log",
+    "log_sha256": "3fbf37a4cb4a1916e9afe9fa678ab998f71e7d20d1974908d85c9dace4e1194d",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-direct-semantic-negative.swift:2524:96",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 19,
+    "command_index": 38,
+    "label": "so06-union-static-direct-values-positive",
+    "source_sha256": "f2e78de992895529b4fa55980ad4420312c0190e1fbfd926b509779702ddbe1f",
+    "source_bytes": 167410,
+    "log": "controls/so06-union-static-direct-values-positive.log",
+    "log_sha256": "85543579983c3bc866e39f663ed0aa3aa9a1ce39f244e0edc88ce746924f7957",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 20,
+    "command_index": 39,
+    "label": "so06-union-static-direct-values-negative",
+    "source_sha256": "e1eb5eae132c4543f06e2243c8fe03856323a11988936961e537b1cf8d1e5656",
+    "source_bytes": 167397,
+    "log": "controls/so06-union-static-direct-values-negative.log",
+    "log_sha256": "e6f152dc9d45c0ed12272c19fa7272a69112ca4fe0667f74b1319b24100269b7",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-direct-values-negative.swift:2524:96",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 21,
+    "command_index": 40,
+    "label": "so06-union-static-direct-control-positive",
+    "source_sha256": "f2e78de992895529b4fa55980ad4420312c0190e1fbfd926b509779702ddbe1f",
+    "source_bytes": 167410,
+    "log": "controls/so06-union-static-direct-control-positive.log",
+    "log_sha256": "797a296c68bc95fece59c546f4a48280dad6012d5ea64f2cdc3a63c2a792b07a",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 22,
+    "command_index": 41,
+    "label": "so06-union-static-direct-control-negative",
+    "source_sha256": "8aab2a1906c41a09b0470fb7d372c082d4005fa1bbb9dff11aaa18e4028b01be",
+    "source_bytes": 167396,
+    "log": "controls/so06-union-static-direct-control-negative.log",
+    "log_sha256": "be5aac5630f5ef3f4726eeed0923ebbfcd64e9da21181935a33b34612e548e7f",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-direct-control-negative.swift:2524:96",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 23,
+    "command_index": 42,
+    "label": "so06-union-static-direct-activationSpan-positive",
+    "source_sha256": "f2e78de992895529b4fa55980ad4420312c0190e1fbfd926b509779702ddbe1f",
+    "source_bytes": 167410,
+    "log": "controls/so06-union-static-direct-activationSpan-positive.log",
+    "log_sha256": "12e7dfb6b46c532c3b43444fce8754ca4e73756a2ace4dc09a2f83c817ad53da",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 24,
+    "command_index": 43,
+    "label": "so06-union-static-direct-activationSpan-negative",
+    "source_sha256": "8bcdc2145d729305be9ee58e9151dd3685e53ae0be8cf1fdccb81bdb4b959aaf",
+    "source_bytes": 167389,
+    "log": "controls/so06-union-static-direct-activationSpan-negative.log",
+    "log_sha256": "7f021ed40faa3bc26de1f3f3d8866b4976f7a7858536931e7a8f70d3b41dbe29",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-direct-activationSpan-negative.swift:2524:96",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 25,
+    "command_index": 44,
+    "label": "so06-union-static-generic-geometry-positive",
+    "source_sha256": "99e8bfc842b09a9a8326eb21b4574f28ae6aa33f68e181ac1cbb5bee1cfb75f2",
+    "source_bytes": 167472,
+    "log": "controls/so06-union-static-generic-geometry-positive.log",
+    "log_sha256": "f411f2f1490c3d0a7624de72e01c6f84f33fc7e7102bd8c7d91dd81b1c741df2",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 26,
+    "command_index": 45,
+    "label": "so06-union-static-generic-geometry-negative",
+    "source_sha256": "9cde5d878ef0e13df1a3069f96f484b4d00b7ca006c8828ddc299c3d6b437ead",
+    "source_bytes": 167457,
+    "log": "controls/so06-union-static-generic-geometry-negative.log",
+    "log_sha256": "601f2e7d135b8d27b3c4dff5c2177c6e63bc392bf92e478a87f76d234115173e",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-generic-geometry-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 27,
+    "command_index": 46,
+    "label": "so06-union-static-generic-candidateRecords-positive",
+    "source_sha256": "99e8bfc842b09a9a8326eb21b4574f28ae6aa33f68e181ac1cbb5bee1cfb75f2",
+    "source_bytes": 167472,
+    "log": "controls/so06-union-static-generic-candidateRecords-positive.log",
+    "log_sha256": "f9d8b09074d2b1016ad986f483d50c96ee16838002a2e6885a846bbd544c6e8b",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 28,
+    "command_index": 47,
+    "label": "so06-union-static-generic-candidateRecords-negative",
+    "source_sha256": "624cc3d247f88ca22569ed712c3d7050e6a3ef5191c5084804eca849954e2046",
+    "source_bytes": 167449,
+    "log": "controls/so06-union-static-generic-candidateRecords-negative.log",
+    "log_sha256": "2abf60c0da180395491605b2e646545b583869b03b0f918ed5e8925b1e364cf9",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-generic-candidateRecords-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 29,
+    "command_index": 48,
+    "label": "so06-union-static-generic-candidateHitRegions-positive",
+    "source_sha256": "99e8bfc842b09a9a8326eb21b4574f28ae6aa33f68e181ac1cbb5bee1cfb75f2",
+    "source_bytes": 167472,
+    "log": "controls/so06-union-static-generic-candidateHitRegions-positive.log",
+    "log_sha256": "73e3d032cc8fc82fc8b5e80f17e7c5653a2732c0baa74d2121c5b60a70628720",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 30,
+    "command_index": 49,
+    "label": "so06-union-static-generic-candidateHitRegions-negative",
+    "source_sha256": "5f482915e5478246cf7733c287fb4a9419d8d9c0a54a23cc1c13ed96d1b26d6d",
+    "source_bytes": 167446,
+    "log": "controls/so06-union-static-generic-candidateHitRegions-negative.log",
+    "log_sha256": "155aadb95eade4a9fb916d617069f80153680624a0ff6c440efb50697cd7a0ce",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-generic-candidateHitRegions-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 31,
+    "command_index": 50,
+    "label": "so06-union-static-generic-candidateCommittedRecords-positive",
+    "source_sha256": "99e8bfc842b09a9a8326eb21b4574f28ae6aa33f68e181ac1cbb5bee1cfb75f2",
+    "source_bytes": 167472,
+    "log": "controls/so06-union-static-generic-candidateCommittedRecords-positive.log",
+    "log_sha256": "aad9e6279cb7ae9dcdd9c4c92d455a2fdc6b81eade9a5bca4d4f321e13f0e2a2",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 32,
+    "command_index": 51,
+    "label": "so06-union-static-generic-candidateCommittedRecords-negative",
+    "source_sha256": "9aec3f93fdd5b56528304fa975adde82caa1b81bbe9ec3b40034d351051fad30",
+    "source_bytes": 167440,
+    "log": "controls/so06-union-static-generic-candidateCommittedRecords-negative.log",
+    "log_sha256": "2f2fcb847203af8c52d3daa3d140093e1cbf4927efd016d9d75f69361d023faa",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-generic-candidateCommittedRecords-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 33,
+    "command_index": 52,
+    "label": "so06-union-static-generic-committedRecords-positive",
+    "source_sha256": "99e8bfc842b09a9a8326eb21b4574f28ae6aa33f68e181ac1cbb5bee1cfb75f2",
+    "source_bytes": 167472,
+    "log": "controls/so06-union-static-generic-committedRecords-positive.log",
+    "log_sha256": "9e79c6c990a1778505a7d0728fdfa1876b0ab15d297932613b7206df4e206bed",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 34,
+    "command_index": 53,
+    "label": "so06-union-static-generic-committedRecords-negative",
+    "source_sha256": "220bd86ef4168ab0c565138235fa803072585b55899396fe9c12774aa14d302e",
+    "source_bytes": 167449,
+    "log": "controls/so06-union-static-generic-committedRecords-negative.log",
+    "log_sha256": "297182e99b33715998cafa399591c3d2c96e9f473c2cf01fc93a1e17554f66f3",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-generic-committedRecords-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 35,
+    "command_index": 54,
+    "label": "so06-union-static-generic-committedHitRegions-positive",
+    "source_sha256": "99e8bfc842b09a9a8326eb21b4574f28ae6aa33f68e181ac1cbb5bee1cfb75f2",
+    "source_bytes": 167472,
+    "log": "controls/so06-union-static-generic-committedHitRegions-positive.log",
+    "log_sha256": "ce82149ea9607e73f34178a66251ccb1e0970eecd091c897ac5c0ecda3689f42",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 36,
+    "command_index": 55,
+    "label": "so06-union-static-generic-committedHitRegions-negative",
+    "source_sha256": "48ed101a89300d78c349f7882053c0590b112c8bef5d5eca6904cd8dd4abec92",
+    "source_bytes": 167446,
+    "log": "controls/so06-union-static-generic-committedHitRegions-negative.log",
+    "log_sha256": "1bcddc3542f9be709b81b8ca3af6cfb3e47e098763343fc46f7dfc074e81be34",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-generic-committedHitRegions-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 37,
+    "command_index": 56,
+    "label": "so06-union-static-generic-models-positive",
+    "source_sha256": "99e8bfc842b09a9a8326eb21b4574f28ae6aa33f68e181ac1cbb5bee1cfb75f2",
+    "source_bytes": 167472,
+    "log": "controls/so06-union-static-generic-models-positive.log",
+    "log_sha256": "77afc96a3ab3e38d9e4d43b97d3b6c78db24687353d020c7a124fa669d7d8cc6",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 38,
+    "command_index": 57,
+    "label": "so06-union-static-generic-models-negative",
+    "source_sha256": "7e8ae429e520ce88acacd8fb0e78e6e4989c2e6f492748eceed61368baa2d74d",
+    "source_bytes": 167459,
+    "log": "controls/so06-union-static-generic-models-negative.log",
+    "log_sha256": "3512bbf4f35e2808190b23adf51a787ad114eec1c1a2320b2db3a6d34ca81660",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-generic-models-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 39,
+    "command_index": 58,
+    "label": "so06-union-static-generic-root-positive",
+    "source_sha256": "99e8bfc842b09a9a8326eb21b4574f28ae6aa33f68e181ac1cbb5bee1cfb75f2",
+    "source_bytes": 167472,
+    "log": "controls/so06-union-static-generic-root-positive.log",
+    "log_sha256": "1062d7c18f1db3c90ac7b0e21eb4d9a641b558aa3ad87d4d38385b9335c5f5be",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 40,
+    "command_index": 59,
+    "label": "so06-union-static-generic-root-negative",
+    "source_sha256": "dd198d07c85c1eddbabfb068162b1013955806f72b85a8627554e80fa6214fd8",
+    "source_bytes": 167461,
+    "log": "controls/so06-union-static-generic-root-negative.log",
+    "log_sha256": "70b5d36dd4e9e590bec1f93c1014a14a15759cbb91db6a773afc9a2cd941b41e",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-generic-root-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 41,
+    "command_index": 60,
+    "label": "so06-union-static-generic-semantic-positive",
+    "source_sha256": "99e8bfc842b09a9a8326eb21b4574f28ae6aa33f68e181ac1cbb5bee1cfb75f2",
+    "source_bytes": 167472,
+    "log": "controls/so06-union-static-generic-semantic-positive.log",
+    "log_sha256": "93380f5cfdce95791c1ab3514a45b616f48770c5e76275323ad94ee2bb726913",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 42,
+    "command_index": 61,
+    "label": "so06-union-static-generic-semantic-negative",
+    "source_sha256": "4e1a38530897b2bd0258c1a995a3b9224196b1f981933edaef06775c6cabf8a9",
+    "source_bytes": 167457,
+    "log": "controls/so06-union-static-generic-semantic-negative.log",
+    "log_sha256": "fed170abed9e8ea8f96b1071054d54199d1ea44ea05ebb71ec25af8a2ed49194",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-generic-semantic-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 43,
+    "command_index": 62,
+    "label": "so06-union-static-generic-values-positive",
+    "source_sha256": "99e8bfc842b09a9a8326eb21b4574f28ae6aa33f68e181ac1cbb5bee1cfb75f2",
+    "source_bytes": 167472,
+    "log": "controls/so06-union-static-generic-values-positive.log",
+    "log_sha256": "f28fffd41661737753a6de8cdc1efd55aa48ae41be3b065264ea04fb3927eb7f",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 44,
+    "command_index": 63,
+    "label": "so06-union-static-generic-values-negative",
+    "source_sha256": "656e11ac56e73cf9e7cb5d68c398083ab1c7d936541bc88690eb811f6d55c979",
+    "source_bytes": 167459,
+    "log": "controls/so06-union-static-generic-values-negative.log",
+    "log_sha256": "ae67a3893b82ee2aa27c2c4b8d16c4453f362a2cac4e5f26b3176469cd23ec8a",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-generic-values-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 45,
+    "command_index": 64,
+    "label": "so06-union-static-generic-control-positive",
+    "source_sha256": "99e8bfc842b09a9a8326eb21b4574f28ae6aa33f68e181ac1cbb5bee1cfb75f2",
+    "source_bytes": 167472,
+    "log": "controls/so06-union-static-generic-control-positive.log",
+    "log_sha256": "16136be4c4cd8a9436f577a312fca524cff47ef5533a98dbf14b3b8b362f3816",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 46,
+    "command_index": 65,
+    "label": "so06-union-static-generic-control-negative",
+    "source_sha256": "7410416a64d3c2cc34288f18d20955a95775512cfc0c2e4689dbf86a25901ca8",
+    "source_bytes": 167458,
+    "log": "controls/so06-union-static-generic-control-negative.log",
+    "log_sha256": "0bc7e0f2c3024f3c16ce5530b86353c3c75682e71601902114f4a3eddc993223",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-generic-control-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 47,
+    "command_index": 66,
+    "label": "so06-union-static-generic-activationSpan-positive",
+    "source_sha256": "99e8bfc842b09a9a8326eb21b4574f28ae6aa33f68e181ac1cbb5bee1cfb75f2",
+    "source_bytes": 167472,
+    "log": "controls/so06-union-static-generic-activationSpan-positive.log",
+    "log_sha256": "6331be4db5ba3c059cd586b5f003c8596c6d3ae77de01345441dd227a13a3953",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 48,
+    "command_index": 67,
+    "label": "so06-union-static-generic-activationSpan-negative",
+    "source_sha256": "97cda0e4ff01267a659f5726ff4a9d91910fb7cfe083d0a3a57203782ad61bb0",
+    "source_bytes": 167451,
+    "log": "controls/so06-union-static-generic-activationSpan-negative.log",
+    "log_sha256": "430417c0bcc227ddecafdaafa3828c3abac145fd4892b55939afa73d38e890d4",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-static-generic-activationSpan-negative.swift:2520:578",
+        "message": "lifetime-dependent variable 'activationSpan' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 49,
+    "command_index": 68,
+    "label": "so06-union-dynamic-direct-geometry-positive",
+    "source_sha256": "e642831b1c23f0013ee1da8b07dc84188106c9d2a148c439d4eb8eac7e2e69cc",
+    "source_bytes": 167431,
+    "log": "controls/so06-union-dynamic-direct-geometry-positive.log",
+    "log_sha256": "957bbf0612b93d16076b29c0f51755ad68a4f9e9c39fd318a572a03f9c7f6307",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 50,
+    "command_index": 69,
+    "label": "so06-union-dynamic-direct-geometry-negative",
+    "source_sha256": "31a381e40fec2d99b87b4327e4bae9dcb7e400da0a4b6e339b1cd572a487d409",
+    "source_bytes": 167416,
+    "log": "controls/so06-union-dynamic-direct-geometry-negative.log",
+    "log_sha256": "8d120b33cc95d111590541692c3a52f02129afa62f57f0782126607d0f818ab4",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-direct-geometry-negative.swift:2524:103",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 51,
+    "command_index": 70,
+    "label": "so06-union-dynamic-direct-candidateRecords-positive",
+    "source_sha256": "e642831b1c23f0013ee1da8b07dc84188106c9d2a148c439d4eb8eac7e2e69cc",
+    "source_bytes": 167431,
+    "log": "controls/so06-union-dynamic-direct-candidateRecords-positive.log",
+    "log_sha256": "5226a5fac0cad5d9ecf4f50c22d95b199eae802ef565c0db26b1562b39194bb1",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 52,
+    "command_index": 71,
+    "label": "so06-union-dynamic-direct-candidateRecords-negative",
+    "source_sha256": "40bac2c35736bc2caf59a64708401bb531535d9e7333b19007bee31879bafaf8",
+    "source_bytes": 167408,
+    "log": "controls/so06-union-dynamic-direct-candidateRecords-negative.log",
+    "log_sha256": "29b563250ece18bfcd33d30ae83e3e9f9dfb2f98287842a62687bffb78ad07b4",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-direct-candidateRecords-negative.swift:2524:103",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 53,
+    "command_index": 72,
+    "label": "so06-union-dynamic-direct-candidateHitRegions-positive",
+    "source_sha256": "e642831b1c23f0013ee1da8b07dc84188106c9d2a148c439d4eb8eac7e2e69cc",
+    "source_bytes": 167431,
+    "log": "controls/so06-union-dynamic-direct-candidateHitRegions-positive.log",
+    "log_sha256": "30dd34576cc45ecf3d02e518f9927b389f06ba64c080d3f9058fa39634afb13e",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 54,
+    "command_index": 73,
+    "label": "so06-union-dynamic-direct-candidateHitRegions-negative",
+    "source_sha256": "8e88492834ae5bfcaa2011f325304cc6e81428c9b6250f91ae22e7f9e2753b66",
+    "source_bytes": 167405,
+    "log": "controls/so06-union-dynamic-direct-candidateHitRegions-negative.log",
+    "log_sha256": "8200870a03203f51abee025c7a05e29dc5ec1d6a5ea85a472f99f5f66318f955",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-direct-candidateHitRegions-negative.swift:2524:103",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 55,
+    "command_index": 74,
+    "label": "so06-union-dynamic-direct-candidateCommittedRecords-positive",
+    "source_sha256": "e642831b1c23f0013ee1da8b07dc84188106c9d2a148c439d4eb8eac7e2e69cc",
+    "source_bytes": 167431,
+    "log": "controls/so06-union-dynamic-direct-candidateCommittedRecords-positive.log",
+    "log_sha256": "e0835d353d518bb0239df770e596ef4471891b4cde7d7a9075419e5c782c61eb",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 56,
+    "command_index": 75,
+    "label": "so06-union-dynamic-direct-candidateCommittedRecords-negative",
+    "source_sha256": "45afbb4651a8679cb89e545629e517864f77ebfed5d06c147f9cd0891c780e1a",
+    "source_bytes": 167399,
+    "log": "controls/so06-union-dynamic-direct-candidateCommittedRecords-negative.log",
+    "log_sha256": "3b8494c9ea41f53dc00e76ce4e38a1ebae089c3271d1bdf99d1bb414cb3a2921",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-direct-candidateCommittedRecords-negative.swift:2524:103",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 57,
+    "command_index": 76,
+    "label": "so06-union-dynamic-direct-committedRecords-positive",
+    "source_sha256": "e642831b1c23f0013ee1da8b07dc84188106c9d2a148c439d4eb8eac7e2e69cc",
+    "source_bytes": 167431,
+    "log": "controls/so06-union-dynamic-direct-committedRecords-positive.log",
+    "log_sha256": "b291b57b09df97b7e2095f28f4054ac03ef1adcea6bfdd1f315deb146b4d630d",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 58,
+    "command_index": 77,
+    "label": "so06-union-dynamic-direct-committedRecords-negative",
+    "source_sha256": "271fedc4641250dbdc3bda5dd80d3ecd33a5b20f4a3d9399c433cfca17c9c422",
+    "source_bytes": 167408,
+    "log": "controls/so06-union-dynamic-direct-committedRecords-negative.log",
+    "log_sha256": "eba2654cc73188817d40cee720d2f0d34e3a6f41fa8c1d2799969d2461114c34",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-direct-committedRecords-negative.swift:2524:103",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 59,
+    "command_index": 78,
+    "label": "so06-union-dynamic-direct-committedHitRegions-positive",
+    "source_sha256": "e642831b1c23f0013ee1da8b07dc84188106c9d2a148c439d4eb8eac7e2e69cc",
+    "source_bytes": 167431,
+    "log": "controls/so06-union-dynamic-direct-committedHitRegions-positive.log",
+    "log_sha256": "5c54bc38162c11285276263bd183dd14493bdabfcf4d1965f4dcb9192331cc8b",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 60,
+    "command_index": 79,
+    "label": "so06-union-dynamic-direct-committedHitRegions-negative",
+    "source_sha256": "a7f95a2d471c8785111729ec90c8e9204d812a165bde304c6a77308271ff4eaa",
+    "source_bytes": 167405,
+    "log": "controls/so06-union-dynamic-direct-committedHitRegions-negative.log",
+    "log_sha256": "564d4b82dfa11ff05e53f0aa9c77d299cdc78cec3441d41ed91dbdad8ab5468c",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-direct-committedHitRegions-negative.swift:2524:103",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 61,
+    "command_index": 80,
+    "label": "so06-union-dynamic-direct-models-positive",
+    "source_sha256": "e642831b1c23f0013ee1da8b07dc84188106c9d2a148c439d4eb8eac7e2e69cc",
+    "source_bytes": 167431,
+    "log": "controls/so06-union-dynamic-direct-models-positive.log",
+    "log_sha256": "4f8ec17d2f11d2cbcf17461bf1e0d94bbce86256bf9e050be541da75f5089ee5",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 62,
+    "command_index": 81,
+    "label": "so06-union-dynamic-direct-models-negative",
+    "source_sha256": "5fbdd970370f8412e14d0abb27b2ece488e7f5f568267fac19e4e03b64b29f88",
+    "source_bytes": 167418,
+    "log": "controls/so06-union-dynamic-direct-models-negative.log",
+    "log_sha256": "73998d7b19730ab95ee0fa696f27b9f7e59b7f19e126a2228e2e4c8d0c5b9d5c",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-direct-models-negative.swift:2524:103",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 63,
+    "command_index": 82,
+    "label": "so06-union-dynamic-direct-root-positive",
+    "source_sha256": "e642831b1c23f0013ee1da8b07dc84188106c9d2a148c439d4eb8eac7e2e69cc",
+    "source_bytes": 167431,
+    "log": "controls/so06-union-dynamic-direct-root-positive.log",
+    "log_sha256": "420e0b3a84bddf4da93ccab5cb329ebd2005f1fce746cebc13fc306c569a6d4b",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 64,
+    "command_index": 83,
+    "label": "so06-union-dynamic-direct-root-negative",
+    "source_sha256": "faf166bcb6044c84a9126604eaa085d58dbef4004a4d5c8fa97f0392d67f1df3",
+    "source_bytes": 167420,
+    "log": "controls/so06-union-dynamic-direct-root-negative.log",
+    "log_sha256": "6cf3a2867480b7b7666c2a02aef75591cfb6b9d31b0d3396223994c1d29211b1",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-direct-root-negative.swift:2524:103",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 65,
+    "command_index": 84,
+    "label": "so06-union-dynamic-direct-semantic-positive",
+    "source_sha256": "e642831b1c23f0013ee1da8b07dc84188106c9d2a148c439d4eb8eac7e2e69cc",
+    "source_bytes": 167431,
+    "log": "controls/so06-union-dynamic-direct-semantic-positive.log",
+    "log_sha256": "1d259327c910917c58da87b65b341963b2e7ae6195368c0b67a15134afe9bfac",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 66,
+    "command_index": 85,
+    "label": "so06-union-dynamic-direct-semantic-negative",
+    "source_sha256": "ebab20b371b8acf89d78589905724aeca71665da5714529b55c05f4c5626d77f",
+    "source_bytes": 167416,
+    "log": "controls/so06-union-dynamic-direct-semantic-negative.log",
+    "log_sha256": "9e1678b7273c5670c8a8f0e940a71ead91d1fd7ef75d501b09c9258db32f6947",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-direct-semantic-negative.swift:2524:103",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 67,
+    "command_index": 86,
+    "label": "so06-union-dynamic-direct-values-positive",
+    "source_sha256": "e642831b1c23f0013ee1da8b07dc84188106c9d2a148c439d4eb8eac7e2e69cc",
+    "source_bytes": 167431,
+    "log": "controls/so06-union-dynamic-direct-values-positive.log",
+    "log_sha256": "9cca21906be4607938074665729d60ed26d14c1c1c4b56663126e3a9778bf165",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 68,
+    "command_index": 87,
+    "label": "so06-union-dynamic-direct-values-negative",
+    "source_sha256": "487dd9a8acd66817163355bb522534183adee02219e1b349808e95c329e3172f",
+    "source_bytes": 167418,
+    "log": "controls/so06-union-dynamic-direct-values-negative.log",
+    "log_sha256": "e4ffc2637985d272969384d2fe450781b6f56c2027831b34c41bb92187f4a9b4",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-direct-values-negative.swift:2524:103",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 69,
+    "command_index": 88,
+    "label": "so06-union-dynamic-direct-control-positive",
+    "source_sha256": "e642831b1c23f0013ee1da8b07dc84188106c9d2a148c439d4eb8eac7e2e69cc",
+    "source_bytes": 167431,
+    "log": "controls/so06-union-dynamic-direct-control-positive.log",
+    "log_sha256": "bc2557c95a118f1f75db2ca0966e30df446541f5d895bfea2fae696d97315d9d",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 70,
+    "command_index": 89,
+    "label": "so06-union-dynamic-direct-control-negative",
+    "source_sha256": "2188a0771f3edf724b221570c7e443740b815acb0657b185efecc4ec96ac684c",
+    "source_bytes": 167417,
+    "log": "controls/so06-union-dynamic-direct-control-negative.log",
+    "log_sha256": "7fd37adfe76070e5d35b64b21d79e27c6ab4b4c021dd24f972999b76f83a239d",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-direct-control-negative.swift:2524:103",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 71,
+    "command_index": 90,
+    "label": "so06-union-dynamic-direct-activationSpan-positive",
+    "source_sha256": "e642831b1c23f0013ee1da8b07dc84188106c9d2a148c439d4eb8eac7e2e69cc",
+    "source_bytes": 167431,
+    "log": "controls/so06-union-dynamic-direct-activationSpan-positive.log",
+    "log_sha256": "b58b727101ecb451a7a7497706909bcbd3ca5535826e1a888bb7801cae965614",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 72,
+    "command_index": 91,
+    "label": "so06-union-dynamic-direct-activationSpan-negative",
+    "source_sha256": "c9d9c5c8ceabaa4607cd698e9a8b4ceaabaceb3da00a7f3e8a2ce06a2bf3f8d7",
+    "source_bytes": 167410,
+    "log": "controls/so06-union-dynamic-direct-activationSpan-negative.log",
+    "log_sha256": "3b147772a294ee4ae9589414bb567a74bc8ad4ed15edd7c71963f16a45668f22",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-direct-activationSpan-negative.swift:2524:103",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 73,
+    "command_index": 92,
+    "label": "so06-union-dynamic-generic-geometry-positive",
+    "source_sha256": "f1b2d12e9220de8e67d8d63be0988d8d5e43a7b4af4ef073c6b0c9220858d514",
+    "source_bytes": 167493,
+    "log": "controls/so06-union-dynamic-generic-geometry-positive.log",
+    "log_sha256": "ba955f96c929180ec98fb9fb4922972904d6d9d907d6604415c69b32a4baa4ab",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 74,
+    "command_index": 93,
+    "label": "so06-union-dynamic-generic-geometry-negative",
+    "source_sha256": "264ca65bc05ed81e1740948093b349f21c6e3ec22172c3632d5b9e8e7271b236",
+    "source_bytes": 167478,
+    "log": "controls/so06-union-dynamic-generic-geometry-negative.log",
+    "log_sha256": "b0a462d5c5c14fc3784b26d2f5f6e4e0e358efe06095fd84a0a9399c3adbc775",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-generic-geometry-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 75,
+    "command_index": 94,
+    "label": "so06-union-dynamic-generic-candidateRecords-positive",
+    "source_sha256": "f1b2d12e9220de8e67d8d63be0988d8d5e43a7b4af4ef073c6b0c9220858d514",
+    "source_bytes": 167493,
+    "log": "controls/so06-union-dynamic-generic-candidateRecords-positive.log",
+    "log_sha256": "3a3f3c32e9f3121e34b088f183ca169422b26641638388a1a5a6b75c036a5734",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 76,
+    "command_index": 95,
+    "label": "so06-union-dynamic-generic-candidateRecords-negative",
+    "source_sha256": "392a6da3b95eb49c0bee0ba9f1348aa67697087f3fee743b666f3821048a0a40",
+    "source_bytes": 167470,
+    "log": "controls/so06-union-dynamic-generic-candidateRecords-negative.log",
+    "log_sha256": "0b78e20947eb4dc968046c5ee35e18a3dc90545b0483681184c13ce15c9d85e3",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-generic-candidateRecords-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 77,
+    "command_index": 96,
+    "label": "so06-union-dynamic-generic-candidateHitRegions-positive",
+    "source_sha256": "f1b2d12e9220de8e67d8d63be0988d8d5e43a7b4af4ef073c6b0c9220858d514",
+    "source_bytes": 167493,
+    "log": "controls/so06-union-dynamic-generic-candidateHitRegions-positive.log",
+    "log_sha256": "a13ed8dc809b12b95290b277784158dab77866930898b489bbc5bf9cee036b6d",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 78,
+    "command_index": 97,
+    "label": "so06-union-dynamic-generic-candidateHitRegions-negative",
+    "source_sha256": "bddfd8f92777154484db7e080a8a6a080899b638639f31f88b43e38e85ea36ce",
+    "source_bytes": 167467,
+    "log": "controls/so06-union-dynamic-generic-candidateHitRegions-negative.log",
+    "log_sha256": "b2aa30a6bf13e69bdd3bb19b2ddb84d5742c8824c425dff88d036856abe8e06f",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-generic-candidateHitRegions-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 79,
+    "command_index": 98,
+    "label": "so06-union-dynamic-generic-candidateCommittedRecords-positive",
+    "source_sha256": "f1b2d12e9220de8e67d8d63be0988d8d5e43a7b4af4ef073c6b0c9220858d514",
+    "source_bytes": 167493,
+    "log": "controls/so06-union-dynamic-generic-candidateCommittedRecords-positive.log",
+    "log_sha256": "d2b0af304729a35d3e2fe4b468ea18be70881dad42406e8d98fcefa1d4f2c45b",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 80,
+    "command_index": 99,
+    "label": "so06-union-dynamic-generic-candidateCommittedRecords-negative",
+    "source_sha256": "3e29a3e99e76a63bcdddf2b71faf1ddc720b86d165503c9a4af5d606f1df1f5d",
+    "source_bytes": 167461,
+    "log": "controls/so06-union-dynamic-generic-candidateCommittedRecords-negative.log",
+    "log_sha256": "41f88239e3bf663bab6c98cbec94d0ad133d6e7f4374b050bca45cc9bf1e6e60",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-generic-candidateCommittedRecords-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 81,
+    "command_index": 100,
+    "label": "so06-union-dynamic-generic-committedRecords-positive",
+    "source_sha256": "f1b2d12e9220de8e67d8d63be0988d8d5e43a7b4af4ef073c6b0c9220858d514",
+    "source_bytes": 167493,
+    "log": "controls/so06-union-dynamic-generic-committedRecords-positive.log",
+    "log_sha256": "93777d010a99e67d2cc66a460e1062291e0a10ae53a6a52e3122aea36337f44a",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 82,
+    "command_index": 101,
+    "label": "so06-union-dynamic-generic-committedRecords-negative",
+    "source_sha256": "618b4226a149e44df2833ee8a05aeaf0cfb49971d9f446fa8dc3623780a19149",
+    "source_bytes": 167470,
+    "log": "controls/so06-union-dynamic-generic-committedRecords-negative.log",
+    "log_sha256": "ec53b91eb7abbee0bc36a5b4fc12fa3873b4e0240c2a537243464ab760b9430a",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-generic-committedRecords-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 83,
+    "command_index": 102,
+    "label": "so06-union-dynamic-generic-committedHitRegions-positive",
+    "source_sha256": "f1b2d12e9220de8e67d8d63be0988d8d5e43a7b4af4ef073c6b0c9220858d514",
+    "source_bytes": 167493,
+    "log": "controls/so06-union-dynamic-generic-committedHitRegions-positive.log",
+    "log_sha256": "8d268ed46976ab21401523cd6494cd03d0a29979d8d128567e2f464da51f04e5",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 84,
+    "command_index": 103,
+    "label": "so06-union-dynamic-generic-committedHitRegions-negative",
+    "source_sha256": "a4aebb45fc1fad89e4892137aa451fbfd89c8379a6815704337c2100b5887b89",
+    "source_bytes": 167467,
+    "log": "controls/so06-union-dynamic-generic-committedHitRegions-negative.log",
+    "log_sha256": "b686ec49890d9a3b0a032f54cad1f9e9c9f5e0f375a1df2e9aed3990df65bd93",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-generic-committedHitRegions-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 85,
+    "command_index": 104,
+    "label": "so06-union-dynamic-generic-models-positive",
+    "source_sha256": "f1b2d12e9220de8e67d8d63be0988d8d5e43a7b4af4ef073c6b0c9220858d514",
+    "source_bytes": 167493,
+    "log": "controls/so06-union-dynamic-generic-models-positive.log",
+    "log_sha256": "c16967f9d3c78a7aa243bf44c3a9537140b57a3b0580e2361fbe5dbe3d6b48f3",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 86,
+    "command_index": 105,
+    "label": "so06-union-dynamic-generic-models-negative",
+    "source_sha256": "9ccfa36d09ab9d6b39a12b8b83606feb0e61f51c4ae4513f1811f720c8d4620a",
+    "source_bytes": 167480,
+    "log": "controls/so06-union-dynamic-generic-models-negative.log",
+    "log_sha256": "e3bfcd68ff7e37b356d517b26bfd81670b3ec3022d322a70660d98cc1ec462d4",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-generic-models-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 87,
+    "command_index": 106,
+    "label": "so06-union-dynamic-generic-root-positive",
+    "source_sha256": "f1b2d12e9220de8e67d8d63be0988d8d5e43a7b4af4ef073c6b0c9220858d514",
+    "source_bytes": 167493,
+    "log": "controls/so06-union-dynamic-generic-root-positive.log",
+    "log_sha256": "c906f643d54441d0c18dcc7226f57ff992199d15bceb832899d514b37e92c3d8",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 88,
+    "command_index": 107,
+    "label": "so06-union-dynamic-generic-root-negative",
+    "source_sha256": "da680f32ce9bd549d82fb43554ffe1f509c3120d4115dad3cf5d90db8ab59d58",
+    "source_bytes": 167482,
+    "log": "controls/so06-union-dynamic-generic-root-negative.log",
+    "log_sha256": "c19dbf168819334a924d671e1d9fff2e2ebd728d05fb7350d0f7baabffb84f39",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-generic-root-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 89,
+    "command_index": 108,
+    "label": "so06-union-dynamic-generic-semantic-positive",
+    "source_sha256": "f1b2d12e9220de8e67d8d63be0988d8d5e43a7b4af4ef073c6b0c9220858d514",
+    "source_bytes": 167493,
+    "log": "controls/so06-union-dynamic-generic-semantic-positive.log",
+    "log_sha256": "4ecb5c5068fae1db87c98a8cf9a929bf81314a2a14ef85fa92b100a68d3dcf97",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 90,
+    "command_index": 109,
+    "label": "so06-union-dynamic-generic-semantic-negative",
+    "source_sha256": "522d6f5e522022996bb8551f97558782327ca24724368cf508d9b014e8a659b8",
+    "source_bytes": 167478,
+    "log": "controls/so06-union-dynamic-generic-semantic-negative.log",
+    "log_sha256": "bb4d105eb62c595f616c1cc46f9dffb63dde7c83366b11cf70d1adc642272bc8",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-generic-semantic-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 91,
+    "command_index": 110,
+    "label": "so06-union-dynamic-generic-values-positive",
+    "source_sha256": "f1b2d12e9220de8e67d8d63be0988d8d5e43a7b4af4ef073c6b0c9220858d514",
+    "source_bytes": 167493,
+    "log": "controls/so06-union-dynamic-generic-values-positive.log",
+    "log_sha256": "17b4ac70e0027e99969e6a3386129bb60411022ee5d7041f2cc6a0684bcf8933",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 92,
+    "command_index": 111,
+    "label": "so06-union-dynamic-generic-values-negative",
+    "source_sha256": "fb70926153bb4c01084ceb3c0842f7ef83b08f06b0e5cba10efaa425f1b8a963",
+    "source_bytes": 167480,
+    "log": "controls/so06-union-dynamic-generic-values-negative.log",
+    "log_sha256": "40d3935b890cbff842f21ac7a63cdf4d96249b81f98a62afc05bceea01e181c3",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-generic-values-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 93,
+    "command_index": 112,
+    "label": "so06-union-dynamic-generic-control-positive",
+    "source_sha256": "f1b2d12e9220de8e67d8d63be0988d8d5e43a7b4af4ef073c6b0c9220858d514",
+    "source_bytes": 167493,
+    "log": "controls/so06-union-dynamic-generic-control-positive.log",
+    "log_sha256": "7bd5b730ba0a42a648ab72065e51c5a0506d9d9ba3ae9c9f062c0c888ab5bd06",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 94,
+    "command_index": 113,
+    "label": "so06-union-dynamic-generic-control-negative",
+    "source_sha256": "2a8c7905279a16263881ad60396a9ac04400e0ced0be2479216a4d27136bd4fa",
+    "source_bytes": 167479,
+    "log": "controls/so06-union-dynamic-generic-control-negative.log",
+    "log_sha256": "41c543c44c4d8309128a70cbdb0b35153172578e37216717cb5425b48ca35763",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-generic-control-negative.swift:2523:5",
+        "message": "lifetime-dependent variable 'supplied' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 95,
+    "command_index": 114,
+    "label": "so06-union-dynamic-generic-activationSpan-positive",
+    "source_sha256": "f1b2d12e9220de8e67d8d63be0988d8d5e43a7b4af4ef073c6b0c9220858d514",
+    "source_bytes": 167493,
+    "log": "controls/so06-union-dynamic-generic-activationSpan-positive.log",
+    "log_sha256": "5f4e7c3b39f0beebba4db4e1b2d94844eac57b308bae28f93e58a3edea047f27",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 96,
+    "command_index": 115,
+    "label": "so06-union-dynamic-generic-activationSpan-negative",
+    "source_sha256": "bead66c2db7154843361068b037e41fbb3e3fec50037700bf9ed8124cd1801b5",
+    "source_bytes": 167472,
+    "log": "controls/so06-union-dynamic-generic-activationSpan-negative.log",
+    "log_sha256": "97183650eebdf1e0f1e6965bca7877d373d2d1edadddd12db0d336eb0295ed74",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-union-dynamic-generic-activationSpan-negative.swift:2520:578",
+        "message": "lifetime-dependent variable 'activationSpan' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 97,
+    "command_index": 116,
+    "label": "so06-carrier-static-direct-active-host-geometry-positive",
+    "source_sha256": "c6bed15cdeb7879fdc2eaa96b90b4af777bde3d0dea749279d98afca7d0688b8",
+    "source_bytes": 167609,
+    "log": "controls/so06-carrier-static-direct-active-host-geometry-positive.log",
+    "log_sha256": "38705f2c054b8b3c84d08c2af975a08a0007353579eaea35d64b041da9a19341",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 98,
+    "command_index": 117,
+    "label": "so06-carrier-static-direct-active-host-geometry-negative",
+    "source_sha256": "0b8f4bf333b579cac5a6b65662d87fed080036df468733cb11a6c075c9c93137",
+    "source_bytes": 167594,
+    "log": "controls/so06-carrier-static-direct-active-host-geometry-negative.log",
+    "log_sha256": "6fb97e0f6c2a7cdb6d2b6ba5fe6722acea177b001f5768836ce0f598fc786c42",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-geometry-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 99,
+    "command_index": 118,
+    "label": "so06-carrier-static-direct-active-host-candidateRecords-positive",
+    "source_sha256": "c6bed15cdeb7879fdc2eaa96b90b4af777bde3d0dea749279d98afca7d0688b8",
+    "source_bytes": 167609,
+    "log": "controls/so06-carrier-static-direct-active-host-candidateRecords-positive.log",
+    "log_sha256": "5ea6a9622648bd926a3fc7c07356c3432a8e8b8842a5a0863f060bd8df30a74d",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 100,
+    "command_index": 119,
+    "label": "so06-carrier-static-direct-active-host-candidateRecords-negative",
+    "source_sha256": "b2e231a73c848e65708f0dac9bb94573a19724df33039c1cfeff64279a35090d",
+    "source_bytes": 167586,
+    "log": "controls/so06-carrier-static-direct-active-host-candidateRecords-negative.log",
+    "log_sha256": "d1ce7517aac12ac90ae67046b15ad03090309790890ab87f124b5811defead21",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-candidateRecords-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 101,
+    "command_index": 120,
+    "label": "so06-carrier-static-direct-active-host-candidateHitRegions-positive",
+    "source_sha256": "c6bed15cdeb7879fdc2eaa96b90b4af777bde3d0dea749279d98afca7d0688b8",
+    "source_bytes": 167609,
+    "log": "controls/so06-carrier-static-direct-active-host-candidateHitRegions-positive.log",
+    "log_sha256": "e11ee6f51890d61c19185258f825f0dbd7efbf6206f2b684f7a336412349c4a4",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 102,
+    "command_index": 121,
+    "label": "so06-carrier-static-direct-active-host-candidateHitRegions-negative",
+    "source_sha256": "bc215f2ac951768b88375812c67c03ff46be6a65defc6d8c3af438480e32f7c9",
+    "source_bytes": 167583,
+    "log": "controls/so06-carrier-static-direct-active-host-candidateHitRegions-negative.log",
+    "log_sha256": "87ce9b649c42d2a5881d86a4e287e06b823ee5794a71665fbde7b767ce329c32",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-candidateHitRegions-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 103,
+    "command_index": 122,
+    "label": "so06-carrier-static-direct-active-host-candidateCommittedRecords-positive",
+    "source_sha256": "c6bed15cdeb7879fdc2eaa96b90b4af777bde3d0dea749279d98afca7d0688b8",
+    "source_bytes": 167609,
+    "log": "controls/so06-carrier-static-direct-active-host-candidateCommittedRecords-positive.log",
+    "log_sha256": "4a17b75b1d9b3b10c020ca109aa1a45bf869416f3c86d192255c8071be3737ff",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 104,
+    "command_index": 123,
+    "label": "so06-carrier-static-direct-active-host-candidateCommittedRecords-negative",
+    "source_sha256": "9c592b14840be26c8102a531db29b16aed5408dd9f0cd4d0526a1a9002a5aa63",
+    "source_bytes": 167577,
+    "log": "controls/so06-carrier-static-direct-active-host-candidateCommittedRecords-negative.log",
+    "log_sha256": "cad3859956eb3acc270dd737bbd5eb2f139a140add9f1c13c2eaf4533dbb4a7b",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-candidateCommittedRecords-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 105,
+    "command_index": 124,
+    "label": "so06-carrier-static-direct-active-host-committedRecords-positive",
+    "source_sha256": "c6bed15cdeb7879fdc2eaa96b90b4af777bde3d0dea749279d98afca7d0688b8",
+    "source_bytes": 167609,
+    "log": "controls/so06-carrier-static-direct-active-host-committedRecords-positive.log",
+    "log_sha256": "7fd7010eac41b1d4be958fb7dcf87f7994551cb20632e688fba8fbeee7914712",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 106,
+    "command_index": 125,
+    "label": "so06-carrier-static-direct-active-host-committedRecords-negative",
+    "source_sha256": "d3df0ecbc82be485f606a8e2c49424152a8553384ffd0f599e269da0b4ca67e5",
+    "source_bytes": 167586,
+    "log": "controls/so06-carrier-static-direct-active-host-committedRecords-negative.log",
+    "log_sha256": "1f9a85f2f3a5c950a289e10cbee0ca9612a692bc2e412297ab5816067ca50ef4",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-committedRecords-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 107,
+    "command_index": 126,
+    "label": "so06-carrier-static-direct-active-host-committedHitRegions-positive",
+    "source_sha256": "c6bed15cdeb7879fdc2eaa96b90b4af777bde3d0dea749279d98afca7d0688b8",
+    "source_bytes": 167609,
+    "log": "controls/so06-carrier-static-direct-active-host-committedHitRegions-positive.log",
+    "log_sha256": "d237b8a33adb8bda3250adf458dea9c0d2445d519de889aad3e45140581d482e",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 108,
+    "command_index": 127,
+    "label": "so06-carrier-static-direct-active-host-committedHitRegions-negative",
+    "source_sha256": "94504a64b88924939359e00c64137a20e20b5aef2fcdcf155fec4a2e27213adf",
+    "source_bytes": 167583,
+    "log": "controls/so06-carrier-static-direct-active-host-committedHitRegions-negative.log",
+    "log_sha256": "a5b5f7aeb855178a0a591139a84db1699b17eeafa57daae12ca7b13223145af6",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-committedHitRegions-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 109,
+    "command_index": 128,
+    "label": "so06-carrier-static-direct-active-host-models-positive",
+    "source_sha256": "c6bed15cdeb7879fdc2eaa96b90b4af777bde3d0dea749279d98afca7d0688b8",
+    "source_bytes": 167609,
+    "log": "controls/so06-carrier-static-direct-active-host-models-positive.log",
+    "log_sha256": "5d4f365ec0d59c5cb4e6f8a3a23db8d1f2be33b0b3bfc8be1195246a470d7db2",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 110,
+    "command_index": 129,
+    "label": "so06-carrier-static-direct-active-host-models-negative",
+    "source_sha256": "1004699b3d17704dc47aed75101f9b682181eee0720d329a83077136f0815b7b",
+    "source_bytes": 167596,
+    "log": "controls/so06-carrier-static-direct-active-host-models-negative.log",
+    "log_sha256": "667eb3ed949d1d23fff128a8a6312a525ede0b0f44c0608593d163ce8aa68dd6",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-models-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 111,
+    "command_index": 130,
+    "label": "so06-carrier-static-direct-active-host-root-positive",
+    "source_sha256": "c6bed15cdeb7879fdc2eaa96b90b4af777bde3d0dea749279d98afca7d0688b8",
+    "source_bytes": 167609,
+    "log": "controls/so06-carrier-static-direct-active-host-root-positive.log",
+    "log_sha256": "60c25b4f28d5ccae46ed14311bc0676c3c414dc2eec4ea6e35f75e31c653bb42",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 112,
+    "command_index": 131,
+    "label": "so06-carrier-static-direct-active-host-root-negative",
+    "source_sha256": "7b3dbe51adaa6b6144a8fc6a9545be6b1650760725319aaf9694e79a560a60d6",
+    "source_bytes": 167598,
+    "log": "controls/so06-carrier-static-direct-active-host-root-negative.log",
+    "log_sha256": "3565b7f4792c84a8672bb8f937f1de413a63f22210aff5667f56708eabbe703e",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-root-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 113,
+    "command_index": 132,
+    "label": "so06-carrier-static-direct-active-host-semantic-positive",
+    "source_sha256": "c6bed15cdeb7879fdc2eaa96b90b4af777bde3d0dea749279d98afca7d0688b8",
+    "source_bytes": 167609,
+    "log": "controls/so06-carrier-static-direct-active-host-semantic-positive.log",
+    "log_sha256": "71a0d98c7629e9a7775f78d7d789e7abf122029e637ccef6e1e960de23ec7d10",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 114,
+    "command_index": 133,
+    "label": "so06-carrier-static-direct-active-host-semantic-negative",
+    "source_sha256": "e6d1c9952676216999a8bd1de7ecc43331f8b6fa3612308f24aeacd9363115a7",
+    "source_bytes": 167594,
+    "log": "controls/so06-carrier-static-direct-active-host-semantic-negative.log",
+    "log_sha256": "358881ea7fcbf5ef7dc5a68fd0eaaf273c9f155e35327cfe32607bd60de6db41",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-semantic-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 115,
+    "command_index": 134,
+    "label": "so06-carrier-static-direct-active-host-values-positive",
+    "source_sha256": "c6bed15cdeb7879fdc2eaa96b90b4af777bde3d0dea749279d98afca7d0688b8",
+    "source_bytes": 167609,
+    "log": "controls/so06-carrier-static-direct-active-host-values-positive.log",
+    "log_sha256": "42dbeaecb328c415b64fc94b55c2f867e1361b49f07daaa0f88749529e95bf46",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 116,
+    "command_index": 135,
+    "label": "so06-carrier-static-direct-active-host-values-negative",
+    "source_sha256": "8b3ac45e3c168ce74bb75c64eaca1f60e324bdbbb3f5b693b1fb33502ea5aa5c",
+    "source_bytes": 167596,
+    "log": "controls/so06-carrier-static-direct-active-host-values-negative.log",
+    "log_sha256": "6df38e94b0ebe9b59448efff2775e3170fc2d3f93b666f1767d79951ff399fff",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-values-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 117,
+    "command_index": 136,
+    "label": "so06-carrier-static-direct-active-host-control-positive",
+    "source_sha256": "c6bed15cdeb7879fdc2eaa96b90b4af777bde3d0dea749279d98afca7d0688b8",
+    "source_bytes": 167609,
+    "log": "controls/so06-carrier-static-direct-active-host-control-positive.log",
+    "log_sha256": "487ce3b0f04865a9c1ae131f8272741c10976417dd0bf7cd5f53cc9078c0dde8",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 118,
+    "command_index": 137,
+    "label": "so06-carrier-static-direct-active-host-control-negative",
+    "source_sha256": "e924e56986bd4c425d570c80e98a96ba1c15887bd96e7598aa09fdd680441667",
+    "source_bytes": 167595,
+    "log": "controls/so06-carrier-static-direct-active-host-control-negative.log",
+    "log_sha256": "8ff7c0270a5c6004079d61bda9e10c7c1891167e0226cffc61c67ab606c061ad",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-control-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 119,
+    "command_index": 138,
+    "label": "so06-carrier-static-direct-active-host-activationSpan-positive",
+    "source_sha256": "c6bed15cdeb7879fdc2eaa96b90b4af777bde3d0dea749279d98afca7d0688b8",
+    "source_bytes": 167609,
+    "log": "controls/so06-carrier-static-direct-active-host-activationSpan-positive.log",
+    "log_sha256": "e4382291676ff542cab80dea82ef7353fc3aa637f747138bc928d6abea901890",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 120,
+    "command_index": 139,
+    "label": "so06-carrier-static-direct-active-host-activationSpan-negative",
+    "source_sha256": "81bc778e4e455782645138c8798c57174824092716004a8375c12a67ddc1dc9f",
+    "source_bytes": 167588,
+    "log": "controls/so06-carrier-static-direct-active-host-activationSpan-negative.log",
+    "log_sha256": "576a8fd6a354c5627518f7ed2c59a13e6447e6890e007d48d85febea3890dc26",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-activationSpan-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 121,
+    "command_index": 140,
+    "label": "so06-erasure-static-direct-active-host-optional-positive",
+    "source_sha256": "0ed646be4b73e79e66ddf8831b135e757871b4070238362cc4e71b4f5a88c8d9",
+    "source_bytes": 165870,
+    "log": "controls/so06-erasure-static-direct-active-host-optional-positive.log",
+    "log_sha256": "a6edad44f92245e60ab7422e605cb35e1f58c8c043f727985c4718050159dfef",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 122,
+    "command_index": 141,
+    "label": "so06-erasure-static-direct-active-host-optional-negative",
+    "source_sha256": "185587166aab00fc274fc148107115ac388183adc4f871d07aba3a0debfe0ad7",
+    "source_bytes": 165796,
+    "log": "controls/so06-erasure-static-direct-active-host-optional-negative.log",
+    "log_sha256": "30326c4986412c275210d0b9d0d6cafed1fc6c936848cd923999e2b6e9c70570",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-active-host-optional-negative.swift:2520:175",
+        "message": "generic struct 'OwnedBox' requires that 'CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>' conform to 'Escapable'"
+      },
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-active-host-optional-negative.swift:2520:175",
+        "message": "initializer 'init(value:)' requires that 'CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>' conform to 'Escapable'"
+      }
+    ]
+  },
+  {
+    "index": 123,
+    "command_index": 142,
+    "label": "so06-erasure-static-direct-active-host-tuple-positive",
+    "source_sha256": "8c69b727e7a86d120631774b3e08e6858a181e93eb80f4641d379fdfa3249193",
+    "source_bytes": 165915,
+    "log": "controls/so06-erasure-static-direct-active-host-tuple-positive.log",
+    "log_sha256": "80d0cf8bc6514fed94dac43740cda0a09258c6962f7ae8136a47dc59fd8c49b1",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 124,
+    "command_index": 143,
+    "label": "so06-erasure-static-direct-active-host-tuple-negative",
+    "source_sha256": "fb087f79be2537dd9a5c238055e93122f74cd75dfa93b3a6334c1ed1985e93ba",
+    "source_bytes": 165843,
+    "log": "controls/so06-erasure-static-direct-active-host-tuple-negative.log",
+    "log_sha256": "f15f449ede8b486339de1eb23d13d110aa5d616312268672e6ccaa3417b1e826",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-active-host-tuple-negative.swift:2519:172",
+        "message": "tuple with noncopyable element type 'SignalAnalyzerPresetHostInstance<CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>' is not supported"
+      },
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-active-host-tuple-negative.swift:2519:171",
+        "message": "cannot infer the lifetime dependence scope on a function with a ~Escapable parameter, specify '@_lifetime(borrow input)' or '@_lifetime(copy input)'"
+      },
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-active-host-tuple-negative.swift:2519:305",
+        "message": "type '(SignalAnalyzerPresetHostInstance<CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>, Int)' containing noncopyable element is not supported"
+      }
+    ]
+  },
+  {
+    "index": 125,
+    "command_index": 144,
+    "label": "so06-erasure-static-direct-active-host-generic-positive",
+    "source_sha256": "d1f99b05ead11fc9435b3eab9ba12bcc41881a50390a1c6f9cdb89015435b238",
+    "source_bytes": 165805,
+    "log": "controls/so06-erasure-static-direct-active-host-generic-positive.log",
+    "log_sha256": "7e81055162c05b46e879be8b0c679023637f95bf0bde7e215374b6ef97c5b293",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 126,
+    "command_index": 145,
+    "label": "so06-erasure-static-direct-active-host-generic-negative",
+    "source_sha256": "82219ade0edce6218b8a32a165878a0c74b0f770df0c33661868bc7f6604e529",
+    "source_bytes": 165792,
+    "log": "controls/so06-erasure-static-direct-active-host-generic-negative.log",
+    "log_sha256": "437d04613439da0c50be955bc54345417eceadbaa90dfa2cbe8ac7a046ead54a",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-active-host-generic-negative.swift:2520:171",
+        "message": "global function 'erase' requires that 'CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>' conform to 'Escapable'"
+      }
+    ]
+  },
+  {
+    "index": 127,
+    "command_index": 146,
+    "label": "so06-erasure-static-direct-active-host-closure-positive",
+    "source_sha256": "fb43eb007ef9392dca3b4f6b3d0877e03a7ef9d53e44f6f73112612603cf0610",
+    "source_bytes": 165975,
+    "log": "controls/so06-erasure-static-direct-active-host-closure-positive.log",
+    "log_sha256": "a4136d707bac164852c45ff2ab78763fb8661163d68b142c5a2aeec7839f63d2",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 128,
+    "command_index": 147,
+    "label": "so06-erasure-static-direct-active-host-closure-negative",
+    "source_sha256": "0a3469cb2363acaeb9f3f24be124752fd192c13209dc43f77b0a94a1addd8f3d",
+    "source_bytes": 165913,
+    "log": "controls/so06-erasure-static-direct-active-host-closure-negative.log",
+    "log_sha256": "17163d67c4fd4984a4774a9048732c698d4c559b0029d688a8ff55ea33ff6247",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-active-host-closure-negative.swift:2520:26",
+        "message": "'input' cannot be captured by an escaping closure since it is a borrowed parameter"
+      },
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-active-host-closure-negative.swift:2520:26",
+        "message": "lifetime-dependent variable 'input' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 129,
+    "command_index": 148,
+    "label": "so06-carrier-static-direct-retired-optional-geometry-positive",
+    "source_sha256": "5f668507d6909dc3a2e2e2ba40e8e4f76f27a77da4ccdf37858be876c62d826b",
+    "source_bytes": 168178,
+    "log": "controls/so06-carrier-static-direct-retired-optional-geometry-positive.log",
+    "log_sha256": "7db6f221df1ca29e4b50a7920c869a29302195d44b072ffcf67d212c75c70768",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 130,
+    "command_index": 149,
+    "label": "so06-carrier-static-direct-retired-optional-geometry-negative",
+    "source_sha256": "9e0af3cfe797010aaee1784eddccf61f72809072329fb7929336e3a355b3e014",
+    "source_bytes": 168163,
+    "log": "controls/so06-carrier-static-direct-retired-optional-geometry-negative.log",
+    "log_sha256": "3f5247af9f1bc4178c5b65d6bc17e8649fb2cfabb6bf8101b1600200af6f6107",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-retired-optional-geometry-negative.swift:2533:52",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 131,
+    "command_index": 150,
+    "label": "so06-carrier-static-direct-retired-optional-candidateRecords-positive",
+    "source_sha256": "5f668507d6909dc3a2e2e2ba40e8e4f76f27a77da4ccdf37858be876c62d826b",
+    "source_bytes": 168178,
+    "log": "controls/so06-carrier-static-direct-retired-optional-candidateRecords-positive.log",
+    "log_sha256": "9f72d22eb3a57fe0f185a79ccaa9add6f583276798bcd2d59331e08b9e2fa177",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 132,
+    "command_index": 151,
+    "label": "so06-carrier-static-direct-retired-optional-candidateRecords-negative",
+    "source_sha256": "43f31086c2fd0c7c91c47281ee0c248a1ee7d33a2f36b27f9488be91557a6c40",
+    "source_bytes": 168155,
+    "log": "controls/so06-carrier-static-direct-retired-optional-candidateRecords-negative.log",
+    "log_sha256": "f291c1cdf2dc5520aecbaa66dbe0550a6344c3c9ccc22790168a7667a0657533",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-retired-optional-candidateRecords-negative.swift:2533:52",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 133,
+    "command_index": 152,
+    "label": "so06-carrier-static-direct-retired-optional-candidateHitRegions-positive",
+    "source_sha256": "5f668507d6909dc3a2e2e2ba40e8e4f76f27a77da4ccdf37858be876c62d826b",
+    "source_bytes": 168178,
+    "log": "controls/so06-carrier-static-direct-retired-optional-candidateHitRegions-positive.log",
+    "log_sha256": "04115c65f7c8b21daa0f9ff6e23ad4b4024a9a088e135dae72a9dc66bd56c877",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 134,
+    "command_index": 153,
+    "label": "so06-carrier-static-direct-retired-optional-candidateHitRegions-negative",
+    "source_sha256": "b8a83ac8d2737649a9501ce7c5519a2025e93f36ec7836e577745bab8f6f6954",
+    "source_bytes": 168152,
+    "log": "controls/so06-carrier-static-direct-retired-optional-candidateHitRegions-negative.log",
+    "log_sha256": "d3fd021e2a474a6e0d469df4551d9231bc7e12e6815ae7e344bb59b2a15430de",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-retired-optional-candidateHitRegions-negative.swift:2533:52",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 135,
+    "command_index": 154,
+    "label": "so06-carrier-static-direct-retired-optional-candidateCommittedRecords-positive",
+    "source_sha256": "5f668507d6909dc3a2e2e2ba40e8e4f76f27a77da4ccdf37858be876c62d826b",
+    "source_bytes": 168178,
+    "log": "controls/so06-carrier-static-direct-retired-optional-candidateCommittedRecords-positive.log",
+    "log_sha256": "0906f6d44aca54e032db80221a2ddfe91850d247d30b23b5dde3d85571712e75",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 136,
+    "command_index": 155,
+    "label": "so06-carrier-static-direct-retired-optional-candidateCommittedRecords-negative",
+    "source_sha256": "072511926b4934b2d524c429a21697c2cf9e1b80455697e7c71a23a4ce5f4aad",
+    "source_bytes": 168146,
+    "log": "controls/so06-carrier-static-direct-retired-optional-candidateCommittedRecords-negative.log",
+    "log_sha256": "294071434e8d265388d06094c070494a3587202167f592fb7832df3e6647c88a",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-retired-optional-candidateCommittedRecords-negative.swift:2533:52",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 137,
+    "command_index": 156,
+    "label": "so06-carrier-static-direct-retired-optional-committedRecords-positive",
+    "source_sha256": "5f668507d6909dc3a2e2e2ba40e8e4f76f27a77da4ccdf37858be876c62d826b",
+    "source_bytes": 168178,
+    "log": "controls/so06-carrier-static-direct-retired-optional-committedRecords-positive.log",
+    "log_sha256": "fbcf55f5ac4554c011a110e26dd6b82c6e252cfebbf4d0b6b9780b034fc17274",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 138,
+    "command_index": 157,
+    "label": "so06-carrier-static-direct-retired-optional-committedRecords-negative",
+    "source_sha256": "fcddba0dd0348cbeb31bb52c21c4ee9922df46239bc9dacdc323987ba9119562",
+    "source_bytes": 168155,
+    "log": "controls/so06-carrier-static-direct-retired-optional-committedRecords-negative.log",
+    "log_sha256": "557888564581b498bb451675cc1b4558bff0e1fb5d55977cf74349234ea1e2e9",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-retired-optional-committedRecords-negative.swift:2533:52",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 139,
+    "command_index": 158,
+    "label": "so06-carrier-static-direct-retired-optional-committedHitRegions-positive",
+    "source_sha256": "5f668507d6909dc3a2e2e2ba40e8e4f76f27a77da4ccdf37858be876c62d826b",
+    "source_bytes": 168178,
+    "log": "controls/so06-carrier-static-direct-retired-optional-committedHitRegions-positive.log",
+    "log_sha256": "8d1ca05188cd9f6f818bc54a8e545cc0eb76fc8ff714961a13a7e715ae2a854d",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 140,
+    "command_index": 159,
+    "label": "so06-carrier-static-direct-retired-optional-committedHitRegions-negative",
+    "source_sha256": "0afe02e86d223874bcb35ccaef088c3085c3e01d2170712a6485441f8684db04",
+    "source_bytes": 168152,
+    "log": "controls/so06-carrier-static-direct-retired-optional-committedHitRegions-negative.log",
+    "log_sha256": "9553708aaf832a4265ebd525b8934acdb3f96b2f9c65c51a8ba415c4a9772172",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-retired-optional-committedHitRegions-negative.swift:2533:52",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 141,
+    "command_index": 160,
+    "label": "so06-carrier-static-direct-retired-optional-models-positive",
+    "source_sha256": "5f668507d6909dc3a2e2e2ba40e8e4f76f27a77da4ccdf37858be876c62d826b",
+    "source_bytes": 168178,
+    "log": "controls/so06-carrier-static-direct-retired-optional-models-positive.log",
+    "log_sha256": "4c0ceff4529c35bf92af0627fef9d9a32408e680c83420a23ad09ef3b291f81b",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 142,
+    "command_index": 161,
+    "label": "so06-carrier-static-direct-retired-optional-models-negative",
+    "source_sha256": "c279b21673a1ac01d2d853bdd53e9c19b52b20d9193428656dd509b140cd14df",
+    "source_bytes": 168165,
+    "log": "controls/so06-carrier-static-direct-retired-optional-models-negative.log",
+    "log_sha256": "f90e3f5a347ba6f7d1c58a3d0bbac642293d7c8aa6fa91495f6138ac0eb10c55",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-retired-optional-models-negative.swift:2533:52",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 143,
+    "command_index": 162,
+    "label": "so06-carrier-static-direct-retired-optional-root-positive",
+    "source_sha256": "5f668507d6909dc3a2e2e2ba40e8e4f76f27a77da4ccdf37858be876c62d826b",
+    "source_bytes": 168178,
+    "log": "controls/so06-carrier-static-direct-retired-optional-root-positive.log",
+    "log_sha256": "256dc9cd191e4475a7547524be4fe0d78d0355834a919527b8f5d939c415a93a",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 144,
+    "command_index": 163,
+    "label": "so06-carrier-static-direct-retired-optional-root-negative",
+    "source_sha256": "08cc2fcaeabdab2efa80e932883f91e79fc4cc81bb1ecfe304d99251430f6367",
+    "source_bytes": 168167,
+    "log": "controls/so06-carrier-static-direct-retired-optional-root-negative.log",
+    "log_sha256": "0340d61a41a735494732beb32f7588c8f52bf59a67c7c0c4e4badf9f5c4662fe",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-retired-optional-root-negative.swift:2533:52",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 145,
+    "command_index": 164,
+    "label": "so06-carrier-static-direct-retired-optional-semantic-positive",
+    "source_sha256": "5f668507d6909dc3a2e2e2ba40e8e4f76f27a77da4ccdf37858be876c62d826b",
+    "source_bytes": 168178,
+    "log": "controls/so06-carrier-static-direct-retired-optional-semantic-positive.log",
+    "log_sha256": "9a61c1b98c2e31dc9b5623eca78eee4f82909716284e41cdd5cd839106eddad9",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 146,
+    "command_index": 165,
+    "label": "so06-carrier-static-direct-retired-optional-semantic-negative",
+    "source_sha256": "751aea13adab37eefe333cd28d58e06800088533fe7d788c12043306481c5c0a",
+    "source_bytes": 168163,
+    "log": "controls/so06-carrier-static-direct-retired-optional-semantic-negative.log",
+    "log_sha256": "8b6317487fdc0b8c5bd2aa40791fa1dd3a5e29464a5f20a090e7b8fbcf349c21",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-retired-optional-semantic-negative.swift:2533:52",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 147,
+    "command_index": 166,
+    "label": "so06-carrier-static-direct-retired-optional-values-positive",
+    "source_sha256": "5f668507d6909dc3a2e2e2ba40e8e4f76f27a77da4ccdf37858be876c62d826b",
+    "source_bytes": 168178,
+    "log": "controls/so06-carrier-static-direct-retired-optional-values-positive.log",
+    "log_sha256": "12de474747999f42386af397c8d903a3eb2fa1c00e49be457b3b59a66f18642f",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 148,
+    "command_index": 167,
+    "label": "so06-carrier-static-direct-retired-optional-values-negative",
+    "source_sha256": "925dacc57426c742845441abfb5c1de3dc770a177946342f7b3244ddf2b67c0e",
+    "source_bytes": 168165,
+    "log": "controls/so06-carrier-static-direct-retired-optional-values-negative.log",
+    "log_sha256": "0a54911e8d4629bafc0305394519480e11b0cd44cda60ce53107017fbaf4a590",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-retired-optional-values-negative.swift:2533:52",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 149,
+    "command_index": 168,
+    "label": "so06-carrier-static-direct-retired-optional-control-positive",
+    "source_sha256": "5f668507d6909dc3a2e2e2ba40e8e4f76f27a77da4ccdf37858be876c62d826b",
+    "source_bytes": 168178,
+    "log": "controls/so06-carrier-static-direct-retired-optional-control-positive.log",
+    "log_sha256": "f1466d7eac6998f41f933c83bb3b81f8648c000cdacab780f93bcb10a7261489",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 150,
+    "command_index": 169,
+    "label": "so06-carrier-static-direct-retired-optional-control-negative",
+    "source_sha256": "a47e0c1106ab8820f49b4a84732f89db55b94f84c7fd4aef73ff9f134ff45cad",
+    "source_bytes": 168164,
+    "log": "controls/so06-carrier-static-direct-retired-optional-control-negative.log",
+    "log_sha256": "3b14dcc72f30da22912e78f20feaaca4c268a7acfb6ed82a595838d1df6442a6",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-retired-optional-control-negative.swift:2533:52",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 151,
+    "command_index": 170,
+    "label": "so06-carrier-static-direct-retired-optional-activationSpan-positive",
+    "source_sha256": "5f668507d6909dc3a2e2e2ba40e8e4f76f27a77da4ccdf37858be876c62d826b",
+    "source_bytes": 168178,
+    "log": "controls/so06-carrier-static-direct-retired-optional-activationSpan-positive.log",
+    "log_sha256": "3171403b8ca316d4f317b6af92c6c66cae5f0d1443ae3089e67c3ea82317078b",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 152,
+    "command_index": 171,
+    "label": "so06-carrier-static-direct-retired-optional-activationSpan-negative",
+    "source_sha256": "2a75e3238664189973efabb6462efbd16efd32de8f91cca16c55d0a8514b17ff",
+    "source_bytes": 168157,
+    "log": "controls/so06-carrier-static-direct-retired-optional-activationSpan-negative.log",
+    "log_sha256": "4897c829b0158f3a4e0b535dde4a2be0c2181d6bca20206b480fb2e1f5096056",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-retired-optional-activationSpan-negative.swift:2533:52",
+        "message": "lifetime-dependent value escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 153,
+    "command_index": 172,
+    "label": "so06-erasure-static-direct-retired-optional-optional-positive",
+    "source_sha256": "5fd1c64d606795af356cb54d7ba02f5f486bafefbf829b8abd894ad112c7d0e0",
+    "source_bytes": 165802,
+    "log": "controls/so06-erasure-static-direct-retired-optional-optional-positive.log",
+    "log_sha256": "6fc1d8d7bf770e2bcb13fe284d4e391019b9e252808eb592b5aaee72b0f8e902",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 154,
+    "command_index": 173,
+    "label": "so06-erasure-static-direct-retired-optional-optional-negative",
+    "source_sha256": "8b68568debaf13818b97868f2d224441e2d7e85a3d1ac85812b42551a8f1c866",
+    "source_bytes": 165762,
+    "log": "controls/so06-erasure-static-direct-retired-optional-optional-negative.log",
+    "log_sha256": "74e6892a64dc9fd590194160d8ab98624d247b6afac74bed6e3f700916389f63",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-retired-optional-optional-negative.swift:2520:141",
+        "message": "generic struct 'OwnedBox' requires that 'CounterHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>' conform to 'Escapable'"
+      }
+    ]
+  },
+  {
+    "index": 155,
+    "command_index": 174,
+    "label": "so06-erasure-static-direct-retired-optional-tuple-positive",
+    "source_sha256": "dc536633fa02d3ffba9c2eb3ed66e79275d46bf347ef6cf91f05d9c348d6a7a3",
+    "source_bytes": 165847,
+    "log": "controls/so06-erasure-static-direct-retired-optional-tuple-positive.log",
+    "log_sha256": "93c1f7c8dcc57a40638fe32077c68d775adf6617773554152924bedb325be08c",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 156,
+    "command_index": 175,
+    "label": "so06-erasure-static-direct-retired-optional-tuple-negative",
+    "source_sha256": "6a1b6e5294c31e069e253d535e2d224e2aa7aaec23a9d48505f66a0b9924dbd6",
+    "source_bytes": 165775,
+    "log": "controls/so06-erasure-static-direct-retired-optional-tuple-negative.log",
+    "log_sha256": "b3d68194d6e043b73393a9461a5135a4013db47e9cf3026f1307940ef8766ba8",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-retired-optional-tuple-negative.swift:2519:138",
+        "message": "tuple with noncopyable element type 'CounterHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>' is not supported"
+      },
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-retired-optional-tuple-negative.swift:2519:137",
+        "message": "cannot infer the lifetime dependence scope on a function with a ~Escapable parameter, specify '@_lifetime(borrow input)' or '@_lifetime(copy input)'"
+      },
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-retired-optional-tuple-negative.swift:2519:237",
+        "message": "type '(CounterHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, Int)' containing noncopyable element is not supported"
+      }
+    ]
+  },
+  {
+    "index": 157,
+    "command_index": 176,
+    "label": "so06-erasure-static-direct-retired-optional-generic-positive",
+    "source_sha256": "a10839a218041edcf6b2fe4db2401f62062418b563985c2e027f3717c51d1b1e",
+    "source_bytes": 165771,
+    "log": "controls/so06-erasure-static-direct-retired-optional-generic-positive.log",
+    "log_sha256": "ccffd882070ec2dda2afc8956cc028e8bb9fdeb423e349e72ae7abc66ec7bfe2",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 158,
+    "command_index": 177,
+    "label": "so06-erasure-static-direct-retired-optional-generic-negative",
+    "source_sha256": "28a31e5e2e870930fca88300184ebe921fadead6f3b16ff4ce6d7e5a24d4f275",
+    "source_bytes": 165758,
+    "log": "controls/so06-erasure-static-direct-retired-optional-generic-negative.log",
+    "log_sha256": "c5879f22cacc9f001507edd6081d6505817a2154010e3d7c62c592b01ed5a0b5",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-retired-optional-generic-negative.swift:2520:137",
+        "message": "global function 'erase' requires that 'CounterHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>' conform to 'Escapable'"
+      }
+    ]
+  },
+  {
+    "index": 159,
+    "command_index": 178,
+    "label": "so06-erasure-static-direct-retired-optional-closure-positive",
+    "source_sha256": "b4f43efc9bf5b7a7e94d089c50b21c20b5dd512b35e0ce0e69d52f173ab5d877",
+    "source_bytes": 165907,
+    "log": "controls/so06-erasure-static-direct-retired-optional-closure-positive.log",
+    "log_sha256": "e83550f588dce7c43954b364bc19aa87efbc421eaf19a44897e7f39f7a3030af",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 160,
+    "command_index": 179,
+    "label": "so06-erasure-static-direct-retired-optional-closure-negative",
+    "source_sha256": "389d03af53b8cf1c9754fbf0799d33def5f91d2f18d443bcc585598d00634cdd",
+    "source_bytes": 165845,
+    "log": "controls/so06-erasure-static-direct-retired-optional-closure-negative.log",
+    "log_sha256": "0855f51daf76ebca64dc319d484e086653c6021e866739b82c338a4899e6481a",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-retired-optional-closure-negative.swift:2520:26",
+        "message": "'input' cannot be captured by an escaping closure since it is a borrowed parameter"
+      },
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-direct-retired-optional-closure-negative.swift:2520:26",
+        "message": "lifetime-dependent variable 'input' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 161,
+    "command_index": 180,
+    "label": "so06-carrier-static-generic-active-host-geometry-positive",
+    "source_sha256": "0c578e94ed62034f9c720539d9d1fee63fc41b4ac616ca189c31b2b0558d3618",
+    "source_bytes": 167671,
+    "log": "controls/so06-carrier-static-generic-active-host-geometry-positive.log",
+    "log_sha256": "92fc6845bbe0521acbbc554ad189f064f1e75977729348ac6012717da3ff356b",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 162,
+    "command_index": 181,
+    "label": "so06-carrier-static-generic-active-host-geometry-negative",
+    "source_sha256": "444be0ba7a0d565c348b836ae40b79f1fb539374b3492a0376e871184fc8b93e",
+    "source_bytes": 167656,
+    "log": "controls/so06-carrier-static-generic-active-host-geometry-negative.log",
+    "log_sha256": "1b6c30f087f5ae3c25fe206c3db8712cf10f0eff711f1af29a3b28b7a0a56070",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-generic-active-host-geometry-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 163,
+    "command_index": 182,
+    "label": "so06-carrier-static-generic-active-host-candidateRecords-positive",
+    "source_sha256": "0c578e94ed62034f9c720539d9d1fee63fc41b4ac616ca189c31b2b0558d3618",
+    "source_bytes": 167671,
+    "log": "controls/so06-carrier-static-generic-active-host-candidateRecords-positive.log",
+    "log_sha256": "061b26ed317f742cb17456e3d9a5f3f8a34c28ea9755cd255576e4b0eb4bdeba",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 164,
+    "command_index": 183,
+    "label": "so06-carrier-static-generic-active-host-candidateRecords-negative",
+    "source_sha256": "64054bdc6fa2d63eed41201e27862542ceda19285a3a0a7bbd36b3b664e676d4",
+    "source_bytes": 167648,
+    "log": "controls/so06-carrier-static-generic-active-host-candidateRecords-negative.log",
+    "log_sha256": "28e7cfe68e55800001a48851d4c78df06b2fb950fbc8fb596a9a968505eac7d8",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-generic-active-host-candidateRecords-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 165,
+    "command_index": 184,
+    "label": "so06-carrier-static-generic-active-host-candidateHitRegions-positive",
+    "source_sha256": "0c578e94ed62034f9c720539d9d1fee63fc41b4ac616ca189c31b2b0558d3618",
+    "source_bytes": 167671,
+    "log": "controls/so06-carrier-static-generic-active-host-candidateHitRegions-positive.log",
+    "log_sha256": "63589cb884f49c3f592bd91915d3c7ba9c5e0c14da08f3eb091b312cbe0696a3",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 166,
+    "command_index": 185,
+    "label": "so06-carrier-static-generic-active-host-candidateHitRegions-negative",
+    "source_sha256": "7cd163f24cd0b680b78854f7f50255b523fec6553ca37a6307d8b4ecbcfc0720",
+    "source_bytes": 167645,
+    "log": "controls/so06-carrier-static-generic-active-host-candidateHitRegions-negative.log",
+    "log_sha256": "c7311024482bfce707efd1a9161397dfede672f2351d197a3685f26a3c305b51",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-generic-active-host-candidateHitRegions-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 167,
+    "command_index": 186,
+    "label": "so06-carrier-static-generic-active-host-candidateCommittedRecords-positive",
+    "source_sha256": "0c578e94ed62034f9c720539d9d1fee63fc41b4ac616ca189c31b2b0558d3618",
+    "source_bytes": 167671,
+    "log": "controls/so06-carrier-static-generic-active-host-candidateCommittedRecords-positive.log",
+    "log_sha256": "bb9c9a037fef3ff892efd014721aa672401bbe8314e69d57c3c0ae6cbe33c192",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 168,
+    "command_index": 187,
+    "label": "so06-carrier-static-generic-active-host-candidateCommittedRecords-negative",
+    "source_sha256": "9a3b31c72db712771328ca58536d36da56757991a30f86a998730ab57e338227",
+    "source_bytes": 167639,
+    "log": "controls/so06-carrier-static-generic-active-host-candidateCommittedRecords-negative.log",
+    "log_sha256": "f6ccf09c42a71b1265cbbccf286f4cfaacc1c8737b1a9be4e326b49e57aac1d9",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-generic-active-host-candidateCommittedRecords-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 169,
+    "command_index": 188,
+    "label": "so06-carrier-static-generic-active-host-committedRecords-positive",
+    "source_sha256": "0c578e94ed62034f9c720539d9d1fee63fc41b4ac616ca189c31b2b0558d3618",
+    "source_bytes": 167671,
+    "log": "controls/so06-carrier-static-generic-active-host-committedRecords-positive.log",
+    "log_sha256": "1a57ef9f6d3ceb79e849a952f3263239f241206241f90bc9b7da8bd1e72285ae",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 170,
+    "command_index": 189,
+    "label": "so06-carrier-static-generic-active-host-committedRecords-negative",
+    "source_sha256": "6701105298636276c15534ed0c20144fbc734e2190ae4a22fbbd79c2449e940d",
+    "source_bytes": 167648,
+    "log": "controls/so06-carrier-static-generic-active-host-committedRecords-negative.log",
+    "log_sha256": "c094fb84600d681d230380becb7d6d71b7f012d9d59f8b5cb5d22a29982fb2a2",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-generic-active-host-committedRecords-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 171,
+    "command_index": 190,
+    "label": "so06-carrier-static-generic-active-host-committedHitRegions-positive",
+    "source_sha256": "0c578e94ed62034f9c720539d9d1fee63fc41b4ac616ca189c31b2b0558d3618",
+    "source_bytes": 167671,
+    "log": "controls/so06-carrier-static-generic-active-host-committedHitRegions-positive.log",
+    "log_sha256": "420b9c31cdd50a128801abce174e7578233ee7bcf5660dbf1b212a68a1acfa99",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 172,
+    "command_index": 191,
+    "label": "so06-carrier-static-generic-active-host-committedHitRegions-negative",
+    "source_sha256": "5b60055d42ac476b96b810b49e3c363e1238539f9e8240bafb3c570f3d036e1d",
+    "source_bytes": 167645,
+    "log": "controls/so06-carrier-static-generic-active-host-committedHitRegions-negative.log",
+    "log_sha256": "7d0836be1490e9a8821538f55cb3e36574accafaf03f9f89a9b9c4cb21813c61",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-generic-active-host-committedHitRegions-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 173,
+    "command_index": 192,
+    "label": "so06-carrier-static-generic-active-host-models-positive",
+    "source_sha256": "0c578e94ed62034f9c720539d9d1fee63fc41b4ac616ca189c31b2b0558d3618",
+    "source_bytes": 167671,
+    "log": "controls/so06-carrier-static-generic-active-host-models-positive.log",
+    "log_sha256": "c339aa355ce136859f35ed1f54b312cbd0684ebc181f18bb82350140d97dab21",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 174,
+    "command_index": 193,
+    "label": "so06-carrier-static-generic-active-host-models-negative",
+    "source_sha256": "5538fc99ccd4413c07d359401e20bbcdaa15bf3c2c3cedcf90c1c1d9f423d3ee",
+    "source_bytes": 167658,
+    "log": "controls/so06-carrier-static-generic-active-host-models-negative.log",
+    "log_sha256": "ed4e5f560199f4faa93c435509fa06805542bdfc1f7e79db314d13c711e6969a",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-generic-active-host-models-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 175,
+    "command_index": 194,
+    "label": "so06-carrier-static-generic-active-host-root-positive",
+    "source_sha256": "0c578e94ed62034f9c720539d9d1fee63fc41b4ac616ca189c31b2b0558d3618",
+    "source_bytes": 167671,
+    "log": "controls/so06-carrier-static-generic-active-host-root-positive.log",
+    "log_sha256": "66b1d30b3751dbc7c9bdbced211c8d6ab1c040b135ddcf52105393fba1abb652",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 176,
+    "command_index": 195,
+    "label": "so06-carrier-static-generic-active-host-root-negative",
+    "source_sha256": "cc09fdd344c982e3a9b78cd91c6ed5bdaa793f9f78257f5996aae16c4f9bc198",
+    "source_bytes": 167660,
+    "log": "controls/so06-carrier-static-generic-active-host-root-negative.log",
+    "log_sha256": "fba54612a48f56c2ceea8f465a17c0c42aaca1796d43091ff0f38518d1465f5e",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-generic-active-host-root-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 177,
+    "command_index": 196,
+    "label": "so06-carrier-static-generic-active-host-semantic-positive",
+    "source_sha256": "0c578e94ed62034f9c720539d9d1fee63fc41b4ac616ca189c31b2b0558d3618",
+    "source_bytes": 167671,
+    "log": "controls/so06-carrier-static-generic-active-host-semantic-positive.log",
+    "log_sha256": "8714d556ad2e51de5edbb15a506b331938ddcec17665c8d3d52554ab7ee36ed5",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 178,
+    "command_index": 197,
+    "label": "so06-carrier-static-generic-active-host-semantic-negative",
+    "source_sha256": "7bc6613433c144c50dc1e28bcdb4dfa05b1e3f64e3cf88ce9c2e97abccfa34ce",
+    "source_bytes": 167656,
+    "log": "controls/so06-carrier-static-generic-active-host-semantic-negative.log",
+    "log_sha256": "88f0de48d2c41d89e077f0f959c882f570b56b96f3fec408fb91bcfd4690c7fe",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-generic-active-host-semantic-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 179,
+    "command_index": 198,
+    "label": "so06-carrier-static-generic-active-host-values-positive",
+    "source_sha256": "0c578e94ed62034f9c720539d9d1fee63fc41b4ac616ca189c31b2b0558d3618",
+    "source_bytes": 167671,
+    "log": "controls/so06-carrier-static-generic-active-host-values-positive.log",
+    "log_sha256": "826c99d4c183c2caf47bf17735624c7f9b8f23f1f585177dc9ed8948fce7f741",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 180,
+    "command_index": 199,
+    "label": "so06-carrier-static-generic-active-host-values-negative",
+    "source_sha256": "efcc9062067e9634d12d5c6d81abb215679a980823a50d451b7921f1e6145502",
+    "source_bytes": 167658,
+    "log": "controls/so06-carrier-static-generic-active-host-values-negative.log",
+    "log_sha256": "06c3eca1fc867120503a0de4fa6756c4a1a6aa6836d115967dfe3ec93bee3bb6",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-generic-active-host-values-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 181,
+    "command_index": 200,
+    "label": "so06-carrier-static-generic-active-host-control-positive",
+    "source_sha256": "0c578e94ed62034f9c720539d9d1fee63fc41b4ac616ca189c31b2b0558d3618",
+    "source_bytes": 167671,
+    "log": "controls/so06-carrier-static-generic-active-host-control-positive.log",
+    "log_sha256": "ffa9c3d048b434e4f575b6f06c821b536af0576ae1667ee650c86cc2e777e25b",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 182,
+    "command_index": 201,
+    "label": "so06-carrier-static-generic-active-host-control-negative",
+    "source_sha256": "271216da5aa47de411c2bca86a04a34b728c76284e7a73082b7c8c8b1fe7e538",
+    "source_bytes": 167657,
+    "log": "controls/so06-carrier-static-generic-active-host-control-negative.log",
+    "log_sha256": "291cb6245b08eba57f6589e7e0f4b664026381697839872610b3b494547f1e91",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-generic-active-host-control-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 183,
+    "command_index": 202,
+    "label": "so06-carrier-static-generic-active-host-activationSpan-positive",
+    "source_sha256": "0c578e94ed62034f9c720539d9d1fee63fc41b4ac616ca189c31b2b0558d3618",
+    "source_bytes": 167671,
+    "log": "controls/so06-carrier-static-generic-active-host-activationSpan-positive.log",
+    "log_sha256": "e4c0b95f875f4244b152440e7d8b244301adfc0b436457155eb8962f53a65b03",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 184,
+    "command_index": 203,
+    "label": "so06-carrier-static-generic-active-host-activationSpan-negative",
+    "source_sha256": "0b7264f76e918c9d0d29ed1bdf098698ea36f7f907acdf1850a00329d51b6cec",
+    "source_bytes": 167650,
+    "log": "controls/so06-carrier-static-generic-active-host-activationSpan-negative.log",
+    "log_sha256": "bc1251219c8aecfcbb9db7964982c1decc32454bbeb9fd3a241706a765050bf6",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-generic-active-host-activationSpan-negative.swift:2525:5",
+        "message": "lifetime-dependent variable 'host' escapes its scope"
+      }
+    ]
+  },
+  {
+    "index": 185,
+    "command_index": 204,
+    "label": "so06-erasure-static-generic-active-host-optional-positive",
+    "source_sha256": "9e10fd5cd0bd1008c1dbd1ee4e34e3e935fe806f09937928e28de3576d6a33c1",
+    "source_bytes": 166082,
+    "log": "controls/so06-erasure-static-generic-active-host-optional-positive.log",
+    "log_sha256": "81cd3c7016d53ab54c9b0e68896f8421da6735cba0bcb2f95a6aa57f5b0a4b73",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 186,
+    "command_index": 205,
+    "label": "so06-erasure-static-generic-active-host-optional-negative",
+    "source_sha256": "bf23d1e4335734467c9de120f2949204760d089c6110267f7cfb3f399da09e93",
+    "source_bytes": 166069,
+    "log": "controls/so06-erasure-static-generic-active-host-optional-negative.log",
+    "log_sha256": "3c9baf95505aa6a3c4ac118abd8540da2ecf245331191195ef92457987ad4010",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-generic-active-host-optional-negative.swift:2520:448",
+        "message": "initializer 'init(value:)' requires that 'CounterHostOwner<G, C, R, H>' conform to 'Escapable'"
+      },
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-generic-active-host-optional-negative.swift:2520:448",
+        "message": "generic struct 'OwnedBox' requires that 'CounterHostOwner<G, C, R, H>' conform to 'Escapable'"
+      }
+    ]
+  },
+  {
+    "index": 187,
+    "command_index": 206,
+    "label": "so06-erasure-static-generic-active-host-tuple-positive",
+    "source_sha256": "bc1c6aefa845c3422f1fbe2a4e130edb8ee96b3dc609823d57c3e8b4549fdf20",
+    "source_bytes": 166461,
+    "log": "controls/so06-erasure-static-generic-active-host-tuple-positive.log",
+    "log_sha256": "d5f24c5314efb2929e9ecc99307760067c6ccad166c5f967be9324aa6991c333",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 188,
+    "command_index": 207,
+    "label": "so06-erasure-static-generic-active-host-tuple-negative",
+    "source_sha256": "0223d69e78dfea141f9c33152c56872045f3b658c928bfeb0bb0590225a4e0d1",
+    "source_bytes": 166055,
+    "log": "controls/so06-erasure-static-generic-active-host-tuple-negative.log",
+    "log_sha256": "53a0bde74b24b63f5405989386830a4f6adeea72993d8e3b6f723cb239d75aab",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-generic-active-host-tuple-negative.swift:2519:123",
+        "message": "tuple with noncopyable element type 'SignalAnalyzerPresetHostInstance<CounterHostOwner<G, C, R, H>>' is not supported"
+      },
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-generic-active-host-tuple-negative.swift:2519:122",
+        "message": "cannot infer the lifetime dependence scope on a function with a ~Escapable parameter, specify '@_lifetime(borrow input)' or '@_lifetime(copy input)'"
+      },
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-generic-active-host-tuple-negative.swift:2519:517",
+        "message": "type '(SignalAnalyzerPresetHostInstance<CounterHostOwner<G, C, R, H>>, Int)' containing noncopyable element is not supported"
+      }
+    ]
+  },
+  {
+    "index": 189,
+    "command_index": 208,
+    "label": "so06-erasure-static-generic-active-host-generic-positive",
+    "source_sha256": "6d003dd412f0fdb4fb1aea1236eb42c4ede21529f41a3e53ac799bca878aa4f2",
+    "source_bytes": 166078,
+    "log": "controls/so06-erasure-static-generic-active-host-generic-positive.log",
+    "log_sha256": "bd5e0199dff1666bf69742d3fe4142db1b39b158f663ea64961203171d8e8466",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 190,
+    "command_index": 209,
+    "label": "so06-erasure-static-generic-active-host-generic-negative",
+    "source_sha256": "7cb50233c22aa535551427e522a63b830b28abf5613d3753e9c9db145869c69c",
+    "source_bytes": 166065,
+    "log": "controls/so06-erasure-static-generic-active-host-generic-negative.log",
+    "log_sha256": "9d56733fb3cc038bb7e95c65607a49bb208de5b2ed29eb95fdef0795df496133",
+    "driver_status": "accepted",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-generic-active-host-generic-negative.swift:2520:444",
+        "message": "global function 'erase' requires that 'CounterHostOwner<G, C, R, H>' conform to 'Escapable'"
+      }
+    ]
+  },
+  {
+    "index": 191,
+    "command_index": 210,
+    "label": "so06-erasure-static-generic-active-host-closure-positive",
+    "source_sha256": "9242d6b38d47006d269d8e70eb0f142bded5bbaa720ab0357e41fe7f83cc7ee8",
+    "source_bytes": 166521,
+    "log": "controls/so06-erasure-static-generic-active-host-closure-positive.log",
+    "log_sha256": "3ef40f3b80f12fee006acbd6bab039777fdf12742861ce1b551a8d3d1f54e95a",
+    "driver_status": "accepted",
+    "compiler_exit_class": "zero",
+    "compiler_exit_code": 0,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": []
+  },
+  {
+    "index": 192,
+    "command_index": 211,
+    "label": "so06-erasure-static-generic-active-host-closure-negative",
+    "source_sha256": "cf893d0d9e2f2cd54c3e56c5469ed1c25e64e20b87ecb7fae9494a7a898c4b77",
+    "source_bytes": 166459,
+    "log": "controls/so06-erasure-static-generic-active-host-closure-negative.log",
+    "log_sha256": "810469abc0859d7fcbffba197341b977e0104c7be3fb419ce1854e7f9f7666d9",
+    "driver_status": "rejected-diagnostic-oracle",
+    "compiler_exit_class": "nonzero",
+    "compiler_exit_code": null,
+    "exit_basis": "inferred from sequential driver run check and diagnostic log; per-compiler numeric exits were not persisted for this failed invocation",
+    "diagnostics": [
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-generic-active-host-closure-negative.swift:2520:38",
+        "message": "'input' is borrowed and cannot be consumed"
+      },
+      {
+        "location": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-generic-active-host-closure-negative.swift:2520:38",
+        "message": "lifetime-dependent variable 'input' escapes its scope"
+      }
+    ]
+  }
+]

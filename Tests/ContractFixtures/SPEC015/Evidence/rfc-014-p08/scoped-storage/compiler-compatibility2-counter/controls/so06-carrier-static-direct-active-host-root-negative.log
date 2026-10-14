@@ -1,0 +1,83 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift:257:17: warning: variable 'extracted' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+255 |         case .active(let coordinator, let cache, let span):
+256 |             precondition(coordinator.isQuiescent && cache == nil)
+257 |             var extracted = coordinator.takeQuiescedOpportunity()
+    |                 `- warning: variable 'extracted' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+258 |             switch consume extracted {
+259 |             case .some(let pipeline): self = .retired(pipeline.retireQuiescedStorage(), span)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift:224:17: warning: variable 'extracted' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+222 |         case .active(let coordinator, let cache, let span):
+223 |             precondition(coordinator.isQuiescent && cache == nil)
+224 |             var extracted = coordinator.takeQuiescedOpportunity()
+    |                 `- warning: variable 'extracted' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+225 |             switch consume extracted {
+226 |             case .some(let pipeline): self = .retired(pipeline.retireQuiescedStorage(), span)
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-root-negative.swift:351:54: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 349 |             if failure == nil {
+ 350 |                 if before(.g0) { failure = .injected(.g0, 0) }
+ 351 |                 else if let object = s.b0.withBorrow { scopes in s.b1.withBorrow { text in StaticCounterLayoutWorkspace(scopes: scopes, text: text) } } {
+     |                                                      `- warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 352 |                     s.g0.install(consume object); record(s.g0.facts(id: .g0))
+ 353 |                     if after(.g0) { failure = .injected(.g0, 1) }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-root-negative.swift:358:54: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 356 |             if failure == nil {
+ 357 |                 if before(.g1) { failure = .injected(.g1, 0) }
+ 358 |                 else if let object = s.b0.withBorrow { scopes in s.b1.withBorrow { text in StaticCounterResolvedLayoutStorage(scopes: scopes, text: text) } } {
+     |                                                      `- warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 359 |                     s.g1.install(consume object); record(s.g1.facts(id: .g1))
+ 360 |                     if after(.g1) { failure = .injected(.g1, 1) }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-root-negative.swift:372:54: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 370 |             if failure == nil {
+ 371 |                 if before(.g3) { failure = .injected(.g3, 0) }
+ 372 |                 else if let object = s.b2.withBorrow { path in s.b3.withBorrow { plan in StaticCounterDrawingWorkspace(pathRegion: path, planRegion: plan, capacity: counterDrawingLimits).map { StaticRecordDrawingWorkspace(base: $0) } } } {
+     |                                                      `- warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 373 |                     s.g3.install(consume object); record(s.g3.facts(id: .g3))
+ 374 |                     if after(.g3) { failure = .injected(.g3, 1) }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-root-negative.swift:379:54: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 377 |             if failure == nil {
+ 378 |                 if before(.g4) { failure = .injected(.g4, 0) }
+ 379 |                 else if let object = s.b1.withBorrow { text in StaticCounterRenderWorkspace(region: text, capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity).map { QualifiedRender(base: $0) } } {
+     |                                                      `- warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 380 |                     s.g4.install(consume object); record(s.g4.facts(id: .g4))
+ 381 |                     if after(.g4) { failure = .injected(.g4, 1) }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-root-negative.swift:1040:26: warning: immutable value 'd' was never used; consider replacing with '_' or removing it [#NoUsage]
+1038 |     mutating func reset() {
+1039 |         switch descriptor {
+1040 |         case .static(let d):
+     |                          `- warning: immutable value 'd' was never used; consider replacing with '_' or removing it [#NoUsage]
+1041 |             resetRender(); resetPlan(); resetLayout()
+1042 |         #if !hasFeature(Embedded)
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-root-negative.swift:1043:27: warning: immutable value 'd' was never used; consider replacing with '_' or removing it [#NoUsage]
+1041 |             resetRender(); resetPlan(); resetLayout()
+1042 |         #if !hasFeature(Embedded)
+1043 |         case .dynamic(let d):
+     |                           `- warning: immutable value 'd' was never used; consider replacing with '_' or removing it [#NoUsage]
+1044 |             resetRender(); resetPlan(); resetLayout()
+1045 |         #endif
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-carrier-static-direct-active-host-root-negative.swift:2525:5: error: lifetime-dependent variable 'host' escapes its scope
+2518 | 
+2519 | @_lifetime(copy geometry, copy candidateRecords, copy candidateHitRegions, copy candidateCommittedRecords, copy committedRecords, copy committedHitRegions, copy models, copy semantic, copy values, copy control, copy activationSpan)
+2520 | fileprivate func carrierProbe(geometry: consuming P08GeometryAccess, candidateRecords: consuming P08CandidateAccess, candidateHitRegions: consuming P08HitAccess, candidateCommittedRecords: consuming P08CommittedAccess, committedRecords: consuming P08CommittedAccess, committedHitRegions: consuming P08HitAccess, models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: consuming CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly) -> SignalAnalyzerPresetHostInstance<CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>  {
+     |                                                                                                                                                                                                                                                                                                                                                                                                        `- note: it depends on the lifetime of argument 'root'
+2521 | let state = InteractionState(candidateRecords: candidateRecords, candidateHitRegions: candidateHitRegions, candidateCommittedRecords: candidateCommittedRecords, committedRecords: committedRecords, committedHitRegions: committedHitRegions)
+2522 | let interaction = InteractionOwnedKeyState(state: state, maximumComponentsPerKey: 24, maximumComponents: 48)!
+2523 | let supplied = CounterHostSuppliedStorage<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>(models: models, root: root, semantic: semantic, values: values, scopedControl: control, audit: assembly.report.storageAudit, geometry: geometry, interaction: interaction)
+2524 | let owner = CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: false)
+2525 | var host = SignalAnalyzerPresetHostInstances.macOSStatic(report: assembly.report, owner: owner)!
+     |     `- error: lifetime-dependent variable 'host' escapes its scope
+2526 | precondition(host.activate() == .active)
+2527 | return consume host
+     | `- note: this use causes the lifetime-dependent value to escape
+2528 | }
+2529 | 
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>
+[#VariableNeverMutated]: <https://docs.swift.org/compiler/documentation/diagnostics/variable-never-mutated>

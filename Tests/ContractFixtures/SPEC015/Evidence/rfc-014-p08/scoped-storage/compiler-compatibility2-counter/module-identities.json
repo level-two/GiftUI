@@ -1,0 +1,26 @@
+{
+  "status": "compiled successfully before scoped controls",
+  "log": "counter-model.log",
+  "artifacts": {
+    "P08CounterRuntime.o": {
+      "sha256": "5ff32eafb0320bf2eb889a8d8548a571fa5661aa8a1842ed6af462adb03642b7",
+      "bytes": 1942464
+    },
+    "P08CounterRuntime.swiftmodule": {
+      "sha256": "3f7ce5120c08d66f31ff3694a826a0e8c70186219cae292669303cc5fdcbc86f",
+      "bytes": 1354960
+    },
+    "P08CounterRuntime.swiftdoc": {
+      "sha256": "5772f473c108d1ceaddf22f7e03f1f6c30445b84aae7c80b610cb20c94f8f255",
+      "bytes": 4044
+    },
+    "P08CounterRuntime.swiftsourceinfo": {
+      "sha256": "5a39afbe17594864887bfbf8343806a379114b9641d6f658d4cdaf366d6f198e",
+      "bytes": 279792
+    },
+    "P08CounterRuntime.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    }
+  }
+}
