@@ -1,6 +1,7 @@
 # P08 collection setup — focused independent Strong rereview
 
-**B01–B03 closed by source; finish one narrow parser correction in this setup bundle.**
+**Current readiness: PASS for baseline collection after the final parser addendum below.**
+The initial focused assessment and its remaining parser finding are preserved here.
 Independent Sol 6.1 High review of `f9a8034f` against the
 [initial findings](p08-suite-collection-source-review.md) and
 [current batch activity](p08-suite-collection-activity.md). Only changed guard
@@ -43,3 +44,26 @@ focused assessment, then proceed to baseline collection without another user
 permission stop. Historical budgets/guard, all nine SO criteria, P08/fit and
 separate target/hardware/timing/lifecycle obligations remain unchanged/open.
 Only this compact review document is committed.
+
+## Final parser addendum — `b592c31d`
+
+Independent Strong narrow assessment closes the remaining parser finding.
+The parser recognizes primary diagnostic headers, ignores numbered source
+gutters only within a rendered diagnostic block, and permits repeated error
+annotations only when their message exactly matches the associated primary
+error. Unrecognized/unpaired error lines still reject. Site/message alternatives,
+prefix/wrong-file errors, additional real errors, crashes and invalid exit checks
+remain; the legacy tuple branch is unchanged.
+
+**22 compiler-free tests pass**, including the exact preserved two-primary/
+four-rendered-error closure log and mutations for wrong site/file/message,
+unexpected/unlocated errors, unpaired gutters and crash/exit cases. The intended
+structured oracle accepts that real log, while baseline `('escaping',)` still
+rejects it. No compiler, suite, probe, source fix or subagent in this assessment.
+
+B01–B03 remain closed. The coherent productive setup cycle is still **1/2
+consumed**, with no baseline invocation yet; cycle 2 remains for grouped
+collected-suite fixes. Proceed with the existing authorized baseline collection,
+preserving known matcher failures and complete coverage, without another user
+permission stop. This PASS establishes harness readiness only; P08/SO/runtime/
+target/resource/fit acceptance remains open. Only this review addendum changes.
