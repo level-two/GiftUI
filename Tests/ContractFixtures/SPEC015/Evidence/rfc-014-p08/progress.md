@@ -1,5 +1,26 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-04 independent source scope review — 2026-10-14
+
+At clean `97f1fe3b`, sequential independent Strong review `so04_scope_review`
+(Sol 6.1 High, no subagents) [confirms the source stop](scoped-storage/so04-source-scope-review.md).
+Concrete extension defaults independently require owned G/C/R/H; base suppression
+alone is insufficient. Sole opportunity/quiescence conformance is unlisted
+CounterAdmission.swift:13. Minimum known additional permission is that clause's
+four `~Copyable & ~Escapable` constraints only. No other predictable unlisted
+same-boundary extension was found; no witness-body change is identified. Exact
+scoped instantiation/syntax/body/compiler usability remains unproved.
+
+Classify as productive bounded source discovery, not compiler failure, completed
+SO-04 or consumed repair. Historical counters and cumulative guard are preserved,
+with no reset or fresh allowance. No source/driver/generator changes or compiler/
+build/executable/debugger/IR/image/formatter/target/hardware action. SO-04→06
+remain incomplete/stopped pending the exact maintainer scope decision; coherent
+source review and SO-07–09 remain required. All criteria/fit and I4-07/P09–P12
+limits remain intact. Documentation checks pass: `scripts/validate-governance.rb`
+(198 nodes, 2,019 edges and existing task manifests), 348 local Markdown file
+links across the five changed Markdown records, and `git diff --check`.
+
 ## SO-04 source inspection stop — 2026-10-14
 
 Clean authorized input `a8471eb3`; source inspection found the sole pipeline

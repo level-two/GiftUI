@@ -9,6 +9,10 @@ realization, corrective pass, compiler/build/test executable/debugger/IR/image,
 formatter, target or hardware invocation occurred. It is not a compiler failure
 receipt, SO-04 completion, coherent source freeze, buildability claim or fit claim.
 
+The [independent Strong review](so04-source-scope-review.md) at `97f1fe3b`
+confirms this source inference and the minimum known clause-only scope addition;
+maintainer scope authorization remains pending. No compiler failure was demonstrated.
+
 ## Exact source-backed finding
 
 The selected pipeline must accept scoped geometry and all five Interaction

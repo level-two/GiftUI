@@ -1,5 +1,12 @@
 # RFC-014 task context guide
 
+Independent scope review — 2026-10-14: [Strong review of `97f1fe3b`](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-source-scope-review.md)
+confirms the extension-default inference and minimum CounterAdmission.swift
+conformance-clause-only addition. No compiler failure demonstrated; no other
+predictable unlisted same-boundary extension found. Productive source discovery,
+no source realization/repair or allowance reset. Exact maintainer scope decision
+is pending; SO-04→06 stay stopped/incomplete and all gates/counters remain intact.
+
 Current source stop — 2026-10-14: clean authorized `a8471eb3` inspection
 identified the sole pipeline opportunity conformance in unlisted
 `CounterAdmission.swift`:13. Its missing suppressed generic extension

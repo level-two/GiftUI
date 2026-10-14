@@ -22,7 +22,8 @@ features:
     # ADR-039 accepted; exact S11/S13/S15 amendments approved/applied 2026-10-13; nine SO criteria unmet.
     # Provenance: docs/iterations/iteration-003-review/rfc-015-contract-acceptance.md.
     # Shared/owner SO plans adopted; SO-03 native evidence reviewed; SO-04–06 source package authorized 2026-10-14.
-    # Source inspection stopped at unlisted CounterAdmission.swift conformance; independent scope review pending.
+    # Source inspection stopped at unlisted CounterAdmission.swift conformance; independent review confirms clause-only addition, human scope decision pending.
+    # Review: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-source-scope-review.md; no compiler failure demonstrated or allowance reset.
     # Checkpoint: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-source-scope-stop.md; SO-07–09 pending.
     # Package: docs/iterations/iteration-003-review/rfc-015-p08-handoff.md; closed execution budgets preserved.
     # SPIKE-075 completed: bounded native declarations/copy/function-return controls pass; series closed.
