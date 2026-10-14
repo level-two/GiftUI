@@ -1,0 +1,146 @@
+counter-model: /Users/eugene/work/GiftUI/.build/contracts/p08-counter-l5svlxmv
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:351:54: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 349 |             if failure == nil {
+ 350 |                 if before(.g0) { failure = .injected(.g0, 0) }
+ 351 |                 else if let object = s.b0.withBorrow { scopes in s.b1.withBorrow { text in StaticCounterLayoutWorkspace(scopes: scopes, text: text) } } {
+     |                                                      `- warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 352 |                     s.g0.install(consume object); record(s.g0.facts(id: .g0))
+ 353 |                     if after(.g0) { failure = .injected(.g0, 1) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:358:54: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 356 |             if failure == nil {
+ 357 |                 if before(.g1) { failure = .injected(.g1, 0) }
+ 358 |                 else if let object = s.b0.withBorrow { scopes in s.b1.withBorrow { text in StaticCounterResolvedLayoutStorage(scopes: scopes, text: text) } } {
+     |                                                      `- warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 359 |                     s.g1.install(consume object); record(s.g1.facts(id: .g1))
+ 360 |                     if after(.g1) { failure = .injected(.g1, 1) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:372:54: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 370 |             if failure == nil {
+ 371 |                 if before(.g3) { failure = .injected(.g3, 0) }
+ 372 |                 else if let object = s.b2.withBorrow { path in s.b3.withBorrow { plan in StaticCounterDrawingWorkspace(pathRegion: path, planRegion: plan, capacity: counterDrawingLimits).map { StaticRecordDrawingWorkspace(base: $0) } } } {
+     |                                                      `- warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 373 |                     s.g3.install(consume object); record(s.g3.facts(id: .g3))
+ 374 |                     if after(.g3) { failure = .injected(.g3, 1) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:379:54: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 377 |             if failure == nil {
+ 378 |                 if before(.g4) { failure = .injected(.g4, 0) }
+ 379 |                 else if let object = s.b1.withBorrow { text in StaticCounterRenderWorkspace(region: text, capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity).map { QualifiedRender(base: $0) } } {
+     |                                                      `- warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 380 |                     s.g4.install(consume object); record(s.g4.facts(id: .g4))
+ 381 |                     if after(.g4) { failure = .injected(.g4, 1) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1040:26: warning: immutable value 'd' was never used; consider replacing with '_' or removing it [#NoUsage]
+1038 |     mutating func reset() {
+1039 |         switch descriptor {
+1040 |         case .static(let d):
+     |                          `- warning: immutable value 'd' was never used; consider replacing with '_' or removing it [#NoUsage]
+1041 |             resetRender(); resetPlan(); resetLayout()
+1042 |         #if !hasFeature(Embedded)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1043:27: warning: immutable value 'd' was never used; consider replacing with '_' or removing it [#NoUsage]
+1041 |             resetRender(); resetPlan(); resetLayout()
+1042 |         #if !hasFeature(Embedded)
+1043 |         case .dynamic(let d):
+     |                           `- warning: immutable value 'd' was never used; consider replacing with '_' or removing it [#NoUsage]
+1044 |             resetRender(); resetPlan(); resetLayout()
+1045 |         #endif
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift:257:17: warning: variable 'extracted' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+255 |         case .active(let coordinator, let cache, let span):
+256 |             precondition(coordinator.isQuiescent && cache == nil)
+257 |             var extracted = coordinator.takeQuiescedOpportunity()
+    |                 `- warning: variable 'extracted' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+258 |             switch consume extracted {
+259 |             case .some(let pipeline): self = .retired(pipeline.retireQuiescedStorage(), span)
+
+Begin Error in Function: '$s17P08CounterRuntime03p08B5Graph7backingSiSwSg_tFSiAA0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLVz_AA0A15StaticOuterViewAFLLVtXEfU_'
+Have operand with incompatible ownership?!
+Value:   %7 = mark_unresolved_non_copyable_value [no_consume_or_assign] %6 : $P08StaticOuterView // users: %380, %397, %359, %322, %247, %236, %225, %206, %116, %98, %79, %11, %8
+User:   copy_addr %7 to [init] %246 : $*P08StaticOuterView // id: %247
+Operand Number: 0
+Conv: owned
+Constraint:
+<Constraint Kind:none LifetimeConstraint:NonLifetimeEnding>
+End Error in Function: '$s17P08CounterRuntime03p08B5Graph7backingSiSwSg_tFSiAA0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLVz_AA0A15StaticOuterViewAFLLVtXEfU_'
+Found ownership error?!
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift:224:17: warning: variable 'extracted' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+222 |         case .active(let coordinator, let cache, let span):
+223 |             precondition(coordinator.isQuiescent && cache == nil)
+224 |             var extracted = coordinator.takeQuiescedOpportunity()
+    |                 `- warning: variable 'extracted' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+225 |             switch consume extracted {
+226 |             case .some(let pipeline): self = .retired(pipeline.retireQuiescedStorage(), span)
+
+<unknown>:0: error: fatal error encountered during compilation; please submit a bug report (https://swift.org/contributing/#reporting-bugs)
+<unknown>:0: note: triggering standard assertion failure routine
+Please submit a bug report (https://swift.org/contributing/#reporting-bugs) and include the crash backtrace.
+Stack dump:
+0.	Program arguments: /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-frontend -frontend -c /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift -supplementary-output-file-map /var/folders/38/tc_rs_016rz5chj25dzt9nfm0000gn/T/TemporaryDirectory.ruEjnP/supplementaryOutputs-1 -target arm64-apple-macosx26.0 -Xllvm -aarch64-use-tbi -enable-objc-interop -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -I /Users/eugene/work/GiftUI/.build/contracts/p08-counter-l5svlxmv -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ezcy1qan -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/af66aaf967e3fe8f-__4p5wu2/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/af66aaf967e3fe8f-__4p5wu2/macos-dynamic -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-counter-l5svlxmv/cache -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -swift-version 6 -Osize -D GIFTUI_DYNAMIC_PROFILE -D GIFTUI_COUNTER_ROUTE_DYNAMIC -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -empty-abi-descriptor -load-plugin-executable /Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros -disable-sandbox -no-auto-bridging-header-chaining -module-name P08CounterRuntime -package-name giftui -in-process-plugin-server-path /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -plugin-path /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/lib/swift/host/plugins -plugin-path /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/local/lib/swift/host/plugins -target-sdk-version 26.5 -target-sdk-name macosx26.5 -external-plugin-path /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/swift/host/plugins#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server -external-plugin-path /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/local/lib/swift/host/plugins#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server -enable-default-cmo -parse-as-library -o /Users/eugene/work/GiftUI/.build/contracts/p08-counter-l5svlxmv/P08CounterRuntime.o
+1.	Apple Swift version 6.4 (swift-6.4-RELEASE)
+2.	Compiling with the current language version
+3.	While evaluating request ExecuteSILPipelineRequest(Run pipelines { SILGen Passes } on SIL for P08CounterRuntime)
+4.	While running pass #0 SILModuleTransform "SILGenCleanup".
+5.	While silgen cleanup SIL function "@$s17P08CounterRuntime03p08B5Graph7backingSiSwSg_tFSiAA0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLVz_AA0A15StaticOuterViewAFLLVtXEfU_".
+ for expression at [/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:2151:176 - line:2177:9] RangeText="{ owner, outer in
+        guard case .valid(let audit) = outer.audit(owner: owner) else { preconditionFailure("counter graph audit") }
+        func reject(_ negative: CounterConstructionNegative) {
+            let graph = CounterHostGraph(negative: negative)
+            precondition(HostComponentGraphValidation.validate(graph) == nil)
+            var observation = CounterConstructionObservation()
+            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, negative: negative, observation: &observation) == nil)
+            precondition(observation.result == .invalid(stage: .graph, error: .invalidGraph))
+            precondition(observation.hasNoLaterReads)
+            precondition(outer.control.pointee.applicationConstructions == 0 && outer.control.pointee.finalized == 0 && outer.control.pointee.wake == nil)
+            count += 5
+        }
+        for origin: UInt8 in 0...5 { reject(.omitted(.rasterEndpoint, origin)) }
+        reject(.omitted(.factAdmission, 0))
+        reject(.omitted(.rootModelTarget, 0))
+        for origin: UInt8 in [0, 2, 3, 4, 5] { reject(.omitted(.wakeRequester, origin)) }
+        reject(.hiddenSelectedText)
+        reject(.hiddenRetainedReport)
+        reject(.undeclaredBoundText)
+        var positive = CounterConstructionObservation()
+        precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, negative: nil, observation: &positive) != nil)
+        guard case .valid? = positive.result else { preconditionFailure("counter graph positive") }
+        precondition(positive.runtimeReads == 1 && positive.textReads == 1 && positive.workloadReads == 1 && positive.capabilityReads == 1 && positive.endpointReads == 1 && positive.applicationReads == 1 && positive.inputReads == 1 && positive.policyReads == 1)
+        precondition(outer.control.pointee.applicationConstructions == 0 && outer.control.pointee.finalized == 0 && outer.control.pointee.wake == nil)
+        count += 4
+        return count
+        "
+ #0 0x0000000107cbc558 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x10542c558)
+ #1 0x0000000107cba880 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x10542a880)
+ #2 0x0000000107cbcf94 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x10542cf94)
+ #3 0x0000000182d19744 (/usr/lib/system/libsystem_platform.dylib+0x180509744)
+ #4 0x0000000182d0f8d8 (/usr/lib/system/libsystem_pthread.dylib+0x1804ff8d8)
+ #5 0x0000000182c15978 (/usr/lib/system/libsystem_c.dylib+0x180405978)
+ #6 0x0000000102d4445c (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x1004b445c)
+ #7 0x0000000107c3b310 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x1053ab310)
+ #8 0x0000000107c3b210 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x1053ab210)
+ #9 0x00000001034d3658 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100c43658)
+#10 0x00000001034da518 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100c4a518)
+#11 0x00000001034da604 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100c4a604)
+#12 0x00000001034da7b0 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100c4a7b0)
+#13 0x00000001034da31c (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100c4a31c)
+#14 0x00000001034da0e4 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100c4a0e4)
+#15 0x00000001034dbbbc (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100c4bbbc)
+#16 0x00000001034dbeb4 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100c4beb4)
+#17 0x000000010373decc (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100eadecc)
+#18 0x0000000103751c54 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100ec1c54)
+#19 0x0000000103753274 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100ec3274)
+#20 0x000000010374e71c (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100ebe71c)
+#21 0x000000010374e69c (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100ebe69c)
+#22 0x0000000103770bd8 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100ee0bd8)
+#23 0x0000000103754e14 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100ec4e14)
+#24 0x000000010374e8d8 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100ebe8d8)
+#25 0x0000000103755f6c (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x100ec5f6c)
+#26 0x0000000102d5c284 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x1004cc284)
+#27 0x0000000102b49170 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x1002b9170)
+#28 0x0000000102b48b48 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x1002b8b48)
+#29 0x0000000102b4ca28 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x1002bca28)
+#30 0x0000000102b4a04c (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x1002ba04c)
+#31 0x00000001028c29b0 (/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend+0x1000329b0)
+#32 0x00000001829444e4
+

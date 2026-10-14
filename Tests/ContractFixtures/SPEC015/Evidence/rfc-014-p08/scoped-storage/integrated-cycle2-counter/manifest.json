@@ -1,0 +1,13 @@
+{
+  "source_revision": "8ef34f59",
+  "review_revision": "72bd3a11",
+  "driver_output": ".build/contracts/p08-counter-l5svlxmv",
+  "files": {
+    "counter-model.log": "ae088523a9264212d321b9f9948d026b1cd14bb4ed9bf56ab9ecf2bdb33c0518",
+    "stderr.log": "fa3fff4af374796a52cf2948d3423d5e3b24e946fca51c6861688cf07203b033",
+    "result.json": "fea9be046901ee4d53a690ffe5154f6c52373bedccf35d5d8052c76ba36df2b8",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "commands.txt": "753b1d078f44300a897a8f2204e2f04922152ab07ee7403e24cf0c3f900bffb0",
+    "invocation.json": "b2c3706838dda98c2fbef6ffac8e1a8788c5243567809266efe9c93f6d146824"
+  }
+}
