@@ -1,0 +1,13 @@
+{
+  "source_revision": "bbb54fc1",
+  "review_revision": "7002a953",
+  "driver_output": ".build/contracts/p08-counter-ldxvgm61",
+  "files": {
+    "counter-model.log": "e75e2a29c46487c105808db86246cd0156299ee6f2e9b09d7f6cfff7b5c0ebbc",
+    "stderr.log": "beb34ad2c6834277914cf78c70a0a4d36dc10ef7acbc7e5fa6004b17cbb82c5c",
+    "result.json": "8cb3a0b871276300d4c1078a17783238d295d8a1c53413ee219178afb417ad11",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "commands.txt": "88f186e9435efbe2cccc6ae7e8d9a12c0cc645a25c18c57db1e827722b626568",
+    "invocation.json": "25e2e77d3d28c21d9167484046e2de0b8f5ca9a63b7f6147b780ea61f62f74da"
+  }
+}

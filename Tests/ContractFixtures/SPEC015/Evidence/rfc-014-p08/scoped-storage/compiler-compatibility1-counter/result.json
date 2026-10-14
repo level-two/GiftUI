@@ -1,0 +1,31 @@
+{
+  "label": "compatibility1-macos-dynamic-counter",
+  "argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "macos-dynamic",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-ezcy1qan"
+  ],
+  "cwd": "/Users/eugene/work/GiftUI",
+  "started": "2026-10-14T16:26:59.156531+00:00",
+  "revision": "7002a9530a4aaad20c431b21bceb80bd770fc9db",
+  "status_before": "",
+  "exit": 1,
+  "finished": "2026-10-14T16:27:43.050722+00:00",
+  "status_after": "",
+  "artifacts": {
+    "stdout.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "stderr.log": {
+      "sha256": "beb34ad2c6834277914cf78c70a0a4d36dc10ef7acbc7e5fa6004b17cbb82c5c",
+      "bytes": 19408
+    }
+  }
+}
