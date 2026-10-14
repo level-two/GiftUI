@@ -102,3 +102,31 @@ All nine SO criteria, HC-RD-003/P08/R07/T8.1 and actual fit remain open at entry
 SPEC-011/013/015 remain implementing, plans active. I4-07/P09–12, timing and
 hardware obligations retain their separate scope. No authority change or new
 acceptance evidence follows merely from this activity record.
+
+## Initial native diagnostic sequencing — 2026-10-14
+
+At source `e2d9db9c` / review `29269b22`, source-readiness fails B01:
+current-origin test dispatch bypasses the admitted/sealed execution mutation
+phase. O01 asks for a stronger zero-effect fingerprint. Neither is corrected
+or waived. To batch implementation/compiler defects into corrective cycle 1,
+use the already predefined initial macOS Dynamic cells before correction,
+stopping at the first unexpected result. This adds no probe, variant, matrix
+cell or retry. Passing dependency checks keep their exact evidence; nothing
+from this pre-correction counter can close B01 or establish source acceptance.
+Independent diagnosis then bundles B01/O01 and actual diagnostics into the
+first of the maximum two corrective cycles. Prior budgets remain closed.
+
+Pinned Swift 6.4 `scripts/format-swift.sh` completed exit 0 with no source diff.
+Read-only preflight matched all four core receipts against current GiftUI/
+GiftUIMacros sources, GiftUI object/module, compiler and macro hashes. Initial
+exact cell 1 is:
+
+```text
+scripts/contracts/run-spec-011.sh --profile macos-dynamic --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014-swift64/af66aaf967e3fe8f-__4p5wu2/macos-dynamic
+```
+
+The recorder preserves exact argv, entry/exit revision/status, timestamps,
+stdout/stderr hashes and result under a unique `.build/contracts/p08-integrated-activity/`
+directory before/after each cell. Subsequent cells use actual emitted paths,
+never guessed ones. No source edits while a cell is running. Current corrective
+cycles remain 0/2; the initial cell is recorded as consumed when invoked.
