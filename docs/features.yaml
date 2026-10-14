@@ -21,6 +21,7 @@ features:
     # Allocation: docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md.
     # ADR-039 accepted; exact S11/S13/S15 amendments approved/applied 2026-10-13; nine SO criteria unmet.
     # Provenance: docs/iterations/iteration-003-review/rfc-015-contract-acceptance.md.
+    # Deferred validation-cost opportunity FW-038 is captured from SPEC-015; no current checks or contract change.
     # Current compatibility continuation STOP: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-compiler-compatibility1-result.md; candidate1/run1 consumed, 10explicit lifetime diagnostics, no repairs; historical2/2closed, P08/fitopen.
     # Historical P08 package STOP: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-package-stop.md; final Swift6.4 ownership compiler crash, 2/2 repairs exhausted, 3component passes, counter/runtime/target/fit open.
     # Historical final corrective cycle2/2 freeze: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-cycle2-source-freeze.md; exact Int→UInt64 conversion/new pinned qualification, review/rerun pending; next failure invokes budget stop, all criteria/fit open.

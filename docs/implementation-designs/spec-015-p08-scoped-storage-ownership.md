@@ -8,7 +8,8 @@ authors:
 created: 2026-10-13
 updated: 2026-10-14
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
-related_future_work: []
+related_future_work:
+  - FW-038
 related_explorations: []
 related_spikes: []
 supersedes: null
@@ -808,3 +809,10 @@ for the remaining repeat-host finding; independent Strong design review precedes
 any separate bounded source allowance. All acceptance criteria/statuses and
 historical budgets remain unchanged. FW-037/I4-06 remains the separate Core-wide
 assessment.
+
+## Deferred and Follow-up Work — validation cost
+
+[FW-038](../future-work/fw-038-scoped-contract-validation-cost.md) preserves the
+question of reducing repeated scoped compiler validation cost after correctness
+evidence is recorded, without weakening lifetime, positive/negative or profile
+coverage. The current registered driver and resource gates remain unchanged.

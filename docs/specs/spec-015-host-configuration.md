@@ -64,6 +64,7 @@ related_specs:
   - SPEC-013
   - SPEC-014
 related_future_work:
+  - FW-038
   - FW-009
   - FW-035
   - FW-022
@@ -1757,6 +1758,10 @@ fact-burst, failure normalization, deterministic mock trace, diagnostic, and
 exact host-fixture alignment.
 
 ## Deferred and Follow-up Work
+
+[FW-038](../future-work/fw-038-scoped-contract-validation-cost.md) captures the
+repeated full-source cost of P08 scoped compiler validation. It adds no current
+driver change, omitted check or evidence exception.
 
 - ADR-038's construction/operation separation may help future composition work,
   but [FW-035](../future-work/fw-035-generated-view-graph-for-interchangeable-frontends.md)
