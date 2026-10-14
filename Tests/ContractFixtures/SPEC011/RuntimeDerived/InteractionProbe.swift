@@ -310,6 +310,7 @@ where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
             for component in [SemanticPathComponent(kind: .root), .init(kind: .declarationRole, role: 1), .init(kind: .declarationRole, role: 2)] {
                 if let error = bank.enter(component, limits: store.limits) { throw error }
             }
+            if let error = bank.appendRecord(limits: store.limits) { throw error }
             let empty: InlineArray<0, UInt32> = .init(repeating: 0)
             if let error = bank.store(.standard(.action(role: 9, code: 1)), kind: .action,
                 text: empty.span, limits: store.limits) { throw error }
