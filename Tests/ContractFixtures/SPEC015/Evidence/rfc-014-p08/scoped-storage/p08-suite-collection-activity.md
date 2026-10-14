@@ -1,6 +1,9 @@
 # P08 suite collection activity — 2026-10-14
 
 Status: **active; harness source frozen, independent review and suite collection pending**.
+Current setup correction below consumes **cycle 1/2**; grouped collected-suite
+corrections retain cycle 2. The initial `d6792a06` freeze below remains historical;
+the appended setup freeze supersedes its schema/readiness descriptions.
 SPEC-015 remains implementing under its active plan, accepted ADR-039 and the
 approved RFC-014/RFC-015 amendments. This is the ITERATION-003 finite-counter
 dependency/validation path, not a contract or scope amendment.
@@ -99,3 +102,58 @@ tests; Python AST parsing, `bash -n scripts/contracts/run-spec-015.sh` and scope
 `git diff --check` pass. These are harness mechanics checks, not compiler/runtime
 or P08/fit evidence. Baseline collection, grouped corrections, all remaining
 registered cells, images, nine SO criteria, HC-RD-003 and P08/fit remain open.
+
+## Bundled setup correction — B01–B03
+
+The [independent source review](p08-suite-collection-source-review.md) at
+`170f93d3` found generation/dependency omissions in legacy proof, unconditional
+target compile claims and unguarded observation-oracle drift. This coherent
+post-freeze setup correction **consumes cycle 1/2** of the current two-cycle
+batch. Productivity is pending independent focused rereview. Historical budgets
+stay closed; the two-consecutive-unproductive guard persists. Baseline collection
+still follows once the harness is qualified, collecting routine failures without
+per-error user stops. Their grouped correction/focused validation belongs to
+cycle 2; this setup step does not invent a separate zero-repair gate.
+
+- **B01:** Before any legacy import, all maintained compiled/preparation Swift
+  inputs and lowering schema/source match `cab1c415`. All nineteen preparation
+  commands match the immutable packet and must succeed. Historical runtime and
+  host receipt hashes are pinned; runtime's transitive core receipt, compiler,
+  macro and MacroSupport identities are exact. The driver verifies the actual
+  core receipt hash and MacroSupport bytes in addition to existing compiler,
+  macro and imported module/artifact checks. Preparation source checks also apply
+  to actual command tokens, so an omitted inventory entry cannot evade them.
+  Source/generation/dependency drift rejects this narrow import; unchanged current
+  preparation is no longer treated as sufficient historical equivalence.
+- **B02:** Target compile evidence and `objects.list` require every preparation
+  check, the counter model and every declared object. Failed, blocked or missing
+  requirements yield an unavailable statement and remove any inherited inventory.
+  Partial/copied objects alone do not establish success.
+- **B03:** Runtime observations now use finite helper-evaluated oracle data,
+  prerequisites and evidence path bound into their identities. Reuse checks require
+  exact single occurrence; summary checks require positive assertions/zero
+  failures. `runtime-summary` belongs to `runtime`. Changed unselected observations
+  are rejected, and an unselected old failed observation cannot upgrade from reused
+  evidence. Complete focused receipts now require **schema 2**; initial schema-1
+  receipts cannot qualify observation reuse. Baseline matcher tuples remain unchanged.
+
+Commands above remain applicable. Validation:
+`python3 scripts/contracts/test_p08_check_collection.py` passes **20 compiler-free
+tests**, including generator/preparation/compiler/macro/dependency drift,
+unavailable target inventories and the unselected runtime-observation reproduction.
+Python AST parsing, `bash -n scripts/contracts/run-spec-015.sh` and
+`git diff --check` pass. No actual compiler, runtime, suite, formatter, target image,
+hardware operation or delegation occurred. Source fixtures/flags/registered
+384/202 compiler, five native and thirteen-per-route reuse controls are unchanged.
+
+Current setup freeze hashes (shell forwarding remains the initial hash):
+
+| File | SHA-256 |
+| --- | --- |
+| `scripts/contracts/check-spec-015-counter.py` | `17a7fa14e72707c1bc29003e6b1a13ddf5134f2098f54f84dab9c5073c88428b` |
+| `scripts/contracts/p08_check_collection.py` | `443af9f5abdb872a0c6f4c3efee8ec96a170f96aba941e6fa890319636942152` |
+| `scripts/contracts/test_p08_check_collection.py` | `88eecedd1fbf2dc328cbb0d43da3ef9da402f670b50b90546aeee9b66e5940da` |
+
+Independent rereview, baseline whole-suite collection, grouped suite corrections,
+focused aggregate evidence and all previously open P08/fit obligations remain
+pending. Source mechanics tests do not establish Swift or target conformance.

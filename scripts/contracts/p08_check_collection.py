@@ -19,7 +19,7 @@ def family(label):
         return '-'.join(label.split('-')[:2])
     if label.startswith('so06-native-exclusivity-'):
         return 'so06-native-exclusivity'
-    if label.startswith('so06-reuse-') or label in ('link', 'execute'):
+    if label.startswith('so06-reuse-') or label in ('link', 'execute', 'runtime-summary'):
         return 'runtime'
     return re.sub(r'-(positive|negative)$', '', label)
 
@@ -63,8 +63,8 @@ class Collector:
         self.prior = None
         if self.resume:
             self.prior = json.loads((self.resume / 'result.json').read_text())
-            if self.prior.get('collection_schema') != 1 or not self.prior.get('collection_complete'):
-                raise ValueError('focused reuse requires a complete schema-1 collection receipt')
+            if self.prior.get('collection_schema') != 2 or not self.prior.get('collection_complete'):
+                raise ValueError('focused reuse requires a complete schema-2 collection receipt')
             for name, expected in self.prior['artifacts'].items():
                 if digest(self.resume / name) != expected['sha256']:
                     raise ValueError('prior artifact drift: ' + name)
@@ -72,7 +72,7 @@ class Collector:
             if len(self.previous) != len(self.prior['checks']):
                 raise ValueError('duplicate prior check labels')
             for check in self.previous.values():
-                if 'identity' not in check or check['status'] == 'blocked':
+                if 'identity' not in check or 'observation' in check['identity'] or check['status'] == 'blocked':
                     continue
                 log = self.resume / (check['name'] + '.log')
                 if not log.is_file() or digest(log) != check.get('log_sha256'):
@@ -91,6 +91,8 @@ class Collector:
                     shutil.copy2(path, out / path.name)
         self.legacy, self.legacy_commands, self.legacy_out = {}, [], None
         self.legacy_verified_sources = set()
+        self.legacy_inputs_qualified = False
+        self.legacy_preparation_labels = []
         if legacy:
             packet = pathlib.Path(legacy).resolve()
             manifest_path = packet / 'manifest.json'
@@ -111,6 +113,22 @@ class Collector:
         self.flush()
 
     def verify_inputs(self, inputs, identity):
+        if self.legacy:
+            expected = dict(profile='macos-dynamic', selected_host_profile='macos-dynamic', raster_realization='full-surface',
+                            runtime_receipt_sha256='ec640f13aedd202725ad02e52a5e56e56357b5d3e034b3792788fe95feae4446',
+                            host_receipt_sha256='8ccd2c004117f31f1843584fb157b5a0b5f93669505db88166eafe83f871c64d',
+                            core_receipt_sha256='05f06a2eb45db2a196b7a76bdfbd5ee1429a802640dd00aa1ce251020b699402',
+                            compiler_sha256='79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69',
+                            macro_tool_sha256='6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691',
+                            swift_syntax_sha256='63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308')
+            for key, value in expected.items():
+                if identity.get(key) != value:
+                    raise ValueError('legacy dependency/recipe identity drift: ' + key)
+            for name in inputs:
+                if name.endswith(('.swift', '.schema.json')):
+                    self.verify_legacy_source(self.root / name)
+            self.legacy_inputs_qualified = True
+            self.legacy_identity['qualified_dependencies'] = expected
         if self.prior:
             for key, value in identity.items():
                 if self.prior.get(key) != value:
@@ -122,6 +140,28 @@ class Collector:
                     raise ValueError('focused compiled input drift; collect full suite: ' + name)
             if set(old) != set(inputs):
                 raise ValueError('focused input inventory drift')
+
+    def verify_legacy_source(self, path):
+        if path in self.legacy_verified_sources:
+            return
+        original = subprocess.run(['git', 'show', 'cab1c415:' + str(path.relative_to(self.root))],
+                                  cwd=self.root, capture_output=True, check=True).stdout
+        if hashlib.sha256(original).hexdigest() != digest(path):
+            raise ValueError('legacy compiled/generation input drift: ' + str(path))
+        self.legacy_verified_sources.add(path)
+
+    def legacy_preparation(self, label, command):
+        if not self.legacy:
+            return
+        index = len(self.legacy_preparation_labels)
+        if (not self.legacy_inputs_qualified or index >= 19
+                or self.normalize(shlex.split(self.legacy_commands[index]), self.legacy_out) != self.normalize(map(str, command))):
+            raise ValueError('legacy preparation command/qualification drift: ' + label)
+        for token in command:
+            path = pathlib.Path(token)
+            if str(path).endswith(('.swift', '.schema.json')) and path.is_file() and not path.is_relative_to(self.out):
+                self.verify_legacy_source(path)
+        self.legacy_preparation_labels.append(label)
 
     def normalize(self, command, directory=None):
         directory = directory or self.out
@@ -175,6 +215,9 @@ class Collector:
                                      log_sha256=digest(log) if log.exists() else None))
             return log.read_text() if log.exists() else ''
         if label in self.legacy:
+            if (not self.legacy_inputs_qualified or len(self.legacy_preparation_labels) != 19
+                    or not all(self.passed(name) for name in self.legacy_preparation_labels)):
+                raise ValueError('legacy controls require exact successful historical-equivalent preparation')
             old = self.legacy[label]
             expected_command = shlex.split(self.legacy_commands[old['command_index'] - 1])
             if self.normalize(expected_command, self.legacy_out) != identity['command']:
@@ -185,11 +228,7 @@ class Collector:
             for token in command:
                 path = pathlib.Path(token)
                 if path.suffix == '.swift' and path.is_file() and not path.is_relative_to(self.out) and path not in self.legacy_verified_sources:
-                    original = subprocess.run(['git', 'show', 'cab1c415:' + str(path.relative_to(self.root))],
-                                              cwd=self.root, capture_output=True, check=True).stdout
-                    if hashlib.sha256(original).hexdigest() != digest(path):
-                        raise ValueError('legacy compiled input drift: ' + str(path))
-                    self.legacy_verified_sources.add(path)
+                    self.verify_legacy_source(path)
             log = pathlib.Path(old['packet']) / old['log']
             shutil.copy2(log, self.out / (label + '.log'))
             accepted = old['driver_status'] == 'accepted'
@@ -212,11 +251,37 @@ class Collector:
                                  passed=okay, log_sha256=digest(log)))
         return output
 
-    def observation(self, label, okay, requires=(), evidence=None):
+    def observation(self, label, oracle, requires=(), evidence=None):
+        group = family(label)
+        self.seen_families.add(group)
+        identity = dict(observation=oracle, requires=list(requires), evidence=evidence)
+        old = self.previous.get(label)
+        if self.prior and group not in self.selected and (old is None or old.get('identity') != identity):
+            raise ValueError('changed or missing observation requires complete --select-family ' + group)
         missing = [name for name in requires if not self.passed(name)]
-        self.record(dict(name=label, family=family(label), exit=None, passed=okay and not missing,
+        path = self.out / evidence if evidence else None
+        output = path.read_text() if path and path.is_file() else ''
+        if (set(oracle) == {'kind', 'line', 'count'} and oracle['kind'] == 'exact-line-count'
+                and isinstance(oracle['line'], str) and oracle['line'] and oracle['count'] == 1):
+            okay = output.splitlines().count(oracle['line']) == oracle['count']
+        elif oracle == {'kind': 'positive-counter-summary', 'failures': 0}:
+            okay = any(re.fullmatch(r'P08 counter components assertions=[1-9][0-9]* failures=0', line) for line in output.splitlines())
+        else:
+            raise ValueError('unsupported finite observation oracle')
+        if self.prior and group not in self.selected and okay and not missing and not old['passed']:
+            raise ValueError('unselected failed observation cannot upgrade using reused evidence')
+        self.record(dict(name=label, family=group, identity=identity, exit=None, passed=okay and not missing,
                          status='blocked' if missing else 'passed' if okay else 'failed',
-                         prerequisites=missing, evidence=evidence))
+                         prerequisites=missing, evidence=evidence, evidence_sha256=digest(path) if path and path.is_file() else None))
+
+    def target_compilation(self, required, objects):
+        path = self.out / 'objects.list'
+        if path.exists():
+            path.unlink()
+        if not all(self.passed(name) for name in required) or not all(object_path.is_file() for object_path in objects):
+            return 'selected target counter compilation evidence unavailable; required preparation/module failed, blocked or missing'
+        path.write_text('\n'.join(map(str, objects)) + '\n')
+        return 'cross-compiled current selected counter host only; no target execution or linked-image claim'
 
     def finish(self):
         if self.selected - self.seen_families:
