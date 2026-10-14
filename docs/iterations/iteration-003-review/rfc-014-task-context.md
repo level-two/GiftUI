@@ -1,6 +1,22 @@
 # RFC-014 task context guide
 
-Current frozen-executable diagnostic — 2026-10-14: [First-trap result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/trap-diagnostic/result.md)
+Current independent trap review — 2026-10-14: [Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/trap-diagnostic/independent-review.md)
+passes diagnostic scope/identities and proves a local Canvas fixture defect:
+InteractionProbe.swift stores an action without appendRecord; records stays 0,
+so store must fail invalidIdentity if reached. Exact observed PC-to-condition
+mapping and host-check completion remain unproved. Proposed only, NOT AUTHORIZED:
+one checked appendRecord after the enter loop, preserving reference ordinal 0,
+then one fresh native driver/zero automatic repairs and independent review.
+This expands beyond prior ScopedStorageProbe-only correction scope and requires
+new specific authority. No debugger/compiler/run/source action in review.
+122/128/24/130/84 identities and all 43 native argv match; 42 compiler oracles
+persist. Diagnostic and three native allowances each 1/1 consumed, corrections 2,
+automatic repairs 0; productive narrowing grants no reset or further authority.
+All nine criteria/fit/58,648-vs-27,648/HC-RD-003/P08/R07/T8.1 and I4-07/P09–P12
+remain open; Specs implementing/plans active, SO-04–09 unapproved. STOP for
+maintainer disposition of the exact proposal.
+
+Historical frozen-executable diagnostic — 2026-10-14: [First-trap result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/trap-diagnostic/result.md)
 locates the first stop at EXC_BREAKPOINT `0x100084810`, specialized
 `so03RecordOperations(_:) + 260`, with actual SO03Session storage types. Exact
 failed condition/root cause remains inconclusive from optimized symbols/window.

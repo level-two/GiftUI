@@ -1,0 +1,38 @@
+{
+  "entry_commit": "51b93bcb612c268caaa1f428930d0b77e16bd573",
+  "task": "p08_so03_trap_review",
+  "review_mode": "read-only saved source/log/hash review; no debugger/compiler/build/probe/executable or source edit",
+  "counts": {
+    "source_freeze_inputs": 122,
+    "driver_inputs": 128,
+    "unaffected_pins": 24,
+    "artifacts": 130,
+    "historical_evidence_files": 84
+  },
+  "identities_match": true,
+  "debugger_actual_argv_matches_dispatch": true,
+  "inferior_launches": 1,
+  "cancelled_worker_launches": 0,
+  "backtrace_frames": 6,
+  "instruction_window_count": 16,
+  "raw_stdout_bytes": 10293,
+  "raw_stderr_bytes": 0,
+  "native_planned_and_attempted_commands": 43,
+  "compiler_oracles": 42,
+  "compiler_zero_exits": 30,
+  "intended_negative_rejections": 12,
+  "native_execute_exit": -5,
+  "retained_native_artifact_copies_match": 62,
+  "diagnostic_log_hashes": {
+    "stdout.log": {
+      "bytes": 10293,
+      "sha256": "1beebb78909fc5f18b321205ac6d010c5e17bdf43556f1323281d35c70d1bcaf"
+    },
+    "stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "allowance_after": "diagnostic 1/1; each of three native allowances 1/1; fixture corrections 2; automatic repairs 0; no reset",
+  "new_execution_authority": false
+}

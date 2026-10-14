@@ -65,7 +65,15 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
   **SO-01 evidence:** [caller/necessity inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
   records P08 applicability and I4-07 residuals; all criteria remain unmet.
-  **Current independent helper review:** [Strong review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/independent-review.md)
+  **Current independent trap review:** [Strong source/evidence review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/trap-diagnostic/independent-review.md)
+  verifies the one-launch diagnostic and proves missing appendRecord in the Canvas
+  fixture; exact observed failed condition remains unproved. One checked fixture
+  call plus one fresh native driver/zero repairs/separate review is proposed only,
+  NOT AUTHORIZED, expanding beyond prior ScopedStorageProbe-only scope. All frozen
+  identities/43 argv and 42 compiler oracles persist. Diagnostic/native allowances
+  consumed; corrections 2/automatic repairs 0, no reset. Criteria/fit/P08 and
+  I4-07/P09–P12 remain open. STOP pending new specific maintainer authority.
+  **Historical independent helper review:** [Strong review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/independent-review.md)
   passes exact helper scope/frozen evidence and 42 native compiler oracles
   (30 zero exits, 12 intended negative rejections; all 27 focused cells and link).
   SO-03 runtime remains blocked: execute -5/empty output; cause/location and
