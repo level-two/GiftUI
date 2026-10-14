@@ -1,5 +1,31 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-04 source inspection stop — 2026-10-14
+
+Clean authorized input `a8471eb3`; source inspection found the sole pipeline
+opportunity conformance in unlisted `CounterAdmission.swift`:13 without explicit
+suppressed G/C/R/H extension requirements. Both selected coordinator routes
+require it. The [exact source-backed inference and minimum scope proposal](scoped-storage/so04-source-scope-stop.md)
+are frozen for independent Strong review. No demonstrated compiler failure is
+claimed. Read-only inventory found only one other pipeline extension, in the
+already authorized `CounterHostOwner.swift`. Proposed added scope is the
+`CounterAdmission.swift` conformance constraint clause only; witness bodies
+remain unmodified and their eventual scoped usability unproved.
+
+No Swift source, driver or generator was edited; no initial source realization,
+automatic repair, compiler/build/executable/debugger/IR/image/formatter/target/
+hardware action occurred. SO-04→06 remain incomplete and the coherent source
+freeze/label registration has not been reached. Stop follows the authorized
+packet's explicit additional-path rule. Historical counters and the two-
+consecutive-unproductive guard are preserved for independent classification;
+no allowance renewal. Specs implementing/plans active; all SO criteria, fit,
+HC-RD-003/P08/R07/T8.1/58,648-vs-27,648 and I4-07/P09–P12 stay open.
+
+Documentation checks pass: `scripts/validate-governance.rb` (198 nodes,
+2,019 edges and existing task manifests), 339 local Markdown file links across
+the four changed Markdown records, and `git diff --check`. No repository test
+gate or formatter was invoked.
+
 ## SO-04→06 source authorization and dispatch — 2026-10-14
 
 At clean `38fa4af0`, Eugene answered “Please go ahead” to the parent request:

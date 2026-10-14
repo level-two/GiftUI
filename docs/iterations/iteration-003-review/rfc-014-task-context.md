@@ -1,5 +1,16 @@
 # RFC-014 task context guide
 
+Current source stop — 2026-10-14: clean authorized `a8471eb3` inspection
+identified the sole pipeline opportunity conformance in unlisted
+`CounterAdmission.swift`:13. Its missing suppressed generic extension
+requirements are a [source-backed scope inference](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-source-scope-stop.md)
+for independent Strong review, not a compiler failure receipt. Minimum proposed
+addition is that file's G/C/R/H conformance constraints only. SO-04→06 remain
+incomplete; no source realization/repair/compiler/build/executable/debugger/IR/
+image/formatter/target action occurred. Historical counters/guard and every
+criterion/fit gate stay intact. Parent review classifies this checkpoint before
+any scope decision or resumed source work.
+
 Current source dispatch — 2026-10-14: Eugene authorized the exact
 [SO-04→06 source package](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-source-execution-proposal.md)
 with “Please go ahead”: one sequential source pass, separate step commits,
