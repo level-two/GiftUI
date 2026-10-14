@@ -23,8 +23,8 @@ features:
     # Provenance: docs/iterations/iteration-003-review/rfc-015-contract-acceptance.md.
     # Shared/owner SO plans adopted; SO-03 native evidence reviewed; SO-04–06 source package authorized 2026-10-14.
     # Clause-only CounterAdmission.swift addition approved; initial SO-04–06 source pass frozen at 0bb4d9ca.
-    # One bounded corrective source pass authorized from 03f3393b and frozen: findings 1–4 drafted; finding 5 reuse/lifecycle scope unresolved.
-    # Checkpoint: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-corrective-source-freeze.md; new independent Strong SOURCE review next, zero automatic follow-up repairs.
+    # One bounded corrective source pass 1/1 consumed from 03f3393b, frozen at 369906ab; independent source review confirms findings 1–4 source corrections, finding 5 open.
+    # Review: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-corrective-independent-review.md; physical reuse/fresh logical host compatible, namespace/admission realization handoff next, zero automatic follow-up repairs.
     # SO-04 fd879ad0 / SO-05 825603a2 / SO-06 0bb4d9ca; no compiler/runtime/fit claim or allowance reset; all criteria and SO-07–09 remain open.
     # Package: docs/iterations/iteration-003-review/rfc-015-p08-handoff.md; closed execution budgets preserved.
     # SPIKE-075 completed: bounded native declarations/copy/function-return controls pass; series closed.

@@ -1,6 +1,18 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current corrective source freeze — 2026-10-14: the commit containing this
+Current corrective independent review STOP — 2026-10-14:
+[Sol 6.1 High source rereview of `369906ab`](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-corrective-independent-review.md)
+confirms findings 1–4 corrected as source; finding 5 full-host repeated sessions
+remains absent. Physical inventory reuse with fresh logical owners is compatible
+with the existing terminal-host contract; root/model resurrection is not a fix.
+Runtime-local namespaces and persistent model-owner issuance have different
+lifetimes. The next autonomous derived handoff must establish old action/input/
+source/admission rejection at reused control addresses and name the smallest
+source whitelist before requesting another bounded source allowance. Correction
+1/1 consumed; zero automatic follow-up repairs and no compiler/runtime/image
+allowance or historical budget/guard reset. All criteria/fit/P08 remain open.
+
+Historical corrective source freeze — 2026-10-14: the commit containing this
 header freezes the one authorized correction from `03f3393b`. The
 [source receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-corrective-source-freeze.md)
 records findings 1–4 corrections, checked surplus/prefix borrows, exact labels

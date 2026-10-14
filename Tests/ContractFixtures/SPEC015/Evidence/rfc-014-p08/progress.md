@@ -1,5 +1,24 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-04→06 corrective independent Strong SOURCE review STOP — 2026-10-14
+
+Independent Sol 6.1 High [rereview of frozen `369906ab`](scoped-storage/so04-06-corrective-independent-review.md)
+confirms findings 1–4 corrected as source, with no invocation evidence. Finding 5
+remains a missing approved realization and corpus, not a demonstrated contract
+conflict: the same initialized bank/geometry inventory can serve fresh complete
+logical hosts while old hosts/root/model activations remain terminal. Exact
+runtime namespace boundaries and stale action/input/source/admission rejection
+over a reused control address still require a concrete derived source handoff.
+Prepare that documentation within existing authority, then identify the smallest
+source whitelist and one source-only pass/zero follow-up proposal. No root restart
+API, new identity mechanism, source patch or further allowance is selected here.
+Correction **1/1 consumed**; automatic further repairs zero, historical budgets/
+guard unchanged. All criteria/fit/P08/R07/T8.1/I4-07/P09–P12 remain open.
+No source correction/compiler/build/formatter/harness/executable/debugger/IR/
+image/target/hardware invocation occurred during review.
+Permitted checks pass: whitespace, governance (198 nodes/2,019 edges), 363 local
+Markdown file links/zero missing, and source-only planned TSV label counts.
+
 ## SO-04→06 corrective source checkpoint frozen — 2026-10-14
 
 Approved input `03f3393b`; the commit containing this record freezes the one

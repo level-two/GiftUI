@@ -1,5 +1,18 @@
 # SO-04→06 bounded corrective source freeze — 2026-10-14
 
+**Current independent review: source-readiness FAIL at `369906ab`.** The
+[bounded Strong rereview](so04-06-corrective-independent-review.md) confirms
+findings 1–4 corrected as source and the local surplus/prefix dispositions;
+finding 5 full-host repeat-session realization remains absent. Physical-inventory
+reuse is compatible with fresh terminal-safe logical hosts under the existing
+contract. The three-file old-owner reactivation suggestion below is historical,
+not an established minimum patch. Runtime-local cursor continuity across a
+genuinely fresh runtime is not a blanket contract requirement; exact stale-value/
+admission namespace isolation still needs a concrete derived handoff. Prepare
+that documentation autonomously before presenting an exact next source whitelist.
+The correction is **1/1 consumed**, zero further automatic repairs, no allowance
+or historical guard reset. All criteria/fit/P08 remain open; no execution claim.
+
 Approved input `03f3393b`, following the independent review at `0e047ee4`
 of initial source `0bb4d9ca`. One expressly authorized corrective source pass
 has produced this checkpoint. Source is frozen for a new independent Strong
@@ -55,6 +68,9 @@ carrier return boundary; they do not claim twelve executed nested-short-scope
 experiments. Positives precede negatives. No invocation allowance is granted.
 
 ## Finding 5: minimum known additional-source decision
+
+Historical freeze assessment; see the independent classification above before
+using any proposed seam as the next source boundary.
 
 Resetting the whole CounterControl would reset monotonic input/action identities
 and cannot be treated as a fix. Its retained wake/scheduler must be released
