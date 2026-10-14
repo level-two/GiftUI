@@ -1,6 +1,25 @@
 # RFC-014 task context guide
 
-Current compatibility continuation boundary — **STOP, 2026-10-14**.
+Current grouped lifetime continuation boundary — **STOP, 2026-10-14**.
+Candidate `cab1c415`, source review `2989ca7f`: the complete counter module now
+compiles, clearing the prior L01–L03 diagnostic sites. The one registered native
+counter invocation exited 1 after **191 accepted scoped compiler checks**; check
+192 rejected the intended closure escape, but its diagnostic did not contain the
+harness's required `escaping` substring. It reports lifetime-dependent input
+`escapes its scope`; the positive twin compiled. This is a diagnostic-classifier
+mismatch, not an accepted full matrix or runtime result.
+[Independent result and immutable evidence](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-compiler-compatibility2-result.md).
+The [frozen allowance](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-compiler-compatibility2-source-freeze.md)
+is consumed: candidate 1/1, invocation 1/1, automatic repairs 0. Historical
+integrated cycles 2/2 and compatibility 1 remain closed. No classifier edit or
+rerun occurred. Remaining compiler controls, native exclusivity, counter runtime,
+ten initial profile cells, both images, all nine SO criteria and P08/fit remain
+open. Three earlier component passes retain their exact applicability limits.
+FW-038 captures validation cost separately; its documentation-only commit did
+not change any of the nine frozen source hashes or this running matrix.
+Earlier pending/current wording below is historical.
+
+Historical compatibility 1 boundary — **STOP, 2026-10-14**.
 Candidate `bbb54fc1`, source review `7002a953`, exact native counter run failed
 with ten explicit lifetime/ownership diagnostics in three cause groups. The
 earlier graph SILGenCleanup assertion is no longer emitted; compiler acceptance
