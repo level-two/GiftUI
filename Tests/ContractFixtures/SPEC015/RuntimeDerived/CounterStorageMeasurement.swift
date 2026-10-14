@@ -137,3 +137,70 @@ struct CounterReturnedWorkspaces<G: CounterGeometry & Copyable & Escapable, C: C
         self.checks = checks
     }
 }
+
+// Facts are independent owned values; they neither lend a bank nor invoke a
+// caller with storage. Full retained extents include native Optional/tail bytes.
+struct CounterPhysicalBankFacts {
+    let bank: InteractionOwnedBankMeasurement
+    let recordSize: Int
+    let recordStride: Int
+    let recordAlignment: Int
+    let optionalRecords: Bool
+    let retainedBytes: Int
+    static func owned<T: InteractionOwnedBankMeasurementSource, Record>(_ bank: borrowing T, record: Record.Type, optionalRecords: Bool, retainedBytes: Int? = nil) -> Self {
+        let facts = bank.ownedInteractionBankMeasurement
+        let total = facts.inlineSize.addingReportingOverflow(facts.retainedPayloadBytes)
+        precondition(!total.overflow)
+        return .init(bank: facts, recordSize: MemoryLayout<Record>.size,
+            recordStride: MemoryLayout<Record>.stride, recordAlignment: MemoryLayout<Record>.alignment,
+            optionalRecords: optionalRecords, retainedBytes: retainedBytes ?? total.partialValue)
+    }
+}
+struct CounterPhysicalInteractionFacts: CounterStorageRegionSource {
+    let candidate: CounterPhysicalBankFacts
+    let candidateHits: CounterPhysicalBankFacts
+    let prepared: CounterPhysicalBankFacts
+    let committed: CounterPhysicalBankFacts
+    let committedHits: CounterPhysicalBankFacts
+    let stateMetadataBytes: Int
+    var measurement: CounterInteractionMeasurement {
+        func keys(_ facts: CounterPhysicalBankFacts) -> UInt64 {
+            let bytes = UInt64(facts.bank.retainedIdentitySlots).multipliedReportingOverflow(by: UInt64(MemoryLayout<SemanticCompleteIdentity>.size))
+            precondition(!bytes.overflow); return bytes.partialValue
+        }
+        let candidateKeys = keys(candidate) + keys(candidateHits) + keys(prepared)
+        let committedKeys = keys(committed) + keys(committedHits)
+        let candidateRaw = UInt64(candidate.retainedBytes) + UInt64(candidateHits.retainedBytes) + UInt64(prepared.retainedBytes)
+        let committedRaw = UInt64(committed.retainedBytes) + UInt64(committedHits.retainedBytes)
+        precondition(candidateKeys <= candidateRaw && committedKeys <= committedRaw)
+        return .init(candidateRecords: min(candidate.bank.capacity, prepared.bank.capacity), candidateHits: candidateHits.bank.capacity,
+            committedRecords: committed.bank.capacity, committedHits: committedHits.bank.capacity,
+            candidateIdentityBytes: candidateKeys, committedIdentityBytes: committedKeys,
+            candidateBytes: candidateRaw - candidateKeys, committedBytes: committedRaw - committedKeys)
+    }
+    borrowing func visitStorageRegions(_ visit: (CounterStorageRegion) -> Void) {
+        func bank(_ facts: CounterPhysicalBankFacts, family: Int, keys: Int) {
+            let count = facts.bank.retainedIdentitySlots
+            let identityBytes = UInt64(count) * UInt64(MemoryLayout<SemanticCompleteIdentity>.size)
+            let records = count.multipliedReportingOverflow(by: facts.recordStride)
+            precondition(!records.overflow && UInt64(records.partialValue) >= identityBytes && facts.retainedBytes >= records.partialValue)
+            visit(.elements(SemanticCompleteIdentity.self, count: count, family: keys))
+            visit(.init(family: family, kind: .elements, count: count, size: facts.recordSize,
+                stride: facts.recordStride, alignment: facts.recordAlignment, chargedBytes: UInt64(records.partialValue) - identityBytes))
+            visit(.elements(UInt8.self, count: facts.retainedBytes - records.partialValue, family: family))
+        }
+        bank(candidate, family: 19, keys: 5); bank(candidateHits, family: 19, keys: 5); bank(prepared, family: 19, keys: 5)
+        bank(committed, family: 20, keys: 6); bank(committedHits, family: 20, keys: 6)
+        visit(.elements(UInt8.self, count: stateMetadataBytes, family: 19))
+    }
+}
+struct CounterPhysicalGeometryFacts: CounterStorageRegionSource {
+    var regions: InlineArray<48, CounterStorageRegion?> = .init(repeating: nil)
+    var count = 0
+    mutating func append(_ region: CounterStorageRegion) {
+        precondition(count < regions.count); regions[count] = region; count += 1
+    }
+    borrowing func visitStorageRegions(_ visit: (CounterStorageRegion) -> Void) {
+        for index in 0..<count { visit(regions[index]!) }
+    }
+}

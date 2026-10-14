@@ -100,17 +100,46 @@ func counterValidateBacking<G, C, R, H, GR: CounterStorageRegionSource>(profile:
     report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult
 where G: CounterGeometry, C: CounterCandidateBacking & InteractionOwnedBankMeasurementSource, R: CounterCommittedBacking & InteractionOwnedBankMeasurementSource, H: CounterHitBacking & InteractionOwnedBankMeasurementSource,
     C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    let facts = interaction.ownedStorageMeasurement()
+    let metadata = MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<C>.size - 2 * MemoryLayout<R>.size - 2 * MemoryLayout<H>.size
+    func physical<Record>(_ bank: InteractionOwnedBankMeasurement, record: Record.Type) -> CounterPhysicalBankFacts {
+        .init(bank: bank, recordSize: bank.retainedPayloadBytes == 0 ? MemoryLayout<Record?>.size : MemoryLayout<Record>.size, recordStride: bank.retainedPayloadBytes == 0 ? MemoryLayout<Record?>.stride : MemoryLayout<Record>.stride, recordAlignment: bank.retainedPayloadBytes == 0 ? MemoryLayout<Record?>.alignment : MemoryLayout<Record>.alignment,
+            optionalRecords: bank.retainedPayloadBytes == 0, retainedBytes: bank.inlineSize + bank.retainedPayloadBytes)
+    }
+    let rows = CounterPhysicalInteractionFacts(
+        candidate: physical(facts.candidate, record: InteractionCandidateRecord<SemanticCompleteIdentity>.self),
+        candidateHits: physical(facts.candidateHits, record: InteractionHitRegion<SemanticCompleteIdentity>.self),
+        prepared: physical(facts.prepared, record: BoundActionRecord<SemanticCompleteIdentity>.self),
+        committed: physical(facts.committed, record: BoundActionRecord<SemanticCompleteIdentity>.self),
+        committedHits: physical(facts.committedHits, record: InteractionHitRegion<SemanticCompleteIdentity>.self), stateMetadataBytes: metadata)
+    return counterValidatePhysicalBacking(profile: profile, limits: limits, root: root, rootMetadataRegion: rootMetadataRegion,
+        semantic: semantic, geometry: geometry, interactionFacts: rows, identityCapacities: interaction.identityCapacities,
+        geometryType: geometryType, candidateType: C.self, committedType: R.self, hitType: H.self,
+        canvasCount: canvasCount, canvasCapacity: canvasCapacity, canvasControlBytes: canvasControlBytes,
+        factoryRegion: factoryRegion, factoryDescriptorRegion: factoryDescriptorRegion, geometryRegions: geometryRegions, report: report)
+}
+
+func counterValidatePhysicalBacking<G, C, R, H, GR: CounterStorageRegionSource>(profile: RuntimeProfileKind, limits: RuntimeProfileLimits,
+    root: CounterRootLayout, rootMetadataRegion: CounterStorageRegion, semantic: CounterSemanticMeasurement, geometry: CounterGeometryMeasurement,
+    interactionFacts: CounterPhysicalInteractionFacts, identityCapacities: (perKey: UInt16, perBank: UInt16),
+    descriptorBytes: Int = 0, geometryType: G.Type, candidateType: C.Type, committedType: R.Type, hitType: H.Type,
+    canvasCount: Int, canvasCapacity: UInt16, canvasControlBytes: Int,
+    factoryRegion: CounterStorageRegion,
+    factoryDescriptorRegion: CounterStorageRegion? = nil,
+    geometryRegions: borrowing GR,
+    report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult
+where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & ~Copyable & ~Escapable, R: CounterCommittedBacking & ~Copyable & ~Escapable, H: CounterHitBacking & ~Copyable & ~Escapable,
+    C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     // The concrete scoped render adapter exports exactly the configured view;
     // inaccessible physical headroom remains measured in the backing regions.
     guard counterRenderWorkspaceCovers(geometry.renderWorkspace, limits.renderWorkspace) else { return .invalid(.insufficientStorage) }
-    let keys = counterMeasureInteraction(interaction)
-    let keyLimits = interaction.identityCapacities
+    let keys = interactionFacts.measurement
+    let keyLimits = identityCapacities
     let semanticLimits = semantic.limits
     guard let recordBytes = semantic.records.bytes, let pathBytes = semantic.paths.bytes,
         let payloadBytes = semantic.payloads.bytes, let scalarBytes = semantic.scalars.bytes,
         let canvasBytes = CounterExtent.elements(CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?.self, count: canvasCount).bytes else { return .invalid(.arithmeticOverflow) }
-    let interactionStores = MemoryLayout<C>.size + MemoryLayout<R>.size * 2 + MemoryLayout<H>.size * 2
-    let interactionMetadata = MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - interactionStores
+    let interactionMetadata = interactionFacts.stateMetadataBytes
     let pending = MemoryLayout<InlineArray<2, NormalizedPointerEvent?>>.size + MemoryLayout<InlineArray<34, UInt8>>.size + MemoryLayout<UInt16>.size + MemoryLayout<UInt16?>.size
     let sealed = MemoryLayout<CounterAdmissionBacking>.size - pending
     let result = MemoryLayout<RuntimeCompletePipelineResult<RuntimeOwnerFailure>?>.size
@@ -129,7 +158,7 @@ where G: CounterGeometry, C: CounterCandidateBacking & InteractionOwnedBankMeasu
         - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CounterEndpoint>.size
         + MemoryLayout<CounterControl>.size - Admission.pointerStateStorageBytes
         - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result
-        + Int(factoryRegion.chargedBytes) + Int(factoryDescriptorRegion?.chargedBytes ?? 0)
+        + descriptorBytes + Int(factoryRegion.chargedBytes) + Int(factoryDescriptorRegion?.chargedBytes ?? 0)
     // Bank zero occupies exactly the configured whole-element prefix. Bank one
     // owns the second configured slice plus any retained allocator tail; never
     // divide a typed element when Array capacity rounds to an odd count.
@@ -207,7 +236,7 @@ where G: CounterGeometry, C: CounterCandidateBacking & InteractionOwnedBankMeasu
     #endif
     record(.inline(ObservableStateRootStorage<SemanticCompleteIdentity>.self, family: 17, chargedBytes: root.liveBytes, kind: .partition))
     record(.inline(ObservableStateRootStorage<SemanticCompleteIdentity>.self, family: 18, chargedBytes: root.candidateBytes, kind: .partition))
-    counterVisitInteraction(interaction, record)
+    interactionFacts.visitStorageRegions(record)
     record(.elements(NormalizedPointerEvent?.self, count: 2, family: 21))
     record(.inline(InlineArray<34, UInt8>.self, family: 21))
     record(.inline(UInt16.self, family: 21))
@@ -216,9 +245,9 @@ where G: CounterGeometry, C: CounterCandidateBacking & InteractionOwnedBankMeasu
     record(.inline(Admission.Controller?.self, family: 23, chargedBytes: Admission.pointerStateStorageBytes, kind: .partition))
     record(.inline(CounterPointerState.self, family: 23))
     let coordinatorFields = concreteCoordinatorBytes - MemoryLayout<G>.size - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CounterEndpoint>.size
-    if profile == .static { record(.inline(Coordinator.self, family: 24, chargedBytes: coordinatorFields, kind: .metadataPadding)) }
+    if profile == .static { record(.inline(Coordinator.self, family: 24, chargedBytes: coordinatorFields + descriptorBytes, kind: .metadataPadding)) }
     #if !hasFeature(Embedded)
-    if profile == .dynamic { record(.inline(DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>.self, family: 24, chargedBytes: coordinatorFields, kind: .metadataPadding)) }
+    if profile == .dynamic { record(.inline(DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>.self, family: 24, chargedBytes: coordinatorFields + descriptorBytes, kind: .metadataPadding)) }
     #endif
     // All outer controls, observations, optional controller metadata and padding
     // remain physically live and are charged here exactly once.

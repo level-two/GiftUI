@@ -22,7 +22,7 @@ let counterSurface = Rect(origin: Point(x: 0, y: 0), size: Size(width: 100, heig
 
 // Finite fixture assembly over actual profile owners. No stage is substituted
 // by a recorded answer; each method invokes its maintained focused algorithm.
-protocol CounterGeometry {
+protocol CounterGeometry: ~Copyable, ~Escapable {
     borrowing func storageMeasurement() -> CounterGeometryMeasurement
     mutating func layout(_ bank: borrowing SemanticRecordView<CounterPayload>, limits: RuntimeProfileLimits) -> LayoutResult
     mutating func draw(source: inout CounterSource, context: ExecutionContext, limits: RuntimeProfileLimits) -> DrawingPlanResult
