@@ -1,0 +1,426 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:351:54: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 349 |             if failure == nil {
+ 350 |                 if before(.g0) { failure = .injected(.g0, 0) }
+ 351 |                 else if let object = s.b0.withBorrow { scopes in s.b1.withBorrow { text in StaticCounterLayoutWorkspace(scopes: scopes, text: text) } } {
+     |                                                      `- warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 352 |                     s.g0.install(consume object); record(s.g0.facts(id: .g0))
+ 353 |                     if after(.g0) { failure = .injected(.g0, 1) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:358:54: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 356 |             if failure == nil {
+ 357 |                 if before(.g1) { failure = .injected(.g1, 0) }
+ 358 |                 else if let object = s.b0.withBorrow { scopes in s.b1.withBorrow { text in StaticCounterResolvedLayoutStorage(scopes: scopes, text: text) } } {
+     |                                                      `- warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 359 |                     s.g1.install(consume object); record(s.g1.facts(id: .g1))
+ 360 |                     if after(.g1) { failure = .injected(.g1, 1) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:372:54: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 370 |             if failure == nil {
+ 371 |                 if before(.g3) { failure = .injected(.g3, 0) }
+ 372 |                 else if let object = s.b2.withBorrow { path in s.b3.withBorrow { plan in StaticCounterDrawingWorkspace(pathRegion: path, planRegion: plan, capacity: counterDrawingLimits).map { StaticRecordDrawingWorkspace(base: $0) } } } {
+     |                                                      `- warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 373 |                     s.g3.install(consume object); record(s.g3.facts(id: .g3))
+ 374 |                     if after(.g3) { failure = .injected(.g3, 1) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:379:54: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 377 |             if failure == nil {
+ 378 |                 if before(.g4) { failure = .injected(.g4, 0) }
+ 379 |                 else if let object = s.b1.withBorrow { text in StaticCounterRenderWorkspace(region: text, capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity).map { QualifiedRender(base: $0) } } {
+     |                                                      `- warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning
+ 380 |                     s.g4.install(consume object); record(s.g4.facts(id: .g4))
+ 381 |                     if after(.g4) { failure = .injected(.g4, 1) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:905:20: error: the compiler is unable to type-check this expression in reasonable time; try breaking up the expression into distinct sub-expressions
+ 903 |         #if !hasFeature(Embedded)
+ 904 |         case .dynamic(let d):
+ 905 |             return .init(layout: counterLayoutLimits, render: d.g4.pointee.capacity,
+     |                    `- error: the compiler is unable to type-check this expression in reasonable time; try breaking up the expression into distinct sub-expressions
+ 906 |                 renderWorkspace: d.g4.pointee.structuralCapacity, drawing: d.g3.pointee.capacity,
+ 907 |                 layoutBytes: UInt64(MemoryLayout<DynamicLayoutWorkspace>.stride + MemoryLayout<DynamicResolvedLayoutStorage>.stride) + d.g0.pointee.reservedPayloadBytes + d.g1.pointee.reservedPayloadBytes,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1032:26: warning: immutable value 'd' was never used; consider replacing with '_' or removing it [#NoUsage]
+1030 |     mutating func reset() {
+1031 |         switch descriptor {
+1032 |         case .static(let d):
+     |                          `- warning: immutable value 'd' was never used; consider replacing with '_' or removing it [#NoUsage]
+1033 |             resetRender(); resetPlan(); resetLayout()
+1034 |         #if !hasFeature(Embedded)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1035:27: warning: immutable value 'd' was never used; consider replacing with '_' or removing it [#NoUsage]
+1033 |             resetRender(); resetPlan(); resetLayout()
+1034 |         #if !hasFeature(Embedded)
+1035 |         case .dynamic(let d):
+     |                           `- warning: immutable value 'd' was never used; consider replacing with '_' or removing it [#NoUsage]
+1036 |             resetRender(); resetPlan(); resetLayout()
+1037 |         #endif
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1658:39: error: value of type 'InlineArray<128, SemanticRuntimeRecord>' has no member 'withUnsafeMutableBufferPointer'
+1656 |         withUnsafeMutablePointer(to: &outer.canvas) { canvas in
+1657 |         withUnsafeMutablePointer(to: &outer.control) { control in
+1658 |         outer.semanticBacking.records.withUnsafeMutableBufferPointer { records in
+     |                                       `- error: value of type 'InlineArray<128, SemanticRuntimeRecord>' has no member 'withUnsafeMutableBufferPointer'
+1659 |         outer.semanticBacking.paths.withUnsafeMutableBufferPointer { paths in
+1660 |         outer.semanticBacking.payloads.withUnsafeMutableBufferPointer { payloads in
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1716:16: error: 'consume' can only be applied to a local binding ('let', 'var', or parameter)
+1714 |     @_lifetime(self: copy self, copy models, copy root, copy semantic, copy values, copy control)
+1715 |     mutating func supply(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: consuming CounterHostControl, audit: RuntimeStorageAudit, dynamic: Bool) {
+1716 |         switch consume stage.take()! {
+     |                `- error: 'consume' can only be applied to a local binding ('let', 'var', or parameter)
+1717 |         case .session(let session):
+1718 |             #if !hasFeature(Embedded)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1727:16: error: 'consume' can only be applied to a local binding ('let', 'var', or parameter)
+1725 |     @_lifetime(self: copy self, copy activationSpan)
+1726 |     mutating func constructOwner(activationSpan: Span<UInt8>, assembly: CounterHostAssembly, failAfterRuntime: Bool) {
+1727 |         switch consume stage.take()! {
+     |                `- error: 'consume' can only be applied to a local binding ('let', 'var', or parameter)
+1728 |         case .supplied(let supplied): stage = .owner(P08StaticHostOwner(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: failAfterRuntime))
+1729 |         #if !hasFeature(Embedded)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1738:16: error: 'consume' can only be applied to a local binding ('let', 'var', or parameter)
+1736 |     mutating func checkJoins(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> Int {
+1737 |         let expected = counterJoinSnapshot(control), foreignExpected = counterJoinSnapshot(foreignControl)
+1738 |         switch consume stage.take()! {
+     |                `- error: 'consume' can only be applied to a local binding ('let', 'var', or parameter)
+1739 |         case .owner(var owner):
+1740 |             let checks = counterCheckRejectedBindings(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, report: report, expected: expected, foreignExpected: foreignExpected)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:63:63: error: cannot find type 'CounterModelSchema' in scope
+ 61 | func counterCheckDynamicRejectedBindings<Geometry, Candidate, Committed, Hits>(
+ 62 |     owner: inout CounterDynamicHostOwner<Geometry, Candidate, Committed, Hits>,
+ 63 |     models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+    |                                                               `- error: cannot find type 'CounterModelSchema' in scope
+ 64 |     root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
+ 65 |     foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:65:70: error: cannot find type 'CounterModelSchema' in scope
+ 63 |     models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+ 64 |     root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
+ 65 |     foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+    |                                                                      `- error: cannot find type 'CounterModelSchema' in scope
+ 66 |     foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
+ 67 |     control pointer: UnsafeMutablePointer<CounterControl>,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1752:16: error: 'consume' can only be applied to a local binding ('let', 'var', or parameter)
+1750 |     @_lifetime(self: copy self)
+1751 |     mutating func constructHost(report: HostAssemblyReport) {
+1752 |         switch consume stage.take()! {
+     |                `- error: 'consume' can only be applied to a local binding ('let', 'var', or parameter)
+1753 |         case .owner(let owner):
+1754 |             #if hasFeature(Embedded)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1773:16: error: 'consume' can only be applied to a local binding ('let', 'var', or parameter)
+1771 |     mutating func run(control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil) -> Int {
+1772 |         activationAttempted = true
+1773 |         switch consume stage.take()! {
+     |                `- error: 'consume' can only be applied to a local binding ('let', 'var', or parameter)
+1774 |         case .host(var host):
+1775 |             let checks: Int
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1777:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08GeometryAccess' conform to 'Copyable'
+1437 |     borrowing func observeApplicationProducer() -> CounterApplicationOwners
+1438 | }
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08StaticHostOwner' (aka 'CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     :
+1775 |             let checks: Int
+1776 |             if let reuse {
+1777 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08GeometryAccess' conform to 'Copyable'
+1778 |             } else if early == 5 || candidateFailure != nil {
+1779 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1777:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08GeometryAccess' conform to 'Escapable'
+1437 |     borrowing func observeApplicationProducer() -> CounterApplicationOwners
+1438 | }
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08StaticHostOwner' (aka 'CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     :
+1775 |             let checks: Int
+1776 |             if let reuse {
+1777 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08GeometryAccess' conform to 'Escapable'
+1778 |             } else if early == 5 || candidateFailure != nil {
+1779 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1777:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CandidateAccess' conform to 'Copyable'
+1437 |     borrowing func observeApplicationProducer() -> CounterApplicationOwners
+1438 | }
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08StaticHostOwner' (aka 'CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     :
+1775 |             let checks: Int
+1776 |             if let reuse {
+1777 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CandidateAccess' conform to 'Copyable'
+1778 |             } else if early == 5 || candidateFailure != nil {
+1779 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1777:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CandidateAccess' conform to 'Escapable'
+1437 |     borrowing func observeApplicationProducer() -> CounterApplicationOwners
+1438 | }
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08StaticHostOwner' (aka 'CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     :
+1775 |             let checks: Int
+1776 |             if let reuse {
+1777 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CandidateAccess' conform to 'Escapable'
+1778 |             } else if early == 5 || candidateFailure != nil {
+1779 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1777:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CommittedAccess' conform to 'Copyable'
+1437 |     borrowing func observeApplicationProducer() -> CounterApplicationOwners
+1438 | }
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08StaticHostOwner' (aka 'CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     :
+1775 |             let checks: Int
+1776 |             if let reuse {
+1777 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CommittedAccess' conform to 'Copyable'
+1778 |             } else if early == 5 || candidateFailure != nil {
+1779 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1777:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CommittedAccess' conform to 'Escapable'
+1437 |     borrowing func observeApplicationProducer() -> CounterApplicationOwners
+1438 | }
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08StaticHostOwner' (aka 'CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     :
+1775 |             let checks: Int
+1776 |             if let reuse {
+1777 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CommittedAccess' conform to 'Escapable'
+1778 |             } else if early == 5 || candidateFailure != nil {
+1779 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1777:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08HitAccess' conform to 'Copyable'
+1437 |     borrowing func observeApplicationProducer() -> CounterApplicationOwners
+1438 | }
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08StaticHostOwner' (aka 'CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     :
+1775 |             let checks: Int
+1776 |             if let reuse {
+1777 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08HitAccess' conform to 'Copyable'
+1778 |             } else if early == 5 || candidateFailure != nil {
+1779 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1777:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08HitAccess' conform to 'Escapable'
+1437 |     borrowing func observeApplicationProducer() -> CounterApplicationOwners
+1438 | }
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08StaticHostOwner' (aka 'CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     :
+1775 |             let checks: Int
+1776 |             if let reuse {
+1777 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08HitAccess' conform to 'Escapable'
+1778 |             } else if early == 5 || candidateFailure != nil {
+1779 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1793:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08GeometryAccess' conform to 'Copyable'
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08DynamicHostOwner' (aka 'CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1442 | #endif
+1443 | fileprivate struct P08HostReuseTranscript {
+     :
+1791 |             let checks: Int
+1792 |             if let reuse {
+1793 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08GeometryAccess' conform to 'Copyable'
+1794 |             } else if early == 5 || candidateFailure != nil {
+1795 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1793:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08GeometryAccess' conform to 'Escapable'
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08DynamicHostOwner' (aka 'CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1442 | #endif
+1443 | fileprivate struct P08HostReuseTranscript {
+     :
+1791 |             let checks: Int
+1792 |             if let reuse {
+1793 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08GeometryAccess' conform to 'Escapable'
+1794 |             } else if early == 5 || candidateFailure != nil {
+1795 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1793:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CandidateAccess' conform to 'Copyable'
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08DynamicHostOwner' (aka 'CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1442 | #endif
+1443 | fileprivate struct P08HostReuseTranscript {
+     :
+1791 |             let checks: Int
+1792 |             if let reuse {
+1793 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CandidateAccess' conform to 'Copyable'
+1794 |             } else if early == 5 || candidateFailure != nil {
+1795 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1793:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CandidateAccess' conform to 'Escapable'
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08DynamicHostOwner' (aka 'CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1442 | #endif
+1443 | fileprivate struct P08HostReuseTranscript {
+     :
+1791 |             let checks: Int
+1792 |             if let reuse {
+1793 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CandidateAccess' conform to 'Escapable'
+1794 |             } else if early == 5 || candidateFailure != nil {
+1795 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1793:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CommittedAccess' conform to 'Copyable'
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08DynamicHostOwner' (aka 'CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1442 | #endif
+1443 | fileprivate struct P08HostReuseTranscript {
+     :
+1791 |             let checks: Int
+1792 |             if let reuse {
+1793 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CommittedAccess' conform to 'Copyable'
+1794 |             } else if early == 5 || candidateFailure != nil {
+1795 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1793:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CommittedAccess' conform to 'Escapable'
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08DynamicHostOwner' (aka 'CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1442 | #endif
+1443 | fileprivate struct P08HostReuseTranscript {
+     :
+1791 |             let checks: Int
+1792 |             if let reuse {
+1793 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08CommittedAccess' conform to 'Escapable'
+1794 |             } else if early == 5 || candidateFailure != nil {
+1795 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1793:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08HitAccess' conform to 'Copyable'
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08DynamicHostOwner' (aka 'CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1442 | #endif
+1443 | fileprivate struct P08HostReuseTranscript {
+     :
+1791 |             let checks: Int
+1792 |             if let reuse {
+1793 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08HitAccess' conform to 'Copyable'
+1794 |             } else if early == 5 || candidateFailure != nil {
+1795 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1793:26: error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08HitAccess' conform to 'Escapable'
+1439 | extension CounterHostOwner: P08ReuseObservation {}
+1440 | #if !hasFeature(Embedded)
+1441 | extension CounterDynamicHostOwner: P08ReuseObservation {}
+     | `- note: requirement from conditional conformance of 'P08DynamicHostOwner' (aka 'CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>') to 'P08ReuseObservation'
+1442 | #endif
+1443 | fileprivate struct P08HostReuseTranscript {
+     :
+1791 |             let checks: Int
+1792 |             if let reuse {
+1793 |                 checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+     |                          `- error: global function 'p08RunReuseHost(host:control:transcript:)' requires that 'P08HitAccess' conform to 'Escapable'
+1794 |             } else if early == 5 || candidateFailure != nil {
+1795 |                 precondition(host.activate() == .active)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift:251:17: warning: variable 'extracted' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+249 |         case .active(let coordinator, let cache, let span):
+250 |             precondition(coordinator.isQuiescent && cache == nil)
+251 |             var extracted = coordinator.takeQuiescedOpportunity()
+    |                 `- warning: variable 'extracted' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+252 |             switch consume extracted {
+253 |             case .some(let pipeline): self = .retired(pipeline.retireQuiescedStorage(), span)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift:218:17: warning: variable 'extracted' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+216 |         case .active(let coordinator, let cache, let span):
+217 |             precondition(coordinator.isQuiescent && cache == nil)
+218 |             var extracted = coordinator.takeQuiescedOpportunity()
+    |                 `- warning: variable 'extracted' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+219 |             switch consume extracted {
+220 |             case .some(let pipeline): self = .retired(pipeline.retireQuiescedStorage(), span)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:75:32: error: cannot infer contextual base in reference to member 'failure'
+ 73 |     var joinChecks = 0
+ 74 |     let rejected0 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: foreignControl, audit: audit, report: report)
+ 75 |     precondition(rejected0 == .failure(.configuration(.invalidWakeIntegration), progress: .init()))
+    |                                `- error: cannot infer contextual base in reference to member 'failure'
+ 76 |     precondition(owner.constructions == 0 && owner.activationStep == 0)
+ 77 |     precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:80:32: error: cannot infer contextual base in reference to member 'failure'
+ 78 |     joinChecks += 3
+ 79 |     let rejected1 = owner.constructRuntimeAndEndpoint(models: foreignModels, root: foreignRoot, control: pointer, audit: audit, report: report)
+ 80 |     precondition(rejected1 == .failure(.configuration(.invalidModelTarget), progress: .init()))
+    |                                `- error: cannot infer contextual base in reference to member 'failure'
+ 81 |     precondition(owner.constructions == 0 && owner.activationStep == 0)
+ 82 |     precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:85:32: error: cannot infer contextual base in reference to member 'failure'
+ 83 |     joinChecks += 3
+ 84 |     let rejected2 = owner.constructRuntimeAndEndpoint(models: models, root: foreignRoot, control: pointer, audit: audit, report: report)
+ 85 |     precondition(rejected2 == .failure(.configuration(.invalidModelTarget), progress: .init()))
+    |                                `- error: cannot infer contextual base in reference to member 'failure'
+ 86 |     precondition(owner.constructions == 0 && owner.activationStep == 0)
+ 87 |     precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:90:32: error: cannot infer contextual base in reference to member 'failure'
+ 88 |     joinChecks += 3
+ 89 |     let rejected3 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: .static), report: report)
+ 90 |     precondition(rejected3 == .failure(.configuration(.profileMismatch), progress: .init()))
+    |                                `- error: cannot infer contextual base in reference to member 'failure'
+ 91 |     precondition(owner.constructions == 0 && owner.activationStep == 0)
+ 92 |     precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:95:32: error: cannot infer contextual base in reference to member 'failure'
+ 93 |     joinChecks += 3
+ 94 |     let rejected4 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: audit.profile), report: report)
+ 95 |     precondition(rejected4 == .failure(.configuration(.invalidWorkload), progress: .init()))
+    |                                `- error: cannot infer contextual base in reference to member 'failure'
+ 96 |     precondition(owner.constructions == 0 && owner.activationStep == 0)
+ 97 |     precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:100:32: error: cannot infer contextual base in reference to member 'failure'
+ 98 |     joinChecks += 3
+ 99 |     let rejected5 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: audit, report: counterJoinReport(report))
+100 |     precondition(rejected5 == .failure(.configuration(.invalidWakeIntegration), progress: .init()))
+    |                                `- error: cannot infer contextual base in reference to member 'failure'
+101 |     precondition(owner.constructions == 0 && owner.activationStep == 0)
+102 |     precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>
+[#VariableNeverMutated]: <https://docs.swift.org/compiler/documentation/diagnostics/variable-never-mutated>

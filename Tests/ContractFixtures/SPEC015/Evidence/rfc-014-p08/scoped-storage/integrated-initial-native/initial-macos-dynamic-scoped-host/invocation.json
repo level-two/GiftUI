@@ -1,0 +1,13 @@
+{
+  "label": "initial-macos-dynamic-scoped-host",
+  "argv": [
+    "python3",
+    "scripts/contracts/check-spec-015-scoped-host.py",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic"
+  ],
+  "cwd": "/Users/eugene/work/GiftUI",
+  "started": "2026-10-14T15:24:36.616766+00:00",
+  "revision": "1907033c9a4fce3cf21d4f65099ffe657c6a2ecb",
+  "status_before": ""
+}

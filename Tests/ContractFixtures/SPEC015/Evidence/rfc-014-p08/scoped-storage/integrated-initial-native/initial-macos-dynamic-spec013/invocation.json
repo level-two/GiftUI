@@ -1,0 +1,16 @@
+{
+  "label": "initial-macos-dynamic-spec013",
+  "argv": [
+    "scripts/contracts/run-spec-013.sh",
+    "--profile",
+    "macos-dynamic",
+    "--compiler-baseline",
+    "rfc-014",
+    "--giftui-build",
+    ".build/contracts/spec-006-rfc-014-swift64/af66aaf967e3fe8f-__4p5wu2/macos-dynamic"
+  ],
+  "cwd": "/Users/eugene/work/GiftUI",
+  "started": "2026-10-14T15:23:58.663946+00:00",
+  "revision": "1907033c9a4fce3cf21d4f65099ffe657c6a2ecb",
+  "status_before": ""
+}

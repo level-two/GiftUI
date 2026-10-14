@@ -1,0 +1,46 @@
+[
+  {
+    "label": "initial-macos-dynamic-spec011",
+    "exit": 0,
+    "source": ".build/contracts/p08-integrated-activity/20261014T152152233428Z-initial-macos-dynamic-spec011",
+    "files": {
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result.json": "d240fefacbaab09e28c9ce979cf3cbdafbd817fecfd123ae8e4cff65ac577298",
+      "stdout.log": "4c3dbbf4f36fdb28fc59a719eb43ad9757ae64709dc997bab3d247da0eb91a84",
+      "invocation.json": "ea8864d888dee4ac55d54a92acd950330ee7bc9e4d4f8924c1f42ed46ac69646"
+    }
+  },
+  {
+    "label": "initial-macos-dynamic-spec013",
+    "exit": 0,
+    "source": ".build/contracts/p08-integrated-activity/20261014T152358663716Z-initial-macos-dynamic-spec013",
+    "files": {
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result.json": "82bc000301ecfead1de5c3b1d4842aa07a5fb2c226b62a2e0e95452ba89ef8ce",
+      "stdout.log": "8595f5973c81b6c4bb5dc79093a55a5c643a4f3932390a204eaadc6ee2ecd027",
+      "invocation.json": "47c90dd3498867359c46431b1064781f6f7b58e9f109ea7d337f0934921e633f"
+    }
+  },
+  {
+    "label": "initial-macos-dynamic-scoped-host",
+    "exit": 0,
+    "source": ".build/contracts/p08-integrated-activity/20261014T152436616537Z-initial-macos-dynamic-scoped-host",
+    "files": {
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result.json": "210465a54f8150d7a1830f3d7606a41ff1dac9beaefd73328c6f5e4a68564feb",
+      "stdout.log": "495b8cf29ca78b17f890eed6909a9e1946c610cc63e96f5481c5765a1caece28",
+      "invocation.json": "74f5d5d02e723d0119200de6fc2e955841045ca0dee74a0b2e8ad03388796190"
+    }
+  },
+  {
+    "label": "initial-macos-dynamic-counter",
+    "exit": 1,
+    "source": ".build/contracts/p08-integrated-activity/20261014T152454933610Z-initial-macos-dynamic-counter",
+    "files": {
+      "stderr.log": "ac1bdf95d516b4251d71fed75d8c809c28942884a175f26bddfdf26a5b368abd",
+      "result.json": "fbc17964d9d00fb8c5113ff54eaae07ff204d42c7c5f0b6de40658f97fb9fc99",
+      "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "invocation.json": "b36655387d92886d00f5a3dff760d85cc6e0dfd385de0f01c8fb5abf6f751f80"
+    }
+  }
+]
