@@ -17,7 +17,7 @@ view workaround, lifetime erasure, toolchain/flags/platform/resource/contract
 change, new probe/variant or unrelated repair is authorized. Necessary exact
 noncompiled source-applicability qualification refresh is included.
 
-Current new allowance: **candidate1/1 consumed/frozen; counter invocation0/1;
+Entry freeze allowance: **candidate1/1 consumed/frozen; counter invocation0/1;
 automatic repairs0**. [Source freeze](p08-compiler-compatibility1-source-freeze.md)
 is next for independent Sol6.1High Strong assessment; parent owns review/execution
 and boundary reporting. No compiler/build/formatter/harness/runtime/IR/probe or
@@ -34,3 +34,19 @@ new boundary and report the result; no further candidate/repair/run or remaining
 profile/image continuation is automatically authorized. All P08/fit/SO and
 separate I4-07/P09–12/hardware/timing/lifecycle obligations remain open. No optional
 deferred discovery or accepted-authority change is introduced by this activity.
+
+## Execution boundary — STOP
+
+Source `bbb54fc1` passed independent source assessment `7002a953`; pinned formatter
+passed with a clean tree. The sole exact counter invocation exited1 at
+`counter-model`, output `.build/contracts/p08-counter-ldxvgm61`. The prior graph
+compiler assertion is no longer emitted, but ten explicit lifetime/ownership
+diagnostics prevent compilation. [Immutable run](compiler-compatibility1-counter/manifest.json)
+and [independent diagnosis/result](p08-compiler-compatibility1-result.md).
+Candidate1/1 and invocation1/1 consumed, automatic repairs0. No remaining
+compiler/source activity in this allowance; historical2/2 remains closed.
+No native counter runtime, target/image or resource acceptance follows.
+
+Final evidence assessment committed `ab6eac83`. Documentation-only checks pass:
+whitespace, 497 local Markdown targets, governance198nodes/2,019edges and existing
+task-evidence validation. These do not qualify the failed counter or open fit.

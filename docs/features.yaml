@@ -21,7 +21,8 @@ features:
     # Allocation: docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md.
     # ADR-039 accepted; exact S11/S13/S15 amendments approved/applied 2026-10-13; nine SO criteria unmet.
     # Provenance: docs/iterations/iteration-003-review/rfc-015-contract-acceptance.md.
-    # Current P08 package STOP: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-package-stop.md; final Swift6.4 ownership compiler crash, 2/2 repairs exhausted, 3component passes, counter/runtime/target/fit open.
+    # Current compatibility continuation STOP: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-compiler-compatibility1-result.md; candidate1/run1 consumed, 10explicit lifetime diagnostics, no repairs; historical2/2closed, P08/fitopen.
+    # Historical P08 package STOP: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-package-stop.md; final Swift6.4 ownership compiler crash, 2/2 repairs exhausted, 3component passes, counter/runtime/target/fit open.
     # Historical final corrective cycle2/2 freeze: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-cycle2-source-freeze.md; exact Int→UInt64 conversion/new pinned qualification, review/rerun pending; next failure invokes budget stop, all criteria/fit open.
     # Historical corrective cycle1/2 source freeze: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-cycle1-source-freeze.md; C01–C05+B01/O01 unreviewed/unexecuted, initialcells4(3pass/1fail), images0; independent assessment then affected counter rerun.
     # Current integrated activity authorized 2026-10-14: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-activity.md.

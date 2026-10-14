@@ -1,5 +1,16 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+Current compatibility continuation boundary — **STOP, 2026-10-14**.
+Candidate `bbb54fc1`, source review `7002a953`, exact native counter run failed
+with ten explicit lifetime/ownership diagnostics in three cause groups. The
+earlier graph SILGenCleanup assertion is no longer emitted; compiler acceptance
+is still absent. [Result and independent diagnosis](scoped-storage/p08-compiler-compatibility1-result.md).
+New allowance consumed: candidate1/1, invocation1/1, automatic repairs0; historical
+cycles2/2 remain closed. Three component passes retain their bounded evidence;
+actual counter runtime, remaining profiles/images and fit/P08 remain open.
+Earlier pending/current wording below is historical.
+
+
 Current P08 package boundary — **STOP, 2026-10-14**. Source `8ef34f59`
 passed independent source review `72bd3a11`, but the final macOS Dynamic counter
 compile failed in Swift 6.4 SILGenCleanup ownership verification for the
