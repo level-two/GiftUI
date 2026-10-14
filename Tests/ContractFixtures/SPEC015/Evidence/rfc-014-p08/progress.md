@@ -1,5 +1,18 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-04→06 corrective source checkpoint frozen — 2026-10-14
+
+Approved input `03f3393b`; the commit containing this record freezes the one
+approved corrective source pass. [Exact disposition/labels and symbolic ledger](scoped-storage/so04-06-corrective-source-freeze.md)
+record source corrections for review findings 1–4, checked surplus bounds and
+initialized-prefix byte borrows. Finding 5 remains unresolved: actual repeated
+host sessions/control reset require independent classification of scope and
+normal-session versus terminal lifecycle rules. No unlisted source or identifier
+reset is applied. New independent Strong SOURCE review is next; no automatic
+post-freeze follow-up repairs. No compiler/build/formatter/harness/executable/
+debugger/IR/image/target/hardware invocation; all criteria/fit, historic budgets/
+guard and lifecycle status remain unchanged. SO-07–09 remain separately gated.
+
 ## SO-04→06 corrective source pass authorized — 2026-10-14
 
 At clean `0e047ee4`, Eugene replied “Please go ahead” to the explicit request

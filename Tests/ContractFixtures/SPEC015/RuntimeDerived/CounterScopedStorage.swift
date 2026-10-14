@@ -145,19 +145,21 @@ fileprivate enum P08ByteSlot {
         case .embedded(let p, _): p.baseAddress!.deinitialize(count: count)
         }
     }
-    func withBorrow<Result>(_ body: (UnsafeMutableRawBufferPointer) -> Result) -> Result {
+    func withBorrow<Result>(initializedCount: Int? = nil, _ body: (UnsafeMutableRawBufferPointer) -> Result) -> Result {
         switch self {
         case .scopes(let p): return withUnsafeMutableBytes(of: &p.pointee!) { body($0) }
         case .text(let p): return withUnsafeMutableBytes(of: &p.pointee!) { body($0) }
         case .path(let p): return withUnsafeMutableBytes(of: &p.pointee!) { body($0) }
         case .plan(let p): return withUnsafeMutableBytes(of: &p.pointee!) { body($0) }
         case .embedded(let p, _):
-            var cells = MutableSpan(_unsafeStart: p.baseAddress!, count: p.count)
+            let liveCount = initializedCount ?? p.count
+            precondition(liveCount >= 0 && liveCount <= p.count)
+            var cells = MutableSpan(_unsafeStart: p.baseAddress!, count: liveCount)
             return cells.withUnsafeMutableBufferPointer { body(UnsafeMutableRawBufferPointer($0)) }
         }
     }
     func facts(id: P08PhysicalID, initialized: Int) -> P08InitializedEntry {
-        withBorrow { bytes in .init(id: id, address: UInt(bitPattern: bytes.baseAddress!),
+        withBorrow(initializedCount: initialized) { bytes in .init(id: id, address: UInt(bitPattern: bytes.baseAddress!),
             count: initialized, size: 1, stride: 1, alignment: 1, retainedBytes: reservedBytes) }
     }
 }
@@ -1167,6 +1169,15 @@ fileprivate func withP08Storage<Result>(backing: inout P08TypedBackingOwner,
     _ body: (consuming P08StorageSession) -> Result) -> Result {
     backing.withStorage(body)
 }
+fileprivate func withP08R1Reservation<T, Result>(
+    _ reservation: UnsafeMutablePointer<P08PaddedReservation<T>>, surplus: Bool,
+    _ body: (P08TypedSlot<T>) -> Result
+) -> Result {
+    if surplus { return body(.padded(reservation)) }
+    return withUnsafeMutablePointer(to: &reservation.pointee.slot) { slot in
+        body(.native(slot))
+    }
+}
 fileprivate struct P08StaticReservation: ~Copyable {
     var b0: InlineArray<1024, UInt8>? = nil
     var b1: InlineArray<1056, UInt8>? = nil
@@ -1198,9 +1209,9 @@ fileprivate func withP08StaticReservation<Result>(surplus: Bool = false, capacit
         withUnsafeMutablePointer(to: &reservation.h0) { h0 in
         withUnsafeMutablePointer(to: &reservation.r0) { r0 in
         withUnsafeMutablePointer(to: &reservation.r1) { r1Reservation in
-        withUnsafeMutablePointer(to: &r1Reservation.pointee.slot) { r1 in
+        withP08R1Reservation(r1Reservation, surplus: surplus) { r1 in
         withUnsafeMutablePointer(to: &reservation.h1) { h1 in
-            var owner = P08TypedBackingOwner(slots: .static(.init(b0: .scopes(b0), b1: .text(b1), b2: .path(b2), b3: .plan(b3), g0: .native(g0), g1: .native(g1), g2: .native(g2), g3: .native(g3), g4: .native(g4), c0: .native(c0), h0: .native(h0), r0: .native(r0), r1: surplus ? .padded(r1Reservation) : .native(r1), h1: .native(h1))), identity: UInt(bitPattern: b0), capacities: capacities)
+            var owner = P08TypedBackingOwner(slots: .static(.init(b0: .scopes(b0), b1: .text(b1), b2: .path(b2), b3: .plan(b3), g0: .native(g0), g1: .native(g1), g2: .native(g2), g3: .native(g3), g4: .native(g4), c0: .native(c0), h0: .native(h0), r0: .native(r0), r1: r1, h1: .native(h1))), identity: UInt(bitPattern: b0), capacities: capacities)
             return body(&owner)
         }
         }
@@ -1241,9 +1252,9 @@ fileprivate func withP08DynamicReservation<Result>(surplus: Bool = false, capaci
         withUnsafeMutablePointer(to: &reservation.h0) { h0 in
         withUnsafeMutablePointer(to: &reservation.r0) { r0 in
         withUnsafeMutablePointer(to: &reservation.r1) { r1Reservation in
-        withUnsafeMutablePointer(to: &r1Reservation.pointee.slot) { r1 in
+        withP08R1Reservation(r1Reservation, surplus: surplus) { r1 in
         withUnsafeMutablePointer(to: &reservation.h1) { h1 in
-            var owner = P08TypedBackingOwner(slots: .dynamic(.init(g0: .native(g0), g1: .native(g1), g3: .native(g3), g4: .native(g4), c0: .native(c0), h0: .native(h0), r0: .native(r0), r1: surplus ? .padded(r1Reservation) : .native(r1), h1: .native(h1))), identity: UInt(bitPattern: g0), capacities: capacities)
+            var owner = P08TypedBackingOwner(slots: .dynamic(.init(g0: .native(g0), g1: .native(g1), g3: .native(g3), g4: .native(g4), c0: .native(c0), h0: .native(h0), r0: .native(r0), r1: r1, h1: .native(h1))), identity: UInt(bitPattern: g0), capacities: capacities)
             return body(&owner)
         }
         }
@@ -1284,7 +1295,7 @@ fileprivate struct P08EmbeddedOuter: ~Copyable {
             let address = UInt(bitPattern: backing.baseAddress!).addingReportingOverflow(UInt(region.offset))
             precondition(!address.overflow && address.partialValue % UInt(region.alignment) == 0)
         }
-        limits = counterEmbeddedField(backing, RuntimeProfileLimits.self, region: layout.regions[0]!)
+        self.limits = counterEmbeddedField(backing, RuntimeProfileLimits.self, region: layout.regions[0]!)
         root = counterEmbeddedField(backing, StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, region: layout.regions[1]!)
         semantic = counterEmbeddedField(backing, StaticSemanticRecordStorage.self, region: layout.regions[2]!)
         records = counterEmbeddedField(backing, SemanticRuntimeRecord.self, region: layout.regions[3]!)
@@ -1521,6 +1532,7 @@ fileprivate enum P08BodyStage: ~Copyable, ~Escapable {
 fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
     private var stage: P08BodyStage?
     private let control: UnsafeMutablePointer<CounterControl>
+    private var activationAttempted = false
     @_lifetime(copy session, borrow control)
     init(session: consuming P08StorageSession, control: borrowing UnsafeMutablePointer<CounterControl>) { stage = .session(session); self.control = copy control }
     @_lifetime(self: copy self, copy models, copy root, copy semantic, copy values, copy control)
@@ -1581,6 +1593,7 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
     }
     @_lifetime(self: copy self)
     mutating func run(control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?) -> Int {
+        activationAttempted = true
         switch consume stage.take()! {
         case .host(var host):
             let checks: Int
@@ -1634,7 +1647,12 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
         #endif
         }
         if constructed {
-            precondition(control.pointee.unavailable && !control.pointee.inputGate.inputIsEligible)
+            precondition(!control.pointee.inputGate.inputIsEligible)
+            if activationAttempted { precondition(control.pointee.unavailable) }
+            else {
+                precondition(!control.pointee.unavailable && control.pointee.wake == nil && control.pointee.scheduler == nil)
+                precondition(control.pointee.teardowns == 0 && control.pointee.applicationConstructions == 0)
+            }
             precondition(control.pointee.observationsInstalled == control.pointee.observationsDetached)
             precondition(!control.pointee.frameActive && !control.pointee.admission.sealActive)
             precondition(control.pointee.admission.pendingStateCount == 0 && control.pointee.admission.pointerCount == 0)
@@ -1959,6 +1977,15 @@ fileprivate func p08VerifyFault(_ owner: borrowing P08TypedBackingOwner, fault: 
     for index in 0..<14 { precondition(empty[index] == nil) }
     return count + 1
 }
+#if hasFeature(Embedded)
+fileprivate func p08SurplusBacking(_ backing: UnsafeMutableRawBufferPointer?) -> UnsafeMutableRawBufferPointer {
+    let extent = counterEmbeddedSlotBytes.multipliedReportingOverflow(by: 2)
+    guard !extent.overflow, let backing, extent.partialValue > 0,
+        extent.partialValue <= backing.count, backing.baseAddress != nil
+    else { preconditionFailure("surplus reservation bounds") }
+    return UnsafeMutableRawBufferPointer(rebasing: backing[0..<extent.partialValue])
+}
+#endif
 package func counterExerciseScopedStorage(backing: UnsafeMutableRawBufferPointer? = nil, write: CounterTiledPixelWrite? = nil) -> Int {
     let staticIDs: InlineArray<14, P08PhysicalID?> = [.b0, .b1, .b2, .b3, .g0, .g1, .g2, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
     var checks = 0
@@ -2023,7 +2050,7 @@ package func counterExerciseScopedStorage(backing: UnsafeMutableRawBufferPointer
     do {
         #if hasFeature(Embedded)
         for surplus in [0, 64] {
-            let outer = P08EmbeddedOuter(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: surplus == 0 ? counterSelectedProfileBacking(backing, slot: 0)! : UnsafeMutableRawBufferPointer(rebasing: backing![0..<(counterEmbeddedSlotBytes * 2)]), limits: counterActualLimits(.static), surplus: surplus)
+            let outer = P08EmbeddedOuter(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: surplus == 0 ? counterSelectedProfileBacking(backing, slot: 0)! : p08SurplusBacking(backing), limits: counterActualLimits(.static), surplus: surplus)
             var owner = P08TypedBackingOwner(slots: .static(outer.storageSlots()), identity: UInt(bitPattern: outer.bytes.baseAddress!))
             precondition(owner.initialize() == nil)
             let original = owner.originalInventory()

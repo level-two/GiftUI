@@ -168,9 +168,82 @@ for route in ('static', 'dynamic'):
                 scoped_variant(stem + ('-negative' if negative else '-positive'), source,
                                ('lifetime', origin) if negative else None)
 
+# These controls traverse the real active host or explicitly consume the
+# quiesced coordinator Optional into retired host state. Header controls above
+# remain separate. Each shorter-origin omission has its own exact positive.
+for route in ('static', 'dynamic'):
+    if route == 'dynamic' and is_embedded: continue
+    owner = 'CounterHostOwner' if route == 'static' else 'CounterDynamicHostOwner'
+    supplied = 'CounterHostSuppliedStorage' if route == 'static' else 'CounterDynamicHostSuppliedStorage'
+    coordinator = 'CounterHostCoordinator' if route == 'static' else 'CounterDynamicHostCoordinator'
+    host_state = 'CounterHostState' if route == 'static' else 'CounterDynamicHostState'
+    factory = ('nrf52840Static' if is_embedded else 'macOSStatic') if route == 'static' else ('raspberryPiDynamic' if is_target else 'macOSDynamic')
+    for mode in ('direct', 'generic'):
+        types = ('P08GeometryAccess', 'P08CandidateAccess', 'P08CommittedAccess', 'P08HitAccess') if mode == 'direct' else ('G', 'C', 'R', 'H')
+        generic = '' if mode == 'direct' else '<G, C, R, H>'
+        where = '' if mode == 'direct' else constraints
+        g, c, r, h = types
+        specialization = '<' + ', '.join(types) + '>'
+        parameters = ('geometry: consuming ' + g + ', candidateRecords: consuming ' + c + ', candidateHitRegions: consuming ' + h + ', candidateCommittedRecords: consuming ' + r + ', committedRecords: consuming ' + r + ', committedHitRegions: consuming ' + h + ', models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: consuming CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly')
+        prefix = ('let state = InteractionState(candidateRecords: candidateRecords, candidateHitRegions: candidateHitRegions, candidateCommittedRecords: candidateCommittedRecords, committedRecords: committedRecords, committedHitRegions: committedHitRegions)\n'
+                  'let interaction = InteractionOwnedKeyState(state: state, maximumComponentsPerKey: 24, maximumComponents: 48)!\n'
+                  'let supplied = ' + supplied + specialization + '(models: models, root: root, semantic: semantic, values: values, scopedControl: control, audit: assembly.report.storageAudit, geometry: geometry, interaction: interaction)\n')
+        active_type = 'SignalAnalyzerPresetHostInstance<' + owner + specialization + '>'
+        active_body = (prefix + 'let owner = ' + owner + specialization + '(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: false)\n'
+                       'var host = SignalAnalyzerPresetHostInstances.' + factory + '(report: assembly.report, owner: owner)!\n'
+                       'precondition(host.activate() == .active)\nreturn consume host')
+        retired_type = host_state + specialization
+        retired_body = (prefix + 'let selectedModels = supplied.borrowedModels()\nlet selectedRoot = supplied.borrowedRoot()\nlet selectedControl = supplied.borrowedControl()\n'
+                        'let binding = CounterExecutionBinding(models: selectedModels, root: selectedRoot, scopedControl: selectedControl.borrowed(), audit: assembly.report.storageAudit)!\n'
+                        'let pipeline = supplied.intoPipeline(limits: assembly.report.storageAudit.limits, endpointConfiguration: assembly.endpoint)\n'
+                        'var coordinator = ' + coordinator + specialization + '(binding: binding, admission: CounterAdmission(control: selectedControl.pointer, limits: assembly.report.storageAudit.limits.execution), opportunity: pipeline)\n'
+                        'coordinator.quiesce()\nvar extracted = coordinator.takeQuiescedOpportunity()\nswitch consume extracted {\n'
+                        'case .some(let pipeline): return .retired(pipeline.retireQuiescedStorage(), activationSpan)\n'
+                        'case .none: preconditionFailure("quiesced opportunity missing")\n}')
+        for phase, result, body in (('active-host', active_type, active_body), ('retired-optional', retired_type, retired_body)):
+            for origin in origins:
+                stem = 'so06-carrier-' + route + '-' + mode + '-' + phase + '-' + origin
+                for negative in (False, True):
+                    union = ', '.join('copy ' + name for name in origins if not negative or name != origin)
+                    source = '@_lifetime(' + union + ')\nfileprivate func carrierProbe' + generic + '(' + parameters + ') -> ' + result + ' ' + where + ' {\n' + body + '\n}'
+                    scoped_variant(stem + ('-negative' if negative else '-positive'), source, ('lifetime', origin) if negative else None)
+            # Each erasure attempt accepts the actual scoped carrier specialization,
+            # both directly and with exact generic suppressions. Positives retain
+            # scopes or return only owned observations; negatives erase them.
+            function = 'fileprivate func probe' + generic
+            observer = 'fileprivate func observe' + generic + '(_ input: borrowing ' + result + ') -> Int ' + where + ' { 1 }\n'
+            erasures = (
+                ('optional', '@_lifetime(copy input)\n' + function + '(_ input: consuming ' + result + ') -> ' + result + '? ' + where + ' { .some(consume input) }', 'fileprivate struct OwnedBox<T: ~Copyable>: ~Copyable { var value: T? }\n' + function + '(_ input: consuming ' + result + ') ' + where + ' { _ = OwnedBox(value: input) }', ('Escapable',)),
+                ('tuple', observer + function + '(_ input: borrowing ' + result + ') -> (Int, Int) ' + where + ' { (observe(input), 1) }', function + '(_ input: consuming ' + result + ') -> (' + result + ', Int) ' + where + ' { (input, 1) }', ('Escapable',)),
+                ('generic', 'fileprivate func erase<T: ~Copyable & ~Escapable>(_ input: consuming T) { _ = consume input }\n' + function + '(_ input: consuming ' + result + ') ' + where + ' { erase(input) }', 'fileprivate func erase<T: ~Copyable>(_ input: consuming T) { _ = consume input }\n' + function + '(_ input: consuming ' + result + ') ' + where + ' { erase(input) }', ('Escapable',)),
+                ('closure', observer + 'fileprivate func scoped(_ body: () -> Int) -> Int { body() }\n' + function + '(_ input: borrowing ' + result + ') -> Int ' + where + ' { scoped { observe(input) } }', observer + function + '(_ input: borrowing ' + result + ') -> () -> Int ' + where + ' { { observe(input) } }', ('escaping',)),
+            )
+            for kind, positive, negative, diagnostic in erasures:
+                stem = 'so06-erasure-' + route + '-' + mode + '-' + phase + '-' + kind
+                scoped_variant(stem + '-positive', positive)
+                scoped_variant(stem + '-negative', negative, diagnostic)
+
+# Actual backing escape controls specialize the Static and Dynamic supplied/
+# owner/preset path. The negative moves the actual activated host out of the
+# physical-owner callback; the positive ends teardown within that callback.
+def actual_host_backing_source(route, negative):
+    owner = 'P08StaticHostOwner' if route == 'static' else 'P08DynamicHostOwner'
+    host = 'P08StaticHost' if route == 'static' else 'P08DynamicHost'
+    transfer = 'intoSupplied' if route == 'static' else 'intoDynamicSupplied'
+    factory = ('nrf52840Static' if is_embedded else 'macOSStatic') if route == 'static' else ('raspberryPiDynamic' if is_target else 'macOSDynamic')
+    prefix = 'var escaped: ' + host + '? = nil\n' if negative else ''
+    terminal = 'escaped = consume host\nreturn 1' if negative else 'host.teardown()\nreturn 1'
+    after = '\nif var host = escaped.take() { host.teardown() }\nreturn count' if negative else '\nreturn count'
+    return ('fileprivate func probe(_ owner: inout P08TypedBackingOwner, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CounterPayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly) -> Int {\n' + prefix +
+            'let count = withP08Storage(backing: &owner) { session in\n'
+            'let supplied = session.' + transfer + '(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control.borrowed(), audit: assembly.report.storageAudit)\n'
+            'let current = ' + owner + '(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: false)\n'
+            'var host = SignalAnalyzerPresetHostInstances.' + factory + '(report: assembly.report, owner: current)!\n'
+            'precondition(host.activate() == .active)\n' + terminal + '\n}' + after + '\n}')
+
 pairs = (
     ('counter-host-copy', 'fileprivate func probe(_ host: consuming P08StaticHost) { _ = consume host }', 'fileprivate func probe(_ host: borrowing P08StaticHost) { let duplicate = copy host; _ = duplicate }', ("'copy' cannot be applied to noncopyable types",)),
-    ('counter-host-backing', 'fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { withP08Storage(backing: &owner) { session in var current = consume session; current.reset(); return 1 } }', 'fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { var escaped: P08StorageSession? = nil; _ = withP08Storage(backing: &owner) { session in escaped = consume session; return 1 }; var current = escaped.take()!; current.reset(); return 1 }', ('lifetime', 'escaped')),
+    ('counter-host-backing', actual_host_backing_source('static', False), actual_host_backing_source('static', True), ('lifetime', 'escaped')),
     ('so06-use-after-consume', 'fileprivate func probe(_ input: consuming P08StorageSession) { var first = consume input; first.reset() }', 'fileprivate func probe(_ input: consuming P08StorageSession) { let first = consume input; let second = consume input; _ = consume first; _ = consume second }', ('consumed',)),
     ('so06-owned-return', 'fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<StaticCounterGeometry, CounterStaticCandidate, CounterStaticCommitted, CounterStaticHits>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }', 'fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }', ('Copyable', 'returnWorkspaces')),
     ('so06-private-construction', '@_lifetime(copy token)\nfileprivate func probe(_ token: borrowing P08SessionLifetime, _ descriptor: P08GeometryDescriptor) -> P08GeometryAccess { P08GeometryAccess.lend(sessionLifetime: token, descriptor: descriptor) }', '@_lifetime(copy token)\nfileprivate func probe(_ token: borrowing P08SessionLifetime, _ descriptor: P08GeometryDescriptor) -> P08GeometryAccess { P08GeometryAccess(sessionLifetime: token, descriptor: descriptor) }', ('private',)),
@@ -187,8 +260,8 @@ for stem, positive, negative, diagnostic in pairs:
     scoped_variant(stem + '-positive', positive)
     scoped_variant(stem + '-negative', negative, diagnostic)
 if not is_embedded:
-    scoped_variant('counter-dynamic-host-backing-positive', 'fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { withP08Storage(backing: &owner) { session in var current = consume session; current.reset(); return 1 } }')
-    scoped_variant('counter-dynamic-host-backing-negative', 'fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { var escaped: P08StorageSession? = nil; _ = withP08Storage(backing: &owner) { session in escaped = consume session; return 1 }; var current = escaped.take()!; current.reset(); return 1 }', ('lifetime', 'escaped'))
+    scoped_variant('counter-dynamic-host-backing-positive', actual_host_backing_source('dynamic', False))
+    scoped_variant('counter-dynamic-host-backing-negative', actual_host_backing_source('dynamic', True), ('lifetime', 'escaped'))
     for stem, positive, negative in (
         ('so06-task', 'fileprivate func probe(_ value: Int) { _ = Task { value } }', 'fileprivate func probe(_ input: consuming P08StorageSession) { _ = Task { _ = consume input; return 1 } }'),
         ('so06-async', 'fileprivate func probe(_ input: consuming P08StorageSession) -> Int { var value = consume input; value.reset(); return 1 }', 'fileprivate func probe(_ input: consuming P08StorageSession) async -> Int { var value = consume input; value.reset(); return 1 }'),

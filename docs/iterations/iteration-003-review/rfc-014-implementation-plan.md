@@ -1,6 +1,16 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current corrective source dispatch — 2026-10-14: Eugene approved one bounded
+Current corrective source freeze — 2026-10-14: the commit containing this
+header freezes the one authorized correction from `03f3393b`. The
+[source receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-corrective-source-freeze.md)
+records findings 1–4 corrections, checked surplus/prefix borrows, exact labels
+and symbolic accounting. Finding 5 actual host reuse remains unresolved for
+independent scope/lifecycle classification; no unlisted source, terminal-owner
+resurrection or identifier reset. New independent Strong SOURCE review is next,
+zero automatic follow-up repairs. No compiler/build/formatter/harness/run;
+all criteria/fit, budgets/guard and I4-07/P09–P12 remain open/unchanged.
+
+Historical corrective source dispatch — 2026-10-14: Eugene approved one bounded
 source correction of the five findings at `0e047ee4`, with “Please go ahead”.
 Use the [reviewed correction boundary](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-independent-source-review.md#criteria-disposition-and-next-bounded-decision),
 then freeze/commit and independent Sol 6.1 High review; zero automatic follow-up
