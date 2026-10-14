@@ -132,3 +132,27 @@ stdout/stderr hashes and result under a unique `.build/contracts/p08-integrated-
 directory before/after each cell. Subsequent cells use actual emitted paths,
 never guessed ones. No source edits while a cell is running. Current corrective
 cycles remain 0/2; the initial cell is recorded as consumed when invoked.
+
+## Cycle 1 diagnostic rerun — 2026-10-14
+
+Frozen source `1716673d`, independent review `e9c10de0`: source readiness
+remains FAIL on C01 (UInt64 plus Int at CounterScopedStorage.swift:909).
+C02–C05, B01 and O01 are corrected by source inspection, a productive narrowing.
+Use cycle 1's one affected counter rerun diagnostically before the final bundled
+correction, with the exact command below. This consumes the existing affected
+rerun, adds no cell/probe/variant and cannot close C01 or qualify acceptance.
+Other frontend diagnostics may appear; later ownership/codegen can remain masked.
+Preserve all output before any edit and bundle actual diagnostics into cycle 2.
+No additional cycle-1 rerun or source repair is implied. The three successful
+component receipts are reused with the exact noncompiled-applicability qualification.
+Its recorded-input counts are 112/173/53; the cycle-1 freeze prose's110/171/52
+counts were inaccurate, while its pinned qualification hashes/counts are correct.
+
+```text
+scripts/contracts/run-spec-015.sh --profile macos-dynamic --corpus rfc-014-counter --runtime-build .build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic --host-build .build/contracts/p08-scoped-host-ezcy1qan
+```
+
+Run the pinned formatter before this invocation. Corrective cycles1/2 consumed;
+initial driver cells4 (3pass/1fail); cycle1 counter rerun consumed on invocation.
+Images0; remaining initial profiles wait. Source-readiness, runtime, fit and P08
+remain open; historical budgets and the two-unproductive guard remain intact.
