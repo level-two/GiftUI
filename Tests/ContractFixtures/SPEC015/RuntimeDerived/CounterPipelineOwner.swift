@@ -113,15 +113,15 @@ struct CounterControl {
     var frameActive = false
 }
 struct CounterPipelineOwner<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable, RuntimeCompletePipelineOwner
-where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: CounterCommittedBacking, Hits: CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
     typealias OwnerFailure = RuntimeOwnerFailure
     let models: ObservableModelScope<CounterOwnedModel, CounterModelSchema>
     let root: ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>
     let semantic: SemanticRecordStore<CounterPayload>
     let values: CanvasStagedValues<SemanticRecordReference, CounterValueTable>
     let control: UnsafeMutablePointer<CounterControl>
-    var geometry: Geometry
-    var interaction: InteractionOwnedKeyState<Candidate, Committed, Hits>
+    private var geometry: Geometry
+    private var interaction: InteractionOwnedKeyState<Candidate, Committed, Hits>
     var phase = ExecutionPhaseMachine()
     var counters = RunCycleIDAllocator()
     let limits: RuntimeProfileLimits
@@ -151,7 +151,7 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
     var hasAllocatedCandidateFrame: Bool { phase.context.candidateFrame != nil }
     var quiescent = false
     var presentationTeardownComplete = false
-    @_lifetime(copy models, copy root, copy semantic, copy values, borrow control)
+    @_lifetime(copy models, copy root, copy semantic, copy values, borrow control, copy geometry, copy interaction)
     init(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CounterControl>, limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration) {
         self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.values = consume values
         self.limits = limits
@@ -164,8 +164,11 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
     // two escapable owned workspace values. No original owner survives the call.
 
 
-    consuming func returnWorkspaces(checks: Int) -> CounterReturnedWorkspaces<Geometry, Candidate, Committed, Hits> {
-        CounterReturnedWorkspaces(geometry: geometry, interaction: interaction, checks: checks)
+    @_lifetime(copy self)
+    consuming func retireQuiescedStorage() -> CounterRetiredStorage<Geometry, Candidate, Committed, Hits> {
+        precondition(quiescent && presentationTeardownComplete && !frameActive && !observableCandidate && !semanticCandidate && !interactionCandidate)
+        precondition(control.pointee.unavailable && control.pointee.admission.pendingStateCount == 0 && !control.pointee.admission.sealActive)
+        return CounterRetiredStorage(semantic: semantic, geometry: geometry, interaction: interaction)
     }
     mutating func runTracedPipeline() -> RuntimeCompletePipelineResult<RuntimeOwnerFailure> {
         let result = RuntimeCompletePipeline.run(owner: &self)
@@ -526,4 +529,56 @@ print(label, value)
 private func counterActionCode(_ ref: SemanticRecordReference, bank: borrowing SemanticRecordView<CounterPayload>) -> UInt16 {
     guard let record = bank.record(ref), let payload = bank.payload(at: record.payload), case .standard(.action(_, let code)) = payload else { preconditionFailure("counter action payload") }
     return code
+}
+
+extension CounterPipelineOwner
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+    @_lifetime(copy models, copy root, copy semantic, copy values, copy scopedControl, copy geometry, copy interaction)
+    init(
+        models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+        root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
+        semantic: consuming SemanticRecordStore<CounterPayload>,
+        values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>,
+        geometry: consuming Geometry,
+        interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>,
+        scopedControl: consuming CounterHostControl, limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration
+    ) {
+        self.models = consume models
+        self.root = consume root
+        self.semantic = consume semantic
+        self.values = consume values
+        self.limits = limits
+        scopedControl.pointer.pointee.initializeCounterWake()
+        let construction = CounterConstructionInputs.canonical
+        self.endpoint = CounterEndpoint(configuration: construction.endpointConfiguration.configuration(endpointConfiguration), control: construction.endpointBacking.control(scopedControl.pointer))
+        self.geometry = consume geometry
+        self.interaction = consume interaction
+        self.control = scopedControl.pointer
+        precondition(self.root.belongs(to: self.models))
+    }
+}
+
+
+extension CounterPipelineOwner
+where Geometry: Copyable & Escapable, Candidate: Copyable & Escapable, Committed: Copyable & Escapable, Hits: Copyable & Escapable {
+    consuming func returnWorkspaces(checks: Int) -> CounterReturnedWorkspaces<Geometry, Candidate, Committed, Hits> {
+        CounterReturnedWorkspaces(geometry: geometry, interaction: interaction, checks: checks)
+    }
+}
+
+struct CounterRetiredStorage<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+    private let semantic: SemanticRecordStore<CounterPayload>
+    private var geometry: Geometry
+    private var interaction: InteractionOwnedKeyState<Candidate, Committed, Hits>
+    @_lifetime(copy semantic, copy geometry, copy interaction)
+    init(semantic: consuming SemanticRecordStore<CounterPayload>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>) {
+        self.semantic = consume semantic; self.geometry = consume geometry; self.interaction = consume interaction
+    }
+    @_lifetime(self: copy self)
+    mutating func resetAfterQuiescence() {
+        do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence() }
+        catch { preconditionFailure("counter semantic reset") }
+        geometry.reset(); interaction.resetAllStorage()
+    }
 }

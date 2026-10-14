@@ -9,66 +9,9 @@ import GiftUIObservableState
 import GiftUIRuntimeStatic
 import GiftUISemanticCore
 
-extension CounterSelectedStaticProfileStorage {
-    mutating func runCounterHost(failAfterRuntime: Bool) -> Int {
-        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }
-        return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
-            let ownedChecks = counterOwnedSchedulerCompatibility(assembly.report)
-            // Declared producer-projection negatives, not analyzer producer behavior.
-            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, sourceCallbacks: 21) == nil)
-            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, repositoryCallbacks: 2) == nil)
-            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, useCaseCallbacks: 2) == nil)
-            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, nonTransitionPublications: 2) == nil)
-            let limits = self.limits
-            #if hasFeature(Embedded)
-            // Copy only the small typed descriptors; their disjoint banks stay
-            // in the caller slot until all nested scopes and teardown end.
-            var semanticBacking = self.semanticBacking
-            var canvasBacking = self.canvasBacking
-            #endif
-            var keys = interaction.take()
-            var checks = 0
-            do throws(ObservableStateError) {
-                try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
-                    do throws(SemanticExpansionError) {
-                        var records = semanticBacking.records.mutableSpan
-                        var paths = semanticBacking.paths.mutableSpan
-                        var payloads = semanticBacking.payloads.mutableSpan
-                        var scalars = semanticBacking.scalars.mutableSpan
-                        try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits), records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in
-                            do throws(DrawingError) {
-                                var entries = canvasBacking.mutableSpan
-                                try canvas.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits.staticCanvas!) { values in
-                                    checks = workspace.withGeometry { geometry in
-                                        withUnsafeMutablePointer(to: &control) { pointer in
-                                            let activationBacking: InlineArray<1, UInt8> = [1]
-                                            let supplied = CounterHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: geometry, interaction: keys.take()!)
-                                            var owner = CounterHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
-                                            let expected = counterJoinSnapshot(pointer)
-                                            let foreignExpected = counterJoinSnapshot(foreignControl)
-                                            let joinChecks = counterCheckRejectedBindings(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: pointer, foreignControl: foreignControl, audit: audit, report: assembly.report, expected: expected, foreignExpected: foreignExpected)
-                                            #if hasFeature(Embedded)
-                                            var host = SignalAnalyzerPresetHostInstances.nrf52840Static(report: assembly.report, owner: consume owner)!
-                                            #else
-                                            var host = SignalAnalyzerPresetHostInstances.macOSStatic(report: assembly.report, owner: consume owner)!
-                                            #endif
-                                        return counterRunHostLifecycle(host: &host, control: pointer, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joinChecks)
-                                        }
-                                    }
-                                }
-                            } catch { preconditionFailure("counter host Canvas") }
-                        }
-                    } catch { preconditionFailure("counter host semantics") }
-                }
-            } catch { preconditionFailure("counter host model") }
-            return checks + ownedChecks + 4
-        }
-    }
-}
-
 @inline(never)
-private func counterCheckRejectedBindings(
-    owner: inout CounterHostOwner,
+func counterCheckRejectedBindings<Geometry, Candidate, Committed, Hits>(
+    owner: inout CounterHostOwner<Geometry, Candidate, Committed, Hits>,
     models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
     root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
     foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
@@ -77,7 +20,8 @@ private func counterCheckRejectedBindings(
     foreignControl: UnsafeMutablePointer<CounterControl>,
     audit: RuntimeStorageAudit, report: HostAssemblyReport,
     expected: CounterJoinSnapshot, foreignExpected: CounterJoinSnapshot
-) -> Int {
+) -> Int
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
     var joinChecks = 0
     let rejected0 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: foreignControl, audit: audit, report: report)
     precondition(rejected0 == .failure(.configuration(.invalidWakeIntegration), progress: .init()))
@@ -113,11 +57,12 @@ private func counterCheckRejectedBindings(
 }
 
 @inline(never)
-private func counterRunHostLifecycle(
-    host: inout SignalAnalyzerPresetHostInstance<CounterHostOwner>,
+func counterRunHostLifecycle<Geometry, Candidate, Committed, Hits>(
+    host: inout SignalAnalyzerPresetHostInstance<CounterHostOwner<Geometry, Candidate, Committed, Hits>>,
     control pointer: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport,
     failAfterRuntime: Bool, joinChecks: Int
-) -> Int {
+) -> Int
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
     precondition(host.lifecycleState == .valid && host.owner.constructions == 0 && pointer.pointee.finalized == 0)
     precondition(host.runOpportunity() == .invalidLifecycle)
     var count = 2 + joinChecks
@@ -166,36 +111,10 @@ private func counterRunHostLifecycle(
     return count + 13
 }
 
-package func p08CounterHost(write: CounterTiledPixelWrite? = nil, backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
-    var models = ObservableModelOwnerNamespace()
-    var semantics = SemanticRecordOwnerNamespace()
-    do {
-        var complete = counterMakeSelectedProfile(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 0))
-        var partial = counterMakeSelectedProfile(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 1))
-        var nonRetryable = counterMakeSelectedProfile(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 2))
-        nonRetryable.control.terminalRetry = true
-        #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
-        complete.control.backend.write = write
-        partial.control.backend.write = write
-        nonRetryable.control.backend.write = write
-        #endif
-        var failures = 0
-        for step: UInt8 in 2...7 {
-            var failed = counterMakeSelectedProfile(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 3))
-            failed.control.idleQuiesceMode = step
-            #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
-            failed.control.backend.write = write
-            #endif
-            failures += failed.runCounterHost(failAfterRuntime: false)
-        }
-        return complete.runCounterHost(failAfterRuntime: false) + partial.runCounterHost(failAfterRuntime: true) + nonRetryable.runCounterHost(failAfterRuntime: false) + failures
-    } catch { preconditionFailure("counter host identities") }
-}
-
 // Ordinary owned conformers remain valid callers of the same widened internal
 // helper; runtime failures and lifecycle gating remain unchanged.
 private struct CounterOwnedSchedulerHost: MVPHostInstance {
-    typealias ActivationFailure = CounterHostOwner.ActivationFailure
+    typealias ActivationFailure = CounterStaticActivationFailure
     let assemblyReport: HostAssemblyReport
     var lifecycleState: MVPHostLifecycleState = .active
     var calls = 0
@@ -206,7 +125,7 @@ private struct CounterOwnedSchedulerHost: MVPHostInstance {
     }
     mutating func teardown() { lifecycleState = .quiescent }
 }
-private func counterOwnedSchedulerCompatibility(_ report: HostAssemblyReport) -> Int {
+func counterOwnedSchedulerCompatibility(_ report: HostAssemblyReport) -> Int {
     var instance = CounterOwnedSchedulerHost(assemblyReport: report)
     var scheduler = HostScheduledOpportunityController(assemblyReport: report, initialFrameOriginMicroseconds: 0)
     precondition(scheduler.recordAcceptedFact(at: 1) == .success(.requestWake))

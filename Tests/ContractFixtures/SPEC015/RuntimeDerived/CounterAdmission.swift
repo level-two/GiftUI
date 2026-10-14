@@ -10,7 +10,8 @@ import GiftUIRuntimeDynamic
 import GiftUISemanticCore
 import P08CounterSchema
 
-extension CounterPipelineOwner: ExecutionOpportunityRunner, RuntimeOpportunityQuiescence {
+extension CounterPipelineOwner: ExecutionOpportunityRunner, RuntimeOpportunityQuiescence
+where Geometry: ~Copyable & ~Escapable, Candidate: ~Copyable & ~Escapable, Committed: ~Copyable & ~Escapable, Hits: ~Copyable & ~Escapable {
     var isOpportunityQuiescent: Bool { presentationTeardownComplete }
     mutating func quiesceOpportunity() {
         quiescent = true

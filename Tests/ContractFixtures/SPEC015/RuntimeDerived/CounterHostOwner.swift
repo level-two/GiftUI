@@ -29,33 +29,32 @@ struct CounterHostControl: ~Copyable, ~Escapable {
     borrowing func borrowed() -> CounterHostControl { CounterHostControl(other: self) }
 }
 
-typealias CounterHostPipeline = CounterPipelineOwner<
-    StaticCounterGeometry, CounterStaticCandidate, CounterStaticCommitted, CounterStaticHits
->
-typealias CounterHostCoordinator = StaticRuntimeExecutionCoordinator<
-    CounterExecutionBinding, CounterAdmission, CounterHostPipeline
->
+typealias CounterHostPipeline<Geometry, Candidate, Committed, Hits> = CounterPipelineOwner<Geometry, Candidate, Committed, Hits>
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity
+typealias CounterHostCoordinator<Geometry, Candidate, Committed, Hits> = StaticRuntimeExecutionCoordinator<CounterExecutionBinding, CounterAdmission, CounterHostPipeline<Geometry, Candidate, Committed, Hits>>
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity
 
 // Actual finite counter supplied state. These are actual backing scopes and owned
 // workspaces. There is no endpoint, pipeline or coordinator in the inert case.
-struct CounterHostSuppliedStorage<Geometry: CounterGeometry>: ~Copyable, ~Escapable {
+struct CounterHostSuppliedStorage<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
     private let models: ObservableModelScope<CounterOwnedModel, CounterModelSchema>
     private let root: ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>
     private let semantic: SemanticRecordStore<CounterPayload>
     private let values: CanvasStagedValues<SemanticRecordReference, CounterValueTable>
     private let control: CounterHostControl
     let audit: RuntimeStorageAudit
-    var geometry: Geometry
-    var interaction: CounterStaticKeys
+    private var geometry: Geometry
+    private var interaction: InteractionOwnedKeyState<Candidate, Committed, Hits>
 
-    @_lifetime(copy models, copy root, copy semantic, copy values, borrow control)
+    @_lifetime(copy models, copy root, copy semantic, copy values, borrow control, copy geometry, copy interaction)
     init(
         models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
         root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
         semantic: consuming SemanticRecordStore<CounterPayload>,
         values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>,
         control: borrowing UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit,
-        geometry: consuming Geometry, interaction: consuming CounterStaticKeys
+        geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>
     ) {
         self.models = consume models
         self.root = consume root
@@ -65,6 +64,18 @@ struct CounterHostSuppliedStorage<Geometry: CounterGeometry>: ~Copyable, ~Escapa
         self.audit = audit
         self.geometry = consume geometry
         self.interaction = consume interaction
+    }
+    @_lifetime(copy self)
+    consuming func intoPipeline(limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration) -> CounterPipelineOwner<Geometry, Candidate, Committed, Hits> {
+        CounterPipelineOwner(models: models, root: root, semantic: semantic, values: values, geometry: geometry, interaction: interaction, scopedControl: control, limits: limits, endpointConfiguration: endpointConfiguration)
+    }
+    @_lifetime(copy self)
+    consuming func retireInertStorage() -> CounterRetiredStorage<Geometry, Candidate, Committed, Hits> {
+        CounterRetiredStorage(semantic: semantic, geometry: geometry, interaction: interaction)
+    }
+    @_lifetime(copy models, copy root, copy semantic, copy values, copy scopedControl, copy geometry, copy interaction)
+    init(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, scopedControl: consuming CounterHostControl, audit: RuntimeStorageAudit, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>) {
+        self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.values = consume values; self.control = consume scopedControl; self.audit = audit; self.geometry = consume geometry; self.interaction = consume interaction
     }
     @_lifetime(copy self)
     borrowing func borrowedModels(selection: CounterProfileConstructionInput = .supplied) -> ObservableModelScope<CounterOwnedModel, CounterModelSchema> {
@@ -86,33 +97,8 @@ struct CounterHostSuppliedStorage<Geometry: CounterGeometry>: ~Copyable, ~Escapa
     borrowing func borrowedControl() -> CounterHostControl { control.borrowed() }
 }
 
-typealias CounterHostSupplied = CounterHostSuppliedStorage<StaticCounterGeometry>
-
-extension CounterPipelineOwner {
-    @_lifetime(copy models, copy root, copy semantic, copy values, copy scopedControl)
-    init(
-        models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
-        root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
-        semantic: consuming SemanticRecordStore<CounterPayload>,
-        values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>,
-        geometry: consuming Geometry,
-        interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>,
-        scopedControl: consuming CounterHostControl, limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration
-    ) {
-        self.models = consume models
-        self.root = consume root
-        self.semantic = consume semantic
-        self.values = consume values
-        self.limits = limits
-        scopedControl.pointer.pointee.initializeCounterWake()
-        let construction = CounterConstructionInputs.canonical
-        self.endpoint = CounterEndpoint(configuration: construction.endpointConfiguration.configuration(endpointConfiguration), control: construction.endpointBacking.control(scopedControl.pointer))
-        self.geometry = consume geometry
-        self.interaction = consume interaction
-        self.control = scopedControl.pointer
-        precondition(self.root.belongs(to: self.models))
-    }
-}
+typealias CounterHostSupplied<Geometry, Candidate, Committed, Hits> = CounterHostSuppliedStorage<Geometry, Candidate, Committed, Hits>
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity
 
 extension CounterExecutionBinding {
     @_lifetime(copy models, copy root, copy scopedControl)
@@ -131,12 +117,13 @@ extension CounterExecutionBinding {
 
 // Internal storage for the existing scoped host role, retaining every actual
 // supplied backing scope through inert, active and retired states.
-enum CounterHostState: ~Copyable, ~Escapable {
-    case inert(CounterHostSupplied, Span<UInt8>)
-    case active(CounterHostCoordinator, ObservableModelTicket<CounterModelSchema>?, Span<UInt8>)
-    case retired(SemanticRecordStore<CounterPayload>, StaticCounterGeometry, CounterStaticKeys, Span<UInt8>)
+enum CounterHostState<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+    case inert(CounterHostSupplied<Geometry, Candidate, Committed, Hits>, Span<UInt8>)
+    case active(CounterHostCoordinator<Geometry, Candidate, Committed, Hits>, ObservableModelTicket<CounterModelSchema>?, Span<UInt8>)
+    case retired(CounterRetiredStorage<Geometry, Candidate, Committed, Hits>, Span<UInt8>)
     @_lifetime(copy supplied, copy activationSpan)
-    init(supplied: consuming CounterHostSupplied, activationSpan: Span<UInt8>) {
+    init(supplied: consuming CounterHostSupplied<Geometry, Candidate, Committed, Hits>, activationSpan: Span<UInt8>) {
         self = .inert(consume supplied, activationSpan)
     }
     var controlPointer: UnsafeMutablePointer<CounterControl> {
@@ -161,12 +148,12 @@ enum CounterHostState: ~Copyable, ~Escapable {
                 self = .inert(consume supplied, span)
                 return error
             }
-            let pipeline = CounterHostPipeline(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: supplied.borrowedSemantic(), values: supplied.borrowedValues(), geometry: supplied.geometry, interaction: supplied.interaction, scopedControl: control.borrowed(), limits: audit.limits, endpointConfiguration: assembly.endpoint)
             let binding = CounterExecutionBinding(models: models.borrowedScope(), root: root.borrowedRoot(), scopedControl: control.borrowed(), audit: audit)!
-            let coordinator = CounterHostCoordinator(binding: binding, admission: CounterAdmission(control: construction.admission.control(control.pointer), limits: construction.admission.audit(audit).limits.execution), opportunity: pipeline)
+            let pipeline = supplied.intoPipeline(limits: audit.limits, endpointConfiguration: assembly.endpoint)
+            let coordinator = CounterHostCoordinator<Geometry, Candidate, Committed, Hits>(binding: binding, admission: CounterAdmission(control: construction.admission.control(control.pointer), limits: construction.admission.audit(audit).limits.execution), opportunity: pipeline)
             self = .active(consume coordinator, nil, span)
         case .active(let coordinator, let cache, let span): self = .active(consume coordinator, consume cache, span)
-        case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span); preconditionFailure("retired host")
+        case .retired(let storage, let span): self = .retired(consume storage, span); preconditionFailure("retired host")
         }
         return nil
     }
@@ -198,7 +185,7 @@ enum CounterHostState: ~Copyable, ~Escapable {
                 return true
             } catch { self = .active(consume coordinator, nil, span); return false }
         case .inert(let supplied, let span): self = .inert(consume supplied, span); return false
-        case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span); return false
+        case .retired(let storage, let span): self = .retired(consume storage, span); return false
         }
     }
     @_lifetime(self: copy self)
@@ -209,7 +196,7 @@ enum CounterHostState: ~Copyable, ~Escapable {
             self = .active(consume coordinator, consume cache, span)
             return outcome.result == .queued
         case .inert(let supplied, let span): self = .inert(consume supplied, span); return false
-        case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span); return false
+        case .retired(let storage, let span): self = .retired(consume storage, span); return false
         }
     }
     @_lifetime(self: copy self)
@@ -220,7 +207,7 @@ enum CounterHostState: ~Copyable, ~Escapable {
             self = .active(consume coordinator, consume cache, span)
             return result
         case .inert(let supplied, let span): self = .inert(consume supplied, span); preconditionFailure("inactive host")
-        case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span); preconditionFailure("retired host")
+        case .retired(let storage, let span): self = .retired(consume storage, span); preconditionFailure("retired host")
         }
     }
     @_lifetime(self: copy self)
@@ -235,7 +222,7 @@ enum CounterHostState: ~Copyable, ~Escapable {
             precondition(coordinator.isQuiescent)
             self = .active(consume coordinator, nil, span)
         case .inert(let supplied, let span): self = .inert(consume supplied, span)
-        case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span)
+        case .retired(let storage, let span): self = .retired(consume storage, span)
         }
     }
     @_lifetime(self: copy self)
@@ -243,22 +230,21 @@ enum CounterHostState: ~Copyable, ~Escapable {
         switch consume self {
         case .active(let coordinator, let cache, let span):
             precondition(coordinator.isQuiescent && cache == nil)
-            let returned = coordinator.takeQuiescedOpportunity()!
-            let semantic = returned.semantic.borrowedStore()
-            self = .retired(consume semantic, returned.geometry, returned.interaction, span)
-        case .inert(let supplied, let span): self = .retired(supplied.borrowedSemantic(), supplied.geometry, supplied.interaction, span)
-        case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span)
+            var extracted = coordinator.takeQuiescedOpportunity()
+            switch consume extracted {
+            case .some(let pipeline): self = .retired(pipeline.retireQuiescedStorage(), span)
+            case .none: preconditionFailure("quiesced counter opportunity missing")
+            }
+        case .inert(let supplied, let span): self = .retired(supplied.retireInertStorage(), span)
+        case .retired(let storage, let span): self = .retired(consume storage, span)
         }
     }
     @_lifetime(self: copy self)
     mutating func resetProfileStorage() {
         switch consume self {
-        case .retired(let semantic, var geometry, var interaction, let span):
-            do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence() }
-            catch { preconditionFailure("counter semantic reset") }
-            geometry.reset()
-            interaction.resetAllStorage()
-            self = .retired(consume semantic, geometry, interaction, span)
+        case .retired(var storage, let span):
+            storage.resetAfterQuiescence()
+            self = .retired(consume storage, span)
         case .active(let coordinator, let cache, let span):
             self = .active(consume coordinator, consume cache, span)
             preconditionFailure("platform owners must release before profile reset")
@@ -270,13 +256,14 @@ enum CounterHostState: ~Copyable, ~Escapable {
 
 }
 
-struct CounterHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveOwner {
+struct CounterHostOwner<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveOwner
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
     #if hasFeature(Embedded)
     typealias ActivationFailure = NRF52840StaticHostActivationFailure
     #else
     typealias ActivationFailure = MacOSStaticHostActivationFailure
     #endif
-    private var state: CounterHostState
+    private var state: CounterHostState<Geometry, Candidate, Committed, Hits>
     private var application: CounterApplicationOwners?
     private(set) var constructions = 0
     private(set) var activationStep: UInt8 = 0
@@ -286,8 +273,8 @@ struct CounterHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveOwner {
     let assembly: CounterHostAssembly
     private let failAfterRuntime: Bool
     @_lifetime(copy supplied, copy activationSpan)
-    init(supplied: consuming CounterHostSupplied, activationSpan: Span<UInt8>, assembly: CounterHostAssembly, failAfterRuntime: Bool) {
-        state = CounterHostState(supplied: consume supplied, activationSpan: activationSpan)
+    init(supplied: consuming CounterHostSupplied<Geometry, Candidate, Committed, Hits>, activationSpan: Span<UInt8>, assembly: CounterHostAssembly, failAfterRuntime: Bool) {
+        state = CounterHostState<Geometry, Candidate, Committed, Hits>(supplied: consume supplied, activationSpan: activationSpan)
         self.assembly = assembly
         self.failAfterRuntime = failAfterRuntime
     }
@@ -362,3 +349,9 @@ struct CounterHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveOwner {
     private mutating func quiesceOnce() { if !quiesced { state.quiesce(); quiesced = true } }
     mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure> { precondition(reportValid && activationStep == 7); return state.runOpportunity() }
 }
+
+#if hasFeature(Embedded)
+typealias CounterStaticActivationFailure = NRF52840StaticHostActivationFailure
+#else
+typealias CounterStaticActivationFailure = MacOSStaticHostActivationFailure
+#endif

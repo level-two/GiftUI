@@ -8,67 +8,8 @@ import GiftUIRuntimeCore
 import GiftUIRuntimeDynamic
 import GiftUISemanticCore
 
-extension DynamicCounterProfileStorage {
-    mutating func runCounterDynamicHost(failAfterRuntime: Bool) -> Int {
-        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterDynamicHostKind) else { preconditionFailure("counter Dynamic valid-only host") }
-        // Declared producer-projection negatives, not analyzer producer behavior.
-        precondition(CounterHostAssembly.validate(audit, kind: counterDynamicHostKind, sourceCallbacks: 21) == nil)
-        precondition(CounterHostAssembly.validate(audit, kind: counterDynamicHostKind, repositoryCallbacks: 2) == nil)
-        precondition(CounterHostAssembly.validate(audit, kind: counterDynamicHostKind, useCaseCallbacks: 2) == nil)
-        precondition(CounterHostAssembly.validate(audit, kind: counterDynamicHostKind, nonTransitionPublications: 2) == nil)
-        return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
-            let limits = self.limits
-            var movedGeometry = geometry.take()
-            var keys = interaction.take()
-            var checks = 0
-            do throws(ObservableStateError) {
-                try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
-                    do throws(SemanticExpansionError) {
-                        try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits)) { (semantic) throws(SemanticExpansionError) in
-                            do throws(DrawingError) {
-                                try canvas.withLifetime(table: CounterValueTable(), limits: counterCanvasLimits, configuredCapacity: 1) { values in
-                                    checks = withUnsafeMutablePointer(to: &control) { pointer in
-                                        let activationBacking: InlineArray<1, UInt8> = [1]
-                                        let supplied = CounterDynamicHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: movedGeometry.take()!, interaction: keys.take()!)
-                                        var owner = CounterDynamicHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
-                                        let expected = counterJoinSnapshot(pointer)
-                                        let foreignExpected = counterJoinSnapshot(foreignControl)
-                                        var joinChecks = 0
-                                        let rejected0 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: foreignControl, audit: audit, report: assembly.report)
-                                        precondition(rejected0 == .failure(.configuration(.invalidWakeIntegration), progress: .init()))
-                                        precondition(owner.constructions == 0 && owner.activationStep == 0)
-                                        precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
-                                        joinChecks += 3
-                                        let rejected1 = owner.constructRuntimeAndEndpoint(models: foreignModels, root: foreignRoot, control: pointer, audit: audit, report: assembly.report)
-                                        precondition(rejected1 == .failure(.configuration(.invalidModelTarget), progress: .init()))
-                                        precondition(owner.constructions == 0 && owner.activationStep == 0)
-                                        precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
-                                        joinChecks += 3
-                                        let rejected2 = owner.constructRuntimeAndEndpoint(models: models, root: foreignRoot, control: pointer, audit: audit, report: assembly.report)
-                                        precondition(rejected2 == .failure(.configuration(.invalidModelTarget), progress: .init()))
-                                        precondition(owner.constructions == 0 && owner.activationStep == 0)
-                                        precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
-                                        joinChecks += 3
-                                        let rejected3 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: .static), report: assembly.report)
-                                        precondition(rejected3 == .failure(.configuration(.profileMismatch), progress: .init()))
-                                        precondition(owner.constructions == 0 && owner.activationStep == 0)
-                                        precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
-                                        joinChecks += 3
-                                        let rejected4 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: audit.profile), report: assembly.report)
-                                        precondition(rejected4 == .failure(.configuration(.invalidWorkload), progress: .init()))
-                                        precondition(owner.constructions == 0 && owner.activationStep == 0)
-                                        precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
-                                        joinChecks += 3
-                                        let rejected5 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: audit, report: counterJoinReport(assembly.report))
-                                        precondition(rejected5 == .failure(.configuration(.invalidWakeIntegration), progress: .init()))
-                                        precondition(owner.constructions == 0 && owner.activationStep == 0)
-                                        precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
-                                        joinChecks += 3
-                                        #if os(Linux)
-                                        var host = SignalAnalyzerPresetHostInstances.raspberryPiDynamic(report: assembly.report, owner: consume owner)!
-                                        #else
-                                        var host = SignalAnalyzerPresetHostInstances.macOSDynamic(report: assembly.report, owner: consume owner)!
-                                        #endif
+func counterRunDynamicHostLifecycle<Geometry, Candidate, Committed, Hits>(host: inout SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner<Geometry, Candidate, Committed, Hits>>, control pointer: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int) -> Int
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
                                         precondition(host.lifecycleState == .valid && host.owner.constructions == 0 && pointer.pointee.finalized == 0)
                                         precondition(host.runOpportunity() == .invalidLifecycle)
                                         var count = 2 + joinChecks
@@ -99,7 +40,7 @@ extension DynamicCounterProfileStorage {
                                         precondition(pointer.pointee.teardowns == 1 && pointer.pointee.committedRecords == 0 && !pointer.pointee.hasRoot)
                                         host.teardown()
                                         precondition(host.owner.teardownStep == 8 && host.runOpportunity() == .invalidLifecycle)
-                                        precondition(host.assemblyReport == assembly.report)
+                                        precondition(host.assemblyReport == report)
                                             let selectedFailure: UInt8 = failAfterRuntime ? 1 : pointer.pointee.idleQuiesceMode
                                             let expectedApplication = selectedFailure == 1 ? 0 : 1
                                             let expectedObservation = selectedFailure == 0 || selectedFailure >= 4 ? 1 : 0
@@ -115,33 +56,52 @@ extension DynamicCounterProfileStorage {
                                         let rejectedInput = pointer.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: .init(rawValue: 0), observedPresentationRevision: pointer.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &stoppedAdmission)
                                         precondition(rejectedInput == .sourceQuiesced(.inputUnavailable))
                                         return count + 13
-                                    }
-                                }
-                            } catch { preconditionFailure("counter Dynamic Canvas") }
-                        }
-                    } catch { preconditionFailure("counter Dynamic semantic") }
-                }
-            } catch { preconditionFailure("counter Dynamic model") }
-            return checks + 4
-        }
-    }
 }
 
-package func p08CounterDynamicHost() -> Int {
-    var models = ObservableModelOwnerNamespace()
-    var semantics = SemanticRecordOwnerNamespace()
-    do {
-        var complete = DynamicCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
-        var partial = DynamicCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
-        var nonRetryable = DynamicCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
-        nonRetryable.control.terminalRetry = true
-        var failures = 0
-        for step: UInt8 in 2...7 {
-            var failed = DynamicCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
-            failed.control.idleQuiesceMode = step
-            failures += failed.runCounterDynamicHost(failAfterRuntime: false)
-        }
-        return complete.runCounterDynamicHost(failAfterRuntime: false) + partial.runCounterDynamicHost(failAfterRuntime: true) + nonRetryable.runCounterDynamicHost(failAfterRuntime: false) + failures
-    } catch { preconditionFailure("counter Dynamic identities") }
+func counterCheckDynamicRejectedBindings<Geometry, Candidate, Committed, Hits>(
+    owner: inout CounterDynamicHostOwner<Geometry, Candidate, Committed, Hits>,
+    models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+    root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
+    foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+    foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
+    control pointer: UnsafeMutablePointer<CounterControl>,
+    foreignControl: UnsafeMutablePointer<CounterControl>,
+    audit: RuntimeStorageAudit, report: HostAssemblyReport,
+    expected: CounterJoinSnapshot, foreignExpected: CounterJoinSnapshot
+) -> Int
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+    var joinChecks = 0
+    let rejected0 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: foreignControl, audit: audit, report: report)
+    precondition(rejected0 == .failure(.configuration(.invalidWakeIntegration), progress: .init()))
+    precondition(owner.constructions == 0 && owner.activationStep == 0)
+    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+    joinChecks += 3
+    let rejected1 = owner.constructRuntimeAndEndpoint(models: foreignModels, root: foreignRoot, control: pointer, audit: audit, report: report)
+    precondition(rejected1 == .failure(.configuration(.invalidModelTarget), progress: .init()))
+    precondition(owner.constructions == 0 && owner.activationStep == 0)
+    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+    joinChecks += 3
+    let rejected2 = owner.constructRuntimeAndEndpoint(models: models, root: foreignRoot, control: pointer, audit: audit, report: report)
+    precondition(rejected2 == .failure(.configuration(.invalidModelTarget), progress: .init()))
+    precondition(owner.constructions == 0 && owner.activationStep == 0)
+    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+    joinChecks += 3
+    let rejected3 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: .static), report: report)
+    precondition(rejected3 == .failure(.configuration(.profileMismatch), progress: .init()))
+    precondition(owner.constructions == 0 && owner.activationStep == 0)
+    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+    joinChecks += 3
+    let rejected4 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: audit.profile), report: report)
+    precondition(rejected4 == .failure(.configuration(.invalidWorkload), progress: .init()))
+    precondition(owner.constructions == 0 && owner.activationStep == 0)
+    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+    joinChecks += 3
+    let rejected5 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: audit, report: counterJoinReport(report))
+    precondition(rejected5 == .failure(.configuration(.invalidWakeIntegration), progress: .init()))
+    precondition(owner.constructions == 0 && owner.activationStep == 0)
+    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+    joinChecks += 3
+    return joinChecks
 }
+
 #endif
