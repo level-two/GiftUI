@@ -1,5 +1,12 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+Current source authorization — 2026-10-14: Eugene approved the exact
+[SO-04→06 source package](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-source-execution-proposal.md)
+with “Please go ahead”. One sequential source pass, separate step commits, zero
+automatic repairs, then independent Sol 6.1 High source review. No compiler/build/
+executable/debugger/IR/image allowance; SO-07–09 remain separately pending.
+Historical budgets, all criteria and the stack failure remain unchanged.
+
 Current SO-03 fixture stabilization — 2026-10-14: source `57175025`, result
 `2adc9e28`, [independent Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/fixture-stabilization/independent-review.md)
 at `de51b8a5` passes the bounded package: 43/43 cells, 42 compiler oracles and

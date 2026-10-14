@@ -1,5 +1,20 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-04→06 source authorization and dispatch — 2026-10-14
+
+At clean `38fa4af0`, Eugene answered “Please go ahead” to the parent request:
+“Approve one sequential SO-04–06 source pass, with each step committed, zero
+automatic repairs, then independent Sol 6.1 High review? Compiler and image
+runs remain separately gated.” This explicitly authorizes the
+[concrete source packet](scoped-storage/so04-source-execution-proposal.md).
+Execute SO-04 then SO-05 then SO-06 with separate source/evidence commits;
+no concurrent source work. Strong implementation and independent review use
+Sol 6.1 High. One initial source realization, zero automatic corrective passes;
+freeze and report any contract/scope blocker. No compiler/build/test executable/
+debugger/IR/image or hardware action is authorized. SO-07–09 validation/exit
+allowances remain pending, historical consumed allowances and the two-consecutive-
+unproductive guard remain unchanged. All criteria and physical fit remain open.
+
 ## SO-04 coherent source handoff preparation — 2026-10-14
 
 Clean input `de51b8a5`; read-only authority/design/current-source inspection and

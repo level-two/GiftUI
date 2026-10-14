@@ -1,6 +1,12 @@
 # SO-04→06 coherent source package proposal — 2026-10-14
 
-**PROPOSED, NOT AUTHORIZED.** This packet follows the passing
+**SOURCE PACKAGE AUTHORIZED — 2026-10-14.** Eugene replied “Please go ahead”
+to the explicit request for one sequential SO-04→06 source pass, each step
+committed, zero automatic repairs and independent Sol 6.1 High review. Compiler
+and image allowances remain separately gated. The original proposal below is
+preserved as the approved scope; approval provenance is in the P08 receipt.
+
+This packet follows the passing
 [SO-03 fixture review](so03/fixture-stabilization/independent-review.md), source
 `57175025`, result `2adc9e28`, independent review `de51b8a5`. Preparation inspects
 clean `de51b8a5` and changes documentation only. It creates no production,
