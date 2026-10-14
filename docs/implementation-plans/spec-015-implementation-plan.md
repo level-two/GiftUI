@@ -45,6 +45,14 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 #### RFC-015 P08 ownership work — 2026-10-13
 
+**Current repeat-host design handoff, 2026-10-14:**
+[Exact derived proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-repeated-host-design-handoff.md)
+selects fresh logical hosts plus private original-producer origin checks. The
+runtime-local raw-value limit and five-file source-only boundary are explicit.
+Independent Strong design review is next; no source pass is authorized. Frozen
+`369906ab`/review `5ba87bd0`, correction1/1 consumed, finding5/criteria/fit/P08/
+R07/T8.1 remain open, zero automatic repairs and all historical guards preserved.
+
 **Contribution to `T8.1`** — Contribute SO-01/02/04/05/06/07/08/09 under the [ordered shared sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md#rfc-015-ordered-p08-ownership-tasks--2026-10-13) and [handoff](../iterations/iteration-003-review/rfc-015-p08-handoff.md).
   **Dependencies:** approved/applied owner contract, then SO-01 necessity/caller
   inventory → SO-02 physical design and independent Strong review → SO-03–09 in

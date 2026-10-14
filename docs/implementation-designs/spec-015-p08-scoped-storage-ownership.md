@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-10-13
-updated: 2026-10-13
+updated: 2026-10-14
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -19,8 +19,153 @@ superseded_by: null
 
 > This note explains one replaceable internal realization of an approved
 > contract. It is non-authoritative and cannot introduce architecture or amend
-> the governing Specification. This is SO-02's design for independent Strong
-> review, not implemented code or evidence of compiler acceptance or target fit.
+> the governing Specification. The original SO-02 design remains below. The
+> repeated-host addendum selects a private direction for independent Strong
+> design review; it is not implemented code, source authorization, compiler
+> acceptance or target-fit evidence.
+
+## Repeated Full Hosts — Derived Addendum, 2026-10-14
+
+Input is frozen source `369906abf54f6341b0f0287e09d3dfeec28ab005`, independently
+reviewed in `5ba87bd0`. The
+[corrective review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-corrective-independent-review.md)
+confirms findings 1–4 corrected as source and leaves finding 5 open. This
+addendum replaces no frozen evidence and authorizes no source pass. Its exact
+[bounded handoff](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-repeated-host-design-handoff.md)
+defines the next review and proposed whitelist.
+
+### Contract classification and guarantee
+
+[SPEC-013 S13.1](../specs/spec-013-runtime-profiles.md#s131-physical-owner-session-and-coordinator-contract)
+allows the initialized physical inventory to return to idle after complete
+logical cleanup and all old scoped accesses end. A fresh session restores empty
+banks and original roles; generations still obey the stale-action contract.
+[SPEC-015 operational teardown](../specs/spec-015-host-configuration.md#operational-state-and-teardown)
+makes failed/quiescent instances terminal and requires a fresh complete host.
+Neither clause requires reopening a retired model/root/runtime/input owner.
+
+[SPEC-009 identity declarations](../specs/spec-009-execution-cycle-and-frame-handoff.md#execution-identities-and-phases)
+scope cycle, semantic, candidate, presentation and action generations to one
+assembled runtime and allocate raw zero first; its
+[input contract](../specs/spec-009-execution-cycle-and-frame-handoff.md#presentation-coupled-pointer-admission)
+likewise starts each source's submitted sequence at zero and requires reassembly
+on exhaustion. SPEC-010's registration declaration allocates raw zero first
+and guarantees uniqueness for the assembled runtime lifetime. Its existing
+`ObservableModelOwnerNamespace` instead survives reassembly and issues a fresh
+model owner identity. Preserve these distinct namespace lifetimes.
+
+Select **fresh complete logical owners plus private producer provenance** over
+one initialized G/C/R/H inventory. Existing physical-owner identity and checked
+session serial identify the selected session internally. They are not new
+Execution identities, semantic path components, public epochs or a cross-module
+namespace contract. They select which actual finite producer may deliver to the
+current runtime; all focused raw declarations and allocator rules stay exact.
+
+The guarantee is rejection of an old producer/capture delivery through its
+original host ingress, and no surviving old callback or scoped dispatch
+capability. It is not content-only rejection of arbitrary raw values relabeled
+as current work. `SemanticCompleteIdentity` is a semantic path.
+`RuntimeRecordInteractionBridge.dispatch` checks that path, action generation,
+enabled state and current target generation; it has no model-owner field.
+`NormalizedPointerEvent` contains source, presentation, sequence and ordinal,
+with no runtime-owner field. A naked old value and a legitimate new value can
+have identical bits after genuine runtime reassembly. The approved runtime-local
+contract does not make a naked raw value a cross-runtime capability. If review
+requires rejection of that stronger replay scenario at the focused raw API,
+stop and route an explicit namespace/API clarification upstream; this note
+cannot add it or claim to satisfy it with an envelope.
+
+### Surviving storage and fresh logical reconstruction
+
+Keep the enclosing native typed reservation borrows or Embedded raw reservation,
+the original initialized G/C/R/H inventory, physical owner identity/serial and
+the control reservation at their original addresses until final release. Do not
+reinitialize geometry/banks between hosts. Each session initializes a fresh
+logical `CounterControl` in its separately reserved control slot only after the
+previous host, bindings, application and callback scopes have ended and the old
+control value has been destroyed. Native performs typed replacement within the
+pinned slot; Embedded deinitializes that slot before initializing the same T.
+No replacement happens while an old live owner's exclusive borrow exists.
+
+Move model/root, semantic and Canvas outer construction from the once-per-
+physical-allocation path to a closed once-per-host helper in
+`CounterScopedStorage.swift`. The old outer values are destroyed in reverse
+after their existing `withLifetime` scopes end. The next helper constructs new
+adapters/storage in the now-vacant same typed slots (Static), or new bounded
+outer values around the same control reservation (Dynamic). Persist the two
+existing owner namespaces outside both host helpers and issue distinct model
+and semantic owners before reconstruction. Keep the old root/model shutdown
+behavior and all existing report/registration teardown. No root restart API,
+reset-retired flag, new observable initializer or altered allocator is selected.
+
+The fresh helper validates/audits the exact new outer owner and unchanged
+physical inventory, acquires model/root → semantic → Canvas scopes, consumes
+one `withP08Storage` session into the actual supplied → pipeline → coordinator
+→ preset host chain and installs the current cleanup holder before activation.
+The session carries owned immutable origin facts derived from its existing
+common token to the trusted construction body. Install those facts in the new
+control before coordinator admission construction. Original typed pointer
+borrows and the complete carrier lifetime unions remain unchanged; the facts
+neither lend storage nor replace the compiler lifetime proof.
+
+### Actual ingress inventory and guards
+
+Use a small fixture-internal owned origin value `(physical owner identity,
+checked session serial)` and an active-origin field in `CounterControl`.
+The physical serial at `P08TypedBackingOwner.withStorage` already advances with
+checked overflow. It is never reset while this reservation is alive. The guard
+is valid only inside the enclosing reservation; retaining/dereferencing an old
+raw pointer after final reservation release remains forbidden. No global registry,
+heap lease, stamp allocator or extra transaction machine is introduced.
+
+| Actual frozen path | Selected internal realization and review obligation |
+| --- | --- |
+| `CounterAdmission.swift:127–160`, coordinator construction and `init(borrowing:)` consumers | Each adapter snapshots current origin when legitimately created. Every submit checks active origin equality before controller access, synchronization, cancellation, queue writes or wake notification. A mismatched old adapter returns existing `.unavailable` with zero effects on the new runtime. It must not synchronize an old controller by reading the current pointee first. Ordinary owned probes retain their existing route; selected origins cannot silently fall back to that route. |
+| `CounterApplication.swift`, source → repository → nonescaping delivery callback | Application owner snapshots the origin at construction. `startSource`/delivery checks it before control access and before minting a borrowing admission adapter. Teardown disables delivery, stops source, detaches observations and quiesces its gate before old scope destruction. A deliberately retained old application/producer test value cannot mint fresh ingress from the reused address. |
+| Host-local normalized gate → `CounterAdmission.submit(pointer:)` → seal → gesture | An old gate/event is delivered with the original producer adapter; guard its origin before the new gate/controller is touched. Then current-origin delivery follows the unchanged source/revision/sequence/ordinal and cancellation algorithm. A test must retain the actual old event and adapter, not fabricate an event with only an obviously unequal revision. |
+| `CounterPipelineOwner.swift:226–252,285–300`, gesture capture → sealed action → checked bridge | Captures are created and consumed inside the current pipeline; no host callback exports a dispatch capability. Old scoped pipeline/root/target/carrier values end before the next host. An owned capture retained by the fixture for the adversarial corpus travels with its original immutable origin observation to a closed test delivery seam; reject old origin before dispatch. A current-origin twin invokes the actual existing bridge and validates all four focused checks. The seam cannot construct a new current origin for an arbitrary capture. |
+| Existing `CounterHostControl`, typed wake binding and scheduler | Their old callbacks are stopped/drained under the existing eight teardown steps before the control slot is replaced. No old wake binding or host controller is reused. The reuse corpus checks absent wake/scheduler/input eligibility before reconstruction and a fresh binding after activation; complete-union/escape negatives still enforce old scoped host rejection. |
+
+Only trusted selected construction obtains an origin. Fixtures retain immutable
+observations for tests, not a new client-callable capability factory. Keep the
+control field and origin constructor private to their declaring type and expose
+only narrow internal setup/check operations across the named fixture files.
+No public/package API or focused module changes. The test seam takes original
+producer provenance; direct raw bridge calls remain governed by the caller's
+one-runtime scope. Source review must inventory every creation/submit/callback
+site and reject a path that recreates current origin from an old pointer alone.
+
+### Required adversarial corpus and accounting
+
+Execute two actual complete Static hosts and two actual complete Dynamic hosts
+over one initialized physical owner per pair, preserving original G/C/R/H
+addresses, inventory, capacities and extents. Preserve all earlier transaction,
+failure, graph, semantic, action and pixel controls. First session publishes,
+captures an actual action/event/adapter and stops cleanly. Destroy old scoped
+owners; reconstruct fresh outer/control owners; second session publishes the
+same finite UI. Explicitly observe equal semantic paths and repeated raw action/
+target/presentation/first-sequence values where the contracts allocate them.
+Do not use a changed model owner ID or an unrelated unequal raw generation as
+the rejection oracle.
+
+Replay original-origin action, normalized input, source callback and copyable
+`CounterAdmission` against the live second host at the **same control address**.
+Require refusal before queue/cancel/wake/model/dispatch effects; fingerprint
+the new queues, pointer/capture state, wake deadlines/counts, context and model
+before/after. A current-origin twin for each path must be admitted/dispatched by
+the actual runtime and produce the existing independent semantic/pixel result.
+Retired old host activation/opportunity rejects before old scope end; scoped
+old carrier escape is separately rejected by the existing compiler corpus.
+No old host is invoked after consumption or scoped destruction.
+
+Charge the origin field in control, each admission/application snapshot, the
+session facts, retained adversarial observation, reconstruction temporaries and
+all enclosing/helper frames in the existing physical ledger. Dynamic outer
+destruction/reconstruction costs and peaks remain measured obligations. No fit
+claim follows from private scalar provenance or sequential host lifetimes.
+Failure/overflow/cleanup violation stops; no new trap-recovery or silent serial
+reset is selected. Finding 5 remains open pending independent design/source and
+later authorized execution evidence; no requirement is deferred.
 
 ## Purpose and Boundary
 
@@ -612,7 +757,9 @@ stops the affected task for independent review/upstream routing.
   [physical measurement](../../Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift),
   [assembly](../../Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift).
 
-The proposed new file/types do not exist. This documentation output closes only
-SO-02 drafting; independent Strong design review precedes any separate bounded
-production allowance. All acceptance criteria/statuses and historical budgets
-remain unchanged. FW-037/I4-06 remains the separate Core-wide assessment.
+The original SO-02 checkpoint described proposed file/types; subsequent frozen
+source now contains them. The addendum above is the current derived direction
+for the remaining repeat-host finding; independent Strong design review precedes
+any separate bounded source allowance. All acceptance criteria/statuses and
+historical budgets remain unchanged. FW-037/I4-06 remains the separate Core-wide
+assessment.

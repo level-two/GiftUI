@@ -1,5 +1,13 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+Current derived repeated-host handoff — 2026-10-14:
+[Design/source-boundary proposal](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-repeated-host-design-handoff.md)
+selects fresh logical hosts and private original-producer checks using existing
+physical session provenance; exact naked-raw limit is explicit. Independent
+Strong design review next, then a possible five-file one-source-pass/zero-followup
+decision. No source allowance exists. Frozen `369906ab`/review `5ba87bd0`,
+correction1/1 consumed, all criteria/fit/P08 and budgets/guard remain unchanged.
+
 Current corrective independent review STOP — 2026-10-14:
 [Sol 6.1 High source rereview of `369906ab`](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-corrective-independent-review.md)
 confirms findings 1–4 corrected as source; finding 5 full-host repeated sessions

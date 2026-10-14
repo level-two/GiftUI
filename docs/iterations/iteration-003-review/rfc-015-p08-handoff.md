@@ -1,5 +1,14 @@
 # RFC-015 P08 implementation handoff — 2026-10-13
 
+**Current 2026-10-14 derived repeat-host handoff:** the
+[bounded design and exact proposed source boundary](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-repeated-host-design-handoff.md)
+is ready for independent Strong design review. It selects fresh complete logical
+hosts and original-producer ingress guards over one initialized inventory; raw
+runtime-local identities and terminal lifecycle remain exact. Finding 5 remains
+open, frozen source `369906ab` unchanged, correction1/1 consumed. Source allowance
+zero; one five-file source-only pass/zero automatic repairs is proposed only.
+No compiler/runtime/image/target budget or historical stop guard resets.
+
 **Derived plan amendment applied; SO-03 bounded allowance recorded, SO-04–09 pending.**
 ADR-039 is accepted and the [exact S11/S13/S15 amendment packet](rfc-015-spec-amendments.md)
 is approved and applied under [explicit acceptance](rfc-015-contract-acceptance.md).

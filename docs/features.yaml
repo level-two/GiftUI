@@ -25,6 +25,7 @@ features:
     # Clause-only CounterAdmission.swift addition approved; initial SO-04–06 source pass frozen at 0bb4d9ca.
     # One bounded corrective source pass 1/1 consumed from 03f3393b, frozen at 369906ab; independent source review confirms findings 1–4 source corrections, finding 5 open.
     # Review: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-corrective-independent-review.md; physical reuse/fresh logical host compatible, namespace/admission realization handoff next, zero automatic follow-up repairs.
+    # Derived repeat-host proposal: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-repeated-host-design-handoff.md; independent design review next, source allowance zero, finding 5 open.
     # SO-04 fd879ad0 / SO-05 825603a2 / SO-06 0bb4d9ca; no compiler/runtime/fit claim or allowance reset; all criteria and SO-07–09 remain open.
     # Package: docs/iterations/iteration-003-review/rfc-015-p08-handoff.md; closed execution budgets preserved.
     # SPIKE-075 completed: bounded native declarations/copy/function-return controls pass; series closed.

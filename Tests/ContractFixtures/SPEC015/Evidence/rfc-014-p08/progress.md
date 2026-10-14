@@ -1,5 +1,25 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-04→06 repeated-host derived design prepared — 2026-10-14
+
+The [bounded design handoff](scoped-storage/so04-06-repeated-host-design-handoff.md)
+and [physical design addendum](../../../../../docs/implementation-designs/spec-015-p08-scoped-storage-ownership.md#repeated-full-hosts--derived-addendum-2026-10-14)
+select fresh logical hosts over the original initialized inventory, with private
+original-producer checks derived from the existing owner/session serial. Raw
+focused identities stay runtime-local; no content-only naked replay guarantee
+is added. The exact five-file source proposal and thirteen planned corpus labels
+per route require independent Strong design review before any source decision.
+Source remains frozen `369906ab`, reviewed `5ba87bd0`; findings 1–4 corrected
+as source, finding 5 open. Correction1/1 consumed, automatic repairs0, new source/
+compiler/runtime allowance0; all criteria/fit/P08 and historical guards remain.
+This docs-only pass uses implementation-designer/deferred-work-curator rules;
+no subagents, source edits or compiler/build/formatter/harness/executable/IR/
+debugger/target/hardware invocation. Permitted checks pass: `git diff --check`,
+governance (198 nodes/2,019 edges and existing task evidence manifests), 348 local
+Markdown file links across addendum/handoff/current navigation with zero missing.
+The exact diff is documentation only; no execution or source-readiness result
+is inferred.
+
 ## SO-04→06 corrective independent Strong SOURCE review STOP — 2026-10-14
 
 Independent Sol 6.1 High [rereview of frozen `369906ab`](scoped-storage/so04-06-corrective-independent-review.md)
