@@ -1,6 +1,16 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current independent correction review — 2026-10-13: [Strong source/result review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/independent-review.md)
+Current authorized helper checkpoint — 2026-10-14: Eugene approved the exact
+same-five-consuming-input helper correction and one fresh native rerun, zero
+further automatic repairs, then separate independent Strong review. [Source freeze
+and bounded command](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/result.md)
+are unvalidated; commit precedes entry. Only ScopedStorageProbe.swift changes;
+43-command plan/27 labels/annotations/common-session family unchanged. New native
+allowance 0/1; original/correction-1 each 1/1 consumed; total fixture corrections 2,
+automatic follow-up repairs 0. No historical reset. All criteria/fit/P08/R07/T8.1/
+I4-07/P09–P12 stay open; Specs implementing, plans active, SO-04–09 unapproved.
+
+Historical independent correction review — 2026-10-13: [Strong source/result review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/independent-review.md)
 classifies the failure as a local initializer-call lifetime error, no demonstrated
 contract defect. Five temporary mutableSpan accesses end before the line-532 state
 read. Common-session factory source follows the reviewed actual-owner/token/private

@@ -1,5 +1,48 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-03 correction-2 authorization and dispatch — 2026-10-14
+
+Entry `7531e5c3`, clean. Eugene explicitly approved “one fixture-only helper
+correction, one native rerun, and independent Strong review, with zero further
+automatic repairs.” Sequential task `p08_so03_helper_correction` applies the
+implementation-executor skill, with no subagents; parent arranges the separate
+fresh independent Strong review. Exact proposal: [correction-1 independent
+review](scoped-storage/so03/correction-1/independent-review.md).
+
+Sole source scope: `Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift`.
+Add a private helper consuming the same five independent accesses, call unchanged
+so03Union, unwrap and inspect its actual Optional/count inside the helper, return
+only owned UInt16, and pass temporary mutableSpan accesses in one full expression.
+Preserve every lifetime annotation, positive twin, negative cause, copy/failable
+control, 27 labels and closed common-session operation family. No driver change.
+Authority remains accepted ADR-039/S11.1–4/S13.1; Specifications implementing,
+plans active, I3-04/I3-05 counter/four-stack necessity and closed ITERATION-001
+controls persist. All nine criteria, HC-RD-003/P08/R07/T8.1, stack failure
+58,648 versus 27,648 and mandatory I4-07/P09–P12 remain open.
+
+Before entry: formatter/governance/diff/read-only pin checks, freeze source and
+unchanged 43-command plan, commit unvalidated source/receipts. No preliminary
+compiler/probe. Exactly one invocation of:
+`scripts/contracts/run-spec-011.sh --profile macos-dynamic --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014-swift64/af66aaf967e3fe8f-__4p5wu2/macos-dynamic`.
+Maximum 42 compiler + 1 execute, fresh immutable correction-2 directory; stop
+first prerequisite/positive failure or wrong negative cause. New allowance 0/1
+consumed; original and correction-1 native allowances each remain 1/1 consumed,
+0 remaining. Prior correction count 1; zero automatic follow-up repairs. Preserve
+all historical helper 2/2, B03 1/1, GOT/image/backing/phase/IR and SPIKE-075 seven
+closed experiment counters without reset. No SO-04+, full suite, target/image,
+hardware or automatic further correction. Commit exact outcome and navigation,
+then stop for independent review; actual contract/scope defects route upstream.
+
+
+### Correction-2 precompiler freeze
+
+[Unvalidated helper source/freeze/unchanged plan](scoped-storage/so03/correction-2/result.md):
+122 source inputs, 128 prior driver inputs, 24 pins and compiler/macro/core receipt
+match except the sole fixture delta; 84 historical files pinned unchanged. Formatter
+and governance 198 nodes/2,019 edges/all task manifests PASS. No compiler/probe.
+Commit source/receipts before one native invocation. New 0/1, original/correction-1
+each 1/1 consumed, corrections 2, automatic follow-up repairs 0; all gates persist.
+
 ## SO-03 correction-1 independent Strong review dispatch — 2026-10-13
 
 Entry `e82c17ff`, clean; sequential independent Strong task

@@ -396,6 +396,18 @@ private func so03Failable(c: consuming SO03Candidate, h0: consuming SO03Hits,
     switch consume optional { case .none: return true; case .some: return false }
 }
 
+// Consume the scoped Optional before the five temporary input accesses end.
+private func so03InitialCount(c: consuming SO03Candidate, h0: consuming SO03Hits,
+    r0: consuming SO03Committed, r1: consuming SO03Committed, h1: consuming SO03Hits) -> UInt16
+{
+    let optional = so03Union(c: consume c, h0: consume h0, r0: consume r0,
+        r1: consume r1, h1: consume h1)
+    switch consume optional {
+    case .none: preconditionFailure()
+    case .some(let state): return state.committedRecordCount
+    }
+}
+
 private func so03Key() -> SemanticCompleteIdentity {
     var result = SemanticCompleteIdentity()
     precondition(result.append(.init(kind: .root)))
@@ -526,10 +538,8 @@ private func so03ScopedChecks(_ mode: UInt8) -> UInt32 {
             r0: SO03Committed(slots: r0.mutableSpan), r1: SO03Committed(slots: r1.mutableSpan), h1: SO03Hits(slots: h1.mutableSpan)))
         return 1
     }
-    let optional = so03Union(c: SO03Candidate(slots: c.mutableSpan), h0: SO03Hits(slots: h0.mutableSpan),
-        r0: SO03Committed(slots: r0.mutableSpan), r1: SO03Committed(slots: r1.mutableSpan), h1: SO03Hits(slots: h1.mutableSpan))
-    let state = optional!
-    precondition(state.committedRecordCount == 0)
+    precondition(so03InitialCount(c: SO03Candidate(slots: c.mutableSpan), h0: SO03Hits(slots: h0.mutableSpan),
+        r0: SO03Committed(slots: r0.mutableSpan), r1: SO03Committed(slots: r1.mutableSpan), h1: SO03Hits(slots: h1.mutableSpan)) == 0)
     return so03ExecutableChecks() + so03RetainedOwnedChecks()
 }
 

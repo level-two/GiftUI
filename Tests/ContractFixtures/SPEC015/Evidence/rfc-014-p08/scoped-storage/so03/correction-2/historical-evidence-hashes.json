@@ -1,0 +1,338 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIDrawing.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIExecution.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIExecution.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIInteraction.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIInteraction.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUILayout.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUILayout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIObservableState.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIObservableState.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIRenderCore.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIRenderCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIRenderLowering.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIRuntimeCore.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIRuntimeCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIRuntimeDynamic.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIRuntimeDynamic.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIRuntimeStatic.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUIRuntimeStatic.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUISemanticCore.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUISemanticCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUITextResources.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/GiftUITextResources.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/Main.swift": {
+    "bytes": 372,
+    "sha256": "5ba7055b0d3ffff423ec53108e4b1845e2281384faa6bbaf01fe0324ed19e323"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/OwnedKeyProbe.log": {
+    "bytes": 6167,
+    "sha256": "b821ccbd4bc53c52066ebea4327afaaab280295571400599abc1a5fc56efa601"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/artifact-hashes.json": {
+    "bytes": 16836,
+    "sha256": "472bbaca52742a23d8a23d352e54b4e8e2e3d94fd6e2e55cd92e510bddb7da46"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/commands.txt": {
+    "bytes": 27185,
+    "sha256": "4167b8c444ebf2a8d6a048cbf500fb75a3f785222aacdc6ea81a694013ac794d"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/input-hashes.json": {
+    "bytes": 16570,
+    "sha256": "e75a32abd00ffbdfdfdef101e0303a4f540486473754a6d9e5b6b20d07f836c5"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/invocation.json": {
+    "bytes": 838,
+    "sha256": "8a4d331e05756afc8496f4f397cad809f66c53db3c52bc38ba37beb9d032297d"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/invocation.log": {
+    "bytes": 6613,
+    "sha256": "4113bfe26675a818cd032171314025f08fac0bdc200e2d4896185f6f5128011a"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/key-layout.json": {
+    "bytes": 606,
+    "sha256": "58672b96ce6a34608473998ff0e50997017aa2dff5b95f52999e02bdd261073c"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/key-layout.ll": {
+    "bytes": 8735,
+    "sha256": "2afab0fa103581a2dc4c9986fd903244fda006ead464fe88596751bafb41a39b"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/key-layout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/planned-commands.json": {
+    "bytes": 93442,
+    "sha256": "ce3a5c24576f415d1c201ecc45787b6447645a108f2108ed542c494cb4b25844"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/result.json": {
+    "bytes": 166887,
+    "sha256": "839299e441107e06465bb71e73450848a7a21685d5606630325123437af4b1ae"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/so03-prereq-drawing.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/attempt-1/so03-prereq-render-lowering.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIDrawing.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIExecution.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIExecution.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIInteraction.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIInteraction.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUILayout.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUILayout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIObservableState.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIObservableState.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIRenderCore.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIRenderCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIRenderLowering.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIRuntimeCore.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIRuntimeCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIRuntimeDynamic.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIRuntimeDynamic.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIRuntimeStatic.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUIRuntimeStatic.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUISemanticCore.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUISemanticCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUITextResources.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/GiftUITextResources.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/Main.swift": {
+    "bytes": 372,
+    "sha256": "5ba7055b0d3ffff423ec53108e4b1845e2281384faa6bbaf01fe0324ed19e323"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/OwnedKeyProbe.log": {
+    "bytes": 4400,
+    "sha256": "3b4d69172b15f503bdfef0726796d26d8cfe113bb2b3725b02d6ada936a6a8c0"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/artifact-hashes.json": {
+    "bytes": 11038,
+    "sha256": "16ad077ea85009c10c9c6e2f9bcda30db8a3a040ea4ddaedd1692c5b35724760"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/commands.txt": {
+    "bytes": 27185,
+    "sha256": "1f3a9c6a8989363bb65bd3542301e6276a2aa3164f76fa05bc60df40e995c286"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/input-hashes.json": {
+    "bytes": 16570,
+    "sha256": "ec6701daee3f60e5d2bd05d373637362b8cbbbcf4b52d4df8745fb7c7d7b1717"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/invocation.json": {
+    "bytes": 1329,
+    "sha256": "39a6887ea7bf848f3468a4ae0211316a20ea7c9af69d1176ada997c564c01275"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/invocation.log": {
+    "bytes": 4846,
+    "sha256": "2973f0e1a6be18a49f3cf08c4d02dfbffc89c6c4c90e794ebadefa8ac78cfd0e"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/key-layout.json": {
+    "bytes": 606,
+    "sha256": "58672b96ce6a34608473998ff0e50997017aa2dff5b95f52999e02bdd261073c"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/key-layout.ll": {
+    "bytes": 8735,
+    "sha256": "60e2708c5083a4af781d9dbc7e262dbcc90bd204f0037773fac7f1bffccaaf3a"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/key-layout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/planned-commands.json": {
+    "bytes": 93442,
+    "sha256": "043789541dc1ea9264937a8feb328753a289b7d5f659c974ede375f7f619398f"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/result.json": {
+    "bytes": 164182,
+    "sha256": "9c6bffebbb85a970c647c43bda835c0f15c308dc5e9c987ebcd386485a901712"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/so03-prereq-drawing.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/attempt-1/so03-prereq-render-lowering.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/independent-review.md": {
+    "bytes": 10777,
+    "sha256": "f11a0f5796a8c07be82888eeb99ed30e8f08e3ea7607891bc2ee8428ea4fed9a"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/planned-Main.swift.txt": {
+    "bytes": 372,
+    "sha256": "5ba7055b0d3ffff423ec53108e4b1845e2281384faa6bbaf01fe0324ed19e323"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/planned-commands.json": {
+    "bytes": 97917,
+    "sha256": "ea67c5f878b27a619a4b47a98d6aae121ae642827b5bb9dd5c2d9f7cb1803811"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/result.md": {
+    "bytes": 8293,
+    "sha256": "95173e6f96bb553bd56161ddcea6061065c3ab7036c8d6f831337a1bbb19d09c"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/source-freeze.json": {
+    "bytes": 22863,
+    "sha256": "18696e4b29b2248c277231cb359b9bfbb788ac79d463c445c374b11884d26574"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/source.diff": {
+    "bytes": 15852,
+    "sha256": "3aa40a7dfd2aa8a0eaa402779eb7f808cee7484cb095d8e3c664bf3a9aecc6cd"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/independent-review.md": {
+    "bytes": 11456,
+    "sha256": "8b18b7b09060c442e70ed8799eed989dda10f790311125edaa55b3852285d356"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/planned-Main.swift.txt": {
+    "bytes": 372,
+    "sha256": "5ba7055b0d3ffff423ec53108e4b1845e2281384faa6bbaf01fe0324ed19e323"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/planned-commands.json": {
+    "bytes": 97917,
+    "sha256": "ea67c5f878b27a619a4b47a98d6aae121ae642827b5bb9dd5c2d9f7cb1803811"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/result.md": {
+    "bytes": 5247,
+    "sha256": "a1ccb9ad968fc61abb959da7d6de7de7fad0bf689a2b4d35e5affe68836e9258"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/source-freeze.json": {
+    "bytes": 22244,
+    "sha256": "17cfb95c4bdab2d1ce2b3542ac39ac057c47cbaa5fca4de2321628ee3632d7e3"
+  },
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/source.diff": {
+    "bytes": 105204,
+    "sha256": "76a3e0cd10e1c2599c01e67d988d3b5b1b56677c4018610421f51313ea869c4d"
+  }
+}

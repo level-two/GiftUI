@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-13
+updated: 2026-10-14
 related_design_notes:
   - ../implementation-designs/spec-015-p08-scoped-storage-ownership.md
   - ../implementation-designs/spec-015-generated-workload-and-presets.md
@@ -56,7 +56,14 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
   **SO-01 evidence:** [caller/necessity inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
   records P08 applicability and I4-07 residuals; all criteria remain unmet.
-  **Independent correction review:** [Strong review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/independent-review.md)
+  **Current helper correction:** Eugene approved the exact private consuming
+  helper and one fresh native rerun, zero further automatic repairs, then separate
+  independent Strong review. [Unvalidated source freeze/command](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/result.md)
+  preserves all independent inputs/annotations/27 labels and common-session family.
+  New allowance 0/1; prior native allowances each 1/1 consumed, corrections 2,
+  automatic follow-up repairs 0; no historical reset. All criteria/fit/P08/R07/
+  T8.1/I4-07/P09–P12 remain open; source commit precedes single native entry.
+  **Historical independent correction review:** [Strong review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/independent-review.md)
   identifies a local initializer-call lifetime error, no demonstrated contract
   defect. Common-session factory source follows the reviewed owner/token/descriptor
   pattern; acceptance remains unproved. Hashes/argv match, 13 pass/1 fail and all
