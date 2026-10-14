@@ -1,6 +1,18 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current grouped lifetime continuation boundary — **STOP, 2026-10-14**.
+Current P08 suite collection — **ACTIVE, 2026-10-14**.
+Eugene explicitly requested the whole suite, collection of routine errors,
+grouped corrections and focused reruns instead of stopping at each barrier.
+The [collection activity](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-suite-collection-activity.md)
+supersedes the previous per-invocation stop for this work. Preserve all historical
+results and budgets; collect independent failures, block only actual dependents,
+and retain complete source/compiler/positive-twin evidence for focused reruns.
+Existing P08 contracts, matrix, target/resource limits and sequential execution
+remain. Contract/scope decisions and the two-unproductive-corrections guard still
+escalate; routine diagnostic matching does not require another permission.
+The following boundary records are historical.
+
+Historical grouped lifetime continuation boundary — **STOP, 2026-10-14**.
 Candidate `cab1c415`, source review `2989ca7f`: the complete counter module now
 compiles, clearing the prior L01–L03 diagnostic sites. The one registered native
 counter invocation exited 1 after **191 accepted scoped compiler checks**; check
