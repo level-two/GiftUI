@@ -1,0 +1,106 @@
+{
+  "allowance_after": "new repair pass 1/1 and native invocation 1/1 consumed; zero automatic repairs; historical counters/guard unchanged",
+  "argv_exactly_matched_plan": true,
+  "artifact_hashes_and_sizes_verified": 130,
+  "compiler_cells": 42,
+  "compiler_macro_core_receipt_hashes_match": true,
+  "compiler_zero_exits": 30,
+  "entry_commit": "2adc9e280569a8bb6751543fe66db31a5d088873",
+  "evidence_checkpoint": "2adc9e28",
+  "executable": {
+    "bytes": 2215896,
+    "sha256": "0555c63ab9a73e495c872fab1e4d6ec6069fccdbffdab31780e75ddef9fc4e40"
+  },
+  "execute_exit": 0,
+  "execution": "P05 Interaction assertions=215 P03 root regressions=183 SO03 scoped/owned assertions=61 failures=0",
+  "focused_probe_cells_excluding_prerequisites": 27,
+  "identities_match": true,
+  "input_hashes_verified": 128,
+  "intended_negative_rejections": 12,
+  "mode": "read-only source/receipt/hash review; no compiler/build/test/executable/debugger/source or driver edit",
+  "negative_oracles": [
+    {
+      "diagnostic_count": 2,
+      "exit": 1,
+      "intended_cause_verified": true,
+      "label": "so03-union-C-direct-escape"
+    },
+    {
+      "diagnostic_count": 2,
+      "exit": 1,
+      "intended_cause_verified": true,
+      "label": "so03-union-C-generic-escape"
+    },
+    {
+      "diagnostic_count": 2,
+      "exit": 1,
+      "intended_cause_verified": true,
+      "label": "so03-union-H0-direct-escape"
+    },
+    {
+      "diagnostic_count": 2,
+      "exit": 1,
+      "intended_cause_verified": true,
+      "label": "so03-union-H0-generic-escape"
+    },
+    {
+      "diagnostic_count": 2,
+      "exit": 1,
+      "intended_cause_verified": true,
+      "label": "so03-union-R0-direct-escape"
+    },
+    {
+      "diagnostic_count": 2,
+      "exit": 1,
+      "intended_cause_verified": true,
+      "label": "so03-union-R0-generic-escape"
+    },
+    {
+      "diagnostic_count": 2,
+      "exit": 1,
+      "intended_cause_verified": true,
+      "label": "so03-union-R1-direct-escape"
+    },
+    {
+      "diagnostic_count": 2,
+      "exit": 1,
+      "intended_cause_verified": true,
+      "label": "so03-union-R1-generic-escape"
+    },
+    {
+      "diagnostic_count": 2,
+      "exit": 1,
+      "intended_cause_verified": true,
+      "label": "so03-union-H1-direct-escape"
+    },
+    {
+      "diagnostic_count": 2,
+      "exit": 1,
+      "intended_cause_verified": true,
+      "label": "so03-union-H1-generic-escape"
+    },
+    {
+      "diagnostic_count": 2,
+      "exit": 1,
+      "intended_cause_verified": true,
+      "label": "so03-state-copy-negative"
+    },
+    {
+      "diagnostic_count": 24,
+      "exit": 1,
+      "intended_cause_verified": true,
+      "label": "so03-retained-dispatcher-scoped-negative"
+    }
+  ],
+  "new_execution_authority": false,
+  "planned_and_attempted_commands": 43,
+  "result_sha256": "31613bfeb49590cbf9e01b107f72aea39a4102f89c2f41e4a5eccc1eb9d72496",
+  "reused_core_artifacts_verified": 2,
+  "snapshot_hashes_and_sizes_verified": 49,
+  "so03_prefixed_cells_including_prerequisites": 29,
+  "source_commit": "5717502571ba1293d4b0cb1882e51fe370ca60fb",
+  "source_delta": "one checked Canvas appendRecord; no other source/driver delta",
+  "task": "so03_boundary_review",
+  "tracked_inputs_match_source_commit": 126,
+  "unaffected_core_source_pins": 20
+}
