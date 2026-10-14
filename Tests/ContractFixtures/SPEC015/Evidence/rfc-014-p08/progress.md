@@ -1,5 +1,32 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-04→06 independent Strong source review STOP — 2026-10-14
+
+At clean `0bb4d9ca`, independent Sol 6.1 High review (no subagents) inspected
+the complete `9f832f6f..0bb4d9ca` source package and approved CounterAdmission
+clause-only diff. [Review and exact bounded proposal](scoped-storage/so04-06-independent-source-review.md)
+records source-readiness FAIL: Embedded shadow assignment, inert early-return
+cleanup assertion, surplus native overlapping slot path, incomplete actual
+active/retired escape oracles, and transaction-only repeats that bypass actual
+host/control reuse. Physical/arithmetic/byte-span and numeric/target/exclusivity
+obligations are separately classified; no new overflow, compiler acceptance,
+observed runtime result or fit claim is inferred.
+
+Source remains frozen at SO-04 `fd879ad0`, SO-05 `825603a2`, SO-06 `0bb4d9ca`.
+Review is productive source discovery, not a corrective pass: post-freeze repairs
+0; no new compiler/build/harness/executable/formatter/debugger/IR/image/target/
+hardware action. Proposed correction is documentation only until explicitly
+approved, preserves the accepted mechanism, and grants no validation/retry
+allowance. All criteria/fit/P08/R07/T8.1/I4-07/P09–P12, lifecycle statuses,
+historical counters/budgets and cumulative guard remain unchanged. SO-07–09
+stay separately gated. Permitted documentation checks are recorded below.
+
+Permitted checks pass: `git diff --check`, governance (198 nodes, 2,019 edges;
+existing task evidence manifests), and 358 local Markdown file links across
+the new review plus current receipt/plan/context, zero missing. Changed files
+are the review and four navigation/receipt documents only; frozen source and
+initial-pass evidence are untouched.
+
 ## SO-04→06 initial source package frozen — 2026-10-14
 
 SO-04 `fd879ad0` and SO-05 `825603a2` are sequential source checkpoints.

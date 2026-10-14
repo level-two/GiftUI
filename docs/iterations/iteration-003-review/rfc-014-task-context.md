@@ -1,14 +1,16 @@
 # RFC-014 task context guide
 
-Current source freeze — 2026-10-14: approved initial SO-04→06 source pass
-has reached its package boundary. SO-04 `fd879ad0`, SO-05 `825603a2`, and the
-SO-06 commit containing this header are source checkpoints only. The
-[freeze ledger](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so06-source-freeze.md)
-records exact planned labels and known coverage/arithmetic/layout gaps. No
-compiler/build/executable/formatter/debugger/IR/image/target/hardware invocation;
-no criterion or fit closure, budget reset or post-freeze corrective pass.
-Independent Strong SOURCE review is next; SO-07–09 remain separately gated.
-All historic evidence, budgets/guard and I4-07/P09–P12 obligations persist.
+Current source review STOP — 2026-10-14: independent Sol 6.1 High
+[review of `0bb4d9ca`](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-06-independent-source-review.md)
+finds five source-readiness blockers in the frozen SO-04→06 package: Embedded
+shadow assignment, inert cleanup assertion, surplus slot overlap, incomplete
+actual active/retired escape matrix and missing full host/control reuse.
+Physical/accounting and compiler/runtime/target/fit proof remain open. SO-04
+`fd879ad0`, SO-05 `825603a2`, SO-06 `0bb4d9ca` remain unvalidated source
+checkpoints; no corrective pass or compiler/formatter/build/run occurred.
+The exact next correction is proposed only; SO-07–09 remain separately gated.
+All criteria, lifecycle statuses, historical budgets/guard and I4-07/P09–P12
+obligations persist. [Freeze ledger](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so06-source-freeze.md).
 
 Historical resumption — 2026-10-14: Eugene approved the exact reviewed
 CounterAdmission.swift conformance-clause addition with “Ok, please then go ahead
