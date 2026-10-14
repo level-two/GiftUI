@@ -58,9 +58,12 @@ guard; independent review records progress/narrowed cause and the cumulative
 history. Historical helper/B03/GOT/image/phase/IR/SPIKE-075/source-correction
 budgets stay closed, including correction `369906ab` 1/1 consumed. This is a
 new explicit broader continuation, not a reset. Current corrective cycles:
-**1/2 consumed; cycle 1 source correction started, independent assessment and
-affected rerun pending**. Initial matrix cells: **4 consumed: 3 passed, 1 failed**;
-initial image cells: **0 consumed**. See the [cycle 1 source freeze](p08-integrated-cycle1-source-freeze.md).
+**2/2 consumed; final cycle 2 source correction frozen, independent assessment
+and its single affected rerun pending**. Initial matrix cells: **4 consumed:
+3 passed, 1 failed**; cycle1 affected counter rerun **1 failed**; cycle2 affected
+rerun **pending/0 invoked**; initial image cells **0 consumed**. See the
+[cycle2 source freeze](p08-integrated-cycle2-source-freeze.md). Any further frozen
+source/validation failure invokes the budget stop; no new automatic source cycle.
 
 Escalate actual contract/architecture decisions, work beyond P08, changed
 resource/workload/platform limits, exhausted correction allowance or stop guard,

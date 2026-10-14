@@ -21,6 +21,22 @@ No contract/resource/platform relaxation, P09 expansion or hardware operation.
 Escalate material decisions/exhausted budget; commit meaningful steps and report
 at the P08 boundary. All criteria/fit remain open at entry.
 
+## P08 final corrective cycle 2 source freeze — 2026-10-14
+
+[Cycle2 freeze](scoped-storage/p08-integrated-cycle2-source-freeze.md) and
+[new manifest](scoped-storage/p08-integrated-cycle2-source-manifest.json) record
+the exact nonnegative Int→UInt64 payload conversion and new pinned qualification.
+The parent's immutable cycle1 failed-counter packet is preserved/committed;
+sole emitted error narrowed to this numeric mismatch, later gates remain masked.
+Verified conservative recorded Swift-path counts112/173/53 correct the prior
+freeze prose without rewriting it. Cycle2/2 consumed, review and single affected
+rerun pending; initial4(3pass/1fail), cycle1rerun1failed, images0. No compiler,
+formatter, build, harness/probe or hardware during correction. All criteria/P08/fit
+remain open; any further frozen source/validation failure invokes budget stop.
+Consistency checks pass:9source hashes/2changed files, exact qualification and
+3predecessor hashes/112,173,53 recorded Swift paths, 6failure files, 26labels,
+driver AST without invocation, 165local Markdown targets and whitespace.
+
 ## P08 integrated corrective cycle 1 source freeze — 2026-10-14
 
 [Cycle 1 source freeze](scoped-storage/p08-integrated-cycle1-source-freeze.md)

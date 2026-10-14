@@ -906,7 +906,10 @@ fileprivate struct P08GeometryAccess: ~Copyable, ~Escapable, CounterGeometry {
             let layoutPayload: UInt64 = d.g0.pointee.reservedPayloadBytes + d.g1.pointee.reservedPayloadBytes
             let layoutBytes: UInt64 = layoutInline + layoutPayload
             let renderInline: UInt64 = UInt64(MemoryLayout<DynamicRenderWorkspace>.stride)
-            let renderBytes: UInt64 = renderInline + d.g4.pointee.reservedPayloadBytes
+            guard let renderPayload = UInt64(exactly: d.g4.pointee.reservedPayloadBytes) else {
+                preconditionFailure("negative Dynamic render payload extent")
+            }
+            let renderBytes: UInt64 = renderInline + renderPayload
             let pathBytes: UInt64 = d.g3.pointee.livePathReservedPayloadBytes
             let planInline: UInt64 = UInt64(MemoryLayout<DynamicDrawingPlanWorkspace>.stride)
             let planBytes: UInt64 = planInline + d.g3.pointee.planReservedPayloadBytes

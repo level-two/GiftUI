@@ -1,0 +1,18 @@
+{
+  "label": "cycle1-macos-dynamic-counter",
+  "argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "macos-dynamic",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-ezcy1qan"
+  ],
+  "cwd": "/Users/eugene/work/GiftUI",
+  "started": "2026-10-14T15:39:15.655197+00:00",
+  "revision": "ddace15103e732ea273528c4bfe493f440ee89a7",
+  "status_before": ""
+}

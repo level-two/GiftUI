@@ -1,0 +1,13 @@
+{
+  "source_revision": "1716673d",
+  "review_revision": "e9c10de0",
+  "driver_output": ".build/contracts/p08-counter-nejareok",
+  "files": {
+    "counter-model.log": "aaff6e8db19114e9f13ed2ab6e1cb5646f14c5e00b1952551bd07b668d41db21",
+    "stderr.log": "3e9b4ced08b6729b78610f62d3b1e626ec677f71646c22724d5fd268e4cde467",
+    "result.json": "4ba0806318ae8d8383daaa7df892518c9ece884041782b46f496d56eadf93a6e",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "commands.txt": "b5ddd6e511432da053fb3a9f6c33dd57111ad598c55455c68e2cae9bd85b26ef",
+    "invocation.json": "b307eaccc6a5be9ec2f65fd63993d2861099285840e0f39176f1a46a44cf3ff2"
+  }
+}
