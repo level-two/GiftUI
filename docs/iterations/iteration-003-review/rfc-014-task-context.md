@@ -1,5 +1,8 @@
 # RFC-014 task context guide
 
+Current integrated independent SOURCE review — 2026-10-14: [Strong review of `e2d9db9c`](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-independent-source-review.md) finds **B01 blocking**: current retained-action delivery bypasses the admitted/sealed SPEC-009 mutation path. Original producer guards and full same-inventory/same-address host reconstruction are present; O01 requests targeted application-counter fingerprint coverage. Source readiness fails until correction; no compiler/runtime/fit/conformance result. Broader activity permits a bundled autonomous local correction and independent assessment, with cycles **0/2 consumed**, matrix/images **0 consumed** at review. Historical allowances and the two-unproductive guard persist; no renewed file permission gate.
+
+
 Current integrated activity — 2026-10-14: Eugene explicitly authorized the
 broader P08 implementation/review/validation activity instead of micro-step
 approval loops. The [activity record](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-activity.md) supersedes prior current per-file/

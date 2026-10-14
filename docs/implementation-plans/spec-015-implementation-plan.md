@@ -23,6 +23,9 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current integrated independent SOURCE review — 2026-10-14: [Strong review of `e2d9db9c`](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-independent-source-review.md) finds **B01 blocking**: current retained-action delivery bypasses the admitted/sealed SPEC-009 mutation path. Original producer guards and full same-inventory/same-address host reconstruction are present; O01 requests targeted application-counter fingerprint coverage. Source readiness fails until correction; no compiler/runtime/fit/conformance result. Broader activity permits a bundled autonomous local correction and independent assessment, with cycles **0/2 consumed**, matrix/images **0 consumed** at review. Historical allowances and the two-unproductive guard persist; no renewed file permission gate.
+
+
 The [RFC-015 handoff](../iterations/iteration-003-review/rfc-015-p08-handoff.md)
 is adopted under [explicit acceptance/application](../iterations/iteration-003-review/rfc-015-contract-acceptance.md).
 ADR-039 and the exact owner amendments are authoritative. Full delivery belongs

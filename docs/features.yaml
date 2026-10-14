@@ -22,7 +22,8 @@ features:
     # ADR-039 accepted; exact S11/S13/S15 amendments approved/applied 2026-10-13; nine SO criteria unmet.
     # Provenance: docs/iterations/iteration-003-review/rfc-015-contract-acceptance.md.
     # Current integrated activity authorized 2026-10-14: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-activity.md.
-    # Initial integrated source freeze: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-source-freeze.md; eight internal files/26 actual route labels, unreviewed/unexecuted; cycles0/2, matrix/images0, all criteria/fit open.
+    # Initial integrated source freeze: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-source-freeze.md; eight internal files/26 actual route labels, reviewed/unexecuted; cycles0/2, matrix/images0, all criteria/fit open.
+    # Current independent integrated SOURCE review: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-independent-source-review.md; B01 action dispatch ordering blocker, O01 fingerprint strengthening, autonomous bundled correction under broader activity.
     # Prior source-only/file-fence decision stops below are historical; broader necessary existing-contract completion/review/predefined validation proceeds sequentially.
     # Shared/owner SO plans adopted; SO-03 native evidence reviewed; SO-04–06 source package authorized 2026-10-14.
     # Clause-only CounterAdmission.swift addition approved; initial SO-04–06 source pass frozen at 0bb4d9ca.

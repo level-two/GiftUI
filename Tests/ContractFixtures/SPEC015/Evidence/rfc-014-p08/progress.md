@@ -1,5 +1,16 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+Current integrated independent SOURCE review — 2026-10-14: [Strong review of `e2d9db9c`](scoped-storage/p08-integrated-independent-source-review.md) finds **B01 blocking**: current retained-action delivery bypasses the admitted/sealed SPEC-009 mutation path. Original producer guards and full same-inventory/same-address host reconstruction are present; O01 requests targeted application-counter fingerprint coverage. Source readiness fails until correction; no compiler/runtime/fit/conformance result. Broader activity permits a bundled autonomous local correction and independent assessment, with cycles **0/2 consumed**, matrix/images **0 consumed** at review. Historical allowances and the two-unproductive guard persist; no renewed file permission gate.
+
+Review-only checks pass: `git diff --check`; all eight frozen source SHA-256
+identities match; 26 unique route labels (13 per route); driver AST parsed without
+invocation; 489 local Markdown targets across review/receipt/navigation exist;
+governance 198 nodes/2,019 edges and existing task evidence validation. The
+separate review commit changes this report and seven receipt/navigation/manifest
+documents only. No implementation source or frozen receipt changes, source
+corrections or validation invocations occurred in the independent review.
+
+
 Current integrated activity — 2026-10-14: Eugene explicitly authorized the
 broader P08 implementation/review/validation activity instead of micro-step
 approval loops. The [activity record](scoped-storage/p08-integrated-activity.md) supersedes prior current per-file/
@@ -21,9 +32,9 @@ Necessary existing host-state forwarding and semantic equality edits are include
 no scoped capability escapes. Existing dirty state has one authority in runtime
 control, with the pipeline retaining its computed interface. The driver accepts
 exact-current source receipts before the fully verified historical correction map.
-Historical receipts remain unchanged. Source candidate unreviewed/unexecuted;
-independent Strong source review is next, followed by the predefined validation
-under the broader activity. Initial pass, corrective cycles0/2, matrix/images0;
+Historical receipts remain unchanged. Source candidate reviewed/unexecuted;
+B01 blocks source readiness and O01 requests targeted coverage strengthening.
+The current review above gives the broader-activity correction handoff. Initial pass, corrective cycles0/2, matrix/images0;
 no renewed file-level/source-only approval stop. All criteria/fit/P08 remain open.
 Permitted checks pass: whitespace; driver Python AST without invocation; eight
 source hashes/26 unique route labels; 183 local Markdown targets with no missing
