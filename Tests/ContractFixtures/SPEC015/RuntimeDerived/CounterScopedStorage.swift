@@ -1689,6 +1689,46 @@ fileprivate struct P08StaticOuterView: ~Copyable {
             factoryDescriptorRegion: .inline(Self.self, family: 24), geometryRegions: facts.geometryRegions, report: report)
     }
 }
+#if !hasFeature(Embedded)
+// Each concrete inout field loan encloses its span and complete buffer callback.
+// These private helpers return only the existing owned caller result.
+fileprivate func withP08RecordsFieldBuffer<Result>(
+    _ field: inout InlineArray<128, SemanticRuntimeRecord>,
+    _ body: (UnsafeMutableBufferPointer<SemanticRuntimeRecord>) -> Result
+) -> Result {
+    var span = field.mutableSpan
+    return span.withUnsafeMutableBufferPointer(body)
+}
+fileprivate func withP08PathsFieldBuffer<Result>(
+    _ field: inout InlineArray<384, SemanticPathEntry>,
+    _ body: (UnsafeMutableBufferPointer<SemanticPathEntry>) -> Result
+) -> Result {
+    var span = field.mutableSpan
+    return span.withUnsafeMutableBufferPointer(body)
+}
+fileprivate func withP08PayloadsFieldBuffer<Result>(
+    _ field: inout InlineArray<256, CounterPayload?>,
+    _ body: (UnsafeMutableBufferPointer<CounterPayload?>) -> Result
+) -> Result {
+    var span = field.mutableSpan
+    return span.withUnsafeMutableBufferPointer(body)
+}
+fileprivate func withP08ScalarsFieldBuffer<Result>(
+    _ field: inout InlineArray<128, UInt32>,
+    _ body: (UnsafeMutableBufferPointer<UInt32>) -> Result
+) -> Result {
+    var span = field.mutableSpan
+    return span.withUnsafeMutableBufferPointer(body)
+}
+fileprivate func withP08EntriesFieldBuffer<Result>(
+    _ field: inout InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>,
+    _ body: (UnsafeMutableBufferPointer<CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>) -> Result
+) -> Result {
+    var span = field.mutableSpan
+    return span.withUnsafeMutableBufferPointer(body)
+}
+#endif
+
 fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity,
     backing: UnsafeMutableRawBufferPointer?, _ body: (inout P08TypedBackingOwner, borrowing P08StaticOuterView) -> Result) -> Result {
     #if hasFeature(Embedded)
@@ -1709,21 +1749,11 @@ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerI
         withUnsafeMutablePointer(to: &outer.semantic) { semantic in
         withUnsafeMutablePointer(to: &outer.canvas) { canvas in
         withUnsafeMutablePointer(to: &outer.control) { control in
-        withUnsafeMutablePointer(to: &outer.semanticBacking.records) { recordsStorage in
-        var recordsSpan = recordsStorage.pointee.mutableSpan
-        return recordsSpan.withUnsafeMutableBufferPointer { records in
-        withUnsafeMutablePointer(to: &outer.semanticBacking.paths) { pathsStorage in
-        var pathsSpan = pathsStorage.pointee.mutableSpan
-        return pathsSpan.withUnsafeMutableBufferPointer { paths in
-        withUnsafeMutablePointer(to: &outer.semanticBacking.payloads) { payloadsStorage in
-        var payloadsSpan = payloadsStorage.pointee.mutableSpan
-        return payloadsSpan.withUnsafeMutableBufferPointer { payloads in
-        withUnsafeMutablePointer(to: &outer.semanticBacking.scalars) { scalarsStorage in
-        var scalarsSpan = scalarsStorage.pointee.mutableSpan
-        return scalarsSpan.withUnsafeMutableBufferPointer { scalars in
-        withUnsafeMutablePointer(to: &outer.canvasBacking) { entriesStorage in
-        var entriesSpan = entriesStorage.pointee.mutableSpan
-        return entriesSpan.withUnsafeMutableBufferPointer { entries in
+        withP08RecordsFieldBuffer(&outer.semanticBacking.records) { records in
+        withP08PathsFieldBuffer(&outer.semanticBacking.paths) { paths in
+        withP08PayloadsFieldBuffer(&outer.semanticBacking.payloads) { payloads in
+        withP08ScalarsFieldBuffer(&outer.semanticBacking.scalars) { scalars in
+        withP08EntriesFieldBuffer(&outer.canvasBacking) { entries in
             withP08StaticReservation { owner in
                 precondition(initializeP08Backing(&owner) == nil)
                 defer { owner.finishReservation() }
@@ -1731,7 +1761,7 @@ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerI
                 let view = P08StaticOuterView(limits: limits, root: root, semantic: semantic, records: records, paths: paths, payloads: payloads, scalars: scalars, canvas: canvas, entries: entries, control: control, outerMetadataBytes: metadata)
                 return body(&owner, view)
             }
-        } } } } } } } } } } } } } }
+        } } } } } } } } }
     #endif
 }
 
@@ -1960,7 +1990,7 @@ fileprivate func runP08StaticHost(owner: inout P08TypedBackingOwner, outer: borr
                             var entries = MutableSpan(_unsafeStart: entriesBacking.baseAddress!, count: entriesBacking.count)
                             try canvasStorage.pointee.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits.staticCanvas!) { values in
                                 checks = withP08Storage(backing: &owner) { session in
-                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: control, audit: audit, assembly: assembly, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: false, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
+                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control, audit: audit, assembly: assembly, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: false, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
                                 }
                             }
                         } catch { preconditionFailure("counter host Canvas") }
@@ -2094,7 +2124,7 @@ fileprivate func runP08DynamicHost(owner: inout P08TypedBackingOwner, outer: bor
                         do throws(DrawingError) {
                             try canvasStorage.pointee.withLifetime(table: CounterValueTable(), limits: counterCanvasLimits, configuredCapacity: 1) { values in
                                 checks = withP08Storage(backing: &owner) { session in
-                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: control, audit: audit, assembly: assembly, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: true, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
+                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control, audit: audit, assembly: assembly, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: true, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
                                 }
                             }
                         } catch { preconditionFailure("counter Dynamic Canvas") }
@@ -2263,8 +2293,9 @@ extension P08StorageSession {
     }
 }
 fileprivate func p08VerifyRoleTranscript(_ transcript: borrowing P08RoleTranscript) -> Int {
-    precondition(transcript.count == 12) // Six commits, R then H; discard exchanges none.
-    for index in 0..<transcript.count {
+    let count = transcript.count
+    precondition(count == 12) // Six commits, R then H; discard exchanges none.
+    for index in 0..<count {
         let event = transcript.entries[index]!
         precondition(event.bankKind == UInt8(index % 2))
         precondition(event.leftBefore.id != event.rightBefore.id && event.leftBefore.address != event.rightBefore.address)
@@ -2276,7 +2307,7 @@ fileprivate func p08VerifyRoleTranscript(_ transcript: borrowing P08RoleTranscri
         print("SO06 role", event.bankKind, event.leftBefore.id.rawValue, event.leftBefore.address, event.leftCount, event.leftBefore.retainedBytes, event.rightBefore.id.rawValue, event.rightBefore.address, event.rightCount, event.rightBefore.retainedBytes, "=>", event.leftAfter.id.rawValue, event.rightAfter.id.rawValue)
         #endif
     }
-    return transcript.count * 5 + 1
+    return count * 5 + 1
 }
 fileprivate func p08VerifyDestruction(_ trace: InlineArray<14, P08InitializedEntry?>, original: InlineArray<14, P08InitializedEntry?>, expectedCount: Int) -> Int {
     for index in 0..<expectedCount {

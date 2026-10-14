@@ -1,0 +1,78 @@
+{
+  "kind": "compiler-compatibility2-source-freeze-unreviewed-unexecuted",
+  "activity": "p08-compiler-compatibility2",
+  "input_revision": "86fca501",
+  "implementation_baseline": "bbb54fc1",
+  "historical_corrective_cycles_consumed": 2,
+  "historical_compatibility1_candidates_consumed": 1,
+  "historical_compatibility1_runs_failed": 1,
+  "candidate_allowance": 1,
+  "candidates_consumed": 1,
+  "counter_invocation_allowance": 1,
+  "counter_invocations_consumed": 0,
+  "automatic_repairs": 0,
+  "sources": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "3565e47ec54b4e85b89260d4922166908b4fdb557e6012318d38c73197c06ed0",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": "e5b03a220709df8d9c439fde4d7728ef3a4e9e9385eeb0059b6cdb8f27df6d47",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": "3d9c21a66423bfc26c60c785583a8f6bc614a10ad0fef767bb48607e88f7e415",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": "9fbc99f227f4e5800259176d31ba0b8b2b63e7ab337cb25b7324870fe5b80513",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": "80930e34849a96385cd8c0c0f8a0d8af0c55c50a1a0b5b44c12d229fbd45c951",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": "62813ea95b2b1cd6bfc430fc66e0aae25e4c6f9db8d8e7329b5c10000a739c6b",
+    "scripts/contracts/check-spec-015-counter.py": "6024ca6da36d690697e67df8e095128609f5e47eb32d2134d4217f56f119ea62",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df"
+  },
+  "changed_sources": [
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+    "scripts/contracts/check-spec-015-counter.py"
+  ],
+  "qualification": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-compiler-compatibility2-applicability.json",
+    "sha256": "32c84b38bbab9b1b9ddb531746cf6df9bee67c6b809aba2aeb6ec63946eff3ff"
+  },
+  "immutable_failure_packet": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/compiler-compatibility1-counter/manifest.json",
+    "sha256": "5566681848d495b8edfdd40b7cb9cda37116d9382944eab5cd5c3dd83581ca62"
+  },
+  "route_labels": {
+    "static": [
+      "so06-reuse-static-inventory-two-hosts",
+      "so06-reuse-static-control-same-address",
+      "so06-reuse-static-terminal-old-host",
+      "so06-reuse-static-raw-namespace-collision",
+      "so06-reuse-static-action-stale",
+      "so06-reuse-static-action-current",
+      "so06-reuse-static-input-stale",
+      "so06-reuse-static-input-current",
+      "so06-reuse-static-admission-stale",
+      "so06-reuse-static-admission-current",
+      "so06-reuse-static-source-stale",
+      "so06-reuse-static-source-current",
+      "so06-reuse-static-cleanup-backing-last"
+    ],
+    "dynamic": [
+      "so06-reuse-dynamic-inventory-two-hosts",
+      "so06-reuse-dynamic-control-same-address",
+      "so06-reuse-dynamic-terminal-old-host",
+      "so06-reuse-dynamic-raw-namespace-collision",
+      "so06-reuse-dynamic-action-stale",
+      "so06-reuse-dynamic-action-current",
+      "so06-reuse-dynamic-input-stale",
+      "so06-reuse-dynamic-input-current",
+      "so06-reuse-dynamic-admission-stale",
+      "so06-reuse-dynamic-admission-current",
+      "so06-reuse-dynamic-source-stale",
+      "so06-reuse-dynamic-source-current",
+      "so06-reuse-dynamic-cleanup-backing-last"
+    ]
+  },
+  "profile_routes": {
+    "macos-dynamic": "dynamic",
+    "macos-static": "static",
+    "raspberry-pi-armv6": "dynamic",
+    "nrf52840-embedded": "static"
+  },
+  "scoped_compiler_labels_per_nonembedded_profile": 384,
+  "scoped_compiler_labels_embedded": 202,
+  "native_exclusivity_labels": 5
+}
