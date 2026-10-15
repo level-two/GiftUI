@@ -1,0 +1,34 @@
+{
+  "frames-and-calls.json.xz": {
+    "sha256": "136d2425cc0ac5cbba6b327535c3d8119f527a62aa9568dfd5e7216f6a8faffc",
+    "bytes": 373608
+  },
+  "required-stack-disassembly.txt.xz": {
+    "sha256": "a5feab661e5af8b322012371ada10a1f4ccb5ceba5277e4b55c73d08e7653d0d",
+    "bytes": 11652
+  },
+  "receipt-manifest.json": {
+    "sha256": "3e62a996acff5f66afafc03263a13b40dbba2b29933161667c511aa84b5fee70",
+    "bytes": 31756
+  },
+  "root-analysis.json": {
+    "sha256": "92c64a81831b776896ae2e2dd3f6805224a50252ff2219c6341d9cdb37738a00",
+    "bytes": 113529
+  },
+  "actual-run.tar.xz": {
+    "sha256": "33516431a193d32269c3edf8fc236d522a37df6a43d393a177ef8add39ef5088",
+    "bytes": 36712
+  },
+  "manual-layout-diagnostic.json": {
+    "sha256": "fd3480277fcbbcd0a925a6a2bbaaba79ed639ab495beb914884596f847ed6734",
+    "bytes": 11927
+  },
+  "object-disassembly.txt.xz": {
+    "sha256": "85ddad89f6b1addcf3d5e17c67cd00b771505742e57d3faf88742d4970447c9c",
+    "bytes": 1111244
+  },
+  "required-stack-path.json": {
+    "sha256": "98c13e9cb296c4658b7b2f01f023a1a397854fb6faebbbedd2d14af5a4830169",
+    "bytes": 21940
+  }
+}

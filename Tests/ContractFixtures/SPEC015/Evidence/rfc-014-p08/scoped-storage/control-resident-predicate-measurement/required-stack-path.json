@@ -1,0 +1,325 @@
+{
+  "kind": "read-only-source-feasible-required-stale-action-path",
+  "nodes": [
+    {
+      "section_index": 3869,
+      "section": ".text.$e17P08CounterRuntime24p08RunStaticSessionPhase33_480B1BD841D053AE4FCDC18507668536LL7session8semantic6values14activationSpan6models4root13foreignModels0U4Root7control0U7Control5audit8assembly09failAfterC05early16candidateFailure5reuseAA0A10BodyResultACLLVAA0a7StorageG0ACLLVn_18GiftUISemanticCore19SemanticRecordStoreVy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGnA_18CanvasStagedValuesVyAX23SemanticRecordReferenceVA2_0aB17SchemaCanvasTableVyA6_GGns0R0Vys5UInt8VG21GiftUIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0aB6Schema0B11ModelSchemaOGA23_015ObservableStateW5ScopeVyA27_AX24SemanticCompleteIdentityVGA31_A36_SpyAA0bY0VGA39_17GiftUIRuntimeCore0C12StorageAuditVAA0B12HostAssemblyVSbA21_A40_0C21CompletePipelineStageOSgSpyAA0A19HostReuseTranscriptACLLVGSgtF",
+      "symbol": {
+        "name": "$e17P08CounterRuntime24p08RunStaticSessionPhase33_480B1BD841D053AE4FCDC18507668536LL7session8semantic6values14activationSpan6models4root13foreignModels0U4Root7control0U7Control5audit8assembly09failAfterC05early16candidateFailure5reuseAA0A10BodyResultACLLVAA0a7StorageG0ACLLVn_18GiftUISemanticCore19SemanticRecordStoreVy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGnA_18CanvasStagedValuesVyAX23SemanticRecordReferenceVA2_0aB17SchemaCanvasTableVyA6_GGns0R0Vys5UInt8VG21GiftUIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0aB6Schema0B11ModelSchemaOGA23_015ObservableStateW5ScopeVyA27_AX24SemanticCompleteIdentityVGA31_A36_SpyAA0bY0VGA39_17GiftUIRuntimeCore0C12StorageAuditVAA0B12HostAssemblyVSbA21_A40_0C21CompletePipelineStageOSgSpyAA0A19HostReuseTranscriptACLLVGSgtF",
+        "value": 1,
+        "size": 1930,
+        "type": 2,
+        "binding": 1,
+        "owner": 3869,
+        "visibility": 3,
+        "table": 15134,
+        "index": 12018
+      },
+      "demangled": "P08CounterRuntime.(p08RunStaticSessionPhase in _480B1BD841D053AE4FCDC18507668536)(session: __owned P08CounterRuntime.(P08StorageSession in _480B1BD841D053AE4FCDC18507668536), semantic: __owned GiftUISemanticCore.SemanticRecordStore<GiftUIDrawing.CanvasSemanticPayload<P08CounterTable.P08CounterSchemaCanvasValues<P08CounterRuntime.CounterDomain>>>, values: __owned GiftUIDrawing.CanvasStagedValues<GiftUISemanticCore.SemanticRecordReference, P08CounterTable.P08CounterSchemaCanvasTable<P08CounterRuntime.CounterDomain>>, activationSpan: Swift.Span<Swift.UInt8>, models: GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, root: GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, foreignModels: GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, foreignRoot: GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, control: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, foreignControl: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, audit: GiftUIRuntimeCore.RuntimeStorageAudit, assembly: P08CounterRuntime.CounterHostAssembly, failAfterRuntime: Swift.Bool, early: Swift.UInt8, candidateFailure: GiftUIRuntimeCore.RuntimeCompletePipelineStage?, reuse: Swift.UnsafeMutablePointer<P08CounterRuntime.(P08HostReuseTranscript in _480B1BD841D053AE4FCDC18507668536)>?) -> P08CounterRuntime.(P08BodyResult in _480B1BD841D053AE4FCDC18507668536)",
+      "frame": 12664,
+      "prologue": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        ],
+        [
+          4,
+          "sub.w\tsp, sp, #12608\t; 0x3140"
+        ],
+        [
+          8,
+          "sub\tsp, #20"
+        ],
+        [
+          10,
+          "mov\tlr, r1"
+        ],
+        [
+          12,
+          "ldr.w\tr1, [r0, #300]\t; 0x12c"
+        ],
+        [
+          16,
+          "ldr.w\tr7, [r0, #244]\t; 0xf4"
+        ],
+        [
+          20,
+          "ldr.w\tr8, [r0, #72]\t; 0x48"
+        ],
+        [
+          24,
+          "ldrd\tr9, fp, [r0, #28]"
+        ]
+      ]
+    },
+    {
+      "section_index": 3861,
+      "section": ".text.$e17P08CounterRuntime21p08RunStaticHostPhase33_480B1BD841D053AE4FCDC18507668536LL4host7control6report09failAfterC010joinChecks5early16candidateFailure5reuseAA0A10BodyResultACLLV23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyAA0bG5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVGGz_SpyAA0B7ControlVGAN0G14AssemblyReportVSbSis5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aG15ReuseTranscriptACLLVGSgtF",
+      "symbol": {
+        "name": "$e17P08CounterRuntime21p08RunStaticHostPhase33_480B1BD841D053AE4FCDC18507668536LL4host7control6report09failAfterC010joinChecks5early16candidateFailure5reuseAA0A10BodyResultACLLV23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyAA0bG5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVGGz_SpyAA0B7ControlVGAN0G14AssemblyReportVSbSis5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aG15ReuseTranscriptACLLVGSgtF",
+        "value": 1,
+        "size": 464,
+        "type": 2,
+        "binding": 1,
+        "owner": 3861,
+        "visibility": 3,
+        "table": 15134,
+        "index": 12002
+      },
+      "demangled": "P08CounterRuntime.(p08RunStaticHostPhase in _480B1BD841D053AE4FCDC18507668536)(host: inout GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance<P08CounterRuntime.CounterHostOwner<P08CounterRuntime.(P08GeometryAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08CandidateAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08CommittedAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08HitAccess in _480B1BD841D053AE4FCDC18507668536)>>, control: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, report: GiftUIHostConfiguration.HostAssemblyReport, failAfterRuntime: Swift.Bool, joinChecks: Swift.Int, early: Swift.UInt8, candidateFailure: GiftUIRuntimeCore.RuntimeCompletePipelineStage?, reuse: Swift.UnsafeMutablePointer<P08CounterRuntime.(P08HostReuseTranscript in _480B1BD841D053AE4FCDC18507668536)>?) -> P08CounterRuntime.(P08BodyResult in _480B1BD841D053AE4FCDC18507668536)",
+      "frame": 1528,
+      "prologue": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, sl, lr}"
+        ],
+        [
+          4,
+          "subw\tsp, sp, #1500\t; 0x5dc"
+        ],
+        [
+          8,
+          "ldr.w\tr4, [sp, #1540]\t; 0x604"
+        ],
+        [
+          12,
+          "mov\tr6, r1"
+        ],
+        [
+          14,
+          "mov\tr5, r0"
+        ],
+        [
+          16,
+          "cbz\tr4, 1e <.text.$e17P08CounterRuntime21p08RunStaticHostPhase33_480B1BD841D053AE4FCDC18507668536LL4host7control6report09failAfterC010joinChecks5early16candidateFailure5reuseAA0A10BodyResultACLLV23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyAA0bG5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVGGz_SpyAA0B7ControlVGAN0G14AssemblyReportVSbSis5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aG15ReuseTranscriptACLLVGSgtF+0x1e>"
+        ],
+        [
+          18,
+          "mov\tr0, r5"
+        ],
+        [
+          20,
+          "mov\tr1, r6"
+        ]
+      ]
+    },
+    {
+      "section_index": 3760,
+      "section": ".text.$e17P08CounterRuntime15p08RunReuseHost33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcriptSi23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyxGz_SpyAA0B7ControlVGSpyAA0agF10TranscriptACLLVGtAG0stU9LiveOwnerRzAA0aF11ObservationACLLRzRi_zRi0_zlFAA0bgZ0VyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+      "symbol": {
+        "name": "$e17P08CounterRuntime15p08RunReuseHost33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcriptSi23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyxGz_SpyAA0B7ControlVGSpyAA0agF10TranscriptACLLVGtAG0stU9LiveOwnerRzAA0aF11ObservationACLLRzRi_zRi0_zlFAA0bgZ0VyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+        "value": 1,
+        "size": 192,
+        "type": 2,
+        "binding": 1,
+        "owner": 3760,
+        "visibility": 3,
+        "table": 15134,
+        "index": 11954
+      },
+      "demangled": "generic specialization <P08CounterRuntime.CounterHostOwner<P08CounterRuntime.(P08GeometryAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08CandidateAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08CommittedAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08HitAccess in _480B1BD841D053AE4FCDC18507668536)>> of P08CounterRuntime.(p08RunReuseHost in _480B1BD841D053AE4FCDC18507668536)<A where A: GiftUIHostConfiguration.SignalAnalyzerPresetLiveOwner, A: P08CounterRuntime.(P08ReuseObservation in _480B1BD841D053AE4FCDC18507668536), A: ~Swift.Copyable, A: ~Swift.Escapable>(host: inout GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance<A>, control: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, transcript: Swift.UnsafeMutablePointer<P08CounterRuntime.(P08HostReuseTranscript in _480B1BD841D053AE4FCDC18507668536)>) -> Swift.Int",
+      "frame": 2680,
+      "prologue": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        ],
+        [
+          4,
+          "subw\tsp, sp, #2644\t; 0xa54"
+        ],
+        [
+          8,
+          "mov\tfp, r2"
+        ],
+        [
+          10,
+          "mov\tr6, r1"
+        ],
+        [
+          12,
+          "mov\tr5, r0"
+        ],
+        [
+          14,
+          "bl\t0 <.text.$e17P08CounterRuntime15p08RunReuseHost33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcriptSi23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyxGz_SpyAA0B7ControlVGSpyAA0agF10TranscriptACLLVGtAG0stU9LiveOwnerRzAA0aF11ObservationACLLRzRi_zRi0_zlFAA0bgZ0VyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5>"
+        ],
+        [
+          18,
+          "mov\tsl, r0"
+        ],
+        [
+          20,
+          "mov\tr0, r6"
+        ]
+      ]
+    },
+    {
+      "section_index": 3720,
+      "section": ".text.$e17P08CounterRuntime24p08ReuseRejectOldOrigins33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcript5route6action8revisionSi23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVyxGz_SpyAA0B7ControlVGSpyAA0azE10TranscriptACLLVGs12StaticStringVAA0B14ProducedActionV0T2UI20PresentationRevisionVtAJ0wxY9LiveOwnerRzAA0aE11ObservationACLLRzRi_zRi0_zlFAA0bZ5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+      "symbol": {
+        "name": "$e17P08CounterRuntime24p08ReuseRejectOldOrigins33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcript5route6action8revisionSi23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVyxGz_SpyAA0B7ControlVGSpyAA0azE10TranscriptACLLVGs12StaticStringVAA0B14ProducedActionV0T2UI20PresentationRevisionVtAJ0wxY9LiveOwnerRzAA0aE11ObservationACLLRzRi_zRi0_zlFAA0bZ5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+        "value": 1,
+        "size": 484,
+        "type": 2,
+        "binding": 1,
+        "owner": 3720,
+        "visibility": 3,
+        "table": 15134,
+        "index": 11935
+      },
+      "demangled": "generic specialization <P08CounterRuntime.CounterHostOwner<P08CounterRuntime.(P08GeometryAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08CandidateAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08CommittedAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08HitAccess in _480B1BD841D053AE4FCDC18507668536)>> of P08CounterRuntime.(p08ReuseRejectOldOrigins in _480B1BD841D053AE4FCDC18507668536)<A where A: GiftUIHostConfiguration.SignalAnalyzerPresetLiveOwner, A: P08CounterRuntime.(P08ReuseObservation in _480B1BD841D053AE4FCDC18507668536), A: ~Swift.Copyable, A: ~Swift.Escapable>(host: inout GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance<A>, control: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, transcript: Swift.UnsafeMutablePointer<P08CounterRuntime.(P08HostReuseTranscript in _480B1BD841D053AE4FCDC18507668536)>, route: Swift.StaticString, action: P08CounterRuntime.CounterProducedAction, revision: GiftUI.PresentationRevision) -> Swift.Int",
+      "frame": 9136,
+      "prologue": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        ],
+        [
+          4,
+          "sub.w\tsp, sp, #9088\t; 0x2380"
+        ],
+        [
+          8,
+          "sub\tsp, #12"
+        ],
+        [
+          10,
+          "str\tr0, [sp, #28]"
+        ],
+        [
+          12,
+          "add\tr0, sp, #40\t; 0x28"
+        ],
+        [
+          14,
+          "mov\tsl, r1"
+        ],
+        [
+          16,
+          "mov\tr4, r2"
+        ],
+        [
+          18,
+          "mov\tr1, r2"
+        ]
+      ]
+    },
+    {
+      "section_index": 3672,
+      "section": ".text.$e17P08CounterRuntime20p08ReuseRejectAction33_480B1BD841D053AE4FCDC18507668536LL4host7control5route6before11modelBefore03oldG0Si23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVyxGz_SpyAA0B7ControlVGs12StaticStringVAA0aE11FingerprintACLLVs5UInt8VAA0b8ProducedG0VtAJ0wxY9LiveOwnerRzAA0aE11ObservationACLLRzRi_zRi0_zlFAA0bZ5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+      "symbol": {
+        "name": "$e17P08CounterRuntime20p08ReuseRejectAction33_480B1BD841D053AE4FCDC18507668536LL4host7control5route6before11modelBefore03oldG0Si23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVyxGz_SpyAA0B7ControlVGs12StaticStringVAA0aE11FingerprintACLLVs5UInt8VAA0b8ProducedG0VtAJ0wxY9LiveOwnerRzAA0aE11ObservationACLLRzRi_zRi0_zlFAA0bZ5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+        "value": 1,
+        "size": 170,
+        "type": 2,
+        "binding": 1,
+        "owner": 3672,
+        "visibility": 3,
+        "table": 15134,
+        "index": 11917
+      },
+      "demangled": "generic specialization <P08CounterRuntime.CounterHostOwner<P08CounterRuntime.(P08GeometryAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08CandidateAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08CommittedAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08HitAccess in _480B1BD841D053AE4FCDC18507668536)>> of P08CounterRuntime.(p08ReuseRejectAction in _480B1BD841D053AE4FCDC18507668536)<A where A: GiftUIHostConfiguration.SignalAnalyzerPresetLiveOwner, A: P08CounterRuntime.(P08ReuseObservation in _480B1BD841D053AE4FCDC18507668536), A: ~Swift.Copyable, A: ~Swift.Escapable>(host: inout GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance<A>, control: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, route: Swift.StaticString, before: P08CounterRuntime.(P08ReuseFingerprint in _480B1BD841D053AE4FCDC18507668536), modelBefore: Swift.UInt8, oldAction: P08CounterRuntime.CounterProducedAction) -> Swift.Int",
+      "frame": 8552,
+      "prologue": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        ],
+        [
+          4,
+          "sub.w\tsp, sp, #8512\t; 0x2140"
+        ],
+        [
+          8,
+          "sub\tsp, #4"
+        ],
+        [
+          10,
+          "mov\tr5, r0"
+        ],
+        [
+          12,
+          "add\tr0, sp, #16"
+        ],
+        [
+          14,
+          "mov\tr8, r1"
+        ],
+        [
+          16,
+          "mov.w\tr2, #2128\t; 0x850"
+        ],
+        [
+          20,
+          "add.w\tr7, r0, #6368\t; 0x18e0"
+        ]
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from_section": 3869,
+      "to_section": 3861,
+      "relocation": {
+        "section": ".rel.text.$e17P08CounterRuntime24p08RunStaticSessionPhase33_480B1BD841D053AE4FCDC18507668536LL7session8semantic6values14activationSpan6models4root13foreignModels0U4Root7control0U7Control5audit8assembly09failAfterC05early16candidateFailure5reuseAA0A10BodyResultACLLVAA0a7StorageG0ACLLVn_18GiftUISemanticCore19SemanticRecordStoreVy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGnA_18CanvasStagedValuesVyAX23SemanticRecordReferenceVA2_0aB17SchemaCanvasTableVyA6_GGns0R0Vys5UInt8VG21GiftUIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0aB6Schema0B11ModelSchemaOGA23_015ObservableStateW5ScopeVyA27_AX24SemanticCompleteIdentityVGA31_A36_SpyAA0bY0VGA39_17GiftUIRuntimeCore0C12StorageAuditVAA0B12HostAssemblyVSbA21_A40_0C21CompletePipelineStageOSgSpyAA0A19HostReuseTranscriptACLLVGSgtF",
+        "section_type": 9,
+        "offset": 1730,
+        "type": 10,
+        "symbol_table": 15134,
+        "symbol_index": 12002,
+        "symbol": "$e17P08CounterRuntime21p08RunStaticHostPhase33_480B1BD841D053AE4FCDC18507668536LL4host7control6report09failAfterC010joinChecks5early16candidateFailure5reuseAA0A10BodyResultACLLV23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyAA0bG5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVGGz_SpyAA0B7ControlVGAN0G14AssemblyReportVSbSis5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aG15ReuseTranscriptACLLVGSgtF",
+        "explicit_addend": null
+      }
+    },
+    {
+      "from_section": 3861,
+      "to_section": 3760,
+      "relocation": {
+        "section": ".rel.text.$e17P08CounterRuntime21p08RunStaticHostPhase33_480B1BD841D053AE4FCDC18507668536LL4host7control6report09failAfterC010joinChecks5early16candidateFailure5reuseAA0A10BodyResultACLLV23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyAA0bG5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVGGz_SpyAA0B7ControlVGAN0G14AssemblyReportVSbSis5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aG15ReuseTranscriptACLLVGSgtF",
+        "section_type": 9,
+        "offset": 24,
+        "type": 10,
+        "symbol_table": 15134,
+        "symbol_index": 11954,
+        "symbol": "$e17P08CounterRuntime15p08RunReuseHost33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcriptSi23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyxGz_SpyAA0B7ControlVGSpyAA0agF10TranscriptACLLVGtAG0stU9LiveOwnerRzAA0aF11ObservationACLLRzRi_zRi0_zlFAA0bgZ0VyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+        "explicit_addend": null
+      }
+    },
+    {
+      "from_section": 3760,
+      "to_section": 3720,
+      "relocation": {
+        "section": ".rel.text.$e17P08CounterRuntime15p08RunReuseHost33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcriptSi23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyxGz_SpyAA0B7ControlVGSpyAA0agF10TranscriptACLLVGtAG0stU9LiveOwnerRzAA0aF11ObservationACLLRzRi_zRi0_zlFAA0bgZ0VyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+        "section_type": 9,
+        "offset": 100,
+        "type": 10,
+        "symbol_table": 15134,
+        "symbol_index": 11935,
+        "symbol": "$e17P08CounterRuntime24p08ReuseRejectOldOrigins33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcript5route6action8revisionSi23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVyxGz_SpyAA0B7ControlVGSpyAA0azE10TranscriptACLLVGs12StaticStringVAA0B14ProducedActionV0T2UI20PresentationRevisionVtAJ0wxY9LiveOwnerRzAA0aE11ObservationACLLRzRi_zRi0_zlFAA0bZ5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+        "explicit_addend": null
+      }
+    },
+    {
+      "from_section": 3720,
+      "to_section": 3672,
+      "relocation": {
+        "section": ".rel.text.$e17P08CounterRuntime24p08ReuseRejectOldOrigins33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcript5route6action8revisionSi23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVyxGz_SpyAA0B7ControlVGSpyAA0azE10TranscriptACLLVGs12StaticStringVAA0B14ProducedActionV0T2UI20PresentationRevisionVtAJ0wxY9LiveOwnerRzAA0aE11ObservationACLLRzRi_zRi0_zlFAA0bZ5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+        "section_type": 9,
+        "offset": 400,
+        "type": 10,
+        "symbol_table": 15134,
+        "symbol_index": 11917,
+        "symbol": "$e17P08CounterRuntime20p08ReuseRejectAction33_480B1BD841D053AE4FCDC18507668536LL4host7control5route6before11modelBefore03oldG0Si23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVyxGz_SpyAA0B7ControlVGs12StaticStringVAA0aE11FingerprintACLLVs5UInt8VAA0b8ProducedG0VtAJ0wxY9LiveOwnerRzAA0aE11ObservationACLLRzRi_zRi0_zlFAA0bZ5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+        "explicit_addend": null
+      }
+    }
+  ],
+  "frame_lower_bound": 34560,
+  "main_stack_limit": 27648,
+  "excess": 6912,
+  "outer_irq_and_deeper_calls_omitted": true,
+  "current_input_caveat": "Old32000byte reservation remains undersized; source-required reuse path assumes valid supplied backing after exact measured completion. This object is not a successful runtime receipt.",
+  "initial_parser_omission": "subw was omitted;hostphase28->1528,reuse36->2680;corrected saved metadata from exact prologues",
+  "fit": "rejectedbylowerbound;notcompleteupperbound"
+}
