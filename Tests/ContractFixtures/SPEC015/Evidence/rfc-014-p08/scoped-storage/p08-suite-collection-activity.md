@@ -1,6 +1,9 @@
 # P08 suite collection activity — 2026-10-14
 
-Status: **active; harness source frozen, independent review and suite collection pending**.
+Status: **repair batch validated; independent package review pending**.
+See the [current batch result](p08-suite-collection-result.md) for completed
+baseline collection, grouped repairs, focused results and remaining acceptance
+limits. Historical pending wording below describes its corresponding source freeze.
 Current grouped collected-suite correction consumes **cycle 2/2** at source
 freeze; setup consumed cycle 1. The initial `d6792a06` freeze below remains historical;
 the appended setup freeze supersedes its schema/readiness descriptions.

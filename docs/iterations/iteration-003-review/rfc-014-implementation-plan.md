@@ -1,16 +1,14 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current P08 suite collection — **ACTIVE, 2026-10-14**.
-Eugene explicitly requested the whole suite, collection of routine errors,
-grouped corrections and focused reruns instead of stopping at each barrier.
-The [collection activity](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-suite-collection-activity.md)
-supersedes the previous per-invocation stop for this work. Preserve all historical
-results and budgets; collect independent failures, block only actual dependents,
-and retain complete source/compiler/positive-twin evidence for focused reruns.
-Existing P08 contracts, matrix, target/resource limits and sequential execution
-remain. Contract/scope decisions and the two-unproductive-corrections guard still
-escalate; routine diagnostic matching does not require another permission.
-The following boundary records are historical.
+Current P08 collected-suite repair batch — **VALIDATED; package review pending, 2026-10-15**.
+The [batch result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-suite-collection-result.md) records the full registered baseline collection,
+grouped routine corrections and focused validation. Current native runtimes pass
+1,736,158 Static / 1,736,082 Dynamic assertions with zero failures; reuse and
+exclusivity controls pass. ARMv6's 22 selected compiler checks pass; Embedded's
+full 226-check collection passes. Focused receipts remain partial, not a full
+corrected-source matrix pass. Both grouped correction cycles are consumed;
+historical budgets, contracts and resource limits are unchanged. P08/fit, images
+and acceptance coverage remain open. The following boundary records are historical.
 
 Historical grouped lifetime continuation boundary — **STOP, 2026-10-14**.
 Candidate `cab1c415`, source review `2989ca7f`: the complete counter module now
