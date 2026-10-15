@@ -16,7 +16,8 @@ def branch(displacement):
     return struct.pack('<HH', first, second)
 
 
-def fixture(nodes, edges=(), kind=1, relocation_link=3, residual=False, duplicate_relocation=False):
+def fixture(nodes, edges=(), kind=1, relocation_link=3, residual=False, duplicate_relocation=False,
+            text_alignment=2):
     """A real ELF32 with independently linked primary/auxiliary symbol tables."""
     edges = dict(edges)
     base = 0x1000 if kind == 2 else 0
@@ -50,7 +51,7 @@ def fixture(nodes, edges=(), kind=1, relocation_link=3, residual=False, duplicat
             if duplicate_relocation:
                 relocations += struct.pack('<II', base + positions[source] + 2, index << 8 | 30)
     payload, sections = bytearray(bytes(52)), [(0,) * 10]
-    definitions = [(1, 6, text, base, 0, 0, 2, 0), (3, 0, strings, 0, 0, 0, 1, 0),
+    definitions = [(1, 6, text, base, 0, 0, text_alignment, 0), (3, 0, strings, 0, 0, 0, 1, 0),
                    (2, 0, tables[3], 0, 2, 1, 4, 16), (3, 0, section_strings, 0, 0, 0, 1, 0),
                    (9, 0, relocations, 0, relocation_link, 1, 4, 8), (2, 0, tables[6], 0, 2, 1, 4, 16)]
     for name, (kind_code, flags, data, address, link, info, alignment, entry_size) in zip(names[1:], definitions):

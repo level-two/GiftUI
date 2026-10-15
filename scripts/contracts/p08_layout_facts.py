@@ -82,6 +82,20 @@ def decode_return(body):
     return value
 
 
+def decode_inline_literal_return(body, address, section_alignment):
+    """One complete aligned Thumb16 LDR r0,[PC,#0]; BX LR; owned UInt32."""
+    require(len(body) == 8 and body[:4] == bytes.fromhex('00487047'),
+            'expected exact inline-literal return body')
+    # For ET_REL the section must preserve the four-byte alignment at link;
+    # for ET_EXEC address is already absolute. Both use this same finite proof.
+    require(section_alignment >= 4 and section_alignment & (section_alignment - 1) == 0 and address % 4 == 0,
+            'inline literal requires four-byte function/section alignment')
+    literal_address = checked_add(address, 4)  # Align(PC+4,4) == address+4.
+    checked_add(literal_address, 4)
+    return dict(value=struct.unpack_from('<I', body, 4)[0],
+                literal_address=literal_address, literal_offset=4, literal_bytes=4)
+
+
 def decode_tail_displacement(body):
     """Only an entire unconditional Thumb B.W (T4); never BL or conditional B."""
     if len(body) != 4:
@@ -237,8 +251,14 @@ class ELF:
             displacement = decode_tail_displacement(body)
             if displacement is None:
                 require(not relocations, 'relocation in constant-return leaf')
-                value = decode_return(body)
-                node['kind'] = 'immediate-return-leaf'
+                if body[:2] == bytes.fromhex('0048'):
+                    literal = decode_inline_literal_return(body, current['value'] & ~1,
+                                                           self.sections[current['owner']]['alignment'])
+                    value = literal['value']
+                    node.update(kind='inline-literal-return-leaf', literal=literal)
+                else:
+                    value = decode_return(body)
+                    node['kind'] = 'immediate-return-leaf'
                 node['relocations'] = []
                 proof.append(node)
                 return dict(value=value, **{key: proof[0][key] for key in ('address', 'bytes', 'section', 'body_hex')},

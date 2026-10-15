@@ -1,0 +1,30 @@
+{
+  "stage": "initial finite literal tooling source freeze; independent review pending",
+  "baseline": "761571e0",
+  "corrections_consumed": 0,
+  "correction_limit": 2,
+  "source_optimization_authorized": false,
+  "compiler_build_runtime_image_executed": false,
+  "actual_object_decoded_with_updated_tool": false,
+  "changed_sources": {
+    "scripts/contracts/p08_layout_facts.py": "360a0d74b950260b381b8e5daaea3dd6026ece455f555686f300e6bfcbeb9dc8",
+    "scripts/contracts/test_p08_layout_tail_proofs.py": "3e275f9fd0766724fa1131d81042c21a50fd3b7d57643d56ec1c708bf73e34e7",
+    "scripts/contracts/test_p08_layout_literal_proofs.py": "d9549ad5fc4aaa06958d91f359bdea55866ffd458f17d2b27a7524b55b9cc5b1"
+  },
+  "source_patch_sha256": "f5947ff7d5909a01a02b9235c8d7221cd524faa7ac8c6d48114db8e1ab9e3eb3",
+  "checks": {
+    "compiler_free_layout_tests_passed": 50,
+    "new_literal_test_methods": 8,
+    "python_AST": "passed",
+    "whitespace": "passed",
+    "unchanged_component_receipt_hashes_and_changedtoolabsence_verified": 7
+  },
+  "qualification": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-control-resident-predicate-applicability.json",
+    "sha256": "27cb807261cb84561b603fadc35287cc8f80174e6888cae3d78e42e91ca7bdd0",
+    "status": "unchanged exact candidate proof; changed tooling absent from all7componentreceiptinputs; currentcounterfreshinputhashmustchange"
+  },
+  "planned_next": "independenttoolsourcePASS then read-only sameobject extraction with strict oldreservationfailure/rawfacts; no compiler before measuredsizingreview",
+  "resource_baseline": 27648,
+  "fit": "unproved;required34560lowerboundpreviouslyrecorded"
+}

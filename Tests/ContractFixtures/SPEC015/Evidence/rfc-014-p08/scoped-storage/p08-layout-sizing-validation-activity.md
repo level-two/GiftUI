@@ -7,7 +7,10 @@ rerun1/1, prior control-resident2/2 and all older allowances remain closed.
 
 This new package permits one initial tooling/sizing pass and at most two grouped
 tooling/sizing corrective cycles, stopping after two unproductive cycles or a real
-contract/resource decision. Initial tooling source pass active; corrections0/2.
+contract/resource decision. Initial tooling source pass frozen; corrections 0/2.
+[Source freeze](p08-layout-literal-tool-source-freeze.md) records the exact finite
+proof and 50 passing compiler-free layout tests. Independent source review
+precedes actual-object decoding; no compiler/build/runtime/image ran.
 It authorizes no new representation/optimization variant, resource limit, ownership,
 workload, capacity, core contract, compiler flag/toolchain or hardware change.
 
