@@ -1,0 +1,367 @@
+{
+  "source_revision": "12dbc3121a7a62086afbccb1af86b87fdb8d3ace",
+  "source_sha256": "55e9026c25aa66f3374ccd81fa14ab6982e07aea2e3a95b2e2d9fae5c4295631",
+  "wrapper_argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    "--fresh-focused",
+    "--select-family",
+    "so07-layout-facts"
+  ],
+  "wrapper_exit": 0,
+  "actual_inputs": [
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-4ku93qwd/P08CounterRuntime.o",
+      "sha256": "e782a5b48e75d7cf7a442fcbf735c31d09e62b2f6d55f2ddcb1f1e73f9a691f6",
+      "bytes": 2761648
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-4ku93qwd/result.json",
+      "sha256": "214d74b6ab3132954e622b9de3221c4a663998d55d828e48783b78aa6a1d6d66",
+      "bytes": 3147602
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-4ku93qwd/so07-layout-facts.json",
+      "sha256": "81fd3495fb408fab732065a0697c7ab5a6050feae23b68c3c28d10e68d56c640",
+      "bytes": 112545
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T210204267004Z-stage-realization-cycle1-screen/result.json",
+      "sha256": "d17b291dd630cc375a96c34cdf05d14a4784a508c933365a13783b3355239062",
+      "bytes": 1038
+    }
+  ],
+  "receipt_archive_sha256": "8ae49a459ffe35df5ad2b54b9746b53ac761d98c51b42aa21f0350f3d2f7d2bc",
+  "frames_packet_sha256": "1ec11c00fd6bde7553151d029efb1d528570986f4ca628eb644ee3fb41e589b3",
+  "statuses": {
+    "passed": 25,
+    "not-run": 202
+  },
+  "fresh_focused": true,
+  "focused_passed": true,
+  "collection_complete": false,
+  "passed": false,
+  "layout": {
+    "regions": [
+      {
+        "name": "limits",
+        "offset": 0,
+        "count": 1,
+        "size": 115,
+        "stride": 116,
+        "alignment": 4,
+        "extent": 116,
+        "end": 116
+      },
+      {
+        "name": "root",
+        "offset": 116,
+        "count": 1,
+        "size": 810,
+        "stride": 812,
+        "alignment": 4,
+        "extent": 812,
+        "end": 928
+      },
+      {
+        "name": "semantic",
+        "offset": 928,
+        "count": 1,
+        "size": 116,
+        "stride": 116,
+        "alignment": 4,
+        "extent": 116,
+        "end": 1044
+      },
+      {
+        "name": "semanticRecords",
+        "offset": 1044,
+        "count": 128,
+        "size": 20,
+        "stride": 20,
+        "alignment": 2,
+        "extent": 2560,
+        "end": 3604
+      },
+      {
+        "name": "semanticPaths",
+        "offset": 3604,
+        "count": 384,
+        "size": 22,
+        "stride": 22,
+        "alignment": 2,
+        "extent": 8448,
+        "end": 12052
+      },
+      {
+        "name": "semanticPayloads",
+        "offset": 12052,
+        "count": 256,
+        "size": 33,
+        "stride": 36,
+        "alignment": 4,
+        "extent": 9216,
+        "end": 21268
+      },
+      {
+        "name": "semanticScalars",
+        "offset": 21268,
+        "count": 128,
+        "size": 4,
+        "stride": 4,
+        "alignment": 4,
+        "extent": 512,
+        "end": 21780
+      },
+      {
+        "name": "values",
+        "offset": 21780,
+        "count": 1,
+        "size": 4,
+        "stride": 4,
+        "alignment": 2,
+        "extent": 4,
+        "end": 21784
+      },
+      {
+        "name": "canvasEntry",
+        "offset": 21784,
+        "count": 1,
+        "size": 28,
+        "stride": 28,
+        "alignment": 4,
+        "extent": 28,
+        "end": 21812
+      },
+      {
+        "name": "b0",
+        "offset": 21812,
+        "count": 1024,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1024,
+        "end": 22836
+      },
+      {
+        "name": "b1",
+        "offset": 22836,
+        "count": 1056,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1056,
+        "end": 23892
+      },
+      {
+        "name": "b2",
+        "offset": 23892,
+        "count": 20,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 20,
+        "end": 23912
+      },
+      {
+        "name": "b3",
+        "offset": 23912,
+        "count": 112,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 112,
+        "end": 24024
+      },
+      {
+        "name": "g0",
+        "offset": 24024,
+        "count": 1,
+        "size": 70,
+        "stride": 72,
+        "alignment": 4,
+        "extent": 72,
+        "end": 24096
+      },
+      {
+        "name": "g1",
+        "offset": 24096,
+        "count": 1,
+        "size": 98,
+        "stride": 100,
+        "alignment": 4,
+        "extent": 100,
+        "end": 24196
+      },
+      {
+        "name": "g2",
+        "offset": 24196,
+        "count": 1,
+        "size": 1024,
+        "stride": 1024,
+        "alignment": 4,
+        "extent": 1024,
+        "end": 25220
+      },
+      {
+        "name": "g3",
+        "offset": 25220,
+        "count": 1,
+        "size": 167,
+        "stride": 168,
+        "alignment": 4,
+        "extent": 168,
+        "end": 25388
+      },
+      {
+        "name": "g4",
+        "offset": 25388,
+        "count": 1,
+        "size": 26,
+        "stride": 28,
+        "alignment": 4,
+        "extent": 28,
+        "end": 25416
+      },
+      {
+        "name": "c0",
+        "offset": 25416,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 25900
+      },
+      {
+        "name": "h0",
+        "offset": 25900,
+        "count": 1,
+        "size": 460,
+        "stride": 460,
+        "alignment": 4,
+        "extent": 460,
+        "end": 26360
+      },
+      {
+        "name": "r0",
+        "offset": 26360,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 26844
+      },
+      {
+        "name": "r1",
+        "offset": 26844,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 27328
+      },
+      {
+        "name": "h1",
+        "offset": 27328,
+        "count": 1,
+        "size": 460,
+        "stride": 460,
+        "alignment": 4,
+        "extent": 460,
+        "end": 27788
+      },
+      {
+        "name": "control",
+        "offset": 27792,
+        "count": 1,
+        "size": 4200,
+        "stride": 4200,
+        "alignment": 8,
+        "extent": 4200,
+        "end": 31992
+      },
+      {
+        "name": "used",
+        "offset": 31992,
+        "count": 1,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1,
+        "end": 31993
+      }
+    ],
+    "cursor": 31993,
+    "maximumAlignment": 8,
+    "slotBytes": 32000,
+    "totalBytes": 128000,
+    "retained_slot_bytes": 32000,
+    "retained_bytes": 128000,
+    "retained_surplus": 0
+  },
+  "path_frames": [
+    [
+      3828,
+      2008
+    ],
+    [
+      3824,
+      10032
+    ],
+    [
+      3812,
+      19072
+    ],
+    [
+      3804,
+      8960
+    ],
+    [
+      3707,
+      4448
+    ],
+    [
+      3691,
+      22664
+    ],
+    [
+      3619,
+      144
+    ],
+    [
+      7149,
+      7896
+    ]
+  ],
+  "path_lower_bound": 75224,
+  "main_stack_limit": 27648,
+  "fit": "FAIL by reachable lower bound",
+  "historical_reported_subpath_lower_bound": 114464,
+  "comparison_limit": "Different extracted subpath boundaries; not a measured whole-workload saving. Root and reuse-orchestrator frames can be compared individually.",
+  "root_frame_old_new": [
+    30096,
+    128
+  ],
+  "reuse_orchestrator_frame_old_new": [
+    66616,
+    4448
+  ],
+  "copied_state_observation": {
+    "section": 3691,
+    "length_setup_offset": "0x168",
+    "bytes": 3889,
+    "memcpy_call_offset": "0x174",
+    "observe_model_value_call_offset": "0x178",
+    "meaning": "One explicit caller temporary before the existing borrowed state observation; static sample, not an allocation or exhaustive copy count."
+  }
+}

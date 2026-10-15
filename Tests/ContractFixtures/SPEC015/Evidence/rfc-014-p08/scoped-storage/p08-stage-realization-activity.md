@@ -1,11 +1,17 @@
 # P08 stage realization — grouped design/correction activity
 
-Status: **correction 1/2 independent SOURCE PASS; affected rerun pending**.
+Status: **correction 1 screen compiler/layout PASS; measured stack fit FAIL**.
+The [actual object screen result](p08-stage-realization-cycle1-screen-result.md)
+proves a required 75,224-byte nested lower bound against 27,648. Root/reuse
+orchestrator frames improve; live phase homes and whole-state observation
+temporaries remain. One concrete final correction is proposed for independent
+approach review; no second correction source or run exists.
 [Focused independent review](p08-stage-realization-cycle1-independent-source-review.md)
 verifies the complete five-site borrowed-capture correction at `a72f0943`.
 The [correction and immutable failure packet](p08-stage-realization-cycle1-source-freeze.md)
 preserve 23 preparation passes, the borrowed-baseline autoclosure diagnostics,
-blocked layout and 202 not-run controls. Corrected source has not been executed.
+blocked layout and 202 not-run controls. Correction 1's subsequent screen passes
+25 checks with 202 not run; partial collection remains incomplete.
 [Independent source review](p08-stage-realization-independent-source-review.md)
 permitted the initial registered screen under this activity; no fit result exists.
 [Independent design review](p08-stage-realization-independent-design-review.md)
@@ -21,7 +27,8 @@ source candidate with independent design/source review and early registered nRF
 screen, plus **at most two cause-grouped corrective cycles**. Stop after two
 consecutive unproductive corrections. Mechanical source-review fixes are grouped
 within the applicable correction cycle, not new user micro-approval barriers.
-Current corrective cycles: **1/2 consumed**, productivity pending the affected run.
+Current corrective cycles: **1/2 consumed**, productive compiler correction;
+one correction remains. The two-consecutive-unproductive guard remains.
 Design review passed; initial source is frozen
 under this authorization. No compiler/build, runtime, screen or hardware run
 precedes independent source review; no routine permission request is required.
@@ -57,7 +64,7 @@ implemented in the [initial source freeze](p08-stage-realization-source-freeze.m
 after independent design PASS `d7df2c80`. The registered initial nRF module/layout
 screen precedes expensive validation and rejects any oversized reachable lower
 bound. The initial screen then failed compilation as recorded above; correction
-**1/2** is now frozen, with no corrected-source run, fit or acceptance result.
+**1/2** now compiles and measures layout, but fails the actual object stack check.
 Compiler-free qualification/hash/static coverage, formatter, governance, links
-and whitespace checks pass. Only the preserved initial screen has executed;
-no additional compiler, suite, build, runtime or image call accompanied correction 1.
+and whitespace checks pass. The initial screen and correction-1 affected screen
+are preserved; no full collection, runtime or image followed the oversized bound.
