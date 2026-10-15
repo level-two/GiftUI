@@ -1,6 +1,8 @@
 # P08 control-resident package — final compilation boundary
 
-**STOP: correction 2/2 consumed; source compilation blocked.** The final focused
+**STOP: correction 2/2 consumed; source compilation blocked.**
+[Independent final verification](p08-control-resident-final-independent-review.md)
+confirms the diagnostic cause, truthful receipt and exhausted-budget boundary. The final focused
 measurement ran at `37ba818a` (source `999de5f9`), exited 1, and produced 23 passed
 preparation checks, one failed counter module, one blocked layout check and 202
 not-run compiler controls. `fresh_focused=true`; `focused_passed`,

@@ -1,6 +1,8 @@
 # P08 control-resident runtime payload implementation
 
 Current boundary: **STOP — final correction 2/2 consumed; actual source compilation blocked**.
+[Independent final review](p08-control-resident-final-independent-review.md)
+verifies this stop and the single unapplied mechanical follow-up decision.
 [Final result and minimal unapplied follow-up](p08-control-resident-final-result.md)
 preserve the final measurement at `37ba818a`: 23 preparation passes, counter-model
 failed, layout blocked and 202 controls not-run. Two borrowed-self helpers read
