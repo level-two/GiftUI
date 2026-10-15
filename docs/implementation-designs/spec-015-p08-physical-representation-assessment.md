@@ -1,6 +1,9 @@
 # P08 physical representation and ownership assessment
 
-Status: **assessment / proposed internal realization; no source candidate executed**.
+Status: **measured assessment independently PASS; proposed source design requires G01–G03 completion**.
+[Independent assessment review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-physical-representation-independent-assessment-review.md)
+identifies exact callback-exclusivity, slot ownership/reset and physical/observation
+proofs before source work. No source candidate executed.
 Authority is accepted ADR-039 and implementing SPEC-011/013/015, not this note.
 The [assessment activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-physical-representation-assessment-activity.md)
 records authorization. The preceding implementation allowance remains closed at

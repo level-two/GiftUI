@@ -1,6 +1,9 @@
 # P08 physical representation / ownership assessment
 
-**Assessment complete, awaiting independent review; no source candidate or repair allowance.** Entry
+**Measured assessment independently PASS; concrete source design needs G01–G03 completion.**
+[Independent review](p08-physical-representation-independent-assessment-review.md)
+bundles the field/callback seam, ownership/reset and physical/observation gaps.
+Complete those within this assessment before source; no repair allowance. Entry
 `2b0c2de4`. Eugene's **“Please proceed”** authorizes the recommended bounded
 physical-representation/ownership-contract assessment after the independently
 confirmed [final typed-stage rejection](p08-stage-realization-final-result.md).
