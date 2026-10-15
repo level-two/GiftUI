@@ -1,0 +1,364 @@
+// Diagnostic-only scalar facts. No objects are constructed, linked or executed.
+// This suffix is appended ONLY to a temporary copy of the frozen source.
+#if hasFeature(Embedded)
+@_cdecl("giftui_p08_assess_host_size")
+@inline(__always)
+func p08Assessment0_size() -> UInt32 { UInt32(MemoryLayout<P08StaticHost>.size) }
+@_cdecl("giftui_p08_assess_host_stride")
+@inline(__always)
+func p08Assessment0_stride() -> UInt32 { UInt32(MemoryLayout<P08StaticHost>.stride) }
+@_cdecl("giftui_p08_assess_host_alignment")
+@inline(__always)
+func p08Assessment0_alignment() -> UInt32 { UInt32(MemoryLayout<P08StaticHost>.alignment) }
+@_cdecl("giftui_p08_assess_host_optional_size")
+@inline(__always)
+func p08Assessment1_size() -> UInt32 { UInt32(MemoryLayout<P08StaticHost?>.size) }
+@_cdecl("giftui_p08_assess_host_optional_stride")
+@inline(__always)
+func p08Assessment1_stride() -> UInt32 { UInt32(MemoryLayout<P08StaticHost?>.stride) }
+@_cdecl("giftui_p08_assess_host_optional_alignment")
+@inline(__always)
+func p08Assessment1_alignment() -> UInt32 { UInt32(MemoryLayout<P08StaticHost?>.alignment) }
+@_cdecl("giftui_p08_assess_owner_size")
+@inline(__always)
+func p08Assessment2_size() -> UInt32 { UInt32(MemoryLayout<P08StaticHostOwner>.size) }
+@_cdecl("giftui_p08_assess_owner_stride")
+@inline(__always)
+func p08Assessment2_stride() -> UInt32 { UInt32(MemoryLayout<P08StaticHostOwner>.stride) }
+@_cdecl("giftui_p08_assess_owner_alignment")
+@inline(__always)
+func p08Assessment2_alignment() -> UInt32 { UInt32(MemoryLayout<P08StaticHostOwner>.alignment) }
+@_cdecl("giftui_p08_assess_state_size")
+@inline(__always)
+func p08Assessment3_size() -> UInt32 { UInt32(MemoryLayout<CounterHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>.size) }
+@_cdecl("giftui_p08_assess_state_stride")
+@inline(__always)
+func p08Assessment3_stride() -> UInt32 { UInt32(MemoryLayout<CounterHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>.stride) }
+@_cdecl("giftui_p08_assess_state_alignment")
+@inline(__always)
+func p08Assessment3_alignment() -> UInt32 { UInt32(MemoryLayout<CounterHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>.alignment) }
+@_cdecl("giftui_p08_assess_coordinator_size")
+@inline(__always)
+func p08Assessment4_size() -> UInt32 { UInt32(MemoryLayout<CounterHostCoordinator<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>.size) }
+@_cdecl("giftui_p08_assess_coordinator_stride")
+@inline(__always)
+func p08Assessment4_stride() -> UInt32 { UInt32(MemoryLayout<CounterHostCoordinator<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>.stride) }
+@_cdecl("giftui_p08_assess_coordinator_alignment")
+@inline(__always)
+func p08Assessment4_alignment() -> UInt32 { UInt32(MemoryLayout<CounterHostCoordinator<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>.alignment) }
+@_cdecl("giftui_p08_assess_pipeline_size")
+@inline(__always)
+func p08Assessment5_size() -> UInt32 { UInt32(MemoryLayout<CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>.size) }
+@_cdecl("giftui_p08_assess_pipeline_stride")
+@inline(__always)
+func p08Assessment5_stride() -> UInt32 { UInt32(MemoryLayout<CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>.stride) }
+@_cdecl("giftui_p08_assess_pipeline_alignment")
+@inline(__always)
+func p08Assessment5_alignment() -> UInt32 { UInt32(MemoryLayout<CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>.alignment) }
+@_cdecl("giftui_p08_assess_supplied_size")
+@inline(__always)
+func p08Assessment6_size() -> UInt32 { UInt32(MemoryLayout<P08StaticSupplied>.size) }
+@_cdecl("giftui_p08_assess_supplied_stride")
+@inline(__always)
+func p08Assessment6_stride() -> UInt32 { UInt32(MemoryLayout<P08StaticSupplied>.stride) }
+@_cdecl("giftui_p08_assess_supplied_alignment")
+@inline(__always)
+func p08Assessment6_alignment() -> UInt32 { UInt32(MemoryLayout<P08StaticSupplied>.alignment) }
+@_cdecl("giftui_p08_assess_retired_size")
+@inline(__always)
+func p08Assessment7_size() -> UInt32 { UInt32(MemoryLayout<P08Retired>.size) }
+@_cdecl("giftui_p08_assess_retired_stride")
+@inline(__always)
+func p08Assessment7_stride() -> UInt32 { UInt32(MemoryLayout<P08Retired>.stride) }
+@_cdecl("giftui_p08_assess_retired_alignment")
+@inline(__always)
+func p08Assessment7_alignment() -> UInt32 { UInt32(MemoryLayout<P08Retired>.alignment) }
+@_cdecl("giftui_p08_assess_assembly_size")
+@inline(__always)
+func p08Assessment8_size() -> UInt32 { UInt32(MemoryLayout<CounterHostAssembly>.size) }
+@_cdecl("giftui_p08_assess_assembly_stride")
+@inline(__always)
+func p08Assessment8_stride() -> UInt32 { UInt32(MemoryLayout<CounterHostAssembly>.stride) }
+@_cdecl("giftui_p08_assess_assembly_alignment")
+@inline(__always)
+func p08Assessment8_alignment() -> UInt32 { UInt32(MemoryLayout<CounterHostAssembly>.alignment) }
+@_cdecl("giftui_p08_assess_assembly_report_size")
+@inline(__always)
+func p08Assessment9_size() -> UInt32 { UInt32(MemoryLayout<HostAssemblyReport>.size) }
+@_cdecl("giftui_p08_assess_assembly_report_stride")
+@inline(__always)
+func p08Assessment9_stride() -> UInt32 { UInt32(MemoryLayout<HostAssemblyReport>.stride) }
+@_cdecl("giftui_p08_assess_assembly_report_alignment")
+@inline(__always)
+func p08Assessment9_alignment() -> UInt32 { UInt32(MemoryLayout<HostAssemblyReport>.alignment) }
+@_cdecl("giftui_p08_assess_endpoint_configuration_size")
+@inline(__always)
+func p08Assessment10_size() -> UInt32 { UInt32(MemoryLayout<HostEndpointConfiguration>.size) }
+@_cdecl("giftui_p08_assess_endpoint_configuration_stride")
+@inline(__always)
+func p08Assessment10_stride() -> UInt32 { UInt32(MemoryLayout<HostEndpointConfiguration>.stride) }
+@_cdecl("giftui_p08_assess_endpoint_configuration_alignment")
+@inline(__always)
+func p08Assessment10_alignment() -> UInt32 { UInt32(MemoryLayout<HostEndpointConfiguration>.alignment) }
+@_cdecl("giftui_p08_assess_validation_ledger_size")
+@inline(__always)
+func p08Assessment11_size() -> UInt32 { UInt32(MemoryLayout<HostValidationAccessLedger>.size) }
+@_cdecl("giftui_p08_assess_validation_ledger_stride")
+@inline(__always)
+func p08Assessment11_stride() -> UInt32 { UInt32(MemoryLayout<HostValidationAccessLedger>.stride) }
+@_cdecl("giftui_p08_assess_validation_ledger_alignment")
+@inline(__always)
+func p08Assessment11_alignment() -> UInt32 { UInt32(MemoryLayout<HostValidationAccessLedger>.alignment) }
+@_cdecl("giftui_p08_assess_application_size")
+@inline(__always)
+func p08Assessment12_size() -> UInt32 { UInt32(MemoryLayout<CounterApplicationOwners>.size) }
+@_cdecl("giftui_p08_assess_application_stride")
+@inline(__always)
+func p08Assessment12_stride() -> UInt32 { UInt32(MemoryLayout<CounterApplicationOwners>.stride) }
+@_cdecl("giftui_p08_assess_application_alignment")
+@inline(__always)
+func p08Assessment12_alignment() -> UInt32 { UInt32(MemoryLayout<CounterApplicationOwners>.alignment) }
+@_cdecl("giftui_p08_assess_binding_size")
+@inline(__always)
+func p08Assessment13_size() -> UInt32 { UInt32(MemoryLayout<CounterExecutionBinding>.size) }
+@_cdecl("giftui_p08_assess_binding_stride")
+@inline(__always)
+func p08Assessment13_stride() -> UInt32 { UInt32(MemoryLayout<CounterExecutionBinding>.stride) }
+@_cdecl("giftui_p08_assess_binding_alignment")
+@inline(__always)
+func p08Assessment13_alignment() -> UInt32 { UInt32(MemoryLayout<CounterExecutionBinding>.alignment) }
+@_cdecl("giftui_p08_assess_admission_size")
+@inline(__always)
+func p08Assessment14_size() -> UInt32 { UInt32(MemoryLayout<CounterAdmission>.size) }
+@_cdecl("giftui_p08_assess_admission_stride")
+@inline(__always)
+func p08Assessment14_stride() -> UInt32 { UInt32(MemoryLayout<CounterAdmission>.stride) }
+@_cdecl("giftui_p08_assess_admission_alignment")
+@inline(__always)
+func p08Assessment14_alignment() -> UInt32 { UInt32(MemoryLayout<CounterAdmission>.alignment) }
+@_cdecl("giftui_p08_assess_geometry_size")
+@inline(__always)
+func p08Assessment15_size() -> UInt32 { UInt32(MemoryLayout<P08GeometryAccess>.size) }
+@_cdecl("giftui_p08_assess_geometry_stride")
+@inline(__always)
+func p08Assessment15_stride() -> UInt32 { UInt32(MemoryLayout<P08GeometryAccess>.stride) }
+@_cdecl("giftui_p08_assess_geometry_alignment")
+@inline(__always)
+func p08Assessment15_alignment() -> UInt32 { UInt32(MemoryLayout<P08GeometryAccess>.alignment) }
+@_cdecl("giftui_p08_assess_candidate_size")
+@inline(__always)
+func p08Assessment16_size() -> UInt32 { UInt32(MemoryLayout<P08CandidateAccess>.size) }
+@_cdecl("giftui_p08_assess_candidate_stride")
+@inline(__always)
+func p08Assessment16_stride() -> UInt32 { UInt32(MemoryLayout<P08CandidateAccess>.stride) }
+@_cdecl("giftui_p08_assess_candidate_alignment")
+@inline(__always)
+func p08Assessment16_alignment() -> UInt32 { UInt32(MemoryLayout<P08CandidateAccess>.alignment) }
+@_cdecl("giftui_p08_assess_committed_size")
+@inline(__always)
+func p08Assessment17_size() -> UInt32 { UInt32(MemoryLayout<P08CommittedAccess>.size) }
+@_cdecl("giftui_p08_assess_committed_stride")
+@inline(__always)
+func p08Assessment17_stride() -> UInt32 { UInt32(MemoryLayout<P08CommittedAccess>.stride) }
+@_cdecl("giftui_p08_assess_committed_alignment")
+@inline(__always)
+func p08Assessment17_alignment() -> UInt32 { UInt32(MemoryLayout<P08CommittedAccess>.alignment) }
+@_cdecl("giftui_p08_assess_hits_size")
+@inline(__always)
+func p08Assessment18_size() -> UInt32 { UInt32(MemoryLayout<P08HitAccess>.size) }
+@_cdecl("giftui_p08_assess_hits_stride")
+@inline(__always)
+func p08Assessment18_stride() -> UInt32 { UInt32(MemoryLayout<P08HitAccess>.stride) }
+@_cdecl("giftui_p08_assess_hits_alignment")
+@inline(__always)
+func p08Assessment18_alignment() -> UInt32 { UInt32(MemoryLayout<P08HitAccess>.alignment) }
+@_cdecl("giftui_p08_assess_interaction_size")
+@inline(__always)
+func p08Assessment19_size() -> UInt32 { UInt32(MemoryLayout<P08ScopedKeys>.size) }
+@_cdecl("giftui_p08_assess_interaction_stride")
+@inline(__always)
+func p08Assessment19_stride() -> UInt32 { UInt32(MemoryLayout<P08ScopedKeys>.stride) }
+@_cdecl("giftui_p08_assess_interaction_alignment")
+@inline(__always)
+func p08Assessment19_alignment() -> UInt32 { UInt32(MemoryLayout<P08ScopedKeys>.alignment) }
+@_cdecl("giftui_p08_assess_session_size")
+@inline(__always)
+func p08Assessment20_size() -> UInt32 { UInt32(MemoryLayout<P08StorageSession>.size) }
+@_cdecl("giftui_p08_assess_session_stride")
+@inline(__always)
+func p08Assessment20_stride() -> UInt32 { UInt32(MemoryLayout<P08StorageSession>.stride) }
+@_cdecl("giftui_p08_assess_session_alignment")
+@inline(__always)
+func p08Assessment20_alignment() -> UInt32 { UInt32(MemoryLayout<P08StorageSession>.alignment) }
+@_cdecl("giftui_p08_assess_session_lifetime_size")
+@inline(__always)
+func p08Assessment21_size() -> UInt32 { UInt32(MemoryLayout<P08SessionLifetime>.size) }
+@_cdecl("giftui_p08_assess_session_lifetime_stride")
+@inline(__always)
+func p08Assessment21_stride() -> UInt32 { UInt32(MemoryLayout<P08SessionLifetime>.stride) }
+@_cdecl("giftui_p08_assess_session_lifetime_alignment")
+@inline(__always)
+func p08Assessment21_alignment() -> UInt32 { UInt32(MemoryLayout<P08SessionLifetime>.alignment) }
+@_cdecl("giftui_p08_assess_models_size")
+@inline(__always)
+func p08Assessment22_size() -> UInt32 { UInt32(MemoryLayout<ObservableModelScope<CounterOwnedModel, CounterModelSchema>>.size) }
+@_cdecl("giftui_p08_assess_models_stride")
+@inline(__always)
+func p08Assessment22_stride() -> UInt32 { UInt32(MemoryLayout<ObservableModelScope<CounterOwnedModel, CounterModelSchema>>.stride) }
+@_cdecl("giftui_p08_assess_models_alignment")
+@inline(__always)
+func p08Assessment22_alignment() -> UInt32 { UInt32(MemoryLayout<ObservableModelScope<CounterOwnedModel, CounterModelSchema>>.alignment) }
+@_cdecl("giftui_p08_assess_root_size")
+@inline(__always)
+func p08Assessment23_size() -> UInt32 { UInt32(MemoryLayout<ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>>.size) }
+@_cdecl("giftui_p08_assess_root_stride")
+@inline(__always)
+func p08Assessment23_stride() -> UInt32 { UInt32(MemoryLayout<ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>>.stride) }
+@_cdecl("giftui_p08_assess_root_alignment")
+@inline(__always)
+func p08Assessment23_alignment() -> UInt32 { UInt32(MemoryLayout<ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>>.alignment) }
+@_cdecl("giftui_p08_assess_semantic_size")
+@inline(__always)
+func p08Assessment24_size() -> UInt32 { UInt32(MemoryLayout<SemanticRecordStore<CounterPayload>>.size) }
+@_cdecl("giftui_p08_assess_semantic_stride")
+@inline(__always)
+func p08Assessment24_stride() -> UInt32 { UInt32(MemoryLayout<SemanticRecordStore<CounterPayload>>.stride) }
+@_cdecl("giftui_p08_assess_semantic_alignment")
+@inline(__always)
+func p08Assessment24_alignment() -> UInt32 { UInt32(MemoryLayout<SemanticRecordStore<CounterPayload>>.alignment) }
+@_cdecl("giftui_p08_assess_values_size")
+@inline(__always)
+func p08Assessment25_size() -> UInt32 { UInt32(MemoryLayout<CanvasStagedValues<SemanticRecordReference, CounterValueTable>>.size) }
+@_cdecl("giftui_p08_assess_values_stride")
+@inline(__always)
+func p08Assessment25_stride() -> UInt32 { UInt32(MemoryLayout<CanvasStagedValues<SemanticRecordReference, CounterValueTable>>.stride) }
+@_cdecl("giftui_p08_assess_values_alignment")
+@inline(__always)
+func p08Assessment25_alignment() -> UInt32 { UInt32(MemoryLayout<CanvasStagedValues<SemanticRecordReference, CounterValueTable>>.alignment) }
+@_cdecl("giftui_p08_assess_audit_size")
+@inline(__always)
+func p08Assessment26_size() -> UInt32 { UInt32(MemoryLayout<RuntimeStorageAudit>.size) }
+@_cdecl("giftui_p08_assess_audit_stride")
+@inline(__always)
+func p08Assessment26_stride() -> UInt32 { UInt32(MemoryLayout<RuntimeStorageAudit>.stride) }
+@_cdecl("giftui_p08_assess_audit_alignment")
+@inline(__always)
+func p08Assessment26_alignment() -> UInt32 { UInt32(MemoryLayout<RuntimeStorageAudit>.alignment) }
+@_cdecl("giftui_p08_assess_limits_size")
+@inline(__always)
+func p08Assessment27_size() -> UInt32 { UInt32(MemoryLayout<RuntimeProfileLimits>.size) }
+@_cdecl("giftui_p08_assess_limits_stride")
+@inline(__always)
+func p08Assessment27_stride() -> UInt32 { UInt32(MemoryLayout<RuntimeProfileLimits>.stride) }
+@_cdecl("giftui_p08_assess_limits_alignment")
+@inline(__always)
+func p08Assessment27_alignment() -> UInt32 { UInt32(MemoryLayout<RuntimeProfileLimits>.alignment) }
+@_cdecl("giftui_p08_assess_endpoint_size")
+@inline(__always)
+func p08Assessment28_size() -> UInt32 { UInt32(MemoryLayout<CounterEndpoint>.size) }
+@_cdecl("giftui_p08_assess_endpoint_stride")
+@inline(__always)
+func p08Assessment28_stride() -> UInt32 { UInt32(MemoryLayout<CounterEndpoint>.stride) }
+@_cdecl("giftui_p08_assess_endpoint_alignment")
+@inline(__always)
+func p08Assessment28_alignment() -> UInt32 { UInt32(MemoryLayout<CounterEndpoint>.alignment) }
+@_cdecl("giftui_p08_assess_endpoint_actual_size")
+@inline(__always)
+func p08Assessment29_size() -> UInt32 { UInt32(MemoryLayout<CounterTiledEndpoint>.size) }
+@_cdecl("giftui_p08_assess_endpoint_actual_stride")
+@inline(__always)
+func p08Assessment29_stride() -> UInt32 { UInt32(MemoryLayout<CounterTiledEndpoint>.stride) }
+@_cdecl("giftui_p08_assess_endpoint_actual_alignment")
+@inline(__always)
+func p08Assessment29_alignment() -> UInt32 { UInt32(MemoryLayout<CounterTiledEndpoint>.alignment) }
+@_cdecl("giftui_p08_assess_raster_adapter_size")
+@inline(__always)
+func p08Assessment30_size() -> UInt32 { UInt32(MemoryLayout<CounterTiledRasterAdapter>.size) }
+@_cdecl("giftui_p08_assess_raster_adapter_stride")
+@inline(__always)
+func p08Assessment30_stride() -> UInt32 { UInt32(MemoryLayout<CounterTiledRasterAdapter>.stride) }
+@_cdecl("giftui_p08_assess_raster_adapter_alignment")
+@inline(__always)
+func p08Assessment30_alignment() -> UInt32 { UInt32(MemoryLayout<CounterTiledRasterAdapter>.alignment) }
+@_cdecl("giftui_p08_assess_raster_session_size")
+@inline(__always)
+func p08Assessment31_size() -> UInt32 { UInt32(MemoryLayout<CounterTiledSession>.size) }
+@_cdecl("giftui_p08_assess_raster_session_stride")
+@inline(__always)
+func p08Assessment31_stride() -> UInt32 { UInt32(MemoryLayout<CounterTiledSession>.stride) }
+@_cdecl("giftui_p08_assess_raster_session_alignment")
+@inline(__always)
+func p08Assessment31_alignment() -> UInt32 { UInt32(MemoryLayout<CounterTiledSession>.alignment) }
+@_cdecl("giftui_p08_assess_recording_size")
+@inline(__always)
+func p08Assessment32_size() -> UInt32 { UInt32(MemoryLayout<CounterRenderSink>.size) }
+@_cdecl("giftui_p08_assess_recording_stride")
+@inline(__always)
+func p08Assessment32_stride() -> UInt32 { UInt32(MemoryLayout<CounterRenderSink>.stride) }
+@_cdecl("giftui_p08_assess_recording_alignment")
+@inline(__always)
+func p08Assessment32_alignment() -> UInt32 { UInt32(MemoryLayout<CounterRenderSink>.alignment) }
+@_cdecl("giftui_p08_assess_identity_size")
+@inline(__always)
+func p08Assessment33_size() -> UInt32 { UInt32(MemoryLayout<SemanticCompleteIdentity>.size) }
+@_cdecl("giftui_p08_assess_identity_stride")
+@inline(__always)
+func p08Assessment33_stride() -> UInt32 { UInt32(MemoryLayout<SemanticCompleteIdentity>.stride) }
+@_cdecl("giftui_p08_assess_identity_alignment")
+@inline(__always)
+func p08Assessment33_alignment() -> UInt32 { UInt32(MemoryLayout<SemanticCompleteIdentity>.alignment) }
+@_cdecl("giftui_p08_assess_optional_identity_size")
+@inline(__always)
+func p08Assessment34_size() -> UInt32 { UInt32(MemoryLayout<SemanticCompleteIdentity?>.size) }
+@_cdecl("giftui_p08_assess_optional_identity_stride")
+@inline(__always)
+func p08Assessment34_stride() -> UInt32 { UInt32(MemoryLayout<SemanticCompleteIdentity?>.stride) }
+@_cdecl("giftui_p08_assess_optional_identity_alignment")
+@inline(__always)
+func p08Assessment34_alignment() -> UInt32 { UInt32(MemoryLayout<SemanticCompleteIdentity?>.alignment) }
+@_cdecl("giftui_p08_assess_path_component_size")
+@inline(__always)
+func p08Assessment35_size() -> UInt32 { UInt32(MemoryLayout<SemanticPathComponent>.size) }
+@_cdecl("giftui_p08_assess_path_component_stride")
+@inline(__always)
+func p08Assessment35_stride() -> UInt32 { UInt32(MemoryLayout<SemanticPathComponent>.stride) }
+@_cdecl("giftui_p08_assess_path_component_alignment")
+@inline(__always)
+func p08Assessment35_alignment() -> UInt32 { UInt32(MemoryLayout<SemanticPathComponent>.alignment) }
+@_cdecl("giftui_p08_assess_glyph_size")
+@inline(__always)
+func p08Assessment36_size() -> UInt32 { UInt32(MemoryLayout<PositionedGlyph>.size) }
+@_cdecl("giftui_p08_assess_glyph_stride")
+@inline(__always)
+func p08Assessment36_stride() -> UInt32 { UInt32(MemoryLayout<PositionedGlyph>.stride) }
+@_cdecl("giftui_p08_assess_glyph_alignment")
+@inline(__always)
+func p08Assessment36_alignment() -> UInt32 { UInt32(MemoryLayout<PositionedGlyph>.alignment) }
+@_cdecl("giftui_p08_assess_optional_glyph_size")
+@inline(__always)
+func p08Assessment37_size() -> UInt32 { UInt32(MemoryLayout<PositionedGlyph?>.size) }
+@_cdecl("giftui_p08_assess_optional_glyph_stride")
+@inline(__always)
+func p08Assessment37_stride() -> UInt32 { UInt32(MemoryLayout<PositionedGlyph?>.stride) }
+@_cdecl("giftui_p08_assess_optional_glyph_alignment")
+@inline(__always)
+func p08Assessment37_alignment() -> UInt32 { UInt32(MemoryLayout<PositionedGlyph?>.alignment) }
+@_cdecl("giftui_p08_assess_fingerprint_size")
+@inline(__always)
+func p08Assessment38_size() -> UInt32 { UInt32(MemoryLayout<P08ReuseFingerprint>.size) }
+@_cdecl("giftui_p08_assess_fingerprint_stride")
+@inline(__always)
+func p08Assessment38_stride() -> UInt32 { UInt32(MemoryLayout<P08ReuseFingerprint>.stride) }
+@_cdecl("giftui_p08_assess_fingerprint_alignment")
+@inline(__always)
+func p08Assessment38_alignment() -> UInt32 { UInt32(MemoryLayout<P08ReuseFingerprint>.alignment) }
+@_cdecl("giftui_p08_assess_control_size")
+@inline(__always)
+func p08Assessment39_size() -> UInt32 { UInt32(MemoryLayout<CounterControl>.size) }
+@_cdecl("giftui_p08_assess_control_stride")
+@inline(__always)
+func p08Assessment39_stride() -> UInt32 { UInt32(MemoryLayout<CounterControl>.stride) }
+@_cdecl("giftui_p08_assess_control_alignment")
+@inline(__always)
+func p08Assessment39_alignment() -> UInt32 { UInt32(MemoryLayout<CounterControl>.alignment) }
+#endif

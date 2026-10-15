@@ -1,0 +1,602 @@
+{
+  "giftui_p08_assess_host_size": {
+    "type": "P08StaticHost",
+    "fact": "size",
+    "label": "host"
+  },
+  "giftui_p08_assess_host_stride": {
+    "type": "P08StaticHost",
+    "fact": "stride",
+    "label": "host"
+  },
+  "giftui_p08_assess_host_alignment": {
+    "type": "P08StaticHost",
+    "fact": "alignment",
+    "label": "host"
+  },
+  "giftui_p08_assess_host_optional_size": {
+    "type": "P08StaticHost?",
+    "fact": "size",
+    "label": "host_optional"
+  },
+  "giftui_p08_assess_host_optional_stride": {
+    "type": "P08StaticHost?",
+    "fact": "stride",
+    "label": "host_optional"
+  },
+  "giftui_p08_assess_host_optional_alignment": {
+    "type": "P08StaticHost?",
+    "fact": "alignment",
+    "label": "host_optional"
+  },
+  "giftui_p08_assess_owner_size": {
+    "type": "P08StaticHostOwner",
+    "fact": "size",
+    "label": "owner"
+  },
+  "giftui_p08_assess_owner_stride": {
+    "type": "P08StaticHostOwner",
+    "fact": "stride",
+    "label": "owner"
+  },
+  "giftui_p08_assess_owner_alignment": {
+    "type": "P08StaticHostOwner",
+    "fact": "alignment",
+    "label": "owner"
+  },
+  "giftui_p08_assess_state_size": {
+    "type": "CounterHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>",
+    "fact": "size",
+    "label": "state"
+  },
+  "giftui_p08_assess_state_stride": {
+    "type": "CounterHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>",
+    "fact": "stride",
+    "label": "state"
+  },
+  "giftui_p08_assess_state_alignment": {
+    "type": "CounterHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>",
+    "fact": "alignment",
+    "label": "state"
+  },
+  "giftui_p08_assess_coordinator_size": {
+    "type": "CounterHostCoordinator<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>",
+    "fact": "size",
+    "label": "coordinator"
+  },
+  "giftui_p08_assess_coordinator_stride": {
+    "type": "CounterHostCoordinator<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>",
+    "fact": "stride",
+    "label": "coordinator"
+  },
+  "giftui_p08_assess_coordinator_alignment": {
+    "type": "CounterHostCoordinator<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>",
+    "fact": "alignment",
+    "label": "coordinator"
+  },
+  "giftui_p08_assess_pipeline_size": {
+    "type": "CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>",
+    "fact": "size",
+    "label": "pipeline"
+  },
+  "giftui_p08_assess_pipeline_stride": {
+    "type": "CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>",
+    "fact": "stride",
+    "label": "pipeline"
+  },
+  "giftui_p08_assess_pipeline_alignment": {
+    "type": "CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>",
+    "fact": "alignment",
+    "label": "pipeline"
+  },
+  "giftui_p08_assess_supplied_size": {
+    "type": "P08StaticSupplied",
+    "fact": "size",
+    "label": "supplied"
+  },
+  "giftui_p08_assess_supplied_stride": {
+    "type": "P08StaticSupplied",
+    "fact": "stride",
+    "label": "supplied"
+  },
+  "giftui_p08_assess_supplied_alignment": {
+    "type": "P08StaticSupplied",
+    "fact": "alignment",
+    "label": "supplied"
+  },
+  "giftui_p08_assess_retired_size": {
+    "type": "P08Retired",
+    "fact": "size",
+    "label": "retired"
+  },
+  "giftui_p08_assess_retired_stride": {
+    "type": "P08Retired",
+    "fact": "stride",
+    "label": "retired"
+  },
+  "giftui_p08_assess_retired_alignment": {
+    "type": "P08Retired",
+    "fact": "alignment",
+    "label": "retired"
+  },
+  "giftui_p08_assess_assembly_size": {
+    "type": "CounterHostAssembly",
+    "fact": "size",
+    "label": "assembly"
+  },
+  "giftui_p08_assess_assembly_stride": {
+    "type": "CounterHostAssembly",
+    "fact": "stride",
+    "label": "assembly"
+  },
+  "giftui_p08_assess_assembly_alignment": {
+    "type": "CounterHostAssembly",
+    "fact": "alignment",
+    "label": "assembly"
+  },
+  "giftui_p08_assess_assembly_report_size": {
+    "type": "HostAssemblyReport",
+    "fact": "size",
+    "label": "assembly_report"
+  },
+  "giftui_p08_assess_assembly_report_stride": {
+    "type": "HostAssemblyReport",
+    "fact": "stride",
+    "label": "assembly_report"
+  },
+  "giftui_p08_assess_assembly_report_alignment": {
+    "type": "HostAssemblyReport",
+    "fact": "alignment",
+    "label": "assembly_report"
+  },
+  "giftui_p08_assess_endpoint_configuration_size": {
+    "type": "HostEndpointConfiguration",
+    "fact": "size",
+    "label": "endpoint_configuration"
+  },
+  "giftui_p08_assess_endpoint_configuration_stride": {
+    "type": "HostEndpointConfiguration",
+    "fact": "stride",
+    "label": "endpoint_configuration"
+  },
+  "giftui_p08_assess_endpoint_configuration_alignment": {
+    "type": "HostEndpointConfiguration",
+    "fact": "alignment",
+    "label": "endpoint_configuration"
+  },
+  "giftui_p08_assess_validation_ledger_size": {
+    "type": "HostValidationAccessLedger",
+    "fact": "size",
+    "label": "validation_ledger"
+  },
+  "giftui_p08_assess_validation_ledger_stride": {
+    "type": "HostValidationAccessLedger",
+    "fact": "stride",
+    "label": "validation_ledger"
+  },
+  "giftui_p08_assess_validation_ledger_alignment": {
+    "type": "HostValidationAccessLedger",
+    "fact": "alignment",
+    "label": "validation_ledger"
+  },
+  "giftui_p08_assess_application_size": {
+    "type": "CounterApplicationOwners",
+    "fact": "size",
+    "label": "application"
+  },
+  "giftui_p08_assess_application_stride": {
+    "type": "CounterApplicationOwners",
+    "fact": "stride",
+    "label": "application"
+  },
+  "giftui_p08_assess_application_alignment": {
+    "type": "CounterApplicationOwners",
+    "fact": "alignment",
+    "label": "application"
+  },
+  "giftui_p08_assess_binding_size": {
+    "type": "CounterExecutionBinding",
+    "fact": "size",
+    "label": "binding"
+  },
+  "giftui_p08_assess_binding_stride": {
+    "type": "CounterExecutionBinding",
+    "fact": "stride",
+    "label": "binding"
+  },
+  "giftui_p08_assess_binding_alignment": {
+    "type": "CounterExecutionBinding",
+    "fact": "alignment",
+    "label": "binding"
+  },
+  "giftui_p08_assess_admission_size": {
+    "type": "CounterAdmission",
+    "fact": "size",
+    "label": "admission"
+  },
+  "giftui_p08_assess_admission_stride": {
+    "type": "CounterAdmission",
+    "fact": "stride",
+    "label": "admission"
+  },
+  "giftui_p08_assess_admission_alignment": {
+    "type": "CounterAdmission",
+    "fact": "alignment",
+    "label": "admission"
+  },
+  "giftui_p08_assess_geometry_size": {
+    "type": "P08GeometryAccess",
+    "fact": "size",
+    "label": "geometry"
+  },
+  "giftui_p08_assess_geometry_stride": {
+    "type": "P08GeometryAccess",
+    "fact": "stride",
+    "label": "geometry"
+  },
+  "giftui_p08_assess_geometry_alignment": {
+    "type": "P08GeometryAccess",
+    "fact": "alignment",
+    "label": "geometry"
+  },
+  "giftui_p08_assess_candidate_size": {
+    "type": "P08CandidateAccess",
+    "fact": "size",
+    "label": "candidate"
+  },
+  "giftui_p08_assess_candidate_stride": {
+    "type": "P08CandidateAccess",
+    "fact": "stride",
+    "label": "candidate"
+  },
+  "giftui_p08_assess_candidate_alignment": {
+    "type": "P08CandidateAccess",
+    "fact": "alignment",
+    "label": "candidate"
+  },
+  "giftui_p08_assess_committed_size": {
+    "type": "P08CommittedAccess",
+    "fact": "size",
+    "label": "committed"
+  },
+  "giftui_p08_assess_committed_stride": {
+    "type": "P08CommittedAccess",
+    "fact": "stride",
+    "label": "committed"
+  },
+  "giftui_p08_assess_committed_alignment": {
+    "type": "P08CommittedAccess",
+    "fact": "alignment",
+    "label": "committed"
+  },
+  "giftui_p08_assess_hits_size": {
+    "type": "P08HitAccess",
+    "fact": "size",
+    "label": "hits"
+  },
+  "giftui_p08_assess_hits_stride": {
+    "type": "P08HitAccess",
+    "fact": "stride",
+    "label": "hits"
+  },
+  "giftui_p08_assess_hits_alignment": {
+    "type": "P08HitAccess",
+    "fact": "alignment",
+    "label": "hits"
+  },
+  "giftui_p08_assess_interaction_size": {
+    "type": "P08ScopedKeys",
+    "fact": "size",
+    "label": "interaction"
+  },
+  "giftui_p08_assess_interaction_stride": {
+    "type": "P08ScopedKeys",
+    "fact": "stride",
+    "label": "interaction"
+  },
+  "giftui_p08_assess_interaction_alignment": {
+    "type": "P08ScopedKeys",
+    "fact": "alignment",
+    "label": "interaction"
+  },
+  "giftui_p08_assess_session_size": {
+    "type": "P08StorageSession",
+    "fact": "size",
+    "label": "session"
+  },
+  "giftui_p08_assess_session_stride": {
+    "type": "P08StorageSession",
+    "fact": "stride",
+    "label": "session"
+  },
+  "giftui_p08_assess_session_alignment": {
+    "type": "P08StorageSession",
+    "fact": "alignment",
+    "label": "session"
+  },
+  "giftui_p08_assess_session_lifetime_size": {
+    "type": "P08SessionLifetime",
+    "fact": "size",
+    "label": "session_lifetime"
+  },
+  "giftui_p08_assess_session_lifetime_stride": {
+    "type": "P08SessionLifetime",
+    "fact": "stride",
+    "label": "session_lifetime"
+  },
+  "giftui_p08_assess_session_lifetime_alignment": {
+    "type": "P08SessionLifetime",
+    "fact": "alignment",
+    "label": "session_lifetime"
+  },
+  "giftui_p08_assess_models_size": {
+    "type": "ObservableModelScope<CounterOwnedModel, CounterModelSchema>",
+    "fact": "size",
+    "label": "models"
+  },
+  "giftui_p08_assess_models_stride": {
+    "type": "ObservableModelScope<CounterOwnedModel, CounterModelSchema>",
+    "fact": "stride",
+    "label": "models"
+  },
+  "giftui_p08_assess_models_alignment": {
+    "type": "ObservableModelScope<CounterOwnedModel, CounterModelSchema>",
+    "fact": "alignment",
+    "label": "models"
+  },
+  "giftui_p08_assess_root_size": {
+    "type": "ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>",
+    "fact": "size",
+    "label": "root"
+  },
+  "giftui_p08_assess_root_stride": {
+    "type": "ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>",
+    "fact": "stride",
+    "label": "root"
+  },
+  "giftui_p08_assess_root_alignment": {
+    "type": "ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>",
+    "fact": "alignment",
+    "label": "root"
+  },
+  "giftui_p08_assess_semantic_size": {
+    "type": "SemanticRecordStore<CounterPayload>",
+    "fact": "size",
+    "label": "semantic"
+  },
+  "giftui_p08_assess_semantic_stride": {
+    "type": "SemanticRecordStore<CounterPayload>",
+    "fact": "stride",
+    "label": "semantic"
+  },
+  "giftui_p08_assess_semantic_alignment": {
+    "type": "SemanticRecordStore<CounterPayload>",
+    "fact": "alignment",
+    "label": "semantic"
+  },
+  "giftui_p08_assess_values_size": {
+    "type": "CanvasStagedValues<SemanticRecordReference, CounterValueTable>",
+    "fact": "size",
+    "label": "values"
+  },
+  "giftui_p08_assess_values_stride": {
+    "type": "CanvasStagedValues<SemanticRecordReference, CounterValueTable>",
+    "fact": "stride",
+    "label": "values"
+  },
+  "giftui_p08_assess_values_alignment": {
+    "type": "CanvasStagedValues<SemanticRecordReference, CounterValueTable>",
+    "fact": "alignment",
+    "label": "values"
+  },
+  "giftui_p08_assess_audit_size": {
+    "type": "RuntimeStorageAudit",
+    "fact": "size",
+    "label": "audit"
+  },
+  "giftui_p08_assess_audit_stride": {
+    "type": "RuntimeStorageAudit",
+    "fact": "stride",
+    "label": "audit"
+  },
+  "giftui_p08_assess_audit_alignment": {
+    "type": "RuntimeStorageAudit",
+    "fact": "alignment",
+    "label": "audit"
+  },
+  "giftui_p08_assess_limits_size": {
+    "type": "RuntimeProfileLimits",
+    "fact": "size",
+    "label": "limits"
+  },
+  "giftui_p08_assess_limits_stride": {
+    "type": "RuntimeProfileLimits",
+    "fact": "stride",
+    "label": "limits"
+  },
+  "giftui_p08_assess_limits_alignment": {
+    "type": "RuntimeProfileLimits",
+    "fact": "alignment",
+    "label": "limits"
+  },
+  "giftui_p08_assess_endpoint_size": {
+    "type": "CounterEndpoint",
+    "fact": "size",
+    "label": "endpoint"
+  },
+  "giftui_p08_assess_endpoint_stride": {
+    "type": "CounterEndpoint",
+    "fact": "stride",
+    "label": "endpoint"
+  },
+  "giftui_p08_assess_endpoint_alignment": {
+    "type": "CounterEndpoint",
+    "fact": "alignment",
+    "label": "endpoint"
+  },
+  "giftui_p08_assess_endpoint_actual_size": {
+    "type": "CounterTiledEndpoint",
+    "fact": "size",
+    "label": "endpoint_actual"
+  },
+  "giftui_p08_assess_endpoint_actual_stride": {
+    "type": "CounterTiledEndpoint",
+    "fact": "stride",
+    "label": "endpoint_actual"
+  },
+  "giftui_p08_assess_endpoint_actual_alignment": {
+    "type": "CounterTiledEndpoint",
+    "fact": "alignment",
+    "label": "endpoint_actual"
+  },
+  "giftui_p08_assess_raster_adapter_size": {
+    "type": "CounterTiledRasterAdapter",
+    "fact": "size",
+    "label": "raster_adapter"
+  },
+  "giftui_p08_assess_raster_adapter_stride": {
+    "type": "CounterTiledRasterAdapter",
+    "fact": "stride",
+    "label": "raster_adapter"
+  },
+  "giftui_p08_assess_raster_adapter_alignment": {
+    "type": "CounterTiledRasterAdapter",
+    "fact": "alignment",
+    "label": "raster_adapter"
+  },
+  "giftui_p08_assess_raster_session_size": {
+    "type": "CounterTiledSession",
+    "fact": "size",
+    "label": "raster_session"
+  },
+  "giftui_p08_assess_raster_session_stride": {
+    "type": "CounterTiledSession",
+    "fact": "stride",
+    "label": "raster_session"
+  },
+  "giftui_p08_assess_raster_session_alignment": {
+    "type": "CounterTiledSession",
+    "fact": "alignment",
+    "label": "raster_session"
+  },
+  "giftui_p08_assess_recording_size": {
+    "type": "CounterRenderSink",
+    "fact": "size",
+    "label": "recording"
+  },
+  "giftui_p08_assess_recording_stride": {
+    "type": "CounterRenderSink",
+    "fact": "stride",
+    "label": "recording"
+  },
+  "giftui_p08_assess_recording_alignment": {
+    "type": "CounterRenderSink",
+    "fact": "alignment",
+    "label": "recording"
+  },
+  "giftui_p08_assess_identity_size": {
+    "type": "SemanticCompleteIdentity",
+    "fact": "size",
+    "label": "identity"
+  },
+  "giftui_p08_assess_identity_stride": {
+    "type": "SemanticCompleteIdentity",
+    "fact": "stride",
+    "label": "identity"
+  },
+  "giftui_p08_assess_identity_alignment": {
+    "type": "SemanticCompleteIdentity",
+    "fact": "alignment",
+    "label": "identity"
+  },
+  "giftui_p08_assess_optional_identity_size": {
+    "type": "SemanticCompleteIdentity?",
+    "fact": "size",
+    "label": "optional_identity"
+  },
+  "giftui_p08_assess_optional_identity_stride": {
+    "type": "SemanticCompleteIdentity?",
+    "fact": "stride",
+    "label": "optional_identity"
+  },
+  "giftui_p08_assess_optional_identity_alignment": {
+    "type": "SemanticCompleteIdentity?",
+    "fact": "alignment",
+    "label": "optional_identity"
+  },
+  "giftui_p08_assess_path_component_size": {
+    "type": "SemanticPathComponent",
+    "fact": "size",
+    "label": "path_component"
+  },
+  "giftui_p08_assess_path_component_stride": {
+    "type": "SemanticPathComponent",
+    "fact": "stride",
+    "label": "path_component"
+  },
+  "giftui_p08_assess_path_component_alignment": {
+    "type": "SemanticPathComponent",
+    "fact": "alignment",
+    "label": "path_component"
+  },
+  "giftui_p08_assess_glyph_size": {
+    "type": "PositionedGlyph",
+    "fact": "size",
+    "label": "glyph"
+  },
+  "giftui_p08_assess_glyph_stride": {
+    "type": "PositionedGlyph",
+    "fact": "stride",
+    "label": "glyph"
+  },
+  "giftui_p08_assess_glyph_alignment": {
+    "type": "PositionedGlyph",
+    "fact": "alignment",
+    "label": "glyph"
+  },
+  "giftui_p08_assess_optional_glyph_size": {
+    "type": "PositionedGlyph?",
+    "fact": "size",
+    "label": "optional_glyph"
+  },
+  "giftui_p08_assess_optional_glyph_stride": {
+    "type": "PositionedGlyph?",
+    "fact": "stride",
+    "label": "optional_glyph"
+  },
+  "giftui_p08_assess_optional_glyph_alignment": {
+    "type": "PositionedGlyph?",
+    "fact": "alignment",
+    "label": "optional_glyph"
+  },
+  "giftui_p08_assess_fingerprint_size": {
+    "type": "P08ReuseFingerprint",
+    "fact": "size",
+    "label": "fingerprint"
+  },
+  "giftui_p08_assess_fingerprint_stride": {
+    "type": "P08ReuseFingerprint",
+    "fact": "stride",
+    "label": "fingerprint"
+  },
+  "giftui_p08_assess_fingerprint_alignment": {
+    "type": "P08ReuseFingerprint",
+    "fact": "alignment",
+    "label": "fingerprint"
+  },
+  "giftui_p08_assess_control_size": {
+    "type": "CounterControl",
+    "fact": "size",
+    "label": "control"
+  },
+  "giftui_p08_assess_control_stride": {
+    "type": "CounterControl",
+    "fact": "stride",
+    "label": "control"
+  },
+  "giftui_p08_assess_control_alignment": {
+    "type": "CounterControl",
+    "fact": "alignment",
+    "label": "control"
+  }
+}

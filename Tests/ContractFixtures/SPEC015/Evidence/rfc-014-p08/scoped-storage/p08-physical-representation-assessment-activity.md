@@ -21,3 +21,12 @@ Deliver a focused source-file/contract-clause options matrix and recommendation
 for sequential independent Strong assessment review. Keep the historical failure
 packets immutable. P08/R07/T8.1/HC-RD-003 remain blocked/open; no fit or complete
 resource result follows from this assessment. Known generated pycache stays untouched.
+
+The parent authorized one bounded diagnostic-only module compilation within this
+assessment, with no link/runtime execution or maintained source change. The
+[prepared handoff](physical-representation-diagnostic/README.md) pins the actual
+baseline argv and inputs, appends only scalar target-layout roots to a temporary
+source copy, and reuses the unchanged strict decoder. Preparation has not invoked
+the compiler. A compiler failure or unsupported constant body is a diagnostic
+limit, not an automatic source repair loop; old implementation allowances remain
+closed. This diagnostic cannot serve as acceptance evidence.
