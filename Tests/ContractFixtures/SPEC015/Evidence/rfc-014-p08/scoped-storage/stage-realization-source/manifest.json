@@ -1,0 +1,127 @@
+{
+  "activity": "p08-stage-realization",
+  "design_commit": "8bc9c9a4",
+  "design_review": "d7df2c80",
+  "source_diff_base": "d7df2c80beddf1975b0cf74c9fbe8ff8cccb1ea4",
+  "initial_source_candidate": 1,
+  "corrective_cycles_consumed": 0,
+  "corrective_cycle_limit": 2,
+  "screens_executed": 0,
+  "source_files": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "baseline_sha256": "c426e971ec50636a7323d7c63661f57608ce7ba07f63777f7dc57b7f7a1b2e8f",
+      "sha256": "db3b91b9ab935043032ce3d3182dd384fca40b3d18f016d73820e62a24877e95"
+    }
+  ],
+  "evidence_glue": [
+    {
+      "path": "scripts/contracts/check-spec-015-counter.py",
+      "sha256": "181e1e3d4a962d1c8bc704c5c00843f98d30b05256b92f24424ed36566cb3b26"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-applicability.json",
+      "sha256": "3274499cf3d610307900b7e682c5ebc2e0ed3acaee4f71a29af96d48e9d8cf9f"
+    }
+  ],
+  "source_diff_sha256": "bab71bed4dbc33ab932c4d2fdd2163b8d0218831ac618b7db54b250b7129f595",
+  "static_coverage_sha256": "2036126100fe84a26886544520e2de330116209d21516a1d0ad7bd2db5849ad1",
+  "label_inventory_reference": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/stack-candidate-a-review-correction/manifest.json",
+    "sha256": "cc405f6c34ed6f218f27a10321f1b551aebd88cf31441c878877143fe9329528",
+    "registration_source_unchanged_except_two_applicability_constants": true
+  },
+  "profiles": {
+    "macos-dynamic": {
+      "scoped_labels": 384,
+      "scoped_labels_sha256": "7413b77f93bfadc6721358ed7425e1a8d350956b6759eb6c3bb6cf5399bab654",
+      "native_controls": [
+        "so06-native-exclusivity-module",
+        "so06-native-exclusivity-positive-link",
+        "so06-native-exclusivity-positive-execute",
+        "so06-native-exclusivity-negative-link",
+        "so06-native-exclusivity-negative-execute"
+      ],
+      "current_coverage": "not run"
+    },
+    "macos-static": {
+      "scoped_labels": 384,
+      "scoped_labels_sha256": "7413b77f93bfadc6721358ed7425e1a8d350956b6759eb6c3bb6cf5399bab654",
+      "native_controls": [
+        "so06-native-exclusivity-module",
+        "so06-native-exclusivity-positive-link",
+        "so06-native-exclusivity-positive-execute",
+        "so06-native-exclusivity-negative-link",
+        "so06-native-exclusivity-negative-execute"
+      ],
+      "current_coverage": "not run"
+    },
+    "raspberry-pi-armv6": {
+      "scoped_labels": 384,
+      "scoped_labels_sha256": "7413b77f93bfadc6721358ed7425e1a8d350956b6759eb6c3bb6cf5399bab654",
+      "native_controls": [],
+      "current_coverage": "not run"
+    },
+    "nrf52840-embedded": {
+      "scoped_labels": 202,
+      "scoped_labels_sha256": "d6fef666f0e9f77b4a33710cdef92aac5571386442e676440bf421a56111c1eb",
+      "native_controls": [],
+      "current_coverage": "not run"
+    }
+  },
+  "runtime_reuse_labels": [
+    "so06-reuse-dynamic-action-current",
+    "so06-reuse-dynamic-action-stale",
+    "so06-reuse-dynamic-admission-current",
+    "so06-reuse-dynamic-admission-stale",
+    "so06-reuse-dynamic-cleanup-backing-last",
+    "so06-reuse-dynamic-control-same-address",
+    "so06-reuse-dynamic-input-current",
+    "so06-reuse-dynamic-input-stale",
+    "so06-reuse-dynamic-inventory-two-hosts",
+    "so06-reuse-dynamic-raw-namespace-collision",
+    "so06-reuse-dynamic-source-current",
+    "so06-reuse-dynamic-source-stale",
+    "so06-reuse-dynamic-terminal-old-host",
+    "so06-reuse-static-action-current",
+    "so06-reuse-static-action-stale",
+    "so06-reuse-static-admission-current",
+    "so06-reuse-static-admission-stale",
+    "so06-reuse-static-cleanup-backing-last",
+    "so06-reuse-static-control-same-address",
+    "so06-reuse-static-input-current",
+    "so06-reuse-static-input-stale",
+    "so06-reuse-static-inventory-two-hosts",
+    "so06-reuse-static-raw-namespace-collision",
+    "so06-reuse-static-source-current",
+    "so06-reuse-static-source-stale",
+    "so06-reuse-static-terminal-old-host"
+  ],
+  "qualifier_checks": {
+    "positive_exact_receipts": 7,
+    "reject_current_source_drift": true,
+    "reject_recorded_metadata_drift": true,
+    "compiler_or_driver_top_level_executed": false
+  },
+  "screen_argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    "--fresh-focused",
+    "--select-family",
+    "so07-layout-facts"
+  ],
+  "status": "source frozen for independent review; no compiler/runtime/fit evidence",
+  "source_diff_artifact": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/stage-realization-source/source.diff.xz",
+    "encoding": "xz",
+    "sha256": "0d050966b4220209e23039ef85cf49a2117f7a504b9c4bfdc02e5b09b75555e9",
+    "uncompressed_sha256": "bab71bed4dbc33ab932c4d2fdd2163b8d0218831ac618b7db54b250b7129f595"
+  }
+}

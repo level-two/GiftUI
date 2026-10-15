@@ -1,0 +1,23 @@
+{
+  "kind": "compiler-free-static-source-coverage",
+  "baseline_commit": "d7df2c80beddf1975b0cf74c9fbe8ff8cccb1ea4",
+  "source_sha256": "db3b91b9ab935043032ce3d3182dd384fca40b3d18f016d73820e62a24877e95",
+  "reuse_statement_multisets_equal": [
+    "precondition",
+    "preconditionFailure",
+    "p08ReuseLabel",
+    "counterCheckHostFrame"
+  ],
+  "single_stale_baseline": true,
+  "stale_full_comparisons": 5,
+  "all_reuse_label_sites_equal": true,
+  "unchanged_regions_sha256": {
+    "physical_and_fingerprint": "4d2dd478d55275c31d946a9ccf8fd9dedd299905268f6fe542a5f9256646765e",
+    "outer_and_supplied": "a030ef869f11dc981d6787a486c18c17874212a16ae9f557e5a585558ffa86cd",
+    "host_routes": "f53af918975d9e90f38ef14207477261f729dec1e2d74560b4c089f4609517e5",
+    "session_only_and_exclusivity": "bbafaa5c9d80aeb7c1c4ba581925e87dcf9494f95c0fa5b655dc1c7379e51c85"
+  },
+  "root_namespace_issuance_sites_equal": true,
+  "root_precondition_multiset_equal_after_factoring_two_fault_bodies": true,
+  "compiler_or_runtime_claim": false
+}

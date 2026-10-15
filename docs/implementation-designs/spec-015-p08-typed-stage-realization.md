@@ -22,8 +22,10 @@ This derived note selects one private realization under [SPEC-015 S15](../specs/
 It does not amend their ownership, workload or resource contract. The
 [new activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-activity.md)
 authorizes a grouped initial candidate and at most two cause-grouped corrective
-cycles after design review. Prior allowances remain closed. **Design only:** no
-source change, compiler run, measured saving or fit claim accompanies this note.
+cycles after design review. Prior allowances remain closed. Independent design
+review passed at `d7df2c80`; the [initial source freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-source-freeze.md)
+implements the selected private realization and awaits independent source review.
+No compiler run, measured saving or fit claim accompanies this note.
 
 [Independent Strong design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-independent-design-review.md)
 passes this internal realization at `8bc9c9a4`. Initial source implementation is

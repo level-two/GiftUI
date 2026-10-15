@@ -1,6 +1,6 @@
 # P08 stage realization — grouped design/correction activity
 
-Status: **independent Strong DESIGN PASS; no source candidate or screen yet**.
+Status: **initial source frozen for independent review; screen not run**.
 [Independent design review](p08-stage-realization-independent-design-review.md)
 finds the private realization within contract; initial implementation may proceed
 under this activity, with independent source review before the screen. Entry `7ee1c3e0`.
@@ -14,10 +14,9 @@ source candidate with independent design/source review and early registered nRF
 screen, plus **at most two cause-grouped corrective cycles**. Stop after two
 consecutive unproductive corrections. Mechanical source-review fixes are grouped
 within the applicable correction cycle, not new user micro-approval barriers.
-Current corrective cycles: **0/2**. During this design stage use only existing
-source/artifacts; no source changes, compiler/build, variant or hardware runs.
-After independent design review, execute the reviewed internal candidate under
-this authorization without another routine permission request.
+Current corrective cycles: **0/2**. Design review passed; initial source is frozen
+under this authorization. No compiler/build, runtime, screen or hardware run
+precedes independent source review; no routine permission request is required.
 
 Candidate A remains closed at candidate1/1, screen1/1 and one exact pre-execution
 mechanical receiver correction. All historical2/2 allowances remain closed and
@@ -46,8 +45,10 @@ concrete consuming phases and owned completion facts; retain the mandated
 CounterHostState cases and lifetime chain; split full reuse operations without
 refreshing their common stale baseline; factor original large corpus loop bodies.
 One Swift fixture plus exact qualification/driver-pin and evidence changes are
-planned. The initial registered nRF module/layout screen precedes expensive
-validation and rejects any oversized reachable lower bound. No source candidate,
-screen, fit or acceptance result exists yet; corrections remain **0/2**.
-Design-stage checks: `scripts/validate-governance.rb`, local reference existence
-and `git diff --check` pass. No compiler, build, runtime or image call was made.
+implemented in the [initial source freeze](p08-stage-realization-source-freeze.md),
+after independent design PASS `d7df2c80`. The registered initial nRF module/layout
+screen precedes expensive validation and rejects any oversized reachable lower
+bound. Source candidate 1 is frozen; no screen, fit or acceptance result exists;
+corrections remain **0/2**. Compiler-free qualification/hash/static coverage,
+formatter, governance, links and whitespace checks pass. No compiler, suite,
+build, runtime or image call was made.
