@@ -1,33 +1,35 @@
 // Measurement roots only: no target execution or global initialization.
-// Read-only extraction accepts a root only if its entire body returns an
-// immediate UInt32 with no calls, loads, branches, relocations or stack work.
+// A proof admits only a strict immediate-return leaf, preceded by at most two
+// entire direct tail thunks. No measurement visitor constructs a region array.
 #if hasFeature(Embedded)
 @inline(__always)
 private func counterEmbeddedRegionFact(_ field: Int, _ component: Int) -> UInt32 {
-    guard let layout = CounterEmbeddedLayout(suppliedByteCount: counterEmbeddedSlotBytes),
-          layout.fields == 25, let region = layout.regions[field] else { preconditionFailure("invalid measured layout") }
-    let value: Int
-    switch component {
-    case 0: value = region.offset
-    case 1: value = region.count
-    case 2: value = region.size
-    case 3: value = region.stride
-    case 4: value = region.alignment
-    default: preconditionFailure("invalid region fact")
-    }
+    var selected: Int? = nil
+    guard let summary = counterVisitEmbeddedLayout(suppliedByteCount: counterEmbeddedSlotBytes,
+        { index, region in
+            guard index == field else { return }
+            switch component {
+            case 0: selected = region.offset
+            case 1: selected = region.count
+            case 2: selected = region.size
+            case 3: selected = region.stride
+            case 4: selected = region.alignment
+            default: preconditionFailure("invalid region fact")
+            }
+        }), summary.fields == 25, let value = selected else { preconditionFailure("invalid measured layout") }
     guard let result = UInt32(exactly: value) else { preconditionFailure("layout fact exceeds UInt32") }
     return result
 }
 @inline(__always)
 private func counterEmbeddedSummaryFact(_ component: Int) -> UInt32 {
-    guard let layout = CounterEmbeddedLayout(suppliedByteCount: counterEmbeddedSlotBytes),
-          layout.fields == 25 else { preconditionFailure("invalid measured layout") }
+    guard let summary = counterVisitEmbeddedLayout(suppliedByteCount: counterEmbeddedSlotBytes, { _, _ in }),
+          summary.fields == 25 else { preconditionFailure("invalid measured layout") }
     let value: Int
     switch component {
-    case 0: value = layout.cursor
-    case 1: value = layout.maximumAlignment
-    case 2: value = layout.slotBytes
-    case 3: value = layout.totalBytes
+    case 0: value = summary.cursor
+    case 1: value = summary.maximumAlignment
+    case 2: value = summary.slotBytes
+    case 3: value = summary.totalBytes
     default: preconditionFailure("invalid summary fact")
     }
     guard let result = UInt32(exactly: value) else { preconditionFailure("layout fact exceeds UInt32") }

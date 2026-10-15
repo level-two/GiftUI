@@ -1,0 +1,70 @@
+{
+  "activity": "p08-remaining-completion",
+  "kind": "final-cause-grouped-source-freeze-not-target-evidence",
+  "entry_commit": "55625941563b8271eba402d0387a2cbb648b1cd9",
+  "predecessor_source": "4c5be91d",
+  "diagnosis_commit": "55625941",
+  "corrective_cycles_consumed": 2,
+  "maximum_corrective_cycles": 2,
+  "further_automatic_candidates": false,
+  "files": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-completion-activity.md": "c8d489f140c19651560ac8ea4e918a298015e648cbfd22688fa5f2879d31f2bd",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-layout-applicability.json": "0341077ceb7c7b40c4924b64834fd319c39cf553db1b822acda643eebc99757a",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-layout-cycle2-source-freeze.md": "7126e4f4c42ec3f7be6d6c0eccd782c60d35bb09439026c42d1f536ca48cb056",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "ed705493d35ac471e9b4d0591b75fd997ed426a0d84f0894a1e59adbaa402ccb",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": "52da7bb08f311fd4f93666e4f3a8f86b524ffd6cd104e95da10bb1b7c9ceb6c4",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": "8c68606f9648016f4b748a59871acb7da656db7968ae2469ca86fe809eb90292",
+    "docs/implementation-designs/spec-015-p08-scoped-storage-ownership.md": "bfa646b2493e4706fc93d8f3eef3314875792edcffb6352b4d0f3084f8a98307",
+    "firmware/nrf52840/applications/signal-analyzer-static/Counter.cmake": "d1d0cb0e290266d9cc32b50829ab495f0099c8aa6c2ae124bbd356ec0df65ed1",
+    "firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c": "ea40f5906bdd3f7b8f66d6cca16c3c873850d9c6d65fda4153dde6507b133f25",
+    "scripts/contracts/build-spec-015-counter-image.py": "94f23cca82cee3c238d36a3c14004850d27d0d1c3420195152287c439018d03f",
+    "scripts/contracts/check-spec-015-counter.py": "8187ea32ddfd41198c68a90b96fcaea1ddcfca43abb0c626e5e8787b5d9d3b1d",
+    "scripts/contracts/p08_check_collection.py": "d8d9fa4e92d7a0ad04173b401fbb332750337dd2d2e34bd72f3a7bbf396e1b41",
+    "scripts/contracts/p08_layout_facts.py": "8bb2432c43ac82c2c44a008148ff51ea16eecbab147994e80677ef9e1ed05318",
+    "scripts/contracts/test_p08_layout_facts.py": "969669348d7717d0f7a39188bff3b81ca6d49f6cfee151f88e763e7848d7a0b2",
+    "scripts/contracts/test_p08_layout_tail_proofs.py": "1b334785b8d78dd9a140673deeef81e68c7218f9b563e8dec28612cf885493aa",
+    "scripts/nrf52840/build.sh": "59c26b07f4f5e8ee6c13266a635e83c6a0ae3b010f2a1015f42b80a8e5817fb0"
+  },
+  "strict_leaf_ast_sha256": "583c39609801ae924a599609de43377d742668dcc804e27ad93179b697e93d7f",
+  "unchanged_25_query_sequence_sha256": "32c0d309dc866e1857c3ef9b4befded42c223c6abb78649803d997e574d9dca2",
+  "metadata_qualification_sha256": "0341077ceb7c7b40c4924b64834fd319c39cf553db1b822acda643eebc99757a",
+  "preserved_failure_manifest_sha256": {
+    "remaining-layout-initial-failure": "393820c2754cbcff3b9d8b916e8c226bb3c59cce349ea58c3487a736b9fc2ac8",
+    "remaining-layout-cycle1-failure": "de5d030ddc60edb9a480d0c20c4d62fde81fb741abd37260870cc31c3d433c85"
+  },
+  "proof_limits": {
+    "global_roots": 129,
+    "local_prefixed_functions": 258,
+    "tail_hops": 2,
+    "tail_body_bytes": 4,
+    "object_relocation": "sole offset0 REL R_ARM_THM_JUMP24; linked symbol table/index; exact encoded addend -4",
+    "firmware_target": "signed Thumb B.W displacement, PC=instruction+4; unique defined Thumb function start; no relocation",
+    "leaf": "unchanged complete immediate r0 initialization + optional movt + bx lr; no relocation"
+  },
+  "validation": {
+    "python_tests": 69,
+    "python_ast": "pass",
+    "whitespace": "pass",
+    "qualified_exact_predecessors": 7,
+    "compiler_invocations": 0,
+    "target_execution": 0,
+    "images": 0
+  },
+  "retained_reservation": {
+    "slot_count": 4,
+    "slot_bytes": 32000,
+    "total_bytes": 128000,
+    "fit": "unknown"
+  },
+  "next_registered_focused_command": "scripts/contracts/run-spec-015.sh --profile nrf52840-embedded --corpus rfc-014-counter --runtime-build .build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded --host-build .build/contracts/p08-scoped-host-hzs5q7za --fresh-focused --select-family so07-layout-facts --collect-failures",
+  "coverage": "Full collections/images held pending final focused strict materialization success; no prior changed compiled-source reuse or aggregate pass.",
+  "remaining": [
+    "Independent Strong source review",
+    "Final current-source focused materialization run",
+    "Actual object/ELF numeric facts and final C symbol comparison",
+    "Four complete current-source collections",
+    "Both registered early images and full code/helper/metadata resource accounting",
+    "Complete construction/body-return/helper/IRQ stack proof",
+    "Current caller inventory and P08 exit review"
+  ]
+}

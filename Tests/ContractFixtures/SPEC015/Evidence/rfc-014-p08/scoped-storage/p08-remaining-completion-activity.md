@@ -1,12 +1,16 @@
 # P08 remaining completion activity — 2026-10-15
 
 Status: **active; complete planned measurement before final source freeze**.
-The initial focused measurement failed; [actual-object diagnosis](p08-remaining-layout-initial-diagnosis.md)
-proved an insufficient provisional reservation and a local-helper inventory
-misclassification. [Correction 1 source freeze](p08-remaining-layout-cycle1-source-freeze.md)
-bundles their fixes. **1/2 corrective cycles consumed**; independent source
-assessment and one affected focused layout rerun are pending. Full current
-collections remain held until materialization succeeds. No fit pass is claimed.
+The [initial diagnosis](p08-remaining-layout-initial-diagnosis.md) and
+[cycle 1 diagnosis](p08-remaining-layout-cycle1-diagnosis.md) preserve both failed
+focused measurements. Cycle 1 removed the insufficient-reservation trap;
+unused region-array initialization and compiler merging remained.
+[Final correction 2 source freeze](p08-remaining-layout-cycle2-source-freeze.md)
+implements the independently assessed scalar traversal and bounded return proof.
+**2/2 corrective cycles consumed**; independent source review and the final
+affected focused materialization rerun are pending. Full collections remain
+held until materialization succeeds. Any further materialization failure stops
+this allowance; no automatic third variant. No fit pass is claimed.
 Entry is clean `6c965007`, with source `73e5dcf1`. Eugene explicitly requested:
 “Please proceed with the remaining p08 tasks”, after the completed
 [collected-suite repair batch](p08-suite-collection-result.md). Existing instructions
@@ -61,7 +65,7 @@ allowances stay closed and are not reset. Allow the identified initial source an
 validation pass plus **at most two cause-grouped corrective cycles**. Each cycle
 bundles related findings, independent Strong assessment and one rerun per affected
 registered cell. Stop earlier after two consecutive unproductive corrections.
-Current correction consumption: **1/2**. Preserve failure evidence before edits;
+Current correction consumption: **2/2**. Preserve failure evidence before edits;
 no source edits during a running validation cell. Collection continues independent
 checks and blocks actual dependents. No per-warning or per-file permission gate.
 

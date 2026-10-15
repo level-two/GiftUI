@@ -164,27 +164,48 @@ class InventoryTests(unittest.TestCase):
         return json.loads((packet / 'measurement-symbols-and-bytes.json').read_text())
 
     def with_observed_helper(self, elf):
-        observed = next(row for row in self.actual_rows() if row['name'] == facts.LOCAL_HELPER)
+        observed = next(row for row in self.actual_rows() if row['name'] == 'giftui_p08_layout_limits_offsetTm')
         # Preserve the actual local/function/Thumb/size shape in a bounded synthetic section.
         helper = {key: observed[key] for key in ('name', 'value', 'size', 'type', 'binding')}
-        helper['owner'] = 1
+        helper.update(owner=len(elf.sections), table=3, index=len(elf.symbol_tables[3]))
+        body = bytes.fromhex(observed['body_hex'])
+        elf.sections.append(dict(name='.text.local-helper', type=1, flags=6, address=0,
+                                 offset=len(elf.data), size=len(body)))
+        elf.data += body
         elf.symbols.append(helper)
+        elf.symbol_tables[3].append(helper)
         return elf
 
     def test_exact_known_local_helper_is_separately_recorded(self):
         elf = self.with_observed_helper(facts.ELF(elf_bytes()))
         inventory = facts.classify_inventory(elf)
         self.assertEqual(inventory['global_roots'], list(facts.SYMBOLS))
-        self.assertEqual(inventory['nonroot_local_helpers'][0]['name'], facts.LOCAL_HELPER)
+        self.assertEqual(inventory['nonroot_local_helpers'][0]['symbol'], 'giftui_p08_layout_limits_offsetTm')
         self.assertIs(inventory['nonroot_local_helpers'][0]['measurement_root'], False)
 
-    def test_reject_unknown_exported_duplicate_or_malformed_helper(self):
-        for key, value in (('name', facts.LOCAL_HELPER + '1'), ('binding', 1), ('type', 1),
+    def test_reject_exported_duplicate_or_malformed_helper(self):
+        for key, value in (('binding', 1), ('binding', 2), ('type', 1),
                            ('owner', 0), ('value', 0), ('size', 1 << 31)):
             elf = self.with_observed_helper(facts.ELF(elf_bytes()))
             elf.symbols[-1][key] = value
             with self.subTest(key=key), self.assertRaises(ValueError):
                 facts.classify_inventory(elf)
+
+    def test_local_names_are_not_a_whitelist_or_fact_authority(self):
+        elf = self.with_observed_helper(facts.ELF(elf_bytes()))
+        elf.symbols[-1]['name'] = 'giftui_p08_layout_differentCompilerLocal'
+        inventory = facts.classify_inventory(elf)
+        self.assertIs(inventory['nonroot_local_helpers'][0]['measurement_root'], False)
+        # Every required root still must prove its complete byte semantics.
+        self.assertEqual(elf.constant(facts.SYMBOLS[0])['value'], 0)
+
+    def test_local_inventory_has_a_finite_bound(self):
+        elf = facts.ELF(elf_bytes())
+        for index in range(facts.MAX_LOCAL_HELPERS + 1):
+            self.with_observed_helper(elf)
+            elf.symbols[-1]['name'] = 'giftui_p08_layout_local' + str(index)
+        with self.assertRaisesRegex(ValueError, 'excess'):
+            facts.classify_inventory(elf)
         elf = self.with_observed_helper(facts.ELF(elf_bytes()))
         elf.symbols.append(elf.symbols[-1].copy())
         with self.assertRaises(ValueError):
@@ -229,7 +250,9 @@ class LayoutTests(unittest.TestCase):
             for component, name in enumerate(facts.COMPONENTS):
                 self.assertIn('func counterEmbeddedFact' + str(index) + '_' + str(component) +
                               '() -> UInt32 { counterEmbeddedRegionFact(' + str(index) + ', ' + str(component) + ') }', source)
-        self.assertIn('CounterEmbeddedLayout(suppliedByteCount: counterEmbeddedSlotBytes)', source)
+        self.assertIn('counterVisitEmbeddedLayout(suppliedByteCount: counterEmbeddedSlotBytes', source)
+        self.assertNotIn('CounterEmbeddedLayout(suppliedByteCount:', source)
+        self.assertNotIn('.init(repeating:', source)
 
     def test_surplus_is_fully_charged(self):
         self.assertEqual(self.layout['retained_surplus'], 112)

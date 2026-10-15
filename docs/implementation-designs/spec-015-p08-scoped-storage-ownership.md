@@ -528,25 +528,39 @@ The remaining-completion realization replaces the proposed literal data table
 with 129 constant-return measurement roots. Swift's documented `@section`
 constant initializer forms do not include this checked layout initializer;
 its folding into literal section data is not assumed. Each root queries the
-same `CounterEmbeddedLayout(suppliedByteCount: counterEmbeddedSlotBytes)` and
-exactly converts its result to UInt32. Inlining hints on that initializer and
-its append operation expose the unchanged checked derivation to optimization;
+same private `counterVisitEmbeddedLayout` checked traversal and exactly converts
+its result to UInt32. That single traversal contains all 25 typed queries/counts
+in the original order. Its synchronous nonescaping visitor receives only copied
+numeric region metadata. Runtime construction collects those regions in its
+existing InlineArray; measurement selects a scalar without constructing that
+array. No second numeric layout or type list is maintained. Inlining hints on
+the traversal and its append operation expose the derivation to optimization;
 they do not prove folding or a resource bound. No measurement root runs and no
 global initializer, raw layout substitute or alternative numeric ABI is added.
 
-The read-only extractor accepts only complete Thumb function bodies that
-initialize r0 with an immediate (`movs`, `mov.w` or `movw`), optionally replace
-its upper half with `movt`, then return with `bx lr`. It rejects all other
-instructions, relevant relocations, malformed section/symbol bounds, missing/
-duplicate/unexpected roots and unconsumed bytes. Calls, loads, branches and
-stack work cannot serve as numeric evidence. The exact root inventory belongs
+The read-only extractor's terminal leaf must initialize r0 with an immediate
+(`movs`, `mov.w` or `movw`), optionally replace its upper half with `movt`, then
+return with `bx lr`, consuming the entire body with no relocation. The reviewed
+final correction permits at most **two** whole four-byte unconditional Thumb
+`b.w` tail thunks before that unchanged leaf; these preserve LR and introduce no
+call, stack or memory effect. Object thunks require the exact canonical encoded
+start addend (-4), one `R_ARM_THM_JUMP24` REL relocation at offset zero, and the
+actual linked symbol-table/index resolving a unique defined Thumb function.
+Final ELF thunks require signed displacement decoding with PC = instruction
+address + 4 and a unique function-start destination, with no residual relocation.
+Every body, edge, relocation identity and leaf is recorded separately for the
+object and final ELF. Reject longer paths, cycles, interior/ambiguous/undefined
+targets, overlap or arithmetic overflow, calls, indirect/conditional branches,
+loads, stack work, initialization templates, unknown instructions and extra bytes.
+The exact root inventory belongs
 only to the actual object/firmware, not repeated diagnostic-control objects.
-Require all 129 exact global defined function roots. Separately classify and
-record only the observed local compiler helper
-`giftui_p08_layout_limits_offsetTm`; it is never a measurement root. Any other
-extra prefixed name, exported helper or duplicate remains an inventory failure.
-Recognizing that local helper does not permit a root to call it: the instruction
-and relocation rejection remains unchanged.
+Require all 129 exact global defined function roots. Separately classify at most
+**258** defined STB_LOCAL functions under the measurement prefix, recording their
+identities, bytes, Thumb/executable bounds and duplicate checks; none is a fact
+root. Names vary under compiler merging and confer no authority. Extra exported,
+weak, undefined or data symbols, missing roots and duplicates remain failures.
+A root reaching any helper still needs the complete bounded semantic proof;
+classification cannot hide a bad root or admit arbitrary helper effects.
 The existing SO-08 supported firmware invocation retains those roots through
 explicit linker undefined roots and section GC; no RAM pointer table is needed.
 Read-only extraction from those exact artifacts supplies

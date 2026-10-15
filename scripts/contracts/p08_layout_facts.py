@@ -19,7 +19,8 @@ SUMMARY = ('cursor', 'maximumAlignment', 'slotBytes', 'totalBytes')
 SYMBOLS = tuple('giftui_p08_layout_' + field + '_' + component
                 for field in FIELDS for component in COMPONENTS) + tuple(
                     'giftui_p08_layout_' + name for name in SUMMARY)
-LOCAL_HELPER = 'giftui_p08_layout_limits_offsetTm'  # Observed local compiler helper, never a fact root.
+MAX_TAIL_HOPS = 2
+MAX_LOCAL_HELPERS = len(SYMBOLS) * MAX_TAIL_HOPS
 U32_MAX = (1 << 32) - 1
 
 
@@ -81,6 +82,20 @@ def decode_return(body):
     return value
 
 
+def decode_tail_displacement(body):
+    """Only an entire unconditional Thumb B.W (T4); never BL or conditional B."""
+    if len(body) != 4:
+        return None
+    first, second = struct.unpack('<HH', body)
+    if first & 0xF800 != 0xF000 or second & 0xD000 != 0x9000:
+        return None
+    sign = first >> 10 & 1
+    i1 = 1 ^ (second >> 13 & 1) ^ sign
+    i2 = 1 ^ (second >> 11 & 1) ^ sign
+    immediate = sign << 24 | i1 << 23 | i2 << 22 | (first & 0x3FF) << 12 | (second & 0x7FF) << 1
+    return immediate - (1 << 25) if sign else immediate
+
+
 class ELF:
     """The supported target's ELF32 little-endian symbol/section/relocation subset."""
     def __init__(self, data):
@@ -107,18 +122,23 @@ class ELF:
         names_data = self.section_data(name_section)
         for section in self.sections:
             section['name'] = self.string(names_data, section['name_offset'])
-        self.symbols = []
-        for section in self.sections:
+        self.symbols, self.symbol_tables = [], {}
+        for table, section in enumerate(self.sections):
             if section['type'] != 2:
                 continue
             require(section['entry_size'] == 16 and section['size'] % 16 == 0 and
                     section['link'] < count and self.sections[section['link']]['type'] == 3,
                     'invalid symbol table')
             strings = self.section_data(self.sections[section['link']])
+            entries = []
             for offset in range(section['offset'], section['offset'] + section['size'], 16):
                 name, value, size, info, other, owner = struct.unpack_from('<IIIBBH', data, offset)
-                self.symbols.append(dict(name=self.string(strings, name), value=value, size=size,
-                                         type=info & 15, binding=info >> 4, owner=owner))
+                symbol = dict(name=self.string(strings, name), value=value, size=size,
+                              type=info & 15, binding=info >> 4, owner=owner, visibility=other & 3,
+                              table=table, index=len(entries))
+                entries.append(symbol)
+                self.symbols.append(symbol)
+            self.symbol_tables[table] = entries
 
     def slice(self, offset, size):
         require(0 <= offset <= len(self.data) and 0 <= size <= len(self.data) - offset, 'ELF file bounds')
@@ -140,31 +160,114 @@ class ELF:
         require(0 < symbol['owner'] < len(self.sections), 'undefined/special symbol: ' + name)
         return symbol, self.sections[symbol['owner']]
 
-    def constant(self, name):
-        symbol, section = self.unique(name)
-        require(symbol['type'] == 2 and symbol['value'] & 1 and
+    def function(self, symbol):
+        require(0 < symbol['owner'] < len(self.sections), 'undefined/special function')
+        section = self.sections[symbol['owner']]
+        require(symbol['type'] == 2 and symbol['binding'] in (0, 1) and symbol['value'] & 1 and symbol['size'] > 0 and
                 section['type'] == 1 and section['flags'] & 7 == 6, 'expected allocated executable Thumb function')
         start = (symbol['value'] & ~1) - section['address']
         end = checked_add(start, symbol['size'])
         require(start >= 0 and end <= section['size'], 'function section bounds')
+        checked_add(section['address'], end)
+        for other in self.symbols:
+            if other is symbol or other['type'] != 2 or not other['size'] or not 0 < other['owner'] < len(self.sections):
+                continue
+            if other['owner'] == symbol['owner']:
+                other_start = (other['value'] & ~1) - section['address']
+                overlaps = other_start < end and other_start + other['size'] > start
+            elif self.kind == 2:
+                other_section = self.sections[other['owner']]
+                other_start, absolute = other['value'] & ~1, symbol['value'] & ~1
+                overlaps = other_section['flags'] & 7 == 6 and other_start < absolute + symbol['size'] and other_start + other['size'] > absolute
+            else:
+                overlaps = False
+            require(not overlaps, 'ambiguous overlapping function aliases')
+        return dict(symbol=symbol['name'], symbol_table=symbol['table'], symbol_index=symbol['index'],
+                    address=symbol['value'], bytes=symbol['size'], section=section['name'],
+                    body_hex=self.slice(section['offset'] + start, symbol['size']).hex())
+
+    def relocations(self, symbol):
+        section = self.sections[symbol['owner']]
+        start = (symbol['value'] & ~1) - section['address']
+        end = checked_add(start, symbol['size'])
+        found = []
         for relocation in self.sections:
             if relocation['type'] not in (4, 9):
                 continue
             entry_size = 12 if relocation['type'] == 4 else 8
             require(relocation['entry_size'] == entry_size and relocation['size'] % entry_size == 0,
                     'invalid relocation table')
-            require(relocation['link'] < len(self.sections) and self.sections[relocation['link']]['type'] == 2 and
+            require(relocation['link'] in self.symbol_tables and
                     relocation['info'] < len(self.sections), 'invalid relocation owner')
             # ET_REL offsets address their sh_info section; executable relocation offsets are absolute.
             if self.kind == 1 and relocation['info'] != symbol['owner']:
                 continue
             for offset in range(relocation['offset'], relocation['offset'] + relocation['size'], entry_size):
-                address = struct.unpack_from('<I', self.data, offset)[0]
+                address, info = struct.unpack_from('<II', self.data, offset)
                 position = address if self.kind == 1 else address - section['address']
-                require(not (position < end and position + 4 > start), 'relocation in constant-return body')
-        body = self.slice(section['offset'] + start, symbol['size'])
-        return dict(value=decode_return(body), address=symbol['value'], bytes=symbol['size'],
-                    section=section['name'], body_hex=body.hex())
+                if position < end and position + 4 > start:
+                    entries, index = self.symbol_tables[relocation['link']], info >> 8
+                    require(index < len(entries), 'invalid relocation symbol index')
+                    target = entries[index]
+                    require(target['table'] == relocation['link'] and target['index'] == index,
+                            'relocation symbol table identity mismatch')
+                    found.append(dict(section=relocation['name'], section_type=relocation['type'],
+                                      offset=position - start, type=info & 255,
+                                      symbol_table=relocation['link'], symbol_index=index,
+                                      symbol=target['name'], explicit_addend=struct.unpack_from('<i', self.data, offset + 8)[0]
+                                      if relocation['type'] == 4 else None))
+        return found
+
+    def target_at(self, address):
+        matches = [symbol for symbol in self.symbols if symbol['type'] == 2 and
+                   0 < symbol['owner'] < len(self.sections) and symbol['value'] & 1 and
+                   symbol['value'] & ~1 == address]
+        require(len(matches) == 1, 'tail target must be a unique defined Thumb function start')
+        return matches[0]
+
+    def constant(self, name):
+        current, _ = self.unique(name)
+        seen, proof = set(), []
+        while True:
+            identity = current['table'], current['index']
+            require(identity not in seen, 'tail cycle')
+            seen.add(identity)
+            node = self.function(current)
+            body, relocations = bytes.fromhex(node['body_hex']), self.relocations(current)
+            displacement = decode_tail_displacement(body)
+            if displacement is None:
+                require(not relocations, 'relocation in constant-return leaf')
+                value = decode_return(body)
+                node['kind'] = 'immediate-return-leaf'
+                node['relocations'] = []
+                proof.append(node)
+                return dict(value=value, **{key: proof[0][key] for key in ('address', 'bytes', 'section', 'body_hex')},
+                            proof=proof, tail_hops=len(proof) - 1)
+            require(len(proof) < MAX_TAIL_HOPS, 'tail hop bound exceeded')
+            if self.kind == 1:
+                require(body == bytes.fromhex('fff7febf') and displacement == -4, 'noncanonical tail relocation addend')
+                require(len(relocations) == 1 and relocations[0]['offset'] == 0 and
+                        relocations[0]['type'] == 30 and relocations[0]['section_type'] == 9,
+                        'tail requires sole R_ARM_THM_JUMP24 REL relocation at zero')
+                relocation = relocations[0]
+                target = self.symbol_tables[relocation['symbol_table']][relocation['symbol_index']]
+                # Resolve the actual sh_link table/index, never a same-named flat symbol.
+                self.function(target)
+                edge = dict(kind='object-tail-relocation', canonical_encoded_addend=-4, relocation=relocation,
+                            target_symbol=target['name'], target_table=target['table'], target_index=target['index'])
+            else:
+                require(not relocations, 'residual relocation in firmware tail')
+                pc = checked_add(current['value'] & ~1, 4)
+                destination = pc + displacement
+                require(0 <= destination <= U32_MAX and destination % 2 == 0, 'tail destination overflow/alignment')
+                target = self.target_at(destination)
+                self.function(target)
+                edge = dict(kind='firmware-direct-tail', pc=pc, signed_displacement=displacement,
+                            target_address=destination, target_symbol=target['name'],
+                            target_table=target['table'], target_index=target['index'])
+            node.update(kind='direct-tail-thunk', relocations=relocations, edge=edge)
+            proof.append(node)
+            current = target
 
 
 def source_reservation(swift_text, c_text=None):
@@ -223,16 +326,11 @@ def classify_inventory(elf):
             require(symbol['binding'] == 1, 'measurement root must be global')
             roots.append(name)
         else:
-            require(name == LOCAL_HELPER and symbol['binding'] == 0, 'unexpected layout symbol')
-            section = elf.sections[symbol['owner']]
-            start = (symbol['value'] & ~1) - section['address']
-            require(symbol['value'] & 1 and symbol['size'] > 0 and section['type'] == 1 and
-                    section['flags'] & 7 == 6 and start >= 0 and
-                    checked_add(start, symbol['size']) <= section['size'], 'invalid local helper bounds')
-            helpers.append(dict(name=name, binding='local', measurement_root=False,
-                                address=symbol['value'], bytes=symbol['size'], section=section['name']))
+            require(symbol['binding'] == 0, 'unexpected exported/weak layout symbol')
+            helpers.append(dict(**elf.function(symbol), binding='local', measurement_root=False))
     require(len(roots) == len(SYMBOLS) and set(roots) == set(SYMBOLS), 'unexpected/missing/duplicate layout root inventory')
-    require(len(helpers) <= 1, 'duplicate known local layout helper')
+    require(len(helpers) <= MAX_LOCAL_HELPERS and len({helper['symbol'] for helper in helpers}) == len(helpers),
+            'duplicate/excess local layout helpers')
     return dict(global_roots=list(SYMBOLS), nonroot_local_helpers=helpers)
 
 
