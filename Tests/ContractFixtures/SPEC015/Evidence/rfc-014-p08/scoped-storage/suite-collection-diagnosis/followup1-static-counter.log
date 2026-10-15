@@ -1,0 +1,23 @@
+(lldb) target create ".build/contracts/p08-counter-m4_3ct2s/counter"
+Current executable set to '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m4_3ct2s/counter' (arm64).
+(lldb) run
+Process 13335 launched: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m4_3ct2s/counter' (arm64)
+Process 13335 stopped
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BREAKPOINT (code=1, subcode=0x1000f876c)
+    frame #0: 0x00000001000f876c counter`P08TypedBackingOwner.requireEmpty() + 1636
+counter`requireEmpty:
+->  0x1000f876c <+1636>: brk    #0x1
+    0x1000f8770 <+1640>: brk    #0x1
+    0x1000f8774 <+1644>: brk    #0x1
+    0x1000f8778 <+1648>: brk    #0x1
+Target 0: (counter) stopped.
+(lldb) thread backtrace all
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BREAKPOINT (code=1, subcode=0x1000f876c)
+  * frame #0: 0x00000001000f876c counter`P08TypedBackingOwner.requireEmpty() + 1636
+    frame #1: 0x000000010010cb04 counter`specialized closure #1 in closure #1 in closure #1 in closure #1 in closure #1 in withP08SelectedStatic(modelOwner:semanticOwner:backing:_:) + 624
+    frame #2: 0x000000010010c884 counter`specialized closure #1 in withP08SelectedStatic(modelOwner:semanticOwner:backing:_:) + 56
+    frame #3: 0x0000000100117b38 counter`p08CounterGraph(backing:) + 532
+    frame #4: 0x0000000100000d78 counter`static Main.main() + 144
+    frame #5: 0x0000000100000eec counter`main + 12
+    frame #6: 0x00000001829444e4 dyld`start + 6992
+

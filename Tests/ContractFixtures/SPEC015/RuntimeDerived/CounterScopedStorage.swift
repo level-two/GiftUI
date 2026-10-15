@@ -563,7 +563,12 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
         case .static(let s):
             s.g0.withBorrow { precondition($0.pointee.scopeCount == 0 && $0.pointee.textLineCount == 0 && $0.pointee.positionedGlyphCount == 0) }
             s.g2.withBorrow { p in for index in 0..<64 { precondition(p.pointee[index] == nil) } }
-            s.g3.withBorrow { precondition(!$0.pointee.isActive && $0.pointee.summary.normalizedStrokeOperationCount == 0) }
+            s.g3.withBorrow { pointer in
+                precondition(!pointer.pointee.isActive)
+                pointer.pointee.withBase { base in
+                    precondition(base.strokeCount == 0 && base.pointCount == 0 && base.subpathCount == 0 && base.normalizedStrokeOperationCount == 0)
+                }
+            }
             s.g4.withBorrow { precondition(!$0.pointee.isActive) }
             s.c0.withBorrow { precondition($0.pointee.count == 0) }
             s.h0.withBorrow { precondition($0.pointee.count == 0) }

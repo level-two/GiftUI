@@ -1,0 +1,494 @@
+(lldb) target create ".build/contracts/p08-counter-m4_3ct2s/so06-native-exclusivity-positive"
+Current executable set to '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m4_3ct2s/so06-native-exclusivity-positive' (arm64).
+(lldb) run
+Process 13288 launched: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m4_3ct2s/so06-native-exclusivity-positive' (arm64)
+Process 13288 stopped
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BREAKPOINT (code=1, subcode=0x1000f6e70)
+    frame #0: 0x00000001000f6e70 so06-native-exclusivity-positive`P08TypedBackingOwner.requireEmpty() + 1636
+so06-native-exclusivity-positive`requireEmpty:
+->  0x1000f6e70 <+1636>: brk    #0x1
+    0x1000f6e74 <+1640>: brk    #0x1
+    0x1000f6e78 <+1644>: brk    #0x1
+    0x1000f6e7c <+1648>: brk    #0x1
+Target 0: (so06-native-exclusivity-positive) stopped.
+(lldb) thread backtrace all
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BREAKPOINT (code=1, subcode=0x1000f6e70)
+  * frame #0: 0x00000001000f6e70 so06-native-exclusivity-positive`P08TypedBackingOwner.requireEmpty() + 1636
+    frame #1: 0x000000010011bf88 so06-native-exclusivity-positive`counterScopedNativeExclusivity(negative:) + 744
+    frame #2: 0x0000000100000c88 so06-native-exclusivity-positive`main + 16
+    frame #3: 0x00000001829444e4 dyld`start + 6992
+(lldb) register read x0 x1 x2 x8 x20 x21 sp
+      x0 = 0x0000000000000000
+      x1 = 0x000000016fdfe229
+      x2 = 0xfffffffffffffff1
+      x8 = 0x0000000000000001
+     x20 = 0x000000016fdf8be8
+     x21 = 0x0000000000000000
+      sp = 0x000000016fdf73a0
+(lldb) disassemble --frame
+so06-native-exclusivity-positive`requireEmpty:
+    0x1000f680c <+0>:    mov    x0, x30
+    0x1000f6810 <+4>:    bl     0x100157e18               ; OUTLINED_FUNCTION_907
+    0x1000f6814 <+8>:    mov    x30, x0
+    0x1000f6818 <+12>:   stp    x29, x30, [sp, #0x50]
+    0x1000f681c <+16>:   add    x29, sp, #0x50
+    0x1000f6820 <+20>:   sub    sp, sp, #0x1a0
+    0x1000f6824 <+24>:   mov    x1, x20
+    0x1000f6828 <+28>:   add    x0, sp, #0x28
+    0x1000f682c <+32>:   bl     0x100156408               ; OUTLINED_FUNCTION_566
+    0x1000f6830 <+36>:   add    x0, sp, #0x28
+    0x1000f6834 <+40>:   bl     0x10014de28               ; outlined enum get tag of P08CounterNativeExclusivity.P08PhysicalSlots
+    0x1000f6838 <+44>:   mov    x19, x0
+    0x1000f683c <+48>:   add    x0, sp, #0x28
+    0x1000f6840 <+52>:   bl     0x10014de34               ; ___lldb_unnamed_symbol_10014de34
+    0x1000f6844 <+56>:   cmp    w19, #0x1
+    0x1000f6848 <+60>:   b.ne   0x1000f68b4               ; <+168>
+    0x1000f684c <+64>:   ldr    x19, [x0, #0x30]
+    0x1000f6850 <+68>:   ldrb   w8, [x0, #0x40]
+    0x1000f6854 <+72>:   ldr    x22, [x0, #0x48]
+    0x1000f6858 <+76>:   ldrb   w21, [x0, #0x58]
+    0x1000f685c <+80>:   ldr    x28, [x0, #0x60]
+    0x1000f6860 <+84>:   ldrb   w20, [x0, #0x70]
+    0x1000f6864 <+88>:   ldr    x26, [x0, #0x78]
+    0x1000f6868 <+92>:   ldrb   w27, [x0, #0x88]
+    0x1000f686c <+96>:   ldr    x24, [x0, #0x90]
+    0x1000f6870 <+100>:  ldrb   w25, [x0, #0xa0]
+    0x1000f6874 <+104>:  ldr    x10, [x0, #0xa8]
+    0x1000f6878 <+108>:  ldrb   w23, [x0, #0xb8]
+    0x1000f687c <+112>:  ldr    x9, [x0, #0xc0]
+    0x1000f6880 <+116>:  stp    x9, x10, [sp, #0x18]
+    0x1000f6884 <+120>:  ldrb   w9, [x0, #0xd0]
+    0x1000f6888 <+124>:  str    w9, [sp, #0x10]
+    0x1000f688c <+128>:  cbz    w8, 0x1000f6940           ; <+308>
+    0x1000f6890 <+132>:  cmp    w8, #0x1
+    0x1000f6894 <+136>:  b.ne   0x1000f6958               ; <+332>
+    0x1000f6898 <+140>:  mov    x0, x19
+    0x1000f689c <+144>:  bl     0x100156d78               ; OUTLINED_FUNCTION_699
+    0x1000f68a0 <+148>:  b.eq   0x1000f6ebc               ; <+1712>
+    0x1000f68a4 <+152>:  mov    x0, x19
+    0x1000f68a8 <+156>:  bl     0x100156d78               ; OUTLINED_FUNCTION_699
+    0x1000f68ac <+160>:  b.ne   0x1000f6958               ; <+332>
+    0x1000f68b0 <+164>:  brk    #0x1
+    0x1000f68b4 <+168>:  ldr    x9, [x0, #0x80]
+    0x1000f68b8 <+172>:  ldrb   w10, [x0, #0x90]
+    0x1000f68bc <+176>:  ldr    x25, [x0, #0xb0]
+    0x1000f68c0 <+180>:  ldrb   w8, [x0, #0xc0]
+    0x1000f68c4 <+184>:  ldr    x24, [x0, #0xc8]
+    0x1000f68c8 <+188>:  ldrb   w21, [x0, #0xd8]
+    0x1000f68cc <+192>:  ldr    x20, [x0, #0xe0]
+    0x1000f68d0 <+196>:  ldrb   w27, [x0, #0xf0]
+    0x1000f68d4 <+200>:  ldr    x23, [x0, #0xf8]
+    0x1000f68d8 <+204>:  ldrb   w26, [x0, #0x108]
+    0x1000f68dc <+208>:  ldr    x22, [x0, #0x110]
+    0x1000f68e0 <+212>:  ldrb   w19, [x0, #0x120]
+    0x1000f68e4 <+216>:  ldr    x11, [x0, #0x128]
+    0x1000f68e8 <+220>:  str    x11, [sp, #0x10]
+    0x1000f68ec <+224>:  ldrb   w28, [x0, #0x138]
+    0x1000f68f0 <+228>:  ldr    x11, [x0, #0x140]
+    0x1000f68f4 <+232>:  str    x11, [sp, #0x18]
+    0x1000f68f8 <+236>:  ldrb   w12, [x0, #0x150]
+    0x1000f68fc <+240>:  ldr    x11, [x0, #0x158]
+    0x1000f6900 <+244>:  str    x11, [sp, #0x20]
+    0x1000f6904 <+248>:  ldrb   w11, [x0, #0x168]
+    0x1000f6908 <+252>:  cbz    w10, 0x1000f6980          ; <+372>
+    0x1000f690c <+256>:  cmp    w10, #0x1
+    0x1000f6910 <+260>:  b.ne   0x1000f69ac               ; <+416>
+    0x1000f6914 <+264>:  ldrb   w10, [x9, #0xa]
+    0x1000f6918 <+268>:  lsl    x10, x10, #16
+    0x1000f691c <+272>:  cmp    x10, #0x20, lsl #12       ; =0x20000 
+    0x1000f6920 <+276>:  b.eq   0x1000f6ec0               ; <+1716>
+    0x1000f6924 <+280>:  ldrh   w10, [x9, #0x52]
+    0x1000f6928 <+284>:  cbnz   w10, 0x1000f6e20          ; <+1556>
+    0x1000f692c <+288>:  ldrh   w10, [x9, #0x54]
+    0x1000f6930 <+292>:  cbnz   w10, 0x1000f6e30          ; <+1572>
+    0x1000f6934 <+296>:  ldrh   w9, [x9, #0x56]
+    0x1000f6938 <+300>:  cbz    w9, 0x1000f69c4           ; <+440>
+    0x1000f693c <+304>:  brk    #0x1
+    0x1000f6940 <+308>:  mov    x0, x19
+    0x1000f6944 <+312>:  bl     0x100156d78               ; OUTLINED_FUNCTION_699
+    0x1000f6948 <+316>:  b.eq   0x1000f6ec4               ; <+1720>
+    0x1000f694c <+320>:  mov    x0, x19
+    0x1000f6950 <+324>:  bl     0x100156d78               ; OUTLINED_FUNCTION_699
+    0x1000f6954 <+328>:  b.eq   0x1000f6ecc               ; <+1728>
+    0x1000f6958 <+332>:  mov    x0, x19
+    0x1000f695c <+336>:  bl     0x1000f7030               ; closure #10 (Swift.UnsafeMutablePointer<GiftUIRuntimeDynamic.DynamicDrawingPlanWorkspace>) -> () in P08CounterNativeExclusivity.P08TypedBackingOwner.requireEmpty() -> ()
+    0x1000f6960 <+340>:  cbz    w21, 0x1000f69f0          ; <+484>
+    0x1000f6964 <+344>:  cmp    w21, #0x1
+    0x1000f6968 <+348>:  b.ne   0x1000f6a04               ; <+504>
+    0x1000f696c <+352>:  ldr    x8, [x22, #0x10]
+    0x1000f6970 <+356>:  cbz    x8, 0x1000f6ed0           ; <+1732>
+    0x1000f6974 <+360>:  ldrb   w8, [x22, #0xe]
+    0x1000f6978 <+364>:  tbz    w8, #0x0, 0x1000f6a0c     ; <+512>
+    0x1000f697c <+368>:  brk    #0x1
+    0x1000f6980 <+372>:  ldrb   w10, [x9, #0xa]
+    0x1000f6984 <+376>:  lsl    x10, x10, #16
+    0x1000f6988 <+380>:  cmp    x10, #0x20, lsl #12       ; =0x20000 
+    0x1000f698c <+384>:  b.eq   0x1000f6ec8               ; <+1724>
+    0x1000f6990 <+388>:  ldrh   w10, [x9, #0x52]
+    0x1000f6994 <+392>:  cbnz   w10, 0x1000f6e24          ; <+1560>
+    0x1000f6998 <+396>:  ldrh   w10, [x9, #0x54]
+    0x1000f699c <+400>:  cbnz   w10, 0x1000f6e34          ; <+1576>
+    0x1000f69a0 <+404>:  ldrh   w9, [x9, #0x56]
+    0x1000f69a4 <+408>:  cbz    w9, 0x1000f69c4           ; <+440>
+    0x1000f69a8 <+412>:  brk    #0x1
+    0x1000f69ac <+416>:  ldrh   w10, [x9, #0x52]
+    0x1000f69b0 <+420>:  cbnz   w10, 0x1000f6e1c          ; <+1552>
+    0x1000f69b4 <+424>:  ldrh   w10, [x9, #0x54]
+    0x1000f69b8 <+428>:  cbnz   w10, 0x1000f6e2c          ; <+1568>
+    0x1000f69bc <+432>:  ldrh   w9, [x9, #0x56]
+    0x1000f69c0 <+436>:  cbnz   w9, 0x1000f6e44           ; <+1592>
+    0x1000f69c4 <+440>:  stp    w11, w12, [sp, #0x8]
+    0x1000f69c8 <+444>:  cbz    w8, 0x1000f6a7c           ; <+624>
+    0x1000f69cc <+448>:  cmp    w8, #0x1
+    0x1000f69d0 <+452>:  b.ne   0x1000f6a94               ; <+648>
+    0x1000f69d4 <+456>:  mov    x0, x25
+    0x1000f69d8 <+460>:  bl     0x100156348               ; OUTLINED_FUNCTION_561
+    0x1000f69dc <+464>:  b.eq   0x1000f6ee0               ; <+1748>
+    0x1000f69e0 <+468>:  mov    x0, x25
+    0x1000f69e4 <+472>:  bl     0x100156348               ; OUTLINED_FUNCTION_561
+    0x1000f69e8 <+476>:  b.ne   0x1000f6a94               ; <+648>
+    0x1000f69ec <+480>:  brk    #0x1
+    0x1000f69f0 <+484>:  ldr    x8, [x22, #0x10]
+    0x1000f69f4 <+488>:  cbz    x8, 0x1000f6ed4           ; <+1736>
+    0x1000f69f8 <+492>:  ldrb   w8, [x22, #0xe]
+    0x1000f69fc <+496>:  tbz    w8, #0x0, 0x1000f6a0c     ; <+512>
+    0x1000f6a00 <+500>:  brk    #0x1
+    0x1000f6a04 <+504>:  ldrb   w8, [x22, #0xe]
+    0x1000f6a08 <+508>:  tbnz   w8, #0x0, 0x1000f6e28     ; <+1564>
+    0x1000f6a0c <+512>:  cbz    w20, 0x1000f6a30          ; <+548>
+    0x1000f6a10 <+516>:  cmp    w20, #0x1
+    0x1000f6a14 <+520>:  b.ne   0x1000f6a48               ; <+572>
+    0x1000f6a18 <+524>:  ldr    x8, [x28, #0x8]
+    0x1000f6a1c <+528>:  cbz    x8, 0x1000f6ed8           ; <+1740>
+    0x1000f6a20 <+532>:  bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6a24 <+536>:  cbnz   x9, 0x1000f6e3c           ; <+1584>
+    0x1000f6a28 <+540>:  cbz    x8, 0x1000f6a58           ; <+588>
+    0x1000f6a2c <+544>:  brk    #0x1
+    0x1000f6a30 <+548>:  ldr    x8, [x28, #0x8]
+    0x1000f6a34 <+552>:  cbz    x8, 0x1000f6edc           ; <+1744>
+    0x1000f6a38 <+556>:  bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6a3c <+560>:  cbnz   x9, 0x1000f6e40           ; <+1588>
+    0x1000f6a40 <+564>:  cbz    x8, 0x1000f6a58           ; <+588>
+    0x1000f6a44 <+568>:  brk    #0x1
+    0x1000f6a48 <+572>:  ldr    x8, [x28, #0x8]
+    0x1000f6a4c <+576>:  bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6a50 <+580>:  cbnz   x9, 0x1000f6e38           ; <+1580>
+    0x1000f6a54 <+584>:  cbnz   x8, 0x1000f6e48           ; <+1596>
+    0x1000f6a58 <+588>:  cbz    w27, 0x1000f6b54          ; <+840>
+    0x1000f6a5c <+592>:  cmp    w27, #0x1
+    0x1000f6a60 <+596>:  b.ne   0x1000f6b6c               ; <+864>
+    0x1000f6a64 <+600>:  ldr    x8, [x26, #0x8]
+    0x1000f6a68 <+604>:  cbz    x8, 0x1000f6ef4           ; <+1768>
+    0x1000f6a6c <+608>:  bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6a70 <+612>:  cbnz   x9, 0x1000f6e54           ; <+1608>
+    0x1000f6a74 <+616>:  cbz    x8, 0x1000f6b7c           ; <+880>
+    0x1000f6a78 <+620>:  brk    #0x1
+    0x1000f6a7c <+624>:  mov    x0, x25
+    0x1000f6a80 <+628>:  bl     0x100156348               ; OUTLINED_FUNCTION_561
+    0x1000f6a84 <+632>:  b.eq   0x1000f6ee4               ; <+1752>
+    0x1000f6a88 <+636>:  mov    x0, x25
+    0x1000f6a8c <+640>:  bl     0x100156348               ; OUTLINED_FUNCTION_561
+    0x1000f6a90 <+644>:  b.eq   0x1000f6ee8               ; <+1756>
+    0x1000f6a94 <+648>:  mov    x0, x25
+    0x1000f6a98 <+652>:  bl     0x1000f7004               ; closure #2 (Swift.UnsafeMutablePointer<Swift.InlineArray<64, Swift.Optional<GiftUISemanticCore.SemanticRecordReference>>>) -> () in P08CounterNativeExclusivity.P08TypedBackingOwner.requireEmpty() -> ()
+    0x1000f6a9c <+656>:  cbz    w21, 0x1000f6ae0          ; <+724>
+    0x1000f6aa0 <+660>:  cmp    w21, #0x1
+    0x1000f6aa4 <+664>:  b.ne   0x1000f6b18               ; <+780>
+    0x1000f6aa8 <+668>:  mov    x0, x24
+    0x1000f6aac <+672>:  bl     0x100156438               ; OUTLINED_FUNCTION_571
+    0x1000f6ab0 <+676>:  b.eq   0x1000f6eec               ; <+1760>
+    0x1000f6ab4 <+680>:  mov    x0, x24
+    0x1000f6ab8 <+684>:  bl     0x100156438               ; OUTLINED_FUNCTION_571
+    0x1000f6abc <+688>:  b.eq   0x1000f6efc               ; <+1776>
+    0x1000f6ac0 <+692>:  ldrb   w8, [x24, #0x12]
+    0x1000f6ac4 <+696>:  tbnz   w8, #0x0, 0x1000f6e5c     ; <+1616>
+    0x1000f6ac8 <+700>:  ldrb   w8, [x24, #0x5a]
+    0x1000f6acc <+704>:  cmp    w8, #0x1
+    0x1000f6ad0 <+708>:  b.eq   0x1000f6e6c               ; <+1632>
+    0x1000f6ad4 <+712>:  ldrh   w8, [x24, #0x58]
+    0x1000f6ad8 <+716>:  cbz    w8, 0x1000f6b34           ; <+808>
+    0x1000f6adc <+720>:  brk    #0x1
+    0x1000f6ae0 <+724>:  mov    x0, x24
+    0x1000f6ae4 <+728>:  bl     0x100156438               ; OUTLINED_FUNCTION_571
+    0x1000f6ae8 <+732>:  b.eq   0x1000f6ef0               ; <+1764>
+    0x1000f6aec <+736>:  mov    x0, x24
+    0x1000f6af0 <+740>:  bl     0x100156438               ; OUTLINED_FUNCTION_571
+    0x1000f6af4 <+744>:  b.eq   0x1000f6f00               ; <+1780>
+    0x1000f6af8 <+748>:  ldrb   w8, [x24, #0x12]
+    0x1000f6afc <+752>:  tbnz   w8, #0x0, 0x1000f6e60     ; <+1620>
+    0x1000f6b00 <+756>:  ldrb   w8, [x24, #0x5a]
+    0x1000f6b04 <+760>:  cmp    w8, #0x1
+    0x1000f6b08 <+764>:  b.eq   0x1000f6e70               ; <+1636>
+    0x1000f6b0c <+768>:  ldrh   w8, [x24, #0x58]
+    0x1000f6b10 <+772>:  cbz    w8, 0x1000f6b34           ; <+808>
+    0x1000f6b14 <+776>:  brk    #0x1
+    0x1000f6b18 <+780>:  ldrb   w8, [x24, #0x12]
+    0x1000f6b1c <+784>:  tbnz   w8, #0x0, 0x1000f6e4c     ; <+1600>
+    0x1000f6b20 <+788>:  ldrb   w8, [x24, #0x5a]
+    0x1000f6b24 <+792>:  cmp    w8, #0x1
+    0x1000f6b28 <+796>:  b.eq   0x1000f6e64               ; <+1624>
+    0x1000f6b2c <+800>:  ldrh   w8, [x24, #0x58]
+    0x1000f6b30 <+804>:  cbnz   w8, 0x1000f6e74           ; <+1640>
+    0x1000f6b34 <+808>:  cbz    w27, 0x1000f6bf0          ; <+996>
+    0x1000f6b38 <+812>:  cmp    w27, #0x1
+    0x1000f6b3c <+816>:  b.ne   0x1000f6c04               ; <+1016>
+    0x1000f6b40 <+820>:  ldr    x8, [x20, #0x8]
+    0x1000f6b44 <+824>:  bl     0x10015a37c               ; OUTLINED_FUNCTION_1517
+    0x1000f6b48 <+828>:  b.eq   0x1000f6f0c               ; <+1792>
+    0x1000f6b4c <+832>:  tbz    x8, #0x30, 0x1000f6c0c    ; <+1024>
+    0x1000f6b50 <+836>:  brk    #0x1
+    0x1000f6b54 <+840>:  ldr    x8, [x26, #0x8]
+    0x1000f6b58 <+844>:  cbz    x8, 0x1000f6ef8           ; <+1772>
+    0x1000f6b5c <+848>:  bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6b60 <+852>:  cbnz   x9, 0x1000f6e58           ; <+1612>
+    0x1000f6b64 <+856>:  cbz    x8, 0x1000f6b7c           ; <+880>
+    0x1000f6b68 <+860>:  brk    #0x1
+    0x1000f6b6c <+864>:  ldr    x8, [x26, #0x8]
+    0x1000f6b70 <+868>:  bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6b74 <+872>:  cbnz   x9, 0x1000f6e50           ; <+1604>
+    0x1000f6b78 <+876>:  cbnz   x8, 0x1000f6e68           ; <+1628>
+    0x1000f6b7c <+880>:  cbz    w25, 0x1000f6ba0          ; <+916>
+    0x1000f6b80 <+884>:  cmp    w25, #0x1
+    0x1000f6b84 <+888>:  b.ne   0x1000f6bb8               ; <+940>
+    0x1000f6b88 <+892>:  ldr    x8, [x24, #0x8]
+    0x1000f6b8c <+896>:  cbz    x8, 0x1000f6f04           ; <+1784>
+    0x1000f6b90 <+900>:  bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6b94 <+904>:  cbnz   x9, 0x1000f6e7c           ; <+1648>
+    0x1000f6b98 <+908>:  cbz    x8, 0x1000f6bc8           ; <+956>
+    0x1000f6b9c <+912>:  brk    #0x1
+    0x1000f6ba0 <+916>:  ldr    x8, [x24, #0x8]
+    0x1000f6ba4 <+920>:  cbz    x8, 0x1000f6f08           ; <+1788>
+    0x1000f6ba8 <+924>:  bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6bac <+928>:  cbnz   x9, 0x1000f6e80           ; <+1652>
+    0x1000f6bb0 <+932>:  cbz    x8, 0x1000f6bc8           ; <+956>
+    0x1000f6bb4 <+936>:  brk    #0x1
+    0x1000f6bb8 <+940>:  ldr    x8, [x24, #0x8]
+    0x1000f6bbc <+944>:  bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6bc0 <+948>:  cbnz   x9, 0x1000f6e78           ; <+1644>
+    0x1000f6bc4 <+952>:  cbnz   x8, 0x1000f6e84           ; <+1656>
+    0x1000f6bc8 <+956>:  cbz    w23, 0x1000f6c48          ; <+1084>
+    0x1000f6bcc <+960>:  cmp    w23, #0x1
+    0x1000f6bd0 <+964>:  b.ne   0x1000f6c90               ; <+1156>
+    0x1000f6bd4 <+968>:  ldr    x8, [sp, #0x20]
+    0x1000f6bd8 <+972>:  ldr    x8, [x8, #0x8]
+    0x1000f6bdc <+976>:  cbz    x8, 0x1000f6f14           ; <+1800>
+    0x1000f6be0 <+980>:  bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6be4 <+984>:  cbnz   x9, 0x1000f6e94           ; <+1672>
+    0x1000f6be8 <+988>:  cbz    x8, 0x1000f6ca4           ; <+1176>
+    0x1000f6bec <+992>:  brk    #0x1
+    0x1000f6bf0 <+996>:  ldr    x8, [x20, #0x8]
+    0x1000f6bf4 <+1000>: bl     0x10015a37c               ; OUTLINED_FUNCTION_1517
+    0x1000f6bf8 <+1004>: b.eq   0x1000f6f10               ; <+1796>
+    0x1000f6bfc <+1008>: tbz    x8, #0x30, 0x1000f6c0c    ; <+1024>
+    0x1000f6c00 <+1012>: brk    #0x1
+    0x1000f6c04 <+1016>: ldrb   w8, [x20, #0xe]
+    0x1000f6c08 <+1020>: tbnz   w8, #0x0, 0x1000f6e88     ; <+1660>
+    0x1000f6c0c <+1024>: cbz    w26, 0x1000f6c30          ; <+1060>
+    0x1000f6c10 <+1028>: cmp    w26, #0x1
+    0x1000f6c14 <+1032>: b.ne   0x1000f6c64               ; <+1112>
+    0x1000f6c18 <+1036>: mov    x0, x23
+    0x1000f6c1c <+1040>: bl     0x100158578               ; OUTLINED_FUNCTION_1014
+    0x1000f6c20 <+1044>: b.eq   0x1000f6f18               ; <+1804>
+    0x1000f6c24 <+1048>: ldrh   w8, [x23, #0x2]
+    0x1000f6c28 <+1052>: cbz    w8, 0x1000f6c6c           ; <+1120>
+    0x1000f6c2c <+1056>: brk    #0x1
+    0x1000f6c30 <+1060>: mov    x0, x23
+    0x1000f6c34 <+1064>: bl     0x100158578               ; OUTLINED_FUNCTION_1014
+    0x1000f6c38 <+1068>: b.eq   0x1000f6f1c               ; <+1808>
+    0x1000f6c3c <+1072>: ldrh   w8, [x23, #0x2]
+    0x1000f6c40 <+1076>: cbz    w8, 0x1000f6c6c           ; <+1120>
+    0x1000f6c44 <+1080>: brk    #0x1
+    0x1000f6c48 <+1084>: ldr    x8, [sp, #0x20]
+    0x1000f6c4c <+1088>: ldr    x8, [x8, #0x8]
+    0x1000f6c50 <+1092>: cbz    x8, 0x1000f6f20           ; <+1812>
+    0x1000f6c54 <+1096>: bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6c58 <+1100>: cbnz   x9, 0x1000f6e98           ; <+1676>
+    0x1000f6c5c <+1104>: cbz    x8, 0x1000f6ca4           ; <+1176>
+    0x1000f6c60 <+1108>: brk    #0x1
+    0x1000f6c64 <+1112>: ldrh   w8, [x23, #0x2]
+    0x1000f6c68 <+1116>: cbnz   w8, 0x1000f6e8c           ; <+1664>
+    0x1000f6c6c <+1120>: cbz    w19, 0x1000f6cd0          ; <+1220>
+    0x1000f6c70 <+1124>: cmp    w19, #0x1
+    0x1000f6c74 <+1128>: b.ne   0x1000f6ce8               ; <+1244>
+    0x1000f6c78 <+1132>: mov    x0, x22
+    0x1000f6c7c <+1136>: bl     0x1001570dc               ; OUTLINED_FUNCTION_730
+    0x1000f6c80 <+1140>: b.eq   0x1000f6f24               ; <+1816>
+    0x1000f6c84 <+1144>: ldrh   w8, [x22, #0x2]
+    0x1000f6c88 <+1148>: cbz    w8, 0x1000f6cf0           ; <+1252>
+    0x1000f6c8c <+1152>: brk    #0x1
+    0x1000f6c90 <+1156>: ldr    x8, [sp, #0x20]
+    0x1000f6c94 <+1160>: ldr    x8, [x8, #0x8]
+    0x1000f6c98 <+1164>: bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6c9c <+1168>: cbnz   x9, 0x1000f6e90           ; <+1668>
+    0x1000f6ca0 <+1172>: cbnz   x8, 0x1000f6e9c           ; <+1680>
+    0x1000f6ca4 <+1176>: ldr    w8, [sp, #0x10]
+    0x1000f6ca8 <+1180>: cbz    w8, 0x1000f6d20           ; <+1300>
+    0x1000f6cac <+1184>: cmp    w8, #0x1
+    0x1000f6cb0 <+1188>: b.ne   0x1000f6d3c               ; <+1328>
+    0x1000f6cb4 <+1192>: ldr    x8, [sp, #0x18]
+    0x1000f6cb8 <+1196>: ldr    x8, [x8, #0x8]
+    0x1000f6cbc <+1200>: cbz    x8, 0x1000f6f2c           ; <+1824>
+    0x1000f6cc0 <+1204>: bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6cc4 <+1208>: cbnz   x9, 0x1000f6eac           ; <+1696>
+    0x1000f6cc8 <+1212>: cbz    x8, 0x1000f6e10           ; <+1540>
+    0x1000f6ccc <+1216>: brk    #0x1
+    0x1000f6cd0 <+1220>: mov    x0, x22
+    0x1000f6cd4 <+1224>: bl     0x1001570dc               ; OUTLINED_FUNCTION_730
+    0x1000f6cd8 <+1228>: b.eq   0x1000f6f28               ; <+1820>
+    0x1000f6cdc <+1232>: ldrh   w8, [x22, #0x2]
+    0x1000f6ce0 <+1236>: cbz    w8, 0x1000f6cf0           ; <+1252>
+    0x1000f6ce4 <+1240>: brk    #0x1
+    0x1000f6ce8 <+1244>: ldrh   w8, [x22, #0x2]
+    0x1000f6cec <+1248>: cbnz   w8, 0x1000f6ea0           ; <+1684>
+    0x1000f6cf0 <+1252>: cbz    w28, 0x1000f6d54          ; <+1352>
+    0x1000f6cf4 <+1256>: cmp    w28, #0x1
+    0x1000f6cf8 <+1260>: ldp    x20, x19, [sp, #0x18]
+    0x1000f6cfc <+1264>: ldr    x21, [sp, #0x10]
+    0x1000f6d00 <+1268>: b.ne   0x1000f6d78               ; <+1388>
+    0x1000f6d04 <+1272>: mov    x0, x21
+    0x1000f6d08 <+1276>: bl     0x10015614c               ; OUTLINED_FUNCTION_532
+    0x1000f6d0c <+1280>: b.eq   0x1000f6f34               ; <+1832>
+    0x1000f6d10 <+1284>: ldrh   w8, [x21, #0x2]
+    0x1000f6d14 <+1288>: ldr    w9, [sp, #0xc]
+    0x1000f6d18 <+1292>: cbz    w8, 0x1000f6d84           ; <+1400>
+    0x1000f6d1c <+1296>: brk    #0x1
+    0x1000f6d20 <+1300>: ldr    x8, [sp, #0x18]
+    0x1000f6d24 <+1304>: ldr    x8, [x8, #0x8]
+    0x1000f6d28 <+1308>: cbz    x8, 0x1000f6f30           ; <+1828>
+    0x1000f6d2c <+1312>: bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6d30 <+1316>: cbnz   x9, 0x1000f6eb0           ; <+1700>
+    0x1000f6d34 <+1320>: cbz    x8, 0x1000f6e10           ; <+1540>
+    0x1000f6d38 <+1324>: brk    #0x1
+    0x1000f6d3c <+1328>: ldr    x8, [sp, #0x18]
+    0x1000f6d40 <+1332>: ldr    x8, [x8, #0x8]
+    0x1000f6d44 <+1336>: bl     0x1001575c4               ; OUTLINED_FUNCTION_795
+    0x1000f6d48 <+1340>: cbnz   x9, 0x1000f6ea4           ; <+1688>
+    0x1000f6d4c <+1344>: cbz    x8, 0x1000f6e10           ; <+1540>
+    0x1000f6d50 <+1348>: brk    #0x1
+    0x1000f6d54 <+1352>: ldr    x21, [sp, #0x10]
+    0x1000f6d58 <+1356>: mov    x0, x21
+    0x1000f6d5c <+1360>: bl     0x10015614c               ; OUTLINED_FUNCTION_532
+    0x1000f6d60 <+1364>: ldp    x20, x19, [sp, #0x18]
+    0x1000f6d64 <+1368>: b.eq   0x1000f6f38               ; <+1836>
+    0x1000f6d68 <+1372>: ldrh   w8, [x21, #0x2]
+    0x1000f6d6c <+1376>: ldr    w9, [sp, #0xc]
+    0x1000f6d70 <+1380>: cbz    w8, 0x1000f6d84           ; <+1400>
+    0x1000f6d74 <+1384>: brk    #0x1
+    0x1000f6d78 <+1388>: ldrh   w8, [x21, #0x2]
+    0x1000f6d7c <+1392>: ldr    w9, [sp, #0xc]
+    0x1000f6d80 <+1396>: cbnz   w8, 0x1000f6ea8           ; <+1692>
+    0x1000f6d84 <+1400>: cbz    w9, 0x1000f6da8           ; <+1436>
+    0x1000f6d88 <+1404>: cmp    w9, #0x1
+    0x1000f6d8c <+1408>: b.ne   0x1000f6dc0               ; <+1460>
+    0x1000f6d90 <+1412>: bl     0x100154034               ; OUTLINED_FUNCTION_135
+    0x1000f6d94 <+1416>: b.eq   0x1000f6f3c               ; <+1840>
+    0x1000f6d98 <+1420>: ldrh   w8, [x20, #0x2]
+    0x1000f6d9c <+1424>: ldr    w9, [sp, #0x8]
+    0x1000f6da0 <+1428>: cbz    w8, 0x1000f6dcc           ; <+1472>
+    0x1000f6da4 <+1432>: brk    #0x1
+    0x1000f6da8 <+1436>: bl     0x100154034               ; OUTLINED_FUNCTION_135
+    0x1000f6dac <+1440>: b.eq   0x1000f6f40               ; <+1844>
+    0x1000f6db0 <+1444>: ldrh   w8, [x20, #0x2]
+    0x1000f6db4 <+1448>: ldr    w9, [sp, #0x8]
+    0x1000f6db8 <+1452>: cbz    w8, 0x1000f6dcc           ; <+1472>
+    0x1000f6dbc <+1456>: brk    #0x1
+    0x1000f6dc0 <+1460>: ldrh   w8, [x20, #0x2]
+    0x1000f6dc4 <+1464>: ldr    w9, [sp, #0x8]
+    0x1000f6dc8 <+1468>: cbnz   w8, 0x1000f6eb4           ; <+1704>
+    0x1000f6dcc <+1472>: cbz    w9, 0x1000f6df0           ; <+1508>
+    0x1000f6dd0 <+1476>: cmp    w9, #0x1
+    0x1000f6dd4 <+1480>: b.ne   0x1000f6e08               ; <+1532>
+    0x1000f6dd8 <+1484>: mov    x0, x19
+    0x1000f6ddc <+1488>: bl     0x1001570dc               ; OUTLINED_FUNCTION_730
+    0x1000f6de0 <+1492>: b.eq   0x1000f6f44               ; <+1848>
+    0x1000f6de4 <+1496>: ldrh   w8, [x19, #0x2]
+    0x1000f6de8 <+1500>: cbz    w8, 0x1000f6e10           ; <+1540>
+    0x1000f6dec <+1504>: brk    #0x1
+    0x1000f6df0 <+1508>: mov    x0, x19
+    0x1000f6df4 <+1512>: bl     0x1001570dc               ; OUTLINED_FUNCTION_730
+    0x1000f6df8 <+1516>: b.eq   0x1000f6f48               ; <+1852>
+    0x1000f6dfc <+1520>: ldrh   w8, [x19, #0x2]
+    0x1000f6e00 <+1524>: cbz    w8, 0x1000f6e10           ; <+1540>
+    0x1000f6e04 <+1528>: brk    #0x1
+    0x1000f6e08 <+1532>: ldrh   w8, [x19, #0x2]
+    0x1000f6e0c <+1536>: cbnz   w8, 0x1000f6eb8           ; <+1708>
+    0x1000f6e10 <+1540>: add    sp, sp, #0x1a0
+    0x1000f6e14 <+1544>: ldp    x29, x30, [sp, #0x50]
+    0x1000f6e18 <+1548>: b      0x100152ee4               ; OUTLINED_FUNCTION_9
+    0x1000f6e1c <+1552>: brk    #0x1
+    0x1000f6e20 <+1556>: brk    #0x1
+    0x1000f6e24 <+1560>: brk    #0x1
+    0x1000f6e28 <+1564>: brk    #0x1
+    0x1000f6e2c <+1568>: brk    #0x1
+    0x1000f6e30 <+1572>: brk    #0x1
+    0x1000f6e34 <+1576>: brk    #0x1
+    0x1000f6e38 <+1580>: brk    #0x1
+    0x1000f6e3c <+1584>: brk    #0x1
+    0x1000f6e40 <+1588>: brk    #0x1
+    0x1000f6e44 <+1592>: brk    #0x1
+    0x1000f6e48 <+1596>: brk    #0x1
+    0x1000f6e4c <+1600>: brk    #0x1
+    0x1000f6e50 <+1604>: brk    #0x1
+    0x1000f6e54 <+1608>: brk    #0x1
+    0x1000f6e58 <+1612>: brk    #0x1
+    0x1000f6e5c <+1616>: brk    #0x1
+    0x1000f6e60 <+1620>: brk    #0x1
+    0x1000f6e64 <+1624>: brk    #0x1
+    0x1000f6e68 <+1628>: brk    #0x1
+    0x1000f6e6c <+1632>: brk    #0x1
+->  0x1000f6e70 <+1636>: brk    #0x1
+    0x1000f6e74 <+1640>: brk    #0x1
+    0x1000f6e78 <+1644>: brk    #0x1
+    0x1000f6e7c <+1648>: brk    #0x1
+    0x1000f6e80 <+1652>: brk    #0x1
+    0x1000f6e84 <+1656>: brk    #0x1
+    0x1000f6e88 <+1660>: brk    #0x1
+    0x1000f6e8c <+1664>: brk    #0x1
+    0x1000f6e90 <+1668>: brk    #0x1
+    0x1000f6e94 <+1672>: brk    #0x1
+    0x1000f6e98 <+1676>: brk    #0x1
+    0x1000f6e9c <+1680>: brk    #0x1
+    0x1000f6ea0 <+1684>: brk    #0x1
+    0x1000f6ea4 <+1688>: brk    #0x1
+    0x1000f6ea8 <+1692>: brk    #0x1
+    0x1000f6eac <+1696>: brk    #0x1
+    0x1000f6eb0 <+1700>: brk    #0x1
+    0x1000f6eb4 <+1704>: brk    #0x1
+    0x1000f6eb8 <+1708>: brk    #0x1
+    0x1000f6ebc <+1712>: brk    #0x1
+    0x1000f6ec0 <+1716>: brk    #0x1
+    0x1000f6ec4 <+1720>: brk    #0x1
+    0x1000f6ec8 <+1724>: brk    #0x1
+    0x1000f6ecc <+1728>: brk    #0x1
+    0x1000f6ed0 <+1732>: brk    #0x1
+    0x1000f6ed4 <+1736>: brk    #0x1
+    0x1000f6ed8 <+1740>: brk    #0x1
+    0x1000f6edc <+1744>: brk    #0x1
+    0x1000f6ee0 <+1748>: brk    #0x1
+    0x1000f6ee4 <+1752>: brk    #0x1
+    0x1000f6ee8 <+1756>: brk    #0x1
+    0x1000f6eec <+1760>: brk    #0x1
+    0x1000f6ef0 <+1764>: brk    #0x1
+    0x1000f6ef4 <+1768>: brk    #0x1
+    0x1000f6ef8 <+1772>: brk    #0x1
+    0x1000f6efc <+1776>: brk    #0x1
+    0x1000f6f00 <+1780>: brk    #0x1
+    0x1000f6f04 <+1784>: brk    #0x1
+    0x1000f6f08 <+1788>: brk    #0x1
+    0x1000f6f0c <+1792>: brk    #0x1
+    0x1000f6f10 <+1796>: brk    #0x1
+    0x1000f6f14 <+1800>: brk    #0x1
+    0x1000f6f18 <+1804>: brk    #0x1
+    0x1000f6f1c <+1808>: brk    #0x1
+    0x1000f6f20 <+1812>: brk    #0x1
+    0x1000f6f24 <+1816>: brk    #0x1
+    0x1000f6f28 <+1820>: brk    #0x1
+    0x1000f6f2c <+1824>: brk    #0x1
+    0x1000f6f30 <+1828>: brk    #0x1
+    0x1000f6f34 <+1832>: brk    #0x1
+    0x1000f6f38 <+1836>: brk    #0x1
+    0x1000f6f3c <+1840>: brk    #0x1
+    0x1000f6f40 <+1844>: brk    #0x1
+    0x1000f6f44 <+1848>: brk    #0x1
+    0x1000f6f48 <+1852>: brk    #0x1
+
