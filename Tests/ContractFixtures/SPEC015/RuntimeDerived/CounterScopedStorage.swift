@@ -1357,7 +1357,7 @@ fileprivate struct P08EmbeddedOuter: ~Copyable {
     }
     deinit {
         if acquired >= 11 { used.deinitialize(count: 1) }
-        if acquired >= 10 { control.deinitialize(count: 1) }
+        if acquired >= 10 { control.pointee.requireVacantRuntimeSlot(); control.deinitialize(count: 1) }
         if acquired >= 9 { entries.deinitialize(count: 1) }
         if acquired >= 8 { canvas.deinitialize(count: 1) }
         if acquired >= 7 { scalars.deinitialize(count: 128) }
@@ -1501,11 +1501,13 @@ fileprivate func p08ReuseLabel(_ route: StaticString, _ suffix: StaticString) {
     #endif
 }
 fileprivate func p08RequireFreshControl(_ control: UnsafeMutablePointer<CounterControl>) {
+    control.pointee.requireVacantRuntimeSlot()
     precondition(control.pointee.admissionController == nil && control.pointee.wake == nil && control.pointee.scheduler == nil)
     precondition(control.pointee.lastSealedAction == nil && control.pointee.lastDispatchedAction == nil && control.pointee.lastDispatchContext == nil && control.pointee.actionDispatches == 0)
     precondition(!control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled && control.pointee.finalized == 0)
 }
 fileprivate func p08RequireRetiredControl(_ control: UnsafeMutablePointer<CounterControl>) {
+    control.pointee.requireVacantRuntimeSlot()
     precondition(control.pointee.runtime.unavailable && !control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled)
     precondition(control.pointee.observationsInstalled == control.pointee.observationsDetached)
     if var scheduler = control.pointee.scheduler {
@@ -1518,6 +1520,8 @@ fileprivate func p08RequireSameInventory(_ current: InlineArray<14, P08Initializ
     for index in 0..<14 { precondition(current[index] == original[index]) }
 }
 fileprivate struct P08ReuseFingerprint: Equatable {
+    let runtimeSlot: CounterRuntimeSlotObservation
+    let acceptedRecording: CounterRecordingObservation
     let joins: CounterJoinSnapshot
     let context: ExecutionContext
     let capture: CapturedAction<SemanticCompleteIdentity>?
@@ -1546,6 +1550,8 @@ fileprivate struct P08ReuseFingerprint: Equatable {
     let lastDispatchContext: ExecutionContext?
     let actionDispatches: Int
     init(_ control: UnsafeMutablePointer<CounterControl>) {
+        runtimeSlot = CounterRuntimeSlotObservation(control)
+        acceptedRecording = CounterRecordingObservation(control.pointee.lastFrame)
         joins = counterJoinSnapshot(control); context = control.pointee.runtime.context
         capture = control.pointee.runtime.pointer.capture.current; source = control.pointee.runtime.pointer.source
         sequence = control.pointee.runtime.pointer.sequence
@@ -1782,6 +1788,7 @@ fileprivate func p08RunReuseHost<Owner>(host: inout SignalAnalyzerPresetHostInst
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     let route: StaticString = host.assemblyReport.profile == .static ? "static" : "dynamic"
     var count = p08ReuseActivate(host: &host, control: control)
+    count += p08RuntimeSlotGuardControls(control)
     let action = p08ReuseProducedAction(host: host)
     var admission = CounterAdmission(borrowing: control)
     let revision = control.pointee.runtime.committedPresentation!
@@ -1825,6 +1832,7 @@ fileprivate struct P08StaticOuterView: ~Copyable {
     let outerMetadataBytes: Int
     borrowing func reconstruct(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity) {
         p08RequireRetiredControl(control)
+        control.pointee.requireVacantRuntimeSlot()
         control.deinitialize(count: 1); canvas.deinitialize(count: 1); semantic.deinitialize(count: 1); root.deinitialize(count: 1)
         root.initialize(to: StaticObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
         semantic.initialize(to: StaticSemanticRecordStorage(limits: counterSemanticLimits, owner: semanticOwner))
@@ -1896,6 +1904,8 @@ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerI
     let metadata = backing!.count - occupied + MemoryLayout<RuntimeProfileLimits>.stride + MemoryLayout<Bool>.stride - CounterSemanticBacking.paddingBytes
     let view = P08StaticOuterView(limits: outer.limits.pointee, root: outer.root, semantic: outer.semantic,
         records: .init(start: outer.records, count: 128), paths: .init(start: outer.paths, count: 384), payloads: .init(start: outer.payloads, count: 256), scalars: .init(start: outer.scalars, count: 128), canvas: outer.canvas, entries: .init(start: outer.entries, count: 1), control: outer.control, outerMetadataBytes: metadata)
+    let control = outer.control
+    defer { control.pointee.requireVacantRuntimeSlot() }
     return body(&owner, view)
     #else
     var outer = P08StaticOuter(modelOwner: modelOwner, semanticOwner: semanticOwner)
@@ -1914,6 +1924,7 @@ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerI
                 defer { owner.finishReservation() }
                 let metadata = MemoryLayout<P08StaticOuter>.stride - MemoryLayout<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CounterSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>>.size - MemoryLayout<CounterControl>.size + MemoryLayout<P08StaticReservation>.stride - (MemoryLayout<InlineArray<1024, UInt8>?>.stride + MemoryLayout<InlineArray<1056, UInt8>?>.stride + MemoryLayout<InlineArray<20, UInt8>?>.stride + MemoryLayout<InlineArray<112, UInt8>?>.stride + MemoryLayout<StaticCounterLayoutWorkspace?>.stride + MemoryLayout<StaticCounterResolvedLayoutStorage?>.stride + MemoryLayout<InlineArray<64, SemanticRecordReference?>?>.stride + MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>?>.stride + MemoryLayout<QualifiedRender?>.stride + MemoryLayout<CounterStaticCandidate?>.stride + 2 * MemoryLayout<CounterStaticHits?>.stride + 2 * MemoryLayout<CounterStaticCommitted?>.stride)
                 let view = P08StaticOuterView(limits: limits, root: root, semantic: semantic, records: records, paths: paths, payloads: payloads, scalars: scalars, canvas: canvas, entries: entries, control: control, outerMetadataBytes: metadata)
+                defer { control.pointee.requireVacantRuntimeSlot() }
                 return body(&owner, view)
             }
         } } } } } } } } }
@@ -1964,6 +1975,7 @@ fileprivate func p08CompleteBody(_ result: P08BodyResult, control: UnsafeMutable
         precondition(control.pointee.runtime.pointer.capture.current == nil && control.pointee.runtime.pointer.source == nil)
         precondition(!control.pointee.hasRoot && control.pointee.committedRecords == 0)
     }
+    control.pointee.requireVacantRuntimeSlot()
     control.pointee.retireProducerOrigin()
 }
 
@@ -2208,6 +2220,7 @@ fileprivate struct P08DynamicOuterView: ~Copyable {
     let control: UnsafeMutablePointer<CounterControl>
     borrowing func reconstruct(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity) {
         p08RequireRetiredControl(control)
+        control.pointee.requireVacantRuntimeSlot()
         control.deinitialize(count: 1); canvas.deinitialize(count: 1); semantic.deinitialize(count: 1); root.deinitialize(count: 1)
         root.initialize(to: DynamicObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
         semantic.initialize(to: DynamicSemanticRecordStorage(limits: counterSemanticLimits, owner: semanticOwner))
@@ -2241,6 +2254,7 @@ fileprivate func withP08SelectedDynamic<Result>(modelOwner: ObservableModelOwner
             withP08DynamicReservation { owner in
                 precondition(initializeP08Backing(&owner) == nil); defer { owner.finishReservation() }
                 let view = P08DynamicOuterView(limits: limits, root: root, semantic: semantic, canvas: canvas, control: control)
+                defer { control.pointee.requireVacantRuntimeSlot() }
                 return body(&owner, view)
             }
         } } } }
@@ -2666,3 +2680,16 @@ fileprivate struct P08SessionOnlyCleanup: ~Copyable, ~Escapable {
     #endif
 }
 #endif
+
+@inline(never)
+fileprivate func p08RuntimeSlotGuardControls(_ control: UnsafeMutablePointer<CounterControl>) -> Int {
+    let before = CounterRuntimeSlotObservation(control)
+    guard let owner = control.pointee.runtimeSlotOwner else { preconditionFailure("missing actual runtime owner") }
+    let wrong = owner.addingReportingOverflow(1)
+    precondition(!wrong.overflow)
+    let duplicate = control.pointee.tryClaimRuntimeSlot()
+    let wrongClear = control.pointee.tryClearRuntimeSlot(wrong.partialValue)
+    let same = CounterRuntimeSlotObservation(control) == before
+    precondition(duplicate == nil && !wrongClear && same)
+    return 3
+}

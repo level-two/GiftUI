@@ -26,12 +26,16 @@ func exerciseCounterCoordinator<G, C, R, H>(models: borrowing ObservableModelSco
         if dynamic {
             var coordinator = DynamicRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
             let checks = runCounterCoordinator(&coordinator, control: pointer) + 3
-            return coordinator.takeQuiescedOpportunity()!.returnWorkspaces(checks: checks)
+            let returned = coordinator.takeQuiescedOpportunity()!.returnWorkspaces(checks: checks)
+            pointer.pointee.requireVacantRuntimeSlot()
+            return returned
         }
         #endif
         var coordinator = StaticRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
         let checks = runCounterCoordinator(&coordinator, control: pointer) + 3
-        return coordinator.takeQuiescedOpportunity()!.returnWorkspaces(checks: checks)
+        let returned = coordinator.takeQuiescedOpportunity()!.returnWorkspaces(checks: checks)
+        pointer.pointee.requireVacantRuntimeSlot()
+        return returned
     }
 }
 

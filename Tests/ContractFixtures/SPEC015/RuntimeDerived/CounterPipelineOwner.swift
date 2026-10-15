@@ -4,6 +4,13 @@ import GiftUIDrawing
 @testable import GiftUIExecution
 import GiftUIInteraction
 import GiftUIHostConfiguration
+import GiftUIBackendIntegration
+import GiftUICapabilities
+import GiftUIDisplayCore
+import GiftUIFailureCore
+import GiftUIRasterCore
+import GiftUISurfaceCore
+import GiftUITextResources
 import GiftUILayout
 import GiftUIObservableState
 import GiftUIRenderCore
@@ -37,7 +44,69 @@ struct CounterProducedAction {
         self.origin = origin; self.captured = captured; self.targetGeneration = targetGeneration; self.targetIdentity = targetIdentity
     }
 }
+enum CounterRuntimeSlotPhase: UInt8, Equatable { case vacant, installing, installed, quiesced }
+
+// Five independent stored fields below are borrowed separately. These scalar
+// claims record the one pipeline installation; they are not Interaction state.
 struct CounterControl {
+    var runtimeEndpoint: CounterEndpoint?
+    var runtimeRootIdentity: SemanticCompleteIdentity?
+    var runtimeActionIdentity: SemanticCompleteIdentity?
+    var runtimeCandidateRootIdentity: SemanticCompleteIdentity?
+    var runtimeCandidateActionIdentity: SemanticCompleteIdentity?
+    private(set) var runtimeSlotPhase: CounterRuntimeSlotPhase = .vacant
+    private(set) var runtimeSlotOwner: UInt64?
+    private(set) var runtimeLastOwnerSerial: UInt64 = 0
+    mutating func claimRuntimeSlot() -> UInt64 {
+        guard let claim = tryClaimRuntimeSlot() else { preconditionFailure("duplicate/overflow runtime claim") }
+        return claim
+    }
+    mutating func tryClaimRuntimeSlot() -> UInt64? {
+        guard runtimeSlotPhase == .vacant && runtimeSlotOwner == nil && runtimeEndpoint == nil,
+            runtimeRootIdentity == nil && runtimeActionIdentity == nil && runtimeCandidateRootIdentity == nil && runtimeCandidateActionIdentity == nil else { return nil }
+        let next = runtimeLastOwnerSerial.addingReportingOverflow(1)
+        guard !next.overflow else { return nil }
+        runtimeLastOwnerSerial = next.partialValue
+        runtimeSlotOwner = next.partialValue; runtimeSlotPhase = .installing
+        return next.partialValue
+    }
+    borrowing func requireVacantRuntimeSlot() {
+        let vacant = runtimeSlotPhase == .vacant && runtimeSlotOwner == nil && runtimeEndpoint == nil
+        let noKeys = runtimeRootIdentity == nil && runtimeActionIdentity == nil && runtimeCandidateRootIdentity == nil && runtimeCandidateActionIdentity == nil
+        precondition(vacant && noKeys)
+    }
+    borrowing func requireRuntimeClaim(_ claim: UInt64) {
+        let matches = runtimeSlotOwner == claim && (runtimeSlotPhase == .installed || runtimeSlotPhase == .quiesced) && runtimeEndpoint != nil
+        precondition(matches)
+    }
+    mutating func completeRuntimeInstallation(_ claim: UInt64) {
+        precondition(runtimeSlotOwner == claim && runtimeSlotPhase == .installing && runtimeEndpoint != nil)
+        precondition(runtimeRootIdentity == nil && runtimeActionIdentity == nil && runtimeCandidateRootIdentity == nil && runtimeCandidateActionIdentity == nil)
+        runtimeSlotPhase = .installed
+    }
+    mutating func markRuntimeQuiesced(_ claim: UInt64) {
+        requireRuntimeClaim(claim)
+        precondition(!backend.active)
+        runtimeSlotPhase = .quiesced
+    }
+    mutating func clearRuntimeSlot(_ claim: UInt64) {
+        let cleared = tryClearRuntimeSlot(claim)
+        precondition(cleared)
+    }
+    mutating func tryClearRuntimeSlot(_ claim: UInt64) -> Bool {
+        guard runtimeSlotOwner == claim && runtimeSlotPhase == .quiesced,
+              runtimeEndpoint != nil && !backend.active else { return false }
+        let idle = runtimeEndpoint!.isIdleForRuntimeRelease
+        guard idle else { return false }
+        // Offers are synchronous and resolved before quiescence. These owned
+        // fields have no destructor callback and no scope-bearing capability.
+        runtimeEndpoint = nil
+        runtimeRootIdentity = nil; runtimeActionIdentity = nil
+        runtimeCandidateRootIdentity = nil; runtimeCandidateActionIdentity = nil
+        runtimeSlotOwner = nil; runtimeSlotPhase = .vacant
+        requireVacantRuntimeSlot()
+        return true
+    }
     private var producerOrigin: CounterProducerOrigin?
     private var selectedProducer = false
     mutating func installProducerOrigin(owner: UInt, serial: UInt64) {
@@ -174,15 +243,27 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     var committedPresentation: PresentationRevision?
     var sealedAdmission: AdmissionSummary?
     var recovery = PresentationPendingState(maximumRetryableRefusals: 3)!
-    var endpoint: CounterEndpoint
+    private let runtimeClaim: UInt64
     var frameActive = false
     var observableCandidate = false
     var semanticCandidate = false
     var interactionCandidate = false
-    var rootIdentity: SemanticCompleteIdentity?
-    var actionIdentity: SemanticCompleteIdentity?
-    var candidateRootIdentity: SemanticCompleteIdentity?
-    var candidateActionIdentity: SemanticCompleteIdentity?
+    var rootIdentity: SemanticCompleteIdentity? {
+        get { control.pointee.requireRuntimeClaim(runtimeClaim); return control.pointee.runtimeRootIdentity }
+        nonmutating set { control.pointee.requireRuntimeClaim(runtimeClaim); control.pointee.runtimeRootIdentity = newValue }
+    }
+    var actionIdentity: SemanticCompleteIdentity? {
+        get { control.pointee.requireRuntimeClaim(runtimeClaim); return control.pointee.runtimeActionIdentity }
+        nonmutating set { control.pointee.requireRuntimeClaim(runtimeClaim); control.pointee.runtimeActionIdentity = newValue }
+    }
+    var candidateRootIdentity: SemanticCompleteIdentity? {
+        get { control.pointee.requireRuntimeClaim(runtimeClaim); return control.pointee.runtimeCandidateRootIdentity }
+        nonmutating set { control.pointee.requireRuntimeClaim(runtimeClaim); control.pointee.runtimeCandidateRootIdentity = newValue }
+    }
+    var candidateActionIdentity: SemanticCompleteIdentity? {
+        get { control.pointee.requireRuntimeClaim(runtimeClaim); return control.pointee.runtimeCandidateActionIdentity }
+        nonmutating set { control.pointee.requireRuntimeClaim(runtimeClaim); control.pointee.runtimeCandidateActionIdentity = newValue }
+    }
     var header: RenderPlanHeader?
     var provenance: FrameProvenance?
     var presentation: PresentationRevision?
@@ -197,10 +278,16 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     var presentationTeardownComplete = false
     @_lifetime(copy models, copy root, copy semantic, copy values, borrow control, copy geometry, copy interaction)
     init(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CounterControl>, limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration) {
+        let sameOwner = root.belongs(to: models)
+        precondition(sameOwner)
         self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.values = consume values
         self.limits = limits
+        let claim = control.pointee.claimRuntimeSlot()
         control.pointee.initializeCounterWake()
-        self.endpoint = CounterEndpoint(configuration: endpointConfiguration, control: control)
+        let constructedEndpoint = CounterEndpoint(configuration: endpointConfiguration, control: control)
+        control.pointee.runtimeEndpoint = constructedEndpoint
+        control.pointee.completeRuntimeInstallation(claim)
+        runtimeClaim = claim
         self.geometry = consume geometry; self.interaction = consume interaction; self.control = copy control
         precondition(self.root.belongs(to: self.models))
     }
@@ -212,6 +299,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     consuming func retireQuiescedStorage() -> CounterRetiredStorage<Geometry, Candidate, Committed, Hits> {
         precondition(quiescent && presentationTeardownComplete && !frameActive && !observableCandidate && !semanticCandidate && !interactionCandidate)
         precondition(control.pointee.unavailable && control.pointee.admission.pendingStateCount == 0 && !control.pointee.admission.sealActive)
+        clearOwnedRuntimeSlot()
         return CounterRetiredStorage(semantic: semantic, geometry: geometry, interaction: interaction)
     }
     mutating func runTracedPipeline() -> RuntimeCompletePipelineResult<RuntimeOwnerFailure> {
@@ -239,6 +327,9 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         do throws(ObservableStateError) { try root.shutdown() }
         catch { models.requireStop() }
         rootIdentity = nil; actionIdentity = nil
+        let idle = control.pointee.runtimeEndpoint!.isIdleForRuntimeRelease
+        precondition(idle)
+        control.pointee.markRuntimeQuiesced(runtimeClaim)
         control.pointee.hasRoot = false
         counterTrace("terminal", (interaction.committedRecordCount, values.count, models.phase))
     }
@@ -522,20 +613,20 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         if let error = boundary(.offerAndProduction) { return .failure(error) }
         if let error = phase.transition(to: .offering) { return .failure(.execution(error)) }
         control.pointee.context = phase.context
-        var retained: RenderProductionError?
-        let offer = endpoint.offer(provenance: provenance!) { sink in
-            control.pointee.streams += 1
-            do throws(SemanticExpansionError) {
-                return try semantic.withPublishedView { bank in
-                    switch geometry.produce(bank, header: header!, sink: &sink, limits: limits) {
-                    case .success: return .complete
-                    case .failure(let error): retained = error; return RecordingRenderProductionAdapter.observe(error: error).streamResult!
-                    }
-                }
-            } catch { retained = .invariantViolation; return .contractViolation }
-        }
-        if offer.disposition == .accepted { control.pointee.lastFrame = endpoint.sink }
-        if let retained { return .failure(.renderProduction(retained)) }
+        control.pointee.requireRuntimeClaim(runtimeClaim)
+        let productionSemantic = semantic.borrowedStore()
+        let productionHeader = header!, productionLimits = limits, productionProvenance = provenance!
+        // Only these disjoint fields/formals are lent across the producer.
+        // No whole pipeline/control value or mutator enters that callback.
+        let produced = counterProduceStoredEndpoint(endpoint: &control.pointee.runtimeEndpoint!,
+            streams: &control.pointee.streams, geometry: &geometry, semantic: productionSemantic,
+            header: productionHeader, limits: productionLimits, provenance: productionProvenance)
+        let offer = produced.endpoint.result
+        control.pointee.backend.envelopeRejections += produced.endpoint.invalidEnvelopeRejections
+        control.pointee.backend.endpointHealthObservation = produced.endpoint.health
+        precondition(produced.endpoint.health == control.pointee.backend.health)
+        if let recording = produced.endpoint.acceptedRecording { control.pointee.lastFrame = recording }
+        if let retained = produced.error { return .failure(.renderProduction(retained)) }
         switch offer.disposition {
         case .accepted: return .accepted(presentation!)
         case .backpressured: return .backpressured
@@ -636,14 +727,20 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>,
         scopedControl: consuming CounterHostControl, limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration
     ) {
+        let sameOwner = root.belongs(to: models)
+        precondition(sameOwner)
         self.models = consume models
         self.root = consume root
         self.semantic = consume semantic
         self.values = consume values
         self.limits = limits
+        let claim = scopedControl.pointer.pointee.claimRuntimeSlot()
         scopedControl.pointer.pointee.initializeCounterWake()
         let construction = CounterConstructionInputs.canonical
-        self.endpoint = CounterEndpoint(configuration: construction.endpointConfiguration.configuration(endpointConfiguration), control: construction.endpointBacking.control(scopedControl.pointer))
+        let constructedEndpoint = CounterEndpoint(configuration: construction.endpointConfiguration.configuration(endpointConfiguration), control: construction.endpointBacking.control(scopedControl.pointer))
+        scopedControl.pointer.pointee.runtimeEndpoint = constructedEndpoint
+        scopedControl.pointer.pointee.completeRuntimeInstallation(claim)
+        runtimeClaim = claim
         self.geometry = consume geometry
         self.interaction = consume interaction
         self.control = scopedControl.pointer
@@ -652,10 +749,22 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
 }
 
 
+extension CounterPipelineOwner {
+    private borrowing func clearOwnedRuntimeSlot() {
+        control.pointee.requireRuntimeClaim(runtimeClaim)
+        let idle = control.pointee.runtimeEndpoint!.isIdleForRuntimeRelease
+        let inactive = !control.pointee.backend.active
+        precondition(idle && inactive)
+        control.pointee.clearRuntimeSlot(runtimeClaim)
+    }
+}
+
 extension CounterPipelineOwner
 where Geometry: Copyable & Escapable, Candidate: Copyable & Escapable, Committed: Copyable & Escapable, Hits: Copyable & Escapable {
     consuming func returnWorkspaces(checks: Int) -> CounterReturnedWorkspaces<Geometry, Candidate, Committed, Hits> {
-        CounterReturnedWorkspaces(geometry: geometry, interaction: interaction, checks: checks)
+        precondition(quiescent && presentationTeardownComplete)
+        clearOwnedRuntimeSlot()
+        return CounterReturnedWorkspaces(geometry: geometry, interaction: interaction, checks: checks)
     }
 }
 
@@ -673,5 +782,101 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence() }
         catch { preconditionFailure("counter semantic reset") }
         geometry.reset(); interaction.resetAllStorage()
+    }
+}
+
+
+struct CounterEndpointOfferObservation {
+    let result: FrameOfferResult
+    let invalidEnvelopeRejections: Int
+    let health: GiftUIOperationalHealth
+    let acceptedRecording: CounterRenderSink?
+}
+struct CounterProductionObservation {
+    let endpoint: CounterEndpointOfferObservation
+    let error: RenderProductionError?
+}
+// The callback borrows only these separate formal loans. The original semantic
+// lender is retained by borrowedStore; no callback captures a pipeline/control.
+private func counterProduceStoredEndpoint<G: CounterGeometry & ~Copyable & ~Escapable>(
+    endpoint: inout CounterEndpoint, streams: inout Int, geometry: inout G,
+    semantic: borrowing SemanticRecordStore<CounterPayload>, header: RenderPlanHeader,
+    limits: RuntimeProfileLimits, provenance: FrameProvenance
+) -> CounterProductionObservation {
+    var retained: RenderProductionError?
+    let observed = endpoint.offerAndObserve(provenance: provenance) { sink in
+        streams += 1
+        do throws(SemanticExpansionError) {
+            return try semantic.withPublishedView { bank in
+                switch geometry.produce(bank, header: header, sink: &sink, limits: limits) {
+                case .success: return .complete
+                case .failure(let error): retained = error; return RecordingRenderProductionAdapter.observe(error: error).streamResult!
+                }
+            }
+        } catch { retained = .invariantViolation; return .contractViolation }
+    }
+    return .init(endpoint: observed, error: retained)
+}
+
+
+// Owned facts only: no endpoint, pointer, scoped value or callback is retained.
+struct CounterRecordingObservation: Equatable {
+    private let value: CounterRenderSink
+    init(_ value: borrowing CounterRenderSink) { self.value = copy value }
+    static func == (left: Self, right: Self) -> Bool {
+        let a = left.value, b = right.value
+        guard a.capacity == b.capacity && a.header == b.header && a.operations == b.operations && a.glyphs == b.glyphs && a.strokes == b.strokes && a.finishes == b.finishes && a.discards == b.discards && a.firstPoint == b.firstPoint && a.secondPoint == b.secondPoint && a.strokeHeader == b.strokeHeader else { return false }
+        for index in 0..<64 { if a.glyphRecords[index] != b.glyphRecords[index] { return false } }
+        return true
+    }
+}
+struct CounterWriterObservation: Equatable {
+    let bytes: UInt32
+    let regions: UInt16
+    let origin: Point?
+    let pixels: UInt16
+    let remaining: UInt32
+    let completed: Bool
+}
+struct CounterEndpointObservation: Equatable {
+    let effectivePresentation: EffectiveRasterPresentation
+    let descriptor: RasterSurfaceDescriptor
+    let payloadLimits: RasterPayloadLimits
+    let realization: RasterRealizationID
+    let bodyCalls: UInt32
+    let reservations: UInt32
+    let displayError: DisplayTargetError?
+    let producerError: RenderProductionError?
+    let capacity: RenderSinkCapacity
+    let sinkDescriptor: RasterSurfaceDescriptor
+    let sinkLimits: RasterPayloadLimits
+    let sinkFailure: RasterBackendError?
+    let streamCompleted: Bool
+    let presentationAccepted: Bool
+    let sinkProducerError: RenderProductionError?
+    let idle: Bool
+    let health: GiftUIOperationalHealth
+    let recording: CounterRecordingObservation
+    let targetConfiguration: HostEndpointConfiguration
+    let writer: CounterWriterObservation?
+    let nativeReservation: DisplayReservationID?
+    let nativeGlyphHeader: PositionedGlyphOperationHeader?
+}
+struct CounterRuntimeSlotObservation: Equatable {
+    let phase: CounterRuntimeSlotPhase
+    let owner: UInt64?
+    let lastSerial: UInt64
+    let endpoint: CounterEndpointObservation?
+    let root: SemanticCompleteIdentity?
+    let action: SemanticCompleteIdentity?
+    let candidateRoot: SemanticCompleteIdentity?
+    let candidateAction: SemanticCompleteIdentity?
+    init(_ control: UnsafeMutablePointer<CounterControl>) {
+        phase = control.pointee.runtimeSlotPhase; owner = control.pointee.runtimeSlotOwner
+        lastSerial = control.pointee.runtimeLastOwnerSerial
+        endpoint = control.pointee.runtimeEndpoint?.ownedObservation
+        root = control.pointee.runtimeRootIdentity; action = control.pointee.runtimeActionIdentity
+        candidateRoot = control.pointee.runtimeCandidateRootIdentity
+        candidateAction = control.pointee.runtimeCandidateActionIdentity
     }
 }

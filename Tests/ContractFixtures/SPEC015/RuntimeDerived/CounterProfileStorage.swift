@@ -152,7 +152,8 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & 
         concreteCoordinatorBytes = MemoryLayout<DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>>.size
     }
     #endif
-    // Endpoint/sink metadata belongs to the backend owner, not profile storage.
+    // Endpoint/sink data now resides in Control but still belongs to the backend
+    // accounting owner. Subtract it once from the combined coordinator/control.
     // Physical backend arrays in CounterControl remain fully charged below.
     let coordinator = concreteCoordinatorBytes - MemoryLayout<G>.size
         - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CounterEndpoint>.size
@@ -244,14 +245,14 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & 
     record(.inline(CounterAdmissionBacking.self, family: 22, chargedBytes: sealed, kind: .partition))
     record(.inline(Admission.Controller?.self, family: 23, chargedBytes: Admission.pointerStateStorageBytes, kind: .partition))
     record(.inline(CounterPointerState.self, family: 23))
-    let coordinatorFields = concreteCoordinatorBytes - MemoryLayout<G>.size - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CounterEndpoint>.size
+    let coordinatorFields = concreteCoordinatorBytes - MemoryLayout<G>.size - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size
     if profile == .static { record(.inline(Coordinator.self, family: 24, chargedBytes: coordinatorFields + descriptorBytes, kind: .metadataPadding)) }
     #if !hasFeature(Embedded)
     if profile == .dynamic { record(.inline(DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>.self, family: 24, chargedBytes: coordinatorFields + descriptorBytes, kind: .metadataPadding)) }
     #endif
     // All outer controls, observations, optional controller metadata and padding
     // remain physically live and are charged here exactly once.
-    record(.inline(CounterControl.self, family: 24, chargedBytes: MemoryLayout<CounterControl>.size - Admission.pointerStateStorageBytes - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result, kind: .metadataPadding))
+    record(.inline(CounterControl.self, family: 24, chargedBytes: MemoryLayout<CounterControl>.size - MemoryLayout<CounterEndpoint>.size - Admission.pointerStateStorageBytes - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result, kind: .metadataPadding))
     record(factoryRegion)
     if let factoryDescriptorRegion { record(factoryDescriptorRegion) }
     record(.inline(RuntimeCompletePipelineResult<RuntimeOwnerFailure>?.self, family: 25))
@@ -319,6 +320,7 @@ struct DynamicCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
         control.admission.finishAttempt()
     }
     mutating func resetAllStorage() {
+        control.requireVacantRuntimeSlot()
         precondition(!used || control.unavailable)
         resetAttemptStorage()
         interaction!.resetAllStorage()
@@ -397,6 +399,7 @@ struct StaticCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
         control.admission.finishAttempt()
     }
     mutating func resetAllStorage() {
+        control.requireVacantRuntimeSlot()
         precondition(!used || control.unavailable)
         resetAttemptStorage()
         interaction!.resetAllStorage()

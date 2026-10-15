@@ -157,6 +157,31 @@ class ELFTests(unittest.TestCase):
                 facts.extract(path, dict(slot_bytes=128, slot_count=4, retained_bytes=512))
 
 
+    def test_decoded_facts_survive_reservation_failure_without_accepted_layout(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = pathlib.Path(directory) / 'test.o'
+            raw = pathlib.Path(directory) / 'decoded.json'
+            path.write_bytes(elf_bytes())
+            with self.assertRaises(ValueError):
+                facts.extract(path, dict(slot_bytes=96, slot_count=4, retained_bytes=384), raw, 'a' * 64)
+            record = json.loads(raw.read_text())
+            self.assertFalse(record['accepted'])
+            self.assertTrue(record['diagnostic_only'])
+            self.assertEqual(record['values'], layout_values())
+            self.assertNotIn('layout', record)
+            self.assertEqual(record['compiler_sha256'], 'a' * 64)
+            self.assertEqual(record['artifact_sha256'], facts.digest(path))
+
+    def test_failed_byte_proof_cannot_emit_decoded_fact_packet(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = pathlib.Path(directory) / 'test.o'
+            raw = pathlib.Path(directory) / 'decoded.json'
+            path.write_bytes(elf_bytes(body_override=b'\x00\x68\x70\x47'))
+            with self.assertRaises(ValueError):
+                facts.extract(path, dict(slot_bytes=128, slot_count=4, retained_bytes=512), raw)
+            self.assertFalse(raw.exists())
+
+
 class InventoryTests(unittest.TestCase):
     @staticmethod
     def actual_rows():
@@ -250,7 +275,10 @@ class LayoutTests(unittest.TestCase):
             for component, name in enumerate(facts.COMPONENTS):
                 self.assertIn('func counterEmbeddedFact' + str(index) + '_' + str(component) +
                               '() -> UInt32 { counterEmbeddedRegionFact(' + str(index) + ', ' + str(component) + ') }', source)
-        self.assertIn('counterVisitEmbeddedLayout(suppliedByteCount: counterEmbeddedSlotBytes', source)
+        self.assertIn('counterDeriveEmbeddedLayout(', source)
+        runtime = facts.SWIFT_SOURCE.read_text()
+        self.assertIn('summary.slotBytes <= suppliedByteCount', runtime)
+        self.assertIn('counterDeriveEmbeddedLayout(r1Surplus: r1Surplus, visit)', runtime)
         self.assertNotIn('CounterEmbeddedLayout(suppliedByteCount:', source)
         self.assertNotIn('.init(repeating:', source)
 

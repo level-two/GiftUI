@@ -27,3 +27,20 @@ Current bounded source assignment permits source/qualification/evidence edits,
 formatter and proportionate compiler-free checks only. No compiler/build/runtime/
 image execution until independent source review. Known generated pycache is
 unrelated and remains untouched.
+
+## Initial source candidate / planned measurement completion
+
+The initial candidate is frozen for independent source review; corrections remain
+0/2. [Source freeze](p08-control-resident-initial-source-freeze.md) and exact
+manifest record current inputs and compiler-free checks. No compiler acceptance,
+runtime behavior, stack reduction or fit is claimed.
+
+The source/C reservation stays at its old measured 32,000-byte spacing until the
+new target facts exist. Reviewed completion has two stages: first strictly decode
+the same 129 target layout roots and retain all numeric facts, while reporting
+the truthful reservation mismatch; then update Swift/C to the exact derived
+required extent and independently review that measured-constant-only completion
+before affected verification. Runtime layout binding still rejects undersized
+storage before bind/init. The diagnostic raw-facts packet is explicitly unvalidated
+and never an accepted SO07 receipt. This planned sizing completion is part of the
+initial candidate, not a new optimization variant or spent corrective cycle.

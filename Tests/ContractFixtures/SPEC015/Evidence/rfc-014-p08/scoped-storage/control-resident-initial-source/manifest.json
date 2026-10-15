@@ -1,0 +1,113 @@
+{
+  "stage": "initial source freeze before target measurement",
+  "source_baseline": "f7e56cf0",
+  "entry": "eccee3e6",
+  "authorization_commit": "e309426a",
+  "source_review": "pending",
+  "compiler_executed": false,
+  "runtime_image_executed": false,
+  "corrections_consumed": 0,
+  "maximum_corrections": 2,
+  "historical_allowances": "typed-stage2/2closed;diagnostic1/1used",
+  "base_compiler_labels": {
+    "nonEmbedded": 384,
+    "Embedded": 202
+  },
+  "original_native_executable_controls": 5,
+  "supplemental_native_compiler_labels": [
+    "control-resident-projection-positive",
+    "control-resident-projection-negative"
+  ],
+  "reuse_labels_per_route": 13,
+  "reuse_labels_matrix": 26,
+  "target_measurement_roots": 129,
+  "source_patch_sha256": "67aa322928a481a6369c328d448ea8374f3ca1aa07b1d53787114735fae024e1",
+  "source_files": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+      "before_sha256": "65bde53e58cc8879bb882650661cdcc8fb1551b9da09190e9ead26f066fc7271",
+      "after_sha256": "32f2524a4eee47335483bd5fc3e11b6d61ae178066590d170daee058db1f39a8"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+      "before_sha256": "b2ec7e06f02b2084338c0bf07d1c90c1396fc57e0b363c4fd5fc1777d4137a3d",
+      "after_sha256": "40f5f8a754e069e56a35d9dfb42588937827a783ad715689d70abd94aa6910f0"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "before_sha256": "3565e47ec54b4e85b89260d4922166908b4fdb557e6012318d38c73197c06ed0",
+      "after_sha256": "893a90a3bf84635f49afafb7c1531b46fede8c16a32efbf28bbd2a65685f69d1"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+      "before_sha256": "fcaebb92dd2009e8a1536ef53a647ae1c4b073e85682098d54c0101b0b995b3a",
+      "after_sha256": "4f747327ae37de0d4a501a190d62dc403436c5ac2fdcd5427b583cf7b202e947"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+      "before_sha256": "7abe1865c934945fa560662e1f99a70ecf164085174ad411061fe464c216de73",
+      "after_sha256": "5bb99f992cb0ba4ef4aba0aa011cbc721abac9355bdaff087abb199a9ce11a66"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": {
+      "before_sha256": "1b1255db3577e1d55bcef72398169ac061c2c1101dda48e783ddb48bc7ee1fed",
+      "after_sha256": "16f0c30b5781a6a3725f45cf667b6703d615390b3df4d2ba93ddf258d43ff749"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": {
+      "before_sha256": "52da7bb08f311fd4f93666e4f3a8f86b524ffd6cd104e95da10bb1b7c9ceb6c4",
+      "after_sha256": "92d9013f955100a459116edb36587c43eea0d9b32fd3c8ccb5ab136cbb157254"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": {
+      "before_sha256": "8c68606f9648016f4b748a59871acb7da656db7968ae2469ca86fe809eb90292",
+      "after_sha256": "0e13001714af86c5f93cc150678c07c0b3a32c58b3a524fd43edb23eae19990b"
+    },
+    "scripts/contracts/check-spec-015-counter.py": {
+      "before_sha256": "1f6c8e2729b2ad65c486e87e0a83859ca887f0d1b95c0347cfe8d1ce2cd0345f",
+      "after_sha256": "fb1c84e58517275683d013de0a7230fe929ac12b93f15b72fadb7bbb9d982bef"
+    },
+    "scripts/contracts/p08_layout_facts.py": {
+      "before_sha256": "8bb2432c43ac82c2c44a008148ff51ea16eecbab147994e80677ef9e1ed05318",
+      "after_sha256": "d8951f8b6704233744ece5961e3c26e1e2c0fd3b0f765fd837fd71d51e3b7830"
+    },
+    "scripts/contracts/test_p08_layout_facts.py": {
+      "before_sha256": "969669348d7717d0f7a39188bff3b81ca6d49f6cfee151f88e763e7848d7a0b2",
+      "after_sha256": "e4c42f0bef64693e6c2fd07d29fde13d4fb6de7b0e201b5def19fe3e446d4691"
+    }
+  },
+  "unchanged_contract_files": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": "d084112a1ee54cc8c01fc5f24a7416ee3a6b23afdc6710f42635a76c370fea26",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": "342585dd23bc2916176535bfdb9efd7ba115a138047afe3fcda082acbf7adf8e",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": "e5b03a220709df8d9c439fde4d7728ef3a4e9e9385eeb0059b6cdb8f27df6d47",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift": "bfe4a208dd72fe47cb2a72331228cf9c9981114e03d49a91b99541957e7f80b5",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift": "b14a1667a899fc539c8a8d8011d2e377188ce0300012e464ac1f0d1203a999ab",
+    "Sources/GiftUIInteraction/InteractionState.swift": "9497b277c617e66706891c26bc716f35a2c99b7f0868367d5ea3bd6a07b0e1ee",
+    "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": "7c44e2dc5f2ba716d6ee2565f1128147e568a9edfa3acee7456475dbbcf1628a",
+    "Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift": "0dd731cdbefcca81360eb2ff896d2e757bedc9829faaaf5e4a4a75b2c48254bd",
+    "Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift": "96689a3086bf2bc22f158a6aac1c84163b641b4da0d8fdc1a382047da26b306b",
+    "firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c": "ea40f5906bdd3f7b8f66d6cca16c3c873850d9c6d65fda4153dde6507b133f25"
+  },
+  "qualification_sha256": "6f70dea0ad346513d4d2c181146ae82a1388f6522640d6787a32d934ed57f252",
+  "compiler_free_checks": {
+    "unittest_p08_count": 71,
+    "unittest_p08_passed": true,
+    "exact_component_receipts": 7,
+    "compiled_argv_swift_input_checks": 895,
+    "core_manifest_swift_input_checks": 180,
+    "dependency_receipts": 11,
+    "driver_qualified_metadata_mismatches": 8,
+    "driver_wrong_argv_rejected": true,
+    "formatter": "pinnedhost script;contractfixturesexcluded",
+    "annotation_label_hash_whitespace_checks": true
+  },
+  "planned_initial_measurement": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    "--collect-failures",
+    "--fresh-focused",
+    "--select-family",
+    "so07-layout-facts"
+  ],
+  "planned_reservation_completion": "firstretainstrictactualdecodedfactswhileold32000mismatchfails;thenexactmeasuredSwift/Cconstantupdateandnewreviewbeforeverification;partofinitialcompletionnotoptimizationvariant",
+  "fit": "unproved;P08blocked"
+}

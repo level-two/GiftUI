@@ -32,32 +32,35 @@ def digest(path):
 revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
 revision_receipt = json.loads(revision_path.read_text())
 reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
-applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-cycle2-applicability.json'
+applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-control-resident-initial-applicability.json'
+assert digest(applicability_path) == '6f70dea0ad346513d4d2c181146ae82a1388f6522640d6787a32d934ed57f252', 'unpinned source applicability packet'
 applicability = json.loads(applicability_path.read_text())
 qualified_applicability = []
 def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
-    source = 'Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift'
-    if name != source or receipt_path is None:
+    if name not in applicability['candidate_sources'] or receipt_path is None:
         return False
     assert applicability['kind'] == 'exact-noncompiled-source-applicability-qualification'
-    assert applicability['source'] == source and applicability['activity'] == 'p08-stage-realization-cycle2'
+    assert applicability['activity'] == 'p08-control-resident-initial'
     relative_receipt = str(receipt_path.relative_to(ROOT))
     entry = next((value for value in applicability['receipts'] if value['receipt'] == relative_receipt), None)
     if entry is None:
         return False
-    assert digest(receipt_path) == entry['receipt_sha256'], source + ': unqualified predecessor receipt'
-    assert expected == entry['original_source_sha256'] == receipt['inputs'][source]
-    assert digest(ROOT / source) == applicability['corrected_source_sha256'], source + ': unqualified corrected source'
+    assert digest(receipt_path) == entry['receipt_sha256'], name + ': unqualified predecessor receipt'
+    revision = entry['source_revisions'].get(name)
+    assert revision is not None and expected == revision['original_source_sha256'] == receipt['inputs'][name]
+    for source, corrected in applicability['candidate_sources'].items():
+        assert digest(ROOT / source) == corrected, source + ': unqualified corrected source'
     recorded = sorted(set(str(pathlib.Path(token).resolve().relative_to(ROOT))
                           for command in receipt['commands'] for token in shlex.split(command)
                           if token.endswith('.swift')))
-    assert source not in recorded and entry['source_compiled'] is False
+    for source in applicability['candidate_sources']:
+        assert source not in recorded and entry['candidate_source_exclusion'][source]['compiled'] is False
     assert len(recorded) == entry['recorded_swift_inputs_count']
     recorded_digest = hashlib.sha256(json.dumps(recorded, separators=(',', ':')).encode()).hexdigest()
-    assert recorded_digest == entry['recorded_swift_inputs_sha256'], source + ': compilation applicability changed'
-    qualified_applicability.append(dict(activity=applicability['activity'], receipt=relative_receipt, receipt_sha256=entry['receipt_sha256'],
-                                       source=source, original_source_sha256=expected,
-                                       corrected_source_sha256=applicability['corrected_source_sha256'],
+    assert recorded_digest == entry['recorded_swift_inputs_sha256'], name + ': compilation applicability changed'
+    qualified_applicability.append(dict(activity=applicability['activity'], receipt=relative_receipt,
+                                       receipt_sha256=entry['receipt_sha256'], source=name,
+                                       original_source_sha256=expected, corrected_source_sha256=revision['corrected_source_sha256'],
                                        compiled=False, original_manifest_current=False))
     return True
 def verify_recipe_source(name, expected, receipt_path=None, receipt=None):
@@ -199,16 +202,17 @@ reuse_suffixes = ('inventory-two-hosts', 'control-same-address', 'terminal-old-h
 reuse_routes = ('dynamic',) if args.profile in ('macos-dynamic', 'raspberry-pi-armv6') else ('static',) if args.profile in ('macos-static', 'nrf52840-embedded') else ('static', 'dynamic')
 registered_reuse_labels = ['so06-reuse-' + route + '-' + suffix for route in reuse_routes for suffix in reuse_suffixes]
 planned_scoped_labels = []
+planned_supplemental_labels = []
 input_lifetime_escape = "lifetime-dependent variable 'input' escapes its scope"
 closure_diagnostic = dict(any_of=[["'input' is borrowed and cannot be consumed"],
                                   ["'input' cannot be captured by an escaping closure since it is a borrowed parameter"],
                                   [input_lifetime_escape]], required_primary=[input_lifetime_escape])
-def scoped_variant(label, source, diagnostic=None):
+def scoped_variant(label, source, diagnostic=None, supplemental=False):
     path = out / (label + '.swift')
     path.write_text(trusted_source + '\n' + source + '\n')
     if isinstance(diagnostic, dict):
         diagnostic = dict(diagnostic, error_site=dict(filename=path.name, first_line=trusted_source.count('\n') + 2))
-    planned_scoped_labels.append(label)
+    (planned_supplemental_labels if supplemental else planned_scoped_labels).append(label)
     prerequisites = ['counter-model']
     if label.endswith('-negative'):
         prerequisites.append(label.removesuffix('-negative') + '-positive')
@@ -347,6 +351,13 @@ if not is_embedded:
         scoped_variant(stem + '-positive', positive)
         scoped_variant(stem + '-negative', negative, diagnostic)
 assert len(planned_scoped_labels) == (202 if is_embedded else 384), 'scoped corpus inventory changed'
+# Supplementary concrete endpoint-field projections do not replace any original
+# lifetime label or native executable control. Actual runtime offers are the
+# positive behavioral exercise of this same source seam.
+if not is_target:
+    projection = 'fileprivate func projected(_ endpoint: inout CounterEndpoint?, _ streams: inout Int, _ body: (inout CounterEndpoint?, inout Int) -> Void) { body(&endpoint, &streams) }\n'
+    scoped_variant('control-resident-projection-positive', projection + 'fileprivate func probe(_ control: inout CounterControl) { projected(&control.runtimeEndpoint, &control.streams) { endpoint, streams in streams += 1; _ = endpoint == nil } }', supplemental=True)
+    scoped_variant('control-resident-projection-negative', projection + 'fileprivate func probe(_ control: inout CounterControl) { projected(&control.runtimeEndpoint, &control.streams) { _, _ in _ = control.runtimeEndpoint == nil } }', dict(any_of=[['overlapping accesses']], required_primary=['overlapping accesses']), supplemental=True)
 if not is_target:
     main = out / 'Main.swift'
     expression = 'p08CounterRoute() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator()' if args.profile else 'p08CounterGraph() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterScopedStorage() + p08CounterCoordinator() + p08CounterHost() + p08CounterDynamicHost()'
@@ -378,11 +389,12 @@ else:
         run('so07-layout-facts', [sys.executable, ROOT / 'scripts/contracts/p08_layout_facts.py',
                                 'object', '--input', out / 'P08CounterRuntime.o',
                                 '--output', out / 'so07-layout-facts.json',
+                                '--decoded-output', out / 'so07-layout-facts-decoded.json',
                                 '--compiler-sha256', digest(compiler)], requires=['counter-model'])
         target_requirements.append('so07-layout-facts')
     execution = collector.target_compilation(target_requirements, [core / 'GiftUI.o', *sorted(module_objects)])
 selected_passed = collector.finish()
-receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, planned_scoped_labels=planned_scoped_labels, registered_reuse_labels=registered_reuse_labels, reuse_execution=not is_target and collector.passed('execute'), qualified_noncompiled_applicability=qualified_applicability, execution=execution,
+receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, planned_scoped_labels=planned_scoped_labels, planned_supplemental_labels=planned_supplemental_labels, registered_reuse_labels=registered_reuse_labels, reuse_execution=not is_target and collector.passed('execute'), qualified_noncompiled_applicability=qualified_applicability, execution=execution,
                collection_schema=2, collection_complete=collector.complete, passed=collector.overall_passed,
                fresh_focused=collector.fresh, focused_passed=collector.focused_passed, selected_families=sorted(collector.selected),
                prior_collection=dict(path=str(collector.resume.relative_to(ROOT)), sha256=digest(collector.resume / 'result.json')) if collector.resume else None,

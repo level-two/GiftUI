@@ -52,7 +52,7 @@ struct CounterEmbeddedLayoutSummary {
     var slotBytes = 0
     var totalBytes = 0
     @inline(__always)
-    fileprivate mutating func append<T: ~Copyable>(_ type: T.Type, count: Int, limit: Int, surplus: Int = 0,
+    fileprivate mutating func append<T: ~Copyable>(_ type: T.Type, count: Int, surplus: Int = 0,
         visit: (Int, CounterEmbeddedRegion) -> Void) -> Bool {
         let size = MemoryLayout<T>.size, stride = MemoryLayout<T>.stride, alignment = MemoryLayout<T>.alignment
         guard count >= 0, stride >= size, alignment > 0, fields < 25 else { return false }
@@ -63,51 +63,61 @@ struct CounterEmbeddedLayoutSummary {
         let retained = product.partialValue.addingReportingOverflow(surplus)
         guard !retained.overflow else { return false }
         let end = start.partialValue.addingReportingOverflow(retained.partialValue)
-        guard !end.overflow, end.partialValue <= limit else { return false }
+        guard !end.overflow else { return false }
         visit(fields, .init(offset: start.partialValue, count: count, size: size, stride: stride, alignment: alignment, extent: retained.partialValue))
         fields += 1; cursor = end.partialValue; maximumAlignment = max(maximumAlignment, alignment)
         return true
     }
 }
 @inline(__always)
-func counterVisitEmbeddedLayout(suppliedByteCount: Int, r1Surplus: Int = 0,
+func counterDeriveEmbeddedLayout(r1Surplus: Int = 0,
     _ visit: (Int, CounterEmbeddedRegion) -> Void) -> CounterEmbeddedLayoutSummary? {
-    guard suppliedByteCount > 0, r1Surplus >= 0 else { return nil }
+    guard r1Surplus >= 0 else { return nil }
     var state = CounterEmbeddedLayoutSummary()
-    guard state.append(RuntimeProfileLimits.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(StaticSemanticRecordStorage.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(SemanticRuntimeRecord.self, count: 128, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(SemanticPathEntry.self, count: 384, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(CounterPayload?.self, count: 256, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(UInt32.self, count: 128, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(StaticCanvasValueStorage.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(UInt8.self, count: 1024, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(UInt8.self, count: 1056, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(UInt8.self, count: 20, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(UInt8.self, count: 112, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(StaticCounterLayoutWorkspace.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(StaticCounterResolvedLayoutStorage.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(InlineArray<64, SemanticRecordReference?>.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(QualifiedRender.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(CounterStaticCandidate.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(CounterStaticHits.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(CounterStaticCommitted.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(CounterStaticCommitted.self, count: 1, limit: suppliedByteCount, surplus: r1Surplus, visit: visit) else { return nil }
-    guard state.append(CounterStaticHits.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(CounterControl.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
-    guard state.append(Bool.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+    guard state.append(RuntimeProfileLimits.self, count: 1, visit: visit) else { return nil }
+    guard state.append(StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, count: 1, visit: visit) else { return nil }
+    guard state.append(StaticSemanticRecordStorage.self, count: 1, visit: visit) else { return nil }
+    guard state.append(SemanticRuntimeRecord.self, count: 128, visit: visit) else { return nil }
+    guard state.append(SemanticPathEntry.self, count: 384, visit: visit) else { return nil }
+    guard state.append(CounterPayload?.self, count: 256, visit: visit) else { return nil }
+    guard state.append(UInt32.self, count: 128, visit: visit) else { return nil }
+    guard state.append(StaticCanvasValueStorage.self, count: 1, visit: visit) else { return nil }
+    guard state.append(CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?.self, count: 1, visit: visit) else { return nil }
+    guard state.append(UInt8.self, count: 1024, visit: visit) else { return nil }
+    guard state.append(UInt8.self, count: 1056, visit: visit) else { return nil }
+    guard state.append(UInt8.self, count: 20, visit: visit) else { return nil }
+    guard state.append(UInt8.self, count: 112, visit: visit) else { return nil }
+    guard state.append(StaticCounterLayoutWorkspace.self, count: 1, visit: visit) else { return nil }
+    guard state.append(StaticCounterResolvedLayoutStorage.self, count: 1, visit: visit) else { return nil }
+    guard state.append(InlineArray<64, SemanticRecordReference?>.self, count: 1, visit: visit) else { return nil }
+    guard state.append(StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>.self, count: 1, visit: visit) else { return nil }
+    guard state.append(QualifiedRender.self, count: 1, visit: visit) else { return nil }
+    guard state.append(CounterStaticCandidate.self, count: 1, visit: visit) else { return nil }
+    guard state.append(CounterStaticHits.self, count: 1, visit: visit) else { return nil }
+    guard state.append(CounterStaticCommitted.self, count: 1, visit: visit) else { return nil }
+    guard state.append(CounterStaticCommitted.self, count: 1, surplus: r1Surplus, visit: visit) else { return nil }
+    guard state.append(CounterStaticHits.self, count: 1, visit: visit) else { return nil }
+    guard state.append(CounterControl.self, count: 1, visit: visit) else { return nil }
+    guard state.append(Bool.self, count: 1, visit: visit) else { return nil }
     let remainder = state.cursor % state.maximumAlignment
     let padding = remainder == 0 ? 0 : state.maximumAlignment - remainder
     let end = state.cursor.addingReportingOverflow(padding)
-    guard !end.overflow, end.partialValue <= suppliedByteCount else { return nil }
+    guard !end.overflow else { return nil }
     state.slotBytes = end.partialValue
     let total = state.slotBytes.multipliedReportingOverflow(by: counterEmbeddedSlotCount)
     guard !total.overflow else { return nil }
     state.totalBytes = total.partialValue
     return state
+}
+// All arithmetic and fields share the same derivation. Runtime binding still
+// rejects every region beyond supplied storage before any pointer binding/init.
+@inline(__always)
+func counterVisitEmbeddedLayout(suppliedByteCount: Int, r1Surplus: Int = 0,
+    _ visit: (Int, CounterEmbeddedRegion) -> Void) -> CounterEmbeddedLayoutSummary? {
+    guard suppliedByteCount > 0,
+          let summary = counterDeriveEmbeddedLayout(r1Surplus: r1Surplus, visit),
+          summary.slotBytes <= suppliedByteCount else { return nil }
+    return summary
 }
 struct CounterEmbeddedLayout {
     private(set) var regions: InlineArray<25, CounterEmbeddedRegion?>

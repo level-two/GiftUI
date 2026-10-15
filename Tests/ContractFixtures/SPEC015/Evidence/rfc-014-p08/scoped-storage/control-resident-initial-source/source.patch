@@ -1,0 +1,935 @@
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift
+index b87d91cd..9214620d 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift
+@@ -26,12 +26,16 @@ func exerciseCounterCoordinator<G, C, R, H>(models: borrowing ObservableModelSco
+         if dynamic {
+             var coordinator = DynamicRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
+             let checks = runCounterCoordinator(&coordinator, control: pointer) + 3
+-            return coordinator.takeQuiescedOpportunity()!.returnWorkspaces(checks: checks)
++            let returned = coordinator.takeQuiescedOpportunity()!.returnWorkspaces(checks: checks)
++            pointer.pointee.requireVacantRuntimeSlot()
++            return returned
+         }
+         #endif
+         var coordinator = StaticRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
+         let checks = runCounterCoordinator(&coordinator, control: pointer) + 3
+-        return coordinator.takeQuiescedOpportunity()!.returnWorkspaces(checks: checks)
++        let returned = coordinator.takeQuiescedOpportunity()!.returnWorkspaces(checks: checks)
++        pointer.pointee.requireVacantRuntimeSlot()
++        return returned
+     }
+ }
+ 
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
+index 61a4da33..dadc65f7 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
+@@ -234,20 +234,35 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
+         control.pointee.backend.constructedEndpoints += 1
+         actual = CounterNativeEndpoint(effectivePresentation: configuration.effectivePresentation, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, textMetrics: construction.text.metrics(), textRaster: construction.text.raster(), textRasterRealization: construction.text.realization, envelopeValidator: CounterNativeEnvelope(expected: nil), sink: adapter, startupFailure: nil)!
+     }
++    var ownedObservation: CounterEndpointObservation {
++        .init(effectivePresentation: actual.effectivePresentation, descriptor: actual.descriptor,
++            payloadLimits: actual.payloadLimits, realization: actual.textRasterRealization,
++            bodyCalls: actual.bodyCallCount, reservations: actual.reservationCallCount,
++            displayError: actual.lastDisplayError, producerError: actual.retainedProducerError,
++            capacity: actual.sink.capacity, sinkDescriptor: actual.sink.descriptor,
++            sinkLimits: actual.sink.payloadLimits, sinkFailure: actual.sink.failure,
++            streamCompleted: actual.sink.streamCompleted,
++            presentationAccepted: actual.sink.presentationResponsibilityAccepted,
++            sinkProducerError: actual.sink.retainedProducerError, idle: actual.sink.isIdleForOffer,
++            health: actual.health(), recording: CounterRecordingObservation(sink),
++            targetConfiguration: actual.sink.target.configuration, writer: nil,
++            nativeReservation: actual.sink.reservation, nativeGlyphHeader: actual.sink.glyphHeader)
++    }
++    var isIdleForRuntimeRelease: Bool { actual.sink.isIdleForOffer }
+     mutating func offer(provenance: FrameProvenance, body: (inout CounterNativeRasterAdapter) -> FrameStreamResult) -> FrameOfferResult {
++        offerAndObserve(provenance: provenance, body: body).result
++    }
++    mutating func offerAndObserve(provenance: FrameProvenance, body: (inout CounterNativeRasterAdapter) -> FrameStreamResult) -> CounterEndpointOfferObservation {
+         precondition(actual.replaceEnvelopeValidator(CounterNativeEnvelope(expected: nil)))
+         let reservations = actual.reservationCallCount
+         let bodies = actual.bodyCallCount
+         let invalid = actual.offer(provenance: provenance) { _ in preconditionFailure("invalid counter envelope invoked producer") }
+         precondition(invalid == .init(disposition: .failed, failure: .invalidEnvelope)!)
+         precondition(actual.reservationCallCount == reservations && actual.bodyCallCount == bodies)
+-        actual.sink.target.control.pointee.backend.envelopeRejections += 1
+         precondition(actual.replaceEnvelopeValidator(CounterNativeEnvelope(expected: provenance)))
+         let result = actual.offer(provenance: provenance, body: body)
+-        let control = actual.sink.target.control
+-        control.pointee.backend.endpointHealthObservation = actual.health()
+-        precondition(actual.health() == control.pointee.backend.health)
+-        return result
++        return .init(result: result, invalidEnvelopeRejections: 1, health: actual.health(),
++            acceptedRecording: result.disposition == .accepted ? sink : nil)
+     }
+ }
+ #endif
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+index 08b2bca7..e754d363 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+@@ -4,6 +4,13 @@ import GiftUIDrawing
+ @testable import GiftUIExecution
+ import GiftUIInteraction
+ import GiftUIHostConfiguration
++import GiftUIBackendIntegration
++import GiftUICapabilities
++import GiftUIDisplayCore
++import GiftUIFailureCore
++import GiftUIRasterCore
++import GiftUISurfaceCore
++import GiftUITextResources
+ import GiftUILayout
+ import GiftUIObservableState
+ import GiftUIRenderCore
+@@ -37,7 +44,69 @@ struct CounterProducedAction {
+         self.origin = origin; self.captured = captured; self.targetGeneration = targetGeneration; self.targetIdentity = targetIdentity
+     }
+ }
++enum CounterRuntimeSlotPhase: UInt8, Equatable { case vacant, installing, installed, quiesced }
++
++// Five independent stored fields below are borrowed separately. These scalar
++// claims record the one pipeline installation; they are not Interaction state.
+ struct CounterControl {
++    var runtimeEndpoint: CounterEndpoint?
++    var runtimeRootIdentity: SemanticCompleteIdentity?
++    var runtimeActionIdentity: SemanticCompleteIdentity?
++    var runtimeCandidateRootIdentity: SemanticCompleteIdentity?
++    var runtimeCandidateActionIdentity: SemanticCompleteIdentity?
++    private(set) var runtimeSlotPhase: CounterRuntimeSlotPhase = .vacant
++    private(set) var runtimeSlotOwner: UInt64?
++    private(set) var runtimeLastOwnerSerial: UInt64 = 0
++    mutating func claimRuntimeSlot() -> UInt64 {
++        guard let claim = tryClaimRuntimeSlot() else { preconditionFailure("duplicate/overflow runtime claim") }
++        return claim
++    }
++    mutating func tryClaimRuntimeSlot() -> UInt64? {
++        guard runtimeSlotPhase == .vacant && runtimeSlotOwner == nil && runtimeEndpoint == nil,
++            runtimeRootIdentity == nil && runtimeActionIdentity == nil && runtimeCandidateRootIdentity == nil && runtimeCandidateActionIdentity == nil else { return nil }
++        let next = runtimeLastOwnerSerial.addingReportingOverflow(1)
++        guard !next.overflow else { return nil }
++        runtimeLastOwnerSerial = next.partialValue
++        runtimeSlotOwner = next.partialValue; runtimeSlotPhase = .installing
++        return next.partialValue
++    }
++    borrowing func requireVacantRuntimeSlot() {
++        let vacant = runtimeSlotPhase == .vacant && runtimeSlotOwner == nil && runtimeEndpoint == nil
++        let noKeys = runtimeRootIdentity == nil && runtimeActionIdentity == nil && runtimeCandidateRootIdentity == nil && runtimeCandidateActionIdentity == nil
++        precondition(vacant && noKeys)
++    }
++    borrowing func requireRuntimeClaim(_ claim: UInt64) {
++        let matches = runtimeSlotOwner == claim && (runtimeSlotPhase == .installed || runtimeSlotPhase == .quiesced) && runtimeEndpoint != nil
++        precondition(matches)
++    }
++    mutating func completeRuntimeInstallation(_ claim: UInt64) {
++        precondition(runtimeSlotOwner == claim && runtimeSlotPhase == .installing && runtimeEndpoint != nil)
++        precondition(runtimeRootIdentity == nil && runtimeActionIdentity == nil && runtimeCandidateRootIdentity == nil && runtimeCandidateActionIdentity == nil)
++        runtimeSlotPhase = .installed
++    }
++    mutating func markRuntimeQuiesced(_ claim: UInt64) {
++        requireRuntimeClaim(claim)
++        precondition(!backend.active)
++        runtimeSlotPhase = .quiesced
++    }
++    mutating func clearRuntimeSlot(_ claim: UInt64) {
++        let cleared = tryClearRuntimeSlot(claim)
++        precondition(cleared)
++    }
++    mutating func tryClearRuntimeSlot(_ claim: UInt64) -> Bool {
++        guard runtimeSlotOwner == claim && runtimeSlotPhase == .quiesced,
++              runtimeEndpoint != nil && !backend.active else { return false }
++        let idle = runtimeEndpoint!.isIdleForRuntimeRelease
++        guard idle else { return false }
++        // Offers are synchronous and resolved before quiescence. These owned
++        // fields have no destructor callback and no scope-bearing capability.
++        runtimeEndpoint = nil
++        runtimeRootIdentity = nil; runtimeActionIdentity = nil
++        runtimeCandidateRootIdentity = nil; runtimeCandidateActionIdentity = nil
++        runtimeSlotOwner = nil; runtimeSlotPhase = .vacant
++        requireVacantRuntimeSlot()
++        return true
++    }
+     private var producerOrigin: CounterProducerOrigin?
+     private var selectedProducer = false
+     mutating func installProducerOrigin(owner: UInt, serial: UInt64) {
+@@ -174,15 +243,27 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
+     var committedPresentation: PresentationRevision?
+     var sealedAdmission: AdmissionSummary?
+     var recovery = PresentationPendingState(maximumRetryableRefusals: 3)!
+-    var endpoint: CounterEndpoint
++    private let runtimeClaim: UInt64
+     var frameActive = false
+     var observableCandidate = false
+     var semanticCandidate = false
+     var interactionCandidate = false
+-    var rootIdentity: SemanticCompleteIdentity?
+-    var actionIdentity: SemanticCompleteIdentity?
+-    var candidateRootIdentity: SemanticCompleteIdentity?
+-    var candidateActionIdentity: SemanticCompleteIdentity?
++    var rootIdentity: SemanticCompleteIdentity? {
++        get { control.pointee.requireRuntimeClaim(runtimeClaim); return control.pointee.runtimeRootIdentity }
++        nonmutating set { control.pointee.requireRuntimeClaim(runtimeClaim); control.pointee.runtimeRootIdentity = newValue }
++    }
++    var actionIdentity: SemanticCompleteIdentity? {
++        get { control.pointee.requireRuntimeClaim(runtimeClaim); return control.pointee.runtimeActionIdentity }
++        nonmutating set { control.pointee.requireRuntimeClaim(runtimeClaim); control.pointee.runtimeActionIdentity = newValue }
++    }
++    var candidateRootIdentity: SemanticCompleteIdentity? {
++        get { control.pointee.requireRuntimeClaim(runtimeClaim); return control.pointee.runtimeCandidateRootIdentity }
++        nonmutating set { control.pointee.requireRuntimeClaim(runtimeClaim); control.pointee.runtimeCandidateRootIdentity = newValue }
++    }
++    var candidateActionIdentity: SemanticCompleteIdentity? {
++        get { control.pointee.requireRuntimeClaim(runtimeClaim); return control.pointee.runtimeCandidateActionIdentity }
++        nonmutating set { control.pointee.requireRuntimeClaim(runtimeClaim); control.pointee.runtimeCandidateActionIdentity = newValue }
++    }
+     var header: RenderPlanHeader?
+     var provenance: FrameProvenance?
+     var presentation: PresentationRevision?
+@@ -197,10 +278,16 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
+     var presentationTeardownComplete = false
+     @_lifetime(copy models, copy root, copy semantic, copy values, borrow control, copy geometry, copy interaction)
+     init(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CounterControl>, limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration) {
++        let sameOwner = root.belongs(to: models)
++        precondition(sameOwner)
+         self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.values = consume values
+         self.limits = limits
++        let claim = control.pointee.claimRuntimeSlot()
+         control.pointee.initializeCounterWake()
+-        self.endpoint = CounterEndpoint(configuration: endpointConfiguration, control: control)
++        let constructedEndpoint = CounterEndpoint(configuration: endpointConfiguration, control: control)
++        control.pointee.runtimeEndpoint = constructedEndpoint
++        control.pointee.completeRuntimeInstallation(claim)
++        runtimeClaim = claim
+         self.geometry = consume geometry; self.interaction = consume interaction; self.control = copy control
+         precondition(self.root.belongs(to: self.models))
+     }
+@@ -212,6 +299,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
+     consuming func retireQuiescedStorage() -> CounterRetiredStorage<Geometry, Candidate, Committed, Hits> {
+         precondition(quiescent && presentationTeardownComplete && !frameActive && !observableCandidate && !semanticCandidate && !interactionCandidate)
+         precondition(control.pointee.unavailable && control.pointee.admission.pendingStateCount == 0 && !control.pointee.admission.sealActive)
++        clearOwnedRuntimeSlot()
+         return CounterRetiredStorage(semantic: semantic, geometry: geometry, interaction: interaction)
+     }
+     mutating func runTracedPipeline() -> RuntimeCompletePipelineResult<RuntimeOwnerFailure> {
+@@ -239,6 +327,9 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
+         do throws(ObservableStateError) { try root.shutdown() }
+         catch { models.requireStop() }
+         rootIdentity = nil; actionIdentity = nil
++        let idle = control.pointee.runtimeEndpoint!.isIdleForRuntimeRelease
++        precondition(idle)
++        control.pointee.markRuntimeQuiesced(runtimeClaim)
+         control.pointee.hasRoot = false
+         counterTrace("terminal", (interaction.committedRecordCount, values.count, models.phase))
+     }
+@@ -522,20 +613,20 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
+         if let error = boundary(.offerAndProduction) { return .failure(error) }
+         if let error = phase.transition(to: .offering) { return .failure(.execution(error)) }
+         control.pointee.context = phase.context
+-        var retained: RenderProductionError?
+-        let offer = endpoint.offer(provenance: provenance!) { sink in
+-            control.pointee.streams += 1
+-            do throws(SemanticExpansionError) {
+-                return try semantic.withPublishedView { bank in
+-                    switch geometry.produce(bank, header: header!, sink: &sink, limits: limits) {
+-                    case .success: return .complete
+-                    case .failure(let error): retained = error; return RecordingRenderProductionAdapter.observe(error: error).streamResult!
+-                    }
+-                }
+-            } catch { retained = .invariantViolation; return .contractViolation }
+-        }
+-        if offer.disposition == .accepted { control.pointee.lastFrame = endpoint.sink }
+-        if let retained { return .failure(.renderProduction(retained)) }
++        control.pointee.requireRuntimeClaim(runtimeClaim)
++        let productionSemantic = semantic.borrowedStore()
++        let productionHeader = header!, productionLimits = limits, productionProvenance = provenance!
++        // Only these disjoint fields/formals are lent across the producer.
++        // No whole pipeline/control value or mutator enters that callback.
++        let produced = counterProduceStoredEndpoint(endpoint: &control.pointee.runtimeEndpoint!,
++            streams: &control.pointee.streams, geometry: &geometry, semantic: productionSemantic,
++            header: productionHeader, limits: productionLimits, provenance: productionProvenance)
++        let offer = produced.endpoint.result
++        control.pointee.backend.envelopeRejections += produced.endpoint.invalidEnvelopeRejections
++        control.pointee.backend.endpointHealthObservation = produced.endpoint.health
++        precondition(produced.endpoint.health == control.pointee.backend.health)
++        if let recording = produced.endpoint.acceptedRecording { control.pointee.lastFrame = recording }
++        if let retained = produced.error { return .failure(.renderProduction(retained)) }
+         switch offer.disposition {
+         case .accepted: return .accepted(presentation!)
+         case .backpressured: return .backpressured
+@@ -636,14 +727,20 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
+         interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>,
+         scopedControl: consuming CounterHostControl, limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration
+     ) {
++        let sameOwner = root.belongs(to: models)
++        precondition(sameOwner)
+         self.models = consume models
+         self.root = consume root
+         self.semantic = consume semantic
+         self.values = consume values
+         self.limits = limits
++        let claim = scopedControl.pointer.pointee.claimRuntimeSlot()
+         scopedControl.pointer.pointee.initializeCounterWake()
+         let construction = CounterConstructionInputs.canonical
+-        self.endpoint = CounterEndpoint(configuration: construction.endpointConfiguration.configuration(endpointConfiguration), control: construction.endpointBacking.control(scopedControl.pointer))
++        let constructedEndpoint = CounterEndpoint(configuration: construction.endpointConfiguration.configuration(endpointConfiguration), control: construction.endpointBacking.control(scopedControl.pointer))
++        scopedControl.pointer.pointee.runtimeEndpoint = constructedEndpoint
++        scopedControl.pointer.pointee.completeRuntimeInstallation(claim)
++        runtimeClaim = claim
+         self.geometry = consume geometry
+         self.interaction = consume interaction
+         self.control = scopedControl.pointer
+@@ -652,10 +749,22 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
+ }
+ 
+ 
++extension CounterPipelineOwner {
++    private borrowing func clearOwnedRuntimeSlot() {
++        control.pointee.requireRuntimeClaim(runtimeClaim)
++        let idle = control.pointee.runtimeEndpoint!.isIdleForRuntimeRelease
++        let inactive = !control.pointee.backend.active
++        precondition(idle && inactive)
++        control.pointee.clearRuntimeSlot(runtimeClaim)
++    }
++}
++
+ extension CounterPipelineOwner
+ where Geometry: Copyable & Escapable, Candidate: Copyable & Escapable, Committed: Copyable & Escapable, Hits: Copyable & Escapable {
+     consuming func returnWorkspaces(checks: Int) -> CounterReturnedWorkspaces<Geometry, Candidate, Committed, Hits> {
+-        CounterReturnedWorkspaces(geometry: geometry, interaction: interaction, checks: checks)
++        precondition(quiescent && presentationTeardownComplete)
++        clearOwnedRuntimeSlot()
++        return CounterReturnedWorkspaces(geometry: geometry, interaction: interaction, checks: checks)
+     }
+ }
+ 
+@@ -675,3 +784,99 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
+         geometry.reset(); interaction.resetAllStorage()
+     }
+ }
++
++
++struct CounterEndpointOfferObservation {
++    let result: FrameOfferResult
++    let invalidEnvelopeRejections: Int
++    let health: GiftUIOperationalHealth
++    let acceptedRecording: CounterRenderSink?
++}
++struct CounterProductionObservation {
++    let endpoint: CounterEndpointOfferObservation
++    let error: RenderProductionError?
++}
++// The callback borrows only these separate formal loans. The original semantic
++// lender is retained by borrowedStore; no callback captures a pipeline/control.
++private func counterProduceStoredEndpoint<G: CounterGeometry & ~Copyable & ~Escapable>(
++    endpoint: inout CounterEndpoint, streams: inout Int, geometry: inout G,
++    semantic: borrowing SemanticRecordStore<CounterPayload>, header: RenderPlanHeader,
++    limits: RuntimeProfileLimits, provenance: FrameProvenance
++) -> CounterProductionObservation {
++    var retained: RenderProductionError?
++    let observed = endpoint.offerAndObserve(provenance: provenance) { sink in
++        streams += 1
++        do throws(SemanticExpansionError) {
++            return try semantic.withPublishedView { bank in
++                switch geometry.produce(bank, header: header, sink: &sink, limits: limits) {
++                case .success: return .complete
++                case .failure(let error): retained = error; return RecordingRenderProductionAdapter.observe(error: error).streamResult!
++                }
++            }
++        } catch { retained = .invariantViolation; return .contractViolation }
++    }
++    return .init(endpoint: observed, error: retained)
++}
++
++
++// Owned facts only: no endpoint, pointer, scoped value or callback is retained.
++struct CounterRecordingObservation: Equatable {
++    private let value: CounterRenderSink
++    init(_ value: borrowing CounterRenderSink) { self.value = copy value }
++    static func == (left: Self, right: Self) -> Bool {
++        let a = left.value, b = right.value
++        guard a.capacity == b.capacity && a.header == b.header && a.operations == b.operations && a.glyphs == b.glyphs && a.strokes == b.strokes && a.finishes == b.finishes && a.discards == b.discards && a.firstPoint == b.firstPoint && a.secondPoint == b.secondPoint && a.strokeHeader == b.strokeHeader else { return false }
++        for index in 0..<64 { if a.glyphRecords[index] != b.glyphRecords[index] { return false } }
++        return true
++    }
++}
++struct CounterWriterObservation: Equatable {
++    let bytes: UInt32
++    let regions: UInt16
++    let origin: Point?
++    let pixels: UInt16
++    let remaining: UInt32
++    let completed: Bool
++}
++struct CounterEndpointObservation: Equatable {
++    let effectivePresentation: EffectiveRasterPresentation
++    let descriptor: RasterSurfaceDescriptor
++    let payloadLimits: RasterPayloadLimits
++    let realization: RasterRealizationID
++    let bodyCalls: UInt32
++    let reservations: UInt32
++    let displayError: DisplayTargetError?
++    let producerError: RenderProductionError?
++    let capacity: RenderSinkCapacity
++    let sinkDescriptor: RasterSurfaceDescriptor
++    let sinkLimits: RasterPayloadLimits
++    let sinkFailure: RasterBackendError?
++    let streamCompleted: Bool
++    let presentationAccepted: Bool
++    let sinkProducerError: RenderProductionError?
++    let idle: Bool
++    let health: GiftUIOperationalHealth
++    let recording: CounterRecordingObservation
++    let targetConfiguration: HostEndpointConfiguration
++    let writer: CounterWriterObservation?
++    let nativeReservation: DisplayReservationID?
++    let nativeGlyphHeader: PositionedGlyphOperationHeader?
++}
++struct CounterRuntimeSlotObservation: Equatable {
++    let phase: CounterRuntimeSlotPhase
++    let owner: UInt64?
++    let lastSerial: UInt64
++    let endpoint: CounterEndpointObservation?
++    let root: SemanticCompleteIdentity?
++    let action: SemanticCompleteIdentity?
++    let candidateRoot: SemanticCompleteIdentity?
++    let candidateAction: SemanticCompleteIdentity?
++    init(_ control: UnsafeMutablePointer<CounterControl>) {
++        phase = control.pointee.runtimeSlotPhase; owner = control.pointee.runtimeSlotOwner
++        lastSerial = control.pointee.runtimeLastOwnerSerial
++        endpoint = control.pointee.runtimeEndpoint?.ownedObservation
++        root = control.pointee.runtimeRootIdentity; action = control.pointee.runtimeActionIdentity
++        candidateRoot = control.pointee.runtimeCandidateRootIdentity
++        candidateAction = control.pointee.runtimeCandidateActionIdentity
++    }
++}
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
+index c60f235c..56c698a5 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
+@@ -152,7 +152,8 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking &
+         concreteCoordinatorBytes = MemoryLayout<DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>>.size
+     }
+     #endif
+-    // Endpoint/sink metadata belongs to the backend owner, not profile storage.
++    // Endpoint/sink data now resides in Control but still belongs to the backend
++    // accounting owner. Subtract it once from the combined coordinator/control.
+     // Physical backend arrays in CounterControl remain fully charged below.
+     let coordinator = concreteCoordinatorBytes - MemoryLayout<G>.size
+         - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CounterEndpoint>.size
+@@ -244,14 +245,14 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking &
+     record(.inline(CounterAdmissionBacking.self, family: 22, chargedBytes: sealed, kind: .partition))
+     record(.inline(Admission.Controller?.self, family: 23, chargedBytes: Admission.pointerStateStorageBytes, kind: .partition))
+     record(.inline(CounterPointerState.self, family: 23))
+-    let coordinatorFields = concreteCoordinatorBytes - MemoryLayout<G>.size - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CounterEndpoint>.size
++    let coordinatorFields = concreteCoordinatorBytes - MemoryLayout<G>.size - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size
+     if profile == .static { record(.inline(Coordinator.self, family: 24, chargedBytes: coordinatorFields + descriptorBytes, kind: .metadataPadding)) }
+     #if !hasFeature(Embedded)
+     if profile == .dynamic { record(.inline(DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>.self, family: 24, chargedBytes: coordinatorFields + descriptorBytes, kind: .metadataPadding)) }
+     #endif
+     // All outer controls, observations, optional controller metadata and padding
+     // remain physically live and are charged here exactly once.
+-    record(.inline(CounterControl.self, family: 24, chargedBytes: MemoryLayout<CounterControl>.size - Admission.pointerStateStorageBytes - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result, kind: .metadataPadding))
++    record(.inline(CounterControl.self, family: 24, chargedBytes: MemoryLayout<CounterControl>.size - MemoryLayout<CounterEndpoint>.size - Admission.pointerStateStorageBytes - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result, kind: .metadataPadding))
+     record(factoryRegion)
+     if let factoryDescriptorRegion { record(factoryDescriptorRegion) }
+     record(.inline(RuntimeCompletePipelineResult<RuntimeOwnerFailure>?.self, family: 25))
+@@ -319,6 +320,7 @@ struct DynamicCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
+         control.admission.finishAttempt()
+     }
+     mutating func resetAllStorage() {
++        control.requireVacantRuntimeSlot()
+         precondition(!used || control.unavailable)
+         resetAttemptStorage()
+         interaction!.resetAllStorage()
+@@ -397,6 +399,7 @@ struct StaticCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
+         control.admission.finishAttempt()
+     }
+     mutating func resetAllStorage() {
++        control.requireVacantRuntimeSlot()
+         precondition(!used || control.unavailable)
+         resetAttemptStorage()
+         interaction!.resetAllStorage()
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
+index 64f89525..cf9982d4 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
+@@ -1357,7 +1357,7 @@ fileprivate struct P08EmbeddedOuter: ~Copyable {
+     }
+     deinit {
+         if acquired >= 11 { used.deinitialize(count: 1) }
+-        if acquired >= 10 { control.deinitialize(count: 1) }
++        if acquired >= 10 { control.pointee.requireVacantRuntimeSlot(); control.deinitialize(count: 1) }
+         if acquired >= 9 { entries.deinitialize(count: 1) }
+         if acquired >= 8 { canvas.deinitialize(count: 1) }
+         if acquired >= 7 { scalars.deinitialize(count: 128) }
+@@ -1501,11 +1501,13 @@ fileprivate func p08ReuseLabel(_ route: StaticString, _ suffix: StaticString) {
+     #endif
+ }
+ fileprivate func p08RequireFreshControl(_ control: UnsafeMutablePointer<CounterControl>) {
++    control.pointee.requireVacantRuntimeSlot()
+     precondition(control.pointee.admissionController == nil && control.pointee.wake == nil && control.pointee.scheduler == nil)
+     precondition(control.pointee.lastSealedAction == nil && control.pointee.lastDispatchedAction == nil && control.pointee.lastDispatchContext == nil && control.pointee.actionDispatches == 0)
+     precondition(!control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled && control.pointee.finalized == 0)
+ }
+ fileprivate func p08RequireRetiredControl(_ control: UnsafeMutablePointer<CounterControl>) {
++    control.pointee.requireVacantRuntimeSlot()
+     precondition(control.pointee.runtime.unavailable && !control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled)
+     precondition(control.pointee.observationsInstalled == control.pointee.observationsDetached)
+     if var scheduler = control.pointee.scheduler {
+@@ -1518,6 +1520,8 @@ fileprivate func p08RequireSameInventory(_ current: InlineArray<14, P08Initializ
+     for index in 0..<14 { precondition(current[index] == original[index]) }
+ }
+ fileprivate struct P08ReuseFingerprint: Equatable {
++    let runtimeSlot: CounterRuntimeSlotObservation
++    let acceptedRecording: CounterRecordingObservation
+     let joins: CounterJoinSnapshot
+     let context: ExecutionContext
+     let capture: CapturedAction<SemanticCompleteIdentity>?
+@@ -1546,6 +1550,8 @@ fileprivate struct P08ReuseFingerprint: Equatable {
+     let lastDispatchContext: ExecutionContext?
+     let actionDispatches: Int
+     init(_ control: UnsafeMutablePointer<CounterControl>) {
++        runtimeSlot = CounterRuntimeSlotObservation(control)
++        acceptedRecording = CounterRecordingObservation(control.pointee.lastFrame)
+         joins = counterJoinSnapshot(control); context = control.pointee.runtime.context
+         capture = control.pointee.runtime.pointer.capture.current; source = control.pointee.runtime.pointer.source
+         sequence = control.pointee.runtime.pointer.sequence
+@@ -1782,6 +1788,7 @@ fileprivate func p08RunReuseHost<Owner>(host: inout SignalAnalyzerPresetHostInst
+ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
+     let route: StaticString = host.assemblyReport.profile == .static ? "static" : "dynamic"
+     var count = p08ReuseActivate(host: &host, control: control)
++    count += p08RuntimeSlotGuardControls(control)
+     let action = p08ReuseProducedAction(host: host)
+     var admission = CounterAdmission(borrowing: control)
+     let revision = control.pointee.runtime.committedPresentation!
+@@ -1825,6 +1832,7 @@ fileprivate struct P08StaticOuterView: ~Copyable {
+     let outerMetadataBytes: Int
+     borrowing func reconstruct(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity) {
+         p08RequireRetiredControl(control)
++        control.pointee.requireVacantRuntimeSlot()
+         control.deinitialize(count: 1); canvas.deinitialize(count: 1); semantic.deinitialize(count: 1); root.deinitialize(count: 1)
+         root.initialize(to: StaticObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
+         semantic.initialize(to: StaticSemanticRecordStorage(limits: counterSemanticLimits, owner: semanticOwner))
+@@ -1896,6 +1904,8 @@ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerI
+     let metadata = backing!.count - occupied + MemoryLayout<RuntimeProfileLimits>.stride + MemoryLayout<Bool>.stride - CounterSemanticBacking.paddingBytes
+     let view = P08StaticOuterView(limits: outer.limits.pointee, root: outer.root, semantic: outer.semantic,
+         records: .init(start: outer.records, count: 128), paths: .init(start: outer.paths, count: 384), payloads: .init(start: outer.payloads, count: 256), scalars: .init(start: outer.scalars, count: 128), canvas: outer.canvas, entries: .init(start: outer.entries, count: 1), control: outer.control, outerMetadataBytes: metadata)
++    let control = outer.control
++    defer { control.pointee.requireVacantRuntimeSlot() }
+     return body(&owner, view)
+     #else
+     var outer = P08StaticOuter(modelOwner: modelOwner, semanticOwner: semanticOwner)
+@@ -1914,6 +1924,7 @@ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerI
+                 defer { owner.finishReservation() }
+                 let metadata = MemoryLayout<P08StaticOuter>.stride - MemoryLayout<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CounterSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>>.size - MemoryLayout<CounterControl>.size + MemoryLayout<P08StaticReservation>.stride - (MemoryLayout<InlineArray<1024, UInt8>?>.stride + MemoryLayout<InlineArray<1056, UInt8>?>.stride + MemoryLayout<InlineArray<20, UInt8>?>.stride + MemoryLayout<InlineArray<112, UInt8>?>.stride + MemoryLayout<StaticCounterLayoutWorkspace?>.stride + MemoryLayout<StaticCounterResolvedLayoutStorage?>.stride + MemoryLayout<InlineArray<64, SemanticRecordReference?>?>.stride + MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>?>.stride + MemoryLayout<QualifiedRender?>.stride + MemoryLayout<CounterStaticCandidate?>.stride + 2 * MemoryLayout<CounterStaticHits?>.stride + 2 * MemoryLayout<CounterStaticCommitted?>.stride)
+                 let view = P08StaticOuterView(limits: limits, root: root, semantic: semantic, records: records, paths: paths, payloads: payloads, scalars: scalars, canvas: canvas, entries: entries, control: control, outerMetadataBytes: metadata)
++                defer { control.pointee.requireVacantRuntimeSlot() }
+                 return body(&owner, view)
+             }
+         } } } } } } } } }
+@@ -1964,6 +1975,7 @@ fileprivate func p08CompleteBody(_ result: P08BodyResult, control: UnsafeMutable
+         precondition(control.pointee.runtime.pointer.capture.current == nil && control.pointee.runtime.pointer.source == nil)
+         precondition(!control.pointee.hasRoot && control.pointee.committedRecords == 0)
+     }
++    control.pointee.requireVacantRuntimeSlot()
+     control.pointee.retireProducerOrigin()
+ }
+ 
+@@ -2208,6 +2220,7 @@ fileprivate struct P08DynamicOuterView: ~Copyable {
+     let control: UnsafeMutablePointer<CounterControl>
+     borrowing func reconstruct(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity) {
+         p08RequireRetiredControl(control)
++        control.pointee.requireVacantRuntimeSlot()
+         control.deinitialize(count: 1); canvas.deinitialize(count: 1); semantic.deinitialize(count: 1); root.deinitialize(count: 1)
+         root.initialize(to: DynamicObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
+         semantic.initialize(to: DynamicSemanticRecordStorage(limits: counterSemanticLimits, owner: semanticOwner))
+@@ -2241,6 +2254,7 @@ fileprivate func withP08SelectedDynamic<Result>(modelOwner: ObservableModelOwner
+             withP08DynamicReservation { owner in
+                 precondition(initializeP08Backing(&owner) == nil); defer { owner.finishReservation() }
+                 let view = P08DynamicOuterView(limits: limits, root: root, semantic: semantic, canvas: canvas, control: control)
++                defer { control.pointee.requireVacantRuntimeSlot() }
+                 return body(&owner, view)
+             }
+         } } } }
+@@ -2666,3 +2680,16 @@ fileprivate struct P08SessionOnlyCleanup: ~Copyable, ~Escapable {
+     #endif
+ }
+ #endif
++
++@inline(never)
++fileprivate func p08RuntimeSlotGuardControls(_ control: UnsafeMutablePointer<CounterControl>) -> Int {
++    let before = CounterRuntimeSlotObservation(control)
++    guard let owner = control.pointee.runtimeSlotOwner else { preconditionFailure("missing actual runtime owner") }
++    let wrong = owner.addingReportingOverflow(1)
++    precondition(!wrong.overflow)
++    let duplicate = control.pointee.tryClaimRuntimeSlot()
++    let wrongClear = control.pointee.tryClearRuntimeSlot(wrong.partialValue)
++    let same = CounterRuntimeSlotObservation(control) == before
++    precondition(duplicate == nil && !wrongClear && same)
++    return 3
++}
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift
+index 9e880a38..3ec33fb7 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift
+@@ -212,18 +212,37 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
+         control.pointee.backend.constructedProjection = constructed; control.pointee.backend.constructedEndpoints += 1
+         actual = CounterTiledEndpoint(effectivePresentation: configuration.effectivePresentation, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, textMetrics: construction.text.metrics(), textRaster: construction.text.raster(), textRasterRealization: construction.text.realization, envelopeValidator: CounterTiledEnvelope(expected: nil), sink: CounterTiledRasterAdapter(session: session), startupFailure: nil)!
+     }
++    var ownedObservation: CounterEndpointObservation {
++        .init(effectivePresentation: actual.effectivePresentation, descriptor: actual.descriptor,
++            payloadLimits: actual.payloadLimits, realization: actual.textRasterRealization,
++            bodyCalls: actual.bodyCallCount, reservations: actual.reservationCallCount,
++            displayError: actual.lastDisplayError, producerError: actual.retainedProducerError,
++            capacity: actual.sink.capacity, sinkDescriptor: actual.sink.descriptor,
++            sinkLimits: actual.sink.payloadLimits, sinkFailure: actual.sink.failure,
++            streamCompleted: actual.sink.streamCompleted,
++            presentationAccepted: actual.sink.presentationResponsibilityAccepted,
++            sinkProducerError: actual.sink.retainedProducerError, idle: actual.sink.isIdleForOffer,
++            health: actual.health(), recording: CounterRecordingObservation(sink),
++            targetConfiguration: actual.sink.session.target.configuration, writer: CounterWriterObservation(bytes: actual.sink.session.target.writer.writtenBytes,
++                regions: actual.sink.session.target.writer.writtenRegionCount,
++                origin: actual.sink.session.target.writer.origin, pixels: actual.sink.session.target.writer.pixels,
++                remaining: actual.sink.session.target.writer.remaining, completed: actual.sink.session.target.writer.completed),
++            nativeReservation: nil, nativeGlyphHeader: nil)
++    }
++    var isIdleForRuntimeRelease: Bool { actual.sink.isIdleForOffer }
+     mutating func offer(provenance: FrameProvenance, body: (inout CounterTiledRasterAdapter) -> FrameStreamResult) -> FrameOfferResult {
++        offerAndObserve(provenance: provenance, body: body).result
++    }
++    mutating func offerAndObserve(provenance: FrameProvenance, body: (inout CounterTiledRasterAdapter) -> FrameStreamResult) -> CounterEndpointOfferObservation {
+         precondition(actual.replaceEnvelopeValidator(CounterTiledEnvelope(expected: nil)))
+         let reservations = actual.reservationCallCount; let bodies = actual.bodyCallCount
+         let invalid = actual.offer(provenance: provenance) { _ in preconditionFailure("invalid counter envelope invoked producer") }
+         precondition(invalid == .init(disposition: .failed, failure: .invalidEnvelope)!)
+         precondition(actual.reservationCallCount == reservations && actual.bodyCallCount == bodies)
+-        control.pointee.backend.envelopeRejections += 1
+         precondition(actual.replaceEnvelopeValidator(CounterTiledEnvelope(expected: provenance)))
+         let result = actual.offer(provenance: provenance, body: body)
+-        control.pointee.backend.endpointHealthObservation = actual.health()
+-        precondition(actual.health() == control.pointee.backend.health)
+-        return result
++        return .init(result: result, invalidEnvelopeRejections: 1, health: actual.health(),
++            acceptedRecording: result.disposition == .accepted ? sink : nil)
+     }
+ }
+ #endif
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift
+index 9cd9577d..1f8a478b 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift
+@@ -52,7 +52,7 @@ struct CounterEmbeddedLayoutSummary {
+     var slotBytes = 0
+     var totalBytes = 0
+     @inline(__always)
+-    fileprivate mutating func append<T: ~Copyable>(_ type: T.Type, count: Int, limit: Int, surplus: Int = 0,
++    fileprivate mutating func append<T: ~Copyable>(_ type: T.Type, count: Int, surplus: Int = 0,
+         visit: (Int, CounterEmbeddedRegion) -> Void) -> Bool {
+         let size = MemoryLayout<T>.size, stride = MemoryLayout<T>.stride, alignment = MemoryLayout<T>.alignment
+         guard count >= 0, stride >= size, alignment > 0, fields < 25 else { return false }
+@@ -63,52 +63,62 @@ struct CounterEmbeddedLayoutSummary {
+         let retained = product.partialValue.addingReportingOverflow(surplus)
+         guard !retained.overflow else { return false }
+         let end = start.partialValue.addingReportingOverflow(retained.partialValue)
+-        guard !end.overflow, end.partialValue <= limit else { return false }
++        guard !end.overflow else { return false }
+         visit(fields, .init(offset: start.partialValue, count: count, size: size, stride: stride, alignment: alignment, extent: retained.partialValue))
+         fields += 1; cursor = end.partialValue; maximumAlignment = max(maximumAlignment, alignment)
+         return true
+     }
+ }
+ @inline(__always)
+-func counterVisitEmbeddedLayout(suppliedByteCount: Int, r1Surplus: Int = 0,
++func counterDeriveEmbeddedLayout(r1Surplus: Int = 0,
+     _ visit: (Int, CounterEmbeddedRegion) -> Void) -> CounterEmbeddedLayoutSummary? {
+-    guard suppliedByteCount > 0, r1Surplus >= 0 else { return nil }
++    guard r1Surplus >= 0 else { return nil }
+     var state = CounterEmbeddedLayoutSummary()
+-    guard state.append(RuntimeProfileLimits.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(StaticSemanticRecordStorage.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(SemanticRuntimeRecord.self, count: 128, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(SemanticPathEntry.self, count: 384, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(CounterPayload?.self, count: 256, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(UInt32.self, count: 128, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(StaticCanvasValueStorage.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(UInt8.self, count: 1024, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(UInt8.self, count: 1056, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(UInt8.self, count: 20, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(UInt8.self, count: 112, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(StaticCounterLayoutWorkspace.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(StaticCounterResolvedLayoutStorage.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(InlineArray<64, SemanticRecordReference?>.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(QualifiedRender.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(CounterStaticCandidate.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(CounterStaticHits.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(CounterStaticCommitted.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(CounterStaticCommitted.self, count: 1, limit: suppliedByteCount, surplus: r1Surplus, visit: visit) else { return nil }
+-    guard state.append(CounterStaticHits.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(CounterControl.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
+-    guard state.append(Bool.self, count: 1, limit: suppliedByteCount, visit: visit) else { return nil }
++    guard state.append(RuntimeProfileLimits.self, count: 1, visit: visit) else { return nil }
++    guard state.append(StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, count: 1, visit: visit) else { return nil }
++    guard state.append(StaticSemanticRecordStorage.self, count: 1, visit: visit) else { return nil }
++    guard state.append(SemanticRuntimeRecord.self, count: 128, visit: visit) else { return nil }
++    guard state.append(SemanticPathEntry.self, count: 384, visit: visit) else { return nil }
++    guard state.append(CounterPayload?.self, count: 256, visit: visit) else { return nil }
++    guard state.append(UInt32.self, count: 128, visit: visit) else { return nil }
++    guard state.append(StaticCanvasValueStorage.self, count: 1, visit: visit) else { return nil }
++    guard state.append(CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?.self, count: 1, visit: visit) else { return nil }
++    guard state.append(UInt8.self, count: 1024, visit: visit) else { return nil }
++    guard state.append(UInt8.self, count: 1056, visit: visit) else { return nil }
++    guard state.append(UInt8.self, count: 20, visit: visit) else { return nil }
++    guard state.append(UInt8.self, count: 112, visit: visit) else { return nil }
++    guard state.append(StaticCounterLayoutWorkspace.self, count: 1, visit: visit) else { return nil }
++    guard state.append(StaticCounterResolvedLayoutStorage.self, count: 1, visit: visit) else { return nil }
++    guard state.append(InlineArray<64, SemanticRecordReference?>.self, count: 1, visit: visit) else { return nil }
++    guard state.append(StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>.self, count: 1, visit: visit) else { return nil }
++    guard state.append(QualifiedRender.self, count: 1, visit: visit) else { return nil }
++    guard state.append(CounterStaticCandidate.self, count: 1, visit: visit) else { return nil }
++    guard state.append(CounterStaticHits.self, count: 1, visit: visit) else { return nil }
++    guard state.append(CounterStaticCommitted.self, count: 1, visit: visit) else { return nil }
++    guard state.append(CounterStaticCommitted.self, count: 1, surplus: r1Surplus, visit: visit) else { return nil }
++    guard state.append(CounterStaticHits.self, count: 1, visit: visit) else { return nil }
++    guard state.append(CounterControl.self, count: 1, visit: visit) else { return nil }
++    guard state.append(Bool.self, count: 1, visit: visit) else { return nil }
+     let remainder = state.cursor % state.maximumAlignment
+     let padding = remainder == 0 ? 0 : state.maximumAlignment - remainder
+     let end = state.cursor.addingReportingOverflow(padding)
+-    guard !end.overflow, end.partialValue <= suppliedByteCount else { return nil }
++    guard !end.overflow else { return nil }
+     state.slotBytes = end.partialValue
+     let total = state.slotBytes.multipliedReportingOverflow(by: counterEmbeddedSlotCount)
+     guard !total.overflow else { return nil }
+     state.totalBytes = total.partialValue
+     return state
+ }
++// All arithmetic and fields share the same derivation. Runtime binding still
++// rejects every region beyond supplied storage before any pointer binding/init.
++@inline(__always)
++func counterVisitEmbeddedLayout(suppliedByteCount: Int, r1Surplus: Int = 0,
++    _ visit: (Int, CounterEmbeddedRegion) -> Void) -> CounterEmbeddedLayoutSummary? {
++    guard suppliedByteCount > 0,
++          let summary = counterDeriveEmbeddedLayout(r1Surplus: r1Surplus, visit),
++          summary.slotBytes <= suppliedByteCount else { return nil }
++    return summary
++}
+ struct CounterEmbeddedLayout {
+     private(set) var regions: InlineArray<25, CounterEmbeddedRegion?>
+     private(set) var cursor: Int
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift
+index 80666ce8..896803c7 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift
+@@ -5,7 +5,7 @@
+ @inline(__always)
+ private func counterEmbeddedRegionFact(_ field: Int, _ component: Int) -> UInt32 {
+     var selected: Int? = nil
+-    guard let summary = counterVisitEmbeddedLayout(suppliedByteCount: counterEmbeddedSlotBytes,
++    guard let summary = counterDeriveEmbeddedLayout(
+         { index, region in
+             guard index == field else { return }
+             switch component {
+@@ -22,7 +22,7 @@ private func counterEmbeddedRegionFact(_ field: Int, _ component: Int) -> UInt32
+ }
+ @inline(__always)
+ private func counterEmbeddedSummaryFact(_ component: Int) -> UInt32 {
+-    guard let summary = counterVisitEmbeddedLayout(suppliedByteCount: counterEmbeddedSlotBytes, { _, _ in }),
++    guard let summary = counterDeriveEmbeddedLayout( { _, _ in }),
+           summary.fields == 25 else { preconditionFailure("invalid measured layout") }
+     let value: Int
+     switch component {
+diff --git a/scripts/contracts/check-spec-015-counter.py b/scripts/contracts/check-spec-015-counter.py
+index d42317ec..7d050e2a 100644
+--- a/scripts/contracts/check-spec-015-counter.py
++++ b/scripts/contracts/check-spec-015-counter.py
+@@ -32,32 +32,35 @@ def digest(path):
+ revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
+ revision_receipt = json.loads(revision_path.read_text())
+ reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
+-applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-cycle2-applicability.json'
++applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-control-resident-initial-applicability.json'
++assert digest(applicability_path) == '6f70dea0ad346513d4d2c181146ae82a1388f6522640d6787a32d934ed57f252', 'unpinned source applicability packet'
+ applicability = json.loads(applicability_path.read_text())
+ qualified_applicability = []
+ def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
+-    source = 'Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift'
+-    if name != source or receipt_path is None:
++    if name not in applicability['candidate_sources'] or receipt_path is None:
+         return False
+     assert applicability['kind'] == 'exact-noncompiled-source-applicability-qualification'
+-    assert applicability['source'] == source and applicability['activity'] == 'p08-stage-realization-cycle2'
++    assert applicability['activity'] == 'p08-control-resident-initial'
+     relative_receipt = str(receipt_path.relative_to(ROOT))
+     entry = next((value for value in applicability['receipts'] if value['receipt'] == relative_receipt), None)
+     if entry is None:
+         return False
+-    assert digest(receipt_path) == entry['receipt_sha256'], source + ': unqualified predecessor receipt'
+-    assert expected == entry['original_source_sha256'] == receipt['inputs'][source]
+-    assert digest(ROOT / source) == applicability['corrected_source_sha256'], source + ': unqualified corrected source'
++    assert digest(receipt_path) == entry['receipt_sha256'], name + ': unqualified predecessor receipt'
++    revision = entry['source_revisions'].get(name)
++    assert revision is not None and expected == revision['original_source_sha256'] == receipt['inputs'][name]
++    for source, corrected in applicability['candidate_sources'].items():
++        assert digest(ROOT / source) == corrected, source + ': unqualified corrected source'
+     recorded = sorted(set(str(pathlib.Path(token).resolve().relative_to(ROOT))
+                           for command in receipt['commands'] for token in shlex.split(command)
+                           if token.endswith('.swift')))
+-    assert source not in recorded and entry['source_compiled'] is False
++    for source in applicability['candidate_sources']:
++        assert source not in recorded and entry['candidate_source_exclusion'][source]['compiled'] is False
+     assert len(recorded) == entry['recorded_swift_inputs_count']
+     recorded_digest = hashlib.sha256(json.dumps(recorded, separators=(',', ':')).encode()).hexdigest()
+-    assert recorded_digest == entry['recorded_swift_inputs_sha256'], source + ': compilation applicability changed'
+-    qualified_applicability.append(dict(activity=applicability['activity'], receipt=relative_receipt, receipt_sha256=entry['receipt_sha256'],
+-                                       source=source, original_source_sha256=expected,
+-                                       corrected_source_sha256=applicability['corrected_source_sha256'],
++    assert recorded_digest == entry['recorded_swift_inputs_sha256'], name + ': compilation applicability changed'
++    qualified_applicability.append(dict(activity=applicability['activity'], receipt=relative_receipt,
++                                       receipt_sha256=entry['receipt_sha256'], source=name,
++                                       original_source_sha256=expected, corrected_source_sha256=revision['corrected_source_sha256'],
+                                        compiled=False, original_manifest_current=False))
+     return True
+ def verify_recipe_source(name, expected, receipt_path=None, receipt=None):
+@@ -199,16 +202,17 @@ reuse_suffixes = ('inventory-two-hosts', 'control-same-address', 'terminal-old-h
+ reuse_routes = ('dynamic',) if args.profile in ('macos-dynamic', 'raspberry-pi-armv6') else ('static',) if args.profile in ('macos-static', 'nrf52840-embedded') else ('static', 'dynamic')
+ registered_reuse_labels = ['so06-reuse-' + route + '-' + suffix for route in reuse_routes for suffix in reuse_suffixes]
+ planned_scoped_labels = []
++planned_supplemental_labels = []
+ input_lifetime_escape = "lifetime-dependent variable 'input' escapes its scope"
+ closure_diagnostic = dict(any_of=[["'input' is borrowed and cannot be consumed"],
+                                   ["'input' cannot be captured by an escaping closure since it is a borrowed parameter"],
+                                   [input_lifetime_escape]], required_primary=[input_lifetime_escape])
+-def scoped_variant(label, source, diagnostic=None):
++def scoped_variant(label, source, diagnostic=None, supplemental=False):
+     path = out / (label + '.swift')
+     path.write_text(trusted_source + '\n' + source + '\n')
+     if isinstance(diagnostic, dict):
+         diagnostic = dict(diagnostic, error_site=dict(filename=path.name, first_line=trusted_source.count('\n') + 2))
+-    planned_scoped_labels.append(label)
++    (planned_supplemental_labels if supplemental else planned_scoped_labels).append(label)
+     prerequisites = ['counter-model']
+     if label.endswith('-negative'):
+         prerequisites.append(label.removesuffix('-negative') + '-positive')
+@@ -347,6 +351,13 @@ if not is_embedded:
+         scoped_variant(stem + '-positive', positive)
+         scoped_variant(stem + '-negative', negative, diagnostic)
+ assert len(planned_scoped_labels) == (202 if is_embedded else 384), 'scoped corpus inventory changed'
++# Supplementary concrete endpoint-field projections do not replace any original
++# lifetime label or native executable control. Actual runtime offers are the
++# positive behavioral exercise of this same source seam.
++if not is_target:
++    projection = 'fileprivate func projected(_ endpoint: inout CounterEndpoint?, _ streams: inout Int, _ body: (inout CounterEndpoint?, inout Int) -> Void) { body(&endpoint, &streams) }\n'
++    scoped_variant('control-resident-projection-positive', projection + 'fileprivate func probe(_ control: inout CounterControl) { projected(&control.runtimeEndpoint, &control.streams) { endpoint, streams in streams += 1; _ = endpoint == nil } }', supplemental=True)
++    scoped_variant('control-resident-projection-negative', projection + 'fileprivate func probe(_ control: inout CounterControl) { projected(&control.runtimeEndpoint, &control.streams) { _, _ in _ = control.runtimeEndpoint == nil } }', dict(any_of=[['overlapping accesses']], required_primary=['overlapping accesses']), supplemental=True)
+ if not is_target:
+     main = out / 'Main.swift'
+     expression = 'p08CounterRoute() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator()' if args.profile else 'p08CounterGraph() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterScopedStorage() + p08CounterCoordinator() + p08CounterHost() + p08CounterDynamicHost()'
+@@ -378,11 +389,12 @@ else:
+         run('so07-layout-facts', [sys.executable, ROOT / 'scripts/contracts/p08_layout_facts.py',
+                                 'object', '--input', out / 'P08CounterRuntime.o',
+                                 '--output', out / 'so07-layout-facts.json',
++                                '--decoded-output', out / 'so07-layout-facts-decoded.json',
+                                 '--compiler-sha256', digest(compiler)], requires=['counter-model'])
+         target_requirements.append('so07-layout-facts')
+     execution = collector.target_compilation(target_requirements, [core / 'GiftUI.o', *sorted(module_objects)])
+ selected_passed = collector.finish()
+-receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, planned_scoped_labels=planned_scoped_labels, registered_reuse_labels=registered_reuse_labels, reuse_execution=not is_target and collector.passed('execute'), qualified_noncompiled_applicability=qualified_applicability, execution=execution,
++receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, planned_scoped_labels=planned_scoped_labels, planned_supplemental_labels=planned_supplemental_labels, registered_reuse_labels=registered_reuse_labels, reuse_execution=not is_target and collector.passed('execute'), qualified_noncompiled_applicability=qualified_applicability, execution=execution,
+                collection_schema=2, collection_complete=collector.complete, passed=collector.overall_passed,
+                fresh_focused=collector.fresh, focused_passed=collector.focused_passed, selected_families=sorted(collector.selected),
+                prior_collection=dict(path=str(collector.resume.relative_to(ROOT)), sha256=digest(collector.resume / 'result.json')) if collector.resume else None,
+diff --git a/scripts/contracts/p08_layout_facts.py b/scripts/contracts/p08_layout_facts.py
+index c6a4534e..7429083d 100644
+--- a/scripts/contracts/p08_layout_facts.py
++++ b/scripts/contracts/p08_layout_facts.py
+@@ -334,11 +334,21 @@ def classify_inventory(elf):
+     return dict(global_roots=list(SYMBOLS), nonroot_local_helpers=helpers)
+ 
+ 
+-def extract(path, reservation):
++def extract(path, reservation, decoded_output=None, compiler_sha256=None):
+     elf = ELF(path.read_bytes())
+     inventory = classify_inventory(elf)
+     facts = {name: elf.constant(name) for name in SYMBOLS}
+     values = {name: fact['value'] for name, fact in facts.items()}
++    if decoded_output is not None:
++        # Preserve exact target facts before retained-reservation validation. This
++        # file is diagnostic only and never substitutes for accepted SO07 output.
++        decoded_output.write_text(json.dumps(dict(
++            schema=1, kind='decoded-unvalidated-layout-facts', executed=False,
++            accepted=False, diagnostic_only=True, artifact_sha256=digest(path),
++            compiler_sha256=compiler_sha256, extractor_sha256=digest(pathlib.Path(__file__)),
++            source_sha256=digest(SWIFT_SOURCE), accessor_source_sha256=digest(ACCESSOR_SOURCE),
++            reservation=reservation, values=values, symbols=facts,
++            measurement_inventory=inventory), indent=2) + '\n')
+     return elf, dict(values=values, symbols=facts, layout=validate_layout(values, reservation),
+                      measurement_inventory=inventory)
+ 
+@@ -375,12 +385,13 @@ def main():
+     parser.add_argument('--input', required=True, type=pathlib.Path)
+     parser.add_argument('--output', required=True, type=pathlib.Path)
+     parser.add_argument('--compiler-sha256', required=True)
++    parser.add_argument('--decoded-output', type=pathlib.Path, help='diagnostic facts retained even if reservation validation fails')
+     parser.add_argument('--so07', type=pathlib.Path)
+     parser.add_argument('--map', type=pathlib.Path)
+     args = parser.parse_args()
+     require(re.fullmatch(r'[0-9a-f]{64}', args.compiler_sha256), 'invalid compiler identity')
+     reservation = source_reservation(SWIFT_SOURCE.read_text(), C_SOURCE.read_text() if args.mode == 'firmware' else None)
+-    elf, extracted = extract(args.input, reservation)
++    elf, extracted = extract(args.input, reservation, args.decoded_output, args.compiler_sha256)
+     require(elf.kind == (1 if args.mode == 'object' else 2), 'wrong artifact kind')
+     record = dict(schema=1, kind='target-compiled-constant-return-layout-facts', executed=False,
+                   artifact=str(args.input.resolve().relative_to(ROOT)), artifact_sha256=digest(args.input),
+diff --git a/scripts/contracts/test_p08_layout_facts.py b/scripts/contracts/test_p08_layout_facts.py
+index 7ac177cf..353cce6c 100644
+--- a/scripts/contracts/test_p08_layout_facts.py
++++ b/scripts/contracts/test_p08_layout_facts.py
+@@ -157,6 +157,31 @@ class ELFTests(unittest.TestCase):
+                 facts.extract(path, dict(slot_bytes=128, slot_count=4, retained_bytes=512))
+ 
+ 
++    def test_decoded_facts_survive_reservation_failure_without_accepted_layout(self):
++        with tempfile.TemporaryDirectory() as directory:
++            path = pathlib.Path(directory) / 'test.o'
++            raw = pathlib.Path(directory) / 'decoded.json'
++            path.write_bytes(elf_bytes())
++            with self.assertRaises(ValueError):
++                facts.extract(path, dict(slot_bytes=96, slot_count=4, retained_bytes=384), raw, 'a' * 64)
++            record = json.loads(raw.read_text())
++            self.assertFalse(record['accepted'])
++            self.assertTrue(record['diagnostic_only'])
++            self.assertEqual(record['values'], layout_values())
++            self.assertNotIn('layout', record)
++            self.assertEqual(record['compiler_sha256'], 'a' * 64)
++            self.assertEqual(record['artifact_sha256'], facts.digest(path))
++
++    def test_failed_byte_proof_cannot_emit_decoded_fact_packet(self):
++        with tempfile.TemporaryDirectory() as directory:
++            path = pathlib.Path(directory) / 'test.o'
++            raw = pathlib.Path(directory) / 'decoded.json'
++            path.write_bytes(elf_bytes(body_override=b'\x00\x68\x70\x47'))
++            with self.assertRaises(ValueError):
++                facts.extract(path, dict(slot_bytes=128, slot_count=4, retained_bytes=512), raw)
++            self.assertFalse(raw.exists())
++
++
+ class InventoryTests(unittest.TestCase):
+     @staticmethod
+     def actual_rows():
+@@ -250,7 +275,10 @@ class LayoutTests(unittest.TestCase):
+             for component, name in enumerate(facts.COMPONENTS):
+                 self.assertIn('func counterEmbeddedFact' + str(index) + '_' + str(component) +
+                               '() -> UInt32 { counterEmbeddedRegionFact(' + str(index) + ', ' + str(component) + ') }', source)
+-        self.assertIn('counterVisitEmbeddedLayout(suppliedByteCount: counterEmbeddedSlotBytes', source)
++        self.assertIn('counterDeriveEmbeddedLayout(', source)
++        runtime = facts.SWIFT_SOURCE.read_text()
++        self.assertIn('summary.slotBytes <= suppliedByteCount', runtime)
++        self.assertIn('counterDeriveEmbeddedLayout(r1Surplus: r1Surplus, visit)', runtime)
+         self.assertNotIn('CounterEmbeddedLayout(suppliedByteCount:', source)
+         self.assertNotIn('.init(repeating:', source)
+ 

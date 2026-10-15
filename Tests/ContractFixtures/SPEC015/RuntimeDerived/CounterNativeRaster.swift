@@ -234,20 +234,35 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
         control.pointee.backend.constructedEndpoints += 1
         actual = CounterNativeEndpoint(effectivePresentation: configuration.effectivePresentation, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, textMetrics: construction.text.metrics(), textRaster: construction.text.raster(), textRasterRealization: construction.text.realization, envelopeValidator: CounterNativeEnvelope(expected: nil), sink: adapter, startupFailure: nil)!
     }
+    var ownedObservation: CounterEndpointObservation {
+        .init(effectivePresentation: actual.effectivePresentation, descriptor: actual.descriptor,
+            payloadLimits: actual.payloadLimits, realization: actual.textRasterRealization,
+            bodyCalls: actual.bodyCallCount, reservations: actual.reservationCallCount,
+            displayError: actual.lastDisplayError, producerError: actual.retainedProducerError,
+            capacity: actual.sink.capacity, sinkDescriptor: actual.sink.descriptor,
+            sinkLimits: actual.sink.payloadLimits, sinkFailure: actual.sink.failure,
+            streamCompleted: actual.sink.streamCompleted,
+            presentationAccepted: actual.sink.presentationResponsibilityAccepted,
+            sinkProducerError: actual.sink.retainedProducerError, idle: actual.sink.isIdleForOffer,
+            health: actual.health(), recording: CounterRecordingObservation(sink),
+            targetConfiguration: actual.sink.target.configuration, writer: nil,
+            nativeReservation: actual.sink.reservation, nativeGlyphHeader: actual.sink.glyphHeader)
+    }
+    var isIdleForRuntimeRelease: Bool { actual.sink.isIdleForOffer }
     mutating func offer(provenance: FrameProvenance, body: (inout CounterNativeRasterAdapter) -> FrameStreamResult) -> FrameOfferResult {
+        offerAndObserve(provenance: provenance, body: body).result
+    }
+    mutating func offerAndObserve(provenance: FrameProvenance, body: (inout CounterNativeRasterAdapter) -> FrameStreamResult) -> CounterEndpointOfferObservation {
         precondition(actual.replaceEnvelopeValidator(CounterNativeEnvelope(expected: nil)))
         let reservations = actual.reservationCallCount
         let bodies = actual.bodyCallCount
         let invalid = actual.offer(provenance: provenance) { _ in preconditionFailure("invalid counter envelope invoked producer") }
         precondition(invalid == .init(disposition: .failed, failure: .invalidEnvelope)!)
         precondition(actual.reservationCallCount == reservations && actual.bodyCallCount == bodies)
-        actual.sink.target.control.pointee.backend.envelopeRejections += 1
         precondition(actual.replaceEnvelopeValidator(CounterNativeEnvelope(expected: provenance)))
         let result = actual.offer(provenance: provenance, body: body)
-        let control = actual.sink.target.control
-        control.pointee.backend.endpointHealthObservation = actual.health()
-        precondition(actual.health() == control.pointee.backend.health)
-        return result
+        return .init(result: result, invalidEnvelopeRejections: 1, health: actual.health(),
+            acceptedRecording: result.disposition == .accepted ? sink : nil)
     }
 }
 #endif

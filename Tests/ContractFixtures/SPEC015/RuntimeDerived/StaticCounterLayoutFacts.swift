@@ -5,7 +5,7 @@
 @inline(__always)
 private func counterEmbeddedRegionFact(_ field: Int, _ component: Int) -> UInt32 {
     var selected: Int? = nil
-    guard let summary = counterVisitEmbeddedLayout(suppliedByteCount: counterEmbeddedSlotBytes,
+    guard let summary = counterDeriveEmbeddedLayout(
         { index, region in
             guard index == field else { return }
             switch component {
@@ -22,7 +22,7 @@ private func counterEmbeddedRegionFact(_ field: Int, _ component: Int) -> UInt32
 }
 @inline(__always)
 private func counterEmbeddedSummaryFact(_ component: Int) -> UInt32 {
-    guard let summary = counterVisitEmbeddedLayout(suppliedByteCount: counterEmbeddedSlotBytes, { _, _ in }),
+    guard let summary = counterDeriveEmbeddedLayout( { _, _ in }),
           summary.fields == 25 else { preconditionFailure("invalid measured layout") }
     let value: Int
     switch component {

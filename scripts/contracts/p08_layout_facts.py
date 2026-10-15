@@ -334,11 +334,21 @@ def classify_inventory(elf):
     return dict(global_roots=list(SYMBOLS), nonroot_local_helpers=helpers)
 
 
-def extract(path, reservation):
+def extract(path, reservation, decoded_output=None, compiler_sha256=None):
     elf = ELF(path.read_bytes())
     inventory = classify_inventory(elf)
     facts = {name: elf.constant(name) for name in SYMBOLS}
     values = {name: fact['value'] for name, fact in facts.items()}
+    if decoded_output is not None:
+        # Preserve exact target facts before retained-reservation validation. This
+        # file is diagnostic only and never substitutes for accepted SO07 output.
+        decoded_output.write_text(json.dumps(dict(
+            schema=1, kind='decoded-unvalidated-layout-facts', executed=False,
+            accepted=False, diagnostic_only=True, artifact_sha256=digest(path),
+            compiler_sha256=compiler_sha256, extractor_sha256=digest(pathlib.Path(__file__)),
+            source_sha256=digest(SWIFT_SOURCE), accessor_source_sha256=digest(ACCESSOR_SOURCE),
+            reservation=reservation, values=values, symbols=facts,
+            measurement_inventory=inventory), indent=2) + '\n')
     return elf, dict(values=values, symbols=facts, layout=validate_layout(values, reservation),
                      measurement_inventory=inventory)
 
@@ -375,12 +385,13 @@ def main():
     parser.add_argument('--input', required=True, type=pathlib.Path)
     parser.add_argument('--output', required=True, type=pathlib.Path)
     parser.add_argument('--compiler-sha256', required=True)
+    parser.add_argument('--decoded-output', type=pathlib.Path, help='diagnostic facts retained even if reservation validation fails')
     parser.add_argument('--so07', type=pathlib.Path)
     parser.add_argument('--map', type=pathlib.Path)
     args = parser.parse_args()
     require(re.fullmatch(r'[0-9a-f]{64}', args.compiler_sha256), 'invalid compiler identity')
     reservation = source_reservation(SWIFT_SOURCE.read_text(), C_SOURCE.read_text() if args.mode == 'firmware' else None)
-    elf, extracted = extract(args.input, reservation)
+    elf, extracted = extract(args.input, reservation, args.decoded_output, args.compiler_sha256)
     require(elf.kind == (1 if args.mode == 'object' else 2), 'wrong artifact kind')
     record = dict(schema=1, kind='target-compiled-constant-return-layout-facts', executed=False,
                   artifact=str(args.input.resolve().relative_to(ROOT)), artifact_sha256=digest(args.input),
