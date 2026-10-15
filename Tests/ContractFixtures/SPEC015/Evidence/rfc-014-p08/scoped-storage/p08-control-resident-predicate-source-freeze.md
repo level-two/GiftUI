@@ -1,12 +1,16 @@
 # P08 narrow predicate correction — source freeze
 
+**Independent SOURCE PASS at `c9c69770`.**
+[Focused review](p08-control-resident-predicate-independent-source-review.md)
+confirms readiness for the one authorized rerun; compiler acceptance is pending.
+
 Eugene explicitly approved “Please proceed” to the mechanical predicate fix,
 independent source review and **one** same focused measurement rerun. This is a
 new narrow allowance: one source fix frozen, rerun 0/1, zero extra automatic
 variants. The prior control-resident correction 2/2 and all older budgets remain
 closed. Baseline `e866e55d`; the [final prior failure](p08-control-resident-final-result.md)
 and its original source/logs remain immutable. No compiler/build/runtime/image
-ran during this correction; source review and compiler acceptance are pending.
+ran during this correction; independent source review now passes and compiler acceptance remains pending.
 
 Only the two approved `CounterControl` borrowing helpers change Swift code.
 `requireVacantRuntimeSlot` evaluates seven original stored-field predicates into

@@ -1,6 +1,8 @@
 # P08 control-resident runtime payload implementation
 
-Current boundary: **new user-approved narrow predicate fix frozen; independent source review pending**.
+Current boundary: **narrow predicate correction independent SOURCE PASS; one authorized measurement rerun pending**.
+[Independent source review](p08-control-resident-predicate-independent-source-review.md)
+confirms exact predicate preservation at `c9c69770`; compiler acceptance remains pending.
 Eugene explicitly said “Please proceed” to one mechanical fix, independent review
 and one same focused measurement rerun. [Narrow source freeze](p08-control-resident-predicate-source-freeze.md)
 records fix 1/1, rerun 0/1 and zero extra automatic variants. The prior 2/2 and all
