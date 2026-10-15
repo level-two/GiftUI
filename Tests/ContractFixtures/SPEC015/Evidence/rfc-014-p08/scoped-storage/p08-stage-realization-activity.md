@@ -4,8 +4,9 @@ Status: **correction 1 screen compiler/layout PASS; measured stack fit FAIL**.
 The [actual object screen result](p08-stage-realization-cycle1-screen-result.md)
 proves a required 75,224-byte nested lower bound against 27,648. Root/reuse
 orchestrator frames improve; live phase homes and whole-state observation
-temporaries remain. One concrete final correction is proposed for independent
-approach review; no second correction source or run exists.
+temporaries remain. The [independent result/approach review](p08-stage-realization-cycle1-independent-result-approach-review.md)
+confirms this fit failure and passes the concrete final correction approach.
+Implementation is next; no second correction source or run exists.
 [Focused independent review](p08-stage-realization-cycle1-independent-source-review.md)
 verifies the complete five-site borrowed-capture correction at `a72f0943`.
 The [correction and immutable failure packet](p08-stage-realization-cycle1-source-freeze.md)
