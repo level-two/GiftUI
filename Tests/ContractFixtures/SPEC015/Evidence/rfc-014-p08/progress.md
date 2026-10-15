@@ -1,5 +1,12 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+Current remaining P08 activity — **ACTIVE, 2026-10-15**.
+Eugene authorized completion of the remaining tasks. The [activity record](scoped-storage/p08-remaining-completion-activity.md)
+orders missing layout instrumentation, exact current coverage, target images/resource
+evidence and independent exit review. Initial correction budget 0/2; historical
+budgets remain closed. Execution is sequential, with Economy runs/monitoring and
+Strong ownership/resource review. The completed repair batch below remains evidence.
+
 Current P08 collected-suite repair batch — **COMPLETE; independent package review PASS, 2026-10-15**.
 The [batch result](scoped-storage/p08-suite-collection-result.md) records the full registered baseline collection,
 grouped routine corrections and focused validation. Current native runtimes pass
