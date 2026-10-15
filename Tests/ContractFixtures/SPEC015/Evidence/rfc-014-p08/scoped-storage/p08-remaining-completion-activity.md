@@ -1,6 +1,9 @@
 # P08 remaining completion activity — 2026-10-15
 
-Status: **active; complete planned measurement before final source freeze**.
+Status: **active; focused target layout PASS, four full collections next**.
+See the [final focused result](p08-remaining-layout-cycle2-result.md). Both
+corrective cycles are consumed (2/2); historical pending wording below records
+the entry and corresponding source steps. No automatic additional repair remains.
 The [initial diagnosis](p08-remaining-layout-initial-diagnosis.md) and
 [cycle 1 diagnosis](p08-remaining-layout-cycle1-diagnosis.md) preserve both failed
 focused measurements. Cycle 1 removed the insufficient-reservation trap;

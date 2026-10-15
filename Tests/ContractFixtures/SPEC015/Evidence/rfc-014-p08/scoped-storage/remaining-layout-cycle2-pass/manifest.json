@@ -1,0 +1,1207 @@
+{
+  "source": "0d3e3c7d",
+  "review": "51544daa",
+  "scope": "Fresh focused layout materialization only; no full coverage/fit claim",
+  "archive": {
+    "path": "evidence.tar.xz",
+    "bytes": 77048,
+    "sha256": "24f6ba8370a9ad9dd27be19a1897e24aefb70512745485b608603e8504cc427a"
+  },
+  "files": [
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T090914178059Z-remaining-layout-cycle2-focused/invocation.json",
+      "bytes": 630,
+      "sha256": "da4d2a95248c9daf5399b1ecfb12773f1e6714be9f2d556684a37415d112293d"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T090914178059Z-remaining-layout-cycle2-focused/result.json",
+      "bytes": 994,
+      "sha256": "dbf8b0b396fe1ee1d8644dc96bf3110f9f3e38af79bce43ba28178bf3c604a3a"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T090914178059Z-remaining-layout-cycle2-focused/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T090914178059Z-remaining-layout-cycle2-focused/stdout.log",
+      "bytes": 258,
+      "sha256": "310af7b60897d850a65ff5449a773c6006a06fa0dd6ecbb4a461e35a1dff89a0"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/Counter.swift",
+      "bytes": 2556,
+      "sha256": "49481900df254eccd291ecf44f1f913357778bf5ad167e226113a9e16ecdce97"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/CounterSchema.swift",
+      "bytes": 1250,
+      "sha256": "a3a24ab22fdf75c7d2b0fdb90d86755dc377747e0ed663f1c06bac7dbc0dde41"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/CounterTable.swift",
+      "bytes": 1393,
+      "sha256": "9c1a50d90b57b9f625986cbb7a37fcefc56234bfb0f1e0b2a10abd7ab73efd54"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUIBackendIntegration.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUICapabilities.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUIDisplayCore.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUIDrawing.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUIExecution.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUIFailureCore.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUIHostConfiguration.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUIInteraction.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUILayout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUIObservableState.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUIRasterCore.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUIReferenceTextResources.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUIRenderCore.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUIRenderLowering.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUIRuntimeCore.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUIRuntimeStatic.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUISemanticCore.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUISurfaceCore.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/GiftUITextResources.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/P08CounterPresentation.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/P08CounterSchema.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/P08CounterTable.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/checks.json",
+      "bytes": 2992578,
+      "sha256": "fb229fc103d6ffc856edb3088bed51db8498b28c2583733d7d43fc355bd07231"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/commands.txt",
+      "bytes": 52902,
+      "sha256": "59af0bbeaed663686fe797683457b55441ce7b1f5cc0aa3c4b14fe6b3e92f9a7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/counter-host-backing-negative.swift",
+      "bytes": 168212,
+      "sha256": "d5a1a4577fe7c3617c4e44d4262a6d6b3e29451cdb7f5b7b3f727dd77780efa0"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/counter-host-backing-positive.swift",
+      "bytes": 168122,
+      "sha256": "fab1a12360d97068ef8e48f4ae90cab53b61baca542661a5ca7d1d3e95e2333b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/counter-host-copy-negative.swift",
+      "bytes": 167148,
+      "sha256": "3736d58cb360d425f66821d3c08e15bbd16e7bde7b86958f36386240480471cd"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/counter-host-copy-positive.swift",
+      "bytes": 167124,
+      "sha256": "8d6c73df4f1f1df7ffd8480f545bf7c95c51703355aa3f78ad87a778e486df3d"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/counter-lowering.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/counter-model.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/objects.list",
+      "bytes": 2295,
+      "sha256": "068a140b4532a9c28795b2cc777f7c8ce7cb5ea4d5d9331c82837a1a9419658b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/result.json",
+      "bytes": 3147586,
+      "sha256": "1e5c12fd7eab74c7811dbce114564ba302a267eeba6a2a3f10881db3b4684eab"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-arbitrary-factory-negative.swift",
+      "bytes": 167260,
+      "sha256": "7387f6460f6940a061b73ab3d7cfc264b48d0c88ef669f90772197cb35e19944"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-arbitrary-factory-positive.swift",
+      "bytes": 167222,
+      "sha256": "146c8096a3624e12f24bb4dfe46d73339796c9f6dfae5682757cbb8376fea9cc"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-activationSpan-negative.swift",
+      "bytes": 169112,
+      "sha256": "1969f09defa664be9b642b67cbe5b5e1e8c292efc62b70907d87344acd4910dc"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-activationSpan-positive.swift",
+      "bytes": 169133,
+      "sha256": "08d6fc9555a79e94357ce9cf661a64ef1ea5580b080ecd577ffe1eb69fcd4aa7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-candidateCommittedRecords-negative.swift",
+      "bytes": 169101,
+      "sha256": "c6f53b2064624a0fd3930dc7aeeba1094382a727fee28d5c8d79a69ac9e17d39"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-candidateCommittedRecords-positive.swift",
+      "bytes": 169133,
+      "sha256": "08d6fc9555a79e94357ce9cf661a64ef1ea5580b080ecd577ffe1eb69fcd4aa7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-candidateHitRegions-negative.swift",
+      "bytes": 169107,
+      "sha256": "48cd151328106ba10c7e2ea0e89c7bca85a7763bab1ed5e63d54897768d19551"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-candidateHitRegions-positive.swift",
+      "bytes": 169133,
+      "sha256": "08d6fc9555a79e94357ce9cf661a64ef1ea5580b080ecd577ffe1eb69fcd4aa7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-candidateRecords-negative.swift",
+      "bytes": 169110,
+      "sha256": "945581270fd0de2cc8ba321547ac9d49a035ff201c062af1b95d72efe13598bc"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-candidateRecords-positive.swift",
+      "bytes": 169133,
+      "sha256": "08d6fc9555a79e94357ce9cf661a64ef1ea5580b080ecd577ffe1eb69fcd4aa7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-committedHitRegions-negative.swift",
+      "bytes": 169107,
+      "sha256": "b9ede49d8804d06b4fdc3a1429efe5eb9d7df5870b82121a8ed5b68f0edebff1"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-committedHitRegions-positive.swift",
+      "bytes": 169133,
+      "sha256": "08d6fc9555a79e94357ce9cf661a64ef1ea5580b080ecd577ffe1eb69fcd4aa7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-committedRecords-negative.swift",
+      "bytes": 169110,
+      "sha256": "50a38e5d5da3553ffda387ddde9aa6e7e0f6211faf5ef1a2cadf3448ee7f7e37"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-committedRecords-positive.swift",
+      "bytes": 169133,
+      "sha256": "08d6fc9555a79e94357ce9cf661a64ef1ea5580b080ecd577ffe1eb69fcd4aa7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-control-negative.swift",
+      "bytes": 169119,
+      "sha256": "bdacf6b0ae2aa6c3c52bc2edd48cae510c7527bfe9f41db11be2cf6b12d2749a"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-control-positive.swift",
+      "bytes": 169133,
+      "sha256": "08d6fc9555a79e94357ce9cf661a64ef1ea5580b080ecd577ffe1eb69fcd4aa7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-geometry-negative.swift",
+      "bytes": 169118,
+      "sha256": "8f44e57c85c6469ca14a59cd9c738707514eba98a32dc3dbc55e547e006269f0"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-geometry-positive.swift",
+      "bytes": 169133,
+      "sha256": "08d6fc9555a79e94357ce9cf661a64ef1ea5580b080ecd577ffe1eb69fcd4aa7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-models-negative.swift",
+      "bytes": 169120,
+      "sha256": "39366e3462b3d5a269a6b61fddaae923c5e8c72329b3b0646bb73ef905dc87f9"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-models-positive.swift",
+      "bytes": 169133,
+      "sha256": "08d6fc9555a79e94357ce9cf661a64ef1ea5580b080ecd577ffe1eb69fcd4aa7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-root-negative.swift",
+      "bytes": 169122,
+      "sha256": "9382f7ee9812f3a48c8950e03bd97cdec56726f20337cf94e274511a50d8b9a7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-root-positive.swift",
+      "bytes": 169133,
+      "sha256": "08d6fc9555a79e94357ce9cf661a64ef1ea5580b080ecd577ffe1eb69fcd4aa7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-semantic-negative.swift",
+      "bytes": 169118,
+      "sha256": "530e60f66954be1611d5eb39bf133c3086cc381ff17c2c7835b0ca5464d74446"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-semantic-positive.swift",
+      "bytes": 169133,
+      "sha256": "08d6fc9555a79e94357ce9cf661a64ef1ea5580b080ecd577ffe1eb69fcd4aa7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-values-negative.swift",
+      "bytes": 169120,
+      "sha256": "db2112985e3e0dbc193a681f6a2b98419e9ed67bf611d392f1e832fd810f630f"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-active-host-values-positive.swift",
+      "bytes": 169133,
+      "sha256": "08d6fc9555a79e94357ce9cf661a64ef1ea5580b080ecd577ffe1eb69fcd4aa7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-activationSpan-negative.swift",
+      "bytes": 169678,
+      "sha256": "7116dd1ddd8c5f6b8e0519bdf2b9c2ab2b6de27e31ec4968c7179a473b58d01f"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-activationSpan-positive.swift",
+      "bytes": 169699,
+      "sha256": "2f775a5d438be3d310beedb931f4e5a3c853f90b78acf7656824c62839855106"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-candidateCommittedRecords-negative.swift",
+      "bytes": 169667,
+      "sha256": "de14504a08fdca3536168580f78415d4ac47771b69699b43c31bb1d44e8b132b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-candidateCommittedRecords-positive.swift",
+      "bytes": 169699,
+      "sha256": "2f775a5d438be3d310beedb931f4e5a3c853f90b78acf7656824c62839855106"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-candidateHitRegions-negative.swift",
+      "bytes": 169673,
+      "sha256": "52e23a4b966acb63fb64befb0470ef3245d62565dbde990f8f177cd81d995753"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-candidateHitRegions-positive.swift",
+      "bytes": 169699,
+      "sha256": "2f775a5d438be3d310beedb931f4e5a3c853f90b78acf7656824c62839855106"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-candidateRecords-negative.swift",
+      "bytes": 169676,
+      "sha256": "6d2ed9bc8ed417bed1b97b1fb7530a756d458216fd605f4831e5fbd49692980c"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-candidateRecords-positive.swift",
+      "bytes": 169699,
+      "sha256": "2f775a5d438be3d310beedb931f4e5a3c853f90b78acf7656824c62839855106"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-committedHitRegions-negative.swift",
+      "bytes": 169673,
+      "sha256": "fa8c14adcd22289800871f0ae237d5b96e9163bbc934820e600808e5615c003f"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-committedHitRegions-positive.swift",
+      "bytes": 169699,
+      "sha256": "2f775a5d438be3d310beedb931f4e5a3c853f90b78acf7656824c62839855106"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-committedRecords-negative.swift",
+      "bytes": 169676,
+      "sha256": "fb96cb94cd032fbba9502a3394fc93bdf2fc1f3d60999aa4495ea2ced91f3854"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-committedRecords-positive.swift",
+      "bytes": 169699,
+      "sha256": "2f775a5d438be3d310beedb931f4e5a3c853f90b78acf7656824c62839855106"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-control-negative.swift",
+      "bytes": 169685,
+      "sha256": "53da22249032342ead8ee19def38a2250894829d10adbbb35cf83973950ac61f"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-control-positive.swift",
+      "bytes": 169699,
+      "sha256": "2f775a5d438be3d310beedb931f4e5a3c853f90b78acf7656824c62839855106"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-geometry-negative.swift",
+      "bytes": 169684,
+      "sha256": "c5f656e2b46b38294ef90726c1a1ddd6bafecec59352edb232dc1ed128111ed9"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-geometry-positive.swift",
+      "bytes": 169699,
+      "sha256": "2f775a5d438be3d310beedb931f4e5a3c853f90b78acf7656824c62839855106"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-models-negative.swift",
+      "bytes": 169686,
+      "sha256": "def3168db43c32b19667f0a40b5daa2646a01329f86ad6e5b56ee3f603af0577"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-models-positive.swift",
+      "bytes": 169699,
+      "sha256": "2f775a5d438be3d310beedb931f4e5a3c853f90b78acf7656824c62839855106"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-root-negative.swift",
+      "bytes": 169688,
+      "sha256": "fcfcd483ad105c327e4d8542e46e26a2f5c4c1d46ff29daf175f5df21c4b70d2"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-root-positive.swift",
+      "bytes": 169699,
+      "sha256": "2f775a5d438be3d310beedb931f4e5a3c853f90b78acf7656824c62839855106"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-semantic-negative.swift",
+      "bytes": 169684,
+      "sha256": "3b2ad763c945a1fa1b4112c7fc63147dba0e55af3d330367e200332922d5f9c9"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-semantic-positive.swift",
+      "bytes": 169699,
+      "sha256": "2f775a5d438be3d310beedb931f4e5a3c853f90b78acf7656824c62839855106"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-values-negative.swift",
+      "bytes": 169686,
+      "sha256": "5e1a2b9ed5539ec2ac2a276010ad39f73b60b78bc9a0559a9564551db0e3e2e9"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-direct-retired-optional-values-positive.swift",
+      "bytes": 169699,
+      "sha256": "2f775a5d438be3d310beedb931f4e5a3c853f90b78acf7656824c62839855106"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-activationSpan-negative.swift",
+      "bytes": 169174,
+      "sha256": "5a224d580a6e249b7902efc3410fbc3390760d5d07dbdd06a90a9e0cd2053277"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-activationSpan-positive.swift",
+      "bytes": 169195,
+      "sha256": "5fb0cb16673afed652e54c1b46c5dcfd536fb1895d86711af35ab1b8117e1171"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-candidateCommittedRecords-negative.swift",
+      "bytes": 169163,
+      "sha256": "657d5fbf078798d2fa56a954d980bd1d49b9c1c04a3062bbf87610df00d3c753"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-candidateCommittedRecords-positive.swift",
+      "bytes": 169195,
+      "sha256": "5fb0cb16673afed652e54c1b46c5dcfd536fb1895d86711af35ab1b8117e1171"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-candidateHitRegions-negative.swift",
+      "bytes": 169169,
+      "sha256": "0b813e0005aa5009990aa194c51ddc14f0673ccc2b173451081e50dea27fe6fd"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-candidateHitRegions-positive.swift",
+      "bytes": 169195,
+      "sha256": "5fb0cb16673afed652e54c1b46c5dcfd536fb1895d86711af35ab1b8117e1171"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-candidateRecords-negative.swift",
+      "bytes": 169172,
+      "sha256": "701e7df5c99bf8d8e1437180adcfdea197f61cb29f78a36d97dec14a1ac02679"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-candidateRecords-positive.swift",
+      "bytes": 169195,
+      "sha256": "5fb0cb16673afed652e54c1b46c5dcfd536fb1895d86711af35ab1b8117e1171"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-committedHitRegions-negative.swift",
+      "bytes": 169169,
+      "sha256": "bc76128d511fd15e7df5a5d7e183722b6ce871cfcf1fb4fc08b65e2730e9702c"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-committedHitRegions-positive.swift",
+      "bytes": 169195,
+      "sha256": "5fb0cb16673afed652e54c1b46c5dcfd536fb1895d86711af35ab1b8117e1171"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-committedRecords-negative.swift",
+      "bytes": 169172,
+      "sha256": "35f2f662d986a97c551e5f1caab5b042cccb3795c29296874bf0c4e1c809cb8d"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-committedRecords-positive.swift",
+      "bytes": 169195,
+      "sha256": "5fb0cb16673afed652e54c1b46c5dcfd536fb1895d86711af35ab1b8117e1171"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-control-negative.swift",
+      "bytes": 169181,
+      "sha256": "ff52e9ab1bbc73c76d1ec5902821f97b44579c2f3929157c8eb5e7e97c9a6883"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-control-positive.swift",
+      "bytes": 169195,
+      "sha256": "5fb0cb16673afed652e54c1b46c5dcfd536fb1895d86711af35ab1b8117e1171"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-geometry-negative.swift",
+      "bytes": 169180,
+      "sha256": "1b7f70b76814a8939752d753e4800db82a0c2fb73ad0bdeae79e82599fad7aae"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-geometry-positive.swift",
+      "bytes": 169195,
+      "sha256": "5fb0cb16673afed652e54c1b46c5dcfd536fb1895d86711af35ab1b8117e1171"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-models-negative.swift",
+      "bytes": 169182,
+      "sha256": "0a7f6a1554205456ddb33cf7954a42022055a18d672136e03edf1ffaa95f0e28"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-models-positive.swift",
+      "bytes": 169195,
+      "sha256": "5fb0cb16673afed652e54c1b46c5dcfd536fb1895d86711af35ab1b8117e1171"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-root-negative.swift",
+      "bytes": 169184,
+      "sha256": "0f7b0a8df17bb226c19302d92076297f20216f4f2cf8d3b9c50b2292199cbf68"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-root-positive.swift",
+      "bytes": 169195,
+      "sha256": "5fb0cb16673afed652e54c1b46c5dcfd536fb1895d86711af35ab1b8117e1171"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-semantic-negative.swift",
+      "bytes": 169180,
+      "sha256": "730fbee268edc5bb12fcfede28a0090847a341ac4b067972b051843724120dd6"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-semantic-positive.swift",
+      "bytes": 169195,
+      "sha256": "5fb0cb16673afed652e54c1b46c5dcfd536fb1895d86711af35ab1b8117e1171"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-values-negative.swift",
+      "bytes": 169182,
+      "sha256": "4d27552a6572582b3f414e4f786eb3d0c9231c86b000cee0dbd128d6c603fd9e"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-active-host-values-positive.swift",
+      "bytes": 169195,
+      "sha256": "5fb0cb16673afed652e54c1b46c5dcfd536fb1895d86711af35ab1b8117e1171"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-activationSpan-negative.swift",
+      "bytes": 169740,
+      "sha256": "ea23e452c09c4d93c29ca36a290368cdcf03586a2819ba12574a22162ea852d3"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-activationSpan-positive.swift",
+      "bytes": 169761,
+      "sha256": "4fe5e5cfd665ef48e62c7606c74cc8c3b562ff6dc4150e6cc0d6fd7abf6df020"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-candidateCommittedRecords-negative.swift",
+      "bytes": 169729,
+      "sha256": "6a5caec7d570454bca1deec5aba4449ec02d82561b9ad0fd6273379fb4f0a9a2"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-candidateCommittedRecords-positive.swift",
+      "bytes": 169761,
+      "sha256": "4fe5e5cfd665ef48e62c7606c74cc8c3b562ff6dc4150e6cc0d6fd7abf6df020"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-candidateHitRegions-negative.swift",
+      "bytes": 169735,
+      "sha256": "1ebfc2bac8069323487f52cfdd3b7d5ed7b894c83a3b0d0b19e92ebef14dbefd"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-candidateHitRegions-positive.swift",
+      "bytes": 169761,
+      "sha256": "4fe5e5cfd665ef48e62c7606c74cc8c3b562ff6dc4150e6cc0d6fd7abf6df020"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-candidateRecords-negative.swift",
+      "bytes": 169738,
+      "sha256": "707c76325543a442802bc65ca29fdebe3e49c008d433e824cde59b27541da902"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-candidateRecords-positive.swift",
+      "bytes": 169761,
+      "sha256": "4fe5e5cfd665ef48e62c7606c74cc8c3b562ff6dc4150e6cc0d6fd7abf6df020"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-committedHitRegions-negative.swift",
+      "bytes": 169735,
+      "sha256": "c45b47aeea0a65025d68848e2bae10dfd09b726f32f23fb4e1e8257d9f43670c"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-committedHitRegions-positive.swift",
+      "bytes": 169761,
+      "sha256": "4fe5e5cfd665ef48e62c7606c74cc8c3b562ff6dc4150e6cc0d6fd7abf6df020"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-committedRecords-negative.swift",
+      "bytes": 169738,
+      "sha256": "689e402a60b79bd9e3fb52d520ef27a6272928caa5c039854221f0df4eac9825"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-committedRecords-positive.swift",
+      "bytes": 169761,
+      "sha256": "4fe5e5cfd665ef48e62c7606c74cc8c3b562ff6dc4150e6cc0d6fd7abf6df020"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-control-negative.swift",
+      "bytes": 169747,
+      "sha256": "19633b65fb96f4689ce1030bcc27381e43011021ea37ef90b4da36649b48d38e"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-control-positive.swift",
+      "bytes": 169761,
+      "sha256": "4fe5e5cfd665ef48e62c7606c74cc8c3b562ff6dc4150e6cc0d6fd7abf6df020"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-geometry-negative.swift",
+      "bytes": 169746,
+      "sha256": "4459b25a44a83a982a812010ce9ecbe6fcaf87a1b934426c8365389c9e9715dc"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-geometry-positive.swift",
+      "bytes": 169761,
+      "sha256": "4fe5e5cfd665ef48e62c7606c74cc8c3b562ff6dc4150e6cc0d6fd7abf6df020"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-models-negative.swift",
+      "bytes": 169748,
+      "sha256": "3e162396b0f4d37fd9834bc4835ffc452533c98ba5e2e879f8b23b1a9bac071a"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-models-positive.swift",
+      "bytes": 169761,
+      "sha256": "4fe5e5cfd665ef48e62c7606c74cc8c3b562ff6dc4150e6cc0d6fd7abf6df020"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-root-negative.swift",
+      "bytes": 169750,
+      "sha256": "4d8347eb59e16ed5dafab1420d19ed9245a2eb94b3a46880fcd15716a834c7d2"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-root-positive.swift",
+      "bytes": 169761,
+      "sha256": "4fe5e5cfd665ef48e62c7606c74cc8c3b562ff6dc4150e6cc0d6fd7abf6df020"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-semantic-negative.swift",
+      "bytes": 169746,
+      "sha256": "44e74aa9bed7db7df40e45d18002db706b29616f30300a976328837bb1437687"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-semantic-positive.swift",
+      "bytes": 169761,
+      "sha256": "4fe5e5cfd665ef48e62c7606c74cc8c3b562ff6dc4150e6cc0d6fd7abf6df020"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-values-negative.swift",
+      "bytes": 169748,
+      "sha256": "2c14621b0a45455f1db68bc866c571ca7b8b2128e2d19162d29e8973266676a5"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-carrier-static-generic-retired-optional-values-positive.swift",
+      "bytes": 169761,
+      "sha256": "4fe5e5cfd665ef48e62c7606c74cc8c3b562ff6dc4150e6cc0d6fd7abf6df020"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-closure-erasure-negative.swift",
+      "bytes": 167187,
+      "sha256": "904ce365dd67af0d43eef35c820dee16161bf8f7b277d1e58f492071ec6ff03e"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-closure-erasure-positive.swift",
+      "bytes": 167111,
+      "sha256": "11278f077391a5842d55a15f8bc13f60d4fb348347668486d50d1cd8b3367156"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-active-host-closure-negative.swift",
+      "bytes": 167434,
+      "sha256": "32e678448b83818dfa9337f83c901cd91b5d55ed8fcc6456e98622a4127e982f"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-active-host-closure-positive.swift",
+      "bytes": 167496,
+      "sha256": "49007cbc56ba4db97a9268775a4ff89f0a617d5ab8980032ef68132300bdc5f2"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-active-host-generic-negative.swift",
+      "bytes": 167313,
+      "sha256": "3a26da5bfa16c58d79f79ef4c870dd4eb13c8ce92bc29d2c25148e906ec03e6c"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-active-host-generic-positive.swift",
+      "bytes": 167326,
+      "sha256": "46875ba3da1c96a16808028b93652c5abdfcd334d695b056d8b3c7f324101ff5"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-active-host-optional-negative.swift",
+      "bytes": 167317,
+      "sha256": "304e7b645460ca72c55df2983c8d62f9ad69e6efbd96bd1c9ecdd9a4a72fa8d2"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-active-host-optional-positive.swift",
+      "bytes": 167391,
+      "sha256": "11ebf20142b4ac658d52fe01dfb4ccafa654c677d1868c06151d0ef56aeaf8ab"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-active-host-tuple-negative.swift",
+      "bytes": 167364,
+      "sha256": "156744728314cd6520bd34f26a68a5b0f0e8b125e4e59070acb934b9d7cf388c"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-active-host-tuple-positive.swift",
+      "bytes": 167436,
+      "sha256": "5c287612280044c0870ac88993cad6e4becf2c6817ceabfb7c18ac89bb3d00d8"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-retired-optional-closure-negative.swift",
+      "bytes": 167366,
+      "sha256": "0dd146f2f6a029e784af32fdabd4f701dea7d8d525e0611a89bc26c18f1e8429"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-retired-optional-closure-positive.swift",
+      "bytes": 167428,
+      "sha256": "032408934f316e8573bcd41d42fb41035334a3b55a78d731006f1c05380eee4e"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-retired-optional-generic-negative.swift",
+      "bytes": 167279,
+      "sha256": "39673c5885c8efb6c7b0a64de4090c160f568e6a18fd0faf73c8e4580b110231"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-retired-optional-generic-positive.swift",
+      "bytes": 167292,
+      "sha256": "cad5a6a436538770ce5eff7368ad6f9d0f86d321ed7a255d4efc3628eaecf00f"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-retired-optional-optional-negative.swift",
+      "bytes": 167283,
+      "sha256": "307c738a8668a1e4616c728e444543129565417f9c822876d5019171d29b72e9"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-retired-optional-optional-positive.swift",
+      "bytes": 167323,
+      "sha256": "28e820711c73ca94219ab87a1646e1f5a12f6898736a60ab9448000dc6fe4a54"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-retired-optional-tuple-negative.swift",
+      "bytes": 167296,
+      "sha256": "4f41cf9b4fc094b48296c96b1f735b780a928397673682af26aedb3e9293df28"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-direct-retired-optional-tuple-positive.swift",
+      "bytes": 167368,
+      "sha256": "b35ed74509a435b4f0f5e77f8ac53fb71439ebba01803ca5d25b6304738f8efb"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-active-host-closure-negative.swift",
+      "bytes": 167980,
+      "sha256": "de833d171c2c9ffd95b528ef11b8b80acfee2d8675a7077280e398116fcd5241"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-active-host-closure-positive.swift",
+      "bytes": 168042,
+      "sha256": "3b4417e7bfaa04cee66e15a77772e0f883375449bb2c2545dbc9bda8b4c45bb8"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-active-host-generic-negative.swift",
+      "bytes": 167586,
+      "sha256": "51fdf1f3653004a6b78d25b2971d8f420dfd507978916e2889b509d3f6f513df"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-active-host-generic-positive.swift",
+      "bytes": 167599,
+      "sha256": "7cdb6f60a9413e3d4e7d739f405d735cee8958bd3a0f04136b0fceb993e0e453"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-active-host-optional-negative.swift",
+      "bytes": 167590,
+      "sha256": "4e3ed4424d470618f0ad6182c66a2bbedc47c58aadad7beec35132d2c5bb7a89"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-active-host-optional-positive.swift",
+      "bytes": 167603,
+      "sha256": "8efb736c484fc22c8f7c1c5ddd3a995d4983e54465e0cf40b833a6e0cb7451f6"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-active-host-tuple-negative.swift",
+      "bytes": 167576,
+      "sha256": "b186399dfe56ee3a389ec0c2f3d340dd95d75cf6d90a8573b14e80405b426feb"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-active-host-tuple-positive.swift",
+      "bytes": 167982,
+      "sha256": "ae3a86c92fdaf1446952aebc5e3d497fdc92deb3edc142fa8616d8010509d156"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-retired-optional-closure-negative.swift",
+      "bytes": 167912,
+      "sha256": "08af4d228f52747511e40ad9fa4af3a22c718166c579e8ac428098f65ca6a1e1"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-retired-optional-closure-positive.swift",
+      "bytes": 167974,
+      "sha256": "6329d6a93d43ba6786909802ca502e5b46ed911433016b5cd656a6217626bd3f"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-retired-optional-generic-negative.swift",
+      "bytes": 167552,
+      "sha256": "ed71c7ad706d3d4984078b320e3d4c7716e8495601ad0b38190470f11af20ee2"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-retired-optional-generic-positive.swift",
+      "bytes": 167565,
+      "sha256": "a3b237828c4ae5fda1b8cbafdfa37f8b8f7ff66e04c03b7328775cd29e5ba527"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-retired-optional-optional-negative.swift",
+      "bytes": 167556,
+      "sha256": "dd539d0120454bced86ea49733d1c70634e065f7e9ffe8bb943234f38931f1e4"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-retired-optional-optional-positive.swift",
+      "bytes": 167535,
+      "sha256": "17cc5ffb41509b19296bbd572e2c2c4f1dd77bbdce04239e3dda6a483d74b718"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-retired-optional-tuple-negative.swift",
+      "bytes": 167508,
+      "sha256": "852635a6a7e1725c9cef11fcf172d9898f8f720f11414ab2a442f5206dd05c92"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-erasure-static-generic-retired-optional-tuple-positive.swift",
+      "bytes": 167914,
+      "sha256": "f9b6a039d199bb34aaef37902c3d39510e4977db4506193a4d741c0106b0ea7b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-generic-erasure-negative.swift",
+      "bytes": 167187,
+      "sha256": "6547c0a462beda3b136ff52d9aaf6169ab3541d393c413e0f4c63ae8078155d4"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-generic-erasure-positive.swift",
+      "bytes": 167163,
+      "sha256": "904359919a44543b458ca3903ae973376e296d76baac02c07b6660a9d3f6e20e"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-optional-erasure-negative.swift",
+      "bytes": 167200,
+      "sha256": "e44167f311a23f321ca984270b79a722a97b41169a9660d5b80d800352e8297e"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-optional-erasure-positive.swift",
+      "bytes": 167176,
+      "sha256": "b161ef755810c371357b84fc9159e833924a1ee31c954a3bfa925d1d4cd56bf9"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-owned-return-negative.swift",
+      "bytes": 167242,
+      "sha256": "ad217d5cc793f97a2a816a97f0479979b62e264bf2b7246c11ba22655634fe2d"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-owned-return-positive.swift",
+      "bytes": 167259,
+      "sha256": "a66b20e147308d80bf47aa8379ec3fa9641717a2a5ff04f0fd69eac6cf97ac5d"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-private-construction-negative.swift",
+      "bytes": 167260,
+      "sha256": "bea1585a1cbd5fe5ceb93f5da89ccb9eee607666febdafa8ff85691ad673080e"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-private-construction-positive.swift",
+      "bytes": 167265,
+      "sha256": "3adb3a56d52b4bf6979ddc73bc34c1285bd7ec3278585162c412df459acc7ef3"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-private-extraction-negative.swift",
+      "bytes": 167162,
+      "sha256": "4907c006aa7417a26c5821ecd488855368586973a1ef20229773bbcc95755bd7"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-private-extraction-positive.swift",
+      "bytes": 167123,
+      "sha256": "ccb353bd71eaa61f1d3c96640b009978fe8b1a02d908a8039a6ea8fc2c903910"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-sendable-negative.swift",
+      "bytes": 167209,
+      "sha256": "781d8bf8f3c14a179499899228740eae18c3175787edd298678d9059844b429c"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-sendable-positive.swift",
+      "bytes": 167185,
+      "sha256": "d1c09c32df214301848a8266694b37b76c3d3e6f4d8fffa6827e411faf2dc8a5"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-static-overlap-negative.swift",
+      "bytes": 167239,
+      "sha256": "ecb86568f623e52b4744a010b3c4ad5e420c98ae0ea7c5d3e0a4cd1de8895be6"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-static-overlap-positive.swift",
+      "bytes": 167265,
+      "sha256": "56e2fba4dc2ad6a76005b7cc851c85a6386eeaf05d1714ae42f48365189a7161"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-tuple-erasure-negative.swift",
+      "bytes": 167151,
+      "sha256": "b79c8f2c6c4050df69b04f7fadb836ecb59f705bfc6ea9878ba60cc318c2b72e"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-tuple-erasure-positive.swift",
+      "bytes": 167113,
+      "sha256": "8eaf541056d95876aa5df4e8e0bbf5a2b159706dd502e288d52f5bbd62450b11"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-activationSpan-negative.swift",
+      "bytes": 168910,
+      "sha256": "9ddc4910848a859f394f33f7bc97bbe82e54a038c9feae15202203dad8e6b837"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-activationSpan-positive.swift",
+      "bytes": 168931,
+      "sha256": "40bac49af4bbb14720da9af48817289e0f3a422f8628049d36bf02f580d81844"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-candidateCommittedRecords-negative.swift",
+      "bytes": 168899,
+      "sha256": "001a0ea582c8730477eb09d59d4ad7fa69a56429457e686ff0e6b200659f4609"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-candidateCommittedRecords-positive.swift",
+      "bytes": 168931,
+      "sha256": "40bac49af4bbb14720da9af48817289e0f3a422f8628049d36bf02f580d81844"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-candidateHitRegions-negative.swift",
+      "bytes": 168905,
+      "sha256": "741fc8c1aa13c763afa2049fe9deea22a7762c111e58a6b5b12625a7ad338b42"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-candidateHitRegions-positive.swift",
+      "bytes": 168931,
+      "sha256": "40bac49af4bbb14720da9af48817289e0f3a422f8628049d36bf02f580d81844"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-candidateRecords-negative.swift",
+      "bytes": 168908,
+      "sha256": "fd56bafc71cb78207a54c93227b82c87b0ec19c5c4e8d6632a8abc87bc7a5ffe"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-candidateRecords-positive.swift",
+      "bytes": 168931,
+      "sha256": "40bac49af4bbb14720da9af48817289e0f3a422f8628049d36bf02f580d81844"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-committedHitRegions-negative.swift",
+      "bytes": 168905,
+      "sha256": "0db7f57f528c7df3df5e3573f964ec875678c54fbd68c11d6769403827101c68"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-committedHitRegions-positive.swift",
+      "bytes": 168931,
+      "sha256": "40bac49af4bbb14720da9af48817289e0f3a422f8628049d36bf02f580d81844"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-committedRecords-negative.swift",
+      "bytes": 168908,
+      "sha256": "b88137eddd8648d606ccda497da8bdd37d7dded0ddff11ea1683d7498eb3acd3"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-committedRecords-positive.swift",
+      "bytes": 168931,
+      "sha256": "40bac49af4bbb14720da9af48817289e0f3a422f8628049d36bf02f580d81844"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-control-negative.swift",
+      "bytes": 168917,
+      "sha256": "f6816b9dd624bb1ede1a4148d470e629d8ea38167db3dd2eb4f5060e55aa9b5d"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-control-positive.swift",
+      "bytes": 168931,
+      "sha256": "40bac49af4bbb14720da9af48817289e0f3a422f8628049d36bf02f580d81844"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-geometry-negative.swift",
+      "bytes": 168916,
+      "sha256": "1675f1893843b95b3ccd0f8c9584edbcf1144f1cf320ab1dc325e6e261b60dba"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-geometry-positive.swift",
+      "bytes": 168931,
+      "sha256": "40bac49af4bbb14720da9af48817289e0f3a422f8628049d36bf02f580d81844"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-models-negative.swift",
+      "bytes": 168918,
+      "sha256": "67b17db60ccd3679eae1725656af14fa873a7b9e9cc280cdba040971d4fa3522"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-models-positive.swift",
+      "bytes": 168931,
+      "sha256": "40bac49af4bbb14720da9af48817289e0f3a422f8628049d36bf02f580d81844"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-root-negative.swift",
+      "bytes": 168920,
+      "sha256": "a09004fa5d7982e15886936ff1083f60808013e50dce529794b927f78cd080e0"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-root-positive.swift",
+      "bytes": 168931,
+      "sha256": "40bac49af4bbb14720da9af48817289e0f3a422f8628049d36bf02f580d81844"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-semantic-negative.swift",
+      "bytes": 168916,
+      "sha256": "5628a05d1a910a3c516a528e7cf188990a390b51aad86672e2b1f3e015c9b4a8"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-semantic-positive.swift",
+      "bytes": 168931,
+      "sha256": "40bac49af4bbb14720da9af48817289e0f3a422f8628049d36bf02f580d81844"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-values-negative.swift",
+      "bytes": 168918,
+      "sha256": "a52f5ad8b2193b7f7c8730b654345c478a517d52705dbabcc3a103f2b57b84a9"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-direct-values-positive.swift",
+      "bytes": 168931,
+      "sha256": "40bac49af4bbb14720da9af48817289e0f3a422f8628049d36bf02f580d81844"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-activationSpan-negative.swift",
+      "bytes": 168972,
+      "sha256": "1edd7ba258235c0ec85980b787c31bf8f1ac3554f6294554e6b936edf7412091"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-activationSpan-positive.swift",
+      "bytes": 168993,
+      "sha256": "de53218a794322846e146df165cad9116998a6da45c7ab15a5d27fb1e2023a5b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-candidateCommittedRecords-negative.swift",
+      "bytes": 168961,
+      "sha256": "f7cdab2b61b3ab77009fa9b0632b820110cdf1f230308d36d78f871c602c5e95"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-candidateCommittedRecords-positive.swift",
+      "bytes": 168993,
+      "sha256": "de53218a794322846e146df165cad9116998a6da45c7ab15a5d27fb1e2023a5b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-candidateHitRegions-negative.swift",
+      "bytes": 168967,
+      "sha256": "5b507fdbaf3897ea78758b1e7c04fa70edf7b7a39c61cbb193b6539667144036"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-candidateHitRegions-positive.swift",
+      "bytes": 168993,
+      "sha256": "de53218a794322846e146df165cad9116998a6da45c7ab15a5d27fb1e2023a5b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-candidateRecords-negative.swift",
+      "bytes": 168970,
+      "sha256": "3109dd85a9e6c7e37b64860ac6474a21726f5c77a1914114ace1d83fa3c47885"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-candidateRecords-positive.swift",
+      "bytes": 168993,
+      "sha256": "de53218a794322846e146df165cad9116998a6da45c7ab15a5d27fb1e2023a5b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-committedHitRegions-negative.swift",
+      "bytes": 168967,
+      "sha256": "6a14fdf9a0c34228fee0b8646338017627573bb89d053bf553ad62948c5037fb"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-committedHitRegions-positive.swift",
+      "bytes": 168993,
+      "sha256": "de53218a794322846e146df165cad9116998a6da45c7ab15a5d27fb1e2023a5b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-committedRecords-negative.swift",
+      "bytes": 168970,
+      "sha256": "7d30c3cbfd61d8f8881329d311244735228549ad6b513fd3e04eb1a7a5bedfb6"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-committedRecords-positive.swift",
+      "bytes": 168993,
+      "sha256": "de53218a794322846e146df165cad9116998a6da45c7ab15a5d27fb1e2023a5b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-control-negative.swift",
+      "bytes": 168979,
+      "sha256": "43ac8b3bc6303fa0bf1bb9ff2d7d1112cdd8506f36fe6ecd87866e6d10578746"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-control-positive.swift",
+      "bytes": 168993,
+      "sha256": "de53218a794322846e146df165cad9116998a6da45c7ab15a5d27fb1e2023a5b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-geometry-negative.swift",
+      "bytes": 168978,
+      "sha256": "3a20efe921f5d5e161eb02b3bfde2519bc5bacdf00ca489b284ee923ace51fe5"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-geometry-positive.swift",
+      "bytes": 168993,
+      "sha256": "de53218a794322846e146df165cad9116998a6da45c7ab15a5d27fb1e2023a5b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-models-negative.swift",
+      "bytes": 168980,
+      "sha256": "eda33a76150067dc21a039a6f331dae0ce4a82382a5b7f255c69e8835f7e2ba4"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-models-positive.swift",
+      "bytes": 168993,
+      "sha256": "de53218a794322846e146df165cad9116998a6da45c7ab15a5d27fb1e2023a5b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-root-negative.swift",
+      "bytes": 168982,
+      "sha256": "fe22d59642b63cd663de45c5bedf876341293a322eea04e9bf82314858ca1be4"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-root-positive.swift",
+      "bytes": 168993,
+      "sha256": "de53218a794322846e146df165cad9116998a6da45c7ab15a5d27fb1e2023a5b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-semantic-negative.swift",
+      "bytes": 168978,
+      "sha256": "b84f4a7c2c5d8286845918a63b9cb2175ea7ebafd337a66ff821e9f6f74d5181"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-semantic-positive.swift",
+      "bytes": 168993,
+      "sha256": "de53218a794322846e146df165cad9116998a6da45c7ab15a5d27fb1e2023a5b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-values-negative.swift",
+      "bytes": 168980,
+      "sha256": "fc89172c36565cc449fb50450af0252f0d413856176e89d892acbb67fb29f347"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-union-static-generic-values-positive.swift",
+      "bytes": 168993,
+      "sha256": "de53218a794322846e146df165cad9116998a6da45c7ab15a5d27fb1e2023a5b"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-use-after-consume-negative.swift",
+      "bytes": 167205,
+      "sha256": "89818c9701a148bdf2fe3cfda4a5399f1610cede11efffa2d3cd15fd2594a542"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so06-use-after-consume-positive.swift",
+      "bytes": 167153,
+      "sha256": "d7bd87baf531e6c8baf507c570c03b2bd0ea55cd49cd4ab963a3326b6b73ec52"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so07-layout-facts.json",
+      "bytes": 112545,
+      "sha256": "4dd7275e875ee8cff32dcdf76f2a1ed48bcc6ef00eb2bf2d347a158c495170c5"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-9lhfd73s/so07-layout-facts.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
