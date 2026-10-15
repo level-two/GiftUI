@@ -1,0 +1,10 @@
+
+.build/nrf52840/contracts/p08-counter-h4tyo2r0/P08CounterRuntime.o:     file format elf32-littlearm
+
+
+Disassembly of section .text.OUTLINED_FUNCTION_517:
+
+00000000 <OUTLINED_FUNCTION_517>:
+   0:	4620      	mov	r0, r4
+   2:	f7ff bffe 	b.w	0 <__aeabi_memclr4>
+			2: R_ARM_THM_JUMP24	__aeabi_memclr4

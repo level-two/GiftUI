@@ -1,0 +1,19 @@
+
+.build/nrf52840/contracts/p08-counter-h4tyo2r0/P08CounterRuntime.o:     file format elf32-littlearm
+
+
+Disassembly of section .text.unlikely.giftui_p08_layout_limits_offsetTm:
+
+00000000 <giftui_p08_layout_limits_offsetTm>:
+   0:	f5ad 7d3c 	sub.w	sp, sp, #752	; 0x2f0
+   4:	acb5      	add	r4, sp, #724	; 0x2d4
+   6:	2118      	movs	r1, #24
+   8:	f7ff fffe 	bl	0 <giftui_p08_layout_limits_offsetTm>
+			8: R_ARM_THM_CALL	OUTLINED_FUNCTION_517
+   c:	2001      	movs	r0, #1
+   e:	4621      	mov	r1, r4
+  10:	f88d 02ec 	strb.w	r0, [sp, #748]	; 0x2ec
+  14:	a801      	add	r0, sp, #4
+  16:	f7ff fffe 	bl	0 <giftui_p08_layout_limits_offsetTm>
+			16: R_ARM_THM_CALL	$es11InlineArrayV9repeatingAByxq_Gq__tcfC$24__17P08CounterRuntime0E14EmbeddedRegionVSgTt1g5
+  1a:	defe      	udf	#254	; 0xfe

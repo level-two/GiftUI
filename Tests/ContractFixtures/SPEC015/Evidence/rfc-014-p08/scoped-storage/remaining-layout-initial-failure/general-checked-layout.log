@@ -1,0 +1,500 @@
+
+.build/nrf52840/contracts/p08-counter-h4tyo2r0/P08CounterRuntime.o:     file format elf32-littlearm
+
+
+Disassembly of section .text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC:
+
+00000000 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>:
+   0:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+   4:	f6ad 0d98 	subw	sp, sp, #2200	; 0x898
+   8:	f50d 67b5 	add.w	r7, sp, #1448	; 0x5a8
+   c:	460d      	mov	r5, r1
+   e:	4680      	mov	r8, r0
+  10:	2118      	movs	r1, #24
+  12:	4616      	mov	r6, r2
+  14:	4638      	mov	r0, r7
+  16:	f7ff fffe 	bl	0 <__aeabi_memclr4>
+			16: R_ARM_THM_CALL	__aeabi_memclr4
+  1a:	2401      	movs	r4, #1
+  1c:	4639      	mov	r1, r7
+  1e:	f88d 45c0 	strb.w	r4, [sp, #1472]	; 0x5c0
+  22:	a8b6      	add	r0, sp, #728	; 0x2d8
+  24:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			24: R_ARM_THM_CALL	$es11InlineArrayV9repeatingAByxq_Gq__tcfC$24__17P08CounterRuntime0E14EmbeddedRegionVSgTt1g5
+  28:	2000      	movs	r0, #0
+  2a:	f8cd 4598 	str.w	r4, [sp, #1432]	; 0x598
+  2e:	2d74      	cmp	r5, #116	; 0x74
+  30:	f8cd 05a4 	str.w	r0, [sp, #1444]	; 0x5a4
+  34:	f8cd 05a0 	str.w	r0, [sp, #1440]	; 0x5a0
+  38:	f8cd 059c 	str.w	r0, [sp, #1436]	; 0x59c
+  3c:	f8cd 0594 	str.w	r0, [sp, #1428]	; 0x594
+  40:	f2c0 82bb 	blt.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+  44:	2e00      	cmp	r6, #0
+  46:	f100 82b8 	bmi.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+  4a:	2174      	movs	r1, #116	; 0x74
+  4c:	2304      	movs	r3, #4
+  4e:	2001      	movs	r0, #1
+  50:	2200      	movs	r2, #0
+  52:	2473      	movs	r4, #115	; 0x73
+  54:	f5b5 7f68 	cmp.w	r5, #928	; 0x3a0
+  58:	f8cd 059c 	str.w	r0, [sp, #1436]	; 0x59c
+  5c:	f88d 22f0 	strb.w	r2, [sp, #752]	; 0x2f0
+  60:	91bb      	str	r1, [sp, #748]	; 0x2ec
+  62:	e9cd 13b9 	strd	r1, r3, [sp, #740]	; 0x2e4
+  66:	94b8      	str	r4, [sp, #736]	; 0x2e0
+  68:	e9cd 20b6 	strd	r2, r0, [sp, #728]	; 0x2d8
+  6c:	f8cd 3598 	str.w	r3, [sp, #1432]	; 0x598
+  70:	f8cd 1594 	str.w	r1, [sp, #1428]	; 0x594
+  74:	f0c0 82a1 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+  78:	e9cd 10bd 	strd	r1, r0, [sp, #756]	; 0x2f4
+  7c:	2402      	movs	r4, #2
+  7e:	f88d 230c 	strb.w	r2, [sp, #780]	; 0x30c
+  82:	f44f 724b 	mov.w	r2, #812	; 0x32c
+  86:	f240 4114 	movw	r1, #1044	; 0x414
+  8a:	f44f 7068 	mov.w	r0, #928	; 0x3a0
+  8e:	428d      	cmp	r5, r1
+  90:	92c2      	str	r2, [sp, #776]	; 0x308
+  92:	e9cd 23c0 	strd	r2, r3, [sp, #768]	; 0x300
+  96:	f240 322a 	movw	r2, #810	; 0x32a
+  9a:	f8cd 459c 	str.w	r4, [sp, #1436]	; 0x59c
+  9e:	f8cd 0594 	str.w	r0, [sp, #1428]	; 0x594
+  a2:	92bf      	str	r2, [sp, #764]	; 0x2fc
+  a4:	f0c0 8289 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+  a8:	2474      	movs	r4, #116	; 0x74
+  aa:	2203      	movs	r2, #3
+  ac:	f8cd 1594 	str.w	r1, [sp, #1428]	; 0x594
+  b0:	f640 6114 	movw	r1, #3604	; 0xe14
+  b4:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			b4: R_ARM_THM_CALL	OUTLINED_FUNCTION_573
+  b8:	e9cd 34c8 	strd	r3, r4, [sp, #800]	; 0x320
+  bc:	e9cd 44c6 	strd	r4, r4, [sp, #792]	; 0x318
+  c0:	2401      	movs	r4, #1
+  c2:	428d      	cmp	r5, r1
+  c4:	f88d 2328 	strb.w	r2, [sp, #808]	; 0x328
+  c8:	e9cd 04c4 	strd	r0, r4, [sp, #784]	; 0x310
+  cc:	f0c0 8275 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+  d0:	f88d 2344 	strb.w	r2, [sp, #836]	; 0x344
+  d4:	2214      	movs	r2, #20
+  d6:	f44f 6020 	mov.w	r0, #2560	; 0xa00
+  da:	f8cd 359c 	str.w	r3, [sp, #1436]	; 0x59c
+  de:	f8cd 1594 	str.w	r1, [sp, #1428]	; 0x594
+  e2:	e9cd 22cd 	strd	r2, r2, [sp, #820]	; 0x334
+  e6:	2280      	movs	r2, #128	; 0x80
+  e8:	90d0      	str	r0, [sp, #832]	; 0x340
+  ea:	2002      	movs	r0, #2
+  ec:	92cc      	str	r2, [sp, #816]	; 0x330
+  ee:	f240 4214 	movw	r2, #1044	; 0x414
+  f2:	90cf      	str	r0, [sp, #828]	; 0x33c
+  f4:	92cb      	str	r2, [sp, #812]	; 0x32c
+  f6:	f642 7214 	movw	r2, #12052	; 0x2f14
+  fa:	4295      	cmp	r5, r2
+  fc:	f0c0 825d 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 100:	f44f 5304 	mov.w	r3, #8448	; 0x2100
+ 104:	2105      	movs	r1, #5
+ 106:	f8cd 2594 	str.w	r2, [sp, #1428]	; 0x594
+ 10a:	f245 3214 	movw	r2, #21268	; 0x5314
+ 10e:	e9cd 03d6 	strd	r0, r3, [sp, #856]	; 0x358
+ 112:	2016      	movs	r0, #22
+ 114:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			114: R_ARM_THM_CALL	OUTLINED_FUNCTION_572
+ 118:	e9cd 00d4 	strd	r0, r0, [sp, #848]	; 0x350
+ 11c:	f44f 70c0 	mov.w	r0, #384	; 0x180
+ 120:	4295      	cmp	r5, r2
+ 122:	f88d 1360 	strb.w	r1, [sp, #864]	; 0x360
+ 126:	90d3      	str	r0, [sp, #844]	; 0x34c
+ 128:	f640 6014 	movw	r0, #3604	; 0xe14
+ 12c:	90d2      	str	r0, [sp, #840]	; 0x348
+ 12e:	f0c0 8244 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 132:	2006      	movs	r0, #6
+ 134:	f88d 137c 	strb.w	r1, [sp, #892]	; 0x37c
+ 138:	2124      	movs	r1, #36	; 0x24
+ 13a:	f8cd 2594 	str.w	r2, [sp, #1428]	; 0x594
+ 13e:	f245 5214 	movw	r2, #21780	; 0x5514
+ 142:	f8cd 059c 	str.w	r0, [sp, #1436]	; 0x59c
+ 146:	f44f 5010 	mov.w	r0, #9216	; 0x2400
+ 14a:	91dc      	str	r1, [sp, #880]	; 0x370
+ 14c:	2121      	movs	r1, #33	; 0x21
+ 14e:	90de      	str	r0, [sp, #888]	; 0x378
+ 150:	2004      	movs	r0, #4
+ 152:	91db      	str	r1, [sp, #876]	; 0x36c
+ 154:	f44f 7180 	mov.w	r1, #256	; 0x100
+ 158:	91da      	str	r1, [sp, #872]	; 0x368
+ 15a:	f642 7114 	movw	r1, #12052	; 0x2f14
+ 15e:	4295      	cmp	r5, r2
+ 160:	90dd      	str	r0, [sp, #884]	; 0x374
+ 162:	91d9      	str	r1, [sp, #868]	; 0x364
+ 164:	f0c0 8229 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 168:	2107      	movs	r1, #7
+ 16a:	f44f 7300 	mov.w	r3, #512	; 0x200
+ 16e:	f8cd 2594 	str.w	r2, [sp, #1428]	; 0x594
+ 172:	e9cd 00e2 	strd	r0, r0, [sp, #904]	; 0x388
+ 176:	f245 5218 	movw	r2, #21784	; 0x5518
+ 17a:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			17a: R_ARM_THM_CALL	OUTLINED_FUNCTION_572
+ 17e:	e9cd 03e4 	strd	r0, r3, [sp, #912]	; 0x390
+ 182:	2080      	movs	r0, #128	; 0x80
+ 184:	90e1      	str	r0, [sp, #900]	; 0x384
+ 186:	f245 3014 	movw	r0, #21268	; 0x5314
+ 18a:	4295      	cmp	r5, r2
+ 18c:	f88d 1398 	strb.w	r1, [sp, #920]	; 0x398
+ 190:	90e0      	str	r0, [sp, #896]	; 0x380
+ 192:	f0c0 8212 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 196:	2008      	movs	r0, #8
+ 198:	f88d 13b4 	strb.w	r1, [sp, #948]	; 0x3b4
+ 19c:	2102      	movs	r1, #2
+ 19e:	f245 5314 	movw	r3, #21780	; 0x5514
+ 1a2:	f8cd 2594 	str.w	r2, [sp, #1428]	; 0x594
+ 1a6:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			1a6: R_ARM_THM_CALL	OUTLINED_FUNCTION_685
+ 1aa:	91eb      	str	r1, [sp, #940]	; 0x3ac
+ 1ac:	2101      	movs	r1, #1
+ 1ae:	93e7      	str	r3, [sp, #924]	; 0x39c
+ 1b0:	f245 5334 	movw	r3, #21812	; 0x5534
+ 1b4:	429d      	cmp	r5, r3
+ 1b6:	90ec      	str	r0, [sp, #944]	; 0x3b0
+ 1b8:	e9cd 00e9 	strd	r0, r0, [sp, #932]	; 0x3a4
+ 1bc:	91e8      	str	r1, [sp, #928]	; 0x3a0
+ 1be:	f0c0 81fc 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 1c2:	241c      	movs	r4, #28
+ 1c4:	2209      	movs	r2, #9
+ 1c6:	f8cd 3594 	str.w	r3, [sp, #1428]	; 0x594
+ 1ca:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			1ca: R_ARM_THM_CALL	OUTLINED_FUNCTION_573
+ 1ce:	e9cd 14ef 	strd	r1, r4, [sp, #956]	; 0x3bc
+ 1d2:	f645 1134 	movw	r1, #22836	; 0x5934
+ 1d6:	e9cd 40f1 	strd	r4, r0, [sp, #964]	; 0x3c4
+ 1da:	f245 5018 	movw	r0, #21784	; 0x5518
+ 1de:	94f3      	str	r4, [sp, #972]	; 0x3cc
+ 1e0:	428d      	cmp	r5, r1
+ 1e2:	f88d 23d0 	strb.w	r2, [sp, #976]	; 0x3d0
+ 1e6:	90ee      	str	r0, [sp, #952]	; 0x3b8
+ 1e8:	f0c0 81e7 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 1ec:	200a      	movs	r0, #10
+ 1ee:	f88d 23ec 	strb.w	r2, [sp, #1004]	; 0x3ec
+ 1f2:	f44f 6280 	mov.w	r2, #1024	; 0x400
+ 1f6:	f8cd 1594 	str.w	r1, [sp, #1428]	; 0x594
+ 1fa:	f8cd 059c 	str.w	r0, [sp, #1436]	; 0x59c
+ 1fe:	2001      	movs	r0, #1
+ 200:	92fa      	str	r2, [sp, #1000]	; 0x3e8
+ 202:	e9cd 20f6 	strd	r2, r0, [sp, #984]	; 0x3d8
+ 206:	f245 5234 	movw	r2, #21812	; 0x5534
+ 20a:	e9cd 00f8 	strd	r0, r0, [sp, #992]	; 0x3e0
+ 20e:	92f5      	str	r2, [sp, #980]	; 0x3d4
+ 210:	f645 5254 	movw	r2, #23892	; 0x5d54
+ 214:	4295      	cmp	r5, r2
+ 216:	f0c0 81d0 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 21a:	210b      	movs	r1, #11
+ 21c:	f44f 6384 	mov.w	r3, #1056	; 0x420
+ 220:	f8cd 2594 	str.w	r2, [sp, #1428]	; 0x594
+ 224:	f645 5268 	movw	r2, #23912	; 0x5d68
+ 228:	e9cd 00ff 	strd	r0, r0, [sp, #1020]	; 0x3fc
+ 22c:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			22c: R_ARM_THM_CALL	OUTLINED_FUNCTION_572
+ 230:	e9cd 30fd 	strd	r3, r0, [sp, #1012]	; 0x3f4
+ 234:	f645 1034 	movw	r0, #22836	; 0x5934
+ 238:	f8cd 3404 	str.w	r3, [sp, #1028]	; 0x404
+ 23c:	4295      	cmp	r5, r2
+ 23e:	f88d 1408 	strb.w	r1, [sp, #1032]	; 0x408
+ 242:	90fc      	str	r0, [sp, #1008]	; 0x3f0
+ 244:	f0c0 81b9 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 248:	200c      	movs	r0, #12
+ 24a:	f88d 1424 	strb.w	r1, [sp, #1060]	; 0x424
+ 24e:	2114      	movs	r1, #20
+ 250:	f8cd 2594 	str.w	r2, [sp, #1428]	; 0x594
+ 254:	f645 52d8 	movw	r2, #24024	; 0x5dd8
+ 258:	f8cd 059c 	str.w	r0, [sp, #1436]	; 0x59c
+ 25c:	2001      	movs	r0, #1
+ 25e:	f8cd 1420 	str.w	r1, [sp, #1056]	; 0x420
+ 262:	f8cd 1410 	str.w	r1, [sp, #1040]	; 0x410
+ 266:	f645 5154 	movw	r1, #23892	; 0x5d54
+ 26a:	4295      	cmp	r5, r2
+ 26c:	f8cd 041c 	str.w	r0, [sp, #1052]	; 0x41c
+ 270:	f8cd 0418 	str.w	r0, [sp, #1048]	; 0x418
+ 274:	f8cd 0414 	str.w	r0, [sp, #1044]	; 0x414
+ 278:	f8cd 140c 	str.w	r1, [sp, #1036]	; 0x40c
+ 27c:	f0c0 819d 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 280:	210d      	movs	r1, #13
+ 282:	2370      	movs	r3, #112	; 0x70
+ 284:	f8cd 2594 	str.w	r2, [sp, #1428]	; 0x594
+ 288:	f645 6220 	movw	r2, #24096	; 0x5e20
+ 28c:	f8cd 0438 	str.w	r0, [sp, #1080]	; 0x438
+ 290:	f8cd 0434 	str.w	r0, [sp, #1076]	; 0x434
+ 294:	f8cd 0430 	str.w	r0, [sp, #1072]	; 0x430
+ 298:	f645 5068 	movw	r0, #23912	; 0x5d68
+ 29c:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			29c: R_ARM_THM_CALL	OUTLINED_FUNCTION_572
+ 2a0:	f8cd 343c 	str.w	r3, [sp, #1084]	; 0x43c
+ 2a4:	f8cd 342c 	str.w	r3, [sp, #1068]	; 0x42c
+ 2a8:	f8cd 0428 	str.w	r0, [sp, #1064]	; 0x428
+ 2ac:	4295      	cmp	r5, r2
+ 2ae:	f88d 1440 	strb.w	r1, [sp, #1088]	; 0x440
+ 2b2:	f0c0 8182 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 2b6:	f88d 145c 	strb.w	r1, [sp, #1116]	; 0x45c
+ 2ba:	2148      	movs	r1, #72	; 0x48
+ 2bc:	200e      	movs	r0, #14
+ 2be:	f645 53d8 	movw	r3, #24024	; 0x5dd8
+ 2c2:	f8cd 2594 	str.w	r2, [sp, #1428]	; 0x594
+ 2c6:	f8cd 1458 	str.w	r1, [sp, #1112]	; 0x458
+ 2ca:	f8cd 1450 	str.w	r1, [sp, #1104]	; 0x450
+ 2ce:	2146      	movs	r1, #70	; 0x46
+ 2d0:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			2d0: R_ARM_THM_CALL	OUTLINED_FUNCTION_685
+ 2d4:	f8cd 3444 	str.w	r3, [sp, #1092]	; 0x444
+ 2d8:	f645 6384 	movw	r3, #24196	; 0x5e84
+ 2dc:	f8cd 144c 	str.w	r1, [sp, #1100]	; 0x44c
+ 2e0:	2101      	movs	r1, #1
+ 2e2:	f8cd 0454 	str.w	r0, [sp, #1108]	; 0x454
+ 2e6:	429d      	cmp	r5, r3
+ 2e8:	f8cd 1448 	str.w	r1, [sp, #1096]	; 0x448
+ 2ec:	f0c0 8165 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 2f0:	220f      	movs	r2, #15
+ 2f2:	2464      	movs	r4, #100	; 0x64
+ 2f4:	f8cd 0470 	str.w	r0, [sp, #1136]	; 0x470
+ 2f8:	2062      	movs	r0, #98	; 0x62
+ 2fa:	f8cd 3594 	str.w	r3, [sp, #1428]	; 0x594
+ 2fe:	f246 2384 	movw	r3, #25220	; 0x6284
+ 302:	f8cd 1464 	str.w	r1, [sp, #1124]	; 0x464
+ 306:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			306: R_ARM_THM_CALL	OUTLINED_FUNCTION_573
+ 30a:	f8cd 0468 	str.w	r0, [sp, #1128]	; 0x468
+ 30e:	f645 6020 	movw	r0, #24096	; 0x5e20
+ 312:	f8cd 4474 	str.w	r4, [sp, #1140]	; 0x474
+ 316:	f8cd 446c 	str.w	r4, [sp, #1132]	; 0x46c
+ 31a:	429d      	cmp	r5, r3
+ 31c:	f88d 2478 	strb.w	r2, [sp, #1144]	; 0x478
+ 320:	f8cd 0460 	str.w	r0, [sp, #1120]	; 0x460
+ 324:	f0c0 8149 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 328:	f44f 6180 	mov.w	r1, #1024	; 0x400
+ 32c:	2010      	movs	r0, #16
+ 32e:	f8cd 3594 	str.w	r3, [sp, #1428]	; 0x594
+ 332:	f246 332c 	movw	r3, #25388	; 0x632c
+ 336:	f88d 2494 	strb.w	r2, [sp, #1172]	; 0x494
+ 33a:	f645 6284 	movw	r2, #24196	; 0x5e84
+ 33e:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			33e: R_ARM_THM_CALL	OUTLINED_FUNCTION_685
+ 342:	f8cd 1490 	str.w	r1, [sp, #1168]	; 0x490
+ 346:	f8cd 1488 	str.w	r1, [sp, #1160]	; 0x488
+ 34a:	f8cd 1484 	str.w	r1, [sp, #1156]	; 0x484
+ 34e:	2101      	movs	r1, #1
+ 350:	f8cd 247c 	str.w	r2, [sp, #1148]	; 0x47c
+ 354:	429d      	cmp	r5, r3
+ 356:	f8cd 048c 	str.w	r0, [sp, #1164]	; 0x48c
+ 35a:	f8cd 1480 	str.w	r1, [sp, #1152]	; 0x480
+ 35e:	f0c0 812c 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 362:	2211      	movs	r2, #17
+ 364:	24a8      	movs	r4, #168	; 0xa8
+ 366:	f8cd 04a8 	str.w	r0, [sp, #1192]	; 0x4a8
+ 36a:	20a7      	movs	r0, #167	; 0xa7
+ 36c:	f8cd 149c 	str.w	r1, [sp, #1180]	; 0x49c
+ 370:	f246 3148 	movw	r1, #25416	; 0x6348
+ 374:	f8cd 3594 	str.w	r3, [sp, #1428]	; 0x594
+ 378:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			378: R_ARM_THM_CALL	OUTLINED_FUNCTION_573
+ 37c:	f8cd 04a0 	str.w	r0, [sp, #1184]	; 0x4a0
+ 380:	f246 2084 	movw	r0, #25220	; 0x6284
+ 384:	f8cd 44ac 	str.w	r4, [sp, #1196]	; 0x4ac
+ 388:	f8cd 44a4 	str.w	r4, [sp, #1188]	; 0x4a4
+ 38c:	428d      	cmp	r5, r1
+ 38e:	f88d 24b0 	strb.w	r2, [sp, #1200]	; 0x4b0
+ 392:	f8cd 0498 	str.w	r0, [sp, #1176]	; 0x498
+ 396:	f0c0 8110 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 39a:	f88d 24cc 	strb.w	r2, [sp, #1228]	; 0x4cc
+ 39e:	221c      	movs	r2, #28
+ 3a0:	2012      	movs	r0, #18
+ 3a2:	f8cd 34b4 	str.w	r3, [sp, #1204]	; 0x4b4
+ 3a6:	f246 532c 	movw	r3, #25900	; 0x652c
+ 3aa:	f8cd 1594 	str.w	r1, [sp, #1428]	; 0x594
+ 3ae:	f8cd 24c8 	str.w	r2, [sp, #1224]	; 0x4c8
+ 3b2:	f8cd 24c0 	str.w	r2, [sp, #1216]	; 0x4c0
+ 3b6:	221a      	movs	r2, #26
+ 3b8:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			3b8: R_ARM_THM_CALL	OUTLINED_FUNCTION_685
+ 3bc:	f8cd 24bc 	str.w	r2, [sp, #1212]	; 0x4bc
+ 3c0:	2201      	movs	r2, #1
+ 3c2:	f8cd 04c4 	str.w	r0, [sp, #1220]	; 0x4c4
+ 3c6:	429d      	cmp	r5, r3
+ 3c8:	f8cd 24b8 	str.w	r2, [sp, #1208]	; 0x4b8
+ 3cc:	f0c0 80f5 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 3d0:	2113      	movs	r1, #19
+ 3d2:	f8cd 24d4 	str.w	r2, [sp, #1236]	; 0x4d4
+ 3d6:	f246 62f8 	movw	r2, #26360	; 0x66f8
+ 3da:	f44f 74f2 	mov.w	r4, #484	; 0x1e4
+ 3de:	f8cd 04e0 	str.w	r0, [sp, #1248]	; 0x4e0
+ 3e2:	f246 3048 	movw	r0, #25416	; 0x6348
+ 3e6:	f8cd 3594 	str.w	r3, [sp, #1428]	; 0x594
+ 3ea:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			3ea: R_ARM_THM_CALL	OUTLINED_FUNCTION_572
+ 3ee:	f8cd 44e4 	str.w	r4, [sp, #1252]	; 0x4e4
+ 3f2:	f8cd 44dc 	str.w	r4, [sp, #1244]	; 0x4dc
+ 3f6:	f8cd 44d8 	str.w	r4, [sp, #1240]	; 0x4d8
+ 3fa:	f8cd 04d0 	str.w	r0, [sp, #1232]	; 0x4d0
+ 3fe:	4295      	cmp	r5, r2
+ 400:	f88d 14e8 	strb.w	r1, [sp, #1256]	; 0x4e8
+ 404:	f0c0 80d9 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 408:	2014      	movs	r0, #20
+ 40a:	f88d 1504 	strb.w	r1, [sp, #1284]	; 0x504
+ 40e:	f44f 71e6 	mov.w	r1, #460	; 0x1cc
+ 412:	f8cd 2594 	str.w	r2, [sp, #1428]	; 0x594
+ 416:	f646 02dc 	movw	r2, #26844	; 0x68dc
+ 41a:	f8cd 34ec 	str.w	r3, [sp, #1260]	; 0x4ec
+ 41e:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			41e: R_ARM_THM_CALL	OUTLINED_FUNCTION_685
+ 422:	f8cd 1500 	str.w	r1, [sp, #1280]	; 0x500
+ 426:	f8cd 14f8 	str.w	r1, [sp, #1272]	; 0x4f8
+ 42a:	f8cd 14f4 	str.w	r1, [sp, #1268]	; 0x4f4
+ 42e:	2101      	movs	r1, #1
+ 430:	4295      	cmp	r5, r2
+ 432:	f8cd 04fc 	str.w	r0, [sp, #1276]	; 0x4fc
+ 436:	f8cd 14f0 	str.w	r1, [sp, #1264]	; 0x4f0
+ 43a:	f0c0 80be 	bcc.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 43e:	2315      	movs	r3, #21
+ 440:	f8cd 0518 	str.w	r0, [sp, #1304]	; 0x518
+ 444:	f246 60f8 	movw	r0, #26360	; 0x66f8
+ 448:	f8cd 150c 	str.w	r1, [sp, #1292]	; 0x50c
+ 44c:	f8cd 2594 	str.w	r2, [sp, #1428]	; 0x594
+ 450:	f8cd 359c 	str.w	r3, [sp, #1436]	; 0x59c
+ 454:	2300      	movs	r3, #0
+ 456:	f8cd 0508 	str.w	r0, [sp, #1288]	; 0x508
+ 45a:	f516 71f2 	adds.w	r1, r6, #484	; 0x1e4
+ 45e:	f88d 3520 	strb.w	r3, [sp, #1312]	; 0x520
+ 462:	f44f 73f2 	mov.w	r3, #484	; 0x1e4
+ 466:	f8cd 351c 	str.w	r3, [sp, #1308]	; 0x51c
+ 46a:	f8cd 3514 	str.w	r3, [sp, #1300]	; 0x514
+ 46e:	f8cd 3510 	str.w	r3, [sp, #1296]	; 0x510
+ 472:	f180 80a2 	bvs.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 476:	f646 00dc 	movw	r0, #26844	; 0x68dc
+ 47a:	1840      	adds	r0, r0, r1
+ 47c:	f180 809d 	bvs.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 480:	4285      	cmp	r5, r0
+ 482:	f2c0 809a 	blt.w	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 486:	f8cd 1538 	str.w	r1, [sp, #1336]	; 0x538
+ 48a:	2104      	movs	r1, #4
+ 48c:	2216      	movs	r2, #22
+ 48e:	f8cd 0594 	str.w	r0, [sp, #1428]	; 0x594
+ 492:	f8cd 1534 	str.w	r1, [sp, #1332]	; 0x534
+ 496:	f44f 71f2 	mov.w	r1, #484	; 0x1e4
+ 49a:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			49a: R_ARM_THM_CALL	OUTLINED_FUNCTION_573
+ 49e:	f8cd 1530 	str.w	r1, [sp, #1328]	; 0x530
+ 4a2:	f8cd 152c 	str.w	r1, [sp, #1324]	; 0x52c
+ 4a6:	2101      	movs	r1, #1
+ 4a8:	f88d 253c 	strb.w	r2, [sp, #1340]	; 0x53c
+ 4ac:	f8cd 1528 	str.w	r1, [sp, #1320]	; 0x528
+ 4b0:	f646 01dc 	movw	r1, #26844	; 0x68dc
+ 4b4:	f8cd 1524 	str.w	r1, [sp, #1316]	; 0x524
+ 4b8:	17c1      	asrs	r1, r0, #31
+ 4ba:	eb00 7191 	add.w	r1, r0, r1, lsr #30
+ 4be:	f021 0103 	bic.w	r1, r1, #3
+ 4c2:	1a41      	subs	r1, r0, r1
+ 4c4:	d004      	beq.n	4d0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x4d0>
+ 4c6:	1a41      	subs	r1, r0, r1
+ 4c8:	3104      	adds	r1, #4
+ 4ca:	4281      	cmp	r1, r0
+ 4cc:	4608      	mov	r0, r1
+ 4ce:	d674      	bvs.n	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 4d0:	f510 71e6 	adds.w	r1, r0, #460	; 0x1cc
+ 4d4:	d671      	bvs.n	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 4d6:	428d      	cmp	r5, r1
+ 4d8:	db6f      	blt.n	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 4da:	2217      	movs	r2, #23
+ 4dc:	f8cd 0540 	str.w	r0, [sp, #1344]	; 0x540
+ 4e0:	17c8      	asrs	r0, r1, #31
+ 4e2:	2304      	movs	r3, #4
+ 4e4:	f8cd 1594 	str.w	r1, [sp, #1428]	; 0x594
+ 4e8:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			4e8: R_ARM_THM_CALL	OUTLINED_FUNCTION_573
+ 4ec:	eb01 7050 	add.w	r0, r1, r0, lsr #29
+ 4f0:	f8cd 3550 	str.w	r3, [sp, #1360]	; 0x550
+ 4f4:	f88d 2558 	strb.w	r2, [sp, #1368]	; 0x558
+ 4f8:	f44f 72e6 	mov.w	r2, #460	; 0x1cc
+ 4fc:	f020 0007 	bic.w	r0, r0, #7
+ 500:	f8cd 2554 	str.w	r2, [sp, #1364]	; 0x554
+ 504:	f8cd 254c 	str.w	r2, [sp, #1356]	; 0x54c
+ 508:	f8cd 2548 	str.w	r2, [sp, #1352]	; 0x548
+ 50c:	2201      	movs	r2, #1
+ 50e:	1a08      	subs	r0, r1, r0
+ 510:	f8cd 2544 	str.w	r2, [sp, #1348]	; 0x544
+ 514:	d004      	beq.n	520 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x520>
+ 516:	1a08      	subs	r0, r1, r0
+ 518:	3008      	adds	r0, #8
+ 51a:	4288      	cmp	r0, r1
+ 51c:	4601      	mov	r1, r0
+ 51e:	d64c      	bvs.n	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 520:	f241 0068 	movw	r0, #4200	; 0x1068
+ 524:	180a      	adds	r2, r1, r0
+ 526:	d648      	bvs.n	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 528:	4295      	cmp	r5, r2
+ 52a:	db46      	blt.n	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 52c:	2018      	movs	r0, #24
+ 52e:	2308      	movs	r3, #8
+ 530:	f8cd 155c 	str.w	r1, [sp, #1372]	; 0x55c
+ 534:	f8cd 2594 	str.w	r2, [sp, #1428]	; 0x594
+ 538:	f8cd 059c 	str.w	r0, [sp, #1436]	; 0x59c
+ 53c:	2000      	movs	r0, #0
+ 53e:	f8cd 356c 	str.w	r3, [sp, #1388]	; 0x56c
+ 542:	f8cd 3598 	str.w	r3, [sp, #1432]	; 0x598
+ 546:	f88d 0574 	strb.w	r0, [sp, #1396]	; 0x574
+ 54a:	f241 0068 	movw	r0, #4200	; 0x1068
+ 54e:	f8cd 0570 	str.w	r0, [sp, #1392]	; 0x570
+ 552:	f8cd 0568 	str.w	r0, [sp, #1384]	; 0x568
+ 556:	f8cd 0564 	str.w	r0, [sp, #1380]	; 0x564
+ 55a:	2001      	movs	r0, #1
+ 55c:	f8cd 0560 	str.w	r0, [sp, #1376]	; 0x560
+ 560:	1c50      	adds	r0, r2, #1
+ 562:	d62a      	bvs.n	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 564:	4285      	cmp	r5, r0
+ 566:	db28      	blt.n	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 568:	2119      	movs	r1, #25
+ 56a:	f8cd 2578 	str.w	r2, [sp, #1400]	; 0x578
+ 56e:	f8cd 0594 	str.w	r0, [sp, #1428]	; 0x594
+ 572:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			572: R_ARM_THM_CALL	OUTLINED_FUNCTION_572
+ 576:	f88d 1590 	strb.w	r1, [sp, #1424]	; 0x590
+ 57a:	2101      	movs	r1, #1
+ 57c:	f8cd 158c 	str.w	r1, [sp, #1420]	; 0x58c
+ 580:	f8cd 1588 	str.w	r1, [sp, #1416]	; 0x588
+ 584:	f8cd 1584 	str.w	r1, [sp, #1412]	; 0x584
+ 588:	f8cd 1580 	str.w	r1, [sp, #1408]	; 0x580
+ 58c:	f8cd 157c 	str.w	r1, [sp, #1404]	; 0x57c
+ 590:	17c1      	asrs	r1, r0, #31
+ 592:	eb00 7151 	add.w	r1, r0, r1, lsr #29
+ 596:	f021 0107 	bic.w	r1, r1, #7
+ 59a:	1a41      	subs	r1, r0, r1
+ 59c:	d004      	beq.n	5a8 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5a8>
+ 59e:	1a41      	subs	r1, r0, r1
+ 5a0:	3108      	adds	r1, #8
+ 5a2:	4281      	cmp	r1, r0
+ 5a4:	4608      	mov	r0, r1
+ 5a6:	d608      	bvs.n	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 5a8:	4285      	cmp	r5, r0
+ 5aa:	db06      	blt.n	5ba <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5ba>
+ 5ac:	f100 4160 	add.w	r1, r0, #3758096384	; 0xe0000000
+ 5b0:	f8cd 05a0 	str.w	r0, [sp, #1440]	; 0x5a0
+ 5b4:	f1b1 4f40 	cmp.w	r1, #3221225472	; 0xc0000000
+ 5b8:	d20e      	bcs.n	5d8 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5d8>
+ 5ba:	f20d 50c4 	addw	r0, sp, #1476	; 0x5c4
+ 5be:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			5be: R_ARM_THM_CALL	$e17P08CounterRuntime0B14EmbeddedLayoutVSgWOi0_
+ 5c2:	f20d 51c4 	addw	r1, sp, #1476	; 0x5c4
+ 5c6:	4640      	mov	r0, r8
+ 5c8:	f240 22d1 	movw	r2, #721	; 0x2d1
+ 5cc:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			5cc: R_ARM_THM_CALL	__aeabi_memcpy4
+ 5d0:	f60d 0d98 	addw	sp, sp, #2200	; 0x898
+ 5d4:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+ 5d8:	0080      	lsls	r0, r0, #2
+ 5da:	f44f 7234 	mov.w	r2, #720	; 0x2d0
+ 5de:	f8cd 05a4 	str.w	r0, [sp, #1444]	; 0x5a4
+ 5e2:	ad01      	add	r5, sp, #4
+ 5e4:	a9b6      	add	r1, sp, #728	; 0x2d8
+ 5e6:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			5e6: R_ARM_THM_CALL	OUTLINED_FUNCTION_269
+ 5ea:	4628      	mov	r0, r5
+ 5ec:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC>
+			5ec: R_ARM_THM_CALL	$e17P08CounterRuntime0B14EmbeddedLayoutVSgWOi_
+ 5f0:	f20d 50c4 	addw	r0, sp, #1476	; 0x5c4
+ 5f4:	4629      	mov	r1, r5
+ 5f6:	f240 22d1 	movw	r2, #721	; 0x2d1
+ 5fa:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			5fa: R_ARM_THM_CALL	__aeabi_memcpy4
+ 5fe:	e7e0      	b.n	5c2 <.text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC+0x5c2>

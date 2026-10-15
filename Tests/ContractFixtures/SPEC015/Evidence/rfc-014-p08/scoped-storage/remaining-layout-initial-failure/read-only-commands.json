@@ -1,0 +1,72 @@
+[
+  {
+    "argv": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+      "-dr",
+      "-j",
+      ".text.unlikely.giftui_p08_layout_limits_offset",
+      ".build/nrf52840/contracts/p08-counter-h4tyo2r0/P08CounterRuntime.o"
+    ],
+    "cwd": "/Users/eugene/work/GiftUI",
+    "exit": 0,
+    "log": "root-limits-offset.log",
+    "sha256": "fba50608d965e11d219bfe0d7c1b4bb979b06c52525522c0fa0de97c18c584e8",
+    "executed_target_code": false
+  },
+  {
+    "argv": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+      "-dr",
+      "-j",
+      ".text.unlikely.giftui_p08_layout_b0_alignment",
+      ".build/nrf52840/contracts/p08-counter-h4tyo2r0/P08CounterRuntime.o"
+    ],
+    "cwd": "/Users/eugene/work/GiftUI",
+    "exit": 0,
+    "log": "root-b0-alignment.log",
+    "sha256": "c8b07935373fb56ddfbf63355cf36dde15621b3e65e5081d34df2abc7b320ed1",
+    "executed_target_code": false
+  },
+  {
+    "argv": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+      "-dr",
+      "-j",
+      ".text.unlikely.giftui_p08_layout_limits_offsetTm",
+      ".build/nrf52840/contracts/p08-counter-h4tyo2r0/P08CounterRuntime.o"
+    ],
+    "cwd": "/Users/eugene/work/GiftUI",
+    "exit": 0,
+    "log": "shared-failure.log",
+    "sha256": "1a4f87710ca4c0be0e8f84e47048afde1d1cd936fd46a62fa72a3de16937d851",
+    "executed_target_code": false
+  },
+  {
+    "argv": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+      "-dr",
+      "-j",
+      ".text.$e17P08CounterRuntime0B14EmbeddedLayoutV17suppliedByteCount9r1SurplusACSgSi_SitcfC",
+      ".build/nrf52840/contracts/p08-counter-h4tyo2r0/P08CounterRuntime.o"
+    ],
+    "cwd": "/Users/eugene/work/GiftUI",
+    "exit": 0,
+    "log": "general-checked-layout.log",
+    "sha256": "95ae860b9362dba2eaa57aa69e463b2b342d5784c37792b0b6ba7e660ab9b606",
+    "executed_target_code": false
+  },
+  {
+    "argv": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+      "-dr",
+      "-j",
+      ".text.OUTLINED_FUNCTION_517",
+      ".build/nrf52840/contracts/p08-counter-h4tyo2r0/P08CounterRuntime.o"
+    ],
+    "cwd": "/Users/eugene/work/GiftUI",
+    "exit": 0,
+    "log": "outlined-517.log",
+    "sha256": "819ad88f04d7c46c91ed0211cd378206707181383f0105aaed8fd08ad10fecfb",
+    "executed_target_code": false
+  }
+]

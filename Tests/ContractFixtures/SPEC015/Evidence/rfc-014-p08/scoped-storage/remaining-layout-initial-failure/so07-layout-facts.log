@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/eugene/work/GiftUI/scripts/contracts/p08_layout_facts.py", line 281, in <module>
+    main()
+  File "/Users/eugene/work/GiftUI/scripts/contracts/p08_layout_facts.py", line 259, in main
+    elf, extracted = extract(args.input, reservation)
+  File "/Users/eugene/work/GiftUI/scripts/contracts/p08_layout_facts.py", line 216, in extract
+    require(found == set(SYMBOLS), 'unexpected/missing layout accessor inventory')
+  File "/Users/eugene/work/GiftUI/scripts/contracts/p08_layout_facts.py", line 27, in require
+    raise ValueError(message)
+ValueError: unexpected/missing layout accessor inventory
