@@ -5,7 +5,7 @@ status: active
 revision: 5
 approved_revision: 5
 created: 2026-10-04
-updated: 2026-10-13
+updated: 2026-10-15
 features:
   - external-application-integration
   - giftui-mvp-architecture
@@ -207,6 +207,12 @@ authorization are required before further experiments on that stopped question.
   exception forward to conceal a new unmet criterion.
 
 ## Success Criteria and Validation
+
+The maintainer's 2026-10-15 [focused testing policy](iteration-003-review/rfc-014-implementation-plan.md#focused-testing-campaigns--maintainer-instruction-2026-10-15)
+uses existing sequential drivers and shorter campaigns only with demonstrated
+change coverage and valid retained evidence. Required full gates remain intact;
+parallel workers are excluded. This execution guidance leaves revision 5's
+scope, criteria and bounded activity allowances unchanged.
 
 Transferred IT-AC-001–003 retain their disposition above. IT-AC-004–010 below
 are current exit obligations, not replacement Specification acceptance criteria.

@@ -966,6 +966,39 @@ P10's broad gate is `scripts/test.sh all-hardware-free`. Reuse its exact artifac
 for P11 where possible. Any new required focused check must be explicitly
 registered with the top-level runner, not silently discovered or skipped.
 
+### Focused testing campaigns — maintainer instruction, 2026-10-15
+
+Eugene requested retaining the existing sequential test infrastructure, excluding
+untested two-worker execution, and using shorter focused campaigns when they
+provide equivalent validation for the change. This is an execution policy under
+the existing iteration scope, not a reduction of acceptance criteria or a reset
+of any bounded activity's run/repair allowance.
+
+- Before a campaign, record changed inputs, affected contracts/owners, transitive
+  consumers, test families and profiles, plus why omitted checks remain covered.
+  Use existing focused selection and verified resume/reuse mechanisms where
+  applicable; do not introduce parallel workers or parallel batch delegation.
+- Run the smallest complete affected families and prerequisites. Preserve positive
+  twins, negative diagnostic classification, required compiler passes and actual
+  runtime integration checks. A family selection must not omit another affected
+  family merely to shorten a run.
+- Reuse earlier results only where their source, dependency, compiler, flag,
+  profile and artifact identities remain applicable under the existing verifier
+  or an explicitly reviewed applicability qualification. Focused checks plus
+  valid retained evidence may cover the same obligations as a full rerun; a
+  focused pass alone must never be reported as a complete suite pass.
+- If impact or evidence applicability cannot be established, broaden the campaign
+  to the relevant subsystem/profile or full suite. Shared ownership, runtime,
+  compiler/configuration and storage-layout changes require early affected
+  ARMv6/Embedded checks; do not defer target feasibility to final validation.
+- After a coherent change batch, run affected subsystem integration checks.
+  Preserve full required package/iteration gates at their defined boundaries,
+  including P10's broad gate and final source/artifact coverage. Any subsequent
+  change invalidates affected evidence and requires the corresponding refresh.
+- Each receipt names what ran, what was reused and why, what remains unvalidated,
+  and whether the result is focused or complete. No automatic retry, new repair
+  allowance, required-check waiver or performance claim follows from this policy.
+
 Pi builds target `armv6-unknown-linux-gnueabihf`; nRF builds target
 `nrf52840dk/nrf52840` with `armv7em-none-none-eabi` and verified VFP ABI. Follow the
 repository platform skills. No setup installs globally. Deployment/service restart

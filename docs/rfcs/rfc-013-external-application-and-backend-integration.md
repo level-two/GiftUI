@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-10-05
-updated: 2026-10-10
+updated: 2026-10-15
 proposal:
   - PROPOSAL-007
 related_rfcs:
@@ -36,6 +36,7 @@ related_future_work:
   - FW-016
   - FW-030
   - FW-035
+  - FW-038
 related_explorations:
   - EXP-002
 related_spikes:
@@ -185,3 +186,9 @@ and [SPIKE-014](../spikes/spike-014-external-consumer-access-baseline.md) preser
 the original preparation baseline. [FW-035](../future-work/fw-035-generated-view-graph-for-interchangeable-frontends.md)
 retains a future generated-frontend trigger. Full current memory/lifetime safety
 cannot be deferred as an optional optimization.
+
+[FW-038](../future-work/fw-038-scoped-contract-validation-cost.md) records the
+2026-10-15 request to consolidate P08 application/build/test infrastructure during
+ITERATION-004 separation. Evaluate test ownership, supported consumer reuse and
+coverage-preserving driver retirement with this RFC's package/assembly decisions;
+no module topology or reduction of required proof is selected by the capture.

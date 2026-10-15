@@ -5,7 +5,7 @@ status: approved
 revision: 4
 approved_revision: 4
 created: 2026-10-09
-updated: 2026-10-13
+updated: 2026-10-15
 features:
   - external-application-integration
   - giftui-mvp-architecture
@@ -14,6 +14,7 @@ approval: "Eugene approved the presented iteration sequencing and requested scop
 related_future_work:
   - FW-036
   - FW-037
+  - FW-038
 closure: null
 ---
 
@@ -172,6 +173,13 @@ ownership contract. See [FW-037 disposition](../future-work/fw-037-core-wide-sto
 At closure, disposition I4-AC-001–008 as met, unmet or explicitly excepted with
 current evidence. Preserve remaining work and triggers, and obtain a human
 closure decision. Do not infer delivery from transferred scope or passed studies.
+
+The [FW-038 consolidation candidate](../future-work/fw-038-scoped-contract-validation-cost.md)
+records Eugene's 2026-10-15 request to assess removal of parallel P08 build/test
+infrastructure while preserving meaningful coverage. Revisit during RFC-013
+package/assembly design for I4-01–04 and coordinate with I4-07. This is a linked
+follow-up, not a new approved criterion or amendment to revision 4; current P08
+proof obligations remain in force.
 
 ## References
 

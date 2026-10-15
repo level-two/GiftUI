@@ -22,6 +22,15 @@ package-boundary reporting and escalation of contract/scope decisions. Routine
 runs and polling use Luna 6 Medium; Standard uses Sol 6.1 Medium and ownership,
 resource decisions and independent review use Sol 6.1 High.
 
+## Testing policy update — 2026-10-15
+
+Follow the maintainer's [focused testing policy](../../../../../../docs/iterations/iteration-003-review/rfc-014-implementation-plan.md#focused-testing-campaigns--maintainer-instruction-2026-10-15):
+use existing sequential focused campaigns when affected coverage and retained
+result applicability establish equivalence. No parallel workers or batch
+agents are introduced. This does not cancel the remaining required full
+collections, claim aggregate completion from focused results, or reopen consumed
+repair allowances.
+
 ## Authority and bounded work
 
 SPEC-011/013/015 remain implementing with active plans under accepted ADR-039
