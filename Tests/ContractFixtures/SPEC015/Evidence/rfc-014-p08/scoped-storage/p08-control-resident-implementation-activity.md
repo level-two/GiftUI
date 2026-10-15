@@ -1,6 +1,9 @@
 # P08 control-resident runtime payload implementation
 
-**Initial source pass active; corrections 0/2.** Eugene explicitly said
+**Initial source review BLOCKED by B01/G03 coverage omission; corrections 0/2.**
+[Independent source review](p08-control-resident-initial-independent-source-review.md)
+finds missing backend completion facts in the new full observation. A bounded
+local correction and focused reassessment precede execution. Eugene explicitly said
 “Please proceed” to implementing the independently reviewed control-resident
 payload design (`26872845`, review PASS `eccee3e6`). Entry is `eccee3e6`;
 compiled fixture baseline remains `f7e56cf0`. The previous typed-stage 2/2 and

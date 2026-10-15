@@ -1,5 +1,9 @@
 # P08 original-control payload — initial source freeze
 
+**Independent source review BLOCKED at `aa36a4ae` by B01/G03 backend observation omission.**
+[Review and minimal correction](p08-control-resident-initial-independent-source-review.md)
+preserve this exact failing source identity; no compiler or sizing result exists.
+
 Source candidate only, under [current authorization](p08-control-resident-implementation-activity.md),
 reviewed design `26872845` / PASS `eccee3e6`. Initial pass; corrections **0/2**.
 Previous typed-stage 2/2 and diagnostic 1/1 remain closed. Independent source
