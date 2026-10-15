@@ -3,7 +3,7 @@
 **STOP expensive follow-up: target object remains oversized.** The one registered
 screen compiled successfully in about 53 seconds; the read-only stack rejection
 inspection fails. Candidate A improves materialization substantially but does not
-fit 27,648 bytes. Independent Strong result review is next. Candidate 1/1 and
+fit 27,648 bytes. [Independent Strong result review](p08-stack-candidate-a-independent-result-review.md) confirms the object rejection and STOP. Candidate 1/1 and
 screen 1/1 are consumed; the single mechanical pre-execution B01 correction is
 preserved separately. Historical2/2 stays closed. No automatic optimization
 variant, source repair, additional compiler/build/image or target run follows.

@@ -4,7 +4,8 @@ Current boundary: **screen 1/1 consumed; object rejection; fit remains failed**.
 The [screen result](p08-stack-candidate-a-screen-result.md) preserves 25 passing
 preparation/module/layout checks and 202 not-run controls. The object still has
 a reachable ≥30,096-byte frame; the same live path is ≥114,464. Candidate 1/1,
-screen 1/1 and historical 2/2 are closed. Independent Strong result review follows;
+screen 1/1 and historical 2/2 are closed.
+[Independent Strong result review](p08-stack-candidate-a-independent-result-review.md) confirms STOP and fit FAIL;
 no optimization variant or expensive follow-up is authorized by the partial pass.
 The corrected source passed independent reassessment before this screen; the
 original blocked source/review and mechanical correction remain historical.

@@ -29,7 +29,7 @@ compiled successfully but **rejects fit**: ≥30,096-byte reachable frame and
 but not enough. Candidate 1/1 and screen 1/1 consumed, historical 2/2 closed; no
 optimization variant or budget change follows. The original design/validation
 proposal below is preserved as the basis of that completed attempt, not a new
-execution allowance. Independent Strong result review is next.
+execution allowance. [Independent Strong result review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-independent-result-review.md) confirms STOP and fit FAIL.
 
 ## Authority and exact evidence
 

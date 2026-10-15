@@ -6,7 +6,7 @@ The [screen result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08
 a reachable ≥30,096-byte frame; the required nested path improves 213,120→114,464
 bytes but exceeds 27,648. Candidate 1/1 and screen 1/1 consumed; historical 2/2
 closed. No further optimization variant, compiler/build/image or resource waiver
-follows. Independent Strong result review is pending; P08 fit remains failed.
+follows. [Independent Strong result review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-independent-result-review.md) confirms STOP and fit FAIL; P08 remains open.
 The prior five-receiver source blocker was corrected at `9cac6bfa` and
 [focused source reassessment passed](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-review-correction-independent-source-review.md). Its original freeze/failure
 remains historical evidence, not the current blocker.
