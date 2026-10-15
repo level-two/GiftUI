@@ -1,6 +1,8 @@
 # P08 control-resident runtime payload implementation
 
-Current boundary: **final correction 2/2 frozen for focused source review; first measurement compilation failed**.
+Current boundary: **final correction 2/2 independent SOURCE PASS; one affected measurement rerun pending**.
+[Focused final source review](p08-control-resident-cycle2-independent-source-review.md)
+confirms the exact scoped cleanup extension correction; compiler acceptance is pending.
 [Focused reassessment](p08-control-resident-cycle1-independent-source-review.md)
 closes the initial B01 coverage blocker; prior source findings below remain historical.
 

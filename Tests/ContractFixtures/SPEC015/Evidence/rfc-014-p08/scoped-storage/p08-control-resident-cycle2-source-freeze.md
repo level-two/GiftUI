@@ -1,6 +1,8 @@
 # P08 control-resident payload — final correction 2 freeze
 
-**Corrections 2/2 consumed; independent source review pending.** The first
+**Corrections 2/2 consumed; independent SOURCE PASS at `999de5f9`.**
+[Focused independent review](p08-control-resident-cycle2-independent-source-review.md)
+authorizes the one affected measurement rerun; compiler acceptance remains pending. The first
 measurement at `b673d6fa` failed before counter object emission: 23 preparations
 passed, counter-model failed, layout blocked, 202 cases not-run. Exact original
 logs/commands/receipts, input hashes and failed source are preserved in
