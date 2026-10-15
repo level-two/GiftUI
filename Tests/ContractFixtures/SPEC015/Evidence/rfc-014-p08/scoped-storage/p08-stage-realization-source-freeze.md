@@ -1,6 +1,8 @@
 # P08 typed-stage initial source freeze
 
-**Source frozen for independent review; no compiler, runtime or fit result.**
+**Independent Strong SOURCE PASS at `8ae0fb1c`; no compiler, runtime or fit result.**
+[Source review](p08-stage-realization-independent-source-review.md) finds the initial
+candidate ready for its registered diagnostic screen; execution remains unproved.
 Input/design review `d7df2c80`, [design](../../../../../../docs/implementation-designs/spec-015-p08-typed-stage-realization.md)
 `8bc9c9a4`; [authorization/bounds](p08-stage-realization-activity.md).
 Initial source candidate 1; corrections **0/2**, screens **0**. Historical closed

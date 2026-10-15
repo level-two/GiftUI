@@ -1,6 +1,8 @@
 # P08 stage realization — grouped design/correction activity
 
-Status: **initial source frozen for independent review; screen not run**.
+Status: **initial source independently reviewed PASS at `8ae0fb1c`; screen not run**.
+[Independent source review](p08-stage-realization-independent-source-review.md)
+permits the initial registered screen under this activity; no fit result exists.
 [Independent design review](p08-stage-realization-independent-design-review.md)
 finds the private realization within contract; initial implementation may proceed
 under this activity, with independent source review before the screen. Entry `7ee1c3e0`.
