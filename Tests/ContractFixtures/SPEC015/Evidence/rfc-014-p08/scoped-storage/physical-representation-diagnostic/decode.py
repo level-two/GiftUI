@@ -13,7 +13,7 @@ elf = module.ELF(path.read_bytes())
 roots = json.loads((packet / "roots.json").read_text())
 actual = [s for s in elf.symbols if s["name"].startswith("giftui_p08_assess_")]
 assert len(actual) == len(roots) and {s["name"] for s in actual} == set(roots), "exact assessment inventory"
-assert all(s["binding"] == 1 and s["type"] == 2 and s["visibility"] == 0 and 0 < s["owner"] < len(elf.sections) for s in actual), "defined global function roots only"
+assert all(s["binding"] == 1 and s["type"] == 2 and s["visibility"] == 3 and 0 < s["owner"] < len(elf.sections) for s in actual), "defined global function roots only"
 facts, errors = {}, {}
 for name, identity in roots.items():
     try:

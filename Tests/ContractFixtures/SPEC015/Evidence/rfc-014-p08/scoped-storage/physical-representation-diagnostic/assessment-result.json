@@ -1,0 +1,79 @@
+{
+  "assessment_only": true,
+  "acceptance_receipt": false,
+  "compiler_invocations": 1,
+  "compiler_retries": 0,
+  "maintained_source_changes": false,
+  "runtime_link_image_executed": false,
+  "compile_exit": 0,
+  "object_sha256": "28d5cda318d460ddc08d54c8a856b91316699d6fbd0b30a7cdab9ba04020348e",
+  "diagnostic_receipt_sha256": "8a4a02229ab08b6b09b9e8ea9a21a101673d10852852bc70ad8e6c78619c84de",
+  "initial_inventory_failure": "STV_DEFAULT assumed; actual exact120 roots STV_PROTECTED",
+  "parser_correction": "diagnostic inventory visibility0 to exact3 only; strict helper unchanged",
+  "proved_scalar_facts": 120,
+  "unknown_scalar_facts": 0,
+  "fit": "still rejected by frozen66864-byte lower bound",
+  "old_allowance": "2/2 closed; no new repair budget",
+  "artifacts": {
+    "README.md": {
+      "sha256": "44e719a802667718bbaebbb447e4feb1a0e058bccf1f2d095cf75ba78ab0895a",
+      "bytes": 4644
+    },
+    "accessors.swift.txt": {
+      "sha256": "697fee5ffbaecf9a18c981f96e567355effb255bca7de823de9056258dfc7123",
+      "bytes": 20233
+    },
+    "actual-root-symbols.json": {
+      "sha256": "555f99c700c1eefaa951ae520d00e69435ee64bf317b86f7cd61f80b6a39c8dd",
+      "bytes": 27104
+    },
+    "baseline-getter-copy-command.json": {
+      "sha256": "ab79b936ceeeec7e27c74d9ba063434cb4d72bdd21f94c1d9b62d46f14117880",
+      "bytes": 20537
+    },
+    "baseline-getter-copy-disassembly.log.xz": {
+      "sha256": "7adace3b34d1c5dc5dcc1a6329c2e0b4ef34578d0f6fcae81d229e49e9f087dc",
+      "bytes": 1896
+    },
+    "compile.argv.json": {
+      "sha256": "81ec1f5e2783b07bfafbb403cca2606841e71620b0067b1b1f66f61ae524bde9",
+      "bytes": 6211
+    },
+    "decode.py": {
+      "sha256": "3a45fe45b79d2cddfceadab28b17e3d491991f51ab2c9ab275088c601f4f8303",
+      "bytes": 1784
+    },
+    "decoded-type-layout-facts.json.xz": {
+      "sha256": "176737c844b5f368757b2004d4500fcb0633d1ccdd01094cc0df565af1831855",
+      "bytes": 5508
+    },
+    "decoder-before-protected-fix.py.txt": {
+      "sha256": "3776fb85ef278c60bf244aade9b67fab1c1bd0f014e0bbde9b7b670dde3f5f58",
+      "bytes": 1784
+    },
+    "diagnostic-execution-receipts.tar.xz": {
+      "sha256": "a0bf53b745121e9e1e105cd3705ad4555e076d3551f39d1a35fd833ce742aa34",
+      "bytes": 2208
+    },
+    "initial-decoder-reproduction.json": {
+      "sha256": "30877ba8dbc99789f8c46588fff12c5d894727e5fc8da19b944a594b878d8155",
+      "bytes": 794
+    },
+    "prepared.json": {
+      "sha256": "409531e6e36583042fc1465dedc6d3c96f2853bfb2e5cd1a92acf1a0fef88262",
+      "bytes": 68413
+    },
+    "roots.json": {
+      "sha256": "3befb83f458d6b33f6d55b4d8e33ecd7fa10b9616135bb8f3a49a9d5858df9ae",
+      "bytes": 16754
+    },
+    "run-once.py": {
+      "sha256": "546f4244b1843ae6cdcd6b1695c2fe7eefd9b23034eaf4357eb784a8fd6809b5",
+      "bytes": 1685
+    },
+    "type-layout-ledger.json": {
+      "sha256": "7e34acf085e1560ef35ff505230e3f27e0f0942f361d22b94c098d0ab67a4caa",
+      "bytes": 4845
+    }
+  }
+}

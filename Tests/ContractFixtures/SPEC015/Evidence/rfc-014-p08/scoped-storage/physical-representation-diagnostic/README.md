@@ -1,7 +1,20 @@
 # One diagnostic type-layout compilation
 
-Prepared under the user-authorized physical-representation assessment. **Not
-executed.** This is one diagnostic module compilation, not an optimization
+**Completed: one compilation / zero retries; 120/120 scalar facts proved.**
+The initial decoder inventory failed because actual exported roots have
+STV_PROTECTED (3), rather than assumed STV_DEFAULT (0). All 120 are exact defined
+STB_GLOBAL/STT_FUNC symbols. `decoder-before-protected-fix.py.txt`,
+`initial-decoder-reproduction.json` and `actual-root-symbols.json` preserve the old
+parser, reproducible failure and actual names/table/index metadata. Only the
+visibility predicate changed to exact 3. Unchanged strict decoding proves all
+bodies/edges/relocations; no compiler retry or byte grammar relaxation.
+[Numeric ledger](type-layout-ledger.json), compressed full proofs and original
+execution receipts support the
+[assessment](../../../../../../../docs/implementation-designs/spec-015-p08-physical-representation-assessment.md).
+
+Prepared under the user-authorized physical-representation assessment. The recipe
+below is immutable preparation; its invocation is now used. This is one
+diagnostic module compilation, not an optimization
 candidate, acceptance receipt, linker image, runtime experiment or renewed repair
 budget. The historical typed-stage 2/2 allowance remains closed.
 
@@ -55,4 +68,6 @@ nor its stack frames replace frozen acceptance evidence. Scalar layout facts
 only attribute physical type size; they do not prove an upper stack bound,
 successful compaction, lifetime correctness of a future rewrite or target fit.
 Preparation checks were Python syntax, exact source suffix/argv substitutions,
-input hashing and whitespace only. No compiler was invoked by the preparer.
+input hashing and whitespace only. The preparer did not compile; the sequential executor subsequently used the one
+invocation. Result collection used read-only object decoding, with no further
+compiler/build/link/runtime invocation.

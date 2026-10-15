@@ -1,0 +1,825 @@
+{
+  "argv": [
+    ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+    "--disassemble",
+    "--reloc",
+    "--section=.text.$e17P08CounterRuntime0B10RenderSinkVACycfC",
+    "--section=.text.$e17P08CounterRuntime0B10RenderSinkV12glyphRecordss11InlineArrayVy$63_16GiftUIRenderCore15PositionedGlyphVSgGvg",
+    "--section=.text.$e17P08CounterRuntime0B10RenderSinkV15positionedGlyphySb16GiftUIRenderCore010PositionedG0VF",
+    "--section=.text.OUTLINED_FUNCTION_175",
+    "--section=.text.OUTLINED_FUNCTION_118",
+    "--section=.text.$e17P08CounterRuntime0B18TiledRasterAdapterV7session24GiftUIBackendIntegration020OperationMajorRGB565E7SessionVyAA0B11TileStorageVAA0bD13DisplayTargetV0H24UIReferenceTextResources0hsT11MetricsViewVAL0hsteW0VGvg",
+    "--section=.text.OUTLINED_FUNCTION_501",
+    "--section=.text.$e17P08CounterRuntime0B18TiledRasterAdapterV9recordingAA0B10RenderSinkVvg",
+    "--section=.text.$e17P08CounterRuntime0B8EndpointV4sinkAA0B10RenderSinkVvg",
+    "--section=.text.$e17P08CounterRuntime0B8EndpointV6actual24GiftUIBackendIntegration020OneShotRasterBackendD0VyAA0b5TiledK7AdapterV0F24UIReferenceTextResources0foP11MetricsViewVAJ0fopkS0VAA0bM8EnvelopeVGvg",
+    "--section=.text.$e17P08CounterRuntime0B8EndpointV7controlSpyAA0B7ControlVGvg",
+    "--section=.text.$e17P08CounterRuntime0B12HostAssemblyV6report23GiftUIHostConfiguration0dE6ReportVvg",
+    "--section=.text.OUTLINED_FUNCTION_143",
+    "--section=.text.$e17P08CounterRuntime0B12HostAssemblyV8endpoint23GiftUIHostConfiguration0d8EndpointI0Vvg",
+    "--section=.text.OUTLINED_FUNCTION_370",
+    "--section=.text.$e17P08CounterRuntime0B12HostAssemblyV6ledger23GiftUIHostConfiguration0D22ValidationAccessLedgerVvg",
+    ".build/nrf52840/contracts/p08-counter-l9u4imor/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "stderr": "",
+  "tool_sha256": "f76f2df8030f2258951a23ffba602a971e5cd1d1faa4cd09411592baf7a015df",
+  "object_sha256": "917e93305c4b2c9f46bf83fb92df407bb141955a73cf53379f26ce14fcc0f904",
+  "sections": [
+    {
+      "index": 936,
+      "name_offset": 574230,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 33532,
+      "size": 116,
+      "link": 0,
+      "info": 0,
+      "alignment": 4,
+      "entry_size": 0,
+      "name": ".text.$e17P08CounterRuntime0B10RenderSinkVACycfC",
+      "symbols": [
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 936,
+          "visibility": 0,
+          "table": 14518,
+          "index": 676
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 936,
+          "visibility": 0,
+          "table": 14518,
+          "index": 677
+        },
+        {
+          "name": "$d",
+          "value": 112,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 936,
+          "visibility": 0,
+          "table": 14518,
+          "index": 679
+        },
+        {
+          "name": "$e17P08CounterRuntime0B10RenderSinkVACycfC",
+          "value": 1,
+          "size": 116,
+          "type": 2,
+          "binding": 1,
+          "owner": 936,
+          "visibility": 3,
+          "table": 14518,
+          "index": 10570
+        }
+      ]
+    },
+    {
+      "index": 895,
+      "name_offset": 212467,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 32920,
+      "size": 12,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.$e17P08CounterRuntime0B10RenderSinkV12glyphRecordss11InlineArrayVy$63_16GiftUIRenderCore15PositionedGlyphVSgGvg",
+      "symbols": [
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 895,
+          "visibility": 0,
+          "table": 14518,
+          "index": 650
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 895,
+          "visibility": 0,
+          "table": 14518,
+          "index": 651
+        },
+        {
+          "name": "$e17P08CounterRuntime0B10RenderSinkV12glyphRecordss11InlineArrayVy$63_16GiftUIRenderCore15PositionedGlyphVSgGvg",
+          "value": 1,
+          "size": 12,
+          "type": 2,
+          "binding": 1,
+          "owner": 895,
+          "visibility": 3,
+          "table": 14518,
+          "index": 10692
+        }
+      ]
+    },
+    {
+      "index": 920,
+      "name_offset": 560273,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 33088,
+      "size": 48,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.$e17P08CounterRuntime0B10RenderSinkV15positionedGlyphySb16GiftUIRenderCore010PositionedG0VF",
+      "symbols": [
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 920,
+          "visibility": 0,
+          "table": 14518,
+          "index": 666
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 920,
+          "visibility": 0,
+          "table": 14518,
+          "index": 667
+        },
+        {
+          "name": "$e17P08CounterRuntime0B10RenderSinkV15positionedGlyphySb16GiftUIRenderCore010PositionedG0VF",
+          "value": 1,
+          "size": 48,
+          "type": 2,
+          "binding": 1,
+          "owner": 920,
+          "visibility": 3,
+          "table": 14518,
+          "index": 10698
+        }
+      ]
+    },
+    {
+      "index": 12861,
+      "name_offset": 1060525,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 550660,
+      "size": 8,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.OUTLINED_FUNCTION_175",
+      "symbols": [
+        {
+          "name": "OUTLINED_FUNCTION_175",
+          "value": 1,
+          "size": 8,
+          "type": 2,
+          "binding": 0,
+          "owner": 12861,
+          "visibility": 0,
+          "table": 14518,
+          "index": 678
+        },
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 12861,
+          "visibility": 0,
+          "table": 14518,
+          "index": 9425
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 12861,
+          "visibility": 0,
+          "table": 14518,
+          "index": 9426
+        }
+      ]
+    },
+    {
+      "index": 12656,
+      "name_offset": 688496,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 549272,
+      "size": 8,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.OUTLINED_FUNCTION_118",
+      "symbols": [
+        {
+          "name": "OUTLINED_FUNCTION_118",
+          "value": 1,
+          "size": 8,
+          "type": 2,
+          "binding": 0,
+          "owner": 12656,
+          "visibility": 0,
+          "table": 14518,
+          "index": 209
+        },
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 12656,
+          "visibility": 0,
+          "table": 14518,
+          "index": 9311
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 12656,
+          "visibility": 0,
+          "table": 14518,
+          "index": 9312
+        }
+      ]
+    },
+    {
+      "index": 7999,
+      "name_offset": 219367,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 293696,
+      "size": 10,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.$e17P08CounterRuntime0B18TiledRasterAdapterV7session24GiftUIBackendIntegration020OperationMajorRGB565E7SessionVyAA0B11TileStorageVAA0bD13DisplayTargetV0H24UIReferenceTextResources0hsT11MetricsViewVAL0hsteW0VGvg",
+      "symbols": [
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 7999,
+          "visibility": 0,
+          "table": 14518,
+          "index": 6240
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 7999,
+          "visibility": 0,
+          "table": 14518,
+          "index": 6241
+        },
+        {
+          "name": "$e17P08CounterRuntime0B18TiledRasterAdapterV7session24GiftUIBackendIntegration020OperationMajorRGB565E7SessionVyAA0B11TileStorageVAA0bD13DisplayTargetV0H24UIReferenceTextResources0hsT11MetricsViewVAL0hsteW0VGvg",
+          "value": 1,
+          "size": 10,
+          "type": 2,
+          "binding": 1,
+          "owner": 7999,
+          "visibility": 3,
+          "table": 14518,
+          "index": 12779
+        }
+      ]
+    },
+    {
+      "index": 14006,
+      "name_offset": 1203990,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 557548,
+      "size": 8,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.OUTLINED_FUNCTION_501",
+      "symbols": [
+        {
+          "name": "OUTLINED_FUNCTION_501",
+          "value": 1,
+          "size": 8,
+          "type": 2,
+          "binding": 0,
+          "owner": 14006,
+          "visibility": 0,
+          "table": 14518,
+          "index": 6242
+        },
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 14006,
+          "visibility": 0,
+          "table": 14518,
+          "index": 10077
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 14006,
+          "visibility": 0,
+          "table": 14518,
+          "index": 10078
+        }
+      ]
+    },
+    {
+      "index": 8014,
+      "name_offset": 189258,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 293768,
+      "size": 12,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.$e17P08CounterRuntime0B18TiledRasterAdapterV9recordingAA0B10RenderSinkVvg",
+      "symbols": [
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 8014,
+          "visibility": 0,
+          "table": 14518,
+          "index": 6251
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 8014,
+          "visibility": 0,
+          "table": 14518,
+          "index": 6252
+        },
+        {
+          "name": "$e17P08CounterRuntime0B18TiledRasterAdapterV9recordingAA0B10RenderSinkVvg",
+          "value": 1,
+          "size": 12,
+          "type": 2,
+          "binding": 1,
+          "owner": 8014,
+          "visibility": 3,
+          "table": 14518,
+          "index": 12782
+        }
+      ]
+    },
+    {
+      "index": 5973,
+      "name_offset": 189096,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 235684,
+      "size": 12,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.$e17P08CounterRuntime0B8EndpointV4sinkAA0B10RenderSinkVvg",
+      "symbols": [
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 5973,
+          "visibility": 0,
+          "table": 14518,
+          "index": 4830
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 5973,
+          "visibility": 0,
+          "table": 14518,
+          "index": 4831
+        },
+        {
+          "name": "$e17P08CounterRuntime0B8EndpointV4sinkAA0B10RenderSinkVvg",
+          "value": 1,
+          "size": 12,
+          "type": 2,
+          "binding": 1,
+          "owner": 5973,
+          "visibility": 3,
+          "table": 14518,
+          "index": 12257
+        }
+      ]
+    },
+    {
+      "index": 8155,
+      "name_offset": 216242,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 298128,
+      "size": 14,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.$e17P08CounterRuntime0B8EndpointV6actual24GiftUIBackendIntegration020OneShotRasterBackendD0VyAA0b5TiledK7AdapterV0F24UIReferenceTextResources0foP11MetricsViewVAJ0fopkS0VAA0bM8EnvelopeVGvg",
+      "symbols": [
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 8155,
+          "visibility": 0,
+          "table": 14518,
+          "index": 6340
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 8155,
+          "visibility": 0,
+          "table": 14518,
+          "index": 6341
+        },
+        {
+          "name": "$e17P08CounterRuntime0B8EndpointV6actual24GiftUIBackendIntegration020OneShotRasterBackendD0VyAA0b5TiledK7AdapterV0F24UIReferenceTextResources0foP11MetricsViewVAJ0fopkS0VAA0bM8EnvelopeVGvg",
+          "value": 1,
+          "size": 14,
+          "type": 2,
+          "binding": 1,
+          "owner": 8155,
+          "visibility": 3,
+          "table": 14518,
+          "index": 12830
+        }
+      ]
+    },
+    {
+      "index": 8170,
+      "name_offset": 215259,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 298208,
+      "size": 6,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.$e17P08CounterRuntime0B8EndpointV7controlSpyAA0B7ControlVGvg",
+      "symbols": [
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 8170,
+          "visibility": 0,
+          "table": 14518,
+          "index": 6350
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 8170,
+          "visibility": 0,
+          "table": 14518,
+          "index": 6351
+        },
+        {
+          "name": "$e17P08CounterRuntime0B8EndpointV7controlSpyAA0B7ControlVGvg",
+          "value": 1,
+          "size": 6,
+          "type": 2,
+          "binding": 1,
+          "owner": 8170,
+          "visibility": 3,
+          "table": 14518,
+          "index": 12833
+        }
+      ]
+    },
+    {
+      "index": 7095,
+      "name_offset": 183474,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 257540,
+      "size": 10,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.$e17P08CounterRuntime0B12HostAssemblyV6report23GiftUIHostConfiguration0dE6ReportVvg",
+      "symbols": [
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 7095,
+          "visibility": 0,
+          "table": 14518,
+          "index": 5597
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 7095,
+          "visibility": 0,
+          "table": 14518,
+          "index": 5598
+        },
+        {
+          "name": "$e17P08CounterRuntime0B12HostAssemblyV6report23GiftUIHostConfiguration0dE6ReportVvg",
+          "value": 1,
+          "size": 10,
+          "type": 2,
+          "binding": 1,
+          "owner": 7095,
+          "visibility": 3,
+          "table": 14518,
+          "index": 12539
+        }
+      ]
+    },
+    {
+      "index": 12741,
+      "name_offset": 1130291,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 550008,
+      "size": 8,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.OUTLINED_FUNCTION_143",
+      "symbols": [
+        {
+          "name": "OUTLINED_FUNCTION_143",
+          "value": 1,
+          "size": 8,
+          "type": 2,
+          "binding": 0,
+          "owner": 12741,
+          "visibility": 0,
+          "table": 14518,
+          "index": 3067
+        },
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 12741,
+          "visibility": 0,
+          "table": 14518,
+          "index": 9361
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 12741,
+          "visibility": 0,
+          "table": 14518,
+          "index": 9362
+        }
+      ]
+    },
+    {
+      "index": 7099,
+      "name_offset": 206107,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 257560,
+      "size": 12,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.$e17P08CounterRuntime0B12HostAssemblyV8endpoint23GiftUIHostConfiguration0d8EndpointI0Vvg",
+      "symbols": [
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 7099,
+          "visibility": 0,
+          "table": 14518,
+          "index": 5599
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 7099,
+          "visibility": 0,
+          "table": 14518,
+          "index": 5600
+        },
+        {
+          "name": "$e17P08CounterRuntime0B12HostAssemblyV8endpoint23GiftUIHostConfiguration0d8EndpointI0Vvg",
+          "value": 1,
+          "size": 12,
+          "type": 2,
+          "binding": 1,
+          "owner": 7099,
+          "visibility": 3,
+          "table": 14518,
+          "index": 12540
+        }
+      ]
+    },
+    {
+      "index": 13553,
+      "name_offset": 1213954,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 554952,
+      "size": 6,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.OUTLINED_FUNCTION_370",
+      "symbols": [
+        {
+          "name": "OUTLINED_FUNCTION_370",
+          "value": 1,
+          "size": 6,
+          "type": 2,
+          "binding": 0,
+          "owner": 13553,
+          "visibility": 0,
+          "table": 14518,
+          "index": 3429
+        },
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 13553,
+          "visibility": 0,
+          "table": 14518,
+          "index": 9815
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 13553,
+          "visibility": 0,
+          "table": 14518,
+          "index": 9816
+        }
+      ]
+    },
+    {
+      "index": 7103,
+      "name_offset": 188334,
+      "type": 1,
+      "flags": 6,
+      "address": 0,
+      "offset": 257580,
+      "size": 18,
+      "link": 0,
+      "info": 0,
+      "alignment": 2,
+      "entry_size": 0,
+      "name": ".text.$e17P08CounterRuntime0B12HostAssemblyV6ledger23GiftUIHostConfiguration0D22ValidationAccessLedgerVvg",
+      "symbols": [
+        {
+          "name": "",
+          "value": 0,
+          "size": 0,
+          "type": 3,
+          "binding": 0,
+          "owner": 7103,
+          "visibility": 0,
+          "table": 14518,
+          "index": 5601
+        },
+        {
+          "name": "$t",
+          "value": 0,
+          "size": 0,
+          "type": 0,
+          "binding": 0,
+          "owner": 7103,
+          "visibility": 0,
+          "table": 14518,
+          "index": 5602
+        },
+        {
+          "name": "$e17P08CounterRuntime0B12HostAssemblyV6ledger23GiftUIHostConfiguration0D22ValidationAccessLedgerVvg",
+          "value": 1,
+          "size": 18,
+          "type": 2,
+          "binding": 1,
+          "owner": 7103,
+          "visibility": 3,
+          "table": 14518,
+          "index": 12541
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # P08 physical representation / ownership assessment
 
-**Assessment active; no source candidate or execution allowance.** Entry
+**Assessment complete, awaiting independent review; no source candidate or repair allowance.** Entry
 `2b0c2de4`. Eugene's **“Please proceed”** authorizes the recommended bounded
 physical-representation/ownership-contract assessment after the independently
 confirmed [final typed-stage rejection](p08-stage-realization-final-result.md).
@@ -30,3 +30,24 @@ source copy, and reuses the unchanged strict decoder. Preparation has not invoke
 the compiler. A compiler failure or unsupported constant body is a diagnostic
 limit, not an automatic source repair loop; old implementation allowances remain
 closed. This diagnostic cannot serve as acceptance evidence.
+
+
+## Completed diagnostic and recommendation
+
+The sequential executor used the single diagnostic allowance: compilation PASS
+in about 26 seconds; object SHA256
+`28d5cda318d460ddc08d54c8a856b91316699d6fbd0b30a7cdab9ba04020348e`.
+The diagnostic inventory incorrectly assumed default ELF visibility. Actual
+protected global function roots are narrowly admitted; all 120 facts prove under
+the unchanged strict byte/relocation decoder. The original failure and corrected
+result are preserved. No recompilation, source variant, link or runtime followed.
+The earlier preparation statement describes its pre-execution state.
+
+The [concrete assessment and recommended control-resident owned runtime payload](../../../../../../docs/implementation-designs/spec-015-p08-physical-representation-assessment.md)
+contains measured carrier contributors, authority boundaries, bounded files and
+algorithm, retained-cost tradeoff and early validation recipe. Mandatory state
+cases, coordinators and shared Interaction stay unchanged. The proposed enlarged
+original control region adds no physical owner, heap box or global; all retained
+bytes, cleanup and field-exclusivity obligations remain explicit. Fit is unknown.
+Source work needs a reviewed candidate and separately recorded execution bounds;
+no prior allowance is reset. P08 remains blocked/open pending complete proof.

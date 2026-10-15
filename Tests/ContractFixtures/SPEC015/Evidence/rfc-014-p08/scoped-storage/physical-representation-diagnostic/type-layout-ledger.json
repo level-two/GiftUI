@@ -1,0 +1,242 @@
+{
+  "host": {
+    "type": "P08StaticHost",
+    "size": 4808,
+    "stride": 4808,
+    "alignment": 8
+  },
+  "host_optional": {
+    "type": "P08StaticHost?",
+    "size": 4808,
+    "stride": 4808,
+    "alignment": 8
+  },
+  "owner": {
+    "type": "P08StaticHostOwner",
+    "size": 4439,
+    "stride": 4440,
+    "alignment": 8
+  },
+  "state": {
+    "type": "CounterHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>",
+    "size": 3889,
+    "stride": 3896,
+    "alignment": 8
+  },
+  "coordinator": {
+    "type": "CounterHostCoordinator<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>",
+    "size": 3860,
+    "stride": 3864,
+    "alignment": 8
+  },
+  "pipeline": {
+    "type": "CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>",
+    "size": 3532,
+    "stride": 3536,
+    "alignment": 8
+  },
+  "supplied": {
+    "type": "P08StaticSupplied",
+    "size": 758,
+    "stride": 760,
+    "alignment": 8
+  },
+  "retired": {
+    "type": "P08Retired",
+    "size": 470,
+    "stride": 472,
+    "alignment": 8
+  },
+  "assembly": {
+    "type": "CounterHostAssembly",
+    "size": 474,
+    "stride": 476,
+    "alignment": 4
+  },
+  "assembly_report": {
+    "type": "HostAssemblyReport",
+    "size": 347,
+    "stride": 348,
+    "alignment": 4
+  },
+  "endpoint_configuration": {
+    "type": "HostEndpointConfiguration",
+    "size": 120,
+    "stride": 120,
+    "alignment": 4
+  },
+  "validation_ledger": {
+    "type": "HostValidationAccessLedger",
+    "size": 6,
+    "stride": 6,
+    "alignment": 2
+  },
+  "application": {
+    "type": "CounterApplicationOwners",
+    "size": 57,
+    "stride": 64,
+    "alignment": 8
+  },
+  "binding": {
+    "type": "CounterExecutionBinding",
+    "size": 272,
+    "stride": 272,
+    "alignment": 4
+  },
+  "admission": {
+    "type": "CounterAdmission",
+    "size": 50,
+    "stride": 56,
+    "alignment": 8
+  },
+  "geometry": {
+    "type": "P08GeometryAccess",
+    "size": 52,
+    "stride": 56,
+    "alignment": 8
+  },
+  "candidate": {
+    "type": "P08CandidateAccess",
+    "size": 50,
+    "stride": 56,
+    "alignment": 8
+  },
+  "committed": {
+    "type": "P08CommittedAccess",
+    "size": 54,
+    "stride": 56,
+    "alignment": 8
+  },
+  "hits": {
+    "type": "P08HitAccess",
+    "size": 54,
+    "stride": 56,
+    "alignment": 8
+  },
+  "interaction": {
+    "type": "P08ScopedKeys",
+    "size": 318,
+    "stride": 320,
+    "alignment": 8
+  },
+  "session": {
+    "type": "P08StorageSession",
+    "size": 392,
+    "stride": 392,
+    "alignment": 8
+  },
+  "session_lifetime": {
+    "type": "P08SessionLifetime",
+    "size": 16,
+    "stride": 16,
+    "alignment": 8
+  },
+  "models": {
+    "type": "ObservableModelScope<CounterOwnedModel, CounterModelSchema>",
+    "size": 15,
+    "stride": 16,
+    "alignment": 4
+  },
+  "root": {
+    "type": "ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>",
+    "size": 24,
+    "stride": 24,
+    "alignment": 4
+  },
+  "semantic": {
+    "type": "SemanticRecordStore<CounterPayload>",
+    "size": 92,
+    "stride": 92,
+    "alignment": 4
+  },
+  "values": {
+    "type": "CanvasStagedValues<SemanticRecordReference, CounterValueTable>",
+    "size": 14,
+    "stride": 16,
+    "alignment": 4
+  },
+  "audit": {
+    "type": "RuntimeStorageAudit",
+    "size": 228,
+    "stride": 228,
+    "alignment": 4
+  },
+  "limits": {
+    "type": "RuntimeProfileLimits",
+    "size": 115,
+    "stride": 116,
+    "alignment": 4
+  },
+  "endpoint": {
+    "type": "CounterEndpoint",
+    "size": 1868,
+    "stride": 1868,
+    "alignment": 4
+  },
+  "endpoint_actual": {
+    "type": "CounterTiledEndpoint",
+    "size": 1862,
+    "stride": 1864,
+    "alignment": 4
+  },
+  "raster_adapter": {
+    "type": "CounterTiledRasterAdapter",
+    "size": 1728,
+    "stride": 1728,
+    "alignment": 4
+  },
+  "raster_session": {
+    "type": "CounterTiledSession",
+    "size": 578,
+    "stride": 580,
+    "alignment": 4
+  },
+  "recording": {
+    "type": "CounterRenderSink",
+    "size": 1148,
+    "stride": 1148,
+    "alignment": 4
+  },
+  "identity": {
+    "type": "SemanticCompleteIdentity",
+    "size": 206,
+    "stride": 206,
+    "alignment": 2
+  },
+  "optional_identity": {
+    "type": "SemanticCompleteIdentity?",
+    "size": 206,
+    "stride": 206,
+    "alignment": 2
+  },
+  "path_component": {
+    "type": "SemanticPathComponent",
+    "size": 6,
+    "stride": 6,
+    "alignment": 2
+  },
+  "glyph": {
+    "type": "PositionedGlyph",
+    "size": 12,
+    "stride": 12,
+    "alignment": 4
+  },
+  "optional_glyph": {
+    "type": "PositionedGlyph?",
+    "size": 13,
+    "stride": 16,
+    "alignment": 4
+  },
+  "fingerprint": {
+    "type": "P08ReuseFingerprint",
+    "size": 1404,
+    "stride": 1408,
+    "alignment": 8
+  },
+  "control": {
+    "type": "CounterControl",
+    "size": 4200,
+    "stride": 4200,
+    "alignment": 8
+  }
+}

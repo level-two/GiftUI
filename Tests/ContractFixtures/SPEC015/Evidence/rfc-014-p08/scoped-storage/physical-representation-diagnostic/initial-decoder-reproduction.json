@@ -1,0 +1,12 @@
+{
+  "status": "reproduction-of-reported-initial-failure",
+  "argv": [
+    "python3",
+    "-B",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/physical-representation-diagnostic/decode.py"
+  ],
+  "exit": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/physical-representation-diagnostic/decode.py\", line 16, in <module>\n    assert all(s[\"binding\"] == 1 and s[\"type\"] == 2 and s[\"visibility\"] == 0 and 0 < s[\"owner\"] < len(elf.sections) for s in actual), \"defined global function roots only\"\nAssertionError: defined global function roots only\n",
+  "decoder_sha256": "3776fb85ef278c60bf244aade9b67fab1c1bd0f014e0bbde9b7b670dde3f5f58"
+}
