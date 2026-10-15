@@ -9,8 +9,9 @@ This new package permits one initial tooling/sizing pass and at most two grouped
 tooling/sizing corrective cycles, stopping after two unproductive cycles or a real
 contract/resource decision. Initial tooling source pass frozen; corrections 0/2.
 [Source freeze](p08-layout-literal-tool-source-freeze.md) records the exact finite
-proof and 50 passing compiler-free layout tests. Independent source review
-precedes actual-object decoding; no compiler/build/runtime/image ran.
+proof and 50 passing compiler-free layout tests. [Independent source review](p08-layout-literal-tool-independent-source-review.md)
+PASS confirms readiness for the same-object read; actual-object decoding remains
+pending. No compiler/build/runtime/image ran.
 It authorizes no new representation/optimization variant, resource limit, ownership,
 workload, capacity, core contract, compiler flag/toolchain or hardware change.
 

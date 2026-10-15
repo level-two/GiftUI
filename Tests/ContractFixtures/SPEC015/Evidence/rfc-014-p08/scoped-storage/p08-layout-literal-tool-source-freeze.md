@@ -2,7 +2,7 @@
 
 Under the [new activity](p08-layout-sizing-validation-activity.md), this is the
 initial tooling pass, corrections 0/2. Prior allowances remain closed. Independent
-source review is pending. No updated extraction of the actual object, compiler,
+source review PASS at `556a6a7a`: [review](p08-layout-literal-tool-independent-source-review.md). No updated extraction of the actual object, compiler,
 build, runtime or image invocation occurred during implementation.
 
 The extractor adds one finite leaf, separate from the unchanged immediate-return
