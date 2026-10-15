@@ -1,5 +1,9 @@
 # P08 control-resident runtime payload implementation
 
+Current boundary: **correction 1/2 independent SOURCE PASS at `8e747182`; first measurement pending**.
+[Focused reassessment](p08-control-resident-cycle1-independent-source-review.md)
+closes the initial B01 coverage blocker; prior source findings below remain historical.
+
 **Correction 1/2 frozen for focused source reassessment; no compiler invocation.**
 [Independent source review](p08-control-resident-initial-independent-source-review.md)
 finds missing backend completion facts in the new full observation. A bounded

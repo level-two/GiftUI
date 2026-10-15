@@ -1,6 +1,8 @@
 # P08 control-resident payload — correction 1 source freeze
 
-**Correction 1/2 consumed; focused source review pending.** This addresses only
+**Correction 1/2 consumed; independent SOURCE PASS at `8e747182`.**
+[Focused reassessment](p08-control-resident-cycle1-independent-source-review.md)
+closes B01 and finds the candidate ready for its first registered measurement. This addresses only
 B01/G03 from [initial source review](p08-control-resident-initial-independent-source-review.md)
 under the [current activity](p08-control-resident-implementation-activity.md).
 Original `aa36a4ae` source, freeze, patch, qualification and review remain immutable.
