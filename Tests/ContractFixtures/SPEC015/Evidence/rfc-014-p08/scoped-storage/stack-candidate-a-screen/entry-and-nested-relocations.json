@@ -1,0 +1,198 @@
+{
+  "object_sha256": "025dc84f58f2c26cb9188132475995405bae8cbb3e7b6b174eb87b8190868b03",
+  "nested_edges": [
+    {
+      "caller_symbol": {
+        "name": "$e17P08CounterRuntime03runA10ScopedBody33_480B1BD841D053AE4FCDC18507668536LL7session6models4root8semantic6values7control5audit8assembly13foreignModels0T4Root0T7Control7dynamic09failAfterC05early16candidateFailure5reuseSiAA0A14StorageSessionACLLVn_21GiftUIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0aB6Schema0B11ModelSchemaOGnAV015ObservableStateV5ScopeVyAZ18GiftUISemanticCore24SemanticCompleteIdentityVGnA5_19SemanticRecordStoreVy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGnA11_18CanvasStagedValuesVyA5_23SemanticRecordReferenceVA14_0aB17SchemaCanvasTableVyA18_GGnSpyAA0bW0VG17GiftUIRuntimeCore0C12StorageAuditVAA0B12HostAssemblyVA2_A8_A32_S2bs5UInt8VA33_0C21CompletePipelineStageOSgSpyAA0A19HostReuseTranscriptACLLVGSgtF",
+        "value": 1,
+        "size": 784,
+        "type": 2,
+        "binding": 1,
+        "owner": 3792,
+        "visibility": 3,
+        "table": 14650,
+        "index": 11831
+      },
+      "caller_section": 3792,
+      "call": {
+        "section": ".rel.text.$e17P08CounterRuntime03runA10ScopedBody33_480B1BD841D053AE4FCDC18507668536LL7session6models4root8semantic6values7control5audit8assembly13foreignModels0T4Root0T7Control7dynamic09failAfterC05early16candidateFailure5reuseSiAA0A14StorageSessionACLLVn_21GiftUIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0aB6Schema0B11ModelSchemaOGnAV015ObservableStateV5ScopeVyAZ18GiftUISemanticCore24SemanticCompleteIdentityVGnA5_19SemanticRecordStoreVy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGnA11_18CanvasStagedValuesVyA5_23SemanticRecordReferenceVA14_0aB17SchemaCanvasTableVyA18_GGnSpyAA0bW0VG17GiftUIRuntimeCore0C12StorageAuditVAA0B12HostAssemblyVA2_A8_A32_S2bs5UInt8VA33_0C21CompletePipelineStageOSgSpyAA0A19HostReuseTranscriptACLLVGSgtF",
+        "section_type": 9,
+        "offset": 648,
+        "type": 10,
+        "symbol_table": 14650,
+        "symbol_index": 11817,
+        "symbol": "$e17P08CounterRuntime0A11BodyCleanup33_480B1BD841D053AE4FCDC18507668536LLV3run7control6report09failAfterC010joinChecks5early16candidateFailure5reuseSiSpyAA0B7ControlVG_23GiftUIHostConfiguration18HostAssemblyReportVSbSis5UInt8V0W13UIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aZ15ReuseTranscriptACLLVGSgtF",
+        "explicit_addend": null,
+        "target_symbol": {
+          "name": "$e17P08CounterRuntime0A11BodyCleanup33_480B1BD841D053AE4FCDC18507668536LLV3run7control6report09failAfterC010joinChecks5early16candidateFailure5reuseSiSpyAA0B7ControlVG_23GiftUIHostConfiguration18HostAssemblyReportVSbSis5UInt8V0W13UIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aZ15ReuseTranscriptACLLVGSgtF",
+          "value": 1,
+          "size": 1168,
+          "type": 2,
+          "binding": 1,
+          "owner": 3776,
+          "visibility": 3,
+          "table": 14650,
+          "index": 11817
+        }
+      },
+      "frame_still_live": "BL followed by continuation; no SP restoration before call; full raw section disassembly retained"
+    },
+    {
+      "caller_symbol": {
+        "name": "$e17P08CounterRuntime0A11BodyCleanup33_480B1BD841D053AE4FCDC18507668536LLV3run7control6report09failAfterC010joinChecks5early16candidateFailure5reuseSiSpyAA0B7ControlVG_23GiftUIHostConfiguration18HostAssemblyReportVSbSis5UInt8V0W13UIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aZ15ReuseTranscriptACLLVGSgtF",
+        "value": 1,
+        "size": 1168,
+        "type": 2,
+        "binding": 1,
+        "owner": 3776,
+        "visibility": 3,
+        "table": 14650,
+        "index": 11817
+      },
+      "caller_section": 3776,
+      "call": {
+        "section": ".rel.text.$e17P08CounterRuntime0A11BodyCleanup33_480B1BD841D053AE4FCDC18507668536LLV3run7control6report09failAfterC010joinChecks5early16candidateFailure5reuseSiSpyAA0B7ControlVG_23GiftUIHostConfiguration18HostAssemblyReportVSbSis5UInt8V0W13UIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aZ15ReuseTranscriptACLLVGSgtF",
+        "section_type": 9,
+        "offset": 168,
+        "type": 10,
+        "symbol_table": 14650,
+        "symbol_index": 11714,
+        "symbol": "$e17P08CounterRuntime15p08RunReuseHost33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcriptSi23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyxGz_SpyAA0B7ControlVGSpyAA0agF10TranscriptACLLVGtAG0stU9LiveOwnerRzAA0aF11ObservationACLLRzRi_zRi0_zlFAA0bgZ0VyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+        "explicit_addend": null,
+        "target_symbol": {
+          "name": "$e17P08CounterRuntime15p08RunReuseHost33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcriptSi23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyxGz_SpyAA0B7ControlVGSpyAA0agF10TranscriptACLLVGtAG0stU9LiveOwnerRzAA0aF11ObservationACLLRzRi_zRi0_zlFAA0bgZ0VyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+          "value": 1,
+          "size": 5826,
+          "type": 2,
+          "binding": 1,
+          "owner": 3615,
+          "visibility": 3,
+          "table": 14650,
+          "index": 11714
+        }
+      },
+      "frame_still_live": "BL followed by continuation; no SP restoration before call; full raw section disassembly retained"
+    }
+  ],
+  "entries": [
+    {
+      "symbol": {
+        "name": "giftui_rfc014_counter_entry",
+        "value": 1,
+        "size": 4,
+        "type": 2,
+        "binding": 1,
+        "owner": 8417,
+        "visibility": 3,
+        "table": 14650,
+        "index": 13081
+      },
+      "section": {
+        "name_offset": 840,
+        "type": 1,
+        "flags": 6,
+        "address": 0,
+        "offset": 308140,
+        "size": 4,
+        "link": 0,
+        "info": 0,
+        "alignment": 2,
+        "entry_size": 0,
+        "name": ".text.giftui_rfc014_counter_entry"
+      },
+      "argv": [
+        ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+        "-dr",
+        "-j",
+        ".text.giftui_rfc014_counter_entry",
+        ".build/nrf52840/contracts/p08-counter-fbv0g_nt/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "output": "entry-0.txt.xz",
+      "uncompressed_sha256": "face139d7395d5f18994f603a2e7d7ae19feed6f0e0410159be232dbf3d89876",
+      "relocations": [
+        {
+          "section": ".rel.text.giftui_rfc014_counter_entry",
+          "section_type": 9,
+          "offset": 0,
+          "type": 30,
+          "symbol_table": 14650,
+          "symbol_index": 13082,
+          "symbol": "$e17P08CounterRuntime012giftuiRFC014B5Entryys6UInt32Vs5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SvSgSitF",
+          "explicit_addend": null
+        }
+      ]
+    },
+    {
+      "symbol": {
+        "name": "$e17P08CounterRuntime012giftuiRFC014B5Entryys6UInt32Vs5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SvSgSitF",
+        "value": 1,
+        "size": 78,
+        "type": 2,
+        "binding": 1,
+        "owner": 8421,
+        "visibility": 3,
+        "table": 14650,
+        "index": 13082
+      },
+      "section": {
+        "name_offset": 485406,
+        "type": 1,
+        "flags": 6,
+        "address": 0,
+        "offset": 308152,
+        "size": 78,
+        "link": 0,
+        "info": 0,
+        "alignment": 2,
+        "entry_size": 0,
+        "name": ".text.$e17P08CounterRuntime012giftuiRFC014B5Entryys6UInt32Vs5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SvSgSitF"
+      },
+      "argv": [
+        ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+        "-dr",
+        "-j",
+        ".text.$e17P08CounterRuntime012giftuiRFC014B5Entryys6UInt32Vs5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SvSgSitF",
+        ".build/nrf52840/contracts/p08-counter-fbv0g_nt/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "output": "entry-1.txt.xz",
+      "uncompressed_sha256": "ff5c1152b8cb397edc175e5cfb6262956db21e8823f92f50946f17609163ab0a",
+      "relocations": [
+        {
+          "section": ".rel.text.$e17P08CounterRuntime012giftuiRFC014B5Entryys6UInt32Vs5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SvSgSitF",
+          "section_type": 9,
+          "offset": 24,
+          "type": 10,
+          "symbol_table": 14650,
+          "symbol_index": 11859,
+          "symbol": "$e17P08CounterRuntime03p08B5Graph7backingSiSwSg_tF",
+          "explicit_addend": null
+        },
+        {
+          "section": ".rel.text.$e17P08CounterRuntime012giftuiRFC014B5Entryys6UInt32Vs5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SvSgSitF",
+          "section_type": 9,
+          "offset": 38,
+          "type": 10,
+          "symbol_table": 14650,
+          "symbol_index": 11912,
+          "symbol": "$e17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+          "explicit_addend": null
+        },
+        {
+          "section": ".rel.text.$e17P08CounterRuntime012giftuiRFC014B5Entryys6UInt32Vs5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SvSgSitF",
+          "section_type": 9,
+          "offset": 54,
+          "type": 10,
+          "symbol_table": 14650,
+          "symbol_index": 11852,
+          "symbol": "$e17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF",
+          "explicit_addend": null
+        }
+      ]
+    }
+  ],
+  "source_predicates": "Required p08CounterHost live transcript forwarded twice; failAfterRuntime=false,early=0,candidateFailure=nil; reuse nonnull. Same source predicates as reviewed design. Caller uses result and reinserts host, body calls finish after run.",
+  "path_frame_lower_bound": 114464,
+  "not_complete_upper_bound": true
+}

@@ -18,15 +18,16 @@ superseded_by: null
 
 # Implementation Design — P08 Scoped Storage Ownership
 
-Current resource diagnosis/design — **INDEPENDENT REVIEW PASS; bounded candidate A ready, 2026-10-15**.
-Eugene authorized the [new bounded activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-design-activity.md) after discussing a possible
-stack increase. The [implementation proposal](spec-015-p08-stack-materialization.md) proves a required
-213,120-byte nested lower bound and recommends a measured private materialization
-correction before any limit change. No source correction, experiment, budget
-change or automatic repair allowance was executed/granted. P08 fit remains failed.
-[Independent design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-design-independent-review.md) verifies the recommendation.
-Parent records one candidate / one screen, zero automatic repairs; no stack
-limit change is selected. The previous activity and budgets remain closed below.
+Current stack candidate A — **STOP; object rejection after one screen, 2026-10-15**.
+The [screen result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-screen-result.md) records 25 passing preparation/module/layout checks,
+202 controls not run, and incomplete aggregate coverage. The object still requires
+a reachable ≥30,096-byte frame; the required nested path improves 213,120→114,464
+bytes but exceeds 27,648. Candidate 1/1 and screen 1/1 consumed; historical 2/2
+closed. No further optimization variant, compiler/build/image or resource waiver
+follows. Independent Strong result review is pending; P08 fit remains failed.
+The prior five-receiver source blocker was corrected at `9cac6bfa` and
+[focused source reassessment passed](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-review-correction-independent-source-review.md). Its original freeze/failure
+remains historical evidence, not the current blocker.
 
 Previous remaining P08 boundary — **STOP; FIT FAIL independently confirmed, 2026-10-15**.
 The [activity record](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-completion-activity.md) consumed both corrective cycles (2/2). Four full profile collections and

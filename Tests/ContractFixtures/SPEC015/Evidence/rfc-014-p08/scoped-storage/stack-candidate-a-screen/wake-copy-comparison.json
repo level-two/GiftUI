@@ -1,0 +1,51 @@
+{
+  "function_symbol": {
+    "name": "$e17P08CounterRuntime19counterWakeControls4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlFAH024SignalAnalyzerPresetHostN0VyAA0bvQ0VyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateX0ATLLVAA0a9CommittedX0ATLLVAA0a3HitX0ATLLVGG_Tg5",
+    "value": 1,
+    "size": 17572,
+    "type": 2,
+    "binding": 2,
+    "owner": 7376,
+    "visibility": 2,
+    "table": 14650,
+    "index": 12754
+  },
+  "owner_section": 7376,
+  "method": "explicit r2 immediate and call relocation to memcpy; no intervening BL/r2 write; static sites not dynamic/liveness totals",
+  "baseline_qualified_counts": {
+    "3889": 138,
+    "4200": 6
+  },
+  "screen_qualified_counts": {
+    "64": 22,
+    "68": 5,
+    "69": 15,
+    "212": 5,
+    "347": 2,
+    "425": 4,
+    "3889": 138
+  },
+  "sample": [
+    {
+      "call_section_offset": "0x17c8",
+      "relocation": "__aeabi_memcpy8",
+      "bytes": 3889,
+      "instructions": [
+        "    17a2:\tf8c0 b700 \tstr.w\tfp, [r0, #1792]\t; 0x700",
+        "    17a6:\t9811      \tldr\tr0, [sp, #68]\t; 0x44",
+        "    17a8:\tf500 74b0 \tadd.w\tr4, r0, #352\t; 0x160",
+        "    17ac:\t4620      \tmov\tr0, r4",
+        "    17ae:\tf7ff fffe \tbl\t0 <.text.$e17P08CounterRuntime19counterWakeControls4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlFAH024SignalAnalyzerPresetHostN0VyAA0bvQ0VyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateX0ATLLVAA0a9CommittedX0ATLLVAA0a3HitX0ATLLVGG_Tg5>",
+        "    17b2:\t2800      \tcmp\tr0, #0",
+        "    17b4:\tf000 8092 \tbeq.w\t18dc <.text.$e17P08CounterRuntime19counterWakeControls4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlFAH024SignalAnalyzerPresetHostN0VyAA0bvQ0VyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateX0ATLLVAA0a9CommittedX0ATLLVAA0a3HitX0ATLLVGG_Tg5+0x18dc>",
+        "    17b8:\t2801      \tcmp\tr0, #1",
+        "    17ba:\tf040 80a6 \tbne.w\t190a <.text.$e17P08CounterRuntime19counterWakeControls4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlFAH024SignalAnalyzerPresetHostN0VyAA0bvQ0VyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateX0ATLLVAA0a9CommittedX0ATLLVAA0a3HitX0ATLLVGG_Tg5+0x190a>",
+        "    17be:\tf50d 600e \tadd.w\tr0, sp, #2272\t; 0x8e0",
+        "    17c2:\t4621      \tmov\tr1, r4",
+        "    17c4:\tf640 7231 \tmovw\tr2, #3889\t; 0xf31",
+        "    17c8:\tf7ff fffe \tbl\t0 <__aeabi_memcpy8>"
+      ]
+    }
+  ],
+  "limits": "Baseline is linked firmware, screen is targetET_RELmodule; composition/flags are pinned but this is not a finalELFpass."
+}

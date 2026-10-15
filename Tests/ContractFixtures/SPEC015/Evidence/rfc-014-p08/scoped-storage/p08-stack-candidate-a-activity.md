@@ -1,9 +1,13 @@
 # P08 stack candidate A — bounded source/screen activity
 
-Current boundary: **SOURCE PASS at `9cac6bfa`; B01 closed; screen 0/1**.
-[Focused independent reassessment](p08-stack-candidate-a-review-correction-independent-source-review.md)
-verifies the exact five restorations and refreshed qualification. The blocked
-review below records the original frozen candidate; it is retained as history.
+Current boundary: **screen 1/1 consumed; object rejection; fit remains failed**.
+The [screen result](p08-stack-candidate-a-screen-result.md) preserves 25 passing
+preparation/module/layout checks and 202 not-run controls. The object still has
+a reachable ≥30,096-byte frame; the same live path is ≥114,464. Candidate 1/1,
+screen 1/1 and historical 2/2 are closed. Independent Strong result review follows;
+no optimization variant or expensive follow-up is authorized by the partial pass.
+The corrected source passed independent reassessment before this screen; the
+original blocked source/review and mechanical correction remain historical.
 
 Original source boundary (preserved): **SOURCE BLOCKED by introduced field-receiver error B01;
 screen 0/1; fit remains failed**. Entry `a90841e0`,

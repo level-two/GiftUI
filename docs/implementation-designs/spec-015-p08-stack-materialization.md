@@ -22,13 +22,14 @@ limit or ownership contract. It answers the maintainer's question about a roughl
 30 KB stack under the [authorized diagnosis/design activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-design-activity.md).
 **Recommendation: reduce demonstrated carrier/getter materialization first.
 A 30 KiB budget cannot repair the current image.** [Independent Strong design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-design-independent-review.md)
-passed at `a90841e0`. The [candidate A source activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-activity.md)
-now freezes its [mechanically corrected realization](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-review-correction-source-freeze.md)
-for focused source reassessment. The original [blocked source review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-independent-source-review.md)
-and frozen source remain immutable: five transcript receivers are restored;
-the current legitimate Control projection count is 30. This does not change the
-internal design or add an optimization variant. Reassessment precedes the one screen. No compiler experiment,
-budget change or automatic repair variant has run/been granted.
+passed at `a90841e0`. Candidate A and its mechanical receiver correction passed
+independent source review. The [one target-object screen](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-screen-result.md)
+compiled successfully but **rejects fit**: ≥30,096-byte reachable frame and
+≥114,464-byte required nested path remain. Body/wake/reuse frames improve,
+but not enough. Candidate 1/1 and screen 1/1 consumed, historical 2/2 closed; no
+optimization variant or budget change follows. The original design/validation
+proposal below is preserved as the basis of that completed attempt, not a new
+execution allowance. Independent Strong result review is next.
 
 ## Authority and exact evidence
 

@@ -1,0 +1,87 @@
+[
+  {
+    "path": "0x1a8fc.object-disassembly.txt.xz",
+    "bytes": 14336,
+    "sha256": "35e72b951e909d2588d25bf0cb93245e4e718e8ba46badfa414164d5ca3289ca",
+    "uncompressed_sha256": "94b498f5749bab83879c7d3c025ce36629f1a11099a4f2265a1e4ed6f5ede1f3"
+  },
+  {
+    "path": "0x1cc30.object-disassembly.txt.xz",
+    "bytes": 1944,
+    "sha256": "1e460f874b62b195121eba88b3ce8b377c4c19e30e43f37208e745f2a5827b91",
+    "uncompressed_sha256": "9dc74388450afee40d518d0477a600f729c5014c62fbcdb6ce014f2e08fda01e"
+  },
+  {
+    "path": "0x1d2c0.object-disassembly.txt.xz",
+    "bytes": 1852,
+    "sha256": "f92ee4e6d603567d5c80e2095b103325e0634d7eaa22bcc186120ae731b13ee6",
+    "uncompressed_sha256": "2c10ce00b90bacf6c09f656e34b59dc9f2fa63a739d5cf7665fbc1d8cbcf931d"
+  },
+  {
+    "path": "0x1d45c.object-disassembly.txt.xz",
+    "bytes": 4188,
+    "sha256": "2b50534bf59d779e67e9b7437b7df0b6fe5eefb9bacf2c297ee5f4f5c3204667",
+    "uncompressed_sha256": "4ce42767a34faa77c8b97188c7686c419d84e1c7a9259e9b231148fc0200f93b"
+  },
+  {
+    "path": "0x1e4bc.object-disassembly.txt.xz",
+    "bytes": 5720,
+    "sha256": "93fb743ebdbfc4a7bd6e6cc85b32fa3255c36475820c1d459579ccbacb3c63ab",
+    "uncompressed_sha256": "eeb6b42a3e9a1004041cc38bcfda7bdd02aa689f97181f2844cf6df841849930"
+  },
+  {
+    "path": "0x1eca4.object-disassembly.txt.xz",
+    "bytes": 3424,
+    "sha256": "3e7cc7e67bb4d597813a7ac25eb36512d3518640fa457b9eadc3f7d6eaffc806",
+    "uncompressed_sha256": "cb36445a10d3e59e6603ff17ee670e7467020b54b762d6ebf1a9af9f7527f908"
+  },
+  {
+    "path": "0x214f4.object-disassembly.txt.xz",
+    "bytes": 8660,
+    "sha256": "f5c20e73ee0c002826508ea3a810e10c4cab158212c9448c45dca375b284c82e",
+    "uncompressed_sha256": "e7db87464433aa0802fb84f803c737c5902880cc8ae228da99d3339286874dda"
+  },
+  {
+    "path": "0x22e24.object-disassembly.txt.xz",
+    "bytes": 28876,
+    "sha256": "93d5adba79de7a5a3b483ea9f262b9ac1bfd48d812cd72303a149981b4e045a3",
+    "uncompressed_sha256": "5423243680b805fbff9354758d608b914d551a8ace6a8067e06cc7dba075009d"
+  },
+  {
+    "path": "entry-0.txt.xz",
+    "bytes": 332,
+    "sha256": "b41c42d40b6fe8af245797cfa02cf5dff99858c610ce2af0734e66d8b1424d81",
+    "uncompressed_sha256": "face139d7395d5f18994f603a2e7d7ae19feed6f0e0410159be232dbf3d89876"
+  },
+  {
+    "path": "entry-1.txt.xz",
+    "bytes": 752,
+    "sha256": "5cdc87af6ae8415d9d78b5716036a656d17bd3d3d621c951b013bcae9ad6f21e",
+    "uncompressed_sha256": "ff5c1152b8cb397edc175e5cfb6262956db21e8823f92f50946f17609163ab0a"
+  },
+  {
+    "path": "entry-and-nested-relocations.json",
+    "bytes": 9783,
+    "sha256": "2ef260280c971d6d720af3b98aef495aa0655c87b0e5afbb66e717243c0a88e5"
+  },
+  {
+    "path": "object-frames.json",
+    "bytes": 372155,
+    "sha256": "ee8f69cdef019edfcbfb888c5e0e6602d067d62bd432cb7302020cd67199c57b"
+  },
+  {
+    "path": "receipt-manifest.json",
+    "bytes": 32358,
+    "sha256": "85f0b1f90c10ee5d01e23a66a082ec282bab892b130598d692e563ce905f65fe"
+  },
+  {
+    "path": "screen-receipts.tar.xz",
+    "bytes": 42320,
+    "sha256": "555a4e03c650a0330e3d6940b626af47685598dd65d54cc83ce316eecaf67483"
+  },
+  {
+    "path": "wake-copy-comparison.json",
+    "bytes": 2932,
+    "sha256": "59d83c590e48e9991c87906d03b81cf6f5aee7f26efa55275fbe8f10f7bb841c"
+  }
+]
