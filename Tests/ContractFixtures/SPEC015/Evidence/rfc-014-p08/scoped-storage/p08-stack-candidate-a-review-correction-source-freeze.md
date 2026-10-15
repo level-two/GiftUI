@@ -1,6 +1,8 @@
 # Candidate A B01 — corrected pre-execution freeze
 
-**One mechanical review correction; same optimization candidate; screen 0/1.**
+**SOURCE PASS at `9cac6bfa`; one mechanical review correction; screen 0/1.**
+[Focused independent reassessment](p08-stack-candidate-a-review-correction-independent-source-review.md)
+closes B01 and finds this same candidate ready for the single registered screen.
 [Independent source review](p08-stack-candidate-a-independent-source-review.md)
 `e33f57ea` identifies five incorrect transcript receivers. Under Eugene's standing
 instruction to correct routine errors without per-barrier approval, the parent

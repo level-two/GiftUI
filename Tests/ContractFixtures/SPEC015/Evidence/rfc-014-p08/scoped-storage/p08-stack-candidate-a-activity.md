@@ -1,8 +1,11 @@
 # P08 stack candidate A — bounded source/screen activity
 
-Current boundary: **B01 mechanically corrected; focused independent reassessment pending; screen 0/1**.
+Current boundary: **SOURCE PASS at `9cac6bfa`; B01 closed; screen 0/1**.
+[Focused independent reassessment](p08-stack-candidate-a-review-correction-independent-source-review.md)
+verifies the exact five restorations and refreshed qualification. The blocked
+review below records the original frozen candidate; it is retained as history.
 
-Status: **SOURCE BLOCKED by introduced field-receiver error B01;
+Original source boundary (preserved): **SOURCE BLOCKED by introduced field-receiver error B01;
 screen 0/1; fit remains failed**. Entry `a90841e0`,
 compiled baseline `0d3e3c7d`. The [independent source review](p08-stack-candidate-a-independent-source-review.md)
 identifies five invalid transcript.runtime.admission accesses in the frozen
