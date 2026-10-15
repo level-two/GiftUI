@@ -541,6 +541,12 @@ instructions, relevant relocations, malformed section/symbol bounds, missing/
 duplicate/unexpected roots and unconsumed bytes. Calls, loads, branches and
 stack work cannot serve as numeric evidence. The exact root inventory belongs
 only to the actual object/firmware, not repeated diagnostic-control objects.
+Require all 129 exact global defined function roots. Separately classify and
+record only the observed local compiler helper
+`giftui_p08_layout_limits_offsetTm`; it is never a measurement root. Any other
+extra prefixed name, exported helper or duplicate remains an inventory failure.
+Recognizing that local helper does not permit a root to call it: the instruction
+and relocation rejection remains unchanged.
 The existing SO-08 supported firmware invocation retains those roots through
 explicit linker undefined roots and section GC; no RAM pointer table is needed.
 Read-only extraction from those exact artifacts supplies
@@ -563,6 +569,15 @@ have no current output path or result until the authorized drivers emit their
 actual receipt. Missing/unfolded roots or any mismatch reject numeric evidence;
 they do not authorize a broader decoder, earlier capture or source variant.
 C-constant correction/recompile requires a separately specified allowance.
+The remaining-completion correction 1 supplies that allowance for the
+[observed extent failure](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-layout-initial-diagnosis.md):
+actual target checked-layout disassembly requires 32,000 bytes per slot, replacing
+the insufficient 30,176-byte provisional input consistently in Swift and C.
+Four retained slots therefore charge 128,000 bytes, an increase of 7,296 bytes.
+Semantic capacities, all region counts, workload, alignment and resource ceilings
+are unchanged. This diagnostic-derived minimum is a corrected source input;
+successful strict numeric materialization, final C-symbol comparison and fit
+remain unproven until the registered current artifacts establish them.
 Only matching current-target evidence can validate numeric SO-04 acceptance;
 SO-08 cannot claim fit without linked construction/IRQ/resource attribution.
 

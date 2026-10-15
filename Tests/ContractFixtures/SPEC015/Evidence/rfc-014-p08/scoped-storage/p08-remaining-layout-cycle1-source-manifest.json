@@ -1,0 +1,45 @@
+{
+  "activity": "p08-remaining-completion",
+  "kind": "cause-grouped-correction-source-freeze-not-target-evidence",
+  "predecessor": "9fd3736f",
+  "corrective_cycles_consumed": 1,
+  "maximum_corrective_cycles": 2,
+  "files": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-completion-activity.md": "398d59e0a2b96a840c7da7c349e7a84416cef8e69e57bf0c0928b5291b2c66d7",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-layout-applicability.json": "0341077ceb7c7b40c4924b64834fd319c39cf553db1b822acda643eebc99757a",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-layout-cycle1-source-freeze.md": "19b0234d33023604472161655e27f810b8f33ee61d53f7516487b9fa85701383",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "ed705493d35ac471e9b4d0591b75fd997ed426a0d84f0894a1e59adbaa402ccb",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": "a78bd69b7f91c2ff4390a429a94d38598f10fb093de156f83aa293a88e4424b7",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": "c46407edfcbfbc7605a39b8156560314bbf024338c7be4fec9bb7afa46ae73af",
+    "docs/implementation-designs/spec-015-p08-scoped-storage-ownership.md": "44230cc6691758b85cbf3c7d19d87814f4509ee0dd6f9834d0db79f522d1d05f",
+    "firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c": "ea40f5906bdd3f7b8f66d6cca16c3c873850d9c6d65fda4153dde6507b133f25",
+    "scripts/contracts/check-spec-015-counter.py": "8187ea32ddfd41198c68a90b96fcaea1ddcfca43abb0c626e5e8787b5d9d3b1d",
+    "scripts/contracts/p08_layout_facts.py": "6d1994285478b1578064c600f3e307200b9f52e00f264a1de379190840a0313d",
+    "scripts/contracts/test_p08_layout_facts.py": "6b58b5ac1e5d097706769eed77e30274bc67a19a0b00fd3d365356779d9ab548"
+  },
+  "strict_decoder_ast_sha256": {
+    "decode_return": "583c39609801ae924a599609de43377d742668dcc804e27ad93179b697e93d7f",
+    "constant": "fa6c4816aa67d892c61d0e2dfcda18ddcfea97cdfab3aa1aaf3171fda89ce239"
+  },
+  "unchanged_metadata_qualification_sha256": "0341077ceb7c7b40c4924b64834fd319c39cf553db1b822acda643eebc99757a",
+  "preserved_initial_packet_manifest_sha256": "393820c2754cbcff3b9d8b916e8c226bb3c59cce349ea58c3487a736b9fc2ac8",
+  "validation": {
+    "python_tests": 52,
+    "python_ast": "pass",
+    "whitespace": "pass",
+    "qualified_exact_predecessors": 7,
+    "compiler_invocations": 0,
+    "target_execution": 0,
+    "images": 0
+  },
+  "retained_reservation": {
+    "slot_count": 4,
+    "slot_bytes": 32000,
+    "total_bytes": 128000,
+    "increase_bytes": 7296,
+    "fit": "unknown"
+  },
+  "next_registered_focused_command": "scripts/contracts/run-spec-015.sh --profile nrf52840-embedded --corpus rfc-014-counter --runtime-build .build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded --host-build .build/contracts/p08-scoped-host-hzs5q7za --fresh-focused --select-family so07-layout-facts --collect-failures",
+  "coverage": "Full collections held pending focused strict materialization success; focused result is never complete aggregate coverage.",
+  "historical_records_unchanged": true
+}

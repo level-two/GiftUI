@@ -1,5 +1,6 @@
 """Compiler-free tests of the strict target-byte decoder and layout evidence."""
 import copy
+import json
 import pathlib
 import re
 import struct
@@ -156,6 +157,59 @@ class ELFTests(unittest.TestCase):
                 facts.extract(path, dict(slot_bytes=128, slot_count=4, retained_bytes=512))
 
 
+class InventoryTests(unittest.TestCase):
+    @staticmethod
+    def actual_rows():
+        packet = facts.ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/remaining-layout-initial-failure'
+        return json.loads((packet / 'measurement-symbols-and-bytes.json').read_text())
+
+    def with_observed_helper(self, elf):
+        observed = next(row for row in self.actual_rows() if row['name'] == facts.LOCAL_HELPER)
+        # Preserve the actual local/function/Thumb/size shape in a bounded synthetic section.
+        helper = {key: observed[key] for key in ('name', 'value', 'size', 'type', 'binding')}
+        helper['owner'] = 1
+        elf.symbols.append(helper)
+        return elf
+
+    def test_exact_known_local_helper_is_separately_recorded(self):
+        elf = self.with_observed_helper(facts.ELF(elf_bytes()))
+        inventory = facts.classify_inventory(elf)
+        self.assertEqual(inventory['global_roots'], list(facts.SYMBOLS))
+        self.assertEqual(inventory['nonroot_local_helpers'][0]['name'], facts.LOCAL_HELPER)
+        self.assertIs(inventory['nonroot_local_helpers'][0]['measurement_root'], False)
+
+    def test_reject_unknown_exported_duplicate_or_malformed_helper(self):
+        for key, value in (('name', facts.LOCAL_HELPER + '1'), ('binding', 1), ('type', 1),
+                           ('owner', 0), ('value', 0), ('size', 1 << 31)):
+            elf = self.with_observed_helper(facts.ELF(elf_bytes()))
+            elf.symbols[-1][key] = value
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                facts.classify_inventory(elf)
+        elf = self.with_observed_helper(facts.ELF(elf_bytes()))
+        elf.symbols.append(elf.symbols[-1].copy())
+        with self.assertRaises(ValueError):
+            facts.classify_inventory(elf)
+
+    def test_every_root_must_remain_exact_global_defined_function(self):
+        for key, value in (('binding', 0), ('binding', 2), ('type', 1), ('owner', 0)):
+            elf = facts.ELF(elf_bytes())
+            elf.symbols[1][key] = value
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                facts.classify_inventory(elf)
+        for data in (elf_bytes(missing=facts.SYMBOLS[0]), elf_bytes(duplicate=facts.SYMBOLS[0])):
+            with self.assertRaises(ValueError):
+                facts.classify_inventory(facts.ELF(data))
+
+    def test_actual_call_body_remains_rejected_after_inventory_classification(self):
+        root = next(row for row in self.actual_rows() if row['name'] == facts.SYMBOLS[0])
+        elf = self.with_observed_helper(facts.ELF(elf_bytes(body_override=bytes.fromhex(root['body_hex']), relocation=0)))
+        facts.classify_inventory(elf)
+        with self.assertRaisesRegex(ValueError, 'relocation'):
+            elf.constant(root['name'])
+        with self.assertRaises(ValueError):
+            facts.decode_return(bytes.fromhex(root['body_hex']))
+
+
 class LayoutTests(unittest.TestCase):
     def setUp(self):
         self.reservation = dict(slot_bytes=128, slot_count=4, retained_bytes=512, c_alignment=8)
@@ -164,9 +218,9 @@ class LayoutTests(unittest.TestCase):
 
     def test_source_constants(self):
         value = facts.source_reservation(facts.SWIFT_SOURCE.read_text(), facts.C_SOURCE.read_text())
-        self.assertEqual(value, dict(slot_bytes=30176, slot_count=4, retained_bytes=120704, c_alignment=8))
+        self.assertEqual(value, dict(slot_bytes=32000, slot_count=4, retained_bytes=128000, c_alignment=8))
         with self.assertRaises(ValueError):
-            facts.source_reservation(facts.SWIFT_SOURCE.read_text(), facts.C_SOURCE.read_text().replace('[30176]', '[30175]'))
+            facts.source_reservation(facts.SWIFT_SOURCE.read_text(), facts.C_SOURCE.read_text().replace('[32000]', '[31999]'))
 
     def test_exact_accessor_source_inventory_and_projection(self):
         source = facts.ACCESSOR_SOURCE.read_text()

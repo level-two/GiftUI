@@ -11,7 +11,7 @@ int main(void)
 {
     /* Explicit caller-owned slots. Graph0 ends before complete0 is created;
      * failure3 ends after each teardown before the next fresh owner uses it. */
-    static _Alignas(8) uint8_t counter_backing[4][30176];
+    static _Alignas(8) uint8_t counter_backing[4][32000];
     if (spi_tft_initialize() != 0) {
         printk("P08 counter display initialization failed\n");
         return 1;

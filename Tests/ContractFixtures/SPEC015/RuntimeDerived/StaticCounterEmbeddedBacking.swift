@@ -16,10 +16,10 @@ import GiftUIRuntimeDynamic
 #endif
 
 
-// Unvalidated caller/C reservation input. Current-target numeric layout and its
-// C-symbol comparison remain separately gated; this is not a new byte promise.
+// Target disassembly derives this minimum; strict numeric materialization,
+// C-symbol comparison and complete fit remain separately unvalidated.
 #if hasFeature(Embedded)
-let counterEmbeddedSlotBytes = 30176
+let counterEmbeddedSlotBytes = 32000
 let counterEmbeddedSlotCount = 4
 struct CounterEmbeddedElements<Element> {
     let start: UnsafeMutablePointer<Element>

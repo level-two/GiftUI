@@ -19,6 +19,7 @@ SUMMARY = ('cursor', 'maximumAlignment', 'slotBytes', 'totalBytes')
 SYMBOLS = tuple('giftui_p08_layout_' + field + '_' + component
                 for field in FIELDS for component in COMPONENTS) + tuple(
                     'giftui_p08_layout_' + name for name in SUMMARY)
+LOCAL_HELPER = 'giftui_p08_layout_limits_offsetTm'  # Observed local compiler helper, never a fact root.
 U32_MAX = (1 << 32) - 1
 
 
@@ -210,13 +211,38 @@ def validate_layout(values, reservation):
                 retained_surplus=reservation['retained_bytes'] - expected['totalBytes'])
 
 
+def classify_inventory(elf):
+    roots, helpers = [], []
+    for symbol in elf.symbols:
+        name = symbol['name']
+        if not name.startswith('giftui_p08_layout_'):
+            continue
+        require(symbol['type'] == 2 and 0 < symbol['owner'] < len(elf.sections),
+                'layout name must define a function')
+        if name in SYMBOLS:
+            require(symbol['binding'] == 1, 'measurement root must be global')
+            roots.append(name)
+        else:
+            require(name == LOCAL_HELPER and symbol['binding'] == 0, 'unexpected layout symbol')
+            section = elf.sections[symbol['owner']]
+            start = (symbol['value'] & ~1) - section['address']
+            require(symbol['value'] & 1 and symbol['size'] > 0 and section['type'] == 1 and
+                    section['flags'] & 7 == 6 and start >= 0 and
+                    checked_add(start, symbol['size']) <= section['size'], 'invalid local helper bounds')
+            helpers.append(dict(name=name, binding='local', measurement_root=False,
+                                address=symbol['value'], bytes=symbol['size'], section=section['name']))
+    require(len(roots) == len(SYMBOLS) and set(roots) == set(SYMBOLS), 'unexpected/missing/duplicate layout root inventory')
+    require(len(helpers) <= 1, 'duplicate known local layout helper')
+    return dict(global_roots=list(SYMBOLS), nonroot_local_helpers=helpers)
+
+
 def extract(path, reservation):
     elf = ELF(path.read_bytes())
-    found = {symbol['name'] for symbol in elf.symbols if symbol['name'].startswith('giftui_p08_layout_')}
-    require(found == set(SYMBOLS), 'unexpected/missing layout accessor inventory')
+    inventory = classify_inventory(elf)
     facts = {name: elf.constant(name) for name in SYMBOLS}
     values = {name: fact['value'] for name, fact in facts.items()}
-    return elf, dict(values=values, symbols=facts, layout=validate_layout(values, reservation))
+    return elf, dict(values=values, symbols=facts, layout=validate_layout(values, reservation),
+                     measurement_inventory=inventory)
 
 
 def compare_firmware(extracted, prior, elf, reservation, map_text):
