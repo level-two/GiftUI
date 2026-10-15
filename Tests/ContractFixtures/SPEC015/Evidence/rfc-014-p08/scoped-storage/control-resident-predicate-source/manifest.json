@@ -1,0 +1,38 @@
+{
+  "stage": "user-approved narrow predicate correction; source review pending",
+  "baseline": "e866e55df117e847a768204ffe41c7bb7517b5a9",
+  "allowance": {
+    "source_corrections": 1,
+    "source_corrections_frozen": 1,
+    "measurement_reruns": 1,
+    "measurement_reruns_executed": 0,
+    "automatic_extra_variants": 0,
+    "prior_grouped_corrections": "2/2 closed"
+  },
+  "sources": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "before_sha256": "fdd9ca325c2e73b57ae3f8b183851b3de78b70fde8d9bb171adcbd6fcfd75b26",
+      "after_sha256": "4869af4f277ec2cad6ff5aadf053d316e69c378de674bb3cb6b55dc7fe4f5e47"
+    },
+    "scripts/contracts/check-spec-015-counter.py": {
+      "before_sha256": "a0f472afb06f94f39e082da91d526641a5fa2a61172350e9bd146e6bd86f860c",
+      "after_sha256": "eef090209cb4d5cd4550d7e4b0b14d61f6499e73f5e172ab90636a92b9d7d56e"
+    }
+  },
+  "source_patch_sha256": "9d77b0e9517be0554d3908b7920eac5206152c4f623b5ce6a2b5b7eba6faf376",
+  "qualification_sha256": "27cb807261cb84561b603fadc35287cc8f80174e6888cae3d78e42e91ca7bdd0",
+  "qualification_predecessor_sha256": "9fb75756c6a148cfda414a0518ff9373721ce010b1a243b31089d154b4d2532f",
+  "compiler_free_checks": {
+    "mechanical_inverse_equivalence": "all11 original field predicates and final assertions exact; only2 helper bodies changed",
+    "new_borrowed_helper_audit": "all newly added borrowed declarations in f7e56cf0..current reviewed for same Boolean RHS field capture; only two fixed sites found",
+    "exact_receipts_rechecked": 7,
+    "metadata_exceptions_verified_by_actual_driver_function": 8,
+    "candidate_exclusion_checks": 56,
+    "unchanged_other_candidate_hashes": 7,
+    "backend_observation_tests_passed": 6,
+    "python_driver_AST": "passed",
+    "formatter": "pinned host Swift6.4;fixturesexcluded;no incidental source changes"
+  },
+  "compiler_build_runtime_image_executed": false,
+  "measurement": "old32000 constants unchanged; exactnewlayoutunknown;strictfactsrequired;possibleexpectedmismatchdoesnotqualifyacceptance"
+}

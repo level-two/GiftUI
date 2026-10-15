@@ -1,0 +1,54 @@
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+index b378e77a..fb65cbc2 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+@@ -71,12 +71,23 @@ struct CounterControl {
+         return next.partialValue
+     }
+     borrowing func requireVacantRuntimeSlot() {
+-        let vacant = runtimeSlotPhase == .vacant && runtimeSlotOwner == nil && runtimeEndpoint == nil
+-        let noKeys = runtimeRootIdentity == nil && runtimeActionIdentity == nil && runtimeCandidateRootIdentity == nil && runtimeCandidateActionIdentity == nil
++        let phaseVacant = runtimeSlotPhase == .vacant
++        let ownerAbsent = runtimeSlotOwner == nil
++        let endpointAbsent = runtimeEndpoint == nil
++        let rootAbsent = runtimeRootIdentity == nil
++        let actionAbsent = runtimeActionIdentity == nil
++        let candidateRootAbsent = runtimeCandidateRootIdentity == nil
++        let candidateActionAbsent = runtimeCandidateActionIdentity == nil
++        let vacant = phaseVacant && ownerAbsent && endpointAbsent
++        let noKeys = rootAbsent && actionAbsent && candidateRootAbsent && candidateActionAbsent
+         precondition(vacant && noKeys)
+     }
+     borrowing func requireRuntimeClaim(_ claim: UInt64) {
+-        let matches = runtimeSlotOwner == claim && (runtimeSlotPhase == .installed || runtimeSlotPhase == .quiesced) && runtimeEndpoint != nil
++        let sameOwner = runtimeSlotOwner == claim
++        let installed = runtimeSlotPhase == .installed
++        let quiesced = runtimeSlotPhase == .quiesced
++        let endpointPresent = runtimeEndpoint != nil
++        let matches = sameOwner && (installed || quiesced) && endpointPresent
+         precondition(matches)
+     }
+     mutating func completeRuntimeInstallation(_ claim: UInt64) {
+diff --git a/scripts/contracts/check-spec-015-counter.py b/scripts/contracts/check-spec-015-counter.py
+index f3a9c116..712ead6e 100644
+--- a/scripts/contracts/check-spec-015-counter.py
++++ b/scripts/contracts/check-spec-015-counter.py
+@@ -32,15 +32,15 @@ def digest(path):
+ revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
+ revision_receipt = json.loads(revision_path.read_text())
+ reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
+-applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-control-resident-cycle2-applicability.json'
+-assert digest(applicability_path) == '9fb75756c6a148cfda414a0518ff9373721ce010b1a243b31089d154b4d2532f', 'unpinned source applicability packet'
++applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-control-resident-predicate-applicability.json'
++assert digest(applicability_path) == '27cb807261cb84561b603fadc35287cc8f80174e6888cae3d78e42e91ca7bdd0', 'unpinned source applicability packet'
+ applicability = json.loads(applicability_path.read_text())
+ qualified_applicability = []
+ def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
+     if name not in applicability['candidate_sources'] or receipt_path is None:
+         return False
+     assert applicability['kind'] == 'exact-noncompiled-source-applicability-qualification'
+-    assert applicability['activity'] == 'p08-control-resident-cycle2'
++    assert applicability['activity'] == 'p08-control-resident-predicate-correction'
+     relative_receipt = str(receipt_path.relative_to(ROOT))
+     entry = next((value for value in applicability['receipts'] if value['receipt'] == relative_receipt), None)
+     if entry is None:

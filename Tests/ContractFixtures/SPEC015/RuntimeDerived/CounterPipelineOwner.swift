@@ -71,12 +71,23 @@ struct CounterControl {
         return next.partialValue
     }
     borrowing func requireVacantRuntimeSlot() {
-        let vacant = runtimeSlotPhase == .vacant && runtimeSlotOwner == nil && runtimeEndpoint == nil
-        let noKeys = runtimeRootIdentity == nil && runtimeActionIdentity == nil && runtimeCandidateRootIdentity == nil && runtimeCandidateActionIdentity == nil
+        let phaseVacant = runtimeSlotPhase == .vacant
+        let ownerAbsent = runtimeSlotOwner == nil
+        let endpointAbsent = runtimeEndpoint == nil
+        let rootAbsent = runtimeRootIdentity == nil
+        let actionAbsent = runtimeActionIdentity == nil
+        let candidateRootAbsent = runtimeCandidateRootIdentity == nil
+        let candidateActionAbsent = runtimeCandidateActionIdentity == nil
+        let vacant = phaseVacant && ownerAbsent && endpointAbsent
+        let noKeys = rootAbsent && actionAbsent && candidateRootAbsent && candidateActionAbsent
         precondition(vacant && noKeys)
     }
     borrowing func requireRuntimeClaim(_ claim: UInt64) {
-        let matches = runtimeSlotOwner == claim && (runtimeSlotPhase == .installed || runtimeSlotPhase == .quiesced) && runtimeEndpoint != nil
+        let sameOwner = runtimeSlotOwner == claim
+        let installed = runtimeSlotPhase == .installed
+        let quiesced = runtimeSlotPhase == .quiesced
+        let endpointPresent = runtimeEndpoint != nil
+        let matches = sameOwner && (installed || quiesced) && endpointPresent
         precondition(matches)
     }
     mutating func completeRuntimeInstallation(_ claim: UInt64) {

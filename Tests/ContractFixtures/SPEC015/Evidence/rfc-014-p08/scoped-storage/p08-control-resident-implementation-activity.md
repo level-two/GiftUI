@@ -1,6 +1,12 @@
 # P08 control-resident runtime payload implementation
 
-Current boundary: **STOP — final correction 2/2 consumed; actual source compilation blocked**.
+Current boundary: **new user-approved narrow predicate fix frozen; independent source review pending**.
+Eugene explicitly said “Please proceed” to one mechanical fix, independent review
+and one same focused measurement rerun. [Narrow source freeze](p08-control-resident-predicate-source-freeze.md)
+records fix 1/1, rerun 0/1 and zero extra automatic variants. The prior 2/2 and all
+older allowances remain closed. No compiler acceptance, new layout or fit claim.
+
+Prior package boundary: **STOP — correction 2/2 consumed; actual source compilation blocked**.
 [Independent final review](p08-control-resident-final-independent-review.md)
 verifies this stop and the single unapplied mechanical follow-up decision.
 [Final result and minimal unapplied follow-up](p08-control-resident-final-result.md)
@@ -56,8 +62,9 @@ provenance, lastFrame, capacities, workloads, flags/toolchains and limits unchan
 Actual enlarged-control/four-slot/C accounting is mandatory; do not guess ABI
 sizes or relabel a partial screen as acceptance. No hardware action is included.
 
-Current boundary permits failure evidence and source-attribution documentation
-only; no additional source edit or compiler/build/runtime/image execution.
+That closed boundary permitted failure evidence and source-attribution
+documentation only; the new narrow allowance above supersedes its execution stop
+only for the explicitly approved predicate fix/review/one measurement rerun.
 Known generated pycache is
 unrelated and remains untouched.
 
