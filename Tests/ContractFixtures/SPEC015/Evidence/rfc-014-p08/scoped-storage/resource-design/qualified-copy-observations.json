@@ -1,0 +1,228 @@
+{
+  "method": "Only explicit mov-immediate r2 within saved12instruction window, no intervening BL; samples are byte-transfer observations, not semantic copies or complete MemoryLayout facts",
+  "frames": [
+    {
+      "address": "0x214f4",
+      "symbol": "$e17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+      "qualified_immediate_copy_counts": {
+        "120": 1,
+        "181": 1,
+        "392": 2
+      },
+      "samples": []
+    },
+    {
+      "address": "0x1e4bc",
+      "symbol": "$e17P08CounterRuntime0A11BodyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF",
+      "qualified_immediate_copy_counts": {
+        "52": 1
+      },
+      "samples": []
+    },
+    {
+      "address": "0x22e24",
+      "symbol": "$e17P08CounterRuntime19counterWakeControls4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlFAH024SignalAnalyzerPresetHostN0VyAA0bvQ0VyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateX0ATLLVAA0a9CommittedX0ATLLVAA0a3HitX0ATLLVGG_Tg5",
+      "qualified_immediate_copy_counts": {
+        "64": 22,
+        "68": 5,
+        "69": 15,
+        "212": 4,
+        "347": 3,
+        "425": 4,
+        "3889": 138,
+        "4200": 6
+      },
+      "samples": [
+        {
+          "address": "0x245b6",
+          "target": "__aeabi_memcpy",
+          "preceding_instructions": [
+            "   24592:\t9813      \tldr\tr0, [sp, #76]\t; 0x4c",
+            "   24594:\tf500 74b0 \tadd.w\tr4, r0, #352\t; 0x160",
+            "   24598:\t4620      \tmov\tr0, r4",
+            "   2459a:\tf02d fcf1 \tbl\t51f80 <OUTLINED_FUNCTION_5+0xa18e>",
+            "   2459e:\t2800      \tcmp\tr0, #0",
+            "   245a0:\tf000 808b \tbeq.w\t246ba <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x1c6ba>",
+            "   245a4:\t2801      \tcmp\tr0, #1",
+            "   245a6:\tf040 80a1 \tbne.w\t246ec <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x1c6ec>",
+            "   245aa:\ta802      \tadd\tr0, sp, #8",
+            "   245ac:\t4621      \tmov\tr1, r4",
+            "   245ae:\tf640 7231 \tmovw\tr2, #3889\t; 0xf31",
+            "   245b2:\tf500 5018 \tadd.w\tr0, r0, #9728\t; 0x2600",
+            "   245b6:\tf038 fda1 \tbl\t5d0fc <memcpy>"
+          ]
+        },
+        {
+          "address": "0x23592",
+          "target": "__aeabi_memcpy",
+          "preceding_instructions": [
+            "   2356e:\tf040 87ee \tbne.w\t2454e <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x1c54e>",
+            "   23572:\tf1a8 0801 \tsub.w\tr8, r8, #1",
+            "   23576:\tf118 0022 \tadds.w\tr0, r8, #34\t; 0x22",
+            "   2357a:\td1ec      \tbne.n\t23556 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x1b556>",
+            "   2357c:\ta801      \tadd\tr0, sp, #4",
+            "   2357e:\tf241 0268 \tmovw\tr2, #4200\t; 0x1068",
+            "   23582:\tf500 5086 \tadd.w\tr0, r0, #4288\t; 0x10c0",
+            "   23586:\t6004      \tstr\tr4, [r0, #0]",
+            "   23588:\ta808      \tadd\tr0, sp, #32",
+            "   2358a:\t9910      \tldr\tr1, [sp, #64]\t; 0x40",
+            "   2358c:\tf500 4af1 \tadd.w\tsl, r0, #30848\t; 0x7880",
+            "   23590:\t4650      \tmov\tr0, sl",
+            "   23592:\tf039 fdb3 \tbl\t5d0fc <memcpy>"
+          ]
+        }
+      ]
+    },
+    {
+      "address": "0x1d2c0",
+      "symbol": "$e17P08CounterRuntime0A11BodyCleanup33_480B1BD841D053AE4FCDC18507668536LLV13constructHost6reporty23GiftUIHostConfiguration0L14AssemblyReportV_tF",
+      "qualified_immediate_copy_counts": {},
+      "samples": []
+    },
+    {
+      "address": "0x1cc30",
+      "symbol": "$e17P08CounterRuntime0A11BodyCleanup33_480B1BD841D053AE4FCDC18507668536LLV14constructOwner14activationSpan8assembly09failAfterC0ys0N0Vys5UInt8VG_AA0B12HostAssemblyVSbtF",
+      "qualified_immediate_copy_counts": {
+        "474": 1,
+        "4439": 1
+      },
+      "samples": [
+        {
+          "address": "0x1cd14",
+          "target": "__aeabi_memcpy",
+          "preceding_instructions": [
+            "   1ccec:\tf035 f983 \tbl\t51ff6 <OUTLINED_FUNCTION_5+0xa204>",
+            "   1ccf0:\tf604 707c \taddw\tr0, r4, #3964\t; 0xf7c",
+            "   1ccf4:\t4649      \tmov\tr1, r9",
+            "   1ccf6:\tf44f 72ed \tmov.w\tr2, #474\t; 0x1da",
+            "   1ccfa:\tf040 f9ff \tbl\t5d0fc <memcpy>",
+            "   1ccfe:\tf008 0001 \tand.w\tr0, r8, #1",
+            "   1cd02:\tf241 1156 \tmovw\tr1, #4438\t; 0x1156",
+            "   1cd06:\tf241 1257 \tmovw\tr2, #4439\t; 0x1157",
+            "   1cd0a:\t5460      \tstrb\tr0, [r4, r1]",
+            "   1cd0c:\ta80a      \tadd\tr0, sp, #40\t; 0x28",
+            "   1cd0e:\t4621      \tmov\tr1, r4",
+            "   1cd10:\tf500 505b \tadd.w\tr0, r0, #14016\t; 0x36c0",
+            "   1cd14:\tf040 f9f2 \tbl\t5d0fc <memcpy>"
+          ]
+        }
+      ]
+    },
+    {
+      "address": "0x1a8fc",
+      "symbol": "$e17P08CounterRuntime15p08RunReuseHost33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcriptSi23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyxGz_SpyAA0B7ControlVGSpyAA0agF10TranscriptACLLVGtAG0stU9LiveOwnerRzAA0aF11ObservationACLLRzRi_zRi0_zlFAA0bgZ0VyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+      "qualified_immediate_copy_counts": {
+        "50": 1,
+        "53": 3,
+        "57": 1,
+        "206": 3,
+        "212": 1,
+        "224": 1,
+        "4439": 1
+      },
+      "samples": [
+        {
+          "address": "0x1b0cc",
+          "target": "__aeabi_memcpy",
+          "preceding_instructions": [
+            "   1b0aa:\t990f      \tldr\tr1, [sp, #60]\t; 0x3c",
+            "   1b0ac:\t180d      \tadds\tr5, r1, r0",
+            "   1b0ae:\tf180 834b \tbvs.w\t1b748 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x13748>",
+            "   1b0b2:\tf8db 0254 \tldr.w\tr0, [fp, #596]\t; 0x254",
+            "   1b0b6:\t2801      \tcmp\tr0, #1",
+            "   1b0b8:\tf040 82ec \tbne.w\t1b694 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x13694>",
+            "   1b0bc:\ta81a      \tadd\tr0, sp, #104\t; 0x68",
+            "   1b0be:\t9e13      \tldr\tr6, [sp, #76]\t; 0x4c",
+            "   1b0c0:\tf241 1257 \tmovw\tr2, #4439\t; 0x1157",
+            "   1b0c4:\tf500 4a2e \tadd.w\tsl, r0, #44544\t; 0xae00",
+            "   1b0c8:\t4650      \tmov\tr0, sl",
+            "   1b0ca:\t4631      \tmov\tr1, r6",
+            "   1b0cc:\tf042 f816 \tbl\t5d0fc <memcpy>"
+          ]
+        }
+      ]
+    },
+    {
+      "address": "0x1eca4",
+      "symbol": "$e17P08CounterRuntime03runA10ScopedBody33_480B1BD841D053AE4FCDC18507668536LL7session6models4root8semantic6values7control5audit8assembly13foreignModels0T4Root0T7Control7dynamic09failAfterC05early16candidateFailure5reuseSiAA0A14StorageSessionACLLVn_21GiftUIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0aB6Schema0B11ModelSchemaOGnAV015ObservableStateV5ScopeVyAZ18GiftUISemanticCore24SemanticCompleteIdentityVGnA5_19SemanticRecordStoreVy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGnA11_18CanvasStagedValuesVyA5_23SemanticRecordReferenceVA14_0aB17SchemaCanvasTableVyA18_GGnSpyAA0bW0VG17GiftUIRuntimeCore0C12StorageAuditVAA0B12HostAssemblyVA2_A8_A32_S2bs5UInt8VA33_0C21CompletePipelineStageOSgSpyAA0A19HostReuseTranscriptACLLVGSgtF",
+      "qualified_immediate_copy_counts": {
+        "52": 1,
+        "56": 2,
+        "92": 1,
+        "228": 1,
+        "318": 1,
+        "322": 2,
+        "3889": 2,
+        "4439": 1
+      },
+      "samples": [
+        {
+          "address": "0x1f23a",
+          "target": "__aeabi_memcpy",
+          "preceding_instructions": [
+            "   1f21a:\t4628      \tmov\tr0, r5",
+            "   1f21c:\te003      \tb.n\t1f226 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x17226>",
+            "   1f21e:\ta86a      \tadd\tr0, sp, #424\t; 0x1a8",
+            "   1f220:\tf034 fc16 \tbl\t53a50 <OUTLINED_FUNCTION_154>",
+            "   1f224:\t4605      \tmov\tr5, r0",
+            "   1f226:\tf034 fe8a \tbl\t53f3e <OUTLINED_FUNCTION_254>",
+            "   1f22a:\td000      \tbeq.n\t1f22e <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x1722e>",
+            "   1f22c:\t2801      \tcmp\tr0, #1",
+            "   1f22e:\ta83e      \tadd\tr0, sp, #248\t; 0xf8",
+            "   1f230:\t4629      \tmov\tr1, r5",
+            "   1f232:\tf640 7231 \tmovw\tr2, #3889\t; 0xf31",
+            "   1f236:\tf500 4022 \tadd.w\tr0, r0, #41472\t; 0xa200",
+            "   1f23a:\tf03d ff5f \tbl\t5d0fc <memcpy>"
+          ]
+        },
+        {
+          "address": "0x1f0e4",
+          "target": "__aeabi_memcpy",
+          "preceding_instructions": [
+            "   1f0c0:\t9006      \tstr\tr0, [sp, #24]",
+            "   1f0c2:\tf50d 3088 \tadd.w\tr0, sp, #69632\t; 0x11000",
+            "   1f0c6:\tf8d0 889c \tldr.w\tr8, [r0, #2204]\t; 0x89c",
+            "   1f0ca:\t4628      \tmov\tr0, r5",
+            "   1f0cc:\tf8cd 801c \tstr.w\tr8, [sp, #28]",
+            "   1f0d0:\tab15      \tadd\tr3, sp, #84\t; 0x54",
+            "   1f0d2:\tcb0e      \tldmia\tr3, {r1, r2, r3}",
+            "   1f0d4:\tf7fd fe9a \tbl\t1ce0c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x14e0c>",
+            "   1f0d8:\t4604      \tmov\tr4, r0",
+            "   1f0da:\tf50d 408d \tadd.w\tr0, sp, #18048\t; 0x4680",
+            "   1f0de:\t4629      \tmov\tr1, r5",
+            "   1f0e0:\tf241 1257 \tmovw\tr2, #4439\t; 0x1157",
+            "   1f0e4:\tf03e f80a \tbl\t5d0fc <memcpy>"
+          ]
+        }
+      ]
+    },
+    {
+      "address": "0x1d45c",
+      "symbol": "$e17P08CounterRuntime0A11BodyCleanup33_480B1BD841D053AE4FCDC18507668536LLV3run7control6report09failAfterC010joinChecks5early16candidateFailure5reuseSiSpyAA0B7ControlVG_23GiftUIHostConfiguration18HostAssemblyReportVSbSis5UInt8V0W13UIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aZ15ReuseTranscriptACLLVGSgtF",
+      "qualified_immediate_copy_counts": {
+        "4808": 1
+      },
+      "samples": [
+        {
+          "address": "0x1d546",
+          "target": "__aeabi_memcpy",
+          "preceding_instructions": [
+            "   1d524:\ta808      \tadd\tr0, sp, #32",
+            "   1d526:\t4631      \tmov\tr1, r6",
+            "   1d528:\t4652      \tmov\tr2, sl",
+            "   1d52a:\t464b      \tmov\tr3, r9",
+            "   1d52c:\tf500 5061 \tadd.w\tr0, r0, #14400\t; 0x3840",
+            "   1d530:\tf000 f9dc \tbl\t1d8ec <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x158ec>",
+            "   1d534:\t4604      \tmov\tr4, r0",
+            "   1d536:\ta806      \tadd\tr0, sp, #24",
+            "   1d538:\ta908      \tadd\tr1, sp, #32",
+            "   1d53a:\tf241 22c8 \tmovw\tr2, #4808\t; 0x12c8",
+            "   1d53e:\tf500 5016 \tadd.w\tr0, r0, #9600\t; 0x2580",
+            "   1d542:\tf501 5161 \tadd.w\tr1, r1, #14400\t; 0x3840",
+            "   1d546:\tf03f fdd9 \tbl\t5d0fc <memcpy>"
+          ]
+        }
+      ]
+    }
+  ]
+}

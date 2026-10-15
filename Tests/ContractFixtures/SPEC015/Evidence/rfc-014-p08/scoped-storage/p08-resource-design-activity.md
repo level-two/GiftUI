@@ -1,6 +1,6 @@
 # P08 resource diagnosis/design activity — 2026-10-15
 
-Status: **active diagnosis/design only; P08 fit remains failed**.
+Status: **diagnosis/design package prepared; independent Strong review pending; P08 fit remains failed**.
 Entry `8371e09a`, final compiled source `0d3e3c7d`. The independently confirmed
 [previous failure package](p08-remaining-images-resource-result.md) and its
 [exit review](p08-remaining-independent-exit-review.md) remain unchanged.
@@ -33,3 +33,23 @@ budget/contract decision, and a bounded next source/early-stack/focused-validati
 package with affected files/profiles and exact evidence limits. Independent
 Strong review follows sequentially. SPEC-011/013/015 remain implementing;
 P08/R07/T8.1/HC-RD-003, I4-07/analyzer, P09–P12, hardware and timing remain open.
+
+## Prepared boundary
+
+The [draft implementation note](../../../../../../docs/implementation-designs/spec-015-p08-stack-materialization.md)
+and [exact artifact packet](resource-design/README.md) establish the required
+213,120-byte three-frame lower bound, computed-getter and state-transfer
+materialization, current RAM/MPU accounting and the historical stack origin.
+A 30 KiB budget-only change is insufficient. The note proposes one grouped
+private realization and an early fresh nRF object rejection screen; no stack
+reduction is promised before that measurement. The existing image handoff full-
+receipt guard is preserved. Independent review precedes future source execution.
+
+Compiler-free verification passes for 15 source/header identities, 14 preserved
+payloads and decompressed hashes, seven frame prologues, both nested BL edges,
+the 213,120-byte arithmetic and new local links. Packet manifest SHA-256 is
+`27f18423d9d8b7795bb0c672b21e548526493cfe089fca0898a1351c3ef089f4`.
+`git diff --check` and `scripts/validate-governance.rb` pass (200 authority nodes,
+2,026 edges; seven features, 76 lifecycle artifacts). All maintained Swift,
+compiler inputs, old full receipts, image artifacts and required limits remain
+unchanged. The unrelated generated `scripts/contracts/__pycache__` is untouched.

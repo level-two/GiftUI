@@ -1,0 +1,142 @@
+{
+  "kind": "exact existing ELF/source lower bounds and conditional RAM arithmetic; not a complete upper bound",
+  "frames": [
+    {
+      "function": "runP08ScopedBody",
+      "address": "0x1eca4",
+      "local_subtractions": [
+        71680,
+        92
+      ],
+      "saved_registers": 9,
+      "frame_lower_bound": 71808
+    },
+    {
+      "function": "P08BodyCleanup.run",
+      "address": "0x1d45c",
+      "local_subtractions": [
+        38400,
+        236
+      ],
+      "saved_registers": 9,
+      "frame_lower_bound": 38672
+    },
+    {
+      "function": "p08RunReuseHost",
+      "address": "0x1a8fc",
+      "local_subtractions": [
+        102400,
+        204
+      ],
+      "saved_registers": 9,
+      "frame_lower_bound": 102640
+    },
+    {
+      "function": "P08BodyCleanup.constructOwner",
+      "address": "0x1cc30",
+      "local_subtractions": [
+        37632,
+        100
+      ],
+      "saved_registers": 9,
+      "frame_lower_bound": 37768
+    },
+    {
+      "function": "P08BodyCleanup.constructHost",
+      "address": "0x1d2c0",
+      "local_subtractions": [
+        42752,
+        152
+      ],
+      "saved_registers": 6,
+      "frame_lower_bound": 42928
+    },
+    {
+      "function": "P08BodyCleanup.finish",
+      "address": "0x1e4bc",
+      "local_subtractions": [
+        31488,
+        28
+      ],
+      "saved_registers": 9,
+      "frame_lower_bound": 31552
+    },
+    {
+      "function": "counterWakeControls",
+      "address": "0x22e24",
+      "local_subtractions": [
+        36096,
+        108
+      ],
+      "saved_registers": 9,
+      "frame_lower_bound": 36240
+    }
+  ],
+  "direct_nested_edges": [
+    {
+      "from": "0x1eca4",
+      "instruction": "0x1f1b0",
+      "kind": "BL",
+      "to": "0x1d45c"
+    },
+    {
+      "from": "0x1d45c",
+      "instruction": "0x1d502",
+      "kind": "BL",
+      "to": "0x1a8fc",
+      "predicate": "nonnull reuse argument loaded into r7; cbz at0x1d4f6 skips only when null"
+    }
+  ],
+  "reuse_path_lower_bound": 213120,
+  "reuse_source_predicates": [
+    "p08CounterHost passes address of live transcript into runP08StaticHost twice",
+    "runP08StaticHost forwards same reuse to runP08ScopedBody",
+    "failAfterRuntime=false, early default0, candidateFailure defaultnil",
+    "P08BodyCleanup.run: if let reuse selects p08RunReuseHost",
+    "source reinserts host in stage after call, and body calls holder.finish after run; disassembly uses BL and retains allocated frames"
+  ],
+  "ram": {
+    "limit": 196608,
+    "current": 159744,
+    "current_main_usable": 27648,
+    "current_main_object": 27712,
+    "current_isr_usable": 2048,
+    "current_isr_object": 2112,
+    "current_non_main_object": 132032,
+    "current_spare": 36864,
+    "max_main_usable_with_frozen_other_ram_and_no_margin": 64512,
+    "conditional_main_options": [
+      {
+        "usable": 27648,
+        "physical_object": 27712,
+        "total_ram_if_other_unchanged": 159744,
+        "headroom_if_other_unchanged": 36864
+      },
+      {
+        "usable": 30720,
+        "physical_object": 30784,
+        "total_ram_if_other_unchanged": 162816,
+        "headroom_if_other_unchanged": 33792
+      },
+      {
+        "usable": 32768,
+        "physical_object": 32832,
+        "total_ram_if_other_unchanged": 164864,
+        "headroom_if_other_unchanged": 31744
+      },
+      {
+        "usable": 64512,
+        "physical_object": 64576,
+        "total_ram_if_other_unchanged": 196608,
+        "headroom_if_other_unchanged": 0
+      },
+      {
+        "usable": 213120,
+        "physical_object": 213184,
+        "total_ram_if_other_unchanged": 345216,
+        "headroom_if_other_unchanged": -148608
+      }
+    ],
+    "limits": "Forecast only: source/codegen/link placement/guard or ISR changes need actual linked measurement.213120 excludes outer frames/callees/IRQ and is not proposed stack."
+  }
+}

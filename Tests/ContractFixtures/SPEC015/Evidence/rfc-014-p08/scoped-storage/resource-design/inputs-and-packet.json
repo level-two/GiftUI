@@ -1,0 +1,165 @@
+{
+  "baseline_source": "0d3e3c7d",
+  "entry_commit": "8371e09a",
+  "kind": "read-only existing-image/source diagnosis; source candidate unimplemented, no resource amendment",
+  "inputs": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "sha256": "ed705493d35ac471e9b4d0591b75fd997ed426a0d84f0894a1e59adbaa402ccb"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+      "sha256": "553929d76928282d94faa15dc544ae369cca2f523bdb70d3fbace4f415c112f3"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "sha256": "3565e47ec54b4e85b89260d4922166908b4fdb557e6012318d38c73197c06ed0"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+      "sha256": "5ff90414394f5b5d70a06790fd633dadc3b5ebacf637164318b2a44c54a1554e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+      "sha256": "b49e2fb1466b38e26e2e6da3f6267760a935476acfe8066190ee614f81a67c12"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+      "sha256": "62813ea95b2b1cd6bfc430fc66e0aae25e4c6f9db8d8e7329b5c10000a739c6b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift",
+      "sha256": "1b1255db3577e1d55bcef72398169ac061c2c1101dda48e783ddb48bc7ee1fed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "sha256": "1f3912de5a30da90232292db5defee3a201883028936311a246e65ad450df019"
+    },
+    {
+      "path": "firmware/nrf52840/applications/signal-analyzer-static/prj.conf",
+      "sha256": "c390d7a716f029bebddb569e5ae99dabf2ecb44ffb3c08d0ec59b3af7b74ed12"
+    },
+    {
+      "path": "firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c",
+      "sha256": "ea40f5906bdd3f7b8f66d6cca16c3c873850d9c6d65fda4153dde6507b133f25"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/include/zephyr/arch/arm/arch.h",
+      "sha256": "90130fb84172458d09991cc219c70ec10e0234a7eee8fc419b23bdd4dad47251"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/include/zephyr/kernel/thread_stack.h",
+      "sha256": "6b596e7d69be53f59e62264ca273581439f7bffa2d87aa0c4c399b105d46a67c"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/reset.S",
+      "sha256": "47938e87db6c4bb3e1d32b2361bbd34794ed44a8cfc113c687353599fc23faac"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/thread.c",
+      "sha256": "45c6814905b893432176d8b57e718715c87d6dd390d2d398e507dd7fe66b6baa"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/init.c",
+      "sha256": "691655388dd17fea6e03170703da8527c42f16d59c72c6ff105df2658da23b04"
+    }
+  ],
+  "budget_origin": {
+    "commit": "6d82a31d8e88faf1d87d7dbb57e1220a1920a6d8",
+    "change": "main stack24576\u219227648 alongside validator-frame reductions; later guard faults and further frame-lifetime repairs remain historical",
+    "record": "Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-connected-attempt.md",
+    "sha256": "774416cc378e26c4873265ffa4b4b1cbddf8ae4a16b8917c2dc8be85c20245e8"
+  },
+  "payloads": [
+    {
+      "path": "0x1a8fc.disassembly.txt.xz",
+      "bytes": 11836,
+      "sha256": "addd944719a7847efec7985eb54b8fd4531530b6f5ec437b0963b6fa26e705fa",
+      "uncompressed_bytes": 97916,
+      "uncompressed_sha256": "fa6b5d38223f8a8448c743f25f0779bb4e9483f498dff8223b02a3822e139077"
+    },
+    {
+      "path": "0x1cc30.disassembly.txt.xz",
+      "bytes": 1668,
+      "sha256": "89b4064254ddee35f6ed5abd6bbf8d99ddb6c3027179bc9d160fd044f843c7b9",
+      "uncompressed_bytes": 7279,
+      "uncompressed_sha256": "8436f1d0eda828a163eb94951ef5c4af96d881fd69579bd3b073943e68d9b06e"
+    },
+    {
+      "path": "0x1d2c0.disassembly.txt.xz",
+      "bytes": 1452,
+      "sha256": "793a57958af8633a57572916b8dc729c5f7327c829a60def829c3cb1d811bb87",
+      "uncompressed_bytes": 6554,
+      "uncompressed_sha256": "63940a3538b7c9a0214cb98cc9d24fa2b84d85f23797161ce57040faa4801b1c"
+    },
+    {
+      "path": "0x1d45c.disassembly.txt.xz",
+      "bytes": 2956,
+      "sha256": "c2bfb04b9319462ff358cd8d179089dbc8df9f7ad3df2596bbf7fad72d4f6c4c",
+      "uncompressed_bytes": 19614,
+      "uncompressed_sha256": "b9e50c8b2b5464675dacf5362d7b86ac1eb52b72b3916ec279badc60a68ef35c"
+    },
+    {
+      "path": "0x1e4bc.disassembly.txt.xz",
+      "bytes": 4880,
+      "sha256": "424749ba570b91d60aa1cd6978cc86882d585201b84a6b45d2eea3ce12513dbf",
+      "uncompressed_bytes": 32398,
+      "uncompressed_sha256": "126723670af6d183f7f0a82f51f94abc5480f5b8b94af4879f939d731f5e64c2"
+    },
+    {
+      "path": "0x1eca4.disassembly.txt.xz",
+      "bytes": 4808,
+      "sha256": "92272df8d81c9d85a2b43411ccb349fd3a1cad8ccc71242d3df86d7815743b50",
+      "uncompressed_bytes": 31432,
+      "uncompressed_sha256": "08eece4317c4e325b7f6facdeb3617f85c35269b7d51edaad8896b2ed6447c42"
+    },
+    {
+      "path": "0x214f4.disassembly.txt.xz",
+      "bytes": 7364,
+      "sha256": "f290dd5782ad6d5c1087e43aab471858cf4d7159d09b4c11b05553176fb08521",
+      "uncompressed_bytes": 44441,
+      "uncompressed_sha256": "27edf5730ad6d096d03c11abbbe55a397fa0b6c903a4f9fd324a43d384ff7d65"
+    },
+    {
+      "path": "0x22e24.disassembly.txt.xz",
+      "bytes": 22732,
+      "sha256": "443e015f044435ac7c399667ab57bc33e19d2fa44feb96644641b0962a740d1a",
+      "uncompressed_bytes": 282514,
+      "uncompressed_sha256": "9a8aa4d8df544923710dce757a7eace6fea2c152b196a546cc2ebb146cc3c137"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3497,
+      "sha256": "badcec98e5895811b068a5980bacd31948e35918c1484abb985483ff1330d1f8"
+    },
+    {
+      "path": "dwarf-observation.json",
+      "bytes": 650,
+      "sha256": "f33c82971b86e7b6dba7bd50623d1be07df5bd3c3564e6937ae5226f10a632e5"
+    },
+    {
+      "path": "frames-and-direct-calls.json.xz",
+      "bytes": 38084,
+      "sha256": "976b57bf8481dbbd7059d4c10ac08c24ba6410c9ffe5139085707d524c186ef4",
+      "uncompressed_bytes": 2012694,
+      "uncompressed_sha256": "cad686e6ff337f408afb1a90676e392d52c8f5236342538aecffd788271ebd79"
+    },
+    {
+      "path": "nrf-dwarf-info.txt.xz",
+      "bytes": 398832,
+      "sha256": "cc8cf8f78793cd689737dbdf2b293e5bd68538bd72a3cc18bd2a18e31a25250f",
+      "uncompressed_bytes": 5024710,
+      "uncompressed_sha256": "ce85e09fcdd2913131967af697200b2d0686394ebb000b3d3a8b6a0dcf174076"
+    },
+    {
+      "path": "path-and-ram-arithmetic.json",
+      "bytes": 3847,
+      "sha256": "3fab24e29361a077d2dc29f20b661bea4fd236550af11af9433af018a2a506ea"
+    },
+    {
+      "path": "qualified-copy-observations.json",
+      "bytes": 10994,
+      "sha256": "79d5787bd1d9791aafa7c16c84176bd5f4868cf7236af995b5c53b59641295ca"
+    }
+  ]
+}

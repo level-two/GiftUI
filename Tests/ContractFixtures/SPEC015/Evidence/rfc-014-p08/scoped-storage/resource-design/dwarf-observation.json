@@ -1,0 +1,18 @@
+{
+  "argv": [
+    ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+    "--debug-dump=info",
+    ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf"
+  ],
+  "exit": 0,
+  "tool_sha256": "c86925482aa60775056e51ea2b4b1112bf38d6a1b5ca7f1a04869bca4b565abc",
+  "elf_sha256": "66ca1113d997c6424aedb258c1477692ce4bf5b42ed77f42bb1d5cba66339da9",
+  "output_sha256": "ce85e09fcdd2913131967af697200b2d0686394ebb000b3d3a8b6a0dcf174076",
+  "output_bytes": 5024710,
+  "languages": [
+    "12\t(ANSI C99)",
+    "32769\t(MIPS assembler)"
+  ],
+  "swift_named_DIE_lines": 0,
+  "executed_target": false
+}

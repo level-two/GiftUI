@@ -1796,6 +1796,7 @@ Specification:
 - [Bounded RFC-014 implementation sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md).
 
 - [SPEC-015 Implementation Plan](../implementation-plans/spec-015-implementation-plan.md)
+- [P08 Stack Materialization Design (draft; no resource amendment)](../implementation-designs/spec-015-p08-stack-materialization.md)
 - [SPEC-015 Conformance Report](../conformance/spec-015-conformance.md)
 - [Generated Workload and Presets Implementation Design](../implementation-designs/spec-015-generated-workload-and-presets.md)
 - [Wake and Pacing State Implementation Design](../implementation-designs/spec-015-wake-and-pacing.md)
