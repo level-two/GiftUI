@@ -7,7 +7,17 @@ rerun1/1, prior control-resident2/2 and all older allowances remain closed.
 
 This new package permits one initial tooling/sizing pass and at most two grouped
 tooling/sizing corrective cycles, stopping after two unproductive cycles or a real
-contract/resource decision. Planned initial measured sizing is frozen; corrections 0/2.
+contract/resource decision. Current measured sizing passes; resource preflight
+rejects this realization. Corrections remain 0/2; no budget is reset.
+[Current result](p08-measured-sizing-stack-preflight-result.md) preserves 25 selected
+passes / 202 not-run, strict current layout and required stack lower bound 71,088.
+Backing 138,880 plus that stack is 209,968 > RAM ceiling 196,608 before omitted
+costs. Independent result review precedes cancellation of costly full controls/image
+for this source; affected resource work stops at the genuine realization/contract
+boundary. Unused tooling/sizing corrections do not authorize a source optimization
+or resource-limit change. No current linked image or complete upper bound claimed.
+
+Historical sizing source boundary:
 [Sizing freeze](p08-layout-measured-sizing-source-freeze.md) records exact Swift/C
 34,720-byte slots / 138,880 four-slot charge and fresh component qualification.
 [Independent sizing source review](p08-layout-measured-sizing-independent-source-review.md)

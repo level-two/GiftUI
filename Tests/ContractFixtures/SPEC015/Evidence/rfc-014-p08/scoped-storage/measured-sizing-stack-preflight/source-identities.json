@@ -1,0 +1,6 @@
+{
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "5bb99f992cb0ba4ef4aba0aa011cbc721abac9355bdaff087abb199a9ce11a66",
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": "932403c9ab5e359ef3beec018a8e234b56747fb1e9a7e8fff9b30b87eb319576",
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": "c0f13dfa35a11c6f627905d8663bcf716eef2dedb2221cd357380d48c045e51f",
+  "firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c": "31c36569948cbf3870ef15df8d25db6247a3434ce55d14d2616247855028f6f4"
+}

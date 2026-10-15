@@ -1,0 +1,54 @@
+{
+  "actual_artifacts": {
+    ".build/nrf52840/contracts/p08-counter-nl16wjri/result.json": {
+      "sha256": "4d4ea1191b78757eedb4cfac03e7e5f8fa45fabf5887edd93d6223660fe186c5",
+      "bytes": 3147988
+    },
+    ".build/nrf52840/contracts/p08-counter-nl16wjri/counter-model.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    ".build/nrf52840/contracts/p08-counter-nl16wjri/so07-layout-facts.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    ".build/nrf52840/contracts/p08-counter-nl16wjri/so07-layout-facts.json": {
+      "sha256": "e1a4e17f0cd6ff41e6688a97138931c6b11a8c9c4a3b7005afd8707550005254",
+      "bytes": 112721
+    },
+    ".build/contracts/p08-integrated-activity/20261015T230559596121Z-control-resident-measured-sizing-screen/invocation.json": {
+      "sha256": "858a3f7da7d81a9723abdb0779057d95b7c6bd1143f2e5fe5fc748f81c221a50",
+      "bytes": 673
+    },
+    ".build/contracts/p08-integrated-activity/20261015T230559596121Z-control-resident-measured-sizing-screen/result.json": {
+      "sha256": "8dc806d7536278951fe5f5429979974f6abb1fe08b0b41c34231c3ac869b861e",
+      "bytes": 1072
+    },
+    ".build/contracts/p08-integrated-activity/20261015T230559596121Z-control-resident-measured-sizing-screen/stdout.log": {
+      "sha256": "d8e07ddf869c5851d659ed68c4fe3e7484965b0e70f3b9193230a9392e7185e7",
+      "bytes": 258
+    },
+    ".build/contracts/p08-integrated-activity/20261015T230559596121Z-control-resident-measured-sizing-screen/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    ".build/nrf52840/contracts/p08-counter-nl16wjri/P08CounterRuntime.o": {
+      "sha256": "dd12ac00c0d5558e18b9ad1afc975a44c321a04eada6773723c82030cb105ea7",
+      "bytes": 2856576
+    }
+  },
+  "archive_sha256": "07f19772e73088b2f09fdfa65684c4fa84b34271e2f2e3ac07d31e010fb6264d",
+  "source_revision": "09ca9e0afb0f57a404525d88146f2911f2ed745a",
+  "flags": {
+    "fresh_focused": true,
+    "focused_passed": true,
+    "collection_complete": false,
+    "passed": false
+  },
+  "counts": {
+    "passed": 25,
+    "not_run": 202
+  },
+  "compiler_executed_during_analysis": false,
+  "fit": "notestablished"
+}
