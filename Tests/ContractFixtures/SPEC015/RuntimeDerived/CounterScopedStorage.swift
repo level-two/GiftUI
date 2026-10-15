@@ -1592,9 +1592,11 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
 fileprivate func p08ReuseRejectAction<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, route: StaticString, before: borrowing P08ReuseFingerprint, modelBefore: UInt8, oldAction: CounterProducedAction) -> Int
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     precondition(!host.owner.prepareProducedAction(oldAction))
-    precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore)
+    let unchangedAfterPrepare = p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore
+    precondition(unchangedAfterPrepare)
     precondition(!host.owner.deliverProducedAction(oldAction))
-    precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore); let checks = counterCheckHostFrame(control.pointee, value: 0)
+    let unchangedAfterDelivery = p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore
+    precondition(unchangedAfterDelivery); let checks = counterCheckHostFrame(control.pointee, value: 0)
     p08ReuseLabel(route, "action-stale")
     return checks
 }
@@ -1603,7 +1605,8 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
 fileprivate func p08ReuseRejectInput<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString, before: borrowing P08ReuseFingerprint, modelBefore: UInt8, oldEvent: NormalizedPointerEvent) -> Void
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
-    precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore)
+    let unchangedAfterInput = p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore
+    precondition(unchangedAfterInput)
     p08ReuseLabel(route, "input-stale")
 }
 
@@ -1613,7 +1616,8 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
     precondition(transcript.pointee.admission!.submit(stateChange: 8).result == .unavailable)
     precondition(transcript.pointee.admission!.submit(completion: 0).result == .unavailable)
-    precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore)
+    let unchangedAfterAdmission = p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore
+    precondition(unchangedAfterAdmission)
     p08ReuseLabel(route, "admission-stale")
 }
 
@@ -1625,7 +1629,8 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     precondition(!transcript.pointee.application!.startSource())
     _ = transcript.pointee.application!.installObservation()
     transcript.pointee.application!.stopDelivery()
-    precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore)
+    let unchangedAfterSource = p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore
+    precondition(unchangedAfterSource)
     p08ReuseLabel(route, "source-stale")
 }
 

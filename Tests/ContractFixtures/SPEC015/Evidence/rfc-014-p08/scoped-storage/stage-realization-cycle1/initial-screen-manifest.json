@@ -1,0 +1,83 @@
+{
+  "kind": "immutable-initial-typed-stage-failure",
+  "source_commit": "f67abf33b8a5724d1dde0a0f5954befa5cfe9b60",
+  "source_sha256": "db3b91b9ab935043032ce3d3182dd384fca40b3d18f016d73820e62a24877e95",
+  "wrapper_argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    "--fresh-focused",
+    "--select-family",
+    "so07-layout-facts"
+  ],
+  "wrapper_exit": 1,
+  "compiler": ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "fresh_focused": true,
+  "focused_passed": false,
+  "collection_complete": false,
+  "passed": false,
+  "archive_sha256": "b6e04c656d0a01fe8f9754416cf2e968830037e9497c68c6ef13d7aff041a15e",
+  "files": [
+    {
+      "original_path": ".build/contracts/p08-integrated-activity/20261015T205705254506Z-stage-realization-initial-screen/result.json",
+      "bytes": 1039,
+      "sha256": "1fc14ce1ffc8e6d13202816b69fbfd825d9add4098fdbdede69bf88e2fd73cbc"
+    },
+    {
+      "original_path": ".build/nrf52840/contracts/p08-counter-x5t271zt/result.json",
+      "bytes": 3146138,
+      "sha256": "7f1013f65f4402f2c5eabed9780d7b24d5428e8ef6da93857a3abb6df6e9e326"
+    },
+    {
+      "original_path": ".build/nrf52840/contracts/p08-counter-x5t271zt/counter-model.log",
+      "bytes": 5838,
+      "sha256": "b0bf6b0a8ddd8ec88aa8e302b3ffd15351834fbdb40160adaa958365b0a05008"
+    },
+    {
+      "original_path": ".build/contracts/p08-integrated-activity/20261015T205705254506Z-stage-realization-initial-screen/stdout.log",
+      "bytes": 278,
+      "sha256": "83e4326406e4df02736cb0675de6c4b4aca3dcc69564d00242e88d59d4f8bb74"
+    },
+    {
+      "original_path": ".build/contracts/p08-integrated-activity/20261015T205705254506Z-stage-realization-initial-screen/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "diagnosis": "Four borrowed before parameter diagnostics, five precondition autoclosure capture sites; no layout or stack measurement produced.",
+  "commands_record": {
+    "count": 24,
+    "sha256": "9a675881ffe6ec581f73fbb26a224e64ce551896eb7097ebd6598dd0e2d72c7f",
+    "exact_storage": "Initial build result.json at its original path inside initial-screen.tar.xz"
+  },
+  "checks_summary": {
+    "passed": 23,
+    "failed": 1,
+    "not-run": 202,
+    "blocked": 1
+  },
+  "failed_or_blocked_checks": [
+    {
+      "name": "counter-model",
+      "family": "counter-model",
+      "exit": 1,
+      "passed": false,
+      "status": "failed",
+      "log_sha256": "b0bf6b0a8ddd8ec88aa8e302b3ffd15351834fbdb40160adaa958365b0a05008"
+    },
+    {
+      "name": "so07-layout-facts",
+      "family": "so07-layout-facts",
+      "exit": null,
+      "passed": false,
+      "status": "blocked"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "activity": "p08-stage-realization",
+  "correction_cycle": "1/2",
+  "input_commit": "f67abf33b8a5724d1dde0a0f5954befa5cfe9b60",
+  "source_sha256": "55e9026c25aa66f3374ccd81fa14ab6982e07aea2e3a95b2e2d9fae5c4295631",
+  "only_swift_change": "Five exact full-comparison expressions evaluated into owned Bool locals before precondition; no other Swift delta",
+  "borrowed_parameter_signatures_unchanged": 4,
+  "full_stale_comparisons": 5,
+  "baseline_constructions": 1,
+  "driver_sha256": "a8954dc3aa5b6cad8711296c177db7819dd492e95b6c8f29d1c2709f70d36dad",
+  "qualification": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-cycle1-applicability.json",
+  "qualification_sha256": "872baea16e6eb884c3721f34c924084d254046558c35a852d92f1ee69da27167",
+  "exact_component_receipts": 7,
+  "fresh_dependency_receipts_checked": 11,
+  "source_diff_xz_sha256": "4460cb57b0230416766e5bab042466a4ee60ef5fb8bb900d6d9746345bbb25db",
+  "source_diff_uncompressed_sha256": "cb5cdad9fa663577a355c3f657626079f3c64d88de95e809c12eefc2cd42c8fd",
+  "initial_manifest": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/stage-realization-source/manifest.json",
+  "initial_manifest_sha256": "daf6ca9c9aac34cb295755386f31c361adde8f971a2dd9964493519d6dd035d2",
+  "failure_manifest_sha256": "8c17b9df28adca3c1372fc7b93dc5c229c8f9f8cc51288dfb428a0f85dcbe980",
+  "profiles": {
+    "macos-dynamic": {
+      "scoped_labels": 384,
+      "scoped_labels_sha256": "7413b77f93bfadc6721358ed7425e1a8d350956b6759eb6c3bb6cf5399bab654",
+      "native_controls": [
+        "so06-native-exclusivity-module",
+        "so06-native-exclusivity-positive-link",
+        "so06-native-exclusivity-positive-execute",
+        "so06-native-exclusivity-negative-link",
+        "so06-native-exclusivity-negative-execute"
+      ],
+      "current_coverage": "not run"
+    },
+    "macos-static": {
+      "scoped_labels": 384,
+      "scoped_labels_sha256": "7413b77f93bfadc6721358ed7425e1a8d350956b6759eb6c3bb6cf5399bab654",
+      "native_controls": [
+        "so06-native-exclusivity-module",
+        "so06-native-exclusivity-positive-link",
+        "so06-native-exclusivity-positive-execute",
+        "so06-native-exclusivity-negative-link",
+        "so06-native-exclusivity-negative-execute"
+      ],
+      "current_coverage": "not run"
+    },
+    "raspberry-pi-armv6": {
+      "scoped_labels": 384,
+      "scoped_labels_sha256": "7413b77f93bfadc6721358ed7425e1a8d350956b6759eb6c3bb6cf5399bab654",
+      "native_controls": [],
+      "current_coverage": "not run"
+    },
+    "nrf52840-embedded": {
+      "scoped_labels": 202,
+      "scoped_labels_sha256": "d6fef666f0e9f77b4a33710cdef92aac5571386442e676440bf421a56111c1eb",
+      "native_controls": [],
+      "current_coverage": "not run"
+    }
+  },
+  "runtime_reuse_labels": [
+    "so06-reuse-dynamic-action-current",
+    "so06-reuse-dynamic-action-stale",
+    "so06-reuse-dynamic-admission-current",
+    "so06-reuse-dynamic-admission-stale",
+    "so06-reuse-dynamic-cleanup-backing-last",
+    "so06-reuse-dynamic-control-same-address",
+    "so06-reuse-dynamic-input-current",
+    "so06-reuse-dynamic-input-stale",
+    "so06-reuse-dynamic-inventory-two-hosts",
+    "so06-reuse-dynamic-raw-namespace-collision",
+    "so06-reuse-dynamic-source-current",
+    "so06-reuse-dynamic-source-stale",
+    "so06-reuse-dynamic-terminal-old-host",
+    "so06-reuse-static-action-current",
+    "so06-reuse-static-action-stale",
+    "so06-reuse-static-admission-current",
+    "so06-reuse-static-admission-stale",
+    "so06-reuse-static-cleanup-backing-last",
+    "so06-reuse-static-control-same-address",
+    "so06-reuse-static-input-current",
+    "so06-reuse-static-input-stale",
+    "so06-reuse-static-inventory-two-hosts",
+    "so06-reuse-static-raw-namespace-collision",
+    "so06-reuse-static-source-current",
+    "so06-reuse-static-source-stale",
+    "so06-reuse-static-terminal-old-host"
+  ],
+  "screen_argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    "--fresh-focused",
+    "--select-family",
+    "so07-layout-facts"
+  ],
+  "current_corrected_source_execution": "not run; independent focused source review first"
+}

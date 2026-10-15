@@ -1,8 +1,11 @@
 # P08 stage realization — grouped design/correction activity
 
-Status: **initial source independently reviewed PASS at `8ae0fb1c`; screen not run**.
+Status: **initial screen compile failed; correction 1/2 frozen for focused review**.
+The [correction and immutable failure packet](p08-stage-realization-cycle1-source-freeze.md)
+preserve 23 preparation passes, the borrowed-baseline autoclosure diagnostics,
+blocked layout and 202 not-run controls. Corrected source has not been executed.
 [Independent source review](p08-stage-realization-independent-source-review.md)
-permits the initial registered screen under this activity; no fit result exists.
+permitted the initial registered screen under this activity; no fit result exists.
 [Independent design review](p08-stage-realization-independent-design-review.md)
 finds the private realization within contract; initial implementation may proceed
 under this activity, with independent source review before the screen. Entry `7ee1c3e0`.
@@ -16,7 +19,8 @@ source candidate with independent design/source review and early registered nRF
 screen, plus **at most two cause-grouped corrective cycles**. Stop after two
 consecutive unproductive corrections. Mechanical source-review fixes are grouped
 within the applicable correction cycle, not new user micro-approval barriers.
-Current corrective cycles: **0/2**. Design review passed; initial source is frozen
+Current corrective cycles: **1/2 consumed**, productivity pending the affected run.
+Design review passed; initial source is frozen
 under this authorization. No compiler/build, runtime, screen or hardware run
 precedes independent source review; no routine permission request is required.
 
@@ -50,7 +54,8 @@ One Swift fixture plus exact qualification/driver-pin and evidence changes are
 implemented in the [initial source freeze](p08-stage-realization-source-freeze.md),
 after independent design PASS `d7df2c80`. The registered initial nRF module/layout
 screen precedes expensive validation and rejects any oversized reachable lower
-bound. Source candidate 1 is frozen; no screen, fit or acceptance result exists;
-corrections remain **0/2**. Compiler-free qualification/hash/static coverage,
-formatter, governance, links and whitespace checks pass. No compiler, suite,
-build, runtime or image call was made.
+bound. The initial screen then failed compilation as recorded above; correction
+**1/2** is now frozen, with no corrected-source run, fit or acceptance result.
+Compiler-free qualification/hash/static coverage, formatter, governance, links
+and whitespace checks pass. Only the preserved initial screen has executed;
+no additional compiler, suite, build, runtime or image call accompanied correction 1.
