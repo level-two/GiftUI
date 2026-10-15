@@ -1,0 +1,34 @@
+{
+  "activity": "p08-suite-cycle2",
+  "kind": "same-cycle-source-followup-not-compiler-evidence",
+  "corrective_cycle": 2,
+  "maximum_cycles": 2,
+  "files": {
+    "scripts/contracts/check-spec-015-counter.py": "a13070fd8844dbfe54e24cba493c5eb46da673ddb9861940898a0a148353d0ba",
+    "scripts/contracts/p08_check_collection.py": "d8d9fa4e92d7a0ad04173b401fbb332750337dd2d2e34bd72f3a7bbf396e1b41",
+    "scripts/contracts/test_p08_check_collection.py": "8373d8d300969153a4033851a8284ea0b43d687cf545779e4fa90a56017955eb",
+    "scripts/contracts/run-spec-015.sh": "afb2a89b44c33e771196cd1b66c3c72a9d7a7be190d1e65c4b969a4da281fc43",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "ce34c4af769da34c3f122ebe949ae5c90d789696a7af6f8b5414db208829d333",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": "b49e2fb1466b38e26e2e6da3f6267760a935476acfe8066190ee614f81a67c12",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": "553929d76928282d94faa15dc544ae369cca2f523bdb70d3fbace4f415c112f3",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": "342585dd23bc2916176535bfdb9efd7ba115a138047afe3fcda082acbf7adf8e",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-suite-cycle2-followup1-applicability.json": "53bcd4c2cc2ef6ec581e317a3e05e8a574fb3e537d56762c29d1068dac24fb53",
+    "docs/implementation-designs/spec-015-p08-scoped-storage-ownership.md": "552c6ff5fb11548a1cfe05d18afc3933acf76582c814588a65a45fafd4405be1"
+  },
+  "validation": {
+    "python_tests": 29,
+    "python_ast": "pass",
+    "shell_syntax": "pass",
+    "whitespace": "pass",
+    "compiler_invocations": 0,
+    "images": 0
+  },
+  "predecessor_source": "b1d29b7a",
+  "followup": 1,
+  "failed_validation_receipts": {
+    ".build/contracts/p08-counter-r5dmspns/result.json": "b50939b79cb07abe2c31b805c090cbd5c40bac6acc54a4400ed4bf2dd3dea3cb",
+    ".build/contracts/p08-counter-njwr7tmm/result.json": "8de65ef47a811a26909aa3afbacc3176d1219251652eafce47cf02054f1fddb9",
+    ".build/raspberry-pi/contracts/p08-counter-he4jimuq/result.json": "5837d5245b17f660781386871b57300aebd34ed6ca52f4838991913504c65f10",
+    ".build/nrf52840/contracts/p08-counter-g5pibw32/result.json": "6913b3e67afabc2807cd95c4626acef05cfbf9aeb709a3a16f9d03a162a5f116"
+  }
+}

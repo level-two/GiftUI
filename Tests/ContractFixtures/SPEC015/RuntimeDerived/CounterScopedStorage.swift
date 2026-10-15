@@ -1237,7 +1237,7 @@ fileprivate func withP08StaticReservation<Result>(surplus: Bool = false, capacit
             let slotStart = UInt(bitPattern: g4)
             let slotEnd = slotStart.addingReportingOverflow(UInt(MemoryLayout<QualifiedRender?>.stride))
             precondition(!reservationEnd.overflow && !slotEnd.overflow && slotStart >= reservationStart && slotEnd.partialValue <= reservationEnd.partialValue)
-        withUnsafeMutablePointer(to: &reservation.c0) { c0 in
+        return withUnsafeMutablePointer(to: &reservation.c0) { c0 in
         withUnsafeMutablePointer(to: &reservation.h0) { h0 in
         withUnsafeMutablePointer(to: &reservation.r0) { r0 in
         withUnsafeMutablePointer(to: &reservation.r1) { r1Reservation in
