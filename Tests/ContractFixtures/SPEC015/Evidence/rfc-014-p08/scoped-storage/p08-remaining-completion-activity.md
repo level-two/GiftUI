@@ -1,19 +1,18 @@
 # P08 remaining completion activity — 2026-10-15
 
-Status: **active; four full collections PASS; two early images and resource/exit review next**.
-See the [full collection checkpoint](p08-remaining-full-collections-result.md).
-See the [final focused result](p08-remaining-layout-cycle2-result.md). Both
-corrective cycles are consumed (2/2); historical pending wording below records
-the entry and corresponding source steps. No automatic additional repair remains.
-The [initial diagnosis](p08-remaining-layout-initial-diagnosis.md) and
-[cycle 1 diagnosis](p08-remaining-layout-cycle1-diagnosis.md) preserve both failed
-focused measurements. Cycle 1 removed the insufficient-reservation trap;
-unused region-array initialization and compiler merging remained.
-[Final correction 2 source freeze](p08-remaining-layout-cycle2-source-freeze.md)
-implements the independently assessed scalar traversal and bounded return proof.
-**2/2 corrective cycles consumed**. Independent source review, focused materialization
-and all four full collections have passed. No automatic third repair variant is
-authorized. Image and complete resource-fit evidence remain pending; no fit pass is claimed.
+Status: **resource reconciliation complete; fit FAIL; independent Strong exit review pending**.
+The [current resource/result record](p08-remaining-images-resource-result.md)
+preserves both successful image builds and the actual reachable nRF frame lower
+bound 30,096 bytes versus 27,648. Both corrective cycles are consumed (2/2); no
+automatic additional repair remains. The [four full collections](p08-remaining-full-collections-result.md)
+and [final focused materialization](p08-remaining-layout-cycle2-result.md) pass.
+The [initial diagnosis](p08-remaining-layout-initial-diagnosis.md),
+[cycle 1 diagnosis](p08-remaining-layout-cycle1-diagnosis.md) and
+[final source freeze](p08-remaining-layout-cycle2-source-freeze.md) remain immutable
+provenance. Current caller hashes/hits are refreshed; retained analyzer/I4-07 and
+complete allocator/IRQ/Dynamic cost gaps remain explicit. No fit/P08/Spec pass,
+target execution, hardware result or resource waiver is claimed.
+
 Entry is clean `6c965007`, with source `73e5dcf1`. Eugene explicitly requested:
 “Please proceed with the remaining p08 tasks”, after the completed
 [collected-suite repair batch](p08-suite-collection-result.md). Existing instructions

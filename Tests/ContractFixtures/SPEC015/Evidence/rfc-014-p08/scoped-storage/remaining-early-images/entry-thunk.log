@@ -1,0 +1,8 @@
+
+.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf:     file format elf32-littlearm
+
+
+Disassembly of section text:
+
+0005c206 <giftui_rfc014_counter_entry>:
+   5c206:	f000 b800 	b.w	5c20a <giftui_rfc014_counter_entry+0x4>

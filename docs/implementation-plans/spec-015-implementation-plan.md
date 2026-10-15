@@ -23,12 +23,14 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current remaining P08 activity — **ACTIVE, 2026-10-15**.
-Eugene authorized completion of the remaining tasks. The [activity record](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-completion-activity.md)
-orders missing layout instrumentation, exact current coverage, target images/resource
-evidence and independent exit review. Initial correction budget 0/2; historical
-budgets remain closed. Execution is sequential, with Economy runs/monitoring and
-Strong ownership/resource review. The completed repair batch below remains evidence.
+Current remaining P08 boundary — **FIT FAIL; independent Strong exit review pending, 2026-10-15**.
+The [activity record](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-completion-activity.md) consumed both corrective cycles (2/2). Four full profile collections and
+both registered early image builds pass. The [resource reconciliation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-images-resource-result.md)
+pins a reachable nRF frame needing at least 30,096 bytes against the unchanged
+27,648-byte main-stack ceiling. Complete IRQ/allocator/Dynamic cost proof remains
+open. P08/R07/T8.1/HC-RD-003 stay open; I4-07/analyzer, P09–P12, hardware and
+timing boundaries remain. No further automatic source repair, new variant or
+resource waiver is authorized. Earlier boundary records below remain historical.
 
 Current P08 collected-suite repair batch — **COMPLETE; independent package review PASS, 2026-10-15**.
 The [batch result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-suite-collection-result.md) records the full registered baseline collection,

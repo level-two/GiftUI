@@ -1,0 +1,634 @@
+[
+  {
+    "build": ".build/contracts/p08-counter-_hfz7w26",
+    "result_sha256": "35813e962b25575fc5b24a908903662136d3a317fbc33cf48dcec4feddb32f32",
+    "complete": true,
+    "passed": true,
+    "runtime_summary": [
+      "P08 counter components assertions=1736082 failures=0"
+    ],
+    "reuse_labels": [
+      {
+        "name": "so06-reuse-dynamic-inventory-two-hosts",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-dynamic-inventory-two-hosts",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "d78fea9686d72fa15c33b42e3a4234a8e61bcc94316e2f9d53e63e494e9c32fb"
+      },
+      {
+        "name": "so06-reuse-dynamic-control-same-address",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-dynamic-control-same-address",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "d78fea9686d72fa15c33b42e3a4234a8e61bcc94316e2f9d53e63e494e9c32fb"
+      },
+      {
+        "name": "so06-reuse-dynamic-terminal-old-host",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-dynamic-terminal-old-host",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "d78fea9686d72fa15c33b42e3a4234a8e61bcc94316e2f9d53e63e494e9c32fb"
+      },
+      {
+        "name": "so06-reuse-dynamic-raw-namespace-collision",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-dynamic-raw-namespace-collision",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "d78fea9686d72fa15c33b42e3a4234a8e61bcc94316e2f9d53e63e494e9c32fb"
+      },
+      {
+        "name": "so06-reuse-dynamic-action-stale",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-dynamic-action-stale",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "d78fea9686d72fa15c33b42e3a4234a8e61bcc94316e2f9d53e63e494e9c32fb"
+      },
+      {
+        "name": "so06-reuse-dynamic-action-current",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-dynamic-action-current",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "d78fea9686d72fa15c33b42e3a4234a8e61bcc94316e2f9d53e63e494e9c32fb"
+      },
+      {
+        "name": "so06-reuse-dynamic-input-stale",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-dynamic-input-stale",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "d78fea9686d72fa15c33b42e3a4234a8e61bcc94316e2f9d53e63e494e9c32fb"
+      },
+      {
+        "name": "so06-reuse-dynamic-input-current",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-dynamic-input-current",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "d78fea9686d72fa15c33b42e3a4234a8e61bcc94316e2f9d53e63e494e9c32fb"
+      },
+      {
+        "name": "so06-reuse-dynamic-admission-stale",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-dynamic-admission-stale",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "d78fea9686d72fa15c33b42e3a4234a8e61bcc94316e2f9d53e63e494e9c32fb"
+      },
+      {
+        "name": "so06-reuse-dynamic-admission-current",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-dynamic-admission-current",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "d78fea9686d72fa15c33b42e3a4234a8e61bcc94316e2f9d53e63e494e9c32fb"
+      },
+      {
+        "name": "so06-reuse-dynamic-source-stale",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-dynamic-source-stale",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "d78fea9686d72fa15c33b42e3a4234a8e61bcc94316e2f9d53e63e494e9c32fb"
+      },
+      {
+        "name": "so06-reuse-dynamic-source-current",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-dynamic-source-current",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "d78fea9686d72fa15c33b42e3a4234a8e61bcc94316e2f9d53e63e494e9c32fb"
+      },
+      {
+        "name": "so06-reuse-dynamic-cleanup-backing-last",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-dynamic-cleanup-backing-last",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "d78fea9686d72fa15c33b42e3a4234a8e61bcc94316e2f9d53e63e494e9c32fb"
+      }
+    ],
+    "exclusivity": [
+      {
+        "name": "so06-native-exclusivity-module",
+        "exit": 0,
+        "status": "passed",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "so06-native-exclusivity-positive-link",
+        "exit": 0,
+        "status": "passed",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "so06-native-exclusivity-positive-execute",
+        "exit": 0,
+        "status": "passed",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "so06-native-exclusivity-negative-link",
+        "exit": 0,
+        "status": "passed",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "so06-native-exclusivity-negative-execute",
+        "exit": -6,
+        "status": "passed",
+        "log_sha256": "56fc34817b521025d4247524fdb2a24d50331906518026a393c36264fcd0b316"
+      }
+    ]
+  },
+  {
+    "build": ".build/contracts/p08-counter-apvcuupb",
+    "result_sha256": "88c01817b172c9e6750432ec9897041ef0f4c617643b1066d9daeb0872c8f769",
+    "complete": true,
+    "passed": true,
+    "runtime_summary": [
+      "P08 counter components assertions=1736158 failures=0"
+    ],
+    "reuse_labels": [
+      {
+        "name": "so06-reuse-static-inventory-two-hosts",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-static-inventory-two-hosts",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "9ede767a76367f88408f47c3cebd287b5d8ce912f8acc0863b4b1a5f9cf7a696"
+      },
+      {
+        "name": "so06-reuse-static-control-same-address",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-static-control-same-address",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "9ede767a76367f88408f47c3cebd287b5d8ce912f8acc0863b4b1a5f9cf7a696"
+      },
+      {
+        "name": "so06-reuse-static-terminal-old-host",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-static-terminal-old-host",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "9ede767a76367f88408f47c3cebd287b5d8ce912f8acc0863b4b1a5f9cf7a696"
+      },
+      {
+        "name": "so06-reuse-static-raw-namespace-collision",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-static-raw-namespace-collision",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "9ede767a76367f88408f47c3cebd287b5d8ce912f8acc0863b4b1a5f9cf7a696"
+      },
+      {
+        "name": "so06-reuse-static-action-stale",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-static-action-stale",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "9ede767a76367f88408f47c3cebd287b5d8ce912f8acc0863b4b1a5f9cf7a696"
+      },
+      {
+        "name": "so06-reuse-static-action-current",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-static-action-current",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "9ede767a76367f88408f47c3cebd287b5d8ce912f8acc0863b4b1a5f9cf7a696"
+      },
+      {
+        "name": "so06-reuse-static-input-stale",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-static-input-stale",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "9ede767a76367f88408f47c3cebd287b5d8ce912f8acc0863b4b1a5f9cf7a696"
+      },
+      {
+        "name": "so06-reuse-static-input-current",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-static-input-current",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "9ede767a76367f88408f47c3cebd287b5d8ce912f8acc0863b4b1a5f9cf7a696"
+      },
+      {
+        "name": "so06-reuse-static-admission-stale",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-static-admission-stale",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "9ede767a76367f88408f47c3cebd287b5d8ce912f8acc0863b4b1a5f9cf7a696"
+      },
+      {
+        "name": "so06-reuse-static-admission-current",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-static-admission-current",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "9ede767a76367f88408f47c3cebd287b5d8ce912f8acc0863b4b1a5f9cf7a696"
+      },
+      {
+        "name": "so06-reuse-static-source-stale",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-static-source-stale",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "9ede767a76367f88408f47c3cebd287b5d8ce912f8acc0863b4b1a5f9cf7a696"
+      },
+      {
+        "name": "so06-reuse-static-source-current",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-static-source-current",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "9ede767a76367f88408f47c3cebd287b5d8ce912f8acc0863b4b1a5f9cf7a696"
+      },
+      {
+        "name": "so06-reuse-static-cleanup-backing-last",
+        "family": "runtime",
+        "identity": {
+          "observation": {
+            "kind": "exact-line-count",
+            "line": "so06-reuse-static-cleanup-backing-last",
+            "count": 1
+          },
+          "requires": [
+            "execute"
+          ],
+          "evidence": "execute.log"
+        },
+        "exit": null,
+        "passed": true,
+        "status": "passed",
+        "prerequisites": [],
+        "evidence": "execute.log",
+        "evidence_sha256": "9ede767a76367f88408f47c3cebd287b5d8ce912f8acc0863b4b1a5f9cf7a696"
+      }
+    ],
+    "exclusivity": [
+      {
+        "name": "so06-native-exclusivity-module",
+        "exit": 0,
+        "status": "passed",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "so06-native-exclusivity-positive-link",
+        "exit": 0,
+        "status": "passed",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "so06-native-exclusivity-positive-execute",
+        "exit": 0,
+        "status": "passed",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "so06-native-exclusivity-negative-link",
+        "exit": 0,
+        "status": "passed",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "so06-native-exclusivity-negative-execute",
+        "exit": -6,
+        "status": "passed",
+        "log_sha256": "05377039794c8cbe46bdf1834502d40c802729c7f040138debbafc28e9885402"
+      }
+    ]
+  }
+]

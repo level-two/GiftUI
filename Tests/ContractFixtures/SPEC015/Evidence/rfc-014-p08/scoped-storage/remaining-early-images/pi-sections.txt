@@ -1,0 +1,64 @@
+There are 55 section headers, starting at offset 0xf1ad94:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .interp           PROGBITS        000001d4 0001d4 000019 00   A  0   0  1
+  [ 2] .note.ABI-tag     NOTE            000001f0 0001f0 000020 00   A  0   0  4
+  [ 3] .note.gnu.build-id NOTE            00000210 000210 000024 00   A  0   0  4
+  [ 4] .dynsym           DYNSYM          00000234 000234 0303c0 10   A  8   1  4
+  [ 5] .gnu.version      VERSYM          000305f4 0305f4 006078 02   A  4   0  2
+  [ 6] .gnu.version_r    VERNEED         0003666c 03666c 0001a0 00   A  8   6  4
+  [ 7] .gnu.hash         GNU_HASH        0003680c 03680c 016e8c 00   A  4   0  4
+  [ 8] .dynstr           STRTAB          0004d698 04d698 108bd3 00   A  0   0  1
+  [ 9] .rel.dyn          REL             0015626c 15626c 02ce00 08   A  4   0  4
+  [10] .ARM.exidx        ARM_EXIDX       0018306c 18306c 039860 00  AL 34   0  4
+  [11] .rel.plt          REL             001bc8cc 1bc8cc 0003f0 08  AI  4  48  4
+  [12] .ARM.extab        PROGBITS        001bccbc 1bccbc 0100d4 00   A  0   0  4
+  [13] swift5_protocols  PROGBITS        001ccd90 1ccd90 00037c 00  Ao  0   0  4
+  [14] swift5_protocol_conformances PROGBITS        001cd10c 1cd10c 002350 00  Ao  0   0  4
+  [15] swift5_type_metadata PROGBITS        001cf45c 1cf45c 001164 00  Ao  0   0  4
+  [16] swift5_fieldmd    PROGBITS        001d05c0 1d05c0 0107b0 00  Ao  0   0  4
+  [17] swift5_builtin    PROGBITS        001e0d70 1e0d70 000f78 00  Ao  0   0  4
+  [18] swift5_assocty    PROGBITS        001e1ce8 1e1ce8 006c58 00  Ao  0   0  4
+  [19] swift5_capture    PROGBITS        001e8940 1e8940 00136c 00  Ao  0   0  4
+  [20] swift5_reflstr    PROGBITS        001e9cb0 1e9cb0 00aeb1 00  Ao  0   0 16
+  [21] swift5_typeref    PROGBITS        001f4b62 1f4b62 00c67d 00  Ao  0   0  2
+  [22] swift5_mpenum     PROGBITS        002011e0 2011e0 000550 00  Ao  0   0  4
+  [23] swift5_replace    PROGBITS        00201730 201730 000000 00  Ao  0   0  1
+  [24] swift5_replac2    PROGBITS        00201730 201730 000000 00  Ao  0   0  1
+  [25] swift5_accessible_functions PROGBITS        00201730 201730 000000 00  Ao  0   0  1
+  [26] swift5_runtime_attributes PROGBITS        00201730 201730 000000 00  Ao  0   0  1
+  [27] swift5_tests      PROGBITS        00201730 201730 000000 00  Ao  0   0  1
+  [28] swift5_entry      PROGBITS        00201730 201730 000008 00  Ao  0   0  4
+  [29] .swift_modhash    PROGBITS        00201738 201738 0001b0 00  Ao  0   0  1
+  [30] swift5_type_metadata_2 PROGBITS        002018e8 2018e8 0000e4 00  Ao  0   0  4
+  [31] .lldbsummaries    PROGBITS        002019cc 2019cc 000046 00  Ao  0   0  1
+  [32] .eh_frame_hdr     PROGBITS        00201a14 201a14 00000c 00   A  0   0  4
+  [33] .eh_frame         PROGBITS        00201a20 201a20 000004 00   A  0   0  4
+  [34] .text             PROGBITS        00211a28 201a28 663840 00 AXo  0   0  8
+  [35] .init             PROGBITS        00875268 865268 00000c 00  AX  0   0  4
+  [36] .fini             PROGBITS        00875274 865274 000008 00  AX  0   0  4
+  [37] .plt              PROGBITS        00875280 865280 000800 00  AX  0   0 16
+  [38] .tbss             NOBITS          00875a80 865a80 000004 00 WAT  0   0  4
+  [39] .fini_array       FINI_ARRAY      00885a80 865a80 000004 04  WA  0   0  4
+  [40] .init_array       INIT_ARRAY      00885a84 865a84 000018 00  WA  0   0  4
+  [41] .data.rel.ro      PROGBITS        00885aa0 865aa0 015bac 00 WAo  0   0  8
+  [42] .dynamic          DYNAMIC         0089b64c 87b64c 000100 08  WA  8   0  4
+  [43] .got              PROGBITS        0089b74c 87b74c 0009f8 00  WA  0   0  4
+  [44] .relro_padding    NOBITS          0089c144 87c144 000ebc 00  WA  0   0  1
+  [45] .rodata           PROGBITS        008ac150 87c150 0f6828 00 WAMSo  0   0 16
+  [46] .data             PROGBITS        009a2978 972978 009550 00 WAo  0   0  8
+  [47] .tm_clone_table   PROGBITS        009abec8 97bec8 000000 00  WA  0   0  4
+  [48] .got.plt          PROGBITS        009abec8 97bec8 000204 00  WA  0   0  4
+  [49] .bss              NOBITS          009ac0d0 97c0cc 02ba74 00 WAo  0   0 16
+  [50] .ARM.attributes   ARM_ATTRIBUTES  00000000 97c0cc 00002f 00      0   0  1
+  [51] .comment          PROGBITS        00000000 97c0fb 000109 01  MS  0   0  1
+  [52] .symtab           SYMTAB          00000000 97c204 199310 10     54 92406  4
+  [53] .shstrtab         STRTAB          00000000 b15514 0002ac 00      0   0  1
+  [54] .strtab           STRTAB          00000000 b157c0 4055d2 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  D (mbind), y (purecode), p (processor specific)

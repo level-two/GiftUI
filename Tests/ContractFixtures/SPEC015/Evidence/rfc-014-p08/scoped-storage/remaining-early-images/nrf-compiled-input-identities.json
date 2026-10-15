@@ -1,0 +1,3411 @@
+{
+  "compile_commands_sha256": "e8f2837ed9fc25620e0ba30908c586bda9f97c8ed3acee223e6b1f46a2acf4f7",
+  "kind": "existing build recipe/input/output identities only; no compilation or target execution",
+  "identities": [
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-c5_asovq/Counter.swift",
+      "bytes": 2556,
+      "sha256": "49481900df254eccd291ecf44f1f913357778bf5ad167e226113a9e16ecdce97"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-c5_asovq/CounterSchema.swift",
+      "bytes": 1250,
+      "sha256": "a3a24ab22fdf75c7d2b0fdb90d86755dc377747e0ed663f1c06bac7dbc0dde41"
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-c5_asovq/CounterTable.swift",
+      "bytes": 1393,
+      "sha256": "9c1a50d90b57b9f625986cbb7a37fcefc56234bfb0f1e0b2a10abd7ab73efd54"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/app.dir/src/counter_main.c.obj",
+      "bytes": 5744,
+      "sha256": "dee93263d1ff8b518421e1cdad8ac8da769341a01b79d2acf2cc55dae3c44e6f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/app.dir/src/fault.c.obj",
+      "bytes": 6188,
+      "sha256": "3224e6719ed5a830c06c4d8558928f1a9ffa0f5c5f7d85207496dc6147bc612d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/app.dir/src/spi_tft.c.obj",
+      "bytes": 37632,
+      "sha256": "c534cc2708484386a134ef982c5b6b5a8966d6b13e6883c791a2bcd63c50a2cb"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/app.dir/src/stubs.c.obj",
+      "bytes": 3180,
+      "sha256": "918aaf8287ca85982b8f4cf7cc27ad931fbac6bd4db5004da035a152cb95bc09"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/ActionHandler.swift.obj",
+      "bytes": 27884,
+      "sha256": "b49d51ad4cf72fd60ebf9268bf799d7ab74338d77e012af8df1a84fbaa328c4f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/BoundedText.swift.obj",
+      "bytes": 6016,
+      "sha256": "deb7a0258631fa7f9cd3574a4ddc9c6c5ef4c1ea6dba7c31a1aa5717c9f792b2"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/Button.swift.obj",
+      "bytes": 672,
+      "sha256": "29841bf11fa113392b987ab8e444b1b2298ae3b008018e3cc6ba5b376b620f93"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/Canvas.swift.obj",
+      "bytes": 672,
+      "sha256": "29841bf11fa113392b987ab8e444b1b2298ae3b008018e3cc6ba5b376b620f93"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/Color.swift.obj",
+      "bytes": 9152,
+      "sha256": "cd985d8e21b2730231fcfc321923afc97d8e8dfff6bfd1c561ad86025db0c4fb"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift.obj",
+      "bytes": 1272,
+      "sha256": "6d9c99c76843dce721855037a9f3040000b94d2f2a9b9aa84266f4a4f1c42efb"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/Disabled.swift.obj",
+      "bytes": 1476,
+      "sha256": "f4b5edaa5f76cb7c929c163b259d91e256f43d73f7ec5a2e7421f508c01e2ffe"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/DrawingStyles.swift.obj",
+      "bytes": 3268,
+      "sha256": "e15bd7cb3412c856c2c1ff0362a4733613a969ee9e0edc0438ec5b5dda060a0d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/DrawingSurface.swift.obj",
+      "bytes": 8492,
+      "sha256": "8cf4f9ac9b9cb2baaa6401d9c49720bed2a70d6dfaa506c572a01e62f2b8aa93"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift.obj",
+      "bytes": 22912,
+      "sha256": "e6128cc858a64518519e16c95b97a078b069303d39fd99d55fcbbcebce8d212b"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutContainers.swift.obj",
+      "bytes": 5400,
+      "sha256": "9dbb1f7e8365cac9f520e693894bbf909356cf4c54d46c3b6debe3e0c7a16a5d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutModifiers.swift.obj",
+      "bytes": 6632,
+      "sha256": "a4feff7e56ba7424a2271f57679087292869940a0635a572bed9edc24e10d6c7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutValues.swift.obj",
+      "bytes": 10736,
+      "sha256": "d5ae8d8c3ed425daa90dc86a920f8284a48adbe24c9e4a24b3891e0191b8087c"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift.obj",
+      "bytes": 3180,
+      "sha256": "6b7ff68113681a1c29459ddaa2833f0ad5833ab6d376fb138579bb8b9a4ca5bd"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/StyleModifiers.swift.obj",
+      "bytes": 2812,
+      "sha256": "84f6a3ddace3ecde826a16a1c98cba1713145c2d03a2275ac50635c7414a9466"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUI.dir/Users/eugene/work/GiftUI/Sources/GiftUI/Text.swift.obj",
+      "bytes": 3948,
+      "sha256": "cceec0d3e19749acbb4797ad60b6fd1be9875a74b5029688dddebb0df3aefe47"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIBackendIntegration.dir/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift.obj",
+      "bytes": 28444,
+      "sha256": "93ceba21e58540b0b7799c66b98236d114e1aee9ba48204b6a323f93885b7842"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIBackendIntegration.dir/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift.obj",
+      "bytes": 684,
+      "sha256": "72e5714c4e1b165d2c9661f75c6d791b287608519b8dc66db0afc661689a2089"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIBackendIntegration.dir/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift.obj",
+      "bytes": 684,
+      "sha256": "72e5714c4e1b165d2c9661f75c6d791b287608519b8dc66db0afc661689a2089"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIBackendIntegration.dir/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift.obj",
+      "bytes": 1128,
+      "sha256": "17db6e05ec0bdf264b7efdb103341885f492033a3cee5d25c191eb4d16cebae7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIBackendIntegration.dir/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift.obj",
+      "bytes": 3480,
+      "sha256": "6a1406316b5ed0d28297ea0db2fb919f3de5ebdf36a0a48e9ef82bc85b310009"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIBackendIntegration.dir/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift.obj",
+      "bytes": 684,
+      "sha256": "72e5714c4e1b165d2c9661f75c6d791b287608519b8dc66db0afc661689a2089"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIBackendIntegration.dir/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendOwnerFailureAdapter.swift.obj",
+      "bytes": 4824,
+      "sha256": "42447ba33536c0f18decb50c784551822952ebb9e7fe0f848ec154b94c97d95b"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIBackendIntegration.dir/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift.obj",
+      "bytes": 2960,
+      "sha256": "7db8daca1ff3c8238c6042ddd9675e77d70dd306e673d9c7c3c5c7e8562dd25f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIBackendIntegration.dir/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift.obj",
+      "bytes": 4336,
+      "sha256": "81f9d8dedb6e2badadf4997ec98e68ff2935b7b1a2ed50d57194580b7baaf7ec"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIBackendIntegration.dir/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift.obj",
+      "bytes": 6596,
+      "sha256": "ff60cb33b04536cb84035bdb0ef6ac704aff11d88907838d55e02a0a8ad1e041"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUICapabilities.dir/Users/eugene/work/GiftUI/Sources/GiftUICapabilities/GiftUICapabilities.swift.obj",
+      "bytes": 109624,
+      "sha256": "fd308f25e127c0b674b381fa64fe80a987a556da8e192334ebb2ac491d674d6a"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIDisplayCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIDisplayCore/DisplayContracts.swift.obj",
+      "bytes": 26628,
+      "sha256": "0800ccbcf72168f7519beed5ce232483f952ed9e29803201e63cf600ee758714"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIDisplayCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIDisplayCore/SurfaceDisplayContributionAdapter.swift.obj",
+      "bytes": 1424,
+      "sha256": "438d4aa8f794b86710068b1506f5a86b5f62d0d88b38332c7f158306eab0107b"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIDrawing.dir/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasInvocationSource.swift.obj",
+      "bytes": 680,
+      "sha256": "1a657c9d69f4a347a77fca6b0f0e99700f1bff89d6e447fda18b15c5b66c2aad"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIDrawing.dir/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasPlanProducer.swift.obj",
+      "bytes": 1480,
+      "sha256": "619d31ff16b36fa887161ca36706e1768a49e524b4076e89fd7c26bc0fecb20b"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIDrawing.dir/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasRenderProducer.swift.obj",
+      "bytes": 29144,
+      "sha256": "635ef460953381ed4a556fb17137c105f231b220d77dbca70fcb0609f743e94a"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIDrawing.dir/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift.obj",
+      "bytes": 680,
+      "sha256": "1a657c9d69f4a347a77fca6b0f0e99700f1bff89d6e447fda18b15c5b66c2aad"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIDrawing.dir/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift.obj",
+      "bytes": 1476,
+      "sha256": "a21de6dc8225191be71279171e30d45a58144bef8cde39197803d3c49410dc4b"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIDrawing.dir/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingLimits.swift.obj",
+      "bytes": 5844,
+      "sha256": "5cc9a71da7127147d5a34f416d4571caae68fca506bb973db008ee50ab110208"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIDrawing.dir/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingPlan.swift.obj",
+      "bytes": 680,
+      "sha256": "1a657c9d69f4a347a77fca6b0f0e99700f1bff89d6e447fda18b15c5b66c2aad"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIDrawing.dir/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingValues.swift.obj",
+      "bytes": 3636,
+      "sha256": "f59b023fe104f964fcab3571f8c6d7bacf2b2cba7a8e97b99fe1e611dbd3dfab"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIDrawing.dir/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift.obj",
+      "bytes": 680,
+      "sha256": "1a657c9d69f4a347a77fca6b0f0e99700f1bff89d6e447fda18b15c5b66c2aad"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIDrawing.dir/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StaticCanvasCallableTable.swift.obj",
+      "bytes": 680,
+      "sha256": "1a657c9d69f4a347a77fca6b0f0e99700f1bff89d6e447fda18b15c5b66c2aad"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIDrawing.dir/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StrokeSnapshot.swift.obj",
+      "bytes": 680,
+      "sha256": "1a657c9d69f4a347a77fca6b0f0e99700f1bff89d6e447fda18b15c5b66c2aad"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/AdmissionValues.swift.obj",
+      "bytes": 60440,
+      "sha256": "1ba29fc0d36de4339028d4be2ce2a46ff1daf76de1c9493c7e29ef46c25716c8"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionController.swift.obj",
+      "bytes": 676,
+      "sha256": "316096e315a93b2eae6f617638002f2eb030ca307e6a12af21bed9b91d3439b1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionSealTransaction.swift.obj",
+      "bytes": 8660,
+      "sha256": "8583cdeae62f2eeb7121d18a336da65a6b6f65455a749ed3ed5ad2a633b744d4"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionSealer.swift.obj",
+      "bytes": 2764,
+      "sha256": "dbdd0baab1f617009daf3fa953877502652dc1772584227d75abb4d416655618"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionMutationBatch.swift.obj",
+      "bytes": 676,
+      "sha256": "316096e315a93b2eae6f617638002f2eb030ca307e6a12af21bed9b91d3439b1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionOpportunityRunner.swift.obj",
+      "bytes": 676,
+      "sha256": "316096e315a93b2eae6f617638002f2eb030ca307e6a12af21bed9b91d3439b1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionPhaseMachine.swift.obj",
+      "bytes": 3108,
+      "sha256": "7bafc6b54940e6f1182cb9008a38fd79bd09c400e03070d22c4a089a672860ff"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionValues.swift.obj",
+      "bytes": 15656,
+      "sha256": "57d7fed6959b63cafd325f91546bacff070ad84437bae333c75888e8b88f9b9b"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionWakeAccumulator.swift.obj",
+      "bytes": 676,
+      "sha256": "316096e315a93b2eae6f617638002f2eb030ca307e6a12af21bed9b91d3439b1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/FrameHandoffValues.swift.obj",
+      "bytes": 6268,
+      "sha256": "1854781819c26443aa0b7e29172f1293d67b2a85ec0018f74a3cb3f538d53836"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/FrameOfferNormalization.swift.obj",
+      "bytes": 5792,
+      "sha256": "7ab4f271939a1f8a1f9158ba038c9884dfb1ab0d56e82bf913b50b6305cda8e7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/IdentityAllocators.swift.obj",
+      "bytes": 9656,
+      "sha256": "4368abc0b9a9ce894ed766bbf2e10ffdad97eab06d8c1546db6c6793c70fdac7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/InputSourceSequenceState.swift.obj",
+      "bytes": 7648,
+      "sha256": "25ae3b979ca46b5a9f3f6b16129356ac63d6191245a9a09fcb9c2237701dece8"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ObservableTargetGeneration.swift.obj",
+      "bytes": 2540,
+      "sha256": "ae5ad1b7bac706333631e1549051e35532447cbb685a0fed6846fb7eb4683b27"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift.obj",
+      "bytes": 676,
+      "sha256": "316096e315a93b2eae6f617638002f2eb030ca307e6a12af21bed9b91d3439b1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCandidateOfferCoordinator.swift.obj",
+      "bytes": 7156,
+      "sha256": "f8e7516059db37f269e2dda76682f987e2be505922d58e36107c9f7e46bb8e30"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCycleCoordinator.swift.obj",
+      "bytes": 4596,
+      "sha256": "9cf72054f3d838fffa339acdb447aaf8854dd2133bc784c453147baeff46e57e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCycleFinalizer.swift.obj",
+      "bytes": 676,
+      "sha256": "316096e315a93b2eae6f617638002f2eb030ca307e6a12af21bed9b91d3439b1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingDerivationRecovery.swift.obj",
+      "bytes": 6400,
+      "sha256": "6235fe14d711d3c67b8acb15cad765a7d8d10ce6c0cb437f21142195063dea0c"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingDerivationTransaction.swift.obj",
+      "bytes": 6464,
+      "sha256": "2b293ee2bd19a17496d56d0930ec9c4eb3a91a607e61fe00db4bbb63079170d3"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFocusedFailureSelection.swift.obj",
+      "bytes": 17304,
+      "sha256": "03dd75ebfb8d12dfbfb5265c17104846e5604574c79a0ce5d323441584c29d98"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFrameCommitTransaction.swift.obj",
+      "bytes": 7960,
+      "sha256": "8fbfe949a3d4633d4240ee799c12713635dca670aa041f131c7d6294794af376"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFrameEndpoint.swift.obj",
+      "bytes": 14016,
+      "sha256": "ee5173a09a33828609ca5a170b44998ecdfec0af73288c5d2899dcb3a03f68f2"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingMutationBatch.swift.obj",
+      "bytes": 676,
+      "sha256": "316096e315a93b2eae6f617638002f2eb030ca307e6a12af21bed9b91d3439b1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift.obj",
+      "bytes": 4352,
+      "sha256": "5d689d54a53cf07d310ca2b7d73b2a7d236b630ec250a83ffe4a2d7faf963923"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingPresentationTerminalRecovery.swift.obj",
+      "bytes": 3392,
+      "sha256": "940b1aa2f8387935eb2c56d5cc73d0258ac6b495f6476d2faeb36de41e95f7d7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RunCycleValues.swift.obj",
+      "bytes": 11768,
+      "sha256": "edb23149be4f22d5eeb1fe2a21b48feb85d8b6bb1182b7dcc8e512b16656baa8"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIExecution.dir/Users/eugene/work/GiftUI/Sources/GiftUIExecution/WakeValues.swift.obj",
+      "bytes": 4812,
+      "sha256": "ac52e58ae8e02ea9bab8ac102ceb7be55347777303040a78ebfd0b7f44601c4e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIFailureCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIFailureCore/GiftUIFailureCore.swift.obj",
+      "bytes": 66140,
+      "sha256": "8af35c825b479ce8993f79c2872206e2941783f47aa2221d4881bcfb9b1aa41a"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift.obj",
+      "bytes": 40996,
+      "sha256": "d7a26fa33f1ae2e59167ea22bb952f3b390579130d5b7c9f847c04138ddccaf2"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift.obj",
+      "bytes": 23996,
+      "sha256": "e428e0d391cea30fc6a9900cbae91c9814b70b81d516ef1267d1c47cdfa70117"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift.obj",
+      "bytes": 2524,
+      "sha256": "6500ef47e294dce797e5eb660a3323cdae3ef50062467e32d5ba02d6b163f4b2"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift.obj",
+      "bytes": 4284,
+      "sha256": "3e9f5dce6408a36b9191a20e59d43e65590d5dd9fd860e668616358cc4d57bac"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift.obj",
+      "bytes": 1732,
+      "sha256": "cf6bfc628dcbe92a2cf5f403f58b01d8e2f564452c13f964c745967c1fec6e82"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift.obj",
+      "bytes": 1772,
+      "sha256": "da69f3602205b8ccf18559f7b03867a5005d97ce578440d2da7255ad54bdb8d1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostConfigurationResults.swift.obj",
+      "bytes": 18212,
+      "sha256": "267ade1975d34200fd0e25a374f3fd07355dd2c32b5b0fc896b4139a14e37299"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift.obj",
+      "bytes": 41960,
+      "sha256": "3e3d5cfd3fec93005ff2c01a382a5b18dfde01511662fcae992a3a555a48967d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift.obj",
+      "bytes": 4976,
+      "sha256": "a657ba6ae020450d0c9fdab7a98f59ad7802a4cebb3713d89cd785322211217e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift.obj",
+      "bytes": 3176,
+      "sha256": "38cc8a282fa49a101495f62d23efa7a226ba8509a1fba602c250c4524dda28d1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostFailureAdapter.swift.obj",
+      "bytes": 6760,
+      "sha256": "7b4c6c7e8df7db1decf08b2b11725d44dad8cae4dff32fe00a08aae4be687ad0"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift.obj",
+      "bytes": 5044,
+      "sha256": "82dcd222c0704c329284bec166ed4ba207dbb17e83cefc93c3524ca5df772498"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift.obj",
+      "bytes": 7448,
+      "sha256": "120fda9c42dd9af0469fe329a5b82e9782d2b4fe82ca2744f96c63987c34f6c5"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift.obj",
+      "bytes": 7344,
+      "sha256": "27b1a96169f3952a7c6c76dfb05e070681c77bcc2dfcd3e22009c6226ddb8d6e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift.obj",
+      "bytes": 17556,
+      "sha256": "0f2dcd3db28456bbbbed201edf8e5070886b3a00671463edd68a85d22030822f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift.obj",
+      "bytes": 1284,
+      "sha256": "bc991276277db8307698eb4f750328c4eec5956f8049ff7e78db6e614410fc54"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift.obj",
+      "bytes": 1912,
+      "sha256": "78a79bc6eee3dd74490701c18a3824657fb7a0a1308a292ad182cd4344c69046"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift.obj",
+      "bytes": 5484,
+      "sha256": "1b8e179c87ce8f0fab89f1f5a83c458053687a4acab5e09c6bbdd68b3b3c7d37"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift.obj",
+      "bytes": 5112,
+      "sha256": "72f399c4659d8e7e9f2c0ef134f80efb9c7d2c659e05844fbeb624b0a83fceb1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostWakePacingController.swift.obj",
+      "bytes": 6768,
+      "sha256": "277ef9df4aaf51daeece63e2b2f0b0c23fd837404914e46a44755f76cc5528c5"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift.obj",
+      "bytes": 1596,
+      "sha256": "daa40ab94f8d61e16340dd699fd5f8ff76293db8845c4fc51c3ba618a8770a73"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift.obj",
+      "bytes": 3996,
+      "sha256": "b66d2c897a52931e3f5c38bc8b63447931aa04ccc050d531b468d2cf71e1f0a6"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIHostConfiguration.dir/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift.obj",
+      "bytes": 3832,
+      "sha256": "ff936bdbf54d7db9b6533ab73208163810cff4895d6df47f85ea440305088444"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIInteraction.dir/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/EffectiveActionEnabledState.swift.obj",
+      "bytes": 29188,
+      "sha256": "55baeaf5eaa9f5b99e745218699f03b808aa0079358a10f7c1540617fb3520ee"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIInteraction.dir/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/ExecutionGestureAdapter.swift.obj",
+      "bytes": 688,
+      "sha256": "6c31799bef46344a07436414fd8e99d044be8dd4bb440953918f55abbefbb731"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIInteraction.dir/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionFailurePrecedence.swift.obj",
+      "bytes": 2272,
+      "sha256": "9b4a2a1c83d4cc7b835b1857d59bf3b4dbf1742987d5f801f70b931e03bb9c0a"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIInteraction.dir/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift.obj",
+      "bytes": 688,
+      "sha256": "6c31799bef46344a07436414fd8e99d044be8dd4bb440953918f55abbefbb731"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIInteraction.dir/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionState.swift.obj",
+      "bytes": 688,
+      "sha256": "6c31799bef46344a07436414fd8e99d044be8dd4bb440953918f55abbefbb731"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIInteraction.dir/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionStorage.swift.obj",
+      "bytes": 688,
+      "sha256": "6c31799bef46344a07436414fd8e99d044be8dd4bb440953918f55abbefbb731"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIInteraction.dir/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionValues.swift.obj",
+      "bytes": 13860,
+      "sha256": "dc2853763750855ede2524643507784faefa182e7c9d59b2ac9c5cd789f0b213"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUILayout.dir/Users/eugene/work/GiftUI/Sources/GiftUILayout/Layout.swift.obj",
+      "bytes": 34456,
+      "sha256": "5223f5205d9cda15f270c67c70a32fab16743065e960a7d4e7c40dfdb67d56dd"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUILayout.dir/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutCounters.swift.obj",
+      "bytes": 5488,
+      "sha256": "26803213955464fad0beaf8264abfbcb9204942a199ad10952f141eaf97c4c03"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUILayout.dir/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift.obj",
+      "bytes": 5180,
+      "sha256": "c8a6035ff3026ac2b50517f736e39e8eb12916515a9ba4379682b042fe67221f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUILayout.dir/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutError.swift.obj",
+      "bytes": 1204,
+      "sha256": "bf61bf34fe45114b31c3fbd7a90e1b3ef489e215611322ac53b72a1d0c0bc98d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUILayout.dir/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutGeometry.swift.obj",
+      "bytes": 4904,
+      "sha256": "ba51b9a9f882824d1c188a145e65d0caabccfdf70c21a7b0216f08c93842318a"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUILayout.dir/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutPublication.swift.obj",
+      "bytes": 664,
+      "sha256": "13b8f4a2113cf09e6873b4be64d339fbb1d8ed7d382730978bee7c57a6ee7d17"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUILayout.dir/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutResultSink.swift.obj",
+      "bytes": 664,
+      "sha256": "13b8f4a2113cf09e6873b4be64d339fbb1d8ed7d382730978bee7c57a6ee7d17"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUILayout.dir/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutSemanticValidation.swift.obj",
+      "bytes": 2484,
+      "sha256": "d5e7a72d18330f8a32412061a8140e01589f071aaf2e4f7ac064433dd5d6ed28"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUILayout.dir/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutValues.swift.obj",
+      "bytes": 5460,
+      "sha256": "2bc435e0d514024952f3ed854b7038d310f98f8a1f6b996bd88a88ec412a6bc0"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUILayout.dir/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutWorkspace.swift.obj",
+      "bytes": 3004,
+      "sha256": "446da76ea6bc1e647e1b1177a9a043c27f37cebeab76351712af74f55fbac7df"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUILayout.dir/Users/eugene/work/GiftUI/Sources/GiftUILayout/ResolvedRenderLayoutView.swift.obj",
+      "bytes": 5768,
+      "sha256": "d18b6df75ca35d4791aabf719134aaba28c521f35f6c8e23c02f1811273dec83"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIObservableState.dir/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelIdentity.swift.obj",
+      "bytes": 4572,
+      "sha256": "deffb08a0b27512e14d25226370d5c57803167f53d5be5b772969a29148797a9"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIObservableState.dir/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelMutation.swift.obj",
+      "bytes": 684,
+      "sha256": "e96f069e05d7340ecb065f7e8a846c44a7141121917c5ccb50fb5cd6695a09ab"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIObservableState.dir/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelOwnership.swift.obj",
+      "bytes": 45016,
+      "sha256": "f40a8812aa1b5df9a23637b78c39812ca01c8b802f76309bfcc2e886700b201e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIObservableState.dir/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelScope.swift.obj",
+      "bytes": 684,
+      "sha256": "e96f069e05d7340ecb065f7e8a846c44a7141121917c5ccb50fb5cd6695a09ab"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIObservableState.dir/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelTicket.swift.obj",
+      "bytes": 684,
+      "sha256": "e96f069e05d7340ecb065f7e8a846c44a7141121917c5ccb50fb5cd6695a09ab"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIObservableState.dir/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift.obj",
+      "bytes": 684,
+      "sha256": "e96f069e05d7340ecb065f7e8a846c44a7141121917c5ccb50fb5cd6695a09ab"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIObservableState.dir/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift.obj",
+      "bytes": 684,
+      "sha256": "e96f069e05d7340ecb065f7e8a846c44a7141121917c5ccb50fb5cd6695a09ab"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIObservableState.dir/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateModel.swift.obj",
+      "bytes": 684,
+      "sha256": "e96f069e05d7340ecb065f7e8a846c44a7141121917c5ccb50fb5cd6695a09ab"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIObservableState.dir/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateProtocols.swift.obj",
+      "bytes": 47492,
+      "sha256": "2389091134dfdd1d19cedd6c9256279a6749f813a7c9b8f8b864721f58a31b8d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIObservableState.dir/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift.obj",
+      "bytes": 4832,
+      "sha256": "545be6d759cd8fd86a14cc0f716b813e913aef09eeab85ac9e6d185fb970601f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIObservableState.dir/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift.obj",
+      "bytes": 9680,
+      "sha256": "8cd96cf946a5fe7955a668565fe13c6d8d8373636033f478d57041b2fe83f83f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIObservableState.dir/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift.obj",
+      "bytes": 684,
+      "sha256": "e96f069e05d7340ecb065f7e8a846c44a7141121917c5ccb50fb5cd6695a09ab"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIObservableState.dir/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateValues.swift.obj",
+      "bytes": 4972,
+      "sha256": "a944a15a2f7969a4d2e8bb8d957f8dfbd2b67fd4434fd21e7392a7b51416e16d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRasterCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGB565Framebuffer.swift.obj",
+      "bytes": 37104,
+      "sha256": "c06af83036bf63a4c0876319e9f23e6158c221bb4ee414bd2ce8a0b508c8fd32"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRasterCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift.obj",
+      "bytes": 688,
+      "sha256": "3e6c6589cd006738382bef5b5b05061a2a55a0d79b0526fde1d39e4b736b1d07"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRasterCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RGB565TileWorkspace.swift.obj",
+      "bytes": 688,
+      "sha256": "3e6c6589cd006738382bef5b5b05061a2a55a0d79b0526fde1d39e4b736b1d07"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRasterCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterBackendContributionAdapter.swift.obj",
+      "bytes": 5028,
+      "sha256": "e7b3b3ec19f573349800981712ba497d0d0e7c551ce74d9e2407dc43dfc5978c"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRasterCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFillCoverage.swift.obj",
+      "bytes": 4000,
+      "sha256": "91ede2d82166af8c9adf41999042b376965ed4dec29c59726fbc7b5ff31fb01c"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRasterCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFrameSink.swift.obj",
+      "bytes": 688,
+      "sha256": "3e6c6589cd006738382bef5b5b05061a2a55a0d79b0526fde1d39e4b736b1d07"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRasterCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFrameWork.swift.obj",
+      "bytes": 6168,
+      "sha256": "774359345a578cff09c7eb2e7a21477fb07098c48505487921ac224edfb90329"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRasterCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterGlyphCoverage.swift.obj",
+      "bytes": 3136,
+      "sha256": "33d07b78d349f5afce50eebeb4b7b4b8b51495cba4c3f327f23fa3bf05382ae2"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRasterCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterPayloadLimits.swift.obj",
+      "bytes": 7244,
+      "sha256": "78745637f5d0cb37c2592c8a3b6d6c462fc232b072a4e100b2606cf97d1ac21e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRasterCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterStrokeCoverage.swift.obj",
+      "bytes": 40940,
+      "sha256": "9c2d09b4b939fc9af02f6c883d742a79b8759e26e7c2ba476ca34cc4222211aa"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRasterCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterWorkTracker.swift.obj",
+      "bytes": 13624,
+      "sha256": "2762045da4efaed92583a40028ecb206d3d13aeb0c0e2bc83d45027f05be2493"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIReferenceTextResources.dir/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift.obj",
+      "bytes": 100172,
+      "sha256": "6debed783c7f2ed0013c3794ccb47d045a7e829e2b6c0988a56777985ee1af19"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIReferenceTextResources.dir/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift.obj",
+      "bytes": 22532,
+      "sha256": "aae79a1100a050da37534e35792aa5a75dcb91b020f9f37b08492cfa84e2532f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIReferenceTextResources.dir/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift.obj",
+      "bytes": 148596,
+      "sha256": "5af8a464d99e737e079a17be79c2071f638248822f2e131e32f4eb0ec8adb0ef"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIReferenceTextResources.dir/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/GiftUIPiCompactTextResources.swift.obj",
+      "bytes": 45976,
+      "sha256": "0f3ebaeb1a6d71b3ef9187af34db687929b6eb6a2b063c10a7f07085c94f493d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIReferenceTextResources.dir/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift.obj",
+      "bytes": 6960,
+      "sha256": "7e4d25081c279ea2be01c7e782a452058f9a73be121e64bbe210b8b567a8a153"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIReferenceTextResources.dir/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactBitmapPayload.generated.swift.obj",
+      "bytes": 100848,
+      "sha256": "dc6ba422cfedd3d01be102f01ae91328b2055c21ad78e59412b361ec92c0b30c"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIReferenceTextResources.dir/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactCatalogue.generated.swift.obj",
+      "bytes": 13496,
+      "sha256": "48d3ec0b4647fadff8eb211bf4c42cbb46729a9181af7767345ae5d0638456ea"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRenderCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/DrawingOperationSink.swift.obj",
+      "bytes": 27320,
+      "sha256": "e6aa6fad655b4a830ed981d27f1e586461e201ff3d9ed016cdf2192940ddd905"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRenderCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderOperationSink.swift.obj",
+      "bytes": 680,
+      "sha256": "5fba2beddcd0d6dd8a6f60046ad2815f8286bee612218141a35a9a710cc94fc8"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRenderCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderRecordingSink.swift.obj",
+      "bytes": 7436,
+      "sha256": "efe6cfe4a043e615039baafa54254110313884d6ec6c12058588c06a58d41d47"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRenderCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderValues.swift.obj",
+      "bytes": 10372,
+      "sha256": "b9530e81e64a2acb6efc375c0ca6da47f11063d36c643491404439d0169dad5d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRenderLowering.dir/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderExtensions.swift.obj",
+      "bytes": 30468,
+      "sha256": "aa595cc811bbd315c25837685712b194f6edc8c0338d0522467d90cd38a7e4c3"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRenderLowering.dir/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderPreflight.swift.obj",
+      "bytes": 3800,
+      "sha256": "618a01b579518b25f35873e5ab86b226cfa47e3790b999fa24c86eb893d34304"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRenderLowering.dir/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderProducer.swift.obj",
+      "bytes": 676,
+      "sha256": "307575739adcc2b349bec2293be0dd924bc5de89d1f336af7b9f7a3ea97c71fb"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRenderLowering.dir/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderProductionValues.swift.obj",
+      "bytes": 5056,
+      "sha256": "752b4c33b1993f77457b7e34ff85bc0b93407baa3130a7c12c9e5610b9681170"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRenderLowering.dir/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderStreaming.swift.obj",
+      "bytes": 676,
+      "sha256": "307575739adcc2b349bec2293be0dd924bc5de89d1f336af7b9f7a3ea97c71fb"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift.obj",
+      "bytes": 688,
+      "sha256": "06ce9515f96d212b04e649f6426d0370166071021a57ce01b3cfcd90c2af95be"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift.obj",
+      "bytes": 8264,
+      "sha256": "19a3681753bce2524e2141a3ed65d792d4ffc3e38f55f1210f6363664c7a0376"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift.obj",
+      "bytes": 18856,
+      "sha256": "9b0bd3e0afb6c87611c30f764a9a3ec45f5c9803cafad9daaeef73ae6d6337d7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift.obj",
+      "bytes": 688,
+      "sha256": "06ce9515f96d212b04e649f6426d0370166071021a57ce01b3cfcd90c2af95be"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift.obj",
+      "bytes": 1032,
+      "sha256": "8bad9046da250a16f7efe0b870a22f5743f3ce4cef7a5f5bb7f3bf0493ee8788"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift.obj",
+      "bytes": 1096,
+      "sha256": "6aea33223fc77761fb6446f5fc1dcc13bba18bec04846da326d46b1242bdb82a"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileStorage.swift.obj",
+      "bytes": 1272,
+      "sha256": "728ed27e759f126c8c7f1a1368097d6e361ee5534f912baf4de521d5b6a80ef2"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileValidation.swift.obj",
+      "bytes": 32176,
+      "sha256": "97843abd48e4d44334f6770b7e3b063ce7bfd8fc2868238621e311dd9f4323dc"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift.obj",
+      "bytes": 36740,
+      "sha256": "10bfe8851560ba132795eaaab2c11f2261bba42e31ca8ff9c2ae63615c132a5e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift.obj",
+      "bytes": 688,
+      "sha256": "06ce9515f96d212b04e649f6426d0370166071021a57ce01b3cfcd90c2af95be"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift.obj",
+      "bytes": 29932,
+      "sha256": "2438c3a8a961dfb6f62cd329a52b82d70cd61842e99cd362177bdcb7cc818abe"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeCore.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeStorageRegistry.swift.obj",
+      "bytes": 6636,
+      "sha256": "92a5a28017f6c36994ac5d31bbcfc8b3dfe193ca9567833009b98800f805d8a3"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeStatic.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift.obj",
+      "bytes": 960,
+      "sha256": "2cf034d395d730b8e0bbace102446cb430fa665e8e6998a4700555413192badd"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeStatic.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift.obj",
+      "bytes": 692,
+      "sha256": "17ddb9334e8396396747d7349ea1103be3d0793435c70fe0b11f2f25f2f9bf88"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeStatic.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift.obj",
+      "bytes": 692,
+      "sha256": "17ddb9334e8396396747d7349ea1103be3d0793435c70fe0b11f2f25f2f9bf88"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeStatic.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift.obj",
+      "bytes": 692,
+      "sha256": "17ddb9334e8396396747d7349ea1103be3d0793435c70fe0b11f2f25f2f9bf88"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeStatic.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift.obj",
+      "bytes": 692,
+      "sha256": "17ddb9334e8396396747d7349ea1103be3d0793435c70fe0b11f2f25f2f9bf88"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeStatic.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift.obj",
+      "bytes": 692,
+      "sha256": "17ddb9334e8396396747d7349ea1103be3d0793435c70fe0b11f2f25f2f9bf88"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeStatic.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift.obj",
+      "bytes": 30264,
+      "sha256": "4738dd601f4af4f2a188c9e241f2b985eb3661f6c39d7afe88e48714cbd2aefb"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUIRuntimeStatic.dir/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift.obj",
+      "bytes": 1984,
+      "sha256": "6d3d12fd1e4219797acfae8c22a32e2c452426879edb54d0a43193988dba4e00"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUISemanticCore.dir/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/GiftUISemanticCore.swift.obj",
+      "bytes": 65964,
+      "sha256": "d80070ecc2c1f90ff185ecbb92236f340f2a8cd2e78e3ae1f23d32f39155bb45"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUISemanticCore.dir/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutView.swift.obj",
+      "bytes": 2212,
+      "sha256": "35a47db2c60abfc5743279144f86102282e5e2d93dcdc4f9a6f62c59cceef92d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUISemanticCore.dir/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift.obj",
+      "bytes": 676,
+      "sha256": "e6da54226ca3f8ea2e382ec0a20b1e8433bd38e3e3c78c48ae979b89932683bc"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUISemanticCore.dir/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift.obj",
+      "bytes": 2016,
+      "sha256": "32d53fe00079905a86ee07b491028b519187e4c4486bde31d947f308624a39f6"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUISemanticCore.dir/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordRenderView.swift.obj",
+      "bytes": 676,
+      "sha256": "e6da54226ca3f8ea2e382ec0a20b1e8433bd38e3e3c78c48ae979b89932683bc"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUISemanticCore.dir/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordStore.swift.obj",
+      "bytes": 676,
+      "sha256": "e6da54226ca3f8ea2e382ec0a20b1e8433bd38e3e3c78c48ae979b89932683bc"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUISemanticCore.dir/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRenderView.swift.obj",
+      "bytes": 1096,
+      "sha256": "2e9587a5bb1777defbd1371a6c1846fbf0e446984deaeec0ce7421aad592f39c"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUISemanticCore.dir/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift.obj",
+      "bytes": 56528,
+      "sha256": "427480c768c2538aa2b8ebcc8e5f5a92a27258034e45e0f858e7b28621317a00"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUISemanticCore.dir/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticStandardPayload.swift.obj",
+      "bytes": 2872,
+      "sha256": "eebea1cbfb0cd29baf58367eb7f4470525575e3b6e69266d6e46b7b74806fe77"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUISurfaceCore.dir/Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/RasterSurface.swift.obj",
+      "bytes": 19948,
+      "sha256": "3aa3f591f13c478ddbb4e9bf8f7fcc13584b6212344d00c3c6675b98c2371470"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUISurfaceCore.dir/Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/SurfaceValues.swift.obj",
+      "bytes": 6176,
+      "sha256": "ba7f97e2d6cbc71067f296d0d9c3ecde7617d6a1bae8d5d0f6d82fa1132024a4"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_GiftUITextResources.dir/Users/eugene/work/GiftUI/Sources/GiftUITextResources/GiftUITextResources.swift.obj",
+      "bytes": 63508,
+      "sha256": "16f6e6590fab1e203c82f8a12a0cb24d0655628b350b48912d464735dc788c36"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterPresentation.dir/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-c5_asovq/Counter.swift.obj",
+      "bytes": 26752,
+      "sha256": "2df7487af6d5581d5a2858db1fada21e5da4aa28a4a0b471844d19a346d55ead"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift.obj",
+      "bytes": 67452,
+      "sha256": "e41662ed21e4ae87d9ad60ea9f13b1b9daeadc7c47d18231e7130df6ad84748a"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift.obj",
+      "bytes": 22672,
+      "sha256": "ede4d72e9d663c0867a78905cdaf0da556b7e802160b09b552945eae8de2b322"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift.obj",
+      "bytes": 2328,
+      "sha256": "d21d25096e663a5229265d96a6d26f6ba0920ce0cf5b2dc379e74fba3dd2821f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift.obj",
+      "bytes": 672,
+      "sha256": "a5c105d2a0d47b42b9d4296a8d7e9b6326a15e68c0fbf9e1fe6d2244199453f7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift.obj",
+      "bytes": 672,
+      "sha256": "a5c105d2a0d47b42b9d4296a8d7e9b6326a15e68c0fbf9e1fe6d2244199453f7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift.obj",
+      "bytes": 3620,
+      "sha256": "80ee56bf83fd56c02486cc33d8fe081cef3cb3c87f9909ce94e159942115818f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift.obj",
+      "bytes": 162080,
+      "sha256": "b63326720700f08e0969d53416a1ae1d06f3a611ee4f8b138bafc251960bc2c9"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift.obj",
+      "bytes": 2244,
+      "sha256": "f7c6437163fd791bf52f715d20224e99db845d439e6390be38dcf8bb3b55c5f8"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift.obj",
+      "bytes": 94220,
+      "sha256": "a0009d7c0dd3521f10d9dd35f09b65e6099395ad69cc6cee993648cae352ef6d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift.obj",
+      "bytes": 28904,
+      "sha256": "4cf4c7413a41f5c16654a3151cb6f83a40b3b28aef7d98ccd95295b82d23d984"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift.obj",
+      "bytes": 6316,
+      "sha256": "8012df2a4222fa0dbb7da3c1f523ee3f8114b03bc5daa3cbdaf71b217051b895"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift.obj",
+      "bytes": 25840,
+      "sha256": "25fc89fb9e752edf56c039403b6646bbb7ae859ad99ac347ca6d8255f60abe8e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift.obj",
+      "bytes": 166808,
+      "sha256": "58f9bc9f0b588209191d305e471839eda29a7f0ee882183c7f907f78e5858b10"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift.obj",
+      "bytes": 12608,
+      "sha256": "7fad505a160527664e4dee869ff2d8ac6202f13137896c717aa93c32d8419fb8"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift.obj",
+      "bytes": 672,
+      "sha256": "a5c105d2a0d47b42b9d4296a8d7e9b6326a15e68c0fbf9e1fe6d2244199453f7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift.obj",
+      "bytes": 232320,
+      "sha256": "525734081c681115abe8810e000d8f35c54cf88959096a07b9dd7eb00ba819a3"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift.obj",
+      "bytes": 672,
+      "sha256": "a5c105d2a0d47b42b9d4296a8d7e9b6326a15e68c0fbf9e1fe6d2244199453f7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift.obj",
+      "bytes": 255592,
+      "sha256": "affd8ea57d07d253ba79f5bb590665dd068f007b2a2f71446f309530c091672a"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift.obj",
+      "bytes": 52464,
+      "sha256": "3d3203a90791ffe9a4af3cc862a899975df10447becc2d17a48a9c45ae03ee73"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift.obj",
+      "bytes": 2720,
+      "sha256": "36c7e82363ec45c85e7e5cd8f7e8c3453fbaaf93a0e97839510bda0aa0223423"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift.obj",
+      "bytes": 1073220,
+      "sha256": "9f7a9066d648c211c09de15c77015e52fdf9db4588bf2f5b1cc95b9947830769"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift.obj",
+      "bytes": 1292,
+      "sha256": "555e06e9e50825eee3f384f3f7f2673db0a4f86bf1197528a571ca21bb7b0c44"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift.obj",
+      "bytes": 672,
+      "sha256": "a5c105d2a0d47b42b9d4296a8d7e9b6326a15e68c0fbf9e1fe6d2244199453f7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift.obj",
+      "bytes": 187576,
+      "sha256": "ad8461d1a522561bb5e8d39dba2a0ad6757903383715daf91ae4603d192119da"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift.obj",
+      "bytes": 38068,
+      "sha256": "b67784a62b5378253254274824851f80b00c5466fccc51409be3591d89b88f6e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift.obj",
+      "bytes": 38212,
+      "sha256": "18941edbb85ff9dbf6fa12f61c9855d9c04b3bf352098b2ec49abbc03909406b"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift.obj",
+      "bytes": 13896,
+      "sha256": "0fd2b746a752b87a4a063eb1990fc9517ee5c55cb8b0f01192096f484e864478"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift.obj",
+      "bytes": 159160,
+      "sha256": "6f4348455dd74dab32e6d32c607f158523030b1880625a8f0a5c498d55e1d4eb"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift.obj",
+      "bytes": 51032,
+      "sha256": "e58751c564f313b9616effcdaf0507c0a111bdc36a6b5b8e134e71446bef44ec"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift.obj",
+      "bytes": 4408,
+      "sha256": "e7c781d3117966473f73ffe75d70f82cbe39ed7220c5cb39389d00b9c3850309"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift.obj",
+      "bytes": 20196,
+      "sha256": "30365cf2bd48d96240e67902f90a69370c8a4ce3263fe2f00e2a10256a68cc67"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift.obj",
+      "bytes": 13632,
+      "sha256": "a32c0f18dec216e9dc30750dc7bfa7f295b49633c1fadf9b55492802f0d8784f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift.obj",
+      "bytes": 25160,
+      "sha256": "6dc63997e38cc8578f342f032f57f2978345784637eb628ee20e7ccd6fd66ea6"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift.obj",
+      "bytes": 25624,
+      "sha256": "a61587b3c8d657992d3c22181c5af835cf1056247c082a61bd0f51de1c7b5ef9"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift.obj",
+      "bytes": 672,
+      "sha256": "a5c105d2a0d47b42b9d4296a8d7e9b6326a15e68c0fbf9e1fe6d2244199453f7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift.obj",
+      "bytes": 70008,
+      "sha256": "1841da2a24fa8b22596e824dbdcf424d3ada463e2b69707fb66a5b20eae2924b"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift.obj",
+      "bytes": 11400,
+      "sha256": "423d203d8e2d1c7f389852d3e0452dfa5ab9c6c7d54017e971d6d9438204a839"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift.obj",
+      "bytes": 17936,
+      "sha256": "d014d74eb3651f9ae018a55db685f5405b8f2335400d9a43ea7b6a51edb3953a"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift.obj",
+      "bytes": 22976,
+      "sha256": "3ad4663890b8355d8f19eb4999b6493e5009ba267c69dcd4504d03929b2e0dbb"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift.obj",
+      "bytes": 8396,
+      "sha256": "0a7e1e371cb91992b9361743a0142411089cb052c171a89df60e574086a0a7b1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift.obj",
+      "bytes": 5664,
+      "sha256": "8023d883aef2c7e39f24cd96a83793589777848af6658600781cb07adc4e4c80"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift.obj",
+      "bytes": 18292,
+      "sha256": "1fa1ac7772c2d6def67753edf516b21bd34f0d7a232da42caba1e67d178427a5"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterSchema.dir/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-c5_asovq/CounterSchema.swift.obj",
+      "bytes": 21448,
+      "sha256": "83964b388cf3da68fb176c8480c0729ac70b83e05ac644449052f99385607b35"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterTable.dir/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-c5_asovq/CounterTable.swift.obj",
+      "bytes": 20632,
+      "sha256": "774d9595d07351e6b183f7d65a33e3d1c25f5a995eb7042823e1256d230494d1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_clock.c.obj",
+      "bytes": 32120,
+      "sha256": "0119bd32b5729d8642e71f6c7e8ec1c88f8193a4551e37d94f7de987f1d3808a"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_gpiote.c.obj",
+      "bytes": 116948,
+      "sha256": "1c51e8f39fe3c9575ac8c562ead036808a24718bdf1956ad65f9b7ca8efaf8fd"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_ppi.c.obj",
+      "bytes": 31248,
+      "sha256": "05290e9e8f43fe368200aaa6092ecc40e1c890f4223e2617513dd75ee327bcf4"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_spi.c.obj",
+      "bytes": 40596,
+      "sha256": "1c36d0a2472a5f1cb6e0d62984a43b07f3f4107cba58759b6412cf94423b071e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_spim.c.obj",
+      "bytes": 67116,
+      "sha256": "a89901ea92afa1c27d28538763e859d9f43af7ce9a178fc31975a19df0ec310b"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_flag32_allocator.c.obj",
+      "bytes": 7744,
+      "sha256": "ae4d06f6368548f2dc0e7e27caba7b6d99758c606b514b77b59e6f28c975c5ce"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_gppi_dppi.c.obj",
+      "bytes": 2360,
+      "sha256": "b5efa133e135279144e4f26f715fe13f9aff08448aeef5179f9c7cd0bcb0061d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_gppi_ppi.c.obj",
+      "bytes": 29160,
+      "sha256": "b39a7ea9d0b85e619a9a360e3d8972abea65ad0250d22e550d7a1473448a50e4"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_ram_ctrl.c.obj",
+      "bytes": 16088,
+      "sha256": "f102a272cd89b3fb38cef10bda641493e01d07116a29cae9298c61a435645eb5"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/mdk/system_nrf52840.c.obj",
+      "bytes": 18476,
+      "sha256": "71f62548b7b3a82ec94fed882db410eee74cc15c1fef9aad4f9d0c813b7be56c"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/nrfx_glue.c.obj",
+      "bytes": 7988,
+      "sha256": "4cad8cf8a4c255e1cba50a159a7eb3f444fdcb3e6390bd0c3f67f001ae9ff835"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/offsets.dir/arch/arm/core/offsets/offsets.c.obj",
+      "bytes": 4676,
+      "sha256": "dd86aac5fdea2a2bf428ee26eb792ed2a4a85f04f15b64888e9855a79ba41c54"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/heap/heap.c.obj",
+      "bytes": 69152,
+      "sha256": "538e4b302d93a4b95144e3a1bd4ac59d0c86c79aa2d11aa908094391db8931d6"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/libc/validate_libc.c.obj",
+      "bytes": 2324,
+      "sha256": "421100a76e3e8dfc9ca3ecf3db938dc58eace3337542bd31b62d99643280c034"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/os/assert.c.obj",
+      "bytes": 5932,
+      "sha256": "12e2257250762920ba81097f8a2b382e4f913e1bd238a0eec9f3c94ed07d894e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_complete.c.obj",
+      "bytes": 42268,
+      "sha256": "c7d846418a3a62bd12de4950ce6de8502f50fd6d79e9cbadfe47f9f525839d12"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_packaged.c.obj",
+      "bytes": 39356,
+      "sha256": "0fec9bd91e1fc3afcb7f7f77dab574f0b28710fb2bb497b30db93c48caef632e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/os/clock.c.obj",
+      "bytes": 22320,
+      "sha256": "125e6e5539f3c24eaf514c0d01fd7b5f6cd5969418c08fd29ed20ff4b11ab2d6"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/os/printk.c.obj",
+      "bytes": 10456,
+      "sha256": "db3b0d65223dc2c914f9d5e6aadcc2d95dc5e521506ebb2dda1f2fe719c60ee2"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/os/sem.c.obj",
+      "bytes": 8604,
+      "sha256": "fbe181a86ed7a9898fc7249e6fc34da501be9fcb514bedabbc0aae918f4c5afb"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/os/thread_entry.c.obj",
+      "bytes": 9576,
+      "sha256": "970e52b340a83e031efcf9d380ea3fa3b8eb9d5b3bde6fc4d6d47b634c86a2c2"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/utils/bitarray.c.obj",
+      "bytes": 51856,
+      "sha256": "33c4dcd59f9449cbcf91c4ff153973d216433b55b7428c5dd091ea69013ef7c7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/utils/bitmask.c.obj",
+      "bytes": 6376,
+      "sha256": "71e90ef3908919cb90641b9dd861f8dcf1d50f6f865d8bbbbd121ca24ae62027"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/utils/dec.c.obj",
+      "bytes": 4492,
+      "sha256": "cc3a8116d663f961b41a0597424358e2ab6fa98c98a371d68743278664879092"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/utils/hex.c.obj",
+      "bytes": 7356,
+      "sha256": "1f5cee1183eb00a67ed4b3d1db94902294c699ff017b2878508bd4d075ff3ff8"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/utils/last_section_id.c.obj",
+      "bytes": 2780,
+      "sha256": "adb50072449a1af97ee21db506af1e30e53ec860c248d93f89ef91af22d451bc"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/utils/notify.c.obj",
+      "bytes": 6264,
+      "sha256": "2f0d0f15b53845ba25a0ab5e7c127c73998187106c017593cff1cf96107c4333"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/utils/onoff.c.obj",
+      "bytes": 52696,
+      "sha256": "6367c7fbee2e593e3dcf5054434cbd9776df5490b98ca2ead927fde092cd3f13"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/utils/rb.c.obj",
+      "bytes": 52768,
+      "sha256": "a673625577b792af1d9a3b6106d3a83450c4a3924950fe2c53599a6c671c8e15"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/lib/utils/timeutil.c.obj",
+      "bytes": 17992,
+      "sha256": "8518f88061d0febcd4a0725cc6ec346c11e4584bcca8d331b04ecbc8fc47ea51"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/misc/generated/configs.c.obj",
+      "bytes": 19992,
+      "sha256": "0d9ad72ccadabe7dd074ab0e0e3982753abf29062f90cf8ea89c1aa0cfcf6fd5"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/subsys/mem_mgmt/mem_attr.c.obj",
+      "bytes": 6284,
+      "sha256": "419eee3e8621383d8a6d16e2294194d16654f7c79f4e3f76cef16f8a413e67db"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr.dir/subsys/tracing/tracing_none.c.obj",
+      "bytes": 4092,
+      "sha256": "7907b401adbc247f4c3cd52e598f96ffbc1a6b3618c46f560c3fbe7c89a75db7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr_final.dir/isr_tables.c.obj",
+      "bytes": 5352,
+      "sha256": "dbad96c95e3973e891842759a5150e605db03a16e4adc84a47cc2a1324a3c3fc"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr_final.dir/misc/empty_file.c.obj",
+      "bytes": 1412,
+      "sha256": "df1fce36978c5d97925dda87553cb701517a342d49276a1f87a1a135de2297a4"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/CMakeFiles/zephyr_pre0.dir/misc/empty_file.c.obj",
+      "bytes": 1412,
+      "sha256": "df1fce36978c5d97925dda87553cb701517a342d49276a1f87a1a135de2297a4"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/fatal.c.obj",
+      "bytes": 9448,
+      "sha256": "586e8ef0b3d9ae67f3896edf9aa218a15c5c9595ab97216d70f2ac24d20331b2"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/nmi.c.obj",
+      "bytes": 3308,
+      "sha256": "19c3e5c800f3d00847987cbb30768621688d652249881f5043dbceb1d88106a0"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/nmi_on_reset.S.obj",
+      "bytes": 1716,
+      "sha256": "0e111bc012aec97aa16930f821623f549a42436174e58856d34f5e568bae922b"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/tls.c.obj",
+      "bytes": 9612,
+      "sha256": "d860dc465b72eea9c38a42d81b107c74eb55da84212a9473caffc01bd2de2dbb"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/__aeabi_read_tp.S.obj",
+      "bytes": 1812,
+      "sha256": "ebaf013a09cb4f68a4d26dfdce34cf88633591a03d3ad1b8cf2f631c82a7d9e4"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/cpu_idle.c.obj",
+      "bytes": 6932,
+      "sha256": "10253d7dad619f94d2f5b49851ec2dea541e6c11be9a1dba321f9f825c1623d7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/exc_exit.c.obj",
+      "bytes": 2992,
+      "sha256": "f42ab9c90a2a8cb47dfc660c32963658d3eb958d540ad5aedc052ad2cae575c7"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fault.c.obj",
+      "bytes": 27360,
+      "sha256": "7092bc3f7b7befec441453acf87842aec844daa1a74bd324e48b6d00d32cbe59"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fault_s.S.obj",
+      "bytes": 1936,
+      "sha256": "1de4ce20fd82049cf382a6679bfbba9fb6048f504e8e6d23711663ab5daf5315"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fpu.c.obj",
+      "bytes": 6124,
+      "sha256": "3235a0bad5da13d1babc00239aab3baff2ad8442da5d3f11a012c94663c3429b"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/irq_init.c.obj",
+      "bytes": 7508,
+      "sha256": "b83f92e78e7ef75f9d8c39d182848b4d6c11536ec6b60e96ee370e7d8754fed2"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/irq_manage.c.obj",
+      "bytes": 11408,
+      "sha256": "587061748896447b94dd9463f588f9ee06f21938307eaae353aa52d6faf75da3"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/isr_wrapper.c.obj",
+      "bytes": 4888,
+      "sha256": "60e18fbc505cbc43b70ff2ce835477d6af4c14e9ae9c7ec137348658ad5273be"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/prep_c.c.obj",
+      "bytes": 8396,
+      "sha256": "10d32d7bb4b756f5a0483a9329df1b642a926d7dd363ca6f9991f455cbd3cc97"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/reset.S.obj",
+      "bytes": 2560,
+      "sha256": "2ef815383b9f77e2d10170ec826688cf64f590655e2e82c2c339ea585ad9273f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/scb.c.obj",
+      "bytes": 8496,
+      "sha256": "6a8b9d16bb7347d0ed526f08d2e72431ba53d86b469bf315d0486c7d5ca7691a"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/swap_helper.S.obj",
+      "bytes": 2660,
+      "sha256": "3fb2a65473b2ba6595fb468b44e6a24fa45d4cd9487cb021c8f20c412d84b442"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/thread.c.obj",
+      "bytes": 15684,
+      "sha256": "7369ea773956d7de7a629808ff27a843bddaaf365e50b55a2b18ef46ef89077a"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/thread_abort.c.obj",
+      "bytes": 9068,
+      "sha256": "de9d465b16a14b8c945aa1d2d109fbbaaaee7dc23f8b616603bfe1ff0f90cc0c"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/vector_table.S.obj",
+      "bytes": 1308,
+      "sha256": "6dd71334431395825b060ff8ba29415d3cd17fc7044718a5577b9c96c7a52264"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_core_mpu.c.obj",
+      "bytes": 10076,
+      "sha256": "a1031f1e21be87b666e63a6a1ea96410bf489db547011885f4b051cd1ccd0aca"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_mpu.c.obj",
+      "bytes": 24864,
+      "sha256": "3d75f458b6f5eb6597e492bc231b59d884b770580b1eb9053b720b7c5cd1c349"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_mpu_regions.c.obj",
+      "bytes": 4428,
+      "sha256": "064b25d0ca617155129e36591185fde3b27aa5b8db09cf7caadb3dca872c73e0"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/common/CMakeFiles/arch__common.dir/init.c.obj",
+      "bytes": 5432,
+      "sha256": "349413229920e8c699a6d416549bda9d358c08e7062cedbda7761d763d6d9adf"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/common/CMakeFiles/arch__common.dir/sw_isr_common.c.obj",
+      "bytes": 3244,
+      "sha256": "d826b14c7ba67bc8b95ca3a048b66223a231f400937d21176698084656a563c2"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/common/CMakeFiles/arch__common.dir/xip.c.obj",
+      "bytes": 4252,
+      "sha256": "a7b2438e1ca60ef1f615ffc2e82ae5d1cbf4064ca8d36e8e52b35cb3fe4c505d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/arch/common/CMakeFiles/isr_tables.dir/isr_tables.c.obj",
+      "bytes": 5668,
+      "sha256": "67eec161d852a40b9bbd0e5b37c5261a1005b92e0569a17f161e216c887f5b70"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/drivers/clock_control/CMakeFiles/drivers__clock_control.dir/clock_control_nrf.c.obj",
+      "bytes": 61660,
+      "sha256": "d6432f90545c429a88f9e78336d3a031b1fd12661901b3eb044f601296dfc224"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/drivers/console/CMakeFiles/drivers__console.dir/uart_console.c.obj",
+      "bytes": 9688,
+      "sha256": "f0ffd3e46dccda9b9245d4c605fe18be166d2a5fa1d4448d4fc914df741ac474"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/drivers/gpio/CMakeFiles/drivers__gpio.dir/gpio_nrfx.c.obj",
+      "bytes": 50688,
+      "sha256": "870bdd7010d254182f48acf4e68657c2fd8c340333b449e9a702b589896dd7a1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir/common.c.obj",
+      "bytes": 4472,
+      "sha256": "a41818fa94c60d8968730ec048d3ee4a5c06ec0de55b58ff193017c956116ba5"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir/pinctrl_nrf.c.obj",
+      "bytes": 24612,
+      "sha256": "7d60733339f03fbb49297042ddd43617966cbc2ed5e6d286c0ef707af4cf707e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/drivers/serial/CMakeFiles/drivers__serial.dir/uart_nrfx_uarte.c.obj",
+      "bytes": 50184,
+      "sha256": "c1da7c322404dcd7f16c435aef954a27af0f29b542fe475e4e70d7f014d2869e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/drivers/spi/CMakeFiles/drivers__spi.dir/spi_nrfx_common.c.obj",
+      "bytes": 15756,
+      "sha256": "0edac5a4ffab3de97b8104152e0b549b3f27d19693babf4cdba9faa1ee868d71"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/drivers/spi/CMakeFiles/drivers__spi.dir/spi_nrfx_spi.c.obj",
+      "bytes": 61196,
+      "sha256": "34e33befd7eb60483643fdd2e5a2a9677c2af0953f1c7916186795fae16e7101"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/drivers/spi/CMakeFiles/drivers__spi.dir/spi_nrfx_spim.c.obj",
+      "bytes": 71024,
+      "sha256": "f5b135f534091865068483cdee489aae8f6ed2ce688dd475aa34ffe166419b7e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/drivers/timer/CMakeFiles/drivers__timer.dir/nrf_rtc_timer.c.obj",
+      "bytes": 63388,
+      "sha256": "2d4599b1256f590def97007a6d43f5b4575b32803fb6e2969545f3451887aaf5"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/drivers/timer/CMakeFiles/drivers__timer.dir/sys_clock_init.c.obj",
+      "bytes": 3676,
+      "sha256": "c9306b728125a71d539d70c62bcb37a7a5f6f6d7d0a9afafd5aead844543810e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/isr_tables.c",
+      "bytes": 4196,
+      "sha256": "e8dc275a7e3a200fa3067e9a2febe04f97fe7bd8f02651802c804f145465f831"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/banner.c.obj",
+      "bytes": 2912,
+      "sha256": "53aa54856ef7d5e9b927dfaa9984ae3e8552c73a5dae60a876a0c9f2b0e42427"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/busy_wait.c.obj",
+      "bytes": 3872,
+      "sha256": "45b4e4b0481b36cceccbbd72743f68f4ad6ebac149c66ed591bc5202fc42cf48"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/device.c.obj",
+      "bytes": 9888,
+      "sha256": "ec02380d9a55be5c1e76307410c569430767047a4d84708797e430dfe6ef02db"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/dynamic_disabled.c.obj",
+      "bytes": 4316,
+      "sha256": "c9ba1540d8e3727ad8572972ad5f732478675b8ff53c515b955fbd568c163071"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/errno.c.obj",
+      "bytes": 3908,
+      "sha256": "11d7cd723981e7de0a8cc42b049b8e29edc815f74a763c41f171f0654aa13f9f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/fatal.c.obj",
+      "bytes": 12616,
+      "sha256": "ad351b54cef7bd4c954e33df84515a5fbc90ab0c3e672c36552cb3ecf6717b9d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/float.c.obj",
+      "bytes": 7060,
+      "sha256": "4153a8b83f10aa0d100bb5da681314b07039b4a9a7968481a0adccf3e579440f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/init.c.obj",
+      "bytes": 24352,
+      "sha256": "89c57174bcc4db5f73730c4bd19ac6abd14c923c05c9f1bc3770f4f057a85d4f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/kheap.c.obj",
+      "bytes": 22664,
+      "sha256": "e24cf8511880c81d096c67a0d88be753a65c3f47aaa6e63400c1d3526b233e89"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/main_weak.c.obj",
+      "bytes": 3136,
+      "sha256": "1da163eb891c31bb22b59e072e0ce71a0ffcacbd1a4a091b86c46218b98b568f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/mem_slab.c.obj",
+      "bytes": 19056,
+      "sha256": "459dae64f42a9b36c3246902977822c5dc6fe2d8556edc0f28fdd10e3ddca7ac"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/mempool.c.obj",
+      "bytes": 13960,
+      "sha256": "3683d49522c7e5db19c8434abf5db77a9aab5708b9ccdfa84a78897d622de98d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/nothread.c.obj",
+      "bytes": 6368,
+      "sha256": "148c844570cef85fea0137d401635986c5f5f6f56b17a5b00faaabc38cd0fe3d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/timeout.c.obj",
+      "bytes": 38120,
+      "sha256": "7140de12b0190cd03034da7044dcfe4f23e6c829dc300f8251a8b2994245abf4"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/timer.c.obj",
+      "bytes": 23248,
+      "sha256": "52f352d36759147678be8ddcd1f68a0cfced9ee695df962d2b7445df583e7d13"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/kernel/CMakeFiles/kernel.dir/version.c.obj",
+      "bytes": 3256,
+      "sha256": "fd5a154d583d18a72a0794eac5f085c976b25240635cd71aae843d08c83fe336"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/stdlib/abort.c.obj",
+      "bytes": 5292,
+      "sha256": "1ee1ca76555ab47e27e0309e6a911b3cc10863d19590f098f5776b1ef50d9d54"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/stdlib/malloc.c.obj",
+      "bytes": 7732,
+      "sha256": "662daa7e19949709c54cf63b9b790620c09c46ecdf223adfddb4058eabad3bd3"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/time/time.c.obj",
+      "bytes": 4364,
+      "sha256": "8567a01e66a61d3163a7084d63cfc3baaad9447d820cbe3b0cb4564033193b6f"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/assert.c.obj",
+      "bytes": 3232,
+      "sha256": "4e721b8e4e9c447c3f8253fc051589745b2a70c7dac8599ad8512f16c4801914"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/cbprintf.c.obj",
+      "bytes": 6004,
+      "sha256": "bd781549898557bd3061634a8b06ddd0892b273936b1b74236ea54c7de1a4f06"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/chk_fail.c.obj",
+      "bytes": 5196,
+      "sha256": "a1063fc3e694a568c4c43d35f5f8adc1f1f7205621ec7584406b061580b641a9"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/errno_wrap.c.obj",
+      "bytes": 2344,
+      "sha256": "a71035bc81f00021503770df0157e9060cca875ef624975e142acaabbbc92311"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/exit.c.obj",
+      "bytes": 3544,
+      "sha256": "cc9a2d88f5cb0831929f701cb7d1068f8716bca3e9dd2b4401bc38a2df937048"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/locks.c.obj",
+      "bytes": 2328,
+      "sha256": "a50a47bdf6155674798aeab5bf0a75989ebee1bacb05225a71f31760b6e0ae17"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/stdio.c.obj",
+      "bytes": 8664,
+      "sha256": "a13b0d6d26652a9c43de40510ab779635251ac46c5dc560ab61008cd0db7a712"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/fnmatch.c.obj",
+      "bytes": 12368,
+      "sha256": "56f30951df6a8fa773ab78e90862b4cfb2cd92197c6bfccae55d3552a9405b4b"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getentropy.c.obj",
+      "bytes": 6896,
+      "sha256": "caacb8c47d5b5cc8b92d3facc729bb557d1bf1792a7821b7ef1ff277c1de6746"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getopt/getopt.c.obj",
+      "bytes": 8108,
+      "sha256": "bd58ce54bf00ff54411618a184318e368b3c1181cf67df734d2af24b11d115e6"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getopt/getopt_common.c.obj",
+      "bytes": 6488,
+      "sha256": "dd426c8d7f9e8dfe15a74da4fb9a166ccc9d7de7472b5866815cd27c4e0a3b91"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/misc/generated/configs.c",
+      "bytes": 22545,
+      "sha256": "c8435405f28ed450527a08474559f1636f49a06b037487502eb2cb11df9cb4ef"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/common/reboot.c.obj",
+      "bytes": 4800,
+      "sha256": "78fa77b3749123229b91d7bbd43b4c27aa8afa5c5448b3e704e4f51e57f31bc9"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/nrf52/soc.c.obj",
+      "bytes": 10972,
+      "sha256": "1f412c2bdc791a1e8f73cc34de613b547bc553d2e768baadd2b08e3d22de84aa"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_base_addresses.c.obj",
+      "bytes": 2356,
+      "sha256": "3ccee619f1888680c878825b94d9d787dac3c77acbf32b315689cd8831d85532"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_binding_headers.c.obj",
+      "bytes": 2292,
+      "sha256": "d5a5f52c3896141a623705ec91158820dd7ed48109ecec9c9eba4e30635b5cd5"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_enabled_instances.c.obj",
+      "bytes": 2368,
+      "sha256": "cabda62e57a67f430b6235a4fdfc2281bba2b367a0d35a452283f2767fa3252d"
+    },
+    {
+      "path": ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "bytes": 230720,
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_clock.c",
+      "bytes": 33837,
+      "sha256": "9cb943116ff2fee357813b0d097f107448080ca0576e712540433df6c6a3b950"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_gpiote.c",
+      "bytes": 62114,
+      "sha256": "f5884f534d14c55acd8f976c993e7642ab393d9639a138728cc00e9efa2662e9"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_ppi.c",
+      "bytes": 10948,
+      "sha256": "f6ef44bd25e5ed57feae6a5f42437f0abe922acb3d0374d66d2e27ab8f27df98"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_spi.c",
+      "bytes": 15487,
+      "sha256": "5ead60ba13396f04187c1ab88be13a18481427a08a9f9abaae66a85863992e13"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_spim.c",
+      "bytes": 37087,
+      "sha256": "f614bf765dc17817737c557651e7a63546a95d3e26a0dae89a785e466f395cb4"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_flag32_allocator.c",
+      "bytes": 3168,
+      "sha256": "29e42b66084d1a0344a6484bb3fd0c9cef0f82cbdb6d8a7413a7f1d145c9aa7e"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_gppi_dppi.c",
+      "bytes": 7864,
+      "sha256": "ef45810be7acde6c1f662aa721bc388dd96133d85d2a6673b8cda9f86c791d45"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_gppi_ppi.c",
+      "bytes": 6584,
+      "sha256": "0696d39eab7742ab3a59b27060411debcdf4453f75769d5cbe1e3ad30ccfc2bc"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_ram_ctrl.c",
+      "bytes": 12907,
+      "sha256": "938b2c76956e65caf6784dc96a6f04ebc46db21f3f7e3f46af4af16fd45f25e3"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/mdk/system_nrf52840.c",
+      "bytes": 1600,
+      "sha256": "7ee891f6e73098d1badf4a38c163d773029571e1a3629975efef67043f534b5c"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/__aeabi_read_tp.S",
+      "bytes": 561,
+      "sha256": "1ba5712dbc2a5d48a57fde5070b2cdc0f6b2bb86a740ae2f55811aaf1bea0aa1"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/cpu_idle.c",
+      "bytes": 4587,
+      "sha256": "1c578ba319af2a7d14221297644f31eb079bdd7e11541ac73470c4ddd3966c15"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/exc_exit.c",
+      "bytes": 1796,
+      "sha256": "48cf48662b76320596ecbc79bd790c30f40adbd445d7c0c345723cfafea75736"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/fault.c",
+      "bytes": 35292,
+      "sha256": "b384780fcba27a208a159d337107c68f9e743d9b7e27c67a5807e868e5e2354c"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/fault_s.S",
+      "bytes": 3064,
+      "sha256": "6f429f96c4d3af65eb79dcf0e2ef5d96d99208dcc98312175b132155ea1d90a1"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/fpu.c",
+      "bytes": 1525,
+      "sha256": "f99d1b636cf51c65208d4c5bc237d6169322740368c82c41a59a99d42d29a93b"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/irq_init.c",
+      "bytes": 871,
+      "sha256": "feb7840f9e141f967a40c7772819442101ff58b96e286a293893b4989bf2329f"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/irq_manage.c",
+      "bytes": 7862,
+      "sha256": "608b69006b96850fe9ee83207c951a3bd8cd8526e06f7667d82fea37039331ea"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/isr_wrapper.c",
+      "bytes": 2629,
+      "sha256": "30ec1214e2a4ba5371e61bdadebd0d9427c7e19380f8a976b2636ca6877196bf"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/prep_c.c",
+      "bytes": 6895,
+      "sha256": "12a858aacff355befa7ea40fdebbc36129406bc24b8b41d465642213b26295e6"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/reset.S",
+      "bytes": 7437,
+      "sha256": "47938e87db6c4bb3e1d32b2361bbd34794ed44a8cfc113c687353599fc23faac"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/scb.c",
+      "bytes": 6776,
+      "sha256": "1eaba4d27835e89e62f030f91f6a3eb923c23dce8c29767edd9250d69b7aec7d"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/swap_helper.S",
+      "bytes": 27246,
+      "sha256": "0d0d5437764b0ffb86dc13244f4d101ae9292c3ee009d90936c568ccab2c4bc6"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/thread.c",
+      "bytes": 22968,
+      "sha256": "45c6814905b893432176d8b57e718715c87d6dd390d2d398e507dd7fe66b6baa"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/thread_abort.c",
+      "bytes": 1730,
+      "sha256": "09da0fce1729d57f3d576eea1ff1927df4d220350e4662e99e832f1d0ed95b8d"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/vector_table.S",
+      "bytes": 2389,
+      "sha256": "d1aac835adce29cdc7a029869baf968c0c9fd50eaa751bfbad5b03818c70b61f"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/fatal.c",
+      "bytes": 5202,
+      "sha256": "31dfc09d12559f49228993f5f6424aae8275e64b601175735f3f5a76afeabdf5"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/mpu/arm_core_mpu.c",
+      "bytes": 12244,
+      "sha256": "7b4e5c8f88fd2d30e08c09e3296c460f67089086ce89c8812ed7774558ce3b7d"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/mpu/arm_mpu.c",
+      "bytes": 17367,
+      "sha256": "d1ece1476d77fff97569c262dce36c5eb4f57315ace5246bbaa6db26e585091f"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/mpu/arm_mpu_regions.c",
+      "bytes": 978,
+      "sha256": "9cdb853945eabf1e4ecf82c63062a49fcdf70cf2721a8c74cf07152f239f8f76"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/nmi.c",
+      "bytes": 1311,
+      "sha256": "1040c563d990239fabbff96e9052c665c5ec109759e3e78690620ce030211440"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/nmi_on_reset.S",
+      "bytes": 612,
+      "sha256": "8634e18bb3d11a8ad8721fe891191a7e9abaef738ba5a1126fca462affd7cc7c"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/offsets/offsets.c",
+      "bytes": 179,
+      "sha256": "187ae52b0c651f4030463161d50b55af702112c9199c4f1c901384dfe5f115d9"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/tls.c",
+      "bytes": 1503,
+      "sha256": "d893b89922a45e3c8f79c817c25faddf4a9fe87f1c9af086bb3c26ac1029137a"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/common/init.c",
+      "bytes": 3639,
+      "sha256": "3d076f4b45a39bcebd3216ccb57cdc9cb42438ae1b2c1b2975bfa69482b47366"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/common/isr_tables.c",
+      "bytes": 3859,
+      "sha256": "8c92f91f6b0c252f2a57020b39262a4b958faa355b25de42a22049ee31296f58"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/common/sw_isr_common.c",
+      "bytes": 489,
+      "sha256": "e19826a72f066b8f6a5523fd74630b73df7108544b88cdd60fe6d1758b5fa2e1"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/arch/common/xip.c",
+      "bytes": 2770,
+      "sha256": "76ef481a203e82100899b3dfe9c75fe515dffefa281ef85c87ca5266a00924e0"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/drivers/clock_control/clock_control_nrf.c",
+      "bytes": 24489,
+      "sha256": "00157bb703aafd1672235553421adcf308a1e7a5777876a58d7410de69cb813c"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/drivers/console/uart_console.c",
+      "bytes": 13158,
+      "sha256": "15744b4ca19fa030a873dec4c6bfccc48a420f2ba82d88af31ca7b78d7574819"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/drivers/gpio/gpio_nrfx.c",
+      "bytes": 18086,
+      "sha256": "f19ddb1b733065cda583d83a0d25c29f406dc527a4cc2f7057d18c87c00f69f5"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/drivers/pinctrl/common.c",
+      "bytes": 1089,
+      "sha256": "8a3ba727dcac3f5ca7b6a103473f29b3b46479bf6f4f78fea95560487c194326"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/drivers/pinctrl/pinctrl_nrf.c",
+      "bytes": 16422,
+      "sha256": "e0e786026ba48b67d600902bf4a9ed1aa1fdfb5603ec8ff939e3ec5352faa13f"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/drivers/serial/uart_nrfx_uarte.c",
+      "bytes": 79441,
+      "sha256": "9ebe14802580bec72dc3140db9e7b2a706867818d43bee424ba62193085bd68f"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/drivers/spi/spi_nrfx_common.c",
+      "bytes": 2081,
+      "sha256": "c0ea3d46540cabe62b3edecc56f755142dc08b634db669d2a65feb8c57a593b1"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/drivers/spi/spi_nrfx_spi.c",
+      "bytes": 12994,
+      "sha256": "d0d3999a4a8bcef390f1ae2e861259671ad851f24899730b596340dc95efbc46"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/drivers/spi/spi_nrfx_spim.c",
+      "bytes": 23584,
+      "sha256": "f1db9ee316b274faec9deb22dba3972cbf2cf1fbe990ec8880496784f2b82e94"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/drivers/timer/nrf_rtc_timer.c",
+      "bytes": 22701,
+      "sha256": "6deedf0f994784d54500e93e786d73ac02f80d8b94d6b3a366c5dbd98d86ef19"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/drivers/timer/sys_clock_init.c",
+      "bytes": 516,
+      "sha256": "426a9d15a2a26d8f250dbd44057f5a56a73efddf9184d2664faec796d578354c"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/banner.c",
+      "bytes": 1408,
+      "sha256": "2319b404a9dce5e3d26d692aab552f24a84429e3d2e6ae45365e5d391c9ab19a"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/busy_wait.c",
+      "bytes": 1412,
+      "sha256": "fa71ef2d8e936a4269744056b02d8690f39d8a0db76975985a3266fc6cdcd6dc"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/device.c",
+      "bytes": 6824,
+      "sha256": "8b188ac40b377c917d78c3e016d47a0cb2c4de39e234113e73703d4d0e3ece43"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/dynamic_disabled.c",
+      "bytes": 393,
+      "sha256": "7d2627bcb64f6eef6536d14f7458bca1db35ace85134782ef921d6bc989aa31a"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/errno.c",
+      "bytes": 1125,
+      "sha256": "79083970578e3c46fa4eb83c35858dccc9048db3a3df82d87e7fbbbd92bcff55"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/fatal.c",
+      "bytes": 4708,
+      "sha256": "63a403ccdf73d0961e7a8d3b586e8a06908b1352ce226073434cdef5298fc30f"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/float.c",
+      "bytes": 1274,
+      "sha256": "81d352f3d5b6231ee66301375cb8ac38b77cb4638f0592212151ede00f58b51a"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/init.c",
+      "bytes": 17123,
+      "sha256": "691655388dd17fea6e03170703da8527c42f16d59c72c6ff105df2658da23b04"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/kheap.c",
+      "bytes": 6218,
+      "sha256": "187d9b6ae3277d11b6e30e84e45aee2da5bdc852eaf0d6c4baa8938bbdab8767"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/main_weak.c",
+      "bytes": 951,
+      "sha256": "42fbf6062eaaf4e3787134f71327eb48ca5b263dda8e32e3e264d625595e91ae"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/mem_slab.c",
+      "bytes": 9079,
+      "sha256": "e04ffa4e9c256eeb2083b5db9ead6ee736bb0fb46bb6a6b162c8302d4043b3ed"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/mempool.c",
+      "bytes": 4599,
+      "sha256": "b0672460bce0716c8fcbc58278e3ada1970badc6ebfaba87c0f3716f90b2bcf2"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/nothread.c",
+      "bytes": 1505,
+      "sha256": "37229a49ad4cfd910937f9e1e219b2ee0772b87d5125c2ce26a40a2461bf61bf"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/timeout.c",
+      "bytes": 8002,
+      "sha256": "07cc9f8ec5a856880d883dec757c87ec57f2b9ca90e15cc1794dcaa68f6162ae"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/timer.c",
+      "bytes": 10034,
+      "sha256": "fc811035bbbcb750b65677983bc85d2c7465086fadbef9773c0560a0bb389c17"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/kernel/version.c",
+      "bytes": 476,
+      "sha256": "c03c0e0b32c550cd044490a6efa1ef0fc6b5b550cbdb191fc024a7a2c3cb0314"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/heap/heap.c",
+      "bytes": 15233,
+      "sha256": "46d0e10066c77a380859f4038e85252f05ba37a8f2f6af3d159cd4f4084c4cd9"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/libc/common/source/stdlib/abort.c",
+      "bytes": 223,
+      "sha256": "1bdf701115a6779f79ad94284c2e4aed4d3949164d3bdff07fd30e65da5745f2"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/libc/common/source/stdlib/malloc.c",
+      "bytes": 7838,
+      "sha256": "bcd944bfefd7ce3638ad6fc89fabf8a1f6544340f6dedb6593b20cbbbe215c83"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/libc/common/source/time/time.c",
+      "bytes": 389,
+      "sha256": "87b97a2f0aa0c29cd2d083241f957ef51522750f7b38386b8d551498098e6866"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/libc/picolibc/assert.c",
+      "bytes": 596,
+      "sha256": "d1fd4cbd6cac5c9a8fadf6791d7ccf7d98329ef393b7561a6575a65535e2c8ed"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/libc/picolibc/cbprintf.c",
+      "bytes": 541,
+      "sha256": "9ccd095d5159b94585f7b70fe9ff07218a561920587f96ef86decb8180ebd8c1"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/libc/picolibc/chk_fail.c",
+      "bytes": 521,
+      "sha256": "705fc796458995926f9eb208f4a92a3084da8377ec8307dc5a69dd9e40303c58"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/libc/picolibc/errno_wrap.c",
+      "bytes": 404,
+      "sha256": "3ab1673e88c424788fcd093527058d727b776a12677e9996b434083d553f5940"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/libc/picolibc/exit.c",
+      "bytes": 225,
+      "sha256": "d6c02e06cace94d70c9ea241dba2e9d46dc5d446ec8f8aa745d9ce1064c6d074"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/libc/picolibc/locks.c",
+      "bytes": 2535,
+      "sha256": "134dff8e0cdf6a159cf4d7db1e920245a48c63f283da6e2835a0218796038d48"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/libc/picolibc/stdio.c",
+      "bytes": 1144,
+      "sha256": "164e7af711517c219af88560d5a7c9d3517c6364339182be50bb1150f7eb55db"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/libc/validate_libc.c",
+      "bytes": 433,
+      "sha256": "6bc651f7181d4906d48531af5904dd305fe69fc13d1bf021bb6a6f068224e2b9"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/os/assert.c",
+      "bytes": 1439,
+      "sha256": "6a5ed7e790b9860c1fd29089c67437e272822eb830a30835ddce1835c8072bf1"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/os/cbprintf_complete.c",
+      "bytes": 42759,
+      "sha256": "f7a5409d8764650e5c9a8f05c27f91e22521cf3317415af4097ea3d0979336bc"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/os/cbprintf_packaged.c",
+      "bytes": 28862,
+      "sha256": "44cd5100ee7419d9dba3174742eaca222de86f06c2cf2b8d2277e209383942fb"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/os/clock.c",
+      "bytes": 5911,
+      "sha256": "7d04d0e77b6576a65efa1c8b32468805c83e3716efaeb28cd0156d445a895d66"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/os/printk.c",
+      "bytes": 5139,
+      "sha256": "744075f915c522cf0f776739390ab04ab580945bfa6aade5228d76c89c09d180"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/os/sem.c",
+      "bytes": 2656,
+      "sha256": "ebf54b1f8ce07c21ffc7120dac844062228d850c68d4c4f0bb98976d9f9d2493"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/os/thread_entry.c",
+      "bytes": 1535,
+      "sha256": "5e3b99b1cf4253289c47d1dc7495eeff90f8d446cbb3be96afb71c7767dfa046"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/posix/c_lib_ext/fnmatch.c",
+      "bytes": 6583,
+      "sha256": "8c0c0511aaefc0d46651079ce4020016e37a9e84eb3e0f70f94e61732a35c0d1"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/posix/c_lib_ext/getentropy.c",
+      "bytes": 831,
+      "sha256": "bcb824c2fbf67db6c4fa6557eef8366961fc3ae22981360fbb1689b17b0541a4"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/posix/c_lib_ext/getopt/getopt.c",
+      "bytes": 4813,
+      "sha256": "27c3a03bf5c94dd93e167ddd9657207b04063769ff4a8d25aac13d903bc3730d"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/posix/c_lib_ext/getopt/getopt_common.c",
+      "bytes": 1810,
+      "sha256": "94f51bd041414cd099fa58e06e4a2914d59506ca6ad2dbdad85eb0f09467ebfa"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/utils/bitarray.c",
+      "bytes": 18256,
+      "sha256": "9ef876c65835e0344d956d96e164e982c01ec31284ba44f07e87b46cca9b5239"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/utils/bitmask.c",
+      "bytes": 1033,
+      "sha256": "264a17d6646b7eac0cbdf3aa5cff388aa8fa576cf67fa73f31656df8110311ca"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/utils/dec.c",
+      "bytes": 554,
+      "sha256": "b6991d4a5dd46650e0b3a85ed0adcdb87842832bc4c5108fc0918f125316ade0"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/utils/hex.c",
+      "bytes": 1526,
+      "sha256": "7d999d00f81e38a56bb8e11e82c691504c12e3fdbd5e1b6e02ae4f63c683b99d"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/utils/last_section_id.c",
+      "bytes": 261,
+      "sha256": "e45c01dca52130f43b1c1dc2422762ea4d7dbde468085dc3534bfef3c5ef600d"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/utils/notify.c",
+      "bytes": 1740,
+      "sha256": "878e02b64f185cc5669bf87f5a3b8d502a4bcf8c05fe8ebdd25cce76a64c33dc"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/utils/onoff.c",
+      "bytes": 16250,
+      "sha256": "c856b683caaacc42c85a82b55da84f44d73ee1ec5088f204d3c3d2bdc1dd2446"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/utils/rb.c",
+      "bytes": 15787,
+      "sha256": "9ffd8e4d737a2a7f060f0c3a412895ddf5d093f41adbca6af301564ec319b961"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/lib/utils/timeutil.c",
+      "bytes": 5901,
+      "sha256": "3b3ca8131a9423fffe12be9976886b415592f3466c7e35a74a2e676dbaf2f90b"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/misc/empty_file.c",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/modules/hal_nordic/nrfx/nrfx_glue.c",
+      "bytes": 1384,
+      "sha256": "cc0522caafa5a9c12b3717a10883ac6b098829ee491b1a24e2d6ea7c3ee3cba7"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/soc/nordic/common/reboot.c",
+      "bytes": 944,
+      "sha256": "87b2b405ca1ad6fc4a53e30a526e920ba70e40bb90a3191131ac0e699340c2bb"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/soc/nordic/nrf52/soc.c",
+      "bytes": 1350,
+      "sha256": "24e1c1a606f09303b22054a2127ebaeec9dc0d064d14972653428c724f314443"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/soc/nordic/validate_base_addresses.c",
+      "bytes": 12523,
+      "sha256": "1bfafad72d6d69a7e2de390c45be843c820520e46c6812f16d8a02c565ea7e94"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/soc/nordic/validate_binding_headers.c",
+      "bytes": 1396,
+      "sha256": "92d319ce093e1692a3a0caf72dee7dc0e8bf157c3e50201b03f176d45fe45164"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/soc/nordic/validate_enabled_instances.c",
+      "bytes": 2358,
+      "sha256": "693131a78912965f4c66a3fa74121a0bc81e75c1b9eadde22d8fd40e7f62c0dc"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/subsys/mem_mgmt/mem_attr.c",
+      "bytes": 1656,
+      "sha256": "c19204f28b3c6008c7a49e3d5a9fb05915859d5efe4c1ea7aaeabe32c84291e8"
+    },
+    {
+      "path": ".toolchains/nrf52840/workspace/zephyr/subsys/tracing/tracing_none.c",
+      "bytes": 511,
+      "sha256": "f8105978be522f4d6e6d90403d808af633e4781a327d04121c0519ebe205b78d"
+    },
+    {
+      "path": ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc",
+      "bytes": 1338640,
+      "sha256": "6220ff239e621407ce752563cedd90d086e7f95f9e521ec61b974139de7e224c"
+    },
+    {
+      "path": "Sources/GiftUI/ActionHandler.swift",
+      "bytes": 201,
+      "sha256": "d36a53f45d18892c235c02355cbed0e6bf92a20b7c64bc7e84ac39a03fa34d01"
+    },
+    {
+      "path": "Sources/GiftUI/BoundedText.swift",
+      "bytes": 6445,
+      "sha256": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce"
+    },
+    {
+      "path": "Sources/GiftUI/Button.swift",
+      "bytes": 1216,
+      "sha256": "d2185a3e2983a38f8d2025a595444bc0e15d5089583b009327e007fc1272cd25"
+    },
+    {
+      "path": "Sources/GiftUI/Canvas.swift",
+      "bytes": 1161,
+      "sha256": "27997e7b2ad52da93aae9cab94be9bd7190f700557c2a5d06b571c566d2b734c"
+    },
+    {
+      "path": "Sources/GiftUI/Color.swift",
+      "bytes": 668,
+      "sha256": "60009e3d58dcdfe65ba39bf6d036047207707837d73db308a5a25e81fc2ee835"
+    },
+    {
+      "path": "Sources/GiftUI/DeclarativeView.swift",
+      "bytes": 13434,
+      "sha256": "8015cbf2b2d5df841799012850833604525af705e5087ac0583dc37064047132"
+    },
+    {
+      "path": "Sources/GiftUI/Disabled.swift",
+      "bytes": 1063,
+      "sha256": "23f79884bf45546310562cc0d9a47396460623a2234bced096df0c4b31362ee5"
+    },
+    {
+      "path": "Sources/GiftUI/DrawingStyles.swift",
+      "bytes": 762,
+      "sha256": "eb28147b2dd565006f9d6b97c7b98e5bcfc52f42e19ebfae1dad1f79b08d130a"
+    },
+    {
+      "path": "Sources/GiftUI/DrawingSurface.swift",
+      "bytes": 7258,
+      "sha256": "b75ae0b7421ec3f731d92375466558013dd1163106ce37ddfc2fb5e40d3ce1ab"
+    },
+    {
+      "path": "Sources/GiftUI/GiftUI.swift",
+      "bytes": 4401,
+      "sha256": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c"
+    },
+    {
+      "path": "Sources/GiftUI/LayoutContainers.swift",
+      "bytes": 4628,
+      "sha256": "de2a3c7b10c8734b66a106b89259ae6296c4b4e3e951f75683bb14d07e421043"
+    },
+    {
+      "path": "Sources/GiftUI/LayoutModifiers.swift",
+      "bytes": 3817,
+      "sha256": "15ff02e7f893112e422ba0e312162e0074aeb879a2ff5b1b6f93bf62869f5576"
+    },
+    {
+      "path": "Sources/GiftUI/LayoutValues.swift",
+      "bytes": 1951,
+      "sha256": "70c7b34276f6f2d41382d14ee844fcf65d92c075f7caa0a12e79d17181c817f5"
+    },
+    {
+      "path": "Sources/GiftUI/ObservableState.swift",
+      "bytes": 5043,
+      "sha256": "1d532894156966a50c3ea7bbd3955f14cb1f114c255cb91fc9317920012be406"
+    },
+    {
+      "path": "Sources/GiftUI/StyleModifiers.swift",
+      "bytes": 1467,
+      "sha256": "4dbbab2cfbf7334556de944ecc58c8587b9b6da0c5be431990a36210cc2e8adc"
+    },
+    {
+      "path": "Sources/GiftUI/Text.swift",
+      "bytes": 1335,
+      "sha256": "c783fde614d274b115f2ca76db40f08cbf78dd4029f95387707a1f75e1ed54eb"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift",
+      "bytes": 6303,
+      "sha256": "25ceb74e6fdea87403ae112685960394adcd56012ad7366ec870b0b6217436af"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+      "bytes": 8294,
+      "sha256": "fa9c4b3aa3c522a8bd39efa4560abb692f61a1ab578089ed5ea4af182e5dd778"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift",
+      "bytes": 16826,
+      "sha256": "8b930d7dd1a226a8d4bdf5c827c1fd4471f0084f634ebe1144696fae2f50b4b5"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift",
+      "bytes": 3394,
+      "sha256": "a61e6fbe4e1cd2ea1f1325e11ea2e37332fa1c9c2e09a4a0d7dabdd5a7a2d765"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift",
+      "bytes": 15217,
+      "sha256": "0d0b245435a848f98bbc1996a0768298b1be2a03563d06d8bbd04d8077cf7c34"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift",
+      "bytes": 773,
+      "sha256": "f38c93f26953da1f265aa20b1678d8d1a515fe533707d3646e89556908f62754"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/RasterBackendOwnerFailureAdapter.swift",
+      "bytes": 3529,
+      "sha256": "71185f98e32afd8353c6787c209ff671ef277e013df2ad11465ddf991b59d1e4"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift",
+      "bytes": 4267,
+      "sha256": "37bcf7159a5263b154e76ee84bd6d5592ca5903917b27614f30eeedc99c667e2"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift",
+      "bytes": 1335,
+      "sha256": "0dd3524e69afc0f87cc9b563f395d8fc46dd09d5a40a41072670bec032fb029e"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift",
+      "bytes": 3756,
+      "sha256": "8b5b0a273bca73176816366ffdc6d917ef71fe3bebc797113722988b4604579b"
+    },
+    {
+      "path": "Sources/GiftUICapabilities/GiftUICapabilities.swift",
+      "bytes": 47123,
+      "sha256": "79a2f7a749cbe3e8033d1d118f9c94fadb67b985d36dbc185996fc255e8ba884"
+    },
+    {
+      "path": "Sources/GiftUIDisplayCore/DisplayContracts.swift",
+      "bytes": 2747,
+      "sha256": "b27ad7489ad1ec6076f0d53b3912d6b9ed85329d355ceda2678707374111f3f0"
+    },
+    {
+      "path": "Sources/GiftUIDisplayCore/SurfaceDisplayContributionAdapter.swift",
+      "bytes": 1010,
+      "sha256": "6a53a85962e5a821e5d81c32a580f453f6332feceaf31997f8fc04f2d9d548cf"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasInvocationSource.swift",
+      "bytes": 440,
+      "sha256": "9b992bc729e793959c0d8ad3fcb374c0bf3ced7edb1cdd098c57e6ba48c451f2"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasPlanProducer.swift",
+      "bytes": 6405,
+      "sha256": "8a75acb55af64e06ad4aad12553c1e6c4c1a6c11aa937599f65e63a7bef68db7"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasRenderProducer.swift",
+      "bytes": 10954,
+      "sha256": "70fc175a8490cdf2ba10d46818fc5ff9b80137a47f5fa45d8cf649d9fd292cc2"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "bytes": 3398,
+      "sha256": "8ff2bf5049d4393d459fef253cf6a137a9796a70c2ad4c413111d7928070b531"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "bytes": 5524,
+      "sha256": "2fa24cfc2cca8813002241d77d67429b0eb8895e044da683aa5fd19891ae6437"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/DrawingLimits.swift",
+      "bytes": 2779,
+      "sha256": "eae0cc1be30bc22102c76613cd07b08ee577dbbb1f08d06caf350eb52d64be64"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/DrawingPlan.swift",
+      "bytes": 1219,
+      "sha256": "93e3216f2faaee98e2c025deef50cfb7513911efacdd56e90980be3cb6264da9"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/DrawingValues.swift",
+      "bytes": 1239,
+      "sha256": "d1008926323fdb292ec32e95e2cefb17958ea5ccbfb8d2e0c48fb67e565f0874"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/PathConstruction.swift",
+      "bytes": 3882,
+      "sha256": "ff7780b55c1b33f6b00ad322a20bfe9d7408160a13a2908b6da9019cb0bfc68d"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/StaticCanvasCallableTable.swift",
+      "bytes": 463,
+      "sha256": "9c644426cf7f594dddff99cea8a21eb4c2fd57f295f4afdfbe049c55413ff9b6"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/StrokeSnapshot.swift",
+      "bytes": 4381,
+      "sha256": "3345b05fb9f6f219fb09e7aa4e7e7a9a18c70f77d192734c36a08d0f84836a51"
+    },
+    {
+      "path": "Sources/GiftUIExecution/AdmissionValues.swift",
+      "bytes": 3076,
+      "sha256": "dfd4f00479635772b2f4f8d09c8e1caff3f052d257f8fbd70cdd05e28eff2d38"
+    },
+    {
+      "path": "Sources/GiftUIExecution/ExecutionAdmissionController.swift",
+      "bytes": 8766,
+      "sha256": "0aea5ab996e95104ce476aeb7188cc6bfde37d31f6db51b5ee10ae241524d4e2"
+    },
+    {
+      "path": "Sources/GiftUIExecution/ExecutionAdmissionSealTransaction.swift",
+      "bytes": 5218,
+      "sha256": "7a88abcca9f437db94ea1f647ae8fd5ec3dbed82bd629b739ba3446ef8cf67d0"
+    },
+    {
+      "path": "Sources/GiftUIExecution/ExecutionAdmissionSealer.swift",
+      "bytes": 1792,
+      "sha256": "54f3a7809c277a37cf8acfa931d62086ebc0ae1d3e77839ab6dcc28085885345"
+    },
+    {
+      "path": "Sources/GiftUIExecution/ExecutionMutationBatch.swift",
+      "bytes": 2345,
+      "sha256": "a0464225588b3101249112a88f404a3258ccb87e8d9eea5e56671a4975501567"
+    },
+    {
+      "path": "Sources/GiftUIExecution/ExecutionOpportunityRunner.swift",
+      "bytes": 193,
+      "sha256": "d28b28c94e179c58805de37cc1a42736541cc26a7ba5bcb187571b8ad8e15a9e"
+    },
+    {
+      "path": "Sources/GiftUIExecution/ExecutionPhaseMachine.swift",
+      "bytes": 2478,
+      "sha256": "f2047c05efd5f2f2f7c96f57e3b20fd9b3826635c2fa922bdd1c0d81f545da34"
+    },
+    {
+      "path": "Sources/GiftUIExecution/ExecutionValues.swift",
+      "bytes": 2733,
+      "sha256": "9b1278a5878f4123aa1e92fe723d068a3501a562b75b2e7e6940bf75869a80e2"
+    },
+    {
+      "path": "Sources/GiftUIExecution/ExecutionWakeAccumulator.swift",
+      "bytes": 1058,
+      "sha256": "856db20ee149c555a4d0c33731be4d69980486033592181187d8465b60ecf2d2"
+    },
+    {
+      "path": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "bytes": 1974,
+      "sha256": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba"
+    },
+    {
+      "path": "Sources/GiftUIExecution/FrameOfferNormalization.swift",
+      "bytes": 4094,
+      "sha256": "761740fdf6fb11cb54a52c2817d006ec75a9322e2c9a4351952f893711698a33"
+    },
+    {
+      "path": "Sources/GiftUIExecution/IdentityAllocators.swift",
+      "bytes": 2646,
+      "sha256": "8f9bab781054456d49e210b3700200f10abc7a47c1a2f85e3de6013d9f6a3e35"
+    },
+    {
+      "path": "Sources/GiftUIExecution/InputSourceSequenceState.swift",
+      "bytes": 4815,
+      "sha256": "b69a01de3871a80fa7b9f556bc7d93f12945c9edcc6569d00faa3569d963c5b3"
+    },
+    {
+      "path": "Sources/GiftUIExecution/ObservableTargetGeneration.swift",
+      "bytes": 187,
+      "sha256": "07e995cb7594bb54a8018020960a98258482dc771abd86858fd052307e89417f"
+    },
+    {
+      "path": "Sources/GiftUIExecution/PointerActionCapture.swift",
+      "bytes": 1831,
+      "sha256": "0acc1d5b8c8f9af3f0aa91959198917bc6868907622d785eab149dee7ceed6a6"
+    },
+    {
+      "path": "Sources/GiftUIExecution/RecordingCandidateOfferCoordinator.swift",
+      "bytes": 5648,
+      "sha256": "66b7d07d657785ba0ebf9fbc46c3b1d983b715cf45d4a7dd27d46b856fecff23"
+    },
+    {
+      "path": "Sources/GiftUIExecution/RecordingCycleCoordinator.swift",
+      "bytes": 6774,
+      "sha256": "ccfffb285dde8e73132ddba6a32fab791eb488b673b316c09b397d10d292a620"
+    },
+    {
+      "path": "Sources/GiftUIExecution/RecordingCycleFinalizer.swift",
+      "bytes": 3196,
+      "sha256": "bc9318cd92c095b9473878c575996b8b0b1e500faa3cbf121df1ba774673ffc3"
+    },
+    {
+      "path": "Sources/GiftUIExecution/RecordingDerivationRecovery.swift",
+      "bytes": 4898,
+      "sha256": "e71108078104eb3f294bad9231ee819c3ec77cf11b0c059d3d670a9c95fbef35"
+    },
+    {
+      "path": "Sources/GiftUIExecution/RecordingDerivationTransaction.swift",
+      "bytes": 3252,
+      "sha256": "380f3d5ec84f4ab6e45aa1e6054677b3080105fb7c445f79cc3ee6b9558e5bca"
+    },
+    {
+      "path": "Sources/GiftUIExecution/RecordingFocusedFailureSelection.swift",
+      "bytes": 2365,
+      "sha256": "c2f005577a0a33d1d46c74d77836ec5ef03857d5716523d8cf6f4ef07a32fb8f"
+    },
+    {
+      "path": "Sources/GiftUIExecution/RecordingFrameCommitTransaction.swift",
+      "bytes": 2984,
+      "sha256": "2cf669bd232c7310fc9650d33ccc242fc717b1071877d8a1b2dcbce32ee7e7c8"
+    },
+    {
+      "path": "Sources/GiftUIExecution/RecordingFrameEndpoint.swift",
+      "bytes": 7814,
+      "sha256": "43b75fbc4d7ff5a09db83693f6e557f7256bf62960ed3ab2f4c37f4caca5f849"
+    },
+    {
+      "path": "Sources/GiftUIExecution/RecordingMutationBatch.swift",
+      "bytes": 3958,
+      "sha256": "229c26f04e85f737a0c6f41d7bbd76eb9c33ff0955bfa878d70bcf8f2984ff39"
+    },
+    {
+      "path": "Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift",
+      "bytes": 4527,
+      "sha256": "45ce481da6c05b8509f596d6e2a9eac9961c261afe6cc6401b6035772c9370ed"
+    },
+    {
+      "path": "Sources/GiftUIExecution/RecordingPresentationTerminalRecovery.swift",
+      "bytes": 2276,
+      "sha256": "c163ff5b21c6a9f920b4b70c0d150403ccd2900c20c212be04d2985be90c53d0"
+    },
+    {
+      "path": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "bytes": 4880,
+      "sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1"
+    },
+    {
+      "path": "Sources/GiftUIExecution/WakeValues.swift",
+      "bytes": 868,
+      "sha256": "915e835c62177403893bf44318b0d06ded8e017e59ba4f1e11d9f333505275f6"
+    },
+    {
+      "path": "Sources/GiftUIFailureCore/GiftUIFailureCore.swift",
+      "bytes": 15089,
+      "sha256": "9e1e92643cdf2aed4efea9684697481af01034b9ad34ef42aff8c6ff6445cae7"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift",
+      "bytes": 8716,
+      "sha256": "8caf5a83d60ea858e2ecfbe5b1f76232a6dd85efc1a2fb3797adcf3a04810a3e"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift",
+      "bytes": 11581,
+      "sha256": "2a541a9b1efbb142f6f6d7d5773ed12c4842d2dfe9e289750c9dc83205306402"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "bytes": 6535,
+      "sha256": "d6a087a6505b10a622221818d20975b63b2aa2138bd965ff2d6e6a9b0a6680da"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift",
+      "bytes": 1400,
+      "sha256": "475df591e6c3fbd741a916dd6eefacf77a572a25678c9c4a27b84ce5d6974e03"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift",
+      "bytes": 3166,
+      "sha256": "b94f4cbca83a180953ca84c2d18c7fd48565bf449d34af980f0bc5b5b9eb8b67"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift",
+      "bytes": 2370,
+      "sha256": "1fe765b7348bdab18abf6b83da6c9e2cadbb2e7a868a729c8d075f5b5109f913"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "bytes": 4833,
+      "sha256": "3e00d5e22b04e6ccb25ab357f2d6fe96349f2ab31abf3cf9201206110d83b205"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift",
+      "bytes": 12692,
+      "sha256": "401908c35e265ad19b9788d17a32603bd966da81e4fef10b8ff2fc46a9d255c1"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift",
+      "bytes": 6244,
+      "sha256": "b170fb7b19e0627ad7484c81c72bd9c532b4c06455c4d0cd9053e47b1639b434"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift",
+      "bytes": 2474,
+      "sha256": "6f53a358ab30317e2290b162fcd68b4158ae941c3b4b753c546d35b5cd4db5c9"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostFailureAdapter.swift",
+      "bytes": 6448,
+      "sha256": "6b886b52c8e96892207b7230b8ccf9301b56f9fc62f117d7131c025e0452fde8"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift",
+      "bytes": 7468,
+      "sha256": "7bd20cd33825f33478e54a1921b670a857805f6a2cf83bf089810e83b93773a7"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift",
+      "bytes": 4525,
+      "sha256": "c8d261e68ad8096015f070d9e896c4952ac36725ff2c3ccc4b8cce56674d635f"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift",
+      "bytes": 6676,
+      "sha256": "15edb5e6d350cfdc95e2edc97d86a82b147e90b3bf391441eb04f173c218e12e"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift",
+      "bytes": 6861,
+      "sha256": "c7d77a75bc192ccf226c82487e87108d0bd3e5d5a91630d4df3990d6eb3e258c"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift",
+      "bytes": 854,
+      "sha256": "6215618f39789acfa0a40aca1c0657fa8c66c1760884f44dceee1172ee7e7469"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift",
+      "bytes": 1628,
+      "sha256": "b43e1f7bf466c3dea0266e498d579e78504eb1612740f1d24804a2b19e37b84c"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift",
+      "bytes": 5162,
+      "sha256": "467525eaaaac20ac9a891e973f1d0a34cc3c037a7eb934448fa968f47a260838"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift",
+      "bytes": 12763,
+      "sha256": "4bd12f192077693af4be89b1483be4d4791f256f2ca5798d025cbef577da07cb"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostWakePacingController.swift",
+      "bytes": 6393,
+      "sha256": "457479bb631966220e2bb2d26fb7a78ac0143fbcadae8b66c25b78b27125643b"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift",
+      "bytes": 3774,
+      "sha256": "3995cd72d80694e4d56cee8d29e70da7da0b825ae5fbfa2de4201da546268061"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "bytes": 5313,
+      "sha256": "8f003af6658f30857ef2db1d93d762ba6725b91151d58705123d5597898bdea4"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift",
+      "bytes": 7577,
+      "sha256": "6676ad3b27a856c5ec74d5a72cd1020f468389abf5ddf5d8ed3c9a60c53c7d04"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/EffectiveActionEnabledState.swift",
+      "bytes": 478,
+      "sha256": "89e3dc5744fa9169605a04345ff52a3d483a72b80c7ff5ec56350520d0014f30"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift",
+      "bytes": 1858,
+      "sha256": "327b0d1165f8a83d8be147bb8f27fe7573c6305d364d6285f4a7f33c061d7d7e"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionFailurePrecedence.swift",
+      "bytes": 1304,
+      "sha256": "ec6e49fd95484273c7fdf8408d1ebbad34d889e75eeb26bcfd923255ea9c644f"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "bytes": 9269,
+      "sha256": "7c44e2dc5f2ba716d6ee2565f1128147e568a9edfa3acee7456475dbbcf1628a"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "bytes": 16296,
+      "sha256": "9497b277c617e66706891c26bc716f35a2c99b7f0868367d5ea3bd6a07b0e1ee"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "bytes": 2052,
+      "sha256": "19434eff6929af855dc90dac2e8c271dac3e0fb62f676e1ce5dcd05cd049f31c"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "bytes": 6466,
+      "sha256": "4b2ca2f37b6c28ed6badf948d8b312f5b74ab32eea62cd430a13c9822230f839"
+    },
+    {
+      "path": "Sources/GiftUILayout/Layout.swift",
+      "bytes": 2699,
+      "sha256": "17bd1188e891289330a447eaad77a5c53d149e653862939916b221589a9bf1a3"
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutCounters.swift",
+      "bytes": 3504,
+      "sha256": "735a80dc1133d7fcae6ba5ba455b520a8f0224494b2357af224ddea8c200bc12"
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutEngine.swift",
+      "bytes": 64995,
+      "sha256": "d79d5e5d2069c21353a64fb0e31d3cff2ecd6e49dd2c4b369c9a162997ee5ddb"
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutError.swift",
+      "bytes": 285,
+      "sha256": "5733fe30105131fe00b87c4812e787a4efa6aed7236c84d5f93a0e0ddbcf629b"
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "bytes": 4530,
+      "sha256": "0ac0320ec58947aa4bc7c3f8ec0ff662e57f598d2a7764faa0d1c2bc33acfa92"
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutPublication.swift",
+      "bytes": 4365,
+      "sha256": "02e05a2d5e4031cde4940a33f42b52ffd0f87b9b7ad411b87a8e306cd15aad3a"
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutResultSink.swift",
+      "bytes": 867,
+      "sha256": "57a52e0187904a317a7d3b00acf28afcd1854d2e62120cafd4fd12011e2ad06a"
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "bytes": 13395,
+      "sha256": "cd50b36ea3ba48c33b56ba2fcf448c988ba057ffae934a973521d9ec16a5d69a"
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutValues.swift",
+      "bytes": 1912,
+      "sha256": "ec168c1eb9bc6dff3cfb5144ab752958dad62d4bc1c419e8f0dea1b4149e704b"
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "bytes": 3680,
+      "sha256": "bbec7289fc9cb6c1f506e895231257c58bdd818ba6d0a020258cb7c97b342f81"
+    },
+    {
+      "path": "Sources/GiftUILayout/ResolvedRenderLayoutView.swift",
+      "bytes": 3952,
+      "sha256": "7278d5216c075b499bee43e8b646f00a34f70f6b877ab9b4fc72de1878f10b33"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelIdentity.swift",
+      "bytes": 1789,
+      "sha256": "b3100dea3f31eb0b508d07da66dc1aafb3da4235774502a36db9f46c9fd82a0a"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelMutation.swift",
+      "bytes": 589,
+      "sha256": "8fca003edbd06c94c55e870a0fc06a143654b1cc99bc662f3a181ec441bf062d"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "bytes": 16719,
+      "sha256": "6a572ca44df61b39e6f50add6407f014394795aa687dd8484a54828cc95595a9"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "bytes": 13327,
+      "sha256": "08be628f0514504f0e83d04cd80e6cdd717c9791658fa46229b005365d8064d3"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+      "bytes": 1537,
+      "sha256": "ac0e6a5e986da34197ceb103c656147cf57f87ffb71717fe754301d489d374d7"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "bytes": 2988,
+      "sha256": "b0746aaa9e4ed287ac04fd3f717c93534827fe943f88e3724df2f96b8a8a2ca4"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift",
+      "bytes": 347,
+      "sha256": "b88f911561ac3405bd4ed7264122488162828c395a6668ad9b314f54c37b04d6"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateModel.swift",
+      "bytes": 636,
+      "sha256": "5cf0f406693e42324823c6ce6e2f4e45600b1afd4ce4f59049418f5d125b7959"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateProtocols.swift",
+      "bytes": 1415,
+      "sha256": "a192efc2b7be42a9c1950f11ec14a9bdf17dfe903c488c253dab9064e7b42629"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift",
+      "bytes": 2950,
+      "sha256": "58367baadd5b6213f1bf3809106c2aba2639ddc86ec01907b6d1e9e79a706774"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "bytes": 30171,
+      "sha256": "6fbcfe7b098eb5c662d6e52cd020c26f0cff4e78c1765df6658f1e8434313707"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift",
+      "bytes": 1581,
+      "sha256": "0ab15cca11e67014c99dc9d1db13303bd25bf2472f069e02f89e98cd9ef2dbc5"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateValues.swift",
+      "bytes": 2321,
+      "sha256": "58ab30ae29b27233ed5288422849f58c1b43e3ccbf0ddd78f9726f1aef97bbfb"
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/FullSurfaceRGB565Framebuffer.swift",
+      "bytes": 4822,
+      "sha256": "449a1be1050367462f67ab32a98553f6c573a79f1a79a6a26be98e6df06ac5e1"
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+      "bytes": 4674,
+      "sha256": "27119d052890cad6f40ab4d64ed1f584f32b005d513bf910f23557b6cc86c48d"
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RGB565TileWorkspace.swift",
+      "bytes": 5854,
+      "sha256": "e7f8fdfe6b23a33aeaad656ffc0ad745d14026dd3e55c8a1d069c1cb60915ce4"
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterBackendContributionAdapter.swift",
+      "bytes": 2864,
+      "sha256": "07daa8c1ac38863bdbe0340061b8c7de703e912a8990155d91560d07fa88dbb6"
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterFillCoverage.swift",
+      "bytes": 2978,
+      "sha256": "e71a27b6a6e5ee0557bef856d70cfa8b7551ab2d3f93e830f31b414a21b03594"
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterFrameSink.swift",
+      "bytes": 257,
+      "sha256": "93e7455f817de8a665933761c3580c59451d4c9cf12d9b9e8773aa4b28e1582a"
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterFrameWork.swift",
+      "bytes": 4130,
+      "sha256": "f2433ae30e9ed44bc16e2f1faca715f4c6e1608c7a13545e426e76b72bde5090"
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift",
+      "bytes": 9136,
+      "sha256": "d73b11eb6382d40bb0e9a0f336fb5d377f5bfb43f484534906b196aea9f26262"
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterPayloadLimits.swift",
+      "bytes": 3364,
+      "sha256": "23234d9ba4e630bb6279e31a9ab8ae72b8f9e3b2f9477784bf42697ecab544c3"
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterStrokeCoverage.swift",
+      "bytes": 31837,
+      "sha256": "9e26044f3f7e99516742b686767cfe5a03d24d1efceee28f4d7ee6e21a90b579"
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterWorkTracker.swift",
+      "bytes": 5041,
+      "sha256": "16f7c34ef32538f22b340163c402f551e3fd875b66f2e074d8049d6f51d6468f"
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift",
+      "bytes": 60627,
+      "sha256": "5c0e5726f559ee9c43815219f7278b6dd75090e86a20b31e02428a53c396a6ef"
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift",
+      "bytes": 52228,
+      "sha256": "7a4085655de8b4738aeb9e27956922684c2d56235679b4775a7bd4f6de7ff70b"
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift",
+      "bytes": 235522,
+      "sha256": "acc9dab1fb43cb20cfcb460dfbb2e902d6dc9096c5b2ecbc15d19f4c42d84551"
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/GiftUIPiCompactTextResources.swift",
+      "bytes": 3185,
+      "sha256": "fadbaa0ad0a880800339390d1b3f9f3f151d93fba0e9107d9af24087f025cdce"
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift",
+      "bytes": 5480,
+      "sha256": "824fbc8743921029b8682e775c92628de7b65f1198b8682cc3d2c5be645a4922"
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactBitmapPayload.generated.swift",
+      "bytes": 49786,
+      "sha256": "6d9ae291e7c780cf049010cd8912742ccc36f8b89452db6132086776e0b7bca3"
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactCatalogue.generated.swift",
+      "bytes": 35970,
+      "sha256": "0f8900aaf2433a975276603039af1d4200759ec081394e193d149656d78c0c89"
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/DrawingOperationSink.swift",
+      "bytes": 1692,
+      "sha256": "4d35496afb8dc6b4827b52b3441a8258a5f91754c765a8828cb5ff7ebaafba88"
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderOperationSink.swift",
+      "bytes": 500,
+      "sha256": "02ba1989d36434e1e7db7984acce9ccc4a7861857c53de7d49676968aaaf1f43"
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderRecordingSink.swift",
+      "bytes": 3025,
+      "sha256": "3db5511a8127d03eb51c6e6bf232a817d0eb6a2768583433767a05267ebdead2"
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "bytes": 2536,
+      "sha256": "d4a0e5274c7c8e88a4e7c6c9c0bf5345ea1e83b5086b1f32373f01c7a4940722"
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderExtensions.swift",
+      "bytes": 1280,
+      "sha256": "b4b73e4193b61650d587b0134e626058da433b2c25176df35e3a9f74618fddf9"
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderPreflight.swift",
+      "bytes": 19907,
+      "sha256": "1c25158da80d1929699b9323c359ab5480e792bc6f34c6f783d46879194ef290"
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderProducer.swift",
+      "bytes": 4953,
+      "sha256": "6cc002c47ec91714c78a88a27599167b71fd6f6a8780a4b8c9c1845a79a3a23c"
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderProductionValues.swift",
+      "bytes": 2389,
+      "sha256": "0005e5774c9a7658547f91d79b685b2033d59928d01ecd07136b80eaab535bcc"
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderStreaming.swift",
+      "bytes": 16716,
+      "sha256": "4d06944c09c4ad685857df55e2577ff72a183cdfa8b03fb9e5f545a9ea10aa8f"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "bytes": 1884,
+      "sha256": "ad361c8c2e1237cc1e8b4604c9f030198c77786b52a9c1d70ab78d3dfa08bc34"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "bytes": 18228,
+      "sha256": "6a591ea81a12c651512e888c6616c28e1160e20886315d052a350837b98a2f72"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "bytes": 6067,
+      "sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift",
+      "bytes": 1311,
+      "sha256": "c19a8f8cb381a933dcb1d12d1cfc8df738f9408717d88b661e35a264b192bddb"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift",
+      "bytes": 2896,
+      "sha256": "5c402b3a80a52a598149ce8b441e87d9370ff985c173483123d1bd8d0ecd6231"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift",
+      "bytes": 378,
+      "sha256": "7728c6631e620e312f006ddc60e8fdec5d58efb3ea702b662b21ea187586ae57"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeProfileStorage.swift",
+      "bytes": 2874,
+      "sha256": "9b00d9d6ced10e8b4868953e67c998fb9addf2e55a228c857c2cf317b0367f66"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeProfileValidation.swift",
+      "bytes": 19160,
+      "sha256": "770bdb08b6bec4f93e76109838a1e511d88779018fe817b48bb5326608fdb8d1"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift",
+      "bytes": 16749,
+      "sha256": "377ef975edb74d9e8b86b94228e0756e1bc15414875f74a1fb4dbec33f0d88ca"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift",
+      "bytes": 1973,
+      "sha256": "0ba4dd8df9fcb3989d6da1f59dde68587b4bf85818340ba3d5958419cab9a570"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "bytes": 6137,
+      "sha256": "eec27acb25a24754ecfdd69bc2a70339e021bd502c98bca5a87e670c4018cfac"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeStorageRegistry.swift",
+      "bytes": 11405,
+      "sha256": "6f907f1f1c49f5b705439616dfbc5d0f5f6f047998fbb2dc02b1517554fd731e"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift",
+      "bytes": 812,
+      "sha256": "5f49964bca470e962471968f1010570732425ebe45cad74ed4ab19c79839b09b"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift",
+      "bytes": 12248,
+      "sha256": "dc3648560338f093f912b7e0bc812bdaa95e7a434a3bd836c903560bf3971219"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift",
+      "bytes": 2141,
+      "sha256": "eb63e6c191b8e1af24f19dd2fd523ddb315d04e36151471f534fe6063658e0a0"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift",
+      "bytes": 2723,
+      "sha256": "f6bf84f47f4021eaa61dacd51da8e3a6b9d19066eb577934fc19b9dfd7785078"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift",
+      "bytes": 241,
+      "sha256": "f1bb6868e5f37e4deca9fe90707a2b985fda6cb0fa7c00c60ae01ac9b0847d4a"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift",
+      "bytes": 3070,
+      "sha256": "42496e7873d81d55b2556699621885b04038b83d0d4941f250af000571ca6a45"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift",
+      "bytes": 3895,
+      "sha256": "0dd731cdbefcca81360eb2ff896d2e757bedc9829faaaf5e4a4a75b2c48254bd"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift",
+      "bytes": 1467,
+      "sha256": "db63a7743194b90fec3bc81c32f6280dbb487d40ba251358cfa639649e7be3cb"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "bytes": 46642,
+      "sha256": "88214d8af4ac0db6c490e6f8a9c8fa671b1490816f5447792e4dfe0927e9efb5"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticLayoutView.swift",
+      "bytes": 1584,
+      "sha256": "f7d067f23913efcab81ebc27ef3c22073c00c2536360b8f866c2f10e5205196b"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "bytes": 8890,
+      "sha256": "63b71e4511c486e6481e0e64961e14975f5105cf465ed09342e1eaf2dd24bef3"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift",
+      "bytes": 6094,
+      "sha256": "6f2eb6c53e7849ed9cf489ac8b2165a3ab318ff89bb7253076043acfc42ea144"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordRenderView.swift",
+      "bytes": 4784,
+      "sha256": "5d0628083f3ebe29142f7c2245ae7831328ef93c40a28d27b2c2dd20dd029515"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "bytes": 15566,
+      "sha256": "d106f913937b30646aac5006789bf12d8b7530b6b9497cbd861a325038415a37"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRenderView.swift",
+      "bytes": 801,
+      "sha256": "53f052d9cf5f4dba04edecb9713a11518718f315da8d83855623e41d6e8ebaca"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "bytes": 15521,
+      "sha256": "f92786cd8bfae1eb36546e88bbc34c5e864f5a059b7280a2882edc62d57810ba"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "bytes": 7345,
+      "sha256": "2dd204c2c7b5d4fe06e58a085ac7a59aa70dd734e56981231c414c10f7389c70"
+    },
+    {
+      "path": "Sources/GiftUISurfaceCore/RasterSurface.swift",
+      "bytes": 481,
+      "sha256": "cf0aa2fe88d7cf825e5b9bddb8b8e2fc48d76555f4a8ac94ff4ec0b884fe3b42"
+    },
+    {
+      "path": "Sources/GiftUISurfaceCore/SurfaceValues.swift",
+      "bytes": 3576,
+      "sha256": "96e161fdf3d1f58dd4c1de04c043df647a3fa279d17993c57e2b0ce15e19d60c"
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "bytes": 51424,
+      "sha256": "7dc3dc0e55b22c9edee699d51272d16c8d364073cf43a840467bf98424efbf9f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+      "bytes": 15644,
+      "sha256": "e5b03a220709df8d9c439fde4d7728ef3a4e9e9385eeb0059b6cdb8f27df6d47"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+      "bytes": 5819,
+      "sha256": "3d9c21a66423bfc26c60c785583a8f6bc614a10ad0fef767bb48607e88f7e415"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "bytes": 6309,
+      "sha256": "65bde53e58cc8879bb882650661cdcc8fb1551b9da09190e9ead26f066fc7271"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+      "bytes": 24992,
+      "sha256": "342585dd23bc2916176535bfdb9efd7ba115a138047afe3fcda082acbf7adf8e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+      "bytes": 10682,
+      "sha256": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+      "bytes": 1642,
+      "sha256": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift",
+      "bytes": 14240,
+      "sha256": "b1f575db79c688b2534ebe3681fea99864222715f8b9ef83dd3fcde16e261c9f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift",
+      "bytes": 1096,
+      "sha256": "cf9f5467416298dd64f604f5d0edf436b1736dc5972d78721da38c61151cb588"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+      "bytes": 17027,
+      "sha256": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+      "bytes": 8725,
+      "sha256": "62813ea95b2b1cd6bfc430fc66e0aae25e4c6f9db8d8e7329b5c10000a739c6b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+      "bytes": 27293,
+      "sha256": "553929d76928282d94faa15dc544ae369cca2f523bdb70d3fbace4f415c112f3"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+      "bytes": 15838,
+      "sha256": "b49e2fb1466b38e26e2e6da3f6267760a935476acfe8066190ee614f81a67c12"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift",
+      "bytes": 2755,
+      "sha256": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift",
+      "bytes": 3358,
+      "sha256": "d6cdcf1f033a26225d856eb4dd4c5401b76b63d7f78040e111417cdb82bfa41c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+      "bytes": 18226,
+      "sha256": "b2ec7e06f02b2084338c0bf07d1c90c1396fc57e0b363c4fd5fc1777d4137a3d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "bytes": 42932,
+      "sha256": "3565e47ec54b4e85b89260d4922166908b4fdb557e6012318d38c73197c06ed0"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift",
+      "bytes": 4411,
+      "sha256": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "bytes": 37815,
+      "sha256": "fcaebb92dd2009e8a1536ef53a647ae1c4b073e85682098d54c0101b0b995b3a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift",
+      "bytes": 9577,
+      "sha256": "b14a1667a899fc539c8a8d8011d2e377188ce0300012e464ac1f0d1203a999ab"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "bytes": 1600,
+      "sha256": "1f3912de5a30da90232292db5defee3a201883028936311a246e65ad450df019"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "bytes": 167046,
+      "sha256": "ed705493d35ac471e9b4d0591b75fd997ed426a0d84f0894a1e59adbaa402ccb"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift",
+      "bytes": 565,
+      "sha256": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "bytes": 2086,
+      "sha256": "9ac342b4d90996a1375b9968d1e7dc9d7ada58bd99d288d8acc1bdfb5ce9a2ee"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "bytes": 12958,
+      "sha256": "9c1c0120be11c79235f7febb7e4be950307ac1344095214823aa6248b8ab8f96"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift",
+      "bytes": 4999,
+      "sha256": "c49cc7ad1d5de5bcc3a228defd78ce16a1d6e56c775d9227f5648339540eaa2c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift",
+      "bytes": 12814,
+      "sha256": "abae5f87b3390863d8a68657c98b46a0fe9829f96a332affe44fbbb4fcce4d5a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift",
+      "bytes": 7999,
+      "sha256": "6d713ae96bf4982c46f30289068dc97e5d4e32e3dae69f1874dd5e808d053d2b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift",
+      "bytes": 16958,
+      "sha256": "1b1255db3577e1d55bcef72398169ac061c2c1101dda48e783ddb48bc7ee1fed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+      "bytes": 22637,
+      "sha256": "5ff90414394f5b5d70a06790fd633dadc3b5ebacf637164318b2a44c54a1554e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+      "bytes": 5050,
+      "sha256": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift",
+      "bytes": 10654,
+      "sha256": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift",
+      "bytes": 12042,
+      "sha256": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift",
+      "bytes": 10872,
+      "sha256": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift",
+      "bytes": 9265,
+      "sha256": "52da7bb08f311fd4f93666e4f3a8f86b524ffd6cd104e95da10bb1b7c9ceb6c4"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+      "bytes": 4288,
+      "sha256": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift",
+      "bytes": 19532,
+      "sha256": "8c68606f9648016f4b748a59871acb7da656db7968ae2469ca86fe809eb90292"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift",
+      "bytes": 7294,
+      "sha256": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift",
+      "bytes": 8687,
+      "sha256": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift",
+      "bytes": 10957,
+      "sha256": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift",
+      "bytes": 5420,
+      "sha256": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift",
+      "bytes": 3860,
+      "sha256": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift",
+      "bytes": 11497,
+      "sha256": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893"
+    },
+    {
+      "path": "firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c",
+      "bytes": 954,
+      "sha256": "ea40f5906bdd3f7b8f66d6cca16c3c873850d9c6d65fda4153dde6507b133f25"
+    },
+    {
+      "path": "firmware/nrf52840/applications/signal-analyzer-static/src/fault.c",
+      "bytes": 1118,
+      "sha256": "718bfbb6202b8755cb04487379e22312f2cae4f59de8707480783039ac8ea58c"
+    },
+    {
+      "path": "firmware/nrf52840/applications/signal-analyzer-static/src/spi_tft.c",
+      "bytes": 10841,
+      "sha256": "dda88210a8a70864f3f393ca1057da7b64a84cbe01d3de97da55b1232f1ef00f"
+    },
+    {
+      "path": "firmware/nrf52840/applications/signal-analyzer-static/src/stubs.c",
+      "bytes": 160,
+      "sha256": "3a47e781f83342a7c43161ac5da8d116b04debe3e4e20689cd28047c7425c6f2"
+    }
+  ]
+}

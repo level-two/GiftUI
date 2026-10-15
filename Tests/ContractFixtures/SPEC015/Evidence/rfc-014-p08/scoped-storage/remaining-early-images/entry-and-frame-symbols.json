@@ -1,0 +1,199 @@
+{
+  "artifact": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf",
+  "artifact_sha256": "66ca1113d997c6424aedb258c1477692ce4bf5b42ed77f42bb1d5cba66339da9",
+  "tool_sha256": "f76f2df8030f2258951a23ffba602a971e5cd1d1faa4cd09411592baf7a015df",
+  "observations": [
+    {
+      "symbol": {
+        "name": "main",
+        "value": 205501,
+        "size": 76,
+        "type": 2,
+        "binding": 1,
+        "owner": 2,
+        "visibility": 0,
+        "table": 29,
+        "index": 6736
+      },
+      "command": [
+        ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+        "-d",
+        "--start-address=0x322bc",
+        "--stop-address=0x32308",
+        ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf"
+      ],
+      "exit": 0,
+      "output": "main.log",
+      "output_sha256": "ec69253093a287da62a69306ff305ffe4110650f51c5432c9436ed38e096b818",
+      "executed_target": false
+    },
+    {
+      "symbol": {
+        "name": "giftui_rfc014_counter_entry",
+        "value": 377351,
+        "size": 4,
+        "type": 2,
+        "binding": 1,
+        "owner": 2,
+        "visibility": 3,
+        "table": 29,
+        "index": 5762
+      },
+      "command": [
+        ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+        "-d",
+        "--start-address=0x5c206",
+        "--stop-address=0x5c20a",
+        ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf"
+      ],
+      "exit": 0,
+      "output": "entry-thunk.log",
+      "output_sha256": "d35314c8a676c70d206ad8603557da9bfe6e83086e575ca9669c9aebf1a15f47",
+      "executed_target": false
+    },
+    {
+      "symbol": {
+        "name": "$e17P08CounterRuntime012giftuiRFC014B5Entryys6UInt32Vs5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SvSgSitF",
+        "value": 377355,
+        "size": 78,
+        "type": 2,
+        "binding": 1,
+        "owner": 2,
+        "visibility": 3,
+        "table": 29,
+        "index": 5941
+      },
+      "command": [
+        ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+        "-d",
+        "--start-address=0x5c20a",
+        "--stop-address=0x5c258",
+        ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf"
+      ],
+      "exit": 0,
+      "output": "swift-entry.log",
+      "output_sha256": "64a0e22644f463423543272116e25d6d109952db9d7891271aac1f174457c6de",
+      "executed_target": false
+    },
+    {
+      "symbol": {
+        "name": "$e17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+        "value": 136437,
+        "size": 2808,
+        "type": 2,
+        "binding": 1,
+        "owner": 2,
+        "visibility": 3,
+        "table": 29,
+        "index": 5276
+      },
+      "command": [
+        ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+        "-d",
+        "--start-address=0x214f4",
+        "--stop-address=0x21fec",
+        ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf"
+      ],
+      "exit": 0,
+      "output": "scoped-storage-complete.log",
+      "output_sha256": "2d875115d771a3a26ffdc1e0550de610d1e3b0e2f7cef285946a7dc4f0b72a47",
+      "executed_target": false
+    },
+    {
+      "symbol": {
+        "name": "$e17P08CounterRuntime15p08RunReuseHost33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcriptSi23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyxGz_SpyAA0B7ControlVGSpyAA0agF10TranscriptACLLVGtAG0stU9LiveOwnerRzAA0aF11ObservationACLLRzRi_zRi0_zlFAA0bgZ0VyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+        "value": 108797,
+        "size": 6014,
+        "type": 2,
+        "binding": 1,
+        "owner": 2,
+        "visibility": 3,
+        "table": 29,
+        "index": 6612
+      },
+      "command": [
+        ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+        "-d",
+        "--start-address=0x1a8fc",
+        "--stop-address=0x1a914",
+        ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf"
+      ],
+      "exit": 0,
+      "output": "reuse-host-prologue.log",
+      "output_sha256": "4cf136e9f055458dd13688232fe102c61681fe4a9e3ac4bab4636e3a94e74153",
+      "executed_target": false
+    },
+    {
+      "symbol": {
+        "name": "$e17P08CounterRuntime03runA10ScopedBody33_480B1BD841D053AE4FCDC18507668536LL7session6models4root8semantic6values7control5audit8assembly13foreignModels0T4Root0T7Control7dynamic09failAfterC05early16candidateFailure5reuseSiAA0A14StorageSessionACLLVn_21GiftUIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0aB6Schema0B11ModelSchemaOGnAV015ObservableStateV5ScopeVyAZ18GiftUISemanticCore24SemanticCompleteIdentityVGnA5_19SemanticRecordStoreVy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGnA11_18CanvasStagedValuesVyA5_23SemanticRecordReferenceVA14_0aB17SchemaCanvasTableVyA18_GGnSpyAA0bW0VG17GiftUIRuntimeCore0C12StorageAuditVAA0B12HostAssemblyVA2_A8_A32_S2bs5UInt8VA33_0C21CompletePipelineStageOSgSpyAA0A19HostReuseTranscriptACLLVGSgtF",
+        "value": 126117,
+        "size": 2026,
+        "type": 2,
+        "binding": 1,
+        "owner": 2,
+        "visibility": 3,
+        "table": 29,
+        "index": 6878
+      },
+      "command": [
+        ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+        "-d",
+        "--start-address=0x1eca4",
+        "--stop-address=0x1ecbc",
+        ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf"
+      ],
+      "exit": 0,
+      "output": "scoped-body-prologue.log",
+      "output_sha256": "f023fd9dd8358a2c35f54b31f84bac924871efaa6690b1a1733d811af519150d",
+      "executed_target": false
+    },
+    {
+      "symbol": {
+        "name": "posix_memalign",
+        "value": 377675,
+        "size": 4,
+        "type": 2,
+        "binding": 1,
+        "owner": 2,
+        "visibility": 0,
+        "table": 29,
+        "index": 7120
+      },
+      "command": [
+        ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+        "-d",
+        "--start-address=0x5c34a",
+        "--stop-address=0x5c34e",
+        ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf"
+      ],
+      "exit": 0,
+      "output": "posix-memalign.log",
+      "output_sha256": "fe447c6e937f3491d3dab65c86625429cb4fc68387606045d5e7182cbc81cb2c",
+      "executed_target": false
+    },
+    {
+      "symbol": {
+        "name": "$es17swift_allocObject8metadata12requiredSize0E13AlignmentMaskSpys04HeapC0VGSpys13ClassMetadataVG_S2itF",
+        "value": 226711,
+        "size": 52,
+        "type": 2,
+        "binding": 2,
+        "owner": 2,
+        "visibility": 2,
+        "table": 29,
+        "index": 6869
+      },
+      "command": [
+        ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+        "-d",
+        "--start-address=0x37596",
+        "--stop-address=0x375ca",
+        ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf"
+      ],
+      "exit": 0,
+      "output": "swift-alloc-object.log",
+      "output_sha256": "8c91e0793c8a5f3ca22fc6810d9557f4b1a3a20859db3ddcbc28cd2ed1100358",
+      "executed_target": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "argv": [
+    ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+    "-d",
+    ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf"
+  ],
+  "exit": 0,
+  "tool_sha256": "f76f2df8030f2258951a23ffba602a971e5cd1d1faa4cd09411592baf7a015df",
+  "artifact_sha256": "66ca1113d997c6424aedb258c1477692ce4bf5b42ed77f42bb1d5cba66339da9",
+  "output_sha256": "58d8bd3a1861f9080c213d2bfb3e1da468d8a823ea3874f6ad38f02921bdf6b3",
+  "output_bytes": 6206164,
+  "executed_target": false
+}

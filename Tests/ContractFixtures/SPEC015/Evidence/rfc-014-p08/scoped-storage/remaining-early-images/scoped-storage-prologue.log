@@ -1,0 +1,49 @@
+
+.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf:     file format elf32-littlearm
+
+
+Disassembly of section text:
+
+000214f4 <swift_allocError+0x210e0>:
+   214f4:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   214f8:	af03      	add	r7, sp, #12
+   214fa:	f5ad 4dea 	sub.w	sp, sp, #29952	; 0x7500
+   214fe:	b09b      	sub	sp, #108	; 0x6c
+   21500:	466c      	mov	r4, sp
+   21502:	f36f 0403 	bfc	r4, #0, #4
+   21506:	46a5      	mov	sp, r4
+   21508:	9306      	str	r3, [sp, #24]
+   2150a:	ab08      	add	r3, sp, #32
+   2150c:	f60d 781c 	addw	r8, sp, #3868	; 0xf1c
+   21510:	f04f 0b00 	mov.w	fp, #0
+   21514:	f04f 0a00 	mov.w	sl, #0
+   21518:	f04f 0c00 	mov.w	ip, #0
+   2151c:	c307      	stmia	r3!, {r0, r1, r2}
+   2151e:	a808      	add	r0, sp, #32
+   21520:	2100      	movs	r1, #0
+   21522:	2200      	movs	r2, #0
+   21524:	f500 5934 	add.w	r9, r0, #11520	; 0x2d00
+   21528:	2300      	movs	r3, #0
+   2152a:	f509 7016 	add.w	r0, r9, #600	; 0x258
+   2152e:	f109 06cc 	add.w	r6, r9, #204	; 0xcc
+   21532:	9012      	str	r0, [sp, #72]	; 0x48
+   21534:	f508 50f0 	add.w	r0, r8, #7680	; 0x1e00
+   21538:	9611      	str	r6, [sp, #68]	; 0x44
+   2153a:	9007      	str	r0, [sp, #28]
+   2153c:	2000      	movs	r0, #0
+   2153e:	2b02      	cmp	r3, #2
+   21540:	ea4f 70c0 	mov.w	r0, r0, lsl #31
+   21544:	f8cd b054 	str.w	fp, [sp, #84]	; 0x54
+   21548:	f000 8236 	beq.w	219b8 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x199b8>
+   2154c:	2800      	cmp	r0, #0
+   2154e:	f040 84bc 	bne.w	21eca <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19eca>
+   21552:	1c55      	adds	r5, r2, #1
+   21554:	f141 0400 	adc.w	r4, r1, #0
+   21558:	4295      	cmp	r5, r2
+   2155a:	bf38      	it	cc
+   2155c:	460d      	movcc	r5, r1
+   2155e:	ea5f 70cc 	movs.w	r0, ip, lsl #31
+   21562:	f040 84bd 	bne.w	21ee0 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19ee0>
+   21566:	9216      	str	r2, [sp, #88]	; 0x58
+   21568:	e9cd 540c 	strd	r5, r4, [sp, #48]	; 0x30
+   2156c:	f11a 0201 	adds.w	r2, sl, #1

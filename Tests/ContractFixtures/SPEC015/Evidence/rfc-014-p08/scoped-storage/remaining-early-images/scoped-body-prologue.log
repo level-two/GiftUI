@@ -1,0 +1,16 @@
+
+.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf:     file format elf32-littlearm
+
+
+Disassembly of section text:
+
+0001eca4 <swift_allocError+0x1e890>:
+   1eca4:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   1eca8:	f5ad 3d8c 	sub.w	sp, sp, #71680	; 0x11800
+   1ecac:	b097      	sub	sp, #92	; 0x5c
+   1ecae:	460f      	mov	r7, r1
+   1ecb0:	4682      	mov	sl, r0
+   1ecb2:	2001      	movs	r0, #1
+   1ecb4:	f50d 3188 	add.w	r1, sp, #69632	; 0x11000
+   1ecb8:	461d      	mov	r5, r3
+   1ecba:	4616      	mov	r6, r2

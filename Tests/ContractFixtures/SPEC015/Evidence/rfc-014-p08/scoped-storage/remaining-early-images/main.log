@@ -1,0 +1,35 @@
+
+.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf:     file format elf32-littlearm
+
+
+Disassembly of section text:
+
+000322bc <main>:
+   322bc:	b538      	push	{r3, r4, r5, lr}
+   322be:	f000 f92d 	bl	3251c <spi_tft_initialize>
+   322c2:	b120      	cbz	r0, 322ce <main+0x12>
+   322c4:	480c      	ldr	r0, [pc, #48]	; (322f8 <main+0x3c>)
+   322c6:	f02a f844 	bl	5c352 <printk>
+   322ca:	2001      	movs	r0, #1
+   322cc:	bd38      	pop	{r3, r4, r5, pc}
+   322ce:	490b      	ldr	r1, [pc, #44]	; (322fc <main+0x40>)
+   322d0:	480b      	ldr	r0, [pc, #44]	; (32300 <main+0x44>)
+   322d2:	f44f 32fa 	mov.w	r2, #128000	; 0x1f400
+   322d6:	f029 ff96 	bl	5c206 <giftui_rfc014_counter_entry>
+   322da:	4605      	mov	r5, r0
+   322dc:	f000 f85c 	bl	32398 <spi_tft_shutdown>
+   322e0:	4629      	mov	r1, r5
+   322e2:	4604      	mov	r4, r0
+   322e4:	4602      	mov	r2, r0
+   322e6:	4807      	ldr	r0, [pc, #28]	; (32304 <main+0x48>)
+   322e8:	f02a f833 	bl	5c352 <printk>
+   322ec:	2d00      	cmp	r5, #0
+   322ee:	d0ec      	beq.n	322ca <main+0xe>
+   322f0:	1e20      	subs	r0, r4, #0
+   322f2:	bf18      	it	ne
+   322f4:	2001      	movne	r0, #1
+   322f6:	e7e9      	b.n	322cc <main+0x10>
+   322f8:	000604b2 	.word	0x000604b2
+   322fc:	200003c0 	.word	0x200003c0
+   32300:	0003240d 	.word	0x0003240d
+   32304:	000604dd 	.word	0x000604dd

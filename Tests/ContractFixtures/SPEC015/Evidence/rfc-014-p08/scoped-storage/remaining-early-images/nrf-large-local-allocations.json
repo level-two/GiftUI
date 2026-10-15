@@ -1,0 +1,158 @@
+{
+  "artifact_sha256": "66ca1113d997c6424aedb258c1477692ce4bf5b42ed77f42bb1d5cba66339da9",
+  "method": "ELF STT_FUNC exact ranges, first48bytes; SP subtraction observations only; not whole-callgraph analysis",
+  "functions": [
+    {
+      "symbol": "$e17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+      "address": "0x214f4",
+      "size": 2808,
+      "prologue_local_subtractions": [
+        {
+          "address": "0x214fa",
+          "bytes": 29952,
+          "instruction": "sub.w\tsp, sp, #29952\t; 0x7500"
+        },
+        {
+          "address": "0x214fe",
+          "bytes": 108,
+          "instruction": "sub\tsp, #108\t; 0x6c"
+        }
+      ],
+      "local_subtraction_sum": 30060,
+      "not_complete_frame_or_path_bound": true
+    },
+    {
+      "symbol": "$e17P08CounterRuntime0A11BodyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF",
+      "address": "0x1e4bc",
+      "size": 2024,
+      "prologue_local_subtractions": [
+        {
+          "address": "0x1e4c0",
+          "bytes": 31488,
+          "instruction": "sub.w\tsp, sp, #31488\t; 0x7b00"
+        },
+        {
+          "address": "0x1e4c4",
+          "bytes": 28,
+          "instruction": "sub\tsp, #28"
+        }
+      ],
+      "local_subtraction_sum": 31516,
+      "not_complete_frame_or_path_bound": true
+    },
+    {
+      "symbol": "$e17P08CounterRuntime19counterWakeControls4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlFAH024SignalAnalyzerPresetHostN0VyAA0bvQ0VyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateX0ATLLVAA0a9CommittedX0ATLLVAA0a3HitX0ATLLVGG_Tg5",
+      "address": "0x22e24",
+      "size": 18396,
+      "prologue_local_subtractions": [
+        {
+          "address": "0x22e28",
+          "bytes": 36096,
+          "instruction": "sub.w\tsp, sp, #36096\t; 0x8d00"
+        },
+        {
+          "address": "0x22e2c",
+          "bytes": 108,
+          "instruction": "sub\tsp, #108\t; 0x6c"
+        }
+      ],
+      "local_subtraction_sum": 36204,
+      "not_complete_frame_or_path_bound": true
+    },
+    {
+      "symbol": "$e17P08CounterRuntime0A11BodyCleanup33_480B1BD841D053AE4FCDC18507668536LLV13constructHost6reporty23GiftUIHostConfiguration0L14AssemblyReportV_tF",
+      "address": "0x1d2c0",
+      "size": 410,
+      "prologue_local_subtractions": [
+        {
+          "address": "0x1d2c4",
+          "bytes": 42752,
+          "instruction": "sub.w\tsp, sp, #42752\t; 0xa700"
+        },
+        {
+          "address": "0x1d2c8",
+          "bytes": 152,
+          "instruction": "sub\tsp, #152\t; 0x98"
+        }
+      ],
+      "local_subtraction_sum": 42904,
+      "not_complete_frame_or_path_bound": true
+    },
+    {
+      "symbol": "$e17P08CounterRuntime0A11BodyCleanup33_480B1BD841D053AE4FCDC18507668536LLV14constructOwner14activationSpan8assembly09failAfterC0ys0N0Vys5UInt8VG_AA0B12HostAssemblyVSbtF",
+      "address": "0x1cc30",
+      "size": 476,
+      "prologue_local_subtractions": [
+        {
+          "address": "0x1cc34",
+          "bytes": 37632,
+          "instruction": "sub.w\tsp, sp, #37632\t; 0x9300"
+        },
+        {
+          "address": "0x1cc38",
+          "bytes": 100,
+          "instruction": "sub\tsp, #100\t; 0x64"
+        }
+      ],
+      "local_subtraction_sum": 37732,
+      "not_complete_frame_or_path_bound": true
+    },
+    {
+      "symbol": "$e17P08CounterRuntime15p08RunReuseHost33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcriptSi23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyxGz_SpyAA0B7ControlVGSpyAA0agF10TranscriptACLLVGtAG0stU9LiveOwnerRzAA0aF11ObservationACLLRzRi_zRi0_zlFAA0bgZ0VyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+      "address": "0x1a8fc",
+      "size": 6014,
+      "prologue_local_subtractions": [
+        {
+          "address": "0x1a900",
+          "bytes": 102400,
+          "instruction": "sub.w\tsp, sp, #102400\t; 0x19000"
+        },
+        {
+          "address": "0x1a904",
+          "bytes": 204,
+          "instruction": "sub\tsp, #204\t; 0xcc"
+        }
+      ],
+      "local_subtraction_sum": 102604,
+      "not_complete_frame_or_path_bound": true
+    },
+    {
+      "symbol": "$e17P08CounterRuntime03runA10ScopedBody33_480B1BD841D053AE4FCDC18507668536LL7session6models4root8semantic6values7control5audit8assembly13foreignModels0T4Root0T7Control7dynamic09failAfterC05early16candidateFailure5reuseSiAA0A14StorageSessionACLLVn_21GiftUIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0aB6Schema0B11ModelSchemaOGnAV015ObservableStateV5ScopeVyAZ18GiftUISemanticCore24SemanticCompleteIdentityVGnA5_19SemanticRecordStoreVy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGnA11_18CanvasStagedValuesVyA5_23SemanticRecordReferenceVA14_0aB17SchemaCanvasTableVyA18_GGnSpyAA0bW0VG17GiftUIRuntimeCore0C12StorageAuditVAA0B12HostAssemblyVA2_A8_A32_S2bs5UInt8VA33_0C21CompletePipelineStageOSgSpyAA0A19HostReuseTranscriptACLLVGSgtF",
+      "address": "0x1eca4",
+      "size": 2026,
+      "prologue_local_subtractions": [
+        {
+          "address": "0x1eca8",
+          "bytes": 71680,
+          "instruction": "sub.w\tsp, sp, #71680\t; 0x11800"
+        },
+        {
+          "address": "0x1ecac",
+          "bytes": 92,
+          "instruction": "sub\tsp, #92\t; 0x5c"
+        }
+      ],
+      "local_subtraction_sum": 71772,
+      "not_complete_frame_or_path_bound": true
+    },
+    {
+      "symbol": "$e17P08CounterRuntime0A11BodyCleanup33_480B1BD841D053AE4FCDC18507668536LLV3run7control6report09failAfterC010joinChecks5early16candidateFailure5reuseSiSpyAA0B7ControlVG_23GiftUIHostConfiguration18HostAssemblyReportVSbSis5UInt8V0W13UIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aZ15ReuseTranscriptACLLVGSgtF",
+      "address": "0x1d45c",
+      "size": 1168,
+      "prologue_local_subtractions": [
+        {
+          "address": "0x1d460",
+          "bytes": 38400,
+          "instruction": "sub.w\tsp, sp, #38400\t; 0x9600"
+        },
+        {
+          "address": "0x1d464",
+          "bytes": 236,
+          "instruction": "sub\tsp, #236\t; 0xec"
+        }
+      ],
+      "local_subtraction_sum": 38636,
+      "not_complete_frame_or_path_bound": true
+    }
+  ]
+}

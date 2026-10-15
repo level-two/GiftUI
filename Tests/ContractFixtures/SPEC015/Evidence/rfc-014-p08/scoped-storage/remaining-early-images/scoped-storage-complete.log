@@ -1,0 +1,996 @@
+
+.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf:     file format elf32-littlearm
+
+
+Disassembly of section text:
+
+000214f4 <swift_allocError+0x210e0>:
+   214f4:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   214f8:	af03      	add	r7, sp, #12
+   214fa:	f5ad 4dea 	sub.w	sp, sp, #29952	; 0x7500
+   214fe:	b09b      	sub	sp, #108	; 0x6c
+   21500:	466c      	mov	r4, sp
+   21502:	f36f 0403 	bfc	r4, #0, #4
+   21506:	46a5      	mov	sp, r4
+   21508:	9306      	str	r3, [sp, #24]
+   2150a:	ab08      	add	r3, sp, #32
+   2150c:	f60d 781c 	addw	r8, sp, #3868	; 0xf1c
+   21510:	f04f 0b00 	mov.w	fp, #0
+   21514:	f04f 0a00 	mov.w	sl, #0
+   21518:	f04f 0c00 	mov.w	ip, #0
+   2151c:	c307      	stmia	r3!, {r0, r1, r2}
+   2151e:	a808      	add	r0, sp, #32
+   21520:	2100      	movs	r1, #0
+   21522:	2200      	movs	r2, #0
+   21524:	f500 5934 	add.w	r9, r0, #11520	; 0x2d00
+   21528:	2300      	movs	r3, #0
+   2152a:	f509 7016 	add.w	r0, r9, #600	; 0x258
+   2152e:	f109 06cc 	add.w	r6, r9, #204	; 0xcc
+   21532:	9012      	str	r0, [sp, #72]	; 0x48
+   21534:	f508 50f0 	add.w	r0, r8, #7680	; 0x1e00
+   21538:	9611      	str	r6, [sp, #68]	; 0x44
+   2153a:	9007      	str	r0, [sp, #28]
+   2153c:	2000      	movs	r0, #0
+   2153e:	2b02      	cmp	r3, #2
+   21540:	ea4f 70c0 	mov.w	r0, r0, lsl #31
+   21544:	f8cd b054 	str.w	fp, [sp, #84]	; 0x54
+   21548:	f000 8236 	beq.w	219b8 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x199b8>
+   2154c:	2800      	cmp	r0, #0
+   2154e:	f040 84bc 	bne.w	21eca <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19eca>
+   21552:	1c55      	adds	r5, r2, #1
+   21554:	f141 0400 	adc.w	r4, r1, #0
+   21558:	4295      	cmp	r5, r2
+   2155a:	bf38      	it	cc
+   2155c:	460d      	movcc	r5, r1
+   2155e:	ea5f 70cc 	movs.w	r0, ip, lsl #31
+   21562:	f040 84bd 	bne.w	21ee0 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19ee0>
+   21566:	9216      	str	r2, [sp, #88]	; 0x58
+   21568:	e9cd 540c 	strd	r5, r4, [sp, #48]	; 0x30
+   2156c:	f11a 0201 	adds.w	r2, sl, #1
+   21570:	4655      	mov	r5, sl
+   21572:	480a      	ldr	r0, [pc, #40]	; (2159c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x1959c>)
+   21574:	9310      	str	r3, [sp, #64]	; 0x40
+   21576:	4478      	add	r0, pc
+   21578:	eb00 0083 	add.w	r0, r0, r3, lsl #2
+   2157c:	6903      	ldr	r3, [r0, #16]
+   2157e:	f141 0000 	adc.w	r0, r1, #0
+   21582:	900e      	str	r0, [sp, #56]	; 0x38
+   21584:	4552      	cmp	r2, sl
+   21586:	bf38      	it	cc
+   21588:	460a      	movcc	r2, r1
+   2158a:	920b      	str	r2, [sp, #44]	; 0x2c
+   2158c:	9317      	str	r3, [sp, #92]	; 0x5c
+   2158e:	b13b      	cbz	r3, 215a0 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x195a0>
+   21590:	aa08      	add	r2, sp, #32
+   21592:	ca07      	ldmia	r2, {r0, r1, r2}
+   21594:	f02b fa4a 	bl	4ca2c <OUTLINED_FUNCTION_5+0x4c3a>
+   21598:	4604      	mov	r4, r0
+   2159a:	e00a      	b.n	215b2 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x195b2>
+   2159c:	1ffdec9e 	.word	0x1ffdec9e
+   215a0:	aa08      	add	r2, sp, #32
+   215a2:	2300      	movs	r3, #0
+   215a4:	f032 ff77 	bl	54496 <OUTLINED_FUNCTION_405>
+   215a8:	4604      	mov	r4, r0
+   215aa:	b2d0      	uxtb	r0, r2
+   215ac:	2801      	cmp	r0, #1
+   215ae:	f000 84cc 	beq.w	21f4a <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f4a>
+   215b2:	a805      	add	r0, sp, #20
+   215b4:	468a      	mov	sl, r1
+   215b6:	2101      	movs	r1, #1
+   215b8:	f500 5b44 	add.w	fp, r0, #12544	; 0x3100
+   215bc:	4658      	mov	r0, fp
+   215be:	f7ec fe4b 	bl	e258 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x6258>
+   215c2:	9817      	ldr	r0, [sp, #92]	; 0x5c
+   215c4:	e9cd ab00 	strd	sl, fp, [sp]
+   215c8:	462a      	mov	r2, r5
+   215ca:	4623      	mov	r3, r4
+   215cc:	9002      	str	r0, [sp, #8]
+   215ce:	a802      	add	r0, sp, #8
+   215d0:	9916      	ldr	r1, [sp, #88]	; 0x58
+   215d2:	f500 5a46 	add.w	sl, r0, #12672	; 0x3180
+   215d6:	f033 f85e 	bl	54696 <OUTLINED_FUNCTION_473>
+   215da:	a808      	add	r0, sp, #32
+   215dc:	2100      	movs	r1, #0
+   215de:	2201      	movs	r2, #1
+   215e0:	f500 5040 	add.w	r0, r0, #12288	; 0x3000
+   215e4:	f8d0 b468 	ldr.w	fp, [r0, #1128]	; 0x468
+   215e8:	a80d      	add	r0, sp, #52	; 0x34
+   215ea:	f500 5463 	add.w	r4, r0, #14528	; 0x38c0
+   215ee:	4620      	mov	r0, r4
+   215f0:	f028 ffac 	bl	4a54c <OUTLINED_FUNCTION_5+0x275a>
+   215f4:	f1bb 0f00 	cmp.w	fp, #0
+   215f8:	f000 8466 	beq.w	21ec8 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19ec8>
+   215fc:	a805      	add	r0, sp, #20
+   215fe:	4621      	mov	r1, r4
+   21600:	22b5      	movs	r2, #181	; 0xb5
+   21602:	f500 5a79 	add.w	sl, r0, #15936	; 0x3e40
+   21606:	f032 fd07 	bl	54018 <OUTLINED_FUNCTION_277>
+   2160a:	4650      	mov	r0, sl
+   2160c:	f030 fcd6 	bl	51fbc <OUTLINED_FUNCTION_5+0xa1ca>
+   21610:	a90a      	add	r1, sp, #40	; 0x28
+   21612:	4650      	mov	r0, sl
+   21614:	f501 44e9 	add.w	r4, r1, #29824	; 0x7480
+   21618:	4621      	mov	r1, r4
+   2161a:	f02f fb7f 	bl	50d1c <OUTLINED_FUNCTION_5+0x8f2a>
+   2161e:	f033 f865 	bl	546ec <OUTLINED_FUNCTION_483>
+   21622:	465a      	mov	r2, fp
+   21624:	f032 fd90 	bl	54148 <OUTLINED_FUNCTION_308>
+   21628:	a804      	add	r0, sp, #16
+   2162a:	4621      	mov	r1, r4
+   2162c:	f500 5a52 	add.w	sl, r0, #13440	; 0x3480
+   21630:	4650      	mov	r0, sl
+   21632:	f027 fbd7 	bl	48de4 <OUTLINED_FUNCTION_5+0xff2>
+   21636:	4648      	mov	r0, r9
+   21638:	4651      	mov	r1, sl
+   2163a:	f032 fc98 	bl	53f6e <OUTLINED_FUNCTION_260>
+   2163e:	2000      	movs	r0, #0
+   21640:	2100      	movs	r1, #0
+   21642:	2202      	movs	r2, #2
+   21644:	46ca      	mov	sl, r9
+   21646:	f7ed fe27 	bl	f298 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x7298>
+   2164a:	2811      	cmp	r0, #17
+   2164c:	f040 8456 	bne.w	21efc <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19efc>
+   21650:	a802      	add	r0, sp, #8
+   21652:	4631      	mov	r1, r6
+   21654:	f44f 72c4 	mov.w	r2, #392	; 0x188
+   21658:	f500 408e 	add.w	r0, r0, #18176	; 0x4700
+   2165c:	f03b fd4e 	bl	5d0fc <memcpy>
+   21660:	9817      	ldr	r0, [sp, #92]	; 0x5c
+   21662:	f04f 0a00 	mov.w	sl, #0
+   21666:	f60d 6564 	addw	r5, sp, #3684	; 0xe64
+   2166a:	2801      	cmp	r0, #1
+   2166c:	db17      	blt.n	2169e <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x1969e>
+   2166e:	f50d 4080 	add.w	r0, sp, #16384	; 0x4000
+   21672:	f890 083c 	ldrb.w	r0, [r0, #2108]	; 0x83c
+   21676:	280e      	cmp	r0, #14
+   21678:	f000 8442 	beq.w	21f00 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f00>
+   2167c:	f50d 4080 	add.w	r0, sp, #16384	; 0x4000
+   21680:	f890 0858 	ldrb.w	r0, [r0, #2136]	; 0x858
+   21684:	280e      	cmp	r0, #14
+   21686:	f000 843a 	beq.w	21efe <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19efe>
+   2168a:	a802      	add	r0, sp, #8
+   2168c:	f500 4186 	add.w	r1, r0, #17152	; 0x4300
+   21690:	f8d1 054c 	ldr.w	r0, [r1, #1356]	; 0x54c
+   21694:	f8d1 1568 	ldr.w	r1, [r1, #1384]	; 0x568
+   21698:	4288      	cmp	r0, r1
+   2169a:	f280 83de 	bge.w	21e5a <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e5a>
+   2169e:	9810      	ldr	r0, [sp, #64]	; 0x40
+   216a0:	3001      	adds	r0, #1
+   216a2:	9010      	str	r0, [sp, #64]	; 0x40
+   216a4:	4628      	mov	r0, r5
+   216a6:	f030 fd70 	bl	5218a <OUTLINED_FUNCTION_5+0xa398>
+   216aa:	2400      	movs	r4, #0
+   216ac:	eb08 0004 	add.w	r0, r8, r4
+   216b0:	4629      	mov	r1, r5
+   216b2:	2278      	movs	r2, #120	; 0x78
+   216b4:	f03b fd22 	bl	5d0fc <memcpy>
+   216b8:	3478      	adds	r4, #120	; 0x78
+   216ba:	f5b4 5ff0 	cmp.w	r4, #7680	; 0x1e00
+   216be:	d1f5      	bne.n	216ac <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x196ac>
+   216c0:	9807      	ldr	r0, [sp, #28]
+   216c2:	f8c0 a000 	str.w	sl, [r0]
+   216c6:	f50d 5000 	add.w	r0, sp, #8192	; 0x2000
+   216ca:	f890 0de8 	ldrb.w	r0, [r0, #3560]	; 0xde8
+   216ce:	2801      	cmp	r0, #1
+   216d0:	f040 83bd 	bne.w	21e4e <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e4e>
+   216d4:	46ca      	mov	sl, r9
+   216d6:	f027 fc45 	bl	48f64 <OUTLINED_FUNCTION_5+0x1172>
+   216da:	07c0      	lsls	r0, r0, #31
+   216dc:	f000 83b8 	beq.w	21e50 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e50>
+   216e0:	a80e      	add	r0, sp, #56	; 0x38
+   216e2:	f032 fe45 	bl	54370 <OUTLINED_FUNCTION_375>
+   216e6:	f500 4ae1 	add.w	sl, r0, #28800	; 0x7080
+   216ea:	f032 fbf3 	bl	53ed4 <OUTLINED_FUNCTION_249>
+   216ee:	f50d 40e0 	add.w	r0, sp, #28672	; 0x7000
+   216f2:	f8b0 04a4 	ldrh.w	r0, [r0, #1188]	; 0x4a4
+   216f6:	9013      	str	r0, [sp, #76]	; 0x4c
+   216f8:	f50d 40e0 	add.w	r0, sp, #28672	; 0x7000
+   216fc:	f8b0 04a2 	ldrh.w	r0, [r0, #1186]	; 0x4a2
+   21700:	9014      	str	r0, [sp, #80]	; 0x50
+   21702:	f50d 40e0 	add.w	r0, sp, #28672	; 0x7000
+   21706:	f8b0 04a0 	ldrh.w	r0, [r0, #1184]	; 0x4a0
+   2170a:	9016      	str	r0, [sp, #88]	; 0x58
+   2170c:	f50d 40e0 	add.w	r0, sp, #28672	; 0x7000
+   21710:	f8b0 849e 	ldrh.w	r8, [r0, #1182]	; 0x49e
+   21714:	f50d 40e0 	add.w	r0, sp, #28672	; 0x7000
+   21718:	f8b0 049c 	ldrh.w	r0, [r0, #1180]	; 0x49c
+   2171c:	9017      	str	r0, [sp, #92]	; 0x5c
+   2171e:	f50d 40e0 	add.w	r0, sp, #28672	; 0x7000
+   21722:	f8d0 4170 	ldr.w	r4, [r0, #368]	; 0x170
+   21726:	f50d 40e0 	add.w	r0, sp, #28672	; 0x7000
+   2172a:	f8d0 b178 	ldr.w	fp, [r0, #376]	; 0x178
+   2172e:	f50d 40e0 	add.w	r0, sp, #28672	; 0x7000
+   21732:	f8d0 517c 	ldr.w	r5, [r0, #380]	; 0x17c
+   21736:	f027 fc90 	bl	4905a <OUTLINED_FUNCTION_5+0x1268>
+   2173a:	f11b 0a01 	adds.w	sl, fp, #1
+   2173e:	f04f 0000 	mov.w	r0, #0
+   21742:	f155 0500 	adcs.w	r5, r5, #0
+   21746:	f150 0000 	adcs.w	r0, r0, #0
+   2174a:	f040 8382 	bne.w	21e52 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e52>
+   2174e:	f50d 5000 	add.w	r0, sp, #8192	; 0x2000
+   21752:	f50d 5100 	add.w	r1, sp, #8192	; 0x2000
+   21756:	940f      	str	r4, [sp, #60]	; 0x3c
+   21758:	f44f 72c4 	mov.w	r2, #392	; 0x188
+   2175c:	f8c0 ade0 	str.w	sl, [r0, #3552]	; 0xde0
+   21760:	2002      	movs	r0, #2
+   21762:	f881 0de8 	strb.w	r0, [r1, #3560]	; 0xde8
+   21766:	f50d 5000 	add.w	r0, sp, #8192	; 0x2000
+   2176a:	4631      	mov	r1, r6
+   2176c:	f8c0 5de4 	str.w	r5, [r0, #3556]	; 0xde4
+   21770:	a80c      	add	r0, sp, #48	; 0x30
+   21772:	f500 40de 	add.w	r0, r0, #28416	; 0x6f00
+   21776:	f03b fcc1 	bl	5d0fc <memcpy>
+   2177a:	a909      	add	r1, sp, #36	; 0x24
+   2177c:	4648      	mov	r0, r9
+   2177e:	f501 5b73 	add.w	fp, r1, #15552	; 0x3cc0
+   21782:	4659      	mov	r1, fp
+   21784:	f02f faca 	bl	50d1c <OUTLINED_FUNCTION_5+0x8f2a>
+   21788:	a907      	add	r1, sp, #28
+   2178a:	4658      	mov	r0, fp
+   2178c:	f501 5b76 	add.w	fp, r1, #15744	; 0x3d80
+   21790:	4659      	mov	r1, fp
+   21792:	f02f fac3 	bl	50d1c <OUTLINED_FUNCTION_5+0x8f2a>
+   21796:	a81e      	add	r0, sp, #120	; 0x78
+   21798:	4659      	mov	r1, fp
+   2179a:	22b5      	movs	r2, #181	; 0xb5
+   2179c:	f500 40dc 	add.w	r0, r0, #28160	; 0x6e00
+   217a0:	4604      	mov	r4, r0
+   217a2:	f03b fcab 	bl	5d0fc <memcpy>
+   217a6:	a808      	add	r0, sp, #32
+   217a8:	f50d 5240 	add.w	r2, sp, #12288	; 0x3000
+   217ac:	f8cd 59cc 	str.w	r5, [sp, #2508]	; 0x9cc
+   217b0:	f8cd a9c8 	str.w	sl, [sp, #2504]	; 0x9c8
+   217b4:	f60d 7b1c 	addw	fp, sp, #3868	; 0xf1c
+   217b8:	f500 5140 	add.w	r1, r0, #12288	; 0x3000
+   217bc:	f892 2da8 	ldrb.w	r2, [r2, #3496]	; 0xda8
+   217c0:	f8d1 0d7c 	ldr.w	r0, [r1, #3452]	; 0xd7c
+   217c4:	f8d1 1d80 	ldr.w	r1, [r1, #3456]	; 0xd80
+   217c8:	4b79      	ldr	r3, [pc, #484]	; (219b0 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x199b0>)
+   217ca:	f8cd b9dc 	str.w	fp, [sp, #2524]	; 0x9dc
+   217ce:	f8ad 89d2 	strh.w	r8, [sp, #2514]	; 0x9d2
+   217d2:	f8cd 99c0 	str.w	r9, [sp, #2496]	; 0x9c0
+   217d6:	447b      	add	r3, pc
+   217d8:	f8cd 39e0 	str.w	r3, [sp, #2528]	; 0x9e0
+   217dc:	9b13      	ldr	r3, [sp, #76]	; 0x4c
+   217de:	f8ad 39d8 	strh.w	r3, [sp, #2520]	; 0x9d8
+   217e2:	9b14      	ldr	r3, [sp, #80]	; 0x50
+   217e4:	f8ad 39d6 	strh.w	r3, [sp, #2518]	; 0x9d6
+   217e8:	9b16      	ldr	r3, [sp, #88]	; 0x58
+   217ea:	f8ad 39d4 	strh.w	r3, [sp, #2516]	; 0x9d4
+   217ee:	9b17      	ldr	r3, [sp, #92]	; 0x5c
+   217f0:	f8ad 39d0 	strh.w	r3, [sp, #2512]	; 0x9d0
+   217f4:	9b0f      	ldr	r3, [sp, #60]	; 0x3c
+   217f6:	f8cd 39c4 	str.w	r3, [sp, #2500]	; 0x9c4
+   217fa:	ab0c      	add	r3, sp, #48	; 0x30
+   217fc:	e9cd 0100 	strd	r0, r1, [sp]
+   21800:	f8cd 49b8 	str.w	r4, [sp, #2488]	; 0x9b8
+   21804:	9203      	str	r2, [sp, #12]
+   21806:	2000      	movs	r0, #0
+   21808:	2101      	movs	r1, #1
+   2180a:	f503 43de 	add.w	r3, r3, #28416	; 0x6f00
+   2180e:	f8cd 39bc 	str.w	r3, [sp, #2492]	; 0x9bc
+   21812:	2300      	movs	r3, #0
+   21814:	f8cd 39e4 	str.w	r3, [sp, #2532]	; 0x9e4
+   21818:	f50d 631b 	add.w	r3, sp, #2480	; 0x9b0
+   2181c:	4a65      	ldr	r2, [pc, #404]	; (219b4 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x199b4>)
+   2181e:	447a      	add	r2, pc
+   21820:	f7ed fb78 	bl	ef14 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x6f14>
+   21824:	4604      	mov	r4, r0
+   21826:	a802      	add	r0, sp, #8
+   21828:	f032 fda2 	bl	54370 <OUTLINED_FUNCTION_375>
+   2182c:	f500 4ad5 	add.w	sl, r0, #27264	; 0x6a80
+   21830:	f032 fb50 	bl	53ed4 <OUTLINED_FUNCTION_249>
+   21834:	f027 fc11 	bl	4905a <OUTLINED_FUNCTION_5+0x1268>
+   21838:	2001      	movs	r0, #1
+   2183a:	f50d 5100 	add.w	r1, sp, #8192	; 0x2000
+   2183e:	f881 0de8 	strb.w	r0, [r1, #3560]	; 0xde8
+   21842:	9815      	ldr	r0, [sp, #84]	; 0x54
+   21844:	1824      	adds	r4, r4, r0
+   21846:	f180 8305 	bvs.w	21e54 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e54>
+   2184a:	a801      	add	r0, sp, #4
+   2184c:	4659      	mov	r1, fp
+   2184e:	f641 6204 	movw	r2, #7684	; 0x1e04
+   21852:	f500 4599 	add.w	r5, r0, #19584	; 0x4c80
+   21856:	f032 fb7d 	bl	53f54 <OUTLINED_FUNCTION_256>
+   2185a:	4628      	mov	r0, r5
+   2185c:	f7ff fdd6 	bl	2140c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x1940c>
+   21860:	1900      	adds	r0, r0, r4
+   21862:	f180 82f8 	bvs.w	21e56 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e56>
+   21866:	900f      	str	r0, [sp, #60]	; 0x3c
+   21868:	a804      	add	r0, sp, #16
+   2186a:	f032 fd81 	bl	54370 <OUTLINED_FUNCTION_375>
+   2186e:	f500 4a91 	add.w	sl, r0, #18560	; 0x4880
+   21872:	f032 fb2f 	bl	53ed4 <OUTLINED_FUNCTION_249>
+   21876:	a802      	add	r0, sp, #8
+   21878:	f500 4086 	add.w	r0, r0, #17152	; 0x4300
+   2187c:	f8d0 57dc 	ldr.w	r5, [r0, #2012]	; 0x7dc
+   21880:	f027 fbeb 	bl	4905a <OUTLINED_FUNCTION_5+0x1268>
+   21884:	2d01      	cmp	r5, #1
+   21886:	db6f      	blt.n	21968 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19968>
+   21888:	1e68      	subs	r0, r5, #1
+   2188a:	f50d 5100 	add.w	r1, sp, #8192	; 0x2000
+   2188e:	2d0e      	cmp	r5, #14
+   21890:	f8c1 0f74 	str.w	r0, [r1, #3956]	; 0xf74
+   21894:	f200 82d6 	bhi.w	21e44 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e44>
+   21898:	ebc0 00c0 	rsb	r0, r0, r0, lsl #3
+   2189c:	f856 b020 	ldr.w	fp, [r6, r0, lsl #2]
+   218a0:	fa5f f18b 	uxtb.w	r1, fp
+   218a4:	290e      	cmp	r1, #14
+   218a6:	f000 82dc 	beq.w	21e62 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e62>
+   218aa:	eb06 0680 	add.w	r6, r6, r0, lsl #2
+   218ae:	f106 0c08 	add.w	ip, r6, #8
+   218b2:	4634      	mov	r4, r6
+   218b4:	e89c 102e 	ldmia.w	ip, {r1, r2, r3, r5, ip}
+   218b8:	f854 8f04 	ldr.w	r8, [r4, #4]!
+   218bc:	a808      	add	r0, sp, #32
+   218be:	9216      	str	r2, [sp, #88]	; 0x58
+   218c0:	9315      	str	r3, [sp, #84]	; 0x54
+   218c2:	9514      	str	r5, [sp, #80]	; 0x50
+   218c4:	f8cd c04c 	str.w	ip, [sp, #76]	; 0x4c
+   218c8:	f500 5040 	add.w	r0, r0, #12288	; 0x3000
+   218cc:	f8c0 2ef8 	str.w	r2, [r0, #3832]	; 0xef8
+   218d0:	f8c0 8ef0 	str.w	r8, [r0, #3824]	; 0xef0
+   218d4:	f8c0 1ef4 	str.w	r1, [r0, #3828]	; 0xef4
+   218d8:	f8c0 3efc 	str.w	r3, [r0, #3836]	; 0xefc
+   218dc:	f8c0 5f00 	str.w	r5, [r0, #3840]	; 0xf00
+   218e0:	f8c0 cf04 	str.w	ip, [r0, #3844]	; 0xf04
+   218e4:	f50d 5040 	add.w	r0, sp, #12288	; 0x3000
+   218e8:	9117      	str	r1, [sp, #92]	; 0x5c
+   218ea:	f032 fd41 	bl	54370 <OUTLINED_FUNCTION_375>
+   218ee:	f880 bf0c 	strb.w	fp, [r0, #3852]	; 0xf0c
+   218f2:	a80a      	add	r0, sp, #40	; 0x28
+   218f4:	f500 5a7c 	add.w	sl, r0, #16128	; 0x3f00
+   218f8:	f032 faec 	bl	53ed4 <OUTLINED_FUNCTION_249>
+   218fc:	f50d 4080 	add.w	r0, sp, #16384	; 0x4000
+   21900:	f8d0 517c 	ldr.w	r5, [r0, #380]	; 0x17c
+   21904:	a802      	add	r0, sp, #8
+   21906:	f500 4086 	add.w	r0, r0, #17152	; 0x4300
+   2190a:	f8d0 9000 	ldr.w	r9, [r0]
+   2190e:	a803      	add	r0, sp, #12
+   21910:	f500 507c 	add.w	r0, r0, #16128	; 0x3f00
+   21914:	f7ee fd7c 	bl	10410 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x8410>
+   21918:	f1b9 0f0d 	cmp.w	r9, #13
+   2191c:	f200 8293 	bhi.w	21e46 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e46>
+   21920:	9912      	ldr	r1, [sp, #72]	; 0x48
+   21922:	ebc9 00c9 	rsb	r0, r9, r9, lsl #3
+   21926:	f841 b020 	str.w	fp, [r1, r0, lsl #2]
+   2192a:	eb01 0080 	add.w	r0, r1, r0, lsl #2
+   2192e:	9917      	ldr	r1, [sp, #92]	; 0x5c
+   21930:	f8c0 8004 	str.w	r8, [r0, #4]
+   21934:	6081      	str	r1, [r0, #8]
+   21936:	9916      	ldr	r1, [sp, #88]	; 0x58
+   21938:	60c1      	str	r1, [r0, #12]
+   2193a:	9915      	ldr	r1, [sp, #84]	; 0x54
+   2193c:	6101      	str	r1, [r0, #16]
+   2193e:	9914      	ldr	r1, [sp, #80]	; 0x50
+   21940:	6141      	str	r1, [r0, #20]
+   21942:	9913      	ldr	r1, [sp, #76]	; 0x4c
+   21944:	6181      	str	r1, [r0, #24]
+   21946:	f109 0001 	add.w	r0, r9, #1
+   2194a:	f50d 5140 	add.w	r1, sp, #12288	; 0x3000
+   2194e:	f8c1 0100 	str.w	r0, [r1, #256]	; 0x100
+   21952:	200e      	movs	r0, #14
+   21954:	2118      	movs	r1, #24
+   21956:	6030      	str	r0, [r6, #0]
+   21958:	4620      	mov	r0, r4
+   2195a:	f03b fbcb 	bl	5d0f4 <bzero>
+   2195e:	a808      	add	r0, sp, #32
+   21960:	9e11      	ldr	r6, [sp, #68]	; 0x44
+   21962:	f500 5934 	add.w	r9, r0, #11520	; 0x2d00
+   21966:	e78d      	b.n	21884 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19884>
+   21968:	2003      	movs	r0, #3
+   2196a:	f50d 5100 	add.w	r1, sp, #8192	; 0x2000
+   2196e:	220e      	movs	r2, #14
+   21970:	f881 0de8 	strb.w	r0, [r1, #3560]	; 0xde8
+   21974:	9812      	ldr	r0, [sp, #72]	; 0x48
+   21976:	a902      	add	r1, sp, #8
+   21978:	f501 418e 	add.w	r1, r1, #18176	; 0x4700
+   2197c:	f02a ff1b 	bl	4c7b6 <OUTLINED_FUNCTION_5+0x49c4>
+   21980:	990f      	ldr	r1, [sp, #60]	; 0x3c
+   21982:	eb11 0b00 	adds.w	fp, r1, r0
+   21986:	f180 8267 	bvs.w	21e58 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e58>
+   2198a:	a806      	add	r0, sp, #24
+   2198c:	f032 fcf0 	bl	54370 <OUTLINED_FUNCTION_375>
+   21990:	f500 4a86 	add.w	sl, r0, #17152	; 0x4300
+   21994:	f032 fa9e 	bl	53ed4 <OUTLINED_FUNCTION_249>
+   21998:	f027 fcb2 	bl	49300 <OUTLINED_FUNCTION_5+0x150e>
+   2199c:	e9dd a20b 	ldrd	sl, r2, [sp, #44]	; 0x2c
+   219a0:	9b10      	ldr	r3, [sp, #64]	; 0x40
+   219a2:	e9dd 0c0d 	ldrd	r0, ip, [sp, #52]	; 0x34
+   219a6:	f60d 781c 	addw	r8, sp, #3868	; 0xf1c
+   219aa:	2100      	movs	r1, #0
+   219ac:	e5c7      	b.n	2153e <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x1953e>
+   219ae:	bf00      	nop
+   219b0:	0002b26f 	.word	0x0002b26f
+   219b4:	00030d4b 	.word	0x00030d4b
+   219b8:	2800      	cmp	r0, #0
+   219ba:	f040 82ca 	bne.w	21f52 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f52>
+   219be:	2400      	movs	r4, #0
+   219c0:	1c56      	adds	r6, r2, #1
+   219c2:	f144 0500 	adc.w	r5, r4, #0
+   219c6:	4296      	cmp	r6, r2
+   219c8:	bf38      	it	cc
+   219ca:	4626      	movcc	r6, r4
+   219cc:	ea5f 70cc 	movs.w	r0, ip, lsl #31
+   219d0:	f040 82c8 	bne.w	21f64 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f64>
+   219d4:	4693      	mov	fp, r2
+   219d6:	aa08      	add	r2, sp, #32
+   219d8:	2300      	movs	r3, #0
+   219da:	f032 fd5c 	bl	54496 <OUTLINED_FUNCTION_405>
+   219de:	4688      	mov	r8, r1
+   219e0:	f11a 0101 	adds.w	r1, sl, #1
+   219e4:	4681      	mov	r9, r0
+   219e6:	920d      	str	r2, [sp, #52]	; 0x34
+   219e8:	b2d0      	uxtb	r0, r2
+   219ea:	f144 0200 	adc.w	r2, r4, #0
+   219ee:	9216      	str	r2, [sp, #88]	; 0x58
+   219f0:	4551      	cmp	r1, sl
+   219f2:	bf28      	it	cs
+   219f4:	460c      	movcs	r4, r1
+   219f6:	9414      	str	r4, [sp, #80]	; 0x50
+   219f8:	2801      	cmp	r0, #1
+   219fa:	f000 82bc 	beq.w	21f76 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f76>
+   219fe:	4654      	mov	r4, sl
+   21a00:	f50d 5a62 	add.w	sl, sp, #14464	; 0x3880
+   21a04:	2101      	movs	r1, #1
+   21a06:	4650      	mov	r0, sl
+   21a08:	f7ec fc26 	bl	e258 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x6258>
+   21a0c:	2000      	movs	r0, #0
+   21a0e:	f8cd 804c 	str.w	r8, [sp, #76]	; 0x4c
+   21a12:	e9cd 8a00 	strd	r8, sl, [sp]
+   21a16:	4659      	mov	r1, fp
+   21a18:	4622      	mov	r2, r4
+   21a1a:	464b      	mov	r3, r9
+   21a1c:	9002      	str	r0, [sp, #8]
+   21a1e:	a80d      	add	r0, sp, #52	; 0x34
+   21a20:	f500 5a63 	add.w	sl, r0, #14528	; 0x38c0
+   21a24:	f032 fe37 	bl	54696 <OUTLINED_FUNCTION_473>
+   21a28:	a808      	add	r0, sp, #32
+   21a2a:	f240 11e3 	movw	r1, #483	; 0x1e3
+   21a2e:	2200      	movs	r2, #0
+   21a30:	f500 5040 	add.w	r0, r0, #12288	; 0x3000
+   21a34:	f8d0 8bd4 	ldr.w	r8, [r0, #3028]	; 0xbd4
+   21a38:	f60d 6064 	addw	r0, sp, #3684	; 0xe64
+   21a3c:	f028 fd86 	bl	4a54c <OUTLINED_FUNCTION_5+0x275a>
+   21a40:	f1b8 0f00 	cmp.w	r8, #0
+   21a44:	f000 8298 	beq.w	21f78 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f78>
+   21a48:	f50d 641b 	add.w	r4, sp, #2480	; 0x9b0
+   21a4c:	f60d 6164 	addw	r1, sp, #3684	; 0xe64
+   21a50:	22b5      	movs	r2, #181	; 0xb5
+   21a52:	f032 fa7c 	bl	53f4e <OUTLINED_FUNCTION_255>
+   21a56:	4620      	mov	r0, r4
+   21a58:	f030 fab0 	bl	51fbc <OUTLINED_FUNCTION_5+0xa1ca>
+   21a5c:	a805      	add	r0, sp, #20
+   21a5e:	f500 5a79 	add.w	sl, r0, #15936	; 0x3e40
+   21a62:	4620      	mov	r0, r4
+   21a64:	4651      	mov	r1, sl
+   21a66:	f02f f959 	bl	50d1c <OUTLINED_FUNCTION_5+0x8f2a>
+   21a6a:	f032 fe3f 	bl	546ec <OUTLINED_FUNCTION_483>
+   21a6e:	f50d 6427 	add.w	r4, sp, #2672	; 0xa70
+   21a72:	4642      	mov	r2, r8
+   21a74:	f032 fb68 	bl	54148 <OUTLINED_FUNCTION_308>
+   21a78:	4620      	mov	r0, r4
+   21a7a:	4651      	mov	r1, sl
+   21a7c:	f027 f9b2 	bl	48de4 <OUTLINED_FUNCTION_5+0xff2>
+   21a80:	2000      	movs	r0, #0
+   21a82:	2100      	movs	r1, #0
+   21a84:	2202      	movs	r2, #2
+   21a86:	46a2      	mov	sl, r4
+   21a88:	f7ed fc06 	bl	f298 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x7298>
+   21a8c:	280e      	cmp	r0, #14
+   21a8e:	f040 825d 	bne.w	21f4c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f4c>
+   21a92:	f104 08cc 	add.w	r8, r4, #204	; 0xcc
+   21a96:	f04f 0a00 	mov.w	sl, #0
+   21a9a:	f60d 741c 	addw	r4, sp, #3868	; 0xf1c
+   21a9e:	4641      	mov	r1, r8
+   21aa0:	f44f 72c4 	mov.w	r2, #392	; 0x188
+   21aa4:	f032 fa53 	bl	53f4e <OUTLINED_FUNCTION_255>
+   21aa8:	f814 000a 	ldrb.w	r0, [r4, sl]
+   21aac:	280e      	cmp	r0, #14
+   21aae:	f040 81cd 	bne.w	21e4c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e4c>
+   21ab2:	f10a 0a1c 	add.w	sl, sl, #28
+   21ab6:	f5ba 7fc4 	cmp.w	sl, #392	; 0x188
+   21aba:	d1ee      	bne.n	21a9a <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19a9a>
+   21abc:	9815      	ldr	r0, [sp, #84]	; 0x54
+   21abe:	3001      	adds	r0, #1
+   21ac0:	f180 81e9 	bvs.w	21e96 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e96>
+   21ac4:	f50d 6a27 	add.w	sl, sp, #2672	; 0xa70
+   21ac8:	9017      	str	r0, [sp, #92]	; 0x5c
+   21aca:	f8cd 9048 	str.w	r9, [sp, #72]	; 0x48
+   21ace:	f027 fc17 	bl	49300 <OUTLINED_FUNCTION_5+0x150e>
+   21ad2:	f8dd 9050 	ldr.w	r9, [sp, #80]	; 0x50
+   21ad6:	2400      	movs	r4, #0
+   21ad8:	2000      	movs	r0, #0
+   21ada:	4633      	mov	r3, r6
+   21adc:	9011      	str	r0, [sp, #68]	; 0x44
+   21ade:	3001      	adds	r0, #1
+   21ae0:	2100      	movs	r1, #0
+   21ae2:	9010      	str	r0, [sp, #64]	; 0x40
+   21ae4:	2902      	cmp	r1, #2
+   21ae6:	f000 8097 	beq.w	21c18 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19c18>
+   21aea:	0628      	lsls	r0, r5, #24
+   21aec:	f040 81c7 	bne.w	21e7e <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e7e>
+   21af0:	f113 0b01 	adds.w	fp, r3, #1
+   21af4:	f144 0000 	adc.w	r0, r4, #0
+   21af8:	9015      	str	r0, [sp, #84]	; 0x54
+   21afa:	459b      	cmp	fp, r3
+   21afc:	bf38      	it	cc
+   21afe:	46a3      	movcc	fp, r4
+   21b00:	9816      	ldr	r0, [sp, #88]	; 0x58
+   21b02:	0600      	lsls	r0, r0, #24
+   21b04:	f040 81af 	bne.w	21e66 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e66>
+   21b08:	48fb      	ldr	r0, [pc, #1004]	; (21ef8 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19ef8>)
+   21b0a:	9114      	str	r1, [sp, #80]	; 0x50
+   21b0c:	461d      	mov	r5, r3
+   21b0e:	4478      	add	r0, pc
+   21b10:	4408      	add	r0, r1
+   21b12:	2101      	movs	r1, #1
+   21b14:	f890 8010 	ldrb.w	r8, [r0, #16]
+   21b18:	a80f      	add	r0, sp, #60	; 0x3c
+   21b1a:	f500 566f 	add.w	r6, r0, #15296	; 0x3bc0
+   21b1e:	4630      	mov	r0, r6
+   21b20:	f7ec fb9a 	bl	e258 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x6258>
+   21b24:	9813      	ldr	r0, [sp, #76]	; 0x4c
+   21b26:	9402      	str	r4, [sp, #8]
+   21b28:	4629      	mov	r1, r5
+   21b2a:	464a      	mov	r2, r9
+   21b2c:	e9cd 0600 	strd	r0, r6, [sp]
+   21b30:	a808      	add	r0, sp, #32
+   21b32:	9b12      	ldr	r3, [sp, #72]	; 0x48
+   21b34:	f500 5a34 	add.w	sl, r0, #11520	; 0x2d00
+   21b38:	f032 fdad 	bl	54696 <OUTLINED_FUNCTION_473>
+   21b3c:	a808      	add	r0, sp, #32
+   21b3e:	f60d 751c 	addw	r5, sp, #3868	; 0xf1c
+   21b42:	2100      	movs	r1, #0
+   21b44:	2201      	movs	r2, #1
+   21b46:	f500 5040 	add.w	r0, r0, #12288	; 0x3000
+   21b4a:	6806      	ldr	r6, [r0, #0]
+   21b4c:	4628      	mov	r0, r5
+   21b4e:	f028 fcfd 	bl	4a54c <OUTLINED_FUNCTION_5+0x275a>
+   21b52:	4621      	mov	r1, r4
+   21b54:	f119 0401 	adds.w	r4, r9, #1
+   21b58:	f141 0000 	adc.w	r0, r1, #0
+   21b5c:	454c      	cmp	r4, r9
+   21b5e:	bf38      	it	cc
+   21b60:	460c      	movcc	r4, r1
+   21b62:	2e00      	cmp	r6, #0
+   21b64:	f000 817e 	beq.w	21e64 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e64>
+   21b68:	9016      	str	r0, [sp, #88]	; 0x58
+   21b6a:	a809      	add	r0, sp, #36	; 0x24
+   21b6c:	4629      	mov	r1, r5
+   21b6e:	22b5      	movs	r2, #181	; 0xb5
+   21b70:	f500 5973 	add.w	r9, r0, #15552	; 0x3cc0
+   21b74:	f032 fb1a 	bl	541ac <OUTLINED_FUNCTION_322>
+   21b78:	4648      	mov	r0, r9
+   21b7a:	f030 fa1f 	bl	51fbc <OUTLINED_FUNCTION_5+0xa1ca>
+   21b7e:	a907      	add	r1, sp, #28
+   21b80:	4648      	mov	r0, r9
+   21b82:	f501 5576 	add.w	r5, r1, #15744	; 0x3d80
+   21b86:	4629      	mov	r1, r5
+   21b88:	f02f f8c8 	bl	50d1c <OUTLINED_FUNCTION_5+0x8f2a>
+   21b8c:	f032 fdae 	bl	546ec <OUTLINED_FUNCTION_483>
+   21b90:	f50d 6ab8 	add.w	sl, sp, #1472	; 0x5c0
+   21b94:	4632      	mov	r2, r6
+   21b96:	f032 fad7 	bl	54148 <OUTLINED_FUNCTION_308>
+   21b9a:	4650      	mov	r0, sl
+   21b9c:	4629      	mov	r1, r5
+   21b9e:	f027 f921 	bl	48de4 <OUTLINED_FUNCTION_5+0xff2>
+   21ba2:	48f7      	ldr	r0, [pc, #988]	; (21f80 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f80>)
+   21ba4:	f640 560c 	movw	r6, #3340	; 0xd0c
+   21ba8:	9911      	ldr	r1, [sp, #68]	; 0x44
+   21baa:	f8ad 6514 	strh.w	r6, [sp, #1300]	; 0x514
+   21bae:	f8cd 0510 	str.w	r0, [sp, #1296]	; 0x510
+   21bb2:	48f4      	ldr	r0, [pc, #976]	; (21f84 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f84>)
+   21bb4:	f8cd 050c 	str.w	r0, [sp, #1292]	; 0x50c
+   21bb8:	48f0      	ldr	r0, [pc, #960]	; (21f7c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f7c>)
+   21bba:	f8cd 0508 	str.w	r0, [sp, #1288]	; 0x508
+   21bbe:	f50d 60a1 	add.w	r0, sp, #1288	; 0x508
+   21bc2:	5c45      	ldrb	r5, [r0, r1]
+   21bc4:	2d0e      	cmp	r5, #14
+   21bc6:	f000 8159 	beq.w	21e7c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e7c>
+   21bca:	4628      	mov	r0, r5
+   21bcc:	2100      	movs	r1, #0
+   21bce:	4642      	mov	r2, r8
+   21bd0:	f7ed fb62 	bl	f298 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x7298>
+   21bd4:	2811      	cmp	r0, #17
+   21bd6:	f000 815d 	beq.w	21e94 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e94>
+   21bda:	4ae8      	ldr	r2, [pc, #928]	; (21f7c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f7c>)
+   21bdc:	4643      	mov	r3, r8
+   21bde:	f102 3008 	add.w	r0, r2, #134744072	; 0x8080808
+   21be2:	f102 3104 	add.w	r1, r2, #67372036	; 0x4040404
+   21be6:	e9cd 0602 	strd	r0, r6, [sp, #8]
+   21bea:	200e      	movs	r0, #14
+   21bec:	e9cd 2100 	strd	r2, r1, [sp]
+   21bf0:	4629      	mov	r1, r5
+   21bf2:	2200      	movs	r2, #0
+   21bf4:	9004      	str	r0, [sp, #16]
+   21bf6:	4650      	mov	r0, sl
+   21bf8:	f02a fe59 	bl	4c8ae <OUTLINED_FUNCTION_5+0x4abc>
+   21bfc:	9917      	ldr	r1, [sp, #92]	; 0x5c
+   21bfe:	1840      	adds	r0, r0, r1
+   21c00:	f180 8122 	bvs.w	21e48 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e48>
+   21c04:	9017      	str	r0, [sp, #92]	; 0x5c
+   21c06:	f027 fb7b 	bl	49300 <OUTLINED_FUNCTION_5+0x150e>
+   21c0a:	9914      	ldr	r1, [sp, #80]	; 0x50
+   21c0c:	9d15      	ldr	r5, [sp, #84]	; 0x54
+   21c0e:	46a1      	mov	r9, r4
+   21c10:	465b      	mov	r3, fp
+   21c12:	2400      	movs	r4, #0
+   21c14:	3101      	adds	r1, #1
+   21c16:	e765      	b.n	21ae4 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19ae4>
+   21c18:	9810      	ldr	r0, [sp, #64]	; 0x40
+   21c1a:	280e      	cmp	r0, #14
+   21c1c:	f47f af5e 	bne.w	21adc <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19adc>
+   21c20:	48d9      	ldr	r0, [pc, #868]	; (21f88 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f88>)
+   21c22:	f04f 0a00 	mov.w	sl, #0
+   21c26:	2100      	movs	r1, #0
+   21c28:	4478      	add	r0, pc
+   21c2a:	900c      	str	r0, [sp, #48]	; 0x30
+   21c2c:	980c      	ldr	r0, [sp, #48]	; 0x30
+   21c2e:	eb00 00c1 	add.w	r0, r0, r1, lsl #3
+   21c32:	6942      	ldr	r2, [r0, #20]
+   21c34:	2a01      	cmp	r2, #1
+   21c36:	9210      	str	r2, [sp, #64]	; 0x40
+   21c38:	f2c0 8110 	blt.w	21e5c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e5c>
+   21c3c:	f890 8010 	ldrb.w	r8, [r0, #16]
+   21c40:	3101      	adds	r1, #1
+   21c42:	2601      	movs	r6, #1
+   21c44:	f8cd 9050 	str.w	r9, [sp, #80]	; 0x50
+   21c48:	e9cd 180e 	strd	r1, r8, [sp, #56]	; 0x38
+   21c4c:	9810      	ldr	r0, [sp, #64]	; 0x40
+   21c4e:	42b0      	cmp	r0, r6
+   21c50:	f000 8085 	beq.w	21d5e <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19d5e>
+   21c54:	b2e8      	uxtb	r0, r5
+   21c56:	2801      	cmp	r0, #1
+   21c58:	f000 811e 	beq.w	21e98 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e98>
+   21c5c:	1c5d      	adds	r5, r3, #1
+   21c5e:	f14a 0b00 	adc.w	fp, sl, #0
+   21c62:	429d      	cmp	r5, r3
+   21c64:	bf38      	it	cc
+   21c66:	4655      	movcc	r5, sl
+   21c68:	9816      	ldr	r0, [sp, #88]	; 0x58
+   21c6a:	b2c0      	uxtb	r0, r0
+   21c6c:	2801      	cmp	r0, #1
+   21c6e:	f000 811e 	beq.w	21eae <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19eae>
+   21c72:	9611      	str	r6, [sp, #68]	; 0x44
+   21c74:	f8cd b054 	str.w	fp, [sp, #84]	; 0x54
+   21c78:	a80c      	add	r0, sp, #48	; 0x30
+   21c7a:	2101      	movs	r1, #1
+   21c7c:	461c      	mov	r4, r3
+   21c7e:	f500 5671 	add.w	r6, r0, #15424	; 0x3c40
+   21c82:	4630      	mov	r0, r6
+   21c84:	f7ec fae8 	bl	e258 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x6258>
+   21c88:	9813      	ldr	r0, [sp, #76]	; 0x4c
+   21c8a:	f8dd 9050 	ldr.w	r9, [sp, #80]	; 0x50
+   21c8e:	46d3      	mov	fp, sl
+   21c90:	9b12      	ldr	r3, [sp, #72]	; 0x48
+   21c92:	4621      	mov	r1, r4
+   21c94:	e88d 0441 	stmia.w	sp, {r0, r6, sl}
+   21c98:	f60d 7a1c 	addw	sl, sp, #3868	; 0xf1c
+   21c9c:	464a      	mov	r2, r9
+   21c9e:	f032 fcfa 	bl	54696 <OUTLINED_FUNCTION_473>
+   21ca2:	f50d 5080 	add.w	r0, sp, #4096	; 0x1000
+   21ca6:	f50d 68a1 	add.w	r8, sp, #1288	; 0x508
+   21caa:	2100      	movs	r1, #0
+   21cac:	2201      	movs	r2, #1
+   21cae:	f8d0 621c 	ldr.w	r6, [r0, #540]	; 0x21c
+   21cb2:	4640      	mov	r0, r8
+   21cb4:	f028 fc4a 	bl	4a54c <OUTLINED_FUNCTION_5+0x275a>
+   21cb8:	f119 0401 	adds.w	r4, r9, #1
+   21cbc:	f14b 0000 	adc.w	r0, fp, #0
+   21cc0:	454c      	cmp	r4, r9
+   21cc2:	bf38      	it	cc
+   21cc4:	465c      	movcc	r4, fp
+   21cc6:	2e00      	cmp	r6, #0
+   21cc8:	f000 80fc 	beq.w	21ec4 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19ec4>
+   21ccc:	f10d 0960 	add.w	r9, sp, #96	; 0x60
+   21cd0:	9016      	str	r0, [sp, #88]	; 0x58
+   21cd2:	4641      	mov	r1, r8
+   21cd4:	22b5      	movs	r2, #181	; 0xb5
+   21cd6:	f032 fa69 	bl	541ac <OUTLINED_FUNCTION_322>
+   21cda:	4648      	mov	r0, r9
+   21cdc:	f030 f96e 	bl	51fbc <OUTLINED_FUNCTION_5+0xa1ca>
+   21ce0:	a909      	add	r1, sp, #36	; 0x24
+   21ce2:	4648      	mov	r0, r9
+   21ce4:	f501 5873 	add.w	r8, r1, #15552	; 0x3cc0
+   21ce8:	4641      	mov	r1, r8
+   21cea:	f02f f817 	bl	50d1c <OUTLINED_FUNCTION_5+0x8f2a>
+   21cee:	f032 fcfd 	bl	546ec <OUTLINED_FUNCTION_483>
+   21cf2:	f50d 7a8c 	add.w	sl, sp, #280	; 0x118
+   21cf6:	4632      	mov	r2, r6
+   21cf8:	f032 fa26 	bl	54148 <OUTLINED_FUNCTION_308>
+   21cfc:	4650      	mov	r0, sl
+   21cfe:	4641      	mov	r1, r8
+   21d00:	f027 f870 	bl	48de4 <OUTLINED_FUNCTION_5+0xff2>
+   21d04:	f8dd 803c 	ldr.w	r8, [sp, #60]	; 0x3c
+   21d08:	9e11      	ldr	r6, [sp, #68]	; 0x44
+   21d0a:	2200      	movs	r2, #0
+   21d0c:	4640      	mov	r0, r8
+   21d0e:	4631      	mov	r1, r6
+   21d10:	f7ed fac2 	bl	f298 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x7298>
+   21d14:	2811      	cmp	r0, #17
+   21d16:	f000 80d6 	beq.w	21ec6 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19ec6>
+   21d1a:	4a98      	ldr	r2, [pc, #608]	; (21f7c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f7c>)
+   21d1c:	2300      	movs	r3, #0
+   21d1e:	f102 3008 	add.w	r0, r2, #134744072	; 0x8080808
+   21d22:	f102 3104 	add.w	r1, r2, #67372036	; 0x4040404
+   21d26:	9002      	str	r0, [sp, #8]
+   21d28:	f640 500c 	movw	r0, #3340	; 0xd0c
+   21d2c:	e9cd 2100 	strd	r2, r1, [sp]
+   21d30:	4641      	mov	r1, r8
+   21d32:	4632      	mov	r2, r6
+   21d34:	9003      	str	r0, [sp, #12]
+   21d36:	200e      	movs	r0, #14
+   21d38:	9004      	str	r0, [sp, #16]
+   21d3a:	4650      	mov	r0, sl
+   21d3c:	f02a fdb7 	bl	4c8ae <OUTLINED_FUNCTION_5+0x4abc>
+   21d40:	9917      	ldr	r1, [sp, #92]	; 0x5c
+   21d42:	1840      	adds	r0, r0, r1
+   21d44:	f180 8081 	bvs.w	21e4a <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e4a>
+   21d48:	9017      	str	r0, [sp, #92]	; 0x5c
+   21d4a:	f027 fad9 	bl	49300 <OUTLINED_FUNCTION_5+0x150e>
+   21d4e:	462b      	mov	r3, r5
+   21d50:	9d15      	ldr	r5, [sp, #84]	; 0x54
+   21d52:	990e      	ldr	r1, [sp, #56]	; 0x38
+   21d54:	3601      	adds	r6, #1
+   21d56:	9414      	str	r4, [sp, #80]	; 0x50
+   21d58:	f04f 0a00 	mov.w	sl, #0
+   21d5c:	e776      	b.n	21c4c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19c4c>
+   21d5e:	f8dd 9050 	ldr.w	r9, [sp, #80]	; 0x50
+   21d62:	2904      	cmp	r1, #4
+   21d64:	f47f af62 	bne.w	21c2c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19c2c>
+   21d68:	9816      	ldr	r0, [sp, #88]	; 0x58
+   21d6a:	f04f 31ff 	mov.w	r1, #4294967295	; 0xffffffff
+   21d6e:	461a      	mov	r2, r3
+   21d70:	f04f 0b00 	mov.w	fp, #0
+   21d74:	fa51 f080 	uxtab	r0, r1, r0
+   21d78:	fa51 f185 	uxtab	r1, r1, r5
+   21d7c:	2501      	movs	r5, #1
+   21d7e:	fab0 f080 	clz	r0, r0
+   21d82:	fab1 f181 	clz	r1, r1
+   21d86:	0940      	lsrs	r0, r0, #5
+   21d88:	ea4f 1951 	mov.w	r9, r1, lsr #5
+   21d8c:	ea5f 71c9 	movs.w	r1, r9, lsl #31
+   21d90:	f040 80b7 	bne.w	21f02 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f02>
+   21d94:	f112 0801 	adds.w	r8, r2, #1
+   21d98:	4611      	mov	r1, r2
+   21d9a:	f14b 0900 	adc.w	r9, fp, #0
+   21d9e:	4590      	cmp	r8, r2
+   21da0:	bf38      	it	cc
+   21da2:	46d8      	movcc	r8, fp
+   21da4:	9a12      	ldr	r2, [sp, #72]	; 0x48
+   21da6:	07c0      	lsls	r0, r0, #31
+   21da8:	f040 80b4 	bne.w	21f14 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f14>
+   21dac:	980d      	ldr	r0, [sp, #52]	; 0x34
+   21dae:	9e14      	ldr	r6, [sp, #80]	; 0x50
+   21db0:	9b13      	ldr	r3, [sp, #76]	; 0x4c
+   21db2:	e9cd 0500 	strd	r0, r5, [sp]
+   21db6:	9806      	ldr	r0, [sp, #24]
+   21db8:	9002      	str	r0, [sp, #8]
+   21dba:	4608      	mov	r0, r1
+   21dbc:	4631      	mov	r1, r6
+   21dbe:	f7fa fa11 	bl	1c1e4 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x141e4>
+   21dc2:	9917      	ldr	r1, [sp, #92]	; 0x5c
+   21dc4:	1840      	adds	r0, r0, r1
+   21dc6:	d64a      	bvs.n	21e5e <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e5e>
+   21dc8:	1c74      	adds	r4, r6, #1
+   21dca:	9017      	str	r0, [sp, #92]	; 0x5c
+   21dcc:	b2ea      	uxtb	r2, r5
+   21dce:	f14b 0000 	adc.w	r0, fp, #0
+   21dd2:	42b4      	cmp	r4, r6
+   21dd4:	bf38      	it	cc
+   21dd6:	465c      	movcc	r4, fp
+   21dd8:	9414      	str	r4, [sp, #80]	; 0x50
+   21dda:	1c69      	adds	r1, r5, #1
+   21ddc:	2a05      	cmp	r2, #5
+   21dde:	460d      	mov	r5, r1
+   21de0:	4642      	mov	r2, r8
+   21de2:	d1d3      	bne.n	21d8c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19d8c>
+   21de4:	f04f 0a00 	mov.w	sl, #0
+   21de8:	2500      	movs	r5, #0
+   21dea:	ea5f 71c9 	movs.w	r1, r9, lsl #31
+   21dee:	f040 809a 	bne.w	21f26 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f26>
+   21df2:	f118 0601 	adds.w	r6, r8, #1
+   21df6:	f14a 0900 	adc.w	r9, sl, #0
+   21dfa:	4546      	cmp	r6, r8
+   21dfc:	bf38      	it	cc
+   21dfe:	4656      	movcc	r6, sl
+   21e00:	07c0      	lsls	r0, r0, #31
+   21e02:	f040 8099 	bne.w	21f38 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f38>
+   21e06:	980d      	ldr	r0, [sp, #52]	; 0x34
+   21e08:	e9dd 2312 	ldrd	r2, r3, [sp, #72]	; 0x48
+   21e0c:	4621      	mov	r1, r4
+   21e0e:	e9cd 0500 	strd	r0, r5, [sp]
+   21e12:	9806      	ldr	r0, [sp, #24]
+   21e14:	9002      	str	r0, [sp, #8]
+   21e16:	4640      	mov	r0, r8
+   21e18:	f7fa fc34 	bl	1c684 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x14684>
+   21e1c:	9917      	ldr	r1, [sp, #92]	; 0x5c
+   21e1e:	1840      	adds	r0, r0, r1
+   21e20:	d61e      	bvs.n	21e60 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19e60>
+   21e22:	1c61      	adds	r1, r4, #1
+   21e24:	9017      	str	r0, [sp, #92]	; 0x5c
+   21e26:	b2eb      	uxtb	r3, r5
+   21e28:	46b0      	mov	r8, r6
+   21e2a:	f14a 0000 	adc.w	r0, sl, #0
+   21e2e:	42a1      	cmp	r1, r4
+   21e30:	bf38      	it	cc
+   21e32:	4651      	movcc	r1, sl
+   21e34:	460c      	mov	r4, r1
+   21e36:	1c6a      	adds	r2, r5, #1
+   21e38:	2b0a      	cmp	r3, #10
+   21e3a:	4615      	mov	r5, r2
+   21e3c:	d1d5      	bne.n	21dea <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19dea>
+   21e3e:	9817      	ldr	r0, [sp, #92]	; 0x5c
+   21e40:	f031 bf8a 	b.w	53d58 <OUTLINED_FUNCTION_218>
+   21e44:	defe      	udf	#254	; 0xfe
+   21e46:	defe      	udf	#254	; 0xfe
+   21e48:	defe      	udf	#254	; 0xfe
+   21e4a:	defe      	udf	#254	; 0xfe
+   21e4c:	defe      	udf	#254	; 0xfe
+   21e4e:	defe      	udf	#254	; 0xfe
+   21e50:	defe      	udf	#254	; 0xfe
+   21e52:	defe      	udf	#254	; 0xfe
+   21e54:	defe      	udf	#254	; 0xfe
+   21e56:	defe      	udf	#254	; 0xfe
+   21e58:	defe      	udf	#254	; 0xfe
+   21e5a:	defe      	udf	#254	; 0xfe
+   21e5c:	defe      	udf	#254	; 0xfe
+   21e5e:	defe      	udf	#254	; 0xfe
+   21e60:	defe      	udf	#254	; 0xfe
+   21e62:	defe      	udf	#254	; 0xfe
+   21e64:	defe      	udf	#254	; 0xfe
+   21e66:	4857      	ldr	r0, [pc, #348]	; (21fc4 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fc4>)
+   21e68:	4957      	ldr	r1, [pc, #348]	; (21fc8 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fc8>)
+   21e6a:	2200      	movs	r2, #0
+   21e6c:	2300      	movs	r3, #0
+   21e6e:	4478      	add	r0, pc
+   21e70:	4479      	add	r1, pc
+   21e72:	f032 f973 	bl	5415c <OUTLINED_FUNCTION_310>
+   21e76:	2001      	movs	r0, #1
+   21e78:	7008      	strb	r0, [r1, #0]
+   21e7a:	defe      	udf	#254	; 0xfe
+   21e7c:	defe      	udf	#254	; 0xfe
+   21e7e:	484f      	ldr	r0, [pc, #316]	; (21fbc <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fbc>)
+   21e80:	494f      	ldr	r1, [pc, #316]	; (21fc0 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fc0>)
+   21e82:	2200      	movs	r2, #0
+   21e84:	2300      	movs	r3, #0
+   21e86:	4478      	add	r0, pc
+   21e88:	4479      	add	r1, pc
+   21e8a:	f032 f967 	bl	5415c <OUTLINED_FUNCTION_310>
+   21e8e:	200f      	movs	r0, #15
+   21e90:	7008      	strb	r0, [r1, #0]
+   21e92:	defe      	udf	#254	; 0xfe
+   21e94:	defe      	udf	#254	; 0xfe
+   21e96:	defe      	udf	#254	; 0xfe
+   21e98:	483c      	ldr	r0, [pc, #240]	; (21f8c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f8c>)
+   21e9a:	493d      	ldr	r1, [pc, #244]	; (21f90 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f90>)
+   21e9c:	2200      	movs	r2, #0
+   21e9e:	2300      	movs	r3, #0
+   21ea0:	4478      	add	r0, pc
+   21ea2:	4479      	add	r1, pc
+   21ea4:	f032 f95a 	bl	5415c <OUTLINED_FUNCTION_310>
+   21ea8:	200f      	movs	r0, #15
+   21eaa:	7008      	strb	r0, [r1, #0]
+   21eac:	defe      	udf	#254	; 0xfe
+   21eae:	4839      	ldr	r0, [pc, #228]	; (21f94 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f94>)
+   21eb0:	4939      	ldr	r1, [pc, #228]	; (21f98 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f98>)
+   21eb2:	2200      	movs	r2, #0
+   21eb4:	2300      	movs	r3, #0
+   21eb6:	4478      	add	r0, pc
+   21eb8:	4479      	add	r1, pc
+   21eba:	f032 f94f 	bl	5415c <OUTLINED_FUNCTION_310>
+   21ebe:	2001      	movs	r0, #1
+   21ec0:	7008      	strb	r0, [r1, #0]
+   21ec2:	defe      	udf	#254	; 0xfe
+   21ec4:	defe      	udf	#254	; 0xfe
+   21ec6:	defe      	udf	#254	; 0xfe
+   21ec8:	defe      	udf	#254	; 0xfe
+   21eca:	4834      	ldr	r0, [pc, #208]	; (21f9c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f9c>)
+   21ecc:	4934      	ldr	r1, [pc, #208]	; (21fa0 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fa0>)
+   21ece:	2200      	movs	r2, #0
+   21ed0:	2300      	movs	r3, #0
+   21ed2:	4478      	add	r0, pc
+   21ed4:	4479      	add	r1, pc
+   21ed6:	f032 f941 	bl	5415c <OUTLINED_FUNCTION_310>
+   21eda:	200f      	movs	r0, #15
+   21edc:	7008      	strb	r0, [r1, #0]
+   21ede:	defe      	udf	#254	; 0xfe
+   21ee0:	4830      	ldr	r0, [pc, #192]	; (21fa4 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fa4>)
+   21ee2:	4931      	ldr	r1, [pc, #196]	; (21fa8 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fa8>)
+   21ee4:	2200      	movs	r2, #0
+   21ee6:	2300      	movs	r3, #0
+   21ee8:	4478      	add	r0, pc
+   21eea:	4479      	add	r1, pc
+   21eec:	f032 f936 	bl	5415c <OUTLINED_FUNCTION_310>
+   21ef0:	2001      	movs	r0, #1
+   21ef2:	7008      	strb	r0, [r1, #0]
+   21ef4:	defe      	udf	#254	; 0xfe
+   21ef6:	bf00      	nop
+   21ef8:	1ffde71e 	.word	0x1ffde71e
+   21efc:	defe      	udf	#254	; 0xfe
+   21efe:	defe      	udf	#254	; 0xfe
+   21f00:	defe      	udf	#254	; 0xfe
+   21f02:	4832      	ldr	r0, [pc, #200]	; (21fcc <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fcc>)
+   21f04:	4932      	ldr	r1, [pc, #200]	; (21fd0 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fd0>)
+   21f06:	2200      	movs	r2, #0
+   21f08:	2300      	movs	r3, #0
+   21f0a:	4478      	add	r0, pc
+   21f0c:	4479      	add	r1, pc
+   21f0e:	f032 f925 	bl	5415c <OUTLINED_FUNCTION_310>
+   21f12:	defe      	udf	#254	; 0xfe
+   21f14:	482f      	ldr	r0, [pc, #188]	; (21fd4 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fd4>)
+   21f16:	4930      	ldr	r1, [pc, #192]	; (21fd8 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fd8>)
+   21f18:	2200      	movs	r2, #0
+   21f1a:	2300      	movs	r3, #0
+   21f1c:	4478      	add	r0, pc
+   21f1e:	4479      	add	r1, pc
+   21f20:	f032 f91c 	bl	5415c <OUTLINED_FUNCTION_310>
+   21f24:	defe      	udf	#254	; 0xfe
+   21f26:	482d      	ldr	r0, [pc, #180]	; (21fdc <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fdc>)
+   21f28:	492d      	ldr	r1, [pc, #180]	; (21fe0 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fe0>)
+   21f2a:	2200      	movs	r2, #0
+   21f2c:	2300      	movs	r3, #0
+   21f2e:	4478      	add	r0, pc
+   21f30:	4479      	add	r1, pc
+   21f32:	f032 f913 	bl	5415c <OUTLINED_FUNCTION_310>
+   21f36:	defe      	udf	#254	; 0xfe
+   21f38:	482a      	ldr	r0, [pc, #168]	; (21fe4 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fe4>)
+   21f3a:	492b      	ldr	r1, [pc, #172]	; (21fe8 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fe8>)
+   21f3c:	2200      	movs	r2, #0
+   21f3e:	2300      	movs	r3, #0
+   21f40:	4478      	add	r0, pc
+   21f42:	4479      	add	r1, pc
+   21f44:	f032 f90a 	bl	5415c <OUTLINED_FUNCTION_310>
+   21f48:	defe      	udf	#254	; 0xfe
+   21f4a:	defe      	udf	#254	; 0xfe
+   21f4c:	2811      	cmp	r0, #17
+   21f4e:	d114      	bne.n	21f7a <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19f7a>
+   21f50:	defe      	udf	#254	; 0xfe
+   21f52:	4816      	ldr	r0, [pc, #88]	; (21fac <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fac>)
+   21f54:	4916      	ldr	r1, [pc, #88]	; (21fb0 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fb0>)
+   21f56:	2200      	movs	r2, #0
+   21f58:	2300      	movs	r3, #0
+   21f5a:	4478      	add	r0, pc
+   21f5c:	4479      	add	r1, pc
+   21f5e:	f032 f8fd 	bl	5415c <OUTLINED_FUNCTION_310>
+   21f62:	defe      	udf	#254	; 0xfe
+   21f64:	4813      	ldr	r0, [pc, #76]	; (21fb4 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fb4>)
+   21f66:	4914      	ldr	r1, [pc, #80]	; (21fb8 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19fb8>)
+   21f68:	2200      	movs	r2, #0
+   21f6a:	2300      	movs	r3, #0
+   21f6c:	4478      	add	r0, pc
+   21f6e:	4479      	add	r1, pc
+   21f70:	f032 f8f4 	bl	5415c <OUTLINED_FUNCTION_310>
+   21f74:	defe      	udf	#254	; 0xfe
+   21f76:	defe      	udf	#254	; 0xfe
+   21f78:	defe      	udf	#254	; 0xfe
+   21f7a:	defe      	udf	#254	; 0xfe
+   21f7c:	03020100 	.word	0x03020100
+   21f80:	0b0a0908 	.word	0x0b0a0908
+   21f84:	07060504 	.word	0x07060504
+   21f88:	1ffde618 	.word	0x1ffde618
+   21f8c:	1ffde268 	.word	0x1ffde268
+   21f90:	0003df5e 	.word	0x0003df5e
+   21f94:	1ffde20e 	.word	0x1ffde20e
+   21f98:	0003df44 	.word	0x0003df44
+   21f9c:	1ffde236 	.word	0x1ffde236
+   21fa0:	0003df2c 	.word	0x0003df2c
+   21fa4:	1ffde1dc 	.word	0x1ffde1dc
+   21fa8:	0003df12 	.word	0x0003df12
+   21fac:	1ffde1ae 	.word	0x1ffde1ae
+   21fb0:	0003dea4 	.word	0x0003dea4
+   21fb4:	1ffde158 	.word	0x1ffde158
+   21fb8:	0003de8e 	.word	0x0003de8e
+   21fbc:	1ffde282 	.word	0x1ffde282
+   21fc0:	0003df78 	.word	0x0003df78
+   21fc4:	1ffde256 	.word	0x1ffde256
+   21fc8:	0003df8c 	.word	0x0003df8c
+   21fcc:	1ffde1fe 	.word	0x1ffde1fe
+   21fd0:	0003def4 	.word	0x0003def4
+   21fd4:	1ffde1a8 	.word	0x1ffde1a8
+   21fd8:	0003dede 	.word	0x0003dede
+   21fdc:	1ffde1da 	.word	0x1ffde1da
+   21fe0:	0003ded0 	.word	0x0003ded0
+   21fe4:	1ffde184 	.word	0x1ffde184
+   21fe8:	0003deba 	.word	0x0003deba

@@ -1,0 +1,31 @@
+
+.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf:     file format elf32-littlearm
+
+
+Disassembly of section text:
+
+00037596 <swift_allocObject+0x4>:
+   37596:	b51c      	push	{r2, r3, r4, lr}
+   37598:	460b      	mov	r3, r1
+   3759a:	4604      	mov	r4, r0
+   3759c:	1c51      	adds	r1, r2, #1
+   3759e:	d005      	beq.n	375ac <swift_allocObject+0x1a>
+   375a0:	4291      	cmp	r1, r2
+   375a2:	d610      	bvs.n	375c6 <swift_allocObject+0x34>
+   375a4:	2904      	cmp	r1, #4
+   375a6:	bfd8      	it	le
+   375a8:	2104      	movle	r1, #4
+   375aa:	e000      	b.n	375ae <swift_allocObject+0x1c>
+   375ac:	2110      	movs	r1, #16
+   375ae:	2000      	movs	r0, #0
+   375b0:	461a      	mov	r2, r3
+   375b2:	9001      	str	r0, [sp, #4]
+   375b4:	a801      	add	r0, sp, #4
+   375b6:	f024 fec8 	bl	5c34a <posix_memalign>
+   375ba:	9801      	ldr	r0, [sp, #4]
+   375bc:	b120      	cbz	r0, 375c8 <swift_allocObject+0x36>
+   375be:	2101      	movs	r1, #1
+   375c0:	e9c0 4100 	strd	r4, r1, [r0]
+   375c4:	bd1c      	pop	{r2, r3, r4, pc}
+   375c6:	defe      	udf	#254	; 0xfe
+   375c8:	defe      	udf	#254	; 0xfe

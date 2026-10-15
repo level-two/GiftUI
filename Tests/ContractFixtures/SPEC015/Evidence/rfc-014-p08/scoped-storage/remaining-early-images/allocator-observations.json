@@ -1,0 +1,183 @@
+{
+  "artifact_sha256": "66ca1113d997c6424aedb258c1477692ce4bf5b42ed77f42bb1d5cba66339da9",
+  "symbol_name_pattern": "swift_allocObject|swift_allocError|swift_deallocClassInstance|swift_setDeallocating|swift_slowAlloc|_swift_embedded_allocate|^(?:posix_memalign|free|malloc|calloc|realloc)$",
+  "symbols": [
+    {
+      "name": "swift_allocError",
+      "value": 1045,
+      "size": 168,
+      "type": 2,
+      "binding": 2,
+      "owner": 2,
+      "visibility": 3,
+      "table": 29,
+      "index": 6904
+    },
+    {
+      "name": "swift_allocObject",
+      "value": 226707,
+      "size": 4,
+      "type": 2,
+      "binding": 2,
+      "owner": 2,
+      "visibility": 3,
+      "table": 29,
+      "index": 5622
+    },
+    {
+      "name": "$es17swift_allocObject8metadata12requiredSize0E13AlignmentMaskSpys04HeapC0VGSpys13ClassMetadataVG_S2itF",
+      "value": 226711,
+      "size": 52,
+      "type": 2,
+      "binding": 2,
+      "owner": 2,
+      "visibility": 2,
+      "table": 29,
+      "index": 6869
+    },
+    {
+      "name": "swift_deallocClassInstance",
+      "value": 226763,
+      "size": 12,
+      "type": 2,
+      "binding": 2,
+      "owner": 2,
+      "visibility": 3,
+      "table": 29,
+      "index": 6755
+    },
+    {
+      "name": "swift_setDeallocating",
+      "value": 226775,
+      "size": 2,
+      "type": 2,
+      "binding": 2,
+      "owner": 2,
+      "visibility": 3,
+      "table": 29,
+      "index": 5434
+    },
+    {
+      "name": "posix_memalign",
+      "value": 377675,
+      "size": 4,
+      "type": 2,
+      "binding": 1,
+      "owner": 2,
+      "visibility": 0,
+      "table": 29,
+      "index": 7120
+    },
+    {
+      "name": "free",
+      "value": 378311,
+      "size": 2,
+      "type": 2,
+      "binding": 1,
+      "owner": 2,
+      "visibility": 0,
+      "table": 29,
+      "index": 5603
+    }
+  ],
+  "direct_branch_observations": [
+    {
+      "at": "0x46c",
+      "caller": "swift_allocError",
+      "target": "$es17swift_allocObject8metadata12requiredSize0E13AlignmentMaskSpys04HeapC0VGSpys13ClassMetadataVG_S2itF",
+      "instruction": "46c:\tf037 f893 \tbl\t37596 <swift_allocObject+0x4>"
+    },
+    {
+      "at": "0x1e46",
+      "caller": "$es41__SwiftNativeNSArrayWithContiguousStorageCABycfC",
+      "target": "$es17swift_allocObject8metadata12requiredSize0E13AlignmentMaskSpys04HeapC0VGSpys13ClassMetadataVG_S2itF",
+      "instruction": "1e46:\tf035 bba6 \tb.w\t37596 <swift_allocObject+0x4>"
+    },
+    {
+      "at": "0x1fbb8",
+      "caller": "$e17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF",
+      "target": "swift_allocError",
+      "instruction": "1fbb8:\tf7e0 fc2c \tbl\t414 <swift_allocError>"
+    },
+    {
+      "at": "0x22b8e",
+      "caller": "$e17P08CounterRuntime17counterHostCorpus4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlFAH020SignalAnalyzerPreseteN0VyAA0beQ0VyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateW0ATLLVAA0a9CommittedW0ATLLVAA0a3HitW0ATLLVGG_Tg5",
+      "target": "swift_allocObject",
+      "instruction": "22b8e:\tf014 fd00 \tbl\t37592 <swift_allocObject>"
+    },
+    {
+      "at": "0x22d0e",
+      "caller": "$e17P08CounterRuntime17counterHostCorpus4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlFAH020SignalAnalyzerPreseteN0VyAA0beQ0VyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateW0ATLLVAA0a9CommittedW0ATLLVAA0a3HitW0ATLLVGG_Tg5",
+      "target": "swift_setDeallocating",
+      "instruction": "22d0e:\tf014 fc62 \tbl\t375d6 <swift_setDeallocating>"
+    },
+    {
+      "at": "0x22d18",
+      "caller": "$e17P08CounterRuntime17counterHostCorpus4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlFAH020SignalAnalyzerPreseteN0VyAA0beQ0VyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateW0ATLLVAA0a9CommittedW0ATLLVAA0a3HitW0ATLLVGG_Tg5",
+      "target": "swift_deallocClassInstance",
+      "instruction": "22d18:\tf014 fc57 \tbl\t375ca <swift_deallocClassInstance>"
+    },
+    {
+      "at": "0x37592",
+      "caller": "swift_allocObject",
+      "target": "$es17swift_allocObject8metadata12requiredSize0E13AlignmentMaskSpys04HeapC0VGSpys13ClassMetadataVG_S2itF",
+      "instruction": "37592:\tf000 b800 \tb.w\t37596 <swift_allocObject+0x4>"
+    },
+    {
+      "at": "0x375b6",
+      "caller": "$es17swift_allocObject8metadata12requiredSize0E13AlignmentMaskSpys04HeapC0VGSpys13ClassMetadataVG_S2itF",
+      "target": "posix_memalign",
+      "instruction": "375b6:\tf024 fec8 \tbl\t5c34a <posix_memalign>"
+    },
+    {
+      "at": "0x375d0",
+      "caller": "swift_deallocClassInstance",
+      "target": "free",
+      "instruction": "375d0:\tf024 bff9 \tb.w\t5c5c6 <free>"
+    },
+    {
+      "at": "0x37678",
+      "caller": "_swift_embedded_error_destroy_impl",
+      "target": "free",
+      "instruction": "37678:\tf024 bfa5 \tb.w\t5c5c6 <free>"
+    },
+    {
+      "at": "0x376be",
+      "caller": "_swift_embedded_error_box_destroy",
+      "target": "free",
+      "instruction": "376be:\tf024 bf82 \tb.w\t5c5c6 <free>"
+    },
+    {
+      "at": "0x3ab32",
+      "caller": null,
+      "target": "swift_deallocClassInstance",
+      "instruction": "3ab32:\tf7fc bd4a \tb.w\t375ca <swift_deallocClassInstance>"
+    },
+    {
+      "at": "0x3ab3c",
+      "caller": "$es41__SwiftNativeNSArrayWithContiguousStorageCfD",
+      "target": "swift_deallocClassInstance",
+      "instruction": "3ab3c:\tf7fc bd45 \tb.w\t375ca <swift_deallocClassInstance>"
+    },
+    {
+      "at": "0x3d420",
+      "caller": null,
+      "target": "swift_deallocClassInstance",
+      "instruction": "3d420:\tf7fa b8d3 \tb.w\t375ca <swift_deallocClassInstance>"
+    },
+    {
+      "at": "0x5415e",
+      "caller": "OUTLINED_FUNCTION_310",
+      "target": "swift_allocError",
+      "instruction": "5415e:\tf7ac b959 \tb.w\t414 <swift_allocError>"
+    },
+    {
+      "at": "0x545d2",
+      "caller": "OUTLINED_FUNCTION_443",
+      "target": "swift_allocObject",
+      "instruction": "545d2:\tf7e2 bfde \tb.w\t37592 <swift_allocObject>"
+    }
+  ],
+  "complete_reachability_proof": false,
+  "limits": "Direct calls/tail branches only; branch observations are not a feasible selected-path classification. Indirect reachability, allocator header/peak Dynamic accounting and full stack remain unproved."
+}

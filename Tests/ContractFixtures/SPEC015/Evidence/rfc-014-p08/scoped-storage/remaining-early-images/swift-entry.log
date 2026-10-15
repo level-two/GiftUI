@@ -1,0 +1,41 @@
+
+.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf:     file format elf32-littlearm
+
+
+Disassembly of section text:
+
+0005c20a <giftui_rfc014_counter_entry+0x4>:
+   5c20a:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+   5c20c:	b319      	cbz	r1, 5c256 <giftui_rfc014_counter_entry+0x50>
+   5c20e:	f5b2 3ffa 	cmp.w	r2, #128000	; 0x1f400
+   5c212:	d11c      	bne.n	5c24e <giftui_rfc014_counter_entry+0x48>
+   5c214:	f501 36fa 	add.w	r6, r1, #128000	; 0x1f400
+   5c218:	4605      	mov	r5, r0
+   5c21a:	460c      	mov	r4, r1
+   5c21c:	4608      	mov	r0, r1
+   5c21e:	2200      	movs	r2, #0
+   5c220:	4631      	mov	r1, r6
+   5c222:	f7c3 ff83 	bl	2012c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x1812c>
+   5c226:	4607      	mov	r7, r0
+   5c228:	4620      	mov	r0, r4
+   5c22a:	4631      	mov	r1, r6
+   5c22c:	2200      	movs	r2, #0
+   5c22e:	462b      	mov	r3, r5
+   5c230:	f7c5 f960 	bl	214f4 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x194f4>
+   5c234:	183f      	adds	r7, r7, r0
+   5c236:	d60b      	bvs.n	5c250 <giftui_rfc014_counter_entry+0x4a>
+   5c238:	4628      	mov	r0, r5
+   5c23a:	4621      	mov	r1, r4
+   5c23c:	4632      	mov	r2, r6
+   5c23e:	2300      	movs	r3, #0
+   5c240:	f7c3 fbf4 	bl	1fa2c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x17a2c>
+   5c244:	19c0      	adds	r0, r0, r7
+   5c246:	d604      	bvs.n	5c252 <giftui_rfc014_counter_entry+0x4c>
+   5c248:	2800      	cmp	r0, #0
+   5c24a:	d403      	bmi.n	5c254 <giftui_rfc014_counter_entry+0x4e>
+   5c24c:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+   5c24e:	defe      	udf	#254	; 0xfe
+   5c250:	defe      	udf	#254	; 0xfe
+   5c252:	defe      	udf	#254	; 0xfe
+   5c254:	defe      	udf	#254	; 0xfe
+   5c256:	defe      	udf	#254	; 0xfe

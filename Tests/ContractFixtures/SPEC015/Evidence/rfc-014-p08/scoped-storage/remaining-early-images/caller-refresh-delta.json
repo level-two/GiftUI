@@ -1,0 +1,308 @@
+{
+  "previous_inventory_archive": "image-reports.tar.xz",
+  "refresh": {
+    "previous_source_commit": "59d98712",
+    "previous_files": 171,
+    "current_files": 176,
+    "changed_existing": 44,
+    "new_selected": 5,
+    "scope": "refresh original caller set plus selected SPEC015 RuntimeDerived Swift files; no broad analyzer or generated-output migration",
+    "retained_dispositions": "Original D01\u2013D34 dispositions remain applicability annotations, not proof. Current executed scoped changes are recorded separately. I4-07/analyzer owned factory gaps remain unresolved."
+  },
+  "changes": [
+    {
+      "path": "Package.swift",
+      "previous_sha256": "65eb3e474446adf1b255c0a3369f2b59e19ce22bca28c140701e8cdf134cd6c4",
+      "current_sha256": "56ec87fe0f47ed4cd93900f4a9d6ee46db079e7ecb55979e07658c29812797bd",
+      "kind": "changed"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift",
+      "previous_sha256": "f393fa156862774f0d92fc877a51528b9e5764e10c8678fcc9dca4ea260f107f",
+      "current_sha256": "327b0d1165f8a83d8be147bb8f27fe7573c6305d364d6285f4a7f33c061d7d7e",
+      "kind": "changed"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "previous_sha256": "54271aaf4d1fc7f4060c44b03124db356802efbf69ddd56f829964f92dd55af8",
+      "current_sha256": "7c44e2dc5f2ba716d6ee2565f1128147e568a9edfa3acee7456475dbbcf1628a",
+      "kind": "changed"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "previous_sha256": "030ac5f13c350694c1bb75b9a74c46a204949441ce52f760885d72b63dcb961c",
+      "current_sha256": "9497b277c617e66706891c26bc716f35a2c99b7f0868367d5ea3bd6a07b0e1ee",
+      "kind": "changed"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "previous_sha256": "3a2e4e4907316de134814c58cb07735ae87d65965ad45e7634148f15bf4356d3",
+      "current_sha256": "19434eff6929af855dc90dac2e8c271dac3e0fb62f676e1ce5dcd05cd049f31c",
+      "kind": "changed"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "previous_sha256": "49bcf84b9dbbdb93c0990d51c65d61e536579c454978aa42ffc4a5e5e3df97cc",
+      "current_sha256": "4b2ca2f37b6c28ed6badf948d8b312f5b74ab32eea62cd430a13c9822230f839",
+      "kind": "changed"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateCoordinator.swift",
+      "previous_sha256": "a3f42f1e3bc73c6da45f83aa29992acfe8e2c0fe71457a863dfb10310cc769dc",
+      "current_sha256": "eba70ff7d800375e1eb53ba29503bd098490cba28d9e817e78a13abb2dd0b214",
+      "kind": "changed"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift",
+      "previous_sha256": "62070062fd8829facecacc23b2baebd9333df64213291e99dd19344318be0cf9",
+      "current_sha256": "5c402b3a80a52a598149ce8b441e87d9370ff985c173483123d1bd8d0ecd6231",
+      "kind": "changed"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateTransaction.swift",
+      "previous_sha256": "2b3b49bd290334e646caf00d75b67d38d322aac4afbc0999814a8c4c313ba687",
+      "current_sha256": "7144341765b4156879cb4653aeee883d456757eff1624ea115c8d79170308821",
+      "kind": "changed"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeInteractionDispatcher.swift",
+      "previous_sha256": "260298b71d56e47f5a5d52e12f89e584137a7fbc92e031eae7b10d20c711e1aa",
+      "current_sha256": "4ad68cc60d1122e6f2fac4c13ef8c7a97cbdcc6dc194e70c02e79bdcfdbed323",
+      "kind": "changed"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift",
+      "previous_sha256": "a0c386b5dfaf05864bf374644d19ee59f0b254313ffe72c871dcbe983ed69ef9",
+      "current_sha256": "0ba4dd8df9fcb3989d6da1f59dde68587b4bf85818340ba3d5958419cab9a570",
+      "kind": "changed"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "previous_sha256": "a6c4fe9a1471daf3b8ee3610d98b98308046abb630ce0956df7235cfe26cf010",
+      "current_sha256": "eec27acb25a24754ecfdd69bc2a70339e021bd502c98bca5a87e670c4018cfac",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC011/RuntimeDerived/InteractionProbe.swift",
+      "previous_sha256": "0addaef099e62e518a11e7bfec10c7fac4293ae6a4640281dba87432833a6099",
+      "current_sha256": "73a8c44ca1eab07c6b9023df6e4f411452708d0cf59930a36660443f496a9d33",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift",
+      "previous_sha256": "ba387f14fd0e276ad4b4a44f451adc022e55ec3a1cde3820d03da2f153aa8a9c",
+      "current_sha256": "2524e1888c75e71e4ecd931a5fccd9468da764e5b17fd48db3d7171df93aeb0a",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift",
+      "previous_sha256": "801a3185d3acd0199076e50a8cde497627c5eca104c1e119223138b75be3bd00",
+      "current_sha256": "8e413600884a7eb5123fcebd404d9b15045d36cb1732dfa9c3a78353f14eee20",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift",
+      "previous_sha256": "ddbd36e4d6ca2ea8e46dcd9ec81986fd5b29e388c5fc48e07aa13eea828ff709",
+      "current_sha256": "574193c25323b60ac8309d4149966b23a151c38f5b1ce5eccf8d77e9409833c3",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageMeasurement.swift",
+      "previous_sha256": "a9588be5cb23e291b49c7bce3e673336a3b4b52ea4db6540d25144a50a75f5ab",
+      "current_sha256": "91b46620a34dd5b329dec0ffec3535da9e933a3105e552e94c3e895f75b1af70",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageRegions.swift",
+      "previous_sha256": "eb3098aa442fd5886c08589a710f1276789f37a27207104e08f9a2c1fea95740",
+      "current_sha256": "5eae8a4064c30601de2bdc747113146eeb2cf2a71fb9f38dc114e1cd91f3db55",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinReport.swift",
+      "previous_sha256": null,
+      "current_sha256": "6ebcdc1baa67315f2ba7388f1f5931be892449f7922bbd8fc23bd37fe6930a60",
+      "kind": "new selected fixture"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+      "previous_sha256": "d0c199397cb384ecbd221160773b44ee476df1b930aefc81a9197eed6b72353e",
+      "current_sha256": "e5b03a220709df8d9c439fde4d7728ef3a4e9e9385eeb0059b6cdb8f27df6d47",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+      "previous_sha256": "49ca8b09587c31dfbb0e8b8eaf9a84a19c6f87ab5cf2f37f60e992585d3de5e2",
+      "current_sha256": "3d9c21a66423bfc26c60c785583a8f6bc614a10ad0fef767bb48607e88f7e415",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "previous_sha256": "d0b48674137e5377b9ee7b4176b2522ca8129b9074761547eee54f03f35c4456",
+      "current_sha256": "65bde53e58cc8879bb882650661cdcc8fb1551b9da09190e9ead26f066fc7271",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+      "previous_sha256": "7b2245641aa5f4493df0dae4f2c8ccf08f10b73366e8d829e89c3cbc7ab798e9",
+      "current_sha256": "342585dd23bc2916176535bfdb9efd7ba115a138047afe3fcda082acbf7adf8e",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+      "previous_sha256": "bd2bf1e1ab30bd7eaed8a6e6426eaab5fce48a3471756d460487055233e265b1",
+      "current_sha256": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+      "previous_sha256": "84915c4d1dd8cbd287470bddeffdc1e59e3c9adfb503ee89c51439ee1182f6c4",
+      "current_sha256": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift",
+      "previous_sha256": "42b4e4a4bea69ee4dac148cd9c39ee731c39b22ce65f575c30e98be1acfc4d66",
+      "current_sha256": "b1f575db79c688b2534ebe3681fea99864222715f8b9ef83dd3fcde16e261c9f",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift",
+      "previous_sha256": "920639f5493f49d69c115d4bea77c0f0520562b9df5697eadd32e91233cbb768",
+      "current_sha256": "cf9f5467416298dd64f604f5d0edf436b1736dc5972d78721da38c61151cb588",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+      "previous_sha256": "ab35efa546cc7279770e9ee039166b1f725337f1a090cc68ee15d2ca20a7dcb2",
+      "current_sha256": "62813ea95b2b1cd6bfc430fc66e0aae25e4c6f9db8d8e7329b5c10000a739c6b",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+      "previous_sha256": "80f4e24984d127f3cddd2ac777cb4e29c2b41aafba532a0c5d034e5918b0720a",
+      "current_sha256": "553929d76928282d94faa15dc544ae369cca2f523bdb70d3fbace4f415c112f3",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+      "previous_sha256": "b44729dbbad4cc2af1f72e7b03c99568c01ad4017383fb1b6f0b4f24efd9a2e6",
+      "current_sha256": "b49e2fb1466b38e26e2e6da3f6267760a935476acfe8066190ee614f81a67c12",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "previous_sha256": "8c1ff4d0884431f3c243612a5c99535a9d375924be3f50139271f08a3f28926b",
+      "current_sha256": "3565e47ec54b4e85b89260d4922166908b4fdb557e6012318d38c73197c06ed0",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "previous_sha256": "6137be3df89bf7d93ccc1d44148e7143d9ad4569f41396978622965aebefa82d",
+      "current_sha256": "fcaebb92dd2009e8a1536ef53a647ae1c4b073e85682098d54c0101b0b995b3a",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "previous_sha256": "39fea522c9ffd618209342f4021a91a91354ec572ddfe072624b679122120335",
+      "current_sha256": "1f3912de5a30da90232292db5defee3a201883028936311a246e65ad450df019",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "previous_sha256": null,
+      "current_sha256": "ed705493d35ac471e9b4d0591b75fd997ed426a0d84f0894a1e59adbaa402ccb",
+      "kind": "new selected fixture"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift",
+      "previous_sha256": null,
+      "current_sha256": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f",
+      "kind": "new selected fixture"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift",
+      "previous_sha256": "2257964e7ad3db541d0ec18dced4b671984b4b9a183d5006141f5735836c5316",
+      "current_sha256": "abae5f87b3390863d8a68657c98b46a0fe9829f96a332affe44fbbb4fcce4d5a",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift",
+      "previous_sha256": "2a331000c781a0cf29590ab0f6acb730176115126113e3fd687ff272b0fe30f7",
+      "current_sha256": "6d713ae96bf4982c46f30289068dc97e5d4e32e3dae69f1874dd5e808d053d2b",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/Schema4Probe.swift",
+      "previous_sha256": null,
+      "current_sha256": "a916ea010fa343920ba7146e3de247bba9eee5f56f5b66b6181c18a820db4fde",
+      "kind": "new selected fixture"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift",
+      "previous_sha256": "634565f27c8b73667a0994a643247ef5355d85cc7b6d1424eff856c8e3e2af84",
+      "current_sha256": "52da7bb08f311fd4f93666e4f3a8f86b524ffd6cd104e95da10bb1b7c9ceb6c4",
+      "kind": "changed"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift",
+      "previous_sha256": null,
+      "current_sha256": "8c68606f9648016f4b748a59871acb7da656db7968ae2469ca86fe809eb90292",
+      "kind": "new selected fixture"
+    },
+    {
+      "path": "scripts/contracts/build-spec-015-counter-image.py",
+      "previous_sha256": "5c62d674d27a6886809801a5874f449c64897cfc753f2d29aff88d66749e1972",
+      "current_sha256": "94f23cca82cee3c238d36a3c14004850d27d0d1c3420195152287c439018d03f",
+      "kind": "changed"
+    },
+    {
+      "path": "scripts/contracts/check-spec-011-owned-keys.py",
+      "previous_sha256": "cf9cb01cd4d99cfd143afc3904201955ae7d49a44588b2dff3cf15492de85a0b",
+      "current_sha256": "6e23a574bc803edbebbd884f98e73043cc2de82c8ef96bb6245effa43b9a8821",
+      "kind": "changed"
+    },
+    {
+      "path": "scripts/contracts/check-spec-013-runtime-cycle.py",
+      "previous_sha256": "51a46241f9737a8d6f4d0cc013b546258a6b577d9e87a92b802028405b79fe0c",
+      "current_sha256": "8e8bb63b15214a8da8a907c6705ee477f4aaddbd6aa6beaafe5ac092fddb5991",
+      "kind": "changed"
+    },
+    {
+      "path": "scripts/contracts/check-spec-015-counter.py",
+      "previous_sha256": "9f6e5c2381e52894358213caf7f433efa44f3b401e0d310194a5e881345f5b25",
+      "current_sha256": "8187ea32ddfd41198c68a90b96fcaea1ddcfca43abb0c626e5e8787b5d9d3b1d",
+      "kind": "changed"
+    },
+    {
+      "path": "scripts/contracts/check-spec-015-scoped-host.py",
+      "previous_sha256": "146f04e7f8f505a3f32008f98a00605f77a41ab00171de5820383cc561b72918",
+      "current_sha256": "2f64eab33fb736a6d8ac1b90470d340fde2f5276165eef2dc91e95707d82c3c1",
+      "kind": "changed"
+    },
+    {
+      "path": "scripts/contracts/run-spec-011.sh",
+      "previous_sha256": "34150f0fd6c6bad121a7e343737ae9a583ad3de76cba85d65100d66a9e5524fb",
+      "current_sha256": "492741630b7f99115904e4f5205bff90fa37c8c614030658c8f35dc60532b157",
+      "kind": "changed"
+    },
+    {
+      "path": "scripts/contracts/run-spec-013.sh",
+      "previous_sha256": "79ded68eae14b7ef1855c62383989d3451e63fa9fbba05a19a9887ee5088d4ff",
+      "current_sha256": "671ea0535cbad14024e34778a81c4ba9b41791ad05096f46579495d464ad752b",
+      "kind": "changed"
+    },
+    {
+      "path": "scripts/contracts/run-spec-015.sh",
+      "previous_sha256": "d385f473239ddaf5e3980b739946c93556c0a92f4972b15758aa4af47aa00ba2",
+      "current_sha256": "afb2a89b44c33e771196cd1b66c3c72a9d7a7be190d1e65c4b969a4da281fc43",
+      "kind": "changed"
+    },
+    {
+      "path": "scripts/nrf52840/build.sh",
+      "previous_sha256": "3e1a640a368e0b54eedf66d92a6746d1d509aa4070b09618757a5761605da559",
+      "current_sha256": "59c26b07f4f5e8ee6c13266a635e83c6a0ae3b010f2a1015f42b80a8e5817fb0",
+      "kind": "changed"
+    }
+  ]
+}

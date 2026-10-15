@@ -1,0 +1,281 @@
+{
+  "source_checkpoint": "47b57eb84cc81df1c5e92528ccd799f165635334",
+  "kind": "read-only image documentary evidence; no target execution",
+  "members": [
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191354059075Z-remaining-image-doctor-pi/invocation.json",
+      "bytes": 265,
+      "sha256": "0677844569ed6dbf9a655e79084288c59986750436ac6fbcfbfbf558e58809b5"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191354059075Z-remaining-image-doctor-pi/result.json",
+      "bytes": 629,
+      "sha256": "ec29e6394cdf614e89954c41edaedbdc95c0b4e42a66f4268d5a495cebfd5dd7"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191354059075Z-remaining-image-doctor-pi/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191354059075Z-remaining-image-doctor-pi/stdout.log",
+      "bytes": 903,
+      "sha256": "71b313714fcdfc53362b1ae1e9a32cad5bdc35e1caa2ff4a696a2941b0838cfe"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191401405696Z-remaining-image-doctor-nrf/invocation.json",
+      "bytes": 262,
+      "sha256": "f1c2fa05a554d721eaec2e94951337ac46884f89c9a73f5b9516e255352a9ee6"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191401405696Z-remaining-image-doctor-nrf/result.json",
+      "bytes": 627,
+      "sha256": "01da8004122479013687b995ca594d4977dd9278b06d650272b089f15ad619ca"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191401405696Z-remaining-image-doctor-nrf/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191401405696Z-remaining-image-doctor-nrf/stdout.log",
+      "bytes": 1166,
+      "sha256": "48cce1f76df4b4ebe798f1eb88b4aaea3e56a2fb001fa51c001a9d38bf9d7344"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191405772100Z-remaining-image-pi/invocation.json",
+      "bytes": 608,
+      "sha256": "f10fd7ebafdee7992fd3a7b75478748029b43345ba81c52e2759b7d9783cc164"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191405772100Z-remaining-image-pi/result.json",
+      "bytes": 972,
+      "sha256": "2f6ab8e2d011c2908afdef0f148de95fff2598e416ef6ece9fe41a34a989e889"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191405772100Z-remaining-image-pi/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191405772100Z-remaining-image-pi/stdout.log",
+      "bytes": 108,
+      "sha256": "17bfaa5ccaf3af9229c4909e13f7bff4fd2cc66cafcb13d0be4b82cc960cffa1"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191409733346Z-remaining-image-nrf/invocation.json",
+      "bytes": 382,
+      "sha256": "88fddb9254d5e064e01c6bf0a88f2689cbfbf3a5e33ef2eba2671472943de3e3"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191409733346Z-remaining-image-nrf/result.json",
+      "bytes": 785,
+      "sha256": "abff2b73c51535d6f251a5332af71fbffd24c70eba42393323fc41de09ea9e62"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191409733346Z-remaining-image-nrf/stderr.log",
+      "bytes": 55,
+      "sha256": "c8d51041ffff52057c0d0b7d2d7a6b0758c9ff42c5efcd540610a7ad6a270c19"
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T191409733346Z-remaining-image-nrf/stdout.log",
+      "bytes": 138455,
+      "sha256": "f090f06a846537f6d3c1709f75c03dfbac52ce70c3d9c7368b10bb1d8c5ef7ac"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeCache.txt",
+      "bytes": 143583,
+      "sha256": "b6654e964b83ddaf70a82bbce89c9bc4348c52c4cc4a3fe160dec501908f089d"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/build.ninja",
+      "bytes": 1967900,
+      "sha256": "242c8a942bfa1eae7733de6194f878907a9ee732fd81f9a3290bbb052dd2a9ca"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/reports/arm-attributes.txt",
+      "bytes": 672,
+      "sha256": "b1cf2c133bb70839666f3326d91a0da2d075641c44ddc64a4157c80a30a7230a"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/reports/elf-header.txt",
+      "bytes": 972,
+      "sha256": "e9bd1980d95f9dc7dbb89026f67f383ba371294a86c244a01af9218e8bdda4d5"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/reports/memory-summary.txt",
+      "bytes": 112,
+      "sha256": "932d195c5321d7dbdd242852ae8f82874208439632350f9b3db20b2a8a5fdc48"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/reports/program-headers.txt",
+      "bytes": 988,
+      "sha256": "575265d923dd07c7997bd073a0b5320bd01ac9d7b52166e54a0eb7fbb96fdfec"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/reports/sections.txt",
+      "bytes": 3019,
+      "sha256": "96217ae5fd97cd2bf0764f99e7a1f2b9144250ad458b70288efcc81196b93d2e"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/reports/size.txt",
+      "bytes": 1660,
+      "sha256": "fe853bce5f4cb91ba722bb0a98a6f3cfe8c10fd7a16612abaea5bc41d1fcb9ee"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/reports/so08-layout-and-c-reservation.json",
+      "bytes": 95435,
+      "sha256": "537ea83bb2d0ec666b56269b0ce3068fce7894237af438b11ee271de5af0abc1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/reports/symbols.txt",
+      "bytes": 811790,
+      "sha256": "f3487fbad5eff681b4b03e36105e23efae38dfeb30fcc62f80da4b7ec93ccef4"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/.config",
+      "bytes": 33927,
+      "sha256": "4f722a1601be957e850c3ff3b9c79399d72d2918c788f631364ad129ee21e2e1"
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.map",
+      "bytes": 4962066,
+      "sha256": "34c9cc02c1d7a55b1dd6197033ca3bdd6a6622c4d5526e4732db1b715d6f38c6"
+    },
+    {
+      "path": ".build/raspberry-pi/rfc015-scoped-counter-image/command.txt",
+      "bytes": 4829,
+      "sha256": "548c162fcd136d54546ac4ad1fd2ae4c651ed252ff2bc8259f263d6ddfc7b570"
+    },
+    {
+      "path": ".build/raspberry-pi/rfc015-scoped-counter-image/counter.map",
+      "bytes": 17208652,
+      "sha256": "d350306ae2bb45151112e0807133b33de88f89302d7ec00cf3ae0ffb1ce2ac8a"
+    },
+    {
+      "path": ".build/raspberry-pi/rfc015-scoped-counter-image/input-receipt.json",
+      "bytes": 10026,
+      "sha256": "d83a9df8e34fe0597b6080cf490f1e735d43d4859ef04986d3d3ecfc83664f09"
+    },
+    {
+      "path": ".build/raspberry-pi/rfc015-scoped-counter-image/link.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-current-callers.json",
+      "bytes": 126591,
+      "sha256": "3499b58cdc7d59b91f20ef5f816da0173e3bf8c6e9035d946a7a12a4129f665f"
+    }
+  ],
+  "binaries": [
+    {
+      "path": ".build/raspberry-pi/rfc015-scoped-counter-image/counter.elf",
+      "bytes": 15840812,
+      "sha256": "ea0bc08884fc68a3f785a47f028171e43e35b5454d55dee5ea688ed3c26931cf",
+      "archived": false
+    },
+    {
+      "path": ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf",
+      "bytes": 1516080,
+      "sha256": "66ca1113d997c6424aedb258c1477692ce4bf5b42ed77f42bb1d5cba66339da9",
+      "archived": false
+    }
+  ],
+  "prior_image_backup": [
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/CMakeCache.txt",
+      "bytes": 28707,
+      "sha256": "a74a864ffc7a1a541155c088c1fce7970be3d0da424053a2ae16dc3d831f87cf"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/build_info.yml",
+      "bytes": 3869,
+      "sha256": "77a47f7ecf9cca396aa0a7731ac705669d9e8b9fa5ba4ad5b95255479eec7660"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/reports/arm-attributes.txt",
+      "bytes": 672,
+      "sha256": "b1cf2c133bb70839666f3326d91a0da2d075641c44ddc64a4157c80a30a7230a"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/reports/elf-header.txt",
+      "bytes": 972,
+      "sha256": "9a8478dc67f5e44cc8cc84a505de812aa87baa668d7ed337380b447624e80c31"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/reports/memory-summary.txt",
+      "bytes": 112,
+      "sha256": "8b5ab60a41f534d681b0f145f7e35124a50e6945a5f7c42e2f4c6e990e58e598"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/reports/program-headers.txt",
+      "bytes": 988,
+      "sha256": "0bd98fb6b87d1bafc9c4f9afcf2f0c0b68b79caba32f69c98b2206ac183b5a5a"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/reports/sections.txt",
+      "bytes": 3019,
+      "sha256": "861fec79336d9115c40bee8a9c3b0ea55e5fad253b7e3a8f6837c2549a3dae30"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/reports/size.txt",
+      "bytes": 1660,
+      "sha256": "1e1c0cae19cad28ae301a1e9cc1047c2d937d9115222fea901712f6d21763a50"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/reports/symbols.txt",
+      "bytes": 514560,
+      "sha256": "75b218434e08b5849a6d5b447357b062ece66e66374b0921cb4215e0161f8f91"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/zephyr/.config",
+      "bytes": 33927,
+      "sha256": "4f722a1601be957e850c3ff3b9c79399d72d2918c788f631364ad129ee21e2e1"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/zephyr/runners.yaml",
+      "bytes": 1305,
+      "sha256": "c9b0d084ae7ea4a43027b51e2ed0f0fa810794ff46d8d908d7e62d1054758aad"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/zephyr/zephyr.elf",
+      "bytes": 1199388,
+      "sha256": "2400c99caea4a39756997cfd5a4d467b91ecdbafcc745972badec06aca6415ac"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/zephyr/zephyr.map",
+      "bytes": 4098209,
+      "sha256": "5416ddf0b1161beb3fde85628fc6ee793b5f004c0b76adb4b3cb0f3bf6edad2f"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/zephyr/zephyr_final.map",
+      "bytes": 4098209,
+      "sha256": "5416ddf0b1161beb3fde85628fc6ee793b5f004c0b76adb4b3cb0f3bf6edad2f"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/zephyr/zephyr_pre0.elf",
+      "bytes": 1200020,
+      "sha256": "682516d0595f3ab2ad840fd76871332bf245dd10b39577986507555dceacb565"
+    },
+    {
+      "path": ".build/nrf52840/p08-image-preserved-20261015T185500Z/zephyr/zephyr_pre0.map",
+      "bytes": 4099126,
+      "sha256": "a964f02c6117ad624355dde41815ce3b3986e68994bf8de648679b646803c24c"
+    }
+  ],
+  "archive": {
+    "path": "image-reports.tar.xz",
+    "bytes": 1347396,
+    "sha256": "c7d6fac8c6d6d3c3aab9d5f60dc0155e90ce94b431ac0fb28a1ad5fe44dfcbfc"
+  },
+  "link_warnings": {
+    "count": 454,
+    "swift_modhash_orphan": 454,
+    "other": [],
+    "section_bytes": 3632,
+    "allocated_flash": true,
+    "ram": false,
+    "classification": "retained compiler module-hash metadata in first flash LOAD; charged in reported FLASH; no code/source fix performed"
+  }
+}
