@@ -54,3 +54,17 @@ original control region adds no physical owner, heap box or global; all retained
 bytes, cleanup and field-exclusivity obligations remain explicit. Fit is unknown.
 Source work needs a reviewed candidate and separately recorded execution bounds;
 no prior allowance is reset. P08 remains blocked/open pending complete proof.
+
+
+## G01–G03 design completion
+
+Following independent assessment review `329f5fb1`, the same assessment now has
+concrete source-level signatures, a direct stored-field callback borrow map,
+installation serial/phase and once-only lifecycle matrix (including unbound owned
+construction and returnWorkspaces), complete owned slot/endpoint/recording
+observations and enlarged-region accounting/validation duties. The proposal uses
+five direct stored fields rather than a nested payload inout. Tiled/Native seam
+files and ordinary control completion guards are explicitly in scope. This is
+ready for focused design reassessment, not yet source-authorized or a fit claim.
+No source/compiler/build/test/runtime/link/image/hardware action or repair cycle
+was started; prior 2/2 and diagnostic 1/1 remain closed/consumed.

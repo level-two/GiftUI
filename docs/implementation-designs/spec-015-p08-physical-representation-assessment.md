@@ -1,9 +1,9 @@
 # P08 physical representation and ownership assessment
 
-Status: **measured assessment independently PASS; proposed source design requires G01–G03 completion**.
+Status: **measured assessment independently PASS; G01–G03 concrete design completed, awaiting focused independent review**.
 [Independent assessment review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-physical-representation-independent-assessment-review.md)
-identifies exact callback-exclusivity, slot ownership/reset and physical/observation
-proofs before source work. No source candidate executed.
+identifies callback-exclusivity, slot ownership/reset and physical/observation
+obligations addressed below; no source candidate executed.
 Authority is accepted ADR-039 and implementing SPEC-011/013/015, not this note.
 The [assessment activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-physical-representation-assessment-activity.md)
 records authorization. The preceding implementation allowance remains closed at
@@ -97,9 +97,10 @@ independent full values. Existing current/candidate identity distinctions remain
 
 Develop **one concrete private physical-storage candidate**, rather than another
 helper/attribute variant. Keep all mandatory core/shared types, carrier cases and
-scoped fields unchanged. Add a typed nested runtime-payload slot to the **existing
-original CounterControl field**, containing the one endpoint and the four complete
-owned identity values. Remove those same stored values from the moving pipeline.
+scoped fields unchanged. Add five direct typed stored fields to the **existing
+original CounterControl region**: the one endpoint Optional and four complete
+owned identity Optionals. Treat these fields as one logical slot, never as a
+whole-payload inout aggregate. Remove those same stored values from the moving pipeline.
 There is one live payload, not a mirrored state or second transaction machine.
 The CounterControl physical region is distinct from candidate bank `c0`.
 
@@ -167,7 +168,7 @@ an unchecked scoped pointer is an upstream contract choice. Raising the stack
 alone remains unsupported by the current lower bound and historical RAM arithmetic.
 Compiler/toolchain changes are outside this package.
 
-Bounded candidate files: `CounterPipelineOwner.swift` (typed payload, constructors,
+Bounded candidate files: `CounterPipelineOwner.swift` (direct typed fields, constructors,
 access/retirement/reset), `CounterScopedStorage.swift` (full lifecycle/reuse
 observations, empty checks), and `StaticCounterEmbeddedBacking.swift` plus C
 reservation source (only if newly measured complete layout requires it). Keep
@@ -201,3 +202,255 @@ upstream question is permission for a distinct typed endpoint/key workspace and
 its lender/retirement contract in SPEC-013 S13.1 and SPEC-015 S15.1. That fallback
 is not selected here and must not silently change the mandated state payloads or
 SPEC-011's six named scoped protocols.
+
+
+## Concrete source design completing G01–G03
+
+This section completes the gaps from the
+[independent assessment review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-physical-representation-independent-assessment-review.md).
+It supersedes the earlier conceptual nested-slot wording. These are proposed
+source signatures/operations, not compiled syntax or an implementation allowance.
+
+### G01 — stored-field projection and callback map
+
+Proposed direct stored fields in `CounterControl` are `runtimeEndpoint:
+CounterEndpoint?`, `runtimeRootIdentity`, `runtimeActionIdentity`,
+`runtimeCandidateRootIdentity`, `runtimeCandidateActionIdentity` (each the exact
+`SemanticCompleteIdentity?`), `runtimeSlotPhase` (vacant/installing/installed/
+quiesced), `runtimeSlotOwner: UInt64?`, and `runtimeLastOwnerSerial: UInt64`.
+No enclosing `RuntimePayload` aggregate, proxy reference or additional storage
+owner is introduced. Keys are independent complete values, not references into
+recording/semantic storage. Stored pipeline counterparts are removed; private
+owned get/set key operations address just the corresponding stored control field.
+The pipeline additionally retains its one immutable installation serial.
+
+The offered endpoint is borrowed by a **direct stored-field lvalue at the pipeline
+call site**, never via a mutating CounterControl method, a whole-slot `_modify`,
+a helper taking `inout CounterControl`, or a callback capturing `inout self`.
+Before that call copy provenance/header/limits and create the existing lawful
+`semantic.borrowedStore()` projection. Pseudocode, with the original Geometry
+constraints and explicit nonescaping, synchronous callback:
+
+```swift
+// Inside offerAndProduce, after boundary/phase/context work has ended:
+let productionSemantic = semantic.borrowedStore()
+let productionHeader = header!
+let productionLimits = limits
+let productionProvenance = provenance!
+requireRuntimeClaim() // scalar checks only, before field loans
+let observed = counterProduceStoredEndpoint(
+    endpoint: &control.pointee.runtimeEndpoint!,
+    streams: &control.pointee.streams,
+    geometry: &geometry, semantic: productionSemantic,
+    header: productionHeader, limits: productionLimits,
+    provenance: productionProvenance)
+// All endpoint/producer loans have ended here.
+control.pointee.backend.envelopeRejections += observed.invalidEnvelopeRejections
+control.pointee.backend.endpointHealthObservation = observed.health
+precondition(observed.health == control.pointee.backend.health)
+if let recording = observed.acceptedRecording { control.pointee.lastFrame = recording }
+```
+
+`counterProduceStoredEndpoint` has `endpoint: inout CounterEndpoint`,
+`streams: inout Int`, `geometry: inout G`, `semantic: borrowing
+SemanticRecordStore<CounterPayload>`, and owned header/limits/provenance arguments;
+it returns only `CounterOfferObservation`. Its producer captures only these
+separate formal arguments and a local `RenderProductionError?`. It increments the
+separate streams field and invokes the unchanged `semantic.withPublishedView` /
+`geometry.produce` algorithm. It never captures pipeline, control pointer, slot
+owner metadata or key fields. Results retain the actual offer failure and producer
+error; owned observations are evaluated before any assertion autoclosure.
+
+Both concrete `CounterEndpoint` implementations gain an internal
+`offerAndObserve(provenance:body:) -> CounterOfferObservation` leaf. It executes
+the same invalid-envelope control, checks no extra reservation/body call, installs
+the real provenance, performs the one real offer, then returns actual health and
+accepted full recording. It does **not** publish control/backend diagnostics.
+The existing protocol `offer(provenance:body:) -> FrameOfferResult` remains a
+wrapper around the same operation's result; the sole actual pipeline call uses
+`offerAndObserve` and publishes the observation exactly once after its endpoint
+loan ends. No protocol signature/associated type or escaping capability changes.
+The tiny owned observation contains result, retained production error, invalid
+probe count, health and optional pure `CounterRenderSink` recording (all glyphs).
+It contains no endpoint/adapter/control/geometry value or stored callback.
+Source inventory must confirm no other concrete call relied on publishing these
+fixture diagnostics inside protocol `offer`; any such caller must use the same
+post-loan publication seam rather than lose its checks.
+
+The source-level separation obligations are:
+
+| Call / original source | Actual lender and loan | Callback touches; required boundary |
+| --- | --- | --- |
+| Both pipeline constructors, lines 198/630 | Original control; no endpoint-field inout yet | Claim/install metadata are scalar leaf accesses. Construct endpoint before assigning its field; constructor backend diagnostics finish before field installation. No user/runtime callback is admitted while installing. |
+| Pipeline offer 526–537 | Only direct `runtimeEndpoint` field plus separate `streams`; pipeline geometry field and borrowed semantic scope | Producer uses only those formal fields/scopes. No whole-pipeline or whole-control mutation occurs until this call returns. Header/limits/provenance are owned local facts. |
+| Tiled Endpoint 216–225 / Native 237–249 | Concrete endpoint self, internally actual endpoint and sink | Invalid-envelope/real-offer algorithm remains. Endpoint-health/envelope diagnostic publication is moved out of the loan, as above. No whole-Control access/helper here. |
+| Tiled target 104–158 | Its own target/writer values within endpoint; precise sibling backend stored fields | Read `offer`; mutate backend active/counts/health/submitted fields by direct stored lvalues. No mutating CounterControl/whole-backend function call. Finish/cancel returns before any slot transition. |
+| Tiled tile storage / writer | `backend.tile`, `backend.coverage` exact array fields | Replace/reset loops touch only these arrays. Borrowed-run / C-write byte loan covers only tile array, ends before health/counter updates. Callback ABI exposes pixels only, no control/endpoint capability; existing nonreentry rule remains mandatory. |
+| Native surface / writer / target | `backend.surface` versus separate `backend.payload`, plus precise scalar backend fields | FullSurface emitter can read surface while writer writes payload; never borrow whole backend around that callback. Reservation/finish/cancel are field-specific. All original pixel loops/capacities remain. |
+| Recording/health observation | Borrow only installed endpoint after offer returns, no mutating endpoint loan at the same time | Read owned facts; no callback, wake, admission, slot install/clear or full-Control copy. Publish `lastFrame` and backend facts after endpoint loan ends. |
+| Wake/admission | Existing control methods before offer, or after offer during disposition/finalization | `initializeCounterWake`, boundary injection, `emitCounterWake`, controller submit/scheduler service never execute inside endpoint/producer loans. counterServiceHost already ends scheduler access before host.runOpportunity. |
+| Quiescence/clear | Scalar claim validation, short endpoint idle/health observation; end loan; then field clears | No finish/cancel/reset callback is invoked while any endpoint observation or clear is in progress. Logical finalization has already resolved the synchronous offer. |
+
+In Tiled/Native storage/target methods, replace any coarse mutation helper found
+on these paths by concrete leaf signatures over the actual named stored fields,
+for example `counterStoreTile(tile: inout InlineArray<800, UInt8>, coverage: inout
+InlineArray<50, UInt8>, ...)`, called with those two direct lvalues. Do not create
+an inout whole-backend wrapper spanning producer/display callbacks. Existing
+control pointers stay private implementation handles; pointer identity is a
+provenance check, **not** the argument for exclusivity. The argument is the
+actual original typed field loans, their disjoint stored-field paths and the
+absence of whole-parent access across the listed callback edges. The source
+review must verify this map; supported compiler/runtime exclusivity cases then
+validate the realized seam. No unchecked projection or disabled guard is allowed.
+
+Native tests must later include the concrete disjoint positive (endpoint offer
+with backend/streams production) and overlapping endpoint-vs-endpoint loan
+negative, with the existing diagnostic/trap classification. A runtime result is
+additional evidence, not a replacement for the source borrow map. The foreign
+pixel writer retains its existing synchronous nonreentry obligation; this design
+adds no callback authority to it.
+
+### G02 — sole installation claim and complete disposition
+
+`runtimeLastOwnerSerial` starts zero in the original control. Both constructors
+perform the same private installation sequence, independent of selected producer
+origin. In particular nil producer origin remains valid for ordinary unbound
+`CounterCoordinatorProbe` construction. Guard all field/phase/owner vacancy before
+mutation; use checked UInt64 increment, with overflow an invariant failure before
+any claim or endpoint side effect. No wrapping or reset while that original
+control object lives. Store the resulting serial in the noncopyable pipeline and
+in scalar control metadata. The ticket alone confers no access: it is used only
+by that pipeline with its original control dependence, current phase and private
+construction path. Immutable producer provenance continues to guard retained
+admission/action callbacks separately, before they touch any new field.
+
+Minimal operations (not an arbitrary conformer API):
+
+```swift
+// Private to the finite fixture implementation; no returned scoped capability.
+claimRuntimeSlot(control: UnsafeMutablePointer<CounterControl>) -> UInt64
+installRuntimeEndpoint(configuration: HostEndpointConfiguration,
+                       control: UnsafeMutablePointer<CounterControl>, claim: UInt64)
+requireRuntimeClaim(control: UnsafeMutablePointer<CounterControl>, claim: UInt64)
+markRuntimeQuiesced(control: UnsafeMutablePointer<CounterControl>, claim: UInt64)
+clearRuntimeSlot(control: UnsafeMutablePointer<CounterControl>, claim: UInt64)
+```
+
+Each operation is synchronous, performs only its precise fields, and holds no
+whole-parent inout across constructor/backend/user code. Claim is not an externally
+available capability getter. Actual physical-control address/provenance validation
+remains the existing construction-join duty. A failed duplicate claim reads and
+rejects; it must not clear, replace, increment or destroy the live owner's fields.
+`requireRuntimeClaim` checks matching serial, permitted phase and endpoint presence.
+Only the pipeline's terminal/consuming release path can call clear; a producer,
+admission adapter, observation or already-consumed retired carrier has no such
+operation. Clear requires matching quiesced claim and endpoint idle state with no
+active backend reservation. Failed cleanup retains the claim and forbids reuse;
+it does not clear optimistically. Every normal failure return from preflight has
+vacant state. Constructor invariant traps are not recoverable failure paths.
+
+| Entry / transition | Responsible value and exact action | Exit invariant |
+| --- | --- | --- |
+| Physical prefix before control initialized | Factory prefix unwind; no slot exists | Never inspect an uninitialized control field |
+| Initialized control / failed assembly, join, early1–3, inert host early4 | No pipeline, hence no claim; original inert semantic/geometry/Interaction cleanup | Vacant, endpoint nil and all four keys nil |
+| Raw-control constructor (198) and scoped-control constructor (630) | Existing valid root/configuration checks before claim; claim→installing(serial); run same endpoint constructor, then store endpoint and nil keys; phase installed; retain serial in resulting pipeline | Exactly one installed endpoint, same canonical config/backing and no new origin prerequisite |
+| Failed installation before a normal value return | Installing owner alone ends any locally completed construction and clears its own field prefix/claim; no returned pipeline | Vacant; original constructor counters keep their required meaning. Current initializers trap on violated invariants, not recovered errors |
+| Active cycle / candidate failure / accepted or refused offer | Same pipeline serial; existing shared transaction/cleanup actions resolve every synchronous offer; candidate/current keys stay distinct | Installed across cycles; failure does not release the payload early or replay input |
+| Host cleanup1–3 | Refuse input; stop/detach; cancel callbacks | No slot clear or second owner |
+| Cleanup4 quiesce/finalize | Actual coordinator/pipeline termination resolves active attempt, pins/reads and display finish/cancel; verify endpoint idle and backend inactive; mark same claim quiesced | Quiesced, keys still owned until release |
+| Cleanup5 routing retirement | Existing registration/cache-ticket order unchanged | Quiesced, no late producer allowed |
+| Cleanup6 releasePlatformOwners→takeQuiescedOpportunity→retireQuiescedStorage | Consume exact pipeline; validate serial/quiescence, clear endpoint and four keys, then metadata owner→nil/phase vacant; retain last-issued serial. Return original retired semantic/geometry/Interaction carrier | No live runtime payload before retirement; exactly one clear |
+| Ordinary owned coordinator takeQuiescedOpportunity→returnWorkspaces | Same consuming clear, then return only original Copyable/Escapable workspaces | Unbound route vacant before its actual control borrow ends |
+| Cleanup7 profile reset / cleanup8 report invalidation | Existing retired reset semantic→geometry→Interaction, then report invalidation | Preserve all eight hooks/order; no slot work duplicated here |
+| Repeated teardown, failed activation before/after runtime, lexical defer | Existing progress determines whether pipeline exists. Installed owner follows cleanup4–6; inert branch has no claim. Repeated hooks never call a consumed pipeline | Vacant; no second clear and no synthesized owner |
+| Body completion, physical release, same-address reconstruction | Assert vacancy before control deinit/reinit and after ordinary owned body returns; only then original reverse physical destruction / original initializer | A new control may reset serial only after every old scoped user is ended; no old pipeline survives to exploit serial reuse |
+
+The ordinary CounterControl remains a trusted finite fixture value, not a public
+copyable active-owner API. All whole-control construction/copy/reconstruction
+sites must be inventoried; they require vacancy. Active snapshots use only named
+owned observations. No active control copy, whole-control assignment, whole-slot
+snapshot or deinit/reinitialize is permitted while its pipeline is authoritative.
+This is enforced at the finite factory/reconstruction/snapshot seams and by source
+review, not by treating a copied pointer/serial as ownership proof. The existing
+noncopyable pipeline and factory scope forbid two supported live owners. A future
+need for arbitrary copyable active-control clients is outside this design.
+
+### G03 — full owned observations and physical charge
+
+Extend the existing owned fingerprint with a `CounterRuntimeSlotObservation`:
+phase, owner serial, last-issued serial, endpointPresent, all four complete
+Optional identities and endpoint observation. Obtain this before and after each
+stale label without calling owner operations. Evaluate comparison Bool before
+assertion autoclosures. Do not retain a control, endpoint, adapter, raw byte view,
+closure or bank pointer inside an observation.
+
+`CounterEndpointObservation` names immutable effective presentation, descriptor,
+payload limits and realization; actual body/reservation counts, last display
+error and retained producer error; sink capacity/descriptor/limits, failure,
+streamCompleted, presentationResponsibilityAccepted, retainedProducerError,
+isIdleForOffer; health; and the complete pure recording value. The latter retains
+capacity/header/counts/finishes/discards/points/stroke header and **all 64 Optional
+glyph records** compared field-by-field, with no checksum or prefix truncation.
+Native adds actual reservation/glyph header and target completion facts
+(backend submitted bytes/rows, active/reservation counts); its writer is a
+synchronous local, never an invented persistent endpoint field.
+Tiled adds exposed target writer fields (written bytes/regions, origin/pixels,
+remaining/completed) and the same session public phase/outcome facts. Maintained
+core private phase/work tracking is not claimed to be a raw struct equality;
+existing actual stream, idle, transfer, refusal and capacity controls still prove
+its behavioral contract. No core getter/protocol relaxation is proposed for this
+observation. Existing complete pixel comparisons remain independent.
+
+Keep `lastFrame` as a separate accepted-recording observation and compare its
+complete fields/records where required; it is not the runtime recording bank.
+Preserve every old fingerprint/positive-twin field. Stale prepare/delivery and
+admission checks reject on original producer before reading/writing slot keys,
+claim or endpoint. Existing first/second host order, raw-identity collisions,
+namespace continuity and all 26 labels remain. A matching new observation is not
+an alternative to these original effect counts or actual sealed action delivery.
+
+Vacancy checks include endpoint=nil, four keys=nil, owner=nil, phase=vacant;
+last-issued serial may be nonzero. They are required at physical-control prefix
+unwind/destruction, successful and failed activation/body completion, both
+consuming return paths, ordinary owned callback return and every reconstruction.
+Installation checks assert empty keys and canonical endpoint startup projection;
+quiescence checks assert actual endpoint idle/backend inactive before clear.
+Counters for successful install/clear and failed duplicate claims are owned test
+facts, measured/charged if stored. They may not add a second mutable authority.
+
+Measure the enlarged CounterControl, each new direct field and serial/phase
+metadata, compiler padding and alignment. Recompute all 25 target regions with the
+same checked derivation and compare the full actual four-slot C symbol reservation;
+full slot spacing, surplus and slot-origin alignment remain required. Enlarging
+the control under a stale 32,000 constant must fail rather than truncate. The
+native Optional padding design for other regions is unchanged. Dynamic uses the
+same logical fields in its original control owner, charges actual retained bytes,
+allocation count/bookkeeping and exclusive borrow/COW rules; it must not allocate
+a side payload per pipeline or omit the original control increase. Constructor,
+install/clear, temporary observations, deinit and feasible IRQ stacks are additional
+costs. None is proved away by these signatures or scalar type facts.
+
+Final proposed minimal scope is CounterPipelineOwner (direct fields, claim,
+constructors/operations/consuming clear), CounterScopedStorage (new owned facts,
+all scoped prefix/reconstruction/cleanup checks), CounterTiledRaster and
+CounterNativeRaster (concrete offer observations and precise stored-field backend
+leaves), CounterProfileStorage and CounterCoordinatorProbe (ordinary-control
+completion/vacancy guards). CounterAdmission and CounterWakeIntegration need no
+new semantics under this map: their whole-Control operations stay outside endpoint
+loans; include an edit only if source realization reveals a mapped violation.
+Update measured StaticCounterEmbeddedBacking/C reservation and exact qualification
+pins as already specified. No mandated CounterHostState, core coordinator,
+Interaction declaration, protocol relaxation, ownership boundary, capacity or
+resource ceiling change is selected.
+
+Next step is focused independent review of this completed map/matrix, then a
+separately bounded source package if accepted. Preserve old 2/2 and diagnostic 1/1;
+this assessment has not started a source/repair cycle. The early nRF recipe above
+must reject oversized feasible paths before full current-source corpus/images.
+Native positive/overlap controls must exercise the actual projected callback seam,
+all eight cleanup hooks, unbound owned release and stale/wrong-owner/duplicate
+installation without another owner's destruction. Keep all five original native
+controls unchanged; register any supplemental seam pair separately with explicit
+labels/statuses rather than silently replacing an original case or calling a
+changed count the old five. Passing any focused subset
+cannot establish full P08 fit or acceptance.
