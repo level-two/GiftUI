@@ -10,7 +10,9 @@ tooling/sizing corrective cycles, stopping after two unproductive cycles or a re
 contract/resource decision. Planned initial measured sizing is frozen; corrections 0/2.
 [Sizing freeze](p08-layout-measured-sizing-source-freeze.md) records exact Swift/C
 34,720-byte slots / 138,880 four-slot charge and fresh component qualification.
-Independent source review precedes any changed-module compilation.
+[Independent sizing source review](p08-layout-measured-sizing-independent-source-review.md)
+PASS at `5e463e50`; fresh focused current-module/layout verification is next.
+No current-source compilation or accepted layout is yet claimed.
 [Source freeze](p08-layout-literal-tool-source-freeze.md) records the exact finite
 proof and 50 passing compiler-free layout tests. [Independent source review](p08-layout-literal-tool-independent-source-review.md)
 PASS preceded the completed same-object read: all 129 facts strictly decoded,

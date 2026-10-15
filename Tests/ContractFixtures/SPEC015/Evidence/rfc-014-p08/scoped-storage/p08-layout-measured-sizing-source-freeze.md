@@ -4,7 +4,8 @@ This is the planned initial sizing completion under the
 [approved activity](p08-layout-sizing-validation-activity.md), not a new physical
 variant or corrective cycle. Tooling/sizing corrections remain 0/2; all prior
 allowances stay closed. Baseline `221d974c`. Independent sizing source review is
-pending. No compiler/build/runtime/image execution occurred in this source step.
+PASS at `5e463e50`: [focused review](p08-layout-measured-sizing-independent-source-review.md).
+No compiler/build/runtime/image execution occurred in this source step.
 
 The reviewed decoder read the same object and strictly proved all 129 roots.
 Original raw facts SHA-256:
