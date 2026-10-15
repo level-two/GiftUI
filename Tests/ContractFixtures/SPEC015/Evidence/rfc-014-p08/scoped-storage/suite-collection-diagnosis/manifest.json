@@ -1,0 +1,853 @@
+{
+  "source_revision": "3c281acd",
+  "kind": "diagnostic-only-no-source-repair",
+  "profiles": {
+    "dynamic": {
+      "build": ".build/contracts/p08-counter-iuim5_zl",
+      "result_sha256": "24f841081b49e01eddc484b169c4753292bcc35e9da4cded5546b1f6ee412cda",
+      "checks": 424,
+      "passed": 402,
+      "failed": 8,
+      "blocked": 14,
+      "failures": [
+        {
+          "name": "so06-erasure-static-generic-active-host-closure-negative",
+          "family": "so06-erasure-closure",
+          "status": "legacy-imported",
+          "exit": null,
+          "exit_class": "nonzero",
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/contracts/p08-counter-iuim5_zl/so06-erasure-static-generic-active-host-closure-negative.log",
+          "log_sha256": "810469abc0859d7fcbffba197341b977e0104c7be3fb419ce1854e7f9f7666d9",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-generic-active-host-closure-negative.swift",
+              "2520",
+              "38",
+              "'input' is borrowed and cannot be consumed"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-sztjx6jq/so06-erasure-static-generic-active-host-closure-negative.swift",
+              "2520",
+              "38",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-erasure-static-generic-active-host-closure-positive",
+            "status": "legacy-imported",
+            "passed": true,
+            "exit": 0,
+            "exit_class": "zero"
+          }
+        },
+        {
+          "name": "so06-erasure-static-generic-retired-optional-closure-negative",
+          "family": "so06-erasure-closure",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/contracts/p08-counter-iuim5_zl/so06-erasure-static-generic-retired-optional-closure-negative.log",
+          "log_sha256": "44fe6b3cc8263c3d8a651c92f31b7d2b74a5f966a8885d3ee7298fb92d29b976",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iuim5_zl/so06-erasure-static-generic-retired-optional-closure-negative.swift",
+              "2520",
+              "38",
+              "'input' is borrowed and cannot be consumed"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iuim5_zl/so06-erasure-static-generic-retired-optional-closure-negative.swift",
+              "2520",
+              "38",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-erasure-static-generic-retired-optional-closure-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-erasure-dynamic-generic-active-host-closure-negative",
+          "family": "so06-erasure-closure",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/contracts/p08-counter-iuim5_zl/so06-erasure-dynamic-generic-active-host-closure-negative.log",
+          "log_sha256": "cd7508016ffee0730c36cd305e212379f9fd5d521fc850f8b150cbacf47bac32",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iuim5_zl/so06-erasure-dynamic-generic-active-host-closure-negative.swift",
+              "2520",
+              "38",
+              "'input' is borrowed and cannot be consumed"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iuim5_zl/so06-erasure-dynamic-generic-active-host-closure-negative.swift",
+              "2520",
+              "38",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-erasure-dynamic-generic-active-host-closure-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-erasure-dynamic-generic-retired-optional-closure-negative",
+          "family": "so06-erasure-closure",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/contracts/p08-counter-iuim5_zl/so06-erasure-dynamic-generic-retired-optional-closure-negative.log",
+          "log_sha256": "566a76484db1d51e10b2a34148e88af1c3b28be2c84682069f546f9e1b4cc12f",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iuim5_zl/so06-erasure-dynamic-generic-retired-optional-closure-negative.swift",
+              "2520",
+              "38",
+              "'input' is borrowed and cannot be consumed"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iuim5_zl/so06-erasure-dynamic-generic-retired-optional-closure-negative.swift",
+              "2520",
+              "38",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-erasure-dynamic-generic-retired-optional-closure-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-closure-erasure-negative",
+          "family": "so06-closure-erasure",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/contracts/p08-counter-iuim5_zl/so06-closure-erasure-negative.log",
+          "log_sha256": "8fd9c1e46ea80b3ac5568e9b53badf47e67a8a0791d8cbd52bd48b509ff3f6d5",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iuim5_zl/so06-closure-erasure-negative.swift",
+              "2519",
+              "26",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-closure-erasure-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-task-negative",
+          "family": "so06-task",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "Escapable"
+          ],
+          "log": ".build/contracts/p08-counter-iuim5_zl/so06-task-negative.log",
+          "log_sha256": "a7f2b6dab0b5f10e8529a0f1f5d0331b5e9f1826d3cdd233bfdc5fbec5d250fa",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iuim5_zl/so06-task-negative.swift",
+              "2519",
+              "68",
+              "passing closure as a 'sending' parameter risks causing data races between code in the current isolation context and concurrent execution of the closure [#RegionIsolation::SendingClosureRisksDataRace]"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iuim5_zl/so06-task-negative.swift",
+              "2519",
+              "26",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iuim5_zl/so06-task-negative.swift",
+              "2519",
+              "87",
+              "missing reinitialization of closure capture 'input' after consume while accessing memory"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-task-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-async-negative",
+          "family": "so06-async",
+          "status": "failed",
+          "exit": 0,
+          "exit_class": null,
+          "diagnostic": [
+            "Escapable"
+          ],
+          "log": ".build/contracts/p08-counter-iuim5_zl/so06-async-negative.log",
+          "log_sha256": "59e1c367498bb3234c7a49e874d0aebb08e62d62256eee15faccfb8ff9e796a4",
+          "primary_errors": [],
+          "positive_twin": {
+            "name": "so06-async-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "execute",
+          "family": "runtime",
+          "status": "failed",
+          "exit": -5,
+          "exit_class": null,
+          "diagnostic": null,
+          "log": ".build/contracts/p08-counter-iuim5_zl/execute.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "primary_errors": []
+        }
+      ]
+    },
+    "static": {
+      "build": ".build/contracts/p08-counter-wik491kv",
+      "result_sha256": "4e0303c8d73a5e147230ad98c2d99164edb9c9de04fd33cdf26f89efe5913b22",
+      "checks": 424,
+      "passed": 400,
+      "failed": 9,
+      "blocked": 15,
+      "failures": [
+        {
+          "name": "so06-erasure-static-generic-active-host-closure-negative",
+          "family": "so06-erasure-closure",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/contracts/p08-counter-wik491kv/so06-erasure-static-generic-active-host-closure-negative.log",
+          "log_sha256": "145c17976fdd296a40fcc89cc8b355eb6d8c4d81d0557289b9d075753cdab1dc",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-erasure-static-generic-active-host-closure-negative.swift",
+              "2520",
+              "38",
+              "'input' is borrowed and cannot be consumed"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-erasure-static-generic-active-host-closure-negative.swift",
+              "2520",
+              "38",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-erasure-static-generic-active-host-closure-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-erasure-static-generic-retired-optional-closure-negative",
+          "family": "so06-erasure-closure",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/contracts/p08-counter-wik491kv/so06-erasure-static-generic-retired-optional-closure-negative.log",
+          "log_sha256": "038db8adbc8c15f2bee49a85b1edbdc6c50e878b5cf5fbe70d0341b20799fb46",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-erasure-static-generic-retired-optional-closure-negative.swift",
+              "2520",
+              "38",
+              "'input' is borrowed and cannot be consumed"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-erasure-static-generic-retired-optional-closure-negative.swift",
+              "2520",
+              "38",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-erasure-static-generic-retired-optional-closure-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-erasure-dynamic-generic-active-host-closure-negative",
+          "family": "so06-erasure-closure",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/contracts/p08-counter-wik491kv/so06-erasure-dynamic-generic-active-host-closure-negative.log",
+          "log_sha256": "63488f662c864fde0a1f1b158faa2ca4bd74ab138332893edd2ece59711fac89",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-erasure-dynamic-generic-active-host-closure-negative.swift",
+              "2520",
+              "38",
+              "'input' is borrowed and cannot be consumed"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-erasure-dynamic-generic-active-host-closure-negative.swift",
+              "2520",
+              "38",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-erasure-dynamic-generic-active-host-closure-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-erasure-dynamic-generic-retired-optional-closure-negative",
+          "family": "so06-erasure-closure",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/contracts/p08-counter-wik491kv/so06-erasure-dynamic-generic-retired-optional-closure-negative.log",
+          "log_sha256": "d3efb66ebd03475a8ed57447512ce1e7f2a5e2b3425774c0be309f7debe48de4",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-erasure-dynamic-generic-retired-optional-closure-negative.swift",
+              "2520",
+              "38",
+              "'input' is borrowed and cannot be consumed"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-erasure-dynamic-generic-retired-optional-closure-negative.swift",
+              "2520",
+              "38",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-erasure-dynamic-generic-retired-optional-closure-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-closure-erasure-negative",
+          "family": "so06-closure-erasure",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/contracts/p08-counter-wik491kv/so06-closure-erasure-negative.log",
+          "log_sha256": "2397c1bae33f82fed1b91ac73ab21010361b33f1bb9d20d0409616f4ab40dc78",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-closure-erasure-negative.swift",
+              "2519",
+              "26",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-closure-erasure-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-task-negative",
+          "family": "so06-task",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "Escapable"
+          ],
+          "log": ".build/contracts/p08-counter-wik491kv/so06-task-negative.log",
+          "log_sha256": "3db8a4d0d3e1a53f40993c5e9056674f3f459258e432f4a46e5cc0033c0b9c39",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-task-negative.swift",
+              "2519",
+              "68",
+              "passing closure as a 'sending' parameter risks causing data races between code in the current isolation context and concurrent execution of the closure [#RegionIsolation::SendingClosureRisksDataRace]"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-task-negative.swift",
+              "2519",
+              "26",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-task-negative.swift",
+              "2519",
+              "87",
+              "missing reinitialization of closure capture 'input' after consume while accessing memory"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-task-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-async-negative",
+          "family": "so06-async",
+          "status": "failed",
+          "exit": 0,
+          "exit_class": null,
+          "diagnostic": [
+            "Escapable"
+          ],
+          "log": ".build/contracts/p08-counter-wik491kv/so06-async-negative.log",
+          "log_sha256": "68acdc1445074c301a7672f5c687c5887948dfdb91400e262a9d978ec6fad955",
+          "primary_errors": [],
+          "positive_twin": {
+            "name": "so06-async-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "execute",
+          "family": "runtime",
+          "status": "failed",
+          "exit": -5,
+          "exit_class": null,
+          "diagnostic": null,
+          "log": ".build/contracts/p08-counter-wik491kv/execute.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "primary_errors": []
+        },
+        {
+          "name": "so06-native-exclusivity-positive-execute",
+          "family": "so06-native-exclusivity",
+          "status": "failed",
+          "exit": -5,
+          "exit_class": null,
+          "diagnostic": null,
+          "log": ".build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive-execute.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "primary_errors": []
+        }
+      ]
+    },
+    "armv6": {
+      "build": ".build/raspberry-pi/contracts/p08-counter-5u2zj5u_",
+      "result_sha256": "9b4313c2dfc7408631268e67c55afd2240ce7dce843c39b0db867aad05694969",
+      "checks": 409,
+      "passed": 402,
+      "failed": 7,
+      "blocked": 0,
+      "failures": [
+        {
+          "name": "so06-erasure-static-generic-active-host-closure-negative",
+          "family": "so06-erasure-closure",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-erasure-static-generic-active-host-closure-negative.log",
+          "log_sha256": "fe2453a34a4bbfedda7dd79b6f3fa3cf786970a8223f2d6906dc678f4850837d",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-erasure-static-generic-active-host-closure-negative.swift",
+              "2520",
+              "38",
+              "'input' is borrowed and cannot be consumed"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-erasure-static-generic-active-host-closure-negative.swift",
+              "2520",
+              "38",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-erasure-static-generic-active-host-closure-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-erasure-static-generic-retired-optional-closure-negative",
+          "family": "so06-erasure-closure",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-erasure-static-generic-retired-optional-closure-negative.log",
+          "log_sha256": "d54d5415f34a2256a2f8868d13e7767bbf1eb8610ae782da3a59ce47d65d5584",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-erasure-static-generic-retired-optional-closure-negative.swift",
+              "2520",
+              "38",
+              "'input' is borrowed and cannot be consumed"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-erasure-static-generic-retired-optional-closure-negative.swift",
+              "2520",
+              "38",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-erasure-static-generic-retired-optional-closure-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-erasure-dynamic-generic-active-host-closure-negative",
+          "family": "so06-erasure-closure",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-erasure-dynamic-generic-active-host-closure-negative.log",
+          "log_sha256": "cbc833354ee719ddb33904ef9b4f165c727f46dfa0c2c39a8a0e851f824d8fb6",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-erasure-dynamic-generic-active-host-closure-negative.swift",
+              "2520",
+              "38",
+              "'input' is borrowed and cannot be consumed"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-erasure-dynamic-generic-active-host-closure-negative.swift",
+              "2520",
+              "38",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-erasure-dynamic-generic-active-host-closure-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-erasure-dynamic-generic-retired-optional-closure-negative",
+          "family": "so06-erasure-closure",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-erasure-dynamic-generic-retired-optional-closure-negative.log",
+          "log_sha256": "7392491da65c45ee6a4431725e730b5ea0e0545d94bdc418c8bed8f863523079",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-erasure-dynamic-generic-retired-optional-closure-negative.swift",
+              "2520",
+              "38",
+              "'input' is borrowed and cannot be consumed"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-erasure-dynamic-generic-retired-optional-closure-negative.swift",
+              "2520",
+              "38",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-erasure-dynamic-generic-retired-optional-closure-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-closure-erasure-negative",
+          "family": "so06-closure-erasure",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "escaping"
+          ],
+          "log": ".build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-closure-erasure-negative.log",
+          "log_sha256": "6dabbc18062256d96f476d584285d38c99367945993d57553e1e4ac216966c10",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-closure-erasure-negative.swift",
+              "2519",
+              "26",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-closure-erasure-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-task-negative",
+          "family": "so06-task",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": [
+            "Escapable"
+          ],
+          "log": ".build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-task-negative.log",
+          "log_sha256": "0a754e2899fd081d7c21fa65784df8e2dd1fed0d8607028defc38f1069518b74",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-task-negative.swift",
+              "2519",
+              "68",
+              "passing closure as a 'sending' parameter risks causing data races between code in the current isolation context and concurrent execution of the closure [#RegionIsolation::SendingClosureRisksDataRace]"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-task-negative.swift",
+              "2519",
+              "26",
+              "lifetime-dependent variable 'input' escapes its scope"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-task-negative.swift",
+              "2519",
+              "87",
+              "missing reinitialization of closure capture 'input' after consume while accessing memory"
+            ]
+          ],
+          "positive_twin": {
+            "name": "so06-task-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        },
+        {
+          "name": "so06-async-negative",
+          "family": "so06-async",
+          "status": "failed",
+          "exit": 0,
+          "exit_class": null,
+          "diagnostic": [
+            "Escapable"
+          ],
+          "log": ".build/raspberry-pi/contracts/p08-counter-5u2zj5u_/so06-async-negative.log",
+          "log_sha256": "fd892982253640d208b1322d261853793dce0f26089db93d81c5e7f540c50a87",
+          "primary_errors": [],
+          "positive_twin": {
+            "name": "so06-async-positive",
+            "status": "passed",
+            "passed": true,
+            "exit": 0,
+            "exit_class": null
+          }
+        }
+      ]
+    },
+    "embedded": {
+      "build": ".build/nrf52840/contracts/p08-counter-vswrpmup",
+      "result_sha256": "6fd854c75fda518f7567edb87f3a8879c8fde8391c7c09773f5b6cbaa85acafe",
+      "checks": 226,
+      "passed": 23,
+      "failed": 1,
+      "blocked": 202,
+      "failures": [
+        {
+          "name": "counter-model",
+          "family": "counter-model",
+          "status": "failed",
+          "exit": 1,
+          "exit_class": null,
+          "diagnostic": null,
+          "log": ".build/nrf52840/contracts/p08-counter-vswrpmup/counter-model.log",
+          "log_sha256": "dd7d099f92736150d2103f1a81224f2e947e3dd1a1effda3318eae198688aa2d",
+          "primary_errors": [
+            [
+              "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+              "24",
+              "241",
+              "associated type 'Identity' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+              "24",
+              "289",
+              "associated type 'Identity' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+              "24",
+              "332",
+              "associated type 'Identity' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+              "65",
+              "241",
+              "associated type 'Identity' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+              "65",
+              "289",
+              "associated type 'Identity' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file"
+            ],
+            [
+              "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+              "65",
+              "332",
+              "associated type 'Identity' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "binaries": {
+    ".build/contracts/p08-counter-iuim5_zl/counter": "9498b1269d236aef611bc339442382e07b995f3612525670404e26d92e4b7afc",
+    ".build/contracts/p08-counter-wik491kv/counter": "0a128654feed22a379e7eadeaf4221949ab6f2e600bc123249f38da2f0d90dc2",
+    ".build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive": "2eb8bf233ea29ff158fc13f9649cd630cbcd379144b78f3dbd1759a3eb4e4eff"
+  },
+  "files": {
+    "direct-invocations.json": {
+      "sha256": "03c44ec16290424e17ae47d7d0ae50c43b1785449114b0b251e168362b899aaf",
+      "bytes": 4464
+    },
+    "dynamic-counter-direct.log": {
+      "sha256": "8f8b5d366b5d89a1571a74195a9ec2c9714466e0e645a3178a4685d975d9a07e",
+      "bytes": 15977
+    },
+    "dynamic-counter-invocation.json": {
+      "sha256": "a6cfc7ffbb4c0e63b4ae967eaa200a20c7791d0ff1b524de3855c796cbe340cb",
+      "bytes": 366
+    },
+    "dynamic-counter.lldb": {
+      "sha256": "f8c364f8a4d5287d685d09cf6edcf89d70d86aad54474d1d298632ed30200baa",
+      "bytes": 159
+    },
+    "static-counter-direct.log": {
+      "sha256": "700270a6f1275be3375b18fce985150c2613a52acf82c0cd9df5604866861d79",
+      "bytes": 15977
+    },
+    "static-counter-invocation.json": {
+      "sha256": "e7f67f021df26fdae19412e3d0aa450e763df8b22b07ee2bce318040f038cd63",
+      "bytes": 365
+    },
+    "static-counter.lldb": {
+      "sha256": "f8c364f8a4d5287d685d09cf6edcf89d70d86aad54474d1d298632ed30200baa",
+      "bytes": 159
+    },
+    "static-exclusive-invocation.json": {
+      "sha256": "b7b58692977b66a09db3f419121bd0ccc114151fd0804d81795e7f791f1bb17b",
+      "bytes": 392
+    },
+    "static-exclusive-return.log": {
+      "sha256": "f6df353119777f823b8253fcaff799bd46a3bfd333022ed95fb94869cb7b3dd7",
+      "bytes": 2813
+    },
+    "static-exclusive.lldb": {
+      "sha256": "f8c364f8a4d5287d685d09cf6edcf89d70d86aad54474d1d298632ed30200baa",
+      "bytes": 159
+    },
+    "static-initialize-detail.log": {
+      "sha256": "2f13f3c6b7a9bc875d2896c8a82f50014e231dbb0f9bd09695b4d87c777aba37",
+      "bytes": 10898
+    },
+    "static-initialize-prefix.log": {
+      "sha256": "2e6b427cad189565817cc013697381943a85ba084221bd987cb194faa9a99ea7",
+      "bytes": 9306
+    },
+    "static-range-build.log": {
+      "sha256": "af1e1fcee37ee7f215deb9775ee19e6394e4ff82f50d984747717694aba7aed6",
+      "bytes": 16274
+    },
+    "static-resolved-ranges.log": {
+      "sha256": "c7fa5b859f6690c418d3a1089937c3fcaa1b20f78562e4afc49dafedcda1763c",
+      "bytes": 2236
+    },
+    "static-unresolved-breakpoint.log": {
+      "sha256": "9e11a45d57eaa01eca1f0db7d0702c8f108e1d055cc5a5d524e5426d3e992201",
+      "bytes": 1023
+    },
+    "static-validation-detail.log": {
+      "sha256": "2867cf87ed60c3fa8c531f613149e71f03ebe4db553cc1c60c5d9d524ece7ad4",
+      "bytes": 15756
+    }
+  },
+  "note": "LLDB tool exit zero means debugger commands completed, not application success. Initial script invocations are unconfirmed planned records; actual direct commands/results are in direct-invocations.json. Parent-provided return/prefix logs retained unchanged."
+}

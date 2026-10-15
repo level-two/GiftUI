@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "xcrun",
+    "lldb",
+    "--batch",
+    "-s",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/suite-collection-diagnosis/dynamic-counter.lldb",
+    ".build/contracts/p08-counter-iuim5_zl/counter"
+  ],
+  "cwd": "/Users/eugene/work/GiftUI",
+  "source_revision": "3c281acd",
+  "kind": "existing-binary-diagnostic-no-compile"
+}

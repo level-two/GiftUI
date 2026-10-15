@@ -1,0 +1,54 @@
+(lldb) target create ".build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive"
+Current executable set to '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive' (arm64).
+(lldb) run
+Process 10696 launched: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive' (arm64)
+Process 10696 stopped
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BREAKPOINT (code=1, subcode=0x10011c6e0)
+    frame #0: 0x000000010011c6e0 so06-native-exclusivity-positive`counterScopedNativeExclusivity(negative:) + 2180
+so06-native-exclusivity-positive`counterScopedNativeExclusivity:
+->  0x10011c6e0 <+2180>: brk    #0x1
+    0x10011c6e4 <+2184>: brk    #0x1
+    0x10011c6e8 <+2188>: brk    #0x1
+    0x10011c6ec <+2192>: bl     0x10015e0a4               ; symbol stub for: __stack_chk_fail
+Target 0: (so06-native-exclusivity-positive) stopped.
+(lldb) thread backtrace all
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BREAKPOINT (code=1, subcode=0x10011c6e0)
+  * frame #0: 0x000000010011c6e0 so06-native-exclusivity-positive`counterScopedNativeExclusivity(negative:) + 2180
+    frame #1: 0x0000000100000c88 so06-native-exclusivity-positive`main + 16
+    frame #2: 0x00000001829444e4 dyld`start + 6992
+(lldb) register read x0 x1 x2 x8 x20 x21 sp
+      x0 = 0x000000000000000e
+      x1 = 0x00000000000001cc
+      x2 = 0x00000000000001cc
+      x8 = 0xf4731c3be41c0030
+     x20 = 0x000000016fdf75e0
+     x21 = 0x000000016fdf7da8
+      sp = 0x000000016fdf75b0
+(lldb) disassemble -n OUTLINED_FUNCTION_310
+so06-native-exclusivity-positive`OUTLINED_FUNCTION_310:
+    0x100044344 <+0>:  ldrsw  x8, [x21, #0x38]
+    0x100044348 <+4>:  mov    w9, #0x1                  ; =1 
+    0x10004434c <+8>:  strb   w9, [x19, x8]
+    0x100044350 <+12>: ret    
+
+so06-native-exclusivity-positive`OUTLINED_FUNCTION_310:
+    0x10006d910 <+0>: ldur   x8, [x0, #-0x8]
+    0x10006d914 <+4>: add    x8, x8, #0x40
+    0x10006d918 <+8>: ret    
+
+so06-native-exclusivity-positive`OUTLINED_FUNCTION_310:
+    0x1000d193c <+0>: mov    x26, x27
+    0x1000d1940 <+4>: ldr    x27, [sp, #0x8]
+    0x1000d1944 <+8>: ret    
+
+so06-native-exclusivity-positive`OUTLINED_FUNCTION_310:
+    0x1000e041c <+0>: ldr    x8, [x8, #0x8]
+    0x1000e0420 <+4>: mov    x0, x19
+    0x1000e0424 <+8>: br     x8
+
+so06-native-exclusivity-positive`OUTLINED_FUNCTION_310:
+    0x1001552dc <+0>: mov    x0, #0x0                  ; =0 
+    0x1001552e0 <+4>: mov    w1, #0x2                  ; =2 
+    0x1001552e4 <+8>: b      0x1000f35e8               ; P08CounterNativeExclusivity.P08TypedBackingOwner.initialize(fault: Swift.Optional<P08CounterNativeExclusivity.P08AcquisitionFault>) -> Swift.Optional<P08CounterNativeExclusivity.P08BackingInitializationFailure>
+
+

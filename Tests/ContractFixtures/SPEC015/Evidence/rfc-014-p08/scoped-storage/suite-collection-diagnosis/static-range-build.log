@@ -1,0 +1,181 @@
+(lldb) target create ".build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive"
+Current executable set to '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive' (arm64).
+(lldb) image lookup -v -a 0x1000f35e8
+      Address: so06-native-exclusivity-positive[0x00000001000f35e8] (so06-native-exclusivity-positive.__TEXT.__text + 993688)
+      Summary: so06-native-exclusivity-positive`P08CounterNativeExclusivity.P08TypedBackingOwner.initialize(fault: Swift.Optional<P08CounterNativeExclusivity.P08AcquisitionFault>) -> Swift.Optional<P08CounterNativeExclusivity.P08BackingInitializationFailure>
+       Module: file = "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive", arch = "arm64"
+       Symbol: id = {0x00002706}, range = [0x00000001000f35e8-0x00000001000f5df8), name="P08CounterNativeExclusivity.P08TypedBackingOwner.initialize(fault: Swift.Optional<P08CounterNativeExclusivity.P08AcquisitionFault>) -> Swift.Optional<P08CounterNativeExclusivity.P08BackingInitializationFailure>", mangled="$s27P08CounterNativeExclusivity0A17TypedBackingOwner33_7E2EB24482E60342912F44694FBE8720LLV10initialize5faultAA0aF21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF"
+
+(lldb) disassemble -s 0x1001552dc -c 12
+so06-native-exclusivity-positive`OUTLINED_FUNCTION_310:
+so06-native-exclusivity-positive[0x1001552dc] <+0>:  mov    x0, #0x0                  ; =0 
+so06-native-exclusivity-positive[0x1001552e0] <+4>:  mov    w1, #0x2                  ; =2 
+so06-native-exclusivity-positive[0x1001552e4] <+8>:  b      0x1000f35e8               ; P08CounterNativeExclusivity.P08TypedBackingOwner.initialize(fault: Swift.Optional<P08CounterNativeExclusivity.P08AcquisitionFault>) -> Swift.Optional<P08CounterNativeExclusivity.P08BackingInitializationFailure>
+
+so06-native-exclusivity-positive`OUTLINED_FUNCTION_311:
+so06-native-exclusivity-positive[0x1001552e8] <+0>:  ldur   x10, [x8, #-0x8]
+so06-native-exclusivity-positive[0x1001552ec] <+4>:  ldrb   w8, [x10, #0x50]
+so06-native-exclusivity-positive[0x1001552f0] <+8>:  add    x11, x8, #0x204
+so06-native-exclusivity-positive[0x1001552f4] <+12>: bic    x11, x11, x8
+so06-native-exclusivity-positive[0x1001552f8] <+16>: ldr    x10, [x10, #0x40]
+so06-native-exclusivity-positive[0x1001552fc] <+20>: ldur   x12, [x9, #-0x8]
+so06-native-exclusivity-positive[0x100155300] <+24>: ldr    w9, [x12, #0x50]
+so06-native-exclusivity-positive[0x100155304] <+28>: and    w9, w9, #0xfc
+so06-native-exclusivity-positive[0x100155308] <+32>: ret    
+(lldb) disassemble -s 0x1000f37c0 -c 155
+so06-native-exclusivity-positive`initialize:
+so06-native-exclusivity-positive[0x1000f37c0] <+472>:  ldr    x11, [x8, #0xb8]
+so06-native-exclusivity-positive[0x1000f37c4] <+476>:  ldrb   w9, [x8, #0xc0]
+so06-native-exclusivity-positive[0x1000f37c8] <+480>:  str    w9, [sp, #0xb8]
+so06-native-exclusivity-positive[0x1000f37cc] <+484>:  ldr    x9, [x8, #0xd0]
+so06-native-exclusivity-positive[0x1000f37d0] <+488>:  stp    x9, x11, [sp, #0x18]
+so06-native-exclusivity-positive[0x1000f37d4] <+492>:  ldrb   w9, [x8, #0xd8]
+so06-native-exclusivity-positive[0x1000f37d8] <+496>:  str    w9, [sp, #0xb0]
+so06-native-exclusivity-positive[0x1000f37dc] <+500>:  ldp    x11, x9, [x8, #0xe0]
+so06-native-exclusivity-positive[0x1000f37e0] <+504>:  str    x11, [sp, #0xa8]
+so06-native-exclusivity-positive[0x1000f37e4] <+508>:  str    x9, [sp, #0x10]
+so06-native-exclusivity-positive[0x1000f37e8] <+512>:  ldrb   w11, [x8, #0xf0]
+so06-native-exclusivity-positive[0x1000f37ec] <+516>:  ldr    x9, [x8, #0xf8]
+so06-native-exclusivity-positive[0x1000f37f0] <+520>:  str    x9, [sp, #0xc8]
+so06-native-exclusivity-positive[0x1000f37f4] <+524>:  ldr    x9, [x8, #0x100]
+so06-native-exclusivity-positive[0x1000f37f8] <+528>:  str    x9, [sp, #0x8]
+so06-native-exclusivity-positive[0x1000f37fc] <+532>:  ldrb   w9, [x8, #0x108]
+so06-native-exclusivity-positive[0x1000f3800] <+536>:  stp    w9, w11, [sp, #0x9c]
+so06-native-exclusivity-positive[0x1000f3804] <+540>:  ldp    x11, x9, [x8, #0x110]
+so06-native-exclusivity-positive[0x1000f3808] <+544>:  stp    x9, x11, [sp, #0x40]
+so06-native-exclusivity-positive[0x1000f380c] <+548>:  ldrb   w9, [x8, #0x120]
+so06-native-exclusivity-positive[0x1000f3810] <+552>:  str    w9, [sp, #0x3c]
+so06-native-exclusivity-positive[0x1000f3814] <+556>:  ldp    x11, x9, [x8, #0x128]
+so06-native-exclusivity-positive[0x1000f3818] <+560>:  stp    x9, x11, [sp, #0x58]
+so06-native-exclusivity-positive[0x1000f381c] <+564>:  ldrb   w9, [x8, #0x138]
+so06-native-exclusivity-positive[0x1000f3820] <+568>:  str    w9, [sp, #0x54]
+so06-native-exclusivity-positive[0x1000f3824] <+572>:  ldp    x11, x9, [x8, #0x140]
+so06-native-exclusivity-positive[0x1000f3828] <+576>:  stp    x9, x11, [sp, #0x70]
+so06-native-exclusivity-positive[0x1000f382c] <+580>:  ldrb   w9, [x8, #0x150]
+so06-native-exclusivity-positive[0x1000f3830] <+584>:  str    w9, [sp, #0x6c]
+so06-native-exclusivity-positive[0x1000f3834] <+588>:  ldp    x11, x9, [x8, #0x158]
+so06-native-exclusivity-positive[0x1000f3838] <+592>:  stp    x9, x11, [sp, #0x88]
+so06-native-exclusivity-positive[0x1000f383c] <+596>:  ldrb   w9, [x8, #0x168]
+so06-native-exclusivity-positive[0x1000f3840] <+600>:  str    w9, [sp, #0x84]
+so06-native-exclusivity-positive[0x1000f3844] <+604>:  ldrb   w3, [x8, #0x18]
+so06-native-exclusivity-positive[0x1000f3848] <+608>:  ldrb   w27, [x8, #0x38]
+so06-native-exclusivity-positive[0x1000f384c] <+612>:  ldrb   w8, [x8, #0x78]
+so06-native-exclusivity-positive[0x1000f3850] <+616>:  str    w8, [sp, #0xe8]
+so06-native-exclusivity-positive[0x1000f3854] <+620>:  mov    x20, x12
+so06-native-exclusivity-positive[0x1000f3858] <+624>:  mov    x21, x10
+so06-native-exclusivity-positive[0x1000f385c] <+628>:  bl     0x1000f2f30               ; P08CounterNativeExclusivity.P08ByteSlot.reservationRange.getter : (Swift.UInt, Swift.Int, Swift.Int, Swift.Int)
+so06-native-exclusivity-positive[0x1000f3860] <+632>:  str    x0, [sp, #0x2910]
+so06-native-exclusivity-positive[0x1000f3864] <+636>:  str    x1, [sp, #0x2918]
+so06-native-exclusivity-positive[0x1000f3868] <+640>:  mov    w25, #0x1                 ; =1 
+so06-native-exclusivity-positive[0x1000f386c] <+644>:  str    x25, [sp, #0x2920]
+so06-native-exclusivity-positive[0x1000f3870] <+648>:  str    x2, [sp, #0x2928]
+so06-native-exclusivity-positive[0x1000f3874] <+652>:  add    x23, sp, #0x2, lsl #12    ; =0x2000 
+so06-native-exclusivity-positive[0x1000f3878] <+656>:  add    x23, x23, #0x8d8
+so06-native-exclusivity-positive[0x1000f387c] <+660>:  strb   wzr, [x23, #0x58]
+so06-native-exclusivity-positive[0x1000f3880] <+664>:  mov    x0, x20
+so06-native-exclusivity-positive[0x1000f3884] <+668>:  ldr    x1, [sp, #0xe0]
+so06-native-exclusivity-positive[0x1000f3888] <+672>:  mov    x2, x26
+so06-native-exclusivity-positive[0x1000f388c] <+676>:  mov    x3, x27
+so06-native-exclusivity-positive[0x1000f3890] <+680>:  bl     0x1000f2f30               ; P08CounterNativeExclusivity.P08ByteSlot.reservationRange.getter : (Swift.UInt, Swift.Int, Swift.Int, Swift.Int)
+so06-native-exclusivity-positive[0x1000f3894] <+684>:  str    x0, [sp, #0x2938]
+so06-native-exclusivity-positive[0x1000f3898] <+688>:  str    x1, [sp, #0x2940]
+so06-native-exclusivity-positive[0x1000f389c] <+692>:  str    x25, [sp, #0x2948]
+so06-native-exclusivity-positive[0x1000f38a0] <+696>:  str    x2, [sp, #0x2950]
+so06-native-exclusivity-positive[0x1000f38a4] <+700>:  strb   wzr, [x23, #0x80]
+so06-native-exclusivity-positive[0x1000f38a8] <+704>:  ldr    x0, [sp, #0xf0]
+so06-native-exclusivity-positive[0x1000f38ac] <+708>:  mov    x1, x22
+so06-native-exclusivity-positive[0x1000f38b0] <+712>:  mov    x2, x19
+so06-native-exclusivity-positive[0x1000f38b4] <+716>:  mov    x3, x28
+so06-native-exclusivity-positive[0x1000f38b8] <+720>:  bl     0x1000f2f30               ; P08CounterNativeExclusivity.P08ByteSlot.reservationRange.getter : (Swift.UInt, Swift.Int, Swift.Int, Swift.Int)
+so06-native-exclusivity-positive[0x1000f38bc] <+724>:  str    x0, [sp, #0x2960]
+so06-native-exclusivity-positive[0x1000f38c0] <+728>:  str    x1, [sp, #0x2968]
+so06-native-exclusivity-positive[0x1000f38c4] <+732>:  str    x25, [sp, #0x2970]
+so06-native-exclusivity-positive[0x1000f38c8] <+736>:  str    x2, [sp, #0x2978]
+so06-native-exclusivity-positive[0x1000f38cc] <+740>:  strb   wzr, [x23, #0xa8]
+so06-native-exclusivity-positive[0x1000f38d0] <+744>:  mov    x0, x21
+so06-native-exclusivity-positive[0x1000f38d4] <+748>:  mov    x1, x24
+so06-native-exclusivity-positive[0x1000f38d8] <+752>:  add    x24, sp, #0x2, lsl #12    ; =0x2000 
+so06-native-exclusivity-positive[0x1000f38dc] <+756>:  add    x24, x24, #0x8d8
+so06-native-exclusivity-positive[0x1000f38e0] <+760>:  ldr    x2, [sp, #0x100]
+so06-native-exclusivity-positive[0x1000f38e4] <+764>:  ldr    w3, [sp, #0xe8]
+so06-native-exclusivity-positive[0x1000f38e8] <+768>:  bl     0x1000f2f30               ; P08CounterNativeExclusivity.P08ByteSlot.reservationRange.getter : (Swift.UInt, Swift.Int, Swift.Int, Swift.Int)
+so06-native-exclusivity-positive[0x1000f38ec] <+772>:  ldr    w8, [sp, #0x108]
+so06-native-exclusivity-positive[0x1000f38f0] <+776>:  str    x0, [sp, #0x2988]
+so06-native-exclusivity-positive[0x1000f38f4] <+780>:  str    x1, [sp, #0x2990]
+so06-native-exclusivity-positive[0x1000f38f8] <+784>:  str    x25, [sp, #0x2998]
+so06-native-exclusivity-positive[0x1000f38fc] <+788>:  str    x2, [sp, #0x29a0]
+so06-native-exclusivity-positive[0x1000f3900] <+792>:  strb   wzr, [x24, #0xd0]
+so06-native-exclusivity-positive[0x1000f3904] <+796>:  cbz    w8, 0x1000f3994           ; <+940>
+so06-native-exclusivity-positive[0x1000f3908] <+800>:  cmp    w8, #0x1
+so06-native-exclusivity-positive[0x1000f390c] <+804>:  b.ne   0x1000f39b4               ; <+972>
+so06-native-exclusivity-positive[0x1000f3910] <+808>:  ldr    x9, [sp, #0x128]
+so06-native-exclusivity-positive[0x1000f3914] <+812>:  ldrb   w8, [x9, #0xa]
+so06-native-exclusivity-positive[0x1000f3918] <+816>:  bl     0x10015ad10               ; OUTLINED_FUNCTION_1640
+so06-native-exclusivity-positive[0x1000f391c] <+820>:  add    x21, sp, #0x2, lsl #12    ; =0x2000 
+so06-native-exclusivity-positive[0x1000f3920] <+824>:  add    x21, x21, #0x910
+so06-native-exclusivity-positive[0x1000f3924] <+828>:  ldp    x19, x10, [sp, #0xd0]
+so06-native-exclusivity-positive[0x1000f3928] <+832>:  ldr    x22, [sp, #0xc8]
+so06-native-exclusivity-positive[0x1000f392c] <+836>:  b.ne   0x1000f5360               ; <+7544>
+so06-native-exclusivity-positive[0x1000f3930] <+840>:  mov    w11, #0xa0                ; =160 
+so06-native-exclusivity-positive[0x1000f3934] <+844>:  mov    w8, #0xa0                 ; =160 
+so06-native-exclusivity-positive[0x1000f3938] <+848>:  b      0x1000f39c4               ; <+988>
+so06-native-exclusivity-positive[0x1000f393c] <+852>:  ldr    x8, [x0, #0x10]
+so06-native-exclusivity-positive[0x1000f3940] <+856>:  cbnz   x8, 0x1000f5364           ; <+7548>
+so06-native-exclusivity-positive[0x1000f3944] <+860>:  mov    w1, #0x38                 ; =56 
+so06-native-exclusivity-positive[0x1000f3948] <+864>:  mov    w8, #0x38                 ; =56 
+so06-native-exclusivity-positive[0x1000f394c] <+868>:  str    x0, [sp, #0x2910]
+so06-native-exclusivity-positive[0x1000f3950] <+872>:  str    x1, [sp, #0x2918]
+so06-native-exclusivity-positive[0x1000f3954] <+876>:  mov    w10, #0x8                 ; =8 
+so06-native-exclusivity-positive[0x1000f3958] <+880>:  str    x10, [sp, #0x2920]
+so06-native-exclusivity-positive[0x1000f395c] <+884>:  str    x8, [sp, #0x2928]
+so06-native-exclusivity-positive[0x1000f3960] <+888>:  add    x8, sp, #0x2, lsl #12     ; =0x2000 
+so06-native-exclusivity-positive[0x1000f3964] <+892>:  add    x8, x8, #0x8d8
+so06-native-exclusivity-positive[0x1000f3968] <+896>:  strb   wzr, [x8, #0x58]
+so06-native-exclusivity-positive[0x1000f396c] <+900>:  cbz    w9, 0x1000f3a04           ; <+1052>
+so06-native-exclusivity-positive[0x1000f3970] <+904>:  cmp    w9, #0x1
+so06-native-exclusivity-positive[0x1000f3974] <+908>:  b.ne   0x1000f3a18               ; <+1072>
+so06-native-exclusivity-positive[0x1000f3978] <+912>:  mov    x0, x23
+so06-native-exclusivity-positive[0x1000f397c] <+916>:  bl     0x10014e2b4               ; outlined enum get tag of Swift.Optional<GiftUIRuntimeDynamic.DynamicResolvedLayoutStorage>
+so06-native-exclusivity-positive[0x1000f3980] <+920>:  cmp    w0, #0x1
+so06-native-exclusivity-positive[0x1000f3984] <+924>:  b.ne   0x1000f536c               ; <+7556>
+so06-native-exclusivity-positive[0x1000f3988] <+928>:  mov    w12, #0xc8                ; =200 
+so06-native-exclusivity-positive[0x1000f398c] <+932>:  mov    w8, #0xc8                 ; =200 
+so06-native-exclusivity-positive[0x1000f3990] <+936>:  b      0x1000f3a1c               ; <+1076>
+so06-native-exclusivity-positive[0x1000f3994] <+940>:  ldr    x9, [sp, #0x128]
+so06-native-exclusivity-positive[0x1000f3998] <+944>:  ldrb   w8, [x9, #0xa]
+so06-native-exclusivity-positive[0x1000f399c] <+948>:  bl     0x10015ad10               ; OUTLINED_FUNCTION_1640
+so06-native-exclusivity-positive[0x1000f39a0] <+952>:  b.ne   0x1000f5368               ; <+7552>
+so06-native-exclusivity-positive[0x1000f39a4] <+956>:  mov    w11, #0x60                ; =96 
+so06-native-exclusivity-positive[0x1000f39a8] <+960>:  bl     0x10015bcf4               ; OUTLINED_FUNCTION_1973
+so06-native-exclusivity-positive[0x1000f39ac] <+964>:  ldr    x22, [sp, #0xc8]
+so06-native-exclusivity-positive[0x1000f39b0] <+968>:  b      0x1000f39c4               ; <+988>
+so06-native-exclusivity-positive[0x1000f39b4] <+972>:  bl     0x10015bcf4               ; OUTLINED_FUNCTION_1973
+so06-native-exclusivity-positive[0x1000f39b8] <+976>:  ldr    x9, [sp, #0x128]
+so06-native-exclusivity-positive[0x1000f39bc] <+980>:  ldr    x22, [sp, #0xc8]
+so06-native-exclusivity-positive[0x1000f39c0] <+984>:  ldr    x11, [sp, #0x30]
+so06-native-exclusivity-positive[0x1000f39c4] <+988>:  str    x9, [sp, #0x29b0]
+so06-native-exclusivity-positive[0x1000f39c8] <+992>:  str    x11, [sp, #0x29b8]
+so06-native-exclusivity-positive[0x1000f39cc] <+996>:  mov    w9, #0x8                  ; =8 
+so06-native-exclusivity-positive[0x1000f39d0] <+1000>: str    x9, [sp, #0x29c0]
+so06-native-exclusivity-positive[0x1000f39d4] <+1004>: str    x8, [sp, #0x29c8]
+so06-native-exclusivity-positive[0x1000f39d8] <+1008>: strb   wzr, [x24, #0xf8]
+so06-native-exclusivity-positive[0x1000f39dc] <+1012>: ldr    w8, [sp, #0xc0]
+so06-native-exclusivity-positive[0x1000f39e0] <+1016>: cbz    w8, 0x1000f3a70           ; <+1160>
+so06-native-exclusivity-positive[0x1000f39e4] <+1020>: cmp    w8, #0x1
+so06-native-exclusivity-positive[0x1000f39e8] <+1024>: b.ne   0x1000f3a88               ; <+1184>
+so06-native-exclusivity-positive[0x1000f39ec] <+1028>: ldrb   w8, [x10]
+so06-native-exclusivity-positive[0x1000f39f0] <+1032>: cmp    x8, #0x2
+so06-native-exclusivity-positive[0x1000f39f4] <+1036>: b.ne   0x1000f5370               ; <+7560>
+so06-native-exclusivity-positive[0x1000f39f8] <+1040>: mov    w9, #0xb8                 ; =184 
+so06-native-exclusivity-positive[0x1000f39fc] <+1044>: mov    w8, #0xb8                 ; =184 
+so06-native-exclusivity-positive[0x1000f3a00] <+1048>: b      0x1000f3a90               ; <+1192>
+so06-native-exclusivity-positive[0x1000f3a04] <+1052>: mov    x0, x23
+so06-native-exclusivity-positive[0x1000f3a08] <+1056>: bl     0x10014e2b4               ; outlined enum get tag of Swift.Optional<GiftUIRuntimeDynamic.DynamicResolvedLayoutStorage>
+so06-native-exclusivity-positive[0x1000f3a0c] <+1060>: cmp    w0, #0x1
+so06-native-exclusivity-positive[0x1000f3a10] <+1064>: b.ne   0x1000f5374               ; <+7564>
+so06-native-exclusivity-positive[0x1000f3a14] <+1068>: mov    w12, #0x88                ; =136 
+so06-native-exclusivity-positive[0x1000f3a18] <+1072>: mov    w8, #0x88                 ; =136 
+so06-native-exclusivity-positive[0x1000f3a1c] <+1076>: str    x23, [sp, #0x2938]
+so06-native-exclusivity-positive[0x1000f3a20] <+1080>: str    x12, [sp, #0x2940]
+so06-native-exclusivity-positive[0x1000f3a24] <+1084>: mov    w9, #0x8                  ; =8 
+so06-native-exclusivity-positive[0x1000f3a28] <+1088>: str    x9, [sp, #0x2948]

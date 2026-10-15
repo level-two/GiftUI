@@ -1,0 +1,28 @@
+(lldb) target create ".build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive"
+Current executable set to '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive' (arm64).
+(lldb) breakpoint set --shlib so06-native-exclusivity-positive --address 0x1000f3f44
+Breakpoint 1: where = so06-native-exclusivity-positive`P08TypedBackingOwner.initialize(fault:) + 2396, address = 0x00000001000f3f44
+(lldb) run
+Process 10802 launched: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive' (arm64)
+Process 10802 stopped
+* thread #1, queue = 'com.apple.main-thread', stop reason = breakpoint 1.1
+    frame #0: 0x00000001000f3f44 so06-native-exclusivity-positive`P08TypedBackingOwner.initialize(fault:) + 2396
+so06-native-exclusivity-positive`initialize:
+->  0x1000f3f44 <+2396>: mov    w25, #0xe                 ; =14 
+    0x1000f3f48 <+2400>: ldur   x8, [x29, #-0x68]
+    0x1000f3f4c <+2404>: bl     0x100153940               ; OUTLINED_FUNCTION_51
+    0x1000f3f50 <+2408>: b.ne   0x1000f4cdc               ; <+5876>
+Target 0: (so06-native-exclusivity-positive) stopped.
+(lldb) register read x0 x9 x10 x13 x14 x15 x16 x17 sp
+      x0 = 0x000000016fdf8c20
+      x9 = 0x000000000000000a
+     x10 = 0x000000000000000a
+     x13 = 0x000000016fdf8c1c
+     x14 = 0x000000016fdf8e00
+     x15 = 0x000000016fdf7298
+     x16 = 0x0000000000000001
+     x17 = 0x000000016fdf8bf8
+      sp = 0x000000016fdf4820
+(lldb) script import lldb,struct; f=lldb.debugger.GetSelectedTarget().GetProcess().GetSelectedThread().GetFrameAtIndex(0); p=f.GetThread().GetProcess(); e=lldb.SBError(); a=f.GetSP()+0x2910; raw=p.ReadMemory(a,560,e); print('ranges',e,a); print([struct.unpack_from('<QQQQQ',raw,i*40) for i in range(14)])
+ranges success 6171881776
+[(6171884968, 1025, 1, 1025, 0), (6171885993, 1057, 1, 1057, 0), (6171887050, 21, 1, 21, 0), (6171887071, 113, 1, 113, 0), (6171887184, 96, 8, 96, 0), (6171887280, 120, 8, 120, 0), (6171887400, 1028, 4, 1028, 0), (6171888432, 200, 8, 200, 0), (6171888632, 40, 8, 40, 0), (6171888668, 484, 4, 484, 0), (6171889152, 460, 4, 460, 0), (6171889612, 484, 4, 484, 0), (6171890096, 484, 4, 484, 0), (6171890644, 460, 4, 460, 0)]

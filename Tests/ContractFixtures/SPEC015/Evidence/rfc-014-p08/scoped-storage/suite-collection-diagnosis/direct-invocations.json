@@ -1,0 +1,77 @@
+{
+  "source_revision": "3c281acd",
+  "kind": "bounded-existing-binary-diagnosis",
+  "compiler_invocations": 0,
+  "source_modifications": 0,
+  "corrective_cycles_consumed_here": 0,
+  "initial_outer_call": {
+    "status": "aborted by user after 877.2s; no nested result or session ID returned",
+    "scripts": "three *.lldb and initial *-invocation.json files are planned records, not evidence of successful execution",
+    "completed_diagnostics": "direct calls below supersede those planned scripts"
+  },
+  "invocations": [
+    {
+      "name": "static-initialize-detail",
+      "command": "xcrun lldb --batch -o 'disassemble -s 0x1000f35e8 -c 120' .build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive",
+      "cwd": "/Users/eugene/work/GiftUI",
+      "note": "offline disassembly",
+      "tool_exit": 0,
+      "captured_output": "static-initialize-detail.log",
+      "wall_time_seconds": 0.24584075
+    },
+    {
+      "name": "static-validation-detail",
+      "command": "xcrun lldb --batch -o 'disassemble -s 0x1000f3d00 -c 165' .build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive",
+      "cwd": "/Users/eugene/work/GiftUI",
+      "note": "offline disassembly",
+      "tool_exit": 0,
+      "captured_output": "static-validation-detail.log",
+      "wall_time_seconds": 0.239613917
+    },
+    {
+      "name": "static-unresolved-breakpoint",
+      "command": "xcrun lldb --batch -o 'breakpoint set --address 0x1000f3f44' -o run -o 'register read x0 x9 x10 x13 x14 x15 x16 x17 sp' -o \"script import lldb,struct; f=lldb.debugger.GetSelectedTarget().GetProcess().GetSelectedThread().GetFrameAtIndex(0); p=f.GetThread().GetProcess(); e=lldb.SBError(); a=f.GetSP()+0x2910; raw=p.ReadMemory(a,560,e); print('ranges',e,a); print([struct.unpack_from('<QQQQQ',raw,i*40) for i in range(14)])\" .build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive",
+      "cwd": "/Users/eugene/work/GiftUI",
+      "note": "raw breakpoint did not resolve/hit; only run/crash output returned",
+      "tool_exit": 0,
+      "captured_output": "static-unresolved-breakpoint.log",
+      "wall_time_seconds": 0.351860042
+    },
+    {
+      "name": "static-range-build",
+      "command": "xcrun lldb --batch -o 'image lookup -v -a 0x1000f35e8' -o 'disassemble -s 0x1001552dc -c 12' -o 'disassemble -s 0x1000f37c0 -c 155' .build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive",
+      "cwd": "/Users/eugene/work/GiftUI",
+      "note": "offline disassembly",
+      "tool_exit": 0,
+      "captured_output": "static-range-build.log",
+      "wall_time_seconds": 0.241009083
+    },
+    {
+      "name": "static-resolved-ranges",
+      "command": "xcrun lldb --batch -o 'breakpoint set --shlib so06-native-exclusivity-positive --address 0x1000f3f44' -o run -o 'register read x0 x9 x10 x13 x14 x15 x16 x17 sp' -o \"script import lldb,struct; f=lldb.debugger.GetSelectedTarget().GetProcess().GetSelectedThread().GetFrameAtIndex(0); p=f.GetThread().GetProcess(); e=lldb.SBError(); a=f.GetSP()+0x2910; raw=p.ReadMemory(a,560,e); print('ranges',e,a); print([struct.unpack_from('<QQQQQ',raw,i*40) for i in range(14)])\" -k 'register read x0 x9 x10 x13 x14 x15 x16 x17 sp' .build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive",
+      "cwd": "/Users/eugene/work/GiftUI",
+      "note": "resolved breakpoint; read registers and existing memory; no expression compilation or target calls",
+      "tool_exit": 0,
+      "captured_output": "static-resolved-ranges.log",
+      "wall_time_seconds": 0.376196458
+    },
+    {
+      "name": "static-counter-direct",
+      "command": "xcrun lldb --batch -o run -k 'thread backtrace all' -k 'register read x0 x1 x2 x8 x20 x21 sp' -k 'disassemble --frame' .build/contracts/p08-counter-wik491kv/counter",
+      "cwd": "/Users/eugene/work/GiftUI",
+      "note": "existing binary run under debugger; trapped",
+      "tool_exit": 0,
+      "captured_output": "static-counter-direct.log",
+      "wall_time_seconds": 0.355039542
+    },
+    {
+      "name": "dynamic-counter-direct",
+      "command": "xcrun lldb --batch -o run -k 'thread backtrace all' -k 'register read x0 x1 x2 x8 x20 x21 sp' -k 'disassemble --frame' .build/contracts/p08-counter-iuim5_zl/counter",
+      "cwd": "/Users/eugene/work/GiftUI",
+      "note": "existing binary run under debugger; trapped",
+      "tool_exit": 0,
+      "captured_output": "dynamic-counter-direct.log",
+      "wall_time_seconds": 0.370911542
+    }
+  ]
+}

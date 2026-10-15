@@ -1,0 +1,124 @@
+(lldb) target create ".build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive"
+Current executable set to '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive' (arm64).
+(lldb) disassemble -s 0x1000f35e8 -c 120
+so06-native-exclusivity-positive`initialize:
+so06-native-exclusivity-positive[0x1000f35e8] <+0>:   mov    x2, x30
+so06-native-exclusivity-positive[0x1000f35ec] <+4>:   bl     0x100157fc0               ; OUTLINED_FUNCTION_910
+so06-native-exclusivity-positive[0x1000f35f0] <+8>:   mov    x30, x2
+so06-native-exclusivity-positive[0x1000f35f4] <+12>:  stp    x29, x30, [sp, #0x50]
+so06-native-exclusivity-positive[0x1000f35f8] <+16>:  bl     0x10015ac50               ; OUTLINED_FUNCTION_1630
+so06-native-exclusivity-positive[0x1000f35fc] <+20>:  sub    sp, sp, #0xd30
+so06-native-exclusivity-positive[0x1000f3600] <+24>:  bl     0x100154348               ; OUTLINED_FUNCTION_152
+so06-native-exclusivity-positive[0x1000f3604] <+28>:  stur   x8, [x29, #-0x68]
+so06-native-exclusivity-positive[0x1000f3608] <+32>:  ldrb   w8, [x20, #0x180]
+so06-native-exclusivity-positive[0x1000f360c] <+36>:  cbnz   w8, 0x1000f4290           ; <+3240>
+so06-native-exclusivity-positive[0x1000f3610] <+40>:  ldr    x8, [x20, #0x498]
+so06-native-exclusivity-positive[0x1000f3614] <+44>:  cbnz   x8, 0x1000f4294           ; <+3244>
+so06-native-exclusivity-positive[0x1000f3618] <+48>:  mov    x19, x1
+so06-native-exclusivity-positive[0x1000f361c] <+52>:  mov    x21, x0
+so06-native-exclusivity-positive[0x1000f3620] <+56>:  add    x9, sp, #0x2, lsl #12     ; =0x2000 
+so06-native-exclusivity-positive[0x1000f3624] <+60>:  add    x9, x9, #0x8d8
+so06-native-exclusivity-positive[0x1000f3628] <+64>:  str    xzr, [x20, #0x7b0]
+so06-native-exclusivity-positive[0x1000f362c] <+68>:  mov    w8, #0xe                  ; =14 
+so06-native-exclusivity-positive[0x1000f3630] <+72>:  str    x8, [sp, #0x28d8]
+so06-native-exclusivity-positive[0x1000f3634] <+76>:  bl     0x10015bc20               ; OUTLINED_FUNCTION_1960
+so06-native-exclusivity-positive[0x1000f3638] <+80>:  add    x8, x20, #0x4a0
+so06-native-exclusivity-positive[0x1000f363c] <+84>:  add    x0, sp, #0x2, lsl #12     ; =0x2000 
+so06-native-exclusivity-positive[0x1000f3640] <+88>:  add    x0, x0, #0x8d8
+so06-native-exclusivity-positive[0x1000f3644] <+92>:  bl     0x1000e67f0               ; generic specialization <14, Swift.Optional<P08CounterNativeExclusivity.P08InitializedEntry>> of Swift.InlineArray.init(repeating: τ_0_1) -> Swift.InlineArray<τ_0_0, τ_0_1>
+so06-native-exclusivity-positive[0x1000f3648] <+96>:  ldr    x8, [x20, #0x170]
+so06-native-exclusivity-positive[0x1000f364c] <+100>: cbz    x8, 0x1000f377c           ; <+404>
+so06-native-exclusivity-positive[0x1000f3650] <+104>: bl     0x1000f35ac               ; P08CounterNativeExclusivity.P08TypedBackingOwner.validateCapacities() -> Swift.Bool
+so06-native-exclusivity-positive[0x1000f3654] <+108>: tbz    w0, #0x0, 0x1000f377c     ; <+404>
+so06-native-exclusivity-positive[0x1000f3658] <+112>: str    w19, [sp, #0x11c]
+so06-native-exclusivity-positive[0x1000f365c] <+116>: add    x19, sp, #0x1, lsl #12    ; =0x1000 
+so06-native-exclusivity-positive[0x1000f3660] <+120>: add    x19, x19, #0xb20
+so06-native-exclusivity-positive[0x1000f3664] <+124>: add    x0, sp, #0x2, lsl #12     ; =0x2000 
+so06-native-exclusivity-positive[0x1000f3668] <+128>: add    x0, x0, #0x110
+so06-native-exclusivity-positive[0x1000f366c] <+132>: bl     0x1001552b8               ; OUTLINED_FUNCTION_307
+so06-native-exclusivity-positive[0x1000f3670] <+136>: movi.2d v0, #0000000000000000
+so06-native-exclusivity-positive[0x1000f3674] <+140>: stp    q0, q0, [x19]
+so06-native-exclusivity-positive[0x1000f3678] <+144>: mov    w8, #0x1                  ; =1 
+so06-native-exclusivity-positive[0x1000f367c] <+148>: strb   w8, [x19, #0x20]
+so06-native-exclusivity-positive[0x1000f3680] <+152>: add    x8, sp, #0x2, lsl #12     ; =0x2000 
+so06-native-exclusivity-positive[0x1000f3684] <+156>: add    x8, x8, #0x910
+so06-native-exclusivity-positive[0x1000f3688] <+160>: add    x0, sp, #0x1, lsl #12     ; =0x1000 
+so06-native-exclusivity-positive[0x1000f368c] <+164>: add    x0, x0, #0xb20
+so06-native-exclusivity-positive[0x1000f3690] <+168>: bl     0x1000e6918               ; generic specialization <14, Swift.Optional<(Swift.UInt, Swift.Int, Swift.Int, Swift.Int)>> of Swift.InlineArray.init(repeating: τ_0_1) -> Swift.InlineArray<τ_0_0, τ_0_1>
+so06-native-exclusivity-positive[0x1000f3694] <+172>: bl     0x100157a30               ; OUTLINED_FUNCTION_841
+so06-native-exclusivity-positive[0x1000f3698] <+176>: add    x1, sp, #0x2, lsl #12     ; =0x2000 
+so06-native-exclusivity-positive[0x1000f369c] <+180>: add    x1, x1, #0x110
+so06-native-exclusivity-positive[0x1000f36a0] <+184>: bl     0x1001565dc               ; OUTLINED_FUNCTION_568
+so06-native-exclusivity-positive[0x1000f36a4] <+188>: bl     0x100157a30               ; OUTLINED_FUNCTION_841
+so06-native-exclusivity-positive[0x1000f36a8] <+192>: bl     0x10014e0e0               ; outlined enum get tag of P08CounterNativeExclusivity.P08PhysicalSlots
+so06-native-exclusivity-positive[0x1000f36ac] <+196>: mov    x23, x0
+so06-native-exclusivity-positive[0x1000f36b0] <+200>: bl     0x100157a30               ; OUTLINED_FUNCTION_841
+so06-native-exclusivity-positive[0x1000f36b4] <+204>: bl     0x10014e0ec               ; ___lldb_unnamed_symbol_10014e0ec
+so06-native-exclusivity-positive[0x1000f36b8] <+208>: mov    x8, x0
+so06-native-exclusivity-positive[0x1000f36bc] <+212>: ldr    x0, [x0]
+so06-native-exclusivity-positive[0x1000f36c0] <+216>: ldr    x1, [x8, #0x8]
+so06-native-exclusivity-positive[0x1000f36c4] <+220>: ldr    x12, [x8, #0x20]
+so06-native-exclusivity-positive[0x1000f36c8] <+224>: ldr    x26, [x8, #0x30]
+so06-native-exclusivity-positive[0x1000f36cc] <+228>: ldp    x22, x19, [x8, #0x48]
+so06-native-exclusivity-positive[0x1000f36d0] <+232>: ldrb   w28, [x8, #0x58]
+so06-native-exclusivity-positive[0x1000f36d4] <+236>: ldp    x10, x24, [x8, #0x60]
+so06-native-exclusivity-positive[0x1000f36d8] <+240>: ldr    x11, [x8, #0x80]
+so06-native-exclusivity-positive[0x1000f36dc] <+244>: ldr    x25, [x8, #0x98]
+so06-native-exclusivity-positive[0x1000f36e0] <+248>: ldr    x27, [x8, #0xb0]
+so06-native-exclusivity-positive[0x1000f36e4] <+252>: ldr    x9, [x8, #0xc8]
+so06-native-exclusivity-positive[0x1000f36e8] <+256>: stp    x11, x9, [sp, #0x128]
+so06-native-exclusivity-positive[0x1000f36ec] <+260>: cmp    w23, #0x1
+so06-native-exclusivity-positive[0x1000f36f0] <+264>: str    x20, [sp, #0x120]
+so06-native-exclusivity-positive[0x1000f36f4] <+268>: str    x21, [sp, #0x110]
+so06-native-exclusivity-positive[0x1000f36f8] <+272>: b.ne   0x1000f3784               ; <+412>
+so06-native-exclusivity-positive[0x1000f36fc] <+276>: stp    x10, x22, [sp, #0x100]
+so06-native-exclusivity-positive[0x1000f3700] <+280>: mov    x20, x24
+so06-native-exclusivity-positive[0x1000f3704] <+284>: ldrb   w10, [x8, #0x10]
+so06-native-exclusivity-positive[0x1000f3708] <+288>: ldr    x23, [x8, #0x18]
+so06-native-exclusivity-positive[0x1000f370c] <+292>: ldrb   w9, [x8, #0x28]
+so06-native-exclusivity-positive[0x1000f3710] <+296>: ldr    x22, [x8, #0x38]
+so06-native-exclusivity-positive[0x1000f3714] <+300>: ldrb   w24, [x8, #0x40]
+so06-native-exclusivity-positive[0x1000f3718] <+304>: ldrb   w21, [x8, #0x70]
+so06-native-exclusivity-positive[0x1000f371c] <+308>: ldr    x11, [x8, #0x78]
+so06-native-exclusivity-positive[0x1000f3720] <+312>: str    x11, [sp, #0xb8]
+so06-native-exclusivity-positive[0x1000f3724] <+316>: ldrb   w11, [x8, #0x88]
+so06-native-exclusivity-positive[0x1000f3728] <+320>: str    w11, [sp, #0xc0]
+so06-native-exclusivity-positive[0x1000f372c] <+324>: ldr    x11, [x8, #0x90]
+so06-native-exclusivity-positive[0x1000f3730] <+328>: str    x11, [sp, #0xc8]
+so06-native-exclusivity-positive[0x1000f3734] <+332>: ldrb   w11, [x8, #0xa0]
+so06-native-exclusivity-positive[0x1000f3738] <+336>: str    w11, [sp, #0xd0]
+so06-native-exclusivity-positive[0x1000f373c] <+340>: ldr    x11, [x8, #0xa8]
+so06-native-exclusivity-positive[0x1000f3740] <+344>: str    x11, [sp, #0xd8]
+so06-native-exclusivity-positive[0x1000f3744] <+348>: ldrb   w11, [x8, #0xb8]
+so06-native-exclusivity-positive[0x1000f3748] <+352>: str    w11, [sp, #0xe0]
+so06-native-exclusivity-positive[0x1000f374c] <+356>: ldr    x11, [x8, #0xc0]
+so06-native-exclusivity-positive[0x1000f3750] <+360>: str    x11, [sp, #0xe8]
+so06-native-exclusivity-positive[0x1000f3754] <+364>: ldrb   w8, [x8, #0xd0]
+so06-native-exclusivity-positive[0x1000f3758] <+368>: str    w8, [sp, #0xf0]
+so06-native-exclusivity-positive[0x1000f375c] <+372>: cbz    w10, 0x1000f393c          ; <+852>
+so06-native-exclusivity-positive[0x1000f3760] <+376>: cmp    w10, #0x1
+so06-native-exclusivity-positive[0x1000f3764] <+380>: b.ne   0x1000f3948               ; <+864>
+so06-native-exclusivity-positive[0x1000f3768] <+384>: ldr    x8, [x0, #0x10]
+so06-native-exclusivity-positive[0x1000f376c] <+388>: cbnz   x8, 0x1000f535c           ; <+7540>
+so06-native-exclusivity-positive[0x1000f3770] <+392>: mov    w1, #0x78                 ; =120 
+so06-native-exclusivity-positive[0x1000f3774] <+396>: mov    w8, #0x78                 ; =120 
+so06-native-exclusivity-positive[0x1000f3778] <+400>: b      0x1000f394c               ; <+868>
+so06-native-exclusivity-positive[0x1000f377c] <+404>: mov    w25, #0xf                 ; =15 
+so06-native-exclusivity-positive[0x1000f3780] <+408>: b      0x1000f3f48               ; <+2400>
+so06-native-exclusivity-positive[0x1000f3784] <+412>: stp    x27, x25, [sp, #0xd0]
+so06-native-exclusivity-positive[0x1000f3788] <+416>: ldr    x2, [x8, #0x10]
+so06-native-exclusivity-positive[0x1000f378c] <+420>: ldr    x9, [x8, #0x28]
+so06-native-exclusivity-positive[0x1000f3790] <+424>: str    x9, [sp, #0xe0]
+so06-native-exclusivity-positive[0x1000f3794] <+428>: ldr    x9, [x8, #0x40]
+so06-native-exclusivity-positive[0x1000f3798] <+432>: str    x9, [sp, #0xf0]
+so06-native-exclusivity-positive[0x1000f379c] <+436>: ldr    x9, [x8, #0x70]
+so06-native-exclusivity-positive[0x1000f37a0] <+440>: str    x9, [sp, #0x100]
+so06-native-exclusivity-positive[0x1000f37a4] <+444>: ldr    x11, [x8, #0x88]
+so06-native-exclusivity-positive[0x1000f37a8] <+448>: ldrb   w9, [x8, #0x90]
+so06-native-exclusivity-positive[0x1000f37ac] <+452>: str    w9, [sp, #0x108]
+so06-native-exclusivity-positive[0x1000f37b0] <+456>: ldr    x9, [x8, #0xa0]
+so06-native-exclusivity-positive[0x1000f37b4] <+460>: stp    x9, x11, [sp, #0x28]
+so06-native-exclusivity-positive[0x1000f37b8] <+464>: ldrb   w9, [x8, #0xa8]
+so06-native-exclusivity-positive[0x1000f37bc] <+468>: str    w9, [sp, #0xc0]
+so06-native-exclusivity-positive[0x1000f37c0] <+472>: ldr    x11, [x8, #0xb8]
+so06-native-exclusivity-positive[0x1000f37c4] <+476>: ldrb   w9, [x8, #0xc0]

@@ -1,0 +1,15 @@
+(lldb) target create ".build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive"
+Current executable set to '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive' (arm64).
+(lldb) breakpoint set --address 0x1000f3f44
+Breakpoint 1: address = 0x00000001000f3f44
+(lldb) run
+Process 10788 launched: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wik491kv/so06-native-exclusivity-positive' (arm64)
+Process 10788 stopped
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BREAKPOINT (code=1, subcode=0x10011c6e0)
+    frame #0: 0x000000010011c6e0 so06-native-exclusivity-positive`counterScopedNativeExclusivity(negative:) + 2180
+so06-native-exclusivity-positive`counterScopedNativeExclusivity:
+->  0x10011c6e0 <+2180>: brk    #0x1
+    0x10011c6e4 <+2184>: brk    #0x1
+    0x10011c6e8 <+2188>: brk    #0x1
+    0x10011c6ec <+2192>: bl     0x10015e0a4               ; symbol stub for: __stack_chk_fail
+Target 0: (so06-native-exclusivity-positive) stopped.
