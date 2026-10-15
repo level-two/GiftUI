@@ -1,12 +1,16 @@
 # P08 stage realization — grouped design/correction activity
 
-Status: **correction 1 screen compiler/layout PASS; measured stack fit FAIL**.
+Status: **final correction 2/2 source frozen for independent review; not executed**.
+The [final source freeze](p08-stage-realization-cycle2-source-freeze.md) implements
+the independently reviewed lexical/inout/owned-observation approach. It has no
+compiler or resource result. No third automatic variant follows a failed final
+realization or fit screen.
 The [actual object screen result](p08-stage-realization-cycle1-screen-result.md)
 proves a required 75,224-byte nested lower bound against 27,648. Root/reuse
 orchestrator frames improve; live phase homes and whole-state observation
 temporaries remain. The [independent result/approach review](p08-stage-realization-cycle1-independent-result-approach-review.md)
 confirms this fit failure and passes the concrete final correction approach.
-Implementation is next; no second correction source or run exists.
+Final correction source is now frozen; no second-correction run exists.
 [Focused independent review](p08-stage-realization-cycle1-independent-source-review.md)
 verifies the complete five-site borrowed-capture correction at `a72f0943`.
 The [correction and immutable failure packet](p08-stage-realization-cycle1-source-freeze.md)
@@ -28,8 +32,9 @@ source candidate with independent design/source review and early registered nRF
 screen, plus **at most two cause-grouped corrective cycles**. Stop after two
 consecutive unproductive corrections. Mechanical source-review fixes are grouped
 within the applicable correction cycle, not new user micro-approval barriers.
-Current corrective cycles: **1/2 consumed**, productive compiler correction;
-one correction remains. The two-consecutive-unproductive guard remains.
+Current corrective cycles: **2/2 consumed**. Correction 1 is productive compiler
+progress; correction 2 outcome is pending. The two-consecutive-unproductive guard
+and all historical closed allowances remain; no further automatic variant.
 Design review passed; initial source is frozen
 under this authorization. No compiler/build, runtime, screen or hardware run
 precedes independent source review; no routine permission request is required.

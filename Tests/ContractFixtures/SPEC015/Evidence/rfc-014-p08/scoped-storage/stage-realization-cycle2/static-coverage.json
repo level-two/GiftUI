@@ -1,0 +1,21 @@
+{
+  "kind": "compiler-free-source-coverage-only",
+  "baseline": "18dfac6dfce77a585fad91454bb4b2fbe0c3f5e8",
+  "source_sha256": "7abe1865c934945fa560662e1f99a70ecf164085174ad411061fe464c216de73",
+  "normalized_reuse_assertions_equal": true,
+  "normalization": "Inline the five exact owned-fact wrapper expressions and local Bool bindings for source comparison, not execution. Preserve all full expressions.",
+  "guards_frame_checks_and_label_multisets_equal": true,
+  "stale_baselines": 1,
+  "full_stale_comparisons": 5,
+  "borrowed_fact_helpers_without_autoclosures": 5,
+  "static_dynamic_early_cleanup_order_checked": true,
+  "owner_eight_hook_bodies_unchanged": true,
+  "common_completion_and_original_lenders_unchanged": true,
+  "lifetime_annotations_unchanged": true,
+  "unchanged_regions_sha256": {
+    "physical_and_fingerprint": "9ffbce6b5993c3f7f65812647f3e5b9f6eadf30d704e744785748ab3cfa28eca",
+    "outer_and_supplied": "a030ef869f11dc981d6787a486c18c17874212a16ae9f557e5a585558ffa86cd",
+    "routes_and_corpus": "930aa19756757b138ddecada0c04f6514b6bc49b7ecbff4dc6aa1b3f51799945"
+  },
+  "compiler_or_stack_claim": false
+}

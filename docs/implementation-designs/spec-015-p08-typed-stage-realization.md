@@ -17,6 +17,14 @@ superseded_by: null
 
 # Implementation Design — P08 Typed Stage Realization
 
+Current realization update: [cycle 1's measured 75,224-byte rejection](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-cycle1-screen-result.md)
+and independent approach PASS `18dfac6d` lead to the [final cycle-2 source freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-cycle2-source-freeze.md).
+It fuses the initial nested phases into lexical typed construction, lends the host
+to operations inout and bounds owned observations/action leaves. The original
+design sections below explain the initial candidate; this linked freeze records
+the precise current update. Required contracts and limits stay unchanged; 2/2 is
+consumed, independent source review and actual compiler/resource results pending.
+
 This derived note selects one private realization under [SPEC-015 S15](../specs/spec-015-host-configuration.md#s152-additional-acceptance-criteria),
 [accepted ADR-039](../adrs/adr-039-scoped-storage-ownership.md) and plan T8.1/P08.
 It does not amend their ownership, workload or resource contract. The

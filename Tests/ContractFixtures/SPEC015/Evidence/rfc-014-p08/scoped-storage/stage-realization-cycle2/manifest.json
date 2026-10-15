@@ -1,0 +1,105 @@
+{
+  "activity": "p08-stage-realization",
+  "correction_cycle": "2/2 FINAL consumed",
+  "input_commit": "18dfac6dfce77a585fad91454bb4b2fbe0c3f5e8",
+  "approach_review": "18dfac6d",
+  "source_file": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+  "source_sha256": "7abe1865c934945fa560662e1f99a70ecf164085174ad411061fe464c216de73",
+  "driver_sha256": "1f6c8e2729b2ad65c486e87e0a83859ca887f0d1b95c0347cfe8d1ce2cd0345f",
+  "qualification": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-cycle2-applicability.json",
+  "qualification_sha256": "588445f4f2be4947c0a9d3f85dad1c801855e0a43dfcea0d947dda0d0b2aaf03",
+  "exact_component_receipts": 7,
+  "dependency_receipts_checked": 11,
+  "qualifier_checks": {
+    "positive": 7,
+    "negative_current_source": true,
+    "negative_predecessor_metadata": true
+  },
+  "source_diff_xz_sha256": "a377f2e032b56c91fdb7935f5fff59c0cbbced04a3dc2598b62016421e6e40b6",
+  "source_diff_uncompressed_sha256": "5d789f6ba654d4d6d95432f38955745c0da4af4c2376323c0b8465e02315a944",
+  "static_coverage_sha256": "264890a51e3e753ed81c695a79de12eefbad06050b5a4f8a23ab7dd0ad67bef3",
+  "prior_source_manifest": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/stage-realization-cycle1/manifest.json",
+  "prior_source_manifest_sha256": "164b1661af57c31bf1b1a9441a46f500040323c2ef3d3cd9a90d2af157060634",
+  "profiles": {
+    "macos-dynamic": {
+      "scoped_labels": 384,
+      "scoped_labels_sha256": "7413b77f93bfadc6721358ed7425e1a8d350956b6759eb6c3bb6cf5399bab654",
+      "native_controls": [
+        "so06-native-exclusivity-module",
+        "so06-native-exclusivity-positive-link",
+        "so06-native-exclusivity-positive-execute",
+        "so06-native-exclusivity-negative-link",
+        "so06-native-exclusivity-negative-execute"
+      ],
+      "current_coverage": "not run"
+    },
+    "macos-static": {
+      "scoped_labels": 384,
+      "scoped_labels_sha256": "7413b77f93bfadc6721358ed7425e1a8d350956b6759eb6c3bb6cf5399bab654",
+      "native_controls": [
+        "so06-native-exclusivity-module",
+        "so06-native-exclusivity-positive-link",
+        "so06-native-exclusivity-positive-execute",
+        "so06-native-exclusivity-negative-link",
+        "so06-native-exclusivity-negative-execute"
+      ],
+      "current_coverage": "not run"
+    },
+    "raspberry-pi-armv6": {
+      "scoped_labels": 384,
+      "scoped_labels_sha256": "7413b77f93bfadc6721358ed7425e1a8d350956b6759eb6c3bb6cf5399bab654",
+      "native_controls": [],
+      "current_coverage": "not run"
+    },
+    "nrf52840-embedded": {
+      "scoped_labels": 202,
+      "scoped_labels_sha256": "d6fef666f0e9f77b4a33710cdef92aac5571386442e676440bf421a56111c1eb",
+      "native_controls": [],
+      "current_coverage": "not run"
+    }
+  },
+  "runtime_reuse_labels": [
+    "so06-reuse-dynamic-action-current",
+    "so06-reuse-dynamic-action-stale",
+    "so06-reuse-dynamic-admission-current",
+    "so06-reuse-dynamic-admission-stale",
+    "so06-reuse-dynamic-cleanup-backing-last",
+    "so06-reuse-dynamic-control-same-address",
+    "so06-reuse-dynamic-input-current",
+    "so06-reuse-dynamic-input-stale",
+    "so06-reuse-dynamic-inventory-two-hosts",
+    "so06-reuse-dynamic-raw-namespace-collision",
+    "so06-reuse-dynamic-source-current",
+    "so06-reuse-dynamic-source-stale",
+    "so06-reuse-dynamic-terminal-old-host",
+    "so06-reuse-static-action-current",
+    "so06-reuse-static-action-stale",
+    "so06-reuse-static-admission-current",
+    "so06-reuse-static-admission-stale",
+    "so06-reuse-static-cleanup-backing-last",
+    "so06-reuse-static-control-same-address",
+    "so06-reuse-static-input-current",
+    "so06-reuse-static-input-stale",
+    "so06-reuse-static-inventory-two-hosts",
+    "so06-reuse-static-raw-namespace-collision",
+    "so06-reuse-static-source-current",
+    "so06-reuse-static-source-stale",
+    "so06-reuse-static-terminal-old-host"
+  ],
+  "screen_argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    "--fresh-focused",
+    "--select-family",
+    "so07-layout-facts"
+  ],
+  "current_source_execution": "not run; independent source review before one affected early screen",
+  "failure_boundary": "No third automatic source/optimization variant after final failed realization or fit screen; full current acceptance still required if promising."
+}

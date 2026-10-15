@@ -1579,6 +1579,37 @@ fileprivate func p08MatchesReuseFingerprint(_ expected: borrowing P08ReuseFinger
     control: UnsafeMutablePointer<CounterControl>) -> Bool {
     P08ReuseFingerprint(control) == expected
 }
+// Borrow the host only for one operation; return existing owned observations.
+@inline(never)
+fileprivate func p08ReuseModelValue<Owner>(host: borrowing SignalAnalyzerPresetHostInstance<Owner>) -> UInt8
+where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
+    host.owner.observeModelValue()
+}
+
+@inline(never)
+fileprivate func p08ReuseProducedAction<Owner>(host: borrowing SignalAnalyzerPresetHostInstance<Owner>) -> CounterProducedAction
+where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
+    host.owner.observeProducedAction()
+}
+
+@inline(never)
+fileprivate func p08ReusePrepareAction<Owner>(host: borrowing SignalAnalyzerPresetHostInstance<Owner>, action: CounterProducedAction) -> Bool
+where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
+    host.owner.prepareProducedAction(action)
+}
+
+@inline(never)
+fileprivate func p08ReuseDeliverAction<Owner>(host: borrowing SignalAnalyzerPresetHostInstance<Owner>, action: CounterProducedAction) -> Bool
+where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
+    host.owner.deliverProducedAction(action)
+}
+
+@inline(never)
+fileprivate func p08ReuseTeardownStep<Owner>(host: borrowing SignalAnalyzerPresetHostInstance<Owner>) -> UInt8
+where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
+    host.owner.teardownStep
+}
+
 @inline(never)
 fileprivate func p08ReuseActivate<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>) -> Int
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
@@ -1591,11 +1622,13 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
 @inline(never)
 fileprivate func p08ReuseRejectAction<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, route: StaticString, before: borrowing P08ReuseFingerprint, modelBefore: UInt8, oldAction: CounterProducedAction) -> Int
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
-    precondition(!host.owner.prepareProducedAction(oldAction))
-    let unchangedAfterPrepare = p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore
+    let prepared = p08ReusePrepareAction(host: host, action: oldAction)
+    precondition(!prepared)
+    let unchangedAfterPrepare = p08MatchesReuseFingerprint(before, control: control) && p08ReuseModelValue(host: host) == modelBefore
     precondition(unchangedAfterPrepare)
-    precondition(!host.owner.deliverProducedAction(oldAction))
-    let unchangedAfterDelivery = p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore
+    let delivered = p08ReuseDeliverAction(host: host, action: oldAction)
+    precondition(!delivered)
+    let unchangedAfterDelivery = p08MatchesReuseFingerprint(before, control: control) && p08ReuseModelValue(host: host) == modelBefore
     precondition(unchangedAfterDelivery); let checks = counterCheckHostFrame(control.pointee, value: 0)
     p08ReuseLabel(route, "action-stale")
     return checks
@@ -1605,7 +1638,7 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
 fileprivate func p08ReuseRejectInput<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString, before: borrowing P08ReuseFingerprint, modelBefore: UInt8, oldEvent: NormalizedPointerEvent) -> Void
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
-    let unchangedAfterInput = p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore
+    let unchangedAfterInput = p08MatchesReuseFingerprint(before, control: control) && p08ReuseModelValue(host: host) == modelBefore
     precondition(unchangedAfterInput)
     p08ReuseLabel(route, "input-stale")
 }
@@ -1616,7 +1649,7 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
     precondition(transcript.pointee.admission!.submit(stateChange: 8).result == .unavailable)
     precondition(transcript.pointee.admission!.submit(completion: 0).result == .unavailable)
-    let unchangedAfterAdmission = p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore
+    let unchangedAfterAdmission = p08MatchesReuseFingerprint(before, control: control) && p08ReuseModelValue(host: host) == modelBefore
     precondition(unchangedAfterAdmission)
     p08ReuseLabel(route, "admission-stale")
 }
@@ -1629,7 +1662,7 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     precondition(!transcript.pointee.application!.startSource())
     _ = transcript.pointee.application!.installObservation()
     transcript.pointee.application!.stopDelivery()
-    let unchangedAfterSource = p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore
+    let unchangedAfterSource = p08MatchesReuseFingerprint(before, control: control) && p08ReuseModelValue(host: host) == modelBefore
     precondition(unchangedAfterSource)
     p08ReuseLabel(route, "source-stale")
 }
@@ -1642,7 +1675,7 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     precondition(control.pointee.runtime.context.semanticRevision == transcript.pointee.semanticRevision)
     precondition(oldEvent.source == .init(rawValue: 0) && oldEvent.sequence.rawValue == 0 && oldEvent.ordinal.rawValue == 0 && oldEvent.presentationRevision == revision)
     p08ReuseLabel(route, "raw-namespace-collision")
-    let modelBefore = host.owner.observeModelValue()
+    let modelBefore = p08ReuseModelValue(host: host)
     let before = P08ReuseFingerprint(control)
     let checks = p08ReuseRejectAction(host: &host, control: control, route: route, before: before, modelBefore: modelBefore, oldAction: oldAction)
     p08ReuseRejectInput(host: &host, control: control, transcript: transcript, route: route, before: before, modelBefore: modelBefore, oldEvent: oldEvent)
@@ -1669,25 +1702,41 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
 }
 
 @inline(never)
-fileprivate func p08ReuseCurrentAction<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, route: StaticString) -> Int
+fileprivate func p08ReuseCurrentActionDown<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, currentAction: CounterProducedAction, applied: Int, dispatched: Int)
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
-    let currentAction = host.owner.observeProducedAction()
-    let applied = control.pointee.applied, dispatched = control.pointee.actionDispatches
-    precondition(host.owner.prepareProducedAction(currentAction))
+    let prepared = p08ReusePrepareAction(host: host, action: currentAction)
+    precondition(prepared)
     guard case .cycle(.success(let downSummary)) = host.runOpportunity() else { preconditionFailure("reuse current action down cycle") }
     precondition(downSummary.admission.inputEventCount == 1 && downSummary.admission.semanticActionCount == 0)
     precondition(control.pointee.applied == applied && control.pointee.actionDispatches == dispatched)
-    precondition(control.pointee.runtime.pointer.capture.current == currentAction.captured && host.owner.observeModelValue() == 1)
-    precondition(host.owner.deliverProducedAction(currentAction))
+    let captureAndModelMatch = control.pointee.runtime.pointer.capture.current == currentAction.captured && p08ReuseModelValue(host: host) == 1
+    precondition(captureAndModelMatch)
+}
+
+@inline(never)
+fileprivate func p08ReuseCurrentActionUp<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, route: StaticString, currentAction: CounterProducedAction, applied: Int, dispatched: Int) -> Int
+where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
+    let delivered = p08ReuseDeliverAction(host: host, action: currentAction)
+    precondition(delivered)
     precondition(control.pointee.applied == applied && control.pointee.actionDispatches == dispatched)
     guard case .cycle(.success(let upSummary)) = host.runOpportunity() else { preconditionFailure("reuse current action up cycle") }
     precondition(upSummary.admission.inputEventCount == 1 && upSummary.admission.semanticActionCount == 1)
     precondition(control.pointee.lastSealedAction == currentAction.captured && control.pointee.lastDispatchedAction == currentAction.captured)
     precondition(control.pointee.lastDispatchContext?.phase == .mutating && control.pointee.lastDispatchContext?.cycle == upSummary.cycle)
     precondition(control.pointee.applied == applied + 1 && control.pointee.actionDispatches == dispatched + 1)
-    precondition(control.pointee.runtime.pointer.capture.current == nil && host.owner.observeModelValue() == 2)
+    let captureAndModelMatch = control.pointee.runtime.pointer.capture.current == nil && p08ReuseModelValue(host: host) == 2
+    precondition(captureAndModelMatch)
     let checks = counterCheckHostFrame(control.pointee, value: 2); p08ReuseLabel(route, "action-current")
     return checks
+}
+
+@inline(never)
+fileprivate func p08ReuseCurrentAction<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, route: StaticString) -> Int
+where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
+    let currentAction = p08ReuseProducedAction(host: host)
+    let applied = control.pointee.applied, dispatched = control.pointee.actionDispatches
+    p08ReuseCurrentActionDown(host: &host, control: control, currentAction: currentAction, applied: applied, dispatched: dispatched)
+    return p08ReuseCurrentActionUp(host: &host, control: control, route: route, currentAction: currentAction, applied: applied, dispatched: dispatched)
 }
 
 @inline(never)
@@ -1720,7 +1769,8 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
 fileprivate func p08ReuseTerminal<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString) -> Int
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     host.teardown()
-    precondition(host.lifecycleState == .quiescent && host.owner.teardownStep == 8)
+    let terminalState = host.lifecycleState == .quiescent && p08ReuseTeardownStep(host: host) == 8
+    precondition(terminalState)
     guard case .failure = host.activate() else { preconditionFailure("terminal host reactivation") }
     precondition(host.runOpportunity() == .invalidLifecycle)
     if transcript.pointee.hosts == 0 { p08ReuseLabel(route, "terminal-old-host") }
@@ -1732,7 +1782,7 @@ fileprivate func p08RunReuseHost<Owner>(host: inout SignalAnalyzerPresetHostInst
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     let route: StaticString = host.assemblyReport.profile == .static ? "static" : "dynamic"
     var count = p08ReuseActivate(host: &host, control: control)
-    let action = host.owner.observeProducedAction()
+    let action = p08ReuseProducedAction(host: host)
     var admission = CounterAdmission(borrowing: control)
     let revision = control.pointee.runtime.committedPresentation!
     if transcript.pointee.hosts == 1 {
@@ -1923,11 +1973,7 @@ fileprivate func p08FinishStaticOwner(_ owner: inout P08StaticHostOwner) {
 }
 
 @inline(never)
-fileprivate func p08RunStaticHostPhase(host: consuming P08StaticHost, control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
-    var host = consume host
-    // This host is never consumed after the defer captures it.
-    defer { host.teardown(); precondition(host.owner.teardownStep == 8) }
-    if early == 4 { return P08BodyResult(checks: 1, constructed: true, activationAttempted: false) }
+fileprivate func p08RunStaticHostPhase(host: inout P08StaticHost, control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
     let checks: Int
     if let reuse {
         checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
@@ -1945,8 +1991,17 @@ fileprivate func p08RunStaticHostPhase(host: consuming P08StaticHost, control: U
 }
 
 @inline(never)
-fileprivate func p08RunStaticOwnerPhase(owner: consuming P08StaticHostOwner, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
-    var owner = consume owner
+fileprivate func p08RunStaticSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
+    if early == 1 {
+        var session = consume session; session.reset()
+        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+    }
+    let supplied = session.intoSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: CounterHostControl(pointer: control), audit: audit)
+    if early == 2 {
+        var retired = supplied.retireInertStorage(); retired.resetAfterQuiescence()
+        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+    }
+    var owner = P08StaticHostOwner(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: failAfterRuntime)
     if early == 3 {
         p08FinishStaticOwner(&owner)
         return P08BodyResult(checks: 1, constructed: true, activationAttempted: false)
@@ -1954,31 +2009,18 @@ fileprivate func p08RunStaticOwnerPhase(owner: consuming P08StaticHostOwner, mod
     let expected = counterJoinSnapshot(control), foreignExpected = counterJoinSnapshot(foreignControl)
     let joins = counterCheckRejectedBindings(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, report: assembly.report, expected: expected, foreignExpected: foreignExpected)
     #if hasFeature(Embedded)
-    let host = SignalAnalyzerPresetHostInstances.nrf52840Static(report: assembly.report, owner: owner)!
+    var host = SignalAnalyzerPresetHostInstances.nrf52840Static(report: assembly.report, owner: owner)!
     #else
-    let host = SignalAnalyzerPresetHostInstances.macOSStatic(report: assembly.report, owner: owner)!
+    var host = SignalAnalyzerPresetHostInstances.macOSStatic(report: assembly.report, owner: owner)!
     #endif
-    return p08RunStaticHostPhase(host: host, control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joins, early: early, candidateFailure: candidateFailure, reuse: reuse)
-}
-
-@inline(never)
-fileprivate func p08RunStaticSuppliedPhase(supplied: consuming P08StaticSupplied, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
-    if early == 2 {
-        var retired = supplied.retireInertStorage(); retired.resetAfterQuiescence()
-        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+    // This lexical host is never consumed after the defer captures it.
+    defer {
+        host.teardown()
+        let teardownStep = p08ReuseTeardownStep(host: host)
+        precondition(teardownStep == 8)
     }
-    let owner = P08StaticHostOwner(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: failAfterRuntime)
-    return p08RunStaticOwnerPhase(owner: owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
-}
-
-@inline(never)
-fileprivate func p08RunStaticSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
-    if early == 1 {
-        var session = consume session; session.reset()
-        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
-    }
-    let supplied = session.intoSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: CounterHostControl(pointer: control), audit: audit)
-    return p08RunStaticSuppliedPhase(supplied: supplied, activationSpan: activationSpan, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
+    if early == 4 { return P08BodyResult(checks: 1, constructed: true, activationAttempted: false) }
+    return p08RunStaticHostPhase(host: &host, control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joins, early: early, candidateFailure: candidateFailure, reuse: reuse)
 }
 
 #if !hasFeature(Embedded)
@@ -1989,11 +2031,7 @@ fileprivate func p08FinishDynamicOwner(_ owner: inout P08DynamicHostOwner) {
 }
 
 @inline(never)
-fileprivate func p08RunDynamicHostPhase(host: consuming P08DynamicHost, control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
-    var host = consume host
-    // This host is never consumed after the defer captures it.
-    defer { host.teardown(); precondition(host.owner.teardownStep == 8) }
-    if early == 4 { return P08BodyResult(checks: 1, constructed: true, activationAttempted: false) }
+fileprivate func p08RunDynamicHostPhase(host: inout P08DynamicHost, control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
     let checks: Int
     if let reuse {
         checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
@@ -2011,8 +2049,17 @@ fileprivate func p08RunDynamicHostPhase(host: consuming P08DynamicHost, control:
 }
 
 @inline(never)
-fileprivate func p08RunDynamicOwnerPhase(owner: consuming P08DynamicHostOwner, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
-    var owner = consume owner
+fileprivate func p08RunDynamicSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
+    if early == 1 {
+        var session = consume session; session.reset()
+        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+    }
+    let supplied = session.intoDynamicSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: CounterHostControl(pointer: control), audit: audit)
+    if early == 2 {
+        var retired = supplied.retireInertStorage(); retired.resetAfterQuiescence()
+        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+    }
+    var owner = P08DynamicHostOwner(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: failAfterRuntime)
     if early == 3 {
         p08FinishDynamicOwner(&owner)
         return P08BodyResult(checks: 1, constructed: true, activationAttempted: false)
@@ -2020,31 +2067,18 @@ fileprivate func p08RunDynamicOwnerPhase(owner: consuming P08DynamicHostOwner, m
     let expected = counterJoinSnapshot(control), foreignExpected = counterJoinSnapshot(foreignControl)
     let joins = counterCheckDynamicRejectedBindings(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, report: assembly.report, expected: expected, foreignExpected: foreignExpected)
     #if os(Linux)
-    let host = SignalAnalyzerPresetHostInstances.raspberryPiDynamic(report: assembly.report, owner: owner)!
+    var host = SignalAnalyzerPresetHostInstances.raspberryPiDynamic(report: assembly.report, owner: owner)!
     #else
-    let host = SignalAnalyzerPresetHostInstances.macOSDynamic(report: assembly.report, owner: owner)!
+    var host = SignalAnalyzerPresetHostInstances.macOSDynamic(report: assembly.report, owner: owner)!
     #endif
-    return p08RunDynamicHostPhase(host: host, control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joins, early: early, candidateFailure: candidateFailure, reuse: reuse)
-}
-
-@inline(never)
-fileprivate func p08RunDynamicSuppliedPhase(supplied: consuming P08DynamicSupplied, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
-    if early == 2 {
-        var retired = supplied.retireInertStorage(); retired.resetAfterQuiescence()
-        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+    // This lexical host is never consumed after the defer captures it.
+    defer {
+        host.teardown()
+        let teardownStep = p08ReuseTeardownStep(host: host)
+        precondition(teardownStep == 8)
     }
-    let owner = P08DynamicHostOwner(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: failAfterRuntime)
-    return p08RunDynamicOwnerPhase(owner: owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
-}
-
-@inline(never)
-fileprivate func p08RunDynamicSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
-    if early == 1 {
-        var session = consume session; session.reset()
-        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
-    }
-    let supplied = session.intoDynamicSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: CounterHostControl(pointer: control), audit: audit)
-    return p08RunDynamicSuppliedPhase(supplied: supplied, activationSpan: activationSpan, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
+    if early == 4 { return P08BodyResult(checks: 1, constructed: true, activationAttempted: false) }
+    return p08RunDynamicHostPhase(host: &host, control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joins, early: early, candidateFailure: candidateFailure, reuse: reuse)
 }
 #endif
 

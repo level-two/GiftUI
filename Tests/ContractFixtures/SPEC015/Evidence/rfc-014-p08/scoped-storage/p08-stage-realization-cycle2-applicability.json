@@ -1,0 +1,222 @@
+{
+  "kind": "exact-noncompiled-source-applicability-qualification",
+  "activity": "p08-stage-realization-cycle2",
+  "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+  "corrected_source_sha256": "7abe1865c934945fa560662e1f99a70ecf164085174ad411061fe464c216de73",
+  "proof": "Seven exact historical component receipts only. Fresh argv/source-exclusion checks prove CounterScopedStorage.swift is recorded metadata, never compiled by these components. All recorded Swift argv inputs, generated inputs, artifacts, compilers and dependent runtime/core receipt identities were checked. Core Swift manifests, macro tool and SwiftSyntax identities were checked. Changed counter compiled inputs and results cannot reuse this qualification. Existing driver guards remain mandatory.",
+  "receipts": [
+    {
+      "receipt": ".build/contracts/p08-scoped-host-ezcy1qan/result.json",
+      "receipt_sha256": "8ccd2c004117f31f1843584fb157b5a0b5f93669505db88166eafe83f871c64d",
+      "original_source_sha256": "ce84ae4a5093d0e87119a5b2d7172674722f880f61693f3f33daa70882954d5e",
+      "recorded_swift_inputs_count": 53,
+      "recorded_swift_inputs_sha256": "a200363fed11cdfce74cb2d9d5fd40808482671744ba81fcf4d2ce5ec8f7c968",
+      "source_compiled": false,
+      "candidate_source_exclusion": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        }
+      }
+    },
+    {
+      "receipt": ".build/contracts/p08-scoped-host-hzs5q7za/result.json",
+      "receipt_sha256": "beb3d31b312391d266e2ca525b0274aec741629664fb9d55aaca721421bf4216",
+      "original_source_sha256": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+      "recorded_swift_inputs_count": 53,
+      "recorded_swift_inputs_sha256": "eb1d0bcc7a57c05c66cf9ce0e76341fb09116ffdec9a2b4133d24e82b7131675",
+      "source_compiled": false,
+      "candidate_source_exclusion": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        }
+      }
+    },
+    {
+      "receipt": ".build/contracts/spec-011-owned-keys/tmp0vz0ql4d/macos-dynamic/result.json",
+      "receipt_sha256": "8c0c5c2d3cda5681dd110eb947cf05b06fd403f16c0c5503f5b99de32cf7f78f",
+      "original_source_sha256": "ce84ae4a5093d0e87119a5b2d7172674722f880f61693f3f33daa70882954d5e",
+      "recorded_swift_inputs_count": 112,
+      "recorded_swift_inputs_sha256": "3a69ed244e566e5211037e288314837a7304d8cef5379fa0bfd8ab87512d0606",
+      "source_compiled": false,
+      "candidate_source_exclusion": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        }
+      }
+    },
+    {
+      "receipt": ".build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic/result.json",
+      "receipt_sha256": "ec640f13aedd202725ad02e52a5e56e56357b5d3e034b3792788fe95feae4446",
+      "original_source_sha256": "ce84ae4a5093d0e87119a5b2d7172674722f880f61693f3f33daa70882954d5e",
+      "recorded_swift_inputs_count": 173,
+      "recorded_swift_inputs_sha256": "e973cef6c3d48d3986d37d98d18cc8fcaf848c22187e6f72ea49c3207ae7fdcc",
+      "source_compiled": false,
+      "candidate_source_exclusion": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        }
+      }
+    },
+    {
+      "receipt": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/result.json",
+      "receipt_sha256": "1199fd13fc4d309c36f3ddfccac3002ab497641a3fb6483902d97571c9ca923f",
+      "original_source_sha256": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+      "recorded_swift_inputs_count": 173,
+      "recorded_swift_inputs_sha256": "e0f9765b24e8b3b06973962813a32e9e6ef893d09999ba02adb0ca6660cf50f5",
+      "source_compiled": false,
+      "candidate_source_exclusion": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        }
+      }
+    },
+    {
+      "receipt": ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded/result.json",
+      "receipt_sha256": "104c405d2f0c9abb44c47670fde33ae44bf70877f91df11e66f07acd14168d8c",
+      "original_source_sha256": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+      "recorded_swift_inputs_count": 159,
+      "recorded_swift_inputs_sha256": "6776a2fa4178061b2597f05047042e3f7ae7081aeff1777ffc6bbc1146b25b82",
+      "source_compiled": false,
+      "candidate_source_exclusion": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        }
+      }
+    },
+    {
+      "receipt": ".build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpsb8yw4yu/raspberry-pi-armv6/result.json",
+      "receipt_sha256": "36f739426100acd7df8c943b50022f9216c2cd2581235f5794b3afeb35f823a3",
+      "original_source_sha256": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+      "recorded_swift_inputs_count": 172,
+      "recorded_swift_inputs_sha256": "cca85c2208905a58b74396abac3d2503be69fc67e03cf245210c77d614f567e3",
+      "source_compiled": false,
+      "candidate_source_exclusion": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        }
+      }
+    }
+  ],
+  "historical_records_unchanged": true,
+  "followup": "FINAL correction2/2 under approach review18dfac6d: lexical typed construction, inout host operations, borrowed-host owned facts and sequential action leaves. Historical receipts/qualifications unchanged; no further automatic variant.",
+  "candidate_sources": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "7abe1865c934945fa560662e1f99a70ecf164085174ad411061fe464c216de73"
+  },
+  "verification": {
+    "dependency_receipts": {
+      ".build/contracts/p08-scoped-host-ezcy1qan/result.json": {
+        "receipt_sha256": "8ccd2c004117f31f1843584fb157b5a0b5f93669505db88166eafe83f871c64d",
+        "artifacts_checked": 57,
+        "recorded_swift_inputs_checked": 53,
+        "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+      },
+      ".build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic/result.json": {
+        "receipt_sha256": "ec640f13aedd202725ad02e52a5e56e56357b5d3e034b3792788fe95feae4446",
+        "artifacts_checked": 143,
+        "recorded_swift_inputs_checked": 173,
+        "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+      },
+      ".build/contracts/spec-006-rfc-014-swift64/af66aaf967e3fe8f-__4p5wu2/macos-dynamic/result.json": {
+        "receipt_sha256": "05f06a2eb45db2a196b7a76bdfbd5ee1429a802640dd00aa1ce251020b699402",
+        "artifacts_checked": 32,
+        "recorded_swift_inputs_checked": 0,
+        "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+        "macro_tool_sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691",
+        "swift_syntax_sha256": "63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308",
+        "core_swift_manifest_inputs_checked": 45,
+        "core_receipt_has_no_argv": true,
+        "package_metadata_drift": {
+          "recorded": "8f1ef6222486f1ae40d9b24b9298d60d742c6c1717f85448b5afc4b80804276a",
+          "current": "56ec87fe0f47ed4cd93900f4a9d6ee46db079e7ecb55979e07658c29812797bd",
+          "qualification": "Not a compiled Swift input; no package rebuild or macro/toolchain substitution. Exact original artifacts and macro identities checked."
+        }
+      },
+      ".build/contracts/p08-scoped-host-hzs5q7za/result.json": {
+        "receipt_sha256": "beb3d31b312391d266e2ca525b0274aec741629664fb9d55aaca721421bf4216",
+        "artifacts_checked": 57,
+        "recorded_swift_inputs_checked": 53,
+        "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+      },
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/result.json": {
+        "receipt_sha256": "1199fd13fc4d309c36f3ddfccac3002ab497641a3fb6483902d97571c9ca923f",
+        "artifacts_checked": 143,
+        "recorded_swift_inputs_checked": 173,
+        "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+      },
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/result.json": {
+        "receipt_sha256": "4345209f3f2d58e86ea2fdf3b45d15ee5d1da00cce275b964e156ba353c88793",
+        "artifacts_checked": 32,
+        "recorded_swift_inputs_checked": 0,
+        "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+        "macro_tool_sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691",
+        "swift_syntax_sha256": "63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308",
+        "core_swift_manifest_inputs_checked": 45,
+        "core_receipt_has_no_argv": true,
+        "package_metadata_drift": {
+          "recorded": "8f1ef6222486f1ae40d9b24b9298d60d742c6c1717f85448b5afc4b80804276a",
+          "current": "56ec87fe0f47ed4cd93900f4a9d6ee46db079e7ecb55979e07658c29812797bd",
+          "qualification": "Not a compiled Swift input; no package rebuild or macro/toolchain substitution. Exact original artifacts and macro identities checked."
+        }
+      },
+      ".build/contracts/spec-011-owned-keys/tmp0vz0ql4d/macos-dynamic/result.json": {
+        "receipt_sha256": "8c0c5c2d3cda5681dd110eb947cf05b06fd403f16c0c5503f5b99de32cf7f78f",
+        "artifacts_checked": 130,
+        "recorded_swift_inputs_checked": 112,
+        "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+        "macro_tool_sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691"
+      },
+      ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded/result.json": {
+        "receipt_sha256": "104c405d2f0c9abb44c47670fde33ae44bf70877f91df11e66f07acd14168d8c",
+        "artifacts_checked": 115,
+        "recorded_swift_inputs_checked": 159,
+        "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+      },
+      ".build/nrf52840/contracts/spec-006-rfc-014-swift64/39961046dd4e63d8-lv470rbm/nrf52840-embedded/result.json": {
+        "receipt_sha256": "43637fce83895306edc6f831951665e1ba8d14bc568b6db51f97d2125bcd9b2b",
+        "artifacts_checked": 31,
+        "recorded_swift_inputs_checked": 0,
+        "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+        "macro_tool_sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691",
+        "swift_syntax_sha256": "63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308",
+        "core_swift_manifest_inputs_checked": 45,
+        "core_receipt_has_no_argv": true,
+        "package_metadata_drift": {
+          "recorded": "8f1ef6222486f1ae40d9b24b9298d60d742c6c1717f85448b5afc4b80804276a",
+          "current": "56ec87fe0f47ed4cd93900f4a9d6ee46db079e7ecb55979e07658c29812797bd",
+          "qualification": "Not a compiled Swift input; no package rebuild or macro/toolchain substitution. Exact original artifacts and macro identities checked."
+        }
+      },
+      ".build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpsb8yw4yu/raspberry-pi-armv6/result.json": {
+        "receipt_sha256": "36f739426100acd7df8c943b50022f9216c2cd2581235f5794b3afeb35f823a3",
+        "artifacts_checked": 120,
+        "recorded_swift_inputs_checked": 172,
+        "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+      },
+      ".build/raspberry-pi/contracts/spec-006-rfc-014-swift64/39961046dd4e63d8-aj3k5c43/raspberry-pi-armv6/result.json": {
+        "receipt_sha256": "d9b79b9d6c1ba39f7e58265b9859a1e317973089debddd882be9678ec5e332a6",
+        "artifacts_checked": 31,
+        "recorded_swift_inputs_checked": 0,
+        "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+        "macro_tool_sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691",
+        "swift_syntax_sha256": "63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308",
+        "core_swift_manifest_inputs_checked": 45,
+        "core_receipt_has_no_argv": true,
+        "package_metadata_drift": {
+          "recorded": "8f1ef6222486f1ae40d9b24b9298d60d742c6c1717f85448b5afc4b80804276a",
+          "current": "56ec87fe0f47ed4cd93900f4a9d6ee46db079e7ecb55979e07658c29812797bd",
+          "qualification": "Not a compiled Swift input; no package rebuild or macro/toolchain substitution. Exact original artifacts and macro identities checked."
+        }
+      }
+    },
+    "exact_receipts": 7,
+    "only_changed_swift_source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+    "compiler_executed": false
+  }
+}
