@@ -1,6 +1,7 @@
 # P08 remaining completion activity — 2026-10-15
 
-Status: **active; focused target layout PASS, four full collections next**.
+Status: **active; four full collections PASS; two early images and resource/exit review next**.
+See the [full collection checkpoint](p08-remaining-full-collections-result.md).
 See the [final focused result](p08-remaining-layout-cycle2-result.md). Both
 corrective cycles are consumed (2/2); historical pending wording below records
 the entry and corresponding source steps. No automatic additional repair remains.
@@ -10,10 +11,9 @@ focused measurements. Cycle 1 removed the insufficient-reservation trap;
 unused region-array initialization and compiler merging remained.
 [Final correction 2 source freeze](p08-remaining-layout-cycle2-source-freeze.md)
 implements the independently assessed scalar traversal and bounded return proof.
-**2/2 corrective cycles consumed**; independent source review and the final
-affected focused materialization rerun are pending. Full collections remain
-held until materialization succeeds. Any further materialization failure stops
-this allowance; no automatic third variant. No fit pass is claimed.
+**2/2 corrective cycles consumed**. Independent source review, focused materialization
+and all four full collections have passed. No automatic third repair variant is
+authorized. Image and complete resource-fit evidence remain pending; no fit pass is claimed.
 Entry is clean `6c965007`, with source `73e5dcf1`. Eugene explicitly requested:
 “Please proceed with the remaining p08 tasks”, after the completed
 [collected-suite repair batch](p08-suite-collection-result.md). Existing instructions
