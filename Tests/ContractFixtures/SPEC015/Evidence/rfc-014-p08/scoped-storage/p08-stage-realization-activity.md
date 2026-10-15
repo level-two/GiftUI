@@ -1,18 +1,17 @@
 # P08 stage realization — grouped design/correction activity
 
-Status: **final correction 2/2 independent SOURCE PASS; not executed**.
-[Independent source review](p08-stage-realization-cycle2-independent-source-review.md)
-passes source `f7e56cf0` for the one final affected screen.
-The [final source freeze](p08-stage-realization-cycle2-source-freeze.md) implements
-the independently reviewed lexical/inout/owned-observation approach. It has no
-compiler or resource result. No third automatic variant follows a failed final
-realization or fit screen.
+Status: **STOP; final correction 2/2 compiler/layout PASS, stack fit FAIL**.
+The [final result](p08-stage-realization-final-result.md) proves a required 66,864-byte
+stale-action lower bound; construction/current-action/teardown also exceed 27,648.
+Final screen: 25 checks pass, 202 not run; aggregate coverage incomplete.
+Independent result review is next; both cycles closed, no automatic third variant.
+The final source/initial failures and prior allowances remain immutable.
 The [actual object screen result](p08-stage-realization-cycle1-screen-result.md)
 proves a required 75,224-byte nested lower bound against 27,648. Root/reuse
 orchestrator frames improve; live phase homes and whole-state observation
 temporaries remain. The [independent result/approach review](p08-stage-realization-cycle1-independent-result-approach-review.md)
 confirms this fit failure and passes the concrete final correction approach.
-Final correction source is now frozen; no second-correction run exists.
+Final correction source and affected screen are preserved; fit failed.
 [Focused independent review](p08-stage-realization-cycle1-independent-source-review.md)
 verifies the complete five-site borrowed-capture correction at `a72f0943`.
 The [correction and immutable failure packet](p08-stage-realization-cycle1-source-freeze.md)
@@ -35,7 +34,7 @@ screen, plus **at most two cause-grouped corrective cycles**. Stop after two
 consecutive unproductive corrections. Mechanical source-review fixes are grouped
 within the applicable correction cycle, not new user micro-approval barriers.
 Current corrective cycles: **2/2 consumed**. Correction 1 is productive compiler
-progress; correction 2 outcome is pending. The two-consecutive-unproductive guard
+progress; correction 2 compiles but fails fit. The two-consecutive-unproductive guard
 and all historical closed allowances remain; no further automatic variant.
 Design review passed; initial source is frozen
 under this authorization. No compiler/build, runtime, screen or hardware run

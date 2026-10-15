@@ -1,6 +1,13 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-Current stack candidate A — **STOP; object rejection after one screen, 2026-10-15**.
+Current typed-stage boundary — **STOP; final 2/2 stack fit FAIL, 2026-10-15**.
+The [final result](scoped-storage/p08-stage-realization-final-result.md) records 25 compiler/layout passes, 202 controls not run,
+and a required 66,864-byte nested lower bound against 27,648. Source compilation
+is clear; physical stack fit remains blocked. No automatic third variant or budget
+waiver; independent result review is next. P08/R07/T8.1/HC-RD-003 stay open.
+Earlier candidate/activity boundaries below remain historical.
+
+Historical stack candidate A — **STOP; object rejection after one screen, 2026-10-15**.
 The [screen result](scoped-storage/p08-stack-candidate-a-screen-result.md) records 25 passing preparation/module/layout checks,
 202 controls not run, and incomplete aggregate coverage. The object still requires
 a reachable ≥30,096-byte frame; the required nested path improves 213,120→114,464
@@ -73,7 +80,7 @@ All nine SO criteria, fit and P08 remain open. The earlier dated checkpoints bel
 are historical; this boundary supersedes their pending/current action wording.
 
 
-Current integrated independent SOURCE review — 2026-10-14: [Strong review of `e2d9db9c`](scoped-storage/p08-integrated-independent-source-review.md) finds **B01 blocking**: current retained-action delivery bypasses the admitted/sealed SPEC-009 mutation path. Original producer guards and full same-inventory/same-address host reconstruction are present; O01 requests targeted application-counter fingerprint coverage. Source readiness fails until correction; no compiler/runtime/fit/conformance result. Broader activity permits a bundled autonomous local correction and independent assessment, with cycles **0/2 consumed**, matrix/images **0 consumed** at review. Historical allowances and the two-unproductive guard persist; no renewed file permission gate.
+Historical integrated independent SOURCE review — 2026-10-14: [Strong review of `e2d9db9c`](scoped-storage/p08-integrated-independent-source-review.md) finds **B01 blocking**: current retained-action delivery bypasses the admitted/sealed SPEC-009 mutation path. Original producer guards and full same-inventory/same-address host reconstruction are present; O01 requests targeted application-counter fingerprint coverage. Source readiness fails until correction; no compiler/runtime/fit/conformance result. Broader activity permits a bundled autonomous local correction and independent assessment, with cycles **0/2 consumed**, matrix/images **0 consumed** at review. Historical allowances and the two-unproductive guard persist; no renewed file permission gate.
 
 Review-only checks pass: `git diff --check`; all eight frozen source SHA-256
 identities match; 26 unique route labels (13 per route); driver AST parsed without

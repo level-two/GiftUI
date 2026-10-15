@@ -1,0 +1,140 @@
+{
+  "source_revision": "0faf6c761423af40fffd3953eb8a14407bb07754",
+  "source_sha256": "7abe1865c934945fa560662e1f99a70ecf164085174ad411061fe464c216de73",
+  "wrapper_argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    "--fresh-focused",
+    "--select-family",
+    "so07-layout-facts"
+  ],
+  "wrapper_exit": 0,
+  "actual_inputs": [
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-l9u4imor/P08CounterRuntime.o",
+      "sha256": "917e93305c4b2c9f46bf83fb92df407bb141955a73cf53379f26ce14fcc0f904",
+      "bytes": 2766488
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-l9u4imor/result.json",
+      "sha256": "cdead491a37a2f5bc7f7f1de005df78894c1d4b0e34d855fd65a918c1ae02465",
+      "bytes": 3147602
+    },
+    {
+      "path": ".build/nrf52840/contracts/p08-counter-l9u4imor/so07-layout-facts.json",
+      "sha256": "a1d58b1d708b73c02d59c45ad4e684ce05d7acede90a5bdc90f5657ff2a96def",
+      "bytes": 112545
+    },
+    {
+      "path": ".build/contracts/p08-integrated-activity/20261015T211921060849Z-stage-realization-cycle2-screen/result.json",
+      "sha256": "e93f474ddd30a149c58cdc1797c03f230c2468df1ec94ff58f5d3cf520d9ad09",
+      "bytes": 1038
+    }
+  ],
+  "receipt_archive_sha256": "e9a1ba89539699306ac36b2a2c3ea334ce4fe6768d7465816cc22040d87f844b",
+  "frames_packet_sha256": "dd1a9e835a908e7495807c65a8af48632b5d2018456687b8936bb241bfee8392",
+  "statuses": {
+    "passed": 25,
+    "not-run": 202
+  },
+  "fresh_focused": true,
+  "focused_passed": true,
+  "collection_complete": false,
+  "passed": false,
+  "layout_summary": {
+    "cursor": 31993,
+    "maximumAlignment": 8,
+    "slotBytes": 32000,
+    "totalBytes": 128000,
+    "retained_bytes": 128000
+  },
+  "paths": {
+    "stale-action-prepare": {
+      "sections": [
+        3839,
+        3831,
+        3734,
+        3694,
+        3646,
+        3623
+      ],
+      "frames": [
+        26072,
+        4216,
+        5360,
+        8032,
+        19272,
+        3912
+      ],
+      "lower_bound": 66864,
+      "not_complete_upper_bound": true
+    },
+    "current-action-up": {
+      "sections": [
+        3839,
+        3831,
+        3734,
+        3718,
+        3714,
+        3638,
+        7168
+      ],
+      "frames": [
+        26072,
+        4216,
+        5360,
+        5296,
+        11528,
+        144,
+        7896
+      ],
+      "lower_bound": 60512,
+      "not_complete_upper_bound": true
+    },
+    "host-construction": {
+      "sections": [
+        3839,
+        3850
+      ],
+      "frames": [
+        26072,
+        8728
+      ],
+      "lower_bound": 34800,
+      "not_complete_upper_bound": true
+    },
+    "terminal-teardown-reset": {
+      "sections": [
+        3839,
+        3831,
+        3734,
+        3730,
+        9198,
+        7184
+      ],
+      "frames": [
+        26072,
+        4216,
+        5360,
+        344,
+        24,
+        7832
+      ],
+      "lower_bound": 43848,
+      "not_complete_upper_bound": true
+    }
+  },
+  "fit": "FAIL by required reachable lower bounds",
+  "main_stack_limit": 27648,
+  "previous_required_current_action_subpath_lower_bound": 75224,
+  "comparison_caveat": "Final current-action up is60512; stale prepare66864 is a different simultaneous path. No global maximum or whole-workload saving claimed.",
+  "budget": "2/2 closed; no new automatic variant",
+  "compiler_build_runtime_image_executed_during_analysis": false
+}

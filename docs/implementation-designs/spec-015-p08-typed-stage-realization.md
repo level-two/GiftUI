@@ -17,6 +17,11 @@ superseded_by: null
 
 # Implementation Design — P08 Typed Stage Realization
 
+Current boundary: [final cycle-2 result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-final-result.md) compiles/extracts layout but
+requires at least 66,864 bytes on a required nested path. **Fit FAIL; 2/2 closed**,
+no automatic third variant. Independent result review is pending. The following
+realization history remains intact; no architecture or resource amendment follows.
+
 Current realization update: [cycle 1's measured 75,224-byte rejection](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-cycle1-screen-result.md)
 and independent approach PASS `18dfac6d` lead to the [final cycle-2 source freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-cycle2-source-freeze.md).
 It fuses the initial nested phases into lexical typed construction, lends the host
