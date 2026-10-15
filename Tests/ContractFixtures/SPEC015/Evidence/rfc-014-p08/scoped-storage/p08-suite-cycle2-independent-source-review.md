@@ -80,3 +80,35 @@ Proceed with the recorded fresh focused checks and full Embedded collection.
 Current-source compiler/runtime/layout/fit acceptance remains pending and
 partial coverage remains partial. This is a routine correction within grouped
 **cycle 2/2**, with no reset, third cycle or change to historical limits.
+
+
+## Same-cycle follow-up 2 — independent narrow review
+
+**PASS for the planned runtime-first retest of `73e5dcf1`.** The three pinned
+existing-binary traces reach `P08TypedBackingOwner.requireEmpty`; the source
+explains the invalid empty-state read: Static drawing summary requires a
+published summary, while initialization/reset leave it nil. At source 565–571,
+the correction retains wrapper inactivity and uses existing synchronous typed
+`withBase` to assert all four actual stroke/point/subpath/normalized counts are
+zero. Those getters read existing scalar storage without publication. The
+callback only reads its loan; no value escapes. This preserves API, layout,
+publication semantics and the later successful-preflight summary checks.
+The traces localize the trap to requireEmpty; corrected runtime success still
+requires execution.
+
+Independently verified the [follow-up freeze](p08-suite-cycle2-followup2.md),
+all ten [manifest](p08-suite-cycle2-followup2-source-manifest.json) hashes,
+two failed receipt hashes, all three exact diagnostic log and binary hashes
+with recorded target paths, and all seven unchanged predecessor entries in the
+[new qualification](p08-suite-cycle2-followup2-applicability.json), including
+original hashes, Swift input counts/digests and source exclusion. The driver
+only changes qualification path; changed-driver AST and whitespace pass.
+Unchanged harness tests were not repeated; the reported 29-test result is
+source-agent evidence. No debugger, compiler, suite or runtime was run here.
+
+Proceed with fresh native runtime/exclusivity first, then the recorded ARMv6
+families and full Embedded collection. The preceding 22 native compiler-control
+passes remain tied to their preceding source identity; they are not current
+coverage by implication. P08/runtime/resources/fit acceptance remains open.
+This is the same coherent grouped **cycle 2/2**, without a third cycle, reset or
+new contract decision.
