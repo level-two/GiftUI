@@ -28,7 +28,7 @@ Current typed-stage boundary — **STOP; final 2/2 stack fit FAIL, 2026-10-15**.
 The [final result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-final-result.md) records 25 compiler/layout passes, 202 controls not run,
 and a required 66,864-byte nested lower bound against 27,648. Source compilation
 is clear; physical stack fit remains blocked. No automatic third variant or budget
-waiver; independent result review is next. P08/R07/T8.1/HC-RD-003 stay open.
+waiver; [independent exit review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-independent-exit-review.md) confirms STOP / fit FAIL. P08/R07/T8.1/HC-RD-003 stay open.
 Earlier candidate/activity boundaries below remain historical.
 
 Previous stack candidate A — **STOP; object rejection after one screen, 2026-10-15**.

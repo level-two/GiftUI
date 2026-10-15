@@ -7,7 +7,8 @@ The registered screen exits 0 in about 52 seconds: 25 preparation/module/layout
 checks pass, 202 controls are not run. Fresh/focused success is true; complete
 collection and aggregate pass are false. No current full collection, runtime,
 image or complete resource result follows. Both cycles are closed; no automatic
-third variant. Independent result review is next. Older evidence stays immutable.
+third variant. [Independent exit review](p08-stage-realization-independent-exit-review.md)
+confirms the result and package STOP. Older evidence stays immutable.
 
 [Compact result](stage-realization-cycle2-screen/result.json),
 [original receipts](stage-realization-cycle2-screen/screen-receipts.tar.xz) and

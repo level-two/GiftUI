@@ -19,7 +19,7 @@ superseded_by: null
 
 Current boundary: [final cycle-2 result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-final-result.md) compiles/extracts layout but
 requires at least 66,864 bytes on a required nested path. **Fit FAIL; 2/2 closed**,
-no automatic third variant. Independent result review is pending. The following
+no automatic third variant. [Independent exit review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-independent-exit-review.md) confirms the blockage. The following
 realization history remains intact; no architecture or resource amendment follows.
 
 Current realization update: [cycle 1's measured 75,224-byte rejection](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-cycle1-screen-result.md)
@@ -28,7 +28,8 @@ It fuses the initial nested phases into lexical typed construction, lends the ho
 to operations inout and bounds owned observations/action leaves. The original
 design sections below explain the initial candidate; this linked freeze records
 the precise current update. Required contracts and limits stay unchanged; 2/2 is
-consumed, independent source review and actual compiler/resource results pending.
+consumed; independent source review passed, current nRF module/layout compiles,
+and the final object resource review fails fit. Current full acceptance remains open.
 
 This derived note selects one private realization under [SPEC-015 S15](../specs/spec-015-host-configuration.md#s152-additional-acceptance-criteria),
 [accepted ADR-039](../adrs/adr-039-scoped-storage-ownership.md) and plan T8.1/P08.

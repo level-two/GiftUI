@@ -4,7 +4,8 @@ Status: **STOP; final correction 2/2 compiler/layout PASS, stack fit FAIL**.
 The [final result](p08-stage-realization-final-result.md) proves a required 66,864-byte
 stale-action lower bound; construction/current-action/teardown also exceed 27,648.
 Final screen: 25 checks pass, 202 not run; aggregate coverage incomplete.
-Independent result review is next; both cycles closed, no automatic third variant.
+[Independent exit review](p08-stage-realization-independent-exit-review.md) confirms
+STOP / resource fit FAIL; both cycles closed, no automatic third variant.
 The final source/initial failures and prior allowances remain immutable.
 The [actual object screen result](p08-stage-realization-cycle1-screen-result.md)
 proves a required 75,224-byte nested lower bound against 27,648. Root/reuse
