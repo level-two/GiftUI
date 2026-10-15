@@ -1,6 +1,8 @@
 # P08 remaining completion activity — 2026-10-15
 
-Status: **resource reconciliation complete; fit FAIL; independent Strong exit review pending**.
+Status: **STOP at package boundary; fit FAIL; independent Strong exit review complete**.
+The [independent exit review](p08-remaining-independent-exit-review.md) confirms
+P08 is not complete and requires maintainer disposition.
 The [current resource/result record](p08-remaining-images-resource-result.md)
 preserves both successful image builds and the actual reachable nRF frame lower
 bound 30,096 bytes versus 27,648. Both corrective cycles are consumed (2/2); no

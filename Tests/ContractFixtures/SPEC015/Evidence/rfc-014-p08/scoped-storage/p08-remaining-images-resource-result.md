@@ -1,7 +1,7 @@
 # P08 early images and resource reconciliation — 2026-10-15
 
 **Fit FAIL; P08/R07/T8.1/HC-RD-003 remain open. Independent Strong exit review
-is pending.** The four [full collections](p08-remaining-full-collections-result.md)
+confirms the blocking failure.** The four [full collections](p08-remaining-full-collections-result.md)
 pass for final source `0d3e3c7d`, reviewed at `51544daa`; the two registered early
 image builds exit 0 at checkpoint `47b57eb8`. A reachable frame in the actual
 nRF image alone exceeds the unchanged 27,648-byte main-stack ceiling. This
@@ -9,6 +9,9 @@ document supplies evidence and dispositions, not an implemented transition.
 The [activity](p08-remaining-completion-activity.md) has consumed both corrective
 cycles (2/2). No source repair, new compiler/build invocation, target execution,
 hardware action or resource waiver was performed during this reconciliation.
+
+[Independent exit assessment](p08-remaining-independent-exit-review.md) confirms
+the actual reachable lower bound and exhausted activity boundary.
 
 ## Preserved image identities
 
@@ -143,6 +146,9 @@ D01–D34 dispositions are not compiler-resolved compatibility proof. Analyzer
 factory/model/root/target gaps, I4-07 and generated/analyzer migration remain
 explicit. No broad analyzer/P10 test campaign was run.
 
+All nine SO criteria remain formally open; these rows describe supporting
+evidence and remaining obligations, not full criterion closure.
+
 | Criterion | Current disposition |
 | --- | --- |
 | IN-SO-001 | Required declaration/state/lifetime matrix passes the four full compiler collections. |
@@ -153,13 +159,13 @@ explicit. No broad analyzer/P10 test campaign was run.
 | RP-SO-003 | Four full matrices and both linked images/ABI/layout/static RAM/flash pass; **nRF stack fit fails**, complete IRQ/allocator/Dynamic cost proof remains open. |
 | HC-SO-001 | Four full independently lifetime-limited carrier matrices pass, including synchronous-scope async transfer rejection and successful twins. |
 | HC-SO-002 | Finite counter native ownership/cleanup/provenance/action/semantic/pixel controls pass; broader retained analyzer applicability and target execution are not supplied. |
-| HC-SO-003 | Exact source/compiler/route/images recorded; resources fail and independent Strong exit remains pending. No P08 pass. |
+| HC-SO-003 | Exact source/compiler/route/images recorded; resources fail and independent Strong exit confirms blockage. No P08 pass. |
 
 P08, R07, T8.1 and HC-RD-003 stay open. SPEC-011/013/015 remain implementing;
 plans remain active. I4-07/analyzer applicability, P09–P12, connected hardware
-and timing evidence retain their existing boundaries. The next action is an
-independent Strong review of this failure package, then maintainer disposition
-of the exhausted allowance/resource failure. No corrective architecture or raised
+and timing evidence retain their existing boundaries. The independent Strong
+review confirms the failure. The next action is maintainer disposition of the exhausted allowance/resource failure, as specified
+in the linked exit assessment. No corrective architecture or raised
 ceiling is selected by this report.
 
 ## Documentary verification
