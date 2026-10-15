@@ -1,5 +1,7 @@
 # P08 stack candidate A — bounded source/screen activity
 
+Current boundary: **B01 mechanically corrected; focused independent reassessment pending; screen 0/1**.
+
 Status: **SOURCE BLOCKED by introduced field-receiver error B01;
 screen 0/1; fit remains failed**. Entry `a90841e0`,
 compiled baseline `0d3e3c7d`. The [independent source review](p08-stack-candidate-a-independent-source-review.md)
@@ -37,3 +39,15 @@ The [source freeze](p08-stack-candidate-a-source-freeze.md) and
 [manifest](stack-candidate-a/manifest.json) pin the exact realization and
 seven-receipt qualification. Candidate 1/1 frozen; screen 0/1, automatic repairs
 0 allowed. Historical guards remain closed.
+
+## Mechanical pre-execution correction
+
+Review `e33f57ea` found five transcript receiver errors (B01). Under the existing
+user instruction to correct routine errors without barrier stops, the parent
+authorized **one exact mechanical pre-execution correction**, not another
+optimization variant or screen. The [corrected freeze](p08-stack-candidate-a-review-correction-source-freeze.md)
+preserves the original source/failure records and pins only five restorations
+plus fresh qualification/driver pin. The current legitimate projection count
+is **30**, not the historical erroneous 35. Candidate 1/1 remains the same;
+screen 0/1; historical 2/2 closed. Zero automatic optimization variants remains
+the bound; this correction does not reset it.

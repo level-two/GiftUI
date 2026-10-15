@@ -1602,12 +1602,12 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
         precondition(!host.owner.deliverProducedAction(oldAction))
         precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore); count += counterCheckHostFrame(control.pointee, value: 0)
         p08ReuseLabel(route, "action-stale")
-        precondition(transcript.pointee.runtime.admission!.submit(pointer: oldEvent).result == .unavailable)
+        precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
         precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore)
         p08ReuseLabel(route, "input-stale")
-        precondition(transcript.pointee.runtime.admission!.submit(pointer: oldEvent).result == .unavailable)
-        precondition(transcript.pointee.runtime.admission!.submit(stateChange: 8).result == .unavailable)
-        precondition(transcript.pointee.runtime.admission!.submit(completion: 0).result == .unavailable)
+        precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
+        precondition(transcript.pointee.admission!.submit(stateChange: 8).result == .unavailable)
+        precondition(transcript.pointee.admission!.submit(completion: 0).result == .unavailable)
         precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore)
         p08ReuseLabel(route, "admission-stale")
         precondition(!transcript.pointee.application!.constructedProjectionIsValid)
@@ -1625,7 +1625,7 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     if transcript.pointee.hosts == 0 {
         transcript.pointee.action = action; transcript.pointee.event = downEvent
         transcript.pointee.semanticRevision = control.pointee.runtime.context.semanticRevision
-        transcript.pointee.runtime.admission = admission; transcript.pointee.application = host.owner.observeApplicationProducer()
+        transcript.pointee.admission = admission; transcript.pointee.application = host.owner.observeApplicationProducer()
     }
     guard case .cycle(.success(let summary)) = host.runOpportunity() else { preconditionFailure("reuse current pointer cycle") }
     precondition(summary.admission.inputEventCount == 2 && summary.admission.semanticActionCount == 1)
