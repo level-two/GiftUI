@@ -1,11 +1,13 @@
 # P08 collected-suite repair batch — 2026-10-15
 
-Status: **validation collected; independent package review pending**. The requested
+Status: **repair batch complete; independent package review PASS**. The requested
 batch collected the registered four-profile P08 baseline, grouped routine defects,
 and validated the corrected code with focused native/ARMv6 checks and a complete
 Embedded counter collection. This is completion of the repair batch, not P08
 acceptance or a resource-fit claim. Source correction `73e5dcf1` was independently
 reviewed at `76dca6cf`; earlier source and diagnosis commits remain immutable.
+[Independent package review](p08-suite-collection-independent-package-review.md)
+confirms the evidence and coverage limits below.
 
 ## Baseline and corrections
 
@@ -81,7 +83,7 @@ this batch supplies no replacement fit evidence. FW-038 retains the deferred
 validation-cost work without changing the approved corpus.
 
 Package documentation checks: governance validation (199 authority nodes / 2,022
-edges), 516 local Markdown links and `git diff --check` pass. The archive was
+edges), 521 local Markdown links and `git diff --check` pass. The archive was
 reread and all 7,456 recorded member hashes verified; it is 1,471,892 bytes.
 The source step already passed the formatter and 29 compiler-free collection
 tests before the recorded compiler/runtime validation.

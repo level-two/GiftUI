@@ -1,6 +1,6 @@
 # RFC-014 task context guide
 
-Current P08 collected-suite repair batch — **VALIDATED; package review pending, 2026-10-15**.
+Current P08 collected-suite repair batch — **COMPLETE; independent package review PASS, 2026-10-15**.
 The [batch result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-suite-collection-result.md) records the full registered baseline collection,
 grouped routine corrections and focused validation. Current native runtimes pass
 1,736,158 Static / 1,736,082 Dynamic assertions with zero failures; reuse and

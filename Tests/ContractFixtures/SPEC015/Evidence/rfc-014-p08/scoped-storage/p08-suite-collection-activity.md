@@ -1,7 +1,8 @@
 # P08 suite collection activity — 2026-10-14
 
-Status: **repair batch validated; independent package review pending**.
-See the [current batch result](p08-suite-collection-result.md) for completed
+Status: **repair batch complete; independent package review PASS**.
+See the [independent package review](p08-suite-collection-independent-package-review.md)
+and [current batch result](p08-suite-collection-result.md) for completed
 baseline collection, grouped repairs, focused results and remaining acceptance
 limits. Historical pending wording below describes its corresponding source freeze.
 Current grouped collected-suite correction consumes **cycle 2/2** at source
