@@ -12,17 +12,17 @@ rejects this realization. Corrections remain 0/2; no budget is reset.
 [Current result](p08-measured-sizing-stack-preflight-result.md) preserves 25 selected
 passes / 202 not-run, strict current layout and required stack lower bound 71,088.
 Backing 138,880 plus that stack is 209,968 > RAM ceiling 196,608 before omitted
-costs. Independent result review precedes cancellation of costly full controls/image
-for this source; affected resource work stops at the genuine realization/contract
-boundary. Unused tooling/sizing corrections do not authorize a source optimization
+costs. [Independent resource review](p08-measured-sizing-independent-resource-review.md)
+PASS confirms this lower bound; stop costly full controls/image for this source at
+the physical-realization/resource-authority boundary. Unused tooling/sizing corrections do not authorize a source optimization
 or resource-limit change. No current linked image or complete upper bound claimed.
 
 Historical sizing source boundary:
 [Sizing freeze](p08-layout-measured-sizing-source-freeze.md) records exact Swift/C
 34,720-byte slots / 138,880 four-slot charge and fresh component qualification.
 [Independent sizing source review](p08-layout-measured-sizing-independent-source-review.md)
-PASS at `5e463e50`; fresh focused current-module/layout verification is next.
-No current-source compilation or accepted layout is yet claimed.
+PASS at `5e463e50` preceded the completed current-module/layout verification
+recorded above; that earlier source-only boundary remains historical.
 [Source freeze](p08-layout-literal-tool-source-freeze.md) records the exact finite
 proof and 50 passing compiler-free layout tests. [Independent source review](p08-layout-literal-tool-independent-source-review.md)
 PASS preceded the completed same-object read: all 129 facts strictly decoded,

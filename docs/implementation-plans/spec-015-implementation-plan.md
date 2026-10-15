@@ -24,7 +24,15 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current typed-stage boundary — **STOP; final 2/2 stack fit FAIL, 2026-10-15**.
+Current measured-sizing boundary — **STOP; resource FAIL independently confirmed, 2026-10-16**.
+The [current result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-measured-sizing-stack-preflight-result.md) records 25 current preparation/module/layout passes and 202 controls not run.
+The [independent resource review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-measured-sizing-independent-resource-review.md) verifies a required 71,088-byte stack path plus 138,880-byte backing:
+209,968 exceeds governed 196,608 RAM by 13,360 before omitted costs. Stop full
+controls/image for this realization; no complete peak or current image is claimed.
+Tooling/sizing corrections remain 0/2; prior budgets remain closed. No automatic
+optimization or resource waiver. P08/R07/T8.1/HC-RD-003 and all nine SO criteria stay open.
+
+Historical typed-stage boundary — **STOP; final 2/2 stack fit FAIL, 2026-10-15**.
 The [final result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-final-result.md) records 25 compiler/layout passes, 202 controls not run,
 and a required 66,864-byte nested lower bound against 27,648. Source compilation
 is clear; physical stack fit remains blocked. No automatic third variant or budget

@@ -1,6 +1,13 @@
 # P08 physical representation and ownership assessment
 
-Status: **focused independent DESIGN PASS at `26872845`; G01–G03 closed at design scope**.
+Current implementation boundary: **measured sizing/compilation PASS; resource FAIL**.
+[Independent current result review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-measured-sizing-independent-resource-review.md)
+verifies 71,088 stack + 138,880 retained backing = 209,968 > 196,608 governed RAM.
+Full controls/image stop for this realization; complete peaks/current image remain
+unproved. The design review below remains historical; no new source variant,
+resource amendment or fit acceptance follows. P08 and nine SO criteria remain open.
+
+Historical design status: **focused independent DESIGN PASS at `26872845`; G01–G03 closed at design scope**.
 [Focused reassessment](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-physical-representation-independent-design-reassessment.md)
 recommends the concrete bounded source package within existing authority. No
 implementation/repair allowance or fit result is created.

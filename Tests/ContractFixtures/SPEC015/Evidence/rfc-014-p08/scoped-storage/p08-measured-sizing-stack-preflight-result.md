@@ -5,8 +5,8 @@ only its stack budget.** Required stack frames total at least 71,088 bytes; the
 measured original backing alone retains 138,880. Their sum is **209,968**, exceeding
 the ceiling by **13,360** before other RAM, outer callers, deeper helpers or IRQs.
 This is an object/source preflight rejection, not a current linked-image result.
-Independent review must verify the bounded proof before dismissing costly broader
-validation. No source/decoder/limit change or compiler execution occurred here.
+[Independent resource review](p08-measured-sizing-independent-resource-review.md)
+PASS verifies the lower bound and supports stopping costly broader validation. No source/decoder/limit change or compiler execution occurred here.
 
 ## Exact current evidence
 
