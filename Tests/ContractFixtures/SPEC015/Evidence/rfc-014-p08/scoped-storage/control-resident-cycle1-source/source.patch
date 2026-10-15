@@ -1,0 +1,183 @@
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
+index dadc65f7..92c2bcb9 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
+@@ -32,6 +32,19 @@ struct CounterNativeBackendStorage {
+     var submittedRows: UInt16 = 0
+     init() { for index in 0..<12000 { surface[index * 4 + 3] = 255 } }
+ }
++// Borrow only the original typed backend field and return owned scalar facts.
++// No whole Control/backend copy, inout mutation or callback spans this read.
++func counterObserveBackend(_ backend: borrowing CounterNativeBackendStorage) -> CounterBackendObservation {
++    .init(active: backend.active, reservations: backend.reservations,
++        submissions: backend.submissions, finishes: backend.finishes,
++        cancellations: backend.cancellations, submittedBytes: backend.submittedBytes,
++        submittedRows: UInt32(backend.submittedRows), health: backend.health,
++        endpointHealthObservation: backend.endpointHealthObservation,
++        constructedProjection: backend.constructedProjection,
++        constructedEndpoints: backend.constructedEndpoints,
++        projectionControls: backend.projectionControls, envelopeRejections: backend.envelopeRejections)
++}
++
+ struct CounterRGBAStorage: FullSurfaceRGBA8888Storage {
+     let control: UnsafeMutablePointer<CounterControl>
+     var capacityBytes: UInt32 { 48000 }
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+index e754d363..c9a695b4 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+@@ -862,7 +862,25 @@ struct CounterEndpointObservation: Equatable {
+     let nativeReservation: DisplayReservationID?
+     let nativeGlyphHeader: PositionedGlyphOperationHeader?
+ }
++// Actual backend completion facts are independent of endpoint/adapter counters.
++// This owned value contains no payload arrays, pointer, callback or live owner.
++struct CounterBackendObservation: Equatable {
++    let active: Bool
++    let reservations: Int
++    let submissions: Int
++    let finishes: Int
++    let cancellations: Int
++    let submittedBytes: UInt32
++    let submittedRows: UInt32
++    let health: GiftUIOperationalHealth
++    let endpointHealthObservation: GiftUIOperationalHealth
++    let constructedProjection: HostEndpointConfiguration?
++    let constructedEndpoints: Int
++    let projectionControls: Int
++    let envelopeRejections: Int
++}
+ struct CounterRuntimeSlotObservation: Equatable {
++    let backend: CounterBackendObservation
+     let phase: CounterRuntimeSlotPhase
+     let owner: UInt64?
+     let lastSerial: UInt64
+@@ -872,6 +890,7 @@ struct CounterRuntimeSlotObservation: Equatable {
+     let candidateRoot: SemanticCompleteIdentity?
+     let candidateAction: SemanticCompleteIdentity?
+     init(_ control: UnsafeMutablePointer<CounterControl>) {
++        backend = counterObserveBackend(control.pointee.backend)
+         phase = control.pointee.runtimeSlotPhase; owner = control.pointee.runtimeSlotOwner
+         lastSerial = control.pointee.runtimeLastOwnerSerial
+         endpoint = control.pointee.runtimeEndpoint?.ownedObservation
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift
+index 3ec33fb7..edc24b40 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift
+@@ -35,6 +35,19 @@ struct CounterTiledBackendStorage {
+     var submittedBytes: UInt32 = 0
+     var submittedRows: UInt32 = 0
+ }
++// Borrow only the original typed backend field and return owned scalar facts.
++// No whole Control/backend copy, inout mutation or callback spans this read.
++func counterObserveBackend(_ backend: borrowing CounterTiledBackendStorage) -> CounterBackendObservation {
++    .init(active: backend.active, reservations: backend.reservations,
++        submissions: backend.submissions, finishes: backend.finishes,
++        cancellations: backend.cancellations, submittedBytes: backend.submittedBytes,
++        submittedRows: backend.submittedRows, health: backend.health,
++        endpointHealthObservation: backend.endpointHealthObservation,
++        constructedProjection: backend.constructedProjection,
++        constructedEndpoints: backend.constructedEndpoints,
++        projectionControls: backend.projectionControls, envelopeRejections: backend.envelopeRejections)
++}
++
+ struct CounterTileStorage: RGB565TileStorage {
+     let control: UnsafeMutablePointer<CounterControl>
+     var byteCapacity: UInt32 { 800 }
+diff --git a/scripts/contracts/check-spec-015-counter.py b/scripts/contracts/check-spec-015-counter.py
+index 7d050e2a..c6bceb19 100644
+--- a/scripts/contracts/check-spec-015-counter.py
++++ b/scripts/contracts/check-spec-015-counter.py
+@@ -32,15 +32,15 @@ def digest(path):
+ revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
+ revision_receipt = json.loads(revision_path.read_text())
+ reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
+-applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-control-resident-initial-applicability.json'
+-assert digest(applicability_path) == '6f70dea0ad346513d4d2c181146ae82a1388f6522640d6787a32d934ed57f252', 'unpinned source applicability packet'
++applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-control-resident-cycle1-applicability.json'
++assert digest(applicability_path) == 'c13e70632e808840f744b7b3f5307622164c5a8516d1da30740755b610ae9cb4', 'unpinned source applicability packet'
+ applicability = json.loads(applicability_path.read_text())
+ qualified_applicability = []
+ def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
+     if name not in applicability['candidate_sources'] or receipt_path is None:
+         return False
+     assert applicability['kind'] == 'exact-noncompiled-source-applicability-qualification'
+-    assert applicability['activity'] == 'p08-control-resident-initial'
++    assert applicability['activity'] == 'p08-control-resident-cycle1'
+     relative_receipt = str(receipt_path.relative_to(ROOT))
+     entry = next((value for value in applicability['receipts'] if value['receipt'] == relative_receipt), None)
+     if entry is None:
+diff --git a/scripts/contracts/test_p08_backend_observation.py b/scripts/contracts/test_p08_backend_observation.py
+new file mode 100644
+index 00000000..61fdf04a
+--- /dev/null
++++ b/scripts/contracts/test_p08_backend_observation.py
+@@ -0,0 +1,68 @@
++"""Compiler-free coverage of actual original-backend facts in the full baseline."""
++import pathlib
++import re
++import unittest
++
++ROOT = pathlib.Path(__file__).resolve().parents[2]
++FIXTURE = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
++PAYLOAD_FIELDS = {'tile', 'coverage', 'displayed', 'write', 'surface', 'payload'}
++
++
++def projected_fields(source, typename):
++    storage = source.split('struct ' + typename + ' {', 1)[1].split('\n// Borrow only', 1)[0]
++    stored = set(re.findall(r'^    var (\w+)', storage, re.M)) - PAYLOAD_FIELDS
++    body = source.split('func counterObserveBackend(_ backend: borrowing ' + typename + ') -> CounterBackendObservation {', 1)[1].split('\n}', 1)[0]
++    observed = set(re.findall(r'backend\.(\w+)', body))
++    if stored != observed:
++        raise ValueError('actual scalar backend fields omitted/substituted: ' + str(stored ^ observed))
++    for field in stored:
++        if not re.search(r'\b' + field + r': (?:UInt32\()?backend\.' + field + r'\b', body):
++            raise ValueError('field does not observe its original value: ' + field)
++    return stored
++
++
++class BackendObservationTests(unittest.TestCase):
++    def test_both_actual_profiles_observe_every_nonpayload_stored_field(self):
++        owner = (FIXTURE / 'CounterPipelineOwner.swift').read_text()
++        fields = owner.split('struct CounterBackendObservation: Equatable {', 1)[1].split('\n}', 1)[0]
++        declared = set(re.findall(r'^    let (\w+):', fields, re.M))
++        for file, typename in (('CounterNativeRaster.swift', 'CounterNativeBackendStorage'),
++                               ('CounterTiledRaster.swift', 'CounterTiledBackendStorage')):
++            with self.subTest(profile=typename):
++                self.assertEqual(projected_fields((FIXTURE / file).read_text(), typename), declared)
++        self.assertTrue({'active', 'reservations', 'submissions', 'finishes', 'cancellations',
++                         'submittedBytes', 'submittedRows', 'health'} <= declared)
++
++    def test_missing_or_fabricated_completion_value_is_rejected(self):
++        for file, typename in (('CounterNativeRaster.swift', 'CounterNativeBackendStorage'),
++                               ('CounterTiledRaster.swift', 'CounterTiledBackendStorage')):
++            source = (FIXTURE / file).read_text()
++            for field in ('active', 'reservations', 'submittedBytes', 'submittedRows', 'health'):
++                with self.subTest(profile=typename, field=field), self.assertRaises(ValueError):
++                    projected_fields(source.replace('backend.' + field, 'fabricated', 1), typename)
++
++    def test_row_width_uses_exact_actual_native_and_tiled_values(self):
++        native = (FIXTURE / 'CounterNativeRaster.swift').read_text()
++        tiled = (FIXTURE / 'CounterTiledRaster.swift').read_text()
++        self.assertIn('var submittedRows: UInt16 = 0', native)
++        self.assertIn('submittedRows: UInt32(backend.submittedRows)', native)
++        self.assertIn('var submittedRows: UInt32 = 0', tiled)
++        self.assertIn('submittedRows: backend.submittedRows', tiled)
++
++    def test_backend_is_in_same_equatable_baseline_and_guard_comparison(self):
++        owner = (FIXTURE / 'CounterPipelineOwner.swift').read_text()
++        slot = owner.split('struct CounterRuntimeSlotObservation: Equatable {', 1)[1]
++        self.assertIn('let backend: CounterBackendObservation', slot)
++        self.assertIn('backend = counterObserveBackend(control.pointee.backend)', slot)
++        scoped = (FIXTURE / 'CounterScopedStorage.swift').read_text()
++        self.assertIn('let runtimeSlot: CounterRuntimeSlotObservation', scoped)
++        self.assertIn('runtimeSlot = CounterRuntimeSlotObservation(control)', scoped)
++        guards = scoped.split('fileprivate func p08RuntimeSlotGuardControls(', 1)[1]
++        self.assertEqual(guards.count('let before = CounterRuntimeSlotObservation(control)'), 1)
++        self.assertIn('let same = CounterRuntimeSlotObservation(control) == before', guards)
++        self.assertIn('let duplicate = control.pointee.tryClaimRuntimeSlot()', guards)
++        self.assertIn('let wrongClear = control.pointee.tryClearRuntimeSlot(wrong.partialValue)', guards)
++
++
++if __name__ == '__main__':
++    unittest.main()

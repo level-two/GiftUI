@@ -1,0 +1,45 @@
+{
+  "stage": "correction1 source freeze",
+  "baseline": "c5e1796a",
+  "initial_source": "aa36a4ae",
+  "corrections_consumed": 1,
+  "maximum_corrections": 2,
+  "compiler_build_runtime_image_executed": false,
+  "source_review": "pending",
+  "backend_actual_nonpayload_fields": 13,
+  "tests_passed": 75,
+  "new_coverage_tests": 4,
+  "source_patch_sha256": "207c3132a8454ae5f8eb9cd41625786a0c1ca5f9db30a6a4c67d059a37ecb413",
+  "qualification_sha256": "c13e70632e808840f744b7b3f5307622164c5a8516d1da30740755b610ae9cb4",
+  "sources": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+      "after_sha256": "3525d2fb34b286fe1241179eac1f9d85a96d91c22628fcc10878f1b74d7fb950",
+      "before_sha256": "40f5f8a754e069e56a35d9dfb42588937827a783ad715689d70abd94aa6910f0"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "after_sha256": "47cee8e1dbe5b336d6618f071cc08e1f6afc4a9ded7166e8ca6d7b4c91f04a7d",
+      "before_sha256": "893a90a3bf84635f49afafb7c1531b46fede8c16a32efbf28bbd2a65685f69d1"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": {
+      "after_sha256": "fb19ee52b7ef5f3f57b413fd3a1f4869619e86578e3fb6613ce9308cd87ddaa8",
+      "before_sha256": "16f0c30b5781a6a3725f45cf667b6703d615390b3df4d2ba93ddf258d43ff749"
+    },
+    "scripts/contracts/check-spec-015-counter.py": {
+      "after_sha256": "550eba66d25d3358ee75269c9293d64653c92da472bf254177542341c4a292e9",
+      "before_sha256": "fb1c84e58517275683d013de0a7230fe929ac12b93f15b72fadb7bbb9d982bef"
+    },
+    "scripts/contracts/test_p08_backend_observation.py": {
+      "after_sha256": "ddd5488ac29c122477204cd6cdc99964df5ed27d220cbd8b1444698e42b77097",
+      "before_sha256": null
+    }
+  },
+  "fresh_qualification_checks": {
+    "exact_receipts": 7,
+    "argv_swift_sources": 895,
+    "core_swift_sources": 180,
+    "dependency_receipts": 11
+  },
+  "prior_source_freeze_unchanged": "920d1e5742cd7b9bea50394a37d4436e4654ecf75d54cdbae26101d7ab08402e",
+  "planned_measurement_reservation_completion": "unchanged;initialmeasurementexpectedold32000mismatchthenexactderivedupdate;notcorrectivevariant",
+  "fit": "unproved;P08open"
+}

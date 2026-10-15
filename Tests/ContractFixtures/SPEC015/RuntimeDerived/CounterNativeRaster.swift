@@ -32,6 +32,19 @@ struct CounterNativeBackendStorage {
     var submittedRows: UInt16 = 0
     init() { for index in 0..<12000 { surface[index * 4 + 3] = 255 } }
 }
+// Borrow only the original typed backend field and return owned scalar facts.
+// No whole Control/backend copy, inout mutation or callback spans this read.
+func counterObserveBackend(_ backend: borrowing CounterNativeBackendStorage) -> CounterBackendObservation {
+    .init(active: backend.active, reservations: backend.reservations,
+        submissions: backend.submissions, finishes: backend.finishes,
+        cancellations: backend.cancellations, submittedBytes: backend.submittedBytes,
+        submittedRows: UInt32(backend.submittedRows), health: backend.health,
+        endpointHealthObservation: backend.endpointHealthObservation,
+        constructedProjection: backend.constructedProjection,
+        constructedEndpoints: backend.constructedEndpoints,
+        projectionControls: backend.projectionControls, envelopeRejections: backend.envelopeRejections)
+}
+
 struct CounterRGBAStorage: FullSurfaceRGBA8888Storage {
     let control: UnsafeMutablePointer<CounterControl>
     var capacityBytes: UInt32 { 48000 }

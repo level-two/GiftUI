@@ -1,9 +1,10 @@
 # P08 control-resident runtime payload implementation
 
-**Initial source review BLOCKED by B01/G03 coverage omission; corrections 0/2.**
+**Correction 1/2 frozen for focused source reassessment; no compiler invocation.**
 [Independent source review](p08-control-resident-initial-independent-source-review.md)
 finds missing backend completion facts in the new full observation. A bounded
-local correction and focused reassessment precede execution. Eugene explicitly said
+local correction now includes those actual facts; focused reassessment precedes
+execution. The initial review/freeze remain historical. Eugene explicitly said
 “Please proceed” to implementing the independently reviewed control-resident
 payload design (`26872845`, review PASS `eccee3e6`). Entry is `eccee3e6`;
 compiled fixture baseline remains `f7e56cf0`. The previous typed-stage 2/2 and
@@ -47,3 +48,15 @@ before affected verification. Runtime layout binding still rejects undersized
 storage before bind/init. The diagnostic raw-facts packet is explicitly unvalidated
 and never an accepted SO07 receipt. This planned sizing completion is part of the
 initial candidate, not a new optimization variant or spent corrective cycle.
+
+## Correction 1/2 — actual backend observation
+
+[Cycle 1 freeze](p08-control-resident-cycle1-source-freeze.md) consumes the first
+authorized grouped correction for source review B01/G03. It adds actual Native/
+Tiled completion/health facts to the same full owned baseline and guard checks;
+no ownership, callback, workload or reservation semantics change. Four finite
+compiler-free coverage tests reproduce the omitted/fabricated-field risk. All 75
+compiler-free tests pass; exact applicability is freshly pinned. No compiler,
+build, runtime or image has run. Productiveness awaits focused reassessment;
+one grouped corrective cycle remains. The planned measured reservation completion
+remains initial sizing work, separate from this coverage correction.

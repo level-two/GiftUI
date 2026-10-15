@@ -862,7 +862,25 @@ struct CounterEndpointObservation: Equatable {
     let nativeReservation: DisplayReservationID?
     let nativeGlyphHeader: PositionedGlyphOperationHeader?
 }
+// Actual backend completion facts are independent of endpoint/adapter counters.
+// This owned value contains no payload arrays, pointer, callback or live owner.
+struct CounterBackendObservation: Equatable {
+    let active: Bool
+    let reservations: Int
+    let submissions: Int
+    let finishes: Int
+    let cancellations: Int
+    let submittedBytes: UInt32
+    let submittedRows: UInt32
+    let health: GiftUIOperationalHealth
+    let endpointHealthObservation: GiftUIOperationalHealth
+    let constructedProjection: HostEndpointConfiguration?
+    let constructedEndpoints: Int
+    let projectionControls: Int
+    let envelopeRejections: Int
+}
 struct CounterRuntimeSlotObservation: Equatable {
+    let backend: CounterBackendObservation
     let phase: CounterRuntimeSlotPhase
     let owner: UInt64?
     let lastSerial: UInt64
@@ -872,6 +890,7 @@ struct CounterRuntimeSlotObservation: Equatable {
     let candidateRoot: SemanticCompleteIdentity?
     let candidateAction: SemanticCompleteIdentity?
     init(_ control: UnsafeMutablePointer<CounterControl>) {
+        backend = counterObserveBackend(control.pointee.backend)
         phase = control.pointee.runtimeSlotPhase; owner = control.pointee.runtimeSlotOwner
         lastSerial = control.pointee.runtimeLastOwnerSerial
         endpoint = control.pointee.runtimeEndpoint?.ownedObservation

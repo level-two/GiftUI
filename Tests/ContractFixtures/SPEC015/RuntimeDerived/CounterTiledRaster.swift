@@ -35,6 +35,19 @@ struct CounterTiledBackendStorage {
     var submittedBytes: UInt32 = 0
     var submittedRows: UInt32 = 0
 }
+// Borrow only the original typed backend field and return owned scalar facts.
+// No whole Control/backend copy, inout mutation or callback spans this read.
+func counterObserveBackend(_ backend: borrowing CounterTiledBackendStorage) -> CounterBackendObservation {
+    .init(active: backend.active, reservations: backend.reservations,
+        submissions: backend.submissions, finishes: backend.finishes,
+        cancellations: backend.cancellations, submittedBytes: backend.submittedBytes,
+        submittedRows: backend.submittedRows, health: backend.health,
+        endpointHealthObservation: backend.endpointHealthObservation,
+        constructedProjection: backend.constructedProjection,
+        constructedEndpoints: backend.constructedEndpoints,
+        projectionControls: backend.projectionControls, envelopeRejections: backend.envelopeRejections)
+}
+
 struct CounterTileStorage: RGB565TileStorage {
     let control: UnsafeMutablePointer<CounterControl>
     var byteCapacity: UInt32 { 800 }
