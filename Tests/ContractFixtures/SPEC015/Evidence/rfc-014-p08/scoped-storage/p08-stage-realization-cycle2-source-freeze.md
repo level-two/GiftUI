@@ -1,6 +1,8 @@
 # Typed-stage final correction 2 — source freeze
 
-**Final correction 2/2 consumed; independent source review pending. No execution.**
+**Final correction 2/2 consumed; independent SOURCE PASS at `f7e56cf0`. No execution.**
+[Independent source review](p08-stage-realization-cycle2-independent-source-review.md)
+finds this candidate ready for the one final affected screen.
 [Activity/authorization](p08-stage-realization-activity.md), input and independent
 approach PASS `18dfac6d`, [reviewed proposal and measured failure](p08-stage-realization-cycle1-screen-result.md).
 The old 75,224-byte path, initial compiler failure and historical closed allowances

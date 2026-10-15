@@ -1,6 +1,8 @@
 # P08 stage realization — grouped design/correction activity
 
-Status: **final correction 2/2 source frozen for independent review; not executed**.
+Status: **final correction 2/2 independent SOURCE PASS; not executed**.
+[Independent source review](p08-stage-realization-cycle2-independent-source-review.md)
+passes source `f7e56cf0` for the one final affected screen.
 The [final source freeze](p08-stage-realization-cycle2-source-freeze.md) implements
 the independently reviewed lexical/inout/owned-observation approach. It has no
 compiler or resource result. No third automatic variant follows a failed final
