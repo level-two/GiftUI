@@ -17,6 +17,10 @@ superseded_by: null
 
 # Implementation Design — P08 Stack Materialization
 
+The subsequent [typed-stage realization design](spec-015-p08-typed-stage-realization.md)
+is the new authorized direction under its separate activity. This note preserves
+candidate A's design and closed result; it supplies no additional variant budget.
+
 This derived note proposes a private compiler realization, not a new resource
 limit or ownership contract. It answers the maintainer's question about a roughly
 30 KB stack under the [authorized diagnosis/design activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-design-activity.md).

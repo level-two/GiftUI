@@ -1,6 +1,6 @@
 # P08 stage realization — grouped design/correction activity
 
-Status: **design active; no source candidate or screen yet**. Entry `7ee1c3e0`.
+Status: **design ready for independent review; no source candidate or screen yet**. Entry `7ee1c3e0`.
 Eugene explicitly requested **“Please proceed with the recommended steps”** after
 the recommendation for one broader package addressing remaining host construction,
 state-transfer and full-snapshot costs, using early focused stack checks and
@@ -36,3 +36,15 @@ routine lawful internal choices do not. P08/R07/T8.1/HC-RD-003 and complete reso
 allocator/IRQ/Dynamic proof remain open; I4-07/analyzer, P09–P12 and hardware/timing
 stay separate. First deliver a bounded implementable design/file/validation package
 for independent review; do not broaden into exhaustive whole-program analysis.
+
+The [typed-stage design](../../../../../../docs/implementation-designs/spec-015-p08-typed-stage-realization.md)
+now supplies that package: replace only the private fixture stage envelope with
+concrete consuming phases and owned completion facts; retain the mandated
+CounterHostState cases and lifetime chain; split full reuse operations without
+refreshing their common stale baseline; factor original large corpus loop bodies.
+One Swift fixture plus exact qualification/driver-pin and evidence changes are
+planned. The initial registered nRF module/layout screen precedes expensive
+validation and rejects any oversized reachable lower bound. No source candidate,
+screen, fit or acceptance result exists yet; corrections remain **0/2**.
+Design-stage checks: `scripts/validate-governance.rb`, local reference existence
+and `git diff --check` pass. No compiler, build, runtime or image call was made.

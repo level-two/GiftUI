@@ -6,8 +6,9 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-14
+updated: 2026-10-15
 related_design_notes:
+  - ../implementation-designs/spec-015-p08-typed-stage-realization.md
   - ../implementation-designs/spec-015-p08-scoped-storage-ownership.md
   - ../implementation-designs/spec-015-generated-workload-and-presets.md
   - ../implementation-designs/spec-015-wake-and-pacing.md
@@ -23,7 +24,15 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current stack candidate A — **STOP; object rejection after one screen, 2026-10-15**.
+Current P08 typed-stage realization — **design ready for independent review, 2026-10-15**.
+The [new authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-activity.md)
+and [derived design](../implementation-designs/spec-015-p08-typed-stage-realization.md)
+address private stage transfers, host construction and reuse/corpus materialization.
+No source candidate or screen yet; new corrective cycles 0/2. Required state cases,
+ownership and resource limits remain unchanged; P08/R07/T8.1/HC-RD-003 remain open.
+The following candidate A and older stops remain historical, with their budgets closed.
+
+Previous stack candidate A — **STOP; object rejection after one screen, 2026-10-15**.
 The [screen result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-screen-result.md) records 25 passing preparation/module/layout checks,
 202 controls not run, and incomplete aggregate coverage. The object still requires
 a reachable ≥30,096-byte frame; the required nested path improves 213,120→114,464

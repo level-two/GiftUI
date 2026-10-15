@@ -1797,6 +1797,7 @@ Specification:
 
 - [SPEC-015 Implementation Plan](../implementation-plans/spec-015-implementation-plan.md)
 - [P08 Stack Materialization Design (draft; no resource amendment)](../implementation-designs/spec-015-p08-stack-materialization.md)
+- [P08 Typed Stage Realization Design (draft; private fixture realization)](../implementation-designs/spec-015-p08-typed-stage-realization.md)
 - [SPEC-015 Conformance Report](../conformance/spec-015-conformance.md)
 - [Generated Workload and Presets Implementation Design](../implementation-designs/spec-015-generated-workload-and-presets.md)
 - [Wake and Pacing State Implementation Design](../implementation-designs/spec-015-wake-and-pacing.md)
