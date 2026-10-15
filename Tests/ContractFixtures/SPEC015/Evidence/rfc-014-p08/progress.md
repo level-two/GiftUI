@@ -1,12 +1,14 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-Current resource diagnosis/design — **PACKAGE PREPARED; independent Strong review pending, 2026-10-15**.
+Current resource diagnosis/design — **INDEPENDENT REVIEW PASS; bounded candidate A ready, 2026-10-15**.
 Eugene authorized the [new bounded activity](scoped-storage/p08-resource-design-activity.md) after discussing a possible
 stack increase. The [implementation proposal](../../../../../docs/implementation-designs/spec-015-p08-stack-materialization.md) proves a required
 213,120-byte nested lower bound and recommends a measured private materialization
 correction before any limit change. No source correction, experiment, budget
 change or automatic repair allowance was executed/granted. P08 fit remains failed.
-The previous activity and all its consumed budgets remain closed below.
+[Independent design review](scoped-storage/p08-resource-design-independent-review.md) verifies the recommendation.
+Parent records one candidate / one screen, zero automatic repairs; no stack
+limit change is selected. The previous activity and budgets remain closed below.
 
 Previous remaining P08 boundary — **STOP; FIT FAIL independently confirmed, 2026-10-15**.
 The [activity record](scoped-storage/p08-remaining-completion-activity.md) consumed both corrective cycles (2/2). Four full profile collections and

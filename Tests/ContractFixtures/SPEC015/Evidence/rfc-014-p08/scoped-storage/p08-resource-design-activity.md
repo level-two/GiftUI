@@ -1,6 +1,10 @@
 # P08 resource diagnosis/design activity — 2026-10-15
 
-Status: **diagnosis/design package prepared; independent Strong review pending; P08 fit remains failed**.
+Status: **independent Strong design review PASS; candidate A ready for a bounded source attempt; P08 fit remains failed**.
+[Independent design review](p08-resource-design-independent-review.md) verifies
+the lower bounds and internal realization, without a limit change. Parent records
+a new one-candidate / one-screen source activity with zero automatic repairs
+before dispatch; this read-only activity does not reset historical budgets.
 Entry `8371e09a`, final compiled source `0d3e3c7d`. The independently confirmed
 [previous failure package](p08-remaining-images-resource-result.md) and its
 [exit review](p08-remaining-independent-exit-review.md) remain unchanged.
@@ -43,7 +47,8 @@ materialization, current RAM/MPU accounting and the historical stack origin.
 A 30 KiB budget-only change is insufficient. The note proposes one grouped
 private realization and an early fresh nRF object rejection screen; no stack
 reduction is promised before that measurement. The existing image handoff full-
-receipt guard is preserved. Independent review precedes future source execution.
+receipt guard is preserved. Independent design review is complete; independent source review still precedes
+the recorded candidate screen.
 
 Compiler-free verification passes for 15 source/header identities, 14 preserved
 payloads and decompressed hashes, seven frame prologues, both nested BL edges,

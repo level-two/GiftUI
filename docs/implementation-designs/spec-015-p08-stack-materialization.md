@@ -22,7 +22,9 @@ limit or ownership contract. It answers the maintainer's question about a roughl
 30 KB stack under the [authorized diagnosis/design activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-design-activity.md).
 **Recommendation: reduce demonstrated carrier/getter materialization first.
 A 30 KiB budget cannot repair the current image.** No source candidate or compiler
-experiment has been run in this activity; independent Strong review is next.
+experiment has been run in this activity. [Independent Strong review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-design-independent-review.md)
+passes the bounded approach: candidate A is safe to attempt under a newly recorded
+source/validation activity, with no contract or resource-limit change.
 
 ## Authority and exact evidence
 
@@ -252,8 +254,10 @@ Changed compiled source prevents strict predecessor reuse; focused new receipts
 stay partial, with omitted coverage explicit. Any later complete P08 acceptance
 still needs current required coverage, full resource proof and independent exit.
 
-This is an execution proposal awaiting independent review and source-work
-authorization, not a new automatic repair budget. Previous 2/2 allowances remain
-closed. Preserve the baseline and report the measured outcome before any further
+The independent design review is complete. Parent records the new bounded
+source/validation activity under the current user direction before dispatch:
+one grouped candidate, independent source review and one fresh nRF screen,
+zero automatic repair variants. This is not a reset; previous 2/2 allowances
+remain closed. Preserve the baseline and report the measured outcome before any further
 candidate, resource amendment or workload decision; no optimization variants are
 silently added to make the evidence pass.

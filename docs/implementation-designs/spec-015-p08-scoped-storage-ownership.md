@@ -18,13 +18,15 @@ superseded_by: null
 
 # Implementation Design — P08 Scoped Storage Ownership
 
-Current resource diagnosis/design — **PACKAGE PREPARED; independent Strong review pending, 2026-10-15**.
+Current resource diagnosis/design — **INDEPENDENT REVIEW PASS; bounded candidate A ready, 2026-10-15**.
 Eugene authorized the [new bounded activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-design-activity.md) after discussing a possible
 stack increase. The [implementation proposal](spec-015-p08-stack-materialization.md) proves a required
 213,120-byte nested lower bound and recommends a measured private materialization
 correction before any limit change. No source correction, experiment, budget
 change or automatic repair allowance was executed/granted. P08 fit remains failed.
-The previous activity and all its consumed budgets remain closed below.
+[Independent design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-design-independent-review.md) verifies the recommendation.
+Parent records one candidate / one screen, zero automatic repairs; no stack
+limit change is selected. The previous activity and budgets remain closed below.
 
 Previous remaining P08 boundary — **STOP; FIT FAIL independently confirmed, 2026-10-15**.
 The [activity record](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-completion-activity.md) consumed both corrective cycles (2/2). Four full profile collections and

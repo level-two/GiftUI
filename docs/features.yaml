@@ -22,6 +22,7 @@ features:
     # ADR-039 accepted; exact S11/S13/S15 amendments approved/applied 2026-10-13; nine SO criteria unmet.
     # Provenance: docs/iterations/iteration-003-review/rfc-015-contract-acceptance.md.
     # FW-038 captures validation cost and P08 test/application consolidation for RFC-013 / ITERATION-004 design; no current checks or contract change.
+    # P08 resource design independently reviewed: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-design-independent-review.md; candidate A is an internal realization ready for one bounded source/screen activity; no resource amendment or fit pass.
     # Remaining P08 STOP / independent FIT FAIL: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-independent-exit-review.md; full collections/images pass, reachable nRF frame >=30,096 exceeds 27,648; corrections 2/2 consumed, P08/R07/T8.1/HC-RD-003 and nine SO criteria remain open.
     # Current P08 repair batch COMPLETE, independent package review PASS: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-suite-collection-result.md; native runtime/focused ARMv6/full Embedded pass; partial acceptance coverage and P08/fit remain open; cycles2/2 consumed.
     # Historical grouped lifetime continuation STOP: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-compiler-compatibility2-result.md; cab1c415 module compiles, 191 scoped checks accepted, check192 diagnostic-classifier mismatch; candidate1/run1 consumed, repairs0, runtime/P08/fit open.
