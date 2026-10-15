@@ -21,7 +21,38 @@ def projected_fields(source, typename):
     return stored
 
 
+def check_pipeline_extensions(source):
+    for extension in re.split(r'^extension CounterPipelineOwner', source, flags=re.M)[1:]:
+        header, body = extension.split('{', 1)
+        if 'consuming func returnWorkspaces(' in body:
+            # This preexisting factory is intentionally owned-only under S15.1.
+            for name in ('Geometry', 'Candidate', 'Committed', 'Hits'):
+                if not re.search(name + r': Copyable & Escapable', header):
+                    raise ValueError('owned workspace surface changed')
+            continue
+        for name, protocol in (('Geometry', 'CounterGeometry'), ('Candidate', 'CounterCandidateBacking'),
+                               ('Committed', 'CounterCommittedBacking'), ('Hits', 'CounterHitBacking')):
+            if not re.search(name + r': ' + protocol + r' & ~Copyable & ~Escapable', header):
+                raise ValueError('implicit owned specialization in scoped extension: ' + name)
+
+
 class BackendObservationTests(unittest.TestCase):
+    def test_all_scoped_pipeline_extensions_preserve_negative_constraints(self):
+        check_pipeline_extensions((FIXTURE / 'CounterPipelineOwner.swift').read_text())
+
+    def test_missing_extension_permissions_reproduce_compiler_boundary(self):
+        source = (FIXTURE / 'CounterPipelineOwner.swift').read_text()
+        helper = source.index('    private borrowing func clearOwnedRuntimeSlot()')
+        start = source.rindex('extension CounterPipelineOwner', 0, helper)
+        header = source[start:helper]
+        with self.assertRaises(ValueError):
+            check_pipeline_extensions(source[:start] + 'extension CounterPipelineOwner {\n' + source[helper:])
+        for name in ('Geometry', 'Candidate', 'Committed', 'Hits'):
+            for permission in ('~Copyable', '~Escapable'):
+                with self.subTest(parameter=name, permission=permission), self.assertRaises(ValueError):
+                    broken = re.sub(r'(' + name + r': [^,]+)', lambda match: match.group(1).replace(' & ' + permission, ''), header)
+                    check_pipeline_extensions(source[:start] + broken + source[helper:])
+
     def test_both_actual_profiles_observe_every_nonpayload_stored_field(self):
         owner = (FIXTURE / 'CounterPipelineOwner.swift').read_text()
         fields = owner.split('struct CounterBackendObservation: Equatable {', 1)[1].split('\n}', 1)[0]

@@ -749,7 +749,10 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
 }
 
 
-extension CounterPipelineOwner {
+// Extensions must repeat the scoped generic permissions: omitted constraints
+// otherwise introduce implicit Copyable/Escapable specialization in Swift.
+extension CounterPipelineOwner
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
     private borrowing func clearOwnedRuntimeSlot() {
         control.pointee.requireRuntimeClaim(runtimeClaim)
         let idle = control.pointee.runtimeEndpoint!.isIdleForRuntimeRelease

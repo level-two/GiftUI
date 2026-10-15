@@ -1,8 +1,20 @@
 # P08 control-resident runtime payload implementation
 
-Current boundary: **correction 1/2 independent SOURCE PASS at `8e747182`; first measurement pending**.
+Current boundary: **final correction 2/2 frozen for focused source review; first measurement compilation failed**.
 [Focused reassessment](p08-control-resident-cycle1-independent-source-review.md)
 closes the initial B01 coverage blocker; prior source findings below remain historical.
+
+The first actual measurement at `b673d6fa` passed 23 preparation checks, then
+counter-model failed on eight same-cause implicit Copyable/Escapable extension
+constraints. Layout was blocked, 202 cases not-run, no object or raw facts.
+[Immutable failure](control-resident-initial-measurement-failure/failure.json)
+was preserved before editing. [Correction 2 freeze](p08-control-resident-cycle2-source-freeze.md)
+repeats the original scoped bounds for the private cleanup helper extension.
+Both correction cycles are consumed; no automatic third source variant. Focused
+independent review precedes one affected measurement rerun. Exact measured Swift/C
+sizing remains the separately planned initial completion once actual facts exist;
+it does not authorize another optimization/repair loop. No compiler was rerun
+during this correction. Prior allowances and all failed packets remain immutable.
 
 **Correction 1/2 frozen for focused source reassessment; no compiler invocation.**
 [Independent source review](p08-control-resident-initial-independent-source-review.md)

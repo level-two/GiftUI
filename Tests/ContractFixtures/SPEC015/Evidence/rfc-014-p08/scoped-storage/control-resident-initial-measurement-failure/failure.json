@@ -1,0 +1,30 @@
+{
+  "source_revision": "b673d6fa",
+  "source_sha256": "47cee8e1dbe5b336d6618f071cc08e1f6afc4a9ded7166e8ca6d7b4c91f04a7d",
+  "actual_artifacts": {
+    ".build/nrf52840/contracts/p08-counter-3cmbba_i/counter-model.log": {
+      "sha256": "d43c48b581132876d17c68d2cb4189de036161732bc21396b1ace80488595f27",
+      "bytes": 8783
+    },
+    ".build/nrf52840/contracts/p08-counter-3cmbba_i/result.json": {
+      "sha256": "5c1b33ff5314119a87ceb65e7315f6c6928c19dc6a7f2bfad4c4802a6fa44bfc",
+      "bytes": 3146274
+    },
+    ".build/contracts/p08-integrated-activity/20261015T222545340624Z-control-resident-initial-measurement/result.json": {
+      "sha256": "19f788ab1151f046f3ef0010cb82446f068179225c4524385363dd2f92550a3e",
+      "bytes": 1069
+    }
+  },
+  "counter_module_produced": false,
+  "raw_layout_facts_produced": false,
+  "counts": {
+    "pass": 23,
+    "counter_model_fail": 1,
+    "layout_blocked": 1,
+    "base_scoped_not_run": 202
+  },
+  "diagnosis": "Only new clearOwnedRuntimeSlot extension omits explicit negative generic bounds; implicit Copyable/Escapable extension specialization excludes actual scoped Geometry/Candidate/Committed/Hits. Eight emitted constraint diagnostics, not changed lifetime or ownership contract.",
+  "next": "groupedcorrection2 explicit original bounds; independent source review before one measurement rerun; no automatic third optimization variant",
+  "preserved_archive_sha256": "e10a1533660d0eb2ad730df713fcc96aefb9f9e3c291d5ec4fef6b8cad557f53",
+  "preserved_source_archive_sha256": "90bc3c3c12adc957186eb15518646516f7af98076d97785fc1a9faec66f9daa8"
+}

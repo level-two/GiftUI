@@ -1,0 +1,42 @@
+{
+  "stage": "final correction2 source freeze",
+  "baseline": "b673d6fa",
+  "corrections_consumed": 2,
+  "maximum_corrections": 2,
+  "automatic_third_variant": false,
+  "source_review": "pending",
+  "compiler_build_runtime_image_executed_during_correction": false,
+  "failed_source_matches_actual_receipt": true,
+  "primary_diagnostics": 8,
+  "failure_packet_sha256": "fd8c8c2e15e7a5c8e672e22cbab64a712c66078be45c7407c482decda7141b24",
+  "source_patch_sha256": "26ce69d06407c1cf4956e7c8183eca9c1d3d31e1abd148fef1b213b40367147d",
+  "qualification_sha256": "9fb75756c6a148cfda414a0518ff9373721ce010b1a243b31089d154b4d2532f",
+  "sources": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "before_sha256": "47cee8e1dbe5b336d6618f071cc08e1f6afc4a9ded7166e8ca6d7b4c91f04a7d",
+      "after_sha256": "fdd9ca325c2e73b57ae3f8b183851b3de78b70fde8d9bb171adcbd6fcfd75b26"
+    },
+    "scripts/contracts/check-spec-015-counter.py": {
+      "before_sha256": "550eba66d25d3358ee75269c9293d64653c92da472bf254177542341c4a292e9",
+      "after_sha256": "a0f472afb06f94f39e082da91d526641a5fa2a61172350e9bd146e6bd86f860c"
+    },
+    "scripts/contracts/test_p08_backend_observation.py": {
+      "before_sha256": "ddd5488ac29c122477204cd6cdc99964df5ed27d220cbd8b1444698e42b77097",
+      "after_sha256": "acfaded7b6ddd91771cedfe44b6c45cdaf00d299c56c3bec9c686a22e58b30a6"
+    }
+  },
+  "compiler_free_checks": {
+    "tests_passed": 77,
+    "generic_permission_mutations": 8,
+    "bare_extension_rejected": true,
+    "exact_swift_change_only_bounds_and_rationale": true,
+    "metadata_qualified": 8,
+    "exact_receipts": 7,
+    "compiled_source_checks": 895,
+    "core_swift_checks": 180,
+    "dependency_receipts": 11,
+    "formatter": "pinnedhost;fixturesexcluded"
+  },
+  "planned_measured_constant_completion": "unchanged;requiresactualstrictfactsandindependentreview;notadditionaloptimizationrepair",
+  "fit": "unproved;P08open"
+}
