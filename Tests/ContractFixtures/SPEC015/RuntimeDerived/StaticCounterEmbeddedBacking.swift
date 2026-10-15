@@ -50,6 +50,7 @@ struct CounterEmbeddedLayout {
     private(set) var fields = 0
     private(set) var slotBytes = 0
     private(set) var totalBytes = 0
+    @inline(__always)
     init?(suppliedByteCount: Int, r1Surplus: Int = 0) {
         guard suppliedByteCount > 0, r1Surplus >= 0 else { return nil }
         guard append(RuntimeProfileLimits.self, count: 1, limit: suppliedByteCount) else { return nil }
@@ -86,6 +87,7 @@ struct CounterEmbeddedLayout {
         guard !total.overflow else { return nil }
         totalBytes = total.partialValue
     }
+    @inline(__always)
     private mutating func append<T: ~Copyable>(_ type: T.Type, count: Int, limit: Int, surplus: Int = 0) -> Bool {
         let size = MemoryLayout<T>.size, stride = MemoryLayout<T>.stride, alignment = MemoryLayout<T>.alignment
         guard count >= 0, stride >= size, alignment > 0, fields < regions.count else { return false }

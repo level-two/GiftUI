@@ -5,6 +5,7 @@ import hashlib
 import json
 import pathlib
 import shlex
+import sys
 import tempfile
 from p08_check_collection import Collector
 
@@ -31,7 +32,7 @@ def digest(path):
 revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
 revision_receipt = json.loads(revision_path.read_text())
 reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
-applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-suite-cycle2-followup2-applicability.json'
+applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-layout-applicability.json'
 applicability = json.loads(applicability_path.read_text())
 qualified_applicability = []
 def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
@@ -39,7 +40,7 @@ def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
     if name != source or receipt_path is None:
         return False
     assert applicability['kind'] == 'exact-noncompiled-source-applicability-qualification'
-    assert applicability['source'] == source and applicability['activity'] == 'p08-suite-cycle2'
+    assert applicability['source'] == source and applicability['activity'] == 'p08-remaining-completion'
     relative_receipt = str(receipt_path.relative_to(ROOT))
     entry = next((value for value in applicability['receipts'] if value['receipt'] == relative_receipt), None)
     if entry is None:
@@ -114,6 +115,7 @@ join_sources = [fixture / name for name in ('CounterScopedStorage.swift', 'Count
 inputs.extend(join_sources)
 inputs.extend(storage_sources)
 inputs.append(ROOT / 'scripts/contracts/p08_check_collection.py')
+inputs.append(ROOT / 'scripts/contracts/p08_layout_facts.py')
 host_sources = sorted((ROOT / 'Sources/GiftUIHostConfiguration').glob('*.swift')) + sorted((ROOT / 'Sources/GiftUIHostConfiguration/Generated').glob('*.swift'))
 inputs.extend(host_sources)
 for recipe in (prior, host_receipt) if is_target else (prior,):
@@ -187,6 +189,9 @@ trusted = fixture / 'CounterScopedStorage.swift'
 trusted_source = trusted.read_text()
 counter_sources = [fixture / name for name in ('CounterModel.swift', 'CounterModelProbe.swift', 'CounterSemantic.swift', 'CounterSemanticProbe.swift', 'CounterGeometry.swift', 'CounterStaticGeometry.swift', 'CounterRender.swift', 'CounterFixedStorageProbe.swift')]
 without_trusted = [path for path in join_sources if path != trusted]
+# Measurement roots belong only to the actual counter object and firmware,
+# not the repeated compiler-only scoped controls.
+scoped_storage_sources = [path for path in storage_sources if path.name != 'StaticCounterLayoutFacts.swift']
 reuse_suffixes = ('inventory-two-hosts', 'control-same-address', 'terminal-old-host',
                   'raw-namespace-collision', 'action-stale', 'action-current',
                   'input-stale', 'input-current', 'admission-stale', 'admission-current',
@@ -207,7 +212,7 @@ def scoped_variant(label, source, diagnostic=None):
     prerequisites = ['counter-model']
     if label.endswith('-negative'):
         prerequisites.append(label.removesuffix('-negative') + '-positive')
-    run(label, [compiler, *flags, '-module-name', 'P08CounterRuntime', '-emit-object', *counter_sources, *storage_sources, *without_trusted, path, '-o', out / (label + '.o')], diagnostic, prerequisites)
+    run(label, [compiler, *flags, '-module-name', 'P08CounterRuntime', '-emit-object', *counter_sources, *scoped_storage_sources, *without_trusted, path, '-o', out / (label + '.o')], diagnostic, prerequisites)
     # Positive variant objects are diagnostic controls, never extra linked owners.
     object_path = out / (label + '.o')
     if object_path.exists(): object_path.unlink()
@@ -368,7 +373,14 @@ if not is_target:
 else:
     module_objects = [out / (name + '.o') for name in preparation if name != 'counter-lowering']
     module_objects = [out / 'P08CounterRuntime.o' if path.name == 'counter-model.o' else path for path in module_objects]
-    execution = collector.target_compilation(preparation, [core / 'GiftUI.o', *sorted(module_objects)])
+    target_requirements = list(preparation)
+    if is_embedded:
+        run('so07-layout-facts', [sys.executable, ROOT / 'scripts/contracts/p08_layout_facts.py',
+                                'object', '--input', out / 'P08CounterRuntime.o',
+                                '--output', out / 'so07-layout-facts.json',
+                                '--compiler-sha256', digest(compiler)], requires=['counter-model'])
+        target_requirements.append('so07-layout-facts')
+    execution = collector.target_compilation(target_requirements, [core / 'GiftUI.o', *sorted(module_objects)])
 selected_passed = collector.finish()
 receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, planned_scoped_labels=planned_scoped_labels, registered_reuse_labels=registered_reuse_labels, reuse_execution=not is_target and collector.passed('execute'), qualified_noncompiled_applicability=qualified_applicability, execution=execution,
                collection_schema=2, collection_complete=collector.complete, passed=collector.overall_passed,

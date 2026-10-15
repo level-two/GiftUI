@@ -521,19 +521,48 @@ current-target layout transcript; this note supplies the exact derivation, not
 guessed numeric ABI sizes. SO-04 ends at a **provisional source checkpoint**:
 the checked formula, typed field order, prefix ledger and provisional C constant
 are reviewable, but numeric layout and SO-04 acceptance stay open. The existing
-SO-07 nRF counter route will register a bounded layout-facts table in its current
-P08CounterRuntime object: each original field's offset/count/stride/alignment,
-slot end/max alignment and four-slot total as target-compiled constant data.
-The existing SO-08 supported firmware invocation retains that table in its
-ELF/map; read-only extraction from those exact artifacts supplies
+SO-07 nRF counter route registers bounded target-compiled layout facts in its
+current P08CounterRuntime object: each original field's offset/count/size/stride/
+alignment, cursor end/max alignment, rounded slot extent and four-slot total.
+The remaining-completion realization replaces the proposed literal data table
+with 129 constant-return measurement roots. Swift's documented `@section`
+constant initializer forms do not include this checked layout initializer;
+its folding into literal section data is not assumed. Each root queries the
+same `CounterEmbeddedLayout(suppliedByteCount: counterEmbeddedSlotBytes)` and
+exactly converts its result to UInt32. Inlining hints on that initializer and
+its append operation expose the unchanged checked derivation to optimization;
+they do not prove folding or a resource bound. No measurement root runs and no
+global initializer, raw layout substitute or alternative numeric ABI is added.
+
+The read-only extractor accepts only complete Thumb function bodies that
+initialize r0 with an immediate (`movs`, `mov.w` or `movw`), optionally replace
+its upper half with `movt`, then return with `bx lr`. It rejects all other
+instructions, relevant relocations, malformed section/symbol bounds, missing/
+duplicate/unexpected roots and unconsumed bytes. Calls, loads, branches and
+stack work cannot serve as numeric evidence. The exact root inventory belongs
+only to the actual object/firmware, not repeated diagnostic-control objects.
+The existing SO-08 supported firmware invocation retains those roots through
+explicit linker undefined roots and section GC; no RAM pointer table is needed.
+Read-only extraction from those exact artifacts supplies
 `so07-layout-facts.json` and `so08-layout-and-c-reservation.json` in the new
 immutable receipt. The latter compares the facts with the actual C
-`counter_backing` symbol size/alignment and source constant in
+`counter_backing.0` symbol (the exact supported GCC spelling), its map ownership,
+size/alignment and source constant in
 `firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c`.
+Independently verify every checked field bound/disjoint interval and rounded
+summary. The full actual C reservation remains charged: its four supplied slot
+origins use the source slot stride, which must be divisible by the measured
+maximum alignment; its base must satisfy both source and measured alignments.
+Required slot extent may be smaller than supplied slot spacing. Record their
+surplus without silently using the required extent as the physical spacing.
+Charge all actual retained measurement code, duplicate bodies, linker padding
+and metadata in the image/stack accounting; an accepted immediate root has no
+stack work, but this alone establishes neither total flash cost nor fit.
 No standalone probe/compiler/IR capture is added. These named derived reports
 have no current output path or result until the authorized drivers emit their
-actual receipt. Any mismatch, missing/elided table, need for earlier capture
-or C-constant correction/recompile stops for a separately specified allowance.
+actual receipt. Missing/unfolded roots or any mismatch reject numeric evidence;
+they do not authorize a broader decoder, earlier capture or source variant.
+C-constant correction/recompile requires a separately specified allowance.
 Only matching current-target evidence can validate numeric SO-04 acceptance;
 SO-08 cannot claim fit without linked construction/IRQ/resource attribution.
 

@@ -7,6 +7,7 @@ import pathlib
 import re
 import shlex
 import subprocess
+from p08_layout_facts import SYMBOLS
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser()
@@ -27,6 +28,7 @@ receipt_path = base / 'result.json'
 receipt = json.loads(receipt_path.read_text())
 assert receipt['selected_host_profile'] == args.profile
 assert receipt['raster_realization'] == 'tiled'
+assert receipt['collection_complete'] is True and receipt['passed'] is True, 'complete successful counter collection required'
 assert all(check['passed'] for check in receipt['checks'])
 for name, expected in receipt['inputs'].items():
     assert digest(ROOT / name) == expected, 'stale counter input: ' + name
@@ -50,6 +52,11 @@ record = dict(profile=args.profile, counter_build=str(base.relative_to(ROOT)),
               objects={str(path.relative_to(ROOT)): digest(path) for path in objects},
               execution='not executed; early image link only')
 if args.profile == 'nrf52840-embedded':
+    facts_path = base / 'so07-layout-facts.json'
+    facts = json.loads(facts_path.read_text())
+    assert facts['compiler_sha256'] == receipt['compiler_sha256']
+    assert facts['artifact_sha256'] == digest(base / 'P08CounterRuntime.o')
+    assert digest(facts_path) == receipt['artifacts']['so07-layout-facts.json']['sha256']
     # Rebuild the same selected sources with the supported firmware flags.
     # The route objects remain frozen evidence; none is linked into this image.
     core_path = next(path.parent for path in objects if path.name == 'GiftUI.o')
@@ -94,7 +101,8 @@ if args.profile == 'nrf52840-embedded':
         macro = ROOT / macro
     assert digest(macro) == core_receipt['macro_tool_sha256']
     lines = ['set(giftui_counter_owners ' + ' '.join(owners) + ')',
-             'set(giftui_counter_macro "' + str(macro) + '#GiftUIMacros")']
+             'set(giftui_counter_macro "' + str(macro) + '#GiftUIMacros")',
+             'set(giftui_counter_layout_symbols ' + ' '.join(SYMBOLS) + ')']
     for owner, sources in owners.items():
         lines.append('set(giftui_counter_sources_' + owner + '\n' +
                      ''.join('    "' + str(source) + '"\n' for source in sources) + ')')
@@ -105,6 +113,8 @@ if args.profile == 'nrf52840-embedded':
                   core_commands_sha256=digest(core_path / 'commands.txt'),
                   macro_tool=str(macro.relative_to(ROOT)), macro_tool_sha256=digest(macro),
                   source_handoff_sha256=digest(output / 'counter-sources.cmake'),
+                  layout_facts=str(facts_path.relative_to(ROOT)), layout_facts_sha256=digest(facts_path),
+                  layout_symbols=list(SYMBOLS),
                   object_use='identity verification only; fresh firmware objects required')
 else:
     assert args.destination_json is not None, 'existing static SDK destination is required'

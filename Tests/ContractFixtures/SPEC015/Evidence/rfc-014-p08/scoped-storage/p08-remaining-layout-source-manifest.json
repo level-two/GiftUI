@@ -1,0 +1,60 @@
+{
+  "activity": "p08-remaining-completion",
+  "kind": "initial-layout-measurement-source-freeze-not-target-evidence",
+  "entry_commit": "00a190db",
+  "corrective_cycles_consumed": 0,
+  "maximum_corrective_cycles": 2,
+  "files": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-completion-activity.md": "3f252931e40d4b2a10f0b88d71a5d1385b15b0adcdbe10ae4f8513a10d017bd7",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-layout-applicability.json": "0341077ceb7c7b40c4924b64834fd319c39cf553db1b822acda643eebc99757a",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-layout-source-freeze.md": "45992103e198f6861d0f4fcae4205eedaf72f2d710aa5ff5e57418f7c74fdf60",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "ed705493d35ac471e9b4d0591b75fd997ed426a0d84f0894a1e59adbaa402ccb",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": "e7cbf5e39369465c00ed26d44af992943ac8d555907108e0dfeb6d7a3b04a9c5",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": "c46407edfcbfbc7605a39b8156560314bbf024338c7be4fec9bb7afa46ae73af",
+    "docs/implementation-designs/spec-015-p08-scoped-storage-ownership.md": "b6e5669c6783bda8b46e480170b5f47b589b4a426a806498c4e4344054b25412",
+    "firmware/nrf52840/applications/signal-analyzer-static/Counter.cmake": "d1d0cb0e290266d9cc32b50829ab495f0099c8aa6c2ae124bbd356ec0df65ed1",
+    "scripts/contracts/build-spec-015-counter-image.py": "94f23cca82cee3c238d36a3c14004850d27d0d1c3420195152287c439018d03f",
+    "scripts/contracts/check-spec-015-counter.py": "8187ea32ddfd41198c68a90b96fcaea1ddcfca43abb0c626e5e8787b5d9d3b1d",
+    "scripts/contracts/p08_layout_facts.py": "8fe7e77b8c193d074f2f88031fd3994749c19f0e221fcff9237b1a98455af8bc",
+    "scripts/contracts/test_p08_layout_facts.py": "93d7861f1c7d7c0332f7b0008f88cb5fd7367d722f1610dd1968f0ae2fe2ca44",
+    "scripts/nrf52840/build.sh": "59c26b07f4f5e8ee6c13266a635e83c6a0ae3b010f2a1015f42b80a8e5817fb0"
+  },
+  "validation": {
+    "python_tests": 48,
+    "python_ast": "pass",
+    "shell_syntax": "pass",
+    "whitespace": "pass",
+    "qualified_exact_predecessors": 7,
+    "compiler_invocations": 0,
+    "target_execution": 0,
+    "images": 0
+  },
+  "inventory": {
+    "layout_accessors": 129,
+    "original_regions": 25,
+    "scoped_labels_nonembedded": 384,
+    "scoped_labels_embedded": 202,
+    "native_exclusivity_controls": 5,
+    "reuse_labels_per_route": 13
+  },
+  "registered_next_counter_commands": [
+    "scripts/contracts/run-spec-015.sh --profile macos-dynamic --corpus rfc-014-counter --runtime-build .build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic --host-build .build/contracts/p08-scoped-host-ezcy1qan --collect-failures",
+    "scripts/contracts/run-spec-015.sh --profile macos-static --corpus rfc-014-counter --runtime-build .build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static --host-build .build/contracts/p08-scoped-host-hzs5q7za --collect-failures",
+    "scripts/contracts/run-spec-015.sh --profile raspberry-pi-armv6 --corpus rfc-014-counter --runtime-build .build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpsb8yw4yu/raspberry-pi-armv6 --host-build .build/contracts/p08-scoped-host-hzs5q7za --collect-failures",
+    "scripts/contracts/run-spec-015.sh --profile nrf52840-embedded --corpus rfc-014-counter --runtime-build .build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded --host-build .build/contracts/p08-scoped-host-hzs5q7za --collect-failures"
+  ],
+  "registered_next_images": [
+    "python3 scripts/contracts/build-spec-015-counter-image.py --profile raspberry-pi-armv6 --counter-build {actual_successful_current_pi_counter} --output .build/raspberry-pi/rfc015-scoped-counter-image-remaining --destination-json .toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json",
+    "scripts/nrf52840/build.sh --application signal-analyzer-static --counter-build {actual_successful_current_nrf_counter}"
+  ],
+  "future_family_recipe": "Fresh focused --select-family so07-layout-facts can inspect a failed measurement during an authorized corrective cycle; it is never complete aggregate coverage. Changed compiled inputs require fresh preparation. Prior counter receipts are not reused.",
+  "remaining": [
+    "Independent source review",
+    "Actual compiler materialization of all roots",
+    "Four current complete counter collections",
+    "Two registered early images",
+    "Actual layout/C reservation reports and code/metadata resource costs",
+    "Complete construction/body-return/helper/IRQ stack/resource proof",
+    "Current caller/physical inventory and independent P08 exit review"
+  ]
+}

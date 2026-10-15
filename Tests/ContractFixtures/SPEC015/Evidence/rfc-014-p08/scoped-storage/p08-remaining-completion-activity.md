@@ -1,6 +1,10 @@
 # P08 remaining completion activity — 2026-10-15
 
 Status: **active; complete planned measurement before final source freeze**.
+The initial measurement source is now frozen for independent review in
+[the layout source receipt](p08-remaining-layout-source-freeze.md); target
+materialization and all four current collections are pending. This remains the
+initial pass, **0/2 corrective cycles consumed**.
 Entry is clean `6c965007`, with source `73e5dcf1`. Eugene explicitly requested:
 “Please proceed with the remaining p08 tasks”, after the completed
 [collected-suite repair batch](p08-suite-collection-result.md). Existing instructions

@@ -3,6 +3,14 @@
 include("${GIFTUI_COUNTER_SOURCE_INPUTS}")
 # Preserve statically resolved Embedded Swift runtime-function references in ROM.
 zephyr_linker_sources(RODATA counter_got.ld)
+# Explicit undefined roots retain each measurement function through archive
+# extraction and section GC, without a RAM pointer table or startup work.
+if(NOT giftui_counter_layout_symbols)
+    message(FATAL_ERROR "Verified P08 layout measurement roots are required")
+endif()
+foreach(symbol ${giftui_counter_layout_symbols})
+    zephyr_ld_options("-Wl,--undefined=${symbol}")
+endforeach()
 if(NOT giftui_counter_owners OR NOT CONFIG_FP_HARDABI)
     message(FATAL_ERROR "Verified P08 owners and Cortex-M4F hard-float are required")
 endif()

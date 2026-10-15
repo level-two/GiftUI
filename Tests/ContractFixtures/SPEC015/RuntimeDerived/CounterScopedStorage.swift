@@ -1042,10 +1042,10 @@ fileprivate struct P08GeometryAccess: ~Copyable, ~Escapable, CounterGeometry {
     }
     mutating func reset() {
         switch descriptor {
-        case .static(let d):
+        case .static:
             resetRender(); resetPlan(); resetLayout()
         #if !hasFeature(Embedded)
-        case .dynamic(let d):
+        case .dynamic:
             resetRender(); resetPlan(); resetLayout()
         #endif
         }

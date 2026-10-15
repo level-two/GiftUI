@@ -94,6 +94,14 @@ done
 "${readelf}" -S "${elf}" >"${build_dir}/reports/sections.txt"
 "${readelf}" -sW "${elf}" >"${build_dir}/reports/symbols.txt"
 "${size}" -A "${elf}" >"${build_dir}/reports/size.txt"
+if [[ -n "${counter_build}" ]]; then
+    # This only reads existing target objects/ELF/map; no target code runs.
+    python3 "${GIFTUI_NRF_PROJECT_ROOT}/scripts/contracts/p08_layout_facts.py" firmware \
+        --input "${elf}" --map "${map}" \
+        --so07 "${counter_build}/so07-layout-facts.json" \
+        --compiler-sha256 "$(shasum -a 256 "${GIFTUI_NRF_SWIFTC}" | awk '{print $1}')" \
+        --output "${build_dir}/reports/so08-layout-and-c-reservation.json"
+fi
 flash_bytes=0
 ram_bytes=0
 while read -r virtual_address file_size memory_size; do
