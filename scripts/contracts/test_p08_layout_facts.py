@@ -264,9 +264,9 @@ class LayoutTests(unittest.TestCase):
 
     def test_source_constants(self):
         value = facts.source_reservation(facts.SWIFT_SOURCE.read_text(), facts.C_SOURCE.read_text())
-        self.assertEqual(value, dict(slot_bytes=32000, slot_count=4, retained_bytes=128000, c_alignment=8))
+        self.assertEqual(value, dict(slot_bytes=34720, slot_count=4, retained_bytes=138880, c_alignment=8))
         with self.assertRaises(ValueError):
-            facts.source_reservation(facts.SWIFT_SOURCE.read_text(), facts.C_SOURCE.read_text().replace('[32000]', '[31999]'))
+            facts.source_reservation(facts.SWIFT_SOURCE.read_text(), facts.C_SOURCE.read_text().replace('[34720]', '[34719]'))
 
     def test_exact_accessor_source_inventory_and_projection(self):
         source = facts.ACCESSOR_SOURCE.read_text()

@@ -1,0 +1,52 @@
+{
+  "stage": "planned measured sizing initial completion;source review pending",
+  "baseline": "221d974c8e95287c2f2483eaddeff697682e8185",
+  "tooling_sizing_corrections_consumed": 0,
+  "tooling_sizing_correction_limit": 2,
+  "historical_budgets": "closed;notreset",
+  "compiler_build_runtime_image_executed": false,
+  "raw_facts_sha256": "df14bb46b5b316ef0b0ad55b0049885f691f06d6366d3d1a52f19dd6dc48d777",
+  "measurement_provenance_sha256": "69c881209a138d1547d63878330d885ae20312d295b1ccf5167f8467f054201a",
+  "source_patch_sha256": "540b18e9aff4bd4acc362d54024aae586ccb75a821d1af7137040d44599e19d6",
+  "qualification_sha256": "91242d203cd6eaf2a86617511a452136524c981fa5c0356a1ddcb142198ac649",
+  "sources": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": {
+      "before_sha256": "92d9013f955100a459116edb36587c43eea0d9b32fd3c8ccb5ab136cbb157254",
+      "after_sha256": "c0f13dfa35a11c6f627905d8663bcf716eef2dedb2221cd357380d48c045e51f"
+    },
+    "firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c": {
+      "before_sha256": "ea40f5906bdd3f7b8f66d6cca16c3c873850d9c6d65fda4153dde6507b133f25",
+      "after_sha256": "31c36569948cbf3870ef15df8d25db6247a3434ce55d14d2616247855028f6f4"
+    },
+    "scripts/contracts/check-spec-015-counter.py": {
+      "before_sha256": "eef090209cb4d5cd4550d7e4b0b14d61f6499e73f5e172ab90636a92b9d7d56e",
+      "after_sha256": "19143a5b7ab673be6282495cf88510247b528bbaaf8ea1d1be9eeeb405f03376"
+    },
+    "scripts/contracts/test_p08_layout_facts.py": {
+      "before_sha256": "e4c42f0bef64693e6c2fd07d29fde13d4fb6de7b0e201b5def19fe3e446d4691",
+      "after_sha256": "500ace5cfd48031c441e9a0f7fac30fda83ba20e50d73ae847ebea2f5426adb0"
+    }
+  },
+  "checks": {
+    "exact_one_measured_constant_change_per_Swift_C_file": true,
+    "full_layout_regions_checked": 25,
+    "global_fact_inventory": 129,
+    "slot_bytes": 34720,
+    "cursor": 34713,
+    "maximum_alignment": 8,
+    "slot_count": 4,
+    "retained_bytes": 138880,
+    "retained_surplus": 0,
+    "all_four_origins_aligned": true,
+    "exact_component_receipts_rechecked": 7,
+    "metadata_exceptions_verified": 8,
+    "compiled_source_exclusions_rechecked": 56,
+    "layout_tests_passed": 50,
+    "source_constant_test_updated_positive_and_negative_mutation": true,
+    "compiler_free_intermediate_failures": "old expected constant, then old mutation text no longer matching;both dependency expectations updated in same initial sizing pass",
+    "formatter": "pinnedhostSwift6.4;fixtureexcluded;noincidentalSwiftchanges",
+    "Python_AST": "passed",
+    "whitespace": "passed"
+  },
+  "resource_status": "currentimage/completeupperboundunknown;baseline27648unchanged;priorrequired34560lowerboundretained"
+}

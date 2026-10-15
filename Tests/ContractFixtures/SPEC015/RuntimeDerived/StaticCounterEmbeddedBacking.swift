@@ -19,7 +19,7 @@ import GiftUIRuntimeDynamic
 // Target disassembly derives this minimum; strict numeric materialization,
 // C-symbol comparison and complete fit remain separately unvalidated.
 #if hasFeature(Embedded)
-let counterEmbeddedSlotBytes = 32000
+let counterEmbeddedSlotBytes = 34720
 let counterEmbeddedSlotCount = 4
 struct CounterEmbeddedElements<Element> {
     let start: UnsafeMutablePointer<Element>

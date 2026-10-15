@@ -1,0 +1,356 @@
+{
+  "kind": "source-sizing-derivation-not-compiled-acceptance",
+  "raw_facts_sha256": "df14bb46b5b316ef0b0ad55b0049885f691f06d6366d3d1a52f19dd6dc48d777",
+  "source_object_sha256": "15ac2dea6836ec4c161903a4f98a65851bffe00fd4f2c000da284236d1f1ad59",
+  "prior_extraction_archive_sha256": "e039acff9f7e76d908b0d5003c4e6544e942ed08fc2194c2c0bb2b47caf2b5a8",
+  "wrapper_results": {
+    ".build/contracts/p08-integrated-activity/20261015T230110122017Z-control-resident-literal-proof-read/result.json": {
+      "sha256": "a64aa0137227b14f3f8d662ed5940207be53fb44c673a11bb8b82b835bdf2ad1",
+      "result": {
+        "label": "control-resident-literal-proof-read",
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/contracts/p08_layout_facts.py",
+          "object",
+          "--input",
+          ".build/nrf52840/contracts/p08-counter-ap7tbjem/P08CounterRuntime.o",
+          "--output",
+          ".build/contracts/p08-layout-literal-proof/so07-layout-facts.json",
+          "--decoded-output",
+          ".build/contracts/p08-layout-literal-proof/so07-layout-facts-decoded.json",
+          "--compiler-sha256",
+          "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+        ],
+        "cwd": "/Users/eugene/work/GiftUI",
+        "started": "2026-10-15T23:01:10.122258+00:00",
+        "revision": "221d974c8e95287c2f2483eaddeff697682e8185",
+        "status_before": "?? scripts/contracts/__pycache__/\n",
+        "exit": 1,
+        "finished": "2026-10-15T23:01:11.116698+00:00",
+        "status_after": "?? scripts/contracts/__pycache__/\n",
+        "artifacts": {
+          "stdout.log": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          "stderr.log": {
+            "sha256": "897c41ce0aa5d9b0b6fc2e5063ff66affb364d3dad5289dc939aa60651c41a5b",
+            "bytes": 1242
+          }
+        }
+      }
+    },
+    ".build/contracts/p08-integrated-activity/20261015T230145545745Z-control-resident-literal-proof-read-ready/result.json": {
+      "sha256": "95de9c6be014e540ab36c02cea5d896a772606892031639aab9917e65af48e4a",
+      "result": {
+        "label": "control-resident-literal-proof-read-ready",
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/contracts/p08_layout_facts.py",
+          "object",
+          "--input",
+          ".build/nrf52840/contracts/p08-counter-ap7tbjem/P08CounterRuntime.o",
+          "--output",
+          ".build/contracts/p08-layout-literal-proof/so07-layout-facts.json",
+          "--decoded-output",
+          ".build/contracts/p08-layout-literal-proof/so07-layout-facts-decoded.json",
+          "--compiler-sha256",
+          "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+        ],
+        "cwd": "/Users/eugene/work/GiftUI",
+        "started": "2026-10-15T23:01:45.545985+00:00",
+        "revision": "221d974c8e95287c2f2483eaddeff697682e8185",
+        "status_before": "?? scripts/contracts/__pycache__/\n",
+        "exit": 1,
+        "finished": "2026-10-15T23:01:46.555626+00:00",
+        "status_after": "?? scripts/contracts/__pycache__/\n",
+        "artifacts": {
+          "stdout.log": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          "stderr.log": {
+            "sha256": "baeadea81f885e2a0160ec2260d32400d8f7894dbe2a3b31d595fa14f4ca86ef",
+            "bytes": 906
+          }
+        }
+      }
+    }
+  },
+  "unchanged_raw_accepted": false,
+  "diagnostic_validation_against_proposed_extent": {
+    "regions": [
+      {
+        "name": "limits",
+        "offset": 0,
+        "count": 1,
+        "size": 115,
+        "stride": 116,
+        "alignment": 4,
+        "extent": 116,
+        "end": 116
+      },
+      {
+        "name": "root",
+        "offset": 116,
+        "count": 1,
+        "size": 810,
+        "stride": 812,
+        "alignment": 4,
+        "extent": 812,
+        "end": 928
+      },
+      {
+        "name": "semantic",
+        "offset": 928,
+        "count": 1,
+        "size": 116,
+        "stride": 116,
+        "alignment": 4,
+        "extent": 116,
+        "end": 1044
+      },
+      {
+        "name": "semanticRecords",
+        "offset": 1044,
+        "count": 128,
+        "size": 20,
+        "stride": 20,
+        "alignment": 2,
+        "extent": 2560,
+        "end": 3604
+      },
+      {
+        "name": "semanticPaths",
+        "offset": 3604,
+        "count": 384,
+        "size": 22,
+        "stride": 22,
+        "alignment": 2,
+        "extent": 8448,
+        "end": 12052
+      },
+      {
+        "name": "semanticPayloads",
+        "offset": 12052,
+        "count": 256,
+        "size": 33,
+        "stride": 36,
+        "alignment": 4,
+        "extent": 9216,
+        "end": 21268
+      },
+      {
+        "name": "semanticScalars",
+        "offset": 21268,
+        "count": 128,
+        "size": 4,
+        "stride": 4,
+        "alignment": 4,
+        "extent": 512,
+        "end": 21780
+      },
+      {
+        "name": "values",
+        "offset": 21780,
+        "count": 1,
+        "size": 4,
+        "stride": 4,
+        "alignment": 2,
+        "extent": 4,
+        "end": 21784
+      },
+      {
+        "name": "canvasEntry",
+        "offset": 21784,
+        "count": 1,
+        "size": 28,
+        "stride": 28,
+        "alignment": 4,
+        "extent": 28,
+        "end": 21812
+      },
+      {
+        "name": "b0",
+        "offset": 21812,
+        "count": 1024,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1024,
+        "end": 22836
+      },
+      {
+        "name": "b1",
+        "offset": 22836,
+        "count": 1056,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1056,
+        "end": 23892
+      },
+      {
+        "name": "b2",
+        "offset": 23892,
+        "count": 20,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 20,
+        "end": 23912
+      },
+      {
+        "name": "b3",
+        "offset": 23912,
+        "count": 112,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 112,
+        "end": 24024
+      },
+      {
+        "name": "g0",
+        "offset": 24024,
+        "count": 1,
+        "size": 70,
+        "stride": 72,
+        "alignment": 4,
+        "extent": 72,
+        "end": 24096
+      },
+      {
+        "name": "g1",
+        "offset": 24096,
+        "count": 1,
+        "size": 98,
+        "stride": 100,
+        "alignment": 4,
+        "extent": 100,
+        "end": 24196
+      },
+      {
+        "name": "g2",
+        "offset": 24196,
+        "count": 1,
+        "size": 1024,
+        "stride": 1024,
+        "alignment": 4,
+        "extent": 1024,
+        "end": 25220
+      },
+      {
+        "name": "g3",
+        "offset": 25220,
+        "count": 1,
+        "size": 167,
+        "stride": 168,
+        "alignment": 4,
+        "extent": 168,
+        "end": 25388
+      },
+      {
+        "name": "g4",
+        "offset": 25388,
+        "count": 1,
+        "size": 26,
+        "stride": 28,
+        "alignment": 4,
+        "extent": 28,
+        "end": 25416
+      },
+      {
+        "name": "c0",
+        "offset": 25416,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 25900
+      },
+      {
+        "name": "h0",
+        "offset": 25900,
+        "count": 1,
+        "size": 460,
+        "stride": 460,
+        "alignment": 4,
+        "extent": 460,
+        "end": 26360
+      },
+      {
+        "name": "r0",
+        "offset": 26360,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 26844
+      },
+      {
+        "name": "r1",
+        "offset": 26844,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 27328
+      },
+      {
+        "name": "h1",
+        "offset": 27328,
+        "count": 1,
+        "size": 460,
+        "stride": 460,
+        "alignment": 4,
+        "extent": 460,
+        "end": 27788
+      },
+      {
+        "name": "control",
+        "offset": 27792,
+        "count": 1,
+        "size": 6920,
+        "stride": 6920,
+        "alignment": 8,
+        "extent": 6920,
+        "end": 34712
+      },
+      {
+        "name": "used",
+        "offset": 34712,
+        "count": 1,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1,
+        "end": 34713
+      }
+    ],
+    "cursor": 34713,
+    "maximumAlignment": 8,
+    "slotBytes": 34720,
+    "totalBytes": 138880,
+    "retained_slot_bytes": 34720,
+    "retained_bytes": 138880,
+    "retained_surplus": 0
+  },
+  "old_reservation": {
+    "slot_bytes": 32000,
+    "slot_count": 4,
+    "retained_bytes": 128000
+  },
+  "proposed_reservation": {
+    "slot_bytes": 34720,
+    "slot_count": 4,
+    "retained_bytes": 138880
+  },
+  "delta_retained_bytes": 10880,
+  "compiler_executed": false
+}

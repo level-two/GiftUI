@@ -1,0 +1,65 @@
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift
+index 1f8a478b..1ca22ed9 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift
+@@ -19,7 +19,7 @@ import GiftUIRuntimeDynamic
+ // Target disassembly derives this minimum; strict numeric materialization,
+ // C-symbol comparison and complete fit remain separately unvalidated.
+ #if hasFeature(Embedded)
+-let counterEmbeddedSlotBytes = 32000
++let counterEmbeddedSlotBytes = 34720
+ let counterEmbeddedSlotCount = 4
+ struct CounterEmbeddedElements<Element> {
+     let start: UnsafeMutablePointer<Element>
+diff --git a/firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c b/firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c
+index c4f0657b..5d04d07e 100644
+--- a/firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c
++++ b/firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c
+@@ -11,7 +11,7 @@ int main(void)
+ {
+     /* Explicit caller-owned slots. Graph0 ends before complete0 is created;
+      * failure3 ends after each teardown before the next fresh owner uses it. */
+-    static _Alignas(8) uint8_t counter_backing[4][32000];
++    static _Alignas(8) uint8_t counter_backing[4][34720];
+     if (spi_tft_initialize() != 0) {
+         printk("P08 counter display initialization failed\n");
+         return 1;
+diff --git a/scripts/contracts/check-spec-015-counter.py b/scripts/contracts/check-spec-015-counter.py
+index 712ead6e..a2a36904 100644
+--- a/scripts/contracts/check-spec-015-counter.py
++++ b/scripts/contracts/check-spec-015-counter.py
+@@ -32,15 +32,15 @@ def digest(path):
+ revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
+ revision_receipt = json.loads(revision_path.read_text())
+ reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
+-applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-control-resident-predicate-applicability.json'
+-assert digest(applicability_path) == '27cb807261cb84561b603fadc35287cc8f80174e6888cae3d78e42e91ca7bdd0', 'unpinned source applicability packet'
++applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-layout-measured-sizing-applicability.json'
++assert digest(applicability_path) == '91242d203cd6eaf2a86617511a452136524c981fa5c0356a1ddcb142198ac649', 'unpinned source applicability packet'
+ applicability = json.loads(applicability_path.read_text())
+ qualified_applicability = []
+ def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
+     if name not in applicability['candidate_sources'] or receipt_path is None:
+         return False
+     assert applicability['kind'] == 'exact-noncompiled-source-applicability-qualification'
+-    assert applicability['activity'] == 'p08-control-resident-predicate-correction'
++    assert applicability['activity'] == 'p08-layout-measured-sizing'
+     relative_receipt = str(receipt_path.relative_to(ROOT))
+     entry = next((value for value in applicability['receipts'] if value['receipt'] == relative_receipt), None)
+     if entry is None:
+diff --git a/scripts/contracts/test_p08_layout_facts.py b/scripts/contracts/test_p08_layout_facts.py
+index 353cce6c..89190125 100644
+--- a/scripts/contracts/test_p08_layout_facts.py
++++ b/scripts/contracts/test_p08_layout_facts.py
+@@ -264,9 +264,9 @@ class LayoutTests(unittest.TestCase):
+ 
+     def test_source_constants(self):
+         value = facts.source_reservation(facts.SWIFT_SOURCE.read_text(), facts.C_SOURCE.read_text())
+-        self.assertEqual(value, dict(slot_bytes=32000, slot_count=4, retained_bytes=128000, c_alignment=8))
++        self.assertEqual(value, dict(slot_bytes=34720, slot_count=4, retained_bytes=138880, c_alignment=8))
+         with self.assertRaises(ValueError):
+-            facts.source_reservation(facts.SWIFT_SOURCE.read_text(), facts.C_SOURCE.read_text().replace('[32000]', '[31999]'))
++            facts.source_reservation(facts.SWIFT_SOURCE.read_text(), facts.C_SOURCE.read_text().replace('[34720]', '[34719]'))
+ 
+     def test_exact_accessor_source_inventory_and_projection(self):
+         source = facts.ACCESSOR_SOURCE.read_text()

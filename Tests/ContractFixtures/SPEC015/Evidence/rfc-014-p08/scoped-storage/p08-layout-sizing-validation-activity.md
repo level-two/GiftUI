@@ -7,11 +7,15 @@ rerun1/1, prior control-resident2/2 and all older allowances remain closed.
 
 This new package permits one initial tooling/sizing pass and at most two grouped
 tooling/sizing corrective cycles, stopping after two unproductive cycles or a real
-contract/resource decision. Initial tooling source pass frozen; corrections 0/2.
+contract/resource decision. Planned initial measured sizing is frozen; corrections 0/2.
+[Sizing freeze](p08-layout-measured-sizing-source-freeze.md) records exact Swift/C
+34,720-byte slots / 138,880 four-slot charge and fresh component qualification.
+Independent source review precedes any changed-module compilation.
 [Source freeze](p08-layout-literal-tool-source-freeze.md) records the exact finite
 proof and 50 passing compiler-free layout tests. [Independent source review](p08-layout-literal-tool-independent-source-review.md)
-PASS confirms readiness for the same-object read; actual-object decoding remains
-pending. No compiler/build/runtime/image ran.
+PASS preceded the completed same-object read: all 129 facts strictly decoded,
+then old 32,000 reservation bounds failed truthfully. Raw facts remain diagnostic
+and unvalidated. No compiler/build/runtime/image ran during tooling/sizing edits.
 It authorizes no new representation/optimization variant, resource limit, ownership,
 workload, capacity, core contract, compiler flag/toolchain or hardware change.
 
