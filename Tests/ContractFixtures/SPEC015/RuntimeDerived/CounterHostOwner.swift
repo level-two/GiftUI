@@ -134,6 +134,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         }
     }
     @_lifetime(self: copy self)
+    @inline(never)
     mutating func activate(assembly: CounterHostAssembly) -> HostConfigurationError? {
         switch consume self {
         case .inert(let supplied, let span):
@@ -170,6 +171,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         return activate(assembly: assembly)
     }
     @_lifetime(self: copy self)
+    @inline(never)
     mutating func attachRoot() -> Bool {
         switch consume self {
         case .active(var coordinator, _, let span):
@@ -199,24 +201,28 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         case .retired(let storage, let span): self = .retired(consume storage, span); return false
         }
     }
+    @inline(never)
     borrowing func observeModelValue() -> UInt8 {
         switch self {
         case .active(let coordinator, _, _): return coordinator.opportunity.observeModelValue()
         default: preconditionFailure("selected active model observation")
         }
     }
+    @inline(never)
     borrowing func observeProducedAction() -> CounterProducedAction {
         switch self {
         case .active(let coordinator, _, _): return coordinator.opportunity.observeProducedAction()
         default: preconditionFailure("selected active observation")
         }
     }
+    @inline(never)
     borrowing func prepareProducedAction(_ action: CounterProducedAction) -> Bool {
         switch self {
         case .active(let coordinator, _, _): return coordinator.opportunity.prepareProducedAction(action)
         default: return false
         }
     }
+    @inline(never)
     borrowing func deliverProducedAction(_ action: CounterProducedAction) -> Bool {
         switch self {
         case .active(let coordinator, _, _): return coordinator.opportunity.deliverProducedAction(action)
@@ -224,6 +230,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         }
     }
     @_lifetime(self: copy self)
+    @inline(never)
     mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure> {
         switch consume self {
         case .active(var coordinator, let cache, let span):

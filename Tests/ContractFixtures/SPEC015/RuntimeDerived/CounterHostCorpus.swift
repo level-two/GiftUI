@@ -49,8 +49,8 @@ func counterCheckHostFrame(_ control: borrowing CounterControl, value: UInt8) ->
     let snapshot = control.semanticSnapshot
     let frame = control.lastFrame
     let frameActive = control.frameActive
-    let sealActive = control.admission.sealActive
-    let pointerCount = control.admission.pointerCount
+    let sealActive = control.runtime.admission.sealActive
+    let pointerCount = control.runtime.admission.pointerCount
     let finalized = !frameActive && !sealActive && pointerCount == 0
     counterCorpusExpect(snapshot.texts == 4 && snapshot.scalarCount == 22 && snapshot.disabledCount == 2)
     let lengths: InlineArray<4, UInt16> = [7, 1, 9, 5]
@@ -108,7 +108,7 @@ func counterHostCorpus<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inout 
     ] {
         let rejected = control.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: source, observedPresentationRevision: revision, isMalformed: malformed, priorPhysicalSequenceIsComplete: true, to: &admission)
         counterCorpusExpect(rejected == .dropped(reason))
-        counterCorpusExpect(control.pointee.admission.pointerCount == 0)
+        counterCorpusExpect(control.pointee.runtime.admission.pointerCount == 0)
         checks += 2
     }
     checks += 1

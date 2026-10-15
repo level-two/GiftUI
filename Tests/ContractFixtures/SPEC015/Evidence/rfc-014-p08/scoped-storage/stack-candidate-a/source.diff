@@ -1,0 +1,341 @@
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift
+index 7cde2e5a..c6d487aa 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift
+@@ -49,8 +49,8 @@ func counterCheckHostFrame(_ control: borrowing CounterControl, value: UInt8) ->
+     let snapshot = control.semanticSnapshot
+     let frame = control.lastFrame
+     let frameActive = control.frameActive
+-    let sealActive = control.admission.sealActive
+-    let pointerCount = control.admission.pointerCount
++    let sealActive = control.runtime.admission.sealActive
++    let pointerCount = control.runtime.admission.pointerCount
+     let finalized = !frameActive && !sealActive && pointerCount == 0
+     counterCorpusExpect(snapshot.texts == 4 && snapshot.scalarCount == 22 && snapshot.disabledCount == 2)
+     let lengths: InlineArray<4, UInt16> = [7, 1, 9, 5]
+@@ -108,7 +108,7 @@ func counterHostCorpus<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inout
+     ] {
+         let rejected = control.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: source, observedPresentationRevision: revision, isMalformed: malformed, priorPhysicalSequenceIsComplete: true, to: &admission)
+         counterCorpusExpect(rejected == .dropped(reason))
+-        counterCorpusExpect(control.pointee.admission.pointerCount == 0)
++        counterCorpusExpect(control.pointee.runtime.admission.pointerCount == 0)
+         checks += 2
+     }
+     checks += 1
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift
+index ece0678d..9693fa8c 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift
+@@ -134,6 +134,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
+         }
+     }
+     @_lifetime(self: copy self)
++    @inline(never)
+     mutating func activate(assembly: CounterHostAssembly) -> HostConfigurationError? {
+         switch consume self {
+         case .inert(let supplied, let span):
+@@ -170,6 +171,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
+         return activate(assembly: assembly)
+     }
+     @_lifetime(self: copy self)
++    @inline(never)
+     mutating func attachRoot() -> Bool {
+         switch consume self {
+         case .active(var coordinator, _, let span):
+@@ -199,24 +201,28 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
+         case .retired(let storage, let span): self = .retired(consume storage, span); return false
+         }
+     }
++    @inline(never)
+     borrowing func observeModelValue() -> UInt8 {
+         switch self {
+         case .active(let coordinator, _, _): return coordinator.opportunity.observeModelValue()
+         default: preconditionFailure("selected active model observation")
+         }
+     }
++    @inline(never)
+     borrowing func observeProducedAction() -> CounterProducedAction {
+         switch self {
+         case .active(let coordinator, _, _): return coordinator.opportunity.observeProducedAction()
+         default: preconditionFailure("selected active observation")
+         }
+     }
++    @inline(never)
+     borrowing func prepareProducedAction(_ action: CounterProducedAction) -> Bool {
+         switch self {
+         case .active(let coordinator, _, _): return coordinator.opportunity.prepareProducedAction(action)
+         default: return false
+         }
+     }
++    @inline(never)
+     borrowing func deliverProducedAction(_ action: CounterProducedAction) -> Bool {
+         switch self {
+         case .active(let coordinator, _, _): return coordinator.opportunity.deliverProducedAction(action)
+@@ -224,6 +230,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
+         }
+     }
+     @_lifetime(self: copy self)
++    @inline(never)
+     mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure> {
+         switch consume self {
+         case .active(var coordinator, let cache, let span):
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
+index 0c193afd..29b5c951 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
+@@ -73,18 +73,18 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
+         let failedStep: UInt8 = failAfterRuntime ? 1 : pointer.pointee.idleQuiesceMode
+         precondition(host.owner.activationStep == failedStep && host.owner.constructions == 1)
+         precondition(pointer.pointee.teardowns == 1 && pointer.pointee.finalized == (failedStep < 3 ? 0 : failedStep < 5 ? 1 : 2))
+-        precondition(pointer.pointee.unavailable && !pointer.pointee.inputGate.inputIsEligible)
+-        precondition(pointer.pointee.admission.pendingStateCount == 0)
++        precondition(pointer.pointee.runtime.unavailable && !pointer.pointee.inputGate.inputIsEligible)
++        precondition(pointer.pointee.runtime.admission.pendingStateCount == 0)
+         precondition(pointer.pointee.observationsInstalled == (failedStep >= 4 ? 1 : 0) && pointer.pointee.observationsDetached == (failedStep >= 4 ? 1 : 0))
+         count += 6
+     } else {
+         precondition(activation == .active && host.owner.activationStep == 7 && host.owner.constructions == 1)
+         precondition(pointer.pointee.finalized == 2 && pointer.pointee.commits == 1 && pointer.pointee.committedRecords == 2)
+-        precondition(pointer.pointee.admission.pendingStateCount == 1)
++        precondition(pointer.pointee.runtime.admission.pendingStateCount == 1)
+         let wakeControl = CounterHostControl(pointer: pointer)
+         guard case .wait(untilMicroseconds: 250000) = counterServiceHost(at: 0, host: &host, control: wakeControl) else { preconditionFailure("counter actual wake pacing") }
+         guard case .cycle(.admittedWork, .cycle(.success)) = counterServiceHost(at: 250000, host: &host, control: wakeControl) else { preconditionFailure("counter actual paced wake") }
+-        precondition(pointer.pointee.finalized == 3 && pointer.pointee.admission.pendingStateCount == 0)
++        precondition(pointer.pointee.finalized == 3 && pointer.pointee.runtime.admission.pendingStateCount == 0)
+         guard case .noWork = counterServiceHost(at: 250000, host: &host, control: wakeControl) else { preconditionFailure("counter no idle polling") }
+         count += 7 + counterHostCorpus(host: &host, control: pointer)
+     }
+@@ -105,7 +105,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
+     precondition(pointer.pointee.stoppedApplicationChecks >= expectedApplication)
+     var stoppedAdmission = CounterAdmission(borrowing: pointer)
+     precondition(stoppedAdmission.submit(stateChange: 9).result == .unavailable)
+-    precondition(pointer.pointee.admission.pendingStateCount == 0)
++    precondition(pointer.pointee.runtime.admission.pendingStateCount == 0)
+     precondition(!pointer.pointee.inputGate.inputIsEligible)
+     let rejectedInput = pointer.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: .init(rawValue: 0), observedPresentationRevision: pointer.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &stoppedAdmission)
+     precondition(rejectedInput == .sourceQuiesced(.inputUnavailable))
+@@ -163,7 +163,7 @@ func counterJoinSnapshot(_ control: UnsafeMutablePointer<CounterControl>) -> Cou
+     #else
+     let endpoints = 0
+     #endif
+-    return .init(requests: control.pointee.wake?.requester.requestCount, reasons: control.pointee.wake?.accumulatedReasons, outstanding: control.pointee.wake?.wakeOutstanding, hostRequests: control.pointee.hostWakeRequests, factRecords: control.pointee.acceptedFactWakeRecords, firstFact: control.pointee.wakeFirstFactMicroseconds, clock: control.pointee.wakeClockMicroseconds, pointerCount: control.pointee.admission.pointerCount, stateCount: control.pointee.admission.pendingStateCount, completion: control.pointee.admission.pendingCompletion, endpoints: endpoints, applications: control.pointee.applicationConstructions, finalized: control.pointee.finalized, applied: control.pointee.applied)
++    return .init(requests: control.pointee.wake?.requester.requestCount, reasons: control.pointee.wake?.accumulatedReasons, outstanding: control.pointee.wake?.wakeOutstanding, hostRequests: control.pointee.hostWakeRequests, factRecords: control.pointee.acceptedFactWakeRecords, firstFact: control.pointee.wakeFirstFactMicroseconds, clock: control.pointee.wakeClockMicroseconds, pointerCount: control.pointee.runtime.admission.pointerCount, stateCount: control.pointee.runtime.admission.pendingStateCount, completion: control.pointee.runtime.admission.pendingCompletion, endpoints: endpoints, applications: control.pointee.applicationConstructions, finalized: control.pointee.finalized, applied: control.pointee.applied)
+ }
+ func counterForeignJoinScope(_ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
+     var namespace = ObservableModelOwnerNamespace()
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
+index 49cb05f8..ad5bd300 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
+@@ -1506,13 +1506,13 @@ fileprivate func p08RequireFreshControl(_ control: UnsafeMutablePointer<CounterC
+     precondition(!control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled && control.pointee.finalized == 0)
+ }
+ fileprivate func p08RequireRetiredControl(_ control: UnsafeMutablePointer<CounterControl>) {
+-    precondition(control.pointee.unavailable && !control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled)
++    precondition(control.pointee.runtime.unavailable && !control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled)
+     precondition(control.pointee.observationsInstalled == control.pointee.observationsDetached)
+     if var scheduler = control.pointee.scheduler {
+         precondition(scheduler.begin(at: control.pointee.wakeClockMicroseconds, lifecycleState: .active, assemblyReport: scheduler.assemblyReport) == .rejected(.pacingRejected, pacing: .unavailable))
+     }
+     precondition(control.pointee.snapshotProducerOrigin() == nil && !control.pointee.frameActive && !control.pointee.hasRoot)
+-    precondition(control.pointee.admission.pointerCount == 0 && control.pointee.admission.pendingStateCount == 0 && !control.pointee.admission.sealActive)
++    precondition(control.pointee.runtime.admission.pointerCount == 0 && control.pointee.runtime.admission.pendingStateCount == 0 && !control.pointee.runtime.admission.sealActive)
+ }
+ fileprivate func p08RequireSameInventory(_ current: InlineArray<14, P08InitializedEntry?>, _ original: InlineArray<14, P08InitializedEntry?>) {
+     for index in 0..<14 { precondition(current[index] == original[index]) }
+@@ -1546,12 +1546,12 @@ fileprivate struct P08ReuseFingerprint: Equatable {
+     let lastDispatchContext: ExecutionContext?
+     let actionDispatches: Int
+     init(_ control: UnsafeMutablePointer<CounterControl>) {
+-        joins = counterJoinSnapshot(control); context = control.pointee.context
++        joins = counterJoinSnapshot(control); context = control.pointee.runtime.context
+         capture = control.pointee.runtime.pointer.capture.current; source = control.pointee.runtime.pointer.source
+         sequence = control.pointee.runtime.pointer.sequence
+         presentation = control.pointee.runtime.committedPresentation; semantic = control.pointee.semanticSnapshot
+         dirty = control.pointee.runtime.changed
+-        admission = control.pointee.admission
++        admission = control.pointee.runtime.admission
+         controllerContext = control.pointee.admissionController?.context
+         controllerPresentation = control.pointee.admissionController?.committedPresentationRevision
+         controllerQuiescent = control.pointee.admissionController?.isQuiescent
+@@ -1572,6 +1572,13 @@ fileprivate struct P08ReuseFingerprint: Equatable {
+         lastDispatchContext = control.pointee.lastDispatchContext; actionDispatches = control.pointee.actionDispatches
+     }
+ }
++// Keep each complete current snapshot in this short synchronous comparison.
++// The expected owned facts and the original control pointer do not escape.
++@inline(never)
++fileprivate func p08MatchesReuseFingerprint(_ expected: borrowing P08ReuseFingerprint,
++    control: UnsafeMutablePointer<CounterControl>) -> Bool {
++    P08ReuseFingerprint(control) == expected
++}
+ fileprivate func p08RunReuseHost<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>) -> Int
+ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
+     let route: StaticString = host.assemblyReport.profile == .static ? "static" : "dynamic"
+@@ -1585,30 +1592,30 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
+     if transcript.pointee.hosts == 1 {
+         let oldAction = transcript.pointee.action!, oldEvent = transcript.pointee.event!
+         precondition(action.captured == oldAction.captured && action.targetGeneration == oldAction.targetGeneration && action.targetIdentity == oldAction.targetIdentity)
+-        precondition(control.pointee.context.semanticRevision == transcript.pointee.semanticRevision)
++        precondition(control.pointee.runtime.context.semanticRevision == transcript.pointee.semanticRevision)
+         precondition(oldEvent.source == .init(rawValue: 0) && oldEvent.sequence.rawValue == 0 && oldEvent.ordinal.rawValue == 0 && oldEvent.presentationRevision == revision)
+         p08ReuseLabel(route, "raw-namespace-collision")
+         let modelBefore = host.owner.observeModelValue()
+         let before = P08ReuseFingerprint(control)
+         precondition(!host.owner.prepareProducedAction(oldAction))
+-        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore)
++        precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore)
+         precondition(!host.owner.deliverProducedAction(oldAction))
+-        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore); count += counterCheckHostFrame(control.pointee, value: 0)
++        precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore); count += counterCheckHostFrame(control.pointee, value: 0)
+         p08ReuseLabel(route, "action-stale")
+-        precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
+-        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore)
++        precondition(transcript.pointee.runtime.admission!.submit(pointer: oldEvent).result == .unavailable)
++        precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore)
+         p08ReuseLabel(route, "input-stale")
+-        precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
+-        precondition(transcript.pointee.admission!.submit(stateChange: 8).result == .unavailable)
+-        precondition(transcript.pointee.admission!.submit(completion: 0).result == .unavailable)
+-        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore)
++        precondition(transcript.pointee.runtime.admission!.submit(pointer: oldEvent).result == .unavailable)
++        precondition(transcript.pointee.runtime.admission!.submit(stateChange: 8).result == .unavailable)
++        precondition(transcript.pointee.runtime.admission!.submit(completion: 0).result == .unavailable)
++        precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore)
+         p08ReuseLabel(route, "admission-stale")
+         precondition(!transcript.pointee.application!.constructedProjectionIsValid)
+         precondition(!transcript.pointee.application!.serviceSource(value: 8))
+         precondition(!transcript.pointee.application!.startSource())
+         _ = transcript.pointee.application!.installObservation()
+         transcript.pointee.application!.stopDelivery()
+-        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore)
++        precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore)
+         p08ReuseLabel(route, "source-stale")
+     }
+     let down = control.pointee.inputGate.submit(phase: .down, position: control.pointee.actionPoints[0], source: .init(rawValue: 0), observedPresentationRevision: revision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission)
+@@ -1617,8 +1624,8 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
+     precondition(downEvent.sequence.rawValue == 0 && upEvent.sequence == downEvent.sequence && upEvent.ordinal.rawValue == 1)
+     if transcript.pointee.hosts == 0 {
+         transcript.pointee.action = action; transcript.pointee.event = downEvent
+-        transcript.pointee.semanticRevision = control.pointee.context.semanticRevision
+-        transcript.pointee.admission = admission; transcript.pointee.application = host.owner.observeApplicationProducer()
++        transcript.pointee.semanticRevision = control.pointee.runtime.context.semanticRevision
++        transcript.pointee.runtime.admission = admission; transcript.pointee.application = host.owner.observeApplicationProducer()
+     }
+     guard case .cycle(.success(let summary)) = host.runOpportunity() else { preconditionFailure("reuse current pointer cycle") }
+     precondition(summary.admission.inputEventCount == 2 && summary.admission.semanticActionCount == 1)
+@@ -1828,6 +1835,7 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
+     @_lifetime(copy session, borrow control)
+     init(session: consuming P08StorageSession, control: borrowing UnsafeMutablePointer<CounterControl>) { stage = .session(session); self.control = copy control }
+     @_lifetime(self: copy self, copy models, copy root, copy semantic, copy values, copy control)
++    @inline(never)
+     mutating func supply(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: consuming CounterHostControl, audit: RuntimeStorageAudit, dynamic: Bool) {
+         let current = stage.take()!
+         switch consume current {
+@@ -1851,6 +1859,7 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
+         }
+     }
+     @_lifetime(self: copy self)
++    @inline(never)
+     mutating func checkJoins(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> Int {
+         let expected = counterJoinSnapshot(control), foreignExpected = counterJoinSnapshot(foreignControl)
+         let current = stage.take()!
+@@ -1949,14 +1958,14 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
+         }
+         if constructed {
+             precondition(!control.pointee.inputGate.inputIsEligible)
+-            if activationAttempted { precondition(control.pointee.unavailable) }
++            if activationAttempted { precondition(control.pointee.runtime.unavailable) }
+             else {
+-                precondition(!control.pointee.unavailable && control.pointee.wake == nil && control.pointee.scheduler == nil)
++                precondition(!control.pointee.runtime.unavailable && control.pointee.wake == nil && control.pointee.scheduler == nil)
+                 precondition(control.pointee.teardowns == 0 && control.pointee.applicationConstructions == 0)
+             }
+             precondition(control.pointee.observationsInstalled == control.pointee.observationsDetached)
+-            precondition(!control.pointee.frameActive && !control.pointee.admission.sealActive)
+-            precondition(control.pointee.admission.pendingStateCount == 0 && control.pointee.admission.pointerCount == 0)
++            precondition(!control.pointee.frameActive && !control.pointee.runtime.admission.sealActive)
++            precondition(control.pointee.runtime.admission.pendingStateCount == 0 && control.pointee.runtime.admission.pointerCount == 0)
+             precondition(control.pointee.runtime.pointer.capture.current == nil && control.pointee.runtime.pointer.source == nil)
+             precondition(!control.pointee.hasRoot && control.pointee.committedRecords == 0)
+         }
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift
+index ac1501ef..15db416a 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift
+@@ -209,14 +209,14 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
+     let burstRequests = control.pointee.wake!.requester.requestCount
+     let burstFinalized = control.pointee.finalized
+     for _ in 0..<34 { expect(admission.submit(stateChange: 0).result == .queued) }
+-    expect(control.pointee.admission.pendingStateCount == 34 && control.pointee.acceptedFactWakeRecords == burstFacts + 34)
++    expect(control.pointee.runtime.admission.pendingStateCount == 34 && control.pointee.acceptedFactWakeRecords == burstFacts + 34)
+     expect(control.pointee.wakeFirstFactMicroseconds == timestamp && control.pointee.wake!.requester.requestCount == burstRequests + 1)
+     expect(control.pointee.finalized == burstFinalized)
+     expectNoWake(.capacityRefused) { admission.submit(stateChange: 0) }
+     timestamp += 250000
+     guard case .cycle(.admittedWork, .cycle(.success(let burst))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter scalar34 service") }
+     expect(burst.admission.stateChangeFactCount == 34 && burst.admission.inputEventCount == 0 && burst.admission.completionFactCount == 0 && burst.admission.semanticActionCount == 0)
+-    expect(control.pointee.admission.pendingStateCount == 0 && !control.pointee.wake!.wakeOutstanding)
++    expect(control.pointee.runtime.admission.pendingStateCount == 0 && !control.pointee.wake!.wakeOutstanding)
+ 
+     // One callback during the active cycle is admitted only for the next seal.
+     control.pointee.injectCompletionAtApply = true
+@@ -225,7 +225,7 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
+     timestamp += 250000
+     guard case .cycle(_, .cycle(.success(let during))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter late callback cycle") }
+     expect(during.admission.completionFactCount == 0)
+-    expect(control.pointee.admission.pendingCompletion == 0)
++    expect(control.pointee.runtime.admission.pendingCompletion == 0)
+     expect(control.pointee.admissionController!.didDeferAfterSeal)
+     expect(control.pointee.lateCallbackObservedActive && control.pointee.lateCallbackDidNotRunRuntime)
+     expect(control.pointee.wake!.wakeOutstanding && control.pointee.wake!.requester.requestCount == beforeLate + 1)
+@@ -233,7 +233,7 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
+     timestamp += 250000
+     guard case .cycle(.admittedWork, .cycle(.success(let later))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter next paced callback seal") }
+     expect(later.admission.completionFactCount == 1 && later.admission.stateChangeFactCount == 0)
+-    expect(control.pointee.admission.pendingCompletion == nil)
++    expect(control.pointee.runtime.admission.pendingCompletion == nil)
+ 
+     // Real mutation followed by layout failure emits dirty recovery. No fact is
+     // replayed by the subsequent opportunity that derives the retained model.
+@@ -267,7 +267,7 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
+     expect(superseding.semanticRevision != olderIntent && superseding.presentationPending?.semanticRevision == superseding.semanticRevision)
+     expect(superseding.presentationPending?.retryableRefusalCount == 0)
+     expect(superseding.admission.stateChangeFactCount == 1 && superseding.admission.inputEventCount == 0 && superseding.admission.completionFactCount == 0 && superseding.admission.semanticActionCount == 0)
+-    expect(control.pointee.applied == afterBackpressure + 1 && control.pointee.admission.pendingStateCount == 0)
++    expect(control.pointee.applied == afterBackpressure + 1 && control.pointee.runtime.admission.pendingStateCount == 0)
+     let afterSupersession = control.pointee.applied
+     control.pointee.offer = .accepted
+     timestamp += 250000
+@@ -287,7 +287,7 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
+         expect(refused.presentationIntentState == .unavailable && refused.presentationPending == nil)
+         expect(refused.admission.stateChangeFactCount == 1 && refused.admission.inputEventCount == 0 && refused.admission.completionFactCount == 0 && refused.admission.semanticActionCount == 0)
+         expect(control.pointee.applied == applied + 1 && control.pointee.streams == streams)
+-        expect(control.pointee.admission.pendingStateCount == 0 && control.pointee.runtime.pointer.capture.current == nil)
++        expect(control.pointee.runtime.admission.pendingStateCount == 0 && control.pointee.runtime.pointer.capture.current == nil)
+     } else {
+         // Same actual endpoint refuses three paced attempts. Count three is terminal;
+         // no notification survives or invokes the runtime after teardown.
+diff --git a/scripts/contracts/check-spec-015-counter.py b/scripts/contracts/check-spec-015-counter.py
+index e2af9796..c8e9c96e 100644
+--- a/scripts/contracts/check-spec-015-counter.py
++++ b/scripts/contracts/check-spec-015-counter.py
+@@ -32,7 +32,7 @@ def digest(path):
+ revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
+ revision_receipt = json.loads(revision_path.read_text())
+ reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
+-applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-layout-applicability.json'
++applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-applicability.json'
+ applicability = json.loads(applicability_path.read_text())
+ qualified_applicability = []
+ def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
+@@ -40,7 +40,7 @@ def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
+     if name != source or receipt_path is None:
+         return False
+     assert applicability['kind'] == 'exact-noncompiled-source-applicability-qualification'
+-    assert applicability['source'] == source and applicability['activity'] == 'p08-remaining-completion'
++    assert applicability['source'] == source and applicability['activity'] == 'p08-stack-candidate-a'
+     relative_receipt = str(receipt_path.relative_to(ROOT))
+     entry = next((value for value in applicability['receipts'] if value['receipt'] == relative_receipt), None)
+     if entry is None:

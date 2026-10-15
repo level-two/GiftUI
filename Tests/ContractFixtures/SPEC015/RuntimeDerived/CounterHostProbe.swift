@@ -73,18 +73,18 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         let failedStep: UInt8 = failAfterRuntime ? 1 : pointer.pointee.idleQuiesceMode
         precondition(host.owner.activationStep == failedStep && host.owner.constructions == 1)
         precondition(pointer.pointee.teardowns == 1 && pointer.pointee.finalized == (failedStep < 3 ? 0 : failedStep < 5 ? 1 : 2))
-        precondition(pointer.pointee.unavailable && !pointer.pointee.inputGate.inputIsEligible)
-        precondition(pointer.pointee.admission.pendingStateCount == 0)
+        precondition(pointer.pointee.runtime.unavailable && !pointer.pointee.inputGate.inputIsEligible)
+        precondition(pointer.pointee.runtime.admission.pendingStateCount == 0)
         precondition(pointer.pointee.observationsInstalled == (failedStep >= 4 ? 1 : 0) && pointer.pointee.observationsDetached == (failedStep >= 4 ? 1 : 0))
         count += 6
     } else {
         precondition(activation == .active && host.owner.activationStep == 7 && host.owner.constructions == 1)
         precondition(pointer.pointee.finalized == 2 && pointer.pointee.commits == 1 && pointer.pointee.committedRecords == 2)
-        precondition(pointer.pointee.admission.pendingStateCount == 1)
+        precondition(pointer.pointee.runtime.admission.pendingStateCount == 1)
         let wakeControl = CounterHostControl(pointer: pointer)
         guard case .wait(untilMicroseconds: 250000) = counterServiceHost(at: 0, host: &host, control: wakeControl) else { preconditionFailure("counter actual wake pacing") }
         guard case .cycle(.admittedWork, .cycle(.success)) = counterServiceHost(at: 250000, host: &host, control: wakeControl) else { preconditionFailure("counter actual paced wake") }
-        precondition(pointer.pointee.finalized == 3 && pointer.pointee.admission.pendingStateCount == 0)
+        precondition(pointer.pointee.finalized == 3 && pointer.pointee.runtime.admission.pendingStateCount == 0)
         guard case .noWork = counterServiceHost(at: 250000, host: &host, control: wakeControl) else { preconditionFailure("counter no idle polling") }
         count += 7 + counterHostCorpus(host: &host, control: pointer)
     }
@@ -105,7 +105,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     precondition(pointer.pointee.stoppedApplicationChecks >= expectedApplication)
     var stoppedAdmission = CounterAdmission(borrowing: pointer)
     precondition(stoppedAdmission.submit(stateChange: 9).result == .unavailable)
-    precondition(pointer.pointee.admission.pendingStateCount == 0)
+    precondition(pointer.pointee.runtime.admission.pendingStateCount == 0)
     precondition(!pointer.pointee.inputGate.inputIsEligible)
     let rejectedInput = pointer.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: .init(rawValue: 0), observedPresentationRevision: pointer.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &stoppedAdmission)
     precondition(rejectedInput == .sourceQuiesced(.inputUnavailable))
@@ -163,7 +163,7 @@ func counterJoinSnapshot(_ control: UnsafeMutablePointer<CounterControl>) -> Cou
     #else
     let endpoints = 0
     #endif
-    return .init(requests: control.pointee.wake?.requester.requestCount, reasons: control.pointee.wake?.accumulatedReasons, outstanding: control.pointee.wake?.wakeOutstanding, hostRequests: control.pointee.hostWakeRequests, factRecords: control.pointee.acceptedFactWakeRecords, firstFact: control.pointee.wakeFirstFactMicroseconds, clock: control.pointee.wakeClockMicroseconds, pointerCount: control.pointee.admission.pointerCount, stateCount: control.pointee.admission.pendingStateCount, completion: control.pointee.admission.pendingCompletion, endpoints: endpoints, applications: control.pointee.applicationConstructions, finalized: control.pointee.finalized, applied: control.pointee.applied)
+    return .init(requests: control.pointee.wake?.requester.requestCount, reasons: control.pointee.wake?.accumulatedReasons, outstanding: control.pointee.wake?.wakeOutstanding, hostRequests: control.pointee.hostWakeRequests, factRecords: control.pointee.acceptedFactWakeRecords, firstFact: control.pointee.wakeFirstFactMicroseconds, clock: control.pointee.wakeClockMicroseconds, pointerCount: control.pointee.runtime.admission.pointerCount, stateCount: control.pointee.runtime.admission.pendingStateCount, completion: control.pointee.runtime.admission.pendingCompletion, endpoints: endpoints, applications: control.pointee.applicationConstructions, finalized: control.pointee.finalized, applied: control.pointee.applied)
 }
 func counterForeignJoinScope(_ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
     var namespace = ObservableModelOwnerNamespace()

@@ -1506,13 +1506,13 @@ fileprivate func p08RequireFreshControl(_ control: UnsafeMutablePointer<CounterC
     precondition(!control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled && control.pointee.finalized == 0)
 }
 fileprivate func p08RequireRetiredControl(_ control: UnsafeMutablePointer<CounterControl>) {
-    precondition(control.pointee.unavailable && !control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled)
+    precondition(control.pointee.runtime.unavailable && !control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled)
     precondition(control.pointee.observationsInstalled == control.pointee.observationsDetached)
     if var scheduler = control.pointee.scheduler {
         precondition(scheduler.begin(at: control.pointee.wakeClockMicroseconds, lifecycleState: .active, assemblyReport: scheduler.assemblyReport) == .rejected(.pacingRejected, pacing: .unavailable))
     }
     precondition(control.pointee.snapshotProducerOrigin() == nil && !control.pointee.frameActive && !control.pointee.hasRoot)
-    precondition(control.pointee.admission.pointerCount == 0 && control.pointee.admission.pendingStateCount == 0 && !control.pointee.admission.sealActive)
+    precondition(control.pointee.runtime.admission.pointerCount == 0 && control.pointee.runtime.admission.pendingStateCount == 0 && !control.pointee.runtime.admission.sealActive)
 }
 fileprivate func p08RequireSameInventory(_ current: InlineArray<14, P08InitializedEntry?>, _ original: InlineArray<14, P08InitializedEntry?>) {
     for index in 0..<14 { precondition(current[index] == original[index]) }
@@ -1546,12 +1546,12 @@ fileprivate struct P08ReuseFingerprint: Equatable {
     let lastDispatchContext: ExecutionContext?
     let actionDispatches: Int
     init(_ control: UnsafeMutablePointer<CounterControl>) {
-        joins = counterJoinSnapshot(control); context = control.pointee.context
+        joins = counterJoinSnapshot(control); context = control.pointee.runtime.context
         capture = control.pointee.runtime.pointer.capture.current; source = control.pointee.runtime.pointer.source
         sequence = control.pointee.runtime.pointer.sequence
         presentation = control.pointee.runtime.committedPresentation; semantic = control.pointee.semanticSnapshot
         dirty = control.pointee.runtime.changed
-        admission = control.pointee.admission
+        admission = control.pointee.runtime.admission
         controllerContext = control.pointee.admissionController?.context
         controllerPresentation = control.pointee.admissionController?.committedPresentationRevision
         controllerQuiescent = control.pointee.admissionController?.isQuiescent
@@ -1572,6 +1572,13 @@ fileprivate struct P08ReuseFingerprint: Equatable {
         lastDispatchContext = control.pointee.lastDispatchContext; actionDispatches = control.pointee.actionDispatches
     }
 }
+// Keep each complete current snapshot in this short synchronous comparison.
+// The expected owned facts and the original control pointer do not escape.
+@inline(never)
+fileprivate func p08MatchesReuseFingerprint(_ expected: borrowing P08ReuseFingerprint,
+    control: UnsafeMutablePointer<CounterControl>) -> Bool {
+    P08ReuseFingerprint(control) == expected
+}
 fileprivate func p08RunReuseHost<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>) -> Int
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     let route: StaticString = host.assemblyReport.profile == .static ? "static" : "dynamic"
@@ -1585,30 +1592,30 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     if transcript.pointee.hosts == 1 {
         let oldAction = transcript.pointee.action!, oldEvent = transcript.pointee.event!
         precondition(action.captured == oldAction.captured && action.targetGeneration == oldAction.targetGeneration && action.targetIdentity == oldAction.targetIdentity)
-        precondition(control.pointee.context.semanticRevision == transcript.pointee.semanticRevision)
+        precondition(control.pointee.runtime.context.semanticRevision == transcript.pointee.semanticRevision)
         precondition(oldEvent.source == .init(rawValue: 0) && oldEvent.sequence.rawValue == 0 && oldEvent.ordinal.rawValue == 0 && oldEvent.presentationRevision == revision)
         p08ReuseLabel(route, "raw-namespace-collision")
         let modelBefore = host.owner.observeModelValue()
         let before = P08ReuseFingerprint(control)
         precondition(!host.owner.prepareProducedAction(oldAction))
-        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore)
+        precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore)
         precondition(!host.owner.deliverProducedAction(oldAction))
-        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore); count += counterCheckHostFrame(control.pointee, value: 0)
+        precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore); count += counterCheckHostFrame(control.pointee, value: 0)
         p08ReuseLabel(route, "action-stale")
-        precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
-        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore)
+        precondition(transcript.pointee.runtime.admission!.submit(pointer: oldEvent).result == .unavailable)
+        precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore)
         p08ReuseLabel(route, "input-stale")
-        precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
-        precondition(transcript.pointee.admission!.submit(stateChange: 8).result == .unavailable)
-        precondition(transcript.pointee.admission!.submit(completion: 0).result == .unavailable)
-        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore)
+        precondition(transcript.pointee.runtime.admission!.submit(pointer: oldEvent).result == .unavailable)
+        precondition(transcript.pointee.runtime.admission!.submit(stateChange: 8).result == .unavailable)
+        precondition(transcript.pointee.runtime.admission!.submit(completion: 0).result == .unavailable)
+        precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore)
         p08ReuseLabel(route, "admission-stale")
         precondition(!transcript.pointee.application!.constructedProjectionIsValid)
         precondition(!transcript.pointee.application!.serviceSource(value: 8))
         precondition(!transcript.pointee.application!.startSource())
         _ = transcript.pointee.application!.installObservation()
         transcript.pointee.application!.stopDelivery()
-        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore)
+        precondition(p08MatchesReuseFingerprint(before, control: control) && host.owner.observeModelValue() == modelBefore)
         p08ReuseLabel(route, "source-stale")
     }
     let down = control.pointee.inputGate.submit(phase: .down, position: control.pointee.actionPoints[0], source: .init(rawValue: 0), observedPresentationRevision: revision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission)
@@ -1617,8 +1624,8 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     precondition(downEvent.sequence.rawValue == 0 && upEvent.sequence == downEvent.sequence && upEvent.ordinal.rawValue == 1)
     if transcript.pointee.hosts == 0 {
         transcript.pointee.action = action; transcript.pointee.event = downEvent
-        transcript.pointee.semanticRevision = control.pointee.context.semanticRevision
-        transcript.pointee.admission = admission; transcript.pointee.application = host.owner.observeApplicationProducer()
+        transcript.pointee.semanticRevision = control.pointee.runtime.context.semanticRevision
+        transcript.pointee.runtime.admission = admission; transcript.pointee.application = host.owner.observeApplicationProducer()
     }
     guard case .cycle(.success(let summary)) = host.runOpportunity() else { preconditionFailure("reuse current pointer cycle") }
     precondition(summary.admission.inputEventCount == 2 && summary.admission.semanticActionCount == 1)
@@ -1828,6 +1835,7 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
     @_lifetime(copy session, borrow control)
     init(session: consuming P08StorageSession, control: borrowing UnsafeMutablePointer<CounterControl>) { stage = .session(session); self.control = copy control }
     @_lifetime(self: copy self, copy models, copy root, copy semantic, copy values, copy control)
+    @inline(never)
     mutating func supply(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: consuming CounterHostControl, audit: RuntimeStorageAudit, dynamic: Bool) {
         let current = stage.take()!
         switch consume current {
@@ -1851,6 +1859,7 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
         }
     }
     @_lifetime(self: copy self)
+    @inline(never)
     mutating func checkJoins(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> Int {
         let expected = counterJoinSnapshot(control), foreignExpected = counterJoinSnapshot(foreignControl)
         let current = stage.take()!
@@ -1949,14 +1958,14 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
         }
         if constructed {
             precondition(!control.pointee.inputGate.inputIsEligible)
-            if activationAttempted { precondition(control.pointee.unavailable) }
+            if activationAttempted { precondition(control.pointee.runtime.unavailable) }
             else {
-                precondition(!control.pointee.unavailable && control.pointee.wake == nil && control.pointee.scheduler == nil)
+                precondition(!control.pointee.runtime.unavailable && control.pointee.wake == nil && control.pointee.scheduler == nil)
                 precondition(control.pointee.teardowns == 0 && control.pointee.applicationConstructions == 0)
             }
             precondition(control.pointee.observationsInstalled == control.pointee.observationsDetached)
-            precondition(!control.pointee.frameActive && !control.pointee.admission.sealActive)
-            precondition(control.pointee.admission.pendingStateCount == 0 && control.pointee.admission.pointerCount == 0)
+            precondition(!control.pointee.frameActive && !control.pointee.runtime.admission.sealActive)
+            precondition(control.pointee.runtime.admission.pendingStateCount == 0 && control.pointee.runtime.admission.pointerCount == 0)
             precondition(control.pointee.runtime.pointer.capture.current == nil && control.pointee.runtime.pointer.source == nil)
             precondition(!control.pointee.hasRoot && control.pointee.committedRecords == 0)
         }

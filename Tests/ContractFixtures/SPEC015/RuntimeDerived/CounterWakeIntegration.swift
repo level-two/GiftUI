@@ -209,14 +209,14 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
     let burstRequests = control.pointee.wake!.requester.requestCount
     let burstFinalized = control.pointee.finalized
     for _ in 0..<34 { expect(admission.submit(stateChange: 0).result == .queued) }
-    expect(control.pointee.admission.pendingStateCount == 34 && control.pointee.acceptedFactWakeRecords == burstFacts + 34)
+    expect(control.pointee.runtime.admission.pendingStateCount == 34 && control.pointee.acceptedFactWakeRecords == burstFacts + 34)
     expect(control.pointee.wakeFirstFactMicroseconds == timestamp && control.pointee.wake!.requester.requestCount == burstRequests + 1)
     expect(control.pointee.finalized == burstFinalized)
     expectNoWake(.capacityRefused) { admission.submit(stateChange: 0) }
     timestamp += 250000
     guard case .cycle(.admittedWork, .cycle(.success(let burst))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter scalar34 service") }
     expect(burst.admission.stateChangeFactCount == 34 && burst.admission.inputEventCount == 0 && burst.admission.completionFactCount == 0 && burst.admission.semanticActionCount == 0)
-    expect(control.pointee.admission.pendingStateCount == 0 && !control.pointee.wake!.wakeOutstanding)
+    expect(control.pointee.runtime.admission.pendingStateCount == 0 && !control.pointee.wake!.wakeOutstanding)
 
     // One callback during the active cycle is admitted only for the next seal.
     control.pointee.injectCompletionAtApply = true
@@ -225,7 +225,7 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
     timestamp += 250000
     guard case .cycle(_, .cycle(.success(let during))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter late callback cycle") }
     expect(during.admission.completionFactCount == 0)
-    expect(control.pointee.admission.pendingCompletion == 0)
+    expect(control.pointee.runtime.admission.pendingCompletion == 0)
     expect(control.pointee.admissionController!.didDeferAfterSeal)
     expect(control.pointee.lateCallbackObservedActive && control.pointee.lateCallbackDidNotRunRuntime)
     expect(control.pointee.wake!.wakeOutstanding && control.pointee.wake!.requester.requestCount == beforeLate + 1)
@@ -233,7 +233,7 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
     timestamp += 250000
     guard case .cycle(.admittedWork, .cycle(.success(let later))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter next paced callback seal") }
     expect(later.admission.completionFactCount == 1 && later.admission.stateChangeFactCount == 0)
-    expect(control.pointee.admission.pendingCompletion == nil)
+    expect(control.pointee.runtime.admission.pendingCompletion == nil)
 
     // Real mutation followed by layout failure emits dirty recovery. No fact is
     // replayed by the subsequent opportunity that derives the retained model.
@@ -267,7 +267,7 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
     expect(superseding.semanticRevision != olderIntent && superseding.presentationPending?.semanticRevision == superseding.semanticRevision)
     expect(superseding.presentationPending?.retryableRefusalCount == 0)
     expect(superseding.admission.stateChangeFactCount == 1 && superseding.admission.inputEventCount == 0 && superseding.admission.completionFactCount == 0 && superseding.admission.semanticActionCount == 0)
-    expect(control.pointee.applied == afterBackpressure + 1 && control.pointee.admission.pendingStateCount == 0)
+    expect(control.pointee.applied == afterBackpressure + 1 && control.pointee.runtime.admission.pendingStateCount == 0)
     let afterSupersession = control.pointee.applied
     control.pointee.offer = .accepted
     timestamp += 250000
@@ -287,7 +287,7 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
         expect(refused.presentationIntentState == .unavailable && refused.presentationPending == nil)
         expect(refused.admission.stateChangeFactCount == 1 && refused.admission.inputEventCount == 0 && refused.admission.completionFactCount == 0 && refused.admission.semanticActionCount == 0)
         expect(control.pointee.applied == applied + 1 && control.pointee.streams == streams)
-        expect(control.pointee.admission.pendingStateCount == 0 && control.pointee.runtime.pointer.capture.current == nil)
+        expect(control.pointee.runtime.admission.pendingStateCount == 0 && control.pointee.runtime.pointer.capture.current == nil)
     } else {
         // Same actual endpoint refuses three paced attempts. Count three is terminal;
         // no notification survives or invokes the runtime after teardown.

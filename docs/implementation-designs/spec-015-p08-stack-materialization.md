@@ -21,10 +21,11 @@ This derived note proposes a private compiler realization, not a new resource
 limit or ownership contract. It answers the maintainer's question about a roughly
 30 KB stack under the [authorized diagnosis/design activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-design-activity.md).
 **Recommendation: reduce demonstrated carrier/getter materialization first.
-A 30 KiB budget cannot repair the current image.** No source candidate or compiler
-experiment has been run in this activity. [Independent Strong review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-design-independent-review.md)
-passes the bounded approach: candidate A is safe to attempt under a newly recorded
-source/validation activity, with no contract or resource-limit change.
+A 30 KiB budget cannot repair the current image.** [Independent Strong design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-design-independent-review.md)
+passed at `a90841e0`. The [candidate A source activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-activity.md)
+now freezes its [concrete realization](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-source-freeze.md)
+for independent source review before one target screen. No compiler experiment,
+budget change or automatic repair variant has run/been granted.
 
 ## Authority and exact evidence
 
