@@ -1,0 +1,35 @@
+{
+  "label": "remaining-layout-cycle1-focused",
+  "argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    "--fresh-focused",
+    "--select-family",
+    "so07-layout-facts",
+    "--collect-failures"
+  ],
+  "cwd": "/Users/eugene/work/GiftUI",
+  "started": "2026-10-15T08:49:10.359825+00:00",
+  "revision": "db40edb93874d7650066024075b0f0da11bbda2c",
+  "status_before": "",
+  "exit": 1,
+  "finished": "2026-10-15T08:50:02.645148+00:00",
+  "status_after": "",
+  "artifacts": {
+    "stdout.log": {
+      "sha256": "7127e879c83d04fafc521e8d95f347559a5db13f26a2457bea785d7fe5116683",
+      "bytes": 278
+    },
+    "stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  }
+}

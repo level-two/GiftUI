@@ -1,0 +1,1886 @@
+{
+  "kind": "diagnostic-immediate-literal-analysis-of-rejected-functions",
+  "driver_accepted": false,
+  "method": "Interpret actual immediate at +22 after surviving initialization calls; resolve only observed single R_ARM_THM_JUMP24 wrappers for analysis. No target code executed. Added bx-lr terminator used only to decode isolated immediate encoding; original full bodies all fail strict decoder.",
+  "roots": {
+    "giftui_p08_layout_limits_offset": {
+      "value": 0,
+      "leaf": {
+        "symbol": "giftui_p08_layout_limits_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "0020"
+      },
+      "path": [
+        "giftui_p08_layout_limits_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_limits_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_limits_count",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_limits_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_limits_size": {
+      "value": 115,
+      "leaf": {
+        "symbol": "giftui_p08_layout_limits_size",
+        "instruction_offset": 22,
+        "instruction_hex": "7320"
+      },
+      "path": [
+        "giftui_p08_layout_limits_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_limits_stride": {
+      "value": 116,
+      "leaf": {
+        "symbol": "giftui_p08_layout_limits_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "7420"
+      },
+      "path": [
+        "giftui_p08_layout_limits_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_limits_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_limits_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_limits_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_root_offset": {
+      "value": 116,
+      "leaf": {
+        "symbol": "giftui_p08_layout_root_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "7420"
+      },
+      "path": [
+        "giftui_p08_layout_root_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_root_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_root_count",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_root_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_root_size": {
+      "value": 810,
+      "leaf": {
+        "symbol": "giftui_p08_layout_root_size",
+        "instruction_offset": 22,
+        "instruction_hex": "40f22a30"
+      },
+      "path": [
+        "giftui_p08_layout_root_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_root_stride": {
+      "value": 812,
+      "leaf": {
+        "symbol": "giftui_p08_layout_root_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff44b70"
+      },
+      "path": [
+        "giftui_p08_layout_root_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_root_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_root_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_root_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semantic_offset": {
+      "value": 928,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semantic_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff46870"
+      },
+      "path": [
+        "giftui_p08_layout_semantic_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semantic_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semantic_count",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_semantic_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semantic_size": {
+      "value": 116,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semantic_size",
+        "instruction_offset": 22,
+        "instruction_hex": "7420"
+      },
+      "path": [
+        "giftui_p08_layout_semantic_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semantic_stride": {
+      "value": 116,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semantic_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "7420"
+      },
+      "path": [
+        "giftui_p08_layout_semantic_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semantic_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semantic_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_semantic_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticRecords_offset": {
+      "value": 1044,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticRecords_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "40f21440"
+      },
+      "path": [
+        "giftui_p08_layout_semanticRecords_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticRecords_count": {
+      "value": 128,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticRecords_count",
+        "instruction_offset": 22,
+        "instruction_hex": "8020"
+      },
+      "path": [
+        "giftui_p08_layout_semanticRecords_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticRecords_size": {
+      "value": 20,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticRecords_size",
+        "instruction_offset": 22,
+        "instruction_hex": "1420"
+      },
+      "path": [
+        "giftui_p08_layout_semanticRecords_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticRecords_stride": {
+      "value": 20,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticRecords_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "1420"
+      },
+      "path": [
+        "giftui_p08_layout_semanticRecords_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticRecords_alignment": {
+      "value": 2,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticRecords_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0220"
+      },
+      "path": [
+        "giftui_p08_layout_semanticRecords_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticPaths_offset": {
+      "value": 3604,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticPaths_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "40f61460"
+      },
+      "path": [
+        "giftui_p08_layout_semanticPaths_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticPaths_count": {
+      "value": 384,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticPaths_count",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff4c070"
+      },
+      "path": [
+        "giftui_p08_layout_semanticPaths_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticPaths_size": {
+      "value": 22,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticPaths_size",
+        "instruction_offset": 22,
+        "instruction_hex": "1620"
+      },
+      "path": [
+        "giftui_p08_layout_semanticPaths_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticPaths_stride": {
+      "value": 22,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticPaths_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "1620"
+      },
+      "path": [
+        "giftui_p08_layout_semanticPaths_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticPaths_alignment": {
+      "value": 2,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticPaths_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0220"
+      },
+      "path": [
+        "giftui_p08_layout_semanticPaths_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticPayloads_offset": {
+      "value": 12052,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticPayloads_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "42f61470"
+      },
+      "path": [
+        "giftui_p08_layout_semanticPayloads_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticPayloads_count": {
+      "value": 256,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticPayloads_count",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff48070"
+      },
+      "path": [
+        "giftui_p08_layout_semanticPayloads_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticPayloads_size": {
+      "value": 33,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticPayloads_size",
+        "instruction_offset": 22,
+        "instruction_hex": "2120"
+      },
+      "path": [
+        "giftui_p08_layout_semanticPayloads_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticPayloads_stride": {
+      "value": 36,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticPayloads_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "2420"
+      },
+      "path": [
+        "giftui_p08_layout_semanticPayloads_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticPayloads_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticPayloads_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_semanticPayloads_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticScalars_offset": {
+      "value": 21268,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticScalars_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "45f21430"
+      },
+      "path": [
+        "giftui_p08_layout_semanticScalars_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticScalars_count": {
+      "value": 128,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticScalars_count",
+        "instruction_offset": 22,
+        "instruction_hex": "8020"
+      },
+      "path": [
+        "giftui_p08_layout_semanticScalars_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticScalars_size": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticScalars_size",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_semanticScalars_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticScalars_stride": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticScalars_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_semanticScalars_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_semanticScalars_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_semanticScalars_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_semanticScalars_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_values_offset": {
+      "value": 21780,
+      "leaf": {
+        "symbol": "giftui_p08_layout_values_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "45f21450"
+      },
+      "path": [
+        "giftui_p08_layout_values_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_values_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_values_count",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_values_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_values_size": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_values_size",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_values_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_values_stride": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_values_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_values_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_values_alignment": {
+      "value": 2,
+      "leaf": {
+        "symbol": "giftui_p08_layout_values_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0220"
+      },
+      "path": [
+        "giftui_p08_layout_values_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_canvasEntry_offset": {
+      "value": 21784,
+      "leaf": {
+        "symbol": "giftui_p08_layout_canvasEntry_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "45f21850"
+      },
+      "path": [
+        "giftui_p08_layout_canvasEntry_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_canvasEntry_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_canvasEntry_count",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_canvasEntry_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_canvasEntry_size": {
+      "value": 28,
+      "leaf": {
+        "symbol": "giftui_p08_layout_canvasEntry_size",
+        "instruction_offset": 22,
+        "instruction_hex": "1c20"
+      },
+      "path": [
+        "giftui_p08_layout_canvasEntry_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_canvasEntry_stride": {
+      "value": 28,
+      "leaf": {
+        "symbol": "giftui_p08_layout_canvasEntry_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "1c20"
+      },
+      "path": [
+        "giftui_p08_layout_canvasEntry_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_canvasEntry_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_canvasEntry_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_canvasEntry_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b0_offset": {
+      "value": 21812,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b0_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "45f23450"
+      },
+      "path": [
+        "giftui_p08_layout_b0_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b0_count": {
+      "value": 1024,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b0_count",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff48060"
+      },
+      "path": [
+        "giftui_p08_layout_b0_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b0_size": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b0_size",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_b0_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b0_stride": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b0_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_b0_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b0_alignment": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b0_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_b0_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b1_offset": {
+      "value": 22836,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b1_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "45f63410"
+      },
+      "path": [
+        "giftui_p08_layout_b1_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b1_count": {
+      "value": 1056,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b1_count",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff48460"
+      },
+      "path": [
+        "giftui_p08_layout_b1_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b1_size": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b1_size",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_b1_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b1_stride": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b1_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_b1_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b1_alignment": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b1_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_b1_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b2_offset": {
+      "value": 23892,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b2_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "45f65450"
+      },
+      "path": [
+        "giftui_p08_layout_b2_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b2_count": {
+      "value": 20,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b2_count",
+        "instruction_offset": 22,
+        "instruction_hex": "1420"
+      },
+      "path": [
+        "giftui_p08_layout_b2_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b2_size": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b2_size",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_b2_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b2_stride": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b2_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_b2_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b2_alignment": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b2_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_b2_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b3_offset": {
+      "value": 23912,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b3_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "45f66850"
+      },
+      "path": [
+        "giftui_p08_layout_b3_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b3_count": {
+      "value": 112,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b3_count",
+        "instruction_offset": 22,
+        "instruction_hex": "7020"
+      },
+      "path": [
+        "giftui_p08_layout_b3_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b3_size": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b3_size",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_b3_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b3_stride": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b3_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_b3_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_b3_alignment": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_b3_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_b3_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g0_offset": {
+      "value": 24024,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g0_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "45f6d850"
+      },
+      "path": [
+        "giftui_p08_layout_g0_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g0_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g0_count",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_g0_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g0_size": {
+      "value": 70,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g0_size",
+        "instruction_offset": 22,
+        "instruction_hex": "4620"
+      },
+      "path": [
+        "giftui_p08_layout_g0_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g0_stride": {
+      "value": 72,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g0_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "4820"
+      },
+      "path": [
+        "giftui_p08_layout_g0_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g0_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g0_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_g0_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g1_offset": {
+      "value": 24096,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g1_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "45f62060"
+      },
+      "path": [
+        "giftui_p08_layout_g1_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g1_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g1_count",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_g1_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g1_size": {
+      "value": 98,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g1_size",
+        "instruction_offset": 22,
+        "instruction_hex": "6220"
+      },
+      "path": [
+        "giftui_p08_layout_g1_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g1_stride": {
+      "value": 100,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g1_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "6420"
+      },
+      "path": [
+        "giftui_p08_layout_g1_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g1_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g1_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_g1_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g2_offset": {
+      "value": 24196,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g2_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "45f68460"
+      },
+      "path": [
+        "giftui_p08_layout_g2_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g2_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g2_count",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_g2_count"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g2_size": {
+      "value": 1024,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g2_sizeTm",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff48060"
+      },
+      "path": [
+        "giftui_p08_layout_g2_size",
+        "giftui_p08_layout_g2_sizeTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g2_stride": {
+      "value": 1024,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g2_sizeTm",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff48060"
+      },
+      "path": [
+        "giftui_p08_layout_g2_stride",
+        "giftui_p08_layout_g2_size",
+        "giftui_p08_layout_g2_sizeTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g2_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g2_alignmentTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_g2_alignment",
+        "giftui_p08_layout_c0_alignment",
+        "giftui_p08_layout_g2_alignmentTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g3_offset": {
+      "value": 25220,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "46f28420"
+      },
+      "path": [
+        "giftui_p08_layout_g3_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g3_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_countTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_g3_count",
+        "giftui_p08_layout_c0_count",
+        "giftui_p08_layout_g3_countTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g3_size": {
+      "value": 167,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_size",
+        "instruction_offset": 22,
+        "instruction_hex": "a720"
+      },
+      "path": [
+        "giftui_p08_layout_g3_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g3_stride": {
+      "value": 168,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "a820"
+      },
+      "path": [
+        "giftui_p08_layout_g3_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g3_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g2_alignmentTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_g3_alignment",
+        "giftui_p08_layout_c0_alignment",
+        "giftui_p08_layout_g2_alignmentTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g4_offset": {
+      "value": 25388,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g4_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "46f22c30"
+      },
+      "path": [
+        "giftui_p08_layout_g4_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g4_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_countTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_g4_count",
+        "giftui_p08_layout_c0_count",
+        "giftui_p08_layout_g3_countTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g4_size": {
+      "value": 26,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g4_size",
+        "instruction_offset": 22,
+        "instruction_hex": "1a20"
+      },
+      "path": [
+        "giftui_p08_layout_g4_size"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g4_stride": {
+      "value": 28,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g4_stride",
+        "instruction_offset": 22,
+        "instruction_hex": "1c20"
+      },
+      "path": [
+        "giftui_p08_layout_g4_stride"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_g4_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g2_alignmentTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_g4_alignment",
+        "giftui_p08_layout_c0_alignment",
+        "giftui_p08_layout_g2_alignmentTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_c0_offset": {
+      "value": 25416,
+      "leaf": {
+        "symbol": "giftui_p08_layout_c0_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "46f24830"
+      },
+      "path": [
+        "giftui_p08_layout_c0_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_c0_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_countTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_c0_count",
+        "giftui_p08_layout_g3_countTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_c0_size": {
+      "value": 484,
+      "leaf": {
+        "symbol": "giftui_p08_layout_c0_sizeTm",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff4f270"
+      },
+      "path": [
+        "giftui_p08_layout_c0_size",
+        "giftui_p08_layout_c0_sizeTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_c0_stride": {
+      "value": 484,
+      "leaf": {
+        "symbol": "giftui_p08_layout_c0_sizeTm",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff4f270"
+      },
+      "path": [
+        "giftui_p08_layout_c0_stride",
+        "giftui_p08_layout_c0_size",
+        "giftui_p08_layout_c0_sizeTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_c0_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g2_alignmentTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_c0_alignment",
+        "giftui_p08_layout_g2_alignmentTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_h0_offset": {
+      "value": 25900,
+      "leaf": {
+        "symbol": "giftui_p08_layout_h0_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "46f22c50"
+      },
+      "path": [
+        "giftui_p08_layout_h0_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_h0_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_countTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_h0_count",
+        "giftui_p08_layout_c0_count",
+        "giftui_p08_layout_g3_countTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_h0_size": {
+      "value": 460,
+      "leaf": {
+        "symbol": "giftui_p08_layout_h0_sizeTm",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff4e670"
+      },
+      "path": [
+        "giftui_p08_layout_h0_size",
+        "giftui_p08_layout_h0_sizeTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_h0_stride": {
+      "value": 460,
+      "leaf": {
+        "symbol": "giftui_p08_layout_h0_sizeTm",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff4e670"
+      },
+      "path": [
+        "giftui_p08_layout_h0_stride",
+        "giftui_p08_layout_h0_size",
+        "giftui_p08_layout_h0_sizeTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_h0_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g2_alignmentTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_h0_alignment",
+        "giftui_p08_layout_c0_alignment",
+        "giftui_p08_layout_g2_alignmentTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_r0_offset": {
+      "value": 26360,
+      "leaf": {
+        "symbol": "giftui_p08_layout_r0_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "46f2f860"
+      },
+      "path": [
+        "giftui_p08_layout_r0_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_r0_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_countTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_r0_count",
+        "giftui_p08_layout_c0_count",
+        "giftui_p08_layout_g3_countTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_r0_size": {
+      "value": 484,
+      "leaf": {
+        "symbol": "giftui_p08_layout_c0_sizeTm",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff4f270"
+      },
+      "path": [
+        "giftui_p08_layout_r0_size",
+        "giftui_p08_layout_c0_size",
+        "giftui_p08_layout_c0_sizeTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_r0_stride": {
+      "value": 484,
+      "leaf": {
+        "symbol": "giftui_p08_layout_c0_sizeTm",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff4f270"
+      },
+      "path": [
+        "giftui_p08_layout_r0_stride",
+        "giftui_p08_layout_c0_size",
+        "giftui_p08_layout_c0_sizeTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_r0_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g2_alignmentTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_r0_alignment",
+        "giftui_p08_layout_c0_alignment",
+        "giftui_p08_layout_g2_alignmentTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_r1_offset": {
+      "value": 26844,
+      "leaf": {
+        "symbol": "giftui_p08_layout_r1_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "46f6dc00"
+      },
+      "path": [
+        "giftui_p08_layout_r1_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_r1_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_countTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_r1_count",
+        "giftui_p08_layout_c0_count",
+        "giftui_p08_layout_g3_countTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_r1_size": {
+      "value": 484,
+      "leaf": {
+        "symbol": "giftui_p08_layout_c0_sizeTm",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff4f270"
+      },
+      "path": [
+        "giftui_p08_layout_r1_size",
+        "giftui_p08_layout_c0_size",
+        "giftui_p08_layout_c0_sizeTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_r1_stride": {
+      "value": 484,
+      "leaf": {
+        "symbol": "giftui_p08_layout_c0_sizeTm",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff4f270"
+      },
+      "path": [
+        "giftui_p08_layout_r1_stride",
+        "giftui_p08_layout_c0_size",
+        "giftui_p08_layout_c0_sizeTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_r1_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g2_alignmentTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_r1_alignment",
+        "giftui_p08_layout_c0_alignment",
+        "giftui_p08_layout_g2_alignmentTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_h1_offset": {
+      "value": 27328,
+      "leaf": {
+        "symbol": "giftui_p08_layout_h1_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "46f6c020"
+      },
+      "path": [
+        "giftui_p08_layout_h1_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_h1_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_countTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_h1_count",
+        "giftui_p08_layout_c0_count",
+        "giftui_p08_layout_g3_countTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_h1_size": {
+      "value": 460,
+      "leaf": {
+        "symbol": "giftui_p08_layout_h0_sizeTm",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff4e670"
+      },
+      "path": [
+        "giftui_p08_layout_h1_size",
+        "giftui_p08_layout_h0_size",
+        "giftui_p08_layout_h0_sizeTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_h1_stride": {
+      "value": 460,
+      "leaf": {
+        "symbol": "giftui_p08_layout_h0_sizeTm",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff4e670"
+      },
+      "path": [
+        "giftui_p08_layout_h1_stride",
+        "giftui_p08_layout_h0_size",
+        "giftui_p08_layout_h0_sizeTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_h1_alignment": {
+      "value": 4,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g2_alignmentTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0420"
+      },
+      "path": [
+        "giftui_p08_layout_h1_alignment",
+        "giftui_p08_layout_c0_alignment",
+        "giftui_p08_layout_g2_alignmentTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_control_offset": {
+      "value": 27792,
+      "leaf": {
+        "symbol": "giftui_p08_layout_control_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "46f69040"
+      },
+      "path": [
+        "giftui_p08_layout_control_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_control_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_countTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_control_count",
+        "giftui_p08_layout_c0_count",
+        "giftui_p08_layout_g3_countTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_control_size": {
+      "value": 4200,
+      "leaf": {
+        "symbol": "giftui_p08_layout_control_sizeTm",
+        "instruction_offset": 22,
+        "instruction_hex": "41f26800"
+      },
+      "path": [
+        "giftui_p08_layout_control_size",
+        "giftui_p08_layout_control_sizeTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_control_stride": {
+      "value": 4200,
+      "leaf": {
+        "symbol": "giftui_p08_layout_control_sizeTm",
+        "instruction_offset": 22,
+        "instruction_hex": "41f26800"
+      },
+      "path": [
+        "giftui_p08_layout_control_stride",
+        "giftui_p08_layout_control_size",
+        "giftui_p08_layout_control_sizeTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_control_alignment": {
+      "value": 8,
+      "leaf": {
+        "symbol": "giftui_p08_layout_control_alignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0820"
+      },
+      "path": [
+        "giftui_p08_layout_control_alignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_used_offset": {
+      "value": 31992,
+      "leaf": {
+        "symbol": "giftui_p08_layout_used_offset",
+        "instruction_offset": 22,
+        "instruction_hex": "47f6f840"
+      },
+      "path": [
+        "giftui_p08_layout_used_offset"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_used_count": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_countTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_used_count",
+        "giftui_p08_layout_c0_count",
+        "giftui_p08_layout_g3_countTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_used_size": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_countTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_used_size",
+        "giftui_p08_layout_c0_count",
+        "giftui_p08_layout_g3_countTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_used_stride": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_countTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_used_stride",
+        "giftui_p08_layout_c0_count",
+        "giftui_p08_layout_g3_countTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_used_alignment": {
+      "value": 1,
+      "leaf": {
+        "symbol": "giftui_p08_layout_g3_countTm",
+        "instruction_offset": 22,
+        "instruction_hex": "0120"
+      },
+      "path": [
+        "giftui_p08_layout_used_alignment",
+        "giftui_p08_layout_c0_count",
+        "giftui_p08_layout_g3_countTm"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_cursor": {
+      "value": 31993,
+      "leaf": {
+        "symbol": "giftui_p08_layout_cursor",
+        "instruction_offset": 22,
+        "instruction_hex": "47f6f940"
+      },
+      "path": [
+        "giftui_p08_layout_cursor"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_maximumAlignment": {
+      "value": 8,
+      "leaf": {
+        "symbol": "giftui_p08_layout_maximumAlignment",
+        "instruction_offset": 22,
+        "instruction_hex": "0820"
+      },
+      "path": [
+        "giftui_p08_layout_maximumAlignment"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_slotBytes": {
+      "value": 32000,
+      "leaf": {
+        "symbol": "giftui_p08_layout_slotBytes",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff4fa40"
+      },
+      "path": [
+        "giftui_p08_layout_slotBytes"
+      ],
+      "driver_accepted": false
+    },
+    "giftui_p08_layout_totalBytes": {
+      "value": 128000,
+      "leaf": {
+        "symbol": "giftui_p08_layout_totalBytes",
+        "instruction_offset": 22,
+        "instruction_hex": "4ff4fa30"
+      },
+      "path": [
+        "giftui_p08_layout_totalBytes"
+      ],
+      "driver_accepted": false
+    }
+  },
+  "checked_layout_consistency": {
+    "regions": [
+      {
+        "name": "limits",
+        "offset": 0,
+        "count": 1,
+        "size": 115,
+        "stride": 116,
+        "alignment": 4,
+        "extent": 116,
+        "end": 116
+      },
+      {
+        "name": "root",
+        "offset": 116,
+        "count": 1,
+        "size": 810,
+        "stride": 812,
+        "alignment": 4,
+        "extent": 812,
+        "end": 928
+      },
+      {
+        "name": "semantic",
+        "offset": 928,
+        "count": 1,
+        "size": 116,
+        "stride": 116,
+        "alignment": 4,
+        "extent": 116,
+        "end": 1044
+      },
+      {
+        "name": "semanticRecords",
+        "offset": 1044,
+        "count": 128,
+        "size": 20,
+        "stride": 20,
+        "alignment": 2,
+        "extent": 2560,
+        "end": 3604
+      },
+      {
+        "name": "semanticPaths",
+        "offset": 3604,
+        "count": 384,
+        "size": 22,
+        "stride": 22,
+        "alignment": 2,
+        "extent": 8448,
+        "end": 12052
+      },
+      {
+        "name": "semanticPayloads",
+        "offset": 12052,
+        "count": 256,
+        "size": 33,
+        "stride": 36,
+        "alignment": 4,
+        "extent": 9216,
+        "end": 21268
+      },
+      {
+        "name": "semanticScalars",
+        "offset": 21268,
+        "count": 128,
+        "size": 4,
+        "stride": 4,
+        "alignment": 4,
+        "extent": 512,
+        "end": 21780
+      },
+      {
+        "name": "values",
+        "offset": 21780,
+        "count": 1,
+        "size": 4,
+        "stride": 4,
+        "alignment": 2,
+        "extent": 4,
+        "end": 21784
+      },
+      {
+        "name": "canvasEntry",
+        "offset": 21784,
+        "count": 1,
+        "size": 28,
+        "stride": 28,
+        "alignment": 4,
+        "extent": 28,
+        "end": 21812
+      },
+      {
+        "name": "b0",
+        "offset": 21812,
+        "count": 1024,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1024,
+        "end": 22836
+      },
+      {
+        "name": "b1",
+        "offset": 22836,
+        "count": 1056,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1056,
+        "end": 23892
+      },
+      {
+        "name": "b2",
+        "offset": 23892,
+        "count": 20,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 20,
+        "end": 23912
+      },
+      {
+        "name": "b3",
+        "offset": 23912,
+        "count": 112,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 112,
+        "end": 24024
+      },
+      {
+        "name": "g0",
+        "offset": 24024,
+        "count": 1,
+        "size": 70,
+        "stride": 72,
+        "alignment": 4,
+        "extent": 72,
+        "end": 24096
+      },
+      {
+        "name": "g1",
+        "offset": 24096,
+        "count": 1,
+        "size": 98,
+        "stride": 100,
+        "alignment": 4,
+        "extent": 100,
+        "end": 24196
+      },
+      {
+        "name": "g2",
+        "offset": 24196,
+        "count": 1,
+        "size": 1024,
+        "stride": 1024,
+        "alignment": 4,
+        "extent": 1024,
+        "end": 25220
+      },
+      {
+        "name": "g3",
+        "offset": 25220,
+        "count": 1,
+        "size": 167,
+        "stride": 168,
+        "alignment": 4,
+        "extent": 168,
+        "end": 25388
+      },
+      {
+        "name": "g4",
+        "offset": 25388,
+        "count": 1,
+        "size": 26,
+        "stride": 28,
+        "alignment": 4,
+        "extent": 28,
+        "end": 25416
+      },
+      {
+        "name": "c0",
+        "offset": 25416,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 25900
+      },
+      {
+        "name": "h0",
+        "offset": 25900,
+        "count": 1,
+        "size": 460,
+        "stride": 460,
+        "alignment": 4,
+        "extent": 460,
+        "end": 26360
+      },
+      {
+        "name": "r0",
+        "offset": 26360,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 26844
+      },
+      {
+        "name": "r1",
+        "offset": 26844,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 27328
+      },
+      {
+        "name": "h1",
+        "offset": 27328,
+        "count": 1,
+        "size": 460,
+        "stride": 460,
+        "alignment": 4,
+        "extent": 460,
+        "end": 27788
+      },
+      {
+        "name": "control",
+        "offset": 27792,
+        "count": 1,
+        "size": 4200,
+        "stride": 4200,
+        "alignment": 8,
+        "extent": 4200,
+        "end": 31992
+      },
+      {
+        "name": "used",
+        "offset": 31992,
+        "count": 1,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1,
+        "end": 31993
+      }
+    ],
+    "cursor": 31993,
+    "maximumAlignment": 8,
+    "slotBytes": 32000,
+    "totalBytes": 128000,
+    "retained_slot_bytes": 32000,
+    "retained_bytes": 128000,
+    "retained_surplus": 0
+  },
+  "source_reservation": {
+    "slot_bytes": 32000,
+    "slot_count": 4,
+    "retained_bytes": 128000,
+    "c_alignment": 8
+  },
+  "current_firmware_symbol_comparison": "not collected; no current firmware image",
+  "maximum_observed_tail_edges": 2
+}

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/Users/eugene/work/GiftUI/scripts/contracts/p08_layout_facts.py", line 307, in <module>
+    main()
+  File "/Users/eugene/work/GiftUI/scripts/contracts/p08_layout_facts.py", line 285, in main
+    elf, extracted = extract(args.input, reservation)
+  File "/Users/eugene/work/GiftUI/scripts/contracts/p08_layout_facts.py", line 241, in extract
+    inventory = classify_inventory(elf)
+  File "/Users/eugene/work/GiftUI/scripts/contracts/p08_layout_facts.py", line 226, in classify_inventory
+    require(name == LOCAL_HELPER and symbol['binding'] == 0, 'unexpected layout symbol')
+  File "/Users/eugene/work/GiftUI/scripts/contracts/p08_layout_facts.py", line 28, in require
+    raise ValueError(message)
+ValueError: unexpected layout symbol
