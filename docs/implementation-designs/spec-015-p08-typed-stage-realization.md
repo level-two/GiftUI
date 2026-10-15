@@ -25,6 +25,10 @@ authorizes a grouped initial candidate and at most two cause-grouped corrective
 cycles after design review. Prior allowances remain closed. **Design only:** no
 source change, compiler run, measured saving or fit claim accompanies this note.
 
+[Independent Strong design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-independent-design-review.md)
+passes this internal realization at `8bc9c9a4`. Initial source implementation is
+ready under the activity; no source/compiler/fit result is implied.
+
 ## Evidence and the replaceable mechanism
 
 The [candidate A result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-screen-result.md)

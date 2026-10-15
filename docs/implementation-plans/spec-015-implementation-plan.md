@@ -24,10 +24,11 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current P08 typed-stage realization — **design ready for independent review, 2026-10-15**.
+Current P08 typed-stage realization — **independent DESIGN PASS; initial source next, 2026-10-15**.
 The [new authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-activity.md)
 and [derived design](../implementation-designs/spec-015-p08-typed-stage-realization.md)
 address private stage transfers, host construction and reuse/corpus materialization.
+[Independent design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-independent-design-review.md) finds no contract or scope blocker.
 No source candidate or screen yet; new corrective cycles 0/2. Required state cases,
 ownership and resource limits remain unchanged; P08/R07/T8.1/HC-RD-003 remain open.
 The following candidate A and older stops remain historical, with their budgets closed.

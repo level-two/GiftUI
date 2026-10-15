@@ -1,6 +1,9 @@
 # P08 stage realization — grouped design/correction activity
 
-Status: **design ready for independent review; no source candidate or screen yet**. Entry `7ee1c3e0`.
+Status: **independent Strong DESIGN PASS; no source candidate or screen yet**.
+[Independent design review](p08-stage-realization-independent-design-review.md)
+finds the private realization within contract; initial implementation may proceed
+under this activity, with independent source review before the screen. Entry `7ee1c3e0`.
 Eugene explicitly requested **“Please proceed with the recommended steps”** after
 the recommendation for one broader package addressing remaining host construction,
 state-transfer and full-snapshot costs, using early focused stack checks and
