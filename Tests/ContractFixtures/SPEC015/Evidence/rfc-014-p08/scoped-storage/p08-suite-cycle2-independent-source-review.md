@@ -53,3 +53,30 @@ including the historical **58,648-byte failure / unchanged 27,648-byte stack
 ceiling**. I4-07/P09–12, hardware/timing and lifecycle transitions remain separate.
 Only this review is committed; parent owns execution, current navigation and the
 package evidence/disposition.
+
+
+## Same-cycle follow-up 1 — independent narrow review
+
+**PASS for the planned retest of `6eaeb9fc`.** The four preceding counter-model
+logs reject the now-multistatement slot closure for its missing return at
+`CounterScopedStorage.swift:1240`; the earlier source-readiness assessment did
+not catch this compile defect. The sole Swift change explicitly returns the
+nested C0 pointer loan's `Result`, preserving the complete existing nesting,
+body, guards, ownership and layout. It does not prove acceptance of subsequent
+compiler stages. Existing unused-local warnings are distinct from that error.
+
+The driver changes only its exact qualification path. The immutable
+[follow-up record](p08-suite-cycle2-followup1.md),
+[manifest](p08-suite-cycle2-followup1-source-manifest.json) and
+[qualification](p08-suite-cycle2-followup1-applicability.json) preserve the prior
+candidate and failed results. Independently verified all ten current manifest
+hashes, all four failed receipt hashes, the new source hash, and all seven
+unchanged predecessor qualification entries with their exact receipt hashes,
+original source hashes, recorded Swift input counts/digests and source exclusion.
+All **29 compiler-free tests**, Python AST, shell syntax and whitespace checks
+pass. No compiler, suite or runtime operation was performed by this review.
+
+Proceed with the recorded fresh focused checks and full Embedded collection.
+Current-source compiler/runtime/layout/fit acceptance remains pending and
+partial coverage remains partial. This is a routine correction within grouped
+**cycle 2/2**, with no reset, third cycle or change to historical limits.
