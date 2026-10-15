@@ -1,8 +1,17 @@
 # P08 control-resident runtime payload implementation
 
-Current boundary: **final correction 2/2 independent SOURCE PASS; one affected measurement rerun pending**.
+Current boundary: **STOP — final correction 2/2 consumed; actual source compilation blocked**.
+[Final result and minimal unapplied follow-up](p08-control-resident-final-result.md)
+preserve the final measurement at `37ba818a`: 23 preparation passes, counter-model
+failed, layout blocked and 202 controls not-run. Two borrowed-self helpers read
+fields in short-circuit Boolean RHS autoclosures. No object/raw facts exist; this
+is not a measured layout mismatch. New slot sizing and stack/fit remain unknown;
+old 32,000-byte Swift/C spacing is unchanged. No further source fix or rerun is
+authorized by this exhausted package. All older allowances remain closed.
+
+Historical source review boundary:
 [Focused final source review](p08-control-resident-cycle2-independent-source-review.md)
-confirms the exact scoped cleanup extension correction; compiler acceptance is pending.
+confirms the exact scoped cleanup extension correction before actual execution.
 [Focused reassessment](p08-control-resident-cycle1-independent-source-review.md)
 closes the initial B01 coverage blocker; prior source findings below remain historical.
 
@@ -12,13 +21,13 @@ constraints. Layout was blocked, 202 cases not-run, no object or raw facts.
 [Immutable failure](control-resident-initial-measurement-failure/failure.json)
 was preserved before editing. [Correction 2 freeze](p08-control-resident-cycle2-source-freeze.md)
 repeats the original scoped bounds for the private cleanup helper extension.
-Both correction cycles are consumed; no automatic third source variant. Focused
-independent review precedes one affected measurement rerun. Exact measured Swift/C
+Both correction cycles are consumed; no automatic third source variant. That
+reviewed rerun is now complete and failed as recorded above. Exact measured Swift/C
 sizing remains the separately planned initial completion once actual facts exist;
 it does not authorize another optimization/repair loop. No compiler was rerun
 during this correction. Prior allowances and all failed packets remain immutable.
 
-**Correction 1/2 frozen for focused source reassessment; no compiler invocation.**
+**Historical correction 1/2 source reassessment boundary.**
 [Independent source review](p08-control-resident-initial-independent-source-review.md)
 finds missing backend completion facts in the new full observation. A bounded
 local correction now includes those actual facts; focused reassessment precedes
@@ -45,9 +54,9 @@ provenance, lastFrame, capacities, workloads, flags/toolchains and limits unchan
 Actual enlarged-control/four-slot/C accounting is mandatory; do not guess ABI
 sizes or relabel a partial screen as acceptance. No hardware action is included.
 
-Current bounded source assignment permits source/qualification/evidence edits,
-formatter and proportionate compiler-free checks only. No compiler/build/runtime/
-image execution until independent source review. Known generated pycache is
+Current boundary permits failure evidence and source-attribution documentation
+only; no additional source edit or compiler/build/runtime/image execution.
+Known generated pycache is
 unrelated and remains untouched.
 
 ## Initial source candidate / planned measurement completion

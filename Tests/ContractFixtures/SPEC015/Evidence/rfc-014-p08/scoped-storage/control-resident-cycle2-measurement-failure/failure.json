@@ -1,0 +1,61 @@
+{
+  "source_revision": "37ba818a595d0060e4ad56570552534be92ccf71",
+  "source_commit": "999de5f9",
+  "source_sha256": "fdd9ca325c2e73b57ae3f8b183851b3de78b70fde8d9bb171adcbd6fcfd75b26",
+  "actual_artifacts": {
+    ".build/nrf52840/contracts/p08-counter-uhsvmp_l/result.json": {
+      "sha256": "49896075e03463a7d2c7ac8902c47a7fcd94d7d8e168ffa330eed0f302716a9b",
+      "bytes": 3146274
+    },
+    ".build/nrf52840/contracts/p08-counter-uhsvmp_l/counter-model.log": {
+      "sha256": "db169588ecb7dbbb84c26c062a23f15cca8620864cfc0f6b893c038ce3b99019",
+      "bytes": 2252
+    },
+    ".build/contracts/p08-integrated-activity/20261015T223200527615Z-control-resident-cycle2-measurement/invocation.json": {
+      "sha256": "19b116c4e99790df51aeaab9d0433aaf9ce368053356c0149153681d824f6cf5",
+      "bytes": 669
+    },
+    ".build/contracts/p08-integrated-activity/20261015T223200527615Z-control-resident-cycle2-measurement/result.json": {
+      "sha256": "dbd04c236b2d92d00c4fd4b0bde3a577b4828980d41687601fd3e981f9c47018",
+      "bytes": 1068
+    },
+    ".build/contracts/p08-integrated-activity/20261015T223200527615Z-control-resident-cycle2-measurement/stdout.log": {
+      "sha256": "cd5e0878dbde3a74ee01125362ec80bc69a0202000f8ff4be6fa9b39b1fcc38d",
+      "bytes": 278
+    },
+    ".build/contracts/p08-integrated-activity/20261015T223200527615Z-control-resident-cycle2-measurement/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "compiler": ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "driver_sha256": "a0f472afb06f94f39e082da91d526641a5fa2a61172350e9bd146e6bd86f860c",
+  "applicability_sha256": "9fb75756c6a148cfda414a0518ff9373721ce010b1a243b31089d154b4d2532f",
+  "counts": {
+    "passed": 23,
+    "failed": 1,
+    "not-run": 202,
+    "blocked": 1
+  },
+  "flags": {
+    "fresh_focused": true,
+    "focused_passed": false,
+    "collection_complete": false,
+    "passed": false,
+    "selected_families": [
+      "so07-layout-facts"
+    ]
+  },
+  "absent_build_artifacts": [
+    "P08CounterRuntime.o",
+    "so07-layout-facts-decoded.json",
+    "so07-layout-facts.json"
+  ],
+  "corrections_consumed": 2,
+  "corrections_limit": 2,
+  "diagnosis": "Two borrowed-self methods read self inside &&/|| RHS autoclosures. Final preconditions already consume owned Bool locals; each field predicate must instead be evaluated independently before combining owned Bools. Proposal only, not applied.",
+  "boundary": "STOP: source compilation blocked; no object, numeric layout measurement, stack or fit result. No source edits or reruns authorized by this record.",
+  "preserved_archive_sha256": "dbb9a94517cf986f448ff6fd9d4000474221f2e565f09928c65ebe5d533d31be",
+  "preserved_source_archive_sha256": "4bb90ae106e393a16ad41775b81eead80559eed414b19e4daf5d25a8e22ccf0a"
+}
