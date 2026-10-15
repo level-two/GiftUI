@@ -348,14 +348,14 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
             }
             if failure == nil {
                 if before(.g0) { failure = .injected(.g0, 0) }
-                else if let object = s.b0.withBorrow { scopes in s.b1.withBorrow { text in StaticCounterLayoutWorkspace(scopes: scopes, text: text) } } {
+                else if let object = s.b0.withBorrow({ scopes in s.b1.withBorrow { text in StaticCounterLayoutWorkspace(scopes: scopes, text: text) } }) {
                     s.g0.install(consume object); record(s.g0.facts(id: .g0))
                     if after(.g0) { failure = .injected(.g0, 1) }
                 } else { failure = .constructor }
             }
             if failure == nil {
                 if before(.g1) { failure = .injected(.g1, 0) }
-                else if let object = s.b0.withBorrow { scopes in s.b1.withBorrow { text in StaticCounterResolvedLayoutStorage(scopes: scopes, text: text) } } {
+                else if let object = s.b0.withBorrow({ scopes in s.b1.withBorrow { text in StaticCounterResolvedLayoutStorage(scopes: scopes, text: text) } }) {
                     s.g1.install(consume object); record(s.g1.facts(id: .g1))
                     if after(.g1) { failure = .injected(.g1, 1) }
                 } else { failure = .constructor }
@@ -369,14 +369,14 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
             }
             if failure == nil {
                 if before(.g3) { failure = .injected(.g3, 0) }
-                else if let object = s.b2.withBorrow { path in s.b3.withBorrow { plan in StaticCounterDrawingWorkspace(pathRegion: path, planRegion: plan, capacity: counterDrawingLimits).map { StaticRecordDrawingWorkspace(base: $0) } } } {
+                else if let object = s.b2.withBorrow({ path in s.b3.withBorrow { plan in StaticCounterDrawingWorkspace(pathRegion: path, planRegion: plan, capacity: counterDrawingLimits).map { StaticRecordDrawingWorkspace(base: $0) } } }) {
                     s.g3.install(consume object); record(s.g3.facts(id: .g3))
                     if after(.g3) { failure = .injected(.g3, 1) }
                 } else { failure = .constructor }
             }
             if failure == nil {
                 if before(.g4) { failure = .injected(.g4, 0) }
-                else if let object = s.b1.withBorrow { text in StaticCounterRenderWorkspace(region: text, capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity).map { QualifiedRender(base: $0) } } {
+                else if let object = s.b1.withBorrow({ text in StaticCounterRenderWorkspace(region: text, capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity).map { QualifiedRender(base: $0) } }) {
                     s.g4.install(consume object); record(s.g4.facts(id: .g4))
                     if after(.g4) { failure = .injected(.g4, 1) }
                 } else { failure = .constructor }
@@ -1193,6 +1193,14 @@ fileprivate func withP08R1Reservation<T, Result>(
         body(.native(slot))
     }
 }
+// Occupy G4's native stride tail with a real typed field so the next stored
+// Optional cannot reuse it. The complete wrapper is charged by the enclosing
+// reservation metadata; the G4 descriptor retains its unchanged Optional stride.
+fileprivate struct P08StaticRenderReservation {
+    var slot: QualifiedRender? = nil
+    private let strideTail: UInt32 = 0
+    init() {}
+}
 fileprivate struct P08StaticReservation: ~Copyable {
     var b0: InlineArray<1024, UInt8>? = nil
     var b1: InlineArray<1056, UInt8>? = nil
@@ -1202,7 +1210,7 @@ fileprivate struct P08StaticReservation: ~Copyable {
     var g1: StaticCounterResolvedLayoutStorage? = nil
     var g2: InlineArray<64, SemanticRecordReference?>? = nil
     var g3: StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>? = nil
-    var g4: QualifiedRender? = nil
+    var g4: P08StaticRenderReservation = .init()
     var c0: CounterStaticCandidate? = nil
     var h0: CounterStaticHits? = nil
     var r0: CounterStaticCommitted? = nil
@@ -1210,6 +1218,9 @@ fileprivate struct P08StaticReservation: ~Copyable {
     var h1: CounterStaticHits? = nil
 }
 fileprivate func withP08StaticReservation<Result>(surplus: Bool = false, capacities: InlineArray<5, UInt16> = [2, 2, 2, 2, 2], _ body: (inout P08TypedBackingOwner) -> Result) -> Result {
+    precondition(MemoryLayout<P08StaticRenderReservation>.size == MemoryLayout<P08StaticRenderReservation>.stride)
+    precondition(MemoryLayout<P08StaticRenderReservation>.alignment == MemoryLayout<QualifiedRender?>.alignment)
+    precondition(MemoryLayout<P08StaticRenderReservation>.size >= MemoryLayout<QualifiedRender?>.stride)
     var reservation = P08StaticReservation()
     return withUnsafeMutablePointer(to: &reservation.b0) { b0 in
         withUnsafeMutablePointer(to: &reservation.b1) { b1 in
@@ -1219,7 +1230,13 @@ fileprivate func withP08StaticReservation<Result>(surplus: Bool = false, capacit
         withUnsafeMutablePointer(to: &reservation.g1) { g1 in
         withUnsafeMutablePointer(to: &reservation.g2) { g2 in
         withUnsafeMutablePointer(to: &reservation.g3) { g3 in
-        withUnsafeMutablePointer(to: &reservation.g4) { g4 in
+        withUnsafeMutablePointer(to: &reservation.g4) { g4Reservation in
+        withUnsafeMutablePointer(to: &g4Reservation.pointee.slot) { g4 in
+            let reservationStart = UInt(bitPattern: g4Reservation)
+            let reservationEnd = reservationStart.addingReportingOverflow(UInt(MemoryLayout<P08StaticRenderReservation>.size))
+            let slotStart = UInt(bitPattern: g4)
+            let slotEnd = slotStart.addingReportingOverflow(UInt(MemoryLayout<QualifiedRender?>.stride))
+            precondition(!reservationEnd.overflow && !slotEnd.overflow && slotStart >= reservationStart && slotEnd.partialValue <= reservationEnd.partialValue)
         withUnsafeMutablePointer(to: &reservation.c0) { c0 in
         withUnsafeMutablePointer(to: &reservation.h0) { h0 in
         withUnsafeMutablePointer(to: &reservation.r0) { r0 in
@@ -1241,7 +1258,7 @@ fileprivate func withP08StaticReservation<Result>(surplus: Bool = false, capacit
         }
         }
         }
-        }        }
+        }        } }
 }
 
 

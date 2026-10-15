@@ -286,6 +286,81 @@ class CollectionTests(unittest.TestCase):
                 # Keep this temporary-directory case independent of the next subtest.
                 (self.root / 'fresh').rename(self.root / ('fresh-' + str(len(requires))))
 
+    def test_required_primary_rejects_task_concurrency_error_without_lifetime_cause(self):
+        lifetime = "lifetime-dependent variable 'input' escapes its scope"
+        sending = "passing closure as a 'sending' parameter risks causing data races"
+        oracle = dict(any_of=[[lifetime], [sending]], required_primary=[lifetime],
+                      error_site=dict(filename='probe.swift', first_line=10))
+        sending_log = '/tmp/probe.swift:12:3: error: ' + sending + '\n'
+        self.assertFalse(diagnostic_matches(oracle, sending_log, 1))
+        self.assertTrue(diagnostic_matches(oracle, sending_log + '/tmp/probe.swift:12:1: error: ' + lifetime + '\n', 1))
+        self.assertFalse(diagnostic_matches(oracle, sending_log + '/tmp/probe.swift:9:1: error: ' + lifetime + '\n', 1))
+
+    def test_fresh_focused_runs_preparation_and_complete_selected_twins_only(self):
+        collector = Collector(self.root, self.old, selected=['selected'], fresh=True)
+        with self.execute({'prepare': (0, ''), 'positive': (0, ''), 'negative': (1, 'lifetime')}) as executor:
+            collector.run('Preparation', ['prepare'], preparation=True)
+            collector.run('selected-positive', ['positive'], requires=['Preparation'])
+            collector.run('selected-negative', ['negative'], ('lifetime',), ['Preparation'])
+            collector.run('omitted-positive', ['never'])
+            collector.run('omitted-negative', ['never'], ('lifetime',))
+        self.assertEqual(executor.call_count, 3)
+        self.assertEqual([check['status'] for check in collector.checks], ['passed', 'passed', 'passed', 'not-run', 'not-run'])
+        self.assertTrue(collector.finish())
+        journal = json.loads((self.old / 'checks.json').read_text())
+        self.assertFalse(journal['collection_complete'])
+        self.assertFalse(journal['passed'])
+        self.assertTrue(journal['focused_passed'])
+
+    def test_fresh_focused_partial_receipt_cannot_be_reuse_predecessor(self):
+        collector = Collector(self.root, self.old, selected=['selected'], fresh=True)
+        with self.execute({'positive': (0, ''), 'negative': (1, 'lifetime')}):
+            collector.run('selected-positive', ['positive'])
+            collector.run('selected-negative', ['negative'], ('lifetime',))
+        collector.finish()
+        (self.old / 'result.json').write_text(json.dumps(dict(collection_schema=2, collection_complete=collector.complete,
+                                                              passed=collector.overall_passed, focused_passed=collector.focused_passed)))
+        fresh = self.root / 'fresh'
+        fresh.mkdir()
+        with self.assertRaisesRegex(ValueError, 'complete schema-2'):
+            Collector(self.root, fresh, resume=self.old, selected=['selected'])
+
+    def test_fresh_selected_negative_requires_successful_positive(self):
+        collector = Collector(self.root, self.old, selected=['selected'], fresh=True)
+        with self.execute({'positive': (1, 'broken')}):
+            collector.run('selected-positive', ['positive'])
+            collector.run('selected-negative', ['never'], ('lifetime',))
+        self.assertEqual(collector.checks[-1]['status'], 'blocked')
+        self.assertIn('selected-positive', collector.checks[-1]['prerequisites'])
+        self.assertFalse(collector.finish())
+        self.assertFalse(collector.focused_passed)
+
+    def test_fresh_preparation_failure_blocks_selected_but_not_as_omitted(self):
+        collector = Collector(self.root, self.old, selected=['selected'], fresh=True)
+        with self.execute({'prepare': (1, 'broken')}):
+            collector.run('Preparation', ['prepare'], preparation=True)
+            collector.run('selected-positive', ['never'], requires=['Preparation'])
+            collector.run('other-positive', ['never'], requires=['Preparation'])
+        self.assertEqual([check['status'] for check in collector.checks], ['failed', 'blocked', 'not-run'])
+        self.assertFalse(collector.finish())
+
+    def test_fresh_runtime_observations_are_explicitly_selected(self):
+        collector = Collector(self.root, self.old, selected=['stable'], fresh=True)
+        with self.execute({'stable': (0, '')}):
+            collector.run('stable-positive', ['stable'])
+        collector.run('execute', ['never'])
+        collector.observation('runtime-summary', dict(kind='positive-counter-summary', failures=0), ['execute'], 'execute.log')
+        self.assertEqual(collector.checks[-1]['status'], 'not-run')
+        self.assertTrue(collector.finish())
+
+    def test_fresh_mode_requires_explicit_selection_and_forbids_prior_imports(self):
+        with self.assertRaisesRegex(ValueError, 'at least one'):
+            Collector(self.root, self.old, fresh=True)
+        with self.assertRaisesRegex(ValueError, 'mutually exclusive'):
+            Collector(self.root, self.old, fresh=True, selected=['stable'], resume=self.old)
+        with self.assertRaisesRegex(ValueError, 'mutually exclusive'):
+            Collector(self.root, self.old, fresh=True, selected=['stable'], legacy=self.old)
+
 
 if __name__ == '__main__':
     unittest.main()

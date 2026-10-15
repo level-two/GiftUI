@@ -2,6 +2,7 @@ import P08CounterTable
 import P08CounterSchema
 import GiftUI
 import GiftUIDrawing
+import GiftUIInteraction
 @testable import GiftUIExecution
 @testable import GiftUIHostConfiguration
 import GiftUIObservableState

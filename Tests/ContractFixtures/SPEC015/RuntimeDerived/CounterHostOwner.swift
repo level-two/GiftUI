@@ -254,7 +254,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         switch consume self {
         case .active(let coordinator, let cache, let span):
             precondition(coordinator.isQuiescent && cache == nil)
-            var extracted = coordinator.takeQuiescedOpportunity()
+            let extracted = coordinator.takeQuiescedOpportunity()
             switch consume extracted {
             case .some(let pipeline): self = .retired(pipeline.retireQuiescedStorage(), span)
             case .none: preconditionFailure("quiesced counter opportunity missing")

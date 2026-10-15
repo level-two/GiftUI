@@ -539,6 +539,19 @@ into Optional payloads. The language's typed inout unwrap determines the
 payload address; a nil slot never enters a session. These costs may exceed the
 Embedded raw layout and must be measured separately.
 
+The grouped suite correction wraps only native Static G4's Optional in a private
+typed container with a UInt32 tail field. Actual native evidence found C0 reusing
+four bytes of G4's claimed Optional stride. The tail occupies that reuse location;
+it changes neither G4's count/stride nor the overlap/retained-extent rules. The
+factory checks wrapper size equals stride, covers the Optional's full stride,
+preserves alignment and contains the actual typed slot range, using checked
+address arithmetic. No universal 40-byte ABI is assumed. Both whole-wrapper and
+slot borrows enclose the original synchronous reservation. The existing metadata
+formula charges the complete reservation stride minus original slot extents, so
+any wrapper/tail/outer-layout delta is charged once; helper locals, captures and
+frames still require emitted accounting. Embedded raw layout is unchanged. This
+is a source realization pending current native/ARMv6 validation, not numeric fit.
+
 The Static descriptors share existing byte *codecs*: layout and resolved use
 B0/B1; render uses B1 under its existing non-overlapping phase ranges. They do
 not overlay live typed Swift records or bind those bytes to workspace types.

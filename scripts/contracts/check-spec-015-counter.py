@@ -15,6 +15,7 @@ parser.add_argument('--host-build', type=pathlib.Path, default=ROOT / '.build/co
 parser.add_argument('--profile', choices=('macos-dynamic', 'macos-static', 'raspberry-pi-armv6', 'nrf52840-embedded'))
 parser.add_argument('--raster-realization', choices=('full-surface', 'tiled'), default='full-surface')
 parser.add_argument('--collect-failures', action='store_true', help='collect independent failures; block dependent checks')
+parser.add_argument('--fresh-focused', action='store_true', help='fresh preparation and selected families only; never complete aggregate evidence')
 parser.add_argument('--resume-from', type=pathlib.Path, help='verified complete collection build for focused rerun')
 parser.add_argument('--select-family', action='append', default=[], help='complete matcher/control family to rerun (repeatable)')
 parser.add_argument('--import-legacy-controls', type=pathlib.Path, help='exact immutable compatibility2 partial packet; rebuild preparation')
@@ -30,7 +31,7 @@ def digest(path):
 revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
 revision_receipt = json.loads(revision_path.read_text())
 reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
-applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-compiler-compatibility2-applicability.json'
+applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-suite-cycle2-applicability.json'
 applicability = json.loads(applicability_path.read_text())
 qualified_applicability = []
 def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
@@ -38,7 +39,7 @@ def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
     if name != source or receipt_path is None:
         return False
     assert applicability['kind'] == 'exact-noncompiled-source-applicability-qualification'
-    assert applicability['source'] == source and applicability['activity'] == 'p08-compiler-compatibility2'
+    assert applicability['source'] == source and applicability['activity'] == 'p08-suite-cycle2'
     relative_receipt = str(receipt_path.relative_to(ROOT))
     entry = next((value for value in applicability['receipts'] if value['receipt'] == relative_receipt), None)
     if entry is None:
@@ -123,7 +124,7 @@ for recipe in (prior, host_receipt) if is_target else (prior,):
             selected = name.startswith('GiftUI') if recipe is prior else name in ('GiftUICapabilities', 'GiftUIFailureCore', 'GiftUISurfaceCore', 'GiftUIDisplayCore', 'GiftUIRasterCore', 'GiftUIBackendIntegration')
             if selected:
                 inputs.extend(pathlib.Path(token) for token in pieces[pieces.index('-module-name') + 2:] if token.endswith('.swift'))
-collector = Collector(ROOT, out, args.collect_failures, args.resume_from, args.select_family, args.import_legacy_controls)
+collector = Collector(ROOT, out, args.collect_failures, args.resume_from, args.select_family, args.import_legacy_controls, args.fresh_focused)
 recipe_identity = dict(profile=prior['profile'], selected_host_profile=args.profile,
                        raster_realization='tiled' if is_target else args.raster_realization,
                        compiler_sha256=digest(compiler), runtime_receipt_sha256=digest(base / 'result.json'),
@@ -133,11 +134,12 @@ collector.verify_inputs({str(path.relative_to(ROOT)): digest(path) for path in i
 commands, checks = collector.commands, collector.checks
 preparation = []
 def run(label, command, diagnostic=None, requires=None):
+    preparation_check = requires is None
     if requires is None:
         collector.legacy_preparation(label, command)
         requires = preparation[-1:]
         preparation.append(label)
-    return collector.run(label, command, diagnostic, requires)
+    return collector.run(label, command, diagnostic, requires, preparation=preparation_check)
 # Rebuild the unchanged selected runtime graph with the one newly guarded
 # Semantic Core reset method. Never import the historical module as fresh source.
 rebuilt_runtime = []
@@ -192,9 +194,15 @@ reuse_suffixes = ('inventory-two-hosts', 'control-same-address', 'terminal-old-h
 reuse_routes = ('dynamic',) if args.profile in ('macos-dynamic', 'raspberry-pi-armv6') else ('static',) if args.profile in ('macos-static', 'nrf52840-embedded') else ('static', 'dynamic')
 registered_reuse_labels = ['so06-reuse-' + route + '-' + suffix for route in reuse_routes for suffix in reuse_suffixes]
 planned_scoped_labels = []
+input_lifetime_escape = "lifetime-dependent variable 'input' escapes its scope"
+closure_diagnostic = dict(any_of=[["'input' is borrowed and cannot be consumed"],
+                                  ["'input' cannot be captured by an escaping closure since it is a borrowed parameter"],
+                                  [input_lifetime_escape]], required_primary=[input_lifetime_escape])
 def scoped_variant(label, source, diagnostic=None):
     path = out / (label + '.swift')
     path.write_text(trusted_source + '\n' + source + '\n')
+    if isinstance(diagnostic, dict):
+        diagnostic = dict(diagnostic, error_site=dict(filename=path.name, first_line=trusted_source.count('\n') + 2))
     planned_scoped_labels.append(label)
     prerequisites = ['counter-model']
     if label.endswith('-negative'):
@@ -259,7 +267,7 @@ for route in ('static', 'dynamic'):
                         'let binding = CounterExecutionBinding(models: selectedModels, root: selectedRoot, scopedControl: selectedControl.borrowed(), audit: assembly.report.storageAudit)!\n'
                         'let pipeline = supplied.intoPipeline(limits: assembly.report.storageAudit.limits, endpointConfiguration: assembly.endpoint)\n'
                         'var coordinator = ' + coordinator + specialization + '(binding: binding, admission: CounterAdmission(control: selectedControl.pointer, limits: assembly.report.storageAudit.limits.execution), opportunity: pipeline)\n'
-                        'coordinator.quiesce()\nvar extracted = coordinator.takeQuiescedOpportunity()\nswitch consume extracted {\n'
+                        'coordinator.quiesce()\nlet extracted = coordinator.takeQuiescedOpportunity()\nswitch consume extracted {\n'
                         'case .some(let pipeline): return .retired(pipeline.retireQuiescedStorage(), activationSpan)\n'
                         'case .none: preconditionFailure("quiesced opportunity missing")\n}')
         for phase, result, body in (('active-host', active_type, active_body), ('retired-optional', retired_type, retired_body)):
@@ -278,7 +286,7 @@ for route in ('static', 'dynamic'):
                 ('optional', '@_lifetime(copy input)\n' + function + '(_ input: consuming ' + result + ') -> ' + result + '? ' + where + ' { .some(consume input) }', 'fileprivate struct OwnedBox<T: ~Copyable>: ~Copyable { var value: T? }\n' + function + '(_ input: consuming ' + result + ') ' + where + ' { _ = OwnedBox(value: input) }', ('Escapable',)),
                 ('tuple', observer + function + '(_ input: borrowing ' + result + ') -> (Int, Int) ' + where + ' { (observe(input), 1) }', function + '(_ input: consuming ' + result + ') -> (' + result + ', Int) ' + where + ' { (input, 1) }', ('Escapable',)),
                 ('generic', 'fileprivate func erase<T: ~Copyable & ~Escapable>(_ input: consuming T) { _ = consume input }\n' + function + '(_ input: consuming ' + result + ') ' + where + ' { erase(input) }', 'fileprivate func erase<T: ~Copyable>(_ input: consuming T) { _ = consume input }\n' + function + '(_ input: consuming ' + result + ') ' + where + ' { erase(input) }', ('Escapable',)),
-                ('closure', observer + 'fileprivate func scoped(_ body: () -> Int) -> Int { body() }\n' + function + '(_ input: borrowing ' + result + ') -> Int ' + where + ' { scoped { observe(input) } }', observer + function + '(_ input: borrowing ' + result + ') -> () -> Int ' + where + ' { { observe(input) } }', ('escaping',)),
+                ('closure', observer + 'fileprivate func scoped(_ body: () -> Int) -> Int { body() }\n' + function + '(_ input: borrowing ' + result + ') -> Int ' + where + ' { scoped { observe(input) } }', observer + function + '(_ input: borrowing ' + result + ') -> () -> Int ' + where + ' { { observe(input) } }', closure_diagnostic),
             )
             for kind, positive, negative, diagnostic in erasures:
                 stem = 'so06-erasure-' + route + '-' + mode + '-' + phase + '-' + kind
@@ -314,7 +322,7 @@ pairs = (
     ('so06-optional-erasure', 'fileprivate struct Box<T: ~Copyable>: ~Copyable { var value: T? }\nfileprivate func probe(_ value: Int) { _ = Box(value: value) }', 'fileprivate struct Box<T: ~Copyable>: ~Copyable { var value: T? }\nfileprivate func probe(_ value: consuming P08StorageSession) { _ = Box(value: value) }', ('Escapable',)),
     ('so06-tuple-erasure', 'fileprivate func probe(_ value: Int) -> (Int, Int) { (value, 1) }', 'fileprivate func probe(_ value: consuming P08StorageSession) -> (P08StorageSession, Int) { (value, 1) }', ('Escapable',)),
     ('so06-generic-erasure', 'fileprivate func erase<T: ~Copyable>(_ value: consuming T) {}\nfileprivate func probe(_ value: Int) { erase(value) }', 'fileprivate func erase<T: ~Copyable>(_ value: consuming T) {}\nfileprivate func probe(_ value: consuming P08StorageSession) { erase(value) }', ('Escapable',)),
-    ('so06-closure-erasure', 'fileprivate func probe(_ value: Int) -> () -> Int { { value } }', 'fileprivate func probe(_ input: consuming P08StorageSession) -> () -> Int { var value = consume input; return { value.reset(); return 1 } }', ('escaping',)),
+    ('so06-closure-erasure', 'fileprivate func probe(_ value: Int) -> () -> Int { { value } }', 'fileprivate func probe(_ input: consuming P08StorageSession) -> () -> Int { var value = consume input; return { value.reset(); return 1 } }', dict(any_of=[[input_lifetime_escape]], required_primary=[input_lifetime_escape])),
     ('so06-sendable', 'fileprivate func send<T: Sendable & ~Copyable & ~Escapable>(_ value: borrowing T) {}\nfileprivate func probe(_ value: Int) { send(value) }', 'fileprivate func send<T: Sendable & ~Copyable & ~Escapable>(_ value: borrowing T) {}\nfileprivate func probe(_ value: borrowing P08StorageSession) { send(value) }', ('Sendable',)),
     ('so06-static-overlap', 'fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { let count = withP08Storage(backing: &owner) { session in var current = consume session; current.reset(); return 1 }; owner.release(); return count }', 'fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { withP08Storage(backing: &owner) { session in owner.release(); var current = consume session; current.reset(); return 1 } }', ('overlapping accesses',)),
 )
@@ -324,12 +332,15 @@ for stem, positive, negative, diagnostic in pairs:
 if not is_embedded:
     scoped_variant('counter-dynamic-host-backing-positive', actual_host_backing_source('dynamic', False))
     scoped_variant('counter-dynamic-host-backing-negative', actual_host_backing_source('dynamic', True), ('lifetime', 'escaped'))
-    for stem, positive, negative in (
-        ('so06-task', 'fileprivate func probe(_ value: Int) { _ = Task { value } }', 'fileprivate func probe(_ input: consuming P08StorageSession) { _ = Task { _ = consume input; return 1 } }'),
-        ('so06-async', 'fileprivate func probe(_ input: consuming P08StorageSession) -> Int { var value = consume input; value.reset(); return 1 }', 'fileprivate func probe(_ input: consuming P08StorageSession) async -> Int { var value = consume input; value.reset(); return 1 }'),
+    for stem, positive, negative, diagnostic in (
+        ('so06-task', 'fileprivate func probe(_ value: Int) { _ = Task { value } }', 'fileprivate func probe(_ input: consuming P08StorageSession) { _ = Task { _ = consume input; return 1 } }',
+         dict(any_of=[[input_lifetime_escape], ["passing closure as a 'sending' parameter risks causing data races between code in the current isolation context and concurrent execution of the closure"], ["missing reinitialization of closure capture 'input' after consume while accessing memory"]], required_primary=[input_lifetime_escape])),
+        ('so06-async', 'fileprivate func scopedOperation(_ input: consuming P08StorageSession) -> Int { var value = consume input; value.reset(); return 1 }\nfileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { withP08Storage(backing: &owner) { session in scopedOperation(session) } }',
+         'fileprivate func scopedOperation(_ input: consuming P08StorageSession) async -> Int { var value = consume input; value.reset(); return 1 }\nfileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { withP08Storage(backing: &owner) { session in await scopedOperation(session) } }',
+         dict(any_of=[['cannot pass function of type', 'async', 'to parameter expecting synchronous function type'], ["'async' call in a function that does not support concurrency"]], required_primary=['async'])),
     ):
         scoped_variant(stem + '-positive', positive)
-        scoped_variant(stem + '-negative', negative, ('Escapable',))
+        scoped_variant(stem + '-negative', negative, diagnostic)
 assert len(planned_scoped_labels) == (202 if is_embedded else 384), 'scoped corpus inventory changed'
 if not is_target:
     main = out / 'Main.swift'
@@ -358,9 +369,10 @@ else:
     module_objects = [out / (name + '.o') for name in preparation if name != 'counter-lowering']
     module_objects = [out / 'P08CounterRuntime.o' if path.name == 'counter-model.o' else path for path in module_objects]
     execution = collector.target_compilation(preparation, [core / 'GiftUI.o', *sorted(module_objects)])
-passed = collector.finish()
+selected_passed = collector.finish()
 receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, planned_scoped_labels=planned_scoped_labels, registered_reuse_labels=registered_reuse_labels, reuse_execution=not is_target and collector.passed('execute'), qualified_noncompiled_applicability=qualified_applicability, execution=execution,
-               collection_schema=2, collection_complete=True, passed=passed, selected_families=sorted(collector.selected),
+               collection_schema=2, collection_complete=collector.complete, passed=collector.overall_passed,
+               fresh_focused=collector.fresh, focused_passed=collector.focused_passed, selected_families=sorted(collector.selected),
                prior_collection=dict(path=str(collector.resume.relative_to(ROOT)), sha256=digest(collector.resume / 'result.json')) if collector.resume else None,
                legacy_import=getattr(collector, 'legacy_identity', None))
 receipt['scoped_negative_source'] = str(trusted.relative_to(ROOT))
@@ -369,4 +381,6 @@ receipt['artifacts'] = {str(p.relative_to(out)): dict(sha256=digest(p), bytes=p.
 (out / 'result.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print(execution.splitlines()[-1] if execution else 'runtime execution unavailable; see per-check status')
 print('P08_COUNTER_EVIDENCE', out)
-raise SystemExit(0 if passed else 1)
+if collector.fresh:
+    print('P08_FRESH_FOCUSED', 'PASS' if collector.focused_passed else 'FAIL', 'aggregate_complete=false aggregate_passed=false')
+raise SystemExit(0 if selected_passed else 1)

@@ -21,6 +21,7 @@ usage() {
         'Optional: --corpus rfc-014-counter --runtime-build PATH [--host-build PATH]' \
         'Counter collection: --collect-failures [--import-legacy-controls PATH]' \
         'Counter focused rerun: --resume-from PATH --select-family FAMILY (repeatable)' \
+        'Fresh partial checks: --fresh-focused --select-family FAMILY (repeatable); no aggregate pass' \
         'Counter target routes compile current objects; supported image build is separate.'
 }
 
@@ -35,7 +36,7 @@ while [[ $# -gt 0 ]]; do
         --corpus) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; corpus="$2"; shift 2 ;;
         --runtime-build) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; runtime_build="$2"; shift 2 ;;
         --host-build) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; host_build="$2"; shift 2 ;;
-        --collect-failures) collection_arguments+=("$1"); shift ;;
+        --collect-failures | --fresh-focused) collection_arguments+=("$1"); shift ;;
         --resume-from | --select-family | --import-legacy-controls) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; collection_arguments+=("$1" "$2"); shift 2 ;;
         -h | --help) usage; exit 0 ;;
         *) usage >&2; exit 2 ;;

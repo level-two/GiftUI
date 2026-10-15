@@ -30,12 +30,14 @@ def diagnostic_matches(diagnostic, output, exit_code):
         return exit_code == 0
     if not isinstance(diagnostic, dict):
         return exit_code != 0 and all(value in output for value in diagnostic)
-    if set(diagnostic) != {'any_of', 'error_site'}:
-        raise ValueError('structured oracle requires any_of and error_site only')
+    if not {'any_of', 'error_site'} <= set(diagnostic) <= {'any_of', 'error_site', 'required_primary'}:
+        raise ValueError('structured oracle requires any_of/error_site and optional required_primary')
     alternatives, site = diagnostic['any_of'], diagnostic['error_site']
+    required = diagnostic.get('required_primary', [])
     if (not alternatives or not all(isinstance(row, list) and row and all(isinstance(value, str) and value for value in row) for row in alternatives)
             or set(site) != {'filename', 'first_line'} or pathlib.Path(site['filename']).name != site['filename']
-            or not isinstance(site['first_line'], int) or site['first_line'] < 1):
+            or not isinstance(site['first_line'], int) or site['first_line'] < 1
+            or not isinstance(required, list) or not all(isinstance(value, str) and value for value in required)):
         raise ValueError('invalid structured diagnostic oracle')
     if exit_code is None or exit_code <= 0 or any(value in output.lower() for value in ('stack dump', 'please submit a bug report', 'compiler crash')):
         return False
@@ -62,17 +64,19 @@ def diagnostic_matches(diagnostic, output, exit_code):
         return False
     if any(pathlib.Path(path).name != site['filename'] or int(line) < site['first_line'] for path, line, _ in errors):
         return False
-    return all(any(all(value in message for value in alternative) for alternative in alternatives) for _, _, message in errors)
+    return (all(any(all(value in message for value in alternative) for alternative in alternatives) for _, _, message in errors)
+            and all(any(value in message for _, _, message in errors) for value in required))
 
 
 class Collector:
-    def __init__(self, root, out, collect=False, resume=None, selected=(), legacy=None):
+    def __init__(self, root, out, collect=False, resume=None, selected=(), legacy=None, fresh=False):
         self.root, self.out = root, out
-        self.collect = collect or resume is not None or legacy is not None
+        self.collect = collect or resume is not None or legacy is not None or fresh
+        self.fresh, self.focused_passed = fresh, False
         self.selected = set(selected)
-        if bool(resume) != bool(selected):
-            raise ValueError('--resume-from and at least one --select-family are required together')
-        if resume and legacy:
+        if bool(resume or fresh) != bool(selected):
+            raise ValueError('focused mode and at least one --select-family are required together')
+        if (resume and legacy) or (fresh and (resume or legacy)):
             raise ValueError('focused and legacy imports are mutually exclusive')
         self.checks, self.commands, self.previous = [], [], {}
         self.complete, self.overall_passed = False, False
@@ -197,7 +201,8 @@ class Collector:
         (self.out / 'commands.txt').write_text('\n'.join(self.commands) + ('\n' if self.commands else ''))
         path = self.out / 'checks.json'
         temporary = self.out / 'checks.json.tmp'
-        temporary.write_text(json.dumps(dict(collection_complete=self.complete, passed=self.overall_passed, checks=self.checks), indent=2) + '\n')
+        temporary.write_text(json.dumps(dict(collection_complete=self.complete, passed=self.overall_passed,
+                                             fresh_focused=self.fresh, focused_passed=self.focused_passed, checks=self.checks), indent=2) + '\n')
         temporary.replace(path)
 
     def record(self, check):
@@ -210,12 +215,17 @@ class Collector:
     def passed(self, label):
         return any(check['name'] == label and check['passed'] for check in self.checks)
 
-    def run(self, label, command, diagnostic=None, requires=()):
+    def run(self, label, command, diagnostic=None, requires=(), preparation=False):
         command = list(map(str, command))
         group = family(label)
         self.seen_families.add(group)
         identity = self.identity(command, diagnostic)
         check = dict(name=label, family=group, exit=None, passed=False, diagnostic=identity['diagnostic'], identity=identity)
+        if self.fresh and not preparation and group not in self.selected:
+            self.record(check | dict(status='not-run', reason='omitted from explicit fresh focused selection'))
+            return ''
+        if label.endswith('-negative'):
+            requires = tuple(dict.fromkeys((*requires, label.removesuffix('-negative') + '-positive')))
         if self.prior and group not in self.selected:
             old = self.previous.get(label)
             if old is None or old.get('identity') != identity:
@@ -273,6 +283,10 @@ class Collector:
         group = family(label)
         self.seen_families.add(group)
         identity = dict(observation=oracle, requires=list(requires), evidence=evidence)
+        if self.fresh and group not in self.selected:
+            self.record(dict(name=label, family=group, identity=identity, exit=None, passed=False,
+                             status='not-run', reason='omitted from explicit fresh focused selection'))
+            return
         old = self.previous.get(label)
         if self.prior and group not in self.selected and (old is None or old.get('identity') != identity):
             raise ValueError('changed or missing observation requires complete --select-family ' + group)
@@ -306,9 +320,10 @@ class Collector:
             raise ValueError('unknown selected families: ' + ', '.join(sorted(self.selected - self.seen_families)))
         if self.prior and set(self.previous) != {check['name'] for check in self.checks}:
             raise ValueError('focused coverage inventory drift')
-        self.complete = True
-        self.overall_passed = all(check['passed'] for check in self.checks)
+        self.complete = not self.fresh
+        self.focused_passed = self.fresh and all(check['passed'] for check in self.checks if check['status'] != 'not-run')
+        self.overall_passed = not self.fresh and all(check['passed'] for check in self.checks)
         if self.legacy:
             self.legacy_identity['imported_controls'] = sum(check['status'] == 'legacy-imported' for check in self.checks)
         self.flush()
-        return self.overall_passed
+        return self.focused_passed if self.fresh else self.overall_passed

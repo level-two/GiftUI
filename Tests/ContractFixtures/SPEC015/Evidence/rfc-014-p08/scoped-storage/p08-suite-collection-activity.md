@@ -1,8 +1,8 @@
 # P08 suite collection activity — 2026-10-14
 
 Status: **active; harness source frozen, independent review and suite collection pending**.
-Current setup correction below consumes **cycle 1/2**; grouped collected-suite
-corrections retain cycle 2. The initial `d6792a06` freeze below remains historical;
+Current grouped collected-suite correction consumes **cycle 2/2** at source
+freeze; setup consumed cycle 1. The initial `d6792a06` freeze below remains historical;
 the appended setup freeze supersedes its schema/readiness descriptions.
 SPEC-015 remains implementing under its active plan, accepted ADR-039 and the
 approved RFC-014/RFC-015 amendments. This is the ITERATION-003 finite-counter
@@ -187,3 +187,31 @@ Earlier freeze hashes remain historical; current helper/test hashes are:
 
 Driver/shell identities, historical budgets, two-unproductive guard, P08/fit and
 all open contract/platform obligations remain unchanged.
+
+## Grouped collected-suite source freeze — cycle 2/2, 2026-10-15
+
+The [diagnosis](p08-suite-collection-diagnosis.md) at `0f9a7256` groups the six
+classifier defects, ineffective async fixture, native stride-tail overlap and
+Embedded missing import. The maintainer's whole-suite/grouped-correction/focused-
+validation instruction authorizes this coherent correction without per-error
+permission stops. **Cycle 2/2 is consumed at this source freeze**; prior budgets
+remain immutable and the two-unproductive guard persists. Source readiness and
+actual validation are pending independent Strong assessment and parent execution.
+
+The [source receipt](p08-suite-cycle2-source.md) and
+[manifest](p08-suite-cycle2-source-manifest.json) record the exact ten-file source/
+qualification/design freeze, intended family selections and evidence limits.
+Required primary lifetime messages, actual synchronous-callback/async transfer
+attempt, direct Interaction import, G4-only typed tail storage and implicated
+warnings are corrected together. Fresh focused mode rebuilds preparation and
+current modules, runs complete selected families/positive twins, and marks omitted
+checks `not-run`. Its receipt always has `collection_complete=false` and
+`passed=false`; `focused_passed` describes only its selected subset. It cannot be
+an exact-reuse predecessor. Existing full collection and source-drift rejection
+remain intact. nRF must collect its previously blocked 202 scoped cases freshly.
+
+**29 compiler-free Python tests**, Python AST parsing, shell syntax, exact
+qualification/source hash and whitespace checks pass. No compiler, suite, runtime,
+formatter, image, hardware operation or delegation was performed in this source
+correction. Source review, fresh focused validation, current full acceptance
+coverage and P08/fit remain open; no full-suite pass or resource fit is claimed.
