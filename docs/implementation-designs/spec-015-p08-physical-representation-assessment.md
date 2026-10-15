@@ -1,6 +1,9 @@
 # P08 physical representation and ownership assessment
 
-Status: **measured assessment independently PASS; G01–G03 concrete design completed, awaiting focused independent review**.
+Status: **focused independent DESIGN PASS at `26872845`; G01–G03 closed at design scope**.
+[Focused reassessment](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-physical-representation-independent-design-reassessment.md)
+recommends the concrete bounded source package within existing authority. No
+implementation/repair allowance or fit result is created.
 [Independent assessment review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-physical-representation-independent-assessment-review.md)
 identifies callback-exclusivity, slot ownership/reset and physical/observation
 obligations addressed below; no source candidate executed.

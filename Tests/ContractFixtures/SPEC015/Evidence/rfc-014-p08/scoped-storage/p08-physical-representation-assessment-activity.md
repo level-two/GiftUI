@@ -1,9 +1,12 @@
 # P08 physical representation / ownership assessment
 
-**Measured assessment independently PASS; concrete source design needs G01–G03 completion.**
+**Measured assessment and concrete design independently PASS; assessment complete.**
+[Focused design reassessment](p08-physical-representation-independent-design-reassessment.md)
+closes G01–G03 at design scope and recommends a separately authorized bounded
+source package. No implementation/repair allowance is created.
 [Independent review](p08-physical-representation-independent-assessment-review.md)
 bundles the field/callback seam, ownership/reset and physical/observation gaps.
-Complete those within this assessment before source; no repair allowance. Entry
+The original findings are retained below as the pre-completion boundary; no repair allowance. Entry
 `2b0c2de4`. Eugene's **“Please proceed”** authorizes the recommended bounded
 physical-representation/ownership-contract assessment after the independently
 confirmed [final typed-stage rejection](p08-stage-realization-final-result.md).
@@ -65,6 +68,6 @@ construction and returnWorkspaces), complete owned slot/endpoint/recording
 observations and enlarged-region accounting/validation duties. The proposal uses
 five direct stored fields rather than a nested payload inout. Tiled/Native seam
 files and ordinary control completion guards are explicitly in scope. This is
-ready for focused design reassessment, not yet source-authorized or a fit claim.
+independently reassessed PASS at `26872845`, not yet source-authorized or a fit claim.
 No source/compiler/build/test/runtime/link/image/hardware action or repair cycle
 was started; prior 2/2 and diagnostic 1/1 remain closed/consumed.
