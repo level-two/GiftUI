@@ -2,14 +2,16 @@
 
 Current boundary: **narrow allowance complete — counter compilation passes; official layout extraction and stack fit remain blocked**.
 [Measurement result](p08-control-resident-predicate-measurement-result.md) preserves
-24 passes, one layout failure and202 not-run controls at `dd183fbc`. Diagnostic
-facts give34720-byte slots/138880 four-slot charge; official extractor remains
-failed. Required stack lower bound34560 exceeds27648 before outer/deeper/IRQ costs.
+24 passes, one layout failure and 202 not-run controls at `dd183fbc`. Diagnostic
+facts give 34,720-byte slots/138,880 four-slot charge; official extractor remains
+failed. Required stack lower bound 34,560 exceeds 27,648 before outer/deeper/IRQ costs.
 No source/decoder/reservation correction or retry is authorized by this closed
-allowance. Fix1/1 and measurement1/1 consumed; prior2/2 and older budgets stay closed.
+allowance. Fix 1/1 and measurement 1/1 consumed; prior 2/2 and older budgets stay closed.
 The [independent source review](p08-control-resident-predicate-independent-source-review.md)
 and [narrow freeze](p08-control-resident-predicate-source-freeze.md) remain historical.
-New independent result review follows. No current image/full-upper-bound fit claim.
+[Independent result review](p08-control-resident-predicate-independent-result-review.md)
+verifies the literal-root diagnostic and required stack lower bound. No current
+image or full upper-bound fit claim.
 
 Prior package boundary: **STOP — correction 2/2 consumed; actual source compilation blocked**.
 [Independent final review](p08-control-resident-final-independent-review.md)

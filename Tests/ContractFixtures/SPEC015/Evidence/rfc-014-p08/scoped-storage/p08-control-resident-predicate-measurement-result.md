@@ -1,6 +1,8 @@
 # P08 control-resident measurement — compilation progresses, fit blocked
 
 **Narrow allowance closed: fix 1/1, measurement 1/1; prior 2/2 remains closed.**
+[Independent result verification](p08-control-resident-predicate-independent-result-review.md)
+confirms compilation progress, the diagnostic literal proof and stack rejection.
 At `dd183fbc`, the registered fresh focused run passed 24 checks, failed layout
 extraction and left 202 controls not-run. Counter compilation now succeeds.
 Fresh-focused=true; focused-passed, collection-complete and aggregate passed=false.
