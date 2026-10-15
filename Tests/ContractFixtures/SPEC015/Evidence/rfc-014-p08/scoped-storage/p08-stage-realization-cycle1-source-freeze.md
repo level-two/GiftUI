@@ -1,6 +1,8 @@
 # P08 typed-stage correction 1 — borrowed assertion capture
 
-**Correction 1/2 consumed; frozen for focused independent source review.**
+**Correction 1/2 consumed; independent SOURCE PASS at `a72f0943`; rerun pending.**
+[Focused independent source review](p08-stage-realization-cycle1-independent-source-review.md)
+finds the exact five-site correction ready for the affected registered rerun.
 [Activity](p08-stage-realization-activity.md), initial source `8ae0fb1c`, independent
 source PASS and actual screen input `f67abf33`. Historical allowances stay closed;
 the two-consecutive-unproductive guard remains. This is one grouped cause fix,

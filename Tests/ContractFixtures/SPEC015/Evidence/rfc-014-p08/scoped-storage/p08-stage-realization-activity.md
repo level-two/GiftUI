@@ -1,6 +1,8 @@
 # P08 stage realization — grouped design/correction activity
 
-Status: **initial screen compile failed; correction 1/2 frozen for focused review**.
+Status: **correction 1/2 independent SOURCE PASS; affected rerun pending**.
+[Focused independent review](p08-stage-realization-cycle1-independent-source-review.md)
+verifies the complete five-site borrowed-capture correction at `a72f0943`.
 The [correction and immutable failure packet](p08-stage-realization-cycle1-source-freeze.md)
 preserve 23 preparation passes, the borrowed-baseline autoclosure diagnostics,
 blocked layout and 202 not-run controls. Corrected source has not been executed.
