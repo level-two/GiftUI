@@ -1,6 +1,13 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-Current resource diagnosis/design — **INDEPENDENT REVIEW PASS; bounded candidate A ready, 2026-10-15**.
+Current stack candidate A — **SOURCE BLOCKED; screen 0/1, 2026-10-15**.
+[Independent source review](scoped-storage/p08-stack-candidate-a-independent-source-review.md)
+finds five introduced transcript field-receiver errors in `3d69aba9`. No compiler
+or screen ran. The design remains an internal realization; source must be
+reassessed after exact parent-dispositioned correction. Limits and historical
+budgets remain unchanged; P08 fit remains failed.
+
+Resource diagnosis/design — **INDEPENDENT DESIGN REVIEW PASS; source finding above governs execution, 2026-10-15**.
 Eugene authorized the [new bounded activity](scoped-storage/p08-resource-design-activity.md) after discussing a possible
 stack increase. The [implementation proposal](../../../../../docs/implementation-designs/spec-015-p08-stack-materialization.md) proves a required
 213,120-byte nested lower bound and recommends a measured private materialization

@@ -24,7 +24,9 @@ limit or ownership contract. It answers the maintainer's question about a roughl
 A 30 KiB budget cannot repair the current image.** [Independent Strong design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-design-independent-review.md)
 passed at `a90841e0`. The [candidate A source activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-activity.md)
 now freezes its [concrete realization](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-source-freeze.md)
-for independent source review before one target screen. No compiler experiment,
+with [independent source review BLOCKED](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-independent-source-review.md)
+on five introduced transcript receiver errors. This does not change the internal
+design recommendation; source reassessment must precede the one screen. No compiler experiment,
 budget change or automatic repair variant has run/been granted.
 
 ## Authority and exact evidence

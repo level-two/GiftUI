@@ -1,8 +1,11 @@
 # P08 stack candidate A — bounded source/screen activity
 
-Status: **one candidate source frozen; independent Strong source review pending;
+Status: **SOURCE BLOCKED by introduced field-receiver error B01;
 screen 0/1; fit remains failed**. Entry `a90841e0`,
-compiled baseline `0d3e3c7d`. Eugene's “Please proceed as you recommended”
+compiled baseline `0d3e3c7d`. The [independent source review](p08-stack-candidate-a-independent-source-review.md)
+identifies five invalid transcript.runtime.admission accesses in the frozen
+candidate. No screen or source correction has run; parent records disposition
+and any exact preexecution correction before independent reassessment. Eugene's “Please proceed as you recommended”
 authorizes the resource realization continuation. The
 [independent Strong design review](p08-resource-design-independent-review.md)
 passes candidate A under the [reviewed implementation note](../../../../../../docs/implementation-designs/spec-015-p08-stack-materialization.md).

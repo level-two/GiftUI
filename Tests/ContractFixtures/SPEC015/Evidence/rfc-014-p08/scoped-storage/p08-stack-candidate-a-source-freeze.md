@@ -1,6 +1,9 @@
 # P08 stack candidate A — source freeze
 
-**One candidate frozen; independent Strong source review pending; screen 0/1.**
+**Frozen candidate `3d69aba9`: independent Strong source review BLOCKED; screen 0/1.**
+[Review B01](p08-stack-candidate-a-independent-source-review.md) identifies five
+introduced transcript receiver errors. The source/manifest below remain the
+reviewed failing candidate identity; no compiler result is claimed.
 The [activity](p08-stack-candidate-a-activity.md) records current user direction
 and the [independent design PASS](p08-resource-design-independent-review.md)
 at `a90841e0`. One grouped candidate and one fresh nRF screen are allowed, with
