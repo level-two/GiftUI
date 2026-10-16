@@ -1,6 +1,10 @@
 # P08 constructor/caller correction1 result and final correction proposal
 
 **All three focused collections PASS; required cold main-stack lower bound FAIL.**
+[Independent result/final correction 2 APPROACH PASS](p08-constructor-caller-cycle1-independent-result-review.md)
+confirms the rejecting subset and permits the authorized final grouped source pass.
+The review distinguishes plausible destination lifetime syntax and invariant guard
+extraction from unproved compiler acceptance, destructor lowering and savings.
 Source `42c0a1e2`, SOURCE review `2604ff64`. Initial1/correction1/2; one final
 grouped correction remains. The proposal below is not implemented or consumed.
 No source/compiler/runtime/image operation was added by this read-only assessment.

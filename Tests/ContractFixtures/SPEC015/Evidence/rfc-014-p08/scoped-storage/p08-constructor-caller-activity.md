@@ -1,5 +1,12 @@
 # P08 constructor/caller realization activity
 
+Current independent boundary: **cold 30,440 >27,648 confirmed; final correction 2
+[APPROACH PASS](p08-constructor-caller-cycle1-independent-result-review.md)** at
+`0da1220c`. The authorized grouped source pass is ready; corrections remain 1/2.
+Destination lifetime acceptance, extracted failure cleanup and complete resource
+paths remain unproved. No source/compiler/runtime/image operation was added by
+this review; all earlier boundaries remain historical below.
+
 Current boundary: **correction1 all three focused collections PASS; required cold
 main-stack lower bound30440 >27648**, source `42c0a1e2`, SOURCE review `2604ff64`.
 The [current result/final grouped correction proposal](p08-constructor-caller-cycle1-result.md)

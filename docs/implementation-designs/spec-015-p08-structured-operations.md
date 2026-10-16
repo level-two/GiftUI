@@ -16,6 +16,13 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
+**Independent current cold rejection confirmed; final correction 2 APPROACH PASS.**
+The [bounded result/approach review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle1-independent-result-review.md)
+at `0da1220c` permits the authorized final source pass, corrections 1/2 unchanged.
+Named destination union acceptance, failure cleanup lowering and complete resource
+headroom still require current evidence; no source or limit change is made here.
+The earlier current boundaries below are historical.
+
 **Current constructor/caller correction1 focused behavior/layout PASS; required
 cold30440 > main27648.** The
 [current result/final correction proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle1-result.md)
