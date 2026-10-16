@@ -6,10 +6,11 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-20
+updated: 2026-10-16
 source:
   - RFC-006
   - ADR-018
+  - docs/implementation-designs/spec-015-p08-structured-operations.md
 related_future_work: []
 related_explorations: []
 related_spikes: []
@@ -66,6 +67,41 @@ policy cannot express adequately.
 
 Captured. Promotion requires measured evidence and the normal Exploration or
 Proposal gate; it does not expand the MVP capability system.
+
+## Configuration memory estimates — P08 follow-up, 2026-10-16
+
+The maintainer asked whether enabled capabilities could produce accountable
+memory estimates interactively, after compilation, and after exercising the
+application. The [P08 construction evidence](../implementation-designs/spec-015-p08-structured-operations.md)
+shows why these should be separate evidence levels: target storage layouts were
+measurable, while source ownership and noncopyability did not prevent physical
+stack copies. The final stack rejection is only a lower bound, not a peak estimate.
+
+A candidate report could combine immediate capacity/backend/layout formulas,
+exact linked static storage and flash, conservatively bounded compiled call paths,
+and separately labelled runtime high-water observations. Configuration inputs must
+include workload capacities, target/profile/backend and concurrency, not only
+capability flags. Shared storage is counted once; simultaneous lifetimes, thread
+stack reservations, IRQ policy and allocator overhead must be explicit. Application,
+framework, platform and validation-harness costs need separate attribution.
+
+Each number should identify whether it is exact for a pinned artifact, an upper
+bound under named assumptions, an estimate, an observed peak, or unresolved.
+Unknown indirect calls, recursion, library costs or callbacks must block a claimed
+bound instead of becoming zero. A passing stress run is not a worst-case proof.
+Compiler/SDK/flags/source changes invalidate the applicable compiled certificate.
+Cached measurements may accelerate interactive estimates but cannot silently
+certify a changed build. Capability deltas are composition-dependent, not universal
+additive prices; final linked accounting remains authoritative for static bytes.
+
+This reporting layer could precede automatic realization selection and complement
+[generated configuration](fw-006-generated-target-configuration.md). Revisit when a
+maintainer authorizes a bounded resource-tooling exploration or a configuration UI
+needs budget feedback. First assess feasibility on one pinned Embedded target and
+real application, preserving unknowns and distinguishing reserved from used memory.
+No estimator implementation, new experiment, P08 repair allowance, resource waiver,
+or automatic planner is authorized by this capture; P08's existing fit blocker stays
+current rather than being deferred here.
 
 ## References
 

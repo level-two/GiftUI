@@ -7,7 +7,7 @@ authors: [codex]
 created: 2026-10-16
 updated: 2026-10-16
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
-related_future_work: []
+related_future_work: [FW-007]
 related_explorations: []
 related_spikes: []
 supersedes: null
@@ -15,6 +15,13 @@ superseded_by: null
 ---
 
 # P08 structured construction and observation operations
+
+## Deferred and Follow-up Work
+
+[FW-007](../future-work/fw-007-cost-aware-capability-planning.md#configuration-memory-estimates--p08-follow-up-2026-10-16)
+captures the maintainer's configuration-driven memory reporting idea and the P08
+lessons on exact layout, compiled bounds and observed peaks. It adds no implementation
+or repair allowance and does not defer the existing P08 resource-fit requirement.
 
 **Current constructor/caller package STOP: final focused behavior/layout PASS;
 required cold28288 > main27648**, source `51cfc960`, SOURCE review `ee10d2f1`.
