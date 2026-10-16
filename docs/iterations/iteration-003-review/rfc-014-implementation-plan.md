@@ -1,6 +1,12 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current design-only proposal: [prepared lending](../../implementation-designs/spec-015-p08-prepared-lending.md)
+Current resource decision boundary: the [independent live-path review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-live-ram-independent-review.md)
+confirms 56,888 required stack + 142,972 other RAM = 199,860 > unchanged 196,608.
+A sufficient larger main stack is permitted, but main-stack growth alone cannot
+fit this realization. A distinct total-RAM/representation disposition is needed;
+no new source allowance or limit change follows. P08/R07/T8.1 remain open.
+
+Unexecuted design-only proposal: [prepared lending](../../implementation-designs/spec-015-p08-prepared-lending.md)
 separates actual-owner preflight and lends one preparation value through the
 unchanged typed-loan chain. No source allowance or fit claim; current linked
 stack rejection and all historical repair stops remain in force.

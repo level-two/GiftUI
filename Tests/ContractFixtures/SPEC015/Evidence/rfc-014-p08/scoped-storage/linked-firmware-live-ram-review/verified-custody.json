@@ -1,0 +1,1049 @@
+{
+  "kind": "independent-bounded-fixed-frame-custody-review-and-site-erratum",
+  "reviewed_commit": "17318a41",
+  "elf_sha256": "e649c5d26a676140b473e8fa1de5b075a479d8282a7f6d69e0034fb215884c38",
+  "original_ledger_sha256": "e53139a22bc971118e106c2b866c8c755844d3848df31d1150b28b1855085167",
+  "frame_count": 47,
+  "selected_stack_lower_bound": 56888,
+  "complete_peak": false,
+  "frames": [
+    {
+      "entry": 1,
+      "symbol_index": 6742,
+      "address": "0x2c760",
+      "fixed_entry_bytes": 16,
+      "reviewed_nested_call_site": "0x2c778",
+      "reviewed_nested_instruction": "bl\t5dcbc <giftui_rfc014_counter_entry>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x2c760",
+          "instruction": "push\t{r3, r4, r5, lr}"
+        },
+        {
+          "address": "0x2c770",
+          "instruction": "pop\t{r3, r4, r5, pc}"
+        }
+      ]
+    },
+    {
+      "entry": 2,
+      "symbol_index": 5890,
+      "address": "0x2c73c",
+      "fixed_entry_bytes": 8,
+      "reviewed_nested_call_site": "0x2c748",
+      "reviewed_nested_instruction": "bl\t4b43e <OUTLINED_FUNCTION_5+0x905c>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x2c744",
+          "instruction": "push\t{r7, lr}"
+        }
+      ]
+    },
+    {
+      "entry": 3,
+      "symbol_index": 5702,
+      "address": "0x4b43e",
+      "fixed_entry_bytes": 64,
+      "reviewed_nested_call_site": "0x4b48a",
+      "reviewed_nested_instruction": "bl\t1c3bc <giftui_p08_layout_totalBytes+0xde64>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x4b43e",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, sl, lr}"
+        },
+        {
+          "address": "0x4b442",
+          "instruction": "sub\tsp, #40\t; 0x28"
+        }
+      ]
+    },
+    {
+      "entry": 4,
+      "symbol_index": 6803,
+      "address": "0x1c3bc",
+      "fixed_entry_bytes": 64,
+      "reviewed_nested_call_site": "0x1c3ee",
+      "reviewed_nested_instruction": "bl\t4ac90 <OUTLINED_FUNCTION_5+0x88ae>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x1c3bc",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x1c3c0",
+          "instruction": "sub\tsp, #28"
+        }
+      ]
+    },
+    {
+      "entry": 5,
+      "symbol_index": 5289,
+      "address": "0x4ac90",
+      "fixed_entry_bytes": 112,
+      "reviewed_nested_call_site": "0x4ae14",
+      "reviewed_nested_instruction": "bl\t1c190 <giftui_p08_layout_totalBytes+0xdc38>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x4ac90",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x4ac94",
+          "instruction": "sub\tsp, #76\t; 0x4c"
+        }
+      ]
+    },
+    {
+      "entry": 6,
+      "symbol_index": 6013,
+      "address": "0x4affc",
+      "fixed_entry_bytes": 48,
+      "reviewed_nested_call_site": "0x4b02c",
+      "reviewed_nested_instruction": "bl\t4b038 <OUTLINED_FUNCTION_5+0x8c56>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x4affc",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, sl, lr}"
+        },
+        {
+          "address": "0x4b000",
+          "instruction": "sub\tsp, #24"
+        }
+      ]
+    },
+    {
+      "entry": 7,
+      "symbol_index": 7184,
+      "address": "0x4b038",
+      "fixed_entry_bytes": 144,
+      "reviewed_nested_call_site": "0x4b124",
+      "reviewed_nested_instruction": "bl\t1a62c <giftui_p08_layout_totalBytes+0xc0d4>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x4b038",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x4b03c",
+          "instruction": "sub\tsp, #108\t; 0x6c"
+        }
+      ]
+    },
+    {
+      "entry": 8,
+      "symbol_index": 5521,
+      "address": "0x1a62c",
+      "fixed_entry_bytes": 1536,
+      "reviewed_nested_call_site": "0x1a7a2",
+      "reviewed_nested_instruction": "bl\t42422 <OUTLINED_FUNCTION_5+0x40>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x1a62c",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x1a632",
+          "instruction": "subw\tsp, sp, #1500\t; 0x5dc"
+        },
+        {
+          "address": "0x1a63c",
+          "instruction": "mov\tsp, r4"
+        },
+        {
+          "address": "0x1a710",
+          "instruction": "mov\tsp, r0"
+        },
+        {
+          "address": "0x1a78c",
+          "instruction": "sub\tsp, #8"
+        }
+      ]
+    },
+    {
+      "entry": 9,
+      "symbol_index": 7148,
+      "address": "0x42422",
+      "fixed_entry_bytes": 520,
+      "reviewed_nested_call_site": "0x424e8",
+      "reviewed_nested_instruction": "blx\tr0",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x42422",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x42426",
+          "instruction": "sub\tsp, #488\t; 0x1e8"
+        }
+      ]
+    },
+    {
+      "entry": 10,
+      "symbol_index": 1963,
+      "address": "0x517d4",
+      "fixed_entry_bytes": 24,
+      "reviewed_nested_call_site": "0x517dc",
+      "reviewed_nested_instruction": "bl\t517e2 <giftui_p08_metadata_extent+0x62a2>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x517d4",
+          "instruction": "push\t{r0, r1, r2, r3, r4, lr}"
+        }
+      ]
+    },
+    {
+      "entry": 11,
+      "symbol_index": 2341,
+      "address": "0x517e2",
+      "fixed_entry_bytes": 224,
+      "reviewed_nested_call_site": "0x518d6",
+      "reviewed_nested_instruction": "bl\t1a888 <giftui_p08_layout_totalBytes+0xc330>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x517e2",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x517e6",
+          "instruction": "sub\tsp, #192\t; 0xc0"
+        }
+      ]
+    },
+    {
+      "entry": 12,
+      "symbol_index": 7198,
+      "address": "0x1a888",
+      "fixed_entry_bytes": 1232,
+      "reviewed_nested_call_site": "0x1aa66",
+      "reviewed_nested_instruction": "bl\t5956e <OUTLINED_FUNCTION_97+0x1aa8>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x1a888",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x1a88e",
+          "instruction": "sub.w\tsp, sp, #1200\t; 0x4b0"
+        },
+        {
+          "address": "0x1a898",
+          "instruction": "mov\tsp, r4"
+        },
+        {
+          "address": "0x1a936",
+          "instruction": "mov\tsp, r4"
+        },
+        {
+          "address": "0x1aa1a",
+          "instruction": "sub\tsp, #64\t; 0x40"
+        }
+      ]
+    },
+    {
+      "entry": 13,
+      "symbol_index": 5210,
+      "address": "0x5956e",
+      "fixed_entry_bytes": 520,
+      "reviewed_nested_call_site": "0x597a8",
+      "reviewed_nested_instruction": "bl\t5996c <OUTLINED_FUNCTION_97+0x1ea6>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x5956e",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x59572",
+          "instruction": "sub\tsp, #488\t; 0x1e8"
+        }
+      ]
+    },
+    {
+      "entry": 14,
+      "symbol_index": 5782,
+      "address": "0x5996c",
+      "fixed_entry_bytes": 448,
+      "reviewed_nested_call_site": "0x59a64",
+      "reviewed_nested_instruction": "blx\tr3",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x5996c",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x59970",
+          "instruction": "sub\tsp, #416\t; 0x1a0"
+        }
+      ]
+    },
+    {
+      "entry": 15,
+      "symbol_index": 1966,
+      "address": "0x519b4",
+      "fixed_entry_bytes": 176,
+      "reviewed_nested_call_site": "0x51a62",
+      "reviewed_nested_instruction": "bl\t1aab8 <giftui_p08_layout_totalBytes+0xc560>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x519b4",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x519b8",
+          "instruction": "sub\tsp, #144\t; 0x90"
+        }
+      ]
+    },
+    {
+      "entry": 16,
+      "symbol_index": 5448,
+      "address": "0x1aab8",
+      "fixed_entry_bytes": 1056,
+      "reviewed_nested_call_site": "0x1aba8",
+      "reviewed_nested_instruction": "bl\t10cb8 <giftui_p08_layout_totalBytes+0x2760>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x1aab8",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x1aabe",
+          "instruction": "sub.w\tsp, sp, #1024\t; 0x400"
+        },
+        {
+          "address": "0x1aac8",
+          "instruction": "mov\tsp, r4"
+        },
+        {
+          "address": "0x1ab2a",
+          "instruction": "mov\tsp, r2"
+        }
+      ]
+    },
+    {
+      "entry": 17,
+      "symbol_index": 6515,
+      "address": "0x10cb8",
+      "fixed_entry_bytes": 3856,
+      "reviewed_nested_call_site": "0x110b8",
+      "reviewed_nested_instruction": "bl\tef20 <giftui_p08_layout_totalBytes+0x9c8>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x10cb8",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x10cbe",
+          "instruction": "subw\tsp, sp, #3820\t; 0xeec"
+        },
+        {
+          "address": "0x10cc8",
+          "instruction": "mov\tsp, r4"
+        },
+        {
+          "address": "0x10f0e",
+          "instruction": "mov\tsp, r3"
+        },
+        {
+          "address": "0x1109e",
+          "instruction": "sub\tsp, #16"
+        }
+      ]
+    },
+    {
+      "entry": 18,
+      "symbol_index": 6928,
+      "address": "0x49574",
+      "fixed_entry_bytes": 5960,
+      "reviewed_nested_call_site": "0x4974e",
+      "reviewed_nested_instruction": "bl\t19428 <giftui_p08_layout_totalBytes+0xaed0>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x49574",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x49578",
+          "instruction": "sub.w\tsp, sp, #5920\t; 0x1720"
+        },
+        {
+          "address": "0x4957c",
+          "instruction": "sub\tsp, #4"
+        }
+      ]
+    },
+    {
+      "entry": 19,
+      "symbol_index": 5773,
+      "address": "0x19428",
+      "fixed_entry_bytes": 1528,
+      "reviewed_nested_call_site": "0x19468",
+      "reviewed_nested_instruction": "bl\t19604 <giftui_p08_layout_totalBytes+0xb0ac>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x19428",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, sl, lr}"
+        },
+        {
+          "address": "0x1942c",
+          "instruction": "subw\tsp, sp, #1500\t; 0x5dc"
+        }
+      ]
+    },
+    {
+      "entry": 20,
+      "symbol_index": 5562,
+      "address": "0x19604",
+      "fixed_entry_bytes": 2296,
+      "reviewed_nested_call_site": "0x19ad4",
+      "reviewed_nested_instruction": "bl\t1d3fc <giftui_p08_layout_totalBytes+0xeea4>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x19604",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x19608",
+          "instruction": "subw\tsp, sp, #2260\t; 0x8d4"
+        }
+      ]
+    },
+    {
+      "entry": 21,
+      "symbol_index": 5468,
+      "address": "0x1d3fc",
+      "fixed_entry_bytes": 7584,
+      "reviewed_nested_call_site": "0x1d6c6",
+      "reviewed_nested_instruction": "bl\t1d710 <giftui_p08_layout_totalBytes+0xf1b8>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x1d3fc",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x1d400",
+          "instruction": "sub.w\tsp, sp, #7520\t; 0x1d60"
+        },
+        {
+          "address": "0x1d404",
+          "instruction": "sub\tsp, #28"
+        }
+      ]
+    },
+    {
+      "entry": 22,
+      "symbol_index": 6240,
+      "address": "0x1d710",
+      "fixed_entry_bytes": 9360,
+      "reviewed_nested_call_site": "0x1dd06",
+      "reviewed_nested_instruction": "bl\t28dc0 <giftui_p08_layout_totalBytes+0x1a868>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x1d710",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x1d714",
+          "instruction": "sub.w\tsp, sp, #9280\t; 0x2440"
+        },
+        {
+          "address": "0x1d718",
+          "instruction": "sub\tsp, #44\t; 0x2c"
+        }
+      ]
+    },
+    {
+      "entry": 23,
+      "symbol_index": 5525,
+      "address": "0x28dc0",
+      "fixed_entry_bytes": 544,
+      "reviewed_nested_call_site": "0x28e36",
+      "reviewed_nested_instruction": "bl\t47280 <OUTLINED_FUNCTION_5+0x4e9e>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x28dc0",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, lr}"
+        },
+        {
+          "address": "0x28dc4",
+          "instruction": "sub.w\tsp, sp, #512\t; 0x200"
+        }
+      ]
+    },
+    {
+      "entry": 24,
+      "symbol_index": 6527,
+      "address": "0x47280",
+      "fixed_entry_bytes": 144,
+      "reviewed_nested_call_site": "0x472a8",
+      "reviewed_nested_instruction": "bl\t4c1b2 <giftui_p08_metadata_extent+0xc72>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x47280",
+          "instruction": "stmdb\tsp!, {r4, r5, sl, lr}"
+        },
+        {
+          "address": "0x47284",
+          "instruction": "sub\tsp, #128\t; 0x80"
+        }
+      ]
+    },
+    {
+      "entry": 25,
+      "symbol_index": 5950,
+      "address": "0x4c1b2",
+      "fixed_entry_bytes": 2528,
+      "reviewed_nested_call_site": "0x4c29c",
+      "reviewed_nested_instruction": "bl\t57dfa <OUTLINED_FUNCTION_97+0x334>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x4c1b2",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, lr}"
+        },
+        {
+          "address": "0x4c1b6",
+          "instruction": "sub.w\tsp, sp, #2496\t; 0x9c0"
+        }
+      ]
+    },
+    {
+      "entry": 26,
+      "symbol_index": 6466,
+      "address": "0x57dfa",
+      "fixed_entry_bytes": 312,
+      "reviewed_nested_call_site": "0x57efe",
+      "reviewed_nested_instruction": "bl\t24938 <giftui_p08_layout_totalBytes+0x163e0>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x57dfa",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x57dfe",
+          "instruction": "sub\tsp, #276\t; 0x114"
+        },
+        {
+          "address": "0x57ea4",
+          "instruction": "add\tsp, #276\t; 0x114"
+        },
+        {
+          "address": "0x57ea6",
+          "instruction": "ldmia.w\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}"
+        }
+      ]
+    },
+    {
+      "entry": 27,
+      "symbol_index": 6675,
+      "address": "0x24938",
+      "fixed_entry_bytes": 40,
+      "reviewed_nested_call_site": "0x249f8",
+      "reviewed_nested_instruction": "bl\t253cc <giftui_p08_layout_totalBytes+0x16e74>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x24938",
+          "instruction": "stmdb\tsp!, {r3, r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        }
+      ]
+    },
+    {
+      "entry": 28,
+      "symbol_index": 6263,
+      "address": "0x253cc",
+      "fixed_entry_bytes": 344,
+      "reviewed_nested_call_site": "0x254d6",
+      "reviewed_nested_instruction": "bl\t57ad6 <OUTLINED_FUNCTION_97+0x10>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x253cc",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x253d0",
+          "instruction": "sub\tsp, #308\t; 0x134"
+        },
+        {
+          "address": "0x2540e",
+          "instruction": "add\tsp, #308\t; 0x134"
+        },
+        {
+          "address": "0x25410",
+          "instruction": "ldmia.w\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}"
+        }
+      ]
+    },
+    {
+      "entry": 29,
+      "symbol_index": 5266,
+      "address": "0x57ad6",
+      "fixed_entry_bytes": 488,
+      "reviewed_nested_call_site": "0x57bfc",
+      "reviewed_nested_instruction": "bl\t38b2c <__swift_memcpy19_4+0x10c0>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x57ad6",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x57ada",
+          "instruction": "sub\tsp, #452\t; 0x1c4"
+        }
+      ]
+    },
+    {
+      "entry": 30,
+      "symbol_index": 6007,
+      "address": "0x38b2c",
+      "fixed_entry_bytes": 920,
+      "reviewed_nested_call_site": "0x38be2",
+      "reviewed_nested_instruction": "bl\t395aa <__swift_memcpy19_4+0x1b3e>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x38b2c",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x38b30",
+          "instruction": "sub.w\tsp, sp, #884\t; 0x374"
+        }
+      ]
+    },
+    {
+      "entry": 31,
+      "symbol_index": 5454,
+      "address": "0x395aa",
+      "fixed_entry_bytes": 432,
+      "reviewed_nested_call_site": "0x39614",
+      "reviewed_nested_instruction": "bl\t6354 <__z_interrupt_all_stacks_SIZEOF+0x5b14>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x395aa",
+          "instruction": "push\t{r4, r5, r6, lr}"
+        },
+        {
+          "address": "0x395ac",
+          "instruction": "sub\tsp, #416\t; 0x1a0"
+        },
+        {
+          "address": "0x39600",
+          "instruction": "add\tsp, #416\t; 0x1a0"
+        },
+        {
+          "address": "0x39602",
+          "instruction": "pop\t{r4, r5, r6, pc}"
+        }
+      ]
+    },
+    {
+      "entry": 32,
+      "symbol_index": 6687,
+      "address": "0x6354",
+      "fixed_entry_bytes": 880,
+      "reviewed_nested_call_site": "0x6410",
+      "reviewed_nested_instruction": "bl\t6d5c <CONFIG_MAIN_STACK_SIZE+0x15c>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x6354",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x6358",
+          "instruction": "sub.w\tsp, sp, #844\t; 0x34c"
+        }
+      ]
+    },
+    {
+      "entry": 33,
+      "symbol_index": 7331,
+      "address": "0x6d5c",
+      "fixed_entry_bytes": 1184,
+      "reviewed_nested_call_site": "0x6dd2",
+      "reviewed_nested_instruction": "bl\t7068 <CONFIG_MAIN_STACK_SIZE+0x468>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x6d5c",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, sl, lr}"
+        },
+        {
+          "address": "0x6d62",
+          "instruction": "subw\tsp, sp, #1156\t; 0x484"
+        },
+        {
+          "address": "0x6d6c",
+          "instruction": "mov\tsp, r4"
+        }
+      ]
+    },
+    {
+      "entry": 34,
+      "symbol_index": 5780,
+      "address": "0x7068",
+      "fixed_entry_bytes": 1368,
+      "reviewed_nested_call_site": "0x70be",
+      "reviewed_nested_instruction": "bl\t6474 <__z_interrupt_all_stacks_SIZEOF+0x5c34>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x7068",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, sl, lr}"
+        },
+        {
+          "address": "0x706c",
+          "instruction": "sub.w\tsp, sp, #1344\t; 0x540"
+        }
+      ]
+    },
+    {
+      "entry": 35,
+      "symbol_index": 6056,
+      "address": "0x6474",
+      "fixed_entry_bytes": 1320,
+      "reviewed_nested_call_site": "0x6540",
+      "reviewed_nested_instruction": "bl\t3a54c <__swift_memcpy19_4+0x2ae0>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x6474",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, fp, lr}"
+        },
+        {
+          "address": "0x6478",
+          "instruction": "sub.w\tsp, sp, #1288\t; 0x508"
+        }
+      ]
+    },
+    {
+      "entry": 36,
+      "symbol_index": 6417,
+      "address": "0x3a54c",
+      "fixed_entry_bytes": 456,
+      "reviewed_nested_call_site": "0x3a5aa",
+      "reviewed_nested_instruction": "bl\t65a4 <__z_interrupt_all_stacks_SIZEOF+0x5d64>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x3a54c",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x3a550",
+          "instruction": "sub\tsp, #420\t; 0x1a4"
+        },
+        {
+          "address": "0x3a594",
+          "instruction": "add\tsp, #420\t; 0x1a4"
+        },
+        {
+          "address": "0x3a596",
+          "instruction": "ldmia.w\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}"
+        }
+      ]
+    },
+    {
+      "entry": 37,
+      "symbol_index": 5791,
+      "address": "0x65a4",
+      "fixed_entry_bytes": 1312,
+      "reviewed_nested_call_site": "0x6670",
+      "reviewed_nested_instruction": "bl\t3a38a <__swift_memcpy19_4+0x291e>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x65a4",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, fp, lr}"
+        },
+        {
+          "address": "0x65a8",
+          "instruction": "sub.w\tsp, sp, #1280\t; 0x500"
+        }
+      ]
+    },
+    {
+      "entry": 38,
+      "symbol_index": 5567,
+      "address": "0x3a83c",
+      "fixed_entry_bytes": 648,
+      "reviewed_nested_call_site": "0x3a8bc",
+      "reviewed_nested_instruction": "bl\t66d4 <__z_interrupt_all_stacks_SIZEOF+0x5e94>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x3a83c",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, lr}"
+        },
+        {
+          "address": "0x3a840",
+          "instruction": "sub.w\tsp, sp, #624\t; 0x270"
+        },
+        {
+          "address": "0x3a8a6",
+          "instruction": "add.w\tsp, sp, #624\t; 0x270"
+        },
+        {
+          "address": "0x3a8aa",
+          "instruction": "ldmia.w\tsp!, {r4, r5, r6, r7, r8, pc}"
+        }
+      ]
+    },
+    {
+      "entry": 39,
+      "symbol_index": 5875,
+      "address": "0x66d4",
+      "fixed_entry_bytes": 880,
+      "reviewed_nested_call_site": "0x6790",
+      "reviewed_nested_instruction": "bl\t3b05e <__swift_memcpy19_4+0x35f2>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x66d4",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x66d8",
+          "instruction": "sub.w\tsp, sp, #844\t; 0x34c"
+        }
+      ]
+    },
+    {
+      "entry": 40,
+      "symbol_index": 5359,
+      "address": "0x3b05e",
+      "fixed_entry_bytes": 464,
+      "reviewed_nested_call_site": "0x3b0ea",
+      "reviewed_nested_instruction": "bl\t3a9a4 <__swift_memcpy19_4+0x2f38>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x3b05e",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, sl, lr}"
+        },
+        {
+          "address": "0x3b062",
+          "instruction": "sub\tsp, #440\t; 0x1b8"
+        }
+      ]
+    },
+    {
+      "entry": 41,
+      "symbol_index": 6128,
+      "address": "0x3a9a4",
+      "fixed_entry_bytes": 648,
+      "reviewed_nested_call_site": "0x3aa24",
+      "reviewed_nested_instruction": "bl\t6924 <__z_interrupt_all_stacks_SIZEOF+0x60e4>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x3a9a4",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, lr}"
+        },
+        {
+          "address": "0x3a9a8",
+          "instruction": "sub.w\tsp, sp, #624\t; 0x270"
+        },
+        {
+          "address": "0x3aa0e",
+          "instruction": "add.w\tsp, sp, #624\t; 0x270"
+        },
+        {
+          "address": "0x3aa12",
+          "instruction": "ldmia.w\tsp!, {r4, r5, r6, r7, r8, pc}"
+        }
+      ]
+    },
+    {
+      "entry": 42,
+      "symbol_index": 6285,
+      "address": "0x6924",
+      "fixed_entry_bytes": 976,
+      "reviewed_nested_call_site": "0x69ea",
+      "reviewed_nested_instruction": "bl\t3a748 <__swift_memcpy19_4+0x2cdc>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x6924",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, fp, lr}"
+        },
+        {
+          "address": "0x6928",
+          "instruction": "sub.w\tsp, sp, #944\t; 0x3b0"
+        }
+      ]
+    },
+    {
+      "entry": 43,
+      "symbol_index": 6235,
+      "address": "0x3a748",
+      "fixed_entry_bytes": 456,
+      "reviewed_nested_call_site": "0x3a7a6",
+      "reviewed_nested_instruction": "bl\t6a4c <__z_interrupt_all_stacks_SIZEOF+0x620c>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x3a748",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+        },
+        {
+          "address": "0x3a74c",
+          "instruction": "sub\tsp, #420\t; 0x1a4"
+        },
+        {
+          "address": "0x3a790",
+          "instruction": "add\tsp, #420\t; 0x1a4"
+        },
+        {
+          "address": "0x3a792",
+          "instruction": "ldmia.w\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}"
+        }
+      ]
+    },
+    {
+      "entry": 44,
+      "symbol_index": 7007,
+      "address": "0x6a4c",
+      "fixed_entry_bytes": 1072,
+      "reviewed_nested_call_site": "0x6b1a",
+      "reviewed_nested_instruction": "bl\t3a45c <__swift_memcpy19_4+0x29f0>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x6a4c",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, fp, lr}"
+        },
+        {
+          "address": "0x6a50",
+          "instruction": "sub.w\tsp, sp, #1040\t; 0x410"
+        }
+      ]
+    },
+    {
+      "entry": 45,
+      "symbol_index": 6625,
+      "address": "0x3a8f0",
+      "fixed_entry_bytes": 648,
+      "reviewed_nested_call_site": "0x3a970",
+      "reviewed_nested_instruction": "bl\t6b7c <__z_interrupt_all_stacks_SIZEOF+0x633c>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x3a8f0",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, lr}"
+        },
+        {
+          "address": "0x3a8f4",
+          "instruction": "sub.w\tsp, sp, #624\t; 0x270"
+        },
+        {
+          "address": "0x3a95a",
+          "instruction": "add.w\tsp, sp, #624\t; 0x270"
+        },
+        {
+          "address": "0x3a95e",
+          "instruction": "ldmia.w\tsp!, {r4, r5, r6, r7, r8, pc}"
+        }
+      ]
+    },
+    {
+      "entry": 46,
+      "symbol_index": 7233,
+      "address": "0x6b7c",
+      "fixed_entry_bytes": 976,
+      "reviewed_nested_call_site": "0x6be4",
+      "reviewed_nested_instruction": "bl\t3982e <__swift_memcpy19_4+0x1dc2>",
+      "fixed_frame_custody": "held at selected nested call; early/sibling epilogues are not traversed",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x6b7c",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, fp, lr}"
+        },
+        {
+          "address": "0x6b80",
+          "instruction": "sub.w\tsp, sp, #944\t; 0x3b0"
+        }
+      ]
+    },
+    {
+      "entry": 47,
+      "symbol_index": 462,
+      "address": "0x3982e",
+      "fixed_entry_bytes": 1072,
+      "reviewed_nested_call_site": null,
+      "reviewed_nested_instruction": null,
+      "fixed_frame_custody": "stop after entry prologue; no deeper callee required",
+      "all_SP_writes_up_to_selected_site": [
+        {
+          "address": "0x3982e",
+          "instruction": "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, lr}"
+        },
+        {
+          "address": "0x39832",
+          "instruction": "sub.w\tsp, sp, #1040\t; 0x410"
+        }
+      ]
+    }
+  ],
+  "site_erratum": {
+    "symbol_index": 5782,
+    "function_address": "0x5996c",
+    "original_packet_site": "0x59b3a",
+    "correct_source_specific_site": "0x59a64",
+    "instruction": "blx r3",
+    "reserved_bytes_unchanged": 448,
+    "reason": "The current valid source supplies nonnil backing for every semantic span, including128 scalars. Helper loads the supplied span start at0x59978; compare0x59996 and BEQ0x599a4 select nonnil fallthrough. Actual callback pointer is reloaded by LDRD0x59a38 from [sp,#508], then BLX0x59a64. Nil-start arm0x59b3a is not this source-specific case. Both arms preserve the same fixed448 frame and receive the same supplied callback.",
+    "callback_literal": "0x1aab4",
+    "add_PC_instruction": "0x1aa26",
+    "thumb_target": "0x519b5",
+    "numerical_impact": 0
+  },
+  "union_arms": {
+    "metadata_dispatch": "host arm0x1c1b6; restores36+28 before tail0x1c1d4; zero charged",
+    "scheduled_service": "began arm0x28e32 from TBB0x28dfc table bytes02190915; index1; all544 bytes retained",
+    "semantic_body": "body arm0x7090 from TBB0x7088 table bytes02573546; index0; all1368 bytes retained"
+  },
+  "source_semantics": [
+    ".host(0); nil reuse/baseline; early0; no candidate failure; successful normal activation",
+    "Ordinary host lifecycle calls host corpus; corpus BL0x1d6c6 calls wake controls without returning",
+    "Coalesced admitted-work service BL0x1dd06 calls owner pipeline; semantic expansion occurs regardless of whether equal stateChange0 changed the model",
+    "Authored CounterScreen background/VStack/TupleView5 third child disabled Increment Button/Text label; earlier sibling calls have returned; all ancestor frames remain",
+    "Original14 bank-loan source nest encloses session; all interposed bank lender/callback/forwarder/scoped-body costs remain omitted",
+    "Semantic helpers0x3a38a and0x3a45c restore256 bytes before tail0x3a43e/0x3a52c; zero charged",
+    "Last frame0x3982e counted only through1072-byte entry; merged representative name is not recursive CounterScreen expansion"
+  ],
+  "additional_current_sources_matching_predecessor_handoff": {
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": "d106f913937b30646aac5006789bf12d8b7530b6b9497cbd861a325038415a37",
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "88214d8af4ac0db6c490e6f8a9c8fa671b1490816f5447792e4dfe0927e9efb5",
+    "Sources/GiftUI/DeclarativeView.swift": "8015cbf2b2d5df841799012850833604525af705e5087ac0583dc37064047132",
+    "Sources/GiftUI/Button.swift": "d2185a3e2983a38f8d2025a595444bc0e15d5089583b009327e007fc1272cd25"
+  }
+}

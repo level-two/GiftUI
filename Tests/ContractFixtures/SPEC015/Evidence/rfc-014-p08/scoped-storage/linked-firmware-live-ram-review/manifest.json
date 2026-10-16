@@ -1,0 +1,11 @@
+{
+  "kind": "independent-live-RAM-review-supplement",
+  "original_packet_unchanged": true,
+  "original_packet_sha256": "4c6f0c49bd2e83dde4c3d73a7a47b3c7f8c935ce22b681b28df6a2be1d3aea0a",
+  "files": {
+    "verified-custody.json": {
+      "sha256": "cf5e3d3dcd83f27c64e4d8f75d08c489bc9f13b7b8577d2b5560089cebb837e8",
+      "bytes": 35569
+    }
+  }
+}

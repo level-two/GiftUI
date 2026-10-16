@@ -1,5 +1,13 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+Current resource boundary — **larger main stack alone fails unchanged total RAM**.
+The [independent live-path review](scoped-storage/p08-current-firmware-live-ram-independent-review.md)
+confirms 47 simultaneous fixed entries totaling 56,888 plus other RAM 142,972:
+199,860 > 196,608 by 3,252 before omitted costs. A sufficient larger main stack
+is permitted; roughly 30 KB is illustrative. Total RAM remains unchanged and
+needs a distinct disposition. The recorded callback-site erratum changes no sum.
+No source allowance, optimization, limit edit or build follows; P08 stays open.
+
 Current P08 result — **actual linked firmware stack FAIL**.
 The [current firmware resource result](scoped-storage/p08-current-firmware-resource-result.md)
 pins full nRF 227/227, normal pristine artifact and ABI/layout/RAM/flash passes;

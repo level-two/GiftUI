@@ -19,6 +19,13 @@ superseded_by: null
 
 # SPEC-015 Conformance Report
 
+Current total-RAM boundary — **unchanged realization fails even with larger main stack**.
+The [independent live-path review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-live-ram-independent-review.md)
+confirms 56,888 required fixed stack + 142,972 other RAM = 199,860 > unchanged
+196,608 by 3,252 before omitted costs. A sufficient larger main stack is permitted;
+total RAM requires a distinct disposition. The callback-site erratum changes no
+sum. No complete peak, new limit, source allowance or P08 acceptance is claimed.
+
 Current actual firmware evidence — **stack fit fails**. The
 [linked resource result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-resource-result.md)
 adds complete nRF 227/227 and normal pristine ABI/layout/RAM/flash passes, but

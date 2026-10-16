@@ -6,6 +6,11 @@ The same actual final ELF requires a source-feasible live fixed-stack subset of
 bound of **199,860 > 196,608 by 3,252**, before omitted costs. This is a sufficient
 rejection, not a complete peak or a sufficient proposed RAM/stack adjustment.
 
+The [independent bounded review](p08-current-firmware-live-ram-independent-review.md)
+confirms this rejection and records one source-specific callback-site correction
+(`0x59a64` replaces the packet's nil-arm `0x59b3a`), with no numerical effect.
+The original proof packet remains immutable.
+
 The maintainer now permits selecting a sufficient larger main stack; roughly
 30 KB was illustrative, not a ceiling. That direction does **not** authorize
 raising total RAM 196,608. No source optimization, limit edit, compiler/build/link,
