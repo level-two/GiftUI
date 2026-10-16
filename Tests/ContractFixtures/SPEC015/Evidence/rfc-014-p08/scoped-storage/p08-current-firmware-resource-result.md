@@ -1,5 +1,10 @@
 # P08 current firmware resource result — 2026-10-16
 
+Current resource follow-up: the [complete-bound proposal](p08-current-firmware-complete-bound-result.md)
+uses the same frozen ELF under the subsequently authorized physical 256 KiB
+RAM direction. Its independent proof review and final scoped configuration build
+remain pending; historical lower bounds below remain unchanged.
+
 Current larger-stack follow-up: the [source-feasible live RAM result](p08-current-firmware-live-ram-result.md)
 proves a 56,888-byte fixed subset plus 142,972 other linked RAM exceeds total
 196,608. The cold result below remains immutable evidence, not the current

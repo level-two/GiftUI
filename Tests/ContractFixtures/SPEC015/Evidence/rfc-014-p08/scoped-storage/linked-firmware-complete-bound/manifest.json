@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "purpose": "Candidate conservative complete-bound and counter-only physical-SRAM resource proposal; independent review required",
+  "elf_sha256": "e649c5d26a676140b473e8fa1de5b075a479d8282a7f6d69e0034fb215884c38",
+  "source_revision": "51cfc960",
+  "build_revision": "f042252f",
+  "frozen_input_packet": "../linked-firmware-current/manifest.json",
+  "archive": {
+    "path": "complete-bound-proof.tar.xz",
+    "bytes": 2390672,
+    "sha256": "44aff7957b6be3fdef318520c2531b0c63342a113472ffa0ff9815df18363e94"
+  },
+  "result": {
+    "elf_sha256": "e649c5d26a676140b473e8fa1de5b075a479d8282a7f6d69e0034fb215884c38",
+    "contexts": 1788,
+    "physical_functions": 1469,
+    "unresolved_indirect": 0,
+    "unresolved_direct": 0,
+    "reachable_local_sp_issues": 0,
+    "main_body_upper": 95349,
+    "main_persistent_caller": 8,
+    "exception_fpu_alignment": 112,
+    "main_upper": 95469,
+    "startup_pre_switch_upper": 312,
+    "maskable_handler_upper": 444,
+    "all_handler_upper": 524,
+    "isr_upper": 6672,
+    "proposed_main": 106496,
+    "proposed_isr": 8192,
+    "projected_ram_charge": 255612,
+    "projected_ram_extent": 255616,
+    "physical_ram": 262144,
+    "status": "candidate_conservative_bound_pending_independent_review"
+  },
+  "source_premises": "PROOF.md inside archive",
+  "read_only_reproducer": "python3 reproduce.py after extracting on the pinned repository host; checks frozen ELF SHA before analyzing"
+}

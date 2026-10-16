@@ -27,18 +27,18 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current P08 boundary — **larger main authorized in direction; distinct total-RAM rejection**.
-The [actual live firmware result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-live-ram-result.md)
-proves required fixed stack 56,888 + other linked RAM 142,972 = 199,860, exceeding
-total 196,608 by at least 3,252 before omitted costs. No sufficient reservation
-or complete upper bound is claimed. Complete nRF 227/227 and normal pristine
-image/ABI/layout/RAM/flash checks passed; their exact qualifications remain.
-The [completion assessment](../implementation-designs/spec-015-p08-completion-resource-assessment.md)
-routes the separate total-RAM tradeoff before another image or source candidate.
-The [prepared-lending proposal](../implementation-designs/spec-015-p08-prepared-lending.md)
-and its [independent design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-prepared-lending-independent-design-review.md)
-remain design history; implementation is not selected. Correction 2/2 and all
-other source repair allowances remain closed. P08/R07/T8.1 and full SO stay open.
+Current P08 boundary — **counter-only larger stacks/RAM authorized; proof review pending**.
+The [complete frozen-firmware proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-result.md)
+submits main/ISR bounds 95,469 / 6,672; proposed payloads 106,496 / 8,192 project
+RAM 255,612 within physical 262,144. Independently review its source-constrained
+recursion/callback/allocator/IRQ premises, reconcile the authorized counter-only
+resource exception, then verify the normal guarded final image. Existing analyzer
+limits stay unchanged. The [old live rejection](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-live-ram-result.md)
+still rejects the former 196,608 ceiling; it is not a complete peak. The
+[completion assessment](../implementation-designs/spec-015-p08-completion-resource-assessment.md)
+retains remaining matrix/exit gates. Prepared-lending implementation is not
+selected; correction 2/2 and all other source repair allowances remain closed.
+P08/R07/T8.1 and full SO remain open.
 
 Historical combined structural design — **implementation had not started**.
 The [authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-activity.md)

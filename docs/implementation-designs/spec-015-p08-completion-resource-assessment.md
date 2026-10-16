@@ -16,14 +16,14 @@ superseded_by: null
 
 # P08 completion and resource assessment
 
-The maintainer now permits a sufficient larger main stack, with no fixed 30 KB
-ceiling. The [actual live RAM follow-up](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-live-ram-result.md)
-finds a distinct blocker: required fixed stack 56,888 plus other linked RAM
-142,972 exceeds total 196,608 by at least 3,252. Larger main alone cannot fit;
-this is not a complete peak or sufficient RAM amendment. The total-RAM tradeoff
-requires a separate decision. Prepared-lending implementation is not selected;
-all source repair allowances remain closed. Historical next-step text below
-predates this larger-stack direction and the live-path evidence.
+The maintainer now authorizes larger main **and total RAM within physical
+262,144 bytes**. The [complete frozen-firmware resource proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-result.md)
+submits conservative main/ISR bounds 95,469 / 6,672 and counter-only payloads
+106,496 / 8,192, projecting RAM 255,612. Independent proof review, narrow authority
+reconciliation and the final normal guarded image must precede any fit claim.
+The earlier live rejection remains valid against the historical 196,608 ceiling.
+Prepared-lending implementation is not selected; source repair allowances remain
+closed. Historical next-step text below predates this authorized resource direction.
 
 The [actual current firmware result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-resource-result.md)
 now closes that measurement prerequisite: full nRF 227/227 and normal pristine

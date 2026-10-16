@@ -1,5 +1,11 @@
 # P08 current firmware live RAM rejection — 2026-10-16
 
+Current follow-up: the maintainer subsequently authorized total RAM up to physical
+262,144. The [complete-bound proposal](p08-current-firmware-complete-bound-result.md)
+continues analysis under that direction; this immutable lower-bound evidence
+still rejects its historical 196,608 ceiling. Decision text below predates the
+new direction.
+
 **A larger main stack alone cannot fit this realization within RAM 196,608.**
 The same actual final ELF requires a source-feasible live fixed-stack subset of
 **56,888** bytes. Its other linked RAM is **142,972**, giving a whole-RAM lower
