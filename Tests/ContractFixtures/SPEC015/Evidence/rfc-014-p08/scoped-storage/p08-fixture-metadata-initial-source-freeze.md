@@ -1,6 +1,9 @@
 # P08 idle-donor metadata — initial source freeze
 
-**Source candidate only; compiler/runtime/layout/fit pending independent review.**
+**Independent initial SOURCE BLOCKED at `c277403a`; compiler/runtime/layout/fit pending.**
+[Focused source review](p08-fixture-metadata-initial-independent-source-review.md)
+identifies one borrowed inventory/assertion capture site for grouped correction.
+No compiler execution before corrected source reassessment.
 Activity `06f44029`, readiness `fa39ef08`; initial pass complete, corrections0/2.
 Historical budgets and diagnostic1/1 remain closed. The
 [manifest/diff](fixture-metadata-initial-source/manifest.json) pins all11 maintained
