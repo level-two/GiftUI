@@ -1,0 +1,35 @@
+{
+  "elf_sha256": "e649c5d26a676140b473e8fa1de5b075a479d8282a7f6d69e0034fb215884c38",
+  "contexts": 1788,
+  "physical_functions": 1469,
+  "unresolved_indirect": 0,
+  "unresolved_direct": 0,
+  "reachable_local_sp_issues": 0,
+  "main_body_upper": 95349,
+  "main_persistent_caller": 8,
+  "exception_fpu_alignment": 112,
+  "main_upper": 95469,
+  "startup_pre_switch_upper": 312,
+  "maskable_handler_upper": 444,
+  "all_handler_upper": 524,
+  "isr_upper": 6672,
+  "proposed_main": 106496,
+  "proposed_isr": 8192,
+  "projected_ram_charge": 255612,
+  "projected_ram_extent": 255616,
+  "physical_ram": 262144,
+  "status": "independent_pass_after_writeback_repair_final_image_requalification_required",
+  "local_change": {
+    "function": "__aeabi_uldivmod at 0x130",
+    "site": "0x150",
+    "contexts": 2,
+    "old_retained_bytes": 0,
+    "corrected_retained_bytes": 16,
+    "aggregate_bound_change": 0
+  },
+  "writeback_inventory": {
+    "reachable_sites": 1752,
+    "non_sp_forms": 418,
+    "base_in_ldm_loaded_register_list": 0
+  }
+}

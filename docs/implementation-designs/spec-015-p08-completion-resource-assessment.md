@@ -17,10 +17,13 @@ superseded_by: null
 # P08 completion and resource assessment
 
 The maintainer now authorizes larger main **and total RAM within physical
-262,144 bytes**. The [complete frozen-firmware resource proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-result.md)
+262,144 bytes**. The [independent complete-bound review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-independent-review.md)
+passes after a separate decoder correction; authority reconciliation and fresh
+normal guarded-image/address-proof qualification remain required.
+The [complete frozen-firmware resource proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-result.md)
 submits conservative main/ISR bounds 95,469 / 6,672 and counter-only payloads
-106,496 / 8,192, projecting RAM 255,612. Independent proof review, narrow authority
-reconciliation and the final normal guarded image must precede any fit claim.
+106,496 / 8,192, projecting RAM 255,612. Narrow authority reconciliation and
+the final normal guarded image must precede acceptance of the rebuilt image.
 The earlier live rejection remains valid against the historical 196,608 ceiling.
 Prepared-lending implementation is not selected; source repair allowances remain
 closed. Historical next-step text below predates this authorized resource direction.

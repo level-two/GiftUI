@@ -19,12 +19,15 @@ superseded_by: null
 
 # SPEC-015 Conformance Report
 
-Current total-RAM boundary — **unchanged realization fails even with larger main stack**.
-The [independent live-path review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-live-ram-independent-review.md)
-confirms 56,888 required fixed stack + 142,972 other RAM = 199,860 > unchanged
-196,608 by 3,252 before omitted costs. A sufficient larger main stack is permitted;
-total RAM requires a distinct disposition. The callback-site erratum changes no
-sum. No complete peak, new limit, source allowance or P08 acceptance is claimed.
+Current counter-only resource direction — **independent conservative-bound PASS;
+final normal image pending**. The [independent complete-bound review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-independent-review.md)
+repairs a decoder writeback omission and confirms frozen main/ISR bounds
+95,469 / 6,672. Approved physical-SRAM direction permits the proposed
+106,496 / 8,192 reservations, projecting RAM 255,612 within 262,144. Reconcile
+counter-only authority and requalify the newly hash-frozen guarded image, including
+fresh address-specific proof; no source correction allowance resets. The former
+199,860 > 196,608 live-path rejection remains historical evidence against the old
+ceiling. P08/R07/T8.1 and full conformance remain open.
 
 Current actual firmware evidence — **stack fit fails**. The
 [linked resource result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-resource-result.md)

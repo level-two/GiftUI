@@ -27,12 +27,13 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current P08 boundary — **counter-only larger stacks/RAM authorized; proof review pending**.
+Current P08 boundary — **counter-only larger stacks/RAM authorized; frozen proof review PASS**.
 The [complete frozen-firmware proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-result.md)
 submits main/ISR bounds 95,469 / 6,672; proposed payloads 106,496 / 8,192 project
-RAM 255,612 within physical 262,144. Independently review its source-constrained
-recursion/callback/allocator/IRQ premises, reconcile the authorized counter-only
-resource exception, then verify the normal guarded final image. Existing analyzer
+RAM 255,612 within physical 262,144. The [independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-independent-review.md)
+confirms those bounds after a separate decoder writeback correction. Reconcile
+the authorized counter-only resource exception, then verify the normal guarded
+final image with a fresh hash freeze and audited address-specific proof. Existing analyzer
 limits stay unchanged. The [old live rejection](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-live-ram-result.md)
 still rejects the former 196,608 ceiling; it is not a complete peak. The
 [completion assessment](../implementation-designs/spec-015-p08-completion-resource-assessment.md)

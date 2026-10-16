@@ -1,0 +1,56 @@
+--- original/local_sp.py
++++ review/local_sp.py
+@@ -141,6 +141,7 @@
+    dst=reg(args[0]);x=get(args[1] if len(args)==3 else args[0]);mask=imm(args[-1]);R[dst]=val(x[0],x[1]-mask,x[2]) if x and mask is not None and mask&(mask+1)==0 else None
+   elif op in ('ldr','ldrb','ldrh'):
+    dst=reg(args[0]);loc=address(args[1]);v=None
++   base=reg(re.search(r'\[([^,\]]+)',args[1])[1]);oldbase=get(base)
+    if loc:
+     if loc[0]=='s':
+      candidate=M.get(loc);v=candidate if candidate and candidate[0]=='s' and op=='ldr' else None
+@@ -148,8 +149,8 @@
+      # literal LDR aligns its PC base; other register loads do not.
+      q=re.search(r'\[pc,\s*#(\d+)\]',args[1]);z=((a+4)&~3)+int(q[1]) if q else loc[1];readonly=any(sec['address']<=z<sec['address']+sec['size'] and not sec['flags']&1 for sec in elf.sections if sec['flags']&2);word=readword(z) if q or readonly else None;v=val('c',word) if word is not None else None
+    R[dst]=v
+-   if len(args)>2:
+-    base=reg(re.search(r'\[([^,\]]+)',args[1])[1]);R[base]=plus(get(base),get(args[2]))
++   if len(args)>2:R[base]=plus(oldbase,get(args[2]))
++   elif '!' in args[1]:R[base]=loc
+    if dst=='r15':
+     if '[sp' not in args[1]:calls[a]=dict(sp=R.get('r13'),target=v,indirect=True,tail=True,args=R.copy(),memory=[(k,v) for k,v in M.items() if v is not None])
+     exits.append((R,M));continue
+@@ -160,20 +161,28 @@
+     else:
+      for kk in list(M):
+       if kk[0]=='s' and kk[1]<loc[2]+4 and loc[1]<kk[2]+4:M[kk]=None
+-   if '!' in args[1]:
+-    base=reg(re.search(r'\[([^,\]]+)',args[1])[1]);R[base]=loc
+-  elif op in ('ldmia','ldm') and not args[0].endswith('!'):
++   if '!' in args[1] or len(args)>2:
++    base=reg(re.search(r'\[([^,\]]+)',args[1])[1]);R[base]=loc if '!' in args[1] else plus(get(base),get(args[2]))
++  elif op in ('ldmia','ldm'):
++   base=reg(args[0].rstrip('!'));oldbase=get(base)
+    for rr in re.search(r'\{([^}]+)\}',text)[1].split(','):R[reg(rr)]=None
+-  elif op in ('stmia','stm') and args[0] in ('sp','sp!'):
+-   if args[0].endswith('!'):R['r13']=plus(R.get('r13'),val('c',4*countregs(text)))
++   if args[0].endswith('!'):R[base]=plus(oldbase,val('c',4*countregs(text)))
++  elif op in ('stmia','stm'):
++   base=reg(args[0].rstrip('!'));loc=get(base);width=4*countregs(text)
++   if loc and loc[0]=='s':
++    for kk in list(M):
++     if kk[0]=='s' and kk[1]<loc[2]+width and loc[1]<kk[2]+4:M[kk]=None
++   if args[0].endswith('!'):R[base]=plus(loc,val('c',width))
+   elif op in ('strd','ldrd'):
+-   loc=address(args[2])
++   loc=address(args[2]);base=reg(re.search(r'\[([^,\]]+)',args[2])[1]);oldbase=get(base)
+    if loc and loc[0]=='s':
+     if op=='strd':M[loc]=get(args[0]);M[plus(loc,val('c',4))]=get(args[1])
+     else:
+      for rr,kk in [(args[0],loc),(args[1],plus(loc,val('c',4)))]:
+       vv=M.get(kk);R[reg(rr)]=vv if vv and vv[0]=='s' else None
+    elif op=='ldrd':R[reg(args[0])]=R[reg(args[1])]=None
++   if '!' in args[2]:R[base]=loc
++   elif len(args)>3:R[base]=plus(oldbase,get(args[3]))
+   elif op not in ('cmp','cmn','tst','teq','it','itt','ite','ittt','ittee','nop','udf','dmb','dsb','isb','bkpt','svc','msr','cpsid','cpsie') and args:
+    if re.match(r'^(r\d+|sp|sl|fp|ip|lr)$',args[0]):R[reg(args[0])]=None
+   v=R.get('r13')

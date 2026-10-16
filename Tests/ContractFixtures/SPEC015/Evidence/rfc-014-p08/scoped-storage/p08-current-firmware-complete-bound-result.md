@@ -1,8 +1,9 @@
 # P08 frozen firmware conservative resource proposal — 2026-10-16
 
 **Propose counter-only main 106,496 bytes (104 KiB), ISR 8,192 (8 KiB),
-and total RAM ceiling 262,144 (physical 256 KiB), subject to independent proof
-review, authority reconciliation and final normal guarded image verification.**
+and total RAM ceiling 262,144 (physical 256 KiB). Independent proof review passes;
+authority reconciliation and final normal guarded image verification remain
+required.**
 The maintainer explicitly authorizes larger main and total RAM within physical
 SRAM. This analysis changes no source, limit, build, corpus or repair allowance.
 P08 remains open. The normal analyzer retains its existing configuration/budget.
@@ -36,8 +37,10 @@ an instruction to stop analysis at 192 KiB.
 These are conservative source-constrained upper bounds, not measured peaks or
 minimum reservations. The graph deliberately admits mutually exclusive branches
 and finite callback supersets. Its remaining source premises are explicit in
-`PROOF.md`, not hidden as zero-cost unresolved edges. Independent review must
-validate them before accepting this bound.
+`PROOF.md`, not hidden as zero-cost unresolved edges. The [independent review](p08-current-firmware-complete-bound-independent-review.md)
+validates them after the separate writeback-decoder correction; the original
+packet stays immutable. The corrected replay and final-image rebasing requirements
+are linked there.
 
 The read-only reproducer checks the exact ELF SHA, regenerates disassembly and
 all function/CFG/context/SCC calculations, and asserts no unresolved immediate or
@@ -83,7 +86,7 @@ Final linking must still verify actual placement/alignment, ABI, flash, disabled
 arenas, rooted allocation and source/receipt freshness. No fit is inferred across
 a recompilation without that verification.
 
-Next: independently review this proof; record the narrowly authorized counter-only
+Next: record the narrowly authorized counter-only
 resource exception in authority; apply its extra Kconfig and RAM check; run the
 normal complete-collection/guarded-image route and requalify the linked result.
 Then reconcile the full four-route/SO matrix and obtain independent P08 exit

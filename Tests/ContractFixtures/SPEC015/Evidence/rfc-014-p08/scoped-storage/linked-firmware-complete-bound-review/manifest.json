@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "reviewed_commit": "686800bc",
+  "original_packet": {
+    "path": "../linked-firmware-complete-bound/complete-bound-proof.tar.xz",
+    "sha256": "44aff7957b6be3fdef318520c2531b0c63342a113472ffa0ff9815df18363e94",
+    "bytes": 2390672
+  },
+  "files": {
+    "README.md": "400e19c614ae8670e6139ecbbf4d071f98775aaa8d21666f88ae1fe86c696b0e",
+    "bounded.json": "4c6142ef48c332e852a4728caf3d0a0f0eb2b95a183049be234641c4e257aa52",
+    "local-sp-writeback.patch": "46b46e886e5e36a95605413ad2424bf13a68fc51f05e35998b80cd0e59cddaa1",
+    "local_sp.py": "d328af427c74038a211047d5d0fc63014f1093cc08e475598e87533b22d454c7",
+    "phase-graph.json.xz": "3d484cafc1981ca1b82ef27d535188ad0f3d0b5595e9b1c161aa5e93cc0bc22c",
+    "reproduce-review.py": "07555dd3045b511167118491f096e4983c0d7b87836459085af999c15429184c",
+    "reproduce.log": "13170b206a442d08814fd63bde4c741e4dbbe732c7502c9eaeb6fca187ebbf56",
+    "review-summary.json": "40a754cf29aa6ba00eb4e744c00d110f2f91e764c6b1f9a951fa806ee2d0458b"
+  },
+  "result": {
+    "elf_sha256": "e649c5d26a676140b473e8fa1de5b075a479d8282a7f6d69e0034fb215884c38",
+    "contexts": 1788,
+    "physical_functions": 1469,
+    "unresolved_indirect": 0,
+    "unresolved_direct": 0,
+    "reachable_local_sp_issues": 0,
+    "main_body_upper": 95349,
+    "main_persistent_caller": 8,
+    "exception_fpu_alignment": 112,
+    "main_upper": 95469,
+    "startup_pre_switch_upper": 312,
+    "maskable_handler_upper": 444,
+    "all_handler_upper": 524,
+    "isr_upper": 6672,
+    "proposed_main": 106496,
+    "proposed_isr": 8192,
+    "projected_ram_charge": 255612,
+    "projected_ram_extent": 255616,
+    "physical_ram": 262144,
+    "status": "independent_pass_after_writeback_repair_final_image_requalification_required",
+    "local_change": {
+      "function": "__aeabi_uldivmod at 0x130",
+      "site": "0x150",
+      "contexts": 2,
+      "old_retained_bytes": 0,
+      "corrected_retained_bytes": 16,
+      "aggregate_bound_change": 0
+    },
+    "writeback_inventory": {
+      "reachable_sites": 1752,
+      "non_sp_forms": 418,
+      "base_in_ldm_loaded_register_list": 0
+    }
+  }
+}
