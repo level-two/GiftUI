@@ -16,11 +16,12 @@ superseded_by: null
 
 # P08 scoped fixture metadata backing
 
-**Independent design review: BLOCKED at `5b382914`.**
+**Grouped B01/B02 design correction ready for focused reassessment; no diagnostic/source execution.**
 [Focused authority/realization review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-independent-design-review.md)
-finds no required contract amendment, but identifies surplus donor overlap and a
-missing concrete prebinding custody/cleanup seam. Resolve both before the proposed
-diagnostic or source work; the proposal below remains unimplemented.
+historically blocked `5b382914` on surplus overlap and missing prebinding custody.
+The finite ranges and caller-stack custody below replace those incomplete rules.
+No contract amendment has been identified; reassessment precedes the proposed
+diagnostic. The proposal remains unimplemented and all earlier budgets stay closed.
 
 This is one replaceable physical proposal, not Specification authority or source
 approval. [New authorization/activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structural-memory-reduction-activity.md)
@@ -57,10 +58,126 @@ No four-slot count reduction or omitted case is proposed.
 ## Selected organization
 
 For Embedded only, a private fixed-Int-result selection operation receives the
-original whole four-slot backing and active index. It selects a distinct idle
-donor `(active + 1) % 4`, validates the entire 4×34,720 span, checked slice bounds,
-disjointness, alignment and idle phases before binding anything. Existing public/
-package routes still receive the same caller backing. No new global or heap.
+original whole four-slot backing and a finite case plan. The range map below
+selects a donor disjoint from the **complete supplied active reservation**, including
+surplus. Caller-stack custody validates the entire 4×34,720 span, checked slice
+bounds, disjointness, alignment and idle phases before binding anything. The old
+adjacent-donor formula is rejected. No new global or heap.
+
+### B01 — complete finite reservation map
+
+All intervals are half-open offsets within the same 138,880-byte caller region:
+S0=[0,34720), S1=[34720,69440), S2=[69440,104160), S3=[104160,138880).
+No donor is selected from an active reservation's unused tail or by its used-byte
+cursor. Every row also checks that donor/active masks are idle in the shared custody.
+
+| Existing Embedded cases | Complete active reservation | Donor | Preserved details |
+| --- | --- | --- | --- |
+| Graph/constructor rejection controls | S0 | S3 | All existing graph modes and first-error/read observations. |
+| Host scenario 0,1,2 | S0,S1,S2 respectively | S3 | All original normal/failure/retry cases. |
+| Host scenarios 3…8 | S3 | S2 | All original six quiescence modes. |
+| Two-host same-address reuse | S0 throughout both hosts | S3 throughout | Same original inventory/control and distinct model/semantic namespaces; no pair release between hosts. |
+| Early 1…5; candidate failure raw 0…10 | S0, each invocation | S3 | Every existing case/label retained. |
+| Exchange, surplus=0 | S0 | S3 | Original equality/below/above retained-capacity observations unchanged. |
+| Exchange, surplus=64 | **S0+S1=[0,69440)** | **S3** | Same two-slot supplied view; r1+64 yields cursor34777/rounded34784; reserve both slots despite the smaller used extent. |
+| Invalid r0 extent | S0 | S3 | Same stride-minus-one descriptor, expected invalidReservation before acquisitions. |
+| Fault before/after each14 IDs and every b0/b1/b2/b3 prefix | S0 | S3 | All existing 1024/1056/20/112 prefix ranges and initialized-prefix traces retained. |
+
+The surplus row leaves S2 idle. No active span reaches S3 except the ordinary
+scenario-3…8 row, whose donor is S2. Cursor34777/rounded34784 is existing-source
+surplus arithmetic, not a new scratch measurement or an extent reduction. Guards
+validate actual checked derivation against the row's full supplied extent before
+binding; a new/unlisted case has no default donor and fails closed. Tests enumerate
+every row and boundary, including rejection of S1 as donor for the surplus row.
+
+### B02 — caller-stack custody, before any raw binding
+
+Custody lives as one initialized local in the private Embedded corpus dispatcher,
+not in donor/active bytes. It is neither a geometry/bank owner nor a session token.
+Minimal source-equivalent declarations (design signatures, not maintained code):
+
+```swift
+fileprivate enum P08CallerPhase: UInt8 {
+    case idleDeinitialized, activeReserved, donorReserved, running, cleaning, poisoned
+}
+fileprivate enum P08OwnerProgress { case absent, reservedEmpty, initializedIdle, released }
+fileprivate struct P08CallerCustody: ~Copyable {
+    private let bytes: UnsafeMutableRawBufferPointer
+    private var phases: InlineArray<4, P08CallerPhase> = .init(repeating: .idleDeinitialized)
+    private var busy = false
+    private var metadataPrefix: UInt8 = 0
+    private var ownerProgress: P08OwnerProgress = .absent
+    init(exclusiveCallerBytes: UnsafeMutableRawBufferPointer) // bounds/alignment only; no binding/read of pointees
+    mutating func run(_ plan: P08EmbeddedCasePlan, inputs: P08OwnedCaseInputs) -> Int
+    // No public init, raw-slice getter, arbitrary callback, scoped Result or returned descriptor.
+}
+```
+
+`P08EmbeddedCasePlan` is a file-private finite enum for exactly the table's graph,
+hostScenario, twoHosts, early, candidateFailure, exchange(surplus0/64), invalidExtent
+and fault(id/completed/afterInstall) cases. Owned inputs are the existing identities,
+writer, limits/scenario facts; no scope-bearing value enters custody. Its stack
+phase/prefix/cleanup-progress bytes are explicitly charged in the final ledger.
+Progress is not competing bank authority: cleanup checks the real owner's lifecycle
+and acquisition count before applying its allowed disposition.
+
+**Concrete route topology:** Embedded `p08CounterRoute` calls one package bridge
+`p08RunEmbeddedCorpus(write:backing:)` implemented beside private custody in
+CounterScopedStorage. That bridge constructs custody first and calls private
+`runGraph(custody: &custody)`, `runScopedCases(custody: &custody)` and
+`runHostCases(custody: &custody)` sequentially. Each invokes `custody.run(plan)`.
+Embedded direct package probe entries use a fixed one-operation bridge through
+this same custody constructor; they cannot accept or return an active custody.
+Native package routes retain their current realization.
+
+The Embedded raw-slice entry to `withP08SelectedStatic` at 1895 is replaced by this
+finite operation route. `counterSelectedProfileBacking` and `p08SurplusBacking`
+cease to be independently callable Embedded slice suppliers. Direct helpers at
+2502–2530 become operation bodies receiving already-prepared typed objects and
+owned case facts, **not** raw backing. Their original loops at 2594–2613 select
+the corresponding plans, including surplus and every fault. No P08EmbeddedOuter
+binding constructor is called except the common cold prepare path under custody.
+Reconstruction at 1833 stays within the twoHosts operation's same reserved pair;
+it does not enter selection again or release S0/S3 between hosts.
+
+`run` holds the actual exclusive inout custody borrow for its entire operation.
+It first requires busy=false and all selected phase entries idle, computes the
+checked table ranges, sets busy=true and reserves **all** active-mask entries plus
+the donor before any bind. It then calls a concrete cold/run/cleanup helper with
+private bytes/owned range facts and separate progress fields; that helper never
+captures the whole custody. The operation body gets only the earlier listed
+disjoint typed objects. It has no custody/raw-span parameter or selection callback
+to invoke. No factory accepts an arbitrary body at this entry seam.
+
+This is a closed fixture call-topology proof: the actual installed C pixel writer
+is `spi_tft_write_rgb565`, takes only pixel/rectangle arguments, and does not call
+the counter root or receive its function-local `counter_backing`. No Swift callback
+is passed custody or the whole caller span. Same-span nested fixture entry from
+those callbacks is thus absent; accidental internal reborrow of custody conflicts
+with its still-live inout run borrow. The trusted C entry retains its preexisting
+exclusive-caller-buffer requirement; no claim is made to make arbitrary forged C
+aliases safe. No global registry, public lease or donor-resident sentinel is added.
+
+After logical cleanup and all scoped/typed borrows end, `run` verifies real owner
+disposition, reverse metadata destruction, ended descriptors and full deinitialized
+active/donor state before marking every reserved phase idle and clearing busy.
+Failure of cleanup poisons the custody and forbids reselection/rebinding. Returning
+the corpus requires busy=false, prefix=0 and all four phases idle. A separately
+entered probe may construct fresh custody only after its previous call returned
+with this invariant and under the same exclusive-input contract.
+
+**Reserved metadata is not initialized banks.** Before owner construction,
+ownerProgress=absent. After the owner object is initialized but before successful
+`initializeP08Backing`, it is reservedEmpty. If another metadata constructor fails,
+or bank initialization fails and the existing owner unwinds its bank prefix, require
+real acquired=0/lifecycle=reserved and deinitialize that owner object directly;
+**do not call finishReservation**, whose existing contract permits only idle/released.
+Successful initialization records initializedIdle. Only after consuming session
+cleanup returns to real idle may finishReservation/release destroy the original
+bank inventory; released is verified before metadata owner deinit. An already
+released body is accepted once without another destruction. Active or incomplete
+reset is never treated as a releasable prefix. Metadata reverse-prefix cleanup and
+the original fourteen-bank/geometry destruction transcript remain distinct.
 
 The donor holds seven **separate, fully initialized typed objects**, not a giant
 new aggregate or uninitialized storage for scoped values:
@@ -234,7 +351,9 @@ unchanged total bytes; do not silently implement that interpretation.
    scratch initialization/borrow/cleanup, baseline and complete case plumbing),
    CounterPipelineOwner (recording/fact capture and matching operations), both
    CounterNativeRaster/CounterTiledRaster (private-field matching), CounterHostProbe
-   (foreign stored-field lenders), and directly required driver/tests/qualification.
+   (foreign stored-field lenders), CounterRouteEntry/CounterScopedStorageProbe
+   (one Embedded custody dispatcher), StaticCounterEmbeddedBacking (remove the
+   bypassing Embedded raw-slice supplier), and required driver/tests/qualification.
    Active layout/C constants, core HostState/Interaction/protocols stay unchanged.
 3. Check actual predecessor compiler argvs: CounterHostProbe may be a compiled
    component dependency, requiring rebuilding that component; never metadata-

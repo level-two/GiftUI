@@ -1,0 +1,508 @@
+{
+  "kind": "design-range-arithmetic-not-runtime-evidence",
+  "slot_bytes": 34720,
+  "slot_count": 4,
+  "total_retained_bytes": 138880,
+  "enumerated_existing_invocations": 2266,
+  "every_range_disjoint": true,
+  "donor_S1_for_surplus_rejected": true,
+  "groups": [
+    {
+      "case": "graph",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "host-scenario-0",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "host-scenario-1",
+      "active_start": 34720,
+      "active_end": 69440,
+      "active_slot_mask": 2,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "host-scenario-2",
+      "active_start": 69440,
+      "active_end": 104160,
+      "active_slot_mask": 4,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "host-scenario-3",
+      "active_start": 104160,
+      "active_end": 138880,
+      "active_slot_mask": 8,
+      "donor_slot": 2,
+      "donor_start": 69440,
+      "donor_end": 104160,
+      "detail": null
+    },
+    {
+      "case": "host-scenario-4",
+      "active_start": 104160,
+      "active_end": 138880,
+      "active_slot_mask": 8,
+      "donor_slot": 2,
+      "donor_start": 69440,
+      "donor_end": 104160,
+      "detail": null
+    },
+    {
+      "case": "host-scenario-5",
+      "active_start": 104160,
+      "active_end": 138880,
+      "active_slot_mask": 8,
+      "donor_slot": 2,
+      "donor_start": 69440,
+      "donor_end": 104160,
+      "detail": null
+    },
+    {
+      "case": "host-scenario-6",
+      "active_start": 104160,
+      "active_end": 138880,
+      "active_slot_mask": 8,
+      "donor_slot": 2,
+      "donor_start": 69440,
+      "donor_end": 104160,
+      "detail": null
+    },
+    {
+      "case": "host-scenario-7",
+      "active_start": 104160,
+      "active_end": 138880,
+      "active_slot_mask": 8,
+      "donor_slot": 2,
+      "donor_start": 69440,
+      "donor_end": 104160,
+      "detail": null
+    },
+    {
+      "case": "host-scenario-8",
+      "active_start": 104160,
+      "active_end": 138880,
+      "active_slot_mask": 8,
+      "donor_slot": 2,
+      "donor_start": 69440,
+      "donor_end": 104160,
+      "detail": null
+    },
+    {
+      "case": "two-host-reconstruction-pair",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "early-1",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "early-2",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "early-3",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "early-4",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "early-5",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "candidate-failure-0",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "candidate-failure-1",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "candidate-failure-2",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "candidate-failure-3",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "candidate-failure-4",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "candidate-failure-5",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "candidate-failure-6",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "candidate-failure-7",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "candidate-failure-8",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "candidate-failure-9",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "candidate-failure-10",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "exchange-surplus-0",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "exchange-surplus-64",
+      "active_start": 0,
+      "active_end": 69440,
+      "active_slot_mask": 3,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": {
+        "actual_used_cursor": 34777,
+        "actual_required_rounded": 34784,
+        "supplied_reservation": 69440,
+        "r1_added_retained": 64
+      }
+    },
+    {
+      "case": "invalid-r0-extent",
+      "active_start": 0,
+      "active_end": 34720,
+      "active_slot_mask": 1,
+      "donor_slot": 3,
+      "donor_start": 104160,
+      "donor_end": 138880,
+      "detail": null
+    },
+    {
+      "case": "fault-b0",
+      "variants": [
+        "before",
+        "after"
+      ],
+      "count": 2,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-b1",
+      "variants": [
+        "before",
+        "after"
+      ],
+      "count": 2,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-b2",
+      "variants": [
+        "before",
+        "after"
+      ],
+      "count": 2,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-b3",
+      "variants": [
+        "before",
+        "after"
+      ],
+      "count": 2,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-g0",
+      "variants": [
+        "before",
+        "after"
+      ],
+      "count": 2,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-g1",
+      "variants": [
+        "before",
+        "after"
+      ],
+      "count": 2,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-g2",
+      "variants": [
+        "before",
+        "after"
+      ],
+      "count": 2,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-g3",
+      "variants": [
+        "before",
+        "after"
+      ],
+      "count": 2,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-g4",
+      "variants": [
+        "before",
+        "after"
+      ],
+      "count": 2,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-c0",
+      "variants": [
+        "before",
+        "after"
+      ],
+      "count": 2,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-h0",
+      "variants": [
+        "before",
+        "after"
+      ],
+      "count": 2,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-r0",
+      "variants": [
+        "before",
+        "after"
+      ],
+      "count": 2,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-r1",
+      "variants": [
+        "before",
+        "after"
+      ],
+      "count": 2,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-h1",
+      "variants": [
+        "before",
+        "after"
+      ],
+      "count": 2,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-b0-prefix",
+      "prefix_lower_inclusive": 1,
+      "prefix_upper_exclusive": 1024,
+      "count": 1023,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-b1-prefix",
+      "prefix_lower_inclusive": 1,
+      "prefix_upper_exclusive": 1056,
+      "count": 1055,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-b2-prefix",
+      "prefix_lower_inclusive": 1,
+      "prefix_upper_exclusive": 20,
+      "count": 19,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    },
+    {
+      "case": "fault-b3-prefix",
+      "prefix_lower_inclusive": 1,
+      "prefix_upper_exclusive": 112,
+      "count": 111,
+      "active_start": 0,
+      "active_end": 34720,
+      "donor_slot": 3
+    }
+  ],
+  "source_loops": "CounterScopedStorage.swift:2160-2200,2353,2594-2613;currentpreimplementation",
+  "compiler_executed": false
+}

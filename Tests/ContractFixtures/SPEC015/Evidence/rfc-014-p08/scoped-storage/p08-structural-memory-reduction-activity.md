@@ -46,3 +46,13 @@ case, and prebinding custody/reentry/prefix cleanup needs a concrete source seam
 Resolve these grouped local design gaps before the proposed diagnostic; no source,
 compiler invocation, new implementation allowance or contract amendment is created.
 All four slots/resource limits and historical closed budgets remain unchanged.
+
+Grouped **design** correction B01/B02 is ready for focused reassessment. The
+proposal now reserves the surplus case's complete S0+S1 span and uses S3 as donor;
+ordinary S3 uses S2, all other existing active single slots use S3. A finite
+caller-stack custody initialized before binding owns four phases/busy/prefix/
+cleanup progress and threads through every Embedded selected/raw/fault entry.
+Reserved-with-zero-acquisitions cleanup never calls finishReservation. The
+[range matrix](fixture-metadata-design-range-map.json) checks all 2,266 existing
+selection invocations without dropping a workload. No maintained source,
+diagnostic, test suite or implementation allowance has been executed/consumed.
