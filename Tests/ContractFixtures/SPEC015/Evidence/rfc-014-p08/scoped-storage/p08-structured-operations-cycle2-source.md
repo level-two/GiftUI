@@ -1,7 +1,9 @@
 # P08 structured operations — final grouped correction2 source freeze
 
 Implements the three-cone approach `955daa9b`, independently approved `b4dc58ba`.
-**Correction2/2 consumed; independent SOURCE review pending.** Historical allowances
+**Correction2/2 consumed; independent SOURCE PASS at `597dbd7f`.** The
+[bounded source review](p08-structured-operations-cycle2-independent-source-review.md)
+permits the three registered fresh focused collections. Historical allowances
 remain closed; no third automatic source variant. Compiler/runtime/image0 for this
 candidate. Prior passing focused collections and rejected stack paths remain
 immutable prior-source evidence, never current compilation/fit proof.

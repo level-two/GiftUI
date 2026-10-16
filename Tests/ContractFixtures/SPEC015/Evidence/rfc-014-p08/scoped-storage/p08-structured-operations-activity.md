@@ -1,7 +1,8 @@
 # P08 structured construction and observation operations activity
 
-Current source boundary: **final grouped correction2/2 frozen; independent SOURCE
-review pending**. The [new freeze](p08-structured-operations-cycle2-source.md)
+Current source boundary: **final grouped correction2/2 independent SOURCE PASS at
+`597dbd7f`**. The [bounded source review](p08-structured-operations-cycle2-independent-source-review.md)
+permits the three registered fresh focused collections. The [new freeze](p08-structured-operations-cycle2-source.md)
 implements all three approach seams approved `b4dc58ba`, preserving the complete
 original typed loan union, full comparisons and post-host cleanup order. Current
 candidate compiler/runtime/image0; no third automatic variant. Prior focused PASS

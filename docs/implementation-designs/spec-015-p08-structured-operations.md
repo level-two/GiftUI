@@ -16,7 +16,9 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
-**Final grouped correction2/2 source frozen, independent SOURCE review pending.**
+**Final grouped correction2/2 independent SOURCE PASS at `597dbd7f`.**
+The [bounded source review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-cycle2-independent-source-review.md)
+permits the three registered fresh focused collections; compilation and fit remain unproved.
 The [new source receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-cycle2-source.md)
 implements all three finite extractions approved `b4dc58ba`: session construction
 inside unchanged original field loans, post-two-host cold cleanup and sequential
