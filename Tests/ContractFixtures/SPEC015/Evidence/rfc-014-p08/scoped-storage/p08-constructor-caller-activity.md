@@ -1,7 +1,7 @@
 # P08 constructor/caller realization activity
 
-Current boundary: **final correction2 source frozen; independent SOURCE review
-pending**, final APPROACH PASS `7f4dc782`. The
+Current boundary: **independent final [SOURCE PASS](p08-constructor-caller-cycle2-independent-source-review.md) at `51cfc960`; registered focused collections ready**,
+final APPROACH PASS `7f4dc782`. The
 [new source freeze](p08-constructor-caller-cycle2-source.md) pins the named full-union
 Optional destination, remaining cold inout plan seams and exact cold namespace
 check. Initial1/correction2/2 consumed; no third automatic variant. Current candidate

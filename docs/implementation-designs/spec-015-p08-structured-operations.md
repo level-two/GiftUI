@@ -16,12 +16,14 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
-**Current constructor/caller final correction2 source frozen; SOURCE review pending**,
+**Current constructor/caller final SOURCE PASS at `51cfc960`; registered focused collections ready**,
 APPROACH PASS `7f4dc782`. The
 [source freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle2-source.md)
 pins the exact three reviewed seams and fresh recipes. Initial1/correction2/2,
 no third automatic variant; current compiler/runtime/image0. Composite destination
 lifetime, failure cleanup and fit remain unproved; no contract/limit change.
+The [independent final source review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle2-independent-source-review.md)
+records bounded readiness and the remaining compiler/resource obligations.
 
 Historical correction1 result:
 

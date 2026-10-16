@@ -2,7 +2,7 @@
 
 Implements final APPROACH PASS `7f4dc782` from the
 [independent result/approach review](p08-constructor-caller-cycle1-independent-result-review.md).
-**Initial1/correction2/2 consumed; independent SOURCE review pending. No third
+**Initial1/correction2/2 consumed; independent [SOURCE PASS](p08-constructor-caller-cycle2-independent-source-review.md) at `51cfc960`. No third
 automatic variant.** All earlier closed allowances remain closed. Current candidate
 compiler/runtime/image0; composite lifetime acceptance, materialization and fit are
 unproved. Main27648/RAM196608/four34720 slots/138880 and all contracts stay unchanged.
