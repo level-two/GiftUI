@@ -1,5 +1,14 @@
 # P08 fixture metadata implementation activity
 
+Current boundary: **STOP; all three final focused collections PASS, resource FAIL;
+independent result review pending**. The [final result](p08-fixture-metadata-final-result.md)
+and immutable packets preserve current source/runtime/layout successes and the
+required66,104-byte stack lower bound. With required backing138,880 this exceeds
+RAM196,608 by8,376 before omitted costs. Full202/image follow-up stops. Correction2/2
+is consumed, no third automatic variant; all historical closed budgets remain closed.
+No source variant/compiler/runtime ran in this read-only analysis. P08 stays open.
+Prior source/activity boundaries below remain historical.
+
 Current boundary: **final grouped correction2/2 independent SOURCE PASS at
 `6449093d`**. The [independent review](p08-fixture-metadata-cycle2-independent-source-review.md)
 permits the three sequential fresh focused collections. The [source freeze](p08-fixture-metadata-cycle2-source-freeze.md)

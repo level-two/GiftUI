@@ -1,6 +1,16 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-Current measured-sizing boundary — **STOP; resource FAIL independently confirmed, 2026-10-16**.
+Current donor-metadata boundary — **STOP; focused behavior/layout PASS, resource FAIL, 2026-10-16**.
+The [final current result](scoped-storage/p08-fixture-metadata-final-result.md) preserves three passing fresh focused collections:
+nRF25/layout160 roots, Native42 per profile and3,472,410 assertions with zero failures.
+The required current stack subset66,104 + retained backing138,880 =204,984 exceeds
+RAM196,608 by8,376 before omitted lenders/IRQ/other costs. Independent result review
+is pending; no complete upper bound or current image is claimed. Correction2/2
+consumed; no third automatic variant or resource waiver. Stop current full202/image;
+P08/R07/T8.1/HC-RD-003 and all nine SO criteria remain open. Earlier boundaries below
+are historical.
+
+Historical measured-sizing boundary — **STOP; resource FAIL independently confirmed, 2026-10-16**.
 The [current result](scoped-storage/p08-measured-sizing-stack-preflight-result.md) records 25 current preparation/module/layout passes and 202 controls not run.
 The [independent resource review](scoped-storage/p08-measured-sizing-independent-resource-review.md) verifies a required 71,088-byte stack path plus 138,880-byte backing:
 209,968 exceeds governed 196,608 RAM by 13,360 before omitted costs. Stop full

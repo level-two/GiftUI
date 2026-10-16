@@ -22,8 +22,12 @@ features:
     # ADR-039 accepted; exact S11/S13/S15 amendments approved/applied 2026-10-13; nine SO criteria unmet.
     # Provenance: docs/iterations/iteration-003-review/rfc-015-contract-acceptance.md.
     # FW-038 captures validation cost and P08 test/application consolidation for RFC-013 / ITERATION-004 design; no current checks or contract change.
-    # Current measured-sizing STOP / independent resource FAIL: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-measured-sizing-independent-resource-review.md.
-    # Current 25 preparation/module/layout pass, 202 not run; stack >=71,088 + backing138,880 =209,968 > RAM196,608 by13,360 before omitted costs.
+    # Current donor-metadata STOP / resource FAIL (independent result review pending): Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-final-result.md.
+    # Three fresh focused collections PASS: nRF25/160layout roots; Native42 each, 3,472,410 assertions/0 failures; all reuse/exclusivity/projection pass, aggregate coverage incomplete.
+    # Required stack >=66,104 + backing138,880 =204,984 > RAM196,608 by8,376 before omitted costs; main27,648 unchanged; no current image/upper-bound claim.
+    # Correction2/2 consumed; no third automatic variant/resource waiver; stop full202/image. P08/R07/T8.1/HC-RD-003 and all nine SO criteria open. Prior comments below describe historical boundaries.
+    # Historical measured-sizing STOP / independent resource FAIL: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-measured-sizing-independent-resource-review.md.
+    # Historical measured-sizing25 preparation/module/layout pass, 202 not run; stack >=71,088 + backing138,880 =209,968 > RAM196,608 by13,360 before omitted costs.
     # Full controls/image stop for this realization; complete peak/current image unknown; tooling/sizing corrections0/2 unused, historical budgets closed; no automatic optimization or resource waiver; all nine SO criteria/P08 open.
     # Historical typed-stage STOP / final 2/2 fit FAIL: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-final-result.md.
     # 25 compiler/layout passes, 202 controls not run; required nested 66,864 > 27,648.
