@@ -5,7 +5,8 @@ compilation at `7e6a7ae4` exited 0 in about 24 seconds; unchanged strict constan
 decoding proved 31/31 roots. No source implementation, link, runtime or image ran.
 The [design](../../../../../../docs/implementation-designs/spec-015-p08-fixture-metadata-scratch.md)
 now includes the measured ledger and concrete source/validation boundary, ready
-for independent measurement/source-readiness review.
+for implementation after [independent measurement/readiness PASS](p08-fixture-metadata-independent-measurement-readiness-review.md)
+at `c35f541a`; no fit or contract change is inferred.
 
 | Existing object | Size / stride / alignment | Offset / full-stride end |
 | --- | --- | --- |

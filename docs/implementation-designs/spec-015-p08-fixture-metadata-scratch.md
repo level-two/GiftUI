@@ -29,7 +29,9 @@ the diagnostic. The proposal remains unimplemented and all earlier budgets stay 
 **The one authorized diagnostic now passed: 31/31 strict constant proofs.**
 [Measured result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-measurement-result.md)
 records the existing seven-object pack at 15,704 bytes/alignment8. Source-readiness
-review follows; no maintained implementation, stack fit or acceptance is claimed.
+[Independent measurement/source-readiness review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-independent-measurement-readiness-review.md)
+PASS confirms readiness for the bounded internal source package. No maintained
+implementation, stack fit or acceptance is claimed.
 
 This is one replaceable physical proposal, not Specification authority or source
 approval. [New authorization/activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structural-memory-reduction-activity.md)

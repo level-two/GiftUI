@@ -1,5 +1,14 @@
 # P08 structural memory reduction assessment
 
+Current boundary: **independent measurement/readiness PASS at `c35f541a`**.
+[Focused final readiness review](p08-fixture-metadata-independent-measurement-readiness-review.md)
+verifies 31 strict roots and the 15,704-byte pack of existing types. The concrete internal
+source package may proceed under continuing authorization after its new bounded
+initial pass plus maximum two grouped-correction activity is recorded; no contract amendment or
+new microapproval is required. Final type layouts/stack/fit remain unproved.
+
+Historical design/measurement preparation boundaries follow.
+
 Current boundary: **focused independent DESIGN PASS at `cb273c6f`; B01/B02 closed**.
 [Reassessment](p08-fixture-metadata-independent-design-reassessment.md) confirms the
 complete reservation map and caller custody. The one authorized diagnostic now
