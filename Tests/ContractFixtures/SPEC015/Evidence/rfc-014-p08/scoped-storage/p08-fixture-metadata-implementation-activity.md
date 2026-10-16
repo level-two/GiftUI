@@ -1,10 +1,10 @@
 # P08 fixture metadata implementation activity
 
-Current boundary: **correction 1/2 focused SOURCE BLOCKED at `db7cc7b6`**.
-[Focused review](p08-fixture-metadata-cycle1-independent-source-review.md) closes
-inventory B01 and requires two ordinary-if model-read guards to preserve exact
-short-circuit effects. Complete within the same grouped cycle before first execution;
-no second optimization cycle or user microapproval is required.
+Current boundary: **correction 1/2 focused SOURCE PASS at `31ecb1a5`**.
+[Two-site reassessment](p08-fixture-metadata-cycle1-independent-source-review.md#focused-two-site-addendum--31ecb1a5)
+closes B01/B02 with exact short-circuit model-read effects. The first registered
+fresh nRF active129+metadata31 screen is ready; compiler/runtime/fit remain unproved.
+The previous blocked findings below remain historical.
 
 The user's continuing “Please proceed” authorization now covers the independently
 reviewed idle-donor metadata realization (`fa39ef08`, measured design `c35f541a`).

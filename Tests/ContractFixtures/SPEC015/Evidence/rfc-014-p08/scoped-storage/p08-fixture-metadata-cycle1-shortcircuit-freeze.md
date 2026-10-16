@@ -1,5 +1,9 @@
 # P08 metadata cycle1 — preserve checked model-read short-circuit
 
+**Independent SOURCE PASS at `31ecb1a5`.**
+[Focused two-site addendum](p08-fixture-metadata-cycle1-independent-source-review.md#focused-two-site-addendum--31ecb1a5)
+closes B01/B02 and confirms readiness for the first registered fresh screen.
+
 **Same grouped correction1/2, source-only followup to `d82dde91`.** The inventory
 fix remains unchanged/closed. Only the prepare/delivery model conditions change:
 evaluate the owned fingerprint Bool once; an ordinary `if` calls the original
