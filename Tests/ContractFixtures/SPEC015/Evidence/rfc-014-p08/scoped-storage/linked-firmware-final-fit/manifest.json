@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "kind": "current-counter-ELF-complete-resource-proof",
+  "build_revision": "f5705c00874afea8c77572c990eb8c93acda7a31",
+  "elf_sha256": "0e54fe25ce637f5dd116b1094f64d7a46829a43351465abae265d4ebe61f02f5",
+  "archive": {
+    "path": "firmware-resource-proof.tar.xz",
+    "bytes": 3828340,
+    "sha256": "0259a55f8dac3c4f4d704a90a72a9dd0ccd12d9aebfa26e2e2d5a599cbae2b36",
+    "member_hashes": 689
+  },
+  "result": {
+    "status": "current-image-resource-pass-subject-to-independent-review",
+    "elf_sha256": "0e54fe25ce637f5dd116b1094f64d7a46829a43351465abae265d4ebe61f02f5",
+    "main_bound": 95469,
+    "isr_bound": 6672,
+    "main_payload": 106496,
+    "isr_payload": 8192,
+    "ram_charge": 255612,
+    "ram_extent": 255616,
+    "physical_ram": 262144,
+    "flash": 403400,
+    "contexts": 1788,
+    "physical_functions": 1469,
+    "writeback_sites": 1752,
+    "non_sp_writebacks": 403,
+    "unresolved_calls": 0,
+    "unknown_local_sp": 0,
+    "code_ranges": 2600,
+    "changed_allocated_words": 9,
+    "swift_sources": 227,
+    "owners": 24,
+    "compiler_commands": 341,
+    "rooted_successful_heap_bytes": 0
+  },
+  "old_current_packet": "../linked-firmware-current/manifest.json",
+  "corrected_decoder_review": "../linked-firmware-complete-bound-review/manifest.json",
+  "read_only_reproducer": "python3 reproduce.py after extracting on pinned repository host",
+  "limitations": "Hardware-free current-image resource PASS, pending independent review; P08 matrix/SO/exit remain open; inherited runtime/host receipt qualifications retained"
+}

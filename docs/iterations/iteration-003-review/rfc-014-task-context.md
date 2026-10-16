@@ -1,5 +1,10 @@
 # RFC-014 task context guide
 
+Current resource result — [new counter ELF PASS](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-final-fit-result.md):
+complete main95,469/106,496, ISR6,672/8,192, RAM255,612/262,144, fresh corrected
+address/SP/allocator proof. Independent current-image review and remaining P08
+matrix/SO/exit are next; prior stop paragraphs below are historical.
+
 Current resource authority — 2026-10-16: [ADR-040](../../adrs/adr-040-counter-physical-sram-budget.md)
 and the [explicit human acceptance](p08-counter-resource-acceptance.md) permit the
 finite counter up to physical RAM262144 with sufficient main/ISR reservations.

@@ -33,28 +33,19 @@ confirms ADR-040 and counter-only stack/RAM routing with existing guards preserv
 Execute the normal pristine counter route, then freshly freeze/rebase/review its
 actual linked proof. Build success alone does not close resource or P08 gates.
 
-Current P08 boundary — **counter resource exception accepted; scoped configuration implemented, unbuilt**.
-[ADR-040](../adrs/adr-040-counter-physical-sram-budget.md) records the
-[human acceptance](../iterations/iteration-003-review/p08-counter-resource-acceptance.md).
-The independent corrected bound review passes; use counter-only main106496 /
-ISR8192 and RAM262144. New final image/proof and P08 exit remain pending. The
-[configuration result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-counter-resource-configuration-result.md)
-records counter-only overlay/guards and 16 synthetic shell checks; independent
-configuration review precedes the normal build and full new-image proof.
-
-
-The [complete frozen-firmware proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-result.md)
-submits main/ISR bounds 95,469 / 6,672; proposed payloads 106,496 / 8,192 project
-RAM 255,612 within physical 262,144. The [independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-independent-review.md)
-confirms those bounds after a separate decoder writeback correction. Reconcile
-the authorized counter-only resource exception, then verify the normal guarded
-final image with a fresh hash freeze and audited address-specific proof. Existing analyzer
-limits stay unchanged. The [old live rejection](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-live-ram-result.md)
-still rejects the former 196,608 ceiling; it is not a complete peak. The
-[completion assessment](../implementation-designs/spec-015-p08-completion-resource-assessment.md)
-retains remaining matrix/exit gates. Prepared-lending implementation is not
-selected; correction 2/2 and all other source repair allowances remain closed.
-P08/R07/T8.1 and full SO remain open.
+Current P08 boundary — **rebuilt counter resource PASS; independent proof review next**.
+The [current final-image result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-final-fit-result.md) records new ELF
+`0e54fe25…`, complete main/ISR bounds95,469/6,672 within106,496/8,192,
+RAM255,612/262,144 and flash403,400. Fresh identity rebasing and the independently
+corrected decoder close all reachable call/SP edges; current-image proof review
+is next. [ADR-040](../adrs/adr-040-counter-physical-sram-budget.md) and
+[human acceptance](../iterations/iteration-003-review/p08-counter-resource-acceptance.md)
+remain counter-only; analyzer defaults and closed source allowances are unchanged.
+The [configuration result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-counter-resource-configuration-result.md)
+and [completion assessment](../implementation-designs/spec-015-p08-completion-resource-assessment.md)
+retain scope and next steps. P08/R07/T8.1/full SO remain open for remaining
+four-route evidence and independent exit review. Prepared lending stays unexecuted
+under FW-039; no source allowance is renewed.
 
 Historical combined structural design — **implementation had not started**.
 The [authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-activity.md)

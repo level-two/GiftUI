@@ -16,6 +16,12 @@ superseded_by: null
 
 # P08 completion and resource assessment
 
+The [rebuilt counter resource result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-final-fit-result.md) now reports actual
+new-ELF resource PASS: main95,469/106,496, ISR6,672/8,192, RAM255,612/262,144.
+Fresh address rebasing and corrected executable proof pass; independent
+current-image review and remaining four-route/SO/P08 exit reconciliation are next.
+Historical prerequisite/decision text below is retained as history.
+
 [ADR-040](../adrs/adr-040-counter-physical-sram-budget.md) now records the
 [explicit human counter resource acceptance](../iterations/iteration-003-review/p08-counter-resource-acceptance.md).
 Independent corrected proof review passes; counter-only configuration and new
