@@ -375,7 +375,7 @@ class MetadataLayoutTests(unittest.TestCase):
 
     def test_owned_planning_field_uses_existing_measured_outer(self):
         source = facts.METADATA_SOURCE.read_text()
-        planning = source.split('fileprivate struct P08HostRunFacts {')[1].split('}')[0]
+        planning = source.split('fileprivate struct P08HostRunFacts: ~Copyable {')[1].split('}')[0]
         expected = [('limits', 'RuntimeProfileLimits'), ('audit', 'RuntimeStorageAudit'),
                     ('assembly', 'CounterHostAssembly')]
         def owned_fields(text):

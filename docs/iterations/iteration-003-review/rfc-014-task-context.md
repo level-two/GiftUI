@@ -1,15 +1,15 @@
 # RFC-014 task context guide
 
-Current P08 activity — **constructor/caller initial focused PASS; main-stack lower bound FAIL**.
-The [current result and grouped correction1 proposal](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-initial-result.md)
-pin source `8bd6c784`, SOURCE review `327f6f6d`, three fresh focused passes and
-required live32800 > main27648 before omitted original bank callbacks/outer/IRQ.
-Current160-root layout is valid: four34720 slots/138880, metadata16584/tail18136.
-Native3,472,564 assertions have zero failures;384/202 controls explicitly not run.
-Initial1/correction0/2; the private planning-carrier/inout ABI/cold-constructor
-proposal is pending independent review, not applied. Historical allowances remain
-closed. No total-RAM failure/fit claim, limit or ownership/corpus change. P08/SO
-acceptance stays open; full202/image held pending viable complete resource paths.
+Current P08 activity — **constructor/caller grouped correction1 source frozen; SOURCE review pending**.
+The [immutable source freeze](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle1-source.md)
+implements approach PASS `233d26e5`: private noncopyable owned planning carrier,
+continuous actual inout fixture facts and cold construction with the original
+return union/single Optional host. Initial1/correction1/2 consumed; candidate
+compiler/runtime/image0, metadata/fit unproved. The initial three focused PASS
+and selected live32800 rejection remain immutable; all384/202 omissions stay
+explicit. Main27648/RAM196608/four34720 slots, ownership/corpus and all historical
+closed allowances remain unchanged. P08/SO acceptance open; new runs require
+independent SOURCE PASS and full202/image requires viable complete resource paths.
 
 Historical earlier navigation follows.
 

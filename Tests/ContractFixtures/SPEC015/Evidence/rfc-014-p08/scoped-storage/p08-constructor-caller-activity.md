@@ -1,5 +1,17 @@
 # P08 constructor/caller realization activity
 
+Current boundary: **grouped correction1 source frozen; independent SOURCE review
+pending**, approach PASS `233d26e5`. The
+[new immutable source freeze](p08-constructor-caller-cycle1-source.md) pins the
+private noncopyable planning carrier, continuous actual inout facts and cold
+constructor with original return union/single Optional host. Initial1/correction1/2
+consumed; current candidate compiler/runtime/image0, actual layout/stack unproved.
+All historical allowances and the initial passing receipts/resource rejection
+remain unchanged. No ownership/corpus/limit relaxation; one further grouped
+correction remains, stop after two consecutive unproductive cycles.
+
+Historical initial result boundary:
+
 Current boundary: **all three initial focused collections PASS; required live
 main-stack lower bound32800 >27648** at source `8bd6c784`, review `327f6f6d`.
 The [current result and grouped correction1 proposal](p08-constructor-caller-initial-result.md)

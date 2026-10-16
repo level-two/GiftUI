@@ -1482,8 +1482,8 @@ fileprivate func p08ClearHostPlan(_ facts: inout P08HostRunFacts?) {
     facts = nil
 }
 
-// Ordinary owned validation facts; no scope, pointer, callback or mutable backend.
-fileprivate struct P08HostRunFacts {
+// One private owned plan; no scope, pointer, callback or mutable backend.
+fileprivate struct P08HostRunFacts: ~Copyable {
     let limits: RuntimeProfileLimits
     let audit: RuntimeStorageAudit
     let assembly: CounterHostAssembly
@@ -2575,31 +2575,50 @@ fileprivate func p08CheckStaticHostJoins(owner: inout P08StaticHostOwner, models
     return counterCheckRejectedBindings(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, report: report, expected: expected, foreignExpected: foreignExpected)
 }
 
+// No capability or scoped owner is retained in construction completion facts.
+fileprivate struct P08HostConstructionFacts {
+    var completed: P08BodyResult? = nil
+    var joinChecks: Int = 0
+}
+
+@_lifetime(copy session, copy semantic, copy values, copy models, copy root, borrow control, copy activationSpan)
 @inline(never)
-fileprivate func p08RunStaticSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> P08BodyResult {
+fileprivate func p08ConstructStaticHost(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: borrowing UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, facts: inout P08HostRunFacts, failAfterRuntime: Bool, early: UInt8, completion: inout P08HostConstructionFacts) -> P08StaticHost? {
     if early == 1 {
         var session = consume session; session.reset()
-        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        completion.completed = P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        return nil
     }
-    let supplied = session.intoSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: CounterHostControl(pointer: control), audit: audit)
+    let supplied = session.intoSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: CounterHostControl(pointer: control), audit: facts.audit)
     if early == 2 {
         var retired = supplied.retireInertStorage(); retired.resetAfterQuiescence()
-        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        completion.completed = P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        return nil
     }
-    var owner = P08StaticHostOwner(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    var owner = P08StaticHostOwner(supplied: supplied, activationSpan: activationSpan, assembly: facts.assembly, failAfterRuntime: failAfterRuntime)
     if early == 3 {
         p08FinishStaticOwner(&owner)
-        return P08BodyResult(checks: 1, constructed: true, activationAttempted: false)
+        completion.completed = P08BodyResult(checks: 1, constructed: true, activationAttempted: false)
+        return nil
     }
-    let joinChecks = p08CheckStaticHostJoins(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, report: assembly.report)
+    completion.joinChecks = p08CheckStaticHostJoins(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: facts.audit, report: facts.assembly.report)
     #if hasFeature(Embedded)
-    var host = SignalAnalyzerPresetHostInstances.nrf52840Static(report: assembly.report, owner: owner)
+    return SignalAnalyzerPresetHostInstances.nrf52840Static(report: facts.assembly.report, owner: owner)
     #else
-    var host = SignalAnalyzerPresetHostInstances.macOSStatic(report: assembly.report, owner: owner)
+    return SignalAnalyzerPresetHostInstances.macOSStatic(report: facts.assembly.report, owner: owner)
     #endif
+}
 
+@inline(never)
+fileprivate func p08RunStaticSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, facts: inout P08HostRunFacts, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> P08BodyResult {
+    var completion = P08HostConstructionFacts()
+    var host = p08ConstructStaticHost(session: session, semantic: semantic, values: values, activationSpan: activationSpan, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, facts: &facts, failAfterRuntime: failAfterRuntime, early: early, completion: &completion)
     defer { host?.p08FinishOriginalStaticHost() }
-    guard let result = host?.p08UseOriginalStaticHost(control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joinChecks, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline) else { preconditionFailure("original host factory invariant") }
+    if let result = host?.p08UseOriginalStaticHost(control: control, report: facts.assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: completion.joinChecks, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline) {
+        let noEarlyCompletion = completion.completed == nil; precondition(noEarlyCompletion)
+        return result
+    }
+    guard let result = completion.completed else { preconditionFailure("original host factory invariant") }
     return result
 }
 
@@ -2648,48 +2667,61 @@ fileprivate func p08CheckDynamicHostJoins(owner: inout P08DynamicHostOwner, mode
     return counterCheckDynamicRejectedBindings(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, report: report, expected: expected, foreignExpected: foreignExpected)
 }
 
+@_lifetime(copy session, copy semantic, copy values, copy models, copy root, borrow control, copy activationSpan)
 @inline(never)
-fileprivate func p08RunDynamicSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> P08BodyResult {
+fileprivate func p08ConstructDynamicHost(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: borrowing UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, facts: inout P08HostRunFacts, failAfterRuntime: Bool, early: UInt8, completion: inout P08HostConstructionFacts) -> P08DynamicHost? {
     if early == 1 {
         var session = consume session; session.reset()
-        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        completion.completed = P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        return nil
     }
-    let supplied = session.intoDynamicSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: CounterHostControl(pointer: control), audit: audit)
+    let supplied = session.intoDynamicSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: CounterHostControl(pointer: control), audit: facts.audit)
     if early == 2 {
         var retired = supplied.retireInertStorage(); retired.resetAfterQuiescence()
-        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        completion.completed = P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        return nil
     }
-    var owner = P08DynamicHostOwner(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    var owner = P08DynamicHostOwner(supplied: supplied, activationSpan: activationSpan, assembly: facts.assembly, failAfterRuntime: failAfterRuntime)
     if early == 3 {
         p08FinishDynamicOwner(&owner)
-        return P08BodyResult(checks: 1, constructed: true, activationAttempted: false)
+        completion.completed = P08BodyResult(checks: 1, constructed: true, activationAttempted: false)
+        return nil
     }
-    let joinChecks = p08CheckDynamicHostJoins(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, report: assembly.report)
+    completion.joinChecks = p08CheckDynamicHostJoins(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: facts.audit, report: facts.assembly.report)
     #if os(Linux)
-    var host = SignalAnalyzerPresetHostInstances.raspberryPiDynamic(report: assembly.report, owner: owner)
+    return SignalAnalyzerPresetHostInstances.raspberryPiDynamic(report: facts.assembly.report, owner: owner)
     #else
-    var host = SignalAnalyzerPresetHostInstances.macOSDynamic(report: assembly.report, owner: owner)
+    return SignalAnalyzerPresetHostInstances.macOSDynamic(report: facts.assembly.report, owner: owner)
     #endif
+}
 
+@inline(never)
+fileprivate func p08RunDynamicSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, facts: inout P08HostRunFacts, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> P08BodyResult {
+    var completion = P08HostConstructionFacts()
+    var host = p08ConstructDynamicHost(session: session, semantic: semantic, values: values, activationSpan: activationSpan, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, facts: &facts, failAfterRuntime: failAfterRuntime, early: early, completion: &completion)
     defer { host?.p08FinishOriginalDynamicHost() }
-    guard let result = host?.p08UseOriginalDynamicHost(control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joinChecks, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline) else { preconditionFailure("original host factory invariant") }
+    if let result = host?.p08UseOriginalDynamicHost(control: control, report: facts.assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: completion.joinChecks, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline) {
+        let noEarlyCompletion = completion.completed == nil; precondition(noEarlyCompletion)
+        return result
+    }
+    guard let result = completion.completed else { preconditionFailure("original host factory invariant") }
     return result
 }
 #endif
 
 fileprivate func runP08ScopedBody(session: consuming P08StorageSession,
-    models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignControl: UnsafeMutablePointer<CounterControl>, dynamic: Bool, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil, baseline: UnsafeMutablePointer<P08ReuseFingerprint>? = nil) -> Int {
+    models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing UnsafeMutablePointer<CounterControl>, facts: inout P08HostRunFacts, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignControl: UnsafeMutablePointer<CounterControl>, dynamic: Bool, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil, baseline: UnsafeMutablePointer<P08ReuseFingerprint>? = nil) -> Int {
     let activationBacking: InlineArray<1, UInt8> = [1]
     session.installProducerOrigin(control)
     let result: P08BodyResult
     #if !hasFeature(Embedded)
     if dynamic {
-        result = p08RunDynamicSessionPhase(session: session, semantic: semantic, values: values, activationSpan: activationBacking.span, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
+        result = p08RunDynamicSessionPhase(session: session, semantic: semantic, values: values, activationSpan: activationBacking.span, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, facts: &facts, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
     } else {
-        result = p08RunStaticSessionPhase(session: session, semantic: semantic, values: values, activationSpan: activationBacking.span, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
+        result = p08RunStaticSessionPhase(session: session, semantic: semantic, values: values, activationSpan: activationBacking.span, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, facts: &facts, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
     }
     #else
-    result = p08RunStaticSessionPhase(session: session, semantic: semantic, values: values, activationSpan: activationBacking.span, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
+    result = p08RunStaticSessionPhase(session: session, semantic: semantic, values: values, activationSpan: activationBacking.span, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, facts: &facts, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
     #endif
     p08CompleteBody(result, control: control)
     return result.checks
@@ -2739,7 +2771,7 @@ fileprivate func p08RunPreparedStaticHost(owner: inout P08TypedBackingOwner, fac
                             var entries = MutableSpan(_unsafeStart: entriesBacking.baseAddress!, count: entriesBacking.count)
                             try canvasStorage.pointee.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: facts.limits.staticCanvas!) { values in
                                 checks = withP08Storage(backing: &owner) { session in
-                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control, audit: facts.audit, assembly: facts.assembly, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: false, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
+                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control, facts: &facts, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: false, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
                                 }
                             }
                         } catch { preconditionFailure("counter host Canvas") }
@@ -2919,7 +2951,7 @@ fileprivate func p08RunPreparedDynamicHost(owner: inout P08TypedBackingOwner, fa
                         do throws(DrawingError) {
                             try canvasStorage.pointee.withLifetime(table: CounterValueTable(), limits: counterCanvasLimits, configuredCapacity: 1) { values in
                                 checks = withP08Storage(backing: &owner) { session in
-                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control, audit: facts.audit, assembly: facts.assembly, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: true, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
+                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control, facts: &facts, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: true, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
                                 }
                             }
                         } catch { preconditionFailure("counter Dynamic Canvas") }

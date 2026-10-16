@@ -1,0 +1,85 @@
+{
+  "kind": "compiler-free-constructor-caller-cycle1-source-readiness-only",
+  "checks": [
+    {
+      "check": "22 exact inverse source checks,112 inherited checks,10 mutation negatives",
+      "argv": [
+        "python3",
+        "-B",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/constructor-caller-cycle1-source/check-source-parity.py"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\n  \"kind\": \"compiler-free-constructor-caller-cycle1-inverse-parity\",\n  \"baseline\": \"8bd6c784\",\n  \"checks_passed\": 22,\n  \"checks\": [\n    \"Static exact original return union and actual inout plan; no new capability\",\n    \"Static exact original phase permissions except owned plan ABI\",\n    \"Static only three owned early completions; no consumed owner defer\",\n    \"Static full inverse early cleanup/transfers/two snapshots/joins/factory/options\",\n    \"Static single Optional and exact live result/defer/early-factory disposition\",\n    \"Static constructor returns before live/defer; no owner second home\",\n    \"Static actual inout callback transfer exactly once\",\n    \"Static all original callbacks/lenders/configuration timing unchanged\",\n    \"Dynamic exact original return union and actual inout plan; no new capability\",\n    \"Dynamic exact original phase permissions except owned plan ABI\",\n    \"Dynamic only three owned early completions; no consumed owner defer\",\n    \"Dynamic full inverse early cleanup/transfers/two snapshots/joins/factory/options\",\n    \"Dynamic single Optional and exact live result/defer/early-factory disposition\",\n    \"Dynamic constructor returns before live/defer; no owner second home\",\n    \"Dynamic actual inout callback transfer exactly once\",\n    \"Dynamic all original callbacks/lenders/configuration timing unchanged\",\n    \"scoped actual inout facts to all three conditional profile routes\",\n    \"producer activation/retirement/result and every original argument unchanged\",\n    \"only private unscoped carrier becomes noncopyable\",\n    \"completion carries owned result/count only\",\n    \"all original tag predicates/writes and every byte outside reviewed cones unchanged\",\n    \"inverse retains all112 original field/loan/oracle/prefix/cleanup checks\"\n  ],\n  \"inherited_initial_checks\": 112,\n  \"negative_mutations_rejected\": [\n    \"copyable planning carrier\",\n    \"weaker returned union\",\n    \"early3 omitted hook route\",\n    \"wrong complete owned audit\",\n    \"wrong join report\",\n    \"wrong same-owner constructor lender\",\n    \"scoped callback copied planning values\",\n    \"removed actual plan nil write\",\n    \"changed original physical capacity\",\n    \"weaker full current baseline field\"\n  ],\n  \"compiler_or_runtime\": false\n}\n"
+    },
+    {
+      "check": "48 layout/source/backend unit tests",
+      "argv": [
+        "env",
+        "PYTHONPATH=scripts/contracts",
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "scripts/contracts/test_p08_layout_facts.py",
+        "scripts/contracts/test_p08_backend_observation.py"
+      ],
+      "exit_code": 0,
+      "stderr": "................................................\n----------------------------------------------------------------------\nRan 48 tests in 0.164s\n\nOK\n",
+      "stdout": ""
+    },
+    {
+      "check": "fixture parser only",
+      "argv": [
+        ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "formatted_fixture_output_discarded": true
+    },
+    {
+      "check": "maintained formatter",
+      "argv": [
+        "env",
+        "PATH=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "scripts/format-swift.sh"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "check": "governance",
+      "argv": [
+        "scripts/validate-governance.rb"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "Authority graph validation passed: 204 nodes, 2036 edges.\nTask evidence validation passed: SPEC-001 all tasks (72 task(s)).\nTask evidence validation passed: SPEC-002 all tasks (33 task(s)).\nTask evidence validation passed: SPEC-003 all tasks (31 task(s)).\nTask evidence validation passed: SPEC-004 all tasks (30 task(s)).\nTask evidence validation passed: SPEC-005 all tasks (31 task(s)).\nTask evidence validation passed: SPEC-011 all tasks (53 task(s)).\nGovernance validation passed: 7 feature(s), 76 lifecycle artifact(s), 9 skill(s).\n"
+    },
+    {
+      "check": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "python_ast_paths": [
+    "scripts/contracts/check-spec-015-counter.py",
+    "scripts/contracts/test_p08_layout_facts.py",
+    "scripts/contracts/test_p08_backend_observation.py",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/constructor-caller-cycle1-source/check-source-parity.py"
+  ],
+  "compiler_invocations": 0,
+  "runtime_executions": 0,
+  "fit_claim": false
+}

@@ -1,0 +1,43 @@
+{
+  "kind": "compiler-free-constructor-caller-cycle1-inverse-parity",
+  "baseline": "8bd6c784",
+  "checks_passed": 22,
+  "checks": [
+    "Static exact original return union and actual inout plan; no new capability",
+    "Static exact original phase permissions except owned plan ABI",
+    "Static only three owned early completions; no consumed owner defer",
+    "Static full inverse early cleanup/transfers/two snapshots/joins/factory/options",
+    "Static single Optional and exact live result/defer/early-factory disposition",
+    "Static constructor returns before live/defer; no owner second home",
+    "Static actual inout callback transfer exactly once",
+    "Static all original callbacks/lenders/configuration timing unchanged",
+    "Dynamic exact original return union and actual inout plan; no new capability",
+    "Dynamic exact original phase permissions except owned plan ABI",
+    "Dynamic only three owned early completions; no consumed owner defer",
+    "Dynamic full inverse early cleanup/transfers/two snapshots/joins/factory/options",
+    "Dynamic single Optional and exact live result/defer/early-factory disposition",
+    "Dynamic constructor returns before live/defer; no owner second home",
+    "Dynamic actual inout callback transfer exactly once",
+    "Dynamic all original callbacks/lenders/configuration timing unchanged",
+    "scoped actual inout facts to all three conditional profile routes",
+    "producer activation/retirement/result and every original argument unchanged",
+    "only private unscoped carrier becomes noncopyable",
+    "completion carries owned result/count only",
+    "all original tag predicates/writes and every byte outside reviewed cones unchanged",
+    "inverse retains all112 original field/loan/oracle/prefix/cleanup checks"
+  ],
+  "inherited_initial_checks": 112,
+  "negative_mutations_rejected": [
+    "copyable planning carrier",
+    "weaker returned union",
+    "early3 omitted hook route",
+    "wrong complete owned audit",
+    "wrong join report",
+    "wrong same-owner constructor lender",
+    "scoped callback copied planning values",
+    "removed actual plan nil write",
+    "changed original physical capacity",
+    "weaker full current baseline field"
+  ],
+  "compiler_or_runtime": false
+}
