@@ -1,6 +1,9 @@
 # P08 rebuilt counter firmware resource result — 2026-10-16
 
-**Current nRF counter resource PASS; independent proof review next.**
+**Current nRF counter resource PASS; independent image acceptance PASS.**
+The [independent review](p08-current-firmware-final-fit-independent-review.md)
+accepts this image's proof; the [remaining campaign](p08-remaining-acceptance-campaign.md)
+identifies exact P08 route/resource/exit work.
 The normal pristine build uses the accepted counter-only main/ISR payloads
 106,496 / 8,192 and physical RAM ceiling 262,144 under
 [ADR-040](../../../../../../docs/adrs/adr-040-counter-physical-sram-budget.md).
@@ -88,8 +91,8 @@ or firmware execution. The full replay and member-hash verification pass.
 The build's four external working-tree edits (two analyzer Swift files, post-counter-return
 CMake edits and empty-array shell expansion) are preserved as provenance and were
 not authored or committed as source by this step; known pycache is untouched.
-The normal analyzer ELF is not this result. Next is independent current-image
-proof review, then the remaining P08 matrix/SO and exit reconciliation. Later
+The normal analyzer ELF is not this result. Independent current-image
+proof review is complete; next is the remaining P08 matrix/SO and exit reconciliation. Later
 P09–P12/I4-07 and connected/timing obligations retain their existing allocation.
 
 An additional external `scripts/raspberry-pi/build.sh` delta appeared at finalization;

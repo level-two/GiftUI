@@ -1,0 +1,17 @@
+{
+  "reviewed_commit": "a018582c",
+  "original_archive_sha256": "0259a55f8dac3c4f4d704a90a72a9dd0ccd12d9aebfa26e2e2d5a599cbae2b36",
+  "hashed_members": 689,
+  "physical_members_including_inventory": 690,
+  "elf_sha256": "0e54fe25ce637f5dd116b1094f64d7a46829a43351465abae265d4ebe61f02f5",
+  "independent_read_only_replay": "PASS",
+  "contexts": 1788,
+  "physical_functions": 1469,
+  "main_bound": 95469,
+  "isr_bound": 6672,
+  "ram_charge": 255612,
+  "ram_extent": 255616,
+  "flash": 403400,
+  "reproduce_log_sha256": "4987a9b3fbd0b3575a31727c5264bad085b59fcd1846d4ab3c25b0b25fa1ba33",
+  "no_build_or_application_execution": true
+}

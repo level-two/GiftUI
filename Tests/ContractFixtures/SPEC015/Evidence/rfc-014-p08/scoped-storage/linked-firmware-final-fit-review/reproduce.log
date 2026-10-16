@@ -1,0 +1,111 @@
+physical functions 2600 instructions 137836 indirect sites 373
+giftui_rfc014_counter_entry 0x5dcbc direct reachable 555 indirect 174 registerSPfuncs 3 undefineddirect 0
+z_cstart 0x30624 direct reachable 15 indirect 5 registerSPfuncs 0 undefineddirect 0
+_isr_wrapper 0x2d488 direct reachable 2 indirect 1 registerSPfuncs 0 undefineddirect 0
+main 0x2c760 direct reachable 598 indirect 211 registerSPfuncs 3 undefineddirect 0
+input-sensitive functions 588
+typed-borrow callback family ['0x50c8a', '0x511ca', '0x51362', '0x514f4']
+progress 500 contexts 557 queue 57
+progress 1000 contexts 1076 queue 76
+progress 1500 contexts 1583 queue 83
+contexts 1788 solved 1788 functions 1469 unresolved 0 0
+
+SCC 8
+0x2cba4 process_event -> 0x2d780,0x2d7b0
+0x2d780 onoff_stop -> 0x5de58
+0x2d7b0 onoff_start -> 0x5de58,0x5e09a
+0x2d880 clkstarted_handle.constprop.0 -> 0x5e10a
+0x2d8cc generic_hfclk_start -> 0x2d880
+0x5de58 transition_complete -> 0x2cba4
+0x5e09a async_start -> 0x2d8cc
+0x5e10a onoff_started_callback -> 0x5de58
+
+SCC 1
+0x3d398 generic specialization <P08CounterRuntime.LocalSemantic> of GiftUILayout.LayoutEngine.(flattenedChildCount in  -> 0x3d398
+
+SCC 1
+0x3ce8a generic specialization <P08CounterRuntime.LocalSemantic, P08CounterRuntime.StaticCounterLayoutWorkspace> of Gi -> 0x3ce8a
+
+SCC 6
+0x84e0 generic specialization <P08CounterRuntime.LocalSemantic, P08CounterRuntime.StaticCounterLayoutWorkspace> of Gi -> 0x9640,0x8b48,0x3cb56
+0x8858 generic specialization <P08CounterRuntime.LocalSemantic, P08CounterRuntime.StaticCounterLayoutWorkspace> of Gi -> 0x84e0
+0x8b48 generic specialization <P08CounterRuntime.LocalSemantic, P08CounterRuntime.StaticCounterLayoutWorkspace> of Gi -> 0x9640,0x8b48,0x3cb56,0x8858
+0x90fc generic specialization <P08CounterRuntime.LocalSemantic, P08CounterRuntime.StaticCounterLayoutWorkspace> of Gi -> 0x9640,0x8b48,0x8858,0x90fc
+0x9640 generic specialization <P08CounterRuntime.LocalSemantic, P08CounterRuntime.StaticCounterLayoutWorkspace> of Gi -> 0x9640,0x8b48,0x3cb56,0x8858
+0x3cb56 generic specialization <P08CounterRuntime.LocalSemantic, P08CounterRuntime.StaticCounterLayoutWorkspace> of Gi -> 0x90fc
+
+SCC 2
+0x7ed0 generic specialization <P08CounterRuntime.LocalSemantic, GiftUIReferenceTextResources.GiftUIReferenceTextMetri -> 0x3da66,0x7ed0
+0x3da66 generic specialization <P08CounterRuntime.LocalSemantic, GiftUIReferenceTextResources.GiftUIReferenceTextMetri -> 0x7ed0
+
+SCC 1
+0x3d722 generic specialization <P08CounterRuntime.LocalSemantic, P08CounterRuntime.StaticCounterLayoutWorkspace> of Gi -> 0x3d722
+
+SCC 9
+0x9ce4 generic specialization <P08CounterRuntime.LocalSemantic, GiftUIReferenceTextResources.GiftUIReferenceTextMetri -> 0xa904,0xb448,0x3d5ac
+0x9e58 generic specialization <P08CounterRuntime.LocalSemantic, GiftUIReferenceTextResources.GiftUIReferenceTextMetri -> 0xa904,0xb448,0x9e58,0x3d5ac
+0xa904 generic specialization <P08CounterRuntime.LocalSemantic, GiftUIReferenceTextResources.GiftUIReferenceTextMetri -> 0xa904,0xc9b4,0xbed4,0x9e58,0x9ce4,0xc468
+0xb448 generic specialization <P08CounterRuntime.LocalSemantic, GiftUIReferenceTextResources.GiftUIReferenceTextMetri -> 0xa904,0xb448,0xbed4,0x9e58,0x9ce4,0xc468
+0xbed4 function signature specialization <Arg[8] = [Closure Propagated : $e12GiftUILayout12LayoutEngineV25measureOnly -> 0xa904,0xb448,0xcf48,0x9e58,0xbed4
+0xc468 function signature specialization <Arg[8] = [Closure Propagated : $e12GiftUILayout12LayoutEngineV12measureStac -> 0xa904,0xb448,0xc468,0x9e58,0xbed4
+0xc9b4 function signature specialization <Arg[8] = [Closure Propagated : $e12GiftUILayout12LayoutEngineV13measureZSta -> 0xa904,0xb448,0xcf48,0x9e58,0xbed4
+0xcf48 generic specialization <P08CounterRuntime.LocalSemantic, GiftUIReferenceTextResources.GiftUIReferenceTextMetri -> 0xa904,0xb448,0xcf48,0x9e58
+0x3d5ac generic specialization <P08CounterRuntime.LocalSemantic, GiftUIReferenceTextResources.GiftUIReferenceTextMetri -> 0xbed4
+
+SCC 1
+0x4fea6 generic specialization <GiftUIDrawing.CanvasSemanticPayload<P08CounterTable.P08CounterSchemaCanvasValues<P08Co -> 0x4fea6
+
+SCC 1
+0x3e03c generic specialization <GiftUISemanticCore.SemanticRecordRenderView<GiftUIDrawing.CanvasSemanticPayload<P08Cou -> 0x3e03c
+
+SCC 1
+0x4cece generic specialization <GiftUISemanticCore.SemanticRecordRenderView<GiftUIDrawing.CanvasSemanticPayload<P08Cou -> 0x4cece
+
+SCC 3
+0x15c7c generic specialization <Swift.Int> of closure #1 (Swift.UnsafeMutablePointer<P08CounterRuntime.StaticTwoIntera -> 0x4312c
+0x4312c merged generic specialization <P08CounterRuntime.StaticTwoInteractionCandidateStorage<GiftUISemanticCore.Seman -> 0x50c8a
+0x50c8a merged partial apply forwarder for generic not re-abstracted specialization <Swift.Int> of closure #1 (Swift.U -> 0x15c7c
+
+SCC 7
+0xef20 generic specialization <Swift.Int> of P08CounterRuntime.(P08ByteSlot in _480B1BD841D053AE4FCDC18507668536).wit -> 0x503ca,0x50852,0x5061a
+0x110ec generic specialization <Swift.Int> of closure #1 (Swift.UnsafeMutableRawBufferPointer) -> A in P08CounterRunti -> 0xef20
+0x1122c generic specialization <Swift.Int> of closure #1 (Swift.UnsafeMutableRawBufferPointer) -> A in closure #1 (Swi -> 0xef20
+0x11354 generic specialization <Swift.Int> of closure #1 (Swift.UnsafeMutableRawBufferPointer) -> A in closure #1 (Swi -> 0xef20
+0x503ca partial apply forwarder for generic not re-abstracted specialization <Swift.Int> of closure #1 (Swift.UnsafeMu -> 0x110ec
+0x5061a partial apply forwarder for generic not re-abstracted specialization <Swift.Int> of closure #1 (Swift.UnsafeMu -> 0x1122c
+0x50852 partial apply forwarder for generic not re-abstracted specialization <Swift.Int> of closure #1 (Swift.UnsafeMu -> 0x11354
+BOUND WITH RANK PREMISES 95349 states CacheInfo(hits=126612, misses=30406, maxsize=None, currsize=30406)
+[('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xa24c', '49482'), ('0x413b6', '43114'), ('0x40a3a', '267250:268736')]
+EXTRA 0x2d290 95381
+EXTRA 0x2d27c 524
+EXTRA 0x2d2d8 444
+EXTRA 0x2d3a8 95381
+EXTRA 0x5df96 8
+EXTRA 0x30624 95373
+EXTRA 0x305f4 95357
+EXTRA 0x2d0c4 516
+EXTRA 0x2d488 444
+EXTRA 0x2dfc8 15
+EXTRA 0x2f2f0 224
+EXTRA 0x2fe9c 88
+EXTRA 0x2f974 120
+EXTRA 0x2ed5c 176
+PRE SWITCH STARTUP 312
+BOUND WITH RANK PREMISES 95349 states CacheInfo(hits=126612, misses=30406, maxsize=None, currsize=30406)
+[('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xcf48', '49220'), ('0x9e58', '53528'), ('0xb448', '41212'), ('0xbed4', '48416'), ('0xa24c', '49482'), ('0x413b6', '43114'), ('0x40a3a', '267250:268736')]
+EXTRA 0x2d290 95381
+EXTRA 0x2d27c 524
+EXTRA 0x2d2d8 444
+EXTRA 0x2d3a8 95381
+EXTRA 0x5df96 8
+EXTRA 0x30624 95373
+EXTRA 0x305f4 95357
+EXTRA 0x2d0c4 516
+EXTRA 0x2d488 444
+EXTRA 0x2dfc8 15
+EXTRA 0x2f2f0 224
+EXTRA 0x2fe9c 88
+EXTRA 0x2f974 120
+EXTRA 0x2ed5c 176
+PRE SWITCH STARTUP 312
+PASS new ELF: main95469/106496, ISR6672/8192, RAM255612/262144, extent255616, flash403400; source-constrained proof complete

@@ -16,6 +16,11 @@ superseded_by: null
 
 # P08 completion and resource assessment
 
+The [independent current nRF image review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-final-fit-independent-review.md)
+accepts actual ELF `0e54fe25` resource fit. The [remaining P08 campaign](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-acceptance-campaign.md)
+provides concrete sequential commands and required Pi/Native/resource/caller/exit
+receipts; historical stop/next-step text below is superseded only to that extent.
+
 The [rebuilt counter resource result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-final-fit-result.md) now reports actual
 new-ELF resource PASS: main95,469/106,496, ISR6,672/8,192, RAM255,612/262,144.
 Fresh address rebasing and corrected executable proof pass; independent

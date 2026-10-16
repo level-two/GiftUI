@@ -27,6 +27,14 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current nRF resource gate — **independent new-image acceptance PASS**.
+The [review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-final-fit-independent-review.md)
+accepts ELF `0e54fe25`: main/ISR 95,469/6,672 within 106,496/8,192;
+RAM 255,612/extent255,616 within physical262,144. The [remaining P08 campaign](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-acceptance-campaign.md)
+names stale Pi collection/image, Native384 omissions per profile, matched allocation/
+physical/stack evidence, caller/criterion reconciliation and independent exit.
+No P09–P12/full-SO/connected gate or source allowance changes.
+
 Current configuration — **independent authority/configuration PASS; guarded build next**.
 The [bounded review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-counter-resource-configuration-independent-review.md)
 confirms ADR-040 and counter-only stack/RAM routing with existing guards preserved.

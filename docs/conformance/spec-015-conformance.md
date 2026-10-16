@@ -19,6 +19,14 @@ superseded_by: null
 
 # SPEC-015 Conformance Report
 
+Current nRF counter resource evidence — **new image independently accepted**.
+The [image review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-final-fit-independent-review.md)
+accepts current ELF `0e54fe25` under ADR-040: complete main/ISR bounds
+95,469/6,672; actual charge255,612/extent255,616 within physical262,144.
+The [remaining P08 campaign](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-acceptance-campaign.md)
+retains exact Pi/Native route/allocation/stack, caller and independent-exit duties.
+P08/R07/T8.1 and full SO remain open; earlier resource boundaries below are historical.
+
 Current counter-only resource direction — **independent conservative-bound PASS;
 final normal image pending**. The [independent complete-bound review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-independent-review.md)
 repairs a decoder writeback omission and confirms frozen main/ISR bounds
