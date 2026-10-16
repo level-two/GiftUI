@@ -1,5 +1,11 @@
 # P08 fixture metadata implementation activity
 
+Current boundary: **correction 1/2 focused SOURCE BLOCKED at `db7cc7b6`**.
+[Focused review](p08-fixture-metadata-cycle1-independent-source-review.md) closes
+inventory B01 and requires two ordinary-if model-read guards to preserve exact
+short-circuit effects. Complete within the same grouped cycle before first execution;
+no second optimization cycle or user microapproval is required.
+
 The user's continuing “Please proceed” authorization now covers the independently
 reviewed idle-donor metadata realization (`fa39ef08`, measured design `c35f541a`).
 This is a new bounded internal package: one grouped initial source candidate plus

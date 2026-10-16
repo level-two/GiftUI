@@ -1,6 +1,9 @@
 # P08 metadata correction 1 — owned assertion conditions
 
-**SOURCE ONLY, ready for focused independent reassessment.** Correction1/2
+**Independent SOURCE BLOCKED at `db7cc7b6`; inventory B01 closed.**
+[Focused review](p08-fixture-metadata-cycle1-independent-source-review.md) requires
+two ordinary-if rewrites to retain the original skipped model observation. This
+completes the same cause-grouped correction 1/2 before execution. Correction1/2
 consumed under the current package; no compiler/runtime/build or fit claim.
 Initial source `c277403a` and blocked review `416fda38` remain immutable.
 
