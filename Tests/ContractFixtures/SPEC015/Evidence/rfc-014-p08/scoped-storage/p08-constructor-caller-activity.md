@@ -7,7 +7,10 @@ receipts,160-root layout, namespace failure-cleanup inspection and exact origina
 callback path. The640 excess omits further required costs, not the complete gap.
 Initial1/correction2/2 closed; no third automatic variant. No total-RAM failure,
 complete upper bound, current image or contract/limit amendment is inferred.
-Full202/image held; P08/SO acceptance open. Independent final result review next.
+Full202/image held; P08/SO acceptance open. The
+[independent final review](p08-constructor-caller-final-independent-review.md)
+confirms this STOP, preserving the compiled/functional gains and the actual
+callback path with one corrected documentary BL offset.
 
 Historical final source readiness:
 

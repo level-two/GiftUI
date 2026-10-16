@@ -1,6 +1,10 @@
 # P08 constructor/caller final result and package boundary
 
 **STOP: all three final focused collections PASS; required cold main-stack FAIL.**
+[Independent final review](p08-constructor-caller-final-independent-review.md)
+confirms the source-feasible 28,288-byte rejecting subset and package STOP.
+Its documentary erratum corrects archived 12088→4037 BL offset 234 to actual
+244/0xf4; the target and bound are unchanged, and the packet is immutable.
 Source `51cfc960`, SOURCE review `ee10d2f1`. Initial1/correction2/2 consumed;
 this package is closed, no third automatic variant. All historical allowances
 remain closed. No source/compiler/runtime/image operation was added by this
@@ -139,4 +143,5 @@ Every compressed member and exact member set matches its SHA256 manifest; curren
 source/object identities match. Governance passes (204 nodes/2036 edges;7 features/
 76 lifecycle artifacts/9 skills), and whitespace passes. Unrelated existing
 pycache is untouched.
-Independent final result review follows before the user-facing package decision.
+Independent final result review confirms this package boundary before the
+user-facing decision; no third source variant or resource change is authorized.

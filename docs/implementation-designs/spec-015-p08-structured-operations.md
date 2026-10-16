@@ -22,6 +22,9 @@ The [final current result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014
 pins actual destination materialization, namespace cleanup and first bank callback
 proof. Correction2/2 closed; no third automatic variant or new resource/contract
 authority. All source/behavior gains are retained; full202/image held, P08/SO open.
+The [independent exit review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-independent-review.md)
+confirms the rejecting simultaneous path and closes this package without a third
+variant, complete-peak claim or inferred contract/resource amendment.
 
 Historical final source readiness:
 
