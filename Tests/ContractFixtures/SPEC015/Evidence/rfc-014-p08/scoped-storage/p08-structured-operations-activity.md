@@ -1,22 +1,17 @@
 # P08 structured construction and observation operations activity
 
-Current boundary: **initial focused behavior/layout PASS; main-stack resource
-rejection, independent correction1 APPROACH PASS at `678b7f7d`**.
-The [bounded result/approach review](p08-structured-operations-initial-independent-result-review.md)
-permits the authorized grouped source pass. Source`3065c574`
-SOURCE PASS`c966aa8b`; [three-profile checkpoint](structured-operations-initial-collections/result.json)
-`6863f491` preserves all selected passes and complete partial-coverage flags.
-The [bounded result/combined correction approach](p08-structured-operations-initial-result.md)
-proves current required main-stack subset36744>27648; cold construction28736 and
-reconstruction30816 also reject. Total RAM fit remains unproved rather than
-rejected by that subset. All160 layout facts/138880 backing/15760 metadata and
-Native3,472,564 assertions pass. No new source/compilation/target execution occurred
-in the analysis. Full202/image work is held for reviewed correction1. Correction0/2
-is still consumed0: approach/source not started. Historical allowances stay closed.
+Current boundary: **grouped correction1 SOURCE FROZEN, independent SOURCE review
+pending** after approved result/approach `81f5ed80`.
+The [correction freeze](p08-structured-operations-cycle1-source.md) pins seven Swift
+fixtures, exact qualification and same three fresh validation commands. Correction1/2
+is consumed; corrected compiler/runtime/image0. Initial focused passes and measured
+resource rejection remain immutable in `6863f491`/`678b7f7d`; none qualifies the new
+source. Historical allowances remain closed. Full202/image work stays held until
+current source and measured complete resource paths are viable.
 
 Scope: one combined initial implementation plus at most two cause-grouped
 corrective cycles, stopping after two consecutive unproductive cycles or a genuine
-contract/scope/resource decision. Current correction0/2; initial source1, fresh nRF screen1, Native focused collections2,
+contract/scope/resource decision. Current correction1/2; initial source1, fresh nRF screen1, Native focused collections2,
 image0 in this package. The analysis itself invokes no compiler/runtime. Mechanical source-review issues are grouped in
 the coherent pass/cycle, not individual user permission barriers. Independent
 design PASS precedes implementation; independent SOURCE review precedes execution.

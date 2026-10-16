@@ -61,24 +61,24 @@ struct CounterApplicationOwners {
     private let producerOrigin: CounterProducerOrigin?
     init(control: UnsafeMutablePointer<CounterControl>) {
         self.control = control
-        producerOrigin = control.pointee.snapshotProducerOrigin()
+        producerOrigin = CounterControl.snapshotProducerOrigin(at: control)
         control.pointee.applicationConstructions += 1
     }
     var constructedProjectionIsValid: Bool {
-        control.pointee.acceptsProducer(producerOrigin) && source.running && source.emissionCount == 1 && repository.publicationCount == 1
+        CounterControl.acceptsProducer(at: control, producerOrigin) && source.running && source.emissionCount == 1 && repository.publicationCount == 1
             && repository.observation == observation && observation != nil
             && useCases.startCalls == 1 && gate.isAvailable && !gate.isExecuting
             && deliveryEnabled && inputEnabled && control.pointee.applicationConstructions == 1
     }
     mutating func installObservation() -> UInt8 {
-        guard control.pointee.acceptsProducer(producerOrigin) else { return repository.value }
+        guard CounterControl.acceptsProducer(at: control, producerOrigin) else { return repository.value }
         let installed = repository.observe()
         observation = installed.token
         control.pointee.observationsInstalled += 1
         return installed.current
     }
     mutating func startSource() -> Bool {
-        guard control.pointee.acceptsProducer(producerOrigin) else { return false }
+        guard CounterControl.acceptsProducer(at: control, producerOrigin) else { return false }
         guard gate.begin() == .admitted else { return false }
         defer { precondition(gate.complete() == nil) }
         return withUnsafeMutablePointer(to: &self) { application in
@@ -88,7 +88,7 @@ struct CounterApplicationOwners {
         }
     }
     private mutating func deliver(_ value: UInt8) -> Bool {
-        guard control.pointee.acceptsProducer(producerOrigin), deliveryEnabled else { return false }
+        guard CounterControl.acceptsProducer(at: control, producerOrigin), deliveryEnabled else { return false }
         precondition(gate.begin() == .rejected(.reentrant))
         control.pointee.reentrantApplicationRejections += 1
         precondition(control.pointee.context.phase == .idle && !control.pointee.frameActive)
@@ -98,7 +98,7 @@ struct CounterApplicationOwners {
         return accepted
     }
     mutating func serviceSource(value: UInt8) -> Bool {
-        guard control.pointee.acceptsProducer(producerOrigin), deliveryEnabled, gate.begin() == .admitted else { return false }
+        guard CounterControl.acceptsProducer(at: control, producerOrigin), deliveryEnabled, gate.begin() == .admitted else { return false }
         defer { precondition(gate.complete() == nil) }
         return withUnsafeMutablePointer(to: &self) { application in
             application.pointee.source.service(value: value) { value in
@@ -107,7 +107,7 @@ struct CounterApplicationOwners {
         }
     }
     mutating func stopDelivery() {
-        guard control.pointee.acceptsProducer(producerOrigin) else { return }
+        guard CounterControl.acceptsProducer(at: control, producerOrigin) else { return }
         deliveryEnabled = false; inputEnabled = false
         source.stop()
         if let token = observation.take() {

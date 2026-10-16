@@ -416,10 +416,10 @@ class MetadataLayoutTests(unittest.TestCase):
         self.assertIn('precondition(same)', inventory)
         self.assertNotIn('precondition(current', inventory)
         action = source.split('fileprivate func p08ReuseRejectAction<Owner>')[1].split('fileprivate func p08ReuseRejectInput<Owner>')[0]
-        self.assertIn('host: borrowing', action)
+        self.assertIn('host: inout', action)
         for step in ('Prepare', 'Delivery'):
             self.assertIn('let modelUnchangedAfter' + step + ': Bool', action)
-            self.assertIn('if fingerprintUnchangedAfter' + step + ' {\n        modelUnchangedAfter' + step + ' = p08ReuseModelValue(host: host) == modelBefore\n    } else {\n        modelUnchangedAfter' + step + ' = false', action)
+            self.assertIn('if fingerprintUnchangedAfter' + step + ' {\n        modelUnchangedAfter' + step + ' = p08ReuseModelValue(host: &host) == modelBefore\n    } else {\n        modelUnchangedAfter' + step + ' = false', action)
             self.assertIn('fingerprintUnchangedAfter' + step + ' && modelUnchangedAfter' + step, action)
         self.assertNotIn('&& p08ReuseModelValue', action)
 
@@ -434,10 +434,13 @@ class MetadataLayoutTests(unittest.TestCase):
             match = source.split('func matchesBaselinePrefix(')[1].split('var ownedObservation:')[0]
             for field in fields:
                 if field == 'health':
-                    self.assertIn('baselineHealth() -> GiftUIOperationalHealth { actual.health() }', capture)
+                    self.assertIn('static func runtimeBaselineHealth(at control: UnsafeMutablePointer<CounterControl>) -> GiftUIOperationalHealth?', capture)
+                    target = 'actual.sink.target' if filename == 'CounterNativeRaster.swift' else 'actual.sink.session.target'
+                    self.assertIn('control.pointee.runtimeEndpoint?.' + target + '.control.pointee.backend.health', capture)
+                    self.assertNotIn('\n        control.pointee.backend.health', capture)
                     runtime = pipeline.split('struct CounterRuntimeSlotBaseline:')[1]
-                    self.assertIn('endpoint.health = control.pointee.runtimeEndpoint?.baselineHealth()', runtime)
-                    self.assertIn('endpoint.health == control.pointee.runtimeEndpoint?.baselineHealth()', runtime)
+                    self.assertIn('endpoint.health = CounterEndpoint.runtimeBaselineHealth(at: control)', runtime)
+                    self.assertIn('endpoint.health == CounterEndpoint.runtimeBaselineHealth(at: control)', runtime)
                 else:
                     self.assertIn('baseline.' + field, capture)
                     self.assertIn('baseline.' + field, match)
@@ -500,6 +503,57 @@ class MetadataLayoutTests(unittest.TestCase):
         self.assertEqual(sensitivity.count('let restored = before.matches(control)'), 10)
         self.assertIn('return 156', sensitivity)
         self.assertNotIn('.capture(', sensitivity)
+
+    def test_scalar_guard_truth_tables_and_actual_field_map(self):
+        import itertools
+        pipeline = (facts.METADATA_SOURCE.parent / 'CounterPipelineOwner.swift').read_text()
+        vacant = pipeline.split('static func requireVacantRuntimeSlot(at ')[1].split('borrowing func requireRuntimeClaim')[0]
+        projections = [('phaseVacant', 'runtimeSlotPhase == .vacant'), ('ownerAbsent', 'runtimeSlotOwner == nil'), ('endpointAbsent', 'runtimeEndpoint == nil'), ('rootAbsent', 'runtimeRootIdentity == nil'), ('actionAbsent', 'runtimeActionIdentity == nil'), ('candidateRootAbsent', 'runtimeCandidateRootIdentity == nil'), ('candidateActionAbsent', 'runtimeCandidateActionIdentity == nil')]
+        def complete(text):
+            return all('let ' + name + ' = control.pointee.' + expression in text for name, expression in projections)
+        self.assertTrue(complete(vacant))
+        for name, expression in projections:
+            self.assertFalse(complete(vacant.replace(expression, 'runtimeSlotPhase == .installed', 1)))
+        common = pipeline.split('private static func requireVacantFacts(')[1].split('private static func requireClaimFacts')[0]
+        expressions = dict(re.findall(r'let (\w+) = ([^\n]+)', common))
+        for bits in itertools.product([False, True], repeat=7):
+            values = dict(zip([name for name, _ in projections], bits))
+            for name in ['vacant', 'noKeys']:
+                values[name] = eval(expressions[name].replace('&&', ' and '), {'__builtins__': {}}, values)
+            self.assertEqual(values['vacant'] and values['noKeys'], all(bits))
+        claim = pipeline.split('private static func requireClaimFacts(')[1].split('borrowing func requireVacantRuntimeSlot')[0]
+        expression = re.search(r'let matches = ([^\n]+)', claim).group(1)
+        for sameOwner, installed, quiesced, endpointPresent in itertools.product([False, True], repeat=4):
+            expected = sameOwner and (installed or quiesced) and endpointPresent
+            self.assertEqual(eval(expression.replace('&&', ' and ').replace('||', ' or '), {'__builtins__': {}}, locals()), expected)
+        self.assertNotIn('requireVacantRuntimeSlot()\n        return true', pipeline)
+
+    def test_health_uses_actual_target_and_ends_endpoint_loans(self):
+        pipeline = (facts.METADATA_SOURCE.parent / 'CounterPipelineOwner.swift').read_text()
+        runtime = pipeline.split('struct CounterRuntimeSlotBaseline:')[1]
+        match = runtime.split('mutating func matches(_ control:')[1]
+        self.assertLess(match.index('matchesBaselinePrefix(&endpoint)'), match.index('CounterEndpoint.runtimeBaselineHealth(at: control)'))
+        self.assertLess(match.index('CounterEndpoint.runtimeBaselineHealth(at: control)'), match.index('matchesBaselineSuffix(&endpoint)'))
+        self.assertNotIn('&control.pointee', match)
+        for name, target in [('CounterNativeRaster.swift', 'actual.sink.target'), ('CounterTiledRaster.swift', 'actual.sink.session.target')]:
+            source = (facts.METADATA_SOURCE.parent / name).read_text()
+            body = source.split('static func runtimeBaselineHealth(')[1].split('}')[0]
+            expression = 'control.pointee.runtimeEndpoint?.' + target + '.control.pointee.backend.health'
+            self.assertIn(expression, body)
+            self.assertNotIn(expression, body.replace(target + '.control', 'control'))
+            self.assertNotIn('return control', body)
+            self.assertNotIn('inout', body)
+
+    def test_new_inout_model_and_teardown_rhs_preserve_skips(self):
+        source = facts.METADATA_SOURCE.read_text()
+        for name, expected in [('p08ReuseCurrentActionDown', '1'), ('p08ReuseCurrentActionUp', '2')]:
+            body = source.split('fileprivate func ' + name + '<Owner>')[1].split('@inline(never)')[0]
+            self.assertIn('if captureMatches { captureAndModelMatch = p08ReuseModelValue(host: &host) == ' + expected + ' }', body)
+            self.assertIn('else { captureAndModelMatch = false }', body)
+            self.assertNotIn('&& p08ReuseModelValue', body)
+        terminal = source.split('fileprivate func p08ReuseTerminal<Owner>')[1].split('fileprivate func p08RunReuseHost')[0]
+        self.assertIn('if quiescent { terminalState = p08ReuseTeardownStep(host: &host) == 8 }', terminal)
+        self.assertIn('else { terminalState = false }', terminal)
 
 
 if __name__ == '__main__':

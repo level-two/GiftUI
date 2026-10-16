@@ -70,6 +70,18 @@ struct CounterControl {
         runtimeSlotOwner = next.partialValue; runtimeSlotPhase = .installing
         return next.partialValue
     }
+    private static func requireVacantFacts(phaseVacant: Bool, ownerAbsent: Bool,
+        endpointAbsent: Bool, rootAbsent: Bool, actionAbsent: Bool,
+        candidateRootAbsent: Bool, candidateActionAbsent: Bool) {
+        let vacant = phaseVacant && ownerAbsent && endpointAbsent
+        let noKeys = rootAbsent && actionAbsent && candidateRootAbsent && candidateActionAbsent
+        precondition(vacant && noKeys)
+    }
+    private static func requireClaimFacts(sameOwner: Bool, installed: Bool, quiesced: Bool,
+        endpointPresent: Bool) {
+        let matches = sameOwner && (installed || quiesced) && endpointPresent
+        precondition(matches)
+    }
     borrowing func requireVacantRuntimeSlot() {
         let phaseVacant = runtimeSlotPhase == .vacant
         let ownerAbsent = runtimeSlotOwner == nil
@@ -78,17 +90,37 @@ struct CounterControl {
         let actionAbsent = runtimeActionIdentity == nil
         let candidateRootAbsent = runtimeCandidateRootIdentity == nil
         let candidateActionAbsent = runtimeCandidateActionIdentity == nil
-        let vacant = phaseVacant && ownerAbsent && endpointAbsent
-        let noKeys = rootAbsent && actionAbsent && candidateRootAbsent && candidateActionAbsent
-        precondition(vacant && noKeys)
+        Self.requireVacantFacts(phaseVacant: phaseVacant, ownerAbsent: ownerAbsent,
+            endpointAbsent: endpointAbsent, rootAbsent: rootAbsent, actionAbsent: actionAbsent,
+            candidateRootAbsent: candidateRootAbsent, candidateActionAbsent: candidateActionAbsent)
+    }
+    static func requireVacantRuntimeSlot(at control: UnsafeMutablePointer<CounterControl>) {
+        let phaseVacant = control.pointee.runtimeSlotPhase == .vacant
+        let ownerAbsent = control.pointee.runtimeSlotOwner == nil
+        let endpointAbsent = control.pointee.runtimeEndpoint == nil
+        let rootAbsent = control.pointee.runtimeRootIdentity == nil
+        let actionAbsent = control.pointee.runtimeActionIdentity == nil
+        let candidateRootAbsent = control.pointee.runtimeCandidateRootIdentity == nil
+        let candidateActionAbsent = control.pointee.runtimeCandidateActionIdentity == nil
+        Self.requireVacantFacts(phaseVacant: phaseVacant, ownerAbsent: ownerAbsent,
+            endpointAbsent: endpointAbsent, rootAbsent: rootAbsent, actionAbsent: actionAbsent,
+            candidateRootAbsent: candidateRootAbsent, candidateActionAbsent: candidateActionAbsent)
     }
     borrowing func requireRuntimeClaim(_ claim: UInt64) {
         let sameOwner = runtimeSlotOwner == claim
         let installed = runtimeSlotPhase == .installed
         let quiesced = runtimeSlotPhase == .quiesced
         let endpointPresent = runtimeEndpoint != nil
-        let matches = sameOwner && (installed || quiesced) && endpointPresent
-        precondition(matches)
+        Self.requireClaimFacts(sameOwner: sameOwner, installed: installed, quiesced: quiesced,
+            endpointPresent: endpointPresent)
+    }
+    static func requireRuntimeClaim(at control: UnsafeMutablePointer<CounterControl>, _ claim: UInt64) {
+        let sameOwner = control.pointee.runtimeSlotOwner == claim
+        let installed = control.pointee.runtimeSlotPhase == .installed
+        let quiesced = control.pointee.runtimeSlotPhase == .quiesced
+        let endpointPresent = control.pointee.runtimeEndpoint != nil
+        Self.requireClaimFacts(sameOwner: sameOwner, installed: installed, quiesced: quiesced,
+            endpointPresent: endpointPresent)
     }
     mutating func completeRuntimeInstallation(_ claim: UInt64) {
         precondition(runtimeSlotOwner == claim && runtimeSlotPhase == .installing && runtimeEndpoint != nil)
@@ -96,7 +128,9 @@ struct CounterControl {
         runtimeSlotPhase = .installed
     }
     mutating func markRuntimeQuiesced(_ claim: UInt64) {
-        requireRuntimeClaim(claim)
+        Self.requireClaimFacts(sameOwner: runtimeSlotOwner == claim,
+            installed: runtimeSlotPhase == .installed, quiesced: runtimeSlotPhase == .quiesced,
+            endpointPresent: runtimeEndpoint != nil)
         precondition(!backend.active)
         runtimeSlotPhase = .quiesced
     }
@@ -107,7 +141,7 @@ struct CounterControl {
     mutating func tryClearRuntimeSlot(_ claim: UInt64) -> Bool {
         guard runtimeSlotOwner == claim && runtimeSlotPhase == .quiesced,
               runtimeEndpoint != nil && !backend.active else { return false }
-        let idle = runtimeEndpoint!.isIdleForRuntimeRelease
+        let idle = runtimeEndpoint!.actual.sink.isIdleForOffer
         guard idle else { return false }
         // Offers are synchronous and resolved before quiescence. These owned
         // fields have no destructor callback and no scope-bearing capability.
@@ -115,7 +149,10 @@ struct CounterControl {
         runtimeRootIdentity = nil; runtimeActionIdentity = nil
         runtimeCandidateRootIdentity = nil; runtimeCandidateActionIdentity = nil
         runtimeSlotOwner = nil; runtimeSlotPhase = .vacant
-        requireVacantRuntimeSlot()
+        Self.requireVacantFacts(phaseVacant: runtimeSlotPhase == .vacant, ownerAbsent: runtimeSlotOwner == nil,
+            endpointAbsent: runtimeEndpoint == nil, rootAbsent: runtimeRootIdentity == nil,
+            actionAbsent: runtimeActionIdentity == nil, candidateRootAbsent: runtimeCandidateRootIdentity == nil,
+            candidateActionAbsent: runtimeCandidateActionIdentity == nil)
         return true
     }
     private var producerOrigin: CounterProducerOrigin?
@@ -127,6 +164,16 @@ struct CounterControl {
     func snapshotProducerOrigin() -> CounterProducerOrigin? { producerOrigin }
     func acceptsProducer(_ origin: CounterProducerOrigin?) -> Bool {
         selectedProducer ? origin != nil && origin == producerOrigin : origin == nil
+    }
+    static func snapshotProducerOrigin(at control: UnsafeMutablePointer<CounterControl>) -> CounterProducerOrigin? {
+        control.pointee.producerOrigin
+    }
+    static func acceptsProducer(at control: UnsafeMutablePointer<CounterControl>, _ origin: CounterProducerOrigin?) -> Bool {
+        if control.pointee.selectedProducer {
+            guard origin != nil else { return false }
+            return origin == control.pointee.producerOrigin
+        }
+        return origin == nil
     }
     mutating func retireProducerOrigin() {
         precondition(!inputGate.inputIsEligible && !wakeEnabled && !frameActive && admission.pointerCount == 0 && admission.pendingStateCount == 0 && !admission.sealActive)
@@ -260,20 +307,20 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     var semanticCandidate = false
     var interactionCandidate = false
     var rootIdentity: SemanticCompleteIdentity? {
-        get { control.pointee.requireRuntimeClaim(runtimeClaim); return control.pointee.runtimeRootIdentity }
-        nonmutating set { control.pointee.requireRuntimeClaim(runtimeClaim); control.pointee.runtimeRootIdentity = newValue }
+        get { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); return control.pointee.runtimeRootIdentity }
+        nonmutating set { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); control.pointee.runtimeRootIdentity = newValue }
     }
     var actionIdentity: SemanticCompleteIdentity? {
-        get { control.pointee.requireRuntimeClaim(runtimeClaim); return control.pointee.runtimeActionIdentity }
-        nonmutating set { control.pointee.requireRuntimeClaim(runtimeClaim); control.pointee.runtimeActionIdentity = newValue }
+        get { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); return control.pointee.runtimeActionIdentity }
+        nonmutating set { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); control.pointee.runtimeActionIdentity = newValue }
     }
     var candidateRootIdentity: SemanticCompleteIdentity? {
-        get { control.pointee.requireRuntimeClaim(runtimeClaim); return control.pointee.runtimeCandidateRootIdentity }
-        nonmutating set { control.pointee.requireRuntimeClaim(runtimeClaim); control.pointee.runtimeCandidateRootIdentity = newValue }
+        get { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); return control.pointee.runtimeCandidateRootIdentity }
+        nonmutating set { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); control.pointee.runtimeCandidateRootIdentity = newValue }
     }
     var candidateActionIdentity: SemanticCompleteIdentity? {
-        get { control.pointee.requireRuntimeClaim(runtimeClaim); return control.pointee.runtimeCandidateActionIdentity }
-        nonmutating set { control.pointee.requireRuntimeClaim(runtimeClaim); control.pointee.runtimeCandidateActionIdentity = newValue }
+        get { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); return control.pointee.runtimeCandidateActionIdentity }
+        nonmutating set { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); control.pointee.runtimeCandidateActionIdentity = newValue }
     }
     var header: RenderPlanHeader?
     var provenance: FrameProvenance?
@@ -375,7 +422,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         } catch { preconditionFailure("reuse actual model observation") }
     }
     borrowing func observeProducedAction() -> CounterProducedAction {
-        guard let origin = control.pointee.snapshotProducerOrigin(), let rootIdentity,
+        guard let origin = CounterControl.snapshotProducerOrigin(at: control), let rootIdentity,
               let targetGeneration = root.generation(identity: rootIdentity, ordinal: 0, publishable: false) else { preconditionFailure("selected capture observation") }
         var capture = PointerActionCapture<SemanticCompleteIdentity>()
         let point = control.pointee.actionPoints[0]
@@ -386,7 +433,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     // The original owned capture enters the existing pointer capture/seal path.
     // No target capability, dispatch callback or second pending owner is retained.
     borrowing func prepareProducedAction(_ produced: CounterProducedAction) -> Bool {
-        guard control.pointee.acceptsProducer(produced.origin) else { return false }
+        guard CounterControl.acceptsProducer(at: control, produced.origin) else { return false }
         guard !control.pointee.unavailable && control.pointee.context.phase == .idle else { return false }
         var admission = CounterAdmission(borrowing: control)
         let result = control.pointee.inputGate.submit(phase: .down, position: control.pointee.actionPoints[0], source: .init(rawValue: 0), observedPresentationRevision: control.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission)
@@ -394,7 +441,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         return true
     }
     borrowing func deliverProducedAction(_ produced: CounterProducedAction) -> Bool {
-        guard control.pointee.acceptsProducer(produced.origin) else { return false }
+        guard CounterControl.acceptsProducer(at: control, produced.origin) else { return false }
         guard !control.pointee.unavailable && control.pointee.context.phase == .idle,
               control.pointee.runtime.pointer.capture.current == produced.captured else { return false }
         // Use the retained original value itself after the real down established
@@ -624,7 +671,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         if let error = boundary(.offerAndProduction) { return .failure(error) }
         if let error = phase.transition(to: .offering) { return .failure(.execution(error)) }
         control.pointee.context = phase.context
-        control.pointee.requireRuntimeClaim(runtimeClaim)
+        CounterControl.requireRuntimeClaim(at: control, runtimeClaim)
         let productionSemantic = semantic.borrowedStore()
         let productionHeader = header!, productionLimits = limits, productionProvenance = provenance!
         // Only these disjoint fields/formals are lent across the producer.
@@ -765,7 +812,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
 extension CounterPipelineOwner
 where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
     private borrowing func clearOwnedRuntimeSlot() {
-        control.pointee.requireRuntimeClaim(runtimeClaim)
+        CounterControl.requireRuntimeClaim(at: control, runtimeClaim)
         let idle = control.pointee.runtimeEndpoint!.isIdleForRuntimeRelease
         let inactive = !control.pointee.backend.active
         precondition(idle && inactive)
@@ -1124,7 +1171,7 @@ struct CounterRuntimeSlotBaseline: ~Copyable {
         lastSerial = control.pointee.runtimeLastOwnerSerial
         endpointPresent = control.pointee.runtimeEndpoint != nil
         control.pointee.runtimeEndpoint?.captureBaselinePrefix(into: &endpoint)
-        endpoint.health = control.pointee.runtimeEndpoint?.baselineHealth()
+        endpoint.health = CounterEndpoint.runtimeBaselineHealth(at: control)
         control.pointee.runtimeEndpoint?.captureBaselineSuffix(into: &endpoint)
         root = control.pointee.runtimeRootIdentity; action = control.pointee.runtimeActionIdentity
         candidateRoot = control.pointee.runtimeCandidateRootIdentity
@@ -1154,7 +1201,7 @@ struct CounterRuntimeSlotBaseline: ~Copyable {
         if endpointPresent {
             let samePrefix = control.pointee.runtimeEndpoint?.matchesBaselinePrefix(&endpoint) == true
             guard samePrefix else { return false }
-            let sameHealth = endpoint.health == control.pointee.runtimeEndpoint?.baselineHealth()
+            let sameHealth = endpoint.health == CounterEndpoint.runtimeBaselineHealth(at: control)
             guard sameHealth else { return false }
             let sameSuffix = control.pointee.runtimeEndpoint?.matchesBaselineSuffix(&endpoint) == true
             guard sameSuffix else { return false }

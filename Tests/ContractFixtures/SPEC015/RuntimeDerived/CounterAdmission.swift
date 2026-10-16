@@ -139,28 +139,28 @@ struct CounterAdmission: ExecutionAdmissionSink {
     static var pointerStateStorageBytes: Int { Controller.pointerStateStorageBytes }
     init(control: UnsafeMutablePointer<CounterControl>, limits: ExecutionLimits) {
         self.control = control
-        producerOrigin = control.pointee.snapshotProducerOrigin(); rejectionContext = control.pointee.context
+        producerOrigin = CounterControl.snapshotProducerOrigin(at: control); rejectionContext = control.pointee.context
         precondition(control.pointee.admissionController == nil)
         control.pointee.admissionController = Controller(limits: limits, context: control.pointee.context, committedPresentationRevision: control.pointee.runtime.committedPresentation, storage: CounterQueuedFacts(control: control))
     }
     init(borrowing control: UnsafeMutablePointer<CounterControl>) {
         precondition(control.pointee.admissionController != nil)
         self.control = control
-        producerOrigin = control.pointee.snapshotProducerOrigin(); rejectionContext = control.pointee.context
+        producerOrigin = CounterControl.snapshotProducerOrigin(at: control); rejectionContext = control.pointee.context
     }
     private mutating func synchronize() {
         controller.synchronize(context: control.pointee.context, committedPresentationRevision: control.pointee.runtime.committedPresentation, sealClosed: control.pointee.admission.sealActive, quiescent: control.pointee.unavailable)
     }
     mutating func submit(pointer: NormalizedPointerEvent) -> ExecutionAdmissionOutcome {
-        guard control.pointee.acceptsProducer(producerOrigin) else { return .init(result: .unavailable, context: rejectionContext) }
+        guard CounterControl.acceptsProducer(at: control, producerOrigin) else { return .init(result: .unavailable, context: rejectionContext) }
         synchronize(); let outcome = controller.submit(pointer: pointer); if outcome.result == .queued { control.pointee.emitCounterWake(.admittedWork, acceptedFact: true) }; counterTrace("admission.pointer", outcome); return outcome
     }
     mutating func submit(stateChange: UInt8) -> ExecutionAdmissionOutcome {
-        guard control.pointee.acceptsProducer(producerOrigin) else { return .init(result: .unavailable, context: rejectionContext) }
+        guard CounterControl.acceptsProducer(at: control, producerOrigin) else { return .init(result: .unavailable, context: rejectionContext) }
         synchronize(); let outcome = controller.submit(stateChange: stateChange); if outcome.result == .queued { control.pointee.emitCounterWake(.admittedWork, acceptedFact: true) }; counterTrace("admission.state", outcome); return outcome
     }
     mutating func submit(completion: UInt16) -> ExecutionAdmissionOutcome {
-        guard control.pointee.acceptsProducer(producerOrigin) else { return .init(result: .unavailable, context: rejectionContext) }
+        guard CounterControl.acceptsProducer(at: control, producerOrigin) else { return .init(result: .unavailable, context: rejectionContext) }
         synchronize(); let outcome = controller.submit(completion: completion); if outcome.result == .queued { control.pointee.emitCounterWake(.admittedWork, acceptedFact: true) }; counterTrace("admission.completion", outcome); return outcome
     }
 }

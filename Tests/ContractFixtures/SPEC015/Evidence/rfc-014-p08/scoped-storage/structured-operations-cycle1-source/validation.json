@@ -1,0 +1,154 @@
+{
+  "kind": "compiler-free-correction1-source-readiness-only",
+  "checks": [
+    {
+      "check": "46 compiler-free layout/source/backend tests",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "scripts/contracts/test_p08_layout_facts.py",
+        "scripts/contracts/test_p08_backend_observation.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "..............................................\n----------------------------------------------------------------------\nRan 46 tests in 0.163s\n\nOK\n"
+    },
+    {
+      "check": "exact changed-cone source parity",
+      "argv": [
+        "python3",
+        "-B",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/structured-operations-cycle1-source/check-source-parity.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"kind\": \"compiler-free-structured-operations-cycle1-source-parity\",\n  \"baseline\": \"81f5ed80\",\n  \"checks_passed\": 107,\n  \"checks\": [\n    \"P08CallerCustody exact except actual pointer queries\",\n    \"p08EmbeddedGraph exact except actual pointer queries\",\n    \"p08EmbeddedHost exact except actual pointer queries\",\n    \"p08EmbeddedScoped exact except actual pointer queries\",\n    \"p08DeriveMetadataLayout exact except actual pointer queries\",\n    \"p08RunEmbeddedCorpus exact except actual pointer queries\",\n    \"p08RequireSameInventory exact except actual pointer queries\",\n    \"p08MetadataOuterView exact except actual pointer queries\",\n    \"p08RunMetadataCase exact except actual pointer queries\",\n    \"p08RunMetadataHost exact except actual pointer queries\",\n    \"p08RunMetadataExchange exact except actual pointer queries\",\n    \"p08PrepareMetadata exact except actual pointer queries\",\n    \"p08DestroyMetadata exact except actual pointer queries\",\n    \"p08RunMetadataTwoHosts exact except actual pointer queries\",\n    \"p08RunOneMetadataHost exact except actual pointer queries\",\n    \"p08ReconstructMetadataHost exact except actual pointer queries\",\n    \"p08CompleteBody exact except actual pointer queries\",\n    \"runP08ScopedBody exact except actual pointer queries\",\n    \"p08RequireFreshControl exact except actual pointer queries\",\n    \"p08RequireRetiredControl exact except actual pointer queries\",\n    \"p08FinishStaticOwner original transfers/early/hooks/payload unchanged\",\n    \"p08RunStaticHostPhase original transfers/early/hooks/payload unchanged\",\n    \"p08ConstructStaticHost original transfers/early/hooks/payload unchanged\",\n    \"p08RunStaticSessionPhase original transfers/early/hooks/payload unchanged\",\n    \"p08UseOriginalStaticHost original transfers/early/hooks/payload unchanged\",\n    \"p08FinishOriginalStaticHost original transfers/early/hooks/payload unchanged\",\n    \"p08FinishDynamicOwner original transfers/early/hooks/payload unchanged\",\n    \"p08RunDynamicHostPhase original transfers/early/hooks/payload unchanged\",\n    \"p08ConstructDynamicHost original transfers/early/hooks/payload unchanged\",\n    \"p08RunDynamicSessionPhase original transfers/early/hooks/payload unchanged\",\n    \"p08UseOriginalDynamicHost original transfers/early/hooks/payload unchanged\",\n    \"p08FinishOriginalDynamicHost original transfers/early/hooks/payload unchanged\",\n    \"p08ReuseModelValue exact effects/fields except inout host formal\",\n    \"p08ReuseProducedAction exact effects/fields except inout host formal\",\n    \"p08ReusePrepareAction exact effects/fields except inout host formal\",\n    \"p08ReuseDeliverAction exact effects/fields except inout host formal\",\n    \"p08ReuseTeardownStep exact effects/fields except inout host formal\",\n    \"p08ReuseRejectAction exact effects/fields except inout host formal\",\n    \"p08ReuseRejectOldOrigins exact effects/fields except inout host formal\",\n    \"p08ReuseRejectInput exact effects/fields except inout host formal\",\n    \"p08ReuseRejectAdmission exact effects/fields except inout host formal\",\n    \"p08ReuseRejectSource exact effects/fields except inout host formal\",\n    \"p08ReuseCurrentAction exact effects/fields except inout host formal\",\n    \"p08RunReuseHost exact effects/fields except inout host formal\",\n    \"full fingerprint incl probe sequences unchanged\",\n    \"156 sensitivity checks exact\",\n    \"26 reuse label source multiset unchanged\",\n    \"CounterAdmission solely mechanical actual-pointer queries\",\n    \"CounterApplication solely mechanical actual-pointer queries\",\n    \"CounterCoordinatorProbe solely mechanical actual-pointer queries\",\n    \"all Control stored/computed declarations identical\",\n    \"claimRuntimeSlot original state/provenance operation unchanged\",\n    \"tryClaimRuntimeSlot original state/provenance operation unchanged\",\n    \"completeRuntimeInstallation original state/provenance operation unchanged\",\n    \"clearRuntimeSlot original state/provenance operation unchanged\",\n    \"installProducerOrigin original state/provenance operation unchanged\",\n    \"retireProducerOrigin original state/provenance operation unchanged\",\n    \"snapshotProducerOrigin() original state/provenance operation unchanged\",\n    \"acceptsProducer(_ origin: original state/provenance operation unchanged\",\n    \"all non-Control pipeline source exact except selected query seams\",\n    \"requireVacantRuntimeSlot() original seven/four named predicates/order\",\n    \"requireVacantRuntimeSlot() same actual-pointer field projection/order\",\n    \"requireVacantFacts exact original Boolean truth table\",\n    \"requireRuntimeClaim(_ claim: original seven/four named predicates/order\",\n    \"requireRuntimeClaim(_ claim: same actual-pointer field projection/order\",\n    \"requireClaimFacts exact original Boolean truth table\",\n    \"actual origin snapshot private field only\",\n    \"actual producer origin complete equality and nil skip\",\n    \"CounterNativeRaster only concrete health operation changed\",\n    \"CounterNativeRaster actual installed target health, not enclosing backend\",\n    \"CounterNativeRaster idle direct field equivalence\",\n    \"CounterTiledRaster only concrete health operation changed\",\n    \"CounterTiledRaster actual installed target health, not enclosing backend\",\n    \"CounterTiledRaster idle direct field equivalence\",\n    \"Static original initial audit/factory/failure order\",\n    \"Static cold check operations/order before original root scope\",\n    \"Static original foreign/root/semantic/canvas/body topology unchanged\",\n    \"Static exact per-object reconstruction sequence\",\n    \"StaticCanvas deinit original field exactly once\",\n    \"StaticCanvas original initializer expression retained\",\n    \"StaticSemantic deinit original field exactly once\",\n    \"StaticSemantic original initializer expression retained\",\n    \"StaticRoot deinit original field exactly once\",\n    \"StaticRoot original initializer expression retained\",\n    \"Dynamic original initial audit/factory/failure order\",\n    \"Dynamic cold rejection checks/order unchanged\",\n    \"Dynamic original foreign/root/semantic/canvas/body topology unchanged\",\n    \"Dynamic exact per-object reconstruction sequence\",\n    \"DynamicCanvas deinit original field exactly once\",\n    \"DynamicCanvas original initializer expression retained\",\n    \"DynamicSemantic deinit original field exactly once\",\n    \"DynamicSemantic original initializer expression retained\",\n    \"DynamicRoot deinit original field exactly once\",\n    \"DynamicRoot original initializer expression retained\",\n    \"StaticRoot exact original initializer fields/capacities/namespace\",\n    \"StaticSemantic exact original initializer fields/capacities/namespace\",\n    \"StaticCanvas exact original initializer fields/capacities/namespace\",\n    \"DynamicRoot exact original initializer fields/capacities/namespace\",\n    \"DynamicSemantic exact original initializer fields/capacities/namespace\",\n    \"DynamicCanvas exact original initializer fields/capacities/namespace\",\n    \"actual maintained endpoint health is only sink health delegation\",\n    \"actual Tiled session health is only target delegation\",\n    \"CounterNativeRaster adapter health actual delegate\",\n    \"CounterNativeRaster target health actual original pointer field\",\n    \"CounterTiledRaster adapter health actual delegate\",\n    \"CounterTiledRaster target health actual original pointer field\",\n    \"common Control init/deinit same typed operations\"\n  ],\n  \"compiler_or_runtime\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "check": "CounterScopedStorage parser only",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "CounterPipelineOwner parser only",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "CounterNativeRaster parser only",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "CounterTiledRaster parser only",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "CounterAdmission parser only",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "CounterApplication parser only",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "CounterCoordinatorProbe parser only",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "governance",
+      "argv": [
+        "scripts/validate-governance.rb"
+      ],
+      "exit_code": 0,
+      "stdout": "Authority graph validation passed: 204 nodes, 2036 edges.\nTask evidence validation passed: SPEC-001 all tasks (72 task(s)).\nTask evidence validation passed: SPEC-002 all tasks (33 task(s)).\nTask evidence validation passed: SPEC-003 all tasks (31 task(s)).\nTask evidence validation passed: SPEC-004 all tasks (30 task(s)).\nTask evidence validation passed: SPEC-005 all tasks (31 task(s)).\nTask evidence validation passed: SPEC-011 all tasks (53 task(s)).\nGovernance validation passed: 7 feature(s), 76 lifecycle artifact(s), 9 skill(s).\n",
+      "stderr": ""
+    },
+    {
+      "check": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "python_ast_paths": 3,
+  "maintained_formatter": {
+    "argv": [
+      "env",
+      "PATH=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+      "scripts/format-swift.sh"
+    ],
+    "exit_code": 0,
+    "maintained_source_changes": false
+  },
+  "compiler_invocations": 0,
+  "runtime_executions": 0,
+  "fit_claim": false
+}

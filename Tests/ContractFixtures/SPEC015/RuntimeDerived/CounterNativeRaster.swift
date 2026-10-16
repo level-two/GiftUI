@@ -266,7 +266,11 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
         baseline.sinkProducerError = actual.sink.retainedProducerError
         baseline.idle = actual.sink.isIdleForOffer
     }
-    borrowing func baselineHealth() -> GiftUIOperationalHealth { actual.health() }
+    // Same actual installed target as actual.health's pure delegation chain.
+    // No endpoint field loan, whole-Control argument or returned pointer.
+    static func runtimeBaselineHealth(at control: UnsafeMutablePointer<CounterControl>) -> GiftUIOperationalHealth? {
+        control.pointee.runtimeEndpoint?.actual.sink.target.control.pointee.backend.health
+    }
     mutating func captureBaselineSuffix(into baseline: inout CounterEndpointBaseline) {
         baseline.recording.captureEndpoint(&self)
         baseline.targetConfiguration = actual.sink.target.configuration
