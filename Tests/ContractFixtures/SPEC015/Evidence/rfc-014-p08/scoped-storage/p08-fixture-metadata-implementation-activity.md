@@ -1,7 +1,9 @@
 # P08 fixture metadata implementation activity
 
-Current boundary: **initial Native collections failed; final correction2 approach
-ready for independent review, source not applied**. The [collected batch and
+Current boundary: **final correction2 APPROACH PASS at `86c24639`; source not applied**.
+[Independent approach review](p08-fixture-metadata-cycle2-independent-approach-review.md)
+confirms readiness for the final grouped correction under existing authorization;
+no fit or third variant is inferred. The [collected batch and
 concrete approach](p08-fixture-metadata-cycle2-approach.md) preserve both profiles:
 27pass/execute -5/14blocked/384notrun each, with all5 exclusivity and2 projection
 controls passing. Native trap PC remains unproved. The existing nRF packet proves

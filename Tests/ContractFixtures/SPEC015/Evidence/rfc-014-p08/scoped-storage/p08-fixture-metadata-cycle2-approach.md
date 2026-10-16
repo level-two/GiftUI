@@ -1,6 +1,8 @@
 # P08 donor metadata — collected failures and final correction approach
 
-**Approach for independent review; no correction2 source applied.** Input `b65da0d9`,
+**Independent APPROACH PASS at `86c24639`; no correction2 source applied.**
+[Focused approach review](p08-fixture-metadata-cycle2-independent-approach-review.md)
+confirms the within-contract final grouped source plan; codegen/fit remain unknown. Input `b65da0d9`,
 compiled source `3a1d1d32`. Correction1/2 was productive (compile/layout); the final
 correction2/2 remains available. Historical closed allowances remain closed.
 This groups the now-collected Native failure with the target's evidenced shared
