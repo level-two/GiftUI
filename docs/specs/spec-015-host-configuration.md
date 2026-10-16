@@ -1789,6 +1789,9 @@ Specification:
 
 ## References
 
+- [P08 prepared-lending proposal](../implementation-designs/spec-015-p08-prepared-lending.md)
+  is a derived draft private realization, not source authority or a resource amendment.
+
 - [P08 completion/resource assessment](../implementation-designs/spec-015-p08-completion-resource-assessment.md)
   is a derived draft assessment; it changes no contract, bound or allowance.
 

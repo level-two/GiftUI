@@ -1,5 +1,10 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+Current design-only proposal: [prepared lending](../../implementation-designs/spec-015-p08-prepared-lending.md)
+separates actual-owner preflight and lends one preparation value through the
+unchanged typed-loan chain. No source allowance or fit claim; current linked
+stack rejection and all historical repair stops remain in force.
+
 Current P08 boundary — **actual linked firmware stack FAIL; normal artifact measured**.
 The [current firmware result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-resource-result.md)
 records full nRF 227/227 and pristine linked ABI/layout/RAM/flash passes at

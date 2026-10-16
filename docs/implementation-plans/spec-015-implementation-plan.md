@@ -8,6 +8,7 @@ owners:
 created: 2026-09-09
 updated: 2026-10-16
 related_design_notes:
+  - ../implementation-designs/spec-015-p08-prepared-lending.md
   - ../implementation-designs/spec-015-p08-completion-resource-assessment.md
   - ../implementation-designs/spec-015-p08-structured-operations.md
   - ../implementation-designs/spec-015-p08-typed-stage-realization.md
@@ -25,6 +26,12 @@ superseded_by: null
 ---
 
 # SPEC-015 Implementation Plan
+
+Current design proposal — [prepared lending](../implementation-designs/spec-015-p08-prepared-lending.md)
+targets actual firmware whole-owner receiver homes and repeated preparation-fact
+captures while preserving original typed loans. Design only; no source allowance,
+compiler/build execution or fit claim. Independent actual-image review `3716ee2d`
+confirms the prior package PASS and stack FAIL; P08/R07/T8.1 stay open.
 
 Current P08 boundary — **constructor/caller package independently closed; resource assessment**.
 The [completion/resource assessment](../implementation-designs/spec-015-p08-completion-resource-assessment.md)
