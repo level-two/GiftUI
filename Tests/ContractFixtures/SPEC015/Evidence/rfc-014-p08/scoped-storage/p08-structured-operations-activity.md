@@ -1,21 +1,20 @@
 # P08 structured construction and observation operations activity
 
-Current boundary: **combined initial independent SOURCE PASS at `3065c574`**.
-The [bounded source review](p08-structured-operations-initial-independent-source-review.md)
-permits the three registered fresh focused collections; no compiler/runtime/fit proof yet.
-The [source-readiness record](p08-structured-operations-initial-source.md) and
-[exact manifest](structured-operations-source/manifest.json) pin the four-fixture
-candidate against `ee56c020` and its new seven-receipt qualification. Design PASS
-`ee56c020` is historical design evidence, not source/compiler/fit evidence.
-The user requested proceeding while covering related issues together and avoiding
-unnecessary turbulence. Previous donor-metadata2/2 and every earlier allowance
-remain closed. The prior `6449093d` successful focused behavior and independently
-confirmed66104 resource rejection remain immutable prior-source evidence.
+Current boundary: **independent SOURCE PASS `c966aa8b`; all three initial fresh
+focused collections PASS, resource analysis pending**. Source is `3065c574`.
+The [collection checkpoint](structured-operations-initial-collections/result.json)
+preserves exact nRF25pass/202notrun and Native42pass/384notrun receipts; both Native
+routes pass reuse/exclusivity/projection with3,472,564 total assertions and no failures.
+Current160 strict layout facts keep four34720 slots/138880 retained and15760
+metadata/18960 donor tail. Partial flags are focused_passed=true,
+collection_complete=false/passed=false; no full-suite, stack or fit claim follows.
+Initial source/design/frozen records remain historical. Previous donor-metadata2/2
+and every earlier allowance remain closed.
 
 Scope: one combined initial implementation plus at most two cause-grouped
 corrective cycles, stopping after two consecutive unproductive cycles or a genuine
-contract/scope/resource decision. Current correction0/2; initial source1, compiler0,
-runtime0, image0 in this package. Mechanical source-review issues are grouped in
+contract/scope/resource decision. Current correction0/2; initial source1, fresh nRF screen1, Native focused collections2,
+image0 in this package. The analysis itself invokes no compiler/runtime. Mechanical source-review issues are grouped in
 the coherent pass/cycle, not individual user permission barriers. Independent
 design PASS precedes implementation; independent SOURCE review precedes execution.
 Ordinary within-contract execution after that review is already user-authorized.
