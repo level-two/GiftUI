@@ -27,6 +27,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current configuration — **independent authority/configuration PASS; guarded build next**.
+The [bounded review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-counter-resource-configuration-independent-review.md)
+confirms ADR-040 and counter-only stack/RAM routing with existing guards preserved.
+Execute the normal pristine counter route, then freshly freeze/rebase/review its
+actual linked proof. Build success alone does not close resource or P08 gates.
+
 Current P08 boundary — **counter resource exception accepted; scoped configuration implemented, unbuilt**.
 [ADR-040](../adrs/adr-040-counter-physical-sram-budget.md) records the
 [human acceptance](../iterations/iteration-003-review/p08-counter-resource-acceptance.md).

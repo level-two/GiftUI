@@ -1,6 +1,9 @@
 # Counter-only resource configuration — 2026-10-16
 
-**Configuration implemented; no firmware build or new-image fit claim.**
+**Configuration implemented and independently reviewed PASS; ready for the normal
+guarded counter build. No firmware build or new-image fit claim.**
+The [independent authority/configuration review](p08-counter-resource-configuration-independent-review.md)
+confirms the narrow routing and preserved guards.
 [ADR-040](../../../../../../docs/adrs/adr-040-counter-physical-sram-budget.md) and
 [explicit human acceptance](../../../../../../docs/iterations/iteration-003-review/p08-counter-resource-acceptance.md)
 are committed at `a9ccac89`. They authorize the finite counter's physical 262,144
