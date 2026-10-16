@@ -16,6 +16,15 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
+**Final result: all three focused collections PASS; main-stack resource rejection
+remains.** Source `597dbd7f`, review `3ce6f91f`; the
+[current final result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-final-result.md)
+pins current object evidence and required cold29872 > main27648 before omitted
+original bank-loan/outer/IRQ costs. Correction2/2 is exhausted; this package is
+closed, no third automatic source variant or resource/contract change. Full202/
+image stays held, P08/SO acceptance open. The following source/result boundaries
+are immutable history, not later execution status.
+
 **Final grouped correction2/2 independent SOURCE PASS at `597dbd7f`.**
 The [bounded source review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-cycle2-independent-source-review.md)
 permits the three registered fresh focused collections; compilation and fit remain unproved.

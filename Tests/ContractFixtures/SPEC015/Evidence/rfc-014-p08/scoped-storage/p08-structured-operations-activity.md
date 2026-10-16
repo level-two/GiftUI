@@ -1,5 +1,17 @@
 # P08 structured construction and observation operations activity
 
+Current final boundary: **STOP — correction2/2 consumed; all three focused
+collections PASS, required cold main-stack lower bound29872 >27648**. See the
+[final result](p08-structured-operations-final-result.md) and passing checkpoint
+`37ae3bd3` for source `597dbd7f`, SOURCE review `3ce6f91f`. The bound omits additional
+original bank-loan/outer/IRQ costs and is not a total-RAM failure claim. Full202/
+image held; no third automatic source variant. The package is closed with P08/SO
+acceptance open. Independent result review follows; historical allowances remain
+closed. Total current-package nRF focused screens3, Native focused collections6,
+image0. Read-only analysis added no compiler/runtime execution or source change.
+
+Historical final source-review boundary:
+
 Current source boundary: **final grouped correction2/2 independent SOURCE PASS at
 `597dbd7f`**. The [bounded source review](p08-structured-operations-cycle2-independent-source-review.md)
 permits the three registered fresh focused collections. The [new freeze](p08-structured-operations-cycle2-source.md)
