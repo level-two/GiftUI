@@ -1,6 +1,15 @@
 # P08 fixture metadata implementation activity
 
-Current boundary: **correction 1/2 focused SOURCE PASS at `31ecb1a5`**.
+Current boundary: **initial Native collections failed; final correction2 approach
+ready for independent review, source not applied**. The [collected batch and
+concrete approach](p08-fixture-metadata-cycle2-approach.md) preserve both profiles:
+27pass/execute -5/14blocked/384notrun each, with all5 exclusivity and2 projection
+controls passing. Native trap PC remains unproved. The existing nRF packet proves
+the invalid ordinal and pre-trap stack rejection. Correction1/2 remains consumed
+and productive; correction2/2 is not started. No new compiler/runtime/debugger or
+source variant ran in this analysis. P08 remains blocked; old allowances stay closed.
+
+Previous source boundary: **correction 1/2 focused SOURCE PASS at `31ecb1a5`**.
 [Two-site reassessment](p08-fixture-metadata-cycle1-independent-source-review.md#focused-two-site-addendum--31ecb1a5)
 closes B01/B02 with exact short-circuit model-read effects. The first registered
 fresh nRF active129+metadata31 screen is ready; compiler/runtime/fit remain unproved.
@@ -19,8 +28,8 @@ the required fixed stack subset65712 plus backing138880 exceeds RAM196608.
 An independently observed invalid ordinal31 in the added sensitivity controls
 also traps/prunes continuation. No runtime acceptance or current image claim.
 Correction1 was productive for source compilation; correction2/2 is not started.
-Next is the packet's two profile-matched fresh Native focused collections to group
-remaining failures before choosing/reviewing the final cause correction. No source
+Those two profile-matched fresh Native focused collections are now preserved in
+the current batch above before the final cause correction is reviewed. No source
 fix, compiler retry, new resource limit or automatic variant was applied in analysis.
 
 Current boundary: [grouped correction1/2 source freeze](p08-fixture-metadata-cycle1-source-freeze.md)
