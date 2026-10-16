@@ -1,0 +1,85 @@
+{
+  "kind": "compiler-free-constructor-caller-cycle2-source-readiness-only",
+  "checks": [
+    {
+      "check": "34 exact inverse checks,22+112 inherited obligations,10 mutation negatives",
+      "argv": [
+        "python3",
+        "-B",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/constructor-caller-cycle2-source/check-source-parity.py"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\n  \"kind\": \"compiler-free-constructor-caller-cycle2-inverse-parity\",\n  \"baseline\": \"42c0a1e2\",\n  \"checks_passed\": 34,\n  \"checks\": [\n    \"Static exact full original union on named inout output\",\n    \"Static early1/2/3 leave initialized-nil destination unchanged\",\n    \"Static no raw placement or new release/deinit\",\n    \"Static inverse exact original cold transfers/guards/joins/factory/completion\",\n    \"Static exactly one initialized nil field and actual destination call\",\n    \"Static original nil construction/use/defer order\",\n    \"Static same payload/options/early factory disposition and teardown\",\n    \"Static joins exact actual field loan, complete owned core args\",\n    \"Static inverse complete two snapshots/six checks/call order\",\n    \"Static configuration actual inout field only\",\n    \"Static all four assertion captures are owned Boolean only\",\n    \"Static inverse all actual original configuration predicates/order\",\n    \"Static exactly one configuration call with original field\",\n    \"Static exact original configuration timing and whole original callback body\",\n    \"Dynamic exact full original union on named inout output\",\n    \"Dynamic early1/2/3 leave initialized-nil destination unchanged\",\n    \"Dynamic no raw placement or new release/deinit\",\n    \"Dynamic inverse exact original cold transfers/guards/joins/factory/completion\",\n    \"Dynamic exactly one initialized nil field and actual destination call\",\n    \"Dynamic original nil construction/use/defer order\",\n    \"Dynamic same payload/options/early factory disposition and teardown\",\n    \"Dynamic joins exact actual field loan, complete owned core args\",\n    \"Dynamic inverse complete two snapshots/six checks/call order\",\n    \"Dynamic configuration actual inout field only\",\n    \"Dynamic all four assertion captures are owned Boolean only\",\n    \"Dynamic inverse all actual original configuration predicates/order\",\n    \"Dynamic exactly one configuration call with original field\",\n    \"Dynamic exact original configuration timing and whole original callback body\",\n    \"cold helper preserves exact guard/message and returns only same owned IDs\",\n    \"actual original inout owner/outer; no consumption/owner return\",\n    \"exact namespace call after backing init before inventory/freshness/host\",\n    \"inverse entire two-host/reconstruction/inventory/namespace ordering unchanged\",\n    \"every source token outside reviewed seams unchanged\",\n    \"inverse retains prior22 checks and original112 loan/oracle/prefix checks\"\n  ],\n  \"inherited_cycle1_checks\": 22,\n  \"inherited_initial_checks\": 112,\n  \"negative_mutations_rejected\": [\n    \"missing destination dependency\",\n    \"ordinary return without destination union\",\n    \"nonempty original destination\",\n    \"wrong destination field\",\n    \"early path destroys destination\",\n    \"weakened configuration\",\n    \"wrong complete join audit\",\n    \"wrong original namespace input\",\n    \"new release before guard\",\n    \"weaker complete baseline\"\n  ],\n  \"compiler_or_runtime\": false\n}\n"
+    },
+    {
+      "check": "48 layout/source/backend unit tests",
+      "argv": [
+        "env",
+        "PYTHONPATH=scripts/contracts",
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "scripts/contracts/test_p08_layout_facts.py",
+        "scripts/contracts/test_p08_backend_observation.py"
+      ],
+      "exit_code": 0,
+      "stderr": "................................................\n----------------------------------------------------------------------\nRan 48 tests in 0.164s\n\nOK\n",
+      "stdout": ""
+    },
+    {
+      "check": "fixture parser only",
+      "argv": [
+        ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "formatted_fixture_output_discarded": true
+    },
+    {
+      "check": "maintained formatter",
+      "argv": [
+        "env",
+        "PATH=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "scripts/format-swift.sh"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "check": "governance",
+      "argv": [
+        "scripts/validate-governance.rb"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "Authority graph validation passed: 204 nodes, 2036 edges.\nTask evidence validation passed: SPEC-001 all tasks (72 task(s)).\nTask evidence validation passed: SPEC-002 all tasks (33 task(s)).\nTask evidence validation passed: SPEC-003 all tasks (31 task(s)).\nTask evidence validation passed: SPEC-004 all tasks (30 task(s)).\nTask evidence validation passed: SPEC-005 all tasks (31 task(s)).\nTask evidence validation passed: SPEC-011 all tasks (53 task(s)).\nGovernance validation passed: 7 feature(s), 76 lifecycle artifact(s), 9 skill(s).\n"
+    },
+    {
+      "check": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "python_ast_paths": [
+    "scripts/contracts/check-spec-015-counter.py",
+    "scripts/contracts/test_p08_layout_facts.py",
+    "scripts/contracts/test_p08_backend_observation.py",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/constructor-caller-cycle2-source/check-source-parity.py"
+  ],
+  "compiler_invocations": 0,
+  "runtime_executions": 0,
+  "fit_claim": false
+}

@@ -1,15 +1,15 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current P08 activity — **constructor/caller correction1 focused PASS; required cold-stack FAIL**.
-The [current result/final grouped correction proposal](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle1-result.md)
-pin source `42c0a1e2`, SOURCE review `2604ff64`, three fresh focused passes,
-160 strict layout roots and required cold30440 >27648 before omitted costs.
-Scoped/live frames improved; actual caller cleanup/constructor materializations
-remain. Initial1/correction1/2; final proposal pending independent review, not
-applied. Exact destination lifetime/codegen acceptance is unproved. All384/202
-omissions stay explicit; no image/full fit/total-RAM failure claim. Main27648/
-RAM196608/four34720 slots, ownership/corpus and historical closed allowances
-remain unchanged. P08/SO acceptance open; full202/image held.
+Current P08 activity — **constructor/caller final correction2 source frozen; SOURCE review pending**.
+The [source freeze](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle2-source.md)
+implements final APPROACH PASS `7f4dc782`: full-union named inout Optional host
+destination, cold config/join actual-plan loans and isolated original namespace
+check. Initial1/correction2/2 consumed; no third automatic variant. Current compiler/
+runtime/image0; destination lifetime/failure cleanup/layout/fit unproved. Prior
+focused PASS/cold30440 rejection stays immutable;384/202 omissions remain explicit.
+Main27648/RAM196608/four34720 slots, full ownership/corpus and historical closed
+allowances stay unchanged. P08/SO acceptance open; fresh runs require SOURCE PASS,
+full202/image requires viable complete resource paths.
 
 Historical earlier navigation follows.
 
