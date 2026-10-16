@@ -1,5 +1,16 @@
 # P08 constructor/caller realization activity
 
+Current boundary: **correction1 all three focused collections PASS; required cold
+main-stack lower bound30440 >27648**, source `42c0a1e2`, SOURCE review `2604ff64`.
+The [current result/final grouped correction proposal](p08-constructor-caller-cycle1-result.md)
+pin exact receipts/current object/REL32 and materialization evidence. Initial1/
+correction1/2; final proposal pending independent review, not applied or consumed.
+Current160-root layout remains valid (metadata16584/backing138880). No total-RAM
+failure/upper-bound claim; full202/image held. Historical budgets, contracts and
+limits remain unchanged.
+
+Historical correction1 source readiness:
+
 Current boundary: **independent [correction 1 SOURCE PASS](p08-constructor-caller-cycle1-independent-source-review.md) at `42c0a1e2`; registered focused collections ready**,
 approach PASS `233d26e5`. The
 [new immutable source freeze](p08-constructor-caller-cycle1-source.md) pins the

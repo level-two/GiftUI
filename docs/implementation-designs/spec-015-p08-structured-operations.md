@@ -16,6 +16,16 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
+**Current constructor/caller correction1 focused behavior/layout PASS; required
+cold30440 > main27648.** The
+[current result/final correction proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle1-result.md)
+pin source `42c0a1e2` and three current receipts. The guard/owned-argument/destination
+proposal needs independent approach review; not applied, correction1/2 remains.
+Exact destination lifetime/codegen and complete fit are unproved. No resource,
+contract or metadata-capacity change.
+
+Historical correction1 source readiness:
+
 **Current constructor/caller correction 1 SOURCE PASS at `42c0a1e2`; registered
 focused collections ready**, approach PASS `233d26e5`. The
 [source receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle1-source.md)
