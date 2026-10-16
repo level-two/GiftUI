@@ -1,0 +1,67 @@
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
+index 86f7cb77..99e9a404 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
+@@ -1815,13 +1815,23 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
+     let prepared = p08ReusePrepareAction(host: host, action: oldAction)
+     precondition(!prepared)
+     let fingerprintUnchangedAfterPrepare = p08MatchesReuseFingerprint(before, control: control)
+-    let modelUnchangedAfterPrepare = p08ReuseModelValue(host: host) == modelBefore
++    let modelUnchangedAfterPrepare: Bool
++    if fingerprintUnchangedAfterPrepare {
++        modelUnchangedAfterPrepare = p08ReuseModelValue(host: host) == modelBefore
++    } else {
++        modelUnchangedAfterPrepare = false
++    }
+     let unchangedAfterPrepare = fingerprintUnchangedAfterPrepare && modelUnchangedAfterPrepare
+     precondition(unchangedAfterPrepare)
+     let delivered = p08ReuseDeliverAction(host: host, action: oldAction)
+     precondition(!delivered)
+     let fingerprintUnchangedAfterDelivery = p08MatchesReuseFingerprint(before, control: control)
+-    let modelUnchangedAfterDelivery = p08ReuseModelValue(host: host) == modelBefore
++    let modelUnchangedAfterDelivery: Bool
++    if fingerprintUnchangedAfterDelivery {
++        modelUnchangedAfterDelivery = p08ReuseModelValue(host: host) == modelBefore
++    } else {
++        modelUnchangedAfterDelivery = false
++    }
+     let unchangedAfterDelivery = fingerprintUnchangedAfterDelivery && modelUnchangedAfterDelivery
+     precondition(unchangedAfterDelivery); let checks = counterCheckHostFrame(control.pointee, value: 0)
+     p08ReuseLabel(route, "action-stale")
+diff --git a/scripts/contracts/check-spec-015-counter.py b/scripts/contracts/check-spec-015-counter.py
+index 28ab514d..f36cc075 100644
+--- a/scripts/contracts/check-spec-015-counter.py
++++ b/scripts/contracts/check-spec-015-counter.py
+@@ -32,15 +32,15 @@ def digest(path):
+ revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
+ revision_receipt = json.loads(revision_path.read_text())
+ reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
+-applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-cycle1-applicability.json'
+-assert digest(applicability_path) == '970cbb77f965a808a7df26f709674cf41d75122d71e08c5edb725bb576f0b106', 'unpinned source applicability packet'
++applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-cycle1-shortcircuit-applicability.json'
++assert digest(applicability_path) == '167afacd918586e4bbee9cc87fe31ad33f59789af4a208fef3d8b35d8ecd9683', 'unpinned source applicability packet'
+ applicability = json.loads(applicability_path.read_text())
+ qualified_applicability = []
+ def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
+     if name not in applicability['candidate_sources'] or receipt_path is None:
+         return False
+     assert applicability['kind'] == 'exact-noncompiled-source-applicability-qualification'
+-    assert applicability['activity'] == 'p08-fixture-metadata-cycle1'
++    assert applicability['activity'] == 'p08-fixture-metadata-cycle1-shortcircuit'
+     relative_receipt = str(receipt_path.relative_to(ROOT))
+     entry = next((value for value in applicability['receipts'] if value['receipt'] == relative_receipt), None)
+     if entry is None:
+diff --git a/scripts/contracts/test_p08_layout_facts.py b/scripts/contracts/test_p08_layout_facts.py
+index 8520c59e..99d57e82 100644
+--- a/scripts/contracts/test_p08_layout_facts.py
++++ b/scripts/contracts/test_p08_layout_facts.py
+@@ -418,7 +418,8 @@ class MetadataLayoutTests(unittest.TestCase):
+         action = source.split('fileprivate func p08ReuseRejectAction<Owner>')[1].split('fileprivate func p08ReuseRejectInput<Owner>')[0]
+         self.assertIn('host: borrowing', action)
+         for step in ('Prepare', 'Delivery'):
+-            self.assertIn('let modelUnchangedAfter' + step + ' = p08ReuseModelValue(host: host) == modelBefore', action)
++            self.assertIn('let modelUnchangedAfter' + step + ': Bool', action)
++            self.assertIn('if fingerprintUnchangedAfter' + step + ' {\n        modelUnchangedAfter' + step + ' = p08ReuseModelValue(host: host) == modelBefore\n    } else {\n        modelUnchangedAfter' + step + ' = false', action)
+             self.assertIn('fingerprintUnchangedAfter' + step + ' && modelUnchangedAfter' + step, action)
+         self.assertNotIn('&& p08ReuseModelValue', action)
+ 

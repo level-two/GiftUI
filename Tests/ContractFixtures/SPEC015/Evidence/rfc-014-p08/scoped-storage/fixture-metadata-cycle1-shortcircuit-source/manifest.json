@@ -1,0 +1,65 @@
+{
+  "kind": "same-cycle-source-followup",
+  "baseline_commit": "d82dde91",
+  "previous_source": "db7cc7b6",
+  "corrective_cycles_consumed": 1,
+  "corrective_cycles_maximum": 2,
+  "additional_cycle_consumed": false,
+  "swift_conditions_changed": 2,
+  "compiler_invocations": 0,
+  "runtime_executions": 0,
+  "changed_files": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "b79075f0f5b8f189c0111206c1ae771cb783596003a2130cdf11021510c27137",
+    "scripts/contracts/check-spec-015-counter.py": "12d4dac6192b42d5c552f1d6374f82eea07232dfeeed9a242a9352660edb8294",
+    "scripts/contracts/test_p08_layout_facts.py": "6784984986137a1fc2a37a69e86500a56bd9f1a9748a1b6e39083b6707b0fb5c"
+  },
+  "source_diff_sha256": "878e69c9e3cb207d94c83160b4954ece1f90e78062a5836cb5fbe13af0253170",
+  "qualification_sha256": "167afacd918586e4bbee9cc87fe31ad33f59789af4a208fef3d8b35d8ecd9683",
+  "prior_qualification_sha256": "970cbb77f965a808a7df26f709674cf41d75122d71e08c5edb725bb576f0b106",
+  "prior_component_proof_unchanged": true,
+  "repeated_artifact_hash_checks": 0,
+  "inverse_exact_two_site_check": true,
+  "source_control_flow_each_site": [
+    {
+      "fingerprint": false,
+      "model_result_if_read": false,
+      "result": false,
+      "model_reads": 0
+    },
+    {
+      "fingerprint": false,
+      "model_result_if_read": true,
+      "result": false,
+      "model_reads": 0
+    },
+    {
+      "fingerprint": true,
+      "model_result_if_read": false,
+      "result": false,
+      "model_reads": 1
+    },
+    {
+      "fingerprint": true,
+      "model_result_if_read": true,
+      "result": true,
+      "model_reads": 1
+    }
+  ],
+  "focused_source_regression_tests": 1,
+  "formatter_grammar": "passed",
+  "screen_argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    "--collect-failures",
+    "--fresh-focused",
+    "--select-family",
+    "so07-layout-facts"
+  ]
+}

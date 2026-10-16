@@ -418,7 +418,8 @@ class MetadataLayoutTests(unittest.TestCase):
         action = source.split('fileprivate func p08ReuseRejectAction<Owner>')[1].split('fileprivate func p08ReuseRejectInput<Owner>')[0]
         self.assertIn('host: borrowing', action)
         for step in ('Prepare', 'Delivery'):
-            self.assertIn('let modelUnchangedAfter' + step + ' = p08ReuseModelValue(host: host) == modelBefore', action)
+            self.assertIn('let modelUnchangedAfter' + step + ': Bool', action)
+            self.assertIn('if fingerprintUnchangedAfter' + step + ' {\n        modelUnchangedAfter' + step + ' = p08ReuseModelValue(host: host) == modelBefore\n    } else {\n        modelUnchangedAfter' + step + ' = false', action)
             self.assertIn('fingerprintUnchangedAfter' + step + ' && modelUnchangedAfter' + step, action)
         self.assertNotIn('&& p08ReuseModelValue', action)
 

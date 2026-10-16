@@ -1815,13 +1815,23 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     let prepared = p08ReusePrepareAction(host: host, action: oldAction)
     precondition(!prepared)
     let fingerprintUnchangedAfterPrepare = p08MatchesReuseFingerprint(before, control: control)
-    let modelUnchangedAfterPrepare = p08ReuseModelValue(host: host) == modelBefore
+    let modelUnchangedAfterPrepare: Bool
+    if fingerprintUnchangedAfterPrepare {
+        modelUnchangedAfterPrepare = p08ReuseModelValue(host: host) == modelBefore
+    } else {
+        modelUnchangedAfterPrepare = false
+    }
     let unchangedAfterPrepare = fingerprintUnchangedAfterPrepare && modelUnchangedAfterPrepare
     precondition(unchangedAfterPrepare)
     let delivered = p08ReuseDeliverAction(host: host, action: oldAction)
     precondition(!delivered)
     let fingerprintUnchangedAfterDelivery = p08MatchesReuseFingerprint(before, control: control)
-    let modelUnchangedAfterDelivery = p08ReuseModelValue(host: host) == modelBefore
+    let modelUnchangedAfterDelivery: Bool
+    if fingerprintUnchangedAfterDelivery {
+        modelUnchangedAfterDelivery = p08ReuseModelValue(host: host) == modelBefore
+    } else {
+        modelUnchangedAfterDelivery = false
+    }
     let unchangedAfterDelivery = fingerprintUnchangedAfterDelivery && modelUnchangedAfterDelivery
     precondition(unchangedAfterDelivery); let checks = counterCheckHostFrame(control.pointee, value: 0)
     p08ReuseLabel(route, "action-stale")

@@ -14,7 +14,10 @@ unproductive cycles or a genuine contract/resource decision. Initial pass comple
 correction1/2 consumed. Every historical closed allowance and diagnostic1/1 stays closed.
 
 Current boundary: [grouped correction1/2 source freeze](p08-fixture-metadata-cycle1-source-freeze.md)
-ready for focused reassessment after initial review `416fda38` B01. The borrowed
+followed by the [same-cycle short-circuit followup](p08-fixture-metadata-cycle1-shortcircuit-freeze.md),
+ready for focused reassessment after `d82dde91`. Only ordinary conditional model
+reads restore the original skip on fingerprint mismatch; correction count stays1/2.
+The borrowed
 inventory equality and two same-cause borrowed-host RHS comparisons now evaluate
 owned Booleans first. Correction1/2 consumed; no compiler/runtime execution yet.
 The earlier correction0/2 statements below describe the frozen initial candidate.
