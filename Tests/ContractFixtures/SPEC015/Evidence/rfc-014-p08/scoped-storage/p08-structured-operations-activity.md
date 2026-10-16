@@ -9,7 +9,8 @@ not complete acceptance. The
 [current result and final correction proposal](p08-structured-operations-cycle1-result.md)
 prove selected required live29144 > main27648, before omitted original bank-loan
 callbacks/outer/IRQ. Cold construction also remains rejected. Full202/image is
-held. Final correction2 is proposed for independent approach review, not started;
+held. The [independent result/approach review](p08-structured-operations-cycle1-independent-result-review.md)
+confirms final correction2 APPROACH PASS at `955daa9b`, ready for its source pass;
 no limit change or extra source variant is inferred.
 
 Prior execution authorization: grouped correction1 independent SOURCE PASS at `b8a9626a`

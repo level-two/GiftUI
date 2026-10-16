@@ -22,8 +22,9 @@ Source `b8a9626a`, review `3a346b91`; the
 record selected live29144 > main27648 before omitted original bank-loan callbacks,
 outer and IRQ. The grouped proposal covers cold session construction inside the
 unchanged original loan union, post-two-host cold cleanup and sequential full
-backend/four-key comparisons. Correction1/2; final correction2 awaits independent
-approach review. All limits/contracts stay unchanged, full202/image held.
+backend/four-key comparisons. Correction1/2; final correction2 has
+[independent APPROACH PASS at `955daa9b`](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-cycle1-independent-result-review.md),
+ready for its authorized source pass. All limits/contracts stay unchanged, full202/image held.
 
 Historical correction1 execution authorization:
 The [bounded source review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-cycle1-independent-source-review.md)

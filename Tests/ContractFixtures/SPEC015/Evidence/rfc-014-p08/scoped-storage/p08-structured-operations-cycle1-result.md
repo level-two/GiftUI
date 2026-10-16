@@ -2,7 +2,9 @@
 
 Current result: **all three focused collections PASS; main-stack rejection remains**.
 Source `b8a9626a`, independent SOURCE review `3a346b91`; the passing checkpoint is
-`449c9712`. Correction1/2 is productive; correction2 is proposed below, not started.
+`449c9712`. The [independent result/approach review](p08-structured-operations-cycle1-independent-result-review.md)
+confirms main-stack FAIL and final correction2 APPROACH PASS at `955daa9b`.
+Correction1/2 is productive; correction2 is ready for its authorized source pass, not frozen here.
 Historical allowances remain closed. No new compiler/runtime/image execution was
 performed by this analysis. No contract, source, limit or resource waiver changed.
 
