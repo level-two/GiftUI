@@ -1,0 +1,59 @@
+{
+  "kind": "source-only-corrective-freeze",
+  "baseline_commit": "416fda38",
+  "initial_candidate": "c277403a",
+  "review": "416fda38",
+  "corrective_cycles_consumed": 1,
+  "corrective_cycles_maximum": 2,
+  "compiler_invocations": 0,
+  "runtime_executions": 0,
+  "changed_files": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "cb572792a3354186305c68619ff4d9763cdf6db35cbde79c759f71f896fe284f",
+    "scripts/contracts/check-spec-015-counter.py": "11b670bb0c655cd508d6df2a017fc95b24dc6fb8dd23129e770cd5d64e2f5b16",
+    "scripts/contracts/test_p08_layout_facts.py": "a43105891a03ed2015818b5be9b70063e35632cf014cfb25c186d01f08140a7a"
+  },
+  "source_diff_sha256": "2ed91e9faa479084649631d09bbe41600ef9847d3d2d848dd2007c5a4a26a71a",
+  "qualification_sha256": "970cbb77f965a808a7df26f709674cf41d75122d71e08c5edb725bb576f0b106",
+  "qualification_prior_sha256": "9edafe625056559b7ca9b9e47a5be5f58b2c0367a8bed23562e1bf3a1d81bca5",
+  "unchanged_artifact_proof": {
+    "path": "p08-fixture-metadata-initial-component-checks.json",
+    "sha256": "36061084d301ed9b81ccae7e98df5912393a77c288e2d33e305475aa1415fa5a",
+    "not_repeated": true
+  },
+  "receipt_hashes_and_candidate_exclusions_rechecked": 7,
+  "additional_same_cause_sites": [
+    "p08ReuseRejectAction unchangedAfterPrepare RHS borrowed host",
+    "p08ReuseRejectAction unchangedAfterDelivery RHS borrowed host"
+  ],
+  "preserved_inventory_entries": 14,
+  "borrowed_array_parameters": 2,
+  "whole_array_copies_added": 0,
+  "registered_reuse_labels": 26,
+  "active_layout_roots": 129,
+  "metadata_layout_roots": 31,
+  "compiler_controls": {
+    "native": 384,
+    "embedded": 202
+  },
+  "checks": {
+    "compiler_free_layout_source_tests": 34,
+    "swift_formatter_grammar": "passed",
+    "python_ast": "passed",
+    "whitespace": "passed"
+  },
+  "screen_argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    "--collect-failures",
+    "--fresh-focused",
+    "--select-family",
+    "so07-layout-facts"
+  ]
+}

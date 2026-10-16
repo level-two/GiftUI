@@ -1525,7 +1525,10 @@ fileprivate func p08RequireRetiredControl(_ control: UnsafeMutablePointer<Counte
     precondition(control.pointee.runtime.admission.pointerCount == 0 && control.pointee.runtime.admission.pendingStateCount == 0 && !control.pointee.runtime.admission.sealActive)
 }
 fileprivate func p08RequireSameInventory(_ current: borrowing InlineArray<14, P08InitializedEntry?>, _ original: borrowing InlineArray<14, P08InitializedEntry?>) {
-    for index in 0..<14 { precondition(current[index] == original[index]) }
+    for index in 0..<14 {
+        let same = current[index] == original[index]
+        precondition(same)
+    }
 }
 fileprivate struct P08ReuseFingerprint: ~Copyable {
     private var frozen = false
@@ -1811,11 +1814,15 @@ fileprivate func p08ReuseRejectAction<Owner>(host: borrowing SignalAnalyzerPrese
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     let prepared = p08ReusePrepareAction(host: host, action: oldAction)
     precondition(!prepared)
-    let unchangedAfterPrepare = p08MatchesReuseFingerprint(before, control: control) && p08ReuseModelValue(host: host) == modelBefore
+    let fingerprintUnchangedAfterPrepare = p08MatchesReuseFingerprint(before, control: control)
+    let modelUnchangedAfterPrepare = p08ReuseModelValue(host: host) == modelBefore
+    let unchangedAfterPrepare = fingerprintUnchangedAfterPrepare && modelUnchangedAfterPrepare
     precondition(unchangedAfterPrepare)
     let delivered = p08ReuseDeliverAction(host: host, action: oldAction)
     precondition(!delivered)
-    let unchangedAfterDelivery = p08MatchesReuseFingerprint(before, control: control) && p08ReuseModelValue(host: host) == modelBefore
+    let fingerprintUnchangedAfterDelivery = p08MatchesReuseFingerprint(before, control: control)
+    let modelUnchangedAfterDelivery = p08ReuseModelValue(host: host) == modelBefore
+    let unchangedAfterDelivery = fingerprintUnchangedAfterDelivery && modelUnchangedAfterDelivery
     precondition(unchangedAfterDelivery); let checks = counterCheckHostFrame(control.pointee, value: 0)
     p08ReuseLabel(route, "action-stale")
     return checks

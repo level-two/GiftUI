@@ -1,0 +1,83 @@
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
+index 0cc449ab..86f7cb77 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
+@@ -1525,7 +1525,10 @@ fileprivate func p08RequireRetiredControl(_ control: UnsafeMutablePointer<Counte
+     precondition(control.pointee.runtime.admission.pointerCount == 0 && control.pointee.runtime.admission.pendingStateCount == 0 && !control.pointee.runtime.admission.sealActive)
+ }
+ fileprivate func p08RequireSameInventory(_ current: borrowing InlineArray<14, P08InitializedEntry?>, _ original: borrowing InlineArray<14, P08InitializedEntry?>) {
+-    for index in 0..<14 { precondition(current[index] == original[index]) }
++    for index in 0..<14 {
++        let same = current[index] == original[index]
++        precondition(same)
++    }
+ }
+ fileprivate struct P08ReuseFingerprint: ~Copyable {
+     private var frozen = false
+@@ -1811,11 +1814,15 @@ fileprivate func p08ReuseRejectAction<Owner>(host: borrowing SignalAnalyzerPrese
+ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
+     let prepared = p08ReusePrepareAction(host: host, action: oldAction)
+     precondition(!prepared)
+-    let unchangedAfterPrepare = p08MatchesReuseFingerprint(before, control: control) && p08ReuseModelValue(host: host) == modelBefore
++    let fingerprintUnchangedAfterPrepare = p08MatchesReuseFingerprint(before, control: control)
++    let modelUnchangedAfterPrepare = p08ReuseModelValue(host: host) == modelBefore
++    let unchangedAfterPrepare = fingerprintUnchangedAfterPrepare && modelUnchangedAfterPrepare
+     precondition(unchangedAfterPrepare)
+     let delivered = p08ReuseDeliverAction(host: host, action: oldAction)
+     precondition(!delivered)
+-    let unchangedAfterDelivery = p08MatchesReuseFingerprint(before, control: control) && p08ReuseModelValue(host: host) == modelBefore
++    let fingerprintUnchangedAfterDelivery = p08MatchesReuseFingerprint(before, control: control)
++    let modelUnchangedAfterDelivery = p08ReuseModelValue(host: host) == modelBefore
++    let unchangedAfterDelivery = fingerprintUnchangedAfterDelivery && modelUnchangedAfterDelivery
+     precondition(unchangedAfterDelivery); let checks = counterCheckHostFrame(control.pointee, value: 0)
+     p08ReuseLabel(route, "action-stale")
+     return checks
+diff --git a/scripts/contracts/check-spec-015-counter.py b/scripts/contracts/check-spec-015-counter.py
+index df5c93c3..28ab514d 100644
+--- a/scripts/contracts/check-spec-015-counter.py
++++ b/scripts/contracts/check-spec-015-counter.py
+@@ -32,15 +32,15 @@ def digest(path):
+ revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
+ revision_receipt = json.loads(revision_path.read_text())
+ reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
+-applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-initial-applicability.json'
+-assert digest(applicability_path) == '9edafe625056559b7ca9b9e47a5be5f58b2c0367a8bed23562e1bf3a1d81bca5', 'unpinned source applicability packet'
++applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-cycle1-applicability.json'
++assert digest(applicability_path) == '970cbb77f965a808a7df26f709674cf41d75122d71e08c5edb725bb576f0b106', 'unpinned source applicability packet'
+ applicability = json.loads(applicability_path.read_text())
+ qualified_applicability = []
+ def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
+     if name not in applicability['candidate_sources'] or receipt_path is None:
+         return False
+     assert applicability['kind'] == 'exact-noncompiled-source-applicability-qualification'
+-    assert applicability['activity'] == 'p08-fixture-metadata-initial'
++    assert applicability['activity'] == 'p08-fixture-metadata-cycle1'
+     relative_receipt = str(receipt_path.relative_to(ROOT))
+     entry = next((value for value in applicability['receipts'] if value['receipt'] == relative_receipt), None)
+     if entry is None:
+diff --git a/scripts/contracts/test_p08_layout_facts.py b/scripts/contracts/test_p08_layout_facts.py
+index 267c12e8..8520c59e 100644
+--- a/scripts/contracts/test_p08_layout_facts.py
++++ b/scripts/contracts/test_p08_layout_facts.py
+@@ -407,6 +407,21 @@ class MetadataLayoutTests(unittest.TestCase):
+         # fourteen before/after faults, every nonempty short byte prefix, early5/candidate11.
+         self.assertEqual(1+9+1+2+1+28+(1023+1055+19+111)+5+11,2266)
+ 
++    def test_inventory_and_borrowed_host_assertions_use_owned_bools(self):
++        source = facts.METADATA_SOURCE.read_text()
++        inventory = source.split('fileprivate func p08RequireSameInventory(')[1].split('fileprivate struct P08ReuseFingerprint')[0]
++        self.assertEqual(inventory.count('borrowing InlineArray<14, P08InitializedEntry?>'), 2)
++        self.assertIn('for index in 0..<14', inventory)
++        self.assertIn('let same = current[index] == original[index]', inventory)
++        self.assertIn('precondition(same)', inventory)
++        self.assertNotIn('precondition(current', inventory)
++        action = source.split('fileprivate func p08ReuseRejectAction<Owner>')[1].split('fileprivate func p08ReuseRejectInput<Owner>')[0]
++        self.assertIn('host: borrowing', action)
++        for step in ('Prepare', 'Delivery'):
++            self.assertIn('let modelUnchangedAfter' + step + ' = p08ReuseModelValue(host: host) == modelBefore', action)
++            self.assertIn('fingerprintUnchangedAfter' + step + ' && modelUnchangedAfter' + step, action)
++        self.assertNotIn('&& p08ReuseModelValue', action)
++
+     def test_full_endpoint_and_baseline_observation_inventory(self):
+         directory = facts.METADATA_SOURCE.parent
+         pipeline = (directory / 'CounterPipelineOwner.swift').read_text()

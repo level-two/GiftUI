@@ -4,8 +4,14 @@ The user's continuing “Please proceed” authorization now covers the independ
 reviewed idle-donor metadata realization (`fa39ef08`, measured design `c35f541a`).
 This is a new bounded internal package: one grouped initial source candidate plus
 at most two cause-grouped corrective cycles, stopping after two consecutive
-unproductive cycles or a genuine contract/resource decision. Initial pass active;
-corrections0/2. Every historical closed allowance and diagnostic1/1 stays closed.
+unproductive cycles or a genuine contract/resource decision. Initial pass complete;
+correction1/2 consumed. Every historical closed allowance and diagnostic1/1 stays closed.
+
+Current boundary: [grouped correction1/2 source freeze](p08-fixture-metadata-cycle1-source-freeze.md)
+ready for focused reassessment after initial review `416fda38` B01. The borrowed
+inventory equality and two same-cause borrowed-host RHS comparisons now evaluate
+owned Booleans first. Correction1/2 consumed; no compiler/runtime execution yet.
+The earlier correction0/2 statements below describe the frozen initial candidate.
 
 [Initial source freeze](p08-fixture-metadata-initial-source-freeze.md) is ready for
 [independent SOURCE BLOCKED review](p08-fixture-metadata-initial-independent-source-review.md).

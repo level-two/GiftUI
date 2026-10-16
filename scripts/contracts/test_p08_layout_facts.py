@@ -407,6 +407,21 @@ class MetadataLayoutTests(unittest.TestCase):
         # fourteen before/after faults, every nonempty short byte prefix, early5/candidate11.
         self.assertEqual(1+9+1+2+1+28+(1023+1055+19+111)+5+11,2266)
 
+    def test_inventory_and_borrowed_host_assertions_use_owned_bools(self):
+        source = facts.METADATA_SOURCE.read_text()
+        inventory = source.split('fileprivate func p08RequireSameInventory(')[1].split('fileprivate struct P08ReuseFingerprint')[0]
+        self.assertEqual(inventory.count('borrowing InlineArray<14, P08InitializedEntry?>'), 2)
+        self.assertIn('for index in 0..<14', inventory)
+        self.assertIn('let same = current[index] == original[index]', inventory)
+        self.assertIn('precondition(same)', inventory)
+        self.assertNotIn('precondition(current', inventory)
+        action = source.split('fileprivate func p08ReuseRejectAction<Owner>')[1].split('fileprivate func p08ReuseRejectInput<Owner>')[0]
+        self.assertIn('host: borrowing', action)
+        for step in ('Prepare', 'Delivery'):
+            self.assertIn('let modelUnchangedAfter' + step + ' = p08ReuseModelValue(host: host) == modelBefore', action)
+            self.assertIn('fingerprintUnchangedAfter' + step + ' && modelUnchangedAfter' + step, action)
+        self.assertNotIn('&& p08ReuseModelValue', action)
+
     def test_full_endpoint_and_baseline_observation_inventory(self):
         directory = facts.METADATA_SOURCE.parent
         pipeline = (directory / 'CounterPipelineOwner.swift').read_text()

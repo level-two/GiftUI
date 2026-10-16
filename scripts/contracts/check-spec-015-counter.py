@@ -32,15 +32,15 @@ def digest(path):
 revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
 revision_receipt = json.loads(revision_path.read_text())
 reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
-applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-initial-applicability.json'
-assert digest(applicability_path) == '9edafe625056559b7ca9b9e47a5be5f58b2c0367a8bed23562e1bf3a1d81bca5', 'unpinned source applicability packet'
+applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-cycle1-applicability.json'
+assert digest(applicability_path) == '970cbb77f965a808a7df26f709674cf41d75122d71e08c5edb725bb576f0b106', 'unpinned source applicability packet'
 applicability = json.loads(applicability_path.read_text())
 qualified_applicability = []
 def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
     if name not in applicability['candidate_sources'] or receipt_path is None:
         return False
     assert applicability['kind'] == 'exact-noncompiled-source-applicability-qualification'
-    assert applicability['activity'] == 'p08-fixture-metadata-initial'
+    assert applicability['activity'] == 'p08-fixture-metadata-cycle1'
     relative_receipt = str(receipt_path.relative_to(ROOT))
     entry = next((value for value in applicability['receipts'] if value['receipt'] == relative_receipt), None)
     if entry is None:
