@@ -16,7 +16,13 @@ superseded_by: null
 
 # P08 completion and resource assessment
 
-The subsequent [frozen-artifact worksheet](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-worksheet.md)
+The [actual current firmware result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-resource-result.md)
+now closes that measurement prerequisite: full nRF 227/227 and normal pristine
+image/ABI/layout/RAM/flash pass, but an actual linked cold subset 28,560 exceeds
+main 27,648 before omitted costs. P08 remains open; next is a concrete compatible
+internal design review, with no renewed source allowance or resource amendment.
+
+Historical measurement prerequisite, now fulfilled: the [frozen-artifact worksheet](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-worksheet.md)
 identifies a material applicability gap: normal firmware recompiles all 24 owners
 with differing flags and active raster/text branches. The frozen contract-object
 failure does not prove final firmware fit/failure. Its concrete next step is a

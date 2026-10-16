@@ -1,0 +1,272 @@
+{
+  "kind": "actual-linked-firmware-resource-evidence",
+  "elf_sha256": "e649c5d26a676140b473e8fa1de5b075a479d8282a7f6d69e0034fb215884c38",
+  "archive": "resource-proof.tar.xz",
+  "sha256": "8db18ea94b5c9b1ad41b64759617cd7cb75c4bd5e57e9c7014a36cb56d7f1fdc",
+  "bytes": 881600,
+  "files": {
+    "analysis/actual-compiler-command.json": {
+      "sha256": "314ad488ea217a64978c81daf0c67da0ca61c58786a317c3e0f7aee8971e1195",
+      "bytes": 385195
+    },
+    "analysis/body-old10411-sym5210.txt.xz": {
+      "sha256": "2bd982018fa9d3dfa55713641873f77d4576de56bcebea5c9029a00617bd85e4",
+      "bytes": 3124
+    },
+    "analysis/body-old11852-sym1375.txt.xz": {
+      "sha256": "2bebf510e5eb594daa88005f91d6a555b77027521810d7c8a4b16f67c835c1cd",
+      "bytes": 1968
+    },
+    "analysis/body-old11856-sym1384.txt.xz": {
+      "sha256": "c7394276d89ea66e42956c9930d5ad308559b5d9b7e65c0de4761aec5f37efff",
+      "bytes": 1900
+    },
+    "analysis/body-old11860-sym1389.txt.xz": {
+      "sha256": "52b0639867328f78bc2a56f4efe507161c2a01d2aed8b28d1acad0f4ef4da5c1",
+      "bytes": 1896
+    },
+    "analysis/body-old11864-sym1392.txt.xz": {
+      "sha256": "2310053d59a67cc61b7d189937986b9d22f73fac5ac9a06916e0f14d540dd8bb",
+      "bytes": 1820
+    },
+    "analysis/body-old12084-sym1963.txt.xz": {
+      "sha256": "de58c7c7ea9babde628ce31939e63dc00794b3ebd7b433de44990d4ca46da654",
+      "bytes": 368
+    },
+    "analysis/body-old12088-sym2341.txt.xz": {
+      "sha256": "c00281e379c6759d64e3076738ceef0334c4d3e55e207a0e4f054db9e1cf128e",
+      "bytes": 1160
+    },
+    "analysis/body-old12375-sym1966.txt.xz": {
+      "sha256": "15870ed7d7098af5380da45f61512814ab0940c3dfa037f3f4d03ec7d4e01181",
+      "bytes": 1020
+    },
+    "analysis/body-old12379-sym1969.txt.xz": {
+      "sha256": "228d2e60f2c3205a0d0fb95d5d98e6953eedc093553818d0767c81b39002d1ef",
+      "bytes": 1016
+    },
+    "analysis/body-old210-sym7148.txt.xz": {
+      "sha256": "e7c4b4738f4774111d0fe7aa00a9cf5e4c643051e07f4a303bbb5650b4035a2a",
+      "bytes": 1720
+    },
+    "analysis/body-old3176-sym5196.txt.xz": {
+      "sha256": "30137da651600250b64d87f2c77dda95825ae6e94ff2139d2cf8afbc70492a31",
+      "bytes": 900
+    },
+    "analysis/body-old3433-sym6515.txt.xz": {
+      "sha256": "39e2882ef3c613f3b4e16f1b17b78d744919cd84408292196453bc293b800f3b",
+      "bytes": 3184
+    },
+    "analysis/body-old3437-sym6200.txt.xz": {
+      "sha256": "17b71855b951c2e6c4ff2f6317fca1046285fce3cccb0ef61767a6134105babf",
+      "bytes": 1416
+    },
+    "analysis/body-old3441-sym7403.txt.xz": {
+      "sha256": "43a3aa190cb34afd5b629867d5aaf28fb705f736fbec2ed5c526bb2a08f4b43f",
+      "bytes": 1344
+    },
+    "analysis/body-old3445-sym6952.txt.xz": {
+      "sha256": "9c59f0c4c9e7db6abe614b72139282fc17b1ee2a219ff41d79f56853c66a52ef",
+      "bytes": 1352
+    },
+    "analysis/body-old3449-sym6455.txt.xz": {
+      "sha256": "21ae9112213269bb1c85e84dea46247b5cc6c877cf34f6582507cdc3537e09c1",
+      "bytes": 8688
+    },
+    "analysis/body-old3983-sym6453.txt.xz": {
+      "sha256": "dab85835163ab7e223fc4805abc7a46eaab64c010d5bc997cc3ae000ab9f7d5f",
+      "bytes": 4852
+    },
+    "analysis/body-old3990-sym6187.txt.xz": {
+      "sha256": "c49dc00a2056fa76771093c46cc5f5be054dadc10cd424ec72719e2c4147ac0f",
+      "bytes": 1040
+    },
+    "analysis/body-old3994-sym6928.txt.xz": {
+      "sha256": "2134aec3309c6834ba41f85f8685f9a5ecc7b28a4e1603df7b17523f3c540a1f",
+      "bytes": 2124
+    },
+    "analysis/body-old4029-sym5521.txt.xz": {
+      "sha256": "44937c89fb64761786c744f9fecbbf477693113b26cf414cea02769a830b7e30",
+      "bytes": 2460
+    },
+    "analysis/body-old4037-sym7198.txt.xz": {
+      "sha256": "741030b23305bf8cc1a0449d62840ad34b9cb036dfffa3b9eff13f1a30a069aa",
+      "bytes": 2280
+    },
+    "analysis/body-old4044-sym5448.txt.xz": {
+      "sha256": "a1fcf0198ba77f10b70f76cd1a37fc642b53790763bb30dae1e898e7e2b421bf",
+      "bytes": 1644
+    },
+    "analysis/body-old4048-sym5465.txt.xz": {
+      "sha256": "60147ee2e37441a0065727f16069f35786d3ef9696ebff3072861b9b40985b08",
+      "bytes": 1280
+    },
+    "analysis/body-old4246-sym5289.txt.xz": {
+      "sha256": "1ff3465af1cd30f203955a56cc6b55ccd0d2e4da1caa2ad53d0381e1adec7099",
+      "bytes": 2148
+    },
+    "analysis/body-old4250-sym6033.txt.xz": {
+      "sha256": "14830dc5e7bb0d8be9fa9853ffa5ed2d746ca6a034cc25df00d348bc693fc0f2",
+      "bytes": 1104
+    },
+    "analysis/body-old4269-sym5469.txt.xz": {
+      "sha256": "4b96d0445bfa79fba841743b0b882985d6b382079fbff9e16fb2ca7e3e9cc8f0",
+      "bytes": 1060
+    },
+    "analysis/body-old4281-sym7184.txt.xz": {
+      "sha256": "83357a45afa3b190d7dd8d216cc479161b257f6699499a34ce5ea2b8a14e6437",
+      "bytes": 1412
+    },
+    "analysis/body-old4332-sym6803.txt.xz": {
+      "sha256": "8bb5da0331525fb38e9ced83262585af7190975b38d7a5fdb694a7440c659898",
+      "bytes": 1064
+    },
+    "analysis/body-old4336-sym5480.txt.xz": {
+      "sha256": "9665d26485e7b174758b48cb361c6751240273ce34fd345f8e6dd3b88ed2fc22",
+      "bytes": 3504
+    },
+    "analysis/body-old4340-sym5702.txt.xz": {
+      "sha256": "84d12a87aed653d45f3a13e971a83a4e17c928c9ae2b1e96c849a7f44f7cb295",
+      "bytes": 824
+    },
+    "analysis/body-old9972-sym5697.txt.xz": {
+      "sha256": "01078807ddcb3ab7ec69a0af8bd567a3d3e2a4aef42bf26fa5ae24b54c0f33ef",
+      "bytes": 268
+    },
+    "analysis/body-old9976-sym5890.txt.xz": {
+      "sha256": "f5f3d77e50360caa7b7f54489be8625cff561879b24537667ca17c7934c2e50d",
+      "bytes": 536
+    },
+    "analysis/extra-linked-bodies.json": {
+      "sha256": "508486d2d0c70eaaca9fb267af34d10d18a062470c0159a1daa7da7886647095",
+      "bytes": 26014
+    },
+    "analysis/extra-sym5549.txt.xz": {
+      "sha256": "e0b556664c61f4da3e421eb8f3f3992bc96d891569afbd71a9da99ced54216ac",
+      "bytes": 252
+    },
+    "analysis/extra-sym5782.txt.xz": {
+      "sha256": "64324385fdeb35a0d11515cfae045b5a5f00c246c90ba3c006cb45a3390bd7b4",
+      "bytes": 2088
+    },
+    "analysis/extra-sym6381.txt.xz": {
+      "sha256": "8c91c1748e07f64d6f4226bf5f11c79ebe1a0008f90e94a5113a2e74e9924434",
+      "bytes": 1340
+    },
+    "analysis/extra-sym6879.txt.xz": {
+      "sha256": "d5d9b06e19a92b53ffae19ef7cb67413f696437ae2097bc5e602df4294755172",
+      "bytes": 588
+    },
+    "analysis/extra-sym7144.txt.xz": {
+      "sha256": "463f925c20168c2eeff73412677e10e1fa10c84c11f291875cd8205b2ffad03b",
+      "bytes": 256
+    },
+    "analysis/first-linked-inspection.json": {
+      "sha256": "d2973cffa1a2a6481d9d6a352c6b63644070fbaf648e4d8857498b4b38cb5f90",
+      "bytes": 552718
+    },
+    "analysis/identities-and-dispositions.json": {
+      "sha256": "53de9666e74b2c5a34d4a9e638fd74df39445fbbfd466cf6dc1f353d6765cd58",
+      "bytes": 2450
+    },
+    "analysis/required-linked-cold-proof.json": {
+      "sha256": "a3557f608e17d27d582347749b14fe2a382bc15ad987704785e4a67057b92583",
+      "bytes": 37161
+    },
+    "firmware/compile_commands.json": {
+      "sha256": "8aa270887578c847ed3156c6cd0e7513e2126e1105791b586ed8faa6247f3eb9",
+      "bytes": 1493122
+    },
+    "firmware/reports/arm-attributes.txt": {
+      "sha256": "b1cf2c133bb70839666f3326d91a0da2d075641c44ddc64a4157c80a30a7230a",
+      "bytes": 672
+    },
+    "firmware/reports/elf-header.txt": {
+      "sha256": "72b35fb223509de4a83b1262314ef0c624b8cbe6066df56cece2e1c678ef0021",
+      "bytes": 972
+    },
+    "firmware/reports/memory-summary.txt": {
+      "sha256": "3cc3b17dfd4093a693788071dc43c2a8fbc304b5551ec16bfa4337811d96127a",
+      "bytes": 112
+    },
+    "firmware/reports/program-headers.txt": {
+      "sha256": "b829474917fd586620290547a2b74b408372ea7e691d97f82cdafa1b13b50dc3",
+      "bytes": 988
+    },
+    "firmware/reports/sections.txt": {
+      "sha256": "37a65e6a3e267ce3c4966e6eea09a82e4889ec1402986f516af7e0dba1487ee6",
+      "bytes": 3019
+    },
+    "firmware/reports/size.txt": {
+      "sha256": "5f73ee5ea228ffdfb9b43d7bb9c7e319bde9b8961e913e86164bd580c0f4df1e",
+      "bytes": 1660
+    },
+    "firmware/reports/so08-layout-and-c-reservation.json": {
+      "sha256": "0bea6b8adead5398bbd7d8d2aa360f5407006b5b2d646c1b2da8ded326775ef8",
+      "bytes": 123544
+    },
+    "firmware/reports/symbols.txt": {
+      "sha256": "901aec8e9b770875a813608f52c091b1f8efabb34d9295d35b190edbd754e319",
+      "bytes": 833338
+    },
+    "firmware/zephyr/.config": {
+      "sha256": "4f722a1601be957e850c3ff3b9c79399d72d2918c788f631364ad129ee21e2e1",
+      "bytes": 33927
+    },
+    "firmware/zephyr/linker.cmd": {
+      "sha256": "cb4eab17c2f46d67512b0b483034c3494c6241bb9ac597e0377bddb08bedc355",
+      "bytes": 28312
+    },
+    "firmware/zephyr/zephyr.elf": {
+      "sha256": "e649c5d26a676140b473e8fa1de5b075a479d8282a7f6d69e0034fb215884c38",
+      "bytes": 1541336
+    },
+    "firmware/zephyr/zephyr.map": {
+      "sha256": "7f157a92a5c69463c1234ef181033edaf3b88fae2e7fddf0c820351b9a1fc703",
+      "bytes": 5228619
+    },
+    "receipts/complete-counter-result.json": {
+      "sha256": "6d080edfd78d9eed2328fdaed20d00911653de82573c4f18e94553434f89904b",
+      "bytes": 4302341
+    },
+    "receipts/current-source-handoff.json": {
+      "sha256": "3a650d01c5f4a615c0d7f6cb08d4fcb78ae8694dd2867201a1d51afe772fdaa5",
+      "bytes": 45746
+    },
+    "wrappers/20261016T135506845464Z-p08-final-firmware-full-nrf/invocation.json": {
+      "sha256": "bb9f8b326bcb2b0f522e75ac5fdba836f230384f2b1678c0d42627747703b6e9",
+      "bytes": 590
+    },
+    "wrappers/20261016T135506845464Z-p08-final-firmware-full-nrf/result.json": {
+      "sha256": "dee3ec83950776e3db448f322975564a04f013f9a59e8fbc24ebc0cd274e371b",
+      "bytes": 989
+    },
+    "wrappers/20261016T135506845464Z-p08-final-firmware-full-nrf/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "wrappers/20261016T135506845464Z-p08-final-firmware-full-nrf/stdout.log": {
+      "sha256": "7424c45f403903d87e30afe73fd7dbe6acff79bb0c0487134abb32a7474d177c",
+      "bytes": 187
+    },
+    "wrappers/20261016T145341881228Z-p08-nrf-counter-pristine-build/invocation.json": {
+      "sha256": "65dd65a66b5883732061a9690e83e6ff67f914b300f603e01d9132849ccab682",
+      "bytes": 446
+    },
+    "wrappers/20261016T145341881228Z-p08-nrf-counter-pristine-build/result.json": {
+      "sha256": "03b24373b44ae25b047d75fdaad22e80c2dbaf8f73a9c3a0e8c3eaa4499f8eb8",
+      "bytes": 849
+    },
+    "wrappers/20261016T145341881228Z-p08-nrf-counter-pristine-build/stderr.log": {
+      "sha256": "87e7e3328c813445707b81b660ef694d8a94c98e86451237ea9b058fbb7a33fc",
+      "bytes": 46
+    },
+    "wrappers/20261016T145341881228Z-p08-nrf-counter-pristine-build/stdout.log": {
+      "sha256": "fbf85b307a4f0f0f39fd28c20f82bf92968335add68e0a3aefc44fdee6c09088",
+      "bytes": 154118
+    }
+  },
+  "selected_lower_bound": 28560,
+  "main_limit": 27648,
+  "complete_peak": false
+}

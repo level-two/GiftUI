@@ -19,11 +19,19 @@ superseded_by: null
 
 # SPEC-015 Conformance Report
 
-The [resource worksheet](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-worksheet.md)
+Current actual firmware evidence — **stack fit fails**. The
+[linked resource result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-resource-result.md)
+adds complete nRF 227/227 and normal pristine ABI/layout/RAM/flash passes, but
+required linked cold reservations 28,560 exceed main 27,648 before omitted costs.
+Full stack/IRQ/rooted-allocation and remaining four-route/P08 acceptance stay open;
+no criterion, limit or repair allowance is waived by these passes.
+
+Historical measurement prerequisite: the [resource worksheet](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-worksheet.md)
 clarifies applicability: the contract-object failure below does not establish
 final firmware fit/failure, because the normal image recompiles 24 owners with
 differing flags. A complete current nRF collection and normal guarded image are
-the next resource-evidence prerequisite; all acceptance dispositions remain open.
+the then-required resource-evidence prerequisite, now collected above; acceptance
+dispositions remain open.
 
 Current P08 boundary — **focused behavior/layout passes; main-stack failure**.
 The [current result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-result.md)

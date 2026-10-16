@@ -1,6 +1,13 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current P08 boundary — **contract-object stack FAIL; final firmware fit unknown**.
+Current P08 boundary — **actual linked firmware stack FAIL; normal artifact measured**.
+The [current firmware result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-resource-result.md)
+records full nRF 227/227 and pristine linked ABI/layout/RAM/flash passes at
+`f042252f`; an actual linked required cold subset 28,560 > main 27,648 rejects fit.
+Complete peak/IRQ/rooted allocation and P08 exit remain open. No source repair
+allowance or resource limit changes; next is a concrete compatible internal design.
+
+Historical prerequisite — contract-object stack FAIL; final firmware fit had been unknown.
 The [frozen-artifact worksheet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-worksheet.md)
 finds differing normal-firmware flags and fresh recompilation of all 24 owners.
 Next is the narrow registry handoff fix, complete nRF collection and normal

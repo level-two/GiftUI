@@ -1,6 +1,14 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-Current evidence prerequisite — **normal final firmware codegen and resources unknown**.
+Current P08 result — **actual linked firmware stack FAIL**.
+The [current firmware resource result](scoped-storage/p08-current-firmware-resource-result.md)
+pins full nRF 227/227, normal pristine artifact and ABI/layout/RAM/flash passes;
+actual linked cold reservations 28,560 exceed main 27,648 before omitted costs.
+The former 202 nRF omissions are closed for the new collection; Native 384-per-profile
+omissions and remaining P08 gates persist. No complete peak/IRQ/zero-heap claim,
+source repair allowance, limit change or connected operation follows.
+
+Historical evidence prerequisite — normal final firmware codegen and resources had been unknown.
 The [frozen-artifact worksheet](scoped-storage/p08-resource-worksheet.md) finds that
 the normal image recompiles 24 owners with differing flags. Contract-object stack
 failure stays valid for that object; final firmware fit/failure is unproved. The
