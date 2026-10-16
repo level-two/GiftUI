@@ -2,7 +2,7 @@
 
 Implements section D of the [reviewed design](../../../../../../docs/implementation-designs/spec-015-p08-structured-operations.md#d-constructorcaller-realization-new-authorized-package),
 DESIGN PASS `51cb92b7`, under the [new bounded activity](p08-constructor-caller-activity.md).
-**Initial source1; correction0/2; independent SOURCE review pending.** Compiler,
+**Initial source1; correction0/2; independent [SOURCE PASS](p08-constructor-caller-independent-source-review.md) at `8bd6c784`.** Compiler,
 runtime, diagnostic and image0 for this candidate. Historical allowances remain
 closed. No fit, ownership compilation or current target-layout result is claimed.
 

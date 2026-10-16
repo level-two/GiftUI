@@ -1,7 +1,7 @@
 # P08 constructor/caller realization activity
 
-Current boundary: **combined initial source frozen; independent SOURCE review
-pending**, after DESIGN PASS `51cb92b7`. The
+Current boundary: **independent [SOURCE PASS](p08-constructor-caller-independent-source-review.md) at `8bd6c784`; ready for the registered fresh focused collections**,
+after DESIGN PASS `51cb92b7`. The
 [source receipt](p08-constructor-caller-source.md) pins one Swift fixture and exact
 test/qualification/driver changes. Initial source1/correction0/2; current compiler/
 runtime/image0, actual new metadata extent/stack unmeasured. Historical budgets
