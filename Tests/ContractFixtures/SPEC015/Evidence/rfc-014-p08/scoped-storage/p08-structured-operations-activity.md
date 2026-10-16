@@ -1,6 +1,8 @@
 # P08 structured construction and observation operations activity
 
-Current boundary: **authorized design; source/compilation not started**.
+Current boundary: **independent DESIGN PASS at `a73a8032`; ready for initial source**.
+The [bounded design review](p08-structured-operations-independent-design-review.md)
+identifies no contract amendment or design blocker. Source/compilation not started.
 The user explicitly requested proceeding while covering several related issues
 together and avoiding unnecessary turbulence. This new bounded internal package
 addresses the [independently confirmed resource rejection](p08-fixture-metadata-final-independent-review.md)

@@ -29,7 +29,7 @@ Current P08 activity — **combined structural design; implementation not starte
 The [authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-activity.md)
 groups construction/session extent, sensitivity and inner observation materialization
 under unchanged contracts/limits. [Design](../implementation-designs/spec-015-p08-structured-operations.md)
-awaits independent review; new correction0/2, historical2/2 closed. The rejected
+has independent DESIGN PASS at `a73a8032`; initial source ready, correction0/2, historical2/2 closed. The rejected
 realization below remains valid evidence, not current acceptance or a budget waiver.
 
 Current donor-metadata boundary — **STOP; focused behavior/layout PASS, resource FAIL, 2026-10-16**.

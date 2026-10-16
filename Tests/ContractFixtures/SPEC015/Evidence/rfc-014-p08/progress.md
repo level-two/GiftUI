@@ -3,7 +3,7 @@
 Current P08 activity — **authorized combined structural design; no new source/run**.
 The [activity and bounded design](scoped-storage/p08-structured-operations-activity.md) group construction/session, sensitivity
 and inner observation costs with main27648/RAM196608/four slots unchanged. Independent
-design review is next; new correction0/2, all historical budgets closed. Earlier
+design review PASS at `a73a8032`; initial source is ready, correction0/2, all historical budgets closed. Earlier
 resource rejection remains valid; P08 and all nine SO criteria remain open.
 
 Previous donor-metadata boundary — **STOP; focused behavior/layout PASS, resource FAIL, 2026-10-16**.

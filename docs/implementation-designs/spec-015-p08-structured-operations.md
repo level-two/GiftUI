@@ -16,7 +16,9 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
-**Combined candidate for independent design review; not source or fit evidence.**
+**Independent DESIGN PASS at `a73a8032`; not source or fit evidence.**
+The [bounded independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-independent-design-review.md)
+confirms readiness for the authorized combined initial source package.
 The [new authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-activity.md)
 permits one initial implementation and at most two grouped corrections after
 design review. Prior2/2 remains closed. The [current independently reviewed result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-final-independent-review.md)
