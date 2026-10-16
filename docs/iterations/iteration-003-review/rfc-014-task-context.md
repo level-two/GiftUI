@@ -1,6 +1,12 @@
 # RFC-014 task context guide
 
-Current donor-metadata boundary — **STOP; focused behavior/layout PASS, resource FAIL, 2026-10-16**.
+Current P08 activity — **authorized combined structural design; no new source/run**.
+The [activity and bounded design](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-activity.md) group construction/session, sensitivity
+and inner observation costs with main27648/RAM196608/four slots unchanged. Independent
+design review is next; new correction0/2, all historical budgets closed. Earlier
+resource rejection remains valid; P08 and all nine SO criteria remain open.
+
+Previous donor-metadata boundary — **STOP; focused behavior/layout PASS, resource FAIL, 2026-10-16**.
 The [final current result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-final-result.md) preserves three passing fresh focused collections:
 nRF25/layout160 roots, Native42 per profile and3,472,410 assertions with zero failures.
 The required current stack subset66,104 + retained backing138,880 =204,984 exceeds

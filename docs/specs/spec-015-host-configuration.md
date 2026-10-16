@@ -1789,6 +1789,9 @@ Specification:
 
 ## References
 
+- [P08 structured construction/observation design](../implementation-designs/spec-015-p08-structured-operations.md)
+  is a derived draft realization, not a contract/resource amendment or fit claim.
+
 - [P08 scoped storage ownership design](../implementation-designs/spec-015-p08-scoped-storage-ownership.md)
   is the non-authoritative SO-02 realization note for independent review.
   Implementation/fit and all SO criteria remain unproved.

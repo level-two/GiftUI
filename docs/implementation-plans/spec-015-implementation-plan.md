@@ -8,6 +8,7 @@ owners:
 created: 2026-09-09
 updated: 2026-10-16
 related_design_notes:
+  - ../implementation-designs/spec-015-p08-structured-operations.md
   - ../implementation-designs/spec-015-p08-typed-stage-realization.md
   - ../implementation-designs/spec-015-p08-scoped-storage-ownership.md
   - ../implementation-designs/spec-015-generated-workload-and-presets.md
@@ -23,6 +24,13 @@ superseded_by: null
 ---
 
 # SPEC-015 Implementation Plan
+
+Current P08 activity — **combined structural design; implementation not started**.
+The [authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-activity.md)
+groups construction/session extent, sensitivity and inner observation materialization
+under unchanged contracts/limits. [Design](../implementation-designs/spec-015-p08-structured-operations.md)
+awaits independent review; new correction0/2, historical2/2 closed. The rejected
+realization below remains valid evidence, not current acceptance or a budget waiver.
 
 Current donor-metadata boundary — **STOP; focused behavior/layout PASS, resource FAIL, 2026-10-16**.
 The [final current result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-final-result.md) preserves three passing fresh focused collections:
