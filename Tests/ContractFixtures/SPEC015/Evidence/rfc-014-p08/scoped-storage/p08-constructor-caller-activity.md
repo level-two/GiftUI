@@ -1,5 +1,9 @@
 # P08 constructor/caller realization activity
 
+Current boundary: **independent DESIGN PASS at `009711b8`; ready for initial source**.
+The [bounded design review](p08-constructor-caller-independent-design-review.md)
+identifies no contract/scope amendment; source/compiler/fit remain unproved.
+
 User explicitly authorized remaining corrections after independently reviewed
 structured-package boundary `832a9c67`. This is a **new bounded package**:
 one initial implementation plus at most two cause-grouped corrective cycles,
@@ -39,7 +43,7 @@ The previous split tradeoff is explicit: live construction homes remain charged;
 no fit/elision is predicted. The new actual outer/pack layout must be remeasured
 with unchanged160 roots and checked against34720, four full slots charged138880.
 Design-only scope is one future Swift fixture plus existing tests/pins, no core API.
-Source/compile/diagnostic0; ready for independent DESIGN assessment.
+Source/compile/diagnostic0; independent DESIGN PASS permits the authorized initial source package.
 
 Documentary checks: governance PASS (204 authority nodes/2036 edges;7 features/
 76 lifecycle artifacts/9 skills) and `git diff --check` PASS. Current navigation

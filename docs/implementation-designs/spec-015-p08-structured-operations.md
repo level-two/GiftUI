@@ -16,6 +16,11 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
+**Current section D: independent DESIGN PASS at `009711b8`; initial source ready.**
+The [bounded constructor/caller review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-independent-design-review.md)
+preserves existing contracts/limits and unproved compiler/resource outcomes. The
+following structured-package result is historical evidence, not the new candidate.
+
 **Current direction: constructor/caller realization DESIGN, independent review
 pending.** The user authorized this new bounded package after independent final
 review `832a9c67`; [activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-activity.md)
@@ -294,6 +299,9 @@ decision point; it must not be hidden behind a raw pointer, generic escapable
 wrapper, extra owner, reduced corpus or resource exception.
 
 ## D. Constructor/caller realization — new authorized package
+
+[Independent DESIGN PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-independent-design-review.md)
+at `009711b8` permits the authorized initial source package; source review precedes execution.
 
 The independently reviewed final object requires cold29872 before additional
 original callback/outer/IRQ costs, versus main27648. Source `597dbd7f` has a3824
