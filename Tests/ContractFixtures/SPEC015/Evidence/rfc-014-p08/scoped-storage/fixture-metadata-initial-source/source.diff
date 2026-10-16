@@ -1,0 +1,1885 @@
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
+index 29b5c951..4ec5168f 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
+@@ -172,9 +172,7 @@ func counterForeignJoinScope(_ body: (borrowing ObservableModelScope<CounterOwne
+         precondition(identity.rawValue == 0)
+         var backing = StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>(identity: identity, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!
+         var foreign = CounterControl()
+-        return try backing.withLifetime(limits: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!) { (models, root) throws(ObservableStateError) in
+-            withUnsafeMutablePointer(to: &foreign) { body(models, root, $0) }
+-        }
++        return counterForeignJoinScope(backing: &backing, foreign: &foreign, body)
+     } catch { preconditionFailure("counter foreign live scope") }
+ }
+ func counterJoinAudit(_ audit: RuntimeStorageAudit, profile: RuntimeProfileKind) -> RuntimeStorageAudit {
+@@ -185,3 +183,24 @@ func counterJoinAudit(_ audit: RuntimeStorageAudit, profile: RuntimeProfileKind)
+ func counterJoinReport(_ report: HostAssemblyReport) -> HostAssemblyReport {
+     .init(kind: report.kind, profile: report.profile, storageAudit: report.storageAudit, capabilitySnapshot: report.capabilitySnapshot, effectivePresentation: report.effectivePresentation, drawingPlanOperationLimit: report.drawingPlanOperationLimit, minimumSinkOperationCapacity: report.minimumSinkOperationCapacity, cardinality: report.cardinality, minimumFrameIntervalMicroseconds: report.minimumFrameIntervalMicroseconds + 1, maximumFactServiceLatencyMicroseconds: report.maximumFactServiceLatencyMicroseconds, minimumAcceptedTransitionSpacingMicroseconds: report.minimumAcceptedTransitionSpacingMicroseconds, maximumCompactFactsPerServiceWindow: report.maximumCompactFactsPerServiceWindow, maximumRetryableRefusals: report.maximumRetryableRefusals)
+ }
++
++// The caller lends two distinct fully initialized stored objects. This operation
++// neither constructs nor copies a complete foreign Control across its callback.
++func counterForeignJoinScope(backing: inout StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>, foreign: inout CounterControl,
++    _ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
++    do throws(ObservableStateError) {
++        return try backing.withLifetime(limits: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!) { (models, root) throws(ObservableStateError) in
++            withUnsafeMutablePointer(to: &foreign) { body(models, root, $0) }
++        }
++    } catch { preconditionFailure("counter foreign live scope") }
++}
++
++func counterForeignJoinScope(backing: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>?, foreign: UnsafeMutablePointer<CounterControl>?,
++    _ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
++    #if hasFeature(Embedded)
++    guard let backing, let foreign else { preconditionFailure("missing donor foreign lenders") }
++    return counterForeignJoinScope(backing: &backing.pointee, foreign: &foreign.pointee, body)
++    #else
++    return counterForeignJoinScope(body)
++    #endif
++}
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
+index 92c2bcb9..9542bec6 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
+@@ -247,6 +247,78 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
+         control.pointee.backend.constructedEndpoints += 1
+         actual = CounterNativeEndpoint(effectivePresentation: configuration.effectivePresentation, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, textMetrics: construction.text.metrics(), textRaster: construction.text.raster(), textRasterRealization: construction.text.realization, envelopeValidator: CounterNativeEnvelope(expected: nil), sink: adapter, startupFailure: nil)!
+     }
++    // Pure typed field observations; no callback or whole-Control loan.
++    borrowing func captureBaseline(into baseline: inout CounterEndpointBaseline) {
++        baseline.effectivePresentation = actual.effectivePresentation
++        baseline.descriptor = actual.descriptor
++        baseline.payloadLimits = actual.payloadLimits
++        baseline.realization = actual.textRasterRealization
++        baseline.bodyCalls = actual.bodyCallCount
++        baseline.reservations = actual.reservationCallCount
++        baseline.displayError = actual.lastDisplayError
++        baseline.producerError = actual.retainedProducerError
++        baseline.capacity = actual.sink.capacity
++        baseline.sinkDescriptor = actual.sink.descriptor
++        baseline.sinkLimits = actual.sink.payloadLimits
++        baseline.sinkFailure = actual.sink.failure
++        baseline.streamCompleted = actual.sink.streamCompleted
++        baseline.presentationAccepted = actual.sink.presentationResponsibilityAccepted
++        baseline.sinkProducerError = actual.sink.retainedProducerError
++        baseline.idle = actual.sink.isIdleForOffer
++        baseline.health = actual.health()
++        baseline.recording.capture(actual.sink.recording)
++        baseline.targetConfiguration = actual.sink.target.configuration
++        baseline.writer = nil
++        baseline.nativeReservation = actual.sink.reservation
++        baseline.nativeGlyphHeader = actual.sink.glyphHeader
++    }
++    borrowing func matchesBaseline(_ baseline: borrowing CounterEndpointBaseline) -> Bool {
++        let sameeffectivePresentation = baseline.effectivePresentation == actual.effectivePresentation
++        guard sameeffectivePresentation else { return false }
++        let samedescriptor = baseline.descriptor == actual.descriptor
++        guard samedescriptor else { return false }
++        let samepayloadLimits = baseline.payloadLimits == actual.payloadLimits
++        guard samepayloadLimits else { return false }
++        let samerealization = baseline.realization == actual.textRasterRealization
++        guard samerealization else { return false }
++        let samebodyCalls = baseline.bodyCalls == actual.bodyCallCount
++        guard samebodyCalls else { return false }
++        let samereservations = baseline.reservations == actual.reservationCallCount
++        guard samereservations else { return false }
++        let samedisplayError = baseline.displayError == actual.lastDisplayError
++        guard samedisplayError else { return false }
++        let sameproducerError = baseline.producerError == actual.retainedProducerError
++        guard sameproducerError else { return false }
++        let samecapacity = baseline.capacity == actual.sink.capacity
++        guard samecapacity else { return false }
++        let samesinkDescriptor = baseline.sinkDescriptor == actual.sink.descriptor
++        guard samesinkDescriptor else { return false }
++        let samesinkLimits = baseline.sinkLimits == actual.sink.payloadLimits
++        guard samesinkLimits else { return false }
++        let samesinkFailure = baseline.sinkFailure == actual.sink.failure
++        guard samesinkFailure else { return false }
++        let samestreamCompleted = baseline.streamCompleted == actual.sink.streamCompleted
++        guard samestreamCompleted else { return false }
++        let samepresentationAccepted = baseline.presentationAccepted == actual.sink.presentationResponsibilityAccepted
++        guard samepresentationAccepted else { return false }
++        let samesinkProducerError = baseline.sinkProducerError == actual.sink.retainedProducerError
++        guard samesinkProducerError else { return false }
++        let sameidle = baseline.idle == actual.sink.isIdleForOffer
++        guard sameidle else { return false }
++        let samehealth = baseline.health == actual.health()
++        guard samehealth else { return false }
++        let samerecording = baseline.recording.matches(actual.sink.recording)
++        guard samerecording else { return false }
++        let sametargetConfiguration = baseline.targetConfiguration == actual.sink.target.configuration
++        guard sametargetConfiguration else { return false }
++        let samewriter = baseline.writer == nil
++        guard samewriter else { return false }
++        let samenativeReservation = baseline.nativeReservation == actual.sink.reservation
++        guard samenativeReservation else { return false }
++        let samenativeGlyphHeader = baseline.nativeGlyphHeader == actual.sink.glyphHeader
++        guard samenativeGlyphHeader else { return false }
++        return true
++    }
+     var ownedObservation: CounterEndpointObservation {
+         .init(effectivePresentation: actual.effectivePresentation, descriptor: actual.descriptor,
+             payloadLimits: actual.payloadLimits, realization: actual.textRasterRealization,
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+index fb65cbc2..b3f6e857 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+@@ -835,14 +835,38 @@ private func counterProduceStoredEndpoint<G: CounterGeometry & ~Copyable & ~Esca
+ 
+ // Owned facts only: no endpoint, pointer, scoped value or callback is retained.
+ struct CounterRecordingObservation: Equatable {
+-    private let value: CounterRenderSink
++    private var value: CounterRenderSink
++    init() { value = CounterRenderSink() }
+     init(_ value: borrowing CounterRenderSink) { self.value = copy value }
+-    static func == (left: Self, right: Self) -> Bool {
+-        let a = left.value, b = right.value
+-        guard a.capacity == b.capacity && a.header == b.header && a.operations == b.operations && a.glyphs == b.glyphs && a.strokes == b.strokes && a.finishes == b.finishes && a.discards == b.discards && a.firstPoint == b.firstPoint && a.secondPoint == b.secondPoint && a.strokeHeader == b.strokeHeader else { return false }
+-        for index in 0..<64 { if a.glyphRecords[index] != b.glyphRecords[index] { return false } }
++    mutating func capture(_ current: borrowing CounterRenderSink) { value = copy current }
++    borrowing func matches(_ current: borrowing CounterRenderSink) -> Bool {
++        let sameCapacity = value.capacity == current.capacity
++        guard sameCapacity else { return false }
++        let sameHeader = value.header == current.header
++        guard sameHeader else { return false }
++        let sameOperations = value.operations == current.operations
++        guard sameOperations else { return false }
++        let sameGlyphs = value.glyphs == current.glyphs
++        guard sameGlyphs else { return false }
++        let sameStrokes = value.strokes == current.strokes
++        guard sameStrokes else { return false }
++        let sameFinishes = value.finishes == current.finishes
++        guard sameFinishes else { return false }
++        let sameDiscards = value.discards == current.discards
++        guard sameDiscards else { return false }
++        let sameFirstPoint = value.firstPoint == current.firstPoint
++        guard sameFirstPoint else { return false }
++        let sameSecondPoint = value.secondPoint == current.secondPoint
++        guard sameSecondPoint else { return false }
++        let sameStrokeHeader = value.strokeHeader == current.strokeHeader
++        guard sameStrokeHeader else { return false }
++        for index in 0..<64 {
++            let same = value.glyphRecords[index] == current.glyphRecords[index]
++            guard same else { return false }
++        }
+         return true
+     }
++    static func == (left: Self, right: Self) -> Bool { left.matches(right.value) }
+ }
+ struct CounterWriterObservation: Equatable {
+     let bytes: UInt32
+@@ -876,6 +900,31 @@ struct CounterEndpointObservation: Equatable {
+     let nativeReservation: DisplayReservationID?
+     let nativeGlyphHeader: PositionedGlyphOperationHeader?
+ }
++// Captured only once by the enclosing full baseline; never a live endpoint.
++struct CounterEndpointBaseline: ~Copyable {
++    var recording = CounterRecordingObservation()
++    var effectivePresentation: EffectiveRasterPresentation? = nil
++    var descriptor: RasterSurfaceDescriptor? = nil
++    var payloadLimits: RasterPayloadLimits? = nil
++    var realization: RasterRealizationID? = nil
++    var bodyCalls: UInt32? = nil
++    var reservations: UInt32? = nil
++    var displayError: DisplayTargetError? = nil
++    var producerError: RenderProductionError? = nil
++    var capacity: RenderSinkCapacity? = nil
++    var sinkDescriptor: RasterSurfaceDescriptor? = nil
++    var sinkLimits: RasterPayloadLimits? = nil
++    var sinkFailure: RasterBackendError? = nil
++    var streamCompleted: Bool? = nil
++    var presentationAccepted: Bool? = nil
++    var sinkProducerError: RenderProductionError? = nil
++    var idle: Bool? = nil
++    var health: GiftUIOperationalHealth? = nil
++    var targetConfiguration: HostEndpointConfiguration? = nil
++    var writer: CounterWriterObservation? = nil
++    var nativeReservation: DisplayReservationID? = nil
++    var nativeGlyphHeader: PositionedGlyphOperationHeader? = nil
++}
+ // Actual backend completion facts are independent of endpoint/adapter counters.
+ // This owned value contains no payload arrays, pointer, callback or live owner.
+ struct CounterBackendObservation: Equatable {
+@@ -913,3 +962,56 @@ struct CounterRuntimeSlotObservation: Equatable {
+         candidateAction = control.pointee.runtimeCandidateActionIdentity
+     }
+ }
++
++// Every field of CounterRuntimeSlotObservation, captured into existing storage.
++struct CounterRuntimeSlotBaseline: ~Copyable {
++    private var captured = false
++    private var backend: CounterBackendObservation? = nil
++    private var phase: CounterRuntimeSlotPhase? = nil
++    private var owner: UInt64? = nil
++    private var lastSerial: UInt64 = 0
++    private var endpointPresent = false
++    private var endpoint = CounterEndpointBaseline()
++    private var root: SemanticCompleteIdentity? = nil
++    private var action: SemanticCompleteIdentity? = nil
++    private var candidateRoot: SemanticCompleteIdentity? = nil
++    private var candidateAction: SemanticCompleteIdentity? = nil
++    mutating func capture(_ control: UnsafeMutablePointer<CounterControl>) {
++        let mayCapture = !captured; precondition(mayCapture)
++        backend = counterObserveBackend(control.pointee.backend)
++        phase = control.pointee.runtimeSlotPhase; owner = control.pointee.runtimeSlotOwner
++        lastSerial = control.pointee.runtimeLastOwnerSerial
++        endpointPresent = control.pointee.runtimeEndpoint != nil
++        control.pointee.runtimeEndpoint?.captureBaseline(into: &endpoint)
++        root = control.pointee.runtimeRootIdentity; action = control.pointee.runtimeActionIdentity
++        candidateRoot = control.pointee.runtimeCandidateRootIdentity
++        candidateAction = control.pointee.runtimeCandidateActionIdentity
++        captured = true
++    }
++    borrowing func matches(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
++        let wasCaptured = captured; precondition(wasCaptured)
++        let samebackend = backend == counterObserveBackend(control.pointee.backend)
++        guard samebackend else { return false }
++        let samephase = phase == control.pointee.runtimeSlotPhase
++        guard samephase else { return false }
++        let sameowner = owner == control.pointee.runtimeSlotOwner
++        guard sameowner else { return false }
++        let samelastSerial = lastSerial == control.pointee.runtimeLastOwnerSerial
++        guard samelastSerial else { return false }
++        let sameendpointPresent = endpointPresent == (control.pointee.runtimeEndpoint != nil)
++        guard sameendpointPresent else { return false }
++        let sameroot = root == control.pointee.runtimeRootIdentity
++        guard sameroot else { return false }
++        let sameaction = action == control.pointee.runtimeActionIdentity
++        guard sameaction else { return false }
++        let samecandidateRoot = candidateRoot == control.pointee.runtimeCandidateRootIdentity
++        guard samecandidateRoot else { return false }
++        let samecandidateAction = candidateAction == control.pointee.runtimeCandidateActionIdentity
++        guard samecandidateAction else { return false }
++        if endpointPresent {
++            let sameEndpoint = control.pointee.runtimeEndpoint?.matchesBaseline(endpoint) == true
++            guard sameEndpoint else { return false }
++        }
++        return true
++    }
++}
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift
+index 9d5d737b..8e0d17a9 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift
+@@ -36,7 +36,9 @@ func giftuiRFC014CounterEntry(_ write: CounterTiledPixelWrite?) -> UInt32 {
+ #endif
+ 
+ package func p08CounterRoute(write: CounterTiledPixelWrite? = nil, backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
+-    #if GIFTUI_COUNTER_ROUTE_DYNAMIC
++    #if hasFeature(Embedded)
++    p08RunEmbeddedCorpus(write: write, backing: backing!)
++    #elseif GIFTUI_COUNTER_ROUTE_DYNAMIC
+     p08CounterGraph() + p08CounterScopedStorage() + p08CounterDynamicHost()
+     #else
+     p08CounterGraph(backing: backing) + p08CounterScopedStorage(backing: backing, write: write) + p08CounterHost(write: write, backing: backing)
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
+index cf9982d4..0cc449ab 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
+@@ -213,6 +213,14 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
+     init(slots: P08PhysicalSlots, identity: UInt, capacities: InlineArray<5, UInt16> = [2, 2, 2, 2, 2]) {
+         self.slots = slots; self.identity = identity; self.capacities = capacities
+     }
++    fileprivate mutating func finishMetadataReservation() -> Bool {
++        switch lifecycle {
++        case .reserved: return acquired == 0
++        case .idle: finishReservation(); return true
++        case .released: return true
++        case .active: return false
++        }
++    }
+     private mutating func record(_ entry: P08InitializedEntry) {
+         precondition(acquired < 14)
+         for index in 0..<acquired {
+@@ -1516,42 +1524,44 @@ fileprivate func p08RequireRetiredControl(_ control: UnsafeMutablePointer<Counte
+     precondition(control.pointee.snapshotProducerOrigin() == nil && !control.pointee.frameActive && !control.pointee.hasRoot)
+     precondition(control.pointee.runtime.admission.pointerCount == 0 && control.pointee.runtime.admission.pendingStateCount == 0 && !control.pointee.runtime.admission.sealActive)
+ }
+-fileprivate func p08RequireSameInventory(_ current: InlineArray<14, P08InitializedEntry?>, _ original: InlineArray<14, P08InitializedEntry?>) {
++fileprivate func p08RequireSameInventory(_ current: borrowing InlineArray<14, P08InitializedEntry?>, _ original: borrowing InlineArray<14, P08InitializedEntry?>) {
+     for index in 0..<14 { precondition(current[index] == original[index]) }
+ }
+-fileprivate struct P08ReuseFingerprint: Equatable {
+-    let runtimeSlot: CounterRuntimeSlotObservation
+-    let acceptedRecording: CounterRecordingObservation
+-    let joins: CounterJoinSnapshot
+-    let context: ExecutionContext
+-    let capture: CapturedAction<SemanticCompleteIdentity>?
+-    let source: InputSourceID?
+-    let sequence: InputSourceSequenceState
+-    let presentation: PresentationRevision?
+-    let semantic: CounterSemanticSnapshot
+-    let dirty: Bool
+-    let admission: CounterAdmissionBacking
+-    let controllerContext: ExecutionContext?
+-    let controllerPresentation: PresentationRevision?
+-    let controllerQuiescent: Bool?
+-    let controllerSeal: Bool?
+-    let controllerDeferred: Bool?
+-    let schedulerNow: HostScheduledOpportunityBeginResult?
+-    let schedulerDeadline: HostScheduledOpportunityBeginResult?
+-    let wakeTakes: Int
+-    let disabledWakeRejections: Int
+-    let applicationCallbacks: Int
+-    let observationsInstalled: Int
+-    let observationsDetached: Int
+-    let reentrantApplicationRejections: Int
+-    let stoppedApplicationChecks: Int
+-    let lastSealedAction: CapturedAction<SemanticCompleteIdentity>?
+-    let lastDispatchedAction: CapturedAction<SemanticCompleteIdentity>?
+-    let lastDispatchContext: ExecutionContext?
+-    let actionDispatches: Int
+-    init(_ control: UnsafeMutablePointer<CounterControl>) {
+-        runtimeSlot = CounterRuntimeSlotObservation(control)
+-        acceptedRecording = CounterRecordingObservation(control.pointee.lastFrame)
++fileprivate struct P08ReuseFingerprint: ~Copyable {
++    private var frozen = false
++    private var runtimeSlot = CounterRuntimeSlotBaseline()
++    private var acceptedRecording = CounterRecordingObservation()
++    private var joins: CounterJoinSnapshot? = nil
++    private var context: ExecutionContext? = nil
++    private var capture: CapturedAction<SemanticCompleteIdentity>? = nil
++    private var source: InputSourceID? = nil
++    private var sequence: InputSourceSequenceState? = nil
++    private var presentation: PresentationRevision? = nil
++    private var semantic: CounterSemanticSnapshot? = nil
++    private var dirty: Bool? = nil
++    private var admission: CounterAdmissionBacking? = nil
++    private var controllerContext: ExecutionContext? = nil
++    private var controllerPresentation: PresentationRevision? = nil
++    private var controllerQuiescent: Bool? = nil
++    private var controllerSeal: Bool? = nil
++    private var controllerDeferred: Bool? = nil
++    private var schedulerNow: HostScheduledOpportunityBeginResult? = nil
++    private var schedulerDeadline: HostScheduledOpportunityBeginResult? = nil
++    private var wakeTakes: Int? = nil
++    private var disabledWakeRejections: Int? = nil
++    private var applicationCallbacks: Int? = nil
++    private var observationsInstalled: Int? = nil
++    private var observationsDetached: Int? = nil
++    private var reentrantApplicationRejections: Int? = nil
++    private var stoppedApplicationChecks: Int? = nil
++    private var lastSealedAction: CapturedAction<SemanticCompleteIdentity>? = nil
++    private var lastDispatchedAction: CapturedAction<SemanticCompleteIdentity>? = nil
++    private var lastDispatchContext: ExecutionContext? = nil
++    private var actionDispatches: Int? = nil
++    mutating func capture(_ control: UnsafeMutablePointer<CounterControl>) {
++        let canCapture = !frozen; precondition(canCapture)
++        runtimeSlot.capture(control)
++        acceptedRecording.capture(control.pointee.lastFrame)
+         joins = counterJoinSnapshot(control); context = control.pointee.runtime.context
+         capture = control.pointee.runtime.pointer.capture.current; source = control.pointee.runtime.pointer.source
+         sequence = control.pointee.runtime.pointer.sequence
+@@ -1576,14 +1586,185 @@ fileprivate struct P08ReuseFingerprint: Equatable {
+         stoppedApplicationChecks = control.pointee.stoppedApplicationChecks
+         lastSealedAction = control.pointee.lastSealedAction; lastDispatchedAction = control.pointee.lastDispatchedAction
+         lastDispatchContext = control.pointee.lastDispatchContext; actionDispatches = control.pointee.actionDispatches
++        frozen = true
++    }
++    borrowing func matches(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
++        let isFrozen = frozen; precondition(isFrozen)
++        var now = control.pointee.scheduler, deadline = control.pointee.scheduler
++        let schedulerReport = control.pointee.scheduler?.assemblyReport
++        let boundary = control.pointee.wakeClockMicroseconds.addingReportingOverflow(250000)
++        precondition(!boundary.overflow)
++        let sameruntimeSlot = runtimeSlot.matches(control)
++        guard sameruntimeSlot else { return false }
++        let sameacceptedRecording = acceptedRecording.matches(control.pointee.lastFrame)
++        guard sameacceptedRecording else { return false }
++        let samejoins = joins == counterJoinSnapshot(control)
++        guard samejoins else { return false }
++        let samecontext = context == control.pointee.runtime.context
++        guard samecontext else { return false }
++        let samecapture = capture == control.pointee.runtime.pointer.capture.current
++        guard samecapture else { return false }
++        let samesource = source == control.pointee.runtime.pointer.source
++        guard samesource else { return false }
++        let samesequence = sequence == control.pointee.runtime.pointer.sequence
++        guard samesequence else { return false }
++        let samepresentation = presentation == control.pointee.runtime.committedPresentation
++        guard samepresentation else { return false }
++        let samesemantic = semantic == control.pointee.semanticSnapshot
++        guard samesemantic else { return false }
++        let samedirty = dirty == control.pointee.runtime.changed
++        guard samedirty else { return false }
++        let sameadmission = admission == control.pointee.runtime.admission
++        guard sameadmission else { return false }
++        let samecontrollerContext = controllerContext == control.pointee.admissionController?.context
++        guard samecontrollerContext else { return false }
++        let samecontrollerPresentation = controllerPresentation == control.pointee.admissionController?.committedPresentationRevision
++        guard samecontrollerPresentation else { return false }
++        let samecontrollerQuiescent = controllerQuiescent == control.pointee.admissionController?.isQuiescent
++        guard samecontrollerQuiescent else { return false }
++        let samecontrollerSeal = controllerSeal == control.pointee.admissionController?.isSealClosed
++        guard samecontrollerSeal else { return false }
++        let samecontrollerDeferred = controllerDeferred == control.pointee.admissionController?.didDeferAfterSeal
++        guard samecontrollerDeferred else { return false }
++        let sameschedulerNow = schedulerNow == now?.begin(at: control.pointee.wakeClockMicroseconds, lifecycleState: .active, assemblyReport: schedulerReport!)
++        guard sameschedulerNow else { return false }
++        let sameschedulerDeadline = schedulerDeadline == deadline?.begin(at: boundary.partialValue, lifecycleState: .active, assemblyReport: schedulerReport!)
++        guard sameschedulerDeadline else { return false }
++        let samewakeTakes = wakeTakes == control.pointee.wakeTakes
++        guard samewakeTakes else { return false }
++        let samedisabledWakeRejections = disabledWakeRejections == control.pointee.disabledWakeRejections
++        guard samedisabledWakeRejections else { return false }
++        let sameapplicationCallbacks = applicationCallbacks == control.pointee.applicationCallbacks
++        guard sameapplicationCallbacks else { return false }
++        let sameobservationsInstalled = observationsInstalled == control.pointee.observationsInstalled
++        guard sameobservationsInstalled else { return false }
++        let sameobservationsDetached = observationsDetached == control.pointee.observationsDetached
++        guard sameobservationsDetached else { return false }
++        let samereentrantApplicationRejections = reentrantApplicationRejections == control.pointee.reentrantApplicationRejections
++        guard samereentrantApplicationRejections else { return false }
++        let samestoppedApplicationChecks = stoppedApplicationChecks == control.pointee.stoppedApplicationChecks
++        guard samestoppedApplicationChecks else { return false }
++        let samelastSealedAction = lastSealedAction == control.pointee.lastSealedAction
++        guard samelastSealedAction else { return false }
++        let samelastDispatchedAction = lastDispatchedAction == control.pointee.lastDispatchedAction
++        guard samelastDispatchedAction else { return false }
++        let samelastDispatchContext = lastDispatchContext == control.pointee.lastDispatchContext
++        guard samelastDispatchContext else { return false }
++        let sameactionDispatches = actionDispatches == control.pointee.actionDispatches
++        guard sameactionDispatches else { return false }
++        return true
+     }
+ }
+-// Keep each complete current snapshot in this short synchronous comparison.
+-// The expected owned facts and the original control pointer do not escape.
+ @inline(never)
+ fileprivate func p08MatchesReuseFingerprint(_ expected: borrowing P08ReuseFingerprint,
+     control: UnsafeMutablePointer<CounterControl>) -> Bool {
+-    P08ReuseFingerprint(control) == expected
++    expected.matches(control)
++}
++// Mutate one actual observed field at a time, restore it before the next read.
++// The sole frozen baseline is never refreshed or copied by these controls.
++@inline(never)
++fileprivate func p08CheckBaselineSensitivity(_ before: borrowing P08ReuseFingerprint,
++    control: UnsafeMutablePointer<CounterControl>) -> Int {
++    let initialMatch = before.matches(control); precondition(initialMatch)
++    guard let probe = control.pointee.lastFrame.glyphRecords[0] else { preconditionFailure("baseline glyph positive") }
++    for index in 0..<64 {
++        let original = control.pointee.lastFrame.glyphRecords[index]
++        control.pointee.lastFrame.glyphRecords[index] = original == nil ? probe : nil
++        let rejects = !before.matches(control); precondition(rejects)
++        control.pointee.lastFrame.glyphRecords[index] = original
++    }
++    do {
++        let original = control.pointee.runtimeRootIdentity
++        var changed = SemanticCompleteIdentity()
++        precondition(changed.append(.init(kind: .root)))
++        precondition(changed.append(.init(kind: .fixedChild, ordinal: 31)))
++        control.pointee.runtimeRootIdentity = original == changed ? nil : changed
++        let rejects = !before.matches(control); precondition(rejects)
++        control.pointee.runtimeRootIdentity = original
++    }
++    do {
++        let original = control.pointee.runtimeActionIdentity
++        var changed = SemanticCompleteIdentity()
++        precondition(changed.append(.init(kind: .root)))
++        precondition(changed.append(.init(kind: .fixedChild, ordinal: 31)))
++        control.pointee.runtimeActionIdentity = original == changed ? nil : changed
++        let rejects = !before.matches(control); precondition(rejects)
++        control.pointee.runtimeActionIdentity = original
++    }
++    do {
++        let original = control.pointee.runtimeCandidateRootIdentity
++        var changed = SemanticCompleteIdentity()
++        precondition(changed.append(.init(kind: .root)))
++        precondition(changed.append(.init(kind: .fixedChild, ordinal: 31)))
++        control.pointee.runtimeCandidateRootIdentity = original == changed ? nil : changed
++        let rejects = !before.matches(control); precondition(rejects)
++        control.pointee.runtimeCandidateRootIdentity = original
++    }
++    do {
++        let original = control.pointee.runtimeCandidateActionIdentity
++        var changed = SemanticCompleteIdentity()
++        precondition(changed.append(.init(kind: .root)))
++        precondition(changed.append(.init(kind: .fixedChild, ordinal: 31)))
++        control.pointee.runtimeCandidateActionIdentity = original == changed ? nil : changed
++        let rejects = !before.matches(control); precondition(rejects)
++        control.pointee.runtimeCandidateActionIdentity = original
++    }
++    do {
++        let original = control.pointee.backend.reservations
++        control.pointee.backend.reservations = original == 0 ? 1 : 0
++        let rejects = !before.matches(control); precondition(rejects)
++        control.pointee.backend.reservations = original
++    }
++    do {
++        let original = control.pointee.backend.submissions
++        control.pointee.backend.submissions = original == 0 ? 1 : 0
++        let rejects = !before.matches(control); precondition(rejects)
++        control.pointee.backend.submissions = original
++    }
++    do {
++        let original = control.pointee.backend.finishes
++        control.pointee.backend.finishes = original == 0 ? 1 : 0
++        let rejects = !before.matches(control); precondition(rejects)
++        control.pointee.backend.finishes = original
++    }
++    do {
++        let original = control.pointee.backend.cancellations
++        control.pointee.backend.cancellations = original == 0 ? 1 : 0
++        let rejects = !before.matches(control); precondition(rejects)
++        control.pointee.backend.cancellations = original
++    }
++    do {
++        let original = control.pointee.backend.submittedBytes
++        control.pointee.backend.submittedBytes = original == 0 ? 1 : 0
++        let rejects = !before.matches(control); precondition(rejects)
++        control.pointee.backend.submittedBytes = original
++    }
++    do {
++        let original = control.pointee.backend.submittedRows
++        control.pointee.backend.submittedRows = original == 0 ? 1 : 0
++        let rejects = !before.matches(control); precondition(rejects)
++        control.pointee.backend.submittedRows = original
++    }
++    do {
++        let original = control.pointee.backend.constructedEndpoints
++        control.pointee.backend.constructedEndpoints = original == 0 ? 1 : 0
++        let rejects = !before.matches(control); precondition(rejects)
++        control.pointee.backend.constructedEndpoints = original
++    }
++    do {
++        let original = control.pointee.backend.projectionControls
++        control.pointee.backend.projectionControls = original == 0 ? 1 : 0
++        let rejects = !before.matches(control); precondition(rejects)
++        control.pointee.backend.projectionControls = original
++    }
++    do {
++        let original = control.pointee.backend.envelopeRejections
++        control.pointee.backend.envelopeRejections = original == 0 ? 1 : 0
++        let rejects = !before.matches(control); precondition(rejects)
++        control.pointee.backend.envelopeRejections = original
++    }
++    let finalMatch = before.matches(control); precondition(finalMatch)
++    return 79
+ }
+ // Borrow the host only for one operation; return existing owned observations.
+ @inline(never)
+@@ -1626,7 +1807,7 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
+ }
+ 
+ @inline(never)
+-fileprivate func p08ReuseRejectAction<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, route: StaticString, before: borrowing P08ReuseFingerprint, modelBefore: UInt8, oldAction: CounterProducedAction) -> Int
++fileprivate func p08ReuseRejectAction<Owner>(host: borrowing SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, route: StaticString, before: borrowing P08ReuseFingerprint, modelBefore: UInt8, oldAction: CounterProducedAction) -> Int
+ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
+     let prepared = p08ReusePrepareAction(host: host, action: oldAction)
+     precondition(!prepared)
+@@ -1674,7 +1855,7 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
+ }
+ 
+ @inline(never)
+-fileprivate func p08ReuseRejectOldOrigins<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString, action: CounterProducedAction, revision: PresentationRevision) -> Int
++fileprivate func p08ReuseRejectOldOrigins<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString, action: CounterProducedAction, revision: PresentationRevision, baseline: UnsafeMutablePointer<P08ReuseFingerprint>) -> Int
+ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
+     let oldAction = transcript.pointee.action!, oldEvent = transcript.pointee.event!
+     precondition(action.captured == oldAction.captured && action.targetGeneration == oldAction.targetGeneration && action.targetIdentity == oldAction.targetIdentity)
+@@ -1682,12 +1863,13 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
+     precondition(oldEvent.source == .init(rawValue: 0) && oldEvent.sequence.rawValue == 0 && oldEvent.ordinal.rawValue == 0 && oldEvent.presentationRevision == revision)
+     p08ReuseLabel(route, "raw-namespace-collision")
+     let modelBefore = p08ReuseModelValue(host: host)
+-    let before = P08ReuseFingerprint(control)
+-    let checks = p08ReuseRejectAction(host: &host, control: control, route: route, before: before, modelBefore: modelBefore, oldAction: oldAction)
+-    p08ReuseRejectInput(host: &host, control: control, transcript: transcript, route: route, before: before, modelBefore: modelBefore, oldEvent: oldEvent)
+-    p08ReuseRejectAdmission(host: &host, control: control, transcript: transcript, route: route, before: before, modelBefore: modelBefore, oldEvent: oldEvent)
+-    p08ReuseRejectSource(host: &host, control: control, transcript: transcript, route: route, before: before, modelBefore: modelBefore)
+-    return checks
++    baseline.pointee.capture(control)
++    let sensitivityChecks = p08CheckBaselineSensitivity(baseline.pointee, control: control)
++    let checks = p08ReuseRejectAction(host: host, control: control, route: route, before: baseline.pointee, modelBefore: modelBefore, oldAction: oldAction)
++    p08ReuseRejectInput(host: &host, control: control, transcript: transcript, route: route, before: baseline.pointee, modelBefore: modelBefore, oldEvent: oldEvent)
++    p08ReuseRejectAdmission(host: &host, control: control, transcript: transcript, route: route, before: baseline.pointee, modelBefore: modelBefore, oldEvent: oldEvent)
++    p08ReuseRejectSource(host: &host, control: control, transcript: transcript, route: route, before: baseline.pointee, modelBefore: modelBefore)
++    return checks + sensitivityChecks
+ }
+ 
+ @inline(never)
+@@ -1784,7 +1966,7 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
+     return 10
+ }
+ 
+-fileprivate func p08RunReuseHost<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>) -> Int
++fileprivate func p08RunReuseHost<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> Int
+ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
+     let route: StaticString = host.assemblyReport.profile == .static ? "static" : "dynamic"
+     var count = p08ReuseActivate(host: &host, control: control)
+@@ -1793,7 +1975,15 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
+     var admission = CounterAdmission(borrowing: control)
+     let revision = control.pointee.runtime.committedPresentation!
+     if transcript.pointee.hosts == 1 {
+-        count += p08ReuseRejectOldOrigins(host: &host, control: control, transcript: transcript, route: route, action: action, revision: revision)
++        #if hasFeature(Embedded)
++        guard let baseline else { preconditionFailure("missing donor baseline") }
++        count += p08ReuseRejectOldOrigins(host: &host, control: control, transcript: transcript, route: route, action: action, revision: revision, baseline: baseline)
++        #else
++        var localBaseline = P08ReuseFingerprint()
++        count += withUnsafeMutablePointer(to: &localBaseline) { baseline in
++            p08ReuseRejectOldOrigins(host: &host, control: control, transcript: transcript, route: route, action: action, revision: revision, baseline: baseline)
++        }
++        #endif
+     }
+     count += p08ReuseCurrentPointer(host: &host, control: control, transcript: transcript, action: action, revision: revision, admission: &admission)
+     if transcript.pointee.hosts == 1 {
+@@ -1892,22 +2082,9 @@ fileprivate func withP08EntriesFieldBuffer<Result>(
+ }
+ #endif
+ 
++#if !hasFeature(Embedded)
+ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity,
+     backing: UnsafeMutableRawBufferPointer?, _ body: (inout P08TypedBackingOwner, borrowing P08StaticOuterView) -> Result) -> Result {
+-    #if hasFeature(Embedded)
+-    let outer = P08EmbeddedOuter(modelOwner: modelOwner, semanticOwner: semanticOwner, backing: backing!, limits: counterActualLimits(.static))
+-    var owner = P08TypedBackingOwner(slots: .static(outer.storageSlots()), identity: UInt(bitPattern: backing!.baseAddress!))
+-    precondition(initializeP08Backing(&owner) == nil)
+-    defer { owner.finishReservation() }
+-    var occupied = 0
+-    for index in 0..<25 { let sum = occupied.addingReportingOverflow(outer.layout.regions[index]!.extent); precondition(!sum.overflow); occupied = sum.partialValue }
+-    let metadata = backing!.count - occupied + MemoryLayout<RuntimeProfileLimits>.stride + MemoryLayout<Bool>.stride - CounterSemanticBacking.paddingBytes
+-    let view = P08StaticOuterView(limits: outer.limits.pointee, root: outer.root, semantic: outer.semantic,
+-        records: .init(start: outer.records, count: 128), paths: .init(start: outer.paths, count: 384), payloads: .init(start: outer.payloads, count: 256), scalars: .init(start: outer.scalars, count: 128), canvas: outer.canvas, entries: .init(start: outer.entries, count: 1), control: outer.control, outerMetadataBytes: metadata)
+-    let control = outer.control
+-    defer { control.pointee.requireVacantRuntimeSlot() }
+-    return body(&owner, view)
+-    #else
+     var outer = P08StaticOuter(modelOwner: modelOwner, semanticOwner: semanticOwner)
+     let limits = outer.limits
+     return withUnsafeMutablePointer(to: &outer.root) { root in
+@@ -1928,8 +2105,8 @@ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerI
+                 return body(&owner, view)
+             }
+         } } } } } } } } }
+-    #endif
+ }
++#endif
+ 
+ fileprivate typealias P08StaticSupplied = CounterHostSuppliedStorage<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>
+ fileprivate typealias P08StaticHostOwner = CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>
+@@ -1985,10 +2162,10 @@ fileprivate func p08FinishStaticOwner(_ owner: inout P08StaticHostOwner) {
+ }
+ 
+ @inline(never)
+-fileprivate func p08RunStaticHostPhase(host: inout P08StaticHost, control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
++fileprivate func p08RunStaticHostPhase(host: inout P08StaticHost, control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> P08BodyResult {
+     let checks: Int
+     if let reuse {
+-        checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
++        checks = p08RunReuseHost(host: &host, control: control, transcript: reuse, baseline: baseline)
+     } else if early == 5 || candidateFailure != nil {
+         precondition(host.activate() == .active)
+         if let candidateFailure {
+@@ -2003,7 +2180,7 @@ fileprivate func p08RunStaticHostPhase(host: inout P08StaticHost, control: Unsaf
+ }
+ 
+ @inline(never)
+-fileprivate func p08RunStaticSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
++fileprivate func p08RunStaticSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> P08BodyResult {
+     if early == 1 {
+         var session = consume session; session.reset()
+         return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+@@ -2032,7 +2209,7 @@ fileprivate func p08RunStaticSessionPhase(session: consuming P08StorageSession,
+         precondition(teardownStep == 8)
+     }
+     if early == 4 { return P08BodyResult(checks: 1, constructed: true, activationAttempted: false) }
+-    return p08RunStaticHostPhase(host: &host, control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joins, early: early, candidateFailure: candidateFailure, reuse: reuse)
++    return p08RunStaticHostPhase(host: &host, control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joins, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
+ }
+ 
+ #if !hasFeature(Embedded)
+@@ -2043,10 +2220,10 @@ fileprivate func p08FinishDynamicOwner(_ owner: inout P08DynamicHostOwner) {
+ }
+ 
+ @inline(never)
+-fileprivate func p08RunDynamicHostPhase(host: inout P08DynamicHost, control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
++fileprivate func p08RunDynamicHostPhase(host: inout P08DynamicHost, control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> P08BodyResult {
+     let checks: Int
+     if let reuse {
+-        checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
++        checks = p08RunReuseHost(host: &host, control: control, transcript: reuse, baseline: baseline)
+     } else if early == 5 || candidateFailure != nil {
+         precondition(host.activate() == .active)
+         if let candidateFailure {
+@@ -2061,7 +2238,7 @@ fileprivate func p08RunDynamicHostPhase(host: inout P08DynamicHost, control: Uns
+ }
+ 
+ @inline(never)
+-fileprivate func p08RunDynamicSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?) -> P08BodyResult {
++fileprivate func p08RunDynamicSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> P08BodyResult {
+     if early == 1 {
+         var session = consume session; session.reset()
+         return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+@@ -2090,29 +2267,29 @@ fileprivate func p08RunDynamicSessionPhase(session: consuming P08StorageSession,
+         precondition(teardownStep == 8)
+     }
+     if early == 4 { return P08BodyResult(checks: 1, constructed: true, activationAttempted: false) }
+-    return p08RunDynamicHostPhase(host: &host, control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joins, early: early, candidateFailure: candidateFailure, reuse: reuse)
++    return p08RunDynamicHostPhase(host: &host, control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joins, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
+ }
+ #endif
+ 
+ fileprivate func runP08ScopedBody(session: consuming P08StorageSession,
+-    models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignControl: UnsafeMutablePointer<CounterControl>, dynamic: Bool, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil) -> Int {
++    models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignControl: UnsafeMutablePointer<CounterControl>, dynamic: Bool, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil, baseline: UnsafeMutablePointer<P08ReuseFingerprint>? = nil) -> Int {
+     let activationBacking: InlineArray<1, UInt8> = [1]
+     session.installProducerOrigin(control)
+     let result: P08BodyResult
+     #if !hasFeature(Embedded)
+     if dynamic {
+-        result = p08RunDynamicSessionPhase(session: session, semantic: semantic, values: values, activationSpan: activationBacking.span, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
++        result = p08RunDynamicSessionPhase(session: session, semantic: semantic, values: values, activationSpan: activationBacking.span, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
+     } else {
+-        result = p08RunStaticSessionPhase(session: session, semantic: semantic, values: values, activationSpan: activationBacking.span, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
++        result = p08RunStaticSessionPhase(session: session, semantic: semantic, values: values, activationSpan: activationBacking.span, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
+     }
+     #else
+-    result = p08RunStaticSessionPhase(session: session, semantic: semantic, values: values, activationSpan: activationBacking.span, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
++    result = p08RunStaticSessionPhase(session: session, semantic: semantic, values: values, activationSpan: activationBacking.span, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
+     #endif
+     p08CompleteBody(result, control: control)
+     return result.checks
+ }
+ 
+-fileprivate func runP08StaticHost(owner: inout P08TypedBackingOwner, outer: borrowing P08StaticOuterView, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, write: CounterTiledPixelWrite? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil) -> Int {
++fileprivate func runP08StaticHost(owner: inout P08TypedBackingOwner, outer: borrowing P08StaticOuterView, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, write: CounterTiledPixelWrite? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil, baseline: UnsafeMutablePointer<P08ReuseFingerprint>? = nil, foreignRootStorage: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>? = nil, foreignControlStorage: UnsafeMutablePointer<CounterControl>? = nil) -> Int {
+     // Field facts remain local to the enclosing synchronous selected reservation.
+     let control = outer.control
+     let rootStorage = outer.root, semanticStorage = outer.semantic, canvasStorage = outer.canvas
+@@ -2123,7 +2300,7 @@ fileprivate func runP08StaticHost(owner: inout P08TypedBackingOwner, outer: borr
+     if let write { control.pointee.backend.write = write }
+     #endif
+     guard case .valid(let audit) = outer.audit(owner: owner), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }
+-    return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
++    return counterForeignJoinScope(backing: foreignRootStorage, foreign: foreignControlStorage) { foreignModels, foreignRoot, foreignControl in
+         let ownedChecks = counterOwnedSchedulerCompatibility(assembly.report)
+         precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, sourceCallbacks: 21) == nil)
+         precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, repositoryCallbacks: 2) == nil)
+@@ -2142,7 +2319,7 @@ fileprivate func runP08StaticHost(owner: inout P08TypedBackingOwner, outer: borr
+                             var entries = MutableSpan(_unsafeStart: entriesBacking.baseAddress!, count: entriesBacking.count)
+                             try canvasStorage.pointee.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits.staticCanvas!) { values in
+                                 checks = withP08Storage(backing: &owner) { session in
+-                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control, audit: audit, assembly: assembly, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: false, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
++                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control, audit: audit, assembly: assembly, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: false, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
+                                 }
+                             }
+                         } catch { preconditionFailure("counter host Canvas") }
+@@ -2153,13 +2330,13 @@ fileprivate func runP08StaticHost(owner: inout P08TypedBackingOwner, outer: borr
+         return checks + ownedChecks + 4
+     }
+ }
++#if !hasFeature(Embedded)
+ package func p08CounterHost(write: CounterTiledPixelWrite? = nil, backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
+     var models = ObservableModelOwnerNamespace(); var semantics = SemanticRecordOwnerNamespace()
+     do {
+         var checks = 0
+         for scenario: UInt8 in 0...8 {
+-            let slot = scenario < 3 ? Int(scenario) : 3
+-            checks += withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: slot)) { owner, outer in
++            checks += withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: nil) { owner, outer in
+                 outer.control.pointee.terminalRetry = scenario == 2
+                 outer.control.pointee.idleQuiesceMode = scenario >= 3 ? scenario - 1 : 0
+                 #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
+@@ -2174,7 +2351,7 @@ package func p08CounterHost(write: CounterTiledPixelWrite? = nil, backing: Unsaf
+         counterTrace("reuse.namespaces", (firstModel, secondModel, firstSemantic, secondSemantic))
+         var transcript = P08HostReuseTranscript()
+         checks += withUnsafeMutablePointer(to: &transcript) { transcript in
+-            withP08SelectedStatic(modelOwner: firstModel, semanticOwner: firstSemantic, backing: counterSelectedProfileBacking(backing, slot: 0)) { owner, outer in
++            withP08SelectedStatic(modelOwner: firstModel, semanticOwner: firstSemantic, backing: nil) { owner, outer in
+                 let control = outer.control
+                 let original = owner.originalInventory()
+                 let address = UInt(bitPattern: control)
+@@ -2199,6 +2376,7 @@ package func p08CounterHost(write: CounterTiledPixelWrite? = nil, backing: Unsaf
+         return checks
+     } catch { preconditionFailure("counter host identities") }
+ }
++#endif
+ 
+ #if !hasFeature(Embedded)
+ fileprivate struct P08DynamicOuter: ~Copyable {
+@@ -2259,7 +2437,7 @@ fileprivate func withP08SelectedDynamic<Result>(modelOwner: ObservableModelOwner
+             }
+         } } } }
+ }
+-fileprivate func runP08DynamicHost(owner: inout P08TypedBackingOwner, outer: borrowing P08DynamicOuterView, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil) -> Int {
++fileprivate func runP08DynamicHost(owner: inout P08TypedBackingOwner, outer: borrowing P08DynamicOuterView, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil, baseline: UnsafeMutablePointer<P08ReuseFingerprint>? = nil) -> Int {
+     // Capture owned field facts, never the borrowed outer aggregate.
+     let control = outer.control
+     let rootStorage = outer.root, semanticStorage = outer.semantic, canvasStorage = outer.canvas
+@@ -2278,7 +2456,7 @@ fileprivate func runP08DynamicHost(owner: inout P08TypedBackingOwner, outer: bor
+                         do throws(DrawingError) {
+                             try canvasStorage.pointee.withLifetime(table: CounterValueTable(), limits: counterCanvasLimits, configuredCapacity: 1) { values in
+                                 checks = withP08Storage(backing: &owner) { session in
+-                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control, audit: audit, assembly: assembly, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: true, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
++                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control, audit: audit, assembly: assembly, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: true, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
+                                 }
+                             }
+                         } catch { preconditionFailure("counter Dynamic Canvas") }
+@@ -2333,7 +2511,21 @@ package func p08CounterDynamicHost() -> Int {
+ }
+ #endif
+ 
++#if !hasFeature(Embedded)
+ package func p08CounterGraph(backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
++    p08CheckGraphDefinition()
++    var modelOwners = ObservableModelOwnerNamespace()
++    var semanticOwners = SemanticRecordOwnerNamespace()
++    do {
++        return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer in
++        return p08CheckGraphSelection(owner: owner, outer: outer)
++
++        }
++    } catch { preconditionFailure("counter graph profile identities") }
++}
++#endif
++fileprivate func p08CheckGraphDefinition() {
++
+     // Independent expected vector from the reviewed actual-owner inventory:
+     // endpoint6 needs backing0, text1 and configuration2–5; wake16 retains
+     // audit0 and capability2–5 in its full report. Operation-only peers add no edge.
+@@ -2346,11 +2538,9 @@ package func p08CounterGraph(backing: UnsafeMutableRawBufferPointer? = nil) -> I
+     precondition(HostComponentGraphValidation.validate(CounterHostGraph()) == nil)
+     precondition(CounterHostGraph().record(at: 18) == nil)
+     for mode: UInt8 in 0...7 { precondition(HostComponentGraphValidation.validate(CounterInvalidGraph(mode: mode)) != nil) }
+-    var modelOwners = ObservableModelOwnerNamespace()
+-    var semanticOwners = SemanticRecordOwnerNamespace()
++}
++fileprivate func p08CheckGraphSelection(owner: borrowing P08TypedBackingOwner, outer: borrowing P08StaticOuterView) -> Int {
+     var count = 46
+-    do {
+-        return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: counterSelectedProfileBacking(backing, slot: 0)) { owner, outer in
+         guard case .valid(let audit) = outer.audit(owner: owner) else { preconditionFailure("counter graph audit") }
+         let control = outer.control
+         func reject(_ negative: CounterConstructionNegative) {
+@@ -2377,10 +2567,9 @@ package func p08CounterGraph(backing: UnsafeMutableRawBufferPointer? = nil) -> I
+         precondition(control.pointee.applicationConstructions == 0 && control.pointee.finalized == 0 && control.pointee.wake == nil)
+         count += 4
+         return count
+-        }
+-    } catch { preconditionFailure("counter graph profile identities") }
+ }
+ 
++
+ fileprivate struct P08RoleObservation {
+     let bankKind: UInt8
+     let leftBefore: P08InitializedEntry
+@@ -2488,46 +2677,7 @@ fileprivate func p08VerifyFault(_ owner: borrowing P08TypedBackingOwner, fault:
+     for index in 0..<14 { precondition(empty[index] == nil) }
+     return count + 1
+ }
+-#if hasFeature(Embedded)
+-fileprivate func p08SurplusBacking(_ backing: UnsafeMutableRawBufferPointer?) -> UnsafeMutableRawBufferPointer {
+-    let extent = counterEmbeddedSlotBytes.multipliedReportingOverflow(by: 2)
+-    guard !extent.overflow, let backing, extent.partialValue > 0,
+-        extent.partialValue <= backing.count, backing.baseAddress != nil
+-    else { preconditionFailure("surplus reservation bounds") }
+-    return UnsafeMutableRawBufferPointer(rebasing: backing[0..<extent.partialValue])
+-}
+-#endif
+-#if hasFeature(Embedded)
+-@inline(never)
+-fileprivate func p08EmbeddedExchangeCase(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity, backing: UnsafeMutableRawBufferPointer, surplus: Int) -> Int {
+-    let outer = P08EmbeddedOuter(modelOwner: modelOwner, semanticOwner: semanticOwner, backing: backing, limits: counterActualLimits(.static), surplus: surplus)
+-    var owner = P08TypedBackingOwner(slots: .static(outer.storageSlots()), identity: UInt(bitPattern: outer.bytes.baseAddress!))
+-    precondition(owner.initialize() == nil)
+-    let original = owner.originalInventory()
+-    if surplus > 0 { precondition(original[11]!.retainedBytes < original[12]!.retainedBytes) }
+-    var transcript = P08RoleTranscript()
+-    var checks = withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStorage(transcript: pointer) { session in var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise() } }
+-    checks += p08VerifyRoleTranscript(transcript)
+-    owner.release(); checks += p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
+-    return checks
+-}
+-@inline(never)
+-fileprivate func p08EmbeddedInvalidExtentCase(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity, backing: UnsafeMutableRawBufferPointer) -> Int {
+-    let outer = P08EmbeddedOuter(modelOwner: modelOwner, semanticOwner: semanticOwner, backing: backing, limits: counterActualLimits(.static))
+-    var owner = P08TypedBackingOwner(slots: .static(outer.storageSlots(r0Extent: MemoryLayout<CounterStaticCommitted>.stride - 1)), identity: UInt(bitPattern: outer.bytes.baseAddress!))
+-    precondition(owner.initialize() == .invalidReservation)
+-    let original = owner.originalInventory(); for index in 0..<14 { precondition(original[index] == nil) }
+-    return 1
+-}
+-@inline(never)
+-fileprivate func p08EmbeddedFaultCase(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity, backing: UnsafeMutableRawBufferPointer, id: P08PhysicalID, completed: Int, afterInstall: Bool, ids: borrowing InlineArray<14, P08PhysicalID?>) -> Int {
+-    let outer = P08EmbeddedOuter(modelOwner: modelOwner, semanticOwner: semanticOwner, backing: backing, limits: counterActualLimits(.static))
+-    var owner = P08TypedBackingOwner(slots: .static(outer.storageSlots()), identity: UInt(bitPattern: outer.bytes.baseAddress!))
+-    let fault = P08AcquisitionFault(id: id, completed: completed, afterInstall: afterInstall)
+-    precondition(owner.initialize(fault: fault) != nil)
+-    return p08VerifyFault(owner, fault: fault, ids: ids, objects: 14)
+-}
+-#endif
++#if !hasFeature(Embedded)
+ package func counterExerciseScopedStorage(backing: UnsafeMutableRawBufferPointer? = nil, write: CounterTiledPixelWrite? = nil) -> Int {
+     let staticIDs: InlineArray<14, P08PhysicalID?> = [.b0, .b1, .b2, .b3, .g0, .g1, .g2, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
+     var checks = 0
+@@ -2590,27 +2740,12 @@ package func counterExerciseScopedStorage(backing: UnsafeMutableRawBufferPointer
+     #endif
+     var models = ObservableModelOwnerNamespace(); var semantics = SemanticRecordOwnerNamespace()
+     do {
+-        #if hasFeature(Embedded)
+-        for surplus in [0, 64] {
+-            checks += p08EmbeddedExchangeCase(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: surplus == 0 ? counterSelectedProfileBacking(backing, slot: 0)! : p08SurplusBacking(backing), surplus: surplus)
+-        }
+-        do {
+-            checks += p08EmbeddedInvalidExtentCase(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 0)!)
+-        }
+-        for index in 0..<14 { for after in [false, true] {
+-            checks += p08EmbeddedFaultCase(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 0)!, id: staticIDs[index]!, completed: 0, afterInstall: after, ids: staticIDs)
+-        } }
+-        for (id, count) in [(P08PhysicalID.b0,1024), (.b1,1056), (.b2,20), (.b3,112)] {
+-            for prefix in 1..<count {
+-                checks += p08EmbeddedFaultCase(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 0)!, id: id, completed: prefix, afterInstall: false, ids: staticIDs)
+-            }
+-        }
+-        #endif
++
+         for early: UInt8 in 1...5 {
+-            checks += withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 0)) { owner, outer in runP08StaticHost(owner: &owner, outer: outer, failAfterRuntime: false, early: early, write: write) }
++            checks += withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: nil) { owner, outer in runP08StaticHost(owner: &owner, outer: outer, failAfterRuntime: false, early: early, write: write) }
+         }
+         for raw: UInt8 in 0...10 {
+-            checks += withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 0)) { owner, outer in runP08StaticHost(owner: &owner, outer: outer, failAfterRuntime: false, candidateFailure: RuntimeCompletePipelineStage(rawValue: raw)!, write: write) }
++            checks += withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: nil) { owner, outer in runP08StaticHost(owner: &owner, outer: outer, failAfterRuntime: false, candidateFailure: RuntimeCompletePipelineStage(rawValue: raw)!, write: write) }
+         }
+         #if !hasFeature(Embedded)
+         let dynamicIDs: InlineArray<14, P08PhysicalID?> = [.g0, .g1, .g3, .g4, .c0, .h0, .r0, .r1, .h1, nil, nil, nil, nil, nil]
+@@ -2637,6 +2772,7 @@ package func counterExerciseScopedStorage(backing: UnsafeMutableRawBufferPointer
+     } catch { preconditionFailure("scoped corpus identities") }
+     return checks
+ }
++#endif
+ fileprivate struct P08SessionOnlyCleanup: ~Copyable, ~Escapable {
+     private var session: P08StorageSession?
+     @_lifetime(copy session)
+@@ -2693,3 +2829,493 @@ fileprivate func p08RuntimeSlotGuardControls(_ control: UnsafeMutablePointer<Cou
+     precondition(duplicate == nil && !wrongClear && same)
+     return 3
+ }
++#if hasFeature(Embedded)
++// The layout visitor emits owned numbers only, never a typed capability. The
++// same checked seven-region derivation serves binding and strict scalar roots.
++fileprivate struct P08MetadataLayoutSummary {
++    let cursor: Int
++    let maximumAlignment: Int
++    let extent: Int
++}
++@inline(__always)
++fileprivate func p08VisitMetadataField<T: ~Copyable>(_ type: T.Type, index: Int,
++    cursor: inout Int, maximum: inout Int,
++    visit: (Int, Int, Int, Int, Int) -> Void) -> Bool {
++    let alignment = MemoryLayout<T>.alignment
++    guard alignment > 0 else { return false }
++    let remainder = cursor % alignment
++    let padding = remainder == 0 ? 0 : alignment - remainder
++    let (offset, offsetOverflow) = cursor.addingReportingOverflow(padding)
++    let (end, endOverflow) = offset.addingReportingOverflow(MemoryLayout<T>.stride)
++    guard !offsetOverflow, !endOverflow else { return false }
++    visit(index, offset, MemoryLayout<T>.size, MemoryLayout<T>.stride, alignment)
++    cursor = end; maximum = max(maximum, alignment)
++    return true
++}
++@inline(__always)
++fileprivate func p08DeriveMetadataLayout(_ visit: (Int, Int, Int, Int, Int) -> Void) -> P08MetadataLayoutSummary? {
++    var cursor = 0, maximum = 1
++    guard p08VisitMetadataField(P08EmbeddedOuter.self, index: 0, cursor: &cursor, maximum: &maximum, visit: visit),
++        p08VisitMetadataField(P08TypedBackingOwner.self, index: 1, cursor: &cursor, maximum: &maximum, visit: visit),
++        p08VisitMetadataField(P08ReuseFingerprint.self, index: 2, cursor: &cursor, maximum: &maximum, visit: visit),
++        p08VisitMetadataField(InlineArray<14, P08InitializedEntry?>.self, index: 3, cursor: &cursor, maximum: &maximum, visit: visit),
++        p08VisitMetadataField(P08HostReuseTranscript.self, index: 4, cursor: &cursor, maximum: &maximum, visit: visit),
++        p08VisitMetadataField(StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, index: 5, cursor: &cursor, maximum: &maximum, visit: visit),
++        p08VisitMetadataField(CounterControl.self, index: 6, cursor: &cursor, maximum: &maximum, visit: visit)
++    else { return nil }
++    let remainder = cursor % maximum
++    let padding = remainder == 0 ? 0 : maximum - remainder
++    let (extent, overflow) = cursor.addingReportingOverflow(padding)
++    guard !overflow else { return nil }
++    return .init(cursor: cursor, maximumAlignment: maximum, extent: extent)
++}
++fileprivate struct P08MetadataPointers: ~Copyable {
++    let outer: UnsafeMutablePointer<P08EmbeddedOuter>
++    let owner: UnsafeMutablePointer<P08TypedBackingOwner>
++    let before: UnsafeMutablePointer<P08ReuseFingerprint>
++    let original: UnsafeMutablePointer<InlineArray<14, P08InitializedEntry?>>
++    let transcript: UnsafeMutablePointer<P08HostReuseTranscript>
++    let foreignRoot: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>
++    let foreignControl: UnsafeMutablePointer<CounterControl>
++    init(donor: UnsafeMutableRawBufferPointer) {
++        var offsets: InlineArray<7, Int> = .init(repeating: 0)
++        guard let summary = p08DeriveMetadataLayout({ index, offset, _, stride, alignment in
++            precondition(index >= 0 && index < 7 && stride > 0)
++            let address = UInt(bitPattern: donor.baseAddress!).addingReportingOverflow(UInt(offset))
++            let end = offset.addingReportingOverflow(stride)
++            precondition(!address.overflow && address.partialValue % UInt(alignment) == 0)
++            precondition(!end.overflow && end.partialValue <= donor.count)
++            offsets[index] = offset
++        }), summary.extent <= donor.count, counterEmbeddedSlotBytes % summary.maximumAlignment == 0
++        else { preconditionFailure("donor metadata bounds/alignment") }
++        outer = donor.baseAddress!.advanced(by: offsets[0]).bindMemory(to: P08EmbeddedOuter.self, capacity: 1)
++        owner = donor.baseAddress!.advanced(by: offsets[1]).bindMemory(to: P08TypedBackingOwner.self, capacity: 1)
++        before = donor.baseAddress!.advanced(by: offsets[2]).bindMemory(to: P08ReuseFingerprint.self, capacity: 1)
++        original = donor.baseAddress!.advanced(by: offsets[3]).bindMemory(to: InlineArray<14, P08InitializedEntry?>.self, capacity: 1)
++        transcript = donor.baseAddress!.advanced(by: offsets[4]).bindMemory(to: P08HostReuseTranscript.self, capacity: 1)
++        foreignRoot = donor.baseAddress!.advanced(by: offsets[5]).bindMemory(to: StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, capacity: 1)
++        foreignControl = donor.baseAddress!.advanced(by: offsets[6]).bindMemory(to: CounterControl.self, capacity: 1)
++    }
++}
++// These cold frames return before any scoped/host callback. Normal typed
++// initialization may create temporaries; their actual stack is measured later.
++@inline(never)
++fileprivate func p08PrepareMetadata(_ p: borrowing P08MetadataPointers,
++    active: UnsafeMutableRawBufferPointer, modelOwner: ObservableModelOwnerIdentity,
++    semanticOwner: SemanticRecordOwnerIdentity, surplus: Int, invalidExtent: Bool,
++    stopAfter: UInt8, prefix: inout UInt8) {
++    let outer = p.outer
++    let owner = p.owner
++    let before = p.before
++    let original = p.original
++    let transcript = p.transcript
++    let foreignRoot = p.foreignRoot
++    let foreignControl = p.foreignControl
++
++    precondition(prefix == 0 && stopAfter <= 7)
++    if stopAfter == 0 { return }
++    outer.initialize(to: P08EmbeddedOuter(modelOwner: modelOwner, semanticOwner: semanticOwner,
++        backing: active, limits: counterActualLimits(.static), surplus: surplus)); prefix = 1
++    if stopAfter == 1 { return }
++    owner.initialize(to: P08TypedBackingOwner(slots: .static(outer.pointee.storageSlots(r0Extent: invalidExtent ? MemoryLayout<CounterStaticCommitted>.stride - 1 : nil)), identity: UInt(bitPattern: active.baseAddress!))); prefix = 2
++    if stopAfter == 2 { return }
++    before.initialize(to: P08ReuseFingerprint()); prefix = 3
++    if stopAfter == 3 { return }
++    original.initialize(to: .init(repeating: nil)); prefix = 4
++    if stopAfter == 4 { return }
++    transcript.initialize(to: P08HostReuseTranscript()); prefix = 5
++    if stopAfter == 5 { return }
++    var foreignNamespace = ObservableModelOwnerNamespace()
++    do {
++        let identity = try foreignNamespace.issue()
++        precondition(identity.rawValue == 0)
++        foreignRoot.initialize(to: StaticObservableRootAdapter(identity: identity, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
++    } catch { preconditionFailure("foreign metadata identity") }
++    prefix = 6
++    if stopAfter == 6 { return }
++    foreignControl.initialize(to: CounterControl()); prefix = 7
++}
++@inline(never)
++fileprivate func p08DestroyMetadata(_ p: borrowing P08MetadataPointers, prefix: inout UInt8) -> Bool {
++    let outer = p.outer
++    let owner = p.owner
++    let before = p.before
++    let original = p.original
++    let transcript = p.transcript
++    let foreignRoot = p.foreignRoot
++    let foreignControl = p.foreignControl
++
++    // Reserved/acquired0 is a metadata prefix, not an idle bank reservation.
++    if prefix >= 2 {
++        guard owner.pointee.finishMetadataReservation() else { return false }
++    }
++    if prefix >= 7 { foreignControl.pointee.requireVacantRuntimeSlot(); foreignControl.deinitialize(count: 1) }
++    if prefix >= 6 { foreignRoot.deinitialize(count: 1) }
++    if prefix >= 5 { transcript.deinitialize(count: 1) }
++    if prefix >= 4 { original.deinitialize(count: 1) }
++    if prefix >= 3 { before.deinitialize(count: 1) }
++    if prefix >= 2 { owner.deinitialize(count: 1) }
++    if prefix >= 1 { outer.deinitialize(count: 1) }
++    prefix = 0
++    return true
++}
++fileprivate func p08MetadataOuterView(_ outer: borrowing P08EmbeddedOuter) -> P08StaticOuterView {
++    var occupied = 0
++    for index in 0..<25 {
++        let sum = occupied.addingReportingOverflow(outer.layout.regions[index]!.extent)
++        precondition(!sum.overflow); occupied = sum.partialValue
++    }
++    let metadata = outer.bytes.count - occupied + MemoryLayout<RuntimeProfileLimits>.stride + MemoryLayout<Bool>.stride - CounterSemanticBacking.paddingBytes
++    return .init(limits: outer.limits.pointee, root: outer.root, semantic: outer.semantic,
++        records: .init(start: outer.records, count: 128), paths: .init(start: outer.paths, count: 384),
++        payloads: .init(start: outer.payloads, count: 256), scalars: .init(start: outer.scalars, count: 128),
++        canvas: outer.canvas, entries: .init(start: outer.entries, count: 1), control: outer.control, outerMetadataBytes: metadata)
++}
++fileprivate enum P08EmbeddedCasePlan {
++    case graph, host(UInt8), twoHosts, early(UInt8), candidate(UInt8), exchange(Int), invalidExtent
++    case fault(P08PhysicalID, Int, Bool)
++    case metadataPrefix(UInt8)
++    var ranges: (active: Int, slots: Int, donor: Int) {
++        switch self {
++        case .host(let scenario):
++            precondition(scenario <= 8)
++            let active = scenario < 3 ? Int(scenario) : 3
++            return (active, 1, active == 3 ? 2 : 3)
++        case .exchange(let surplus):
++            precondition(surplus == 0 || surplus == 64)
++            return (0, surplus == 0 ? 1 : 2, 3)
++        default: return (0, 1, 3)
++        }
++    }
++}
++fileprivate enum P08CallerPhase { case idle, active, donor, poisoned }
++fileprivate struct P08CallerCustody: ~Copyable {
++    private let bytes: UnsafeMutableRawBufferPointer
++    private var phases: InlineArray<4, P08CallerPhase> = .init(repeating: .idle)
++    private var busy = false
++    private var metadataPrefix: UInt8 = 0
++    init(_ bytes: UnsafeMutableRawBufferPointer) {
++        precondition(bytes.count == counterEmbeddedSlotCount * counterEmbeddedSlotBytes)
++        precondition(bytes.baseAddress != nil && UInt(bitPattern: bytes.baseAddress!) % 8 == 0)
++        self.bytes = bytes
++    }
++    mutating func run(_ plan: P08EmbeddedCasePlan, model: ObservableModelOwnerIdentity,
++        semantic: SemanticRecordOwnerIdentity, secondModel: ObservableModelOwnerIdentity? = nil,
++        secondSemantic: SemanticRecordOwnerIdentity? = nil, write: CounterTiledPixelWrite? = nil) -> Int {
++        let notBusy = !busy, emptyPrefix = metadataPrefix == 0
++        let canEnter = notBusy && emptyPrefix
++        precondition(canEnter)
++        let range = plan.ranges
++        let (activeStart, startOverflow) = range.active.multipliedReportingOverflow(by: counterEmbeddedSlotBytes)
++        let (activeCount, countOverflow) = range.slots.multipliedReportingOverflow(by: counterEmbeddedSlotBytes)
++        let (activeEnd, endOverflow) = activeStart.addingReportingOverflow(activeCount)
++        let (donorStart, donorOverflow) = range.donor.multipliedReportingOverflow(by: counterEmbeddedSlotBytes)
++        let (donorEnd, donorEndOverflow) = donorStart.addingReportingOverflow(counterEmbeddedSlotBytes)
++        precondition(!startOverflow && !countOverflow && !endOverflow && !donorOverflow && !donorEndOverflow)
++        precondition(activeStart >= 0 && activeEnd <= bytes.count && donorStart >= 0 && donorEnd <= bytes.count)
++        precondition(activeEnd <= donorStart || donorEnd <= activeStart)
++        for slot in range.active..<(range.active + range.slots) {
++            let idle = phases[slot] == .idle; precondition(idle)
++        }
++        let donorIdle = phases[range.donor] == .idle; precondition(donorIdle)
++        busy = true
++        for slot in range.active..<(range.active + range.slots) { phases[slot] = .active }
++        phases[range.donor] = .donor
++        let active = UnsafeMutableRawBufferPointer(rebasing: bytes[activeStart..<activeEnd])
++        let donor = UnsafeMutableRawBufferPointer(rebasing: bytes[donorStart..<donorEnd])
++        let p = P08MetadataPointers(donor: donor)
++        let surplus: Int
++        if case .exchange(let value) = plan { surplus = value } else { surplus = 0 }
++        let invalid: Bool
++        if case .invalidExtent = plan { invalid = true } else { invalid = false }
++        let prefixLimit: UInt8
++        if case .metadataPrefix(let value) = plan { prefixLimit = value } else { prefixLimit = 7 }
++        p08PrepareMetadata(p, active: active, modelOwner: model, semanticOwner: semantic,
++            surplus: surplus, invalidExtent: invalid, stopAfter: prefixLimit, prefix: &metadataPrefix)
++        // No initialization frame remains live across this concrete operation.
++        let checks = p08RunMetadataCase(plan, pointers: p, secondModel: secondModel, secondSemantic: secondSemantic, write: write)
++        // All scoped/model/descriptor loans ended when the operation returned.
++        guard p08DestroyMetadata(p, prefix: &metadataPrefix) else {
++            for slot in 0..<4 { phases[slot] = .poisoned }
++            preconditionFailure("incomplete metadata/bank cleanup")
++        }
++        _ = consume p // End every typed descriptor before the pair can be idle/rebound.
++        for slot in range.active..<(range.active + range.slots) { phases[slot] = .idle }
++        phases[range.donor] = .idle; busy = false
++        return checks
++    }
++    borrowing func requireIdle() {
++        let notBusy = !busy; precondition(notBusy)
++        let empty = metadataPrefix == 0; precondition(empty)
++        for slot in 0..<4 { let idle = phases[slot] == .idle; precondition(idle) }
++    }
++}
++@inline(never)
++fileprivate func p08RunMetadataCase(_ plan: P08EmbeddedCasePlan, pointers p: borrowing P08MetadataPointers,
++    secondModel: ObservableModelOwnerIdentity?, secondSemantic: SemanticRecordOwnerIdentity?, write: CounterTiledPixelWrite?) -> Int {
++    let outerStorage = p.outer
++    let owner = p.owner
++    let before = p.before
++    let original = p.original
++    let transcript = p.transcript
++    let foreignRoot = p.foreignRoot
++    let foreignControl = p.foreignControl
++
++    let ids: InlineArray<14, P08PhysicalID?> = [.b0, .b1, .b2, .b3, .g0, .g1, .g2, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
++    switch plan {
++    case .metadataPrefix: return 1
++    case .invalidExtent:
++        precondition(owner.pointee.initialize() == .invalidReservation)
++        original.pointee = owner.pointee.originalInventory()
++        for index in 0..<14 { precondition(original.pointee[index] == nil) }
++        return 1
++    case .fault(let id, let completed, let after):
++        let fault = P08AcquisitionFault(id: id, completed: completed, afterInstall: after)
++        precondition(owner.pointee.initialize(fault: fault) != nil)
++        return p08VerifyFault(owner.pointee, fault: fault, ids: ids, objects: 14)
++    default: break
++    }
++    precondition(initializeP08Backing(&owner.pointee) == nil)
++    let outer = p08MetadataOuterView(outerStorage.pointee)
++    switch plan {
++    case .graph: return p08CheckGraphSelection(owner: owner.pointee, outer: outer)
++    case .host(let scenario):
++        outer.control.pointee.terminalRetry = scenario == 2
++        outer.control.pointee.idleQuiesceMode = scenario >= 3 ? scenario - 1 : 0
++        return runP08StaticHost(owner: &owner.pointee, outer: outer, failAfterRuntime: scenario == 1, write: write, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
++    case .early(let early):
++        precondition(early >= 1 && early <= 5)
++        return runP08StaticHost(owner: &owner.pointee, outer: outer, failAfterRuntime: false, early: early, write: write, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
++    case .candidate(let raw):
++        precondition(raw <= 10)
++        return runP08StaticHost(owner: &owner.pointee, outer: outer, failAfterRuntime: false, candidateFailure: RuntimeCompletePipelineStage(rawValue: raw)!, write: write, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
++    case .twoHosts:
++        guard let secondModel, let secondSemantic else { preconditionFailure("second namespaces") }
++        original.pointee = owner.pointee.originalInventory()
++        let control = outer.control, address = UInt(bitPattern: outer.control)
++        p08RequireFreshControl(control)
++        var checks = runP08StaticHost(owner: &owner.pointee, outer: outer, failAfterRuntime: false, write: write, reuse: transcript, baseline: before, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
++        owner.pointee.requireEmpty(); p08RequireRetiredControl(control)
++        outer.reconstruct(modelOwner: secondModel, semanticOwner: secondSemantic)
++        p08ResetForeignMetadata(root: foreignRoot, control: foreignControl)
++        precondition(UInt(bitPattern: control) == address)
++        checks += runP08StaticHost(owner: &owner.pointee, outer: outer, failAfterRuntime: false, write: write, reuse: transcript, baseline: before, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
++        owner.pointee.requireEmpty()
++        p08RequireSameInventory(owner.pointee.originalInventory(), original.pointee)
++        p08RequireRetiredControl(control); transcript.pointee.endRetainedObservations()
++        owner.pointee.release()
++        precondition(transcript.pointee.hosts == 2)
++        checks += p08VerifyDestruction(owner.pointee.destructionTranscript(), original: original.pointee, expectedCount: 14)
++        p08ReuseLabel("static", "inventory-two-hosts"); p08ReuseLabel("static", "control-same-address"); p08ReuseLabel("static", "cleanup-backing-last")
++        return checks + 3
++    case .exchange(let surplus):
++        original.pointee = owner.pointee.originalInventory()
++        precondition(original.pointee[11]!.retainedBytes <= original.pointee[12]!.retainedBytes)
++        if surplus > 0 { precondition(original.pointee[11]!.retainedBytes < original.pointee[12]!.retainedBytes) }
++        var transcript = P08RoleTranscript()
++        var checks = withUnsafeMutablePointer(to: &transcript) { pointer in
++            owner.pointee.withStorage(transcript: pointer) { session in
++                var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise()
++            }
++        }
++        checks += p08VerifyRoleTranscript(transcript)
++        owner.pointee.release()
++        return checks + p08VerifyDestruction(owner.pointee.destructionTranscript(), original: original.pointee, expectedCount: 14)
++    case .invalidExtent, .fault, .metadataPrefix: preconditionFailure("handled before activation")
++    }
++}
++fileprivate func p08EmbeddedGraph(custody: inout P08CallerCustody) -> Int {
++    p08CheckGraphDefinition()
++    var models = ObservableModelOwnerNamespace(), semantics = SemanticRecordOwnerNamespace()
++    do { return custody.run(.graph, model: try models.issue(), semantic: try semantics.issue()) }
++    catch { preconditionFailure("counter graph profile identities") }
++}
++fileprivate func p08EmbeddedHost(custody: inout P08CallerCustody, write: CounterTiledPixelWrite?) -> Int {
++    var models = ObservableModelOwnerNamespace(), semantics = SemanticRecordOwnerNamespace()
++    do {
++        var checks = 0
++        for scenario: UInt8 in 0...8 { checks += custody.run(.host(scenario), model: try models.issue(), semantic: try semantics.issue(), write: write) }
++        let firstModel = try models.issue(), secondModel = try models.issue()
++        let firstSemantic = try semantics.issue(), secondSemantic = try semantics.issue()
++        precondition(firstModel != secondModel && firstSemantic != secondSemantic)
++        counterTrace("reuse.namespaces", (firstModel, secondModel, firstSemantic, secondSemantic))
++        checks += custody.run(.twoHosts, model: firstModel, semantic: firstSemantic, secondModel: secondModel, secondSemantic: secondSemantic, write: write)
++        return checks
++    } catch { preconditionFailure("counter host identities") }
++}
++fileprivate func p08EmbeddedScoped(custody: inout P08CallerCustody, write: CounterTiledPixelWrite?) -> Int {
++    let ids: InlineArray<14, P08PhysicalID?> = [.b0, .b1, .b2, .b3, .g0, .g1, .g2, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
++    var models = ObservableModelOwnerNamespace(), semantics = SemanticRecordOwnerNamespace()
++    do {
++        var checks = 0
++        for surplus in [0, 64] { checks += custody.run(.exchange(surplus), model: try models.issue(), semantic: try semantics.issue()) }
++        checks += custody.run(.invalidExtent, model: try models.issue(), semantic: try semantics.issue())
++        for index in 0..<14 { for after in [false, true] {
++            checks += custody.run(.fault(ids[index]!, 0, after), model: try models.issue(), semantic: try semantics.issue())
++        } }
++        for (id, count) in [(P08PhysicalID.b0,1024), (.b1,1056), (.b2,20), (.b3,112)] {
++            for prefix in 1..<count { checks += custody.run(.fault(id, prefix, false), model: try models.issue(), semantic: try semantics.issue()) }
++        }
++        for early: UInt8 in 1...5 { checks += custody.run(.early(early), model: try models.issue(), semantic: try semantics.issue(), write: write) }
++        for raw: UInt8 in 0...10 { checks += custody.run(.candidate(raw), model: try models.issue(), semantic: try semantics.issue(), write: write) }
++        // Additive metadata-prefix controls; do not replace any original selection.
++        for prefix: UInt8 in 0...7 { checks += custody.run(.metadataPrefix(prefix), model: try models.issue(), semantic: try semantics.issue()) }
++        return checks
++    } catch { preconditionFailure("scoped corpus identities") }
++}
++package func p08RunEmbeddedCorpus(write: CounterTiledPixelWrite?, backing: UnsafeMutableRawBufferPointer) -> Int {
++    var custody = P08CallerCustody(backing)
++    let graph = p08EmbeddedGraph(custody: &custody)
++    let scoped = p08EmbeddedScoped(custody: &custody, write: write)
++    let hosts = p08EmbeddedHost(custody: &custody, write: write)
++    custody.requireIdle()
++    return graph + scoped + hosts
++}
++package func p08CounterGraph(backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
++    var custody = P08CallerCustody(backing!)
++    let checks = p08EmbeddedGraph(custody: &custody); custody.requireIdle(); return checks
++}
++package func p08CounterHost(write: CounterTiledPixelWrite? = nil, backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
++    var custody = P08CallerCustody(backing!)
++    let checks = p08EmbeddedHost(custody: &custody, write: write); custody.requireIdle(); return checks
++}
++package func counterExerciseScopedStorage(backing: UnsafeMutableRawBufferPointer? = nil, write: CounterTiledPixelWrite? = nil) -> Int {
++    var custody = P08CallerCustody(backing!)
++    let checks = p08EmbeddedScoped(custody: &custody, write: write); custody.requireIdle(); return checks
++}
++#endif
++
++#if hasFeature(Embedded)
++@inline(never)
++fileprivate func p08ResetForeignMetadata(root: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>, control: UnsafeMutablePointer<CounterControl>) {
++    control.pointee.requireVacantRuntimeSlot()
++    control.deinitialize(count: 1); root.deinitialize(count: 1)
++    var namespace = ObservableModelOwnerNamespace()
++    do {
++        root.initialize(to: StaticObservableRootAdapter(identity: try namespace.issue(), schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
++    } catch { preconditionFailure("foreign metadata identity") }
++    control.initialize(to: CounterControl())
++}
++#endif
++
++#if hasFeature(Embedded)
++@inline(__always)
++fileprivate func p08MetadataScalarFact(_ field: Int, _ component: Int) -> UInt32 {
++    var selected: Int? = nil
++    guard let summary = p08DeriveMetadataLayout({ index, offset, size, stride, alignment in
++        guard field == index else { return }
++        switch component {
++        case 0: selected = offset
++        case 1: selected = size
++        case 2: selected = stride
++        case 3: selected = alignment
++        default: preconditionFailure("invalid metadata fact")
++        }
++    }) else { preconditionFailure("invalid metadata layout") }
++    let value: Int
++    if field < 7 { guard let selected else { preconditionFailure("missing metadata fact") }; value = selected }
++    else {
++        switch field {
++        case 7: value = summary.cursor
++        case 8: value = summary.maximumAlignment
++        case 9: value = summary.extent
++        default: preconditionFailure("invalid metadata summary")
++        }
++    }
++    guard let result = UInt32(exactly: value) else { preconditionFailure("metadata exceeds UInt32") }
++    return result
++}
++@_cdecl("giftui_p08_metadata_outer_offset")
++@inline(__always)
++func p08MetadataFact0_0() -> UInt32 { p08MetadataScalarFact(0, 0) }
++@_cdecl("giftui_p08_metadata_outer_size")
++@inline(__always)
++func p08MetadataFact0_1() -> UInt32 { p08MetadataScalarFact(0, 1) }
++@_cdecl("giftui_p08_metadata_outer_stride")
++@inline(__always)
++func p08MetadataFact0_2() -> UInt32 { p08MetadataScalarFact(0, 2) }
++@_cdecl("giftui_p08_metadata_outer_alignment")
++@inline(__always)
++func p08MetadataFact0_3() -> UInt32 { p08MetadataScalarFact(0, 3) }
++@_cdecl("giftui_p08_metadata_owner_offset")
++@inline(__always)
++func p08MetadataFact1_0() -> UInt32 { p08MetadataScalarFact(1, 0) }
++@_cdecl("giftui_p08_metadata_owner_size")
++@inline(__always)
++func p08MetadataFact1_1() -> UInt32 { p08MetadataScalarFact(1, 1) }
++@_cdecl("giftui_p08_metadata_owner_stride")
++@inline(__always)
++func p08MetadataFact1_2() -> UInt32 { p08MetadataScalarFact(1, 2) }
++@_cdecl("giftui_p08_metadata_owner_alignment")
++@inline(__always)
++func p08MetadataFact1_3() -> UInt32 { p08MetadataScalarFact(1, 3) }
++@_cdecl("giftui_p08_metadata_baseline_offset")
++@inline(__always)
++func p08MetadataFact2_0() -> UInt32 { p08MetadataScalarFact(2, 0) }
++@_cdecl("giftui_p08_metadata_baseline_size")
++@inline(__always)
++func p08MetadataFact2_1() -> UInt32 { p08MetadataScalarFact(2, 1) }
++@_cdecl("giftui_p08_metadata_baseline_stride")
++@inline(__always)
++func p08MetadataFact2_2() -> UInt32 { p08MetadataScalarFact(2, 2) }
++@_cdecl("giftui_p08_metadata_baseline_alignment")
++@inline(__always)
++func p08MetadataFact2_3() -> UInt32 { p08MetadataScalarFact(2, 3) }
++@_cdecl("giftui_p08_metadata_inventory_offset")
++@inline(__always)
++func p08MetadataFact3_0() -> UInt32 { p08MetadataScalarFact(3, 0) }
++@_cdecl("giftui_p08_metadata_inventory_size")
++@inline(__always)
++func p08MetadataFact3_1() -> UInt32 { p08MetadataScalarFact(3, 1) }
++@_cdecl("giftui_p08_metadata_inventory_stride")
++@inline(__always)
++func p08MetadataFact3_2() -> UInt32 { p08MetadataScalarFact(3, 2) }
++@_cdecl("giftui_p08_metadata_inventory_alignment")
++@inline(__always)
++func p08MetadataFact3_3() -> UInt32 { p08MetadataScalarFact(3, 3) }
++@_cdecl("giftui_p08_metadata_transcript_offset")
++@inline(__always)
++func p08MetadataFact4_0() -> UInt32 { p08MetadataScalarFact(4, 0) }
++@_cdecl("giftui_p08_metadata_transcript_size")
++@inline(__always)
++func p08MetadataFact4_1() -> UInt32 { p08MetadataScalarFact(4, 1) }
++@_cdecl("giftui_p08_metadata_transcript_stride")
++@inline(__always)
++func p08MetadataFact4_2() -> UInt32 { p08MetadataScalarFact(4, 2) }
++@_cdecl("giftui_p08_metadata_transcript_alignment")
++@inline(__always)
++func p08MetadataFact4_3() -> UInt32 { p08MetadataScalarFact(4, 3) }
++@_cdecl("giftui_p08_metadata_foreignRoot_offset")
++@inline(__always)
++func p08MetadataFact5_0() -> UInt32 { p08MetadataScalarFact(5, 0) }
++@_cdecl("giftui_p08_metadata_foreignRoot_size")
++@inline(__always)
++func p08MetadataFact5_1() -> UInt32 { p08MetadataScalarFact(5, 1) }
++@_cdecl("giftui_p08_metadata_foreignRoot_stride")
++@inline(__always)
++func p08MetadataFact5_2() -> UInt32 { p08MetadataScalarFact(5, 2) }
++@_cdecl("giftui_p08_metadata_foreignRoot_alignment")
++@inline(__always)
++func p08MetadataFact5_3() -> UInt32 { p08MetadataScalarFact(5, 3) }
++@_cdecl("giftui_p08_metadata_foreignControl_offset")
++@inline(__always)
++func p08MetadataFact6_0() -> UInt32 { p08MetadataScalarFact(6, 0) }
++@_cdecl("giftui_p08_metadata_foreignControl_size")
++@inline(__always)
++func p08MetadataFact6_1() -> UInt32 { p08MetadataScalarFact(6, 1) }
++@_cdecl("giftui_p08_metadata_foreignControl_stride")
++@inline(__always)
++func p08MetadataFact6_2() -> UInt32 { p08MetadataScalarFact(6, 2) }
++@_cdecl("giftui_p08_metadata_foreignControl_alignment")
++@inline(__always)
++func p08MetadataFact6_3() -> UInt32 { p08MetadataScalarFact(6, 3) }
++@_cdecl("giftui_p08_metadata_cursor")
++@inline(__always)
++func p08MetadataSummary7() -> UInt32 { p08MetadataScalarFact(7, 0) }
++@_cdecl("giftui_p08_metadata_maximumAlignment")
++@inline(__always)
++func p08MetadataSummary8() -> UInt32 { p08MetadataScalarFact(8, 0) }
++@_cdecl("giftui_p08_metadata_extent")
++@inline(__always)
++func p08MetadataSummary9() -> UInt32 { p08MetadataScalarFact(9, 0) }
++#endif
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift
+index edc24b40..1832c804 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift
+@@ -225,6 +225,84 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
+         control.pointee.backend.constructedProjection = constructed; control.pointee.backend.constructedEndpoints += 1
+         actual = CounterTiledEndpoint(effectivePresentation: configuration.effectivePresentation, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, textMetrics: construction.text.metrics(), textRaster: construction.text.raster(), textRasterRealization: construction.text.realization, envelopeValidator: CounterTiledEnvelope(expected: nil), sink: CounterTiledRasterAdapter(session: session), startupFailure: nil)!
+     }
++    // Pure typed field observations; no callback or whole-Control loan.
++    borrowing func captureBaseline(into baseline: inout CounterEndpointBaseline) {
++        baseline.effectivePresentation = actual.effectivePresentation
++        baseline.descriptor = actual.descriptor
++        baseline.payloadLimits = actual.payloadLimits
++        baseline.realization = actual.textRasterRealization
++        baseline.bodyCalls = actual.bodyCallCount
++        baseline.reservations = actual.reservationCallCount
++        baseline.displayError = actual.lastDisplayError
++        baseline.producerError = actual.retainedProducerError
++        baseline.capacity = actual.sink.capacity
++        baseline.sinkDescriptor = actual.sink.descriptor
++        baseline.sinkLimits = actual.sink.payloadLimits
++        baseline.sinkFailure = actual.sink.failure
++        baseline.streamCompleted = actual.sink.streamCompleted
++        baseline.presentationAccepted = actual.sink.presentationResponsibilityAccepted
++        baseline.sinkProducerError = actual.sink.retainedProducerError
++        baseline.idle = actual.sink.isIdleForOffer
++        baseline.health = actual.health()
++        baseline.recording.capture(actual.sink.recording)
++        baseline.targetConfiguration = actual.sink.session.target.configuration
++        baseline.writer = CounterWriterObservation(bytes: actual.sink.session.target.writer.writtenBytes,
++                regions: actual.sink.session.target.writer.writtenRegionCount,
++                origin: actual.sink.session.target.writer.origin, pixels: actual.sink.session.target.writer.pixels,
++                remaining: actual.sink.session.target.writer.remaining, completed: actual.sink.session.target.writer.completed)
++        baseline.nativeReservation = nil
++        baseline.nativeGlyphHeader = nil
++    }
++    borrowing func matchesBaseline(_ baseline: borrowing CounterEndpointBaseline) -> Bool {
++        let sameeffectivePresentation = baseline.effectivePresentation == actual.effectivePresentation
++        guard sameeffectivePresentation else { return false }
++        let samedescriptor = baseline.descriptor == actual.descriptor
++        guard samedescriptor else { return false }
++        let samepayloadLimits = baseline.payloadLimits == actual.payloadLimits
++        guard samepayloadLimits else { return false }
++        let samerealization = baseline.realization == actual.textRasterRealization
++        guard samerealization else { return false }
++        let samebodyCalls = baseline.bodyCalls == actual.bodyCallCount
++        guard samebodyCalls else { return false }
++        let samereservations = baseline.reservations == actual.reservationCallCount
++        guard samereservations else { return false }
++        let samedisplayError = baseline.displayError == actual.lastDisplayError
++        guard samedisplayError else { return false }
++        let sameproducerError = baseline.producerError == actual.retainedProducerError
++        guard sameproducerError else { return false }
++        let samecapacity = baseline.capacity == actual.sink.capacity
++        guard samecapacity else { return false }
++        let samesinkDescriptor = baseline.sinkDescriptor == actual.sink.descriptor
++        guard samesinkDescriptor else { return false }
++        let samesinkLimits = baseline.sinkLimits == actual.sink.payloadLimits
++        guard samesinkLimits else { return false }
++        let samesinkFailure = baseline.sinkFailure == actual.sink.failure
++        guard samesinkFailure else { return false }
++        let samestreamCompleted = baseline.streamCompleted == actual.sink.streamCompleted
++        guard samestreamCompleted else { return false }
++        let samepresentationAccepted = baseline.presentationAccepted == actual.sink.presentationResponsibilityAccepted
++        guard samepresentationAccepted else { return false }
++        let samesinkProducerError = baseline.sinkProducerError == actual.sink.retainedProducerError
++        guard samesinkProducerError else { return false }
++        let sameidle = baseline.idle == actual.sink.isIdleForOffer
++        guard sameidle else { return false }
++        let samehealth = baseline.health == actual.health()
++        guard samehealth else { return false }
++        let samerecording = baseline.recording.matches(actual.sink.recording)
++        guard samerecording else { return false }
++        let sametargetConfiguration = baseline.targetConfiguration == actual.sink.session.target.configuration
++        guard sametargetConfiguration else { return false }
++        let samewriter = baseline.writer == CounterWriterObservation(bytes: actual.sink.session.target.writer.writtenBytes,
++                regions: actual.sink.session.target.writer.writtenRegionCount,
++                origin: actual.sink.session.target.writer.origin, pixels: actual.sink.session.target.writer.pixels,
++                remaining: actual.sink.session.target.writer.remaining, completed: actual.sink.session.target.writer.completed)
++        guard samewriter else { return false }
++        let samenativeReservation = baseline.nativeReservation == nil
++        guard samenativeReservation else { return false }
++        let samenativeGlyphHeader = baseline.nativeGlyphHeader == nil
++        guard samenativeGlyphHeader else { return false }
++        return true
++    }
+     var ownedObservation: CounterEndpointObservation {
+         .init(effectivePresentation: actual.effectivePresentation, descriptor: actual.descriptor,
+             payloadLimits: actual.payloadLimits, realization: actual.textRasterRealization,
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift
+index 1ca22ed9..937a5278 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift
+@@ -146,16 +146,3 @@ func counterEmbeddedField<T: ~Copyable>(_ bytes: UnsafeMutableRawBufferPointer,
+     return UnsafeMutableRawPointer(bitPattern: absolute.partialValue)!.bindMemory(to: T.self, capacity: region.count)
+ }
+ #endif
+-func counterSelectedProfileBacking(_ backing: UnsafeMutableRawBufferPointer?, slot: Int) -> UnsafeMutableRawBufferPointer? {
+-    #if hasFeature(Embedded)
+-    guard let backing else { preconditionFailure("Embedded counter requires caller backing") }
+-    precondition((0..<counterEmbeddedSlotCount).contains(slot))
+-    let total = counterEmbeddedSlotCount.multipliedReportingOverflow(by: counterEmbeddedSlotBytes)
+-    let start = slot.multipliedReportingOverflow(by: counterEmbeddedSlotBytes)
+-    let end = start.partialValue.addingReportingOverflow(counterEmbeddedSlotBytes)
+-    precondition(!total.overflow && !start.overflow && !end.overflow && backing.count == total.partialValue)
+-    return UnsafeMutableRawBufferPointer(rebasing: backing[start.partialValue..<end.partialValue])
+-    #else
+-    return nil
+-    #endif
+-}
+diff --git a/scripts/contracts/build-spec-015-counter-image.py b/scripts/contracts/build-spec-015-counter-image.py
+index 038ad210..2745d462 100644
+--- a/scripts/contracts/build-spec-015-counter-image.py
++++ b/scripts/contracts/build-spec-015-counter-image.py
+@@ -7,7 +7,7 @@ import pathlib
+ import re
+ import shlex
+ import subprocess
+-from p08_layout_facts import SYMBOLS
++from p08_layout_facts import ALL_SYMBOLS
+ 
+ ROOT = pathlib.Path(__file__).resolve().parents[2]
+ parser = argparse.ArgumentParser()
+@@ -102,7 +102,7 @@ if args.profile == 'nrf52840-embedded':
+     assert digest(macro) == core_receipt['macro_tool_sha256']
+     lines = ['set(giftui_counter_owners ' + ' '.join(owners) + ')',
+              'set(giftui_counter_macro "' + str(macro) + '#GiftUIMacros")',
+-             'set(giftui_counter_layout_symbols ' + ' '.join(SYMBOLS) + ')']
++             'set(giftui_counter_layout_symbols ' + ' '.join(ALL_SYMBOLS) + ')']
+     for owner, sources in owners.items():
+         lines.append('set(giftui_counter_sources_' + owner + '\n' +
+                      ''.join('    "' + str(source) + '"\n' for source in sources) + ')')
+diff --git a/scripts/contracts/check-spec-015-counter.py b/scripts/contracts/check-spec-015-counter.py
+index a2a36904..df5c93c3 100644
+--- a/scripts/contracts/check-spec-015-counter.py
++++ b/scripts/contracts/check-spec-015-counter.py
+@@ -32,15 +32,15 @@ def digest(path):
+ revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
+ revision_receipt = json.loads(revision_path.read_text())
+ reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
+-applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-layout-measured-sizing-applicability.json'
+-assert digest(applicability_path) == '91242d203cd6eaf2a86617511a452136524c981fa5c0356a1ddcb142198ac649', 'unpinned source applicability packet'
++applicability_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-initial-applicability.json'
++assert digest(applicability_path) == '9edafe625056559b7ca9b9e47a5be5f58b2c0367a8bed23562e1bf3a1d81bca5', 'unpinned source applicability packet'
+ applicability = json.loads(applicability_path.read_text())
+ qualified_applicability = []
+ def qualify_noncompiled_applicability(name, expected, receipt_path, receipt):
+     if name not in applicability['candidate_sources'] or receipt_path is None:
+         return False
+     assert applicability['kind'] == 'exact-noncompiled-source-applicability-qualification'
+-    assert applicability['activity'] == 'p08-layout-measured-sizing'
++    assert applicability['activity'] == 'p08-fixture-metadata-initial'
+     relative_receipt = str(receipt_path.relative_to(ROOT))
+     entry = next((value for value in applicability['receipts'] if value['receipt'] == relative_receipt), None)
+     if entry is None:
+diff --git a/scripts/contracts/p08_layout_facts.py b/scripts/contracts/p08_layout_facts.py
+index b94b9f3e..219f9710 100644
+--- a/scripts/contracts/p08_layout_facts.py
++++ b/scripts/contracts/p08_layout_facts.py
+@@ -9,6 +9,7 @@ import struct
+ ROOT = pathlib.Path(__file__).resolve().parents[2]
+ SWIFT_SOURCE = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift'
+ ACCESSOR_SOURCE = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift'
++METADATA_SOURCE = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift'
+ C_SOURCE = ROOT / 'firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c'
+ C_SYMBOL = 'counter_backing.0'  # Exact spelling in the existing supported GCC recipe.
+ FIELDS = ('limits', 'root', 'semantic', 'semanticRecords', 'semanticPaths', 'semanticPayloads',
+@@ -19,6 +20,12 @@ SUMMARY = ('cursor', 'maximumAlignment', 'slotBytes', 'totalBytes')
+ SYMBOLS = tuple('giftui_p08_layout_' + field + '_' + component
+                 for field in FIELDS for component in COMPONENTS) + tuple(
+                     'giftui_p08_layout_' + name for name in SUMMARY)
++METADATA_FIELDS = ('outer', 'owner', 'baseline', 'inventory', 'transcript', 'foreignRoot', 'foreignControl')
++METADATA_COMPONENTS = ('offset', 'size', 'stride', 'alignment')
++METADATA_SYMBOLS = tuple('giftui_p08_metadata_' + field + '_' + component
++                         for field in METADATA_FIELDS for component in METADATA_COMPONENTS) + tuple(
++    'giftui_p08_metadata_' + name for name in ('cursor', 'maximumAlignment', 'extent'))
++ALL_SYMBOLS = SYMBOLS + METADATA_SYMBOLS
+ MAX_TAIL_HOPS = 2
+ MAX_LOCAL_HELPERS = len(SYMBOLS) * MAX_TAIL_HOPS
+ U32_MAX = (1 << 32) - 1
+@@ -334,30 +341,59 @@ def validate_layout(values, reservation):
+                 retained_surplus=reservation['retained_bytes'] - expected['totalBytes'])
+ 
+ 
+-def classify_inventory(elf):
++def classify_inventory(elf, symbols=SYMBOLS, prefix='giftui_p08_layout_'):
+     roots, helpers = [], []
+     for symbol in elf.symbols:
+         name = symbol['name']
+-        if not name.startswith('giftui_p08_layout_'):
++        if not name.startswith(prefix):
+             continue
+         require(symbol['type'] == 2 and 0 < symbol['owner'] < len(elf.sections),
+                 'layout name must define a function')
+-        if name in SYMBOLS:
++        if name in symbols:
+             require(symbol['binding'] == 1, 'measurement root must be global')
+             roots.append(name)
+         else:
+             require(symbol['binding'] == 0, 'unexpected exported/weak layout symbol')
+             helpers.append(dict(**elf.function(symbol), binding='local', measurement_root=False))
+-    require(len(roots) == len(SYMBOLS) and set(roots) == set(SYMBOLS), 'unexpected/missing/duplicate layout root inventory')
+-    require(len(helpers) <= MAX_LOCAL_HELPERS and len({helper['symbol'] for helper in helpers}) == len(helpers),
++    require(len(roots) == len(symbols) and set(roots) == set(symbols), 'unexpected/missing/duplicate layout root inventory')
++    require(len(helpers) <= len(symbols) * MAX_TAIL_HOPS and len({helper['symbol'] for helper in helpers}) == len(helpers),
+             'duplicate/excess local layout helpers')
+-    return dict(global_roots=list(SYMBOLS), nonroot_local_helpers=helpers)
++    return dict(global_roots=list(symbols), nonroot_local_helpers=helpers)
++
++
++def validate_metadata_layout(values, reservation):
++    require(set(values) == set(METADATA_SYMBOLS) and all(type(v) is int and 0 <= v <= U32_MAX
++            for v in values.values()), 'exact bounded metadata facts')
++    cursor, maximum, rows = 0, 1, []
++    for field in METADATA_FIELDS:
++        row = {key: values['giftui_p08_metadata_' + field + '_' + key] for key in METADATA_COMPONENTS}
++        alignment = row['alignment']
++        require(alignment > 0 and alignment & (alignment - 1) == 0 and
++                0 <= row['size'] <= row['stride'] and row['stride'] > 0 and
++                row['stride'] % alignment == 0, 'invalid metadata layout')
++        offset = checked_add(cursor, (-cursor) % alignment)
++        end = checked_add(offset, row['stride'])
++        require(row['offset'] == offset and end <= reservation['slot_bytes'],
++                'metadata offset/bounds/disjointness')
++        rows.append(dict(name=field, count=1, **row, extent=row['stride'], end=end))
++        cursor, maximum = end, max(maximum, alignment)
++    extent = checked_add(cursor, (-cursor) % maximum)
++    require(values['giftui_p08_metadata_cursor'] == cursor and
++            values['giftui_p08_metadata_maximumAlignment'] == maximum and
++            values['giftui_p08_metadata_extent'] == extent, 'metadata summary mismatch')
++    require(extent <= reservation['slot_bytes'] and reservation['slot_bytes'] % maximum == 0 and
++            8 % maximum == 0, 'metadata donor spacing/base alignment')
++    return dict(regions=rows, cursor=cursor, maximumAlignment=maximum, extent=extent,
++                donor_slot_bytes=reservation['slot_bytes'], donor_padding=reservation['slot_bytes'] - extent,
++                retained_bytes=reservation['retained_bytes'], additional_retained_bytes=0,
++                custody_and_temporary_stack_bytes='require separate current compiled proof')
+ 
+ 
+ def extract(path, reservation, decoded_output=None, compiler_sha256=None):
+     elf = ELF(path.read_bytes())
+     inventory = classify_inventory(elf)
+-    facts = {name: elf.constant(name) for name in SYMBOLS}
++    metadata_inventory = classify_inventory(elf, METADATA_SYMBOLS, 'giftui_p08_metadata_')
++    facts = {name: elf.constant(name) for name in ALL_SYMBOLS}
+     values = {name: fact['value'] for name, fact in facts.items()}
+     if decoded_output is not None:
+         # Preserve exact target facts before retained-reservation validation. This
+@@ -367,15 +403,19 @@ def extract(path, reservation, decoded_output=None, compiler_sha256=None):
+             accepted=False, diagnostic_only=True, artifact_sha256=digest(path),
+             compiler_sha256=compiler_sha256, extractor_sha256=digest(pathlib.Path(__file__)),
+             source_sha256=digest(SWIFT_SOURCE), accessor_source_sha256=digest(ACCESSOR_SOURCE),
++            metadata_source_sha256=digest(METADATA_SOURCE),
+             reservation=reservation, values=values, symbols=facts,
+             measurement_inventory=inventory), indent=2) + '\n')
+-    return elf, dict(values=values, symbols=facts, layout=validate_layout(values, reservation),
+-                     measurement_inventory=inventory)
++    return elf, dict(values=values, symbols=facts,
++                     layout=validate_layout({name: values[name] for name in SYMBOLS}, reservation),
++                     metadata_layout=validate_metadata_layout({name: values[name] for name in METADATA_SYMBOLS}, reservation),
++                     measurement_inventory=inventory, metadata_measurement_inventory=metadata_inventory)
+ 
+ 
+ def compare_firmware(extracted, prior, elf, reservation, map_text):
+-    require(prior['values'] == extracted['values'] and prior['layout'] == extracted['layout'], 'SO07/SO08 layout mismatch')
+-    for name in SYMBOLS:
++    require(prior['values'] == extracted['values'] and prior['layout'] == extracted['layout'] and
++            prior['metadata_layout'] == extracted['metadata_layout'], 'SO07/SO08 layout mismatch')
++    for name in ALL_SYMBOLS:
+         require(re.search(r'(?<![A-Za-z0-9_.$])' + re.escape(name) + r'(?![A-Za-z0-9_.$])', map_text), 'layout symbol absent from map')
+     symbol, section = elf.unique(C_SYMBOL)
+     require(elf.kind == 2 and symbol['type'] == 1 and section['type'] in (1, 8) and section['flags'] & 3 == 3,
+@@ -417,6 +457,7 @@ def main():
+                   artifact=str(args.input.resolve().relative_to(ROOT)), artifact_sha256=digest(args.input),
+                   compiler_sha256=args.compiler_sha256, extractor_sha256=digest(pathlib.Path(__file__)),
+                   source_sha256=digest(SWIFT_SOURCE), accessor_source_sha256=digest(ACCESSOR_SOURCE),
++            metadata_source_sha256=digest(METADATA_SOURCE),
+                   reservation=reservation, **extracted)
+     if args.mode == 'firmware':
+         require(args.so07 is not None and args.map is not None, 'firmware needs exact SO07 and map')
+@@ -424,6 +465,7 @@ def main():
+         require(prior['schema'] == 1 and prior['kind'] == record['kind'] and prior['executed'] is False and
+                 prior['source_sha256'] == record['source_sha256'] and
+                 prior['accessor_source_sha256'] == record['accessor_source_sha256'] and
++                prior['metadata_source_sha256'] == record['metadata_source_sha256'] and
+                 prior['extractor_sha256'] == record['extractor_sha256'] and
+                 prior['compiler_sha256'] == record['compiler_sha256'], 'stale SO07 extraction identity')
+         require(digest(ROOT / prior['artifact']) == prior['artifact_sha256'], 'stale SO07 object')
+diff --git a/scripts/contracts/test_p08_layout_facts.py b/scripts/contracts/test_p08_layout_facts.py
+index 89190125..267c12e8 100644
+--- a/scripts/contracts/test_p08_layout_facts.py
++++ b/scripts/contracts/test_p08_layout_facts.py
+@@ -29,9 +29,19 @@ def layout_values():
+     return values
+ 
+ 
++def metadata_values():
++    values = {}
++    for index, field in enumerate(facts.METADATA_FIELDS):
++        for key, value in zip(facts.METADATA_COMPONENTS, (index * 8, 5, 8, 8)):
++            values['giftui_p08_metadata_' + field + '_' + key] = value
++    values.update(giftui_p08_metadata_cursor=56, giftui_p08_metadata_maximumAlignment=8,
++                  giftui_p08_metadata_extent=56)
++    return values
++
++
+ def elf_bytes(values=None, kind=1, duplicate=None, missing=None, relocation=None, body_override=None,
+               backing_size=512, backing_address=0x20000000, backing_name=facts.C_SYMBOL, section_alignment=8):
+-    values = layout_values() if values is None else values
++    values = (layout_values() | metadata_values()) if values is None else values
+     names = ['.text', '.strtab', '.symtab', '.shstrtab', '.rel.text', '.bss']
+     shstrings = b'\0'
+     shnames = {}
+@@ -150,7 +160,7 @@ class ELFTests(unittest.TestCase):
+             path = pathlib.Path(directory) / 'test.o'
+             path.write_bytes(elf_bytes())
+             _, extracted = facts.extract(path, dict(slot_bytes=128, slot_count=4, retained_bytes=512))
+-            self.assertEqual(len(extracted['symbols']), 129)
++            self.assertEqual(len(extracted['symbols']), 160)
+             extra = layout_values() | {'giftui_p08_layout_unexpected': 0}
+             path.write_bytes(elf_bytes(values=extra))
+             with self.assertRaises(ValueError):
+@@ -167,7 +177,7 @@ class ELFTests(unittest.TestCase):
+             record = json.loads(raw.read_text())
+             self.assertFalse(record['accepted'])
+             self.assertTrue(record['diagnostic_only'])
+-            self.assertEqual(record['values'], layout_values())
++            self.assertEqual(record['values'], layout_values() | metadata_values())
+             self.assertNotIn('layout', record)
+             self.assertEqual(record['compiler_sha256'], 'a' * 64)
+             self.assertEqual(record['artifact_sha256'], facts.digest(path))
+@@ -306,8 +316,9 @@ class LayoutTests(unittest.TestCase):
+ 
+     def compare(self, data=None, prior=None, map_text=None):
+         elf = facts.ELF(elf_bytes(kind=2) if data is None else data)
+-        extracted = dict(values=self.values, layout=self.layout)
+-        mapping = '\n'.join(facts.SYMBOLS) + '\n .bss.counter_backing.0\n 0x20000000 0x200 app/libapp.a(counter_main.c.obj)\n'
++        extracted = dict(values=self.values, layout=self.layout,
++                         metadata_layout=facts.validate_metadata_layout(metadata_values(), self.reservation))
++        mapping = '\n'.join(facts.ALL_SYMBOLS) + '\n .bss.counter_backing.0\n 0x20000000 0x200 app/libapp.a(counter_main.c.obj)\n'
+         return facts.compare_firmware(extracted, copy.deepcopy(extracted) if prior is None else prior,
+                                       elf, self.reservation, mapping if map_text is None else map_text)
+ 
+@@ -327,5 +338,95 @@ class LayoutTests(unittest.TestCase):
+             self.compare(map_text='')
+ 
+ 
++class MetadataLayoutTests(unittest.TestCase):
++    def setUp(self):
++        self.reservation = dict(slot_bytes=128, slot_count=4, retained_bytes=512)
++        self.values = metadata_values()
++
++    def test_seven_full_stride_objects_and_complete_charge(self):
++        layout = facts.validate_metadata_layout(self.values, self.reservation)
++        self.assertEqual(len(layout['regions']), 7)
++        self.assertEqual(layout['extent'], 56)
++        self.assertEqual(layout['donor_padding'], 72)
++        self.assertEqual(layout['retained_bytes'], 512)
++        self.assertEqual(layout['additional_retained_bytes'], 0)
++        self.assertTrue(all(row['extent'] == 8 and row['count'] == 1 for row in layout['regions']))
++
++    def test_reject_missing_extra_bad_bound_padding_and_arithmetic(self):
++        cases = [self.values | {'extra': 1}]
++        missing = self.values.copy(); missing.pop(next(iter(missing))); cases.append(missing)
++        for key, value in [('owner_offset', 0), ('owner_alignment', 3), ('owner_stride', 4),
++                           ('owner_size', 9), ('owner_stride', 0xFFFFFFFF),
++                           ('cursor', 55), ('extent', 55), ('maximumAlignment', 4)]:
++            cases.append(self.values | {'giftui_p08_metadata_' + key: value})
++        for values in cases:
++            with self.subTest(values=values), self.assertRaises(ValueError):
++                facts.validate_metadata_layout(values, self.reservation)
++        for reservation in [self.reservation | dict(slot_bytes=55), self.reservation | dict(slot_bytes=129)]:
++            with self.assertRaises(ValueError): facts.validate_metadata_layout(self.values, reservation)
++
++    def test_exact_roots_for_object_and_elf_and_fail_closed(self):
++        for kind in (1, 2):
++            elf = facts.ELF(elf_bytes(self.values, kind=kind))
++            inventory = facts.classify_inventory(elf, facts.METADATA_SYMBOLS, 'giftui_p08_metadata_')
++            self.assertEqual(len(inventory['global_roots']), 31)
++            for name, value in self.values.items(): self.assertEqual(elf.constant(name)['value'], value)
++        for data in [elf_bytes(self.values, missing=facts.METADATA_SYMBOLS[0]),
++                     elf_bytes(self.values, duplicate=facts.METADATA_SYMBOLS[0]),
++                     elf_bytes(self.values | {'giftui_p08_metadata_extra': 0})]:
++            with self.assertRaises(ValueError):
++                facts.classify_inventory(facts.ELF(data), facts.METADATA_SYMBOLS, 'giftui_p08_metadata_')
++
++    def test_final_root_source_and_single_derivation(self):
++        source = facts.METADATA_SOURCE.read_text()
++        actual = re.findall(r'@_cdecl\("(giftui_p08_metadata_[^"]+)"\)', source)
++        self.assertEqual(tuple(actual), facts.METADATA_SYMBOLS)
++        self.assertIn('p08DeriveMetadataLayout(', source)
++        self.assertIn('let p = P08MetadataPointers(donor: donor)', source)
++        self.assertNotIn('fileprivate func p08EmbeddedFaultCase', source)
++        self.assertNotIn('fileprivate func p08SurplusBacking', source)
++
++    def test_complete_donor_map_and_shared_custody_routes(self):
++        scoped = facts.METADATA_SOURCE.read_text()
++        self.assertIn('return (active, 1, active == 3 ? 2 : 3)', scoped)
++        self.assertIn('return (0, surplus == 0 ? 1 : 2, 3)', scoped)
++        self.assertIn('activeEnd <= donorStart || donorEnd <= activeStart', scoped)
++        self.assertIn('_ = consume p', scoped)
++        for active, count, donor in [(0,1,3),(1,1,3),(2,1,3),(3,1,2),(0,2,3)]:
++            start, end = active*34720, (active+count)*34720
++            donor_start, donor_end = donor*34720, (donor+1)*34720
++            self.assertTrue(end <= donor_start or donor_end <= start)
++        self.assertFalse(69440 <= 34720 or 69440 <= 0) # S1 is not a surplus donor.
++        self.assertIn('for prefix: UInt8 in 0...7', scoped)
++        self.assertIn('case .reserved: return acquired == 0', scoped)
++        self.assertIn('case .active: return false', scoped)
++        self.assertIn('p08PrepareMetadata(p,', scoped)
++        self.assertIn('let checks = p08RunMetadataCase(plan,', scoped)
++        self.assertIn('p08DestroyMetadata(p, prefix:', scoped)
++        # Existing selection count: graph1, hosts9, reuse1, exchange2, invalid1,
++        # fourteen before/after faults, every nonempty short byte prefix, early5/candidate11.
++        self.assertEqual(1+9+1+2+1+28+(1023+1055+19+111)+5+11,2266)
++
++    def test_full_endpoint_and_baseline_observation_inventory(self):
++        directory = facts.METADATA_SOURCE.parent
++        pipeline = (directory / 'CounterPipelineOwner.swift').read_text()
++        observation = pipeline.split('struct CounterEndpointObservation:')[1].split('// Captured only once')[0]
++        fields = re.findall(r'    let (\w+):', observation)
++        for filename in ('CounterNativeRaster.swift', 'CounterTiledRaster.swift'):
++            source = (directory / filename).read_text()
++            capture = source.split('func captureBaseline(')[1].split('func matchesBaseline(')[0]
++            match = source.split('func matchesBaseline(')[1].split('var ownedObservation:')[0]
++            for field in fields:
++                self.assertIn('baseline.' + field, capture)
++                self.assertIn('baseline.' + field, match)
++        recording = pipeline.split('struct CounterRecordingObservation:')[1].split('struct CounterWriterObservation:')[0]
++        self.assertIn('for index in 0..<64', recording)
++        self.assertNotIn('let a =', recording)
++        scoped = facts.METADATA_SOURCE.read_text()
++        self.assertNotIn('P08ReuseFingerprint(control)', scoped)
++        self.assertIn('let canCapture = !frozen; precondition(canCapture)', scoped)
++        self.assertIn('baseline.pointee.capture(control)', scoped)
++
++
+ if __name__ == '__main__':
+     unittest.main()

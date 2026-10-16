@@ -146,16 +146,3 @@ func counterEmbeddedField<T: ~Copyable>(_ bytes: UnsafeMutableRawBufferPointer,
     return UnsafeMutableRawPointer(bitPattern: absolute.partialValue)!.bindMemory(to: T.self, capacity: region.count)
 }
 #endif
-func counterSelectedProfileBacking(_ backing: UnsafeMutableRawBufferPointer?, slot: Int) -> UnsafeMutableRawBufferPointer? {
-    #if hasFeature(Embedded)
-    guard let backing else { preconditionFailure("Embedded counter requires caller backing") }
-    precondition((0..<counterEmbeddedSlotCount).contains(slot))
-    let total = counterEmbeddedSlotCount.multipliedReportingOverflow(by: counterEmbeddedSlotBytes)
-    let start = slot.multipliedReportingOverflow(by: counterEmbeddedSlotBytes)
-    let end = start.partialValue.addingReportingOverflow(counterEmbeddedSlotBytes)
-    precondition(!total.overflow && !start.overflow && !end.overflow && backing.count == total.partialValue)
-    return UnsafeMutableRawBufferPointer(rebasing: backing[start.partialValue..<end.partialValue])
-    #else
-    return nil
-    #endif
-}

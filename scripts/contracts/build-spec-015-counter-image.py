@@ -7,7 +7,7 @@ import pathlib
 import re
 import shlex
 import subprocess
-from p08_layout_facts import SYMBOLS
+from p08_layout_facts import ALL_SYMBOLS
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser()
@@ -102,7 +102,7 @@ if args.profile == 'nrf52840-embedded':
     assert digest(macro) == core_receipt['macro_tool_sha256']
     lines = ['set(giftui_counter_owners ' + ' '.join(owners) + ')',
              'set(giftui_counter_macro "' + str(macro) + '#GiftUIMacros")',
-             'set(giftui_counter_layout_symbols ' + ' '.join(SYMBOLS) + ')']
+             'set(giftui_counter_layout_symbols ' + ' '.join(ALL_SYMBOLS) + ')']
     for owner, sources in owners.items():
         lines.append('set(giftui_counter_sources_' + owner + '\n' +
                      ''.join('    "' + str(source) + '"\n' for source in sources) + ')')

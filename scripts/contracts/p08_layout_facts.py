@@ -9,6 +9,7 @@ import struct
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 SWIFT_SOURCE = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift'
 ACCESSOR_SOURCE = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift'
+METADATA_SOURCE = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift'
 C_SOURCE = ROOT / 'firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c'
 C_SYMBOL = 'counter_backing.0'  # Exact spelling in the existing supported GCC recipe.
 FIELDS = ('limits', 'root', 'semantic', 'semanticRecords', 'semanticPaths', 'semanticPayloads',
@@ -19,6 +20,12 @@ SUMMARY = ('cursor', 'maximumAlignment', 'slotBytes', 'totalBytes')
 SYMBOLS = tuple('giftui_p08_layout_' + field + '_' + component
                 for field in FIELDS for component in COMPONENTS) + tuple(
                     'giftui_p08_layout_' + name for name in SUMMARY)
+METADATA_FIELDS = ('outer', 'owner', 'baseline', 'inventory', 'transcript', 'foreignRoot', 'foreignControl')
+METADATA_COMPONENTS = ('offset', 'size', 'stride', 'alignment')
+METADATA_SYMBOLS = tuple('giftui_p08_metadata_' + field + '_' + component
+                         for field in METADATA_FIELDS for component in METADATA_COMPONENTS) + tuple(
+    'giftui_p08_metadata_' + name for name in ('cursor', 'maximumAlignment', 'extent'))
+ALL_SYMBOLS = SYMBOLS + METADATA_SYMBOLS
 MAX_TAIL_HOPS = 2
 MAX_LOCAL_HELPERS = len(SYMBOLS) * MAX_TAIL_HOPS
 U32_MAX = (1 << 32) - 1
@@ -334,30 +341,59 @@ def validate_layout(values, reservation):
                 retained_surplus=reservation['retained_bytes'] - expected['totalBytes'])
 
 
-def classify_inventory(elf):
+def classify_inventory(elf, symbols=SYMBOLS, prefix='giftui_p08_layout_'):
     roots, helpers = [], []
     for symbol in elf.symbols:
         name = symbol['name']
-        if not name.startswith('giftui_p08_layout_'):
+        if not name.startswith(prefix):
             continue
         require(symbol['type'] == 2 and 0 < symbol['owner'] < len(elf.sections),
                 'layout name must define a function')
-        if name in SYMBOLS:
+        if name in symbols:
             require(symbol['binding'] == 1, 'measurement root must be global')
             roots.append(name)
         else:
             require(symbol['binding'] == 0, 'unexpected exported/weak layout symbol')
             helpers.append(dict(**elf.function(symbol), binding='local', measurement_root=False))
-    require(len(roots) == len(SYMBOLS) and set(roots) == set(SYMBOLS), 'unexpected/missing/duplicate layout root inventory')
-    require(len(helpers) <= MAX_LOCAL_HELPERS and len({helper['symbol'] for helper in helpers}) == len(helpers),
+    require(len(roots) == len(symbols) and set(roots) == set(symbols), 'unexpected/missing/duplicate layout root inventory')
+    require(len(helpers) <= len(symbols) * MAX_TAIL_HOPS and len({helper['symbol'] for helper in helpers}) == len(helpers),
             'duplicate/excess local layout helpers')
-    return dict(global_roots=list(SYMBOLS), nonroot_local_helpers=helpers)
+    return dict(global_roots=list(symbols), nonroot_local_helpers=helpers)
+
+
+def validate_metadata_layout(values, reservation):
+    require(set(values) == set(METADATA_SYMBOLS) and all(type(v) is int and 0 <= v <= U32_MAX
+            for v in values.values()), 'exact bounded metadata facts')
+    cursor, maximum, rows = 0, 1, []
+    for field in METADATA_FIELDS:
+        row = {key: values['giftui_p08_metadata_' + field + '_' + key] for key in METADATA_COMPONENTS}
+        alignment = row['alignment']
+        require(alignment > 0 and alignment & (alignment - 1) == 0 and
+                0 <= row['size'] <= row['stride'] and row['stride'] > 0 and
+                row['stride'] % alignment == 0, 'invalid metadata layout')
+        offset = checked_add(cursor, (-cursor) % alignment)
+        end = checked_add(offset, row['stride'])
+        require(row['offset'] == offset and end <= reservation['slot_bytes'],
+                'metadata offset/bounds/disjointness')
+        rows.append(dict(name=field, count=1, **row, extent=row['stride'], end=end))
+        cursor, maximum = end, max(maximum, alignment)
+    extent = checked_add(cursor, (-cursor) % maximum)
+    require(values['giftui_p08_metadata_cursor'] == cursor and
+            values['giftui_p08_metadata_maximumAlignment'] == maximum and
+            values['giftui_p08_metadata_extent'] == extent, 'metadata summary mismatch')
+    require(extent <= reservation['slot_bytes'] and reservation['slot_bytes'] % maximum == 0 and
+            8 % maximum == 0, 'metadata donor spacing/base alignment')
+    return dict(regions=rows, cursor=cursor, maximumAlignment=maximum, extent=extent,
+                donor_slot_bytes=reservation['slot_bytes'], donor_padding=reservation['slot_bytes'] - extent,
+                retained_bytes=reservation['retained_bytes'], additional_retained_bytes=0,
+                custody_and_temporary_stack_bytes='require separate current compiled proof')
 
 
 def extract(path, reservation, decoded_output=None, compiler_sha256=None):
     elf = ELF(path.read_bytes())
     inventory = classify_inventory(elf)
-    facts = {name: elf.constant(name) for name in SYMBOLS}
+    metadata_inventory = classify_inventory(elf, METADATA_SYMBOLS, 'giftui_p08_metadata_')
+    facts = {name: elf.constant(name) for name in ALL_SYMBOLS}
     values = {name: fact['value'] for name, fact in facts.items()}
     if decoded_output is not None:
         # Preserve exact target facts before retained-reservation validation. This
@@ -367,15 +403,19 @@ def extract(path, reservation, decoded_output=None, compiler_sha256=None):
             accepted=False, diagnostic_only=True, artifact_sha256=digest(path),
             compiler_sha256=compiler_sha256, extractor_sha256=digest(pathlib.Path(__file__)),
             source_sha256=digest(SWIFT_SOURCE), accessor_source_sha256=digest(ACCESSOR_SOURCE),
+            metadata_source_sha256=digest(METADATA_SOURCE),
             reservation=reservation, values=values, symbols=facts,
             measurement_inventory=inventory), indent=2) + '\n')
-    return elf, dict(values=values, symbols=facts, layout=validate_layout(values, reservation),
-                     measurement_inventory=inventory)
+    return elf, dict(values=values, symbols=facts,
+                     layout=validate_layout({name: values[name] for name in SYMBOLS}, reservation),
+                     metadata_layout=validate_metadata_layout({name: values[name] for name in METADATA_SYMBOLS}, reservation),
+                     measurement_inventory=inventory, metadata_measurement_inventory=metadata_inventory)
 
 
 def compare_firmware(extracted, prior, elf, reservation, map_text):
-    require(prior['values'] == extracted['values'] and prior['layout'] == extracted['layout'], 'SO07/SO08 layout mismatch')
-    for name in SYMBOLS:
+    require(prior['values'] == extracted['values'] and prior['layout'] == extracted['layout'] and
+            prior['metadata_layout'] == extracted['metadata_layout'], 'SO07/SO08 layout mismatch')
+    for name in ALL_SYMBOLS:
         require(re.search(r'(?<![A-Za-z0-9_.$])' + re.escape(name) + r'(?![A-Za-z0-9_.$])', map_text), 'layout symbol absent from map')
     symbol, section = elf.unique(C_SYMBOL)
     require(elf.kind == 2 and symbol['type'] == 1 and section['type'] in (1, 8) and section['flags'] & 3 == 3,
@@ -417,6 +457,7 @@ def main():
                   artifact=str(args.input.resolve().relative_to(ROOT)), artifact_sha256=digest(args.input),
                   compiler_sha256=args.compiler_sha256, extractor_sha256=digest(pathlib.Path(__file__)),
                   source_sha256=digest(SWIFT_SOURCE), accessor_source_sha256=digest(ACCESSOR_SOURCE),
+            metadata_source_sha256=digest(METADATA_SOURCE),
                   reservation=reservation, **extracted)
     if args.mode == 'firmware':
         require(args.so07 is not None and args.map is not None, 'firmware needs exact SO07 and map')
@@ -424,6 +465,7 @@ def main():
         require(prior['schema'] == 1 and prior['kind'] == record['kind'] and prior['executed'] is False and
                 prior['source_sha256'] == record['source_sha256'] and
                 prior['accessor_source_sha256'] == record['accessor_source_sha256'] and
+                prior['metadata_source_sha256'] == record['metadata_source_sha256'] and
                 prior['extractor_sha256'] == record['extractor_sha256'] and
                 prior['compiler_sha256'] == record['compiler_sha256'], 'stale SO07 extraction identity')
         require(digest(ROOT / prior['artifact']) == prior['artifact_sha256'], 'stale SO07 object')

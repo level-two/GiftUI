@@ -835,14 +835,38 @@ private func counterProduceStoredEndpoint<G: CounterGeometry & ~Copyable & ~Esca
 
 // Owned facts only: no endpoint, pointer, scoped value or callback is retained.
 struct CounterRecordingObservation: Equatable {
-    private let value: CounterRenderSink
+    private var value: CounterRenderSink
+    init() { value = CounterRenderSink() }
     init(_ value: borrowing CounterRenderSink) { self.value = copy value }
-    static func == (left: Self, right: Self) -> Bool {
-        let a = left.value, b = right.value
-        guard a.capacity == b.capacity && a.header == b.header && a.operations == b.operations && a.glyphs == b.glyphs && a.strokes == b.strokes && a.finishes == b.finishes && a.discards == b.discards && a.firstPoint == b.firstPoint && a.secondPoint == b.secondPoint && a.strokeHeader == b.strokeHeader else { return false }
-        for index in 0..<64 { if a.glyphRecords[index] != b.glyphRecords[index] { return false } }
+    mutating func capture(_ current: borrowing CounterRenderSink) { value = copy current }
+    borrowing func matches(_ current: borrowing CounterRenderSink) -> Bool {
+        let sameCapacity = value.capacity == current.capacity
+        guard sameCapacity else { return false }
+        let sameHeader = value.header == current.header
+        guard sameHeader else { return false }
+        let sameOperations = value.operations == current.operations
+        guard sameOperations else { return false }
+        let sameGlyphs = value.glyphs == current.glyphs
+        guard sameGlyphs else { return false }
+        let sameStrokes = value.strokes == current.strokes
+        guard sameStrokes else { return false }
+        let sameFinishes = value.finishes == current.finishes
+        guard sameFinishes else { return false }
+        let sameDiscards = value.discards == current.discards
+        guard sameDiscards else { return false }
+        let sameFirstPoint = value.firstPoint == current.firstPoint
+        guard sameFirstPoint else { return false }
+        let sameSecondPoint = value.secondPoint == current.secondPoint
+        guard sameSecondPoint else { return false }
+        let sameStrokeHeader = value.strokeHeader == current.strokeHeader
+        guard sameStrokeHeader else { return false }
+        for index in 0..<64 {
+            let same = value.glyphRecords[index] == current.glyphRecords[index]
+            guard same else { return false }
+        }
         return true
     }
+    static func == (left: Self, right: Self) -> Bool { left.matches(right.value) }
 }
 struct CounterWriterObservation: Equatable {
     let bytes: UInt32
@@ -875,6 +899,31 @@ struct CounterEndpointObservation: Equatable {
     let writer: CounterWriterObservation?
     let nativeReservation: DisplayReservationID?
     let nativeGlyphHeader: PositionedGlyphOperationHeader?
+}
+// Captured only once by the enclosing full baseline; never a live endpoint.
+struct CounterEndpointBaseline: ~Copyable {
+    var recording = CounterRecordingObservation()
+    var effectivePresentation: EffectiveRasterPresentation? = nil
+    var descriptor: RasterSurfaceDescriptor? = nil
+    var payloadLimits: RasterPayloadLimits? = nil
+    var realization: RasterRealizationID? = nil
+    var bodyCalls: UInt32? = nil
+    var reservations: UInt32? = nil
+    var displayError: DisplayTargetError? = nil
+    var producerError: RenderProductionError? = nil
+    var capacity: RenderSinkCapacity? = nil
+    var sinkDescriptor: RasterSurfaceDescriptor? = nil
+    var sinkLimits: RasterPayloadLimits? = nil
+    var sinkFailure: RasterBackendError? = nil
+    var streamCompleted: Bool? = nil
+    var presentationAccepted: Bool? = nil
+    var sinkProducerError: RenderProductionError? = nil
+    var idle: Bool? = nil
+    var health: GiftUIOperationalHealth? = nil
+    var targetConfiguration: HostEndpointConfiguration? = nil
+    var writer: CounterWriterObservation? = nil
+    var nativeReservation: DisplayReservationID? = nil
+    var nativeGlyphHeader: PositionedGlyphOperationHeader? = nil
 }
 // Actual backend completion facts are independent of endpoint/adapter counters.
 // This owned value contains no payload arrays, pointer, callback or live owner.
@@ -911,5 +960,58 @@ struct CounterRuntimeSlotObservation: Equatable {
         root = control.pointee.runtimeRootIdentity; action = control.pointee.runtimeActionIdentity
         candidateRoot = control.pointee.runtimeCandidateRootIdentity
         candidateAction = control.pointee.runtimeCandidateActionIdentity
+    }
+}
+
+// Every field of CounterRuntimeSlotObservation, captured into existing storage.
+struct CounterRuntimeSlotBaseline: ~Copyable {
+    private var captured = false
+    private var backend: CounterBackendObservation? = nil
+    private var phase: CounterRuntimeSlotPhase? = nil
+    private var owner: UInt64? = nil
+    private var lastSerial: UInt64 = 0
+    private var endpointPresent = false
+    private var endpoint = CounterEndpointBaseline()
+    private var root: SemanticCompleteIdentity? = nil
+    private var action: SemanticCompleteIdentity? = nil
+    private var candidateRoot: SemanticCompleteIdentity? = nil
+    private var candidateAction: SemanticCompleteIdentity? = nil
+    mutating func capture(_ control: UnsafeMutablePointer<CounterControl>) {
+        let mayCapture = !captured; precondition(mayCapture)
+        backend = counterObserveBackend(control.pointee.backend)
+        phase = control.pointee.runtimeSlotPhase; owner = control.pointee.runtimeSlotOwner
+        lastSerial = control.pointee.runtimeLastOwnerSerial
+        endpointPresent = control.pointee.runtimeEndpoint != nil
+        control.pointee.runtimeEndpoint?.captureBaseline(into: &endpoint)
+        root = control.pointee.runtimeRootIdentity; action = control.pointee.runtimeActionIdentity
+        candidateRoot = control.pointee.runtimeCandidateRootIdentity
+        candidateAction = control.pointee.runtimeCandidateActionIdentity
+        captured = true
+    }
+    borrowing func matches(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+        let wasCaptured = captured; precondition(wasCaptured)
+        let samebackend = backend == counterObserveBackend(control.pointee.backend)
+        guard samebackend else { return false }
+        let samephase = phase == control.pointee.runtimeSlotPhase
+        guard samephase else { return false }
+        let sameowner = owner == control.pointee.runtimeSlotOwner
+        guard sameowner else { return false }
+        let samelastSerial = lastSerial == control.pointee.runtimeLastOwnerSerial
+        guard samelastSerial else { return false }
+        let sameendpointPresent = endpointPresent == (control.pointee.runtimeEndpoint != nil)
+        guard sameendpointPresent else { return false }
+        let sameroot = root == control.pointee.runtimeRootIdentity
+        guard sameroot else { return false }
+        let sameaction = action == control.pointee.runtimeActionIdentity
+        guard sameaction else { return false }
+        let samecandidateRoot = candidateRoot == control.pointee.runtimeCandidateRootIdentity
+        guard samecandidateRoot else { return false }
+        let samecandidateAction = candidateAction == control.pointee.runtimeCandidateActionIdentity
+        guard samecandidateAction else { return false }
+        if endpointPresent {
+            let sameEndpoint = control.pointee.runtimeEndpoint?.matchesBaseline(endpoint) == true
+            guard sameEndpoint else { return false }
+        }
+        return true
     }
 }

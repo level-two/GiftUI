@@ -7,6 +7,11 @@ at most two cause-grouped corrective cycles, stopping after two consecutive
 unproductive cycles or a genuine contract/resource decision. Initial pass active;
 corrections0/2. Every historical closed allowance and diagnostic1/1 stays closed.
 
+[Initial source freeze](p08-fixture-metadata-initial-source-freeze.md) is ready for
+independent source review. Correction0/2 remains unused; no compiler or runtime
+execution. Final metadata31 plus unchanged active129 roots are now mandatory in
+the selected early screen; old diagnostic layout cannot qualify the changed type.
+
 Implement the reviewed finite caller custody, complete reservation/donor map,
 seven separately initialized typed objects, one frozen complete baseline and
 streaming comparisons. Preserve all 2,266 selections/48 groups, four retained

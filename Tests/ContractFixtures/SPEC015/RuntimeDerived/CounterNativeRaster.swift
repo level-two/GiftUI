@@ -247,6 +247,78 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
         control.pointee.backend.constructedEndpoints += 1
         actual = CounterNativeEndpoint(effectivePresentation: configuration.effectivePresentation, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, textMetrics: construction.text.metrics(), textRaster: construction.text.raster(), textRasterRealization: construction.text.realization, envelopeValidator: CounterNativeEnvelope(expected: nil), sink: adapter, startupFailure: nil)!
     }
+    // Pure typed field observations; no callback or whole-Control loan.
+    borrowing func captureBaseline(into baseline: inout CounterEndpointBaseline) {
+        baseline.effectivePresentation = actual.effectivePresentation
+        baseline.descriptor = actual.descriptor
+        baseline.payloadLimits = actual.payloadLimits
+        baseline.realization = actual.textRasterRealization
+        baseline.bodyCalls = actual.bodyCallCount
+        baseline.reservations = actual.reservationCallCount
+        baseline.displayError = actual.lastDisplayError
+        baseline.producerError = actual.retainedProducerError
+        baseline.capacity = actual.sink.capacity
+        baseline.sinkDescriptor = actual.sink.descriptor
+        baseline.sinkLimits = actual.sink.payloadLimits
+        baseline.sinkFailure = actual.sink.failure
+        baseline.streamCompleted = actual.sink.streamCompleted
+        baseline.presentationAccepted = actual.sink.presentationResponsibilityAccepted
+        baseline.sinkProducerError = actual.sink.retainedProducerError
+        baseline.idle = actual.sink.isIdleForOffer
+        baseline.health = actual.health()
+        baseline.recording.capture(actual.sink.recording)
+        baseline.targetConfiguration = actual.sink.target.configuration
+        baseline.writer = nil
+        baseline.nativeReservation = actual.sink.reservation
+        baseline.nativeGlyphHeader = actual.sink.glyphHeader
+    }
+    borrowing func matchesBaseline(_ baseline: borrowing CounterEndpointBaseline) -> Bool {
+        let sameeffectivePresentation = baseline.effectivePresentation == actual.effectivePresentation
+        guard sameeffectivePresentation else { return false }
+        let samedescriptor = baseline.descriptor == actual.descriptor
+        guard samedescriptor else { return false }
+        let samepayloadLimits = baseline.payloadLimits == actual.payloadLimits
+        guard samepayloadLimits else { return false }
+        let samerealization = baseline.realization == actual.textRasterRealization
+        guard samerealization else { return false }
+        let samebodyCalls = baseline.bodyCalls == actual.bodyCallCount
+        guard samebodyCalls else { return false }
+        let samereservations = baseline.reservations == actual.reservationCallCount
+        guard samereservations else { return false }
+        let samedisplayError = baseline.displayError == actual.lastDisplayError
+        guard samedisplayError else { return false }
+        let sameproducerError = baseline.producerError == actual.retainedProducerError
+        guard sameproducerError else { return false }
+        let samecapacity = baseline.capacity == actual.sink.capacity
+        guard samecapacity else { return false }
+        let samesinkDescriptor = baseline.sinkDescriptor == actual.sink.descriptor
+        guard samesinkDescriptor else { return false }
+        let samesinkLimits = baseline.sinkLimits == actual.sink.payloadLimits
+        guard samesinkLimits else { return false }
+        let samesinkFailure = baseline.sinkFailure == actual.sink.failure
+        guard samesinkFailure else { return false }
+        let samestreamCompleted = baseline.streamCompleted == actual.sink.streamCompleted
+        guard samestreamCompleted else { return false }
+        let samepresentationAccepted = baseline.presentationAccepted == actual.sink.presentationResponsibilityAccepted
+        guard samepresentationAccepted else { return false }
+        let samesinkProducerError = baseline.sinkProducerError == actual.sink.retainedProducerError
+        guard samesinkProducerError else { return false }
+        let sameidle = baseline.idle == actual.sink.isIdleForOffer
+        guard sameidle else { return false }
+        let samehealth = baseline.health == actual.health()
+        guard samehealth else { return false }
+        let samerecording = baseline.recording.matches(actual.sink.recording)
+        guard samerecording else { return false }
+        let sametargetConfiguration = baseline.targetConfiguration == actual.sink.target.configuration
+        guard sametargetConfiguration else { return false }
+        let samewriter = baseline.writer == nil
+        guard samewriter else { return false }
+        let samenativeReservation = baseline.nativeReservation == actual.sink.reservation
+        guard samenativeReservation else { return false }
+        let samenativeGlyphHeader = baseline.nativeGlyphHeader == actual.sink.glyphHeader
+        guard samenativeGlyphHeader else { return false }
+        return true
+    }
     var ownedObservation: CounterEndpointObservation {
         .init(effectivePresentation: actual.effectivePresentation, descriptor: actual.descriptor,
             payloadLimits: actual.payloadLimits, realization: actual.textRasterRealization,

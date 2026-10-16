@@ -1,0 +1,94 @@
+{
+  "exact_component_receipts": 7,
+  "recipe_source_checks": 878,
+  "artifact_hash_checks": 765,
+  "metadata_only_revisions_qualified": [
+    {
+      "activity": "p08-fixture-metadata-initial",
+      "receipt": ".build/contracts/p08-scoped-host-ezcy1qan/result.json",
+      "receipt_sha256": "8ccd2c004117f31f1843584fb157b5a0b5f93669505db88166eafe83f871c64d",
+      "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "original_source_sha256": "ce84ae4a5093d0e87119a5b2d7172674722f880f61693f3f33daa70882954d5e",
+      "corrected_source_sha256": "95043b383f3f8aa0dc2e4d58b461eaf5d41c6979aa5468612a54978464d82a36",
+      "compiled": false,
+      "original_manifest_current": false
+    },
+    {
+      "activity": "p08-fixture-metadata-initial",
+      "receipt": ".build/contracts/p08-scoped-host-hzs5q7za/result.json",
+      "receipt_sha256": "beb3d31b312391d266e2ca525b0274aec741629664fb9d55aaca721421bf4216",
+      "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "original_source_sha256": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+      "corrected_source_sha256": "95043b383f3f8aa0dc2e4d58b461eaf5d41c6979aa5468612a54978464d82a36",
+      "compiled": false,
+      "original_manifest_current": false
+    },
+    {
+      "activity": "p08-fixture-metadata-initial",
+      "receipt": ".build/contracts/spec-011-owned-keys/tmp0vz0ql4d/macos-dynamic/result.json",
+      "receipt_sha256": "8c0c5c2d3cda5681dd110eb947cf05b06fd403f16c0c5503f5b99de32cf7f78f",
+      "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "original_source_sha256": "fcaebb92dd2009e8a1536ef53a647ae1c4b073e85682098d54c0101b0b995b3a",
+      "corrected_source_sha256": "4f747327ae37de0d4a501a190d62dc403436c5ac2fdcd5427b583cf7b202e947",
+      "compiled": false,
+      "original_manifest_current": false
+    },
+    {
+      "activity": "p08-fixture-metadata-initial",
+      "receipt": ".build/contracts/spec-011-owned-keys/tmp0vz0ql4d/macos-dynamic/result.json",
+      "receipt_sha256": "8c0c5c2d3cda5681dd110eb947cf05b06fd403f16c0c5503f5b99de32cf7f78f",
+      "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "original_source_sha256": "ce84ae4a5093d0e87119a5b2d7172674722f880f61693f3f33daa70882954d5e",
+      "corrected_source_sha256": "95043b383f3f8aa0dc2e4d58b461eaf5d41c6979aa5468612a54978464d82a36",
+      "compiled": false,
+      "original_manifest_current": false
+    },
+    {
+      "activity": "p08-fixture-metadata-initial",
+      "receipt": ".build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic/result.json",
+      "receipt_sha256": "ec640f13aedd202725ad02e52a5e56e56357b5d3e034b3792788fe95feae4446",
+      "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "original_source_sha256": "ce84ae4a5093d0e87119a5b2d7172674722f880f61693f3f33daa70882954d5e",
+      "corrected_source_sha256": "95043b383f3f8aa0dc2e4d58b461eaf5d41c6979aa5468612a54978464d82a36",
+      "compiled": false,
+      "original_manifest_current": false
+    },
+    {
+      "activity": "p08-fixture-metadata-initial",
+      "receipt": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/result.json",
+      "receipt_sha256": "1199fd13fc4d309c36f3ddfccac3002ab497641a3fb6483902d97571c9ca923f",
+      "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "original_source_sha256": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+      "corrected_source_sha256": "95043b383f3f8aa0dc2e4d58b461eaf5d41c6979aa5468612a54978464d82a36",
+      "compiled": false,
+      "original_manifest_current": false
+    },
+    {
+      "activity": "p08-fixture-metadata-initial",
+      "receipt": ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded/result.json",
+      "receipt_sha256": "104c405d2f0c9abb44c47670fde33ae44bf70877f91df11e66f07acd14168d8c",
+      "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "original_source_sha256": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+      "corrected_source_sha256": "95043b383f3f8aa0dc2e4d58b461eaf5d41c6979aa5468612a54978464d82a36",
+      "compiled": false,
+      "original_manifest_current": false
+    },
+    {
+      "activity": "p08-fixture-metadata-initial",
+      "receipt": ".build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpsb8yw4yu/raspberry-pi-armv6/result.json",
+      "receipt_sha256": "36f739426100acd7df8c943b50022f9216c2cd2581235f5794b3afeb35f823a3",
+      "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "original_source_sha256": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+      "corrected_source_sha256": "95043b383f3f8aa0dc2e4d58b461eaf5d41c6979aa5468612a54978464d82a36",
+      "compiled": false,
+      "original_manifest_current": false
+    }
+  ],
+  "existing_four_runtime_rebuild_exclusions": [
+    "Sources/GiftUIExecution/ExecutionAdmissionController.swift",
+    "Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift",
+    "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift"
+  ],
+  "counter_receipts_qualified": 0
+}

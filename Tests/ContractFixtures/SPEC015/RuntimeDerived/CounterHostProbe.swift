@@ -172,9 +172,7 @@ func counterForeignJoinScope(_ body: (borrowing ObservableModelScope<CounterOwne
         precondition(identity.rawValue == 0)
         var backing = StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>(identity: identity, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!
         var foreign = CounterControl()
-        return try backing.withLifetime(limits: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!) { (models, root) throws(ObservableStateError) in
-            withUnsafeMutablePointer(to: &foreign) { body(models, root, $0) }
-        }
+        return counterForeignJoinScope(backing: &backing, foreign: &foreign, body)
     } catch { preconditionFailure("counter foreign live scope") }
 }
 func counterJoinAudit(_ audit: RuntimeStorageAudit, profile: RuntimeProfileKind) -> RuntimeStorageAudit {
@@ -184,4 +182,25 @@ func counterJoinAudit(_ audit: RuntimeStorageAudit, profile: RuntimeProfileKind)
 }
 func counterJoinReport(_ report: HostAssemblyReport) -> HostAssemblyReport {
     .init(kind: report.kind, profile: report.profile, storageAudit: report.storageAudit, capabilitySnapshot: report.capabilitySnapshot, effectivePresentation: report.effectivePresentation, drawingPlanOperationLimit: report.drawingPlanOperationLimit, minimumSinkOperationCapacity: report.minimumSinkOperationCapacity, cardinality: report.cardinality, minimumFrameIntervalMicroseconds: report.minimumFrameIntervalMicroseconds + 1, maximumFactServiceLatencyMicroseconds: report.maximumFactServiceLatencyMicroseconds, minimumAcceptedTransitionSpacingMicroseconds: report.minimumAcceptedTransitionSpacingMicroseconds, maximumCompactFactsPerServiceWindow: report.maximumCompactFactsPerServiceWindow, maximumRetryableRefusals: report.maximumRetryableRefusals)
+}
+
+// The caller lends two distinct fully initialized stored objects. This operation
+// neither constructs nor copies a complete foreign Control across its callback.
+func counterForeignJoinScope(backing: inout StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>, foreign: inout CounterControl,
+    _ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
+    do throws(ObservableStateError) {
+        return try backing.withLifetime(limits: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!) { (models, root) throws(ObservableStateError) in
+            withUnsafeMutablePointer(to: &foreign) { body(models, root, $0) }
+        }
+    } catch { preconditionFailure("counter foreign live scope") }
+}
+
+func counterForeignJoinScope(backing: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>?, foreign: UnsafeMutablePointer<CounterControl>?,
+    _ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
+    #if hasFeature(Embedded)
+    guard let backing, let foreign else { preconditionFailure("missing donor foreign lenders") }
+    return counterForeignJoinScope(backing: &backing.pointee, foreign: &foreign.pointee, body)
+    #else
+    return counterForeignJoinScope(body)
+    #endif
 }

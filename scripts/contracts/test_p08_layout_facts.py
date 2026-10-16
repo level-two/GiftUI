@@ -29,9 +29,19 @@ def layout_values():
     return values
 
 
+def metadata_values():
+    values = {}
+    for index, field in enumerate(facts.METADATA_FIELDS):
+        for key, value in zip(facts.METADATA_COMPONENTS, (index * 8, 5, 8, 8)):
+            values['giftui_p08_metadata_' + field + '_' + key] = value
+    values.update(giftui_p08_metadata_cursor=56, giftui_p08_metadata_maximumAlignment=8,
+                  giftui_p08_metadata_extent=56)
+    return values
+
+
 def elf_bytes(values=None, kind=1, duplicate=None, missing=None, relocation=None, body_override=None,
               backing_size=512, backing_address=0x20000000, backing_name=facts.C_SYMBOL, section_alignment=8):
-    values = layout_values() if values is None else values
+    values = (layout_values() | metadata_values()) if values is None else values
     names = ['.text', '.strtab', '.symtab', '.shstrtab', '.rel.text', '.bss']
     shstrings = b'\0'
     shnames = {}
@@ -150,7 +160,7 @@ class ELFTests(unittest.TestCase):
             path = pathlib.Path(directory) / 'test.o'
             path.write_bytes(elf_bytes())
             _, extracted = facts.extract(path, dict(slot_bytes=128, slot_count=4, retained_bytes=512))
-            self.assertEqual(len(extracted['symbols']), 129)
+            self.assertEqual(len(extracted['symbols']), 160)
             extra = layout_values() | {'giftui_p08_layout_unexpected': 0}
             path.write_bytes(elf_bytes(values=extra))
             with self.assertRaises(ValueError):
@@ -167,7 +177,7 @@ class ELFTests(unittest.TestCase):
             record = json.loads(raw.read_text())
             self.assertFalse(record['accepted'])
             self.assertTrue(record['diagnostic_only'])
-            self.assertEqual(record['values'], layout_values())
+            self.assertEqual(record['values'], layout_values() | metadata_values())
             self.assertNotIn('layout', record)
             self.assertEqual(record['compiler_sha256'], 'a' * 64)
             self.assertEqual(record['artifact_sha256'], facts.digest(path))
@@ -306,8 +316,9 @@ class LayoutTests(unittest.TestCase):
 
     def compare(self, data=None, prior=None, map_text=None):
         elf = facts.ELF(elf_bytes(kind=2) if data is None else data)
-        extracted = dict(values=self.values, layout=self.layout)
-        mapping = '\n'.join(facts.SYMBOLS) + '\n .bss.counter_backing.0\n 0x20000000 0x200 app/libapp.a(counter_main.c.obj)\n'
+        extracted = dict(values=self.values, layout=self.layout,
+                         metadata_layout=facts.validate_metadata_layout(metadata_values(), self.reservation))
+        mapping = '\n'.join(facts.ALL_SYMBOLS) + '\n .bss.counter_backing.0\n 0x20000000 0x200 app/libapp.a(counter_main.c.obj)\n'
         return facts.compare_firmware(extracted, copy.deepcopy(extracted) if prior is None else prior,
                                       elf, self.reservation, mapping if map_text is None else map_text)
 
@@ -325,6 +336,96 @@ class LayoutTests(unittest.TestCase):
             self.compare(prior=prior)
         with self.assertRaises(ValueError):
             self.compare(map_text='')
+
+
+class MetadataLayoutTests(unittest.TestCase):
+    def setUp(self):
+        self.reservation = dict(slot_bytes=128, slot_count=4, retained_bytes=512)
+        self.values = metadata_values()
+
+    def test_seven_full_stride_objects_and_complete_charge(self):
+        layout = facts.validate_metadata_layout(self.values, self.reservation)
+        self.assertEqual(len(layout['regions']), 7)
+        self.assertEqual(layout['extent'], 56)
+        self.assertEqual(layout['donor_padding'], 72)
+        self.assertEqual(layout['retained_bytes'], 512)
+        self.assertEqual(layout['additional_retained_bytes'], 0)
+        self.assertTrue(all(row['extent'] == 8 and row['count'] == 1 for row in layout['regions']))
+
+    def test_reject_missing_extra_bad_bound_padding_and_arithmetic(self):
+        cases = [self.values | {'extra': 1}]
+        missing = self.values.copy(); missing.pop(next(iter(missing))); cases.append(missing)
+        for key, value in [('owner_offset', 0), ('owner_alignment', 3), ('owner_stride', 4),
+                           ('owner_size', 9), ('owner_stride', 0xFFFFFFFF),
+                           ('cursor', 55), ('extent', 55), ('maximumAlignment', 4)]:
+            cases.append(self.values | {'giftui_p08_metadata_' + key: value})
+        for values in cases:
+            with self.subTest(values=values), self.assertRaises(ValueError):
+                facts.validate_metadata_layout(values, self.reservation)
+        for reservation in [self.reservation | dict(slot_bytes=55), self.reservation | dict(slot_bytes=129)]:
+            with self.assertRaises(ValueError): facts.validate_metadata_layout(self.values, reservation)
+
+    def test_exact_roots_for_object_and_elf_and_fail_closed(self):
+        for kind in (1, 2):
+            elf = facts.ELF(elf_bytes(self.values, kind=kind))
+            inventory = facts.classify_inventory(elf, facts.METADATA_SYMBOLS, 'giftui_p08_metadata_')
+            self.assertEqual(len(inventory['global_roots']), 31)
+            for name, value in self.values.items(): self.assertEqual(elf.constant(name)['value'], value)
+        for data in [elf_bytes(self.values, missing=facts.METADATA_SYMBOLS[0]),
+                     elf_bytes(self.values, duplicate=facts.METADATA_SYMBOLS[0]),
+                     elf_bytes(self.values | {'giftui_p08_metadata_extra': 0})]:
+            with self.assertRaises(ValueError):
+                facts.classify_inventory(facts.ELF(data), facts.METADATA_SYMBOLS, 'giftui_p08_metadata_')
+
+    def test_final_root_source_and_single_derivation(self):
+        source = facts.METADATA_SOURCE.read_text()
+        actual = re.findall(r'@_cdecl\("(giftui_p08_metadata_[^"]+)"\)', source)
+        self.assertEqual(tuple(actual), facts.METADATA_SYMBOLS)
+        self.assertIn('p08DeriveMetadataLayout(', source)
+        self.assertIn('let p = P08MetadataPointers(donor: donor)', source)
+        self.assertNotIn('fileprivate func p08EmbeddedFaultCase', source)
+        self.assertNotIn('fileprivate func p08SurplusBacking', source)
+
+    def test_complete_donor_map_and_shared_custody_routes(self):
+        scoped = facts.METADATA_SOURCE.read_text()
+        self.assertIn('return (active, 1, active == 3 ? 2 : 3)', scoped)
+        self.assertIn('return (0, surplus == 0 ? 1 : 2, 3)', scoped)
+        self.assertIn('activeEnd <= donorStart || donorEnd <= activeStart', scoped)
+        self.assertIn('_ = consume p', scoped)
+        for active, count, donor in [(0,1,3),(1,1,3),(2,1,3),(3,1,2),(0,2,3)]:
+            start, end = active*34720, (active+count)*34720
+            donor_start, donor_end = donor*34720, (donor+1)*34720
+            self.assertTrue(end <= donor_start or donor_end <= start)
+        self.assertFalse(69440 <= 34720 or 69440 <= 0) # S1 is not a surplus donor.
+        self.assertIn('for prefix: UInt8 in 0...7', scoped)
+        self.assertIn('case .reserved: return acquired == 0', scoped)
+        self.assertIn('case .active: return false', scoped)
+        self.assertIn('p08PrepareMetadata(p,', scoped)
+        self.assertIn('let checks = p08RunMetadataCase(plan,', scoped)
+        self.assertIn('p08DestroyMetadata(p, prefix:', scoped)
+        # Existing selection count: graph1, hosts9, reuse1, exchange2, invalid1,
+        # fourteen before/after faults, every nonempty short byte prefix, early5/candidate11.
+        self.assertEqual(1+9+1+2+1+28+(1023+1055+19+111)+5+11,2266)
+
+    def test_full_endpoint_and_baseline_observation_inventory(self):
+        directory = facts.METADATA_SOURCE.parent
+        pipeline = (directory / 'CounterPipelineOwner.swift').read_text()
+        observation = pipeline.split('struct CounterEndpointObservation:')[1].split('// Captured only once')[0]
+        fields = re.findall(r'    let (\w+):', observation)
+        for filename in ('CounterNativeRaster.swift', 'CounterTiledRaster.swift'):
+            source = (directory / filename).read_text()
+            capture = source.split('func captureBaseline(')[1].split('func matchesBaseline(')[0]
+            match = source.split('func matchesBaseline(')[1].split('var ownedObservation:')[0]
+            for field in fields:
+                self.assertIn('baseline.' + field, capture)
+                self.assertIn('baseline.' + field, match)
+        recording = pipeline.split('struct CounterRecordingObservation:')[1].split('struct CounterWriterObservation:')[0]
+        self.assertIn('for index in 0..<64', recording)
+        self.assertNotIn('let a =', recording)
+        scoped = facts.METADATA_SOURCE.read_text()
+        self.assertNotIn('P08ReuseFingerprint(control)', scoped)
+        self.assertIn('let canCapture = !frozen; precondition(canCapture)', scoped)
+        self.assertIn('baseline.pointee.capture(control)', scoped)
 
 
 if __name__ == '__main__':
