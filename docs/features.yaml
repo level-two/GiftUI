@@ -22,7 +22,7 @@ features:
     # ADR-039 accepted; exact S11/S13/S15 amendments approved/applied 2026-10-13; nine SO criteria unmet.
     # Provenance: docs/iterations/iteration-003-review/rfc-015-contract-acceptance.md.
     # FW-038 captures validation cost and P08 test/application consolidation for RFC-013 / ITERATION-004 design; no current checks or contract change.
-    # Current donor-metadata STOP / resource FAIL (independent result review pending): Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-final-result.md.
+    # Current donor-metadata STOP / independently confirmed resource FAIL: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-final-independent-review.md.
     # Three fresh focused collections PASS: nRF25/160layout roots; Native42 each, 3,472,410 assertions/0 failures; all reuse/exclusivity/projection pass, aggregate coverage incomplete.
     # Required stack >=66,104 + backing138,880 =204,984 > RAM196,608 by8,376 before omitted costs; main27,648 unchanged; no current image/upper-bound claim.
     # Correction2/2 consumed; no third automatic variant/resource waiver; stop full202/image. P08/R07/T8.1/HC-RD-003 and all nine SO criteria open. Prior comments below describe historical boundaries.

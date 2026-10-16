@@ -4,8 +4,8 @@ Current donor-metadata boundary — **STOP; focused behavior/layout PASS, resour
 The [final current result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-final-result.md) preserves three passing fresh focused collections:
 nRF25/layout160 roots, Native42 per profile and3,472,410 assertions with zero failures.
 The required current stack subset66,104 + retained backing138,880 =204,984 exceeds
-RAM196,608 by8,376 before omitted lenders/IRQ/other costs. Independent result review
-is pending; no complete upper bound or current image is claimed. Correction2/2
+RAM196,608 by8,376 before omitted lenders/IRQ/other costs. The [independent exit review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-final-independent-review.md)
+confirms resource FAIL/STOP; no complete upper bound or current image is claimed. Correction2/2
 consumed; no third automatic variant or resource waiver. Stop current full202/image;
 P08/R07/T8.1/HC-RD-003 and all nine SO criteria remain open. Earlier boundaries below
 are historical.

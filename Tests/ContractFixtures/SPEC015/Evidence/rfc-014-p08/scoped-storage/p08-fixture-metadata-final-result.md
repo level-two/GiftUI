@@ -2,8 +2,9 @@
 
 **STOP: current focused behavior/layout PASS; required stack still fails RAM.**
 Source `6449093d`, independent SOURCE PASS `dbb4cc5b`. Both corrective cycles are
-consumed. This report requests independent result review; it is not itself that
-review. No source variant, compiler, runtime, debugger, image or hardware execution
+consumed. The [independent exit review](p08-fixture-metadata-final-independent-review.md)
+confirms the current resource FAIL and STOP; source, focused behavior and layout passes
+do not establish P08 acceptance. No source variant, compiler, runtime, debugger, image or hardware execution
 was performed during this read-only artifact analysis.
 
 ## Three current focused collections
