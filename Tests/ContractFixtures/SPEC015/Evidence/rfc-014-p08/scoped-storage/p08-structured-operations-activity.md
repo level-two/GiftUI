@@ -1,12 +1,19 @@
 # P08 structured construction and observation operations activity
 
-Current boundary: **grouped correction1 independent SOURCE PASS at `b8a9626a`**
+Current boundary: **grouped correction1 all three fresh focused collections PASS at `b8a9626a`**
+after SOURCE review `3a346b91`. The immutable
+[current receipt packet](structured-operations-cycle1-collections/result.json)
+records nRF25 passed/202 omitted and each Native42 passed/384 omitted,
+with3,472,564 Native assertions and zero failures. These are partial collections,
+not complete acceptance. Current-object stack analysis remains a separate gate.
+
+Prior execution authorization: grouped correction1 independent SOURCE PASS at `b8a9626a`
 after approved result/approach `81f5ed80`. The
 [bounded source review](p08-structured-operations-cycle1-independent-source-review.md)
 permits the three registered fresh focused collections.
 The [correction freeze](p08-structured-operations-cycle1-source.md) pins seven Swift
 fixtures, exact qualification and same three fresh validation commands. Correction1/2
-is consumed; corrected compiler/runtime/image0. Initial focused passes and measured
+is consumed; corrected nRF screen1, Native focused collections2, image0. Initial focused passes and measured
 resource rejection remain immutable in `6863f491`/`678b7f7d`; none qualifies the new
 source. Historical allowances remain closed. Full202/image work stays held until
 current source and measured complete resource paths are viable.

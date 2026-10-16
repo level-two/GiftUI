@@ -1,0 +1,578 @@
+{
+  "kind": "three-current-focused-collections-pass-not-full-acceptance",
+  "source_commit": "b8a9626a",
+  "source_review": "3a346b91",
+  "combined_native_assertions": 3472564,
+  "all_native_reuse_labels_each": 13,
+  "native_exclusivity_each": 5,
+  "native_projection_each": 2,
+  "object": {
+    "path": ".build/nrf52840/contracts/p08-counter-jwt7w60j/P08CounterRuntime.o",
+    "sha256": "8a230085aee82575696182f93ecc8f540ee9bcf21ffab2e094f640b318e7a61b"
+  },
+  "layout": {
+    "regions": [
+      {
+        "name": "limits",
+        "offset": 0,
+        "count": 1,
+        "size": 115,
+        "stride": 116,
+        "alignment": 4,
+        "extent": 116,
+        "end": 116
+      },
+      {
+        "name": "root",
+        "offset": 116,
+        "count": 1,
+        "size": 810,
+        "stride": 812,
+        "alignment": 4,
+        "extent": 812,
+        "end": 928
+      },
+      {
+        "name": "semantic",
+        "offset": 928,
+        "count": 1,
+        "size": 116,
+        "stride": 116,
+        "alignment": 4,
+        "extent": 116,
+        "end": 1044
+      },
+      {
+        "name": "semanticRecords",
+        "offset": 1044,
+        "count": 128,
+        "size": 20,
+        "stride": 20,
+        "alignment": 2,
+        "extent": 2560,
+        "end": 3604
+      },
+      {
+        "name": "semanticPaths",
+        "offset": 3604,
+        "count": 384,
+        "size": 22,
+        "stride": 22,
+        "alignment": 2,
+        "extent": 8448,
+        "end": 12052
+      },
+      {
+        "name": "semanticPayloads",
+        "offset": 12052,
+        "count": 256,
+        "size": 33,
+        "stride": 36,
+        "alignment": 4,
+        "extent": 9216,
+        "end": 21268
+      },
+      {
+        "name": "semanticScalars",
+        "offset": 21268,
+        "count": 128,
+        "size": 4,
+        "stride": 4,
+        "alignment": 4,
+        "extent": 512,
+        "end": 21780
+      },
+      {
+        "name": "values",
+        "offset": 21780,
+        "count": 1,
+        "size": 4,
+        "stride": 4,
+        "alignment": 2,
+        "extent": 4,
+        "end": 21784
+      },
+      {
+        "name": "canvasEntry",
+        "offset": 21784,
+        "count": 1,
+        "size": 28,
+        "stride": 28,
+        "alignment": 4,
+        "extent": 28,
+        "end": 21812
+      },
+      {
+        "name": "b0",
+        "offset": 21812,
+        "count": 1024,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1024,
+        "end": 22836
+      },
+      {
+        "name": "b1",
+        "offset": 22836,
+        "count": 1056,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1056,
+        "end": 23892
+      },
+      {
+        "name": "b2",
+        "offset": 23892,
+        "count": 20,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 20,
+        "end": 23912
+      },
+      {
+        "name": "b3",
+        "offset": 23912,
+        "count": 112,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 112,
+        "end": 24024
+      },
+      {
+        "name": "g0",
+        "offset": 24024,
+        "count": 1,
+        "size": 70,
+        "stride": 72,
+        "alignment": 4,
+        "extent": 72,
+        "end": 24096
+      },
+      {
+        "name": "g1",
+        "offset": 24096,
+        "count": 1,
+        "size": 98,
+        "stride": 100,
+        "alignment": 4,
+        "extent": 100,
+        "end": 24196
+      },
+      {
+        "name": "g2",
+        "offset": 24196,
+        "count": 1,
+        "size": 1024,
+        "stride": 1024,
+        "alignment": 4,
+        "extent": 1024,
+        "end": 25220
+      },
+      {
+        "name": "g3",
+        "offset": 25220,
+        "count": 1,
+        "size": 167,
+        "stride": 168,
+        "alignment": 4,
+        "extent": 168,
+        "end": 25388
+      },
+      {
+        "name": "g4",
+        "offset": 25388,
+        "count": 1,
+        "size": 26,
+        "stride": 28,
+        "alignment": 4,
+        "extent": 28,
+        "end": 25416
+      },
+      {
+        "name": "c0",
+        "offset": 25416,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 25900
+      },
+      {
+        "name": "h0",
+        "offset": 25900,
+        "count": 1,
+        "size": 460,
+        "stride": 460,
+        "alignment": 4,
+        "extent": 460,
+        "end": 26360
+      },
+      {
+        "name": "r0",
+        "offset": 26360,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 26844
+      },
+      {
+        "name": "r1",
+        "offset": 26844,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 27328
+      },
+      {
+        "name": "h1",
+        "offset": 27328,
+        "count": 1,
+        "size": 460,
+        "stride": 460,
+        "alignment": 4,
+        "extent": 460,
+        "end": 27788
+      },
+      {
+        "name": "control",
+        "offset": 27792,
+        "count": 1,
+        "size": 6920,
+        "stride": 6920,
+        "alignment": 8,
+        "extent": 6920,
+        "end": 34712
+      },
+      {
+        "name": "used",
+        "offset": 34712,
+        "count": 1,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1,
+        "end": 34713
+      }
+    ],
+    "cursor": 34713,
+    "maximumAlignment": 8,
+    "slotBytes": 34720,
+    "totalBytes": 138880,
+    "retained_slot_bytes": 34720,
+    "retained_bytes": 138880,
+    "retained_surplus": 0
+  },
+  "metadata_layout": {
+    "regions": [
+      {
+        "name": "outer",
+        "count": 1,
+        "offset": 0,
+        "size": 776,
+        "stride": 776,
+        "alignment": 4,
+        "extent": 776,
+        "end": 776
+      },
+      {
+        "name": "owner",
+        "count": 1,
+        "offset": 776,
+        "size": 1006,
+        "stride": 1008,
+        "alignment": 8,
+        "extent": 1008,
+        "end": 1784
+      },
+      {
+        "name": "baseline",
+        "count": 1,
+        "offset": 1784,
+        "size": 5241,
+        "stride": 5248,
+        "alignment": 8,
+        "extent": 5248,
+        "end": 7032
+      },
+      {
+        "name": "inventory",
+        "count": 1,
+        "offset": 7032,
+        "size": 392,
+        "stride": 392,
+        "alignment": 4,
+        "extent": 392,
+        "end": 7424
+      },
+      {
+        "name": "transcript",
+        "count": 1,
+        "offset": 7424,
+        "size": 600,
+        "stride": 600,
+        "alignment": 8,
+        "extent": 600,
+        "end": 8024
+      },
+      {
+        "name": "foreignRoot",
+        "count": 1,
+        "offset": 8024,
+        "size": 810,
+        "stride": 812,
+        "alignment": 4,
+        "extent": 812,
+        "end": 8836
+      },
+      {
+        "name": "foreignControl",
+        "count": 1,
+        "offset": 8840,
+        "size": 6920,
+        "stride": 6920,
+        "alignment": 8,
+        "extent": 6920,
+        "end": 15760
+      }
+    ],
+    "cursor": 15760,
+    "maximumAlignment": 8,
+    "extent": 15760,
+    "donor_slot_bytes": 34720,
+    "donor_padding": 18960,
+    "retained_bytes": 138880,
+    "additional_retained_bytes": 0,
+    "custody_and_temporary_stack_bytes": "require separate current compiled proof"
+  },
+  "symbols": 160,
+  "new_compiler_or_runtime_in_analysis": false,
+  "corrections_consumed": 1,
+  "corrections_maximum": 2,
+  "fit_claim": false,
+  "profiles": [
+    {
+      "route": "nrf",
+      "profile": "nrf52840-embedded",
+      "build": ".build/nrf52840/contracts/p08-counter-jwt7w60j",
+      "receipt_sha256": "dbe2b6d942be2be0ba9db16259fa7750fe3d9e63ee922fa8168803c08a41f5f4",
+      "wrapper": ".build/contracts/p08-integrated-activity/20261016T074604363547Z-structured-operations-cycle1-nrf",
+      "wrapper_sha256": "a72b2b7862cc831f3ad517af2f075a83782ee3f904da05d7fc192cb384c17996",
+      "status_counts": {
+        "passed": 25,
+        "not-run": 202
+      },
+      "fresh_focused": true,
+      "focused_passed": true,
+      "collection_complete": false,
+      "passed": false,
+      "runtime_assertions": null,
+      "source_qualification_sha256": "88b3b8acadead1ef6c784009acb207b020b9fd060250c8910af87f5e70d8ba41"
+    },
+    {
+      "route": "dynamic",
+      "profile": "macos-dynamic",
+      "build": ".build/contracts/p08-counter-lekb3yhf",
+      "receipt_sha256": "22c040aa051cfc19fe18dbe50ddbe264f73bfd6ece87e2681886afaf3b2ba2fd",
+      "wrapper": ".build/contracts/p08-integrated-activity/20261016T074720526175Z-structured-operations-cycle1-dynamic",
+      "wrapper_sha256": "94bd38507a59bae3853b4c6b9684b9351e947cad4b0aa38203382e80da9cf9d0",
+      "status_counts": {
+        "passed": 42,
+        "not-run": 384
+      },
+      "fresh_focused": true,
+      "focused_passed": true,
+      "collection_complete": false,
+      "passed": false,
+      "runtime_assertions": 1736244,
+      "source_qualification_sha256": "88b3b8acadead1ef6c784009acb207b020b9fd060250c8910af87f5e70d8ba41"
+    },
+    {
+      "route": "static",
+      "profile": "macos-static",
+      "build": ".build/contracts/p08-counter-7l7kpkkd",
+      "receipt_sha256": "f25db56270517ae0fe0b901782e008eb31f9da710c5d53e16a3225a3783b00d4",
+      "wrapper": ".build/contracts/p08-integrated-activity/20261016T074929661241Z-structured-operations-cycle1-static",
+      "wrapper_sha256": "796e60741d17a9392c4c81269676a5c0dbbbd82db9557f4226bb70e1218aa723",
+      "status_counts": {
+        "passed": 42,
+        "not-run": 384
+      },
+      "fresh_focused": true,
+      "focused_passed": true,
+      "collection_complete": false,
+      "passed": false,
+      "runtime_assertions": 1736320,
+      "source_qualification_sha256": "88b3b8acadead1ef6c784009acb207b020b9fd060250c8910af87f5e70d8ba41"
+    }
+  ],
+  "archive": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/structured-operations-cycle1-collections/focused-receipts.tar.xz",
+    "sha256": "3bdeaf91f30135af9df25f55dfea039cdb084ce0404b6f9a87da7c98849a0eb3",
+    "files": {
+      "nrf/build/result.json": {
+        "path": ".build/nrf52840/contracts/p08-counter-jwt7w60j/result.json",
+        "sha256": "dbe2b6d942be2be0ba9db16259fa7750fe3d9e63ee922fa8168803c08a41f5f4",
+        "bytes": 3148006
+      },
+      "nrf/build/counter-model.log": {
+        "path": ".build/nrf52840/contracts/p08-counter-jwt7w60j/counter-model.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "nrf/build/so07-layout-facts.log": {
+        "path": ".build/nrf52840/contracts/p08-counter-jwt7w60j/so07-layout-facts.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "nrf/build/so07-layout-facts.json": {
+        "path": ".build/nrf52840/contracts/p08-counter-jwt7w60j/so07-layout-facts.json",
+        "sha256": "3400107026f894e92d5ef4b5d6f2f0be61660db37683fd720e15323e2b849f9a",
+        "bytes": 156078
+      },
+      "nrf/build/so07-layout-facts-decoded.json": {
+        "path": ".build/nrf52840/contracts/p08-counter-jwt7w60j/so07-layout-facts-decoded.json",
+        "sha256": "8fb5907d1be0a3da18a077a2f34a230aa085b1d998d71f5b86e19c410681463b",
+        "bytes": 147603
+      },
+      "nrf/wrapper/result.json": {
+        "path": ".build/contracts/p08-integrated-activity/20261016T074604363547Z-structured-operations-cycle1-nrf/result.json",
+        "sha256": "a72b2b7862cc831f3ad517af2f075a83782ee3f904da05d7fc192cb384c17996",
+        "bytes": 1065
+      },
+      "nrf/wrapper/invocation.json": {
+        "path": ".build/contracts/p08-integrated-activity/20261016T074604363547Z-structured-operations-cycle1-nrf/invocation.json",
+        "sha256": "6d45ee285b817ea2436b1ac52fe15e154b146c93991705f2fa4bc8a7ec78aa8d",
+        "bytes": 666
+      },
+      "nrf/wrapper/stdout.log": {
+        "path": ".build/contracts/p08-integrated-activity/20261016T074604363547Z-structured-operations-cycle1-nrf/stdout.log",
+        "sha256": "1c116beff279ebf3f37e194b95e8b4dc1c7ee094f877eded54597c9661d8d12b",
+        "bytes": 258
+      },
+      "nrf/wrapper/stderr.log": {
+        "path": ".build/contracts/p08-integrated-activity/20261016T074604363547Z-structured-operations-cycle1-nrf/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "dynamic/build/result.json": {
+        "path": ".build/contracts/p08-counter-lekb3yhf/result.json",
+        "sha256": "22c040aa051cfc19fe18dbe50ddbe264f73bfd6ece87e2681886afaf3b2ba2fd",
+        "bytes": 6441876
+      },
+      "dynamic/build/counter-model.log": {
+        "path": ".build/contracts/p08-counter-lekb3yhf/counter-model.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "dynamic/build/execute.log": {
+        "path": ".build/contracts/p08-counter-lekb3yhf/execute.log",
+        "sha256": "35f21b12b65df6bf6c055e5676932532812e35f13ed44ffcce4d6eee4bc4920c",
+        "bytes": 611267
+      },
+      "dynamic/build/so06-native-exclusivity-positive-execute.log": {
+        "path": ".build/contracts/p08-counter-lekb3yhf/so06-native-exclusivity-positive-execute.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "dynamic/build/so06-native-exclusivity-negative-execute.log": {
+        "path": ".build/contracts/p08-counter-lekb3yhf/so06-native-exclusivity-negative-execute.log",
+        "sha256": "7bed34707f4e48e2c4378e0be72360496e620d8eece2c886c384766f2787c0f8",
+        "bytes": 1753
+      },
+      "dynamic/build/control-resident-projection-positive.log": {
+        "path": ".build/contracts/p08-counter-lekb3yhf/control-resident-projection-positive.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "dynamic/build/control-resident-projection-negative.log": {
+        "path": ".build/contracts/p08-counter-lekb3yhf/control-resident-projection-negative.log",
+        "sha256": "c6f141cf4c12ddd7501ed8abbddc8448dcd96c02bbef7bcadb46ec8c3a11d25c",
+        "bytes": 1164
+      },
+      "dynamic/wrapper/result.json": {
+        "path": ".build/contracts/p08-integrated-activity/20261016T074720526175Z-structured-operations-cycle1-dynamic/result.json",
+        "sha256": "94bd38507a59bae3853b4c6b9684b9351e947cad4b0aa38203382e80da9cf9d0",
+        "bytes": 1154
+      },
+      "dynamic/wrapper/invocation.json": {
+        "path": ".build/contracts/p08-integrated-activity/20261016T074720526175Z-structured-operations-cycle1-dynamic/invocation.json",
+        "sha256": "fbf07d083cf7d4cca5c8842c0f4fb08290462c16aed0bfb6e56f81ef291ead1a",
+        "bytes": 755
+      },
+      "dynamic/wrapper/stdout.log": {
+        "path": ".build/contracts/p08-integrated-activity/20261016T074720526175Z-structured-operations-cycle1-dynamic/stdout.log",
+        "sha256": "e989a74dd3bc50aecabec1bb284042a469fc730f236b4c4706b1f362f1e902c9",
+        "bytes": 209
+      },
+      "dynamic/wrapper/stderr.log": {
+        "path": ".build/contracts/p08-integrated-activity/20261016T074720526175Z-structured-operations-cycle1-dynamic/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "static/build/result.json": {
+        "path": ".build/contracts/p08-counter-7l7kpkkd/result.json",
+        "sha256": "f25db56270517ae0fe0b901782e008eb31f9da710c5d53e16a3225a3783b00d4",
+        "bytes": 6394157
+      },
+      "static/build/counter-model.log": {
+        "path": ".build/contracts/p08-counter-7l7kpkkd/counter-model.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "static/build/execute.log": {
+        "path": ".build/contracts/p08-counter-7l7kpkkd/execute.log",
+        "sha256": "3d786e0f56dbc2ff04a0760a0106ae8513945d0a08e1a585b3227d99326f1f9f",
+        "bytes": 611254
+      },
+      "static/build/so06-native-exclusivity-positive-execute.log": {
+        "path": ".build/contracts/p08-counter-7l7kpkkd/so06-native-exclusivity-positive-execute.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "static/build/so06-native-exclusivity-negative-execute.log": {
+        "path": ".build/contracts/p08-counter-7l7kpkkd/so06-native-exclusivity-negative-execute.log",
+        "sha256": "3a5a735004c79bcf79139a838774a87f54c96a152f9484179720a0a67e6372da",
+        "bytes": 1958
+      },
+      "static/build/control-resident-projection-positive.log": {
+        "path": ".build/contracts/p08-counter-7l7kpkkd/control-resident-projection-positive.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "static/build/control-resident-projection-negative.log": {
+        "path": ".build/contracts/p08-counter-7l7kpkkd/control-resident-projection-negative.log",
+        "sha256": "74265e88ffdc81de75357bea771241d1d98fbeae58bb231cf8ca288568947637",
+        "bytes": 1164
+      },
+      "static/wrapper/result.json": {
+        "path": ".build/contracts/p08-integrated-activity/20261016T074929661241Z-structured-operations-cycle1-static/result.json",
+        "sha256": "796e60741d17a9392c4c81269676a5c0dbbbd82db9557f4226bb70e1218aa723",
+        "bytes": 1151
+      },
+      "static/wrapper/invocation.json": {
+        "path": ".build/contracts/p08-integrated-activity/20261016T074929661241Z-structured-operations-cycle1-static/invocation.json",
+        "sha256": "539191cbc348dfb36010d4610cc3e2066d09b9560180ac71137152cd120519b8",
+        "bytes": 752
+      },
+      "static/wrapper/stdout.log": {
+        "path": ".build/contracts/p08-integrated-activity/20261016T074929661241Z-structured-operations-cycle1-static/stdout.log",
+        "sha256": "73004cf31dc80098fcfb6575f86d80befe2adc95612346cfb0cd4b2bbc6def67",
+        "bytes": 209
+      },
+      "static/wrapper/stderr.log": {
+        "path": ".build/contracts/p08-integrated-activity/20261016T074929661241Z-structured-operations-cycle1-static/stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  }
+}
