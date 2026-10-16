@@ -1,0 +1,356 @@
+{
+  "object_path": ".build/nrf52840/contracts/p08-counter-l35r4h8p/P08CounterRuntime.o",
+  "object_sha256": "4c2bdc4a294a2315ac3b8cf7e0715b76ba60009576d00c649bbf2732bc66f66c",
+  "source_commit": "8bd6c784",
+  "source_sha256": "991e9b8ab3d1ca4a6800f811da21bc32f9837621d27ff78bef08badb7f126163",
+  "scope": "read-only bounded exact-section prologues/relocations plus trust-critical complete bodies; no compiler/runtime/image",
+  "archive": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/constructor-caller-initial-analysis.tar.xz",
+    "sha256": "46200028c12f08a26f25f2fc060440db4b57cbb7dd5905e0c5597ec55fb454c0",
+    "files": {
+      "body-11908.txt.xz": {
+        "sha256": "f36222d7971a9b1d76599dc1ca7629eb157f8835d522737f1b922c18d971a9c4",
+        "bytes": 396
+      },
+      "body-11911.txt.xz": {
+        "sha256": "730558150847adce12d6b536b58123396bee8a5081f12aa21034b20f09dbb4fe",
+        "bytes": 496
+      },
+      "body-12072.txt.xz": {
+        "sha256": "563a879a71c9684db4268d30dca190f60085a78a93f340d05bd32dc90639c292",
+        "bytes": 984
+      },
+      "body-12076.txt.xz": {
+        "sha256": "605b022221a5d6eec230d2475c610109a967fc424daca2386789eeb14a7bdc82",
+        "bytes": 1736
+      },
+      "body-12363.txt.xz": {
+        "sha256": "25e1c100b61db923da2e27f74adefd4899f814d77928fb52169f0581a723adb1",
+        "bytes": 1628
+      },
+      "body-12367.txt.xz": {
+        "sha256": "13452e2b1694c4e3d30c9e88cdc3ad13fe1ca0967588f10aae73569ecea00850",
+        "bytes": 1716
+      },
+      "body-15486.txt.xz": {
+        "sha256": "a4233512123fd5f14a947eb33262b7c9fc3ea782009aebc57aff06aa555b7d57",
+        "bytes": 328
+      },
+      "body-15538.txt.xz": {
+        "sha256": "2dfa405313ce73304c7860eac397e10a4400814e31d80084e5893378a31fd315",
+        "bytes": 352
+      },
+      "body-3477.txt.xz": {
+        "sha256": "2772c6114046aafa74ce34240d8a8556c31d810e32205a54ef537a69cb8e0e57",
+        "bytes": 620
+      },
+      "body-3493.txt.xz": {
+        "sha256": "1d982460622dc088ffa3d81a3f458468e1f45ed7ccfebee53a9497f3821d9000",
+        "bytes": 684
+      },
+      "body-3728.txt.xz": {
+        "sha256": "49828bc0338494da4bc7284c1a81a94ad598fdd4f2c5b77303f08c7a003a80be",
+        "bytes": 4616
+      },
+      "body-3740.txt.xz": {
+        "sha256": "a74ba99a49c8904a4a705c35f8baaf29f98fb2f0e2ca3fa51547ca841476e116",
+        "bytes": 1704
+      },
+      "body-3823.txt.xz": {
+        "sha256": "1af0958d6e47db739b43d3d3f8157538549973c5aa3c0990a3529e454d10a334",
+        "bytes": 2404
+      },
+      "body-3863.txt.xz": {
+        "sha256": "428ac32cfb39a432e3a9d9399426a53d995a9f0ed2f10a2f20c9eda4c1b6c5fb",
+        "bytes": 1676
+      },
+      "body-3967.txt.xz": {
+        "sha256": "7bb7b83e25898d43b313845cad626d34593608a1f908d581ce2ef6aedf7f6d05",
+        "bytes": 2676
+      },
+      "body-3983.txt.xz": {
+        "sha256": "0b029f2fa69a36d5f1bf156f1ba7dab9653a2701c55c7a4293e85d1b7107c9cc",
+        "bytes": 6940
+      },
+      "body-4025.txt.xz": {
+        "sha256": "a6b8e62e05567c18cb19bcb3d5cd3035d8e317dc579f3b7311eb4b2e1e8d3138",
+        "bytes": 3492
+      },
+      "body-4033.txt.xz": {
+        "sha256": "e3d7f6eb49177f795b31e662d725b6c062757b6c1c8e8022e0bf88f0eb67c89f",
+        "bytes": 3276
+      },
+      "body-4040.txt.xz": {
+        "sha256": "a4027efbb812219445fe949d0625e305c9adcffd58561b6cf1b1dccbc622fe3d",
+        "bytes": 2468
+      },
+      "body-4044.txt.xz": {
+        "sha256": "1f8a1e9760252f6d16a0ce3cc59f8b2176dbf97748cd38ce0b0367f826fa64a7",
+        "bytes": 2396
+      },
+      "body-4265.txt.xz": {
+        "sha256": "14ca3a625c0d12017f51c8bb1f95e75ee435680818344218bf9047cc54072834",
+        "bytes": 2128
+      },
+      "body-4277.txt.xz": {
+        "sha256": "6599b0587d0d84253c58d5b34bcb1217acb1d0a440565644241701fd3d8e16d9",
+        "bytes": 2156
+      },
+      "bounded-frames-and-calls.json": {
+        "sha256": "590b8a1805c2996a801d08e15c73606dd4335d94b16048d4df4842e5463bd2b5",
+        "bytes": 2284587
+      },
+      "extraction.py": {
+        "sha256": "215ff13c6427d9ada97d99e81d639f9d4a5f3b142ef7d2433cbc5aa27c8bc44d",
+        "bytes": 4639
+      },
+      "prologue-10403.txt.xz": {
+        "sha256": "31632beab02f4536d73f84fb24e47787858c6954909bc3ac1f31949bc0f8a381",
+        "bytes": 1204
+      },
+      "prologue-12072.txt.xz": {
+        "sha256": "563a879a71c9684db4268d30dca190f60085a78a93f340d05bd32dc90639c292",
+        "bytes": 984
+      },
+      "prologue-12076.txt.xz": {
+        "sha256": "d5ac88687a4f28e59560a9ef312a7d838127d91fa2fad5d84712d881528e252f",
+        "bytes": 1280
+      },
+      "prologue-12363.txt.xz": {
+        "sha256": "5d6262b30bc7b3f969d0fd9366881150c857c35be240d8e4d32ff542f90fabfe",
+        "bytes": 1400
+      },
+      "prologue-12367.txt.xz": {
+        "sha256": "f15a4383ad0abb81d04e5a1c9d618061f5215ce3c8efd8b601b889d3456a46f5",
+        "bytes": 1444
+      },
+      "prologue-13907.txt.xz": {
+        "sha256": "cd1525a4f8d102d78709b5bc555db05181d35b0eba44ec23f397e4f105fd1ee1",
+        "bytes": 984
+      },
+      "prologue-210.txt.xz": {
+        "sha256": "85161c07f932ffaf3c20c5ff14753de2c9ebd0e197a4f16e9b6e050b807e3bf5",
+        "bytes": 1112
+      },
+      "prologue-3226.txt.xz": {
+        "sha256": "a6d9655b508c8366a4996ff0738a62d95952d437a4b2c5f9fecc2677b98241bb",
+        "bytes": 1036
+      },
+      "prologue-3234.txt.xz": {
+        "sha256": "6902c556af207436b1d9af9ce420626b8d6d327abc1cf4f2213425a31e764b2b",
+        "bytes": 836
+      },
+      "prologue-3238.txt.xz": {
+        "sha256": "59c4afb079355997d5df3d499418425b4de924dea6a5d6202af04b7d713d2dda",
+        "bytes": 972
+      },
+      "prologue-3429.txt.xz": {
+        "sha256": "66bb27a94a084f9ef242455857b5ae6a5dc56cf3fa41e62c16090d391ee05ce5",
+        "bytes": 864
+      },
+      "prologue-3433.txt.xz": {
+        "sha256": "50a6726e1586d6454a1645e103d34d44af5f7f871a08aefec4a8112143a6c2ed",
+        "bytes": 1064
+      },
+      "prologue-3437.txt.xz": {
+        "sha256": "4a872c7984aab6946a2cb94356d31a6a927cda162d6012806411a8bca8aed252",
+        "bytes": 928
+      },
+      "prologue-3441.txt.xz": {
+        "sha256": "5bb6f7a265463f10cd3117921bfdebb38da47cabc19d4aa897db5a1215bdb77f",
+        "bytes": 952
+      },
+      "prologue-3445.txt.xz": {
+        "sha256": "24ea33ff20c7bb605e8f21283e16b3533bec8beb7b23dbc909c1cb282b74e981",
+        "bytes": 924
+      },
+      "prologue-3449.txt.xz": {
+        "sha256": "ba84e179c4616247aa5dec4bd073f7a8de42e5d791e89073275921e71df14833",
+        "bytes": 1060
+      },
+      "prologue-3453.txt.xz": {
+        "sha256": "9658508646788e3175064aab097e84c450af58ecd5d9e839df411e721e790da0",
+        "bytes": 1188
+      },
+      "prologue-3457.txt.xz": {
+        "sha256": "8ca0d104a6d4852f7153f3a141c9a279a1952828d3470723b95614ba03541be3",
+        "bytes": 996
+      },
+      "prologue-3461.txt.xz": {
+        "sha256": "1cd240095cd1d3a8d00b518fc591367718e72df61f25d779dae91ca4044019c5",
+        "bytes": 1056
+      },
+      "prologue-3465.txt.xz": {
+        "sha256": "43003c380f83cabd2382c133983709b0c5f3481703337f984600196aa1216b12",
+        "bytes": 1272
+      },
+      "prologue-3469.txt.xz": {
+        "sha256": "2b52feca9f6ada41fba37f201dd07a2d6ad99c13f888c526c3813539eb060245",
+        "bytes": 1264
+      },
+      "prologue-3473.txt.xz": {
+        "sha256": "6a4a2283de8c4adef7bda7b2d6e588021473afd95db55a1f9b61ae8011746353",
+        "bytes": 1092
+      },
+      "prologue-3477.txt.xz": {
+        "sha256": "2772c6114046aafa74ce34240d8a8556c31d810e32205a54ef537a69cb8e0e57",
+        "bytes": 620
+      },
+      "prologue-3489.txt.xz": {
+        "sha256": "c002b58c71ad68f4f682d011f8221a9af6caeb58f45c4e8781c4faef0915dbf5",
+        "bytes": 912
+      },
+      "prologue-3692.txt.xz": {
+        "sha256": "18f965a2268e86b4a3b055acd60e181e84d23dd4666fb2072cdf7067bbce33d1",
+        "bytes": 444
+      },
+      "prologue-3696.txt.xz": {
+        "sha256": "d8324dbfbe87345cdf5377e58d4c3c090f8ecf56780c85a4dcd72b53ef373fa7",
+        "bytes": 944
+      },
+      "prologue-3716.txt.xz": {
+        "sha256": "d4f358691e0a89837318c1eb314b4d19cfbb38c4796fb8eec804b6e51cd212ab",
+        "bytes": 948
+      },
+      "prologue-3720.txt.xz": {
+        "sha256": "bef3b9a7c8e70b6565f8b667f028f000529e680f7fd90e1eb0af6de72c44556d",
+        "bytes": 1028
+      },
+      "prologue-3724.txt.xz": {
+        "sha256": "181c8a6099d436a6cf1c54fd5da42641ab1c1128654e2f7f6f883497907a3139",
+        "bytes": 996
+      },
+      "prologue-3728.txt.xz": {
+        "sha256": "a9c542ac34961659d8444fb25d0398c201703d7fb4a11d40f7fa89269ed4a01c",
+        "bytes": 956
+      },
+      "prologue-3732.txt.xz": {
+        "sha256": "a5cf62bb2c2fe9b56a27a97d49cb2b44951a5bcdf71ccb6a83615f21a6b0251c",
+        "bytes": 980
+      },
+      "prologue-3740.txt.xz": {
+        "sha256": "b43049d04b3aa69a18f53c56a8148496307297baf6f0ad956fba082627d1e8cd",
+        "bytes": 844
+      },
+      "prologue-3823.txt.xz": {
+        "sha256": "0e56be6f1c31880316d8a0a6af06dc9c841105a7cb07914a5ffbe8c8f87a3b83",
+        "bytes": 1176
+      },
+      "prologue-3863.txt.xz": {
+        "sha256": "55cdee609abe66172e6287333e21021f29675fb3ffe65cdd2e9b9f9490bbf98d",
+        "bytes": 1388
+      },
+      "prologue-3882.txt.xz": {
+        "sha256": "4305edadd3c621132d064740b3094f61e45e31a021cd20672e836051ff212d30",
+        "bytes": 520
+      },
+      "prologue-3906.txt.xz": {
+        "sha256": "2d14e4580695cc3849362394b8fe0853e66a58ebe4228af6debb3042109a5f9d",
+        "bytes": 908
+      },
+      "prologue-3967.txt.xz": {
+        "sha256": "f3e6fc450918c236a78853d895c54868d9878f5ecb6b85d2834c0ab032c78ebe",
+        "bytes": 1672
+      },
+      "prologue-3975.txt.xz": {
+        "sha256": "b7028a14e25b83d5eed442d238b717a89192a57c70b53ddbc6462d36765cc9ab",
+        "bytes": 1336
+      },
+      "prologue-3983.txt.xz": {
+        "sha256": "71f8e884611c2bbafc3f937851dac1ffb49f22d554bd20815ca8236f30c2923c",
+        "bytes": 1496
+      },
+      "prologue-3990.txt.xz": {
+        "sha256": "c79141498fa76267aab5c413573208fabe05b536c1b44ca360697dd5051dda11",
+        "bytes": 1188
+      },
+      "prologue-4025.txt.xz": {
+        "sha256": "6befa88c346f29fbe5a32f666932be4695df362db7c58023c77acee2eeb0f71d",
+        "bytes": 1480
+      },
+      "prologue-4029.txt.xz": {
+        "sha256": "27cdf221180975a3f3edeeafd1d6fd8127ffd13d40dd905eee9018daeb5b9a7f",
+        "bytes": 1548
+      },
+      "prologue-4033.txt.xz": {
+        "sha256": "c9b58569f032828a313924af65e0d4029203024441b7cd463c5097808b2b8aae",
+        "bytes": 1460
+      },
+      "prologue-4040.txt.xz": {
+        "sha256": "daad133c519bfd5412a74354311c9afd2a942fda1185b22b9383254e70b9b6f3",
+        "bytes": 1584
+      },
+      "prologue-4044.txt.xz": {
+        "sha256": "a9c260f6e09ce6f17ecbaedb6716a6ecc0270786d0cd18e422467c7c354b0653",
+        "bytes": 1608
+      },
+      "prologue-4164.txt.xz": {
+        "sha256": "ef3bd4c29e771273b26fb0ea56db5b515cf77c08cc7577ee82bed2b8d32e5743",
+        "bytes": 556
+      },
+      "prologue-4265.txt.xz": {
+        "sha256": "f353c134a4e2b4bc22505b6e345627f4df13c0456253fab6cab78d9e8c283da5",
+        "bytes": 1404
+      },
+      "prologue-4277.txt.xz": {
+        "sha256": "ea1fda3acf578e7a891aa84fe0cc60256fb5fa022af150bbef86d563619c825b",
+        "bytes": 1260
+      },
+      "prologue-4297.txt.xz": {
+        "sha256": "202209c6a99b30caf1ee2c3a8bcf29d8cbbc43c1a178f4b26eb5f4b0586f5db1",
+        "bytes": 1132
+      },
+      "prologue-4304.txt.xz": {
+        "sha256": "f5a235bab4c0d3cda3f6cc3ec3047b9ce01088505b9ad178c31932004bbe12eb",
+        "bytes": 972
+      },
+      "prologue-6779.txt.xz": {
+        "sha256": "7609fa467669e86c9ef43ad4a2c100f0594bf9db783e10fb68970c785060a942",
+        "bytes": 956
+      },
+      "prologue-7455.txt.xz": {
+        "sha256": "741f8ac5e6452cb498d343afbebe15e2866ef2df05b34c72e49640d95d00317d",
+        "bytes": 812
+      },
+      "prologue-7459.txt.xz": {
+        "sha256": "e9df15f5432b14229554c3f7a0b4e7fbf43056fa6f2dcd4abee18dfdcc87ba88",
+        "bytes": 712
+      },
+      "prologue-7463.txt.xz": {
+        "sha256": "07c0c4e8b1c160df23798b66b0533be7f136fe6673e917029343ecdd799981b1",
+        "bytes": 696
+      },
+      "prologue-7467.txt.xz": {
+        "sha256": "d57d14c856eab9863574240df8543f5593484c3548cba633c6167de5ed837663",
+        "bytes": 724
+      },
+      "prologue-7471.txt.xz": {
+        "sha256": "5e88e9cad40a6b8c601e19c95813095504716b2e794a767fab3975afb57d45f4",
+        "bytes": 700
+      },
+      "prologue-7479.txt.xz": {
+        "sha256": "e0fb06d68aec34b3389ae6391c511b90fa934a10a8cee6042c600c51ddedb89b",
+        "bytes": 984
+      },
+      "read-only-input-hashes.json": {
+        "sha256": "55e5d011dc238350fdff304bf3ac7d63cf7db0bc3b7e0988d584d15623cfe425",
+        "bytes": 592
+      },
+      "required-live-path.json": {
+        "sha256": "f9d85cd40b16b78a0647537ceb7449da54625c9b5326ab9df61694511f57753e",
+        "bytes": 6524
+      },
+      "stdlib-input.json": {
+        "sha256": "620d874a97e972126e1340aedc98ee95ba8bf4eb70ad0eecfc5d90bd523b4d00",
+        "bytes": 359
+      },
+      "stdlib-optional-nil-comparison.txt": {
+        "sha256": "c04f381d12fa21767b533835027f676c2a6c658c0de58b400163af60fa5fc21e",
+        "bytes": 1402
+      }
+    }
+  },
+  "parser_limit": "entry fixed lower bound only; SUB/SUB.W/SUBW, saves included; no complete upper bound",
+  "required_live_lower_bound": 32800,
+  "excluded_alternative": 4029
+}

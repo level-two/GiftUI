@@ -16,6 +16,16 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
+**Current constructor/caller initial focused behavior/layout PASS; main-stack
+selected live32800 >27648.** The
+[current result and correction1 proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-initial-result.md)
+pin source `8bd6c784`, current object/three receipts and exact non-alternative
+path. The proposed private noncopyable planning carrier/inout inner ABI/cold
+constructor is pending independent review, not applied. Initial1/correction0/2;
+historical budgets remain closed. No new compiler/image or resource relaxation.
+
+Historical initial source-readiness boundary:
+
 **Current constructor/caller initial SOURCE PASS at `8bd6c784`; registered fresh
 focused collections ready**, DESIGN PASS `51cb92b7`. The
 [source receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-source.md)

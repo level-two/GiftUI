@@ -1,5 +1,16 @@
 # P08 constructor/caller realization activity
 
+Current boundary: **all three initial focused collections PASS; required live
+main-stack lower bound32800 >27648** at source `8bd6c784`, review `327f6f6d`.
+The [current result and grouped correction1 proposal](p08-constructor-caller-initial-result.md)
+pin exact current receipts/object/relocation evidence. Initial1/correction0/2;
+proposal pending independent review, not implemented. Current metadata16584 and
+donor tail18136 are measured with160 strict roots; all four slots remain138880.
+No full202/image, fit/upper-bound or total-RAM failure claim. Historical budgets
+remain closed; existing limits/corpus/ownership stay unchanged.
+
+Historical source-readiness boundary:
+
 Current boundary: **independent [SOURCE PASS](p08-constructor-caller-independent-source-review.md) at `8bd6c784`; ready for the registered fresh focused collections**,
 after DESIGN PASS `51cb92b7`. The
 [source receipt](p08-constructor-caller-source.md) pins one Swift fixture and exact

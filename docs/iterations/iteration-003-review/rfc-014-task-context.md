@@ -1,13 +1,15 @@
 # RFC-014 task context guide
 
-Current P08 activity — **constructor/caller initial source frozen; SOURCE review pending**.
-The [new bounded activity](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-activity.md) records user authorization after
-[structured final review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-final-independent-review.md) `832a9c67`. The previous package has all3 focused PASS but
-required cold29872 > main27648 before omitted callbacks/IRQ; prior2/2 remains
-closed. New initial1/correction0/2: owned planning in existing metadata, compact
-original loan facts and a single lexical constructor/use operation implement
-DESIGN PASS `51cb92b7`; independent SOURCE review and all new runs remain pending. Main27648/RAM196608/four34720 slots and all ownership/corpus
-contracts remain. P08/SO acceptance open; full202/image held pending viability.
+Current P08 activity — **constructor/caller initial focused PASS; main-stack lower bound FAIL**.
+The [current result and grouped correction1 proposal](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-initial-result.md)
+pin source `8bd6c784`, SOURCE review `327f6f6d`, three fresh focused passes and
+required live32800 > main27648 before omitted original bank callbacks/outer/IRQ.
+Current160-root layout is valid: four34720 slots/138880, metadata16584/tail18136.
+Native3,472,564 assertions have zero failures;384/202 controls explicitly not run.
+Initial1/correction0/2; the private planning-carrier/inout ABI/cold-constructor
+proposal is pending independent review, not applied. Historical allowances remain
+closed. No total-RAM failure/fit claim, limit or ownership/corpus change. P08/SO
+acceptance stays open; full202/image held pending viable complete resource paths.
 
 Historical earlier navigation follows.
 
