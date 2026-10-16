@@ -27,7 +27,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current P08 boundary — **counter-only larger stacks/RAM authorized; frozen proof review PASS**.
+Current P08 boundary — **counter resource exception accepted; scoped configuration next**.
+[ADR-040](../adrs/adr-040-counter-physical-sram-budget.md) records the
+[human acceptance](../iterations/iteration-003-review/p08-counter-resource-acceptance.md).
+The independent corrected bound review passes; use counter-only main106496 /
+ISR8192 and RAM262144. New final image/proof and P08 exit remain pending.
+
 The [complete frozen-firmware proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-result.md)
 submits main/ISR bounds 95,469 / 6,672; proposed payloads 106,496 / 8,192 project
 RAM 255,612 within physical 262,144. The [independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-independent-review.md)

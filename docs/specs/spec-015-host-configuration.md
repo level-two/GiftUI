@@ -28,6 +28,7 @@ related_rfcs:
   - RFC-011
   - RFC-014
 related_adrs:
+  - ADR-040
   - ADR-039
   - ADR-038
   - ADR-001
@@ -271,6 +272,20 @@ count, stride/alignment, lifetime and actual linked section or stack path. Stati
 must fit target RAM/flash with zero heap; Dynamic reports bounded heap plus
 allocator overhead. No provisional control allowance or fixture subtotal is a
 budget, no missing path is zero, and no source/admission storage is loaned out.
+
+The 2026-10-16 [human-approved counter exception](../iterations/iteration-003-review/p08-counter-resource-acceptance.md),
+recorded in [ADR-040](../adrs/adr-040-counter-physical-sram-budget.md), permits only
+the finite P08 nRF52840 Embedded Static counter image up to **262,144 total SRAM
+bytes**. Normal analyzer/default RAM remains **196,608**, with its existing
+**27,648** main stack. Counter main/ISR reservations MUST cover complete feasible
+software/callback/recursion/startup and exception/FPU paths, with all guards,
+alignment and other linked storage charged once; their selection is implementation
+configuration, not a lower-bound waiver. Actual new ELF charge AND address extent
+MUST fit physical SRAM, and its address-specific stack/allocator proof MUST be
+requalified. Existing capability/capture/raster/payload/heap/flash/workload and
+identity/corpus limits remain unchanged. This approved resource amendment neither
+closes P08/SO nor extends historical image evidence to a new configuration.
+
 
 Retain ADR-034's three 6,464-byte transition regions (19,392 total), the existing
 nRF raster/payload/in-flight limit and all board/toolchain/ABI constraints.

@@ -6,13 +6,14 @@ status: accepted
 authors:
   - codex
 created: 2026-10-13
-updated: 2026-10-13
+updated: 2026-10-16
 proposal:
   - PROPOSAL-007
 related_rfcs:
   - RFC-015
   - RFC-014
 related_adrs:
+  - ADR-040
   - ADR-007
   - ADR-008
   - ADR-035
@@ -40,6 +41,11 @@ Accepted by Eugene on 2026-10-13: “Yes, accept them and commit. And then
 please proceed with the p08”. The [acceptance record](../iterations/iteration-003-review/rfc-015-contract-acceptance.md)
 identifies the exact ADR/Spec package, application and separate execution boundary.
 Extracted from approved RFC-015 at `ec29db3c`; no prior decision is superseded.
+
+The 2026-10-16 human-approved [ADR-040 counter exception](adr-040-counter-physical-sram-budget.md)
+amends only this decision's counter RAM/stack exclusion. Ownership and all other
+limits remain binding. The original rationale and rejected alternatives below
+remain historical reasoning, not a prohibition of that narrowly accepted exception.
 
 ## Context
 

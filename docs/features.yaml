@@ -22,11 +22,12 @@ features:
     # ADR-039 accepted; exact S11/S13/S15 amendments approved/applied 2026-10-13; nine SO criteria unmet.
     # Provenance: docs/iterations/iteration-003-review/rfc-015-contract-acceptance.md.
     # FW-038 captures validation cost and P08 test/application consolidation for RFC-013 / ITERATION-004 design; no current checks or contract change.
+    # ADR-040 accepted 2026-10-16: docs/iterations/iteration-003-review/p08-counter-resource-acceptance.md; finite counter RAM262144, sufficient stacks delegated; analyzer baseline unchanged. New final image/proof pending; P08 open.
     # Current independent complete-bound PASS: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-independent-review.md; corrected frozen main/ISR 95,469/6,672; proposed 106,496/8,192 and RAM 255,612 fit approved physical 262,144 direction. Counter-only authority and new guarded-image/address-proof qualification pending; P08 open.
     # Historical live-RAM rejection: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-live-ram-independent-review.md; 199,860 > former 196,608; site erratum changes no sum.
     # Prior cold P08 result: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-resource-result.md; actual linked cold 28,560 > main 27,648 before omitted costs.
-    # Design-only next candidate: docs/implementation-designs/spec-015-p08-prepared-lending.md; same-owner preflight and referenced preparation, original loans/limits preserved; no source allowance or fit claim.
-    # Independent prepared-lending design PASS: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-prepared-lending-independent-design-review.md; ready for user execution decision, suggested allowance unapproved.
+    # Unexecuted optional design (FW-039), not selected: docs/implementation-designs/spec-015-p08-prepared-lending.md; same-owner preflight and referenced preparation, original loans/limits preserved; no source allowance or fit claim.
+    # Independent prepared-lending design PASS: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-prepared-lending-independent-design-review.md; captured by FW-039; suggested source allowance unapproved.
     # Full nRF 227/227 and normal pristine image/ABI/layout/RAM 170,620/flash 403,400 pass; complete peak/IRQ/rooted allocator and P08 exit remain open. No source allowance or limit reset.
     # Independent bounded package PASS / actual stack FAIL: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-independent-review.md; prior doctor receipt preserved separately, P08 exit open.
     # Prior worksheet: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-worksheet.md; differing firmware flags required the now-completed normal image measurement.
@@ -101,6 +102,7 @@ features:
       - ADR-036
       - ADR-037
       - ADR-039
+      - ADR-040
     specs: []
     dependencies:
       - giftui-mvp-architecture

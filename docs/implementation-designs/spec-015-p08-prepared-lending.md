@@ -7,7 +7,8 @@ authors: [codex]
 created: 2026-10-16
 updated: 2026-10-16
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
-related_future_work: []
+related_future_work:
+  - FW-039
 related_explorations: []
 related_spikes: []
 supersedes: null
@@ -15,6 +16,12 @@ superseded_by: null
 ---
 
 # P08 prepared lending
+
+Current disposition: **unexecuted and not selected**. The maintainer chose
+[ADR-040's resource exception](../adrs/adr-040-counter-physical-sram-budget.md).
+[FW-039](../future-work/fw-039-counter-prepared-lending.md) captures this optional
+optimization and concrete revisit triggers; historical suggested attempts below
+are not a current source allowance.
 
 **Proposal boundary: one compatible private realization; no source allowance or
 fit claim.** The [independent current-image review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-independent-review.md)

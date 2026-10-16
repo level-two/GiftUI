@@ -1,5 +1,14 @@
 # RFC-015 P08 implementation handoff — 2026-10-13
 
+Current resource authority — 2026-10-16: [ADR-040](../../adrs/adr-040-counter-physical-sram-budget.md)
+and the [explicit human acceptance](p08-counter-resource-acceptance.md) permit the
+finite counter up to physical RAM262144 with sufficient main/ISR reservations.
+This narrowly amends historical unchanged-counter-limit instructions below;
+analyzer defaults, all safety/corpus gates and closed source allowances remain.
+The [independent complete-bound review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-independent-review.md)
+passes frozen bounds95469/6672 and selected106496/8192; new image/proof and P08
+matrix/exit remain pending. Later P09–P12/I4-07 allocation is unchanged.
+
 Current typed-stage boundary — **STOP; final 2/2 stack fit FAIL, 2026-10-15**.
 The [final result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage-realization-final-result.md) records 25 compiler/layout passes, 202 controls not run,
 and a required 66,864-byte nested lower bound against 27,648. Source compilation

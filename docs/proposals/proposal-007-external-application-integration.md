@@ -13,6 +13,7 @@ related_rfcs:
   - RFC-014
   - RFC-015
 related_adrs:
+  - ADR-040
   - ADR-038
   - ADR-006
   - ADR-007

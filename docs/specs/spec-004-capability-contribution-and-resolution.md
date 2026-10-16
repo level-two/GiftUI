@@ -6,7 +6,7 @@ status: implemented
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-10-03
+updated: 2026-10-16
 proposal:
   - PROPOSAL-004
 related_rfcs:
@@ -15,6 +15,7 @@ related_rfcs:
   - RFC-005
   - RFC-006
 related_adrs:
+  - ADR-040
   - ADR-010
   - ADR-017
   - ADR-018
@@ -60,6 +61,12 @@ target_milestone: MVP
 > horizontal nRF display after inspecting the connected portrait image. The
 > authoritative nRF fixture below is 320 x 240 with a 320 x 4 RGB565 region,
 > 640-byte rows, and 2,560-byte raster, payload, and in-flight bounds.
+
+> **2026-10-16 approved counter resource exception:** The
+> [human acceptance](../iterations/iteration-003-review/p08-counter-resource-acceptance.md)
+> approves only the aggregate counter RAM/stack reconciliation under ADR-040.
+> The historical implemented owner baseline is preserved; its old conformance
+> does not certify the counter exception or its pending SPEC-015 P08 image.
 
 ## Summary
 
@@ -1025,7 +1032,11 @@ own governing contracts without mutating the capability snapshot.
 - nRF52840 evidence MUST report incremental linked RAM, worst-case resolver
   stack, linked flash, initialization work, named capability storage, and
   default display staging separately. Total linked RAM MUST remain at or below
-  192 KiB, default display staging at or below 16 KiB, and firmware within the
+  192 KiB, except the finite P08 counter Embedded Static image MAY use up to
+  262,144 bytes under [ADR-040](../adrs/adr-040-counter-physical-sram-budget.md)
+  and SPEC-015's complete physical/stack/IRQ accounting. This exception changes
+  no capability-specific ceiling or analyzer/default budget. Default display
+  staging MUST remain at or below 16 KiB, and firmware within the
   1 MiB device flash; crossing the 896 KiB warning threshold requires explicit
   review evidence.
 - For the nRF52840 `-Osize` image relative to the baseline defined below,

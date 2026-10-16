@@ -16,6 +16,11 @@ superseded_by: null
 
 # P08 completion and resource assessment
 
+[ADR-040](../adrs/adr-040-counter-physical-sram-budget.md) now records the
+[explicit human counter resource acceptance](../iterations/iteration-003-review/p08-counter-resource-acceptance.md).
+Independent corrected proof review passes; counter-only configuration and new
+normal image/proof qualification are next, with P08 exit still open.
+
 The maintainer now authorizes larger main **and total RAM within physical
 262,144 bytes**. The [independent complete-bound review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-independent-review.md)
 passes after a separate decoder correction; authority reconciliation and fresh

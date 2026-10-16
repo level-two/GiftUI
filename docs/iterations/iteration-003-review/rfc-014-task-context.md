@@ -1,5 +1,14 @@
 # RFC-014 task context guide
 
+Current resource authority — 2026-10-16: [ADR-040](../../adrs/adr-040-counter-physical-sram-budget.md)
+and the [explicit human acceptance](p08-counter-resource-acceptance.md) permit the
+finite counter up to physical RAM262144 with sufficient main/ISR reservations.
+This narrowly amends historical unchanged-counter-limit instructions below;
+analyzer defaults, all safety/corpus gates and closed source allowances remain.
+The [independent complete-bound review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-independent-review.md)
+passes frozen bounds95469/6672 and selected106496/8192; new image/proof and P08
+matrix/exit remain pending. Later P09–P12/I4-07 allocation is unchanged.
+
 Current P08 activity — **constructor/caller final STOP: focused behavior/layout PASS, cold-stack FAIL**.
 The [final current result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-result.md)
 pins source `51cfc960`, SOURCE review `ee10d2f1`, three current focused passes and

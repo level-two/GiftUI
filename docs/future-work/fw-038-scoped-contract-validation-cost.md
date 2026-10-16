@@ -11,7 +11,8 @@ source:
   - SPEC-015
   - RFC-013
   - docs/iterations/iteration-004-backend-and-application-integration.md
-related_future_work: []
+related_future_work:
+  - FW-039
 related_explorations: []
 related_spikes: []
 promoted_to: []
@@ -111,3 +112,7 @@ waive its open safety/fit obligations.
 
 - [ITERATION-004](../iterations/iteration-004-backend-and-application-integration.md), I4-01–04 and I4-07.
 - [RFC-013](../rfcs/rfc-013-external-application-and-backend-integration.md), draft package/assembly decision boundary.
+
+[FW-039](fw-039-counter-prepared-lending.md) separately preserves the unexecuted
+prepared-lending construction optimization; it does not change this validation
+consolidation capture or authorize a source attempt.

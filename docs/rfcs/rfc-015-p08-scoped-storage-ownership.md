@@ -6,13 +6,14 @@ status: approved
 authors:
   - codex
 created: 2026-10-13
-updated: 2026-10-13
+updated: 2026-10-16
 proposal:
   - PROPOSAL-007
 related_rfcs:
   - RFC-014
   - RFC-013
 related_adrs:
+  - ADR-040
   - ADR-007
   - ADR-008
   - ADR-035
@@ -34,6 +35,12 @@ target_milestone: ITERATION-004
 ---
 
 # RFC-015: P08 Scoped Storage Ownership
+
+**2026-10-16 accepted resource exception:** [ADR-040](../adrs/adr-040-counter-physical-sram-budget.md)
+records the explicit counter-only physical 262,144-byte RAM and sufficient-stack
+approval. It overrides only the no-larger-counter-RAM/stack clauses below; the
+original scope, rationale and rejected alternatives are preserved. Analyzer and
+other limits, zero heap, corpus, ownership and full feasible resource proof remain.
 
 ## Summary
 
