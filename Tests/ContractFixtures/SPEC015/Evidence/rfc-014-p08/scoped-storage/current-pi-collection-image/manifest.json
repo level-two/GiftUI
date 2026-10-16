@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "purpose": "Current Pi complete409 and early ARMv6 hard-float image receipts; not resource fit",
+  "snapshot": ".build/raspberry-pi/p08-current-pi-evidence-20261016T213118Z",
+  "snapshot_manifest_sha256": "d547701005fd89bb9e9cbf7e0f633819c338311b1352b7b46cec6aad228f7a69",
+  "archive": {
+    "path": "pi-collection-image-receipts.tar.xz",
+    "bytes": 2320132,
+    "sha256": "72bb59fc4813e4324a5e2f94e256ea856974369a3b1a05ecd5d8551f76bfc995",
+    "hashed_members": 1069
+  },
+  "result": {
+    "status": "independent-current-Pi-collection-and-link-pass-not-resource-fit",
+    "snapshot_manifest_sha256": "d547701005fd89bb9e9cbf7e0f633819c338311b1352b7b46cec6aad228f7a69",
+    "verified_snapshot_files": 934,
+    "current_input_hashes": 228,
+    "passed_checks": 409,
+    "scope_pairs": 192,
+    "preparation_checks": 25,
+    "elf_sha256": "c1c6682ea8eebf8a88dbd171377bca70c56712ef76692991504b907b878efb33",
+    "stripped_sha256": "f8a0057667144c63b7824466749afa8e2151bbfc4a8e76554c9adc7ab4538035",
+    "map_sha256": "798caddc579950c2287d464dc01076161ce08a7471c9369372dfa6d8869791c2",
+    "counter_receipt_sha256": "d23aa151b1b232c3fa47644839c9b28f11b3a860457171e39cd7778c9daa26c7",
+    "qualified_noncompiled_applicability": [
+      {
+        "activity": "p08-constructor-caller-cycle2",
+        "receipt": ".build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpsb8yw4yu/raspberry-pi-armv6/result.json",
+        "receipt_sha256": "36f739426100acd7df8c943b50022f9216c2cd2581235f5794b3afeb35f823a3",
+        "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+        "original_source_sha256": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+        "corrected_source_sha256": "3c411c8a5d6616932cfcd1145ac7d6e4d088165fd11b5109e109293f386c44c9",
+        "compiled": false,
+        "original_manifest_current": false
+      },
+      {
+        "activity": "p08-constructor-caller-cycle2",
+        "receipt": ".build/contracts/p08-scoped-host-hzs5q7za/result.json",
+        "receipt_sha256": "beb3d31b312391d266e2ca525b0274aec741629664fb9d55aaca721421bf4216",
+        "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+        "original_source_sha256": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+        "corrected_source_sha256": "3c411c8a5d6616932cfcd1145ac7d6e4d088165fd11b5109e109293f386c44c9",
+        "compiled": false,
+        "original_manifest_current": false
+      }
+    ],
+    "complete_stack_bound": false,
+    "matched_allocation_costs": false,
+    "target_execution": false,
+    "binaries_archived": false
+  },
+  "reproducer": "python3 verify.py after extraction; requires preserved local binary snapshot"
+}

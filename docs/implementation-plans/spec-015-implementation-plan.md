@@ -27,6 +27,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current Pi evidence — **complete409 and early image/ABI PASS; resource fit open**.
+The [result and independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-pi-collection-image-result.md)
+freezes current receipt `hvxrlng0`, ELF `c1c6682e`, all934 preserved file hashes and
+228 current inputs. Native missing384 per profile is next; matched allocation,
+Native/Pi complete stack/physical ledgers and P08 exit remain required.
+
 Current nRF resource gate — **independent new-image acceptance PASS**.
 The [review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-final-fit-independent-review.md)
 accepts ELF `0e54fe25`: main/ISR 95,469/6,672 within 106,496/8,192;

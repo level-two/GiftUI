@@ -19,6 +19,11 @@ superseded_by: null
 
 # SPEC-015 Conformance Report
 
+Current Pi collection/link evidence — **409/409 and early ARMv6 hard-float ABI PASS**.
+The [current Pi result and independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-pi-collection-image-result.md)
+qualifies current compilation and image only; no complete stack/allocation/fit or
+Pi execution is claimed. Native omissions, matched resources, caller/exit remain.
+
 Current nRF counter resource evidence — **new image independently accepted**.
 The [image review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-final-fit-independent-review.md)
 accepts current ELF `0e54fe25` under ADR-040: complete main/ISR bounds

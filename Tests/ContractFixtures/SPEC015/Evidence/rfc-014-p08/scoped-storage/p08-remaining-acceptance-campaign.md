@@ -6,6 +6,12 @@ accepts its complete resource proof. Run the following work sequentially, freeze
 receipts after each coherent result and preserve all external edits. No deployment,
 flashing or connected measurement is included.
 
+Completed Pi collection/image step: the [current result and independent review](p08-current-pi-collection-image-result.md)
+records full409/409 and one supported ARMv6 hard-float early image. Step1 below is
+now a preserved executable recipe, not an instruction to rerun it. Next execute
+Step2's missing Native families, then Step3 allocation/stack and Step4 exit ledger.
+Pi complete stack/allocation/fit remains in Step3; link success does not close it.
+
 Authority is [SO-01–09](../../../../../../docs/iterations/iteration-003-review/rfc-015-p08-handoff.md#ordered-bounded-tasks),
 [delivery allocation](../../../../../../docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md#p08-minimum-complete-dependency-path),
 [P08/R07](../../../../../../docs/iterations/iteration-003-review/rfc-014-implementation-plan.md#ordered-work-packages),
