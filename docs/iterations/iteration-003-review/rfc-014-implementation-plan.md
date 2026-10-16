@@ -6,6 +6,8 @@ records full nRF 227/227 and pristine linked ABI/layout/RAM/flash passes at
 `f042252f`; an actual linked required cold subset 28,560 > main 27,648 rejects fit.
 Complete peak/IRQ/rooted allocation and P08 exit remain open. No source repair
 allowance or resource limit changes; next is a concrete compatible internal design.
+The [independent bounded resource review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-independent-review.md)
+confirms package PASS / actual stack FAIL; P08 exit remains open.
 
 Historical prerequisite — contract-object stack FAIL; final firmware fit had been unknown.
 The [frozen-artifact worksheet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-worksheet.md)

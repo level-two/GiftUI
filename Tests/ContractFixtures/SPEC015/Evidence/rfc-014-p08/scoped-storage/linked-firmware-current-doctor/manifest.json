@@ -1,0 +1,27 @@
+{
+  "kind": "preserved-preexisting-normal-doctor-receipt",
+  "source": ".build/contracts/p08-integrated-activity/20261016T145337694701Z-p08-nrf-doctor",
+  "revision": "f042252f39a167c97c2c30d9fe5ed4b1a5f30029",
+  "execution": "preserved receipt only; no new doctor or probe invocation",
+  "archive": "doctor-receipt.tar.xz",
+  "sha256": "33b8c74710a8a7dbdbbaf37de0b02e6da846b3f78b0a2a290a724baddf4660b7",
+  "bytes": 1132,
+  "files": {
+    "invocation.json": {
+      "sha256": "a915fd4cc3278e3b1b17c96c4d9f3525b844cdf4e9c0899318683592c65201ed",
+      "bytes": 285
+    },
+    "result.json": {
+      "sha256": "5b333b0e95f5c12eaebf1658389daebb4722890b1a10d0575e597e5e07a5fb78",
+      "bytes": 685
+    },
+    "stdout.log": {
+      "sha256": "48cce1f76df4b4ebe798f1eb88b4aaea3e56a2fb001fa51c001a9d38bf9d7344",
+      "bytes": 1166
+    },
+    "stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  }
+}

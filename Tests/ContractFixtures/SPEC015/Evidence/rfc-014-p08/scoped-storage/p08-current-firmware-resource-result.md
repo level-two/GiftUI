@@ -10,6 +10,10 @@ No source optimization, resource change, new compiler/build/link invocation,
 target execution or hardware operation occurred in this assessment. Historical
 repair allowances stay closed; P08/R07/T8.1 and full SO acceptance remain open.
 
+The [independent bounded review](p08-current-firmware-independent-review.md)
+confirms package correctness and actual stack FAIL/STOP. It separately preserves
+the pre-build normal doctor receipt; this is not a P08 exit or fit pass.
+
 ## Exact artifacts and qualified passes
 
 Build revision is `f042252f39a167c97c2c30d9fe5ed4b1a5f30029`; maintained counter

@@ -25,6 +25,8 @@ adds complete nRF 227/227 and normal pristine ABI/layout/RAM/flash passes, but
 required linked cold reservations 28,560 exceed main 27,648 before omitted costs.
 Full stack/IRQ/rooted-allocation and remaining four-route/P08 acceptance stay open;
 no criterion, limit or repair allowance is waived by these passes.
+The [independent bounded resource review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-independent-review.md)
+confirms the package and stack rejection, without closing P08 or full conformance.
 
 Historical measurement prerequisite: the [resource worksheet](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-worksheet.md)
 clarifies applicability: the contract-object failure below does not establish
@@ -33,7 +35,7 @@ differing flags. A complete current nRF collection and normal guarded image are
 the then-required resource-evidence prerequisite, now collected above; acceptance
 dispositions remain open.
 
-Current P08 boundary — **focused behavior/layout passes; main-stack failure**.
+Historical P08 boundary — **focused behavior/layout passes; main-stack failure**.
 The [current result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-result.md)
 and [independent exit review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-independent-review.md)
 qualify source `51cfc960`: three focused collections pass, but required cold

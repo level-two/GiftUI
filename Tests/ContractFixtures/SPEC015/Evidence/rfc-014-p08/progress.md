@@ -7,6 +7,8 @@ actual linked cold reservations 28,560 exceed main 27,648 before omitted costs.
 The former 202 nRF omissions are closed for the new collection; Native 384-per-profile
 omissions and remaining P08 gates persist. No complete peak/IRQ/zero-heap claim,
 source repair allowance, limit change or connected operation follows.
+The [independent bounded resource review](scoped-storage/p08-current-firmware-independent-review.md)
+confirms package PASS / stack FAIL and preserves the prior normal doctor receipt.
 
 Historical evidence prerequisite — normal final firmware codegen and resources had been unknown.
 The [frozen-artifact worksheet](scoped-storage/p08-resource-worksheet.md) finds that
@@ -16,7 +18,7 @@ concrete next package is the narrow image-handoff registry correction, complete
 nRF collection and normal guarded image build at unchanged limits. No source
 optimization or repair-budget reset follows.
 
-Current P08 boundary — **constructor/caller package STOP independently confirmed; assessment**.
+Historical P08 boundary — **constructor/caller package STOP independently confirmed; assessment**.
 The [final result](scoped-storage/p08-constructor-caller-final-result.md) and
 [independent exit review](scoped-storage/p08-constructor-caller-final-independent-review.md)
 pin source `51cfc960`, three focused passes and required cold 28,288 > main 27,648
