@@ -23,13 +23,19 @@ implementation allowance or fit acceptance is created.
 [Focused authority/realization review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-independent-design-review.md)
 historically blocked `5b382914` on surplus overlap and missing prebinding custody.
 The finite ranges and caller-stack custody below replace those incomplete rules.
-No contract amendment has been identified; focused reassessment now passes before
-the proposed diagnostic. The proposal remains unimplemented and all earlier budgets stay closed.
+No contract amendment has been identified; focused reassessment passed before
+the diagnostic. The proposal remains unimplemented and all earlier budgets stay closed.
+
+**The one authorized diagnostic now passed: 31/31 strict constant proofs.**
+[Measured result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-measurement-result.md)
+records the existing seven-object pack at 15,704 bytes/alignment8. Source-readiness
+review follows; no maintained implementation, stack fit or acceptance is claimed.
 
 This is one replaceable physical proposal, not Specification authority or source
 approval. [New authorization/activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structural-memory-reduction-activity.md)
 permits this assessment; earlier budgets remain closed. No maintained source,
-compiler, target execution or resource limit changed during design.
+target execution or resource limit changed. Initial design used no compiler;
+the subsequently authorized one-shot diagnostic is recorded separately below.
 
 ## Purpose and governing contract
 
@@ -197,9 +203,26 @@ new aggregate or uninitialized storage for scoped values:
 
 Checked per-type size/stride/alignment and cursor roundup derive nonoverlapping
 donor offsets. All seven count=1 extents must fit 34,720 and required alignment must
-fit the existing eight-byte base/spacing. Target values are **not yet measured**;
-failure forbids implementation of this layout. Keep active 25-region/129-root
-measurements unchanged; add explicit donor metadata rows to the physical ledger.
+fit the existing eight-byte base/spacing. The existing-type measurement is:
+
+| Metadata | Size | Stride | Alignment | Offset | Full-stride end |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Outer | 776 | 776 | 4 | 0 | 776 |
+| Actual backing owner | 1006 | 1008 | 8 | 776 | 1784 |
+| Existing complete fingerprint | 5188 | 5192 | 8 | 1784 | 6976 |
+| Original 14-entry inventory | 392 | 392 | 4 | 6976 | 7368 |
+| Original host transcript | 600 | 600 | 8 | 7368 | 7968 |
+| Foreign root | 810 | 812 | 4 | 7968 | 8780 |
+| Foreign control | 6920 | 6920 | 8 | 8784 | 15704 |
+
+Checked cursor/rounded extent=15,704, maximum alignment=8; the four-byte gap before
+foreign control is retained, with 19,016 bytes of donor tail padding. Every row
+has count1 and full stride, including internal/tail padding. This is diagnostic
+object evidence for **existing** types, not the proposed mutable linear baseline
+or caller-stack custody. Recompute final seven-type target facts from the actual
+implementation before using its layout. Keep active 25-region/129-root measurements
+unchanged and add explicit donor metadata rows to the physical ledger. All four
+slots remain fully charged at 138,880; metadata is neither added again nor omitted.
 
 Cold initialization returns only private descriptor/control facts and owned status,
 never an aggregate metadata value or scoped capability. Use normal typed binding
@@ -311,10 +334,10 @@ again or omit their lifetime/owner. Native Static/Dynamic keep their existing
 typed reservations and use the same comparison algorithm with lexical owned
 metadata; no COW/shared mutable alias or new allocation.
 
-Known current Control size/stride is 6,920. The original inventory copy span is
-392 bytes in current code; the full current-fingerprint helper reserves 5,192
-local bytes plus saved registers, which is a stack home, **not** a sizeof proof.
-The other six metadata sizes and donor padding require target facts.
+Current Control size/stride is 6,920; inventory size/stride392; the existing complete
+fingerprint size5188/stride5192 now have strict target facts above. Stack homes and
+constructor costs remain different measurements. Custody/phase/prefix stack bytes,
+the final changed baseline and all new codegen still require current evidence.
 
 This removes the *need* for long-lived stack-resident outer owner/metadata,
 foreign control/root and before-baseline, and eliminates the second full current
@@ -330,9 +353,9 @@ Streaming-only is the smaller alternative, but merely removing the measured
 before omitted costs. That illustrative subtraction is not a new-source bound
 and gives no credible acceptance claim; do not select another helper-only loop.
 
-The recommended next action is focused independent physical-design review of this
-exact temporal-role realization, then a single targeted size diagnostic before
-source. S13/S15 do not explicitly fix a permanent type for an uninitialized raw
+The recommended next action is focused independent measurement/source-readiness
+review, then the bounded internal implementation below. S13/S15 do not explicitly
+fix a permanent type for an uninitialized raw
 caller slot, so no contract amendment is proposed **if** that review confirms the
 conditions above. If “original inventory” is interpreted to require permanently
 typed profile regions across cases, the smallest upstream decision is explicit
@@ -368,12 +391,56 @@ unchanged total bytes; do not silently implement that interpretation.
    Add donor overlap/oversize/misalignment, prefix-failure, early 1–5, both-host,
    each donor/active index, repeated cleanup/rebind, baseline-capture-once and
    every-field/64th-record mutation negatives. Preserve original source labels.
-5. A new implementation allowance, if design stays within authority, must be
-   recorded before source; one initial grouped candidate with at most two
-   cause-grouped corrections and the two-unproductive guard is proposed. No
-   previous budget is reused. No limit/ownership/workload change is automatic.
+5. Under the user's continuing structural-reduction authorization, record a new
+   implementation activity before source: one grouped initial candidate and at
+   most two cause-grouped corrective cycles, stopping after two consecutive
+   unproductive cycles or an actual contract/resource decision. Group ordinary
+   review/compiler corrections within those cycles; no per-file approval gates.
+   Corrections start0/2, separate from every historical closed allowance. Internal
+   independent source review precedes each affected execution. No limit/ownership/
+   workload change is automatic.
 
-### Exact bounded diagnostic recipe, only after design review
+### Source-ready file and validation boundary
+
+The reviewed custody/range/cleanup topology above is the algorithm, not an optional
+post-implementation test substitute. The bounded candidate touches:
+
+| Files | Concrete change / required source proof |
+| --- | --- |
+| `RuntimeDerived/CounterScopedStorage.swift` | Finite custody/selection, checked seven-object packing, cold typed prefix initialization/destruction, typed object loans, one capture-once baseline and full streaming matching; no scoped values in donor or whole-workspace callback. |
+| `CounterPipelineOwner.swift`, `CounterNativeRaster.swift`, `CounterTiledRaster.swift` | Owned-fact capture and pure borrowed full matching, all64 actual records and private backend facts; no current full snapshot or copied active Control. |
+| `CounterHostProbe.swift` | Foreign root/control actual disjoint stored-field lenders; original model/root lifetime chain. |
+| `CounterRouteEntry.swift`, `CounterScopedStorageProbe.swift`, `StaticCounterEmbeddedBacking.swift` | One prebinding Embedded dispatcher/custody, remove selected/raw-slice/fault bypasses; retain Native paths. |
+| `StaticCounterLayoutFacts.swift` and only necessary shared layout derivation beside the fixture | Add separate exact31 final metadata roots derived from the actual seven types/checked pack, leaving all129 active roots and25 regions intact. No runtime table initialization. |
+| `scripts/contracts/p08_layout_facts.py`, `check-spec-015-counter.py`, focused helper tests | Strict separate metadata inventory/checked bounds/packing/ledger and donor/prefix controls; existing instruction grammar unchanged. Exact source qualification/receipt pins only after actual compiled-input audit. |
+
+The first target screen, after independent source PASS and required dependency
+rebuilds, uses the existing recipe (receipt paths must be updated if a changed
+compiled dependency requires replacement):
+
+```sh
+scripts/contracts/run-spec-015.sh --profile nrf52840-embedded --corpus rfc-014-counter --runtime-build .build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded --host-build .build/contracts/p08-scoped-host-hzs5q7za --collect-failures --fresh-focused --select-family so07-layout-facts
+```
+
+That selected family must now require both active129 and final metadata31 proofs;
+partial flags remain truthful and all202 omitted controls remain notrun. Inspect
+source-feasible cold initialization/prefix unwind/destruction and live graph/host/
+two-host/stale/current-action/cleanup stack paths before expensive full coverage.
+No P08 fit follows from metadata size or a single small frame.
+
+Compiler-free tests cover each finite donor case, full surplus span, every active/
+donor index, checked overflow/alignment/oversize/disjointness, exact metadata roots
+and final type-derived offsets. Native Dynamic/Static borrowing controls exercise
+the same actual-owner loans; positive twins accompany all changed lifetime/error
+families. Runtime controls include attempted nested custody entry, every metadata
+prefix and original bank-prefix failure, early1…5, both-host same-address reuse,
+repeated cleanup/rebind and poisoned cleanup, capture exactly once, mutations of
+every complete baseline field/key/backend observation and record64. Preserve all
+existing corpus labels,384/202 controls, physical IDs, all native controls and eight
+cleanup hooks. A successful early screen permits broader required current-source
+coverage/image evidence; it does not replace it. No hardware or raised limits.
+
+### Executed bounded diagnostic recipe (provenance)
 
 Use `.build/nrf52840/p08-fixture-metadata-layout-diagnostic/` as scratch output.
 Copy only the current `CounterScopedStorage.swift` there, preserving its basename,
@@ -408,5 +475,5 @@ This answers only whether the declared typed metadata fits one 34,720-byte,
 eight-aligned idle interval and gives the physical offsets required for design.
 It cannot establish source realization, borrowed-lender legality, native layouts,
 stack codegen, current image fit or accepted P08 behavior. Review authority and
-binding/lifetime proof before even this diagnostic; no diagnostic was executed
-during the present assessment.
+binding/lifetime proof before source. The single diagnostic completed after design
+PASS at `63bf7808`; it is not an implementation or acceptance invocation.

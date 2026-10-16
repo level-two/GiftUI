@@ -2,8 +2,10 @@
 
 Current boundary: **focused independent DESIGN PASS at `cb273c6f`; B01/B02 closed**.
 [Reassessment](p08-fixture-metadata-independent-design-reassessment.md) confirms the
-complete reservation map and caller custody. Next is only the proposed one-shot
-31-root existing-type diagnostic; no source implementation allowance or fit claim.
+complete reservation map and caller custody. The one authorized diagnostic now
+passed31/31 strict proofs; [measurement/source-readiness handoff](p08-fixture-metadata-measurement-result.md)
+records existing pack15704/alignment8 in donor34720. No maintained source or fit
+claim; independent readiness review is next.
 
 Eugene explicitly said “Please proceed” after the independently confirmed resource
 failure and the choice between structural reduction and explicit resource authority.
@@ -26,11 +28,21 @@ budget is reset or inferred.
 After DESIGN PASS `63bf7808`, the parent authorized preparation of exactly one
 existing-module 31-root layout diagnostic under this assessment. The
 [one-shot handoff](fixture-metadata-layout-diagnostic/README.md) is prepared and
-hash-checked, **not executed**. Scratch/cache exist in advance. Only the temporary
+hash-checked; its frozen preparation record predates execution. Scratch/cache
+existed in advance. Only the temporary
 appended source, cache and output paths differ from the current module argv;
 there is no maintained source implementation or new repair allowance. Diagnostic
-results cannot qualify P08 acceptance. The existing baseline pack and future
+results cannot qualify P08 acceptance. Preparation was followed by the single
+authorized compiler invocation and unchanged strict decode, now archived in the
+measurement result. The existing baseline pack and future
 linear baseline/custody costs remain explicitly distinct.
+
+The next implementation bound is drafted for readiness review: one grouped initial
+candidate plus at most two cause-grouped corrections, stop after two consecutive
+unproductive cycles or an actual contract/resource decision. New correction0/2;
+no source candidate yet. All prior closed budgets and diagnostic1/1 stay closed.
+Continuing user authorization covers routine internal work after review; this is
+not a request for per-file approval or permission to raise limits/change workload.
 
 Target the actual outer reservation/reuse/baseline construction homes, preserving
 all original physical IDs, five banks, geometry, model/root lenders, complete

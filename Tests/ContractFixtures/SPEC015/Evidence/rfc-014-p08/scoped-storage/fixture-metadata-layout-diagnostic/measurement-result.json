@@ -1,0 +1,147 @@
+{
+  "diagnostic_only": true,
+  "acceptance_receipt": false,
+  "compiler_invocations": 1,
+  "compiler_exit": 0,
+  "strict_decoded_roots": 31,
+  "expected_roots": 31,
+  "decode_errors": {},
+  "source_revision": "7e6a7ae49ce13f4863bb41db64ad31002b4292d2",
+  "object": {
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/p08-fixture-metadata-layout-diagnostic/P08CounterRuntime.o",
+    "sha256": "96554585cba9c08fb9071e67e674ed61453f4502ac8713120c6ec952fafdcd7f",
+    "bytes": 2877668
+  },
+  "facts_uncompressed_sha256": "1b696467d75eb3ec7d80ba6b0e8444895989c308ea032cebc6faa19ad4907211",
+  "facts_archive_sha256": "f9f69b34dcd49542fe50db21233d4fe52152d9ac64d3d002658c0ba26e76e044",
+  "receipts_archive_sha256": "31f605ac607af8a407f24db0a5d1338748f7cc6c370f2eb6b1a320358c4014ae",
+  "receipts": {
+    "diagnostic/diagnostic-result.json": {
+      "source_path": "/Users/eugene/work/GiftUI/.build/nrf52840/p08-fixture-metadata-layout-diagnostic/diagnostic-result.json",
+      "sha256": "8f3b93a3cc7d83b487a6d591261e191449385699bc349d9901f35acdcec3352f",
+      "bytes": 2081
+    },
+    "diagnostic/invocation-started.json": {
+      "source_path": "/Users/eugene/work/GiftUI/.build/nrf52840/p08-fixture-metadata-layout-diagnostic/invocation-started.json",
+      "sha256": "d2b19e4e11fa6856eed2916645111fba7ba86c32b43fc1f202cfe810502caf10",
+      "bytes": 6420
+    },
+    "diagnostic/stdout.log": {
+      "source_path": "/Users/eugene/work/GiftUI/.build/nrf52840/p08-fixture-metadata-layout-diagnostic/stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "diagnostic/stderr.log": {
+      "source_path": "/Users/eugene/work/GiftUI/.build/nrf52840/p08-fixture-metadata-layout-diagnostic/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "wrapper/result.json": {
+      "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-integrated-activity/20261016T050813900668Z-fixture-metadata-layout-diagnostic/result.json",
+      "sha256": "058f9fca908a9904e92cfa2e68bbf82621aa4e8c6317d51d2fa836e81541b195",
+      "bytes": 814
+    },
+    "wrapper/invocation.json": {
+      "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-integrated-activity/20261016T050813900668Z-fixture-metadata-layout-diagnostic/invocation.json",
+      "sha256": "237e14ab6e94787420b8c098333161f88f3ea71369c692fbe754744131756301",
+      "bytes": 417
+    },
+    "wrapper/stdout.log": {
+      "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-integrated-activity/20261016T050813900668Z-fixture-metadata-layout-diagnostic/stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "wrapper/stderr.log": {
+      "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-integrated-activity/20261016T050813900668Z-fixture-metadata-layout-diagnostic/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "packing": {
+    "rows": [
+      {
+        "index": 0,
+        "type": "P08EmbeddedOuter",
+        "count": 1,
+        "size": 776,
+        "stride": 776,
+        "alignment": 4,
+        "offset": 0,
+        "end": 776
+      },
+      {
+        "index": 1,
+        "type": "P08TypedBackingOwner",
+        "count": 1,
+        "size": 1006,
+        "stride": 1008,
+        "alignment": 8,
+        "offset": 776,
+        "end": 1784
+      },
+      {
+        "index": 2,
+        "type": "P08ReuseFingerprint",
+        "count": 1,
+        "size": 5188,
+        "stride": 5192,
+        "alignment": 8,
+        "offset": 1784,
+        "end": 6976
+      },
+      {
+        "index": 3,
+        "type": "InlineArray<14, P08InitializedEntry?>",
+        "count": 1,
+        "size": 392,
+        "stride": 392,
+        "alignment": 4,
+        "offset": 6976,
+        "end": 7368
+      },
+      {
+        "index": 4,
+        "type": "P08HostReuseTranscript",
+        "count": 1,
+        "size": 600,
+        "stride": 600,
+        "alignment": 8,
+        "offset": 7368,
+        "end": 7968
+      },
+      {
+        "index": 5,
+        "type": "StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>",
+        "count": 1,
+        "size": 810,
+        "stride": 812,
+        "alignment": 4,
+        "offset": 7968,
+        "end": 8780
+      },
+      {
+        "index": 6,
+        "type": "CounterControl",
+        "count": 1,
+        "size": 6920,
+        "stride": 6920,
+        "alignment": 8,
+        "offset": 8784,
+        "end": 15704
+      }
+    ],
+    "cursor": 15704,
+    "maximum_alignment": 8,
+    "rounded_extent": 15704,
+    "donor_bytes": 34720,
+    "donor_alignment": 8,
+    "fits_declared_donor": true,
+    "measures_existing_baseline": true,
+    "proposed_linear_baseline_and_custody_measured": false
+  },
+  "donor_padding": 19016,
+  "retained_slots": 4,
+  "retained_backing_bytes": 138880,
+  "source_implementation_started": false,
+  "final_metadata_type_layout_and_stack_unproved": true
+}
