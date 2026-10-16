@@ -1,0 +1,58 @@
+{
+  "kind": "seven-exact-argv-exclusions-current-compiled-input-equality",
+  "receipts": [
+    {
+      "receipt": ".build/contracts/p08-scoped-host-ezcy1qan/result.json",
+      "receipt_sha256": "8ccd2c004117f31f1843584fb157b5a0b5f93669505db88166eafe83f871c64d",
+      "actual_swift_argv_count": 53,
+      "candidate_compiled_inputs": [],
+      "compiled_input_hash_manifest_unchanged": true
+    },
+    {
+      "receipt": ".build/contracts/p08-scoped-host-hzs5q7za/result.json",
+      "receipt_sha256": "beb3d31b312391d266e2ca525b0274aec741629664fb9d55aaca721421bf4216",
+      "actual_swift_argv_count": 53,
+      "candidate_compiled_inputs": [],
+      "compiled_input_hash_manifest_unchanged": true
+    },
+    {
+      "receipt": ".build/contracts/spec-011-owned-keys/tmp0vz0ql4d/macos-dynamic/result.json",
+      "receipt_sha256": "8c0c5c2d3cda5681dd110eb947cf05b06fd403f16c0c5503f5b99de32cf7f78f",
+      "actual_swift_argv_count": 112,
+      "candidate_compiled_inputs": [],
+      "compiled_input_hash_manifest_unchanged": true
+    },
+    {
+      "receipt": ".build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic/result.json",
+      "receipt_sha256": "ec640f13aedd202725ad02e52a5e56e56357b5d3e034b3792788fe95feae4446",
+      "actual_swift_argv_count": 173,
+      "candidate_compiled_inputs": [],
+      "compiled_input_hash_manifest_unchanged": true
+    },
+    {
+      "receipt": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/result.json",
+      "receipt_sha256": "1199fd13fc4d309c36f3ddfccac3002ab497641a3fb6483902d97571c9ca923f",
+      "actual_swift_argv_count": 173,
+      "candidate_compiled_inputs": [],
+      "compiled_input_hash_manifest_unchanged": true
+    },
+    {
+      "receipt": ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded/result.json",
+      "receipt_sha256": "104c405d2f0c9abb44c47670fde33ae44bf70877f91df11e66f07acd14168d8c",
+      "actual_swift_argv_count": 159,
+      "candidate_compiled_inputs": [],
+      "compiled_input_hash_manifest_unchanged": true
+    },
+    {
+      "receipt": ".build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpsb8yw4yu/raspberry-pi-armv6/result.json",
+      "receipt_sha256": "36f739426100acd7df8c943b50022f9216c2cd2581235f5794b3afeb35f823a3",
+      "actual_swift_argv_count": 172,
+      "candidate_compiled_inputs": [],
+      "compiled_input_hash_manifest_unchanged": true
+    }
+  ],
+  "candidate_sources": 12,
+  "prior_qualification_sha256": "ed8b8863b48402c3f4c04bd86099271ee57aa531a93bf3680a89057404989c56",
+  "qualification_sha256": "897629b761902815feb4afb6fb8f97a531522a4d6c9a969297d7f033f53c366a",
+  "compiler_executed": false
+}

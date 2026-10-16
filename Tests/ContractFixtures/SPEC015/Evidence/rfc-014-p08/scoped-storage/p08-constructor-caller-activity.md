@@ -1,5 +1,14 @@
 # P08 constructor/caller realization activity
 
+Current boundary: **combined initial source frozen; independent SOURCE review
+pending**, after DESIGN PASS `51cb92b7`. The
+[source receipt](p08-constructor-caller-source.md) pins one Swift fixture and exact
+test/qualification/driver changes. Initial source1/correction0/2; current compiler/
+runtime/image0, actual new metadata extent/stack unmeasured. Historical budgets
+stay closed, and all limits/corpus/ownership contracts remain unchanged.
+
+Historical design authorization:
+
 Current boundary: **independent DESIGN PASS at `009711b8`; ready for initial source**.
 The [bounded design review](p08-constructor-caller-independent-design-review.md)
 identifies no contract/scope amendment; source/compiler/fit remain unproved.
@@ -8,7 +17,7 @@ User explicitly authorized remaining corrections after independently reviewed
 structured-package boundary `832a9c67`. This is a **new bounded package**:
 one initial implementation plus at most two cause-grouped corrective cycles,
 stop after two consecutive unproductive cycles or an actual contract/scope
-obstruction. Current stage DESIGN only; initial source0, corrections0/2,
+obstruction. Initial design stage: source0, corrections0/2,
 compiler/runtime/image0. Prior structured2/2 and every earlier closed allowance
 remain closed, not reset or reused. The new authorization does not reopen them.
 

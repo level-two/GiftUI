@@ -1,0 +1,117 @@
+{
+  "kind": "constructor-caller-initial-source-freeze-not-compiler-proof",
+  "baseline_commit": "51cb92b7",
+  "independent_design_review": "51cb92b7",
+  "initial_source_pass": 1,
+  "corrective_cycles_consumed": 0,
+  "corrective_cycles_maximum": 2,
+  "stop_after_consecutive_unproductive_cycles": 2,
+  "historical_allowances": "closed unchanged",
+  "compiler_invocations_for_candidate": 0,
+  "runtime_executions_for_candidate": 0,
+  "image_builds_for_candidate": 0,
+  "fit_claim": false,
+  "changed_files": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+      "before_sha256": "3615ad26f63ae5789695dd0c92496fb97c05edfed7f2eef8ac20ecbd57ee3a8f",
+      "sha256": "991e9b8ab3d1ca4a6800f811da21bc32f9837621d27ff78bef08badb7f126163"
+    },
+    "scripts/contracts/check-spec-015-counter.py": {
+      "before_sha256": "410dceb92446199b98a98445e90429c901a23ab07c85f19ca08f40c8087416cc",
+      "sha256": "b75cc8bfbd48b8b03379d3de93fe0bbb13643273678d6a42da54accc61e2384b"
+    },
+    "scripts/contracts/test_p08_layout_facts.py": {
+      "before_sha256": "72076e82a329c9c763f9541fb2b1b2e70b84d3ba545760e3d377b7452b360449",
+      "sha256": "0c59482ecdfcd27c844e6d4dc47422f5ff8765d125f34ba62d5edc89759a8c9e"
+    }
+  },
+  "source_diff_sha256": "40833f6dcb95290fb86edae1be095487110a9b6ceb31fb10494d6defad509f71",
+  "compressed_diff_sha256": "a21d6d076dc027d51d925404e532caeb666731514dbcc98d5757cf4633d79b4c",
+  "qualification": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-applicability.json",
+    "sha256": "897629b761902815feb4afb6fb8f97a531522a4d6c9a969297d7f033f53c366a"
+  },
+  "compilerfree_tests": 48,
+  "source_parity_checks": 112,
+  "negative_mutations_rejected": 10,
+  "parser_checks": 1,
+  "original_contract_facts": {
+    "active_layout_roots": 129,
+    "metadata_layout_roots": 31,
+    "base_selection_groups": 48,
+    "base_selections": 2266,
+    "metadata_prefix_controls": 8,
+    "retained_slots": 4,
+    "retained_slot_bytes": 34720,
+    "retained_backing_bytes": 138880,
+    "native_compiler_controls": 384,
+    "embedded_compiler_controls": 202,
+    "native_exclusivity_controls": 5,
+    "projection_controls": 2,
+    "reuse_labels": 26,
+    "sensitivity_checks_per_route": 156
+  },
+  "metadata_type_changed_old_extent_not_qualified": true,
+  "metadata_objects": 7,
+  "metadata_extent": "unmeasured target; strict source-derived outer size/stride and complete pack required <=34720; do not reuse15760",
+  "retained_backing_bytes": 138880,
+  "fresh_screen_argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    "--collect-failures",
+    "--fresh-focused",
+    "--select-family",
+    "so07-layout-facts"
+  ],
+  "native_focused_argv": {
+    "macos-dynamic": [
+      "scripts/contracts/run-spec-015.sh",
+      "--profile",
+      "macos-dynamic",
+      "--corpus",
+      "rfc-014-counter",
+      "--runtime-build",
+      ".build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic",
+      "--host-build",
+      ".build/contracts/p08-scoped-host-ezcy1qan",
+      "--collect-failures",
+      "--fresh-focused",
+      "--select-family",
+      "runtime",
+      "--select-family",
+      "so06-native-exclusivity",
+      "--select-family",
+      "control-resident-projection"
+    ],
+    "macos-static": [
+      "scripts/contracts/run-spec-015.sh",
+      "--profile",
+      "macos-static",
+      "--corpus",
+      "rfc-014-counter",
+      "--runtime-build",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      "--host-build",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      "--collect-failures",
+      "--fresh-focused",
+      "--select-family",
+      "runtime",
+      "--select-family",
+      "so06-native-exclusivity",
+      "--select-family",
+      "control-resident-projection"
+    ]
+  },
+  "qualification_checks_sha256": "ca93102cee60ca258ec9669fb1a43083603045f1a136e6fef4742b57da19dc1a",
+  "validation_sha256": "ba49c6e40f22f6d6f7420eb65bc2a86cdb084448a25a253c6c07b1a6c9043b77",
+  "source_parity_result_sha256": "bcf746198e04d9d5966e4fe3060a2a9f89ed42c5148bae1571f2027dddc784d7",
+  "source_parity_script_sha256": "ff876c51f7ac5d8887c884ab2d031ee6bbd896a17e41cd4e03c17f928271e0be"
+}

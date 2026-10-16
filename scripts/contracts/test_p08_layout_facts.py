@@ -352,6 +352,45 @@ class MetadataLayoutTests(unittest.TestCase):
         self.assertEqual(layout['additional_retained_bytes'], 0)
         self.assertTrue(all(row['extent'] == 8 and row['count'] == 1 for row in layout['regions']))
 
+    def test_outer_growth_repacked_and_padding_charged_once(self):
+        # Synthetic ABI facts, not a claim about the current target type size.
+        grown = self.values.copy()
+        grown['giftui_p08_metadata_outer_size'] = 21
+        grown['giftui_p08_metadata_outer_stride'] = 24
+        for field in facts.METADATA_FIELDS[1:]:
+            grown['giftui_p08_metadata_' + field + '_offset'] += 16
+        grown['giftui_p08_metadata_cursor'] = 72
+        grown['giftui_p08_metadata_extent'] = 72
+        layout = facts.validate_metadata_layout(grown, self.reservation)
+        self.assertEqual(len(layout['regions']), 7)
+        self.assertEqual(layout['extent'], 72)
+        self.assertEqual(layout['donor_padding'], 56)
+        self.assertEqual(layout['retained_bytes'], 512)
+        self.assertEqual(layout['additional_retained_bytes'], 0)
+        stale = grown | {'giftui_p08_metadata_owner_offset': 8}
+        with self.assertRaises(ValueError):
+            facts.validate_metadata_layout(stale, self.reservation)
+        with self.assertRaises(ValueError):
+            facts.validate_metadata_layout(grown, self.reservation | dict(slot_bytes=64))
+
+    def test_owned_planning_field_uses_existing_measured_outer(self):
+        source = facts.METADATA_SOURCE.read_text()
+        planning = source.split('fileprivate struct P08HostRunFacts {')[1].split('}')[0]
+        expected = [('limits', 'RuntimeProfileLimits'), ('audit', 'RuntimeStorageAudit'),
+                    ('assembly', 'CounterHostAssembly')]
+        def owned_fields(text):
+            return re.findall(r'let (\w+): ([^\n]+)', text) == expected
+        self.assertTrue(owned_fields(planning))
+        for _, typ in expected:
+            self.assertFalse(owned_fields(planning.replace(typ, 'UnsafeMutablePointer<CounterControl>', 1)))
+        outer = source.split('fileprivate struct P08EmbeddedOuter:')[1].split('#endif')[0]
+        self.assertIn('var hostPlan: P08HostRunFacts? = nil', outer)
+        self.assertIn('let planningEnded = hostPlan == nil; precondition(planningEnded)', outer)
+        derive = source.split('fileprivate func p08DeriveMetadataLayout(')[1].split('fileprivate struct P08MetadataPointers')[0]
+        self.assertEqual(derive.count('p08VisitMetadataField('), 7)
+        self.assertIn('p08VisitMetadataField(P08EmbeddedOuter.self, index: 0', derive)
+        self.assertEqual(source.count('MemoryLayout<P08HostRunFacts?>.stride, family: 24)'), 2)
+
     def test_reject_missing_extra_bad_bound_padding_and_arithmetic(self):
         cases = [self.values | {'extra': 1}]
         missing = self.values.copy(); missing.pop(next(iter(missing))); cases.append(missing)

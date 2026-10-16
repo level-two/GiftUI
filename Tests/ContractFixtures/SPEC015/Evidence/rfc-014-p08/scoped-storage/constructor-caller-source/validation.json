@@ -1,0 +1,79 @@
+{
+  "kind": "compiler-free-constructor-caller-initial-source-readiness-only",
+  "checks": [
+    {
+      "check": "112 source parity checks and10 mutation negatives",
+      "argv": [
+        "python3",
+        "-B",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/constructor-caller-source/check-source-parity.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"kind\": \"compiler-free-constructor-caller-source-parity\",\n  \"baseline\": \"51cb92b7\",\n  \"checks_passed\": 112,\n  \"checks\": [\n    \"Static complete original callback/effect/argument body\",\n    \"Static actual facts inout; no whole outer route\",\n    \"Static no whole-facts copy/outer callback capture\",\n    \"Static original scalar typed projection before facts loan\",\n    \"Static cold install then actual field run then clear\",\n    \"Static exact adapter actual argument rootStorage\",\n    \"Static exact adapter actual argument semanticStorage\",\n    \"Static exact adapter actual argument canvasStorage\",\n    \"Static exact adapter actual argument control\",\n    \"Static exact adapter actual argument failAfterRuntime\",\n    \"Static exact adapter actual argument early\",\n    \"Static exact adapter actual argument candidateFailure\",\n    \"Static exact adapter actual argument reuse\",\n    \"Static exact adapter actual argument baseline\",\n    \"Static exact adapter actual argument recordsBacking\",\n    \"Static exact adapter actual argument pathsBacking\",\n    \"Static exact adapter actual argument payloadsBacking\",\n    \"Static exact adapter actual argument scalarsBacking\",\n    \"Static exact adapter actual argument entriesBacking\",\n    \"Static exact adapter actual argument foreignRootStorage\",\n    \"Static exact adapter actual argument foreignControlStorage\",\n    \"Static complete cold install actual facts/write order\",\n    \"Static exact lexical early1/2/3/type transfers/factory/Optional/defer\",\n    \"Static one Optional, no consumed-owner defer\",\n    \"Static old completion guard redundant on every host path\",\n    \"Static complete original two snapshots/check args/order once\",\n    \"Static original borrowing/lifetime operation helpers unchanged\",\n    \"Dynamic complete original callback/effect/argument body\",\n    \"Dynamic actual facts inout; no whole outer route\",\n    \"Dynamic no whole-facts copy/outer callback capture\",\n    \"Dynamic original scalar typed projection before facts loan\",\n    \"Dynamic cold install then actual field run then clear\",\n    \"Dynamic exact adapter actual argument rootStorage\",\n    \"Dynamic exact adapter actual argument semanticStorage\",\n    \"Dynamic exact adapter actual argument canvasStorage\",\n    \"Dynamic exact adapter actual argument control\",\n    \"Dynamic exact adapter actual argument failAfterRuntime\",\n    \"Dynamic exact adapter actual argument early\",\n    \"Dynamic exact adapter actual argument candidateFailure\",\n    \"Dynamic exact adapter actual argument reuse\",\n    \"Dynamic exact adapter actual argument baseline\",\n    \"Dynamic complete cold install actual facts/write order\",\n    \"Dynamic exact lexical early1/2/3/type transfers/factory/Optional/defer\",\n    \"Dynamic one Optional, no consumed-owner defer\",\n    \"Dynamic old completion guard redundant on every host path\",\n    \"Dynamic complete original two snapshots/check args/order once\",\n    \"Dynamic original borrowing/lifetime operation helpers unchanged\",\n    \"whole original14/9 loans/address checks/token/capacity/body/idle after inverse\",\n    \"cold lookup returns complete entry from same actual owner inventory\",\n    \"Static14 exact original entry ID/index map\",\n    \"Dynamic9 exact original entries; absent Static regions unused\",\n    \"owned original address projection b0\",\n    \"owned original address projection b1\",\n    \"owned original address projection b2\",\n    \"owned original address projection b3\",\n    \"owned original address projection g0\",\n    \"owned original address projection g1\",\n    \"owned original address projection g2\",\n    \"owned original address projection g3\",\n    \"owned original address projection g4\",\n    \"owned original address projection c0\",\n    \"owned original address projection h0\",\n    \"owned original address projection r0\",\n    \"owned original address projection r1\",\n    \"owned original address projection h1\",\n    \"complete original bank entry c0\",\n    \"complete original bank entry h0\",\n    \"complete original bank entry r0\",\n    \"complete original bank entry r1\",\n    \"complete original bank entry h1\",\n    \"original five capacities, no guessed entries\",\n    \"loan callbacks capture neither preparation/inventory nor whole slot selection\",\n    \"plan owns only exact original values\",\n    \"cold view before original case writes/checks before write before audit\",\n    \"Embedded plan contains same actual validated view/audit/assembly\",\n    \"Embedded plan configures actual original control\",\n    \"original metadata case predicate scenario == 2\",\n    \"original metadata case predicate scenario >= 3 ? scenario - 1 : 0\",\n    \"original metadata case predicate early >= 1 && early <= 5\",\n    \"original metadata case predicate raw <= 10\",\n    \"whole-outer install ends before actual plan field loan; clear follows return\",\n    \"actual original projected root\",\n    \"actual original projected semantic\",\n    \"actual original projected canvas\",\n    \"actual original projected control\",\n    \"actual original projected records\",\n    \"actual original projected paths\",\n    \"actual original projected payloads\",\n    \"actual original projected scalars\",\n    \"actual original projected entries\",\n    \"Embedded prepared same actual rootStorage\",\n    \"Embedded prepared same actual semanticStorage\",\n    \"Embedded prepared same actual canvasStorage\",\n    \"Embedded prepared same actual control\",\n    \"Embedded prepared same actual reuse\",\n    \"Embedded prepared same actual baseline\",\n    \"Embedded prepared same actual foreignRootStorage\",\n    \"Embedded prepared same actual foreignControlStorage\",\n    \"Embedded complete original buffer recordsBacking\",\n    \"Embedded complete original buffer pathsBacking\",\n    \"Embedded complete original buffer payloadsBacking\",\n    \"Embedded complete original buffer scalarsBacking\",\n    \"Embedded complete original buffer entriesBacking\",\n    \"Embedded original case option failAfterRuntime = scenario == 1; early = 0; candidateFailure = nil\",\n    \"Embedded original case option failAfterRuntime = false; early = value; candidateFailure = nil\",\n    \"Embedded original case option failAfterRuntime = false; early = 0; candidateFailure = RuntimeCompletePipelineStage(rawValue: raw)!\",\n    \"no whole-outer access/capture during plan loan\",\n    \"clear only owned field after complete runner\",\n    \"all Embedded host cases share actual plan route\",\n    \"outer begins nil and destruction requires ended plan\",\n    \"actual owned planning storage ledger both profiles exactly once\",\n    \"whole fixture outside finite reviewed cones exactly unchanged\"\n  ],\n  \"negative_mutations_rejected\": [\n    \"wrong Static original address\",\n    \"fabricated Dynamic region\",\n    \"wrong complete bank entry\",\n    \"forged original entry\",\n    \"stale plan before runner return\",\n    \"plan capability\",\n    \"omitted join snapshot field\",\n    \"wrong early3 cleanup\",\n    \"weaker prepared callback\",\n    \"wrong prepared actual root\"\n  ],\n  \"compiler_or_runtime\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "check": "48 compiler-free layout/source/backend tests",
+      "argv": [
+        "env",
+        "PYTHONPATH=scripts/contracts",
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "scripts/contracts/test_p08_layout_facts.py",
+        "scripts/contracts/test_p08_backend_observation.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "................................................\n----------------------------------------------------------------------\nRan 48 tests in 0.166s\n\nOK\n"
+    },
+    {
+      "check": "CounterScopedStorage parser only",
+      "argv": [
+        ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "governance",
+      "argv": [
+        "scripts/validate-governance.rb"
+      ],
+      "exit_code": 0,
+      "authority_nodes": 204,
+      "authority_edges": 2036,
+      "features": 7,
+      "lifecycle_artifacts": 76,
+      "skills": 9
+    },
+    {
+      "check": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "python_ast_paths": 4,
+  "maintained_formatter": {
+    "argv": [
+      "env",
+      "PATH=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+      "scripts/format-swift.sh"
+    ],
+    "exit_code": 0,
+    "maintained_source_changes": false
+  },
+  "compiler_invocations": 0,
+  "runtime_executions": 0,
+  "fit_claim": false
+}

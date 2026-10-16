@@ -16,6 +16,16 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
+**Current constructor/caller initial source frozen; independent SOURCE review
+pending**, DESIGN PASS `51cb92b7`. The
+[source receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-source.md)
+pins the combined plan-field/typed-loan/lexical-transfer realization and exact
+focused recipes. Initial1/correction0/2, compiler/runtime/image0. New outer/pack
+layout and cold/live/cleanup fit require fresh target evidence; no limit/corpus/
+ownership change or fit claim. Prior budget boundaries remain closed.
+
+Historical design direction:
+
 **Current section D: independent DESIGN PASS at `009711b8`; initial source ready.**
 The [bounded constructor/caller review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-independent-design-review.md)
 preserves existing contracts/limits and unproved compiler/resource outcomes. The
