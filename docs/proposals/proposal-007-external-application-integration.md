@@ -6,7 +6,7 @@ status: accepted
 authors:
   - codex
 created: 2026-10-05
-updated: 2026-10-13
+updated: 2026-10-16
 proposal: []
 related_rfcs:
   - RFC-013

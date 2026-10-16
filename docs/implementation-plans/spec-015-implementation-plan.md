@@ -27,11 +27,15 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current P08 boundary — **counter resource exception accepted; scoped configuration next**.
+Current P08 boundary — **counter resource exception accepted; scoped configuration implemented, unbuilt**.
 [ADR-040](../adrs/adr-040-counter-physical-sram-budget.md) records the
 [human acceptance](../iterations/iteration-003-review/p08-counter-resource-acceptance.md).
 The independent corrected bound review passes; use counter-only main106496 /
-ISR8192 and RAM262144. New final image/proof and P08 exit remain pending.
+ISR8192 and RAM262144. New final image/proof and P08 exit remain pending. The
+[configuration result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-counter-resource-configuration-result.md)
+records counter-only overlay/guards and 16 synthetic shell checks; independent
+configuration review precedes the normal build and full new-image proof.
+
 
 The [complete frozen-firmware proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-complete-bound-result.md)
 submits main/ISR bounds 95,469 / 6,672; proposed payloads 106,496 / 8,192 project

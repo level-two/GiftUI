@@ -1,0 +1,87 @@
+{
+  "kind": "synthetic shell guard checks only; no firmware build or execution",
+  "memory_fragment_sha256": "d4a62f2e95f67eb1a219d4e1e008785711a6cdcb75fbf3e316b722562060a51f",
+  "checks_fragment_sha256": "5f013dd3fd2c574d89c21a5ab5a4f9719dca5de75f3fae71701588b8fdb208df",
+  "cases": [
+    {
+      "case": "counter reviewed projection",
+      "passed": true,
+      "expected_success": true
+    },
+    {
+      "case": "counter physical boundary",
+      "passed": true,
+      "expected_success": true
+    },
+    {
+      "case": "counter charge overflow",
+      "passed": true,
+      "expected_success": false
+    },
+    {
+      "case": "counter extent overflow despite allowed charge",
+      "passed": true,
+      "expected_success": false
+    },
+    {
+      "case": "counter wrong main",
+      "passed": true,
+      "expected_success": false
+    },
+    {
+      "case": "counter wrong ISR",
+      "passed": true,
+      "expected_success": false
+    },
+    {
+      "case": "counter incorrect guarded stack symbol",
+      "passed": true,
+      "expected_success": false
+    },
+    {
+      "case": "counter wrong budget",
+      "passed": true,
+      "expected_success": false
+    },
+    {
+      "case": "counter heap rejection retained",
+      "passed": true,
+      "expected_success": false
+    },
+    {
+      "case": "counter allocator symbol rejection retained",
+      "passed": true,
+      "expected_success": false
+    },
+    {
+      "case": "analyzer baseline boundary",
+      "passed": true,
+      "expected_success": true
+    },
+    {
+      "case": "analyzer baseline overflow",
+      "passed": true,
+      "expected_success": false
+    },
+    {
+      "case": "default route keeps original budget and no overlay",
+      "passed": true,
+      "expected_success": true
+    },
+    {
+      "case": "counter route selects overlay and physical budget",
+      "passed": true,
+      "expected_success": true
+    },
+    {
+      "case": "counter route rejects another application",
+      "passed": true,
+      "expected_success": false
+    },
+    {
+      "case": "counter failed complete-receipt handoff stops route",
+      "passed": true,
+      "expected_success": false
+    }
+  ]
+}

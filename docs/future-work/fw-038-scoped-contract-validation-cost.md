@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-10-14
-updated: 2026-10-15
+updated: 2026-10-16
 source:
   - SPEC-015
   - RFC-013
