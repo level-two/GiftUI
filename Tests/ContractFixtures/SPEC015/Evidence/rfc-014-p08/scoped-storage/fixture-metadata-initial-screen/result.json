@@ -1,0 +1,492 @@
+{
+  "kind": "compiled-object-layout-pass-stack-and-control-rejection-screen",
+  "source_revision": "3a1d1d32",
+  "object": {
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-bekyly0g/P08CounterRuntime.o",
+    "sha256": "14c42d3063994718055d19747054b854b0485f80f8567dedc76cd7c8a763643d"
+  },
+  "artifact_hashes": {
+    "P08CounterRuntime.o": "14c42d3063994718055d19747054b854b0485f80f8567dedc76cd7c8a763643d",
+    "result.json": "8fd4ac91f5e84386a6fe1cc52fa93ce7ea84374399f8ef54869f5332b91e75cc",
+    "so07-layout-facts.json": "118c6d22a9383fa813b4c211bea529515c8529e5f1ec6abbab446f823e380915",
+    "so07-layout-facts-decoded.json": "ef4857e13cec1a653144271bdf7ee332b8c718cd7d07e863c4f9ae816b52b9ad"
+  },
+  "receipts": {
+    "module/result.json": {
+      "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-bekyly0g/result.json",
+      "bytes": 3148030,
+      "sha256": "8fd4ac91f5e84386a6fe1cc52fa93ce7ea84374399f8ef54869f5332b91e75cc"
+    },
+    "module/counter-model.log": {
+      "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-bekyly0g/counter-model.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "module/so07-layout-facts.log": {
+      "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-bekyly0g/so07-layout-facts.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "module/so07-layout-facts.json": {
+      "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-bekyly0g/so07-layout-facts.json",
+      "bytes": 156078,
+      "sha256": "118c6d22a9383fa813b4c211bea529515c8529e5f1ec6abbab446f823e380915"
+    },
+    "module/so07-layout-facts-decoded.json": {
+      "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-bekyly0g/so07-layout-facts-decoded.json",
+      "bytes": 147603,
+      "sha256": "ef4857e13cec1a653144271bdf7ee332b8c718cd7d07e863c4f9ae816b52b9ad"
+    },
+    "wrapper/result.json": {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-integrated-activity/20261016T054130485150Z-fixture-metadata-initial-screen/result.json",
+      "bytes": 1064,
+      "sha256": "940ef276a1da17bc120f2e4bd9e7d69acf74fe7f78182b9783b79d568a3456c3"
+    },
+    "wrapper/invocation.json": {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-integrated-activity/20261016T054130485150Z-fixture-metadata-initial-screen/invocation.json",
+      "bytes": 665,
+      "sha256": "3c8ccf2fb8f4fe6c9034490c05beb536211d65b8fa9c165a24b75c9589346dee"
+    },
+    "wrapper/stdout.log": {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-integrated-activity/20261016T054130485150Z-fixture-metadata-initial-screen/stdout.log",
+      "bytes": 258,
+      "sha256": "5754fa3cefbaeaaab6f241cf0c0e3366f3c4e4f11a1a09859d813480c9b98e92"
+    },
+    "wrapper/stderr.log": {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-integrated-activity/20261016T054130485150Z-fixture-metadata-initial-screen/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "focused_passed": true,
+  "collection_complete": false,
+  "passed": false,
+  "checks": {
+    "passed": 25,
+    "notrun": 202
+  },
+  "active_layout": {
+    "regions": [
+      {
+        "name": "limits",
+        "offset": 0,
+        "count": 1,
+        "size": 115,
+        "stride": 116,
+        "alignment": 4,
+        "extent": 116,
+        "end": 116
+      },
+      {
+        "name": "root",
+        "offset": 116,
+        "count": 1,
+        "size": 810,
+        "stride": 812,
+        "alignment": 4,
+        "extent": 812,
+        "end": 928
+      },
+      {
+        "name": "semantic",
+        "offset": 928,
+        "count": 1,
+        "size": 116,
+        "stride": 116,
+        "alignment": 4,
+        "extent": 116,
+        "end": 1044
+      },
+      {
+        "name": "semanticRecords",
+        "offset": 1044,
+        "count": 128,
+        "size": 20,
+        "stride": 20,
+        "alignment": 2,
+        "extent": 2560,
+        "end": 3604
+      },
+      {
+        "name": "semanticPaths",
+        "offset": 3604,
+        "count": 384,
+        "size": 22,
+        "stride": 22,
+        "alignment": 2,
+        "extent": 8448,
+        "end": 12052
+      },
+      {
+        "name": "semanticPayloads",
+        "offset": 12052,
+        "count": 256,
+        "size": 33,
+        "stride": 36,
+        "alignment": 4,
+        "extent": 9216,
+        "end": 21268
+      },
+      {
+        "name": "semanticScalars",
+        "offset": 21268,
+        "count": 128,
+        "size": 4,
+        "stride": 4,
+        "alignment": 4,
+        "extent": 512,
+        "end": 21780
+      },
+      {
+        "name": "values",
+        "offset": 21780,
+        "count": 1,
+        "size": 4,
+        "stride": 4,
+        "alignment": 2,
+        "extent": 4,
+        "end": 21784
+      },
+      {
+        "name": "canvasEntry",
+        "offset": 21784,
+        "count": 1,
+        "size": 28,
+        "stride": 28,
+        "alignment": 4,
+        "extent": 28,
+        "end": 21812
+      },
+      {
+        "name": "b0",
+        "offset": 21812,
+        "count": 1024,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1024,
+        "end": 22836
+      },
+      {
+        "name": "b1",
+        "offset": 22836,
+        "count": 1056,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1056,
+        "end": 23892
+      },
+      {
+        "name": "b2",
+        "offset": 23892,
+        "count": 20,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 20,
+        "end": 23912
+      },
+      {
+        "name": "b3",
+        "offset": 23912,
+        "count": 112,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 112,
+        "end": 24024
+      },
+      {
+        "name": "g0",
+        "offset": 24024,
+        "count": 1,
+        "size": 70,
+        "stride": 72,
+        "alignment": 4,
+        "extent": 72,
+        "end": 24096
+      },
+      {
+        "name": "g1",
+        "offset": 24096,
+        "count": 1,
+        "size": 98,
+        "stride": 100,
+        "alignment": 4,
+        "extent": 100,
+        "end": 24196
+      },
+      {
+        "name": "g2",
+        "offset": 24196,
+        "count": 1,
+        "size": 1024,
+        "stride": 1024,
+        "alignment": 4,
+        "extent": 1024,
+        "end": 25220
+      },
+      {
+        "name": "g3",
+        "offset": 25220,
+        "count": 1,
+        "size": 167,
+        "stride": 168,
+        "alignment": 4,
+        "extent": 168,
+        "end": 25388
+      },
+      {
+        "name": "g4",
+        "offset": 25388,
+        "count": 1,
+        "size": 26,
+        "stride": 28,
+        "alignment": 4,
+        "extent": 28,
+        "end": 25416
+      },
+      {
+        "name": "c0",
+        "offset": 25416,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 25900
+      },
+      {
+        "name": "h0",
+        "offset": 25900,
+        "count": 1,
+        "size": 460,
+        "stride": 460,
+        "alignment": 4,
+        "extent": 460,
+        "end": 26360
+      },
+      {
+        "name": "r0",
+        "offset": 26360,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 26844
+      },
+      {
+        "name": "r1",
+        "offset": 26844,
+        "count": 1,
+        "size": 484,
+        "stride": 484,
+        "alignment": 4,
+        "extent": 484,
+        "end": 27328
+      },
+      {
+        "name": "h1",
+        "offset": 27328,
+        "count": 1,
+        "size": 460,
+        "stride": 460,
+        "alignment": 4,
+        "extent": 460,
+        "end": 27788
+      },
+      {
+        "name": "control",
+        "offset": 27792,
+        "count": 1,
+        "size": 6920,
+        "stride": 6920,
+        "alignment": 8,
+        "extent": 6920,
+        "end": 34712
+      },
+      {
+        "name": "used",
+        "offset": 34712,
+        "count": 1,
+        "size": 1,
+        "stride": 1,
+        "alignment": 1,
+        "extent": 1,
+        "end": 34713
+      }
+    ],
+    "cursor": 34713,
+    "maximumAlignment": 8,
+    "slotBytes": 34720,
+    "totalBytes": 138880,
+    "retained_slot_bytes": 34720,
+    "retained_bytes": 138880,
+    "retained_surplus": 0
+  },
+  "final_metadata_layout": {
+    "regions": [
+      {
+        "name": "outer",
+        "count": 1,
+        "offset": 0,
+        "size": 776,
+        "stride": 776,
+        "alignment": 4,
+        "extent": 776,
+        "end": 776
+      },
+      {
+        "name": "owner",
+        "count": 1,
+        "offset": 776,
+        "size": 1006,
+        "stride": 1008,
+        "alignment": 8,
+        "extent": 1008,
+        "end": 1784
+      },
+      {
+        "name": "baseline",
+        "count": 1,
+        "offset": 1784,
+        "size": 5241,
+        "stride": 5248,
+        "alignment": 8,
+        "extent": 5248,
+        "end": 7032
+      },
+      {
+        "name": "inventory",
+        "count": 1,
+        "offset": 7032,
+        "size": 392,
+        "stride": 392,
+        "alignment": 4,
+        "extent": 392,
+        "end": 7424
+      },
+      {
+        "name": "transcript",
+        "count": 1,
+        "offset": 7424,
+        "size": 600,
+        "stride": 600,
+        "alignment": 8,
+        "extent": 600,
+        "end": 8024
+      },
+      {
+        "name": "foreignRoot",
+        "count": 1,
+        "offset": 8024,
+        "size": 810,
+        "stride": 812,
+        "alignment": 4,
+        "extent": 812,
+        "end": 8836
+      },
+      {
+        "name": "foreignControl",
+        "count": 1,
+        "offset": 8840,
+        "size": 6920,
+        "stride": 6920,
+        "alignment": 8,
+        "extent": 6920,
+        "end": 15760
+      }
+    ],
+    "cursor": 15760,
+    "maximumAlignment": 8,
+    "extent": 15760,
+    "donor_slot_bytes": 34720,
+    "donor_padding": 18960,
+    "retained_bytes": 138880,
+    "additional_retained_bytes": 0,
+    "custody_and_temporary_stack_bytes": "require separate current compiled proof"
+  },
+  "counted_required_first_match_nodes": [
+    {
+      "section": 4087,
+      "frame": 64,
+      "symbol": "$e17P08CounterRuntime20p08RunEmbeddedCorpus5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwtF"
+    },
+    {
+      "section": 4079,
+      "frame": 64,
+      "symbol": "$e17P08CounterRuntime15p08EmbeddedHost33_480B1BD841D053AE4FCDC18507668536LL7custody5writeSiAA0A13CallerCustodyACLLVz_s5Int32Vs6UInt16V_A3KSPys5UInt8VGSgSitXCSgtF"
+    },
+    {
+      "section": 4053,
+      "frame": 112,
+      "symbol": "$e17P08CounterRuntime0A13CallerCustody33_480B1BD841D053AE4FCDC18507668536LLV3run_5model8semantic11secondModel0N8Semantic5writeSiAA0A16EmbeddedCasePlanACLLO_21GiftUIObservableState010ObservableO13OwnerIdentityV0U14UISemanticCore0p6RecordyZ0VAOSgARSgs5Int32Vs6UInt16V_A3XSPys5UInt8VGSgSitXCSgtF"
+    },
+    {
+      "section": 4057,
+      "frame": 31776,
+      "symbol": "$e17P08CounterRuntime18p08RunMetadataCase33_480B1BD841D053AE4FCDC18507668536LL_8pointers11secondModel0N8Semantic5writeSiAA0a8EmbeddedG4PlanACLLO_AA0aF8PointersACLLV21GiftUIObservableState010ObservableO13OwnerIdentityVSg0U14UISemanticCore0p6RecordyZ0VSgs5Int32Vs6UInt16V_A3WSPys5UInt8VGSgSitXCSgtF"
+    },
+    {
+      "section": 3854,
+      "frame": 12664,
+      "symbol": "$e17P08CounterRuntime24p08RunStaticSessionPhase33_480B1BD841D053AE4FCDC18507668536LL7session8semantic6values14activationSpan6models4root13foreignModels0U4Root7control0U7Control5audit8assembly09failAfterC05early16candidateFailure5reuse8baselineAA0A10BodyResultACLLVAA0a7StorageG0ACLLVn_18GiftUISemanticCore19SemanticRecordStoreVy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGnA0_18CanvasStagedValuesVyAY23SemanticRecordReferenceVA3_0aB17SchemaCanvasTableVyA7_GGns0R0Vys5UInt8VG21GiftUIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0aB6Schema0B11ModelSchemaOGA24_015ObservableStateW5ScopeVyA28_AY24SemanticCompleteIdentityVGA32_A37_SpyAA0bY0VGA40_17GiftUIRuntimeCore0C12StorageAuditVAA0B12HostAssemblyVSbA22_A41_0C21CompletePipelineStageOSgSpyAA0A19HostReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtF"
+    },
+    {
+      "section": 3846,
+      "frame": 1528,
+      "symbol": "$e17P08CounterRuntime21p08RunStaticHostPhase33_480B1BD841D053AE4FCDC18507668536LL4host7control6report09failAfterC010joinChecks5early16candidateFailure5reuse8baselineAA0A10BodyResultACLLV23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyAA0bG5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVGGz_SpyAA0B7ControlVGAO0G14AssemblyReportVSbSis5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aG15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtF"
+    },
+    {
+      "section": 3769,
+      "frame": 2688,
+      "symbol": "$e17P08CounterRuntime15p08RunReuseHost33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcript8baselineSi23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyxGz_SpyAA0B7ControlVGSpyAA0agF10TranscriptACLLVGSpyAA0aF11FingerprintACLLVGSgtAH0tuV9LiveOwnerRzAA0aF11ObservationACLLRzRi_zRi0_zlFAA0bG5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5"
+    },
+    {
+      "section": 3729,
+      "frame": 8672,
+      "symbol": "$e17P08CounterRuntime24p08ReuseRejectOldOrigins33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcript5route6action8revision8baselineSi23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVyxGz_SpyAA0B7ControlVGSpyAA0a4HostE10TranscriptACLLVGs12StaticStringVAA0B14ProducedActionV0U2UI20PresentationRevisionVSpyAA0aE11FingerprintACLLVGtAK0xyZ9LiveOwnerRzAA0aE11ObservationACLLRzRi_zRi0_zlFAA0B9HostOwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5"
+    },
+    {
+      "section": 3646,
+      "frame": 240,
+      "symbol": "$e17P08CounterRuntime27p08CheckBaselineSensitivity33_480B1BD841D053AE4FCDC18507668536LL_7controlSiAA0A16ReuseFingerprintACLLV_SpyAA0B7ControlVGtF"
+    },
+    {
+      "section": 3626,
+      "frame": 7904,
+      "symbol": "$e17P08CounterRuntime0A16ReuseFingerprint33_480B1BD841D053AE4FCDC18507668536LLV7matchesySbSpyAA0B7ControlVGF"
+    }
+  ],
+  "required_stack_lower_bound": 65712,
+  "main_stack_limit": 27648,
+  "retained_backing_bytes": 138880,
+  "backing_plus_lower_bound": 204592,
+  "total_ram_limit": 196608,
+  "excess_before_omitted_costs": 7984,
+  "proof_scope": "Required second-host first sensitivity baseline match, before invalid ordinal; source/callback connectivity, not target execution. Intermediate borrower/adaptor frames, alignment surplus, unexamined callees and IRQ are additional, not zero.",
+  "known_independent_control_defect": {
+    "source": "p08CheckBaselineSensitivity fixedChild ordinal31 (four source sites)",
+    "contract": "SemanticPathComponent.isValid fixedChild ordinal<5",
+    "object": "section3646 UDF c0/c2/c4/c6; section3729 UDF immediately after sensitivity call at13e; required stale/current continuation pruned",
+    "runtime_executed": false
+  },
+  "proven_baseline_materialization": {
+    "section": 3729,
+    "offset": 302,
+    "bytes": 5241,
+    "copy_call_offset": 306,
+    "outlined_helper_section": 14813,
+    "helper": "__aeabi_memcpy8",
+    "source": "borrowed baseline.pointee argument to sensitivity"
+  },
+  "cold_required_lower_bound": 28080,
+  "cold_prepare_and_live_frames_never_added_together": true,
+  "corrective_cycles_consumed": 1,
+  "corrective_cycles_maximum": 2,
+  "correction2_started": false,
+  "native_collection_pending": true,
+  "fit_claim": false
+}

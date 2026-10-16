@@ -1,0 +1,47 @@
+import hashlib,importlib.util,json,lzma,pathlib,re,subprocess
+root=pathlib.Path.cwd();obj=root/'.build/nrf52840/contracts/p08-counter-bekyly0g/P08CounterRuntime.o';sp=importlib.util.spec_from_file_location('facts',root/'scripts/contracts/p08_layout_facts.py');m=importlib.util.module_from_spec(sp);sp.loader.exec_module(m);elf=m.ELF(obj.read_bytes())
+packet=root/'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/fixture-metadata-initial-screen';packet.mkdir(exist_ok=True)
+sections=[13834,210,10103,3441,4050,4053,4061,4075,4079,4083,4019,4023,4057,4071,3854,3769,3729,3681,3642,3646,4087]
+for pattern in ['RunStaticHostPhase','runP08StaticHost','ReuseCurrentAction','ReuseCurrentPointer','ReuseFingerprint','MetadataPointers','EmbeddedOuter']:
+ for sym in elf.symbols:
+  if sym['type']==2 and pattern in sym['name'] and sym['size'] and 0<sym['owner']<len(elf.sections):sections.append(sym['owner'])
+sections += [x['owner'] for x in elf.symbols if x['name'] == 'giftui_rfc014_counter_entry']
+sections=sorted(set(sections));disasm=root/'.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump';demangle=root/'.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-demangle'
+symbols=[]
+for n in sections:
+ syms=[s for s in elf.symbols if s['type']==2 and s['owner']==n and s['size']]
+ assert len(syms)==1,(n,syms)
+ symbols.append(syms[0])
+names=subprocess.run([str(demangle),'--compact'],input='\n'.join(s['name'] for s in symbols)+'\n',text=True,capture_output=True,check=True).stdout.splitlines()
+rows=[]
+for n,sym,name in zip(sections,symbols,names):
+ sec=elf.sections[n];argv=[str(disasm),'-d','--start-address=0','--stop-address=128','-j',sec['name'],str(obj)]
+ text=subprocess.run(argv,text=True,capture_output=True,check=True).stdout
+ (packet/f'prologue-{n}.txt.xz').write_bytes(lzma.compress(text.encode()))
+ instructions=[]
+ for line in text.splitlines():
+  match=re.match(r'\s*([0-9a-f]+):\s+(?:[0-9a-f]{4}\s+)+(.+)',line)
+  if match:instructions.append((int(match[1],16),match[2].strip()))
+ frame=0;terms=[];unknown=[]
+ for addr,ins in instructions:
+  op=ins.split()[0];operands=ins[len(op):].strip()
+  if op.startswith(('bl','b.')) or op in ('b','bx','cbz','cbnz'):break
+  if op in ('push','push.w','vpush') or op in ('stmdb','stmdb.w','vstmdb') and operands.startswith('sp!'):
+   regs=re.search(r'\{([^}]+)\}',operands).group(1);count=0
+   for reg in regs.split(','):
+    reg=reg.strip()
+    if '-' in reg:
+     a,b=reg.split('-');count+=int(re.search(r'\d+',b).group())-int(re.search(r'\d+',a).group())+1
+    else:count+=1
+   amount=count*(8 if op.startswith('v') else 4);frame+=amount;terms.append([addr,ins,amount])
+  elif re.match(r'sub(?:\.w|w)?$',op) and re.match(r'sp,\s*(?:sp,\s*)?#',operands):
+   amount=int(re.search(r'#(0x[0-9a-f]+|[0-9]+)',operands).group(1),0);frame+=amount;terms.append([addr,ins,amount])
+  elif re.match(r'str(?:\.w)?$',op) and re.search(r'\[sp,\s*#-(0x[0-9a-f]+|[0-9]+)\]!',operands):
+   amount=int(re.search(r'#-(0x[0-9a-f]+|[0-9]+)',operands).group(1),0);frame+=amount;terms.append([addr,ins,amount])
+  elif operands.startswith('sp,') and op.startswith(('sub','bic','bfc','and')):unknown.append([addr,ins])
+ relocs=elf.relocations(sym)
+ for rel in relocs:
+  target=elf.symbol_tables[rel['symbol_table']][rel['symbol_index']];rel['target_section']=target['owner'];rel['target_type']=target['type'];rel['target_size']=target['size']
+ rows.append(dict(section=n,symbol=sym,demangled=name,entry_fixed_stack_lower_bound=frame,prologue_terms=terms,unknown_stack_adjustments=unknown,first_instructions=instructions,relocations=relocs,command=argv))
+(packet/'bounded-frames-and-calls.json').write_text(json.dumps(dict(object_sha256=hashlib.sha256(obj.read_bytes()).hexdigest(),parser_scope='initial fixed prologue before first branch/call; lower bound only; sub/sub.w/subw included',rows=rows),indent=2)+'\n')
+for row in rows:print(row['section'],row['entry_fixed_stack_lower_bound'],row['demangled'][:160], 'unknown',row['unknown_stack_adjustments'])

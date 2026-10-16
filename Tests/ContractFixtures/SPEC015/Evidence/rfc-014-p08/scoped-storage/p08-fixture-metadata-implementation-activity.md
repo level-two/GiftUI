@@ -13,6 +13,16 @@ at most two cause-grouped corrective cycles, stopping after two consecutive
 unproductive cycles or a genuine contract/resource decision. Initial pass complete;
 correction1/2 consumed. Every historical closed allowance and diagnostic1/1 stays closed.
 
+Current compiled boundary: [fresh nRF screen/result](p08-fixture-metadata-initial-screen-result.md)
+at `3a1d1d32` passed compilation and all160 layout roots (25pass/202notrun), but
+the required fixed stack subset65712 plus backing138880 exceeds RAM196608.
+An independently observed invalid ordinal31 in the added sensitivity controls
+also traps/prunes continuation. No runtime acceptance or current image claim.
+Correction1 was productive for source compilation; correction2/2 is not started.
+Next is the packet's two profile-matched fresh Native focused collections to group
+remaining failures before choosing/reviewing the final cause correction. No source
+fix, compiler retry, new resource limit or automatic variant was applied in analysis.
+
 Current boundary: [grouped correction1/2 source freeze](p08-fixture-metadata-cycle1-source-freeze.md)
 followed by the [same-cycle short-circuit followup](p08-fixture-metadata-cycle1-shortcircuit-freeze.md),
 ready for focused reassessment after `d82dde91`. Only ordinary conditional model
