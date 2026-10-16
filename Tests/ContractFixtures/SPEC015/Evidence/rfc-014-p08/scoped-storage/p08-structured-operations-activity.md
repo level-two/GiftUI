@@ -5,7 +5,12 @@ after SOURCE review `3a346b91`. The immutable
 [current receipt packet](structured-operations-cycle1-collections/result.json)
 records nRF25 passed/202 omitted and each Native42 passed/384 omitted,
 with3,472,564 Native assertions and zero failures. These are partial collections,
-not complete acceptance. Current-object stack analysis remains a separate gate.
+not complete acceptance. The
+[current result and final correction proposal](p08-structured-operations-cycle1-result.md)
+prove selected required live29144 > main27648, before omitted original bank-loan
+callbacks/outer/IRQ. Cold construction also remains rejected. Full202/image is
+held. Final correction2 is proposed for independent approach review, not started;
+no limit change or extra source variant is inferred.
 
 Prior execution authorization: grouped correction1 independent SOURCE PASS at `b8a9626a`
 after approved result/approach `81f5ed80`. The
@@ -20,7 +25,7 @@ current source and measured complete resource paths are viable.
 
 Scope: one combined initial implementation plus at most two cause-grouped
 corrective cycles, stopping after two consecutive unproductive cycles or a genuine
-contract/scope/resource decision. Current correction1/2; initial source1, fresh nRF screen1, Native focused collections2,
+contract/scope/resource decision. Current correction1/2; initial source1, total fresh nRF screens2, Native focused collections4,
 image0 in this package. The analysis itself invokes no compiler/runtime. Mechanical source-review issues are grouped in
 the coherent pass/cycle, not individual user permission barriers. Independent
 design PASS precedes implementation; independent SOURCE review precedes execution.

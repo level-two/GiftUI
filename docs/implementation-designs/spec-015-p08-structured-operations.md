@@ -16,12 +16,21 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
-**Grouped correction1 independent SOURCE PASS at `b8a9626a`; fresh focused collections ready.**
+**Grouped correction1 all three fresh focused collections PASS; current stack remains rejected.**
+Source `b8a9626a`, review `3a346b91`; the
+[current result and proposed final correction2](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-cycle1-result.md)
+record selected live29144 > main27648 before omitted original bank-loan callbacks,
+outer and IRQ. The grouped proposal covers cold session construction inside the
+unchanged original loan union, post-two-host cold cleanup and sequential full
+backend/four-key comparisons. Correction1/2; final correction2 awaits independent
+approach review. All limits/contracts stay unchanged, full202/image held.
+
+Historical correction1 execution authorization:
 The [bounded source review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-cycle1-independent-source-review.md)
 follows result/approach PASS `81f5ed80`. The [new freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-cycle1-source.md)
 pins actual-pointer guards, original host formal operations, actual-target health
-and cold preparation/reconstruction. Correction1/2; no corrected compilation,
-runtime or fit evidence. Initial `3065c574` focused passes and required36,744
+and cold preparation/reconstruction. The earlier source-only boundary preceded
+the current three focused passes; no fit upper bound exists. Initial `3065c574` focused passes and required36,744
 stack rejection remain immutable [prior-source evidence](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-initial-result.md).
 The [bounded independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-independent-design-review.md)
 confirms readiness for the authorized combined initial source package.
