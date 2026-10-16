@@ -2,7 +2,7 @@
 
 Implements the [independently approved approach](p08-constructor-caller-initial-independent-result-review.md)
 `233d26e5`, under the [current activity](p08-constructor-caller-activity.md).
-**Initial1/correction1/2 consumed; independent SOURCE review pending.** No compiler,
+**Initial1/correction1/2 consumed; independent [SOURCE PASS](p08-constructor-caller-cycle1-independent-source-review.md) at `42c0a1e2`.** No compiler,
 runtime or image operation for this candidate. All historical allowances remain
 closed; main27648/RAM196608/four34720 slots and all contracts stay unchanged.
 

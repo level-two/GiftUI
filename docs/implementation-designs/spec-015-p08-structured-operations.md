@@ -16,13 +16,15 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
-**Current constructor/caller correction1 source frozen; independent SOURCE review
-pending**, approach PASS `233d26e5`. The
+**Current constructor/caller correction 1 SOURCE PASS at `42c0a1e2`; registered
+focused collections ready**, approach PASS `233d26e5`. The
 [source receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle1-source.md)
 pins the private noncopyable plan, actual inout fixture ABI and cold constructor
 with the original lifetime union and one Optional host. Initial1/correction1/2,
 current compiler/runtime/image0; actual metadata/stack unproved. Limits and all
 ownership/corpus contracts stay unchanged. The initial32800 rejection is preserved.
+The [independent source review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle1-independent-source-review.md)
+records the bounded lifetime/cleanup and exact qualification checks.
 
 Historical initial result:
 

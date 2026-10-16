@@ -1,7 +1,7 @@
 # P08 constructor/caller realization activity
 
-Current boundary: **grouped correction1 source frozen; independent SOURCE review
-pending**, approach PASS `233d26e5`. The
+Current boundary: **independent [correction 1 SOURCE PASS](p08-constructor-caller-cycle1-independent-source-review.md) at `42c0a1e2`; registered focused collections ready**,
+approach PASS `233d26e5`. The
 [new immutable source freeze](p08-constructor-caller-cycle1-source.md) pins the
 private noncopyable planning carrier, continuous actual inout facts and cold
 constructor with original return union/single Optional host. Initial1/correction1/2
