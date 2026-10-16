@@ -2,8 +2,10 @@
 
 **Focused behavior/layout PASS; current main-stack rejection.** Source `3065c574`,
 independent SOURCE PASS `c966aa8b`, exact three-profile checkpoint `6863f491`.
-Correction0/2; the following correction1 approach is proposed for independent
-review, not implemented. Historical allowances remain closed.
+Correction0/2; the [independent result and approach review](p08-structured-operations-initial-independent-result-review.md)
+confirms the main-stack rejection and correction1 APPROACH PASS at `678b7f7d`.
+Ready for the authorized grouped source correction; not implemented in this result.
+Historical allowances remain closed.
 
 [Focused receipts](structured-operations-initial-collections/result.json) preserve
 nRF25pass/202notrun and Dynamic/Static42pass/384notrun. All13 reuse labels,5

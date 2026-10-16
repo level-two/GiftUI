@@ -1,7 +1,9 @@
 # P08 structured construction and observation operations activity
 
 Current boundary: **initial focused behavior/layout PASS; main-stack resource
-rejection, correction1 approach awaiting independent review**. Source`3065c574`
+rejection, independent correction1 APPROACH PASS at `678b7f7d`**.
+The [bounded result/approach review](p08-structured-operations-initial-independent-result-review.md)
+permits the authorized grouped source pass. Source`3065c574`
 SOURCE PASS`c966aa8b`; [three-profile checkpoint](structured-operations-initial-collections/result.json)
 `6863f491` preserves all selected passes and complete partial-coverage flags.
 The [bounded result/combined correction approach](p08-structured-operations-initial-result.md)
