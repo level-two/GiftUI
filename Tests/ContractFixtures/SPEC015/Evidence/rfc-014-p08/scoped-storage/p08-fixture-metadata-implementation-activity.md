@@ -1,7 +1,8 @@
 # P08 fixture metadata implementation activity
 
-Current boundary: **final grouped correction2/2 source frozen; independent SOURCE
-review pending**. The [source freeze](p08-fixture-metadata-cycle2-source-freeze.md)
+Current boundary: **final grouped correction2/2 independent SOURCE PASS at
+`6449093d`**. The [independent review](p08-fixture-metadata-cycle2-independent-source-review.md)
+permits the three sequential fresh focused collections. The [source freeze](p08-fixture-metadata-cycle2-source-freeze.md)
 implements the approved finite typed leaves, valid complete-key alternates,
 cold object boundaries and actual inout full baseline. Compiler-free parity,
 layout/source and backend tests pass; no compiler/runtime/image ran in this step.

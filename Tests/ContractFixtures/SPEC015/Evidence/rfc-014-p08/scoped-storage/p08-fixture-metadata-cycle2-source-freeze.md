@@ -1,6 +1,8 @@
 # P08 donor metadata — final grouped correction2 source freeze
 
-**Correction2/2 consumed; ready for independent SOURCE review.** Implements the
+**Correction2/2 consumed; independent SOURCE PASS at `6449093d`.** The
+[bounded source review](p08-fixture-metadata-cycle2-independent-source-review.md)
+permits the three registered fresh focused collections. Implements the
 [reviewed approach](p08-fixture-metadata-cycle2-independent-approach-review.md)
 at `5a16badf`. No compiler, runtime, image or new resource claim in this source step.
 There is no third automatic variant; historical allowances remain closed.
