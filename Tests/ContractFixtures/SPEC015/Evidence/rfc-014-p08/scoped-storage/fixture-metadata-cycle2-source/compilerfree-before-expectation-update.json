@@ -1,0 +1,34 @@
+[
+  {
+    "argv": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts/contracts",
+      "-p",
+      "test_p08_layout_facts.py"
+    ],
+    "exit": 1,
+    "log": "test_p08_layout_facts.py.before.log.xz",
+    "uncompressed_sha256": "9ef3a4419d74bdba0ef2189a63afb578f8af42e47246c50bc07bf06b19717920",
+    "reason": "obsolete source-shape assertion; actual failure retained, then expectation corrected for original full facts"
+  },
+  {
+    "argv": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts/contracts",
+      "-p",
+      "test_p08_backend_observation.py"
+    ],
+    "exit": 1,
+    "log": "test_p08_backend_observation.py.before.log.xz",
+    "uncompressed_sha256": "8729f0e2e46ab6dfd2e3111b68382bfbd65cc699737b7b451907be74cce0d936",
+    "reason": "obsolete source-shape assertion; actual failure retained, then expectation corrected for original full facts"
+  }
+]

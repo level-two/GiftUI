@@ -1,0 +1,193 @@
+{
+  "kind": "final-grouped-source-correction-freeze-not-compiler-proof",
+  "baseline_commit": "5a16badf",
+  "approach_review": "5a16badf",
+  "corrective_cycles_consumed": 2,
+  "corrective_cycles_maximum": 2,
+  "third_automatic_variant": false,
+  "compiler_invocations": 0,
+  "runtime_executions": 0,
+  "fit_claim": false,
+  "changed_files": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+      "before_sha256": "b79075f0f5b8f189c0111206c1ae771cb783596003a2130cdf11021510c27137",
+      "sha256": "ff3fb1a1fca3158aaed8c10fe454353af6aed9f5d9e0a8e7bcb42b3677ac9f7a"
+    },
+    "scripts/contracts/check-spec-015-counter.py": {
+      "before_sha256": "12d4dac6192b42d5c552f1d6374f82eea07232dfeeed9a242a9352660edb8294",
+      "sha256": "14a9f30ae98740c38cb898d27f7d3f267970f69a7240ce1ab759eb1831390255"
+    },
+    "scripts/contracts/test_p08_layout_facts.py": {
+      "before_sha256": "6784984986137a1fc2a37a69e86500a56bd9f1a9748a1b6e39083b6707b0fb5c",
+      "sha256": "cc526589baece6411f0468b542e8c2836075d96288328a112fb73335a6123714"
+    },
+    "scripts/contracts/test_p08_backend_observation.py": {
+      "before_sha256": "acfaded7b6ddd91771cedfe44b6c45cdaf00d299c56c3bec9c686a22e58b30a6",
+      "sha256": "3c00f89f5b12078ace271762034b49259ee2bdab3ac661415b29da6c37b0e8f2"
+    }
+  },
+  "source_diff_sha256": "8bc56ae27c62cbb6a8de6454a25e5823e3ebc39f2ebf6c925509f90a6e75a6e0",
+  "qualification": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-cycle2-applicability.json",
+    "sha256": "a58fe2d8b6a4a6a8ebcceeadb199f9ab693f35c47f66a2be0143376da63ede84"
+  },
+  "source_parity_checks": 97,
+  "existing_compilerfree_tests": {
+    "layout_and_source": 34,
+    "backend_observation": 6
+  },
+  "all_target_layout_roots": 160,
+  "active_roots": 129,
+  "metadata_roots": 31,
+  "base_selection_groups": 48,
+  "base_selections": 2266,
+  "additive_metadata_prefix_controls": 8,
+  "retained_slots": 4,
+  "retained_slot_bytes": 34720,
+  "retained_backing_bytes": 138880,
+  "compiler_base_controls": {
+    "native": 384,
+    "embedded": 202
+  },
+  "registered_reuse_labels": 26,
+  "reuse_suffixes": [
+    "action-current",
+    "action-stale",
+    "admission-current",
+    "admission-stale",
+    "cleanup-backing-last",
+    "control-same-address",
+    "input-current",
+    "input-stale",
+    "inventory-two-hosts",
+    "raw-namespace-collision",
+    "source-current",
+    "source-stale",
+    "terminal-old-host"
+  ],
+  "fresh_screen_argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    "--collect-failures",
+    "--fresh-focused",
+    "--select-family",
+    "so07-layout-facts"
+  ],
+  "native_focused_argv": {
+    "macos-dynamic": [
+      "scripts/contracts/run-spec-015.sh",
+      "--profile",
+      "macos-dynamic",
+      "--corpus",
+      "rfc-014-counter",
+      "--runtime-build",
+      ".build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic",
+      "--host-build",
+      ".build/contracts/p08-scoped-host-ezcy1qan",
+      "--collect-failures",
+      "--fresh-focused",
+      "--select-family",
+      "runtime",
+      "--select-family",
+      "so06-native-exclusivity",
+      "--select-family",
+      "control-resident-projection"
+    ],
+    "macos-static": [
+      "scripts/contracts/run-spec-015.sh",
+      "--profile",
+      "macos-static",
+      "--corpus",
+      "rfc-014-counter",
+      "--runtime-build",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      "--host-build",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      "--collect-failures",
+      "--fresh-focused",
+      "--select-family",
+      "runtime",
+      "--select-family",
+      "so06-native-exclusivity",
+      "--select-family",
+      "control-resident-projection"
+    ]
+  },
+  "native_selected_labels": {
+    "macos-dynamic": [
+      "link",
+      "execute",
+      "runtime-summary",
+      "so06-reuse-dynamic-inventory-two-hosts",
+      "so06-reuse-dynamic-control-same-address",
+      "so06-reuse-dynamic-terminal-old-host",
+      "so06-reuse-dynamic-raw-namespace-collision",
+      "so06-reuse-dynamic-action-stale",
+      "so06-reuse-dynamic-action-current",
+      "so06-reuse-dynamic-input-stale",
+      "so06-reuse-dynamic-input-current",
+      "so06-reuse-dynamic-admission-stale",
+      "so06-reuse-dynamic-admission-current",
+      "so06-reuse-dynamic-source-stale",
+      "so06-reuse-dynamic-source-current",
+      "so06-reuse-dynamic-cleanup-backing-last",
+      "so06-native-exclusivity-module",
+      "so06-native-exclusivity-positive-link",
+      "so06-native-exclusivity-positive-execute",
+      "so06-native-exclusivity-negative-link",
+      "so06-native-exclusivity-negative-execute",
+      "control-resident-projection-positive",
+      "control-resident-projection-negative"
+    ],
+    "macos-static": [
+      "link",
+      "execute",
+      "runtime-summary",
+      "so06-reuse-static-inventory-two-hosts",
+      "so06-reuse-static-control-same-address",
+      "so06-reuse-static-terminal-old-host",
+      "so06-reuse-static-raw-namespace-collision",
+      "so06-reuse-static-action-stale",
+      "so06-reuse-static-action-current",
+      "so06-reuse-static-input-stale",
+      "so06-reuse-static-input-current",
+      "so06-reuse-static-admission-stale",
+      "so06-reuse-static-admission-current",
+      "so06-reuse-static-source-stale",
+      "so06-reuse-static-source-current",
+      "so06-reuse-static-cleanup-backing-last",
+      "so06-native-exclusivity-module",
+      "so06-native-exclusivity-positive-link",
+      "so06-native-exclusivity-positive-execute",
+      "so06-native-exclusivity-negative-link",
+      "so06-native-exclusivity-negative-execute",
+      "control-resident-projection-positive",
+      "control-resident-projection-negative"
+    ]
+  },
+  "coverage": "all three fresh focused collections after SOURCE review; collect independent failures; no full/image claim; new stack unknown",
+  "artifact_hashes": {
+    "check-source-parity.py": "39a9aa12912c78b1182f362ffcf4f4ee18eb1aea310ff5d26c0ff339a3a5c24b",
+    "compilerfree-before-expectation-update.json": "fea10ca6798621af94afce324dfe26ff1bd72536aac22d86a5ab7515b623aa97",
+    "compilerfree-tests.json": "cfb877f902737b3fee0fe4eb86bd5a8d02ea8bf3d3eaf6c87d21d68567ef3a15",
+    "source-parity-result.json": "93572ce1eee78662f7d19a87262981a208c1924c98aed6f25b11c5c517c22d6a",
+    "source.diff.xz": "5add3c1d7a778e83207da9937536d28a715dade5ca6dba1fc967682cc5c402da",
+    "syntax-checks.json": "03a101ee8972d4cff1d177921aca8eeb5b38a3a475675700081711912bdb9a5b",
+    "test_p08_backend_observation.py.after.log": "b95b5805bef96b568b1b2424b637003cd6f306e6312d682e4f2e4e23f635b26a",
+    "test_p08_backend_observation.py.before.log.xz": "e5912c3aaf0fe9097efd45f0c6ccc84b631a4952c18193bd10351c77a3d7b772",
+    "test_p08_layout_facts.py.after.log": "80d6393ecdad8060dd6b6255700e7924c491d580b31ef61bb276ad70f4605385",
+    "test_p08_layout_facts.py.before.log.xz": "ed63bedd80d48fea48258f7e93b9fcb19d97777b8bc69ac5c1e886e3d430f008"
+  },
+  "source_diff_archive": {
+    "path": "source.diff.xz",
+    "sha256": "5add3c1d7a778e83207da9937536d28a715dade5ca6dba1fc967682cc5c402da",
+    "uncompressed_sha256": "8bc56ae27c62cbb6a8de6454a25e5823e3ebc39f2ebf6c925509f90a6e75a6e0"
+  }
+}

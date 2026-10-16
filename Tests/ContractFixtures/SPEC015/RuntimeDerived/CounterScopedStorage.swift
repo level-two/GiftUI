@@ -1591,17 +1591,126 @@ fileprivate struct P08ReuseFingerprint: ~Copyable {
         lastDispatchContext = control.pointee.lastDispatchContext; actionDispatches = control.pointee.actionDispatches
         frozen = true
     }
-    borrowing func matches(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+    // Concrete formal operations split independent comparison homes. They do
+    // not write the once-frozen facts or construct a full current observation.
+    // `mutating` selects an inout self convention; these match operations only read.
+    @inline(never)
+    private mutating func matchesRuntimeSlot(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+        runtimeSlot.matches(control)
+    }
+    @inline(never)
+    private mutating func matchesRecording(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+        acceptedRecording.matches(control.pointee.lastFrame)
+    }
+    @inline(never)
+    private mutating func matchesJoins(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+        let present = joins != nil
+        guard present else { return false }
+        let samerequests = joins!.requests == control.pointee.wake?.requester.requestCount
+        guard samerequests else { return false }
+        let samereasons = joins!.reasons == control.pointee.wake?.accumulatedReasons
+        guard samereasons else { return false }
+        let sameoutstanding = joins!.outstanding == control.pointee.wake?.wakeOutstanding
+        guard sameoutstanding else { return false }
+        let samehostRequests = joins!.hostRequests == control.pointee.hostWakeRequests
+        guard samehostRequests else { return false }
+        let samefactRecords = joins!.factRecords == control.pointee.acceptedFactWakeRecords
+        guard samefactRecords else { return false }
+        let samefirstFact = joins!.firstFact == control.pointee.wakeFirstFactMicroseconds
+        guard samefirstFact else { return false }
+        let sameclock = joins!.clock == control.pointee.wakeClockMicroseconds
+        guard sameclock else { return false }
+        let samepointerCount = joins!.pointerCount == control.pointee.runtime.admission.pointerCount
+        guard samepointerCount else { return false }
+        let samestateCount = joins!.stateCount == control.pointee.runtime.admission.pendingStateCount
+        guard samestateCount else { return false }
+        let samecompletion = joins!.completion == control.pointee.runtime.admission.pendingCompletion
+        guard samecompletion else { return false }
+        #if !hasFeature(Embedded)
+        let currentEndpoints = control.pointee.backend.constructedEndpoints
+        #else
+        let currentEndpoints = 0
+        #endif
+        let sameendpoints = joins!.endpoints == currentEndpoints
+        guard sameendpoints else { return false }
+        let sameapplications = joins!.applications == control.pointee.applicationConstructions
+        guard sameapplications else { return false }
+        let samefinalized = joins!.finalized == control.pointee.finalized
+        guard samefinalized else { return false }
+        let sameapplied = joins!.applied == control.pointee.applied
+        guard sameapplied else { return false }
+        return true
+    }
+    @inline(never)
+    private mutating func matchesSemantic(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+        let present = semantic != nil
+        guard present else { return false }
+        let samescalarCount = semantic!.scalarCount == control.pointee.semanticSnapshot.scalarCount
+        guard samescalarCount else { return false }
+        let sametexts = semantic!.texts == control.pointee.semanticSnapshot.texts
+        guard sametexts else { return false }
+        let samedisabledMask = semantic!.disabledMask == control.pointee.semanticSnapshot.disabledMask
+        guard samedisabledMask else { return false }
+        let samedisabledCount = semantic!.disabledCount == control.pointee.semanticSnapshot.disabledCount
+        guard samedisabledCount else { return false }
+        let samecanvasOrigin = semantic!.canvasOrigin == control.pointee.semanticSnapshot.canvasOrigin
+        guard samecanvasOrigin else { return false }
+        for index in 0..<22 {
+            let same = semantic!.scalars[index] == control.pointee.semanticSnapshot.scalars[index]
+            guard same else { return false }
+        }
+        for index in 0..<4 {
+            let same = semantic!.textLengths[index] == control.pointee.semanticSnapshot.textLengths[index]
+            guard same else { return false }
+        }
+        return true
+    }
+    @inline(never)
+    private mutating func matchesAdmission(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+        let present = admission != nil
+        guard present else { return false }
+        let samependingStateCount = admission!.pendingStateCount == control.pointee.runtime.admission.pendingStateCount
+        guard samependingStateCount else { return false }
+        let samependingCompletion = admission!.pendingCompletion == control.pointee.runtime.admission.pendingCompletion
+        guard samependingCompletion else { return false }
+        let samesealedStateCount = admission!.sealedStateCount == control.pointee.runtime.admission.sealedStateCount
+        guard samesealedStateCount else { return false }
+        let samesealedStateCursor = admission!.sealedStateCursor == control.pointee.runtime.admission.sealedStateCursor
+        guard samesealedStateCursor else { return false }
+        let samesealedCompletion = admission!.sealedCompletion == control.pointee.runtime.admission.sealedCompletion
+        guard samesealedCompletion else { return false }
+        let samesealedAction = admission!.sealedAction == control.pointee.runtime.admission.sealedAction
+        guard samesealedAction else { return false }
+        let samesealedPointerCount = admission!.sealedPointerCount == control.pointee.runtime.admission.sealedPointerCount
+        guard samesealedPointerCount else { return false }
+        let samesealActive = admission!.sealActive == control.pointee.runtime.admission.sealActive
+        guard samesealActive else { return false }
+        for index in 0..<2 {
+            let samependingPointers = admission!.pendingPointers[index] == control.pointee.runtime.admission.pendingPointers[index]
+            guard samependingPointers else { return false }
+            let samesealedPointers = admission!.sealedPointers[index] == control.pointee.runtime.admission.sealedPointers[index]
+            guard samesealedPointers else { return false }
+        }
+        for index in 0..<34 {
+            let samependingStates = admission!.pendingStates[index] == control.pointee.runtime.admission.pendingStates[index]
+            guard samependingStates else { return false }
+            let samesealedStates = admission!.sealedStates[index] == control.pointee.runtime.admission.sealedStates[index]
+            guard samesealedStates else { return false }
+        }
+        return true
+    }
+    @inline(never)
+    mutating func matches(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
         let isFrozen = frozen; precondition(isFrozen)
         var now = control.pointee.scheduler, deadline = control.pointee.scheduler
         let schedulerReport = control.pointee.scheduler?.assemblyReport
         let boundary = control.pointee.wakeClockMicroseconds.addingReportingOverflow(250000)
         precondition(!boundary.overflow)
-        let sameruntimeSlot = runtimeSlot.matches(control)
+        let sameruntimeSlot = matchesRuntimeSlot(control)
         guard sameruntimeSlot else { return false }
-        let sameacceptedRecording = acceptedRecording.matches(control.pointee.lastFrame)
+        let sameacceptedRecording = matchesRecording(control)
         guard sameacceptedRecording else { return false }
-        let samejoins = joins == counterJoinSnapshot(control)
+        let samejoins = matchesJoins(control)
         guard samejoins else { return false }
         let samecontext = context == control.pointee.runtime.context
         guard samecontext else { return false }
@@ -1613,11 +1722,11 @@ fileprivate struct P08ReuseFingerprint: ~Copyable {
         guard samesequence else { return false }
         let samepresentation = presentation == control.pointee.runtime.committedPresentation
         guard samepresentation else { return false }
-        let samesemantic = semantic == control.pointee.semanticSnapshot
+        let samesemantic = matchesSemantic(control)
         guard samesemantic else { return false }
         let samedirty = dirty == control.pointee.runtime.changed
         guard samedirty else { return false }
-        let sameadmission = admission == control.pointee.runtime.admission
+        let sameadmission = matchesAdmission(control)
         guard sameadmission else { return false }
         let samecontrollerContext = controllerContext == control.pointee.admissionController?.context
         guard samecontrollerContext else { return false }
@@ -1659,14 +1768,14 @@ fileprivate struct P08ReuseFingerprint: ~Copyable {
     }
 }
 @inline(never)
-fileprivate func p08MatchesReuseFingerprint(_ expected: borrowing P08ReuseFingerprint,
+fileprivate func p08MatchesReuseFingerprint(_ expected: inout P08ReuseFingerprint,
     control: UnsafeMutablePointer<CounterControl>) -> Bool {
     expected.matches(control)
 }
 // Mutate one actual observed field at a time, restore it before the next read.
 // The sole frozen baseline is never refreshed or copied by these controls.
 @inline(never)
-fileprivate func p08CheckBaselineSensitivity(_ before: borrowing P08ReuseFingerprint,
+fileprivate func p08CheckBaselineSensitivity(_ before: inout P08ReuseFingerprint,
     control: UnsafeMutablePointer<CounterControl>) -> Int {
     let initialMatch = before.matches(control); precondition(initialMatch)
     guard let probe = control.pointee.lastFrame.glyphRecords[0] else { preconditionFailure("baseline glyph positive") }
@@ -1680,8 +1789,14 @@ fileprivate func p08CheckBaselineSensitivity(_ before: borrowing P08ReuseFingerp
         let original = control.pointee.runtimeRootIdentity
         var changed = SemanticCompleteIdentity()
         precondition(changed.append(.init(kind: .root)))
-        precondition(changed.append(.init(kind: .fixedChild, ordinal: 31)))
-        control.pointee.runtimeRootIdentity = original == changed ? nil : changed
+        precondition(changed.append(.init(kind: .fixedChild, ordinal: 4)))
+        if original == changed {
+            changed = SemanticCompleteIdentity()
+            precondition(changed.append(.init(kind: .root)))
+            precondition(changed.append(.init(kind: .fixedChild, ordinal: 3)))
+        }
+        precondition(original != changed)
+        control.pointee.runtimeRootIdentity = changed
         let rejects = !before.matches(control); precondition(rejects)
         control.pointee.runtimeRootIdentity = original
     }
@@ -1689,8 +1804,14 @@ fileprivate func p08CheckBaselineSensitivity(_ before: borrowing P08ReuseFingerp
         let original = control.pointee.runtimeActionIdentity
         var changed = SemanticCompleteIdentity()
         precondition(changed.append(.init(kind: .root)))
-        precondition(changed.append(.init(kind: .fixedChild, ordinal: 31)))
-        control.pointee.runtimeActionIdentity = original == changed ? nil : changed
+        precondition(changed.append(.init(kind: .fixedChild, ordinal: 4)))
+        if original == changed {
+            changed = SemanticCompleteIdentity()
+            precondition(changed.append(.init(kind: .root)))
+            precondition(changed.append(.init(kind: .fixedChild, ordinal: 3)))
+        }
+        precondition(original != changed)
+        control.pointee.runtimeActionIdentity = changed
         let rejects = !before.matches(control); precondition(rejects)
         control.pointee.runtimeActionIdentity = original
     }
@@ -1698,8 +1819,14 @@ fileprivate func p08CheckBaselineSensitivity(_ before: borrowing P08ReuseFingerp
         let original = control.pointee.runtimeCandidateRootIdentity
         var changed = SemanticCompleteIdentity()
         precondition(changed.append(.init(kind: .root)))
-        precondition(changed.append(.init(kind: .fixedChild, ordinal: 31)))
-        control.pointee.runtimeCandidateRootIdentity = original == changed ? nil : changed
+        precondition(changed.append(.init(kind: .fixedChild, ordinal: 4)))
+        if original == changed {
+            changed = SemanticCompleteIdentity()
+            precondition(changed.append(.init(kind: .root)))
+            precondition(changed.append(.init(kind: .fixedChild, ordinal: 3)))
+        }
+        precondition(original != changed)
+        control.pointee.runtimeCandidateRootIdentity = changed
         let rejects = !before.matches(control); precondition(rejects)
         control.pointee.runtimeCandidateRootIdentity = original
     }
@@ -1707,8 +1834,14 @@ fileprivate func p08CheckBaselineSensitivity(_ before: borrowing P08ReuseFingerp
         let original = control.pointee.runtimeCandidateActionIdentity
         var changed = SemanticCompleteIdentity()
         precondition(changed.append(.init(kind: .root)))
-        precondition(changed.append(.init(kind: .fixedChild, ordinal: 31)))
-        control.pointee.runtimeCandidateActionIdentity = original == changed ? nil : changed
+        precondition(changed.append(.init(kind: .fixedChild, ordinal: 4)))
+        if original == changed {
+            changed = SemanticCompleteIdentity()
+            precondition(changed.append(.init(kind: .root)))
+            precondition(changed.append(.init(kind: .fixedChild, ordinal: 3)))
+        }
+        precondition(original != changed)
+        control.pointee.runtimeCandidateActionIdentity = changed
         let rejects = !before.matches(control); precondition(rejects)
         control.pointee.runtimeCandidateActionIdentity = original
     }
@@ -1810,11 +1943,11 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
 }
 
 @inline(never)
-fileprivate func p08ReuseRejectAction<Owner>(host: borrowing SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, route: StaticString, before: borrowing P08ReuseFingerprint, modelBefore: UInt8, oldAction: CounterProducedAction) -> Int
+fileprivate func p08ReuseRejectAction<Owner>(host: borrowing SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, route: StaticString, before: inout P08ReuseFingerprint, modelBefore: UInt8, oldAction: CounterProducedAction) -> Int
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     let prepared = p08ReusePrepareAction(host: host, action: oldAction)
     precondition(!prepared)
-    let fingerprintUnchangedAfterPrepare = p08MatchesReuseFingerprint(before, control: control)
+    let fingerprintUnchangedAfterPrepare = p08MatchesReuseFingerprint(&before, control: control)
     let modelUnchangedAfterPrepare: Bool
     if fingerprintUnchangedAfterPrepare {
         modelUnchangedAfterPrepare = p08ReuseModelValue(host: host) == modelBefore
@@ -1825,7 +1958,7 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     precondition(unchangedAfterPrepare)
     let delivered = p08ReuseDeliverAction(host: host, action: oldAction)
     precondition(!delivered)
-    let fingerprintUnchangedAfterDelivery = p08MatchesReuseFingerprint(before, control: control)
+    let fingerprintUnchangedAfterDelivery = p08MatchesReuseFingerprint(&before, control: control)
     let modelUnchangedAfterDelivery: Bool
     if fingerprintUnchangedAfterDelivery {
         modelUnchangedAfterDelivery = p08ReuseModelValue(host: host) == modelBefore
@@ -1839,40 +1972,61 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
 }
 
 @inline(never)
-fileprivate func p08ReuseRejectInput<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString, before: borrowing P08ReuseFingerprint, modelBefore: UInt8, oldEvent: NormalizedPointerEvent) -> Void
+fileprivate func p08ReuseRejectInput<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString, before: inout P08ReuseFingerprint, modelBefore: UInt8, oldEvent: NormalizedPointerEvent) -> Void
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
-    let unchangedAfterInput = p08MatchesReuseFingerprint(before, control: control) && p08ReuseModelValue(host: host) == modelBefore
+    let fingerprintUnchangedAfterInput = p08MatchesReuseFingerprint(&before, control: control)
+    let modelUnchangedAfterInput: Bool
+    if fingerprintUnchangedAfterInput {
+        modelUnchangedAfterInput = p08ReuseModelValue(host: host) == modelBefore
+    } else {
+        modelUnchangedAfterInput = false
+    }
+    let unchangedAfterInput = fingerprintUnchangedAfterInput && modelUnchangedAfterInput
     precondition(unchangedAfterInput)
     p08ReuseLabel(route, "input-stale")
 }
 
 @inline(never)
-fileprivate func p08ReuseRejectAdmission<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString, before: borrowing P08ReuseFingerprint, modelBefore: UInt8, oldEvent: NormalizedPointerEvent) -> Void
+fileprivate func p08ReuseRejectAdmission<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString, before: inout P08ReuseFingerprint, modelBefore: UInt8, oldEvent: NormalizedPointerEvent) -> Void
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
     precondition(transcript.pointee.admission!.submit(stateChange: 8).result == .unavailable)
     precondition(transcript.pointee.admission!.submit(completion: 0).result == .unavailable)
-    let unchangedAfterAdmission = p08MatchesReuseFingerprint(before, control: control) && p08ReuseModelValue(host: host) == modelBefore
+    let fingerprintUnchangedAfterAdmission = p08MatchesReuseFingerprint(&before, control: control)
+    let modelUnchangedAfterAdmission: Bool
+    if fingerprintUnchangedAfterAdmission {
+        modelUnchangedAfterAdmission = p08ReuseModelValue(host: host) == modelBefore
+    } else {
+        modelUnchangedAfterAdmission = false
+    }
+    let unchangedAfterAdmission = fingerprintUnchangedAfterAdmission && modelUnchangedAfterAdmission
     precondition(unchangedAfterAdmission)
     p08ReuseLabel(route, "admission-stale")
 }
 
 @inline(never)
-fileprivate func p08ReuseRejectSource<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString, before: borrowing P08ReuseFingerprint, modelBefore: UInt8) -> Void
+fileprivate func p08ReuseRejectSource<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString, before: inout P08ReuseFingerprint, modelBefore: UInt8) -> Void
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     precondition(!transcript.pointee.application!.constructedProjectionIsValid)
     precondition(!transcript.pointee.application!.serviceSource(value: 8))
     precondition(!transcript.pointee.application!.startSource())
     _ = transcript.pointee.application!.installObservation()
     transcript.pointee.application!.stopDelivery()
-    let unchangedAfterSource = p08MatchesReuseFingerprint(before, control: control) && p08ReuseModelValue(host: host) == modelBefore
+    let fingerprintUnchangedAfterSource = p08MatchesReuseFingerprint(&before, control: control)
+    let modelUnchangedAfterSource: Bool
+    if fingerprintUnchangedAfterSource {
+        modelUnchangedAfterSource = p08ReuseModelValue(host: host) == modelBefore
+    } else {
+        modelUnchangedAfterSource = false
+    }
+    let unchangedAfterSource = fingerprintUnchangedAfterSource && modelUnchangedAfterSource
     precondition(unchangedAfterSource)
     p08ReuseLabel(route, "source-stale")
 }
 
 @inline(never)
-fileprivate func p08ReuseRejectOldOrigins<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString, action: CounterProducedAction, revision: PresentationRevision, baseline: UnsafeMutablePointer<P08ReuseFingerprint>) -> Int
+fileprivate func p08ReuseRejectOldOrigins<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString, action: CounterProducedAction, revision: PresentationRevision, baseline: inout P08ReuseFingerprint) -> Int
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     let oldAction = transcript.pointee.action!, oldEvent = transcript.pointee.event!
     precondition(action.captured == oldAction.captured && action.targetGeneration == oldAction.targetGeneration && action.targetIdentity == oldAction.targetIdentity)
@@ -1880,12 +2034,12 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     precondition(oldEvent.source == .init(rawValue: 0) && oldEvent.sequence.rawValue == 0 && oldEvent.ordinal.rawValue == 0 && oldEvent.presentationRevision == revision)
     p08ReuseLabel(route, "raw-namespace-collision")
     let modelBefore = p08ReuseModelValue(host: host)
-    baseline.pointee.capture(control)
-    let sensitivityChecks = p08CheckBaselineSensitivity(baseline.pointee, control: control)
-    let checks = p08ReuseRejectAction(host: host, control: control, route: route, before: baseline.pointee, modelBefore: modelBefore, oldAction: oldAction)
-    p08ReuseRejectInput(host: &host, control: control, transcript: transcript, route: route, before: baseline.pointee, modelBefore: modelBefore, oldEvent: oldEvent)
-    p08ReuseRejectAdmission(host: &host, control: control, transcript: transcript, route: route, before: baseline.pointee, modelBefore: modelBefore, oldEvent: oldEvent)
-    p08ReuseRejectSource(host: &host, control: control, transcript: transcript, route: route, before: baseline.pointee, modelBefore: modelBefore)
+    baseline.capture(control)
+    let sensitivityChecks = p08CheckBaselineSensitivity(&baseline, control: control)
+    let checks = p08ReuseRejectAction(host: host, control: control, route: route, before: &baseline, modelBefore: modelBefore, oldAction: oldAction)
+    p08ReuseRejectInput(host: &host, control: control, transcript: transcript, route: route, before: &baseline, modelBefore: modelBefore, oldEvent: oldEvent)
+    p08ReuseRejectAdmission(host: &host, control: control, transcript: transcript, route: route, before: &baseline, modelBefore: modelBefore, oldEvent: oldEvent)
+    p08ReuseRejectSource(host: &host, control: control, transcript: transcript, route: route, before: &baseline, modelBefore: modelBefore)
     return checks + sensitivityChecks
 }
 
@@ -1994,12 +2148,10 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     if transcript.pointee.hosts == 1 {
         #if hasFeature(Embedded)
         guard let baseline else { preconditionFailure("missing donor baseline") }
-        count += p08ReuseRejectOldOrigins(host: &host, control: control, transcript: transcript, route: route, action: action, revision: revision, baseline: baseline)
+        count += p08ReuseRejectOldOrigins(host: &host, control: control, transcript: transcript, route: route, action: action, revision: revision, baseline: &baseline.pointee)
         #else
         var localBaseline = P08ReuseFingerprint()
-        count += withUnsafeMutablePointer(to: &localBaseline) { baseline in
-            p08ReuseRejectOldOrigins(host: &host, control: control, transcript: transcript, route: route, action: action, revision: revision, baseline: baseline)
-        }
+        count += p08ReuseRejectOldOrigins(host: &host, control: control, transcript: transcript, route: route, action: action, revision: revision, baseline: &localBaseline)
         #endif
     }
     count += p08ReuseCurrentPointer(host: &host, control: control, transcript: transcript, action: action, revision: revision, admission: &admission)
@@ -2914,65 +3066,123 @@ fileprivate struct P08MetadataPointers: ~Copyable {
         foreignControl = donor.baseAddress!.advanced(by: offsets[6]).bindMemory(to: CounterControl.self, capacity: 1)
     }
 }
-// These cold frames return before any scoped/host callback. Normal typed
-// initialization may create temporaries; their actual stack is measured later.
+// Each normal typed constructor/destructor has a distinct cold boundary. Its
+// frame returns before another object phase or any scoped/host callback starts.
+@inline(never)
+fileprivate func p08InitializeMetadataOuter(_ pointer: UnsafeMutablePointer<P08EmbeddedOuter>,
+    active: UnsafeMutableRawBufferPointer, modelOwner: ObservableModelOwnerIdentity,
+    semanticOwner: SemanticRecordOwnerIdentity, surplus: Int) {
+    pointer.initialize(to: P08EmbeddedOuter(modelOwner: modelOwner, semanticOwner: semanticOwner,
+        backing: active, limits: counterActualLimits(.static), surplus: surplus))
+}
+@inline(never)
+fileprivate func p08InitializeMetadataOwner(_ pointer: UnsafeMutablePointer<P08TypedBackingOwner>,
+    outer: inout P08EmbeddedOuter, active: UnsafeMutableRawBufferPointer, invalidExtent: Bool) {
+    pointer.initialize(to: P08TypedBackingOwner(slots: .static(outer.storageSlots(r0Extent: invalidExtent ? MemoryLayout<CounterStaticCommitted>.stride - 1 : nil)), identity: UInt(bitPattern: active.baseAddress!)))
+}
+@inline(never)
+fileprivate func p08InitializeMetadataBaseline(_ pointer: UnsafeMutablePointer<P08ReuseFingerprint>) {
+    pointer.initialize(to: P08ReuseFingerprint())
+}
+@inline(never)
+fileprivate func p08InitializeMetadataInventory(_ pointer: UnsafeMutablePointer<InlineArray<14, P08InitializedEntry?>>) {
+    pointer.initialize(to: .init(repeating: nil))
+}
+@inline(never)
+fileprivate func p08InitializeMetadataTranscript(_ pointer: UnsafeMutablePointer<P08HostReuseTranscript>) {
+    pointer.initialize(to: P08HostReuseTranscript())
+}
+@inline(never)
+fileprivate func p08InitializeMetadataForeignRoot(_ pointer: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>) {
+    var namespace = ObservableModelOwnerNamespace()
+    do {
+        let identity = try namespace.issue()
+        precondition(identity.rawValue == 0)
+        pointer.initialize(to: StaticObservableRootAdapter(identity: identity, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
+    } catch { preconditionFailure("foreign metadata identity") }
+}
+@inline(never)
+fileprivate func p08InitializeMetadataForeignControl(_ pointer: UnsafeMutablePointer<CounterControl>) {
+    pointer.initialize(to: CounterControl())
+}
 @inline(never)
 fileprivate func p08PrepareMetadata(_ p: borrowing P08MetadataPointers,
     active: UnsafeMutableRawBufferPointer, modelOwner: ObservableModelOwnerIdentity,
     semanticOwner: SemanticRecordOwnerIdentity, surplus: Int, invalidExtent: Bool,
     stopAfter: UInt8, prefix: inout UInt8) {
-    let outer = p.outer
-    let owner = p.owner
-    let before = p.before
-    let original = p.original
-    let transcript = p.transcript
-    let foreignRoot = p.foreignRoot
-    let foreignControl = p.foreignControl
-
+    let outer = p.outer, owner = p.owner, before = p.before, original = p.original
+    let transcript = p.transcript, foreignRoot = p.foreignRoot, foreignControl = p.foreignControl
     precondition(prefix == 0 && stopAfter <= 7)
     if stopAfter == 0 { return }
-    outer.initialize(to: P08EmbeddedOuter(modelOwner: modelOwner, semanticOwner: semanticOwner,
-        backing: active, limits: counterActualLimits(.static), surplus: surplus)); prefix = 1
+    p08InitializeMetadataOuter(outer, active: active, modelOwner: modelOwner, semanticOwner: semanticOwner, surplus: surplus)
+    prefix = 1
     if stopAfter == 1 { return }
-    owner.initialize(to: P08TypedBackingOwner(slots: .static(outer.pointee.storageSlots(r0Extent: invalidExtent ? MemoryLayout<CounterStaticCommitted>.stride - 1 : nil)), identity: UInt(bitPattern: active.baseAddress!))); prefix = 2
+    p08InitializeMetadataOwner(owner, outer: &outer.pointee, active: active, invalidExtent: invalidExtent)
+    prefix = 2
     if stopAfter == 2 { return }
-    before.initialize(to: P08ReuseFingerprint()); prefix = 3
+    p08InitializeMetadataBaseline(before)
+    prefix = 3
     if stopAfter == 3 { return }
-    original.initialize(to: .init(repeating: nil)); prefix = 4
+    p08InitializeMetadataInventory(original)
+    prefix = 4
     if stopAfter == 4 { return }
-    transcript.initialize(to: P08HostReuseTranscript()); prefix = 5
+    p08InitializeMetadataTranscript(transcript)
+    prefix = 5
     if stopAfter == 5 { return }
-    var foreignNamespace = ObservableModelOwnerNamespace()
-    do {
-        let identity = try foreignNamespace.issue()
-        precondition(identity.rawValue == 0)
-        foreignRoot.initialize(to: StaticObservableRootAdapter(identity: identity, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
-    } catch { preconditionFailure("foreign metadata identity") }
+    p08InitializeMetadataForeignRoot(foreignRoot)
     prefix = 6
     if stopAfter == 6 { return }
-    foreignControl.initialize(to: CounterControl()); prefix = 7
+    p08InitializeMetadataForeignControl(foreignControl)
+    prefix = 7
+}
+@inline(never)
+fileprivate func p08FinishMetadataOwner(_ owner: inout P08TypedBackingOwner) -> Bool {
+    owner.finishMetadataReservation()
+}
+@inline(never)
+fileprivate func p08DestroyMetadataForeignControl(_ pointer: UnsafeMutablePointer<CounterControl>) {
+    pointer.pointee.requireVacantRuntimeSlot()
+    pointer.deinitialize(count: 1)
+}
+@inline(never)
+fileprivate func p08DestroyMetadataForeignRoot(_ pointer: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>) {
+    pointer.deinitialize(count: 1)
+}
+@inline(never)
+fileprivate func p08DestroyMetadataTranscript(_ pointer: UnsafeMutablePointer<P08HostReuseTranscript>) {
+    pointer.deinitialize(count: 1)
+}
+@inline(never)
+fileprivate func p08DestroyMetadataInventory(_ pointer: UnsafeMutablePointer<InlineArray<14, P08InitializedEntry?>>) {
+    pointer.deinitialize(count: 1)
+}
+@inline(never)
+fileprivate func p08DestroyMetadataBaseline(_ pointer: UnsafeMutablePointer<P08ReuseFingerprint>) {
+    pointer.deinitialize(count: 1)
+}
+@inline(never)
+fileprivate func p08DestroyMetadataOwner(_ pointer: UnsafeMutablePointer<P08TypedBackingOwner>) {
+    pointer.deinitialize(count: 1)
+}
+@inline(never)
+fileprivate func p08DestroyMetadataOuter(_ pointer: UnsafeMutablePointer<P08EmbeddedOuter>) {
+    pointer.deinitialize(count: 1)
 }
 @inline(never)
 fileprivate func p08DestroyMetadata(_ p: borrowing P08MetadataPointers, prefix: inout UInt8) -> Bool {
-    let outer = p.outer
-    let owner = p.owner
-    let before = p.before
-    let original = p.original
-    let transcript = p.transcript
-    let foreignRoot = p.foreignRoot
-    let foreignControl = p.foreignControl
-
+    let outer = p.outer, owner = p.owner, before = p.before, original = p.original
+    let transcript = p.transcript, foreignRoot = p.foreignRoot, foreignControl = p.foreignControl
     // Reserved/acquired0 is a metadata prefix, not an idle bank reservation.
     if prefix >= 2 {
-        guard owner.pointee.finishMetadataReservation() else { return false }
+        guard p08FinishMetadataOwner(&owner.pointee) else { return false }
     }
-    if prefix >= 7 { foreignControl.pointee.requireVacantRuntimeSlot(); foreignControl.deinitialize(count: 1) }
-    if prefix >= 6 { foreignRoot.deinitialize(count: 1) }
-    if prefix >= 5 { transcript.deinitialize(count: 1) }
-    if prefix >= 4 { original.deinitialize(count: 1) }
-    if prefix >= 3 { before.deinitialize(count: 1) }
-    if prefix >= 2 { owner.deinitialize(count: 1) }
-    if prefix >= 1 { outer.deinitialize(count: 1) }
+    if prefix >= 7 { p08DestroyMetadataForeignControl(foreignControl) }
+    if prefix >= 6 { p08DestroyMetadataForeignRoot(foreignRoot) }
+    if prefix >= 5 { p08DestroyMetadataTranscript(transcript) }
+    if prefix >= 4 { p08DestroyMetadataInventory(original) }
+    if prefix >= 3 { p08DestroyMetadataBaseline(before) }
+    if prefix >= 2 { p08DestroyMetadataOwner(owner) }
+    if prefix >= 1 { p08DestroyMetadataOuter(outer) }
     prefix = 0
     return true
 }
@@ -3067,79 +3277,130 @@ fileprivate struct P08CallerCustody: ~Copyable {
         for slot in 0..<4 { let idle = phases[slot] == .idle; precondition(idle) }
     }
 }
+// Dispatch before constructing a view or any case-specific owned temporary.
+// Every leaf receives the actual donor owner/outer lvalues; no consuming carrier
+// or second owner is created. Custody still encloses all original callbacks.
 @inline(never)
 fileprivate func p08RunMetadataCase(_ plan: P08EmbeddedCasePlan, pointers p: borrowing P08MetadataPointers,
     secondModel: ObservableModelOwnerIdentity?, secondSemantic: SemanticRecordOwnerIdentity?, write: CounterTiledPixelWrite?) -> Int {
-    let outerStorage = p.outer
-    let owner = p.owner
-    let before = p.before
-    let original = p.original
-    let transcript = p.transcript
-    let foreignRoot = p.foreignRoot
-    let foreignControl = p.foreignControl
-
-    let ids: InlineArray<14, P08PhysicalID?> = [.b0, .b1, .b2, .b3, .g0, .g1, .g2, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
     switch plan {
     case .metadataPrefix: return 1
     case .invalidExtent:
-        precondition(owner.pointee.initialize() == .invalidReservation)
-        original.pointee = owner.pointee.originalInventory()
-        for index in 0..<14 { precondition(original.pointee[index] == nil) }
-        return 1
+        return p08RunMetadataInvalid(owner: &p.owner.pointee, original: &p.original.pointee)
     case .fault(let id, let completed, let after):
-        let fault = P08AcquisitionFault(id: id, completed: completed, afterInstall: after)
-        precondition(owner.pointee.initialize(fault: fault) != nil)
-        return p08VerifyFault(owner.pointee, fault: fault, ids: ids, objects: 14)
-    default: break
+        return p08RunMetadataFault(owner: &p.owner.pointee, id: id, completed: completed, after: after)
+    case .graph:
+        return p08RunMetadataGraph(owner: &p.owner.pointee, outer: &p.outer.pointee)
+    case .host, .early, .candidate:
+        return p08RunMetadataHost(plan, owner: &p.owner.pointee, outer: &p.outer.pointee,
+            foreignRoot: p.foreignRoot, foreignControl: p.foreignControl, write: write)
+    case .twoHosts:
+        return p08RunMetadataTwoHosts(owner: &p.owner.pointee, outer: &p.outer.pointee,
+            before: p.before, original: &p.original.pointee, transcript: p.transcript,
+            foreignRoot: p.foreignRoot, foreignControl: p.foreignControl,
+            secondModel: secondModel, secondSemantic: secondSemantic, write: write)
+    case .exchange(let surplus):
+        return p08RunMetadataExchange(owner: &p.owner.pointee, outer: &p.outer.pointee, original: &p.original.pointee, surplus: surplus)
     }
-    precondition(initializeP08Backing(&owner.pointee) == nil)
-    let outer = p08MetadataOuterView(outerStorage.pointee)
+}
+@inline(never)
+fileprivate func p08RunMetadataInvalid(owner: inout P08TypedBackingOwner,
+    original: inout InlineArray<14, P08InitializedEntry?>) -> Int {
+    let invalid = owner.initialize() == .invalidReservation
+    precondition(invalid)
+    original = owner.originalInventory()
+    for index in 0..<14 { let empty = original[index] == nil; precondition(empty) }
+    return 1
+}
+@inline(never)
+fileprivate func p08RunMetadataFault(owner: inout P08TypedBackingOwner,
+    id: P08PhysicalID, completed: Int, after: Bool) -> Int {
+    let ids: InlineArray<14, P08PhysicalID?> = [.b0, .b1, .b2, .b3, .g0, .g1, .g2, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
+    let fault = P08AcquisitionFault(id: id, completed: completed, afterInstall: after)
+    let failed = owner.initialize(fault: fault) != nil
+    precondition(failed)
+    return p08VerifyFault(owner, fault: fault, ids: ids, objects: 14)
+}
+@inline(never)
+fileprivate func p08RunMetadataGraph(owner: inout P08TypedBackingOwner, outer: inout P08EmbeddedOuter) -> Int {
+    let initialized = initializeP08Backing(&owner) == nil
+    precondition(initialized)
+    let view = p08MetadataOuterView(outer)
+    return p08CheckGraphSelection(owner: owner, outer: view)
+}
+@inline(never)
+fileprivate func p08RunMetadataHost(_ plan: P08EmbeddedCasePlan,
+    owner: inout P08TypedBackingOwner, outer: inout P08EmbeddedOuter,
+    foreignRoot: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>,
+    foreignControl: UnsafeMutablePointer<CounterControl>, write: CounterTiledPixelWrite?) -> Int {
+    let initialized = initializeP08Backing(&owner) == nil
+    precondition(initialized)
+    let view = p08MetadataOuterView(outer)
     switch plan {
-    case .graph: return p08CheckGraphSelection(owner: owner.pointee, outer: outer)
     case .host(let scenario):
-        outer.control.pointee.terminalRetry = scenario == 2
-        outer.control.pointee.idleQuiesceMode = scenario >= 3 ? scenario - 1 : 0
-        return runP08StaticHost(owner: &owner.pointee, outer: outer, failAfterRuntime: scenario == 1, write: write, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
+        view.control.pointee.terminalRetry = scenario == 2
+        view.control.pointee.idleQuiesceMode = scenario >= 3 ? scenario - 1 : 0
+        return runP08StaticHost(owner: &owner, outer: view, failAfterRuntime: scenario == 1, write: write, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
     case .early(let early):
         precondition(early >= 1 && early <= 5)
-        return runP08StaticHost(owner: &owner.pointee, outer: outer, failAfterRuntime: false, early: early, write: write, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
+        return runP08StaticHost(owner: &owner, outer: view, failAfterRuntime: false, early: early, write: write, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
     case .candidate(let raw):
         precondition(raw <= 10)
-        return runP08StaticHost(owner: &owner.pointee, outer: outer, failAfterRuntime: false, candidateFailure: RuntimeCompletePipelineStage(rawValue: raw)!, write: write, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
-    case .twoHosts:
-        guard let secondModel, let secondSemantic else { preconditionFailure("second namespaces") }
-        original.pointee = owner.pointee.originalInventory()
-        let control = outer.control, address = UInt(bitPattern: outer.control)
-        p08RequireFreshControl(control)
-        var checks = runP08StaticHost(owner: &owner.pointee, outer: outer, failAfterRuntime: false, write: write, reuse: transcript, baseline: before, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
-        owner.pointee.requireEmpty(); p08RequireRetiredControl(control)
-        outer.reconstruct(modelOwner: secondModel, semanticOwner: secondSemantic)
-        p08ResetForeignMetadata(root: foreignRoot, control: foreignControl)
-        precondition(UInt(bitPattern: control) == address)
-        checks += runP08StaticHost(owner: &owner.pointee, outer: outer, failAfterRuntime: false, write: write, reuse: transcript, baseline: before, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
-        owner.pointee.requireEmpty()
-        p08RequireSameInventory(owner.pointee.originalInventory(), original.pointee)
-        p08RequireRetiredControl(control); transcript.pointee.endRetainedObservations()
-        owner.pointee.release()
-        precondition(transcript.pointee.hosts == 2)
-        checks += p08VerifyDestruction(owner.pointee.destructionTranscript(), original: original.pointee, expectedCount: 14)
-        p08ReuseLabel("static", "inventory-two-hosts"); p08ReuseLabel("static", "control-same-address"); p08ReuseLabel("static", "cleanup-backing-last")
-        return checks + 3
-    case .exchange(let surplus):
-        original.pointee = owner.pointee.originalInventory()
-        precondition(original.pointee[11]!.retainedBytes <= original.pointee[12]!.retainedBytes)
-        if surplus > 0 { precondition(original.pointee[11]!.retainedBytes < original.pointee[12]!.retainedBytes) }
-        var transcript = P08RoleTranscript()
-        var checks = withUnsafeMutablePointer(to: &transcript) { pointer in
-            owner.pointee.withStorage(transcript: pointer) { session in
-                var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise()
-            }
-        }
-        checks += p08VerifyRoleTranscript(transcript)
-        owner.pointee.release()
-        return checks + p08VerifyDestruction(owner.pointee.destructionTranscript(), original: original.pointee, expectedCount: 14)
-    case .invalidExtent, .fault, .metadataPrefix: preconditionFailure("handled before activation")
+        return runP08StaticHost(owner: &owner, outer: view, failAfterRuntime: false, candidateFailure: RuntimeCompletePipelineStage(rawValue: raw)!, write: write, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
+    default: preconditionFailure("non-host metadata case")
     }
+}
+@inline(never)
+fileprivate func p08RunMetadataTwoHosts(owner: inout P08TypedBackingOwner, outer: inout P08EmbeddedOuter,
+    before: UnsafeMutablePointer<P08ReuseFingerprint>, original: inout InlineArray<14, P08InitializedEntry?>,
+    transcript: UnsafeMutablePointer<P08HostReuseTranscript>,
+    foreignRoot: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>,
+    foreignControl: UnsafeMutablePointer<CounterControl>, secondModel: ObservableModelOwnerIdentity?,
+    secondSemantic: SemanticRecordOwnerIdentity?, write: CounterTiledPixelWrite?) -> Int {
+    let initialized = initializeP08Backing(&owner) == nil
+    precondition(initialized)
+    let view = p08MetadataOuterView(outer)
+    guard let secondModel, let secondSemantic else { preconditionFailure("second namespaces") }
+    original = owner.originalInventory()
+    let control = view.control, address = UInt(bitPattern: view.control)
+    p08RequireFreshControl(control)
+    var checks = runP08StaticHost(owner: &owner, outer: view, failAfterRuntime: false, write: write, reuse: transcript, baseline: before, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
+    owner.requireEmpty(); p08RequireRetiredControl(control)
+    view.reconstruct(modelOwner: secondModel, semanticOwner: secondSemantic)
+    p08ResetForeignMetadata(root: foreignRoot, control: foreignControl)
+    precondition(UInt(bitPattern: control) == address)
+    checks += runP08StaticHost(owner: &owner, outer: view, failAfterRuntime: false, write: write, reuse: transcript, baseline: before, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
+    owner.requireEmpty()
+    p08RequireSameInventory(owner.originalInventory(), original)
+    p08RequireRetiredControl(control); transcript.pointee.endRetainedObservations()
+    owner.release()
+    precondition(transcript.pointee.hosts == 2)
+    checks += p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
+    p08ReuseLabel("static", "inventory-two-hosts"); p08ReuseLabel("static", "control-same-address"); p08ReuseLabel("static", "cleanup-backing-last")
+    return checks + 3
+}
+@inline(never)
+fileprivate func p08RunMetadataExchange(owner: inout P08TypedBackingOwner, outer: inout P08EmbeddedOuter,
+    original: inout InlineArray<14, P08InitializedEntry?>, surplus: Int) -> Int {
+    let initialized = initializeP08Backing(&owner) == nil
+    precondition(initialized)
+    _ = p08MetadataOuterView(outer) // Preserve original checked outer-view queries even on exchange.
+    original = owner.originalInventory()
+    let enough = original[11]!.retainedBytes <= original[12]!.retainedBytes
+    precondition(enough)
+    if surplus > 0 {
+        let larger = original[11]!.retainedBytes < original[12]!.retainedBytes
+        precondition(larger)
+    }
+    var transcript = P08RoleTranscript()
+    var checks = withUnsafeMutablePointer(to: &transcript) { pointer in
+        owner.withStorage(transcript: pointer) { session in
+            var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise()
+        }
+    }
+    checks += p08VerifyRoleTranscript(transcript)
+    owner.release()
+    return checks + p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
 }
 fileprivate func p08EmbeddedGraph(custody: inout P08CallerCustody) -> Int {
     p08CheckGraphDefinition()
@@ -3205,13 +3466,10 @@ package func counterExerciseScopedStorage(backing: UnsafeMutableRawBufferPointer
 #if hasFeature(Embedded)
 @inline(never)
 fileprivate func p08ResetForeignMetadata(root: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>, control: UnsafeMutablePointer<CounterControl>) {
-    control.pointee.requireVacantRuntimeSlot()
-    control.deinitialize(count: 1); root.deinitialize(count: 1)
-    var namespace = ObservableModelOwnerNamespace()
-    do {
-        root.initialize(to: StaticObservableRootAdapter(identity: try namespace.issue(), schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
-    } catch { preconditionFailure("foreign metadata identity") }
-    control.initialize(to: CounterControl())
+    p08DestroyMetadataForeignControl(control)
+    p08DestroyMetadataForeignRoot(root)
+    p08InitializeMetadataForeignRoot(root)
+    p08InitializeMetadataForeignControl(control)
 }
 #endif
 

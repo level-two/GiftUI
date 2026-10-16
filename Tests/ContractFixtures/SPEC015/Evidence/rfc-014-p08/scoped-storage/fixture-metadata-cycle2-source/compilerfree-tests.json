@@ -1,0 +1,30 @@
+[
+  {
+    "argv": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts/contracts",
+      "-p",
+      "test_p08_layout_facts.py"
+    ],
+    "exit": 0,
+    "log": "test_p08_layout_facts.py.after.log"
+  },
+  {
+    "argv": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts/contracts",
+      "-p",
+      "test_p08_backend_observation.py"
+    ],
+    "exit": 0,
+    "log": "test_p08_backend_observation.py.after.log"
+  }
+]

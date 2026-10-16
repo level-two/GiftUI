@@ -441,7 +441,11 @@ class MetadataLayoutTests(unittest.TestCase):
         scoped = facts.METADATA_SOURCE.read_text()
         self.assertNotIn('P08ReuseFingerprint(control)', scoped)
         self.assertIn('let canCapture = !frozen; precondition(canCapture)', scoped)
-        self.assertIn('baseline.pointee.capture(control)', scoped)
+        origins = scoped.split('fileprivate func p08ReuseRejectOldOrigins<Owner>', 1)[1].split('fileprivate func p08ReuseCurrentPointer<Owner>', 1)[0]
+        self.assertIn('baseline: inout P08ReuseFingerprint', origins)
+        self.assertEqual(origins.count('baseline.capture(control)'), 1)
+        self.assertIn('p08CheckBaselineSensitivity(&baseline, control: control)', origins)
+        self.assertNotIn('baseline.pointee', origins)
 
 
 if __name__ == '__main__':

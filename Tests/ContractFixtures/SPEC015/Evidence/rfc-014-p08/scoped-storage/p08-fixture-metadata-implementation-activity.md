@@ -1,6 +1,14 @@
 # P08 fixture metadata implementation activity
 
-Current boundary: **final correction2 APPROACH PASS at `86c24639`; source not applied**.
+Current boundary: **final grouped correction2/2 source frozen; independent SOURCE
+review pending**. The [source freeze](p08-fixture-metadata-cycle2-source-freeze.md)
+implements the approved finite typed leaves, valid complete-key alternates,
+cold object boundaries and actual inout full baseline. Compiler-free parity,
+layout/source and backend tests pass; no compiler/runtime/image ran in this step.
+Correction2/2 is consumed; no third automatic variant. Current fit and runtime
+remain unproved. Historical closed allowances remain closed.
+
+Previous approach boundary: **final correction2 APPROACH PASS at `86c24639`**.
 [Independent approach review](p08-fixture-metadata-cycle2-independent-approach-review.md)
 confirms readiness for the final grouped correction under existing authorization;
 no fit or third variant is inferred. The [collected batch and
@@ -8,7 +16,7 @@ concrete approach](p08-fixture-metadata-cycle2-approach.md) preserve both profil
 27pass/execute -5/14blocked/384notrun each, with all5 exclusivity and2 projection
 controls passing. Native trap PC remains unproved. The existing nRF packet proves
 the invalid ordinal and pre-trap stack rejection. Correction1/2 remains consumed
-and productive; correction2/2 is not started. No new compiler/runtime/debugger or
+and productive; correction2/2 was not started at that earlier boundary. No new compiler/runtime/debugger or
 source variant ran in this analysis. P08 remains blocked; old allowances stay closed.
 
 Previous source boundary: **correction 1/2 focused SOURCE PASS at `31ecb1a5`**.

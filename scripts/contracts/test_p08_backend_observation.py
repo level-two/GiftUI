@@ -80,14 +80,19 @@ class BackendObservationTests(unittest.TestCase):
         self.assertIn('var submittedRows: UInt32 = 0', tiled)
         self.assertIn('submittedRows: backend.submittedRows', tiled)
 
-    def test_backend_is_in_same_equatable_baseline_and_guard_comparison(self):
+    def test_backend_is_in_same_complete_baseline_and_guard_comparison(self):
         owner = (FIXTURE / 'CounterPipelineOwner.swift').read_text()
         slot = owner.split('struct CounterRuntimeSlotObservation: Equatable {', 1)[1]
         self.assertIn('let backend: CounterBackendObservation', slot)
         self.assertIn('backend = counterObserveBackend(control.pointee.backend)', slot)
         scoped = (FIXTURE / 'CounterScopedStorage.swift').read_text()
-        self.assertIn('let runtimeSlot: CounterRuntimeSlotObservation', scoped)
-        self.assertIn('runtimeSlot = CounterRuntimeSlotObservation(control)', scoped)
+        self.assertIn('private var runtimeSlot = CounterRuntimeSlotBaseline()', scoped)
+        self.assertIn('runtimeSlot.capture(control)', scoped)
+        self.assertIn('runtimeSlot.matches(control)', scoped)
+        baseline = owner.split('struct CounterRuntimeSlotBaseline: ~Copyable {', 1)[1]
+        self.assertIn('private var backend: CounterBackendObservation?', baseline)
+        self.assertIn('backend = counterObserveBackend(control.pointee.backend)', baseline)
+        self.assertIn('backend == counterObserveBackend(control.pointee.backend)', baseline)
         guards = scoped.split('fileprivate func p08RuntimeSlotGuardControls(', 1)[1]
         self.assertEqual(guards.count('let before = CounterRuntimeSlotObservation(control)'), 1)
         self.assertIn('let same = CounterRuntimeSlotObservation(control) == before', guards)

@@ -1,0 +1,14 @@
+{
+  "python_ast": [
+    "scripts/contracts/check-spec-015-counter.py",
+    "scripts/contracts/test_p08_layout_facts.py",
+    "scripts/contracts/test_p08_backend_observation.py",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/fixture-metadata-cycle2-source/check-source-parity.py"
+  ],
+  "fixture_formatter_grammar_exit": 0,
+  "fixture_formatter_sha256": "aba619d9e6c35355beb53d1d2f069f51fd925f50fafc2071624faaeba4397898",
+  "maintained_formatter_exit": 0,
+  "whitespace_exit": 0,
+  "compiler_executed": false,
+  "runtime_executed": false
+}
