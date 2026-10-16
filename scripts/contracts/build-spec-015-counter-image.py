@@ -114,7 +114,7 @@ if args.profile == 'nrf52840-embedded':
                   macro_tool=str(macro.relative_to(ROOT)), macro_tool_sha256=digest(macro),
                   source_handoff_sha256=digest(output / 'counter-sources.cmake'),
                   layout_facts=str(facts_path.relative_to(ROOT)), layout_facts_sha256=digest(facts_path),
-                  layout_symbols=list(SYMBOLS),
+                  layout_symbols=list(ALL_SYMBOLS),
                   object_use='identity verification only; fresh firmware objects required')
 else:
     assert args.destination_json is not None, 'existing static SDK destination is required'
