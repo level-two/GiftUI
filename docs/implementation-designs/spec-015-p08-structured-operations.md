@@ -16,6 +16,15 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
+**Current direction: constructor/caller realization DESIGN, independent review
+pending.** The user authorized this new bounded package after independent final
+review `832a9c67`; [activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-activity.md)
+starts initial0/corrections0/2, preserving all prior closed budgets. The concrete
+combined mechanism is in [section D](#d-constructorcaller-realization-new-authorized-package).
+No new source or compiler execution. All limits/ownership/corpus contracts remain.
+
+Historical structured-package boundary:
+
 **Final result: all three focused collections PASS; main-stack resource FAIL independently confirmed.**
 The [independent exit review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-final-independent-review.md)
 supports STOP at `3b2bac94`. Source `597dbd7f`, review `3ce6f91f`; the
@@ -283,3 +292,174 @@ have not been compiled and no fit is guaranteed. A genuine inability to preserve
 the lifetime union or private-set observation boundary is the precise upstream
 decision point; it must not be hidden behind a raw pointer, generic escapable
 wrapper, extra owner, reduced corpus or resource exception.
+
+## D. Constructor/caller realization — new authorized package
+
+The independently reviewed final object requires cold29872 before additional
+original callback/outer/IRQ costs, versus main27648. Source `597dbd7f` has a3824
+session caller retaining the Optional host return destination while cold8408
+constructs session→supplied→owner and calls the3360 preset factory. One-host4064
+and owner.withStorage3056 also remain live. Separate functions are private fixture
+choices; the transfer/lifetime unions and state cases in SPEC-015 S15.1 and
+ADR-039 are mandatory. Core factory/init/state/pipeline contracts remain untouched.
+
+**Selected combined mechanism:** move only ordinary owned planning facts to the
+existing metadata object; project small original reservation facts before typed
+loans; then execute the existing construction/use transitions in one lexical
+operation without a second Optional-host return edge. This is not a simple undo
+of the successful constructor split. A merge alone could restore a large live
+frame (the earlier split reduced12664→3824), so all three changes form one candidate
+and both cold *and* live paths must be measured. No numerical saving is assumed.
+
+### D1. Owned planning in the existing donor metadata object
+
+Add `var hostPlan: P08HostRunFacts? = nil` inline to **existing** P08EmbeddedOuter.
+P08HostRunFacts contains only owned `RuntimeStorageAudit`, `CounterHostAssembly`
+and `RuntimeProfileLimits` (and owned check counts if required), no host/session,
+scoped value, pointer, callback or new bank. These are the exact current owned
+values, including the complete report/endpoint/ledger, not compact substitutes.
+The seven metadata objects/prefix transitions remain seven; outer's target-derived
+size/stride changes. This reuses its declared donor region, not an eighth binding,
+new owner, new slot or hidden allocation. Static/Dynamic Native routes use a local
+Optional facts variable under the same prepared-run operation; no heap is added.
+
+Use a **cold installer**, returning Void, to compute the existing checked outer
+view/25-region occupied sum and unchanged audit/assembly validation and assign the
+original `outer.hostPlan` field. Do not return their tuple to the live caller.
+The whole-outer setup loan and the hostPlan installer loan end before active
+execution. Then project original root/semantic/canvas/control and buffer addresses
+from outer, and lend **only** `&outer.hostPlan!` to the prepared runner. It takes
+those exact typed address/buffer arguments and `inout P08HostRunFacts`, not outer:
+
+```swift
+// Concrete, private; original field types and all existing profile options.
+p08InstallEmbeddedHostPlan(owner: &owner, outer: &outer) // returns Void
+let root = outer.root, semantic = outer.semantic, canvas = outer.canvas
+// Project remaining original address fields before the next field loan.
+let checks = p08RunPreparedStaticHost(owner: &owner, facts: &outer.hostPlan!,
+    rootStorage: root, semanticStorage: semantic, canvasStorage: canvas, /*…*/)
+p08ClearEmbeddedHostPlan(&outer.hostPlan) // only after prepared runner returns
+```
+
+Prepared execution preserves foreign scopes/check ordering, original root→semantic→
+canvas→owner.withStorage callbacks, options and exact result counts. It refers to
+actual facts fields, avoiding a new whole-facts/outer capture in nested callbacks.
+Copies required by existing consuming constructors still count. No callback has
+a pointer to the plan or may reenter its field loan; backend/model callbacks retain
+only their original Control/model authorities. No entire active Control/outer is
+mutably borrowed across reentry. The immutable plan is not a refreshed baseline.
+All actual runtime/backend/recording comparisons remain unchanged.
+
+Clear the field after the complete runner (including teardown) returns and before
+same-address reconstruction or next host setup. Each host recomputes its original
+audit/assembly; do not reuse first-host facts after reconstruction. Metadata outer
+initializes the added field to nil, and partial prefix/destruction handles it as
+an ordinary owned field of the existing initialized outer. No cold initializer
+frame is assumed absent: its full path is measured separately.
+
+Strict existing160-root extraction must remeasure outer and the complete seven-
+object pack; require checked alignment/disjointness/extent<=34720. No old15760
+extent qualifies this new type. All four slots remain charged138880; increased
+initialized metadata replaces formerly unused donor tail one-for-one. Record its
+actual size/stride and padding in the physical ledger and the existing fixture
+factory-metadata reporting as appropriate, without adding the same storage twice
+or omitting the newly initialized bytes. No C/Swift slot constant is changed or
+oversized temporary reservation guessed. Bounds failure rejects the candidate.
+
+### D2. Small original facts across the original14/9 loans
+
+Replace owner.withStorage's copied full `regions=inventory`, local entry lookup
+closure and explicit whole `physical=slots` copy with one cold checked preparation:
+14 original addresses, five complete c0/h0/r0/r1/h1 P08InitializedEntry values and
+their five capacities. Project them into named owned scalar/entry locals before
+the first loan; nested callbacks must not capture the preparation aggregate or
+the full14-entry inventory. Select `switch slots` and project individual b/g/bank
+slot wrappers before nesting, so the callbacks do not repeatedly capture whole
+P08PhysicalSlots/P08StaticSlots/P08DynamicSlots values. Do not change their types,
+copyability or actual bank ownership to obtain a compiler effect.
+
+Preparation reads the original owner's acquired inventory in the exact original
+physical-ID order, validates every required entry and returns **owned facts only**.
+It is neither a retained cache nor a new capability. Full entries preserve address,
+count/size/stride/alignment/retained extent; no cap/entry is reconstructed from a
+guess. The original owner still retains its full inventory/destruction ledger.
+Each actual pointer/address check, byte count, capacity mapping and five-bank role
+remains. Fourteen Static/nine Dynamic typed withBorrow calls stay nested in the
+same order, and the actual owner token is still created at its existing innermost
+source point. The existing cold StorageSession constructor and its copy-token
+union remain; its frame returns before the body as today. No preparation fact is
+substituted for that actual-owner token. Original serial/active setup precedes
+the body and requireEmpty/idle restoration follows all loans, unchanged.
+
+### D3. One scoped construction/use operation; cold join snapshots end early
+
+Inside the existing Static/Dynamic session runner, replace the separate
+`p08Construct…Host -> Optional<Host>` call with its exact lexical transitions.
+It now returns only the existing owned P08BodyResult. Do not create a stage enum,
+another consuming execution helper, or place a scoped host in metadata. Use the
+original mandatory types and the same preset factory, preserving all unions:
+
+| Phase | Actual owner/value and exit |
+|---|---|
+| session / early1 | consume original session; reset and return same unconstructed result |
+| supplied / early2 | same intoSupplied union; inert retirement/reset, return same result |
+| owner / early3 | same supplied+activationSpan initializer; all eight cleanup hooks before joins, return same constructed/unactivated result |
+| ordinary joins | exact six negative controls and original expected/foreignExpected full snapshots |
+| factory | consume that one owner in unchanged platform-specific preset factory |
+| host / early4 | one `var host = factory(…)` Optional; no payload extraction; same unactivated result |
+| host / ordinary or early5 | original Optional-chained operation, current/reuse/failure controls unchanged |
+| all host exits | lexical defer on that same Optional invokes original teardown/step8 assertion exactly once |
+
+Move snapshot creation inside a concrete cold join-check operation which calls
+the unchanged existing Static/Dynamic rejected-binding checks, returns only Int,
+and finishes **before** factory construction. Capture both complete originals
+once at the same point after early3 and before any attempted binding; preserve
+all six error kinds/order, construction/activation guards and full post-attempt
+comparisons. The wrapper may have its own charged cold frame; it is never live
+at the factory or later host execution. No change to HostProbe matching is needed.
+
+The lexical runner can retain construction homes throughout live execution;
+consumption does not imply stack release. D1/D2 therefore remove surrounding
+owned planning/closure materialization at the same time. The new lexical frame
+plus unchanged factory3360 and *all* lender/callback ancestors is the cold test;
+that same lexical frame plus deepest activation/reuse/observation/equality/
+teardown paths is the live test. A cold-only improvement is not acceptance.
+No owner defer is installed before its later consumption into the host. Early
+branches retain their original explicit cleanup, and common origin retirement/
+result projections/p08CompleteBody stay outside the unchanged scoped operation.
+
+### D4. Bounded source scope and validation
+
+One Swift fixture `CounterScopedStorage.swift`: new owned facts/inline outer field,
+cold installers/clearer/prepared runners, compact original entry preparation and
+two lexical session runners/join wrappers. No core Host/Owner/State or probe source
+change is planned. Supporting changes are existing source/layout tests, immutable
+source freeze, exact seven component applicability checks and driver pin. If an
+actual compiled component input changes, rebuild it; never invent a metadata
+exception. No class of compiler/control/runtime receipt is silently reused.
+
+Before source review, invert the finite refactor against the current source and
+check all fields/order,14/9 loans, token placement/full union, early1–5/joins/
+defer/eight hooks, metadata prefixes/custody/donor range map,48/2266 selections,
+full baseline64 records/four keys/156 sensitivity checks and26 labels. Include
+mutation negatives for original entry addresses/capacities, plan loan boundaries,
+full join snapshots and cleanup order; owned Boolean/ordinary-if guards preserve
+effect skips and avoid borrowed aggregate assertion captures. Format/parse and
+compiler-free harness/governance checks precede independent SOURCE review.
+
+After SOURCE PASS, the same fresh nRF160-root module/layout screen runs first,
+then both Native runtime+five exclusivity+two projection collections independently
+collect failures. Exact recipes and qualified paths come from the final source
+freeze;384/202 omissions stay explicit. Screen original14/9 callback paths and
+both new cold installer and lexical constructor, active/current/stale/cleanup/
+reconstruction/destruction paths; account caller return buffers, BL/tail edges,
+SUBW/alignment and indirect unknowns. No assumed inlining or moved-value elision.
+Reject immediately if a required lower bound exceeds main27648 or actual total
+RAM196608; do not spend full202/image runs on a disproved realization. If no lower
+bound fails, still require a complete current path bound/IRQ and remaining
+coverage/image/ABI/allocator/linked-memory evidence before P08 acceptance.
+
+This initial-plus-max2 grouped-correction package does not guarantee fit, reset
+older allowances or authorize a third blind variant. An inability to express the
+same original lifetime union or disjoint actual plan/outer loans is the precise
+contract question to report, not permission to erase a lifetime or use raw storage.

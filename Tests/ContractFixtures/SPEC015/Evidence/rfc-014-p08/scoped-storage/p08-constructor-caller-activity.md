@@ -31,3 +31,17 @@ Full current nRF202/image proceeds only with viable complete current resource
 paths. No compiler/source experiment is authorized during this design step.
 P08/R07/T8.1/HC-RD-003 and all nine SO criteria remain open. I4-07/analyzer,
 P09–P12 and hardware/timing boundaries are unchanged. Independent review follows.
+
+Design handoff: [section D of the existing note](../../../../../../docs/implementation-designs/spec-015-p08-structured-operations.md#d-constructorcaller-realization-new-authorized-package) specifies inline owned planning in the existing outer metadata object,
+actual-field installer/execution loan separation, compact original14/9-loan facts,
+and one lexical typed construction/use operation with cold full join checks.
+The previous split tradeoff is explicit: live construction homes remain charged;
+no fit/elision is predicted. The new actual outer/pack layout must be remeasured
+with unchanged160 roots and checked against34720, four full slots charged138880.
+Design-only scope is one future Swift fixture plus existing tests/pins, no core API.
+Source/compile/diagnostic0; ready for independent DESIGN assessment.
+
+Documentary checks: governance PASS (204 authority nodes/2036 edges;7 features/
+76 lifecycle artifacts/9 skills) and `git diff --check` PASS. Current navigation
+headers now name this activity and mark older donor/structured headers historical.
+No source, compiler, build, runtime, image or hardware operation was performed.

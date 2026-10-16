@@ -1,6 +1,17 @@
 # RFC-014 task context guide
 
-Current P08 activity — **authorized combined structural design; no new source/run**.
+Current P08 activity — **authorized constructor/caller DESIGN; no new source/run**.
+The [new bounded activity](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-activity.md) records user authorization after
+[structured final review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-final-independent-review.md) `832a9c67`. The previous package has all3 focused PASS but
+required cold29872 > main27648 before omitted callbacks/IRQ; prior2/2 remains
+closed. New initial0/correction0/2: owned planning in existing metadata, compact
+original loan facts and a single lexical constructor/use operation await independent
+DESIGN review. Main27648/RAM196608/four34720 slots and all ownership/corpus
+contracts remain. P08/SO acceptance open; full202/image held pending viability.
+
+Historical earlier navigation follows.
+
+Historical P08 activity — **authorized combined structural design; no new source/run**.
 The [activity and bounded design](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-activity.md) group construction/session, sensitivity
 and inner observation costs with main27648/RAM196608/four slots unchanged. Independent
 design review PASS at `a73a8032`; initial source is ready, correction0/2, all historical budgets closed. Earlier

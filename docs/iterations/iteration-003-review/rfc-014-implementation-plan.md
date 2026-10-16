@@ -1,6 +1,17 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current donor-metadata boundary — **STOP; focused behavior/layout PASS, resource FAIL, 2026-10-16**.
+Current P08 activity — **authorized constructor/caller DESIGN; no new source/run**.
+The [new bounded activity](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-activity.md) records user authorization after
+[structured final review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-final-independent-review.md) `832a9c67`. The previous package has all3 focused PASS but
+required cold29872 > main27648 before omitted callbacks/IRQ; prior2/2 remains
+closed. New initial0/correction0/2: owned planning in existing metadata, compact
+original loan facts and a single lexical constructor/use operation await independent
+DESIGN review. Main27648/RAM196608/four34720 slots and all ownership/corpus
+contracts remain. P08/SO acceptance open; full202/image held pending viability.
+
+Historical earlier navigation follows.
+
+Historical donor-metadata boundary — **STOP; focused behavior/layout PASS, resource FAIL, 2026-10-16**.
 The [final current result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-final-result.md) preserves three passing fresh focused collections:
 nRF25/layout160 roots, Native42 per profile and3,472,410 assertions with zero failures.
 The required current stack subset66,104 + retained backing138,880 =204,984 exceeds
