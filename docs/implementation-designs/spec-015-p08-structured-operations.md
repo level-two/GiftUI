@@ -16,8 +16,9 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
-**Final result: all three focused collections PASS; main-stack resource rejection
-remains.** Source `597dbd7f`, review `3ce6f91f`; the
+**Final result: all three focused collections PASS; main-stack resource FAIL independently confirmed.**
+The [independent exit review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-final-independent-review.md)
+supports STOP at `3b2bac94`. Source `597dbd7f`, review `3ce6f91f`; the
 [current final result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-final-result.md)
 pins current object evidence and required cold29872 > main27648 before omitted
 original bank-loan/outer/IRQ costs. Correction2/2 is exhausted; this package is

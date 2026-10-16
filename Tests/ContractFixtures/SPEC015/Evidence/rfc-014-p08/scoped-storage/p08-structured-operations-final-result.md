@@ -1,6 +1,8 @@
 # P08 structured operations — final focused result and resource boundary
 
 **STOP: current focused behavior/layout PASS; required construction stack FAIL.**
+The [independent final review](p08-structured-operations-final-independent-review.md)
+confirms main-stack FAIL/STOP at `3b2bac94`; no total-RAM failure or contract amendment is inferred.
 Source `597dbd7f`, independent SOURCE review `3ce6f91f`, passing receipt checkpoint
 `37ae3bd3`. Correction2/2 is consumed and this bounded package is closed; no third
 automatic source variant. Historical closed budgets remain closed. This result
@@ -118,7 +120,7 @@ The next decision must use this measured boundary. This package permits no furth
 automatic correction or unmeasured attribute/helper loop. Further work would need
 an explicitly bounded, source-grounded realization or resource assessment with
 its own authority; these results do not establish that accepted contracts must
-change, nor authorize raising main27648/RAM196608. Independent result review is next.
+change, nor authorize raising main27648/RAM196608. Independent result review confirms the stop.
 
 Verification: both compressed packets' members matched their individual SHA256
 manifest entries; actual receipt/object identities matched. Governance passes

@@ -6,7 +6,8 @@ collections PASS, required cold main-stack lower bound29872 >27648**. See the
 `37ae3bd3` for source `597dbd7f`, SOURCE review `3ce6f91f`. The bound omits additional
 original bank-loan/outer/IRQ costs and is not a total-RAM failure claim. Full202/
 image held; no third automatic source variant. The package is closed with P08/SO
-acceptance open. Independent result review follows; historical allowances remain
+acceptance open. The [independent final review](p08-structured-operations-final-independent-review.md)
+confirms the main-stack resource FAIL/STOP; historical allowances remain
 closed. Total current-package nRF focused screens3, Native focused collections6,
 image0. Read-only analysis added no compiler/runtime execution or source change.
 
