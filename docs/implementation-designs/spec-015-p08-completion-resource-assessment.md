@@ -16,6 +16,15 @@ superseded_by: null
 
 # P08 completion and resource assessment
 
+The subsequent [frozen-artifact worksheet](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-worksheet.md)
+identifies a material applicability gap: normal firmware recompiles all 24 owners
+with differing flags and active raster/text branches. The frozen contract-object
+failure does not prove final firmware fit/failure. Its concrete next step is a
+narrow image-handoff registry fix, full current nRF collection and the normal
+guarded image build at unchanged limits, before source optimization or a numerical
+stack amendment. This refines the measurement protocol below; no scratch-link or
+partial-receipt bypass is proposed.
+
 This derived assessment selects no new source variant or resource limit. SPEC-015
 remains **implementing**, its plan active and P08/R07/T8.1 open. The applicable
 work is ITERATION-003 I3-04/I3-05 runtime-derived counter and four-configuration

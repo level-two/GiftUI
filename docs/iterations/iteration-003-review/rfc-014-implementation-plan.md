@@ -1,6 +1,13 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current P08 activity — **constructor/caller final STOP: focused behavior/layout PASS, cold-stack FAIL**.
+Current P08 boundary — **contract-object stack FAIL; final firmware fit unknown**.
+The [frozen-artifact worksheet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-worksheet.md)
+finds differing normal-firmware flags and fresh recompilation of all 24 owners.
+Next is the narrow registry handoff fix, complete nRF collection and normal
+guarded image measurement at unchanged limits, before another source optimization.
+No source/build/runtime/link was added by this worksheet; repair budgets stay closed.
+
+Constructor/caller package final STOP — focused behavior/layout PASS, contract-object cold-stack FAIL.
 The [final current result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-result.md)
 pins source `51cfc960`, SOURCE review `ee10d2f1`, three current focused passes and
 required cold28288 >27648 with further original callbacks/outer/IRQ omitted.

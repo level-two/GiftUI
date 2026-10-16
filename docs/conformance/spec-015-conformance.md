@@ -19,6 +19,12 @@ superseded_by: null
 
 # SPEC-015 Conformance Report
 
+The [resource worksheet](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-worksheet.md)
+clarifies applicability: the contract-object failure below does not establish
+final firmware fit/failure, because the normal image recompiles 24 owners with
+differing flags. A complete current nRF collection and normal guarded image are
+the next resource-evidence prerequisite; all acceptance dispositions remain open.
+
 Current P08 boundary — **focused behavior/layout passes; main-stack failure**.
 The [current result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-result.md)
 and [independent exit review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-independent-review.md)

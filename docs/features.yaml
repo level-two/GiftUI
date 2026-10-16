@@ -22,7 +22,9 @@ features:
     # ADR-039 accepted; exact S11/S13/S15 amendments approved/applied 2026-10-13; nine SO criteria unmet.
     # Provenance: docs/iterations/iteration-003-review/rfc-015-contract-acceptance.md.
     # FW-038 captures validation cost and P08 test/application consolidation for RFC-013 / ITERATION-004 design; no current checks or contract change.
-    # Current P08 assessment: docs/implementation-designs/spec-015-p08-completion-resource-assessment.md; no source/limit/allowance change.
+    # Current P08 worksheet: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resource-worksheet.md; contract-object failure preserved, final firmware fit unknown because 24 owners recompile with differing flags.
+    # Next evidence: narrow image-handoff registry fix, full nRF collection, normal guarded firmware build under unchanged limits; no source optimization or allowance reset.
+    # Assessment: docs/implementation-designs/spec-015-p08-completion-resource-assessment.md; no source/limit/allowance change.
     # Constructor/caller final STOP independently reviewed: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-independent-review.md.
     # Source 51cfc960: three focused passes, Native 3,472,564 assertions/0 failures, nRF 160 roots; required cold 28,288 > main 27,648 before omitted costs.
     # Complete peak/current image/total-RAM failure unproved; correction 2/2 closed; full 384/202 omissions explicit; P08/R07/T8.1 and full SO criteria open.

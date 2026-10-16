@@ -1,5 +1,13 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+Current evidence prerequisite — **normal final firmware codegen and resources unknown**.
+The [frozen-artifact worksheet](scoped-storage/p08-resource-worksheet.md) finds that
+the normal image recompiles 24 owners with differing flags. Contract-object stack
+failure stays valid for that object; final firmware fit/failure is unproved. The
+concrete next package is the narrow image-handoff registry correction, complete
+nRF collection and normal guarded image build at unchanged limits. No source
+optimization or repair-budget reset follows.
+
 Current P08 boundary — **constructor/caller package STOP independently confirmed; assessment**.
 The [final result](scoped-storage/p08-constructor-caller-final-result.md) and
 [independent exit review](scoped-storage/p08-constructor-caller-final-independent-review.md)
