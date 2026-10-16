@@ -1,5 +1,10 @@
 # P08 structural memory reduction assessment
 
+Current boundary: **focused independent DESIGN PASS at `cb273c6f`; B01/B02 closed**.
+[Reassessment](p08-fixture-metadata-independent-design-reassessment.md) confirms the
+complete reservation map and caller custody. Next is only the proposed one-shot
+31-root existing-type diagnostic; no source implementation allowance or fit claim.
+
 Eugene explicitly said “Please proceed” after the independently confirmed resource
 failure and the choice between structural reduction and explicit resource authority.
 This activity keeps RAM 196,608 and main stack 27,648 unchanged. Entry `4f7ee009`;

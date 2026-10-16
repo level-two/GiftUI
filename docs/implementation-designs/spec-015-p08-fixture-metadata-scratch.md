@@ -16,12 +16,15 @@ superseded_by: null
 
 # P08 scoped fixture metadata backing
 
-**Grouped B01/B02 design correction ready for focused reassessment; no diagnostic/source execution.**
+**Focused independent DESIGN PASS at `cb273c6f`; B01/B02 closed at design scope.**
+[Reassessment](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-independent-design-reassessment.md)
+finds the finite map/custody ready for the one specified layout diagnostic; no
+implementation allowance or fit acceptance is created.
 [Focused authority/realization review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-independent-design-review.md)
 historically blocked `5b382914` on surplus overlap and missing prebinding custody.
 The finite ranges and caller-stack custody below replace those incomplete rules.
-No contract amendment has been identified; reassessment precedes the proposed
-diagnostic. The proposal remains unimplemented and all earlier budgets stay closed.
+No contract amendment has been identified; focused reassessment now passes before
+the proposed diagnostic. The proposal remains unimplemented and all earlier budgets stay closed.
 
 This is one replaceable physical proposal, not Specification authority or source
 approval. [New authorization/activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structural-memory-reduction-activity.md)
