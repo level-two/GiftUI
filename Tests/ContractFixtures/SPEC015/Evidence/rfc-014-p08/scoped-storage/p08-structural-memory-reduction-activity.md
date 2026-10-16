@@ -1,0 +1,32 @@
+# P08 structural memory reduction assessment
+
+Eugene explicitly said “Please proceed” after the independently confirmed resource
+failure and the choice between structural reduction and explicit resource authority.
+This activity keeps RAM 196,608 and main stack 27,648 unchanged. Entry `4f7ee009`;
+source remains the reviewed control-resident/measured-sizing realization. All prior
+implementation, diagnostic and narrow rerun allowances remain closed. The tooling/
+sizing activity remains at corrections 0/2 and stopped at its resource boundary;
+its unused corrections do not become optimization permission.
+
+The current assignment is bounded design/assessment from existing source and exact
+object `p08-counter-nl16wjri/P08CounterRuntime.o`, SHA-256
+`dd12ac00c0d5558e18b9ad1afc975a44c321a04eada6773723c82030cb105ea7`.
+No compiler, source variant, hardware, limit, workload or ownership-contract change
+is authorized during this design stage. Produce one concrete costed mechanism,
+bounded file list, borrow/cleanup map and early validation plan for independent
+review. Implementation may begin only after the internal design is concrete,
+reviewed within authority and its new bounded allowance is recorded; no earlier
+budget is reset or inferred.
+
+Target the actual outer reservation/reuse/baseline construction homes, preserving
+all original physical IDs, five banks, geometry, model/root lenders, complete
+four-key and 64-recording observations, one unchanged before baseline, positive
+twins, original scopes, eight cleanup hooks and backing-last release. No heap,
+new global, raw uninitialized aggregate, checksum weakening or inferred move
+elision. All four retained slots remain charged unless authority explicitly
+permits another realization; no count/workload change is assumed.
+
+The [current rejection](p08-measured-sizing-stack-preflight-result.md) remains
+immutable: backing 138,880 plus required stack lower bound 71,088 exceeds RAM
+196,608 before omitted costs. P08 and aggregate gates remain blocked throughout
+assessment. Known generated pycache is unrelated and untouched.
