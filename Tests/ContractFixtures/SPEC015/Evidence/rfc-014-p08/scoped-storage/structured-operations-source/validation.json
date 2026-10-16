@@ -1,0 +1,115 @@
+{
+  "kind": "compiler-free-source-readiness-only",
+  "checks": [
+    {
+      "check": "43 compiler-free layout/source and backend tests",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "scripts/contracts/test_p08_layout_facts.py",
+        "scripts/contracts/test_p08_backend_observation.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "...........................................\n----------------------------------------------------------------------\nRan 43 tests in 0.163s\n\nOK\n"
+    },
+    {
+      "check": "bounded exact source parity",
+      "argv": [
+        "python3",
+        "-B",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/structured-operations-source/check-source-parity.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"kind\": \"compiler-free-structured-operations-source-parity\",\n  \"baseline\": \"ee56c020\",\n  \"checks_passed\": 60,\n  \"checks\": [\n    \"P08CallerCustody unchanged\",\n    \"p08EmbeddedGraph unchanged\",\n    \"p08EmbeddedHost unchanged\",\n    \"p08EmbeddedScoped unchanged\",\n    \"p08DeriveMetadataLayout unchanged\",\n    \"p08RunEmbeddedCorpus unchanged\",\n    \"p08RequireSameInventory unchanged\",\n    \"p08MetadataOuterView unchanged\",\n    \"p08CompleteBody unchanged\",\n    \"runP08ScopedBody unchanged\",\n    \"runP08StaticHost unchanged\",\n    \"runP08DynamicHost unchanged\",\n    \"p08RunMetadataCase unchanged\",\n    \"p08RunMetadataHost unchanged\",\n    \"p08RunMetadataExchange unchanged\",\n    \"p08PrepareMetadata unchanged\",\n    \"p08DestroyMetadata unchanged\",\n    \"p08ReuseRejectOldOrigins unchanged\",\n    \"p08ReuseCurrentPointer unchanged\",\n    \"p08FinishStaticOwner exact eight-hook/host operations\",\n    \"p08RunStaticHostPhase exact eight-hook/host operations\",\n    \"Static cold early cleanup/joins/factory exact\",\n    \"Static one Optional host declaration\",\n    \"Static same payload use/teardown\",\n    \"Static early4 before activation path\",\n    \"Static teardown then original owned step8\",\n    \"p08FinishDynamicOwner exact eight-hook/host operations\",\n    \"p08RunDynamicHostPhase exact eight-hook/host operations\",\n    \"Dynamic cold early cleanup/joins/factory exact\",\n    \"Dynamic one Optional host declaration\",\n    \"Dynamic same payload use/teardown\",\n    \"Dynamic early4 before activation path\",\n    \"Dynamic teardown then original owned step8\",\n    \"two-host original effects/oracle order retained through concrete operations\",\n    \"two calls one per-host operation\",\n    \"one original view inside per-host operation\",\n    \"two complete return lifetime unions\",\n    \"two explicit negative owner constraints\",\n    \"same complete baseline stored fields\",\n    \"capture once same all facts\",\n    \"matchesJoins exact full field map\",\n    \"matchesSemantic exact full field map\",\n    \"matchesAdmission exact full field map\",\n    \"main full fingerprint guard operands and order\",\n    \"literal reuse label multiset unchanged\",\n    \"all original checked model skips/effects unchanged\",\n    \"owned recording equality witness unchanged\",\n    \"runtime baseline stored inventory unchanged\",\n    \"runtime slot all actual backend/phase/keys and endpoint order\",\n    \"CounterNativeRaster exact all non-health capture operands/order\",\n    \"CounterNativeRaster exact all non-health guard operands/order\",\n    \"CounterNativeRaster pure actual health\",\n    \"CounterNativeRaster old owned guard oracle unchanged\",\n    \"CounterNativeRaster no unsafe writable core sink projection\",\n    \"CounterTiledRaster exact all non-health capture operands/order\",\n    \"CounterTiledRaster exact all non-health guard operands/order\",\n    \"CounterTiledRaster pure actual health\",\n    \"CounterTiledRaster old owned guard oracle unchanged\",\n    \"CounterTiledRaster no unsafe writable core sink projection\",\n    \"checked metadata derivation unchanged\"\n  ],\n  \"compiler_or_runtime\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "check": "CounterScopedStorage parser only",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "CounterPipelineOwner parser only",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "CounterNativeRaster parser only",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "CounterTiledRaster parser only",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "governance",
+      "argv": [
+        "scripts/validate-governance.rb"
+      ],
+      "exit_code": 0,
+      "stdout": "Authority graph validation passed: 204 nodes, 2036 edges.\nTask evidence validation passed: SPEC-001 all tasks (72 task(s)).\nTask evidence validation passed: SPEC-002 all tasks (33 task(s)).\nTask evidence validation passed: SPEC-003 all tasks (31 task(s)).\nTask evidence validation passed: SPEC-004 all tasks (30 task(s)).\nTask evidence validation passed: SPEC-005 all tasks (31 task(s)).\nTask evidence validation passed: SPEC-011 all tasks (53 task(s)).\nGovernance validation passed: 7 feature(s), 76 lifecycle artifact(s), 9 skill(s).\n",
+      "stderr": ""
+    },
+    {
+      "check": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "python_ast_paths": 3,
+  "maintained_formatter": {
+    "argv": [
+      "env",
+      "PATH=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+      "scripts/format-swift.sh"
+    ],
+    "exit_code": 0,
+    "maintained_source_changes": false
+  },
+  "compiler_invocations": 0,
+  "runtime_executions": 0,
+  "fit_claim": false
+}

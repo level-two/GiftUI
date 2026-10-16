@@ -248,7 +248,7 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
         actual = CounterNativeEndpoint(effectivePresentation: configuration.effectivePresentation, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, textMetrics: construction.text.metrics(), textRaster: construction.text.raster(), textRasterRealization: construction.text.realization, envelopeValidator: CounterNativeEnvelope(expected: nil), sink: adapter, startupFailure: nil)!
     }
     // Pure typed field observations; no callback or whole-Control loan.
-    borrowing func captureBaseline(into baseline: inout CounterEndpointBaseline) {
+    mutating func captureBaselinePrefix(into baseline: inout CounterEndpointBaseline) {
         baseline.effectivePresentation = actual.effectivePresentation
         baseline.descriptor = actual.descriptor
         baseline.payloadLimits = actual.payloadLimits
@@ -265,14 +265,16 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
         baseline.presentationAccepted = actual.sink.presentationResponsibilityAccepted
         baseline.sinkProducerError = actual.sink.retainedProducerError
         baseline.idle = actual.sink.isIdleForOffer
-        baseline.health = actual.health()
-        baseline.recording.capture(actual.sink.recording)
+    }
+    borrowing func baselineHealth() -> GiftUIOperationalHealth { actual.health() }
+    mutating func captureBaselineSuffix(into baseline: inout CounterEndpointBaseline) {
+        baseline.recording.captureEndpoint(&self)
         baseline.targetConfiguration = actual.sink.target.configuration
         baseline.writer = nil
         baseline.nativeReservation = actual.sink.reservation
         baseline.nativeGlyphHeader = actual.sink.glyphHeader
     }
-    borrowing func matchesBaseline(_ baseline: borrowing CounterEndpointBaseline) -> Bool {
+    mutating func matchesBaselinePrefix(_ baseline: inout CounterEndpointBaseline) -> Bool {
         let sameeffectivePresentation = baseline.effectivePresentation == actual.effectivePresentation
         guard sameeffectivePresentation else { return false }
         let samedescriptor = baseline.descriptor == actual.descriptor
@@ -305,9 +307,10 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
         guard samesinkProducerError else { return false }
         let sameidle = baseline.idle == actual.sink.isIdleForOffer
         guard sameidle else { return false }
-        let samehealth = baseline.health == actual.health()
-        guard samehealth else { return false }
-        let samerecording = baseline.recording.matches(actual.sink.recording)
+        return true
+    }
+    mutating func matchesBaselineSuffix(_ baseline: inout CounterEndpointBaseline) -> Bool {
+        let samerecording = baseline.recording.matchesEndpoint(&self)
         guard samerecording else { return false }
         let sametargetConfiguration = baseline.targetConfiguration == actual.sink.target.configuration
         guard sametargetConfiguration else { return false }

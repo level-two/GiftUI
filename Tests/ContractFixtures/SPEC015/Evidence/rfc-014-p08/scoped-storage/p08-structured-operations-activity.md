@@ -1,18 +1,18 @@
 # P08 structured construction and observation operations activity
 
-Current boundary: **independent DESIGN PASS at `a73a8032`; ready for initial source**.
-The [bounded design review](p08-structured-operations-independent-design-review.md)
-identifies no contract amendment or design blocker. Source/compilation not started.
-The user explicitly requested proceeding while covering several related issues
-together and avoiding unnecessary turbulence. This new bounded internal package
-addresses the [independently confirmed resource rejection](p08-fixture-metadata-final-independent-review.md)
-at `edf81787`; previous donor-metadata2/2 and every earlier allowance remain closed.
-Current source stays `6449093d`; its successful focused behavior and failed physical
-fit remain immutable evidence, not a renewed source attempt.
+Current boundary: **combined initial SOURCE FROZEN; independent SOURCE review pending**.
+The [source-readiness record](p08-structured-operations-initial-source.md) and
+[exact manifest](structured-operations-source/manifest.json) pin the four-fixture
+candidate against `ee56c020` and its new seven-receipt qualification. Design PASS
+`ee56c020` is historical design evidence, not source/compiler/fit evidence.
+The user requested proceeding while covering related issues together and avoiding
+unnecessary turbulence. Previous donor-metadata2/2 and every earlier allowance
+remain closed. The prior `6449093d` successful focused behavior and independently
+confirmed66104 resource rejection remain immutable prior-source evidence.
 
 Scope: one combined initial implementation plus at most two cause-grouped
 corrective cycles, stopping after two consecutive unproductive cycles or a genuine
-contract/scope/resource decision. Current correction0/2; initial source0, compiler0,
+contract/scope/resource decision. Current correction0/2; initial source1, compiler0,
 runtime0, image0 in this package. Mechanical source-review issues are grouped in
 the coherent pass/cycle, not individual user permission barriers. Independent
 design PASS precedes implementation; independent SOURCE review precedes execution.

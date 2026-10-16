@@ -1,0 +1,56 @@
+{
+  "kind": "fresh-seven-receipt-argv-exclusion-check",
+  "receipts": [
+    {
+      "receipt": ".build/contracts/p08-scoped-host-ezcy1qan/result.json",
+      "profile": "macos-dynamic",
+      "receipt_sha256": "8ccd2c004117f31f1843584fb157b5a0b5f93669505db88166eafe83f871c64d",
+      "actual_swift_argv_count": 53,
+      "changed_compiled_inputs": []
+    },
+    {
+      "receipt": ".build/contracts/p08-scoped-host-hzs5q7za/result.json",
+      "profile": "macos-static",
+      "receipt_sha256": "beb3d31b312391d266e2ca525b0274aec741629664fb9d55aaca721421bf4216",
+      "actual_swift_argv_count": 53,
+      "changed_compiled_inputs": []
+    },
+    {
+      "receipt": ".build/contracts/spec-011-owned-keys/tmp0vz0ql4d/macos-dynamic/result.json",
+      "profile": "macos-dynamic",
+      "receipt_sha256": "8c0c5c2d3cda5681dd110eb947cf05b06fd403f16c0c5503f5b99de32cf7f78f",
+      "actual_swift_argv_count": 112,
+      "changed_compiled_inputs": []
+    },
+    {
+      "receipt": ".build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic/result.json",
+      "profile": "macos-dynamic",
+      "receipt_sha256": "ec640f13aedd202725ad02e52a5e56e56357b5d3e034b3792788fe95feae4446",
+      "actual_swift_argv_count": 173,
+      "changed_compiled_inputs": []
+    },
+    {
+      "receipt": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/result.json",
+      "profile": "macos-static",
+      "receipt_sha256": "1199fd13fc4d309c36f3ddfccac3002ab497641a3fb6483902d97571c9ca923f",
+      "actual_swift_argv_count": 173,
+      "changed_compiled_inputs": []
+    },
+    {
+      "receipt": ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded/result.json",
+      "profile": "nrf52840-embedded",
+      "receipt_sha256": "104c405d2f0c9abb44c47670fde33ae44bf70877f91df11e66f07acd14168d8c",
+      "actual_swift_argv_count": 159,
+      "changed_compiled_inputs": []
+    },
+    {
+      "receipt": ".build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpsb8yw4yu/raspberry-pi-armv6/result.json",
+      "profile": "raspberry-pi-armv6",
+      "receipt_sha256": "36f739426100acd7df8c943b50022f9216c2cd2581235f5794b3afeb35f823a3",
+      "actual_swift_argv_count": 172,
+      "changed_compiled_inputs": []
+    }
+  ],
+  "changed_counter_inputs_require_fresh_module": true,
+  "compiler_executed": false
+}

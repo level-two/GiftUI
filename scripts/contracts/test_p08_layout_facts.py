@@ -430,11 +430,21 @@ class MetadataLayoutTests(unittest.TestCase):
         fields = re.findall(r'    let (\w+):', observation)
         for filename in ('CounterNativeRaster.swift', 'CounterTiledRaster.swift'):
             source = (directory / filename).read_text()
-            capture = source.split('func captureBaseline(')[1].split('func matchesBaseline(')[0]
-            match = source.split('func matchesBaseline(')[1].split('var ownedObservation:')[0]
+            capture = source.split('func captureBaselinePrefix(')[1].split('func matchesBaselinePrefix(')[0]
+            match = source.split('func matchesBaselinePrefix(')[1].split('var ownedObservation:')[0]
             for field in fields:
-                self.assertIn('baseline.' + field, capture)
-                self.assertIn('baseline.' + field, match)
+                if field == 'health':
+                    self.assertIn('baselineHealth() -> GiftUIOperationalHealth { actual.health() }', capture)
+                    runtime = pipeline.split('struct CounterRuntimeSlotBaseline:')[1]
+                    self.assertIn('endpoint.health = control.pointee.runtimeEndpoint?.baselineHealth()', runtime)
+                    self.assertIn('endpoint.health == control.pointee.runtimeEndpoint?.baselineHealth()', runtime)
+                else:
+                    self.assertIn('baseline.' + field, capture)
+                    self.assertIn('baseline.' + field, match)
+            self.assertIn('baseline.recording.captureEndpoint(&self)', capture)
+            self.assertIn('baseline.recording.matchesEndpoint(&self)', match)
+            self.assertNotIn('recording.matches(actual.sink.recording)', match)
+            self.assertNotIn('&actual.sink', capture + match)
         recording = pipeline.split('struct CounterRecordingObservation:')[1].split('struct CounterWriterObservation:')[0]
         self.assertIn('for index in 0..<64', recording)
         self.assertNotIn('let a =', recording)
@@ -446,6 +456,50 @@ class MetadataLayoutTests(unittest.TestCase):
         self.assertEqual(origins.count('baseline.capture(control)'), 1)
         self.assertIn('p08CheckBaselineSensitivity(&baseline, control: control)', origins)
         self.assertNotIn('baseline.pointee', origins)
+
+    def test_original_recording_operations_compare_complete_actual_fields(self):
+        pipeline = (facts.METADATA_SOURCE.parent / 'CounterPipelineOwner.swift').read_text()
+        recording = pipeline.split('struct CounterRecordingObservation:')[1].split('struct CounterWriterObservation:')[0]
+        fields = ('capacity', 'header', 'operations', 'glyphs', 'strokes', 'finishes', 'discards', 'firstPoint', 'secondPoint', 'strokeHeader')
+        for operation, current in [('Accepted', 'control.pointee.lastFrame'), ('Endpoint', 'endpoint.actual.sink.recording')]:
+            body = recording.split('mutating func matches' + operation + '(')[1].split('return true')[0]
+            def complete(text):
+                return all('value.' + field + ' == ' + current + '.' + field in text for field in fields) and 'for index in 0..<64' in text and 'value.glyphRecords[index] == ' + current + '.glyphRecords[index]' in text
+            self.assertTrue(complete(body))
+            for field in fields:
+                self.assertFalse(complete(body.replace('value.' + field + ' == ', 'nil == ', 1)))
+            self.assertFalse(complete(body.replace('0..<64', '0..<63')))
+            self.assertNotIn('borrowing CounterRenderSink', body)
+
+    def test_complete_key_probe_recipes_and_saved_restoration(self):
+        pipeline = (facts.METADATA_SOURCE.parent / 'CounterPipelineOwner.swift').read_text()
+        slot = pipeline.split('struct CounterRuntimeSlotBaseline:')[1]
+        for index, (saved, actual) in enumerate([('root', 'runtimeRootIdentity'), ('action', 'runtimeActionIdentity'), ('candidateRoot', 'runtimeCandidateRootIdentity'), ('candidateAction', 'runtimeCandidateActionIdentity')]):
+            body = slot.split('mutating func installKeyProbe' + str(index) + '(')[1].split('mutating func restoreKeyProbe' + str(index) + '(')[0]
+            self.assertEqual(body.count('kind: .root'), 2)
+            self.assertIn('ordinal: 4', body)
+            self.assertIn('ordinal: 3', body)
+            self.assertIn('let distinct = ' + saved + ' != changed; precondition(distinct)', body)
+            self.assertIn('control.pointee.' + actual + ' = changed', body)
+            restore = slot.split('mutating func restoreKeyProbe' + str(index) + '(')[1].split('}')[0]
+            self.assertIn('control.pointee.' + actual + ' = ' + saved, restore)
+            self.assertNotIn('ordinal: 31', body)
+
+    def test_sensitivity_full_false_then_restore_then_full_true(self):
+        source = facts.METADATA_SOURCE.read_text()
+        sensitivity = source.split('fileprivate func p08CheckBaselineSensitivity(')[1].split('// Borrow the host only')[0]
+        self.assertIn('for index in 0..<64', sensitivity)
+        for index in range(4):
+            install = sensitivity.index('before.installKeyProbe' + str(index) + '(control)')
+            rejected = sensitivity.index('let rejects' + str(index) + ' = !before.matches(control)', install)
+            restore = sensitivity.index('before.restoreKeyProbe' + str(index) + '(control)', rejected)
+            positive = sensitivity.index('let restored' + str(index) + ' = before.matches(control)', restore)
+            self.assertLess(install, rejected)
+            self.assertLess(rejected, restore)
+            self.assertLess(restore, positive)
+        self.assertEqual(sensitivity.count('let restored = before.matches(control)'), 10)
+        self.assertIn('return 156', sensitivity)
+        self.assertNotIn('.capture(', sensitivity)
 
 
 if __name__ == '__main__':

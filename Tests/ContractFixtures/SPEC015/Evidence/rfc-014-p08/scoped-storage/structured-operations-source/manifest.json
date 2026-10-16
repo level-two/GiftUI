@@ -1,0 +1,131 @@
+{
+  "kind": "initial-combined-source-freeze-not-compiler-proof",
+  "baseline_commit": "ee56c020",
+  "design_commit": "a73a8032",
+  "independent_design_review": "ee56c020",
+  "initial_source_candidates": 1,
+  "corrective_cycles_consumed": 0,
+  "corrective_cycles_maximum": 2,
+  "stop_after_consecutive_unproductive_cycles": 2,
+  "historical_allowances": "closed unchanged",
+  "compiler_invocations": 0,
+  "runtime_executions": 0,
+  "fit_claim": false,
+  "changed_files": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+      "before_sha256": "ff3fb1a1fca3158aaed8c10fe454353af6aed9f5d9e0a8e7bcb42b3677ac9f7a",
+      "sha256": "019b93d8eb91129275cc55e6a89f7784007e6c35ca609620d1c54f4221b6d8d9"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "before_sha256": "c2b7436d13ba83782611eaaa25c54a8978b16aa7e8c985240bfcb477ffcf2a12",
+      "sha256": "bd3134fc54b67da5856c90ea0fdaf97490423be70747f452cbc8a7a7e9fd85f6"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+      "before_sha256": "1f305bcc1e86d48eea5a41edac6584dff13148915ca53abec793e39fc4709a25",
+      "sha256": "096e3e57b5cacbc83fc2d2fc0b649d24d7907f1a70e48c7880c26e530e65c144"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": {
+      "before_sha256": "e097106bce9fcf96f193969660572ef5d3a4604bf7c8ff62d3225c6428a30031",
+      "sha256": "e41e6701f9e565fccbeda2d53e6c007f04e667fad3d193c50a8cfc64127340a7"
+    },
+    "scripts/contracts/check-spec-015-counter.py": {
+      "before_sha256": "14a9f30ae98740c38cb898d27f7d3f267970f69a7240ce1ab759eb1831390255",
+      "sha256": "525fd89588123e605bace395ded66ab824b7ee05ff5f0fd0d4df674dd95bba10"
+    },
+    "scripts/contracts/test_p08_layout_facts.py": {
+      "before_sha256": "cc526589baece6411f0468b542e8c2836075d96288328a112fb73335a6123714",
+      "sha256": "ee8b95ae120001ad9d7f8faebede16d2a56d98797c1f80479d248c5f5d638a8b"
+    }
+  },
+  "source_diff_sha256": "c7aa30c3d3fc458d0df8289b0fc2c010aee01fd97813f9a2bc4acdcca27da274",
+  "compressed_diff_sha256": "c401015ac3644675862249a132fdc7afe77d5b4c92ad8a51c8ad06e6183b26a6",
+  "qualification": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-initial-applicability.json",
+    "sha256": "299077e35fd67853a51ed791df47b9a9c180f2d3b852cde98652feac07351056"
+  },
+  "source_parity_checks": 60,
+  "compilerfree_tests": {
+    "layout_and_source": 37,
+    "backend_observation": 6
+  },
+  "existing_layout_roots": 160,
+  "active_roots": 129,
+  "metadata_roots": 31,
+  "base_selection_groups": 48,
+  "base_selections": 2266,
+  "metadata_prefix_controls": 8,
+  "retained_slots": 4,
+  "retained_slot_bytes": 34720,
+  "retained_backing_bytes": 138880,
+  "metadata_type_storage": "unchanged source declarations; actual new target layout still required",
+  "compiler_base_controls": {
+    "native": 384,
+    "embedded": 202
+  },
+  "native_exclusivity_controls": 5,
+  "projection_controls": 2,
+  "registered_reuse_labels": 26,
+  "sensitivity_logical_checks_before": 79,
+  "sensitivity_logical_checks_current": 156,
+  "fresh_screen_argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    "--collect-failures",
+    "--fresh-focused",
+    "--select-family",
+    "so07-layout-facts"
+  ],
+  "native_focused_argv": {
+    "macos-dynamic": [
+      "scripts/contracts/run-spec-015.sh",
+      "--profile",
+      "macos-dynamic",
+      "--corpus",
+      "rfc-014-counter",
+      "--runtime-build",
+      ".build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic",
+      "--host-build",
+      ".build/contracts/p08-scoped-host-ezcy1qan",
+      "--collect-failures",
+      "--fresh-focused",
+      "--select-family",
+      "runtime",
+      "--select-family",
+      "so06-native-exclusivity",
+      "--select-family",
+      "control-resident-projection"
+    ],
+    "macos-static": [
+      "scripts/contracts/run-spec-015.sh",
+      "--profile",
+      "macos-static",
+      "--corpus",
+      "rfc-014-counter",
+      "--runtime-build",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      "--host-build",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      "--collect-failures",
+      "--fresh-focused",
+      "--select-family",
+      "runtime",
+      "--select-family",
+      "so06-native-exclusivity",
+      "--select-family",
+      "control-resident-projection"
+    ]
+  },
+  "qualification_check_sha256": "f9c638ab5e0062630737a37af6fa1eff076ed3107bfab1e915c9d8a64d4f8597",
+  "source_parity_result_sha256": "0318c1c4ebc9f366e0c1ac721145b7ddcaff6d7f1c54ec0c42731c4842c48dd6",
+  "validation_sha256": "ed74e10615c0abef48a9c7cbf8ead919fc2dc0bb9cb197af08ca49b61d3381ee",
+  "supporting_files": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/structured-operations-source/check-source-parity.py": "090ef11ebc1d67266043f7414fed6c2316ac9b383004601454b117f363a40c7c"
+  }
+}

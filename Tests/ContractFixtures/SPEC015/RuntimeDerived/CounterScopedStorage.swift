@@ -1564,7 +1564,7 @@ fileprivate struct P08ReuseFingerprint: ~Copyable {
     mutating func capture(_ control: UnsafeMutablePointer<CounterControl>) {
         let canCapture = !frozen; precondition(canCapture)
         runtimeSlot.capture(control)
-        acceptedRecording.capture(control.pointee.lastFrame)
+        acceptedRecording.captureAccepted(control)
         joins = counterJoinSnapshot(control); context = control.pointee.runtime.context
         capture = control.pointee.runtime.pointer.capture.current; source = control.pointee.runtime.pointer.source
         sequence = control.pointee.runtime.pointer.sequence
@@ -1591,6 +1591,30 @@ fileprivate struct P08ReuseFingerprint: ~Copyable {
         lastDispatchContext = control.pointee.lastDispatchContext; actionDispatches = control.pointee.actionDispatches
         frozen = true
     }
+    @inline(never)
+    mutating func installRecordingProbe(_ index: Int, control: UnsafeMutablePointer<CounterControl>) {
+        acceptedRecording.installAcceptedProbe(index, control: control)
+    }
+    @inline(never)
+    mutating func restoreRecordingProbe(_ index: Int, control: UnsafeMutablePointer<CounterControl>) {
+        acceptedRecording.restoreAcceptedProbe(index, control: control)
+    }
+    @inline(never)
+    mutating func installKeyProbe0(_ control: UnsafeMutablePointer<CounterControl>) { runtimeSlot.installKeyProbe0(control) }
+    @inline(never)
+    mutating func restoreKeyProbe0(_ control: UnsafeMutablePointer<CounterControl>) { runtimeSlot.restoreKeyProbe0(control) }
+    @inline(never)
+    mutating func installKeyProbe1(_ control: UnsafeMutablePointer<CounterControl>) { runtimeSlot.installKeyProbe1(control) }
+    @inline(never)
+    mutating func restoreKeyProbe1(_ control: UnsafeMutablePointer<CounterControl>) { runtimeSlot.restoreKeyProbe1(control) }
+    @inline(never)
+    mutating func installKeyProbe2(_ control: UnsafeMutablePointer<CounterControl>) { runtimeSlot.installKeyProbe2(control) }
+    @inline(never)
+    mutating func restoreKeyProbe2(_ control: UnsafeMutablePointer<CounterControl>) { runtimeSlot.restoreKeyProbe2(control) }
+    @inline(never)
+    mutating func installKeyProbe3(_ control: UnsafeMutablePointer<CounterControl>) { runtimeSlot.installKeyProbe3(control) }
+    @inline(never)
+    mutating func restoreKeyProbe3(_ control: UnsafeMutablePointer<CounterControl>) { runtimeSlot.restoreKeyProbe3(control) }
     // Concrete formal operations split independent comparison homes. They do
     // not write the once-frozen facts or construct a full current observation.
     // `mutating` selects an inout self convention; these match operations only read.
@@ -1600,7 +1624,7 @@ fileprivate struct P08ReuseFingerprint: ~Copyable {
     }
     @inline(never)
     private mutating func matchesRecording(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
-        acceptedRecording.matches(control.pointee.lastFrame)
+        acceptedRecording.matchesAccepted(control)
     }
     @inline(never)
     private mutating func matchesJoins(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
@@ -1700,10 +1724,20 @@ fileprivate struct P08ReuseFingerprint: ~Copyable {
         return true
     }
     @inline(never)
+    private mutating func matchesSchedulerNow(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+        var scheduler = control.pointee.scheduler
+        let report = control.pointee.scheduler?.assemblyReport
+        return schedulerNow == scheduler?.begin(at: control.pointee.wakeClockMicroseconds, lifecycleState: .active, assemblyReport: report!)
+    }
+    @inline(never)
+    private mutating func matchesSchedulerDeadline(_ control: UnsafeMutablePointer<CounterControl>, boundary: UInt64) -> Bool {
+        var scheduler = control.pointee.scheduler
+        let report = control.pointee.scheduler?.assemblyReport
+        return schedulerDeadline == scheduler?.begin(at: boundary, lifecycleState: .active, assemblyReport: report!)
+    }
+    @inline(never)
     mutating func matches(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
         let isFrozen = frozen; precondition(isFrozen)
-        var now = control.pointee.scheduler, deadline = control.pointee.scheduler
-        let schedulerReport = control.pointee.scheduler?.assemblyReport
         let boundary = control.pointee.wakeClockMicroseconds.addingReportingOverflow(250000)
         precondition(!boundary.overflow)
         let sameruntimeSlot = matchesRuntimeSlot(control)
@@ -1738,9 +1772,9 @@ fileprivate struct P08ReuseFingerprint: ~Copyable {
         guard samecontrollerSeal else { return false }
         let samecontrollerDeferred = controllerDeferred == control.pointee.admissionController?.didDeferAfterSeal
         guard samecontrollerDeferred else { return false }
-        let sameschedulerNow = schedulerNow == now?.begin(at: control.pointee.wakeClockMicroseconds, lifecycleState: .active, assemblyReport: schedulerReport!)
+        let sameschedulerNow = matchesSchedulerNow(control)
         guard sameschedulerNow else { return false }
-        let sameschedulerDeadline = schedulerDeadline == deadline?.begin(at: boundary.partialValue, lifecycleState: .active, assemblyReport: schedulerReport!)
+        let sameschedulerDeadline = matchesSchedulerDeadline(control, boundary: boundary.partialValue)
         guard sameschedulerDeadline else { return false }
         let samewakeTakes = wakeTakes == control.pointee.wakeTakes
         guard samewakeTakes else { return false }
@@ -1778,129 +1812,93 @@ fileprivate func p08MatchesReuseFingerprint(_ expected: inout P08ReuseFingerprin
 fileprivate func p08CheckBaselineSensitivity(_ before: inout P08ReuseFingerprint,
     control: UnsafeMutablePointer<CounterControl>) -> Int {
     let initialMatch = before.matches(control); precondition(initialMatch)
-    guard let probe = control.pointee.lastFrame.glyphRecords[0] else { preconditionFailure("baseline glyph positive") }
     for index in 0..<64 {
-        let original = control.pointee.lastFrame.glyphRecords[index]
-        control.pointee.lastFrame.glyphRecords[index] = original == nil ? probe : nil
+        before.installRecordingProbe(index, control: control)
         let rejects = !before.matches(control); precondition(rejects)
-        control.pointee.lastFrame.glyphRecords[index] = original
+        before.restoreRecordingProbe(index, control: control)
+        let restored = before.matches(control); precondition(restored)
     }
-    do {
-        let original = control.pointee.runtimeRootIdentity
-        var changed = SemanticCompleteIdentity()
-        precondition(changed.append(.init(kind: .root)))
-        precondition(changed.append(.init(kind: .fixedChild, ordinal: 4)))
-        if original == changed {
-            changed = SemanticCompleteIdentity()
-            precondition(changed.append(.init(kind: .root)))
-            precondition(changed.append(.init(kind: .fixedChild, ordinal: 3)))
-        }
-        precondition(original != changed)
-        control.pointee.runtimeRootIdentity = changed
-        let rejects = !before.matches(control); precondition(rejects)
-        control.pointee.runtimeRootIdentity = original
-    }
-    do {
-        let original = control.pointee.runtimeActionIdentity
-        var changed = SemanticCompleteIdentity()
-        precondition(changed.append(.init(kind: .root)))
-        precondition(changed.append(.init(kind: .fixedChild, ordinal: 4)))
-        if original == changed {
-            changed = SemanticCompleteIdentity()
-            precondition(changed.append(.init(kind: .root)))
-            precondition(changed.append(.init(kind: .fixedChild, ordinal: 3)))
-        }
-        precondition(original != changed)
-        control.pointee.runtimeActionIdentity = changed
-        let rejects = !before.matches(control); precondition(rejects)
-        control.pointee.runtimeActionIdentity = original
-    }
-    do {
-        let original = control.pointee.runtimeCandidateRootIdentity
-        var changed = SemanticCompleteIdentity()
-        precondition(changed.append(.init(kind: .root)))
-        precondition(changed.append(.init(kind: .fixedChild, ordinal: 4)))
-        if original == changed {
-            changed = SemanticCompleteIdentity()
-            precondition(changed.append(.init(kind: .root)))
-            precondition(changed.append(.init(kind: .fixedChild, ordinal: 3)))
-        }
-        precondition(original != changed)
-        control.pointee.runtimeCandidateRootIdentity = changed
-        let rejects = !before.matches(control); precondition(rejects)
-        control.pointee.runtimeCandidateRootIdentity = original
-    }
-    do {
-        let original = control.pointee.runtimeCandidateActionIdentity
-        var changed = SemanticCompleteIdentity()
-        precondition(changed.append(.init(kind: .root)))
-        precondition(changed.append(.init(kind: .fixedChild, ordinal: 4)))
-        if original == changed {
-            changed = SemanticCompleteIdentity()
-            precondition(changed.append(.init(kind: .root)))
-            precondition(changed.append(.init(kind: .fixedChild, ordinal: 3)))
-        }
-        precondition(original != changed)
-        control.pointee.runtimeCandidateActionIdentity = changed
-        let rejects = !before.matches(control); precondition(rejects)
-        control.pointee.runtimeCandidateActionIdentity = original
-    }
+    before.installKeyProbe0(control)
+    let rejects0 = !before.matches(control); precondition(rejects0)
+    before.restoreKeyProbe0(control)
+    let restored0 = before.matches(control); precondition(restored0)
+    before.installKeyProbe1(control)
+    let rejects1 = !before.matches(control); precondition(rejects1)
+    before.restoreKeyProbe1(control)
+    let restored1 = before.matches(control); precondition(restored1)
+    before.installKeyProbe2(control)
+    let rejects2 = !before.matches(control); precondition(rejects2)
+    before.restoreKeyProbe2(control)
+    let restored2 = before.matches(control); precondition(restored2)
+    before.installKeyProbe3(control)
+    let rejects3 = !before.matches(control); precondition(rejects3)
+    before.restoreKeyProbe3(control)
+    let restored3 = before.matches(control); precondition(restored3)
     do {
         let original = control.pointee.backend.reservations
         control.pointee.backend.reservations = original == 0 ? 1 : 0
         let rejects = !before.matches(control); precondition(rejects)
         control.pointee.backend.reservations = original
+        let restored = before.matches(control); precondition(restored)
     }
     do {
         let original = control.pointee.backend.submissions
         control.pointee.backend.submissions = original == 0 ? 1 : 0
         let rejects = !before.matches(control); precondition(rejects)
         control.pointee.backend.submissions = original
+        let restored = before.matches(control); precondition(restored)
     }
     do {
         let original = control.pointee.backend.finishes
         control.pointee.backend.finishes = original == 0 ? 1 : 0
         let rejects = !before.matches(control); precondition(rejects)
         control.pointee.backend.finishes = original
+        let restored = before.matches(control); precondition(restored)
     }
     do {
         let original = control.pointee.backend.cancellations
         control.pointee.backend.cancellations = original == 0 ? 1 : 0
         let rejects = !before.matches(control); precondition(rejects)
         control.pointee.backend.cancellations = original
+        let restored = before.matches(control); precondition(restored)
     }
     do {
         let original = control.pointee.backend.submittedBytes
         control.pointee.backend.submittedBytes = original == 0 ? 1 : 0
         let rejects = !before.matches(control); precondition(rejects)
         control.pointee.backend.submittedBytes = original
+        let restored = before.matches(control); precondition(restored)
     }
     do {
         let original = control.pointee.backend.submittedRows
         control.pointee.backend.submittedRows = original == 0 ? 1 : 0
         let rejects = !before.matches(control); precondition(rejects)
         control.pointee.backend.submittedRows = original
+        let restored = before.matches(control); precondition(restored)
     }
     do {
         let original = control.pointee.backend.constructedEndpoints
         control.pointee.backend.constructedEndpoints = original == 0 ? 1 : 0
         let rejects = !before.matches(control); precondition(rejects)
         control.pointee.backend.constructedEndpoints = original
+        let restored = before.matches(control); precondition(restored)
     }
     do {
         let original = control.pointee.backend.projectionControls
         control.pointee.backend.projectionControls = original == 0 ? 1 : 0
         let rejects = !before.matches(control); precondition(rejects)
         control.pointee.backend.projectionControls = original
+        let restored = before.matches(control); precondition(restored)
     }
     do {
         let original = control.pointee.backend.envelopeRejections
         control.pointee.backend.envelopeRejections = original == 0 ? 1 : 0
         let rejects = !before.matches(control); precondition(rejects)
         control.pointee.backend.envelopeRejections = original
+        let restored = before.matches(control); precondition(restored)
     }
     let finalMatch = before.matches(control); precondition(finalMatch)
-    return 79
+    return 156
 }
 // Borrow the host only for one operation; return existing owned observations.
 @inline(never)
@@ -2305,6 +2303,12 @@ fileprivate struct P08BodyResult {
     let activationAttempted: Bool
 }
 
+// No capability or scoped owner is retained in construction completion facts.
+fileprivate struct P08HostConstructionFacts {
+    var joinChecks = 0
+    var completed: P08BodyResult? = nil
+}
+
 // Only owned completion facts return; every original lender stays in the body.
 @inline(never)
 fileprivate func p08CompleteBody(_ result: P08BodyResult, control: UnsafeMutablePointer<CounterControl>) {
@@ -2348,37 +2352,60 @@ fileprivate func p08RunStaticHostPhase(host: inout P08StaticHost, control: Unsaf
     return P08BodyResult(checks: checks, constructed: true, activationAttempted: true)
 }
 
+@_lifetime(copy session, copy semantic, copy values, copy models, copy root, borrow control, copy activationSpan)
 @inline(never)
-fileprivate func p08RunStaticSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> P08BodyResult {
+fileprivate func p08ConstructStaticHost(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: borrowing UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, facts: inout P08HostConstructionFacts) -> P08StaticHost? {
     if early == 1 {
         var session = consume session; session.reset()
-        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        facts.completed = P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        return nil
     }
     let supplied = session.intoSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: CounterHostControl(pointer: control), audit: audit)
     if early == 2 {
         var retired = supplied.retireInertStorage(); retired.resetAfterQuiescence()
-        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        facts.completed = P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        return nil
     }
     var owner = P08StaticHostOwner(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: failAfterRuntime)
     if early == 3 {
         p08FinishStaticOwner(&owner)
-        return P08BodyResult(checks: 1, constructed: true, activationAttempted: false)
+        facts.completed = P08BodyResult(checks: 1, constructed: true, activationAttempted: false)
+        return nil
     }
     let expected = counterJoinSnapshot(control), foreignExpected = counterJoinSnapshot(foreignControl)
-    let joins = counterCheckRejectedBindings(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, report: assembly.report, expected: expected, foreignExpected: foreignExpected)
+    facts.joinChecks = counterCheckRejectedBindings(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, report: assembly.report, expected: expected, foreignExpected: foreignExpected)
     #if hasFeature(Embedded)
-    var host = SignalAnalyzerPresetHostInstances.nrf52840Static(report: assembly.report, owner: owner)!
+    return SignalAnalyzerPresetHostInstances.nrf52840Static(report: assembly.report, owner: owner)
     #else
-    var host = SignalAnalyzerPresetHostInstances.macOSStatic(report: assembly.report, owner: owner)!
+    return SignalAnalyzerPresetHostInstances.macOSStatic(report: assembly.report, owner: owner)
     #endif
-    // This lexical host is never consumed after the defer captures it.
-    defer {
-        host.teardown()
-        let teardownStep = p08ReuseTeardownStep(host: host)
-        precondition(teardownStep == 8)
+}
+
+extension SignalAnalyzerPresetHostInstance where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable, Owner == P08StaticHostOwner {
+    @_lifetime(self: copy self)
+    fileprivate mutating func p08UseOriginalStaticHost(control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> P08BodyResult {
+        if early == 4 { return P08BodyResult(checks: 1, constructed: true, activationAttempted: false) }
+        return p08RunStaticHostPhase(host: &self, control: control, report: report, failAfterRuntime: failAfterRuntime, joinChecks: joinChecks, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
     }
-    if early == 4 { return P08BodyResult(checks: 1, constructed: true, activationAttempted: false) }
-    return p08RunStaticHostPhase(host: &host, control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joins, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
+    @_lifetime(self: copy self)
+    fileprivate mutating func p08FinishOriginalStaticHost() {
+        self.teardown()
+        let teardownStep = p08ReuseTeardownStep(host: self)
+        let finished = teardownStep == 8; precondition(finished)
+    }
+}
+
+@inline(never)
+fileprivate func p08RunStaticSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> P08BodyResult {
+    var facts = P08HostConstructionFacts()
+    var host = p08ConstructStaticHost(session: session, semantic: semantic, values: values, activationSpan: activationSpan, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, facts: &facts)
+    defer { host?.p08FinishOriginalStaticHost() }
+    if let result = host?.p08UseOriginalStaticHost(control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: facts.joinChecks, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline) {
+        let noEarlyCompletion = facts.completed == nil; precondition(noEarlyCompletion)
+        return result
+    }
+    guard let result = facts.completed else { preconditionFailure("original host factory invariant") }
+    return result
 }
 
 #if !hasFeature(Embedded)
@@ -2406,37 +2433,60 @@ fileprivate func p08RunDynamicHostPhase(host: inout P08DynamicHost, control: Uns
     return P08BodyResult(checks: checks, constructed: true, activationAttempted: true)
 }
 
+@_lifetime(copy session, copy semantic, copy values, copy models, copy root, borrow control, copy activationSpan)
 @inline(never)
-fileprivate func p08RunDynamicSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> P08BodyResult {
+fileprivate func p08ConstructDynamicHost(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: borrowing UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, facts: inout P08HostConstructionFacts) -> P08DynamicHost? {
     if early == 1 {
         var session = consume session; session.reset()
-        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        facts.completed = P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        return nil
     }
     let supplied = session.intoDynamicSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: CounterHostControl(pointer: control), audit: audit)
     if early == 2 {
         var retired = supplied.retireInertStorage(); retired.resetAfterQuiescence()
-        return P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        facts.completed = P08BodyResult(checks: 1, constructed: false, activationAttempted: false)
+        return nil
     }
     var owner = P08DynamicHostOwner(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: failAfterRuntime)
     if early == 3 {
         p08FinishDynamicOwner(&owner)
-        return P08BodyResult(checks: 1, constructed: true, activationAttempted: false)
+        facts.completed = P08BodyResult(checks: 1, constructed: true, activationAttempted: false)
+        return nil
     }
     let expected = counterJoinSnapshot(control), foreignExpected = counterJoinSnapshot(foreignControl)
-    let joins = counterCheckDynamicRejectedBindings(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, report: assembly.report, expected: expected, foreignExpected: foreignExpected)
+    facts.joinChecks = counterCheckDynamicRejectedBindings(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, report: assembly.report, expected: expected, foreignExpected: foreignExpected)
     #if os(Linux)
-    var host = SignalAnalyzerPresetHostInstances.raspberryPiDynamic(report: assembly.report, owner: owner)!
+    return SignalAnalyzerPresetHostInstances.raspberryPiDynamic(report: assembly.report, owner: owner)
     #else
-    var host = SignalAnalyzerPresetHostInstances.macOSDynamic(report: assembly.report, owner: owner)!
+    return SignalAnalyzerPresetHostInstances.macOSDynamic(report: assembly.report, owner: owner)
     #endif
-    // This lexical host is never consumed after the defer captures it.
-    defer {
-        host.teardown()
-        let teardownStep = p08ReuseTeardownStep(host: host)
-        precondition(teardownStep == 8)
+}
+
+extension SignalAnalyzerPresetHostInstance where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable, Owner == P08DynamicHostOwner {
+    @_lifetime(self: copy self)
+    fileprivate mutating func p08UseOriginalDynamicHost(control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> P08BodyResult {
+        if early == 4 { return P08BodyResult(checks: 1, constructed: true, activationAttempted: false) }
+        return p08RunDynamicHostPhase(host: &self, control: control, report: report, failAfterRuntime: failAfterRuntime, joinChecks: joinChecks, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
     }
-    if early == 4 { return P08BodyResult(checks: 1, constructed: true, activationAttempted: false) }
-    return p08RunDynamicHostPhase(host: &host, control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joins, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
+    @_lifetime(self: copy self)
+    fileprivate mutating func p08FinishOriginalDynamicHost() {
+        self.teardown()
+        let teardownStep = p08ReuseTeardownStep(host: self)
+        let finished = teardownStep == 8; precondition(finished)
+    }
+}
+
+@inline(never)
+fileprivate func p08RunDynamicSessionPhase(session: consuming P08StorageSession, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, activationSpan: Span<UInt8>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, foreignControl: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, failAfterRuntime: Bool, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>?, baseline: UnsafeMutablePointer<P08ReuseFingerprint>?) -> P08BodyResult {
+    var facts = P08HostConstructionFacts()
+    var host = p08ConstructDynamicHost(session: session, semantic: semantic, values: values, activationSpan: activationSpan, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, assembly: assembly, failAfterRuntime: failAfterRuntime, early: early, facts: &facts)
+    defer { host?.p08FinishOriginalDynamicHost() }
+    if let result = host?.p08UseOriginalDynamicHost(control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: facts.joinChecks, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline) {
+        let noEarlyCompletion = facts.completed == nil; precondition(noEarlyCompletion)
+        return result
+    }
+    guard let result = facts.completed else { preconditionFailure("original host factory invariant") }
+    return result
 }
 #endif
 
@@ -3350,6 +3400,41 @@ fileprivate func p08RunMetadataHost(_ plan: P08EmbeddedCasePlan,
     default: preconditionFailure("non-host metadata case")
     }
 }
+// Cold inventory and empty/retirement checks finish before live host invocation.
+@inline(never)
+fileprivate func p08InitializeMetadataHostBacking(_ owner: inout P08TypedBackingOwner) {
+    let initialized = initializeP08Backing(&owner) == nil
+    precondition(initialized)
+}
+@inline(never)
+fileprivate func p08CaptureMetadataHostInventory(_ owner: inout P08TypedBackingOwner,
+    into original: inout InlineArray<14, P08InitializedEntry?>) {
+    original = owner.originalInventory()
+}
+@inline(never)
+fileprivate func p08RequireMetadataHostEmpty(_ owner: inout P08TypedBackingOwner) {
+    owner.requireEmpty()
+}
+@inline(never)
+fileprivate func p08RequireMetadataHostRetired(_ control: UnsafeMutablePointer<CounterControl>) {
+    p08RequireRetiredControl(control)
+}
+@inline(never)
+fileprivate func p08RunOneMetadataHost(owner: inout P08TypedBackingOwner, outer: inout P08EmbeddedOuter,
+    before: UnsafeMutablePointer<P08ReuseFingerprint>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>,
+    foreignRoot: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>,
+    foreignControl: UnsafeMutablePointer<CounterControl>, write: CounterTiledPixelWrite?) -> Int {
+    let view = p08MetadataOuterView(outer)
+    return runP08StaticHost(owner: &owner, outer: view, failAfterRuntime: false, write: write, reuse: transcript, baseline: before, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
+}
+@inline(never)
+fileprivate func p08ReconstructMetadataHost(outer: inout P08EmbeddedOuter,
+    model: ObservableModelOwnerIdentity, semantic: SemanticRecordOwnerIdentity,
+    foreignRoot: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>,
+    foreignControl: UnsafeMutablePointer<CounterControl>) {
+    p08MetadataOuterView(outer).reconstruct(modelOwner: model, semanticOwner: semantic)
+    p08ResetForeignMetadata(root: foreignRoot, control: foreignControl)
+}
 @inline(never)
 fileprivate func p08RunMetadataTwoHosts(owner: inout P08TypedBackingOwner, outer: inout P08EmbeddedOuter,
     before: UnsafeMutablePointer<P08ReuseFingerprint>, original: inout InlineArray<14, P08InitializedEntry?>,
@@ -3357,22 +3442,19 @@ fileprivate func p08RunMetadataTwoHosts(owner: inout P08TypedBackingOwner, outer
     foreignRoot: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>,
     foreignControl: UnsafeMutablePointer<CounterControl>, secondModel: ObservableModelOwnerIdentity?,
     secondSemantic: SemanticRecordOwnerIdentity?, write: CounterTiledPixelWrite?) -> Int {
-    let initialized = initializeP08Backing(&owner) == nil
-    precondition(initialized)
-    let view = p08MetadataOuterView(outer)
+    p08InitializeMetadataHostBacking(&owner)
     guard let secondModel, let secondSemantic else { preconditionFailure("second namespaces") }
-    original = owner.originalInventory()
-    let control = view.control, address = UInt(bitPattern: view.control)
+    p08CaptureMetadataHostInventory(&owner, into: &original)
+    let control = outer.control, address = UInt(bitPattern: outer.control)
     p08RequireFreshControl(control)
-    var checks = runP08StaticHost(owner: &owner, outer: view, failAfterRuntime: false, write: write, reuse: transcript, baseline: before, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
-    owner.requireEmpty(); p08RequireRetiredControl(control)
-    view.reconstruct(modelOwner: secondModel, semanticOwner: secondSemantic)
-    p08ResetForeignMetadata(root: foreignRoot, control: foreignControl)
+    var checks = p08RunOneMetadataHost(owner: &owner, outer: &outer, before: before, transcript: transcript, foreignRoot: foreignRoot, foreignControl: foreignControl, write: write)
+    p08RequireMetadataHostEmpty(&owner); p08RequireMetadataHostRetired(control)
+    p08ReconstructMetadataHost(outer: &outer, model: secondModel, semantic: secondSemantic, foreignRoot: foreignRoot, foreignControl: foreignControl)
     precondition(UInt(bitPattern: control) == address)
-    checks += runP08StaticHost(owner: &owner, outer: view, failAfterRuntime: false, write: write, reuse: transcript, baseline: before, foreignRootStorage: foreignRoot, foreignControlStorage: foreignControl)
-    owner.requireEmpty()
+    checks += p08RunOneMetadataHost(owner: &owner, outer: &outer, before: before, transcript: transcript, foreignRoot: foreignRoot, foreignControl: foreignControl, write: write)
+    p08RequireMetadataHostEmpty(&owner)
     p08RequireSameInventory(owner.originalInventory(), original)
-    p08RequireRetiredControl(control); transcript.pointee.endRetainedObservations()
+    p08RequireMetadataHostRetired(control); transcript.pointee.endRetainedObservations()
     owner.release()
     precondition(transcript.pointee.hosts == 2)
     checks += p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)

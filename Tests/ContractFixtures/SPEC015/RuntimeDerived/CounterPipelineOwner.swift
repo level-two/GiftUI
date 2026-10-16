@@ -866,6 +866,75 @@ struct CounterRecordingObservation: Equatable {
         }
         return true
     }
+    @inline(never)
+    mutating func captureAccepted(_ control: UnsafeMutablePointer<CounterControl>) { value = control.pointee.lastFrame }
+    @inline(never)
+    mutating func matchesAccepted(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+        let sameCapacity = value.capacity == control.pointee.lastFrame.capacity
+        guard sameCapacity else { return false }
+        let sameHeader = value.header == control.pointee.lastFrame.header
+        guard sameHeader else { return false }
+        let sameOperations = value.operations == control.pointee.lastFrame.operations
+        guard sameOperations else { return false }
+        let sameGlyphs = value.glyphs == control.pointee.lastFrame.glyphs
+        guard sameGlyphs else { return false }
+        let sameStrokes = value.strokes == control.pointee.lastFrame.strokes
+        guard sameStrokes else { return false }
+        let sameFinishes = value.finishes == control.pointee.lastFrame.finishes
+        guard sameFinishes else { return false }
+        let sameDiscards = value.discards == control.pointee.lastFrame.discards
+        guard sameDiscards else { return false }
+        let sameFirstPoint = value.firstPoint == control.pointee.lastFrame.firstPoint
+        guard sameFirstPoint else { return false }
+        let sameSecondPoint = value.secondPoint == control.pointee.lastFrame.secondPoint
+        guard sameSecondPoint else { return false }
+        let sameStrokeHeader = value.strokeHeader == control.pointee.lastFrame.strokeHeader
+        guard sameStrokeHeader else { return false }
+        for index in 0..<64 {
+            let same = value.glyphRecords[index] == control.pointee.lastFrame.glyphRecords[index]
+            guard same else { return false }
+        }
+        return true
+    }
+    @inline(never)
+    mutating func captureEndpoint(_ endpoint: inout CounterEndpoint) { value = endpoint.actual.sink.recording }
+    @inline(never)
+    mutating func matchesEndpoint(_ endpoint: inout CounterEndpoint) -> Bool {
+        let sameCapacity = value.capacity == endpoint.actual.sink.recording.capacity
+        guard sameCapacity else { return false }
+        let sameHeader = value.header == endpoint.actual.sink.recording.header
+        guard sameHeader else { return false }
+        let sameOperations = value.operations == endpoint.actual.sink.recording.operations
+        guard sameOperations else { return false }
+        let sameGlyphs = value.glyphs == endpoint.actual.sink.recording.glyphs
+        guard sameGlyphs else { return false }
+        let sameStrokes = value.strokes == endpoint.actual.sink.recording.strokes
+        guard sameStrokes else { return false }
+        let sameFinishes = value.finishes == endpoint.actual.sink.recording.finishes
+        guard sameFinishes else { return false }
+        let sameDiscards = value.discards == endpoint.actual.sink.recording.discards
+        guard sameDiscards else { return false }
+        let sameFirstPoint = value.firstPoint == endpoint.actual.sink.recording.firstPoint
+        guard sameFirstPoint else { return false }
+        let sameSecondPoint = value.secondPoint == endpoint.actual.sink.recording.secondPoint
+        guard sameSecondPoint else { return false }
+        let sameStrokeHeader = value.strokeHeader == endpoint.actual.sink.recording.strokeHeader
+        guard sameStrokeHeader else { return false }
+        for index in 0..<64 {
+            let same = value.glyphRecords[index] == endpoint.actual.sink.recording.glyphRecords[index]
+            guard same else { return false }
+        }
+        return true
+    }
+    @inline(never)
+    mutating func installAcceptedProbe(_ index: Int, control: UnsafeMutablePointer<CounterControl>) {
+        guard let probe = value.glyphRecords[0] else { preconditionFailure("baseline glyph positive") }
+        control.pointee.lastFrame.glyphRecords[index] = value.glyphRecords[index] == nil ? probe : nil
+    }
+    @inline(never)
+    mutating func restoreAcceptedProbe(_ index: Int, control: UnsafeMutablePointer<CounterControl>) {
+        control.pointee.lastFrame.glyphRecords[index] = value.glyphRecords[index]
+    }
     static func == (left: Self, right: Self) -> Bool { left.matches(right.value) }
 }
 struct CounterWriterObservation: Equatable {
@@ -976,19 +1045,93 @@ struct CounterRuntimeSlotBaseline: ~Copyable {
     private var action: SemanticCompleteIdentity? = nil
     private var candidateRoot: SemanticCompleteIdentity? = nil
     private var candidateAction: SemanticCompleteIdentity? = nil
+    @inline(never)
+    mutating func installKeyProbe0(_ control: UnsafeMutablePointer<CounterControl>) {
+        var changed = SemanticCompleteIdentity()
+        let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+        let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 4)); precondition(appendedChild)
+        let equalsOriginal = root == changed
+        if equalsOriginal {
+            changed = SemanticCompleteIdentity()
+            let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+            let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 3)); precondition(appendedChild)
+        }
+        let distinct = root != changed; precondition(distinct)
+        control.pointee.runtimeRootIdentity = changed
+    }
+    @inline(never)
+    mutating func restoreKeyProbe0(_ control: UnsafeMutablePointer<CounterControl>) {
+        control.pointee.runtimeRootIdentity = root
+    }
+    @inline(never)
+    mutating func installKeyProbe1(_ control: UnsafeMutablePointer<CounterControl>) {
+        var changed = SemanticCompleteIdentity()
+        let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+        let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 4)); precondition(appendedChild)
+        let equalsOriginal = action == changed
+        if equalsOriginal {
+            changed = SemanticCompleteIdentity()
+            let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+            let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 3)); precondition(appendedChild)
+        }
+        let distinct = action != changed; precondition(distinct)
+        control.pointee.runtimeActionIdentity = changed
+    }
+    @inline(never)
+    mutating func restoreKeyProbe1(_ control: UnsafeMutablePointer<CounterControl>) {
+        control.pointee.runtimeActionIdentity = action
+    }
+    @inline(never)
+    mutating func installKeyProbe2(_ control: UnsafeMutablePointer<CounterControl>) {
+        var changed = SemanticCompleteIdentity()
+        let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+        let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 4)); precondition(appendedChild)
+        let equalsOriginal = candidateRoot == changed
+        if equalsOriginal {
+            changed = SemanticCompleteIdentity()
+            let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+            let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 3)); precondition(appendedChild)
+        }
+        let distinct = candidateRoot != changed; precondition(distinct)
+        control.pointee.runtimeCandidateRootIdentity = changed
+    }
+    @inline(never)
+    mutating func restoreKeyProbe2(_ control: UnsafeMutablePointer<CounterControl>) {
+        control.pointee.runtimeCandidateRootIdentity = candidateRoot
+    }
+    @inline(never)
+    mutating func installKeyProbe3(_ control: UnsafeMutablePointer<CounterControl>) {
+        var changed = SemanticCompleteIdentity()
+        let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+        let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 4)); precondition(appendedChild)
+        let equalsOriginal = candidateAction == changed
+        if equalsOriginal {
+            changed = SemanticCompleteIdentity()
+            let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+            let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 3)); precondition(appendedChild)
+        }
+        let distinct = candidateAction != changed; precondition(distinct)
+        control.pointee.runtimeCandidateActionIdentity = changed
+    }
+    @inline(never)
+    mutating func restoreKeyProbe3(_ control: UnsafeMutablePointer<CounterControl>) {
+        control.pointee.runtimeCandidateActionIdentity = candidateAction
+    }
     mutating func capture(_ control: UnsafeMutablePointer<CounterControl>) {
         let mayCapture = !captured; precondition(mayCapture)
         backend = counterObserveBackend(control.pointee.backend)
         phase = control.pointee.runtimeSlotPhase; owner = control.pointee.runtimeSlotOwner
         lastSerial = control.pointee.runtimeLastOwnerSerial
         endpointPresent = control.pointee.runtimeEndpoint != nil
-        control.pointee.runtimeEndpoint?.captureBaseline(into: &endpoint)
+        control.pointee.runtimeEndpoint?.captureBaselinePrefix(into: &endpoint)
+        endpoint.health = control.pointee.runtimeEndpoint?.baselineHealth()
+        control.pointee.runtimeEndpoint?.captureBaselineSuffix(into: &endpoint)
         root = control.pointee.runtimeRootIdentity; action = control.pointee.runtimeActionIdentity
         candidateRoot = control.pointee.runtimeCandidateRootIdentity
         candidateAction = control.pointee.runtimeCandidateActionIdentity
         captured = true
     }
-    borrowing func matches(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+    mutating func matches(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
         let wasCaptured = captured; precondition(wasCaptured)
         let samebackend = backend == counterObserveBackend(control.pointee.backend)
         guard samebackend else { return false }
@@ -1009,8 +1152,12 @@ struct CounterRuntimeSlotBaseline: ~Copyable {
         let samecandidateAction = candidateAction == control.pointee.runtimeCandidateActionIdentity
         guard samecandidateAction else { return false }
         if endpointPresent {
-            let sameEndpoint = control.pointee.runtimeEndpoint?.matchesBaseline(endpoint) == true
-            guard sameEndpoint else { return false }
+            let samePrefix = control.pointee.runtimeEndpoint?.matchesBaselinePrefix(&endpoint) == true
+            guard samePrefix else { return false }
+            let sameHealth = endpoint.health == control.pointee.runtimeEndpoint?.baselineHealth()
+            guard sameHealth else { return false }
+            let sameSuffix = control.pointee.runtimeEndpoint?.matchesBaselineSuffix(&endpoint) == true
+            guard sameSuffix else { return false }
         }
         return true
     }
