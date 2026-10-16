@@ -27,22 +27,18 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current design proposal — [prepared lending](../implementation-designs/spec-015-p08-prepared-lending.md)
-targets actual firmware whole-owner receiver homes and repeated preparation-fact
-captures while preserving original typed loans. Design only; no source allowance,
-compiler/build execution or fit claim. Independent actual-image review `3716ee2d`
-confirms the prior package PASS and stack FAIL; P08/R07/T8.1 stay open.
-The [independent design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-prepared-lending-independent-design-review.md)
-passes the proposal for a user execution decision, with no approved new allowance.
-
-Current P08 boundary — **constructor/caller package independently closed; resource assessment**.
-The [completion/resource assessment](../implementation-designs/spec-015-p08-completion-resource-assessment.md)
-maps remaining P08 gates, distinguishes fixture reservations from approved bounds,
-and recommends a complete resource worksheet before another source candidate.
-The [final exit review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-independent-review.md)
-confirms focused passes at `51cfc960` and required cold 28,288 > main 27,648.
-Correction 2/2 stays closed; no complete peak/current image or total-RAM failure is
-claimed. P08/R07/T8.1 and full SO criteria remain open; full 202/image work is held.
+Current P08 boundary — **larger main authorized in direction; distinct total-RAM rejection**.
+The [actual live firmware result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-live-ram-result.md)
+proves required fixed stack 56,888 + other linked RAM 142,972 = 199,860, exceeding
+total 196,608 by at least 3,252 before omitted costs. No sufficient reservation
+or complete upper bound is claimed. Complete nRF 227/227 and normal pristine
+image/ABI/layout/RAM/flash checks passed; their exact qualifications remain.
+The [completion assessment](../implementation-designs/spec-015-p08-completion-resource-assessment.md)
+routes the separate total-RAM tradeoff before another image or source candidate.
+The [prepared-lending proposal](../implementation-designs/spec-015-p08-prepared-lending.md)
+and its [independent design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-prepared-lending-independent-design-review.md)
+remain design history; implementation is not selected. Correction 2/2 and all
+other source repair allowances remain closed. P08/R07/T8.1 and full SO stay open.
 
 Historical combined structural design — **implementation had not started**.
 The [authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-activity.md)

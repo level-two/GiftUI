@@ -1,0 +1,131 @@
+{
+  "kind": "current-final-ELF-source-feasible-live-total-RAM-rejection",
+  "elf_sha256": "e649c5d26a676140b473e8fa1de5b075a479d8282a7f6d69e0034fb215884c38",
+  "archive": "live-resource-proof.tar.xz",
+  "bytes": 187476,
+  "sha256": "4c6f0c49bd2e83dde4c3d73a7a47b3c7f8c935ce22b681b28df6a2be1d3aea0a",
+  "selected_fixed_frames": 47,
+  "selected_stack_lower_bound": 56888,
+  "other_retained_RAM": 142972,
+  "whole_RAM_lower_bound": 199860,
+  "RAM_limit": 196608,
+  "lower_bound_excess": 3252,
+  "complete_peak": false,
+  "sufficient_main_stack_reservation": null,
+  "predecessor_packet": "../linked-firmware-current/resource-proof.tar.xz",
+  "predecessor_sha256": "8db18ea94b5c9b1ad41b64759617cd7cb75c4bd5e57e9c7014a36cb56d7f1fdc",
+  "files": {
+    "CUSTODY.md": {
+      "bytes": 5343,
+      "sha256": "6f7e4e3e8043cacdd80f845d14f37d60a6a451bdf30752bf9a9655f3684fae0c"
+    },
+    "mechanical-verification.json": {
+      "bytes": 347,
+      "sha256": "cf655ac7e0bb30ebec1739c6df1d6dce21d0f8739ba7eaa3145b777116100489"
+    },
+    "provisional-analyzer/inventory.py": {
+      "bytes": 4356,
+      "sha256": "8329ce1de0307b80b61a846efb7ffc027dea8385505d29dc1db59928b7e8ee2e"
+    },
+    "provisional-analyzer/limitations.json": {
+      "bytes": 7557,
+      "sha256": "62ad9de68d31d38543eb501484ef7bc8cde50439c096de0b4b39f58b9771420a"
+    },
+    "provisional-analyzer/local_sp.py": {
+      "bytes": 10677,
+      "sha256": "506861a7ef46b2518972ae3c6f0a8b692116c4c07d494d0d9c65bd0b581b91c3"
+    },
+    "provisional-analyzer/phase_graph.py": {
+      "bytes": 4315,
+      "sha256": "cd1a108c534fccc6de1a3644eb572fdd47996484c1d3aef98abdffcea32d2ffb"
+    },
+    "ram-reconciliation.json": {
+      "bytes": 1287,
+      "sha256": "4a211e7be8e9004a99c7db21d5a5382b8a42adb401c9bf5ee296807af9ed8042"
+    },
+    "reports/.config": {
+      "bytes": 33927,
+      "sha256": "4f722a1601be957e850c3ff3b9c79399d72d2918c788f631364ad129ee21e2e1"
+    },
+    "reports/arm-attributes.txt": {
+      "bytes": 672,
+      "sha256": "b1cf2c133bb70839666f3326d91a0da2d075641c44ddc64a4157c80a30a7230a"
+    },
+    "reports/isr_tables.c": {
+      "bytes": 4196,
+      "sha256": "e4e17731d875c8002d98702801eb6c6b4947906b6732ca00c4b18db6705dde3f"
+    },
+    "reports/memory-summary.txt": {
+      "bytes": 112,
+      "sha256": "3cc3b17dfd4093a693788071dc43c2a8fbc304b5551ec16bfa4337811d96127a"
+    },
+    "reports/program-headers.txt": {
+      "bytes": 988,
+      "sha256": "b829474917fd586620290547a2b74b408372ea7e691d97f82cdafa1b13b50dc3"
+    },
+    "reports/sections.txt": {
+      "bytes": 3019,
+      "sha256": "37a65e6a3e267ce3c4966e6eea09a82e4889ec1402986f516af7e0dba1487ee6"
+    },
+    "reports/zephyr.dts": {
+      "bytes": 75427,
+      "sha256": "27a2a26fa786d8506d8bfcec2406e33ae605cebe3d32b39808bb9f9e9e084acf"
+    },
+    "required-live-fixed-subset.json": {
+      "bytes": 201600,
+      "sha256": "e53139a22bc971118e106c2b866c8c755844d3848df31d1150b28b1855085167"
+    },
+    "selected-linked-disassembly.txt": {
+      "bytes": 995781,
+      "sha256": "9e1ce2ef78650140b13694f65e4bba61e206b5376b572be83b09ac6db6e0182d"
+    },
+    "source/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift": {
+      "bytes": 2988,
+      "sha256": "b0746aaa9e4ed287ac04fd3f717c93534827fe943f88e3724df2f96b8a8a2ca4"
+    },
+    "source/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": {
+      "bytes": 8890,
+      "sha256": "63b71e4511c486e6481e0e64961e14975f5105cf465ed09342e1eaf2dd24bef3"
+    },
+    "source/Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift": {
+      "bytes": 1724,
+      "sha256": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0"
+    },
+    "source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": {
+      "bytes": 8749,
+      "sha256": "be59651c2f7f657f1785f51fa31767f6319dc543c023d901057fa0deb4bace81"
+    },
+    "source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": {
+      "bytes": 17313,
+      "sha256": "212f59a87162fefee2652586bbbe7cec8546d1afcaeb0e2e92ff115b6030b330"
+    },
+    "source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "bytes": 73656,
+      "sha256": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb"
+    },
+    "source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+      "bytes": 255442,
+      "sha256": "3c411c8a5d6616932cfcd1145ac7d6e4d088165fd11b5109e109293f386c44c9"
+    },
+    "source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift": {
+      "bytes": 22685,
+      "sha256": "bfe4a208dd72fe47cb2a72331228cf9c9981114e03d49a91b99541957e7f80b5"
+    },
+    "source/firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c": {
+      "bytes": 954,
+      "sha256": "31c36569948cbf3870ef15df8d25db6247a3434ce55d14d2616247855028f6f4"
+    },
+    "source-identities.json": {
+      "bytes": 1276,
+      "sha256": "985e19c9551cc7c9b37357870731fe51216b68b969f621c5907fd3d9e9dd5cae"
+    },
+    "tools.json": {
+      "bytes": 667,
+      "sha256": "4888032216fe597d7a8a2d6dc78899eae244db2c07c60dab00708ed1469fc638"
+    },
+    "verify_fixed_subset.py": {
+      "bytes": 3999,
+      "sha256": "5e8bbdfbb2c0fe984eaf1d3b7b8363e6c46f82ec3b90e2676b11a584c4fd3a4c"
+    }
+  }
+}

@@ -1,5 +1,10 @@
 # P08 current firmware resource result — 2026-10-16
 
+Current larger-stack follow-up: the [source-feasible live RAM result](p08-current-firmware-live-ram-result.md)
+proves a 56,888-byte fixed subset plus 142,972 other linked RAM exceeds total
+196,608. The cold result below remains immutable evidence, not the current
+complete sizing decision; no sufficient stack reservation follows from it.
+
 **STOP: the actual linked firmware has a required cold main-stack subset of
 28,560 > 27,648.** Complete nRF collection, pristine firmware build, linked
 RAM/flash, strict layout and ABI checks pass. Stack fit fails independently of
