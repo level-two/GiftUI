@@ -1,3 +1,19 @@
+---
+spec: SPEC-015
+feature: giftui-mvp-architecture
+title: Implementation Design — P08 physical representation and ownership assessment
+status: draft
+authors: [codex]
+created: 2026-10-15
+updated: 2026-10-16
+implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
+related_future_work: []
+related_explorations: []
+related_spikes: []
+supersedes: null
+superseded_by: null
+---
+
 # P08 physical representation and ownership assessment
 
 Current implementation boundary: **measured sizing/compilation PASS; resource FAIL**.
