@@ -16,7 +16,9 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
-**Combined initial source frozen after independent DESIGN PASS; SOURCE review pending.**
+**Combined initial independent SOURCE PASS at `3065c574`; fresh focused collections ready.**
+The [bounded source review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-initial-independent-source-review.md)
+preserves compiler/runtime/resource questions as unproved.
 The [source freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-initial-source.md)
 pins the candidate and compiler-free checks; compilation/runtime/fit remain unproved.
 The [bounded independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-independent-design-review.md)

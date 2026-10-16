@@ -1,6 +1,8 @@
 # P08 structured operations — initial source freeze
 
-**SOURCE FROZEN against `ee56c020`; independent SOURCE review pending.**
+**Independent SOURCE PASS at `3065c574`, frozen against `ee56c020`.**
+The [bounded source review](p08-structured-operations-initial-independent-source-review.md)
+permits the three registered fresh focused collections; compiler/fit remain unproved.
 This is the authorized initial combined candidate after design `a73a8032` and
 independent design PASS `ee56c020`. Correction0/2; prior allowances remain closed.
 No compiler, runtime, target probe, image or hardware invocation occurred.

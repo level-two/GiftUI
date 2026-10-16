@@ -1,6 +1,8 @@
 # P08 structured construction and observation operations activity
 
-Current boundary: **combined initial SOURCE FROZEN; independent SOURCE review pending**.
+Current boundary: **combined initial independent SOURCE PASS at `3065c574`**.
+The [bounded source review](p08-structured-operations-initial-independent-source-review.md)
+permits the three registered fresh focused collections; no compiler/runtime/fit proof yet.
 The [source-readiness record](p08-structured-operations-initial-source.md) and
 [exact manifest](structured-operations-source/manifest.json) pin the four-fixture
 candidate against `ee56c020` and its new seven-receipt qualification. Design PASS
