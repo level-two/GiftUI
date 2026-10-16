@@ -1,15 +1,16 @@
 # P08 structured construction and observation operations activity
 
-Current boundary: **independent SOURCE PASS `c966aa8b`; all three initial fresh
-focused collections PASS, resource analysis pending**. Source is `3065c574`.
-The [collection checkpoint](structured-operations-initial-collections/result.json)
-preserves exact nRF25pass/202notrun and Native42pass/384notrun receipts; both Native
-routes pass reuse/exclusivity/projection with3,472,564 total assertions and no failures.
-Current160 strict layout facts keep four34720 slots/138880 retained and15760
-metadata/18960 donor tail. Partial flags are focused_passed=true,
-collection_complete=false/passed=false; no full-suite, stack or fit claim follows.
-Initial source/design/frozen records remain historical. Previous donor-metadata2/2
-and every earlier allowance remain closed.
+Current boundary: **initial focused behavior/layout PASS; main-stack resource
+rejection, correction1 approach awaiting independent review**. Source`3065c574`
+SOURCE PASS`c966aa8b`; [three-profile checkpoint](structured-operations-initial-collections/result.json)
+`6863f491` preserves all selected passes and complete partial-coverage flags.
+The [bounded result/combined correction approach](p08-structured-operations-initial-result.md)
+proves current required main-stack subset36744>27648; cold construction28736 and
+reconstruction30816 also reject. Total RAM fit remains unproved rather than
+rejected by that subset. All160 layout facts/138880 backing/15760 metadata and
+Native3,472,564 assertions pass. No new source/compilation/target execution occurred
+in the analysis. Full202/image work is held for reviewed correction1. Correction0/2
+is still consumed0: approach/source not started. Historical allowances stay closed.
 
 Scope: one combined initial implementation plus at most two cause-grouped
 corrective cycles, stopping after two consecutive unproductive cycles or a genuine

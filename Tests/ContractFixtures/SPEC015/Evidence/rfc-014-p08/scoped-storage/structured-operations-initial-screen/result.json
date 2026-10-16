@@ -1,0 +1,1577 @@
+{
+  "kind": "passing-functional-focused-collections-current-main-stack-rejection",
+  "source_commit": "3065c574",
+  "source_review": "c966aa8b",
+  "collection_checkpoint": "6863f491",
+  "object": {
+    "path": ".build/nrf52840/contracts/p08-counter-oqzs0yxj/P08CounterRuntime.o",
+    "sha256": "00dac6a4094135eed22d7f693c20c1fa9afaf65ea8c8b552978b843f744d30d5"
+  },
+  "selected_required_live_path": [
+    {
+      "section": 4242,
+      "fixed_entry_bytes": 4632,
+      "symbol": {
+        "name": "$e17P08CounterRuntime22p08RunMetadataTwoHosts33_480B1BD841D053AE4FCDC18507668536LL5owner5outer6before8original10transcript11foreignRoot0S7Control11secondModel0V8Semantic5writeSiAA0A17TypedBackingOwnerACLLVz_AA0A13EmbeddedOuterACLLVzSpyAA0A16ReuseFingerprintACLLVGs11InlineArrayVy$13_AA0A16InitializedEntryACLLVSgGzSpyAA0A19HostReuseTranscriptACLLVGSpy19GiftUIRuntimeStatic016StaticObservableT7AdapterVyAA0b5OwnedW0V18GiftUISemanticCore0X16CompleteIdentityVGGSpyAA0bU0VG21GiftUIObservableState010ObservableW13OwnerIdentityVSgA7_0X19RecordOwnerIdentityVSgs5Int32Vs6UInt16V_A25_A25_A25_SPys5UInt8VGSgSitXCSgtF",
+        "value": 1,
+        "size": 338,
+        "type": 2,
+        "binding": 1,
+        "owner": 4242,
+        "visibility": 3,
+        "table": 16517,
+        "index": 13079
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+          36
+        ],
+        [
+          4,
+          "sub.w\tsp, sp, #4576\t; 0x11e0",
+          4576
+        ],
+        [
+          8,
+          "sub\tsp, #20",
+          20
+        ]
+      ]
+    },
+    {
+      "section": 4273,
+      "fixed_entry_bytes": 8336,
+      "symbol": {
+        "name": "$e17P08CounterRuntime21p08RunOneMetadataHost33_480B1BD841D053AE4FCDC18507668536LL5owner5outer6before10transcript11foreignRoot0R7Control5writeSiAA0A17TypedBackingOwnerACLLVz_AA0A13EmbeddedOuterACLLVzSpyAA0A16ReuseFingerprintACLLVGSpyAA0aH15ReuseTranscriptACLLVGSpy19GiftUIRuntimeStatic016StaticObservableS7AdapterVyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAA0bT0VGs5Int32Vs6UInt16V_A9_A9_A9_SPys5UInt8VGSgSitXCSgtF",
+        "value": 1,
+        "size": 1088,
+        "type": 2,
+        "binding": 1,
+        "owner": 4273,
+        "visibility": 3,
+        "table": 16517,
+        "index": 13089
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+          36
+        ],
+        [
+          6,
+          "sub.w\tsp, sp, #8256\t; 0x2040",
+          8256
+        ],
+        [
+          10,
+          "sub\tsp, #44\t; 0x2c",
+          44
+        ]
+      ]
+    },
+    {
+      "section": 210,
+      "fixed_entry_bytes": 520,
+      "symbol": {
+        "name": "$e19GiftUIRuntimeStatic0C21ObservableRootAdapterVAARi_zrlE12withLifetime6limits_qd__0A17UIObservableState0dK6LimitsV_qd__AF0D10ModelScopeVyx6SchemaQzG_AF0dkeN0Vyxq_GtAF0dK5ErrorOYKXEtARYKlF17P08CounterRuntime0r5OwnedM0V_0A14UISemanticCore24SemanticCompleteIdentityVytTg5",
+        "value": 1,
+        "size": 370,
+        "type": 2,
+        "binding": 2,
+        "owner": 210,
+        "visibility": 2,
+        "table": 16517,
+        "index": 11736
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r9, sl, fp, lr}",
+          32
+        ],
+        [
+          4,
+          "sub\tsp, #488\t; 0x1e8",
+          488
+        ]
+      ]
+    },
+    {
+      "section": 4006,
+      "fixed_entry_bytes": 1104,
+      "symbol": {
+        "name": "$e17P08CounterRuntime03runA10StaticHost33_480B1BD841D053AE4FCDC18507668536LL5owner5outer09failAfterC05early16candidateFailure5write5reuse8baseline18foreignRootStorage0v7ControlX0SiAA0A17TypedBackingOwnerACLLVz_AA0aE9OuterViewACLLVSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgs5Int32Vs6UInt16V_A_A_A_SPyASGSgSitXCSgSpyAA0aF15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgSpy013GiftUIRuntimeE00e10ObservableW7AdapterVyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSgSpyAA0bY0VGSgtFSi21GiftUIObservableState20ObservableModelScopeVyA15_0aB6Schema0B11ModelSchemaOG_A26_015ObservableStateW5ScopeVyA15_A18_GA24_tXEfU_yA32__A35_tA26_20ObservableStateErrorOYKXEfU_",
+        "value": 1,
+        "size": 572,
+        "type": 2,
+        "binding": 1,
+        "owner": 4006,
+        "visibility": 3,
+        "table": 16517,
+        "index": 12975
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r9, sl, fp, lr}",
+          32
+        ],
+        [
+          6,
+          "sub.w\tsp, sp, #1072\t; 0x430",
+          1072
+        ]
+      ]
+    },
+    {
+      "section": 10345,
+      "fixed_entry_bytes": 520,
+      "symbol": {
+        "name": "$e18GiftUISemanticCore23withSemanticRecordStore8metadata7records5paths8payloads7scalars6limits8capacity5owner_q_s11MutableSpanVyAA0eF12BankMetadataVGz_ALyAA0e7RuntimeF0VGzALyAA0E9PathEntryVGzALyxSgGzALys6UInt32VGzAA0eF6LimitsVA0_SgAA0eF13OwnerIdentityVq_AA0efG0VyxGAA0E14ExpansionErrorOYKXEtA8_YKr0_lFq_SryANGA8_YKXEfU_0A9UIDrawing06CanvasE7PayloadOy15P08CounterTable28P08CounterSchemaCanvasValuesOy010P08CounterT013CounterDomainOGG_ytTg5",
+        "value": 1,
+        "size": 1076,
+        "type": 2,
+        "binding": 2,
+        "owner": 10345,
+        "visibility": 2,
+        "table": 16517,
+        "index": 12977
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r9, sl, fp, lr}",
+          32
+        ],
+        [
+          4,
+          "sub\tsp, #488\t; 0x1e8",
+          488
+        ]
+      ]
+    },
+    {
+      "section": 4013,
+      "fixed_entry_bytes": 1056,
+      "symbol": {
+        "name": "$e17P08CounterRuntime03runA10StaticHost33_480B1BD841D053AE4FCDC18507668536LL5owner5outer09failAfterC05early16candidateFailure5write5reuse8baseline18foreignRootStorage0v7ControlX0SiAA0A17TypedBackingOwnerACLLVz_AA0aE9OuterViewACLLVSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgs5Int32Vs6UInt16V_A_A_A_SPyASGSgSitXCSgSpyAA0aF15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgSpy013GiftUIRuntimeE00e10ObservableW7AdapterVyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSgSpyAA0bY0VGSgtFSi21GiftUIObservableState20ObservableModelScopeVyA15_0aB6Schema0B11ModelSchemaOG_A26_015ObservableStateW5ScopeVyA15_A18_GA24_tXEfU_yA32__A35_tA26_20ObservableStateErrorOYKXEfU_yA16_19SemanticRecordStoreVy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGA16_22SemanticExpansionErrorOYKXEfU_",
+        "value": 1,
+        "size": 316,
+        "type": 2,
+        "binding": 1,
+        "owner": 4013,
+        "visibility": 3,
+        "table": 16517,
+        "index": 12978
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r9, sl, fp, lr}",
+          32
+        ],
+        [
+          6,
+          "sub.w\tsp, sp, #1024\t; 0x400",
+          1024
+        ]
+      ]
+    },
+    {
+      "section": 4017,
+      "fixed_entry_bytes": 336,
+      "symbol": {
+        "name": "$e17P08CounterRuntime03runA10StaticHost33_480B1BD841D053AE4FCDC18507668536LL5owner5outer09failAfterC05early16candidateFailure5write5reuse8baseline18foreignRootStorage0v7ControlX0SiAA0A17TypedBackingOwnerACLLVz_AA0aE9OuterViewACLLVSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgs5Int32Vs6UInt16V_A_A_A_SPyASGSgSitXCSgSpyAA0aF15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgSpy013GiftUIRuntimeE00e10ObservableW7AdapterVyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSgSpyAA0bY0VGSgtFSi21GiftUIObservableState20ObservableModelScopeVyA15_0aB6Schema0B11ModelSchemaOG_A26_015ObservableStateW5ScopeVyA15_A18_GA24_tXEfU_yA32__A35_tA26_20ObservableStateErrorOYKXEfU_yA16_19SemanticRecordStoreVy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGA16_22SemanticExpansionErrorOYKXEfU_yA40_18CanvasStagedValuesVyA16_23SemanticRecordReferenceVA43_0aB17SchemaCanvasTableVyA47_GGXEfU_SiAA0aX7SessionACLLVnXEfU_",
+        "value": 1,
+        "size": 236,
+        "type": 2,
+        "binding": 1,
+        "owner": 4017,
+        "visibility": 3,
+        "table": 16517,
+        "index": 12979
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+          36
+        ],
+        [
+          4,
+          "sub\tsp, #300\t; 0x12c",
+          300
+        ]
+      ]
+    },
+    {
+      "section": 3975,
+      "fixed_entry_bytes": 3824,
+      "symbol": {
+        "name": "$e17P08CounterRuntime24p08RunStaticSessionPhase33_480B1BD841D053AE4FCDC18507668536LL7session8semantic6values14activationSpan6models4root13foreignModels0U4Root7control0U7Control5audit8assembly09failAfterC05early16candidateFailure5reuse8baselineAA0A10BodyResultACLLVAA0a7StorageG0ACLLVn_18GiftUISemanticCore19SemanticRecordStoreVy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGnA0_18CanvasStagedValuesVyAY23SemanticRecordReferenceVA3_0aB17SchemaCanvasTableVyA7_GGns0R0Vys5UInt8VG21GiftUIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0aB6Schema0B11ModelSchemaOGA24_015ObservableStateW5ScopeVyA28_AY24SemanticCompleteIdentityVGA32_A37_SpyAA0bY0VGA40_17GiftUIRuntimeCore0C12StorageAuditVAA0B12HostAssemblyVSbA22_A41_0C21CompletePipelineStageOSgSpyAA0A19HostReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtF",
+        "value": 1,
+        "size": 548,
+        "type": 2,
+        "binding": 1,
+        "owner": 3975,
+        "visibility": 3,
+        "table": 16517,
+        "index": 12957
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, lr}",
+          32
+        ],
+        [
+          4,
+          "sub.w\tsp, sp, #3792\t; 0xed0",
+          3792
+        ]
+      ]
+    },
+    {
+      "section": 3952,
+      "fixed_entry_bytes": 1528,
+      "symbol": {
+        "name": "$e17P08CounterRuntime21p08RunStaticHostPhase33_480B1BD841D053AE4FCDC18507668536LL4host7control6report09failAfterC010joinChecks5early16candidateFailure5reuse8baselineAA0A10BodyResultACLLV23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyAA0bG5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVGGz_SpyAA0B7ControlVGAO0G14AssemblyReportVSbSis5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aG15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtF",
+        "value": 1,
+        "size": 472,
+        "type": 2,
+        "binding": 1,
+        "owner": 3952,
+        "visibility": 3,
+        "table": 16517,
+        "index": 12931
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, sl, lr}",
+          28
+        ],
+        [
+          4,
+          "subw\tsp, sp, #1500\t; 0x5dc",
+          1500
+        ]
+      ]
+    },
+    {
+      "section": 3875,
+      "fixed_entry_bytes": 2688,
+      "symbol": {
+        "name": "$e17P08CounterRuntime15p08RunReuseHost33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcript8baselineSi23GiftUIHostConfiguration020SignalAnalyzerPresetG8InstanceVyxGz_SpyAA0B7ControlVGSpyAA0agF10TranscriptACLLVGSpyAA0aF11FingerprintACLLVGSgtAH0tuV9LiveOwnerRzAA0aF11ObservationACLLRzRi_zRi0_zlFAA0bG5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+        "value": 1,
+        "size": 208,
+        "type": 2,
+        "binding": 1,
+        "owner": 3875,
+        "visibility": 3,
+        "table": 16517,
+        "index": 12895
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+          36
+        ],
+        [
+          4,
+          "subw\tsp, sp, #2652\t; 0xa5c",
+          2652
+        ]
+      ]
+    },
+    {
+      "section": 3835,
+      "fixed_entry_bytes": 6072,
+      "symbol": {
+        "name": "$e17P08CounterRuntime24p08ReuseRejectOldOrigins33_480B1BD841D053AE4FCDC18507668536LL4host7control10transcript5route6action8revision8baselineSi23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVyxGz_SpyAA0B7ControlVGSpyAA0a4HostE10TranscriptACLLVGs12StaticStringVAA0B14ProducedActionV0U2UI20PresentationRevisionVAA0aE11FingerprintACLLVztAK0xyZ9LiveOwnerRzAA0aE11ObservationACLLRzRi_zRi0_zlFAA0B9HostOwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5",
+        "value": 1,
+        "size": 454,
+        "type": 2,
+        "binding": 1,
+        "owner": 3835,
+        "visibility": 3,
+        "table": 16517,
+        "index": 12877
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+          36
+        ],
+        [
+          4,
+          "sub.w\tsp, sp, #6016\t; 0x1780",
+          6016
+        ],
+        [
+          8,
+          "sub\tsp, #20",
+          20
+        ]
+      ]
+    },
+    {
+      "section": 3752,
+      "fixed_entry_bytes": 16,
+      "symbol": {
+        "name": "$e17P08CounterRuntime27p08CheckBaselineSensitivity33_480B1BD841D053AE4FCDC18507668536LL_7controlSiAA0A16ReuseFingerprintACLLVz_SpyAA0B7ControlVGtF",
+        "value": 1,
+        "size": 582,
+        "type": 2,
+        "binding": 1,
+        "owner": 3752,
+        "visibility": 3,
+        "table": 16517,
+        "index": 12841
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, sl, lr}",
+          16
+        ]
+      ]
+    },
+    {
+      "section": 3740,
+      "fixed_entry_bytes": 2328,
+      "symbol": {
+        "name": "$e17P08CounterRuntime0A16ReuseFingerprint33_480B1BD841D053AE4FCDC18507668536LLV7matchesySbSpyAA0B7ControlVGF",
+        "value": 1,
+        "size": 1472,
+        "type": 2,
+        "binding": 1,
+        "owner": 3740,
+        "visibility": 3,
+        "table": 16517,
+        "index": 12836
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+          36
+        ],
+        [
+          4,
+          "subw\tsp, sp, #2292\t; 0x8f4",
+          2292
+        ]
+      ]
+    },
+    {
+      "section": 3704,
+      "fixed_entry_bytes": 8,
+      "symbol": {
+        "name": "$e17P08CounterRuntime0A16ReuseFingerprint33_480B1BD841D053AE4FCDC18507668536LLV07matchesC4SlotySbSpyAA0B7ControlVGF",
+        "value": 1,
+        "size": 16,
+        "type": 2,
+        "binding": 1,
+        "owner": 3704,
+        "visibility": 3,
+        "table": 16517,
+        "index": 12815
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {sl, lr}",
+          8
+        ]
+      ]
+    },
+    {
+      "section": 3708,
+      "fixed_entry_bytes": 2920,
+      "symbol": {
+        "name": "$e17P08CounterRuntime0bC12SlotBaselineV7matchesySbSpyAA0B7ControlVGF",
+        "value": 1,
+        "size": 978,
+        "type": 2,
+        "binding": 1,
+        "owner": 3708,
+        "visibility": 3,
+        "table": 16517,
+        "index": 12816
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+          36
+        ],
+        [
+          4,
+          "subw\tsp, sp, #2884\t; 0xb44",
+          2884
+        ]
+      ]
+    },
+    {
+      "section": 7411,
+      "fixed_entry_bytes": 656,
+      "symbol": {
+        "name": "$e17P08CounterRuntime0B8EndpointV21matchesBaselineSuffixySbAA0bdF0VzF",
+        "value": 1,
+        "size": 236,
+        "type": 2,
+        "binding": 1,
+        "owner": 7411,
+        "visibility": 3,
+        "table": 16517,
+        "index": 12820
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, sl, lr}",
+          24
+        ],
+        [
+          4,
+          "sub.w\tsp, sp, #632\t; 0x278",
+          632
+        ]
+      ]
+    },
+    {
+      "section": 6731,
+      "fixed_entry_bytes": 200,
+      "symbol": {
+        "name": "$e17P08CounterRuntime0B20RecordingObservationV15matchesEndpointySbAA0bG0VzF",
+        "value": 1,
+        "size": 456,
+        "type": 2,
+        "binding": 1,
+        "owner": 6731,
+        "visibility": 3,
+        "table": 16517,
+        "index": 13722
+      },
+      "prologue_terms": [
+        [
+          0,
+          "stmdb\tsp!, {r4, r5, r6, r7, r8, r9, fp, lr}",
+          32
+        ],
+        [
+          4,
+          "sub\tsp, #168\t; 0xa8",
+          168
+        ]
+      ]
+    }
+  ],
+  "required_stack_lower_bound": 36744,
+  "main_stack_limit": 27648,
+  "main_excess_before_omitted_costs": 9096,
+  "retained_backing": 138880,
+  "backing_plus_lower_bound": 175624,
+  "ram_limit": 196608,
+  "ram_margin_not_fit_proof": 20984,
+  "omitted_not_zero": [
+    "outer entry/corpus/host/custody/dispatch",
+    "withStorage section3441 (3056) and callback thunks",
+    "unexamined helper/callee/indirect costs",
+    "alignment surplus and IRQ"
+  ],
+  "construction_not_live_nested": {
+    "caller_section": 3975,
+    "constructor_call_offset": 178,
+    "constructor_section": 3960,
+    "live_host_call_offset": 366,
+    "host_section": 3952,
+    "constructor_returns_before_live_host": true
+  },
+  "additional_required_cold_subsets": {
+    "construction": {
+      "sections": [
+        4242,
+        4273,
+        210,
+        4006,
+        10345,
+        4013,
+        4017,
+        3975,
+        3960
+      ],
+      "fixed_entry_lower_bound": 28736
+    },
+    "reconstruction": {
+      "sections": [
+        4242,
+        4277,
+        3891,
+        3501
+      ],
+      "fixed_entry_lower_bound": 30816
+    }
+  },
+  "remaining_actual_copies": [
+    {
+      "caller_section": 3835,
+      "instruction_offset": 366,
+      "bytes": 2128,
+      "call_offset": 372,
+      "callee": "__aeabi_memcpy8",
+      "subsequent_borrowed_host_handler_section": 3787,
+      "source": "p08ReuseRejectOldOrigins -> p08ReuseRejectAction(host: borrowing)"
+    },
+    {
+      "caller_section": 4122,
+      "instruction_offset": 154,
+      "bytes": 6920,
+      "copy_call_offset": 162,
+      "copy_helper_section": 15083,
+      "guard_call_offset": 168,
+      "guard_section": 3509,
+      "source": "CounterControl.tryClearRuntimeSlot -> borrowing requireVacantRuntimeSlot"
+    }
+  ],
+  "proof_scope": "source-feasible second-host initial complete baseline endpoint-recording match. BL/callback/source edges and raw bounded sections archived. Cold/live branches not added together. Main limit fails; current linked RAM/upper bound unknown.",
+  "analysis_compiler_executions": 0,
+  "analysis_runtime_executions": 0,
+  "corrective_cycles_consumed": 0,
+  "corrective_cycles_maximum": 2,
+  "correction1_started": false,
+  "fit_claim": false,
+  "archive": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/structured-operations-initial-screen/bounded-object-analysis.tar.xz",
+    "sha256": "836af030eb05f5b89f38590d62cd21f223c5b12d23491b8c2a6c6d5f8e06b196",
+    "bytes": 352444,
+    "members": {
+      "prologue-3902.txt.xz": {
+        "sha256": "2d8074e9ec58f23215f46224bf9ec69e299fbb8b905bf2d0188584aef6c209a9",
+        "bytes": 1036
+      },
+      "prologue-3910.txt.xz": {
+        "sha256": "9f0aca473e213660197c12d17e4c2b2505f1ee640c445b4cdf08a5dc1f7ded3f",
+        "bytes": 912
+      },
+      "prologue-4133.txt.xz": {
+        "sha256": "700e8a7707b20dc6a33f19c0f0e75561626ecec993a194b5f1613ad00a1915b2",
+        "bytes": 916
+      },
+      "section-11982.txt.xz": {
+        "sha256": "c6ee13df77a61b4b6aa89650518b616ada00331cd25198a9c7999b8ed852040e",
+        "bytes": 812
+      },
+      "prologue-4178.txt.xz": {
+        "sha256": "7fd5b9ec4cc0610aa8bd67c5e5216296e86aa9b87c26de46c620c580de07e08f",
+        "bytes": 328
+      },
+      "prologue-3584.txt.xz": {
+        "sha256": "0cb37a8e22f1786d2b105e4b1cb58ac75cf1ae2ba35c6503007d674804eeed1a",
+        "bytes": 860
+      },
+      "prologue-3633.txt.xz": {
+        "sha256": "399df3e0eca06ce70b398a580dda7259ca981a196c1c37cd2b58135b20a263d4",
+        "bytes": 424
+      },
+      "prologue-3596.txt.xz": {
+        "sha256": "5981b685b10203cabd78a04a673be0a0c11031436f68354a90b382afaac84837",
+        "bytes": 424
+      },
+      "prologue-3588.txt.xz": {
+        "sha256": "2b569bbf0840fededc1027a2ee39aba1c3656ca4f7b5b293d40c564ebaa6fb98",
+        "bytes": 884
+      },
+      "prologue-4269.txt.xz": {
+        "sha256": "6d43659b3288d14120f3b30b18e3bec95a60588dcfd62fc19ece2581de836739",
+        "bytes": 328
+      },
+      "prologue-3795.txt.xz": {
+        "sha256": "4252038f50fc6373ad94d04556a7ea0ee73648d8aee64fbd1097fcb0dd2a49fe",
+        "bytes": 788
+      },
+      "prologue-4277.txt.xz": {
+        "sha256": "c6305d740c8398235e0fa6120744c8a4f9819210571378c71a7a841a90e19c69",
+        "bytes": 760
+      },
+      "prologue-3787.txt.xz": {
+        "sha256": "2f258a38a30523a241e497e403d1af4bb2fc8da004c137ce6970d599098117b2",
+        "bytes": 956
+      },
+      "prologue-4265.txt.xz": {
+        "sha256": "f26d0976a46641d23b63ad8d547682c584afb195ec7abd62e30ee80dca50dbf2",
+        "bytes": 460
+      },
+      "prologue-3799.txt.xz": {
+        "sha256": "cd3cddd911c7b3aaf2b1622bc5ba1ac55ec100ecacfdd011515ba53aff313336",
+        "bytes": 1108
+      },
+      "prologue-4230.txt.xz": {
+        "sha256": "64b8aff169dfd131b4d75bc725bd517b84a260f57094085b5240714f615086ef",
+        "bytes": 672
+      },
+      "section-6731.txt.xz": {
+        "sha256": "c196160af267c35d69691f2a778ebac4308694ef396b5214af5eb83b275cb45d",
+        "bytes": 1944
+      },
+      "prologue-4204.txt.xz": {
+        "sha256": "efa1954a612068b81bf795fb73e520a0e5f3d77b12c142f823a8724622143187",
+        "bytes": 404
+      },
+      "prologue-4208.txt.xz": {
+        "sha256": "9cd4d927c24fa6ba973aaa59163e2d92b3078db24641d1453ba0b956e031fd3c",
+        "bytes": 308
+      },
+      "prologue-4216.txt.xz": {
+        "sha256": "166133d3f805b49ff74b2e17d677948e1daf01639f61ec1a4b85045ecb9e9b86",
+        "bytes": 508
+      },
+      "prologue-4189.txt.xz": {
+        "sha256": "78b5154e811e26093f715f86e27cee4d4f43ffd002a8e6349a93823f5ac401f7",
+        "bytes": 676
+      },
+      "prologue-4197.txt.xz": {
+        "sha256": "99889d9e2072ee63449ae95e84bcf651baf3b40bdc9abc68de6be0c575f70b79",
+        "bytes": 640
+      },
+      "frames-and-calls.json.xz": {
+        "sha256": "41045f4c11b1c44c0a462636aad7c9e812cd46f8c3d37c1e0d64ef47058477a4",
+        "bytes": 85440
+      },
+      "prologue-4185.txt.xz": {
+        "sha256": "42df36364da583a7be526801ba49c0d4e5a51804ed1d465becc76f0e0957bf05",
+        "bytes": 564
+      },
+      "prologue-3764.txt.xz": {
+        "sha256": "7d1907d46eb31904a8f9439a98b1708ee1c36932b2d7a3b2454e135dcac3f7ab",
+        "bytes": 692
+      },
+      "prologue-3664.txt.xz": {
+        "sha256": "d7661a54cdd892cf0fedd01cdc99d3f11fc36f8d8de1be64a00090a36a2b7c5e",
+        "bytes": 404
+      },
+      "prologue-3971.txt.xz": {
+        "sha256": "23372aba5be7aa8ade0feb44681df77228a547c54a058bd603f1197108c3e5b0",
+        "bytes": 1068
+      },
+      "prologue-3871.txt.xz": {
+        "sha256": "da510fbef4dd20be8c02a96488e331f8842f4727e5a13b301984f6f3e8e784ac",
+        "bytes": 1064
+      },
+      "prologue-3676.txt.xz": {
+        "sha256": "589e0fc1c2f946c1978f85e90e054eee8ddaeac83be4b29d7baee510a217ea73",
+        "bytes": 756
+      },
+      "prologue-3863.txt.xz": {
+        "sha256": "3cadc3cecdfaa0b9a941093a05f788e9c8cbfb9d6e1810122997ef9b8ccfed5c",
+        "bytes": 1100
+      },
+      "prologue-3668.txt.xz": {
+        "sha256": "d5753816e70144fcdce91597acc4df8c18588787bdb8ebcf3dd2d0f316d9792d",
+        "bytes": 384
+      },
+      "prologue-3768.txt.xz": {
+        "sha256": "6eb2f04633d128eb51433294beccc25b3bb041ccb6aa314c7949875a8a74a068",
+        "bytes": 696
+      },
+      "prologue-3855.txt.xz": {
+        "sha256": "07196a7fef8f575069d774c743e21ca3cf8e9f50163c944ae8e65d1122f3c2f6",
+        "bytes": 1064
+      },
+      "prologue-3640.txt.xz": {
+        "sha256": "da8e74bf4d6a914b408a3189d5d36a382a6d8e03b28b0d5d5984c14dda22e04c",
+        "bytes": 404
+      },
+      "prologue-3740.txt.xz": {
+        "sha256": "7fbf7f01476ea28b54d9e5c9d979654d85841644425a2f137ff7542ca2e0fa28",
+        "bytes": 888
+      },
+      "prologue-3928.txt.xz": {
+        "sha256": "467947d0cda87b4d28eba3ecbabef84ac0dcafbab699624af45d688eae74e29b",
+        "bytes": 1448
+      },
+      "section-12305.txt.xz": {
+        "sha256": "f828cacbb6a20ee297a5b3ce45d988507b3d8e59cb2976e676e04ea818b000f1",
+        "bytes": 1604
+      },
+      "prologue-3936.txt.xz": {
+        "sha256": "832e3c46f6ac9ce893a1fb9b6eae28849cbdddaa2ba31b0a0ee5004d62e717be",
+        "bytes": 1456
+      },
+      "prologue-3847.txt.xz": {
+        "sha256": "23ed90daeec00186b297a26d0ccb396c2409b904d4efcb6ac52f64151a4b608f",
+        "bytes": 1096
+      },
+      "prologue-3752.txt.xz": {
+        "sha256": "80e16a6d456f81f68595cdb3563c362dc26f65ddd10009c83ce2731c904d273c",
+        "bytes": 688
+      },
+      "prologue-3652.txt.xz": {
+        "sha256": "9a2c09c3b4a5a4a1db6e18bd2b63226921c7289c6e59463595fd4cd94a923662",
+        "bytes": 420
+      },
+      "extra-extraction.py.txt": {
+        "sha256": "edafe54471dded7a3b9059179b614e03172e4f08952da82f06ccd9ac5244b4c2",
+        "bytes": 3687
+      },
+      "prologue-3859.txt.xz": {
+        "sha256": "e7ed9278c7cf69f451343d3ae593f35e9eb062f0f2e2daf50795c1dfd3b5469a",
+        "bytes": 872
+      },
+      "prologue-3924.txt.xz": {
+        "sha256": "7e0da95d6a8369010e517008f7bb88dba93986a26cae7f42e59aeb22a11de58f",
+        "bytes": 1520
+      },
+      "prologue-4181.txt.xz": {
+        "sha256": "6f848ec8a6017671c309a18ae67e50ac7b0010d90a05004b445ca9358db79e51",
+        "bytes": 904
+      },
+      "prologue-4193.txt.xz": {
+        "sha256": "0491f85cee76bf44e860f375a3417a23eda286ccc6916f15117288eed6532989",
+        "bytes": 984
+      },
+      "prologue-3898.txt.xz": {
+        "sha256": "f6b2b10705b4638d890c3c7f89324988d7bf483cc865c39ef335c72aa7019527",
+        "bytes": 1084
+      },
+      "prologue-9900.txt.xz": {
+        "sha256": "afd6399517f56372e486ce6630cdce602432197a78e524846692e7da94ae15cf",
+        "bytes": 264
+      },
+      "section-15842.txt.xz": {
+        "sha256": "5e77240d6619fa930cbee182b57d18b0a6bf8d0f31d9e488e1cd5f298cc09112",
+        "bytes": 640
+      },
+      "prologue-4212.txt.xz": {
+        "sha256": "c4479a06cdbf0674e9338e3744bc686abe4ea95fe6354c6ecd8ed678882451e1",
+        "bytes": 480
+      },
+      "prologue-4200.txt.xz": {
+        "sha256": "a8d800c835c48613c77af6d084d577e224e98187b97ce2c670316f9a842a30d1",
+        "bytes": 368
+      },
+      "section-13852.txt.xz": {
+        "sha256": "4d902421c91e89fe82b6e03cf821ca6747c863bd513645f1fcf6a8309eca5619",
+        "bytes": 772
+      },
+      "prologue-3843.txt.xz": {
+        "sha256": "012390d54bbf3f28fbb92fb97a40e0b19be5b8b28da77d45bbd17dea5e7b1652",
+        "bytes": 1224
+      },
+      "prologue-3756.txt.xz": {
+        "sha256": "4ca599e793f847cf14c7acacb658e2a543dd0bf92128f0a0e9aeb912ff744108",
+        "bytes": 576
+      },
+      "prologue-3656.txt.xz": {
+        "sha256": "df99181b6af10af5452bb0e26d2581e955bd596175db6ebc423fb066e081a6c1",
+        "bytes": 404
+      },
+      "section-3835.txt.xz": {
+        "sha256": "d378ef6e705e37fd8451a87e56fe6256924c77efc03f91dd099feeccbbe760dc",
+        "bytes": 2568
+      },
+      "section-210.txt.xz": {
+        "sha256": "fd1a56345b22cbb566b0d95bfb00cbb16f21b06ac965f41268c047d5272e0420",
+        "bytes": 2072
+      },
+      "prologue-3748.txt.xz": {
+        "sha256": "e953cd5c03b094d44252533b9eb5c5537aa4504604bbeb715fba09f61e1ec8a1",
+        "bytes": 420
+      },
+      "prologue-3648.txt.xz": {
+        "sha256": "354a71233fe518827ae4fc284f4ad45711cc3169fb55a7f23f9feb0ca3f91fd7",
+        "bytes": 404
+      },
+      "prologue-4172.txt.xz": {
+        "sha256": "f7be208238e46acbf7093ce8f8994ee7d0bb8262d1917d283a013d7c8eab3255",
+        "bytes": 328
+      },
+      "prologue-3851.txt.xz": {
+        "sha256": "626231c5b69c371f3c59feacdccbd1e1a8ce033274dbb782cdebd3fc27013079",
+        "bytes": 1116
+      },
+      "prologue-3644.txt.xz": {
+        "sha256": "4711e1ebbf3b7b6d228f93ec68720d5eee6868c56d4552439edfdf5c68da6831",
+        "bytes": 760
+      },
+      "prologue-3744.txt.xz": {
+        "sha256": "debc3db83c88e3bd55b73e4251c4e62623da2017330dc793c7e6d6ba91e983c4",
+        "bytes": 792
+      },
+      "prologue-3932.txt.xz": {
+        "sha256": "e55719ece41afa319720145e07b78d15a1c5c35db84a50d155bbf864421bdce3",
+        "bytes": 1540
+      },
+      "section-12301.txt.xz": {
+        "sha256": "6aa31530ec9830b7e2c3d37df3fe81605e50ce21f3b5cc34f7f44d0a581a8d52",
+        "bytes": 1560
+      },
+      "section-3811.txt.xz": {
+        "sha256": "12d738c7760dbfff894f546bd0bc7a50cc4e74133020024c81f2a868f52e40f3",
+        "bytes": 1340
+      },
+      "prologue-3672.txt.xz": {
+        "sha256": "36701c74d9330970ae9329ee4167ea32ad2d7e5443b7be1bbf979371bed5e112",
+        "bytes": 404
+      },
+      "prologue-3772.txt.xz": {
+        "sha256": "1a5b9e9329fb8ef4a76380921a1e6b8b8064f71983f8e773281ccccfbf18a92a",
+        "bytes": 492
+      },
+      "prologue-3867.txt.xz": {
+        "sha256": "a4d7d1f18cf4cde86a9b42a885d97d2ed8bbd1325388e5bd4a8cb4b27a2ec76d",
+        "bytes": 1088
+      },
+      "prologue-3967.txt.xz": {
+        "sha256": "21b1e92ada1b2cc09a2a510bc197336b7db1e44c75f3ea0bea53b4fa19ed6a14",
+        "bytes": 1336
+      },
+      "prologue-3879.txt.xz": {
+        "sha256": "f168418a003a8268164e4c0dc38ee9510006cff53c1997cdba18ef194f60e0d3",
+        "bytes": 832
+      },
+      "prologue-3979.txt.xz": {
+        "sha256": "54a4da82ce6d0c54926c5d57c3684af74dfda59065d2d3cf4a32ff7d099b101c",
+        "bytes": 308
+      },
+      "prologue-3760.txt.xz": {
+        "sha256": "ebd12c86653681cf9218121b031e044ca079f363d190d96d65451ad533c736ee",
+        "bytes": 680
+      },
+      "prologue-3660.txt.xz": {
+        "sha256": "cec8c723d75c33c6887974141a613038c6ac41753ce36def4245aa2a408de367",
+        "bytes": 764
+      },
+      "prologue-3975.txt.xz": {
+        "sha256": "8b4c19c653439791c1f3a15e541a9efe35351dfeef13276c3dd4e4ebf0eefb25",
+        "bytes": 1232
+      },
+      "prologue-3875.txt.xz": {
+        "sha256": "2f348910756a15314131912aefdd0cf6d81eb168fc864baaf1bd00055b804703",
+        "bytes": 1060
+      },
+      "section-3960.txt.xz": {
+        "sha256": "1c9836036d5718d1529561512ab70b263bb658944ffd3e5567789671b9d670b9",
+        "bytes": 6364
+      },
+      "section-3708.txt.xz": {
+        "sha256": "58fce2921ca06947bff165ca26e8596a29605b70ea6cfbcd41d5baa78d5f7dd1",
+        "bytes": 3272
+      },
+      "prologue-3592.txt.xz": {
+        "sha256": "2a54033539f11865fd3aa1977e3dfbba0b6fcadd1864196d722b8763a5a20a78",
+        "bytes": 956
+      },
+      "section-4006.txt.xz": {
+        "sha256": "53e27e91af3777185158b95cfdd8372cf62afc212184722e8a710b96d9ccb972",
+        "bytes": 3200
+      },
+      "prologue-3580.txt.xz": {
+        "sha256": "fb88d43f89e3e92564a1f45836cd7e891f8c96e2e3e83d51b7845eba98cd0133",
+        "bytes": 744
+      },
+      "prologue-3637.txt.xz": {
+        "sha256": "8726d666bd69b5cd16c68907032ef614eafeec27ae5bbf331c196ee4e85d54fc",
+        "bytes": 608
+      },
+      "prologue-3914.txt.xz": {
+        "sha256": "3a762998be3c2183ea5359c01f0d171c4e9d66818e689da4e4ee4b683bf5050c",
+        "bytes": 904
+      },
+      "prologue-4137.txt.xz": {
+        "sha256": "ee6dbea864bf7b51b96303e86254f19376d99533718f386ea5a9e5b3e691c746",
+        "bytes": 512
+      },
+      "prologue-4129.txt.xz": {
+        "sha256": "df46a35b49ca036f695f477cabfa43f86fd92259f1279798419737ac2bf6847c",
+        "bytes": 764
+      },
+      "section-4122.txt.xz": {
+        "sha256": "32ca5f95ed1068c6433dd9d8d8414b4531f9c4d866066692d389a357bb54d8ab",
+        "bytes": 1068
+      },
+      "prologue-3906.txt.xz": {
+        "sha256": "41c2b20f6664f7e0b85c871f1ec005dcf90ec104900b2ed76d7d5e9f3c56b04c",
+        "bytes": 812
+      },
+      "prologue-3918.txt.xz": {
+        "sha256": "137458053f842089cd0e2879f47f33311aa592e8991d9b10d5f92399cf2da61e",
+        "bytes": 296
+      },
+      "prologue-4238.txt.xz": {
+        "sha256": "95d5fe8119738fd6733b899a3d2ee41ec99ea91d54fc4467b937d99dd11a10d4",
+        "bytes": 676
+      },
+      "prologue-4234.txt.xz": {
+        "sha256": "b90cdc9bd86261eb15c5b36fc9d82956cf436371371ba7184022a1b5cf0aae4a",
+        "bytes": 808
+      },
+      "section-4242.txt.xz": {
+        "sha256": "d9fa4d74ac69127c467f3d2784119468e5e2fd0987b6c8767f46613ba93147ff",
+        "bytes": 2220
+      },
+      "prologue-4257.txt.xz": {
+        "sha256": "5b10df0f2b01b37b0fb9f0f2b1b6621aa8be01e7a6151b748de5678d7d1e0e93",
+        "bytes": 440
+      },
+      "section-10345.txt.xz": {
+        "sha256": "8bf6660370a8b8a8c7de1991e1e4cb6261c2821828ec2eea4d45ce7776fd0a0b",
+        "bytes": 3716
+      },
+      "prologue-3783.txt.xz": {
+        "sha256": "0c5b338b837ed6f8f7cbb3374c66301adffe5e3f2bf97eb563f2517ba358e23a",
+        "bytes": 832
+      },
+      "prologue-4261.txt.xz": {
+        "sha256": "8d5f1174cb082451c7074ba2d54fe3029badf8539567bf9c85801a9a09a1aa9c",
+        "bytes": 476
+      },
+      "prologue-3791.txt.xz": {
+        "sha256": "a4a0525056975c10822014c9521c07bc70f68ad96bf2f3571be236f220660b51",
+        "bytes": 1036
+      },
+      "prologue-4273.txt.xz": {
+        "sha256": "02b06547b6f074d90ec789c0ab5e20fa3a7f4f1d67a60a1064ce62729d184cdb",
+        "bytes": 1088
+      },
+      "section-3891.txt.xz": {
+        "sha256": "39c275b466d37fb529402ef9645360ce37e089e7a5a137583f9f9fce1f27036c",
+        "bytes": 2400
+      },
+      "prologue-3564.txt.xz": {
+        "sha256": "711772537a7a1155b6e24a7ae633bf255dc217c6b1c5442871849a9dc310a0c3",
+        "bytes": 916
+      },
+      "prologue-3576.txt.xz": {
+        "sha256": "e06f704e5be6bd602a45789425ef5b87bd5a33c3532c43bb6f9d03ff7a2e5bbc",
+        "bytes": 892
+      },
+      "prologue-4223.txt.xz": {
+        "sha256": "63399b765b4f63e8aa87b8fd08546bf94fc94e93ba95a2b7851a20bf416e034b",
+        "bytes": 1088
+      },
+      "prologue-3568.txt.xz": {
+        "sha256": "7226d7d53663960e4a0003f5ff64f92b5b134454d9a8e7cbefc2bfa0525b21c0",
+        "bytes": 1036
+      },
+      "prologue-3540.txt.xz": {
+        "sha256": "9ee3966142d7c060a546c802c402821c15b35b719dc88235a5cbeea8b65155aa",
+        "bytes": 972
+      },
+      "prologue-4219.txt.xz": {
+        "sha256": "1f93b8203ca00b1525d30fd1f68f385137ffc10628398746cad0676026a6664a",
+        "bytes": 1080
+      },
+      "prologue-3552.txt.xz": {
+        "sha256": "e4310b063bf5069a2b48ceab6b41bd4cbee8a51d0a0190b68949c93345333146",
+        "bytes": 868
+      },
+      "section-3998.txt.xz": {
+        "sha256": "530ff43e1a267d922f4aca6d4e174aa3c237aaaeacb9785963557d0857811bcd",
+        "bytes": 3020
+      },
+      "section-7411.txt.xz": {
+        "sha256": "bb9c01ad2803ed385594a28753eab3c38a1a6be578e463d1c2d48abc1e179d63",
+        "bytes": 1368
+      },
+      "prologue-3839.txt.xz": {
+        "sha256": "0ec63dc5ac9fd611bb6559ff1d6cb8afd9e4b2e0872bd427d115955d09240292",
+        "bytes": 936
+      },
+      "prologue-3944.txt.xz": {
+        "sha256": "7aa556a1e9a09f375ab432cc527efdee64a4f8b736e61bf5e0c123e734a02884",
+        "bytes": 724
+      },
+      "prologue-3827.txt.xz": {
+        "sha256": "02cd83981f5d4a30ff3266f691fb95a45defbc8da8941a223bb21311c23e959d",
+        "bytes": 740
+      },
+      "prologue-3732.txt.xz": {
+        "sha256": "763e816e46d6e7ce902e18c6cad92774883a54f96e66d0eb3ca720f8e29ce86e",
+        "bytes": 892
+      },
+      "prologue-3956.txt.xz": {
+        "sha256": "6411b44535edcb1036cfe1b6f37aaecd6dd84b090a0da1d1e1a6ea047414a3ec",
+        "bytes": 1136
+      },
+      "prologue-4175.txt.xz": {
+        "sha256": "7998355454f32b9d15128433418d6c563811d6c09408105edbb5643b7b48bfd0",
+        "bytes": 348
+      },
+      "prologue-3835.txt.xz": {
+        "sha256": "e0cf7aa5323c92edd52b62e34445fe6aa0acf38bd4848ce0611c5c74d1251d4b",
+        "bytes": 1128
+      },
+      "prologue-3720.txt.xz": {
+        "sha256": "bb34cfaa3fe0f06fa57d8d9303c60f9da073898ec4eb7c9dc973ca4ab8adb5e3",
+        "bytes": 908
+      },
+      "section-3843.txt.xz": {
+        "sha256": "25b20ff119727db5ea3468d2721d0985d54ee78832b4e5791527543858fcc72a",
+        "bytes": 4072
+      },
+      "prologue-3948.txt.xz": {
+        "sha256": "05a4faf0a8bbaa64dfa98b032726b1fd18ded49b88ec8b5aee6bd1cebaa939a5",
+        "bytes": 844
+      },
+      "prologue-4289.txt.xz": {
+        "sha256": "a103f081651fc6fe85beef44bba2d781469d7717691827f6f475f90f54f109f5",
+        "bytes": 532
+      },
+      "prologue-3708.txt.xz": {
+        "sha256": "787a7518818ca7949e835820bfda2394092ec9b31dce465a628a7e7470f9161d",
+        "bytes": 796
+      },
+      "prologue-3960.txt.xz": {
+        "sha256": "8da42eab72d55029f95046b98054f7b4b6b4208c48a520723cf1ae2acf335e1d",
+        "bytes": 1380
+      },
+      "prologue-3775.txt.xz": {
+        "sha256": "958739c91d080ea3ae8894588b930ef4e36c9c7d88ca2c6c62845853e6f5c5bc",
+        "bytes": 1060
+      },
+      "prologue-3716.txt.xz": {
+        "sha256": "da104d5e960c89d59b5f91a90a30b14ecb4ac910b989fac7d29aecbfcf4e0755",
+        "bytes": 904
+      },
+      "section-3975.txt.xz": {
+        "sha256": "052209b3cdbac36bcf141e0eba7a275f7e9ff99a173a352d1db8636104e8d45b",
+        "bytes": 3156
+      },
+      "prologue-4297.txt.xz": {
+        "sha256": "ab71350c2c3611cc9ad08ea902402e027925e1b9ae130b1ac3a22e5cfa70ecb3",
+        "bytes": 972
+      },
+      "prologue-3803.txt.xz": {
+        "sha256": "b58da8307362f66f26b9bbb7243baf343d48555835ce464f87dd29c51dc8c631",
+        "bytes": 780
+      },
+      "section-14131.txt.xz": {
+        "sha256": "564e7d1552b49a6188ae63c76db95a7b743b93e9455e3e008a354cd0ff74f031",
+        "bytes": 776
+      },
+      "section-12087.txt.xz": {
+        "sha256": "4bfa77b6e36124662324835b0fa45241cab1d2de445117a8dce9d6e52310c760",
+        "bytes": 1676
+      },
+      "section-3879.txt.xz": {
+        "sha256": "f96409f94005f28ea7ec9197712f30c00ba46b2056eea9886e499d63fc1bd8db",
+        "bytes": 964
+      },
+      "prologue-3704.txt.xz": {
+        "sha256": "e04d65f45a3e5fbe85bb7b0f2021101fac31c502e3890441e0c38df8a1a8da34",
+        "bytes": 404
+      },
+      "prologue-3811.txt.xz": {
+        "sha256": "0e810b2fa0d819f15ddd16dfe1a2a1725e507043796cfb6873a6f3bacafbe08f",
+        "bytes": 1040
+      },
+      "prologue-4285.txt.xz": {
+        "sha256": "f794b7cbaf69f3952517c71b02fb2f9c8b4cffd4e4454ce4f39504bab4450005",
+        "bytes": 896
+      },
+      "prologue-3779.txt.xz": {
+        "sha256": "283f8248c940bd0bd0cb9eb6168f4f755cb60365a8d8903a27d34491bd36347d",
+        "bytes": 860
+      },
+      "prologue-3622.txt.xz": {
+        "sha256": "b103065296016f7034674d56357e1f61640657b254d916a55a3ce5bffb6d6075",
+        "bytes": 868
+      },
+      "prologue-4114.txt.xz": {
+        "sha256": "f69414664b9ec77bfeac32ce19a12a321070307947f0076ca3e7d30490b0a3f6",
+        "bytes": 792
+      },
+      "prologue-4169.txt.xz": {
+        "sha256": "75f56216aeeaba2e64ae535bd9fd5651e65f2e1fe4e9a20f8deb7915377ec9ff",
+        "bytes": 384
+      },
+      "prologue-3630.txt.xz": {
+        "sha256": "132944301d1d972abdde9dbf59ed445ec95b2484faf02a7d5ee3b053153d0b4e",
+        "bytes": 756
+      },
+      "prologue-4106.txt.xz": {
+        "sha256": "298b5baa1563fe7e6061ce89b590f5cc5633ed8849814ca9ba32cfa2253245f7",
+        "bytes": 704
+      },
+      "prologue-4118.txt.xz": {
+        "sha256": "5f34e42772ff5b77fb5a74e46c3f8f6cd8cca3c0af1bb47c48928657f5ab4671",
+        "bytes": 748
+      },
+      "prologue-3599.txt.xz": {
+        "sha256": "6acde7b2f4aa80cfaa9fbf8eff01568a286739b9792fdfe1276eb796de3ae556",
+        "bytes": 628
+      },
+      "prologue-4165.txt.xz": {
+        "sha256": "cda774cb64956db64d23af19f8f56f58ef48c6fc1b94e4b77342b61b5e22e9a0",
+        "bytes": 476
+      },
+      "section-4013.txt.xz": {
+        "sha256": "0c1c12f51235ae1751ee8e2f8145aa6b882762f3cb27597a64f154447032b4fa",
+        "bytes": 2392
+      },
+      "prologue-3606.txt.xz": {
+        "sha256": "51af0b633a082ba7b678a4cd4815b26090f30bfbe0b8c44bff6667a8509b1a4c",
+        "bytes": 768
+      },
+      "prologue-3618.txt.xz": {
+        "sha256": "6cef82946cd89ebb74a2f576b958e06c927e8687c663eb466c8f80f3250aa341",
+        "bytes": 428
+      },
+      "prologue-4153.txt.xz": {
+        "sha256": "c55bb4aa2e5c3686ceda83027c4aa8fe8cf5e786fbee1b11f975d5993f65696b",
+        "bytes": 476
+      },
+      "prologue-4122.txt.xz": {
+        "sha256": "c9cca00e33895cfa28b2b1875cc74e05c1e044c818d642fea55a26a2c9be2518",
+        "bytes": 800
+      },
+      "prologue-3614.txt.xz": {
+        "sha256": "9f735368d69da1cd38cb4dadc52ebd4223b93db7a23bc73b15aa9829726bb05b",
+        "bytes": 780
+      },
+      "bounded-frames-and-calls.json": {
+        "sha256": "e3f174095992311904fd3e6ab2c838586a7513488c660bdf9a7d6fc4d39509a0",
+        "bytes": 2921298
+      },
+      "prologue-4141.txt.xz": {
+        "sha256": "090c5c7c501522e34ac8bdc346fae3b325ab1c89c05748c960ee65d51cfc8ba0",
+        "bytes": 576
+      },
+      "prologue-3517.txt.xz": {
+        "sha256": "630709d8262a5a3149b0094821a6501fa2a81f4007df960b981db13587cccd68",
+        "bytes": 1020
+      },
+      "prologue-3509.txt.xz": {
+        "sha256": "0c2784faccaf2d62d94b9b0646e23d6b00fce2994b403fd9c44e907bd009a839",
+        "bytes": 752
+      },
+      "prologue-4242.txt.xz": {
+        "sha256": "d64b199954772c49911fc111919c2973e382ce391dce31e156e9d1ee6e4acbe9",
+        "bytes": 1120
+      },
+      "prologue-3505.txt.xz": {
+        "sha256": "5040829acc7589da18c06faa43d74c6c01f7af434c2c950ca3e4754b122834e8",
+        "bytes": 524
+      },
+      "prologue-4250.txt.xz": {
+        "sha256": "60abac9e5c8529b9e46f81a7035505d048b2e4e0dd33d546720fda07c1807a9d",
+        "bytes": 1172
+      },
+      "prologue-3891.txt.xz": {
+        "sha256": "69d66c33f8eb316416125d9c2395aa8b97a4c0dd3eaa05bf6ee34cc2b4612cae",
+        "bytes": 952
+      },
+      "prologue-3684.txt.xz": {
+        "sha256": "12407bf61adb904ad29319bd45ecd0c0d597463e5af34f6238538b8546bbe6b0",
+        "bytes": 424
+      },
+      "prologue-3533.txt.xz": {
+        "sha256": "40e4069bf4cc4f1492d5289aa4daa4918fbc328547f4a1eb68744d5061bff82b",
+        "bytes": 824
+      },
+      "section-4273.txt.xz": {
+        "sha256": "b51f08883b0386e6be804aa30561099191d837392f66b408df0386f0a852fe13",
+        "bytes": 4820
+      },
+      "section-3791.txt.xz": {
+        "sha256": "dc9610dd59f7b2e338754578d77a9572c6fad7e1379186e0f7a47baf83c7af9e",
+        "bytes": 1188
+      },
+      "prologue-3883.txt.xz": {
+        "sha256": "8395cb99e113d2d0f96182d8bff4f53dc20fdcfc1f7f0c0972f4727c94c56853",
+        "bytes": 772
+      },
+      "prologue-3521.txt.xz": {
+        "sha256": "cb7a55bf843a7c46b2fa0b5d56c26ec8e78b6ae13f58856a6277b8a2b77d0ee1",
+        "bytes": 968
+      },
+      "prologue-3696.txt.xz": {
+        "sha256": "fe80aa1bbccd862774bf6f6955b42b055fc4eb4c658cba270e3d7ae362543051",
+        "bytes": 404
+      },
+      "prologue-3688.txt.xz": {
+        "sha256": "178f9003f05e69eb55ae3f17d5dcc4fa36a9707cfd69b3c90954ace0d9367eb2",
+        "bytes": 404
+      },
+      "prologue-4126.txt.xz": {
+        "sha256": "8ef2ada1a1fafb712f669de5f2938b532732f56199d782c757e11f754e615bfc",
+        "bytes": 932
+      },
+      "prologue-3610.txt.xz": {
+        "sha256": "ef50ecbd7198e7345171307b3c7f57ab7c6bd6cb0b09027c30a5395d29a774df",
+        "bytes": 848
+      },
+      "prologue-4145.txt.xz": {
+        "sha256": "85f8e56f80d6c546e8767aff318258392dcfd9a4b1eba46aa75586715ed26cb8",
+        "bytes": 728
+      },
+      "prologue-4149.txt.xz": {
+        "sha256": "f6542e6a74bbedfffa4638a58dfda9ef2e6d2a18115718d409e54015de8bfff0",
+        "bytes": 968
+      },
+      "prologue-3602.txt.xz": {
+        "sha256": "0ef568fa088aaa1ae296cfb2bb939f9d25ca642e7eb7e15856e59db16e5e71f9",
+        "bytes": 916
+      },
+      "prologue-4157.txt.xz": {
+        "sha256": "4dc7ca0a9a4dc889dc25f88d30dbdee27fb5bdc440ef77928ac6ce8e9856de5b",
+        "bytes": 992
+      },
+      "section-3588.txt.xz": {
+        "sha256": "0c2e27895047eeb3b3f2c7a975c0c5cd8ed7ac98a1dc65cdaba4ec10bf4315e0",
+        "bytes": 1612
+      },
+      "prologue-4102.txt.xz": {
+        "sha256": "2c01595237c4675b5834bc26d37c2637f3e23a80488aa8bed94f09011d294b0e",
+        "bytes": 512
+      },
+      "prologue-3921.txt.xz": {
+        "sha256": "de5a6e7da25bb3c4e6ed41a90aa18c23530499df62cf0c49e678c945270a6a65",
+        "bytes": 680
+      },
+      "prologue-4161.txt.xz": {
+        "sha256": "0303ff775d8aa3e50826fd4ccea398553e36143307fcdd1efd446842f53c0dee",
+        "bytes": 644
+      },
+      "section-4017.txt.xz": {
+        "sha256": "7f7e71a32ef4cd0bd8384bd9bc87ab5bbb50069031352cc849773481d5ba5438",
+        "bytes": 2168
+      },
+      "prologue-3626.txt.xz": {
+        "sha256": "6635f52e6094a5506ed73e7f8e39536f1d75dd92a275f87f48ad58e6239539b2",
+        "bytes": 424
+      },
+      "prologue-4110.txt.xz": {
+        "sha256": "882be4ba69ea1ea2f2a2ba823080643e6461d49b1878865776e42d52dec45f9a",
+        "bytes": 840
+      },
+      "section-3584.txt.xz": {
+        "sha256": "5f71803e863378e789263bf5416ded438384ad744d678c8bf14edea9ba03c456",
+        "bytes": 1696
+      },
+      "section-3799.txt.xz": {
+        "sha256": "5a4132a02d8d103b4711c2cd18137dbddfb206dd70570f9b7ec3a16d7498c45a",
+        "bytes": 1396
+      },
+      "prologue-3887.txt.xz": {
+        "sha256": "743e464ed8161f40a5c8f4d09a30bd3e709ef59b12f76182b204effd5f270dc4",
+        "bytes": 696
+      },
+      "prologue-3525.txt.xz": {
+        "sha256": "fe8356d80c43b9b7bf5ab2d19f5245001fe072bc2cd11cde6e695bae9ae81d4d",
+        "bytes": 584
+      },
+      "prologue-3692.txt.xz": {
+        "sha256": "ecb7ddb893d6db8bd9b429d28fd5f4d202be741aa97159936319461ad565f5d0",
+        "bytes": 760
+      },
+      "prologue-3895.txt.xz": {
+        "sha256": "ac36c6735f524663d2ca9f86c9d4675f28667e7e27217ea406fd952446552c63",
+        "bytes": 396
+      },
+      "prologue-4301.txt.xz": {
+        "sha256": "cbbd325e3ebaeee7d4a41732c4e31d5df22e9317e990ff489c9ad6e8e4a62600",
+        "bytes": 796
+      },
+      "section-3441.txt.xz": {
+        "sha256": "01b33cd242fd38d40c73800db6296aae2dc06bf74e207676278fa478f9bf1ccb",
+        "bytes": 1768
+      },
+      "prologue-3680.txt.xz": {
+        "sha256": "a0b2daf14c5e6e5f8c51c3277c312e69f39db8ecfbc2da7df332495afeae000e",
+        "bytes": 404
+      },
+      "prologue-3537.txt.xz": {
+        "sha256": "45b8907910d83fb7b9d3993eb23efa3bb24964de2c6c925f65ce32216c44f639",
+        "bytes": 660
+      },
+      "prologue-3529.txt.xz": {
+        "sha256": "a61328341773bf3f51df90d3c9d960f9b13681f085badb310ed3bb6776b60f13",
+        "bytes": 1024
+      },
+      "prologue-3501.txt.xz": {
+        "sha256": "2da9af680ef60cdd52e36609ec82fc239158e68aff2b09e89037b33d00c4f2a5",
+        "bytes": 700
+      },
+      "prologue-4254.txt.xz": {
+        "sha256": "bf9e04312eada7595dcbfcd37755ab67328ef41bcfb253d60b02f16621aaa32e",
+        "bytes": 352
+      },
+      "prologue-3513.txt.xz": {
+        "sha256": "f80c82f472e1bb4f9335550a192c9f519bc0fe17b7e9a4db16a53b72dd4702bb",
+        "bytes": 860
+      },
+      "prologue-4246.txt.xz": {
+        "sha256": "11b288edff748d378424a5c946c445af1be07c56ffb92789357b131aa52424ca",
+        "bytes": 980
+      },
+      "prologue-3556.txt.xz": {
+        "sha256": "e2c9d4ed0e19c61afd195aef6f0db6ed14ccd39b05331b30a5f57bee9f4677cc",
+        "bytes": 844
+      },
+      "prologue-3548.txt.xz": {
+        "sha256": "50db285c79ede37a0a448e10e4155f84b0b81bf4136d6b1f38834d8d2065ed90",
+        "bytes": 992
+      },
+      "prologue-3544.txt.xz": {
+        "sha256": "3b46e58659c4454c605ecf1daa1598906c5fe8e27d9942b66f7c2f01bd8dc852",
+        "bytes": 964
+      },
+      "disassembly-commands.json": {
+        "sha256": "a17ccfe7ef6b6d39d628ad38b3f40ab41b51ad346327c01cfb2de00cc15b0567",
+        "bytes": 26681
+      },
+      "section-7407.txt.xz": {
+        "sha256": "3ebb5e801154ea2f007606a00fa0fd8f6101652f2f9082465c3a4aeff428bed2",
+        "bytes": 2548
+      },
+      "prologue-3572.txt.xz": {
+        "sha256": "878c6eecd7605082146fbd220c4fbd05e25807683fb8443d3f27b8940ffbc910",
+        "bytes": 728
+      },
+      "prologue-4227.txt.xz": {
+        "sha256": "9814613017ed41f7b1a9234675f29ff42c1f40b8aac29aaa6494118cfbaac168",
+        "bytes": 540
+      },
+      "bounded-extraction.py.txt": {
+        "sha256": "9fe31b61f194153a99a682f42a90036e744febad793ceefc0964f5b7a25ba7fb",
+        "bytes": 4220
+      },
+      "prologue-3560.txt.xz": {
+        "sha256": "4697a2a7e82453f3735a55a0584aac59746b3df6031219802de39183947615c2",
+        "bytes": 720
+      },
+      "section-3863.txt.xz": {
+        "sha256": "521155ed29f9a20a0431a783a8ad5f258a7a6e7ddad54694b0f2e2df45c8dc15",
+        "bytes": 2388
+      },
+      "prologue-3700.txt.xz": {
+        "sha256": "f6f36a68f31339cf7a657c21803783a7977ddc117025a04a748e61d11e18bf71",
+        "bytes": 384
+      },
+      "prologue-3815.txt.xz": {
+        "sha256": "bd6a125a97e734db0ae1e875be408cadea49cae0471dbce5e7f7dde0e41a5f9f",
+        "bytes": 840
+      },
+      "prologue-4281.txt.xz": {
+        "sha256": "c467a8ebd9fd38e35dc49a948905565a1bcd17ed7c38c151db3f4dfa3ccd85b1",
+        "bytes": 520
+      },
+      "prologue-3964.txt.xz": {
+        "sha256": "8048f1fc93e633558a7e2da2153de9fbb2a23f04f597f7dd7d61877fe2192efa",
+        "bytes": 284
+      },
+      "prologue-3819.txt.xz": {
+        "sha256": "f6406703fa736f201ed955ef34a7237f6cf1b78c69c8fc2261dde34743d5714f",
+        "bytes": 836
+      },
+      "section-15087.txt.xz": {
+        "sha256": "3ad10d386c2b181445eccb4aa7cba845e79b95a97c379e0a529389d7fe15b8e4",
+        "bytes": 380
+      },
+      "prologue-3712.txt.xz": {
+        "sha256": "36cba9204d30aeef5e533ebbeb9b2c9bac7db6d9e8e69133976e775b7aa3c909",
+        "bytes": 412
+      },
+      "prologue-4293.txt.xz": {
+        "sha256": "dd2706cf0e74c4e56526a708b2290ce6495f567f4aa7128db4dc62a6f1d52300",
+        "bytes": 940
+      },
+      "prologue-3807.txt.xz": {
+        "sha256": "25962790f6fc6068cc8ccc6affe8c35c38c73e6d1d40309290801f304f7d4877",
+        "bytes": 776
+      },
+      "prologue-3952.txt.xz": {
+        "sha256": "fbd6c7a7ba1091347e91cb56c982ff558a18e3bceb9c7f7940603e5f914c8896",
+        "bytes": 1208
+      },
+      "section-3859.txt.xz": {
+        "sha256": "43342a9412a3a0392a8dbd77a72c463753e8cf02afb7f88f7b62ae05c9408719",
+        "bytes": 1060
+      },
+      "section-3752.txt.xz": {
+        "sha256": "fee4ea65fa6144e1207207f9df03e47482a496cda7a96805c0828da6854db8bc",
+        "bytes": 1712
+      },
+      "prologue-3831.txt.xz": {
+        "sha256": "904ce2d4fd8d3f32eaade275e914a9a5066a000813369f018724d313f37ba99d",
+        "bytes": 816
+      },
+      "prologue-3724.txt.xz": {
+        "sha256": "33a2e404562fe90bdbd78aef821e1ada55345532be9cf0ae0388d05fbbb8ddbc",
+        "bytes": 848
+      },
+      "prologue-3940.txt.xz": {
+        "sha256": "d4eb7913fc90d2017b36b7d22ca1e7168c892d6ba43511ae751ecc549c2fe4a1",
+        "bytes": 920
+      },
+      "prologue-3728.txt.xz": {
+        "sha256": "76a9a020e6609e82903a6262e4fbba8f5b492bc19270d3668904a667fc4b531b",
+        "bytes": 828
+      },
+      "prologue-3823.txt.xz": {
+        "sha256": "4fd486f717cc87281f3c5eae6ecfba29e87a4075dca04793755b500968cececb",
+        "bytes": 796
+      },
+      "section-3740.txt.xz": {
+        "sha256": "ffe86f6c77a3b99c601194f0a2fcaa3317aff8fe8f30c19a1604191fa0464291",
+        "bytes": 4608
+      },
+      "prologue-3736.txt.xz": {
+        "sha256": "ba97d66ebd5bfef0b4c8edfeb3422be1d1ea76f981ef66c84e541ae9c461067d",
+        "bytes": 884
+      },
+      "extra/prologue-4017.txt.xz": {
+        "sha256": "163d369523376928b826aa5cd065df4f65ad138985b08ba3d7f33cac9c482091",
+        "bytes": 1456
+      },
+      "extra/prologue-3441.txt.xz": {
+        "sha256": "a8608d7f9b09179a6318b96d5023fb7569a7f4df8dabf6f2f74bac50c4bfda13",
+        "bytes": 940
+      },
+      "extra/prologue-12305.txt.xz": {
+        "sha256": "ed0d82344ab66a9e043d98e632b6bbda23a46575241d7e8dfa94cbd3be681088",
+        "bytes": 1280
+      },
+      "extra/prologue-3234.txt.xz": {
+        "sha256": "9a9dbce52a3a48776724a5c89e9ff0f29b6e88a873c94ae6fdf72de352935550",
+        "bytes": 764
+      },
+      "extra/prologue-3238.txt.xz": {
+        "sha256": "f0f13c6425a10fc8c93b812842711839f2b3f6beb0c267feb094bab8bcc2d266",
+        "bytes": 900
+      },
+      "extra/prologue-3226.txt.xz": {
+        "sha256": "be32373a09e4eb1a339e8a3094fb1513c156e66caa9fb4ed024817f98a74aea8",
+        "bytes": 972
+      },
+      "extra/prologue-7407.txt.xz": {
+        "sha256": "38052671f067a5df6bd15b598dc0ccb2de39e534515b9c1a2f86e344a0c4b901",
+        "bytes": 908
+      },
+      "extra/prologue-11982.txt.xz": {
+        "sha256": "71703f3598e4dfce9ffa971dff00b3ca0dc7c0fc43795aec348121f902d8a897",
+        "bytes": 764
+      },
+      "extra/prologue-7411.txt.xz": {
+        "sha256": "0876902c6ab9783161849d328d1e895b8dfce554bd948699fd2934ba57649bcd",
+        "bytes": 788
+      },
+      "extra/prologue-3998.txt.xz": {
+        "sha256": "3acf8641e8902be7b973d18e9c91049c830a7ea9f9586688e5d598d83095cd76",
+        "bytes": 1212
+      },
+      "extra/prologue-175.txt.xz": {
+        "sha256": "317e372ca5562013971fe79937d2da089e3e421afb0a912326bd6bedecdb074e",
+        "bytes": 1060
+      },
+      "extra/prologue-10345.txt.xz": {
+        "sha256": "b1928c935ef77d389ddef297f2caf88a2c78b2c62f477d20d0593e1c51b3b347",
+        "bytes": 1204
+      },
+      "extra/prologue-198.txt.xz": {
+        "sha256": "69b924b9a50ffb6278e79b9a40a9edd174626917bc1398a72c808a6a42aba9d2",
+        "bytes": 972
+      },
+      "extra/prologue-4013.txt.xz": {
+        "sha256": "441087ecca4296e25f49e42691d2025f93aab814894c33eff06a1ce36bc64f37",
+        "bytes": 1460
+      },
+      "extra/prologue-15842.txt.xz": {
+        "sha256": "db4f31959875b8eab2c289b56e3b3c9304ec489da629ef6695e26e17c2c2a275",
+        "bytes": 332
+      },
+      "extra/prologue-12301.txt.xz": {
+        "sha256": "0e7c24111dcd83b93e19e718f146ba98f2f0fc4542db620bbe633d6cfd27e46c",
+        "bytes": 1204
+      },
+      "extra/prologue-13852.txt.xz": {
+        "sha256": "6115548c8ef9b07da6d01c9a145cb8542dc9715093d6ed376ce11bbc20e5f53a",
+        "bytes": 740
+      },
+      "extra/prologue-15479.txt.xz": {
+        "sha256": "ed79b520445111ed7fdba2faf2063e981fc5179ea807de83d12f72a840590c78",
+        "bytes": 284
+      },
+      "extra/prologue-4094.txt.xz": {
+        "sha256": "907fa5e1a193d5c3a19a2dd1af5a4b430d4da6a62333cf5f31e6dec20ed85260",
+        "bytes": 1012
+      },
+      "extra/prologue-14105.txt.xz": {
+        "sha256": "c864c21631a25a04b3905d103ecd474aa6e7188bc747312bbaab549e58b7d7bf",
+        "bytes": 332
+      },
+      "extra/prologue-16143.txt.xz": {
+        "sha256": "55904c205c5035f20c2185a15953735c1b93234cbaa00d88e5c6b3de7e08dec1",
+        "bytes": 300
+      },
+      "extra/prologue-14502.txt.xz": {
+        "sha256": "23383655f9cd997325ce23ad409a2d384d9044acd30e49e3927bbb038d9de802",
+        "bytes": 316
+      },
+      "extra/prologue-210.txt.xz": {
+        "sha256": "f77d4a81ebd892574c77b348a9d7c3efec7f680d9c10b70e3a74eca906891ae5",
+        "bytes": 1024
+      },
+      "extra/prologue-4006.txt.xz": {
+        "sha256": "7bb5b5634651d40f078daa22b4d7286385b20862b806aebd739b671055122b64",
+        "bytes": 1288
+      },
+      "extra/bounded-frames-and-calls.json": {
+        "sha256": "9e200bbbb4a119cc1e5b02365ca750d5699debb4f1087aea2b1e10aeec172f4e",
+        "bytes": 298592
+      },
+      "extra/prologue-14804.txt.xz": {
+        "sha256": "d478799961494e892a9b2231ff1ac80235863492c281fc227f5e750517f52eca",
+        "bytes": 344
+      },
+      "extra/prologue-14967.txt.xz": {
+        "sha256": "ced643982d4bfb294541e27f0bac87926a21a204c09deb844920156258d754ac",
+        "bytes": 308
+      },
+      "extra/prologue-15083.txt.xz": {
+        "sha256": "c7212bf1f653d95489f4c621073057eecc9d6c2d4ab9e71405a9ea406838a90b",
+        "bytes": 296
+      },
+      "extra/prologue-12087.txt.xz": {
+        "sha256": "a4b9e46615203bc3345081e79e4ad641d16e92213b261ce5281a683985469b86",
+        "bytes": 1136
+      },
+      "extra/prologue-14131.txt.xz": {
+        "sha256": "247050a0523cb396e4662541ba90f5ba9e48f64928009486998495f316fe6f59",
+        "bytes": 324
+      },
+      "extra/prologue-3433.txt.xz": {
+        "sha256": "13a58edfe6e5b3b1141fea9ad36e792f8895e07b58b0a69df4ad6abca461aaf8",
+        "bytes": 708
+      },
+      "extra/prologue-6760.txt.xz": {
+        "sha256": "3f72f329a3e2aa96820f18da6722b86718ceb22407cb6a1e8100cf35c2debbd6",
+        "bytes": 704
+      },
+      "extra/prologue-14843.txt.xz": {
+        "sha256": "2c74970396ae14c68b20fe3e1abcab54aeb40d053c145a51bb3442e7705e48f9",
+        "bytes": 320
+      },
+      "extra/prologue-16401.txt.xz": {
+        "sha256": "b39857af2031bec83106102d97297681d988a9904cec90fa7b9aedfe7829a80a",
+        "bytes": 284
+      },
+      "extra/prologue-6731.txt.xz": {
+        "sha256": "a6a4b3ace50c84f107b578fb87ac1484fd4c99794b36569fe50628592855bb10",
+        "bytes": 852
+      },
+      "extra/prologue-11852.txt.xz": {
+        "sha256": "fcfde1ad06d6bed98091d99ce4a36e8e7f702a104f0d28dfae3dbd9ebd40c016",
+        "bytes": 432
+      }
+    }
+  }
+}

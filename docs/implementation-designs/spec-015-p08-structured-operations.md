@@ -16,11 +16,13 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
-**Combined initial independent SOURCE PASS at `3065c574`; fresh focused collections ready.**
-The [bounded source review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-initial-independent-source-review.md)
-preserves compiler/runtime/resource questions as unproved.
-The [source freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-initial-source.md)
-pins the candidate and compiler-free checks; compilation/runtime/fit remain unproved.
+**Initial source `3065c574` SOURCE PASS `c966aa8b`; focused behavior/layout PASS,
+main-stack resource rejection.** The [current result and proposed grouped
+correction1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-initial-result.md)
+records 36,744 required bytes plus omitted costs, measured reductions and concrete
+remaining copy/cold-caller mechanisms. Correction0/2; proposed source not started.
+The [initial source freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-initial-source.md)
+remains immutable source-only history. No fit or higher-limit claim follows.
 The [bounded independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-independent-design-review.md)
 confirms readiness for the authorized combined initial source package.
 The [new authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-activity.md)
