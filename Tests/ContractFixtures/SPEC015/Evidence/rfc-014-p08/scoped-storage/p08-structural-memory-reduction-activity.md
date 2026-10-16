@@ -38,3 +38,11 @@ frozen before-baseline and complete streaming comparisons. All four slots remain
 charged. Exact donor layout requires the specified one existing-module diagnostic
 before source; no guessed fit, permanent-role interpretation or implementation
 allowance is inferred. No maintained code/compiler/build/runtime changed.
+
+[Independent design/authority review](p08-fixture-metadata-independent-design-review.md)
+finds the temporal metadata role permissible in principle under existing authority,
+but **DESIGN BLOCKED** at `5b382914`: adjacent donor overlaps the required surplus
+case, and prebinding custody/reentry/prefix cleanup needs a concrete source seam.
+Resolve these grouped local design gaps before the proposed diagnostic; no source,
+compiler invocation, new implementation allowance or contract amendment is created.
+All four slots/resource limits and historical closed budgets remain unchanged.

@@ -16,6 +16,12 @@ superseded_by: null
 
 # P08 scoped fixture metadata backing
 
+**Independent design review: BLOCKED at `5b382914`.**
+[Focused authority/realization review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-independent-design-review.md)
+finds no required contract amendment, but identifies surplus donor overlap and a
+missing concrete prebinding custody/cleanup seam. Resolve both before the proposed
+diagnostic or source work; the proposal below remains unimplemented.
+
 This is one replaceable physical proposal, not Specification authority or source
 approval. [New authorization/activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structural-memory-reduction-activity.md)
 permits this assessment; earlier budgets remain closed. No maintained source,
