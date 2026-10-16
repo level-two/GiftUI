@@ -30,3 +30,11 @@ The [current rejection](p08-measured-sizing-stack-preflight-result.md) remains
 immutable: backing 138,880 plus required stack lower bound 71,088 exceeds RAM
 196,608 before omitted costs. P08 and aggregate gates remain blocked throughout
 assessment. Known generated pycache is unrelated and untouched.
+
+[Concrete proposal](../../../../../../docs/implementation-designs/spec-015-p08-fixture-metadata-scratch.md)
+is ready for independent physical-design review: temporary, fully initialized
+typed fixture metadata in one exclusively idle original caller slot, plus one
+frozen before-baseline and complete streaming comparisons. All four slots remain
+charged. Exact donor layout requires the specified one existing-module diagnostic
+before source; no guessed fit, permanent-role interpretation or implementation
+allowance is inferred. No maintained code/compiler/build/runtime changed.
