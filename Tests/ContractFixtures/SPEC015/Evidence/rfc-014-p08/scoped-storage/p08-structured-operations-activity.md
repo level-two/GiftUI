@@ -1,7 +1,9 @@
 # P08 structured construction and observation operations activity
 
-Current boundary: **grouped correction1 SOURCE FROZEN, independent SOURCE review
-pending** after approved result/approach `81f5ed80`.
+Current boundary: **grouped correction1 independent SOURCE PASS at `b8a9626a`**
+after approved result/approach `81f5ed80`. The
+[bounded source review](p08-structured-operations-cycle1-independent-source-review.md)
+permits the three registered fresh focused collections.
 The [correction freeze](p08-structured-operations-cycle1-source.md) pins seven Swift
 fixtures, exact qualification and same three fresh validation commands. Correction1/2
 is consumed; corrected compiler/runtime/image0. Initial focused passes and measured

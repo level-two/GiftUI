@@ -1,6 +1,8 @@
 # P08 structured operations — grouped correction1 source freeze
 
-**SOURCE FROZEN against `81f5ed80`; independent SOURCE review pending.**
+**Independent SOURCE PASS at `b8a9626a`, frozen against `81f5ed80`.**
+The [bounded source review](p08-structured-operations-cycle1-independent-source-review.md)
+permits the three registered fresh focused collections; corrected compilation/fit remain unproved.
 This implements the approved grouped approach in the existing activity.
 Correction1/2 consumed; historical allowances stay closed. Corrected compiler,
 runtime and image invocations0. Initial focused passes/resource rejection remain

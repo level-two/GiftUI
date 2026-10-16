@@ -16,8 +16,9 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
-**Grouped correction1 source frozen after result/approach PASS `81f5ed80`;
-independent SOURCE review pending.** The [new freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-cycle1-source.md)
+**Grouped correction1 independent SOURCE PASS at `b8a9626a`; fresh focused collections ready.**
+The [bounded source review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-cycle1-independent-source-review.md)
+follows result/approach PASS `81f5ed80`. The [new freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-cycle1-source.md)
 pins actual-pointer guards, original host formal operations, actual-target health
 and cold preparation/reconstruction. Correction1/2; no corrected compilation,
 runtime or fit evidence. Initial `3065c574` focused passes and required36,744
