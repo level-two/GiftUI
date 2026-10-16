@@ -1,5 +1,16 @@
 # P08 constructor/caller realization activity
 
+Current boundary: **STOP; final focused behavior/layout PASS, required cold-stack
+28288 >27648** at source `51cfc960`, SOURCE review `ee10d2f1`. The
+[final result](p08-constructor-caller-final-result.md) preserves all three passing
+receipts,160-root layout, namespace failure-cleanup inspection and exact original
+callback path. The640 excess omits further required costs, not the complete gap.
+Initial1/correction2/2 closed; no third automatic variant. No total-RAM failure,
+complete upper bound, current image or contract/limit amendment is inferred.
+Full202/image held; P08/SO acceptance open. Independent final result review next.
+
+Historical final source readiness:
+
 Current boundary: **independent final [SOURCE PASS](p08-constructor-caller-cycle2-independent-source-review.md) at `51cfc960`; registered focused collections ready**,
 final APPROACH PASS `7f4dc782`. The
 [new source freeze](p08-constructor-caller-cycle2-source.md) pins the named full-union

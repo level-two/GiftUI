@@ -16,6 +16,15 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
+**Current constructor/caller package STOP: final focused behavior/layout PASS;
+required cold28288 > main27648**, source `51cfc960`, SOURCE review `ee10d2f1`.
+The [final current result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-result.md)
+pins actual destination materialization, namespace cleanup and first bank callback
+proof. Correction2/2 closed; no third automatic variant or new resource/contract
+authority. All source/behavior gains are retained; full202/image held, P08/SO open.
+
+Historical final source readiness:
+
 **Current constructor/caller final SOURCE PASS at `51cfc960`; registered focused collections ready**,
 APPROACH PASS `7f4dc782`. The
 [source freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle2-source.md)

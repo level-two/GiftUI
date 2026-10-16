@@ -1,15 +1,15 @@
 # RFC-014 task context guide
 
-Current P08 activity — **constructor/caller final correction2 source frozen; SOURCE review pending**.
-The [source freeze](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle2-source.md)
-implements final APPROACH PASS `7f4dc782`: full-union named inout Optional host
-destination, cold config/join actual-plan loans and isolated original namespace
-check. Initial1/correction2/2 consumed; no third automatic variant. Current compiler/
-runtime/image0; destination lifetime/failure cleanup/layout/fit unproved. Prior
-focused PASS/cold30440 rejection stays immutable;384/202 omissions remain explicit.
-Main27648/RAM196608/four34720 slots, full ownership/corpus and historical closed
-allowances stay unchanged. P08/SO acceptance open; fresh runs require SOURCE PASS,
-full202/image requires viable complete resource paths.
+Current P08 activity — **constructor/caller final STOP: focused behavior/layout PASS, cold-stack FAIL**.
+The [final current result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-result.md)
+pins source `51cfc960`, SOURCE review `ee10d2f1`, three current focused passes and
+required cold28288 >27648 with further original callbacks/outer/IRQ omitted.
+Native3,472,564 assertions have zero failures;160-root backing138880/metadata16584
+passes. Actual namespace scratch moved cold, but2128-byte destination copies remain.
+Initial1/correction2/2 closed; no third automatic variant. All384/202 omissions
+stay explicit; no current image, complete upper bound or total-RAM failure claim.
+Limits/contracts unchanged; P08/SO open, full202/image held. Independent exit
+review follows; no inference that accepted architecture must change.
 
 Historical earlier navigation follows.
 
