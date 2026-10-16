@@ -23,6 +23,10 @@ at `3716ee2d` accepts the package and confirms actual firmware stack FAIL. Its
 SPEC-015 remains implementing, its plan active and P08/R07/T8.1 open. No source,
 compiler, test, build, link, resource limit or hardware changes occur here.
 
+The [independent document review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-prepared-lending-independent-design-review.md)
+passes this proposal for a user execution decision. The suggested allowance below
+remains unapproved; source acceptance, savings and fit remain unproved.
+
 ## Measured target and governing contract
 
 Select **prepared lending with one referenced fact value**. Move preflight's
@@ -156,7 +160,9 @@ including both Native runtime/exclusivity/projection families and nRF layout.
 Before any full collection, also inspect **one isolated actual-firmware-flag
 counter-object diagnostic**: replay the archived real P08CounterRuntime compiler
 recipe with only output-map/module/cache destinations redirected under `.build/`,
-verify unchanged imported-module/source identities and preserve its exact argv.
+verify unchanged compiler/imported-module identities, require source hashes to
+match the frozen reviewed candidate manifest with only its authorized source
+delta, and preserve its exact argv.
 This is an object screen, not an image or a partial-receipt image handoff.
 
 Verify begin/finish return outside host work, the lender no longer has the two

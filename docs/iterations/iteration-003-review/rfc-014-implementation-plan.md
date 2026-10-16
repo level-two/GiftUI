@@ -4,6 +4,9 @@ Current design-only proposal: [prepared lending](../../implementation-designs/sp
 separates actual-owner preflight and lends one preparation value through the
 unchanged typed-loan chain. No source allowance or fit claim; current linked
 stack rejection and all historical repair stops remain in force.
+The [independent design review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-prepared-lending-independent-design-review.md)
+passes the proposal for a user execution decision; the suggested new allowance
+remains unapproved.
 
 Current P08 boundary — **actual linked firmware stack FAIL; normal artifact measured**.
 The [current firmware result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-resource-result.md)

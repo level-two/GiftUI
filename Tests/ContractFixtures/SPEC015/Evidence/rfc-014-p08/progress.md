@@ -9,6 +9,9 @@ omissions and remaining P08 gates persist. No complete peak/IRQ/zero-heap claim,
 source repair allowance, limit change or connected operation follows.
 The [independent bounded resource review](scoped-storage/p08-current-firmware-independent-review.md)
 confirms package PASS / stack FAIL and preserves the prior normal doctor receipt.
+The [prepared-lending design review](scoped-storage/p08-prepared-lending-independent-design-review.md)
+passes one private mechanism for a user execution decision; no new candidate or
+correction allowance is approved, and actual stack fit remains failed.
 
 Historical evidence prerequisite — normal final firmware codegen and resources had been unknown.
 The [frozen-artifact worksheet](scoped-storage/p08-resource-worksheet.md) finds that
