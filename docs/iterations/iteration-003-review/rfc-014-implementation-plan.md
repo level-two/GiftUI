@@ -8,8 +8,12 @@ Native3,472,564 assertions have zero failures;160-root backing138880/metadata165
 passes. Actual namespace scratch moved cold, but2128-byte destination copies remain.
 Initial1/correction2/2 closed; no third automatic variant. All384/202 omissions
 stay explicit; no current image, complete upper bound or total-RAM failure claim.
-Limits/contracts unchanged; P08/SO open, full202/image held. Independent exit
-review follows; no inference that accepted architecture must change.
+Limits/contracts unchanged; P08/SO open, full202/image held. The
+[independent exit review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-independent-review.md)
+confirms STOP; no inference that accepted architecture must change. The
+[completion/resource assessment](../../implementation-designs/spec-015-p08-completion-resource-assessment.md)
+identifies a complete resource worksheet as the next prerequisite, distinguishing
+the current four-slot fixture arrangement from the approved main-stack bound.
 
 Historical earlier navigation follows.
 

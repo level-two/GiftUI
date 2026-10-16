@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-10-13
+updated: 2026-10-16
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -1788,6 +1788,9 @@ Specification:
   under this MVP contract.
 
 ## References
+
+- [P08 completion/resource assessment](../implementation-designs/spec-015-p08-completion-resource-assessment.md)
+  is a derived draft assessment; it changes no contract, bound or allowance.
 
 - [P08 structured construction/observation design](../implementation-designs/spec-015-p08-structured-operations.md)
   is a derived draft realization, not a contract/resource amendment or fit claim.

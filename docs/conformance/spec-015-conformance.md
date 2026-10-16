@@ -5,7 +5,7 @@ title: SPEC-015 Conformance Report
 status: collecting
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-12
+updated: 2026-10-16
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
 related_future_work:
   - FW-022
@@ -19,7 +19,18 @@ superseded_by: null
 
 # SPEC-015 Conformance Report
 
-## Current RFC-014 amendment applicability — 2026-10-12
+Current P08 boundary — **focused behavior/layout passes; main-stack failure**.
+The [current result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-result.md)
+and [independent exit review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-independent-review.md)
+qualify source `51cfc960`: three focused collections pass, but required cold
+28,288 exceeds main 27,648 before omitted costs. Full current four-route coverage,
+images and complete resources remain open. The
+[completion/resource assessment](../implementation-designs/spec-015-p08-completion-resource-assessment.md)
+maps P08 versus P09–P12/I4-07 obligations and the next evidence prerequisite.
+This is not a full criterion review or resource exception; collecting status,
+all full SO criteria and P08/R07/T8.1 remain open, correction 2/2 closed.
+
+## Historical RFC-014 amendment applicability — 2026-10-12
 
 **Option B documents approved; implementation separate/not started.** Accepted
 [ADR-038](../adrs/adr-038-construction-graph-and-operational-contracts.md) and the

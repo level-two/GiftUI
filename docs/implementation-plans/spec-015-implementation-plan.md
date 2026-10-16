@@ -8,6 +8,7 @@ owners:
 created: 2026-09-09
 updated: 2026-10-16
 related_design_notes:
+  - ../implementation-designs/spec-015-p08-completion-resource-assessment.md
   - ../implementation-designs/spec-015-p08-structured-operations.md
   - ../implementation-designs/spec-015-p08-typed-stage-realization.md
   - ../implementation-designs/spec-015-p08-scoped-storage-ownership.md
@@ -25,14 +26,23 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current P08 activity — **combined structural design; implementation not started**.
+Current P08 boundary — **constructor/caller package independently closed; resource assessment**.
+The [completion/resource assessment](../implementation-designs/spec-015-p08-completion-resource-assessment.md)
+maps remaining P08 gates, distinguishes fixture reservations from approved bounds,
+and recommends a complete resource worksheet before another source candidate.
+The [final exit review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-final-independent-review.md)
+confirms focused passes at `51cfc960` and required cold 28,288 > main 27,648.
+Correction 2/2 stays closed; no complete peak/current image or total-RAM failure is
+claimed. P08/R07/T8.1 and full SO criteria remain open; full 202/image work is held.
+
+Historical combined structural design — **implementation had not started**.
 The [authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-activity.md)
 groups construction/session extent, sensitivity and inner observation materialization
 under unchanged contracts/limits. [Design](../implementation-designs/spec-015-p08-structured-operations.md)
 has independent DESIGN PASS at `a73a8032`; initial source ready, correction0/2, historical2/2 closed. The rejected
 realization below remains valid evidence, not current acceptance or a budget waiver.
 
-Current donor-metadata boundary — **STOP; focused behavior/layout PASS, resource FAIL, 2026-10-16**.
+Historical donor-metadata boundary — **STOP; focused behavior/layout PASS, resource FAIL, 2026-10-16**.
 The [final current result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-fixture-metadata-final-result.md) preserves three passing fresh focused collections:
 nRF25/layout160 roots, Native42 per profile and3,472,410 assertions with zero failures.
 The required current stack subset66,104 + retained backing138,880 =204,984 exceeds

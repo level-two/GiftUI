@@ -16,6 +16,10 @@ superseded_by: null
 
 # P08 structured construction and observation operations
 
+The [completion/resource assessment](spec-015-p08-completion-resource-assessment.md)
+records the next evidence prerequisite after this package's independently
+reviewed STOP. No source variant, resource amendment or repair allowance follows.
+
 ## Deferred and Follow-up Work
 
 [FW-007](../future-work/fw-007-cost-aware-capability-planning.md#configuration-memory-estimates--p08-follow-up-2026-10-16)

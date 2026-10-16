@@ -1,6 +1,15 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-Current P08 activity — **constructor/caller initial source frozen; SOURCE review pending**.
+Current P08 boundary — **constructor/caller package STOP independently confirmed; assessment**.
+The [final result](scoped-storage/p08-constructor-caller-final-result.md) and
+[independent exit review](scoped-storage/p08-constructor-caller-final-independent-review.md)
+pin source `51cfc960`, three focused passes and required cold 28,288 > main 27,648
+before omitted nested costs. Correction 2/2 is closed; full 202/image stays held.
+The [completion/resource assessment](../../../../../docs/implementation-designs/spec-015-p08-completion-resource-assessment.md)
+maps current gates and the smallest evidence prerequisite before another source
+variant or resource decision. It adds no compiler/runtime/image operation or allowance.
+
+Historical constructor/caller initial source — **SOURCE review had been pending**.
 The [new bounded activity](scoped-storage/p08-constructor-caller-activity.md) records user authorization after
 [structured final review](scoped-storage/p08-structured-operations-final-independent-review.md) `832a9c67`. The previous package has all3 focused PASS but
 required cold29872 > main27648 before omitted callbacks/IRQ; prior2/2 remains
