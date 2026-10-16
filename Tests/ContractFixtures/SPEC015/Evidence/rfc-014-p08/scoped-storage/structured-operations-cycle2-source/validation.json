@@ -1,0 +1,104 @@
+{
+  "kind": "compiler-free-final-correction2-source-readiness-only",
+  "checks": [
+    {
+      "check": "91 whole-file inverse/typed field checks and11 mutation negatives",
+      "argv": [
+        "python3",
+        "-B",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/structured-operations-cycle2-source/check-source-parity.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"kind\": \"compiler-free-cycle2-exact-extraction-parity\",\n  \"baseline\": \"b4dc58ba\",\n  \"checks_passed\": 91,\n  \"checks\": [\n    \"Static exact token lifetime and no callback parameter\",\n    \"Static original typed pointer g0\",\n    \"Static original typed pointer g1\",\n    \"Static original typed pointer g2\",\n    \"Static original typed pointer g3\",\n    \"Static original typed pointer g4\",\n    \"Static original typed pointer c0\",\n    \"Static original typed pointer h0\",\n    \"Static original typed pointer r0\",\n    \"Static original typed pointer r1\",\n    \"Static original typed pointer h1\",\n    \"Static original byte loan b0\",\n    \"Static original byte loan b1\",\n    \"Static original byte loan b2\",\n    \"Static original byte loan b3\",\n    \"Static original c0 role/capacity\",\n    \"Static original h0 role/capacity\",\n    \"Static original r0 role/capacity\",\n    \"Static original r1 role/capacity\",\n    \"Static original h1 role/capacity\",\n    \"Static one direct inner original-body call\",\n    \"Static original loan argument b0\",\n    \"Static original loan argument b1\",\n    \"Static original loan argument b2\",\n    \"Static original loan argument b3\",\n    \"Static original loan argument g0\",\n    \"Static original loan argument g1\",\n    \"Static original loan argument g2\",\n    \"Static original loan argument g3\",\n    \"Static original loan argument g4\",\n    \"Static original loan argument c0\",\n    \"Static original loan argument h0\",\n    \"Static original loan argument r0\",\n    \"Static original loan argument r1\",\n    \"Static original loan argument h1\",\n    \"Static original entry c0\",\n    \"Static original entry h0\",\n    \"Static original entry r0\",\n    \"Static original entry r1\",\n    \"Static original entry h1\",\n    \"Static original scalar argument configuration\",\n    \"Static original scalar argument transcript\",\n    \"Static original scalar argument ownerIdentity\",\n    \"Static original scalar argument sessionSerial\",\n    \"Dynamic exact token lifetime and no callback parameter\",\n    \"Dynamic original typed pointer g0\",\n    \"Dynamic original typed pointer g1\",\n    \"Dynamic original typed pointer g3\",\n    \"Dynamic original typed pointer g4\",\n    \"Dynamic original typed pointer c0\",\n    \"Dynamic original typed pointer h0\",\n    \"Dynamic original typed pointer r0\",\n    \"Dynamic original typed pointer r1\",\n    \"Dynamic original typed pointer h1\",\n    \"Dynamic original c0 role/capacity\",\n    \"Dynamic original h0 role/capacity\",\n    \"Dynamic original r0 role/capacity\",\n    \"Dynamic original r1 role/capacity\",\n    \"Dynamic original h1 role/capacity\",\n    \"Dynamic one direct inner original-body call\",\n    \"Dynamic original loan argument g0\",\n    \"Dynamic original loan argument g1\",\n    \"Dynamic original loan argument g3\",\n    \"Dynamic original loan argument g4\",\n    \"Dynamic original loan argument c0\",\n    \"Dynamic original loan argument h0\",\n    \"Dynamic original loan argument r0\",\n    \"Dynamic original loan argument r1\",\n    \"Dynamic original loan argument h1\",\n    \"Dynamic original entry c0\",\n    \"Dynamic original entry h0\",\n    \"Dynamic original entry r0\",\n    \"Dynamic original entry r1\",\n    \"Dynamic original entry h1\",\n    \"Dynamic original scalar argument configuration\",\n    \"Dynamic original scalar argument transcript\",\n    \"Dynamic original scalar argument ownerIdentity\",\n    \"Dynamic original scalar argument sessionSerial\",\n    \"actual original owner/inventory finalizer once\",\n    \"whole Scope original expressions/lenders/cases/cleanup/order after exact extraction inverse\",\n    \"full original equality backend\",\n    \"sequential equality dispatch once backend\",\n    \"full original equality root\",\n    \"sequential equality dispatch once root\",\n    \"full original equality action\",\n    \"sequential equality dispatch once action\",\n    \"full original equality candidateRoot\",\n    \"sequential equality dispatch once candidateRoot\",\n    \"full original equality candidateAction\",\n    \"sequential equality dispatch once candidateAction\",\n    \"whole Pipeline exact fields/first-failure/full endpoint/backend/keys after inverse\"\n  ],\n  \"negative_mutations_rejected\": 11,\n  \"compiler_or_runtime\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "check": "46 compiler-free layout/source/backend tests",
+      "argv": [
+        "env",
+        "PYTHONPATH=scripts/contracts",
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "scripts/contracts/test_p08_layout_facts.py",
+        "scripts/contracts/test_p08_backend_observation.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "..............................................\n----------------------------------------------------------------------\nRan 46 tests in 0.166s\n\nOK\n"
+    },
+    {
+      "check": "CounterScopedStorage parser only",
+      "argv": [
+        ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "CounterPipelineOwner parser only",
+      "argv": [
+        ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "governance",
+      "argv": [
+        "scripts/validate-governance.rb"
+      ],
+      "exit_code": 0,
+      "authority_nodes": 204,
+      "authority_edges": 2036,
+      "features": 7,
+      "lifecycle_artifacts": 76,
+      "skills": 9
+    },
+    {
+      "check": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "python_ast_paths": 3,
+  "maintained_formatter": {
+    "argv": [
+      "env",
+      "PATH=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+      "scripts/format-swift.sh"
+    ],
+    "exit_code": 0,
+    "maintained_source_changes": false
+  },
+  "earlier_test_invocation_issue": {
+    "argv": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "scripts/contracts/test_p08_layout_facts.py",
+      "scripts/contracts/test_p08_backend_observation.py"
+    ],
+    "exit_code": 1,
+    "reason": "layout module import requires scripts/contracts on PYTHONPATH; six backend tests passed; corrected invocation above ran46 tests successfully; no source change"
+  },
+  "compiler_invocations": 0,
+  "runtime_executions": 0,
+  "fit_claim": false
+}

@@ -1097,6 +1097,78 @@ fileprivate struct P08StorageSession: ~Copyable, ~Escapable {
     mutating func reset() { geometry.reset(); interaction.resetAllStorage() }
 }
 
+// Construction returns before the active body; the original field loans remain open.
+@inline(never)
+@_lifetime(copy token)
+fileprivate func p08ConstructStaticStorageSession(token: borrowing P08SessionLifetime,
+    b0: UnsafeMutableRawBufferPointer,
+    b1: UnsafeMutableRawBufferPointer,
+    b2: UnsafeMutableRawBufferPointer,
+    b3: UnsafeMutableRawBufferPointer,
+    g0: UnsafeMutablePointer<StaticCounterLayoutWorkspace>,
+    g1: UnsafeMutablePointer<StaticCounterResolvedLayoutStorage>,
+    g2: UnsafeMutablePointer<InlineArray<64, SemanticRecordReference?>>,
+    g3: UnsafeMutablePointer<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>,
+    g4: UnsafeMutablePointer<QualifiedRender>,
+    c0: UnsafeMutablePointer<CounterStaticCandidate>,
+    h0: UnsafeMutablePointer<CounterStaticHits>,
+    r0: UnsafeMutablePointer<CounterStaticCommitted>,
+    r1: UnsafeMutablePointer<CounterStaticCommitted>,
+    h1: UnsafeMutablePointer<CounterStaticHits>,
+    c0Entry: P08InitializedEntry,
+    h0Entry: P08InitializedEntry,
+    r0Entry: P08InitializedEntry,
+    r1Entry: P08InitializedEntry,
+    h1Entry: P08InitializedEntry,
+    configuration: InlineArray<5, UInt16>,
+    transcript: UnsafeMutablePointer<P08RoleTranscript>?,
+    ownerIdentity: UInt,
+    sessionSerial: UInt64) -> P08StorageSession {
+    let geometry = P08GeometryAccess.lend(sessionLifetime: token, descriptor: .static(.init(g0: g0, g1: g1, g2: g2, g3: g3, g4: g4, byteCounts: [b0.count, b1.count, b2.count, b3.count])))
+    let c0Access = P08CandidateAccess.lend(sessionLifetime: token, descriptor: .static(c0, c0Entry, configuration[0]))
+    let h0Access = P08HitAccess.lend(sessionLifetime: token, descriptor: .static(h0, h0Entry, configuration[1]), transcript: transcript)
+    let r0Access = P08CommittedAccess.lend(sessionLifetime: token, descriptor: .static(r0, r0Entry, configuration[2]), transcript: transcript)
+    let r1Access = P08CommittedAccess.lend(sessionLifetime: token, descriptor: .static(r1, r1Entry, configuration[3]), transcript: transcript)
+    let h1Access = P08HitAccess.lend(sessionLifetime: token, descriptor: .static(h1, h1Entry, configuration[4]), transcript: transcript)
+    let state = InteractionState(candidateRecords: c0Access, candidateHitRegions: h0Access, candidateCommittedRecords: r0Access, committedRecords: r1Access, committedHitRegions: h1Access)
+    let interaction = P08ScopedKeys(state: state, maximumComponentsPerKey: 24, maximumComponents: 48)!
+    return P08StorageSession(geometry: geometry, interaction: interaction, ownerIdentity: ownerIdentity, sessionSerial: sessionSerial)
+}
+#if !hasFeature(Embedded)
+// Construction returns before the active body; the original field loans remain open.
+@inline(never)
+@_lifetime(copy token)
+fileprivate func p08ConstructDynamicStorageSession(token: borrowing P08SessionLifetime,
+    g0: UnsafeMutablePointer<DynamicLayoutWorkspace>,
+    g1: UnsafeMutablePointer<DynamicResolvedLayoutStorage>,
+    g3: UnsafeMutablePointer<DynamicDrawingPlanWorkspace>,
+    g4: UnsafeMutablePointer<DynamicRenderWorkspace>,
+    c0: UnsafeMutablePointer<CounterDynamicCandidate>,
+    h0: UnsafeMutablePointer<CounterDynamicHits>,
+    r0: UnsafeMutablePointer<CounterDynamicCommitted>,
+    r1: UnsafeMutablePointer<CounterDynamicCommitted>,
+    h1: UnsafeMutablePointer<CounterDynamicHits>,
+    c0Entry: P08InitializedEntry,
+    h0Entry: P08InitializedEntry,
+    r0Entry: P08InitializedEntry,
+    r1Entry: P08InitializedEntry,
+    h1Entry: P08InitializedEntry,
+    configuration: InlineArray<5, UInt16>,
+    transcript: UnsafeMutablePointer<P08RoleTranscript>?,
+    ownerIdentity: UInt,
+    sessionSerial: UInt64) -> P08StorageSession {
+    let geometry = P08GeometryAccess.lend(sessionLifetime: token, descriptor: .dynamic(.init(g0: g0, g1: g1, g3: g3, g4: g4)))
+    let c0Access = P08CandidateAccess.lend(sessionLifetime: token, descriptor: .dynamic(c0, c0Entry, configuration[0]))
+    let h0Access = P08HitAccess.lend(sessionLifetime: token, descriptor: .dynamic(h0, h0Entry, configuration[1]), transcript: transcript)
+    let r0Access = P08CommittedAccess.lend(sessionLifetime: token, descriptor: .dynamic(r0, r0Entry, configuration[2]), transcript: transcript)
+    let r1Access = P08CommittedAccess.lend(sessionLifetime: token, descriptor: .dynamic(r1, r1Entry, configuration[3]), transcript: transcript)
+    let h1Access = P08HitAccess.lend(sessionLifetime: token, descriptor: .dynamic(h1, h1Entry, configuration[4]), transcript: transcript)
+    let state = InteractionState(candidateRecords: c0Access, candidateHitRegions: h0Access, candidateCommittedRecords: r0Access, committedRecords: r1Access, committedHitRegions: h1Access)
+    let interaction = P08ScopedKeys(state: state, maximumComponentsPerKey: 24, maximumComponents: 48)!
+    return P08StorageSession(geometry: geometry, interaction: interaction, ownerIdentity: ownerIdentity, sessionSerial: sessionSerial)
+}
+#endif
+
 extension P08TypedBackingOwner {
     fileprivate mutating func withStorage<Result>(transcript: UnsafeMutablePointer<P08RoleTranscript>? = nil, _ body: (consuming P08StorageSession) -> Result) -> Result {
         precondition(lifecycle == .idle && validateCapacities())
@@ -1131,15 +1203,7 @@ extension P08TypedBackingOwner {
                     let token = P08SessionLifetime.lend(owner: self, identity: ownerIdentity, serial: sessionSerial)
                     for pair in [(c0, P08PhysicalID.c0)] { precondition(UInt(bitPattern: pair.0) == entry(pair.1).address) }
                     precondition(UInt(bitPattern: h0) == entry(.h0).address && UInt(bitPattern: r0) == entry(.r0).address && UInt(bitPattern: r1) == entry(.r1).address && UInt(bitPattern: h1) == entry(.h1).address)
-                    let geometry = P08GeometryAccess.lend(sessionLifetime: token, descriptor: .static(.init(g0: g0, g1: g1, g2: g2, g3: g3, g4: g4, byteCounts: [b0.count, b1.count, b2.count, b3.count])))
-                    let c0Access = P08CandidateAccess.lend(sessionLifetime: token, descriptor: .static(c0, entry(.c0), configuration[0]))
-                    let h0Access = P08HitAccess.lend(sessionLifetime: token, descriptor: .static(h0, entry(.h0), configuration[1]), transcript: transcript)
-                    let r0Access = P08CommittedAccess.lend(sessionLifetime: token, descriptor: .static(r0, entry(.r0), configuration[2]), transcript: transcript)
-                    let r1Access = P08CommittedAccess.lend(sessionLifetime: token, descriptor: .static(r1, entry(.r1), configuration[3]), transcript: transcript)
-                    let h1Access = P08HitAccess.lend(sessionLifetime: token, descriptor: .static(h1, entry(.h1), configuration[4]), transcript: transcript)
-                    let state = InteractionState(candidateRecords: c0Access, candidateHitRegions: h0Access, candidateCommittedRecords: r0Access, committedRecords: r1Access, committedHitRegions: h1Access)
-                    let interaction = P08ScopedKeys(state: state, maximumComponentsPerKey: 24, maximumComponents: 48)!
-                    return body(P08StorageSession(geometry: geometry, interaction: interaction, ownerIdentity: ownerIdentity, sessionSerial: sessionSerial))
+                    return body(p08ConstructStaticStorageSession(token: token, b0: b0, b1: b1, b2: b2, b3: b3, g0: g0, g1: g1, g2: g2, g3: g3, g4: g4, c0: c0, h0: h0, r0: r0, r1: r1, h1: h1, c0Entry: entry(.c0), h0Entry: entry(.h0), r0Entry: entry(.r0), r1Entry: entry(.r1), h1Entry: entry(.h1), configuration: configuration, transcript: transcript, ownerIdentity: ownerIdentity, sessionSerial: sessionSerial))
                 }
                 }
                 }
@@ -1168,15 +1232,7 @@ extension P08TypedBackingOwner {
                     precondition(UInt(bitPattern: g0) == entry(.g0).address && UInt(bitPattern: g1) == entry(.g1).address && UInt(bitPattern: g3) == entry(.g3).address && UInt(bitPattern: g4) == entry(.g4).address)
                     let token = P08SessionLifetime.lend(owner: self, identity: ownerIdentity, serial: sessionSerial)
                     precondition(UInt(bitPattern: c0) == entry(.c0).address && UInt(bitPattern: h0) == entry(.h0).address && UInt(bitPattern: r0) == entry(.r0).address && UInt(bitPattern: r1) == entry(.r1).address && UInt(bitPattern: h1) == entry(.h1).address)
-                    let geometry = P08GeometryAccess.lend(sessionLifetime: token, descriptor: .dynamic(.init(g0: g0, g1: g1, g3: g3, g4: g4)))
-                    let c0Access = P08CandidateAccess.lend(sessionLifetime: token, descriptor: .dynamic(c0, entry(.c0), configuration[0]))
-                    let h0Access = P08HitAccess.lend(sessionLifetime: token, descriptor: .dynamic(h0, entry(.h0), configuration[1]), transcript: transcript)
-                    let r0Access = P08CommittedAccess.lend(sessionLifetime: token, descriptor: .dynamic(r0, entry(.r0), configuration[2]), transcript: transcript)
-                    let r1Access = P08CommittedAccess.lend(sessionLifetime: token, descriptor: .dynamic(r1, entry(.r1), configuration[3]), transcript: transcript)
-                    let h1Access = P08HitAccess.lend(sessionLifetime: token, descriptor: .dynamic(h1, entry(.h1), configuration[4]), transcript: transcript)
-                    let state = InteractionState(candidateRecords: c0Access, candidateHitRegions: h0Access, candidateCommittedRecords: r0Access, committedRecords: r1Access, committedHitRegions: h1Access)
-                    let interaction = P08ScopedKeys(state: state, maximumComponentsPerKey: 24, maximumComponents: 48)!
-                    return body(P08StorageSession(geometry: geometry, interaction: interaction, ownerIdentity: ownerIdentity, sessionSerial: sessionSerial))
+                    return body(p08ConstructDynamicStorageSession(token: token, g0: g0, g1: g1, g3: g3, g4: g4, c0: c0, h0: h0, r0: r0, r1: r1, h1: h1, c0Entry: entry(.c0), h0Entry: entry(.h0), r0Entry: entry(.r0), r1Entry: entry(.r1), h1Entry: entry(.h1), configuration: configuration, transcript: transcript, ownerIdentity: ownerIdentity, sessionSerial: sessionSerial))
                 }
                 }
                 }
@@ -3522,12 +3578,18 @@ fileprivate func p08RunMetadataTwoHosts(owner: inout P08TypedBackingOwner, outer
     p08ReconstructMetadataHost(outer: &outer, model: secondModel, semantic: secondSemantic, foreignRoot: foreignRoot, foreignControl: foreignControl)
     precondition(UInt(bitPattern: control) == address)
     checks += p08RunOneMetadataHost(owner: &owner, outer: &outer, before: before, transcript: transcript, foreignRoot: foreignRoot, foreignControl: foreignControl, write: write)
+    return checks + p08FinishMetadataTwoHosts(owner: &owner, original: &original, control: control, transcript: transcript)
+}
+@inline(never)
+fileprivate func p08FinishMetadataTwoHosts(owner: inout P08TypedBackingOwner,
+    original: inout InlineArray<14, P08InitializedEntry?>, control: UnsafeMutablePointer<CounterControl>,
+    transcript: UnsafeMutablePointer<P08HostReuseTranscript>) -> Int {
     p08RequireMetadataHostEmpty(&owner)
     p08RequireSameInventory(owner.originalInventory(), original)
     p08RequireMetadataHostRetired(control); transcript.pointee.endRetainedObservations()
     owner.release()
     precondition(transcript.pointee.hosts == 2)
-    checks += p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
+    let checks = p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
     p08ReuseLabel("static", "inventory-two-hosts"); p08ReuseLabel("static", "control-same-address"); p08ReuseLabel("static", "cleanup-backing-last")
     return checks + 3
 }

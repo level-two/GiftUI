@@ -1,0 +1,112 @@
+{
+  "kind": "final-grouped-correction2-source-freeze-not-compiler-proof",
+  "baseline_commit": "b4dc58ba",
+  "independent_result_and_approach_review": "b4dc58ba",
+  "corrective_cycles_consumed": 2,
+  "corrective_cycles_maximum": 2,
+  "stop_after_consecutive_unproductive_cycles": 2,
+  "historical_allowances": "closed unchanged",
+  "compiler_invocations_for_corrected_source": 0,
+  "runtime_executions_for_corrected_source": 0,
+  "fit_claim": false,
+  "changed_files": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+      "before_sha256": "6352d8e97f6dbad88b6c31b544f0122837e0f54750513c6b29d4a98caafa9d55",
+      "sha256": "3615ad26f63ae5789695dd0c92496fb97c05edfed7f2eef8ac20ecbd57ee3a8f"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "before_sha256": "bdb36c7dab9bb7e56533066286be21110d80e9d642f3d5a353e6ec59191c1cca",
+      "sha256": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb"
+    },
+    "scripts/contracts/check-spec-015-counter.py": {
+      "before_sha256": "063bc91d1335eec89361504bf7047273e29892c9f5f367b77b660f3fd8e8a399",
+      "sha256": "410dceb92446199b98a98445e90429c901a23ab07c85f19ca08f40c8087416cc"
+    }
+  },
+  "source_diff_sha256": "a26b2eb199e46766ceb261de6aae3e7f8f81f622afb9a9f94b7e8b87152e8e1f",
+  "compressed_diff_sha256": "2310cf9927add6bcc2565b7876866c61ed80138f07c47ac318b0db9c67f7f3d7",
+  "qualification": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-cycle2-applicability.json",
+    "sha256": "ed8b8863b48402c3f4c04bd86099271ee57aa531a93bf3680a89057404989c56"
+  },
+  "compilerfree_tests": 46,
+  "source_parity_checks": 91,
+  "negative_mutations_rejected": 11,
+  "parser_checks": 2,
+  "original_contract_facts": {
+    "active_layout_roots": 129,
+    "metadata_layout_roots": 31,
+    "base_selection_groups": 48,
+    "base_selections": 2266,
+    "metadata_prefix_controls": 8,
+    "retained_slots": 4,
+    "retained_slot_bytes": 34720,
+    "retained_backing_bytes": 138880,
+    "native_compiler_controls": 384,
+    "embedded_compiler_controls": 202,
+    "native_exclusivity_controls": 5,
+    "projection_controls": 2,
+    "reuse_labels": 26,
+    "sensitivity_checks_per_route": 156
+  },
+  "prior_current_layout_not_requalified": true,
+  "fresh_screen_argv": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    "--collect-failures",
+    "--fresh-focused",
+    "--select-family",
+    "so07-layout-facts"
+  ],
+  "native_focused_argv": {
+    "macos-dynamic": [
+      "scripts/contracts/run-spec-015.sh",
+      "--profile",
+      "macos-dynamic",
+      "--corpus",
+      "rfc-014-counter",
+      "--runtime-build",
+      ".build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic",
+      "--host-build",
+      ".build/contracts/p08-scoped-host-ezcy1qan",
+      "--collect-failures",
+      "--fresh-focused",
+      "--select-family",
+      "runtime",
+      "--select-family",
+      "so06-native-exclusivity",
+      "--select-family",
+      "control-resident-projection"
+    ],
+    "macos-static": [
+      "scripts/contracts/run-spec-015.sh",
+      "--profile",
+      "macos-static",
+      "--corpus",
+      "rfc-014-counter",
+      "--runtime-build",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      "--host-build",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      "--collect-failures",
+      "--fresh-focused",
+      "--select-family",
+      "runtime",
+      "--select-family",
+      "so06-native-exclusivity",
+      "--select-family",
+      "control-resident-projection"
+    ]
+  },
+  "qualification_checks_sha256": "00d4f87951f3af7a9759773618f872edea60fa1ea14e7a5d96815cb676a8eae9",
+  "validation_sha256": "1b55dcb9a1c8ce40c5ac9c86959e9b548fe7d2ca4689e9418b4721e1bfdb8b93",
+  "source_parity_result_sha256": "7e337bca27f4803ab6eaba816e8fddd392009585beda3ad47086666456a84fff",
+  "source_parity_script_sha256": "2195cd0253e5a56ad9f32c99f4a02a115a76410b0d328a5c75609e1744ed5913"
+}

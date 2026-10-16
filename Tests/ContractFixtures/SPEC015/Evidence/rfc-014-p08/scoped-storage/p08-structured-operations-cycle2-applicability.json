@@ -1,0 +1,489 @@
+{
+  "kind": "exact-noncompiled-source-applicability-qualification",
+  "activity": "p08-structured-operations-cycle2",
+  "candidate_sources": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": "60d013e2570e5ea3ac6efbbadb97dd79d6b7fa0a47e680e72a7071909fddb686",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": "1129e33dcab9bb075d3c11dac16cedd72c26efad6da87adc204b68de25408ee7",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": "212f59a87162fefee2652586bbbe7cec8546d1afcaeb0e2e92ff115b6030b330",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": "6787b120ab89461969b21d4ef7e1756d568c3d88e3166329e154330d8eb65d3d",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": "4f747327ae37de0d4a501a190d62dc403436c5ac2fdcd5427b583cf7b202e947",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": "bfcf074ec49455e7d5cc527b4a65cf9b9374da2c96914f8b8bdf8908ca90ec6b",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "3615ad26f63ae5789695dd0c92496fb97c05edfed7f2eef8ac20ecbd57ee3a8f",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": "06b5775b618a78b757495de8c86a2352b8e8371e0c854f3d93463f685585f05e",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": "36d137a0fdf0d6159dfc8502b86bd5bc78037fa1cfa5a86038513c9523b31677",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": "0e13001714af86c5f93cc150678c07c0b3a32c58b3a524fd43edb23eae19990b"
+  },
+  "proof": "Reviewed final grouped correction2: only Scope session-construction/final-cleanup extraction and Pipeline full backend/four-complete-key comparison extraction change. Seven immutable receipt hashes and actual Swift argv inventories verified; all twelve candidate fixtures excluded. Actual recorded compiled-source inventories remain byte-identical to correction1 qualification. Historical compiled-artifact proof is inherited, not reaudited. Every changed counter module/control/runtime/image requires fresh evidence.",
+  "receipts": [
+    {
+      "receipt": ".build/contracts/p08-scoped-host-ezcy1qan/result.json",
+      "receipt_sha256": "8ccd2c004117f31f1843584fb157b5a0b5f93669505db88166eafe83f871c64d",
+      "recorded_swift_inputs_count": 53,
+      "recorded_swift_inputs_sha256": "a200363fed11cdfce74cb2d9d5fd40808482671744ba81fcf4d2ce5ec8f7c968",
+      "source_revisions": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "original_source_sha256": "ce84ae4a5093d0e87119a5b2d7172674722f880f61693f3f33daa70882954d5e",
+          "corrected_source_sha256": "3615ad26f63ae5789695dd0c92496fb97c05edfed7f2eef8ac20ecbd57ee3a8f"
+        }
+      },
+      "candidate_source_exclusion": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        }
+      },
+      "actual_current_swift_sources_sha256": "cef7025ec02232d4bdcdefee70a1342f422ebbda03c174ac535236cbc7412207"
+    },
+    {
+      "receipt": ".build/contracts/p08-scoped-host-hzs5q7za/result.json",
+      "receipt_sha256": "beb3d31b312391d266e2ca525b0274aec741629664fb9d55aaca721421bf4216",
+      "recorded_swift_inputs_count": 53,
+      "recorded_swift_inputs_sha256": "eb1d0bcc7a57c05c66cf9ce0e76341fb09116ffdec9a2b4133d24e82b7131675",
+      "source_revisions": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "original_source_sha256": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+          "corrected_source_sha256": "3615ad26f63ae5789695dd0c92496fb97c05edfed7f2eef8ac20ecbd57ee3a8f"
+        }
+      },
+      "candidate_source_exclusion": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        }
+      },
+      "actual_current_swift_sources_sha256": "6e0bb66890b5b1286398c6955656ea41a5d2825b7f05a15728585a8e7e946085"
+    },
+    {
+      "receipt": ".build/contracts/spec-011-owned-keys/tmp0vz0ql4d/macos-dynamic/result.json",
+      "receipt_sha256": "8c0c5c2d3cda5681dd110eb947cf05b06fd403f16c0c5503f5b99de32cf7f78f",
+      "recorded_swift_inputs_count": 112,
+      "recorded_swift_inputs_sha256": "3a69ed244e566e5211037e288314837a7304d8cef5379fa0bfd8ab87512d0606",
+      "source_revisions": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+          "original_source_sha256": "fcaebb92dd2009e8a1536ef53a647ae1c4b073e85682098d54c0101b0b995b3a",
+          "corrected_source_sha256": "4f747327ae37de0d4a501a190d62dc403436c5ac2fdcd5427b583cf7b202e947"
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "original_source_sha256": "ce84ae4a5093d0e87119a5b2d7172674722f880f61693f3f33daa70882954d5e",
+          "corrected_source_sha256": "3615ad26f63ae5789695dd0c92496fb97c05edfed7f2eef8ac20ecbd57ee3a8f"
+        }
+      },
+      "candidate_source_exclusion": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        }
+      },
+      "actual_current_swift_sources_sha256": "c3f663a78896272340acfbebd3fd7ee934d780293fc6f82e07c27c1587120f99"
+    },
+    {
+      "receipt": ".build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic/result.json",
+      "receipt_sha256": "ec640f13aedd202725ad02e52a5e56e56357b5d3e034b3792788fe95feae4446",
+      "recorded_swift_inputs_count": 173,
+      "recorded_swift_inputs_sha256": "e973cef6c3d48d3986d37d98d18cc8fcaf848c22187e6f72ea49c3207ae7fdcc",
+      "source_revisions": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "original_source_sha256": "ce84ae4a5093d0e87119a5b2d7172674722f880f61693f3f33daa70882954d5e",
+          "corrected_source_sha256": "3615ad26f63ae5789695dd0c92496fb97c05edfed7f2eef8ac20ecbd57ee3a8f"
+        }
+      },
+      "candidate_source_exclusion": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        }
+      },
+      "actual_current_swift_sources_sha256": "7b631fc55363b29f19a119fca434aa0f14212750d4120eae557d8e88c354be4f"
+    },
+    {
+      "receipt": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/result.json",
+      "receipt_sha256": "1199fd13fc4d309c36f3ddfccac3002ab497641a3fb6483902d97571c9ca923f",
+      "recorded_swift_inputs_count": 173,
+      "recorded_swift_inputs_sha256": "e0f9765b24e8b3b06973962813a32e9e6ef893d09999ba02adb0ca6660cf50f5",
+      "source_revisions": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "original_source_sha256": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+          "corrected_source_sha256": "3615ad26f63ae5789695dd0c92496fb97c05edfed7f2eef8ac20ecbd57ee3a8f"
+        }
+      },
+      "candidate_source_exclusion": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        }
+      },
+      "actual_current_swift_sources_sha256": "3aeb100db1a893acd72416708fd2d96b7e92be5ab33bddfadd0c3db33d00cb2e"
+    },
+    {
+      "receipt": ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpnueg79c8/nrf52840-embedded/result.json",
+      "receipt_sha256": "104c405d2f0c9abb44c47670fde33ae44bf70877f91df11e66f07acd14168d8c",
+      "recorded_swift_inputs_count": 159,
+      "recorded_swift_inputs_sha256": "6776a2fa4178061b2597f05047042e3f7ae7081aeff1777ffc6bbc1146b25b82",
+      "source_revisions": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "original_source_sha256": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+          "corrected_source_sha256": "3615ad26f63ae5789695dd0c92496fb97c05edfed7f2eef8ac20ecbd57ee3a8f"
+        }
+      },
+      "candidate_source_exclusion": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        }
+      },
+      "actual_current_swift_sources_sha256": "74e93b76c4600e0c98e8634098437acde3ffc4f20bb4106266f9731e2931b24a"
+    },
+    {
+      "receipt": ".build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpsb8yw4yu/raspberry-pi-armv6/result.json",
+      "receipt_sha256": "36f739426100acd7df8c943b50022f9216c2cd2581235f5794b3afeb35f823a3",
+      "recorded_swift_inputs_count": 172,
+      "recorded_swift_inputs_sha256": "cca85c2208905a58b74396abac3d2503be69fc67e03cf245210c77d614f567e3",
+      "source_revisions": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "original_source_sha256": "5eeebadd01c8084a1ee9c7890aa18e998c0a3eacf204e6012c50c7fa018e7fa4",
+          "corrected_source_sha256": "3615ad26f63ae5789695dd0c92496fb97c05edfed7f2eef8ac20ecbd57ee3a8f"
+        }
+      },
+      "candidate_source_exclusion": {
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+          "compiled": false,
+          "recorded_metadata_input": true
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        },
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": {
+          "compiled": false,
+          "recorded_metadata_input": false
+        }
+      },
+      "actual_current_swift_sources_sha256": "2eeaf50ba0576c0d7d83c3b1cbdff9e7c3ab85e6c11c2f61bc2258bc5f5643ae"
+    }
+  ],
+  "verification": {
+    "exact_receipts": 7,
+    "fresh_receipt_and_argv_exclusion_checks": 7,
+    "candidate_hashes_checked": 12,
+    "compiler_executed": false,
+    "compiled_dependency_artifact_checks": "inherited unchanged from exact predecessor; not repeated/claimed fresh",
+    "prior_qualification_sha256": "299077e35fd67853a51ed791df47b9a9c180f2d3b852cde98652feac07351056"
+  },
+  "historical_records_unchanged": true,
+  "predecessor_qualification": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-initial-applicability.json",
+    "sha256": "299077e35fd67853a51ed791df47b9a9c180f2d3b852cde98652feac07351056"
+  },
+  "changed_c_image_source": {
+    "path": "firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c",
+    "sha256": "31c36569948cbf3870ef15df8d25db6247a3434ce55d14d2616247855028f6f4",
+    "component_receipts_compiled_or_recorded": false,
+    "new_image_build_required": true
+  },
+  "prior_qualification": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-structured-operations-cycle1-applicability.json",
+    "sha256": "88b3b8acadead1ef6c784009acb207b020b9fd060250c8910af87f5e70d8ba41"
+  }
+}

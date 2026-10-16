@@ -1,5 +1,15 @@
 # P08 structured construction and observation operations activity
 
+Current source boundary: **final grouped correction2/2 frozen; independent SOURCE
+review pending**. The [new freeze](p08-structured-operations-cycle2-source.md)
+implements all three approach seams approved `b4dc58ba`, preserving the complete
+original typed loan union, full comparisons and post-host cleanup order. Current
+candidate compiler/runtime/image0; no third automatic variant. Prior focused PASS
+and stack rejection below remain immutable evidence for correction1, not this
+source. Full202/image held pending fresh source/complete resource viability.
+
+Historical correction1 execution/result boundary:
+
 Current boundary: **grouped correction1 all three fresh focused collections PASS at `b8a9626a`**
 after SOURCE review `3a346b91`. The immutable
 [current receipt packet](structured-operations-cycle1-collections/result.json)
@@ -26,7 +36,7 @@ current source and measured complete resource paths are viable.
 
 Scope: one combined initial implementation plus at most two cause-grouped
 corrective cycles, stopping after two consecutive unproductive cycles or a genuine
-contract/scope/resource decision. Current correction1/2; initial source1, total fresh nRF screens2, Native focused collections4,
+contract/scope/resource decision. Current correction2/2; initial source1, total fresh nRF screens2, Native focused collections4,
 image0 in this package. The analysis itself invokes no compiler/runtime. Mechanical source-review issues are grouped in
 the coherent pass/cycle, not individual user permission barriers. Independent
 design PASS precedes implementation; independent SOURCE review precedes execution.

@@ -1178,9 +1178,34 @@ struct CounterRuntimeSlotBaseline: ~Copyable {
         candidateAction = control.pointee.runtimeCandidateActionIdentity
         captured = true
     }
+    @inline(never)
+    private mutating func matchesBackend(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+        let same = backend == counterObserveBackend(control.pointee.backend)
+        return same
+    }
+    @inline(never)
+    private mutating func matchesRoot(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+        let same = root == control.pointee.runtimeRootIdentity
+        return same
+    }
+    @inline(never)
+    private mutating func matchesAction(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+        let same = action == control.pointee.runtimeActionIdentity
+        return same
+    }
+    @inline(never)
+    private mutating func matchesCandidateRoot(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+        let same = candidateRoot == control.pointee.runtimeCandidateRootIdentity
+        return same
+    }
+    @inline(never)
+    private mutating func matchesCandidateAction(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+        let same = candidateAction == control.pointee.runtimeCandidateActionIdentity
+        return same
+    }
     mutating func matches(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
         let wasCaptured = captured; precondition(wasCaptured)
-        let samebackend = backend == counterObserveBackend(control.pointee.backend)
+        let samebackend = matchesBackend(control)
         guard samebackend else { return false }
         let samephase = phase == control.pointee.runtimeSlotPhase
         guard samephase else { return false }
@@ -1190,13 +1215,13 @@ struct CounterRuntimeSlotBaseline: ~Copyable {
         guard samelastSerial else { return false }
         let sameendpointPresent = endpointPresent == (control.pointee.runtimeEndpoint != nil)
         guard sameendpointPresent else { return false }
-        let sameroot = root == control.pointee.runtimeRootIdentity
+        let sameroot = matchesRoot(control)
         guard sameroot else { return false }
-        let sameaction = action == control.pointee.runtimeActionIdentity
+        let sameaction = matchesAction(control)
         guard sameaction else { return false }
-        let samecandidateRoot = candidateRoot == control.pointee.runtimeCandidateRootIdentity
+        let samecandidateRoot = matchesCandidateRoot(control)
         guard samecandidateRoot else { return false }
-        let samecandidateAction = candidateAction == control.pointee.runtimeCandidateActionIdentity
+        let samecandidateAction = matchesCandidateAction(control)
         guard samecandidateAction else { return false }
         if endpointPresent {
             let samePrefix = control.pointee.runtimeEndpoint?.matchesBaselinePrefix(&endpoint) == true
