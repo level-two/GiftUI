@@ -1,8 +1,12 @@
 # P08 constructor/caller initial result and grouped correction1 proposal
 
 **All three focused collections PASS; required live main-stack lower bound FAIL.**
+[Independent result/correction 1 APPROACH PASS](p08-constructor-caller-initial-independent-result-review.md)
+confirms the rejecting subset and permits the authorized grouped source pass.
+Its erratum records the three actual R_ARM_REL32 callback literals; the immutable
+packet's ABS32 descriptive labels are incorrect, without changing targets or sum.
 Source `8bd6c784`, SOURCE review `327f6f6d`. Initial1/correction0/2;
-correction1 below is proposed for independent review, not implemented or consumed.
+correction1 below is independently approach-reviewed, not implemented or consumed.
 Historical closed allowances remain closed. No source, compiler, runtime, image,
 limit or contract change was made by this read-only assessment.
 

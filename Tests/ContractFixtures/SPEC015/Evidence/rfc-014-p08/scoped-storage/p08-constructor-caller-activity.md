@@ -4,7 +4,8 @@ Current boundary: **all three initial focused collections PASS; required live
 main-stack lower bound32800 >27648** at source `8bd6c784`, review `327f6f6d`.
 The [current result and grouped correction1 proposal](p08-constructor-caller-initial-result.md)
 pin exact current receipts/object/relocation evidence. Initial1/correction0/2;
-proposal pending independent review, not implemented. Current metadata16584 and
+independent [result/correction 1 APPROACH PASS](p08-constructor-caller-initial-independent-result-review.md)
+permits the authorized source pass; it is not implemented. Current metadata16584 and
 donor tail18136 are measured with160 strict roots; all four slots remain138880.
 No full202/image, fit/upper-bound or total-RAM failure claim. Historical budgets
 remain closed; existing limits/corpus/ownership stay unchanged.

@@ -21,7 +21,8 @@ selected live32800 >27648.** The
 [current result and correction1 proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-initial-result.md)
 pin source `8bd6c784`, current object/three receipts and exact non-alternative
 path. The proposed private noncopyable planning carrier/inout inner ABI/cold
-constructor is pending independent review, not applied. Initial1/correction0/2;
+constructor has [independent result/correction 1 APPROACH PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-initial-independent-result-review.md),
+ready for the authorized source pass, not applied. Initial1/correction0/2;
 historical budgets remain closed. No new compiler/image or resource relaxation.
 
 Historical initial source-readiness boundary:
