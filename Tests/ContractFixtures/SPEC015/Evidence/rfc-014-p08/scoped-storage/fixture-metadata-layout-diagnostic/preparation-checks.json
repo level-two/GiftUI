@@ -1,0 +1,20 @@
+{
+  "compiler_free": true,
+  "compiler_invocations": 0,
+  "maintained_swift_changes": 0,
+  "checks": {
+    "exact_roots": 31,
+    "checked_pack_types": 7,
+    "substitutions": 4,
+    "semantic_flags_and_imports_unchanged": true,
+    "source_is_exact_original_plus_suffix": true,
+    "pinned_inputs_verified": 411,
+    "python_ast": true,
+    "scratch_and_cache_precreated": true,
+    "invocation_marker_absent": true
+  },
+  "prepared_sha256": "21b1cb2ef6fa1d3bfd40734a0941ba2ae3428d1f22da20191a12010f99ecadee",
+  "decoder_sha256": "9c89a9e423b68b42f457e0f554264d40f770acdd01594497f200223c7b0104b2",
+  "run_once_sha256": "546f4244b1843ae6cdcd6b1695c2fe7eefd9b23034eaf4357eb784a8fd6809b5",
+  "source_append_diff_sha256": "9338ac50b51a9b9ebf3654ca5b49adbe90a7b262a496a3dd1dd1c85cb8ef43e8"
+}

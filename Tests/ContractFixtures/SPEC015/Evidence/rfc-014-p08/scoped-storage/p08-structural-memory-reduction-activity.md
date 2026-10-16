@@ -23,6 +23,15 @@ review. Implementation may begin only after the internal design is concrete,
 reviewed within authority and its new bounded allowance is recorded; no earlier
 budget is reset or inferred.
 
+After DESIGN PASS `63bf7808`, the parent authorized preparation of exactly one
+existing-module 31-root layout diagnostic under this assessment. The
+[one-shot handoff](fixture-metadata-layout-diagnostic/README.md) is prepared and
+hash-checked, **not executed**. Scratch/cache exist in advance. Only the temporary
+appended source, cache and output paths differ from the current module argv;
+there is no maintained source implementation or new repair allowance. Diagnostic
+results cannot qualify P08 acceptance. The existing baseline pack and future
+linear baseline/custody costs remain explicitly distinct.
+
 Target the actual outer reservation/reuse/baseline construction homes, preserving
 all original physical IDs, five banks, geometry, model/root lenders, complete
 four-key and 64-recording observations, one unchanged before baseline, positive

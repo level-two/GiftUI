@@ -1,0 +1,144 @@
+
+// Diagnostic-only: existing type layouts and checked seven-object packing.
+// Appended only to a temporary source copy. No object is initialized or executed.
+#if hasFeature(Embedded)
+@inline(__always)
+fileprivate func p08FixtureDiagnosticAppend<T: ~Copyable>(
+    _ type: T.Type, _ index: Int, _ selected: Int,
+    _ cursor: inout Int, _ maximumAlignment: inout Int, _ selectedOffset: inout Int
+) {
+    let alignment = MemoryLayout<T>.alignment
+    precondition(alignment > 0)
+    let remainder = cursor % alignment
+    let padding = remainder == 0 ? 0 : alignment - remainder
+    let (offset, offsetOverflow) = cursor.addingReportingOverflow(padding)
+    precondition(!offsetOverflow)
+    let (end, endOverflow) = offset.addingReportingOverflow(MemoryLayout<T>.stride)
+    precondition(!endOverflow)
+    if selected == index { selectedOffset = offset }
+    cursor = end
+    maximumAlignment = max(maximumAlignment, alignment)
+}
+@inline(__always)
+fileprivate func p08FixtureDiagnosticPack(_ selected: Int) -> UInt32 {
+    var cursor = 0
+    var maximumAlignment = 1
+    var selectedOffset = 0
+    p08FixtureDiagnosticAppend(P08EmbeddedOuter.self, 0, selected, &cursor, &maximumAlignment, &selectedOffset)
+    p08FixtureDiagnosticAppend(P08TypedBackingOwner.self, 1, selected, &cursor, &maximumAlignment, &selectedOffset)
+    p08FixtureDiagnosticAppend(P08ReuseFingerprint.self, 2, selected, &cursor, &maximumAlignment, &selectedOffset)
+    p08FixtureDiagnosticAppend(InlineArray<14, P08InitializedEntry?>.self, 3, selected, &cursor, &maximumAlignment, &selectedOffset)
+    p08FixtureDiagnosticAppend(P08HostReuseTranscript.self, 4, selected, &cursor, &maximumAlignment, &selectedOffset)
+    p08FixtureDiagnosticAppend(StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, 5, selected, &cursor, &maximumAlignment, &selectedOffset)
+    p08FixtureDiagnosticAppend(CounterControl.self, 6, selected, &cursor, &maximumAlignment, &selectedOffset)
+    let remainder = cursor % maximumAlignment
+    let padding = remainder == 0 ? 0 : maximumAlignment - remainder
+    let (roundedExtent, overflow) = cursor.addingReportingOverflow(padding)
+    precondition(!overflow)
+    let value: Int
+    switch selected {
+    case 0...6: value = selectedOffset
+    case 7: value = cursor
+    case 8: value = maximumAlignment
+    case 9: value = roundedExtent
+    default: preconditionFailure("invalid fixture diagnostic selector")
+    }
+    guard let result = UInt32(exactly: value) else {
+        preconditionFailure("fixture diagnostic exceeds UInt32")
+    }
+    return result
+}
+@_cdecl("giftui_p08_fixture_diagnostic_outer_size")
+@inline(__always)
+func p08FixtureDiagnostic0_size() -> UInt32 { UInt32(MemoryLayout<P08EmbeddedOuter>.size) }
+@_cdecl("giftui_p08_fixture_diagnostic_outer_stride")
+@inline(__always)
+func p08FixtureDiagnostic0_stride() -> UInt32 { UInt32(MemoryLayout<P08EmbeddedOuter>.stride) }
+@_cdecl("giftui_p08_fixture_diagnostic_outer_alignment")
+@inline(__always)
+func p08FixtureDiagnostic0_alignment() -> UInt32 { UInt32(MemoryLayout<P08EmbeddedOuter>.alignment) }
+@_cdecl("giftui_p08_fixture_diagnostic_outer_offset")
+@inline(__always)
+func p08FixtureDiagnostic0_offset() -> UInt32 { p08FixtureDiagnosticPack(0) }
+@_cdecl("giftui_p08_fixture_diagnostic_owner_size")
+@inline(__always)
+func p08FixtureDiagnostic1_size() -> UInt32 { UInt32(MemoryLayout<P08TypedBackingOwner>.size) }
+@_cdecl("giftui_p08_fixture_diagnostic_owner_stride")
+@inline(__always)
+func p08FixtureDiagnostic1_stride() -> UInt32 { UInt32(MemoryLayout<P08TypedBackingOwner>.stride) }
+@_cdecl("giftui_p08_fixture_diagnostic_owner_alignment")
+@inline(__always)
+func p08FixtureDiagnostic1_alignment() -> UInt32 { UInt32(MemoryLayout<P08TypedBackingOwner>.alignment) }
+@_cdecl("giftui_p08_fixture_diagnostic_owner_offset")
+@inline(__always)
+func p08FixtureDiagnostic1_offset() -> UInt32 { p08FixtureDiagnosticPack(1) }
+@_cdecl("giftui_p08_fixture_diagnostic_baseline_size")
+@inline(__always)
+func p08FixtureDiagnostic2_size() -> UInt32 { UInt32(MemoryLayout<P08ReuseFingerprint>.size) }
+@_cdecl("giftui_p08_fixture_diagnostic_baseline_stride")
+@inline(__always)
+func p08FixtureDiagnostic2_stride() -> UInt32 { UInt32(MemoryLayout<P08ReuseFingerprint>.stride) }
+@_cdecl("giftui_p08_fixture_diagnostic_baseline_alignment")
+@inline(__always)
+func p08FixtureDiagnostic2_alignment() -> UInt32 { UInt32(MemoryLayout<P08ReuseFingerprint>.alignment) }
+@_cdecl("giftui_p08_fixture_diagnostic_baseline_offset")
+@inline(__always)
+func p08FixtureDiagnostic2_offset() -> UInt32 { p08FixtureDiagnosticPack(2) }
+@_cdecl("giftui_p08_fixture_diagnostic_inventory_size")
+@inline(__always)
+func p08FixtureDiagnostic3_size() -> UInt32 { UInt32(MemoryLayout<InlineArray<14, P08InitializedEntry?>>.size) }
+@_cdecl("giftui_p08_fixture_diagnostic_inventory_stride")
+@inline(__always)
+func p08FixtureDiagnostic3_stride() -> UInt32 { UInt32(MemoryLayout<InlineArray<14, P08InitializedEntry?>>.stride) }
+@_cdecl("giftui_p08_fixture_diagnostic_inventory_alignment")
+@inline(__always)
+func p08FixtureDiagnostic3_alignment() -> UInt32 { UInt32(MemoryLayout<InlineArray<14, P08InitializedEntry?>>.alignment) }
+@_cdecl("giftui_p08_fixture_diagnostic_inventory_offset")
+@inline(__always)
+func p08FixtureDiagnostic3_offset() -> UInt32 { p08FixtureDiagnosticPack(3) }
+@_cdecl("giftui_p08_fixture_diagnostic_transcript_size")
+@inline(__always)
+func p08FixtureDiagnostic4_size() -> UInt32 { UInt32(MemoryLayout<P08HostReuseTranscript>.size) }
+@_cdecl("giftui_p08_fixture_diagnostic_transcript_stride")
+@inline(__always)
+func p08FixtureDiagnostic4_stride() -> UInt32 { UInt32(MemoryLayout<P08HostReuseTranscript>.stride) }
+@_cdecl("giftui_p08_fixture_diagnostic_transcript_alignment")
+@inline(__always)
+func p08FixtureDiagnostic4_alignment() -> UInt32 { UInt32(MemoryLayout<P08HostReuseTranscript>.alignment) }
+@_cdecl("giftui_p08_fixture_diagnostic_transcript_offset")
+@inline(__always)
+func p08FixtureDiagnostic4_offset() -> UInt32 { p08FixtureDiagnosticPack(4) }
+@_cdecl("giftui_p08_fixture_diagnostic_foreign_root_size")
+@inline(__always)
+func p08FixtureDiagnostic5_size() -> UInt32 { UInt32(MemoryLayout<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>.size) }
+@_cdecl("giftui_p08_fixture_diagnostic_foreign_root_stride")
+@inline(__always)
+func p08FixtureDiagnostic5_stride() -> UInt32 { UInt32(MemoryLayout<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>.stride) }
+@_cdecl("giftui_p08_fixture_diagnostic_foreign_root_alignment")
+@inline(__always)
+func p08FixtureDiagnostic5_alignment() -> UInt32 { UInt32(MemoryLayout<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>.alignment) }
+@_cdecl("giftui_p08_fixture_diagnostic_foreign_root_offset")
+@inline(__always)
+func p08FixtureDiagnostic5_offset() -> UInt32 { p08FixtureDiagnosticPack(5) }
+@_cdecl("giftui_p08_fixture_diagnostic_foreign_control_size")
+@inline(__always)
+func p08FixtureDiagnostic6_size() -> UInt32 { UInt32(MemoryLayout<CounterControl>.size) }
+@_cdecl("giftui_p08_fixture_diagnostic_foreign_control_stride")
+@inline(__always)
+func p08FixtureDiagnostic6_stride() -> UInt32 { UInt32(MemoryLayout<CounterControl>.stride) }
+@_cdecl("giftui_p08_fixture_diagnostic_foreign_control_alignment")
+@inline(__always)
+func p08FixtureDiagnostic6_alignment() -> UInt32 { UInt32(MemoryLayout<CounterControl>.alignment) }
+@_cdecl("giftui_p08_fixture_diagnostic_foreign_control_offset")
+@inline(__always)
+func p08FixtureDiagnostic6_offset() -> UInt32 { p08FixtureDiagnosticPack(6) }
+@_cdecl("giftui_p08_fixture_diagnostic_cursor")
+@inline(__always)
+func p08FixtureDiagnosticSummary7() -> UInt32 { p08FixtureDiagnosticPack(7) }
+@_cdecl("giftui_p08_fixture_diagnostic_maximum_alignment")
+@inline(__always)
+func p08FixtureDiagnosticSummary8() -> UInt32 { p08FixtureDiagnosticPack(8) }
+@_cdecl("giftui_p08_fixture_diagnostic_rounded_extent")
+@inline(__always)
+func p08FixtureDiagnosticSummary9() -> UInt32 { p08FixtureDiagnosticPack(9) }
+#endif

@@ -1,0 +1,179 @@
+{
+  "giftui_p08_fixture_diagnostic_outer_size": {
+    "index": 0,
+    "type": "P08EmbeddedOuter",
+    "measure": "size",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_outer_stride": {
+    "index": 0,
+    "type": "P08EmbeddedOuter",
+    "measure": "stride",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_outer_alignment": {
+    "index": 0,
+    "type": "P08EmbeddedOuter",
+    "measure": "alignment",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_outer_offset": {
+    "index": 0,
+    "type": "P08EmbeddedOuter",
+    "measure": "offset",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_owner_size": {
+    "index": 1,
+    "type": "P08TypedBackingOwner",
+    "measure": "size",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_owner_stride": {
+    "index": 1,
+    "type": "P08TypedBackingOwner",
+    "measure": "stride",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_owner_alignment": {
+    "index": 1,
+    "type": "P08TypedBackingOwner",
+    "measure": "alignment",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_owner_offset": {
+    "index": 1,
+    "type": "P08TypedBackingOwner",
+    "measure": "offset",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_baseline_size": {
+    "index": 2,
+    "type": "P08ReuseFingerprint",
+    "measure": "size",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_baseline_stride": {
+    "index": 2,
+    "type": "P08ReuseFingerprint",
+    "measure": "stride",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_baseline_alignment": {
+    "index": 2,
+    "type": "P08ReuseFingerprint",
+    "measure": "alignment",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_baseline_offset": {
+    "index": 2,
+    "type": "P08ReuseFingerprint",
+    "measure": "offset",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_inventory_size": {
+    "index": 3,
+    "type": "InlineArray<14, P08InitializedEntry?>",
+    "measure": "size",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_inventory_stride": {
+    "index": 3,
+    "type": "InlineArray<14, P08InitializedEntry?>",
+    "measure": "stride",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_inventory_alignment": {
+    "index": 3,
+    "type": "InlineArray<14, P08InitializedEntry?>",
+    "measure": "alignment",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_inventory_offset": {
+    "index": 3,
+    "type": "InlineArray<14, P08InitializedEntry?>",
+    "measure": "offset",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_transcript_size": {
+    "index": 4,
+    "type": "P08HostReuseTranscript",
+    "measure": "size",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_transcript_stride": {
+    "index": 4,
+    "type": "P08HostReuseTranscript",
+    "measure": "stride",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_transcript_alignment": {
+    "index": 4,
+    "type": "P08HostReuseTranscript",
+    "measure": "alignment",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_transcript_offset": {
+    "index": 4,
+    "type": "P08HostReuseTranscript",
+    "measure": "offset",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_foreign_root_size": {
+    "index": 5,
+    "type": "StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>",
+    "measure": "size",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_foreign_root_stride": {
+    "index": 5,
+    "type": "StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>",
+    "measure": "stride",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_foreign_root_alignment": {
+    "index": 5,
+    "type": "StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>",
+    "measure": "alignment",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_foreign_root_offset": {
+    "index": 5,
+    "type": "StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>",
+    "measure": "offset",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_foreign_control_size": {
+    "index": 6,
+    "type": "CounterControl",
+    "measure": "size",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_foreign_control_stride": {
+    "index": 6,
+    "type": "CounterControl",
+    "measure": "stride",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_foreign_control_alignment": {
+    "index": 6,
+    "type": "CounterControl",
+    "measure": "alignment",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_foreign_control_offset": {
+    "index": 6,
+    "type": "CounterControl",
+    "measure": "offset",
+    "count": 1
+  },
+  "giftui_p08_fixture_diagnostic_cursor": {
+    "measure": "cursor"
+  },
+  "giftui_p08_fixture_diagnostic_maximum_alignment": {
+    "measure": "maximum_alignment"
+  },
+  "giftui_p08_fixture_diagnostic_rounded_extent": {
+    "measure": "rounded_extent"
+  }
+}
