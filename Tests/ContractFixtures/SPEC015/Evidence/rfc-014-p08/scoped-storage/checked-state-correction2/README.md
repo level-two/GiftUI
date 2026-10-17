@@ -54,6 +54,10 @@ verification checks this new archive and the actual workspace files. The origina
 This erratum preserves and corrects the historical claim rather than rewriting
 the original archive. Repaired execution remains pending user approval.
 
+[Independent readiness review](../p08-checked-state-runner-readiness-review.md)
+passes the actual prepared files for the pending approved execution step. No
+compiler, selector invocation or regression result is inferred from that review.
+
 ## Ready command for read-only review and explicit approval
 
 From `/Users/eugene/work/GiftUI`:
