@@ -14,7 +14,9 @@
   "sil_bytes": 54386109,
   "stderr_bytes": 460307015,
   "filtered_function": "CounterScreen._giftUITraverse<A>(_:)",
-  "filtered_sil_dump_matches": 28,
+  "filtered_sil_dump_matches": 14,
+  "exact_mangled_symbol_occurrences": 28,
+  "count_erratum": "Original28 counted14 SIL headers plus14 end-function lines; actual declaration dumps14, each with zero basic blocks. Raw evidence and interpretation unchanged.",
   "basic_block_body_observed": false,
   "performance_sil_linker_observations": [
     "EarlyModulePasses pass #34962",

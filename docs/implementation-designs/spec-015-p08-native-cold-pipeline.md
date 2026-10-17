@@ -21,6 +21,11 @@ The partial source overlay is unaccepted; 1/2 corrective cycles is consumed and
 no new workload was run. The assessment below and independent design review are
 historical design inputs, not a claim that the subsequent implementation passed.
 
+Current [independent package disposition](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-serialization-disposition.md)
+confirms fresh consumer imports and generated annotations, but no observed
+traversal body or evidence-backed final repair. Corrective2 remains unstarted;
+one bounded physical-module decoding investigation is the next tooling task.
+
 **Independent design PASS for bounded corrective1; actual codegen feasibility
 remains unproved.**
 The [independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-independent-design-review.md)
