@@ -30,8 +30,10 @@ superseded_by: null
 
 Read-only revised direction — [complete Native cold pipeline correction](../implementation-designs/spec-015-p08-native-cold-pipeline.md).
 The finite emitted caller/file map proposes one grouped correction overlay on the
-current failed candidate, without retrying the aborted restoration. Pending
-independent design review; no source correction, conformance or budget reset.
+current failed candidate, without retrying the aborted restoration. The
+[independent design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-independent-design-review.md)
+passes bounded corrective1 and its early codegen/cold gate; feasibility remains
+unproved. No source correction, conformance or budget reset is claimed.
 
 Current strict Native boundary — [candidate1 actual screen FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1-result.md).
 Counts/replay pass; original11/336 remain and cold TLS/text allocations reject

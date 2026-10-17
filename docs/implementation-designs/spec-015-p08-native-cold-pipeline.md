@@ -16,7 +16,11 @@ superseded_by: null
 
 # P08 complete Native cold pipeline correction
 
-**Read-only revised design, pending independent review and codegen feasibility.**
+**Independent design PASS for bounded corrective1; actual codegen feasibility
+remains unproved.**
+The [independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-independent-design-review.md)
+confirms the internal contract boundary and staged gates; no source correction
+or restoration has occurred in this review.
 The [initial candidate failed](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1-independent-review.md).
 HEAD at this assessment is `48eb1980`; the unaccepted `9c19a879` source remains
 present. Restoration was attempted elsewhere, failed on the sandboxed Git index,
