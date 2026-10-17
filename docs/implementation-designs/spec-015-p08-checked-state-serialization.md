@@ -18,6 +18,11 @@ superseded_by: null
 
 ## Annotation eligibility amendment — 2026-10-17
 
+[Independent package review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-final-independent-review.md)
+confirms bounded compatibility/provider/helper PASS and the fresh Layout blocker.
+Grouped Layout/current-owner closure review precedes any new realization;
+actual consumer, failure/safety/cold and P08 remain unproved. No source allowance.
+
 The [latest frozen qualification](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/annotation-compatibility-codegen/README.md)
 passes full compatibility/privacy and physical-body/original-State helper checks.
 Fresh Layout prerequisite FAIL101 blocks actual consumer; failure-witness/cold

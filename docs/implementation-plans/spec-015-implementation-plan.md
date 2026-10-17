@@ -29,6 +29,11 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+[Independent annotation package review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-final-independent-review.md)
+confirms compatibility/provider/helper PASS and Layout FAIL101. Next recommendation
+is grouped review of the seven diagnosed Layout files and remaining current owner
+compile closure before actual consumer/safety/cold; no source allowance or P08 exit.
+
 Current [annotation codegen result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/annotation-compatibility-codegen/README.md):
 full compatibility/privacy/provider and physical-body/original-State helper checks
 PASS. Fresh Layout prerequisite FAIL101 blocks actual consumer; key-failure cold

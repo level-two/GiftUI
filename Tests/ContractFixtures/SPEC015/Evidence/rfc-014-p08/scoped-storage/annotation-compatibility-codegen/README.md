@@ -1,5 +1,10 @@
 # Witness compatibility codegen — provider/helper PASS; consumer BLOCKED
 
+[Independent package review](../p08-witness-annotation-compatibility-final-independent-review.md)
+confirms this bounded PASS and Layout prerequisite blocker. Grouped Layout and
+remaining-owner compile-closure review is the next recommendation; no new source
+allowance, actual-consumer/strict-cold result or P08 acceptance follows.
+
 `22589fec` remains the exact single source candidate. All17 maintained tests,
 fresh providers, five clean privacy controls and the four initial ordinary
 positives passed. The [reviewed fixture continuation](../annotation-compatibility-continuation1/README.md)

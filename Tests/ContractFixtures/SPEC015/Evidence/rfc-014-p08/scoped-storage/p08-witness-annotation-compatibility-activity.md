@@ -1,5 +1,11 @@
 # P08 witness annotation compatibility activity — 2026-10-17
 
+[Independent package boundary review](p08-witness-annotation-compatibility-final-independent-review.md)
+confirms annotation compatibility/provider/helper PASS and fresh Layout FAIL101.
+Recommend grouped review of the exact seven Layout files and remaining current
+owner/import closure before actual consumer, safety or strict cold. No new source
+allowance or P08 acceptance; candidate1/1 stays frozen and unaccepted.
+
 Current [codegen result](annotation-compatibility-codegen/README.md): full ordinary
 compatibility/privacy continuation and provider/original-State helper checks PASS.
 One fresh Layout prerequisite compile fails101 diagnostics and blocks the actual
