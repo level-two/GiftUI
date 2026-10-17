@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "kind": "independently-reviewed-426-label-Native-union-per-profile-not-full-raw-receipts",
+  "ledger_sha256": "28515273775d1b8afc86d3a0dd0a119839d89b7e796b9b922c42af92f6862900",
+  "archive": {
+    "path": "native-coverage-receipts.tar.xz",
+    "bytes": 733972,
+    "sha256": "bb09822822fd55101e0e1d13a2bbf5cfcc866070fa9fc01f641f8c435af59c4c",
+    "hashed_members": 2738
+  },
+  "profiles": [
+    {
+      "profile": "macos-dynamic",
+      "labels_covered": 426,
+      "fresh_selected": 384,
+      "preparation_overlap": 19,
+      "retained_runtime_projection_exclusivity": 23,
+      "current_inputs": 201,
+      "raw_complete": false,
+      "raw_passed": false
+    },
+    {
+      "profile": "macos-static",
+      "labels_covered": 426,
+      "fresh_selected": 384,
+      "preparation_overlap": 19,
+      "retained_runtime_projection_exclusivity": 23,
+      "current_inputs": 201,
+      "raw_complete": false,
+      "raw_passed": false
+    }
+  ],
+  "raw_status_preserved": {
+    "collection_complete": false,
+    "passed": false,
+    "focused_passed": true
+  },
+  "binaries_archived": false,
+  "no_new_build_runtime_or_target_execution": true,
+  "remaining": [
+    "matched allocation and header/control/temporary costs",
+    "Native/Pi complete feasible stack and physical ledger",
+    "current caller/criterion reconciliation",
+    "independent P08 exit"
+  ],
+  "dependency_validation": {
+    "path": "dependency-validation.json",
+    "sha256": "a10e1ba0209aa8d95329a4e0007970cf364912e48e7b0ff9c8b5644ce9073328",
+    "runtime_host_artifacts": 400
+  }
+}

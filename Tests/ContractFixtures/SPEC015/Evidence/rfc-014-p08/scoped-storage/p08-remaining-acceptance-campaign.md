@@ -12,6 +12,12 @@ now a preserved executable recipe, not an instruction to rerun it. Next execute
 Step2's missing Native families, then Step3 allocation/stack and Step4 exit ledger.
 Pi complete stack/allocation/fit remains in Step3; link success does not close it.
 
+Completed Native missing-family step: the [independent combined coverage result](p08-current-native-combined-coverage-result.md)
+qualifies all426labels/profile using384fresh selected +19matching preparation
++23retained labels. Step2 is now a preserved recipe, not a rerun instruction;
+raw focused receipts stay incomplete/aggregate-false. Next is Step3's matched
+allocation and Native/Pi stack/physical ledger, then Step4 caller/exit reconciliation.
+
 Authority is [SO-01–09](../../../../../../docs/iterations/iteration-003-review/rfc-015-p08-handoff.md#ordered-bounded-tasks),
 [delivery allocation](../../../../../../docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md#p08-minimum-complete-dependency-path),
 [P08/R07](../../../../../../docs/iterations/iteration-003-review/rfc-014-implementation-plan.md#ordered-work-packages),
@@ -107,7 +113,8 @@ established. The frozen source requires no new compiler/lifetime experiment.
 SO-08 explicitly requires matched Dynamic costs and Static zero heap, not only
 nRF symbol absence. Reuse the exact current Native profile `.o` files, flags and
 link command from the receipts above. Replace only the generated `Main.swift`
-entry with a tiny measurement driver calling the existing C export
+entry in a new measurement directory (preserving every frozen original file)
+with a tiny driver calling the existing C export
 `uint32_t giftui_rfc014_counter_entry(void *writer)` with NULL. No application
 change is needed. The export runs the selected finite route and its cleanup;
 retain/check its assertion count. Keep Dynamic and Static workload/profile,

@@ -1,0 +1,69 @@
+{
+  "read_only_independent_checks": [
+    {
+      "profile": "macos-dynamic",
+      "dependency": "runtime_build",
+      "receipt": ".build/contracts/spec-013-runtime-cycle/tmpi1u8hyk5/macos-dynamic/result.json",
+      "receipt_sha256": "ec640f13aedd202725ad02e52a5e56e56357b5d3e034b3792788fe95feae4446",
+      "verified_artifacts": 143
+    },
+    {
+      "profile": "macos-dynamic",
+      "dependency": "host_build",
+      "receipt": ".build/contracts/p08-scoped-host-ezcy1qan/result.json",
+      "receipt_sha256": "8ccd2c004117f31f1843584fb157b5a0b5f93669505db88166eafe83f871c64d",
+      "verified_artifacts": 57
+    },
+    {
+      "profile": "macos-dynamic",
+      "dependency": "macro_tool",
+      "path": ".build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+      "sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691"
+    },
+    {
+      "profile": "macos-dynamic",
+      "dependency": "swift_syntax_library",
+      "path": ".build/rfc014-p02-swift64/tool/prebuilts/swift-syntax/603.0.2/swift-6.4.0-RELEASE-macos_universal-MacroSupport/lib/libMacroSupport.a",
+      "sha256": "63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308"
+    },
+    {
+      "profile": "macos-dynamic",
+      "dependency": "core-object",
+      "path": ".build/contracts/spec-006-rfc-014-swift64/af66aaf967e3fe8f-__4p5wu2/macos-dynamic/GiftUI.o",
+      "sha256": "18009b594789be07a158c39e325d8c59a048f6bb167a9d2f42f243d2d88cfa43"
+    },
+    {
+      "profile": "macos-static",
+      "dependency": "runtime_build",
+      "receipt": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/result.json",
+      "receipt_sha256": "1199fd13fc4d309c36f3ddfccac3002ab497641a3fb6483902d97571c9ca923f",
+      "verified_artifacts": 143
+    },
+    {
+      "profile": "macos-static",
+      "dependency": "host_build",
+      "receipt": ".build/contracts/p08-scoped-host-hzs5q7za/result.json",
+      "receipt_sha256": "beb3d31b312391d266e2ca525b0274aec741629664fb9d55aaca721421bf4216",
+      "verified_artifacts": 57
+    },
+    {
+      "profile": "macos-static",
+      "dependency": "macro_tool",
+      "path": ".build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+      "sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691"
+    },
+    {
+      "profile": "macos-static",
+      "dependency": "swift_syntax_library",
+      "path": ".build/rfc014-p02-swift64/tool/prebuilts/swift-syntax/603.0.2/swift-6.4.0-RELEASE-macos_universal-MacroSupport/lib/libMacroSupport.a",
+      "sha256": "63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308"
+    },
+    {
+      "profile": "macos-static",
+      "dependency": "core-object",
+      "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.o",
+      "sha256": "cb0dc42f08799e69d10fbc1b7807e639745d07231d651f838e72daccb780be0a"
+    }
+  ],
+  "runtime_host_artifacts_total": 400
+}

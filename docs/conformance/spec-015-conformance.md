@@ -19,6 +19,11 @@ superseded_by: null
 
 # SPEC-015 Conformance Report
 
+Current Native label coverage — **independently qualified426/profile PASS**.
+The [combined focused result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-native-combined-coverage-result.md)
+closes384missing controls per profile with retained runtime evidence. Raw receipts
+stay partial; matched allocation, Native/Pi stack/physical and caller/exit remain.
+
 Current Pi collection/link evidence — **409/409 and early ARMv6 hard-float ABI PASS**.
 The [current Pi result and independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-pi-collection-image-result.md)
 qualifies current compilation and image only; no complete stack/allocation/fit or

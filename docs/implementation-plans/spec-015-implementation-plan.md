@@ -27,6 +27,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current Native boundary — **independent426-label coverage PASS per profile**.
+The [combined result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-native-combined-coverage-result.md)
+qualifies384fresh controls +19matching preparation +23retained runtime/projection/
+exclusivity labels without rewriting raw focused statuses. Next: matched allocation,
+actual Native/Pi stack/physical ledgers, caller/criterion reconciliation and P08 exit.
+
 Current Pi evidence — **complete409 and early image/ABI PASS; resource fit open**.
 The [result and independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-pi-collection-image-result.md)
 freezes current receipt `hvxrlng0`, ELF `c1c6682e`, all934 preserved file hashes and
