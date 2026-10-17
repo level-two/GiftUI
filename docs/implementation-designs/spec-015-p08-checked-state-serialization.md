@@ -20,7 +20,8 @@ superseded_by: null
 
 The [new one-candidate activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-activity.md)
 is a derived compatibility correction after the exhausted activity below.
-Independent design review is pending; no new source candidate has started.
+The [independent design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-independent-design-review.md)
+passes with the conservative syntax guards below; no source candidate has started.
 It changes only whether the two existing macro witnesses receive their paired
 `@inlinable` / `@inline(__always)` attributes. Ordinary inputs keep the original
 direct-private-field route with neither attribute, at every host access level.
@@ -45,6 +46,30 @@ Serialize both witnesses only when **all** these syntactic prerequisites hold:
    Compare parsed signature/alias structure and exact identifiers; do not inspect
    a body substring or recognize application/type names. `@ViewBuilder` and the
    existing evaluation body are preserved, not rewritten by the member macro.
+
+For this bounded correction, the selectable owning declaration is a struct with
+the lowerer's single non-pack `<D: DomainConstraint>` parameter, where
+`DomainConstraint` is one simple identifier without generic arguments. There is
+no nominal generic `where` clause, extra parameter, pack, default or additional
+constraint spelling. The alias has no own generics or `where` clause. Compare
+the complete evaluation signature against the fixed shape above, including its
+single parameter and ownership, synchronous effect, typed failure and opaque
+return; reject extra/default/variadic parameters and function `where` clauses.
+Do not infer read-domain conformance from a constraint's name: the compiler
+qualifies its actual `_GiftUIReadDomain` refinement. These are serialization
+selection limits, not new diagnostics or restrictions on ordinary macro inputs.
+
+Lexical contexts may begin with the attached host itself and have member bodies
+stripped. Account for that host at most once using its declaration header, then
+check every remaining context. Never discard an enclosing declaration merely
+because its name equals the host's, or infer access from stripped member lists.
+An ABI-usable nongeneric enclosing nominal is provable by its header; generic
+enclosers and all function, closure, property, subscript, extension or unknown
+contexts remain ineligible for this candidate. Empty context is the top-level
+case under the supplied compiler/macro context, not permission to ignore a
+reported context. Focused negatives cover a public inner host in private and
+unannotated internal enclosers, local/extension contexts and unsupported generic
+headers; a provable ABI-usable enclosing nominal is the matching positive.
 
 The macro cannot prove emission history or resolve arbitrary Swift type access.
 Complete finite shape validation selects the operation; the existing lowerer's
