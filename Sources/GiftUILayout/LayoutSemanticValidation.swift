@@ -48,6 +48,8 @@ package struct LayoutSemanticValidation {
         return counters.finish(expectedScopeCount: expectedScopeCount)
     }
 
+    @inlinable
+    @inline(__always)
     private mutating func validateOccurrence<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,

@@ -57,6 +57,8 @@ struct CounterRGBAStorage: FullSurfaceRGBA8888Storage {
         control.pointee.backend.surface[index + 3] = byte3
         return true
     }
+    @inlinable
+    @inline(__always)
     borrowing func withBytes<R>(_ body: (UnsafeRawBufferPointer) throws -> R) rethrows -> R {
         try withUnsafeBytes(of: &control.pointee.backend.surface, body)
     }

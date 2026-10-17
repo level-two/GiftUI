@@ -60,21 +60,31 @@ public struct _GiftUIFlexibleFramePayload: _GiftUISemanticModifierPayload,
     }
 }
 
-private struct GiftUILayoutModifiedContent<
+@usableFromInline
+struct GiftUILayoutModifiedContent<
     Content: View,
     Payload: _GiftUISemanticModifierPayload
 >: View {
+    @usableFromInline
     typealias Domain = Content.Domain
+    @usableFromInline
     typealias Body = Never
 
+    @usableFromInline
     let content: Content
+    @usableFromInline
     let payload: Payload
 
+    @usableFromInline
     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure)
         -> Never
     {
         fatalError("GiftUI layout modifiers have no view body")
     }
+
+    @inlinable
+
+    @inline(__always)
 
     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor

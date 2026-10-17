@@ -31,6 +31,7 @@ package struct _GiftUIBoundState<Schema> {
     }
 }
 
+@usableFromInline
 package enum _GiftUIStateInitial<Schema: _GiftUIModelSchema> {
     case seed(Schema.Seed)
     // The host holds the candidate's owning ticket until the binder explicitly
@@ -66,6 +67,7 @@ public struct State<Schema: _GiftUIModelSchema> {
         return binding.key
     }
 
+    @usableFromInline
     package var _giftUIInitial: _GiftUIStateInitial<Schema>? {
         if case .initial(let seed) = storage { return seed }
         return nil

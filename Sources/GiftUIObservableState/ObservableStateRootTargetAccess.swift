@@ -23,6 +23,7 @@ package struct ObservableStateRootTargetAccess<
     }
 
     @inlinable
+    @inline(__always)
     package borrowing func currentGeneration() -> ObservableTargetGeneration? {
         guard let generation = root.generation(identity: identity, ordinal: ordinal) else {
             return nil
@@ -31,12 +32,14 @@ package struct ObservableStateRootTargetAccess<
     }
 
     @inlinable
+    @inline(__always)
     package borrowing func mutate(
         matching generation: ObservableTargetGeneration, mutation: Model.Mutation
     ) -> ObservableStateResult {
         root.mutate(identity: identity, ordinal: ordinal, matching: generation, mutation: mutation)
     }
     @inlinable
+    @inline(__always)
     package borrowing func mutate(
         matching generation: ObservableTargetGeneration, operation: () -> Model.Mutation
     ) -> ObservableStateResult {

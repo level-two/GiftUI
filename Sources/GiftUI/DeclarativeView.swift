@@ -354,10 +354,15 @@ where A.Domain == B.Domain, A.Domain == C.Domain, A.Domain == D.Domain, A.Domain
     public typealias Domain = A.Domain
     public typealias Body = Never
 
+    @usableFromInline
     package let a: A
+    @usableFromInline
     package let b: B
+    @usableFromInline
     package let c: C
+    @usableFromInline
     package let d: D
+    @usableFromInline
     package let e: E
 
     package init(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E) {
@@ -374,6 +379,8 @@ where A.Domain == B.Domain, A.Domain == C.Domain, A.Domain == D.Domain, A.Domain
         fatalError("TupleView5 has no view body")
     }
 
+    @inlinable
+    @inline(__always)
     public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {

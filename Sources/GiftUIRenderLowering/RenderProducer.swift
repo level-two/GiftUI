@@ -5,6 +5,8 @@ import GiftUISemanticCore
 import GiftUITextResources
 
 extension RenderProducer {
+    @inlinable
+    @inline(__always)
     package static func produce<Semantic, Layout, Metrics, Workspace, Sink>(
         semantic: borrowing Semantic,
         layout: borrowing Layout,
@@ -62,6 +64,8 @@ extension RenderProducer {
         )
     }
 
+    @inlinable
+    @inline(__always)
     package static func produce<
         Semantic, Layout, Metrics, Workspace,
         PreflightExtension, StreamingExtension, Sink

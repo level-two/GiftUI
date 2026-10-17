@@ -23,6 +23,8 @@ where Domain.Slot == ObservableModelReadSlot<Model> {
         self.root = consume root
     }
 
+    @inlinable
+    @inline(__always)
     package borrowing func evaluate<Declaration: View>(
         _ declaration: borrowing Declaration,
         beforeBody: () -> SemanticExpansionError?,
@@ -36,6 +38,8 @@ where Domain.Slot == ObservableModelReadSlot<Model> {
         } catch { return .accessFailure(error) }
     }
 
+    @inlinable
+    @inline(__always)
     package borrowing func evaluateStateful<Declaration: View & _GiftUIObservableStateHost>(
         _ declaration: borrowing Declaration,
         structuralIdentity: Identity,

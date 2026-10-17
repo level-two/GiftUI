@@ -21,6 +21,8 @@ package enum RasterGlyphPayloadAccessResult<Result> {
 }
 
 package enum RasterGlyphCoverage {
+    @inlinable
+    @inline(__always)
     package static func rasterize<
         Metrics: CanonicalTextMetricsView,
         Raster: TextRasterResourceView
@@ -62,6 +64,8 @@ package enum RasterGlyphCoverage {
         }
     }
 
+    @inlinable
+    @inline(__always)
     package static func withValidatedPayload<
         Result,
         Metrics: CanonicalTextMetricsView,

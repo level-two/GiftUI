@@ -61,10 +61,10 @@ package enum RasterFillCoverage {
         _ third: Rect,
         _ fourth: Rect
     ) -> Rect? {
-        let minimumX = max(first.minX, second.minX, third.minX, fourth.minX)
-        let minimumY = max(first.minY, second.minY, third.minY, fourth.minY)
-        let maximumX = min(first.maxX, second.maxX, third.maxX, fourth.maxX)
-        let maximumY = min(first.maxY, second.maxY, third.maxY, fourth.maxY)
+        let minimumX = max(max(first.minX, second.minX), max(third.minX, fourth.minX))
+        let minimumY = max(max(first.minY, second.minY), max(third.minY, fourth.minY))
+        let maximumX = min(min(first.maxX, second.maxX), min(third.maxX, fourth.maxX))
+        let maximumY = min(min(first.maxY, second.maxY), min(third.maxY, fourth.maxY))
         guard maximumX > minimumX, maximumY > minimumY else {
             return Rect(
                 origin: Point(x: minimumX, y: minimumY),

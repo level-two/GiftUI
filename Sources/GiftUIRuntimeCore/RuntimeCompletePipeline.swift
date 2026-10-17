@@ -122,6 +122,8 @@ package enum RuntimeCompletePipeline {
         )
     }
 
+    @inlinable
+    @inline(__always)
     package static func run<Owner>(
         owner: inout Owner
     ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>

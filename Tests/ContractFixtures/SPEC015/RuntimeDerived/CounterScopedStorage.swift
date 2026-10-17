@@ -1585,8 +1585,7 @@ extension P08TypedBackingOwner {
             preconditionFailure("missing original physical facts")
         }
         var rows = CounterPhysicalGeometryFacts()
-        func object(_ id: P08PhysicalID, family: Int, payload: Int = 0) {
-            let e = entry(id)
+        func object(_ e: P08InitializedEntry, family: Int, payload: Int = 0, into rows: inout CounterPhysicalGeometryFacts) {
             let objectBytes = e.count.multipliedReportingOverflow(by: e.stride)
             precondition(!objectBytes.overflow && e.retainedBytes >= objectBytes.partialValue + payload)
             rows.append(.init(family: family, kind: .inlineValue, count: e.count, size: e.size, stride: e.stride, alignment: e.alignment, chargedBytes: UInt64(objectBytes.partialValue)))
@@ -1595,8 +1594,10 @@ extension P08TypedBackingOwner {
         let banks: CounterPhysicalInteractionFacts
         switch slots {
         case .static(let s):
-            for id in [P08PhysicalID.b0, .b1, .g0, .g1, .g2] { object(id, family: 12) }
-            object(.g4, family: 13); object(.b2, family: 15); object(.b3, family: 16); object(.g3, family: 16)
+
+            object(entry(.b0), family: 12, into: &rows); object(entry(.b1), family: 12, into: &rows)
+            object(entry(.g0), family: 12, into: &rows); object(entry(.g1), family: 12, into: &rows); object(entry(.g2), family: 12, into: &rows)
+            object(entry(.g4), family: 13, into: &rows); object(entry(.b2), family: 15, into: &rows); object(entry(.b3), family: 16, into: &rows); object(entry(.g3), family: 16, into: &rows)
             banks = .init(
                 candidate: s.c0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionCandidateRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.c0).retainedBytes) },
                 candidateHits: s.h0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.h0).retainedBytes) },
@@ -1607,19 +1608,19 @@ extension P08TypedBackingOwner {
         #if !hasFeature(Embedded)
         case .dynamic(let s):
             s.g0.withBorrow { p in
-                object(.g0, family: 12, payload: Int(p.pointee.reservedPayloadBytes))
+                object(entry(.g0), family: 12, payload: Int(p.pointee.reservedPayloadBytes), into: &rows)
                 p.pointee.visitRetainedPayloadExtents { count, size, stride, alignment in rows.append(.init(family: 12, kind: .elements, count: count, size: size, stride: stride, alignment: alignment, chargedBytes: CounterExtent(count: count, stride: stride, alignment: alignment).bytes!)) }
             }
             s.g1.withBorrow { p in
-                object(.g1, family: 12, payload: Int(p.pointee.reservedPayloadBytes))
+                object(entry(.g1), family: 12, payload: Int(p.pointee.reservedPayloadBytes), into: &rows)
                 p.pointee.visitRetainedPayloadExtents { count, size, stride, alignment in rows.append(.init(family: 12, kind: .elements, count: count, size: size, stride: stride, alignment: alignment, chargedBytes: CounterExtent(count: count, stride: stride, alignment: alignment).bytes!)) }
             }
             s.g4.withBorrow { p in
-                object(.g4, family: 13, payload: Int(p.pointee.reservedPayloadBytes))
+                object(entry(.g4), family: 13, payload: Int(p.pointee.reservedPayloadBytes), into: &rows)
                 p.pointee.visitRetainedPayloadExtents { count, size, stride, alignment in rows.append(.init(family: 13, kind: .elements, count: count, size: size, stride: stride, alignment: alignment, chargedBytes: CounterExtent(count: count, stride: stride, alignment: alignment).bytes!)) }
             }
             s.g3.withBorrow { p in
-                object(.g3, family: 16, payload: Int(p.pointee.livePathReservedPayloadBytes + p.pointee.planReservedPayloadBytes))
+                object(entry(.g3), family: 16, payload: Int(p.pointee.livePathReservedPayloadBytes + p.pointee.planReservedPayloadBytes), into: &rows)
                 p.pointee.visitRetainedPathExtents { count, size, stride, alignment in rows.append(.init(family: 15, kind: .elements, count: count, size: size, stride: stride, alignment: alignment, chargedBytes: CounterExtent(count: count, stride: stride, alignment: alignment).bytes!)) }
                 p.pointee.visitRetainedPlanExtents { count, size, stride, alignment in rows.append(.init(family: 16, kind: .elements, count: count, size: size, stride: stride, alignment: alignment, chargedBytes: CounterExtent(count: count, stride: stride, alignment: alignment).bytes!)) }
             }
@@ -1633,7 +1634,8 @@ extension P08TypedBackingOwner {
         #endif
         }
         var totals: InlineArray<26, UInt64> = .init(repeating: 0)
-        rows.visitStorageRegions { row in
+        for index in 0..<rows.count {
+            let row = rows.regions[index]!
             let next = totals[row.family].addingReportingOverflow(row.chargedBytes)
             precondition(!next.overflow); totals[row.family] = next.partialValue
         }

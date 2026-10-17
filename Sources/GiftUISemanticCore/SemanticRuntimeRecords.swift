@@ -1,12 +1,15 @@
 import GiftUI
 
 /// A finite type-role codec may be generated; occurrence positions may not.
+@usableFromInline
 package protocol SemanticDeclarationRoles {
     static func role<Declaration>(of declaration: Declaration.Type) -> SemanticRecordingRole?
     static func modifierDiscriminator<Declaration>(of declaration: Declaration.Type) -> UInt16
 }
 
+@usableFromInline
 package struct SemanticPathComponent: Equatable, Sendable {
+    @usableFromInline
     package enum Kind: UInt8, Sendable {
         case root, customBody, fixedChild, conditionalBranch, optionalPresence, declarationRole
     }
@@ -15,6 +18,7 @@ package struct SemanticPathComponent: Equatable, Sendable {
     package let role: UInt16
     package let modifier: UInt16
 
+    @usableFromInline
     package init(kind: Kind, ordinal: UInt8 = 0, role: UInt16 = 0, modifier: UInt16 = 0) {
         self.kind = kind
         self.ordinal = ordinal
@@ -34,6 +38,7 @@ package struct SemanticPathComponent: Equatable, Sendable {
 /// Complete owned key for the approved depth-34 profile. It never contains a
 /// bank index or address. Configurations exceeding its physical extent refuse
 /// before activation; a future extent change needs the corresponding audit.
+@usableFromInline
 package struct SemanticCompleteIdentity: Equatable, Sendable {
     package static let capacity: UInt16 = 34
     private var components: InlineArray<34, SemanticPathComponent> = .init(
@@ -55,6 +60,7 @@ package struct SemanticCompleteIdentity: Equatable, Sendable {
         precondition(count > 0)
         count -= 1
     }
+    @usableFromInline
     package static func == (lhs: Self, rhs: Self) -> Bool {
         guard lhs.count == rhs.count else { return false }
         var i: UInt16 = 0
@@ -66,12 +72,17 @@ package struct SemanticCompleteIdentity: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct SemanticRecordLimits: Equatable, Sendable {
+    @usableFromInline
     package let records: UInt16
+    @usableFromInline
     package let paths: UInt16
     package let depth: UInt16
     package let fanout: UInt16
+    @usableFromInline
     package let payloads: UInt16
+    @usableFromInline
     package let textScalars: UInt16
     package let payloadBytes: UInt32
     package init?(
@@ -92,6 +103,7 @@ package struct SemanticRecordLimits: Equatable, Sendable {
 }
 
 /// UInt16.max is the absent-link sentinel and is never an initialized index.
+@usableFromInline
 package struct SemanticPathEntry: Sendable {
     package var component = SemanticPathComponent(kind: .root)
     package var parent: UInt16 = .max
@@ -106,7 +118,9 @@ package struct SemanticPathEntry: Sendable {
     package init() {}
 }
 
+@usableFromInline
 package struct SemanticRuntimeRecord: Sendable {
+    @usableFromInline
     package enum Kind: UInt8, Sendable {
         case structural, primitive, action, modifier, pendingCanvas
     }
@@ -123,6 +137,7 @@ package struct SemanticRuntimeRecord: Sendable {
     package init() {}
 }
 
+@usableFromInline
 package struct SemanticRecordOwnerIdentity: Equatable, Sendable {
     package let rawValue: UInt32
     fileprivate init(_ rawValue: UInt32) { self.rawValue = rawValue }
@@ -147,10 +162,15 @@ package struct SemanticRecordReference: Equatable, Sendable {
     package let ordinal: UInt16
 }
 
+@usableFromInline
 package struct SemanticRecordBankMetadata {
+    @usableFromInline
     package enum Phase: UInt8 { case idle, expanding, candidate, published, retired }
+    @usableFromInline
     package var phase: Phase = .idle
+    @usableFromInline
     package var revision: UInt32 = 0
+    @usableFromInline
     package var readers: UInt16 = 0
     package var records: UInt16 = 0
     package var paths: UInt16 = 0
@@ -168,12 +188,15 @@ package struct SemanticRecordBankMetadata {
 /// Trusted profile adapter input. Each typed buffer is fully initialized,
 /// pairwise disjoint and stable for the complete enclosing storage lifetime.
 /// Only scoped store/view APIs expose its contents to consumers.
+@usableFromInline
 package struct SemanticRecordBankBuffers<Payload> {
+    @usableFromInline
     package let metadata: UnsafeMutablePointer<SemanticRecordBankMetadata>
     package let records: UnsafeMutableBufferPointer<SemanticRuntimeRecord>
     package let paths: UnsafeMutableBufferPointer<SemanticPathEntry>
     package let payloads: UnsafeMutableBufferPointer<Payload?>
     package let scalars: UnsafeMutableBufferPointer<UInt32>
+    @usableFromInline
     package init(
         metadata: UnsafeMutablePointer<SemanticRecordBankMetadata>,
         records: UnsafeMutableBufferPointer<SemanticRuntimeRecord>,
@@ -191,6 +214,7 @@ package struct SemanticRecordBankBuffers<Payload> {
             && payloads.count >= Int(limits.payloads) && scalars.count >= Int(limits.textScalars)
     }
 
+    @usableFromInline
     package func clear() {
         precondition(metadata.pointee.readers == 0)
         for index in 0 ..< Int(metadata.pointee.payloads) { payloads[index] = nil }
@@ -199,6 +223,7 @@ package struct SemanticRecordBankBuffers<Payload> {
         metadata.pointee.revision = revision
     }
 
+    @usableFromInline
     package func fail(_ failure: SemanticExpansionError) -> SemanticExpansionError {
         if metadata.pointee.failure == nil { metadata.pointee.failure = failure }
         return metadata.pointee.failure!

@@ -6,6 +6,8 @@ import GiftUISemanticCore
 import GiftUITextResources
 
 package enum CanvasRenderProducer {
+    @inlinable
+    @inline(__always)
     package static func preflight<Semantic, Layout, Metrics, Plan, Workspace>(
         semantic: borrowing Semantic,
         layout: borrowing Layout,
@@ -49,6 +51,8 @@ package enum CanvasRenderProducer {
         return result
     }
 
+    @inlinable
+    @inline(__always)
     package static func produce<
         Semantic, Layout, Metrics, Plan, Workspace, Sink
     >(
@@ -118,6 +122,8 @@ where Plan: DrawingPlanView {
         )
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visit(
         scope: SemanticRenderScope,
         identity: Identity,
@@ -273,6 +279,8 @@ where Plan: DrawingPlanView, Sink: DrawingOperationSink {
         validation = CanvasPreflightExtension(drawingPlan: drawingPlan)
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visit(
         scope: SemanticRenderScope,
         identity: Identity,

@@ -277,6 +277,8 @@ package enum TextResourceValidationResult: Equatable, Sendable {
 }
 
 package enum TextResourceValidator {
+    @inlinable
+    @inline(__always)
     package static func validate<M, R>(
         _ resourcePackage: borrowing TextResourcePackage<M, R>,
         requiring requiredRealization: RasterRealizationID

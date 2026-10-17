@@ -1,0 +1,670 @@
+{
+  "counter-model-command.json": {
+    "ordered_import_directories": [
+      ".build/contracts/p08-native-cold-correction1-codegen",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static"
+    ],
+    "physical_module_candidates": [
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterSchema.swiftmodule",
+        "sha256": "6f2860f736b05228fffa9ead8a543628023666146f227bb638a52e496ff08d39"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterPresentation.swiftmodule",
+        "sha256": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterTable.swiftmodule",
+        "sha256": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUI.swiftmodule",
+        "sha256": "04bf1e2d56f2b4793f19288829ddbdf2bf44559bdae3aae93d13466d137acadd"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUIObservableState.swiftmodule",
+        "sha256": "5b4fbb80a1cdc80409e60168debe6bdff6d9291d0560680875a665741796059e"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUISemanticCore.swiftmodule",
+        "sha256": "4e36d5d5dae90ffc111b2024de389f6398fa8ee07576fba1b3b2c68db495c243"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUIObservableState.swiftmodule",
+        "sha256": "0c2acd0eecef3831b5a0911641409e79ae06aa9d61fb4b74fc49cf798fb2e0af"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUISemanticCore.swiftmodule",
+        "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      }
+    ],
+    "module_cache": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/cache",
+    "plugin": [
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/macro/GiftUIMacros-tool#GiftUIMacros"
+    ]
+  },
+  "GiftUIReferenceTextResources-command.json": {
+    "ordered_import_directories": [
+      ".build/contracts/p08-native-cold-correction1-codegen",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static"
+    ],
+    "physical_module_candidates": [
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterSchema.swiftmodule",
+        "sha256": "6f2860f736b05228fffa9ead8a543628023666146f227bb638a52e496ff08d39"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterPresentation.swiftmodule",
+        "sha256": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterTable.swiftmodule",
+        "sha256": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUI.swiftmodule",
+        "sha256": "04bf1e2d56f2b4793f19288829ddbdf2bf44559bdae3aae93d13466d137acadd"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUIObservableState.swiftmodule",
+        "sha256": "5b4fbb80a1cdc80409e60168debe6bdff6d9291d0560680875a665741796059e"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUISemanticCore.swiftmodule",
+        "sha256": "4e36d5d5dae90ffc111b2024de389f6398fa8ee07576fba1b3b2c68db495c243"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUIObservableState.swiftmodule",
+        "sha256": "0c2acd0eecef3831b5a0911641409e79ae06aa9d61fb4b74fc49cf798fb2e0af"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUISemanticCore.swiftmodule",
+        "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      }
+    ],
+    "module_cache": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/cache",
+    "plugin": [
+      "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros"
+    ]
+  },
+  "GiftUIObservableState-command.json": {
+    "ordered_import_directories": [
+      ".build/contracts/p08-native-cold-correction1-codegen",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static"
+    ],
+    "physical_module_candidates": [
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterSchema.swiftmodule",
+        "sha256": "6f2860f736b05228fffa9ead8a543628023666146f227bb638a52e496ff08d39"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterPresentation.swiftmodule",
+        "sha256": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterTable.swiftmodule",
+        "sha256": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUI.swiftmodule",
+        "sha256": "04bf1e2d56f2b4793f19288829ddbdf2bf44559bdae3aae93d13466d137acadd"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUIObservableState.swiftmodule",
+        "sha256": "5b4fbb80a1cdc80409e60168debe6bdff6d9291d0560680875a665741796059e"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUISemanticCore.swiftmodule",
+        "sha256": "4e36d5d5dae90ffc111b2024de389f6398fa8ee07576fba1b3b2c68db495c243"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUIObservableState.swiftmodule",
+        "sha256": "0c2acd0eecef3831b5a0911641409e79ae06aa9d61fb4b74fc49cf798fb2e0af"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUISemanticCore.swiftmodule",
+        "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      }
+    ],
+    "module_cache": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/cache",
+    "plugin": [
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/macro/GiftUIMacros-tool#GiftUIMacros"
+    ]
+  },
+  "lower-command.json": {
+    "ordered_import_directories": [],
+    "physical_module_candidates": [],
+    "module_cache": null,
+    "plugin": []
+  },
+  "runtime-sil-command.json": {
+    "ordered_import_directories": [
+      ".build/contracts/p08-native-cold-correction1-codegen",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static"
+    ],
+    "physical_module_candidates": [
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterSchema.swiftmodule",
+        "sha256": "6f2860f736b05228fffa9ead8a543628023666146f227bb638a52e496ff08d39"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterPresentation.swiftmodule",
+        "sha256": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterTable.swiftmodule",
+        "sha256": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUI.swiftmodule",
+        "sha256": "04bf1e2d56f2b4793f19288829ddbdf2bf44559bdae3aae93d13466d137acadd"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUIObservableState.swiftmodule",
+        "sha256": "5b4fbb80a1cdc80409e60168debe6bdff6d9291d0560680875a665741796059e"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUISemanticCore.swiftmodule",
+        "sha256": "4e36d5d5dae90ffc111b2024de389f6398fa8ee07576fba1b3b2c68db495c243"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUIObservableState.swiftmodule",
+        "sha256": "0c2acd0eecef3831b5a0911641409e79ae06aa9d61fb4b74fc49cf798fb2e0af"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUISemanticCore.swiftmodule",
+        "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      }
+    ],
+    "module_cache": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/cache",
+    "plugin": [
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/macro/GiftUIMacros-tool#GiftUIMacros"
+    ]
+  },
+  "GiftUITextResources-command.json": {
+    "ordered_import_directories": [
+      ".build/contracts/p08-native-cold-correction1-codegen",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static"
+    ],
+    "physical_module_candidates": [
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterSchema.swiftmodule",
+        "sha256": "6f2860f736b05228fffa9ead8a543628023666146f227bb638a52e496ff08d39"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterPresentation.swiftmodule",
+        "sha256": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterTable.swiftmodule",
+        "sha256": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUI.swiftmodule",
+        "sha256": "04bf1e2d56f2b4793f19288829ddbdf2bf44559bdae3aae93d13466d137acadd"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUIObservableState.swiftmodule",
+        "sha256": "5b4fbb80a1cdc80409e60168debe6bdff6d9291d0560680875a665741796059e"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUISemanticCore.swiftmodule",
+        "sha256": "4e36d5d5dae90ffc111b2024de389f6398fa8ee07576fba1b3b2c68db495c243"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUIObservableState.swiftmodule",
+        "sha256": "0c2acd0eecef3831b5a0911641409e79ae06aa9d61fb4b74fc49cf798fb2e0af"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUISemanticCore.swiftmodule",
+        "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      }
+    ],
+    "module_cache": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/cache",
+    "plugin": [
+      "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros"
+    ]
+  },
+  "GiftUI-command.json": {
+    "ordered_import_directories": [
+      ".build/contracts/p08-native-cold-correction1-codegen",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static"
+    ],
+    "physical_module_candidates": [
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterSchema.swiftmodule",
+        "sha256": "6f2860f736b05228fffa9ead8a543628023666146f227bb638a52e496ff08d39"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterPresentation.swiftmodule",
+        "sha256": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterTable.swiftmodule",
+        "sha256": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUI.swiftmodule",
+        "sha256": "04bf1e2d56f2b4793f19288829ddbdf2bf44559bdae3aae93d13466d137acadd"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUIObservableState.swiftmodule",
+        "sha256": "5b4fbb80a1cdc80409e60168debe6bdff6d9291d0560680875a665741796059e"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUISemanticCore.swiftmodule",
+        "sha256": "4e36d5d5dae90ffc111b2024de389f6398fa8ee07576fba1b3b2c68db495c243"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUIObservableState.swiftmodule",
+        "sha256": "0c2acd0eecef3831b5a0911641409e79ae06aa9d61fb4b74fc49cf798fb2e0af"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUISemanticCore.swiftmodule",
+        "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      }
+    ],
+    "module_cache": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/cache",
+    "plugin": [
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/macro/GiftUIMacros-tool#GiftUIMacros"
+    ]
+  },
+  "GiftUILayout-command.json": {
+    "ordered_import_directories": [
+      ".build/contracts/p08-native-cold-correction1-codegen",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static"
+    ],
+    "physical_module_candidates": [
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterSchema.swiftmodule",
+        "sha256": "6f2860f736b05228fffa9ead8a543628023666146f227bb638a52e496ff08d39"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterPresentation.swiftmodule",
+        "sha256": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterTable.swiftmodule",
+        "sha256": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUI.swiftmodule",
+        "sha256": "04bf1e2d56f2b4793f19288829ddbdf2bf44559bdae3aae93d13466d137acadd"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUIObservableState.swiftmodule",
+        "sha256": "5b4fbb80a1cdc80409e60168debe6bdff6d9291d0560680875a665741796059e"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUISemanticCore.swiftmodule",
+        "sha256": "4e36d5d5dae90ffc111b2024de389f6398fa8ee07576fba1b3b2c68db495c243"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUIObservableState.swiftmodule",
+        "sha256": "0c2acd0eecef3831b5a0911641409e79ae06aa9d61fb4b74fc49cf798fb2e0af"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUISemanticCore.swiftmodule",
+        "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      }
+    ],
+    "module_cache": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/cache",
+    "plugin": [
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/macro/GiftUIMacros-tool#GiftUIMacros"
+    ]
+  },
+  "P08CounterPresentation-command.json": {
+    "ordered_import_directories": [
+      ".build/contracts/p08-native-cold-correction1-codegen",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static"
+    ],
+    "physical_module_candidates": [
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterSchema.swiftmodule",
+        "sha256": "6f2860f736b05228fffa9ead8a543628023666146f227bb638a52e496ff08d39"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterPresentation.swiftmodule",
+        "sha256": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterTable.swiftmodule",
+        "sha256": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUI.swiftmodule",
+        "sha256": "04bf1e2d56f2b4793f19288829ddbdf2bf44559bdae3aae93d13466d137acadd"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUIObservableState.swiftmodule",
+        "sha256": "5b4fbb80a1cdc80409e60168debe6bdff6d9291d0560680875a665741796059e"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUISemanticCore.swiftmodule",
+        "sha256": "4e36d5d5dae90ffc111b2024de389f6398fa8ee07576fba1b3b2c68db495c243"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUIObservableState.swiftmodule",
+        "sha256": "0c2acd0eecef3831b5a0911641409e79ae06aa9d61fb4b74fc49cf798fb2e0af"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUISemanticCore.swiftmodule",
+        "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      }
+    ],
+    "module_cache": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/cache",
+    "plugin": [
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/macro/GiftUIMacros-tool#GiftUIMacros"
+    ]
+  },
+  "P08CounterSchema-command.json": {
+    "ordered_import_directories": [
+      ".build/contracts/p08-native-cold-correction1-codegen",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static"
+    ],
+    "physical_module_candidates": [
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterSchema.swiftmodule",
+        "sha256": "6f2860f736b05228fffa9ead8a543628023666146f227bb638a52e496ff08d39"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterPresentation.swiftmodule",
+        "sha256": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterTable.swiftmodule",
+        "sha256": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUI.swiftmodule",
+        "sha256": "04bf1e2d56f2b4793f19288829ddbdf2bf44559bdae3aae93d13466d137acadd"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUIObservableState.swiftmodule",
+        "sha256": "5b4fbb80a1cdc80409e60168debe6bdff6d9291d0560680875a665741796059e"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUISemanticCore.swiftmodule",
+        "sha256": "4e36d5d5dae90ffc111b2024de389f6398fa8ee07576fba1b3b2c68db495c243"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUIObservableState.swiftmodule",
+        "sha256": "0c2acd0eecef3831b5a0911641409e79ae06aa9d61fb4b74fc49cf798fb2e0af"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUISemanticCore.swiftmodule",
+        "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      }
+    ],
+    "module_cache": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/cache",
+    "plugin": [
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/macro/GiftUIMacros-tool#GiftUIMacros"
+    ]
+  },
+  "P08CounterTable-command.json": {
+    "ordered_import_directories": [
+      ".build/contracts/p08-native-cold-correction1-codegen",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static"
+    ],
+    "physical_module_candidates": [
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterSchema.swiftmodule",
+        "sha256": "6f2860f736b05228fffa9ead8a543628023666146f227bb638a52e496ff08d39"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterPresentation.swiftmodule",
+        "sha256": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterTable.swiftmodule",
+        "sha256": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUI.swiftmodule",
+        "sha256": "04bf1e2d56f2b4793f19288829ddbdf2bf44559bdae3aae93d13466d137acadd"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUIObservableState.swiftmodule",
+        "sha256": "5b4fbb80a1cdc80409e60168debe6bdff6d9291d0560680875a665741796059e"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUISemanticCore.swiftmodule",
+        "sha256": "4e36d5d5dae90ffc111b2024de389f6398fa8ee07576fba1b3b2c68db495c243"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUIObservableState.swiftmodule",
+        "sha256": "0c2acd0eecef3831b5a0911641409e79ae06aa9d61fb4b74fc49cf798fb2e0af"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUISemanticCore.swiftmodule",
+        "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      }
+    ],
+    "module_cache": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/cache",
+    "plugin": [
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/macro/GiftUIMacros-tool#GiftUIMacros"
+    ]
+  },
+  "presentation-sil-command.json": {
+    "ordered_import_directories": [
+      ".build/contracts/p08-native-cold-correction1-codegen",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static"
+    ],
+    "physical_module_candidates": [
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterSchema.swiftmodule",
+        "sha256": "6f2860f736b05228fffa9ead8a543628023666146f227bb638a52e496ff08d39"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterPresentation.swiftmodule",
+        "sha256": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterTable.swiftmodule",
+        "sha256": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUI.swiftmodule",
+        "sha256": "04bf1e2d56f2b4793f19288829ddbdf2bf44559bdae3aae93d13466d137acadd"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUIObservableState.swiftmodule",
+        "sha256": "5b4fbb80a1cdc80409e60168debe6bdff6d9291d0560680875a665741796059e"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUISemanticCore.swiftmodule",
+        "sha256": "4e36d5d5dae90ffc111b2024de389f6398fa8ee07576fba1b3b2c68db495c243"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUIObservableState.swiftmodule",
+        "sha256": "0c2acd0eecef3831b5a0911641409e79ae06aa9d61fb4b74fc49cf798fb2e0af"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUISemanticCore.swiftmodule",
+        "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      }
+    ],
+    "module_cache": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/cache",
+    "plugin": [
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/macro/GiftUIMacros-tool#GiftUIMacros"
+    ]
+  },
+  "GiftUISemanticCore-command.json": {
+    "ordered_import_directories": [
+      ".build/contracts/p08-native-cold-correction1-codegen",
+      ".build/contracts/p08-scoped-host-hzs5q7za",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+      ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static"
+    ],
+    "physical_module_candidates": [
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterSchema.swiftmodule",
+        "sha256": "6f2860f736b05228fffa9ead8a543628023666146f227bb638a52e496ff08d39"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterPresentation.swiftmodule",
+        "sha256": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/P08CounterTable.swiftmodule",
+        "sha256": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUI.swiftmodule",
+        "sha256": "04bf1e2d56f2b4793f19288829ddbdf2bf44559bdae3aae93d13466d137acadd"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUIObservableState.swiftmodule",
+        "sha256": "5b4fbb80a1cdc80409e60168debe6bdff6d9291d0560680875a665741796059e"
+      },
+      {
+        "path": ".build/contracts/p08-native-cold-correction1-codegen/GiftUISemanticCore.swiftmodule",
+        "sha256": "4e36d5d5dae90ffc111b2024de389f6398fa8ee07576fba1b3b2c68db495c243"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUIObservableState.swiftmodule",
+        "sha256": "0c2acd0eecef3831b5a0911641409e79ae06aa9d61fb4b74fc49cf798fb2e0af"
+      },
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static/GiftUISemanticCore.swiftmodule",
+        "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826"
+      },
+      {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+        "sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a"
+      }
+    ],
+    "module_cache": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/cache",
+    "plugin": [
+      "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros"
+    ]
+  },
+  "qualification": "Commands preserve exact I ordering, flags, plugin and module-cache path. Inventory records all physical candidate files at freeze. No compiler import-loader trace or binary serialized-body decoder was run; optimized consumer SIL alone does not prove physical serialized body absence or a Swift defect.",
+  "plugin_sha256": "a3f145cb593164dc9bbb9a19f960efe4e63244a0069a78bd7c6d0675080df306"
+}

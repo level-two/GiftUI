@@ -1,10 +1,16 @@
 import GiftUI
 
+@usableFromInline
 package struct SemanticExpansionLimits: Equatable, Sendable {
+    @usableFromInline
     package let maximumDepth: UInt16
+    @usableFromInline
     package let maximumSemanticNodes: UInt16
+    @usableFromInline
     package let maximumBodyEvaluations: UInt16
+    @usableFromInline
     package let maximumModifierApplications: UInt16
+    @usableFromInline
     package let maximumActionOccurrences: UInt16
 
     package init?(
@@ -26,6 +32,7 @@ package struct SemanticExpansionLimits: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct SemanticExpansionSummary: Equatable, Sendable {
     package let semanticNodeCount: UInt16
     package let bodyEvaluationCount: UInt16
@@ -33,6 +40,7 @@ package struct SemanticExpansionSummary: Equatable, Sendable {
     package let actionOccurrenceCount: UInt16
     package let maximumObservedDepth: UInt16
 
+    @usableFromInline
     package init(
         semanticNodeCount: UInt16,
         bodyEvaluationCount: UInt16,
@@ -48,6 +56,7 @@ package struct SemanticExpansionSummary: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum SemanticExpansionError: UInt8, Error, Equatable, Sendable {
     case capacityExhausted = 0
     case invalidIdentity = 1
@@ -55,6 +64,7 @@ package enum SemanticExpansionError: UInt8, Error, Equatable, Sendable {
     case invariantViolation = 3
 }
 
+@usableFromInline
 package enum SemanticExpansionResult: Equatable, Sendable {
     case success(SemanticExpansionSummary)
     case failure(SemanticExpansionError)
@@ -62,6 +72,7 @@ package enum SemanticExpansionResult: Equatable, Sendable {
 
 /// The body bridge owns State binding and checked model access. Its scoped
 /// implementation borrows real backing; Semantic Core owns only traversal.
+@usableFromInline
 package enum SemanticBodyEvaluation<Body, BindingFailure> {
     case body(Body)
     case semanticFailure(SemanticExpansionError)
@@ -69,6 +80,7 @@ package enum SemanticBodyEvaluation<Body, BindingFailure> {
     case accessFailure(_GiftUIAccessFailure)
 }
 
+@usableFromInline
 package protocol SemanticStatefulBinding: ~Copyable, ~Escapable {
     associatedtype Domain: _GiftUIReadDomain
     associatedtype Identity: Equatable
@@ -91,6 +103,7 @@ package protocol SemanticStatefulBinding: ~Copyable, ~Escapable {
     where Declaration.Domain == Domain, Declaration.Body.Domain == Domain
 }
 
+@usableFromInline
 package enum BoundSemanticExpansionResult<BindingFailure>: Equatable, Sendable
 where BindingFailure: Equatable & Sendable {
     case success(SemanticExpansionSummary)
@@ -99,6 +112,7 @@ where BindingFailure: Equatable & Sendable {
     case accessFailure(_GiftUIAccessFailure)
 }
 
+@usableFromInline
 package protocol SemanticExpansionWorkspace {
     associatedtype Identity: Equatable
 
@@ -143,6 +157,7 @@ package protocol SemanticExpansionWorkspace {
     mutating func resetExpansion()
 }
 
+@usableFromInline
 package protocol SemanticExpansionSink {
     associatedtype Identity: Equatable
 
@@ -196,9 +211,12 @@ extension SemanticExpansionSink {
     package var stagingFailure: SemanticExpansionError? { nil }
 }
 
+@usableFromInline
 package struct SemanticRecordingRole: RawRepresentable, Hashable, Sendable {
+    @usableFromInline
     package let rawValue: UInt16
 
+    @usableFromInline
     package init(rawValue: UInt16) {
         self.rawValue = rawValue
     }
@@ -436,33 +454,56 @@ where Storage: SemanticRecordingStorage {
     }
 }
 
+@usableFromInline
 struct SemanticExpansionAttempt {
+    @usableFromInline
     let limits: SemanticExpansionLimits
 
-    private(set) var semanticNodeCount: UInt16 = 0
-    private(set) var bodyEvaluationCount: UInt16 = 0
-    private(set) var modifierApplicationCount: UInt16 = 0
-    private(set) var actionOccurrenceCount: UInt16 = 0
-    private(set) var maximumObservedDepth: UInt16 = 0
+    @usableFromInline
+    var semanticNodeCount: UInt16 = 0
+    @usableFromInline
+    var bodyEvaluationCount: UInt16 = 0
+    @usableFromInline
+    var modifierApplicationCount: UInt16 = 0
+    @usableFromInline
+    var actionOccurrenceCount: UInt16 = 0
+    @usableFromInline
+    var maximumObservedDepth: UInt16 = 0
 
-    private var currentDepth: UInt16 = 0
-    private var identityCount: UInt16 = 0
-    private var structuralOccurrenceCount: UInt16 = 0
-    private var workspacePathCapacity: UInt16 = 0
-    private var workspaceIdentityCapacity: UInt16 = 0
-    private var sinkStructuralCapacity: UInt16 = 0
-    private var sinkBodyCapacity: UInt16 = 0
-    private var sinkSemanticCapacity: UInt16 = 0
-    private var sinkModifierCapacity: UInt16 = 0
-    private var sinkActionCapacity: UInt16 = 0
-    private var workspaceBegan = false
-    private var sinkBegan = false
-    private var firstFailure: SemanticExpansionError?
+    @usableFromInline
+    var currentDepth: UInt16 = 0
+    @usableFromInline
+    var identityCount: UInt16 = 0
+    @usableFromInline
+    var structuralOccurrenceCount: UInt16 = 0
+    @usableFromInline
+    var workspacePathCapacity: UInt16 = 0
+    @usableFromInline
+    var workspaceIdentityCapacity: UInt16 = 0
+    @usableFromInline
+    var sinkStructuralCapacity: UInt16 = 0
+    @usableFromInline
+    var sinkBodyCapacity: UInt16 = 0
+    @usableFromInline
+    var sinkSemanticCapacity: UInt16 = 0
+    @usableFromInline
+    var sinkModifierCapacity: UInt16 = 0
+    @usableFromInline
+    var sinkActionCapacity: UInt16 = 0
+    @usableFromInline
+    var workspaceBegan = false
+    @usableFromInline
+    var sinkBegan = false
+    @usableFromInline
+    var firstFailure: SemanticExpansionError?
 
+    @usableFromInline
     init(limits: SemanticExpansionLimits) {
         self.limits = limits
     }
 
+    @inlinable
+    @inline(__always)
     mutating func begin<Workspace: SemanticExpansionWorkspace, Sink: SemanticExpansionSink>(
         workspace: inout Workspace,
         sink: inout Sink
@@ -494,6 +535,8 @@ struct SemanticExpansionAttempt {
         return nil
     }
 
+    @inlinable
+    @inline(__always)
     mutating func enterRoot<Declaration: View, Workspace: SemanticExpansionWorkspace>(
         _ declaration: Declaration.Type,
         workspace: inout Workspace,
@@ -504,6 +547,8 @@ struct SemanticExpansionAttempt {
         }
     }
 
+    @inlinable
+    @inline(__always)
     mutating func enterCustomBody<Declaration: View, Workspace: SemanticExpansionWorkspace>(
         _ declaration: Declaration.Type,
         workspace: inout Workspace,
@@ -514,6 +559,8 @@ struct SemanticExpansionAttempt {
         }
     }
 
+    @inlinable
+    @inline(__always)
     mutating func enterFixedChild<Workspace: SemanticExpansionWorkspace>(
         _ index: UInt8,
         workspace: inout Workspace,
@@ -524,6 +571,8 @@ struct SemanticExpansionAttempt {
         }
     }
 
+    @inlinable
+    @inline(__always)
     mutating func enterConditionalBranch<Workspace: SemanticExpansionWorkspace>(
         _ index: UInt8,
         workspace: inout Workspace,
@@ -534,6 +583,8 @@ struct SemanticExpansionAttempt {
         }
     }
 
+    @inlinable
+    @inline(__always)
     mutating func enterOptionalPresence<Workspace: SemanticExpansionWorkspace>(
         workspace: inout Workspace,
         identity: inout Workspace.Identity?
@@ -543,6 +594,8 @@ struct SemanticExpansionAttempt {
         }
     }
 
+    @inlinable
+    @inline(__always)
     mutating func enterDeclarationRole<Declaration, Workspace: SemanticExpansionWorkspace>(
         _ declaration: Declaration.Type,
         workspace: inout Workspace,
@@ -553,6 +606,8 @@ struct SemanticExpansionAttempt {
         }
     }
 
+    @inlinable
+    @inline(__always)
     mutating func leavePathComponent<Workspace: SemanticExpansionWorkspace>(
         workspace: inout Workspace
     ) -> SemanticExpansionError? {
@@ -563,6 +618,8 @@ struct SemanticExpansionAttempt {
         return nil
     }
 
+    @inlinable
+    @inline(__always)
     mutating func reserveBodyEvaluation() -> SemanticExpansionError? {
         guard firstFailure == nil else { return firstFailure }
         guard
@@ -577,6 +634,8 @@ struct SemanticExpansionAttempt {
         return nil
     }
 
+    @inlinable
+    @inline(__always)
     mutating func stageBodyEvaluation<Workspace, Sink>(
         identity: borrowing Workspace.Identity,
         workspace: inout Workspace,
@@ -599,6 +658,8 @@ struct SemanticExpansionAttempt {
         return nil
     }
 
+    @inlinable
+    @inline(__always)
     mutating func stageStructuralOccurrence<Workspace, Sink>(
         identity: borrowing Workspace.Identity,
         workspace: inout Workspace,
@@ -625,6 +686,8 @@ struct SemanticExpansionAttempt {
         return nil
     }
 
+    @inlinable
+    @inline(__always)
     mutating func stageSemanticOccurrence<Payload, Workspace, Sink>(
         identity: borrowing Workspace.Identity,
         payload: borrowing Payload,
@@ -656,6 +719,8 @@ struct SemanticExpansionAttempt {
         return nil
     }
 
+    @inlinable
+    @inline(__always)
     mutating func stageModifierApplication<Payload, Workspace, Sink>(
         identity: borrowing Workspace.Identity,
         payload: borrowing Payload,
@@ -694,6 +759,8 @@ struct SemanticExpansionAttempt {
         return nil
     }
 
+    @inlinable
+    @inline(__always)
     mutating func stageActionOccurrence<Action, Workspace, Sink>(
         identity: borrowing Workspace.Identity,
         action: borrowing Action,
@@ -737,6 +804,8 @@ struct SemanticExpansionAttempt {
         return nil
     }
 
+    @inlinable
+    @inline(__always)
     mutating func succeed<Workspace, Sink>(
         workspace: inout Workspace,
         sink: inout Sink
@@ -775,6 +844,8 @@ struct SemanticExpansionAttempt {
         return .success(summary)
     }
 
+    @inlinable
+    @inline(__always)
     mutating func fail<Workspace, Sink>(
         _ error: SemanticExpansionError,
         workspace: inout Workspace,
@@ -803,6 +874,8 @@ struct SemanticExpansionAttempt {
         return error
     }
 
+    @inlinable
+    @inline(__always)
     mutating func discardForOwnerFailure<Workspace, Sink>(
         workspace: inout Workspace,
         sink: inout Sink
@@ -828,7 +901,9 @@ struct SemanticExpansionAttempt {
         sinkBegan = false
     }
 
-    private mutating func enterPath<Workspace: SemanticExpansionWorkspace>(
+    @inlinable
+    @inline(__always)
+    mutating func enterPath<Workspace: SemanticExpansionWorkspace>(
         workspace: inout Workspace,
         identity: inout Workspace.Identity?,
         enter: (inout Workspace, inout Workspace.Identity?) -> SemanticExpansionError?
@@ -864,7 +939,9 @@ struct SemanticExpansionAttempt {
         return nil
     }
 
-    private func reservedValue(
+    @inlinable
+    @inline(__always)
+    func reservedValue(
         after count: UInt16,
         limit: UInt16
     ) -> UInt16? {
@@ -873,7 +950,9 @@ struct SemanticExpansionAttempt {
         return next.partialValue
     }
 
-    private mutating func record(_ error: SemanticExpansionError) -> SemanticExpansionError {
+    @inlinable
+    @inline(__always)
+    mutating func record(_ error: SemanticExpansionError) -> SemanticExpansionError {
         if firstFailure == nil {
             firstFailure = error
         }
@@ -881,7 +960,8 @@ struct SemanticExpansionAttempt {
     }
 }
 
-private struct SemanticExpansionTraversal<Workspace, Sink, StateBinding>: ~Copyable, ~Escapable,
+@usableFromInline
+struct SemanticExpansionTraversal<Workspace, Sink, StateBinding>: ~Copyable, ~Escapable,
     _GiftUISemanticTraversalVisitor
 where
     Workspace: SemanticExpansionWorkspace,
@@ -890,22 +970,35 @@ where
     Workspace.Identity == Sink.Identity,
     Workspace.Identity == StateBinding.Identity
 {
+    @usableFromInline
     typealias Domain = StateBinding.Domain
 
-    private(set) var attempt: SemanticExpansionAttempt
-    private(set) var workspace: Workspace
-    private(set) var sink: Sink
-    private let stateBinding: StateBinding
+    @usableFromInline
+    var attempt: SemanticExpansionAttempt
+    @usableFromInline
+    var workspace: Workspace
+    @usableFromInline
+    var sink: Sink
+    @usableFromInline
+    let stateBinding: StateBinding
 
-    private(set) var failure: SemanticExpansionError?
-    private(set) var bindingFailure: StateBinding.Failure?
-    private(set) var accessFailure: _GiftUIAccessFailure?
-    private var stopped: Bool { failure != nil || bindingFailure != nil || accessFailure != nil }
-    private var currentIdentity: Workspace.Identity?
-    private var currentCategoryWasVisited = false
-    private var nextModifierChainIndex: UInt16 = 0
+    @usableFromInline
+    var failure: SemanticExpansionError?
+    @usableFromInline
+    var bindingFailure: StateBinding.Failure?
+    @usableFromInline
+    var accessFailure: _GiftUIAccessFailure?
+    @usableFromInline
+    var stopped: Bool { failure != nil || bindingFailure != nil || accessFailure != nil }
+    @usableFromInline
+    var currentIdentity: Workspace.Identity?
+    @usableFromInline
+    var currentCategoryWasVisited = false
+    @usableFromInline
+    var nextModifierChainIndex: UInt16 = 0
 
     @_lifetime(copy stateBinding)
+    @usableFromInline
     init(
         attempt: SemanticExpansionAttempt,
         workspace: Workspace,
@@ -918,6 +1011,8 @@ where
         self.stateBinding = consume stateBinding
     }
 
+    @inlinable
+    @inline(__always)
     mutating func expandRoot<Root: View>(_ root: borrowing Root) where Root.Domain == Domain {
         guard !stopped else { return }
         var rootIdentity: Workspace.Identity?
@@ -942,6 +1037,8 @@ where
         }
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitCustomView<Declaration: View>(
         _ declaration: borrowing Declaration,
         body: (borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure) -> Declaration.Body
@@ -956,6 +1053,8 @@ where
         finishBody(result)
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitStatefulCustomView<Declaration: View & _GiftUIObservableStateHost>(
         _ declaration: borrowing Declaration,
         body: (borrowing Declaration, borrowing _GiftUIFrameRead<Domain>)
@@ -971,7 +1070,9 @@ where
         finishBody(result)
     }
 
-    private mutating func beginBody<Declaration: View>(_ type: Declaration.Type) -> Workspace
+    @inlinable
+    @inline(__always)
+    mutating func beginBody<Declaration: View>(_ type: Declaration.Type) -> Workspace
         .Identity?
     {
         guard beginCategory() else { return nil }
@@ -988,7 +1089,9 @@ where
         return identity
     }
 
-    private mutating func finishBody<Body: View>(
+    @inlinable
+    @inline(__always)
+    mutating func finishBody<Body: View>(
         _ result: SemanticBodyEvaluation<Body, StateBinding.Failure>
     )
     where Body.Domain == Domain {
@@ -1003,10 +1106,13 @@ where
         }
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitEmpty() {
         _ = beginCategory()
     }
 
+    @inlinable
     mutating func visitFixed<A: View, B: View>(
         _ a: borrowing A,
         _ b: borrowing B
@@ -1016,6 +1122,8 @@ where
         expandFixedChild(b, index: 1)
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitFixed<A: View, B: View, C: View>(
         _ a: borrowing A,
         _ b: borrowing B,
@@ -1027,6 +1135,8 @@ where
         expandFixedChild(c, index: 2)
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitFixed<A: View, B: View, C: View, D: View>(
         _ a: borrowing A,
         _ b: borrowing B,
@@ -1040,6 +1150,8 @@ where
         expandFixedChild(d, index: 3)
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitFixed<A: View, B: View, C: View, D: View, E: View>(
         _ a: borrowing A,
         _ b: borrowing B,
@@ -1059,6 +1171,8 @@ where
         expandFixedChild(e, index: 4)
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitConditionalFirst<First: View, Second: View>(
         _ content: borrowing First,
         second: Second.Type
@@ -1067,6 +1181,8 @@ where
         expandConditionalChild(content, branch: 0)
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitConditionalSecond<First: View, Second: View>(
         first: First.Type,
         _ content: borrowing Second
@@ -1075,11 +1191,15 @@ where
         expandConditionalChild(content, branch: 1)
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitOptionalAbsent<Content: View>(_ content: Content.Type)
     where Content.Domain == Domain {
         _ = beginCategory()
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitOptionalPresent<Content: View>(
         _ content: borrowing Content
     ) where Content.Domain == Domain {
@@ -1105,6 +1225,8 @@ where
         }
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitPrimitive<Payload: _GiftUISemanticPrimitivePayload>(
         _ payload: borrowing Payload
     ) {
@@ -1124,6 +1246,8 @@ where
         }
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitPrimitive<
         Content: View,
         Payload: _GiftUISemanticPrimitivePayload
@@ -1150,6 +1274,8 @@ where
         expandFixedChild(content, index: 0)
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload>(
         _ payload: borrowing Payload
     ) {
@@ -1169,6 +1295,8 @@ where
         }
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitActionPrimitive<
         Content: View,
         Payload: _GiftUISemanticActionPayload
@@ -1195,6 +1323,8 @@ where
         expandFixedChild(content, index: 0)
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visitModifier<
         Content: View,
         Payload: _GiftUISemanticModifierPayload
@@ -1225,7 +1355,9 @@ where
         nextModifierChainIndex += 1
     }
 
-    private mutating func expandDeclaration<Declaration: View>(
+    @inlinable
+    @inline(__always)
+    mutating func expandDeclaration<Declaration: View>(
         _ declaration: borrowing Declaration,
         continuingModifierChain: Bool = false
     ) where Declaration.Domain == Domain {
@@ -1278,7 +1410,9 @@ where
         }
     }
 
-    private mutating func expandFixedChild<Content: View>(
+    @inlinable
+    @inline(__always)
+    mutating func expandFixedChild<Content: View>(
         _ content: borrowing Content,
         index: UInt8
     ) where Content.Domain == Domain {
@@ -1308,7 +1442,9 @@ where
         currentIdentity = parentIdentity
     }
 
-    private mutating func expandConditionalChild<Content: View>(
+    @inlinable
+    @inline(__always)
+    mutating func expandConditionalChild<Content: View>(
         _ content: borrowing Content,
         branch: UInt8
     ) where Content.Domain == Domain {
@@ -1338,7 +1474,9 @@ where
         currentIdentity = parentIdentity
     }
 
-    private mutating func beginCategory() -> Bool {
+    @inlinable
+    @inline(__always)
+    mutating func beginCategory() -> Bool {
         guard !stopped else { return false }
         guard !currentCategoryWasVisited else {
             stop(.invariantViolation)
@@ -1348,7 +1486,9 @@ where
         return true
     }
 
-    private mutating func stop(_ error: SemanticExpansionError) {
+    @inlinable
+    @inline(__always)
+    mutating func stop(_ error: SemanticExpansionError) {
         if failure == nil {
             failure = error
         }
@@ -1357,6 +1497,8 @@ where
 
 /// The caller supplies a lexical body bridge. Success makes a complete candidate
 /// available to the next owner; it does not commit global semantic publication.
+@inlinable
+@inline(__always)
 package func expandSemanticTreeWithStateBinding<
     Root: View,
     Workspace: SemanticExpansionWorkspace,

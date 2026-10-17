@@ -16,6 +16,11 @@ superseded_by: null
 
 # P08 complete Native cold pipeline correction
 
+Current execution boundary: [corrective1 codegen FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-correction1.md).
+The partial source overlay is unaccepted; 1/2 corrective cycles is consumed and
+no new workload was run. The assessment below and independent design review are
+historical design inputs, not a claim that the subsequent implementation passed.
+
 **Independent design PASS for bounded corrective1; actual codegen feasibility
 remains unproved.**
 The [independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-independent-design-review.md)

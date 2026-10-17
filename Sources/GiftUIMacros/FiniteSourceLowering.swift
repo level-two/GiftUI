@@ -309,6 +309,8 @@ final class Lowerer: SyntaxRewriter {
             let bounds = (parameters.first!.secondName ?? parameters.first!.firstName).text
             return DeclSyntax(
                 stringLiteral: """
+                    @inlinable
+                    @inline(__always)
                     \(node.modifiers.trimmedDescription) func _giftUIDraw(in \(bounds): Rect, context \(context): inout GraphicsContext,
                         read: borrowing _GiftUIFrameRead<D>) throws(DrawingError) \(lowered)
                     """
@@ -450,6 +452,8 @@ final class Lowerer: SyntaxRewriter {
             stringLiteral: """
 
                 @ViewBuilder
+                @inlinable
+                @inline(__always)
                 \(access) func \(name == "body" ? "_giftUIEvaluate" : "_giftUI_" + name)(read: borrowing _GiftUIFrameRead<D>)
                     throws(_GiftUIAccessFailure) -> some View<D> {
                     \(statements.isEmpty ? "EmptyView<D>()" : statements.description)

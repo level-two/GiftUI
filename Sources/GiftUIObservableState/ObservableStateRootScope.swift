@@ -36,9 +36,11 @@ package struct ObservableStateRootControl {
     }
     fileprivate var records: InlineArray<2, Record> = .init(repeating: Record())
     @usableFromInline var reports = ObservableStateRootReports()
-    fileprivate var offeredClaims: InlineArray<4, ObservableModelOwnership.Claim?> = .init(
+    @usableFromInline
+    var offeredClaims: InlineArray<4, ObservableModelOwnership.Claim?> = .init(
         repeating: nil)
-    fileprivate var nextGeneration: UInt32? = 0
+    @usableFromInline
+    var nextGeneration: UInt32? = 0
     fileprivate var candidateActive = false
     fileprivate var operationActive = false
     fileprivate var retired = false
@@ -286,7 +288,8 @@ package struct ObservableStateRootScope<
         }
     }
 
-    private borrowing func preserved(
+    @usableFromInline
+    borrowing func preserved(
         _ identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>
     ) throws(ObservableStateError) -> Bool {
         try checkOperation(discovery: true)
@@ -300,6 +303,8 @@ package struct ObservableStateRootScope<
         return true
     }
 
+    @inlinable
+    @inline(__always)
     package borrowing func encounter(
         identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>
     ) -> ObservableStateResult {
@@ -340,6 +345,8 @@ package struct ObservableStateRootScope<
 
     /// Explicitly consumes the host's matching candidate claim after attachment
     /// succeeds. On failure it remains the caller's ticket and model.
+    @inlinable
+    @inline(__always)
     package borrowing func encounter(
         identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>,
         transferring ticket: inout ObservableModelTicket<Model.Schema>
@@ -386,7 +393,8 @@ package struct ObservableStateRootScope<
         if let failure { throw failure }
     }
 
-    private borrowing func install(
+    @usableFromInline
+    borrowing func install(
         _ identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>,
         ticket: inout ObservableModelTicket<Model.Schema>
     ) throws(ObservableStateError) {
@@ -659,6 +667,8 @@ package struct ObservableStateRootScope<
 extension ObservableStateRootScope where Model: ~Copyable {
     /// Exactly one generated lexical visit. The binder's actual root borrow
     /// cannot be copied or escaped by a public generic host witness.
+    @inlinable
+    @inline(__always)
     package borrowing func withBoundDeclaration<Declaration: _GiftUIObservableStateHost, Result>(
         _ declaration: borrowing Declaration, identity: Identity,
         body: (borrowing Declaration) throws(ObservableStateError) -> Result
@@ -692,19 +702,26 @@ extension ObservableStateRootScope where Model: ~Copyable {
     }
 }
 
-private struct ScopedObservableDeclarationVisitor<
+@usableFromInline
+struct ScopedObservableDeclarationVisitor<
     Model: ObservableStateModel & ~Copyable, Identity: Equatable & Sendable
 >: ~Copyable, ~Escapable, _GiftUIObservableStateDeclarationVisitor {
+    @usableFromInline
     let root: ObservableStateRootScope<Model, Identity>
+    @usableFromInline
     let identity: Identity
+    @usableFromInline
     var failure: ObservableStateError?
 
     @_lifetime(copy root)
+    @usableFromInline
     init(root: consuming ObservableStateRootScope<Model, Identity>, identity: Identity) {
         self.root = consume root
         self.identity = identity
     }
 
+    @inlinable
+    @inline(__always)
     mutating func visit<Schema: _GiftUIModelSchema>(
         _ state: inout State<Schema>, declarationOrdinal: UInt16
     ) {

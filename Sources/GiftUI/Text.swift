@@ -15,6 +15,7 @@ public struct Text<D: _GiftUIReadDomain>: View {
     public typealias Domain = D
     public typealias Body = Never
 
+    @usableFromInline
     package let _giftUITextPayload: _GiftUITextPayload
 
     public init(_ content: StaticString) {
@@ -34,6 +35,10 @@ public struct Text<D: _GiftUIReadDomain>: View {
     {
         fatalError("Text has no view body")
     }
+
+    @inlinable
+
+    @inline(__always)
 
     public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor

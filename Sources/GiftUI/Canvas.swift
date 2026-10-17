@@ -12,6 +12,10 @@ public extension Canvas {
         throws(_GiftUIAccessFailure) -> Never
     { fatalError("Canvas has no view body") }
 
+    @inlinable
+
+    @inline(__always)
+
     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {

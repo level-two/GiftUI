@@ -68,6 +68,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
             && schema == other.schema
     }
 
+    @usableFromInline
     package borrowing func validateTicket(_ ticket: borrowing ObservableModelTicket<Schema>)
         throws(ObservableStateError)
     {
@@ -173,6 +174,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         return ObservableModelTicket(claim: claim, lifetime: self)
     }
 
+    @usableFromInline
     package borrowing func key(for address: ObservableModelOwnership.Address) -> _GiftUIModelKey<
         Schema
     > {
@@ -180,6 +182,8 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
     }
 
     @_lifetime(copy self)
+    @inlinable
+    @inline(__always)
     package borrowing func materialize(_ seed: consuming Model) throws(ObservableStateError)
         -> ObservableModelTicket<Schema>
     {
@@ -196,6 +200,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         return ObservableModelTicket(claim: claim, lifetime: self)
     }
 
+    @usableFromInline
     package borrowing func release(_ ticket: inout ObservableModelTicket<Schema>)
         throws(ObservableStateError)
     {
@@ -218,6 +223,8 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         }
     }
 
+    @inlinable
+    @inline(__always)
     package borrowing func withDiscovery<Result>(
         _ body: () throws(ObservableStateError) -> Result
     ) throws(ObservableStateError) -> Result {
@@ -292,6 +299,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
     }
 
     @inlinable
+    @inline(__always)
     package borrowing func withRead<D: _GiftUIReadDomain, Result>(
         _ domain: D.Type,
         _ body: (borrowing _GiftUIFrameRead<D>) throws(_GiftUIAccessFailure) -> Result

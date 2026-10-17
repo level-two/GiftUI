@@ -295,19 +295,18 @@ def emit_payload(type_name: str, payload: bytes, records: Sequence[dict]) -> str
     for record in records:
         start = record["offset"]
         record_bytes = payload[start:start + record["byteCount"]]
-        if not record_bytes:
-            lines.append(f"    static let glyph{record['glyph']}: () = ()")
-            continue
-        lines.append(f"    static let glyph{record['glyph']} = (")
-        for index in range(0, len(record_bytes), 16):
-            values = ", ".join(
-                f"0x{value:02x} as UInt8"
-                for value in record_bytes[index:index + 16]
-            )
-            lines.append(f"        {values},")
-        lines.append("    )")
+        # A nongeneric nominal owner avoids first-use tuple metadata. Access is
+        # still through withUnsafeBytes and its exact record-size guard; no
+        # tuple/field layout assumption or payload mismatch fallback is added.
+        owner = f"Glyph{record['glyph']}Bytes"
+        lines.append(f"    private struct {owner} {{")
+        for index, value in enumerate(record_bytes):
+            lines.append(f"        let byte{index}: UInt8 = 0x{value:02x}")
+        lines.append("    }")
+        lines.append(f"    private static let glyph{record['glyph']} = {owner}()")
     lines.extend([
         "",
+        "    @inline(__always)",
         "    static func withRecordBytes<Result>(",
         "        for glyph: GlyphID,",
         "        expectedByteCount: UInt32,",

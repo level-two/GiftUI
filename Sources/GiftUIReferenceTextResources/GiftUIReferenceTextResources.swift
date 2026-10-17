@@ -91,6 +91,8 @@ package struct GiftUIReferenceTextRasterView: TextRasterResourceView {
         }
     }
 
+    @inlinable
+    @inline(__always)
     package func withPayload<Result>(
         for record: GlyphRasterRecord,
         realization: RasterRealizationID,

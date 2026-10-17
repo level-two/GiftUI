@@ -28,12 +28,16 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Read-only revised direction — [complete Native cold pipeline correction](../implementation-designs/spec-015-p08-native-cold-pipeline.md).
-The finite emitted caller/file map proposes one grouped correction overlay on the
-current failed candidate, without retrying the aborted restoration. The
+Current corrective boundary — [corrective1 codegen FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-correction1.md).
+One of two corrective cycles is consumed; no actual screen ran. The experimental
+overlay remains unaccepted, with partial compilation and retained generic
+metadata/traversal edges. Corrective2 has not started. The
+[complete cold pipeline design](../implementation-designs/spec-015-p08-native-cold-pipeline.md)
+and its finite emitted caller/file map governed this overlay without retrying the
+aborted restoration. The
 [independent design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-independent-design-review.md)
-passes bounded corrective1 and its early codegen/cold gate; feasibility remains
-unproved. No source correction, conformance or budget reset is claimed.
+passed the bounded design and early gates; it did not establish source
+feasibility or conformance. No allowance reset is claimed.
 
 Current strict Native boundary — [candidate1 actual screen FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1-result.md).
 Counts/replay pass; original11/336 remain and cold TLS/text allocations reject

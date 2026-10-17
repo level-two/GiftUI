@@ -10,7 +10,9 @@ package typealias CounterPayload = CanvasSemanticPayload<CounterValueTable.Captu
 // opaque modifier types; no sample is expanded, bound, stored or used as input.
 // All occurrence paths and child positions come from actual traversal.
 package enum CounterRoles: SemanticDeclarationRoles {
-    private static func matches<V, Sample>(_ type: V.Type, _ sample: Sample) -> Bool { V.self == Sample.self }
+    @inlinable
+    @inline(__always)
+    static func matches<V, Sample>(_ type: V.Type, _ sample: Sample) -> Bool { V.self == Sample.self }
     package static func role<V>(of type: V.Type) -> SemanticRecordingRole? {
         if V.self == CounterScreen<CounterDomain>.self { return .init(rawValue: 1) }
         if V.self == CounterScreen<CounterDomain>.Body.self { return .init(rawValue: 2) }

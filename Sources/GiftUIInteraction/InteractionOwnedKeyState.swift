@@ -68,6 +68,8 @@ where
     }
     /// Validates while the caller holds the candidate-bank borrow and copies its
     /// complete key synchronously. A stale/wrong-bank reference never stages.
+    @inlinable
+    @inline(__always)
     package mutating func append<Payload>(
         record: SemanticRecordReference, in view: borrowing SemanticRecordView<Payload>,
         isEnabled: Bool, bounds: Rect, clip: Rect, paintOrder: UInt16,
@@ -82,6 +84,8 @@ where
             identity: identity, isEnabled: isEnabled, bounds: bounds, clip: clip,
             paintOrder: paintOrder, action: action, targetGeneration: targetGeneration)
     }
+    @inlinable
+    @inline(__always)
     package mutating func append(
         identity: Identity, isEnabled: Bool, bounds: Rect, clip: Rect, paintOrder: UInt16,
         action: BoundedApplicationAction, targetGeneration: ObservableTargetGeneration
@@ -175,12 +179,16 @@ where
     package borrowing func committedRecord(for identity: Identity) -> BoundActionRecord<Identity>? {
         state.committedRecord(for: identity)
     }
+    @inlinable
+    @inline(__always)
     package borrowing func resolveDown(at point: Point) -> PointerGestureOutcome<Identity> {
         state.resolveDown(at: point)
     }
     package borrowing func resolveMove(_ captured: CapturedAction<Identity>, at point: Point)
         -> PointerGestureOutcome<Identity>
     { state.resolveMove(captured, at: point) }
+    @inlinable
+    @inline(__always)
     package borrowing func resolveUp(_ captured: CapturedAction<Identity>, at point: Point)
         -> PointerGestureOutcome<Identity>
     { state.resolveUp(captured, at: point) }

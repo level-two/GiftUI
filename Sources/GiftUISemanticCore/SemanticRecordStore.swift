@@ -2,6 +2,8 @@ import GiftUI
 
 /// Owns no backing. The factory lends all five real storage regions until its
 /// Escapable-result callback ends; neither this scope nor a reader may escape.
+@inlinable
+@inline(__always)
 package func withSemanticRecordStore<Payload, Result>(
     metadata: inout MutableSpan<SemanticRecordBankMetadata>,
     records: inout MutableSpan<SemanticRuntimeRecord>,
@@ -65,13 +67,19 @@ package func withSemanticRecordStore<Payload, Result>(
     }
 }
 
+@usableFromInline
 package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
-    private let a: SemanticRecordBankBuffers<Payload>
-    private let b: SemanticRecordBankBuffers<Payload>
+    @usableFromInline
+    let a: SemanticRecordBankBuffers<Payload>
+    @usableFromInline
+    let b: SemanticRecordBankBuffers<Payload>
+    @usableFromInline
     package let limits: SemanticRecordLimits
-    private let owner: SemanticRecordOwnerIdentity
+    @usableFromInline
+    let owner: SemanticRecordOwnerIdentity
     @_lifetime(borrow a, borrow b)
-    fileprivate init(
+    @usableFromInline
+    init(
         a: borrowing SemanticRecordBankBuffers<Payload>,
         b: borrowing SemanticRecordBankBuffers<Payload>, limits: SemanticRecordLimits,
         owner: SemanticRecordOwnerIdentity
@@ -94,15 +102,18 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
         owner = other.owner
     }
 
-    private borrowing func bank(_ number: UInt8) -> SemanticRecordBankBuffers<Payload> {
+    @usableFromInline
+    borrowing func bank(_ number: UInt8) -> SemanticRecordBankBuffers<Payload> {
         number == 0 ? a : b
     }
-    private var candidate: UInt8? {
+    @usableFromInline
+    var candidate: UInt8? {
         if a.metadata.pointee.phase == .candidate { return 0 }
         if b.metadata.pointee.phase == .candidate { return 1 }
         return nil
     }
-    private var published: UInt8? {
+    @usableFromInline
+    var published: UInt8? {
         if a.metadata.pointee.phase == .published { return 0 }
         if b.metadata.pointee.phase == .published { return 1 }
         return nil
@@ -118,6 +129,8 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
         b.clear()
     }
 
+    @inlinable
+    @inline(__always)
     package borrowing func beginCandidate() throws(SemanticExpansionError) -> UInt8 {
         guard candidate == nil, a.metadata.pointee.phase != .expanding,
             b.metadata.pointee.phase != .expanding
@@ -169,13 +182,16 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
         }
         next.metadata.pointee.phase = .published
     }
+    @inlinable
+    @inline(__always)
     package borrowing func withCandidateView<Result>(
         _ body: (borrowing SemanticRecordView<Payload>) throws(SemanticExpansionError) -> Result
     ) throws(SemanticExpansionError) -> Result {
         guard let candidate, !hasPendingCanvas(bank(candidate)) else { throw .invariantViolation }
         return try withView(candidate, body)
     }
-    private borrowing func hasPendingCanvas(_ bank: SemanticRecordBankBuffers<Payload>) -> Bool {
+    @usableFromInline
+    borrowing func hasPendingCanvas(_ bank: SemanticRecordBankBuffers<Payload>) -> Bool {
         for index in 0 ..< Int(bank.metadata.pointee.records) {
             if bank.records[index].kind == .pendingCanvas { return true }
         }
@@ -205,13 +221,17 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
         }
     }
 
+    @inlinable
+    @inline(__always)
     package borrowing func withPublishedView<Result>(
         _ body: (borrowing SemanticRecordView<Payload>) throws(SemanticExpansionError) -> Result
     ) throws(SemanticExpansionError) -> Result {
         guard let published else { throw .invariantViolation }
         return try withView(published, body)
     }
-    private borrowing func withView<Result>(
+    @inlinable
+    @inline(__always)
+    borrowing func withView<Result>(
         _ number: UInt8,
         _ body: (borrowing SemanticRecordView<Payload>) throws(SemanticExpansionError) -> Result
     ) throws(SemanticExpansionError) -> Result {
@@ -231,6 +251,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     }
 
     // Restricted to the sole Semantic Core traversal adapter in this module.
+    @usableFromInline
     borrowing func expansionBank(_ number: UInt8) -> SemanticRecordBankBuffers<Payload>? {
         guard number < 2 else { return nil }
         let selected = bank(number)
@@ -239,13 +260,15 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     }
 }
 
+@usableFromInline
 package struct SemanticRecordView<Payload>: ~Escapable {
     private let bank: SemanticRecordBankBuffers<Payload>
     package let bankNumber: UInt8
     package let revision: UInt32
     private let owner: SemanticRecordOwnerIdentity
     @_lifetime(borrow bank)
-    fileprivate init(
+    @usableFromInline
+    init(
         bank: borrowing SemanticRecordBankBuffers<Payload>, number: UInt8,
         owner: SemanticRecordOwnerIdentity
     ) {

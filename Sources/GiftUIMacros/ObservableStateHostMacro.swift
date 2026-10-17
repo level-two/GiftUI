@@ -38,6 +38,8 @@ public struct ObservableStateHostMacro: MemberMacro, ExtensionMacro {
         }.joined(separator: "\n")
 
         let declarationVisitor: DeclSyntax = """
+            @inlinable
+            @inline(__always)
             \(raw: access)\(raw: mutation)func _giftUIVisitObservableStateDeclarations<
                 Visitor: _GiftUIObservableStateDeclarationVisitor & ~Copyable & ~Escapable
             >(_ visitor: inout Visitor) {
@@ -45,6 +47,8 @@ public struct ObservableStateHostMacro: MemberMacro, ExtensionMacro {
             }
             """
         let traversal: DeclSyntax = """
+            @inlinable
+            @inline(__always)
             \(raw: access)func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
                 _ visitor: inout Visitor
             ) where Visitor.Domain == Domain {

@@ -46,7 +46,9 @@ public struct VStack<Content: View>: View {
     public typealias Domain = Content.Domain
     public typealias Body = Never
 
+    @usableFromInline
     package let content: Content
+    @usableFromInline
     package let payload: _GiftUIVStackPayload
 
     public init(
@@ -64,6 +66,8 @@ public struct VStack<Content: View>: View {
         fatalError("VStack has no view body")
     }
 
+    @inlinable
+    @inline(__always)
     public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {

@@ -8,15 +8,19 @@ package struct ObservableModelOwnership: ~Copyable {
         case mutating, writing, reading, discovering, replacing, retired
     }
 
+    @usableFromInline
     package struct Address: Equatable {
         package let owner: UInt32
         package let generation: UInt32
+        @usableFromInline
         package let slot: UInt16
     }
 
     // A claim descriptor is private bookkeeping, not an application ticket.
     // The profile's noncopyable scoped ticket owns its one release obligation.
+    @usableFromInline
     package struct Claim: Equatable {
+        @usableFromInline
         package let address: Address
         fileprivate let index: UInt16
         fileprivate let serial: UInt32
@@ -230,6 +234,7 @@ package struct ObservableModelOwnership: ~Copyable {
         return Claim(address: address, index: UInt16(index), serial: serial)
     }
 
+    @usableFromInline
     package mutating func materialize(schema: UInt16, needsCapture: Bool)
         throws(ObservableStateError) -> Claim
     {
@@ -294,12 +299,14 @@ package struct ObservableModelOwnership: ~Copyable {
         phase = .reading
     }
 
+    @usableFromInline
     package mutating func beginDiscovery() throws(ObservableStateError) {
         guard phase != .replacing else { throw .reentrancyViolation }
         guard phase == .reading, !activeRead else { throw .invalidPhaseSafetyNotProven }
         phase = .discovering
     }
 
+    @usableFromInline
     package mutating func endDiscovery() throws(ObservableStateError) {
         guard phase == .discovering else { throw .invalidPhaseSafetyNotProven }
         phase = .reading

@@ -42,6 +42,8 @@ package enum NRF52840StaticHostActivationFailure: Equatable, Sendable {
 package protocol SignalAnalyzerPresetLiveOwner:
     ~Copyable, ~Escapable, MVPHostActivationOwner, MVPHostTeardownOwner
 {
+    @inlinable
+    @inline(__always)
     mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure>
 }
 
@@ -70,15 +72,20 @@ where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
         controller.lifecycleState
     }
 
+    @inlinable
+    @inline(__always)
     package mutating func activate() -> HostActivationResult<Owner.ActivationFailure> {
         controller.activate(owner: &owner, invariantFailure: invariantFailure)
     }
 
+    @inlinable
     package mutating func runOpportunity() -> HostOpportunityResult<RuntimeOwnerFailure> {
         guard lifecycleState == .active else { return .invalidLifecycle }
         return .cycle(owner.runOpportunity())
     }
 
+    @inlinable
+    @inline(__always)
     package mutating func teardown() {
         controller.teardown(owner: &owner)
     }
