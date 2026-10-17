@@ -1804,6 +1804,8 @@ Specification:
 
 ## References
 
+- [P08 checked State serialization — derived draft design](../implementation-designs/spec-015-p08-checked-state-serialization.md); renewed bounded activity, no contract or conformance change.
+
 - [P08 complete Native cold pipeline correction — derived draft design](../implementation-designs/spec-015-p08-native-cold-pipeline.md)
 
 - [P08 Native cold Static candidate](../implementation-designs/spec-015-p08-native-cold-static.md)

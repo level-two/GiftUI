@@ -1,5 +1,14 @@
 # RFC-014 task context guide
 
+Current renewed [checked State activity](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-serialization-activity.md)
+records Eugene's “Please proceed as proposed” and [one candidate design](../../implementation-designs/spec-015-p08-checked-state-serialization.md).
+Independent Strong design review precedes source; new initial0/1, corrections0/2.
+Private backing, original wrapper/loans/lifetimes and strict cold zero heap stay
+binding. Early provider/privacy, physical bodies/actual concrete consumer and
+fresh actual host screens precede broad validation. Historical2/2 remains closed;
+the experimental overlay is unaccepted. P08/R07/T8.1 stay open. The next stop record
+is historical, not a reset or prohibition of this newly authorized activity.
+
 Current strict Native source boundary — [corrective2 compile/privacy FAIL](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-correction2.md).
 The partial experimental overlay is unaccepted/not adopted;2/2 corrective cycles
 are exhausted. Fresh schema compiles, but generated inlinable evaluation and

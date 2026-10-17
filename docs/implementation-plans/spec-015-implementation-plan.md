@@ -8,6 +8,7 @@ owners:
 created: 2026-09-09
 updated: 2026-10-16
 related_design_notes:
+  - ../implementation-designs/spec-015-p08-checked-state-serialization.md
   - ../implementation-designs/spec-015-p08-native-cold-static.md
   - ../implementation-designs/spec-015-p08-prepared-lending.md
   - ../implementation-designs/spec-015-p08-completion-resource-assessment.md
@@ -27,6 +28,15 @@ superseded_by: null
 ---
 
 # SPEC-015 Implementation Plan
+
+Current renewed activity — [checked State serialization](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-serialization-activity.md),
+authorized by Eugene's “Please proceed as proposed”. The [derived design](../implementation-designs/spec-015-p08-checked-state-serialization.md)
+selects a fixed-schema ABI yielding projection and checked key helper while
+retaining private authored backing. Independent Strong design review precedes
+source edits. New allowance: initial candidate0/1, grouped corrections0/2;
+historical Native cold pipeline2/2 remains closed and its source unaccepted.
+Early compile/privacy, physical-body/actual-consumer and strict fresh cold gates
+precede full collections. P08/R07/T8.1 remain open. The boundary below is historical.
 
 Current corrective boundary — [corrective2 compile/privacy FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-correction2.md).
 Both corrective cycles are consumed (2/2). Fresh generated schema compiles, but
