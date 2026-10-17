@@ -1,0 +1,161 @@
+{
+  "archive_members_verified": 228,
+  "archive_sha256": "6d2ff6ae1aaba5a1c0c4611d7267a15fe1366a61233e0583dd4e7b2d58ce9e0a",
+  "baseline_candidate_commit": "1dbb85aa",
+  "body_observation": {
+    "generated_macro_expansion": "unobserved; provider failed before macro expansion output",
+    "physical_import": "unresolved; consumer replay did not run and provider emitted no module trace",
+    "serialized_or_deserialized_body": "unresolved; no provider/consumer SIL body observation",
+    "surviving_concrete_host_call": "review independently retains generic CounterScreen._giftUITraverse apply at 0x54874 in selected host path"
+  },
+  "cache": {
+    "copied_inventory_before": {
+      "cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": "0af25216d53340cd89fb4135bdda4d421eea2360dfcc5cb646db90b0b6cfd865",
+      "cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": "754aef26a16297a5b89f683412c15c024136c6beaf065835c02412ba509fbf2e",
+      "cache/modules.timestamp": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "copy_unchanged_after_provider": true,
+    "original_inventory": {
+      "cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": "0af25216d53340cd89fb4135bdda4d421eea2360dfcc5cb646db90b0b6cfd865",
+      "cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": "754aef26a16297a5b89f683412c15c024136c6beaf065835c02412ba509fbf2e",
+      "cache/modules.timestamp": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "original_unchanged_after_provider": true,
+    "provider_reported_cache_changes": {},
+    "provider_reported_cache_removals": []
+  },
+  "compiler": {
+    "path": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+  },
+  "consumer_replay": {
+    "loaded_module_trace_emitted": false,
+    "status": "not run; stopped after provider failure"
+  },
+  "corrective2_started": false,
+  "corrective_cycle_limit": 2,
+  "corrective_cycles_used": 1,
+  "external_preservation": {
+    "diff_sha256_before_and_after": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+    "matches_reviewed_hash": true,
+    "paths": [
+      "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+      "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+      "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+      "scripts/nrf52840/build.sh",
+      "scripts/raspberry-pi/build.sh"
+    ],
+    "pycache_preserved": true
+  },
+  "fresh_macro": {
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/macro/GiftUIMacros-tool",
+    "runtime_dependency_count": 21,
+    "sha256": "a3f145cb593164dc9bbb9a19f960efe4e63244a0069a78bd7c6d0675080df306"
+  },
+  "head_at_run": "79a5706fa030a7c8e08f29761aa8277bec914b76",
+  "hidden_help": {
+    "argv": [
+      "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-frontend",
+      "-help-hidden"
+    ],
+    "confirmed_flags": {
+      "-Rmacro-loading": true,
+      "-Rmodule-loading": true,
+      "-Rmodule-serialization": true,
+      "-dump-macro-expansions": true,
+      "-emit-loaded-module-trace-path": true
+    },
+    "exit": 0,
+    "stdout_sha256": "77e875d623bb2ddca3af781f2c5e37ff36e5112b20d829980063d72848ab85be"
+  },
+  "module_candidate_hash_mismatches": 0,
+  "no_source_changes_or_runtime_executions": true,
+  "ordered_import_directories": [
+    ".build/contracts/p08-native-cold-correction1-codegen",
+    ".build/contracts/p08-scoped-host-hzs5q7za",
+    ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+    ".build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+    ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static"
+  ],
+  "output_directory": ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic",
+  "physical_module_candidates_verified": 10,
+  "provider_replay": {
+    "argv": [
+      "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za",
+      "-swift-version",
+      "6",
+      "-Osize",
+      "-whole-module-optimization",
+      "-enable-experimental-feature",
+      "LifetimeDependence",
+      "-enable-experimental-feature",
+      "Lifetimes",
+      "-package-name",
+      "giftui",
+      "-module-cache-path",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/cache-copy",
+      "-disable-sandbox",
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-load-plugin-executable",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/macro/GiftUIMacros-tool#GiftUIMacros",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+      "-parse-as-library",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+      "-enable-testing",
+      "-module-name",
+      "P08CounterPresentation",
+      "-emit-module",
+      "-emit-object",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/diagnostic/Counter.swift",
+      "-emit-module-path",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/provider/P08CounterPresentation.swiftmodule",
+      "-o",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/provider/P08CounterPresentation.o",
+      "-diagnostic-style",
+      "llvm",
+      "-Xfrontend",
+      "-Rmodule-loading",
+      "-Xfrontend",
+      "-Rmacro-loading",
+      "-Xfrontend",
+      "-Rmodule-serialization",
+      "-Xfrontend",
+      "-emit-loaded-module-trace-path",
+      "-Xfrontend",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/provider/loaded-modules.json",
+      "-Xfrontend",
+      "-dump-macro-expansions"
+    ],
+    "error": "Swift rejected the copied SwiftShims PCM because it records the original module-cache path; the diagnostic invocation used the copied cache path, so the precompiled file was rejected and required module SwiftShims was unavailable.",
+    "exit": 1,
+    "finished": "2026-10-17T09:50:19.371495+00:00",
+    "loaded_module_trace_emitted": false,
+    "started": "2026-10-17T09:50:19.281168+00:00",
+    "stderr_bytes": 1982,
+    "stderr_sha256": "d9039fd93460b4a0bfc1a7d429e1cdb29bc5f7f5d35a9841cd58c3b2932ebacd",
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "review_commit": "79a5706fa030a7c8e08f29761aa8277bec914b76",
+  "review_reference": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-correction1-independent-review.md",
+  "schema": "p08-module-resolution-diagnostic-result-v1",
+  "sdk": {
+    "build_version": null,
+    "canonical_name": "macosx26.5",
+    "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+    "settings_path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/SDKSettings.json",
+    "settings_sha256": "f8d005f09381389167f9e0aeaa169bc9e7dff162ef22ca2fd8e98df7ff1acafe",
+    "version": "26.5"
+  }
+}
