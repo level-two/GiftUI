@@ -1,10 +1,10 @@
 {
   "activity": "P08 witness annotation compatibility",
   "prepared_at_head": "dceb8bc48da86636a676611a67b30a16b2a561b9",
-  "state": "design prepared; source candidate 0/1; independent review pending",
+  "state": "candidate1/1 starting after independent design PASS at 8e64cc10; zero automatic source repairs",
   "allowance": {
     "source_candidates": 1,
-    "consumed": 0,
+    "consumed": 1,
     "automatic_source_repairs": 0,
     "historical_checked_state": "initial1/1 and corrections2/2 exhausted; unchanged",
     "historical_native_pipeline": "corrections2/2 exhausted; unchanged"
@@ -71,5 +71,6 @@
     "repair generated output",
     "alter lifetime/private/zero-heap/cold assertions or compiler policy",
     "connect, deploy, flash or mutate global toolchain"
-  ]
+  ],
+  "independent_review": "8e64cc10"
 }

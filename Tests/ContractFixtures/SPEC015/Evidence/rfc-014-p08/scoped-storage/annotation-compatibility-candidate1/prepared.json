@@ -1,0 +1,37 @@
+{
+  "state": "single candidate source frozen; no material compiler/test invocation yet",
+  "starting_review": "8e64cc10",
+  "candidate": 1,
+  "source_sha256": {
+    "Sources/GiftUIMacros/ObservableStateHostMacro.swift": "e78ffc777fd3f3ea5dbc59befccc2fed294e0e9c002cbedd84c2a7efe8865a19",
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": "5349126ef1275e44a400ba6e290b36ab92c6e2534f9e1db9e96f741ba92d49b9"
+  },
+  "prepared_archive_sha256": "ccfc21fbe9430771484a7e07a896fa4510e9a66039d89051534121ff92ceb35c",
+  "prepared_command": "python3 .build/contracts/p08-witness-annotation-compatibility/run.py",
+  "stages": 22,
+  "registered_methods": [
+    "testZeroStateExpansionIsDeterministic",
+    "testDirectStatesExpandOnceInLexicalOrder",
+    "testPortableProfileExpansionIsDeterministic",
+    "testPrivateHostUsesAccessibleProtocolWitnesses",
+    "testInheritedStateIsNotEnumeratedByDerivedHost",
+    "testMalformedStateDeclarationIsDiagnosed",
+    "testDeclarationLimitAcceptsUInt16MaxAndRejectsTheOverflowShape",
+    "testCheckedStateHelpersSelectOriginalWrappersInLexicalOrder",
+    "testNestedCheckedStateHelpersStayInTheirOwningNominal",
+    "testOrdinaryPrivateStateWitnessesAreNotSerializedAtAnyHostAccess",
+    "testCompleteFiniteShapeSelectsSerializedWitnesses",
+    "testIncompleteABIDependenciesDoNotSelectSerialization",
+    "testUnsupportedGenericHeadersDoNotSelectSerialization",
+    "testUnprovableEnclosingContextsDoNotSelectSerialization",
+    "testReservedStateHelperLookalikesAreDiagnosedWithoutFallback",
+    "testLowererRejectsReservedInputCollisionsIncludingEscapedNames",
+    "testActualLoweredStateOutputHasSeparatedHelperDeclarations"
+  ],
+  "expected_executions": 17,
+  "expected_failures": 0,
+  "expected_skips": 0,
+  "privacy_compatibility_controls": 14,
+  "guard": "first unexpected material failure stops; zero automatic repairs; no physical/host/cold until gate PASS",
+  "formatter": "scripts/format-swift.sh PASS; protected maintained Swift linted first; all protected hashes exact"
+}

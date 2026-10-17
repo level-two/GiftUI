@@ -1,6 +1,8 @@
 # P08 witness annotation compatibility activity — 2026-10-17
 
-**Design prepared; independent review pending; candidate 0/1.** Eugene authorized
+**Candidate 1/1 starting under `8e64cc10`; zero automatic repairs.** The
+[independent design review](p08-witness-annotation-compatibility-independent-design-review.md)
+passes the exact source boundary and clarified syntax/context guards. Eugene authorized
 the recommended new bounded compatibility correction after `dceb8bc4`, then the
 existing focused codegen/cold gates if it passes. This allowance is **one source
 candidate with no automatic source repairs**. Checked-State initial1/1 and

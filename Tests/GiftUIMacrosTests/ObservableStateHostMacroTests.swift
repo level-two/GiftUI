@@ -80,6 +80,109 @@ final class ObservableStateHostMacroTests: XCTestCase {
                 "visitor.visit(&self._giftUIStateStorage_inner, declarationOrdinal: 0)"))
     }
 
+    func testOrdinaryPrivateStateWitnessesAreNotSerializedAtAnyHostAccess() {
+        for access in ["private", "fileprivate", "", "package", "public"] {
+            let source = """
+                @ObservableStateHost
+                \(access) struct Root<D: ReadDomain>: View {
+                    typealias Domain = D
+                    @State<Schema>(seed: Seed()) private var model: _GiftUIModelKey<Schema>?
+                    func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+                        throws(_GiftUIAccessFailure) -> EmptyView<D> { EmptyView<D>() }
+                }
+                """
+            assertWitnessSerialization(source, expected: false)
+            let (expanded, _) = expandChecked(source)
+            XCTAssertTrue(expanded.contains("visitor.visit(&_model, declarationOrdinal: 0)"))
+        }
+        let source = """
+            @ObservableStateHost
+            @usableFromInline package struct Root<D: ReadDomain>: View {
+                @usableFromInline package typealias Domain = D
+                @State<Schema>(seed: Seed()) private var model: _GiftUIModelKey<Schema>?
+                package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+                    throws(_GiftUIAccessFailure) -> EmptyView<D> { EmptyView<D>() }
+            }
+            """
+        assertWitnessSerialization(source, expected: false)
+        assertWitnessSerialization("private struct Outer { \(source) }", expected: false)
+    }
+
+    func testCompleteFiniteShapeSelectsSerializedWitnesses() {
+        let source = serializedSource()
+        assertWitnessSerialization(source, expected: true)
+        assertWitnessSerialization(
+            "@usableFromInline package struct Outer { \(source) }", expected: true)
+        assertWitnessSerialization("public struct Outer { \(source) }", expected: true)
+    }
+
+    func testIncompleteABIDependenciesDoNotSelectSerialization() {
+        let source = serializedSource()
+        let variants = [
+            source.replacingOccurrences(
+                of: "@usableFromInline package struct Root", with: "package struct Root"),
+            source.replacingOccurrences(
+                of: "package struct Root", with: "private struct Root"),
+            source.replacingOccurrences(
+                of: "package struct Root", with: "fileprivate struct Root"),
+            source.replacingOccurrences(
+                of: "@usableFromInline package typealias Domain", with: "package typealias Domain"),
+            source.replacingOccurrences(
+                of: "typealias Domain = D", with: "typealias Domain = Other"),
+            source.replacingOccurrences(
+                of: "typealias Domain = D", with: "typealias Domain<T> = D"),
+            source.replacingOccurrences(
+                of: "@inlinable package func _giftUIEvaluate", with: "package func _giftUIEvaluate"),
+            source.replacingOccurrences(
+                of: "package func _giftUIEvaluate", with: "private func _giftUIEvaluate"),
+            source.replacingOccurrences(
+                of: "package func _giftUIEvaluate", with: "package static func _giftUIEvaluate"),
+            source.replacingOccurrences(
+                of: "_giftUIEvaluate(read:", with: "_giftUIEvaluate<T>(read:"),
+            source.replacingOccurrences(of: "read: borrowing", with: "context: borrowing"),
+            source.replacingOccurrences(of: "read: borrowing", with: "read: consuming"),
+            source.replacingOccurrences(
+                of: "_GiftUIFrameRead<D>)", with: "_GiftUIFrameRead<D>, extra: Int = 0)"),
+            source.replacingOccurrences(
+                of: "throws(_GiftUIAccessFailure) -> some",
+                with: "async throws(_GiftUIAccessFailure) -> some"),
+            source.replacingOccurrences(
+                of: "throws(_GiftUIAccessFailure) -> some", with: "throws(OtherFailure) -> some"),
+            source.replacingOccurrences(of: "-> some View<D>", with: "-> EmptyView<D>"),
+            source.replacingOccurrences(
+                of: "-> some View<D> {", with: "-> some View<D> where D: OtherDomain {"),
+        ]
+        for variant in variants {
+            XCTAssertNotEqual(variant, source)
+            assertWitnessSerialization(variant, expected: false)
+        }
+    }
+
+    func testUnsupportedGenericHeadersDoNotSelectSerialization() {
+        let source = serializedSource()
+        for header in [
+            "Root<D: ReadDomain, T>", "Root<each D: ReadDomain>", "Root<D>",
+            "Root<T: ReadDomain>", "Root<D: Other.ReadDomain>",
+            "Root<D: ReadDomain<Other>>", "Root<D: ReadDomain & OtherDomain>",
+            "Root<D: ReadDomain> where D: OtherDomain",
+        ] {
+            let variant = source.replacingOccurrences(of: "Root<D: ReadDomain>", with: header)
+            XCTAssertNotEqual(variant, source)
+            assertWitnessSerialization(variant, expected: false)
+        }
+    }
+
+    func testUnprovableEnclosingContextsDoNotSelectSerialization() {
+        let source = serializedSource()
+        for prefix in [
+            "private struct Outer", "fileprivate struct Outer", "struct Outer",
+            "@usableFromInline package struct Outer<T>", "extension Outer",
+            "func local()", "let local =", "private struct Root",
+        ] {
+            assertWitnessSerialization("\(prefix) { \(source) }", expected: false)
+        }
+    }
+
     func testReservedStateHelperLookalikesAreDiagnosedWithoutFallback() {
         let valid = checkedSource(names: ["first", "second"])
         let key = ObservableStateHostMacro.checkedStateHelpers(name: "first", schema: "Schema")[1]
@@ -199,6 +302,11 @@ final class ObservableStateHostMacroTests: XCTestCase {
             let diagnostics = ParseDiagnosticsGenerator.diagnostics(for: parsed)
             XCTAssertFalse(parsed.hasError, "\(name): \(diagnostics.map(\.message))")
             XCTAssertTrue(diagnostics.isEmpty, name)
+            let (expanded, expansionDiagnostics) = expandChecked(emitted)
+            XCTAssertTrue(expansionDiagnostics.isEmpty, name)
+            try expanded.write(
+                to: output.appendingPathComponent(name + "-expanded.swift"), atomically: true,
+                encoding: .utf8)
             let nominals = parsed.statements.compactMap { $0.item.as(StructDeclSyntax.self) }
             for (owner, states) in expected {
                 let nominal = try XCTUnwrap(nominals.first { $0.name.text == owner })
@@ -218,6 +326,11 @@ final class ObservableStateHostMacroTests: XCTestCase {
                 XCTAssertEqual(
                     projections.sorted(), states.map { "_giftUIStateStorage_" + $0 }.sorted())
                 XCTAssertEqual(keys.sorted(), states.map { "_giftUIStateKey_" + $0 }.sorted())
+                let expandedNominal = try XCTUnwrap(
+                    Parser.parse(source: expanded).statements.compactMap {
+                        $0.item.as(StructDeclSyntax.self)
+                    }.first { $0.name.text == owner })
+                assertSerializedWitnesses(in: Syntax(expandedNominal), expected: true)
             }
         }
         let archive = repository.appendingPathComponent(
@@ -252,6 +365,54 @@ final class ObservableStateHostMacroTests: XCTestCase {
         .map(\.description)
         return "@ObservableStateHost struct Root: View {\n"
             + (fields + helpers + [extra]).joined(separator: "\n") + "\n}"
+    }
+
+    private func serializedSource() -> String {
+        checkedSource(
+            names: ["model"],
+            extra: """
+                @usableFromInline package typealias Domain = D
+                @inlinable package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+                    throws(_GiftUIAccessFailure) -> some View<D> { EmptyView<D>() }
+                """
+        ).replacingOccurrences(
+            of: "@ObservableStateHost struct Root: View",
+            with: "@ObservableStateHost @usableFromInline package struct Root<D: ReadDomain>: View")
+    }
+
+    private func assertWitnessSerialization(
+        _ source: String, expected: Bool, file: StaticString = #filePath, line: UInt = #line
+    ) {
+        let (expanded, diagnostics) = expandChecked(source)
+        XCTAssertTrue(diagnostics.isEmpty, "\(diagnostics): \(source)", file: file, line: line)
+        assertSerializedWitnesses(
+            in: Syntax(Parser.parse(source: expanded)), expected: expected, file: file, line: line)
+    }
+
+    private func assertSerializedWitnesses(
+        in source: Syntax, expected: Bool, file: StaticString = #filePath, line: UInt = #line
+    ) {
+        func witnesses(_ node: Syntax) -> [FunctionDeclSyntax] {
+            if let function = node.as(FunctionDeclSyntax.self),
+                ["_giftUIVisitObservableStateDeclarations", "_giftUITraverse"].contains(
+                    function.name.text)
+            {
+                return [function]
+            }
+            return node.children(viewMode: .sourceAccurate).flatMap { witnesses($0) }
+        }
+        let functions = witnesses(source)
+        XCTAssertEqual(functions.count, 2, source.description, file: file, line: line)
+        for function in functions {
+            let attributes = function.attributes.compactMap { $0.as(AttributeSyntax.self) }
+            XCTAssertEqual(
+                attributes.contains { $0.attributeName.trimmedDescription == "inlinable" },
+                expected,
+                function.description, file: file, line: line)
+            XCTAssertEqual(
+                attributes.contains { $0.attributeName.trimmedDescription == "inline" }, expected,
+                function.description, file: file, line: line)
+        }
     }
 
     private func expandChecked(_ text: String) -> (String, [String]) {

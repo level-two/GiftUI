@@ -35,6 +35,9 @@ public struct ObservableStateHostMacro: MemberMacro, ExtensionMacro {
             let projectionNames = checkedStateProjectionNames(
                 declarations: declarations, in: declaration, context: context)
         else { return [] }
+        let attributes = serializedWitnessAttributes(
+            declarations: declarations, projectionNames: projectionNames,
+            in: declaration, context: context)
         let access = witnessAccessPrefix(for: declaration)
         let mutation = declaration.is(ClassDeclSyntax.self) ? "" : "mutating "
         let visits = declarations.enumerated().map { offset, name in
@@ -46,18 +49,14 @@ public struct ObservableStateHostMacro: MemberMacro, ExtensionMacro {
         }.joined(separator: "\n")
 
         let declarationVisitor: DeclSyntax = """
-            @inlinable
-            @inline(__always)
-            \(raw: access)\(raw: mutation)func _giftUIVisitObservableStateDeclarations<
+            \(raw: attributes)\(raw: access)\(raw: mutation)func _giftUIVisitObservableStateDeclarations<
                 Visitor: _GiftUIObservableStateDeclarationVisitor & ~Copyable & ~Escapable
             >(_ visitor: inout Visitor) {
                 \(raw: visits)
             }
             """
         let traversal: DeclSyntax = """
-            @inlinable
-            @inline(__always)
-            \(raw: access)func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+            \(raw: attributes)\(raw: access)func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
                 _ visitor: inout Visitor
             ) where Visitor.Domain == Domain {
                 visitor.visitStatefulCustomView(self) {
@@ -275,6 +274,103 @@ public struct ObservableStateHostMacro: MemberMacro, ExtensionMacro {
 
     static func exceedsDeclarationLimit(_ count: Int) -> Bool {
         count > Int(UInt16.max)
+    }
+
+    private static func hasAttribute(_ name: String, in attributes: AttributeListSyntax) -> Bool {
+        attributes.contains {
+            guard let attribute = $0.as(AttributeSyntax.self), attribute.arguments == nil,
+                let type = attribute.attributeName.as(IdentifierTypeSyntax.self),
+                type.genericArgumentClause == nil
+            else { return false }
+            return type.name.text == name
+        }
+    }
+
+    private static func isABIUsable(
+        modifiers: DeclModifierListSyntax, attributes: AttributeListSyntax,
+        permitsInlinable: Bool = false
+    ) -> Bool {
+        let names = Set(modifiers.map { $0.name.text })
+        guard names.isDisjoint(with: ["private", "fileprivate"]) else { return false }
+        return !names.isDisjoint(with: ["public", "open"])
+            || hasAttribute("usableFromInline", in: attributes)
+            || (permitsInlinable && hasAttribute("inlinable", in: attributes))
+    }
+
+    private static func isABIUsableEnclosingNominal(_ syntax: Syntax) -> Bool {
+        if let nominal = syntax.as(StructDeclSyntax.self) {
+            return nominal.genericParameterClause == nil && nominal.genericWhereClause == nil
+                && isABIUsable(modifiers: nominal.modifiers, attributes: nominal.attributes)
+        }
+        if let nominal = syntax.as(ClassDeclSyntax.self) {
+            return nominal.genericParameterClause == nil && nominal.genericWhereClause == nil
+                && isABIUsable(modifiers: nominal.modifiers, attributes: nominal.attributes)
+        }
+        if let nominal = syntax.as(EnumDeclSyntax.self) {
+            return nominal.genericParameterClause == nil && nominal.genericWhereClause == nil
+                && isABIUsable(modifiers: nominal.modifiers, attributes: nominal.attributes)
+        }
+        if let nominal = syntax.as(ActorDeclSyntax.self) {
+            return nominal.genericParameterClause == nil && nominal.genericWhereClause == nil
+                && isABIUsable(modifiers: nominal.modifiers, attributes: nominal.attributes)
+        }
+        return false
+    }
+
+    private static func serializedWitnessAttributes(
+        declarations: [String], projectionNames: Set<String>,
+        in declaration: some DeclGroupSyntax, context: some MacroExpansionContext
+    ) -> String {
+        // Visibility alone cannot serialize an ordinary private backing field.
+        // Only the complete checked finite shape has ABI-usable dependencies.
+        guard !declarations.isEmpty, projectionNames == Set(declarations),
+            let host = declaration.as(StructDeclSyntax.self), !host.hasError,
+            isABIUsable(modifiers: host.modifiers, attributes: host.attributes),
+            host.genericWhereClause == nil,
+            let parameters = host.genericParameterClause?.parameters, parameters.count == 1,
+            let domain = parameters.first, domain.name.text == "D", domain.specifier == nil,
+            domain.attributes.isEmpty, domain.trailingComma == nil,
+            let constraint = domain.inheritedType?.as(IdentifierTypeSyntax.self),
+            constraint.genericArgumentClause == nil
+        else { return "" }
+
+        let aliases = host.memberBlock.members.compactMap { $0.decl.as(TypeAliasDeclSyntax.self) }
+            .filter { $0.name.text == "Domain" }
+        guard aliases.count == 1, let alias = aliases.first,
+            alias.genericParameterClause == nil, alias.genericWhereClause == nil,
+            isABIUsable(modifiers: alias.modifiers, attributes: alias.attributes),
+            sameStructure(Syntax(alias.initializer.value), Syntax(TypeSyntax(stringLiteral: "D")))
+        else { return "" }
+
+        let evaluations = host.memberBlock.members.compactMap {
+            $0.decl.as(FunctionDeclSyntax.self)
+        }
+        .filter { $0.name.text == "_giftUIEvaluate" }
+        let expected: DeclSyntax = """
+            func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+                throws(_GiftUIAccessFailure) -> some View<D> {}
+            """
+        guard evaluations.count == 1, let evaluation = evaluations.first,
+            evaluation.genericParameterClause == nil, evaluation.genericWhereClause == nil,
+            evaluation.body != nil,
+            evaluation.modifiers.allSatisfy({ !["static", "class"].contains($0.name.text) }),
+            hasAttribute("inlinable", in: evaluation.attributes),
+            isABIUsable(
+                modifiers: evaluation.modifiers, attributes: evaluation.attributes,
+                permitsInlinable: true),
+            sameStructure(
+                Syntax(evaluation.signature),
+                Syntax(expected.cast(FunctionDeclSyntax.self).signature))
+        else { return "" }
+
+        let hostHeader = host.asMacroLexicalContext()
+        for (index, enclosing) in context.lexicalContext.enumerated() {
+            // The first reported context may be this host with its members
+            // stripped. Compare its entire header, never just the nominal name.
+            if index == 0, let hostHeader, sameStructure(enclosing, hostHeader) { continue }
+            guard isABIUsableEnclosingNominal(enclosing) else { return "" }
+        }
+        return "@inlinable\n@inline(__always)\n"
     }
 
     private static func witnessAccessPrefix(for declaration: some DeclGroupSyntax) -> String {
