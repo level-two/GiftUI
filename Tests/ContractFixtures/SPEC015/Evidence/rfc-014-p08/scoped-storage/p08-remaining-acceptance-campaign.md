@@ -112,8 +112,10 @@ established. The frozen source requires no new compiler/lifetime experiment.
 
 The [six matched observations and attribution](p08-native-allocation-findings.md)
 pass collector/replay but prove an actual Native Static first-use heap allocation.
-Independent review and an explicit contract-versus-implementation decision are
-next. Coverage of direct-zone/VM/temp and complete Native/Pi bounds remain open;
+The [independent review](p08-native-allocation-independent-review.md) confirms
+the failure. The maintainer selected strict-contract implementation; the
+[bounded candidate design](../../../../../../docs/implementation-designs/spec-015-p08-native-cold-static.md)
+requires independent review before source work. Coverage of direct-zone/VM/temp and complete Native/Pi bounds remain open;
 no further matched rerun is needed for this counterexample.
 
 SO-08 explicitly requires matched Dynamic costs and Static zero heap, not only

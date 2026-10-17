@@ -8,7 +8,7 @@ import shutil
 import subprocess
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--variant', required=True, choices=['baseline', 'full-cmo', 'serialized', 'constructor-always', 'generic-pair', 'concrete-pair'])
+parser.add_argument('--variant', required=True, choices=['baseline', 'full-cmo', 'serialized', 'constructor-always', 'generic-pair', 'concrete-pair', 'concrete-inline', 'scoped-inline', 'client-emission'])
 parser.add_argument('--output', required=True, type=Path)
 args = parser.parse_args()
 base = Path(__file__).resolve().parent

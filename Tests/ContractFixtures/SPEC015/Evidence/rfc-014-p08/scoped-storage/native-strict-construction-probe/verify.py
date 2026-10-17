@@ -18,4 +18,6 @@ for name, item in manifest['variants'].items():
             assert values[flag] == '0', (name, flag)
 assert 'allocations=0 ' in manifest['variants']['concrete-pair']['cold']
 assert 'allocations=25 ' in manifest['variants']['generic-pair']['cold']
-print('PASS: six synthetic variants, captured identities, results and observer flags; no P08 conformance claim')
+for name in ('concrete-inline', 'scoped-inline'):
+    assert 'allocations=0 ' in manifest['variants'][name]['cold']
+print('PASS: nine synthetic variants, captured identities, results and observer flags; no P08 conformance claim')

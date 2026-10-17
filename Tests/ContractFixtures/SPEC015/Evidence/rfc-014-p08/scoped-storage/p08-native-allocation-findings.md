@@ -7,7 +7,10 @@ reuse** on actual first-use action/interaction runtime paths. Reuse adds zero
 allocations for this subset. These are not a complete cold bound or an allocator
 arena measurement. The [independent review](p08-native-allocation-independent-review.md) confirms
 the counterexample and the present zero-heap failure. P08/R07/T8.1 remain open
-pending an explicit contract-versus-implementation decision.
+under the maintainer's subsequent strict-contract implementation direction.
+The [bounded candidate design](../../../../../../docs/implementation-designs/spec-015-p08-native-cold-static.md)
+and [compiler controls](p08-native-strict-construction-probe.md) do not repair this
+immutable baseline failure.
 
 ## Reproducible observation
 

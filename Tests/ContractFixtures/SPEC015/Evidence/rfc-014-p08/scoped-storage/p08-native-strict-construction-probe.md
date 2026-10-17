@@ -8,7 +8,7 @@ strict-zero-heap effort. Previous source allowances remain closed. No maintained
 application/framework source, receipt, accepted image, resource limit or contract
 changed here; no application candidate or corrective cycle has been executed.
 
-The [packet](native-strict-construction-probe/manifest.json) preserves six tiny
+The [packet](native-strict-construction-probe/manifest.json) preserves nine tiny
 separate-module probes, exact sources/commands/compiler hash, loaded-library
 identities, results, object imports and caller disassembly. They use the unchanged
 matched-observation C driver/observer, fresh processes, opaque C input (7), and a
@@ -24,6 +24,9 @@ zero. These are diagnostics, not the required P08 route or allocation coverage.
 | Additionally force constructor inline |27|1488 /1488|352|0|
 | Generic root with two named Optional fields |25|1424 /1424|336|0|
 | Private nongeneric root with two named Optional fields |0|0 /0|0|0|
+| Same concrete root, retaining actual contiguous InlineArray |0|0 /0|0|0|
+| Concrete InlineArray -> MutableSpan -> serialized generic scoped callback |0|0 /0|0|0|
+| Generic root with forced client body emission |27|1488 /1488|352|0|
 
 The last two preserve the same targeted serialized generic dispatch and change
 only the root representation. The generic pair result rejects the hypothesis
@@ -52,7 +55,7 @@ concrete realization is permitted only while preserving those contracts. This
 probe does **not** license tuple-contiguity assumptions, unsafe layout casts,
 untyped loans, changed capacities, bypassed checks or cache warmup.
 
-The next design step must map concrete construction through the existing
+The [focused design](../../../../../../docs/implementation-designs/spec-015-p08-native-cold-static.md) selects concrete owning storage with serialized scope construction. The scoped control proves the contiguous span and generic noncopyable/nonescapable callback shape can remain; it does not implement the actual registration/read bridge. That design must map concrete construction through the existing
 contiguous model span, read scope, Optional typed owner and all fourteen loans;
 then screen an actual cold construction/action route before a source candidate
 is selected. Public generic read/context contracts must remain unchanged. No
@@ -68,6 +71,6 @@ python3 -B Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/na
 
 Reproduction requires the hash-pinned retained observer/driver and pinned local
 compiler. The failed preliminary annotation-access control and early exploratory
-variants remain disposable `.build` diagnostics; these six preserved controls
+variants remain disposable `.build` diagnostics; these nine preserved controls
 are the decision evidence. Existing external changes in two SignalAnalyzer
 sources, nRF CMake/build and Pi build plus Python cache remain excluded.

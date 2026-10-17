@@ -1804,6 +1804,10 @@ Specification:
 
 ## References
 
+- [P08 Native cold Static candidate](../implementation-designs/spec-015-p08-native-cold-static.md)
+  is a derived draft under the maintainer's strict-contract direction, not a waiver
+  or implementation/conformance claim.
+
 - [P08 prepared-lending proposal](../implementation-designs/spec-015-p08-prepared-lending.md)
   is a derived draft private realization, not source authority or a resource amendment.
 

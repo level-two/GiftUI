@@ -37,6 +37,24 @@
       "cold": "WINDOW cold allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=0 live_reserved=0 live_count=0 peak_requested=0 peak_reserved=0 peak_rounding=0 peak_live_count=0 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
       "reuse": "WINDOW reuse allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=0 live_reserved=0 live_count=0 peak_requested=0 peak_reserved=0 peak_rounding=0 peak_live_count=0 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
       "executable_sha256": "35ea326df6d7c8bb6f50c9b1369162c50109b48b6a58b50e913131966cbb4268"
+    },
+    "concrete-inline": {
+      "entry": "ENTRY cold=42 reuse=42",
+      "cold": "WINDOW cold allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=0 live_reserved=0 live_count=0 peak_requested=0 peak_reserved=0 peak_rounding=0 peak_live_count=0 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "reuse": "WINDOW reuse allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=0 live_reserved=0 live_count=0 peak_requested=0 peak_reserved=0 peak_rounding=0 peak_live_count=0 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "executable_sha256": "35ea326df6d7c8bb6f50c9b1369162c50109b48b6a58b50e913131966cbb4268"
+    },
+    "scoped-inline": {
+      "entry": "ENTRY cold=42 reuse=42",
+      "cold": "WINDOW cold allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=0 live_reserved=0 live_count=0 peak_requested=0 peak_reserved=0 peak_rounding=0 peak_live_count=0 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "reuse": "WINDOW reuse allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=0 live_reserved=0 live_count=0 peak_requested=0 peak_reserved=0 peak_rounding=0 peak_live_count=0 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "executable_sha256": "c5338d368f4476926f9b3ad33d5590d6d5a0354069f9c153649d49fd75c7cf0d"
+    },
+    "client-emission": {
+      "entry": "ENTRY cold=42 reuse=42",
+      "cold": "WINDOW cold allocations=27 frees=23 requested_total=1488 reserved_total=1488 live_requested=352 live_reserved=352 live_count=4 peak_requested=576 peak_reserved=576 peak_rounding=0 peak_live_count=6 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=27 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "reuse": "WINDOW reuse allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=352 live_reserved=352 live_count=4 peak_requested=352 peak_reserved=352 peak_rounding=0 peak_live_count=4 baseline_requested=352 baseline_reserved=352 baseline_count=4 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "executable_sha256": "e7d39443a4aef8045364f6837551e8cc80efc0e05931ba8e7fc106213c975606"
     }
   },
   "files": {
@@ -207,6 +225,90 @@
     "serialized/result.json": {
       "sha256": "81948ebf10010f56a26c402b82523913a501ff7eac5fcbf14b78a1bb2331ed31",
       "size": 5676
+    },
+    "concrete-inline/ProbeCore.swift": {
+      "sha256": "45f4705f6011b47a4bbf6569b7ebe7602387a522646a63b5b1124f061e7cf586",
+      "size": 798
+    },
+    "concrete-inline/result.json": {
+      "sha256": "8a330dfe010f24dac43ccfc10240e6cb3b0b7206985eaf6fd9adc3a76522b7eb",
+      "size": 5767
+    },
+    "concrete-inline/ProbeInput.c": {
+      "sha256": "428913884151140546eb05a8c5cfe997021c61df3a567e8c2ab994db0c832d09",
+      "size": 215
+    },
+    "concrete-inline/ProbeCaller.swift": {
+      "sha256": "44c7ecc91922bfe639dd461d38c33874e2edfa90e7fa2e0f1e420669ed9bd141",
+      "size": 1156
+    },
+    "concrete-inline/caller-disassembly.txt": {
+      "sha256": "d6a0559b818785f93687ce9dd0cb095a658cf044090ea80d15e68c573aef6e79",
+      "size": 1507
+    },
+    "concrete-inline/execute.log": {
+      "sha256": "d696fb75a36787350d23459a0d83de1c309656f5255cdbf44e5fb80f1594c8f1",
+      "size": 8706
+    },
+    "concrete-inline/caller-imports.txt": {
+      "sha256": "1d831ff21f416ec8df0e41621a1302bf7002a05014c64f50579905eb4b30e0d5",
+      "size": 63
+    },
+    "scoped-inline/ProbeCore.swift": {
+      "sha256": "a7feb66106e05e651ea5a9cb73113d18f6ac5707e5572eabff011c80ea21e820",
+      "size": 1441
+    },
+    "scoped-inline/result.json": {
+      "sha256": "dbe070aca708957e477c5682b2e69c953fa6175c8812208d2ae66cea044c21f9",
+      "size": 5787
+    },
+    "scoped-inline/ProbeInput.c": {
+      "sha256": "428913884151140546eb05a8c5cfe997021c61df3a567e8c2ab994db0c832d09",
+      "size": 215
+    },
+    "scoped-inline/ProbeCaller.swift": {
+      "sha256": "c52a0866149ebd08748c25acfb62e0a32a0b58b1cb7196643eb6facbe43eee84",
+      "size": 1258
+    },
+    "scoped-inline/caller-disassembly.txt": {
+      "sha256": "acd299311390f6b5730cc8489ae32e955e437b71442eb4e3d77716d8278360e5",
+      "size": 1759
+    },
+    "scoped-inline/execute.log": {
+      "sha256": "8f34ba6ef093f7bfa829169f18814d0052184810a1d9d9fb02e5897465fef343",
+      "size": 8708
+    },
+    "scoped-inline/caller-imports.txt": {
+      "sha256": "1d831ff21f416ec8df0e41621a1302bf7002a05014c64f50579905eb4b30e0d5",
+      "size": 63
+    },
+    "client-emission/ProbeCore.swift": {
+      "sha256": "9549bf7e06d8cb929775b16c3ee242520e2747c31f03de701dd924f863299bd4",
+      "size": 843
+    },
+    "client-emission/result.json": {
+      "sha256": "26d89f51833321afb5561e128b1bf7665e0e4bf20159b687b98d73a1ab27bc49",
+      "size": 5796
+    },
+    "client-emission/ProbeInput.c": {
+      "sha256": "428913884151140546eb05a8c5cfe997021c61df3a567e8c2ab994db0c832d09",
+      "size": 215
+    },
+    "client-emission/ProbeCaller.swift": {
+      "sha256": "49c511eda343b619809ba74d3f3a0321aa5117b7bb90955efe063a337e83608a",
+      "size": 950
+    },
+    "client-emission/caller-disassembly.txt": {
+      "sha256": "038835b73d86a83ee2680edc54cf6bfc4c787c151b8c42a77eb57da0c521516e",
+      "size": 3181
+    },
+    "client-emission/execute.log": {
+      "sha256": "6a7e6dc123218d3ec105b29e9976bffdf6ef705cbba183fdcbf387da7fdeffdc",
+      "size": 20070
+    },
+    "client-emission/caller-imports.txt": {
+      "sha256": "79e1030807702b29af23a94f307574090113f6215ddf09ca8608626d9cfe3ad9",
+      "size": 282
     }
   },
   "retained_dependencies": {

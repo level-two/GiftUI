@@ -8,6 +8,7 @@ owners:
 created: 2026-09-09
 updated: 2026-10-16
 related_design_notes:
+  - ../implementation-designs/spec-015-p08-native-cold-static.md
   - ../implementation-designs/spec-015-p08-prepared-lending.md
   - ../implementation-designs/spec-015-p08-completion-resource-assessment.md
   - ../implementation-designs/spec-015-p08-structured-operations.md
@@ -35,7 +36,8 @@ allocation observations](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p
 pass collector/replay but identify actual Native Static first-use heap allocation.
 The maintainer selected strict-contract implementation; the [bounded compiler
 probe](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-strict-construction-probe.md)
-records a new design activity, without a selected source candidate. Affected
+records the compiler controls. The [focused candidate design](../implementation-designs/spec-015-p08-native-cold-static.md)
+awaits independent review before source execution. Affected
 closure remains open; allocation coverage, complete Native/Pi stack/physical ledgers,
 caller/criterion reconciliation and P08 exit remain open.
 
