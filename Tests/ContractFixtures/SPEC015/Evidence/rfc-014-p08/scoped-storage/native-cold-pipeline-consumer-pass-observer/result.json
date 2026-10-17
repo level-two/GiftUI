@@ -1,0 +1,29 @@
+{
+  "schema": "giftui.p08.native-cold-consumer-pass-observer.v1",
+  "prepared_observer": "../native-cold-pipeline-consumer-loading-result/run-next-observer.py",
+  "prepared_packet": "../native-cold-pipeline-consumer-loading-result/",
+  "head_before_run": "6869697e7b802a41fd48e883dab5d6384b2ae772",
+  "raw_output": ".build/contracts/p08-native-cold-correction1-consumer-pass-observer",
+  "exit": 0,
+  "started_utc": "2026-10-17T10:06:38.496136+00:00",
+  "finished_utc": "2026-10-17T10:07:47.683789+00:00",
+  "elapsed_seconds": 69.187653,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "f15ff506c6b8342c0c3d9458523275ced8ee57f46231d7280410a650994f8472",
+  "sil_sha256": "23e42c4538fd0cfad6d451befbdf169657687935792d9647cf977557acae51fd",
+  "sil_bytes": 54386109,
+  "stderr_bytes": 460307015,
+  "filtered_function": "CounterScreen._giftUITraverse<A>(_:)",
+  "filtered_sil_dump_matches": 28,
+  "basic_block_body_observed": false,
+  "performance_sil_linker_observations": [
+    "EarlyModulePasses pass #34962",
+    "HighLevel,Module+StackPromote pass #455183"
+  ],
+  "original_cache_unchanged": true,
+  "runtime_executed": false,
+  "corrective_cycles_used": 1,
+  "corrective_cycles_total": 2,
+  "interpretation_limit": "No body in filtered SIL output does not prove physical serialized-body absence or explain deserialization/inlining behavior.",
+  "acceptance_claim": false
+}
