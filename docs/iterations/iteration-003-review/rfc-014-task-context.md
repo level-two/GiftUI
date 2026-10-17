@@ -10,6 +10,12 @@ bounded implementation redesign needs a concrete new disposition/allowance;
 changing scope/privacy/ownership/compiler policy requires its upstream decision.
 This failure does not prove every strict-contract realization impossible.
 
+The [independent final boundary review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-correction2-independent-review.md)
+confirms all five private accesses and2/2 exhaustion. Recommended next user
+decision: a newly bounded strict checked-State serialization design/implementation
+activity, retaining privacy and all normative contracts. No automatic execution,
+third candidate or contract amendment is authorized.
+
 Previously qualified frozen resource result — [counter ELF PASS](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-final-fit-result.md):
 complete main95,469/106,496, ISR6,672/8,192, RAM255,612/262,144, fresh corrected
 address/SP/allocator proof. Independent current-image review and remaining P08

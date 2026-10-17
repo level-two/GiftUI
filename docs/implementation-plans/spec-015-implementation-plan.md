@@ -34,6 +34,9 @@ presentation serialization rejects direct private State backing access. The
 partial experimental overlay remains unaccepted/not adopted; no new actual screen
 or wider owner qualification follows. No third candidate, restoration or reset
 is authorized. The
+[independent final boundary review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-correction2-independent-review.md)
+confirms the failure and recommends a renewed bounded strict State-serialization
+design decision; no new execution allowance is granted. The
 [complete cold pipeline design](../implementation-designs/spec-015-p08-native-cold-pipeline.md)
 and its finite emitted caller/file map governed this overlay without retrying the
 aborted restoration. The
