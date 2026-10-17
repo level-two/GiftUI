@@ -1,6 +1,6 @@
 # Renewed checked State serialization activity — 2026-10-17
 
-**New bounded activity; design review pending. No implementation attempt spent.**
+**New bounded activity; independent design PASS. No implementation attempt spent.**
 Eugene answered “Please proceed as proposed” to the proposed renewed strict P08
 activity following [final boundary review](p08-native-cold-pipeline-correction2-independent-review.md).
 The selected direction retains private authored State, original checked ownership
@@ -12,6 +12,11 @@ fixed-schema internal ABI yielding projection of the original private wrapper,
 plus a checked concrete-schema key helper; serialized visitor/evaluation call
 those helpers. The actual generic binder remains specialized in the concrete
 consumer. No generic callback wrapper, second State owner or public capability.
+
+[Independent Strong design review](p08-checked-state-serialization-independent-design-review.md)
+passes the candidate with an exact structural route-selection and source-access
+clarification recorded in the derived note. This is permission to proceed through
+the already authorized ordered gates, not a compiler/codegen/resource result.
 
 ## Allowance and disposition
 

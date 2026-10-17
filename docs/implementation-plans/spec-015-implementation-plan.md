@@ -32,8 +32,9 @@ superseded_by: null
 Current renewed activity — [checked State serialization](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-serialization-activity.md),
 authorized by Eugene's “Please proceed as proposed”. The [derived design](../implementation-designs/spec-015-p08-checked-state-serialization.md)
 selects a fixed-schema ABI yielding projection and checked key helper while
-retaining private authored backing. Independent Strong design review precedes
-source edits. New allowance: initial candidate0/1, grouped corrections0/2;
+retaining private authored backing. [Independent Strong design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-serialization-independent-design-review.md)
+passes with exact structural helper matching and source-access checks; no source
+attempt has begun. New allowance: initial candidate0/1, grouped corrections0/2;
 historical Native cold pipeline2/2 remains closed and its source unaccepted.
 Early compile/privacy, physical-body/actual-consumer and strict fresh cold gates
 precede full collections. P08/R07/T8.1 remain open. The boundary below is historical.

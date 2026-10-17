@@ -19,7 +19,9 @@ superseded_by: null
 > This note explains one replaceable internal realization of an approved
 > contract. It is non-authoritative and cannot introduce architecture or amend
 > the governing Specification. Design only: no source, compiler or runtime result
-> is claimed. Independent Strong design review precedes execution.
+> is claimed. [Independent Strong design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-serialization-independent-design-review.md)
+> passes this design with the structural matching clarification below; execution
+> evidence is still required.
 
 ## Purpose and Boundary
 
@@ -137,6 +139,26 @@ helpers onto unrelated declarations. Existing private ordinary macro fixtures
 must continue to compile. No arbitrary-name addition to `@ObservableStateHost`
 or application-name special case is needed.
 
+**Independent review clarification — route selection.** Before adding helpers,
+the lowerer rejects authored members colliding with either reserved generated
+name, including overloads and escaped spellings of the same identifier. Inventory
+and validation stay local to each owning nominal and each lexical State; a nested
+or sibling member cannot satisfy another declaration's pair. The member macro
+selects this route only after validating the complete finite shape and exactly
+one matching pair: instance internal ABI-usable members, the identical concrete
+schema, only `_read { yield _model }` / `_modify { yield &_model }` on the storage
+projection, and the nongeneric borrowing typed-throwing key helper whose sole
+operation is `try _model._giftUIKey()`. Match parsed structure and the original
+field identifier, not source substrings or name prefixes. A setter, extra effects,
+different field, replacement wrapper, wrong schema, overload, missing member or
+malformed reserved pair is a diagnostic, never a fallback to an unsafe route.
+No cross-expansion state or generated-origin authentication is assumed: syntax
+cannot prove emission history; the complete validated shape establishes the
+selected operation, and the lowerer rejects input collisions before emission.
+Unlowered declarations without reserved members retain the existing direct route.
+Positive multiple/nested declarations and negative lookalike, swapped-field,
+wrong-schema, duplicate/overloaded, incomplete and getter/setter tests are required.
+
 The three existing read-rewrite sites (`DeclReferenceExpr`, `self.member`, and
 `modelPath` root) call `try self._giftUIStateKey_model()` at the exact original
 read position. Four counter key reads remain four reads in their original order.
@@ -167,6 +189,12 @@ uses already static nongeneric metadata and proves no allocating lookup. Inspect
 the callee and its continuation/destruction too, not only the caller's signature.
 The generic protocol remains valid for all other conformers.
 
+Opaque is a serialization boundary, not a promise of `@inline(never)` or a new
+optimization policy. Accept an optimizer-incorporated checked operation only when
+its owning definition and the actual selected caller/coroutine path prove the same
+field yield, checks and complete resource cost. Otherwise retain and inspect its
+call, continuation and cleanup; an absent call alone is not evidence of zero cost.
+
 In `GiftUI/ObservableState.swift`, expose only required implementation details to
 serialized checked operations: `State.Storage` and `storage` become internal
 `@usableFromInline` implementation members; `_GiftUIBoundState` and its existing
@@ -178,6 +206,15 @@ specialize in their owning callers. Preserve the exact initial/bound enum cases,
 checks, discardable bind result and one-case storage. This changes neither the
 public State contract nor authored `_model` access. No unchecked initializer,
 unsafe field offset, erased callback or raw mutable projection is added.
+
+This is implementation ABI usability, not an added supported cross-module API:
+`Storage`, `storage` and every newly usable member remain `internal` or retain
+their existing `package` source access exactly as specified above. No storage or
+unchecked constructor becomes public/package merely to make serialization work.
+Check negative clients without `@testable`/SPI imports both in another module of
+the same package and outside it; same-module implementation access is not a client
+capability. Do not add `@frozen`, expose storage through a public signature, or
+change State's representation/initialization rules as an incidental annotation fix.
 
 ## Data and Control Flow
 
