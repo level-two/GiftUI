@@ -5,8 +5,9 @@ All three fresh Static processes contain the same **11 allocations/336 requested
 bytes (336 usable-reserved),112-byte simultaneous peak,64 bytes retained into
 reuse** on actual first-use action/interaction runtime paths. Reuse adds zero
 allocations for this subset. These are not a complete cold bound or an allocator
-arena measurement. P08/R07/T8.1 remain open pending independent review and an
-explicit contract-versus-implementation decision.
+arena measurement. The [independent review](p08-native-allocation-independent-review.md) confirms
+the counterexample and the present zero-heap failure. P08/R07/T8.1 remain open
+pending an explicit contract-versus-implementation decision.
 
 ## Reproducible observation
 
@@ -59,9 +60,13 @@ all observed allocations use `malloc_type_malloc`, with16/48-byte requests.
 | `CounterPipelineOwner.admitAndSeal`, resolver witness | `0x138e2c` | 2 | 32 |
 | `ExecutionGestureAdapter.down`, metadata/witness | `0x6e3dc`, `0x6e3f8` | 3 | 112 |
 | `InteractionState`, metadata helpers | `0x71538`, `0x71548` | 2 | 96 |
-| `CounterPipelineOwner.applyAdmittedWork`, witness | `0x1393b4` | 2 | 32 |
+| `CounterPipelineOwner.dispatch(CapturedAction)`, witness | `0x1393b4` | 2 | 32 |
 | `RuntimeRecordInteractionBridge.dispatch`, metadata | `0xa143c` | 2 | 64 |
 | **Total, each Static repetition** | | **11** | **336** |
+
+The independent review corrects only the `0x1393b4` immediate-symbol label above:
+`applyAdmittedWork` is its enclosing caller. The totals and immutable packets are
+unchanged.
 
 The linked admission call at `0x100138e28` binds via stub `0x10017527c` to
 `swift_getWitnessTable` and feeds the actual gesture call; it precedes the
