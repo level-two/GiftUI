@@ -16,8 +16,12 @@ superseded_by: null
 
 # P08 Native cold Static construction
 
-Current source boundary: [candidate 1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1.md),
-first actual cold screen pending; 0/2 corrective cycles used. Compiler/link and
+Current outcome: [candidate1 actual strict screen FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1-result.md).
+The candidate is unaccepted/not adopted; independent boundary review precedes
+source restoration or a broader cold compiler/runtime design. Corrections0/2.
+
+Historical preparation boundary: [candidate 1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1.md),
+the first actual cold screen was pending then; 0/2 corrective cycles used. Compiler/link and
 source-access controls are not actual zero-heap or lifecycle acceptance.
 
 **Selected candidate mechanism; independent design review PASS for bounded source

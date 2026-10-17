@@ -1,10 +1,14 @@
 # Native cold Static candidate 1 — 2026-10-17
 
-**Implementation candidate prepared; first actual cold screen pending.** This
+Current disposition: [actual first screen FAIL](p08-native-cold-static-candidate1-result.md).
+Candidate unaccepted/not adopted; original11/336 remain, plus cold TLS/text
+counterexamples. No correction/restoration performed; 0/2 corrections used.
+
+**Historical preparation record (before the failed actual screen).** This
 implements the [reviewed design](../../../../../../docs/implementation-designs/spec-015-p08-native-cold-static.md)
 under the maintainer's strict-contract direction and [independent design PASS](p08-native-cold-static-independent-design-review.md).
 One candidate is now written; **0/2 corrective cycles used, zero actual candidate
-profile runs** at this commit boundary. Previous allowances remain closed. The
+profile runs** at that preparation boundary. Previous allowances remain closed. The
 11/336 accepted baseline failure is not replaced by compiler success, synthetic
 zero controls or this candidate. P08/R07/T8.1 remain open.
 

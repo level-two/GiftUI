@@ -28,9 +28,14 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current strict Native activity — [candidate 1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1.md).
+Current strict Native boundary — [candidate1 actual screen FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1-result.md).
+Counts/replay pass; original11/336 remain and cold TLS/text allocations reject
+zero heap. Candidate unaccepted/not adopted; independent review and recommended
+source restoration precede further design. No correction used (0/2).
+
+Historical strict Native preparation — [candidate 1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1.md).
 The reviewed concrete-root/checked-scope mechanism compiles and diagnostic links
-are prepared; first actual host-first cold screen remains pending, 0/2 corrections
+were prepared; the first actual host-first cold screen was pending then, 0/2 corrections
 used. No zero-heap/P08 closure follows from compilation.
 
 Current Native boundary — **independent426-label coverage PASS per profile**.

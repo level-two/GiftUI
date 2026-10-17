@@ -116,7 +116,8 @@ The [independent review](p08-native-allocation-independent-review.md) confirms
 the failure. The maintainer selected strict-contract implementation; the
 [bounded candidate design](../../../../../../docs/implementation-designs/spec-015-p08-native-cold-static.md)
 passed independent review; [candidate 1 is prepared](p08-native-cold-static-candidate1.md)
-for its first actual cold screen, with0/2 corrective cycles used. Coverage of direct-zone/VM/temp and complete Native/Pi bounds remain open;
+and its [first actual strict screen fails](p08-native-cold-static-candidate1-result.md),
+with0/2 corrective cycles used. The candidate is unaccepted/not adopted. Coverage of direct-zone/VM/temp and complete Native/Pi bounds remain open;
 no further matched rerun is needed for this counterexample.
 
 SO-08 explicitly requires matched Dynamic costs and Static zero heap, not only

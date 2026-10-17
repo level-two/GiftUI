@@ -1,0 +1,404 @@
+{
+  "verdict": "strict Static zero-heap FAIL; candidate unaccepted/not adopted",
+  "candidate_commit": "9c19a879",
+  "corrective_cycles_used": 0,
+  "complete_allocation_bound": false,
+  "runs": {
+    "baseline-host-first": {
+      "windows": [
+        {
+          "allocations": 54394,
+          "frees": 54047,
+          "requested_total": 5014640,
+          "reserved_total": 5460128,
+          "live_requested": 193808,
+          "live_reserved": 194496,
+          "live_count": 347,
+          "peak_requested": 200060,
+          "peak_reserved": 201168,
+          "peak_rounding": 8480,
+          "peak_live_count": 386,
+          "baseline_requested": 0,
+          "baseline_reserved": 0,
+          "baseline_count": 0,
+          "window": 1,
+          "cohort": 1,
+          "name": "cold"
+        },
+        {
+          "allocations": 52677,
+          "frees": 52677,
+          "requested_total": 3077062,
+          "reserved_total": 3332176,
+          "live_requested": 193808,
+          "live_reserved": 194496,
+          "live_count": 347,
+          "peak_requested": 196874,
+          "peak_reserved": 197808,
+          "peak_rounding": 934,
+          "peak_live_count": 386,
+          "baseline_requested": 193808,
+          "baseline_reserved": 194496,
+          "baseline_count": 347,
+          "window": 2,
+          "cohort": 2,
+          "name": "reuse"
+        }
+      ],
+      "max_frames": 147,
+      "group_count": 27731
+    },
+    "candidate-silent-host-first": {
+      "windows": [
+        {
+          "allocations": 1465,
+          "frees": 1212,
+          "requested_total": 1738138,
+          "reserved_total": 1917712,
+          "live_requested": 177744,
+          "live_reserved": 178192,
+          "live_count": 253,
+          "peak_requested": 182784,
+          "peak_reserved": 191264,
+          "peak_rounding": 8480,
+          "peak_live_count": 256,
+          "baseline_requested": 0,
+          "baseline_reserved": 0,
+          "baseline_count": 0,
+          "window": 1,
+          "cohort": 1,
+          "name": "cold"
+        },
+        {
+          "allocations": 2,
+          "frees": 2,
+          "requested_total": 136,
+          "reserved_total": 160,
+          "live_requested": 177744,
+          "live_reserved": 178192,
+          "live_count": 253,
+          "peak_requested": 177812,
+          "peak_reserved": 178272,
+          "peak_rounding": 460,
+          "peak_live_count": 254,
+          "baseline_requested": 177744,
+          "baseline_reserved": 178192,
+          "baseline_count": 253,
+          "window": 2,
+          "cohort": 2,
+          "name": "reuse"
+        }
+      ],
+      "max_frames": 81,
+      "group_count": 1016
+    },
+    "candidate-host-first": {
+      "windows": [
+        {
+          "allocations": 54379,
+          "frees": 54037,
+          "requested_total": 5030388,
+          "reserved_total": 5475936,
+          "live_requested": 209984,
+          "live_reserved": 210672,
+          "live_count": 342,
+          "peak_requested": 216203,
+          "peak_reserved": 217312,
+          "peak_rounding": 8480,
+          "peak_live_count": 381,
+          "baseline_requested": 0,
+          "baseline_reserved": 0,
+          "baseline_count": 0,
+          "window": 1,
+          "cohort": 1,
+          "name": "cold"
+        },
+        {
+          "allocations": 52677,
+          "frees": 52677,
+          "requested_total": 3077062,
+          "reserved_total": 3332176,
+          "live_requested": 209984,
+          "live_reserved": 210672,
+          "live_count": 342,
+          "peak_requested": 213050,
+          "peak_reserved": 213984,
+          "peak_rounding": 934,
+          "peak_live_count": 381,
+          "baseline_requested": 209984,
+          "baseline_reserved": 210672,
+          "baseline_count": 342,
+          "window": 2,
+          "cohort": 2,
+          "name": "reuse"
+        }
+      ],
+      "max_frames": 131,
+      "group_count": 27716
+    },
+    "candidate-ordinary": {
+      "windows": [
+        {
+          "allocations": 96675,
+          "frees": 96313,
+          "requested_total": 8796314,
+          "reserved_total": 9640896,
+          "live_requested": 228288,
+          "live_reserved": 228976,
+          "live_count": 362,
+          "peak_requested": 279021,
+          "peak_reserved": 287808,
+          "peak_rounding": 8787,
+          "peak_live_count": 412,
+          "baseline_requested": 0,
+          "baseline_reserved": 0,
+          "baseline_count": 0,
+          "window": 1,
+          "cohort": 1,
+          "name": "cold"
+        },
+        {
+          "allocations": 94815,
+          "frees": 94815,
+          "requested_total": 6818164,
+          "reserved_total": 7472368,
+          "live_requested": 228288,
+          "live_reserved": 228976,
+          "live_count": 362,
+          "peak_requested": 281623,
+          "peak_reserved": 290464,
+          "peak_rounding": 8841,
+          "peak_live_count": 425,
+          "baseline_requested": 228288,
+          "baseline_reserved": 228976,
+          "baseline_count": 362,
+          "window": 2,
+          "cohort": 2,
+          "name": "reuse"
+        }
+      ],
+      "max_frames": 122,
+      "group_count": 38579
+    }
+  },
+  "original_action_sites": {
+    "baseline-host-first": {
+      "pipeline-admit": {
+        "count": 3,
+        "requested": 80,
+        "usable": 80,
+        "retained_after_reuse": 16,
+        "groups": [
+          2306,
+          2307,
+          2804
+        ]
+      },
+      "gesture-down": {
+        "count": 9,
+        "requested": 336,
+        "usable": 336,
+        "retained_after_reuse": 48,
+        "groups": [
+          2308,
+          2309,
+          2310,
+          2311,
+          2312,
+          2313,
+          2314,
+          2315,
+          2316
+        ]
+      },
+      "pipeline-dispatch": {
+        "count": 2,
+        "requested": 32,
+        "usable": 32,
+        "retained_after_reuse": 16,
+        "groups": [
+          2817,
+          2818
+        ]
+      },
+      "runtime-bridge-dispatch": {
+        "count": 2,
+        "requested": 64,
+        "usable": 64,
+        "retained_after_reuse": 16,
+        "groups": [
+          2819,
+          2820
+        ]
+      }
+    },
+    "candidate-silent-host-first": {
+      "pipeline-admit": {
+        "count": 3,
+        "requested": 80,
+        "usable": 80,
+        "retained_after_reuse": 16,
+        "groups": [
+          990,
+          991,
+          1001
+        ]
+      },
+      "gesture-down": {
+        "count": 9,
+        "requested": 336,
+        "usable": 336,
+        "retained_after_reuse": 48,
+        "groups": [
+          992,
+          993,
+          994,
+          995,
+          996,
+          997,
+          998,
+          999,
+          1000
+        ]
+      },
+      "pipeline-dispatch": {
+        "count": 2,
+        "requested": 32,
+        "usable": 32,
+        "retained_after_reuse": 16,
+        "groups": [
+          1002,
+          1003
+        ]
+      },
+      "runtime-bridge-dispatch": {
+        "count": 2,
+        "requested": 64,
+        "usable": 64,
+        "retained_after_reuse": 16,
+        "groups": [
+          1004,
+          1005
+        ]
+      }
+    },
+    "candidate-host-first": {
+      "pipeline-admit": {
+        "count": 3,
+        "requested": 80,
+        "usable": 80,
+        "retained_after_reuse": 16,
+        "groups": [
+          2286,
+          2287,
+          2788
+        ]
+      },
+      "gesture-down": {
+        "count": 11,
+        "requested": 992,
+        "usable": 992,
+        "retained_after_reuse": 688,
+        "groups": [
+          2288,
+          2289,
+          2290,
+          2291,
+          2292,
+          2293,
+          2294,
+          2295,
+          2296,
+          2297,
+          2298
+        ]
+      },
+      "pipeline-dispatch": {
+        "count": 2,
+        "requested": 32,
+        "usable": 32,
+        "retained_after_reuse": 16,
+        "groups": [
+          2801,
+          2802
+        ]
+      },
+      "runtime-bridge-dispatch": {
+        "count": 2,
+        "requested": 64,
+        "usable": 64,
+        "retained_after_reuse": 16,
+        "groups": [
+          2803,
+          2804
+        ]
+      }
+    },
+    "candidate-ordinary": {
+      "pipeline-admit": {
+        "count": 2,
+        "requested": 32,
+        "usable": 32,
+        "retained_after_reuse": 16,
+        "groups": [
+          7821,
+          7822
+        ]
+      },
+      "gesture-down": {
+        "count": 5,
+        "requested": 208,
+        "usable": 208,
+        "retained_after_reuse": 16,
+        "groups": [
+          7823,
+          7824,
+          7825,
+          7826,
+          7827
+        ]
+      },
+      "pipeline-dispatch": {
+        "count": 2,
+        "requested": 32,
+        "usable": 32,
+        "retained_after_reuse": 16,
+        "groups": [
+          8331,
+          8332
+        ]
+      },
+      "runtime-bridge-dispatch": {
+        "count": 2,
+        "requested": 64,
+        "usable": 64,
+        "retained_after_reuse": 16,
+        "groups": [
+          8333,
+          8334
+        ]
+      }
+    }
+  },
+  "independent_cold_counterexamples": {
+    "tls": {
+      "group": 0,
+      "count": 1,
+      "requested_usable": 16
+    },
+    "text_validation_metadata": {
+      "groups": [
+        1,
+        2
+      ],
+      "count": 2,
+      "requested_usable": 64
+    }
+  },
+  "fixture_reuse_literal": {
+    "group": 1015,
+    "count": 2,
+    "requested": 136,
+    "usable": 160
+  }
+}
