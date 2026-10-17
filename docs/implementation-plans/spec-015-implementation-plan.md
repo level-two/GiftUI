@@ -30,9 +30,9 @@ superseded_by: null
 Current Native boundary — **independent426-label coverage PASS per profile**.
 The [combined result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-native-combined-coverage-result.md)
 qualifies384fresh controls +19matching preparation +23retained runtime/projection/
-exclusivity labels without rewriting raw focused statuses. The [validated matched
-allocation protocol](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-allocation-protocol-result.md)
-is ready; allocation attribution/coverage, actual Native/Pi stack/physical ledgers,
+exclusivity labels without rewriting raw focused statuses. The first matched
+diagnostic failed collector limits; the [repaired allocation protocol](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-allocation-diagnostic-repair1.md)
+is ready for one rerun; allocation attribution/coverage, actual Native/Pi stack/physical ledgers,
 caller/criterion reconciliation and P08 exit remain open.
 
 Current Pi evidence — **complete409 and early image/ABI PASS; resource fit open**.

@@ -8,7 +8,7 @@ temporary-storage cost, complete stack bound, or resource fit**.
 From the repository root, the sequential mechanical command is:
 
 ```sh
-python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-allocation-diagnostic/measure.py --output .build/contracts/p08-native-allocation-matched-20261017 --run
+python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-allocation-diagnostic/measure.py --output .build/contracts/p08-native-allocation-matched-repair1-20261017 --run
 ```
 
 The output directory must be new. Omit `--run` for preparation/validation only.
@@ -38,7 +38,9 @@ zone malloc/calloc/realloc/free/valloc/memalign/batch, and their SDK typed varia
 Only an outermost public API event on the owner thread enters the ledger; nested
 hooks are counted separately. TLS is initialized before measurement. Foreign
 thread events invalidate the run. Fixed pointer/group tables have explicit
-saturation flags. Cold retained records remain present in reuse; report its
+saturation flags. There is no in-process full-stack-path group table: each exact
+allocation/retirement event and its complete captured PC vector is streamed via
+a preopened file and fixed64KiB buffer. Cold retained records remain present in reuse; report its
 baseline, new allocation counts/totals, absolute live and peaks. The `frees` field
 counts tracked records retired, including successful realloc replacement. Unknown frees
 refer to pre-window/unobserved allocations and remain visible, never subtracted.
@@ -46,11 +48,18 @@ refer to pre-window/unobserved allocations and remain visible, never subtracted.
 Standalone validation executes in a separate process, so known allocations do
 not warm the matched workload. It checks23 positive route families (including
 realloc and batch counts), retained cold→reuse release, and foreign-thread
-rejection. The negative direct-zone control is expected to allocate/free113bytes
+rejection. Deep32-call capture must reach the driver; deliberate two-frame capture,
+one-record/one-PC capacities and closed-output I/O must be rejected by the same
+flag predicate used for the matched run. Strict replay also rejects incomplete
+records and truncated-root captures. A synthetic20,000-path control shares the
+first eight PCs but must retain all distinct full paths; it is collector evidence
+only, not application execution. The negative direct-zone control is expected to allocate/free113bytes
 while yielding zero public events. That is a **coverage failure of the method**,
 not an allocator or profile failure. Keep it in every packet. Any positive
 control failure, foreign event, saturation, or unexpected entry count stops
-interpretation. Frame truncation/unknown symbols require attribution qualification.
+interpretation. Frame truncation, failure to reach the driver frame, or trace I/O failure rejects
+the run. Unknown symbols still require attribution qualification. The runner stops
+at the first failed process; it does not retry or advance to Static automatically.
 
 `requested` includes any Swift header/control already inside the allocation.
 `malloc_size` is rounded usable client storage; reserved-minus-requested is
@@ -63,14 +72,27 @@ reporting storage are diagnostic costs; the output gives array sizes and a
 minimum globals charge, while the library's section inventory supplies its full
 linked charge. Nothing from the observer is charged as profile-owned payload.
 
-Per-allocation groups preserve cohort, public route, requested/reserved totals,
-live extents and up to24 frame-chain return PCs. Capture is nonallocating; ARM64
-frame pointers must remain aligned, monotonic and within the recorded pthread
-stack. Return PCs have authentication stripped. Tail calls/omitted frames may
-hide callers even without truncation. `dladdr` runs after both windows and records
-image/base/offset/symbol; use preserved `nm -n` and Mach-O VM addresses to resolve
-private main-image symbols, then pinned Swift demangling. Do not infer ownership
-from an unresolved stack or subtract the whole Static run from Dynamic.
+Each binary event has a monotonic sequence and window/cohort. Allocation records
+include pointer, requested/reserved sizes, public route and up to512 return PCs;
+retirement records identify the exact original allocation sequence. Capture is
+nonallocating; ARM64 frame pointers must remain aligned and monotonic within the
+pthread stack, and must reach the actual caller frame saved by `probe_begin`.
+Reaching the configured limit or an invalid/missing chain invalidates the run.
+Return PCs have authentication stripped. This is a frame-chain attribution
+capture, not a complete feasible-path stack proof: tail calls/omitted frames can
+still hide functions. The512-PC limit is a collector limit, not a stack budget.
+
+`dladdr` runs after both windows, once per distinct PC, with image/base/offset/
+symbol. Use preserved `nm -n` and Mach-O VM addresses for private main-image
+symbols, then pinned Swift demangling. `replay.py` validates exact event ordering,
+allocation/retirement identity, baseline continuity and every client-live/count/
+peak field against the C ledger. It groups by cohort, route and **all exact PC
+bytes**; hashing never merges unequal vectors, and no fixed group capacity drops
+paths. Groups retain requested/reserved totals, final live extents and group peak.
+The compressed JSON group output retains complete vectors; PC symbol dictionaries
+are emitted only once to avoid the original repeated-symbol expansion. Observer
+PC table, event buffer and maximum capture-local storage remain separately charged.
+Do not infer ownership from an unresolved stack or subtract Static from Dynamic.
 
 ## Required attribution and coverage follow-up
 

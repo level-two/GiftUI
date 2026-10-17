@@ -37,8 +37,11 @@ def main():
 
     def execute(argv, name):
         commands.append({'argv': list(map(str, argv)), 'log': name})
-        with (out / name).open('wb') as log:
-            subprocess.run(list(map(str, argv)), check=True, stdout=log, stderr=subprocess.STDOUT)
+        try:
+            with (out / name).open('wb') as log:
+                subprocess.run(list(map(str, argv)), check=True, stdout=log, stderr=subprocess.STDOUT)
+        finally:
+            (out / 'commands.json').write_text(json.dumps(commands, indent=2) + '\n')
 
     manifest = {'purpose': 'diagnostic-public-allocation-observations-not-conformance',
                 'platform': platform.platform(), 'profiles': {}, 'sources': {},
@@ -58,10 +61,19 @@ def main():
     execute(flags + ['-dynamiclib', '-Wl,-install_name,@rpath/libP08AllocationObserver.dylib', HERE / 'AllocationObserver.c', '-o', dylib], 'observer-build.log')
     library = ['-L' + str(out), '-lP08AllocationObserver', '-Wl,-rpath,@executable_path']
     execute(flags + ['-DVALIDATE_ONLY', HERE / 'Driver.c'] + library + ['-o', out / 'validate'], 'validation-build.log')
-    execute([out / 'validate'], 'validation.log')
+    execute([out / 'validate', out / 'validation.events'], 'validation.log')
+    execute([out / 'validate', out / 'negative-io.events', '--negative-io'], 'negative-io.log')
     validation = (out / 'validation.log').read_text()
     if 'VALIDATION failures=0' not in validation or 'direct_zone_callback expected=0 bypass=1' not in validation:
         raise SystemExit('missing positive/negative validation controls')
+    if 'NEGATIVE io-rejected=1' not in (out / 'negative-io.log').read_text() or 'NEGATIVE truncation-rejected=1 record-overflow-rejected=1 pc-overflow-rejected=1' not in validation:
+        raise SystemExit('missing fail-closed negative controls')
+    execute([sys.executable, '-B', HERE / 'replay.py', out / 'validation.events', out / 'validation.log', out / 'validation-groups.json.gz', '--validation'], 'validation-replay.log')
+    invalid = subprocess.run([sys.executable, '-B', str(HERE / 'replay.py'), str(out / 'negative-io.events'), str(out / 'negative-io.log'), str(out / 'invalid-io-groups.json.gz')], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    (out / 'negative-io-replay-rejected.log').write_bytes(invalid.stdout)
+    if invalid.returncode == 0:
+        raise SystemExit('replay accepted invalid I/O trace')
+    execute([sys.executable, '-B', HERE / 'test_replay.py', out], 'synthetic-replay-controls.log')
     driver = out / 'Driver.o'
     execute(flags + ['-c', HERE / 'Driver.c', '-o', driver], 'driver-build.log')
     for profile, retained in RETAINED.items():
@@ -124,10 +136,21 @@ def main():
             for profile in RETAINED:
                 name = f'{profile}-{repeat}'
                 with (out / (name + '.stdout')).open('wb') as stdout, (out / (name + '.stderr')).open('wb') as stderr:
-                    subprocess.run([str(out / (profile + '-counter'))], check=True, stdout=stdout, stderr=stderr)
+                    command = [str(out / (profile + '-counter')), str(out / (name + '.events'))]
+                    commands.append({'argv': command, 'stdout': name + '.stdout', 'stderr': name + '.stderr'})
+                    (out / 'commands.json').write_text(json.dumps(commands, indent=2) + '\n')
+                    try:
+                        subprocess.run(command, check=True, stdout=stdout, stderr=stderr)
+                    except subprocess.CalledProcessError as error:
+                        stdout.flush(); stderr.flush()
+                        (out / 'run-failure.json').write_text(json.dumps({'name': name, 'exit': error.returncode, 'further_runs_started': False}) + '\n')
+                        failed_artifacts = {str(p.relative_to(out)): digest(p) for p in out.rglob('*') if p.is_file()}
+                        (out / 'artifact-hashes.json').write_text(json.dumps(failed_artifacts, indent=2) + '\n')
+                        raise
                 text = (out / (name + '.stderr')).read_text()
                 summary = [s for s in text.splitlines() if s.startswith(('HOST ', 'ENTRY ', 'WINDOW ', 'CONTROL '))]
                 (out / (name + '-summary.txt')).write_text('\n'.join(summary) + '\n')
+                execute([sys.executable, '-B', HERE / 'replay.py', out / (name + '.events'), out / (name + '.stderr'), out / (name + '-groups.json.gz')], name + '-replay.log')
                 print(name + ': ' + next(s for s in summary if s.startswith('ENTRY ')))
     for profile in manifest['profiles'].values():
         for obj, expected in profile['objects'].items():

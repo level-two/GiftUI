@@ -110,8 +110,9 @@ established. The frozen source requires no new compiler/lifetime experiment.
 
 ## 3. Matched Native allocation and complete physical/stack ledger
 
-The [validated separate diagnostic protocol](p08-native-allocation-protocol-result.md)
-is ready for sequential matched execution. Public-route coverage is qualified;
+The first matched diagnostic failed its collector; [repair1 and the corrected
+ready protocol](p08-native-allocation-diagnostic-repair1.md) preserve the failure
+and are ready for one sequential rerun. Public-route coverage is qualified;
 direct-zone/VM/temp reachability, attribution and complete host bounds remain open.
 
 SO-08 explicitly requires matched Dynamic costs and Static zero heap, not only

@@ -1,0 +1,126 @@
+{
+  "scope": "first failed Dynamic diagnostic, not accepted workload/profile allocation evidence",
+  "directory": ".build/contracts/p08-native-allocation-matched-20261017",
+  "files": {
+    "manifest.json": {
+      "bytes": 28898,
+      "sha256": "08669a633218fddf61e5575f49d67773a5e17b9d6f4bfa208a15ab2e9e178900"
+    },
+    "commands.json": {
+      "bytes": 12265,
+      "sha256": "eb17e8ebc5b53a324e27f598128f6a3a3955fb8e76009593e56ba5c2fcce48ae"
+    },
+    "dynamic-1.stderr": {
+      "bytes": 77521832,
+      "sha256": "e441668da93e49ecf1cb7d74977551764f8fa86ae51512f87076e8f79620bf4e"
+    },
+    "dynamic-1.stdout": {
+      "bytes": 1003738,
+      "sha256": "5b8e6826d0bee647c314fb0403620d36746c90841e8f52bdeb48d5904affcbf2"
+    },
+    "dynamic-counter": {
+      "bytes": 5494368,
+      "sha256": "4c1c0f4e31f353594e5d54f6bfb8b2fcf72488122e2e6b6324b8e71894e72ab8"
+    },
+    "static-counter": {
+      "bytes": 5494368,
+      "sha256": "a3ddd2f3cd1695f4765210c41a61289ee18a9d45731e5d289e45e813754b5ec7"
+    },
+    "Driver.o": {
+      "bytes": 5440,
+      "sha256": "9457fc0bacc6b5387464dfa46ee0c20b2e6a7b58574fe403290581937c51865b"
+    },
+    "libP08AllocationObserver.dylib": {
+      "bytes": 55472,
+      "sha256": "cd440f7ae7f76b924810b701401943c8397223c90abf4de1cd541d400bae5662"
+    }
+  },
+  "windows": {
+    "cold": {
+      "allocations": "97020",
+      "frees": "96656",
+      "requested_total": "9333497",
+      "reserved_total": "10261456",
+      "live_requested": "228272",
+      "live_reserved": "228960",
+      "live_count": "364",
+      "peak_requested": "287371",
+      "peak_reserved": "296208",
+      "peak_rounding": "9137",
+      "peak_live_count": "436",
+      "baseline_requested": "0",
+      "baseline_reserved": "0",
+      "baseline_count": "0",
+      "unknown_frees": "0",
+      "failures": "0",
+      "nested": "85273",
+      "foreign": "0",
+      "saturated": "27236",
+      "truncated": "93069"
+    },
+    "reuse": {
+      "allocations": "95154",
+      "frees": "95154",
+      "requested_total": "7355233",
+      "reserved_total": "8092752",
+      "live_requested": "228272",
+      "live_reserved": "228960",
+      "live_count": "364",
+      "peak_requested": "282845",
+      "peak_reserved": "291760",
+      "peak_rounding": "8915",
+      "peak_live_count": "436",
+      "baseline_requested": "228272",
+      "baseline_reserved": "228960",
+      "baseline_count": "364",
+      "unknown_frees": "0",
+      "failures": "0",
+      "nested": "83430",
+      "foreign": "0",
+      "saturated": "95154",
+      "truncated": "92147"
+    }
+  },
+  "groups": 8192,
+  "unknown_pc_frames": 0,
+  "host": "HOST rlimit_stack_soft=8372224 rlimit_stack_hard=67092480 pthread_stack_size=8372224 pthread_stack_high=0x16d5b4000",
+  "entry": "ENTRY cold=1734943 reuse=1734943",
+  "control": "CONTROL records=2097152 groups=2097152 globals_min=4194464 stack_low=0x16cdb8000 stack_high=0x16d5b4000",
+  "routes": {
+    "malloc_type_malloc": 7233,
+    "malloc_type_calloc": 136,
+    "malloc_type_realloc": 130,
+    "malloc_zone_malloc": 12,
+    "malloc_zone_calloc": 10,
+    "malloc_type_posix_memalign": 31,
+    "malloc_type_aligned_alloc": 1,
+    "malloc": 639
+  },
+  "frame_counts": {
+    "11": 59,
+    "13": 15,
+    "20": 42,
+    "21": 88,
+    "19": 291,
+    "17": 51,
+    "10": 96,
+    "12": 18,
+    "16": 49,
+    "18": 9,
+    "22": 10,
+    "24": 7391,
+    "23": 23,
+    "7": 8,
+    "8": 5,
+    "15": 5,
+    "9": 32
+  },
+  "unique_pcs": 1363,
+  "unique_prefixes": {
+    "2": 67,
+    "8": 1009,
+    "12": 2613,
+    "16": 5193,
+    "24": 8192
+  }
+}

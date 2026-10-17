@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-allocation-diagnostic/replay.py", line 135, in <module>
+    main()
+  File "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-allocation-diagnostic/replay.py", line 130, in main
+    summary = replay(args.events, args.stderr, args.output, args.validation)
+  File "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-allocation-diagnostic/replay.py", line 24, in replay
+    assert len(reports) == 2 and [r[0] for r in reports] == ['cold', 'reuse'], 'missing matched windows'
+AssertionError: missing matched windows
