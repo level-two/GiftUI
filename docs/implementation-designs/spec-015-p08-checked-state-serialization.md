@@ -16,6 +16,13 @@ superseded_by: null
 
 # P08 checked State serialization
 
+Current test-runtime boundary: linker setup2 PASS; linked runner aborts in dyld
+before XCTest on direct XCTestCore dependency. No maintained test/provider ran.
+The linked WIP receipt freezes that binary/log and prepares an unexecuted same-binary
+runtime continuation with a complete four-framework-root/two-library-root process
+environment. No source2/2 reset or production feasibility verdict. Earlier setup
+states below are historical.
+
 Current runner setup: user-approved macOS setup1 reached link and failed on a
 malformed framework argument plus missing installed XCTest/Testing library search
 paths. No maintained regression/provider ran. The linked WIP receipt freezes the

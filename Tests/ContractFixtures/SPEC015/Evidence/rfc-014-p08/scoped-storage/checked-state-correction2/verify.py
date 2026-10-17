@@ -43,4 +43,18 @@ live = Path(prepared_link['new_file'])
 if live.exists():
     assert hashlib.sha256(live.read_bytes()).hexdigest() == prepared_link['sha256']
 assert set(link_manifest['linker-setup2-prepared.tar.gz']['members']) == {'continue-provider-linker-setup2.py'}
-print('PASS: setup1 link failure preserved; one separate linker setup2 file prepared, not executed')
+print('PASS: setup1 failure and original setup2 preparation frozen; runtime follow-up verified separately')
+
+runtime_manifest = json.loads((root / 'runtime-setup-manifest.json').read_text())
+for filename, record in runtime_manifest.items():
+    assert hashlib.sha256((root / filename).read_bytes()).hexdigest() == record['archive_sha256']
+    with tarfile.open(root / filename, 'r:gz') as archive:
+        assert set(archive.getnames()) == set(record['members'])
+        for name, expected in record['members'].items():
+            assert hashlib.sha256(archive.extractfile(name).read()).hexdigest() == expected, name
+runtime_prepared = json.loads((root / 'runtime-setup3-preparation.json').read_text())
+live = Path(runtime_prepared['new_file'])
+if live.exists():
+    assert hashlib.sha256(live.read_bytes()).hexdigest() == runtime_prepared['sha256']
+assert set(runtime_manifest['runtime-setup3-prepared.tar.gz']['members']) == {'continue-provider-runtime-setup3.py'}
+print('PASS: linked binary/dyld failure frozen; same-binary runtime continuation prepared, unexecuted')

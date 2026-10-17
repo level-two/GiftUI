@@ -1,5 +1,11 @@
 # Final checked-State correction — WIP, runner not executed
 
+Latest boundary: linker setup2 **compiles/links PASS**. The linked binary then
+terminates in dyld (-6) before XCTest because XCTestCore cannot be found for
+XCTestSwiftSupport's direct dependency. No maintained test/provider ran. A new
+runtime-only continuation is actually prepared and archived, but unexecuted.
+Source2/2 remains pending/unaccepted. Earlier “setup2 unexecuted” text is historical.
+
 Current follow-up: the user approved execution after the earlier readiness
 erratum. The parent ran the exact prepared continuation once. macOS runner/test
 Swift source and selector compile, but **setup1 link fails**; no regression or
@@ -152,3 +158,57 @@ change is selected. No setup2 compiler/test command ran during preparation.
 also compares the live prepared file. Previous archives/manifests are unchanged.
 The next step is independent read-only command review, then mechanical execution
 through the tool approval flow under the user's existing proceed instruction.
+
+## Runtime-only setup3: same linked binary, complete search roots
+
+`runtime-setup2-evidence.tar.gz` freezes the successful setup2 compile/link argv/log,
+original failed runner argv/dyld log, checks snapshot, exact linked binary and
+read-only dependency traversal. The binary was not patched or relinked afterward.
+My prior claim that XCTest.framework's loader-relative rpaths would resolve all
+support dependencies was incorrect: XCTestSwiftSupport needs XCTestCore directly,
+and that sibling image's rpaths are not available for this lookup. The raw dyld
+log proves failure before any XCTest method ran.
+
+Read-only recursive `otool -L` inspection found **26 installed non-system images,
+zero unresolved dependencies** under the explicit roots below. Absolute `/usr/lib`
+and `/System/Library` dependencies remain the installed OS dyld-cache boundary;
+this is an installed-file closure, not proof of successful loading. The traversal
+uses default slices because installed CoreDevice has arm64e rather than an arm64
+slice; no application/compiler invocation occurred during inspection. It covers
+XCTestSwiftSupport/XCTestCore/XCTestSupport, Testing/_Testing_Foundation,
+XCUIAutomation/XCTAutomationSupport, Xcode symbolication/result/connection/
+instruments frameworks, CoreDevice/Utilities, loader-relative DTRemoteServices
+and absolute Mercury. Nested/absolute paths exist without an added search root.
+
+The prepared test subprocess alone receives `DYLD_FRAMEWORK_PATH`, in order:
+
+1. `/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks`
+2. `/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks`
+3. `/Applications/Xcode.app/Contents/SharedFrameworks`
+4. `/Library/Developer/PrivateFrameworks`
+
+Its `DYLD_LIBRARY_PATH` contains the two already reviewed library directories,
+Xcode platform `Developer/usr/lib` then the pinned6.4 `macosx/testing` directory.
+This pins the qualified Xcode interop1 preference without overriding the Swift
+runtime directory. Existing executable rpaths and OS system libraries stay as
+linked. All26 image bytes plus runner/source/macro bytes are checked by hash
+before invocation. No global environment, library installation, production
+compiler flags, framework contract, source assertion or binary changes are made.
+Provider subprocesses inherit the original environment, not these runner-only
+DYLD variables.
+
+New command for independent inspection and parent tool-approved execution:
+
+```sh
+python3 .build/contracts/p08-checked-state-correction2/continue-provider-runtime-setup3.py
+```
+
+The actual file is preserved in one-member `runtime-setup3-prepared.tar.gz`, with
+archive/live hashes in the verifier. It expects the exact six recorded prior
+stages, refuses regression-output and named command/log receipt overwrites, invokes
+**the same linked binary once** under the explicit environment, and stops on any
+failure. That binary still executes the unchanged maintained regression and
+requires exactly one execution, zero total failures, zero skips. Only PASS permits
+the unchanged remaining provider recipes once. No source cycle reset, production
+repair, prewarm, application workload or broad suite is included. No setup3 command
+was executed in this preparation; final strict feasibility remains unproved.

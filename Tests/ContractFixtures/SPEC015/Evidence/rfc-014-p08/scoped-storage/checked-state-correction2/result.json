@@ -1,5 +1,5 @@
 {
-  "disposition": "WIP: final source gate pending; macOS runner setup1 link failure; setup2 prepared unexecuted",
+  "disposition": "WIP: source gate pending; setup2 link PASS, runner dyld failure before test; runtime setup3 prepared unexecuted",
   "initial": "1/1 consumed",
   "corrections": "2/2 in progress; no further source variant",
   "historical": "2/2 closed",
@@ -486,6 +486,79 @@
         "-o",
         "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/actual-output-regression"
       ]
+    },
+    {
+      "name": "regression-compile-macos-linker-setup2",
+      "exit": 0,
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-swift-version",
+        "6",
+        "-target",
+        "arm64-apple-macosx15.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/test-cache",
+        "-disable-sandbox",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/macro",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/arm64-apple-macosx/debug/Modules-tool",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/prebuilts/swift-syntax/603.0.2/swift-6.4.0-RELEASE-macos_universal-MacroSupport/Modules",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/checkouts/swift-syntax/Sources/_SwiftSyntaxCShims/include",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/checkouts/swift-syntax/Sources/_SwiftLibraryPluginProviderCShims/include",
+        "-I",
+        "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-parse-as-library",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/TestMain-macos.swift",
+        "/Users/eugene/work/GiftUI/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/macro/CanvasWitnessLowering.swift.o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/macro/FiniteSourceLowering.swift.o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/macro/GiftUIMacros.swift.o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/macro/ObservableStateHostMacro.swift.o",
+        "-L",
+        "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/prebuilts/swift-syntax/603.0.2/swift-6.4.0-RELEASE-macos_universal-MacroSupport/lib",
+        "-lMacroSupport",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xlinker",
+        "-rpath",
+        "-Xlinker",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xlinker",
+        "-rpath",
+        "-Xlinker",
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/lib/swift/macosx",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/actual-output-regression",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing",
+        "-Xlinker",
+        "-rpath",
+        "-Xlinker",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-Xlinker",
+        "-rpath",
+        "-Xlinker",
+        "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing"
+      ]
+    },
+    {
+      "name": "actual-output-regression",
+      "exit": -6,
+      "command": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/actual-output-regression"
+      ]
     }
   ],
   "historical_ready_command_first_preparation": [
@@ -494,7 +567,7 @@
   ],
   "ready_command": [
     "python3",
-    ".build/contracts/p08-checked-state-correction2/continue-provider-linker-setup2.py"
+    ".build/contracts/p08-checked-state-correction2/continue-provider-runtime-setup3.py"
   ],
   "confirmed_not_created_at_original_snapshot": [
     "regression-compile-macos-setup1-command.json",
@@ -506,5 +579,11 @@
     "P08CounterPresentation-command.json"
   ],
   "setup1_execution": "User approved; parent executed exact first prepared continuation. Swift runner/test source compiled but link failed. No regression method or provider ran.",
-  "new_mechanical_disposition": "Parent authorizes separately scoped linker setup2 preparation only: remove malformed -F/-Xcc pair, add exactly two installed -L/rpath directories. No source correction, allowance reset or execution in this preparation."
+  "new_mechanical_disposition": "Parent authorizes separately scoped linker setup2 preparation only: remove malformed -F/-Xcc pair, add exactly two installed -L/rpath directories. No source correction, allowance reset or execution in this preparation.",
+  "historical_ready_command_linker_setup2": [
+    "python3",
+    ".build/contracts/p08-checked-state-correction2/continue-provider-linker-setup2.py"
+  ],
+  "setup2_execution": "User-authorized parent execution: setup2 link PASS; original actual-output-regression terminated -6 in dyld before XCTest because direct XCTestSwiftSupport dependency XCTestCore unresolved; no test/provider ran.",
+  "runtime_setup3": "Prepared only, same binary SHA pinned, no relink. Runner-only explicit four framework roots/two library roots; full26-image installed non-system dependency traversal0 unresolved; static closure is not execution proof."
 }

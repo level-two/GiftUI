@@ -1,0 +1,20 @@
+{
+  "runtime-setup2-evidence.tar.gz": {
+    "archive_sha256": "f3763f791f52d4ce9ec7599d5ff152210ae1c7f87c3697754b738b9e273f9ac4",
+    "members": {
+      "regression-compile-macos-linker-setup2-command.json": "60af41055ee410f256d84181d32ee2cb6c458bdca787baa280f4453684aa7278",
+      "regression-compile-macos-linker-setup2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual-output-regression-command.json": "7b8991b8f9c3bcd9578ad761f805c1dde072ee27e030ab365729e139e569f1bf",
+      "actual-output-regression.log": "b44533f78ef1aa7a4fc74682d22188755ea4e3fd3c1cff6ee38ccaabd278364e",
+      "actual-output-regression": "736a073f01c440f4ebeba272bbf239b2f3f95448bfa1e2c789066b83036f6ab3",
+      "checks.json": "d4d845e9f513c711e52759e4bdefd16da93fac8db1fdc55e0614ecba98d3bbee",
+      "runtime-dependency-inspection.json": "1d774489766b186a8f70d4abb5607a1a8e64cfcc268a5b32b5946d4b2bae2430"
+    }
+  },
+  "runtime-setup3-prepared.tar.gz": {
+    "archive_sha256": "94f8b1cb1f0125f35231ef21157e5e3226ee6e957ee106218a1b510c3d8a37a2",
+    "members": {
+      "continue-provider-runtime-setup3.py": "2405b14c1637607570dd622cdf0b4142ad763699e4473d118f2fd7a53b208136"
+    }
+  }
+}

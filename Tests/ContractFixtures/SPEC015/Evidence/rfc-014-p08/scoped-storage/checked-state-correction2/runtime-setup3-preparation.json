@@ -1,0 +1,74 @@
+{
+  "status": "prepared only; same linked binary; not executed",
+  "new_file": "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/continue-provider-runtime-setup3.py",
+  "sha256": "2405b14c1637607570dd622cdf0b4142ad763699e4473d118f2fd7a53b208136",
+  "binary": "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/actual-output-regression",
+  "binary_sha256": "736a073f01c440f4ebeba272bbf239b2f3f95448bfa1e2c789066b83036f6ab3",
+  "prior_checks": [
+    [
+      "macro-compile",
+      0
+    ],
+    [
+      "macro-link",
+      0
+    ],
+    [
+      "regression-compile",
+      1
+    ],
+    [
+      "regression-compile-macos-setup1",
+      1
+    ],
+    [
+      "regression-compile-macos-linker-setup2",
+      0
+    ],
+    [
+      "actual-output-regression",
+      -6
+    ]
+  ],
+  "framework_environment": [
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+    "/Applications/Xcode.app/Contents/SharedFrameworks",
+    "/Library/Developer/PrivateFrameworks"
+  ],
+  "library_environment": [
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+    "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing"
+  ],
+  "installed_closure_hashes": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/actual-output-regression": "736a073f01c440f4ebeba272bbf239b2f3f95448bfa1e2c789066b83036f6ab3",
+    "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing/libTesting.dylib": "f5fbcbe04833975c2cef402e03e7ea8dc84a2af800af2219bb498c9956760cf5",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib": "4b7026c2345b6e3cae23b8caefa52784a98bf96e3b895f9a42fe518aeb420c5b",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/lib_TestingInterop.dylib": "b6f6b71fae903978fa7a51381d429c536844a59b87935478c2617fc4dc1901b0",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Versions/A/XCTest": "313d3fe8f343fe09b3000bfce5f9058fad168e997c46aff0826609d9ca047021",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks/XCTestCore.framework/Versions/A/XCTestCore": "e8cba15781d8ae4b4935b88474b775cec0584c107793ee99c1b44276aa22e186",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Versions/A/Testing": "96b6c248ff012a338421f468bb4ab26c3b2aafa75e6d94fc430b75f552e64677",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/_Testing_Foundation.framework/Versions/A/_Testing_Foundation": "9461232bf009e0a54f3919a022ceeea97600fe095298294180b32e81ef070e57",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks/XCTAutomationSupport.framework/Versions/A/XCTAutomationSupport": "d3d4e2e845c0614d7572cc6fd4204d244c3e3e99d125628788e2de2aeb7b85b4",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCUIAutomation.framework/Versions/A/XCUIAutomation": "90d2c3dbbb7b2eecda8c9982eee4461bc91afa96687a7374eabe1de925ed4e65",
+    "/Library/Developer/PrivateFrameworks/CoreDevice.framework/Versions/A/CoreDevice": "b10a6aebb8412c2305468e29ad04fb185216f5e78db8b3e8f986407d1de7730a",
+    "/Applications/Xcode.app/Contents/SharedFrameworks/CoreSymbolicationDT.framework/Versions/A/CoreSymbolicationDT": "d27d695581d1a353651bee94b5b5e3a46b9f4f00b2e41026374f98fff1f0675e",
+    "/Applications/Xcode.app/Contents/SharedFrameworks/ResultDataPublisher.framework/Versions/A/ResultDataPublisher": "064b833f2b40a6b5178cec02976dfa9f6a0050845ac4be702e021027544d6cbe",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks/XCTestSupport.framework/Versions/A/XCTestSupport": "c176aca309292e1b5280d7de1ca76fb9ed0c94066db7dd658fd3f9d8e2c133b3",
+    "/Applications/Xcode.app/Contents/SharedFrameworks/DTXConnectionServices.framework/Versions/A/DTXConnectionServices": "ae41aa3b8bab6d795ab07fb767a6987f653f859c436afb681e86eec2d9ff8f6a",
+    "/Applications/Xcode.app/Contents/SharedFrameworks/DVTInstrumentsFoundation.framework/Versions/A/DVTInstrumentsFoundation": "28a51b8bccd6773c76f39f41f8476c107a90633c1f30b7ef8e372a18afbd4200",
+    "/Applications/Xcode.app/Contents/SharedFrameworks/SymbolicationDT.framework/Versions/A/SymbolicationDT": "4c64f94fe558a929d1a4499a22f7eee33ef9c976179c72d7419d630ec5379053",
+    "/Library/Developer/PrivateFrameworks/CoreDeviceUtilities.framework/Versions/A/CoreDeviceUtilities": "7273b32e384d31dae7caef1c729aa1ad7d32dc7f421d8040c67c9e85c12b9358",
+    "/Library/Developer/PrivateFrameworks/CoreDevice.framework/Versions/A/Frameworks/DTRemoteServices.framework/Versions/A/DTRemoteServices": "efafa2b6d8caea28aee3d2c959650e0bc7cfc3decc9d5d7f331b5d2188b3fcef",
+    "/Library/Apple/System/Library/PrivateFrameworks/Mercury.framework/Versions/A/Mercury": "2af2815207e5fd0848192337e00d222f89a374000770416621ddbe3c58db13da",
+    "/Applications/Xcode.app/Contents/SharedFrameworks/DebugSymbolsDT.framework/Versions/A/DebugSymbolsDT": "ec95a0e505088c9d1adab66a2ad3c52d0594f110b5a234e4b84cdfdf5c020aea",
+    "/Applications/Xcode.app/Contents/SharedFrameworks/kperfdataDT.framework/Versions/A/kperfdataDT": "0c32648b8f9b966b77326075235cdff4cc9d97b00144181abd7444386d7adf52",
+    "/Applications/Xcode.app/Contents/SharedFrameworks/MallocStackLoggingDT.framework/Versions/A/MallocStackLoggingDT": "a6493809f8c8a3fc6c97e4399c860ed615c1ef646d77dfe2978bd5955406e4b9",
+    "/Applications/Xcode.app/Contents/SharedFrameworks/ktraceDT.framework/Versions/A/ktraceDT": "a3e0f405872eb1cf134b73aeaebe67b08bc405254452e648f7a693b0335c54a8",
+    "/Applications/Xcode.app/Contents/SharedFrameworks/RecountDT.framework/Versions/A/RecountDT": "381860b4807a5037b923f7cf9de588f65aabcd9f88d3e1486850f8fde49a6b67",
+    "/Applications/Xcode.app/Contents/SharedFrameworks/DVTInstrumentsUtilities.framework/Versions/A/DVTInstrumentsUtilities": "1f483551d98838671e98bfe362d6a89f06e94de1a06cf929cac9c94050134f2f",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/TestMain-macos.swift": "f6aaa24985e00a4ec4523d76a854e9138e994e82a6f3d3236586a09556be779a"
+  },
+  "closure_limit": "System absolute /usr/lib and /System/Library dependencies delegated to installed dyld shared cache; otool default slices read for arm64e system image; no candidate execution",
+  "original_framework_rpath_assumption": "incorrect for direct support dependency; explicitly corrected by complete four-root environment"
+}
