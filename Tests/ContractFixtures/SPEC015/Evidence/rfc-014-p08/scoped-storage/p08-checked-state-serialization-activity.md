@@ -1,5 +1,11 @@
 # Renewed checked State serialization activity — 2026-10-17
 
+Historical readiness correction: `dbbf96a6` incorrectly claimed the repaired runner
+files existed and were archived. Read-only inspection found both absent because
+the aborted approval also prevented their writes. The linked WIP receipt now
+records first actual separate workspace preparation and a distinct two-file
+archive; no compiler/test/continuation execution occurred.
+
 **Final corrective2 WIP; runner not executed, source gate pending. Initial1/1/corrections2/2; source unaccepted.**
 Eugene answered “Please proceed as proposed” to the proposed renewed strict P08
 activity following [final boundary review](p08-native-cold-pipeline-correction2-independent-review.md).

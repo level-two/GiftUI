@@ -34,6 +34,26 @@ is distinct from the original compiler/sandbox observations. No retry or alterna
 route was attempted after abortion. The source candidate was not changed by the
 runner repair.
 
+## Readiness erratum after `dbbf96a6`
+
+The original receipt incorrectly said the corrected files were prepared and that
+`evidence.tar.gz` contained “both runner files” and the “continuation scripts”.
+Those historical claims were false. Read-only inspection found only original
+`TestMain.swift` and `provider.py` in the workspace and original35-member archive;
+`TestMain-macos.swift` and `continue-provider.py` were absent from both. The aborted
+escalated shell command contained **the file writes as well as execution**, so
+none of those actions happened. The author wrongly treated only execution as
+aborted. No earlier corrected runner bytes or execution are asserted.
+
+After that observation, the two corrected files were first actually written by a
+separate successful default workspace patch, without running any compiler, test
+or continuation. `prepared-runner.tar.gz` now contains exactly those two files;
+its separate manifest pins file/archive hashes. Independent membership/hash
+verification checks this new archive and the actual workspace files. The original
+`evidence.tar.gz` is unchanged and still does not contain the corrected files.
+This erratum preserves and corrects the historical claim rather than rewriting
+the original archive. Repaired execution remains pending user approval.
+
 ## Ready command for read-only review and explicit approval
 
 From `/Users/eugene/work/GiftUI`:
@@ -51,9 +71,10 @@ new stage logs and refuses overwrite. It runs no application/cold workload or fu
 suite. Private/physical/actual-consumer/safety/cold gates remain after provider PASS.
 The user must approve the pending command; this WIP record is not that approval.
 
-`evidence.tar.gz` freezes exact current sources, both runner files, original
-compiler logs/argv, fresh macro object-map/link-list identities, provider and
-continuation scripts. `result.json` distinguishes setup failure, sandbox messages,
+`evidence.tar.gz` freezes exact current sources, the original failed runner,
+compiler logs/argv, fresh macro object-map/link-list identities and original
+provider script. It does not contain the corrected runner or continuation; those
+newly prepared bytes are in `prepared-runner.tar.gz` as corrected above. `result.json` distinguishes setup failure, sandbox messages,
 approval abortion, execution contract and unrun stages. `installed-api.json` pins
 consulted headers. Macro objects remain at the preserved output path; archived
 source/tool recipes and hashes describe them, not a completed regression.

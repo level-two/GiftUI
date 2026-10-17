@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Historical readiness correction: `dbbf96a6` incorrectly claimed the repaired runner
+files existed and were archived. Read-only inspection found both absent because
+the aborted approval also prevented their writes. The linked WIP receipt now
+records first actual separate workspace preparation and a distinct two-file
+archive; no compiler/test/continuation execution occurred.
+
 Current [final correction WIP](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/checked-state-correction2/README.md):
 macro compile/link pass; standalone runner setup failed on unavailable macOS APIs.
 The confirmed macOS repair has not executed: escalated command request aborted

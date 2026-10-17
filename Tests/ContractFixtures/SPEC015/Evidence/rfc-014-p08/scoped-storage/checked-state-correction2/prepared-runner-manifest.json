@@ -1,0 +1,8 @@
+{
+  "preparation": "first actual preparation after dbbf96a6 readiness erratum; workspace write only, no execution",
+  "members": {
+    "TestMain-macos.swift": "f6aaa24985e00a4ec4523d76a854e9138e994e82a6f3d3236586a09556be779a",
+    "continue-provider.py": "6fb611c48e1badc3704f613c809c01ec257a405b1a346e0069fd0823f598d087"
+  },
+  "archive_sha256": "3cba731d6f8cdeb3b16b50f0a26295ee1baa1d572409605c9b63ac49658f1bb3"
+}

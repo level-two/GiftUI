@@ -246,5 +246,12 @@
     "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/macro/FiniteSourceLowering.swift.o": "a8ec74dbad6aba492ef6b19e3bceb89a97a945ee33816e884378750ec421f3a3",
     "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/macro/GiftUIMacros.swift.o": "4cb318d444a277169d3d02c70022045867ce49fbf4a0dd18187fd1a2d0f43eb9",
     "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/macro/ObservableStateHostMacro.swift.o": "e0af37f62fa6dfe5a1a30cff16da133b5d2661b11825ef169a812bb78ad82763"
+  },
+  "readiness_erratum": {
+    "historical_commit": "dbbf96a6",
+    "incorrect_claim": "Corrected macOS runner and continuation were written and included in evidence.tar.gz",
+    "observed_fact": "They were absent from workspace and original35-member archive. The aborted escalation contained file writes plus execution, so none ran. Only original TestMain.swift/provider.py existed.",
+    "correction": "Both files first actually created in separate default workspace apply_patch after read-only observation, without executing them. Original archive kept immutable. Separate two-member prepared-runner archive contains new actual bytes.",
+    "execution_status": "No repaired runner compilation, test invocation or provider continuation executed; approval pending."
   }
 }
