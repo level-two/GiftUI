@@ -1,0 +1,42 @@
+{
+  "status": "prepared only, not compiled/executed",
+  "new_file": "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/continue-provider-linker-setup2.py",
+  "sha256": "dcca7feeb9f111ba4044bb68b6f094d5052156ce93ca2d3a0a22ff125e7169d2",
+  "original_argv_sha256": "b51b3f676f7823de998f62a50854466ffbbd46ab5721cc3a47d01a5f624e228f",
+  "preserved_previous_script_sha256": "6fb611c48e1badc3704f613c809c01ec257a405b1a346e0069fd0823f598d087",
+  "delta": {
+    "remove_exact_pair": [
+      "-F",
+      "-Xcc"
+    ],
+    "add_library_and_runtime_paths_in_order": [
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing"
+    ]
+  },
+  "expected_prior_checks": [
+    [
+      "macro-compile",
+      0
+    ],
+    [
+      "macro-link",
+      0
+    ],
+    [
+      "regression-compile",
+      1
+    ],
+    [
+      "regression-compile-macos-setup1",
+      1
+    ]
+  ],
+  "runner_and_installed_library_hashes": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/TestMain-macos.swift": "f6aaa24985e00a4ec4523d76a854e9138e994e82a6f3d3236586a09556be779a",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib": "4b7026c2345b6e3cae23b8caefa52784a98bf96e3b895f9a42fe518aeb420c5b",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/lib_TestingInterop.dylib": "b6f6b71fae903978fa7a51381d429c536844a59b87935478c2617fc4dc1901b0",
+    "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing/libTesting.dylib": "f5fbcbe04833975c2cef402e03e7ea8dc84a2af800af2219bb498c9956760cf5",
+    "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing/lib_TestingInterop.dylib": "4e8cae2031aec8569c046e53c61bbdd9f86ebd8aa671cf73e2c1d8f6ed04ec50"
+  }
+}

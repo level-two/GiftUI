@@ -29,4 +29,18 @@ with tarfile.open(root / 'prepared-runner.tar.gz', 'r:gz') as archive:
         live = Path(result['output']) / name
         if live.exists():
             assert hashlib.sha256(live.read_bytes()).hexdigest() == expected, live
-print('PASS: two separately prepared runner files; original archive readiness claim corrected; no execution')
+print('PASS: two initial prepared-file hashes; readiness erratum preserved; later setup1 status recorded separately')
+
+link_manifest = json.loads((root / 'linker-setup-manifest.json').read_text())
+for filename, record in link_manifest.items():
+    assert hashlib.sha256((root / filename).read_bytes()).hexdigest() == record['archive_sha256']
+    with tarfile.open(root / filename, 'r:gz') as archive:
+        assert set(archive.getnames()) == set(record['members'])
+        for name, expected in record['members'].items():
+            assert hashlib.sha256(archive.extractfile(name).read()).hexdigest() == expected, name
+prepared_link = json.loads((root / 'linker-setup2-preparation.json').read_text())
+live = Path(prepared_link['new_file'])
+if live.exists():
+    assert hashlib.sha256(live.read_bytes()).hexdigest() == prepared_link['sha256']
+assert set(link_manifest['linker-setup2-prepared.tar.gz']['members']) == {'continue-provider-linker-setup2.py'}
+print('PASS: setup1 link failure preserved; one separate linker setup2 file prepared, not executed')

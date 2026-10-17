@@ -16,6 +16,13 @@ superseded_by: null
 
 # P08 checked State serialization
 
+Current runner setup: user-approved macOS setup1 reached link and failed on a
+malformed framework argument plus missing installed XCTest/Testing library search
+paths. No maintained regression/provider ran. The linked WIP receipt freezes the
+failure and one separately prepared exact linker setup2 for read-only review;
+setup2 is unexecuted. Final source2/2 remains pending, with no production outcome.
+Earlier aborted/not-executed records retain their historical boundary.
+
 Historical readiness correction: `dbbf96a6` incorrectly claimed the repaired runner
 files existed and were archived. Read-only inspection found both absent because
 the aborted approval also prevented their writes. The linked WIP receipt now

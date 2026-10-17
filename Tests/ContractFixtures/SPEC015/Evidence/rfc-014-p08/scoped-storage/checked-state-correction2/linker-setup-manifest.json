@@ -1,0 +1,16 @@
+{
+  "linker-setup1-evidence.tar.gz": {
+    "archive_sha256": "30fbf63dfce463b4abcf01a68453762fcd99641d3775fdfcc7b80c1e2aee26ac",
+    "members": {
+      "regression-compile-macos-setup1-command.json": "b51b3f676f7823de998f62a50854466ffbbd46ab5721cc3a47d01a5f624e228f",
+      "regression-compile-macos-setup1.log": "8de64404893f32a7ee9c4e83fe51476b44d6194893587c9659880e0b1abeaed2",
+      "checks.json": "ed2a4fbbe04822f08f0f45695760cd2ff2fd55fcbdd068f0eae8c2604e06c9f7"
+    }
+  },
+  "linker-setup2-prepared.tar.gz": {
+    "archive_sha256": "28df654c9cf6bc993181b8a7bfc227d06425918b70669a3d4ced9f8f3e03595b",
+    "members": {
+      "continue-provider-linker-setup2.py": "dcca7feeb9f111ba4044bb68b6f094d5052156ce93ca2d3a0a22ff125e7169d2"
+    }
+  }
+}

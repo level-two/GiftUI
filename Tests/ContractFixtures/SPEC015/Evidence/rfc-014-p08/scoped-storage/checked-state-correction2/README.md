@@ -1,5 +1,11 @@
 # Final checked-State correction — WIP, runner not executed
 
+Current follow-up: the user approved execution after the earlier readiness
+erratum. The parent ran the exact prepared continuation once. macOS runner/test
+Swift source and selector compile, but **setup1 link fails**; no regression or
+provider executes. The separately scoped linker setup2 below is prepared only.
+Final source2/2 stays pending/unaccepted; no production feasibility PASS/FAIL.
+
 **Final source gate pending. No mechanism PASS or FAIL.** Initial1/1 consumed;
 correction2/2 source began under review `7817573d`; no further source variant is
 authorized. Historical Native pipeline2/2 stays closed. Source remains unaccepted.
@@ -85,3 +91,64 @@ source/tool recipes and hashes describe them, not a completed regression.
 
 Offline verifier executes no compiler/test. Governance, links and whitespace pass.
 Five external files and pycache stay preserved. P08/R07/T8.1 remain open.
+
+## Approved setup1 execution and separate linker setup2 preparation
+
+The original `regression-compile-macos-setup1-command.json`/log are frozen in
+`linker-setup1-evidence.tar.gz`; their entries are separate from the original
+unavailable-API failure and the earlier aborted approval. The user later approved
+setup1, which failed at linking. The preceding snapshot's “not executed” statements
+record its earlier boundary and do not describe this new approved invocation.
+No test ran and no application result is inferred.
+
+Read-only argv/library/symbol inspection finds:
+
+- The original import-flag harvesting copied the `-F` inside `-Xcc -F -Xcc path`
+  as if it were a driver option, producing literal `-F -Xcc`. This explains
+  `ld: warning: search path '-Xcc' not found`.
+- Xcode platform `Developer/usr/lib/libXCTestSwiftSupport.dylib` exports the exact
+  unresolved XCTAssert and force-load symbols; that directory was an `-I` but
+  was missing its `-L`/runtime search path.
+- The already-imported pinned Swift6.4 `usr/lib/swift/macosx/testing/libTesting.dylib`
+  exports the exact unresolved `Testing_toolchain.SourceLocation`, Issue and
+  Comment symbols. Its interface identifies ABI module Testing_toolchain. Its
+  existing `-I` likewise supplied no `-L` or runtime path. Xcode's Testing.framework
+  is a distinct install name/ABI and does not replace this toolchain library.
+
+Only the malformed two-argument pair is removed; exactly the following two
+installed directories are added as `-L` and executable rpaths, in this order:
+
+1. `/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib`
+2. `/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing`
+
+Runtime review retains existing framework-root and pinned Swift runtime rpaths.
+XCTest.framework has installed loader-relative rpaths for its PrivateFrameworks
+and Xcode SharedFrameworks dependencies. XCTestSwiftSupport uses XCTest,
+Testing.framework and _Testing_Foundation from those roots. Both Testing libraries
+reference `lib_TestingInterop.dylib`: Xcode's version1 precedes toolchain version0
+and exports the same two C event-handler symbols, satisfying both required
+compatibility versions. The selected runner/library hashes are pinned. The
+SwiftUICore implicit-link warning is not permission to link that restricted
+framework directly; no such flag or library is added. Runtime success remains
+unproved until the actual test executes.
+
+New prepared command from the unchanged repository root:
+
+```sh
+python3 .build/contracts/p08-checked-state-correction2/continue-provider-linker-setup2.py
+```
+
+This is a **separately scoped mechanical linker setup**, not another production
+source correction or an allowance reset. It preserves setup1 script/argv/logs,
+pins the original argv and source/runner/macro/library hashes, asserts the exact
+four prior stages, validates the only permitted argument delta, and refuses any
+stage command/log overwrite. It compiles once, runs the unchanged exact maintained
+regression once (one execution/zero failures/zero skips), then permits remaining
+unchanged provider recipes only on PASS. No source/assertion/oracle/runtime-policy
+change is selected. No setup2 compiler/test command ran during preparation.
+
+`linker-setup2-prepared.tar.gz` contains exactly the actually prepared new file.
+`linker-setup-manifest.json` verifies both new archives; the independent verifier
+also compares the live prepared file. Previous archives/manifests are unchanged.
+The next step is independent read-only command review, then mechanical execution
+through the tool approval flow under the user's existing proceed instruction.
