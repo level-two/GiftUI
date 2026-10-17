@@ -1,0 +1,45 @@
+{
+  "schema": "giftui.p08.native-cold-module-resolution-replay.v1",
+  "review": "../native-cold-pipeline-module-resolution-diagnostic/independent-setup-review.md",
+  "head": "1f83f71b58ffd35e8128825e9ef8a7170dd4b6f2",
+  "raw_output": ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic-replay2-actual",
+  "provider": {
+    "exit": 0,
+    "started_utc": "2026-10-17T09:57:15.798556+00:00",
+    "finished_utc": "2026-10-17T09:57:16.128325+00:00",
+    "elapsed_seconds": 0.33,
+    "stderr_sha256": "5ef086b7063d7654f06c052273f832389e2702c36e66741b7a0389312bf694e6",
+    "output_module_sha256": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439",
+    "output_matches_frozen_counterpart": true,
+    "generated_macro_expansions_observed": true,
+    "serialization_remarks_decode_function_bodies": false,
+    "loaded_module_trace": "provider/loaded-modules.json"
+  },
+  "consumer": {
+    "exit": 1,
+    "started_utc": "2026-10-17T09:57:28.583387+00:00",
+    "finished_utc": "2026-10-17T09:57:28.672563+00:00",
+    "elapsed_seconds": 0.089,
+    "stderr_sha256": "6a412c69139c843b6543df5698c8a36bf60b80e1bb4c49de505453427ecedc06",
+    "error": "cannot have '-emit-loaded-module-trace-path' with '-supplementary-output-file-map'",
+    "sil_emitted": false,
+    "loaded_module_trace_emitted": false,
+    "physical_consumer_imports_established": false,
+    "retry_performed": false
+  },
+  "original_cache": {
+    "inventory_file_count": 3,
+    "changed_existing_files": 0,
+    "changed_pcm_files": 0,
+    "new_files": 0,
+    "removed_files": 0,
+    "qualification": "unchanged"
+  },
+  "correction_cycles_used": 1,
+  "correction_cycles_total": 2,
+  "limitations": [
+    "Consumer imports and serialized-body availability remain unresolved because the consumer compiler rejected the diagnostic flag combination before compilation.",
+    "Module-serialization remarks and macro expansion output are not per-function serialized-body decoding.",
+    "No runtime or acceptance claim is made."
+  ]
+}
