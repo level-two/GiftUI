@@ -14,8 +14,8 @@ result = json.loads((root / 'result.json').read_text())
 assert [(r['name'], r['exit']) for r in result['checks']] == [
     ('macro-compile', 0), ('macro-link', 0), ('regression-compile', 1)]
 assert result['compiled_macro_source_frozen'] and result['external_preserved'] and result['authored_preserved']
-assert result['disposition'].startswith('WIP:')
-print(f'PASS: {len(manifest)} immutable members; regression and provider gates remain unexecuted')
+assert result['disposition'].startswith('STOP:')
+print(f'PASS: {len(manifest)} original immutable members; historical initial snapshot preserved')
 
 # The repaired runner was absent at the original freeze. Verify its distinct
 # first actual preparation independently, without invoking either file.
@@ -57,4 +57,16 @@ live = Path(runtime_prepared['new_file'])
 if live.exists():
     assert hashlib.sha256(live.read_bytes()).hexdigest() == runtime_prepared['sha256']
 assert set(runtime_manifest['runtime-setup3-prepared.tar.gz']['members']) == {'continue-provider-runtime-setup3.py'}
-print('PASS: linked binary/dyld failure frozen; same-binary runtime continuation prepared, unexecuted')
+print('PASS: linked binary/prior dyld failure and original runtime preparation frozen; later results separate')
+
+provider_manifest = json.loads((root / 'provider-privacy-manifest.json').read_text())
+assert hashlib.sha256((root / 'provider-privacy-result.tar.gz').read_bytes()).hexdigest() == provider_manifest['archive_sha256']
+with tarfile.open(root / 'provider-privacy-result.tar.gz', 'r:gz') as archive:
+    assert set(archive.getnames()) == set(provider_manifest['members'])
+    for name, expected in provider_manifest['members'].items():
+        assert hashlib.sha256(archive.extractfile(name).read()).hexdigest() == expected, name
+assert len(result['privacy_controls']) == 7
+assert all(row['pass'] for row in result['privacy_controls'][:6])
+assert result['privacy_controls'][6]['pass'] is False
+assert result['source_preserved_at_final_stop']
+print('PASS: provider PASS/six privacy PASS/ordinary-private positive FAIL; final2/2 stop, no later gate')

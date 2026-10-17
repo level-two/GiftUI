@@ -16,6 +16,13 @@ superseded_by: null
 
 # P08 checked State serialization
 
+Current final boundary — STOP, initial1/1 and corrections2/2 consumed. The linked
+final receipt records exact actual-output regression1/0/0 and fresh provider PASS;
+six privacy controls PASS, ordinary unlowered private-host positive FAILS at
+preexisting experimental `@inlinable fileprivate` visitor/traversal annotations.
+Source unaccepted. No repair/retry, physical/helper/actual-host/safety/cold or broader
+gate follows; P08/R07/T8.1 stay open. Earlier setup checkpoints are historical.
+
 Current test-runtime boundary: linker setup2 PASS; linked runner aborts in dyld
 before XCTest on direct XCTestCore dependency. No maintained test/provider ran.
 The linked WIP receipt freezes that binary/log and prepares an unexecuted same-binary

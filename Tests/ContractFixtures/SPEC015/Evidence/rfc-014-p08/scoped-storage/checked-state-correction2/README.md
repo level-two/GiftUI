@@ -1,5 +1,11 @@
 # Final checked-State correction — WIP, runner not executed
 
+**Current final disposition: STOP; source2/2 consumed.** Actual regression and
+fresh providers PASS; six privacy controls PASS, seventh ordinary-private positive
+FAILS on preexisting experimental `@inlinable fileprivate` macro witnesses. No
+physical/host/codegen/runtime gate follows. Details and all seven controls below;
+earlier setup/preparation records retain their historical boundary.
+
 Latest boundary: linker setup2 **compiles/links PASS**. The linked binary then
 terminates in dyld (-6) before XCTest because XCTestCore cannot be found for
 XCTestSwiftSupport's direct dependency. No maintained test/provider ran. A new
@@ -212,3 +218,55 @@ requires exactly one execution, zero total failures, zero skips. Only PASS permi
 the unchanged remaining provider recipes once. No source cycle reset, production
 repair, prewarm, application workload or broad suite is included. No setup3 command
 was executed in this preparation; final strict feasibility remains unproved.
+
+## Final provider/privacy boundary — STOP, corrections2/2 consumed
+
+Parent-approved runtime setup3 succeeds: the **exact maintained XCTest executes
+once with zero failures and zero skips**. Actual lowerer regression accepts the
+unchanged counter, supported multiple-State and nested-child outputs and rejects
+the frozen two-separator failure. Fresh actual lowering, GiftUI, generated schema
+and presentation each compile PASS. This clears the actual finite provider's
+previous direct private-State compile blocker; it does not prove concrete codegen
+or cold zero heap.
+
+Separate source clients use the same pinned compiler/SDK/optimization/lifetime
+flags, matching provider modules, and no `@testable`/SPI import. Six controls PASS:
+
+| Control | Observed result |
+| --- | --- |
+| Same-package generated visitor plus checked key/read positive | Compiles |
+| Original private `_model` | Rejected as private |
+| Both opaque generated projection/key helpers | Both rejected as internal |
+| State.Storage and State.storage from same package/different module | Both rejected as internal |
+| External public seed/key positive | Compiles |
+| External raw FrameRead scope construction | Rejected as package-only |
+
+**Seventh control FAIL:** ordinary unlowered private State host, with explicit
+compiled View domain/evaluation and valid checked State schema/seed, receives two
+errors. The generated state visitor and traversal are `fileprivate` but each has
+`@inlinable`, which Swift permits only on internal/package/public declarations.
+The raw fixture, exact argv/log and compiler-generated ordinary expansion are
+archived for independent validity/applicability review. No unsupported call, body
+parser error, wrong schema or accidental helper-name collision is diagnosed.
+This control exercises the required ordinary macro API path; it is not passed
+through the finite lowerer that rejects authored generic custom views.
+
+Read-only historical comparison confirms both unconditional annotations already
+exist in the unaccepted `3ae67711` experimental member macro. The checked helper
+patch adds selection/validation but does not introduce those annotations or change
+the ordinary protocol/signature path. The current overlay must nevertheless pass
+its required compatibility gate. This is not proof that private checked helpers,
+the strict ownership contract or strict zero heap are impossible.
+
+The first unexpected compiler failure stops this **final source cycle**. Initial1/1
+and corrections2/2 are consumed. No source repair/retry, physical decoder, owning
+helper SIL/object inspection, actual concrete binder/host compile, further macro/
+lifetime/safety test, actual cold/reuse workload, broad suite or image follows.
+All those gates remain unrun; P08/R07/T8.1 and conformance stay open.
+
+`provider-privacy-result.tar.gz` freezes exact successful provider argv/logs/modules/
+objects, regression outputs, runtime PASS, all seven privacy source/argv/log/result
+controls, the actual generated private expansion and historical macro source.
+Its separate manifest verifies bytes. Current candidate source hashes remain
+unchanged; five external files and pycache are preserved. This is a terminal
+source activity receipt, not permission for another variant.

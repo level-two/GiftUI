@@ -1,7 +1,7 @@
 {
-  "disposition": "WIP: source gate pending; setup2 link PASS, runner dyld failure before test; runtime setup3 prepared unexecuted",
+  "disposition": "STOP: final ordinary-private compatibility compiler positive failed; source unaccepted; no physical/host gate",
   "initial": "1/1 consumed",
-  "corrections": "2/2 in progress; no further source variant",
+  "corrections": "2/2 consumed",
   "historical": "2/2 closed",
   "checks": [
     {
@@ -559,15 +559,194 @@
       "command": [
         "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/actual-output-regression"
       ]
+    },
+    {
+      "name": "actual-output-regression-runtime-setup3",
+      "exit": 0,
+      "command": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/actual-output-regression"
+      ]
+    },
+    {
+      "name": "lower",
+      "exit": 0,
+      "command": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/macro/GiftUIMacros-tool",
+        "--lower-source",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.schema.json",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/CounterSchema.swift",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/Counter.swift",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/CounterTable.swift",
+        "P08CounterPresentation"
+      ]
+    },
+    {
+      "name": "GiftUI",
+      "exit": 0,
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za",
+        "-swift-version",
+        "6",
+        "-Osize",
+        "-whole-module-optimization",
+        "-enable-experimental-feature",
+        "LifetimeDependence",
+        "-enable-experimental-feature",
+        "Lifetimes",
+        "-package-name",
+        "giftui",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/cache",
+        "-disable-sandbox",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-load-plugin-executable",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/macro/GiftUIMacros-tool#GiftUIMacros",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+        "-parse-as-library",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+        "-enable-testing",
+        "-module-name",
+        "GiftUI",
+        "-emit-module",
+        "-emit-object",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/ActionHandler.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/BoundedText.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/Button.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/Canvas.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/Color.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/Disabled.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/DrawingStyles.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/DrawingSurface.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutContainers.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutModifiers.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutValues.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/StyleModifiers.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/Text.swift",
+        "-emit-module-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/GiftUI.swiftmodule",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/GiftUI.o",
+        "-diagnostic-style",
+        "llvm"
+      ]
+    },
+    {
+      "name": "P08CounterSchema",
+      "exit": 0,
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za",
+        "-swift-version",
+        "6",
+        "-Osize",
+        "-whole-module-optimization",
+        "-enable-experimental-feature",
+        "LifetimeDependence",
+        "-enable-experimental-feature",
+        "Lifetimes",
+        "-package-name",
+        "giftui",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/cache",
+        "-disable-sandbox",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-load-plugin-executable",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/macro/GiftUIMacros-tool#GiftUIMacros",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+        "-parse-as-library",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+        "-enable-testing",
+        "-module-name",
+        "P08CounterSchema",
+        "-emit-module",
+        "-emit-object",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/CounterSchema.swift",
+        "-emit-module-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/P08CounterSchema.swiftmodule",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/P08CounterSchema.o",
+        "-diagnostic-style",
+        "llvm"
+      ]
+    },
+    {
+      "name": "P08CounterPresentation",
+      "exit": 0,
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za",
+        "-swift-version",
+        "6",
+        "-Osize",
+        "-whole-module-optimization",
+        "-enable-experimental-feature",
+        "LifetimeDependence",
+        "-enable-experimental-feature",
+        "Lifetimes",
+        "-package-name",
+        "giftui",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/cache",
+        "-disable-sandbox",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-load-plugin-executable",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/macro/GiftUIMacros-tool#GiftUIMacros",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+        "-parse-as-library",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpmynn4963/macos-static",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static",
+        "-enable-testing",
+        "-module-name",
+        "P08CounterPresentation",
+        "-emit-module",
+        "-emit-object",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/Counter.swift",
+        "-emit-module-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/P08CounterPresentation.swiftmodule",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/P08CounterPresentation.o",
+        "-diagnostic-style",
+        "llvm"
+      ]
     }
   ],
   "historical_ready_command_first_preparation": [
     "python3",
     ".build/contracts/p08-checked-state-correction2/continue-provider.py"
-  ],
-  "ready_command": [
-    "python3",
-    ".build/contracts/p08-checked-state-correction2/continue-provider-runtime-setup3.py"
   ],
   "confirmed_not_created_at_original_snapshot": [
     "regression-compile-macos-setup1-command.json",
@@ -585,5 +764,67 @@
     ".build/contracts/p08-checked-state-correction2/continue-provider-linker-setup2.py"
   ],
   "setup2_execution": "User-authorized parent execution: setup2 link PASS; original actual-output-regression terminated -6 in dyld before XCTest because direct XCTestSwiftSupport dependency XCTestCore unresolved; no test/provider ran.",
-  "runtime_setup3": "Prepared only, same binary SHA pinned, no relink. Runner-only explicit four framework roots/two library roots; full26-image installed non-system dependency traversal0 unresolved; static closure is not execution proof."
+  "runtime_setup3": "Prepared only, same binary SHA pinned, no relink. Runner-only explicit four framework roots/two library roots; full26-image installed non-system dependency traversal0 unresolved; static closure is not execution proof.",
+  "privacy_controls": [
+    {
+      "name": "same-package-positive",
+      "exit": 0,
+      "expected_rejection": null,
+      "pass": true
+    },
+    {
+      "name": "private-wrapper",
+      "exit": 1,
+      "expected_rejection": "private",
+      "pass": true
+    },
+    {
+      "name": "internal-helper-pair",
+      "exit": 1,
+      "expected_rejection": "internal",
+      "pass": true
+    },
+    {
+      "name": "same-package-state-storage",
+      "exit": 1,
+      "expected_rejection": "internal",
+      "pass": true
+    },
+    {
+      "name": "external-positive",
+      "exit": 0,
+      "expected_rejection": null,
+      "pass": true
+    },
+    {
+      "name": "external-scope-construction",
+      "exit": 1,
+      "expected_rejection": "package",
+      "pass": true
+    },
+    {
+      "name": "ordinary-unlowered-private-positive",
+      "exit": 1,
+      "expected_rejection": null,
+      "pass": false
+    }
+  ],
+  "last_regression": "actual XCTest executions1,totalFailureCount0,skipCount0",
+  "provider": "fresh lowering/GiftUI/schema/presentation all PASS; prior direct private access blocker cleared for actual finite provider",
+  "first_material_final_failure": "ordinary-unlowered-private-positive:2 diagnostics @inlinable on fileprivate state visitor/traversal",
+  "annotation_provenance": "Both unconditional @inlinable annotations exist in historical experimental3ae67711 source, before checked-helper candidate. New helper patch did not introduce those annotations, but required ordinary API path remains broken in current overlay.",
+  "not_run_after_privacy_failure": [
+    "physical decoder/body record verification",
+    "owning helper SIL/object gate",
+    "actual concrete binder/host gate",
+    "macro malicious controls",
+    "lifetime/partial-init/safety gates",
+    "actual ordinary/host-first cold/reuse workloads",
+    "full profiles/suites/images"
+  ],
+  "source_preserved_at_final_stop": true,
+  "ready_command_historical_runtime_setup3": [
+    "python3",
+    ".build/contracts/p08-checked-state-correction2/continue-provider-runtime-setup3.py"
+  ]
 }

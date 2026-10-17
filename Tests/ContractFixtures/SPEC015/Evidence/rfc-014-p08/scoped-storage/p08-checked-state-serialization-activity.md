@@ -1,5 +1,12 @@
 # Renewed checked State serialization activity — 2026-10-17
 
+Current final boundary — STOP, initial1/1 and corrections2/2 consumed. The linked
+final receipt records exact actual-output regression1/0/0 and fresh provider PASS;
+six privacy controls PASS, ordinary unlowered private-host positive FAILS at
+preexisting experimental `@inlinable fileprivate` visitor/traversal annotations.
+Source unaccepted. No repair/retry, physical/helper/actual-host/safety/cold or broader
+gate follows; P08/R07/T8.1 stay open. Earlier setup checkpoints are historical.
+
 Current test-runtime boundary: linker setup2 PASS; linked runner aborts in dyld
 before XCTest on direct XCTestCore dependency. No maintained test/provider ran.
 The linked WIP receipt freezes that binary/log and prepares an unexecuted same-binary
@@ -20,7 +27,7 @@ the aborted approval also prevented their writes. The linked WIP receipt now
 records first actual separate workspace preparation and a distinct two-file
 archive; no compiler/test/continuation execution occurred.
 
-**Final corrective2 WIP; runner not executed, source gate pending. Initial1/1/corrections2/2; source unaccepted.**
+**Final corrective2 STOP; initial1/1/corrections2/2 consumed, source unaccepted.**
 Eugene answered “Please proceed as proposed” to the proposed renewed strict P08
 activity following [final boundary review](p08-native-cold-pipeline-correction2-independent-review.md).
 The selected direction retains private authored State, original checked ownership
