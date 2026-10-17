@@ -1,7 +1,9 @@
 # Candidate 1 actual cold screen — 2026-10-17
 
 **Counts/replay PASS; strict Static zero-heap FAIL. Candidate unaccepted and not
-adopted.** Source candidate `9c19a879` remains frozen for review; no corrective
+adopted.** The [independent failure review](p08-native-cold-static-candidate1-independent-review.md)
+confirms this result and the exact restoration/design boundary; no restoration
+has run. Source candidate `9c19a879` remains frozen for review; no corrective
 source change or restoration occurs in this packet. **0/2 corrective cycles
 used.** No full collection, image build or hardware execution follows this fail.
 

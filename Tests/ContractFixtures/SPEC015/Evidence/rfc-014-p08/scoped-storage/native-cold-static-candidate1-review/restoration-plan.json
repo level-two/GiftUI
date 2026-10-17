@@ -1,0 +1,135 @@
+{
+  "status": "reviewed plan only; restoration not executed",
+  "baseline": "93f6ecc7",
+  "candidate": "9c19a879",
+  "file_count": 22,
+  "files": [
+    {
+      "path": "Sources/GiftUI/DeclarativeView.swift",
+      "candidate_sha256": "3a8bd923093c6b7e173905493f618c0b56d1169ed34c4743aa4f77cbeec614d5",
+      "restore_baseline_sha256": "8015cbf2b2d5df841799012850833604525af705e5087ac0583dc37064047132"
+    },
+    {
+      "path": "Sources/GiftUIExecution/AdmissionValues.swift",
+      "candidate_sha256": "33b73204d814331eef69c8caebc274b546b25d383a04c77656dc58f80ce85839",
+      "restore_baseline_sha256": "dfd4f00479635772b2f4f8d09c8e1caff3f052d257f8fbd70cdd05e28eff2d38"
+    },
+    {
+      "path": "Sources/GiftUIExecution/ExecutionValues.swift",
+      "candidate_sha256": "4520ec15d70aedb7f95dcbedb972b0b7fcc707cb1b08b2636cf5298820e6e12f",
+      "restore_baseline_sha256": "9b1278a5878f4123aa1e92fe723d068a3501a562b75b2e7e6940bf75869a80e2"
+    },
+    {
+      "path": "Sources/GiftUIExecution/ObservableTargetGeneration.swift",
+      "candidate_sha256": "e37666935262923eb79378f29436756f79844a10d369c3ad8661ff38c17d6483",
+      "restore_baseline_sha256": "07e995cb7594bb54a8018020960a98258482dc771abd86858fd052307e89417f"
+    },
+    {
+      "path": "Sources/GiftUIExecution/PointerActionCapture.swift",
+      "candidate_sha256": "a88eec3e2176873a65c577ef6e47cf41873a8b9d8124250c5e45d8a83c53c605",
+      "restore_baseline_sha256": "0acc1d5b8c8f9af3f0aa91959198917bc6868907622d785eab149dee7ceed6a6"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift",
+      "candidate_sha256": "2639fce75f493a9c664b0245fa6920e74b591b435a0f3a4167827eea185dc447",
+      "restore_baseline_sha256": "327b0d1165f8a83d8be147bb8f27fe7573c6305d364d6285f4a7f33c061d7d7e"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "candidate_sha256": "1ba67e136dbe99b4c92d500ef0cd4a381a8b534d55bd0f93ce537c2ccd4f4194",
+      "restore_baseline_sha256": "4b2ca2f37b6c28ed6badf948d8b312f5b74ab32eea62cd430a13c9822230f839"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelMutation.swift",
+      "candidate_sha256": "d4edf05c126fa2ab43cb5cc073698fdaccb35c16dbd24f9282bef9ba3d9bb482",
+      "restore_baseline_sha256": "8fca003edbd06c94c55e870a0fc06a143654b1cc99bc662f3a181ec441bf062d"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "candidate_sha256": "4a1fc26a291dbd42f250d1e890025c4ec5c9986856f42f3bf0d2cf4a7fa7eef5",
+      "restore_baseline_sha256": "6a572ca44df61b39e6f50add6407f014394795aa687dd8484a54828cc95595a9"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "candidate_sha256": "41caa47b4a785ff838779d95fb3892aee6a28e1cc03b4abac79e0f1f78bd1c8f",
+      "restore_baseline_sha256": "08be628f0514504f0e83d04cd80e6cdd717c9791658fa46229b005365d8064d3"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+      "candidate_sha256": "5a56e4c5f4e7b01f24b45b828d1b39e453c2c0523983eb32d3dccd8acd0c0bcd",
+      "restore_baseline_sha256": "ac0e6a5e986da34197ceb103c656147cf57f87ffb71717fe754301d489d374d7"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateModel.swift",
+      "candidate_sha256": "f6add18fb5d078aa3fd749859a3421d86fe31e8fef0047aed34e90f39b46407e",
+      "restore_baseline_sha256": "5cf0f406693e42324823c6ce6e2f4e45600b1afd4ce4f59049418f5d125b7959"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "candidate_sha256": "a808da5cfaafe3a77068d5b0b8dcfe9ce356f3fafd109619f3805ba524739803",
+      "restore_baseline_sha256": "6fbcfe7b098eb5c662d6e52cd020c26f0cff4e78c1765df6658f1e8434313707"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift",
+      "candidate_sha256": "367d93409294828efc200bb7f78256f87bf750dd6a3f8e0f134b18430feba60c",
+      "restore_baseline_sha256": "0ab15cca11e67014c99dc9d1db13303bd25bf2472f069e02f89e98cd9ef2dbc5"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateValues.swift",
+      "candidate_sha256": "494913f81669772d868fbf63ebbfb2cc151d8c0739fc8b28647f4cdfd5465c77",
+      "restore_baseline_sha256": "58ab30ae29b27233ed5288422849f58c1b43e3ccbf0ddd78f9726f1aef97bbfb"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "candidate_sha256": "2d194b1bac4e8e8bb01ce20cc4071d143d863186e9cb4953b7de32f50b8b0949",
+      "restore_baseline_sha256": "eec27acb25a24754ecfdd69bc2a70339e021bd502c98bca5a87e670c4018cfac"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC010/RuntimeDerived/LayoutProbe.swift",
+      "candidate_sha256": "30d7798466a476c505b2174764348809c473b50fdc3a359d53e19f9a1f76dd5d",
+      "restore_baseline_sha256": "edc71ec9649bdb111602280c62b1b719ecf5640b6f52f2bcfda3782e9fc21163"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+      "candidate_sha256": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2",
+      "restore_baseline_sha256": "212f59a87162fefee2652586bbbe7cec8546d1afcaeb0e2e92ff115b6030b330"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "candidate_sha256": "f7152c3e886322e482aaa040b98f15ac820d0aa9a15af86260229bc56df64010",
+      "restore_baseline_sha256": "4f747327ae37de0d4a501a190d62dc403436c5ac2fdcd5427b583cf7b202e947"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "candidate_sha256": "119cbf386093d8e20b476ac7876768c698802f057400969e37a11b11f3dc4251",
+      "restore_baseline_sha256": "3c411c8a5d6616932cfcd1145ac7d6e4d088165fd11b5109e109293f386c44c9"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "candidate_sha256": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb",
+      "restore_baseline_sha256": "9c1c0120be11c79235f7febb7e4be950307ac1344095214823aa6248b8ab8f96"
+    },
+    {
+      "path": "scripts/contracts/check-spec-010-model-identities.py",
+      "candidate_sha256": "2b143c416772297f58ab65792f6915971ecae3ce39aa6c79ff731862fe605a28",
+      "restore_baseline_sha256": "52387f73b8b727320f7ff4289bacf63f8d1a356c5a91be1b0f5807301d9abbdd"
+    }
+  ],
+  "external_paths_preserve": [
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+    "scripts/nrf52840/build.sh",
+    "scripts/raspberry-pi/build.sh"
+  ],
+  "external_diff_sha256_at_review": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+  "preserve": [
+    "all experimental commits",
+    "all diagnostics and evidence",
+    "all generated build artifacts",
+    "scripts/contracts/__pycache__/"
+  ],
+  "corrective_cycles_used": 0,
+  "corrective_cycle_limit": 2,
+  "restoration_resets_no_allowance": true
+}
