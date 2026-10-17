@@ -80,10 +80,11 @@ package protocol ExecutionActionView {
     func hit(at point: Point) -> Identity?
 }
 
+@usableFromInline
 package struct CapturedAction<Identity>: Equatable, Sendable
 where Identity: Equatable & Sendable {
-    package let identity: Identity
-    package let generation: ActionGeneration
+    @usableFromInline package let identity: Identity
+    @usableFromInline package let generation: ActionGeneration
 
     package init(identity: Identity, generation: ActionGeneration) {
         self.identity = identity

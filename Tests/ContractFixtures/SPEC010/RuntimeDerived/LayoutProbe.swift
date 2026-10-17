@@ -16,7 +16,10 @@ import GiftUI
 @_cdecl("giftui_p03_layout_scope") public func scopeLayout() -> Int { MemoryLayout<ObservableModelScope<UInt8, UInt8>>.stride }
 @_cdecl("giftui_p03_layout_read_slot") public func readSlotLayout() -> Int { MemoryLayout<ObservableModelReadSlot<UInt8>>.stride }
 @_cdecl("giftui_p03_layout_replacement") public func replacementLayout() -> Int { MemoryLayout<ObservableModelOwnership.Replacement>.stride }
-@_cdecl("giftui_p03_layout_registration_record_u8") public func registrationRecordLayout() -> Int { MemoryLayout<ObservableStateRootStorage<UInt8>.Record>.stride }
+// Historical C label retained for report continuity; the record is now
+// identity-independent, with the separate typed slot charged explicitly below.
+@_cdecl("giftui_p03_layout_registration_record_u8") public func registrationRecordLayout() -> Int { MemoryLayout<ObservableStateRootControl.Record>.stride }
+@_cdecl("giftui_p03_layout_registration_identity_u8") public func registrationIdentityLayout() -> Int { MemoryLayout<UInt8?>.stride }
 @_cdecl("giftui_p03_layout_root_storage_u8") public func rootStorageLayout() -> Int { MemoryLayout<ObservableStateRootStorage<UInt8>>.stride }
 @_cdecl("giftui_p03_layout_sink") public func sinkLayout() -> Int { MemoryLayout<_GiftUIObservableChangeSink>.stride }
 

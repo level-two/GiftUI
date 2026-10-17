@@ -1,10 +1,12 @@
 import GiftUI
 
+@usableFromInline
 package struct ObservableStateLimits: Equatable, Sendable {
-    package let maximumLocations: UInt16
-    package let maximumRegistrations: UInt16
-    package let maximumStagedAssociations: UInt16
+    @usableFromInline package let maximumLocations: UInt16
+    @usableFromInline package let maximumRegistrations: UInt16
+    @usableFromInline package let maximumStagedAssociations: UInt16
 
+    @usableFromInline
     package init?(
         maximumLocations: UInt16,
         maximumRegistrations: UInt16,
@@ -21,6 +23,7 @@ package struct ObservableStateLimits: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum ObservableStateError: UInt8, Error, Equatable, Sendable {
     case locationCapacityExhausted = 0
     case registrationCapacityExhausted = 1
@@ -50,6 +53,7 @@ package enum ObservableStateError: UInt8, Error, Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum ObservableStateOperational: UInt8, Equatable, Sendable {
     case unchanged = 0
     case candidateStarted = 1
@@ -62,6 +66,7 @@ package enum ObservableStateOperational: UInt8, Equatable, Sendable {
     case coalesced = 8
 }
 
+@usableFromInline
 package enum ObservableStateResult: Equatable, Sendable {
     case success(ObservableStateOperational)
     case failure(ObservableStateError)

@@ -1,8 +1,9 @@
 import GiftUI
 import GiftUIExecution
 
+@usableFromInline
 package struct BoundedApplicationAction: Equatable, Hashable, Sendable {
-    package let code: UInt16
+    @usableFromInline package let code: UInt16
 
     package init(code: UInt16) {
         self.code = code
@@ -26,15 +27,16 @@ package struct InteractionLimits: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct BoundActionRecord<Identity>: Equatable, Sendable
 where Identity: Equatable & Sendable {
-    package let identity: Identity
-    package let generation: ActionGeneration
-    package let isEnabled: Bool
+    @usableFromInline package let identity: Identity
+    @usableFromInline package let generation: ActionGeneration
+    @usableFromInline package let isEnabled: Bool
     package let hitBounds: Rect
     package let paintOrder: UInt16
-    package let action: BoundedApplicationAction
-    package let targetGeneration: ObservableTargetGeneration
+    @usableFromInline package let action: BoundedApplicationAction
+    @usableFromInline package let targetGeneration: ObservableTargetGeneration
 
     package init(
         identity: Identity,
@@ -55,6 +57,7 @@ where Identity: Equatable & Sendable {
     }
 }
 
+@usableFromInline
 package enum InteractionError: UInt8, Equatable, Sendable {
     case capacityExhausted = 0
     case invalidIdentity = 1
@@ -78,6 +81,7 @@ package enum InteractionCandidateAppendResult: Equatable, Sendable {
     case failure(InteractionError)
 }
 
+@usableFromInline
 package enum PointerGestureOutcome<Identity>: Equatable, Sendable
 where Identity: Equatable & Sendable {
     case captured(CapturedAction<Identity>)
@@ -87,6 +91,7 @@ where Identity: Equatable & Sendable {
     case ignored
 }
 
+@usableFromInline
 package enum InteractionDispatchResult: Equatable, Sendable {
     case dispatched
     case cancelled
@@ -114,6 +119,7 @@ package protocol InteractionCandidateBuilder: ~Copyable, ~Escapable {
     mutating func resolveCandidate(_ disposition: InteractionCandidateDisposition)
 }
 
+@usableFromInline
 package protocol InteractionGestureResolver: ~Copyable, ~Escapable {
     associatedtype Identity: Equatable & Sendable
 
@@ -138,6 +144,7 @@ package protocol ActionModelTargetAccess {
     ) -> Bool
 }
 
+@usableFromInline
 package protocol InteractionCommittedActionView: ~Copyable, ~Escapable {
     associatedtype Identity: Equatable & Sendable
 

@@ -1493,7 +1493,7 @@ fileprivate struct P08HostRunFacts: ~Copyable {
 fileprivate struct P08EmbeddedOuter: ~Copyable {
     var hostPlan: P08HostRunFacts? = nil
     let limits: UnsafeMutablePointer<RuntimeProfileLimits>
-    let root: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>
+    let root: UnsafeMutablePointer<CounterStaticRootStorage>
     let semantic: UnsafeMutablePointer<StaticSemanticRecordStorage>
     let records: UnsafeMutablePointer<SemanticRuntimeRecord>
     let paths: UnsafeMutablePointer<SemanticPathEntry>
@@ -1517,7 +1517,7 @@ fileprivate struct P08EmbeddedOuter: ~Copyable {
             precondition(!address.overflow && address.partialValue % UInt(region.alignment) == 0)
         }
         self.limits = counterEmbeddedField(backing, RuntimeProfileLimits.self, region: layout.regions[0]!)
-        root = counterEmbeddedField(backing, StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, region: layout.regions[1]!)
+        root = counterEmbeddedField(backing, CounterStaticRootStorage.self, region: layout.regions[1]!)
         semantic = counterEmbeddedField(backing, StaticSemanticRecordStorage.self, region: layout.regions[2]!)
         records = counterEmbeddedField(backing, SemanticRuntimeRecord.self, region: layout.regions[3]!)
         paths = counterEmbeddedField(backing, SemanticPathEntry.self, region: layout.regions[4]!)
@@ -1528,7 +1528,7 @@ fileprivate struct P08EmbeddedOuter: ~Copyable {
         control = counterEmbeddedField(backing, CounterControl.self, region: layout.regions[23]!)
         used = counterEmbeddedField(backing, Bool.self, region: layout.regions[24]!)
         self.limits.initialize(to: limits); acquired = 1
-        root.initialize(to: StaticObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: min(2, max(1, limits.models.maximumModelSlots)), claimLimit: min(4, max(1, limits.models.maximumOwningTickets)), pinLimit: min(2, max(1, limits.models.maximumFramePins)), captureLimit: 0)!); acquired = 2
+        root.initialize(to: CounterStaticRootStorage(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: min(2, max(1, limits.models.maximumModelSlots)), claimLimit: min(4, max(1, limits.models.maximumOwningTickets)), pinLimit: min(2, max(1, limits.models.maximumFramePins)), captureLimit: 0)!); acquired = 2
         semantic.initialize(to: StaticSemanticRecordStorage(limits: counterSemanticLimits, owner: semanticOwner)); acquired = 3
         for index in 0..<128 { records.advanced(by: index).initialize(to: .init()) }; acquired = 4
         for index in 0..<384 { paths.advanced(by: index).initialize(to: .init()) }; acquired = 5
@@ -2350,14 +2350,14 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
 
 fileprivate struct P08StaticOuter: ~Copyable {
     let limits = counterActualLimits(.static)
-    var root: StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>
+    var root: CounterStaticRootStorage
     var semantic: StaticSemanticRecordStorage
     var semanticBacking = CounterSemanticBacking()
     var canvas = StaticCanvasValueStorage()
     var canvasBacking: InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?> = .init(repeating: nil)
     var control = CounterControl()
     init(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity) {
-        root = StaticObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!
+        root = CounterStaticRootStorage(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!
         semantic = StaticSemanticRecordStorage(limits: counterSemanticLimits, owner: semanticOwner)
     }
 }
@@ -2370,10 +2370,10 @@ fileprivate func p08DeinitializeStaticCanvas(_ field: UnsafeMutablePointer<Stati
 @inline(never)
 fileprivate func p08DeinitializeStaticSemantic(_ field: UnsafeMutablePointer<StaticSemanticRecordStorage>) { field.deinitialize(count: 1) }
 @inline(never)
-fileprivate func p08DeinitializeStaticRoot(_ field: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>) { field.deinitialize(count: 1) }
+fileprivate func p08DeinitializeStaticRoot(_ field: UnsafeMutablePointer<CounterStaticRootStorage>) { field.deinitialize(count: 1) }
 @inline(never)
-fileprivate func p08InitializeStaticRoot(_ field: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>, owner: ObservableModelOwnerIdentity) {
-    field.initialize(to: StaticObservableRootAdapter(identity: owner, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
+fileprivate func p08InitializeStaticRoot(_ field: UnsafeMutablePointer<CounterStaticRootStorage>, owner: ObservableModelOwnerIdentity) {
+    field.initialize(to: CounterStaticRootStorage(identity: owner, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
 }
 @inline(never)
 fileprivate func p08InitializeStaticSemantic(_ field: UnsafeMutablePointer<StaticSemanticRecordStorage>, owner: SemanticRecordOwnerIdentity) {
@@ -2383,7 +2383,7 @@ fileprivate func p08InitializeStaticSemantic(_ field: UnsafeMutablePointer<Stati
 fileprivate func p08InitializeStaticCanvas(_ field: UnsafeMutablePointer<StaticCanvasValueStorage>) { field.initialize(to: StaticCanvasValueStorage()) }
 fileprivate struct P08StaticOuterView: ~Copyable {
     let limits: RuntimeProfileLimits
-    let root: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>
+    let root: UnsafeMutablePointer<CounterStaticRootStorage>
     let semantic: UnsafeMutablePointer<StaticSemanticRecordStorage>
     let records: UnsafeMutableBufferPointer<SemanticRuntimeRecord>
     let paths: UnsafeMutableBufferPointer<SemanticPathEntry>
@@ -2406,7 +2406,7 @@ fileprivate struct P08StaticOuterView: ~Copyable {
     borrowing func audit(owner: borrowing P08TypedBackingOwner, report: (CounterStorageRegion) -> Void = { _ in }) -> RuntimeProfileValidationResult {
         let facts = owner.physicalFacts()
         return counterValidatePhysicalBacking(profile: .static, limits: limits, root: root.pointee.storageLayout,
-            rootMetadataRegion: .inline(StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, family: 7, chargedBytes: root.pointee.storageLayout.metadataBytes, kind: .metadataPadding),
+            rootMetadataRegion: .inline(CounterStaticRootStorage.self, family: 7, chargedBytes: root.pointee.storageLayout.metadataBytes, kind: .metadataPadding),
             semantic: .init(limits: semantic.pointee.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: records.count), paths: .elements(SemanticPathEntry.self, count: paths.count), payloads: .elements(CounterPayload?.self, count: payloads.count), scalars: .elements(UInt32.self, count: scalars.count), controlBytes: MemoryLayout<StaticSemanticRecordStorage>.size + CounterSemanticBacking.paddingBytes),
             geometry: facts.geometry, interactionFacts: facts.interaction, identityCapacities: (24, 48),
             descriptorBytes: MemoryLayout<P08GeometryAccess>.size + MemoryLayout<P08CandidateAccess>.size + 2 * MemoryLayout<P08CommittedAccess>.size + 2 * MemoryLayout<P08HitAccess>.size,
@@ -2473,7 +2473,7 @@ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerI
             withP08StaticReservation { owner in
                 precondition(initializeP08Backing(&owner) == nil)
                 defer { owner.finishReservation() }
-                let metadata = MemoryLayout<P08StaticOuter>.stride - MemoryLayout<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CounterSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>>.size - MemoryLayout<CounterControl>.size + MemoryLayout<P08StaticReservation>.stride - (MemoryLayout<InlineArray<1024, UInt8>?>.stride + MemoryLayout<InlineArray<1056, UInt8>?>.stride + MemoryLayout<InlineArray<20, UInt8>?>.stride + MemoryLayout<InlineArray<112, UInt8>?>.stride + MemoryLayout<StaticCounterLayoutWorkspace?>.stride + MemoryLayout<StaticCounterResolvedLayoutStorage?>.stride + MemoryLayout<InlineArray<64, SemanticRecordReference?>?>.stride + MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>?>.stride + MemoryLayout<QualifiedRender?>.stride + MemoryLayout<CounterStaticCandidate?>.stride + 2 * MemoryLayout<CounterStaticHits?>.stride + 2 * MemoryLayout<CounterStaticCommitted?>.stride)
+                let metadata = MemoryLayout<P08StaticOuter>.stride - MemoryLayout<CounterStaticRootStorage>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CounterSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>>.size - MemoryLayout<CounterControl>.size + MemoryLayout<P08StaticReservation>.stride - (MemoryLayout<InlineArray<1024, UInt8>?>.stride + MemoryLayout<InlineArray<1056, UInt8>?>.stride + MemoryLayout<InlineArray<20, UInt8>?>.stride + MemoryLayout<InlineArray<112, UInt8>?>.stride + MemoryLayout<StaticCounterLayoutWorkspace?>.stride + MemoryLayout<StaticCounterResolvedLayoutStorage?>.stride + MemoryLayout<InlineArray<64, SemanticRecordReference?>?>.stride + MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>?>.stride + MemoryLayout<QualifiedRender?>.stride + MemoryLayout<CounterStaticCandidate?>.stride + 2 * MemoryLayout<CounterStaticHits?>.stride + 2 * MemoryLayout<CounterStaticCommitted?>.stride)
                 let view = P08StaticOuterView(limits: limits, root: root, semantic: semantic, records: records, paths: paths, payloads: payloads, scalars: scalars, canvas: canvas, entries: entries, control: control, outerMetadataBytes: metadata)
                 defer { CounterControl.requireVacantRuntimeSlot(at: control) }
                 return body(&owner, view)
@@ -2761,7 +2761,7 @@ fileprivate func p08InstallStaticHostPlan(owner: inout P08TypedBackingOwner, out
 }
 
 @inline(never)
-fileprivate func p08RunPreparedStaticHost(owner: inout P08TypedBackingOwner, facts: inout P08HostRunFacts, rootStorage: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>, semanticStorage: UnsafeMutablePointer<StaticSemanticRecordStorage>, canvasStorage: UnsafeMutablePointer<StaticCanvasValueStorage>, recordsBacking: UnsafeMutableBufferPointer<SemanticRuntimeRecord>, pathsBacking: UnsafeMutableBufferPointer<SemanticPathEntry>, payloadsBacking: UnsafeMutableBufferPointer<CounterPayload?>, scalarsBacking: UnsafeMutableBufferPointer<UInt32>, entriesBacking: UnsafeMutableBufferPointer<CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>, control: UnsafeMutablePointer<CounterControl>, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil, baseline: UnsafeMutablePointer<P08ReuseFingerprint>? = nil, foreignRootStorage: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>? = nil, foreignControlStorage: UnsafeMutablePointer<CounterControl>? = nil) -> Int {
+fileprivate func p08RunPreparedStaticHost(owner: inout P08TypedBackingOwner, facts: inout P08HostRunFacts, rootStorage: UnsafeMutablePointer<CounterStaticRootStorage>, semanticStorage: UnsafeMutablePointer<StaticSemanticRecordStorage>, canvasStorage: UnsafeMutablePointer<StaticCanvasValueStorage>, recordsBacking: UnsafeMutableBufferPointer<SemanticRuntimeRecord>, pathsBacking: UnsafeMutableBufferPointer<SemanticPathEntry>, payloadsBacking: UnsafeMutableBufferPointer<CounterPayload?>, scalarsBacking: UnsafeMutableBufferPointer<UInt32>, entriesBacking: UnsafeMutableBufferPointer<CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>, control: UnsafeMutablePointer<CounterControl>, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil, baseline: UnsafeMutablePointer<P08ReuseFingerprint>? = nil, foreignRootStorage: UnsafeMutablePointer<CounterStaticRootStorage>? = nil, foreignControlStorage: UnsafeMutablePointer<CounterControl>? = nil) -> Int {
     return counterForeignJoinScope(backing: foreignRootStorage, foreign: foreignControlStorage) { foreignModels, foreignRoot, foreignControl in
         let ownedChecks = p08CheckStaticHostConfiguration(&facts)
         var checks = 0
@@ -2789,7 +2789,7 @@ fileprivate func p08RunPreparedStaticHost(owner: inout P08TypedBackingOwner, fac
     }
 }
 
-fileprivate func runP08StaticHost(owner: inout P08TypedBackingOwner, outer: borrowing P08StaticOuterView, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, write: CounterTiledPixelWrite? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil, baseline: UnsafeMutablePointer<P08ReuseFingerprint>? = nil, foreignRootStorage: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>? = nil, foreignControlStorage: UnsafeMutablePointer<CounterControl>? = nil) -> Int {
+fileprivate func runP08StaticHost(owner: inout P08TypedBackingOwner, outer: borrowing P08StaticOuterView, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, write: CounterTiledPixelWrite? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil, baseline: UnsafeMutablePointer<P08ReuseFingerprint>? = nil, foreignRootStorage: UnsafeMutablePointer<CounterStaticRootStorage>? = nil, foreignControlStorage: UnsafeMutablePointer<CounterControl>? = nil) -> Int {
     // Field facts remain local to the enclosing synchronous selected reservation.
     let control = outer.control
     let rootStorage = outer.root, semanticStorage = outer.semantic, canvasStorage = outer.canvas
@@ -3376,7 +3376,7 @@ fileprivate func p08DeriveMetadataLayout(_ visit: (Int, Int, Int, Int, Int) -> V
         p08VisitMetadataField(P08ReuseFingerprint.self, index: 2, cursor: &cursor, maximum: &maximum, visit: visit),
         p08VisitMetadataField(InlineArray<14, P08InitializedEntry?>.self, index: 3, cursor: &cursor, maximum: &maximum, visit: visit),
         p08VisitMetadataField(P08HostReuseTranscript.self, index: 4, cursor: &cursor, maximum: &maximum, visit: visit),
-        p08VisitMetadataField(StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, index: 5, cursor: &cursor, maximum: &maximum, visit: visit),
+        p08VisitMetadataField(CounterStaticRootStorage.self, index: 5, cursor: &cursor, maximum: &maximum, visit: visit),
         p08VisitMetadataField(CounterControl.self, index: 6, cursor: &cursor, maximum: &maximum, visit: visit)
     else { return nil }
     let remainder = cursor % maximum
@@ -3391,7 +3391,7 @@ fileprivate struct P08MetadataPointers: ~Copyable {
     let before: UnsafeMutablePointer<P08ReuseFingerprint>
     let original: UnsafeMutablePointer<InlineArray<14, P08InitializedEntry?>>
     let transcript: UnsafeMutablePointer<P08HostReuseTranscript>
-    let foreignRoot: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>
+    let foreignRoot: UnsafeMutablePointer<CounterStaticRootStorage>
     let foreignControl: UnsafeMutablePointer<CounterControl>
     init(donor: UnsafeMutableRawBufferPointer) {
         var offsets: InlineArray<7, Int> = .init(repeating: 0)
@@ -3409,7 +3409,7 @@ fileprivate struct P08MetadataPointers: ~Copyable {
         before = donor.baseAddress!.advanced(by: offsets[2]).bindMemory(to: P08ReuseFingerprint.self, capacity: 1)
         original = donor.baseAddress!.advanced(by: offsets[3]).bindMemory(to: InlineArray<14, P08InitializedEntry?>.self, capacity: 1)
         transcript = donor.baseAddress!.advanced(by: offsets[4]).bindMemory(to: P08HostReuseTranscript.self, capacity: 1)
-        foreignRoot = donor.baseAddress!.advanced(by: offsets[5]).bindMemory(to: StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, capacity: 1)
+        foreignRoot = donor.baseAddress!.advanced(by: offsets[5]).bindMemory(to: CounterStaticRootStorage.self, capacity: 1)
         foreignControl = donor.baseAddress!.advanced(by: offsets[6]).bindMemory(to: CounterControl.self, capacity: 1)
     }
 }
@@ -3440,12 +3440,12 @@ fileprivate func p08InitializeMetadataTranscript(_ pointer: UnsafeMutablePointer
     pointer.initialize(to: P08HostReuseTranscript())
 }
 @inline(never)
-fileprivate func p08InitializeMetadataForeignRoot(_ pointer: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>) {
+fileprivate func p08InitializeMetadataForeignRoot(_ pointer: UnsafeMutablePointer<CounterStaticRootStorage>) {
     var namespace = ObservableModelOwnerNamespace()
     do {
         let identity = try namespace.issue()
         precondition(identity.rawValue == 0)
-        pointer.initialize(to: StaticObservableRootAdapter(identity: identity, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
+        pointer.initialize(to: CounterStaticRootStorage(identity: identity, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
     } catch { preconditionFailure("foreign metadata identity") }
 }
 @inline(never)
@@ -3492,7 +3492,7 @@ fileprivate func p08DestroyMetadataForeignControl(_ pointer: UnsafeMutablePointe
     pointer.deinitialize(count: 1)
 }
 @inline(never)
-fileprivate func p08DestroyMetadataForeignRoot(_ pointer: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>) {
+fileprivate func p08DestroyMetadataForeignRoot(_ pointer: UnsafeMutablePointer<CounterStaticRootStorage>) {
     pointer.deinitialize(count: 1)
 }
 @inline(never)
@@ -3678,7 +3678,7 @@ fileprivate func p08RunMetadataGraph(owner: inout P08TypedBackingOwner, outer: i
 @inline(never)
 fileprivate func p08RunMetadataHost(_ plan: P08EmbeddedCasePlan,
     owner: inout P08TypedBackingOwner, outer: inout P08EmbeddedOuter,
-    foreignRoot: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>,
+    foreignRoot: UnsafeMutablePointer<CounterStaticRootStorage>,
     foreignControl: UnsafeMutablePointer<CounterControl>, write: CounterTiledPixelWrite?) -> Int {
     let initialized = initializeP08Backing(&owner) == nil
     precondition(initialized)
@@ -3727,7 +3727,7 @@ fileprivate func p08InstallEmbeddedHostPlan(owner: inout P08TypedBackingOwner,
 @inline(never)
 fileprivate func p08RunOneMetadataHost(owner: inout P08TypedBackingOwner, outer: inout P08EmbeddedOuter,
     before: UnsafeMutablePointer<P08ReuseFingerprint>?, transcript: UnsafeMutablePointer<P08HostReuseTranscript>?,
-    foreignRoot: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>,
+    foreignRoot: UnsafeMutablePointer<CounterStaticRootStorage>,
     foreignControl: UnsafeMutablePointer<CounterControl>, write: CounterTiledPixelWrite?, plan: P08EmbeddedCasePlan? = nil) -> Int {
     // Whole-outer setup ends before addresses are projected and the plan field is lent.
     p08InstallEmbeddedHostPlan(owner: &owner, outer: &outer, write: write, plan: plan)
@@ -3756,7 +3756,7 @@ fileprivate func p08RunOneMetadataHost(owner: inout P08TypedBackingOwner, outer:
 @inline(never)
 fileprivate func p08ReconstructMetadataHost(outer: inout P08EmbeddedOuter,
     model: ObservableModelOwnerIdentity, semantic: SemanticRecordOwnerIdentity,
-    foreignRoot: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>,
+    foreignRoot: UnsafeMutablePointer<CounterStaticRootStorage>,
     foreignControl: UnsafeMutablePointer<CounterControl>) {
     p08MetadataOuterView(outer).reconstruct(modelOwner: model, semanticOwner: semantic)
     p08ResetForeignMetadata(root: foreignRoot, control: foreignControl)
@@ -3774,7 +3774,7 @@ fileprivate func p08RequireSecondNamespaces(owner: inout P08TypedBackingOwner, o
 fileprivate func p08RunMetadataTwoHosts(owner: inout P08TypedBackingOwner, outer: inout P08EmbeddedOuter,
     before: UnsafeMutablePointer<P08ReuseFingerprint>, original: inout InlineArray<14, P08InitializedEntry?>,
     transcript: UnsafeMutablePointer<P08HostReuseTranscript>,
-    foreignRoot: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>,
+    foreignRoot: UnsafeMutablePointer<CounterStaticRootStorage>,
     foreignControl: UnsafeMutablePointer<CounterControl>, secondModel: ObservableModelOwnerIdentity?,
     secondSemantic: SemanticRecordOwnerIdentity?, write: CounterTiledPixelWrite?) -> Int {
     p08InitializeMetadataHostBacking(&owner)
@@ -3888,7 +3888,7 @@ package func counterExerciseScopedStorage(backing: UnsafeMutableRawBufferPointer
 
 #if hasFeature(Embedded)
 @inline(never)
-fileprivate func p08ResetForeignMetadata(root: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>, control: UnsafeMutablePointer<CounterControl>) {
+fileprivate func p08ResetForeignMetadata(root: UnsafeMutablePointer<CounterStaticRootStorage>, control: UnsafeMutablePointer<CounterControl>) {
     p08DestroyMetadataForeignControl(control)
     p08DestroyMetadataForeignRoot(root)
     p08InitializeMetadataForeignRoot(root)

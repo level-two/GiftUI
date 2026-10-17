@@ -16,6 +16,10 @@ superseded_by: null
 
 # P08 Native cold Static construction
 
+Current source boundary: [candidate 1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1.md),
+first actual cold screen pending; 0/2 corrective cycles used. Compiler/link and
+source-access controls are not actual zero-heap or lifecycle acceptance.
+
 **Selected candidate mechanism; independent design review PASS for bounded source
 execution and early actual cold screen.**
 The [independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-independent-design-review.md)
@@ -127,6 +131,11 @@ Maintained changes are limited to the following mechanism and direct call sites:
   and `CounterPipelineOwner.swift`: concrete Native Static backing, exact layout/
   root call sites, targeted forwarding. A focused cold-screen driver belongs
   beside existing diagnostic tools, not in the public host API.
+
+Candidate 1's [activity record](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1.md)
+tracks exact compiler-required visibility files and the direct SPEC-010 physical
+layout probe/collector adjustment for the split representation. No old layout
+label or behavioral assertion is removed.
 
 Before implementation, confirm exact owning files (the target bridge is located
 by symbol, not assumed from this list). Additional files are allowed only for

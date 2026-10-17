@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-static-screen-candidate1-current/source-access/model-construction-negative.swift:4:17: error: 'ObservableModelScope<Model, Schema>' initializer is inaccessible due to 'internal' protection level
+2 | func bad(_ owner: borrowing UnsafeMutablePointer<ObservableModelOwnership>,
+3 |          _ models: borrowing UnsafeMutableBufferPointer<Int?>) {
+4 |     let scope = ObservableModelScope<Int, UInt8>(ownership: owner, models: models, schema: 1, needsCapture: false)
+  |                 `- error: 'ObservableModelScope<Model, Schema>' initializer is inaccessible due to 'internal' protection level
+5 |     _ = scope
+6 | }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelScope.swift:36:5: note: 'init(ownership:models:schema:needsCapture:)' declared here
+ 34 |     @inlinable
+ 35 |     @inline(__always)
+ 36 |     init(
+    |     `- note: 'init(ownership:models:schema:needsCapture:)' declared here
+ 37 |         ownership: borrowing UnsafeMutablePointer<ObservableModelOwnership>,
+ 38 |         models: borrowing UnsafeMutableBufferPointer<Model?>, schema: UInt16, needsCapture: Bool

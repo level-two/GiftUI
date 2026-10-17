@@ -22,9 +22,10 @@ public enum _GiftUIAccessFailure: UInt8, Error, Equatable {
 }
 
 public struct _GiftUIFrameRead<D: _GiftUIReadDomain>: ~Escapable {
-    package let slots: Span<D.Slot>
+    @usableFromInline package let slots: Span<D.Slot>
 
     @_lifetime(copy slots)
+    @inlinable
     package init(slots: Span<D.Slot>) { self.slots = slots }
 }
 

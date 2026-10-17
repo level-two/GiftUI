@@ -4,6 +4,7 @@ import GiftUI
 /// Prepared contains only bounded preflight data; it must not be a full capture
 /// rollback copy. The witness lives on the concrete storage value so this route
 /// does not require noncopyable associated types from the compiler.
+@usableFromInline
 package protocol ObservableModelMutation: ~Copyable {
     associatedtype Mutation
     associatedtype Prepared

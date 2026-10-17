@@ -2,6 +2,7 @@ import GiftUI
 
 /// Finite schema storage bridge. This is internal host-generated storage, not
 /// an authored reference or an access facade. Services are not part of its seed.
+@usableFromInline
 package protocol ObservableStateModel: ~Copyable {
     associatedtype Schema: _GiftUIModelSchema
     static func materialize(_ seed: Schema.Seed) -> Self

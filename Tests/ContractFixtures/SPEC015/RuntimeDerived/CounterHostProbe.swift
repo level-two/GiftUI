@@ -170,7 +170,7 @@ func counterForeignJoinScope(_ body: (borrowing ObservableModelScope<CounterOwne
     do throws(ObservableStateError) {
         let identity = try namespace.issue()
         precondition(identity.rawValue == 0)
-        var backing = StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>(identity: identity, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!
+        var backing = CounterStaticRootStorage(identity: identity, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!
         var foreign = CounterControl()
         return counterForeignJoinScope(backing: &backing, foreign: &foreign, body)
     } catch { preconditionFailure("counter foreign live scope") }
@@ -186,7 +186,7 @@ func counterJoinReport(_ report: HostAssemblyReport) -> HostAssemblyReport {
 
 // The caller lends two distinct fully initialized stored objects. This operation
 // neither constructs nor copies a complete foreign Control across its callback.
-func counterForeignJoinScope(backing: inout StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>, foreign: inout CounterControl,
+func counterForeignJoinScope(backing: inout CounterStaticRootStorage, foreign: inout CounterControl,
     _ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
     do throws(ObservableStateError) {
         return try backing.withLifetime(limits: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!) { (models, root) throws(ObservableStateError) in
@@ -195,7 +195,7 @@ func counterForeignJoinScope(backing: inout StaticObservableRootAdapter<CounterO
     } catch { preconditionFailure("counter foreign live scope") }
 }
 
-func counterForeignJoinScope(backing: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>?, foreign: UnsafeMutablePointer<CounterControl>?,
+func counterForeignJoinScope(backing: UnsafeMutablePointer<CounterStaticRootStorage>?, foreign: UnsafeMutablePointer<CounterControl>?,
     _ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
     #if hasFeature(Embedded)
     guard let backing, let foreign else { preconditionFailure("missing donor foreign lenders") }

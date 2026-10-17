@@ -28,6 +28,11 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current strict Native activity — [candidate 1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1.md).
+The reviewed concrete-root/checked-scope mechanism compiles and diagnostic links
+are prepared; first actual host-first cold screen remains pending, 0/2 corrections
+used. No zero-heap/P08 closure follows from compilation.
+
 Current Native boundary — **independent426-label coverage PASS per profile**.
 The [combined result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-native-combined-coverage-result.md)
 qualifies384fresh controls +19matching preparation +23retained runtime/projection/

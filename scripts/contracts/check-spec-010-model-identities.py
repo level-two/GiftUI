@@ -111,7 +111,7 @@ for name, body in re.findall(r'define[^\n]*@giftui_p03_layout_([a-z0-9_]+)\([^\n
         constant = re.search(r'ret i(?:32|64) (\d+)', target.group(1))
     assert constant, (name, body)
     layouts[name] = int(constant.group(1))
-assert len(layouts) == 19, layouts
+assert len(layouts) == 20, layouts
 (out / 'layouts.json').write_text(json.dumps(layouts, sort_keys=True, indent=2) + '\n')
 root_probe = fixture_root / 'RootProbe.swift'
 lexical_probe = fixture_root / 'LexicalProbe.swift'

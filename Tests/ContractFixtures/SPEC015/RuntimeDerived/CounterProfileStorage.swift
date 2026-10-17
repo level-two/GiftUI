@@ -15,6 +15,79 @@ import GiftUIRuntimeStatic
 import GiftUIRuntimeDynamic
 #endif
 
+#if hasFeature(Embedded)
+typealias CounterStaticRootStorage = StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>
+#else
+/// Concrete Native owning storage. It lends the same contiguous model slots and
+/// independently borrowed registration fields to the common checked factories.
+struct CounterStaticRootStorage: ~Copyable {
+    private var ownership: ObservableModelOwnership
+    private var models: InlineArray<2, CounterOwnedModel?> = .init { _ in nil }
+    private var identities: InlineArray<2, SemanticCompleteIdentity?> = .init(repeating: nil)
+    private var registration = ObservableStateRootControl()
+    private let schema: UInt16
+    private let needsCapture: Bool
+
+    init?(identity: ObservableModelOwnerIdentity, schema: UInt16, needsCapture: Bool,
+        modelLimit: UInt16 = 2, claimLimit: UInt16 = 4, pinLimit: UInt16 = 2,
+        captureLimit: UInt16? = nil) {
+        guard let ownership = ObservableModelOwnership(identity: identity, modelLimit: modelLimit,
+            claimLimit: claimLimit, pinLimit: pinLimit, captureLimit: captureLimit ?? (needsCapture ? 1 : 0))
+        else { return nil }
+        self.ownership = consume ownership
+        self.schema = schema
+        self.needsCapture = needsCapture
+    }
+
+    var storageLayout: (owner: ObservableModelOwnerIdentity, models: UInt16, claims: UInt16,
+        pins: UInt16, captures: UInt16, metadataBytes: Int, modelBytes: Int, pinBytes: Int,
+        liveBytes: Int, candidateBytes: Int) {
+        let capacities = ownership.storageCapacities
+        let modelBytes = MemoryLayout<InlineArray<2, CounterOwnedModel?>>.size
+        let registrationBytes = MemoryLayout<ObservableStateRootControl>.size
+            + MemoryLayout<InlineArray<2, SemanticCompleteIdentity?>>.size
+        let fields = MemoryLayout<ObservableModelOwnership>.size + modelBytes + registrationBytes
+            + MemoryLayout<UInt16>.size + MemoryLayout<Bool>.size
+        let metadataBytes = ObservableModelOwnership.metadataStorageBytes
+            + MemoryLayout<UInt16>.size + MemoryLayout<Bool>.size + MemoryLayout<Self>.size - fields
+        let candidateBytes = ObservableStateRootControl.candidateStorageBytes
+        return (ownership.identity, 2, 4, 2, capacities.captures, metadataBytes, modelBytes,
+            ObservableModelOwnership.framePinStorageBytes, registrationBytes - candidateBytes,
+            candidateBytes)
+    }
+
+    mutating func withLifetime<Result>(
+        limits: ObservableStateLimits = .init(maximumLocations: 2, maximumRegistrations: 2,
+            maximumStagedAssociations: 2)!,
+        _ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+            borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>)
+            throws(ObservableStateError) -> Result
+    ) throws(ObservableStateError) -> Result {
+        try Self.withFields(ownership: &ownership, models: &models, identities: &identities,
+            registration: &registration, schema: schema, needsCapture: needsCapture,
+            limits: limits, body)
+    }
+
+    private static func withFields<Result>(ownership: inout ObservableModelOwnership,
+        models: inout InlineArray<2, CounterOwnedModel?>,
+        identities: inout InlineArray<2, SemanticCompleteIdentity?>,
+        registration: inout ObservableStateRootControl, schema: UInt16, needsCapture: Bool,
+        limits: ObservableStateLimits,
+        _ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+            borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>)
+            throws(ObservableStateError) -> Result
+    ) throws(ObservableStateError) -> Result {
+        var span = models.mutableSpan
+        return try withObservableModelScope(ownership: &ownership, models: &span,
+            schema: schema, needsCapture: needsCapture) { (scope) throws(ObservableStateError) in
+            try scope.withRoot(identities: &identities, control: &registration, limits: limits) {
+                (root) throws(ObservableStateError) in try body(scope, root)
+            }
+        }
+    }
+}
+#endif
+
 // These are the actual typed owners, not an audited allocation recipe. An
 // activation moves owned workspaces into the scoped pipeline and restores them
 // only after the consuming coordinator has quiesced and ended all its borrows.
@@ -362,7 +435,7 @@ struct StaticCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
     typealias StructuralIdentity = SemanticCompleteIdentity
     static var profile: RuntimeProfileKind { .static }
     let limits: RuntimeProfileLimits
-    var root: StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>
+    var root: CounterStaticRootStorage
     var semantic: StaticSemanticRecordStorage
     var semanticBacking = CounterSemanticBacking()
     var canvas = StaticCanvasValueStorage()
@@ -373,19 +446,19 @@ struct StaticCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
     var used = false
     init(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity, limits: RuntimeProfileLimits = counterActualLimits(.static)) {
         self.limits = limits
-        root = StaticObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: min(2, max(1, limits.models.maximumModelSlots)), claimLimit: min(4, max(1, limits.models.maximumOwningTickets)), pinLimit: min(2, max(1, limits.models.maximumFramePins)), captureLimit: 0)!
+        root = CounterStaticRootStorage(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: min(2, max(1, limits.models.maximumModelSlots)), claimLimit: min(4, max(1, limits.models.maximumOwningTickets)), pinLimit: min(2, max(1, limits.models.maximumFramePins)), captureLimit: 0)!
         semantic = StaticSemanticRecordStorage(limits: counterSemanticLimits, owner: semanticOwner)
         interaction = CounterStaticKeys(state: InteractionState(candidateRecords: CounterStaticCandidate(capacity: 2)!, candidateHitRegions: CounterStaticHits(capacity: 2)!, candidateCommittedRecords: CounterStaticCommitted(capacity: 2)!, committedRecords: CounterStaticCommitted(capacity: 2)!, committedHitRegions: CounterStaticHits(capacity: 2)!), maximumComponentsPerKey: 24, maximumComponents: 48)!
     }
     borrowing func audit() -> RuntimeProfileValidationResult { audit(report: { _ in }) }
     borrowing func audit(report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult {
         guard let interaction else { return .invalid(.missingStorage) }
-        return counterValidateBacking(profile: Self.profile, limits: limits, root: root.storageLayout, rootMetadataRegion: .inline(StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, family: 7, chargedBytes: root.storageLayout.metadataBytes, kind: .metadataPadding),
+        return counterValidateBacking(profile: Self.profile, limits: limits, root: root.storageLayout, rootMetadataRegion: .inline(CounterStaticRootStorage.self, family: 7, chargedBytes: root.storageLayout.metadataBytes, kind: .metadataPadding),
             semantic: .init(limits: semantic.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: semanticBacking.records.count), paths: .elements(SemanticPathEntry.self, count: semanticBacking.paths.count), payloads: .elements(CounterPayload?.self, count: semanticBacking.payloads.count), scalars: .elements(UInt32.self, count: semanticBacking.scalars.count), controlBytes: MemoryLayout<StaticSemanticRecordStorage>.size + CounterSemanticBacking.paddingBytes),
             geometry: workspace.measurement, interaction: interaction, geometryType: StaticCounterGeometry.self,
             canvasCount: canvasBacking.count, canvasCapacity: UInt16(canvasBacking.count),
             canvasControlBytes: MemoryLayout<StaticCanvasValueStorage>.size,
-            factoryRegion: .inline(Self.self, family: 24, chargedBytes: MemoryLayout<Self>.size - MemoryLayout<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CounterSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>>.size - MemoryLayout<CounterStaticWorkspaceBacking>.size - MemoryLayout<CounterStaticKeys>.size - MemoryLayout<CounterControl>.size, kind: .metadataPadding),
+            factoryRegion: .inline(Self.self, family: 24, chargedBytes: MemoryLayout<Self>.size - MemoryLayout<CounterStaticRootStorage>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CounterSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>>.size - MemoryLayout<CounterStaticWorkspaceBacking>.size - MemoryLayout<CounterStaticKeys>.size - MemoryLayout<CounterControl>.size, kind: .metadataPadding),
             geometryRegions: workspace, report: report)
     }
     mutating func resetAttemptStorage() {

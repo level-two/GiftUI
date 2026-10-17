@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-static-screen-candidate1-current/source-access/root-extraction-negative.swift:3:68: error: 'records' is inaccessible due to 'internal' protection level
+1 | import GiftUIObservableState
+2 | func bad<M: ObservableStateModel & ~Copyable, I: Equatable & Sendable>(
+3 |     _ input: borrowing ObservableStateRootScope<M, I>) { _ = input.records }
+  |                                                                    `- error: 'records' is inaccessible due to 'internal' protection level
+4 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift:168:27: note: 'records' declared here
+166 |     @usableFromInline let models: ObservableModelScope<Model, Model.Schema>
+167 |     @usableFromInline let identities: UnsafeMutableBufferPointer<Identity?>
+168 |     @usableFromInline let records: UnsafeMutablePointer<ObservableStateRootControl>
+    |                           `- note: 'records' declared here
+169 | 
+170 |     @usableFromInline let reports: UnsafeMutablePointer<ObservableStateRootReports>

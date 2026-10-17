@@ -7,6 +7,7 @@ import GiftUISemanticCore
 /// The host's finite action lowering supplies a typed operation, never an
 /// unrestricted model callback. Observable State still owns phase/generation
 /// checks, mutation preflight, exclusive commit and synchronous reporting.
+@usableFromInline
 package enum RuntimeRecordInteractionBridge {
     package static func append<Candidate, Committed, Hits, Model, RootIdentity, Action, Roles>(
         record: SemanticRecordReference,
@@ -86,6 +87,7 @@ package enum RuntimeRecordInteractionBridge {
             targetGeneration: .init(rawValue: generation!))
     }
 
+    @inlinable
     package static func dispatch<Records, Model, RootIdentity, Action>(
         _ captured: CapturedAction<Records.Identity>, records: borrowing Records,
         target: borrowing ObservableStateRootTargetAccess<Model, RootIdentity>,
@@ -111,6 +113,7 @@ package enum RuntimeRecordInteractionBridge {
     }
 }
 
+@usableFromInline
 package enum RuntimeRecordInteractionDispatchResult: Equatable {
     case interaction(InteractionDispatchResult)
     case observableFailure(ObservableStateError)

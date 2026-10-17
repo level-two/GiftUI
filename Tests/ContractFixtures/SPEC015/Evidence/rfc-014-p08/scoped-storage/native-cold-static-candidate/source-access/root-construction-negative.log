@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-static-screen-candidate1-current/source-access/root-construction-negative.swift:4:54: error: 'ObservableStateRootScope<Model, Identity>' initializer is inaccessible due to 'internal' protection level
+2 | func bad<M: ObservableStateModel & ~Copyable, I: Equatable & Sendable>(
+3 |     _ input: borrowing ObservableStateRootScope<M, I>) {
+4 |     let constructor = ObservableStateRootScope<M, I>.init
+  |                                                      `- error: 'ObservableStateRootScope<Model, Identity>' initializer is inaccessible due to 'internal' protection level
+5 |     _ = constructor
+6 | }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift:175:5: note: 'init(models:identities:records:reports:)' declared here
+173 |     @inlinable
+174 |     @inline(__always)
+175 |     init(
+    |     `- note: 'init(models:identities:records:reports:)' declared here
+176 |         models: consuming ObservableModelScope<Model, Model.Schema>,
+177 |         identities: borrowing UnsafeMutableBufferPointer<Identity?>,

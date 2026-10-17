@@ -3,9 +3,30 @@ import GiftUIExecution
 
 /// Registration/dirty storage is separate from model bytes and ownership. The
 /// activation factory lends this entire value until all model sinks are retired.
+/// Generic compatibility owner. Concrete hosts may own the same typed slots
+/// separately and lend them to the checked scope factory below.
 package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
+    fileprivate var identities: InlineArray<2, Identity?> = .init(repeating: nil)
+    fileprivate var control = ObservableStateRootControl()
+
+    package static var storageCapacities:
+        (locations: UInt16, registrations: UInt16, associations: UInt16)
+    { (2, 2, 2) }
+    package static var candidateStorageBytes: Int {
+        ObservableStateRootControl.candidateStorageBytes
+    }
+    package static var liveStorageBytes: Int { MemoryLayout<Self>.size - candidateStorageBytes }
+    package init() {}
+
+    // Internal generation-exhaustion control; production cannot seed it.
+    init(nextGeneration: UInt32?) { control = .init(nextGeneration: nextGeneration) }
+}
+
+/// Identity-independent registration bookkeeping. It contains no model bytes or
+/// duplicate owner and cannot construct an unchecked root scope.
+@usableFromInline
+package struct ObservableStateRootControl {
     struct Record {
-        var identity: Identity?
         var ordinal: UInt16 = 0
         var keyOwner: UInt32 = 0
         var keyGeneration: UInt32 = 0
@@ -14,32 +35,21 @@ package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
         var encountered = false
     }
     fileprivate var records: InlineArray<2, Record> = .init(repeating: Record())
-    fileprivate var reports = ObservableStateRootReports()
+    @usableFromInline var reports = ObservableStateRootReports()
     fileprivate var offeredClaims: InlineArray<4, ObservableModelOwnership.Claim?> = .init(
         repeating: nil)
     fileprivate var nextGeneration: UInt32? = 0
     fileprivate var candidateActive = false
     fileprivate var operationActive = false
     fileprivate var retired = false
-    fileprivate var limits = ObservableStateLimits(
+    @usableFromInline var limits = ObservableStateLimits(
         maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!
-
-    package static var storageCapacities:
-        (locations: UInt16, registrations: UInt16, associations: UInt16)
-    { (2, 2, 2) }
 
     package static var candidateStorageBytes: Int {
         MemoryLayout<InlineArray<4, ObservableModelOwnership.Claim?>>.size + MemoryLayout<Bool>.size
     }
-    package static var liveStorageBytes: Int { MemoryLayout<Self>.size - candidateStorageBytes }
-
     package init() {}
-
-    // Internal fixture boundary, matching the checked identity cursor controls.
-    // Production construction cannot seed or reset the registration namespace.
-    init(nextGeneration: UInt32?) {
-        self.nextGeneration = nextGeneration
-    }
+    init(nextGeneration: UInt32?) { self.nextGeneration = nextGeneration }
 
     fileprivate mutating func reserve(_ slot: UInt16) throws(ObservableStateError)
         -> _GiftUIObservationAttachment
@@ -53,6 +63,7 @@ package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
 
 /// A fixed callback needs no captured generic metadata or heap context. Its
 /// pointer is lent independently from model storage for the activation interval.
+@usableFromInline
 struct ObservableStateRootReports {
     struct Route {
         var lifecycle = ObservableStateRegistrationLifecycle()
@@ -93,61 +104,98 @@ where Model: ObservableStateModel & ~Copyable, Schema == Model.Schema {
         _ body: (borrowing ObservableStateRootScope<Model, Identity>) throws(ObservableStateError)
             -> Result
     ) throws(ObservableStateError) -> Result {
-        // Activation must enclose frame/read/discovery scopes so their defers
-        // restore mutation phase before automatic registration retirement.
-        // Reject before lending report backing or invoking the caller's body.
+        try withRoot(
+            identities: &storage.identities, control: &storage.control, limits: limits, body)
+    }
+
+    @inlinable
+    package borrowing func withRoot<Identity: Equatable & Sendable, Result>(
+        identities: inout InlineArray<2, Identity?>, control: inout ObservableStateRootControl,
+        limits: ObservableStateLimits = .init(
+            maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!,
+        _ body: (borrowing ObservableStateRootScope<Model, Identity>) throws(ObservableStateError)
+            -> Result
+    ) throws(ObservableStateError) -> Result {
+        var span = identities.mutableSpan
+        return try withRoot(identities: &span, control: &control, limits: limits, body)
+    }
+
+    /// Both actual stored fields remain exclusively borrowed until shutdown and
+    /// callback return. No descriptor borrow is substituted for these borrows.
+    @inlinable
+    package borrowing func withRoot<Identity: Equatable & Sendable, Result>(
+        identities: inout MutableSpan<Identity?>,
+        control: inout ObservableStateRootControl,
+        limits: ObservableStateLimits = .init(
+            maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!,
+        _ body: (borrowing ObservableStateRootScope<Model, Identity>) throws(ObservableStateError)
+            -> Result
+    ) throws(ObservableStateError) -> Result {
         try validateOperation()
-        guard limits.maximumLocations <= 2, limits.maximumRegistrations <= 2,
-            limits.maximumStagedAssociations <= 2
+        guard identities.count == 2, limits.maximumLocations <= 2,
+            limits.maximumRegistrations <= 2, limits.maximumStagedAssociations <= 2
         else { throw .locationCapacityExhausted }
-        storage.limits = limits
-        return try withUnsafeMutablePointer(to: &storage) {
-            (records) throws(ObservableStateError) in
-            try withUnsafeMutablePointer(to: &records.pointee.reports) {
-                (reports) throws(ObservableStateError) in
-                let root = ObservableStateRootScope(
-                    models: borrowedScope(), records: records, reports: reports)
-                defer { finishStoppedActivation() }
-                do throws(ObservableStateError) {
-                    let result = try body(root)
-                    try root.shutdown()
-                    return result
-                } catch {
-                    try? root.shutdown()
-                    throw error
+        control.limits = limits
+        return try identities.withUnsafeMutableBufferPointer {
+            (identities) throws(ObservableStateError) in
+            try withUnsafeMutablePointer(to: &control) { (records) throws(ObservableStateError) in
+                try withUnsafeMutablePointer(to: &records.pointee.reports) {
+                    (reports) throws(ObservableStateError) in
+                    let root = ObservableStateRootScope(
+                        models: borrowedScope(), identities: identities, records: records,
+                        reports: reports)
+                    defer { finishStoppedActivation() }
+                    do throws(ObservableStateError) {
+                        let result = try body(root)
+                        try root.shutdown()
+                        return result
+                    } catch {
+                        try? root.shutdown()
+                        throw error
+                    }
                 }
             }
         }
     }
 }
 
+@usableFromInline
 package struct ObservableStateRootScope<
     Model: ObservableStateModel & ~Copyable, Identity: Equatable & Sendable
 >: ~Copyable, ~Escapable {
-    private let models: ObservableModelScope<Model, Model.Schema>
-    private let records: UnsafeMutablePointer<ObservableStateRootStorage<Identity>>
+    @usableFromInline let models: ObservableModelScope<Model, Model.Schema>
+    @usableFromInline let identities: UnsafeMutableBufferPointer<Identity?>
+    @usableFromInline let records: UnsafeMutablePointer<ObservableStateRootControl>
 
-    private let reports: UnsafeMutablePointer<ObservableStateRootReports>
+    @usableFromInline let reports: UnsafeMutablePointer<ObservableStateRootReports>
 
-    @_lifetime(copy models, borrow records, borrow reports)
-    fileprivate init(
+    @_lifetime(copy models, borrow identities, borrow records, borrow reports)
+    @inlinable
+    @inline(__always)
+    init(
         models: consuming ObservableModelScope<Model, Model.Schema>,
-        records: borrowing UnsafeMutablePointer<ObservableStateRootStorage<Identity>>,
+        identities: borrowing UnsafeMutableBufferPointer<Identity?>,
+        records: borrowing UnsafeMutablePointer<ObservableStateRootControl>,
         reports: borrowing UnsafeMutablePointer<ObservableStateRootReports>
     ) {
         self.models = consume models
+        self.identities = copy identities
         self.records = copy records
         self.reports = copy reports
     }
 
     @_lifetime(copy self)
+    @inlinable
     package borrowing func borrowedRoot() -> ObservableStateRootScope<Model, Identity> {
         ObservableStateRootScope(borrowing: self)
     }
 
     @_lifetime(copy other)
-    private init(borrowing other: borrowing ObservableStateRootScope<Model, Identity>) {
+    @inlinable
+    @inline(__always)
+    init(borrowing other: borrowing ObservableStateRootScope<Model, Identity>) {
         models = other.models.borrowedScope()
+        identities = other.identities
         records = other.records
         reports = other.reports
     }
@@ -181,7 +229,7 @@ package struct ObservableStateRootScope<
 
     private borrowing func matching(_ identity: Identity, ordinal: UInt16) -> Int? {
         for i in 0 ..< 2
-        where records.pointee.records[i].identity == identity
+        where identities[i] == identity
             && records.pointee.records[i].ordinal == ordinal
         { return i }
         return nil
@@ -203,6 +251,7 @@ package struct ObservableStateRootScope<
         return key(at: slot)
     }
 
+    @usableFromInline
     package borrowing func generation(
         identity: Identity, ordinal: UInt16, publishable: Bool = false
     ) -> UInt32? {
@@ -344,7 +393,7 @@ package struct ObservableStateRootScope<
         let key = ticket.key
         try models.validateAssociation(key)
         let slot = Int(key._giftUISlot)
-        guard records.pointee.records[slot].identity == nil else {
+        guard identities[slot] == nil else {
             throw .locationCapacityExhausted
         }
         var locations = 0
@@ -352,7 +401,7 @@ package struct ObservableStateRootScope<
         var associations = 0
         for index in 0 ..< 2 {
             let item = records.pointee.records[index]
-            if item.identity != nil { locations += 1 }
+            if identities[index] != nil { locations += 1 }
             if item.attachment != nil { registrations += 1 }
             if item.encountered { associations += 1 }
         }
@@ -369,8 +418,9 @@ package struct ObservableStateRootScope<
         try models.pin(key)
         records.pointee.operationActive = true
         defer { records.pointee.operationActive = false }
+        identities[slot] = identity
         records.pointee.records[slot] = .init(
-            identity: identity, ordinal: ordinal,
+            ordinal: ordinal,
             keyOwner: key._giftUIOwnerInstance, keyGeneration: key._giftUIAllocationGeneration,
             attachment: attachment, encountered: true)
         reports.pointee.routes[slot] = .init()
@@ -385,6 +435,7 @@ package struct ObservableStateRootScope<
             if returned != nil {
                 do { try models.detach(key, attachment: attachment) } catch { models.requireStop() }
             }
+            identities[slot] = nil
             records.pointee.records[slot] = .init()
             throw failure
         }
@@ -406,6 +457,7 @@ package struct ObservableStateRootScope<
         do { try models.unregister(former) } catch {
             if firstFailure == nil { firstFailure = error }
         }
+        identities[slot] = nil
         records.pointee.records[slot] = .init()
         reports.pointee.routes[slot].dirty = false
         if let firstFailure {
@@ -429,7 +481,7 @@ package struct ObservableStateRootScope<
             }
             var changed = false
             var failure: ObservableStateError?
-            for i in 0 ..< 2 where records.pointee.records[i].identity != nil {
+            for i in 0 ..< 2 where identities[i] != nil {
                 let record = records.pointee.records[i]
                 let remove = disposition == .discard ? !record.published : !record.encountered
                 if remove {
@@ -473,7 +525,7 @@ package struct ObservableStateRootScope<
             var associations = 0
             for index in 0 ..< 2 {
                 if records.pointee.records[index].attachment != nil { registrations += 1 }
-                if records.pointee.records[index].identity != nil { associations += 1 }
+                if identities[index] != nil { associations += 1 }
             }
             let reservation = try models.stageReplacement(
                 transferring: ticket, seed: seed,
@@ -486,8 +538,9 @@ package struct ObservableStateRootScope<
             let attachment = try records.pointee.reserve(UInt16(new))
             records.pointee.operationActive = true
             defer { records.pointee.operationActive = false }
+            identities[new] = identity
             records.pointee.records[new] = .init(
-                identity: identity, ordinal: ordinal,
+                ordinal: ordinal,
                 keyOwner: candidate._giftUIOwnerInstance,
                 keyGeneration: candidate._giftUIAllocationGeneration,
                 attachment: attachment)
@@ -505,6 +558,7 @@ package struct ObservableStateRootScope<
                         cleanupFailed = true
                     }
                 }
+                identities[new] = nil
                 records.pointee.records[new] = .init()
                 try? models.discardReplacement(reservation)
                 if cleanupFailed { models.requireStop() }
@@ -525,6 +579,7 @@ package struct ObservableStateRootScope<
             }
             var activated = try models.commitReplacement(reservation, transferring: &ticket)
             try models.release(&activated)
+            identities[old] = nil
             records.pointee.records[old] = .init()
             reports.pointee.routes[old].dirty = false
             if let failure {
@@ -547,6 +602,7 @@ package struct ObservableStateRootScope<
         }
     }
 
+    @usableFromInline
     package borrowing func mutate(
         identity: Identity, ordinal: UInt16, matching generation: ObservableTargetGeneration,
         mutation: Model.Mutation
@@ -561,6 +617,7 @@ package struct ObservableStateRootScope<
         } catch { return .failure(error) }
     }
 
+    @usableFromInline
     package borrowing func mutate(
         identity: Identity, ordinal: UInt16, matching generation: ObservableTargetGeneration,
         operation: () -> Model.Mutation
@@ -578,6 +635,7 @@ package struct ObservableStateRootScope<
         } catch { return .failure(error) }
     }
 
+    @usableFromInline
     package borrowing func shutdown() throws(ObservableStateError) {
         if records.pointee.retired { return }
         // A terminal activation still needs to retire all callback routes while
@@ -589,7 +647,7 @@ package struct ObservableStateRootScope<
             records.pointee.retired = true
         }
         var failure: ObservableStateError?
-        for i in 0 ..< 2 where records.pointee.records[i].identity != nil {
+        for i in 0 ..< 2 where identities[i] != nil {
             do { try retire(i) } catch { if failure == nil { failure = error } }
         }
         records.pointee.candidateActive = false

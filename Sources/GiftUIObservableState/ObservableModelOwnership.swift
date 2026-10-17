@@ -2,6 +2,7 @@ import GiftUI
 
 // SPEC-015's selected analyzer/counter capacities. The profile supplies model
 // bytes separately; this ledger never contains or copies capture payloads.
+@usableFromInline
 package struct ObservableModelOwnership: ~Copyable {
     package enum Phase: UInt8 {
         case mutating, writing, reading, discovering, replacing, retired
@@ -138,6 +139,7 @@ package struct ObservableModelOwnership: ~Copyable {
 
     package mutating func retireActivation() { phase = .retired }
 
+    @usableFromInline
     package func operationAllowed(discovery: Bool = false) -> ObservableStateError? {
         if phase == .retired { return .invalidPhaseSafetyNotProven }
         if phase == .replacing || phase == .writing { return .reentrancyViolation }
@@ -314,6 +316,7 @@ package struct ObservableModelOwnership: ~Copyable {
         records[index].pinned = true
     }
 
+    @usableFromInline
     package mutating func beginRead() throws(ObservableStateError) {
         guard phase == .reading, !activeRead else { throw .invalidPhaseSafetyNotProven }
         activeRead = true
@@ -333,6 +336,7 @@ package struct ObservableModelOwnership: ~Copyable {
         return index
     }
 
+    @usableFromInline
     package mutating func endRead() throws(ObservableStateError) {
         guard phase == .reading, activeRead else { throw .invalidPhaseSafetyNotProven }
         activeRead = false

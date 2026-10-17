@@ -184,7 +184,7 @@ package func p08CounterSemantic() -> Int {
     var checks = 0
     do throws(ObservableStateError) {
         var namespace = ObservableModelOwnerNamespace()
-        var storage = StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
+        var storage = CounterStaticRootStorage(identity: try namespace.issue(), schema: 1, needsCapture: false)!
         let layout = storage.storageLayout
         counterSemanticExpect(layout.models == 2 && layout.claims == 4 && layout.pins == 2 && layout.captures == 0); checks += 1
         checks += try storage.withLifetime { (models, root) throws(ObservableStateError) in counterSemanticBacking(models: models, root: root, dynamic: false) }

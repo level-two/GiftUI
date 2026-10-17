@@ -2,6 +2,7 @@ import GiftUI
 
 /// Holds both actual backing borrows for the complete activation callback. The
 /// generic result is Escapable, so neither a scope nor a ticket can be returned.
+@inlinable
 package func withObservableModelScope<Model: ~Copyable, Schema, Result>(
     ownership: inout ObservableModelOwnership,
     models: inout MutableSpan<Model?>,
@@ -20,16 +21,19 @@ package func withObservableModelScope<Model: ~Copyable, Schema, Result>(
     }
 }
 
+@usableFromInline
 package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escapable {
-    private let ownership: UnsafeMutablePointer<ObservableModelOwnership>
-    private let models: UnsafeMutableBufferPointer<Model?>
-    private let schema: UInt16
-    private let needsCapture: Bool
+    @usableFromInline let ownership: UnsafeMutablePointer<ObservableModelOwnership>
+    @usableFromInline let models: UnsafeMutableBufferPointer<Model?>
+    @usableFromInline let schema: UInt16
+    @usableFromInline let needsCapture: Bool
 
     // The private factory is called inside both owning storage borrows above.
     // Borrowing these descriptors alone is not the backing-lifetime proof.
     @_lifetime(borrow ownership, borrow models)
-    fileprivate init(
+    @inlinable
+    @inline(__always)
+    init(
         ownership: borrowing UnsafeMutablePointer<ObservableModelOwnership>,
         models: borrowing UnsafeMutableBufferPointer<Model?>, schema: UInt16, needsCapture: Bool
     ) {
@@ -40,12 +44,15 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
     }
 
     @_lifetime(copy self)
+    @inlinable
     package borrowing func borrowedScope() -> ObservableModelScope<Model, Schema> {
         ObservableModelScope(borrowing: self)
     }
 
     @_lifetime(copy other)
-    private init(borrowing other: borrowing ObservableModelScope<Model, Schema>) {
+    @inlinable
+    @inline(__always)
+    init(borrowing other: borrowing ObservableModelScope<Model, Schema>) {
         ownership = other.ownership
         models = other.models
         schema = other.schema
@@ -74,6 +81,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
             ownership.pointee.address(for: key), schema: schema)
     }
 
+    @usableFromInline
     package borrowing func validateOperation(discovery: Bool = false) throws(ObservableStateError) {
         if let failure = ownership.pointee.operationAllowed(discovery: discovery) { throw failure }
     }
@@ -84,11 +92,13 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
 
     // Called before the root report-storage borrow ends, even if an independent
     // ticket survives a failed detach. Terminal activation cannot be reopened.
+    @usableFromInline
     package borrowing func finishStoppedActivation() {
         if ownership.pointee.phase == .retired { finishActivation() }
     }
 
-    fileprivate borrowing func finishActivation() {
+    @usableFromInline
+    borrowing func finishActivation() {
         let occupied = ownership.pointee.finishActivation()
         for index in 0 ..< models.count where occupied & (1 << index) != 0 {
             models[index] = nil
@@ -281,6 +291,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         try ownership.pointee.pin(ownership.pointee.address(for: key))
     }
 
+    @inlinable
     package borrowing func withRead<D: _GiftUIReadDomain, Result>(
         _ domain: D.Type,
         _ body: (borrowing _GiftUIFrameRead<D>) throws(_GiftUIAccessFailure) -> Result

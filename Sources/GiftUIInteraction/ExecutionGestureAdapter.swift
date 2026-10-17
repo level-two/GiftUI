@@ -1,7 +1,9 @@
 import GiftUI
 import GiftUIExecution
 
+@usableFromInline
 package enum ExecutionGestureAdapter {
+    @inlinable
     package static func down<Resolver>(
         at point: Point,
         capture: inout PointerActionCapture<Resolver.Identity>,
@@ -16,6 +18,7 @@ package enum ExecutionGestureAdapter {
         return outcome
     }
 
+    @inlinable
     package static func move<Resolver>(
         at point: Point,
         capture: inout PointerActionCapture<Resolver.Identity>,
@@ -33,6 +36,7 @@ package enum ExecutionGestureAdapter {
         return outcome
     }
 
+    @inlinable
     package static func up<Resolver>(
         at point: Point,
         capture: inout PointerActionCapture<Resolver.Identity>,
@@ -44,6 +48,7 @@ package enum ExecutionGestureAdapter {
         return resolver.resolveUp(current, at: point)
     }
 
+    @inlinable
     package static func cancel<Identity>(
         capture: inout PointerActionCapture<Identity>
     ) where Identity: Equatable & Sendable {

@@ -25,6 +25,7 @@ package struct CandidateFrameID: Equatable, Hashable, Sendable {
     }
 }
 
+@usableFromInline
 package struct ActionGeneration: Equatable, Hashable, Sendable {
     package let rawValue: UInt32
 
