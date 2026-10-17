@@ -37,7 +37,9 @@ pass collector/replay but identify actual Native Static first-use heap allocatio
 The maintainer selected strict-contract implementation; the [bounded compiler
 probe](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-strict-construction-probe.md)
 records the compiler controls. The [focused candidate design](../implementation-designs/spec-015-p08-native-cold-static.md)
-awaits independent review before source execution. Affected
+has [independent design PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-independent-design-review.md)
+for one bounded candidate and its early actual cold screen; no implementation
+result is yet claimed. Affected
 closure remains open; allocation coverage, complete Native/Pi stack/physical ledgers,
 caller/criterion reconciliation and P08 exit remain open.
 

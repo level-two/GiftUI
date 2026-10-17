@@ -28,8 +28,10 @@ zero. These are diagnostics, not the required P08 route or allocation coverage.
 | Concrete InlineArray -> MutableSpan -> serialized generic scoped callback |0|0 /0|0|0|
 | Generic root with forced client body emission |27|1488 /1488|352|0|
 
-The last two preserve the same targeted serialized generic dispatch and change
-only the root representation. The generic pair result rejects the hypothesis
+The concrete-pair and concrete-inline controls retain targeted serialized
+generic dispatch while changing the owning representation; scoped-inline adds
+the actual span callback. Client-emission retains a generic owner and still
+allocates. The generic pair result rejects the hypothesis
 that replacing `InlineArray` alone suffices. Remaining serialized-root stacks
 enter Swift canonical prespecialized generic metadata registration; the concrete
 control removes that rooted metadata construction. It establishes a compiler

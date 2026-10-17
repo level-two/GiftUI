@@ -16,7 +16,11 @@ superseded_by: null
 
 # P08 Native cold Static construction
 
-**Selected candidate mechanism; independent design review precedes source work.**
+**Selected candidate mechanism; independent design review PASS for bounded source
+execution and early actual cold screen.**
+The [independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-independent-design-review.md)
+confirms the internal contract boundary and evidence limits; this note remains
+derived, with no implementation/conformance claim.
 The maintainer chose strict conformance after the [confirmed allocation failure](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-allocation-independent-review.md):
 “Please proceed with strict contract, that makes sense”. This is one new bounded
 candidate with at most two corrective cycles. Earlier source allowances remain
