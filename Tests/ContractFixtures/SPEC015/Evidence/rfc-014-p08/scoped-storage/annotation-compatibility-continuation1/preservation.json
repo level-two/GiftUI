@@ -1,0 +1,13 @@
+{
+  "frozen_input_hash_count": 81,
+  "frozen_inputs_match": true,
+  "external_modifications_preserved": true,
+  "external_modification_paths": [
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+    "scripts/nrf52840/build.sh",
+    "scripts/raspberry-pi/build.sh",
+    "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc"
+  ]
+}

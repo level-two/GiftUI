@@ -1,0 +1,39 @@
+[
+  {
+    "name": "privacy-ordinary-public",
+    "exit": 0,
+    "diagnostics": [],
+    "passed": true,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "privacy-ordinary-abi",
+    "exit": 0,
+    "diagnostics": [],
+    "passed": true,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "privacy-ordinary-enclosing-private",
+    "exit": 0,
+    "diagnostics": [],
+    "passed": true,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "privacy-scope-positive",
+    "exit": 0,
+    "diagnostics": [],
+    "passed": true,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "privacy-scope-negative",
+    "exit": 1,
+    "diagnostics": [
+      "'_GiftUIFrameRead<D>' initializer is inaccessible due to 'package' protection level"
+    ],
+    "passed": true,
+    "log_sha256": "2ed656a1b8c6cab9b9c882ac1d951af93550f8408fc2d8bf0defd76068ba6325"
+  }
+]

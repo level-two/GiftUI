@@ -1,0 +1,6 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-witness-annotation-compatibility-fixture-continuation1/privacy/scope-twin.swift:2:74: error: '_GiftUIFrameRead<D>' initializer is inaccessible due to 'package' protection level
+func scope<D: _GiftUIReadDomain>(_: D.Type, _ slots: Span<D.Slot>) { _ = _GiftUIFrameRead<D>(slots: slots) }
+                                                                         ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:29:13: note: 'init(slots:)' declared here
+    package init(slots: Span<D.Slot>) { self.slots = slots }
+            ^
