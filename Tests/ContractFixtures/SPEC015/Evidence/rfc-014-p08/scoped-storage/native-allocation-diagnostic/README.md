@@ -1,5 +1,9 @@
 # Matched Native allocation diagnostic protocol
 
+The repaired six-process recipe below has now executed successfully. The
+[attribution findings](../p08-native-allocation-findings.md) identify a Static
+zero-heap blocker. Do not rerun this recipe to settle that contract decision.
+
 This separate diagnostic adapts SPEC-013's allocation interposer. It changes no
 application/framework source or retained compiler receipt. It observes public
 allocation APIs; **it does not establish zero heap, total process heap, complete

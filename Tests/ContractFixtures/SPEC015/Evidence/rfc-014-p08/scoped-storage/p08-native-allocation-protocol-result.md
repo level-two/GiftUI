@@ -1,9 +1,9 @@
 # Native allocation diagnostic preparation — 2026-10-17
 
-Current status: the first matched Dynamic diagnostic failed collector grouping/
-capture limits. [Repair1 and the corrected ready recipe](p08-native-allocation-diagnostic-repair1.md)
-preserve that failure; no matched resource result is accepted. The original
-preparation packet below remains tied to commit407d1b16, not the repaired observer.
+Current status: all six repaired matched runs pass collector/replay; the
+[actual attribution findings](p08-native-allocation-findings.md) establish a
+Native Static zero-heap counterexample. The original preparation packet below
+remains tied to407d1b16 and does not accept a resource result.
 
 **Diagnostic preparation/controls PASS; matched resource measurement not run.**
 The [executable protocol](native-allocation-diagnostic/README.md) is ready for

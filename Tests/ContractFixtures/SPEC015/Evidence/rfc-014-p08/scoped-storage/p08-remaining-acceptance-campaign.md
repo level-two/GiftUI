@@ -110,10 +110,11 @@ established. The frozen source requires no new compiler/lifetime experiment.
 
 ## 3. Matched Native allocation and complete physical/stack ledger
 
-The first matched diagnostic failed its collector; [repair1 and the corrected
-ready protocol](p08-native-allocation-diagnostic-repair1.md) preserve the failure
-and are ready for one sequential rerun. Public-route coverage is qualified;
-direct-zone/VM/temp reachability, attribution and complete host bounds remain open.
+The [six matched observations and attribution](p08-native-allocation-findings.md)
+pass collector/replay but prove an actual Native Static first-use heap allocation.
+Independent review and an explicit contract-versus-implementation decision are
+next. Coverage of direct-zone/VM/temp and complete Native/Pi bounds remain open;
+no further matched rerun is needed for this counterexample.
 
 SO-08 explicitly requires matched Dynamic costs and Static zero heap, not only
 nRF symbol absence. Reuse the exact current Native profile `.o` files, flags and

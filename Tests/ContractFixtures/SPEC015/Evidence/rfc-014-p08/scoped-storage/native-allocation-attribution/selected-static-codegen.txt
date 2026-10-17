@@ -1,0 +1,408 @@
+
+.build/contracts/p08-native-allocation-matched-repair1-20261017/static-counter:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000100138ac8 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF>:
+100138e14:     	strh	w8, [sp, #0x64c]
+100138e18:     	strb	wzr, [sp, #0x64e]
+100138e1c:     	adrp	x0, 0x100181000 <_$s23GiftUIHostConfiguration28HostPresetConstructionResultOMP+0x1d8>
+100138e20:     	add	x0, x0, #0x8cc
+100138e24:     	mov	x1, x28
+100138e28:     	bl	0x10017527c <_swift_willThrowTypedImpl+0x10017527c>
+100138e2c:     	mov	x4, x0
+100138e30:     	ldr	x8, [sp, #0x68]
+100138e34:     	extr	x0, x8, x26, #0x20
+100138e38:     	ands	w8, w26, #0xff
+100138e3c:     	b.eq	0x100138e54 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF+0x38c>
+100138e40:     	cmp	w8, #0x1
+100138e44:     	b.ne	0x100138e60 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF+0x398>
+100138e48:     	bl	0x10016f0bc <_OUTLINED_FUNCTION_892>
+100138e4c:     	bl	0x10006e490 <_$s17GiftUIInteraction23ExecutionGestureAdapterO4move2at7capture8resolverAA07PointerD7OutcomeOy8IdentityQzG0A2UI5PointV_0A11UIExecution0J13ActionCaptureVyAKGzxtAA011InteractionD8ResolverRzRi_zRi0_zlFZ>
+100138e50:     	b	0x100138e68 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF+0x3a0>
+100138e54:     	bl	0x10016f0bc <_OUTLINED_FUNCTION_892>
+100138e58:     	bl	0x10006e370 <_$s17GiftUIInteraction23ExecutionGestureAdapterO4down2at7capture8resolverAA07PointerD7OutcomeOy8IdentityQzG0A2UI5PointV_0A11UIExecution0J13ActionCaptureVyAKGzxtAA011InteractionD8ResolverRzRi_zRi0_zlFZ>
+100138e5c:     	b	0x100138e68 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF+0x3a0>
+100138e60:     	bl	0x10016f0bc <_OUTLINED_FUNCTION_892>
+100138e64:     	bl	0x10006e68c <_$s17GiftUIInteraction23ExecutionGestureAdapterO2up2at7capture8resolverAA07PointerD7OutcomeOy8IdentityQzG0A2UI5PointV_0A11UIExecution0J13ActionCaptureVyAKGzxtAA011InteractionD8ResolverRzRi_zRi0_zlFZ>
+100138e68:     	add	x0, sp, #0x218
+100138e6c:     	add	x1, sp, #0x2f0
+100138e70:     	bl	0x100171124 <_OUTLINED_FUNCTION_1323>
+100138e74:     	add	x0, sp, #0x2f0
+100138e78:     	bl	0x100157168 <_$s17GiftUIInteraction21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVGWOg>
+100138e7c:     	cmp	w0, #0x2
+100138e80:     	cset	w28, eq
+100138e84:     	ldr	w19, [sp, #0x5c]
+100138e88:     	b.ne	0x100138eb4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF+0x3ec>
+100138e8c:     	add	x0, sp, #0x218
+100138e90:     	bl	0x100157180 <_$s17GiftUIInteraction21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVGWOj1_>
+100138e94:     	mov	x1, x0
+100138e98:     	add	x0, sp, #0x70
+100138e9c:     	bl	0x10016d1ec <_OUTLINED_FUNCTION_545>
+100138ea0:     	add	x0, sp, #0x70
+100138ea4:     	bl	0x100157140 <_$s15GiftUIExecution14CapturedActionVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_>
+100138ea8:     	add	x0, sp, #0x144
+100138eac:     	add	x1, sp, #0x70
+100138eb0:     	b	0x100138ebc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF+0x3f4>
+100138eb4:     	add	x0, sp, #0x144
+100138eb8:     	add	x1, sp, #0x738
+100138ebc:     	bl	0x10016d1ec <_OUTLINED_FUNCTION_545>
+100138ec0:     	bl	0x10016ada8 <_OUTLINED_FUNCTION_165>
+100138ec4:     	bl	0x10016af08 <_OUTLINED_FUNCTION_173>
+100138ec8:     	mov	x20, x0
+100138ecc:     	ldr	q0, [sp, #0x20]
+100138ed0:     	bl	0x10016e4d4 <_OUTLINED_FUNCTION_744>
+100138ed4:     	adrp	x8, 0x10019a000 <_associated conformance 17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV17GiftUIInteraction011InteractionD13RecordStorageAA8IdentityAeFP_SQ>
+100138ed8:     	add	x9, x8, #0x8c8
+100138edc:     	mov	w8, #0x7                ; =7
+100138ee0:     	stp	x9, x8, [x0, #0x20]
+100138ee4:     	mov	w8, #0x2                ; =2
+100138ee8:     	strb	w8, [x0, #0x30]
+100138eec:     	adrp	x0, 0x1001e2000 <_$s23GiftUIHostConfiguration33MacOSDynamicHostActivationFailureOACSQAAWL>
+100138ef0:     	add	x0, x0, #0x50
+100138ef4:     	bl	0x100001564 <___swift_instantiateConcreteTypeFromMangledName>
+100138ef8:     	str	x0, [x20, #0x58]
+100138efc:     	adrp	x0, 0x1001db000 <_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFTv0_r+0x20>
+100138f00:     	add	x0, x0, #0x40
+100138f04:     	mov	w1, #0xe8               ; =232
+100138f08:     	bl	0x10016d20c <_OUTLINED_FUNCTION_549>
+100138f0c:     	str	x0, [x20, #0x40]
+100138f10:     	add	x0, x0, #0x10
+100138f14:     	add	x1, sp, #0x2f0
+100138f18:     	bl	0x100171124 <_OUTLINED_FUNCTION_1323>
+100138f1c:     	mov	x0, x20
+100138f20:     	bl	0x100169e04 <_OUTLINED_FUNCTION_33>
+100138f24:     	bl	0x10016ef08 <_OUTLINED_FUNCTION_871>
+100138f28:     	add	x0, sp, #0x3d0
+100138f2c:     	add	x1, sp, #0x144
+100138f30:     	bl	0x10016d1ec <_OUTLINED_FUNCTION_545>
+100138f34:     	str	wzr, [sp, #0x44]
+100138f38:     	mov	w4, #0x1                ; =1
+100138f3c:     	ldr	x8, [sp, #0x48]
+100138f40:     	str	w8, [sp, #0x30]
+100138f44:     	b	0x100138da4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF+0x2dc>
+100138f48:     	add	x0, sp, #0x578
+100138f4c:     	add	x1, sp, #0x4a4
+100138f50:     	bl	0x10016d1ec <_OUTLINED_FUNCTION_545>
+100138f54:     	b	0x100138f68 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF+0x4a0>
+100138f58:     	add	x0, sp, #0x578
+100138f5c:     	add	x1, sp, #0x3d0
+100138f60:     	bl	0x10016d1ec <_OUTLINED_FUNCTION_545>
+100138f64:     	ldr	x28, [sp, #0x38]
+
+
+.build/contracts/p08-native-allocation-matched-repair1-20261017/static-counter:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001001392e0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGF>:
+100139390:     	str	q0, [sp, #0x40]
+100139394:     	stp	x8, x9, [sp, #0x50]
+100139398:     	stp	x10, x11, [sp, #0x60]
+10013939c:     	add	x1, sp, #0x40
+1001393a0:     	bl	0x10016dd18 <_OUTLINED_FUNCTION_659>
+1001393a4:     	mov	x20, x0
+1001393a8:     	adrp	x0, 0x100181000 <_$s23GiftUIHostConfiguration28HostPresetConstructionResultOMP+0x1d8>
+1001393ac:     	add	x0, x0, #0x88c
+1001393b0:     	bl	0x10016e934 <_OUTLINED_FUNCTION_781>
+1001393b4:     	mov	x22, x0
+1001393b8:     	bl	0x100072594 <_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl>
+1001393bc:     	mov	x23, x0
+1001393c0:     	bl	0x1000e5f2c <_$s22P08CounterPresentation0B6ActionOAC6GiftUI0E8UIActionAAWl>
+1001393c4:     	stp	x23, x0, [sp, #0x28]
+1001393c8:     	adrp	x8, 0x1001e2000 <_$s23GiftUIHostConfiguration33MacOSDynamicHostActivationFailureOACSQAAWL>
+1001393cc:     	add	x9, x8, #0x170
+1001393d0:     	adrp	x8, 0x1001e2000 <_$s23GiftUIHostConfiguration33MacOSDynamicHostActivationFailureOACSQAAWL>
+1001393d4:     	add	x8, x8, #0x1b0
+1001393d8:     	stp	x8, x9, [sp, #0x18]
+1001393dc:     	str	x22, [sp, #0x10]
+1001393e0:     	adrp	x3, 0x1001da000 <_$s18GiftUISemanticCore23SemanticStandardPayloadOWV+0x8>
+1001393e4:     	add	x3, x3, #0xe20
+1001393e8:     	adrp	x8, 0x1001d9000 <_$s19GiftUIRuntimeStatic0C21InteractionHitStorageVWV+0x30>
+1001393ec:     	add	x8, x8, #0x9a8
+1001393f0:     	stp	x8, x3, [sp]
+1001393f4:     	adrp	x4, 0x100139000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF+0x538>
+1001393f8:     	add	x4, x4, #0x504
+1001393fc:     	bl	0x10016fbb0 <_OUTLINED_FUNCTION_1028>
+100139400:     	add	x0, sp, #0x17c
+100139404:     	add	x1, x19, x25
+100139408:     	add	x2, sp, #0x78
+10013940c:     	mov	x5, #0x0                ; =0
+100139410:     	mov	x6, x20
+100139414:     	bl	0x1000a1228 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO8dispatch_7records6target10actionType9operationAA0deF14DispatchResultO0A11UIExecution14CapturedActionVy8IdentityQzG_x0A17UIObservableState010ObservableU16RootTargetAccessVyq_q0_Gq1_m8MutationAQ0v5ModelZ0PQy_q1_XEt0A13UIInteraction0f9CommittedR4ViewRzAqVR_AQ0vU5ModelR_SQR0_s8SendableR0_0A2UI0A8UIActionR1_Ri_zRi0_zRi__r2_lFZ>
+100139418:     	mov	x20, x0
+10013941c:     	adrp	x0, 0x10019a000 <_associated conformance 17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV17GiftUIInteraction011InteractionD13RecordStorageAA8IdentityAeFP_SQ>
+100139420:     	add	x0, x0, #0x8d0
+100139424:     	mov	w1, #0x8                ; =8
+100139428:     	mov	w2, #0x2                ; =2
+10013942c:     	mov	x3, x20
+
+
+.build/contracts/p08-native-allocation-matched-repair1-20261017/static-counter:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000010006e370 <_$s17GiftUIInteraction23ExecutionGestureAdapterO4down2at7capture8resolverAA07PointerD7OutcomeOy8IdentityQzG0A2UI5PointV_0A11UIExecution0J13ActionCaptureVyAKGzxtAA011InteractionD8ResolverRzRi_zRi0_zlFZ>:
+10006e370:     	mov	x5, x30
+10006e374:     	bl	0x100075cbc <_OUTLINED_FUNCTION_108>
+10006e378:     	mov	x30, x5
+10006e37c:     	stp	x29, x30, [sp, #0x50]
+10006e380:     	add	x29, sp, #0x50
+10006e384:     	sub	sp, sp, #0x30
+10006e388:     	mov	x23, x4
+10006e38c:     	mov	x24, x3
+10006e390:     	stp	x0, x2, [x29, #-0x60]
+10006e394:     	mov	x22, x1
+10006e398:     	mov	x21, x8
+10006e39c:     	bl	0x1000761e4 <_OUTLINED_FUNCTION_198>
+10006e3a0:     	mov	x1, x23
+10006e3a4:     	mov	x2, x3
+10006e3a8:     	bl	0x100075f6c <_OUTLINED_FUNCTION_148>
+10006e3ac:     	mov	x19, x0
+10006e3b0:     	add	x4, x20, #0x8
+10006e3b4:     	bl	0x1000759f4 <_OUTLINED_FUNCTION_70>
+10006e3b8:     	mov	x2, x19
+10006e3bc:     	bl	0x100075f64 <_OUTLINED_FUNCTION_147>
+10006e3c0:     	mov	x28, x0
+10006e3c4:     	mov	w0, #0xff               ; =255
+10006e3c8:     	bl	0x100075fd4 <_OUTLINED_FUNCTION_155>
+10006e3cc:     	bl	0x100030f74 <_$s15GiftUIExecution14CapturedActionVMa>
+10006e3d0:     	mov	x25, x0
+10006e3d4:     	bl	0x100075f3c <_OUTLINED_FUNCTION_145>
+10006e3d8:     	bl	0x100174e98 <_swift_willThrowTypedImpl+0x100174e98>
+10006e3dc:     	ldur	x8, [x0, #-0x8]
+10006e3e0:     	stp	x8, x0, [x29, #-0x78]
+10006e3e4:     	bl	0x10007543c <_OUTLINED_FUNCTION_6>
+10006e3e8:     	bl	0x100075f30 <_OUTLINED_FUNCTION_144>
+10006e3ec:     	mov	x0, #0x0                ; =0
+10006e3f0:     	bl	0x100075fd4 <_OUTLINED_FUNCTION_155>
+10006e3f4:     	bl	0x10003b0b4 <_$s15GiftUIExecution20PointerActionCaptureVMa>
+10006e3f8:     	mov	x26, x0
+10006e3fc:     	stur	x22, [x29, #-0x68]
+10006e400:     	mov	x20, x22
+10006e404:     	bl	0x10004266c <_$s15GiftUIExecution20PointerActionCaptureV6cancelyyF>
+10006e408:     	ldr	x9, [x23, #0x18]
+10006e40c:     	mov	x8, x21
+
+
+.build/contracts/p08-native-allocation-matched-repair1-20261017/static-counter:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000010007147c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13topmostRecord33_C94C25861F50C06710B5A908F362665BLL2atAA011BoundActionF0Vy8IdentityQzGSg0A2UI5PointV_tF>:
+100071510:     	bl	0x1001751bc <_swift_willThrowTypedImpl+0x1001751bc>
+100071514:     	bl	0x100075e30 <_OUTLINED_FUNCTION_126>
+100071518:     	stur	x22, [x29, #-0xe0]
+10007151c:     	mov	x1, x22
+100071520:     	mov	x22, x24
+100071524:     	stur	x2, [x29, #-0xf0]
+100071528:     	bl	0x100072570 <_$s17GiftUIInteraction20InteractionHitRegionVMa>
+10007152c:     	mov	x28, x0
+100071530:     	bl	0x1000761d8 <_OUTLINED_FUNCTION_197>
+100071534:     	bl	0x100174e98 <_swift_willThrowTypedImpl+0x100174e98>
+100071538:     	mov	x23, x0
+10007153c:     	bl	0x100075b80 <_OUTLINED_FUNCTION_90>
+100071540:     	mov	x2, x23
+100071544:     	bl	0x10007587c <_OUTLINED_FUNCTION_49>
+100071548:     	ldur	x8, [x0, #-0x8]
+10007154c:     	stur	x8, [x29, #-0x100]
+100071550:     	bl	0x10007543c <_OUTLINED_FUNCTION_6>
+100071554:     	sub	x8, x9, x8
+100071558:     	stp	x0, x8, [x29, #-0xb0]
+10007155c:     	mov	sp, x8
+
+
+.build/contracts/p08-native-allocation-matched-repair1-20261017/static-counter:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001000a1228 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO8dispatch_7records6target10actionType9operationAA0deF14DispatchResultO0A11UIExecution14CapturedActionVy8IdentityQzG_x0A17UIObservableState010ObservableU16RootTargetAccessVyq_q0_Gq1_m8MutationAQ0v5ModelZ0PQy_q1_XEt0A13UIInteraction0f9CommittedR4ViewRzAqVR_AQ0vU5ModelR_SQR0_s8SendableR0_0A2UI0A8UIActionR1_Ri_zRi0_zRi__r2_lFZ>:
+1000a1410:     	b.ne	0x1000a1468 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO8dispatch_7records6target10actionType9operationAA0deF14DispatchResultO0A11UIExecution14CapturedActionVy8IdentityQzG_x0A17UIObservableState010ObservableU16RootTargetAccessVyq_q0_Gq1_m8MutationAQ0v5ModelZ0PQy_q1_XEt0A13UIInteraction0f9CommittedR4ViewRzAqVR_AQ0vU5ModelR_SQR0_s8SendableR0_0A2UI0A8UIActionR1_Ri_zRi0_zRi__r2_lFZ+0x240>
+1000a1414:     	ldp	x19, x25, [x29, #0x30]
+1000a1418:     	ldr	x26, [x29, #0x28]
+1000a141c:     	ldr	x27, [x29, #0x10]
+1000a1420:     	ldur	x8, [x29, #-0xf8]
+1000a1424:     	stp	x8, x27, [x29, #-0xd0]
+1000a1428:     	stp	x26, x19, [x29, #-0xc0]
+1000a142c:     	stur	x25, [x29, #-0xb0]
+1000a1430:     	sub	x1, x29, #0xd0
+1000a1434:     	mov	x0, #0x0                ; =0
+1000a1438:     	bl	0x100088f88 <_$s21GiftUIObservableState010ObservableC16RootTargetAccessVMa>
+1000a143c:     	mov	x21, x0
+1000a1440:     	ldur	x20, [x29, #-0xf0]
+1000a1444:     	bl	0x10008874c <_$s21GiftUIObservableState010ObservableC16RootTargetAccessVAARi_zrlE17currentGeneration0A11UIExecution0dfI0VSgyF>
+1000a1448:     	mov	x23, x0
+1000a144c:     	ldrsw	x8, [x28, #0x38]
+
+
+.build/contracts/p08-native-allocation-matched-repair1-20261017/static-counter:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000010014a638 <_$s17P08CounterRuntime17counterHostCorpus4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlFAH020SignalAnalyzerPreseteN0VyAA0beQ0VyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateW0ATLLVAA0a9CommittedW0ATLLVAA0a3HitW0ATLLVGG_Tg5Tm>:
+10014a638:     	mov	x8, x30
+10014a63c:     	bl	0x10016f6dc <_OUTLINED_FUNCTION_965>
+10014a640:     	mov	x30, x8
+10014a644:     	stp	x29, x30, [sp, #0x50]
+10014a648:     	add	x29, sp, #0x50
+10014a64c:     	sub	sp, sp, #0x1a, lsl #12  ; =0x1a000
+10014a650:     	sub	sp, sp, #0x30
+10014a654:     	stp	x6, x7, [sp, #0x18]
+10014a658:     	stp	x5, x4, [sp, #0x30]
+10014a65c:     	str	x3, [sp, #0x28]
+10014a660:     	str	x2, [sp, #0x70]
+10014a664:     	mov	x20, x1
+10014a668:     	mov	x26, x0
+10014a66c:     	add	x21, x1, #0x18, lsl #12 ; =0x18000
+10014a670:     	add	x1, sp, #0x4d8
+10014a674:     	mov	x0, x20
+10014a678:     	bl	0x100157c4c <_$s17P08CounterRuntime0B7ControlVWOc>
+10014a67c:     	add	x0, sp, #0x4d8
+10014a680:     	bl	0x10016fc40 <_OUTLINED_FUNCTION_1036>
+10014a684:     	mov	x19, x0
+10014a688:     	add	x8, sp, #0x4a0
+10014a68c:     	mov	x0, x20
+10014a690:     	bl	0x10011b09c <_$s17P08CounterRuntime0B9AdmissionV9borrowingACSpyAA0B7ControlVG_tcfC>
+10014a694:     	str	wzr, [sp, #0x49c]
+10014a698:     	ldr	x27, [x21, #0x870]
+10014a69c:     	str	x27, [sp, #0x490]
+10014a6a0:     	str	x20, [sp, #0x488]
+10014a6a4:     	ldrb	w22, [x21, #0x62c]
+10014a6a8:     	cmp	w22, #0x1
+10014a6ac:     	b.eq	0x10014b760 <_$s17P08CounterRuntime17counterHostCorpus4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlFAH020SignalAnalyzerPreseteN0VyAA0beQ0VyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateW0ATLLVAA0a9CommittedW0ATLLVAA0a3HitW0ATLLVGG_Tg5Tm+0x1128>
+10014a6b0:     	sub	x8, x29, #0x90
+10014a6b4:     	ldr	x9, [x29, #0x18]
+10014a6b8:     	str	x9, [sp, #0x40]
+10014a6bc:     	ldr	x9, [x29, #0x10]
+10014a6c0:     	str	x9, [sp, #0x10]
+10014a6c4:     	mov	w24, #0x83a0            ; =33696
+10014a6c8:     	movk	w24, #0x1, lsl #16
+10014a6cc:     	stp	x20, x21, [sp, #0xa0]
+10014a6d0:     	ldr	w23, [x21, #0x628]
+10014a6d4:     	add	x9, x20, #0x18, lsl #12 ; =0x18000
+10014a6d8:     	add	x9, x9, #0x8b4
+10014a6dc:     	ldp	q0, q1, [x9]
+10014a6e0:     	stp	q0, q1, [x8]
+10014a6e4:     	str	x9, [sp, #0x90]
+10014a6e8:     	ldrb	w9, [x9, #0x20]
+10014a6ec:     	strb	w9, [x8, #0x20]
+10014a6f0:     	sub	x20, x29, #0x90
+10014a6f4:     	bl	0x10004950c <_$s23GiftUIHostConfiguration23HostNormalizedInputGateV15inputIsEligibleSbvg>
+10014a6f8:     	bl	0x100172ff4 <_OUTLINED_FUNCTION_1847>
+10014a6fc:     	bl	0x100173038 <_OUTLINED_FUNCTION_1853>
+10014a700:     	mov	w1, #0x44               ; =68
+10014a704:     	bl	0x10016d20c <_OUTLINED_FUNCTION_549>
+10014a708:     	mov	x21, x0
+10014a70c:     	mov	w20, #0x1               ; =1
+10014a710:     	bl	0x100171438 <_OUTLINED_FUNCTION_1376>
+10014a714:     	strh	w0, [x21, #0x20]
+10014a718:     	str	w23, [x21, #0x24]
+10014a71c:     	strb	w22, [x21, #0x28]
+10014a720:     	sturh	wzr, [x21, #0x29]
+10014a724:     	bl	0x10016d65c <_OUTLINED_FUNCTION_584>
+10014a728:     	strh	w0, [x21, #0x2c]
+10014a72c:     	str	wzr, [x21, #0x30]
+10014a730:     	strh	w20, [x21, #0x34]
+10014a734:     	mov	w8, #0x2                ; =2
+10014a738:     	strb	w8, [x21, #0x36]
+10014a73c:     	bl	0x10016d65c <_OUTLINED_FUNCTION_584>
+10014a740:     	mov	x8, #0x0                ; =0
+10014a744:     	strh	w0, [x21, #0x38]
+10014a748:     	str	w23, [x21, #0x3c]
+10014a74c:     	strb	w22, [x21, #0x40]
+10014a750:     	mov	w9, #0x401              ; =1025
+10014a754:     	sturh	w9, [x21, #0x41]
+10014a758:     	adrp	x22, 0x1001dc000 <_$s17P08CounterRuntime06StaticB16DrawingWorkspaceVWV+0x20>
+10014a75c:     	add	x22, x22, #0x7d8
+10014a760:     	add	x25, x8, #0xc
+10014a764:     	cmp	x25, #0x30
+10014a768:     	b.eq	0x10014a7dc <_$s17P08CounterRuntime17counterHostCorpus4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlFAH020SignalAnalyzerPreseteN0VyAA0beQ0VyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateW0ATLLVAA0a9CommittedW0ATLLVAA0a3HitW0ATLLVGG_Tg5Tm+0x1a4>
+10014a76c:     	add	x8, x21, x8
+10014a770:     	ldrb	w23, [x8, #0x2a]
+10014a774:     	bl	0x1001728ec <_OUTLINED_FUNCTION_1706>
+10014a778:     	bl	0x10016f18c <_OUTLINED_FUNCTION_904>
+10014a77c:     	str	x8, [sp]
+
+
+.build/contracts/p08-native-allocation-matched-repair1-20261017/static-counter:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000100150b4c <_$s17P08CounterRuntime19counterWakeControls4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlFAH024SignalAnalyzerPresetHostN0VyAA0bvQ0VyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateX0ATLLVAA0a9CommittedX0ATLLVAA0a3HitX0ATLLVGG_Tg5Tm>:
+100151408:     	bl	0x10016ada8 <_OUTLINED_FUNCTION_165>
+10015140c:     	bl	0x10016af08 <_OUTLINED_FUNCTION_173>
+100151410:     	mov	x20, x0
+100151414:     	ldr	q0, [sp, #0xc0]
+100151418:     	bl	0x10016e4d4 <_OUTLINED_FUNCTION_744>
+10015141c:     	adrp	x8, 0x10019a000 <_associated conformance 17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV17GiftUIInteraction011InteractionD13RecordStorageAA8IdentityAeFP_SQ>
+100151420:     	add	x9, x8, #0x852
+100151424:     	mov	w8, #0xf                ; =15
+100151428:     	stp	x9, x8, [x0, #0x20]
+10015142c:     	mov	w8, #0x2                ; =2
+100151430:     	strb	w8, [x0, #0x30]
+100151434:     	adrp	x8, 0x1001ce000 <_$s13GiftUIDrawing18CanvasStagedValuesVWV+0x28>
+100151438:     	add	x8, x8, #0x798
+10015143c:     	bl	0x10016ce0c <_OUTLINED_FUNCTION_492>
+100151440:     	bl	0x100175108 <_swift_willThrowTypedImpl+0x100175108>
+100151444:     	str	x0, [x20, #0x40]
+100151448:     	stp	x21, x22, [x0, #0x10]
+10015144c:     	str	x26, [x0, #0x20]
+100151450:     	strh	w28, [x0, #0x28]
+100151454:     	mov	x0, x20
+100151458:     	bl	0x100169e04 <_OUTLINED_FUNCTION_33>
+10015145c:     	bl	0x10016ef08 <_OUTLINED_FUNCTION_871>
+
+
+.build/contracts/p08-native-allocation-matched-repair1-20261017/static-counter:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000100169e04 <_OUTLINED_FUNCTION_33>:
+100169e04:     	mov	w1, #0x20               ; =32
+100169e08:     	mov	x2, #-0x1f00000000000000 ; =-2233785415175766016
+100169e0c:     	mov	w3, #0xa                ; =10
+100169e10:     	mov	x4, #-0x1f00000000000000 ; =-2233785415175766016
+100169e14:     	b	0x100174f40 <_swift_willThrowTypedImpl+0x100174f40>
+
+
+.build/contracts/p08-native-allocation-matched-repair1-20261017/static-counter:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000010016ada8 <_OUTLINED_FUNCTION_165>:
+10016ada8:     	adrp	x0, 0x1001e1000 <_$ss5UInt8V_A31BtMD>
+10016adac:     	add	x0, x0, #0xf58
+10016adb0:     	b	0x100001564 <___swift_instantiateConcreteTypeFromMangledName>
+
+
+.build/contracts/p08-native-allocation-matched-repair1-20261017/static-counter:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000010016af08 <_OUTLINED_FUNCTION_173>:
+10016af08:     	mov	w1, #0x60               ; =96
+10016af0c:     	mov	w2, #0x7                ; =7
+10016af10:     	b	0x100175108 <_swift_willThrowTypedImpl+0x100175108>
+
+
+.build/contracts/p08-native-allocation-matched-repair1-20261017/static-counter:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000010016e4d4 <_OUTLINED_FUNCTION_744>:
+10016e4d4:     	str	q0, [x0, #0x10]
+10016e4d8:     	adrp	x8, 0x1001c8000 <_swift_willThrowTypedImpl+0x1001c8000>
+10016e4dc:     	ldr	x8, [x8, #0x780]
+10016e4e0:     	str	x8, [x0, #0x38]
+10016e4e4:     	ret
+
+000000010016e4e8 <_OUTLINED_FUNCTION_745>:
+10016e4e8:     	mov	x2, x19
+10016e4ec:     	b	0x10012c08c <_$s17P08CounterRuntime22p08CheckGraphSelection33_480B1BD841D053AE4FCDC18507668536LL5owner5outerSiAA0A17TypedBackingOwnerACLLV_AA0A15StaticOuterViewACLLVtF6rejectL_yyAA0B20ConstructionNegativeOFTf0nnns_n>
+
+000000010016e4f0 <_OUTLINED_FUNCTION_746>:
+10016e4f0:     	mov	x0, #0x100000000        ; =4294967296
+
+0x0000000100174f40 32669 _$ss5print_9separator10terminatoryypd_S2StF
+0x0000000100175108 32725 _swift_allocObject
+0x000000010017527c 32757 _swift_getWitnessTable

@@ -1,5 +1,9 @@
 # Native allocation collector repair1 — 2026-10-17
 
+Current status: all six matched reruns pass collector/replay, but the
+[allocation findings](p08-native-allocation-findings.md) identify a Native Static
+zero-heap counterexample. The preparation record below remains historical.
+
 **Diagnostic repair/preparation PASS; matched rerun not executed.** This consumes
 repair1 of the explicitly authorized maximum2 diagnostic repair cycles. It is
 collector correctness work, not a new application source allowance. The
