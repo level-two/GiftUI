@@ -270,3 +270,10 @@ controls, the actual generated private expansion and historical macro source.
 Its separate manifest verifies bytes. Current candidate source hashes remain
 unchanged; five external files and pycache are preserved. This is a terminal
 source activity receipt, not permission for another variant.
+
+[Independent final review](../p08-checked-state-final-independent-review.md)
+confirms the ordinary-private positive is supported and fails for the two emitted
+annotations. It qualifies the raw six-PASS aggregate: the external-scope negative
+also has an unrelated invalid generic signature, so only five controls are clean.
+The raw archive/statuses remain unchanged; the intended package-access diagnostic
+is preserved without claiming an isolated valid negative. Final2/2 stays closed.

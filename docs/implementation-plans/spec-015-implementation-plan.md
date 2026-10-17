@@ -29,6 +29,14 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+[Independent final checked-State review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-final-independent-review.md)
+confirms a valid ordinary-private compatibility FAIL and final STOP with
+initial1/1/corrections2/2 exhausted. Provider/regression PASS, five clean privacy
+controls, one confounded external-scope negative; source remains unaccepted.
+No further source/physical/actual-host/cold work follows this allowance. A proposed
+annotation-eligibility correction needs a new user-authorized bounded activity;
+P08/R07/T8.1 and all remaining evidence gates stay open.
+
 Current final boundary — STOP, initial1/1 and corrections2/2 consumed. The linked
 final receipt records exact actual-output regression1/0/0 and fresh provider PASS;
 six privacy controls PASS, ordinary unlowered private-host positive FAILS at

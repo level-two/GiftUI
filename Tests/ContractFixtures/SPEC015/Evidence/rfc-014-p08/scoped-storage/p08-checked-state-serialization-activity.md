@@ -1,5 +1,14 @@
 # Renewed checked State serialization activity — 2026-10-17
 
+[Independent final review](p08-checked-state-final-independent-review.md) confirms
+the ordinary-private control is valid and its two illegal serialized annotations
+are a genuine compatibility failure. Initial1/1/corrections2/2 are exhausted;
+source remains unaccepted and this activity stops. Five privacy controls are
+clean; the reported external-scope negative has its intended access diagnostic
+plus an unrelated generic-signature error and is not an isolated qualified test.
+Physical/actual-host/safety/cold and P08/R07/T8.1 remain open. Any new annotation
+eligibility activity requires a separate user decision and explicit allowance.
+
 Current final boundary — STOP, initial1/1 and corrections2/2 consumed. The linked
 final receipt records exact actual-output regression1/0/0 and fresh provider PASS;
 six privacy controls PASS, ordinary unlowered private-host positive FAILS at
@@ -90,7 +99,9 @@ feasibility verdict. The receipt supplies the exact pending command for approval
 
 One initial candidate and **at most two grouped corrective cycles** are available
 after independent Strong design review. Initial candidate **1/1 consumed**, corrections
-**1/2 consumed**, latest material provider gate **FAIL** (presentation separators).
+**2/2 consumed**, latest material compatibility gate **FAIL** (ordinary-private
+positive: two illegal `@inlinable fileprivate` witnesses). Provider compile PASS;
+source remains unaccepted. No automatic further source variant.
 The exact combined
 [file/function freeze](checked-state-candidate1/source-boundary.json) records starting
 HEAD, source/external hashes and the restricted initial edit subset. The historical
