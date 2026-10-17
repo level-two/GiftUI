@@ -29,6 +29,13 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+[Independent checked-State corrective1 design PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-correction1-design-review.md)
+confirms candidate1's schema failure and adds only the existing package
+`DrawingError.init(accessFailure:)` serialization to the derived allowlist.
+Corrective1 may start under the standing activity; initial1/1, corrections0/2
+until its first source edit. Fresh provider/privacy gates remain first; source
+is unaccepted and P08/R07/T8.1 remain open.
+
 Current checked-State [candidate1 STOP](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/checked-state-candidate1/README.md):
 macro/lowering/fresh GiftUI pass; schema serialization fails at the existing
 non-ABI checked DrawingError mapper. Initial1/1 consumed, corrections0/2; source

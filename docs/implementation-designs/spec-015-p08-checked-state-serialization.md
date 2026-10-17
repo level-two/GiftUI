@@ -305,6 +305,7 @@ baseline pairing, hooks and complete stacks.
 | `Sources/GiftUIMacros/FiniteSourceLowering.swift` | `Lowerer.visit(StructDeclSyntax)` emits only the fixed-schema helper pair; State discovery/reserved-name validation; three existing read-root rewrites; directly referenced generated facade/Canvas initializer, getter, field and schema/seed ABI/serialization dependencies already named by corrective2. No authored source rewrite outside the finite supported inventory. |
 | `Sources/GiftUIMacros/ObservableStateHostMacro.swift` | `expansion(providingMembersOf:)`, declaration inventory and shape-validation helpers select the matching generated projection in the existing lexical visitor; preserve traversal semantics, both suppressions, access and ordinary input behavior. |
 | `Sources/GiftUI/ObservableState.swift` | Only State/Storage/storage, existing bound/initial value dependencies and the six existing initializer/read/bind operations listed above. Public macro/protocol signatures and declaration-name list stay exact. |
+| `Sources/GiftUI/DrawingSurface.swift` | Independently reviewed corrective1 dependency: add `@inlinable` to the existing `package DrawingError.init(accessFailure:)` only. Preserve its exact five-case mapping and package access; no new mapping, enum case, constructor, drawing operation, `@frozen` or always-inline annotation. `@inlinable` supplies the required ABI usability and checked body serialization. |
 | `Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift` | Positive/negative generation checks for finite/private/multiple/nested State and deterministic ordinals; preserve existing tests. |
 | `scripts/contracts/check-spec-015-counter.py` | Factor/select the bounded preparation, privacy/lifetime, actual consumer/codegen and existing cold screens with explicit stage receipts; do not alter assertions, counts, default registration or diagnostic classes. |
 | `scripts/contracts/p08-checked-state-screen.py` (new, if separation is clearer) | Orchestrate those exact existing recipes and physical decoder; archive source/tool/module/callee/command hashes and stages. No alternative workload, hidden retries or generated source repair loop. |
@@ -320,6 +321,14 @@ unchanged; never move `CounterDomain`/owned model into presentation to force a c
 
 The five external modified files and `scripts/contracts/__pycache__/` are excluded.
 No restoration, connected action, deployment or global toolchain change is included.
+
+[Independent candidate1/dependency review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-correction1-design-review.md)
+confirms the first schema failure and adds only the exact mapper row above to
+the frozen inventory. Its body depends solely on existing public enums/cases;
+the adjacent emitted facade dependencies are already usable or named in the
+existing scope. Corrective1 remains unstarted at this review, corrections0/2.
+After this one grouped correction, rebuild fresh GiftUI/schema/presentation and
+complete the provider/privacy gate before physical-body/consumer or cold work.
 
 ## Rejected Implementation Alternatives
 

@@ -1,5 +1,11 @@
 # RFC-014 task context guide
 
+[Independent checked-State corrective1 design PASS](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-correction1-design-review.md)
+adds only checked DrawingError mapper serialization to the exact derived scope.
+Standing activity permits corrective1; initial1/1, corrections0/2 until source
+edit. Fresh provider/privacy gates precede physical consumer and strict cold
+work. No source acceptance or P08/R07/T8.1 closure is claimed.
+
 Current [checked-State candidate1 STOP](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/checked-state-candidate1/README.md):
 macro/lowering/fresh GiftUI pass, first generated schema compile fails on non-ABI
 `DrawingError.init(accessFailure:)`. Initial1/1 consumed; corrections0/2. No source

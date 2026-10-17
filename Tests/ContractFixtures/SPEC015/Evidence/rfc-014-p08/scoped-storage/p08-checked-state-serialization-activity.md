@@ -26,6 +26,13 @@ are unrun. No retry or source correction follows this receipt. Its complete dire
 facade-dependency inventory identifies the existing checked mapper for a recorded
 independent amendment before any grouped correction.
 
+[Independent candidate1/dependency review](p08-checked-state-correction1-design-review.md)
+confirms the frozen failure and passes the exact derived amendment for
+`DrawingError.init(accessFailure:)` serialization. Corrective1 may proceed under
+the standing allowance after recording its source freeze; corrections remain0/2
+until its first source edit. No additional schema dependency or contract change
+was identified in the direct closure. Fresh provider/privacy gates remain first.
+
 ## Allowance and disposition
 
 One initial candidate and **at most two grouped corrective cycles** are available
