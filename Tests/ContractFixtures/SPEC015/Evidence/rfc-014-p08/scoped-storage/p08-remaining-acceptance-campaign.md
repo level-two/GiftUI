@@ -110,6 +110,10 @@ established. The frozen source requires no new compiler/lifetime experiment.
 
 ## 3. Matched Native allocation and complete physical/stack ledger
 
+The [validated separate diagnostic protocol](p08-native-allocation-protocol-result.md)
+is ready for sequential matched execution. Public-route coverage is qualified;
+direct-zone/VM/temp reachability, attribution and complete host bounds remain open.
+
 SO-08 explicitly requires matched Dynamic costs and Static zero heap, not only
 nRF symbol absence. Reuse the exact current Native profile `.o` files, flags and
 link command from the receipts above. Replace only the generated `Main.swift`

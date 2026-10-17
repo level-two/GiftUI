@@ -30,20 +30,22 @@ superseded_by: null
 Current Native boundary — **independent426-label coverage PASS per profile**.
 The [combined result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-native-combined-coverage-result.md)
 qualifies384fresh controls +19matching preparation +23retained runtime/projection/
-exclusivity labels without rewriting raw focused statuses. Next: matched allocation,
-actual Native/Pi stack/physical ledgers, caller/criterion reconciliation and P08 exit.
+exclusivity labels without rewriting raw focused statuses. The [validated matched
+allocation protocol](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-allocation-protocol-result.md)
+is ready; allocation attribution/coverage, actual Native/Pi stack/physical ledgers,
+caller/criterion reconciliation and P08 exit remain open.
 
 Current Pi evidence — **complete409 and early image/ABI PASS; resource fit open**.
 The [result and independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-pi-collection-image-result.md)
 freezes current receipt `hvxrlng0`, ELF `c1c6682e`, all934 preserved file hashes and
-228 current inputs. Native missing384 per profile is next; matched allocation,
-Native/Pi complete stack/physical ledgers and P08 exit remain required.
+228 current inputs. Native missing384 per profile is now covered above; matched
+allocation, Native/Pi complete stack/physical ledgers and P08 exit remain required.
 
 Current nRF resource gate — **independent new-image acceptance PASS**.
 The [review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-final-fit-independent-review.md)
 accepts ELF `0e54fe25`: main/ISR 95,469/6,672 within 106,496/8,192;
 RAM 255,612/extent255,616 within physical262,144. The [remaining P08 campaign](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-remaining-acceptance-campaign.md)
-names stale Pi collection/image, Native384 omissions per profile, matched allocation/
+records the closed Pi/Native collection steps and remaining matched allocation/
 physical/stack evidence, caller/criterion reconciliation and independent exit.
 No P09–P12/full-SO/connected gate or source allowance changes.
 
