@@ -1,5 +1,11 @@
 # P08 witness annotation compatibility activity — 2026-10-17
 
+Current [codegen result](annotation-compatibility-codegen/README.md): full ordinary
+compatibility/privacy continuation and provider/original-State helper checks PASS.
+One fresh Layout prerequisite compile fails101 diagnostics and blocks the actual
+consumer. Key-failure witness/cold cost and host/safety/cold remain unproved.
+Source1/1 stays frozen; no repair/retry. Earlier fixture-stop snapshots are historical.
+
 Current [candidate1 result](annotation-compatibility-candidate1/README.md):
 17 maintained tests/provider/five clean privacy controls and four ordinary access
 positives PASS; public positive stops on its independently invalid package-only

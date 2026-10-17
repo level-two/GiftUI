@@ -1,0 +1,35 @@
+{
+  "state": "exact diagnosed Layout dependency inventory for independent grouped design review only; no new source candidate or execution authorization",
+  "constraints": "Preserve source access/public API, signatures, algorithms, ownership/lifetimes, checked failures and resource requirements; no annotation sweep. Independent review must choose a coherent eligibility/dependency realization before any source change. Further dependency outside this map requires review.",
+  "files": {
+    "Sources/GiftUILayout/LayoutEngine.swift": [
+      "measureText",
+      "finalizeTextLine",
+      "placeTextGeometry: existing private @inlinable declarations; body/dependency closure requires review"
+    ],
+    "Sources/GiftUILayout/LayoutSemanticValidation.swift": [
+      "validateOccurrence: existing private @inlinable declaration; body/dependency closure requires review"
+    ],
+    "Sources/GiftUILayout/LayoutPublication.swift": [
+      "publishLayout: exact existing serialized signature/body"
+    ],
+    "Sources/GiftUILayout/LayoutWorkspace.swift": [
+      "LayoutWorkspace protocol/Identity: scopeCount,scopeIdentity(at:),placement(for:),textLineCount,textLine(at:),positionedGlyphCount,positionedGlyph(at:),resetLayout",
+      "LayoutPlacement: bounds,clip",
+      "LayoutTextLine: identity,lineIndex,bounds,baseline,clip",
+      "LayoutPositionedGlyph: identity,lineIndex,glyphIndex,instance,glyph,baseline,clip"
+    ],
+    "Sources/GiftUILayout/LayoutResultSink.swift": [
+      "LayoutResultSink protocol/Identity: begin(summary:),stageScope,stageTextLine,stageGlyph,publish,discard"
+    ],
+    "Sources/GiftUILayout/LayoutValues.swift": [
+      "LayoutSummary: type and scopeCount,textLineCount,positionedGlyphCount",
+      "LayoutResult: type and success/failure cases"
+    ],
+    "Sources/GiftUILayout/LayoutError.swift": [
+      "capacityExhausted,invariantViolation cases"
+    ]
+  },
+  "after_reviewed_correction": "Fresh Layout prerequisite first; only PASS permits rebuilding/requalifying required current owner closure and actual CounterPipelineOwner/binder gate. Strict cold waits for that and complete safety PASS.",
+  "not_selected": "No production/source realization or broadened dependency closure is selected in this evidence result."
+}

@@ -1,0 +1,94 @@
+{
+  "source_commit": "22589fec",
+  "fixture_continuation": "e1b7a653; all5 PASS",
+  "disposition": "annotation compatibility and fresh provider/helper field/branch qualification PASS; actual consumer BLOCKED by fresh Layout prerequisite compile failure; no source edit/retry",
+  "candidate": 1,
+  "automatic_source_repairs": 0,
+  "physical_decode": {
+    "count": 1,
+    "exit": 0,
+    "format": [
+      0,
+      1003
+    ],
+    "complete_function_index_entries": 62,
+    "fresh_module_sha256": "343915dc4300145c3be75bfc0b64bad55d72eaa657c3b6788d2fac7430b90d37",
+    "selected": [
+      {
+        "function_id": 32,
+        "offset_bits": 221880,
+        "serialized_kind": 1,
+        "basic_blocks": 3,
+        "name": "$s22P08CounterPresentation0B6ScreenV15_giftUIEvaluate4readQr6GiftUI01_H11UIFrameReadVyxG_tAF01_H15UIAccessFailureOYKF"
+      },
+      {
+        "function_id": 36,
+        "offset_bits": 229251,
+        "serialized_kind": 1,
+        "basic_blocks": 1,
+        "name": "$s22P08CounterPresentation0B6ScreenV39_giftUIVisitObservableStateDeclarationsyyqd__z6GiftUI01_j12UIObservableH18DeclarationVisitorRd__Ri_d__Ri0_d__lF"
+      },
+      {
+        "function_id": 37,
+        "offset_bits": 231097,
+        "serialized_kind": 1,
+        "basic_blocks": 1,
+        "name": "$s22P08CounterPresentation0B6ScreenV15_giftUITraverseyyqd__z6DomainQyd__Rsz6GiftUI01_H26UISemanticTraversalVisitorRd__Ri_d__Ri0_d__lF"
+      },
+      {
+        "function_id": 5,
+        "offset_bits": 141968,
+        "serialized_kind": 1,
+        "basic_blocks": 3,
+        "name": "$s22P08CounterPresentation0B6ScreenV15_giftUITraverseyyqd__z6DomainQyd__Rsz6GiftUI01_H26UISemanticTraversalVisitorRd__Ri_d__Ri0_d__lFAC01_E10UIEvaluate4readQrAG01_H11UIFrameReadVyxG_tAG01_H15UIAccessFailureOYKFQOyx_Qo_ACyxG_AMtAOYKXEfU_"
+      },
+      {
+        "function_id": 3,
+        "offset_bits": 139021,
+        "serialized_kind": 1,
+        "basic_blocks": 3,
+        "name": "$s22P08CounterPresentation0B6ScreenV25_giftUIStateStorage_model6GiftUI5StateVy0aB6Schema0b5ModelL0OGvM"
+      },
+      {
+        "function_id": 12,
+        "offset_bits": 172845,
+        "serialized_kind": 1,
+        "basic_blocks": 3,
+        "name": "$s22P08CounterPresentation0B6ScreenV21_giftUIStateKey_model6GiftUI01_i7UIModelG0Vy0aB6Schema0b5ModelL0OGyAE01_I15UIAccessFailureOYKF"
+      }
+    ]
+  },
+  "helper_evidence": {
+    "original_mutable_field": "struct_element_addr self,#CounterScreen._model; yield original address; empty resume/unwind; object0x1028 passes original self pointer and resume0x1038 ret",
+    "no_selected_modify_cost": "no temporary State/getter-setter writeback, box, heap/context allocation, generic-Self metadata or access TLS in the yielding helper/coroutine continuation",
+    "checked_key": "bound-case enum extraction returns existing key; initial case throws invalidPhase",
+    "optimizer": "default CMO serialized/incorporated helper operations despite non-inlinable source helper; no optimization-policy flag changed",
+    "unresolved": "key initial/failure branch calls nongeneric AccessFailure Error witness lazy accessor -> swift_getWitnessTable, then swift_willThrowTypedImpl. Full first-use/failure/cold allocation and stack cost NOT proved; no allocation inference from symbol presence or SIL global summary."
+  },
+  "layout_prerequisite": {
+    "compile_count": 1,
+    "exit": 1,
+    "error_count": 101,
+    "split": {
+      "LayoutEngine.swift": 3,
+      "LayoutSemanticValidation.swift": 1,
+      "LayoutPublication.swift": 97
+    },
+    "complete_diagnostics": "inspection/layout-diagnostics.json",
+    "complete_dependency_note_origins": "inspection/layout-dependency-notes.json"
+  },
+  "other_unqualified_owners": "inspection/owner-qualification.json: prior combined owner map, current source hashes and historical correction1 disposition; copied modules cannot qualify current dependency closure",
+  "not_run": [
+    "actual concrete binder/schema/domain CounterPipelineOwner consumer",
+    "lifetime/overlap/failure/cleanup runtime gates",
+    "strict fresh host-first cold/reuse",
+    "broader profiles/target images/fit/caller/exit"
+  ],
+  "preserved": {
+    "all81_frozen_inputs": true,
+    "maintained_source_and_tests": true,
+    "external5_and_pycache": true,
+    "authored_counter_schema": true
+  },
+  "p08": "open; R07/T8.1 and conformance open"
+}

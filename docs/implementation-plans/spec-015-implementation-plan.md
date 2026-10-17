@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [annotation codegen result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/annotation-compatibility-codegen/README.md):
+full compatibility/privacy/provider and physical-body/original-State helper checks
+PASS. Fresh Layout prerequisite FAIL101 blocks actual consumer; key-failure cold
+cost, host/safety/cold and P08/R07/T8.1 remain open. Source1/1 stays frozen with no
+repair/retry; earlier fixture-stop snapshots below are historical.
+
 Current [witness annotation compatibility result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/annotation-compatibility-candidate1/README.md):
 candidate1/1 frozen; 17 maintained tests/provider/five privacy/four ordinary access
 positives PASS. Public positive STOP on an invalid package-only generic constraint;

@@ -18,6 +18,12 @@ superseded_by: null
 
 ## Annotation eligibility amendment — 2026-10-17
 
+The [latest frozen qualification](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/annotation-compatibility-codegen/README.md)
+passes full compatibility/privacy and physical-body/original-State helper checks.
+Fresh Layout prerequisite FAIL101 blocks actual consumer; failure-witness/cold
+resources and host/safety/cold remain unproved. No source edit/retry follows.
+Earlier fixture-stop snapshots below remain historical.
+
 The [single frozen candidate result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/annotation-compatibility-candidate1/README.md)
 passes17 maintained tests/provider/five privacy controls and four ordinary access
 positives. Its public positive is independently invalid through a package-only
