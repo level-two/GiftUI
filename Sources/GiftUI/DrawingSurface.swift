@@ -252,6 +252,7 @@ private func requireDrawingSuccess(_ rawStatus: UInt8) throws(DrawingError) {
 }
 
 extension DrawingError {
+    @inlinable
     package init(accessFailure: _GiftUIAccessFailure) {
         switch accessFailure {
         case .invalidPhase: self = .invalidPhase

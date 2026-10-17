@@ -1,0 +1,37 @@
+{
+  "head": "328092d20df413c2dfa5ed46e0f29c4608666056",
+  "initial": "1/1 consumed",
+  "corrections": "1/2 in progress before first edit",
+  "historical": "2/2 closed",
+  "amendment": "328092d2",
+  "only_new_change": {
+    "file": "Sources/GiftUI/DrawingSurface.swift",
+    "function": "extension DrawingError.package init(accessFailure:)",
+    "operation": "add @inlinable only; keep source access and switch body exact"
+  },
+  "source_before_sha256": "b75ae0b7421ec3f731d92375466558013dd1163106ce37ddfc2fb5e40d3ce1ab",
+  "previous_source_boundary": "../checked-state-candidate1/source-boundary.json",
+  "preserved_current_source": {
+    "Sources/GiftUI/ActionHandler.swift": "d36a53f45d18892c235c02355cbed0e6bf92a20b7c64bc7e84ac39a03fa34d01",
+    "Sources/GiftUI/BoundedText.swift": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce",
+    "Sources/GiftUI/Button.swift": "bfef4dd797058b7c9c96e650f86ab9c068dffa5703200388c17631ad451af354",
+    "Sources/GiftUI/Canvas.swift": "4068c7a86e4523408968d37d6fce0197c4262d5984b749ea0c7ab02e771baf8a",
+    "Sources/GiftUI/Color.swift": "60009e3d58dcdfe65ba39bf6d036047207707837d73db308a5a25e81fc2ee835",
+    "Sources/GiftUI/DeclarativeView.swift": "15604c493d09f194252b05fdcb5fb31fdb412de3cb10a142fa7276a5e05e8bcf",
+    "Sources/GiftUI/Disabled.swift": "b38daff656c01cae87880bc8fda7b240c50e4cd46da52978a0b90caa7fc1bf36",
+    "Sources/GiftUI/DrawingStyles.swift": "eb28147b2dd565006f9d6b97c7b98e5bcfc52f42e19ebfae1dad1f79b08d130a",
+    "Sources/GiftUI/DrawingSurface.swift": "b75ae0b7421ec3f731d92375466558013dd1163106ce37ddfc2fb5e40d3ce1ab",
+    "Sources/GiftUI/GiftUI.swift": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+    "Sources/GiftUI/LayoutContainers.swift": "5157a2cc20100ec15885d10d0da528202623901d885f6345d7dab89d07d49d20",
+    "Sources/GiftUI/LayoutModifiers.swift": "9df7df30a339bf4f6077581b108c855505ed6230d55d23e9fc55651f4fba877b",
+    "Sources/GiftUI/LayoutValues.swift": "70c7b34276f6f2d41382d14ee844fcf65d92c075f7caa0a12e79d17181c817f5",
+    "Sources/GiftUI/ObservableState.swift": "9f49b702c630be7e1ecc690973c73912142d731050bc4c62776c207e2ce68e86",
+    "Sources/GiftUI/StyleModifiers.swift": "5322bf0d7eda201882146c3be1162b23b43676c3ef9ce3286eb83ff82e173962",
+    "Sources/GiftUI/Text.swift": "b361224ecac936f5736fd777a96ad815889911644b19731fee2a947a2f5c054c",
+    "Sources/GiftUIMacros/CanvasWitnessLowering.swift": "e84c9b92d9819a0954213a7cfa9252c3ee40006457f9eb5e6e3d536cdd5bd84c",
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift": "3c55115feb406a79daa7d1e0c189ddc203c7459b82fa29b2bfdb52b544833358",
+    "Sources/GiftUIMacros/GiftUIMacros.swift": "db3c0786628995ad46879bb1af674eb94c1fb9fe33c8d702632ed9588f46161b",
+    "Sources/GiftUIMacros/ObservableStateHostMacro.swift": "4d8f85de756d5c74908f39ad46f686d0f42a24b6a33c28fb0f8350d4c9fba167",
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": "5953e01a3b6e2668b76cc2e0b3389001e4f2d48a6e828d97627de49af705dd20"
+  }
+}

@@ -1,6 +1,6 @@
 # Renewed checked State serialization activity — 2026-10-17
 
-**Initial candidate1/1 STOP at schema compile; corrections0/2. Source unaccepted.**
+**Corrective1 STOP at presentation syntax; initial1/1 and corrections1/2 consumed. Source unaccepted.**
 Eugene answered “Please proceed as proposed” to the proposed renewed strict P08
 activity following [final boundary review](p08-native-cold-pipeline-correction2-independent-review.md).
 The selected direction retains private authored State, original checked ownership
@@ -32,6 +32,14 @@ confirms the frozen failure and passes the exact derived amendment for
 the standing allowance after recording its source freeze; corrections remain0/2
 until its first source edit. No additional schema dependency or contract change
 was identified in the direct closure. Fresh provider/privacy gates remain first.
+
+Corrective1 begins under `328092d2`; the [exact pre-edit freeze](checked-state-correction1/source-boundary.json) adds only the existing checked error mapper annotation. Initial1/1 consumed; corrections1/2 in progress. Historical2/2 stays closed.
+
+[Corrective1 receipt](checked-state-correction1/README.md): reviewed mapper annotation
+applied exactly; fresh macro/lowering/GiftUI/schema PASS. First presentation compile
+FAIL at two missing helper declaration separators. No retry or private/codegen/
+runtime gate ran. One corrective cycle remains; the pre-edit launch record above
+is historical. Independent disposition precedes any further source correction.
 
 ## Allowance and disposition
 

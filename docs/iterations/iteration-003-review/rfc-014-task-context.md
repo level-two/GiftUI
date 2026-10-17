@@ -1,5 +1,11 @@
 # RFC-014 task context guide
 
+Current [corrective1 STOP](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/checked-state-correction1/README.md):
+exact mapper annotation clears schema; first presentation compile reports two
+missing generated helper declaration separators. Initial1/1/corrections1/2 consumed;
+no retry or later gate. Source unaccepted; P08/R07/T8.1 open. Earlier checkpoints
+below retain historical accounting.
+
 [Independent checked-State corrective1 design PASS](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-correction1-design-review.md)
 adds only checked DrawingError mapper serialization to the exact derived scope.
 Standing activity permits corrective1; initial1/1, corrections0/2 until source

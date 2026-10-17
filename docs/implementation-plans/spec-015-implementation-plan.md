@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [corrective1 STOP](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/checked-state-correction1/README.md):
+exact mapper annotation clears schema; first presentation compile reports two
+missing generated helper declaration separators. Initial1/1/corrections1/2 consumed;
+no retry or later gate. Source unaccepted; P08/R07/T8.1 open. Earlier checkpoints
+below retain historical accounting.
+
 [Independent checked-State corrective1 design PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-correction1-design-review.md)
 confirms candidate1's schema failure and adds only the existing package
 `DrawingError.init(accessFailure:)` serialization to the derived allowlist.

@@ -16,6 +16,12 @@ superseded_by: null
 
 # P08 checked State serialization
 
+Current [corrective1 STOP](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/checked-state-correction1/README.md):
+exact mapper annotation clears schema; first presentation compile reports two
+missing generated helper declaration separators. Initial1/1/corrections1/2 consumed;
+no retry or later gate. Source unaccepted; P08/R07/T8.1 open. Earlier checkpoints
+below retain historical accounting.
+
 > This note explains one replaceable internal realization of an approved
 > contract. It is non-authoritative and cannot introduce architecture or amend
 > the governing Specification. Design only: no source, compiler or runtime result
