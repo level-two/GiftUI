@@ -8,6 +8,11 @@ failure consumes this cycle even if no application screen runs. No restoration
 retry, allowance reset, warmup or acceptance is implied. All old budgets stay
 closed. External five working files and pycache are outside this correction.
 
+The [independent review](p08-native-cold-pipeline-correction1-independent-review.md)
+confirms the actual host codegen failure and partial compilation limits. One
+source-unchanged import/serialization diagnosis precedes any final source
+correction; optimized consumer SIL alone does not prove physical body absence.
+
 The grouped mechanism is explicit facts borrows, targeted concrete specialization,
 nominal generated payload owners, scalar raster comparisons and equivalent result
 handling. Exact emitted-call/lifetime gates precede a mechanical cold/reuse screen;
