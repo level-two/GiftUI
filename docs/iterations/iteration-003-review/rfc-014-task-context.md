@@ -1,6 +1,16 @@
 # RFC-014 task context guide
 
-Current resource result — [new counter ELF PASS](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-final-fit-result.md):
+Current strict Native source boundary — [corrective2 compile/privacy FAIL](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-correction2.md).
+The partial experimental overlay is unaccepted/not adopted;2/2 corrective cycles
+are exhausted. Fresh schema compiles, but generated inlinable evaluation and
+state-declaration visitation cannot directly reference private `_model` backing.
+No wider owner, actual runtime or full acceptance gate follows; no automatic
+third source variant, restoration or reset. P08/R07/T8.1 remain open. Any future
+bounded implementation redesign needs a concrete new disposition/allowance;
+changing scope/privacy/ownership/compiler policy requires its upstream decision.
+This failure does not prove every strict-contract realization impossible.
+
+Previously qualified frozen resource result — [counter ELF PASS](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-final-fit-result.md):
 complete main95,469/106,496, ISR6,672/8,192, RAM255,612/262,144, fresh corrected
 address/SP/allocator proof. Independent current-image review and remaining P08
 matrix/SO/exit are next; prior stop paragraphs below are historical.

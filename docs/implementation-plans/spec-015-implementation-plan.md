@@ -28,10 +28,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current corrective boundary — [corrective1 codegen FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-correction1.md).
-One of two corrective cycles is consumed; no actual screen ran. The experimental
-overlay remains unaccepted, with partial compilation and retained generic
-metadata/traversal edges. Corrective2 has not started. The
+Current corrective boundary — [corrective2 compile/privacy FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-correction2.md).
+Both corrective cycles are consumed (2/2). Fresh generated schema compiles, but
+presentation serialization rejects direct private State backing access. The
+partial experimental overlay remains unaccepted/not adopted; no new actual screen
+or wider owner qualification follows. No third candidate, restoration or reset
+is authorized. The
 [complete cold pipeline design](../implementation-designs/spec-015-p08-native-cold-pipeline.md)
 and its finite emitted caller/file map governed this overlay without retrying the
 aborted restoration. The
@@ -39,11 +41,13 @@ aborted restoration. The
 passed the bounded design and early gates; it did not establish source
 feasibility or conformance. No allowance reset is claimed.
 
-Current strict Native boundary — [candidate1 actual screen FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1-result.md).
+Historical initial strict Native boundary — [candidate1 actual screen FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1-result.md).
 Counts/replay pass; original11/336 remain and cold TLS/text allocations reject
 zero heap. Candidate unaccepted/not adopted; independent failure review passed.
 Restoration was not executed; the revised design proposes a correction overlay.
-No correction used (0/2).
+At that initial boundary no correction had been used (0/2); current accounting
+is2/2 above. Earlier retained receipts qualify their frozen inputs, not the
+subsequent unaccepted source experiment.
 
 Historical strict Native preparation — [candidate 1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1.md).
 The reviewed concrete-root/checked-scope mechanism compiles and diagnostic links

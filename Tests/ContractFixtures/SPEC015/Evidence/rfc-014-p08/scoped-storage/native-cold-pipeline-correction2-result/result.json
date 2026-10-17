@@ -1,0 +1,109 @@
+{
+  "result": "FAIL earliest presentation compile/privacy gate; unaccepted/not adopted",
+  "head_before_correction": "e4191d092aaa984d7e62844a4f59767cfe66f50f",
+  "corrective_cycles_used": 2,
+  "corrective_cycle_limit": 2,
+  "third_candidate_authorized": false,
+  "restore_retried": false,
+  "fresh_passes": [
+    "macro tool compile/link",
+    "source lowering",
+    "P08CounterSchema compile (two invocations; schema unchanged between them)"
+  ],
+  "failed_gate": "P08CounterPresentation compile exit1:24 errors including5 private _model accesses",
+  "private_model_errors": 5,
+  "total_compiler_errors": 24,
+  "presentation_module_or_object_emitted": false,
+  "private_client_controls_run": false,
+  "physical_decode_run": false,
+  "concrete_consumer_run": false,
+  "wider_owner_qualifications_run": false,
+  "runtime_run": false,
+  "full_suite_or_image_run": false,
+  "source_changed": [
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift"
+  ],
+  "source_diff": {
+    "insertions": 51,
+    "deletions": 4
+  },
+  "compiled_macro_source_sha256": {
+    "Sources/GiftUIMacros/CanvasWitnessLowering.swift": "e84c9b92d9819a0954213a7cfa9252c3ee40006457f9eb5e6e3d536cdd5bd84c",
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift": "7a458bfd5c425a9e75379f9f3ecd2f271c2029cc9233779da44374f4028a6599",
+    "Sources/GiftUIMacros/GiftUIMacros.swift": "db3c0786628995ad46879bb1af674eb94c1fb9fe33c8d702632ed9588f46161b",
+    "Sources/GiftUIMacros/ObservableStateHostMacro.swift": "b076d8d730375671b1d948a0195b5cbea4e7ec666d0d34ca2f5932bb8566c0e0"
+  },
+  "unchanged_shared_dependency_modules_copied_sha256": {
+    "GiftUI.swiftmodule": "04bf1e2d56f2b4793f19288829ddbdf2bf44559bdae3aae93d13466d137acadd",
+    "GiftUIDrawing.swiftmodule": "18fd8e01c27b1289f3beaca2c794455622e9003ca89fcd66115c479e4afd578d",
+    "GiftUIExecution.swiftmodule": "0558529e3dbc43cb78ea94e1c98eaac89625dd4139676d48db523dc9dbe31d98",
+    "GiftUIHostConfiguration.swiftmodule": "8d4313cb5bfaf385dd0da2817679c0060c2cf440b1749a65b8fb7f09835ed25d",
+    "GiftUIInteraction.swiftmodule": "ff60db22ca59c9c043dad21134617c801e15f8165deca9d5977f73b99e4a0cfd",
+    "GiftUILayout.swiftmodule": "5dceb9af95e4601603446f6f12f2bab6543b61cd44fe74bfd758676cf8a24859",
+    "GiftUIObservableState.swiftmodule": "5b4fbb80a1cdc80409e60168debe6bdff6d9291d0560680875a665741796059e",
+    "GiftUIReferenceTextResources.swiftmodule": "c852bebd8ad7261ccacbe541b482c0696b291b3be58c9692fd0d55a5520aeda1",
+    "GiftUIRenderCore.swiftmodule": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+    "GiftUIRenderLowering.swiftmodule": "fbca0191add721128eccb3dc71236efc1bf93bd366f287d77986ca212e9889f4",
+    "GiftUIRuntimeCore.swiftmodule": "127c0f06bfb6d8a5fda46b3df42e820d22e9ff8c1fc45dd2148c68955a2574e2",
+    "GiftUIRuntimeDynamic.swiftmodule": "9c50d0b5a35bd28baf37d774330a81e5f6729ab4fabf71a882fd5cc5e065b36d",
+    "GiftUIRuntimeStatic.swiftmodule": "8d3cab6aee7b04918f850f33fca92551c9822161bc8f6be819c6858c5f78622a",
+    "GiftUISemanticCore.swiftmodule": "4e36d5d5dae90ffc111b2024de389f6398fa8ee07576fba1b3b2c68db495c243",
+    "GiftUITextResources.swiftmodule": "9c29e4568c9b98bf36c4009a868b4e92ae1d506817ca0c9a5c89f645b4e2b35c"
+  },
+  "new_plugin_sha256": "2fc89ef284ffcf826d2af03c72d2ab442c622e2e887ef822905a061b4c3e6cd1",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "external_files_sha256": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+    "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+    "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+  },
+  "external_diff_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+  "archive_sha256": "ebb75a17a59f612f6908ee267c02891496ede60ac7f6db1a4231810ae12eaba0",
+  "archive_members_sha256": {
+    "diagnostic/Counter.swift": "7d96c21f86bc32ef254843e1f5cf68edc6410b5fe0672b2a8e709c16663973be",
+    "diagnostic/CounterSchema.swift": "2e18d07b86839bdbadc5304b4b359d5aa57abc333ec0bd15a7d5e3a4b50b0fef",
+    "diagnostic/CounterTable.swift": "9c1a50d90b57b9f625986cbb7a37fcefc56234bfb0f1e0b2a10abd7ab73efd54",
+    "diagnostic/P08CounterPresentation-command.json": "44e5c64474eb0541c39687918eb0989345068233da8a1667e01932d62b41a7c8",
+    "diagnostic/P08CounterPresentation.log": "9fdffa97aeb58820674f39686fd1a3cf5e3922661832765fc226bbeec481084c",
+    "diagnostic/P08CounterSchema-command.json": "315805379b4b56f79d707a70a392484efd5746da2fe760b786dd8c52e6493a7c",
+    "diagnostic/P08CounterSchema-feedback1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "diagnostic/P08CounterSchema.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "diagnostic/P08CounterSchema.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "diagnostic/P08CounterSchema.o": "783cb87f9544fe03b996055d978c4a09e70a77fa01231e59d97e49b858146601",
+    "diagnostic/P08CounterSchema.swiftmodule": "4f96c240163df982dfdca8a835ffc61f0729d3ffd0c09a4bdcbe7114d275c5ae",
+    "diagnostic/compile.py": "648580410eacee62f1eb0d594a929dc0dbcc44cb11ba8a9c7bda597b47f1630a",
+    "diagnostic/lower-command.json": "f360d8e8b2030a1235079cc177cb9b067bf0129f670f17b230199cc3c4fa53d5",
+    "diagnostic/lower.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "diagnostic/macro/Objects.LinkFileList": "20983cbe0b62f7a3861fed6f6b5535fec185358e2a8411540cd9c2f896cebd84",
+    "diagnostic/macro/compile-command.json": "3cd58e4be1fde6f14a2aecb89d6b8a95640eb487afaf4bd5a3456c4b6ec047ff",
+    "diagnostic/macro/compile.log": "c3c3381b5527fc5a396596703547ad57bf2cfd50fdbfc11a909a8b174360bec9",
+    "diagnostic/macro/link-command.json": "b3b03eb5372e3ef16fdb6c23d3f498920366dc80fd715f46fc0283d760135537",
+    "diagnostic/macro/link.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "diagnostic/macro/outputs.json": "91b349aa18f001b165e741e169509e4c125e13a25c275ad4abdec36ffcae860e",
+    "diagnostic/macro/sources-response.txt": "f8299d7c32eda5ac9614f3bac44f7c1203d6eb882803c33094de0d20dae87249",
+    "diagnostic/macro.py": "e97cac8d7d2f5c5df585c09758a335d2d98e15b178141fdca119c25a1af68ef8",
+    "diagnostic/preparation-generated-before-trivia.swift": "8d5b4eb8a6711b37a60f72b9bc1fc019b72e9a2582cd0bea5b0c5bcc575b449e",
+    "compiled-source/Sources/GiftUIMacros/CanvasWitnessLowering.swift": "e84c9b92d9819a0954213a7cfa9252c3ee40006457f9eb5e6e3d536cdd5bd84c",
+    "compiled-source/Sources/GiftUIMacros/FiniteSourceLowering.swift": "7a458bfd5c425a9e75379f9f3ecd2f271c2029cc9233779da44374f4028a6599",
+    "compiled-source/Sources/GiftUIMacros/GiftUIMacros.swift": "db3c0786628995ad46879bb1af674eb94c1fb9fe33c8d702632ed9588f46161b",
+    "compiled-source/Sources/GiftUIMacros/ObservableStateHostMacro.swift": "b076d8d730375671b1d948a0195b5cbea4e7ec666d0d34ca2f5932bb8566c0e0"
+  },
+  "preparation_note": "First generated presentation had missing attribute boundary trivia; corrected before any presentation compiler invocation. Retained uncompiled intermediate. Macro compiled/linked twice; schema compiled twice. First actual presentation gate failed once; no retry after private State failure.",
+  "unchanged_authored_lowering_inputs_sha256": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.schema.json": "3428fbdeb1f321c28c3fa70a7a6ce6159fd86676e6520292366a6b269b3ecbd9"
+  },
+  "checks": {
+    "offline_failure_packet": "PASS",
+    "maintained_swift_format_lint": "PASS",
+    "governance": "PASS",
+    "local_links": "PASS",
+    "whitespace": "PASS"
+  },
+  "derived_files_sha256": {
+    "README.md": "940a6617350dfa31c472fe908c59500f6f12e8ac8bfa5cf7746ca46db8151e9c",
+    "verify.py": "87374658b6f790f9aa71dcedbf46735e983bb5685a6c3741bc5179850f677bbb"
+  }
+}

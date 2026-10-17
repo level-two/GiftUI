@@ -220,6 +220,18 @@ final class Lowerer: SyntaxRewriter {
             if !stateProperties.isEmpty { reject(node, "Canvas cannot declare State") }
         }
         var result = super.visit(node).cast(StructDeclSyntax.self)
+        // Inlinable witnesses need an ABI-usable enclosing nominal. Retain
+        // authored source access; the finite source transform owns this output.
+        if !node.modifiers.contains(where: {
+            ["public", "open", "private", "fileprivate"].contains($0.name.text)
+        }) {
+            result.attributes.append(
+                .attribute(
+                    AttributeSyntax(
+                        leadingTrivia: .newline,
+                        attributeName: TypeSyntax(stringLiteral: "usableFromInline"),
+                        trailingTrivia: .newline)))
+        }
         result.genericParameterClause = GenericParameterClauseSyntax(
             parameters: GenericParameterListSyntax([
                 GenericParameterSyntax(
@@ -229,7 +241,7 @@ final class Lowerer: SyntaxRewriter {
         )
         result.memberBlock.members.insert(
             MemberBlockItemSyntax(
-                decl: DeclSyntax(stringLiteral: "package typealias Domain = D\n")),
+                decl: DeclSyntax(stringLiteral: "@usableFromInline package typealias Domain = D\n")),
             at: result.memberBlock.members.startIndex
         )
         bindings = previousBindings
@@ -237,6 +249,25 @@ final class Lowerer: SyntaxRewriter {
         insideCanvas = previousCanvas
         viewProperties = previousProperties
         stateProperties = previousState
+        return DeclSyntax(result)
+    }
+
+    override func visit(_ node: EnumDeclSyntax) -> DeclSyntax {
+        guard
+            node.inheritanceClause?.inheritedTypes.contains(where: {
+                $0.type.trimmedDescription == "GiftUIAction"
+            }) == true,
+            !node.modifiers.contains(where: {
+                ["public", "open", "private", "fileprivate"].contains($0.name.text)
+            })
+        else { return super.visit(node) }
+        var result = super.visit(node).cast(EnumDeclSyntax.self)
+        result.attributes.append(
+            .attribute(
+                AttributeSyntax(
+                    leadingTrivia: .newline,
+                    attributeName: TypeSyntax(stringLiteral: "usableFromInline"),
+                    trailingTrivia: .newline)))
         return DeclSyntax(result)
     }
 
@@ -266,6 +297,21 @@ final class Lowerer: SyntaxRewriter {
     }
 
     override func visit(_ node: FunctionDeclSyntax) -> DeclSyntax {
+        if !insideView, configuration.calls.contains(node.name.text),
+            inventory.functions.contains(node.name.text),
+            !node.modifiers.contains(where: {
+                ["public", "open", "private", "fileprivate"].contains($0.name.text)
+            })
+        {
+            var result = super.visit(node).cast(FunctionDeclSyntax.self)
+            result.attributes.append(
+                .attribute(
+                    AttributeSyntax(
+                        leadingTrivia: .newline,
+                        attributeName: TypeSyntax(stringLiteral: "usableFromInline"),
+                        trailingTrivia: .newline)))
+            return DeclSyntax(result)
+        }
         if insideCanvas && node.name.text == "draw" {
             let parameters = node.signature.parameterClause.parameters
             guard parameters.count == 2,
@@ -733,6 +779,7 @@ func schema(_ configuration: Configuration) throws -> String {
     }
     func facade(_ fields: [Field], name: String, schema: String?) -> String {
         var result = """
+            @usableFromInline
             package struct \(name)<D: \(configuration.domain)>: ~Escapable {
                 private let slots: Span<D.Slot>
                 private let index: Int
@@ -799,7 +846,7 @@ func schema(_ configuration: Configuration) throws -> String {
         return result + "}\n" + nestedFacades
     }
     var result = "import GiftUI\n" + configuration.imports.map { "import \($0)\n" }.joined()
-    result += "package protocol \(configuration.domain): _GiftUIReadDomain {\n"
+    result += "@usableFromInline package protocol \(configuration.domain): _GiftUIReadDomain {\n"
     for model in configuration.models {
         result +=
             "static func bind(_ key: _GiftUIModelKey<\(model.schema)>, slots: Span<Slot>) throws(_GiftUIAccessFailure) -> Int\n"
@@ -808,7 +855,7 @@ func schema(_ configuration: Configuration) throws -> String {
     result += "}\n"
     for model in configuration.models {
         let seedFields = model.seedFields ?? []
-        result += "package struct \(model.schema)Seed {\n"
+        result += "@usableFromInline package struct \(model.schema)Seed {\n"
         for field in seedFields {
             result += "package let \(field.name): \(field.type)\n"
         }
@@ -820,7 +867,7 @@ func schema(_ configuration: Configuration) throws -> String {
         }
         result += "}\n}\n"
         result +=
-            "package enum \(model.schema): _GiftUIModelSchema { package typealias Seed = \(model.schema)Seed }\n"
+            "@usableFromInline package enum \(model.schema): _GiftUIModelSchema { @usableFromInline package typealias Seed = \(model.schema)Seed }\n"
             + facade(model.fields, name: model.facade, schema: model.schema)
     }
     return result

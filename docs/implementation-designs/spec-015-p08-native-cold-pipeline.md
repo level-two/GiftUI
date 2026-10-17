@@ -16,9 +16,11 @@ superseded_by: null
 
 # P08 complete Native cold pipeline correction
 
-Current execution boundary: [corrective1 codegen FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-correction1.md).
-The partial source overlay is unaccepted; 1/2 corrective cycles is consumed and
-no new workload was run. The assessment below and independent design review are
+Current execution boundary: [corrective2 compile/privacy FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-correction2.md).
+The partial source overlay is unaccepted; both corrective cycles are consumed
+(2/2), with no new workload run. Private State backing prevents the direct
+generated inlinable body from compiling; no wider owner work or third candidate
+follows. The assessment below and independent design review are
 historical design inputs, not a claim that the subsequent implementation passed.
 
 The prior [independent package disposition](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-serialization-disposition.md)
@@ -27,9 +29,9 @@ That investigation is now complete: the [physical decode](../../Tests/ContractFi
 proves missing traversal/evaluate bodies and identifies the enclosing formal-scope
 gate. The [independent corrective2 design amendment](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-correction2-design-review.md)
 approves the exact ABI-only generated-nominal/dependency repair and staged final
-cycle, under standing authorization. No correction2 source edit has begun here;
-1/2 cycles remain consumed. Compile/privacy/physical-body gates precede wider
-changed-owner work, and failure consumes the final cycle.
+cycle, under standing authorization. At that review correction2 had not begun
+and1/2 cycles were consumed. Its subsequent compile/privacy failure above consumes
+the final cycle; the review is not evidence of implementation success.
 
 **Independent design PASS for bounded corrective1; actual codegen feasibility
 remains unproved.**
