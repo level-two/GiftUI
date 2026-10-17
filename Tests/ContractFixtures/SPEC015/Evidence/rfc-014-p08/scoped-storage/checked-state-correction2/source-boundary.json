@@ -1,0 +1,15 @@
+{
+  "head": "7817573d4661b284dfbeccff4ec6575866a4dbf8",
+  "corrections": "2/2 in progress before first edit",
+  "initial": "1/1 consumed",
+  "historical": "2/2 closed",
+  "review": "7817573d",
+  "only_changes": {
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift": "leading newline on every existing helper append",
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": "actual lowerGiftUISource emitted-output parser positive Counter/multiple/nested and frozen negative sensitivity"
+  },
+  "source_before_hashes": {
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift": "3c55115feb406a79daa7d1e0c189ddc203c7459b82fa29b2bfdb52b544833358",
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": "5953e01a3b6e2668b76cc2e0b3389001e4f2d48a6e828d97627de49af705dd20"
+  }
+}

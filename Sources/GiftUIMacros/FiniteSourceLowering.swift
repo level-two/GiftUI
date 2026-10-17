@@ -254,7 +254,8 @@ final class Lowerer: SyntaxRewriter {
             for helper in ObservableStateHostMacro.checkedStateHelpers(
                 name: name, schema: model.schema)
             {
-                result.memberBlock.members.append(MemberBlockItemSyntax(decl: helper))
+                result.memberBlock.members.append(
+                    MemberBlockItemSyntax(decl: helper.with(\.leadingTrivia, .newline)))
             }
         }
         bindings = previousBindings

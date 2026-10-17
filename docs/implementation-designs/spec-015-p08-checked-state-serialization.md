@@ -16,6 +16,13 @@ superseded_by: null
 
 # P08 checked State serialization
 
+Current [final correction WIP](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/checked-state-correction2/README.md):
+macro compile/link pass; standalone runner setup failed on unavailable macOS APIs.
+The confirmed macOS repair has not executed: escalated command request aborted
+by the user. Exact maintained regression/provider gates remain pending, with no
+production PASS/FAIL. Initial1/1/corrections2/2 in progress, source unaccepted;
+no retry/alternate route or further source variant. P08/R07/T8.1 remain open.
+
 Current [corrective1 STOP](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/checked-state-correction1/README.md):
 exact mapper annotation clears schema; first presentation compile reports two
 missing generated helper declaration separators. Initial1/1/corrections1/2 consumed;

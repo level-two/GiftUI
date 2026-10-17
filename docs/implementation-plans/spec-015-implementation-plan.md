@@ -29,6 +29,13 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [final correction WIP](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/checked-state-correction2/README.md):
+macro compile/link pass; standalone runner setup failed on unavailable macOS APIs.
+The confirmed macOS repair has not executed: escalated command request aborted
+by the user. Exact maintained regression/provider gates remain pending, with no
+production PASS/FAIL. Initial1/1/corrections2/2 in progress, source unaccepted;
+no retry/alternate route or further source variant. P08/R07/T8.1 remain open.
+
 [Independent final checked-State corrective2 recipe PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-correction2-design-review.md)
 permits separating trivia on the existing helper append and a regression parsing
 verbatim actual lowerer output before fresh provider gates. Initial1/1 and

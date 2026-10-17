@@ -1,6 +1,6 @@
 # Renewed checked State serialization activity — 2026-10-17
 
-**Corrective1 STOP at presentation syntax; initial1/1 and corrections1/2 consumed. Source unaccepted.**
+**Final corrective2 WIP; runner not executed, source gate pending. Initial1/1/corrections2/2; source unaccepted.**
 Eugene answered “Please proceed as proposed” to the proposed renewed strict P08
 activity following [final boundary review](p08-native-cold-pipeline-correction2-independent-review.md).
 The selected direction retains private authored State, original checked ownership
@@ -48,6 +48,16 @@ allowlist. Run the focused regression, with frozen failed-output negative contro
 before expensive fresh provider gates. Corrections1/2 remain consumed until its
 first source edit starts final2/2; no further automatic source variant follows
 another material failure. Private/source/codegen/cold acceptance remains unproved.
+
+Final corrective2 starts under `7817573d`; [pre-edit freeze](checked-state-correction2/source-boundary.json) limits changes to helper append trivia and actual-output parser regression. No further automatic source variant remains after a material failure.
+
+[Final correction WIP receipt](checked-state-correction2/README.md): changed macro
+compile/link pass. Original standalone runner setup fails on unavailable macOS
+XCTest APIs; regression/provider remain unrun. One confirmed macOS runner-only
+repair is prepared, requires one exact test execution/zero failures/zero skips,
+and has not executed because its escalated command request was aborted by the
+user. No retry or alternate route follows. Candidate bytes unchanged; no production
+feasibility verdict. The receipt supplies the exact pending command for approval.
 
 ## Allowance and disposition
 

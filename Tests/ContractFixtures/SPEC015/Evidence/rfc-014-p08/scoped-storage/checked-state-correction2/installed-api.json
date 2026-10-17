@@ -1,0 +1,27 @@
+{
+  "source_headers": {
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestCase.h": "3495ba29de18055dec5feec3b96339ed8454551ae404584d543988988ad5b25e",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestSuite.h": "b2319a49dcd59c05b82e7c7615d771ebce1fda06a8d606bef4a7d087f11a4818",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestRun.h": "4da60274a108a1f253c89992274652f2665f2fad41e7f92fe31420bf9f25d67a"
+  },
+  "confirmed_lines": {
+    "XCTestCase.h": [
+      " * @method -initWithSelector:",
+      "- (instancetype)initWithSelector:(SEL)selector;"
+    ],
+    "XCTestSuite.h": [
+      "    [suite addTest:[MathTest testCaseWithSelector:@selector(testAdd)]];",
+      "    [suite addTest:[MathTest testCaseWithSelector:@selector(testDivideByZero)]];",
+      "- (instancetype)initWithName:(NSString *)name NS_DESIGNATED_INITIALIZER;",
+      "- (void)addTest:(XCTest *)test;"
+    ],
+    "XCTestRun.h": [
+      " * @property executionCount",
+      "@property (readonly) NSUInteger executionCount;",
+      " * @property skipCount",
+      "@property (readonly) NSUInteger skipCount;",
+      " * @property totalFailureCount",
+      "@property (readonly) NSUInteger totalFailureCount;"
+    ]
+  }
+}
