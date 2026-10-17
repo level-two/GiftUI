@@ -29,10 +29,15 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current [witness annotation compatibility activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-activity.md):
-new user-authorized candidate0/1, no automatic source repairs; independent design
-review precedes source. Condition the existing two macro witness attribute pairs
-on the validated finite ABI-eligible helper route, preserve all five ordinary
+Current [witness annotation compatibility result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/annotation-compatibility-candidate1/README.md):
+candidate1/1 frozen; 17 maintained tests/provider/five privacy/four ordinary access
+positives PASS. Public positive STOP on an invalid package-only generic constraint;
+no macro-source failure established. [Grouped fixture-only review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-fixture-review.md)
+passes three constraint-only corrections and unchanged scope twins for an
+unexecuted fresh-receipt continuation; no source changes/allowance reset.
+Physical/host/safety/cold unrun.
+The reviewed correction conditions the existing two macro witness attribute pairs
+on the validated finite ABI-eligible helper route, preserves all five ordinary
 host visibilities/private backing, and repair the external FrameRead access test
 with a valid matching same-package positive. Only on fresh focused PASS resume
 the existing physical/actual-host/safety/cold gates. Historical initial1/1 and

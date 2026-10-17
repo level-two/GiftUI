@@ -18,10 +18,18 @@ superseded_by: null
 
 ## Annotation eligibility amendment — 2026-10-17
 
+The [single frozen candidate result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/annotation-compatibility-candidate1/README.md)
+passes17 maintained tests/provider/five privacy controls and four ordinary access
+positives. Its public positive is independently invalid through a package-only
+generic constraint. [Grouped fixture-only review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-fixture-review.md)
+passes the exact three constraint substitutions and unchanged scope twins;
+continuation is unexecuted. No source failure is established, no source repair
+follows, and physical/actual-host/cold stay open.
+
 The [new one-candidate activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-activity.md)
 is a derived compatibility correction after the exhausted activity below.
 The [independent design review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-independent-design-review.md)
-passes with the conservative syntax guards below; no source candidate has started.
+passes with the conservative syntax guards below; candidate1/1 is frozen at `22589fec`.
 It changes only whether the two existing macro witnesses receive their paired
 `@inlinable` / `@inline(__always)` attributes. Ordinary inputs keep the original
 direct-private-field route with neither attribute, at every host access level.

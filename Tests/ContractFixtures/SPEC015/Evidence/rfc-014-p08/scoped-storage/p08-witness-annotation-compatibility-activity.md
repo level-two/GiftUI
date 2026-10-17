@@ -1,6 +1,16 @@
 # P08 witness annotation compatibility activity — 2026-10-17
 
-**Candidate 1/1 starting under `8e64cc10`; zero automatic repairs.** The
+Current [candidate1 result](annotation-compatibility-candidate1/README.md):
+17 maintained tests/provider/five clean privacy controls and four ordinary access
+positives PASS; public positive stops on its independently invalid package-only
+generic constraint. No source failure is established. Frozen macro/tests remain
+unaccepted; no repair/retry or physical/host/cold work followed. The
+[grouped fixture-only review](p08-witness-annotation-compatibility-fixture-review.md)
+passes the three constraint-only corrections and unchanged scope twins for a
+fresh-receipt continuation. This consumes no additional source candidate and
+does not replenish its allowance; continuation remains unexecuted.
+
+**Candidate 1/1 frozen at `22589fec`; zero automatic repairs.** The
 [independent design review](p08-witness-annotation-compatibility-independent-design-review.md)
 passes the exact source boundary and clarified syntax/context guards. Eugene authorized
 the recommended new bounded compatibility correction after `dceb8bc4`, then the
