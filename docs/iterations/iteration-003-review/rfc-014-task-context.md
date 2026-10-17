@@ -1,5 +1,10 @@
 # RFC-014 task context guide
 
+[Independent final checked-State corrective2 recipe PASS](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-correction2-design-review.md)
+permits the existing helper-append separator fix and actual-output parse regression
+before fresh provider gates. Initial1/1/corrections1/2 consumed; final2/2 unstarted.
+Next material failure stops automatic source work; P08/R07/T8.1 remain open.
+
 Current [corrective1 STOP](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/checked-state-correction1/README.md):
 exact mapper annotation clears schema; first presentation compile reports two
 missing generated helper declaration separators. Initial1/1/corrections1/2 consumed;

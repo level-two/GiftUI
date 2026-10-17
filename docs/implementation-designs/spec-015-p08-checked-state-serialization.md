@@ -22,6 +22,15 @@ missing generated helper declaration separators. Initial1/1/corrections1/2 consu
 no retry or later gate. Source unaccepted; P08/R07/T8.1 open. Earlier checkpoints
 below retain historical accounting.
 
+[Independent final corrective2 recipe PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-correction2-design-review.md)
+confirms both separators have one helper-append cause. Within the existing
+lowerer/test map, add leading separating newline trivia to every appended helper
+and regress actual verbatim lowerer output for Counter and supported multi/nested
+State declarations. Require a parser negative control on frozen failed output and
+positive actual-output parsing before the fresh provider chain. No generated-text
+repair, helper AST/semantics change or new allowance; correction2/2 is final and
+has not begun at this review. A failed positive gate freezes the final attempt.
+
 > This note explains one replaceable internal realization of an approved
 > contract. It is non-authoritative and cannot introduce architecture or amend
 > the governing Specification. Design only: no source, compiler or runtime result

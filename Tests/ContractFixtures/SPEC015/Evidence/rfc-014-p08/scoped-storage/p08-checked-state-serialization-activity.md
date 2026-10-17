@@ -41,11 +41,20 @@ FAIL at two missing helper declaration separators. No retry or private/codegen/
 runtime gate ran. One corrective cycle remains; the pre-edit launch record above
 is historical. Independent disposition precedes any further source correction.
 
+[Independent final corrective2 recipe PASS](p08-checked-state-correction2-design-review.md)
+confirms the two separator errors and permits one grouped trivia-only helper
+append correction plus actual-lowerer-output parsing regression in the existing
+allowlist. Run the focused regression, with frozen failed-output negative control,
+before expensive fresh provider gates. Corrections1/2 remain consumed until its
+first source edit starts final2/2; no further automatic source variant follows
+another material failure. Private/source/codegen/cold acceptance remains unproved.
+
 ## Allowance and disposition
 
 One initial candidate and **at most two grouped corrective cycles** are available
 after independent Strong design review. Initial candidate **1/1 consumed**, corrections
-**0/2**, material provider gate **FAIL** (schema compile). The exact combined
+**1/2 consumed**, latest material provider gate **FAIL** (presentation separators).
+The exact combined
 [file/function freeze](checked-state-candidate1/source-boundary.json) records starting
 HEAD, source/external hashes and the restricted initial edit subset. The historical
 Native cold pipeline candidate and corrections **2/2** stay exhausted; their

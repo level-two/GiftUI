@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+[Independent final checked-State corrective2 recipe PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-correction2-design-review.md)
+permits separating trivia on the existing helper append and a regression parsing
+verbatim actual lowerer output before fresh provider gates. Initial1/1 and
+corrections1/2 consumed; final2/2 has not begun at this review. Any material failure
+freezes that final attempt; no new allowance or P08/R07/T8.1 acceptance.
+
 Current [corrective1 STOP](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/checked-state-correction1/README.md):
 exact mapper annotation clears schema; first presentation compile reports two
 missing generated helper declaration separators. Initial1/1/corrections1/2 consumed;
