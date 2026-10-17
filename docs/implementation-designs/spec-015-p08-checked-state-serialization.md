@@ -25,6 +25,12 @@ superseded_by: null
 
 ## Purpose and Boundary
 
+Current [initial candidate receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/checked-state-candidate1/README.md)
+is STOP: macro/lowering/fresh GiftUI pass, generated schema compile fails on the
+non-ABI checked DrawingError mapper. Initial1/1 consumed, corrections0/2; no retry,
+presentation/private/physical/actual-consumer/runtime result. Independent review
+must assess the exact missing dependency before any grouped correction.
+
 Select one checked forwarding candidate over the unaccepted `3ae67711` source
 experiment. The [new activity record](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-serialization-activity.md)
 records the maintainer's renewed bounded direction separately from the exhausted
@@ -342,7 +348,7 @@ policy must stop for the applicable ADR/Specification review.
 
 ## Code and Evidence Links
 
-No realization yet. Inputs: final failure `3ae67711`, final independent review
+Initial unaccepted realization is frozen in the linked receipt. Inputs: final failure `3ae67711`, final independent review
 `9a544f7e`, corrective2 design `e4191d09`, physical serialization `24590caf`.
 The activity record will link each source freeze, physical-body/callee receipt,
 safety/cold result and independent disposition. Existing frozen evidence remains

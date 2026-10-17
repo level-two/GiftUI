@@ -14,12 +14,18 @@ public protocol _GiftUIModelSchema {
     associatedtype Seed
 }
 
+@usableFromInline
 package struct _GiftUIBoundState<Schema> {
+    @usableFromInline
     package let locationSlot: UInt16
+    @usableFromInline
     package let declarationOrdinal: UInt16
+    @usableFromInline
     package let registrationGeneration: UInt32
+    @usableFromInline
     package let key: _GiftUIModelKey<Schema>
 
+    @inlinable
     package init(
         locationSlot: UInt16, declarationOrdinal: UInt16,
         registrationGeneration: UInt32, key: _GiftUIModelKey<Schema>
@@ -41,16 +47,20 @@ package enum _GiftUIStateInitial<Schema: _GiftUIModelSchema> {
 
 @propertyWrapper
 public struct State<Schema: _GiftUIModelSchema> {
-    private enum Storage {
+    @usableFromInline
+    internal enum Storage {
         case initial(_GiftUIStateInitial<Schema>)
         case bound(_GiftUIBoundState<Schema>)
     }
-    private var storage: Storage
+    @usableFromInline
+    internal var storage: Storage
 
+    @inlinable
     public init(seed: Schema.Seed) {
         storage = .initial(.seed(seed))
     }
 
+    @inlinable
     public init(candidate: _GiftUIModelKey<Schema>) {
         storage = .initial(.candidate(candidate))
     }
@@ -62,23 +72,26 @@ public struct State<Schema: _GiftUIModelSchema> {
         return nil
     }
 
+    @inlinable
     package func _giftUIKey() throws(_GiftUIAccessFailure) -> _GiftUIModelKey<Schema> {
         guard case .bound(let binding) = storage else { throw .invalidPhase }
         return binding.key
     }
 
-    @usableFromInline
+    @inlinable
     package var _giftUIInitial: _GiftUIStateInitial<Schema>? {
         if case .initial(let seed) = storage { return seed }
         return nil
     }
 
+    @inlinable
     package var _giftUIBinding: _GiftUIBoundState<Schema>? {
         if case .bound(let binding) = storage { return binding }
         return nil
     }
 
     @discardableResult
+    @inlinable
     package mutating func _giftUIBind(_ binding: _GiftUIBoundState<Schema>) -> _GiftUIStateInitial<
         Schema
     >? {

@@ -29,6 +29,14 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current checked-State [candidate1 STOP](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/checked-state-candidate1/README.md):
+macro/lowering/fresh GiftUI pass; schema serialization fails at the existing
+non-ABI checked DrawingError mapper. Initial1/1 consumed, corrections0/2; source
+unaccepted and no retry. Presentation/privacy/physical/actual consumer/cold remain
+unrun. The receipt identifies the exact additional dependency for independent
+amendment before correction. P08/R07/T8.1 stay open. The launch paragraph below
+records its historical pre-execution accounting.
+
 Current renewed activity — [checked State serialization](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-serialization-activity.md),
 authorized by Eugene's “Please proceed as proposed”. The [derived design](../implementation-designs/spec-015-p08-checked-state-serialization.md)
 selects a fixed-schema ABI yielding projection and checked key helper while

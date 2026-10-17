@@ -1,5 +1,12 @@
 # RFC-014 task context guide
 
+Current [checked-State candidate1 STOP](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/checked-state-candidate1/README.md):
+macro/lowering/fresh GiftUI pass, first generated schema compile fails on non-ABI
+`DrawingError.init(accessFailure:)`. Initial1/1 consumed; corrections0/2. No source
+repair/retry or presentation/privacy/codegen/runtime gate followed. Source remains
+unaccepted; exact facade dependencies are recorded for independent amendment.
+P08/R07/T8.1 remain open. The next launch record is historical.
+
 Current renewed [checked State activity](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-serialization-activity.md)
 records Eugene's “Please proceed as proposed” and [one candidate design](../../implementation-designs/spec-015-p08-checked-state-serialization.md).
 [Independent Strong design review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-serialization-independent-design-review.md)

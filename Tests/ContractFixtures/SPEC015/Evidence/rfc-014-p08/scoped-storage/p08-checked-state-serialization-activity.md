@@ -1,6 +1,6 @@
 # Renewed checked State serialization activity — 2026-10-17
 
-**New bounded activity; independent design PASS. No implementation attempt spent.**
+**Initial candidate1/1 STOP at schema compile; corrections0/2. Source unaccepted.**
 Eugene answered “Please proceed as proposed” to the proposed renewed strict P08
 activity following [final boundary review](p08-native-cold-pipeline-correction2-independent-review.md).
 The selected direction retains private authored State, original checked ownership
@@ -18,11 +18,21 @@ passes the candidate with an exact structural route-selection and source-access
 clarification recorded in the derived note. This is permission to proceed through
 the already authorized ordered gates, not a compiler/codegen/resource result.
 
+[Candidate1 receipt](checked-state-candidate1/README.md): changed macro compile/link,
+actual lowering and fresh GiftUI compile pass; first fresh generated schema compile
+fails because its checked drawing initializer references non-ABI package
+`DrawingError.init(accessFailure:)`. Presentation/private/codegen/runtime gates
+are unrun. No retry or source correction follows this receipt. Its complete direct
+facade-dependency inventory identifies the existing checked mapper for a recorded
+independent amendment before any grouped correction.
+
 ## Allowance and disposition
 
 One initial candidate and **at most two grouped corrective cycles** are available
-after independent Strong design review. Initial candidate **0/1**, corrections
-**0/2**, material gate attempts **0** at this design checkpoint. The historical
+after independent Strong design review. Initial candidate **1/1 consumed**, corrections
+**0/2**, material provider gate **FAIL** (schema compile). The exact combined
+[file/function freeze](checked-state-candidate1/source-boundary.json) records starting
+HEAD, source/external hashes and the restricted initial edit subset. The historical
 Native cold pipeline candidate and corrections **2/2** stay exhausted; their
 source remains unaccepted. This new authorization does not rewrite their receipts.
 
@@ -87,4 +97,4 @@ allowance. A genuine public/cross-module contract, ownership/lifetime, privacy,
 zero-heap or compiler/runtime-policy change requires its applicable ADR/Spec gate;
 stop that dependent work rather than widening this activity. If the selected
 concrete opaque seam cannot meet strict codegen, report its exact residual call
-and constraint. No source or compiler experiment occurred in this design step.
+and constraint. The linked candidate1 receipt freezes the first source/compiler attempt; no runtime or later gate ran.

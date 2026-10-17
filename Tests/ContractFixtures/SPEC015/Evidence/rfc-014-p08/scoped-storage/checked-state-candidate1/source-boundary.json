@@ -1,0 +1,300 @@
+{
+  "head": "ddbf6ea4dd5ba77c3cb794f29dc3219811830f4f",
+  "initial_candidate": "1/1 in progress before first maintained-source edit",
+  "corrections": "0/2",
+  "historical_native_pipeline": "2/2 closed; overlay unaccepted",
+  "allowlist": {
+    "Sources/GiftUI/DeclarativeView.swift": [
+      "GiftUI.Button._giftUITraverse<A where A1: GiftUI._GiftUISemanticTraversalVisitor, B.Domain == A1.Domain, A1: ~Swift.Copyable, A1: ~Swift.Escapable>(inout A1) -> ()"
+    ],
+    "Sources/GiftUI/ObservableState.swift": [
+      "GiftUI.State.init(seed: A.Seed) -> GiftUI.State<A>",
+      "State.Storage/storage ABI usability; init(seed:), init(candidate:), _giftUIKey, _giftUIInitial, _giftUIBinding, _giftUIBind serialization; _GiftUIBoundState existing fields/init ABI usability; no public signature/name-list change"
+    ],
+    "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift": [
+      "GiftUIBackendIntegration.OneShotRasterBackendEndpoint.init(effectivePresentation: GiftUICapabilities.EffectiveRasterPresentation, descriptor: GiftUISurfaceCore.RasterSurfaceDescriptor, payloadLimits: GiftUIRasterCore.RasterPayloadLimits, textMetrics: B, textRaster: C, textRasterRealization: GiftUITextResources.RasterRealizationID, envelopeValidator: D, sink: A, startupFailure: GiftUIRasterCore.RasterBackendError?) -> GiftUIBackendIntegration.OneShotRasterBackendEndpoint<A, B, C, D>?"
+    ],
+    "Sources/GiftUIDrawing/CanvasRenderProducer.swift": [
+      "GiftUIDrawing.(CanvasStreamingExtension in _5C023C09DFE1B9E120421B270D3CAC22).visit(scope: GiftUISemanticCore.SemanticRenderScope, identity: A.Identity, bounds: GiftUI.Rect, clip: GiftUI.Rect, sink: inout B) -> GiftUIRenderLowering.RenderExtensionVisitResult",
+      "static GiftUIDrawing.CanvasRenderProducer.preflight<A, B, C, D, E where A: GiftUISemanticCore.SemanticRenderView, B: GiftUILayout.ResolvedRenderLayoutView, C: GiftUITextResources.CanonicalTextMetricsView, D: GiftUIDrawing.DrawingPlanView, E: GiftUIRenderLowering.RenderProductionWorkspace, A.Identity == B.Identity, B.Identity == D.Identity, D.Identity == E.Identity, A: ~Swift.Escapable>(semantic: A, layout: B, textMetrics: C, drawingPlan: D, surfaceBounds: GiftUI.Rect, damageMode: GiftUIRenderCore.RenderDamageMode, rootForeground: GiftUI.Color, limits: GiftUIRenderLowering.RenderLimits, configuredSinkCapacity: GiftUIRenderCore.RenderSinkCapacity, workspace: inout E) -> GiftUIRenderLowering.RenderProductionResult",
+      "static GiftUIDrawing.CanvasRenderProducer.produce<A, B, C, D, E, F where A: GiftUISemanticCore.SemanticRenderView, B: GiftUILayout.ResolvedRenderLayoutView, C: GiftUITextResources.CanonicalTextMetricsView, D: GiftUIDrawing.DrawingPlanView, E: GiftUIRenderLowering.RenderProductionWorkspace, F: GiftUIRenderCore.DrawingOperationSink, A.Identity == B.Identity, B.Identity == D.Identity, D.Identity == E.Identity, A: ~Swift.Escapable>(semantic: A, layout: B, textMetrics: C, drawingPlan: D, surfaceBounds: GiftUI.Rect, damageMode: GiftUIRenderCore.RenderDamageMode, rootForeground: GiftUI.Color, limits: GiftUIRenderLowering.RenderLimits, expectedHeader: GiftUIRenderCore.RenderPlanHeader, workspace: inout E, sink: inout F) -> GiftUIRenderLowering.RenderProductionResult"
+    ],
+    "Sources/GiftUIDrawing/CanvasStagedValues.swift": [
+      "GiftUIDrawing.CanvasStagedValues.stage(identity: A, value: __owned B.CaptureStorage, table: B) throws(GiftUI.DrawingError) -> ()",
+      "GiftUIDrawing.withCanvasStagedValues<A, B, C where A: Swift.Equatable, A: Swift.Sendable, B: GiftUIDrawing.CanvasValueTable>(metadata: inout GiftUIDrawing.CanvasStagedMetadata, entries: inout Swift.MutableSpan<GiftUIDrawing.CanvasStagedEntry<A, B.CaptureStorage>?>, table: B, capacity: Swift.UInt16, limits: GiftUIDrawing.StaticCanvasLimits, _: (GiftUIDrawing.CanvasStagedValues<A, B>) throws(GiftUI.DrawingError) -> C) throws(GiftUI.DrawingError) -> C"
+    ],
+    "Sources/GiftUIExecution/RunCycleValues.swift": [
+      "static GiftUIExecution.RunCycleFailure.__derived_enum_equals(GiftUIExecution.RunCycleFailure<A>, GiftUIExecution.RunCycleFailure<A>) -> Swift.Bool"
+    ],
+    "Sources/GiftUIHostConfiguration/HostActivationController.swift": [
+      "GiftUIHostConfiguration.MVPHostActivationController.activate<A where A == A1.ActivationFailure, A1: GiftUIHostConfiguration.MVPHostActivationOwner, A1: ~Swift.Copyable, A1: ~Swift.Escapable>(owner: inout A1, invariantFailure: A) -> GiftUIHostConfiguration.HostActivationResult<A>",
+      "static GiftUIHostConfiguration.HostActivationStepResult.__derived_enum_equals(GiftUIHostConfiguration.HostActivationStepResult<A>, GiftUIHostConfiguration.HostActivationStepResult<A>) -> Swift.Bool"
+    ],
+    "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": [
+      "static GiftUIHostConfiguration.HostActivationResult.__derived_enum_equals(GiftUIHostConfiguration.HostActivationResult<A>, GiftUIHostConfiguration.HostActivationResult<A>) -> Swift.Bool",
+      "static GiftUIHostConfiguration.HostOpportunityResult.__derived_enum_equals(GiftUIHostConfiguration.HostOpportunityResult<A>, GiftUIHostConfiguration.HostOpportunityResult<A>) -> Swift.Bool"
+    ],
+    "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift": [
+      "GiftUIHostConfiguration.HostScheduledOpportunityController.complete<A where A: Swift.Equatable, A: Swift.Sendable>(at: Swift.UInt64, reasons: GiftUIExecution.ExecutionWakeReasons, result: GiftUIHostConfiguration.HostOpportunityResult<A>) -> GiftUIHostConfiguration.HostScheduledOpportunityResult<A>",
+      "GiftUIHostConfiguration.HostScheduledOpportunityController.service<A where A: GiftUIHostConfiguration.MVPHostInstance, A: ~Swift.Copyable, A: ~Swift.Escapable>(at: Swift.UInt64, instance: inout A) -> GiftUIHostConfiguration.HostScheduledOpportunityResult<A.OwnerFailure>",
+      "static GiftUIHostConfiguration.HostScheduledOpportunityResult.__derived_enum_equals(GiftUIHostConfiguration.HostScheduledOpportunityResult<A>, GiftUIHostConfiguration.HostScheduledOpportunityResult<A>) -> Swift.Bool"
+    ],
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift": [
+      "(extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.init(expectedKind: GiftUIHostConfiguration.MVPHostKind, assemblyReport: GiftUIHostConfiguration.HostAssemblyReport, owner: A, invariantFailure: A.ActivationFailure) -> GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance<A>?"
+    ],
+    "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift": [
+      "static GiftUIInteraction.ExecutionGestureAdapter.down<A where A: GiftUIInteraction.InteractionGestureResolver, A: ~Swift.Copyable, A: ~Swift.Escapable>(at: GiftUI.Point, capture: inout GiftUIExecution.PointerActionCapture<A.Identity>, resolver: A) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>"
+    ],
+    "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": [
+      "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.init(state: GiftUIInteraction.InteractionState<A, B, C>, maximumComponentsPerKey: Swift.UInt16, maximumComponents: Swift.UInt32) -> GiftUIInteraction.InteractionOwnedKeyState<A, B, C>?",
+      "static GiftUIRuntimeCore.RuntimeRecordInteractionBridge.appendProjected<A, B, C, D, E, F, G, H where A: GiftUIInteraction.InteractionCandidateRecordStorage, B: GiftUIInteraction.InteractionCommittedRecordStorage, C: GiftUIInteraction.InteractionHitRegionStorage, D: GiftUIObservableState.ObservableStateModel, E: Swift.Equatable, E: Swift.Sendable, F: GiftUI.GiftUIAction, G: GiftUISemanticCore.SemanticDeclarationRoles, A.Identity == GiftUISemanticCore.SemanticCompleteIdentity, B.Identity == GiftUISemanticCore.SemanticCompleteIdentity, C.Identity == GiftUISemanticCore.SemanticCompleteIdentity, A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable, D: ~Swift.Copyable>(record: GiftUISemanticCore.SemanticRecordReference, semantic: GiftUISemanticCore.SemanticRecordView<H>, root: GiftUIObservableState.ObservableStateRootScope<D, E>, rootIdentity: E, rootOrdinal: Swift.UInt16, actionType: F.Type, roles: G.Type, isEnabled: Swift.Bool, bounds: GiftUI.Rect, clip: GiftUI.Rect, paintOrder: Swift.UInt16, interaction: inout GiftUIInteraction.InteractionOwnedKeyState<A, B, C>, projection: (H) -> GiftUISemanticCore.SemanticStandardPayload?) -> GiftUIInteraction.InteractionCandidateAppendResult"
+    ],
+    "Sources/GiftUIInteraction/InteractionState.swift": [
+      "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.(containsCandidate in _C94C25861F50C06710B5A908F362665B)(identity: A.Identity) -> Swift.Bool",
+      "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.(matchingCommittedGeneration in _C94C25861F50C06710B5A908F362665B)(identity: A.Identity, isEnabled: Swift.Bool, hitBounds: GiftUI.Rect, paintOrder: Swift.UInt16, action: GiftUIInteraction.BoundedApplicationAction, targetGeneration: GiftUIExecution.ObservableTargetGeneration) -> GiftUIExecution.ActionGeneration?",
+      "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.(topmostRecord in _C94C25861F50C06710B5A908F362665B)(at: GiftUI.Point) -> GiftUIInteraction.BoundActionRecord<A.Identity>?",
+      "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.append(identity: A.Identity, isEnabled: Swift.Bool, bounds: GiftUI.Rect, clip: GiftUI.Rect, paintOrder: Swift.UInt16, action: GiftUIInteraction.BoundedApplicationAction, targetGeneration: GiftUIExecution.ObservableTargetGeneration) -> GiftUIInteraction.InteractionCandidateAppendResult",
+      "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.init(candidateRecords: A, candidateHitRegions: C, candidateCommittedRecords: B, committedRecords: B, committedHitRegions: C) -> GiftUIInteraction.InteractionState<A, B, C>",
+      "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveDown(at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>",
+      "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveUp(_: GiftUIExecution.CapturedAction<A.Identity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>"
+    ],
+    "Sources/GiftUILayout/LayoutEngine.swift": [
+      "GiftUILayout.LayoutEngine.(finalizeTextLine in _3228162A012363879FC513A8994FB7CD)<A, B where A == B.Identity, B: GiftUILayout.LayoutWorkspace>(identity: A, lineIndex: Swift.UInt16, advance: Swift.Int32, proposalWidth: Swift.Int32?, ascent: Swift.Int32, lineHeight: Swift.Int32, baselineProgression: Swift.Int32, maximumLineWidth: inout Swift.Int32, workspace: inout B) -> Swift.Bool",
+      "GiftUILayout.LayoutEngine.(measureText in _3228162A012363879FC513A8994FB7CD)<A, B, C where A: GiftUISemanticCore.SemanticLayoutView, B: GiftUITextResources.CanonicalTextMetricsView, C: GiftUILayout.LayoutWorkspace, A.Identity == C.Identity, A: ~Swift.Escapable>(_: A.Identity, semantic: A, metrics: B, proposal: GiftUI.ProposedSize, workspace: inout C) -> GiftUILayout.LayoutMeasurement?",
+      "GiftUILayout.LayoutEngine.(placeTextGeometry in _3228162A012363879FC513A8994FB7CD)<A where A: GiftUILayout.LayoutWorkspace>(_: A.Identity, origin: GiftUI.Point, textClip: GiftUI.Rect, workspace: inout A) -> Swift.Bool"
+    ],
+    "Sources/GiftUILayout/LayoutPublication.swift": [
+      "GiftUILayout.publishLayout<A, B where A: GiftUILayout.LayoutWorkspace, B: GiftUILayout.LayoutResultSink, A.Identity == B.Identity>(summary: GiftUILayout.LayoutSummary, workspace: inout A, sink: inout B) -> GiftUILayout.LayoutResult"
+    ],
+    "Sources/GiftUILayout/LayoutSemanticValidation.swift": [
+      "GiftUILayout.LayoutSemanticValidation.(validateOccurrence in _DC115C04C600763258266B4ED72430CB)<A, B, C where A: GiftUISemanticCore.SemanticLayoutView, B: GiftUITextResources.CanonicalTextMetricsView, C: GiftUILayout.LayoutWorkspace, A.Identity == C.Identity, A: ~Swift.Escapable>(_: A.Identity, semantic: A, metrics: B, instance: inout GiftUITextResources.FontInstanceDescriptor?, workspace: inout C, flattenedCount: inout Swift.UInt16) -> GiftUILayout.LayoutError?"
+    ],
+    "Sources/GiftUIObservableState/ObservableModelScope.swift": [
+      "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.materialize(__owned A) throws(GiftUIObservableState.ObservableStateError) -> GiftUIObservableState.ObservableModelTicket<B>",
+      "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.withDiscovery<A>(() throws(GiftUIObservableState.ObservableStateError) -> A1) throws(GiftUIObservableState.ObservableStateError) -> A1",
+      "(extension in Swift):Swift.InlineArray< where B: ~Swift.Copyable>.init<A where A1: Swift.Error>((Swift.Int) throws(A1) -> B) throws(A1) -> Swift.InlineArray<A, B>"
+    ],
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift": [
+      "(extension in GiftUIObservableState):GiftUIObservableState.(ScopedObservableDeclarationVisitor in _9828786D937951FE978A0BC4B4F3961C)< where A: ~Swift.Copyable>.visit<A where A1: GiftUI._GiftUIModelSchema>(_: inout GiftUI.State<A1>, declarationOrdinal: Swift.UInt16) -> ()",
+      "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.encounter(identity: B, ordinal: Swift.UInt16, state: inout GiftUI.State<A.Schema>) -> GiftUIObservableState.ObservableStateResult"
+    ],
+    "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift": [
+      "GiftUIRasterCore.FullSurfaceRGBA8888Buffer.init(descriptor: GiftUISurfaceCore.RasterSurfaceDescriptor, storage: A) -> GiftUIRasterCore.FullSurfaceRGBA8888Buffer<A>?"
+    ],
+    "Sources/GiftUIRasterCore/RasterFillCoverage.swift": [
+      "static GiftUIRasterCore.RasterFillCoverage.intersection(GiftUI.Rect, GiftUI.Rect, GiftUI.Rect, GiftUI.Rect) -> GiftUI.Rect?"
+    ],
+    "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift": [
+      "static GiftUIRasterCore.RasterGlyphCoverage.withValidatedPayload<A, B, C where B: GiftUITextResources.CanonicalTextMetricsView, C: GiftUITextResources.TextRasterResourceView>(_: GiftUIRenderCore.PositionedGlyph, operation: GiftUIRenderCore.PositionedGlyphOperationHeader, metrics: B, raster: C, realization: GiftUITextResources.RasterRealizationDescriptor, descriptor: GiftUISurfaceCore.RasterSurfaceDescriptor, damageBounds: GiftUI.Rect, _: (GiftUI.Rect, GiftUITextResources.GlyphRasterRecord, Swift.UnsafeRawBufferPointer) -> A) -> GiftUIRasterCore.RasterGlyphPayloadAccessResult<A>"
+    ],
+    "Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift": [
+      "static GiftUIReferenceTextResources._GiftUIReferenceGeneratedBitmapPayload.withRecordBytes<A>(for: GiftUITextResources.GlyphID, expectedByteCount: Swift.UInt32, _: (Swift.UnsafeRawBufferPointer) throws -> A) throws -> A?"
+    ],
+    "Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift": [
+      "static GiftUIReferenceTextResources._GiftUIReferenceGeneratedOutlinePayload.withRecordBytes<A>(for: GiftUITextResources.GlyphID, expectedByteCount: Swift.UInt32, _: (Swift.UnsafeRawBufferPointer) throws -> A) throws -> A?"
+    ],
+    "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift": [
+      "(extension in GiftUIRuntimeCore):GiftUIRuntimeCore.ObservableCanvasInvocationSource< where A: ~Swift.Copyable>.invokeCanvas(at: C, context: inout GiftUI.GraphicsContext, size: GiftUI.Size) throws(GiftUI.DrawingError) -> ()"
+    ],
+    "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift": [
+      "static GiftUIRuntimeCore.RuntimeCompletePipeline.run<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>"
+    ],
+    "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift": [
+      "static GiftUIRuntimeCore.RuntimeRecordInteractionBridge.dispatch<A, B, C, D where A: GiftUIInteraction.InteractionCommittedActionView, B: GiftUIObservableState.ObservableModelMutation, B: GiftUIObservableState.ObservableStateModel, C: Swift.Equatable, C: Swift.Sendable, D: GiftUI.GiftUIAction, A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable>(_: GiftUIExecution.CapturedAction<A.Identity>, records: A, target: GiftUIObservableState.ObservableStateRootTargetAccess<B, C>, actionType: D.Type, operation: (D) -> B.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIRuntimeCore.RuntimeRecordInteractionDispatchResult"
+    ],
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": [
+      "(extension in GiftUISemanticCore):GiftUISemanticCore.(SemanticExpansionTraversal in _E10F4FB91E19058A9E26D5292F31405C)< where C: ~Swift.Copyable, C: ~Swift.Escapable>.expandDeclaration<A where A1: GiftUI.View, C.Domain == A1.Domain>(_: A1, continuingModifierChain: Swift.Bool) -> ()",
+      "(extension in GiftUISemanticCore):GiftUISemanticCore.(SemanticExpansionTraversal in _E10F4FB91E19058A9E26D5292F31405C)< where C: ~Swift.Copyable, C: ~Swift.Escapable>.stopped.getter : Swift.Bool",
+      "(extension in GiftUISemanticCore):GiftUISemanticCore.(SemanticExpansionTraversal in _E10F4FB91E19058A9E26D5292F31405C)< where C: ~Swift.Copyable, C: ~Swift.Escapable>.visitStatefulCustomView<A where A1: GiftUI.View, A1: GiftUI._GiftUIObservableStateHost, C.Domain == A1.GiftUI.View.Domain, A1.GiftUI.View.Domain == A1.GiftUI.View.Body.Domain>(_: A1, body: (A1, GiftUI._GiftUIFrameRead<C.Domain>) throws(GiftUI._GiftUIAccessFailure) -> A1.GiftUI.View.Body) -> ()",
+      "GiftUISemanticCore.SemanticExpansionAttempt.(enterPath in _E10F4FB91E19058A9E26D5292F31405C)<A where A: GiftUISemanticCore.SemanticExpansionWorkspace>(workspace: inout A, identity: inout A.Identity?, enter: (inout A, inout A.Identity?) -> GiftUISemanticCore.SemanticExpansionError?) -> GiftUISemanticCore.SemanticExpansionError?",
+      "GiftUISemanticCore.expandSemanticTreeWithStateBinding<A, B, C, D where A: GiftUI.View, B: GiftUISemanticCore.SemanticExpansionWorkspace, C: GiftUISemanticCore.SemanticExpansionSink, D: GiftUISemanticCore.SemanticStatefulBinding, A.Domain == D.Domain, B.Identity == C.Identity, C.Identity == D.Identity, D: ~Swift.Copyable, D: ~Swift.Escapable>(_: A, limits: GiftUISemanticCore.SemanticExpansionLimits, workspace: inout B, sink: inout C, stateBinding: __owned D) -> GiftUISemanticCore.BoundSemanticExpansionResult<D.Failure>",
+      "static GiftUISemanticCore.SemanticStandardPayloadCodec.primitive<A, B where A1: GiftUI._GiftUISemanticPrimitivePayload>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<B1>, wrapping: (GiftUISemanticCore.SemanticStandardPayload) -> B1) -> GiftUISemanticCore.SemanticExpansionError?"
+    ],
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": [
+      "GiftUISemanticCore.SemanticRecordStore.expand<A, B, C, D where A == C1.Payload, A1: GiftUI.View, B1: GiftUISemanticCore.SemanticDeclarationRoles, C1: GiftUISemanticCore.SemanticRecordPayloadCodec, D1: GiftUISemanticCore.SemanticStatefulBinding, A1.Domain == D1.Domain, D1.Identity == GiftUISemanticCore.SemanticCompleteIdentity, D1: ~Swift.Copyable, D1: ~Swift.Escapable>(_: A1, roles: B1.Type, codec: C1.Type, limits: GiftUISemanticCore.SemanticExpansionLimits, binding: __owned D1) -> GiftUISemanticCore.BoundSemanticExpansionResult<D1.Failure>"
+    ],
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": [
+      "GiftUISemanticCore.SemanticRecordStore.beginCandidate() throws(GiftUISemanticCore.SemanticExpansionError) -> Swift.UInt8",
+      "GiftUISemanticCore.withSemanticRecordStore<A, B>(metadata: inout Swift.MutableSpan<GiftUISemanticCore.SemanticRecordBankMetadata>, records: inout Swift.MutableSpan<GiftUISemanticCore.SemanticRuntimeRecord>, paths: inout Swift.MutableSpan<GiftUISemanticCore.SemanticPathEntry>, payloads: inout Swift.MutableSpan<A?>, scalars: inout Swift.MutableSpan<Swift.UInt32>, limits: GiftUISemanticCore.SemanticRecordLimits, capacity: GiftUISemanticCore.SemanticRecordLimits?, owner: GiftUISemanticCore.SemanticRecordOwnerIdentity, _: (GiftUISemanticCore.SemanticRecordStore<A>) throws(GiftUISemanticCore.SemanticExpansionError) -> B) throws(GiftUISemanticCore.SemanticExpansionError) -> B"
+    ],
+    "Sources/GiftUITextResources/GiftUITextResources.swift": [
+      "static GiftUITextResources.TextResourceValidator.validate<A, B where A: GiftUITextResources.CanonicalTextMetricsView, B: GiftUITextResources.TextRasterResourceView>(_: GiftUITextResources.TextResourcePackage<A, B>, requiring: GiftUITextResources.RasterRealizationID) -> GiftUITextResources.TextResourceValidationResult"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift": [
+      "P08CounterPresentation.CounterScreen._giftUIEvaluate(read: GiftUI._GiftUIFrameRead<A>) throws(GiftUI._GiftUIAccessFailure) -> some"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": [
+      "P08CounterRuntime.CounterAdmission.submit(stateChange: Swift.UInt8) -> GiftUIExecution.ExecutionAdmissionOutcome"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift": [
+      "static P08CounterRuntime.CounterHostAssembly.validate(_: GiftUIRuntimeCore.RuntimeStorageAudit, kind: GiftUIHostConfiguration.MVPHostKind, sourceCallbacks: Swift.UInt16, repositoryCallbacks: Swift.UInt8, useCaseCallbacks: Swift.UInt8, nonTransitionPublications: Swift.UInt8, negative: P08CounterRuntime.CounterConstructionNegative?, observation: inout P08CounterRuntime.CounterConstructionObservation) -> P08CounterRuntime.CounterHostAssembly?"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": [
+      "P08CounterRuntime.CounterSemanticSnapshot.init(__shared GiftUISemanticCore.SemanticRecordView<GiftUIDrawing.CanvasSemanticPayload<P08CounterTable.P08CounterSchemaCanvasValues<P08CounterRuntime.CounterDomain>>>) -> P08CounterRuntime.CounterSemanticSnapshot"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": [
+      "(extension in P08CounterRuntime):P08CounterRuntime.CounterHostState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable, D: ~Swift.Copyable, D: ~Swift.Escapable>.activate(assembly: P08CounterRuntime.CounterHostAssembly) -> GiftUIHostConfiguration.HostConfigurationError?",
+      "(extension in P08CounterRuntime):P08CounterRuntime.CounterHostState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable, D: ~Swift.Copyable, D: ~Swift.Escapable>.releasePlatformOwners() -> ()"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": [
+      "P08CounterRuntime.counterOwnedSchedulerCompatibility(GiftUIHostConfiguration.HostAssemblyReport) -> Swift.Int",
+      "function signature specialization <Arg[1] = [Closure Propagated : $s17P08CounterRuntime23counterForeignJoinScope7backing7foreign_SiAA0B17StaticRootStorageVz_AA0B7ControlVzSi21GiftUIObservableState015ObservableModelG0VyAA0b5OwnedR0V0aB6Schema0brT0OG_AI0qpkG0VyAM0N14UISemanticCore24SemanticCompleteIdentityVGSpyAHGtXEtFSiAQ_AWtAI0qP5ErrorOYKXEfU_, Argument Types : [P08CounterRuntime.CounterControl@callee_guaranteed (@guaranteed GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, @guaranteed GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, @unowned Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> (@unowned Swift.Int)]> of generic specialization <Swift.Int> of P08CounterRuntime.CounterStaticRootStorage.withLifetime<A>(limits: GiftUIObservableState.ObservableStateLimits, _: (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>) throws(GiftUIObservableState.ObservableStateError) -> A) throws(GiftUIObservableState.ObservableStateError) -> A"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": [
+      "P08CounterRuntime.CounterEndpoint.offerAndObserve(provenance: GiftUIExecution.FrameProvenance, body: (inout P08CounterRuntime.CounterNativeRasterAdapter) -> GiftUIExecution.FrameStreamResult) -> P08CounterRuntime.CounterEndpointOfferObservation",
+      "P08CounterRuntime.CounterRGBAStorage.withBytes<A>((Swift.UnsafeRawBufferPointer) throws -> A) throws -> A"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": [
+      "(extension in P08CounterRuntime):P08CounterRuntime.CounterPipelineOwner< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable, D: ~Swift.Copyable, D: ~Swift.Escapable>.admitAndSeal() -> GiftUIRuntimeCore.RuntimePipelineStepResult<GiftUIRuntimeCore.RuntimeOwnerFailure>",
+      "(extension in P08CounterRuntime):P08CounterRuntime.CounterPipelineOwner< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable, D: ~Swift.Copyable, D: ~Swift.Escapable>.beginObservableCandidateAndExpandSemantics() -> GiftUIRuntimeCore.RuntimePipelineStepResult<GiftUIRuntimeCore.RuntimeOwnerFailure>",
+      "(extension in P08CounterRuntime):P08CounterRuntime.CounterPipelineOwner< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable, D: ~Swift.Copyable, D: ~Swift.Escapable>.cleanup(GiftUIRuntimeCore.RuntimeCleanupAction) -> ()",
+      "(extension in P08CounterRuntime):P08CounterRuntime.CounterPipelineOwner< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable, D: ~Swift.Copyable, D: ~Swift.Escapable>.dispatch(GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>) -> GiftUIRuntimeCore.RuntimePipelineMutationResult<GiftUIRuntimeCore.RuntimeOwnerFailure>",
+      "(extension in P08CounterRuntime):P08CounterRuntime.CounterPipelineOwner< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable, D: ~Swift.Copyable, D: ~Swift.Escapable>.runTracedPipeline() -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<GiftUIRuntimeCore.RuntimeOwnerFailure>"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": [
+      "P08CounterRuntime.(P08GeometryAccess in _480B1BD841D053AE4FCDC18507668536).draw(source: inout GiftUIRuntimeCore.ObservableCanvasInvocationSource<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema, GiftUISemanticCore.SemanticRecordReference, P08CounterTable.P08CounterSchemaCanvasTable<P08CounterRuntime.CounterDomain>>, context: GiftUIExecution.ExecutionContext, limits: GiftUIRuntimeCore.RuntimeProfileLimits) -> GiftUIDrawing.DrawingPlanResult",
+      "P08CounterRuntime.(P08GeometryAccess in _480B1BD841D053AE4FCDC18507668536).preflight(_: GiftUISemanticCore.SemanticRecordView<GiftUIDrawing.CanvasSemanticPayload<P08CounterTable.P08CounterSchemaCanvasValues<P08CounterRuntime.CounterDomain>>>, limits: GiftUIRuntimeCore.RuntimeProfileLimits) -> GiftUIRenderLowering.RenderProductionResult",
+      "P08CounterRuntime.(P08TypedBackingOwner in _480B1BD841D053AE4FCDC18507668536).physicalFacts() -> P08CounterRuntime.(P08OwnedPhysicalFacts in _480B1BD841D053AE4FCDC18507668536)",
+      "P08CounterRuntime.(p08ConstructStaticHost in _480B1BD841D053AE4FCDC18507668536)(session: __owned P08CounterRuntime.(P08StorageSession in _480B1BD841D053AE4FCDC18507668536), semantic: __owned GiftUISemanticCore.SemanticRecordStore<GiftUIDrawing.CanvasSemanticPayload<P08CounterTable.P08CounterSchemaCanvasValues<P08CounterRuntime.CounterDomain>>>, values: __owned GiftUIDrawing.CanvasStagedValues<GiftUISemanticCore.SemanticRecordReference, P08CounterTable.P08CounterSchemaCanvasTable<P08CounterRuntime.CounterDomain>>, activationSpan: Swift.Span<Swift.UInt8>, models: GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, root: GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, foreignModels: GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, foreignRoot: GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, control: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, foreignControl: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, facts: inout P08CounterRuntime.(P08HostRunFacts in _480B1BD841D053AE4FCDC18507668536), failAfterRuntime: Swift.Bool, early: Swift.UInt8, destination: inout GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance<P08CounterRuntime.CounterHostOwner<P08CounterRuntime.(P08GeometryAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08CandidateAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08CommittedAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08HitAccess in _480B1BD841D053AE4FCDC18507668536)>>?, completion: inout P08CounterRuntime.(P08HostConstructionFacts in _480B1BD841D053AE4FCDC18507668536)) -> ()",
+      "P08CounterRuntime.(p08RunStaticSessionPhase in _480B1BD841D053AE4FCDC18507668536)(session: __owned P08CounterRuntime.(P08StorageSession in _480B1BD841D053AE4FCDC18507668536), semantic: __owned GiftUISemanticCore.SemanticRecordStore<GiftUIDrawing.CanvasSemanticPayload<P08CounterTable.P08CounterSchemaCanvasValues<P08CounterRuntime.CounterDomain>>>, values: __owned GiftUIDrawing.CanvasStagedValues<GiftUISemanticCore.SemanticRecordReference, P08CounterTable.P08CounterSchemaCanvasTable<P08CounterRuntime.CounterDomain>>, activationSpan: Swift.Span<Swift.UInt8>, models: GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, root: GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, foreignModels: GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, foreignRoot: GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, control: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, foreignControl: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, facts: inout P08CounterRuntime.(P08HostRunFacts in _480B1BD841D053AE4FCDC18507668536), failAfterRuntime: Swift.Bool, early: Swift.UInt8, candidateFailure: GiftUIRuntimeCore.RuntimeCompletePipelineStage?, reuse: Swift.UnsafeMutablePointer<P08CounterRuntime.(P08HostReuseTranscript in _480B1BD841D053AE4FCDC18507668536)>?, baseline: Swift.UnsafeMutablePointer<P08CounterRuntime.(P08ReuseFingerprint in _480B1BD841D053AE4FCDC18507668536)>?) -> P08CounterRuntime.(P08BodyResult in _480B1BD841D053AE4FCDC18507668536)",
+      "merged partial apply forwarder for closure #1 (__owned P08CounterRuntime.(P08StorageSession in _480B1BD841D053AE4FCDC18507668536)) -> Swift.Int in closure #1 (GiftUIDrawing.CanvasStagedValues<GiftUISemanticCore.SemanticRecordReference, P08CounterTable.P08CounterSchemaCanvasTable<P08CounterRuntime.CounterDomain>>) -> () in closure #1 (GiftUISemanticCore.SemanticRecordStore<GiftUIDrawing.CanvasSemanticPayload<P08CounterTable.P08CounterSchemaCanvasValues<P08CounterRuntime.CounterDomain>>>) throws(GiftUISemanticCore.SemanticExpansionError) -> () in closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>) throws(GiftUIObservableState.ObservableStateError) -> () in closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int in P08CounterRuntime.(p08RunPreparedStaticHost in _480B1BD841D053AE4FCDC18507668536)(owner: inout P08CounterRuntime.(P08TypedBackingOwner in _480B1BD841D053AE4FCDC18507668536), facts: inout P08CounterRuntime.(P08HostRunFacts in _480B1BD841D053AE4FCDC18507668536), rootStorage: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterStaticRootStorage>, semanticStorage: Swift.UnsafeMutablePointer<GiftUIRuntimeStatic.StaticSemanticRecordStorage>, canvasStorage: Swift.UnsafeMutablePointer<GiftUIRuntimeStatic.StaticCanvasValueStorage>, recordsBacking: Swift.UnsafeMutableBufferPointer<GiftUISemanticCore.SemanticRuntimeRecord>, pathsBacking: Swift.UnsafeMutableBufferPointer<GiftUISemanticCore.SemanticPathEntry>, payloadsBacking: Swift.UnsafeMutableBufferPointer<GiftUIDrawing.CanvasSemanticPayload<P08CounterTable.P08CounterSchemaCanvasValues<P08CounterRuntime.CounterDomain>>?>, scalarsBacking: Swift.UnsafeMutableBufferPointer<Swift.UInt32>, entriesBacking: Swift.UnsafeMutableBufferPointer<GiftUIDrawing.CanvasStagedEntry<GiftUISemanticCore.SemanticRecordReference, P08CounterTable.P08CounterSchemaCanvasValues<P08CounterRuntime.CounterDomain>>?>, control: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, failAfterRuntime: Swift.Bool, early: Swift.UInt8, candidateFailure: GiftUIRuntimeCore.RuntimeCompletePipelineStage?, reuse: Swift.UnsafeMutablePointer<P08CounterRuntime.(P08HostReuseTranscript in _480B1BD841D053AE4FCDC18507668536)>?, baseline: Swift.UnsafeMutablePointer<P08CounterRuntime.(P08ReuseFingerprint in _480B1BD841D053AE4FCDC18507668536)>?, foreignRootStorage: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterStaticRootStorage>?, foreignControlStorage: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>?) -> Swift.Int"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift": [
+      "static P08CounterRuntime.CounterRoles.role<A>(of: A.Type) -> GiftUISemanticCore.SemanticRecordingRole?"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift": [
+      "P08CounterRuntime.LocalSemantic.scopeCount.getter : Swift.UInt16"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift": [
+      "P08CounterRuntime.(staticCounterMovePath in _0BF1FFC709036C472A02ABB78868D6C3)(storage: Swift.UnsafeMutableRawPointer, contextGeneration: Swift.UInt32, pathGeneration: Swift.UInt32, x: Swift.Int32, y: Swift.Int32) -> Swift.UInt8"
+    ],
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift": [
+      "Lowerer.visit(StructDeclSyntax): reserve/collision checks, exact fixed-schema helper emission, directly referenced Canvas field/initializer ABI visibility",
+      "Lowerer.visit(DeclReferenceExprSyntax), visit(MemberAccessExprSyntax): three State key rewrite roots",
+      "schema(): existing checked facade fields/initializers/getters, seed fields/initializer serialization dependencies"
+    ],
+    "Sources/GiftUIMacros/ObservableStateHostMacro.swift": [
+      "expansion(providingMembersOf:), observableStateDeclarations: exact same-nominal/full-AST helper shape validation and lexical projection selection; no protocol/macro-name changes"
+    ],
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": [
+      "positive multiple/nested/ordinary-private and negative helper matching/collisions tests"
+    ],
+    "scripts/contracts/p08-checked-state-screen.py": [
+      "new bounded staged compiler/privacy/physical/codegen orchestration; no retry loop or workload change"
+    ],
+    "scripts/contracts/check-spec-015-counter.py": [
+      "only factoring/selecting existing exact stage recipes if needed"
+    ],
+    "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift": [
+      "withPayload concrete view witnesses serialization"
+    ],
+    "scripts/text-resources/generate-reference-resources.py": [
+      "emit_payload existing named payload owner realization; byte/count/ID/digest identity unchanged"
+    ],
+    "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift": [
+      "existing checked body forwarding serialization"
+    ],
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift": [
+      "existing standard payload forwarding serialization"
+    ],
+    "Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift": [
+      "existing checked target forwarding serialization"
+    ],
+    "Sources/GiftUIRenderLowering/RenderProducer.swift": [
+      "existing stream entry/helper serialization"
+    ],
+    "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift": [
+      "existing original checked wrapper forwarding serialization"
+    ],
+    "Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift": [
+      "existing original checked wrapper forwarding serialization"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": [
+      "existing reviewed concrete root and exact physical accounting"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift": [
+      "existing reviewed concrete root and exact physical accounting"
+    ]
+  },
+  "initial_edit_subset": [
+    "Sources/GiftUI/ObservableState.swift",
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift",
+    "Sources/GiftUIMacros/ObservableStateHostMacro.swift",
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift",
+    "scripts/contracts/p08-checked-state-screen.py"
+  ],
+  "constraints": "Prior full-pipeline design and corrective2 amendment constrain entries to mapped operations/serialization dependencies. No entire-file annotation sweep; early State gate precedes wider work. Minimal Layout dependencies only before actual consumer if required. Every extra dependency needs reviewed amendment.",
+  "external_hashes": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+    "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+    "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+  },
+  "authored_hashes": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.schema.json": "3428fbdeb1f321c28c3fa70a7a6ce6159fd86676e6520292366a6b269b3ecbd9"
+  },
+  "pre_source_diff_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+  "source_hashes": {
+    "Sources/GiftUI/DeclarativeView.swift": "15604c493d09f194252b05fdcb5fb31fdb412de3cb10a142fa7276a5e05e8bcf",
+    "Sources/GiftUI/ObservableState.swift": "31db1712eacb5446a392b61b2e31eb99518dc3f67b979194188e30674bc30f81",
+    "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift": "fa9c4b3aa3c522a8bd39efa4560abb692f61a1ab578089ed5ea4af182e5dd778",
+    "Sources/GiftUIDrawing/CanvasRenderProducer.swift": "c98ac6df32afa04088b6958ed8f664db91dd111cd9d798b626c60adbed7ddf69",
+    "Sources/GiftUIDrawing/CanvasStagedValues.swift": "b73c04032b1bd318647479ab4e720e255fdf909cac3ec483110ee879884d1e9c",
+    "Sources/GiftUIExecution/RunCycleValues.swift": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+    "Sources/GiftUIHostConfiguration/HostActivationController.swift": "0690842621866c1747d55966a4a7a2a48e343f0d42aeab3deee04baafae27c5b",
+    "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": "3e00d5e22b04e6ccb25ab357f2d6fe96349f2ab31abf3cf9201206110d83b205",
+    "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift": "8574092a20e81ed83225c662b121c100e66c9a3cc3c6be61a6d81e80c8860618",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift": "8a55d5e2f4abaa1b676bfc5b56f77f6341efd8427837623b5e69f943b5b49768",
+    "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift": "ee7d2b1db3604b904be3e3733c5eab4edf079fc7401d93a79035bb782fb82b8f",
+    "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": "17c79ca0e2726f8c10483c42f555f475804680f95d13c727cd3e9ee787e9216b",
+    "Sources/GiftUIInteraction/InteractionState.swift": "139c5fa64f1fd562c425993a7d911d76ca9eafae0ac60b241c5bf54f20fc0616",
+    "Sources/GiftUILayout/LayoutEngine.swift": "b700865c9ddb31f628b5a1f4149f6209b50ac5abd1664bcaa755a88d855155ab",
+    "Sources/GiftUILayout/LayoutPublication.swift": "1a47ed50c9801065217af7d7b982097519444cc7a1158709d24e6dcc6c24d9d1",
+    "Sources/GiftUILayout/LayoutSemanticValidation.swift": "1fc34ec4a6b89b8f14b3075292fb2b07ce693bd7ce534cbef5d0bc6bc7a8c5ba",
+    "Sources/GiftUIObservableState/ObservableModelScope.swift": "cf4fe6105ea05856ed229644a803fdbf1bab8d3eb8150b1ae0256d52634a21dc",
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6",
+    "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift": "203cc9c8eac3380098e1fac110ae20872927038cb6ae9135e27eb109f26c588c",
+    "Sources/GiftUIRasterCore/RasterFillCoverage.swift": "e091a6fde4fdd9e0aaa01d15a0dccc7650039d654b4fffe36caa5e686460ace8",
+    "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift": "29cedc4f49e27d990cd076d51f65ff2dae5b7ff6932aef5a9dbba0c014a1bbfc",
+    "Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift": "c5cdf30474780eae3f27cec5c8d179bad0eaa5b5fa0a47c71de129e017322f14",
+    "Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift": "77313fd03bd41cc977b4f63397d5ec119772c25eb18db48cf3fef81cc95577b8",
+    "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift": "5158e4d8e23c16aa3f17da51885b26412a30444f7a2ee47b83d30d213653ab1b",
+    "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+    "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift": "b3e06e72261ccad9c981b1822212e3aa83cd53ea8a2cfc2e771a0fbc3c2fc59a",
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "fc787355d2ef5fecbe59e48db5fd54f036e93a012705cbdcd0b13e7e012d381f",
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": "cf2b591a33b9814f40eb67b17dbdefd19d726fc115a37636ddc4d31c788da5bd",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": "776db41e501972481ca6e7d461e9b52d67918f3624b2a41429f714be238a9753",
+    "Sources/GiftUITextResources/GiftUITextResources.swift": "d1f60a53bf776c331ab57281f0874e08ef804f4e4d44c733134f92fc532f6a1f",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": "be59651c2f7f657f1785f51fa31767f6319dc543c023d901057fa0deb4bace81",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": "d084112a1ee54cc8c01fc5f24a7416ee3a6b23afdc6710f42635a76c370fea26",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": "46ab40914dade59536f53650bd97ce8d74ee57da86a8a826330f629c64a89f9c",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift": "c49cc7ad1d5de5bcc3a228defd78ce16a1d6e56c775d9227f5648339540eaa2c",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift": "7a458bfd5c425a9e75379f9f3ecd2f271c2029cc9233779da44374f4028a6599",
+    "Sources/GiftUIMacros/ObservableStateHostMacro.swift": "b076d8d730375671b1d948a0195b5cbea4e7ec666d0d34ca2f5932bb8566c0e0",
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": "2788224b68806faeff145c5fb1c7adb70cc7a26f7c0fb1cc2d95d6fdec7422fd",
+    "scripts/contracts/check-spec-015-counter.py": "8150d2cbd864222dfba32bd91543d7f7d3ac3be81639b0a86fa00aacc6dcf970",
+    "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift": "c15131c18872115b83fe63d71247494092d29dfb31bbc05d208d5306572b89f4",
+    "scripts/text-resources/generate-reference-resources.py": "76721f4886df1a8232210551e4b7183fae35795a5d2ac2932d4f5b8c374fc68c",
+    "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift": "e52aaae337bb1f56f6a228e5cb616d5480a45080628ceb5528b5376412b4b37f",
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift": "2dd204c2c7b5d4fe06e58a085ac7a59aa70dd734e56981231c414c10f7389c70",
+    "Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift": "55067eca3c7cf1c64a5f50d715808e859565ee9c36d426fb6ca871356f6a662b",
+    "Sources/GiftUIRenderLowering/RenderProducer.swift": "0e25b626df694b56c95d6c444db1fbf40e45afd7c65c4b5b9253fe5a15226281",
+    "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift": "eb63e6c191b8e1af24f19dd2fd523ddb315d04e36151471f534fe6063658e0a0",
+    "Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift": "f6bf84f47f4021eaa61dacd51da8e3a6b9d19066eb577934fc19b9dfd7785078",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": "f7152c3e886322e482aaa040b98f15ac820d0aa9a15af86260229bc56df64010",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb"
+  },
+  "untracked_pycache": [
+    "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc"
+  ]
+}

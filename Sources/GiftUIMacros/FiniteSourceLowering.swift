@@ -175,6 +175,11 @@ final class Lowerer: SyntaxRewriter {
             reject(node, "authored generic custom views are outside the finite source inventory")
             return DeclSyntax(node)
         }
+        for member in node.memberBlock.members {
+            if ObservableStateHostMacro.hasReservedStateName(member.decl) {
+                reject(member.decl, "reserved generated State helper name in authored source")
+            }
+        }
         let previousBindings = bindings
         let previousView = insideView
         let previousCanvas = insideCanvas
@@ -244,6 +249,14 @@ final class Lowerer: SyntaxRewriter {
                 decl: DeclSyntax(stringLiteral: "@usableFromInline package typealias Domain = D\n")),
             at: result.memberBlock.members.startIndex
         )
+        for name in stateProperties.sorted() {
+            guard let model = bindings[name] else { continue }
+            for helper in ObservableStateHostMacro.checkedStateHelpers(
+                name: name, schema: model.schema)
+            {
+                result.memberBlock.members.append(MemberBlockItemSyntax(decl: helper))
+            }
+        }
         bindings = previousBindings
         insideView = previousView
         insideCanvas = previousCanvas
@@ -284,9 +297,12 @@ final class Lowerer: SyntaxRewriter {
 
     override func visit(_ node: DeclReferenceExprSyntax) -> ExprSyntax {
         if evaluating && stateProperties.contains(node.baseName.text) {
-            return ExprSyntax(stringLiteral: "(try _\(node.baseName.text)._giftUIKey())")
-                .with(\.leadingTrivia, node.leadingTrivia).with(
-                    \.trailingTrivia, node.trailingTrivia)
+            return ExprSyntax(
+                stringLiteral:
+                    "(try self._giftUIStateKey_\(ObservableStateHostMacro.canonicalName(node.baseName.text))())"
+            )
+            .with(\.leadingTrivia, node.leadingTrivia).with(
+                \.trailingTrivia, node.trailingTrivia)
         }
         if evaluating && viewProperties.contains(node.baseName.text) {
             return ExprSyntax(stringLiteral: "(try _giftUI_\(node.baseName.text)(read: read))")
@@ -294,6 +310,19 @@ final class Lowerer: SyntaxRewriter {
                 .with(\.trailingTrivia, node.trailingTrivia)
         }
         return super.visit(node)
+    }
+
+    override func visit(_ node: InitializerDeclSyntax) -> DeclSyntax {
+        var result = super.visit(node).cast(InitializerDeclSyntax.self)
+        if insideCanvas {
+            result.attributes.append(
+                .attribute(
+                    AttributeSyntax(
+                        leadingTrivia: .newline,
+                        attributeName: TypeSyntax(stringLiteral: "inlinable"),
+                        trailingTrivia: .newline)))
+        }
+        return DeclSyntax(result)
     }
 
     override func visit(_ node: FunctionDeclSyntax) -> DeclSyntax {
@@ -470,6 +499,14 @@ final class Lowerer: SyntaxRewriter {
         }
         if let model = bindings[name] {
             var result = node
+            if insideCanvas {
+                result.attributes.append(
+                    .attribute(
+                        AttributeSyntax(
+                            leadingTrivia: .newline,
+                            attributeName: TypeSyntax(stringLiteral: "usableFromInline"),
+                            trailingTrivia: .newline)))
+            }
             var newBinding = binding
             newBinding.typeAnnotation = TypeAnnotationSyntax(
                 type: TypeSyntax(stringLiteral: "_GiftUIModelKey<\(model.schema)>")
@@ -671,9 +708,12 @@ final class Lowerer: SyntaxRewriter {
         if node.base?.trimmedDescription == "self",
             stateProperties.contains(node.declName.baseName.text)
         {
-            return ExprSyntax(stringLiteral: "(try _\(node.declName.baseName.text)._giftUIKey())")
-                .with(\.leadingTrivia, node.leadingTrivia).with(
-                    \.trailingTrivia, node.trailingTrivia)
+            return ExprSyntax(
+                stringLiteral:
+                    "(try self._giftUIStateKey_\(ObservableStateHostMacro.canonicalName(node.declName.baseName.text))())"
+            )
+            .with(\.leadingTrivia, node.leadingTrivia).with(
+                \.trailingTrivia, node.trailingTrivia)
         }
         if node.base?.trimmedDescription == "self",
             viewProperties.contains(node.declName.baseName.text)
@@ -686,7 +726,9 @@ final class Lowerer: SyntaxRewriter {
         if let path = modelPath(ExprSyntax(node)), !path.fields.isEmpty {
             let rootName = path.root.hasPrefix("self.") ? String(path.root.dropFirst(5)) : path.root
             let root =
-                stateProperties.contains(rootName) ? "try _\(rootName)._giftUIKey()" : path.root
+                stateProperties.contains(rootName)
+                ? "try self._giftUIStateKey_\(ObservableStateHostMacro.canonicalName(rootName))()"
+                : path.root
             let fields = path.fields.map {
                 "." + (drawing && $0.indexed ? "_giftUIDrawing_" : "") + $0.name
                     + ($0.members == nil ? "" : "()")
@@ -781,12 +823,13 @@ func schema(_ configuration: Configuration) throws -> String {
         var result = """
             @usableFromInline
             package struct \(name)<D: \(configuration.domain)>: ~Escapable {
-                private let slots: Span<D.Slot>
-                private let index: Int
+                @usableFromInline internal let slots: Span<D.Slot>
+                @usableFromInline internal let index: Int
 
             """
         if let schema {
             result += """
+                @inlinable
                 @_lifetime(copy read)
                 package init(_ key: _GiftUIModelKey<\(schema)>, read: borrowing _GiftUIFrameRead<D>)
                     throws(_GiftUIAccessFailure) {
@@ -794,6 +837,7 @@ func schema(_ configuration: Configuration) throws -> String {
                     slots = read.slots
                 }
 
+                @inlinable
                 @_lifetime(copy drawingRead)
                 package init(_ key: _GiftUIModelKey<\(schema)>, drawingRead: borrowing _GiftUIFrameRead<D>)
                     throws(DrawingError) {
@@ -806,8 +850,9 @@ func schema(_ configuration: Configuration) throws -> String {
                 """
         } else {
             result += """
+                @inlinable
                 @_lifetime(copy slots)
-                fileprivate init(slots: Span<D.Slot>, index: Int) {
+                internal init(slots: Span<D.Slot>, index: Int) {
                     self.slots = slots
                     self.index = index
                 }
@@ -819,6 +864,7 @@ func schema(_ configuration: Configuration) throws -> String {
             let member = name + "_" + field.name
             if let nested = field.members {
                 result += """
+                    @inlinable
                     @_lifetime(copy self)
                     package func \(field.name)() -> \(member)<D> {
                         \(member)<D>(slots: slots, index: index)
@@ -828,9 +874,11 @@ func schema(_ configuration: Configuration) throws -> String {
                 nestedFacades += facade(nested, name: member, schema: nil)
             } else if field.indexed {
                 result += """
+                    @inlinable
                     package func \(field.name)(_ position: Int) throws(_GiftUIAccessFailure) -> \(field.type) {
                         try D.\(member)(position, at: index, slots: slots)
                     }
+                    @inlinable
                     package func _giftUIDrawing_\(field.name)(_ position: Int) throws(DrawingError) -> \(field.type) {
                         do throws(_GiftUIAccessFailure) {
                             return try D.\(member)(position, at: index, slots: slots)
@@ -840,7 +888,7 @@ func schema(_ configuration: Configuration) throws -> String {
                     """
             } else {
                 result +=
-                    "package var \(field.name): \(field.type) { D.\(member)(at: index, slots: slots) }\n"
+                    "@inlinable package var \(field.name): \(field.type) { D.\(member)(at: index, slots: slots) }\n"
             }
         }
         return result + "}\n" + nestedFacades
@@ -857,10 +905,11 @@ func schema(_ configuration: Configuration) throws -> String {
         let seedFields = model.seedFields ?? []
         result += "@usableFromInline package struct \(model.schema)Seed {\n"
         for field in seedFields {
-            result += "package let \(field.name): \(field.type)\n"
+            result += "@usableFromInline package let \(field.name): \(field.type)\n"
         }
         result +=
-            "package init(" + seedFields.map { "\($0.name): \($0.type)" }.joined(separator: ", ")
+            "@inlinable package init("
+            + seedFields.map { "\($0.name): \($0.type)" }.joined(separator: ", ")
             + ") {\n"
         for field in seedFields {
             result += "self.\(field.name) = \(field.name)\n"
