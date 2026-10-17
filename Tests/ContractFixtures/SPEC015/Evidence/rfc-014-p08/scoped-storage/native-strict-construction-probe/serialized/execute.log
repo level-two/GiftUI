@@ -1,0 +1,153 @@
+HOST rlimit_stack_soft=8372224 rlimit_stack_hard=67092480 pthread_stack_size=8372224 pthread_stack_high=0x16b878000
+SIGNALS altstack_flags=4 altstack_size=0 blocked=
+SIGNAL number=1 handler=0x0 flags=0
+SIGNAL number=2 handler=0x0 flags=0
+SIGNAL number=3 handler=0x0 flags=2
+SIGNAL number=4 handler=0x0 flags=0
+SIGNAL number=5 handler=0x0 flags=0
+SIGNAL number=6 handler=0x0 flags=0
+SIGNAL number=7 handler=0x0 flags=0
+SIGNAL number=8 handler=0x0 flags=0
+SIGNAL number=10 handler=0x0 flags=64
+SIGNAL number=11 handler=0x0 flags=64
+SIGNAL number=12 handler=0x0 flags=0
+SIGNAL number=13 handler=0x0 flags=0
+SIGNAL number=14 handler=0x0 flags=0
+SIGNAL number=15 handler=0x0 flags=66
+SIGNAL number=16 handler=0x0 flags=0
+SIGNAL number=18 handler=0x0 flags=2
+SIGNAL number=19 handler=0x0 flags=0
+SIGNAL number=20 handler=0x0 flags=0
+SIGNAL number=21 handler=0x0 flags=2
+SIGNAL number=22 handler=0x0 flags=2
+SIGNAL number=23 handler=0x0 flags=0
+SIGNAL number=24 handler=0x0 flags=0
+SIGNAL number=25 handler=0x0 flags=0
+SIGNAL number=26 handler=0x0 flags=0
+SIGNAL number=27 handler=0x0 flags=0
+SIGNAL number=28 handler=0x0 flags=0
+SIGNAL number=29 handler=0x0 flags=0
+SIGNAL number=30 handler=0x0 flags=0
+SIGNAL number=31 handler=0x0 flags=0
+ENTRY cold=42 reuse=42
+WINDOW cold allocations=27 frees=23 requested_total=1488 reserved_total=1488 live_requested=352 live_reserved=352 live_count=4 peak_requested=576 peak_reserved=576 peak_rounding=0 peak_live_count=6 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=27 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0
+WINDOW reuse allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=352 live_reserved=352 live_count=4 peak_requested=352 peak_reserved=352 peak_rounding=0 peak_live_count=4 baseline_requested=352 baseline_reserved=352 baseline_count=4 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0
+CONTROL records=2097152 pc_table=524288 event_buffer=65536 globals_min=2687152 capture_local_max=4096 stack_low=0x16b07c000 stack_high=0x16b878000 driver_frame=0x16b8768c0 event_bytes=6536
+ROUTE 0 malloc
+ROUTE 1 calloc
+ROUTE 2 valloc
+ROUTE 3 aligned_alloc
+ROUTE 4 realloc
+ROUTE 5 free
+ROUTE 6 posix_memalign
+ROUTE 7 malloc_zone_malloc
+ROUTE 8 malloc_zone_calloc
+ROUTE 9 malloc_zone_valloc
+ROUTE 10 malloc_zone_memalign
+ROUTE 11 malloc_zone_realloc
+ROUTE 12 malloc_zone_free
+ROUTE 13 malloc_type_malloc
+ROUTE 14 malloc_type_calloc
+ROUTE 15 malloc_type_valloc
+ROUTE 16 malloc_type_aligned_alloc
+ROUTE 17 malloc_type_realloc
+ROUTE 18 malloc_type_free
+ROUTE 19 malloc_type_posix_memalign
+ROUTE 20 malloc_type_zone_malloc
+ROUTE 21 malloc_type_zone_calloc
+ROUTE 22 malloc_type_zone_valloc
+ROUTE 23 malloc_type_zone_memalign
+ROUTE 24 malloc_type_zone_realloc
+ROUTE 25 malloc_type_zone_free
+ROUTE 26 malloc_zone_batch_malloc
+PC pc=0x1964e6698 base=0x19645f000 offset=0x87698 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZZL33cacheCanonicalSpecializedMetadataPKN5swift27TargetTypeContextDescriptorINS_9InProcessEEEPlEN3$_08__invokeEPv
+PC pc=0x1829444e4 base=0x182924000 offset=0x204e4 image=/usr/lib/dyld symbol=start
+PC pc=0x196500bb4 base=0x19645f000 offset=0xa1bb4 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZL30swift_getTypeByMangledNameSlowN5swift15MetadataRequestEN7__swift9__runtime4llvm9StringRefEPKPKvNSt3__18functionIFS6_jjEEENSA_IFPKNS_18TargetWitnessTableINS_9InProcessEEEPKNS_14TargetMetadataISE_EEjEEERNS9_6atomicImEEmPU9swiftcallFNS_17TypeLookupErrorOrINS_8TypeInfoEEES0_S4_S8_SC_SN_E
+PC pc=0x1964e734c base=0x19645f000 offset=0x8834c image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift38StableAddressConcurrentReadableHashMapINS_17GenericCacheEntryENS_23TaggedMetadataAllocatorILt14EEENS_5MutexEE11getOrInsertINS_16MetadataCacheKeyEJRNS_17MetadataWaitQueue6WorkerERNS_15MetadataRequestERPNS_14TargetMetadataINS_9InProcessEEEEEENSt3__14pairIPS1_bEET_DpOT0_
+PC pc=0x1964fa8a4 base=0x19645f000 offset=0x9b8a4 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZL39swift_getTypeByMangledNameInContextImplPKcmPKN5swift23TargetContextDescriptorINS1_9InProcessEEEPKPKv
+PC pc=0x1964eb628 base=0x19645f000 offset=0x8c628 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift25ConcurrentReadableHashMapINS_21HashMapElementWrapperINS_17GenericCacheEntryEEENS_5MutexEE27getOrInsertExternallyLockedINS_16MetadataCacheKeyEZNS_38StableAddressConcurrentReadableHashMapIS2_NS_23TaggedMetadataAllocatorILt14EEES4_E11getOrInsertIS7_JRNS_17MetadataWaitQueue6WorkerERNS_15MetadataRequestERPKNS_27TargetTypeContextDescriptorINS_9InProcessEEERPKPKvEEENSt3__14pairIPS2_bEET_DpOT0_EUlPS3_bE_EEvSX_RKT0_
+PC pc=0x10472559c base=0x104724000 offset=0x159c image=/Users/eugene/work/GiftUI/.build/contracts/p08-native-allocation-matched-repair1-20261017/libP08AllocationObserver.dylib symbol=observe_malloc_type_malloc
+PC pc=0x182b56630 base=0x182b52000 offset=0x4630 image=/usr/lib/system/libdispatch.dylib symbol=_dispatch_once_callout
+PC pc=0x1045892d8 base=0x104588000 offset=0x12d8 image=/Users/eugene/work/GiftUI/.build/contracts/p08-native-strict-inline-probe/targeted-serialized/probe symbol=__swift_instantiateConcreteTypeFromMangledName
+PC pc=0x182b6d4b0 base=0x182b52000 offset=0x1b4b0 image=/usr/lib/system/libdispatch.dylib symbol=_dispatch_client_callout
+PC pc=0x104725694 base=0x104724000 offset=0x1694 image=/Users/eugene/work/GiftUI/.build/contracts/p08-native-allocation-matched-repair1-20261017/libP08AllocationObserver.dylib symbol=observe_malloc_type_calloc
+PC pc=0x1045890c0 base=0x104588000 offset=0x10c0 image=/Users/eugene/work/GiftUI/.build/contracts/p08-native-strict-inline-probe/targeted-serialized/probe symbol=__swift_instantiateGenericMetadata
+PC pc=0x1964e816c base=0x19645f000 offset=0x8916c image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift22MetadataCacheEntryBaseINS_17GenericCacheEntryEJPKvEE16doInitializationERNS_17MetadataWaitQueue6WorkerENS_15MetadataRequestE
+PC pc=0x1964e7a44 base=0x19645f000 offset=0x88a44 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift25ConcurrentReadableHashMapINS_21HashMapElementWrapperINS_17GenericCacheEntryEEENS_5MutexEE27getOrInsertExternallyLockedINS_16MetadataCacheKeyEZNS_38StableAddressConcurrentReadableHashMapIS2_NS_23TaggedMetadataAllocatorILt14EEES4_E11getOrInsertIS7_JRNS_17MetadataWaitQueue6WorkerERNS_15MetadataRequestERPNS_14TargetMetadataINS_9InProcessEEEEEENSt3__14pairIPS2_bEET_DpOT0_EUlPS3_bE_EEvSR_RKT0_
+PC pc=0x196507bcc base=0x19645f000 offset=0xa8bcc image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift8Demangle9__runtime11TypeDecoderIN12_GLOBAL__N_122DecodedMetadataBuilderEE17decodeMangledTypeEPNS1_4NodeEjb
+PC pc=0x1964fc704 base=0x19645f000 offset=0x9d704 image=/usr/lib/swift/libswiftCore.dylib symbol=swift_getTypeByMangledNode
+PC pc=0x1964e7cb8 base=0x19645f000 offset=0x88cb8 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift25ConcurrentReadableHashMapINS_21HashMapElementWrapperINS_17GenericCacheEntryEEENS_5MutexEE6resizeENS5_12IndexStorageEhPS3_
+PC pc=0x1964e88e0 base=0x19645f000 offset=0x898e0 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift17GenericCacheEntry13tryInitializeEPNS_14TargetMetadataINS_9InProcessEEENS_20PrivateMetadataStateEPNS_32PrivateMetadataCompletionContextE
+PC pc=0x19650021c base=0x19645f000 offset=0xa121c image=/usr/lib/swift/libswiftCore.dylib symbol=_ZL30swift_getTypeByMangledNodeSlowN5swift15MetadataRequestERNS_8Demangle9__runtime9DemanglerEPNS2_4NodeEPKPKvNSt3__18functionIFS8_jjEEENSC_IFPKNS_18TargetWitnessTableINS_9InProcessEEEPKNS_14TargetMetadataISG_EEjEEERNSB_6atomicImEEmPU9swiftcallFNS_17TypeLookupErrorOrINS_8TypeInfoEEES0_S4_S6_SA_SE_SP_E
+PC pc=0x1964e7e24 base=0x19645f000 offset=0x88e24 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift25ConcurrentReadableHashMapINS_21HashMapElementWrapperINS_17GenericCacheEntryEEENS_5MutexEE6resizeENS5_12IndexStorageEhPS3_
+PC pc=0x1964d7cdc base=0x19645f000 offset=0x78cdc image=/usr/lib/swift/libswiftCore.dylib symbol=swift_getCanonicalPrespecializedGenericMetadata
+PC pc=0x1964eb3b8 base=0x19645f000 offset=0x8c3b8 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift38StableAddressConcurrentReadableHashMapINS_17GenericCacheEntryENS_23TaggedMetadataAllocatorILt14EEENS_5MutexEE11getOrInsertINS_16MetadataCacheKeyEJRNS_17MetadataWaitQueue6WorkerERNS_15MetadataRequestERPKNS_27TargetTypeContextDescriptorINS_9InProcessEEERPKPKvEEENSt3__14pairIPS1_bEET_DpOT0_
+PC pc=0x104589204 base=0x104588000 offset=0x1204 image=/Users/eugene/work/GiftUI/.build/contracts/p08-native-strict-inline-probe/targeted-serialized/probe symbol=$s11ProbeCaller5entryys6UInt32VSvSgF
+PC pc=0x1964eb0a0 base=0x19645f000 offset=0x8c0a0 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift20LockingConcurrentMapINS_17GenericCacheEntryENS_27LockingConcurrentMapStorageIS1_Lt14EEEE11getOrInsertINS_16MetadataCacheKeyEJRNS_15MetadataRequestERPKNS_27TargetTypeContextDescriptorINS_9InProcessEEERPKPKvEEENSt3__14pairIPS1_NS_16MetadataResponseEEET_DpOT0_
+PC pc=0x196464a04 base=0x19645f000 offset=0x5a04 image=/usr/lib/swift/libswiftCore.dylib symbol=swift_slowAlloc
+PC pc=0x1964d8d24 base=0x19645f000 offset=0x79d24 image=/usr/lib/swift/libswiftCore.dylib symbol=swift_getFixedArrayTypeMetadata
+PC pc=0x1964eb11c base=0x19645f000 offset=0x8c11c image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift20LockingConcurrentMapINS_17GenericCacheEntryENS_27LockingConcurrentMapStorageIS1_Lt14EEEE11getOrInsertINS_16MetadataCacheKeyEJRNS_15MetadataRequestERPKNS_27TargetTypeContextDescriptorINS_9InProcessEEERPKPKvEEENSt3__14pairIPS1_NS_16MetadataResponseEEET_DpOT0_
+PC pc=0x1964d7a38 base=0x19645f000 offset=0x78a38 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift20LockingConcurrentMapINS_17GenericCacheEntryENS_27LockingConcurrentMapStorageIS1_Lt14EEEE11getOrInsertINS_16MetadataCacheKeyEJNS_15MetadataRequestERPKNS_14TargetMetadataINS_9InProcessEEEEEENSt3__14pairIPS1_NS_16MetadataResponseEEET_DpOT0_
+PC pc=0x1968f8c84 base=0x19645f000 offset=0x499c84 image=/usr/lib/swift/libswiftCore.dylib symbol=__swift_instantiateCanonicalPrespecializedGenericMetadata
+PC pc=0x104588ca4 base=0x104588000 offset=0xca4 image=/Users/eugene/work/GiftUI/.build/contracts/p08-native-strict-inline-probe/targeted-serialized/probe symbol=$s9ProbeCore0A4RootVMr
+PC pc=0x1964eb780 base=0x19645f000 offset=0x8c780 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZZN5swift38StableAddressConcurrentReadableHashMapINS_17GenericCacheEntryENS_23TaggedMetadataAllocatorILt14EEENS_5MutexEE11getOrInsertINS_16MetadataCacheKeyEJRNS_17MetadataWaitQueue6WorkerERNS_15MetadataRequestERPKNS_27TargetTypeContextDescriptorINS_9InProcessEEERPKPKvEEENSt3__14pairIPS1_bEET_DpOT0_ENKUlPNS_21HashMapElementWrapperIS1_EEbE_clESY_b
+PC pc=0x1045894c4 base=0x104588000 offset=0x14c4 image=/Users/eugene/work/GiftUI/.build/contracts/p08-native-strict-inline-probe/targeted-serialized/probe symbol=main
+PC pc=0x1964d7c00 base=0x19645f000 offset=0x78c00 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZL25_swift_getGenericMetadataN5swift15MetadataRequestEPKPKvPKNS_27TargetTypeContextDescriptorINS_9InProcessEEE
+PC pc=0x19650b2e0 base=0x19645f000 offset=0xac2e0 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZNK12_GLOBAL__N_122DecodedMetadataBuilder22createBoundGenericTypeEPKN5swift23TargetContextDescriptorINS1_9InProcessEEEN7__swift9__runtime4llvm8ArrayRefINS1_19MetadataPackOrValueEEESB_
+PC pc=0x104588a08 base=0x104588000 offset=0xa08 image=/Users/eugene/work/GiftUI/.build/contracts/p08-native-strict-inline-probe/targeted-serialized/probe symbol=$s9ProbeCore0A4RootVACyxGycfC
+PC pc=0x196500758 base=0x19645f000 offset=0xa1758 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZL30swift_getTypeByMangledNameImplN5swift15MetadataRequestEN7__swift9__runtime4llvm9StringRefEPKPKvNSt3__18functionIFS6_jjEEENSA_IFPKNS_18TargetWitnessTableINS_9InProcessEEEPKNS_14TargetMetadataISE_EEjEEE
+PC pc=0x1964e7920 base=0x19645f000 offset=0x88920 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift25ConcurrentReadableHashMapINS_21HashMapElementWrapperINS_17GenericCacheEntryEEENS_5MutexEE27getOrInsertExternallyLockedINS_16MetadataCacheKeyEZNS_38StableAddressConcurrentReadableHashMapIS2_NS_23TaggedMetadataAllocatorILt14EEES4_E11getOrInsertIS7_JRNS_17MetadataWaitQueue6WorkerERNS_15MetadataRequestERPNS_14TargetMetadataINS_9InProcessEEEEEENSt3__14pairIPS2_bEET_DpOT0_EUlPS3_bE_EEvSR_RKT0_
+PC pc=0x1964d8e40 base=0x19645f000 offset=0x79e40 image=/usr/lib/swift/libswiftCore.dylib symbol=swift_getFixedArrayTypeMetadata
+PC pc=0x104589210 base=0x104588000 offset=0x1210 image=/Users/eugene/work/GiftUI/.build/contracts/p08-native-strict-inline-probe/targeted-serialized/probe symbol=$s11ProbeCaller5entryys6UInt32VSvSgF
+PC pc=0x1964ffd7c base=0x19645f000 offset=0xa0d7c image=/usr/lib/swift/libswiftCore.dylib symbol=_ZL30swift_getTypeByMangledNodeImplN5swift15MetadataRequestERNS_8Demangle9__runtime9DemanglerEPNS2_4NodeEPKPKvNSt3__18functionIFS8_jjEEENSC_IFPKNS_18TargetWitnessTableINS_9InProcessEEEPKNS_14TargetMetadataISG_EEjEEE
+PC pc=0x1964eb540 base=0x19645f000 offset=0x8c540 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift25ConcurrentReadableHashMapINS_21HashMapElementWrapperINS_17GenericCacheEntryEEENS_5MutexEE27getOrInsertExternallyLockedINS_16MetadataCacheKeyEZNS_38StableAddressConcurrentReadableHashMapIS2_NS_23TaggedMetadataAllocatorILt14EEES4_E11getOrInsertIS7_JRNS_17MetadataWaitQueue6WorkerERNS_15MetadataRequestERPKNS_27TargetTypeContextDescriptorINS_9InProcessEEERPKPKvEEENSt3__14pairIPS2_bEET_DpOT0_EUlPS3_bE_EEvSX_RKT0_
+PC pc=0x1964e7984 base=0x19645f000 offset=0x88984 image=/usr/lib/swift/libswiftCore.dylib symbol=_ZN5swift25ConcurrentReadableHashMapINS_21HashMapElementWrapperINS_17GenericCacheEntryEEENS_5MutexEE27getOrInsertExternallyLockedINS_16MetadataCacheKeyEZNS_38StableAddressConcurrentReadableHashMapIS2_NS_23TaggedMetadataAllocatorILt14EEES4_E11getOrInsertIS7_JRNS_17MetadataWaitQueue6WorkerERNS_15MetadataRequestERPNS_14TargetMetadataINS_9InProcessEEEEEENSt3__14pairIPS2_bEET_DpOT0_EUlPS3_bE_EEvSR_RKT0_
+PC pc=0x1964fa528 base=0x19645f000 offset=0x9b528 image=/usr/lib/swift/libswiftCore.dylib symbol=swift_getTypeByMangledName
+IMAGE base=0x104588000 slide=0x4588000 path=/Users/eugene/work/GiftUI/.build/contracts/p08-native-strict-inline-probe/targeted-serialized/probe uuid=3879c1d7885834eaac0a2dea74b4e080
+IMAGE base=0x104724000 slide=0x104724000 path=/Users/eugene/work/GiftUI/.build/contracts/p08-native-allocation-matched-repair1-20261017/libP08AllocationObserver.dylib uuid=09c9f091c80c3b98b24e8fb68f5732a4
+IMAGE base=0x192b6a000 slide=0x2810000 path=/usr/lib/libSystem.B.dylib uuid=4fed5ee25d3e35b1a1709859c4b683bb
+IMAGE base=0x192b64000 slide=0x2810000 path=/usr/lib/system/libcache.dylib uuid=9cd7b1e13e47339ca1932392e3e0ed23
+IMAGE base=0x192b1f000 slide=0x2810000 path=/usr/lib/system/libcommonCrypto.dylib uuid=3b11056452783cb085f12ce8431ff935
+IMAGE base=0x192b4a000 slide=0x2810000 path=/usr/lib/system/libcompiler_rt.dylib uuid=6fb345ca7f5c3263a23f143f7539fd8a
+IMAGE base=0x192b3f000 slide=0x2810000 path=/usr/lib/system/libcopyfile.dylib uuid=d0009b8a8ecc3d5692067e1839707f93
+IMAGE base=0x182a52000 slide=0x2810000 path=/usr/lib/system/libcorecrypto.dylib uuid=0642ddad47713c82805ce7c6701c1461
+IMAGE base=0x182b52000 slide=0x2810000 path=/usr/lib/system/libdispatch.dylib uuid=b2000cd5f580314aa141e036719d854e
+IMAGE base=0x1828ef000 slide=0x2810000 path=/usr/lib/system/libdyld.dylib uuid=957f93b3880539c79c51edd1715f550e
+IMAGE base=0x192b5a000 slide=0x2810000 path=/usr/lib/system/libkeymgr.dylib uuid=7e863fcaf3ff32c78a8cf983e946afc3
+IMAGE base=0x192b02000 slide=0x2810000 path=/usr/lib/system/libmacho.dylib uuid=949131e5bda239baaa5062651bb51802
+IMAGE base=0x191d95000 slide=0x2810000 path=/usr/lib/system/libquarantine.dylib uuid=eee5aadb52e13c4c881a70405770b1f1
+IMAGE base=0x192b57000 slide=0x2810000 path=/usr/lib/system/libremovefile.dylib uuid=7460b5ae469a36a0a7ec6c7d69628e86
+IMAGE base=0x1894c5000 slide=0x2810000 path=/usr/lib/system/libsystem_asl.dylib uuid=5443973933ee3273839fcba67d7f5cb1
+IMAGE base=0x1829d8000 slide=0x2810000 path=/usr/lib/system/libsystem_blocks.dylib uuid=e0ac123127aa3a138fac41d5802b1f3c
+IMAGE base=0x182b9d000 slide=0x2810000 path=/usr/lib/system/libsystem_c.dylib uuid=d77ceb62aff63cecba9b4f057fbe2eb5
+IMAGE base=0x192b4e000 slide=0x2810000 path=/usr/lib/system/libsystem_collections.dylib uuid=c8160bd259413dc0bb40f8c2b8156ec4
+IMAGE base=0x190735000 slide=0x2810000 path=/usr/lib/system/libsystem_configuration.dylib uuid=d8d6280b783d3550bdba2861ae40604f
+IMAGE base=0x18f323000 slide=0x2810000 path=/usr/lib/system/libsystem_containermanager.dylib uuid=14b2a47f19c8392f8fdbfe8ae375dd41
+IMAGE base=0x192534000 slide=0x2810000 path=/usr/lib/system/libsystem_coreservices.dylib uuid=d4acd2ac57023c4585a0300b2c2d19e1
+IMAGE base=0x186cec000 slide=0x2810000 path=/usr/lib/system/libsystem_darwin.dylib uuid=8e07d22ece5a38a0b0915b0338c326f5
+IMAGE base=0x288740000 slide=0x2810000 path=/usr/lib/system/libsystem_darwindirectory.dylib uuid=971a4f65493d39f3846d0d33fa2769fd
+IMAGE base=0x192b5b000 slide=0x2810000 path=/usr/lib/system/libsystem_dnssd.dylib uuid=305f4398e6883384b35102d865ec8a04
+IMAGE base=0x288744000 slide=0x2810000 path=/usr/lib/system/libsystem_eligibility.dylib uuid=750ca44692ea3a569a7bcc0841686c50
+IMAGE base=0x182b9a000 slide=0x2810000 path=/usr/lib/system/libsystem_featureflags.dylib uuid=fee12f9c344b33b38edd283580ef1c67
+IMAGE base=0x182d1f000 slide=0x2810000 path=/usr/lib/system/libsystem_info.dylib uuid=9b5fb84b31ad3ea78f898c700d369dc8
+IMAGE base=0x192ac3000 slide=0x2810000 path=/usr/lib/system/libsystem_m.dylib uuid=b54fbe99db0b32c7abddc2206df606a4
+IMAGE base=0x182b01000 slide=0x2810000 path=/usr/lib/system/libsystem_malloc.dylib uuid=d969a9073e43395193658c2db3812e9d
+IMAGE base=0x189428000 slide=0x2810000 path=/usr/lib/system/libsystem_networkextension.dylib uuid=9c7b1eeb47be379193a9cfc693cb9417
+IMAGE base=0x187157000 slide=0x2810000 path=/usr/lib/system/libsystem_notify.dylib uuid=157991286cbd30d6a2bbb9d02b4470c0
+IMAGE base=0x19073a000 slide=0x2810000 path=/usr/lib/system/libsystem_sandbox.dylib uuid=54688162b50d3d31a1e87b9766d3530d
+IMAGE base=0x28874f000 slide=0x2810000 path=/usr/lib/system/libsystem_sanitizers.dylib uuid=d88ec7099aa83083b22bd3cb39678d71
+IMAGE base=0x192b53000 slide=0x2810000 path=/usr/lib/system/libsystem_secinit.dylib uuid=ecabc0248f02374abb7e29437cea2abd
+IMAGE base=0x182ccb000 slide=0x2810000 path=/usr/lib/system/libsystem_kernel.dylib uuid=c6a4a4cb92e63bafaae0e8306259209a
+IMAGE base=0x182d16000 slide=0x2810000 path=/usr/lib/system/libsystem_platform.dylib uuid=edb83a19ec1732de93506145970a85d6
+IMAGE base=0x182d09000 slide=0x2810000 path=/usr/lib/system/libsystem_pthread.dylib uuid=a373f0b09880326a88b4dd8be4e33072
+IMAGE base=0x18b07e000 slide=0x2810000 path=/usr/lib/system/libsystem_symptoms.dylib uuid=229122b9b8b13f2f870e8650ae3c4fb5
+IMAGE base=0x182a31000 slide=0x2810000 path=/usr/lib/system/libsystem_trace.dylib uuid=93f1dd8c6cd932b9b222d23da5d161b4
+IMAGE base=0x288757000 slide=0x2810000 path=/usr/lib/system/libsystem_trial.dylib uuid=7194ff5ba6c53d67b00a90209f10d603
+IMAGE base=0x192b2d000 slide=0x2810000 path=/usr/lib/system/libunwind.dylib uuid=05fd001455b13b8aa6ba6c7a389c4123
+IMAGE base=0x1829dc000 slide=0x2810000 path=/usr/lib/system/libxpc.dylib uuid=33e44c2dd65e37a6b85f1a4cf524a050
+IMAGE base=0x18289c000 slide=0x2810000 path=/usr/lib/libobjc.A.dylib uuid=03bd9e32cf0a37b0898a3ce8de06d842
+IMAGE base=0x19645f000 slide=0x2810000 path=/usr/lib/swift/libswiftCore.dylib uuid=83794fb3de9b3d23ab5e2c1d5d30f134
+IMAGE base=0x182cb0000 slide=0x2810000 path=/usr/lib/libc++abi.dylib uuid=f38a9c5822ab3798bbae8dcd9cc0ce27
+IMAGE base=0x286b2d000 slide=0x2810000 path=/usr/lib/libRosetta.dylib uuid=0c7397c6d74731f28bc14096213bde5c
+IMAGE base=0x182c1f000 slide=0x2810000 path=/usr/lib/libc++.1.dylib uuid=f0fd393c15bc3c75a19d897f7b225c78
+IMAGE base=0x287fa9000 slide=0x2810000 path=/usr/lib/libswiftPrespecialized.dylib uuid=9e3c7597446f3c5099302425d9252c0c

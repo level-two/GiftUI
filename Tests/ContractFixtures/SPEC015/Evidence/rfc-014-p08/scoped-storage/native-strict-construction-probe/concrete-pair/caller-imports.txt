@@ -1,0 +1,4 @@
+___stack_chk_fail
+___stack_chk_guard
+_probe_input
+_probe_touch

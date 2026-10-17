@@ -1,0 +1,222 @@
+{
+  "schema": 1,
+  "kind": "synthetic compiler feasibility only; not P08 conformance",
+  "variants": {
+    "baseline": {
+      "entry": "ENTRY cold=42 reuse=42",
+      "cold": "WINDOW cold allocations=139 frees=109 requested_total=10687 reserved_total=11200 live_requested=3608 live_reserved=3664 live_count=30 peak_requested=4969 peak_reserved=5168 peak_rounding=213 peak_live_count=53 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=132 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "reuse": "WINDOW reuse allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=3608 live_reserved=3664 live_count=30 peak_requested=3608 peak_reserved=3664 peak_rounding=56 peak_live_count=30 baseline_requested=3608 baseline_reserved=3664 baseline_count=30 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "executable_sha256": "947337ecf0e78ee38b5e181310a764aed20dd856b3b63f93eed9a95b3881518a"
+    },
+    "full-cmo": {
+      "entry": "ENTRY cold=42 reuse=42",
+      "cold": "WINDOW cold allocations=139 frees=109 requested_total=10687 reserved_total=11200 live_requested=3608 live_reserved=3664 live_count=30 peak_requested=4969 peak_reserved=5168 peak_rounding=213 peak_live_count=53 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=132 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "reuse": "WINDOW reuse allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=3608 live_reserved=3664 live_count=30 peak_requested=3608 peak_reserved=3664 peak_rounding=56 peak_live_count=30 baseline_requested=3608 baseline_reserved=3664 baseline_count=30 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "executable_sha256": "a16519089e7da9247b1a8b2cee347421794ad69fea0d444b1bcc41a03f4c9e19"
+    },
+    "serialized": {
+      "entry": "ENTRY cold=42 reuse=42",
+      "cold": "WINDOW cold allocations=27 frees=23 requested_total=1488 reserved_total=1488 live_requested=352 live_reserved=352 live_count=4 peak_requested=576 peak_reserved=576 peak_rounding=0 peak_live_count=6 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=27 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "reuse": "WINDOW reuse allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=352 live_reserved=352 live_count=4 peak_requested=352 peak_reserved=352 peak_rounding=0 peak_live_count=4 baseline_requested=352 baseline_reserved=352 baseline_count=4 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "executable_sha256": "c420534f8883f5ae05fb254701d3eabb73ae7ee6804624fbcbd43e2fdba8821e"
+    },
+    "constructor-always": {
+      "entry": "ENTRY cold=42 reuse=42",
+      "cold": "WINDOW cold allocations=27 frees=23 requested_total=1488 reserved_total=1488 live_requested=352 live_reserved=352 live_count=4 peak_requested=576 peak_reserved=576 peak_rounding=0 peak_live_count=6 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=27 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "reuse": "WINDOW reuse allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=352 live_reserved=352 live_count=4 peak_requested=352 peak_reserved=352 peak_rounding=0 peak_live_count=4 baseline_requested=352 baseline_reserved=352 baseline_count=4 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "executable_sha256": "c420534f8883f5ae05fb254701d3eabb73ae7ee6804624fbcbd43e2fdba8821e"
+    },
+    "generic-pair": {
+      "entry": "ENTRY cold=42 reuse=42",
+      "cold": "WINDOW cold allocations=25 frees=22 requested_total=1424 reserved_total=1424 live_requested=336 live_reserved=336 live_count=3 peak_requested=640 peak_reserved=640 peak_rounding=0 peak_live_count=8 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=25 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "reuse": "WINDOW reuse allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=336 live_reserved=336 live_count=3 peak_requested=336 peak_reserved=336 peak_rounding=0 peak_live_count=3 baseline_requested=336 baseline_reserved=336 baseline_count=3 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "executable_sha256": "7b1d68c3b7e016dc16e0e7d6bfeef7a0648f23ae3266200a4cc8177aeff235f9"
+    },
+    "concrete-pair": {
+      "entry": "ENTRY cold=42 reuse=42",
+      "cold": "WINDOW cold allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=0 live_reserved=0 live_count=0 peak_requested=0 peak_reserved=0 peak_rounding=0 peak_live_count=0 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "reuse": "WINDOW reuse allocations=0 frees=0 requested_total=0 reserved_total=0 live_requested=0 live_reserved=0 live_count=0 peak_requested=0 peak_reserved=0 peak_rounding=0 peak_live_count=0 baseline_requested=0 baseline_reserved=0 baseline_count=0 unknown_frees=0 failures=0 nested=0 foreign=0 saturated=0 truncated=0 bad_chain=0 io_errors=0",
+      "executable_sha256": "35ea326df6d7c8bb6f50c9b1369162c50109b48b6a58b50e913131966cbb4268"
+    }
+  },
+  "files": {
+    "baseline/ProbeCaller.swift": {
+      "sha256": "49c511eda343b619809ba74d3f3a0321aa5117b7bb90955efe063a337e83608a",
+      "size": 950
+    },
+    "baseline/ProbeCore.swift": {
+      "sha256": "fb6e960ec4a0aaa52b0bd26ba9ab55d8527f2c9742652f7ed914f4f308797ecf",
+      "size": 664
+    },
+    "baseline/ProbeInput.c": {
+      "sha256": "428913884151140546eb05a8c5cfe997021c61df3a567e8c2ab994db0c832d09",
+      "size": 215
+    },
+    "baseline/caller-disassembly.txt": {
+      "sha256": "e91d62aec8bd57060ebc172feea160b4b0e52acfa1b440f5b9dbd1f0f1e4823a",
+      "size": 15203
+    },
+    "baseline/caller-imports.txt": {
+      "sha256": "b4a86a7cd7d1f3493ac0eac69749ffe82700f128f5636878b36372ebdb9bd972",
+      "size": 585
+    },
+    "baseline/execute.log": {
+      "sha256": "f52c9a536744cc8d64a012be2b68f1210f16a22ee3132d839a4d19c94fc37cf5",
+      "size": 44133
+    },
+    "baseline/result.json": {
+      "sha256": "f893854c7ec6ac8de381602514dabf860b5d1392cc100cc2734727bb282477e1",
+      "size": 7162
+    },
+    "concrete-pair/ProbeCaller.swift": {
+      "sha256": "19c832c32e669373d1f879b0d0b8edfedbfeacee511f141b78aca82dad3bcded",
+      "size": 1153
+    },
+    "concrete-pair/ProbeCore.swift": {
+      "sha256": "45f4705f6011b47a4bbf6569b7ebe7602387a522646a63b5b1124f061e7cf586",
+      "size": 798
+    },
+    "concrete-pair/ProbeInput.c": {
+      "sha256": "428913884151140546eb05a8c5cfe997021c61df3a567e8c2ab994db0c832d09",
+      "size": 215
+    },
+    "concrete-pair/caller-disassembly.txt": {
+      "sha256": "a1c1df0aa7961f3da2bf59c277ab0251c6f1d7d95d360e33aa770b5d21c10a68",
+      "size": 1503
+    },
+    "concrete-pair/caller-imports.txt": {
+      "sha256": "1d831ff21f416ec8df0e41621a1302bf7002a05014c64f50579905eb4b30e0d5",
+      "size": 63
+    },
+    "concrete-pair/execute.log": {
+      "sha256": "cb83420bb67f71b6928d6b77f385dfa8a241645ce65fe0b780918d778ce7f81c",
+      "size": 8702
+    },
+    "concrete-pair/result.json": {
+      "sha256": "f5e417dbadd7ddd27a6364f012ce69ec33166e58ab11b03c085e0c064ca1a587",
+      "size": 5697
+    },
+    "constructor-always/ProbeCaller.swift": {
+      "sha256": "49c511eda343b619809ba74d3f3a0321aa5117b7bb90955efe063a337e83608a",
+      "size": 950
+    },
+    "constructor-always/ProbeCore.swift": {
+      "sha256": "063c74c0a506c6bc6f5139d32d077c554628a429652c94eaa285b3441510d252",
+      "size": 783
+    },
+    "constructor-always/ProbeInput.c": {
+      "sha256": "428913884151140546eb05a8c5cfe997021c61df3a567e8c2ab994db0c832d09",
+      "size": 215
+    },
+    "constructor-always/caller-disassembly.txt": {
+      "sha256": "4268e2fbe458809b3876df52d6cf456f37cb6b28a13ba6b2f14c209366c2b649",
+      "size": 3180
+    },
+    "constructor-always/caller-imports.txt": {
+      "sha256": "79e1030807702b29af23a94f307574090113f6215ddf09ca8608626d9cfe3ad9",
+      "size": 282
+    },
+    "constructor-always/execute.log": {
+      "sha256": "273f0e2661a0e69b4c263d7d9ad7f9a5b203a84f2f6fe10687e6dafc361e795a",
+      "size": 20064
+    },
+    "constructor-always/result.json": {
+      "sha256": "e7d8f824f1ebae40437c13e8081d8a8e089fc55bcce78af36314ebe30a5d1c6f",
+      "size": 5761
+    },
+    "full-cmo/ProbeCaller.swift": {
+      "sha256": "49c511eda343b619809ba74d3f3a0321aa5117b7bb90955efe063a337e83608a",
+      "size": 950
+    },
+    "full-cmo/ProbeCore.swift": {
+      "sha256": "fb6e960ec4a0aaa52b0bd26ba9ab55d8527f2c9742652f7ed914f4f308797ecf",
+      "size": 664
+    },
+    "full-cmo/ProbeInput.c": {
+      "sha256": "428913884151140546eb05a8c5cfe997021c61df3a567e8c2ab994db0c832d09",
+      "size": 215
+    },
+    "full-cmo/caller-disassembly.txt": {
+      "sha256": "d0b4defe0b931c3810efa5992bfb8983f140081e7c4d3f8276fce5eb7bdbaf34",
+      "size": 15203
+    },
+    "full-cmo/caller-imports.txt": {
+      "sha256": "b4a86a7cd7d1f3493ac0eac69749ffe82700f128f5636878b36372ebdb9bd972",
+      "size": 585
+    },
+    "full-cmo/execute.log": {
+      "sha256": "51f6b1b3166ffb48b04015c1b50976c67ae3ab74a9cb9e5d940295cf6ceca20a",
+      "size": 44133
+    },
+    "full-cmo/result.json": {
+      "sha256": "ebe39e7f0be713dd798b5aa92a5999993cc25fc66fc45c8b437c975df6a4909b",
+      "size": 7338
+    },
+    "generic-pair/ProbeCaller.swift": {
+      "sha256": "49c511eda343b619809ba74d3f3a0321aa5117b7bb90955efe063a337e83608a",
+      "size": 950
+    },
+    "generic-pair/ProbeCore.swift": {
+      "sha256": "45f4705f6011b47a4bbf6569b7ebe7602387a522646a63b5b1124f061e7cf586",
+      "size": 798
+    },
+    "generic-pair/ProbeInput.c": {
+      "sha256": "428913884151140546eb05a8c5cfe997021c61df3a567e8c2ab994db0c832d09",
+      "size": 215
+    },
+    "generic-pair/caller-disassembly.txt": {
+      "sha256": "dbe1ce48214f9649c7b332b775380d0edc3ea9c4b57b495c9e483b7171e3c093",
+      "size": 3171
+    },
+    "generic-pair/caller-imports.txt": {
+      "sha256": "79e1030807702b29af23a94f307574090113f6215ddf09ca8608626d9cfe3ad9",
+      "size": 282
+    },
+    "generic-pair/execute.log": {
+      "sha256": "f7920b33b7c338433f652618f204ecb5df34e85adfc5c08608a2e834fb587f9b",
+      "size": 16985
+    },
+    "generic-pair/result.json": {
+      "sha256": "fb91929c1ae2c1b89fd0473e5792fd76fe80a6864a005e904405d073a1405f55",
+      "size": 5621
+    },
+    "serialized/ProbeCaller.swift": {
+      "sha256": "49c511eda343b619809ba74d3f3a0321aa5117b7bb90955efe063a337e83608a",
+      "size": 950
+    },
+    "serialized/ProbeCore.swift": {
+      "sha256": "29a3276b7edd4e489bdc6c2a0696a62861d51df5b5d1afbf0f7a254b1be5ac02",
+      "size": 765
+    },
+    "serialized/ProbeInput.c": {
+      "sha256": "428913884151140546eb05a8c5cfe997021c61df3a567e8c2ab994db0c832d09",
+      "size": 215
+    },
+    "serialized/caller-disassembly.txt": {
+      "sha256": "1bc5b7e50dbf627507610ef4da0b0f7095e25a532e7dcb4d527bf78c3c8755f4",
+      "size": 3176
+    },
+    "serialized/caller-imports.txt": {
+      "sha256": "79e1030807702b29af23a94f307574090113f6215ddf09ca8608626d9cfe3ad9",
+      "size": 282
+    },
+    "serialized/execute.log": {
+      "sha256": "ce58905833e5771385dccb6cb00b1dd37f53f7ac80484f00621a78241646c87d",
+      "size": 20032
+    },
+    "serialized/result.json": {
+      "sha256": "81948ebf10010f56a26c402b82523913a501ff7eac5fcbf14b78a1bb2331ed31",
+      "size": 5676
+    }
+  },
+  "retained_dependencies": {
+    ".build/contracts/p08-native-allocation-matched-repair1-20261017/Driver.o": {
+      "sha256": "6cc659f32cbbddfb120b72e05f9c6b4cf2fde175df414d07a0151f2900ffe52e",
+      "size": 5768
+    },
+    ".build/contracts/p08-native-allocation-matched-repair1-20261017/libP08AllocationObserver.dylib": {
+      "sha256": "4405ec93cc672980bf77c01bd737f7310a1fec01f94dde43ab477412e0a3b283",
+      "size": 56176
+    }
+  }
+}

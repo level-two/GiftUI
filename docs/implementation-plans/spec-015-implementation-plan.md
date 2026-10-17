@@ -33,8 +33,10 @@ qualifies384fresh controls +19matching preparation +23retained runtime/projectio
 exclusivity labels without rewriting raw focused statuses. The [six matched
 allocation observations](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-allocation-findings.md)
 pass collector/replay but identify actual Native Static first-use heap allocation.
-Independent review and a contract-versus-implementation decision precede affected
-closure; allocation coverage, complete Native/Pi stack/physical ledgers,
+The maintainer selected strict-contract implementation; the [bounded compiler
+probe](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-strict-construction-probe.md)
+records a new design activity, without a selected source candidate. Affected
+closure remains open; allocation coverage, complete Native/Pi stack/physical ledgers,
 caller/criterion reconciliation and P08 exit remain open.
 
 Current Pi evidence — **complete409 and early image/ABI PASS; resource fit open**.
