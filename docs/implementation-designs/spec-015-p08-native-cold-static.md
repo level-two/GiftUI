@@ -16,9 +16,13 @@ superseded_by: null
 
 # P08 Native cold Static construction
 
+Revised read-only direction: [complete cold pipeline correction](spec-015-p08-native-cold-pipeline.md),
+pending independent review. This is an overlay proposal on the failed candidate;
+no restoration retry or source correction has occurred. Corrections0/2.
+
 Current outcome: [candidate1 actual strict screen FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1-result.md).
-The candidate is unaccepted/not adopted; independent boundary review precedes
-source restoration or a broader cold compiler/runtime design. Corrections0/2.
+The candidate is unaccepted/not adopted. Independent failure review passed; the
+revised overlay design is pending review. Corrections0/2.
 
 Historical preparation boundary: [candidate 1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1.md),
 the first actual cold screen was pending then; 0/2 corrective cycles used. Compiler/link and

@@ -28,10 +28,16 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Read-only revised direction — [complete Native cold pipeline correction](../implementation-designs/spec-015-p08-native-cold-pipeline.md).
+The finite emitted caller/file map proposes one grouped correction overlay on the
+current failed candidate, without retrying the aborted restoration. Pending
+independent design review; no source correction, conformance or budget reset.
+
 Current strict Native boundary — [candidate1 actual screen FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1-result.md).
 Counts/replay pass; original11/336 remain and cold TLS/text allocations reject
-zero heap. Candidate unaccepted/not adopted; independent review and recommended
-source restoration precede further design. No correction used (0/2).
+zero heap. Candidate unaccepted/not adopted; independent failure review passed.
+Restoration was not executed; the revised design proposes a correction overlay.
+No correction used (0/2).
 
 Historical strict Native preparation — [candidate 1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-static-candidate1.md).
 The reviewed concrete-root/checked-scope mechanism compiles and diagnostic links

@@ -1804,6 +1804,8 @@ Specification:
 
 ## References
 
+- [P08 complete Native cold pipeline correction — derived draft design](../implementation-designs/spec-015-p08-native-cold-pipeline.md)
+
 - [P08 Native cold Static candidate](../implementation-designs/spec-015-p08-native-cold-static.md)
   is a derived draft under the maintainer's strict-contract direction, not a waiver
   or implementation/conformance claim.

@@ -1,0 +1,168 @@
+Frozen silent executable SHA256 77a11a4bf23a055d027369edd712888c5884d4d970d37d8747417bed20ed1152
+Command: xcrun otool -tvV <frozen candidate-silent-host-first>
+Return offsets are observed stack PCs; preceding BL is the emitted call.
+
+physicalFacts return 0x1138ec
+00000001001138d4	ldrb	w8, [x0, #0x168]
+00000001001138d8	str	w8, [sp, #0x20]
+00000001001138dc	mov	w25, #0x1
+00000001001138e0	add	x0, sp, #0xf70
+00000001001138e4	add	x1, sp, #0x3e8
+00000001001138e8	bl	_OUTLINED_FUNCTION_275
+00000001001138ec	mov	x24, #0x0
+00000001001138f0	adrp	x26, 203 ; 0x1001de000
+00000001001138f4	add	x26, x26, #0xd88
+
+textValidator return 0xe09d4
+00000001000e09bc	stp	x22, x19, [sp, #0xa8]
+00000001000e09c0	stp	x22, x28, [sp, #0x180]
+00000001000e09c4	stp	x19, x26, [sp, #0x190]
+00000001000e09c8	add	x1, sp, #0x180
+00000001000e09cc	str	xzr, [sp, #0xc0]
+00000001000e09d0	bl	_OUTLINED_FUNCTION_42
+00000001000e09d4	ldrsw	x19, [x0, #0x34]
+00000001000e09d8	ldr	x9, [x26, #0x8]
+00000001000e09dc	add	x8, sp, #0x234
+
+bitmapPayload return 0x8e194
+000000010008e17c	str	s0, [sp, #0x20]
+000000010008e180	strh	wzr, [sp, #0x24]
+000000010008e184	bl	_OUTLINED_FUNCTION_15
+000000010008e188	adrp	x0, 339 ; 0x1001e1000
+000000010008e18c	add	x0, x0, #0x18
+000000010008e190	bl	___swift_instantiateConcreteTypeFromMangledName
+000000010008e194	bl	_OUTLINED_FUNCTION_12
+000000010008e198	bl	_OUTLINED_FUNCTION_11
+000000010008e19c	mov	x5, x0
+
+outlinePayload return 0x8f858
+000000010008f840	mov	w8, #0x5
+000000010008f844	strb	w8, [sp, #0x1ce]
+000000010008f848	bl	_OUTLINED_FUNCTION_16
+000000010008f84c	adrp	x0, 338 ; 0x1001e1000
+000000010008f850	add	x0, x0, #0x1f0
+000000010008f854	bl	___swift_instantiateConcreteTypeFromMangledName
+000000010008f858	bl	_OUTLINED_FUNCTION_12
+000000010008f85c	bl	_OUTLINED_FUNCTION_11
+000000010008f860	mov	x5, x0
+
+recordFactory return 0xd6608
+00000001000d65f0	mov	x1, x9
+00000001000d65f4	stur	x21, [x29, #-0x60]
+00000001000d65f8	stp	x3, x4, [sp, #0x60]
+00000001000d65fc	str	x2, [sp, #0x58]
+00000001000d6600	str	x8, [sp, #0x48]
+00000001000d6604	bl	0x100172fe4 ; symbol stub for: _$sSqMa
+00000001000d6608	ldp	x8, x1, [sp, #0x48]
+00000001000d660c	ldp	x2, x3, [sp, #0x58]
+00000001000d6610	ldr	x4, [sp, #0x68]
+
+hostActivation return 0x4618c
+0000000100046174	bl	_OUTLINED_FUNCTION_112
+0000000100046178	sub	x8, x9, x8
+000000010004617c	stp	x8, x0, [x29, #-0x90]
+0000000100046180	mov	sp, x8
+0000000100046184	bl	_OUTLINED_FUNCTION_390
+0000000100046188	bl	0x100172fe4 ; symbol stub for: _$sSqMa
+000000010004618c	ldur	x3, [x0, #-0x8]
+0000000100046190	ldr	x8, [x3, #0x40]
+0000000100046194	bl	_OUTLINED_FUNCTION_112
+
+semanticRole return 0xe6cbc
+00000001000e6ca4	sub	sp, sp, #0x1d0
+00000001000e6ca8	mov	x19, sp
+00000001000e6cac	mov	x21, x1
+00000001000e6cb0	adrp	x0, 251 ; 0x1001e1000
+00000001000e6cb4	add	x0, x0, #0xee8
+00000001000e6cb8	bl	___swift_instantiateConcreteTypeFromMangledName
+00000001000e6cbc	mov	x20, x0
+00000001000e6cc0	ldur	x8, [x0, #-0x8]
+00000001000e6cc4	bl	_OUTLINED_FUNCTION_139
+
+semanticTraversal return 0xd3a30
+00000001000d3a18	mov	x25, x5
+00000001000d3a1c	mov	x22, x4
+00000001000d3a20	mov	x21, x3
+00000001000d3a24	stp	x1, x2, [x29, #-0xf0]
+00000001000d3a28	stur	x0, [x29, #-0xf8]
+00000001000d3a2c	bl	_OUTLINED_FUNCTION_118
+00000001000d3a30	mov	x19, x0
+00000001000d3a34	ldr	x1, [x21, #0x38]
+00000001000d3a38	ldr	x2, [x21, #0x20]
+
+modelReadSlots return 0x836b0
+0000000100083698	ldr	x8, [x8]
+000000010008369c	stur	x8, [x29, #-0x58]
+00000001000836a0	mov	x0, #0x0
+00000001000836a4	mov	x1, x2
+00000001000836a8	mov	x2, x3
+00000001000836ac	bl	0x100173314 ; symbol stub for: _swift_getFixedArrayTypeMetadata
+00000001000836b0	ldur	x8, [x0, #-0x8]
+00000001000836b4	ldr	x8, [x8, #0x40]
+00000001000836b8	add	x8, x8, #0xf
+
+layoutValidation return 0x7bfc8
+000000010007bfb0	mov	x2, x6
+000000010007bfb4	bl	0x1001732f0 ; symbol stub for: _swift_getAssociatedTypeWitness
+000000010007bfb8	mov	x25, x0
+000000010007bfbc	mov	w0, #0xff
+000000010007bfc0	mov	x1, x25
+000000010007bfc4	bl	0x100172fe4 ; symbol stub for: _$sSqMa
+000000010007bfc8	mov	x22, x0
+000000010007bfcc	mov	x0, #0x0
+000000010007bfd0	mov	x1, x22
+
+renderProduction return 0x27884
+000000010002786c	ldr	x24, [x29, #0x48]
+0000000100027870	stp	x24, x10, [x29, #-0x80]
+0000000100027874	stp	x23, x8, [x29, #-0x70]
+0000000100027878	sub	x1, x29, #0x80
+000000010002787c	mov	x0, #0x0
+0000000100027880	bl	_$s13GiftUIDrawing24CanvasStreamingExtension33_5C023C09DFE1B9E120421B270D3CAC22LLVMa
+0000000100027884	mov	x27, x0
+0000000100027888	ldur	x8, [x0, #-0x8]
+000000010002788c	sub	x9, x29, #0x8
+
+rasterIntersection return 0x20540
+0000000100020528	lsr	x28, x6, #32
+000000010002052c	lsr	x8, x7, #32
+0000000100020530	stp	x8, x9, [sp, #0x40]
+0000000100020534	adrp	x0, 448 ; 0x1001e0000
+0000000100020538	add	x0, x0, #0x8c0
+000000010002053c	bl	___swift_instantiateConcreteTypeFromMangledName
+0000000100020540	mov	x26, x0
+0000000100020544	sub	x1, x29, #0x80
+0000000100020548	bl	0x1001733d4 ; symbol stub for: _swift_initStackObject
+
+glyphPayload return 0x210a0
+0000000100021088	str	x1, [x19, #0xb0]
+000000010002108c	bl	_$s16GiftUIRasterCore30RasterGlyphPayloadAccessResultOMa
+0000000100021090	mov	x1, x0
+0000000100021094	mov	x0, #0x0
+0000000100021098	str	x1, [x19, #0x58]
+000000010002109c	bl	0x100172fe4 ; symbol stub for: _$sSqMa
+00000001000210a0	ldur	x8, [x0, #-0x8]
+00000001000210a4	stp	x8, x0, [x19, #0x38]
+00000001000210a8	ldr	x8, [x8, #0x40]
+
+rgbaBytes return 0x1523a4
+000000010015238c	mov	x23, x8
+0000000100152390	stp	x3, x0, [sp, #0x10]
+0000000100152394	str	x1, [sp, #0x20]
+0000000100152398	adrp	x0, 144 ; 0x1001e2000
+000000010015239c	add	x0, x0, #0x140
+00000001001523a0	bl	___swift_instantiateConcreteTypeFromMangledName
+00000001001523a4	mov	x24, x0
+00000001001523a8	adrp	x0, 142 ; 0x1001e0000
+00000001001523ac	add	x0, x0, #0x1f8
+
+teardown return 0x148288
+0000000100148270	bl	_OUTLINED_FUNCTION_2001
+0000000100148274	ldur	x8, [x19, #-0x8]
+0000000100148278	stur	x8, [x29, #-0xa8]
+000000010014827c	bl	_OUTLINED_FUNCTION_139
+0000000100148280	bl	_OUTLINED_FUNCTION_1657
+0000000100148284	bl	_OUTLINED_FUNCTION_193
+0000000100148288	ldur	x8, [x0, #-0x8]
+000000010014828c	bl	_OUTLINED_FUNCTION_115
+0000000100148290	bl	_OUTLINED_FUNCTION_1627

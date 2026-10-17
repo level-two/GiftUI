@@ -1,0 +1,29 @@
+{
+  "kind": "read-only revised design inputs and derived map; no compiler/application execution",
+  "head_at_analysis": "48eb1980",
+  "source_candidate": "9c19a879",
+  "baseline": "93f6ecc7",
+  "corrective_cycles_used": 0,
+  "corrective_cycle_limit": 2,
+  "candidate22_source_hashes_match_restoration_inventory": true,
+  "restoration_inventory_sha256": "50a65ff5c4fe9bde4a3651675256c31d15c68f3725bf548cdf88e6d4d3e9cf01",
+  "restoration_retried": false,
+  "proposed_execution": "reviewed correction overlay; no restoration prerequisite or budget reset",
+  "external_files_sha256": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+    "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+    "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+  },
+  "external_diff_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+  "pycache_preserved": true,
+  "input_archive_sha256": "f9e421170d185a607fed23bd766d8bd232f608e17f3cfbbdf13352abc5ced3da",
+  "derived_files": {
+    "README.md": "1e57694315c1846a4230788e45c5fc51b961f4a6daa93717167def61df3c0a33",
+    "emitted-instructions.txt": "8c100acaf3e22fc4a11865338a95f95d8c9219afaa2dabd60537ddbea69ede4f",
+    "emitted-map.json.gz": "3e4c209ca1e98b54a21851b190365f60990c7580b05368ac7da20c32b0c8aca5",
+    "extract-calls.py": "f52aa6f3f5cff99f832632920aab6e66ad630ce4e0f533e44046319ff9a9f331",
+    "map.py": "600ad99fd98b5181636995ce02b87e61257a0bd4957825a3a1f1ac93a676bb9c"
+  }
+}
