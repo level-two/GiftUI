@@ -1,5 +1,10 @@
 # Independent serialization boundary disposition — 2026-10-17
 
+Subsequent [physical-module decode and bounded ABI-visibility proposal](native-cold-pipeline-serialization-result/README.md)
+establishes body absence for the exact traversal and evaluate records, with a
+serialized state-visitor control. It identifies the enclosing nominal formal-scope
+gate; proposed correction remains unexecuted and requires independent review.
+
 **No evidence-backed final source correction identified.** Reviewed `6869697e`,
 `65d011e4`, preceding diagnostic results, provider/source linkage and the existing
 tool inventory. Offline loading-packet verification passes (all21 members);

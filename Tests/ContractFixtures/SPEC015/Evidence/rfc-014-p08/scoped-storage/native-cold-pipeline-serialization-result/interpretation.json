@@ -1,0 +1,294 @@
+{
+  "metadata_version": [
+    0,
+    1003
+  ],
+  "function_index_bucket_count": 64,
+  "complete_function_index_entry_count": 31,
+  "complete_function_index": [
+    {
+      "identifier_id": 35,
+      "function_id": 1,
+      "hash": 771162667,
+      "name": "$s22P08CounterPresentation0B6ActionO8rawValueACSgs6UInt16V_tcfC"
+    },
+    {
+      "identifier_id": 17,
+      "function_id": 2,
+      "hash": 2983360179,
+      "name": "$s22P08CounterPresentation0B6ScreenVyxG6GiftUI01_E21UIObservableStateHostAaeFP022_giftUIVisitObservableH12Declarationsyyqd__zAE01_egH18DeclarationVisitorRd__Ri_d__Ri0_d__lFTW"
+    },
+    {
+      "identifier_id": 24,
+      "function_id": 3,
+      "hash": 1244620341,
+      "name": "$s22P08CounterPresentation0B6ScreenV39_giftUIVisitObservableStateDeclarationsyyqd__z6GiftUI01_j12UIObservableH18DeclarationVisitorRd__Ri_d__Ri0_d__lF"
+    },
+    {
+      "identifier_id": 16,
+      "function_id": 4,
+      "hash": 198439091,
+      "name": "$s22P08CounterPresentation0B6ScreenVyxG6GiftUI4ViewAaeFP15_giftUITraverseyyqd__zAE01_E26UISemanticTraversalVisitorRd__6DomainQyd__AJRtzRi_d__Ri0_d__lFTW"
+    },
+    {
+      "identifier_id": 15,
+      "function_id": 5,
+      "hash": 1210152886,
+      "name": "$s22P08CounterPresentation0B6ScreenVyxG6GiftUI4ViewAaeFP15_giftUIEvaluate4read4BodyQzAE01_E11UIFrameReadVy6DomainQzG_tAE01_E15UIAccessFailureOYKFTW"
+    },
+    {
+      "identifier_id": 14,
+      "function_id": 6,
+      "hash": 3160373615,
+      "name": "$s22P08CounterPresentation0B6CanvasVyxG6GiftUI4ViewAaeFP15_giftUITraverseyyqd__zAE01_E26UISemanticTraversalVisitorRd__6DomainQyd__AJRtzRi_d__Ri0_d__lFTW"
+    },
+    {
+      "identifier_id": 13,
+      "function_id": 7,
+      "hash": 2737412850,
+      "name": "$s22P08CounterPresentation0B6CanvasVyxG6GiftUI4ViewAaeFP15_giftUIEvaluate4read4BodyQzAE01_E11UIFrameReadVy6DomainQzG_tAE01_E15UIAccessFailureOYKFTW"
+    },
+    {
+      "identifier_id": 12,
+      "function_id": 8,
+      "hash": 1457976145,
+      "name": "$s22P08CounterPresentation0B6CanvasVyxG6GiftUI0D0AaeFP11_giftUIDraw2in7context4readyAE4RectV_AE15GraphicsContextVzAE01_E11UIFrameReadVy6DomainQzGtAE12DrawingErrorOYKFTW"
+    },
+    {
+      "identifier_id": 11,
+      "function_id": 9,
+      "hash": 1678933944,
+      "name": "$s22P08CounterPresentation0B6ActionOSYAASY8rawValue03RawF0QzvgTW"
+    },
+    {
+      "identifier_id": 34,
+      "function_id": 10,
+      "hash": 3605274859,
+      "name": "$s22P08CounterPresentation0B6ActionO8rawValues6UInt16Vvg"
+    },
+    {
+      "identifier_id": 10,
+      "function_id": 11,
+      "hash": 2412525388,
+      "name": "$s22P08CounterPresentation0B6ActionOSYAASY8rawValuexSg03RawF0Qz_tcfCTW"
+    },
+    {
+      "identifier_id": 9,
+      "function_id": 12,
+      "hash": 3646092758,
+      "name": "$s22P08CounterPresentation0B6ActionOSHAASH13_rawHashValue4seedS2i_tFTW"
+    },
+    {
+      "identifier_id": 38,
+      "function_id": 13,
+      "hash": 862553404,
+      "name": "$sSYsSHRzSH8RawValueSYRpzrlE08_rawHashB04seedS2i_tF22P08CounterPresentation0G6ActionO_Tgq5"
+    },
+    {
+      "identifier_id": 8,
+      "function_id": 14,
+      "hash": 2669256760,
+      "name": "$s22P08CounterPresentation0B6ActionOSHAASH4hash4intoys6HasherVz_tFTW"
+    },
+    {
+      "identifier_id": 43,
+      "function_id": 15,
+      "hash": 1614135685,
+      "name": "$sSYsSHRzSH8RawValueSYRpzrlE4hash4intoys6HasherVz_tF22P08CounterPresentation0G6ActionO_Tgq5"
+    },
+    {
+      "identifier_id": 7,
+      "function_id": 16,
+      "hash": 2998878303,
+      "name": "$s22P08CounterPresentation0B6ActionOSHAASH9hashValueSivgTW"
+    },
+    {
+      "identifier_id": 44,
+      "function_id": 17,
+      "hash": 3552665290,
+      "name": "$sSYsSHRzSH8RawValueSYRpzrlE04hashB0Sivg22P08CounterPresentation0E6ActionO_Tgq5"
+    },
+    {
+      "identifier_id": 6,
+      "function_id": 18,
+      "hash": 455782371,
+      "name": "$s22P08CounterPresentation0B6ActionOSQAASQ2eeoiySbx_xtFZTW"
+    },
+    {
+      "identifier_id": 57,
+      "function_id": 19,
+      "hash": 4066404255,
+      "name": "$s22P08CounterPresentation0B6CanvasV5model6GiftUI01_F10UIModelKeyVy0aB6Schema0b5ModelJ0OGvg"
+    },
+    {
+      "identifier_id": 58,
+      "function_id": 20,
+      "hash": 3048126013,
+      "name": "$s22P08CounterPresentation0B6CanvasV5modelACyxG6GiftUI01_F10UIModelKeyVy0aB6Schema0b5ModelJ0OG_tcfC"
+    },
+    {
+      "identifier_id": 55,
+      "function_id": 21,
+      "hash": 124668682,
+      "name": "$s22P08CounterPresentation0B6ScreenV6_model33_F0BA85FD07FD188E9CE885EADDFC66ACLL6GiftUI5StateVy0aB6Schema0b5ModelQ0OGvpfi"
+    },
+    {
+      "identifier_id": 56,
+      "function_id": 22,
+      "hash": 1365102355,
+      "name": "$s22P08CounterPresentation0B6ScreenVACyxGycfC"
+    },
+    {
+      "identifier_id": 54,
+      "function_id": 23,
+      "hash": 79872129,
+      "name": "$s22P08CounterPresentation11counterTexty6GiftUI07BoundedE0Vs5UInt8VF"
+    },
+    {
+      "identifier_id": 33,
+      "function_id": 24,
+      "hash": 2820771252,
+      "name": "$s22P08CounterPresentation0B6CanvasV11_giftUIDraw2in7context4ready6GiftUI4RectV_AH15GraphicsContextVzAH01_J11UIFrameReadVyxGtAH12DrawingErrorOYKF"
+    },
+    {
+      "identifier_id": 32,
+      "function_id": 25,
+      "hash": 4287497588,
+      "name": "$s6GiftUI6CanvasPAAE15_giftUIEvaluate4reads5NeverOAA01_A11UIFrameReadVy6DomainQzG_tAA01_A15UIAccessFailureOYKF"
+    },
+    {
+      "identifier_id": 48,
+      "function_id": 26,
+      "hash": 2617927222,
+      "name": "$s6GiftUI5StateV4seedACyxG4SeedQz_tcfC"
+    },
+    {
+      "identifier_id": 30,
+      "function_id": 27,
+      "hash": 2604955389,
+      "name": "$s22P08CounterPresentation0B6ScreenV15_giftUIEvaluate4readQr6GiftUI01_H11UIFrameReadVyxG_tAF01_H15UIAccessFailureOYKF"
+    },
+    {
+      "identifier_id": 26,
+      "function_id": 28,
+      "hash": 3795956693,
+      "name": "$s22P08CounterPresentation0B6ScreenV15_giftUITraverseyyqd__z6DomainQyd__Rsz6GiftUI01_H26UISemanticTraversalVisitorRd__Ri_d__Ri0_d__lF"
+    },
+    {
+      "identifier_id": 39,
+      "function_id": 29,
+      "hash": 3258320393,
+      "name": "$ss6HasherV5_seedABSi_tcfC"
+    },
+    {
+      "identifier_id": 41,
+      "function_id": 30,
+      "hash": 2984458971,
+      "name": "$ss6HasherV9_finalizeSiyF"
+    },
+    {
+      "identifier_id": 40,
+      "function_id": 31,
+      "hash": 3752689640,
+      "name": "$ss6HasherV8_combineyys6UInt16VF"
+    }
+  ],
+  "selected_functions": [
+    {
+      "identifier_id": 24,
+      "function_id": 3,
+      "hash": 1244620341,
+      "name": "$s22P08CounterPresentation0B6ScreenV39_giftUIVisitObservableStateDeclarationsyyqd__z6GiftUI01_j12UIObservableH18DeclarationVisitorRd__Ri_d__Ri0_d__lF",
+      "offset_bits": 138202,
+      "next_function_offset_bits": 139784,
+      "linkage": 0,
+      "serialized_kind": 1,
+      "inline_strategy": 2,
+      "trailing_records": 3,
+      "basic_blocks": 1,
+      "following_records": [
+        "    <SIL_ARG_EFFECTS_ATTR abbrevid=26 op0=21 op1=0 op2=1 op3=1/>",
+        "    <SIL_ARG_EFFECTS_ATTR abbrevid=26 op0=22 op1=0 op2=0 op3=1/>",
+        "    <SIL_ARG_EFFECTS_ATTR abbrevid=26 op0=23 op1=1 op2=0 op3=1/>",
+        "    <SIL_BASIC_BLOCK abbrevid=5 op0=19 op1=1025 op2=2 op3=20 op4=1025 op5=3/>",
+        "    <SIL_ONE_OPERAND abbrevid=22 op0=21 op1=0 op2=9 op3=0 op4=18/>",
+        "    <SIL_ONE_TYPE_VALUES abbrevid=13 op0=113 op1=1 op2=0 op3=9 op4=0 op5=4/>",
+        "    <SIL_ONE_VALUE_ONE_OPERAND abbrevid=6 op0=115 op1=0 op2=23 op3=20 op4=1 op5=3/>",
+        "    <SIL_INST_WITNESS_METHOD abbrevid=24 op0=19 op1=0 op2=0 op3=21 op4=0 op5=0 op6=0 op7=0 op8=16 op9=24 op10=0 op11=0/>",
+        "    <SIL_INST_APPLY abbrevid=20 op0=0 op1=0 op2=2 op3=21 op4=22 op5=7 op6=0 op7=0 op8=6 op9=5 op10=2/>",
+        "    <SIL_ONE_TYPE_VALUES abbrevid=13 op0=107 op1=18 op2=0/> record string = ''",
+        "    <SIL_ONE_OPERAND abbrevid=22 op0=162 op1=0 op2=18 op3=0 op4=9/>"
+      ],
+      "raw_prefix": [
+        4,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        2
+      ],
+      "function_record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=16 op29=0 op30=0 op31=2 op32=0 op33=1/> record string = ''"
+    },
+    {
+      "identifier_id": 30,
+      "function_id": 27,
+      "hash": 2604955389,
+      "name": "$s22P08CounterPresentation0B6ScreenV15_giftUIEvaluate4readQr6GiftUI01_H11UIFrameReadVyxG_tAF01_H15UIAccessFailureOYKF",
+      "offset_bits": 167146,
+      "next_function_offset_bits": 167594,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 2,
+      "trailing_records": 4,
+      "basic_blocks": 0,
+      "following_records": [
+        "    <SIL_ARG_EFFECTS_ATTR abbrevid=26 op0=27 op1=0 op2=0 op3=1/>",
+        "    <SIL_ARG_EFFECTS_ATTR abbrevid=26 op0=21 op1=0 op2=1 op3=1/>",
+        "    <SIL_ARG_EFFECTS_ATTR abbrevid=26 op0=28 op1=0 op2=0 op3=1/>",
+        "    <SIL_ARG_EFFECTS_ATTR abbrevid=26 op0=29 op1=1 op2=0 op3=1/>"
+      ],
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "function_record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=86 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    },
+    {
+      "identifier_id": 26,
+      "function_id": 28,
+      "hash": 3795956693,
+      "name": "$s22P08CounterPresentation0B6ScreenV15_giftUITraverseyyqd__z6DomainQyd__Rsz6GiftUI01_H26UISemanticTraversalVisitorRd__Ri_d__Ri0_d__lF",
+      "offset_bits": 167594,
+      "next_function_offset_bits": 167948,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 2,
+      "trailing_records": 2,
+      "basic_blocks": 0,
+      "following_records": [
+        "    <SIL_ARG_EFFECTS_ATTR abbrevid=26 op0=21 op1=0 op2=1 op3=1/>",
+        "    <SIL_ARG_EFFECTS_ATTR abbrevid=26 op0=22 op1=0 op2=0 op3=1/>"
+      ],
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "function_record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=26 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    }
+  ],
+  "result": "exact traversal body absent from physical serialized SIL"
+}
