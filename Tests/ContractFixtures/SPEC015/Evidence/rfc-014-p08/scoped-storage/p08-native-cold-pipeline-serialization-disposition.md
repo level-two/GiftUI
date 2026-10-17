@@ -1,5 +1,10 @@
 # Independent serialization boundary disposition — 2026-10-17
 
+Subsequent [independent corrective2 design review](p08-native-cold-pipeline-correction2-design-review.md)
+accepts the physical absence proof and approves the bounded generated-nominal
+ABI repair with early compile/privacy/body gates. The assessment below records
+the preceding diagnostic boundary, not the current repair disposition.
+
 Subsequent [physical-module decode and bounded ABI-visibility proposal](native-cold-pipeline-serialization-result/README.md)
 establishes body absence for the exact traversal and evaluate records, with a
 serialized state-visitor control. It identifies the enclosing nominal formal-scope
