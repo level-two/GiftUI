@@ -1,0 +1,75 @@
+{
+  "activity": "P08 witness annotation compatibility",
+  "prepared_at_head": "dceb8bc48da86636a676611a67b30a16b2a561b9",
+  "state": "design prepared; source candidate 0/1; independent review pending",
+  "allowance": {
+    "source_candidates": 1,
+    "consumed": 0,
+    "automatic_source_repairs": 0,
+    "historical_checked_state": "initial1/1 and corrections2/2 exhausted; unchanged",
+    "historical_native_pipeline": "corrections2/2 exhausted; unchanged"
+  },
+  "initial_source_allowlist": {
+    "Sources/GiftUIMacros/ObservableStateHostMacro.swift": [
+      "expansion(providingMembersOf:): condition only the two existing witness attribute pairs",
+      "new private pure eligibility helpers for host/enclosing ABI usability and exact finite Domain/evaluation signature; reuse existing checkedStateProjectionNames/sameStructure; no validator weakening"
+    ],
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": [
+      "focused ordinary-versus-finite eligibility expansion tests",
+      "testActualLoweredStateOutputHasSeparatedHelperDeclarations: inspect fresh actual lowered expansion as well as preserved parse assertions",
+      "minimal local fixture/expansion helpers supporting those maintained tests; preserve existing tests"
+    ]
+  },
+  "existing_overlay_sha256": {
+    "Sources/GiftUI/ActionHandler.swift": "d36a53f45d18892c235c02355cbed0e6bf92a20b7c64bc7e84ac39a03fa34d01",
+    "Sources/GiftUI/BoundedText.swift": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce",
+    "Sources/GiftUI/Button.swift": "bfef4dd797058b7c9c96e650f86ab9c068dffa5703200388c17631ad451af354",
+    "Sources/GiftUI/Canvas.swift": "4068c7a86e4523408968d37d6fce0197c4262d5984b749ea0c7ab02e771baf8a",
+    "Sources/GiftUI/Color.swift": "60009e3d58dcdfe65ba39bf6d036047207707837d73db308a5a25e81fc2ee835",
+    "Sources/GiftUI/DeclarativeView.swift": "15604c493d09f194252b05fdcb5fb31fdb412de3cb10a142fa7276a5e05e8bcf",
+    "Sources/GiftUI/Disabled.swift": "b38daff656c01cae87880bc8fda7b240c50e4cd46da52978a0b90caa7fc1bf36",
+    "Sources/GiftUI/DrawingStyles.swift": "eb28147b2dd565006f9d6b97c7b98e5bcfc52f42e19ebfae1dad1f79b08d130a",
+    "Sources/GiftUI/DrawingSurface.swift": "185607ede17d3eb8e655e1dc7e24a60fba22225028f1b1ae25a470355daa7a48",
+    "Sources/GiftUI/GiftUI.swift": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+    "Sources/GiftUI/LayoutContainers.swift": "5157a2cc20100ec15885d10d0da528202623901d885f6345d7dab89d07d49d20",
+    "Sources/GiftUI/LayoutModifiers.swift": "9df7df30a339bf4f6077581b108c855505ed6230d55d23e9fc55651f4fba877b",
+    "Sources/GiftUI/LayoutValues.swift": "70c7b34276f6f2d41382d14ee844fcf65d92c075f7caa0a12e79d17181c817f5",
+    "Sources/GiftUI/ObservableState.swift": "9f49b702c630be7e1ecc690973c73912142d731050bc4c62776c207e2ce68e86",
+    "Sources/GiftUI/StyleModifiers.swift": "5322bf0d7eda201882146c3be1162b23b43676c3ef9ce3286eb83ff82e173962",
+    "Sources/GiftUI/Text.swift": "b361224ecac936f5736fd777a96ad815889911644b19731fee2a947a2f5c054c",
+    "Sources/GiftUIMacros/CanvasWitnessLowering.swift": "e84c9b92d9819a0954213a7cfa9252c3ee40006457f9eb5e6e3d536cdd5bd84c",
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift": "48265ebed5ea5fb964d51a2557cf27f2eeae6388097b29a09aebdeac5e8e88fb",
+    "Sources/GiftUIMacros/GiftUIMacros.swift": "db3c0786628995ad46879bb1af674eb94c1fb9fe33c8d702632ed9588f46161b",
+    "Sources/GiftUIMacros/ObservableStateHostMacro.swift": "4d8f85de756d5c74908f39ad46f686d0f42a24b6a33c28fb0f8350d4c9fba167",
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": "7829f7d735ced0afc569d3deb3f3edb75583b3806702f9e42ad74926b003e8ba"
+  },
+  "authored_inputs_sha256": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.schema.json": "3428fbdeb1f321c28c3fa70a7a6ce6159fd86676e6520292366a6b269b3ecbd9"
+  },
+  "external_sha256": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+    "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+    "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+  },
+  "pycache_sha256": {
+    "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+  },
+  "known_working_macos_harness_input_sha256": {
+    ".build/contracts/p08-checked-state-correction2/TestMain-macos.swift": "f6aaa24985e00a4ec4523d76a854e9138e994e82a6f3d3236586a09556be779a",
+    ".build/contracts/p08-checked-state-correction2/regression-compile-macos-linker-setup2-command.json": "60af41055ee410f256d84181d32ee2cb6c458bdca787baa280f4453684aa7278",
+    ".build/contracts/p08-checked-state-correction2/runtime-setup3-environment.json": "506223b030858a44399fe9f76474a6f86de4ef4ea7e2b483427b38130f79e00b",
+    ".build/contracts/p08-checked-state-correction2/continue-provider-runtime-setup3.py": "2405b14c1637607570dd622cdf0b4142ad763699e4473d118f2fd7a53b208136"
+  },
+  "later_gates": "Only after focused provider/ordinary/privacy PASS: existing activity gates3-4 and existing combined source function map, with fresh command review before execution. No new file/dependency/source repair without independent amendment; no allowance reset.",
+  "prior_combined_map": "../checked-state-candidate1/source-boundary.json",
+  "prohibited": [
+    "restore protected changes",
+    "edit finite lowerer/State/public macro names/protocols or fixture expectations in initial candidate",
+    "repair generated output",
+    "alter lifetime/private/zero-heap/cold assertions or compiler policy",
+    "connect, deploy, flash or mutate global toolchain"
+  ]
+}

@@ -16,6 +16,63 @@ superseded_by: null
 
 # P08 checked State serialization
 
+## Annotation eligibility amendment — 2026-10-17
+
+The [new one-candidate activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-activity.md)
+is a derived compatibility correction after the exhausted activity below.
+Independent design review is pending; no new source candidate has started.
+It changes only whether the two existing macro witnesses receive their paired
+`@inlinable` / `@inline(__always)` attributes. Ordinary inputs keep the original
+direct-private-field route with neither attribute, at every host access level.
+Witness names/access/signatures and public macro/protocol declarations stay exact.
+
+Serialize both witnesses only when **all** these syntactic prerequisites hold:
+
+1. At least one lexical State exists and the existing structural validator
+   accepts the complete concrete-schema helper pair for **every** State in this
+   owning nominal. No direct private-field visit remains in a serialized witness.
+2. The host and every enclosing nominal are ABI usable: public/open, or
+   internal/package with `@usableFromInline`. Private/fileprivate, local-function
+   contexts and unprovable extension/enclosing contexts are ineligible. Use macro
+   lexical context, not just the attached declaration's visibility. An absent
+   enclosing context is top-level; do not infer access for an opaque context.
+3. The finite shape has one phantom generic D with its read-domain constraint,
+   one ABI-usable instance `typealias Domain = D`, and exactly one nongeneric
+   instance `_giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+   throws(_GiftUIAccessFailure) -> some View<D>`. The evaluation declaration must
+   itself be `@inlinable` and ABI visible (public/open, internal/package with
+   `@inlinable` or `@usableFromInline`), never private/fileprivate/static/class.
+   Compare parsed signature/alias structure and exact identifiers; do not inspect
+   a body substring or recognize application/type names. `@ViewBuilder` and the
+   existing evaluation body are preserved, not rewritten by the member macro.
+
+The macro cannot prove emission history or resolve arbitrary Swift type access.
+Complete finite shape validation selects the operation; the existing lowerer's
+reserved-input rejection prevents authored collisions. Compiler checking of the
+evaluation's `@inlinable` body/signature, helpers' ABI signatures and enclosing
+declarations qualifies the referenced dependency closure. Any illegal dependency
+must fail the fresh provider compile, never be repaired by widening source access.
+This is not a visibility-only heuristic, new trust marker or semantic fallback.
+
+If the helper pair is malformed, preserve the existing diagnostic/no-witness
+behavior. If helpers are valid but any serialization prerequisite is absent,
+emit the existing witness operations without the two attributes. No synthetic
+helper or ABI annotation is added. Ordinary no-helper inputs always use original
+wrapper visitation, even if their host happens to be public or ABI usable.
+Lowered valid-helper inputs still yield the same original wrapper; withholding
+serialization does not substitute a getter/setter copy.
+
+Tests distinguish ordinary/private-State compatibility from actual lowered
+serialization, including all five ordinary visibilities, enclosing-private access,
+ineligible evaluation/Domain/host dependencies and existing malformed pairs.
+Fresh compiler positives and the repaired package-access positive/negative twins
+precede physical codegen and the unchanged actual-host strict cold gates.
+No ownership, failure ordering, zero heap, resource or cross-module contract
+changes follow from this attribute correction. The original helper design and
+all unfinished codegen/safety/cold obligations below continue to govern.
+
+## Historical exhausted activity
+
 Current final boundary — STOP, initial1/1 and corrections2/2 consumed. The linked
 final receipt records exact actual-output regression1/0/0 and fresh provider PASS;
 six privacy controls PASS, ordinary unlowered private-host positive FAILS at

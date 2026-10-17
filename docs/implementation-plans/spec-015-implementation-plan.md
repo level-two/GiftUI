@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-16
+updated: 2026-10-17
 related_design_notes:
   - ../implementation-designs/spec-015-p08-checked-state-serialization.md
   - ../implementation-designs/spec-015-p08-native-cold-static.md
@@ -28,6 +28,15 @@ superseded_by: null
 ---
 
 # SPEC-015 Implementation Plan
+
+Current [witness annotation compatibility activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-activity.md):
+new user-authorized candidate0/1, no automatic source repairs; independent design
+review precedes source. Condition the existing two macro witness attribute pairs
+on the validated finite ABI-eligible helper route, preserve all five ordinary
+host visibilities/private backing, and repair the external FrameRead access test
+with a valid matching same-package positive. Only on fresh focused PASS resume
+the existing physical/actual-host/safety/cold gates. Historical initial1/1 and
+corrections2/2 stay closed; source remains unaccepted; P08/R07/T8.1 remain open.
 
 [Independent final checked-State review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-checked-state-final-independent-review.md)
 confirms a valid ordinary-private compatibility FAIL and final STOP with

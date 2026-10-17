@@ -155,6 +155,7 @@ features:
       - canvas-drawing
     milestone: MVP
   giftui-mvp-architecture:
+    # Current bounded annotation compatibility activity: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-activity.md; candidate0/1, independent design review pending; prior checked-State initial1/1+corrections2/2 exhausted, P08 open.
     # ADR-038 accepted: Option B docs approved 2026-10-12; implementation separate, not started.
     # Approval: docs/iterations/iteration-003-review/rfc-014-spec-approval.md.
     # Compiler-upgrade assessment: FW-036, ITERATION-004 revision 2 I4-05 / I4-AC-006.
