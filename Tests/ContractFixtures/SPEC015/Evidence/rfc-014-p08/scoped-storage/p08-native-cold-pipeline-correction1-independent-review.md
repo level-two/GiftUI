@@ -70,8 +70,9 @@ write a separate result under `.build/contracts/` and freeze its small evidence.
    and exact fresh modules; current formatted source is a different byte snapshot.
    Record the SDK identity and macro runtime dependencies as well. Do not rebuild
    the macro, alter source, replace retained dependencies or reorder/deduplicate
-   `-I` entries. Copy the recorded cache to a new output directory; preserve its
-   original hash inventory and record every subsequent diagnostic cache change.
+   `-I` entries. **Cache instruction corrected after the recorded setup failure:**
+   use the [hash-verified original cache in place](native-cold-pipeline-module-resolution-diagnostic/independent-setup-review.md)
+   with pre/post inventories; its PCM embeds that path and cannot be relocated.
 2. Read the pinned front-end's hidden help once to confirm diagnostic syntax.
    Its binary contains `-Rmodule-loading`, `-Rmacro-loading`,
    `-Rmodule-serialization`, `-dump-macro-expansions` and
