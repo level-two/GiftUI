@@ -1,5 +1,10 @@
 # Module-resolution diagnostic replay — 2026-10-17
 
+Subsequent [consumer-only replay and observer recipe](../native-cold-pipeline-consumer-loading-result/README.md)
+omits the conflicting optional trace flag and establishes the frozen physical
+imports. Function-body serialization/optimizer reasoning is still unresolved;
+no corrective2 or runtime occurred.
+
 This packet records the one provider replay and the one consumer replay authorized by the independent setup review at `../native-cold-pipeline-module-resolution-diagnostic/independent-setup-review.md`. Both used frozen archived sources and the original module cache. No source, compiler input, cache contents, flags, or maintained configuration were changed.
 
 ## Result

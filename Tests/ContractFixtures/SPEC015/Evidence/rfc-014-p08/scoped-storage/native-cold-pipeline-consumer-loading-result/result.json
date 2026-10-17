@@ -1,0 +1,345 @@
+{
+  "kind": "single consumer-only loading diagnostic; no source correction or runtime",
+  "head": "e4f130dffc1fd05c13e74d97278b7675d093ee58",
+  "corrective_cycles_used": 1,
+  "corrective_cycle_limit": 2,
+  "corrective2_started": false,
+  "consumer_run": {
+    "exit": 0,
+    "started": "2026-10-17T09:59:47.989365+00:00",
+    "finished": "2026-10-17T10:00:06.232477+00:00",
+    "elapsed_seconds": 18.243112,
+    "cache_before": {
+      "71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": "0af25216d53340cd89fb4135bdda4d421eea2360dfcc5cb646db90b0b6cfd865",
+      "71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": "754aef26a16297a5b89f683412c15c024136c6beaf065835c02412ba509fbf2e",
+      "modules.timestamp": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cache_after": {
+      "71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": "0af25216d53340cd89fb4135bdda4d421eea2360dfcc5cb646db90b0b6cfd865",
+      "71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": "754aef26a16297a5b89f683412c15c024136c6beaf065835c02412ba509fbf2e",
+      "modules.timestamp": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cache_unchanged": true,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "d95c34c6c2fa1eae2184cf0dcafb3dc5913a532744ba2a7e7c2859e1f74e62d0",
+    "output_hashes": {
+      "P08CounterRuntime-probe.swiftdoc": "70023fa17f80d242ce65d8b79eb74db20ef3930f4496ceb5e8eb1b13d673678a",
+      "P08CounterRuntime-probe.swiftmodule": "b82eca09a421aecd0e6f95ffd3f89882c77ddad81f05d3c51b11a071a5a01f96",
+      "P08CounterRuntime-probe.swiftsourceinfo": "dfabc3d4644ba82ca0eb5e67f0ab327208ed4d53604e885bcec0311cc1e237f5",
+      "P08CounterRuntime.sil": "af59e3aa15141d275ab439db91bc9ddcd30ee3fbc2c31f7e16faff31ea4400b9"
+    }
+  },
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "removed_optional_diagnostic": [
+    "-Xfrontend",
+    "-emit-loaded-module-trace-path",
+    "-Xfrontend",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-module-resolution-diagnostic-replay2-actual/consumer/loaded-modules.json"
+  ],
+  "ordered_imports_unchanged": true,
+  "input_source_hashes": {
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift": "d6cdcf1f033a26225d856eb4dd4c5401b76b63d7f78040e111417cdb82bfa41c",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift": "b1f575db79c688b2534ebe3681fea99864222715f8b9ef83dd3fcde16e261c9f",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift": "c49cc7ad1d5de5bcc3a228defd78ce16a1d6e56c775d9227f5648339540eaa2c",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift": "b14a1667a899fc539c8a8d8011d2e377188ce0300012e464ac1f0d1203a999ab",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": "36d137a0fdf0d6159dfc8502b86bd5bc78037fa1cfa5a86038513c9523b31677",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": "0e13001714af86c5f93cc150678c07c0b3a32c58b3a524fd43edb23eae19990b",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "2102a16c9f3b190945028df70f31b329d1005bd7cdf1a6cc666f3f5983202026",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": "f7152c3e886322e482aaa040b98f15ac820d0aa9a15af86260229bc56df64010",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift": "abae5f87b3390863d8a68657c98b46a0fe9829f96a332affe44fbbb4fcce4d5a",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift": "6d713ae96bf4982c46f30289068dc97e5d4e32e3dae69f1874dd5e808d053d2b",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": "1129e33dcab9bb075d3c11dac16cedd72c26efad6da87adc204b68de25408ee7",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": "d084112a1ee54cc8c01fc5f24a7416ee3a6b23afdc6710f42635a76c370fea26",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": "342585dd23bc2916176535bfdb9efd7ba115a138047afe3fcda082acbf7adf8e",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": "be59651c2f7f657f1785f51fa31767f6319dc543c023d901057fa0deb4bace81",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": "46ab40914dade59536f53650bd97ce8d74ee57da86a8a826330f629c64a89f9c",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": "06b5775b618a78b757495de8c86a2352b8e8371e0c854f3d93463f685585f05e",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": "60d013e2570e5ea3ac6efbbadb97dd79d6b7fa0a47e680e72a7071909fddb686",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift": "bfe4a208dd72fe47cb2a72331228cf9c9981114e03d49a91b99541957e7f80b5",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift": "cf9f5467416298dd64f604f5d0edf436b1736dc5972d78721da38c61151cb588",
+    ".build/contracts/p08-native-cold-correction1-module-resolution-diagnostic/inputs/compiled-source/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": "bfcf074ec49455e7d5cc527b4a65cf9b9374da2c96914f8b8bdf8908ca90ec6b"
+  },
+  "loaded_modules": [
+    {
+      "name": "SwiftShims",
+      "source": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/shims/module.modulemap",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm",
+      "sha256": "0af25216d53340cd89fb4135bdda4d421eea2360dfcc5cb646db90b0b6cfd865"
+    },
+    {
+      "name": "Swift",
+      "source": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/Swift.swiftmodule/arm64-apple-macos.private.swiftinterface",
+      "loaded": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/Swift.swiftmodule/arm64-apple-macos.swiftmodule",
+      "sha256": "b5e57cfeee02ecc7cf93c04e3f0010c6b2751d252c1cf54ca1c0dc6c3bba11e6"
+    },
+    {
+      "name": "_StringProcessing",
+      "source": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/_StringProcessing.swiftmodule/arm64-apple-macos.private.swiftinterface",
+      "loaded": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/_StringProcessing.swiftmodule/arm64-apple-macos.swiftmodule",
+      "sha256": "be7bbb0ce15a147975436d8024c37e1b56ad37a4582b26f3b3a5e6025e4a8805"
+    },
+    {
+      "name": "_SwiftConcurrencyShims",
+      "source": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/shims/module.modulemap",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm",
+      "sha256": "754aef26a16297a5b89f683412c15c024136c6beaf065835c02412ba509fbf2e"
+    },
+    {
+      "name": "_Concurrency",
+      "source": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/_Concurrency.swiftmodule/arm64-apple-macos.private.swiftinterface",
+      "loaded": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/_Concurrency.swiftmodule/arm64-apple-macos.swiftmodule",
+      "sha256": "d945a93dbd3c5d8df11a4c9ab74500a95345895f377a1d6f9785c1cea2ab5582"
+    },
+    {
+      "name": "GiftUI",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUI.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUI.swiftmodule",
+      "sha256": "04bf1e2d56f2b4793f19288829ddbdf2bf44559bdae3aae93d13466d137acadd"
+    },
+    {
+      "name": "GiftUITextResources",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUITextResources.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUITextResources.swiftmodule",
+      "sha256": "9c29e4568c9b98bf36c4009a868b4e92ae1d506817ca0c9a5c89f645b4e2b35c"
+    },
+    {
+      "name": "GiftUIRenderCore",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIRenderCore.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIRenderCore.swiftmodule",
+      "sha256": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867"
+    },
+    {
+      "name": "GiftUIExecution",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIExecution.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIExecution.swiftmodule",
+      "sha256": "0558529e3dbc43cb78ea94e1c98eaac89625dd4139676d48db523dc9dbe31d98"
+    },
+    {
+      "name": "GiftUISemanticCore",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUISemanticCore.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUISemanticCore.swiftmodule",
+      "sha256": "4e36d5d5dae90ffc111b2024de389f6398fa8ee07576fba1b3b2c68db495c243"
+    },
+    {
+      "name": "GiftUIObservableState",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIObservableState.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIObservableState.swiftmodule",
+      "sha256": "5b4fbb80a1cdc80409e60168debe6bdff6d9291d0560680875a665741796059e"
+    },
+    {
+      "name": "P08CounterSchema",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/P08CounterSchema.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/P08CounterSchema.swiftmodule",
+      "sha256": "6f2860f736b05228fffa9ead8a543628023666146f227bb638a52e496ff08d39"
+    },
+    {
+      "name": "P08CounterPresentation",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/P08CounterPresentation.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/P08CounterPresentation.swiftmodule",
+      "sha256": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439"
+    },
+    {
+      "name": "GiftUILayout",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUILayout.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUILayout.swiftmodule",
+      "sha256": "5dceb9af95e4601603446f6f12f2bab6543b61cd44fe74bfd758676cf8a24859"
+    },
+    {
+      "name": "GiftUIRenderLowering",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIRenderLowering.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIRenderLowering.swiftmodule",
+      "sha256": "fbca0191add721128eccb3dc71236efc1bf93bd366f287d77986ca212e9889f4"
+    },
+    {
+      "name": "GiftUIDrawing",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIDrawing.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIDrawing.swiftmodule",
+      "sha256": "18fd8e01c27b1289f3beaca2c794455622e9003ca89fcd66115c479e4afd578d"
+    },
+    {
+      "name": "P08CounterTable",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/P08CounterTable.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/P08CounterTable.swiftmodule",
+      "sha256": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df"
+    },
+    {
+      "name": "GiftUIInteraction",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIInteraction.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIInteraction.swiftmodule",
+      "sha256": "ff60db22ca59c9c043dad21134617c801e15f8165deca9d5977f73b99e4a0cfd"
+    },
+    {
+      "name": "GiftUIRuntimeCore",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIRuntimeCore.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIRuntimeCore.swiftmodule",
+      "sha256": "127c0f06bfb6d8a5fda46b3df42e820d22e9ff8c1fc45dd2148c68955a2574e2"
+    },
+    {
+      "name": "GiftUIRuntimeStatic",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIRuntimeStatic.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIRuntimeStatic.swiftmodule",
+      "sha256": "8d3cab6aee7b04918f850f33fca92551c9822161bc8f6be819c6858c5f78622a"
+    },
+    {
+      "name": "GiftUIRuntimeDynamic",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIRuntimeDynamic.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIRuntimeDynamic.swiftmodule",
+      "sha256": "9c50d0b5a35bd28baf37d774330a81e5f6729ab4fabf71a882fd5cc5e065b36d"
+    },
+    {
+      "name": "GiftUIReferenceTextResources",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIReferenceTextResources.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIReferenceTextResources.swiftmodule",
+      "sha256": "c852bebd8ad7261ccacbe541b482c0696b291b3be58c9692fd0d55a5520aeda1"
+    },
+    {
+      "name": "GiftUICapabilities",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za/GiftUICapabilities.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za/GiftUICapabilities.swiftmodule",
+      "sha256": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf"
+    },
+    {
+      "name": "GiftUIFailureCore",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za/GiftUIFailureCore.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za/GiftUIFailureCore.swiftmodule",
+      "sha256": "ce7ffbc90a1067d01bc0eabf58048af72941c51cc2325a3573dcd2a30e25b465"
+    },
+    {
+      "name": "GiftUISurfaceCore",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za/GiftUISurfaceCore.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za/GiftUISurfaceCore.swiftmodule",
+      "sha256": "ebfeb04dfebf4e6c2c5f1d36d50c670968f482fb5f1161362f686545b79373b1"
+    },
+    {
+      "name": "GiftUIDisplayCore",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za/GiftUIDisplayCore.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za/GiftUIDisplayCore.swiftmodule",
+      "sha256": "71a5cbb5d9024428b31a166bda49c8ba43db465e7a1b3c1410c55331be4b6f71"
+    },
+    {
+      "name": "GiftUIRasterCore",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za/GiftUIRasterCore.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za/GiftUIRasterCore.swiftmodule",
+      "sha256": "98f2c71f1bcbfe3e5a55f28974f4563d3abf9159fc476ae84ca1a30da5d96301"
+    },
+    {
+      "name": "GiftUIBackendIntegration",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za/GiftUIBackendIntegration.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-hzs5q7za/GiftUIBackendIntegration.swiftmodule",
+      "sha256": "d07e1ef9aefd8a91aca96a834c77255611f0fba50eabd7ecf31ba0f4e00bf19d"
+    },
+    {
+      "name": "GiftUIHostConfiguration",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIHostConfiguration.swiftmodule",
+      "loaded": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-correction1-codegen/GiftUIHostConfiguration.swiftmodule",
+      "sha256": "8d4313cb5bfaf385dd0da2817679c0060c2cf440b1749a65b8fb7f09835ed25d"
+    }
+  ],
+  "provider_module_equals_frozen_loaded_module": true,
+  "provider_macro_attributes_observed": [
+    "@inlinable",
+    "@inline(__always)"
+  ],
+  "consumer_generic_apply_survives": true,
+  "per_function_serialized_body_status": "unresolved: remarks do not expose serialized body or deserializer/inliner decision",
+  "source_repair_selected": null,
+  "archive_sha256": "02638c269a3a698fca993132458faf2db8db9b49e32ef3f32f5544ac4a2df395",
+  "archive_members_sha256": {
+    "consumer/command.json": "243a295c4e0af515cee079806b296ee773ac8450615abe8ad418220fb99d8dfc",
+    "consumer/preflight.json": "2872d29fa124edfc2c88c3a5793edc04ecc78601131dba906985c567a46ab6ac",
+    "consumer/result.json": "2ffa980dd0ca6bf9ecc78b4236a2e7711b4fc180ec8e546ccc2600990411dc1e",
+    "consumer/stderr.log": "d95c34c6c2fa1eae2184cf0dcafb3dc5913a532744ba2a7e7c2859e1f74e62d0",
+    "consumer/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "consumer/P08CounterRuntime.sil": "af59e3aa15141d275ab439db91bc9ddcd30ee3fbc2c31f7e16faff31ea4400b9",
+    "consumer/P08CounterRuntime-probe.swiftmodule": "b82eca09a421aecd0e6f95ffd3f89882c77ddad81f05d3c51b11a071a5a01f96",
+    "provider-prior-pass/command.json": "e4a563b38ef7ad5d68404bcf2fd2aebc1fc450208af484b67e1735629bc3a491",
+    "provider-prior-pass/result.json": "a793ca68e573497c62d3eabcd4815085c3bebfed674a553649556f7646a39a5a",
+    "provider-prior-pass/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "provider-prior-pass/stderr.log": "5ef086b7063d7654f06c052273f832389e2702c36e66741b7a0389312bf694e6",
+    "provider-prior-pass/loaded-modules.json": "b5db9106abf121699b8e9cd18d750b1f884d968d53bcf8d1e36c0f1b8cadc45e",
+    "provider-prior-pass/P08CounterPresentation.swiftmodule": "aa24dafcd48c8dc1079bae766633e723f980767af04240b7f11bd4b125e71439",
+    "inspection/llvm-help-command.json": "5ffa2f11196f0a44293540918ea9a0b4b1cfaa375d96e59e68a626a5bbf1bee7",
+    "inspection/llvm-help.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "inspection/llvm-help.stderr": "dbfd16dc29662279ad3d4e607b1feee81cb86d7613e961af386e92d3f26df72b",
+    "inspection/llvm-help-with-null-command.json": "eb7090e5f51d124ca83fe2428179aa8eca261b63d8923fba640e3d1ac328cca1",
+    "inspection/llvm-help-with-null.stdout": "d2b339ddb49c1878f9289f519a0b3a908fe76eafc7bd885c1aca7c978965090a",
+    "inspection/llvm-help-with-null.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "inspection/targeted-binary-options.txt": "da480edcae8f8f6d4a6b7b0533656af3fa7240b6e86b37b1dc7d7fc948a0c791",
+    "inspection/pinned-tool-inventory.json": "a933faa798728a5b98255fe268860c2641188d91ac99fe69c559a87525048266"
+  },
+  "external_diff_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+  "plugin_sha256": "a3f145cb593164dc9bbb9a19f960efe4e63244a0069a78bd7c6d0675080df306",
+  "sdk_settings_sha256": "f8d005f09381389167f9e0aeaa169bc9e7dff162ef22ca2fd8e98df7ff1acafe",
+  "help_only_queries": [
+    {
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend",
+        "-Xllvm",
+        "-help-hidden"
+      ],
+      "exit": 1
+    },
+    {
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend",
+        "-emit-sil",
+        "/dev/null",
+        "-Xllvm",
+        "-help-hidden"
+      ],
+      "exit": 0,
+      "kind": "help-only with /dev/null input to pass frontend argument validation; no consumer replay"
+    }
+  ],
+  "next_observer": {
+    "executed": false,
+    "argv_file": "next-observer-command.json",
+    "output_directory": ".build/contracts/p08-native-cold-correction1-consumer-pass-observer",
+    "added_observational_args": [
+      "-Xllvm",
+      "-sil-print-all",
+      "-Xllvm",
+      "-sil-print-functions=0B6ScreenV15_giftUITraverse",
+      "-Xllvm",
+      "-sil-print-pass-name"
+    ],
+    "source_or_optimization_policy_change": false
+  },
+  "checks": {
+    "offline_packet_verifier": "PASS",
+    "runner_ast_parse_without_execution": "PASS",
+    "governance": "PASS",
+    "local_links": "PASS",
+    "diff_whitespace": "PASS"
+  },
+  "derived_files_sha256": {
+    "README.md": "f2fa05cdfa83fe98fe5f0a61733c27c6ee8c830245a162ec1a732b45748af66d",
+    "consumer-excerpts.sil.txt": "f21da7b91feeec7e3fc0c46254e2b2eb585d72fef4e3fe9d810ba505f54f909e",
+    "next-observer-command.json": "73b31353a0f84f3826c05d47545901a35a48414a9015d46454798c946b85b7bc",
+    "provider-expansion.txt": "c57228eab96bffbbbf6de2781bdf5ce9ab81c5b7433e3f2bc751130b0e6b2bf0",
+    "run-next-observer.py": "0f61a98ff80373e6e1dd390490869870d125837960f37b22b68ef4b786c3c1a7",
+    "verify.py": "bb2d5b1413cea4f60ca41a0a692403a254f8746834e101d07763b96428b69f2e"
+  }
+}
