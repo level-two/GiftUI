@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current renewed P08 activity: Eugene authorized [one bounded maintained P02
+prerequisite continuation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-continuation.md)
+after the withdrawn candidate 1 STOP. A new candidate 0/1 with zero automatic
+source repairs is pending; all historical counts remain closed. Source and
+validation have not started under this continuation. P08/R07/T8.1 remain open.
+
 Current P08 execution activity: [one bounded maintained P02 prerequisite correction](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-activity.md)
 stopped during initial source construction. The [withdrawn candidate receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate1/README.md)
 archives the exact four-file partial diff and test-construction defects. Candidate

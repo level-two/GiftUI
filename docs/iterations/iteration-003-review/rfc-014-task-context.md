@@ -1,5 +1,10 @@
 # RFC-014 task context guide
 
+Current P08 resumption: [one bounded maintained P02 prerequisite continuation](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-continuation.md)
+is authorized by Eugene's “Yes, allowed, please go ahead” after the candidate 1
+STOP. New candidate 0/1, zero automatic source repairs; prior budgets remain
+closed. No new source or validation has run yet. P08/R07/T8.1 remain open.
+
 Current P08 work: [one bounded maintained P02 prerequisite correction](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-activity.md)
 stopped at initial source inspection. The [withdrawn candidate receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate1/README.md)
 preserves the exact partial diff and test-construction defect. Candidate 1/1
