@@ -24,3 +24,7 @@ Any material failure freezes this sole candidate; no automatic source/fixture
 repair, retry, budget reset or20root expansion. Subsequent privacy,20physicalroots,
 actual42/keybackend/all23 read-only interpretation and full safety/strictcold remain
 required before P08/R07/T8.1 acceptance. [Prepared packet](resolver-candidate1/README.md).
+
+[Qualification1](resolver-qualification1/README.md) prepared/validationonlyPASS:
+587inputs/39privacy/20physical/7modules/matchingobject/conditional42SIL. Noexecution;
+fullactualprivateP08/14loan safety remains distinct, strictcold/P08 unaccepted.

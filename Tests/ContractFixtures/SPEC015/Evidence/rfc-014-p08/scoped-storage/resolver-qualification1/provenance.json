@@ -1,0 +1,29 @@
+{
+  "source_commit": "780c90c3",
+  "fixed_candidate": "1/1,0automaticrepairs; oldbudgetsunchanged",
+  "existing30": "byteidenticalfixtures/argv only freshimport/cache/fixture paths",
+  "new9": "three typedresolverpositives,six isolatedinternalfield/helpernegatives",
+  "decoder": "same6+Execution,unchangedcompleteindexinterpreter/matchedLLVM21/schema0/1003",
+  "object": "same nm/disassemblyrelocationrecipe currenthashmatched42hostobject",
+  "consumer": "same42 sources/order/flags/environment; pathonly freshimports/generated/cache/output",
+  "consumer_path_adjustments": [
+    {
+      "argument_index": 2,
+      "before": "/Users/eugene/work/GiftUI/.build/contracts/p08-runtime-complete-pipeline-candidate1/modules",
+      "after": "/Users/eugene/work/GiftUI/.build/contracts/p08-resolver-candidate1/modules"
+    },
+    {
+      "argument_index": 14,
+      "before": "/Users/eugene/work/GiftUI/.build/contracts/p08-runtime-complete-pipeline-qualification1/cache",
+      "after": "/Users/eugene/work/GiftUI/.build/contracts/p08-resolver-qualification1/cache"
+    },
+    {
+      "argument_index": 72,
+      "before": "/Users/eugene/work/GiftUI/.build/contracts/p08-runtime-complete-pipeline-qualification1/actual-host.sil",
+      "after": "/Users/eugene/work/GiftUI/.build/contracts/p08-resolver-qualification1/actual-host.sil"
+    }
+  ],
+  "latergate": "no metadata/allocation/specialization or actualP08privacy/full safety acceptance inferred",
+  "source_mutations": 0,
+  "automatic_source_repairs": 0
+}
