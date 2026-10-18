@@ -1,0 +1,612 @@
+{
+  "campaign_commit": "c5a22204",
+  "campaign_output_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4",
+  "status": "STOP_first_material_failure_dependents_unrun_no_retry_zero_repairs",
+  "stage_count": 41,
+  "control_receipt_count": 10,
+  "producer_receipt_count": 2,
+  "stop_stage": "macos-static-negative-A8-AnalyzerPresentation",
+  "error": "AssertionError(('gutter is not an exact repeat or declared display-only form', \"   |                 `- note: property 'index' is not '@usableFromInline' or public\"))",
+  "files": [
+    {
+      "path": "result.json",
+      "bytes": 160579,
+      "sha256": "6161b83b3d157aa4f1c49a2fea864c544a14252a4d72db00a3869d737f52d36a"
+    },
+    {
+      "path": "postformat-freeze.json",
+      "bytes": 86847,
+      "sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333"
+    },
+    {
+      "path": "logs/P02-macos-static.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/P02-macos-static.stdout",
+      "bytes": 570,
+      "sha256": "c1811d4ae5334b5597672e0c1b36446572c4a1485bc0072bf5465f61324ef0a5"
+    },
+    {
+      "path": "logs/macos-static-negative-A1-AnalyzerSchema.stderr",
+      "bytes": 2281,
+      "sha256": "3a8a09f1d0b6b2c36dba127d8867c0d15f3bb623bd67c93ea71b5b67b84d25f1"
+    },
+    {
+      "path": "logs/macos-static-negative-A1-AnalyzerSchema.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A1-SignalAnalyzerDomain.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A1-SignalAnalyzerDomain.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A1-lower-Analyzer-source.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A1-lower-Analyzer-source.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A2-AnalyzerSchema.stderr",
+      "bytes": 5547,
+      "sha256": "e928f8e5b1b294b403e0a9833319a8d8636fdc35e161d908bcbeabd73d87ed34"
+    },
+    {
+      "path": "logs/macos-static-negative-A2-AnalyzerSchema.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A2-SignalAnalyzerDomain.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A2-SignalAnalyzerDomain.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A2-lower-Analyzer-source.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A2-lower-Analyzer-source.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A3-AnalyzerPresentation.stderr",
+      "bytes": 1352,
+      "sha256": "ced9741ec935e71c4a2e88a12d76f9b9dad9cea6727d4a50ce3158ef91219a23"
+    },
+    {
+      "path": "logs/macos-static-negative-A3-AnalyzerPresentation.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A3-AnalyzerSchema.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A3-AnalyzerSchema.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A3-SignalAnalyzerDomain.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A3-SignalAnalyzerDomain.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A3-lower-Analyzer-source.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A3-lower-Analyzer-source.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A4-SignalAnalyzerDomain.stderr",
+      "bytes": 766,
+      "sha256": "8d0c197f505c922df4cec4bf121aed060a36d82d63d1521f25a88b62815361aa"
+    },
+    {
+      "path": "logs/macos-static-negative-A4-SignalAnalyzerDomain.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A5-AnalyzerPresentation.stderr",
+      "bytes": 1305,
+      "sha256": "0b0f36e82fd170dbd3cd721fed3fd33672e05664b7cd25717d0e05b50ba6d7f9"
+    },
+    {
+      "path": "logs/macos-static-negative-A5-AnalyzerPresentation.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A5-AnalyzerSchema.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A5-AnalyzerSchema.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A5-SignalAnalyzerDomain.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A5-SignalAnalyzerDomain.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A5-lower-Analyzer-source.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A5-lower-Analyzer-source.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A6-SignalAnalyzerDomain.stderr",
+      "bytes": 839,
+      "sha256": "48fcd9ea31702f9c6bca93e4790d8e922b0e32fd20d8daaef0459474da726f2c"
+    },
+    {
+      "path": "logs/macos-static-negative-A6-SignalAnalyzerDomain.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A7-AnalyzerPresentation.stderr",
+      "bytes": 4495,
+      "sha256": "fe7b73cd89614b3536b79895b95184077d38db0636e88d9c053cd5265f3cfabb"
+    },
+    {
+      "path": "logs/macos-static-negative-A7-AnalyzerPresentation.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A7-AnalyzerSchema.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A7-AnalyzerSchema.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A7-SignalAnalyzerDomain.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A7-SignalAnalyzerDomain.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A7-lower-Analyzer-source.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A7-lower-Analyzer-source.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A8-AnalyzerPresentation.stderr",
+      "bytes": 1165,
+      "sha256": "6f554d6c0e7434d70bf1b83c69391dc9f2a47cc7d94db28d94e3f70a326c597d"
+    },
+    {
+      "path": "logs/macos-static-negative-A8-AnalyzerPresentation.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A8-AnalyzerSchema.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A8-AnalyzerSchema.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A8-SignalAnalyzerDomain.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A8-SignalAnalyzerDomain.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A8-lower-Analyzer-source.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-negative-A8-lower-Analyzer-source.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-actual-lowering-AnalyzerPresentation.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-actual-lowering-AnalyzerPresentation.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-actual-lowering-AnalyzerSchema.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-actual-lowering-AnalyzerSchema.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-actual-lowering-DeclarationHost.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-actual-lowering-DeclarationHost.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-actual-lowering-SignalAnalyzerDomain.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-actual-lowering-SignalAnalyzerDomain.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-actual-lowering-execute.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-actual-lowering-execute.stdout",
+      "bytes": 22,
+      "sha256": "94470d4cec26a2d7467a79311e5c31cf525905a7606457638de19f8e57a63570"
+    },
+    {
+      "path": "logs/macos-static-positive-actual-lowering-link.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-actual-lowering-link.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-actual-lowering-lower-Analyzer-source.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-actual-lowering-lower-Analyzer-source.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-semantics-ABISemantics.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-semantics-ABISemantics.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-semantics-execute.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-semantics-execute.stdout",
+      "bytes": 37,
+      "sha256": "5251afd6a5f704643bfcca1a6a3fab552f34f89e87a5f7fee2cea96bb1523cb0"
+    },
+    {
+      "path": "logs/macos-static-positive-semantics-link.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-semantics-link.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-serialized-read-ABIRead.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macos-static-positive-serialized-read-ABIRead.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macro-compile.stderr",
+      "bytes": 31711,
+      "sha256": "3d307ed7cbb8da64e98d97c6af5856b5b73124774bcc7c9822afbf287183cc10"
+    },
+    {
+      "path": "logs/macro-compile.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macro-link.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macro-link.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macro-tests-link.stderr",
+      "bytes": 159,
+      "sha256": "6ef285ac97cbfae3abdfc0d8f6f61c5ead66235224a0f6d76bb9a32f184c34ca"
+    },
+    {
+      "path": "logs/macro-tests-link.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/macro-tests.stderr",
+      "bytes": 4783,
+      "sha256": "0ed3433cf06bd77122efafc90326ba03212966b259ab0840cfa9639fca0c194f"
+    },
+    {
+      "path": "logs/macro-tests.stdout",
+      "bytes": 33,
+      "sha256": "97105b2dd32e2b4d4a150173ae6255397fd8c425aa559598ae1e17d35b75d758"
+    },
+    {
+      "path": "logs/sdk-preflight.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/sdk-preflight.stdout",
+      "bytes": 99,
+      "sha256": "c2206d451c0f37ff92c73e016a829888392894a99b15cddd3f365a6195412818"
+    },
+    {
+      "path": "receipts/0.json",
+      "bytes": 15198,
+      "sha256": "3bc446b7841ca8f71897d4398158567c13ee33cb3ce2c06fc307fa0a459aa6c8"
+    },
+    {
+      "path": "receipts/1.json",
+      "bytes": 26621,
+      "sha256": "33b14d028cb53d3e81b04253ce81570878e29959ecaa996343b19c3408b83fe5"
+    },
+    {
+      "path": "macos-static/scratch/positive-actual-lowering/AnalyzerPresentation.swift",
+      "bytes": 1239,
+      "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+    },
+    {
+      "path": "macos-static/scratch/positive-actual-lowering/AnalyzerSchema.swift",
+      "bytes": 3247,
+      "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+    },
+    {
+      "path": "macos-static/scratch/positive-actual-lowering/inputs/ABIRead.swift",
+      "bytes": 205,
+      "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+    },
+    {
+      "path": "macos-static/scratch/positive-actual-lowering/inputs/AcquisitionState.swift",
+      "bytes": 243,
+      "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+    },
+    {
+      "path": "macos-static/scratch/positive-actual-lowering/inputs/Analyzer.swift",
+      "bytes": 811,
+      "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+    },
+    {
+      "path": "macos-static/scratch/positive-actual-lowering/inputs/Main.swift",
+      "bytes": 176,
+      "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+    },
+    {
+      "path": "macos-static/scratch/positive-actual-lowering/inputs/Semantics.swift",
+      "bytes": 1620,
+      "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+    },
+    {
+      "path": "macos-static/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift",
+      "bytes": 5671,
+      "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+    },
+    {
+      "path": "macos-static/scratch/positive-actual-lowering/inputs/SignalPrimitiveValues.swift",
+      "bytes": 1582,
+      "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+    },
+    {
+      "path": "macos-static/scratch/negative-A4/inputs/ABIRead.swift",
+      "bytes": 205,
+      "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+    },
+    {
+      "path": "macos-static/scratch/negative-A4/inputs/AcquisitionState.swift",
+      "bytes": 243,
+      "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+    },
+    {
+      "path": "macos-static/scratch/negative-A4/inputs/Analyzer.swift",
+      "bytes": 811,
+      "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+    },
+    {
+      "path": "macos-static/scratch/negative-A4/inputs/Main.swift",
+      "bytes": 176,
+      "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+    },
+    {
+      "path": "macos-static/scratch/negative-A4/inputs/Semantics.swift",
+      "bytes": 1620,
+      "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+    },
+    {
+      "path": "macos-static/scratch/negative-A4/inputs/SignalAnalyzerDiagnostic.swift",
+      "bytes": 5671,
+      "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+    },
+    {
+      "path": "macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "bytes": 1564,
+      "sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d"
+    },
+    {
+      "path": "macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+      "bytes": 1217,
+      "sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2"
+    },
+    {
+      "path": "macos-static/scratch/negative-A7/AnalyzerSchema.swift",
+      "bytes": 3247,
+      "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+    },
+    {
+      "path": "macos-static/scratch/negative-A7/inputs/ABIRead.swift",
+      "bytes": 205,
+      "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+    },
+    {
+      "path": "macos-static/scratch/negative-A7/inputs/AcquisitionState.swift",
+      "bytes": 243,
+      "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+    },
+    {
+      "path": "macos-static/scratch/negative-A7/inputs/Analyzer.swift",
+      "bytes": 789,
+      "sha256": "93f984d6c60edc008af9370ca908bf9315463f02b7e54416188edf5aec0681dc"
+    },
+    {
+      "path": "macos-static/scratch/negative-A7/inputs/Main.swift",
+      "bytes": 176,
+      "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+    },
+    {
+      "path": "macos-static/scratch/negative-A7/inputs/Semantics.swift",
+      "bytes": 1620,
+      "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+    },
+    {
+      "path": "macos-static/scratch/negative-A7/inputs/SignalAnalyzerDiagnostic.swift",
+      "bytes": 5671,
+      "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+    },
+    {
+      "path": "macos-static/scratch/negative-A7/inputs/SignalPrimitiveValues.swift",
+      "bytes": 1582,
+      "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+    },
+    {
+      "path": "macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+      "bytes": 1217,
+      "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
+    },
+    {
+      "path": "macos-static/scratch/negative-A8/AnalyzerSchema.swift",
+      "bytes": 3247,
+      "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+    },
+    {
+      "path": "macos-static/scratch/negative-A8/inputs/ABIRead.swift",
+      "bytes": 205,
+      "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+    },
+    {
+      "path": "macos-static/scratch/negative-A8/inputs/AcquisitionState.swift",
+      "bytes": 243,
+      "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+    },
+    {
+      "path": "macos-static/scratch/negative-A8/inputs/Analyzer.swift",
+      "bytes": 789,
+      "sha256": "158501c0a102b68bef50de440bc3fac88c0ef392f80879187d90c906379de767"
+    },
+    {
+      "path": "macos-static/scratch/negative-A8/inputs/Main.swift",
+      "bytes": 176,
+      "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+    },
+    {
+      "path": "macos-static/scratch/negative-A8/inputs/Semantics.swift",
+      "bytes": 1620,
+      "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+    },
+    {
+      "path": "macos-static/scratch/negative-A8/inputs/SignalAnalyzerDiagnostic.swift",
+      "bytes": 5671,
+      "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+    },
+    {
+      "path": "macos-static/scratch/negative-A8/inputs/SignalPrimitiveValues.swift",
+      "bytes": 1582,
+      "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+    }
+  ]
+}
