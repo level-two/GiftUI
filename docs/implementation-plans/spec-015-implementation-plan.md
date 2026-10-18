@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current P08 execution activity: [one bounded maintained P02 prerequisite correction](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-activity.md)
+is assigned after independent Strong design review and Astra Medium scope
+classification. One new candidate, zero automatic source repairs; historical
+E/F and checked-State allowances remain closed. Source and staged validation
+are pending; P08/R07/T8.1 and safety/cold/resource gates remain open.
+
 Current [maintained safety campaign first-stage failure](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1-result/README.md):
 P02 CounterPresentation failed17.245s;64 rendered errors=32primary grouped. Wider
 fixture/producer ABI gaps byteidentical before EF, not evidence of EF regression.
