@@ -1,0 +1,11 @@
+/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-diagnostic-discovery-sweep/nrf52840-embedded/scratch/private-helper-continuation/inputs/private-helper-continuation.swift:2:56: error: 'isContinuation' is inaccessible due to 'private' protection level
+1 | import SignalAnalyzerDomain
+2 | package func rejected() { _ = SignalAnalyzerDiagnostic.isContinuation(65) }
+  |                                                        `- error: 'isContinuation' is inaccessible due to 'private' protection level
+3 | 
+
+SignalAnalyzerDomain.SignalAnalyzerDiagnostic.isContinuation:2:21: note: 'isContinuation' declared here
+1 | struct SignalAnalyzerDiagnostic {
+2 | private static func isContinuation(_ byte: UInt8) -> Bool}
+  |                     `- note: 'isContinuation' declared here
+3 | 

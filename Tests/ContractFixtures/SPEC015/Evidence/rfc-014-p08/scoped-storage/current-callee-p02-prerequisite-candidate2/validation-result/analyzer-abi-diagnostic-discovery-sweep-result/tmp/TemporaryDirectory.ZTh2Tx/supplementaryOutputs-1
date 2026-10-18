@@ -1,0 +1,8 @@
+{
+  "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-diagnostic-discovery-sweep/macos-dynamic/scratch/negative-A5/inputs/SignalPrimitiveValues.swift" : {
+    "abi-baseline-json" : "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-diagnostic-discovery-sweep/macos-dynamic/scratch/negative-A5/SignalAnalyzerDomain.abi.json",
+    "swiftdoc" : "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-diagnostic-discovery-sweep/macos-dynamic/scratch/negative-A5/SignalAnalyzerDomain.swiftdoc",
+    "swiftmodule" : "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-diagnostic-discovery-sweep/macos-dynamic/scratch/negative-A5/SignalAnalyzerDomain.swiftmodule",
+    "swiftsourceinfo" : "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-diagnostic-discovery-sweep/macos-dynamic/scratch/negative-A5/SignalAnalyzerDomain.swiftsourceinfo"
+  }
+}

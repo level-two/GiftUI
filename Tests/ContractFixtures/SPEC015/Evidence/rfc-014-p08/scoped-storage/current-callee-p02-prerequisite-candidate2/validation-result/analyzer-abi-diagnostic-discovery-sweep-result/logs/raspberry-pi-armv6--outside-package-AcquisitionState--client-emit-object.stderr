@@ -1,0 +1,5 @@
+/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-diagnostic-discovery-sweep/raspberry-pi-armv6/scratch/outside-package-AcquisitionState/inputs/outside-package-AcquisitionState.swift:2:12: error: cannot find type 'AcquisitionState' in scope
+1 | import SignalAnalyzerDomain
+2 | let value: AcquisitionState = .running
+  |            `- error: cannot find type 'AcquisitionState' in scope
+3 | 

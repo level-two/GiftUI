@@ -1,0 +1,8 @@
+{
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/ActionHandler.swift" : {
+    "abi-baseline-json" : "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-diagnostic-discovery-sweep/macos-dynamic/core/GiftUI.abi.json",
+    "swiftdoc" : "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-diagnostic-discovery-sweep/macos-dynamic/core/GiftUI.swiftdoc",
+    "swiftmodule" : "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-diagnostic-discovery-sweep/macos-dynamic/core/GiftUI.swiftmodule",
+    "swiftsourceinfo" : "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-diagnostic-discovery-sweep/macos-dynamic/core/GiftUI.swiftsourceinfo"
+  }
+}

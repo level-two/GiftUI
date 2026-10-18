@@ -1,0 +1,18 @@
+{
+  "module": "AnalyzerSchema",
+  "domain": "AnalyzerReadDomain",
+  "imports": ["SignalAnalyzerDomain"],
+  "models": [{
+    "authoredType": "SignalAnalyzerViewModel",
+    "schema": "AnalyzerModelSchema",
+    "facade": "AnalyzerRead",
+    "fields": [{"name":"state", "type":"aggregate", "indexed":false, "members":[
+      {"name":"acquisitionState", "type":"AcquisitionState", "indexed":false},
+      {"name":"capture", "type":"aggregate", "indexed":false, "members":[
+        {"name":"count", "type":"UInt16", "indexed":false},
+        {"name":"transition", "type":"SignalTransition", "indexed":true}
+      ]}
+    ]}]
+  }],
+  "calls": ["BoundedText", "Int32"]
+}

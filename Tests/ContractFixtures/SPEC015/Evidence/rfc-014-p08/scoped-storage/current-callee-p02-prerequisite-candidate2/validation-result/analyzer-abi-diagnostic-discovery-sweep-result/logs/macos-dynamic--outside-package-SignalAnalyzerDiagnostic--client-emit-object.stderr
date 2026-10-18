@@ -1,0 +1,5 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-diagnostic-discovery-sweep/macos-dynamic/scratch/outside-package-SignalAnalyzerDiagnostic/inputs/outside-package-SignalAnalyzerDiagnostic.swift:2:24: error: cannot find type 'SignalAnalyzerDiagnostic' in scope
+1 | import SignalAnalyzerDomain
+2 | func rejected(_ value: SignalAnalyzerDiagnostic) {}
+  |                        `- error: cannot find type 'SignalAnalyzerDiagnostic' in scope
+3 | 

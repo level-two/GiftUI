@@ -1,0 +1,12 @@
+{
+  "module": "CounterSchema",
+  "domain": "CounterReadDomain",
+  "imports": [],
+  "models": [{
+    "authoredType": "CounterModel",
+    "schema": "CounterModelSchema",
+    "facade": "CounterRead",
+    "fields": [{"name": "value", "type": "UInt8", "indexed": false}]
+  }],
+  "calls": ["counterText", "BoundedText"]
+}

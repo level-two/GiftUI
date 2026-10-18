@@ -1,0 +1,82 @@
+{
+  "README.md": {
+    "bytes": 12434,
+    "sha256": "83d0039f9588b8f41a372ce8e3fa0abab742caaeb5a0d7b206ef2a4a97fbcf17"
+  },
+  "anchor-correction-provenance.json": {
+    "bytes": 2650,
+    "sha256": "8f5b79ae3930e41d1264d98e9cb211c9b071367de484884e819900da6308f7d4"
+  },
+  "armv6-sdk-inventory.json": {
+    "bytes": 1615913,
+    "sha256": "c48cd7706a8bb7ed0b0386ba134dc4648b2b56fe432d517d919883230daa9274"
+  },
+  "compiler-install-inventory.json": {
+    "bytes": 784281,
+    "sha256": "2bce775c2dae2a7d78b810047ff8291578356d6b82a55f53068390c9c03bfe6a"
+  },
+  "environment-context.json": {
+    "bytes": 2823,
+    "sha256": "a62f87207ec2af997c9254b52c08da997f15c4108b9856d4bf74c1e966b8ca54"
+  },
+  "execute-discovery.py": {
+    "bytes": 22109,
+    "sha256": "1a63f302a90d5069f608726e71938a69a974cd35b5ca1e4b72f1141c271c7a26"
+  },
+  "external-identities.json": {
+    "bytes": 1674705,
+    "sha256": "508e407d1405f32f4c8e4ed42665f2c045a2975f7c62f62b264d4869fbca0a7f"
+  },
+  "historical-preservation.json": {
+    "bytes": 2328191,
+    "sha256": "ba1d73c19b51d4a295815c150ab50325b26623d4590da74e54e8f2ae75585dd4"
+  },
+  "home-config-identities.json": {
+    "bytes": 8986,
+    "sha256": "d60d25e7683f9c6d4cc3413a33edda47e954266d956a843eeb609808d9ff237e"
+  },
+  "macos-sdk-inventory.json": {
+    "bytes": 12357243,
+    "sha256": "d3c22e195df3a928ea1fda67b0a4143a42f37790a823e4e3a8707a8e81ad48ab"
+  },
+  "plan.json": {
+    "bytes": 802689,
+    "sha256": "261376db1d60b2d80365bc30aaa2839adf0d40ab1b3707f1745ddef857f804de"
+  },
+  "prelaunch-correction-provenance.json": {
+    "bytes": 860,
+    "sha256": "1d2a4455040e03a6f25986b7d21d2e79606471e63951b844352585b0bb1bb566"
+  },
+  "preparation-provenance.json": {
+    "bytes": 2260,
+    "sha256": "2e5b820dbefc173cb9f54fa6f32f7712e2417bec5322f9c6a8b90b0142caa892"
+  },
+  "producer-derivation.json": {
+    "bytes": 6663,
+    "sha256": "cbaf95f37bfd32ddd5b317562467b84c8c7d05f9cf2f9f1bd25cd6cafbb24d3f"
+  },
+  "registered-controls.json": {
+    "bytes": 18461,
+    "sha256": "3cee9a943e1dc1a2e67c6319ac992a7f78c652e2e20772c50fa6c80792435553"
+  },
+  "scratch-sources.json": {
+    "bytes": 29930,
+    "sha256": "785599545b58e75b03cce6cabe5884f803519ebeba975b3057c1fb226bb9ea76"
+  },
+  "selectors.json": {
+    "bytes": 4489,
+    "sha256": "6c401231bf2c0dc4905b178df977ab3674506b9ef70d672af428af6a1898c17f"
+  },
+  "snapshot-correction-provenance.json": {
+    "bytes": 890,
+    "sha256": "c5ca785382571d51e873a027295f2cdbc4b3405ac232f2bbdf9cacab6847148f"
+  },
+  "static-inspect.py": {
+    "bytes": 18713,
+    "sha256": "5d7a7f78c0fac1dceb55fea166293be68a6cba09f7aa734b7c1912284e9e1341"
+  },
+  "static-inspection.json": {
+    "bytes": 635,
+    "sha256": "f8e9e331964acda8bf2765342bff1ad15a7ee2879adfbd6b7493bd57f94b7c23"
+  }
+}

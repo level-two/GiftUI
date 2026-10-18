@@ -1,0 +1,3022 @@
+{
+  "README.md": {
+    "bytes": 1688,
+    "sha256": "2d4c0a41e08129f20ec57dcba2d3c431201ce0276c6168fb695527ac822641ed"
+  },
+  "archive-manifest.json": {
+    "bytes": 148879,
+    "sha256": "a1de9e09271ead3810fa5722e1df9c81e358e8c1433de2ea6174f827633b1f3d"
+  },
+  "audits.tar.gz": {
+    "bytes": 13244391,
+    "sha256": "f5072192832918613f47bdf4d5eb550be8c8818d6f9d258f243602770d80da1c"
+  },
+  "logs/macos-dynamic--isolated-core-producer--CounterPresentation.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--isolated-core-producer--CounterPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--isolated-core-producer--CounterSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--isolated-core-producer--CounterSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--isolated-core-producer--GiftUI.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--isolated-core-producer--GiftUI.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--isolated-core-producer--counter-lowering.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--isolated-core-producer--counter-lowering.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A1--AnalyzerSchema.stderr": {
+    "bytes": 2301,
+    "sha256": "5ae808a58278f6aee1d6cbad6c54283b15bb5cb753a5cb060ed887b2e6b522bd"
+  },
+  "logs/macos-dynamic--negative-A1--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A1--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A1--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A1--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A1--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A2--AnalyzerSchema.stderr": {
+    "bytes": 5597,
+    "sha256": "d9a293dd11f19d2206ced256383d980568b90b84162050058423f0c1122d49b5"
+  },
+  "logs/macos-dynamic--negative-A2--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A2--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A2--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A2--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A2--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A3--AnalyzerPresentation.stderr": {
+    "bytes": 1362,
+    "sha256": "58fa975fd40822091a5505f17a2e56f8bd27c57be6131b654d57dff6c636689c"
+  },
+  "logs/macos-dynamic--negative-A3--AnalyzerPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A3--AnalyzerSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A3--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A3--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A3--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A3--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A3--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A4--SignalAnalyzerDomain.stderr": {
+    "bytes": 771,
+    "sha256": "2205535f34eff55a63fc6bf8355a20cb6579028b799c97052d4a2928d38827a3"
+  },
+  "logs/macos-dynamic--negative-A4--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A5--AnalyzerPresentation.stderr": {
+    "bytes": 1315,
+    "sha256": "49a514c5b903088c5b59b3312337337ce371c3e574eb4e20ac52cc2255c72b83"
+  },
+  "logs/macos-dynamic--negative-A5--AnalyzerPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A5--AnalyzerSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A5--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A5--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A5--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A5--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A5--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A6--SignalAnalyzerDomain.stderr": {
+    "bytes": 849,
+    "sha256": "059b43d47870212e37526aeab5ca5a72c4d3903ee527ca324fb4444f298ad0ab"
+  },
+  "logs/macos-dynamic--negative-A6--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A7--AnalyzerPresentation.stderr": {
+    "bytes": 4515,
+    "sha256": "77a4f54514cf4265141fd5036727cb225dcb9ea31f412e2b34a32107fe379276"
+  },
+  "logs/macos-dynamic--negative-A7--AnalyzerPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A7--AnalyzerSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A7--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A7--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A7--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A7--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A7--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A8--AnalyzerPresentation.stderr": {
+    "bytes": 1170,
+    "sha256": "645e75708dbe5132a52b460bf30735d68a175ad0198bb1e72240f998a61718ca"
+  },
+  "logs/macos-dynamic--negative-A8--AnalyzerPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A8--AnalyzerSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A8--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A8--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A8--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A8--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--negative-A8--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--outside-package-AcquisitionState--client-emit-object.stderr": {
+    "bytes": 396,
+    "sha256": "d90cce78fb351ec6b06f6b163bc09d087ac1859fc7efdadaf74db5f26e7b7828"
+  },
+  "logs/macos-dynamic--outside-package-AcquisitionState--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--outside-package-SignalAnalyzerDiagnostic--client-emit-object.stderr": {
+    "bytes": 453,
+    "sha256": "05db7aea8c3bf06778ad8421793c59704e249f9c4a5e17aa76c7e347e4488498"
+  },
+  "logs/macos-dynamic--outside-package-SignalAnalyzerDiagnostic--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--outside-package-SignalChannelID--client-emit-object.stderr": {
+    "bytes": 408,
+    "sha256": "1680fd91b88bc22a63ac157132abe96be151815d206ca7fd66ea218e44aa9c36"
+  },
+  "logs/macos-dynamic--outside-package-SignalChannelID--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--outside-package-SignalTransition--client-emit-object.stderr": {
+    "bytes": 413,
+    "sha256": "687baeda0a1e616a06a3b7ec36e458552bcd4a122f8230cd3f75105199524ee4"
+  },
+  "logs/macos-dynamic--outside-package-SignalTransition--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-actual-lowering--AnalyzerPresentation.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-actual-lowering--AnalyzerPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-actual-lowering--AnalyzerSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-actual-lowering--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-actual-lowering--DeclarationHost.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-actual-lowering--DeclarationHost.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-actual-lowering--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-actual-lowering--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-actual-lowering--execute.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-actual-lowering--execute.stdout": {
+    "bytes": 22,
+    "sha256": "94470d4cec26a2d7467a79311e5c31cf525905a7606457638de19f8e57a63570"
+  },
+  "logs/macos-dynamic--positive-actual-lowering--link.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-actual-lowering--link.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-actual-lowering--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-actual-lowering--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-semantics--ABISemantics.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-semantics--ABISemantics.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-semantics--execute.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-semantics--execute.stdout": {
+    "bytes": 37,
+    "sha256": "5251afd6a5f704643bfcca1a6a3fab552f34f89e87a5f7fee2cea96bb1523cb0"
+  },
+  "logs/macos-dynamic--positive-semantics--link.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-semantics--link.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-serialized-read--ABIRead.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--positive-serialized-read--ABIRead.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--private-count--client-emit-object.stderr": {
+    "bytes": 672,
+    "sha256": "627d832a13198ce8b68b48df8f0876d9b32b4221f7dc7dec099035f40cbc817d"
+  },
+  "logs/macos-dynamic--private-count--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--private-helper-continuation--client-emit-object.stderr": {
+    "bytes": 786,
+    "sha256": "6cf947fb86c241f0fbbd4d4dbe8e27dccd2fa4d32203c615340b9ea5d7b1283d"
+  },
+  "logs/macos-dynamic--private-helper-continuation--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--private-helper-leading--client-emit-object.stderr": {
+    "bytes": 894,
+    "sha256": "07b11b8451e5aa882d022084996007de45f43b4d4b3a0bb7a9f19c00d4423a64"
+  },
+  "logs/macos-dynamic--private-helper-leading--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--private-storage--client-emit-object.stderr": {
+    "bytes": 736,
+    "sha256": "e32213f778bf8c0c2f8ef1432bdaa6dbbc20325759a1ebb56d4aae92ed71275e"
+  },
+  "logs/macos-dynamic--private-storage--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/macos-dynamic--private-storage-type--client-emit-object.stderr": {
+    "bytes": 454,
+    "sha256": "7b7624c0b85ec9f5797a07029fe3b8d6bd086f012a8af30de39c3a12375380b9"
+  },
+  "logs/macos-dynamic--private-storage-type--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--isolated-core-producer--CounterPresentation.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--isolated-core-producer--CounterPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--isolated-core-producer--CounterSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--isolated-core-producer--CounterSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--isolated-core-producer--GiftUI.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--isolated-core-producer--GiftUI.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--isolated-core-producer--counter-lowering.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--isolated-core-producer--counter-lowering.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A1--AnalyzerSchema.stderr": {
+    "bytes": 2353,
+    "sha256": "5bce64ca6b09a57f8ef829a28f3a1edff6a08b92218ead47b40bab00ee34b66f"
+  },
+  "logs/nrf52840-embedded--negative-A1--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A1--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A1--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A1--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A1--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A2--AnalyzerSchema.stderr": {
+    "bytes": 5727,
+    "sha256": "335b623d56f3e16bc31f3042caf53cd3c9f0bd8f4cc806219bda54e710c30881"
+  },
+  "logs/nrf52840-embedded--negative-A2--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A2--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A2--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A2--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A2--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A3--AnalyzerPresentation.stderr": {
+    "bytes": 1388,
+    "sha256": "87329beccc12e72f30736ea294ad65ac3b3cf9ec0727a47a6a27ee035d3db5b1"
+  },
+  "logs/nrf52840-embedded--negative-A3--AnalyzerPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A3--AnalyzerSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A3--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A3--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A3--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A3--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A3--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A4--SignalAnalyzerDomain.stderr": {
+    "bytes": 784,
+    "sha256": "68844567e606a28025fa892bc94572bb59d10a0be141d54d4dfc2d038b0014a4"
+  },
+  "logs/nrf52840-embedded--negative-A4--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A5--AnalyzerPresentation.stderr": {
+    "bytes": 1341,
+    "sha256": "31cb6480192ee2983a3efc11cb00473adb11d45d90c2784cba835d84d39404d2"
+  },
+  "logs/nrf52840-embedded--negative-A5--AnalyzerPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A5--AnalyzerSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A5--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A5--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A5--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A5--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A5--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A6--SignalAnalyzerDomain.stderr": {
+    "bytes": 875,
+    "sha256": "c5c3c23cfeff8082487aa698e5bac6a16c37a9ac8b13a23c8cb2f47a0f8a2779"
+  },
+  "logs/nrf52840-embedded--negative-A6--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A7--AnalyzerPresentation.stderr": {
+    "bytes": 4567,
+    "sha256": "d2335a68dff04f1a8b3c92c645b774a579a3ac846fbee6af6147e4474fff1146"
+  },
+  "logs/nrf52840-embedded--negative-A7--AnalyzerPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A7--AnalyzerSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A7--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A7--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A7--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A7--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A7--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A8--AnalyzerPresentation.stderr": {
+    "bytes": 1183,
+    "sha256": "09ff2b0beef11928f2c082659bff02506a6ed572eed5ccdfefca1e110bcc3fd5"
+  },
+  "logs/nrf52840-embedded--negative-A8--AnalyzerPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A8--AnalyzerSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A8--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A8--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A8--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A8--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--negative-A8--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--outside-package-AcquisitionState--client-emit-object.stderr": {
+    "bytes": 409,
+    "sha256": "6930d0d03901fb7e02e7d84f7d14acdf907e451c96ac75105ca2d72c229dec2c"
+  },
+  "logs/nrf52840-embedded--outside-package-AcquisitionState--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--outside-package-SignalAnalyzerDiagnostic--client-emit-object.stderr": {
+    "bytes": 466,
+    "sha256": "668b4e8559c427a1a43930161f08a09dd1395c29c7841d26ca0fd5c886356ec9"
+  },
+  "logs/nrf52840-embedded--outside-package-SignalAnalyzerDiagnostic--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--outside-package-SignalChannelID--client-emit-object.stderr": {
+    "bytes": 421,
+    "sha256": "8d66c83ef6021dc404311398ac639c1d26373ea46ad5f2618223618c854a1884"
+  },
+  "logs/nrf52840-embedded--outside-package-SignalChannelID--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--outside-package-SignalTransition--client-emit-object.stderr": {
+    "bytes": 426,
+    "sha256": "cee02ac023a5dc23148bb60256fb9cc2331323e2816dd8cdfc4c7c055acdceee"
+  },
+  "logs/nrf52840-embedded--outside-package-SignalTransition--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-actual-lowering--AnalyzerPresentation.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-actual-lowering--AnalyzerPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-actual-lowering--AnalyzerSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-actual-lowering--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-actual-lowering--DeclarationHost.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-actual-lowering--DeclarationHost.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-actual-lowering--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-actual-lowering--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-actual-lowering--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-actual-lowering--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-actual-lowering--target-abi.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-actual-lowering--target-abi.stdout": {
+    "bytes": 1697,
+    "sha256": "6254c25ea9dae9662630997e2b8adaabaf55c4c486d690cd84cf0680c8d209ca"
+  },
+  "logs/nrf52840-embedded--positive-semantics--ABISemantics.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-semantics--ABISemantics.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-serialized-read--ABIRead.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--positive-serialized-read--ABIRead.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--private-count--client-emit-object.stderr": {
+    "bytes": 685,
+    "sha256": "74eb450fa2b5d66fed7ebc6161753aa130879559cb39e75400befe236e4d0b54"
+  },
+  "logs/nrf52840-embedded--private-count--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--private-helper-continuation--client-emit-object.stderr": {
+    "bytes": 799,
+    "sha256": "2737ecb50335cc96799d3bafbc1f74a30780ed698007351a10e747028e471ab0"
+  },
+  "logs/nrf52840-embedded--private-helper-continuation--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--private-helper-leading--client-emit-object.stderr": {
+    "bytes": 907,
+    "sha256": "9a2314311cf87bc92a2cc58910906998aa9b63345502e66793651d4b318598a8"
+  },
+  "logs/nrf52840-embedded--private-helper-leading--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--private-storage--client-emit-object.stderr": {
+    "bytes": 749,
+    "sha256": "097ebaee956aed9b6d8f15f583d83afedfa280eef2d3e09a29dbd0672fa64a54"
+  },
+  "logs/nrf52840-embedded--private-storage--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nrf52840-embedded--private-storage-type--client-emit-object.stderr": {
+    "bytes": 467,
+    "sha256": "cd0a75ad0e344c73d2fc593f28f1ec50c856d7bb85b56602d0081867c84b2d95"
+  },
+  "logs/nrf52840-embedded--private-storage-type--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--isolated-core-producer--CounterPresentation.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--isolated-core-producer--CounterPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--isolated-core-producer--CounterSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--isolated-core-producer--CounterSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--isolated-core-producer--GiftUI.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--isolated-core-producer--GiftUI.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--isolated-core-producer--counter-lowering.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--isolated-core-producer--counter-lowering.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--negative-A8--AnalyzerPresentation.stderr": {
+    "bytes": 1188,
+    "sha256": "fb5082ea294f00770ad94be5c4010a3a3c5c7d98ead7d2afb9846f02d639ae51"
+  },
+  "logs/raspberry-pi-armv6--negative-A8--AnalyzerPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--negative-A8--AnalyzerSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--negative-A8--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--negative-A8--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--negative-A8--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--negative-A8--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--negative-A8--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--outside-package-AcquisitionState--client-emit-object.stderr": {
+    "bytes": 414,
+    "sha256": "6f6fb06f46eb1cdb189d7fce16c053b418f36fafe74d519d1306437d2f87c615"
+  },
+  "logs/raspberry-pi-armv6--outside-package-AcquisitionState--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--outside-package-SignalAnalyzerDiagnostic--client-emit-object.stderr": {
+    "bytes": 471,
+    "sha256": "c2bd4071015ed75fd6ce51f35bd90db6765701a1e5071dff7d2068d0c39cfe9c"
+  },
+  "logs/raspberry-pi-armv6--outside-package-SignalAnalyzerDiagnostic--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--outside-package-SignalChannelID--client-emit-object.stderr": {
+    "bytes": 426,
+    "sha256": "5b870d0ade20fc2d88384f07d2b21947120770b9d46e0821bbcaa70c70707ff3"
+  },
+  "logs/raspberry-pi-armv6--outside-package-SignalChannelID--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--outside-package-SignalTransition--client-emit-object.stderr": {
+    "bytes": 431,
+    "sha256": "11eafb142db2bbbc82db1c18d33754fdefcc60100bf1f38673d8c12bdbd8e475"
+  },
+  "logs/raspberry-pi-armv6--outside-package-SignalTransition--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-actual-lowering--AnalyzerPresentation.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-actual-lowering--AnalyzerPresentation.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-actual-lowering--AnalyzerSchema.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-actual-lowering--AnalyzerSchema.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-actual-lowering--DeclarationHost.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-actual-lowering--DeclarationHost.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-actual-lowering--SignalAnalyzerDomain.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-actual-lowering--SignalAnalyzerDomain.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-actual-lowering--lower-Analyzer-source.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-actual-lowering--lower-Analyzer-source.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-actual-lowering--target-abi.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-actual-lowering--target-abi.stdout": {
+    "bytes": 1641,
+    "sha256": "597fb8f2e6c46b045b2df8312363b177d2aaaba1feb68338cfc6c44cf6fcea24"
+  },
+  "logs/raspberry-pi-armv6--positive-semantics--ABISemantics.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-semantics--ABISemantics.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-serialized-read--ABIRead.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--positive-serialized-read--ABIRead.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--private-count--client-emit-object.stderr": {
+    "bytes": 690,
+    "sha256": "be5bce2d5b6492e05829bb03e1823adb71685764bb6bdf2e38031357a4c58ab1"
+  },
+  "logs/raspberry-pi-armv6--private-count--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--private-helper-continuation--client-emit-object.stderr": {
+    "bytes": 804,
+    "sha256": "e6aee14527b3b46dae666dc2d7569be0672d73a402615cf7ae47aaf8d7afbb39"
+  },
+  "logs/raspberry-pi-armv6--private-helper-continuation--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--private-helper-leading--client-emit-object.stderr": {
+    "bytes": 912,
+    "sha256": "4568ecb0688084e198b92192c4106e5f3a7bd9074d5fed6b3cafc78903966f46"
+  },
+  "logs/raspberry-pi-armv6--private-helper-leading--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--private-storage--client-emit-object.stderr": {
+    "bytes": 754,
+    "sha256": "108b1ce432d03489ff343c09273057d73669c0776a86257e6266bd12639af24f"
+  },
+  "logs/raspberry-pi-armv6--private-storage--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/raspberry-pi-armv6--private-storage-type--client-emit-object.stderr": {
+    "bytes": 472,
+    "sha256": "474ecc260d95f0ba4fa50cbf9acec4ae6c127f6bd45ea03f8f9d25fe239724ab"
+  },
+  "logs/raspberry-pi-armv6--private-storage-type--client-emit-object.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "macos-dynamic/core/CounterPresentation.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/core/CounterPresentation.o": {
+    "bytes": 119872,
+    "sha256": "eb299ee59f475b3f283f6fe1746cd256af15d88cac581f1af9e8b889bc7e80b9"
+  },
+  "macos-dynamic/core/CounterPresentation.swift": {
+    "bytes": 9518,
+    "sha256": "d0140b613b33e99350f77370f1125b49d0a13b477d16f0f0f80c46a2f27ddd5c"
+  },
+  "macos-dynamic/core/CounterPresentation.swiftdoc": {
+    "bytes": 384,
+    "sha256": "695cd628451d8e90c56fc23158491a6f3be0010881216ada146d5233c0d95346"
+  },
+  "macos-dynamic/core/CounterPresentation.swiftmodule": {
+    "bytes": 129728,
+    "sha256": "d21d586706c48d12ebbff82b9ea6e47921ac3f5e47d0bb05d4662fa9616be281"
+  },
+  "macos-dynamic/core/CounterPresentation.swiftsourceinfo": {
+    "bytes": 14828,
+    "sha256": "47ef3e90e9dfdf33935eb064abedccc8723b729c2597438949fc4bb54ee5e0bd"
+  },
+  "macos-dynamic/core/CounterSchema.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/core/CounterSchema.o": {
+    "bytes": 8880,
+    "sha256": "e2f74d339e067ee054df533967efe0a8d06a3d3bec67bacce9a7442858e42b07"
+  },
+  "macos-dynamic/core/CounterSchema.swift": {
+    "bytes": 1366,
+    "sha256": "b6f3c92cbc359951328591bb00b315fb71eebe7aa624adb3e04eb58842a7102b"
+  },
+  "macos-dynamic/core/CounterSchema.swiftdoc": {
+    "bytes": 380,
+    "sha256": "5420e03f39fec4550fc53b3a9b47f6c5585a92c0f4ec10062ba7000051268f8a"
+  },
+  "macos-dynamic/core/CounterSchema.swiftmodule": {
+    "bytes": 26440,
+    "sha256": "57d0fc3d8ba460a975f2fc602ff1c11107c5d6c185b0d561cb82ce7053169182"
+  },
+  "macos-dynamic/core/CounterSchema.swiftsourceinfo": {
+    "bytes": 3116,
+    "sha256": "d3da8f1ff978e9c708e83eea5c5930fa12601d341525a4700844975ec553ea05"
+  },
+  "macos-dynamic/core/GiftUI.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/core/GiftUI.o": {
+    "bytes": 354032,
+    "sha256": "de45b1766b6394f6377afa584937abc09e8e0cc7e51d08fa4e61872f0d9bb8d4"
+  },
+  "macos-dynamic/core/GiftUI.swiftdoc": {
+    "bytes": 988,
+    "sha256": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d"
+  },
+  "macos-dynamic/core/GiftUI.swiftmodule": {
+    "bytes": 347436,
+    "sha256": "aa0f91486d612c2506b569c0e81aecb1ae616c10ef050664055f969927e10c48"
+  },
+  "macos-dynamic/core/GiftUI.swiftsourceinfo": {
+    "bytes": 83588,
+    "sha256": "9820efc5d0067b3c9c8c838ee0909385d120ad52a1220f44795bab5eed3549f9"
+  },
+  "macos-dynamic/core/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177512,
+    "sha256": "65c9eaacd8a8c611ac85b3e607d3988e4e4f3ba4398aff4dc317e20a3fcc331e"
+  },
+  "macos-dynamic/core/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40448,
+    "sha256": "c3d217023ba5dd76e204028070ba21944f3a549881cc7b63838840e6ba07e9b0"
+  },
+  "macos-dynamic/core/cache/modules.timestamp": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "macos-dynamic/scratch/negative-A1/AnalyzerPresentation.swift": {
+    "bytes": 1239,
+    "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+  },
+  "macos-dynamic/scratch/negative-A1/AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "macos-dynamic/scratch/negative-A1/SignalAnalyzerDomain.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/negative-A1/SignalAnalyzerDomain.o": {
+    "bytes": 38352,
+    "sha256": "6ab9ef2cabe869341600c7789cda94bc8b9484652f2639b03ba339841ddf69c3"
+  },
+  "macos-dynamic/scratch/negative-A1/SignalAnalyzerDomain.swiftdoc": {
+    "bytes": 384,
+    "sha256": "55653470d37236ac91ea5f9ef93c4eab41e95d57478ef9c540d1f509ebe469cd"
+  },
+  "macos-dynamic/scratch/negative-A1/SignalAnalyzerDomain.swiftmodule": {
+    "bytes": 47308,
+    "sha256": "ca592512a41291c08a426ee2add3fce7073f301f632e5b209926cca0679e59ff"
+  },
+  "macos-dynamic/scratch/negative-A1/SignalAnalyzerDomain.swiftsourceinfo": {
+    "bytes": 7888,
+    "sha256": "041aeef83b9d915db39fcfb1cf8841b2b7e24236c0af6f7914eca68f2470dba8"
+  },
+  "macos-dynamic/scratch/negative-A1/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177744,
+    "sha256": "20b5ef793e030cc6f87df52ead8f74ec1611202126e980ad022f4e717db55127"
+  },
+  "macos-dynamic/scratch/negative-A1/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40672,
+    "sha256": "f780cf7f8db14c844a95f971f6c01c3c02d01336d2a06f3ad85b770ee189f346"
+  },
+  "macos-dynamic/scratch/negative-A1/cache/modules.timestamp": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "macos-dynamic/scratch/negative-A1/inputs/ABIRead.swift": {
+    "bytes": 205,
+    "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+  },
+  "macos-dynamic/scratch/negative-A1/inputs/AcquisitionState.swift": {
+    "bytes": 225,
+    "sha256": "a2fb47cf52972d8610a78e7ffe4d1e8771ea8fff315ca72aec2d29ca33776755"
+  },
+  "macos-dynamic/scratch/negative-A1/inputs/Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "macos-dynamic/scratch/negative-A1/inputs/Main.swift": {
+    "bytes": 176,
+    "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+  },
+  "macos-dynamic/scratch/negative-A1/inputs/Semantics.swift": {
+    "bytes": 1620,
+    "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+  },
+  "macos-dynamic/scratch/negative-A1/inputs/SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "macos-dynamic/scratch/negative-A1/inputs/SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "macos-dynamic/scratch/negative-A2/AnalyzerPresentation.swift": {
+    "bytes": 1239,
+    "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+  },
+  "macos-dynamic/scratch/negative-A2/AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "macos-dynamic/scratch/negative-A2/SignalAnalyzerDomain.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/negative-A2/SignalAnalyzerDomain.o": {
+    "bytes": 38392,
+    "sha256": "2b1e2a43eababf61542c9e5a4171677ee184797e5a6fbc8da140d5fc6b6708c2"
+  },
+  "macos-dynamic/scratch/negative-A2/SignalAnalyzerDomain.swiftdoc": {
+    "bytes": 624,
+    "sha256": "2b2d2532522a33761c9d9a982206b9b6ccb16e7d64d99d70d5bf628f38d67295"
+  },
+  "macos-dynamic/scratch/negative-A2/SignalAnalyzerDomain.swiftmodule": {
+    "bytes": 46272,
+    "sha256": "39c6aa28ee48f09b67aea6979a9f2346b5d6fc411c38a197d01ece134b494676"
+  },
+  "macos-dynamic/scratch/negative-A2/SignalAnalyzerDomain.swiftsourceinfo": {
+    "bytes": 7888,
+    "sha256": "2c85fdf05f134874e9b0d6b7b53496c217cb56aad33e1985929ddca6aa5a643e"
+  },
+  "macos-dynamic/scratch/negative-A2/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177744,
+    "sha256": "298226c84d9f33376a05a00a530eeba3aa7696ce8030b269ef31c25a82af1344"
+  },
+  "macos-dynamic/scratch/negative-A2/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40672,
+    "sha256": "487612d1d771ff32e433dc23febf0950c5860db76d1f9ec30b2b51e120f92216"
+  },
+  "macos-dynamic/scratch/negative-A2/cache/modules.timestamp": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "macos-dynamic/scratch/negative-A2/inputs/ABIRead.swift": {
+    "bytes": 205,
+    "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+  },
+  "macos-dynamic/scratch/negative-A2/inputs/AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "macos-dynamic/scratch/negative-A2/inputs/Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "macos-dynamic/scratch/negative-A2/inputs/Main.swift": {
+    "bytes": 176,
+    "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+  },
+  "macos-dynamic/scratch/negative-A2/inputs/Semantics.swift": {
+    "bytes": 1620,
+    "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+  },
+  "macos-dynamic/scratch/negative-A2/inputs/SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "macos-dynamic/scratch/negative-A2/inputs/SignalPrimitiveValues.swift": {
+    "bytes": 1564,
+    "sha256": "d0031edd5d37014aabebd88b4ebdd15a811fb2587b8a984668e715c631253e52"
+  },
+  "macos-dynamic/scratch/negative-A3/AnalyzerPresentation.swift": {
+    "bytes": 1239,
+    "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+  },
+  "macos-dynamic/scratch/negative-A3/AnalyzerSchema.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/negative-A3/AnalyzerSchema.o": {
+    "bytes": 13712,
+    "sha256": "341c548af6a85b80fcad9bc5bea08e6caec953965003535abc68ab52ddbef981"
+  },
+  "macos-dynamic/scratch/negative-A3/AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "macos-dynamic/scratch/negative-A3/AnalyzerSchema.swiftdoc": {
+    "bytes": 380,
+    "sha256": "3ce1e1e8c0a6933bf57ea88c63c2604fc83731ad3a56926d3f7e561583347d2f"
+  },
+  "macos-dynamic/scratch/negative-A3/AnalyzerSchema.swiftmodule": {
+    "bytes": 34440,
+    "sha256": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218"
+  },
+  "macos-dynamic/scratch/negative-A3/AnalyzerSchema.swiftsourceinfo": {
+    "bytes": 6248,
+    "sha256": "158ae02925d7d41dfb8acc0884ac4e635bdfdcca444149a4e631c6407bbdae54"
+  },
+  "macos-dynamic/scratch/negative-A3/SignalAnalyzerDomain.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/negative-A3/SignalAnalyzerDomain.o": {
+    "bytes": 38392,
+    "sha256": "7be95afed7d965b6bb35f257bba7cb9e6fa045c7bbcbbbddecd78e2a31270447"
+  },
+  "macos-dynamic/scratch/negative-A3/SignalAnalyzerDomain.swiftdoc": {
+    "bytes": 624,
+    "sha256": "2b2d2532522a33761c9d9a982206b9b6ccb16e7d64d99d70d5bf628f38d67295"
+  },
+  "macos-dynamic/scratch/negative-A3/SignalAnalyzerDomain.swiftmodule": {
+    "bytes": 47768,
+    "sha256": "4e05745391c19c9dda2a59f8848ae785337ef4ef32030f453abecd8803b88893"
+  },
+  "macos-dynamic/scratch/negative-A3/SignalAnalyzerDomain.swiftsourceinfo": {
+    "bytes": 7888,
+    "sha256": "b6d736720283961094e417273fba9355a91806d00de9482fcaa62ce6bcf6653e"
+  },
+  "macos-dynamic/scratch/negative-A3/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177744,
+    "sha256": "3c38f50600b0cbf6b02d41b6e51a0736fcfcf029b1d43701069e7211f5c950d1"
+  },
+  "macos-dynamic/scratch/negative-A3/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40672,
+    "sha256": "102fa967af861b566ddc15f8998093fc2df599605259061c99af63397a7dd01b"
+  },
+  "macos-dynamic/scratch/negative-A3/cache/modules.timestamp": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "macos-dynamic/scratch/negative-A3/inputs/ABIRead.swift": {
+    "bytes": 205,
+    "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+  },
+  "macos-dynamic/scratch/negative-A3/inputs/AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "macos-dynamic/scratch/negative-A3/inputs/Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "macos-dynamic/scratch/negative-A3/inputs/Main.swift": {
+    "bytes": 176,
+    "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+  },
+  "macos-dynamic/scratch/negative-A3/inputs/Semantics.swift": {
+    "bytes": 1620,
+    "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+  },
+  "macos-dynamic/scratch/negative-A3/inputs/SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "macos-dynamic/scratch/negative-A3/inputs/SignalPrimitiveValues.swift": {
+    "bytes": 1560,
+    "sha256": "9d3be6232f537e691edf54711d5549e9f862eadd68eda88568c0a51045aa48de"
+  },
+  "macos-dynamic/scratch/negative-A4/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177744,
+    "sha256": "d4711358b61fe53340b3e8f41a9766309c4915244555308f4b8590dad39b9bd2"
+  },
+  "macos-dynamic/scratch/negative-A4/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40672,
+    "sha256": "ead600a211bdb7e74747cbf1cc1a86fa694dc9c277a752b394b9058347b20933"
+  },
+  "macos-dynamic/scratch/negative-A4/inputs/ABIRead.swift": {
+    "bytes": 205,
+    "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+  },
+  "macos-dynamic/scratch/negative-A4/inputs/AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "macos-dynamic/scratch/negative-A4/inputs/Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "macos-dynamic/scratch/negative-A4/inputs/Main.swift": {
+    "bytes": 176,
+    "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+  },
+  "macos-dynamic/scratch/negative-A4/inputs/Semantics.swift": {
+    "bytes": 1620,
+    "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+  },
+  "macos-dynamic/scratch/negative-A4/inputs/SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "macos-dynamic/scratch/negative-A4/inputs/SignalPrimitiveValues.swift": {
+    "bytes": 1564,
+    "sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d"
+  },
+  "macos-dynamic/scratch/negative-A5/AnalyzerPresentation.swift": {
+    "bytes": 1239,
+    "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+  },
+  "macos-dynamic/scratch/negative-A5/AnalyzerSchema.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/negative-A5/AnalyzerSchema.o": {
+    "bytes": 13712,
+    "sha256": "00be479da24cba8187efd2516af585529649a6188e9bc161ef90ccaf41b1352b"
+  },
+  "macos-dynamic/scratch/negative-A5/AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "macos-dynamic/scratch/negative-A5/AnalyzerSchema.swiftdoc": {
+    "bytes": 380,
+    "sha256": "3ce1e1e8c0a6933bf57ea88c63c2604fc83731ad3a56926d3f7e561583347d2f"
+  },
+  "macos-dynamic/scratch/negative-A5/AnalyzerSchema.swiftmodule": {
+    "bytes": 34440,
+    "sha256": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218"
+  },
+  "macos-dynamic/scratch/negative-A5/AnalyzerSchema.swiftsourceinfo": {
+    "bytes": 6248,
+    "sha256": "e0e047735ed864fab868cd13624d90573cd31c5d419aa864117d3d3d6aa77985"
+  },
+  "macos-dynamic/scratch/negative-A5/SignalAnalyzerDomain.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/negative-A5/SignalAnalyzerDomain.o": {
+    "bytes": 38392,
+    "sha256": "e89fdd8bc38d29a983bd22beeae7db4dbd0101c97645f346ce043a809b7c0032"
+  },
+  "macos-dynamic/scratch/negative-A5/SignalAnalyzerDomain.swiftdoc": {
+    "bytes": 624,
+    "sha256": "2b2d2532522a33761c9d9a982206b9b6ccb16e7d64d99d70d5bf628f38d67295"
+  },
+  "macos-dynamic/scratch/negative-A5/SignalAnalyzerDomain.swiftmodule": {
+    "bytes": 47836,
+    "sha256": "db72bbc35ae0a1202e2412e79e1271f06a348751c54c156586163f03061629c9"
+  },
+  "macos-dynamic/scratch/negative-A5/SignalAnalyzerDomain.swiftsourceinfo": {
+    "bytes": 7888,
+    "sha256": "65e9038ab6cdbcaa647795125a125372844bed35b9521c3736f5c5b2eea0d1a5"
+  },
+  "macos-dynamic/scratch/negative-A5/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177744,
+    "sha256": "ca05b240f2b32422c6e5fab07508fa32dc75a308917dd032c86b4653a7aca4b2"
+  },
+  "macos-dynamic/scratch/negative-A5/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40672,
+    "sha256": "7a0948d215eadbc3cc8f12084dd4bef39bcb9dc32debf431b7286cfb9e068414"
+  },
+  "macos-dynamic/scratch/negative-A5/cache/modules.timestamp": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "macos-dynamic/scratch/negative-A5/inputs/ABIRead.swift": {
+    "bytes": 205,
+    "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+  },
+  "macos-dynamic/scratch/negative-A5/inputs/AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "macos-dynamic/scratch/negative-A5/inputs/Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "macos-dynamic/scratch/negative-A5/inputs/Main.swift": {
+    "bytes": 176,
+    "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+  },
+  "macos-dynamic/scratch/negative-A5/inputs/Semantics.swift": {
+    "bytes": 1620,
+    "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+  },
+  "macos-dynamic/scratch/negative-A5/inputs/SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "macos-dynamic/scratch/negative-A5/inputs/SignalPrimitiveValues.swift": {
+    "bytes": 1560,
+    "sha256": "511f5c4e5940d28746ee9fd0b2b9818544a0cc9ab107c0a0f7973d2a2775c416"
+  },
+  "macos-dynamic/scratch/negative-A6/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177744,
+    "sha256": "5e870ea2abb5f4ed645185263f4b30c427c20e5ff8677b9390895b46d7780861"
+  },
+  "macos-dynamic/scratch/negative-A6/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40672,
+    "sha256": "7e36e7c65733e6ce145fb609cedf5dc9d2782225f043e7f2df0bd6157bae2e8d"
+  },
+  "macos-dynamic/scratch/negative-A6/inputs/ABIRead.swift": {
+    "bytes": 205,
+    "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+  },
+  "macos-dynamic/scratch/negative-A6/inputs/AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "macos-dynamic/scratch/negative-A6/inputs/Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "macos-dynamic/scratch/negative-A6/inputs/Main.swift": {
+    "bytes": 176,
+    "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+  },
+  "macos-dynamic/scratch/negative-A6/inputs/Semantics.swift": {
+    "bytes": 1620,
+    "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+  },
+  "macos-dynamic/scratch/negative-A6/inputs/SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5653,
+    "sha256": "f44b7d121c9d290f877ad43c361b4d90d79ecb27a3f8ac1e112062077b53dcf4"
+  },
+  "macos-dynamic/scratch/negative-A6/inputs/SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "macos-dynamic/scratch/negative-A7/AnalyzerPresentation.swift": {
+    "bytes": 1217,
+    "sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2"
+  },
+  "macos-dynamic/scratch/negative-A7/AnalyzerSchema.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/negative-A7/AnalyzerSchema.o": {
+    "bytes": 13712,
+    "sha256": "1b47e23f455f764b0f450675460ca2687357c042b9267cb15c8d86e15e682206"
+  },
+  "macos-dynamic/scratch/negative-A7/AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "macos-dynamic/scratch/negative-A7/AnalyzerSchema.swiftdoc": {
+    "bytes": 380,
+    "sha256": "3ce1e1e8c0a6933bf57ea88c63c2604fc83731ad3a56926d3f7e561583347d2f"
+  },
+  "macos-dynamic/scratch/negative-A7/AnalyzerSchema.swiftmodule": {
+    "bytes": 34440,
+    "sha256": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218"
+  },
+  "macos-dynamic/scratch/negative-A7/AnalyzerSchema.swiftsourceinfo": {
+    "bytes": 6248,
+    "sha256": "787d905edfdded19ba7b843763102f76cea69150bc5ad45bd17e8803cd0ce4b0"
+  },
+  "macos-dynamic/scratch/negative-A7/SignalAnalyzerDomain.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/negative-A7/SignalAnalyzerDomain.o": {
+    "bytes": 38392,
+    "sha256": "b3506e85b302ead41afe39f98e902baf40010c5aba8bb396ee3a2dcc3c8ee43e"
+  },
+  "macos-dynamic/scratch/negative-A7/SignalAnalyzerDomain.swiftdoc": {
+    "bytes": 624,
+    "sha256": "2b2d2532522a33761c9d9a982206b9b6ccb16e7d64d99d70d5bf628f38d67295"
+  },
+  "macos-dynamic/scratch/negative-A7/SignalAnalyzerDomain.swiftmodule": {
+    "bytes": 47984,
+    "sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798"
+  },
+  "macos-dynamic/scratch/negative-A7/SignalAnalyzerDomain.swiftsourceinfo": {
+    "bytes": 7888,
+    "sha256": "4232e9bbb756e8f6e70852ee5b2f8b7642098991f5fcaeff5dfba094ba8453b5"
+  },
+  "macos-dynamic/scratch/negative-A7/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177744,
+    "sha256": "b393140b74d20a769d4db148d412ec5df883d082a6bb5130dc93f51a8887345e"
+  },
+  "macos-dynamic/scratch/negative-A7/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40672,
+    "sha256": "a165f00020b316b6940a257235c724919d213ef7e242819dd43ddd9c1025d8e2"
+  },
+  "macos-dynamic/scratch/negative-A7/cache/modules.timestamp": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "macos-dynamic/scratch/negative-A7/inputs/ABIRead.swift": {
+    "bytes": 205,
+    "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+  },
+  "macos-dynamic/scratch/negative-A7/inputs/AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "macos-dynamic/scratch/negative-A7/inputs/Analyzer.swift": {
+    "bytes": 789,
+    "sha256": "93f984d6c60edc008af9370ca908bf9315463f02b7e54416188edf5aec0681dc"
+  },
+  "macos-dynamic/scratch/negative-A7/inputs/Main.swift": {
+    "bytes": 176,
+    "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+  },
+  "macos-dynamic/scratch/negative-A7/inputs/Semantics.swift": {
+    "bytes": 1620,
+    "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+  },
+  "macos-dynamic/scratch/negative-A7/inputs/SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "macos-dynamic/scratch/negative-A7/inputs/SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "macos-dynamic/scratch/negative-A8/AnalyzerPresentation.swift": {
+    "bytes": 1217,
+    "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
+  },
+  "macos-dynamic/scratch/negative-A8/AnalyzerSchema.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/negative-A8/AnalyzerSchema.o": {
+    "bytes": 13712,
+    "sha256": "5148981da64ab7102fab18df2d3c6e7b0a9e6ec74af4128724b70b48914d85a5"
+  },
+  "macos-dynamic/scratch/negative-A8/AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "macos-dynamic/scratch/negative-A8/AnalyzerSchema.swiftdoc": {
+    "bytes": 380,
+    "sha256": "3ce1e1e8c0a6933bf57ea88c63c2604fc83731ad3a56926d3f7e561583347d2f"
+  },
+  "macos-dynamic/scratch/negative-A8/AnalyzerSchema.swiftmodule": {
+    "bytes": 34440,
+    "sha256": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218"
+  },
+  "macos-dynamic/scratch/negative-A8/AnalyzerSchema.swiftsourceinfo": {
+    "bytes": 6248,
+    "sha256": "20e3c79c8561445e4923ed61305fd6196e6aff9021bc53cf6e4799a3f89f46f4"
+  },
+  "macos-dynamic/scratch/negative-A8/SignalAnalyzerDomain.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/negative-A8/SignalAnalyzerDomain.o": {
+    "bytes": 38392,
+    "sha256": "9afdf1c19782a27ced38d5e619fde3989de1a69836a4f3cc1d9d720ff83045ea"
+  },
+  "macos-dynamic/scratch/negative-A8/SignalAnalyzerDomain.swiftdoc": {
+    "bytes": 624,
+    "sha256": "2b2d2532522a33761c9d9a982206b9b6ccb16e7d64d99d70d5bf628f38d67295"
+  },
+  "macos-dynamic/scratch/negative-A8/SignalAnalyzerDomain.swiftmodule": {
+    "bytes": 47984,
+    "sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798"
+  },
+  "macos-dynamic/scratch/negative-A8/SignalAnalyzerDomain.swiftsourceinfo": {
+    "bytes": 7888,
+    "sha256": "efd66cbbedff17a0227269f3e843632cdcca14b0179c5fc3cd585704c9834420"
+  },
+  "macos-dynamic/scratch/negative-A8/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177744,
+    "sha256": "585622a576718479968007a3b1653e950a6e34a2426e3b767d620bc33094c20c"
+  },
+  "macos-dynamic/scratch/negative-A8/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40672,
+    "sha256": "03224a19bf3946ce54a6397dc3eb217531de0a380d684dfc790c8fd45cee0b72"
+  },
+  "macos-dynamic/scratch/negative-A8/cache/modules.timestamp": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "macos-dynamic/scratch/negative-A8/inputs/ABIRead.swift": {
+    "bytes": 205,
+    "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+  },
+  "macos-dynamic/scratch/negative-A8/inputs/AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "macos-dynamic/scratch/negative-A8/inputs/Analyzer.swift": {
+    "bytes": 789,
+    "sha256": "158501c0a102b68bef50de440bc3fac88c0ef392f80879187d90c906379de767"
+  },
+  "macos-dynamic/scratch/negative-A8/inputs/Main.swift": {
+    "bytes": 176,
+    "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+  },
+  "macos-dynamic/scratch/negative-A8/inputs/Semantics.swift": {
+    "bytes": 1620,
+    "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+  },
+  "macos-dynamic/scratch/negative-A8/inputs/SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "macos-dynamic/scratch/negative-A8/inputs/SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "macos-dynamic/scratch/outside-package-AcquisitionState/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177824,
+    "sha256": "a3b8b916591614aeddd59cc670065351dde7b0e693e01acd15eb5e1057fd5388"
+  },
+  "macos-dynamic/scratch/outside-package-AcquisitionState/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40752,
+    "sha256": "d40d121e65f6fd8a73fc049ed04e1455580b4ec0b835348522c86bdacc086dce"
+  },
+  "macos-dynamic/scratch/outside-package-AcquisitionState/inputs/outside-package-AcquisitionState.swift": {
+    "bytes": 67,
+    "sha256": "ede4dc269cc487aa1710ff24bdbdfbff6853d0ddb671e30cb77b306b0891f805"
+  },
+  "macos-dynamic/scratch/outside-package-SignalAnalyzerDiagnostic/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177848,
+    "sha256": "95991bb5fae92eddc480f12bf43d9ea3eb1d50b393929bb906c036634a0322ec"
+  },
+  "macos-dynamic/scratch/outside-package-SignalAnalyzerDiagnostic/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40776,
+    "sha256": "6781f3b06a86d6505b1084fe5bf529764b4b9d2560a6a8225adf4b8af320d3c2"
+  },
+  "macos-dynamic/scratch/outside-package-SignalAnalyzerDiagnostic/inputs/outside-package-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 80,
+    "sha256": "cb6e8b72bb15c537ae7f651690cf019d2734d78759b7b1f2284e05de0be89170"
+  },
+  "macos-dynamic/scratch/outside-package-SignalChannelID/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177824,
+    "sha256": "d2c9cca00a8f1c692449dc89e5544f442c7643831adfb6462064928ab75b45fd"
+  },
+  "macos-dynamic/scratch/outside-package-SignalChannelID/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40752,
+    "sha256": "5525d9bd3a055b078d611af84565d1986221a6fdb043c8b2772d88837c0a6ac8"
+  },
+  "macos-dynamic/scratch/outside-package-SignalChannelID/inputs/outside-package-SignalChannelID.swift": {
+    "bytes": 71,
+    "sha256": "9e3f7b0459f80b955b9c5505e780a89bf967b2cb98aacc38479200bd17896ae4"
+  },
+  "macos-dynamic/scratch/outside-package-SignalTransition/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177824,
+    "sha256": "e1c68ddd0eb2588918c6ee4b5892a792ce3f7831bb866a1d0353432a463462df"
+  },
+  "macos-dynamic/scratch/outside-package-SignalTransition/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40752,
+    "sha256": "4027e97986412c013e6222acdd55e371a64c5b8599ac1e5f7ce66ccae35a7419"
+  },
+  "macos-dynamic/scratch/outside-package-SignalTransition/inputs/outside-package-SignalTransition.swift": {
+    "bytes": 72,
+    "sha256": "09ee8166f3495a4c3236dd4ac88af65a6b248f3c21bd8e83f1232e8b216561f4"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/ABIRead.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/ABIRead.o": {
+    "bytes": 1312,
+    "sha256": "a629e4f571250439b3c5d03712654dca921bf107279825394686ea5b2a005e94"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/ABIRead.swiftdoc": {
+    "bytes": 372,
+    "sha256": "7abfcce7e1eb5dcac56e0160f7b2af2085c52694faeb9a3127af7719f8cefd95"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/ABIRead.swiftmodule": {
+    "bytes": 20148,
+    "sha256": "bb04a2500bdf48a573f6802626e9e062aca64502d7b9a9fcbc8d3e8e8dd57c95"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/ABIRead.swiftsourceinfo": {
+    "bytes": 908,
+    "sha256": "e6ed1c7a8a98d660236b06cc649e48e1e681299014ab2f46ea95aa462128ab0c"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/ABISemantics.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/ABISemantics.o": {
+    "bytes": 6224,
+    "sha256": "575fead36144b90ce771010f72353e877254e68718fea93123091f4fb155379c"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/ABISemantics.swiftdoc": {
+    "bytes": 376,
+    "sha256": "b11d4ed776eae2419263f2de8633bc3ca76e1ee42c34ab54c84179ed9fda11bc"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/ABISemantics.swiftmodule": {
+    "bytes": 18788,
+    "sha256": "d278d591dbc6cc15460936101c003fe60bdd7b4edfd4b2b099aacc6a15754fb8"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/ABISemantics.swiftsourceinfo": {
+    "bytes": 868,
+    "sha256": "4a1761ab473266157e96841b590e66118b84519128d65d948ba3d4c1f719254a"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.o": {
+    "bytes": 13784,
+    "sha256": "c9af185c38243663be000aef95c5f244ae2f08b1c2aee3ca01ec1726ee2e12d7"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.swift": {
+    "bytes": 1239,
+    "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.swiftdoc": {
+    "bytes": 384,
+    "sha256": "42e1ba470b8377036e62dc911f3718aa9d7a139f850fd2b3ea199deb4bb0eb2b"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.swiftmodule": {
+    "bytes": 37184,
+    "sha256": "42a9e3a319dc7c238c13b75baaf3cd1396664d6081cc9c755161df1190eb2283"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.swiftsourceinfo": {
+    "bytes": 1864,
+    "sha256": "d83c11090018d986dee986da8fa17fe72242b95358c80e06bc221e8e1f7d111d"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.o": {
+    "bytes": 13712,
+    "sha256": "4a475d7b98f88e688a3f183982f726129f08339a5a59bba76d21236121018c0d"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.swiftdoc": {
+    "bytes": 380,
+    "sha256": "3ce1e1e8c0a6933bf57ea88c63c2604fc83731ad3a56926d3f7e561583347d2f"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.swiftmodule": {
+    "bytes": 34440,
+    "sha256": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.swiftsourceinfo": {
+    "bytes": 6260,
+    "sha256": "b324e761ce6c24b0eaaeaf8ff026dffef5514437f68bd22784ba7ded6d4fd3aa"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/DeclarationHost.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/DeclarationHost.o": {
+    "bytes": 48168,
+    "sha256": "586780683655c20a0309304416bebc5e35dfefe6e74f74670e625da06e2ad25c"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/DeclarationHost.swiftdoc": {
+    "bytes": 380,
+    "sha256": "0c83adba6acac408a12dc954020e3034a18e2f4ea57e091a268a10e7f6f1a7b2"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/DeclarationHost.swiftmodule": {
+    "bytes": 42704,
+    "sha256": "0c104b39342dadd1d8494d3cfe9c866c44f77fbe1b5fb0ad9e335db963e5cca2"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/DeclarationHost.swiftsourceinfo": {
+    "bytes": 10388,
+    "sha256": "4b21e7f9c049a26662d0ec51d25dea4a6e168190361c8c4d262c2bc61a03517c"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/SignalAnalyzerDomain.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/SignalAnalyzerDomain.o": {
+    "bytes": 38392,
+    "sha256": "7c4348c847e869235c8970cbb28a826cce294f181a681ff9f82401df442bb9d5"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/SignalAnalyzerDomain.swiftdoc": {
+    "bytes": 624,
+    "sha256": "2b2d2532522a33761c9d9a982206b9b6ccb16e7d64d99d70d5bf628f38d67295"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/SignalAnalyzerDomain.swiftmodule": {
+    "bytes": 47984,
+    "sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/SignalAnalyzerDomain.swiftsourceinfo": {
+    "bytes": 7928,
+    "sha256": "7d3cb3bb5fdef42207cb13cfcd0010da171866a571b66a42af87f2d499afca0a"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177800,
+    "sha256": "3c728b76acabd60c081b7cfb8f1cd0d19d6da905a05fd03576610d01db282a6c"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40728,
+    "sha256": "4c77463399cb1e93babfcc743aebfca8058344a7a873bea064242a4bd7865a6a"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/cache/modules.timestamp": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/declarations": {
+    "bytes": 456992,
+    "sha256": "aad31ac3982411030941fedf02014097e2cd65f63dc15d50fa7b27dcef2c378d"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/inputs/ABIRead.swift": {
+    "bytes": 205,
+    "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/inputs/AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/inputs/Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/inputs/Main.swift": {
+    "bytes": 176,
+    "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/inputs/Semantics.swift": {
+    "bytes": 1620,
+    "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/inputs/SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "macos-dynamic/scratch/positive-actual-lowering/semantics": {
+    "bytes": 71272,
+    "sha256": "a7dae77003d67c469e40c646b64a15ac65dffb58b79bb6518c969a730ee22b0a"
+  },
+  "macos-dynamic/scratch/private-count/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177768,
+    "sha256": "d0d043f5c3d78ce6c93aa45e8290dc286368283c4ba58ed046af647e247d31e5"
+  },
+  "macos-dynamic/scratch/private-count/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40696,
+    "sha256": "98e2ddc5c15c69599b144fd078e1587b881a8758040fd7642c4c2c1d169221e4"
+  },
+  "macos-dynamic/scratch/private-count/inputs/private-count.swift": {
+    "bytes": 97,
+    "sha256": "1b5cfd33f2c1e7eb4a9c6567b56e4555faf1ea1efec4119d59d08a360f39f8bd"
+  },
+  "macos-dynamic/scratch/private-helper-continuation/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177808,
+    "sha256": "dce3737864ba66b646cb9a840986c4c26882d3594db99a448fad672ad6b54709"
+  },
+  "macos-dynamic/scratch/private-helper-continuation/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40736,
+    "sha256": "e6b84f28173477c72b3ae5c313c11a4fe458d2f8f2dfce82c1b9d64f8e49eb86"
+  },
+  "macos-dynamic/scratch/private-helper-continuation/inputs/private-helper-continuation.swift": {
+    "bytes": 104,
+    "sha256": "44101e2ed2e09a31263a016036d03bc30b0a55fd8a43abc55ab6f409c503acbc"
+  },
+  "macos-dynamic/scratch/private-helper-leading/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177792,
+    "sha256": "6515ee6188ff10dc93dc96f0407c3a8106d2119d4f0e957e9cdaf7204d1e2905"
+  },
+  "macos-dynamic/scratch/private-helper-leading/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40728,
+    "sha256": "dbba4d0f4d8bc0adc00d64f59bbb302e33b551734ad381b1efdce4160425c5da"
+  },
+  "macos-dynamic/scratch/private-helper-leading/inputs/private-helper-leading.swift": {
+    "bytes": 130,
+    "sha256": "fa95ac63157a227d282faf57df64a5eb5865dc9b587faaa8062c28f9d69979f2"
+  },
+  "macos-dynamic/scratch/private-storage-type/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177792,
+    "sha256": "726515daf2c4e8e80676f3857f45b75a63ea97caaa6ce07bac1a7870d729c3b5"
+  },
+  "macos-dynamic/scratch/private-storage-type/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40720,
+    "sha256": "5dcdaf5bde260bbae6b4556a89a24a0a6defbbc848cd4018e4bc13e63e512584"
+  },
+  "macos-dynamic/scratch/private-storage-type/inputs/private-storage-type.swift": {
+    "bytes": 97,
+    "sha256": "2c240b3f6bb3c1c96f5b06354504905e18d305c4b99ee4e1737311974a9f634c"
+  },
+  "macos-dynamic/scratch/private-storage/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 177776,
+    "sha256": "ebab6f178e1d87faca90fe4979fd17456e96a4ae599e270da73cb7df6a9bf377"
+  },
+  "macos-dynamic/scratch/private-storage/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+    "bytes": 40704,
+    "sha256": "d25009055209434112bf7c28db8877aa2d58391f615f2a6a9e57e924cf23aad5"
+  },
+  "macos-dynamic/scratch/private-storage/inputs/private-storage.swift": {
+    "bytes": 99,
+    "sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf"
+  },
+  "packet-hashes.json": {
+    "bytes": 2754,
+    "sha256": "ba7415b7d21b1f02e26a5bfee4f051163528bdf2c3382cfb45002649b45db580"
+  },
+  "postformat-freeze.json": {
+    "bytes": 86847,
+    "sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333"
+  },
+  "result.json": {
+    "bytes": 947920,
+    "sha256": "4074b3526f2c2444cc232cae6f27854ae807fe7dd9d7ee64da0ee2699dde9a88"
+  },
+  "sources/01c0597385edc4b03c939e8d76df70b5896471fc4ea61a3b59a4f8a8f3a8a877-outside-package-SignalTransition.swift": {
+    "bytes": 72,
+    "sha256": "09ee8166f3495a4c3236dd4ac88af65a6b248f3c21bd8e83f1232e8b216561f4"
+  },
+  "sources/04b3dbd586f41e1fdf7ff36fb303daa35af44f79e47b8375e88063e303b91b1d-AnalyzerPresentation.swift": {
+    "bytes": 1239,
+    "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+  },
+  "sources/053a09f3615700172eec3b4788c2f850b38d9666fdadb29bdf21e6b24c046c34-Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "sources/05813730d9440095e4cfd6904645451f37a4e78e2c823319d65f0ffdd9de7359-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/073749d8132e18754f069adca61b45e54bc518bb24aaefe994a2f1ef6de91895-Canvas.swift": {
+    "bytes": 1215,
+    "sha256": "2d71ef1d9bd7947fc358e5c286cebe79d51312cabdfe13d777da881432c3f91f"
+  },
+  "sources/08a7ead26aa7eec7037753d118a05bbc0a4a9605720a58c3fff64d8fc71ceec9-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/09b34ae2f791f6699e63a3c25d2f6ff65ce8441a1193b92e9d303ccae454bd8d-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/0ad19fd0de3dc6c598caa2793cbba1f28f2822f61bce2882e40f0eeb8835cf00-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/0b40f9f5753f7f6aee19eafe921ca423caa2348645967cfaf560545cdcc602bc-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/0f59bc244f51f6c7d90c62b8d6273ebcd21f5f52779df0c3e3bf420d553b8e93-private-storage.swift": {
+    "bytes": 99,
+    "sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf"
+  },
+  "sources/0fc8e744a25f4bc11fe03c42686578a1f748946adbd70d91cdf8f1d229f0ebd5-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/10dabfe1b3759dd95e23ec1abd0e37bed0641159548299e9307129f85f82a627-ObservableState.swift": {
+    "bytes": 5340,
+    "sha256": "0b293757d79cfa7b5c5e78fe06b2d1897b592f0ef6938cc9b75791dd5126d3e7"
+  },
+  "sources/11b7cfbce12f25e9b646c779856800502caabe9c55b2686767190f2c288f0424-SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "sources/13260a7e2073108ad1318a4b0fb9b918336ebb46c7f19c85274bf11302a6f7ca-Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "sources/13d0e424766f51131c33619581dcee74ce63511db3103e30b1eff3e9b35df353-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/14ce55f452823af5430443d2dc89e7ac9befad8896ff58e145fb5751a99e9b12-private-helper-continuation.swift": {
+    "bytes": 104,
+    "sha256": "44101e2ed2e09a31263a016036d03bc30b0a55fd8a43abc55ab6f409c503acbc"
+  },
+  "sources/15ed3469319687f1214d51b74ee4d871c359069233b83ddbd6bf37621825b84b-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/18b18e76aa62419b60f6812dfd33f3c9aad4862a2844e618e821896c74d1fd82-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/1b8f4b13f6a0fb545ce9ae25c3f9345704b1fa743ff9b684d099940b4cf1ba01-AnalyzerPresentation.swift": {
+    "bytes": 1239,
+    "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+  },
+  "sources/1d5be6e60cdb2e637ff7d91185d14055a3a5d78cbeba34426b4160f537780bec-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/1ecbbfc2808d48c7166fbdc1980a832c5551c7513f461c016ad6c4514d251d16-ABIRead.swift": {
+    "bytes": 205,
+    "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+  },
+  "sources/1f5fb7187f9635c646b38a6c882520b007cad7cdb1c4d26f8ad88d4170b59305-Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "sources/21256c56e1f70b1e26ca3346df1236dad63b5785b8b19e8b58f6397627e8e487-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/22d3a89f26cb37d53278beb14fd4bc20420f0828731df5dba7a75c0973066918-SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "sources/23931c9d22898d38a0ca378eb1f5f25e52ec9f926353dfd6443cec51d4620940-outside-package-SignalChannelID.swift": {
+    "bytes": 71,
+    "sha256": "9e3f7b0459f80b955b9c5505e780a89bf967b2cb98aacc38479200bd17896ae4"
+  },
+  "sources/248a121d7887b79109dd7eb3c0da54e12a3181a7e05514bfc47299ce2250fae2-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/24cb8301f43efbae469f201839ad1921a3bfded7344a55e1c4fad83af5043b4f-SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "sources/27519751c75e938b1d56287c7c9830f9b325e3ed56ed42212dba97a11a70f418-AnalyzerPresentation.swift": {
+    "bytes": 1239,
+    "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+  },
+  "sources/27dc28d827548e7fea3f81837e5fc54f1783d985daabf707c4b86e7462f0ab69-Analyzer.swift": {
+    "bytes": 789,
+    "sha256": "93f984d6c60edc008af9370ca908bf9315463f02b7e54416188edf5aec0681dc"
+  },
+  "sources/2b513a98f8e8454fb96d08767d3237316f016ff75c70c8e791cfa147b88927cf-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/2d2dd6b5edc884d7cc871ba37f0f679808d1d49dba99f77da49dece4e8308a35-GiftUI.swift": {
+    "bytes": 4503,
+    "sha256": "aef4b66eeec863c29068d1054535401707604f71eda3f740fc7e581b3066d6c6"
+  },
+  "sources/2d44d55b6bd9a3655a61593befd2b8dc1950e150a8b1e5c6fc268b4ff94f594c-outside-package-AcquisitionState.swift": {
+    "bytes": 67,
+    "sha256": "ede4dc269cc487aa1710ff24bdbdfbff6853d0ddb671e30cb77b306b0891f805"
+  },
+  "sources/2e6a609c6b76b12c70ef64d67e1251f880431610919c0c5c56a85b03d4730018-SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "sources/30a0107a8327e18ba5039ca0904b830b27f3fb1382988407ccf7b4e2f03982a7-private-helper-continuation.swift": {
+    "bytes": 104,
+    "sha256": "44101e2ed2e09a31263a016036d03bc30b0a55fd8a43abc55ab6f409c503acbc"
+  },
+  "sources/330fbe4cf956fd545dbdff447b25386c58acb2c0ebe9e33f17e4988569092e7e-private-count.swift": {
+    "bytes": 97,
+    "sha256": "1b5cfd33f2c1e7eb4a9c6567b56e4555faf1ea1efec4119d59d08a360f39f8bd"
+  },
+  "sources/33aa0df0f3e3539d40fec053068ee6ce153a47863cbac5b72df53d9060709e9a-AnalyzerPresentation.swift": {
+    "bytes": 1217,
+    "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
+  },
+  "sources/3926783393b753e2987813357a0437414c4442ffbd0275bc1d9b4cf3c99e8411-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/3a12f082fee283db5e0c972edb3e0467c99e72e2ea4f4d6efcede024aa3ee0f3-SignalPrimitiveValues.swift": {
+    "bytes": 1560,
+    "sha256": "9d3be6232f537e691edf54711d5549e9f862eadd68eda88568c0a51045aa48de"
+  },
+  "sources/3ccdb139fbbdf35623a737d9d238d52daa2c90fd25bccba32f0ee5c557efe975-Analyzer.schema.json": {
+    "bytes": 662,
+    "sha256": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+  },
+  "sources/3cd08ba6fb4a0c73195df9689d7843a0062e5b8523df0fa6e0104d0aae515ee0-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/3e2e987a2ae1dd402df5aa2e8756528731688c59f43d3c10eb07fa1bacc2a522-SignalPrimitiveValues.swift": {
+    "bytes": 1564,
+    "sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d"
+  },
+  "sources/3e6789c7a6db823490b9b7d3866ca11900b3e9c92337d150267d71d2f9df7cb2-SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "sources/428cc9b81615c907d7d7ce7fd82c74451f06c858bed8cdb7138c1f4afdbd477c-private-count.swift": {
+    "bytes": 97,
+    "sha256": "1b5cfd33f2c1e7eb4a9c6567b56e4555faf1ea1efec4119d59d08a360f39f8bd"
+  },
+  "sources/439d91f48ce9e2080057360036bf4bca2e313939749d8adabfbe8125bb2ca22f-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/44c90236bcd2f3d3a53deb699b2d4f7eda8b71796d61621b79b20907bae72a64-Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "sources/44e8418642b1469e8a5e4af78c2a6d76c23e13eb7b7a8c3fe9f03e9515682605-SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "sources/45853c3b2b6930dc68fba0a600043183c4a87962fd3ab011df59f25b8958b082-SignalPrimitiveValues.swift": {
+    "bytes": 1560,
+    "sha256": "9d3be6232f537e691edf54711d5549e9f862eadd68eda88568c0a51045aa48de"
+  },
+  "sources/4742e7efa28fd4a5095b428e1919e33392926d5394780659dc809e22975f0b2d-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/49ea349632be769b119f22269bf21df9705e910155de628f81327db29e9e7a36-SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "sources/4b223b6bd8221202a3c48ca76477f9f3148365c7663b70dfa77a6a48563d2a7c-LayoutModifiers.swift": {
+    "bytes": 3976,
+    "sha256": "9df7df30a339bf4f6077581b108c855505ed6230d55d23e9fc55651f4fba877b"
+  },
+  "sources/4d8494e7dfee73ac2ff4c11a5e8503c38839fa4be9ad99510b0a87ae44c74f1a-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/4e66689dcfb2589ebcc824fc883e9aeebbfaa692dec1edab10903f2bc8fa63a2-private-storage.swift": {
+    "bytes": 99,
+    "sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf"
+  },
+  "sources/4ef53f206a32cb26ead26642979e3252c5636dcbaae1474bce7518cd3c0687fd-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/4f71fb1425a003ef4e0997b616fc757ec0a999e00e124d9029b5790037f19529-AnalyzerPresentation.swift": {
+    "bytes": 1239,
+    "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+  },
+  "sources/51af180dcc06f9c0a3ea9c148366367f45311fbe61572b3a0f100a8fa0c6d4c8-private-storage-type.swift": {
+    "bytes": 97,
+    "sha256": "2c240b3f6bb3c1c96f5b06354504905e18d305c4b99ee4e1737311974a9f634c"
+  },
+  "sources/54a9d3b45aef41adfa77b76a36befe3efbc3e6bef6d6814d99ab56e64a205107-StyleModifiers.swift": {
+    "bytes": 1670,
+    "sha256": "e0ddb0ff8d5edbcd9c737483abdf1c79e71f36770e09a440940d3cf5af8153aa"
+  },
+  "sources/5585cdaa7dc0db1d4d9e889e262132629d3972734b2ba0a362077703cc831052-outside-package-SignalChannelID.swift": {
+    "bytes": 71,
+    "sha256": "9e3f7b0459f80b955b9c5505e780a89bf967b2cb98aacc38479200bd17896ae4"
+  },
+  "sources/575b7fcdafc26be1d925998732acd2d7c8920883f5bad13c6dce79642bccbfb8-Disabled.swift": {
+    "bytes": 1142,
+    "sha256": "db9726d9b26fdf2c08b781791acc97a3d9359e148594f0291b0e66661524b755"
+  },
+  "sources/5889325630a04550b8872ae882f743a5711c2ab9699fb41c8bb1a957adc979ac-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/592bb127f6dd06f37efb57eade346c70af15d7212a0a6eaac0aa437d3daa1072-private-helper-leading.swift": {
+    "bytes": 130,
+    "sha256": "fa95ac63157a227d282faf57df64a5eb5865dc9b587faaa8062c28f9d69979f2"
+  },
+  "sources/5a0fd43e98b8bf20188a6127c211a2b2ca2d2ead02b20ea60db96689afb23671-AnalyzerPresentation.swift": {
+    "bytes": 1217,
+    "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
+  },
+  "sources/5c2912429635c5d9703d7a2df861e56a9c6bbef8de6c52189ddad2c1402e27ea-Analyzer.swift": {
+    "bytes": 789,
+    "sha256": "158501c0a102b68bef50de440bc3fac88c0ef392f80879187d90c906379de767"
+  },
+  "sources/5e713885254d8aab5499cb574bd8cc398b834a79f04a94bd7413c711243d059c-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/6134f7f24cd4dc2eb4aab0992324174ff159fceb199c00999f341d51859e7159-AnalyzerPresentation.swift": {
+    "bytes": 1217,
+    "sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2"
+  },
+  "sources/673bdcd28148601646127cc4b81666cea595834bd941771502f55e4141971fab-SignalPrimitiveValues.swift": {
+    "bytes": 1564,
+    "sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d"
+  },
+  "sources/67419c932d5b7f0de2f03e777cb656d129d3afd3d6c10bbeda5b0607419d825f-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/67f4c0b70f1963f16a4a5d8374364590947be5863941b96c79782c58dbe2343a-Analyzer.swift": {
+    "bytes": 789,
+    "sha256": "158501c0a102b68bef50de440bc3fac88c0ef392f80879187d90c906379de767"
+  },
+  "sources/681dd078c251df699b6c3b1ae23e48af5a04060645ffe61f16440c7470d8dbfe-CounterPresentation.swift": {
+    "bytes": 9518,
+    "sha256": "d0140b613b33e99350f77370f1125b49d0a13b477d16f0f0f80c46a2f27ddd5c"
+  },
+  "sources/68f1cdc9fc157a5ac4c66874e7bf22e660c339cbb6df3c30cdead0dd2eee85e7-outside-package-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 80,
+    "sha256": "cb6e8b72bb15c537ae7f651690cf019d2734d78759b7b1f2284e05de0be89170"
+  },
+  "sources/69199f5ce06dcddaaa8772440d8163c0264efe839df238983f9c071990187d20-Main.swift": {
+    "bytes": 257,
+    "sha256": "034acd228ec9476d5c5a6dc2dcd50287849a4fa8e5503d582adbf41d16afdb35"
+  },
+  "sources/6e2e33791757215aa88891c64d125ed3c8c8c4358192e08bfa121d636e084b59-CounterPresentation.swift": {
+    "bytes": 9518,
+    "sha256": "d0140b613b33e99350f77370f1125b49d0a13b477d16f0f0f80c46a2f27ddd5c"
+  },
+  "sources/71499e4fa9c2d0196bcbc50e7eadbc2e03a0e17f74c279893a0ffc33607f92f8-ActionHandler.swift": {
+    "bytes": 201,
+    "sha256": "d36a53f45d18892c235c02355cbed0e6bf92a20b7c64bc7e84ac39a03fa34d01"
+  },
+  "sources/73e8d036353e7e1c7f0b59fa1750fab9fb7439d4a23607021fce7555747d6332-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/7584ff278545e11687791522dd3b1916ef7e16ad64700e3d7c6226580201e361-ABIRead.swift": {
+    "bytes": 205,
+    "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+  },
+  "sources/75b719d98ca2af32bec4c781b8b11c9ebb8933ac67b13af086c5d41941f0b7ca-AnalyzerPresentation.swift": {
+    "bytes": 1239,
+    "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+  },
+  "sources/763f7ac29355d24aee060d00e461fe483636960ba78ddd5439947ecc04d95c9e-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/76da8b2ec529662e5140477df99dc5f33f0a88515db93d497d09ef537ff8c9cf-private-count.swift": {
+    "bytes": 97,
+    "sha256": "1b5cfd33f2c1e7eb4a9c6567b56e4555faf1ea1efec4119d59d08a360f39f8bd"
+  },
+  "sources/7738f45795a7edd7a711da4f3f8417280a2592d99942628f76917c8728fa3bbd-private-storage-type.swift": {
+    "bytes": 97,
+    "sha256": "2c240b3f6bb3c1c96f5b06354504905e18d305c4b99ee4e1737311974a9f634c"
+  },
+  "sources/7a06cce393fdaf6823ef938bb0ecda222d36b1038cc31592c754447d6a00881b-AnalyzerPresentation.swift": {
+    "bytes": 1239,
+    "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+  },
+  "sources/7a914f76b79ae11b144f1072fd68da6073efc4d2021e7dc0a243bf70979d72a5-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/7b42c9b1afd6fbf699ed62247dad22b246820091198e4638f6332553f0718957-CounterPresentation.swift": {
+    "bytes": 9518,
+    "sha256": "d0140b613b33e99350f77370f1125b49d0a13b477d16f0f0f80c46a2f27ddd5c"
+  },
+  "sources/7d7992f01eac6ddce4d40d5a36d7280fa38a12054c341429d4f5f0cb611fd1a9-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/7f6da7bace869c749e10c872ef3dd356c8bbf164bb7c2289727c58db2734c4ed-CounterSchema.swift": {
+    "bytes": 1366,
+    "sha256": "b6f3c92cbc359951328591bb00b315fb71eebe7aa624adb3e04eb58842a7102b"
+  },
+  "sources/814cc60b3f3b5526ce02468dba18b4e5dcfedce885e8a978878836f60dd19079-AcquisitionState.swift": {
+    "bytes": 225,
+    "sha256": "a2fb47cf52972d8610a78e7ffe4d1e8771ea8fff315ca72aec2d29ca33776755"
+  },
+  "sources/833af2204a2103a53f63e40d3d80a795ca51420fb74d8f553f91d65b441e5d32-BoundedText.swift": {
+    "bytes": 6445,
+    "sha256": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce"
+  },
+  "sources/83ef7268c020ab1a59648534fb606ca505308560f87bb57510f3c79cb0115bbf-SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "sources/8422f0e281bd3cf33a7a2ea86a3579dc4080b88bed747519899bbb04a501e14e-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/881c71f75c7a5343ade2784e1ff60b719775f284b54550d8b80eab7b069a6921-Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "sources/8967c01d4c4cf8c2db2a7f41ac79ba4496e8b1cc2f4be3870eb1516927b57e42-Analyzer.swift": {
+    "bytes": 789,
+    "sha256": "158501c0a102b68bef50de440bc3fac88c0ef392f80879187d90c906379de767"
+  },
+  "sources/8cc1df2b1eed0b90aa6db1a967209d7a7678662ea5b079261cda5596c8b4c770-SignalPrimitiveValues.swift": {
+    "bytes": 1564,
+    "sha256": "d0031edd5d37014aabebd88b4ebdd15a811fb2587b8a984668e715c631253e52"
+  },
+  "sources/8f50d796aa41d442bc3584f206d0fd4b10b92a1e7ea856737a4e0ac5dbc377e7-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/903b372f6f68691dda906ccd047239b79c3239eb2412585083aa7096bb687f09-AnalyzerPresentation.swift": {
+    "bytes": 1217,
+    "sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2"
+  },
+  "sources/9288958a1145f1b09902d37724623f8f9f1d352d2e66dca6c57c23e18c9c61b2-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/93252f1559d936650008d7f53567bb73e5d537a14a0aeeba6aa5e6d6b63ef99d-Semantics.swift": {
+    "bytes": 1620,
+    "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+  },
+  "sources/9752a46c6e87d4d148623bf3850d81879afb6acd6ed021044b51dd50758bfe6b-Semantics.swift": {
+    "bytes": 1620,
+    "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+  },
+  "sources/9b3376a7ebe403b51823184a13beb574fafa537dedd81ec88cc1b5f848638cbe-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/9c1370a03846e210343bdae217aac33041daee27718f278987c9affdaede4464-outside-package-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 80,
+    "sha256": "cb6e8b72bb15c537ae7f651690cf019d2734d78759b7b1f2284e05de0be89170"
+  },
+  "sources/9c6a991e47d797c9e71b4ff7d9a8815d0fa596e259abca70214c8201f569f3df-DrawingSurface.swift": {
+    "bytes": 7273,
+    "sha256": "185607ede17d3eb8e655e1dc7e24a60fba22225028f1b1ae25a470355daa7a48"
+  },
+  "sources/9c8966f6286a55d986caf6b33766d039635b23aa990fa125bbcf556146ef9024-LayoutContainers.swift": {
+    "bytes": 4709,
+    "sha256": "5157a2cc20100ec15885d10d0da528202623901d885f6345d7dab89d07d49d20"
+  },
+  "sources/9e204adab0955ef5f53930bc5a70f070ddbffa4a9f1140604894b62e0430e458-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/a125026b2da1040ad5fc5fc6371304d9d296a5f1d954106c082fec1bf0558f48-ABIRead.swift": {
+    "bytes": 205,
+    "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+  },
+  "sources/a2625e6da782e87737b5b1e29da53d1f0f2f8d4a1859d8602cd49d4b8e16e2cd-Analyzer.swift": {
+    "bytes": 789,
+    "sha256": "93f984d6c60edc008af9370ca908bf9315463f02b7e54416188edf5aec0681dc"
+  },
+  "sources/a408638c273fae0520cfa9875c8fb7063ecd6b5f638ca51949655f5395ac1e40-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/a510de39b856d7d7b6fbd7dd26acbfc99bd5f462ff0d7e721648478deaf1a0ba-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/a6224eaf3ff59f1e3c1e19f21c47cd4329e6694259a7ca100779e3d9f881fb22-CounterSchema.swift": {
+    "bytes": 1366,
+    "sha256": "b6f3c92cbc359951328591bb00b315fb71eebe7aa624adb3e04eb58842a7102b"
+  },
+  "sources/a67b5606b30c184a41e27f59fb70772025a85893a73eb026c4cbea62c4138f72-private-helper-leading.swift": {
+    "bytes": 130,
+    "sha256": "fa95ac63157a227d282faf57df64a5eb5865dc9b587faaa8062c28f9d69979f2"
+  },
+  "sources/a77b59ed8d1642289eaa63bf29c2126ef686ffb95a971a1d008d94c7e20af5b3-Text.swift": {
+    "bytes": 1436,
+    "sha256": "5461073a644fa488103b5d6306647b9b4db3f332d421f64735100eba7b8b0efd"
+  },
+  "sources/a7d2f5422f960f6b4a4838ba76b934e2fb0e70a9921f459fb0157d4c02c43319-SignalPrimitiveValues.swift": {
+    "bytes": 1564,
+    "sha256": "d0031edd5d37014aabebd88b4ebdd15a811fb2587b8a984668e715c631253e52"
+  },
+  "sources/a89451a5af25d8f5c9d4cf1f540256f963ed3130384af7cbfdefeb531ed311a1-DrawingStyles.swift": {
+    "bytes": 762,
+    "sha256": "eb28147b2dd565006f9d6b97c7b98e5bcfc52f42e19ebfae1dad1f79b08d130a"
+  },
+  "sources/a8afdee2a75b1a76f4d4b762ace34740511e971febb82bd886f5ac46334beffb-Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "sources/a92c75ecc5ce45ff0e91830a014f74d071d89412e8f2929c8b73f353faa9f6b4-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/aa031dbf2ff050cd426657d7f1e42cb3bca12b5920687beb98446bb45e6dfc88-outside-package-SignalTransition.swift": {
+    "bytes": 72,
+    "sha256": "09ee8166f3495a4c3236dd4ac88af65a6b248f3c21bd8e83f1232e8b216561f4"
+  },
+  "sources/aadeef4af8f478129727faf65d38cc03d75f3a00adbb493cbb168e109798d87c-Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "sources/aecde1ea348f25ffbb3552a8aa968db7a486ae876f21cc3525a492527f00ca8a-outside-package-AcquisitionState.swift": {
+    "bytes": 67,
+    "sha256": "ede4dc269cc487aa1710ff24bdbdfbff6853d0ddb671e30cb77b306b0891f805"
+  },
+  "sources/b0b9ed6617ecc56d4675d3ef2bded6d1a919bd331f57f0dedcb90024fd4d80b0-private-helper-leading.swift": {
+    "bytes": 130,
+    "sha256": "fa95ac63157a227d282faf57df64a5eb5865dc9b587faaa8062c28f9d69979f2"
+  },
+  "sources/b0c5f18b76f474100705993cf353b24e71e1107debe526974dc008f2e92791d3-LayoutValues.swift": {
+    "bytes": 1951,
+    "sha256": "70c7b34276f6f2d41382d14ee844fcf65d92c075f7caa0a12e79d17181c817f5"
+  },
+  "sources/b0f1df2f83112d59f3d65ddaf75a47ad3f3e077b47e42a231c981c1000e479f9-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5653,
+    "sha256": "f44b7d121c9d290f877ad43c361b4d90d79ecb27a3f8ac1e112062077b53dcf4"
+  },
+  "sources/b7ebd4ab9124f06aaddf1d7c239baef16d42532aaab110f7f1f84bfac2f5ebc1-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/b86c80e502e415178ce017f22b6c3959e85d84cfd38a2abc6a3bedf9e5eb4433-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/b9e383b5428041cf2e020954652dd9f8184b56385c93114187875bcea09546f6-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/ba6c4d33cb78906599339cfa05a8e8dca6191fcc5aa2cb3d3cc9f52d8f8d805e-Semantics.swift": {
+    "bytes": 1620,
+    "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+  },
+  "sources/bbaacb39f3bb5c146e3e074409f726c6d15d83f6aae0d6d1f3e41188eadca574-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/bbf0e398bc0e51373739e70ba6aeb2a6492d2f57f8be5908ea6eadd3ea75dc65-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/c084178eff6f7310555a86baec920a80f482d17115f673359814f8a9ad02d712-SignalPrimitiveValues.swift": {
+    "bytes": 1560,
+    "sha256": "511f5c4e5940d28746ee9fd0b2b9818544a0cc9ab107c0a0f7973d2a2775c416"
+  },
+  "sources/c28c437564c239cd4a05aa261821742b025bdfeb30d828f2652d6b898715c94e-private-helper-continuation.swift": {
+    "bytes": 104,
+    "sha256": "44101e2ed2e09a31263a016036d03bc30b0a55fd8a43abc55ab6f409c503acbc"
+  },
+  "sources/c2dd2517be5245b58f75c7e89c15bf253ffef678553b56d21016c89231a5fabb-Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "sources/c338ddff28fb44630b15b87bff71f569b87f90eccac081c669f31a23aeed11cd-Button.swift": {
+    "bytes": 1339,
+    "sha256": "bfef4dd797058b7c9c96e650f86ab9c068dffa5703200388c17631ad451af354"
+  },
+  "sources/c57c4182b87e6d9f521d94c5ec6ab1ec8e4f3f7fa10d22821c928c0ef87fca3a-AcquisitionState.swift": {
+    "bytes": 225,
+    "sha256": "a2fb47cf52972d8610a78e7ffe4d1e8771ea8fff315ca72aec2d29ca33776755"
+  },
+  "sources/c66eb5c3342b9dd7d1b33f1d5f5fdde664b0185dc3068fcdb79814b8a4790554-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/c9b055ecd4adb86fcd63f5299ecff5993c6eecc93fca5b915a750b038f6a5c43-SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "sources/ce0cf218871737c8c2cd3dc2a9af23e842d2972c970e0fd7bcb65234dc6c332f-SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "sources/cef97e4f50faeec6e773e963b2e543b07f0b4358a9df3074570adfe81e5200f7-private-storage.swift": {
+    "bytes": 99,
+    "sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf"
+  },
+  "sources/d295e0a6f9c05090c5d35f79f95f06428a4e692aa1dad5c73d95f512d67b36f7-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5653,
+    "sha256": "f44b7d121c9d290f877ad43c361b4d90d79ecb27a3f8ac1e112062077b53dcf4"
+  },
+  "sources/d2c95a3b8f61b5a08553add9e456b6c82e6e228cbdb58059264c3106e9c9b80e-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/d3023aadbf6ba750d3927d125dafbad134468d08b553bff7fc86b55ed457b00b-DeclarationHost.swift": {
+    "bytes": 12651,
+    "sha256": "5720a3b8fe8fc627fd569c7d3d3ed7818633dfb2194ff26340c192ccfb55674a"
+  },
+  "sources/d319115303328ac77b9e50ac5a0eb1b26a7c61cec9def30d68f7348f1193e274-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/d3d6cb194fca5e325bc1080e6b74022ff6f6a5c14e498ec4cd60929ee3055fe1-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/d4b861ea4d0892111dd0bbfde832477ad6b582c12cb4df8f686a210ee5ce8099-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/d4bba2460fd3c1f009fffa8dca4affd6fbaad5953240dc48e5a283aac0aee3d4-private-storage-type.swift": {
+    "bytes": 97,
+    "sha256": "2c240b3f6bb3c1c96f5b06354504905e18d305c4b99ee4e1737311974a9f634c"
+  },
+  "sources/d5093cf4a1b0110a9d433b1c1bc5129788e6a40c13fcb5b4e8849f082fcc2836-AnalyzerPresentation.swift": {
+    "bytes": 1239,
+    "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+  },
+  "sources/d7b7f9063e90ac32789639f1d86cc7e31f875aed601238c780ab83f2c2bc42b3-Color.swift": {
+    "bytes": 668,
+    "sha256": "60009e3d58dcdfe65ba39bf6d036047207707837d73db308a5a25e81fc2ee835"
+  },
+  "sources/d80f44f1eb642d20de5fe1f522db87a0f4e466c1b62e254c3e78d8c64787bd9a-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/d83321dddbf624a6b3435faac9ffb15a88214bf11775eeb2e16d2c3d212ec01e-SignalPrimitiveValues.swift": {
+    "bytes": 1560,
+    "sha256": "511f5c4e5940d28746ee9fd0b2b9818544a0cc9ab107c0a0f7973d2a2775c416"
+  },
+  "sources/d8d75c867edd395d00b4270be7a4613b00e1b520863b8f05926b7f6fbf7b1c8e-outside-package-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 80,
+    "sha256": "cb6e8b72bb15c537ae7f651690cf019d2734d78759b7b1f2284e05de0be89170"
+  },
+  "sources/da9ad374f89b2f0a77a18e655ba9b1cfe0b26ff2c256047565c48ddf0d019cbb-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/db01cacfdde56bb8adb74786d4da4426b5af01f6e213aecee2990608bab4535a-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/e03511aef46e124f1bc3f78c28fa21448ad19c7c343949e949ebb78a91b91485-Main.swift": {
+    "bytes": 176,
+    "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+  },
+  "sources/e5887f4f975261dcac7e81d554481302728edbff1baeb414c6c7b3ab7ccb8579-SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "sources/e6fc54c78bf7eaad272038b1d438fe1f01c03f3d8dd93c0abc655f4ed1a41dc9-Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "sources/eb4b0f4ec4e150f7db3450971ab5874f2521dfb2a67f37a866ba32374f737512-Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "sources/ed60e5107b513e9f749a6fd90a46b3d36273a12554a4ee2b5e5107c42db34257-outside-package-AcquisitionState.swift": {
+    "bytes": 67,
+    "sha256": "ede4dc269cc487aa1710ff24bdbdfbff6853d0ddb671e30cb77b306b0891f805"
+  },
+  "sources/ed80685602fc202a08e4d0d3c035db2f046d1520ccaa567acbda78c80fff5466-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/f2043601f64d8dfb44debec30915fcac016017b49f25de13d7b9dfc29af3d369-AnalyzerPresentation.swift": {
+    "bytes": 1217,
+    "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
+  },
+  "sources/f3eb97a244410f43ee7251eaed9374ca1564124d7894d742dfd5c180c7ea9411-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/f4b07e2a355e39f332a089038b5b51d1dc0b2afbd611db53fd933b3f38401787-Counter.swift": {
+    "bytes": 4356,
+    "sha256": "2abe29596021e08b6c64b909ee034ed4afc6875ee8fe749f00c05be3bb92d4d2"
+  },
+  "sources/f4d9bd50b37a584c086b88faf6b54181bb3eed47473af2fb726b5052a368b46f-CounterSchema.swift": {
+    "bytes": 1366,
+    "sha256": "b6f3c92cbc359951328591bb00b315fb71eebe7aa624adb3e04eb58842a7102b"
+  },
+  "sources/f54654db91667b6f52bd4fdc3665eafd87b6232e27c4e653a0df4abfb6ffd4e2-outside-package-SignalChannelID.swift": {
+    "bytes": 71,
+    "sha256": "9e3f7b0459f80b955b9c5505e780a89bf967b2cb98aacc38479200bd17896ae4"
+  },
+  "sources/f624c2633c0a06ff895bb7a6fe1bf34568b1464281558b490f30769f12ee1bc4-SignalPrimitiveValues.swift": {
+    "bytes": 1582,
+    "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+  },
+  "sources/f6a0ebec0d58381e3b7454c37c09b943bc8ab310f1231b0b5a9b03b181f6a2fa-Counter.schema.json": {
+    "bytes": 316,
+    "sha256": "e092ddce53ab55b051c8489c81e3214ce6e294affaec69ee6cfb5cb16d38a0f1"
+  },
+  "sources/f7e81ad1ca2e1d13901ab1b5e5f2078ffb18a7b61b9aa592744cd9d807e3806c-SignalAnalyzerDiagnostic.swift": {
+    "bytes": 5671,
+    "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+  },
+  "sources/f9691eb8dfffe2dd208ac09c086facf03fd96cb60d23319243c350af2e6764a7-AcquisitionState.swift": {
+    "bytes": 243,
+    "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+  },
+  "sources/f9a0024421c4ccb653fab96bc3c1d38fa75d86f6cc255b2366fb0aa15854630a-DeclarativeView.swift": {
+    "bytes": 13724,
+    "sha256": "1451f910208735955fe7f188800d639f024ac1cb75fdb7dd49c5a3d835672c24"
+  },
+  "sources/fb495da2b583fa0afdcb1da20c0a0b654f5c9e04707cc609ab40a810a993fff6-outside-package-SignalTransition.swift": {
+    "bytes": 72,
+    "sha256": "09ee8166f3495a4c3236dd4ac88af65a6b248f3c21bd8e83f1232e8b216561f4"
+  },
+  "sources/fdad1abef03809919b0ade2cfc6d2d5495de3ce8641a581cbdfa8118fbf55de5-AnalyzerSchema.swift": {
+    "bytes": 3247,
+    "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+  },
+  "sources/fde5357a25d6e9a35b304864316ec7f0ea18b0f53421102c48d17c8e8470dc02-Analyzer.swift": {
+    "bytes": 811,
+    "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+  },
+  "tmp/TemporaryDirectory.07MZwu/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.1GdEei/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.1QVXhb/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.2CVnb8/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.2CVnb8/supplementaryOutputs-1": {
+    "bytes": 948,
+    "sha256": "39d8f3815d6f424a749a83e0e55a1ddc89bccceb5a6a2384970b9520e0dc46bd"
+  },
+  "tmp/TemporaryDirectory.2Vz3mQ/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.2mljDy/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.33qBXM/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.3L1U8A/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.3L1U8A/supplementaryOutputs-1": {
+    "bytes": 883,
+    "sha256": "42ee3e72513bbe70ee7962411190f3f2d3d07807570f0bc10308cb7952b04f95"
+  },
+  "tmp/TemporaryDirectory.3Sj3zw/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.3Sj3zw/supplementaryOutputs-1": {
+    "bytes": 807,
+    "sha256": "828f9f65522e3a8d667067f414568f5c01a133494c34acd00963c01ba4362713"
+  },
+  "tmp/TemporaryDirectory.470QOl/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.5IXMm6/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.5IXMm6/supplementaryOutputs-1": {
+    "bytes": 755,
+    "sha256": "e604fa70ccb8a847686ba2c9caa3206f49d8e0c10fe797958b18725dcc805301"
+  },
+  "tmp/TemporaryDirectory.5QIOVw/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.5QIOVw/supplementaryOutputs-1": {
+    "bytes": 755,
+    "sha256": "797fc9090b46d7185a5ee393497672bce2d161636dea5c2fcad5277ca8714d03"
+  },
+  "tmp/TemporaryDirectory.5wuAP8/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.5wuAP8/supplementaryOutputs-1": {
+    "bytes": 755,
+    "sha256": "0cb4d99146554802c1d1cbb72c199aeef3bb0ee10356f3f63d6bf5d887a1bb1f"
+  },
+  "tmp/TemporaryDirectory.69AGA7/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.7t85xG/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.8M3cE0/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.960LOk/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.99WAAA/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.99WpqM/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.Aa5Exf/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.Ar7ZNJ/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.B6ppz1/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.BIvwnt/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.BIvwnt/supplementaryOutputs-1": {
+    "bytes": 827,
+    "sha256": "14c72d7892d8dd3c9edbca3a62568499d9875fcbca830ad9574cb46653240de8"
+  },
+  "tmp/TemporaryDirectory.BRyYgW/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.BeJCBL/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.C3E5yH/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.C3E5yH/supplementaryOutputs-1": {
+    "bytes": 883,
+    "sha256": "cf90b71275a86b9d52381ecbe807bdcc09de731dd16e680f89a583f53452d0da"
+  },
+  "tmp/TemporaryDirectory.CoYJ7L/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.CoYJ7L/supplementaryOutputs-1": {
+    "bytes": 575,
+    "sha256": "8c2fe89ac3f997694ed3e6644b0bd19ccb69fe5e7294f5aa59b849665585fc5a"
+  },
+  "tmp/TemporaryDirectory.D4BVwm/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.ELCMsH/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.ELCMsH/supplementaryOutputs-1": {
+    "bytes": 755,
+    "sha256": "5c01e14f870261b27a490cd1d7909a3f0ce179d6cf547c648368366b06a038ec"
+  },
+  "tmp/TemporaryDirectory.EWZesQ/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.F7GdMh/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.FIyfYZ/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.G3XddR/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.GxGQYT/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.HLa1Te/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.I03EX3/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.I60QUZ/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.JH89ZE/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.KVWc3r/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.KbEgd4/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.LozaqD/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.LozaqD/supplementaryOutputs-1": {
+    "bytes": 883,
+    "sha256": "e876feb3938e326d29c689b01692f2d58437611b43b55534f3f4fa5bcfe22aaa"
+  },
+  "tmp/TemporaryDirectory.M7I0rp/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.M7I0rp/supplementaryOutputs-1": {
+    "bytes": 560,
+    "sha256": "fa332b2c216c4547ca4e3410d758e68e5eeefca21b525c7fc15150f6016cd54a"
+  },
+  "tmp/TemporaryDirectory.MAerQj/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.MdU8At/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.MdU8At/supplementaryOutputs-1": {
+    "bytes": 883,
+    "sha256": "8bf70d1fed3539849c3a753a530eeb01e3564481886584a1bb833afbf4170ed4"
+  },
+  "tmp/TemporaryDirectory.NQNd9d/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.NikjzB/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.NxixuG/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.OTuy1S/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.Peyg23/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.Peyg23/supplementaryOutputs-1": {
+    "bytes": 883,
+    "sha256": "39de578f4e8e5d883f1df688d73fd3c34e14a89f17e144278b80a0a51d24351b"
+  },
+  "tmp/TemporaryDirectory.QLGJm6/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.QoJ7fd/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.QsXy4q/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.RvTue2/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.RvTue2/supplementaryOutputs-1": {
+    "bytes": 755,
+    "sha256": "839b32ea249c3a74453da453cb877de96f56091d3b321976dbbf07a118ed0a24"
+  },
+  "tmp/TemporaryDirectory.SQAhTu/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.TbgN0V/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.TujBaH/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.TujBaH/supplementaryOutputs-1": {
+    "bytes": 883,
+    "sha256": "1d97df94337313b8135de6f8277ef43877dd340b1df2bcd2cf2ae298edf9f4de"
+  },
+  "tmp/TemporaryDirectory.UkOJwA/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.Uq0HHv/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.XfQ2Wr/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.XzS9TY/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.ZTh2Tx/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.ZTh2Tx/supplementaryOutputs-1": {
+    "bytes": 883,
+    "sha256": "0e1609fb3e8115dba5d408587631bf1a5cc0049747ba81d566a1137bbedc347e"
+  },
+  "tmp/TemporaryDirectory.ZlTAAD/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.ZlTAAD/supplementaryOutputs-1": {
+    "bytes": 883,
+    "sha256": "ccaa1b51175f41a2cc92c536ab4b5b32a207d5e065e4dc8b35806b1243c3e80c"
+  },
+  "tmp/TemporaryDirectory.bMhW7s/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.cHe7rR/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.eTdtwc/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.ejLHPE/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.f2ucIG/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.fYbg5s/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.fyZVdy/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.ilSjnj/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.ilSjnj/supplementaryOutputs-1": {
+    "bytes": 755,
+    "sha256": "02c1c331a2ddbb5f19f9876429835fbc5b86152376441c30cf409e48d49e321a"
+  },
+  "tmp/TemporaryDirectory.kXkiyj/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.ljRoDo/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.n6mP9m/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.nzGTCL/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.oNG0zo/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.ofGxK3/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.ofGxK3/supplementaryOutputs-1": {
+    "bytes": 755,
+    "sha256": "ff63b83c63f1d7727d84e20d9c3930845be8b4f7943ee6c5a2d6ab2d990d954a"
+  },
+  "tmp/TemporaryDirectory.pRjdp6/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.q3HmAS/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.qts2F9/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.qts2F9/supplementaryOutputs-1": {
+    "bytes": 755,
+    "sha256": "438a532dfae28cf8de7752286685dea91cd7cc84806efb863709ac2a070ca75f"
+  },
+  "tmp/TemporaryDirectory.rJlDQF/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.rYMrSB/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.sDTllZ/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.sK9gl1/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.sK9gl1/supplementaryOutputs-1": {
+    "bytes": 672,
+    "sha256": "25e034f5cc1bded16f824cc1be4b6a8ef5696a762ac32548b0c50170957493e3"
+  },
+  "tmp/TemporaryDirectory.tMzSi1/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.tw3AuG/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.unCiGF/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.w39U12/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.w39U12/supplementaryOutputs-1": {
+    "bytes": 775,
+    "sha256": "3cebd50626bd908d417318e705fe78eeb4c35024924f07f2174a58c2b8db7996"
+  },
+  "tmp/TemporaryDirectory.x5uenr/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.x8qHAR/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.y3wxDU/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.y5JCN3/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.yVSt3c/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/TemporaryDirectory.zqtkst/.keep-directory": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tmp/xcrun_db": {
+    "bytes": 1482,
+    "sha256": "92fab3b089df9261cdcb8474c0058b460ac0cfafe262bc38fca55c78f8ed32c9"
+  }
+}
