@@ -26,6 +26,12 @@ passes this boundary. Current privacy/physical six bodies/all42 origins/actual-h
 safety and strict cold remain untested; source candidate/P08/R07/T8.1 unaccepted.
 No source edits/new tests or later execution followed; earlier stages are historical.
 
+[Fixed-source qualification1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-fixed-qualification1/README.md)
+is prepared only:22 privacy controls, six-module/required-six-body physical gate
+and actualhost object capture; exact commands/hash inputs validated, no execution.
+Dependent SIL/all42/callee review and complete safety/cold remain open; no source
+or repair allowance added.
+
 Current [final corrective2 result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective2-result/README.md):
 lower+20 owners PASS, RuntimeCore FAIL3 witness ABI requirements, four dependents
 blocked;307 input hashes and source/output identities verify. Initial1/1 and

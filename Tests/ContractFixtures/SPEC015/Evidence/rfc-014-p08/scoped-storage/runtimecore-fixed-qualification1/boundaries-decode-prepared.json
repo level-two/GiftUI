@@ -1,0 +1,47 @@
+{
+  "command_policy": "same hash-qualified LLVM21/schema0/1003 dump as24590caf; read-only, no compiler/application",
+  "commands": {
+    "GiftUIDrawing": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-runtimecore-witness-compatibility-candidate1/owners/GiftUIDrawing/GiftUIDrawing.swiftmodule"
+    ],
+    "GiftUIHostConfiguration": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-runtimecore-witness-compatibility-candidate1/owners/GiftUIHostConfiguration/GiftUIHostConfiguration.swiftmodule"
+    ],
+    "GiftUIInteraction": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-runtimecore-witness-compatibility-candidate1/owners/GiftUIInteraction/GiftUIInteraction.swiftmodule"
+    ],
+    "GiftUILayout": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-runtimecore-witness-compatibility-candidate1/owners/GiftUILayout/GiftUILayout.swiftmodule"
+    ],
+    "GiftUIRasterCore": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-runtimecore-witness-compatibility-candidate1/owners/GiftUIRasterCore/GiftUIRasterCore.swiftmodule"
+    ],
+    "GiftUIRuntimeCore": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-runtimecore-witness-compatibility-candidate1/owners/GiftUIRuntimeCore/GiftUIRuntimeCore.swiftmodule"
+    ]
+  }
+}

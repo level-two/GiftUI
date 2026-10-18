@@ -15,6 +15,12 @@ prior activity. [Prior independent boundary](p08-grouped-module-closure-final-in
 and [exact three-witness map](grouped-module-closure-corrective2-result/next-witness-boundary.json)
 remain historical evidence; this authorization makes that finite scope executable.
 
+The [fixed-source first qualification packet](runtimecore-fixed-qualification1/README.md)
+is prepared and validated without compiler/decoder/runtime execution:22 normal-import
+privacy controls, six-module physical index/required six-body gate, actualhost
+object capture. Dependent42-source SIL command is prepared only; full14-loan/
+lifetime/Optional/provenance/exclusivity/cleanup and cold remain unqualified.
+
 Add only `@usableFromInline` to ObservableCanvasInvocationSource's existing
 canvasOccurrenceCount, canvasIdentity(at:) and releaseCanvas(at:) witnesses.
 Preserve package access, original protocol and names, all signatures/bodies/
