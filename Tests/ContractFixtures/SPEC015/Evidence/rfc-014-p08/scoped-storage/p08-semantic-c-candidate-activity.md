@@ -57,3 +57,11 @@ One explicitreturn control+matchingpositive requires review, no compilerpretest.
 staticvalidatePASS: force returned SemanticRecordView vsownedUInt32 positive to
 prevent original unusedexpression/Void inference.1305frozeninputs; retain87/72,
 runonlypair→conditionalfresh42SIL afterREADY. No compilerpretest/source/budgetchange.
+
+# Explicit-return harness review
+
+[Independent pair review](p08-semantic-c-escape-review.md):0533a592 READY. Original
+unused-view warning explains Void-discard fixture; explicit return types/returns
+force intended UInt32-positive vs ~Escapable-view-negative.1305frozen inputs verify;
+reuse87bodies+72privacy, run pair then conditionalfresh42SIL only. Source/budgets/
+strict diagnostics unchanged; no lifetime/source acceptance or repair allowance.
