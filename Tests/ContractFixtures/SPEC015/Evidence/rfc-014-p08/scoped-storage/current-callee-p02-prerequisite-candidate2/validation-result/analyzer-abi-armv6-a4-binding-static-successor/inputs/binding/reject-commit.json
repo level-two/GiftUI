@@ -1,0 +1,337 @@
+{
+  "artifacts": {
+    "AnalyzerPresentation.o": {
+      "bytes": 14944,
+      "sha256": "12a6d4cd509ddfc634ac19cad01c87fb490dbb2fd5abb35b19dc27bbb7376bdd"
+    },
+    "AnalyzerPresentation.swift": {
+      "bytes": 1239,
+      "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+    },
+    "AnalyzerPresentation.swiftmodule": {
+      "bytes": 36604,
+      "sha256": "a9ed730c3f407b7bef42a0dd839700f41a7cb04b745302061b0fafb3944611f0"
+    },
+    "AnalyzerSchema.o": {
+      "bytes": 18572,
+      "sha256": "6ec9565a0b65f2843fd136809e58e9b72aad1407e3419c3d175067362e2f05bd"
+    },
+    "AnalyzerSchema.swift": {
+      "bytes": 3247,
+      "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+    },
+    "AnalyzerSchema.swiftmodule": {
+      "bytes": 33920,
+      "sha256": "1c9ad8b869e8046fb65f6737dc9586f92c3b1501037a523e5527d2235f2aa46b"
+    },
+    "CounterPresentation.o": {
+      "bytes": 134172,
+      "sha256": "8b6d5062b54e8f165fae9871df986a6130796aa4aad456062d00058e79384f36"
+    },
+    "CounterPresentation.swift": {
+      "bytes": 9518,
+      "sha256": "d0140b613b33e99350f77370f1125b49d0a13b477d16f0f0f80c46a2f27ddd5c"
+    },
+    "CounterPresentation.swiftmodule": {
+      "bytes": 129668,
+      "sha256": "c77446945a8693ce5f4435c36471aa5cb4660888e914b5aaf797e833a7818579"
+    },
+    "CounterSchema.o": {
+      "bytes": 10524,
+      "sha256": "159b34cfbe034ea6b3a55613ab92e6263b1ac39ff247481a8558be1609bb4319"
+    },
+    "CounterSchema.swift": {
+      "bytes": 1366,
+      "sha256": "b6f3c92cbc359951328591bb00b315fb71eebe7aa624adb3e04eb58842a7102b"
+    },
+    "CounterSchema.swiftmodule": {
+      "bytes": 26020,
+      "sha256": "b386dd0191f4f1bc8638bee54241c0e4a6f182abeabde6ef958cb0270c482f68"
+    },
+    "DeclarationHost.o": {
+      "bytes": 66148,
+      "sha256": "c149d0a618d88285fa82f8efc215aefff19f804047143da44bac6fddc9a370f0"
+    },
+    "DeclarationHost.swiftmodule": {
+      "bytes": 42684,
+      "sha256": "f59b2c428bb734024164154223021190b5ca2c5cb30dc1d3c831c1f3e44b15a4"
+    },
+    "GiftUI.o": {
+      "bytes": 442360,
+      "sha256": "43220bb4ef0d5e8a7925a8a551e8b5d3bf79ce4798f6995eb6984639c4c2a8db"
+    },
+    "GiftUI.swiftmodule": {
+      "bytes": 342148,
+      "sha256": "045321a28264768adb549dc8ed04e6071c1a90c2f936e004fbb6d070a20439ad"
+    },
+    "SignalAnalyzerDomain.o": {
+      "bytes": 47336,
+      "sha256": "4f72070cf1d925c3284735b9e6cd5fd17b163b185ddad3bee6e391392f5a7d14"
+    },
+    "SignalAnalyzerDomain.swiftmodule": {
+      "bytes": 47964,
+      "sha256": "7f7b076b5c49da21215480a7dbc5baa54b94964545f09bd701ba7dcf5d2766c9"
+    },
+    "custom-body-domain.swift": {
+      "bytes": 348,
+      "sha256": "c13c6b4c5ad8648976314783f2a9b1c0b87cf71db50fdafcc5e2589066a74ec0"
+    },
+    "disguised-effect.swift": {
+      "bytes": 120,
+      "sha256": "a74a76e3f90f18f53eba9ba2a4f5396943632f148d8569fb5dadc86309e75cd0"
+    },
+    "escaping-read.swift": {
+      "bytes": 157,
+      "sha256": "b8b4b223d9db745dc5e7123ea31df5a0469ad5c87910d3148e8cbb617016b60e"
+    },
+    "macro-checks": {
+      "bytes": 16005200,
+      "sha256": "d5a3f2df92bdb13a5ba3bf6dc58d06dd0d5224191efaad2528b5fc9481b50a5c"
+    },
+    "missing-body.swift": {
+      "bytes": 93,
+      "sha256": "07d611cf984244444aac377d1fb9667784345d7b5e786fb00abf985784ef327f"
+    },
+    "mixed-domains.swift": {
+      "bytes": 218,
+      "sha256": "f4df09108126a50bc0519f5a3c3ca2bca3f432530554d4531614fe75c8aafa11"
+    },
+    "owned-facade-escape.swift": {
+      "bytes": 128,
+      "sha256": "ed7b5fc56efd569a839272e7d72bdef1f0207eda6fa4f778e66e8421c232e468"
+    },
+    "private-key-construction.swift": {
+      "bytes": 99,
+      "sha256": "74f2478b5d680b7e752dafb944004e4c395de164ba3086d15e94f0320b855c9d"
+    },
+    "private-read-construction.swift": {
+      "bytes": 109,
+      "sha256": "56dbca1606a19905e74a1c2e4048484114fa5f9d5002e0ad8be92d02a7b828b0"
+    },
+    "six-children.swift": {
+      "bytes": 321,
+      "sha256": "f1d12f8dd14c2f4f6037dd1d94c6bb48b54e9d427585d81a67c6b36e6903684f"
+    },
+    "unchecked-inout.swift": {
+      "bytes": 109,
+      "sha256": "9953314ba0de05105aede93203388a5c67415056209d8658edbe2ba2ca99fd14"
+    },
+    "unknown-effect.swift": {
+      "bytes": 120,
+      "sha256": "db17156e119b084f82f301ed44c268bb05e44f291a3233c4ee35843b03ce1766"
+    },
+    "unknown-model-member.swift": {
+      "bytes": 110,
+      "sha256": "2989320e89fd4e00d594d709ba90a226a5c4929f2f4619229242f198f5095995"
+    }
+  },
+  "checks": [
+    {
+      "check": "compiler-version",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "required-features",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "host-macro-build",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "macro-check-build",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "macro-fixtures",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "GiftUI",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "counter-lowering",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "CounterSchema",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "CounterPresentation",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "SignalAnalyzerDomain",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "analyzer-lowering",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "AnalyzerSchema",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "AnalyzerPresentation",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "DeclarationHost",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "target-abi",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "check": "owned-facade-escape",
+      "exit": 1,
+      "pass": true
+    },
+    {
+      "check": "custom-body-domain",
+      "exit": 1,
+      "pass": true
+    },
+    {
+      "check": "mixed-domains",
+      "exit": 1,
+      "pass": true
+    },
+    {
+      "check": "missing-body",
+      "exit": 1,
+      "pass": true
+    },
+    {
+      "check": "six-children",
+      "exit": 1,
+      "pass": true
+    },
+    {
+      "check": "escaping-read",
+      "exit": 1,
+      "pass": true
+    },
+    {
+      "check": "unknown-effect",
+      "exit": 1,
+      "pass": true
+    },
+    {
+      "check": "unchecked-inout",
+      "exit": 1,
+      "pass": true
+    },
+    {
+      "check": "disguised-effect",
+      "exit": 1,
+      "pass": true
+    },
+    {
+      "check": "unknown-model-member",
+      "exit": 1,
+      "pass": true
+    },
+    {
+      "check": "private-key-construction",
+      "exit": 1,
+      "pass": true
+    },
+    {
+      "check": "private-read-construction",
+      "exit": 1,
+      "pass": true
+    }
+  ],
+  "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "execution": "cross-compiled; no target execution",
+  "input_sha256": "ccb5a9c53de6944106533a1f6169d29861c7e2792ab8dbe252b2aed6ea75fe7a",
+  "inputs": {
+    "Package.resolved": "e8bac048051bf38b3d064110cb165689b83d9e23c469d575a7e549b2d68efb00",
+    "Package.swift": "56ec87fe0f47ed4cd93900f4a9d6ee46db079e7ecb55979e07658c29812797bd",
+    "Sources/GiftUI/ActionHandler.swift": "d36a53f45d18892c235c02355cbed0e6bf92a20b7c64bc7e84ac39a03fa34d01",
+    "Sources/GiftUI/BoundedText.swift": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce",
+    "Sources/GiftUI/Button.swift": "bfef4dd797058b7c9c96e650f86ab9c068dffa5703200388c17631ad451af354",
+    "Sources/GiftUI/Canvas.swift": "2d71ef1d9bd7947fc358e5c286cebe79d51312cabdfe13d777da881432c3f91f",
+    "Sources/GiftUI/Color.swift": "60009e3d58dcdfe65ba39bf6d036047207707837d73db308a5a25e81fc2ee835",
+    "Sources/GiftUI/DeclarativeView.swift": "1451f910208735955fe7f188800d639f024ac1cb75fdb7dd49c5a3d835672c24",
+    "Sources/GiftUI/Disabled.swift": "db9726d9b26fdf2c08b781791acc97a3d9359e148594f0291b0e66661524b755",
+    "Sources/GiftUI/DrawingStyles.swift": "eb28147b2dd565006f9d6b97c7b98e5bcfc52f42e19ebfae1dad1f79b08d130a",
+    "Sources/GiftUI/DrawingSurface.swift": "185607ede17d3eb8e655e1dc7e24a60fba22225028f1b1ae25a470355daa7a48",
+    "Sources/GiftUI/GiftUI.swift": "aef4b66eeec863c29068d1054535401707604f71eda3f740fc7e581b3066d6c6",
+    "Sources/GiftUI/LayoutContainers.swift": "5157a2cc20100ec15885d10d0da528202623901d885f6345d7dab89d07d49d20",
+    "Sources/GiftUI/LayoutModifiers.swift": "9df7df30a339bf4f6077581b108c855505ed6230d55d23e9fc55651f4fba877b",
+    "Sources/GiftUI/LayoutValues.swift": "70c7b34276f6f2d41382d14ee844fcf65d92c075f7caa0a12e79d17181c817f5",
+    "Sources/GiftUI/ObservableState.swift": "0b293757d79cfa7b5c5e78fe06b2d1897b592f0ef6938cc9b75791dd5126d3e7",
+    "Sources/GiftUI/StyleModifiers.swift": "e0ddb0ff8d5edbcd9c737483abdf1c79e71f36770e09a440940d3cf5af8153aa",
+    "Sources/GiftUI/Text.swift": "5461073a644fa488103b5d6306647b9b4db3f332d421f64735100eba7b8b0efd",
+    "Sources/GiftUIMacros/CanvasWitnessLowering.swift": "735e4e9388a7d64f634975c8b46202335f94c1a8008afdc5b3fa2bc6356d22ba",
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift": "1873e5f07d48ea3caeda3fa906e3b0936ca33d975db3813207c2603ce8a77a07",
+    "Sources/GiftUIMacros/GiftUIMacros.swift": "db3c0786628995ad46879bb1af674eb94c1fb9fe33c8d702632ed9588f46161b",
+    "Sources/GiftUIMacros/ObservableStateHostMacro.swift": "1b1a0e91b1694c11ec02e56af35ee861decec7b4662a0a0eca65e51029e0ad3d",
+    "Sources/SignalAnalyzerDomain/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+    "Sources/SignalAnalyzerDomain/ModuleBoundary.swift": "837099cf3d38228e94c4be34dc1cbca3d67b4e62f64a05862843e94186c08293",
+    "Sources/SignalAnalyzerDomain/SignalAcquisitionContracts.swift": "121a62d4a13b2da15865309dfb3e2e17ca90534c9fc0416521730c5a65201fa9",
+    "Sources/SignalAnalyzerDomain/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+    "Sources/SignalAnalyzerDomain/SignalCaptureChange.swift": "22b797e24c32d8f4054e22ef2756b056c3d3601d061a02f9438ceb0c71cb6dbc",
+    "Sources/SignalAnalyzerDomain/SignalCapturePublication.swift": "2d2a648a49e96f6020eb8a55080bc14f24c2f3a9748dd12694bfefb14a940a1b",
+    "Sources/SignalAnalyzerDomain/SignalPrimitiveValues.swift": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c",
+    "Sources/SignalAnalyzerDomain/SignalValues.swift": "4efb99632dc8b8a255e56daa257074b91041d6f20fdad71084a9da548588f493",
+    "Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a",
+    "Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+    "Tests/ContractFixtures/SPEC006/RuntimeDerived/Counter.schema.json": "e092ddce53ab55b051c8489c81e3214ce6e294affaec69ee6cfb5cb16d38a0f1",
+    "Tests/ContractFixtures/SPEC006/RuntimeDerived/Counter.swift": "2abe29596021e08b6c64b909ee034ed4afc6875ee8fe749f00c05be3bb92d4d2",
+    "Tests/ContractFixtures/SPEC006/RuntimeDerived/DeclarationHost.swift": "5720a3b8fe8fc627fd569c7d3d3ed7818633dfb2194ff26340c192ccfb55674a",
+    "Tests/ContractFixtures/SPEC006/RuntimeDerived/MacroChecks.swift": "5cf1e61f1fda78faa192f6970173f8a7aad63f9feb1ed5b366bf11360d83c0f8",
+    "Tests/ContractFixtures/SPEC006/RuntimeDerived/Main.swift": "034acd228ec9476d5c5a6dc2dcd50287849a4fa8e5503d582adbf41d16afdb35",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Diagnostics/malformed.txt": "63ce323107e5693b768a96bbd5ff9a3af100ca0f2cb27708d11a3d1fb82e82ff",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Diagnostics/overflow-shaped.txt": "21cd52b66435643fd0f0e11197420ff1e1916806d69d6172192227a4b67ca2e4",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Expected/inherited.swift": "e7dbe2eb6ca34da6119c857ed11570826db7939a87872542aa65b69986ff509b",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Expected/malformed.swift": "f01d70ff8e2f8f2b0ddb61a5d2d9d89c3397cc1569ec390cc2ce9434096332f5",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Expected/portable-profile.swift": "efdd1ac4b46d270de976b43361974c2fa80100b2b73e8291319c624de544af19",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Expected/private.swift": "5d504467451fad839dd9c06aa5cfcf6b855ee833546d14aa0041c2a75a2f2dd7",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Expected/several.swift": "d158e2179e2e246cfc79c5a8f05ea6f70860a23ea6f4dc168cbc3a7a0fa13723",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Expected/zero.swift": "2c540683985890aef4349cb022ece9f2f867ae898c507d5864e2a660d4796af4",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Sources/inherited.swift": "f0239bd82b47af56988f3edc9755b7378198f8513cc65cb6e215b240d1e36121",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Sources/malformed.swift": "f0aa2738e7135492ef18f92c9335036f4b9f15d6e76f4a350108d04962c0864d",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Sources/overflow-shaped.txt": "bb6447714f15d9cbaa6cd0acb3d4e3311e01b423dffdcb1f3ee1c3be0107698a",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Sources/portable-profile.swift": "0912b76bad6ece92ebd65fbc71bae9d89ad9e5d4355b486e66586220ae146885",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Sources/private.swift": "dd3cfd8a7c22fe16cb8b971361b7b098f253a766ff37f9ed9b8d8e839906655d",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Sources/several.swift": "64785362f4bd461a2af41e1ef4720dba40b173fc3ed589bd863207f607f430e9",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/Sources/zero.swift": "8bd196ac4e88a076a96dad0b1fab0438d15f4253ad80394e886d0882e6f37c48",
+    "Tests/ContractFixtures/SPEC010/MacroExpansion/cases.tsv": "d8d634f2fc01bcb8a903e2b194bf194bfea69017b53221aa687f3cfce966fb91",
+    "scripts/contracts/check-spec-006-typed-lowering.py": "c5645b188daa539235fc1ac4d38d2a74fa3aa1822fef071652452de5e59ac5fb",
+    "scripts/contracts/compiler-baseline.sh": "d1b1b075a337aa220a4694b4d22fd6da3f08a321f0ce06707f7496c7d62904c2",
+    "scripts/contracts/run-spec-006.sh": "e0cabaa86298cedc08c966fb548ea9920db121ecdd7a3d5d8bc0b0efaa5af347",
+    "scripts/nrf52840/toolchain.env": "0fc9f2a6c4ee824c45bee2e6d1f88d12914950f0fe37a354ef4912a87dfd2e2e",
+    "scripts/raspberry-pi/toolchain.env": "839e5d565637012434f60ae107ff7dc10c809cff52ab28a3e39fcd0d6e72a007"
+  },
+  "macro_tool": ".build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+  "macro_tool_sha256": "651cf63bd8c07d18d143fd09370427fdacf8c6967c38e14c71d2ea5f7d9b2814",
+  "package": "P02",
+  "profile": "raspberry-pi-armv6",
+  "source_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "swift_syntax_library": ".build/rfc014-p02-swift64/tool/prebuilts/swift-syntax/603.0.2/swift-6.4.0-RELEASE-macos_universal-MacroSupport/lib/libMacroSupport.a",
+  "swift_syntax_sha256": "63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308",
+  "version": "Apple Swift version 6.4 (swift-6.4-RELEASE)\nTarget: arm64-apple-macosx26.0"
+}

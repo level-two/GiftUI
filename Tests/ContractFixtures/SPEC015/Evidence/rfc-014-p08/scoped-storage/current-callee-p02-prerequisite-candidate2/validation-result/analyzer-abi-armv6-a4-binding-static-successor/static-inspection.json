@@ -1,0 +1,22 @@
+{
+  "archived_constants_unchanged": true,
+  "binder_calls": 0,
+  "binding_literal_json_ast_match": true,
+  "campaign_invocations": 0,
+  "compiler_invocations": 0,
+  "enumerated_relocations": 19,
+  "inherited_cases_unchanged": true,
+  "inherited_inputs": 1057,
+  "inherited_inputs_bytes_unchanged": true,
+  "new_inputs": 135,
+  "no_runtime_global_policy_assignments_in_new_functions": true,
+  "original_parser_prefix_byte_identical": true,
+  "parser_calls": 0,
+  "preserved_files": 2003,
+  "producer_invocations": 0,
+  "python_ast_valid": true,
+  "runner_invocations": 0,
+  "status": "AST_JSON_HASH_INSPECTION_ONLY_UNEXECUTED",
+  "total_inputs": 1192,
+  "valid_alternate_current_commit_core_fixture_prepared": true
+}

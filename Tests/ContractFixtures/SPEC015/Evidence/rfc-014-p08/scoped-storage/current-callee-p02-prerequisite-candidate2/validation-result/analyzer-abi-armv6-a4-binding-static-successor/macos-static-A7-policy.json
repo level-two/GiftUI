@@ -1,0 +1,40 @@
+{
+  "category": "serialized-ABI-access",
+  "control_id": "negative-A7",
+  "excerpt_line": 11,
+  "excerpt_text": "    package let model:_GiftUIModelKey<AnalyzerModelSchema>",
+  "gutter": "   |                 `- note: property 'model' is not '@usableFromInline' or public",
+  "id": "macos-static-negative-A7-AnalyzerPresentation-display-only-v1",
+  "input_sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2",
+  "kind": "abi-negative",
+  "maximum_per_primary": 1,
+  "module": "AnalyzerPresentation",
+  "primaries": [
+    {
+      "column": 42,
+      "line": 21,
+      "source": "        let state = (try AnalyzerRead<D>(model, read: read)).state()"
+    },
+    {
+      "column": 56,
+      "line": 23,
+      "source": "        Text<D>(BoundedText(Int32((try AnalyzerRead<D>(model, read: read)).state().capture().count)))"
+    },
+    {
+      "column": 33,
+      "line": 24,
+      "source": "        if (try AnalyzerRead<D>(model, read: read)).state().capture().count > 0 {"
+    },
+    {
+      "column": 64,
+      "line": 25,
+      "source": "            Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))"
+    }
+  ],
+  "primary_message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+  "profile": "macos-static",
+  "remove_only": "A7",
+  "required_primary_count": 4,
+  "required_stream": "stderr",
+  "required_symbol": "model"
+}

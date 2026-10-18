@@ -1,0 +1,19 @@
+{
+  "category": "serialized-ABI-access",
+  "control_id": "negative-A4",
+  "excerpt_line": 1,
+  "excerpt_text": "package struct SignalChannelID: Hashable, Sendable {",
+  "gutter": "   |                `- note: type declared here",
+  "id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+  "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+  "kind": "abi-negative",
+  "maximum_per_primary": 1,
+  "module": "SignalAnalyzerDomain",
+  "primary_column": 17,
+  "primary_line": 22,
+  "primary_message": "type referenced from a '@usableFromInline' property must be '@usableFromInline' or public",
+  "primary_source": "    package let channelID: SignalChannelID",
+  "profile": "macos-static",
+  "remove_only": "A4",
+  "required_symbol": "SignalChannelID"
+}
