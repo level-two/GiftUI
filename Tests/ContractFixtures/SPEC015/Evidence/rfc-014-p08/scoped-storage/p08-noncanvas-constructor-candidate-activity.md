@@ -41,6 +41,12 @@ codegen/cost BLOCKED/STOP at live F08 stopped metadata prologue.13original roots
 resolved/10unqualified. Next bounded grouped C review only; text/cold/full safety
 and P08 remain open. No source allowance or heapcount claim.
 
+[Independent semantic C design review](p08-semantic-c-design-review.md): proposal
+80b83eaa READY for separately authorized bounded candidate.36unique sites/4files
+cover selected8roots/direct field+borrow closure; sole private initializer access
+change preserves checked-store input and exact lifetime. F08 only confirmed current
+failure; no E/F scope/source allowance or compile/consumer/safety/cold acceptance.
+
 [Focused selector continuation PASS](noncanvas-constructor-selector-continuation1-result/README.md):
 76unique positive serialized bodies, same42SILexit0/61,929,568bytes,1281inputsverified.
 No source or prerequisite repeats; actual consumer interpretation and full safety/
