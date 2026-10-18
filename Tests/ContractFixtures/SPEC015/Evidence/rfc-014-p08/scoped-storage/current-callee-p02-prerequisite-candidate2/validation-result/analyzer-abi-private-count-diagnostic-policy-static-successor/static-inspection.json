@@ -1,0 +1,20 @@
+{
+  "A4_A7_A8_storage_policy_ast_identical": true,
+  "all_346_inherited_fields_and_oracles_identical": true,
+  "campaign_invocations": 0,
+  "compiler_invocations": 0,
+  "expected_accepts_new": 2,
+  "expected_rejects_new": 145,
+  "inherited_inputs": 346,
+  "new_inputs": 147,
+  "original_parser_byte_identical_prefix": true,
+  "parser_calls": 0,
+  "preserved_files": 875,
+  "producer_invocations": 0,
+  "repair_budget": "Existing two-attempt package stop ceiling; zero automatic repairs/retries; no parser execution before independent READY review; no budget reset",
+  "status": "PREPARATION_AST_JSON_HASH_ONLY_UNEXECUTED",
+  "synthetic_current_commit": "7de78a99a22723d4d644064bd6125146ce4d81bc",
+  "synthetic_current_commit_input_sha256": "6f5a6123209c1fe56b7f97c6480735cc0976f8dfdf03341de0608ba8b7de34dc",
+  "tests": 0,
+  "total_inputs": 493
+}

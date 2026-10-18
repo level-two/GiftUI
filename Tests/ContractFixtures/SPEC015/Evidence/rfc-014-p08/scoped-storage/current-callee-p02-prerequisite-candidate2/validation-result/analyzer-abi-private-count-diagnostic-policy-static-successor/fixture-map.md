@@ -1,0 +1,151 @@
+# Count diagnostic static fixture map
+
+All 346 inherited case objects, fields and oracles are identical to the sealed storage packet. All expectations below are prepared and unexecuted.
+
+- `PC-P01`: True; Exact archived count diagnostic with explicit count policy; campaign6 core/current commit joins; no qualified count receipt claim
+- `PC-N001`: False; Missing complete count control category
+- `PC-N002`: False; Missing complete count control dependency_note_sources
+- `PC-N003`: False; Missing complete count control expected_nonzero
+- `PC-N004`: False; Missing complete count control files
+- `PC-N005`: False; Missing complete count control first_expected_stage
+- `PC-N006`: False; Missing complete count control id
+- `PC-N007`: False; Missing complete count control kind
+- `PC-N008`: False; Missing complete count control package_name
+- `PC-N009`: False; Missing complete count control positive_twin
+- `PC-N010`: False; Missing complete count control primary_message_patterns_all
+- `PC-N011`: False; Missing complete count control required_symbol
+- `PC-N012`: False; Missing complete count control virtual_display_note
+- `PC-N013`: False; Wrong context profile
+- `PC-N014`: False; Wrong context module
+- `PC-N015`: False; Wrong context stage
+- `PC-N016`: False; Wrong diagnostic exit 0
+- `PC-N017`: False; Wrong diagnostic exit 2
+- `PC-N018`: False; Wrong diagnostic exit -1
+- `PC-N019`: False; Wrong diagnostic exit True
+- `PC-N020`: False; missing note
+- `PC-N021`: False; missing primary
+- `PC-N022`: False; note before primary
+- `PC-N023`: False; duplicate note
+- `PC-N024`: False; duplicate primary
+- `PC-N025`: False; extra whitespace
+- `PC-N026`: False; wrong primary row
+- `PC-N027`: False; wrong primary column
+- `PC-N028`: False; wrong note row
+- `PC-N029`: False; wrong note column
+- `PC-N030`: False; wrong excerpt
+- `PC-N031`: False; wrong virtual label
+- `PC-N032`: False; wrong primary symbol
+- `PC-N033`: False; wrong note symbol
+- `PC-N034`: False; wrong client source
+- `PC-N035`: False; unrelated note path
+- `PC-N036`: False; Entire diagnostic on stdout
+- `PC-N037`: False; Virtual note on stdout
+- `PC-N038`: False; Extra error stdout before
+- `PC-N039`: False; Extra error stdout after
+- `PC-N040`: False; Extra error stderr before
+- `PC-N041`: False; Extra error stderr after
+- `PC-N042`: False; Extra warning stdout before
+- `PC-N043`: False; Extra warning stdout after
+- `PC-N044`: False; Extra warning stderr before
+- `PC-N045`: False; Extra warning stderr after
+- `PC-N046`: False; Extra remark stdout before
+- `PC-N047`: False; Extra remark stdout after
+- `PC-N048`: False; Extra remark stderr before
+- `PC-N049`: False; Extra remark stderr after
+- `PC-N050`: False; Extra note stdout before
+- `PC-N051`: False; Extra note stdout after
+- `PC-N052`: False; Extra note stderr before
+- `PC-N053`: False; Extra note stderr after
+- `PC-N054`: False; Crash marker Stack dump: stdout
+- `PC-N055`: False; Crash marker Stack dump: stderr
+- `PC-N056`: False; Crash marker LLVM ERROR: stdout
+- `PC-N057`: False; Crash marker LLVM ERROR: stderr
+- `PC-N058`: False; Crash marker Segmentation fault stdout
+- `PC-N059`: False; Crash marker Segmentation fault stderr
+- `PC-N060`: False; Crash marker fatal error: failure stdout
+- `PC-N061`: False; Crash marker fatal error: failure stderr
+- `PC-N062`: False; Wrong client bytes
+- `PC-N063`: False; Client path differs
+- `PC-N064`: False; Primary path differs
+- `PC-N065`: False; Virtual label offered as dependency evidence
+- `PC-N066`: False; Missing source/module domain_primitives
+- `PC-N067`: False; Alter source/module bytes domain_primitives
+- `PC-N068`: False; Alter source/module path domain_primitives
+- `PC-N069`: False; Missing source/module domain_source
+- `PC-N070`: False; Alter source/module bytes domain_source
+- `PC-N071`: False; Alter source/module path domain_source
+- `PC-N072`: False; Missing source/module domain_state
+- `PC-N073`: False; Alter source/module bytes domain_state
+- `PC-N074`: False; Alter source/module path domain_state
+- `PC-N075`: False; Missing source/module imported_module
+- `PC-N076`: False; Alter source/module bytes imported_module
+- `PC-N077`: False; Alter source/module path imported_module
+- `PC-N078`: False; Missing provenance producer
+- `PC-N079`: False; Missing provenance consumer
+- `PC-N080`: False; Missing provenance module_receipt
+- `PC-N081`: False; Module receipt mismatch module_name
+- `PC-N082`: False; Module receipt mismatch module_path
+- `PC-N083`: False; Module receipt mismatch module_sha256
+- `PC-N084`: False; Module receipt mismatch producer
+- `PC-N085`: False; Module receipt mismatch source_inputs
+- `PC-N086`: False; Wrong producer argv
+- `PC-N087`: False; Wrong producer exit
+- `PC-N088`: False; Wrong producer environment
+- `PC-N089`: False; Wrong consumer argv
+- `PC-N090`: False; Wrong consumer exit
+- `PC-N091`: False; Wrong consumer environment
+- `PC-N092`: False; Missing core artifact_path
+- `PC-N093`: False; Missing core receipt_path
+- `PC-N094`: False; Missing core receipt_sha256
+- `PC-N095`: False; Missing core root
+- `PC-N096`: False; Missing core receipt_fixture
+- `PC-N097`: False; Missing core artifact_fixture
+- `PC-N098`: False; Missing current core
+- `PC-N099`: False; Missing current commit
+- `PC-N100`: False; Malformed/stale current commit abc
+- `PC-N101`: False; Malformed/stale current commit FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+- `PC-N102`: False; Malformed/stale current commit 0000000000000000000000000000000000000000
+- `PC-N103`: False; Malformed/stale current commit True
+- `PC-N104`: False; Wrong current core root
+- `PC-N105`: False; Wrong current core receipt_path
+- `PC-N106`: False; Wrong current core artifact_path
+- `PC-N107`: False; Wrong core receipt hash
+- `PC-N108`: False; Core receipt bytes altered
+- `PC-N109`: False; Core artifact bytes altered
+- `PC-N110`: False; Storage policy grafted on count control
+- `PC-N111`: False; Storage control grafted on count input
+- `PC-N112`: False; Storage stderr grafted on count
+- `PC-N113`: False; Count policy grafted on storage control
+- `PC-N114`: False; Count opt-in grafted onto private-storage-type
+- `PC-N115`: False; Count opt-in grafted onto private-helper-leading
+- `PC-N116`: False; Count opt-in grafted onto private-helper-continuation
+- `PC-N117`: False; Count opt-in grafted onto negative-A1
+- `PC-N118`: False; Count opt-in grafted onto negative-A4
+- `PC-N119`: False; Count opt-in grafted onto negative-A7
+- `PC-N120`: False; Count opt-in grafted onto negative-A8
+- `PC-N121`: False; Count opt-in grafted onto outside-package-SignalAnalyzerDiagnostic
+- `PC-N122`: False; Other profile raspberry-pi-armv6
+- `PC-N123`: False; Other profile nrf52840-embedded
+- `PC-P02`: True; Synthetic fresh campaign AND fresh core/current HEAD exact digest join; reused module bytes are logical fixture only
+- `PC-N124`: False; Fresh commit with stale receipt
+- `PC-N125`: False; Fresh producer with stale core argv
+- `PC-N126`: False; Fresh consumer with stale core argv
+- `PC-N127`: False; Fresh module receipt with stale producer
+- `PC-N128`: False; Fresh stderr with archived campaign paths
+- `PC-N129`: False; Fresh root noncanonical
+- `PC-R-wrong-package`: False; Rehashed authenticated-looking P02 receipt with wrong-package
+- `PC-R-wrong-profile`: False; Rehashed authenticated-looking P02 receipt with wrong-profile
+- `PC-R-failed-check`: False; Rehashed authenticated-looking P02 receipt with failed-check
+- `PC-R-wrong-source`: False; Rehashed authenticated-looking P02 receipt with wrong-source
+- `PC-R-wrong-compiler`: False; Rehashed authenticated-looking P02 receipt with wrong-compiler
+- `PC-R-wrong-plugin`: False; Rehashed authenticated-looking P02 receipt with wrong-plugin
+- `PC-R-missing-artifact`: False; Rehashed authenticated-looking P02 receipt with missing-artifact
+- `PC-R-wrong-artifact-hash`: False; Rehashed authenticated-looking P02 receipt with wrong-artifact-hash
+- `PC-R-stale-commit`: False; Rehashed authenticated-looking P02 receipt with stale-commit
+- `PC-R-stale-digest`: False; Rehashed authenticated-looking P02 receipt with stale-digest
+- `PC-R-wrong-execution`: False; Rehashed authenticated-looking P02 receipt with wrong-execution
+- `PC-R-source-join-domain_primitives`: False; Module producer receipt source hash differs for domain_primitives
+- `PC-R-source-join-domain_source`: False; Module producer receipt source hash differs for domain_source
+- `PC-R-source-join-domain_state`: False; Module producer receipt source hash differs for domain_state
+- `PC-R-unknown-policy`: False; Unknown virtual policy id
+- `PC-R-stdout-whitespace`: False; Nonempty whitespace stdout
