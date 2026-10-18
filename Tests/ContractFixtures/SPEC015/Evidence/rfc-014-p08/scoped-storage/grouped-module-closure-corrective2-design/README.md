@@ -1,13 +1,17 @@
 # Final corrective2 design — concrete ABI dependency completion
 
-**Design only; independent review before source/compiler.** Initial1/1 and
+**Independent design PASS; source/compiler unexecuted.** The
+[review](../p08-grouped-module-closure-corrective2-independent-design-review.md)
+passes the 21 ABI annotations plus the previously approved default completion below. Initial1/1 and
 corrective1/2 are consumed. This is the last permitted corrective cycle; it starts
 at its first source edit, not this read-only amendment. [Corrective1 result](../grouped-module-closure-corrective1-result/README.md)
 retains lower+15 PASS, Layout FAIL36, nine blocked owners and all302 frozen inputs.
 The source remains `b46a8239`. [Exact map](candidate-map.json): **21 declarations
 in13 files**, four arithmetic ABI entries, one directly used property and sixteen
-signature nominals; **zero new serialized bodies, access/body/signature/constructor
-changes, no-op edits or flag changes**. This extends only the previously reviewed
+signature nominals. The separate one-site default completion below makes the
+total boundary **22 edits in14 files**. There are no new serialized bodies,
+access/body changes, no-op edits or flag changes; the sole parameter-default change
+completes an already approved initializer guard. This extends only the previously reviewed
 six-root/caller dependency mechanism, not the144-nominal lexical inventory.
 
 ## Diagnosed arithmetic and direct blocked-owner dependencies
@@ -48,6 +52,19 @@ all members. In particular, ordinary nonfrozen struct fields are excluded unless
 directly referenced by the selected serialized body. The fresh compile remains
 the material legality gate; this inspection does not predict a PASS.
 
+## Previously approved constructor-default completion
+
+The [one-site amendment](constructor-default-amendment.json) restores only
+`value: Payload? = nil` in the existing internal CanvasStagedEntry initializer.
+Frozen `b89c4fac` has an optional mutable value property and no custom entry
+initializer. Swift's [documented optional initialization and memberwise rules](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/initialization/)
+establish the original nil default; [SE-0242](https://github.com/swiftlang/swift-evolution/blob/main/proposals/0242-default-values-memberwise.md)
+records default memberwise synthesis implemented in Swift5.1. Corrective1 preserved
+invoked=false but omitted this explicitly approved value default. Restore it in
+this same final cycle, retaining access, ownership, assignments and all lifetime
+tokens. No new constructor or public capability is introduced; no other default
+or signature change is included. Original map/freeze snapshots remain unchanged.
+
 ## Blocked-entry inspection and excluded edits
 
 The map records all28 originally selected serialized entries in the blocked
@@ -56,7 +73,7 @@ initializer was also inspected. Direct body dependencies were checked as groups:
 
 | Selected body group | Required direct entries and current disposition |
 | --- | --- |
-| Canvas lender/metadata/entry/scope constructors and count/identity/stage/invoke/release/discard | CanvasValueTable + StaticCanvasCallableTable requirements, StaticCanvasLimits accessed fields, metadata count/releases, entry identity/witness/value/invoked and scope state/entries/capacity are already qualified. Standard pointer/Span/Optional operations stay unchanged. Both explicit initializer equivalents retain exact defaults/assignments. No edit. |
+| Canvas lender/metadata/entry/scope constructors and count/identity/stage/invoke/release/discard | CanvasValueTable + StaticCanvasCallableTable requirements, StaticCanvasLimits accessed fields, metadata count/releases, entry identity/witness/value/invoked and scope state/entries/capacity are already qualified. Standard pointer/Span/Optional operations and assignments stay unchanged. Only the approved entry value=nil default completion above is added. |
 | CanvasPlanProducer derive/validateOccurrences/fail | Existing qualified CanvasInvocationSource, ResolvedRenderLayoutView, DrawingPlanConstructionWorkspace/Workspace requirements, ExecutionContext cycle/candidateFrame/phase, DrawingLimits.maximumCanvasOccurrences, result/error cases and ordinary productionError helper supply the direct boundary. No edit. |
 | ObservableCanvasInvocationSource.invokeCanvas | Existing qualified stored models/values/table, ObservableModelScope.withRead, CanvasStagedValues.invoke and DrawingError(accessFailure:) supply the boundary; domain/slot/read and original State realization are unchanged. No edit. |
 | RuntimeRecordInteractionBridge.dispatch | Existing qualified CapturedAction identity/generation, BoundActionRecord identity/generation/isEnabled/action/targetGeneration, BoundedApplicationAction.code, GiftUIAction protocol, target currentGeneration/mutate and dispatch/error result cases supply the direct boundary. No edit. |
@@ -74,8 +91,9 @@ in [read-only freeze](source-freeze.json); no compiler or source mutation occurr
 
 ## Implementation and gates after independent PASS
 
-Apply exactly21 added `@usableFromInline` lines; every declaration/access/signature/
-body/default/lifetime token remains identical. Format only13 allowlisted files,
+Apply exactly21 added `@usableFromInline` lines plus the one frozen entry-default
+completion; every other declaration/access/signature/body/default/lifetime token
+remains identical. Format only14 allowlisted files,
 audit token deltas and unchanged constructor/protected hashes, then freeze source
 and a new isolated command receipt before execution. Changing GiftUI invalidates
 the entire registered DAG: freshly rebuild all25 owners sequentially using the

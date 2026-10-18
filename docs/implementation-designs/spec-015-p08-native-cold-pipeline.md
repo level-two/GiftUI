@@ -24,8 +24,9 @@ verify. Initial1/1 and corrective1/2 consumed, final correction design/review ne
 No source repair, retry, privacy/codegen/safety/cold run or P08 acceptance follows.
 Earlier boundaries below are historical.
 The [final corrective2 design](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective2-design/README.md)
-awaits independent review: exact21 annotation-only declarations in13 files,28
-blocked serialized entries inspected. Source/compiler unchanged; corrections1/2.
+has [independent design PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-corrective2-independent-design-review.md):
+21 ABI annotations plus one approved omitted-default completion,22 edits in14 files;
+28 blocked entries inspected. Source/compiler unchanged; corrections1/2.
 
 
 The [corrective1 root/dependency map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-design/README.md)

@@ -1,0 +1,25 @@
+{
+  "status": "reviewed completion of previously approved corrective1 initializer-equivalence guard; no source/compiler execution",
+  "base_map": "candidate-map.json: unchanged 21 ABI annotation sites in 13 files",
+  "additional_source_allowlist": [
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "source_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3",
+      "line": 27,
+      "declaration": "CanvasStagedEntry.init(identity:witness:value:invoked:)",
+      "before": "        value: Payload?,",
+      "after": "        value: Payload? = nil,",
+      "action": "restore only the omitted optional memberwise default; preserve access, ownership, invoked=false, assignments and all other tokens",
+      "authority": "db0cd74c explicitly required preserving optional value=nil in the internal initializer equivalent; parent authorized completing this guard in the same final correction",
+      "historical_source": "b89c4fac:Sources/GiftUIDrawing/CanvasStagedValues.swift contains fileprivate var value: Payload? and no custom CanvasStagedEntry initializer",
+      "rule_sources": [
+        "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/initialization/#Optional-Property-Types",
+        "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/initialization/#Memberwise-Initializers-for-Structure-Types",
+        "https://github.com/swiftlang/swift-evolution/blob/main/proposals/0242-default-values-memberwise.md"
+      ]
+    }
+  ],
+  "total_boundary": "21 existing ABI annotation sites plus this one existing parameter default: 22 edit sites in 14 files",
+  "budget": "same final corrective2/2, currently unconsumed; corrective1/2 consumed; no extra source variant, repair or allowance",
+  "prohibited": "no other default, signature, access, constructor body, field, lifetime, algorithm, flag or source edit"
+}

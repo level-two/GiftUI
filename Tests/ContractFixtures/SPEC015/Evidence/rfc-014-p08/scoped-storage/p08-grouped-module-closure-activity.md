@@ -7,10 +7,11 @@ corrective1/2 consumed; one final correction remains, read-only grouped design
 before independent review/source. Privacy/lifetime, physical/actual-host,
 safety/cold and P08/R07/T8.1 remain open; observer costs unresolved.
 The [final corrective2 design](grouped-module-closure-corrective2-design/README.md)
-is ready for independent review: exact21 annotation-only declarations in13 files,
-28 blocked serialized entries inspected; no source/compiler execution or further
-cycle consumed. It completes the concrete arithmetic/property/signature frontier,
-with no new serialized bodies/access/constructor/contract changes.
+has [independent design PASS](p08-grouped-module-closure-corrective2-independent-design-review.md):
+21 ABI annotations plus one completion of the previously approved Canvas value=nil
+default,22 edits in14 files. The28 blocked serialized entries were inspected;
+no source/compiler execution or further cycle consumed. No new serialized body,
+source access, constructor body or contract change is included.
 Eugene explicitly authorized grouped Layout and remaining-module
 dependency corrections, then full-host/cold validation under the strict contract.
 This is a new allowance of one initial candidate and at most two grouped
