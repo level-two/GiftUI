@@ -37,3 +37,7 @@ cleanup PASS permits unchanged strict host-first cold/reuse. Original windows,
 counts, baselines and enforcement stay exact; key-failure first-use unresolved.
 Source candidate/combined overlay/P08/R07/T8.1 unaccepted. Protected external five/
 pycache remain exact. [Prepared packet](runtime-complete-pipeline-candidate1/README.md).
+
+[Qualification1 packet](runtime-complete-pipeline-qualification1/README.md) prepared,
+577 hashes/30privacy/10physical roots+matching object/conditional42SIL; validation
+only PASS. No source/compiler/decoder/runtime execution; later safety/cold open.

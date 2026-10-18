@@ -1,0 +1,29 @@
+{
+  "source_commit": "1db805a6",
+  "compile_result": "../runtime-complete-pipeline-compile-result/README.md",
+  "existing22": "byte-identical fixtures; command changes only qualified fresh import,cache and fixture paths",
+  "decoder_interpreter": "byte-identical complete schema0/1003 index/hash/offset/rawprefix interpreter and LLVM21 commands; fresh module paths",
+  "object": "same LLVM21 nm/disassembly/relocation capture; fresh matching host object",
+  "consumer_path_only_adjustments": [
+    {
+      "argument_index": 2,
+      "before": "/Users/eugene/work/GiftUI/.build/contracts/p08-runtimecore-witness-compatibility-candidate1/modules",
+      "after": "/Users/eugene/work/GiftUI/.build/contracts/p08-runtime-complete-pipeline-candidate1/modules"
+    },
+    {
+      "argument_index": 14,
+      "before": "/Users/eugene/work/GiftUI/.build/contracts/p08-runtimecore-consumer-collection1/cache",
+      "after": "/Users/eugene/work/GiftUI/.build/contracts/p08-runtime-complete-pipeline-qualification1/cache"
+    },
+    {
+      "argument_index": 72,
+      "before": "/Users/eugene/work/GiftUI/.build/contracts/p08-runtimecore-consumer-collection1/actual-host.sil",
+      "after": "/Users/eugene/work/GiftUI/.build/contracts/p08-runtime-complete-pipeline-qualification1/actual-host.sil"
+    }
+  ],
+  "consumer_flags": "no source/flag/order/environment changes from established42 consumer recipe",
+  "new_controls": "one generic checked operation positive; four independent internal helper negatives; three required-argument constructor negatives; all typed parameters, normal same-package imports",
+  "physical_targets": "six exact existingmangled symbols + exactrun + unique nonprivate demangledmethodprefixes for three newlyinternal helpers; each serializedkind nonzero+BB>0",
+  "source_mutations": 0,
+  "automatic_source_repairs": 0
+}
