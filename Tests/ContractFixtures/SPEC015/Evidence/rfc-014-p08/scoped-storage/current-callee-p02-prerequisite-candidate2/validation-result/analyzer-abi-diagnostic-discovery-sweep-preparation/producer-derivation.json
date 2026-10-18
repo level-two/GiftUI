@@ -1,0 +1,88 @@
+{
+  "P02_module_function_AST_source": "def module(name, sources):\n    run(name, [compiler, *flags, '-I', out, '-parse-as-library', '-module-name', name,\n               '-emit-module', '-emit-object', *sources,\n               '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')])",
+  "P02_source": {
+    "bytes": 13803,
+    "path": "/Users/eugene/work/GiftUI/scripts/contracts/check-spec-006-typed-lowering.py",
+    "sha256": "c5645b188daa539235fc1ac4d38d2a74fa3aa1822fef071652452de5e59ac5fb"
+  },
+  "P02_source_order": [
+    "Sources/GiftUI/ActionHandler.swift",
+    "Sources/GiftUI/BoundedText.swift",
+    "Sources/GiftUI/Button.swift",
+    "Sources/GiftUI/Canvas.swift",
+    "Sources/GiftUI/Color.swift",
+    "Sources/GiftUI/DeclarativeView.swift",
+    "Sources/GiftUI/Disabled.swift",
+    "Sources/GiftUI/DrawingStyles.swift",
+    "Sources/GiftUI/DrawingSurface.swift",
+    "Sources/GiftUI/GiftUI.swift",
+    "Sources/GiftUI/LayoutContainers.swift",
+    "Sources/GiftUI/LayoutModifiers.swift",
+    "Sources/GiftUI/LayoutValues.swift",
+    "Sources/GiftUI/ObservableState.swift",
+    "Sources/GiftUI/StyleModifiers.swift",
+    "Sources/GiftUI/Text.swift"
+  ],
+  "campaign10_qualified_ARM_P02_receipt": {
+    "bytes": 14999,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-campaign10-result/campaign/receipts/2.json",
+    "sha256": "58d147eba5ccb12dddca814cbd4147233e123ff8dc8a4932e8913bc3ac1c26fa"
+  },
+  "campaign10_recipe": {
+    "bytes": 18091,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-campaign10-preparation/recipe.json",
+    "sha256": "f656f7981a5b7000a80ee518639a9a86463a37156a26f8c7d1be5d77b70b8a89"
+  },
+  "execution": "No commands in this derivation have run during preparation.",
+  "explicit_context_differences": [
+    "fresh output/cache/TMPDIR roots",
+    "sanitized explicit environment preserving actual HOME; see environment-context.json",
+    "direct prerequisite subset; no full P02/P04 qualification",
+    "raw negative observations only, no classifier or diagnostic opt-in"
+  ],
+  "generated_core_hashes": {
+    "CounterPresentation.swift": {
+      "bytes": 9518,
+      "sha256": "d0140b613b33e99350f77370f1125b49d0a13b477d16f0f0f80c46a2f27ddd5c"
+    },
+    "CounterSchema.swift": {
+      "bytes": 1366,
+      "sha256": "b6f3c92cbc359951328591bb00b315fb71eebe7aa624adb3e04eb58842a7102b"
+    }
+  },
+  "isolated_producer_subgraph": [
+    "GiftUI module/object from exact 16 frozen sources",
+    "counter-lowering from existing Counter.schema.json and Counter.swift",
+    "CounterSchema module/object",
+    "CounterPresentation module/object"
+  ],
+  "macro_authentication": {
+    "path": "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+    "role": "exact existing qualified campaign10 producer macro bytes; no fresh macro build or macro regression suite",
+    "sha256": "651cf63bd8c07d18d143fd09370427fdacf8c6967c38e14c71d2ea5f7d9b2814"
+  },
+  "omitted_P02_stages": "No compiler version/features probes, macro rebuild/tests, P02 negative suite, P04 suite or full producer runner. Frozen compiler/package/SDK/producer byte identities and successful isolated modules authenticate only discovery prerequisites; no P02/P04 receipt or profile completion results.",
+  "positive_identity": "Three complete positive controls for every profile. ARM positives are prerequisite-only rebuilds, excluded from 50 targets. Native declaration output checks=120 failures=0 and semantics=18 failures=0; ARM/nRF DeclarationHost ELF readelf requires ARM, v6/v7E-M respectively and VFP calling convention. Cross semantics stays compile-only.",
+  "preserved_compiler_profile_flags": "Exact recipe base_flags + profile_flags + plugin_flags; module cache and output root relocate only. Core P02 module uses one -I core; scratch recipe keeps both -I cell and -I core.",
+  "preserved_scratch_commands": "118 literal argv independently expanded by static-inspect.py against campaign10 recipe templates and P02 direct-core shape. Exact source order, package-name removal for outside-package clients, target triples, SDK paths, plugin path, native oracle and readelf flags preserved.",
+  "runtime_authentication": "Permanent validation lock, exact current HEAD frozen during run, 541 source/tool inputs, external identities/historical hashes, full compiler/SDK installed tree and archive pin, relevant HOME config state, complete prelaunch input/module/artifact/argv/environment audit. Rechecked before and after every launch. Negative diagnostics select no recipe, policy, path or environment.",
+  "source_hashes": {
+    "Sources/GiftUI/ActionHandler.swift": "d36a53f45d18892c235c02355cbed0e6bf92a20b7c64bc7e84ac39a03fa34d01",
+    "Sources/GiftUI/BoundedText.swift": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce",
+    "Sources/GiftUI/Button.swift": "bfef4dd797058b7c9c96e650f86ab9c068dffa5703200388c17631ad451af354",
+    "Sources/GiftUI/Canvas.swift": "2d71ef1d9bd7947fc358e5c286cebe79d51312cabdfe13d777da881432c3f91f",
+    "Sources/GiftUI/Color.swift": "60009e3d58dcdfe65ba39bf6d036047207707837d73db308a5a25e81fc2ee835",
+    "Sources/GiftUI/DeclarativeView.swift": "1451f910208735955fe7f188800d639f024ac1cb75fdb7dd49c5a3d835672c24",
+    "Sources/GiftUI/Disabled.swift": "db9726d9b26fdf2c08b781791acc97a3d9359e148594f0291b0e66661524b755",
+    "Sources/GiftUI/DrawingStyles.swift": "eb28147b2dd565006f9d6b97c7b98e5bcfc52f42e19ebfae1dad1f79b08d130a",
+    "Sources/GiftUI/DrawingSurface.swift": "185607ede17d3eb8e655e1dc7e24a60fba22225028f1b1ae25a470355daa7a48",
+    "Sources/GiftUI/GiftUI.swift": "aef4b66eeec863c29068d1054535401707604f71eda3f740fc7e581b3066d6c6",
+    "Sources/GiftUI/LayoutContainers.swift": "5157a2cc20100ec15885d10d0da528202623901d885f6345d7dab89d07d49d20",
+    "Sources/GiftUI/LayoutModifiers.swift": "9df7df30a339bf4f6077581b108c855505ed6230d55d23e9fc55651f4fba877b",
+    "Sources/GiftUI/LayoutValues.swift": "70c7b34276f6f2d41382d14ee844fcf65d92c075f7caa0a12e79d17181c817f5",
+    "Sources/GiftUI/ObservableState.swift": "0b293757d79cfa7b5c5e78fe06b2d1897b592f0ef6938cc9b75791dd5126d3e7",
+    "Sources/GiftUI/StyleModifiers.swift": "e0ddb0ff8d5edbcd9c737483abdf1c79e71f36770e09a440940d3cf5af8153aa",
+    "Sources/GiftUI/Text.swift": "5461073a644fa488103b5d6306647b9b4db3f332d421f64735100eba7b8b0efd"
+  },
+  "status": "STATIC_DERIVATION_ONLY_NO_P02_P04_QUALIFICATION"
+}

@@ -1,0 +1,256 @@
+[
+  {
+    "inventory": {
+      "entries": [
+        {
+          "bytes": 175,
+          "kind": "file",
+          "path": "collections.json",
+          "sha256": "d0b57594ba26b9ba11bdf31a3444aea90bb8092d53f45af2a3a205ceb251ce06"
+        }
+      ],
+      "resolved": "/Users/eugene/Library/org.swift.swiftpm/configuration",
+      "root": "/Users/eugene/.swiftpm/configuration"
+    },
+    "kind": "directory",
+    "path": "/Users/eugene/.swiftpm/configuration"
+  },
+  {
+    "inventory": {
+      "entries": [
+        {
+          "kind": "directory",
+          "path": "fingerprints"
+        },
+        {
+          "bytes": 371,
+          "kind": "file",
+          "path": "fingerprints/amplify-swift-05c416e5.json",
+          "sha256": "9bc57bf6a45c41e6c6269779ccdcca9ecda36c83719fb1fe7f5df74f4717318f"
+        },
+        {
+          "bytes": 390,
+          "kind": "file",
+          "path": "fingerprints/amplify-swift-utils-notifications-9fc5ecf1.json",
+          "sha256": "b079adb928b8ee4c59eedef545451dd92b4aa0c56edda66b22ac6043169bb0a8"
+        },
+        {
+          "bytes": 376,
+          "kind": "file",
+          "path": "fingerprints/async-http-client-3c9c1259.json",
+          "sha256": "0a82a6b032f1230187ce88f8bafb404c05e3a85b5772011a887511729188f4df"
+        },
+        {
+          "bytes": 363,
+          "kind": "file",
+          "path": "fingerprints/aws-crt-swift-8b6686a3.json",
+          "sha256": "b12dc71b32d97a5adec37b762945e68ca45eb10924d60c2c23a3f2633ad51078"
+        },
+        {
+          "bytes": 362,
+          "kind": "file",
+          "path": "fingerprints/aws-sdk-swift-93bf622e.json",
+          "sha256": "99d444ce41c98ef609a6195661cd97d0c5a9bcf2e7cfbb1ce7c90ea8cfea0e6b"
+        },
+        {
+          "bytes": 361,
+          "kind": "file",
+          "path": "fingerprints/grpc-swift-aed5a894.json",
+          "sha256": "015dce04b7e56737d665dd521971bf41b0a94a450aaa0e64d8a276cfe386795b"
+        },
+        {
+          "bytes": 376,
+          "kind": "file",
+          "path": "fingerprints/opentelemetry-swift-d4311cdf.json",
+          "sha256": "47019568ad16b2221d238eeba80826dd5474ae7dc2f2f077e5f9d87cfff9cfd3"
+        },
+        {
+          "bytes": 371,
+          "kind": "file",
+          "path": "fingerprints/opentracing-objc-d5fd45e4.json",
+          "sha256": "c9808f2e4bb8c6076041b869362326e6672f4d68d4198c67b2a0098c2650dfb7"
+        },
+        {
+          "bytes": 367,
+          "kind": "file",
+          "path": "fingerprints/smithy-swift-a8ff020f.json",
+          "sha256": "12a9438d373e4b4c1748761fc49e01730bda9bd2a3cdccef0604f475538fa9ee"
+        },
+        {
+          "bytes": 371,
+          "kind": "file",
+          "path": "fingerprints/sqlite.swift-ea7320ea.json",
+          "sha256": "86dc79eb5660e1d9425b6c28a6ee0dd36b30aa6497b33fc2eeaecbd8dd5210e3"
+        },
+        {
+          "bytes": 367,
+          "kind": "file",
+          "path": "fingerprints/swift-algorithms-6ceae3e2.json",
+          "sha256": "4f423ae25a5b8291dda59072d13cdb6d5c6bc854e8b5d699f50ea89a9f78304a"
+        },
+        {
+          "bytes": 372,
+          "kind": "file",
+          "path": "fingerprints/swift-argument-parser-bb5ee228.json",
+          "sha256": "ff77eedfb1119b74f72daf145d51d8e03bb786491449c4950b2189b1ff3cf484"
+        },
+        {
+          "bytes": 361,
+          "kind": "file",
+          "path": "fingerprints/swift-asn1-3864de10.json",
+          "sha256": "286fa010cd59d820ab49991e379e6f9f8e97960dd725f7cf215a5a9ddd08d00d"
+        },
+        {
+          "bytes": 373,
+          "kind": "file",
+          "path": "fingerprints/swift-async-algorithms-01056528.json",
+          "sha256": "751a88a816e7d3caa10cc7ce17b82da4b74a0b7a900446f9c362e369d5c50bac"
+        },
+        {
+          "bytes": 364,
+          "kind": "file",
+          "path": "fingerprints/swift-atomics-89473788.json",
+          "sha256": "28dac9942e614009900a5bdccf1fb44c1fbfb076a72c626855b695acebde38d2"
+        },
+        {
+          "bytes": 370,
+          "kind": "file",
+          "path": "fingerprints/swift-certificates-2c5f9ec1.json",
+          "sha256": "435d7c85c93b5584ee442d328929d057545b096e4bacb8e67927d335c7bad01e"
+        },
+        {
+          "bytes": 368,
+          "kind": "file",
+          "path": "fingerprints/swift-collections-7bbf4661.json",
+          "sha256": "23725405dcbffb6ab8747615ecf5f716bcd099caaf8d63c75d814b7c762a99f4"
+        },
+        {
+          "bytes": 370,
+          "kind": "file",
+          "path": "fingerprints/swift-configuration-e71f64d0.json",
+          "sha256": "d0930430c632f291b928490aa0818606ca06f5bace8d832983d83b19af47b737"
+        },
+        {
+          "bytes": 363,
+          "kind": "file",
+          "path": "fingerprints/swift-crypto-b62eca9d.json",
+          "sha256": "29e334273a40fa919793fa55a0fdc1fb1a122339720f1962e9872040d6f5ed79"
+        },
+        {
+          "bytes": 376,
+          "kind": "file",
+          "path": "fingerprints/swift-distributed-tracing-02142e36.json",
+          "sha256": "521d25b356335555c1391cb373bc445a6caafcbc493dd61ff18a526492941334"
+        },
+        {
+          "bytes": 380,
+          "kind": "file",
+          "path": "fingerprints/swift-http-structured-headers-e15d2080.json",
+          "sha256": "407ce7b988fe86f8569d1804c4f007aaf4d3dfd0f96182d6d6f9868961ec5bb8"
+        },
+        {
+          "bytes": 367,
+          "kind": "file",
+          "path": "fingerprints/swift-http-types-870eab6d.json",
+          "sha256": "356bca2cc0194e12c2f3129f4c5a2e4a9adaf57dbf6e70c3f9a4853774f1bc1a"
+        },
+        {
+          "bytes": 361,
+          "kind": "file",
+          "path": "fingerprints/swift-log-c78879b6.json",
+          "sha256": "fa778c72d32ef303871c9572792ce817ab2dc4c51995deba1c580f82d2af18aa"
+        },
+        {
+          "bytes": 364,
+          "kind": "file",
+          "path": "fingerprints/swift-metrics-8be5fc8a.json",
+          "sha256": "e1c68a096769fd3a188c649677ada6d543a449766598de91de7d7c1a0a6efa97"
+        },
+        {
+          "bytes": 361,
+          "kind": "file",
+          "path": "fingerprints/swift-nio-15e42564.json",
+          "sha256": "d6003ea988588eb0a9634e7b7679b368004f0e141c3280cec884f5e392e55c0b"
+        },
+        {
+          "bytes": 368,
+          "kind": "file",
+          "path": "fingerprints/swift-nio-extras-5a8a314e.json",
+          "sha256": "1371ae398e461a4d05524bed2be7053f314ab21d1bfbed67ed32f631fe3b79ec"
+        },
+        {
+          "bytes": 367,
+          "kind": "file",
+          "path": "fingerprints/swift-nio-http2-c2d9fc9e.json",
+          "sha256": "451dfa3eca2150ecf10c4c33ef4da730802b44eeec177482ac6c75cd69dff2aa"
+        },
+        {
+          "bytes": 365,
+          "kind": "file",
+          "path": "fingerprints/swift-nio-ssl-dd497dc0.json",
+          "sha256": "a3f19ed36d259cf025a58ff92ad1fc9b78d5c0a3df2bbfbceafc6aaddc1fe06e"
+        },
+        {
+          "bytes": 380,
+          "kind": "file",
+          "path": "fingerprints/swift-nio-transport-services-dead9718.json",
+          "sha256": "1652218516a55cb7c4ef8495f175d00dbe3dc852d21516689fb4fab654e51b09"
+        },
+        {
+          "bytes": 365,
+          "kind": "file",
+          "path": "fingerprints/swift-numerics-7702f5dc.json",
+          "sha256": "036f0572969449751aa9ef5e6d65885cc76fac5bd9f4c4feb9601947ce497431"
+        },
+        {
+          "bytes": 366,
+          "kind": "file",
+          "path": "fingerprints/swift-protobuf-f31b4696.json",
+          "sha256": "84215e5ae0067faf8acd3bfee25945e1bf6123493f2c6580c09b651c9c2011f5"
+        },
+        {
+          "bytes": 372,
+          "kind": "file",
+          "path": "fingerprints/swift-service-context-d9da79c2.json",
+          "sha256": "331501bc91ae6164120db0d138a9c4196b0a1fa20eaaeee4ebf36dbbb177f6c7"
+        },
+        {
+          "bytes": 382,
+          "kind": "file",
+          "path": "fingerprints/swift-service-lifecycle-e98fbda4.json",
+          "sha256": "2f910b15def35f291a6fd48167b328f264a594ac58c54b94c0412283fa224520"
+        },
+        {
+          "bytes": 369,
+          "kind": "file",
+          "path": "fingerprints/swift-syntax-240d6e22.json",
+          "sha256": "529ea605710f7ebcad35b84b13a9d9c62b3eff451bb348dae0ec1446837fdd03"
+        },
+        {
+          "bytes": 363,
+          "kind": "file",
+          "path": "fingerprints/swift-system-5218e463.json",
+          "sha256": "042b01fe3075bab5498dc60c6953eb22746164abadf6e9b470f40a4e6ba63a01"
+        },
+        {
+          "bytes": 367,
+          "kind": "file",
+          "path": "fingerprints/thrift-swift-08c81475.json",
+          "sha256": "d38875c563b5c3b329b8b8519086bdbf83ebc9afa324e8685afa36b57e75fa60"
+        }
+      ],
+      "resolved": "/Users/eugene/Library/org.swift.swiftpm/security",
+      "root": "/Users/eugene/.swiftpm/security"
+    },
+    "kind": "directory",
+    "path": "/Users/eugene/.swiftpm/security"
+  },
+  {
+    "kind": "absent",
+    "path": "/Users/eugene/.config/swift"
+  },
+  {
+    "kind": "absent",
+    "path": "/Users/eugene/.swift-driver"
+  }
+]

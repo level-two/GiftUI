@@ -1,0 +1,20 @@
+{
+  "status": "STATIC_ONLY_PASS_UNEXECUTED",
+  "targets": 50,
+  "profile_targets": [
+    10,
+    20,
+    20
+  ],
+  "cells": 56,
+  "expanded_argv_checked": 118,
+  "frozen_inputs": 541,
+  "historical_files_preserved": 2595,
+  "platform_inventory_entries": {
+    "compiler-install-inventory.json": 3595,
+    "macos-sdk-inventory.json": 49700,
+    "armv6-sdk-inventory.json": 6965
+  },
+  "calls_to_compiler_parser_runner_producer_tests_formatter": 0,
+  "independent_readiness_review_required": true
+}

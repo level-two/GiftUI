@@ -1,0 +1,53 @@
+{
+  "absent_named_variables": [
+    "SDKROOT",
+    "TOOLCHAINS",
+    "SWIFT_EXEC",
+    "SWIFT_FLAGS",
+    "SWIFT_DRIVER_SWIFT_FRONTEND_EXEC",
+    "SWIFT_DRIVER_CLANG_EXEC",
+    "SWIFT_DRIVER_CLANG_SCAN_LIB",
+    "SWIFT_DRIVER_EXPLICIT_MODULE_BUILD",
+    "SWIFT_MODULE_CACHE_PATH",
+    "CLANG_MODULE_CACHE_PATH",
+    "MODULE_CACHE_DIR",
+    "CFLAGS",
+    "CXXFLAGS",
+    "CPPFLAGS",
+    "LDFLAGS",
+    "DYLD_LIBRARY_PATH",
+    "DYLD_FRAMEWORK_PATH",
+    "DYLD_INSERT_LIBRARIES",
+    "DYLD_FALLBACK_LIBRARY_PATH",
+    "TERM",
+    "COLORTERM",
+    "CLICOLOR",
+    "CLICOLOR_FORCE",
+    "NO_COLOR",
+    "FORCE_COLOR"
+  ],
+  "all_other_variables": "Absent by construction: subprocess.run receives only exact environment template plus lock owner. No diagnostic output is read when selecting environment.",
+  "cache_identity": "Every compiler command has explicit -module-cache-path under a fresh discovery cell. TMPDIR is the fresh reserved output tmp directory. HOME is preserved, never reassigned to a fresh root.",
+  "campaign10_effective_values": "Not archived; effective-environment hash exists for ARMv6 A4 only, so original value parity cannot be proven or reconstructed.",
+  "campaign10_known_environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "discovery_environment_template": {
+    "DEVELOPER_DIR": "/Applications/Xcode.app/Contents/Developer",
+    "HOME": "/Users/eugene",
+    "LANG": "C",
+    "LC_ALL": "C",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-diagnostic-discovery-sweep/tmp"
+  },
+  "effective_hash": "SHA256 of canonical complete environment including runtime lock owner; sealed before launch and recorded in audit/result/stage",
+  "future_policy_boundary": "Observed forms apply only to this exact profile/control/source/compiler/SDK/argv/environment context. A future policy/campaign must separately prove applicability to its reviewed environment or explicitly adopt this reviewed discovery context. Raw observation creates no opt-in or dialect allowance.",
+  "home_config_identity_file": "home-config-identities.json",
+  "runtime_addition": {
+    "GIFTUI_VALIDATION_LOCK_OWNER": "actual direct parent PID, held permanent validation lock"
+  },
+  "status": "NEW_DISCOVERY_CONTEXT; NO_CAMPAIGN10_ENVIRONMENT_EQUIVALENCE",
+  "subtools": "Fixed PATH /usr/bin:/bin:/usr/sbin:/sbin and DEVELOPER_DIR; compiler executable is absolute and compiler usr tree inventories driver/frontend/Clang/lld/runtime/Embedded modules. Xcode linker, xcrun shim, Xcode Info/version plist are separately hashed. No SDK auto-discovery invocation. Explicit -sdk path and resolved full SDK inventory are sealed.",
+  "template_sha256": "c6c8017150558957bc930a5e9f68981dffd3bad115c768d9477cefd0da8c67a2"
+}

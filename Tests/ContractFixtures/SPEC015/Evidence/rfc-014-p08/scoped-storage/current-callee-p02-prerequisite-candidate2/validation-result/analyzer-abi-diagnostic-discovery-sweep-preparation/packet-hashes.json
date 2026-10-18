@@ -1,0 +1,70 @@
+{
+  "README.md": {
+    "bytes": 10155,
+    "sha256": "03c47bd0ac9de698d8740f28d4bd18074573cbf9b0fa4a11c011ca0c3dc53bf5"
+  },
+  "armv6-sdk-inventory.json": {
+    "bytes": 1615913,
+    "sha256": "c48cd7706a8bb7ed0b0386ba134dc4648b2b56fe432d517d919883230daa9274"
+  },
+  "compiler-install-inventory.json": {
+    "bytes": 784281,
+    "sha256": "2bce775c2dae2a7d78b810047ff8291578356d6b82a55f53068390c9c03bfe6a"
+  },
+  "environment-context.json": {
+    "bytes": 2823,
+    "sha256": "a62f87207ec2af997c9254b52c08da997f15c4108b9856d4bf74c1e966b8ca54"
+  },
+  "execute-discovery.py": {
+    "bytes": 16726,
+    "sha256": "e43f257031b0c812606ab671bba225287c5135d11453dbf490ccb020e63324d7"
+  },
+  "external-identities.json": {
+    "bytes": 1674705,
+    "sha256": "508e407d1405f32f4c8e4ed42665f2c045a2975f7c62f62b264d4869fbca0a7f"
+  },
+  "historical-preservation.json": {
+    "bytes": 2328191,
+    "sha256": "ba1d73c19b51d4a295815c150ab50325b26623d4590da74e54e8f2ae75585dd4"
+  },
+  "home-config-identities.json": {
+    "bytes": 8986,
+    "sha256": "d60d25e7683f9c6d4cc3413a33edda47e954266d956a843eeb609808d9ff237e"
+  },
+  "macos-sdk-inventory.json": {
+    "bytes": 12357243,
+    "sha256": "d3c22e195df3a928ea1fda67b0a4143a42f37790a823e4e3a8707a8e81ad48ab"
+  },
+  "plan.json": {
+    "bytes": 801635,
+    "sha256": "631f7aba5934d73185d9485037efb91962de1bbe866b7f64137551c0e0ffe330"
+  },
+  "preparation-provenance.json": {
+    "bytes": 2260,
+    "sha256": "2e5b820dbefc173cb9f54fa6f32f7712e2417bec5322f9c6a8b90b0142caa892"
+  },
+  "producer-derivation.json": {
+    "bytes": 6663,
+    "sha256": "cbaf95f37bfd32ddd5b317562467b84c8c7d05f9cf2f9f1bd25cd6cafbb24d3f"
+  },
+  "registered-controls.json": {
+    "bytes": 18461,
+    "sha256": "3cee9a943e1dc1a2e67c6319ac992a7f78c652e2e20772c50fa6c80792435553"
+  },
+  "scratch-sources.json": {
+    "bytes": 29930,
+    "sha256": "785599545b58e75b03cce6cabe5884f803519ebeba975b3057c1fb226bb9ea76"
+  },
+  "selectors.json": {
+    "bytes": 4489,
+    "sha256": "6c401231bf2c0dc4905b178df977ab3674506b9ef70d672af428af6a1898c17f"
+  },
+  "static-inspect.py": {
+    "bytes": 14801,
+    "sha256": "e169c37c7069863d6bfe93be41ecae4dc93b7544212ff1b6eec3c344bb18ae3c"
+  },
+  "static-inspection.json": {
+    "bytes": 497,
+    "sha256": "0f9f9b7ee7a3a8a2071b54606da7148be5730254c246962ebf40462bf4f100de"
+  }
+}
