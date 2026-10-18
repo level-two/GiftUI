@@ -4,4 +4,4 @@
 586742: [%2: read s0.s3.v**, write s0.s3.v**, copy s0.s3.v**, destroy s0.s3.v**]
 586743: [global: read,write,copy,destroy,allocate,deinit_barrier]
 586744: } // end sil function '$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF'
-586745: 
+586745:

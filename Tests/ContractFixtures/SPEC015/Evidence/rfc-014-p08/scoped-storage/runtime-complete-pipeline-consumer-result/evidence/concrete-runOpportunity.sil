@@ -18,7 +18,7 @@
 6500:   dealloc_stack %8                                // id: %13
 6501:   dealloc_stack %5                                // id: %14
 6502:   cond_br %12, bb1, bb2                           // id: %15
-6503: 
+6503:
 6504: bb1:                                              // Preds: bb0
 6505:   %16 = struct_element_addr %0, #CounterPipelineOwner.control // user: %17
 6506:   %17 = struct_element_addr %16, #UnsafeMutablePointer._rawValue // users: %326, %120, %18
@@ -30,7 +30,7 @@
 6512:   %23 = struct_element_addr %22, #Bool._value     // user: %24
 6513:   %24 = load %23                                  // user: %25
 6514:   cond_br %24, bb3, bb4                           // id: %25
-6515: 
+6515:
 6516: bb2:                                              // Preds: bb0
 6517:   %26 = struct_element_addr %2, #ExecutionPhaseMachine.cycle // user: %27
 6518:   %27 = load %26                                  // user: %32
@@ -45,7 +45,7 @@
 6527:   %36 = tuple (%32, %34, %35)                     // user: %37
 6528:   %37 = enum $RunCycleResult<RuntimeOwnerFailure>, #RunCycleResult.failure!enumelt, %36 // user: %38
 6529:   br bb5(%37)                                     // id: %38
-6530: 
+6530:
 6531: bb3:                                              // Preds: bb1
 6532:   %39 = struct_element_addr %2, #ExecutionPhaseMachine.cycle // user: %40
 6533:   %40 = load %39                                  // user: %45
@@ -60,7 +60,7 @@
 6542:   %49 = tuple (%45, %47, %48)                     // user: %50
 6543:   %50 = enum $RunCycleResult<RuntimeOwnerFailure>, #RunCycleResult.failure!enumelt, %49 // user: %51
 6544:   br bb5(%50)                                     // id: %51
-6545: 
+6545:
 6546: bb4:                                              // Preds: bb1
 6547:   %52 = struct_element_addr %0, #CounterPipelineOwner.recovery // users: %413, %249, %53
 6548:   %53 = struct_element_addr %52, #PresentationPendingState.pendingIntent // users: %468, %453, %325, %316, %301, %54, %459, %306
@@ -84,11 +84,11 @@
 6566:   %71 = struct_element_addr %19, #CounterControl.wake // users: %72, %77
 6567:   %72 = load %71                                  // user: %73
 6568:   switch_enum %72, case #Optional.some!enumelt: bb6, case #Optional.none!enumelt: bb7 // id: %73
-6569: 
+6569:
 6570: // %74                                            // user: %75
 6571: bb5(%74 : $RunCycleResult<RuntimeOwnerFailure>):  // Preds: bb2 bb82 bb59 bb58 bb56 bb54 bb3
 6572:   return %74                                      // id: %75
-6573: 
+6573:
 6574: bb6(%76 : $ExecutionWakeAccumulator<CounterWake>): // Preds: bb4
 6575:   %77 = unchecked_inplace_enum_data_addr %71, #Optional.some!enumelt // users: %97, %88
 6576:   %78 = alloc_stack [lexical] $ExecutionPhase     // users: %79, %86, %82
@@ -142,12 +142,12 @@
 6624:   %125 = struct_element_addr %124, #CounterRuntimeControl.result // user: %126
 6625:   store %119 to %125                              // id: %126
 6626:   switch_enum %117, case #RuntimeCompletePipelineResult.completed!enumelt: bb8, case #RuntimeCompletePipelineResult.failed!enumelt: bb9 // id: %127
-6627: 
+6627:
 6628: bb7:                                              // Preds: bb4
 6629:   %128 = integer_literal $Builtin.Int1, -1        // user: %129
 6630:   cond_fail %128, "Unexpectedly found nil while unwrapping an Optional value" // id: %129
 6631:   unreachable                                     // id: %130
-6632: 
+6632:
 6633: // %131                                           // users: %142, %138, %133, %132
 6634: bb8(%131 : $RuntimePipelineCompletion):           // Preds: bb6
 6635:   debug_value %131, let, name "completion"        // id: %132
@@ -162,7 +162,7 @@
 6644:   debug_value %140, let, name "failure"           // id: %141
 6645:   %142 = struct_extract %131, #RuntimePipelineCompletion.committedPresentationRevision // users: %160, %143
 6646:   switch_enum %142, case #Optional.some!enumelt: bb10, case #Optional.none!enumelt: bb11 // id: %143
-6647: 
+6647:
 6648: // %144                                           // users: %153, %146, %145
 6649: bb9(%144 : $RuntimePipelineFailureRecord<RuntimeOwnerFailure>): // Preds: bb6
 6650:   debug_value %144, let, name "stopped"           // id: %145
@@ -177,16 +177,16 @@
 6659:   %154 = enum $Optional<RunCycleFailure<RuntimeOwnerFailure>>, #Optional.some!enumelt, %153 // users: %156, %155
 6660:   debug_value %154, let, name "failure"           // id: %155
 6661:   br bb12(%154, %147, %148, %151, %149)           // id: %156
-6662: 
+6662:
 6663: bb10(%157 : $PresentationRevision):               // Preds: bb8
 6664:   debug_value undef : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, var, name "self", argno 1, expr op_deref // id: %158
 6665:   %159 = struct_element_addr %0, #CounterPipelineOwner.committedPresentation // user: %160
 6666:   store %142 to %159                              // id: %160
 6667:   br bb12(%140, %134, %135, %138, %136)           // id: %161
-6668: 
+6668:
 6669: bb11:                                             // Preds: bb8
 6670:   br bb12(%140, %134, %135, %138, %136)           // id: %162
-6671: 
+6671:
 6672: // %163                                           // users: %487, %369, %272, %489, %287
 6673: // %164                                           // users: %438, %353
 6674: // %165                                           // user: %359
@@ -197,17 +197,17 @@
 6679:   %169 = struct_element_addr %168, #ExecutionContext.cycle // user: %170
 6680:   %170 = load %169                                // users: %495, %171
 6681:   switch_enum %170, case #Optional.some!enumelt: bb13, case #Optional.none!enumelt: bb14 // id: %171
-6682: 
+6682:
 6683: // %172                                           // users: %359, %173
 6684: bb13(%172 : $RunCycleID):                         // Preds: bb12
 6685:   debug_value %172, let, name "counter"           // id: %173
 6686:   %174 = struct_element_addr %0, #CounterPipelineOwner.sealedAdmission // user: %175
 6687:   %175 = load %174                                // user: %176
 6688:   switch_enum %175, case #Optional.some!enumelt: bb15, case #Optional.none!enumelt: bb16 // id: %176
-6689: 
+6689:
 6690: bb14:                                             // Preds: bb12
 6691:   br bb79                                         // id: %177
-6692: 
+6692:
 6693: // %178                                           // users: %359, %179
 6694: bb15(%178 : $AdmissionSummary):                   // Preds: bb13
 6695:   debug_value %178, let, name "admission"         // id: %179
@@ -224,26 +224,26 @@
 6706:   dealloc_stack %185                              // id: %190
 6707:   dealloc_stack %182                              // id: %191
 6708:   cond_br %189, bb17, bb18                        // id: %192
-6709: 
+6709:
 6710: bb16:                                             // Preds: bb13
 6711:   br bb79                                         // id: %193
-6712: 
+6712:
 6713: bb17:                                             // Preds: bb15
 6714:   switch_enum %54, case #Optional.some!enumelt: bb19, case #Optional.none!enumelt: bb20 // id: %194
-6715: 
+6715:
 6716: bb18:                                             // Preds: bb15
 6717:   br bb25(%90)                                    // id: %195
-6718: 
+6718:
 6719: // %196                                           // users: %203, %197
 6720: bb19(%196 : $PresentationPendingIntent):          // Preds: bb17
 6721:   debug_value %196, let, name "priorIntent"       // id: %197
 6722:   %198 = struct_element_addr %2, #ExecutionPhaseMachine.semanticRevision // user: %199
 6723:   %199 = load %198                                // users: %204, %200
 6724:   switch_enum %199, case #Optional.some!enumelt: bb21, case #Optional.none!enumelt: bb22 // id: %200
-6725: 
+6725:
 6726: bb20:                                             // Preds: bb17
 6727:   br bb25(%90)                                    // id: %201
-6728: 
+6728:
 6729: bb21(%202 : $SemanticRevision):                   // Preds: bb19
 6730:   %203 = struct_extract %196, #PresentationPendingIntent.semanticRevision // user: %205
 6731:   %204 = unchecked_enum_data %199, #Optional.some!enumelt // user: %206
@@ -253,23 +253,23 @@
 6735:   %208 = struct_extract %206, #UInt32._value      // user: %209
 6736:   %209 = builtin "cmp_eq_Int32"(%207, %208) : $Builtin.Int1 // user: %210
 6737:   cond_br %209, bb23, bb24                        // id: %210
-6738: 
+6738:
 6739: bb22:                                             // Preds: bb19
 6740:   br bb78                                         // id: %211
-6741: 
+6741:
 6742: bb23:                                             // Preds: bb21
 6743:   br bb25(%90)                                    // id: %212
-6744: 
+6744:
 6745: bb24:                                             // Preds: bb21
 6746:   br bb78                                         // id: %213
-6747: 
+6747:
 6748: // %214                                           // users: %455, %470, %469, %456, %449, %418, %254
 6749: bb25(%214 : $Builtin.Int8):                       // Preds: bb18 bb20 bb78 bb23
 6750:   %215 = enum $Optional<PresentationPendingIntent>, #Optional.none!enumelt // users: %468, %316, %455, %470, %469, %456, %322, %319, %216
 6751:   debug_value %215, var, name "intent"            // id: %216
 6752:   debug_value %95, var, name "terminal", type $Bool, expr op_fragment:#Bool._value // id: %217
 6753:   switch_enum %166, case #Optional.some!enumelt: bb26, case #Optional.none!enumelt: bb27 // id: %218
-6754: 
+6754:
 6755: bb26(%219 : $ExecutionOperational):               // Preds: bb25
 6756:   %220 = enum $ExecutionOperational, #ExecutionOperational.backpressured!enumelt // user: %225
 6757:   %221 = alloc_stack [lexical] [var_decl] $ExecutionOperational // users: %223, %230, %226
@@ -283,15 +283,15 @@
 6765:   dealloc_stack %224                              // id: %229
 6766:   dealloc_stack %221                              // id: %230
 6767:   cond_br %228, bb28, bb29                        // id: %231
-6768: 
+6768:
 6769: bb27:                                             // Preds: bb25
 6770:   br bb69                                         // id: %232
-6771: 
+6771:
 6772: bb28:                                             // Preds: bb26
 6773:   %233 = struct_element_addr %2, #ExecutionPhaseMachine.semanticRevision // user: %234
 6774:   %234 = load %233                                // user: %235
 6775:   switch_enum %234, case #Optional.some!enumelt: bb30, case #Optional.none!enumelt: bb31 // id: %235
-6776: 
+6776:
 6777: bb29:                                             // Preds: bb26
 6778:   %236 = enum $ExecutionOperational, #ExecutionOperational.retryableRefusal!enumelt // user: %240
 6779:   %237 = alloc_stack [lexical] [var_decl] $ExecutionOperational // users: %238, %245, %241
@@ -304,7 +304,7 @@
 6786:   dealloc_stack %239                              // id: %244
 6787:   dealloc_stack %237                              // id: %245
 6788:   cond_br %243, bb63, bb64                        // id: %246
-6789: 
+6789:
 6790: // %247                                           // user: %249
 6791: bb30(%247 : $SemanticRevision):                   // Preds: bb28
 6792:   // function_ref PresentationPendingState.recordBackpressure(for:)
@@ -329,35 +329,35 @@
 6811:   %264 = function_ref @$s17P08CounterRuntime0B7ControlV04emitB4Wake_12acceptedFacty15GiftUIExecution09ExecutionF7ReasonsV_SbtF : $@convention(method) (ExecutionWakeReasons, Bool, @inout CounterControl) -> () // user: %265
 6812:   %265 = apply %264(%263, %96, %121) : $@convention(method) (ExecutionWakeReasons, Bool, @inout CounterControl) -> ()
 6813:   br bb32(%258, %95, %256)                        // id: %266
-6814: 
+6814:
 6815: bb31:                                             // Preds: bb28
 6816:   cond_fail %109, "Unexpectedly found nil while unwrapping an Optional value" // id: %267
 6817:   unreachable                                     // id: %268
-6818: 
+6818:
 6819: // %269                                           // user: %406
 6820: // %270                                           // users: %275, %283
 6821: // %271                                           // users: %393, %356
 6822: bb32(%269 : $Optional<PresentationPendingIntent>, %270 : $Builtin.Int1, %271 : $Builtin.Int8): // Preds: bb73 bb77 bb76 bb74 bb70 bb68 bb67 bb30
 6823:   switch_enum %163, case #Optional.some!enumelt: bb33, case #Optional.none!enumelt: bb34 // id: %272
-6824: 
+6824:
 6825: // %273                                           // user: %274
 6826: bb33(%273 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb32
 6827:   switch_enum %273, case #RunCycleFailure.nonRetryableRefusal!enumelt: bb35, default bb36 // id: %274
-6828: 
+6828:
 6829: bb34:                                             // Preds: bb32
 6830:   br bb60(%270)                                   // id: %275
-6831: 
+6831:
 6832: bb35(%276 : $FrameRefusalOrigin):                 // Preds: bb33
 6833:   debug_value %109, var, name "terminal", type $Bool, expr op_fragment:#Bool._value // id: %277
 6834:   %278 = enum $ExecutionError, #ExecutionError.requiredFacilityUnavailable!enumelt // user: %279
 6835:   %279 = enum $RunCycleFailure<RuntimeOwnerFailure>, #RunCycleFailure.execution!enumelt, %278 // user: %280
 6836:   br bb37(%109, %279)                             // id: %280
-6837: 
+6837:
 6838: bb36:                                             // Preds: bb33
 6839:   %281 = enum $ExecutionError, #ExecutionError.requiredFacilityUnavailable!enumelt // user: %282
 6840:   %282 = enum $RunCycleFailure<RuntimeOwnerFailure>, #RunCycleFailure.execution!enumelt, %281 // user: %283
 6841:   br bb37(%270, %282)                             // id: %283
-6842: 
+6842:
 6843: // %284                                           // user: %300
 6844: // %285                                           // user: %290
 6845: bb37(%284 : $Builtin.Int1, %285 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb36 bb35
@@ -374,18 +374,18 @@
 6856:   dealloc_stack %286                              // id: %295
 6857:   %296 = struct_extract %293, #Bool._value        // user: %297
 6858:   cond_br %296, bb38, bb39                        // id: %297
-6859: 
+6859:
 6860: bb38:                                             // Preds: bb37
 6861:   debug_value %109, var, name "terminal", type $Bool, expr op_fragment:#Bool._value // id: %298
 6862:   br bb40                                         // id: %299
-6863: 
+6863:
 6864: bb39:                                             // Preds: bb37
 6865:   br bb60(%284)                                   // id: %300
-6866: 
+6866:
 6867: bb40:                                             // Preds: bb61 bb38
 6868:   %301 = load %53                                 // user: %302
 6869:   switch_enum %301, case #Optional.some!enumelt: bb41, case #Optional.none!enumelt: bb42 // id: %302
-6870: 
+6870:
 6871: // %303                                           // users: %305, %304
 6872: bb41(%303 : $PresentationPendingIntent):          // Preds: bb40
 6873:   debug_value %303, let, name "retained"          // id: %304
@@ -399,24 +399,24 @@
 6881:   %312 = struct_extract %311, #UInt32._value      // user: %313
 6882:   %313 = builtin "cmp_eq_Int32"(%310, %312) : $Builtin.Int1 // user: %314
 6883:   cond_br %313, bb43, bb44                        // id: %314
-6884: 
+6884:
 6885: bb42:                                             // Preds: bb40
 6886:   br bb45                                         // id: %315
-6887: 
+6887:
 6888: bb43:                                             // Preds: bb41
 6889:   store %215 to %53                               // id: %316
 6890:   br bb45                                         // id: %317
-6891: 
+6891:
 6892: bb44:                                             // Preds: bb41
 6893:   br bb45                                         // id: %318
-6894: 
+6894:
 6895: bb45:                                             // Preds: bb42 bb44 bb43
 6896:   debug_value %215, var, name "intent"            // id: %319
 6897:   // function_ref specialized CounterPipelineOwner<>.terminatePresentation()
 6898:   %320 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21terminatePresentationyyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateI0AFLLVAA0a9CommittedI0AFLLVAA0a3HitI0AFLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () // user: %321
 6899:   %321 = apply %320(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> ()
 6900:   br bb46(%215, %109)                             // id: %322
-6901: 
+6901:
 6902: // %323                                           // user: %359
 6903: // %324                                           // user: %350
 6904: bb46(%323 : $Optional<PresentationPendingIntent>, %324 : $Builtin.Int1): // Preds: bb62 bb45
@@ -426,11 +426,11 @@
 6908:   %328 = struct_element_addr %327, #CounterControl.wake // user: %329
 6909:   %329 = load %328                                // users: %340, %330
 6910:   switch_enum %329, case #Optional.some!enumelt: bb48, case #Optional.none!enumelt: bb47 // id: %330
-6911: 
+6911:
 6912: bb47:                                             // Preds: bb46
 6913:   cond_fail %109, "Unexpectedly found nil while unwrapping an Optional value" // id: %331
 6914:   unreachable                                     // id: %332
-6915: 
+6915:
 6916: // %333                                           // user: %339
 6917: bb48(%333 : $ExecutionWakeAccumulator<CounterWake>): // Preds: bb46
 6918:   %334 = string_literal utf8 "recovery"           // user: %336
@@ -451,14 +451,14 @@
 6933:   %348 = struct_element_addr %0, #CounterPipelineOwner.committedPresentation // user: %349
 6934:   %349 = load %348                                // user: %359
 6935:   cond_br %324, bb49, bb50                        // id: %350
-6936: 
+6936:
 6937: bb49:                                             // Preds: bb48
 6938:   %351 = enum $PresentationIntentState, #PresentationIntentState.unavailable!enumelt // user: %352
 6939:   br bb51(%351)                                   // id: %352
-6940: 
+6940:
 6941: bb50:                                             // Preds: bb48
 6942:   br bb51(%164)                                   // id: %353
-6943: 
+6943:
 6944: // %354                                           // user: %359
 6945: bb51(%354 : $PresentationIntentState):            // Preds: bb50 bb49
 6946:   %355 = metatype $@thin RunCycleSummary.Type     // user: %359
@@ -468,7 +468,7 @@
 6950:   %358 = function_ref @$s15GiftUIExecution15RunCycleSummaryV5cycle9admission16semanticRevision0H11Disposition012logicalFrameJ0021committedPresentationI023presentationIntentState0O7Pending17operationalEventsACSgAA0cD2IDV_AA09AdmissionE0VAA08SemanticI0VSgAA0wdJ0OAA07LogicallJ0O0A2UI0nI0VSgAA0npQ0OAA0nrP0VSgAA020ExecutionOperationalT0VtcfC : $@convention(method) (RunCycleID, AdmissionSummary, Optional<SemanticRevision>, SemanticCycleDisposition, LogicalFrameDisposition, Optional<PresentationRevision>, PresentationIntentState, Optional<PresentationPendingIntent>, ExecutionOperationalEvents, @thin RunCycleSummary.Type) -> Optional<RunCycleSummary> // user: %359
 6951:   %359 = apply %358(%172, %178, %347, %167, %165, %349, %354, %323, %357, %355) : $@convention(method) (RunCycleID, AdmissionSummary, Optional<SemanticRevision>, SemanticCycleDisposition, LogicalFrameDisposition, Optional<PresentationRevision>, PresentationIntentState, Optional<PresentationPendingIntent>, ExecutionOperationalEvents, @thin RunCycleSummary.Type) -> Optional<RunCycleSummary> // user: %360
 6952:   switch_enum %359, case #Optional.some!enumelt: bb52, case #Optional.none!enumelt: bb53 // id: %360
-6953: 
+6953:
 6954: // %361                                           // users: %401, %398, %382, %375, %368, %362
 6955: bb52(%361 : $RunCycleSummary):                    // Preds: bb51
 6956:   debug_value %361, let, name "summary"           // id: %362
@@ -480,11 +480,11 @@
 6962:   %367 = function_ref @$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF15GiftUIExecution15RunCycleSummaryV_Tg5 : $@convention(thin) (StaticString, RunCycleSummary) -> () // user: %368
 6963:   %368 = apply %367(%366, %361) : $@convention(thin) (StaticString, RunCycleSummary) -> ()
 6964:   switch_enum %163, case #Optional.some!enumelt: bb54, case #Optional.none!enumelt: bb55 // id: %369
-6965: 
+6965:
 6966: bb53:                                             // Preds: bb51
 6967:   cond_fail %109, "Unexpectedly found nil while unwrapping an Optional value" // id: %370
 6968:   unreachable                                     // id: %371
-6969: 
+6969:
 6970: // %372                                           // users: %376, %373
 6971: bb54(%372 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb52
 6972:   debug_value %372, let, name "failure"           // id: %373
@@ -493,17 +493,17 @@
 6975:   %376 = tuple (%374, %372, %375)                 // user: %377
 6976:   %377 = enum $RunCycleResult<RuntimeOwnerFailure>, #RunCycleResult.failure!enumelt, %376 // user: %378
 6977:   br bb5(%377)                                    // id: %378
-6978: 
+6978:
 6979: bb55:                                             // Preds: bb52
 6980:   switch_enum %166, case #Optional.some!enumelt: bb56, case #Optional.none!enumelt: bb57 // id: %379
-6981: 
+6981:
 6982: // %380                                           // users: %382, %381
 6983: bb56(%380 : $ExecutionOperational):               // Preds: bb55
 6984:   debug_value %380, let, name "operational"       // id: %381
 6985:   %382 = tuple (%380, %361)                       // user: %383
 6986:   %383 = enum $RunCycleResult<RuntimeOwnerFailure>, #RunCycleResult.operational!enumelt, %382 // user: %384
 6987:   br bb5(%383)                                    // id: %384
-6988: 
+6988:
 6989: bb57:                                             // Preds: bb55
 6990:   // function_ref ExecutionOperationalEvents.superseded.unsafeMutableAddressor
 6991:   %385 = function_ref @$s15GiftUIExecution26ExecutionOperationalEventsV10supersededACvau : $@convention(thin) () -> Builtin.RawPointer // user: %386
@@ -518,35 +518,35 @@
 7000:   %394 = builtin "and_Int8"(%393, %391) : $Builtin.Int8 // user: %395
 7001:   %395 = builtin "cmp_eq_Int8"(%394, %390) : $Builtin.Int1 // user: %396
 7002:   cond_br %395, bb58, bb59                        // id: %396
-7003: 
+7003:
 7004: bb58:                                             // Preds: bb57
 7005:   %397 = enum $ExecutionOperational, #ExecutionOperational.superseded!enumelt // user: %398
 7006:   %398 = tuple (%397, %361)                       // user: %399
 7007:   %399 = enum $RunCycleResult<RuntimeOwnerFailure>, #RunCycleResult.operational!enumelt, %398 // user: %400
 7008:   br bb5(%399)                                    // id: %400
-7009: 
+7009:
 7010: bb59:                                             // Preds: bb57
 7011:   %401 = enum $RunCycleResult<RuntimeOwnerFailure>, #RunCycleResult.success!enumelt, %361 // user: %402
 7012:   br bb5(%401)                                    // id: %402
-7013: 
+7013:
 7014: // %403                                           // user: %404
 7015: bb60(%403 : $Builtin.Int1):                       // Preds: bb34 bb39
 7016:   cond_br %403, bb61, bb62                        // id: %404
-7017: 
+7017:
 7018: bb61:                                             // Preds: bb60
 7019:   br bb40                                         // id: %405
-7020: 
+7020:
 7021: bb62:                                             // Preds: bb60
 7022:   br bb46(%269, %95)                              // id: %406
-7023: 
+7023:
 7024: bb63:                                             // Preds: bb29
 7025:   %407 = struct_element_addr %2, #ExecutionPhaseMachine.semanticRevision // user: %408
 7026:   %408 = load %407                                // user: %409
 7027:   switch_enum %408, case #Optional.some!enumelt: bb65, case #Optional.none!enumelt: bb66 // id: %409
-7028: 
+7028:
 7029: bb64:                                             // Preds: bb29
 7030:   br bb69                                         // id: %410
-7031: 
+7031:
 7032: // %411                                           // user: %413
 7033: bb65(%411 : $SemanticRevision):                   // Preds: bb63
 7034:   // function_ref PresentationPendingState.recordRetryableRefusal(for:)
@@ -565,14 +565,14 @@
 7047:   %424 = struct_extract %413, #RecordingPendingTransition.exhausted // user: %425
 7048:   %425 = struct_extract %424, #Bool._value        // user: %426
 7049:   cond_br %425, bb67, bb68                        // id: %426
-7050: 
+7050:
 7051: bb66:                                             // Preds: bb63
 7052:   cond_fail %109, "Unexpectedly found nil while unwrapping an Optional value" // id: %427
 7053:   unreachable                                     // id: %428
-7054: 
+7054:
 7055: bb67:                                             // Preds: bb65
 7056:   br bb32(%422, %109, %420)                       // id: %429
-7057: 
+7057:
 7058: bb68:                                             // Preds: bb65
 7059:   // function_ref ExecutionWakeReasons.presentationPending.unsafeMutableAddressor
 7060:   %430 = function_ref @$s15GiftUIExecution20ExecutionWakeReasonsV19presentationPendingACvau : $@convention(thin) () -> Builtin.RawPointer // user: %431
@@ -583,7 +583,7 @@
 7065:   %434 = function_ref @$s17P08CounterRuntime0B7ControlV04emitB4Wake_12acceptedFacty15GiftUIExecution09ExecutionF7ReasonsV_SbtF : $@convention(method) (ExecutionWakeReasons, Bool, @inout CounterControl) -> () // user: %435
 7066:   %435 = apply %434(%433, %96, %121) : $@convention(method) (ExecutionWakeReasons, Bool, @inout CounterControl) -> ()
 7067:   br bb32(%422, %95, %420)                        // id: %436
-7068: 
+7068:
 7069: bb69:                                             // Preds: bb27 bb64
 7070:   %437 = alloc_stack [lexical] $PresentationIntentState // users: %438, %446, %442
 7071:   store %164 to %437                              // id: %438
@@ -596,26 +596,26 @@
 7078:   dealloc_stack %440                              // id: %445
 7079:   dealloc_stack %437                              // id: %446
 7080:   cond_br %444, bb70, bb71                        // id: %447
-7081: 
+7081:
 7082: bb70:                                             // Preds: bb69
 7083:   debug_value %54, var, name "intent"             // id: %448
 7084:   br bb32(%54, %95, %214)                         // id: %449
-7085: 
+7085:
 7086: bb71:                                             // Preds: bb69
 7087:   switch_enum %54, case #Optional.some!enumelt: bb72, case #Optional.none!enumelt: bb73 // id: %450
-7088: 
+7088:
 7089: // %451                                           // users: %458, %452
 7090: bb72(%451 : $PresentationPendingIntent):          // Preds: bb71
 7091:   debug_value %451, let, name "priorIntent"       // id: %452
 7092:   %453 = load %53                                 // user: %454
 7093:   switch_enum %453, case #Optional.none!enumelt: bb74, case #Optional.some!enumelt: bb75 // id: %454
-7094: 
+7094:
 7095: bb73:                                             // Preds: bb71
 7096:   br bb32(%215, %95, %214)                        // id: %455
-7097: 
+7097:
 7098: bb74:                                             // Preds: bb72
 7099:   br bb32(%215, %95, %214)                        // id: %456
-7100: 
+7100:
 7101: bb75(%457 : $PresentationPendingIntent):          // Preds: bb72
 7102:   %458 = struct_extract %451, #PresentationPendingIntent.semanticRevision // user: %464
 7103:   %459 = unchecked_inplace_enum_data_addr %53, #Optional.some!enumelt // user: %460
@@ -627,14 +627,14 @@
 7109:   %465 = struct_extract %464, #UInt32._value      // user: %466
 7110:   %466 = builtin "cmp_eq_Int32"(%463, %465) : $Builtin.Int1 // user: %467
 7111:   cond_br %466, bb76, bb77                        // id: %467
-7112: 
+7112:
 7113: bb76:                                             // Preds: bb75
 7114:   store %215 to %53                               // id: %468
 7115:   br bb32(%215, %95, %214)                        // id: %469
-7116: 
+7116:
 7117: bb77:                                             // Preds: bb75
 7118:   br bb32(%215, %95, %214)                        // id: %470
-7119: 
+7119:
 7120: bb78:                                             // Preds: bb22 bb24
 7121:   // function_ref ExecutionOperationalEvents.superseded.unsafeMutableAddressor
 7122:   %471 = function_ref @$s15GiftUIExecution26ExecutionOperationalEventsV10supersededACvau : $@convention(thin) () -> Builtin.RawPointer // user: %472
@@ -647,7 +647,7 @@
 7129:   %478 = builtin "and_Int8"(%476, %477) : $Builtin.Int8 // users: %480, %479
 7130:   debug_value %478, var, name "events", type $ExecutionOperationalEvents, expr op_fragment:#ExecutionOperationalEvents.rawValue:op_fragment:#UInt8._value // id: %479
 7131:   br bb25(%478)                                   // id: %480
-7132: 
+7132:
 7133: bb79:                                             // Preds: bb14 bb16
 7134:   %481 = struct_element_addr %168, #ExecutionContext.semanticRevision // user: %482
 7135:   %482 = load %481                                // user: %495
@@ -656,16 +656,16 @@
 7138:   %485 = struct_element_addr %168, #ExecutionContext.phase // user: %486
 7139:   %486 = load %485                                // user: %495
 7140:   switch_enum %163, case #Optional.some!enumelt: bb80, case #Optional.none!enumelt: bb81 // id: %487
-7141: 
+7141:
 7142: bb80(%488 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb79
 7143:   %489 = unchecked_enum_data %163, #Optional.some!enumelt // user: %490
 7144:   br bb82(%489)                                   // id: %490
-7145: 
+7145:
 7146: bb81:                                             // Preds: bb79
 7147:   %491 = enum $ExecutionError, #ExecutionError.invariantViolation!enumelt // user: %492
 7148:   %492 = enum $RunCycleFailure<RuntimeOwnerFailure>, #RunCycleFailure.execution!enumelt, %491 // user: %493
 7149:   br bb82(%492)                                   // id: %493
-7150: 
+7150:
 7151: // %494                                           // user: %497
 7152: bb82(%494 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb81 bb80
 7153:   %495 = struct $ExecutionContext (%170, %482, %484, %486) // user: %497

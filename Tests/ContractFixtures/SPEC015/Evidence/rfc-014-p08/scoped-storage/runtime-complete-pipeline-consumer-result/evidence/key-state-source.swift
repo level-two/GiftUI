@@ -1,7 +1,7 @@
 1: import GiftUI
 2: import GiftUIExecution
 3: import GiftUISemanticCore
-4: 
+4:
 5: /// The configured component pools are independent of the two semantic banks.
 6: /// The selected storage types own complete inline keys (including the endpoint
 7: /// role); no reference or ordinal from a semantic bank is retained here.
@@ -38,11 +38,11 @@
 38:         configuredComponentsPerKey = maximumComponentsPerKey
 39:         configuredComponents = maximumComponents
 40:     }
-41: 
+41:
 42:     package var identityCapacities: (perKey: UInt16, perBank: UInt32) {
 43:         (maximumComponentsPerKey, maximumComponents)
 44:     }
-45: 
+45:
 46:     package mutating func configureIdentityLimits(perKey: UInt16, perBank: UInt32) -> Bool {
 47:         guard !isStaging, committedComponents == 0, perKey > 0, perKey <= maximumComponentsPerKey,
 48:             perBank > 0, perBank <= maximumComponents
@@ -51,7 +51,7 @@
 51:         configuredComponents = perBank
 52:         return true
 53:     }
-54: 
+54:
 55:     package mutating func beginCandidate(limits: InteractionLimits) -> InteractionError? {
 56:         if let error = state.beginCandidate(limits: limits) { return error }
 57:         candidateComponents = 0
@@ -132,7 +132,7 @@
 132:         }
 133:         return InteractionFailurePrecedence.select(from: failures)
 134:     }
-135: 
+135:
 136:     package mutating func assignGeneration(_ generation: ActionGeneration, to identity: Identity)
 137:         -> InteractionError?
 138:     {
@@ -171,7 +171,7 @@
 171:         isStaging = false
 172:         failure = nil
 173:     }
-174: 
+174:
 175:     package var committedRevision: PresentationRevision? { state.committedRevision }
 176:     package var committedRecordCount: UInt16 { state.committedRecordCount }
 177:     package borrowing func committedRecord(for identity: Identity) -> BoundActionRecord<Identity>? {
@@ -189,7 +189,7 @@
 189:         -> PointerGestureOutcome<Identity>
 190:     { state.resolveUp(captured, at: point) }
 191: }
-192: 
+192:
 193: // Conditional ownership preserves the existing owned bank aliases.
 194: extension InteractionOwnedKeyState: Copyable
 195: where
@@ -199,7 +199,7 @@
 199: where
 200:     Candidate: Escapable & ~Copyable, Committed: Escapable & ~Copyable, Hits: Escapable & ~Copyable
 201: {}
-202: 
+202:
 203: // Instrumentation is confined to owned banks; it exports fixed value facts only.
 204: extension InteractionOwnedKeyState
 205: where

@@ -16,10 +16,10 @@
 10726:   %11 = load %10                                  // user: %13
 10727:   debug_value %0, let, name "self", argno 1, expr op_deref // id: %12
 10728:   cond_br %11, bb1, bb2                           // id: %13
-10729: 
+10729:
 10730: bb1:                                              // Preds: bb0
 10731:   br bb3                                          // id: %14
-10732: 
+10732:
 10733: bb2:                                              // Preds: bb0
 10734:   %15 = pointer_to_address %5 to [strict] $*CounterControl // users: %17, %16
 10735:   debug_value %15, let, name "self", argno 1, expr op_deref // id: %16
@@ -28,11 +28,11 @@
 10738:   %19 = struct_element_addr %18, #Bool._value     // user: %20
 10739:   %20 = load %19                                  // user: %21
 10740:   cond_br %20, bb5, bb6                           // id: %21
-10741: 
+10741:
 10742: bb3:                                              // Preds: bb5 bb1
 10743:   %22 = enum $PresentationIntentState, #PresentationIntentState.unavailable!enumelt // user: %23
 10744:   br bb4(%22)                                     // id: %23
-10745: 
+10745:
 10746: // %24                                            // users: %571, %498, %436, %363, %301, %219, %157, %108, %51
 10747: bb4(%24 : $PresentationIntentState):              // Preds: bb8 bb7 bb3
 10748:   %25 = metatype $@thin RuntimeCompletePipeline.Type // users: %54, %111, %160, %222, %304, %366, %439, %501, %574, %676, %734, %783, %838, %915, %1021, %1055, %970
@@ -44,21 +44,21 @@
 10754:   %30 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // user: %31
 10755:   %31 = apply %30(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // users: %40, %32
 10756:   switch_enum %31, case #RuntimePipelineStepResult.failure!enumelt: bb9, case #RuntimePipelineStepResult.advanced!enumelt: bb10 // id: %32
-10757: 
+10757:
 10758: bb5:                                              // Preds: bb2
 10759:   br bb3                                          // id: %33
-10760: 
+10760:
 10761: bb6:                                              // Preds: bb2
 10762:   cond_br %8, bb7, bb8                            // id: %34
-10763: 
+10763:
 10764: bb7:                                              // Preds: bb6
 10765:   %35 = enum $PresentationIntentState, #PresentationIntentState.pending!enumelt // user: %36
 10766:   br bb4(%35)                                     // id: %36
-10767: 
+10767:
 10768: bb8:                                              // Preds: bb6
 10769:   %37 = enum $PresentationIntentState, #PresentationIntentState.satisfied!enumelt // user: %38
 10770:   br bb4(%37)                                     // id: %38
-10771: 
+10771:
 10772: bb9(%39 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb4
 10773:   %40 = unchecked_enum_data %31, #RuntimePipelineStepResult.failure!enumelt // user: %61
 10774:   %41 = enum $RuntimeCompletePipelineStage, #RuntimeCompletePipelineStage.admissionAndSeal!enumelt // user: %63
@@ -93,13 +93,13 @@
 10803:   store %51 to %66                                // id: %67
 10804:   inject_enum_addr %2, #RuntimeCompletePipelineResult.failed!enumelt // id: %68
 10805:   br bb11                                         // id: %69
-10806: 
+10806:
 10807: bb10:                                             // Preds: bb4
 10808:   // function_ref specialized CounterPipelineOwner<>.applyAdmittedWork()
 10809:   %70 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17applyAdmittedWork17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> // user: %71
 10810:   %71 = apply %70(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> // users: %85, %90, %72
 10811:   switch_enum %71, case #RuntimePipelineMutationResult.applied!enumelt: bb12, case #RuntimePipelineMutationResult.failure!enumelt: bb13 // id: %72
-10812: 
+10812:
 10813: bb11:                                             // Preds: bb15 bb53 bb124 bb120 bb76 bb47 bb42 bb34 bb29 bb24 bb19 bb9
 10814:   %73 = load %2                                   // users: %74, %82, %83
 10815:   debug_value %73, let, name "result"             // id: %74
@@ -113,20 +113,20 @@
 10823:   %81 = function_ref @$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF17GiftUIRuntimeCore0C22CompletePipelineResultOyAE0C12OwnerFailureOG_Tg5 : $@convention(thin) (StaticString, RuntimeCompletePipelineResult<RuntimeOwnerFailure>) -> () // user: %82
 10824:   %82 = apply %81(%80, %73) : $@convention(thin) (StaticString, RuntimeCompletePipelineResult<RuntimeOwnerFailure>) -> ()
 10825:   return %73                                      // id: %83
-10826: 
+10826:
 10827: bb12(%84 : $Bool):                                // Preds: bb10
 10828:   %85 = unchecked_enum_data %71, #RuntimePipelineMutationResult.applied!enumelt // users: %141, %201, %283, %345, %418, %480, %553
 10829:   // function_ref specialized CounterPipelineOwner<>.freezeObservableMutation()
 10830:   %86 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE24freezeObservableMutation17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // user: %87
 10831:   %87 = apply %86(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // users: %151, %88
 10832:   switch_enum %87, case #RuntimePipelineStepResult.failure!enumelt: bb17, case #RuntimePipelineStepResult.advanced!enumelt: bb21 // id: %88
-10833: 
+10833:
 10834: bb13(%89 : $(RunCycleFailure<RuntimeOwnerFailure>, mutationApplied: Bool)): // Preds: bb10
 10835:   %90 = unchecked_enum_data %71, #RuntimePipelineMutationResult.failure!enumelt // users: %91, %102
 10836:   %91 = tuple_extract %90, 1                      // user: %92
 10837:   %92 = struct_extract %91, #Bool._value          // user: %93
 10838:   cond_br %92, bb16, bb14                         // id: %93
-10839: 
+10839:
 10840: bb14:                                             // Preds: bb13
 10841:   %94 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.unchanged!enumelt // user: %99
 10842:   %95 = integer_literal $Builtin.Int8, 0          // user: %97
@@ -134,7 +134,7 @@
 10844:   %97 = struct $UInt8 (%95)                       // user: %98
 10845:   %98 = struct $ExecutionWakeReasons (%97)        // user: %99
 10846:   br bb15(%98, %94)                               // id: %99
-10847: 
+10847:
 10848: // %100                                           // user: %108
 10849: // %101                                           // user: %108
 10850: bb15(%100 : $ExecutionWakeReasons, %101 : $SemanticCycleDisposition): // Preds: bb14 bb16
@@ -166,7 +166,7 @@
 10876:   store %108 to %123                              // id: %124
 10877:   inject_enum_addr %2, #RuntimeCompletePipelineResult.failed!enumelt // id: %125
 10878:   br bb11                                         // id: %126
-10879: 
+10879:
 10880: bb16:                                             // Preds: bb13
 10881:   %127 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.dirty!enumelt // user: %139
 10882:   // function_ref ExecutionWakeReasons.semanticDirty.unsafeMutableAddressor
@@ -182,11 +182,11 @@
 10892:   %137 = struct $UInt8 (%136)                     // user: %138
 10893:   %138 = struct $ExecutionWakeReasons (%137)      // user: %139
 10894:   br bb15(%138, %127)                             // id: %139
-10895: 
+10895:
 10896: bb17(%140 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb12
 10897:   %141 = struct_extract %85, #Bool._value         // user: %142
 10898:   cond_br %141, bb20, bb18                        // id: %142
-10899: 
+10899:
 10900: bb18:                                             // Preds: bb17
 10901:   %143 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.unchanged!enumelt // user: %148
 10902:   %144 = integer_literal $Builtin.Int8, 0         // user: %146
@@ -194,7 +194,7 @@
 10904:   %146 = struct $UInt8 (%144)                     // user: %147
 10905:   %147 = struct $ExecutionWakeReasons (%146)      // user: %148
 10906:   br bb19(%147, %143)                             // id: %148
-10907: 
+10907:
 10908: // %149                                           // user: %157
 10909: // %150                                           // user: %157
 10910: bb19(%149 : $ExecutionWakeReasons, %150 : $SemanticCycleDisposition): // Preds: bb18 bb20
@@ -226,7 +226,7 @@
 10936:   store %157 to %172                              // id: %173
 10937:   inject_enum_addr %2, #RuntimeCompletePipelineResult.failed!enumelt // id: %174
 10938:   br bb11                                         // id: %175
-10939: 
+10939:
 10940: bb20:                                             // Preds: bb17
 10941:   %176 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.dirty!enumelt // user: %188
 10942:   // function_ref ExecutionWakeReasons.semanticDirty.unsafeMutableAddressor
@@ -242,7 +242,7 @@
 10952:   %186 = struct $UInt8 (%185)                     // user: %187
 10953:   %187 = struct $ExecutionWakeReasons (%186)      // user: %188
 10954:   br bb19(%187, %176)                             // id: %188
-10955: 
+10955:
 10956: bb21:                                             // Preds: bb12
 10957:   // function_ref RuntimeCleanupActions.resetAttemptStorage.unsafeMutableAddressor
 10958:   %189 = function_ref @$s17GiftUIRuntimeCore21RuntimeCleanupActionsV19resetAttemptStorageACvau : $@convention(thin) () -> Builtin.RawPointer // user: %190
@@ -257,11 +257,11 @@
 10967:   %197 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // user: %198
 10968:   %198 = apply %197(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // users: %213, %199
 10969:   switch_enum %198, case #RuntimePipelineStepResult.failure!enumelt: bb22, case #RuntimePipelineStepResult.advanced!enumelt: bb26 // id: %199
-10970: 
+10970:
 10971: bb22(%200 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb21
 10972:   %201 = struct_extract %85, #Bool._value         // user: %202
 10973:   cond_br %201, bb25, bb23                        // id: %202
-10974: 
+10974:
 10975: bb23:                                             // Preds: bb22
 10976:   %203 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.unchanged!enumelt // user: %208
 10977:   %204 = integer_literal $Builtin.Int8, 0         // user: %206
@@ -269,7 +269,7 @@
 10979:   %206 = struct $UInt8 (%204)                     // user: %207
 10980:   %207 = struct $ExecutionWakeReasons (%206)      // user: %208
 10981:   br bb24(%207, %203)                             // id: %208
-10982: 
+10982:
 10983: // %209                                           // user: %219
 10984: // %210                                           // user: %219
 10985: bb24(%209 : $ExecutionWakeReasons, %210 : $SemanticCycleDisposition): // Preds: bb23 bb25
@@ -303,7 +303,7 @@
 11013:   store %219 to %234                              // id: %235
 11014:   inject_enum_addr %2, #RuntimeCompletePipelineResult.failed!enumelt // id: %236
 11015:   br bb11                                         // id: %237
-11016: 
+11016:
 11017: bb25:                                             // Preds: bb22
 11018:   %238 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.dirty!enumelt // user: %250
 11019:   // function_ref ExecutionWakeReasons.semanticDirty.unsafeMutableAddressor
@@ -319,7 +319,7 @@
 11029:   %248 = struct $UInt8 (%247)                     // user: %249
 11030:   %249 = struct $ExecutionWakeReasons (%248)      // user: %250
 11031:   br bb24(%249, %238)                             // id: %250
-11032: 
+11032:
 11033: bb26:                                             // Preds: bb21
 11034:   // function_ref RuntimeCleanupActions.releaseCanvasCallable.unsafeMutableAddressor
 11035:   %251 = function_ref @$s17GiftUIRuntimeCore21RuntimeCleanupActionsV21releaseCanvasCallableACvau : $@convention(thin) () -> Builtin.RawPointer // user: %252
@@ -356,11 +356,11 @@
 11066:   %279 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE13resolveLayout17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // user: %280
 11067:   %280 = apply %279(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // users: %295, %281
 11068:   switch_enum %280, case #RuntimePipelineStepResult.failure!enumelt: bb27, case #RuntimePipelineStepResult.advanced!enumelt: bb31 // id: %281
-11069: 
+11069:
 11070: bb27(%282 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb26
 11071:   %283 = struct_extract %85, #Bool._value         // user: %284
 11072:   cond_br %283, bb30, bb28                        // id: %284
-11073: 
+11073:
 11074: bb28:                                             // Preds: bb27
 11075:   %285 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.unchanged!enumelt // user: %290
 11076:   %286 = integer_literal $Builtin.Int8, 0         // user: %288
@@ -368,7 +368,7 @@
 11078:   %288 = struct $UInt8 (%286)                     // user: %289
 11079:   %289 = struct $ExecutionWakeReasons (%288)      // user: %290
 11080:   br bb29(%289, %285)                             // id: %290
-11081: 
+11081:
 11082: // %291                                           // user: %301
 11083: // %292                                           // user: %301
 11084: bb29(%291 : $ExecutionWakeReasons, %292 : $SemanticCycleDisposition): // Preds: bb28 bb30
@@ -402,7 +402,7 @@
 11112:   store %301 to %316                              // id: %317
 11113:   inject_enum_addr %2, #RuntimeCompletePipelineResult.failed!enumelt // id: %318
 11114:   br bb11                                         // id: %319
-11115: 
+11115:
 11116: bb30:                                             // Preds: bb27
 11117:   %320 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.dirty!enumelt // user: %332
 11118:   // function_ref ExecutionWakeReasons.semanticDirty.unsafeMutableAddressor
@@ -418,7 +418,7 @@
 11128:   %330 = struct $UInt8 (%329)                     // user: %331
 11129:   %331 = struct $ExecutionWakeReasons (%330)      // user: %332
 11130:   br bb29(%331, %320)                             // id: %332
-11131: 
+11131:
 11132: bb31:                                             // Preds: bb26
 11133:   // function_ref RuntimeCleanupActions.resetLayoutCandidate.unsafeMutableAddressor
 11134:   %333 = function_ref @$s17GiftUIRuntimeCore21RuntimeCleanupActionsV20resetLayoutCandidateACvau : $@convention(thin) () -> Builtin.RawPointer // user: %334
@@ -433,11 +433,11 @@
 11143:   %341 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE27invokeCanvasesAndDerivePlan17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateR0ALLLVAA0a9CommittedR0ALLLVAA0a3HitR0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // user: %342
 11144:   %342 = apply %341(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // users: %357, %343
 11145:   switch_enum %342, case #RuntimePipelineStepResult.failure!enumelt: bb32, case #RuntimePipelineStepResult.advanced!enumelt: bb36 // id: %343
-11146: 
+11146:
 11147: bb32(%344 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb31
 11148:   %345 = struct_extract %85, #Bool._value         // user: %346
 11149:   cond_br %345, bb35, bb33                        // id: %346
-11150: 
+11150:
 11151: bb33:                                             // Preds: bb32
 11152:   %347 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.unchanged!enumelt // user: %352
 11153:   %348 = integer_literal $Builtin.Int8, 0         // user: %350
@@ -445,7 +445,7 @@
 11155:   %350 = struct $UInt8 (%348)                     // user: %351
 11156:   %351 = struct $ExecutionWakeReasons (%350)      // user: %352
 11157:   br bb34(%351, %347)                             // id: %352
-11158: 
+11158:
 11159: // %353                                           // user: %363
 11160: // %354                                           // user: %363
 11161: bb34(%353 : $ExecutionWakeReasons, %354 : $SemanticCycleDisposition): // Preds: bb33 bb35
@@ -479,7 +479,7 @@
 11189:   store %363 to %378                              // id: %379
 11190:   inject_enum_addr %2, #RuntimeCompletePipelineResult.failed!enumelt // id: %380
 11191:   br bb11                                         // id: %381
-11192: 
+11192:
 11193: bb35:                                             // Preds: bb32
 11194:   %382 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.dirty!enumelt // user: %394
 11195:   // function_ref ExecutionWakeReasons.semanticDirty.unsafeMutableAddressor
@@ -495,23 +495,23 @@
 11205:   %392 = struct $UInt8 (%391)                     // user: %393
 11206:   %393 = struct $ExecutionWakeReasons (%392)      // user: %394
 11207:   br bb34(%393, %382)                             // id: %394
-11208: 
+11208:
 11209: bb36:                                             // Preds: bb31
 11210:   %395 = builtin "and_Int16"(%340, %256) : $Builtin.Int16 // user: %396
 11211:   %396 = builtin "and_Int16"(%395, %195) : $Builtin.Int16 // user: %397
 11212:   %397 = builtin "cmp_eq_Int16"(%396, %26) : $Builtin.Int1 // user: %398
 11213:   cond_br %397, bb37, bb38                        // id: %398
-11214: 
+11214:
 11215: bb37:                                             // Preds: bb36
 11216:   br bb39(%340)                                   // id: %399
-11217: 
+11217:
 11218: bb38:                                             // Preds: bb36
 11219:   %400 = builtin "xor_Int16"(%340, %256) : $Builtin.Int16 // user: %401
 11220:   %401 = builtin "and_Int16"(%400, %195) : $Builtin.Int16 // user: %402
 11221:   %402 = builtin "and_Int16"(%340, %401) : $Builtin.Int16 // user: %403
 11222:   %403 = builtin "and_Int16"(%402, %195) : $Builtin.Int16 // user: %404
 11223:   br bb39(%403)                                   // id: %404
-11224: 
+11224:
 11225: // %405                                           // user: %412
 11226: bb39(%405 : $Builtin.Int16):                      // Preds: bb38 bb37
 11227:   // function_ref RuntimeCleanupActions.resetDrawingPlan.unsafeMutableAddressor
@@ -527,11 +527,11 @@
 11237:   %414 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE23preflightCombinedRender17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // user: %415
 11238:   %415 = apply %414(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // users: %430, %416
 11239:   switch_enum %415, case #RuntimePipelineStepResult.failure!enumelt: bb40, case #RuntimePipelineStepResult.advanced!enumelt: bb44 // id: %416
-11240: 
+11240:
 11241: bb40(%417 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb39
 11242:   %418 = struct_extract %85, #Bool._value         // user: %419
 11243:   cond_br %418, bb43, bb41                        // id: %419
-11244: 
+11244:
 11245: bb41:                                             // Preds: bb40
 11246:   %420 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.unchanged!enumelt // user: %425
 11247:   %421 = integer_literal $Builtin.Int8, 0         // user: %423
@@ -539,7 +539,7 @@
 11249:   %423 = struct $UInt8 (%421)                     // user: %424
 11250:   %424 = struct $ExecutionWakeReasons (%423)      // user: %425
 11251:   br bb42(%424, %420)                             // id: %425
-11252: 
+11252:
 11253: // %426                                           // user: %436
 11254: // %427                                           // user: %436
 11255: bb42(%426 : $ExecutionWakeReasons, %427 : $SemanticCycleDisposition): // Preds: bb41 bb43
@@ -573,7 +573,7 @@
 11283:   store %436 to %451                              // id: %452
 11284:   inject_enum_addr %2, #RuntimeCompletePipelineResult.failed!enumelt // id: %453
 11285:   br bb11                                         // id: %454
-11286: 
+11286:
 11287: bb43:                                             // Preds: bb40
 11288:   %455 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.dirty!enumelt // user: %467
 11289:   // function_ref ExecutionWakeReasons.semanticDirty.unsafeMutableAddressor
@@ -589,7 +589,7 @@
 11299:   %465 = struct $UInt8 (%464)                     // user: %466
 11300:   %466 = struct $ExecutionWakeReasons (%465)      // user: %467
 11301:   br bb42(%466, %455)                             // id: %467
-11302: 
+11302:
 11303: bb44:                                             // Preds: bb39
 11304:   // function_ref RuntimeCleanupActions.resetRenderWorkspace.unsafeMutableAddressor
 11305:   %468 = function_ref @$s17GiftUIRuntimeCore21RuntimeCleanupActionsV20resetRenderWorkspaceACvau : $@convention(thin) () -> Builtin.RawPointer // user: %469
@@ -604,11 +604,11 @@
 11314:   %476 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // user: %477
 11315:   %477 = apply %476(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // users: %492, %478
 11316:   switch_enum %477, case #RuntimePipelineStepResult.failure!enumelt: bb45, case #RuntimePipelineStepResult.advanced!enumelt: bb49 // id: %478
-11317: 
+11317:
 11318: bb45(%479 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb44
 11319:   %480 = struct_extract %85, #Bool._value         // user: %481
 11320:   cond_br %480, bb48, bb46                        // id: %481
-11321: 
+11321:
 11322: bb46:                                             // Preds: bb45
 11323:   %482 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.unchanged!enumelt // user: %487
 11324:   %483 = integer_literal $Builtin.Int8, 0         // user: %485
@@ -616,7 +616,7 @@
 11326:   %485 = struct $UInt8 (%483)                     // user: %486
 11327:   %486 = struct $ExecutionWakeReasons (%485)      // user: %487
 11328:   br bb47(%486, %482)                             // id: %487
-11329: 
+11329:
 11330: // %488                                           // user: %498
 11331: // %489                                           // user: %498
 11332: bb47(%488 : $ExecutionWakeReasons, %489 : $SemanticCycleDisposition): // Preds: bb46 bb48
@@ -650,7 +650,7 @@
 11360:   store %498 to %513                              // id: %514
 11361:   inject_enum_addr %2, #RuntimeCompletePipelineResult.failed!enumelt // id: %515
 11362:   br bb11                                         // id: %516
-11363: 
+11363:
 11364: bb48:                                             // Preds: bb45
 11365:   %517 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.dirty!enumelt // user: %529
 11366:   // function_ref ExecutionWakeReasons.semanticDirty.unsafeMutableAddressor
@@ -666,7 +666,7 @@
 11376:   %527 = struct $UInt8 (%526)                     // user: %528
 11377:   %528 = struct $ExecutionWakeReasons (%527)      // user: %529
 11378:   br bb47(%528, %517)                             // id: %529
-11379: 
+11379:
 11380: bb49:                                             // Preds: bb44
 11381:   // function_ref RuntimeCleanupActions.discardInteractionCandidate.unsafeMutableAddressor
 11382:   %530 = function_ref @$s17GiftUIRuntimeCore21RuntimeCleanupActionsV27discardInteractionCandidateACvau : $@convention(thin) () -> Builtin.RawPointer // user: %531
@@ -681,7 +681,7 @@
 11391:   %538 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ajR0ALLLVAA0a9CommittedR0ALLLVAA0a3HitR0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelinePublicationResult<RuntimeOwnerFailure> // user: %539
 11392:   %539 = apply %538(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelinePublicationResult<RuntimeOwnerFailure> // users: %610, %565, %540
 11393:   switch_enum %539, case #RuntimePipelinePublicationResult.published!enumelt: bb50, case #RuntimePipelinePublicationResult.failure!enumelt: bb51 // id: %540
-11394: 
+11394:
 11395: bb50(%541 : $RuntimePipelinePublication):         // Preds: bb49
 11396:   %542 = builtin "onFastPath"() : $()
 11397:   %543 = builtin "and_Int16"(%338, %195) : $Builtin.Int16 // user: %544
@@ -693,11 +693,11 @@
 11403:   %549 = builtin "and_Int16"(%548, %195) : $Builtin.Int16 // user: %550
 11404:   %550 = builtin "cmp_eq_Int16"(%549, %26) : $Builtin.Int1 // user: %551
 11405:   cond_br %550, bb55, bb56                        // id: %551
-11406: 
+11406:
 11407: bb51(%552 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb49
 11408:   %553 = struct_extract %85, #Bool._value         // user: %554
 11409:   cond_br %553, bb54, bb52                        // id: %554
-11410: 
+11410:
 11411: bb52:                                             // Preds: bb51
 11412:   %555 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.unchanged!enumelt // user: %560
 11413:   %556 = integer_literal $Builtin.Int8, 0         // user: %558
@@ -705,7 +705,7 @@
 11415:   %558 = struct $UInt8 (%556)                     // user: %559
 11416:   %559 = struct $ExecutionWakeReasons (%558)      // user: %560
 11417:   br bb53(%559, %555)                             // id: %560
-11418: 
+11418:
 11419: // %561                                           // user: %571
 11420: // %562                                           // user: %571
 11421: bb53(%561 : $ExecutionWakeReasons, %562 : $SemanticCycleDisposition): // Preds: bb52 bb54
@@ -739,7 +739,7 @@
 11449:   store %571 to %586                              // id: %587
 11450:   inject_enum_addr %2, #RuntimeCompletePipelineResult.failed!enumelt // id: %588
 11451:   br bb11                                         // id: %589
-11452: 
+11452:
 11453: bb54:                                             // Preds: bb51
 11454:   %590 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.dirty!enumelt // user: %602
 11455:   // function_ref ExecutionWakeReasons.semanticDirty.unsafeMutableAddressor
@@ -755,17 +755,17 @@
 11465:   %600 = struct $UInt8 (%599)                     // user: %601
 11466:   %601 = struct $ExecutionWakeReasons (%600)      // user: %602
 11467:   br bb53(%601, %590)                             // id: %602
-11468: 
+11468:
 11469: bb55:                                             // Preds: bb50
 11470:   br bb57(%537)                                   // id: %603
-11471: 
+11471:
 11472: bb56:                                             // Preds: bb50
 11473:   %604 = builtin "xor_Int16"(%537, %547) : $Builtin.Int16 // user: %605
 11474:   %605 = builtin "and_Int16"(%604, %195) : $Builtin.Int16 // user: %606
 11475:   %606 = builtin "and_Int16"(%537, %605) : $Builtin.Int16 // user: %607
 11476:   %607 = builtin "and_Int16"(%606, %195) : $Builtin.Int16 // user: %608
 11477:   br bb57(%607)                                   // id: %608
-11478: 
+11478:
 11479: // %609                                           // users: %942, %904, %824, %774, %725, %1045, %1006, %945, %937, %665
 11480: bb57(%609 : $Builtin.Int16):                      // Preds: bb56 bb55
 11481:   %610 = unchecked_enum_data %539, #RuntimePipelinePublicationResult.published!enumelt // users: %1064, %979, %792, %743, %621, %802, %860, %632, %624, %871, %863, %710, %759, %700, %697, %611
@@ -774,58 +774,58 @@
 11484:   %612 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17allocateCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0agO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // user: %613
 11485:   %613 = apply %612(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // users: %616, %614
 11486:   switch_enum %613, case #RuntimePipelineStepResult.failure!enumelt: bb58, case #RuntimePipelineStepResult.advanced!enumelt: bb77 // id: %614
-11487: 
+11487:
 11488: bb58(%615 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb57
 11489:   %616 = unchecked_enum_data %613, #RuntimePipelineStepResult.failure!enumelt // users: %683, %630, %619
 11490:   %617 = integer_literal $Builtin.Int1, 0         // users: %627, %628, %631, %672
 11491:   %618 = integer_literal $Builtin.Int1, -1        // users: %637, %638, %667, %631
 11492:   switch_enum %616, case #RunCycleFailure.nonRetryableRefusal!enumelt: bb59, case #RunCycleFailure.execution!enumelt: bb63, default bb60 // id: %619
-11493: 
+11493:
 11494: bb59(%620 : $FrameRefusalOrigin):                 // Preds: bb58
 11495:   %621 = struct_extract %610, #RuntimePipelinePublication.changed // user: %622
 11496:   %622 = struct_extract %621, #Bool._value        // user: %623
 11497:   cond_br %622, bb67, bb66                        // id: %623
-11498: 
+11498:
 11499: bb60:                                             // Preds: bb58
 11500:   %624 = struct_extract %610, #RuntimePipelinePublication.changed // user: %625
 11501:   %625 = struct_extract %624, #Bool._value        // user: %626
 11502:   cond_br %625, bb61, bb62                        // id: %626
-11503: 
+11503:
 11504: bb61:                                             // Preds: bb60
 11505:   br bb68(%617)                                   // id: %627
-11506: 
+11506:
 11507: bb62:                                             // Preds: bb60
 11508:   br bb69(%617)                                   // id: %628
-11509: 
+11509:
 11510: bb63(%629 : $ExecutionError):                     // Preds: bb58
 11511:   %630 = unchecked_enum_data %616, #RunCycleFailure.execution!enumelt // user: %631
 11512:   %631 = select_enum %630, case #ExecutionError.requiredFacilityUnavailable!enumelt: %618, default %617 : $Builtin.Int1 // users: %636, %635
 11513:   %632 = struct_extract %610, #RuntimePipelinePublication.changed // user: %633
 11514:   %633 = struct_extract %632, #Bool._value        // user: %634
 11515:   cond_br %633, bb65, bb64                        // id: %634
-11516: 
+11516:
 11517: bb64:                                             // Preds: bb63
 11518:   br bb69(%631)                                   // id: %635
-11519: 
+11519:
 11520: bb65:                                             // Preds: bb63
 11521:   br bb68(%631)                                   // id: %636
-11522: 
+11522:
 11523: bb66:                                             // Preds: bb59
 11524:   br bb69(%618)                                   // id: %637
-11525: 
+11525:
 11526: bb67:                                             // Preds: bb59
 11527:   br bb68(%618)                                   // id: %638
-11528: 
+11528:
 11529: // %639                                           // user: %641
 11530: bb68(%639 : $Builtin.Int1):                       // Preds: bb65 bb67 bb61
 11531:   %640 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.published!enumelt // user: %641
 11532:   br bb70(%640, %639)                             // id: %641
-11533: 
+11533:
 11534: // %642                                           // user: %644
 11535: bb69(%642 : $Builtin.Int1):                       // Preds: bb64 bb66 bb62
 11536:   %643 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.unchanged!enumelt // user: %644
 11537:   br bb70(%643, %642)                             // id: %644
-11538: 
+11538:
 11539: // %645                                           // user: %673
 11540: // %646                                           // user: %658
 11541: bb70(%645 : $SemanticCycleDisposition, %646 : $Builtin.Int1): // Preds: bb68 bb69
@@ -834,27 +834,27 @@
 11544:   %649 = load %648                                // user: %651
 11545:   debug_value %0, let, name "self", argno 1, expr op_deref // id: %650
 11546:   switch_enum %649, case #Optional.none!enumelt: bb71, case #Optional.some!enumelt: bb72 // id: %651
-11547: 
+11547:
 11548: bb71:                                             // Preds: bb70
 11549:   %652 = enum $LogicalFrameDisposition, #LogicalFrameDisposition.notProduced!enumelt // user: %653
 11550:   br bb73(%652)                                   // id: %653
-11551: 
+11551:
 11552: bb72(%654 : $CandidateFrameID):                   // Preds: bb70
 11553:   %655 = enum $LogicalFrameDisposition, #LogicalFrameDisposition.aborted!enumelt // user: %656
 11554:   br bb73(%655)                                   // id: %656
-11555: 
+11555:
 11556: // %657                                           // user: %673
 11557: bb73(%657 : $LogicalFrameDisposition):            // Preds: bb72 bb71
 11558:   cond_br %646, bb74, bb75                        // id: %658
-11559: 
+11559:
 11560: bb74:                                             // Preds: bb73
 11561:   %659 = enum $PresentationIntentState, #PresentationIntentState.unavailable!enumelt // user: %660
 11562:   br bb76(%659)                                   // id: %660
-11563: 
+11563:
 11564: bb75:                                             // Preds: bb73
 11565:   %661 = enum $PresentationIntentState, #PresentationIntentState.satisfied!enumelt // user: %662
 11566:   br bb76(%661)                                   // id: %662
-11567: 
+11567:
 11568: // %663                                           // user: %673
 11569: bb76(%663 : $PresentationIntentState):            // Preds: bb75 bb74
 11570:   %664 = enum $RuntimeCompletePipelineStage, #RuntimeCompletePipelineStage.candidateAllocation!enumelt // user: %685
@@ -888,24 +888,24 @@
 11598:   store %673 to %688                              // id: %689
 11599:   inject_enum_addr %2, #RuntimeCompletePipelineResult.failed!enumelt // id: %690
 11600:   br bb11                                         // id: %691
-11601: 
+11601:
 11602: bb77:                                             // Preds: bb57
 11603:   // function_ref specialized CounterPipelineOwner<>.offerAndProduce()
 11604:   %692 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE15offerAndProduce17GiftUIRuntimeCore0cD11OfferResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineOfferResult<RuntimeOwnerFailure> // user: %693
 11605:   %693 = apply %692(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineOfferResult<RuntimeOwnerFailure> // users: %949, %821, %855, %695
 11606:   %694 = alloc_stack [lexical] [var_decl] $RuntimeCompletePipelineResult<RuntimeOwnerFailure> // users: %988, %750, %739, %799, %788, %852, %843, %929, %920, %1071, %1060, %1036, %990, %986, %975
 11607:   switch_enum %693, case #RuntimePipelineOfferResult.accepted!enumelt: bb78, case #RuntimePipelineOfferResult.noChange!enumelt: bb79, case #RuntimePipelineOfferResult.backpressured!enumelt: bb80, case #RuntimePipelineOfferResult.retryableRefusal!enumelt: bb84, case #RuntimePipelineOfferResult.nonRetryableRefusal!enumelt: bb88, case #RuntimePipelineOfferResult.failure!enumelt: bb95 // id: %695
-11608: 
+11608:
 11609: bb78(%696 : $PresentationRevision):               // Preds: bb77
 11610:   %697 = struct_extract %610, #RuntimePipelinePublication.changed // user: %698
 11611:   %698 = struct_extract %697, #Bool._value        // user: %699
 11612:   cond_br %698, bb114, bb115                      // id: %699
-11613: 
+11613:
 11614: bb79:                                             // Preds: bb77
 11615:   %700 = struct_extract %610, #RuntimePipelinePublication.changed // user: %701
 11616:   %701 = struct_extract %700, #Bool._value        // user: %702
 11617:   cond_br %701, bb121, bb125                      // id: %702
-11618: 
+11618:
 11619: bb80:                                             // Preds: bb77
 11620:   // function_ref ExecutionWakeReasons.presentationPending.unsafeMutableAddressor
 11621:   %703 = function_ref @$s15GiftUIExecution20ExecutionWakeReasonsV19presentationPendingACvau : $@convention(thin) () -> Builtin.RawPointer // user: %704
@@ -918,15 +918,15 @@
 11628:   %710 = struct_extract %610, #RuntimePipelinePublication.changed // user: %711
 11629:   %711 = struct_extract %710, #Bool._value        // user: %712
 11630:   cond_br %711, bb81, bb82                        // id: %712
-11631: 
+11631:
 11632: bb81:                                             // Preds: bb80
 11633:   %713 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.published!enumelt // user: %714
 11634:   br bb83(%713)                                   // id: %714
-11635: 
+11635:
 11636: bb82:                                             // Preds: bb80
 11637:   %715 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.unchanged!enumelt // user: %716
 11638:   br bb83(%715)                                   // id: %716
-11639: 
+11639:
 11640: // %717                                           // user: %731
 11641: bb83(%717 : $SemanticCycleDisposition):           // Preds: bb82 bb81
 11642:   %718 = enum $ExecutionOperational, #ExecutionOperational.backpressured!enumelt // user: %741
@@ -966,7 +966,7 @@
 11676:   store %731 to %748                              // id: %749
 11677:   inject_enum_addr %694, #RuntimeCompletePipelineResult.completed!enumelt // id: %750
 11678:   br bb120                                        // id: %751
-11679: 
+11679:
 11680: bb84:                                             // Preds: bb77
 11681:   // function_ref ExecutionWakeReasons.presentationPending.unsafeMutableAddressor
 11682:   %752 = function_ref @$s15GiftUIExecution20ExecutionWakeReasonsV19presentationPendingACvau : $@convention(thin) () -> Builtin.RawPointer // user: %753
@@ -979,15 +979,15 @@
 11689:   %759 = struct_extract %610, #RuntimePipelinePublication.changed // user: %760
 11690:   %760 = struct_extract %759, #Bool._value        // user: %761
 11691:   cond_br %760, bb85, bb86                        // id: %761
-11692: 
+11692:
 11693: bb85:                                             // Preds: bb84
 11694:   %762 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.published!enumelt // user: %763
 11695:   br bb87(%762)                                   // id: %763
-11696: 
+11696:
 11697: bb86:                                             // Preds: bb84
 11698:   %764 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.unchanged!enumelt // user: %765
 11699:   br bb87(%764)                                   // id: %765
-11700: 
+11700:
 11701: // %766                                           // user: %780
 11702: bb87(%766 : $SemanticCycleDisposition):           // Preds: bb86 bb85
 11703:   %767 = enum $ExecutionOperational, #ExecutionOperational.retryableRefusal!enumelt // user: %790
@@ -1027,20 +1027,20 @@
 11737:   store %780 to %797                              // id: %798
 11738:   inject_enum_addr %694, #RuntimeCompletePipelineResult.completed!enumelt // id: %799
 11739:   br bb120                                        // id: %800
-11740: 
+11740:
 11741: bb88(%801 : $FrameRefusalOrigin):                 // Preds: bb77
 11742:   %802 = struct_extract %610, #RuntimePipelinePublication.changed // user: %803
 11743:   %803 = struct_extract %802, #Bool._value        // user: %804
 11744:   cond_br %803, bb89, bb90                        // id: %804
-11745: 
+11745:
 11746: bb89:                                             // Preds: bb88
 11747:   %805 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.published!enumelt // user: %806
 11748:   br bb91(%805)                                   // id: %806
-11749: 
+11749:
 11750: bb90:                                             // Preds: bb88
 11751:   %807 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.unchanged!enumelt // user: %808
 11752:   br bb91(%807)                                   // id: %808
-11753: 
+11753:
 11754: // %809                                           // user: %835
 11755: bb91(%809 : $SemanticCycleDisposition):           // Preds: bb90 bb89
 11756:   %810 = struct_element_addr %0, #CounterPipelineOwner.phase // user: %811
@@ -1048,15 +1048,15 @@
 11758:   %812 = load %811                                // user: %814
 11759:   debug_value %0, let, name "self", argno 1, expr op_deref // id: %813
 11760:   switch_enum %812, case #Optional.none!enumelt: bb92, case #Optional.some!enumelt: bb93 // id: %814
-11761: 
+11761:
 11762: bb92:                                             // Preds: bb91
 11763:   %815 = enum $LogicalFrameDisposition, #LogicalFrameDisposition.notProduced!enumelt // user: %816
 11764:   br bb94(%815)                                   // id: %816
-11765: 
+11765:
 11766: bb93(%817 : $CandidateFrameID):                   // Preds: bb91
 11767:   %818 = enum $LogicalFrameDisposition, #LogicalFrameDisposition.aborted!enumelt // user: %819
 11768:   br bb94(%818)                                   // id: %819
-11769: 
+11769:
 11770: // %820                                           // user: %835
 11771: bb94(%820 : $LogicalFrameDisposition):            // Preds: bb93 bb92
 11772:   %821 = unchecked_enum_data %693, #RuntimePipelineOfferResult.nonRetryableRefusal!enumelt // user: %823
@@ -1095,58 +1095,58 @@
 11805:   store %835 to %850                              // id: %851
 11806:   inject_enum_addr %694, #RuntimeCompletePipelineResult.failed!enumelt // id: %852
 11807:   br bb120                                        // id: %853
-11808: 
+11808:
 11809: bb95(%854 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb77
 11810:   %855 = unchecked_enum_data %693, #RuntimePipelineOfferResult.failure!enumelt // users: %922, %869, %858
 11811:   %856 = integer_literal $Builtin.Int1, 0         // users: %866, %867, %870, %911
 11812:   %857 = integer_literal $Builtin.Int1, -1        // users: %876, %877, %906, %870
 11813:   switch_enum %855, case #RunCycleFailure.nonRetryableRefusal!enumelt: bb96, case #RunCycleFailure.execution!enumelt: bb100, default bb97 // id: %858
-11814: 
+11814:
 11815: bb96(%859 : $FrameRefusalOrigin):                 // Preds: bb95
 11816:   %860 = struct_extract %610, #RuntimePipelinePublication.changed // user: %861
 11817:   %861 = struct_extract %860, #Bool._value        // user: %862
 11818:   cond_br %861, bb104, bb103                      // id: %862
-11819: 
+11819:
 11820: bb97:                                             // Preds: bb95
 11821:   %863 = struct_extract %610, #RuntimePipelinePublication.changed // user: %864
 11822:   %864 = struct_extract %863, #Bool._value        // user: %865
 11823:   cond_br %864, bb98, bb99                        // id: %865
-11824: 
+11824:
 11825: bb98:                                             // Preds: bb97
 11826:   br bb105(%856)                                  // id: %866
-11827: 
+11827:
 11828: bb99:                                             // Preds: bb97
 11829:   br bb106(%856)                                  // id: %867
-11830: 
+11830:
 11831: bb100(%868 : $ExecutionError):                    // Preds: bb95
 11832:   %869 = unchecked_enum_data %855, #RunCycleFailure.execution!enumelt // user: %870
 11833:   %870 = select_enum %869, case #ExecutionError.requiredFacilityUnavailable!enumelt: %857, default %856 : $Builtin.Int1 // users: %875, %874
 11834:   %871 = struct_extract %610, #RuntimePipelinePublication.changed // user: %872
 11835:   %872 = struct_extract %871, #Bool._value        // user: %873
 11836:   cond_br %872, bb102, bb101                      // id: %873
-11837: 
+11837:
 11838: bb101:                                            // Preds: bb100
 11839:   br bb106(%870)                                  // id: %874
-11840: 
+11840:
 11841: bb102:                                            // Preds: bb100
 11842:   br bb105(%870)                                  // id: %875
-11843: 
+11843:
 11844: bb103:                                            // Preds: bb96
 11845:   br bb106(%857)                                  // id: %876
-11846: 
+11846:
 11847: bb104:                                            // Preds: bb96
 11848:   br bb105(%857)                                  // id: %877
-11849: 
+11849:
 11850: // %878                                           // user: %880
 11851: bb105(%878 : $Builtin.Int1):                      // Preds: bb102 bb104 bb98
 11852:   %879 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.published!enumelt // user: %880
 11853:   br bb107(%879, %878)                            // id: %880
-11854: 
+11854:
 11855: // %881                                           // user: %883
 11856: bb106(%881 : $Builtin.Int1):                      // Preds: bb101 bb103 bb99
 11857:   %882 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.unchanged!enumelt // user: %883
 11858:   br bb107(%882, %881)                            // id: %883
-11859: 
+11859:
 11860: // %884                                           // user: %912
 11861: // %885                                           // user: %897
 11862: bb107(%884 : $SemanticCycleDisposition, %885 : $Builtin.Int1): // Preds: bb105 bb106
@@ -1155,27 +1155,27 @@
 11865:   %888 = load %887                                // user: %890
 11866:   debug_value %0, let, name "self", argno 1, expr op_deref // id: %889
 11867:   switch_enum %888, case #Optional.none!enumelt: bb108, case #Optional.some!enumelt: bb109 // id: %890
-11868: 
+11868:
 11869: bb108:                                            // Preds: bb107
 11870:   %891 = enum $LogicalFrameDisposition, #LogicalFrameDisposition.notProduced!enumelt // user: %892
 11871:   br bb110(%891)                                  // id: %892
-11872: 
+11872:
 11873: bb109(%893 : $CandidateFrameID):                  // Preds: bb107
 11874:   %894 = enum $LogicalFrameDisposition, #LogicalFrameDisposition.aborted!enumelt // user: %895
 11875:   br bb110(%894)                                  // id: %895
-11876: 
+11876:
 11877: // %896                                           // user: %912
 11878: bb110(%896 : $LogicalFrameDisposition):           // Preds: bb109 bb108
 11879:   cond_br %885, bb111, bb112                      // id: %897
-11880: 
+11880:
 11881: bb111:                                            // Preds: bb110
 11882:   %898 = enum $PresentationIntentState, #PresentationIntentState.unavailable!enumelt // user: %899
 11883:   br bb113(%898)                                  // id: %899
-11884: 
+11884:
 11885: bb112:                                            // Preds: bb110
 11886:   %900 = enum $PresentationIntentState, #PresentationIntentState.satisfied!enumelt // user: %901
 11887:   br bb113(%900)                                  // id: %901
-11888: 
+11888:
 11889: // %902                                           // user: %912
 11890: bb113(%902 : $PresentationIntentState):           // Preds: bb112 bb111
 11891:   %903 = enum $RuntimeCompletePipelineStage, #RuntimeCompletePipelineStage.offerAndProduction!enumelt // user: %924
@@ -1209,15 +1209,15 @@
 11919:   store %912 to %927                              // id: %928
 11920:   inject_enum_addr %694, #RuntimeCompletePipelineResult.failed!enumelt // id: %929
 11921:   br bb120                                        // id: %930
-11922: 
+11922:
 11923: bb114:                                            // Preds: bb78
 11924:   %931 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.published!enumelt // user: %932
 11925:   br bb116(%931)                                  // id: %932
-11926: 
+11926:
 11927: bb115:                                            // Preds: bb78
 11928:   %933 = enum $SemanticCycleDisposition, #SemanticCycleDisposition.unchanged!enumelt // user: %934
 11929:   br bb116(%933)                                  // id: %934
-11930: 
+11930:
 11931: // %935                                           // user: %957
 11932: bb116(%935 : $SemanticCycleDisposition):          // Preds: bb115 bb114
 11933:   %936 = builtin "onFastPath"() : $()
@@ -1226,17 +1226,17 @@
 11936:   %939 = builtin "and_Int16"(%938, %195) : $Builtin.Int16 // user: %940
 11937:   %940 = builtin "cmp_eq_Int16"(%939, %26) : $Builtin.Int1 // user: %941
 11938:   cond_br %940, bb117, bb118                      // id: %941
-11939: 
+11939:
 11940: bb117:                                            // Preds: bb116
 11941:   br bb119(%609)                                  // id: %942
-11942: 
+11942:
 11943: bb118:                                            // Preds: bb116
 11944:   %943 = builtin "xor_Int16"(%937, %535) : $Builtin.Int16 // user: %944
 11945:   %944 = builtin "and_Int16"(%943, %195) : $Builtin.Int16 // user: %945
 11946:   %945 = builtin "and_Int16"(%609, %944) : $Builtin.Int16 // user: %946
 11947:   %946 = builtin "and_Int16"(%945, %195) : $Builtin.Int16 // user: %947
 11948:   br bb119(%946)                                  // id: %947
-11949: 
+11949:
 11950: // %948                                           // user: %964
 11951: bb119(%948 : $Builtin.Int16):                     // Preds: bb118 bb117
 11952:   %949 = unchecked_enum_data %693, #RuntimePipelineOfferResult.accepted!enumelt // user: %976
@@ -1282,28 +1282,28 @@
 11992:   store %957 to %984                              // id: %985
 11993:   inject_enum_addr %694, #RuntimeCompletePipelineResult.completed!enumelt // id: %986
 11994:   br bb120                                        // id: %987
-11995: 
+11995:
 11996: bb120:                                            // Preds: bb113 bb94 bb87 bb83 bb125 bb119
 11997:   %988 = load %694                                // user: %989
 11998:   store %988 to %2                                // id: %989
 11999:   dealloc_stack %694                              // id: %990
 12000:   br bb11                                         // id: %991
-12001: 
+12001:
 12002: bb121:                                            // Preds: bb79
 12003:   %992 = struct_element_addr %0, #CounterPipelineOwner.phase // user: %993
 12004:   %993 = struct_element_addr %992, #ExecutionPhaseMachine.candidateFrame // user: %994
 12005:   %994 = load %993                                // user: %996
 12006:   debug_value %0, let, name "self", argno 1, expr op_deref // id: %995
 12007:   switch_enum %994, case #Optional.none!enumelt: bb122, case #Optional.some!enumelt: bb123 // id: %996
-12008: 
+12008:
 12009: bb122:                                            // Preds: bb121
 12010:   %997 = enum $LogicalFrameDisposition, #LogicalFrameDisposition.notProduced!enumelt // user: %998
 12011:   br bb124(%997)                                  // id: %998
-12012: 
+12012:
 12013: bb123(%999 : $CandidateFrameID):                  // Preds: bb121
 12014:   %1000 = enum $LogicalFrameDisposition, #LogicalFrameDisposition.aborted!enumelt // user: %1001
 12015:   br bb124(%1000)                                 // id: %1001
-12016: 
+12016:
 12017: // %1002                                          // user: %1018
 12018: bb124(%1002 : $LogicalFrameDisposition):          // Preds: bb122 bb123
 12019:   %1003 = enum $RuntimeCompletePipelineStage, #RuntimeCompletePipelineStage.offerAndProduction!enumelt // user: %1030
@@ -1344,7 +1344,7 @@
 12054:   inject_enum_addr %2, #RuntimeCompletePipelineResult.failed!enumelt // id: %1035
 12055:   dealloc_stack %694                              // id: %1036
 12056:   br bb11                                         // id: %1037
-12057: 
+12057:
 12058: bb125:                                            // Preds: bb79
 12059:   %1038 = enum $ExecutionOperational, #ExecutionOperational.noChange!enumelt // user: %1062
 12060:   %1039 = enum $PresentationIntentState, #PresentationIntentState.satisfied!enumelt // user: %1052

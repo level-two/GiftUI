@@ -26,19 +26,19 @@
 556083:   // function_ref RuntimeCleanupTracker.takeNext()
 556084:   %21 = function_ref @$s17GiftUIRuntimeCore21RuntimeCleanupTrackerV8takeNextAA0dE6ActionOSgyF : $@convention(method) (@inout RuntimeCleanupTracker) -> Optional<RuntimeCleanupAction> // user: %23
 556085:   br bb1                                          // id: %22
-556086: 
+556086:
 556087: // Loop header
 556088: bb1:                                              // Preds: bb2 bb0
 556089:   %23 = apply %21(%4) : $@convention(method) (@inout RuntimeCleanupTracker) -> Optional<RuntimeCleanupAction> // user: %24
 556090:   switch_enum %23, case #Optional.some!enumelt: bb2, case #Optional.none!enumelt: bb3 // id: %24
-556091: 
+556091:
 556092: // %25                                            // user: %27
 556093: bb2(%25 : $RuntimeCleanupAction):                 // Preds: bb1
 556094:   // function_ref specialized CounterPipelineOwner<>.cleanup(_:)
 556095:   %26 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () // user: %27
 556096:   %27 = apply %26(%25, %2) : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> ()
 556097:   br bb1                                          // id: %28
-556098: 
+556098:
 556099: bb3:                                              // Preds: bb1
 556100:   dealloc_stack %4                                // id: %29
 556101:   %30 = tuple ()                                  // user: %31

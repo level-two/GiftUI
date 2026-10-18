@@ -21,7 +21,7 @@ def obj(f):
  starts=[i for i,x in enumerate(A) if x.endswith('<_'+f['symbol']+'>:')];assert len(starts)==1,(f['comment'],starts);i=starts[0];j=next((k for k in range(i+1,len(A)) if re.match(r'^[0-9a-f]{16} <',A[k])),len(A));return {'start_line':i+1,'end_line':j,'header':A[i],'lines':A[i:j]}
 def write(n,d):(P/n).write_text(json.dumps(d,indent=2)+'\n')
 def slice_file(name,lines,start=1):
- (P/'evidence'/name).write_text('\n'.join(str(start+i)+': '+x for i,x in enumerate(lines))+'\n')
+ (P/'evidence'/name).write_text('\n'.join((str(start+i)+': '+x).rstrip() for i,x in enumerate(lines))+'\n')
 scoped=[f for f in F.values() if 'CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>' in f['header'] and f['basic_blocks']]
 lookup=lambda method:next(f for f in scoped if f['comment']=='// specialized CounterPipelineOwner<>.'+method+'()')
 root=lookup('runTracedPipeline');opp=lookup('runOpportunity');admit=lookup('admitAndSeal');cleanup=next(f for f in scoped if f['comment']=='// specialized static RuntimeCompletePipeline.cleanup<A>(after:acquired:owner:)')
