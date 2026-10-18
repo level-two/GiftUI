@@ -1,5 +1,9 @@
 # RuntimeCore witness compatibility — fresh compile boundary PASS
 
+[Independent compile-boundary review](../p08-runtimecore-witness-independent-compile-review.md)
+confirms this PASS for the fixed three-annotation source and fresh registered
+composition. Privacy, physical/concrete-host, safety and strict cold remain required.
+
 **Lower and all25 owners PASS; zero failed/blocked. Compile boundary only.**
 One frozen sequential registered sweep of source `22eea103`, candidate1/1;
 no source repair or retry. All309 inputs and recipe hashes verify after execution;

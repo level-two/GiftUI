@@ -4,7 +4,8 @@
 [Result](runtimecore-witness-compatibility-result/README.md) freezes all309 input/
 recipe hashes, complete commands/logs and verified source/output identities.
 Candidate1/1 is fixed; no automatic source repair or budget reset. Independent
-compile-boundary review next; current privacy/physical/codegen/safety/cold remain
+[compile-boundary review PASS](p08-runtimecore-witness-independent-compile-review.md);
+current privacy/physical/codegen/safety/cold remain
 untested, P08/R07/T8.1/source candidate unaccepted. No source edits/new tests or
 later compiler/decoder/runtime execution followed the sweep. Eugene
 explicitly authorized the three previously diagnosed witness annotations followed

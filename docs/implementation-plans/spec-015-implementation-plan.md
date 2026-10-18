@@ -32,8 +32,8 @@ superseded_by: null
 Current [RuntimeCore witness compatibility compile result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-witness-compatibility-result/README.md):
 lower+25 fresh owners PASS, zero failed/blocked;309 input/recipe hashes and all
 source/output identities verify. Candidate1/1 fixed, no automatic source repairs;
-all historical exhausted budgets unchanged. Independent compile-boundary review
-next. Current privacy/physical six bodies/all42 origins/actual-host specialization,
+all historical exhausted budgets unchanged. [Independent compile review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-runtimecore-witness-independent-compile-review.md)
+passes this boundary. Current privacy/physical six bodies/all42 origins/actual-host specialization,
 safety and strict cold remain untested; source candidate/P08/R07/T8.1 unaccepted.
 No source edits/new tests or later execution followed; earlier stages are historical.
 
