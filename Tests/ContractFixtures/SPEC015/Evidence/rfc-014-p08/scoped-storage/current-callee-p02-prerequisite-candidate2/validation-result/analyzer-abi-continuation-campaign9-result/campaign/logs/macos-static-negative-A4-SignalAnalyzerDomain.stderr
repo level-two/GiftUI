@@ -1,0 +1,12 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign9/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public
+ 1 | package struct SignalChannelID: Hashable, Sendable {
+   |                `- note: type declared here
+ 2 |     @usableFromInline
+ 3 |     package let rawValue: Int
+   :
+20 | package struct SignalTransition: Equatable, Sendable {
+21 |     @usableFromInline
+22 |     package let channelID: SignalChannelID
+   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public
+23 |     package let timestamp: Duration
+24 |     package let level: DigitalLevel

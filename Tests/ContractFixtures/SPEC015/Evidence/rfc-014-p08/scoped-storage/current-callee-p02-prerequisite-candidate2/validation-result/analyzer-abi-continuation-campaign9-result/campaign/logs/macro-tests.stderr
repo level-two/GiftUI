@@ -1,0 +1,41 @@
+Test Suite 'P08 actual lowerer output' started at 2026-10-18 22:03:18.498.
+Test Case '-[main.ObservableStateHostMacroTests testZeroStateExpansionIsDeterministic]' started.
+Test Case '-[main.ObservableStateHostMacroTests testZeroStateExpansionIsDeterministic]' passed (0.009 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testCompleteFiniteZeroStateShapeHasNoStateBackingVisits]' started.
+Test Case '-[main.ObservableStateHostMacroTests testCompleteFiniteZeroStateShapeHasNoStateBackingVisits]' passed (0.003 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testOrdinaryZeroStateWitnessesAreNotSerializedAtAnyHostAccess]' started.
+Test Case '-[main.ObservableStateHostMacroTests testOrdinaryZeroStateWitnessesAreNotSerializedAtAnyHostAccess]' passed (0.015 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testDirectStatesExpandOnceInLexicalOrder]' started.
+Test Case '-[main.ObservableStateHostMacroTests testDirectStatesExpandOnceInLexicalOrder]' passed (0.003 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testPortableProfileExpansionIsDeterministic]' started.
+Test Case '-[main.ObservableStateHostMacroTests testPortableProfileExpansionIsDeterministic]' passed (0.003 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testPrivateHostUsesAccessibleProtocolWitnesses]' started.
+Test Case '-[main.ObservableStateHostMacroTests testPrivateHostUsesAccessibleProtocolWitnesses]' passed (0.002 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testInheritedStateIsNotEnumeratedByDerivedHost]' started.
+Test Case '-[main.ObservableStateHostMacroTests testInheritedStateIsNotEnumeratedByDerivedHost]' passed (0.002 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testMalformedStateDeclarationIsDiagnosed]' started.
+Test Case '-[main.ObservableStateHostMacroTests testMalformedStateDeclarationIsDiagnosed]' passed (0.002 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testDeclarationLimitAcceptsUInt16MaxAndRejectsTheOverflowShape]' started.
+Test Case '-[main.ObservableStateHostMacroTests testDeclarationLimitAcceptsUInt16MaxAndRejectsTheOverflowShape]' passed (0.000 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testCheckedStateHelpersSelectOriginalWrappersInLexicalOrder]' started.
+Test Case '-[main.ObservableStateHostMacroTests testCheckedStateHelpersSelectOriginalWrappersInLexicalOrder]' passed (0.003 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testNestedCheckedStateHelpersStayInTheirOwningNominal]' started.
+Test Case '-[main.ObservableStateHostMacroTests testNestedCheckedStateHelpersStayInTheirOwningNominal]' passed (0.005 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testOrdinaryPrivateStateWitnessesAreNotSerializedAtAnyHostAccess]' started.
+Test Case '-[main.ObservableStateHostMacroTests testOrdinaryPrivateStateWitnessesAreNotSerializedAtAnyHostAccess]' passed (0.017 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testCompleteFiniteShapeSelectsSerializedWitnesses]' started.
+Test Case '-[main.ObservableStateHostMacroTests testCompleteFiniteShapeSelectsSerializedWitnesses]' passed (0.017 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testIncompleteABIDependenciesDoNotSelectSerialization]' started.
+Test Case '-[main.ObservableStateHostMacroTests testIncompleteABIDependenciesDoNotSelectSerialization]' passed (0.068 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testUnsupportedGenericHeadersDoNotSelectSerialization]' started.
+Test Case '-[main.ObservableStateHostMacroTests testUnsupportedGenericHeadersDoNotSelectSerialization]' passed (0.032 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testUnprovableEnclosingContextsDoNotSelectSerialization]' started.
+Test Case '-[main.ObservableStateHostMacroTests testUnprovableEnclosingContextsDoNotSelectSerialization]' passed (0.037 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testReservedStateHelperLookalikesAreDiagnosedWithoutFallback]' started.
+Test Case '-[main.ObservableStateHostMacroTests testReservedStateHelperLookalikesAreDiagnosedWithoutFallback]' passed (0.014 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testLowererRejectsReservedInputCollisionsIncludingEscapedNames]' started.
+Test Case '-[main.ObservableStateHostMacroTests testLowererRejectsReservedInputCollisionsIncludingEscapedNames]' passed (0.009 seconds).
+Test Case '-[main.ObservableStateHostMacroTests testActualLoweredStateOutputHasSeparatedHelperDeclarations]' started.
+Test Case '-[main.ObservableStateHostMacroTests testActualLoweredStateOutputHasSeparatedHelperDeclarations]' passed (0.158 seconds).
+Test Suite 'P08 actual lowerer output' passed at 2026-10-18 22:03:18.904.
+	 Executed 19 tests, with 0 failures (0 unexpected) in 0.400 (0.406) seconds

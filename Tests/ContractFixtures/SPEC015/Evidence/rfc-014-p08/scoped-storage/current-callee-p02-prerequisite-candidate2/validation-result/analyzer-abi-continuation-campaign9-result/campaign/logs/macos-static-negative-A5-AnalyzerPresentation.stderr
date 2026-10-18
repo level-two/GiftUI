@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign9/macos-static/scratch/negative-A5/AnalyzerPresentation.swift:26:130: error: property 'rawValue' is package and cannot be referenced from an '@inlinable' function
+24 |         Text<D>(BoundedText(Int32((try AnalyzerRead<D>(model, read: read)).state().capture().count)))
+25 |         if (try AnalyzerRead<D>(model, read: read)).state().capture().count > 0 {
+26 |             Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))
+   |                                                                                                                                  `- error: property 'rawValue' is package and cannot be referenced from an '@inlinable' function
+27 |         }
+28 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign9/macos-static/scratch/negative-A5/inputs/SignalPrimitiveValues.swift:3:17: note: property 'rawValue' is not '@usableFromInline' or public
+ 1 | @usableFromInline
+ 2 | package struct SignalChannelID: Hashable, Sendable {
+ 3 |     package let rawValue: Int
+   |                 `- note: property 'rawValue' is not '@usableFromInline' or public
+ 4 | 
+ 5 |     package init(rawValue: Int) {
