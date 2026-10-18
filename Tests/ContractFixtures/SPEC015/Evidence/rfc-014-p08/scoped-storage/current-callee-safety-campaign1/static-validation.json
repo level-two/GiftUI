@@ -1,0 +1,14 @@
+{
+  "status": "STATIC ONLY PASS; no compilation/runtime",
+  "read_only_help_inspected": [
+    "check-spec-006-typed-lowering.py",
+    "check-spec-013-runtime-cycle.py",
+    "check-spec-015-counter.py"
+  ],
+  "producer_count": 4,
+  "frozen_inputs": 435,
+  "receipt_discovery_multiline_output_checked": true,
+  "fresh_receipt_package_profile_input_artifact_and_mtime_guards": true,
+  "failure_policy": "Producer failure preserved and dependents blocked. Counter alone supports --collect-failures. No retries/repairs.",
+  "cold": "No cold runner/allocator windows invoked. Final status retains pending complete currentcallee interpretation and strictcold/P08 gates."
+}

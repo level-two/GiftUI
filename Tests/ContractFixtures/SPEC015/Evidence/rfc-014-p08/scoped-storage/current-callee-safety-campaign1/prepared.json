@@ -1,0 +1,70 @@
+{
+  "status": "PREPARED ONLY independentreview before Luna executes",
+  "output": ".build/contracts/p08-current-callee-safety-campaign1",
+  "phases": [
+    {
+      "name": "fresh-core-and-registered-records",
+      "key": "core",
+      "command": [
+        "python3",
+        "scripts/contracts/check-spec-006-typed-lowering.py",
+        "--profile",
+        "macos-static"
+      ],
+      "receipt_regex": "^P02 macos-static:[\\s\\S]*?;\\s*(\\S+/result\\.json)\\s*$"
+    },
+    {
+      "name": "fresh-runtime-cycle",
+      "key": "runtime",
+      "command": [
+        "python3",
+        "scripts/contracts/check-spec-013-runtime-cycle.py",
+        "--profile",
+        "macos-static",
+        "--giftui-build",
+        "{core}"
+      ],
+      "receipt_regex": "^P07 macos-static:[\\s\\S]*?;\\s*(\\S+/result\\.json)\\s*$"
+    },
+    {
+      "name": "fresh-schema4-activation-host",
+      "key": "host",
+      "command": [
+        "python3",
+        "scripts/contracts/check-spec-015-schema4.py",
+        "--runtime-build",
+        "{runtime}",
+        "--activation-join"
+      ],
+      "receipt_regex": "^P08_SCHEMA4_EVIDENCE (\\S+)\\s*$",
+      "directory_output": true
+    },
+    {
+      "name": "complete-counter-safety",
+      "key": "counter",
+      "command": [
+        "python3",
+        "scripts/contracts/check-spec-015-counter.py",
+        "--profile",
+        "macos-static",
+        "--runtime-build",
+        "{runtime}",
+        "--host-build",
+        "{host}",
+        "--collect-failures"
+      ],
+      "receipt_regex": "^P08_COUNTER_EVIDENCE (\\S+)\\s*$",
+      "directory_output": true
+    }
+  ],
+  "collection_policy": "First three maintained producers have no collect-failures option; fail their stage and block dependent producers. Last driver collects independent controls, blocks dependencies. No retry/source repair or changed test criteria.",
+  "current_callee": {
+    "qualified_receipt": "ef-resolution-consumer-result/receipt.json",
+    "selected_body_boundaries": 23,
+    "full_path_review": "Pending full current concrete callee closure and ordinaryText/cold witness/observer attribution. Reuse exact fresh currentSIL/object hashes and prepared matching25-object capture commands from ef-resolution-consumer-result/next-group-preparation.json. No codegen PASS inferred from native behavior or names."
+  },
+  "native_runtime_scope": "One macos-static behavioral validation chain, P04 bank/scoped traversal/P07 cycle/schema4 activation/CounterSemantic/reuse/exclusivity. No allocator instrumented windows, strictcold runner, fullprofile loop/hardware/remote/image.",
+  "reuse": "Existing macos-static P02 receipt has15 current input mismatches; no maintained producer reuse option exists. Genuine fresh producers generate their actual schemas; no invented receipt or stale imported output.",
+  "remaining": "After maintained safety PASS, complete currentcallee proof/attribution still requires review; strictcold remains gated. Whole14loan/Optional/lifetime/provenance/exclusivity/failurecleanup scope judged from complete receipts, not reduced labels. P08 unaccepted.",
+  "timing": "No reliable duration for current full384-control campaign. Prior focused25 compile58.984s and93privacy+SIL31.011s do not predict this broader registered matrix. Per-stage timings/logs preserved."
+}

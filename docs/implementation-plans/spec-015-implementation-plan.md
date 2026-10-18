@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [grouped current-callee/safety campaign prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1/README.md):
+four genuine maintained producers freshP02+registeredP04→P07→schema4activation→
+complete native counter384controls, currentcallee inputs retained. Staticvalidate only;
+no production source/compiler/runtime yet. Failure freezes stage/dependents, no repair;
+complete currentcallee interpretation and unchanged strictcold/P08 remain gated.
+
 Current [grouped E/F actual consumer result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/README.md):
 fresh25/fourvariants/privacy93/index11/body92/current42 PASS firstattempt. Both E/F
 selected actualcaller metadata boundaries resolved;23/23finite selected frontier.
