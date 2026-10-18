@@ -1,0 +1,19 @@
+{
+  "all_inherited_input_bytes_unchanged": true,
+  "all_inherited_oracles_unchanged": true,
+  "all_preexisting_validation_result_files_unchanged": 1877,
+  "campaign_invocations": 0,
+  "compiler_invocations": 0,
+  "diff_whitespace_disposition": "Only byte-identical inherited inputs contain reported whitespace; no normalization or formatter run.",
+  "inherited_inputs": 888,
+  "inherited_parser_prefix_byte_identical": true,
+  "literal_policy_and_control_ast_match": true,
+  "new_inputs": 169,
+  "new_python_ast_valid": true,
+  "parser_calls": 0,
+  "parser_imports": 0,
+  "producer_invocations": 0,
+  "runner_invocations": 0,
+  "status": "AST_JSON_HASH_INSPECTION_ONLY_UNEXECUTED",
+  "total_inputs": 1057
+}

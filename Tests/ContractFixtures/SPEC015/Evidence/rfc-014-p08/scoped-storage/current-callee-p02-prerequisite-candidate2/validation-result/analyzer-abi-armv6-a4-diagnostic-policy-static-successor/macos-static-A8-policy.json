@@ -1,0 +1,25 @@
+{
+  "category": "serialized-ABI-access",
+  "control_id": "negative-A8",
+  "excerpt_line": 13,
+  "excerpt_text": "    package let index: Int",
+  "gutter": "   |                 `- note: property 'index' is not '@usableFromInline' or public",
+  "id": "macos-static-negative-A8-AnalyzerPresentation-display-only-v1",
+  "input_sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c",
+  "kind": "abi-negative",
+  "maximum_per_primary": 1,
+  "module": "AnalyzerPresentation",
+  "primaries": [
+    {
+      "column": 113,
+      "line": 25,
+      "source": "            Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))"
+    }
+  ],
+  "primary_message": "property 'index' is package and cannot be referenced from an '@inlinable' function",
+  "profile": "macos-static",
+  "remove_only": "A8",
+  "required_primary_count": 1,
+  "required_stream": "stderr",
+  "required_symbol": "index"
+}
