@@ -1,0 +1,158 @@
+{
+  "A7-frozen-AnalyzerPresentation.swift": {
+    "bytes": 1217,
+    "sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2"
+  },
+  "A8-frozen-AnalyzerPresentation.swift": {
+    "bytes": 1217,
+    "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
+  },
+  "README.md": {
+    "bytes": 6086,
+    "sha256": "024bb6010d12eb28430f2d7e001c9d78ae6b24e9522dbbc98d2ed06027257f55"
+  },
+  "armv6-A4-archived-policy.json": {
+    "bytes": 7521,
+    "sha256": "a6ea2d31e439ca799729e8e66081c07aed8f7b04c763ed6561601435d136cc9d"
+  },
+  "armv6-A4-binding-policy.json": {
+    "bytes": 22840,
+    "sha256": "cf3649b533296cb4dfaf6b1f1c20070d89cab243621acb39016121006a8112e3"
+  },
+  "armv6-A4-binding-relocations.json": {
+    "bytes": 9841,
+    "sha256": "b6a4fd24e1c8d75a340b096a9580b5d22a31115cdab2974c5319b2d666979de0"
+  },
+  "armv6-A4-core-fields.json": {
+    "bytes": 10383,
+    "sha256": "124b5ef5ab2e7a907fd688ae66cf404d965295588ae01673ebe8ac81af4bec0d"
+  },
+  "armv6-sdk-inventory.json": {
+    "bytes": 1462477,
+    "sha256": "2f50709e80eb1829637aeaad8e230cff8e032aec39348bc45f1264dd9cd99875"
+  },
+  "baseline-inputs.json": {
+    "bytes": 86847,
+    "sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333"
+  },
+  "batch1-archived-captures.json": {
+    "bytes": 449146,
+    "sha256": "01818c4c7c35c4227af694f65c72fc0d1c7d8e75735dc38e88aad813dadbbdc7"
+  },
+  "batch1-policy.json": {
+    "bytes": 266927,
+    "sha256": "b16415ab48830c7bed7ee94e9e653a8a75b76968e8b23aca758a2d6504594dca"
+  },
+  "controls.json": {
+    "bytes": 18461,
+    "sha256": "3cee9a943e1dc1a2e67c6319ac992a7f78c652e2e20772c50fa6c80792435553"
+  },
+  "diagnostic_parser.py": {
+    "bytes": 175709,
+    "sha256": "00e17518b8ccb5da306f097dcc43460acb6cbde2a8f82e677789ebc66c4f24ab"
+  },
+  "execute-proposal.py": {
+    "bytes": 90269,
+    "sha256": "1b147b2f40dee9d1d4ca0d857ff7ac20d18903c31d868e42f98a1653c904a13a"
+  },
+  "fresh-core-fields.json": {
+    "bytes": 43259,
+    "sha256": "d8585197899da8c1ae82aa0c23cac08e08f047b6d588ea0cb4bd5194a0a8db8f"
+  },
+  "fresh-core-parents.json": {
+    "bytes": 289,
+    "sha256": "8d32353ad7d811140b1ec1e56b2edc7c4ef3cad2a082363953d5f86b7882d967"
+  },
+  "fresh-templates.json": {
+    "bytes": 130335,
+    "sha256": "3119d2c72126e10b4a6c25da876b4e95a0ce796e249ee85c23d703213615b6ff"
+  },
+  "fresh_policy.py": {
+    "bytes": 4751,
+    "sha256": "85cecc502ba56fbcfa21bd8d36842a654288797cfdd38fd006894cf3d4ccac1e"
+  },
+  "macos-static-A4-opt-in-control.json": {
+    "bytes": 1635,
+    "sha256": "4d784b3111a6c7fa36c02cc32821b122611478b049b0581ef76becc86f3e398a"
+  },
+  "macos-static-A7-opt-in-control.json": {
+    "bytes": 1583,
+    "sha256": "91ca46c8faf3596f95b716e854f8f63f1aa84f9ebc8ea43182c73195193fd284"
+  },
+  "macos-static-A8-opt-in-control.json": {
+    "bytes": 1583,
+    "sha256": "e66e02a9922cd097f885397e43f4ed8d2d668bf0a492a158b5b3b991d7a0e2c1"
+  },
+  "macos-static-private-count-opt-in-control.json": {
+    "bytes": 757,
+    "sha256": "ef3c9aac1ea96d3a85c823c38374b3c7ee1a5c0f8895bdc94228a88ddd8af5b6"
+  },
+  "macos-static-private-helper-continuation-opt-in-control.json": {
+    "bytes": 808,
+    "sha256": "8a0137a219e6fce0a8e01a0f7b6e967195ee2e7c443078d8f88441eb895cb58e"
+  },
+  "macos-static-private-helper-leading-opt-in-control.json": {
+    "bytes": 801,
+    "sha256": "021d1918847993b156889a1d3f9815acf785ec76cff7d947cb04ae52a48c9c88"
+  },
+  "macro-objects.txt": {
+    "bytes": 497,
+    "sha256": "e7cf363614d5cc4836c757be614046451022722680fd3a504ae9c3307cc633c9"
+  },
+  "macro-outputs.json": {
+    "bytes": 3448,
+    "sha256": "6b0c94e2cdd6b53811a23ebe247088a580b20327097ec682d7e6f079be53601d"
+  },
+  "macro-stages.json": {
+    "bytes": 11935,
+    "sha256": "44cdf8e1f5d4abfa65a309a71751412a080b460fc7bd90897e91a388db957884"
+  },
+  "postformat-freeze.json": {
+    "bytes": 86847,
+    "sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333"
+  },
+  "private-count-policy.json": {
+    "bytes": 19112,
+    "sha256": "9741411f57630db537fa46254594f7363364aa1fee4473bc43534e31c41d52ab"
+  },
+  "private-helper-continuation-policy.json": {
+    "bytes": 19414,
+    "sha256": "5680dcbf1b4f647e21c00d4390d5e21d9c418d8122ab1b3b0c7fb0c13b8ee557"
+  },
+  "private-helper-leading-policy.json": {
+    "bytes": 19532,
+    "sha256": "738e23640c3e6e827a47b4ccaed59857fd94caf9a3855c7e7241d98214c44ded"
+  },
+  "private-storage-policy.json": {
+    "bytes": 19378,
+    "sha256": "b39b46b2d1a45834c4cf4160e5fa0a7df7d2542dc7fa3d962d3aafdd6b59e8f0"
+  },
+  "provenance.json": {
+    "bytes": 933,
+    "sha256": "8faf0d5b89d7922533dede6dbebbc03779a6d34c519b306809fe524e9a5157a0"
+  },
+  "raspberry-pi-armv6-A4-opt-in-control.json": {
+    "bytes": 1707,
+    "sha256": "2f12a942cbad13f0c0d931e3bfb2265038146bb32370b953bc89c40009667502"
+  },
+  "recipe.json": {
+    "bytes": 18123,
+    "sha256": "cadd3ef63acdcc3910f19af0ceb17ea38f5a5aac04c713bc21991f4d6cacafa8"
+  },
+  "scratch-sources.json": {
+    "bytes": 29930,
+    "sha256": "785599545b58e75b03cce6cabe5884f803519ebeba975b3057c1fb226bb9ea76"
+  },
+  "selectors.json": {
+    "bytes": 4489,
+    "sha256": "6c401231bf2c0dc4905b178df977ab3674506b9ef70d672af428af6a1898c17f"
+  },
+  "static-validation.json": {
+    "bytes": 310,
+    "sha256": "d4bcdad7fe4ffed00e18b42e8d936c0931fbcf3386b1c487e0b6bc21be34ddac"
+  },
+  "test_fresh_policy.py": {
+    "bytes": 6154,
+    "sha256": "66587e71a2700776de817a9cb52240a0ffd8c01e7a95a3e348b45e2e6b8e9e2e"
+  }
+}

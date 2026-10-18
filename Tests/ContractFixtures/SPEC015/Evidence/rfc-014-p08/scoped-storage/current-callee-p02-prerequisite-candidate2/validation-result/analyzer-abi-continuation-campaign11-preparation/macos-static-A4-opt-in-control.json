@@ -1,0 +1,28 @@
+{
+  "category": "serialized-ABI-access",
+  "dependency_note_sources": [
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+  ],
+  "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+  "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+  "display_only_note": {
+    "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+    "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+    "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+  },
+  "expected_nonzero": true,
+  "files": [
+    "negative-A4/SignalPrimitiveValues.swift"
+  ],
+  "first_expected_stage": "SignalAnalyzerDomain",
+  "id": "negative-A4",
+  "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+  "kind": "abi-negative",
+  "later_stages": "unrun after expected first diagnostic",
+  "primary_message_patterns_all": [
+    "(?i)@(?:usableFromInline|inlinable)",
+    "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+  ],
+  "remove_only": "A4",
+  "required_symbol": "SignalChannelID"
+}

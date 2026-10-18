@@ -1,0 +1,33 @@
+{
+  "": {
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/primary.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIMacros/CanvasWitnessLowering.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/CanvasWitnessLowering.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/CanvasWitnessLowering.dia",
+    "object": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/CanvasWitnessLowering.swift.o",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/CanvasWitnessLowering.swiftdeps",
+    "swiftmodule": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/CanvasWitnessLowering~partial.swiftmodule"
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIMacros/FiniteSourceLowering.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/FiniteSourceLowering.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/FiniteSourceLowering.dia",
+    "object": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/FiniteSourceLowering.swift.o",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/FiniteSourceLowering.swiftdeps",
+    "swiftmodule": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/FiniteSourceLowering~partial.swiftmodule"
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIMacros/GiftUIMacros.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/GiftUIMacros.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/GiftUIMacros.dia",
+    "object": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/GiftUIMacros.swift.o",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/GiftUIMacros.swiftdeps",
+    "swiftmodule": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/GiftUIMacros~partial.swiftmodule"
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIMacros/ObservableStateHostMacro.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/ObservableStateHostMacro.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/ObservableStateHostMacro.dia",
+    "object": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/ObservableStateHostMacro.swift.o",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/ObservableStateHostMacro.swiftdeps",
+    "swiftmodule": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macro/macro/ObservableStateHostMacro~partial.swiftmodule"
+  }
+}

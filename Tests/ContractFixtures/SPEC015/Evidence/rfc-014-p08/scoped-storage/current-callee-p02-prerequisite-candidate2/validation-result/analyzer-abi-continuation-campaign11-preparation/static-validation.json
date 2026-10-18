@@ -1,0 +1,10 @@
+{
+  "campaign_launches": 0,
+  "compiler_launches": 0,
+  "finite_forms": 45,
+  "freeze_inputs": 541,
+  "runner_syntax": "pass",
+  "scope": "matcher accepts and adversarial mutations, all exact recipe argv; not producer/compiler evidence",
+  "status": "static_pass_independent_readiness_pending",
+  "tests": 4
+}

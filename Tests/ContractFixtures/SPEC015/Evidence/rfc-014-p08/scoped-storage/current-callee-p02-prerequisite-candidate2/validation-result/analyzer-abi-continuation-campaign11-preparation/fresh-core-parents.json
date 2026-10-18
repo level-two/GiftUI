@@ -1,0 +1,6 @@
+{
+  "macos-dynamic": ".build/contracts/spec-006-rfc-014-swift64",
+  "macos-static": ".build/contracts/spec-006-rfc-014-swift64",
+  "nrf52840-embedded": ".build/nrf52840/contracts/spec-006-rfc-014-swift64",
+  "raspberry-pi-armv6": ".build/raspberry-pi/contracts/spec-006-rfc-014-swift64"
+}

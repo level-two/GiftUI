@@ -1,0 +1,22 @@
+{
+  "category": "private-member-access",
+  "dependency_note_sources": [
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift"
+  ],
+  "expected_nonzero": true,
+  "files": [
+    "privacy/private-count.swift"
+  ],
+  "first_expected_stage": "client-emit-object",
+  "id": "private-count",
+  "kind": "privacy-negative",
+  "package_name": "giftui",
+  "positive_twin": "positive-semantics",
+  "primary_message_patterns_all": [
+    "(?i)inaccessible due to ['\"]private['\"] protection level"
+  ],
+  "required_symbol": "count",
+  "virtual_display_note": {
+    "policy_id": "macos-static-private-count-client-emit-object-virtual-display-v1"
+  }
+}
