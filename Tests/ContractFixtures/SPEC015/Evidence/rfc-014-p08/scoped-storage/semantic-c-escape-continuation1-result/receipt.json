@@ -1,0 +1,11 @@
+{
+  "source_commit": "f2325b85",
+  "prepared_commit": "0533a592",
+  "frozen_inputs_verified": 1305,
+  "pair": "positive0errors/negative1exactEscapable PASS",
+  "physical": "prior87PASS unchanged, not reselected",
+  "source_mutations": 0,
+  "freeze_compiler_tests_decoder_runtime": false,
+  "budget": "ONE1/1fixed/ZEROautomaticSOURCErepairs/oldbudgetsunchanged",
+  "remaining": "actualCmetadata/publication/reconcile/borrow/cleanup, ordinaryleafcost/fullsafety/strictcold/P08 unqualified"
+}

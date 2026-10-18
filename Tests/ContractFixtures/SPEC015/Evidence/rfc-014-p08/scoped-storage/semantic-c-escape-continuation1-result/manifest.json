@@ -1,0 +1,40 @@
+{
+  "archive_sha256": "e818a97bef5e9b049209589c5b8d7bd29382478670734b40eee2e5c1d3a6d608",
+  "members": [
+    {
+      "path": "logs/actual-host-sil.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/actual-host-sil.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "actual-host.sil",
+      "bytes": 61999526,
+      "sha256": "cd312eb53841f082f1bbf2a85361f68638f875ff112415a1f61718ba29cb576d"
+    },
+    {
+      "path": "logs/semantic-c-explicit-return-positive.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/semantic-c-explicit-return-positive.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/semantic-c-explicit-return-escape-negative.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/semantic-c-explicit-return-escape-negative.stderr",
+      "bytes": 1168,
+      "sha256": "fcc38c9542c1efee71ef9ae25cfd8c2f062f6be60ca96a78a593d169a7b59ae0"
+    }
+  ]
+}

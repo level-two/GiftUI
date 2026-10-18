@@ -65,3 +65,8 @@ unused-view warning explains Void-discard fixture; explicit return types/returns
 force intended UInt32-positive vs ~Escapable-view-negative.1305frozen inputs verify;
 reuse87bodies+72privacy, run pair then conditionalfresh42SIL only. Source/budgets/
 strict diagnostics unchanged; no lifetime/source acceptance or repair allowance.
+
+[Explicit-return pair/fresh42SIL PASS](semantic-c-escape-continuation1-result/README.md):
+positive0errors/negative1exactEscapable; SILexit0/61,999,526bytes/1305inputsverified,
+prior87/72andsealedprerequisites retained. No source/repeat/repairreset; actual C
+consumer/cost/fullsafety/strictcold/P08 remain unqualified.
