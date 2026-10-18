@@ -78,6 +78,11 @@ storage-operation closure verify; three internal setters preserve importer reado
 and require isolated negatives/getter positives. No mandated P08 privacy conflict,
 source action/allowance or actual metadata/cost/safety/cold acceptance from review.
 
+[Independent E/F source/prepared review](p08-ef-resolution-prepared-review.md):
+cb4b10f0/0f488a53 READY for assigned ONE attempt/ZERO repairs. Four-source inverse
+projection and macro279/49 reuse verify; fresh25/fourvariants→privacy93/index11/
+body92/current42 strict gates coherent. No compiler/runtime/source or acceptance.
+
 [Explicit-return pair/fresh42SIL PASS](semantic-c-escape-continuation1-result/README.md):
 positive0errors/negative1exactEscapable; SILexit0/61,999,526bytes/1305inputsverified,
 prior87/72andsealedprerequisites retained. No source/repeat/repairreset; actual C
