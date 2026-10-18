@@ -1,0 +1,57 @@
+{
+  "inputs": [
+    {
+      "path": "Tests/ContractFixtures/SPEC006/RuntimeDerived/Counter.swift",
+      "current_sha256": "b47b9ab5e6d05d9e23ea4f11e2274adde88ccddd8f9b48683afa1fa79577d569",
+      "pre_EF_9427a425_sha256": "b47b9ab5e6d05d9e23ea4f11e2274adde88ccddd8f9b48683afa1fa79577d569",
+      "byteidentical_before_EF": true
+    },
+    {
+      "path": "Sources/GiftUI/DeclarativeView.swift",
+      "current_sha256": "e1acc57d20c5a0bc3d9707aebfa261e64158ae360a6c24254f9698b713cebfd9",
+      "pre_EF_9427a425_sha256": "e1acc57d20c5a0bc3d9707aebfa261e64158ae360a6c24254f9698b713cebfd9",
+      "byteidentical_before_EF": true
+    },
+    {
+      "path": "Sources/GiftUIMacros/FiniteSourceLowering.swift",
+      "current_sha256": "1873e5f07d48ea3caeda3fa906e3b0936ca33d975db3813207c2603ce8a77a07",
+      "pre_EF_9427a425_sha256": "1873e5f07d48ea3caeda3fa906e3b0936ca33d975db3813207c2603ce8a77a07",
+      "byteidentical_before_EF": true
+    },
+    {
+      "path": "Sources/GiftUIMacros/ObservableStateHostMacro.swift",
+      "current_sha256": "e78ffc777fd3f3ea5dbc59befccc2fed294e0e9c002cbedd84c2a7efe8865a19",
+      "pre_EF_9427a425_sha256": "e78ffc777fd3f3ea5dbc59befccc2fed294e0e9c002cbedd84c2a7efe8865a19",
+      "byteidentical_before_EF": true
+    },
+    {
+      "path": "scripts/contracts/check-spec-006-typed-lowering.py",
+      "current_sha256": "c5645b188daa539235fc1ac4d38d2a74fa3aa1822fef071652452de5e59ac5fb",
+      "pre_EF_9427a425_sha256": "c5645b188daa539235fc1ac4d38d2a74fa3aa1822fef071652452de5e59ac5fb",
+      "byteidentical_before_EF": true
+    }
+  ],
+  "failed_compiler_command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static -parse-as-library -module-name CounterPresentation -emit-module -emit-object /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.o",
+  "generated_imports": [
+    "import CounterSchema",
+    "import GiftUI"
+  ],
+  "preexisting_compatibility_gap": "Inputs byteidentical before EF; CounterPresentation imports GiftUI/CounterSchema only, neither EF Interaction/RuntimeCore module is compiled/imported in this failing stage. This demonstrates wider producer/fixture ABI incompatibility predating EF; no prior compile of this exact expanded fixture is claimed.",
+  "cause_source_rules": [
+    {
+      "path": "Sources/GiftUIMacros/FiniteSourceLowering.swift",
+      "region": "nonCanvas View variables at485\u2013555, initializer eligibility316\u2013365, evaluate emission",
+      "rule": "NonCanvas model/value fields and helper calls retain authored attributes; evaluate becomes inlinable; only explicit eligible zeroarg init gains ABI, memberwise/parameterized synthesis is not automatically promoted."
+    },
+    {
+      "path": "Sources/GiftUIMacros/ObservableStateHostMacro.swift",
+      "region": "serializedWitnessAttributes318\u2013373",
+      "rule": "nonempty declarations guard rejects validated lowered StateHostWitnessProbe with zero State; package ABI host then has two nonABI protocol witnesses."
+    },
+    {
+      "path": "Sources/GiftUI/DeclarativeView.swift",
+      "region": "EmptyView254\u2013258",
+      "rule": "Public nominal retains ordinary package init; inlinable empty-view authored fixture cannot call it without ABI qualification."
+    }
+  ]
+}

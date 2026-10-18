@@ -1,0 +1,656 @@
+{
+  "counts": {
+    "literal_error_lines": 64,
+    "primary_diagnostics": 32,
+    "rendered_repeats": 32
+  },
+  "primary": [
+    {
+      "id": 1,
+      "log_line": 1,
+      "generated_file": "macro expansion @ObservableStateHost",
+      "generated_line": 7,
+      "column": 14,
+      "owner_or_caller": "StateHostWitnessProbe",
+      "message": "instance method '_giftUITraverse' must be declared '@usableFromInline' because it matches a requirement in protocol 'View'",
+      "group": "zero-State checked macro witness eligibility"
+    },
+    {
+      "id": 2,
+      "log_line": 24,
+      "generated_file": "macro expansion @ObservableStateHost",
+      "generated_line": 1,
+      "column": 1,
+      "owner_or_caller": "StateHostWitnessProbe",
+      "message": "instance method '_giftUIVisitObservableStateDeclarations' must be declared '@usableFromInline' because it matches a requirement in protocol '_GiftUIObservableStateHost'",
+      "group": "zero-State checked macro witness eligibility"
+    },
+    {
+      "id": 3,
+      "log_line": 51,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 41,
+      "column": 53,
+      "owner_or_caller": "CounterRoot",
+      "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 4,
+      "log_line": 66,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 43,
+      "column": 47,
+      "owner_or_caller": "CounterRoot",
+      "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 5,
+      "log_line": 81,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 45,
+      "column": 47,
+      "owner_or_caller": "CounterRoot",
+      "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 6,
+      "log_line": 96,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 46,
+      "column": 38,
+      "owner_or_caller": "CounterRoot",
+      "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 7,
+      "log_line": 111,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 46,
+      "column": 92,
+      "owner_or_caller": "CounterRoot",
+      "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 8,
+      "log_line": 126,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 47,
+      "column": 31,
+      "owner_or_caller": "CounterRoot",
+      "message": "initializer 'init(value:)' is internal and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 9,
+      "log_line": 141,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 47,
+      "column": 60,
+      "owner_or_caller": "CounterRoot",
+      "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 10,
+      "log_line": 156,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 64,
+      "column": 29,
+      "owner_or_caller": "CounterBadge",
+      "message": "property 'value' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 11,
+      "log_line": 171,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 77,
+      "column": 16,
+      "owner_or_caller": "ArityZero",
+      "message": "initializer 'init()' is package and cannot be referenced from an '@inlinable' function",
+      "group": "EmptyView constructor ABI"
+    },
+    {
+      "id": 12,
+      "log_line": 187,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 148,
+      "column": 24,
+      "owner_or_caller": "ArityProbe",
+      "message": "initializer 'init()' is internal and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 13,
+      "log_line": 202,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 148,
+      "column": 39,
+      "owner_or_caller": "ArityProbe",
+      "message": "initializer 'init()' is internal and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 14,
+      "log_line": 217,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 148,
+      "column": 54,
+      "owner_or_caller": "ArityProbe",
+      "message": "initializer 'init()' is internal and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 15,
+      "log_line": 232,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 148,
+      "column": 71,
+      "owner_or_caller": "ArityProbe",
+      "message": "initializer 'init()' is internal and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 16,
+      "log_line": 247,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 149,
+      "column": 72,
+      "owner_or_caller": "ArityProbe",
+      "message": "initializer 'init()' is internal and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 17,
+      "log_line": 262,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 149,
+      "column": 88,
+      "owner_or_caller": "ArityProbe",
+      "message": "initializer 'init()' is internal and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 18,
+      "log_line": 277,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 176,
+      "column": 44,
+      "owner_or_caller": "HelperProbe",
+      "message": "instance method 'makeLabel(read:)' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 19,
+      "log_line": 292,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 176,
+      "column": 71,
+      "owner_or_caller": "HelperProbe",
+      "message": "global function 'freeLabels(domain:)' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 20,
+      "log_line": 307,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 211,
+      "column": 137,
+      "owner_or_caller": "LazyProbe",
+      "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 21,
+      "log_line": 322,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 212,
+      "column": 138,
+      "owner_or_caller": "LazyProbe",
+      "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 22,
+      "log_line": 337,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 213,
+      "column": 34,
+      "owner_or_caller": "LazyProbe",
+      "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 23,
+      "log_line": 352,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 213,
+      "column": 96,
+      "owner_or_caller": "LazyProbe",
+      "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 24,
+      "log_line": 367,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 214,
+      "column": 36,
+      "owner_or_caller": "LazyProbe",
+      "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 25,
+      "log_line": 382,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 214,
+      "column": 91,
+      "owner_or_caller": "LazyProbe",
+      "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 26,
+      "log_line": 397,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 229,
+      "column": 36,
+      "owner_or_caller": "SwitchProbe",
+      "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 27,
+      "log_line": 412,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 248,
+      "column": 45,
+      "owner_or_caller": "ArgumentOrderProbe",
+      "message": "property 'first' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 28,
+      "log_line": 427,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 248,
+      "column": 93,
+      "owner_or_caller": "ArgumentOrderProbe",
+      "message": "property 'second' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 29,
+      "log_line": 442,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 263,
+      "column": 18,
+      "owner_or_caller": "SiblingFailureProbe",
+      "message": "initializer 'init(model:)' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 30,
+      "log_line": 457,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 263,
+      "column": 27,
+      "owner_or_caller": "SiblingFailureProbe",
+      "message": "property 'first' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 31,
+      "log_line": 472,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 263,
+      "column": 48,
+      "owner_or_caller": "SiblingFailureProbe",
+      "message": "initializer 'init(model:)' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    },
+    {
+      "id": 32,
+      "log_line": 487,
+      "generated_file": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "generated_line": 263,
+      "column": 57,
+      "owner_or_caller": "SiblingFailureProbe",
+      "message": "property 'second' is package and cannot be referenced from an '@inlinable' function",
+      "group": "maintained authored fixture ABI dependency"
+    }
+  ],
+  "all_literal_occurrences": [
+    {
+      "log_line": 1,
+      "primary_id": 1,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 17,
+      "primary_id": 1,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 24,
+      "primary_id": 2,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 39,
+      "primary_id": 2,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 51,
+      "primary_id": 3,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 62,
+      "primary_id": 3,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 66,
+      "primary_id": 4,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 77,
+      "primary_id": 4,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 81,
+      "primary_id": 5,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 92,
+      "primary_id": 5,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 96,
+      "primary_id": 6,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 107,
+      "primary_id": 6,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 111,
+      "primary_id": 7,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 122,
+      "primary_id": 7,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 126,
+      "primary_id": 8,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 130,
+      "primary_id": 8,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 141,
+      "primary_id": 9,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 152,
+      "primary_id": 9,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 156,
+      "primary_id": 10,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 167,
+      "primary_id": 10,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 171,
+      "primary_id": 11,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 175,
+      "primary_id": 11,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 187,
+      "primary_id": 12,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 198,
+      "primary_id": 12,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 202,
+      "primary_id": 13,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 213,
+      "primary_id": 13,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 217,
+      "primary_id": 14,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 228,
+      "primary_id": 14,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 232,
+      "primary_id": 15,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 243,
+      "primary_id": 15,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 247,
+      "primary_id": 16,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 258,
+      "primary_id": 16,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 262,
+      "primary_id": 17,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 273,
+      "primary_id": 17,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 277,
+      "primary_id": 18,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 288,
+      "primary_id": 18,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 292,
+      "primary_id": 19,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 303,
+      "primary_id": 19,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 307,
+      "primary_id": 20,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 318,
+      "primary_id": 20,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 322,
+      "primary_id": 21,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 333,
+      "primary_id": 21,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 337,
+      "primary_id": 22,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 348,
+      "primary_id": 22,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 352,
+      "primary_id": 23,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 363,
+      "primary_id": 23,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 367,
+      "primary_id": 24,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 378,
+      "primary_id": 24,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 382,
+      "primary_id": 25,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 393,
+      "primary_id": 25,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 397,
+      "primary_id": 26,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 408,
+      "primary_id": 26,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 412,
+      "primary_id": 27,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 423,
+      "primary_id": 27,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 427,
+      "primary_id": 28,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 438,
+      "primary_id": 28,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 442,
+      "primary_id": 29,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 453,
+      "primary_id": 29,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 457,
+      "primary_id": 30,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 468,
+      "primary_id": 30,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 472,
+      "primary_id": 31,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 483,
+      "primary_id": 31,
+      "kind": "rendered diagnostic repeat"
+    },
+    {
+      "log_line": 487,
+      "primary_id": 32,
+      "kind": "primary header"
+    },
+    {
+      "log_line": 498,
+      "primary_id": 32,
+      "kind": "rendered diagnostic repeat"
+    }
+  ],
+  "groups": {
+    "zero-State checked macro witness eligibility": 2,
+    "maintained authored fixture ABI dependency": 29,
+    "EmptyView constructor ABI": 1
+  }
+}

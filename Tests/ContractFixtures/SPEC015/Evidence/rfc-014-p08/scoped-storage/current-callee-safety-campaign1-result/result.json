@@ -1,0 +1,22 @@
+{
+  "status": "failed_stage_frozen_dependents_blocked",
+  "production_source_changes": false,
+  "source_identity": "cb4b10f0 fixed; source1/1 zero automatic repairs; historical budgets closed",
+  "phases": [
+    {
+      "name": "fresh-core-and-registered-records",
+      "command": [
+        "python3",
+        "scripts/contracts/check-spec-006-typed-lowering.py",
+        "--profile",
+        "macos-static"
+      ],
+      "exit": 1,
+      "seconds": 17.245,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "bc675870b9b0dade14ad9df804c048fb98226a461336519a829f62eb253df8ce"
+    }
+  ],
+  "strict_cold_eligible": false,
+  "current_callee_review": "pending complete actualpath/ordinaryleaf/observer attribution; retained selected23 proof only"
+}

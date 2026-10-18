@@ -1,0 +1,49 @@
+{
+  "files": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1-result/CounterPresentation.log",
+      "sha256": "32de7b44e1f9669ccfe8dcb2062ac923c8c2accf037382e6056893a48ddb91d8",
+      "bytes": 35602
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1-result/CounterPresentation.swift",
+      "sha256": "aeaeb716ea91a7c6e0355cd6335d2f25e96c7363e31e7b979566316f97629ea4",
+      "bytes": 8972
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1-result/README.md",
+      "sha256": "750b39ccd5ce33a7813bd613d9bd1255ec06b928eaefe85d443fc24cd4e75478",
+      "bytes": 2334
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1-result/commands.txt",
+      "sha256": "5562a145df90e0d3ac81f70a38f7d8d083d8603e70051e13c1850e59365c8652",
+      "bytes": 7724
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1-result/diagnostic-map.json",
+      "sha256": "e746fdee5ca778991fc750e827fb2a085306017a55052786293ba7421b5c5e95",
+      "bytes": 21400
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1-result/grouped-correction-proposal.json",
+      "sha256": "c1dabe39d31c644ed4a33b103626204a970d666fb11490eab0ab2c987553a8b8",
+      "bytes": 7261
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1-result/provenance.json",
+      "sha256": "c0635800e50164e468a0934d3fe26c937d533a358d71c8fd21b979a9c07b3aa7",
+      "bytes": 4290
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1-result/receipt.json",
+      "sha256": "f19f111b8ad916abcd6992ed722239864637469b33aae751bd7d4512ef6eeb0f",
+      "bytes": 1775
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1-result/result.json",
+      "sha256": "92bfafd3babaa6bb5737c2686eb45b7214149d388de9cfa481fe09f22a74261e",
+      "bytes": 810
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "status": "READONLY proposed coherent correction; requires independent design/authorization; no source/fixture edit/retry",
+  "production_source_budget": "EF1/1 zero automatic SOURCE repairs closed; no new allowance created",
+  "scope": "18 authored fixture selectors +EmptyView existing constructor ABI +one zero-State guarded macro eligibility selector +existing test-family extension:21 selectors/four maintained files proposed",
+  "fixture_file": "Tests/ContractFixtures/SPEC006/RuntimeDerived/Counter.swift",
+  "fixture_rows": [
+    {
+      "owner": "CounterRoot",
+      "line": 23,
+      "selector": "package let model:",
+      "proposal": "Add @usableFromInline only; preserve package access/type/default and lowered key semantics."
+    },
+    {
+      "owner": "CounterBadge",
+      "line": 42,
+      "selector": "package let value:",
+      "proposal": "Add @usableFromInline only; preserve package access/type/default and lowered key semantics."
+    },
+    {
+      "owner": "LazyProbe",
+      "line": 80,
+      "selector": "package let model:",
+      "proposal": "Add @usableFromInline only; preserve package access/type/default and lowered key semantics."
+    },
+    {
+      "owner": "SwitchProbe",
+      "line": 92,
+      "selector": "package let model:",
+      "proposal": "Add @usableFromInline only; preserve package access/type/default and lowered key semantics."
+    },
+    {
+      "owner": "ArgumentOrderProbe",
+      "line": 103,
+      "selector": "package let first:",
+      "proposal": "Add @usableFromInline only; preserve package access/type/default and lowered key semantics."
+    },
+    {
+      "owner": "ArgumentOrderProbe",
+      "line": 104,
+      "selector": "package let second:",
+      "proposal": "Add @usableFromInline only; preserve package access/type/default and lowered key semantics."
+    },
+    {
+      "owner": "SiblingFailureProbe",
+      "line": 109,
+      "selector": "package let first:",
+      "proposal": "Add @usableFromInline only; preserve package access/type/default and lowered key semantics."
+    },
+    {
+      "owner": "SiblingFailureProbe",
+      "line": 110,
+      "selector": "package let second:",
+      "proposal": "Add @usableFromInline only; preserve package access/type/default and lowered key semantics."
+    },
+    {
+      "owner": "CounterRoot",
+      "line": 25,
+      "selector": "package init(model:",
+      "proposal": "Add @usableFromInline only to existing initializer; retain body/parameter transformations."
+    },
+    {
+      "owner": "ArityZero",
+      "line": 48,
+      "selector": "package struct ArityZero:",
+      "proposal": "Add explicit internal init() {} equivalent to existing zero-field implicit internal constructor. Existing finite zeroarg lowerer ABI route applies; preserve body/arity/visibility."
+    },
+    {
+      "owner": "ArityOne",
+      "line": 49,
+      "selector": "package struct ArityOne:",
+      "proposal": "Add explicit internal init() {} equivalent to existing zero-field implicit internal constructor. Existing finite zeroarg lowerer ABI route applies; preserve body/arity/visibility."
+    },
+    {
+      "owner": "ArityTwo",
+      "line": 50,
+      "selector": "package struct ArityTwo:",
+      "proposal": "Add explicit internal init() {} equivalent to existing zero-field implicit internal constructor. Existing finite zeroarg lowerer ABI route applies; preserve body/arity/visibility."
+    },
+    {
+      "owner": "ArityThree",
+      "line": 51,
+      "selector": "package struct ArityThree:",
+      "proposal": "Add explicit internal init() {} equivalent to existing zero-field implicit internal constructor. Existing finite zeroarg lowerer ABI route applies; preserve body/arity/visibility."
+    },
+    {
+      "owner": "ArityFour",
+      "line": 52,
+      "selector": "package struct ArityFour:",
+      "proposal": "Add explicit internal init() {} equivalent to existing zero-field implicit internal constructor. Existing finite zeroarg lowerer ABI route applies; preserve body/arity/visibility."
+    },
+    {
+      "owner": "ArityFive",
+      "line": 53,
+      "selector": "package struct ArityFive:",
+      "proposal": "Add explicit internal init() {} equivalent to existing zero-field implicit internal constructor. Existing finite zeroarg lowerer ABI route applies; preserve body/arity/visibility."
+    },
+    {
+      "owner": "CounterBadge",
+      "line": 41,
+      "selector": "package struct CounterBadge:",
+      "proposal": "Add @usableFromInline internal init(value: UInt8) { self.value = value } equivalent to current required-let memberwise init; no default."
+    },
+    {
+      "owner": "<free helper>",
+      "line": 65,
+      "selector": "package func freeLabels()",
+      "proposal": "Add @usableFromInline to existing free helper; do not inline body or alter builder/order."
+    },
+    {
+      "owner": "HelperProbe",
+      "line": 69,
+      "selector": "@ViewBuilder package func makeLabel()",
+      "proposal": "Add @usableFromInline to existing helper; preserve builder/body/order."
+    }
+  ],
+  "production_rows": [
+    {
+      "file": "Sources/GiftUI/DeclarativeView.swift",
+      "owner": "EmptyView",
+      "selector": "package init() {}",
+      "proposal": "@usableFromInline ABI-only on existing empty constructor; no public source widening, body serialization or unchecked capability."
+    },
+    {
+      "file": "Sources/GiftUIMacros/ObservableStateHostMacro.swift",
+      "selector": "serializedWitnessAttributes initial guard !declarations.isEmpty",
+      "proposal": "Permit empty declarations only through every existing fully validated finite host/domain/alias/evaluation/enclosure check; empty visitor captures no State backing. Keep all nonempty projection checks and ordinary/private backing rejection; not visibility-only serialization."
+    }
+  ],
+  "test_row": {
+    "file": "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift",
+    "selectors": [
+      "testZeroStateExpansionIsDeterministic",
+      "existing ordinary/private/checked helper eligibility family"
+    ],
+    "proposal": "Extend existing family with ABI eligible lowerer-shaped zero-State host and ordinary/private/public/enclosure negative controls, no relaxed private State route. Compile genuine P02 fixture including empty/arity/helpers/memberwise keys with fresh tool."
+  },
+  "guards": [
+    "All authored State/_model/privateP08/key/read/ledger construction and14loan/lifetime semantics unchanged.",
+    "Keep empty-host coverage, exact arity0\u20135 counts, helper/body order, failure shortcircuit and model matching; do not delete failing probes or manually patch generated output.",
+    "Constructor equivalents preserve existing internal scope, required let value argument and no property defaults.",
+    "This is not fixture-only: two narrow existing production declarations are involved; review before assigning new one-candidate allowance. No broad lowerer parameter/memberwise language support."
+  ],
+  "focused_validation": "Existing17 macro family with added matrix\u2192fresh P02 producer including full CounterPresentation/AnalyzerDeclaration/registered P04\u2192same four maintained campaign producers through all384 controls. Failure freezes; no retries/source repairs. Fullcurrentcallee/cold/P08 still gated."
+}

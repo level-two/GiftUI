@@ -1,0 +1,500 @@
+macro expansion @ObservableStateHost:7:14: error: instance method '_giftUITraverse' must be declared '@usableFromInline' because it matches a requirement in protocol 'View'
+`- /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:195:1: note: expanded code originates here
+178 | }
+179 | 
+180 | @ObservableStateHost
+    | `- note: in expansion of macro 'ObservableStateHost' on generic struct 'StateHostWitnessProbe' here
+181 | @usableFromInline
+182 | 
+    :
+193 |     Text<D>("state host witness") 
+194 | }
+195 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    | 5 | }
+    | 6 | 
+    | 7 | package func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |   |              `- error: instance method '_giftUITraverse' must be declared '@usableFromInline' because it matches a requirement in protocol 'View'
+    | 8 |     _ visitor: inout Visitor
+    | 9 | ) where Visitor.Domain == Domain {
+    +-------------------------------------------------------------------
+196 | @usableFromInline
+197 | 
+
+macro expansion @ObservableStateHost:1:1: error: instance method '_giftUIVisitObservableStateDeclarations' must be declared '@usableFromInline' because it matches a requirement in protocol '_GiftUIObservableStateHost'
+`- /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:195:2: note: expanded code originates here
+178 | }
+179 | 
+180 | @ObservableStateHost
+    | |- note: in expansion of macro 'ObservableStateHost' on generic struct 'StateHostWitnessProbe' here
+    | `- note: in expansion of macro 'ObservableStateHost' on generic struct 'StateHostWitnessProbe' here
+181 | @usableFromInline
+182 | 
+    :
+193 |     Text<D>("state host witness") 
+194 | }
+195 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    |1 | extension StateHostWitnessProbe: _GiftUIObservableStateHost {
+    |  | `- error: instance method '_giftUIVisitObservableStateDeclarations' must be declared '@usableFromInline' because it matches a requirement in protocol '_GiftUIObservableStateHost'
+    |2 | }
+    +-------------------------------------------------------------------
+    +--- macro expansion @ObservableStateHost --------------------------
+    | 1 | package mutating func _giftUIVisitObservableStateDeclarations<
+    |   |                       `- note: '_giftUIVisitObservableStateDeclarations' declared here
+    | 2 |     Visitor: _GiftUIObservableStateDeclarationVisitor & ~Copyable & ~Escapable
+    | 3 | >(_ visitor: inout Visitor) {
+    +-------------------------------------------------------------------
+196 | @usableFromInline
+197 | 
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:41:53: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+ 29 | package struct CounterRoot<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+ 30 | 
+ 31 |     package let model:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'model' is not '@usableFromInline' or public
+ 32 | 
+ 33 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+    :
+ 39 |     
+ 40 |         try VStack {() throws(_GiftUIAccessFailure) in 
+ 41 |             Text<D>(counterText((try CounterRead<D>(model, read: read)).value))
+    |                                                     `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+ 42 |             try Button(action: CounterAction.increment) { () throws(_GiftUIAccessFailure) in Text<D>("Increment") }
+ 43 |                 .disabled((try CounterRead<D>(model, read: read)).value == 9)
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:43:47: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+ 29 | package struct CounterRoot<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+ 30 | 
+ 31 |     package let model:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'model' is not '@usableFromInline' or public
+ 32 | 
+ 33 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+    :
+ 41 |             Text<D>(counterText((try CounterRead<D>(model, read: read)).value))
+ 42 |             try Button(action: CounterAction.increment) { () throws(_GiftUIAccessFailure) in Text<D>("Increment") }
+ 43 |                 .disabled((try CounterRead<D>(model, read: read)).value == 9)
+    |                                               `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+ 44 |             try Button(action: CounterAction.reset) { () throws(_GiftUIAccessFailure) in Text<D>("Reset") }
+ 45 |                 .disabled((try CounterRead<D>(model, read: read)).value == 0)
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:45:47: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+ 29 | package struct CounterRoot<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+ 30 | 
+ 31 |     package let model:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'model' is not '@usableFromInline' or public
+ 32 | 
+ 33 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+    :
+ 43 |                 .disabled((try CounterRead<D>(model, read: read)).value == 9)
+ 44 |             try Button(action: CounterAction.reset) { () throws(_GiftUIAccessFailure) in Text<D>("Reset") }
+ 45 |                 .disabled((try CounterRead<D>(model, read: read)).value == 0)
+    |                                               `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+ 46 |             if (((try CounterRead<D>(model, read: read)).value > 0) ? ((try CounterRead<D>(model, read: read)).value < 9) : false) {
+ 47 |                 CounterBadge<D>(value: (try CounterRead<D>(model, read: read)).value)
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:46:38: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+ 29 | package struct CounterRoot<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+ 30 | 
+ 31 |     package let model:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'model' is not '@usableFromInline' or public
+ 32 | 
+ 33 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+    :
+ 44 |             try Button(action: CounterAction.reset) { () throws(_GiftUIAccessFailure) in Text<D>("Reset") }
+ 45 |                 .disabled((try CounterRead<D>(model, read: read)).value == 0)
+ 46 |             if (((try CounterRead<D>(model, read: read)).value > 0) ? ((try CounterRead<D>(model, read: read)).value < 9) : false) {
+    |                                      `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+ 47 |                 CounterBadge<D>(value: (try CounterRead<D>(model, read: read)).value)
+ 48 |             }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:46:92: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+ 29 | package struct CounterRoot<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+ 30 | 
+ 31 |     package let model:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'model' is not '@usableFromInline' or public
+ 32 | 
+ 33 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+    :
+ 44 |             try Button(action: CounterAction.reset) { () throws(_GiftUIAccessFailure) in Text<D>("Reset") }
+ 45 |                 .disabled((try CounterRead<D>(model, read: read)).value == 0)
+ 46 |             if (((try CounterRead<D>(model, read: read)).value > 0) ? ((try CounterRead<D>(model, read: read)).value < 9) : false) {
+    |                                                                                            `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+ 47 |                 CounterBadge<D>(value: (try CounterRead<D>(model, read: read)).value)
+ 48 |             }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:47:31: error: initializer 'init(value:)' is internal and cannot be referenced from an '@inlinable' function
+ 45 |                 .disabled((try CounterRead<D>(model, read: read)).value == 0)
+ 46 |             if (((try CounterRead<D>(model, read: read)).value > 0) ? ((try CounterRead<D>(model, read: read)).value < 9) : false) {
+ 47 |                 CounterBadge<D>(value: (try CounterRead<D>(model, read: read)).value)
+    |                               `- error: initializer 'init(value:)' is internal and cannot be referenced from an '@inlinable' function
+ 48 |             }
+ 49 |         }
+    :
+ 53 | 
+ 54 | 
+ 55 | package struct CounterBadge<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+    |                `- note: initializer 'init(value:)' is not '@usableFromInline' or public
+ 56 | 
+ 57 |     package let value: UInt8
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:47:60: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+ 29 | package struct CounterRoot<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+ 30 | 
+ 31 |     package let model:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'model' is not '@usableFromInline' or public
+ 32 | 
+ 33 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+    :
+ 45 |                 .disabled((try CounterRead<D>(model, read: read)).value == 0)
+ 46 |             if (((try CounterRead<D>(model, read: read)).value > 0) ? ((try CounterRead<D>(model, read: read)).value < 9) : false) {
+ 47 |                 CounterBadge<D>(value: (try CounterRead<D>(model, read: read)).value)
+    |                                                            `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+ 48 |             }
+ 49 |         }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:64:29: error: property 'value' is package and cannot be referenced from an '@inlinable' function
+ 55 | package struct CounterBadge<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+ 56 | 
+ 57 |     package let value: UInt8
+    |                 `- note: property 'value' is not '@usableFromInline' or public
+ 58 | @ViewBuilder
+ 59 | @inlinable
+    :
+ 62 |     throws(_GiftUIAccessFailure) -> some View<D> {
+ 63 |     
+ 64 |         Text<D>(counterText(value)).padding(1).foregroundStyle(.white)
+    |                             `- error: property 'value' is package and cannot be referenced from an '@inlinable' function
+ 65 | }
+ 66 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:77:16: error: initializer 'init()' is package and cannot be referenced from an '@inlinable' function
+ 75 | package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+ 76 |     throws(_GiftUIAccessFailure) -> some View<D> {
+ 77 |     EmptyView<D>()
+    |                `- error: initializer 'init()' is package and cannot be referenced from an '@inlinable' function
+ 78 | }}
+ 79 | @usableFromInline
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:258:13: note: initializer 'init()' is not '@usableFromInline' or public
+256 |     public typealias Body = Never
+257 | 
+258 |     package init() {}
+    |             `- note: initializer 'init()' is not '@usableFromInline' or public
+259 | 
+260 |     public func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:148:24: error: initializer 'init()' is internal and cannot be referenced from an '@inlinable' function
+ 68 | 
+ 69 | 
+ 70 | package struct ArityZero<D:CounterReadDomain>: View { @usableFromInline package typealias Domain = D
+    |                `- note: initializer 'init()' is not '@usableFromInline' or public
+ 71 | 
+ 72 | @ViewBuilder
+    :
+146 |     
+147 |         try VStack {() throws(_GiftUIAccessFailure) in 
+148 |             ArityZero<D>(); ArityOne<D>(); ArityTwo<D>(); ArityThree<D>()
+    |                        `- error: initializer 'init()' is internal and cannot be referenced from an '@inlinable' function
+149 |             try VStack { () throws(_GiftUIAccessFailure) in ArityFour<D>(); ArityFive<D>() }
+150 |         }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:148:39: error: initializer 'init()' is internal and cannot be referenced from an '@inlinable' function
+ 79 | @usableFromInline
+ 80 | 
+ 81 | package struct ArityOne<D:CounterReadDomain>: View { @usableFromInline package typealias Domain = D
+    |                `- note: initializer 'init()' is not '@usableFromInline' or public
+ 82 | 
+ 83 | @ViewBuilder
+    :
+146 |     
+147 |         try VStack {() throws(_GiftUIAccessFailure) in 
+148 |             ArityZero<D>(); ArityOne<D>(); ArityTwo<D>(); ArityThree<D>()
+    |                                       `- error: initializer 'init()' is internal and cannot be referenced from an '@inlinable' function
+149 |             try VStack { () throws(_GiftUIAccessFailure) in ArityFour<D>(); ArityFive<D>() }
+150 |         }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:148:54: error: initializer 'init()' is internal and cannot be referenced from an '@inlinable' function
+ 90 | @usableFromInline
+ 91 | 
+ 92 | package struct ArityTwo<D:CounterReadDomain>: View { @usableFromInline package typealias Domain = D
+    |                `- note: initializer 'init()' is not '@usableFromInline' or public
+ 93 | 
+ 94 | @ViewBuilder
+    :
+146 |     
+147 |         try VStack {() throws(_GiftUIAccessFailure) in 
+148 |             ArityZero<D>(); ArityOne<D>(); ArityTwo<D>(); ArityThree<D>()
+    |                                                      `- error: initializer 'init()' is internal and cannot be referenced from an '@inlinable' function
+149 |             try VStack { () throws(_GiftUIAccessFailure) in ArityFour<D>(); ArityFive<D>() }
+150 |         }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:148:71: error: initializer 'init()' is internal and cannot be referenced from an '@inlinable' function
+101 | @usableFromInline
+102 | 
+103 | package struct ArityThree<D:CounterReadDomain>: View { @usableFromInline package typealias Domain = D
+    |                `- note: initializer 'init()' is not '@usableFromInline' or public
+104 | 
+105 | @ViewBuilder
+    :
+146 |     
+147 |         try VStack {() throws(_GiftUIAccessFailure) in 
+148 |             ArityZero<D>(); ArityOne<D>(); ArityTwo<D>(); ArityThree<D>()
+    |                                                                       `- error: initializer 'init()' is internal and cannot be referenced from an '@inlinable' function
+149 |             try VStack { () throws(_GiftUIAccessFailure) in ArityFour<D>(); ArityFive<D>() }
+150 |         }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:149:72: error: initializer 'init()' is internal and cannot be referenced from an '@inlinable' function
+112 | @usableFromInline
+113 | 
+114 | package struct ArityFour<D:CounterReadDomain>: View { @usableFromInline package typealias Domain = D
+    |                `- note: initializer 'init()' is not '@usableFromInline' or public
+115 | 
+116 | @ViewBuilder
+    :
+147 |         try VStack {() throws(_GiftUIAccessFailure) in 
+148 |             ArityZero<D>(); ArityOne<D>(); ArityTwo<D>(); ArityThree<D>()
+149 |             try VStack { () throws(_GiftUIAccessFailure) in ArityFour<D>(); ArityFive<D>() }
+    |                                                                        `- error: initializer 'init()' is internal and cannot be referenced from an '@inlinable' function
+150 |         }
+151 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:149:88: error: initializer 'init()' is internal and cannot be referenced from an '@inlinable' function
+123 | @usableFromInline
+124 | 
+125 | package struct ArityFive<D:CounterReadDomain>: View { @usableFromInline package typealias Domain = D
+    |                `- note: initializer 'init()' is not '@usableFromInline' or public
+126 | 
+127 | @ViewBuilder
+    :
+147 |         try VStack {() throws(_GiftUIAccessFailure) in 
+148 |             ArityZero<D>(); ArityOne<D>(); ArityTwo<D>(); ArityThree<D>()
+149 |             try VStack { () throws(_GiftUIAccessFailure) in ArityFour<D>(); ArityFive<D>() }
+    |                                                                                        `- error: initializer 'init()' is internal and cannot be referenced from an '@inlinable' function
+150 |         }
+151 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:176:44: error: instance method 'makeLabel(read:)' is package and cannot be referenced from an '@inlinable' function
+168 |     Text<D>("caption") 
+169 | }
+170 |     @ViewBuilder package func makeLabel(read:borrowing _GiftUIFrameRead<D>) throws(_GiftUIAccessFailure)-> some View<D> { Text<D>("method") }
+    |                               `- note: instance method 'makeLabel(read:)' is not '@usableFromInline' or public
+171 | @ViewBuilder
+172 | @inlinable
+    :
+174 | package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+175 |     throws(_GiftUIAccessFailure) -> some View<D> {
+176 |     (try _giftUI_caption(read: read)); try makeLabel(read: read); try freeLabels(domain: D.self) 
+    |                                            `- error: instance method 'makeLabel(read:)' is package and cannot be referenced from an '@inlinable' function
+177 | }
+178 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:176:71: error: global function 'freeLabels(domain:)' is package and cannot be referenced from an '@inlinable' function
+153 | 
+154 | @ViewBuilder
+155 | package func freeLabels<D:CounterReadDomain>(domain:D.Type) throws(_GiftUIAccessFailure)-> some View<D> { Text<D>("a"); Text<D>("b") }
+    |              `- note: global function 'freeLabels(domain:)' is not '@usableFromInline' or public
+156 | @usableFromInline
+157 | 
+    :
+174 | package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+175 |     throws(_GiftUIAccessFailure) -> some View<D> {
+176 |     (try _giftUI_caption(read: read)); try makeLabel(read: read); try freeLabels(domain: D.self) 
+    |                                                                       `- error: global function 'freeLabels(domain:)' is package and cannot be referenced from an '@inlinable' function
+177 | }
+178 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:211:137: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+199 | package struct LazyProbe<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+200 | 
+201 |     package let model:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'model' is not '@usableFromInline' or public
+202 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+203 | @ViewBuilder
+    :
+209 |         let absent: UInt8? = nil
+210 |         let present: UInt8? = 7
+211 |         Text<D>(counterText(try { () throws(_GiftUIAccessFailure) in if let value = absent { return value }; return (try CounterRead<D>(model, read: read)).value }()))
+    |                                                                                                                                         `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+212 |         Text<D>(counterText(try { () throws(_GiftUIAccessFailure) in if let value = present { return value }; return (try CounterRead<D>(model, read: read)).value }()))
+213 |         if (((try CounterRead<D>(model, read: read)).value == 9) ? true : ((try CounterRead<D>(model, read: read)).value > 0)) { Text<D>("or") }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:212:138: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+199 | package struct LazyProbe<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+200 | 
+201 |     package let model:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'model' is not '@usableFromInline' or public
+202 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+203 | @ViewBuilder
+    :
+210 |         let present: UInt8? = 7
+211 |         Text<D>(counterText(try { () throws(_GiftUIAccessFailure) in if let value = absent { return value }; return (try CounterRead<D>(model, read: read)).value }()))
+212 |         Text<D>(counterText(try { () throws(_GiftUIAccessFailure) in if let value = present { return value }; return (try CounterRead<D>(model, read: read)).value }()))
+    |                                                                                                                                          `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+213 |         if (((try CounterRead<D>(model, read: read)).value == 9) ? true : ((try CounterRead<D>(model, read: read)).value > 0)) { Text<D>("or") }
+214 |         if !((((try CounterRead<D>(model, read: read)).value == 0) ? ((try CounterRead<D>(model, read: read)).value > 0) : false)) { Text<D>("and") }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:213:34: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+199 | package struct LazyProbe<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+200 | 
+201 |     package let model:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'model' is not '@usableFromInline' or public
+202 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+203 | @ViewBuilder
+    :
+211 |         Text<D>(counterText(try { () throws(_GiftUIAccessFailure) in if let value = absent { return value }; return (try CounterRead<D>(model, read: read)).value }()))
+212 |         Text<D>(counterText(try { () throws(_GiftUIAccessFailure) in if let value = present { return value }; return (try CounterRead<D>(model, read: read)).value }()))
+213 |         if (((try CounterRead<D>(model, read: read)).value == 9) ? true : ((try CounterRead<D>(model, read: read)).value > 0)) { Text<D>("or") }
+    |                                  `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+214 |         if !((((try CounterRead<D>(model, read: read)).value == 0) ? ((try CounterRead<D>(model, read: read)).value > 0) : false)) { Text<D>("and") }
+215 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:213:96: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+199 | package struct LazyProbe<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+200 | 
+201 |     package let model:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'model' is not '@usableFromInline' or public
+202 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+203 | @ViewBuilder
+    :
+211 |         Text<D>(counterText(try { () throws(_GiftUIAccessFailure) in if let value = absent { return value }; return (try CounterRead<D>(model, read: read)).value }()))
+212 |         Text<D>(counterText(try { () throws(_GiftUIAccessFailure) in if let value = present { return value }; return (try CounterRead<D>(model, read: read)).value }()))
+213 |         if (((try CounterRead<D>(model, read: read)).value == 9) ? true : ((try CounterRead<D>(model, read: read)).value > 0)) { Text<D>("or") }
+    |                                                                                                `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+214 |         if !((((try CounterRead<D>(model, read: read)).value == 0) ? ((try CounterRead<D>(model, read: read)).value > 0) : false)) { Text<D>("and") }
+215 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:214:36: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+199 | package struct LazyProbe<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+200 | 
+201 |     package let model:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'model' is not '@usableFromInline' or public
+202 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+203 | @ViewBuilder
+    :
+212 |         Text<D>(counterText(try { () throws(_GiftUIAccessFailure) in if let value = present { return value }; return (try CounterRead<D>(model, read: read)).value }()))
+213 |         if (((try CounterRead<D>(model, read: read)).value == 9) ? true : ((try CounterRead<D>(model, read: read)).value > 0)) { Text<D>("or") }
+214 |         if !((((try CounterRead<D>(model, read: read)).value == 0) ? ((try CounterRead<D>(model, read: read)).value > 0) : false)) { Text<D>("and") }
+    |                                    `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+215 | }
+216 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:214:91: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+199 | package struct LazyProbe<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+200 | 
+201 |     package let model:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'model' is not '@usableFromInline' or public
+202 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+203 | @ViewBuilder
+    :
+212 |         Text<D>(counterText(try { () throws(_GiftUIAccessFailure) in if let value = present { return value }; return (try CounterRead<D>(model, read: read)).value }()))
+213 |         if (((try CounterRead<D>(model, read: read)).value == 9) ? true : ((try CounterRead<D>(model, read: read)).value > 0)) { Text<D>("or") }
+214 |         if !((((try CounterRead<D>(model, read: read)).value == 0) ? ((try CounterRead<D>(model, read: read)).value > 0) : false)) { Text<D>("and") }
+    |                                                                                           `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+215 | }
+216 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:229:36: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+219 | package struct SwitchProbe<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+220 | 
+221 |     package let model:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'model' is not '@usableFromInline' or public
+222 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+223 | @ViewBuilder
+    :
+227 |     throws(_GiftUIAccessFailure) -> some View<D> {
+228 |     
+229 |         switch (try CounterRead<D>(model, read: read)).value {
+    |                                    `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+230 |         case 0: Text<D>("zero")
+231 |         case 1...8: Text<D>("middle")
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:248:45: error: property 'first' is package and cannot be referenced from an '@inlinable' function
+238 | package struct ArgumentOrderProbe<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+239 | 
+240 |     package let first:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'first' is not '@usableFromInline' or public
+241 |     package let second:_GiftUIModelKey<CounterModelSchema>
+242 |     package init(first: _GiftUIModelKey<CounterModelSchema>, second: _GiftUIModelKey<CounterModelSchema>) { self.first = first; self.second = second }
+    :
+246 | package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+247 |     throws(_GiftUIAccessFailure) -> some View<D> {
+248 |     Text<D>(counterText((try CounterRead<D>(first, read: read)).value + (try CounterRead<D>(second, read: read)).value)) 
+    |                                             `- error: property 'first' is package and cannot be referenced from an '@inlinable' function
+249 | }
+250 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:248:93: error: property 'second' is package and cannot be referenced from an '@inlinable' function
+239 | 
+240 |     package let first:_GiftUIModelKey<CounterModelSchema>
+241 |     package let second:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'second' is not '@usableFromInline' or public
+242 |     package init(first: _GiftUIModelKey<CounterModelSchema>, second: _GiftUIModelKey<CounterModelSchema>) { self.first = first; self.second = second }
+243 | @ViewBuilder
+    :
+246 | package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+247 |     throws(_GiftUIAccessFailure) -> some View<D> {
+248 |     Text<D>(counterText((try CounterRead<D>(first, read: read)).value + (try CounterRead<D>(second, read: read)).value)) 
+    |                                                                                             `- error: property 'second' is package and cannot be referenced from an '@inlinable' function
+249 | }
+250 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:263:18: error: initializer 'init(model:)' is package and cannot be referenced from an '@inlinable' function
+ 31 |     package let model:_GiftUIModelKey<CounterModelSchema>
+ 32 | 
+ 33 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+    |             `- note: initializer 'init(model:)' is not '@usableFromInline' or public
+ 34 | @ViewBuilder
+ 35 | @inlinable
+    :
+261 | package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+262 |     throws(_GiftUIAccessFailure) -> some View<D> {
+263 |     CounterRoot<D>(model: first); CounterRoot<D>(model: second) 
+    |                  `- error: initializer 'init(model:)' is package and cannot be referenced from an '@inlinable' function
+264 | }
+265 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:263:27: error: property 'first' is package and cannot be referenced from an '@inlinable' function
+253 | package struct SiblingFailureProbe<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+254 | 
+255 |     package let first:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'first' is not '@usableFromInline' or public
+256 |     package let second:_GiftUIModelKey<CounterModelSchema>
+257 |     package init(first: _GiftUIModelKey<CounterModelSchema>, second: _GiftUIModelKey<CounterModelSchema>) { self.first = first; self.second = second }
+    :
+261 | package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+262 |     throws(_GiftUIAccessFailure) -> some View<D> {
+263 |     CounterRoot<D>(model: first); CounterRoot<D>(model: second) 
+    |                           `- error: property 'first' is package and cannot be referenced from an '@inlinable' function
+264 | }
+265 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:263:48: error: initializer 'init(model:)' is package and cannot be referenced from an '@inlinable' function
+ 31 |     package let model:_GiftUIModelKey<CounterModelSchema>
+ 32 | 
+ 33 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+    |             `- note: initializer 'init(model:)' is not '@usableFromInline' or public
+ 34 | @ViewBuilder
+ 35 | @inlinable
+    :
+261 | package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+262 |     throws(_GiftUIAccessFailure) -> some View<D> {
+263 |     CounterRoot<D>(model: first); CounterRoot<D>(model: second) 
+    |                                                `- error: initializer 'init(model:)' is package and cannot be referenced from an '@inlinable' function
+264 | }
+265 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift:263:57: error: property 'second' is package and cannot be referenced from an '@inlinable' function
+254 | 
+255 |     package let first:_GiftUIModelKey<CounterModelSchema>
+256 |     package let second:_GiftUIModelKey<CounterModelSchema>
+    |                 `- note: property 'second' is not '@usableFromInline' or public
+257 |     package init(first: _GiftUIModelKey<CounterModelSchema>, second: _GiftUIModelKey<CounterModelSchema>) { self.first = first; self.second = second }
+258 | @ViewBuilder
+    :
+261 | package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+262 |     throws(_GiftUIAccessFailure) -> some View<D> {
+263 |     CounterRoot<D>(model: first); CounterRoot<D>(model: second) 
+    |                                                         `- error: property 'second' is package and cannot be referenced from an '@inlinable' function
+264 | }
+265 | }

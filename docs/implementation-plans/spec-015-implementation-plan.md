@@ -29,6 +29,13 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [maintained safety campaign first-stage failure](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1-result/README.md):
+P02 CounterPresentation failed17.245s;64 rendered errors=32primary grouped. Wider
+fixture/producer ABI gaps byteidentical before EF, not evidence of EF regression.
+One21selector/fourfile correction proposed read-only; no source/fixture edits/retry
+or new allowance. EF23limited PASS retained; full safety/callee/strictcold/P08 blocked.
+Independent boundary/design review next.
+
 Current [grouped current-callee/safety campaign prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1/README.md):
 four genuine maintained producers freshP02+registeredP04→P07→schema4activation→
 complete native counter384controls, currentcallee inputs retained. Staticvalidate only;

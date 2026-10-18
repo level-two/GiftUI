@@ -1,0 +1,34 @@
+{
+  "status": "first maintained producer FAILED; dependents P04/P07/schema4/counter blocked",
+  "elapsed_seconds": 17.245,
+  "source": "cb4b10f0 fixed; no edits/compiler/retry in this investigation",
+  "artifacts": [
+    {
+      "path": ".build/contracts/p08-current-callee-safety-campaign1/result.json",
+      "sha256": "92bfafd3babaa6bb5737c2686eb45b7214149d388de9cfa481fe09f22a74261e",
+      "bytes": 810
+    },
+    {
+      "path": ".build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.log",
+      "sha256": "32de7b44e1f9669ccfe8dcb2062ac923c8c2accf037382e6056893a48ddb91d8",
+      "bytes": 35602
+    },
+    {
+      "path": ".build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/CounterPresentation.swift",
+      "sha256": "aeaeb716ea91a7c6e0355cd6335d2f25e96c7363e31e7b979566316f97629ea4",
+      "bytes": 8972
+    },
+    {
+      "path": ".build/contracts/spec-006-rfc-014-swift64/c3e058e05e1dcc0d-er15br_a/macos-static/commands.txt",
+      "sha256": "5562a145df90e0d3ac81f70a38f7d8d083d8603e70051e13c1850e59365c8652",
+      "bytes": 7724
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC006/RuntimeDerived/Counter.swift",
+      "sha256": "b47b9ab5e6d05d9e23ea4f11e2274adde88ccddd8f9b48683afa1fa79577d569",
+      "bytes": 3923
+    }
+  ],
+  "classification": "Wider maintained finite fixture/producer compatibility gap, not evidence of EF regression.32 primary/64 rendered diagnostic occurrences all grouped.",
+  "scope_limit": "Macrotool build/macro checks/GiftUI/CounterSchema passed before CounterPresentation failure; producer result receipt not emitted. RecordBank/ScopedTraversal/runtime/schema4/counter384/fullcallee/strictcold/P08 not qualified. Selected EF23 prior PASS retained."
+}
