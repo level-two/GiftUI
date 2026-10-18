@@ -45,10 +45,15 @@ init/takeNext are ordinary nongeneric ABI calls; their implementations need not
 serialize. Do not promote unrelated fields because a nominal is reached.
 The three new constructors preserve existing synthesized **internal** memberwise
 access/ownership/labels/order and every assignment: Disposition's six required
-fields; Completion's four fields with committedPresentationRevision=nil and
-operational=nil; generic FailureRecord's four fields with publication=nil.
+fields; Completion's four fields, including required Optional
+committedPresentationRevision and operational; generic FailureRecord's four fields,
+including required Optional publication. No parameter has a default.
 The two nongeneric initializers are ordinary ABI; only the generic FailureRecord
 initializer is serialized, with its four stored fields separately qualified.
+Matched CodeSynthesis.cpp134–138 returns for let-backed properties before the
+Optional nil branch at170–182. All these fields are let; the initial proposed
+three nil defaults were incorrect and are removed before any source candidate.
+Independent recheck remains required; the scope stays53sites/sixfiles.
 No pointer/scope/capability constructor, validation or algorithm is introduced.
 Existing checked factories, all other defaults and bodies remain byte/token exact.
 

@@ -550,7 +550,7 @@
         }
       ],
       "assignments": "self fields in declaration/parameter order; ordinary nongeneric ABI body",
-      "guard": "Exact existing synthesized internal memberwise equivalence: implicit ownership, all labels/types/order, optional nil defaults, no additional check/algorithm/public/package access; no backing capability constructor."
+      "guard": "Exact existing synthesized internal memberwise equivalence: implicit ownership, all labels/types/order, ALL let-backed parameters required (including Optional parameters), no default arguments, no additional check/algorithm/public/package access; no backing capability constructor."
     },
     {
       "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
@@ -566,12 +566,12 @@
         {
           "name": "committedPresentationRevision",
           "type": "PresentationRevision?",
-          "default": "nil"
+          "default": null
         },
         {
           "name": "operational",
           "type": "ExecutionOperational?",
-          "default": "nil"
+          "default": null
         },
         {
           "name": "disposition",
@@ -580,7 +580,7 @@
         }
       ],
       "assignments": "self fields in declaration/parameter order; ordinary nongeneric ABI body",
-      "guard": "Exact existing synthesized internal memberwise equivalence: implicit ownership, all labels/types/order, optional nil defaults, no additional check/algorithm/public/package access; no backing capability constructor."
+      "guard": "Exact existing synthesized internal memberwise equivalence: implicit ownership, all labels/types/order, ALL let-backed parameters required (including Optional parameters), no default arguments, no additional check/algorithm/public/package access; no backing capability constructor."
     },
     {
       "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
@@ -601,7 +601,7 @@
         {
           "name": "publication",
           "type": "RuntimePipelinePublication?",
-          "default": "nil"
+          "default": null
         },
         {
           "name": "disposition",
@@ -610,7 +610,7 @@
         }
       ],
       "assignments": "self fields in declaration/parameter order; generic serialized ABI body",
-      "guard": "Exact existing synthesized internal memberwise equivalence: implicit ownership, all labels/types/order, optional nil defaults, no additional check/algorithm/public/package access; no backing capability constructor."
+      "guard": "Exact existing synthesized internal memberwise equivalence: implicit ownership, all labels/types/order, ALL let-backed parameters required (including Optional parameters), no default arguments, no additional check/algorithm/public/package access; no backing capability constructor."
     }
   ],
   "no_edit_boundary": [
@@ -621,5 +621,6 @@
     "ExecutionWakeReasons.admittedWork and PresentationRevision.rawValue/init remain outside reached serialization scope",
     "already qualified ExecutionOperational, RunCycleFailure, RuntimeOwnerFailure, FrameRefusalOrigin and all payloads are no-ops"
   ],
-  "feasibility": "source/compiler-dependent formal legality, CMO/actual specialization and strict costs remain gates; this map addresses proven root/helper availability, not full42 source adoption"
+  "feasibility": "source/compiler-dependent formal legality, CMO/actual specialization and strict costs remain gates; this map addresses proven root/helper availability, not full42 source adoption",
+  "constructor_default_review": "Corrected proposed-only after independent NOTREADY: all fields are let; matched Swift6.4 CodeSynthesis maybeAddMemberwiseDefaultArg returns before Optional nil handling. Same53sites6files, no source change or allowance."
 }

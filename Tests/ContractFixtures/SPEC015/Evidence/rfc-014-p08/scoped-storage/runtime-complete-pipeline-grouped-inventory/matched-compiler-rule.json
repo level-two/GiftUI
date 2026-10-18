@@ -28,15 +28,25 @@
       }
     },
     {
-      "source": "giftui-TypeCheckProtocol.cpp",
+      "source": "TypeCheckProtocol.cpp",
       "sha256": "f29ce8a41da8c415e50b8c7f10004cbb18df6b4202b63ec3598e03a4e8ffcc43",
-      "url": "https://github.com/swiftlang/swift/blob/b8189d766d86ad7fc8106787d6ce9e402f38dd72/lib/Sema/giftui-TypeCheckProtocol.cpp",
+      "url": "https://github.com/swiftlang/swift/blob/b8189d766d86ad7fc8106787d6ce9e402f38dd72/lib/Sema/TypeCheckProtocol.cpp",
       "excerpts": {
         "1906-1940": "\nConformanceAccessScope ConformanceAccessScopeRequest::evaluate(\n    Evaluator &evaluator, DeclContext *dc, ProtocolDecl *proto) const {\n  AccessScope result = proto->getFormalAccessScope(dc);\n  bool witnessesMustBeUsableFromInline = false;\n\n  auto *nominal = dc->getSelfNominalTypeDecl();\n\n  // We're either looking at a concrete conformance, or the default witness\n  // table for a resilient protocol.\n  if (!isa<ProtocolDecl>(nominal)) {\n    // Compute the intersection of the conforming type's access scope\n    // and the protocol's access scope.\n    auto scopeIntersection =\n        result.intersectWith(nominal->getFormalAccessScope(dc));\n    assert(scopeIntersection.has_value());\n    result = scopeIntersection.value();\n\n    if (!result.isPublic()) {\n      witnessesMustBeUsableFromInline =\n          proto->getFormalAccessScope(\n            dc, /*usableFromInlineAsPublic*/true).isPublic() &&\n          nominal->getFormalAccessScope(\n            dc, /*usableFromInlineAsPublic*/true).isPublic();\n    }\n  } else {\n    if (!result.isPublic()) {\n      witnessesMustBeUsableFromInline =\n          proto->getFormalAccessScope(\n            dc, /*usableFromInlineAsPublic*/true).isPublic();\n    }\n  }\n\n  return std::make_pair(result, witnessesMustBeUsableFromInline);\n}",
         "2054-2067": "  auto [requiredAccessLevel, mustBeUsableFromInline] = evaluateOrDefault(\n      Context.evaluator, ConformanceAccessScopeRequest{DC, Proto},\n      std::make_pair(AccessScope::getPublic(), false));\n\n  bool isSetter = false;\n  if (checkWitnessAccess(DC, requirement, match.Witness, &isSetter))\n    return RequirementCheck(requiredAccessLevel, isSetter);\n\n  if (mustBeUsableFromInline) {\n    bool witnessIsUsableFromInline = match.Witness->getFormalAccessScope(\n        DC, /*usableFromInlineAsPublic*/true).isPublic();\n    if (!witnessIsUsableFromInline)\n      return CheckKind::UsableFromInline;\n  }"
       }
+    },
+    {
+      "source": "CodeSynthesis.cpp",
+      "sha256": "c06efd79b7c2a587b9c0f49d12f83c8433c29c9332585671c2f22f1b2934a109",
+      "url": "https://github.com/swiftlang/swift/blob/b8189d766d86ad7fc8106787d6ce9e402f38dd72/lib/Sema/CodeSynthesis.cpp",
+      "excerpts": {
+        "134-138": "static void maybeAddMemberwiseDefaultArg(ParamDecl *arg, VarDecl *var,\n                                         ASTContext &ctx) {\n  // First and foremost, if this is a constant don't bother.\n  if (var->isLet())\n    return;",
+        "170-182": "  // If the variable has a type T? and no initial value, return a nil literal\n  // default arg. All lazy variables return a nil literal as well. *Note* that\n  // the type will always be a sugared T? because we don't default init an\n  // explicit Optional<T>.\n  bool isNilInitialized =\n    var->getAttrs().hasAttribute<LazyAttr>() ||\n    (!isExplicitlyInitialized && isDefaultInitializable &&\n     var->getValueInterfaceType()->isOptional() &&\n     (var->getAttachedPropertyWrappers().empty() ||\n      var->isPropertyMemberwiseInitializedWithWrappedType()));\n  if (isNilInitialized) {\n    arg->setDefaultArgumentKind(DefaultArgumentKind::NilLiteral);\n    return;"
+      }
     }
   ],
   "cause": "Formal access is minimum of method-adjusted access and enclosing nominal access. run is inlinable/ABI-self but parent RuntimeCompletePipeline package nonABI limits scope. Nonpublic formal scope returns None fragile kind before inlinable check; maximal expansion becomes IsNotSerialized. Parent ABI qualification is necessary; then complete body source legality must be supplied by grouped closure.",
-  "witness_rule": "ABI witness demand requires BOTH protocol and nominal formal scopes public after ABI adjustment. Counter internal nonABI and Pi package nonABI do not meet this condition; preserve their16 existing witnesses without ABI widening."
+  "witness_rule": "ABI witness demand requires BOTH protocol and nominal formal scopes public after ABI adjustment. Counter internal nonABI and Pi package nonABI do not meet this condition; preserve their16 existing witnesses without ABI widening.",
+  "memberwise_default_rule": "maybeAddMemberwiseDefaultArg first returns for var->isLet(). All proposed disposition/completion/failure-record stored properties are let; their memberwise parameters are required, including Optional types. No =nil is proposed. This does not alter previous var-backed optional constructor evidence."
 }
