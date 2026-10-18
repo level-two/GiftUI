@@ -1,0 +1,741 @@
+{
+  "cases": [
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": true,
+      "id": "intended-single-named-error",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: enum 'AcquisitionState' is package and cannot be referenced from an '@inlinable' function\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": true,
+      "id": "intended-generic-error-with-declared-note-and-excerpt",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": true,
+      "id": "intended-repeated-located-errors-and-gutter-repeats",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n\n/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "private-member-access",
+        "dependency_note_sources": [
+          "{positive-cell}/inputs/SignalAnalyzerDiagnostic.swift"
+        ],
+        "expected_nonzero": true,
+        "files": [
+          "privacy/private-storage.swift"
+        ],
+        "first_expected_stage": "client-emit-object",
+        "id": "private-storage",
+        "kind": "privacy-negative",
+        "package_name": "giftui",
+        "positive_twin": "positive-semantics",
+        "primary_message_patterns_all": [
+          "(?i)inaccessible due to ['\"]private['\"] protection level"
+        ],
+        "required_symbol": "storage"
+      },
+      "dependency_paths": [
+        "/scratch/positive/inputs/SignalAnalyzerDiagnostic.swift"
+      ],
+      "exit": 1,
+      "expected_accept": true,
+      "id": "private-primary-with-associated-declaration-note",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: 'storage' is inaccessible due to 'private' protection level\n/scratch/positive/inputs/SignalAnalyzerDiagnostic.swift:32:17: note: 'storage' declared here\n32 | private var storage: SignalAnalyzerDiagnosticStorage\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "package-nominal-hidden",
+        "dependency_note_sources": [],
+        "expected_nonzero": true,
+        "files": [
+          "privacy/outside-package-AcquisitionState.swift"
+        ],
+        "first_expected_stage": "client-emit-object",
+        "id": "outside-package-AcquisitionState",
+        "kind": "privacy-negative",
+        "package_name": null,
+        "positive_twin": "positive-semantics",
+        "primary_message_patterns_all": [
+          "(?i)(?:cannot find (?:type )?['\"]AcquisitionState['\"] in scope|['\"]AcquisitionState['\"] is inaccessible due to ['\"]package['\"] protection level)"
+        ],
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [],
+      "exit": 1,
+      "expected_accept": true,
+      "id": "outside-package-nominal-hidden",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: cannot find type 'AcquisitionState' in scope\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "expected-plus-unrelated-primary-same-file",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n\n/scratch/cell/AnalyzerSchema.swift:9:1: error: cannot find 'missing' in scope\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "expected-plus-primary-in-wrong-file",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n\n/scratch/cell/Other.swift:5:13: error: enum 'AcquisitionState' is package and cannot be referenced from an '@inlinable' function\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "wrong-primary-file-only",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/Other.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": -11,
+      "expected_accept": false,
+      "id": "negative-signal-exit",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 139,
+      "expected_accept": false,
+      "id": "shell-signal-exit",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 2,
+      "expected_accept": false,
+      "id": "nonstandard-positive-exit",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 0,
+      "expected_accept": false,
+      "id": "unexpected-acceptance-zero-exit",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "crash-marker-despite-normal-exit",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n\nStack dump:\n0 swift-frontend\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "fatal-marker-despite-normal-exit",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n\nLLVM ERROR: compiler crashed\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "unlocated-driver-error",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n\nerror: emit-module command failed with exit code 1\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "unrelated-gutter-error-not-exact-repeat",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n   |             `- error: cannot find 'missing' in scope\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "note-at-undeclared-dependency",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n/scratch/cell/Other.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "neighboring-source-line-cannot-supply-symbol",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 4 | let unused: AcquisitionState\n 5 | package func read() -> OtherState\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "different-named-ABI-dependency",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: enum 'OtherState' is package and cannot be referenced from an '@inlinable' function\n5 | let value: AcquisitionState\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "category-cannot-leak-from-note",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: cannot find 'missing' in scope\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: AcquisitionState is not '@usableFromInline' or public\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "orphan-note-cannot-cross-streams",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: enum 'AcquisitionState' is package and cannot be referenced from an '@inlinable' function\n",
+      "stdout": "/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n"
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "same-category-primary-missing-declared-symbol",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: enum 'AcquisitionState' is package and cannot be referenced from an '@inlinable' function\n\n/scratch/cell/AnalyzerSchema.swift:7:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n7 | func readOther() -> OtherState\n",
+      "stdout": ""
+    }
+  ],
+  "status": "STATIC IN-MEMORY LOG FIXTURES ONLY; NO COMPILER"
+}

@@ -1,0 +1,37 @@
+{
+  "applicability": "Exact parser bytes are covered by prior 59/59 fixture result; only path metadata relocates to campaign3. Integrated wrapper call path has AST inspection only and no execution evidence. No compiler dialect coverage beyond archived macOS Static A4 is inferred.",
+  "non_opted_parser_changes": "Verified parser also fails closed on unknown diagnostic-like records and every wrong named ABI dependency; categories, source paths, negative expectations and stages unchanged.",
+  "observed_static_result": {
+    "inherited_inputs": 22,
+    "new_inputs": 37,
+    "status": "STATIC_FIXTURE_EXPECTATIONS_MATCHED_ONLY",
+    "total_inputs": 59
+  },
+  "opt_in": {
+    "control": "negative-A4",
+    "module": "SignalAnalyzerDomain",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+    "profile": "macos-static",
+    "source_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+    "trusted_source": "actual predeclared cell bytes, equal to frozen scratch-sources entry; diagnostic output never selects a path"
+  },
+  "preserved_control_semantics": "controls.json byte-identical; separate opt-in differs from historical A4 only in resolved paths and display_only_note",
+  "static_freeze": {
+    "bytes": 57716,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/packet-freeze.json",
+    "sha256": "09b3cd74aa8faea8f4702b8cc061a9b580aee76c16994dcd66d49684663a74e5"
+  },
+  "static_receipt": {
+    "bytes": 21635,
+    "copy": "static-fixture-receipt.json",
+    "original": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-result/static-result.json",
+    "sha256": "5958a593b617f61284773636316f30a18936511ecf9fecb98eb097661a1c09a8"
+  },
+  "status": "STATIC IDENTITY APPLICABILITY ONLY; NO PARSER CALL OR CAMPAIGN",
+  "verified_parser": {
+    "bytes": 9620,
+    "copy": "diagnostic_parser.py",
+    "original": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/diagnostic_parser.py",
+    "sha256": "fe25ee0d8918635c25aff6766f6541428311e16fbd6719603a50f592cd28001a"
+  }
+}
