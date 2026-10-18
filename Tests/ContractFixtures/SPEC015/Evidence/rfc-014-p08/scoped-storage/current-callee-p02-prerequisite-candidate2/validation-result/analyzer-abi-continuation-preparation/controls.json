@@ -41,10 +41,8 @@
     },
     {
       "category": "serialized-ABI-access",
-      "diagnostic_patterns_all": [
-        "(?i)(?:@usableFromInline|@inlinable)",
-        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
-        "\\bAcquisitionState\\b"
+      "dependency_note_sources": [
+        "{cell}/inputs/AcquisitionState.swift"
       ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
       "diagnostic_source": "{cell}/AnalyzerSchema.swift",
@@ -57,15 +55,17 @@
       "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
       "kind": "abi-negative",
       "later_stages": "unrun after expected first diagnostic",
+      "primary_message_patterns_all": [
+        "(?i)@(?:usableFromInline|inlinable)",
+        "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+      ],
       "remove_only": "A1",
       "required_symbol": "AcquisitionState"
     },
     {
       "category": "serialized-ABI-access",
-      "diagnostic_patterns_all": [
-        "(?i)(?:@usableFromInline|@inlinable)",
-        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
-        "\\bSignalTransition\\b"
+      "dependency_note_sources": [
+        "{cell}/inputs/SignalPrimitiveValues.swift"
       ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
       "diagnostic_source": "{cell}/AnalyzerSchema.swift",
@@ -78,15 +78,17 @@
       "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
       "kind": "abi-negative",
       "later_stages": "unrun after expected first diagnostic",
+      "primary_message_patterns_all": [
+        "(?i)@(?:usableFromInline|inlinable)",
+        "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+      ],
       "remove_only": "A2",
       "required_symbol": "SignalTransition"
     },
     {
       "category": "serialized-ABI-access",
-      "diagnostic_patterns_all": [
-        "(?i)(?:@usableFromInline|@inlinable)",
-        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
-        "\\bchannelID\\b"
+      "dependency_note_sources": [
+        "{cell}/inputs/SignalPrimitiveValues.swift"
       ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
       "diagnostic_source": "{cell}/AnalyzerPresentation.swift",
@@ -99,15 +101,17 @@
       "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
       "kind": "abi-negative",
       "later_stages": "unrun after expected first diagnostic",
+      "primary_message_patterns_all": [
+        "(?i)@(?:usableFromInline|inlinable)",
+        "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+      ],
       "remove_only": "A3",
       "required_symbol": "channelID"
     },
     {
       "category": "serialized-ABI-access",
-      "diagnostic_patterns_all": [
-        "(?i)(?:@usableFromInline|@inlinable)",
-        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
-        "\\bSignalChannelID\\b"
+      "dependency_note_sources": [
+        "{cell}/inputs/SignalPrimitiveValues.swift"
       ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
       "diagnostic_source": "{cell}/inputs/SignalPrimitiveValues.swift",
@@ -120,15 +124,17 @@
       "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
       "kind": "abi-negative",
       "later_stages": "unrun after expected first diagnostic",
+      "primary_message_patterns_all": [
+        "(?i)@(?:usableFromInline|inlinable)",
+        "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+      ],
       "remove_only": "A4",
       "required_symbol": "SignalChannelID"
     },
     {
       "category": "serialized-ABI-access",
-      "diagnostic_patterns_all": [
-        "(?i)(?:@usableFromInline|@inlinable)",
-        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
-        "\\brawValue\\b"
+      "dependency_note_sources": [
+        "{cell}/inputs/SignalPrimitiveValues.swift"
       ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
       "diagnostic_source": "{cell}/AnalyzerPresentation.swift",
@@ -141,15 +147,17 @@
       "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
       "kind": "abi-negative",
       "later_stages": "unrun after expected first diagnostic",
+      "primary_message_patterns_all": [
+        "(?i)@(?:usableFromInline|inlinable)",
+        "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+      ],
       "remove_only": "A5",
       "required_symbol": "rawValue"
     },
     {
       "category": "serialized-ABI-access",
-      "diagnostic_patterns_all": [
-        "(?i)(?:@usableFromInline|@inlinable)",
-        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
-        "\\bSignalAnalyzerDiagnostic\\b"
+      "dependency_note_sources": [
+        "{cell}/inputs/SignalAnalyzerDiagnostic.swift"
       ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
       "diagnostic_source": "{cell}/inputs/AcquisitionState.swift",
@@ -162,15 +170,17 @@
       "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
       "kind": "abi-negative",
       "later_stages": "unrun after expected first diagnostic",
+      "primary_message_patterns_all": [
+        "(?i)@(?:usableFromInline|inlinable)",
+        "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+      ],
       "remove_only": "A6",
       "required_symbol": "SignalAnalyzerDiagnostic"
     },
     {
       "category": "serialized-ABI-access",
-      "diagnostic_patterns_all": [
-        "(?i)(?:@usableFromInline|@inlinable)",
-        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
-        "\\bmodel\\b"
+      "dependency_note_sources": [
+        "{cell}/inputs/Analyzer.swift"
       ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
       "diagnostic_source": "{cell}/AnalyzerPresentation.swift",
@@ -183,15 +193,17 @@
       "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
       "kind": "abi-negative",
       "later_stages": "unrun after expected first diagnostic",
+      "primary_message_patterns_all": [
+        "(?i)@(?:usableFromInline|inlinable)",
+        "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+      ],
       "remove_only": "A7",
       "required_symbol": "model"
     },
     {
       "category": "serialized-ABI-access",
-      "diagnostic_patterns_all": [
-        "(?i)(?:@usableFromInline|@inlinable)",
-        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
-        "\\bindex\\b"
+      "dependency_note_sources": [
+        "{cell}/inputs/Analyzer.swift"
       ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
       "diagnostic_source": "{cell}/AnalyzerPresentation.swift",
@@ -204,14 +216,17 @@
       "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
       "kind": "abi-negative",
       "later_stages": "unrun after expected first diagnostic",
+      "primary_message_patterns_all": [
+        "(?i)@(?:usableFromInline|inlinable)",
+        "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+      ],
       "remove_only": "A8",
       "required_symbol": "index"
     },
     {
       "category": "private-member-access",
-      "diagnostic_patterns_all": [
-        "(?i)inaccessible.*private",
-        "\\bstorage\\b"
+      "dependency_note_sources": [
+        "{positive-cell}/inputs/SignalAnalyzerDiagnostic.swift"
       ],
       "expected_nonzero": true,
       "files": [
@@ -222,13 +237,15 @@
       "kind": "privacy-negative",
       "package_name": "giftui",
       "positive_twin": "positive-semantics",
+      "primary_message_patterns_all": [
+        "(?i)inaccessible due to ['\"]private['\"] protection level"
+      ],
       "required_symbol": "storage"
     },
     {
       "category": "private-member-access",
-      "diagnostic_patterns_all": [
-        "(?i)inaccessible.*private",
-        "\\bcount\\b"
+      "dependency_note_sources": [
+        "{positive-cell}/inputs/SignalAnalyzerDiagnostic.swift"
       ],
       "expected_nonzero": true,
       "files": [
@@ -239,14 +256,14 @@
       "kind": "privacy-negative",
       "package_name": "giftui",
       "positive_twin": "positive-semantics",
+      "primary_message_patterns_all": [
+        "(?i)inaccessible due to ['\"]private['\"] protection level"
+      ],
       "required_symbol": "count"
     },
     {
       "category": "private-type-hidden",
-      "diagnostic_patterns_all": [
-        "(?i)cannot find.*in scope",
-        "\\bSignalAnalyzerDiagnosticStorage\\b"
-      ],
+      "dependency_note_sources": [],
       "expected_nonzero": true,
       "files": [
         "privacy/private-storage-type.swift"
@@ -256,13 +273,15 @@
       "kind": "privacy-negative",
       "package_name": "giftui",
       "positive_twin": "positive-semantics",
+      "primary_message_patterns_all": [
+        "(?i)cannot find (?:type )?['\"]SignalAnalyzerDiagnosticStorage['\"] in scope"
+      ],
       "required_symbol": "SignalAnalyzerDiagnosticStorage"
     },
     {
       "category": "private-member-access",
-      "diagnostic_patterns_all": [
-        "(?i)inaccessible.*private",
-        "\\bisContinuation\\b"
+      "dependency_note_sources": [
+        "{positive-cell}/inputs/SignalAnalyzerDiagnostic.swift"
       ],
       "expected_nonzero": true,
       "files": [
@@ -273,13 +292,15 @@
       "kind": "privacy-negative",
       "package_name": "giftui",
       "positive_twin": "positive-semantics",
+      "primary_message_patterns_all": [
+        "(?i)inaccessible due to ['\"]private['\"] protection level"
+      ],
       "required_symbol": "isContinuation"
     },
     {
       "category": "private-member-access",
-      "diagnostic_patterns_all": [
-        "(?i)inaccessible.*private",
-        "\\bisValidLeadingSequence\\b"
+      "dependency_note_sources": [
+        "{positive-cell}/inputs/SignalAnalyzerDiagnostic.swift"
       ],
       "expected_nonzero": true,
       "files": [
@@ -290,14 +311,14 @@
       "kind": "privacy-negative",
       "package_name": "giftui",
       "positive_twin": "positive-semantics",
+      "primary_message_patterns_all": [
+        "(?i)inaccessible due to ['\"]private['\"] protection level"
+      ],
       "required_symbol": "isValidLeadingSequence"
     },
     {
       "category": "package-nominal-hidden",
-      "diagnostic_patterns_all": [
-        "(?i)(?:inaccessible|cannot find.*in scope|package.*(?:access|use|reference))",
-        "\\bAcquisitionState\\b"
-      ],
+      "dependency_note_sources": [],
       "expected_nonzero": true,
       "files": [
         "privacy/outside-package-AcquisitionState.swift"
@@ -307,14 +328,14 @@
       "kind": "privacy-negative",
       "package_name": null,
       "positive_twin": "positive-semantics",
+      "primary_message_patterns_all": [
+        "(?i)(?:cannot find (?:type )?['\"]AcquisitionState['\"] in scope|['\"]AcquisitionState['\"] is inaccessible due to ['\"]package['\"] protection level)"
+      ],
       "required_symbol": "AcquisitionState"
     },
     {
       "category": "package-nominal-hidden",
-      "diagnostic_patterns_all": [
-        "(?i)(?:inaccessible|cannot find.*in scope|package.*(?:access|use|reference))",
-        "\\bSignalTransition\\b"
-      ],
+      "dependency_note_sources": [],
       "expected_nonzero": true,
       "files": [
         "privacy/outside-package-SignalTransition.swift"
@@ -324,14 +345,14 @@
       "kind": "privacy-negative",
       "package_name": null,
       "positive_twin": "positive-semantics",
+      "primary_message_patterns_all": [
+        "(?i)(?:cannot find (?:type )?['\"]SignalTransition['\"] in scope|['\"]SignalTransition['\"] is inaccessible due to ['\"]package['\"] protection level)"
+      ],
       "required_symbol": "SignalTransition"
     },
     {
       "category": "package-nominal-hidden",
-      "diagnostic_patterns_all": [
-        "(?i)(?:inaccessible|cannot find.*in scope|package.*(?:access|use|reference))",
-        "\\bSignalChannelID\\b"
-      ],
+      "dependency_note_sources": [],
       "expected_nonzero": true,
       "files": [
         "privacy/outside-package-SignalChannelID.swift"
@@ -341,14 +362,14 @@
       "kind": "privacy-negative",
       "package_name": null,
       "positive_twin": "positive-semantics",
+      "primary_message_patterns_all": [
+        "(?i)(?:cannot find (?:type )?['\"]SignalChannelID['\"] in scope|['\"]SignalChannelID['\"] is inaccessible due to ['\"]package['\"] protection level)"
+      ],
       "required_symbol": "SignalChannelID"
     },
     {
       "category": "package-nominal-hidden",
-      "diagnostic_patterns_all": [
-        "(?i)(?:inaccessible|cannot find.*in scope|package.*(?:access|use|reference))",
-        "\\bSignalAnalyzerDiagnostic\\b"
-      ],
+      "dependency_note_sources": [],
       "expected_nonzero": true,
       "files": [
         "privacy/outside-package-SignalAnalyzerDiagnostic.swift"
@@ -358,6 +379,9 @@
       "kind": "privacy-negative",
       "package_name": null,
       "positive_twin": "positive-semantics",
+      "primary_message_patterns_all": [
+        "(?i)(?:cannot find (?:type )?['\"]SignalAnalyzerDiagnostic['\"] in scope|['\"]SignalAnalyzerDiagnostic['\"] is inaccessible due to ['\"]package['\"] protection level)"
+      ],
       "required_symbol": "SignalAnalyzerDiagnostic"
     }
   ],
@@ -369,6 +393,14 @@
     "immutable expected category",
     "positive twin receipt"
   ],
+  "diagnostic_record_policy": {
+    "crash": "stack dump/trace, fatal/assertion/LLVM/crash/signal markers rejected even with exit 1",
+    "excerpts": "only the exact primary/note source line contributes, not surrounding code; gutter error/note repeats must match their located message exactly",
+    "exit": "exactly 1; zero, negative/signal and all other exit values rejected",
+    "notes": "notes attach only to their preceding primary in the same stream, at exact declared primary/dependency source paths; only the note target line contributes dependency evidence",
+    "primary": "every located error must be at the exact declared primary source and independently match primary-message cause plus exact dependency",
+    "unknown": "unlocated errors, orphan notes, unfamiliar note paths/formats, different named dependencies or unrelated primary errors STOP; no diagnostic tuning or wider acceptance"
+  },
   "explicit_omissions": [
     {
       "disposition": "OMITTED FROM PROPOSED CAMPAIGN",

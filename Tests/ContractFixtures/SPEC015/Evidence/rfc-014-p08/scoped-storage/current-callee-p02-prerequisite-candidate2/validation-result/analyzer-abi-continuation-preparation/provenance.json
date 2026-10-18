@@ -20,6 +20,14 @@
     }
   },
   "compiler_invocations": 0,
+  "diagnostic_hardening": {
+    "compiler_test_producer_formatter_invocations": 0,
+    "execution_allowance": false,
+    "maintained_or_generated_source_edits": 0,
+    "reviewed_packet_commit": "9a277744",
+    "scope": "packet-only primary diagnostic parser, fixed category/dependency fields, synthetic log data/receipts",
+    "synthetic_cases": 22
+  },
   "formatter_invocations": 0,
   "head": "03df67669f458b75664154b61cc3179416663820",
   "historical_files": {

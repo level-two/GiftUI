@@ -63,6 +63,7 @@
       "receipt_regex": "^P08_COUNTER_EVIDENCE (\\S+)\\s*$"
     }
   ],
+  "diagnostic_policy": "execute-proposal.py classify_negative_diagnostics: exact exit 1; reject crash/signal/unlocated errors; every primary independently matches exact source, primary-message category and selector using only its associated declared notes/target excerpts. controls.json freezes patterns/note files; unknown formats STOP.",
   "environment": {
     "PYTHONDONTWRITEBYTECODE": "1"
   },

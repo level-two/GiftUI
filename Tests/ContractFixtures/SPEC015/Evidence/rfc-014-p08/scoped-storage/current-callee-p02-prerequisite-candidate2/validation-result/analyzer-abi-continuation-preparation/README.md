@@ -4,6 +4,8 @@ Prepared 2026-10-18 from `03df67669f458b75664154b61cc3179416663820`.
 Static correction after independent Strong review of `7b940c93`: A4 now fails
 first in Domain; private-init is explicitly omitted; an exact guarded wrapper
 and four fresh macro stages replace unresolved wrapper/reuse choices.
+A subsequent packet-only correction hardens negative diagnostic qualification: all
+primary errors must independently match, and signal/crash exits cannot pass.
 **PREPARATION ONLY / STOP. No source or validation allowance is granted.**
 Candidate 2 remains candidate 1/1 consumed, run 1/1 consumed, repairs 0/0.
 This packet proposes one separate eight-selector candidate and one sequential
@@ -68,6 +70,10 @@ current-callee attribution, hardware, deployment and conformance remain open.
   read-only compiler identities. Dirty TargetHost/CMake/build scripts and existing
   pycache are excluded from edits; their presence is recorded honestly. Any of
   those files used transitively by a producer remains an input requiring identity.
+- `diagnostic-synthetic-cases.json` and `diagnostic-static-validation.json`: 22
+  in-memory log fixtures/checks for intended errors, notes/repeats, unrelated
+  primaries, wrong files, signal/crash output, unlocated errors and evidence leaks.
+  Only the pure parser function was evaluated; no wrapper/main/compiler path ran.
 - `static-validation.json` and `packet-hashes.json`: static checks and packet
   byte identities. These do not constitute compile, runtime or conformance proof.
 
@@ -168,7 +174,23 @@ suffixes beneath `.build/contracts`, `.build/raspberry-pi/contracts`, or
 profile-specific root in `output_roots`. Driver-created paths remain dynamic
 until discovered; that is producer behavior, not an unresolved guessed pathname.
 
-The wrapper freezes source locations and semantic diagnostic regexes for each
+The wrapper requires Swift diagnostic exit **exactly 1**. Zero, negative/signal
+and other exit values fail; stack/trace/fatal/assertion/crash markers fail even
+with exit 1. It parses every located primary error separately. Each must be at
+the exact declared source and independently match its primary-message category
+and declared dependency. Unrelated primary errors fail even when another error
+is expected. Unlocated errors fail.
+
+Associated notes must follow that primary in the same output stream and occur
+at a declared dependency/primary file. Only the exact target source line in each
+primary/note contributes symbol evidence; neighboring excerpts and other errors
+cannot supply missing evidence. Gutter error/note repeats must exactly match
+their located record. The wrapper records parsed primary records in its receipt.
+Unfamiliar imported/virtual declaration note paths are not preapproved; they
+stop rather than broadening the matcher. The exact future compiler note forms
+remain first-use uncertainty under B06.
+
+The wrapper freezes source locations and primary-message regexes for each
 negative. A4 targets `SignalPrimitiveValues.swift` during Domain compilation;
 A6 targets the associated payload use in `AcquisitionState.swift`. The removed
 private-initializer test is excluded from sources, invocation count and privacy
@@ -213,7 +235,8 @@ a compiler. B05 proposes restricted formatting for the exact three maintained
 files. B06 preserves first-use compiler/source/diagnostic uncertainty. The
 prepared sources and matchers are immutable for the proposed campaign; an
 unexpected error, unexpected acceptance, wrong stage or source location stops.
-The wrapper has been syntax/structure checked only; no compiler run was used to
+The wrapper has been syntax/structure checked, and its pure diagnostic parser
+has passed the 22 static in-memory synthetic log checks; no compiler run was used to
 invent or tune this correction.
 
 No automatic ninth selector, extra enum/helper visibility, alternate compiler,

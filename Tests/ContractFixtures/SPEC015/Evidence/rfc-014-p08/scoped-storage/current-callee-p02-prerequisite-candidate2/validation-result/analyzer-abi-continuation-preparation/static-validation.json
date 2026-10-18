@@ -1,5 +1,5 @@
 {
-  "check_count": 97,
+  "check_count": 102,
   "checks": [
     "eight unique selectors in exactly four files",
     "unchanged maintained/fixture baseline Sources/SignalAnalyzerDomain/AcquisitionState.swift",
@@ -97,7 +97,12 @@
     "fresh macro output map exact relocation",
     "fresh macro object list exact relocation",
     "macro metadata output locations use fresh campaign",
-    "B01 B02 B03 have explicit preparation dispositions"
+    "B01 B02 B03 have explicit preparation dispositions",
+    "22 static in-memory parser cases pass",
+    "negative parser requires exact diagnostic exit 1",
+    "negative parser classifies every primary independently",
+    "negative parser rejects wrong files and undeclared note files",
+    "negative parser records parsed primary evidence"
   ],
   "execution_authority": false,
   "macro_method_registration": "19 exact methods and selectors match; four fresh proposed macro stages replace historical compiled output reuse",

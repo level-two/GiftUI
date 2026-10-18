@@ -26,6 +26,83 @@ def read(name):
     return json.loads((PACKET / name).read_text())
 
 
+def classify_negative_diagnostics(control, exit_code, stdout, stderr, expected_path, dependency_paths):
+    """Pure fail-closed parser: each located primary must independently qualify.
+
+    Only Swift's normal diagnostic exit 1 is accepted. Notes/excerpts can establish
+    a dependency only within their own primary and at explicitly declared files.
+    Unknown formats/paths are a STOP, never a category learned from the log.
+    """
+    assert type(exit_code) is int and exit_code == 1, ('non-diagnostic exit', exit_code)
+    expected_path = str(expected_path)
+    allowed_notes = {expected_path, *map(str, dependency_paths)}
+    header = re.compile(r'^(.*?):([1-9][0-9]*):([1-9][0-9]*): (error|note|warning|remark): (.*)$')
+    source_line = re.compile(r'^\s*([0-9]+)\s*\| ?(.*)$')
+    gutter = re.compile(r'^\s*\|.*?\b(error|note|warning):\s*(.*)$')
+    crash = re.compile(
+        r'(?im)^.*(?:Stack dump:|Stack trace:|Please submit a bug report|'
+        r'LLVM ERROR:|Assertion failed:|Segmentation fault|Illegal instruction|'
+        r'Bus error|Abort trap|fatal error:|compiler crashed|failed due to signal|'
+        r'command failed with signal).*$')
+    records = []
+    for stream in (stdout, stderr):
+        assert not crash.search(stream), 'crash/fatal marker in diagnostic output'
+        current = section = None
+        for line in stream.splitlines():
+            match = header.fullmatch(line)
+            if match:
+                path, number, column, severity, message = match.groups()
+                item = {'file': path, 'line': int(number), 'column': int(column),
+                        'severity': severity, 'message': message, 'source': []}
+                if severity == 'error':
+                    assert path == expected_path, ('primary error in wrong file', path)
+                    current = {'primary': item, 'notes': []}
+                    records.append(current)
+                    section = item
+                elif severity == 'note':
+                    assert current is not None, 'orphan note has no associated primary'
+                    assert path in allowed_notes, ('note outside declared dependency files', path)
+                    current['notes'].append(item)
+                    section = item
+                else:
+                    # Warnings/remarks cannot contribute evidence to any error.
+                    current = section = None
+                continue
+            match = source_line.fullmatch(line)
+            if match:
+                if section is not None and int(match.group(1)) == section['line']:
+                    section['source'].append(match.group(2))
+                continue
+            match = gutter.fullmatch(line)
+            if match:
+                assert section is not None and match.group(1) == section['severity'] and match.group(2) == section['message'], (
+                    'gutter diagnostic is not an exact repeat of its located record', line)
+                continue
+            # A missing file/line/column is not an acceptable primary diagnostic.
+            if re.search(r'(?:^|\s|:)\b(?:fatal error|error):', line):
+                raise AssertionError(('unlocated/unparsed error record', line))
+    assert records, 'no located primary Swift errors'
+    symbol = control['required_symbol']
+    symbol_pattern = r'\b' + re.escape(symbol) + r'\b'
+    for record in records:
+        primary = record['primary']
+        message = primary['message']
+        assert all(re.search(pattern, message) for pattern in control['primary_message_patterns_all']), (
+            'unrelated primary error/category', message)
+        if control['category'] == 'serialized-ABI-access':
+            # A named inaccessible dependency must be this exact selector. Generic
+            # result/property eligibility errors use only their own target line
+            # and their own allowed declaration notes to identify the dependency.
+            names = re.findall(r"\b(?:struct|enum|class|type|property|getter|setter|method|initializer|function) '([^']+)'", message)
+            assert not names or symbol in names, ('different named ABI dependency', names)
+            evidence = '\n'.join([message, *primary['source'], *[
+                part for note in record['notes'] for part in [note['message'], *note['source']]]])
+            assert re.search(symbol_pattern, evidence), ('primary lacks declared ABI dependency', symbol)
+        else:
+            assert re.search(symbol_pattern, message), ('primary does not name declared dependency', symbol)
+    return records
+
+
 def main():
     assert len(sys.argv) == 3 and sys.argv[1] == '--execute-newly-authorized-campaign', (
         'STOP: proposal only; separate explicit source/campaign authorization required')
@@ -185,13 +262,11 @@ def main():
         return expand(plan['module_argv'], profile, cell, core, module=name,
                       source_list=plan['scratch_sources_by_module'][name])
 
-    def diagnostic(control, row, text, errors, expected_path):
-        assert row['exit'] != 0, ('unexpected negative acceptance', control['id'])
-        combined = text + errors
-        assert re.search(re.escape(str(expected_path)) + r':\d+:\d+: error:', combined), (
-            'missing diagnostic source location', control['id'])
-        assert all(re.search(pattern, combined) for pattern in control['diagnostic_patterns_all']), (
-            'unexpected diagnostic category', control['id'], control['category'])
+    def diagnostic(control, row, text, errors, expected_path, cell, positive_cell):
+        dependencies = [Path(name.replace('{cell}', str(cell)).replace('{positive-cell}', str(positive_cell)))
+                        for name in control['dependency_note_sources']]
+        records = classify_negative_diagnostics(control, row['exit'], text, errors, expected_path, dependencies)
+        row['primary_diagnostics'] = records
         row['expected_nonzero'] = True
         row['classified_category'] = control['category']
         row['diagnostic_source'] = str(expected_path)
@@ -287,7 +362,7 @@ def main():
                         row, output, errors = launch(label + name, argv)
                         if name == control['first_expected_stage']:
                             expected_path = Path(control['diagnostic_source'].replace('{cell}', str(cell)))
-                            diagnostic(control, row, output, errors, expected_path)
+                            diagnostic(control, row, output, errors, expected_path, cell, positive_cell)
                             break
                         assert row['exit'] == 0, ('unexpected earlier failure', control['id'], name)
                     else:
@@ -302,7 +377,7 @@ def main():
                     argv = expand(plan['scratch_negative_argv'], profile, cell, base, positive_cell,
                                   negative=path, outside=control['package_name'] is None)
                     row, output, errors = launch(label + 'client-emit-object', argv)
-                    diagnostic(control, row, output, errors, path)
+                    diagnostic(control, row, output, errors, path, cell, positive_cell)
                 control_receipt(control, profile, cell, base, positive_cell)
         assert len(state['control_receipts']) == len(controls['controls']) * 4 == 80
         values = {'core-macos-static': str(Path(refs['macos-static']['path']).parent)}
