@@ -1,0 +1,201 @@
+{
+  "baseline_dirty": [
+    " M Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+    " M Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+    " M firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+    " M scripts/nrf52840/build.sh",
+    " M scripts/raspberry-pi/build.sh",
+    "?? Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-campaign2-preparation/",
+    "?? scripts/contracts/__pycache__/"
+  ],
+  "campaign3": {
+    "campaign_invocations": 0,
+    "candidate_commit": "9bb82929",
+    "compiler_test_producer_formatter_invocations": 0,
+    "input_count": 541,
+    "parser_identity": {
+      "bytes": 9620,
+      "sha256": "fe25ee0d8918635c25aff6766f6541428311e16fbd6719603a50f592cd28001a"
+    },
+    "parser_imports_or_calls": 0,
+    "parser_source": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/diagnostic_parser.py",
+    "postformat_freeze": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-freeze/postformat-freeze.json",
+    "postformat_freeze_sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333",
+    "previous_campaign": "terminal STOP; allowance consumed; immutable archive",
+    "static_packet_freeze_sha256": "09b3cd74aa8faea8f4702b8cc061a9b580aee76c16994dcd66d49684663a74e5",
+    "static_result_commit": "02c65ea9",
+    "status": "preparation only; explicit new user execution allowance still required"
+  },
+  "campaign4": {
+    "campaign_invocations": 0,
+    "candidate_commit": "9bb82929",
+    "compiler_test_producer_formatter_invocations": 0,
+    "input_count": 541,
+    "parser_identity": {
+      "bytes": 12796,
+      "sha256": "6fe6a57c8d0937f25b5bfc3b33d3cfce5091916f93067c9f0a0d8139e6275f3e"
+    },
+    "parser_imports_or_calls": 0,
+    "parser_source": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/diagnostic_parser.py",
+    "postformat_freeze": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-freeze/postformat-freeze.json",
+    "postformat_freeze_sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333",
+    "predecessor_packet_commit": "2108379e5bf059586d989f42ced8a82c5fc1c021",
+    "previous_campaign": "campaign3 terminal A7 STOP; allowance consumed; immutable archive",
+    "static_packet_commit": "7bf633e0b5485d921ba137a5f206f435d2cf8e3a",
+    "static_packet_freeze": {
+      "bytes": 107555,
+      "sha256": "a271243acaa828e857ab03c1cb03f72e78cb02d68a807fbe646805ce801a60e8"
+    },
+    "static_result": {
+      "bytes": 45822,
+      "sha256": "43c16178dde87491c79403658ff8d70a1de4341a88bb136e82d7dbfe478835fd"
+    },
+    "static_result_commit": "7f5d9989f32debc6ad0f46f48fc65dd7f00acf53",
+    "status": "preparation only; separate explicit execution authorization required"
+  },
+  "candidate2": "candidate 1/1 consumed; run 1/1 consumed; automatic repairs 0/0",
+  "compiler_identities": {
+    ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    },
+    ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    }
+  },
+  "compiler_invocations": 0,
+  "diagnostic_hardening": {
+    "compiler_test_producer_formatter_invocations": 0,
+    "execution_allowance": false,
+    "maintained_or_generated_source_edits": 0,
+    "reviewed_packet_commit": "9a277744",
+    "scope": "packet-only primary diagnostic parser, fixed category/dependency fields, synthetic log data/receipts",
+    "synthetic_cases": 22
+  },
+  "formatter_invocations": 0,
+  "head": "03df67669f458b75664154b61cc3179416663820",
+  "historical_files": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/AnalyzerSchema.log": {
+      "bytes": 7360,
+      "sha256": "de911941bbf7fcb6aee9739b745906a4641be2a5eb5d2d325a1f8bba299a067f"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/AnalyzerSchema.swift": {
+      "bytes": 3247,
+      "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/runner-result.json": {
+      "bytes": 12629,
+      "sha256": "1fe685148784644e60c294bda8be45d514161582789fc9577c4e0d73e120295c"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation/prepared.json": {
+      "bytes": 13981,
+      "sha256": "66857b539f9b6ab842e6dbc305c271074d822afba6f5016398bc3dc99d589c7a"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation/run.py": {
+      "bytes": 8849,
+      "sha256": "a4bcbbae40d49eca52e14a84f48d6421973381d762e8437fa46e48240b25a926"
+    }
+  },
+  "producer_invocations": 0,
+  "review_context": "Assigning parent reports Astra Medium and Strong agreement that exactly these eight selectors preserve the P02 contract. This is review provenance supplied by the assignment, not new execution authorization.",
+  "source_commit_history": [
+    "778233fc",
+    "34601caa"
+  ],
+  "source_edits": 0,
+  "static_correction": {
+    "blockers": "A4 first stage; B01 wrapper; B02 initializer matcher; B03 historical macro qualification",
+    "compiler_test_producer_formatter_invocations": 0,
+    "disposition": "A4 corrected; exact guarded wrapper frozen; initializer control omitted; four fresh macro stages proposed",
+    "execution_allowance": false,
+    "maintained_or_generated_source_edits": 0,
+    "reviewed_packet_commit": "7b940c93"
+  },
+  "status": "static preparation; no compiler/test/producer/formatter invoked",
+  "successor_campaign": {
+    "authorization_provenance": "Assigning parent reports user authorized one fresh sequential campaign with restored pinned dependencies; Astra Medium approved same fixed eight-annotation source; zero automatic repairs or retries.",
+    "bootstrap_identity": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-recovery/bootstrap-identity.json",
+    "bootstrap_identity_commit": "babb1ef9",
+    "bootstrap_identity_sha256": "df0c4bbb3213e5f9f523690f038ded4740ac9c867a18935346900169133bf6b3",
+    "campaign": 2,
+    "campaign_invocations": 0,
+    "compiler_test_producer_formatter_invocations": 0,
+    "historical_campaign_disposition": "ENOSPC; .build cleanup deleted logs; P02 outcome unqualified; no historical PASS reused",
+    "original_packet": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-preparation",
+    "original_packet_files": {
+      "README.md": {
+        "bytes": 16315,
+        "sha256": "94d0e544308d613cf9bf6343259e12d87ce262165b6b0560a9dee3de2e556ee6"
+      },
+      "baseline-inputs.json": {
+        "bytes": 86847,
+        "sha256": "db158e6b6b540f0ebbdb869c554b4012b1e42132e220548a934edd67fcaf90eb"
+      },
+      "controls.json": {
+        "bytes": 18461,
+        "sha256": "3cee9a943e1dc1a2e67c6319ac992a7f78c652e2e20772c50fa6c80792435553"
+      },
+      "diagnostic-static-validation.json": {
+        "bytes": 4842,
+        "sha256": "e3fbc99a572f00852c10cb998c6984eeb75773e711b80c449b09a4b9de51f8be"
+      },
+      "diagnostic-synthetic-cases.json": {
+        "bytes": 40358,
+        "sha256": "f79bc14bbfdb36cd20f9178fa6aaef1f299233533cec7b485cd006e2ee4b3c99"
+      },
+      "execute-proposal.py": {
+        "bytes": 24949,
+        "sha256": "96ac75eb4653830f4ec6288bb491f1a2a4acc9ada8c952e9ccb954ee9b2f579e"
+      },
+      "macro-objects.txt": {
+        "bytes": 493,
+        "sha256": "1905f7628384bdc8b88e31d67e6c5d3ddddc1b7d24ef7b28a98d7b9004fef764"
+      },
+      "macro-outputs.json": {
+        "bytes": 3427,
+        "sha256": "75c7a471ff5c5ded3cc47a642569a672de657cd481c09bba1790c1c9553d98d5"
+      },
+      "macro-stages.json": {
+        "bytes": 11899,
+        "sha256": "add164451866986d43aaa84e9a9d4389e3d6bf3a57d1ab675e3cbbf476d11018"
+      },
+      "packet-hashes.json": {
+        "bytes": 1851,
+        "sha256": "ec8d9e9048ca67ecbd8ef20d2c8f5ae7deba928ce11a91b8cda7fcf52a37d3a4"
+      },
+      "provenance.json": {
+        "bytes": 4086,
+        "sha256": "f5cf569220bf1fe56c97f4c8cc152f25b0c3b54c2cdf4e0bab06a8abab6b9511"
+      },
+      "recipe.json": {
+        "bytes": 17424,
+        "sha256": "add71b86fe009386f1612c7188f6760b411d1323a250bce953a82892e9bbac99"
+      },
+      "scratch-sources.json": {
+        "bytes": 29930,
+        "sha256": "785599545b58e75b03cce6cabe5884f803519ebeba975b3057c1fb226bb9ea76"
+      },
+      "selectors.json": {
+        "bytes": 4489,
+        "sha256": "6c401231bf2c0dc4905b178df977ab3674506b9ef70d672af428af6a1898c17f"
+      },
+      "static-validation.json": {
+        "bytes": 7327,
+        "sha256": "2a87bf2de10319ab3278e5fa447023fbf1afea5d21766849e7086a7d1e8725b8"
+      }
+    },
+    "original_packet_hashes": {
+      "bytes": 1851,
+      "sha256": "ec8d9e9048ca67ecbd8ef20d2c8f5ae7deba928ce11a91b8cda7fcf52a37d3a4"
+    },
+    "postformat_freeze": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-freeze/postformat-freeze.json",
+    "postformat_freeze_commit": "1d8913c9",
+    "postformat_freeze_sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333",
+    "preparation_head": "babb1ef9c4985f7bdba39b1dedd8db65ff3dfa47",
+    "scope": "mechanical packet/output relocation only; same eight-annotation source and 541-input postformat freeze",
+    "source_candidate_commit": "9bb82929"
+  },
+  "test_invocations": 0,
+  "toolchain_edits": 0
+}

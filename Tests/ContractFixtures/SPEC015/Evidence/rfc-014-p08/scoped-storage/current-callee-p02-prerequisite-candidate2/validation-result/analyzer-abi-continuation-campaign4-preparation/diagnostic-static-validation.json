@@ -1,0 +1,163 @@
+{
+  "case_count": 22,
+  "compiler_test_producer_formatter_invocations": 0,
+  "evaluation": "Only pure parser FunctionDef extracted by AST; wrapper/main/process/compiler paths not imported or called.",
+  "parser_ast_sha256": "19c690d76f388f5d582d9b82b77f18b9697c9ef4a2a04860e6f6cf97a719dc35",
+  "results": [
+    {
+      "accepted": true,
+      "id": "intended-single-named-error",
+      "pass": true,
+      "primary_records": 1,
+      "rejection": null
+    },
+    {
+      "accepted": true,
+      "id": "intended-generic-error-with-declared-note-and-excerpt",
+      "pass": true,
+      "primary_records": 1,
+      "rejection": null
+    },
+    {
+      "accepted": true,
+      "id": "intended-repeated-located-errors-and-gutter-repeats",
+      "pass": true,
+      "primary_records": 2,
+      "rejection": null
+    },
+    {
+      "accepted": true,
+      "id": "private-primary-with-associated-declaration-note",
+      "pass": true,
+      "primary_records": 1,
+      "rejection": null
+    },
+    {
+      "accepted": true,
+      "id": "outside-package-nominal-hidden",
+      "pass": true,
+      "primary_records": 1,
+      "rejection": null
+    },
+    {
+      "accepted": false,
+      "id": "expected-plus-unrelated-primary-same-file",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "('unrelated primary error/category', \"cannot find 'missing' in scope\")"
+    },
+    {
+      "accepted": false,
+      "id": "expected-plus-primary-in-wrong-file",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "('primary error in wrong file', '/scratch/cell/Other.swift')"
+    },
+    {
+      "accepted": false,
+      "id": "wrong-primary-file-only",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "('primary error in wrong file', '/scratch/cell/Other.swift')"
+    },
+    {
+      "accepted": false,
+      "id": "negative-signal-exit",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "('non-diagnostic exit', -11)"
+    },
+    {
+      "accepted": false,
+      "id": "shell-signal-exit",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "('non-diagnostic exit', 139)"
+    },
+    {
+      "accepted": false,
+      "id": "nonstandard-positive-exit",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "('non-diagnostic exit', 2)"
+    },
+    {
+      "accepted": false,
+      "id": "unexpected-acceptance-zero-exit",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "('non-diagnostic exit', 0)"
+    },
+    {
+      "accepted": false,
+      "id": "crash-marker-despite-normal-exit",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "fatal-marker-despite-normal-exit",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "unlocated-driver-error",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "('unlocated/unparsed error record', 'error: emit-module command failed with exit code 1')"
+    },
+    {
+      "accepted": false,
+      "id": "unrelated-gutter-error-not-exact-repeat",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "('gutter diagnostic is not an exact repeat of its located record', \"   |             `- error: cannot find 'missing' in scope\")"
+    },
+    {
+      "accepted": false,
+      "id": "note-at-undeclared-dependency",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "('note outside declared dependency files', '/scratch/cell/Other.swift')"
+    },
+    {
+      "accepted": false,
+      "id": "neighboring-source-line-cannot-supply-symbol",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "('primary lacks declared ABI dependency', 'AcquisitionState')"
+    },
+    {
+      "accepted": false,
+      "id": "different-named-ABI-dependency",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "('different named ABI dependency', ['OtherState'])"
+    },
+    {
+      "accepted": false,
+      "id": "category-cannot-leak-from-note",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "('unrelated primary error/category', \"cannot find 'missing' in scope\")"
+    },
+    {
+      "accepted": false,
+      "id": "orphan-note-cannot-cross-streams",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "orphan note has no associated primary"
+    },
+    {
+      "accepted": false,
+      "id": "same-category-primary-missing-declared-symbol",
+      "pass": true,
+      "primary_records": null,
+      "rejection": "('primary lacks declared ABI dependency', 'AcquisitionState')"
+    }
+  ],
+  "status": "PASS STATIC IN-MEMORY DIAGNOSTIC PARSER CHECKS"
+}

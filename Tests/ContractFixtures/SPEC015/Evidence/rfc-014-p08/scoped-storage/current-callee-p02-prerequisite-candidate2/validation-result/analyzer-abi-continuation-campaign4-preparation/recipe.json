@@ -1,0 +1,405 @@
+{
+  "automatic_repairs": 0,
+  "base_flags": [
+    "-swift-version",
+    "6",
+    "-Osize",
+    "-whole-module-optimization",
+    "-enable-experimental-feature",
+    "LifetimeDependence",
+    "-enable-experimental-feature",
+    "Lifetimes",
+    "-package-name",
+    "giftui",
+    "-module-cache-path",
+    "{cell}/cache",
+    "-disable-sandbox"
+  ],
+  "compilers": {
+    "macos-dynamic": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "macos-static": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "nrf52840-embedded": "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "raspberry-pi-armv6": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc"
+  },
+  "cwd": "/Users/eugene/work/GiftUI",
+  "dependent_condition": "ALL four newly authorized profile cells and every declared scratch control PASS, plus all receipt qualifications; each dependent stage once in order, no focused/resume/import-legacy selectors",
+  "dependent_stages": [
+    {
+      "argv": [
+        "python3",
+        "scripts/contracts/check-spec-013-runtime-cycle.py",
+        "--profile",
+        "macos-static",
+        "--giftui-build",
+        "{core-macos-static}"
+      ],
+      "name": "P07",
+      "receipt_regex": "^P07 macos-static:[\\s\\S]*?;\\s*(\\S+/result\\.json)\\s*$"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/contracts/check-spec-015-schema4.py",
+        "--runtime-build",
+        "{runtime}",
+        "--activation-join"
+      ],
+      "name": "schema4-activation",
+      "receipt_regex": "^P08_SCHEMA4_EVIDENCE (\\S+)\\s*$"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/contracts/check-spec-015-counter.py",
+        "--profile",
+        "macos-static",
+        "--runtime-build",
+        "{runtime}",
+        "--host-build",
+        "{host}",
+        "--collect-failures"
+      ],
+      "name": "counter384",
+      "receipt_regex": "^P08_COUNTER_EVIDENCE (\\S+)\\s*$"
+    }
+  ],
+  "diagnostic_policy": "Byte-identical verified A7 successor parser; explicit opt-in only for macos-static / negative-A4 / SignalAnalyzerDomain and macos-static / negative-A7 / AnalyzerPresentation. Trusted actual bytes at predeclared resolved paths equal frozen scratch A4 or exact A7 generated snapshot. Other controls remain strict. See static-applicability.json.",
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "execution_argv": [
+    "python3",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-campaign4-preparation/execute-proposal.py",
+    "--execute-newly-authorized-campaign",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-freeze/postformat-freeze.json"
+  ],
+  "formatting_argv": [
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift",
+    "format",
+    "format",
+    "--configuration",
+    "/Users/eugene/work/GiftUI/.swift-format",
+    "--in-place",
+    "--no-color-diagnostics",
+    "/Users/eugene/work/GiftUI/Sources/SignalAnalyzerDomain/AcquisitionState.swift",
+    "/Users/eugene/work/GiftUI/Sources/SignalAnalyzerDomain/SignalPrimitiveValues.swift",
+    "/Users/eugene/work/GiftUI/Sources/SignalAnalyzerDomain/SignalAnalyzerDiagnostic.swift"
+  ],
+  "inherited_registered_P02_module_order": [
+    "compiler-version",
+    "required-features",
+    "host-macro-build",
+    "macro-check-build",
+    "macro-fixtures",
+    "GiftUI",
+    "counter-lowering",
+    "CounterSchema",
+    "CounterPresentation",
+    "SignalAnalyzerDomain",
+    "analyzer-lowering",
+    "AnalyzerSchema",
+    "AnalyzerPresentation",
+    "DeclarationHost",
+    "native-link/native-execution OR target-abi",
+    "six declaration/escape negatives",
+    "four source-lowering negatives",
+    "two private construction negatives",
+    "P02 result.json",
+    "registered P04"
+  ],
+  "lock": [
+    "ruby",
+    "scripts/lib/serialize-validation.rb",
+    "python3",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-campaign4-preparation/execute-proposal.py",
+    "--execute-newly-authorized-campaign",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-freeze/postformat-freeze.json"
+  ],
+  "lower_argv": [
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+    "--lower-source",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+    "{cell}/inputs/Analyzer.swift",
+    "{cell}/AnalyzerSchema.swift",
+    "{cell}/AnalyzerPresentation.swift"
+  ],
+  "macro_test_disposition": "Propose fresh macro compile/link/test-link/tests once before the first P02 profile. Exact commands and relocated output metadata are frozen in macro-stages.json, macro-outputs.json, macro-objects.txt. Prior 19-method PASS is provenance only. This adds four explicit proposed stages to the requested new allowance; none is currently authorized.",
+  "materialization": "After authorization only: create source text bytes from scratch-sources.json without transformations except the one predeclared negative source replacement. Domain input order is fixed in scratch_sources_by_module. Copy positive Analyzer.swift text into every cell, except negative-A7/A8 use the declared text; copy three positive Domain texts, replacing only the designated negative-A1..A6 Domain input. Other scratch sources inherit positive text. Lowerer creates schema/presentation once per cell; generated output is never patched. Semantics/ABIRead use the positive cell modules. Outside-package negatives remove only package-name flags. Reject preexisting cell/cache/output paths and duplicate lowerer invocation.",
+  "module_argv": [
+    "{compiler}",
+    "{flags...}",
+    "-I",
+    "{cell}",
+    "-I",
+    "{core}",
+    "-parse-as-library",
+    "-module-name",
+    "{module}",
+    "-emit-module",
+    "-emit-object",
+    "{sources...}",
+    "-emit-module-path",
+    "{cell}/{module}.swiftmodule",
+    "-o",
+    "{cell}/{module}.o"
+  ],
+  "native_semantics_execute_argv": [
+    "{positive-cell}/semantics"
+  ],
+  "native_semantics_link_argv": [
+    "{compiler}",
+    "{flags...}",
+    "-I",
+    "{positive-cell}",
+    "-parse-as-library",
+    "{positive-cell}/inputs/Main.swift",
+    "{positive-cell}/ABISemantics.o",
+    "{positive-cell}/SignalAnalyzerDomain.o",
+    "-o",
+    "{positive-cell}/semantics"
+  ],
+  "open_boundaries": [
+    "B04: macOS SDK path is frozen to the existing working P02 transcript MacOSX26.5.sdk. At execution preflight the driver xcrun SDK discovery must equal this path. Any other path requires static recipe review before a compiler invocation.",
+    "B05: formatting uses the repository policy command directly for three files because scripts/format-swift.sh has no file selector and would touch unrelated dirty files. This exact restricted invocation requires inclusion in the authorization; never invoke the broad wrapper during this bounded candidate.",
+    "B06: No scratch compile has established acceptance of these source texts or exact diagnostic wording. Their sources, command templates and semantic diagnostic categories are fixed; approval must explicitly accept the first-use compiler uncertainty. Any syntax/type/link error outside the declared category is a material STOP, never a setup retry."
+  ],
+  "output_root": ".build/contracts/p08-analyzer-abi-continuation-campaign4",
+  "output_roots": {
+    "macos-dynamic": ".build/contracts/p08-analyzer-abi-continuation-campaign4/macos-dynamic",
+    "macos-static": ".build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static",
+    "nrf52840-embedded": ".build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign4/nrf52840-embedded",
+    "raspberry-pi-armv6": ".build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign4/raspberry-pi-armv6"
+  },
+  "plugin_flags": [
+    "-load-plugin-executable",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros"
+  ],
+  "postformat_freeze_schema": {
+    "absolute_path_required": true,
+    "formatting": "source edit and exact three-file formatter invocation happen outside this compiler wrapper under separately granted authorization; freeze itself and its SHA-256 are captured in campaign result before execution",
+    "keys": "exact same path-key set as baseline-inputs.json; only the four selectors.json source paths may have replacement hashes, all others identical",
+    "source_semantics": "wrapper independently requires inserted attribute token equality and exact fixture proposed hash; maintained files may have formatter-only whitespace changes"
+  },
+  "profile_cell_order": [
+    "registered-P02-including-P04",
+    "qualify-fresh-receipts",
+    "scratch-positive-actual-lowering",
+    "scratch-positive-serialized-read",
+    "scratch-positive-semantics",
+    "negative-A1",
+    "negative-A2",
+    "negative-A3",
+    "negative-A4",
+    "negative-A5",
+    "negative-A6",
+    "negative-A7",
+    "negative-A8",
+    "private-storage",
+    "private-count",
+    "private-storage-type",
+    "private-helper-continuation",
+    "private-helper-leading",
+    "outside-package-AcquisitionState",
+    "outside-package-SignalTransition",
+    "outside-package-SignalChannelID",
+    "outside-package-SignalAnalyzerDiagnostic"
+  ],
+  "profile_commands": [
+    {
+      "argv": [
+        "scripts/contracts/run-spec-006.sh",
+        "--profile",
+        "macos-static",
+        "--compiler-baseline",
+        "rfc-014"
+      ],
+      "condition": "new authorization, frozen postformat inputs, prior cells PASS; macos-static first",
+      "profile": "macos-static",
+      "stderr": ".build/contracts/p08-analyzer-abi-continuation-campaign4/logs/P02-macos-static.stderr",
+      "stdout": ".build/contracts/p08-analyzer-abi-continuation-campaign4/logs/P02-macos-static.stdout"
+    },
+    {
+      "argv": [
+        "scripts/contracts/run-spec-006.sh",
+        "--profile",
+        "raspberry-pi-armv6",
+        "--compiler-baseline",
+        "rfc-014"
+      ],
+      "condition": "new authorization, frozen postformat inputs, prior cells PASS; macos-static first",
+      "profile": "raspberry-pi-armv6",
+      "stderr": ".build/contracts/p08-analyzer-abi-continuation-campaign4/logs/P02-raspberry-pi-armv6.stderr",
+      "stdout": ".build/contracts/p08-analyzer-abi-continuation-campaign4/logs/P02-raspberry-pi-armv6.stdout"
+    },
+    {
+      "argv": [
+        "scripts/contracts/run-spec-006.sh",
+        "--profile",
+        "nrf52840-embedded",
+        "--compiler-baseline",
+        "rfc-014"
+      ],
+      "condition": "new authorization, frozen postformat inputs, prior cells PASS; macos-static first",
+      "profile": "nrf52840-embedded",
+      "stderr": ".build/contracts/p08-analyzer-abi-continuation-campaign4/logs/P02-nrf52840-embedded.stderr",
+      "stdout": ".build/contracts/p08-analyzer-abi-continuation-campaign4/logs/P02-nrf52840-embedded.stdout"
+    },
+    {
+      "argv": [
+        "scripts/contracts/run-spec-006.sh",
+        "--profile",
+        "macos-dynamic",
+        "--compiler-baseline",
+        "rfc-014"
+      ],
+      "condition": "new authorization, frozen postformat inputs, prior cells PASS; macos-static first",
+      "profile": "macos-dynamic",
+      "stderr": ".build/contracts/p08-analyzer-abi-continuation-campaign4/logs/P02-macos-dynamic.stderr",
+      "stdout": ".build/contracts/p08-analyzer-abi-continuation-campaign4/logs/P02-macos-dynamic.stdout"
+    }
+  ],
+  "profile_flags": {
+    "macos-dynamic": [
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-D",
+      "GIFTUI_DYNAMIC_PROFILE"
+    ],
+    "macos-static": [
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk"
+    ],
+    "nrf52840-embedded": [
+      "-target",
+      "armv7em-none-none-eabi",
+      "-enable-experimental-feature",
+      "Embedded",
+      "-Xcc",
+      "-mcpu=cortex-m4",
+      "-Xcc",
+      "-mfloat-abi=hard",
+      "-Xcc",
+      "-mfpu=fpv4-sp-d16"
+    ],
+    "raspberry-pi-armv6": [
+      "-target",
+      "armv6-unknown-linux-gnueabihf",
+      "-sdk",
+      "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+      "-resource-dir",
+      "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+      "-use-ld=lld",
+      "-Xcc",
+      "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+      "-Xcc",
+      "-march=armv6",
+      "-Xcc",
+      "-mfloat-abi=hard",
+      "-Xcc",
+      "-mfpu=vfp"
+    ]
+  },
+  "profile_order": [
+    "macos-static",
+    "raspberry-pi-armv6",
+    "nrf52840-embedded",
+    "macos-dynamic"
+  ],
+  "resolved_preparation_blockers": {
+    "B01": "Frozen proposed execute-proposal.py is the exact campaign/receipt wrapper; AST/static validation only, not executed. It never edits maintained/generated sources manually. External reviewed postformat freeze is required before future invocation.",
+    "B02": "Private-initializer negative explicitly omitted; exact 20 controls/profile. No passing initializer-privacy claim; later coverage needs its own proposal/allowance.",
+    "B03": "No reuse of historical macro PASS. Four fresh exact stages are frozen in macro-stages.json, mechanically relocated from the candidate2 working command shapes. Future authorization must include these stages."
+  },
+  "retries": 0,
+  "scratch_declaration_native_execute_argv": [
+    "{positive-cell}/declarations"
+  ],
+  "scratch_declaration_native_link_argv": [
+    "{compiler}",
+    "{flags...}",
+    "-I",
+    "{positive-cell}",
+    "-I",
+    "{core}",
+    "-parse-as-library",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Main.swift",
+    "{core}/GiftUI.o",
+    "{core}/CounterSchema.o",
+    "{core}/CounterPresentation.o",
+    "{positive-cell}/SignalAnalyzerDomain.o",
+    "{positive-cell}/AnalyzerSchema.o",
+    "{positive-cell}/AnalyzerPresentation.o",
+    "{positive-cell}/DeclarationHost.o",
+    "-o",
+    "{positive-cell}/declarations"
+  ],
+  "scratch_module_order": [
+    "SignalAnalyzerDomain",
+    "lower-Analyzer-source",
+    "AnalyzerSchema",
+    "AnalyzerPresentation",
+    "DeclarationHost",
+    "native-declaration-link-and-execute (macos only; exact stdout checks=120 failures=0)",
+    "ABIRead",
+    "ABISemantics",
+    "native-semantics-link-and-execute (macos only)"
+  ],
+  "scratch_negative_argv": [
+    "{compiler}",
+    "{flags...}",
+    "-I",
+    "{positive-cell}",
+    "-I",
+    "{core}",
+    "-parse-as-library",
+    "-emit-object",
+    "{negative-source}",
+    "-o",
+    "{cell}/negative.o"
+  ],
+  "scratch_sources_by_module": {
+    "ABIRead": [
+      "{cell}/inputs/ABIRead.swift"
+    ],
+    "ABISemantics": [
+      "{cell}/inputs/Semantics.swift"
+    ],
+    "AnalyzerPresentation": [
+      "{cell}/AnalyzerPresentation.swift"
+    ],
+    "AnalyzerSchema": [
+      "{cell}/AnalyzerSchema.swift"
+    ],
+    "DeclarationHost": [
+      "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/DeclarationHost.swift"
+    ],
+    "SignalAnalyzerDomain": [
+      "{cell}/inputs/SignalPrimitiveValues.swift",
+      "{cell}/inputs/AcquisitionState.swift",
+      "{cell}/inputs/SignalAnalyzerDiagnostic.swift"
+    ]
+  },
+  "source_candidates": 1,
+  "status": "CAMPAIGN4 PREPARATION ONLY; NO EXECUTION AUTHORITY",
+  "target_readelf_argv": [
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+    "-h",
+    "-A",
+    "{cell}/DeclarationHost.o"
+  ],
+  "token_expansion": {
+    "campaign-command": "execution_argv with the separately reviewed absolute postformat freeze JSON pathname; wrapper re-execs itself under existing lock before output creation",
+    "cell": "fresh output_roots[profile]/scratch/<control-id>; assert path absent before creating. inputs/ materializes only manifest text or source byte copies listed here.",
+    "compiler": "absolute compilers[profile] value, verified by provenance hash",
+    "core": "fresh P02 result.json parent discovered uniquely from the same profile stdout; never latest, historical or guessed path",
+    "core-macos-static,runtime,host": "fresh qualified result.json parent directories, not result.json paths; resolve sequentially from unique stage output",
+    "flags...": "base_flags + profile_flags[profile] + plugin_flags; substitute cell with fresh cell directory. For outside-package-* ONLY remove the exact adjacent -package-name,giftui pair. For every other control retain it.",
+    "module,sources...": "scratch_sources_by_module order and exact list, sources expanded to individual argv tokens",
+    "negative-source": "one manifest privacy source file materialized beneath fresh cell/inputs; ABI negatives instead rebuild affected scratch Domain and downstream modules via module_argv, then stop at first expected diagnostic",
+    "positive-cell": "same profile positive-actual-lowering cell containing scratch Domain/schema/presentation modules; no negative cell may overwrite it"
+  }
+}

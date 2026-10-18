@@ -1,0 +1,71 @@
+{
+  "all_other_nested_wrapper_functions_ast_identical": true,
+  "assertion_guard": "explicit non-assert rejection of optimized Python before guarded checks",
+  "candidate_source_input_count": 541,
+  "compiler_identities": {
+    ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    },
+    ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    }
+  },
+  "compiler_test_producer_formatter_campaign_invocations": 0,
+  "controls_byte_identical": true,
+  "exact_postformat_freeze": {
+    "bytes": 86847,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-freeze/postformat-freeze.json",
+    "sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333"
+  },
+  "execution_sequence": {
+    "automatic_repairs": 0,
+    "controls_per_profile": 20,
+    "dependent_stages": [
+      "P07",
+      "schema4-activation",
+      "counter384"
+    ],
+    "macro_stages": 4,
+    "profiles": [
+      "macos-static",
+      "raspberry-pi-armv6",
+      "nrf52840-embedded",
+      "macos-dynamic"
+    ],
+    "retries": 0,
+    "stop": "first material failure; all later stages unrun",
+    "total_controls": 80
+  },
+  "input_mismatches": [],
+  "macro_files_exact_mechanical_relocation": true,
+  "mechanical_relocation_files": [
+    "recipe.json (plus explicit freeze/status/policy metadata)",
+    "macro-stages.json",
+    "macro-outputs.json",
+    "macro-objects.txt"
+  ],
+  "only_nested_function_changed": "diagnostic",
+  "output_roots_absent": {
+    "campaign": true,
+    "macos-dynamic": true,
+    "macos-static": true,
+    "nrf52840-embedded": true,
+    "raspberry-pi-armv6": true
+  },
+  "parser_calls": 0,
+  "parser_copy_identical": true,
+  "parser_imports": 0,
+  "preserved_files": 122,
+  "recipe_delta_keys_after_mechanical_relocation": [
+    "diagnostic_policy",
+    "execution_argv",
+    "lock",
+    "status"
+  ],
+  "sdk": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+  "static_receipts": "inherited receipts are provenance; only static-fixture-receipt.json applies to exact copied parser bytes; wrapper unexecuted",
+  "status": "STATIC PREPARATION ONLY",
+  "wrapper_ast_parse": true
+}
