@@ -3,15 +3,19 @@ import GiftUISemanticCore
 
 /// Lexical join between Semantic Core's traversal and the existing State owner.
 /// The bridge owns no model, read scope, or independent registration lifetime.
+@usableFromInline
 package struct ObservableSemanticBodyBinding<
     Model: ObservableStateModel & ~Copyable,
     Identity: Equatable & Sendable,
     Domain: _GiftUIReadDomain
 >: ~Copyable, ~Escapable, SemanticStatefulBinding
 where Domain.Slot == ObservableModelReadSlot<Model> {
+    @usableFromInline
     package typealias Failure = ObservableStateError
-    private let models: ObservableModelScope<Model, Model.Schema>
-    private let root: ObservableStateRootScope<Model, Identity>
+    @usableFromInline
+    internal let models: ObservableModelScope<Model, Model.Schema>
+    @usableFromInline
+    internal let root: ObservableStateRootScope<Model, Identity>
 
     @_lifetime(copy models, copy root)
     package init(

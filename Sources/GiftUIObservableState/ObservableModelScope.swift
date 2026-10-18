@@ -61,6 +61,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
 
     // Concrete joins must match the actual owner backing, not merely a schema
     // or a numeric identity issued by a different namespace.
+    @inlinable
     package borrowing func sharesOwner(with other: borrowing ObservableModelScope<Model, Schema>)
         -> Bool
     {
@@ -87,6 +88,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         if let failure = ownership.pointee.operationAllowed(discovery: discovery) { throw failure }
     }
 
+    @inlinable
     package var phase: ObservableModelOwnership.Phase { ownership.pointee.phase }
 
     package borrowing func requireStop() { ownership.pointee.retireActivation() }
@@ -127,6 +129,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         }
     }
 
+    @inlinable
     package borrowing func report(_ key: _GiftUIModelKey<Schema>)
         -> _GiftUIObservableChangeReportOutcome
     where Model: ObservableStateModel, Model.Schema == Schema {
@@ -233,6 +236,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         return try body()
     }
 
+    @inlinable
     package borrowing func mutate(
         _ key: _GiftUIModelKey<Schema>, mutation: Model.Mutation,
         report: () -> _GiftUIObservableChangeReportOutcome
@@ -242,6 +246,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
 
     /// The finite host action operation is constructed only after mutation
     /// authority is acquired; no unchecked model callback is exposed.
+    @inlinable
     package borrowing func mutate(
         _ key: _GiftUIModelKey<Schema>, operation: () -> Model.Mutation,
         report: () -> _GiftUIObservableChangeReportOutcome
@@ -275,6 +280,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         try ownership.pointee.beginFrame()
     }
 
+    @inlinable
     package borrowing func endFrame() throws(ObservableStateError) {
         try ownership.pointee.endFrame { models[Int($0)] = nil }
     }

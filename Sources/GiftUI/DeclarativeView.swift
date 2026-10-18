@@ -34,6 +34,7 @@ public struct _GiftUIModelKey<Schema>: Equatable {
     private let allocationGeneration: UInt32
     private let slot: UInt16
 
+    @usableFromInline
     package init(ownerInstance: UInt32, allocationGeneration: UInt32, slot: UInt16) {
         self.ownerInstance = ownerInstance
         self.allocationGeneration = allocationGeneration
@@ -41,8 +42,11 @@ public struct _GiftUIModelKey<Schema>: Equatable {
     }
 
     // Only package-owned generated schemas and host bridges can inspect this value.
+    @usableFromInline
     package var _giftUIOwnerInstance: UInt32 { ownerInstance }
+    @usableFromInline
     package var _giftUIAllocationGeneration: UInt32 { allocationGeneration }
+    @usableFromInline
     package var _giftUISlot: UInt16 { slot }
 }
 

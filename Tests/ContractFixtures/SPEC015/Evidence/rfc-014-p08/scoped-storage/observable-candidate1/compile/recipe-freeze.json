@@ -1,0 +1,5 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-candidate1/compile/run.py": "75fda06ecfe1b6f652e8017ce3a124d4192083fd9712ff1461862dc3acb33ef9",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-candidate1/compile/prepared.json": "4a86b26119641fc5d2c21f54d64f7a58f69f4a2043a4af65500687ea1b1ace48",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-candidate1/compile/input-freeze.json": "e9c2014b41af3bba922cdab67016bde9863c954bcef8bf834e79b539e8b99f9a"
+}

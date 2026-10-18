@@ -34,7 +34,15 @@ at d9fc4359: 36 sites/five files/four roots and required-three-scalar Address
 equivalent. Separate source/budget authorization required; current FAIL/STOP and
 prior PASS retained, no further execution or full23/42 acceptance.
 
-Current [grouped B-observable proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-grouped-inventory/README.md):
+Current [authorized grouped B candidate1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-candidate1/README.md):
+exact36sites/five files applied/formatted/tokenaudited, Address3requiredscalarargs;
+582other prior587inputs unchanged. ONEcandidate1/1/no automaticrepairs, oldbudgets
+preserved. Combined fresh25→55privacy→8indexes/34bodies→conditional42SIL/object
+recipe frozen/staticvalidationPASS;340compile+393qualificationstaticinputs plus
+futurefreshartifactseal. No compiler/decoder/runtime executed; other16sourceedits0.
+Fullactualcallback/safety/strictcold/P08 remain unaccepted.
+
+Historical [grouped B-observable proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-grouped-inventory/README.md):
 all4roots/sharedhelpers mapped together,36sites/five files incl guarded3scalarAddress
 memberwise equivalent. Rawkeyprivate/authoredState/P08private/14loans preserved;
 ordinaryABI leafcosts+relatedcallbacks explicit.587inputs unchanged, no source/

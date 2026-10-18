@@ -26,15 +26,21 @@ package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
 /// duplicate owner and cannot construct an unchecked root scope.
 @usableFromInline
 package struct ObservableStateRootControl {
+    @usableFromInline
     struct Record {
+        @usableFromInline
         var ordinal: UInt16 = 0
+        @usableFromInline
         var keyOwner: UInt32 = 0
+        @usableFromInline
         var keyGeneration: UInt32 = 0
         var attachment: _GiftUIObservationAttachment?
+        @usableFromInline
         var published = false
         var encountered = false
     }
-    fileprivate var records: InlineArray<2, Record> = .init(repeating: Record())
+    @usableFromInline
+    internal var records: InlineArray<2, Record> = .init(repeating: Record())
     @usableFromInline var reports = ObservableStateRootReports()
     @usableFromInline
     var offeredClaims: InlineArray<4, ObservableModelOwnership.Claim?> = .init(
@@ -42,8 +48,10 @@ package struct ObservableStateRootControl {
     @usableFromInline
     var nextGeneration: UInt32? = 0
     fileprivate var candidateActive = false
-    fileprivate var operationActive = false
-    fileprivate var retired = false
+    @usableFromInline
+    internal var operationActive = false
+    @usableFromInline
+    internal var retired = false
     @usableFromInline var limits = ObservableStateLimits(
         maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!
 
@@ -72,6 +80,7 @@ struct ObservableStateRootReports {
         var dirty = false
     }
     var routes: InlineArray<2, Route> = .init(repeating: Route())
+    @usableFromInline
     var mutationReporting = false
 
     mutating func report(_ attachment: _GiftUIObservationAttachment)
@@ -202,6 +211,7 @@ package struct ObservableStateRootScope<
         reports = other.reports
     }
 
+    @inlinable
     package borrowing func belongs(to scope: borrowing ObservableModelScope<Model, Model.Schema>)
         -> Bool
     {
@@ -229,7 +239,8 @@ package struct ObservableStateRootScope<
         } catch { return .failure(error) }
     }
 
-    private borrowing func matching(_ identity: Identity, ordinal: UInt16) -> Int? {
+    @inlinable
+    internal borrowing func matching(_ identity: Identity, ordinal: UInt16) -> Int? {
         for i in 0 ..< 2
         where identities[i] == identity
             && records.pointee.records[i].ordinal == ordinal
@@ -237,13 +248,15 @@ package struct ObservableStateRootScope<
         return nil
     }
 
-    private borrowing func key(at slot: Int) -> _GiftUIModelKey<Model.Schema> {
+    @inlinable
+    internal borrowing func key(at slot: Int) -> _GiftUIModelKey<Model.Schema> {
         let record = records.pointee.records[slot]
         return _GiftUIModelKey(
             ownerInstance: record.keyOwner, allocationGeneration: record.keyGeneration,
             slot: UInt16(slot))
     }
 
+    @inlinable
     package borrowing func modelKey(identity: Identity, ordinal: UInt16) -> _GiftUIModelKey<
         Model.Schema
     >? {
@@ -598,6 +611,7 @@ package struct ObservableStateRootScope<
         } catch { return .failure(error) }
     }
 
+    @inlinable
     package borrowing func mutate(_ key: _GiftUIModelKey<Model.Schema>, mutation: Model.Mutation)
         -> ObservableStateResult where Model: ObservableModelMutation
     {

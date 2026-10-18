@@ -4,6 +4,7 @@ import GiftUI
 // bytes separately; this ledger never contains or copies capture payloads.
 @usableFromInline
 package struct ObservableModelOwnership: ~Copyable {
+    @usableFromInline
     package enum Phase: UInt8 {
         case mutating, writing, reading, discovering, replacing, retired
     }
@@ -14,6 +15,13 @@ package struct ObservableModelOwnership: ~Copyable {
         package let generation: UInt32
         @usableFromInline
         package let slot: UInt16
+
+        @usableFromInline
+        internal init(owner: UInt32, generation: UInt32, slot: UInt16) {
+            self.owner = owner
+            self.generation = generation
+            self.slot = slot
+        }
     }
 
     // A claim descriptor is private bookkeeping, not an application ticket.
@@ -57,6 +65,7 @@ package struct ObservableModelOwnership: ~Copyable {
     private let claimLimit: UInt16
     private let pinLimit: UInt16
     private let captureLimit: UInt16
+    @usableFromInline
     package private(set) var phase: Phase = .mutating
     private var activeRead = false
     private var replacement: Replacement?
@@ -135,6 +144,7 @@ package struct ObservableModelOwnership: ~Copyable {
             slot: address.slot)
     }
 
+    @inlinable
     package func address<Schema>(for key: _GiftUIModelKey<Schema>) -> Address {
         Address(
             owner: key._giftUIOwnerInstance, generation: key._giftUIAllocationGeneration,
@@ -172,6 +182,7 @@ package struct ObservableModelOwnership: ~Copyable {
         return index
     }
 
+    @usableFromInline
     package mutating func beginMutation(_ address: Address, schema: UInt16)
         throws(ObservableStateError) -> Int
     {
@@ -182,6 +193,7 @@ package struct ObservableModelOwnership: ~Copyable {
         return index
     }
 
+    @usableFromInline
     package mutating func endMutation() {
         // Only the checked operation route can enter this phase. Keeping its
         // end non-failing avoids inventing a rollback after an admitted commit.
@@ -206,6 +218,7 @@ package struct ObservableModelOwnership: ~Copyable {
         guard !records[index].registered else { throw .duplicateOwner }
     }
 
+    @usableFromInline
     package func callbackIndex(_ address: Address, schema: UInt16)
         throws(ObservableStateError) -> Int
     {
@@ -349,6 +362,7 @@ package struct ObservableModelOwnership: ~Copyable {
         activeRead = false
     }
 
+    @usableFromInline
     package mutating func endFrame(reclaim: (UInt16) -> Void) throws(ObservableStateError) {
         guard phase == .reading, !activeRead else { throw .invalidPhaseSafetyNotProven }
         for index in 0 ..< Int(modelLimit) {

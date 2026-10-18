@@ -1,0 +1,100 @@
+--- a/Sources/GiftUI/DeclarativeView.swift
++++ b/Sources/GiftUI/DeclarativeView.swift
+@@ -36,0 +37 @@
++    @usableFromInline
+@@ -43,0 +45 @@
++    @usableFromInline
+@@ -44,0 +47 @@
++    @usableFromInline
+@@ -45,0 +49 @@
++    @usableFromInline
+--- a/Sources/GiftUIObservableState/ObservableModelOwnership.swift
++++ b/Sources/GiftUIObservableState/ObservableModelOwnership.swift
+@@ -6,0 +7 @@
++    @usableFromInline
+@@ -16,0 +18,7 @@
++
++        @usableFromInline
++        internal init(owner: UInt32, generation: UInt32, slot: UInt16) {
++            self.owner = owner
++            self.generation = generation
++            self.slot = slot
++        }
+@@ -59,0 +68 @@
++    @usableFromInline
+@@ -137,0 +147 @@
++    @inlinable
+@@ -174,0 +185 @@
++    @usableFromInline
+@@ -184,0 +196 @@
++    @usableFromInline
+@@ -208,0 +221 @@
++    @usableFromInline
+@@ -351,0 +365 @@
++    @usableFromInline
+--- a/Sources/GiftUIObservableState/ObservableModelScope.swift
++++ b/Sources/GiftUIObservableState/ObservableModelScope.swift
+@@ -63,0 +64 @@
++    @inlinable
+@@ -89,0 +91 @@
++    @inlinable
+@@ -129,0 +132 @@
++    @inlinable
+@@ -235,0 +239 @@
++    @inlinable
+@@ -244,0 +249 @@
++    @inlinable
+@@ -277,0 +283 @@
++    @inlinable
+--- a/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift
++++ b/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift
+@@ -5,0 +6 @@
++@usableFromInline
+@@ -11,0 +13 @@
++    @usableFromInline
+@@ -13,2 +15,4 @@
+-    private let models: ObservableModelScope<Model, Model.Schema>
+-    private let root: ObservableStateRootScope<Model, Identity>
++    @usableFromInline
++    internal let models: ObservableModelScope<Model, Model.Schema>
++    @usableFromInline
++    internal let root: ObservableStateRootScope<Model, Identity>
+--- a/Sources/GiftUIObservableState/ObservableStateRootScope.swift
++++ b/Sources/GiftUIObservableState/ObservableStateRootScope.swift
+@@ -28,0 +29 @@
++    @usableFromInline
+@@ -29,0 +31 @@
++        @usableFromInline
+@@ -30,0 +33 @@
++        @usableFromInline
+@@ -31,0 +35 @@
++        @usableFromInline
+@@ -33,0 +38 @@
++        @usableFromInline
+@@ -37 +42,2 @@
+-    fileprivate var records: InlineArray<2, Record> = .init(repeating: Record())
++    @usableFromInline
++    internal var records: InlineArray<2, Record> = .init(repeating: Record())
+@@ -45,2 +51,4 @@
+-    fileprivate var operationActive = false
+-    fileprivate var retired = false
++    @usableFromInline
++    internal var operationActive = false
++    @usableFromInline
++    internal var retired = false
+@@ -74,0 +83 @@
++    @usableFromInline
+@@ -204,0 +214 @@
++    @inlinable
+@@ -232 +242,2 @@
+-    private borrowing func matching(_ identity: Identity, ordinal: UInt16) -> Int? {
++    @inlinable
++    internal borrowing func matching(_ identity: Identity, ordinal: UInt16) -> Int? {
+@@ -240 +251,2 @@
+-    private borrowing func key(at slot: Int) -> _GiftUIModelKey<Model.Schema> {
++    @inlinable
++    internal borrowing func key(at slot: Int) -> _GiftUIModelKey<Model.Schema> {
+@@ -246,0 +259 @@
++    @inlinable
+@@ -600,0 +614 @@
++    @inlinable
