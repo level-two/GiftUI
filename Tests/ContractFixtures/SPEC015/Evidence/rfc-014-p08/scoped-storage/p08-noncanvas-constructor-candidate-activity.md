@@ -35,6 +35,12 @@ other66 targets and strict76 gate unchanged.1281input/49macro/251provider seals 
 203archive members verify. Gate76 then fresh42 SIL only, no prerequisite repeats,
 source repair/budget reset or actual-consumer/safety/cold acceptance.
 
+[Independent package boundary review](p08-noncanvas-canvas-boundary-review.md):
+finite constructor +selected six Canvas/store/transfer boundaries PASS; remaining
+codegen/cost BLOCKED/STOP at live F08 stopped metadata prologue.13original roots
+resolved/10unqualified. Next bounded grouped C review only; text/cold/full safety
+and P08 remain open. No source allowance or heapcount claim.
+
 [Focused selector continuation PASS](noncanvas-constructor-selector-continuation1-result/README.md):
 76unique positive serialized bodies, same42SILexit0/61,929,568bytes,1281inputsverified.
 No source or prerequisite repeats; actual consumer interpretation and full safety/
