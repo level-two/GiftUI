@@ -1,0 +1,689 @@
+[
+  {
+    "requirement": "presentationIntentState",
+    "disposition": "inlined direct field/control operations in concrete runTracedPipeline; no generic witness call",
+    "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:333",
+    "sil_ranges": [
+      [
+        10719,
+        10775
+      ]
+    ]
+  },
+  {
+    "requirement": "hasAllocatedCandidateFrame",
+    "disposition": "inlined direct field/control operations in concrete runTracedPipeline; no generic witness call",
+    "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:334",
+    "sil_ranges": [
+      [
+        11542,
+        11564
+      ],
+      [
+        11756,
+        11777
+      ],
+      [
+        11863,
+        11884
+      ],
+      [
+        12003,
+        12024
+      ]
+    ]
+  },
+  {
+    "requirement": "admitAndSeal",
+    "function": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+      "line": 116560,
+      "end_line": 117183,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+      "comment": "// specialized CounterPipelineOwner<>.admitAndSeal()",
+      "basic_blocks": 76
+    },
+    "direct_project_frontier_refs": [
+      {
+        "line": 116861,
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+        "reference": "  %221 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %222",
+        "next": "  %222 = apply %221<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%217, %119) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // users: %239, %238, %224, %234, %223",
+        "callee": {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+          "line": 586734,
+          "end_line": 586737,
+          "header": "sil [heuristic_always_inline] @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+          "comment": "// InteractionOwnedKeyState<>.resolveDown(at:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 117112,
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+        "reference": "  %413 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %414",
+        "next": "  %414 = apply %413<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%412, %411, %119) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // users: %446, %442, %416, %421, %415",
+        "callee": {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+          "line": 586741,
+          "end_line": 586744,
+          "header": "sil @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+          "comment": "// InteractionOwnedKeyState<>.resolveMove(_:at:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 117167,
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+        "reference": "  %450 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %451",
+        "next": "  %451 = apply %450<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%449, %448, %119) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // users: %455, %452",
+        "callee": {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+          "line": 508199,
+          "end_line": 508202,
+          "header": "sil [heuristic_always_inline] @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+          "comment": "// InteractionOwnedKeyState<>.resolveUp(_:at:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "witness_method_count": 0,
+    "disposition": "concrete owner body exists; transitive lifetime/cost/continuation acceptance UNQUALIFIED"
+  },
+  {
+    "requirement": "applyAdmittedWork",
+    "function": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17applyAdmittedWork17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+      "line": 118556,
+      "end_line": 118889,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17applyAdmittedWork17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {",
+      "comment": "// specialized CounterPipelineOwner<>.applyAdmittedWork()",
+      "basic_blocks": 42
+    },
+    "direct_project_frontier_refs": [
+      {
+        "line": 118758,
+        "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+        "reference": "  %155 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> // user: %156",
+        "next": "  %156 = apply %155<CounterOwnedModel, SemanticCompleteIdentity>(%149, %152, %154) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> // user: %158",
+        "callee": {
+          "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+          "line": 29722,
+          "end_line": 29726,
+          "header": "sil @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> {",
+          "comment": "// ObservableStateRootScope<>.modelKey(identity:ordinal:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 118774,
+        "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+        "reference": "  %166 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableModelMutation, \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (_GiftUIModelKey<\u03c4_0_0.Schema>, @in_guaranteed \u03c4_0_0.Mutation, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> ObservableStateResult // user: %167",
+        "next": "  %167 = apply %166<CounterOwnedModel, SemanticCompleteIdentity>(%160, %163, %165) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableModelMutation, \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (_GiftUIModelKey<\u03c4_0_0.Schema>, @in_guaranteed \u03c4_0_0.Mutation, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> ObservableStateResult // user: %169",
+        "callee": {
+          "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+          "line": 119139,
+          "end_line": 119143,
+          "header": "sil @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableModelMutation, \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (_GiftUIModelKey<\u03c4_0_0.Schema>, @in_guaranteed \u03c4_0_0.Mutation, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> ObservableStateResult {",
+          "comment": "// ObservableStateRootScope<>.mutate<>(_:mutation:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "witness_method_count": 0,
+    "disposition": "concrete owner body exists; transitive lifetime/cost/continuation acceptance UNQUALIFIED"
+  },
+  {
+    "requirement": "freezeObservableMutation",
+    "function": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE24freezeObservableMutation17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+      "line": 120729,
+      "end_line": 120823,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE24freezeObservableMutation17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+      "comment": "// specialized CounterPipelineOwner<>.freezeObservableMutation()",
+      "basic_blocks": 8
+    },
+    "direct_project_frontier_refs": [],
+    "witness_method_count": 0,
+    "disposition": "concrete owner body exists; transitive lifetime/cost/continuation acceptance UNQUALIFIED"
+  },
+  {
+    "requirement": "beginObservableCandidateAndExpandSemantics",
+    "function": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+      "line": 129203,
+      "end_line": 133338,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+      "comment": "// specialized CounterPipelineOwner<>.beginObservableCandidateAndExpandSemantics()",
+      "basic_blocks": 733
+    },
+    "direct_project_frontier_refs": [
+      {
+        "line": 129296,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+        "reference": "  %74 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %75",
+        "next": "  %75 = apply %74<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%73) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %76",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+          "line": 583295,
+          "end_line": 583298,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> {",
+          "comment": "// SemanticRecordStore.candidate.getter",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 129358,
+        "symbol": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+        "reference": "  %121 = function_ref @$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : CanvasValueTable> (@guaranteed SemanticRecordStore<CanvasSemanticPayload<\u03c4_0_0.CaptureStorage>>, @guaranteed CanvasStagedValues<SemanticRecordReference, \u03c4_0_0>, @in_guaranteed \u03c4_0_0, @thin CanvasSemanticTransfer.Type) -> @error DrawingError // user: %122",
+        "next": "  try_apply %121<P08CounterSchemaCanvasTable<CounterDomain>>(%118, %120, %116, %114) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : CanvasValueTable> (@guaranteed SemanticRecordStore<CanvasSemanticPayload<\u03c4_0_0.CaptureStorage>>, @guaranteed CanvasStagedValues<SemanticRecordReference, \u03c4_0_0>, @in_guaranteed \u03c4_0_0, @thin CanvasSemanticTransfer.Type) -> @error DrawingError, normal bb17, error bb18 // id: %122",
+        "callee": {
+          "symbol": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+          "line": 142006,
+          "end_line": 142011,
+          "header": "sil @$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : CanvasValueTable> (@guaranteed SemanticRecordStore<CanvasSemanticPayload<\u03c4_0_0.CaptureStorage>>, @guaranteed CanvasStagedValues<SemanticRecordReference, \u03c4_0_0>, @in_guaranteed \u03c4_0_0, @thin CanvasSemanticTransfer.Type) -> @error DrawingError {",
+          "comment": "// static CanvasSemanticTransfer.stage<A>(from:into:table:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 129582,
+        "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+        "reference": "  %287 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>) -> () // users: %347, %288",
+        "next": "  %288 = apply %287<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%279) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>) -> ()",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+          "line": 583302,
+          "end_line": 583305,
+          "header": "sil @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>) -> () {",
+          "comment": "// SemanticRecordBankBuffers.clear()",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 129590,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+        "reference": "  %294 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %295",
+        "next": "  %295 = apply %294<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%281, %73) : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %296",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+          "line": 583309,
+          "end_line": 583312,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> {",
+          "comment": "// SemanticRecordStore.expansionBank(_:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 129773,
+        "symbol": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+        "reference": "  %447 = function_ref @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // users: %2389, %2384, %2362, %2200, %2184, %2017, %2026, %2020, %2008, %1835, %1821, %1716, %1601, %1595, %1576, %1351, %1339, %1291, %1285, %1266, %1059, %1032, %874, %867, %851, %701, %691, %448",
+        "next": "  %448 = apply %447<RecordWorkspace<CounterRoles, CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>, ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>>(%419) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // user: %449",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+          "line": 583322,
+          "end_line": 583325,
+          "header": "sil @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool {",
+          "comment": "// SemanticExpansionTraversal<>.stopped.getter",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 129926,
+        "symbol": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+        "reference": "  %538 = function_ref @$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %539",
+        "next": "  %539 = apply %538<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>(%537, %310) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %540",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+          "line": 583524,
+          "end_line": 583527,
+          "header": "sil @$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool {",
+          "comment": "// RecordSink.publishExpansion(_:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 130022,
+        "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+        "reference": "  %604 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %749, %605",
+        "next": "  %605 = apply %604<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%599, %603, %601) : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %609, %606",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+          "line": 583531,
+          "end_line": 583534,
+          "header": "sil @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> {",
+          "comment": "// SemanticRecordBankBuffers.enter(_:limits:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 130393,
+        "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+        "reference": "  %846 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %847",
+        "next": "  %847 = apply %846<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%845, %843) : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %848",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+          "line": 583538,
+          "end_line": 583541,
+          "header": "sil @$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> {",
+          "comment": "// SemanticRecordBankBuffers.appendRecord(limits:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 130671,
+        "symbol": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+        "reference": "  %1026 = function_ref @$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_2.Slot == ObservableModelReadSlot<\u03c4_0_0>, \u03c4_0_0 : ~Copyable><\u03c4_1_0 where \u03c4_0_2 == \u03c4_1_0.Domain, \u03c4_1_0 : View, \u03c4_1_0 : _GiftUIObservableStateHost, \u03c4_1_0.Domain == \u03c4_1_0.Body.Domain> (@in_guaranteed \u03c4_1_0, @in_guaranteed \u03c4_0_1, @guaranteed @noescape @callee_guaranteed () -> Optional<SemanticExpansionError>, @guaranteed @noescape @callee_guaranteed @substituted <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_1 : _GiftUIReadDomain> (@in_guaranteed \u03c4_0_0, @guaranteed _GiftUIFrameRead<\u03c4_0_1>) -> (@out \u03c4_0_2, @error _GiftUIAccessFailure) for <\u03c4_1_0, \u03c4_0_2, \u03c4_1_0.Body>, @guaranteed ObservableSemanticBodyBinding<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> @out SemanticBodyEvaluation<\u03c4_1_0.Body, ObservableStateError> // user: %1027",
+        "next": "  %1027 = apply %1026<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain, CounterScreen<CounterDomain>>(%1018, %1024, %850, %1022, %1015, %1023) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_2.Slot == ObservableModelReadSlot<\u03c4_0_0>, \u03c4_0_0 : ~Copyable><\u03c4_1_0 where \u03c4_0_2 == \u03c4_1_0.Domain, \u03c4_1_0 : View, \u03c4_1_0 : _GiftUIObservableStateHost, \u03c4_1_0.Domain == \u03c4_1_0.Body.Domain> (@in_guaranteed \u03c4_1_0, @in_guaranteed \u03c4_0_1, @guaranteed @noescape @callee_guaranteed () -> Optional<SemanticExpansionError>, @guaranteed @noescape @callee_guaranteed @substituted <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_1 : _GiftUIReadDomain> (@in_guaranteed \u03c4_0_0, @guaranteed _GiftUIFrameRead<\u03c4_0_1>) -> (@out \u03c4_0_2, @error _GiftUIAccessFailure) for <\u03c4_1_0, \u03c4_0_2, \u03c4_1_0.Body>, @guaranteed ObservableSemanticBodyBinding<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> @out SemanticBodyEvaluation<\u03c4_1_0.Body, ObservableStateError>",
+        "callee": {
+          "symbol": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+          "line": 590100,
+          "end_line": 590108,
+          "header": "sil [heuristic_always_inline] @$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_2.Slot == ObservableModelReadSlot<\u03c4_0_0>, \u03c4_0_0 : ~Copyable><\u03c4_1_0 where \u03c4_0_2 == \u03c4_1_0.Domain, \u03c4_1_0 : View, \u03c4_1_0 : _GiftUIObservableStateHost, \u03c4_1_0.Domain == \u03c4_1_0.Body.Domain> (@in_guaranteed \u03c4_1_0, @in_guaranteed \u03c4_0_1, @guaranteed @noescape @callee_guaranteed () -> Optional<SemanticExpansionError>, @guaranteed @noescape @callee_guaranteed @substituted <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_1 : _GiftUIReadDomain> (@in_guaranteed \u03c4_0_0, @guaranteed _GiftUIFrameRead<\u03c4_0_1>) -> (@out \u03c4_0_2, @error _GiftUIAccessFailure) for <\u03c4_1_0, \u03c4_0_2, \u03c4_1_0.Body>, @guaranteed ObservableSemanticBodyBinding<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> @out SemanticBodyEvaluation<\u03c4_1_0.Body, ObservableStateError> {",
+          "comment": "// ObservableSemanticBodyBinding<>.evaluateStateful<A>(_:structuralIdentity:beforeBody:body:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 131260,
+        "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+        "reference": "  %1403 = function_ref @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticModifierPayload> (@in_guaranteed \u03c4_1_0, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // user: %1404",
+        "next": "  %1404 = apply %1403<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>, _GiftUIBackgroundPayload>(%1400, %1355, %1399, %1402) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticModifierPayload> (@in_guaranteed \u03c4_1_0, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // user: %1406",
+        "callee": {
+          "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+          "line": 590346,
+          "end_line": 590350,
+          "header": "sil @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticModifierPayload> (@in_guaranteed \u03c4_1_0, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> {",
+          "comment": "// static CanvasSemanticPayloadCodec.modifier<A>(_:chainIndex:writer:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 131715,
+        "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+        "reference": "  %1691 = function_ref @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticPrimitivePayload> (@in_guaranteed \u03c4_1_0, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // users: %2468, %1692",
+        "next": "  %1692 = apply %1691<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>, _GiftUIVStackPayload>(%1688, %1687, %1690) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticPrimitivePayload> (@in_guaranteed \u03c4_1_0, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // user: %1694",
+        "callee": {
+          "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+          "line": 590338,
+          "end_line": 590342,
+          "header": "sil @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticPrimitivePayload> (@in_guaranteed \u03c4_1_0, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> {",
+          "comment": "// static CanvasSemanticPayloadCodec.primitive<A>(_:writer:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "witness_method_count": 0,
+    "disposition": "concrete owner body exists; transitive lifetime/cost/continuation acceptance UNQUALIFIED"
+  },
+  {
+    "requirement": "resolveLayout",
+    "function": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE13resolveLayout17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5",
+      "line": 142305,
+      "end_line": 142446,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE13resolveLayout17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+      "comment": "// specialized CounterPipelineOwner<>.resolveLayout()",
+      "basic_blocks": 16
+    },
+    "direct_project_frontier_refs": [
+      {
+        "line": 142327,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+        "reference": "  %12 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %13",
+        "next": "  %13 = apply %12<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%11) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %14",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+          "line": 583295,
+          "end_line": 583298,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> {",
+          "comment": "// SemanticRecordStore.candidate.getter",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 142356,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+        "reference": "  %28 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %29",
+        "next": "  %29 = apply %28<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%27, %11) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %30",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+          "line": 583749,
+          "end_line": 583753,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool {",
+          "comment": "// SemanticRecordStore.hasPendingCanvas(_:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "witness_method_count": 0,
+    "disposition": "concrete owner body exists; transitive lifetime/cost/continuation acceptance UNQUALIFIED"
+  },
+  {
+    "requirement": "invokeCanvasesAndDerivePlan",
+    "function": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE27invokeCanvasesAndDerivePlan17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateR0ALLLVAA0a9CommittedR0ALLLVAA0a3HitR0ALLLVTg5",
+      "line": 142998,
+      "end_line": 143080,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE27invokeCanvasesAndDerivePlan17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateR0ALLLVAA0a9CommittedR0ALLLVAA0a3HitR0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+      "comment": "// specialized CounterPipelineOwner<>.invokeCanvasesAndDerivePlan()",
+      "basic_blocks": 6
+    },
+    "direct_project_frontier_refs": [],
+    "witness_method_count": 0,
+    "disposition": "concrete owner body exists; transitive lifetime/cost/continuation acceptance UNQUALIFIED"
+  },
+  {
+    "requirement": "preflightCombinedRender",
+    "function": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE23preflightCombinedRender17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+      "line": 143481,
+      "end_line": 143633,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE23preflightCombinedRender17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+      "comment": "// specialized CounterPipelineOwner<>.preflightCombinedRender()",
+      "basic_blocks": 17
+    },
+    "direct_project_frontier_refs": [
+      {
+        "line": 143503,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+        "reference": "  %12 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %13",
+        "next": "  %13 = apply %12<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%11) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %14",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+          "line": 583295,
+          "end_line": 583298,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> {",
+          "comment": "// SemanticRecordStore.candidate.getter",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 143532,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+        "reference": "  %28 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %29",
+        "next": "  %29 = apply %28<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%27, %11) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %30",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+          "line": 583749,
+          "end_line": 583753,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool {",
+          "comment": "// SemanticRecordStore.hasPendingCanvas(_:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "witness_method_count": 0,
+    "disposition": "concrete owner body exists; transitive lifetime/cost/continuation acceptance UNQUALIFIED"
+  },
+  {
+    "requirement": "buildInteractionCandidate",
+    "function": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+      "line": 144225,
+      "end_line": 144418,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+      "comment": "// specialized CounterPipelineOwner<>.buildInteractionCandidate()",
+      "basic_blocks": 18
+    },
+    "direct_project_frontier_refs": [
+      {
+        "line": 144303,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+        "reference": "  %61 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %62",
+        "next": "  %62 = apply %61<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%60) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %63",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+          "line": 583295,
+          "end_line": 583298,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> {",
+          "comment": "// SemanticRecordStore.candidate.getter",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 144328,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+        "reference": "  %75 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %76",
+        "next": "  %76 = apply %75<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%74, %60) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %77",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+          "line": 583749,
+          "end_line": 583753,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool {",
+          "comment": "// SemanticRecordStore.hasPendingCanvas(_:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "witness_method_count": 0,
+    "disposition": "concrete owner body exists; transitive lifetime/cost/continuation acceptance UNQUALIFIED"
+  },
+  {
+    "requirement": "publishSemanticAndObservableCandidate",
+    "function": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ajR0ALLLVAA0a9CommittedR0ALLLVAA0a3HitR0ALLLVTg5",
+      "line": 147046,
+      "end_line": 147260,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ajR0ALLLVAA0a9CommittedR0ALLLVAA0a3HitR0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelinePublicationResult<RuntimeOwnerFailure> {",
+      "comment": "// specialized CounterPipelineOwner<>.publishSemanticAndObservableCandidate()",
+      "basic_blocks": 23
+    },
+    "direct_project_frontier_refs": [
+      {
+        "line": 147170,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+        "reference": "  %85 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %86",
+        "next": "  try_apply %85<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%84) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError, normal bb16, error bb17 // id: %86",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+          "line": 147512,
+          "end_line": 147515,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError {",
+          "comment": "// SemanticRecordStore.publishCandidate()",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "witness_method_count": 0,
+    "disposition": "concrete owner body exists; transitive lifetime/cost/continuation acceptance UNQUALIFIED"
+  },
+  {
+    "requirement": "allocateCandidate",
+    "function": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17allocateCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0agO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5",
+      "line": 147760,
+      "end_line": 147857,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17allocateCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0agO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+      "comment": "// specialized CounterPipelineOwner<>.allocateCandidate()",
+      "basic_blocks": 15
+    },
+    "direct_project_frontier_refs": [],
+    "witness_method_count": 0,
+    "disposition": "concrete owner body exists; transitive lifetime/cost/continuation acceptance UNQUALIFIED"
+  },
+  {
+    "requirement": "offerAndProduce",
+    "function": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE15offerAndProduce17GiftUIRuntimeCore0cD11OfferResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+      "line": 148455,
+      "end_line": 148687,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE15offerAndProduce17GiftUIRuntimeCore0cD11OfferResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {",
+      "comment": "// specialized CounterPipelineOwner<>.offerAndProduce()",
+      "basic_blocks": 26
+    },
+    "direct_project_frontier_refs": [
+      {
+        "line": 148521,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+        "reference": "  %48 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // user: %49",
+        "next": "  %49 = apply %48<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%47) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // users: %50, %80, %88",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+          "line": 22182,
+          "end_line": 22185,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> {",
+          "comment": "// SemanticRecordStore.borrowedStore()",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "witness_method_count": 0,
+    "disposition": "concrete owner body exists; transitive lifetime/cost/continuation acceptance UNQUALIFIED"
+  },
+  {
+    "requirement": "cleanup",
+    "function": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5",
+      "line": 150113,
+      "end_line": 150563,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () {",
+      "comment": "// specialized CounterPipelineOwner<>.cleanup(_:)",
+      "basic_blocks": 53
+    },
+    "direct_project_frontier_refs": [
+      {
+        "line": 150257,
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+        "reference": "  %108 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %109",
+        "next": "  %109 = apply %108<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%106, %107) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()",
+        "callee": {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+          "line": 150969,
+          "end_line": 150972,
+          "header": "sil @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () {",
+          "comment": "// InteractionOwnedKeyState<>.resolveCandidate(_:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 150262,
+        "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+        "reference": "  %112 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %113",
+        "next": "  %113 = apply %112<SemanticCompleteIdentity>(%110, %111) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()",
+        "callee": {
+          "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+          "line": 150976,
+          "end_line": 150979,
+          "header": "sil @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () {",
+          "comment": "// RuntimeActionGenerationAllocator.resolveCandidate(committed:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 150292,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+        "reference": "  %132 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %133",
+        "next": "  try_apply %132<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%131) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError, normal bb19, error bb20 // id: %133",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+          "line": 149150,
+          "end_line": 149153,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError {",
+          "comment": "// SemanticRecordStore.discardCandidate()",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 150327,
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+        "reference": "  %153 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %154",
+        "next": "  %154 = apply %153<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%151, %152) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()",
+        "callee": {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+          "line": 150969,
+          "end_line": 150972,
+          "header": "sil @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () {",
+          "comment": "// InteractionOwnedKeyState<>.resolveCandidate(_:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 150332,
+        "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+        "reference": "  %157 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %158",
+        "next": "  %158 = apply %157<SemanticCompleteIdentity>(%155, %156) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()",
+        "callee": {
+          "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+          "line": 150976,
+          "end_line": 150979,
+          "header": "sil @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () {",
+          "comment": "// RuntimeActionGenerationAllocator.resolveCandidate(committed:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 150383,
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+        "reference": "  %201 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %202",
+        "next": "  %202 = apply %201<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%199, %200) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()",
+        "callee": {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+          "line": 150969,
+          "end_line": 150972,
+          "header": "sil @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () {",
+          "comment": "// InteractionOwnedKeyState<>.resolveCandidate(_:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 150388,
+        "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+        "reference": "  %205 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %206",
+        "next": "  %206 = apply %205<SemanticCompleteIdentity>(%203, %204) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()",
+        "callee": {
+          "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+          "line": 150976,
+          "end_line": 150979,
+          "header": "sil @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () {",
+          "comment": "// RuntimeActionGenerationAllocator.resolveCandidate(committed:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "line": 150457,
+        "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+        "reference": "  %256 = function_ref @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ~Copyable> (@guaranteed ObservableModelScope<\u03c4_0_0, \u03c4_0_1>) -> @error ObservableStateError // user: %257",
+        "next": "  try_apply %256<CounterOwnedModel, CounterModelSchema>(%224) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ~Copyable> (@guaranteed ObservableModelScope<\u03c4_0_0, \u03c4_0_1>) -> @error ObservableStateError, normal bb34, error bb35 // id: %257",
+        "callee": {
+          "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+          "line": 95528,
+          "end_line": 95531,
+          "header": "sil @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ~Copyable> (@guaranteed ObservableModelScope<\u03c4_0_0, \u03c4_0_1>) -> @error ObservableStateError {",
+          "comment": "// ObservableModelScope<>.endFrame()",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "witness_method_count": 0,
+    "disposition": "concrete owner body exists; transitive lifetime/cost/continuation acceptance UNQUALIFIED"
+  },
+  {
+    "requirement": "applyDisposition",
+    "function": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE16applyDispositionyy17GiftUIRuntimeCore0cdG0VFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateL0AILLVAA0a9CommittedL0AILLVAA0a3HitL0AILLVTg5",
+      "line": 151150,
+      "end_line": 151226,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE16applyDispositionyy17GiftUIRuntimeCore0cdG0VFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateL0AILLVAA0a9CommittedL0AILLVAA0a3HitL0AILLVTg5 : $@convention(method) (RuntimePipelineDisposition, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () {",
+      "comment": "// specialized CounterPipelineOwner<>.applyDisposition(_:)",
+      "basic_blocks": 4
+    },
+    "direct_project_frontier_refs": [],
+    "witness_method_count": 0,
+    "disposition": "concrete owner body exists; transitive lifetime/cost/continuation acceptance UNQUALIFIED"
+  },
+  {
+    "requirement": "finalizePipeline",
+    "function": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE08finalizeD0yyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateH0AFLLVAA0a9CommittedH0AFLLVAA0a3HitH0AFLLVTg5",
+      "line": 151744,
+      "end_line": 151948,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE08finalizeD0yyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateH0AFLLVAA0a9CommittedH0AFLLVAA0a3HitH0AFLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () {",
+      "comment": "// specialized CounterPipelineOwner<>.finalizePipeline()",
+      "basic_blocks": 19
+    },
+    "direct_project_frontier_refs": [],
+    "witness_method_count": 0,
+    "disposition": "concrete owner body exists; transitive lifetime/cost/continuation acceptance UNQUALIFIED"
+  }
+]

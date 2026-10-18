@@ -29,7 +29,14 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current [grouped candidate compile boundary](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-compile-result/README.md):
+Current [concrete Static consumer interpretation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-consumer-result/README.md):
+prior genericrun blocker RESOLVED (concrete126BB pipeline), next actual admission
+FAIL: three InteractionOwnedKeyState genericresolver calls remain body-opaque in
+SIL/physical index/matched object. All16 owner requirements/23known frontier refs
+recorded; no allocation claim or23edit authorization. STOP dependent safety/cold;
+source1db805a6 fixed, candidate1/1/no automatic repairs. P08/R07/T8.1 unaccepted.
+
+Retained [grouped candidate compile boundary](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-compile-result/README.md):
 source1db805a6, lower+all25 fresh owners PASS, zero failed/blocked;319 input hashes
 and all log/output identities verify. Candidate1/1 fixed with zero automatic
 repairs; old budgets unchanged. Privacy/physical actual-consumer/safety/strict cold

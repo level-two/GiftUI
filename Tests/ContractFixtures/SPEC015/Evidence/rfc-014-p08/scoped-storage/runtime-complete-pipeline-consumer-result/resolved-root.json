@@ -1,0 +1,153 @@
+{
+  "prior_blocker": "genericRuntimeCompletePipeline.run zeroBB/call0x198c",
+  "status": "RESOLVED for concrete scoped Static run opportunity",
+  "physical_run": {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO3run5ownerAA0deF6ResultOy12OwnerFailureQzGxz_tAA0defJ0RzRi_zRi0_zlFZ",
+    "identifier_id": 687,
+    "function_id": 379,
+    "hash": 3252421790,
+    "demangled": "static GiftUIRuntimeCore.RuntimeCompletePipeline.run<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+    "offset_bits": 998023,
+    "linkage": 0,
+    "serialized_kind": 1,
+    "inline_strategy": 2,
+    "basic_blocks": 43,
+    "raw_prefix": [
+      4,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      2
+    ],
+    "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=731 op29=0 op30=0 op31=20 op32=0 op33=1/> record string = ''"
+  },
+  "runTracedPipeline": {
+    "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE09runTracedD017GiftUIRuntimeCore0c8CompleteD6ResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5",
+    "line": 10711,
+    "end_line": 12097,
+    "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE09runTracedD017GiftUIRuntimeCore0c8CompleteD6ResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimeCompletePipelineResult<RuntimeOwnerFailure> {",
+    "comment": "// specialized CounterPipelineOwner<>.runTracedPipeline()",
+    "basic_blocks": 126
+  },
+  "runOpportunity": {
+    "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5",
+    "line": 6483,
+    "end_line": 7158,
+    "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RunCycleResult<RuntimeOwnerFailure> {",
+    "comment": "// specialized CounterPipelineOwner<>.runOpportunity()",
+    "basic_blocks": 83
+  },
+  "runTraced_has_original_generic_run_refs": false,
+  "scoped_runTraced_object": {
+    "start_line": 4061,
+    "end_line": 4807,
+    "header": "0000000000003868 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE09runTracedD017GiftUIRuntimeCore0c8CompleteD6ResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5>:"
+  },
+  "scoped_runOpportunity_object": {
+    "start_line": 1670,
+    "end_line": 2092,
+    "header": "0000000000001750 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5>:"
+  },
+  "actual_activation_opportunity_callers": [
+    {
+      "caller": {
+        "symbol": "$s17P08CounterRuntime0B9HostStateOAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE10attachRootSbyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateI0AFLLVAA0a9CommittedI0AFLLVAA0a3HitI0AFLLVTg5",
+        "line": 83244,
+        "end_line": 83455,
+        "header": "sil shared [noinline] @$s17P08CounterRuntime0B9HostStateOAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE10attachRootSbyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateI0AFLLVAA0a9CommittedI0AFLLVAA0a3HitI0AFLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Bool {",
+        "comment": "// specialized CounterHostState<>.attachRoot()",
+        "basic_blocks": 18
+      },
+      "edge": {
+        "line": 83288,
+        "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5",
+        "reference": "  %34 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RunCycleResult<RuntimeOwnerFailure> // user: %35",
+        "next": "  %35 = apply %34(%33) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RunCycleResult<RuntimeOwnerFailure> // users: %36, %37",
+        "callee": {
+          "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5",
+          "line": 6483,
+          "end_line": 7158,
+          "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RunCycleResult<RuntimeOwnerFailure> {",
+          "comment": "// specialized CounterPipelineOwner<>.runOpportunity()",
+          "basic_blocks": 83
+        }
+      }
+    },
+    {
+      "caller": {
+        "symbol": "$s17P08CounterRuntime0B9HostStateOAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0C12OwnerFailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateR0AMLLVAA0a9CommittedR0AMLLVAA0a3HitR0AMLLVTg5",
+        "line": 84166,
+        "end_line": 84393,
+        "header": "sil shared [noinline] @$s17P08CounterRuntime0B9HostStateOAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0C12OwnerFailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateR0AMLLVAA0a9CommittedR0AMLLVAA0a3HitR0AMLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RunCycleResult<RuntimeOwnerFailure> {",
+        "comment": "// specialized CounterHostState<>.runOpportunity()",
+        "basic_blocks": 33
+      },
+      "edge": {
+        "line": 84219,
+        "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5",
+        "reference": "  %43 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RunCycleResult<RuntimeOwnerFailure> // user: %44",
+        "next": "  %44 = apply %43(%42) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RunCycleResult<RuntimeOwnerFailure> // user: %45",
+        "callee": {
+          "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5",
+          "line": 6483,
+          "end_line": 7158,
+          "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RunCycleResult<RuntimeOwnerFailure> {",
+          "comment": "// specialized CounterPipelineOwner<>.runOpportunity()",
+          "basic_blocks": 83
+        }
+      }
+    }
+  ],
+  "three_helpers": "finishOfferWithoutCommit/fail bodies inlined into runTracedPipeline (no directgeneric helper refs there); cleanup specialized4BB directconcreteownercleanup; tenphysicalbody receipt retained",
+  "specialized_cleanup": {
+    "symbol": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO7cleanup5after8acquired5owneryAA0D16CoordinatorStageO_AA0D14CleanupActionsVxztAA0deF5OwnerRzRi_zRi0_zlFZ010P08CounterD00qfO0VyAM0P14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAM0p9CandidateS0AQLLVAM0p9CommittedS0AQLLVAM0p3HitS0AQLLVG_Tg5",
+    "line": 556058,
+    "end_line": 556103,
+    "header": "sil shared @$s17GiftUIRuntimeCore23RuntimeCompletePipelineO7cleanup5after8acquired5owneryAA0D16CoordinatorStageO_AA0D14CleanupActionsVxztAA0deF5OwnerRzRi_zRi0_zlFZ010P08CounterD00qfO0VyAM0P14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAM0p9CandidateS0AQLLVAM0p9CommittedS0AQLLVAM0p3HitS0AQLLVG_Tg5 : $@convention(method) (RuntimeCoordinatorStage, RuntimeCleanupActions, @lifetime(copy 2) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, @thin RuntimeCompletePipeline.Type) -> () {",
+    "comment": "// specialized static RuntimeCompletePipeline.cleanup<A>(after:acquired:owner:)",
+    "basic_blocks": 4
+  },
+  "failure_enum_lines": [
+    10795,
+    10804,
+    10868,
+    10877,
+    10928,
+    10937,
+    11005,
+    11014,
+    11104,
+    11113,
+    11181,
+    11190,
+    11275,
+    11284,
+    11352,
+    11361,
+    11441,
+    11450,
+    11590,
+    11599,
+    11797,
+    11806,
+    11911,
+    11920,
+    12045,
+    12054
+  ],
+  "completed_enum_lines": [
+    11666,
+    11677,
+    11727,
+    11738,
+    11982,
+    11993,
+    12084,
+    12095
+  ],
+  "not_claimed": "not complete cleanup/branch safety or fullcost proof"
+}

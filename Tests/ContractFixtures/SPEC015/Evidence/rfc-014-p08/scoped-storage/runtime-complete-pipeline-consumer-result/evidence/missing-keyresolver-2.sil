@@ -1,0 +1,7 @@
+508197: // InteractionOwnedKeyState<>.resolveUp(_:at:)
+508198: // Isolation: unspecified
+508199: sil [heuristic_always_inline] @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <τ_0_0, τ_0_1, τ_0_2 where τ_0_0 : InteractionCandidateRecordStorage, τ_0_1 : InteractionCommittedRecordStorage, τ_0_2 : InteractionHitRegionStorage, τ_0_0.Identity == SemanticCompleteIdentity, τ_0_1.Identity == SemanticCompleteIdentity, τ_0_2.Identity == SemanticCompleteIdentity, τ_0_0 : ~Copyable, τ_0_0 : ~Escapable, τ_0_1 : ~Copyable, τ_0_1 : ~Escapable, τ_0_2 : ~Copyable, τ_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<τ_0_0, τ_0_1, τ_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {
+508200: [%2: read s0.s3.v**, write s0.s3.v**, copy s0.s3.v**, destroy s0.s3.v**]
+508201: [global: read,write,copy,destroy,allocate,deinit_barrier]
+508202: } // end sil function '$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF'
+508203: 

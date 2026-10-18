@@ -1,0 +1,46 @@
+556058: sil shared @$s17GiftUIRuntimeCore23RuntimeCompletePipelineO7cleanup5after8acquired5owneryAA0D16CoordinatorStageO_AA0D14CleanupActionsVxztAA0deF5OwnerRzRi_zRi0_zlFZ010P08CounterD00qfO0VyAM0P14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAM0p9CandidateS0AQLLVAM0p9CommittedS0AQLLVAM0p3HitS0AQLLVG_Tg5 : $@convention(method) (RuntimeCoordinatorStage, RuntimeCleanupActions, @lifetime(copy 2) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, @thin RuntimeCompletePipeline.Type) -> () {
+556059: [%2: read v**, write v**, copy v**, destroy v**]
+556060: [global: read,write,copy,destroy,allocate,deinit_barrier]
+556061: // %0                                             // user: %7
+556062: // %1                                             // user: %13
+556063: // %2                                             // user: %27
+556064: bb0(%0 : $RuntimeCoordinatorStage, %1 : $RuntimeCleanupActions, %2 : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, %3 : $@thin RuntimeCompletePipeline.Type):
+556065:   %4 = alloc_stack [var_decl] $RuntimeCleanupTracker // users: %20, %29, %23
+556066:   %5 = metatype $@thin RuntimeCoordinatorCleanupOracle.Type // user: %7
+556067:   // function_ref static RuntimeCoordinatorCleanupOracle.plan(after:)
+556068:   %6 = function_ref @$s17GiftUIRuntimeCore31RuntimeCoordinatorCleanupOracleO4plan5afterAA0dF4PlanVAA0dE5StageO_tFZ : $@convention(method) (RuntimeCoordinatorStage, @thin RuntimeCoordinatorCleanupOracle.Type) -> RuntimeCleanupPlan // user: %7
+556069:   %7 = apply %6(%0, %5) : $@convention(method) (RuntimeCoordinatorStage, @thin RuntimeCoordinatorCleanupOracle.Type) -> RuntimeCleanupPlan // user: %8
+556070:   %8 = struct_extract %7, #RuntimeCleanupPlan.actions // user: %9
+556071:   %9 = struct_extract %8, #RuntimeCleanupActions.rawValue // user: %11
+556072:   %10 = integer_literal $Builtin.Int16, 511       // users: %16, %12
+556073:   %11 = struct_extract %9, #UInt16._value         // user: %12
+556074:   %12 = builtin "and_Int16"(%11, %10) : $Builtin.Int16 // user: %15
+556075:   %13 = struct_extract %1, #RuntimeCleanupActions.rawValue // user: %14
+556076:   %14 = struct_extract %13, #UInt16._value        // user: %15
+556077:   %15 = builtin "and_Int16"(%12, %14) : $Builtin.Int16 // user: %16
+556078:   %16 = builtin "and_Int16"(%15, %10) : $Builtin.Int16 // user: %17
+556079:   %17 = struct $UInt16 (%16)                      // user: %18
+556080:   %18 = struct $RuntimeCleanupActions (%17)       // user: %19
+556081:   %19 = struct $RuntimeCleanupTracker (%18)       // user: %20
+556082:   store %19 to %4                                 // id: %20
+556083:   // function_ref RuntimeCleanupTracker.takeNext()
+556084:   %21 = function_ref @$s17GiftUIRuntimeCore21RuntimeCleanupTrackerV8takeNextAA0dE6ActionOSgyF : $@convention(method) (@inout RuntimeCleanupTracker) -> Optional<RuntimeCleanupAction> // user: %23
+556085:   br bb1                                          // id: %22
+556086: 
+556087: // Loop header
+556088: bb1:                                              // Preds: bb2 bb0
+556089:   %23 = apply %21(%4) : $@convention(method) (@inout RuntimeCleanupTracker) -> Optional<RuntimeCleanupAction> // user: %24
+556090:   switch_enum %23, case #Optional.some!enumelt: bb2, case #Optional.none!enumelt: bb3 // id: %24
+556091: 
+556092: // %25                                            // user: %27
+556093: bb2(%25 : $RuntimeCleanupAction):                 // Preds: bb1
+556094:   // function_ref specialized CounterPipelineOwner<>.cleanup(_:)
+556095:   %26 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () // user: %27
+556096:   %27 = apply %26(%25, %2) : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> ()
+556097:   br bb1                                          // id: %28
+556098: 
+556099: bb3:                                              // Preds: bb1
+556100:   dealloc_stack %4                                // id: %29
+556101:   %30 = tuple ()                                  // user: %31
+556102:   return %30                                      // id: %31
+556103: } // end sil function '$s17GiftUIRuntimeCore23RuntimeCompletePipelineO7cleanup5after8acquired5owneryAA0D16CoordinatorStageO_AA0D14CleanupActionsVxztAA0deF5OwnerRzRi_zRi0_zlFZ010P08CounterD00qfO0VyAM0P14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAM0p9CandidateS0AQLLVAM0p9CommittedS0AQLLVAM0p3HitS0AQLLVG_Tg5'

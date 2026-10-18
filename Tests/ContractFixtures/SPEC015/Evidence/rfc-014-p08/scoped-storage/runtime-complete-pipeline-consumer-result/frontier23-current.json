@@ -1,0 +1,1283 @@
+[
+  {
+    "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+    "name": "// InteractionOwnedKeyState<>.resolveDown(at:)",
+    "previous_requirement_group": [
+      "admitAndSeal"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "admitAndSeal",
+        "line": 116861,
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+        "reference": "  %221 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %222",
+        "next": "  %222 = apply %221<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%217, %119) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // users: %239, %238, %224, %234, %223",
+        "callee": {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+          "line": 586734,
+          "end_line": 586737,
+          "header": "sil [heuristic_always_inline] @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+          "comment": "// InteractionOwnedKeyState<>.resolveDown(at:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [
+      {
+        "caller": {
+          "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21observeProducedActionAA0bgH0VyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AHLLVAA0a9CommittedJ0AHLLVAA0a3HitJ0AHLLVTg5",
+          "line": 30599,
+          "end_line": 30711,
+          "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21observeProducedActionAA0bgH0VyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AHLLVAA0a9CommittedJ0AHLLVAA0a3HitJ0AHLLVTg5 : $@convention(method) (@guaranteed CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> CounterProducedAction {",
+          "comment": "// specialized CounterPipelineOwner<>.observeProducedAction()",
+          "basic_blocks": 13
+        },
+        "edge": {
+          "line": 30660,
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+          "reference": "  %44 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %45",
+          "next": "  %45 = apply %44<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%40, %42) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // users: %46, %49",
+          "callee": {
+            "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+            "line": 586734,
+            "end_line": 586737,
+            "header": "sil [heuristic_always_inline] @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+            "comment": "// InteractionOwnedKeyState<>.resolveDown(at:)",
+            "basic_blocks": 0
+          }
+        }
+      }
+    ],
+    "current_callee": {
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+      "line": 586734,
+      "end_line": 586737,
+      "header": "sil [heuristic_always_inline] @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+      "comment": "// InteractionOwnedKeyState<>.resolveDown(at:)",
+      "basic_blocks": 0
+    },
+    "physical_record": {
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+      "identifier_id": 105,
+      "function_id": 150,
+      "hash": 2953884724,
+      "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveDown(at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+      "offset_bits": 345233,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 2,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=135 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    },
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+    "name": "// InteractionOwnedKeyState<>.resolveMove(_:at:)",
+    "previous_requirement_group": [
+      "admitAndSeal"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "admitAndSeal",
+        "line": 117112,
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+        "reference": "  %413 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %414",
+        "next": "  %414 = apply %413<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%412, %411, %119) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // users: %446, %442, %416, %421, %415",
+        "callee": {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+          "line": 586741,
+          "end_line": 586744,
+          "header": "sil @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+          "comment": "// InteractionOwnedKeyState<>.resolveMove(_:at:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "line": 586741,
+      "end_line": 586744,
+      "header": "sil @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+      "comment": "// InteractionOwnedKeyState<>.resolveMove(_:at:)",
+      "basic_blocks": 0
+    },
+    "physical_record": {
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "identifier_id": 103,
+      "function_id": 152,
+      "hash": 1752837523,
+      "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveMove(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+      "offset_bits": 346035,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 0,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=132 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    },
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+    "name": "// InteractionOwnedKeyState<>.resolveUp(_:at:)",
+    "previous_requirement_group": [
+      "admitAndSeal"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "admitAndSeal",
+        "line": 117167,
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+        "reference": "  %450 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %451",
+        "next": "  %451 = apply %450<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%449, %448, %119) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // users: %455, %452",
+        "callee": {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+          "line": 508199,
+          "end_line": 508202,
+          "header": "sil [heuristic_always_inline] @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+          "comment": "// InteractionOwnedKeyState<>.resolveUp(_:at:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [
+      {
+        "caller": {
+          "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21observeProducedActionAA0bgH0VyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AHLLVAA0a9CommittedJ0AHLLVAA0a3HitJ0AHLLVTg5",
+          "line": 30599,
+          "end_line": 30711,
+          "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21observeProducedActionAA0bgH0VyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AHLLVAA0a9CommittedJ0AHLLVAA0a3HitJ0AHLLVTg5 : $@convention(method) (@guaranteed CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> CounterProducedAction {",
+          "comment": "// specialized CounterPipelineOwner<>.observeProducedAction()",
+          "basic_blocks": 13
+        },
+        "edge": {
+          "line": 30671,
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+          "reference": "  %51 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %52",
+          "next": "  %52 = apply %51<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%49, %40, %42) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %53",
+          "callee": {
+            "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+            "line": 508199,
+            "end_line": 508202,
+            "header": "sil [heuristic_always_inline] @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+            "comment": "// InteractionOwnedKeyState<>.resolveUp(_:at:)",
+            "basic_blocks": 0
+          }
+        }
+      }
+    ],
+    "current_callee": {
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "line": 508199,
+      "end_line": 508202,
+      "header": "sil [heuristic_always_inline] @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+      "comment": "// InteractionOwnedKeyState<>.resolveUp(_:at:)",
+      "basic_blocks": 0
+    },
+    "physical_record": {
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "identifier_id": 102,
+      "function_id": 154,
+      "hash": 1492478232,
+      "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveUp(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+      "offset_bits": 346884,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 2,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=132 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    },
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+    "name": "// ObservableStateRootScope<>.modelKey(identity:ordinal:)",
+    "previous_requirement_group": [
+      "applyAdmittedWork"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "applyAdmittedWork",
+        "line": 118758,
+        "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+        "reference": "  %155 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> // user: %156",
+        "next": "  %156 = apply %155<CounterOwnedModel, SemanticCompleteIdentity>(%149, %152, %154) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> // user: %158",
+        "callee": {
+          "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+          "line": 29722,
+          "end_line": 29726,
+          "header": "sil @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> {",
+          "comment": "// ObservableStateRootScope<>.modelKey(identity:ordinal:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [
+      {
+        "caller": {
+          "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17observeModelValues5UInt8VyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateK0AHLLVAA0a9CommittedK0AHLLVAA0a3HitK0AHLLVTg5",
+          "line": 29970,
+          "end_line": 30266,
+          "header": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17observeModelValues5UInt8VyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateK0AHLLVAA0a9CommittedK0AHLLVAA0a3HitK0AHLLVTg5 : $@convention(method) (@guaranteed CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> UInt8 {",
+          "comment": "// specialized CounterPipelineOwner<>.observeModelValue()",
+          "basic_blocks": 38
+        },
+        "edge": {
+          "line": 29998,
+          "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+          "reference": "  %20 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> // user: %21",
+          "next": "  %21 = apply %20<CounterOwnedModel, SemanticCompleteIdentity>(%15, %18, %19) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> // user: %23",
+          "callee": {
+            "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+            "line": 29722,
+            "end_line": 29726,
+            "header": "sil @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> {",
+            "comment": "// ObservableStateRootScope<>.modelKey(identity:ordinal:)",
+            "basic_blocks": 0
+          }
+        }
+      }
+    ],
+    "current_callee": {
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+      "line": 29722,
+      "end_line": 29726,
+      "header": "sil @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> {",
+      "comment": "// ObservableStateRootScope<>.modelKey(identity:ordinal:)",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+    "name": "// ObservableStateRootScope<>.mutate<>(_:mutation:)",
+    "previous_requirement_group": [
+      "applyAdmittedWork"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "applyAdmittedWork",
+        "line": 118774,
+        "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+        "reference": "  %166 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableModelMutation, \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (_GiftUIModelKey<\u03c4_0_0.Schema>, @in_guaranteed \u03c4_0_0.Mutation, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> ObservableStateResult // user: %167",
+        "next": "  %167 = apply %166<CounterOwnedModel, SemanticCompleteIdentity>(%160, %163, %165) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableModelMutation, \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (_GiftUIModelKey<\u03c4_0_0.Schema>, @in_guaranteed \u03c4_0_0.Mutation, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> ObservableStateResult // user: %169",
+        "callee": {
+          "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+          "line": 119139,
+          "end_line": 119143,
+          "header": "sil @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableModelMutation, \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (_GiftUIModelKey<\u03c4_0_0.Schema>, @in_guaranteed \u03c4_0_0.Mutation, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> ObservableStateResult {",
+          "comment": "// ObservableStateRootScope<>.mutate<>(_:mutation:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+      "line": 119139,
+      "end_line": 119143,
+      "header": "sil @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableModelMutation, \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (_GiftUIModelKey<\u03c4_0_0.Schema>, @in_guaranteed \u03c4_0_0.Mutation, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> ObservableStateResult {",
+      "comment": "// ObservableStateRootScope<>.mutate<>(_:mutation:)",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+    "name": "// SemanticRecordStore.candidate.getter",
+    "previous_requirement_group": [
+      "beginObservableCandidateAndExpandSemantics",
+      "resolveLayout",
+      "preflightCombinedRender",
+      "buildInteractionCandidate"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "beginObservableCandidateAndExpandSemantics",
+        "line": 129296,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+        "reference": "  %74 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %75",
+        "next": "  %75 = apply %74<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%73) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %76",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+          "line": 583295,
+          "end_line": 583298,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> {",
+          "comment": "// SemanticRecordStore.candidate.getter",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "requirement": "resolveLayout",
+        "line": 142327,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+        "reference": "  %12 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %13",
+        "next": "  %13 = apply %12<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%11) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %14",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+          "line": 583295,
+          "end_line": 583298,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> {",
+          "comment": "// SemanticRecordStore.candidate.getter",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "requirement": "preflightCombinedRender",
+        "line": 143503,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+        "reference": "  %12 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %13",
+        "next": "  %13 = apply %12<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%11) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %14",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+          "line": 583295,
+          "end_line": 583298,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> {",
+          "comment": "// SemanticRecordStore.candidate.getter",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "requirement": "buildInteractionCandidate",
+        "line": 144303,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+        "reference": "  %61 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %62",
+        "next": "  %62 = apply %61<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%60) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %63",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+          "line": 583295,
+          "end_line": 583298,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> {",
+          "comment": "// SemanticRecordStore.candidate.getter",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+      "line": 583295,
+      "end_line": 583298,
+      "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> {",
+      "comment": "// SemanticRecordStore.candidate.getter",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+    "name": "// SemanticRecordBankBuffers.clear()",
+    "previous_requirement_group": [
+      "beginObservableCandidateAndExpandSemantics"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "beginObservableCandidateAndExpandSemantics",
+        "line": 129582,
+        "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+        "reference": "  %287 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>) -> () // users: %347, %288",
+        "next": "  %288 = apply %287<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%279) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>) -> ()",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+          "line": 583302,
+          "end_line": 583305,
+          "header": "sil @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>) -> () {",
+          "comment": "// SemanticRecordBankBuffers.clear()",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+      "line": 583302,
+      "end_line": 583305,
+      "header": "sil @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>) -> () {",
+      "comment": "// SemanticRecordBankBuffers.clear()",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+    "name": "// SemanticRecordStore.expansionBank(_:)",
+    "previous_requirement_group": [
+      "beginObservableCandidateAndExpandSemantics"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "beginObservableCandidateAndExpandSemantics",
+        "line": 129590,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+        "reference": "  %294 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %295",
+        "next": "  %295 = apply %294<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%281, %73) : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %296",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+          "line": 583309,
+          "end_line": 583312,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> {",
+          "comment": "// SemanticRecordStore.expansionBank(_:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+      "line": 583309,
+      "end_line": 583312,
+      "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> {",
+      "comment": "// SemanticRecordStore.expansionBank(_:)",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+    "name": "// SemanticExpansionTraversal<>.stopped.getter",
+    "previous_requirement_group": [
+      "beginObservableCandidateAndExpandSemantics"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "beginObservableCandidateAndExpandSemantics",
+        "line": 129773,
+        "symbol": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+        "reference": "  %447 = function_ref @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // users: %2389, %2384, %2362, %2200, %2184, %2017, %2026, %2020, %2008, %1835, %1821, %1716, %1601, %1595, %1576, %1351, %1339, %1291, %1285, %1266, %1059, %1032, %874, %867, %851, %701, %691, %448",
+        "next": "  %448 = apply %447<RecordWorkspace<CounterRoles, CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>, ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>>(%419) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // user: %449",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+          "line": 583322,
+          "end_line": 583325,
+          "header": "sil @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool {",
+          "comment": "// SemanticExpansionTraversal<>.stopped.getter",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+      "line": 583322,
+      "end_line": 583325,
+      "header": "sil @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool {",
+      "comment": "// SemanticExpansionTraversal<>.stopped.getter",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+    "name": "// RecordSink.publishExpansion(_:)",
+    "previous_requirement_group": [
+      "beginObservableCandidateAndExpandSemantics"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "beginObservableCandidateAndExpandSemantics",
+        "line": 129926,
+        "symbol": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+        "reference": "  %538 = function_ref @$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %539",
+        "next": "  %539 = apply %538<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>(%537, %310) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %540",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+          "line": 583524,
+          "end_line": 583527,
+          "header": "sil @$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool {",
+          "comment": "// RecordSink.publishExpansion(_:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+      "line": 583524,
+      "end_line": 583527,
+      "header": "sil @$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool {",
+      "comment": "// RecordSink.publishExpansion(_:)",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+    "name": "// SemanticRecordBankBuffers.enter(_:limits:)",
+    "previous_requirement_group": [
+      "beginObservableCandidateAndExpandSemantics"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "beginObservableCandidateAndExpandSemantics",
+        "line": 130022,
+        "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+        "reference": "  %604 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %749, %605",
+        "next": "  %605 = apply %604<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%599, %603, %601) : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %609, %606",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+          "line": 583531,
+          "end_line": 583534,
+          "header": "sil @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> {",
+          "comment": "// SemanticRecordBankBuffers.enter(_:limits:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+      "line": 583531,
+      "end_line": 583534,
+      "header": "sil @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> {",
+      "comment": "// SemanticRecordBankBuffers.enter(_:limits:)",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+    "name": "// SemanticRecordBankBuffers.appendRecord(limits:)",
+    "previous_requirement_group": [
+      "beginObservableCandidateAndExpandSemantics"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "beginObservableCandidateAndExpandSemantics",
+        "line": 130393,
+        "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+        "reference": "  %846 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %847",
+        "next": "  %847 = apply %846<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%845, %843) : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %848",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+          "line": 583538,
+          "end_line": 583541,
+          "header": "sil @$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> {",
+          "comment": "// SemanticRecordBankBuffers.appendRecord(limits:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+      "line": 583538,
+      "end_line": 583541,
+      "header": "sil @$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> {",
+      "comment": "// SemanticRecordBankBuffers.appendRecord(limits:)",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+    "name": "// ObservableSemanticBodyBinding<>.evaluateStateful<A>(_:structuralIdentity:beforeBody:body:)",
+    "previous_requirement_group": [
+      "beginObservableCandidateAndExpandSemantics"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "beginObservableCandidateAndExpandSemantics",
+        "line": 130671,
+        "symbol": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+        "reference": "  %1026 = function_ref @$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_2.Slot == ObservableModelReadSlot<\u03c4_0_0>, \u03c4_0_0 : ~Copyable><\u03c4_1_0 where \u03c4_0_2 == \u03c4_1_0.Domain, \u03c4_1_0 : View, \u03c4_1_0 : _GiftUIObservableStateHost, \u03c4_1_0.Domain == \u03c4_1_0.Body.Domain> (@in_guaranteed \u03c4_1_0, @in_guaranteed \u03c4_0_1, @guaranteed @noescape @callee_guaranteed () -> Optional<SemanticExpansionError>, @guaranteed @noescape @callee_guaranteed @substituted <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_1 : _GiftUIReadDomain> (@in_guaranteed \u03c4_0_0, @guaranteed _GiftUIFrameRead<\u03c4_0_1>) -> (@out \u03c4_0_2, @error _GiftUIAccessFailure) for <\u03c4_1_0, \u03c4_0_2, \u03c4_1_0.Body>, @guaranteed ObservableSemanticBodyBinding<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> @out SemanticBodyEvaluation<\u03c4_1_0.Body, ObservableStateError> // user: %1027",
+        "next": "  %1027 = apply %1026<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain, CounterScreen<CounterDomain>>(%1018, %1024, %850, %1022, %1015, %1023) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_2.Slot == ObservableModelReadSlot<\u03c4_0_0>, \u03c4_0_0 : ~Copyable><\u03c4_1_0 where \u03c4_0_2 == \u03c4_1_0.Domain, \u03c4_1_0 : View, \u03c4_1_0 : _GiftUIObservableStateHost, \u03c4_1_0.Domain == \u03c4_1_0.Body.Domain> (@in_guaranteed \u03c4_1_0, @in_guaranteed \u03c4_0_1, @guaranteed @noescape @callee_guaranteed () -> Optional<SemanticExpansionError>, @guaranteed @noescape @callee_guaranteed @substituted <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_1 : _GiftUIReadDomain> (@in_guaranteed \u03c4_0_0, @guaranteed _GiftUIFrameRead<\u03c4_0_1>) -> (@out \u03c4_0_2, @error _GiftUIAccessFailure) for <\u03c4_1_0, \u03c4_0_2, \u03c4_1_0.Body>, @guaranteed ObservableSemanticBodyBinding<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> @out SemanticBodyEvaluation<\u03c4_1_0.Body, ObservableStateError>",
+        "callee": {
+          "symbol": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+          "line": 590100,
+          "end_line": 590108,
+          "header": "sil [heuristic_always_inline] @$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_2.Slot == ObservableModelReadSlot<\u03c4_0_0>, \u03c4_0_0 : ~Copyable><\u03c4_1_0 where \u03c4_0_2 == \u03c4_1_0.Domain, \u03c4_1_0 : View, \u03c4_1_0 : _GiftUIObservableStateHost, \u03c4_1_0.Domain == \u03c4_1_0.Body.Domain> (@in_guaranteed \u03c4_1_0, @in_guaranteed \u03c4_0_1, @guaranteed @noescape @callee_guaranteed () -> Optional<SemanticExpansionError>, @guaranteed @noescape @callee_guaranteed @substituted <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_1 : _GiftUIReadDomain> (@in_guaranteed \u03c4_0_0, @guaranteed _GiftUIFrameRead<\u03c4_0_1>) -> (@out \u03c4_0_2, @error _GiftUIAccessFailure) for <\u03c4_1_0, \u03c4_0_2, \u03c4_1_0.Body>, @guaranteed ObservableSemanticBodyBinding<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> @out SemanticBodyEvaluation<\u03c4_1_0.Body, ObservableStateError> {",
+          "comment": "// ObservableSemanticBodyBinding<>.evaluateStateful<A>(_:structuralIdentity:beforeBody:body:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+      "line": 590100,
+      "end_line": 590108,
+      "header": "sil [heuristic_always_inline] @$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_2.Slot == ObservableModelReadSlot<\u03c4_0_0>, \u03c4_0_0 : ~Copyable><\u03c4_1_0 where \u03c4_0_2 == \u03c4_1_0.Domain, \u03c4_1_0 : View, \u03c4_1_0 : _GiftUIObservableStateHost, \u03c4_1_0.Domain == \u03c4_1_0.Body.Domain> (@in_guaranteed \u03c4_1_0, @in_guaranteed \u03c4_0_1, @guaranteed @noescape @callee_guaranteed () -> Optional<SemanticExpansionError>, @guaranteed @noescape @callee_guaranteed @substituted <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_1 : _GiftUIReadDomain> (@in_guaranteed \u03c4_0_0, @guaranteed _GiftUIFrameRead<\u03c4_0_1>) -> (@out \u03c4_0_2, @error _GiftUIAccessFailure) for <\u03c4_1_0, \u03c4_0_2, \u03c4_1_0.Body>, @guaranteed ObservableSemanticBodyBinding<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> @out SemanticBodyEvaluation<\u03c4_1_0.Body, ObservableStateError> {",
+      "comment": "// ObservableSemanticBodyBinding<>.evaluateStateful<A>(_:structuralIdentity:beforeBody:body:)",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+    "name": "// static CanvasSemanticPayloadCodec.modifier<A>(_:chainIndex:writer:)",
+    "previous_requirement_group": [
+      "beginObservableCandidateAndExpandSemantics"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "beginObservableCandidateAndExpandSemantics",
+        "line": 131260,
+        "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+        "reference": "  %1403 = function_ref @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticModifierPayload> (@in_guaranteed \u03c4_1_0, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // user: %1404",
+        "next": "  %1404 = apply %1403<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>, _GiftUIBackgroundPayload>(%1400, %1355, %1399, %1402) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticModifierPayload> (@in_guaranteed \u03c4_1_0, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // user: %1406",
+        "callee": {
+          "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+          "line": 590346,
+          "end_line": 590350,
+          "header": "sil @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticModifierPayload> (@in_guaranteed \u03c4_1_0, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> {",
+          "comment": "// static CanvasSemanticPayloadCodec.modifier<A>(_:chainIndex:writer:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+      "line": 590346,
+      "end_line": 590350,
+      "header": "sil @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticModifierPayload> (@in_guaranteed \u03c4_1_0, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> {",
+      "comment": "// static CanvasSemanticPayloadCodec.modifier<A>(_:chainIndex:writer:)",
+      "basic_blocks": 0
+    },
+    "physical_record": {
+      "module": "GiftUIDrawing",
+      "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+      "identifier_id": 69,
+      "function_id": 96,
+      "hash": 613866557,
+      "demangled": "static GiftUIDrawing.CanvasSemanticPayloadCodec.modifier<A where A1: GiftUI._GiftUISemanticModifierPayload>(_: A1, chainIndex: Swift.UInt16, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUIDrawing.CanvasSemanticPayload<B.CaptureStorage>>) -> GiftUISemanticCore.SemanticExpansionError?",
+      "offset_bits": 448604,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 0,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=139 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    },
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+    "name": "// static CanvasSemanticPayloadCodec.primitive<A>(_:writer:)",
+    "previous_requirement_group": [
+      "beginObservableCandidateAndExpandSemantics"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "beginObservableCandidateAndExpandSemantics",
+        "line": 131715,
+        "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+        "reference": "  %1691 = function_ref @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticPrimitivePayload> (@in_guaranteed \u03c4_1_0, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // users: %2468, %1692",
+        "next": "  %1692 = apply %1691<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>, _GiftUIVStackPayload>(%1688, %1687, %1690) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticPrimitivePayload> (@in_guaranteed \u03c4_1_0, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // user: %1694",
+        "callee": {
+          "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+          "line": 590338,
+          "end_line": 590342,
+          "header": "sil @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticPrimitivePayload> (@in_guaranteed \u03c4_1_0, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> {",
+          "comment": "// static CanvasSemanticPayloadCodec.primitive<A>(_:writer:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+      "line": 590338,
+      "end_line": 590342,
+      "header": "sil @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticPrimitivePayload> (@in_guaranteed \u03c4_1_0, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> {",
+      "comment": "// static CanvasSemanticPayloadCodec.primitive<A>(_:writer:)",
+      "basic_blocks": 0
+    },
+    "physical_record": {
+      "module": "GiftUIDrawing",
+      "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+      "identifier_id": 70,
+      "function_id": 95,
+      "hash": 3058718414,
+      "demangled": "static GiftUIDrawing.CanvasSemanticPayloadCodec.primitive<A where A1: GiftUI._GiftUISemanticPrimitivePayload>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUIDrawing.CanvasSemanticPayload<B.CaptureStorage>>) -> GiftUISemanticCore.SemanticExpansionError?",
+      "offset_bits": 448156,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 0,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=146 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    },
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+    "name": "// static CanvasSemanticTransfer.stage<A>(from:into:table:)",
+    "previous_requirement_group": [
+      "beginObservableCandidateAndExpandSemantics"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "beginObservableCandidateAndExpandSemantics",
+        "line": 129358,
+        "symbol": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+        "reference": "  %121 = function_ref @$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : CanvasValueTable> (@guaranteed SemanticRecordStore<CanvasSemanticPayload<\u03c4_0_0.CaptureStorage>>, @guaranteed CanvasStagedValues<SemanticRecordReference, \u03c4_0_0>, @in_guaranteed \u03c4_0_0, @thin CanvasSemanticTransfer.Type) -> @error DrawingError // user: %122",
+        "next": "  try_apply %121<P08CounterSchemaCanvasTable<CounterDomain>>(%118, %120, %116, %114) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : CanvasValueTable> (@guaranteed SemanticRecordStore<CanvasSemanticPayload<\u03c4_0_0.CaptureStorage>>, @guaranteed CanvasStagedValues<SemanticRecordReference, \u03c4_0_0>, @in_guaranteed \u03c4_0_0, @thin CanvasSemanticTransfer.Type) -> @error DrawingError, normal bb17, error bb18 // id: %122",
+        "callee": {
+          "symbol": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+          "line": 142006,
+          "end_line": 142011,
+          "header": "sil @$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : CanvasValueTable> (@guaranteed SemanticRecordStore<CanvasSemanticPayload<\u03c4_0_0.CaptureStorage>>, @guaranteed CanvasStagedValues<SemanticRecordReference, \u03c4_0_0>, @in_guaranteed \u03c4_0_0, @thin CanvasSemanticTransfer.Type) -> @error DrawingError {",
+          "comment": "// static CanvasSemanticTransfer.stage<A>(from:into:table:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+      "line": 142006,
+      "end_line": 142011,
+      "header": "sil @$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : CanvasValueTable> (@guaranteed SemanticRecordStore<CanvasSemanticPayload<\u03c4_0_0.CaptureStorage>>, @guaranteed CanvasStagedValues<SemanticRecordReference, \u03c4_0_0>, @in_guaranteed \u03c4_0_0, @thin CanvasSemanticTransfer.Type) -> @error DrawingError {",
+      "comment": "// static CanvasSemanticTransfer.stage<A>(from:into:table:)",
+      "basic_blocks": 0
+    },
+    "physical_record": {
+      "module": "GiftUIDrawing",
+      "name": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+      "identifier_id": 147,
+      "function_id": 98,
+      "hash": 748443420,
+      "demangled": "static GiftUIDrawing.CanvasSemanticTransfer.stage<A where A: GiftUIDrawing.CanvasValueTable>(from: GiftUISemanticCore.SemanticRecordStore<GiftUIDrawing.CanvasSemanticPayload<A.CaptureStorage>>, into: GiftUIDrawing.CanvasStagedValues<GiftUISemanticCore.SemanticRecordReference, A>, table: A) throws(GiftUI.DrawingError) -> ()",
+      "offset_bits": 449500,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 0,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=287 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    },
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+    "name": "// SemanticRecordStore.hasPendingCanvas(_:)",
+    "previous_requirement_group": [
+      "resolveLayout",
+      "preflightCombinedRender",
+      "buildInteractionCandidate"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "resolveLayout",
+        "line": 142356,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+        "reference": "  %28 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %29",
+        "next": "  %29 = apply %28<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%27, %11) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %30",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+          "line": 583749,
+          "end_line": 583753,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool {",
+          "comment": "// SemanticRecordStore.hasPendingCanvas(_:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "requirement": "preflightCombinedRender",
+        "line": 143532,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+        "reference": "  %28 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %29",
+        "next": "  %29 = apply %28<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%27, %11) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %30",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+          "line": 583749,
+          "end_line": 583753,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool {",
+          "comment": "// SemanticRecordStore.hasPendingCanvas(_:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "requirement": "buildInteractionCandidate",
+        "line": 144328,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+        "reference": "  %75 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %76",
+        "next": "  %76 = apply %75<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%74, %60) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %77",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+          "line": 583749,
+          "end_line": 583753,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool {",
+          "comment": "// SemanticRecordStore.hasPendingCanvas(_:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+      "line": 583749,
+      "end_line": 583753,
+      "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool {",
+      "comment": "// SemanticRecordStore.hasPendingCanvas(_:)",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+    "name": "// SemanticRecordStore.publishCandidate()",
+    "previous_requirement_group": [
+      "publishSemanticAndObservableCandidate"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "publishSemanticAndObservableCandidate",
+        "line": 147170,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+        "reference": "  %85 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %86",
+        "next": "  try_apply %85<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%84) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError, normal bb16, error bb17 // id: %86",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+          "line": 147512,
+          "end_line": 147515,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError {",
+          "comment": "// SemanticRecordStore.publishCandidate()",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+      "line": 147512,
+      "end_line": 147515,
+      "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError {",
+      "comment": "// SemanticRecordStore.publishCandidate()",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+    "name": "// SemanticRecordStore.borrowedStore()",
+    "previous_requirement_group": [
+      "offerAndProduce"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "offerAndProduce",
+        "line": 148521,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+        "reference": "  %48 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // user: %49",
+        "next": "  %49 = apply %48<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%47) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // users: %50, %80, %88",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+          "line": 22182,
+          "end_line": 22185,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> {",
+          "comment": "// SemanticRecordStore.borrowedStore()",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+      "line": 22182,
+      "end_line": 22185,
+      "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> {",
+      "comment": "// SemanticRecordStore.borrowedStore()",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+    "name": "// SemanticRecordStore.discardCandidate()",
+    "previous_requirement_group": [
+      "cleanup"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "cleanup",
+        "line": 150292,
+        "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+        "reference": "  %132 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %133",
+        "next": "  try_apply %132<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%131) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError, normal bb19, error bb20 // id: %133",
+        "callee": {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+          "line": 149150,
+          "end_line": 149153,
+          "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError {",
+          "comment": "// SemanticRecordStore.discardCandidate()",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [
+      {
+        "caller": {
+          "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AFLLVAA0a9CommittedJ0AFLLVAA0a3HitJ0AFLLVTg5",
+          "line": 141777,
+          "end_line": 141893,
+          "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AFLLVAA0a9CommittedJ0AFLLVAA0a3HitJ0AFLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () {",
+          "comment": "// specialized CounterPipelineOwner<>.discardLocalCandidates()",
+          "basic_blocks": 16
+        },
+        "edge": {
+          "line": 141798,
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+          "reference": "  %13 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %14",
+          "next": "  try_apply %13<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%12) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError, normal bb3, error bb4 // id: %14",
+          "callee": {
+            "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+            "line": 149150,
+            "end_line": 149153,
+            "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError {",
+            "comment": "// SemanticRecordStore.discardCandidate()",
+            "basic_blocks": 0
+          }
+        }
+      }
+    ],
+    "current_callee": {
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+      "line": 149150,
+      "end_line": 149153,
+      "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError {",
+      "comment": "// SemanticRecordStore.discardCandidate()",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+    "name": "// InteractionOwnedKeyState<>.resolveCandidate(_:)",
+    "previous_requirement_group": [
+      "cleanup",
+      "cleanup",
+      "cleanup"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "cleanup",
+        "line": 150257,
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+        "reference": "  %108 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %109",
+        "next": "  %109 = apply %108<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%106, %107) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()",
+        "callee": {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+          "line": 150969,
+          "end_line": 150972,
+          "header": "sil @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () {",
+          "comment": "// InteractionOwnedKeyState<>.resolveCandidate(_:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "requirement": "cleanup",
+        "line": 150327,
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+        "reference": "  %153 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %154",
+        "next": "  %154 = apply %153<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%151, %152) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()",
+        "callee": {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+          "line": 150969,
+          "end_line": 150972,
+          "header": "sil @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () {",
+          "comment": "// InteractionOwnedKeyState<>.resolveCandidate(_:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "requirement": "cleanup",
+        "line": 150383,
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+        "reference": "  %201 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %202",
+        "next": "  %202 = apply %201<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%199, %200) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()",
+        "callee": {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+          "line": 150969,
+          "end_line": 150972,
+          "header": "sil @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () {",
+          "comment": "// InteractionOwnedKeyState<>.resolveCandidate(_:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+      "line": 150969,
+      "end_line": 150972,
+      "header": "sil @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () {",
+      "comment": "// InteractionOwnedKeyState<>.resolveCandidate(_:)",
+      "basic_blocks": 0
+    },
+    "physical_record": {
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+      "identifier_id": 107,
+      "function_id": 145,
+      "hash": 1008583663,
+      "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveCandidate(GiftUIInteraction.InteractionCandidateDisposition) -> ()",
+      "offset_bits": 343275,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 0,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=144 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    },
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+    "name": "// RuntimeActionGenerationAllocator.resolveCandidate(committed:)",
+    "previous_requirement_group": [
+      "cleanup",
+      "cleanup",
+      "cleanup"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "cleanup",
+        "line": 150262,
+        "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+        "reference": "  %112 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %113",
+        "next": "  %113 = apply %112<SemanticCompleteIdentity>(%110, %111) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()",
+        "callee": {
+          "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+          "line": 150976,
+          "end_line": 150979,
+          "header": "sil @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () {",
+          "comment": "// RuntimeActionGenerationAllocator.resolveCandidate(committed:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "requirement": "cleanup",
+        "line": 150332,
+        "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+        "reference": "  %157 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %158",
+        "next": "  %158 = apply %157<SemanticCompleteIdentity>(%155, %156) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()",
+        "callee": {
+          "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+          "line": 150976,
+          "end_line": 150979,
+          "header": "sil @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () {",
+          "comment": "// RuntimeActionGenerationAllocator.resolveCandidate(committed:)",
+          "basic_blocks": 0
+        }
+      },
+      {
+        "requirement": "cleanup",
+        "line": 150388,
+        "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+        "reference": "  %205 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %206",
+        "next": "  %206 = apply %205<SemanticCompleteIdentity>(%203, %204) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()",
+        "callee": {
+          "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+          "line": 150976,
+          "end_line": 150979,
+          "header": "sil @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () {",
+          "comment": "// RuntimeActionGenerationAllocator.resolveCandidate(committed:)",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [],
+    "current_callee": {
+      "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+      "line": 150976,
+      "end_line": 150979,
+      "header": "sil @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () {",
+      "comment": "// RuntimeActionGenerationAllocator.resolveCandidate(committed:)",
+      "basic_blocks": 0
+    },
+    "physical_record": {
+      "module": "GiftUIRuntimeCore",
+      "name": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+      "identifier_id": 315,
+      "function_id": 679,
+      "hash": 3616162541,
+      "demangled": "GiftUIRuntimeCore.RuntimeActionGenerationAllocator.resolveCandidate(committed: Swift.Bool) -> ()",
+      "offset_bits": 1354885,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 0,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=230 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    },
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  },
+  {
+    "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+    "name": "// ObservableModelScope<>.endFrame()",
+    "previous_requirement_group": [
+      "cleanup"
+    ],
+    "direct_current16_edges": [
+      {
+        "requirement": "cleanup",
+        "line": 150457,
+        "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+        "reference": "  %256 = function_ref @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ~Copyable> (@guaranteed ObservableModelScope<\u03c4_0_0, \u03c4_0_1>) -> @error ObservableStateError // user: %257",
+        "next": "  try_apply %256<CounterOwnedModel, CounterModelSchema>(%224) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ~Copyable> (@guaranteed ObservableModelScope<\u03c4_0_0, \u03c4_0_1>) -> @error ObservableStateError, normal bb34, error bb35 // id: %257",
+        "callee": {
+          "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+          "line": 95528,
+          "end_line": 95531,
+          "header": "sil @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ~Copyable> (@guaranteed ObservableModelScope<\u03c4_0_0, \u03c4_0_1>) -> @error ObservableStateError {",
+          "comment": "// ObservableModelScope<>.endFrame()",
+          "basic_blocks": 0
+        }
+      }
+    ],
+    "other_scoped_concrete_edges": [
+      {
+        "caller": {
+          "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17observeModelValues5UInt8VyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateK0AHLLVAA0a9CommittedK0AHLLVAA0a3HitK0AHLLVTg5",
+          "line": 29970,
+          "end_line": 30266,
+          "header": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17observeModelValues5UInt8VyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateK0AHLLVAA0a9CommittedK0AHLLVAA0a3HitK0AHLLVTg5 : $@convention(method) (@guaranteed CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> UInt8 {",
+          "comment": "// specialized CounterPipelineOwner<>.observeModelValue()",
+          "basic_blocks": 38
+        },
+        "edge": {
+          "line": 30208,
+          "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+          "reference": "  %182 = function_ref @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ~Copyable> (@guaranteed ObservableModelScope<\u03c4_0_0, \u03c4_0_1>) -> @error ObservableStateError // user: %183",
+          "next": "  try_apply %182<CounterOwnedModel, CounterModelSchema>(%26) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ~Copyable> (@guaranteed ObservableModelScope<\u03c4_0_0, \u03c4_0_1>) -> @error ObservableStateError, normal bb24, error bb25 // id: %183",
+          "callee": {
+            "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+            "line": 95528,
+            "end_line": 95531,
+            "header": "sil @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ~Copyable> (@guaranteed ObservableModelScope<\u03c4_0_0, \u03c4_0_1>) -> @error ObservableStateError {",
+            "comment": "// ObservableModelScope<>.endFrame()",
+            "basic_blocks": 0
+          }
+        }
+      }
+    ],
+    "current_callee": {
+      "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+      "line": 95528,
+      "end_line": 95531,
+      "header": "sil @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ~Copyable> (@guaranteed ObservableModelScope<\u03c4_0_0, \u03c4_0_1>) -> @error ObservableStateError {",
+      "comment": "// ObservableModelScope<>.endFrame()",
+      "basic_blocks": 0
+    },
+    "physical_record": null,
+    "classification": "surviving generic opaque edge; concrete applicability needs grouped closure review",
+    "source_edits_authorized": false
+  }
+]

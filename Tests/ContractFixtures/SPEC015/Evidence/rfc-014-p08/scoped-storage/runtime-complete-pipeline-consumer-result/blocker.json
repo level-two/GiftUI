@@ -1,0 +1,205 @@
+{
+  "gate": "FAIL required generic callee availability / concrete stage specialization; STOP dependent safety/cold",
+  "source_commit": "1db805a6",
+  "scope": "one concrete scopedStatic pipeline ->admitAndSeal ->keyresolver family; finite23knownedge update, no broader42catalog",
+  "concrete_owner": "CounterPipelineOwner<P08GeometryAccess,P08CandidateAccess,P08CommittedAccess,P08HitAccess>",
+  "path": [
+    {
+      "from": {
+        "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5",
+        "line": 6483,
+        "end_line": 7158,
+        "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RunCycleResult<RuntimeOwnerFailure> {",
+        "comment": "// specialized CounterPipelineOwner<>.runOpportunity()",
+        "basic_blocks": 83
+      },
+      "edge": {
+        "line": 6615,
+        "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE09runTracedD017GiftUIRuntimeCore0c8CompleteD6ResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5",
+        "reference": "  %116 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE09runTracedD017GiftUIRuntimeCore0c8CompleteD6ResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimeCompletePipelineResult<RuntimeOwnerFailure> // user: %117",
+        "next": "  %117 = apply %116(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimeCompletePipelineResult<RuntimeOwnerFailure> // users: %118, %119, %127",
+        "callee": {
+          "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE09runTracedD017GiftUIRuntimeCore0c8CompleteD6ResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5",
+          "line": 10711,
+          "end_line": 12097,
+          "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE09runTracedD017GiftUIRuntimeCore0c8CompleteD6ResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimeCompletePipelineResult<RuntimeOwnerFailure> {",
+          "comment": "// specialized CounterPipelineOwner<>.runTracedPipeline()",
+          "basic_blocks": 126
+        }
+      }
+    },
+    {
+      "from": {
+        "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE09runTracedD017GiftUIRuntimeCore0c8CompleteD6ResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5",
+        "line": 10711,
+        "end_line": 12097,
+        "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE09runTracedD017GiftUIRuntimeCore0c8CompleteD6ResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimeCompletePipelineResult<RuntimeOwnerFailure> {",
+        "comment": "// specialized CounterPipelineOwner<>.runTracedPipeline()",
+        "basic_blocks": 126
+      },
+      "edge": {
+        "line": 10754,
+        "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+        "reference": "  %30 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // user: %31",
+        "next": "  %31 = apply %30(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> // users: %40, %32",
+        "callee": {
+          "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+          "line": 116560,
+          "end_line": 117183,
+          "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "comment": "// specialized CounterPipelineOwner<>.admitAndSeal()",
+          "basic_blocks": 76
+        }
+      }
+    }
+  ],
+  "admitAndSeal": {
+    "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+    "line": 116560,
+    "end_line": 117183,
+    "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+    "comment": "// specialized CounterPipelineOwner<>.admitAndSeal()",
+    "basic_blocks": 76
+  },
+  "keyresolver_edges": [
+    {
+      "line": 116861,
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+      "reference": "  %221 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %222",
+      "next": "  %222 = apply %221<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%217, %119) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // users: %239, %238, %224, %234, %223",
+      "callee": {
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+        "line": 586734,
+        "end_line": 586737,
+        "header": "sil [heuristic_always_inline] @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+        "comment": "// InteractionOwnedKeyState<>.resolveDown(at:)",
+        "basic_blocks": 0
+      }
+    },
+    {
+      "line": 117112,
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "reference": "  %413 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %414",
+      "next": "  %414 = apply %413<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%412, %411, %119) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // users: %446, %442, %416, %421, %415",
+      "callee": {
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+        "line": 586741,
+        "end_line": 586744,
+        "header": "sil @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+        "comment": "// InteractionOwnedKeyState<>.resolveMove(_:at:)",
+        "basic_blocks": 0
+      }
+    },
+    {
+      "line": 117167,
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "reference": "  %450 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %451",
+      "next": "  %451 = apply %450<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%449, %448, %119) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // users: %455, %452",
+      "callee": {
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+        "line": 508199,
+        "end_line": 508202,
+        "header": "sil [heuristic_always_inline] @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+        "comment": "// InteractionOwnedKeyState<>.resolveUp(_:at:)",
+        "basic_blocks": 0
+      }
+    }
+  ],
+  "physical_records": [
+    {
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+      "identifier_id": 105,
+      "function_id": 150,
+      "hash": 2953884724,
+      "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveDown(at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+      "offset_bits": 345233,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 2,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=135 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    },
+    {
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "identifier_id": 103,
+      "function_id": 152,
+      "hash": 1752837523,
+      "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveMove(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+      "offset_bits": 346035,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 0,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=132 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    },
+    {
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "identifier_id": 102,
+      "function_id": 154,
+      "hash": 1492478232,
+      "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveUp(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+      "offset_bits": 346884,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 2,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=132 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    }
+  ],
+  "object_admitAndSeal": {
+    "start_line": 58233,
+    "end_line": 58862,
+    "header": "000000000002ccc0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5>:"
+  },
+  "object_keyresolver_relocations": [
+    {
+      "line": 58477,
+      "text": "\t\t000000000002d02c:  ARM64_RELOC_BRANCH26\t_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF"
+    },
+    {
+      "line": 58537,
+      "text": "\t\t000000000002d0ec:  ARM64_RELOC_BRANCH26\t_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF"
+    },
+    {
+      "line": 58606,
+      "text": "\t\t000000000002d1c4:  ARM64_RELOC_BRANCH26\t_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF"
+    }
+  ],
+  "matched_object_sha256": "640b2219776e50afc038dfe5fe22032618352cb85f7fdf3c3d6a40ac2d6a971f",
+  "observer_distinction": "operational pointer down/move/up branch applies genericresolver and uses returnedgesture to update capture/result; no trace call intervenes in scopedadmit body. Pipeline callsadmit before downstreamtrace. No allocation claim follows. Full metadataTLScontextobserver attribution remainsunqualified.",
+  "next_boundary": "grouped read-only source/serialization/ABI/privacy/lifetime review of exact23current refs and required finite transitive callees, prioritize three InteractionOwnedKeyState resolver wrappers +state/raw constructors; no sourcecandidate/automaticrepair allowance",
+  "not_claimed": "no measured allocation/heapcount, no all23fail/bodyrequired claim, no contractimpossibility; ordinarynongeneric ABI leaves may remainbodyopaque"
+}

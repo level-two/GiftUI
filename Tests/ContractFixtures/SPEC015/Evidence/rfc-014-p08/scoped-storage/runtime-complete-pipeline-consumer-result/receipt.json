@@ -1,0 +1,18 @@
+{
+  "source_commit": "1db805a6",
+  "source_mutations": 0,
+  "compiler_decoder_runtime_executions": 0,
+  "automatic_source_repairs": 0,
+  "qualification": "../runtime-complete-pipeline-qualification1-result/README.md",
+  "sil_sha256": "77bab1e09a61f6092c7fb8f63b8fe9668dba1c21af101f1e6982e1866cc0a17b",
+  "object_sha256": "640b2219776e50afc038dfe5fe22032618352cb85f7fdf3c3d6a40ac2d6a971f",
+  "index_sha256": "9553d2fd4d772fb10b9fe944d1c1e6a6996679a3f4cf93f06406e53eb44b1969",
+  "root_resolved": true,
+  "next_material_gate": "keyresolver required genericbody absent on actual concreteadmission",
+  "requirements": 16,
+  "method_bodies": 14,
+  "direct16_frontier_refs": 32,
+  "known_frontier_symbols": 23,
+  "currentallscopedrefs": 37,
+  "remaining": "all42/privatecallee/Stateborrow/metadataTLScontextobserver/full safety/cold UNQUALIFIED"
+}
