@@ -23,7 +23,9 @@ is read-only/proposal only: exact28sites/five files for confirmed three resolver
 family; remaining20actual roots classified into five grouped families, no blanket
 promotion or full23/all42 guarantee. Three framework internalABI field proposals
 exclude normative privateP08carriers/constructors/14loans.577inputs unchanged;
-source/compiler/runtime/repair allowance NONE. Independent stagedmap review next.
+source/compiler/runtime/repair allowance NONE.
+[Independent resolver design READY](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stage23-resolver-design-review.md)
+for a separately authorized bounded candidate; current source/FAIL/STOP unchanged.
 
 Current [concrete Static consumer interpretation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-consumer-result/README.md):
 prior genericrun blocker RESOLVED (concrete126BB pipeline), next actual admission

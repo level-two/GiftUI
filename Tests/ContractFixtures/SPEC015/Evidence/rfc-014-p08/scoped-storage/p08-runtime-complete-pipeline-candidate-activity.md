@@ -60,3 +60,6 @@ priorrun resolved; concreteadmission generickeyresolver family FAIL/STOP.16owner
 [Finite stage23 inventory](stage23-grouped-inventory/README.md) prepared read-only:
 28site/fivefile resolver proposal;20remainingroots classified/noedit allowlist.
 577inputs unchanged; no newsourcecandidate/compiler/runtime/repair allowance.
+[Independent design READY](p08-stage23-resolver-design-review.md) for a separately
+authorized bounded candidate; no material selected-map gap found. Source and
+current FAIL/STOP remain unchanged; remaining families are not authorized edits.
