@@ -35,3 +35,10 @@ producer choice. Then freeze and independently review a successor recipe with
 fresh output roots; run each macro, P02/profile, control and dependent stage once
 in the original order, zero source repairs and zero retries. The original packet
 and freeze remain immutable. Strict-cold and P08 acceptance remain unproved.
+
+The successor packet's independent pre-execution review found that the cleanup
+also removed the generic `.build/contracts` parent. Its guarded wrapper creates
+the campaign root with `mkdir()` and therefore requires that parent to exist.
+Recreate only the empty parent with `mkdir -p .build/contracts`; require
+`.build/contracts/p08-analyzer-abi-continuation-campaign2` to remain absent.
+This is directory setup, not a campaign invocation or source/recipe repair.
