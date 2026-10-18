@@ -18,6 +18,11 @@ superseded_by: null
 
 # Implementation Design — P08 Scoped Storage Ownership
 
+Current [grouped C semantic proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-grouped-inventory/README.md), 2026-10-18:
+36sites/fourfiles cover all8Croots/directpublication/reconcile/borrow helpers.
+Exact ABI-only fields and existing constructor/default/lifetime guards; no protected
+backing or E/F expansion. Proposal only/independent review/no source or newbudget.
+
 Current [finite non-Canvas constructor proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-grouped-inventory/README.md), 2026-10-18:
 ABI-only ordinary zero-argument constructors in exact top-level finite View owners;
 three selectors/two maintained files, private State/access/defaults unchanged.

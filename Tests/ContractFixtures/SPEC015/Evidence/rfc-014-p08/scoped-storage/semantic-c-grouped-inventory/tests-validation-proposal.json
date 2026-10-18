@@ -1,0 +1,46 @@
+{
+  "status": "PROPOSAL ONLY; independentreview before any source/candidate allowance",
+  "new_prepared_compile_controls": [
+    {
+      "name": "semantic-c-checked-borrow-positive",
+      "purpose": "Use existing typed five-region checked withSemanticRecordStore factory; inside callback call store.borrowedStore and existing candidate/consumer API. Same imported fresh UInt32 store/limits/owner setup as maintained RecordBankProbe; no raw constructor."
+    },
+    {
+      "name": "semantic-c-borrow-init-negative",
+      "purpose": "Same-package separate module attempts SemanticRecordStore(borrowing: store) from existing legitimate borrowed store; require exactly internal-access diagnostic, matching positive uses store.borrowedStore. No arbitrary pointer input or incidental lifetime error."
+    },
+    {
+      "name": "semantic-c-borrow-escape-negative",
+      "purpose": "Within a fully typed legitimate factory setup bind its callback result to borrowedStore(), violating existing implicit Escapable Result. Same-source positive returns UInt32 observation. Isolate intended nonescape diagnostic; do not use a function-return signature missing a lifetime annotation."
+    }
+  ],
+  "existing_controls_retained": "All70 privacy controls +all17macrotests, main/multiple/nested Presentation+Table. New predicate/macro/lowering source unchanged and qualified by exact hashes; no macroproducer rebuild is required if all source/dependency hashes match prior fresh49 artifact seal, otherwise fresh build rather than stale acceptance.",
+  "sequential_combined_pipeline": [
+    "Freeze exact36site source/token/default/lifetime audit after explicit candidate authorization; fresh isolated registered25 DAG canonical8Static/13Dynamic/42host; collect independently runnable failures, block stale-dependent owners",
+    "All25+variants PASS\u2192existing70privacy plus3fullytyped new controls; matching accessible positive for everynegative, exact intended diagnostics",
+    "PASS\u2192same11complete matched indexes, preserve76 current fullmangled body identities; add11 new required serialized root/helper targets to87 total. Match full mangled root identities/signatures from fresh records, exclude closures/default/defer; exact unique nonzero kind and positiveBB, never broaden regex after failure",
+    "Ordinary nongeneric isValid/PathEntry.init/RuntimeRecord.init are ABI-only, not required serialized targets; qualify their finite object bodies/callees or retain cost unqualified rather than fail for0BB",
+    "PASS\u2192matching current42host object/SIL capture using unchanged source lists/flags/plugin/profiles/windows/capacities, fresh output seals; read-only actualStatic stopped all-none guard must eliminate dynamic associated/Optional metadata or expose exact remaining runtime work, not assert from missing generic symbol alone",
+    "Interpret grouped C publication/parent-first reconcile/borrowedStore normal/error/retirement and concrete payload clear/destruction, active-reader deferral and lifetime union. Preserve E/F known frontier, ordinary Text callback and cold Error witness costs explicitly. Material blocker stops dependent safety/runtime/cold; no automatic source repair",
+    "Only after complete required consumer/safety prerequisite PASS: reuse maintained SPEC006 RuntimeRecords/RecordBankProbe, ScopedTraversalProbe and actual42 CounterSemanticProbe behavior gates; verify comparison bound/parent-first identity/capacity/revision/refusal/borrow release alongside full14loan/Optional/lifetime/provenance/exclusivity/failurecleanup before strictcold"
+  ],
+  "not_planned": [
+    "No compiler/runtime now; no executable runner authored at design stage",
+    "No probe algorithms or new behavior tests duplicating existing scalar implementation",
+    "No E/F/sourcefrontier expansion or native observation-window/capacity changes"
+  ],
+  "existing_behavior_test_inputs": [
+    {
+      "path": "Tests/ContractFixtures/SPEC006/RuntimeRecords/RecordBankProbe.swift",
+      "sha256": "dec2ee98db6c793a3ad3b05caff56d5b2a100e1b31ece921a8abad584f5fab55"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift",
+      "sha256": "c79d99f4ac9720f59f16a404cb99027f1d50439f045436bbab366ea927b40da5"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "sha256": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb"
+    }
+  ]
+}

@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [grouped C traversal/publication proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-grouped-inventory/README.md):
+36sites/fourfiles, all8Croots+directhelpers;11serialized/3ordinaryABI/22fieldsites.
+Borrowed initializer keeps copy-other lifetime/internal-only access; E/F excluded.
+Read-only design, independent review pending, no source/compiler/runtime/newbudget.
+Actual F08 metadata cost/safety/strictcold/P08 remain unqualified.
+
 Current [bounded Canvas consumer result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-consumer-result/README.md):
 76body/SIL PASS retained; six newly selected original boundaries specialize,13/23
 resolved in finite scope. Actual F08stopped generic associated/Optional metadata

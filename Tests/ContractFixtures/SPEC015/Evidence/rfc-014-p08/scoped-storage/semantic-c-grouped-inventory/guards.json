@@ -1,0 +1,45 @@
+{
+  "authority": [
+    {
+      "path": "docs/implementation-designs/spec-015-p08-native-cold-static.md",
+      "lines": "88\u2013109",
+      "rule": "Serialize directly needed bodies; unsafe constructors remain inaccessible to source clients; preserve actual backing lifetime/borrowed propagation. Sourceinternal ABI is permitted, public/package unchecked constructors are not."
+    },
+    {
+      "path": "docs/specs/spec-006-declarative-view-semantics.md",
+      "lines": "185\u2013193",
+      "rule": "Candidate bank remains borrowed and unpublished until complete; old bank reuse waits for consumers."
+    },
+    {
+      "path": "docs/specs/spec-015-host-configuration.md",
+      "lines": "319\u2013375",
+      "rule": "Normative private P08 access/session/supplied/pipeline/retired representation and14loans unchanged."
+    },
+    {
+      "path": "docs/implementation-designs/spec-006-runtime-record-banks.md",
+      "rule": "Existing parent-first bounded reconciliation and typed scoped store/view lifetime unchanged."
+    }
+  ],
+  "borrowed_initializer": {
+    "before": "@_lifetime(copy other) private init(borrowing other: borrowing SemanticRecordStore<Payload>)",
+    "after": "@_lifetime(copy other) @inlinable internal init(borrowing other: borrowing SemanticRecordStore<Payload>)",
+    "body_exact": "a=other.a; b=other.b; limits=other.limits; owner=other.owner (original assignment tokens retained)",
+    "reason": "F18 serialized package borrowedStore must call this existing helper; sourceinternal module-only entry consumes no raw backing and requires a legitimate checked store. It propagates original complete lifetime, no new issuance/unchecked factory; external/same-package source cannot invoke."
+  },
+  "constructor_defaults": "No initializer synthesis, new constructor, parameter, Optional nil default, required argument, stored field value/mutability/default changes. Existing explicit PathEntry/RuntimeRecord package init() bodies remain ordinary ABI; all default .max/.root/zero values exact. Matched compiler default synthesis rules are not used to invent any memberwise replacement.",
+  "body_guard": "Every algorithm/controlflow/ownership/lifetime/throws/body token must be identical after removing exact selected annotations and sole private\u2192internal access token. Preserve consuming payload moves, .canvas(nil) marker, reader deferred clear, revision/error precedence, parent-first reconciliation per-parent fanout bound and counters.",
+  "protected": [
+    "Authored State/_model and generated checked helper route",
+    "All normative P08 fields/constructors/session/hostOptional/14loan borrows",
+    "SemanticCompleteIdentity private component storage and private-set count",
+    "Raw ModelKey fields/constructors and all model/registration/retirement ledgers",
+    "Text backing and all capacities/flags/observation windows",
+    "E/F commit roots F20/F21 unless direct need separately reviewed"
+  ],
+  "uncertainties": [
+    "Grouped source legality is compiler-dependent; source-reference closure does not guarantee physical serialization/specialization of all87 targets",
+    "Scalar C leaves have no0BB-alone strict failure; full provider cost alternative remains possible, but this bounded map chooses serialization of exact current8-root closure rather than a larger ordinary-call cost catalog",
+    "Actual cold metadata/error/witness and ordinary textcallback transitive cost remain unqualified even after source/physical gate pass",
+    "No current architecture/privacy/lifetime contract conflict identified; if compiler requires wider unchecked access or a lifetime/algorithm change, stop and escalate alternatives rather than widen map"
+  ]
+}

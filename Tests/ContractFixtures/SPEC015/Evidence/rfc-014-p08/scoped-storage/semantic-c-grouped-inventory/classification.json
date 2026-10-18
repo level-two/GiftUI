@@ -1,0 +1,136 @@
+{
+  "scope": "All8 original C roots grouped; current actual path refs and existing matched provider capture, not wholehost/transitivecatalog",
+  "rows": [
+    {
+      "id": "F07",
+      "name": "// SemanticRecordStore.expansionBank(_:)",
+      "current_actual_pipeline_reference_count": 4,
+      "classification": "scalar-only state/index/summary boundary may remain ordinary if complete provider cost is proven; grouped proposal serializes current direct boundary to remove unqualified ABI work, not from0BB alone",
+      "provider_root_present": true,
+      "direct_provider_relocations": [],
+      "cost_limits": "Outlined/direct callee closure not newly certified; no allocator count, cache allowance, or whole-cycle cost claim."
+    },
+    {
+      "id": "F08",
+      "name": "// SemanticExpansionTraversal<>.stopped.getter",
+      "current_actual_pipeline_reference_count": 4,
+      "classification": "required concrete specialization: actual associated-type/Optional runtime metadata proved at normal traversal guard",
+      "provider_root_present": true,
+      "direct_provider_relocations": [
+        "0000000000002bf0:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_447",
+        "0000000000002c10:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_182",
+        "0000000000002c14:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_462",
+        "0000000000002c1c:  ARM64_RELOC_BRANCH26\t_swift_getAssociatedTypeWitness",
+        "0000000000002c2c:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_3",
+        "0000000000002c34:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_73",
+        "0000000000002c3c:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_332",
+        "0000000000002c44:  ARM64_RELOC_BRANCH26\t_$sSqMa",
+        "0000000000002c58:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_72",
+        "0000000000002c64:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_20",
+        "0000000000002c70:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_21",
+        "0000000000002c94:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_90",
+        "0000000000002c98:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_382",
+        "0000000000002ccc:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_76",
+        "0000000000002cdc:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_655",
+        "0000000000002ce4:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_76",
+        "0000000000002cec:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_346",
+        "0000000000002cfc:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_76",
+        "0000000000002d0c:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_287",
+        "0000000000002d18:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_537",
+        "0000000000002d2c:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_2",
+        "0000000000002d3c:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_888",
+        "0000000000002d40:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_475",
+        "0000000000002d54:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_475",
+        "0000000000002d58:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_139",
+        "0000000000002d60:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_514",
+        "0000000000002d7c:  ARM64_RELOC_BRANCH26\t_$sSQ2eeoiySbx_xtFZTj",
+        "0000000000002d88:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_390",
+        "0000000000002da4:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_480",
+        "0000000000002da8:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_346"
+      ],
+      "cost_limits": "Outlined/direct callee closure not newly certified; no allocator count, cache allowance, or whole-cycle cost claim."
+    },
+    {
+      "id": "F09",
+      "name": "// RecordSink.publishExpansion(_:)",
+      "current_actual_pipeline_reference_count": 4,
+      "classification": "scalar-only state/index/summary boundary may remain ordinary if complete provider cost is proven; grouped proposal serializes current direct boundary to remove unqualified ABI work, not from0BB alone",
+      "provider_root_present": true,
+      "direct_provider_relocations": [
+        "000000000001dd84:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_542",
+        "000000000001dd88:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_246"
+      ],
+      "cost_limits": "Outlined/direct callee closure not newly certified; no allocator count, cache allowance, or whole-cycle cost claim."
+    },
+    {
+      "id": "F10",
+      "name": "// SemanticRecordBankBuffers.enter(_:limits:)",
+      "current_actual_pipeline_reference_count": 4,
+      "classification": "scalar-only state/index/summary boundary may remain ordinary if complete provider cost is proven; grouped proposal serializes current direct boundary to remove unqualified ABI work, not from0BB alone",
+      "provider_root_present": true,
+      "direct_provider_relocations": [
+        "000000000001d2c0:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore21SemanticPathComponentV7isValidSbvg",
+        "000000000001d3e4:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_240",
+        "000000000001d468:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_842"
+      ],
+      "cost_limits": "Outlined/direct callee closure not newly certified; no allocator count, cache allowance, or whole-cycle cost claim."
+    },
+    {
+      "id": "F11",
+      "name": "// SemanticRecordBankBuffers.appendRecord(limits:)",
+      "current_actual_pipeline_reference_count": 4,
+      "classification": "scalar-only state/index/summary boundary may remain ordinary if complete provider cost is proven; grouped proposal serializes current direct boundary to remove unqualified ABI work, not from0BB alone",
+      "provider_root_present": true,
+      "direct_provider_relocations": [
+        "000000000001dae8:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_485"
+      ],
+      "cost_limits": "Outlined/direct callee closure not newly certified; no allocator count, cache allowance, or whole-cycle cost claim."
+    },
+    {
+      "id": "F16",
+      "name": "// SemanticRecordStore.hasPendingCanvas(_:)",
+      "current_actual_pipeline_reference_count": 12,
+      "classification": "scalar-only state/index/summary boundary may remain ordinary if complete provider cost is proven; grouped proposal serializes current direct boundary to remove unqualified ABI work, not from0BB alone",
+      "provider_root_present": true,
+      "direct_provider_relocations": [],
+      "cost_limits": "Outlined/direct callee closure not newly certified; no allocator count, cache allowance, or whole-cycle cost claim."
+    },
+    {
+      "id": "F17",
+      "name": "// SemanticRecordStore.publishCandidate()",
+      "current_actual_pipeline_reference_count": 4,
+      "classification": "generic payload/borrow/publication boundary selected for concrete ownership/clear/reconcile specialization; no strict allocation failure inferred",
+      "provider_root_present": true,
+      "direct_provider_relocations": [
+        "0000000000021cb8:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+        "0000000000021cdc:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+        "0000000000021cec:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl",
+        "0000000000021cf0:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_92",
+        "0000000000021d04:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl",
+        "0000000000021d08:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_92",
+        "0000000000021d10:  ARM64_RELOC_BRANCH26\t_swift_willThrowTypedImpl",
+        "0000000000021d40:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore19SemanticRecordStoreV9publisheds5UInt8VSgvg",
+        "0000000000021d68:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_714",
+        "0000000000021d7c:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore25SemanticRecordBankBuffersV9reconcile4with6limitsAA0D14ExpansionErrorOSgACyxG_AA0dE6LimitsVtF",
+        "0000000000021d80:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_253",
+        "0000000000021d9c:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+        "0000000000021db4:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl",
+        "0000000000021db8:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_92"
+      ],
+      "cost_limits": "Outlined/direct callee closure not newly certified; no allocator count, cache allowance, or whole-cycle cost claim."
+    },
+    {
+      "id": "F18",
+      "name": "// SemanticRecordStore.borrowedStore()",
+      "current_actual_pipeline_reference_count": 4,
+      "classification": "generic payload/borrow/publication boundary selected for concrete ownership/clear/reconcile specialization; no strict allocation failure inferred",
+      "provider_root_present": true,
+      "direct_provider_relocations": [
+        "0000000000021a4c:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_298",
+        "0000000000021a58:  ARM64_RELOC_BRANCH26\t_OUTLINED_FUNCTION_298",
+        "0000000000021a74:  ARM64_RELOC_BRANCH26\t_memcpy"
+      ],
+      "cost_limits": "Outlined/direct callee closure not newly certified; no allocator count, cache allowance, or whole-cycle cost claim."
+    }
+  ]
+}

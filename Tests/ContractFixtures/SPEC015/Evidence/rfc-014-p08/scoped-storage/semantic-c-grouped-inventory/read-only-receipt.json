@@ -1,0 +1,69 @@
+{
+  "base_head": "a4097b2f522d30e506f75661c25a96dc4d55867a",
+  "source_inputs": [
+    {
+      "path": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "sha256": "fc787355d2ef5fecbe59e48db5fd54f036e93a012705cbdcd0b13e7e012d381f"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "sha256": "120526cb46950bae785a004a8c815c9c777dc992e702fe7afae239257e1a913e"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "sha256": "ea08e3afb62ddd629e03d7f4b128b3398e16e6d6a6e4ae256903c0b72c806557"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "sha256": "dfdb603a7a0807a4ed5e7d1bf9793326db7998ec3f8c5f59a703e585a5204c02"
+    }
+  ],
+  "protected_external": [
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+      "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581"
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+      "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3"
+    },
+    {
+      "path": "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+      "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243"
+    },
+    {
+      "path": "scripts/nrf52840/build.sh",
+      "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72"
+    },
+    {
+      "path": "scripts/raspberry-pi/build.sh",
+      "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+    }
+  ],
+  "pycache": [
+    {
+      "path": "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
+      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+    }
+  ],
+  "evidence_inputs": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-consumer-result/next-boundary.json",
+      "sha256": "1ff48011c5ba663ad0164df28e191d3737873643d8c350e547d30edd423165c9"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-consumer-result/frontier23-current.json",
+      "sha256": "73b4d01c8750c6ee53f2173d596404dc9748b64b4bfd75bb4adf3ba9f16d12cf"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-consumer-result/read-only-provider-disassembly.tar.gz",
+      "sha256": "5cbcfd19e164eb33447bdcfe4eb627ebad2af01bd7359d3ab4def64a1cf2ffd1"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-grouped-inventory/matched-compiler-rule.json",
+      "sha256": "7d9e494dc02f26ff352a5b37cab00962d19efad3411d829fcf946ae485e9d2cf"
+    }
+  ],
+  "execution": "source/evidence/proposal reads/writes only; reused existing archived provider disassembly; no new tool/compiler/runtime",
+  "budgets": "none allocated/reset; all historical fixed/exhausted preserved"
+}

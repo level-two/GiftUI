@@ -1,0 +1,639 @@
+{
+  "status": "READONLY PROPOSAL independentreview required; no source/compiler/runtime/newbudget",
+  "source_base": "d65b127c; actual consumer147cc1c7 reviewed a4097b2f",
+  "counts": {
+    "edit_sites": 36,
+    "maintained_source_files": 4,
+    "original_C_roots": 8,
+    "serialized_roots_and_helpers": 11,
+    "ordinary_ABI_nongeneric_helpers": 3,
+    "package_field_ABI_sites": 22,
+    "private_to_internal_sites": 1
+  },
+  "source_inputs": [
+    {
+      "path": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "sha256": "fc787355d2ef5fecbe59e48db5fd54f036e93a012705cbdcd0b13e7e012d381f"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "sha256": "120526cb46950bae785a004a8c815c9c777dc992e702fe7afae239257e1a913e"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "sha256": "ea08e3afb62ddd629e03d7f4b128b3398e16e6d6a6e4ae256903c0b72c806557"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "sha256": "dfdb603a7a0807a4ed5e7d1bf9793326db7998ec3f8c5f59a703e585a5204c02"
+    }
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "file": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "owner": "SemanticExpansionTraversal",
+      "owner_region_lines": [
+        964,
+        1014
+      ],
+      "selector": "var stopped: Bool",
+      "line": 992,
+      "change": "Use @inlinable: replace existing directly preceding @usableFromInline marker where present, otherwise insert @inlinable. Preserve existing ABI scope, all inline hints/lifetime/access/signature/body tokens; no redundant duplicate marker.",
+      "required_by": [
+        "F08"
+      ],
+      "kind": "declaration"
+    },
+    {
+      "id": 2,
+      "file": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "owner": "RecordSink",
+      "owner_region_lines": [
+        136,
+        244
+      ],
+      "selector": "mutating func publishExpansion(_ summary: SemanticExpansionSummary)",
+      "line": 227,
+      "change": "Use @inlinable: replace existing directly preceding @usableFromInline marker where present, otherwise insert @inlinable. Preserve existing ABI scope, all inline hints/lifetime/access/signature/body tokens; no redundant duplicate marker.",
+      "required_by": [
+        "F09"
+      ],
+      "kind": "declaration"
+    },
+    {
+      "id": 3,
+      "file": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "owner": "SemanticRecordStore",
+      "owner_region_lines": [
+        71,
+        265
+      ],
+      "selector": "package borrowing func borrowedStore()",
+      "line": 93,
+      "change": "Use @inlinable: replace existing directly preceding @usableFromInline marker where present, otherwise insert @inlinable. Preserve existing ABI scope, all inline hints/lifetime/access/signature/body tokens; no redundant duplicate marker.",
+      "required_by": [
+        "F18"
+      ],
+      "kind": "declaration"
+    },
+    {
+      "id": 4,
+      "file": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "owner": "SemanticRecordStore",
+      "owner_region_lines": [
+        71,
+        265
+      ],
+      "selector": "package borrowing func publishCandidate()",
+      "line": 174,
+      "change": "Use @inlinable: replace existing directly preceding @usableFromInline marker where present, otherwise insert @inlinable. Preserve existing ABI scope, all inline hints/lifetime/access/signature/body tokens; no redundant duplicate marker.",
+      "required_by": [
+        "F17"
+      ],
+      "kind": "declaration"
+    },
+    {
+      "id": 5,
+      "file": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "owner": "SemanticRecordStore",
+      "owner_region_lines": [
+        71,
+        265
+      ],
+      "selector": "borrowing func hasPendingCanvas(_ bank: SemanticRecordBankBuffers<Payload>)",
+      "line": 195,
+      "change": "Use @inlinable: replace existing directly preceding @usableFromInline marker where present, otherwise insert @inlinable. Preserve existing ABI scope, all inline hints/lifetime/access/signature/body tokens; no redundant duplicate marker.",
+      "required_by": [
+        "F16",
+        "F17"
+      ],
+      "kind": "declaration"
+    },
+    {
+      "id": 6,
+      "file": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "owner": "SemanticRecordStore",
+      "owner_region_lines": [
+        71,
+        265
+      ],
+      "selector": "borrowing func expansionBank(_ number: UInt8)",
+      "line": 257,
+      "change": "Use @inlinable: replace existing directly preceding @usableFromInline marker where present, otherwise insert @inlinable. Preserve existing ABI scope, all inline hints/lifetime/access/signature/body tokens; no redundant duplicate marker.",
+      "required_by": [
+        "F07"
+      ],
+      "kind": "declaration"
+    },
+    {
+      "id": 7,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticRecordBankBuffers",
+      "owner_region_lines": [
+        219,
+        427
+      ],
+      "selector": "package func enter(_ component: SemanticPathComponent, limits: SemanticRecordLimits)",
+      "line": 263,
+      "change": "Use @inlinable: replace existing directly preceding @usableFromInline marker where present, otherwise insert @inlinable. Preserve existing ABI scope, all inline hints/lifetime/access/signature/body tokens; no redundant duplicate marker.",
+      "required_by": [
+        "F10"
+      ],
+      "kind": "declaration"
+    },
+    {
+      "id": 8,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticRecordBankBuffers",
+      "owner_region_lines": [
+        219,
+        427
+      ],
+      "selector": "package func appendRecord(limits: SemanticRecordLimits)",
+      "line": 321,
+      "change": "Use @inlinable: replace existing directly preceding @usableFromInline marker where present, otherwise insert @inlinable. Preserve existing ABI scope, all inline hints/lifetime/access/signature/body tokens; no redundant duplicate marker.",
+      "required_by": [
+        "F11"
+      ],
+      "kind": "declaration"
+    },
+    {
+      "id": 9,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticRecordBankBuffers",
+      "owner_region_lines": [
+        219,
+        427
+      ],
+      "selector": "package func reconcile(with published: Self, limits: SemanticRecordLimits)",
+      "line": 391,
+      "change": "Use @inlinable: replace existing directly preceding @usableFromInline marker where present, otherwise insert @inlinable. Preserve existing ABI scope, all inline hints/lifetime/access/signature/body tokens; no redundant duplicate marker.",
+      "required_by": [
+        "F17"
+      ],
+      "kind": "declaration"
+    },
+    {
+      "id": 10,
+      "file": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "owner": "SemanticRecordStore",
+      "owner_region_lines": [
+        71,
+        265
+      ],
+      "selector": "var published: UInt8?",
+      "line": 116,
+      "change": "Use @inlinable: replace existing directly preceding @usableFromInline marker where present, otherwise insert @inlinable. Preserve existing ABI scope, all inline hints/lifetime/access/signature/body tokens; no redundant duplicate marker.",
+      "required_by": [
+        "F17"
+      ],
+      "kind": "declaration"
+    },
+    {
+      "id": 11,
+      "file": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "owner": "SemanticRecordStore",
+      "owner_region_lines": [
+        71,
+        265
+      ],
+      "selector": "private init(borrowing other: borrowing SemanticRecordStore<Payload>)",
+      "line": 98,
+      "change": "Change private\u2192internal and add @inlinable only; preserve @_lifetime(copy other), every parameter and a/b/limits/owner assignment; no new constructor.",
+      "required_by": [
+        "F18"
+      ],
+      "kind": "existing borrowed-initializer access/body qualification"
+    },
+    {
+      "id": 12,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticPathComponent",
+      "owner_region_lines": [
+        11,
+        38
+      ],
+      "selector": "package var isValid: Bool",
+      "line": 28,
+      "change": "Add @usableFromInline only. Ordinary nongeneric scalar body remains non-inlinable, defaults/access/body unchanged.",
+      "required_by": [
+        "F10"
+      ],
+      "kind": "ordinary ABI scalar leaf"
+    },
+    {
+      "id": 13,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticPathEntry",
+      "owner_region_lines": [
+        108,
+        123
+      ],
+      "selector": "package init() {}",
+      "line": 120,
+      "change": "Add @usableFromInline only. Ordinary nongeneric scalar body remains non-inlinable, defaults/access/body unchanged.",
+      "required_by": [
+        "F10"
+      ],
+      "kind": "ordinary ABI scalar leaf"
+    },
+    {
+      "id": 14,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticRuntimeRecord",
+      "owner_region_lines": [
+        124,
+        148
+      ],
+      "selector": "package init() {}",
+      "line": 145,
+      "change": "Add @usableFromInline only. Ordinary nongeneric scalar body remains non-inlinable, defaults/access/body unchanged.",
+      "required_by": [
+        "F11"
+      ],
+      "kind": "ordinary ABI scalar leaf"
+    },
+    {
+      "id": 15,
+      "file": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "owner": "SemanticExpansionSummary",
+      "owner_region_lines": [
+        36,
+        59
+      ],
+      "selector": "package let semanticNodeCount: UInt16",
+      "line": 37,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F09"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 16,
+      "file": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "owner": "SemanticExpansionSummary",
+      "owner_region_lines": [
+        36,
+        59
+      ],
+      "selector": "package let bodyEvaluationCount: UInt16",
+      "line": 38,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F09"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 17,
+      "file": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "owner": "SemanticExpansionSummary",
+      "owner_region_lines": [
+        36,
+        59
+      ],
+      "selector": "package let modifierApplicationCount: UInt16",
+      "line": 39,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F09"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 18,
+      "file": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "owner": "SemanticExpansionSummary",
+      "owner_region_lines": [
+        36,
+        59
+      ],
+      "selector": "package let actionOccurrenceCount: UInt16",
+      "line": 40,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F09"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 19,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticRecordLimits",
+      "owner_region_lines": [
+        76,
+        106
+      ],
+      "selector": "package let depth: UInt16",
+      "line": 81,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F10",
+        "F17"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 20,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticRecordLimits",
+      "owner_region_lines": [
+        76,
+        106
+      ],
+      "selector": "package let fanout: UInt16",
+      "line": 82,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F10",
+        "F17"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 21,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticPathComponent",
+      "owner_region_lines": [
+        11,
+        38
+      ],
+      "selector": "package let kind: Kind",
+      "line": 16,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F10"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 22,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticPathEntry",
+      "owner_region_lines": [
+        108,
+        123
+      ],
+      "selector": "package var component = SemanticPathComponent(kind: .root)",
+      "line": 109,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F10",
+        "F11",
+        "F17"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 23,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticPathEntry",
+      "owner_region_lines": [
+        108,
+        123
+      ],
+      "selector": "package var parent: UInt16 = .max",
+      "line": 110,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F10",
+        "F11",
+        "F17"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 24,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticPathEntry",
+      "owner_region_lines": [
+        108,
+        123
+      ],
+      "selector": "package var firstChild: UInt16 = .max",
+      "line": 111,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F10",
+        "F11",
+        "F17"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 25,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticPathEntry",
+      "owner_region_lines": [
+        108,
+        123
+      ],
+      "selector": "package var lastChild: UInt16 = .max",
+      "line": 112,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F10",
+        "F11",
+        "F17"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 26,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticPathEntry",
+      "owner_region_lines": [
+        108,
+        123
+      ],
+      "selector": "package var nextSibling: UInt16 = .max",
+      "line": 113,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F10",
+        "F11",
+        "F17"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 27,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticPathEntry",
+      "owner_region_lines": [
+        108,
+        123
+      ],
+      "selector": "package var childCount: UInt16 = 0",
+      "line": 114,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F10",
+        "F11",
+        "F17"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 28,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticPathEntry",
+      "owner_region_lines": [
+        108,
+        123
+      ],
+      "selector": "package var depth: UInt16 = 0",
+      "line": 115,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F10",
+        "F11",
+        "F17"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 29,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticPathEntry",
+      "owner_region_lines": [
+        108,
+        123
+      ],
+      "selector": "package var matchedPath: UInt16 = .max",
+      "line": 119,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F10",
+        "F11",
+        "F17"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 30,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticRuntimeRecord",
+      "owner_region_lines": [
+        124,
+        148
+      ],
+      "selector": "package var parent: UInt16 = .max",
+      "line": 129,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F11"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 31,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticRuntimeRecord",
+      "owner_region_lines": [
+        124,
+        148
+      ],
+      "selector": "package var firstChild: UInt16 = .max",
+      "line": 130,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F11"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 32,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticRuntimeRecord",
+      "owner_region_lines": [
+        124,
+        148
+      ],
+      "selector": "package var lastChild: UInt16 = .max",
+      "line": 131,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F11"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 33,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticRuntimeRecord",
+      "owner_region_lines": [
+        124,
+        148
+      ],
+      "selector": "package var nextSibling: UInt16 = .max",
+      "line": 132,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F11"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 34,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticRecordBankMetadata",
+      "owner_region_lines": [
+        185,
+        215
+      ],
+      "selector": "package var matchedRevision: UInt32 = 0",
+      "line": 206,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F09",
+        "F17"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 35,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticRecordBankMetadata",
+      "owner_region_lines": [
+        185,
+        215
+      ],
+      "selector": "package var componentComparisons: UInt32 = 0",
+      "line": 207,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F09",
+        "F17"
+      ],
+      "kind": "direct serialized field dependency"
+    },
+    {
+      "id": 36,
+      "file": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "owner": "SemanticRecordBankMetadata",
+      "owner_region_lines": [
+        185,
+        215
+      ],
+      "selector": "package var summary: SemanticExpansionSummary?",
+      "line": 208,
+      "change": "Add @usableFromInline only; retain exact authored package access/type/default/mutability.",
+      "required_by": [
+        "F09",
+        "F17"
+      ],
+      "kind": "direct serialized field dependency"
+    }
+  ],
+  "noops": [
+    "SemanticExpansionTraversal existing nominal/fields/Domain and SemanticExpansionWorkspace/Sink/StatefulBinding protocol/associatedtype ABI",
+    "SemanticRecordStore nominal/a/b/limits/owner, existing bank/candidate/clear/fail/takePendingCanvas/discardCandidate and borrowed init ownership annotation",
+    "SemanticRecordLimits records/paths/payloads/textScalars/payloadBytes existing ABI; PathEntry.nearestRecord; RuntimeRecord path/kind/payload/text/chain existing ABI",
+    "No maximumObservedDepth summary field promotion; no SemanticCompleteIdentity private components/count opening; append/remove/equality ordinary scalar APIs remain unchanged",
+    "No RecordWorkspace or RecordSink unrelated witness sweep; only selected publishExpansion changes",
+    "No E/F commit roots F20/F21 edits unless a later concrete direct dependency proves necessary (not currently needed)"
+  ]
+}
