@@ -18,7 +18,13 @@ superseded_by: null
 
 ## Grouped dependency continuation — 2026-10-18
 
-Current [authorized grouped candidate1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-candidate1/README.md):
+Current [grouped candidate compile boundary](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-compile-result/README.md):
+source1db805a6, lower+all25 fresh owners PASS, zero failed/blocked;319 input hashes
+and all log/output identities verify. Candidate1/1 fixed with zero automatic
+repairs; old budgets unchanged. Privacy/physical actual-consumer/safety/strict cold
+remain unexecuted. P08/R07/T8.1 and combined source overlay remain unaccepted.
+
+Historical [authorized grouped candidate1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-candidate1/README.md):
 exact53 sites/six files applied, formatted and token audited; all14 constructor
 arguments required. Source and fresh registered25-owner recipe frozen/319 hashes;
 validation-only PASS, compiler unexecuted. New ONE candidate1/1, zero automatic

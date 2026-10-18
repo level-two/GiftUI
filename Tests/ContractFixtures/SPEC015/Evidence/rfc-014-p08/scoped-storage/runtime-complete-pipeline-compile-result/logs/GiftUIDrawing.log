@@ -1,0 +1,18 @@
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:140:9: warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+        state.pointee.count += 1
+        ^
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:40:31: note: setter for property 'count' is not '@usableFromInline' or public
+    package internal(set) var count: UInt16 = 0
+                              ^
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:163:13: warning: setter for property 'releases' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+            state.pointee.releases += 1
+            ^
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:42:31: note: setter for property 'releases' is not '@usableFromInline' or public
+    package internal(set) var releases: UInt16 = 0
+                              ^
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:173:9: warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+        state.pointee.count = 0
+        ^
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:40:31: note: setter for property 'count' is not '@usableFromInline' or public
+    package internal(set) var count: UInt16 = 0
+                              ^
