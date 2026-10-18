@@ -1,0 +1,9 @@
+{
+  "source_commit": "d65b127c",
+  "frozen_inputs_verified": 1281,
+  "physical": "76unique/serializedkindnonzero/positiveBB",
+  "source_mutations": 0,
+  "compiler_tests_decoder_runtime_during_freeze": false,
+  "prior_prerequisites": "macro17/lower25/all4variants/privacy70/index11/interpreter/object2; no repeats",
+  "remaining": "collected actual42SIL interpretation/full safety/14loan/Optional/lifetime/strictcold/P08 unqualified"
+}

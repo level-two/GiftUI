@@ -1,0 +1,20 @@
+{
+  "archive_sha256": "0bad59645c042a29f579a84031f098cb20ee13e7b815f54d5ee043d271ee5dd1",
+  "members": [
+    {
+      "path": "logs/actual-host-sil.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/actual-host-sil.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "actual-host.sil",
+      "bytes": 61929568,
+      "sha256": "e3ae1784ce986e541d0eccb914377939fa4a8db684b335478db2b8a060a3577c"
+    }
+  ]
+}
