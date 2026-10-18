@@ -1,0 +1,23 @@
+{
+  "source_commit": "d65b127c",
+  "continuation_receipt_commit": "fd13c032",
+  "sil": {
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-selector-continuation1/actual-host.sil",
+    "bytes": 61929568,
+    "sha256": "e3ae1784ce986e541d0eccb914377939fa4a8db684b335478db2b8a060a3577c"
+  },
+  "source_hashes": {
+    "Sources/GiftUIDrawing/CanvasSemanticPayload.swift": "7c0348c6f27e2343ac33dc66e9e754b485e8dc5bfc7dd326d15f0c0b6569c951",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "dfdb603a7a0807a4ed5e7d1bf9793326db7998ec3f8c5f59a703e585a5204c02",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": "ea08e3afb62ddd629e03d7f4b128b3398e16e6d6a6e4ae256903c0b72c806557",
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "fc787355d2ef5fecbe59e48db5fd54f036e93a012705cbdcd0b13e7e012d381f",
+    "Sources/GiftUI/BoundedText.swift": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce"
+  },
+  "source_mutations": 0,
+  "execution": "read-only SIL/index/source/currenthostobject interpretation; one matchedproviderobject disassembly; no compiler/tests/decoder-module/runtime",
+  "selected_original_boundaries": 6,
+  "selected_total_original": 13,
+  "remaining_original": 10,
+  "disposition": "actualcodegen/cost BLOCKED generic associatedmetadata path, no heapfailureclaim",
+  "protected_external5_pycache": "untouched/unstaged"
+}

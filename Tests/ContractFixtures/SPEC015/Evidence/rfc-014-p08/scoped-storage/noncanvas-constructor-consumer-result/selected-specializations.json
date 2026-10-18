@@ -1,0 +1,72 @@
+[
+  {
+    "name": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ010P08CounterX00yz6SchemacX0Vy0yZ7Runtime0Z6DomainOG_Tt2g5",
+    "header": "sil shared @$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ010P08CounterX00yz6SchemacX0Vy0yZ7Runtime0Z6DomainOG_Tt2g5 : $@convention(thin) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, @guaranteed CanvasStagedValues<SemanticRecordReference, P08CounterSchemaCanvasTable<CounterDomain>>, P08CounterSchemaCanvasTable<CounterDomain>) -> @error DrawingError {",
+    "start": 148476,
+    "end": 148735,
+    "blocks": 34
+  },
+  {
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5",
+    "header": "sil shared @$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> @error SemanticExpansionError {",
+    "start": 155874,
+    "end": 155990,
+    "blocks": 13
+  },
+  {
+    "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0lm6SchemaJ6ValuesOy0lM7Runtime0M6DomainOGG_Tg5",
+    "header": "sil shared @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0lm6SchemaJ6ValuesOy0lM7Runtime0M6DomainOGG_Tg5 : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> () {",
+    "start": 590934,
+    "end": 591035,
+    "blocks": 7
+  },
+  {
+    "name": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZyAT_AOztAH0d9ExpansionV0OYKXEfU_010P08CounterX00z13CounterSchemacX0Vy0Z14CounterRuntime13CounterDomainOG_Tg5",
+    "header": "sil shared @$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZyAT_AOztAH0d9ExpansionV0OYKXEfU_010P08CounterX00z13CounterSchemacX0Vy0Z14CounterRuntime13CounterDomainOG_Tg5 : $@convention(thin) (SemanticRecordReference, @inout CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>, @guaranteed CanvasStagedValues<SemanticRecordReference, P08CounterSchemaCanvasTable<CounterDomain>>, P08CounterSchemaCanvasTable<CounterDomain>) -> @error SemanticExpansionError {",
+    "start": 591261,
+    "end": 591473,
+    "blocks": 27
+  },
+  {
+    "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a6UITextE0VTt1g5",
+    "header": "sil shared [stack_protection] @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a6UITextE0VTt1g5 : $@convention(thin) (_GiftUITextPayload, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> {",
+    "start": 599224,
+    "end": 599372,
+    "blocks": 10
+  },
+  {
+    "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOG0rS12Presentation0sC0VyA_GTt1g5",
+    "header": "sil shared [stack_protection] @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOG0rS12Presentation0sC0VyA_GTt1g5 : $@convention(thin) (CounterCanvas<CounterDomain>, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> {",
+    "start": 599376,
+    "end": 599415,
+    "blocks": 1
+  },
+  {
+    "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a8UIVStackE0VTt1g5",
+    "header": "sil shared [stack_protection] @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a8UIVStackE0VTt1g5 : $@convention(thin) (_GiftUIVStackPayload, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> {",
+    "start": 599419,
+    "end": 599457,
+    "blocks": 1
+  },
+  {
+    "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ17P08CounterRuntime0V5RolesO_0uV5Table0uv6SchemacY0VyAW0V6DomainOGAU01_a12UIFixedFrameE0VTt2g5",
+    "header": "sil shared [stack_protection] @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ17P08CounterRuntime0V5RolesO_0uV5Table0uv6SchemacY0VyAW0V6DomainOGAU01_a12UIFixedFrameE0VTt2g5 : $@convention(thin) (_GiftUIFixedFramePayload, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> {",
+    "start": 599461,
+    "end": 599498,
+    "blocks": 1
+  },
+  {
+    "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ17P08CounterRuntime0V5RolesO_0uV5Table0uv6SchemacY0VyAW0V6DomainOGAU01_a12UIBackgroundE0VTt2g5",
+    "header": "sil shared [stack_protection] @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ17P08CounterRuntime0V5RolesO_0uV5Table0uv6SchemacY0VyAW0V6DomainOGAU01_a12UIBackgroundE0VTt2g5 : $@convention(thin) (_GiftUIBackgroundPayload, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> {",
+    "start": 599502,
+    "end": 599540,
+    "blocks": 1
+  },
+  {
+    "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5store_4kind10chainIndex4text6limitsAA0D14ExpansionErrorOSgxn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGAA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0yz6SchemaW6ValuesOy0yzP00Z6DomainOGG_Tg5",
+    "header": "sil shared @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5store_4kind10chainIndex4text6limitsAA0D14ExpansionErrorOSgxn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGAA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0yz6SchemaW6ValuesOy0yzP00Z6DomainOGG_Tg5 : $@convention(method) (CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>, SemanticRuntimeRecord.Kind, UInt16, @guaranteed Span<UInt32>, SemanticRecordLimits, SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> {",
+    "start": 599544,
+    "end": 599863,
+    "blocks": 37
+  }
+]

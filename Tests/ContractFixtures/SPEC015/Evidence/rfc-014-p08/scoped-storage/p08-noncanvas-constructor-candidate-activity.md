@@ -39,3 +39,10 @@ source repair/budget reset or actual-consumer/safety/cold acceptance.
 76unique positive serialized bodies, same42SILexit0/61,929,568bytes,1281inputsverified.
 No source or prerequisite repeats; actual consumer interpretation and full safety/
 strictcold/P08 remain open. Constructor compile is not allocation acceptance.
+
+[Bounded actual Canvas consumer interpretation](noncanvas-constructor-consumer-result/README.md):
+selected six new original boundaries specialized;13/23 finite boundaries resolved,
+ten original roots unqualified. Live F08stopped provider performs associated-type/
+Optional metadata lookup on actual normal traversal; codegen/cost BLOCKED (no heap
+allocation inference). Grouped C review recommended, no new source allowance.
+Text ordinary callback/full safety/strictcold/P08 remain unqualified.

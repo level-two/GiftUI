@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-objdump-21",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/compile/owners/GiftUISemanticCore/GiftUISemanticCore.o"
+  ],
+  "exit": 0,
+  "provider_sha256": "27422d8205cf73039ffb20810af65194e0db8a2c50a93d570f7f81aa04ac9c22",
+  "tool_sha256": "d41e800c8ce1380a775ad42dbdbba85c022c53882af806bb5207fc928b188786",
+  "stdout_sha256": "78fac81198b7b620afaac7ac6be1f7742605df3e1e8e3a798b459e216ce38ab0",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "kind": "read-only matched sealed provider disassembly; no compiler/runtime"
+}

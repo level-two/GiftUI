@@ -1,0 +1,224 @@
+
+Sources/GiftUIDrawing/CanvasSemanticPayload.swift
+31: @usableFromInline
+32: package enum CanvasSemanticPayloadCodec<Roles: SemanticDeclarationRoles, Table: CanvasValueTable>:
+33:     SemanticRecordPayloadCodec
+34: {
+35:     @usableFromInline
+36:     package typealias Payload = CanvasSemanticPayload<Table.CaptureStorage>
+37:     @inlinable
+38:     package static func primitive<Value: _GiftUISemanticPrimitivePayload>(
+39:         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+40:     ) -> SemanticExpansionError? {
+41:         if let canvas = Table.payload(value) {
+42:             return writer.store(.canvas(canvas), kind: .pendingCanvas)
+43:         }
+44:         return SemanticStandardPayloadCodec<Roles>.primitive(
+45:             value, writer: writer, wrapping: { .standard($0) })
+46:     }
+47:     @inlinable
+48:     package static func modifier<Value: _GiftUISemanticModifierPayload>(
+49:         _ value: borrowing Value, chainIndex: UInt16,
+50:         writer: borrowing SemanticPayloadWriter<Payload>
+51:     ) -> SemanticExpansionError? {
+52:         SemanticStandardPayloadCodec<Roles>.modifier(
+53:             value, chainIndex: chainIndex, writer: writer, wrapping: { .standard($0) })
+54:     }
+55:     @inlinable
+56:     package static func action<Value: GiftUIAction>(
+57:         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+58:     ) -> SemanticExpansionError? {
+59:         SemanticStandardPayloadCodec<Roles>.action(
+60:             value, writer: writer, wrapping: { .standard($0) })
+61:     }
+62: }
+63: 
+64: @usableFromInline
+65: package enum CanvasSemanticTransfer {
+66:     @inlinable
+67:     package static func stage<Table: CanvasValueTable>(
+68:         from semantic: borrowing SemanticRecordStore<CanvasSemanticPayload<Table.CaptureStorage>>,
+69:         into values: borrowing CanvasStagedValues<SemanticRecordReference, Table>,
+70:         table: borrowing Table
+71:     ) throws(DrawingError) {
+72:         guard values.count == 0 else { throw .invariantViolation }
+73:         let table = copy table
+74:         do throws(SemanticExpansionError) {
+75:             try semantic.takePendingCanvas { (identity, payload) throws(SemanticExpansionError) in
+76:                 guard case .canvas(.some(let value)) = payload else { throw .invariantViolation }
+77:                 do throws(DrawingError) {
+78:                     try values.stage(identity: identity, value: value, table: table)
+79:                 } catch {
+80:                     throw error == .capacityExhausted ? .capacityExhausted : .invariantViolation
+81:                 }
+82:                 payload = .canvas(nil)
+83:             }
+84:         } catch {
+85:             values.discard()
+86:             try? semantic.discardCandidate()
+87:             throw error == .capacityExhausted ? .capacityExhausted : .invariantViolation
+88:         }
+89:     }
+90: }
+
+Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift
+351:     @inlinable
+352:     package func store(
+353:         _ value: consuming Payload, kind: SemanticRuntimeRecord.Kind, chainIndex: UInt16 = 0,
+354:         text: borrowing Span<UInt32>, limits: SemanticRecordLimits
+355:     ) -> SemanticExpansionError? {
+356:         if let failure = metadata.pointee.failure { return failure }
+357:         let path = metadata.pointee.activePath
+358:         guard metadata.pointee.phase == .expanding, path < metadata.pointee.paths else {
+359:             return fail(.invalidIdentity)
+360:         }
+361:         let record = paths[Int(path)].nearestRecord
+362:         guard record < metadata.pointee.records, records[Int(record)].path == path,
+363:             records[Int(record)].payload == .max
+364:         else { return fail(.invalidIdentity) }
+365:         guard text.count <= Int(limits.textScalars) else { return .capacityExhausted }
+366:         let scalarEnd = UInt32(metadata.pointee.scalars) + UInt32(text.count)
+367:         let bytes =
+368:             UInt64(metadata.pointee.payloadBytes) + UInt64(MemoryLayout<Payload?>.stride) + UInt64(
+369:                 text.count) * 4
+370:         guard metadata.pointee.payloads < limits.payloads, scalarEnd <= limits.textScalars,
+371:             bytes <= limits.payloadBytes
+372:         else { return fail(.capacityExhausted) }
+373:         let payloadIndex = metadata.pointee.payloads
+374:         payloads[Int(payloadIndex)] = consume value
+375:         for index in 0 ..< text.count {
+376:             scalars[Int(metadata.pointee.scalars) + index] = text[index]
+377:         }
+378:         records[Int(record)].kind = kind
+379:         records[Int(record)].payload = payloadIndex
+380:         records[Int(record)].firstTextScalar = metadata.pointee.scalars
+381:         records[Int(record)].textScalarCount = UInt16(text.count)
+382:         records[Int(record)].modifierChainIndex = chainIndex
+383:         metadata.pointee.payloads += 1
+384:         metadata.pointee.scalars = UInt16(scalarEnd)
+385:         metadata.pointee.payloadBytes = UInt32(bytes)
+386:         return nil
+387:     }
+388: 
+389:     /// Parent-first candidate traversal; each node scans at most K children of
+390:     /// its already matched published parent. No path reconstruction/all-pairs scan.
+391:     package func reconcile(with published: Self, limits: SemanticRecordLimits)
+392:         -> SemanticExpansionError?
+393:     {
+394:         guard metadata.pointee.phase == .candidate, published.metadata.pointee.phase == .published
+395:         else { return fail(.invariantViolation) }
+396:         metadata.pointee.componentComparisons = 0
+397:         metadata.pointee.matchedRevision = published.metadata.pointee.revision
+398:         for index in 0 ..< Int(metadata.pointee.paths) {
+399:             paths[index].matchedPath = .max
+400:             let parent = paths[index].parent
+401:             var match: UInt16 = .max
+402:             if parent == .max {
+403:                 guard index == 0 else { return fail(.invalidIdentity) }
+404:                 if published.metadata.pointee.paths > 0 { match = 0 }
+405:             } else {
+406:                 guard parent < index else { return fail(.invalidIdentity) }
+407:                 let priorParent = paths[Int(parent)].matchedPath
+408:                 if priorParent != .max { match = published.paths[Int(priorParent)].firstChild }
+409:             }
+410:             var scanned: UInt16 = 0
+411:             while match != .max {
+412:                 guard match < published.metadata.pointee.paths, scanned < limits.fanout else {
+413:                     return fail(.invalidIdentity)
+414:                 }
+415:                 scanned += 1
+416:                 metadata.pointee.componentComparisons += 1
+417:                 if paths[index].component == published.paths[Int(match)].component {
+418:                     paths[index].matchedPath = match
+419:                     break
+420:                 }
+
+Sources/GiftUISemanticCore/SemanticRecordStore.swift
+150:         selected.clear()
+151:         selected.metadata.pointee.revision = next.partialValue
+152:         selected.metadata.pointee.phase = .expanding
+153:         return number
+154:     }
+155:     @inlinable
+156:     package borrowing func discardCandidate() throws(SemanticExpansionError) {
+157:         for number: UInt8 in 0 ..< 2 {
+158:             let selected = bank(number)
+159:             if selected.metadata.pointee.phase == .candidate
+160:                 || selected.metadata.pointee.phase == .expanding
+161:             {
+162:                 if selected.metadata.pointee.readers == 0 {
+163:                     selected.clear()
+164:                 } else {
+165:                     selected.metadata.pointee.phase = .retired
+166:                 }
+167:                 return
+168:             }
+169:         }
+170:         throw .invariantViolation
+171:     }
+
+Sources/GiftUISemanticCore/SemanticRecordStore.swift
+205:     @inlinable
+206:     package borrowing func takePendingCanvas(
+207:         _ body: (SemanticRecordReference, inout Payload) throws(SemanticExpansionError) -> Void
+208:     ) throws(SemanticExpansionError) {
+209:         guard let candidate else { throw .invariantViolation }
+210:         let selected = bank(candidate)
+211:         guard selected.metadata.pointee.readers == 0 else { throw .reentrancyViolation }
+212:         for index in 0 ..< Int(selected.metadata.pointee.records) {
+213:             let record = selected.records[index]
+214:             guard record.kind == .pendingCanvas else { continue }
+215:             guard record.payload < selected.metadata.pointee.payloads,
+216:                 selected.payloads[Int(record.payload)] != nil
+217:             else { throw .invariantViolation }
+218:             let reference = SemanticRecordReference(
+219:                 owner: owner, bank: candidate,
+220:                 revision: selected.metadata.pointee.revision, ordinal: UInt16(index))
+221:             try body(reference, &selected.payloads[Int(record.payload)]!)
+222:             selected.records[index].kind = .primitive
+223:         }
+224:     }
+225: 
+226:     @inlinable
+
+Sources/GiftUISemanticCore/GiftUISemanticCore.swift
+965:     _GiftUISemanticTraversalVisitor
+966: where
+967:     Workspace: SemanticExpansionWorkspace,
+968:     Sink: SemanticExpansionSink,
+969:     StateBinding: SemanticStatefulBinding & ~Copyable & ~Escapable,
+970:     Workspace.Identity == Sink.Identity,
+971:     Workspace.Identity == StateBinding.Identity
+972: {
+973:     @usableFromInline
+974:     typealias Domain = StateBinding.Domain
+975: 
+976:     @usableFromInline
+977:     var attempt: SemanticExpansionAttempt
+978:     @usableFromInline
+979:     var workspace: Workspace
+980:     @usableFromInline
+981:     var sink: Sink
+982:     @usableFromInline
+983:     let stateBinding: StateBinding
+984: 
+985:     @usableFromInline
+986:     var failure: SemanticExpansionError?
+987:     @usableFromInline
+988:     var bindingFailure: StateBinding.Failure?
+989:     @usableFromInline
+990:     var accessFailure: _GiftUIAccessFailure?
+991:     @usableFromInline
+992:     var stopped: Bool { failure != nil || bindingFailure != nil || accessFailure != nil }
+993:     @usableFromInline
+
+Sources/GiftUI/BoundedText.swift
+107:     public func withUTF8<Result>(
+108:         _ body: (UnsafeBufferPointer<UInt8>) throws -> Result
+109:     ) rethrows -> Result {
+110:         try withUnsafeBytes(of: storage) { rawBytes in
+111:             let bytes = rawBytes.bindMemory(to: UInt8.self)
+112:             return try body(
+113:                 UnsafeBufferPointer(start: bytes.baseAddress, count: Int(count))
+114:             )
+115:         }

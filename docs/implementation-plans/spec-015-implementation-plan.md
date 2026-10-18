@@ -29,6 +29,13 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [bounded Canvas consumer result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-consumer-result/README.md):
+76body/SIL PASS retained; six newly selected original boundaries specialize,13/23
+resolved in finite scope. Actual F08stopped generic associated/Optional metadata
+path blocks codegen/cost qualification; no allocation claim. Ten original C/E/F
+roots, ordinary Text callback cost, full safety/cold/P08 remain unqualified. No
+source/compiler/runtime or new allowance; independent boundary review next.
+
 Current [constructor initial result / exact10 selector continuation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-selector-continuation1/README.md):
 macro17/lower25/fourvariants (nested fixed)/privacy70/decode11/interpreter/object2 PASS.
 Initial66/76 selection: all ten roots exist, selectors omit static prefix. Exact full

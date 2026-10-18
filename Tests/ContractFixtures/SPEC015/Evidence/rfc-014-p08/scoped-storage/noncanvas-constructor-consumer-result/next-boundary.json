@@ -1,0 +1,49 @@
+{
+  "gate": "ACTUAL CODEGEN BLOCKED/STOP at remaining C-traversal F08 runtime associated-type/Optional metadata path; allocation result unqualified",
+  "source_commit": "d65b127c",
+  "symbol": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+  "provider_record": [
+    {
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+      "identifier_id": 416,
+      "function_id": 724,
+      "hash": 3788899604,
+      "demangled": "(extension in GiftUISemanticCore):GiftUISemanticCore.SemanticExpansionTraversal< where C: ~Swift.Copyable, C: ~Swift.Escapable>.stopped.getter : Swift.Bool",
+      "offset_bits": 4227972,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 0,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=614 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    }
+  ],
+  "actual_static_site": {
+    "line": 129555,
+    "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+    "block": "bb54:                                             // Preds: bb53",
+    "reference": "%442 = function_ref @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // users: %2353, %2347, %2328, %2177, %2157, %1993, %2002, %1996, %1984, %1819, %1802, %1699, %1596, %1590, %1575, %1361, %1349, %1301, %1295, %1280, %1097, %1072, %865, %858, %849, %696, %686, %443",
+    "next": "%443 = apply %442<RecordWorkspace<CounterRoles, CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>, ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>>(%414) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // user: %444"
+  },
+  "host_first_matching_call": {
+    "owner": "0000000000034e18 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5>:",
+    "relocation": "000000000003559c:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+    "slice": "   3559c:      \tbl\t0x3559c <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5+0x784>\n\t\t000000000003559c:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg\n   355a0:      \ttbz\tw0, #0x0, 0x355c4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5+0x7ac>"
+  },
+  "live_controlflow": "Static beginObservableCandidateAndExpandSemantics bb54 after successful discovery/candidate setup initializes traversal failure/bindingFailure/accessFailure to Optional.none then invokes stopped unconditionally before deciding continue vs stop. This is required framework evaluation, not trace/observer and not a dead Optional payload-equality branch.",
+  "provider_ordinary_body": "Matched current provider stopped object0x2bec\u2013nextsymbol has unconditional swift_getAssociatedTypeWitness relocation0x2c1c and Optional metadata accessor $sSqMa0x2c44 BEFORE first data-dependent branch0x2c80; subsequent indirect value-witness operations remain. Concrete caller cannot eliminate this prologue through imported0BB body.",
+  "why_not_zeroBB_only": "Failure classification uses current actual applied generic call + matched object call relocation + actual provider runtime metadata operation. Scalar ordinary leaves expansionBank/enter/appendRecord are NOT declared failures solely for0BB.",
+  "allocation_statement": "No heap allocation count or allocation existence inferred from symbols/metadata API; cold runtime and any caching cost still unqualified.",
+  "next_group": "Read-only C-expansion/traversal/publish family (F07/08/09/10/11/16/17/18) with direct signature/helper requirements and ordinary scalar leaf cost classification together; E/F commit F20/21 remains separate known frontier. No new source allowance or exact implementation map inferred.",
+  "stop": "No further full-host graph/codegen/safety/cold execution; preserve constructor and selectedCanvas body/prerequisite PASS; overall P08 open"
+}

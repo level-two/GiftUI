@@ -1,0 +1,153 @@
+0000000000002bec <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg>:
+    2bec:      	mov	x1, x30
+    2bf0:      	bl	0x2bf0 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x4>
+		0000000000002bf0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_447
+    2bf4:      	mov	x30, x1
+    2bf8:      	stp	x29, x30, [sp, #0x50]
+    2bfc:      	add	x29, sp, #0x50
+    2c00:      	sub	sp, sp, #0x30
+    2c04:      	mov	x21, x0
+    2c08:      	ldr	x24, [x0, #0x38]
+    2c0c:      	ldr	x28, [x0, #0x20]
+    2c10:      	bl	0x2c10 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x24>
+		0000000000002c10:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_182
+    2c14:      	bl	0x2c14 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x28>
+		0000000000002c14:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_462
+    2c18:      	mov	x2, x28
+    2c1c:      	bl	0x2c1c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x30>
+		0000000000002c1c:  ARM64_RELOC_BRANCH26	_swift_getAssociatedTypeWitness
+    2c20:      	mov	x27, x0
+    2c24:      	ldur	x8, [x0, #-0x8]
+    2c28:      	stur	x8, [x29, #-0x58]
+    2c2c:      	bl	0x2c2c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x40>
+		0000000000002c2c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_3
+    2c30:      	stur	x9, [x29, #-0x60]
+    2c34:      	bl	0x2c34 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x48>
+		0000000000002c34:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_73
+    2c38:      	stur	x8, [x29, #-0x68]
+    2c3c:      	bl	0x2c3c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x50>
+		0000000000002c3c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_332
+    2c40:      	mov	x1, x27
+    2c44:      	bl	0x2c44 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x58>
+		0000000000002c44:  ARM64_RELOC_BRANCH26	_$sSqMa
+    2c48:      	mov	x22, x0
+    2c4c:      	mov	x0, #0x0                ; =0
+    2c50:      	mov	x1, x22
+    2c54:      	mov	x2, x22
+    2c58:      	bl	0x2c58 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x6c>
+		0000000000002c58:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_72
+    2c5c:      	ldur	x10, [x0, #-0x8]
+    2c60:      	ldr	x8, [x10, #0x40]
+    2c64:      	bl	0x2c64 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x78>
+		0000000000002c64:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_20
+    2c68:      	ldur	x25, [x22, #-0x8]
+    2c6c:      	ldr	x8, [x25, #0x40]
+    2c70:      	bl	0x2c70 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x84>
+		0000000000002c70:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_21
+    2c74:      	ldrsw	x8, [x21, #0x50]
+    2c78:      	ldrb	w8, [x20, x8]
+    2c7c:      	cmp	w8, #0x4
+    2c80:      	b.ne	0x2d20 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x134>
+    2c84:      	mov	x19, x0
+    2c88:      	stp	x24, x10, [x29, #-0x78]
+    2c8c:      	stur	x28, [x29, #-0x80]
+    2c90:      	ldrsw	x28, [x21, #0x54]
+    2c94:      	bl	0x2c94 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0xa8>
+		0000000000002c94:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_90
+    2c98:      	bl	0x2c98 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0xac>
+		0000000000002c98:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_382
+    2c9c:      	ldrsw	x8, [x19, #0x30]
+    2ca0:      	ldr	x24, [x25, #0x10]
+    2ca4:      	add	x1, x20, x28
+    2ca8:      	mov	x28, x8
+    2cac:      	mov	x0, x23
+    2cb0:      	mov	x2, x22
+    2cb4:      	blr	x24
+    2cb8:      	add	x0, x23, x28
+    2cbc:      	mov	x1, x26
+    2cc0:      	mov	x2, x22
+    2cc4:      	blr	x24
+    2cc8:      	mov	x0, x23
+    2ccc:      	bl	0x2ccc <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0xe0>
+		0000000000002ccc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_76
+    2cd0:      	b.ne	0x2cf8 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x10c>
+    2cd4:      	ldr	x25, [x25, #0x8]
+    2cd8:      	mov	x0, x26
+    2cdc:      	bl	0x2cdc <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0xf0>
+		0000000000002cdc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_655
+    2ce0:      	add	x0, x23, x28
+    2ce4:      	bl	0x2ce4 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0xf8>
+		0000000000002ce4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_76
+    2ce8:      	b.ne	0x2d10 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x124>
+    2cec:      	bl	0x2cec <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x100>
+		0000000000002cec:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_346
+    2cf0:      	blr	x25
+    2cf4:      	b	0x2dbc <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x1d0>
+    2cf8:      	add	x0, x23, x28
+    2cfc:      	bl	0x2cfc <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x110>
+		0000000000002cfc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_76
+    2d00:      	b.ne	0x2d30 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x144>
+    2d04:      	ldr	x8, [x25, #0x8]
+    2d08:      	mov	x0, x26
+    2d0c:      	bl	0x2d0c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x120>
+		0000000000002d0c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_287
+    2d10:      	ldur	x8, [x29, #-0x70]
+    2d14:      	ldr	x8, [x8, #0x8]
+    2d18:      	bl	0x2d18 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x12c>
+		0000000000002d18:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_537
+    2d1c:      	blr	x8
+    2d20:      	mov	w0, #0x1                ; =1
+    2d24:      	sub	sp, x29, #0x50
+    2d28:      	ldp	x29, x30, [sp, #0x50]
+    2d2c:      	b	0x2d2c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x140>
+		0000000000002d2c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2
+    2d30:      	ldur	x24, [x29, #-0x58]
+    2d34:      	ldr	x8, [x24, #0x10]
+    2d38:      	ldur	x19, [x29, #-0x68]
+    2d3c:      	bl	0x2d3c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x150>
+		0000000000002d3c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_888
+    2d40:      	bl	0x2d40 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x154>
+		0000000000002d40:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_475
+    2d44:      	ldr	x8, [x24, #0x20]
+    2d48:      	add	x1, x23, x28
+    2d4c:      	ldur	x28, [x29, #-0x60]
+    2d50:      	mov	x0, x28
+    2d54:      	bl	0x2d54 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x168>
+		0000000000002d54:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_475
+    2d58:      	bl	0x2d58 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x16c>
+		0000000000002d58:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_139
+    2d5c:      	ldp	x1, x0, [x29, #-0x80]
+    2d60:      	bl	0x2d60 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x174>
+		0000000000002d60:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_514
+    2d64:      	mov	x3, x0
+    2d68:      	mov	x0, x19
+    2d6c:      	mov	x1, x28
+    2d70:      	stur	x20, [x29, #-0x70]
+    2d74:      	mov	x20, x27
+    2d78:      	mov	x2, x27
+    2d7c:      	bl	0x2d7c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x190>
+		0000000000002d7c:  ARM64_RELOC_BRANCH26	_$sSQ2eeoiySbx_xtFZTj
+    2d80:      	stur	w0, [x29, #-0x78]
+    2d84:      	ldr	x24, [x24, #0x8]
+    2d88:      	bl	0x2d88 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x19c>
+		0000000000002d88:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_390
+    2d8c:      	blr	x24
+    2d90:      	mov	x0, x19
+    2d94:      	mov	x1, x27
+    2d98:      	blr	x24
+    2d9c:      	ldr	x20, [x25, #0x8]
+    2da0:      	mov	x0, x26
+    2da4:      	bl	0x2da4 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x1b8>
+		0000000000002da4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_480
+    2da8:      	bl	0x2da8 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x1bc>
+		0000000000002da8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_346
+    2dac:      	blr	x20
+    2db0:      	ldur	x20, [x29, #-0x70]
+    2db4:      	ldur	w8, [x29, #-0x78]
+    2db8:      	tbz	w8, #0x0, 0x2d20 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x134>
+    2dbc:      	ldrsw	x8, [x21, #0x58]
+    2dc0:      	ldrb	w8, [x20, x8]
+    2dc4:      	cmp	w8, #0x5
+    2dc8:      	cset	w0, ne
+    2dcc:      	b	0x2d24 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg+0x138>
+

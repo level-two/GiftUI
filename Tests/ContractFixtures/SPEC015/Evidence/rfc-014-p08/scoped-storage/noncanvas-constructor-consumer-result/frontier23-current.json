@@ -1,0 +1,1370 @@
+{
+  "selected_boundaries_resolved": 13,
+  "remaining_original": 10,
+  "confirmed_current_blocker": "F08 stopped getter; other9 boundary cost/specialization unqualified",
+  "scope": "Current pipeline ref map, not exhaustive42callee acceptance; prior State/callback/resolver scopes preserved",
+  "frontier": [
+    {
+      "id": "F00",
+      "name": "// InteractionOwnedKeyState<>.resolveDown(at:)",
+      "family": "A-resolver",
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+      "disposition": "selected boundary resolved, finite scope only",
+      "current_provider_records": [
+        {
+          "module": "GiftUIInteraction",
+          "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+          "identifier_id": 199,
+          "function_id": 88,
+          "hash": 2953884724,
+          "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveDown(at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+          "offset_bits": 375405,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 2,
+          "basic_blocks": 44,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            2
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=289 op29=0 op30=0 op31=5 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": null,
+      "current_pipeline_references": []
+    },
+    {
+      "id": "F01",
+      "name": "// InteractionOwnedKeyState<>.resolveMove(_:at:)",
+      "family": "A-resolver",
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "disposition": "selected boundary resolved, finite scope only",
+      "current_provider_records": [
+        {
+          "module": "GiftUIInteraction",
+          "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+          "identifier_id": 110,
+          "function_id": 46,
+          "hash": 1752837523,
+          "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveMove(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+          "offset_bits": 275637,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 13,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=172 op29=0 op30=0 op31=5 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": {
+        "line": 595725,
+        "header": "sil public_external @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <Candidate, Committed, Hits where Candidate : InteractionCandidateRecordStorage, Committed : InteractionCommittedRecordStorage, Hits : InteractionHitRegionStorage, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<Candidate, Committed, Hits>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+        "basic_blocks": 13
+      },
+      "current_pipeline_references": [
+        {
+          "line": 120723,
+          "owner": "sil @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (@lifetime(copy 0) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb76(%389 : $CapturedAction<SemanticCompleteIdentity>): // Preds: bb75",
+          "reference": "%392 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %393",
+          "next": "%393 = apply %392<Candidate, Committed, Hits>(%391, %390, %112) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // users: %425, %394, %421, %400, %395"
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "name": "// InteractionOwnedKeyState<>.resolveUp(_:at:)",
+      "family": "A-resolver",
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "disposition": "selected boundary resolved, finite scope only",
+      "current_provider_records": [
+        {
+          "module": "GiftUIInteraction",
+          "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+          "identifier_id": 182,
+          "function_id": 91,
+          "hash": 1492478232,
+          "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveUp(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+          "offset_bits": 430063,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 2,
+          "basic_blocks": 13,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            2
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=172 op29=0 op30=0 op31=5 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": null,
+      "current_pipeline_references": []
+    },
+    {
+      "id": "F03",
+      "name": "// ObservableStateRootScope<>.modelKey(identity:ordinal:)",
+      "family": "B-observable",
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+      "disposition": "selected boundary resolved, finite scope only",
+      "current_provider_records": [
+        {
+          "module": "GiftUIObservableState",
+          "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+          "identifier_id": 670,
+          "function_id": 529,
+          "hash": 3001702673,
+          "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.modelKey(identity: B, ordinal: Swift.UInt16) -> GiftUI._GiftUIModelKey<A.Schema>?",
+          "offset_bits": 1286078,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 7,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1082 op29=0 op30=0 op31=8 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": null,
+      "current_pipeline_references": []
+    },
+    {
+      "id": "F04",
+      "name": "// ObservableStateRootScope<>.mutate<>(_:mutation:)",
+      "family": "B-observable",
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+      "disposition": "selected boundary resolved, finite scope only",
+      "current_provider_records": [
+        {
+          "module": "GiftUIObservableState",
+          "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+          "identifier_id": 666,
+          "function_id": 535,
+          "hash": 3092051206,
+          "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<A.GiftUIObservableState.ObservableStateModel.Schema>, mutation: A.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIObservableState.ObservableStateResult",
+          "offset_bits": 1341686,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 6,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1101 op29=0 op30=0 op31=38 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": null,
+      "current_pipeline_references": []
+    },
+    {
+      "id": "F05",
+      "name": "// SemanticRecordStore.candidate.getter",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+      "disposition": "selected boundary resolved, finite scope only",
+      "current_provider_records": [
+        {
+          "module": "GiftUISemanticCore",
+          "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+          "identifier_id": 529,
+          "function_id": 520,
+          "hash": 1223589293,
+          "demangled": "GiftUISemanticCore.SemanticRecordStore.candidate.getter : Swift.UInt8?",
+          "offset_bits": 3601541,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 6,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1705 op29=0 op30=0 op31=104 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": null,
+      "current_pipeline_references": []
+    },
+    {
+      "id": "F06",
+      "name": "// SemanticRecordBankBuffers.clear()",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+      "disposition": "selected boundary resolved, finite scope only",
+      "current_provider_records": [
+        {
+          "module": "GiftUISemanticCore",
+          "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+          "identifier_id": 534,
+          "function_id": 517,
+          "hash": 3394786711,
+          "demangled": "GiftUISemanticCore.SemanticRecordBankBuffers.clear() -> ()",
+          "offset_bits": 3586072,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 7,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=451 op29=0 op30=0 op31=5 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": null,
+      "current_pipeline_references": []
+    },
+    {
+      "id": "F07",
+      "name": "// SemanticRecordStore.expansionBank(_:)",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+      "disposition": "live reference retained, transitive cost/specialization unqualified; no automatic source selection",
+      "current_provider_records": [
+        {
+          "module": "GiftUISemanticCore",
+          "name": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+          "identifier_id": 535,
+          "function_id": 733,
+          "hash": 2097703107,
+          "demangled": "GiftUISemanticCore.SemanticRecordStore.expansionBank(Swift.UInt8) -> GiftUISemanticCore.SemanticRecordBankBuffers<A>?",
+          "offset_bits": 4231267,
+          "linkage": 7,
+          "serialized_kind": 0,
+          "inline_strategy": 0,
+          "basic_blocks": 0,
+          "raw_prefix": [
+            4,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1715 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": {
+        "line": 591040,
+        "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> {",
+        "basic_blocks": 0
+      },
+      "current_pipeline_references": [
+        {
+          "line": 124600,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb40:                                             // Preds: bb39",
+          "reference": "%289 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %290",
+          "next": "%290 = apply %289<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%276, %73) : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %291"
+        },
+        {
+          "line": 129372,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb40:                                             // Preds: bb39",
+          "reference": "%289 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %290",
+          "next": "%290 = apply %289<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%276, %73) : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %291"
+        },
+        {
+          "line": 134144,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb40:                                             // Preds: bb39",
+          "reference": "%289 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %290",
+          "next": "%290 = apply %289<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%276, %73) : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %291"
+        },
+        {
+          "line": 138793,
+          "owner": "sil [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (@lifetime(copy 0) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb25:                                             // Preds: bb24",
+          "reference": "%199 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %200",
+          "next": "%200 = apply %199<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%186, %71) : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %201"
+        }
+      ]
+    },
+    {
+      "id": "F08",
+      "name": "// SemanticExpansionTraversal<>.stopped.getter",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "symbol": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+      "disposition": "confirmed live generic metadata codegen blocker",
+      "current_provider_records": [
+        {
+          "module": "GiftUISemanticCore",
+          "name": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+          "identifier_id": 416,
+          "function_id": 724,
+          "hash": 3788899604,
+          "demangled": "(extension in GiftUISemanticCore):GiftUISemanticCore.SemanticExpansionTraversal< where C: ~Swift.Copyable, C: ~Swift.Escapable>.stopped.getter : Swift.Bool",
+          "offset_bits": 4227972,
+          "linkage": 7,
+          "serialized_kind": 0,
+          "inline_strategy": 0,
+          "basic_blocks": 0,
+          "raw_prefix": [
+            4,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=614 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": {
+        "line": 591053,
+        "header": "sil @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool {",
+        "basic_blocks": 0
+      },
+      "current_pipeline_references": [
+        {
+          "line": 124783,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb54:                                             // Preds: bb53",
+          "reference": "%442 = function_ref @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // users: %2353, %2347, %2328, %2177, %2157, %1993, %2002, %1996, %1984, %1819, %1802, %1699, %1596, %1590, %1575, %1361, %1349, %1301, %1295, %1280, %1097, %1072, %865, %858, %849, %696, %686, %443",
+          "next": "%443 = apply %442<RecordWorkspace<CounterRoles, CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>, ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>>(%414) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // user: %444"
+        },
+        {
+          "line": 129555,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb54:                                             // Preds: bb53",
+          "reference": "%442 = function_ref @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // users: %2353, %2347, %2328, %2177, %2157, %1993, %2002, %1996, %1984, %1819, %1802, %1699, %1596, %1590, %1575, %1361, %1349, %1301, %1295, %1280, %1097, %1072, %865, %858, %849, %696, %686, %443",
+          "next": "%443 = apply %442<RecordWorkspace<CounterRoles, CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>, ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>>(%414) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // user: %444"
+        },
+        {
+          "line": 134327,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb54:                                             // Preds: bb53",
+          "reference": "%442 = function_ref @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // users: %2353, %2347, %2328, %2177, %2157, %1993, %2002, %1996, %1984, %1819, %1802, %1699, %1596, %1590, %1575, %1361, %1349, %1301, %1295, %1280, %1097, %1072, %865, %858, %849, %696, %686, %443",
+          "next": "%443 = apply %442<RecordWorkspace<CounterRoles, CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>, ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>>(%414) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // user: %444"
+        },
+        {
+          "line": 138976,
+          "owner": "sil [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (@lifetime(copy 0) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb39:                                             // Preds: bb38",
+          "reference": "%352 = function_ref @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // users: %2260, %2254, %2235, %2084, %2064, %1900, %1909, %1903, %1891, %1726, %1709, %1606, %1503, %1497, %1482, %1268, %1256, %1208, %1202, %1187, %1004, %984, %775, %768, %759, %606, %596, %353",
+          "next": "%353 = apply %352<RecordWorkspace<CounterRoles, CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>, ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>>(%324) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // user: %354"
+        }
+      ]
+    },
+    {
+      "id": "F09",
+      "name": "// RecordSink.publishExpansion(_:)",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "symbol": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+      "disposition": "live reference retained, transitive cost/specialization unqualified; no automatic source selection",
+      "current_provider_records": [
+        {
+          "module": "GiftUISemanticCore",
+          "name": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+          "identifier_id": 344,
+          "function_id": 732,
+          "hash": 1887275708,
+          "demangled": "GiftUISemanticCore.RecordSink.publishExpansion(GiftUISemanticCore.SemanticExpansionSummary) -> Swift.Bool",
+          "offset_bits": 4230866,
+          "linkage": 7,
+          "serialized_kind": 0,
+          "inline_strategy": 0,
+          "basic_blocks": 0,
+          "raw_prefix": [
+            4,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=386 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": {
+        "line": 591255,
+        "header": "sil @$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool {",
+        "basic_blocks": 0
+      },
+      "current_pipeline_references": [
+        {
+          "line": 124936,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb86:                                             // Preds: bb85",
+          "reference": "%533 = function_ref @$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %534",
+          "next": "%534 = apply %533<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>(%532, %305) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %535"
+        },
+        {
+          "line": 129708,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb86:                                             // Preds: bb85",
+          "reference": "%533 = function_ref @$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %534",
+          "next": "%534 = apply %533<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>(%532, %305) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %535"
+        },
+        {
+          "line": 134480,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb86:                                             // Preds: bb85",
+          "reference": "%533 = function_ref @$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %534",
+          "next": "%534 = apply %533<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>(%532, %305) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %535"
+        },
+        {
+          "line": 139129,
+          "owner": "sil [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (@lifetime(copy 0) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb71:                                             // Preds: bb70",
+          "reference": "%443 = function_ref @$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %444",
+          "next": "%444 = apply %443<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>(%442, %215) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %445"
+        }
+      ]
+    },
+    {
+      "id": "F10",
+      "name": "// SemanticRecordBankBuffers.enter(_:limits:)",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+      "disposition": "live reference retained, transitive cost/specialization unqualified; no automatic source selection",
+      "current_provider_records": [
+        {
+          "module": "GiftUISemanticCore",
+          "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+          "identifier_id": 375,
+          "function_id": 729,
+          "hash": 3942665186,
+          "demangled": "GiftUISemanticCore.SemanticRecordBankBuffers.enter(_: GiftUISemanticCore.SemanticPathComponent, limits: GiftUISemanticCore.SemanticRecordLimits) -> GiftUISemanticCore.SemanticExpansionError?",
+          "offset_bits": 4229710,
+          "linkage": 7,
+          "serialized_kind": 0,
+          "inline_strategy": 0,
+          "basic_blocks": 0,
+          "raw_prefix": [
+            4,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=467 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": {
+        "line": 591630,
+        "header": "sil @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> {",
+        "basic_blocks": 0
+      },
+      "current_pipeline_references": [
+        {
+          "line": 125032,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb101:                                            // Preds: bb99",
+          "reference": "%599 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %748, %600",
+          "next": "%600 = apply %599<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%594, %598, %596) : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %604, %601"
+        },
+        {
+          "line": 129804,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb101:                                            // Preds: bb99",
+          "reference": "%599 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %748, %600",
+          "next": "%600 = apply %599<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%594, %598, %596) : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %604, %601"
+        },
+        {
+          "line": 134576,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb101:                                            // Preds: bb99",
+          "reference": "%599 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %748, %600",
+          "next": "%600 = apply %599<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%594, %598, %596) : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %604, %601"
+        },
+        {
+          "line": 139225,
+          "owner": "sil [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (@lifetime(copy 0) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb86:                                             // Preds: bb84",
+          "reference": "%509 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %658, %510",
+          "next": "%510 = apply %509<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%504, %508, %506) : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %514, %511"
+        }
+      ]
+    },
+    {
+      "id": "F11",
+      "name": "// SemanticRecordBankBuffers.appendRecord(limits:)",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+      "disposition": "live reference retained, transitive cost/specialization unqualified; no automatic source selection",
+      "current_provider_records": [
+        {
+          "module": "GiftUISemanticCore",
+          "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+          "identifier_id": 353,
+          "function_id": 731,
+          "hash": 3443474899,
+          "demangled": "GiftUISemanticCore.SemanticRecordBankBuffers.appendRecord(limits: GiftUISemanticCore.SemanticRecordLimits) -> GiftUISemanticCore.SemanticExpansionError?",
+          "offset_bits": 4230465,
+          "linkage": 7,
+          "serialized_kind": 0,
+          "inline_strategy": 0,
+          "basic_blocks": 0,
+          "raw_prefix": [
+            4,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=431 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": {
+        "line": 591637,
+        "header": "sil @$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> {",
+        "basic_blocks": 0
+      },
+      "current_pipeline_references": [
+        {
+          "line": 125408,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb168:                                            // Preds: bb165",
+          "reference": "%845 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %846",
+          "next": "%846 = apply %845<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%844, %842) : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %847"
+        },
+        {
+          "line": 130180,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb168:                                            // Preds: bb165",
+          "reference": "%845 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %846",
+          "next": "%846 = apply %845<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%844, %842) : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %847"
+        },
+        {
+          "line": 134952,
+          "owner": "sil shared [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb168:                                            // Preds: bb165",
+          "reference": "%845 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %846",
+          "next": "%846 = apply %845<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%844, %842) : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %847"
+        },
+        {
+          "line": 139601,
+          "owner": "sil [stack_protection] @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (@lifetime(copy 0) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb153:                                            // Preds: bb150",
+          "reference": "%755 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %756",
+          "next": "%756 = apply %755<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%754, %752) : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %757"
+        }
+      ]
+    },
+    {
+      "id": "F12",
+      "name": "// ObservableSemanticBodyBinding<>.evaluateStateful<A>(_:structuralIdentity:beforeBody:body:)",
+      "family": "B-observable",
+      "source": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "symbol": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+      "disposition": "selected boundary resolved, finite scope only",
+      "current_provider_records": [
+        {
+          "module": "GiftUIObservableState",
+          "name": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+          "identifier_id": 869,
+          "function_id": 329,
+          "hash": 2605861673,
+          "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableSemanticBodyBinding< where A: ~Swift.Copyable>.evaluateStateful<A where C == A1.GiftUI.View.Domain, A1: GiftUI.View, A1: GiftUI._GiftUIObservableStateHost, A1.GiftUI.View.Domain == A1.GiftUI.View.Body.Domain>(_: A1, structuralIdentity: B, beforeBody: () -> GiftUISemanticCore.SemanticExpansionError?, body: (A1, GiftUI._GiftUIFrameRead<C>) throws(GiftUI._GiftUIAccessFailure) -> A1.GiftUI.View.Body) -> GiftUISemanticCore.SemanticBodyEvaluation<A1.GiftUI.View.Body, GiftUIObservableState.ObservableStateError>",
+          "offset_bits": 1024827,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 2,
+          "basic_blocks": 23,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            2
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=9 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=838 op29=0 op30=0 op31=29 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": null,
+      "current_pipeline_references": []
+    },
+    {
+      "id": "F13",
+      "name": "// static CanvasSemanticPayloadCodec.modifier<A>(_:chainIndex:writer:)",
+      "family": "D-canvas",
+      "source": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+      "disposition": "selected boundary resolved, finite scope only",
+      "current_provider_records": [
+        {
+          "module": "GiftUIDrawing",
+          "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+          "identifier_id": 72,
+          "function_id": 27,
+          "hash": 613866557,
+          "demangled": "static GiftUIDrawing.CanvasSemanticPayloadCodec.modifier<A where A1: GiftUI._GiftUISemanticModifierPayload>(_: A1, chainIndex: Swift.UInt16, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUIDrawing.CanvasSemanticPayload<B.CaptureStorage>>) -> GiftUISemanticCore.SemanticExpansionError?",
+          "offset_bits": 266496,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 1,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=150 op29=0 op30=0 op31=7 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": null,
+      "current_pipeline_references": []
+    },
+    {
+      "id": "F14",
+      "name": "// static CanvasSemanticPayloadCodec.primitive<A>(_:writer:)",
+      "family": "D-canvas",
+      "source": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+      "disposition": "selected boundary resolved, finite scope only",
+      "current_provider_records": [
+        {
+          "module": "GiftUIDrawing",
+          "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+          "identifier_id": 75,
+          "function_id": 30,
+          "hash": 3058718414,
+          "demangled": "static GiftUIDrawing.CanvasSemanticPayloadCodec.primitive<A where A1: GiftUI._GiftUISemanticPrimitivePayload>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUIDrawing.CanvasSemanticPayload<B.CaptureStorage>>) -> GiftUISemanticCore.SemanticExpansionError?",
+          "offset_bits": 270538,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 4,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=167 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": null,
+      "current_pipeline_references": []
+    },
+    {
+      "id": "F15",
+      "name": "// static CanvasSemanticTransfer.stage<A>(from:into:table:)",
+      "family": "D-canvas",
+      "source": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "symbol": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+      "disposition": "selected boundary resolved, finite scope only",
+      "current_provider_records": [
+        {
+          "module": "GiftUIDrawing",
+          "name": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+          "identifier_id": 160,
+          "function_id": 39,
+          "hash": 748443420,
+          "demangled": "static GiftUIDrawing.CanvasSemanticTransfer.stage<A where A: GiftUIDrawing.CanvasValueTable>(from: GiftUISemanticCore.SemanticRecordStore<GiftUIDrawing.CanvasSemanticPayload<A.CaptureStorage>>, into: GiftUIDrawing.CanvasStagedValues<GiftUISemanticCore.SemanticRecordReference, A>, table: A) throws(GiftUI.DrawingError) -> ()",
+          "offset_bits": 287224,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 18,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=210 op29=0 op30=0 op31=13 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": null,
+      "current_pipeline_references": []
+    },
+    {
+      "id": "F16",
+      "name": "// SemanticRecordStore.hasPendingCanvas(_:)",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+      "disposition": "live reference retained, transitive cost/specialization unqualified; no automatic source selection",
+      "current_provider_records": [
+        {
+          "module": "GiftUISemanticCore",
+          "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+          "identifier_id": 568,
+          "function_id": 756,
+          "hash": 3103952438,
+          "demangled": "GiftUISemanticCore.SemanticRecordStore.hasPendingCanvas(GiftUISemanticCore.SemanticRecordBankBuffers<A>) -> Swift.Bool",
+          "offset_bits": 4240349,
+          "linkage": 7,
+          "serialized_kind": 0,
+          "inline_strategy": 0,
+          "basic_blocks": 0,
+          "raw_prefix": [
+            4,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1810 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": {
+        "line": 591696,
+        "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool {",
+        "basic_blocks": 0
+      },
+      "current_pipeline_references": [
+        {
+          "line": 148791,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE13resolveLayout17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0hiN00N27InteractionCandidateStorageVy0h10UISemanticJ024SemanticCompleteIdentityVGAM0np9CommittedR0VyARGAM0np3HitR0VyARGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb8(%27 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb7 bb6",
+          "reference": "%28 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %29",
+          "next": "%29 = apply %28<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%27, %11) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %30"
+        },
+        {
+          "line": 148936,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE13resolveLayout17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0N30TwoInteractionCandidateStorageVy0h10UISemanticJ024SemanticCompleteIdentityVGAA0npq9CommittedS0VyAQGAA0npq3HitS0VyAQGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb8(%27 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb7 bb6",
+          "reference": "%28 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %29",
+          "next": "%29 = apply %28<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%27, %11) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %30"
+        },
+        {
+          "line": 149081,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE13resolveLayout17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb8(%27 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb7 bb6",
+          "reference": "%28 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %29",
+          "next": "%29 = apply %28<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%27, %11) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %30"
+        },
+        {
+          "line": 149223,
+          "owner": "sil @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE13resolveLayout17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (@lifetime(copy 0) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb7(%26 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb6 bb5",
+          "reference": "%27 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %28",
+          "next": "%28 = apply %27<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%26, %11) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %29"
+        },
+        {
+          "line": 149945,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE23preflightCombinedRender17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0ijO00O27InteractionCandidateStorageVy0i10UISemanticK024SemanticCompleteIdentityVGAM0oq9CommittedS0VyARGAM0oq3HitS0VyARGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb8(%27 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb7 bb6",
+          "reference": "%28 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %29",
+          "next": "%29 = apply %28<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%27, %11) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %30"
+        },
+        {
+          "line": 150101,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE23preflightCombinedRender17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0O30TwoInteractionCandidateStorageVy0i10UISemanticK024SemanticCompleteIdentityVGAA0oqr9CommittedT0VyAQGAA0oqr3HitT0VyAQGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb8(%27 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb7 bb6",
+          "reference": "%28 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %29",
+          "next": "%29 = apply %28<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%27, %11) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %30"
+        },
+        {
+          "line": 150257,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE23preflightCombinedRender17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb8(%27 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb7 bb6",
+          "reference": "%28 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %29",
+          "next": "%29 = apply %28<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%27, %11) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %30"
+        },
+        {
+          "line": 150410,
+          "owner": "sil @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE23preflightCombinedRender17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (@lifetime(copy 0) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb7(%26 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb6 bb5",
+          "reference": "%27 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %28",
+          "next": "%28 = apply %27<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%26, %11) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %29"
+        },
+        {
+          "line": 150659,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0ijO00ogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAM0og9CommittedQ0VyARGAM0og3HitQ0VyARGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb10(%74 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb9 bb8",
+          "reference": "%75 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %76",
+          "next": "%76 = apply %75<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%74, %60) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %77"
+        },
+        {
+          "line": 150856,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0o3TwogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAA0oqg9CommittedR0VyAQGAA0oqg3HitR0VyAQGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb10(%74 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb9 bb8",
+          "reference": "%75 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %76",
+          "next": "%76 = apply %75<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%74, %60) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %77"
+        },
+        {
+          "line": 151053,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb10(%74 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb9 bb8",
+          "reference": "%75 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %76",
+          "next": "%76 = apply %75<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%74, %60) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %77"
+        },
+        {
+          "line": 151225,
+          "owner": "sil @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (@lifetime(copy 0) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+          "block": "bb9(%49 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb8 bb7",
+          "reference": "%50 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %51",
+          "next": "%51 = apply %50<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%49, %34) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %52"
+        }
+      ]
+    },
+    {
+      "id": "F17",
+      "name": "// SemanticRecordStore.publishCandidate()",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+      "disposition": "live reference retained, transitive cost/specialization unqualified; no automatic source selection",
+      "current_provider_records": [
+        {
+          "module": "GiftUISemanticCore",
+          "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+          "identifier_id": 883,
+          "function_id": 755,
+          "hash": 3214904746,
+          "demangled": "GiftUISemanticCore.SemanticRecordStore.publishCandidate() throws(GiftUISemanticCore.SemanticExpansionError) -> ()",
+          "offset_bits": 4239901,
+          "linkage": 7,
+          "serialized_kind": 0,
+          "inline_strategy": 0,
+          "basic_blocks": 0,
+          "raw_prefix": [
+            4,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1802 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": {
+        "line": 154237,
+        "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError {",
+        "basic_blocks": 0
+      },
+      "current_pipeline_references": [
+        {
+          "line": 153459,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0klQ00q11InteractionJ7StorageVy0k10UISemanticM00G16CompleteIdentityVGAM0qs9CommittedT0VyARGAM0qs3HitT0VyARGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelinePublicationResult<RuntimeOwnerFailure> {",
+          "block": "bb14(%75 : $ObservableStateOperational):          // Preds: bb12",
+          "reference": "%85 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %86",
+          "next": "try_apply %85<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%84) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError, normal bb16, error bb17 // id: %86"
+        },
+        {
+          "line": 153677,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0q14TwoInteractionJ7StorageVy0k10UISemanticM00G16CompleteIdentityVGAA0qst9CommittedU0VyAQGAA0qst3HitU0VyAQGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelinePublicationResult<RuntimeOwnerFailure> {",
+          "block": "bb14(%75 : $ObservableStateOperational):          // Preds: bb12",
+          "reference": "%85 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %86",
+          "next": "try_apply %85<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%84) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError, normal bb16, error bb17 // id: %86"
+        },
+        {
+          "line": 153895,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ajR0ALLLVAA0a9CommittedR0ALLLVAA0a3HitR0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelinePublicationResult<RuntimeOwnerFailure> {",
+          "block": "bb14(%75 : $ObservableStateOperational):          // Preds: bb12",
+          "reference": "%85 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %86",
+          "next": "try_apply %85<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%84) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError, normal bb16, error bb17 // id: %86"
+        },
+        {
+          "line": 154099,
+          "owner": "sil @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (@lifetime(copy 0) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> RuntimePipelinePublicationResult<RuntimeOwnerFailure> {",
+          "block": "bb15(%60 : $()):                                  // Preds: bb13",
+          "reference": "%71 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %72",
+          "next": "try_apply %71<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%70) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError, normal bb18, error bb22 // id: %72"
+        }
+      ]
+    },
+    {
+      "id": "F18",
+      "name": "// SemanticRecordStore.borrowedStore()",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+      "disposition": "live reference retained, transitive cost/specialization unqualified; no automatic source selection",
+      "current_provider_records": [
+        {
+          "module": "GiftUISemanticCore",
+          "name": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+          "identifier_id": 882,
+          "function_id": 752,
+          "hash": 3367460263,
+          "demangled": "GiftUISemanticCore.SemanticRecordStore.borrowedStore() -> GiftUISemanticCore.SemanticRecordStore<A>",
+          "offset_bits": 4238698,
+          "linkage": 7,
+          "serialized_kind": 0,
+          "inline_strategy": 0,
+          "basic_blocks": 0,
+          "raw_prefix": [
+            4,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1919 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": {
+        "line": 22207,
+        "header": "sil @$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> {",
+        "basic_blocks": 0
+      },
+      "current_pipeline_references": [
+        {
+          "line": 154774,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE15offerAndProduce17GiftUIRuntimeCore0cD11OfferResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0ijO00O27InteractionCandidateStorageVy0i10UISemanticK024SemanticCompleteIdentityVGAM0oq9CommittedS0VyARGAM0oq3HitS0VyARGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {",
+          "block": "bb5:                                              // Preds: bb2",
+          "reference": "%48 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // user: %49",
+          "next": "%49 = apply %48<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%47) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // users: %50, %80, %88"
+        },
+        {
+          "line": 155010,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE15offerAndProduce17GiftUIRuntimeCore0cD11OfferResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0O30TwoInteractionCandidateStorageVy0i10UISemanticK024SemanticCompleteIdentityVGAA0oqr9CommittedT0VyAQGAA0oqr3HitT0VyAQGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {",
+          "block": "bb5:                                              // Preds: bb2",
+          "reference": "%48 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // user: %49",
+          "next": "%49 = apply %48<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%47) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // users: %50, %80, %88"
+        },
+        {
+          "line": 155246,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE15offerAndProduce17GiftUIRuntimeCore0cD11OfferResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {",
+          "block": "bb5:                                              // Preds: bb2",
+          "reference": "%48 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // user: %49",
+          "next": "%49 = apply %48<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%47) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // users: %50, %80, %88"
+        },
+        {
+          "line": 155478,
+          "owner": "sil @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE15offerAndProduce17GiftUIRuntimeCore0cD11OfferResultOyAE0cE7FailureOGyF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (@lifetime(copy 0) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {",
+          "block": "bb4:                                              // Preds: bb2",
+          "reference": "%46 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // user: %47",
+          "next": "%47 = apply %46<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%45) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // users: %48, %79"
+        }
+      ]
+    },
+    {
+      "id": "F19",
+      "name": "// SemanticRecordStore.discardCandidate()",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+      "disposition": "selected boundary resolved, finite scope only",
+      "current_provider_records": [
+        {
+          "module": "GiftUIDrawing",
+          "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+          "identifier_id": 93,
+          "function_id": 109,
+          "hash": 2303078701,
+          "demangled": "GiftUISemanticCore.SemanticRecordStore.discardCandidate() throws(GiftUISemanticCore.SemanticExpansionError) -> ()",
+          "offset_bits": 506195,
+          "linkage": 7,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 0,
+          "raw_prefix": [
+            4,
+            7,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=229 op29=0 op30=0 op31=0 op32=0 op33=80/> record string = ''"
+        },
+        {
+          "module": "GiftUISemanticCore",
+          "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+          "identifier_id": 655,
+          "function_id": 538,
+          "hash": 2303078701,
+          "demangled": "GiftUISemanticCore.SemanticRecordStore.discardCandidate() throws(GiftUISemanticCore.SemanticExpansionError) -> ()",
+          "offset_bits": 4008029,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 15,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1802 op29=0 op30=0 op31=104 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": null,
+      "current_pipeline_references": []
+    },
+    {
+      "id": "F20",
+      "name": "// InteractionOwnedKeyState<>.resolveCandidate(_:)",
+      "family": "E-interaction-commit",
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+      "disposition": "live reference retained, transitive cost/specialization unqualified; no automatic source selection",
+      "current_provider_records": [
+        {
+          "module": "GiftUIInteraction",
+          "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+          "identifier_id": 113,
+          "function_id": 164,
+          "hash": 1008583663,
+          "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveCandidate(GiftUIInteraction.InteractionCandidateDisposition) -> ()",
+          "offset_bits": 526511,
+          "linkage": 7,
+          "serialized_kind": 0,
+          "inline_strategy": 0,
+          "basic_blocks": 0,
+          "raw_prefix": [
+            4,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=192 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": {
+        "line": 157843,
+        "header": "sil @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () {",
+        "basic_blocks": 0
+      },
+      "current_pipeline_references": [
+        {
+          "line": 156186,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA07DynamicB8GeometryV_0ghL00L27InteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAJ0ln9CommittedP0VyAOGAJ0ln3HitP0VyAOGTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> () {",
+          "block": "bb13:                                             // Preds: bb6",
+          "reference": "%119 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %120",
+          "next": "%120 = apply %119<DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>(%117, %118) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        },
+        {
+          "line": 156256,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA07DynamicB8GeometryV_0ghL00L27InteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAJ0ln9CommittedP0VyAOGAJ0ln3HitP0VyAOGTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> () {",
+          "block": "bb24(%161 : $PresentationRevision):               // Preds: bb14",
+          "reference": "%164 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %165",
+          "next": "%165 = apply %164<DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>(%162, %163) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        },
+        {
+          "line": 156312,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA07DynamicB8GeometryV_0ghL00L27InteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAJ0ln9CommittedP0VyAOGAJ0ln3HitP0VyAOGTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> () {",
+          "block": "bb26:                                             // Preds: bb15",
+          "reference": "%212 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %213",
+          "next": "%213 = apply %212<DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>(%210, %211) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        },
+        {
+          "line": 156656,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA06StaticB8GeometryV_AA0L30TwoInteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAA0lno9CommittedQ0VyANGAA0lno3HitQ0VyANGTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> () {",
+          "block": "bb13:                                             // Preds: bb6",
+          "reference": "%121 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %122",
+          "next": "%122 = apply %121<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>(%119, %120) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        },
+        {
+          "line": 156726,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA06StaticB8GeometryV_AA0L30TwoInteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAA0lno9CommittedQ0VyANGAA0lno3HitQ0VyANGTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> () {",
+          "block": "bb24(%163 : $PresentationRevision):               // Preds: bb14",
+          "reference": "%166 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %167",
+          "next": "%167 = apply %166<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>(%164, %165) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        },
+        {
+          "line": 156782,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA06StaticB8GeometryV_AA0L30TwoInteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAA0lno9CommittedQ0VyANGAA0lno3HitQ0VyANGTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> () {",
+          "block": "bb26:                                             // Preds: bb15",
+          "reference": "%214 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %215",
+          "next": "%215 = apply %214<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>(%212, %213) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        },
+        {
+          "line": 157113,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () {",
+          "block": "bb13:                                             // Preds: bb6",
+          "reference": "%108 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %109",
+          "next": "%109 = apply %108<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%106, %107) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        },
+        {
+          "line": 157183,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () {",
+          "block": "bb24(%150 : $PresentationRevision):               // Preds: bb14",
+          "reference": "%153 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %154",
+          "next": "%154 = apply %153<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%151, %152) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        },
+        {
+          "line": 157239,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () {",
+          "block": "bb26:                                             // Preds: bb15",
+          "reference": "%201 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %202",
+          "next": "%202 = apply %201<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%199, %200) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        },
+        {
+          "line": 157687,
+          "owner": "sil @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> () {",
+          "block": "bb35:                                             // Preds: bb13",
+          "reference": "%177 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %178",
+          "next": "%178 = apply %177<Candidate, Committed, Hits>(%175, %176) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        },
+        {
+          "line": 157713,
+          "owner": "sil @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> () {",
+          "block": "bb38(%192 : $PresentationRevision):               // Preds: bb36",
+          "reference": "%195 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %196",
+          "next": "%196 = apply %195<Candidate, Committed, Hits>(%193, %194) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        },
+        {
+          "line": 157765,
+          "owner": "sil @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> () {",
+          "block": "bb40:                                             // Preds: bb39",
+          "reference": "%237 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %238",
+          "next": "%238 = apply %237<Candidate, Committed, Hits>(%235, %236) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        }
+      ]
+    },
+    {
+      "id": "F21",
+      "name": "// RuntimeActionGenerationAllocator.resolveCandidate(committed:)",
+      "family": "F-generation",
+      "source": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift",
+      "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+      "disposition": "live reference retained, transitive cost/specialization unqualified; no automatic source selection",
+      "current_provider_records": [
+        {
+          "module": "GiftUIRuntimeCore",
+          "name": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+          "identifier_id": 315,
+          "function_id": 679,
+          "hash": 3616162541,
+          "demangled": "GiftUIRuntimeCore.RuntimeActionGenerationAllocator.resolveCandidate(committed: Swift.Bool) -> ()",
+          "offset_bits": 1354885,
+          "linkage": 7,
+          "serialized_kind": 0,
+          "inline_strategy": 0,
+          "basic_blocks": 0,
+          "raw_prefix": [
+            4,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=230 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": {
+        "line": 157850,
+        "header": "sil @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () {",
+        "basic_blocks": 0
+      },
+      "current_pipeline_references": [
+        {
+          "line": 156191,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA07DynamicB8GeometryV_0ghL00L27InteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAJ0ln9CommittedP0VyAOGAJ0ln3HitP0VyAOGTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> () {",
+          "block": "bb13:                                             // Preds: bb6",
+          "reference": "%123 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %124",
+          "next": "%124 = apply %123<SemanticCompleteIdentity>(%121, %122) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        },
+        {
+          "line": 156261,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA07DynamicB8GeometryV_0ghL00L27InteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAJ0ln9CommittedP0VyAOGAJ0ln3HitP0VyAOGTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> () {",
+          "block": "bb24(%161 : $PresentationRevision):               // Preds: bb14",
+          "reference": "%168 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %169",
+          "next": "%169 = apply %168<SemanticCompleteIdentity>(%166, %167) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        },
+        {
+          "line": 156317,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA07DynamicB8GeometryV_0ghL00L27InteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAJ0ln9CommittedP0VyAOGAJ0ln3HitP0VyAOGTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<DynamicCounterGeometry, DynamicInteractionCandidateStorage<SemanticCompleteIdentity>, DynamicInteractionCommittedStorage<SemanticCompleteIdentity>, DynamicInteractionHitStorage<SemanticCompleteIdentity>>) -> () {",
+          "block": "bb26:                                             // Preds: bb15",
+          "reference": "%216 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %217",
+          "next": "%217 = apply %216<SemanticCompleteIdentity>(%214, %215) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        },
+        {
+          "line": 156661,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA06StaticB8GeometryV_AA0L30TwoInteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAA0lno9CommittedQ0VyANGAA0lno3HitQ0VyANGTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> () {",
+          "block": "bb13:                                             // Preds: bb6",
+          "reference": "%125 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %126",
+          "next": "%126 = apply %125<SemanticCompleteIdentity>(%123, %124) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        },
+        {
+          "line": 156731,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA06StaticB8GeometryV_AA0L30TwoInteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAA0lno9CommittedQ0VyANGAA0lno3HitQ0VyANGTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> () {",
+          "block": "bb24(%163 : $PresentationRevision):               // Preds: bb14",
+          "reference": "%170 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %171",
+          "next": "%171 = apply %170<SemanticCompleteIdentity>(%168, %169) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        },
+        {
+          "line": 156787,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA06StaticB8GeometryV_AA0L30TwoInteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAA0lno9CommittedQ0VyANGAA0lno3HitQ0VyANGTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> () {",
+          "block": "bb26:                                             // Preds: bb15",
+          "reference": "%218 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %219",
+          "next": "%219 = apply %218<SemanticCompleteIdentity>(%216, %217) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        },
+        {
+          "line": 157118,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () {",
+          "block": "bb13:                                             // Preds: bb6",
+          "reference": "%112 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %113",
+          "next": "%113 = apply %112<SemanticCompleteIdentity>(%110, %111) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        },
+        {
+          "line": 157188,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () {",
+          "block": "bb24(%150 : $PresentationRevision):               // Preds: bb14",
+          "reference": "%157 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %158",
+          "next": "%158 = apply %157<SemanticCompleteIdentity>(%155, %156) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        },
+        {
+          "line": 157244,
+          "owner": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () {",
+          "block": "bb26:                                             // Preds: bb15",
+          "reference": "%205 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %206",
+          "next": "%206 = apply %205<SemanticCompleteIdentity>(%203, %204) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        },
+        {
+          "line": 157692,
+          "owner": "sil @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> () {",
+          "block": "bb35:                                             // Preds: bb13",
+          "reference": "%181 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %182",
+          "next": "%182 = apply %181<SemanticCompleteIdentity>(%179, %180) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        },
+        {
+          "line": 157718,
+          "owner": "sil @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> () {",
+          "block": "bb38(%192 : $PresentationRevision):               // Preds: bb36",
+          "reference": "%199 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %200",
+          "next": "%200 = apply %199<SemanticCompleteIdentity>(%197, %198) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        },
+        {
+          "line": 157770,
+          "owner": "sil @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOF : $@convention(method) <Geometry, Candidate, Committed, Hits where Geometry : CounterGeometry, Candidate : CounterCandidateBacking, Committed : CounterCommittedBacking, Hits : CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity, Geometry : ~Copyable, Geometry : ~Escapable, Candidate : ~Copyable, Candidate : ~Escapable, Committed : ~Copyable, Committed : ~Escapable, Hits : ~Copyable, Hits : ~Escapable> (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<Geometry, Candidate, Committed, Hits>) -> () {",
+          "block": "bb40:                                             // Preds: bb39",
+          "reference": "%241 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %242",
+          "next": "%242 = apply %241<SemanticCompleteIdentity>(%239, %240) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        }
+      ]
+    },
+    {
+      "id": "F22",
+      "name": "// ObservableModelScope<>.endFrame()",
+      "family": "B-observable",
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+      "disposition": "selected boundary resolved, finite scope only",
+      "current_provider_records": [
+        {
+          "module": "GiftUIObservableState",
+          "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+          "identifier_id": 425,
+          "function_id": 313,
+          "hash": 714026603,
+          "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.endFrame() throws(GiftUIObservableState.ObservableStateError) -> ()",
+          "offset_bits": 986086,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 3,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=775 op29=0 op30=0 op31=5 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "current_sil_definition": null,
+      "current_pipeline_references": []
+    }
+  ]
+}

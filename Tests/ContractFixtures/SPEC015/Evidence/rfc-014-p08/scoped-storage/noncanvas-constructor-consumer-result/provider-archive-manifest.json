@@ -1,0 +1,15 @@
+{
+  "archive_sha256": "5cbcfd19e164eb33447bdcfe4eb627ebad2af01bd7359d3ab4def64a1cf2ffd1",
+  "members": [
+    {
+      "path": "semantic-provider-disassembly.txt",
+      "bytes": 4106042,
+      "sha256": "78fac81198b7b620afaac7ac6be1f7742605df3e1e8e3a798b459e216ce38ab0"
+    },
+    {
+      "path": "semantic-provider-disassembly.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
