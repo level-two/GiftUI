@@ -297,7 +297,8 @@ def main():
                 audit_hash = sha(audit_path)
                 verify_files(inputs)
                 require(sha(audit_path) == audit_hash, 'prelaunch audit drift')
-                require(authenticate_reviewed_packet(reviewed_commit) == reviewed_packet,
+                launch_packet, launch_bytes = authenticate_reviewed_packet(reviewed_commit)
+                require(launch_packet == reviewed_packet and launch_bytes == reviewed_bytes,
                         'immutable reviewed packet changed immediately before launch')
                 stdout = out / 'logs' / (stage['id'] + '.stdout')
                 stderr = out / 'logs' / (stage['id'] + '.stderr')

@@ -1,0 +1,18 @@
+{
+  "base_snapshot_correction_commit": "78fd1ce466fa5c30a3537832ee65c2d28d18131a",
+  "status": "NARROW_PRELAUNCH_ANCHOR_COMPARISON_CORRECTION_UNEXECUTED",
+  "reason": "Independent review found that the immediate prelaunch recheck compared the authenticator's metadata-and-bytes tuple to metadata alone, which would always stop before launch.",
+  "change": "Unpack the reauthenticated metadata and captured blob bytes; require both to equal the original reviewed snapshot immediately before launch.",
+  "changed_prior_payloads": [
+    "execute-discovery.py",
+    "packet-hashes.json"
+  ],
+  "new_payload": "prelaunch-correction-provenance.json",
+  "target_count": 50,
+  "planned_stages": 118,
+  "source_candidates": 1,
+  "automatic_repairs": 0,
+  "retries": 0,
+  "compiler_parser_runner_producer_test_formatter_invocations": 0,
+  "maintained_source_edits": 0
+}
