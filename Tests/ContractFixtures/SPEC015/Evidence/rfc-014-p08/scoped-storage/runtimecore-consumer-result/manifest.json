@@ -1,0 +1,8 @@
+{
+  "actual-host.sil": "fa68e401a9fff2ad690dc62213b29cd3f074c97c218876f9f86c2986f8f235b6",
+  "collection-result.json": "7cc5e26afdb3bd2cb07079452eec77e159f0e5aef463163b4703a5b6b96826f1",
+  "compiler.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "compiler.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "slices/selected-consumer.sil.txt": "8b82fcb69ac1ff903ada623319003175fb5ea053106a3fdfc93f2e4446f60e48",
+  "slices/scoped-static-object.txt": "a5c2810eaeb4be7e5118242ca5abbf5d9803c02614487f6b2022252de1f20f1f"
+}

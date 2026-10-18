@@ -1,15 +1,14 @@
 # P08 RuntimeCore witness compatibility activity — 2026-10-18
 
-**Selected privacy/physical availability PASS:** all31 checks,22 source-access
-controls and six required bodies available; all569 input/recipe/log hashes verify.
-[Qualification result](runtimecore-fixed-qualification1-result/README.md) preserves
-complete decoder/index/object/diagnostic evidence. Source22eea103 unchanged;
-no subsequent source/compiler/decoder/runtime action. Compile25 PASS retained.
-[Independent boundary PASS](p08-runtimecore-fixed-qualification-independent-review.md)
-qualifies these selected prerequisites and the prepared actual42-source SIL command
-for its already authorized execution/read-only interpretation. All42/concrete-host/private-callee/observer,
-full14-loan/lifetime/Optional/provenance/exclusivity/failure-cleanup safety and
-strict cold remain unqualified. No acceptance or new allowance. Eugene
+**Actual-consumer gate FAIL at one additional required callee.**
+[Fresh SIL/result](runtimecore-consumer-result/README.md) verifies573 hashes and
+concrete scoped Static call to RuntimeCompletePipeline.run: current physical
+FunctionID611/serializedKind0/zeroBB, effect-summary-only SIL, object branch0x198c.
+Compile25/selected22privacy/sixbody PASS retained. No heapcount, contract
+impossibility or broader closure failure inferred. Source unchanged; no further
+compiler/decoder/runtime or automatic repair. Finite run/helper/16requirement
+read-only inventory precedes independent review; all42/privatecallee/State-borrow/
+metadata-observer/safety/cold remain unqualified, P08/R07/T8.1 unaccepted. Eugene
 explicitly authorized the three previously diagnosed witness annotations followed
 by focused validation. This is one exact candidate with **zero automatic source
 repairs**; it does not reset the exhausted grouped initial1/1+corrective2/2 or any

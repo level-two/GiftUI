@@ -1,0 +1,102 @@
+{
+  "status": "read-only future review prerequisites, no source candidate/allowlist/allowance",
+  "root": "RuntimeCompletePipeline.run already @inlinable and inline(__always); do not blindly add same annotation",
+  "source_files": {
+    "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+    "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597"
+  },
+  "enclosing_formal_scope": "RuntimeCompletePipeline enum and RuntimeCompletePipelineOwner protocol/result signature types are package and unqualified; exact compiler eligibility/source legality must be reviewed, not inferred from source annotation alone",
+  "generic_private_helpers": [
+    {
+      "name": "finishOfferWithoutCommit",
+      "line": 374
+    },
+    {
+      "name": "fail",
+      "line": 405
+    },
+    {
+      "name": "cleanup",
+      "line": 449
+    }
+  ],
+  "ordinary_private_helper": {
+    "name": "cleanupStage",
+    "line": 463
+  },
+  "owner_requirements": [
+    {
+      "line": 87,
+      "declaration": "var presentationIntentState: PresentationIntentState { get }"
+    },
+    {
+      "line": 88,
+      "declaration": "var hasAllocatedCandidateFrame: Bool { get }"
+    },
+    {
+      "line": 89,
+      "declaration": "mutating func admitAndSeal() -> RuntimePipelineStepResult<OwnerFailure>"
+    },
+    {
+      "line": 90,
+      "declaration": "mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<OwnerFailure>"
+    },
+    {
+      "line": 91,
+      "declaration": "mutating func freezeObservableMutation() -> RuntimePipelineStepResult<OwnerFailure>"
+    },
+    {
+      "line": 92,
+      "declaration": "mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult<"
+    },
+    {
+      "line": 95,
+      "declaration": "mutating func resolveLayout() -> RuntimePipelineStepResult<OwnerFailure>"
+    },
+    {
+      "line": 96,
+      "declaration": "mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<OwnerFailure>"
+    },
+    {
+      "line": 97,
+      "declaration": "mutating func preflightCombinedRender() -> RuntimePipelineStepResult<OwnerFailure>"
+    },
+    {
+      "line": 98,
+      "declaration": "mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<OwnerFailure>"
+    },
+    {
+      "line": 99,
+      "declaration": "mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult<"
+    },
+    {
+      "line": 102,
+      "declaration": "mutating func allocateCandidate() -> RuntimePipelineStepResult<OwnerFailure>"
+    },
+    {
+      "line": 103,
+      "declaration": "mutating func offerAndProduce() -> RuntimePipelineOfferResult<OwnerFailure>"
+    },
+    {
+      "line": 104,
+      "declaration": "mutating func cleanup(_ action: RuntimeCleanupAction)"
+    },
+    {
+      "line": 105,
+      "declaration": "mutating func applyDisposition(_ disposition: RuntimePipelineDisposition)"
+    },
+    {
+      "line": 106,
+      "declaration": "mutating func finalizePipeline()"
+    }
+  ],
+  "direct_cleanup_boundary": [
+    "RuntimeCleanupActions rawValue/init/nine static flag values and OptionSet witnesses",
+    "RuntimeCoordinatorCleanupOracle.plan(after:) -> RuntimeCleanupPlan",
+    "RuntimeCleanupTracker.init(plan:acquired:) / takeNext() -> RuntimeCleanupAction?",
+    "Tracker.take/outstanding and Actions.action/contains remain ordinary private implementation unless actual required body/linkage evidence proves otherwise"
+  ],
+  "signature_closure": "Bounded review must include exact result/enum payload/OptionSet/witness/constructor/default dependencies reached by root + three generic helpers, preserving cleanup order, errors/publication/mutation/Optional semantics. Nongeneric ordinary ABI callees need not publish their bodies. No blanket field/protocol promotion.",
+  "caller_frontier": "Inventory the16 existing owner requirements and exact CounterPipelineOwner stage implementations/private callees before a future candidate; use actual source references/qualified index and the existing42-origin map. Avoid one-symbol repairs. No compiler/source change performed.",
+  "excluded": "unrelated protocol methods/factories, broad nominal sweep, unchecked/public widening, alternate algorithm, flag matrix or any new source allowance"
+}

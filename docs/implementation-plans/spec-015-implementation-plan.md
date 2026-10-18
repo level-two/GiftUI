@@ -29,17 +29,15 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current [fixed-source qualification1 result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-fixed-qualification1-result/README.md):
-all31 checks PASS,22 selected privacy controls and six required serialized bodies
-available;569 frozen input/recipe/log hashes verify. Source22eea103 unchanged,
-fresh25 compile PASS retained.
-[Independent boundary PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-runtimecore-fixed-qualification-independent-review.md)
-qualifies selected prerequisites and the prepared actual42-source SIL command for
-already authorized execution/read-only interpretation. All42 origins/
-private callees/concrete-host specialization/observer attribution, full14-loan/
-lifetime/Optional/provenance/exclusivity/failure-cleanup safety and strict cold
-remain unqualified. No source repair/new allowance or P08/R07/T8.1 acceptance;
-earlier stages below remain historical.
+Current [actual-consumer result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-consumer-result/README.md):
+fresh SIL collected/573hashes verified; one required callee gate FAIL:
+concrete scoped Static pipeline calls RuntimeCompletePipeline.run, physical611/
+serializedKind0/zeroBB, effect-summary-only SIL and object0x198c agree. Compile25/
+selected22privacy/sixbody PASS retained. Source unchanged; no allocation/contract-
+impossibility claim or repair allowance. Independent boundary review next, with
+finite transitive run/helper/16requirement inventory before any future candidate.
+All42/privatecallee/State structural-borrow/observer coverage, full safety and
+strict cold remain unqualified; source candidate/P08/R07/T8.1 unaccepted.
 
 [Fixed-source qualification1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-fixed-qualification1/README.md)
 is prepared only:22 privacy controls, six-module/required-six-body physical gate

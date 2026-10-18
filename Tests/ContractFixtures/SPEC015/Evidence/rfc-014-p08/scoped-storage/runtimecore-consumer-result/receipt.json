@@ -1,0 +1,13 @@
+{
+  "collection_exit": 0,
+  "collection_input_hashes_verified": 573,
+  "sil_sha256": "fa68e401a9fff2ad690dc62213b29cd3f074c97c218876f9f86c2986f8f235b6",
+  "sil_bytes": 58377712,
+  "archive_sha256": "bb56865077ad0b702a6c484923a078c5af212b33df227ba9e5289d28bf91e6cc",
+  "archive_bytes": 5564101,
+  "source_changes": 0,
+  "new_compiler_decoder_runtime_executions": 0,
+  "gate": "FAIL one required callee/body specialization; remaining closure unqualified",
+  "retained": "fresh25compile and22privacy/sixbody PASS",
+  "protected5_pycache": "all frozen hashes unchanged"
+}

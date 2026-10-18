@@ -1,0 +1,67 @@
+{
+  "gate": "FAIL required generic callee body availability / actual concrete specialization",
+  "source_commit": "22eea103",
+  "scope": "one proven actual scoped Static pipeline boundary; not a complete42-origin or allocation assessment",
+  "concrete_owner": "CounterPipelineOwner<P08GeometryAccess,P08CandidateAccess,P08CommittedAccess,P08HitAccess>",
+  "source_call": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:364",
+  "sil_edges": [
+    {
+      "sil_line": 78629,
+      "role": "Static activation attachRoot -> concrete scoped pipeline",
+      "function_ref": "  %34 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RunCycleResult<RuntimeOwnerFailure> // user: %35",
+      "following_apply": "  %35 = apply %34(%33) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RunCycleResult<RuntimeOwnerFailure> // users: %36, %37"
+    },
+    {
+      "sil_line": 79560,
+      "role": "Static opportunity -> concrete scoped pipeline",
+      "function_ref": "  %43 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE14runOpportunity15GiftUIExecution14RunCycleResultOy0H13UIRuntimeCore0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0AMLLVAA0a9CommittedQ0AMLLVAA0a3HitQ0AMLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RunCycleResult<RuntimeOwnerFailure> // user: %44",
+      "following_apply": "  %44 = apply %43(%42) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RunCycleResult<RuntimeOwnerFailure> // user: %45"
+    },
+    {
+      "sil_line": 6644,
+      "role": "concrete scoped pipeline -> generic RuntimeCompletePipeline.run",
+      "function_ref": "  %119 = function_ref @$s17GiftUIRuntimeCore23RuntimeCompletePipelineO3run5ownerAA0deF6ResultOy12OwnerFailureQzGxz_tAA0defJ0RzRi_zRi0_zlFZ : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : RuntimeCompletePipelineOwner, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable> (@lifetime(copy 0) @inout \u03c4_0_0, @thin RuntimeCompletePipeline.Type) -> @out RuntimeCompletePipelineResult<\u03c4_0_0.OwnerFailure> // user: %120",
+      "following_apply": "  %120 = apply %119<CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>(%117, %0, %118) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : RuntimeCompletePipelineOwner, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable> (@lifetime(copy 0) @inout \u03c4_0_0, @thin RuntimeCompletePipeline.Type) -> @out RuntimeCompletePipelineResult<\u03c4_0_0.OwnerFailure>"
+    }
+  ],
+  "callee_sil_summary": {
+    "lines": [
+      109438,
+      109442
+    ],
+    "basic_blocks": 0,
+    "declaration_only_effect_summary": true
+  },
+  "module_physical_record": {
+    "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO3run5ownerAA0deF6ResultOy12OwnerFailureQzGxz_tAA0defJ0RzRi_zRi0_zlFZ",
+    "identifier_id": 649,
+    "function_id": 611,
+    "hash": 3252421790,
+    "demangled": "static GiftUIRuntimeCore.RuntimeCompletePipeline.run<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+    "offset_bits": 1118229,
+    "linkage": 7,
+    "serialized_kind": 0,
+    "inline_strategy": 2,
+    "basic_blocks": 0,
+    "raw_prefix": [
+      4,
+      7,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=960 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+  },
+  "object_edge": {
+    "caller_start": "0x1828",
+    "branch": "0x198c",
+    "offset": "0x164",
+    "relocation": "ARM64_RELOC_BRANCH26 $s17GiftUIRuntimeCore23RuntimeCompletePipelineO3run5ownerAA0deF6ResultOy12OwnerFailureQzGxz_tAA0defJ0RzRi_zRi0_zlFZ",
+    "matched_object_sha256": "2e833070db20cc5cc864156faf08ce73ee1ba1f18b7d57451ce11c2a924f66ce"
+  },
+  "observer_distinction": "required pipeline apply at SIL6645 precedes counterTrace reference6655/apply6656; source call364 produces operation result. This availability failure is independent of downstream trace formatting; no metadata allocation attribution is asserted.",
+  "not_claimed": "no measured allocation, heapcount, fullclosure failure, architecture impossibility or source repair allowance"
+}

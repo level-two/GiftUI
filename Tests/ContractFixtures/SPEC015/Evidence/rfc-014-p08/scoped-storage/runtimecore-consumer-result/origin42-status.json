@@ -1,0 +1,338 @@
+[
+  {
+    "source": "Sources/GiftUI/DeclarativeView.swift",
+    "current_sha256": "15604c493d09f194252b05fdcb5fb31fdb412de3cb10a142fa7276a5e05e8bcf",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUI/ObservableState.swift",
+    "current_sha256": "9f49b702c630be7e1ecc690973c73912142d731050bc4c62776c207e2ce68e86",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+    "current_sha256": "fa9c4b3aa3c522a8bd39efa4560abb692f61a1ab578089ed5ea4af182e5dd778",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIDrawing/CanvasRenderProducer.swift",
+    "current_sha256": "c98ac6df32afa04088b6958ed8f664db91dd111cd9d798b626c60adbed7ddf69",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+    "current_sha256": "ce95e9f298dbd3fbfd42bfdf7d689b5e81db40390d60e6ca9eff3a48e18b0dfc",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 2,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIExecution/RunCycleValues.swift",
+    "current_sha256": "f1377873d91c82a47ecad39b23651b85622964b9c3896c8c142875a81a6b9b95",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+    "current_sha256": "c4f1b48f28a384324a342aa8ee73c979c29f73207fd1b41aceda2248ccebfdae",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 3,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+    "current_sha256": "fb89a072235041053cd739b4a65da6c5c67cfe38c47f4d49db3aad86e0f9bdab",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift",
+    "current_sha256": "3f21154d0b6d6b416ebcacef4932902a72649968969246c601791272f66316f6",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 2,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+    "current_sha256": "55466bd192b6e5e1296de66a20ed2bdee97caa69432608b9c0e9436548786650",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 4,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift",
+    "current_sha256": "ee7d2b1db3604b904be3e3733c5eab4edf079fc7401d93a79035bb782fb82b8f",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+    "current_sha256": "cda0b3fe4b2165d7213c7cc4eb57f23859f3e854a116b3419f092a66cfec305c",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 4,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIInteraction/InteractionState.swift",
+    "current_sha256": "d8b2d3dc91cb701f003ac9fa22ebd91666173947b858ae36d311254b4f1c5f51",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 7,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUILayout/LayoutEngine.swift",
+    "current_sha256": "dd70e9816f6a4904dbec00a14b97bc0ba4466ead725f6e27953370bd1756b21a",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 3,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUILayout/LayoutPublication.swift",
+    "current_sha256": "45f23eaf015a2501a061ab7d4d09a0a1a59c16d5a624225a658193f5486a58fb",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 1,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+    "current_sha256": "02972a30aae2b9be0f97e3b0eb0782aba063b17eb3b643cfdc16af96574601ae",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 1,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+    "current_sha256": "cf4fe6105ea05856ed229644a803fdbf1bab8d3eb8150b1ae0256d52634a21dc",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+    "current_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+    "current_sha256": "db5f975e9c5984592606342eb212b206cc3950a466e50e4b018ab6741f720cdb",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 3,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIRasterCore/RasterFillCoverage.swift",
+    "current_sha256": "e091a6fde4fdd9e0aaa01d15a0dccc7650039d654b4fffe36caa5e686460ace8",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift",
+    "current_sha256": "29cedc4f49e27d990cd076d51f65ff2dae5b7ff6932aef5a9dbba0c014a1bbfc",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift",
+    "current_sha256": "c5cdf30474780eae3f27cec5c8d179bad0eaa5b5fa0a47c71de129e017322f14",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift",
+    "current_sha256": "77313fd03bd41cc977b4f63397d5ec119772c25eb18db48cf3fef81cc95577b8",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+    "current_sha256": "0ed77324a09b25fcc683a61ef659abbc1c32709ae36f1e43ffaa54433fd89675",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 1,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+    "current_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+    "current_sha256": "6c0fe638dbf5a00e2d88726be77b550013f1c2549a07ef1e9ee82c7264e72e65",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 2,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+    "current_sha256": "fc787355d2ef5fecbe59e48db5fd54f036e93a012705cbdcd0b13e7e012d381f",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+    "current_sha256": "cf2b591a33b9814f40eb67b17dbdefd19d726fc115a37636ddc4d31c788da5bd",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+    "current_sha256": "776db41e501972481ca6e7d461e9b52d67918f3624b2a41429f714be238a9753",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Sources/GiftUITextResources/GiftUITextResources.swift",
+    "current_sha256": "b7eb4b8689ddda6077cfc3d0416a422c2207642ab1ab440d72b2c375a9aef3b4",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift",
+    "current_sha256": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+    "current_sha256": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+    "current_sha256": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+    "current_sha256": "be59651c2f7f657f1785f51fa31767f6319dc543c023d901057fa0deb4bace81",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+    "current_sha256": "d084112a1ee54cc8c01fc5f24a7416ee3a6b23afdc6710f42635a76c370fea26",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+    "current_sha256": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+    "current_sha256": "46ab40914dade59536f53650bd97ce8d74ee57da86a8a826330f629c64a89f9c",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+    "current_sha256": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+    "current_sha256": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+    "current_sha256": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift",
+    "current_sha256": "c49cc7ad1d5de5bcc3a228defd78ce16a1d6e56c775d9227f5648339540eaa2c",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  },
+  {
+    "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift",
+    "current_sha256": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+    "compile_qualification": "registered fresh closure input; authored Counter is lowerer input",
+    "reviewed_attribute_sites": 0,
+    "physical_note": "six selected body availability PASS retained; one additional required generic operation fails actualconsumer gate",
+    "codegen_status": "UNQUALIFIED full origin/callee/continuation/destruction/metadata/observer coverage: stopped at RuntimeCompletePipeline.run missing required body"
+  }
+]
