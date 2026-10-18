@@ -1,5 +1,12 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+Current P08 P02 prerequisite boundary: [candidate 2 STOP and read-only Analyzer ABI proposal](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-inventory-proposal.md).
+The source-derived eight-selector/four-file candidate and proposed validation
+campaign are unapproved. Consumed candidate/run allowances and all historical
+stops remain closed; no repair, retry, source acceptance or P08/R07/T8.1 closure
+is implied. The proposal preserves typed reads, authored semantics and private
+diagnostic storage; pinned compiler compatibility remains unproved.
+
 Current resource decision boundary: the [independent live-path review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-live-ram-independent-review.md)
 confirms 56,888 required stack + 142,972 other RAM = 199,860 > unchanged 196,608.
 A sufficient larger main stack is permitted, but main-stack growth alone cannot

@@ -7,6 +7,11 @@ P02 core/registered-record compilation failed at generated AnalyzerSchema.swift.
 Dependent stages were unrun. No retry, repair, or contract/scope conclusion is
 recorded. Historical closed budgets remain closed; P08/R07/T8.1 remain open.
 
+Read-only follow-up: [Analyzer ABI inventory and bounded continuation proposal](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-inventory-proposal.md)
+records direct/transitive dependencies and an unapproved eight-selector,
+four-file candidate. No source edit, compiler/test/retry or new allowance follows;
+the candidate 2 STOP above remains current.
+
 Current P08 work: [one bounded maintained P02 prerequisite correction](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-activity.md)
 stopped at initial source inspection. The [withdrawn candidate receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate1/README.md)
 preserves the exact partial diff and test-construction defect. Candidate 1/1
