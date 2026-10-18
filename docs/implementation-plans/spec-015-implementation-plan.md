@@ -29,6 +29,11 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current grouped E/F source candidate1 ([source receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/source-edits.json)):
+reviewed23sites/fourfiles applied/targetformatted/exact inverse-token audit PASS.
+New ONE1/1 ZERO automatic SOURCE repairs; all historical activities remain closed.
+Fresh grouped validation recipe preparation only; no compiler/tests/runtime/P08 claim.
+
 Current [grouped E/F commit-resolution proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-grouped-inventory/README.md):
 23sites/fourfiles cover both remaining actual metadata boundaries and direct
 readiness/reset/exchange/counter/helper closure; three scalar internal-setter

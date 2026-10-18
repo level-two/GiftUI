@@ -10,6 +10,7 @@ package struct BoundedApplicationAction: Equatable, Hashable, Sendable {
     }
 }
 
+@usableFromInline
 package struct InteractionLimits: Equatable, Sendable {
     package let maximumActions: UInt16
     package let maximumHitRegions: UInt16
@@ -71,6 +72,7 @@ package enum InteractionError: UInt8, Equatable, Sendable {
     case missingModelTarget = 8
 }
 
+@usableFromInline
 package enum InteractionCandidateDisposition: Equatable, Sendable {
     case commit(PresentationRevision)
     case discard

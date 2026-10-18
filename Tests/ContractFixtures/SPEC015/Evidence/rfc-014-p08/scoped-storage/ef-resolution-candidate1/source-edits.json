@@ -1,0 +1,60 @@
+{
+  "authorization": "Latest user proceed grouped remaining tasks; root assigns ONE source attempt ZERO automatic SOURCE repairs after b7313891/READYd7da1297",
+  "base_head": "d7da1297d8b77eec401c6dbdd6c93a4919ce8c30",
+  "candidate": "1/1 inprogress before edit",
+  "automatic_source_repairs": 0,
+  "historical_budgets": "all previous closed unchanged",
+  "map": "ef-resolution-grouped-inventory/correction-map.json",
+  "before_sha256": {
+    "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": "382a4b9b0c79c3cc3f8940c5c36cdf149746ac3ad310cee1aa8899eb5006ee12",
+    "Sources/GiftUIInteraction/InteractionState.swift": "089ec1dd45912d7a2f2ee57d82a6ad4e92a7bf7c1a53493342dfba08995f1830",
+    "Sources/GiftUIInteraction/InteractionValues.swift": "8e1166f26ab752cb02de9f84384df35e170a8bfe89c0393b09914f215c495953",
+    "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift": "5c402b3a80a52a598149ce8b441e87d9370ff985c173483123d1bd8d0ecd6231"
+  },
+  "after_sha256": {
+    "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": "d7dd023d67af67c748dacdaf876e45f634c646241c7469acada3b481d1678641",
+    "Sources/GiftUIInteraction/InteractionState.swift": "6773d303401927041ccb2601c11dc70adb35e1b5420a432cf3ef1df57a974b16",
+    "Sources/GiftUIInteraction/InteractionValues.swift": "513e9785291b7bc99e3fe7d90bbec8180038112126a51f5c5c0559624232c6ab",
+    "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift": "0f7fa6459c15109beb85c66e931cc77b5c7528e42ba774945c46ba32ecda5a66"
+  },
+  "audit": {
+    "exact_sites": 23,
+    "exact_files": 4,
+    "inverse_selected_tokens_byteexact_original": true,
+    "targeted_formatter": "swift format format --configuration .swift-format --in-place <exact four files>",
+    "constructors_defaults_body_lifetime_ownership_unmodified": true,
+    "protected_unrelated_unchanged": [
+      {
+        "path": "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+        "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+        "bytes": 9440
+      },
+      {
+        "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+        "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+        "bytes": 2048
+      },
+      {
+        "path": "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+        "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+        "bytes": 26018
+      },
+      {
+        "path": "scripts/nrf52840/build.sh",
+        "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+        "bytes": 10914
+      },
+      {
+        "path": "scripts/raspberry-pi/build.sh",
+        "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea",
+        "bytes": 6433
+      },
+      {
+        "path": "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
+        "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26",
+        "bytes": 44198
+      }
+    ]
+  },
+  "status": "source fixed candidate1/1; prepared gates pending; no compiler/tests/runtime"
+}

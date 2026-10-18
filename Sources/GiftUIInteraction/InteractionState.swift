@@ -17,23 +17,31 @@ where
     @usableFromInline
     package typealias Identity = CandidateRecords.Identity
 
-    private enum Phase: UInt8 {
+    @usableFromInline
+    internal enum Phase: UInt8 {
         case idle
         case staging
         case readyForOffer
     }
 
-    private var candidateRecords: CandidateRecords
-    private var candidateHitRegions: HitRegions
-    private var candidateCommittedRecords: CommittedRecords
+    @usableFromInline
+    internal var candidateRecords: CandidateRecords
+    @usableFromInline
+    internal var candidateHitRegions: HitRegions
+    @usableFromInline
+    internal var candidateCommittedRecords: CommittedRecords
     @usableFromInline
     internal var committedRecords: CommittedRecords
     @usableFromInline
     internal var committedHitRegions: HitRegions
-    private var limits: InteractionLimits?
-    private var phase: Phase = .idle
-    private var candidateError: InteractionError?
-    private var committedPresentationRevision: PresentationRevision?
+    @usableFromInline
+    internal var limits: InteractionLimits?
+    @usableFromInline
+    internal var phase: Phase = .idle
+    @usableFromInline
+    internal var candidateError: InteractionError?
+    @usableFromInline
+    internal var committedPresentationRevision: PresentationRevision?
 
     @_lifetime(
         copy candidateRecords, copy candidateHitRegions, copy candidateCommittedRecords,
@@ -276,6 +284,7 @@ where
         return nil
     }
 
+    @inlinable
     package mutating func resolveCandidate(
         _ disposition: InteractionCandidateDisposition
     ) {
@@ -315,6 +324,7 @@ where
         committedPresentationRevision
     }
 
+    @inlinable
     package var candidateIsReadyForOffer: Bool {
         phase == .readyForOffer
     }

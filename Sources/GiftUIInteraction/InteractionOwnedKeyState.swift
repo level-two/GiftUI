@@ -23,10 +23,14 @@ where
     private let maximumComponents: UInt32
     private var configuredComponentsPerKey: UInt16
     private var configuredComponents: UInt32
-    private var candidateComponents: UInt32 = 0
-    package private(set) var committedComponents: UInt32 = 0
-    private var isStaging = false
-    private var failure: InteractionError?
+    @usableFromInline
+    internal var candidateComponents: UInt32 = 0
+    @usableFromInline
+    package internal(set) var committedComponents: UInt32 = 0
+    @usableFromInline
+    internal var isStaging = false
+    @usableFromInline
+    internal var failure: InteractionError?
     @_lifetime(copy state)
     package init?(
         state: consuming InteractionState<Candidate, Committed, Hits>,
@@ -155,6 +159,7 @@ where
         isStaging = false
         return nil
     }
+    @inlinable
     package mutating func resolveCandidate(_ disposition: InteractionCandidateDisposition) {
         let ready = state.candidateIsReadyForOffer && failure == nil
         // A rejected append poisons the whole candidate even if a caller asks
