@@ -1,5 +1,11 @@
 # Resolver family candidate — 2026-10-18
 
+Current [independent package disposition](p08-resolver-final-independent-review.md):
+resolver boundary PASS; dead Optional equality excluded; live modelKey/mutate
+gate FAIL/STOP. Compile25/privacy39/physical20 retained. No source/repair allowance
+or dependent safety/cold; grouped observable-family read-only review is next.
+Earlier execution checkpoints below retain their chronology.
+
 **Candidate1/1 fixed at780c90c3; fresh compile boundary PASS.**
 Lower+all25 owners PASS/zero failed or blocked;329inputs and artifact/log identities
 verify. [Compile receipt](resolver-compile-result/README.md). Laterqualification open. Explicit

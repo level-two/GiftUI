@@ -23,6 +23,9 @@ run+three resolver boundaries RESOLVED; residual Optionalpayload equality branch
 proveddead, not operationalfailure. Next actualstatefact modelKey/mutate generic
 callee gate FAIL/STOP inSIL+matchingobject. All23:3resolved/20opaque, othersunqualified.
 No source/repair allowance/allocationclaim. Fullsafety/strictcold/P08 remainblocked.
+[Independent package review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resolver-final-independent-review.md)
+confirms resolver PASS and live observable callee FAIL/STOP, with the dead-equality
+proof retained. Grouped observable-family read-only review is next; no new allowance.
 
 Retained [resolver compile boundary](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-compile-result/README.md):
 source780c90c3 lower+all25fresh owners PASS/zero failedblocked;329inputs/output/log
