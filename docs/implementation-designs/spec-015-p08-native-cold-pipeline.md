@@ -19,7 +19,8 @@ superseded_by: null
 ## Grouped dependency continuation — 2026-10-18
 
 The [corrective1 root/dependency map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-design/README.md)
-is prepared for independent review: exact28-file framework ABI-only realization,
+has [independent design PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-corrective1-independent-design-review.md):
+exact28-file framework ABI-only realization,
 six proven roots and required actual callers/helpers. No source/compiler work;
 corrections0/2. Normative P08/private/ownership/lifetime boundaries remain exact.
 

@@ -1,6 +1,8 @@
 # Corrective1 design — targeted serialized root/dependency closure
 
-**Independent design review required; source/compiler unexecuted.** Initial1/1 is
+**Independent design PASS; source/compiler unexecuted.** The
+[review](../p08-grouped-module-closure-corrective1-independent-design-review.md)
+passes the finite map and constructor guard below. Initial1/1 is
 frozen at [physical/callee FAIL](../grouped-module-closure-codegen-result/README.md);
 corrections0/2. The first reviewed corrective source edit consumes1/2, without
 resetting any historical activity. [Exact map](candidate-map.json): **28 files,
@@ -53,6 +55,14 @@ claimed. Physical/caller gates must qualify the actual result.
    initialization (including invoked=false) and StackMeasure zero initialization.
    Match original field ownership/defaults and constructor behavior, not a new
    unchecked client path. All other bodies/algorithms are byte-preserved.
+
+The two explicit initializer equivalents are already selected constructor targets
+and must themselves be ABI-callable from the selected serialized bodies using
+the existing attribute mechanism; do not rely on an inaccessible synthesized
+initializer. Preserve CanvasStagedEntry's optional value/default nil and invoked
+default false, along with identity/witness/value ownership and field assignment
+order. StackMeasure retains all four zero defaults and existing zero-construction
+behavior. Neither constructor gains package/public access, new backing or checks.
 
 ## Authority and forbidden boundary
 

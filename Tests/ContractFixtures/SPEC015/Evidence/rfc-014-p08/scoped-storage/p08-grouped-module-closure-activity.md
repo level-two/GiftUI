@@ -8,8 +8,9 @@ change, compiler/runtime retry or correction occurred. Next derive and independe
 review a targeted corrective1 design; privacy/lifetime, safety and strict cold stay
 gated. Whole-directory compatibility failures remain broader scope limits.
 The [targeted corrective1 design](grouped-module-closure-corrective1-design/README.md)
-is prepared for independent review:28 files, six proven roots plus exact required
-callers/helpers; no source/compiler execution or corrective-cycle consumption.
+has [independent design PASS](p08-grouped-module-closure-corrective1-independent-design-review.md):
+28 files, six proven roots plus exact required callers/helpers; no source/compiler
+execution or corrective-cycle consumption.
 Its framework internal ABI-only visibility choices revise the initial realization,
 while every normative concrete P08/private/lifetime/capability boundary stays exact.
 Eugene explicitly authorized grouped Layout and remaining-module
@@ -22,7 +23,7 @@ It does not accept the combined overlay or close P08/R07/T8.1.
 Implementing SPEC-006/010/013/015 and accepted ADR-036/039/040 govern this derived
 ITERATION-003 I3-04/I3-05 work. Closed ITERATION-001's analyzer/state/stack outcomes
 remain regression duties; full RFC-015/I4-07 delivery stays separate. No contract,
-public API, source access, compiler policy, ownership or resource exception is
+public API, external source capability, compiler policy, ownership or resource exception is
 introduced. Existing strict zero heap includes first construction/actions,
 metadata, errors and required exclusivity. Fourteen loans, Optional destination,
 complete lifetime union, failure order and backing-last cleanup remain exact.
