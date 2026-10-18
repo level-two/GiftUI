@@ -29,7 +29,9 @@ ambiguity/missing-pattern issues, exactbodies present; SILblocked/notinvoked.
 [Exact5selector proposal/continuation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-selector-continuation1/README.md)
 is prepared/staticvalidationonly; originalresult/recipe unchanged. No source/selection
 application/compile/decoder/runtime; sourcecandidate1/1 fixed/no budgetreset.
-Independentreview before focusedcontinuation; actualconsumer/safety/cold/P08 open.
+[Independent continuation READY](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-observable-selector-continuation-review.md)
+for the authorized harness correction/focused run; source/budgets unchanged.
+Actualconsumer/safety/cold/P08 remain open.
 
 Historical [authorized grouped B candidate1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-candidate1/README.md):
 exact36sites/five files applied/formatted/tokenaudited, Address3requiredscalarargs;

@@ -1,5 +1,10 @@
 # Grouped B-observable candidate — 2026-10-18
 
+[Independent selector continuation READY](p08-observable-selector-continuation-review.md):
+five exact identities correct only the harness matcher. Reuse sealed prerequisites,
+then one34-target gate before fresh same42 SIL. Original result preserved; source
+candidate/budgets unchanged, no new source allowance or current consumer PASS.
+
 **New ONE candidate1/1 in progress BEFORE source edit; zero automatic repairs.**
 Explicit user authorization follows READY11d6aabd/d9fc4359. All historical exhausted
 budgets and fixed previous candidates remain unchanged. Exact36sites/five files:
