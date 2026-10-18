@@ -18,10 +18,11 @@ superseded_by: null
 
 ## Grouped dependency continuation — 2026-10-18
 
-[Corrective1 source/argv are frozen](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-prepared/README.md):
-exact reviewed28-file ABI realization, body/parameter/lifetime token audit PASS,
-corrective1/2 consumed, compiler unexecuted. Next fresh25 registered owner sweep;
-no source repair until grouped result review. Earlier boundaries below are historical.
+[Corrective1 compile result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-result/README.md):
+lower+15 owners PASS, Layout FAIL36, nine dependents blocked;302 frozen inputs
+verify. Initial1/1 and corrective1/2 consumed, final correction design/review next.
+No source repair, retry, privacy/codegen/safety/cold run or P08 acceptance follows.
+Earlier boundaries below are historical.
 
 The [corrective1 root/dependency map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-design/README.md)
 has [independent design PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-corrective1-independent-design-review.md):

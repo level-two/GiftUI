@@ -1,0 +1,222 @@
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:237:30: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+            let lineHeight = GeometryArithmetic.add(
+                             ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:237:49: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+            let lineHeight = GeometryArithmetic.add(
+                                                ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:241:39: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+            let baselineProgression = GeometryArithmetic.add(
+                                      ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:241:58: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+            let baselineProgression = GeometryArithmetic.add(
+                                                         ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:323:46: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+                    let prospectiveAdvance = GeometryArithmetic.add(
+                                             ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:323:65: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+                    let prospectiveAdvance = GeometryArithmetic.add(
+                                                                ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:370:39: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+                    let nextAdvance = GeometryArithmetic.add(
+                                      ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:370:58: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+                    let nextAdvance = GeometryArithmetic.add(
+                                                         ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:396:36: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+            let additionalHeight = GeometryArithmetic.multiply(
+                                   ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:396:55: error: static method 'multiply' is package and cannot be referenced from an '@inlinable' function
+            let additionalHeight = GeometryArithmetic.multiply(
+                                                      ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:94:25: note: static method 'multiply' is not '@usableFromInline' or public
+    package static func multiply(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:399:34: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+            ), let idealHeight = GeometryArithmetic.add(lineHeight, additionalHeight)
+                                 ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:399:53: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+            ), let idealHeight = GeometryArithmetic.add(lineHeight, additionalHeight)
+                                                    ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:426:28: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+            ), let lineY = GeometryArithmetic.subtract(baselineY, ascent)
+                           ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:426:47: error: static method 'subtract' is package and cannot be referenced from an '@inlinable' function
+            ), let lineY = GeometryArithmetic.subtract(baselineY, ascent)
+                                              ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:86:25: note: static method 'subtract' is not '@usableFromInline' or public
+    package static func subtract(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:674:33: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+            ), let mainExtent = GeometryArithmetic.add(result.mainExtent, gapTotal)
+                                ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:674:52: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+            ), let mainExtent = GeometryArithmetic.add(result.mainExtent, gapTotal)
+                                                   ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:685:34: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+                let difference = GeometryArithmetic.subtract(
+                                 ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:685:53: error: static method 'subtract' is package and cannot be referenced from an '@inlinable' function
+                let difference = GeometryArithmetic.subtract(
+                                                    ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:86:25: note: static method 'subtract' is not '@usableFromInline' or public
+    package static func subtract(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:812:32: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+                let nextMain = GeometryArithmetic.add(
+                               ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:812:51: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+                let nextMain = GeometryArithmetic.add(
+                                                  ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:877:39: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+                guard let withShare = GeometryArithmetic.add(minimum, quotient),
+                                      ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:877:58: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+                guard let withShare = GeometryArithmetic.add(minimum, quotient),
+                                                         ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:878:38: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+                    let mainExtent = GeometryArithmetic.add(withShare, bonus),
+                                     ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:878:57: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+                    let mainExtent = GeometryArithmetic.add(withShare, bonus),
+                                                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1306:25: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+                let x = GeometryArithmetic.add(bounds.minX, xOffset),
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1306:44: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+                let x = GeometryArithmetic.add(bounds.minX, xOffset),
+                                           ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1307:25: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+                let y = GeometryArithmetic.add(bounds.minY, yOffset)
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1307:44: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+                let y = GeometryArithmetic.add(bounds.minY, yOffset)
+                                           ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1755:44: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+                        ), let resolvedX = GeometryArithmetic.add(bounds.minX, offset)
+                                           ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1755:63: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+                        ), let resolvedX = GeometryArithmetic.add(bounds.minX, offset)
+                                                              ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1765:44: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+                        ), let resolvedY = GeometryArithmetic.add(bounds.minY, offset)
+                                           ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1765:63: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+                        ), let resolvedY = GeometryArithmetic.add(bounds.minY, offset)
+                                                              ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1780:40: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+                guard let afterChild = GeometryArithmetic.add(cursor, extent),
+                                       ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1780:59: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+                guard let afterChild = GeometryArithmetic.add(cursor, extent),
+                                                          ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1785:38: error: enum 'GeometryArithmetic' is package and cannot be referenced from an '@inlinable' function
+                    guard let next = GeometryArithmetic.add(afterChild, spacing)
+                                     ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:77:14: note: enum 'GeometryArithmetic' is not '@usableFromInline' or public
+package enum GeometryArithmetic {
+             ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1785:57: error: static method 'add' is package and cannot be referenced from an '@inlinable' function
+                    guard let next = GeometryArithmetic.add(afterChild, spacing)
+                                                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:78:25: note: static method 'add' is not '@usableFromInline' or public
+    package static func add(
+                        ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1845:29: warning: setter for property 'failure' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+        if failure == nil { failure = error }
+                            ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:37:31: note: setter for property 'failure' is not '@usableFromInline' or public
+    package internal(set) var failure: LayoutError?
+                              ^

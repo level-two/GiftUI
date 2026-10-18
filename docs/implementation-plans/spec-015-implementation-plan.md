@@ -29,13 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current [corrective1 source/command freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-prepared/README.md):
-reviewed28-file implementation and token audit pass; corrective1/2 in progress,
-compiler unexecuted. Next single sequential fresh25-owner registered sweep collects
-all independent errors/blocks dependents without edits or stale modules. Initial1/1
-compile/physical failures remain evidence; fresh privacy/lifetime, six-body/all42-
-origin/actual-host codegen, safety/cold and P08/R07/T8.1 stay open. Protected bytes
-and prior budgets unchanged; no allocation/resource acceptance is claimed.
+Current [corrective1 compile result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-result/README.md):
+lower+15 owners PASS, Layout FAIL36, nine dependencies blocked;302 input hashes
+verify. Initial1/1 and corrective1/2 consumed, one final correction remains.
+Group concrete arithmetic/source dependency evidence for independent design review
+before source. Fresh privacy/lifetime, six-body/all42-origin/actual-host codegen,
+safety/cold and P08/R07/T8.1 remain open. Prior budgets and protected bytes unchanged.
 
 [Independent annotation package review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-final-independent-review.md)
 confirms compatibility/provider/helper PASS and Layout FAIL101. Next recommendation

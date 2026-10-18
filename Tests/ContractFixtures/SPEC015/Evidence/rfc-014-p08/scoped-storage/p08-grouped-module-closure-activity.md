@@ -1,14 +1,11 @@
 # P08 grouped module closure activity — 2026-10-18
 
-**Corrective1/2 source and commands frozen; compiler unexecuted. Initial1/1
-remains frozen.** The [reviewed28-file implementation](grouped-module-closure-corrective1-prepared/README.md)
-contains exactly255 named declaration edits and two internal initializer equivalents;
-body/parameter/lifetime token audit and271 other/protected input hashes pass.
-Next run the single fresh25-owner registered sweep, collecting all independent
-errors and blocking dependents; no automatic source repair. The initial
-[physical6-body failure](grouped-module-closure-codegen-result/README.md) and broader
-whole-directory failures remain historical evidence. Privacy/lifetime, physical/
-actual-host, safety/cold and P08/R07/T8.1 remain open; observer costs unresolved.
+**Corrective1/2 compile sweep frozen: lower PASS,15 owners PASS, Layout FAIL36,
+nine dependents blocked.** [Result](grouped-module-closure-corrective1-result/README.md)
+preserves full diagnostics and all302 unchanged input hashes. Initial1/1 and
+corrective1/2 consumed; one final correction remains, read-only grouped design
+before independent review/source. Privacy/lifetime, physical/actual-host,
+safety/cold and P08/R07/T8.1 remain open; observer costs unresolved.
 Eugene explicitly authorized grouped Layout and remaining-module
 dependency corrections, then full-host/cold validation under the strict contract.
 This is a new allowance of one initial candidate and at most two grouped
