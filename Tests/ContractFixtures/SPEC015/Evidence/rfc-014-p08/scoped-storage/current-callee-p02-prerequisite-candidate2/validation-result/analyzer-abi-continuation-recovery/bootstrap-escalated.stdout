@@ -1,0 +1,28 @@
+Building for debugging...
+[0/5] Write sources
+[2/5] Write swift-version-59EEC9ECD79D199D.txt
+[4/10] Compiling GiftUIMacros CanvasWitnessLowering.swift
+[5/10] Emitting module GiftUIMacros
+[6/10] Compiling GiftUIMacros FiniteSourceLowering.swift
+[7/10] Compiling GiftUIMacros ObservableStateHostMacro.swift
+[8/10] Compiling GiftUIMacros GiftUIMacros.swift
+[8/10] Write Objects.LinkFileList
+[9/10] Linking GiftUIMacros-tool
+[11/26] Compiling GiftUI Color.swift
+[12/26] Compiling GiftUI DeclarativeView.swift
+[13/26] Compiling GiftUI Disabled.swift
+[14/26] Compiling GiftUI DrawingStyles.swift
+[15/26] Compiling GiftUI LayoutContainers.swift
+[16/26] Compiling GiftUI DrawingSurface.swift
+[17/26] Compiling GiftUI GiftUI.swift
+[18/26] Compiling GiftUI Button.swift
+[19/26] Compiling GiftUI Canvas.swift
+[20/26] Compiling GiftUI ObservableState.swift
+[21/26] Compiling GiftUI LayoutValues.swift
+[22/26] Compiling GiftUI LayoutModifiers.swift
+[23/26] Compiling GiftUI ActionHandler.swift
+[24/26] Compiling GiftUI BoundedText.swift
+[25/26] Compiling GiftUI StyleModifiers.swift
+[26/27] Emitting module GiftUI
+[27/27] Compiling GiftUI Text.swift
+Build of target: 'GiftUI' complete! (23.33s)

@@ -1,0 +1,36 @@
+{
+  "campaign_invocations": 0,
+  "compiler_identity_mismatch": [],
+  "frozen_input_count": 541,
+  "historical_campaign": "ENOSPC; deleted .build logs unavailable; P02 outcome unqualified",
+  "logs": {
+    "bootstrap-escalated.stderr": {
+      "bytes": 961,
+      "sha256": "12555daf62e420de7863f4ec61c91ed7a173e8865477daa46546602711f33320"
+    },
+    "bootstrap-escalated.stdout": {
+      "bytes": 1182,
+      "sha256": "eb2d986007f327cab9401f1065a216dd4b6d86461ba7e70be27c3377bbb6900a"
+    },
+    "bootstrap.stderr": {
+      "bytes": 1495,
+      "sha256": "4b3406b2708295edc6c115d2abb30701e946da3d466bf8a838ab7195e26a9d37"
+    },
+    "bootstrap.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "mismatch": [],
+  "missing": [],
+  "network_approved_bootstrap_exit": 0,
+  "postformat_freeze_commit": "1d8913c9",
+  "postformat_freeze_sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333",
+  "prerequisites_missing": [],
+  "restored_build_input_count": 87,
+  "sandbox_bootstrap_exit": 1,
+  "sdk": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+  "sdk_expected": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+  "source_candidate": "9bb82929",
+  "status": "PASS"
+}

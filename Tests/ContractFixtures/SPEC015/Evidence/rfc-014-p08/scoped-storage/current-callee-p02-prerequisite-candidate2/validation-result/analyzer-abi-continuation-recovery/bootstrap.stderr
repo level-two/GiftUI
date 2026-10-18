@@ -1,0 +1,12 @@
+swiftpm-command: /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift build --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool --configuration debug --target GiftUI --disable-sandbox --build-system native
+warning: /Users/eugene/Library/org.swift.swiftpm/configuration is not accessible or not writable, disabling user-level cache features.
+warning: /Users/eugene/Library/org.swift.swiftpm/security is not accessible or not writable, disabling user-level cache features.
+warning: /Users/eugene/Library/Caches/org.swift.swiftpm is not accessible or not writable, disabling user-level cache features.
+warning: 'giftui': failed storing manifest for 'giftui' in cache: attempt to write a readonly database
+Fetching https://github.com/swiftlang/swift-syntax.git
+Fetching https://github.com/swiftlang/swift-syntax.git
+error: Failed to clone repository https://github.com/swiftlang/swift-syntax.git:
+    Cloning into bare repository '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/repositories/swift-syntax-e1f983d3'...
+    fatal: unable to access 'https://github.com/swiftlang/swift-syntax.git/': Could not resolve host: github.com
+warning: '--build-system native' has been deprecated and will be removed in a future release; please report an issue at https://github.com/swiftlang/swift-package-manager/issues if you are unable to adopt the default build system.
+swiftpm-failure-class=compiler-or-test
