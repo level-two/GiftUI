@@ -30,3 +30,10 @@ prepared/staticvalidate PASS only: attach/detach exact current names/full record
 other48 targets unchanged,861frozen inputs, two output/cache path-only changes.
 Reuse lower+25/64privacy/eightindexes/interpreter/twocaptures; focused50selection
 thenconditionalfresh42SIL only after independent review. No source repair/budgetreset.
+
+[Independent selector review](p08-observable-callback-selector-continuation-review.md):
+READY for the focused continuation. Exact attach/detach mangled identities, source
+signatures, decoded headers/blocks and raw module prefixes agree; only targets
+42/43 change and the unique/nonzero-body/full-record gates remain intact. Frozen
+861 inputs/230 artifacts verify. Execute the full50 gate before fresh42 SIL; no
+new source allowance or current50/actualcallback/full safety/cold acceptance.
