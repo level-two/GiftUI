@@ -35,6 +35,9 @@ FAIL: three InteractionOwnedKeyState genericresolver calls remain body-opaque in
 SIL/physical index/matched object. All16 owner requirements/23known frontier refs
 recorded; no allocation claim or23edit authorization. STOP dependent safety/cold;
 source1db805a6 fixed, candidate1/1/no automatic repairs. P08/R07/T8.1 unaccepted.
+[Independent package review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-runtime-complete-pipeline-final-independent-review.md)
+confirms implemented root/helper PASS and next callee FAIL/STOP; grouped finite
+stage/access/lifetime review is next, with no new source/execution allowance.
 
 Retained [grouped candidate compile boundary](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-compile-result/README.md):
 source1db805a6, lower+all25 fresh owners PASS, zero failed/blocked;319 input hashes

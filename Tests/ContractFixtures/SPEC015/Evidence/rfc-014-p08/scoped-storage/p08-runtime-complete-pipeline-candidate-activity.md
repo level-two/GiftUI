@@ -1,5 +1,12 @@
 # RuntimeCompletePipeline grouped candidate — 2026-10-18
 
+Current [independent package disposition](p08-runtime-complete-pipeline-final-independent-review.md):
+reviewed source/root/helper PASS; compile25/privacy30/physical10 PASS retained.
+Concrete admission's three opaque key-resolver edges fail the next required gate:
+STOP, no dependent safety/cold, automatic repair or new allowance. Grouped finite
+stage/access/lifetime inventory is the read-only next boundary; P08 remains open.
+Earlier execution checkpoints below retain their recorded chronology.
+
 **Candidate1/1 fixed at1db805a6; fresh compile boundary PASS.**
 Lower+all25 owners PASS/zero failed or blocked;319 frozen inputs and output/log
 identities verify. [Compile receipt](runtime-complete-pipeline-compile-result/README.md).

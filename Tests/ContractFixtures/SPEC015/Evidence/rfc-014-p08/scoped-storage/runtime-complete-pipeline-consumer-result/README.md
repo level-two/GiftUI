@@ -49,6 +49,8 @@ one-symbol fix or widen raw source access. No sourcecandidate/repair authorizati
 is implied. All42/private-callee/State structural-borrow/no-copy/context allocation,
 full14-loan/Optional/lifetime/provenance/exclusivity/failure-cleanup/native384 safety,
 strict host-first cold/reuse and key-failure first-use remain unresolved.
-P08/R07/T8.1 and source overlay unaccepted. Independent boundary review is next.
+P08/R07/T8.1 and source overlay unaccepted.
+[Independent boundary review confirms root/helper PASS and remaining gate FAIL/STOP](../p08-runtime-complete-pipeline-final-independent-review.md).
+The next grouped stage inventory is read-only; no source or execution allowance.
 [Receipt](receipt.json) and [read-only extraction script](interpret.py) pin this scope;
 full input evidence is in the linked qualification archive.
