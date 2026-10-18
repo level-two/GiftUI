@@ -1,0 +1,62 @@
+{
+  "README.md": {
+    "bytes": 18455,
+    "sha256": "9d90d9d05767997b2b02a97788fe8770e6cb3acecd89b49df2de13a287620b15"
+  },
+  "baseline-inputs.json": {
+    "bytes": 86847,
+    "sha256": "db158e6b6b540f0ebbdb869c554b4012b1e42132e220548a934edd67fcaf90eb"
+  },
+  "controls.json": {
+    "bytes": 18461,
+    "sha256": "3cee9a943e1dc1a2e67c6319ac992a7f78c652e2e20772c50fa6c80792435553"
+  },
+  "diagnostic-static-validation.json": {
+    "bytes": 4842,
+    "sha256": "e3fbc99a572f00852c10cb998c6984eeb75773e711b80c449b09a4b9de51f8be"
+  },
+  "diagnostic-synthetic-cases.json": {
+    "bytes": 40358,
+    "sha256": "f79bc14bbfdb36cd20f9178fa6aaef1f299233533cec7b485cd006e2ee4b3c99"
+  },
+  "execute-proposal.py": {
+    "bytes": 24949,
+    "sha256": "96ac75eb4653830f4ec6288bb491f1a2a4acc9ada8c952e9ccb954ee9b2f579e"
+  },
+  "macro-objects.txt": {
+    "bytes": 493,
+    "sha256": "5456825362cff2d137a7b7cf98b8e6f5d6f40afe1c44dc7c976964dff0e3ceba"
+  },
+  "macro-outputs.json": {
+    "bytes": 3427,
+    "sha256": "9a8cde45959b9c8b3ec4fb9248f0eb35ab413336c4749b70ca41a6cb3aa4ec45"
+  },
+  "macro-stages.json": {
+    "bytes": 11919,
+    "sha256": "9d999a35191c2cec37234d749c860875ac1ddfba9009ea1a3e158151f3f27039"
+  },
+  "provenance.json": {
+    "bytes": 8134,
+    "sha256": "7943954bace95bf7efa94e8f4c8f0877d9067931c120c2e18b63cedbfd17de24"
+  },
+  "recipe.json": {
+    "bytes": 17444,
+    "sha256": "ea0ef0dcec29a5ca471ac1246f7fe787d6c8f0dad329014aac1c63e4018e47e9"
+  },
+  "scratch-sources.json": {
+    "bytes": 29930,
+    "sha256": "785599545b58e75b03cce6cabe5884f803519ebeba975b3057c1fb226bb9ea76"
+  },
+  "selectors.json": {
+    "bytes": 4489,
+    "sha256": "6c401231bf2c0dc4905b178df977ab3674506b9ef70d672af428af6a1898c17f"
+  },
+  "static-validation.json": {
+    "bytes": 7327,
+    "sha256": "2a87bf2de10319ab3278e5fa447023fbf1afea5d21766849e7086a7d1e8725b8"
+  },
+  "successor-static-validation.json": {
+    "bytes": 4850,
+    "sha256": "1c0aa7362ec362409d6c9d5d48f8aa7fc0c6eea34e13ecb7b3673968be2cc2ae"
+  }
+}
