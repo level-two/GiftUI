@@ -1,0 +1,549 @@
+[
+  {
+    "module": "GiftUIDrawing",
+    "name": "$s13GiftUIDrawing22withCanvasStagedValues8metadata7entries5table8capacity6limits_q0_AA0dE8MetadataVz_s11MutableSpanVyAA0dE5EntryVyx14CaptureStorageQy_GSgGzq_s6UInt16VAA06StaticD6LimitsVq0_AA0deF0Vyxq_G0A2UI12DrawingErrorOYKXEtA0_YKSQRzs8SendableRzAA0D10ValueTableR_r1_lF",
+    "label": "GiftUIDrawing.withCanvasStagedValues<A, B, C where A: Swift.Equatable, A: Swift.Sendable, B: GiftUIDrawing.CanvasValueTable>(metadata: inout GiftUIDrawing.CanvasStagedMetadata, entries: inout Swift.MutableSpan<GiftUIDrawing.CanvasStagedEntry<A, B.CaptureStorage>?>, table: B, capacity: Swift.UInt16, limits: GiftUIDrawing.StaticCanvasLimits, _: (GiftUIDrawing.CanvasStagedValues<A, B>) throws(GiftUI.DrawingError) -> C) throws(GiftUI.DrawingError) -> C",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIHostConfiguration",
+    "name": "$s23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVAARi_zRi0_zrlE8activateAA0G16ActivationResultOy0J7FailureQzGyF",
+    "label": "(extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.activate() -> GiftUIHostConfiguration.HostActivationResult<A.ActivationFailure>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIHostConfiguration",
+    "name": "$s23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVAARi_zRi0_zrlE8teardownyyF",
+    "label": "(extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.teardown() -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUILayout",
+    "name": "$s12GiftUILayout13publishLayout7summary9workspace4sinkAA0D6ResultOAA0D7SummaryV_xzq_ztAA0D9WorkspaceRzAA0dH4SinkR_8IdentityQy_ALRtzr0_lF",
+    "label": "GiftUILayout.publishLayout<A, B where A: GiftUILayout.LayoutWorkspace, B: GiftUILayout.LayoutResultSink, A.Identity == B.Identity>(summary: GiftUILayout.LayoutSummary, workspace: inout A, sink: inout B) -> GiftUILayout.LayoutResult",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore32ObservableCanvasInvocationSourceVAARi_zrlE06invokeE02at7context4sizeyq0__0A2UI15GraphicsContextVzAH4SizeVtAH12DrawingErrorOYKF",
+    "label": "(extension in GiftUIRuntimeCore):GiftUIRuntimeCore.ObservableCanvasInvocationSource< where A: ~Swift.Copyable>.invokeCanvas(at: C, context: inout GiftUI.GraphicsContext, size: GiftUI.Size) throws(GiftUI.DrawingError) -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO8dispatch_7records6target10actionType9operationAA0deF14DispatchResultO0A11UIExecution14CapturedActionVy8IdentityQzG_x0A17UIObservableState010ObservableU16RootTargetAccessVyq_q0_Gq1_m8MutationAQ0v5ModelZ0PQy_q1_XEt0A13UIInteraction0f9CommittedR4ViewRzAqVR_AQ0vU5ModelR_SQR0_s8SendableR0_0A2UI0A8UIActionR1_Ri_zRi0_zRi__r2_lFZ",
+    "label": "static GiftUIRuntimeCore.RuntimeRecordInteractionBridge.dispatch<A, B, C, D where A: GiftUIInteraction.InteractionCommittedActionView, B: GiftUIObservableState.ObservableModelMutation, B: GiftUIObservableState.ObservableStateModel, C: Swift.Equatable, C: Swift.Sendable, D: GiftUI.GiftUIAction, A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable>(_: GiftUIExecution.CapturedAction<A.Identity>, records: A, target: GiftUIObservableState.ObservableStateRootTargetAccess<B, C>, actionType: D.Type, operation: (D) -> B.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIRuntimeCore.RuntimeRecordInteractionDispatchResult",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO3run5ownerAA0deF6ResultOy12OwnerFailureQzGxz_tAA0defJ0RzRi_zRi0_zlFZ",
+    "label": "static GiftUIRuntimeCore.RuntimeCompletePipeline.run<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO24finishOfferWithoutCommit11operational5state11wakeReasons16frameDisposition11publication8acquired5ownerAA0deF6ResultOy12OwnerFailureQzG0A11UIExecution20ExecutionOperationalO_AQ23PresentationIntentStateOAQ0x4WakeN0VAQ012LogicalFrameP0OAA0dF11PublicationVAA0D14CleanupActionsVxztAA0defU0RzRi_zRi0_zlFZ",
+    "label": "static GiftUIRuntimeCore.RuntimeCompletePipeline.finishOfferWithoutCommit<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(operational: GiftUIExecution.ExecutionOperational, state: GiftUIExecution.PresentationIntentState, wakeReasons: GiftUIExecution.ExecutionWakeReasons, frameDisposition: GiftUIExecution.LogicalFrameDisposition, publication: GiftUIRuntimeCore.RuntimePipelinePublication, acquired: GiftUIRuntimeCore.RuntimeCleanupActions, owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO4fail11priorIntent2at7failure15mutationApplied11publication8acquired5ownerAA0deF6ResultOy12OwnerFailureQzG0A11UIExecution012PresentationI5StateO_AA0deF5StageOAQ08RunCycleS0OyAOGSbAA0dF11PublicationVSgAA0D14CleanupActionsVxztAA0defR0RzRi_zRi0_zlFZ",
+    "label": "static GiftUIRuntimeCore.RuntimeCompletePipeline.fail<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(priorIntent: GiftUIExecution.PresentationIntentState, at: GiftUIRuntimeCore.RuntimeCompletePipelineStage, failure: GiftUIExecution.RunCycleFailure<A.OwnerFailure>, mutationApplied: Swift.Bool, publication: GiftUIRuntimeCore.RuntimePipelinePublication?, acquired: GiftUIRuntimeCore.RuntimeCleanupActions, owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO7cleanup5after8acquired5owneryAA0D16CoordinatorStageO_AA0D14CleanupActionsVxztAA0deF5OwnerRzRi_zRi0_zlFZ",
+    "label": "static GiftUIRuntimeCore.RuntimeCompletePipeline.cleanup<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(after: GiftUIRuntimeCore.RuntimeCoordinatorStage, acquired: GiftUIRuntimeCore.RuntimeCleanupActions, owner: inout A) -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+    "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveDown(at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+    "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveMove(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+    "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveUp(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy8IdentityQzG0A2UI5PointV_tF",
+    "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveDown(at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy8IdentityQzG0A11UIExecution14CapturedActionVyAIG_0A2UI5PointVtF",
+    "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveMove(_: GiftUIExecution.CapturedAction<A.Identity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy8IdentityQzG0A11UIExecution14CapturedActionVyAIG_0A2UI5PointVtF",
+    "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveUp(_: GiftUIExecution.CapturedAction<A.Identity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13topmostRecord2atAA011BoundActionF0Vy8IdentityQzGSg0A2UI5PointV_tF",
+    "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.topmostRecord(at: GiftUI.Point) -> GiftUIInteraction.BoundActionRecord<A.Identity>?",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF",
+    "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.record(identity: A.Identity) -> GiftUIInteraction.BoundActionRecord<A.Identity>?",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE14capturedRecord_8containsAA011BoundActionF0Vy8IdentityQzGSg0A11UIExecution08CapturedI0VyAIG_0A2UI5PointVtF",
+    "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.capturedRecord(_: GiftUIExecution.CapturedAction<A.Identity>, contains: GiftUI.Point) -> GiftUIInteraction.BoundActionRecord<A.Identity>?",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIExecution",
+    "name": "$s15GiftUIExecution14CapturedActionV8identity10generationACyxGx_AA0D10GenerationVtcfC",
+    "label": "GiftUIExecution.CapturedAction.init(identity: A, generation: GiftUIExecution.ActionGeneration) -> GiftUIExecution.CapturedAction<A>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.modelKey(identity: B, ordinal: Swift.UInt16) -> GiftUI._GiftUIModelKey<A.Schema>?",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8matching_7ordinalSiSgq__s6UInt16VtF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.matching(_: B, ordinal: Swift.UInt16) -> Swift.Int?",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE3key2at0A2UI01_A10UIModelKeyVy6SchemaQzGSi_tF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.key(at: Swift.Int) -> GiftUI._GiftUIModelKey<A.Schema>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7belongs2toSbAA0d5ModelF0Vyx6SchemaQzG_tF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.belongs(to: GiftUIObservableState.ObservableModelScope<A, A.Schema>) -> Swift.Bool",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<A.GiftUIObservableState.ObservableStateModel.Schema>, mutation: A.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIObservableState.ObservableStateResult",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE11sharesOwner4withSbACyxq_G_tF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.sharesOwner(with: GiftUIObservableState.ObservableModelScope<A, B>) -> Swift.Bool",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6reporty0A2UI01_aB19ChangeReportOutcomeOAE01_A10UIModelKeyVyq_GAA0dcE0Rz6SchemaQzRs_rlF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.report< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(GiftUI._GiftUIModelKey<B>) -> GiftUI._GiftUIObservableChangeReportOutcome",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.endFrame() throws(GiftUIObservableState.ObservableStateError) -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE5phaseAA0dE9OwnershipV5PhaseOvg",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.phase.getter : GiftUIObservableState.ObservableModelOwnership.Phase",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_8mutation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, mutation: A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, operation: () -> A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE8evaluate_06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F0Qyd__AA0dC5ErrorOGqd___AG0e9ExpansionN0OSgyXEAK0A2UI01_A11UIFrameReadVyq0_GAR01_A15UIAccessFailureOYKXEt6DomainQyd__Rs0_AR4ViewRd__AJ_AXQYd__AYRSlF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableSemanticBodyBinding< where A: ~Swift.Copyable>.evaluate<A where C == A1.Domain, A1: GiftUI.View, A1.Domain == A1.Body.Domain>(_: A1, beforeBody: () -> GiftUISemanticCore.SemanticExpansionError?, body: (GiftUI._GiftUIFrameRead<C>) throws(GiftUI._GiftUIAccessFailure) -> A1.Body) -> GiftUISemanticCore.SemanticBodyEvaluation<A1.Body, GiftUIObservableState.ObservableStateError>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableSemanticBodyBinding< where A: ~Swift.Copyable>.evaluateStateful<A where C == A1.GiftUI.View.Domain, A1: GiftUI.View, A1: GiftUI._GiftUIObservableStateHost, A1.GiftUI.View.Domain == A1.GiftUI.View.Body.Domain>(_: A1, structuralIdentity: B, beforeBody: () -> GiftUISemanticCore.SemanticExpansionError?, body: (A1, GiftUI._GiftUIFrameRead<C>) throws(GiftUI._GiftUIAccessFailure) -> A1.GiftUI.View.Body) -> GiftUISemanticCore.SemanticBodyEvaluation<A1.GiftUI.View.Body, GiftUIObservableState.ObservableStateError>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState24ObservableModelOwnershipV7address3forAC7AddressV0A2UI01_A10UIModelKeyVyxG_tlF",
+    "label": "GiftUIObservableState.ObservableModelOwnership.address<A>(for: GiftUI._GiftUIModelKey<A>) -> GiftUIObservableState.ObservableModelOwnership.Address",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE9preserved_7ordinal5stateSbq__s6UInt16V0A2UI0C0Vy6SchemaQzGztAA0dC5ErrorOYKF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.preserved(_: B, ordinal: Swift.UInt16, state: inout GiftUI.State<A.Schema>) throws(GiftUIObservableState.ObservableStateError) -> Swift.Bool",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.install(_: B, ordinal: Swift.UInt16, state: inout GiftUI.State<A.Schema>, ticket: inout GiftUIObservableState.ObservableModelTicket<A.Schema>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE4bind_4sloty0A2UI0C0Vy6SchemaQzGz_SitAA0dC5ErrorOYKF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.bind(_: inout GiftUI.State<A.Schema>, slot: Swift.Int) throws(GiftUIObservableState.ObservableStateError) -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE14checkOperation9discoveryySb_tAA0dC5ErrorOYKF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.checkOperation(discovery: Swift.Bool) throws(GiftUIObservableState.ObservableStateError) -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE14validateTicketyyAA0deH0Vyq_GAA0dC5ErrorOYKF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.validateTicket(GiftUIObservableState.ObservableModelTicket<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE19validateAssociationyy0A2UI01_A10UIModelKeyVyq_GAA0dC5ErrorOYKF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.validateAssociation(GiftUI._GiftUIModelKey<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE17validateOperation9discoveryySb_tAA0dC5ErrorOYKF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.validateOperation(discovery: Swift.Bool) throws(GiftUIObservableState.ObservableStateError) -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE11requireStopyyF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.requireStop() -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6attach_4sink0A2UI01_A23UIObservationAttachmentVSgAF01_A10UIModelKeyVyq_G_AF01_aB10ChangeSinkVntAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.attach< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(_: GiftUI._GiftUIModelKey<B>, sink: __owned GiftUI._GiftUIObservableChangeSink) throws(GiftUIObservableState.ObservableStateError) -> GiftUI._GiftUIObservationAttachment?",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.detach< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(_: GiftUI._GiftUIModelKey<B>, attachment: GiftUI._GiftUIObservationAttachment) throws(GiftUIObservableState.ObservableStateError) -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE7releaseyyAA0dE6TicketVyq_GzAA0dC5ErrorOYKF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.release(inout GiftUIObservableState.ObservableModelTicket<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8registeryyAA0dE6TicketVyq_GAA0dC5ErrorOYKF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.register(GiftUIObservableState.ObservableModelTicket<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE3pinyy0A2UI01_A10UIModelKeyVyq_GAA0dC5ErrorOYKF",
+    "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.pin(GiftUI._GiftUIModelKey<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState21ObservableModelTicketV12requireClaimAA0dE9OwnershipV0H0VyAA0dC5ErrorOYKF",
+    "label": "GiftUIObservableState.ObservableModelTicket.requireClaim() throws(GiftUIObservableState.ObservableStateError) -> GiftUIObservableState.ObservableModelOwnership.Claim",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState21ObservableModelTicketV12endOwnershipyyF",
+    "label": "GiftUIObservableState.ObservableModelTicket.endOwnership() -> ()",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState21ObservableModelTicketV3key0A2UI01_A10UIModelKeyVyxGvg",
+    "label": "GiftUIObservableState.ObservableModelTicket.key.getter : GiftUI._GiftUIModelKey<A>",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIDrawing",
+    "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+    "label": "F13 actual generic boundary",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIDrawing",
+    "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+    "label": "F14 actual generic boundary",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIDrawing",
+    "name": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+    "label": "F15 actual generic boundary",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+    "label": "F05 actual generic boundary",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+    "label": "F06 actual generic boundary",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+    "label": "F19 actual generic boundary",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writerAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyAA0deF0OGt0A2UI01_ab9PrimitiveF0Rd__lFZ",
+    "label": "SemanticStandardPayloadCodec.primitive direct",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZ",
+    "label": "SemanticStandardPayloadCodec.primitive wrapping",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO8modifier_10chainIndex6writerAA0D14ExpansionErrorOSgqd___s6UInt16VAA0dF6WriterVyAA0deF0OGt0A2UI01_ab8ModifierF0Rd__lFZ",
+    "label": "SemanticStandardPayloadCodec.modifier direct",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO8modifier_10chainIndex6writer8wrappingAA0D14ExpansionErrorOSgqd___s6UInt16VAA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab8ModifierF0Rd__r0_lFZ",
+    "label": "SemanticStandardPayloadCodec.modifier wrapping",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO6action_6writerAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyAA0deF0OGt0A2UI0A8UIActionRd__lFZ",
+    "label": "SemanticStandardPayloadCodec.action direct",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO6action_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI0A8UIActionRd__r0_lFZ",
+    "label": "SemanticStandardPayloadCodec.action wrapping",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO7project_2asqd_0_qd___qd_0_mtr0_lFZ",
+    "label": "SemanticStandardPayloadCodec.project",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIDrawing",
+    "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO6action_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI0A8UIActionRd__lFZ",
+    "label": "CanvasSemanticPayloadCodec.action",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndex4textAA0D14ExpansionErrorOSgxn_AA0D13RuntimeRecordV4KindOs6UInt16Vs4SpanVys6UInt32VGtF",
+    "label": "SemanticPayloadWriter.store text",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndexAA0D14ExpansionErrorOSgxn_AA0D13RuntimeRecordV4KindOs6UInt16VtF",
+    "label": "SemanticPayloadWriter.store empty",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5store_4kind10chainIndex4text6limitsAA0D14ExpansionErrorOSgxn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGAA0dE6LimitsVtF",
+    "label": "SemanticRecordBankBuffers.store",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV4failyAA0D14ExpansionErrorOAFF",
+    "label": "SemanticRecordBankBuffers.fail",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV4bankyAA0dE11BankBuffersVyxGs5UInt8VF",
+    "label": "SemanticRecordStore.bank",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV17takePendingCanvasyyyAA0dE9ReferenceV_xztAA0D14ExpansionErrorOYKXEAHYKF",
+    "label": "SemanticRecordStore.takePendingCanvas",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "P08CounterTable",
+    "name": "$s15P08CounterTable0ab12SchemaCanvasC0V7payloadyAA0abdE6ValuesOyxGSgqd__6GiftUI01_H26UISemanticPrimitivePayloadRd__lFZ",
+    "label": "P08CounterSchemaCanvasTable.payload",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "P08CounterTable",
+    "name": "$s15P08CounterTable0ab12SchemaCanvasC0V6caseID3fors6UInt16VAA0abdE6ValuesOyxG_tFZ",
+    "label": "P08CounterSchemaCanvasTable.caseID",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "P08CounterTable",
+    "name": "$s15P08CounterTable0ab12SchemaCanvasC0V6invoke2id8captures7context4size4readys6UInt16V_AA0abdE6ValuesOyxG6GiftUI15GraphicsContextVzAO4SizeVAO01_N11UIFrameReadVyxGtAO12DrawingErrorOYKF",
+    "label": "P08CounterSchemaCanvasTable.invoke",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "P08CounterTable",
+    "name": "$s15P08CounterTable0ab12SchemaCanvasC0V16captureByteCount3fors6UInt16VSgAG_tF",
+    "label": "P08CounterSchemaCanvasTable.captureByteCount",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "P08CounterTable",
+    "name": "$s15P08CounterTable0ab12SchemaCanvasC0V17callableCaseCounts6UInt16Vvg",
+    "label": "P08CounterSchemaCanvasTable.callableCaseCount.getter",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUI",
+    "name": "$s6GiftUI6CanvasPAAE013_giftUIInvokeC07context4size4readyAA15GraphicsContextVz_AA4SizeVAA01_A11UIFrameReadVy6DomainQzGtAA12DrawingErrorOYKF",
+    "label": "Canvas._giftUIInvokeCanvas",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+    "label": "SemanticExpansionTraversal.stopped.getter",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+    "label": "RecordSink.publishExpansion(",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+    "label": "SemanticRecordStore.borrowedStore(",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+    "label": "SemanticRecordStore.publishCandidate(",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+    "label": "SemanticRecordStore.hasPendingCanvas(",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+    "label": "SemanticRecordStore.expansionBank(",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+    "label": "SemanticRecordBankBuffers.enter(",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+    "label": "SemanticRecordBankBuffers.appendRecord(",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV9reconcile4with6limitsAA0D14ExpansionErrorOSgACyxG_AA0dE6LimitsVtF",
+    "label": "SemanticRecordBankBuffers.reconcile(",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9publisheds5UInt8VSgvg",
+    "label": "SemanticRecordStore.published.getter",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9borrowingACyxGAEh_tcfC",
+    "label": "SemanticRecordStore.init(borrowing:)",
+    "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+    "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveCandidate(GiftUIInteraction.InteractionCandidateDisposition) -> ()"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE24candidateIsReadyForOfferSbvg",
+    "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.candidateIsReadyForOffer.getter : Swift.Bool"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF",
+    "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveCandidate(GiftUIInteraction.InteractionCandidateDisposition) -> ()"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+    "label": "GiftUIRuntimeCore.RuntimeActionGenerationAllocator.resolveCandidate(committed: Swift.Bool) -> ()"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "demangled_exact": "GiftUIRuntimeCore.RuntimeActionGenerationAllocator.adding(_: Swift.UInt32, to: Swift.UInt32) -> Swift.UInt32",
+    "label": "allocator adding exact source signature; capture fresh full mangled raw record"
+  }
+]

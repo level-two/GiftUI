@@ -1,0 +1,8 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/run.py": "050854e2cdad75f0cc588873eba9115ba9fe89b89a9c45983c1932b96b446b4e",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/prepared.json": "08890aee67783385b86806adb580a87b0da299599b0a3f0273dfe93480b3520b",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/input-freeze.json": "d3481b6add7001f34a969958531a279bb4b4e93651845a7a5a9bf5670054faa6",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/interpret.py": "61dd39344e3a36a488215680f9478194d95528a81a04d058712977c979bed848",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/required-body-targets.json": "463541d2d5e7f5cbfde7e4c164f08009d64f6fad830ecbfa86c6abe76aaa0c0f",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/boundaries-decode-prepared.json": "226dd52d16d183c335bb81398484af770c717ce8accd86264164ef49c2b54773"
+}

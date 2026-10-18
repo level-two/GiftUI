@@ -1,0 +1,32 @@
+{
+  "status": "STATIC VALIDATE PASS only",
+  "source_commit": "cb4b10f0",
+  "candidate": "ONE1/1 ZERO automatic SOURCE repairs; older budgets closed",
+  "command": [
+    "python3",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/run.py",
+    "--validate"
+  ],
+  "compiler_tests_decoder_runtime_executed": false,
+  "ast_parse_pass": true,
+  "macro_reuse": {
+    "original_input_freeze": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/macro/input-freeze.json",
+    "original_input_count": 279,
+    "original_input_freeze_sha256": "00cf35d457b76da7959f09f7b7d3ff78fb6b1116c7a9ed4abd4582cd6bf6d793",
+    "artifact_seal": "/Users/eugene/work/GiftUI/.build/contracts/p08-semantic-c-candidate1/macro-artifact-freeze.json",
+    "artifact_count": 49,
+    "artifact_seal_sha256": "ea01f7d536048745fc6324abbeb7f077ca0b59848d9ab0d652536814004f91ca",
+    "all_current_hashes_match": true
+  },
+  "counts": {
+    "owners": 25,
+    "variants": 4,
+    "privacy": 93,
+    "indexes": 11,
+    "physical_bodies": 92,
+    "host_sources": 42
+  },
+  "path_only_compile_recipe": "Existing sequential canonical registered DAG reused with source identity/output/import/cache paths updated; compiler flags and source lists preserved. Macro paths intentionally remain sealed prior outputs.",
+  "new_helper_identity": "No guessed mangled substitution: exact demangled signature, unique fresh full record, nonzero kind/positiveBB.",
+  "source_and_external_hashes_reverified": true
+}

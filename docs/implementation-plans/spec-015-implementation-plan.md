@@ -32,7 +32,8 @@ superseded_by: null
 Current grouped E/F source candidate1 ([source receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/source-edits.json)):
 reviewed23sites/fourfiles applied/targetformatted/exact inverse-token audit PASS.
 New ONE1/1 ZERO automatic SOURCE repairs; all historical activities remain closed.
-Fresh grouped validation recipe preparation only; no compiler/tests/runtime/P08 claim.
+[Combined recipe](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/README.md) staticvalidate PASS: qualifiedmacro17 reuse→fresh25/fourvariants→privacy93/index11/body92/current42.
+Independent source/recipe review before execution; no compiler/tests/runtime/P08 claim.
 
 Current [grouped E/F commit-resolution proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-grouped-inventory/README.md):
 23sites/fourfiles cover both remaining actual metadata boundaries and direct
