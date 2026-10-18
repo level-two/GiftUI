@@ -1,0 +1,78 @@
+155493:   %37 = struct_element_addr %34, #CounterControl.runtime // user: %38
+155494:   %38 = struct_element_addr %37, #CounterRuntimeControl.context // user: %39
+155495:   store %30 to %38                                // id: %39
+155496:   %40 = metatype $@thin CounterControl.Type       // user: %45
+155497:   %41 = struct $UnsafeMutablePointer<CounterControl> (%33) // user: %45
+155498:   %42 = struct_element_addr %0, #CounterPipelineOwner.runtimeClaim // user: %43
+155499:   %43 = load %42                                  // user: %45
+155500:   // function_ref static CounterControl.requireRuntimeClaim(at:_:)
+155501:   %44 = function_ref @$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ : $@convention(method) (UnsafeMutablePointer<CounterControl>, UInt64, @thin CounterControl.Type) -> () // user: %45
+155502:   %45 = apply %44(%41, %43, %40) : $@convention(method) (UnsafeMutablePointer<CounterControl>, UInt64, @thin CounterControl.Type) -> ()
+155503:   %46 = alloc_stack [lexical] [var_decl] $SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, let, name "productionSemantic" // users: %80, %188, %173, %168, %164, %180, %155, %62, %60, %58, %56
+155504:   %47 = struct_element_addr %0, #CounterPipelineOwner.semantic // users: %54, %52, %50, %48
+155505:   %48 = struct_element_addr %47, #SemanticRecordStore.a // user: %49
+155506:   %49 = load %48                                  // user: %57
+155507:   %50 = struct_element_addr %47, #SemanticRecordStore.b // user: %51
+155508:   %51 = load %50                                  // user: %59
+155509:   %52 = struct_element_addr %47, #SemanticRecordStore.limits // user: %53
+155510:   %53 = load %52                                  // user: %61
+155511:   %54 = struct_element_addr %47, #SemanticRecordStore.owner // user: %55
+155512:   %55 = load %54                                  // user: %63
+155513:   %56 = struct_element_addr %46, #SemanticRecordStore.a // user: %57
+155514:   store %49 to %56                                // id: %57
+155515:   %58 = struct_element_addr %46, #SemanticRecordStore.b // user: %59
+155516:   store %51 to %58                                // id: %59
+155517:   %60 = struct_element_addr %46, #SemanticRecordStore.limits // user: %61
+155518:   store %53 to %60                                // id: %61
+155519:   %62 = struct_element_addr %46, #SemanticRecordStore.owner // user: %63
+155520:   store %55 to %62                                // id: %63
+155521:   %64 = struct_element_addr %0, #CounterPipelineOwner.header // user: %65
+155522:   %65 = load %64                                  // user: %66
+155523:   switch_enum %65, case #Optional.some!enumelt: bb6, case #Optional.none!enumelt: bb7 // id: %66
+155524: 
+155525: // %67                                            // users: %102, %95, %68
+155526: bb6(%67 : $RenderPlanHeader):                     // Preds: bb5
+155527:   debug_value %67, let, name "productionHeader"   // id: %68
+155528:   %69 = struct_element_addr %0, #CounterPipelineOwner.limits // user: %70
+155529:   %70 = load %69                                  // users: %71, %96, %102
+155530:   debug_value %70, let, name "productionLimits"   // id: %71
+155531:   %72 = struct_element_addr %0, #CounterPipelineOwner.provenance // user: %73
+155532:   %73 = load %72                                  // user: %74
+155533:   switch_enum %73, case #Optional.some!enumelt: bb8, case #Optional.none!enumelt: bb9 // id: %74
+155534: 
+155535: bb7:                                              // Preds: bb5
+155536:   %75 = integer_literal $Builtin.Int1, -1         // user: %76
+155537:   cond_fail %75, "Unexpectedly found nil while unwrapping an Optional value" // id: %76
+155538:   unreachable                                     // id: %77
+155539: 
+155540: // %78                                            // users: %105, %97, %79
+155541: bb8(%78 : $FrameProvenance):                      // Preds: bb6
+155542:   debug_value %78, let, name "productionProvenance" // id: %79
+155543:   %80 = load %46                                  // users: %102, %94
+155544:   %81 = struct_element_addr %34, #CounterControl.runtimeEndpoint // users: %82, %88
+155545:   %82 = load %81                                  // user: %83
+155546:   switch_enum %82, case #Optional.some!enumelt: bb10, case #Optional.none!enumelt: bb11 // id: %83
+155547: 
+155548: bb9:                                              // Preds: bb6
+155549:   %84 = integer_literal $Builtin.Int1, -1         // user: %85
+155550:   cond_fail %84, "Unexpectedly found nil while unwrapping an Optional value" // id: %85
+155551:   unreachable                                     // id: %86
+155552: 
+155553: bb10(%87 : $CounterEndpoint):                     // Preds: bb8
+155554:   %88 = unchecked_inplace_enum_data_addr %81, #Optional.some!enumelt // users: %105, %91
+155555:   %89 = struct_element_addr %34, #CounterControl.streams // users: %102, %92
+155556:   %90 = struct_element_addr %0, #CounterPipelineOwner.geometry // users: %103, %102, %93
+155557:   debug_value %88, var, name "endpoint", argno 1, expr op_deref // id: %91
+155558:   debug_value %89, var, name "streams", argno 2, expr op_deref // id: %92
+155559:   debug_value [moveable_value_debuginfo] %90, var, name "geometry", argno 3, expr op_deref // id: %93
+155560:   debug_value %80, let, name "semantic", argno 4  // id: %94
+155561:   debug_value %67, let, name "header", argno 5    // id: %95
+155562:   debug_value %70, let, name "limits", argno 6    // id: %96
+155563:   debug_value %78, let, name "provenance", argno 7 // id: %97
+155564:   %98 = alloc_stack [var_decl] $Optional<RenderProductionError>, var, name "retained" // users: %108, %100, %111, %102
+155565:   %99 = enum $Optional<RenderProductionError>, #Optional.none!enumelt // user: %100
+155566:   store %99 to %98                                // id: %100
+155567:   // function_ref specialized closure #1 in counterProduceStoredEndpoint<A>(endpoint:streams:geometry:semantic:header:limits:provenance:)
+155568:   %101 = function_ref @$s17P08CounterRuntime28counterProduceStoredEndpoint33_F69033F4DB287CAFB71641A3EEA15F2ALL8endpoint7streams8geometry8semantic6header6limits10provenanceAA0B21ProductionObservationVAA0bG0Vz_Sizxz18GiftUISemanticCore19SemanticRecordStoreVy0X9UIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGG0x8UIRenderZ016RenderPlanHeaderV0x9UIRuntimeZ00C13ProfileLimitsV0X11UIExecution15FrameProvenanceVtAA0B8GeometryRzRi_zRi0_zlFA7_17FrameStreamResultOAA0B19NativeRasterAdapterVzXEfU_AA06StaticB8GeometryV_Tg5 : $@convention(thin) (@inout CounterNativeRasterAdapter, @inout_aliasable Int, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, @inout_aliasable StaticCounterGeometry, RenderPlanHeader, RuntimeProfileLimits, @inout_aliasable Optional<RenderProductionError>) -> FrameStreamResult // user: %102
+155569:   %102 = partial_apply [callee_guaranteed] [on_stack] %101(%89, %80, %90, %67, %70, %98) : $@convention(thin) (@inout CounterNativeRasterAdapter, @inout_aliasable Int, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, @inout_aliasable StaticCounterGeometry, RenderPlanHeader, RuntimeProfileLimits, @inout_aliasable Optional<RenderProductionError>) -> FrameStreamResult // users: %106, %103
+155570:   %103 = mark_dependence [nonescaping] %102 on %90 // user: %105

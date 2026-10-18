@@ -1,0 +1,27 @@
+{
+  "source_commit": "f2325b85",
+  "continuation_freeze_commit": "57a68926",
+  "sil": {
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-semantic-c-escape-continuation1/actual-host.sil",
+    "bytes": 61999526,
+    "sha256": "cd312eb53841f082f1bbf2a85361f68638f875ff112415a1f61718ba29cb576d"
+  },
+  "source_after_hashes_verified": {
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "c4a737e72288794967ca9892a2e515619c48d0ccecd86ad1a579da8f9ad75d60",
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": "e610496954dce3023b833fc07c785498025bf0e96372ab9430d8f7b5fc12c4a1",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": "4ffc05499e80646af0fb41bbe52f826b232a3bc8f3cb8654295a481819d9717c",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "4b4b80e91880466ab3daecff7e1a3db2c1e966af4b1a76fd3fc1f334ef3c0feb"
+  },
+  "selected_C_roots": 8,
+  "original_frontier": "21finite selected body boundaries resolved/2E-Fcurrentmetadata boundaries",
+  "read_only_provider_captures": 3,
+  "not_run": [
+    "source mutation",
+    "compiler",
+    "tests",
+    "decoder-module",
+    "runtime"
+  ],
+  "protected_external5_pycache": "hashesunchanged/unstaged",
+  "budget": "ONE1/1fixed/ZEROautomaticSOURCErepairs/oldbudgetsunchanged"
+}

@@ -1,0 +1,15 @@
+00000000000478bc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA06StaticB8GeometryV_AA0L30TwoInteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAA0lno9CommittedQ0VyANGAA0lno3HitQ0VyANGTg5>:
+		0000000000047a14:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF
+   47a18:      	mov	w20, #0x112c            ; =4396
+   47a1c:      	adrp	x0, 0x47000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE15offerAndProduce17GiftUIRuntimeCore0cD11OfferResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x2ec>
+		0000000000047a1c:  ARM64_RELOC_PAGE21	_$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorVy0a10UISemanticC024SemanticCompleteIdentityVGMD
+   47a20:      	add	x0, x0, #0x0
+		0000000000047a20:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorVy0a10UISemanticC024SemanticCompleteIdentityVGMD
+   47a24:      	bl	0x47a24 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA06StaticB8GeometryV_AA0L30TwoInteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAA0lno9CommittedQ0VyANGAA0lno3HitQ0VyANGTg5+0x168>
+		0000000000047a24:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+   47a28:      	mov	x1, x0
+   47a2c:      	add	x20, x19, x20
+   47a30:      	mov	w0, #0x1                ; =1
+   47a34:      	bl	0x47a34 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA06StaticB8GeometryV_AA0L30TwoInteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAA0lno9CommittedQ0VyANGAA0lno3HitQ0VyANGTg5+0x178>
+		0000000000047a34:  ARM64_RELOC_BRANCH26	_$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF
+   47a38:      	strb	wzr, [x23, #0xaa7]

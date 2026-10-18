@@ -1,0 +1,8 @@
+0000000000006db4 <_$s17GiftUIInteraction16InteractionStateVMa>:
+    6db4:      	adrp	x2, 0x6000 <_$s17GiftUIInteraction16InteractionStateVyxq_q0_GAA0C15GestureResolverAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlAaEP11resolveMove_2atAA07PointerE7OutcomeOy8IdentityQzG0A11UIExecution14CapturedActionVyALG_0A2UI5PointVtFTW+0x310>
+		0000000000006db4:  ARM64_RELOC_PAGE21	_$s17GiftUIInteraction16InteractionStateVMn
+    6db8:      	add	x2, x2, #0x0
+		0000000000006db8:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIInteraction16InteractionStateVMn
+    6dbc:      	b	0x6dbc <_$s17GiftUIInteraction16InteractionStateVMa+0x8>
+		0000000000006dbc:  ARM64_RELOC_BRANCH26	_swift_getGenericMetadata
+

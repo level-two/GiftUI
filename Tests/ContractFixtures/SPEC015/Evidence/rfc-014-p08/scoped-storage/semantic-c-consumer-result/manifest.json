@@ -1,0 +1,94 @@
+{
+  "README.md": {
+    "bytes": 4181,
+    "sha256": "a38ea3198bd1ee8a37f354d434e8629b51752989e9fb4953da48552ad6a3e4e1"
+  },
+  "actual-static-c-calls.json": {
+    "bytes": 11949,
+    "sha256": "04943749af367ac793e823156c77ea828c7d8e8dabb976a9e03ddbe808fe827d"
+  },
+  "borrowed-store-actual.sil.txt": {
+    "bytes": 7488,
+    "sha256": "1d249cfed8d8b18f58b94b8a7ef8a4e49617efd7810f6a1dafaeb3f2519bbc41"
+  },
+  "c-specializations.json": {
+    "bytes": 6710,
+    "sha256": "3aa50e40a64be557a2c18f615a3066741aecc636431fc48ca403aa9a89d47f3a"
+  },
+  "c-specializations.sil.txt": {
+    "bytes": 100340,
+    "sha256": "91ea669c34cbbead379e1f4b164b5b5c0b34787eed9c714f29aff771a2489a9b"
+  },
+  "clear-reader-deferral.sil.txt": {
+    "bytes": 20489,
+    "sha256": "6c450260cf9a1db3ec4f34478f6627f5c9003c62c7fe826e930c493791930479"
+  },
+  "frontier23-current.json": {
+    "bytes": 90036,
+    "sha256": "85719f2bdba5082c294f122c928a341d999fc676a6a5137e5b0c7e91a71b7de0"
+  },
+  "generation-matching-host-object.txt": {
+    "bytes": 2168,
+    "sha256": "1fca43c46183ee249dff99334805ef8270795953ad44e650a13e0d0644d3700c"
+  },
+  "generation-resolve.object.txt": {
+    "bytes": 511,
+    "sha256": "a3928211bf07ebc2acb9b891eb2fab7e1eaa282499c25a4bfa4b9b22d0dc8d8d"
+  },
+  "interaction-actual-cleanup.sil.txt": {
+    "bytes": 3541,
+    "sha256": "bd52a920d547b9c116a711c2b1d98c06b05572de228609a98ce46c95458451db"
+  },
+  "interaction-matching-host-object.txt": {
+    "bytes": 835,
+    "sha256": "bfc4b14b5bf58b48a27b54fc200dfd507ed91eced5176d8b6cda550e0b5b7b2e"
+  },
+  "interaction-resolve.object.txt": {
+    "bytes": 2981,
+    "sha256": "22cf626cdcee388f2bae1ead9edaf29b8150ae473291e7368f6a40c94daae181"
+  },
+  "interaction-root-metadata-helper.object.txt": {
+    "bytes": 294,
+    "sha256": "f5ba088868709a64c8d5e68cfafc3b93dae424620c1906117c392a1720d76c45"
+  },
+  "interaction-state-metadata-accessor.object.txt": {
+    "bytes": 664,
+    "sha256": "8e8fd9203060a59c73bc85634b473dfd2206cd139a3033d6e8e3f57404d56729"
+  },
+  "interaction-state-resolve.object.txt": {
+    "bytes": 3703,
+    "sha256": "b2ec33f33526cbf4b434a4630391b85bed684fa48080751ca57a793db3724b10"
+  },
+  "next-boundary.json": {
+    "bytes": 12168,
+    "sha256": "abf0480df84af55a30a55cd5e60d6fa62aa4b38ded3d33c41b73d91e1ea52edd"
+  },
+  "path-init.object.txt": {
+    "bytes": 281,
+    "sha256": "fe62edc1bf436c904ca566b29a0cb4f95f316df5308a86019224597abf1f8719"
+  },
+  "path-valid.object.txt": {
+    "bytes": 860,
+    "sha256": "e0654354c79ab4db92f229bc5c9c4a6162269765078121ae58f29454fc7b46f0"
+  },
+  "provider-archive-manifest.json": {
+    "bytes": 1110,
+    "sha256": "97d9984ce8e0002cb0c338097d526abe93d4e208108a0d61014ea9e35bed8a4a"
+  },
+  "read-only-provider-captures.json": {
+    "bytes": 2208,
+    "sha256": "50cea2748e6006ee7d0d9fbf7b7976561776d77cabb8de68a01dd37f2bbdd710"
+  },
+  "read-only-provider-disassembly.tar.gz": {
+    "bytes": 711271,
+    "sha256": "6ad07b28749f59ead685e10f36a73405f7e69bacdab4e44c388ac5999aa0adc6"
+  },
+  "receipt.json": {
+    "bytes": 1270,
+    "sha256": "4a6ec8e0a4e30d9ba97012450fb5855dc420fe192a1f56c4a4042d535357f63c"
+  },
+  "record-init.object.txt": {
+    "bytes": 257,
+    "sha256": "d4049329c9c239eea42a4baff965c5b32329d83a4b12a537f44227c7ec0bd932"
+  }
+}

@@ -1,0 +1,13 @@
+00000000000046cc <_$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF>:
+    46cc:      	tst	w0, #0x1
+    46d0:      	mov	w8, #0x10               ; =16
+    46d4:      	mov	w9, #0xc                ; =12
+    46d8:      	csel	x8, x9, x8, ne
+    46dc:      	ldr	w9, [x20, x8]
+    46e0:      	ldr	w10, [x20, #0x8]
+    46e4:      	adds	w9, w9, w10
+    46e8:      	csinv	w9, w9, wzr, lo
+    46ec:      	str	w9, [x20, x8]
+    46f0:      	str	wzr, [x20, #0x8]
+    46f4:      	ret
+

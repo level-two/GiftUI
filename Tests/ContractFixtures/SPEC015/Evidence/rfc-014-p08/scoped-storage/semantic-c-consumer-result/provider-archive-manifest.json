@@ -1,0 +1,35 @@
+{
+  "archive_sha256": "6ad07b28749f59ead685e10f36a73405f7e69bacdab4e44c388ac5999aa0adc6",
+  "members": [
+    {
+      "path": "GiftUIRuntimeCore-provider.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "GiftUIRuntimeCore-provider.txt",
+      "bytes": 1900850,
+      "sha256": "c72ed87547fc09852e4a5c37431586def17f41b5fe2e059e56e458ac5a9db801"
+    },
+    {
+      "path": "GiftUISemanticCore-provider.txt",
+      "bytes": 4110836,
+      "sha256": "728b319fc57e19b79e26ae5ee3c6d94269b23943efe68a1ef1e3b76ee0bf400e"
+    },
+    {
+      "path": "GiftUIInteraction-provider.txt",
+      "bytes": 885388,
+      "sha256": "038e36d827bff95ec3593b98ecaee3c135e0d986ad5c55bba7a220ab3d79f011"
+    },
+    {
+      "path": "GiftUIInteraction-provider.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "GiftUISemanticCore-provider.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

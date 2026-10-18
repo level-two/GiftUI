@@ -1,0 +1,65 @@
+[
+  {
+    "line": 129451,
+    "owner": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+    "callee": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5",
+    "reference": "%289 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (UInt8, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>> // user: %290",
+    "next": "%290 = apply %289(%276, %73) : $@convention(method) (UInt8, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>> // user: %291"
+  },
+  {
+    "line": 129634,
+    "owner": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+    "callee": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvgAA15RecordWorkspaceVy17P08CounterRuntime0K5RolesO0A9UIDrawing06CanvasD7PayloadOy0jK5Table0jk6SchemaO6ValuesOyAG0K6DomainOGGG_AA0H4SinkVyAJ0odP5CodecOyAiM0jkroQ0VyAQGGG0A17UIObservableState010ObservableD11BodyBindingVyAG0K10OwnedModelVAA0D16CompleteIdentityVAQGTg5",
+    "reference": "%442 = function_ref @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvgAA15RecordWorkspaceVy17P08CounterRuntime0K5RolesO0A9UIDrawing06CanvasD7PayloadOy0jK5Table0jk6SchemaO6ValuesOyAG0K6DomainOGGG_AA0H4SinkVyAJ0odP5CodecOyAiM0jkroQ0VyAQGGG0A17UIObservableState010ObservableD11BodyBindingVyAG0K10OwnedModelVAA0D16CompleteIdentityVAQGTg5 : $@convention(method) (@guaranteed SemanticExpansionTraversal<RecordWorkspace<CounterRoles, CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>, ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>>) -> Bool // users: %2397, %2390, %2370, %2218, %2197, %2027, %2039, %2031, %2017, %1849, %1831, %1727, %1621, %1613, %1597, %1382, %1369, %1318, %1310, %1294, %1109, %1083, %872, %864, %854, %700, %686, %446",
+    "next": "%443 = load %414                                // users: %444, %445, %454, %446"
+  },
+  {
+    "line": 129791,
+    "owner": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+    "callee": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF0A9UIDrawing06CanvasH12PayloadCodecOy17P08CounterRuntime0O5RolesO0nO5Table0no6SchemakR0VyAJ0O6DomainOGG_Tg5",
+    "reference": "%537 = function_ref @$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF0A9UIDrawing06CanvasH12PayloadCodecOy17P08CounterRuntime0O5RolesO0nO5Table0no6SchemakR0VyAJ0O6DomainOGG_Tg5 : $@convention(method) (SemanticExpansionSummary, @inout RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>) -> Bool // user: %538",
+    "next": "%538 = apply %537(%536, %305) : $@convention(method) (SemanticExpansionSummary, @inout RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>) -> Bool // user: %539"
+  },
+  {
+    "line": 129885,
+    "owner": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+    "callee": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0rs6SchemaP6ValuesOy0rS7Runtime0S6DomainOGG_Tg5",
+    "reference": "%601 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0rs6SchemaP6ValuesOy0rS7Runtime0S6DomainOGG_Tg5 : $@convention(method) (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> // users: %752, %602",
+    "next": "%602 = apply %601(%596, %600, %598) : $@convention(method) (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> // users: %606, %603"
+  },
+  {
+    "line": 130263,
+    "owner": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+    "callee": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0pq6SchemaN6ValuesOy0pQ7Runtime0Q6DomainOGG_Tg5",
+    "reference": "%849 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0pq6SchemaN6ValuesOy0pQ7Runtime0Q6DomainOGG_Tg5 : $@convention(method) (SemanticRecordLimits, SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> // user: %850",
+    "next": "%850 = apply %849(%848, %846) : $@convention(method) (SemanticRecordLimits, SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> // user: %851"
+  },
+  {
+    "line": 149286,
+    "owner": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE13resolveLayout17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0N30TwoInteractionCandidateStorageVy0h10UISemanticJ024SemanticCompleteIdentityVGAA0npq9CommittedS0VyAQGAA0npq3HitS0VyAQGTg5",
+    "callee": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF0A9UIDrawing0iD7PayloadOy15P08CounterTable0no6SchemaI6ValuesOy0nO7Runtime0O6DomainOGG_Tg5",
+    "reference": "%28 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF0A9UIDrawing0iD7PayloadOy15P08CounterTable0no6SchemaI6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Bool // user: %29",
+    "next": "%29 = apply %28(%27, %11) : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Bool // user: %30"
+  },
+  {
+    "line": 150451,
+    "owner": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE23preflightCombinedRender17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0O30TwoInteractionCandidateStorageVy0i10UISemanticK024SemanticCompleteIdentityVGAA0oqr9CommittedT0VyAQGAA0oqr3HitT0VyAQGTg5",
+    "callee": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF0A9UIDrawing0iD7PayloadOy15P08CounterTable0no6SchemaI6ValuesOy0nO7Runtime0O6DomainOGG_Tg5",
+    "reference": "%28 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF0A9UIDrawing0iD7PayloadOy15P08CounterTable0no6SchemaI6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Bool // user: %29",
+    "next": "%29 = apply %28(%27, %11) : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Bool // user: %30"
+  },
+  {
+    "line": 151206,
+    "owner": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0o3TwogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAA0oqg9CommittedR0VyAQGAA0oqg3HitR0VyAQGTg5",
+    "callee": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF0A9UIDrawing0iD7PayloadOy15P08CounterTable0no6SchemaI6ValuesOy0nO7Runtime0O6DomainOGG_Tg5",
+    "reference": "%75 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF0A9UIDrawing0iD7PayloadOy15P08CounterTable0no6SchemaI6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Bool // user: %76",
+    "next": "%76 = apply %75(%74, %60) : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Bool // user: %77"
+  },
+  {
+    "line": 154027,
+    "owner": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0q14TwoInteractionJ7StorageVy0k10UISemanticM00G16CompleteIdentityVGAA0qst9CommittedU0VyAQGAA0qst3HitU0VyAQGTg5",
+    "callee": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5",
+    "reference": "%85 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> @error SemanticExpansionError // user: %86",
+    "next": "try_apply %85(%84) : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> @error SemanticExpansionError, normal bb16, error bb17 // id: %86"
+  }
+]

@@ -1,0 +1,7 @@
+0000000000009f50 <_OUTLINED_FUNCTION_15>:
+    9f50:      	str	q0, [sp, #0x20]
+    9f54:      	mov	x1, sp
+    9f58:      	mov	x0, #0x0                ; =0
+    9f5c:      	b	0x9f5c <_OUTLINED_FUNCTION_15+0xc>
+		0000000000009f5c:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction16InteractionStateVMa
+

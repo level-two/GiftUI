@@ -70,3 +70,9 @@ strict diagnostics unchanged; no lifetime/source acceptance or repair allowance.
 positive0errors/negative1exactEscapable; SILexit0/61,999,526bytes/1305inputsverified,
 prior87/72andsealedprerequisites retained. No source/repeat/repairreset; actual C
 consumer/cost/fullsafety/strictcold/P08 remain unqualified.
+
+[Actual C consumer interpretation](semantic-c-consumer-result/README.md): all8C roots
+concretize/F08metadata removed; publication/reconcile/borrow/clear/readerdeferral
+finiteproof preserved.21selected boundaries resolved; E20genericstorage metadata/
+dispatch and F21caller instantiation remain actualcost/codegen blockers (callee
+F21scalar, no allocationclaim). No source or newbudget, safety/cold/P08 unqualified.

@@ -1,0 +1,47 @@
+[
+  {
+    "module": "GiftUISemanticCore",
+    "command": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-objdump-21",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-semantic-c-candidate1/compile/owners/GiftUISemanticCore/GiftUISemanticCore.o"
+    ],
+    "object_sha256": "bbcc682c6bf040e3a152b603936e765fae80be10345178b79fca907d8ea755d2",
+    "tool_sha256": "d41e800c8ce1380a775ad42dbdbba85c022c53882af806bb5207fc928b188786",
+    "exit": 0,
+    "stdout_sha256": "728b319fc57e19b79e26ae5ee3c6d94269b23943efe68a1ef1e3b76ee0bf400e",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "command": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-objdump-21",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-semantic-c-candidate1/compile/owners/GiftUIInteraction/GiftUIInteraction.o"
+    ],
+    "object_sha256": "f10ef4747112a5b3f880cd577ad1843d2880fe97bc1b25ff8c0a47df20fe2b2d",
+    "tool_sha256": "d41e800c8ce1380a775ad42dbdbba85c022c53882af806bb5207fc928b188786",
+    "exit": 0,
+    "stdout_sha256": "038e36d827bff95ec3593b98ecaee3c135e0d986ad5c55bba7a220ab3d79f011",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "command": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-objdump-21",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-semantic-c-candidate1/compile/owners/GiftUIRuntimeCore/GiftUIRuntimeCore.o"
+    ],
+    "object_sha256": "f990a5072ce45aa7e2241ab3b39f28d90f89e168cbaafb02a58b74dce8aeb574",
+    "tool_sha256": "d41e800c8ce1380a775ad42dbdbba85c022c53882af806bb5207fc928b188786",
+    "exit": 0,
+    "stdout_sha256": "c72ed87547fc09852e4a5c37431586def17f41b5fe2e059e56e458ac5a9db801",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

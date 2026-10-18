@@ -1,0 +1,65 @@
+[
+  {
+    "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5",
+    "start": 154586,
+    "end": 154716,
+    "header": "sil shared @$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> @error SemanticExpansionError {",
+    "blocks": 19
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5",
+    "start": 591637,
+    "end": 591695,
+    "header": "sil shared @$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (UInt8, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>> {",
+    "blocks": 9
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvgAA15RecordWorkspaceVy17P08CounterRuntime0K5RolesO0A9UIDrawing06CanvasD7PayloadOy0jK5Table0jk6SchemaO6ValuesOyAG0K6DomainOGGG_AA0H4SinkVyAJ0odP5CodecOyAiM0jkroQ0VyAQGGG0A17UIObservableState010ObservableD11BodyBindingVyAG0K10OwnedModelVAA0D16CompleteIdentityVAQGTg5",
+    "start": 591705,
+    "end": 591739,
+    "header": "sil shared @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvgAA15RecordWorkspaceVy17P08CounterRuntime0K5RolesO0A9UIDrawing06CanvasD7PayloadOy0jK5Table0jk6SchemaO6ValuesOyAG0K6DomainOGGG_AA0H4SinkVyAJ0odP5CodecOyAiM0jkroQ0VyAQGGG0A17UIObservableState010ObservableD11BodyBindingVyAG0K10OwnedModelVAA0D16CompleteIdentityVAQGTg5 : $@convention(method) (@guaranteed SemanticExpansionTraversal<RecordWorkspace<CounterRoles, CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>, ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>>) -> Bool {",
+    "blocks": 7
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF0A9UIDrawing06CanvasH12PayloadCodecOy17P08CounterRuntime0O5RolesO0nO5Table0no6SchemakR0VyAJ0O6DomainOGG_Tg5",
+    "start": 591938,
+    "end": 592050,
+    "header": "sil shared @$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF0A9UIDrawing06CanvasH12PayloadCodecOy17P08CounterRuntime0O5RolesO0nO5Table0no6SchemakR0VyAJ0O6DomainOGG_Tg5 : $@convention(method) (SemanticExpansionSummary, @inout RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>) -> Bool {",
+    "blocks": 17
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0rs6SchemaP6ValuesOy0rS7Runtime0S6DomainOGG_Tg5",
+    "start": 592422,
+    "end": 592861,
+    "header": "sil shared @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0rs6SchemaP6ValuesOy0rS7Runtime0S6DomainOGG_Tg5 : $@convention(method) (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> {",
+    "blocks": 64
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0pq6SchemaN6ValuesOy0pQ7Runtime0Q6DomainOGG_Tg5",
+    "start": 592865,
+    "end": 593115,
+    "header": "sil shared @$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0pq6SchemaN6ValuesOy0pQ7Runtime0Q6DomainOGG_Tg5 : $@convention(method) (SemanticRecordLimits, SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> {",
+    "blocks": 33
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF0A9UIDrawing0iD7PayloadOy15P08CounterTable0no6SchemaI6ValuesOy0nO7Runtime0O6DomainOGG_Tg5",
+    "start": 593183,
+    "end": 593253,
+    "header": "sil shared @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF0A9UIDrawing0iD7PayloadOy15P08CounterTable0no6SchemaI6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Bool {",
+    "blocks": 7
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9publisheds5UInt8VSgvg0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0lm6SchemaJ6ValuesOy0lM7Runtime0M6DomainOGG_Tg5",
+    "start": 593457,
+    "end": 593517,
+    "header": "sil shared @$s18GiftUISemanticCore19SemanticRecordStoreV9publisheds5UInt8VSgvg0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0lm6SchemaJ6ValuesOy0lM7Runtime0M6DomainOGG_Tg5 : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<UInt8> {",
+    "blocks": 6
+  },
+  {
+    "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV9reconcile4with6limitsAA0D14ExpansionErrorOSgACyxG_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0qr6SchemaO6ValuesOy0qR7Runtime0R6DomainOGG_Tg5",
+    "start": 593521,
+    "end": 593823,
+    "header": "sil shared @$s18GiftUISemanticCore25SemanticRecordBankBuffersV9reconcile4with6limitsAA0D14ExpansionErrorOSgACyxG_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0qr6SchemaO6ValuesOy0qR7Runtime0R6DomainOGG_Tg5 : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, SemanticRecordLimits, SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> {",
+    "blocks": 43
+  }
+]

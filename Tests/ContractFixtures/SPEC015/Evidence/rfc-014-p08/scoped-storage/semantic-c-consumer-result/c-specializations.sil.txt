@@ -1,0 +1,1481 @@
+// ORIGINAL LINES 154587–154717
+sil shared @$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> @error SemanticExpansionError {
+[%0: noescape **, read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0                                             // users: %11, %9, %43, %41, %33, %15, %2, %46
+bb0(%0 : $SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>):
+  // function_ref specialized SemanticRecordStore.candidate.getter
+  %1 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0lm6SchemaJ6ValuesOy0lM7Runtime0M6DomainOGG_Tg5 : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<UInt8> // user: %2
+  %2 = apply %1(%0) : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<UInt8> // user: %3
+  switch_enum %2, case #Optional.some!enumelt: bb1, case #Optional.none!enumelt: bb5 // id: %3
+
+// %4                                             // user: %6
+bb1(%4 : $UInt8):                                 // Preds: bb0
+  %5 = integer_literal $Builtin.Int8, 0           // users: %39, %7
+  %6 = struct_extract %4, #UInt8._value           // user: %7
+  %7 = builtin "cmp_eq_Int8"(%6, %5) : $Builtin.Int1 // user: %8
+  cond_br %7, bb2, bb3                            // id: %8
+
+bb2:                                              // Preds: bb1
+  %9 = struct_extract %0, #SemanticRecordStore.a  // user: %10
+  br bb4(%9)                                      // id: %10
+
+bb3:                                              // Preds: bb1
+  %11 = struct_extract %0, #SemanticRecordStore.b // user: %12
+  br bb4(%11)                                     // id: %12
+
+// %13                                            // users: %48, %15, %74
+bb4(%13 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb3 bb2
+  // function_ref specialized SemanticRecordStore.hasPendingCanvas(_:)
+  %14 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF0A9UIDrawing0iD7PayloadOy15P08CounterTable0no6SchemaI6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Bool // user: %15
+  %15 = apply %14(%13, %0) : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Bool // user: %16
+  %16 = struct_extract %15, #Bool._value          // user: %17
+  cond_br %16, bb6, bb7                           // id: %17
+
+bb5:                                              // Preds: bb0
+  %18 = enum $SemanticExpansionError, #SemanticExpansionError.invariantViolation!enumelt // users: %20, %24
+  %19 = alloc_stack $SemanticExpansionError       // users: %20, %23, %22
+  store %18 to %19                                // id: %20
+  // function_ref swift_willThrowTypedImpl
+  %21 = function_ref @swift_willThrowTypedImpl : $@convention(thin) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> () // user: %22
+  %22 = apply %21<SemanticExpansionError>(%19) : $@convention(thin) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> ()
+  dealloc_stack %19                               // id: %23
+  br bb8(%18)                                     // id: %24
+
+bb6:                                              // Preds: bb4
+  %25 = enum $SemanticExpansionError, #SemanticExpansionError.invariantViolation!enumelt // users: %27, %31
+  %26 = alloc_stack $SemanticExpansionError       // users: %27, %30, %29
+  store %25 to %26                                // id: %27
+  // function_ref swift_willThrowTypedImpl
+  %28 = function_ref @swift_willThrowTypedImpl : $@convention(thin) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> () // user: %29
+  %29 = apply %28<SemanticExpansionError>(%26) : $@convention(thin) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> ()
+  dealloc_stack %26                               // id: %30
+  br bb8(%25)                                     // id: %31
+
+bb7:                                              // Preds: bb4
+  // function_ref specialized SemanticRecordStore.published.getter
+  %32 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV9publisheds5UInt8VSgvg0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0lm6SchemaJ6ValuesOy0lM7Runtime0M6DomainOGG_Tg5 : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<UInt8> // user: %33
+  %33 = apply %32(%0) : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<UInt8> // user: %34
+  switch_enum %33, case #Optional.some!enumelt: bb9, case #Optional.none!enumelt: bb13 // id: %34
+
+// %35                                            // user: %36
+bb8(%35 : $SemanticExpansionError):               // Preds: bb5 bb15 bb6
+  throw %35                                       // id: %36
+
+// %37                                            // user: %38
+bb9(%37 : $UInt8):                                // Preds: bb7
+  %38 = struct_extract %37, #UInt8._value         // user: %39
+  %39 = builtin "cmp_eq_Int8"(%38, %5) : $Builtin.Int1 // user: %40
+  cond_br %39, bb10, bb11                         // id: %40
+
+bb10:                                             // Preds: bb9
+  %41 = struct_extract %0, #SemanticRecordStore.a // user: %42
+  br bb12(%41)                                    // id: %42
+
+bb11:                                             // Preds: bb9
+  %43 = struct_extract %0, #SemanticRecordStore.b // user: %44
+  br bb12(%43)                                    // id: %44
+
+// %45                                            // users: %71, %48, %51
+bb12(%45 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb11 bb10
+  %46 = struct_extract %0, #SemanticRecordStore.limits // user: %48
+  // function_ref specialized SemanticRecordBankBuffers.reconcile(with:limits:)
+  %47 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV9reconcile4with6limitsAA0D14ExpansionErrorOSgACyxG_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0qr6SchemaO6ValuesOy0qR7Runtime0R6DomainOGG_Tg5 : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, SemanticRecordLimits, SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> // user: %48
+  %48 = apply %47(%45, %46, %13) : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, SemanticRecordLimits, SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> // user: %49
+  switch_enum %48, case #Optional.some!enumelt: bb15, case #Optional.none!enumelt: bb14 // id: %49
+
+bb13:                                             // Preds: bb7
+  br bb18                                         // id: %50
+
+bb14:                                             // Preds: bb12
+  %51 = struct_extract %45, #SemanticRecordBankBuffers.metadata // user: %53
+  %52 = enum $SemanticRecordBankMetadata.Phase, #SemanticRecordBankMetadata.Phase.retired!enumelt // user: %56
+  %53 = struct_extract %51, #UnsafeMutablePointer._rawValue // user: %54
+  %54 = pointer_to_address %53 to [strict] $*SemanticRecordBankMetadata // users: %57, %55
+  %55 = struct_element_addr %54, #SemanticRecordBankMetadata.phase // user: %56
+  store %52 to %55                                // id: %56
+  %57 = struct_element_addr %54, #SemanticRecordBankMetadata.readers // user: %58
+  %58 = struct_element_addr %57, #UInt16._value   // user: %59
+  %59 = load %58                                  // user: %61
+  %60 = integer_literal $Builtin.Int16, 0         // user: %61
+  %61 = builtin "cmp_eq_Int16"(%59, %60) : $Builtin.Int1 // user: %62
+  cond_br %61, bb16, bb17                         // id: %62
+
+// %63                                            // users: %65, %69
+bb15(%63 : $SemanticExpansionError):              // Preds: bb12
+  %64 = alloc_stack $SemanticExpansionError       // users: %65, %68, %67
+  store %63 to %64                                // id: %65
+  // function_ref swift_willThrowTypedImpl
+  %66 = function_ref @swift_willThrowTypedImpl : $@convention(thin) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> () // user: %67
+  %67 = apply %66<SemanticExpansionError>(%64) : $@convention(thin) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> ()
+  dealloc_stack %64                               // id: %68
+  br bb8(%63)                                     // id: %69
+
+bb16:                                             // Preds: bb14
+  // function_ref specialized SemanticRecordBankBuffers.clear()
+  %70 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0lm6SchemaJ6ValuesOy0lM7Runtime0M6DomainOGG_Tg5 : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> () // user: %71
+  %71 = apply %70(%45) : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> ()
+  br bb18                                         // id: %72
+
+bb17:                                             // Preds: bb14
+  br bb18                                         // id: %73
+
+bb18:                                             // Preds: bb13 bb17 bb16
+  %74 = struct_extract %13, #SemanticRecordBankBuffers.metadata // user: %76
+  %75 = enum $SemanticRecordBankMetadata.Phase, #SemanticRecordBankMetadata.Phase.published!enumelt // user: %79
+  %76 = struct_extract %74, #UnsafeMutablePointer._rawValue // user: %77
+  %77 = pointer_to_address %76 to [strict] $*SemanticRecordBankMetadata // user: %78
+  %78 = struct_element_addr %77, #SemanticRecordBankMetadata.phase // user: %79
+  store %75 to %78                                // id: %79
+  %80 = tuple ()                                  // user: %81
+  return %80                                      // id: %81
+} // end sil function '$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5'
+
+// ORIGINAL LINES 591638–591696
+sil shared @$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (UInt8, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>> {
+[%1: escape v** => %r.e1.v**, escape v**.c*.v** => %r.e1.v**.c*.v**, read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0                                             // user: %3
+// %1                                             // users: %11, %9
+bb0(%0 : $UInt8, %1 : $SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>):
+  %2 = integer_literal $Builtin.Int8, 2           // user: %4
+  %3 = struct_extract %0, #UInt8._value           // users: %7, %4
+  %4 = builtin "cmp_ult_Int8"(%3, %2) : $Builtin.Int1 // user: %5
+  cond_br %4, bb1, bb5                            // id: %5
+
+bb1:                                              // Preds: bb0
+  %6 = integer_literal $Builtin.Int8, 0           // user: %7
+  %7 = builtin "cmp_eq_Int8"(%3, %6) : $Builtin.Int1 // user: %8
+  cond_br %7, bb2, bb3                            // id: %8
+
+bb2:                                              // Preds: bb1
+  %9 = struct_extract %1, #SemanticRecordStore.a  // user: %10
+  br bb4(%9)                                      // id: %10
+
+bb3:                                              // Preds: bb1
+  %11 = struct_extract %1, #SemanticRecordStore.b // user: %12
+  br bb4(%11)                                     // id: %12
+
+// %13                                            // users: %14, %32
+bb4(%13 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>): // Preds: bb3 bb2
+  %14 = struct_extract %13, #SemanticRecordBankBuffers.metadata // user: %15
+  %15 = struct_extract %14, #UnsafeMutablePointer._rawValue // user: %16
+  %16 = pointer_to_address %15 to [strict] $*SemanticRecordBankMetadata // user: %17
+  %17 = struct_element_addr %16, #SemanticRecordBankMetadata.phase // user: %18
+  %18 = load %17                                  // user: %20
+  %19 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %20, %28, %24
+  store %18 to %19                                // id: %20
+  %21 = enum $SemanticRecordBankMetadata.Phase, #SemanticRecordBankMetadata.Phase.expanding!enumelt // user: %23
+  %22 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %23, %27, %25
+  store %21 to %22                                // id: %23
+  %24 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%19) : $Builtin.Int32 // user: %26
+  %25 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%22) : $Builtin.Int32 // user: %26
+  %26 = builtin "cmp_eq_Int32"(%24, %25) : $Builtin.Int1 // user: %29
+  dealloc_stack %22                               // id: %27
+  dealloc_stack %19                               // id: %28
+  cond_br %26, bb6, bb7                           // id: %29
+
+bb5:                                              // Preds: bb0
+  %30 = enum $Optional<SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>>, #Optional.none!enumelt // user: %31
+  br bb8(%30)                                     // id: %31
+
+bb6:                                              // Preds: bb4
+  %32 = enum $Optional<SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>>, #Optional.some!enumelt, %13 // user: %33
+  br bb8(%32)                                     // id: %33
+
+bb7:                                              // Preds: bb4
+  %34 = enum $Optional<SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>>, #Optional.none!enumelt // user: %35
+  br bb8(%34)                                     // id: %35
+
+// %36                                            // user: %37
+bb8(%36 : $Optional<SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>>): // Preds: bb5 bb7 bb6
+  return %36                                      // id: %37
+} // end sil function '$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5'
+
+// ORIGINAL LINES 591706–591740
+sil shared @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvgAA15RecordWorkspaceVy17P08CounterRuntime0K5RolesO0A9UIDrawing06CanvasD7PayloadOy0jK5Table0jk6SchemaO6ValuesOyAG0K6DomainOGGG_AA0H4SinkVyAJ0odP5CodecOyAiM0jkroQ0VyAQGGG0A17UIObservableState010ObservableD11BodyBindingVyAG0K10OwnedModelVAA0D16CompleteIdentityVAQGTg5 : $@convention(method) (@guaranteed SemanticExpansionTraversal<RecordWorkspace<CounterRoles, CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>, ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>>) -> Bool {
+[%0: noescape **]
+[global: ]
+// %0                                             // users: %1, %5, %14
+bb0(%0 : $SemanticExpansionTraversal<RecordWorkspace<CounterRoles, CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>, ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>>):
+  %1 = struct_extract %0, #SemanticExpansionTraversal.failure // user: %2
+  switch_enum %1, case #Optional.some!enumelt: bb1, case #Optional.none!enumelt: bb2 // id: %2
+
+bb1(%3 : $SemanticExpansionError):                // Preds: bb0
+  br bb3                                          // id: %4
+
+bb2:                                              // Preds: bb0
+  %5 = struct_extract %0, #SemanticExpansionTraversal.bindingFailure // user: %6
+  switch_enum %5, case #Optional.some!enumelt: bb5, case #Optional.none!enumelt: bb6 // id: %6
+
+bb3:                                              // Preds: bb5 bb1
+  %7 = integer_literal $Builtin.Int1, -1          // user: %8
+  br bb4(%7)                                      // id: %8
+
+// %9                                             // user: %10
+bb4(%9 : $Builtin.Int1):                          // Preds: bb6 bb3
+  %10 = struct $Bool (%9)                         // user: %11
+  return %10                                      // id: %11
+
+bb5(%12 : $ObservableStateError):                 // Preds: bb2
+  br bb3                                          // id: %13
+
+bb6:                                              // Preds: bb2
+  %14 = struct_extract %0, #SemanticExpansionTraversal.accessFailure // user: %17
+  %15 = integer_literal $Builtin.Int1, 0          // user: %17
+  %16 = integer_literal $Builtin.Int1, -1         // users: %18, %17
+  %17 = select_enum %14, case #Optional.some!enumelt: %15, case #Optional.none!enumelt: %16 : $Builtin.Int1 // user: %18
+  %18 = builtin "xor_Int1"(%17, %16) : $Builtin.Int1 // user: %19
+  br bb4(%18)                                     // id: %19
+} // end sil function '$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvgAA15RecordWorkspaceVy17P08CounterRuntime0K5RolesO0A9UIDrawing06CanvasD7PayloadOy0jK5Table0jk6SchemaO6ValuesOyAG0K6DomainOGGG_AA0H4SinkVyAJ0odP5CodecOyAiM0jkroQ0VyAQGGG0A17UIObservableState010ObservableD11BodyBindingVyAG0K10OwnedModelVAA0D16CompleteIdentityVAQGTg5'
+
+// ORIGINAL LINES 591939–592051
+sil shared @$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF0A9UIDrawing06CanvasH12PayloadCodecOy17P08CounterRuntime0O5RolesO0nO5Table0no6SchemakR0VyAJ0O6DomainOGG_Tg5 : $@convention(method) (SemanticExpansionSummary, @inout RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>) -> Bool {
+[%1: noescape **, read v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0                                             // users: %69, %61, %53, %45, %37
+// %1                                             // users: %62, %54, %46, %38, %2
+bb0(%0 : $SemanticExpansionSummary, %1 : $*RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>):
+  %2 = struct_element_addr %1, #RecordSink.bank   // user: %3
+  %3 = struct_element_addr %2, #SemanticRecordBankBuffers.metadata // user: %4
+  %4 = struct_element_addr %3, #UnsafeMutablePointer._rawValue // user: %5
+  %5 = load %4                                    // user: %6
+  %6 = pointer_to_address %5 to [strict] $*SemanticRecordBankMetadata // users: %70, %26, %20, %7
+  %7 = struct_element_addr %6, #SemanticRecordBankMetadata.phase // users: %73, %8
+  %8 = load %7                                    // user: %10
+  %9 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %10, %18, %14
+  store %8 to %9                                  // id: %10
+  %11 = enum $SemanticRecordBankMetadata.Phase, #SemanticRecordBankMetadata.Phase.expanding!enumelt // user: %13
+  %12 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %13, %17, %15
+  store %11 to %12                                // id: %13
+  %14 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%9) : $Builtin.Int32 // user: %16
+  %15 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%12) : $Builtin.Int32 // user: %16
+  %16 = builtin "cmp_eq_Int32"(%14, %15) : $Builtin.Int1 // user: %19
+  dealloc_stack %12                               // id: %17
+  dealloc_stack %9                                // id: %18
+  cond_br %16, bb1, bb2                           // id: %19
+
+bb1:                                              // Preds: bb0
+  %20 = struct_element_addr %6, #SemanticRecordBankMetadata.failure // user: %21
+  %21 = load %20                                  // user: %22
+  switch_enum %21, case #Optional.some!enumelt: bb3, case #Optional.none!enumelt: bb4 // id: %22
+
+bb2:                                              // Preds: bb0
+  br bb5                                          // id: %23
+
+bb3(%24 : $SemanticExpansionError):               // Preds: bb1
+  br bb5                                          // id: %25
+
+bb4:                                              // Preds: bb1
+  %26 = struct_element_addr %6, #SemanticRecordBankMetadata.activePath // user: %27
+  %27 = struct_element_addr %26, #UInt16._value   // user: %28
+  %28 = load %27                                  // user: %30
+  %29 = integer_literal $Builtin.Int16, -1        // user: %30
+  %30 = builtin "cmp_eq_Int16"(%28, %29) : $Builtin.Int1 // user: %31
+  cond_br %30, bb7, bb8                           // id: %31
+
+bb5:                                              // Preds: bb2 bb8 bb10 bb12 bb14 bb16 bb3
+  %32 = integer_literal $Builtin.Int1, 0          // user: %33
+  br bb6(%32)                                     // id: %33
+
+// %34                                            // user: %35
+bb6(%34 : $Builtin.Int1):                         // Preds: bb15 bb5
+  %35 = struct $Bool (%34)                        // user: %36
+  return %35                                      // id: %36
+
+bb7:                                              // Preds: bb4
+  %37 = struct_extract %0, #SemanticExpansionSummary.bodyEvaluationCount // user: %41
+  %38 = struct_element_addr %1, #RecordSink.bodyCount // user: %39
+  %39 = struct_element_addr %38, #UInt16._value   // user: %40
+  %40 = load %39                                  // user: %42
+  %41 = struct_extract %37, #UInt16._value        // user: %42
+  %42 = builtin "cmp_eq_Int16"(%41, %40) : $Builtin.Int1 // user: %43
+  cond_br %42, bb9, bb10                          // id: %43
+
+bb8:                                              // Preds: bb4
+  br bb5                                          // id: %44
+
+bb9:                                              // Preds: bb7
+  %45 = struct_extract %0, #SemanticExpansionSummary.semanticNodeCount // user: %49
+  %46 = struct_element_addr %1, #RecordSink.semanticCount // user: %47
+  %47 = struct_element_addr %46, #UInt16._value   // user: %48
+  %48 = load %47                                  // user: %50
+  %49 = struct_extract %45, #UInt16._value        // user: %50
+  %50 = builtin "cmp_eq_Int16"(%49, %48) : $Builtin.Int1 // user: %51
+  cond_br %50, bb11, bb12                         // id: %51
+
+bb10:                                             // Preds: bb7
+  br bb5                                          // id: %52
+
+bb11:                                             // Preds: bb9
+  %53 = struct_extract %0, #SemanticExpansionSummary.modifierApplicationCount // user: %57
+  %54 = struct_element_addr %1, #RecordSink.modifierCount // user: %55
+  %55 = struct_element_addr %54, #UInt16._value   // user: %56
+  %56 = load %55                                  // user: %58
+  %57 = struct_extract %53, #UInt16._value        // user: %58
+  %58 = builtin "cmp_eq_Int16"(%57, %56) : $Builtin.Int1 // user: %59
+  cond_br %58, bb13, bb14                         // id: %59
+
+bb12:                                             // Preds: bb9
+  br bb5                                          // id: %60
+
+bb13:                                             // Preds: bb11
+  %61 = struct_extract %0, #SemanticExpansionSummary.actionOccurrenceCount // user: %65
+  %62 = struct_element_addr %1, #RecordSink.actionCount // user: %63
+  %63 = struct_element_addr %62, #UInt16._value   // user: %64
+  %64 = load %63                                  // user: %66
+  %65 = struct_extract %61, #UInt16._value        // user: %66
+  %66 = builtin "cmp_eq_Int16"(%65, %64) : $Builtin.Int1 // user: %67
+  cond_br %66, bb15, bb16                         // id: %67
+
+bb14:                                             // Preds: bb11
+  br bb5                                          // id: %68
+
+bb15:                                             // Preds: bb13
+  %69 = enum $Optional<SemanticExpansionSummary>, #Optional.some!enumelt, %0 // user: %71
+  %70 = struct_element_addr %6, #SemanticRecordBankMetadata.summary // user: %71
+  store %69 to %70                                // id: %71
+  %72 = enum $SemanticRecordBankMetadata.Phase, #SemanticRecordBankMetadata.Phase.candidate!enumelt // user: %73
+  store %72 to %7                                 // id: %73
+  %74 = integer_literal $Builtin.Int1, -1         // user: %75
+  br bb6(%74)                                     // id: %75
+
+bb16:                                             // Preds: bb13
+  br bb5                                          // id: %76
+} // end sil function '$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF0A9UIDrawing06CanvasH12PayloadCodecOy17P08CounterRuntime0O5RolesO0nO5Table0no6SchemakR0VyAJ0O6DomainOGG_Tg5'
+
+// ORIGINAL LINES 592423–592862
+sil shared @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0rs6SchemaP6ValuesOy0rS7Runtime0S6DomainOGG_Tg5 : $@convention(method) (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> {
+[%2: noescape **, read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0                                             // users: %175, %130, %44, %36
+// %1                                             // users: %292, %286, %98, %74, %61
+// %2                                             // users: %268, %225, %186, %87, %3
+bb0(%0 : $SemanticPathComponent, %1 : $SemanticRecordLimits, %2 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>):
+  %3 = struct_extract %2, #SemanticRecordBankBuffers.metadata // user: %4
+  %4 = struct_extract %3, #UnsafeMutablePointer._rawValue // user: %5
+  %5 = pointer_to_address %4 to [strict] $*SemanticRecordBankMetadata // users: %22, %66, %154, %117, %71, %33, %19, %6
+  %6 = struct_element_addr %5, #SemanticRecordBankMetadata.phase // user: %7
+  %7 = load %6                                    // user: %9
+  %8 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %9, %17, %13
+  store %7 to %8                                  // id: %9
+  %10 = enum $SemanticRecordBankMetadata.Phase, #SemanticRecordBankMetadata.Phase.expanding!enumelt // user: %12
+  %11 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %12, %16, %14
+  store %10 to %11                                // id: %12
+  %13 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%8) : $Builtin.Int32 // user: %15
+  %14 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%11) : $Builtin.Int32 // user: %15
+  %15 = builtin "cmp_eq_Int32"(%13, %14) : $Builtin.Int1 // user: %18
+  dealloc_stack %11                               // id: %16
+  dealloc_stack %8                                // id: %17
+  cond_br %15, bb1, bb2                           // id: %18
+
+bb1:                                              // Preds: bb0
+  %19 = struct_element_addr %5, #SemanticRecordBankMetadata.failure // users: %310, %306, %264, %260, %256, %252, %110, %106, %137, %133, %145, %141, %20
+  %20 = load %19                                  // users: %21, %32
+  switch_enum %20, case #Optional.some!enumelt: bb5, case #Optional.none!enumelt: bb6 // id: %21
+
+bb2:                                              // Preds: bb0
+  %22 = struct_element_addr %5, #SemanticRecordBankMetadata.failure // users: %27, %23
+  %23 = load %22                                  // users: %30, %24
+  switch_enum %23, case #Optional.some!enumelt: bb4, case #Optional.none!enumelt: bb3 // id: %24
+
+bb3:                                              // Preds: bb2
+  %25 = enum $SemanticExpansionError, #SemanticExpansionError.invariantViolation!enumelt // user: %26
+  %26 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %25 // users: %28, %27
+  store %26 to %22                                // id: %27
+  br bb7(%26)                                     // id: %28
+
+bb4(%29 : $SemanticExpansionError):               // Preds: bb2
+  br bb7(%23)                                     // id: %30
+
+bb5(%31 : $SemanticExpansionError):               // Preds: bb1
+  br bb7(%20)                                     // id: %32
+
+bb6:                                              // Preds: bb1
+  %33 = struct_element_addr %5, #SemanticRecordBankMetadata.activePath // users: %246, %34
+  %34 = load %33                                  // users: %176, %42
+  // function_ref SemanticPathComponent.isValid.getter
+  %35 = function_ref @$s18GiftUISemanticCore21SemanticPathComponentV7isValidSbvg : $@convention(method) (SemanticPathComponent) -> Bool // user: %36
+  %36 = apply %35(%0) : $@convention(method) (SemanticPathComponent) -> Bool // user: %37
+  %37 = struct_extract %36, #Bool._value          // user: %38
+  cond_br %37, bb8, bb9                           // id: %38
+
+// %39                                            // user: %40
+bb7(%39 : $Optional<SemanticExpansionError>):     // Preds: bb3 bb23 bb30 bb33 bb46 bb49 bb62 bb4 bb63 bb50 bb47 bb24 bb42 bb31 bb34 bb5
+  return %39                                      // id: %40
+
+bb8:                                              // Preds: bb6
+  %41 = integer_literal $Builtin.Int16, -1        // users: %297, %200, %184, %161, %115, %79, %43
+  %42 = struct_extract %34, #UInt16._value        // users: %297, %269, %69, %187, %184, %88, %79, %43
+  %43 = builtin "cmp_eq_Int16"(%42, %41) : $Builtin.Int1 // users: %58, %55
+  %44 = struct_extract %0, #SemanticPathComponent.kind // user: %46
+  %45 = alloc_stack [lexical] $SemanticPathComponent.Kind // users: %46, %54, %50
+  store %44 to %45                                // id: %46
+  %47 = enum $SemanticPathComponent.Kind, #SemanticPathComponent.Kind.root!enumelt // user: %49
+  %48 = alloc_stack [lexical] $SemanticPathComponent.Kind // users: %49, %53, %51
+  store %47 to %48                                // id: %49
+  %50 = builtin "getEnumTag"<SemanticPathComponent.Kind>(%45) : $Builtin.Int32 // user: %52
+  %51 = builtin "getEnumTag"<SemanticPathComponent.Kind>(%48) : $Builtin.Int32 // user: %52
+  %52 = builtin "cmp_eq_Int32"(%50, %51) : $Builtin.Int1 // user: %55
+  dealloc_stack %48                               // id: %53
+  dealloc_stack %45                               // id: %54
+  %55 = builtin "cmp_eq_Int1"(%43, %52) : $Builtin.Int1 // user: %56
+  cond_br %55, bb10, bb11                         // id: %56
+
+bb9:                                              // Preds: bb6
+  br bb61                                         // id: %57
+
+bb10:                                             // Preds: bb8
+  cond_br %43, bb12, bb13                         // id: %58
+
+bb11:                                             // Preds: bb8
+  br bb61                                         // id: %59
+
+bb12:                                             // Preds: bb10
+  %60 = integer_literal $Builtin.Int32, 1         // users: %251, %82, %64
+  %61 = struct_extract %1, #SemanticRecordLimits.depth // user: %62
+  %62 = struct_extract %61, #UInt16._value        // user: %63
+  %63 = builtin "zextOrBitCast_Int16_Int32"(%62) : $Builtin.Int32 // user: %64
+  %64 = builtin "cmp_uge_Int32"(%63, %60) : $Builtin.Int1 // user: %65
+  cond_br %64, bb14, bb15                         // id: %65
+
+bb13:                                             // Preds: bb10
+  %66 = struct_element_addr %5, #SemanticRecordBankMetadata.paths // user: %67
+  %67 = struct_element_addr %66, #UInt16._value   // user: %68
+  %68 = load %67                                  // users: %69, %294, %302
+  %69 = builtin "cmp_ult_Int16"(%42, %68) : $Builtin.Int1 // user: %70
+  cond_br %69, bb51, bb52                         // id: %70
+
+bb14:                                             // Preds: bb12
+  %71 = struct_element_addr %5, #SemanticRecordBankMetadata.paths // user: %72
+  %72 = struct_element_addr %71, #UInt16._value   // user: %73
+  %73 = load %72                                  // users: %76, %84
+  %74 = struct_extract %1, #SemanticRecordLimits.paths // user: %75
+  %75 = struct_extract %74, #UInt16._value        // user: %76
+  %76 = builtin "cmp_ult_Int16"(%73, %75) : $Builtin.Int1 // user: %77
+  cond_br %76, bb16, bb17                         // id: %77
+
+bb15:                                             // Preds: bb12
+  br bb48                                         // id: %78
+
+bb16:                                             // Preds: bb14
+  %79 = builtin "cmp_ne_Int16"(%42, %41) : $Builtin.Int1 // user: %80
+  cond_br %79, bb18, bb19                         // id: %80
+
+bb17:                                             // Preds: bb14
+  br bb48                                         // id: %81
+
+bb18:                                             // Preds: bb16
+  br bb20(%60)                                    // id: %82
+
+bb19:                                             // Preds: bb16
+  %83 = integer_literal $Builtin.Int16, 0         // user: %84
+  %84 = builtin "cmp_ne_Int16"(%73, %83) : $Builtin.Int1 // user: %85
+  cond_br %84, bb43, bb44                         // id: %85
+
+// %86                                            // user: %122
+bb20(%86 : $Builtin.Int32):                       // Preds: bb57 bb18
+  %87 = struct_extract %2, #SemanticRecordBankBuffers.paths // user: %89
+  %88 = builtin "zextOrBitCast_Int16_Int64"(%42) : $Builtin.Int64 // user: %92
+  %89 = struct_extract %87, #UnsafeMutableBufferPointer._position // user: %90
+  %90 = unchecked_enum_data %89, #Optional.some!enumelt // user: %91
+  %91 = struct_extract %90, #UnsafeMutablePointer._rawValue // user: %93
+  %92 = builtin "truncOrBitCast_Int64_Word"(%88) : $Builtin.Word // user: %94
+  %93 = pointer_to_address %91 to [strict] $*SemanticPathEntry // users: %125, %94
+  %94 = index_addr [stack_protection] %93, %92    // users: %102, %95
+  %95 = struct_element_addr %94, #SemanticPathEntry.childCount // user: %96
+  %96 = struct_element_addr %95, #UInt16._value   // user: %97
+  %97 = load %96                                  // user: %100
+  %98 = struct_extract %1, #SemanticRecordLimits.fanout // user: %99
+  %99 = struct_extract %98, #UInt16._value        // user: %100
+  %100 = builtin "cmp_ult_Int16"(%97, %99) : $Builtin.Int1 // user: %101
+  cond_br %100, bb21, bb22                        // id: %101
+
+bb21:                                             // Preds: bb20
+  %102 = struct_element_addr %94, #SemanticPathEntry.firstChild // user: %103
+  %103 = struct_element_addr %102, #UInt16._value // user: %104
+  %104 = load %103                                // user: %105
+  br bb25(%104)                                   // id: %105
+
+bb22:                                             // Preds: bb20
+  %106 = load %19                                 // users: %113, %107
+  switch_enum %106, case #Optional.some!enumelt: bb24, case #Optional.none!enumelt: bb23 // id: %107
+
+bb23:                                             // Preds: bb22
+  %108 = enum $SemanticExpansionError, #SemanticExpansionError.capacityExhausted!enumelt // user: %109
+  %109 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %108 // users: %111, %110
+  store %109 to %19                               // id: %110
+  br bb7(%109)                                    // id: %111
+
+bb24(%112 : $SemanticExpansionError):             // Preds: bb22
+  br bb7(%106)                                    // id: %113
+
+// %114                                           // users: %123, %120, %115
+// Loop header
+bb25(%114 : $Builtin.Int16):                      // Preds: bb35 bb21
+  %115 = builtin "cmp_ne_Int16"(%114, %41) : $Builtin.Int1 // user: %116
+  cond_br %115, bb26, bb27                        // id: %116
+
+bb26:                                             // Preds: bb25
+  %117 = struct_element_addr %5, #SemanticRecordBankMetadata.paths // user: %118
+  %118 = struct_element_addr %117, #UInt16._value // user: %119
+  %119 = load %118                                // user: %120
+  %120 = builtin "cmp_ult_Int16"(%114, %119) : $Builtin.Int1 // user: %121
+  cond_br %120, bb28, bb29                        // id: %121
+
+bb27:                                             // Preds: bb25
+  br bb36(%86)                                    // id: %122
+
+bb28:                                             // Preds: bb26
+  %123 = builtin "zextOrBitCast_Int16_Int64"(%114) : $Builtin.Int64 // user: %124
+  %124 = builtin "truncOrBitCast_Int64_Word"(%123) : $Builtin.Word // user: %125
+  %125 = index_addr [stack_protection] %93, %124  // users: %149, %126
+  %126 = struct_element_addr %125, #SemanticPathEntry.component // user: %127
+  %127 = load %126                                // user: %130
+  %128 = metatype $@thin SemanticPathComponent.Type // user: %130
+  // function_ref static SemanticPathComponent.__derived_struct_equals(_:_:)
+  %129 = function_ref @$s18GiftUISemanticCore21SemanticPathComponentV23__derived_struct_equalsySbAC_ACtFZ : $@convention(method) (SemanticPathComponent, SemanticPathComponent, @thin SemanticPathComponent.Type) -> Bool // user: %130
+  %130 = apply %129(%127, %0, %128) : $@convention(method) (SemanticPathComponent, SemanticPathComponent, @thin SemanticPathComponent.Type) -> Bool // user: %131
+  %131 = struct_extract %130, #Bool._value        // user: %132
+  cond_br %131, bb32, bb35                        // id: %132
+
+bb29:                                             // Preds: bb26
+  %133 = load %19                                 // users: %140, %134
+  switch_enum %133, case #Optional.some!enumelt: bb31, case #Optional.none!enumelt: bb30 // id: %134
+
+bb30:                                             // Preds: bb29
+  %135 = enum $SemanticExpansionError, #SemanticExpansionError.invalidIdentity!enumelt // user: %136
+  %136 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %135 // users: %138, %137
+  store %136 to %19                               // id: %137
+  br bb7(%136)                                    // id: %138
+
+bb31(%139 : $SemanticExpansionError):             // Preds: bb29
+  br bb7(%133)                                    // id: %140
+
+bb32:                                             // Preds: bb28
+  %141 = load %19                                 // users: %148, %142
+  switch_enum %141, case #Optional.some!enumelt: bb34, case #Optional.none!enumelt: bb33 // id: %142
+
+bb33:                                             // Preds: bb32
+  %143 = enum $SemanticExpansionError, #SemanticExpansionError.invalidIdentity!enumelt // user: %144
+  %144 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %143 // users: %146, %145
+  store %144 to %19                               // id: %145
+  br bb7(%144)                                    // id: %146
+
+bb34(%147 : $SemanticExpansionError):             // Preds: bb32
+  br bb7(%141)                                    // id: %148
+
+bb35:                                             // Preds: bb28
+  %149 = struct_element_addr %125, #SemanticPathEntry.nextSibling // user: %150
+  %150 = struct_element_addr %149, #UInt16._value // user: %151
+  %151 = load %150                                // user: %152
+  br bb25(%151)                                   // id: %152
+
+// %153                                           // users: %180, %178
+bb36(%153 : $Builtin.Int32):                      // Preds: bb60 bb44 bb27
+  %154 = struct_element_addr %5, #SemanticRecordBankMetadata.paths // users: %237, %245, %155
+  %155 = load %154                                // users: %246, %212, %210, %204, %226
+  %156 = alloc_stack [var_decl] $SemanticPathEntry // users: %228, %248, %173, %171, %170, %168, %166, %164, %162, %160, %157
+  %157 = struct_element_addr %156, #SemanticPathEntry.component // user: %175
+  %158 = integer_literal $Builtin.Int16, 0        // user: %159
+  %159 = struct $UInt16 (%158)                    // user: %169
+  %160 = struct_element_addr %156, #SemanticPathEntry.parent // user: %176
+  %161 = struct $UInt16 (%41)                     // users: %174, %172, %167, %165, %163
+  %162 = struct_element_addr %156, #SemanticPathEntry.firstChild // user: %163
+  store %161 to %162                              // id: %163
+  %164 = struct_element_addr %156, #SemanticPathEntry.lastChild // user: %165
+  store %161 to %164                              // id: %165
+  %166 = struct_element_addr %156, #SemanticPathEntry.nextSibling // user: %167
+  store %161 to %166                              // id: %167
+  %168 = struct_element_addr %156, #SemanticPathEntry.childCount // user: %169
+  store %159 to %168                              // id: %169
+  %170 = struct_element_addr %156, #SemanticPathEntry.depth // user: %183
+  %171 = struct_element_addr %156, #SemanticPathEntry.nearestRecord // users: %196, %172
+  store %161 to %171                              // id: %172
+  %173 = struct_element_addr %156, #SemanticPathEntry.matchedPath // user: %174
+  store %161 to %173                              // id: %174
+  store %0 to %157                                // id: %175
+  store %34 to %160                               // id: %176
+  %177 = integer_literal $Builtin.Int32, 65535    // user: %178
+  %178 = builtin "cmp_ult_Int32"(%177, %153) : $Builtin.Int1 // user: %179
+  cond_fail %178, "Not enough bits to represent the passed value" // id: %179
+  %180 = builtin "zextOrBitCast_Int32_Int64"(%153) : $Builtin.Int64 // user: %181
+  %181 = builtin "truncOrBitCast_Int64_Int16"(%180) : $Builtin.Int16 // user: %182
+  %182 = struct $UInt16 (%181)                    // user: %183
+  store %182 to %170                              // id: %183
+  %184 = builtin "cmp_ne_Int16"(%42, %41) : $Builtin.Int1 // user: %185
+  cond_br %184, bb37, bb38                        // id: %185
+
+bb37:                                             // Preds: bb36
+  %186 = struct_extract %2, #SemanticRecordBankBuffers.paths // user: %188
+  %187 = builtin "zextOrBitCast_Int16_Int64"(%42) : $Builtin.Int64 // user: %191
+  %188 = struct_extract %186, #UnsafeMutableBufferPointer._position // user: %189
+  %189 = unchecked_enum_data %188, #Optional.some!enumelt // user: %190
+  %190 = struct_extract %189, #UnsafeMutablePointer._rawValue // user: %192
+  %191 = builtin "truncOrBitCast_Int64_Word"(%187) : $Builtin.Word // user: %193
+  %192 = pointer_to_address %190 to [strict] $*SemanticPathEntry // users: %208, %193
+  %193 = index_addr [stack_protection] %192, %191 // users: %214, %203, %197, %194
+  %194 = struct_element_addr %193, #SemanticPathEntry.nearestRecord // user: %195
+  %195 = load %194                                // user: %196
+  store %195 to %171                              // id: %196
+  %197 = struct_element_addr %193, #SemanticPathEntry.lastChild // users: %212, %198
+  %198 = struct_element_addr %197, #UInt16._value // user: %199
+  %199 = load %198                                // users: %200, %206
+  %200 = builtin "cmp_eq_Int16"(%199, %41) : $Builtin.Int1 // user: %201
+  cond_br %200, bb39, bb40                        // id: %201
+
+bb38:                                             // Preds: bb36
+  br bb42                                         // id: %202
+
+bb39:                                             // Preds: bb37
+  %203 = struct_element_addr %193, #SemanticPathEntry.firstChild // user: %204
+  store %155 to %203                              // id: %204
+  br bb41                                         // id: %205
+
+bb40:                                             // Preds: bb37
+  %206 = builtin "zextOrBitCast_Int16_Int64"(%199) : $Builtin.Int64 // user: %207
+  %207 = builtin "truncOrBitCast_Int64_Word"(%206) : $Builtin.Word // user: %208
+  %208 = index_addr [stack_protection] %192, %207 // user: %209
+  %209 = struct_element_addr %208, #SemanticPathEntry.nextSibling // user: %210
+  store %155 to %209                              // id: %210
+  br bb41                                         // id: %211
+
+bb41:                                             // Preds: bb40 bb39
+  store %155 to %197                              // id: %212
+  %213 = integer_literal $Builtin.Int16, 1        // user: %218
+  %214 = struct_element_addr %193, #SemanticPathEntry.childCount // users: %223, %215
+  %215 = struct_element_addr %214, #UInt16._value // user: %216
+  %216 = load %215                                // user: %218
+  %217 = integer_literal $Builtin.Int1, -1        // user: %218
+  %218 = builtin "uadd_with_overflow_Int16"(%216, %213, %217) : $(Builtin.Int16, Builtin.Int1) // users: %220, %219
+  %219 = tuple_extract %218, 0                    // user: %222
+  %220 = tuple_extract %218, 1                    // user: %221
+  cond_fail %220, "arithmetic overflow"           // id: %221
+  %222 = struct $UInt16 (%219)                    // user: %223
+  store %222 to %214                              // id: %223
+  br bb42                                         // id: %224
+
+bb42:                                             // Preds: bb38 bb41
+  %225 = struct_extract %2, #SemanticRecordBankBuffers.paths // user: %229
+  %226 = struct_extract %155, #UInt16._value      // user: %227
+  %227 = builtin "zextOrBitCast_Int16_Int64"(%226) : $Builtin.Int64 // user: %232
+  %228 = load %156                                // user: %235
+  %229 = struct_extract %225, #UnsafeMutableBufferPointer._position // user: %230
+  %230 = unchecked_enum_data %229, #Optional.some!enumelt // user: %231
+  %231 = struct_extract %230, #UnsafeMutablePointer._rawValue // user: %233
+  %232 = builtin "truncOrBitCast_Int64_Word"(%227) : $Builtin.Word // user: %234
+  %233 = pointer_to_address %231 to [strict] $*SemanticPathEntry // user: %234
+  %234 = index_addr [stack_protection] %233, %232 // user: %235
+  store %228 to %234                              // id: %235
+  %236 = integer_literal $Builtin.Int16, 1        // user: %240
+  %237 = struct_element_addr %154, #UInt16._value // user: %238
+  %238 = load %237                                // user: %240
+  %239 = integer_literal $Builtin.Int1, -1        // user: %240
+  %240 = builtin "uadd_with_overflow_Int16"(%238, %236, %239) : $(Builtin.Int16, Builtin.Int1) // users: %242, %241
+  %241 = tuple_extract %240, 0                    // user: %244
+  %242 = tuple_extract %240, 1                    // user: %243
+  cond_fail %242, "arithmetic overflow"           // id: %243
+  %244 = struct $UInt16 (%241)                    // user: %245
+  store %244 to %154                              // id: %245
+  store %155 to %33                               // id: %246
+  %247 = enum $Optional<SemanticExpansionError>, #Optional.none!enumelt // user: %249
+  dealloc_stack %156                              // id: %248
+  br bb7(%247)                                    // id: %249
+
+bb43:                                             // Preds: bb19
+  br bb45                                         // id: %250
+
+bb44:                                             // Preds: bb19
+  br bb36(%60)                                    // id: %251
+
+bb45:                                             // Preds: bb59 bb43
+  %252 = load %19                                 // users: %259, %253
+  switch_enum %252, case #Optional.some!enumelt: bb47, case #Optional.none!enumelt: bb46 // id: %253
+
+bb46:                                             // Preds: bb45
+  %254 = enum $SemanticExpansionError, #SemanticExpansionError.invalidIdentity!enumelt // user: %255
+  %255 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %254 // users: %257, %256
+  store %255 to %19                               // id: %256
+  br bb7(%255)                                    // id: %257
+
+bb47(%258 : $SemanticExpansionError):             // Preds: bb45
+  br bb7(%252)                                    // id: %259
+
+bb48:                                             // Preds: bb54 bb56 bb15 bb17
+  %260 = load %19                                 // users: %267, %261
+  switch_enum %260, case #Optional.some!enumelt: bb50, case #Optional.none!enumelt: bb49 // id: %261
+
+bb49:                                             // Preds: bb48
+  %262 = enum $SemanticExpansionError, #SemanticExpansionError.capacityExhausted!enumelt // user: %263
+  %263 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %262 // users: %265, %264
+  store %263 to %19                               // id: %264
+  br bb7(%263)                                    // id: %265
+
+bb50(%266 : $SemanticExpansionError):             // Preds: bb48
+  br bb7(%260)                                    // id: %267
+
+bb51:                                             // Preds: bb13
+  %268 = struct_extract %2, #SemanticRecordBankBuffers.paths // user: %270
+  %269 = builtin "zextOrBitCast_Int16_Int64"(%42) : $Builtin.Int64 // user: %273
+  %270 = struct_extract %268, #UnsafeMutableBufferPointer._position // user: %271
+  %271 = unchecked_enum_data %270, #Optional.some!enumelt // user: %272
+  %272 = struct_extract %271, #UnsafeMutablePointer._rawValue // user: %274
+  %273 = builtin "truncOrBitCast_Int64_Word"(%269) : $Builtin.Word // user: %275
+  %274 = pointer_to_address %272 to [strict] $*SemanticPathEntry // user: %275
+  %275 = index_addr [stack_protection] %274, %273 // user: %276
+  %276 = struct_element_addr %275, #SemanticPathEntry.depth // user: %277
+  %277 = struct_element_addr %276, #UInt16._value // user: %278
+  %278 = load %277                                // user: %279
+  %279 = builtin "zextOrBitCast_Int16_Int32"(%278) : $Builtin.Int32 // user: %282
+  %280 = integer_literal $Builtin.Int32, 1        // user: %282
+  %281 = integer_literal $Builtin.Int1, -1        // user: %282
+  %282 = builtin "uadd_with_overflow_Int32"(%279, %280, %281) : $(Builtin.Int32, Builtin.Int1) // users: %284, %283
+  %283 = tuple_extract %282, 0                    // users: %305, %300, %289
+  %284 = tuple_extract %282, 1                    // user: %285
+  cond_fail %284, "arithmetic overflow"           // id: %285
+  %286 = struct_extract %1, #SemanticRecordLimits.depth // user: %287
+  %287 = struct_extract %286, #UInt16._value      // user: %288
+  %288 = builtin "zextOrBitCast_Int16_Int32"(%287) : $Builtin.Int32 // user: %289
+  %289 = builtin "cmp_uge_Int32"(%288, %283) : $Builtin.Int1 // user: %290
+  cond_br %289, bb53, bb54                        // id: %290
+
+bb52:                                             // Preds: bb13
+  br bb61                                         // id: %291
+
+bb53:                                             // Preds: bb51
+  %292 = struct_extract %1, #SemanticRecordLimits.paths // user: %293
+  %293 = struct_extract %292, #UInt16._value      // user: %294
+  %294 = builtin "cmp_ult_Int16"(%68, %293) : $Builtin.Int1 // user: %295
+  cond_br %294, bb55, bb56                        // id: %295
+
+bb54:                                             // Preds: bb51
+  br bb48                                         // id: %296
+
+bb55:                                             // Preds: bb53
+  %297 = builtin "cmp_ne_Int16"(%42, %41) : $Builtin.Int1 // user: %298
+  cond_br %297, bb57, bb58                        // id: %298
+
+bb56:                                             // Preds: bb53
+  br bb48                                         // id: %299
+
+bb57:                                             // Preds: bb55
+  br bb20(%283)                                   // id: %300
+
+bb58:                                             // Preds: bb55
+  %301 = integer_literal $Builtin.Int16, 0        // user: %302
+  %302 = builtin "cmp_ne_Int16"(%68, %301) : $Builtin.Int1 // user: %303
+  cond_br %302, bb59, bb60                        // id: %303
+
+bb59:                                             // Preds: bb58
+  br bb45                                         // id: %304
+
+bb60:                                             // Preds: bb58
+  br bb36(%283)                                   // id: %305
+
+bb61:                                             // Preds: bb9 bb11 bb52
+  %306 = load %19                                 // users: %313, %307
+  switch_enum %306, case #Optional.some!enumelt: bb63, case #Optional.none!enumelt: bb62 // id: %307
+
+bb62:                                             // Preds: bb61
+  %308 = enum $SemanticExpansionError, #SemanticExpansionError.invalidIdentity!enumelt // user: %309
+  %309 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %308 // users: %311, %310
+  store %309 to %19                               // id: %310
+  br bb7(%309)                                    // id: %311
+
+bb63(%312 : $SemanticExpansionError):             // Preds: bb61
+  br bb7(%306)                                    // id: %313
+} // end sil function '$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0rs6SchemaP6ValuesOy0rS7Runtime0S6DomainOGG_Tg5'
+
+// ORIGINAL LINES 592866–593116
+sil shared @$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0pq6SchemaN6ValuesOy0pQ7Runtime0Q6DomainOGG_Tg5 : $@convention(method) (SemanticRecordLimits, SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> {
+[%1: noescape **, read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0                                             // user: %60
+// %1                                             // users: %144, %109, %34, %2
+bb0(%0 : $SemanticRecordLimits, %1 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>):
+  %2 = struct_extract %1, #SemanticRecordBankBuffers.metadata // user: %3
+  %3 = struct_extract %2, #UnsafeMutablePointer._rawValue // user: %4
+  %4 = pointer_to_address %3 to [strict] $*SemanticRecordBankMetadata // users: %57, %27, %12, %10, %5
+  %5 = struct_element_addr %4, #SemanticRecordBankMetadata.failure // users: %183, %179, %101, %97, %173, %167, %128, %122, %6
+  %6 = load %5                                    // users: %7, %9
+  switch_enum %6, case #Optional.some!enumelt: bb1, case #Optional.none!enumelt: bb2 // id: %7
+
+bb1(%8 : $SemanticExpansionError):                // Preds: bb0
+  br bb3(%6)                                      // id: %9
+
+bb2:                                              // Preds: bb0
+  %10 = struct_element_addr %4, #SemanticRecordBankMetadata.activePath // user: %11
+  %11 = load %10                                  // users: %92, %30
+  %12 = struct_element_addr %4, #SemanticRecordBankMetadata.phase // user: %13
+  %13 = load %12                                  // user: %15
+  %14 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %15, %23, %19
+  store %13 to %14                                // id: %15
+  %16 = enum $SemanticRecordBankMetadata.Phase, #SemanticRecordBankMetadata.Phase.expanding!enumelt // user: %18
+  %17 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %18, %22, %20
+  store %16 to %17                                // id: %18
+  %19 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%14) : $Builtin.Int32 // user: %21
+  %20 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%17) : $Builtin.Int32 // user: %21
+  %21 = builtin "cmp_eq_Int32"(%19, %20) : $Builtin.Int1 // user: %24
+  dealloc_stack %17                               // id: %22
+  dealloc_stack %14                               // id: %23
+  cond_br %21, bb4, bb5                           // id: %24
+
+// %25                                            // user: %26
+bb3(%25 : $Optional<SemanticExpansionError>):     // Preds: bb12 bb31 bb32 bb13 bb28 bb20 bb24 bb1
+  return %25                                      // id: %26
+
+bb4:                                              // Preds: bb2
+  %27 = struct_element_addr %4, #SemanticRecordBankMetadata.paths // user: %28
+  %28 = struct_element_addr %27, #UInt16._value   // user: %29
+  %29 = load %28                                  // user: %31
+  %30 = struct_extract %11, #UInt16._value        // users: %35, %31
+  %31 = builtin "cmp_ult_Int16"(%30, %29) : $Builtin.Int1 // user: %32
+  cond_br %31, bb6, bb7                           // id: %32
+
+bb5:                                              // Preds: bb2
+  br bb30                                         // id: %33
+
+bb6:                                              // Preds: bb4
+  %34 = struct_extract %1, #SemanticRecordBankBuffers.paths // user: %36
+  %35 = builtin "zextOrBitCast_Int16_Int64"(%30) : $Builtin.Int64 // user: %39
+  %36 = struct_extract %34, #UnsafeMutableBufferPointer._position // user: %37
+  %37 = unchecked_enum_data %36, #Optional.some!enumelt // user: %38
+  %38 = struct_extract %37, #UnsafeMutablePointer._rawValue // user: %40
+  %39 = builtin "truncOrBitCast_Int64_Word"(%35) : $Builtin.Word // user: %41
+  %40 = pointer_to_address %38 to [strict] $*SemanticPathEntry // user: %41
+  %41 = index_addr [stack_protection] %40, %39    // users: %66, %42
+  %42 = struct_element_addr %41, #SemanticPathEntry.component // user: %43
+  %43 = struct_element_addr %42, #SemanticPathComponent.kind // user: %44
+  %44 = load %43                                  // user: %46
+  %45 = alloc_stack [lexical] $SemanticPathComponent.Kind // users: %46, %54, %50
+  store %44 to %45                                // id: %46
+  %47 = enum $SemanticPathComponent.Kind, #SemanticPathComponent.Kind.declarationRole!enumelt // user: %49
+  %48 = alloc_stack [lexical] $SemanticPathComponent.Kind // users: %49, %53, %51
+  store %47 to %48                                // id: %49
+  %50 = builtin "getEnumTag"<SemanticPathComponent.Kind>(%45) : $Builtin.Int32 // user: %52
+  %51 = builtin "getEnumTag"<SemanticPathComponent.Kind>(%48) : $Builtin.Int32 // user: %52
+  %52 = builtin "cmp_eq_Int32"(%50, %51) : $Builtin.Int1 // user: %55
+  dealloc_stack %48                               // id: %53
+  dealloc_stack %45                               // id: %54
+  cond_br %52, bb8, bb9                           // id: %55
+
+bb7:                                              // Preds: bb4
+  br bb30                                         // id: %56
+
+bb8:                                              // Preds: bb6
+  %57 = struct_element_addr %4, #SemanticRecordBankMetadata.records // users: %163, %58
+  %58 = struct_element_addr %57, #UInt16._value   // users: %59, %156
+  %59 = load %58                                  // users: %105, %145, %107, %62, %65
+  %60 = struct_extract %0, #SemanticRecordLimits.records // user: %61
+  %61 = struct_extract %60, #UInt16._value        // user: %62
+  %62 = builtin "cmp_ult_Int16"(%59, %61) : $Builtin.Int1 // user: %63
+  cond_br %62, bb10, bb11                         // id: %63
+
+bb9:                                              // Preds: bb6
+  br bb30                                         // id: %64
+
+bb10:                                             // Preds: bb8
+  %65 = struct $UInt16 (%59)                      // users: %134, %140, %142, %154
+  %66 = struct_element_addr %41, #SemanticPathEntry.nearestRecord // users: %154, %67
+  %67 = load %66                                  // users: %93, %94
+  %68 = alloc_stack [var_decl] $SemanticRuntimeRecord // users: %146, %176, %131, %165, %90, %88, %84, %82, %79, %78, %76, %74, %72, %69
+  %69 = struct_element_addr %68, #SemanticRuntimeRecord.parent // user: %93
+  %70 = integer_literal $Builtin.Int16, -1        // users: %120, %95, %71
+  %71 = struct $UInt16 (%70)                      // users: %83, %77, %75, %73
+  %72 = struct_element_addr %68, #SemanticRuntimeRecord.firstChild // user: %73
+  store %71 to %72                                // id: %73
+  %74 = struct_element_addr %68, #SemanticRuntimeRecord.lastChild // user: %75
+  store %71 to %74                                // id: %75
+  %76 = struct_element_addr %68, #SemanticRuntimeRecord.nextSibling // user: %77
+  store %71 to %76                                // id: %77
+  %78 = struct_element_addr %68, #SemanticRuntimeRecord.path // user: %92
+  %79 = struct_element_addr %68, #SemanticRuntimeRecord.kind // user: %81
+  %80 = enum $SemanticRuntimeRecord.Kind, #SemanticRuntimeRecord.Kind.structural!enumelt // user: %81
+  store %80 to %79                                // id: %81
+  %82 = struct_element_addr %68, #SemanticRuntimeRecord.payload // user: %83
+  store %71 to %82                                // id: %83
+  %84 = struct_element_addr %68, #SemanticRuntimeRecord.firstTextScalar // user: %87
+  %85 = integer_literal $Builtin.Int16, 0         // users: %107, %86
+  %86 = struct $UInt16 (%85)                      // users: %91, %89, %87
+  store %86 to %84                                // id: %87
+  %88 = struct_element_addr %68, #SemanticRuntimeRecord.textScalarCount // user: %89
+  store %86 to %88                                // id: %89
+  %90 = struct_element_addr %68, #SemanticRuntimeRecord.modifierChainIndex // user: %91
+  store %86 to %90                                // id: %91
+  store %11 to %78                                // id: %92
+  store %67 to %69                                // id: %93
+  %94 = struct_extract %67, #UInt16._value        // users: %110, %105, %95
+  %95 = builtin "cmp_ne_Int16"(%94, %70) : $Builtin.Int1 // user: %96
+  cond_br %95, bb14, bb15                         // id: %96
+
+bb11:                                             // Preds: bb8
+  %97 = load %5                                   // users: %104, %98
+  switch_enum %97, case #Optional.some!enumelt: bb13, case #Optional.none!enumelt: bb12 // id: %98
+
+bb12:                                             // Preds: bb11
+  %99 = enum $SemanticExpansionError, #SemanticExpansionError.capacityExhausted!enumelt // user: %100
+  %100 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %99 // users: %102, %101
+  store %100 to %5                                // id: %101
+  br bb3(%100)                                    // id: %102
+
+bb13(%103 : $SemanticExpansionError):             // Preds: bb11
+  br bb3(%97)                                     // id: %104
+
+bb14:                                             // Preds: bb10
+  %105 = builtin "cmp_ult_Int16"(%94, %59) : $Builtin.Int1 // user: %106
+  cond_br %105, bb16, bb17                        // id: %106
+
+bb15:                                             // Preds: bb10
+  %107 = builtin "cmp_ne_Int16"(%59, %85) : $Builtin.Int1 // user: %108
+  cond_br %107, bb25, bb29                        // id: %108
+
+bb16:                                             // Preds: bb14
+  %109 = struct_extract %1, #SemanticRecordBankBuffers.records // user: %111
+  %110 = builtin "zextOrBitCast_Int16_Int64"(%94) : $Builtin.Int64 // user: %114
+  %111 = struct_extract %109, #UnsafeMutableBufferPointer._position // user: %112
+  %112 = unchecked_enum_data %111, #Optional.some!enumelt // user: %113
+  %113 = struct_extract %112, #UnsafeMutablePointer._rawValue // user: %115
+  %114 = builtin "truncOrBitCast_Int64_Word"(%110) : $Builtin.Word // user: %116
+  %115 = pointer_to_address %113 to [strict] $*SemanticRuntimeRecord // users: %138, %116
+  %116 = index_addr [stack_protection] %115, %114 // users: %133, %117
+  %117 = struct_element_addr %116, #SemanticRuntimeRecord.lastChild // users: %142, %118
+  %118 = struct_element_addr %117, #UInt16._value // user: %119
+  %119 = load %118                                // users: %120, %136
+  %120 = builtin "cmp_eq_Int16"(%119, %70) : $Builtin.Int1 // user: %121
+  cond_br %120, bb21, bb22                        // id: %121
+
+bb17:                                             // Preds: bb14
+  %122 = load %5                                  // users: %125, %123
+  switch_enum %122, case #Optional.some!enumelt: bb18, case #Optional.none!enumelt: bb19 // id: %123
+
+bb18(%124 : $SemanticExpansionError):             // Preds: bb17
+  br bb20(%122)                                   // id: %125
+
+bb19:                                             // Preds: bb17
+  %126 = enum $SemanticExpansionError, #SemanticExpansionError.invalidIdentity!enumelt // user: %127
+  %127 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %126 // users: %129, %128
+  store %127 to %5                                // id: %128
+  br bb20(%127)                                   // id: %129
+
+// %130                                           // user: %132
+bb20(%130 : $Optional<SemanticExpansionError>):   // Preds: bb19 bb18
+  dealloc_stack %68                               // id: %131
+  br bb3(%130)                                    // id: %132
+
+bb21:                                             // Preds: bb16
+  %133 = struct_element_addr %116, #SemanticRuntimeRecord.firstChild // user: %134
+  store %65 to %133                               // id: %134
+  br bb23                                         // id: %135
+
+bb22:                                             // Preds: bb16
+  %136 = builtin "zextOrBitCast_Int16_Int64"(%119) : $Builtin.Int64 // user: %137
+  %137 = builtin "truncOrBitCast_Int64_Word"(%136) : $Builtin.Word // user: %138
+  %138 = index_addr [stack_protection] %115, %137 // user: %139
+  %139 = struct_element_addr %138, #SemanticRuntimeRecord.nextSibling // user: %140
+  store %65 to %139                               // id: %140
+  br bb23                                         // id: %141
+
+bb23:                                             // Preds: bb22 bb21
+  store %65 to %117                               // id: %142
+  br bb24                                         // id: %143
+
+bb24:                                             // Preds: bb29 bb23
+  %144 = struct_extract %1, #SemanticRecordBankBuffers.records // user: %147
+  %145 = builtin "zextOrBitCast_Int16_Int64"(%59) : $Builtin.Int64 // user: %150
+  %146 = load %68                                 // user: %153
+  %147 = struct_extract %144, #UnsafeMutableBufferPointer._position // user: %148
+  %148 = unchecked_enum_data %147, #Optional.some!enumelt // user: %149
+  %149 = struct_extract %148, #UnsafeMutablePointer._rawValue // user: %151
+  %150 = builtin "truncOrBitCast_Int64_Word"(%145) : $Builtin.Word // user: %152
+  %151 = pointer_to_address %149 to [strict] $*SemanticRuntimeRecord // user: %152
+  %152 = index_addr [stack_protection] %151, %150 // user: %153
+  store %146 to %152                              // id: %153
+  store %65 to %66                                // id: %154
+  %155 = integer_literal $Builtin.Int16, 1        // user: %158
+  %156 = load %58                                 // user: %158
+  %157 = integer_literal $Builtin.Int1, -1        // user: %158
+  %158 = builtin "uadd_with_overflow_Int16"(%156, %155, %157) : $(Builtin.Int16, Builtin.Int1) // users: %160, %159
+  %159 = tuple_extract %158, 0                    // user: %162
+  %160 = tuple_extract %158, 1                    // user: %161
+  cond_fail %160, "arithmetic overflow"           // id: %161
+  %162 = struct $UInt16 (%159)                    // user: %163
+  store %162 to %57                               // id: %163
+  %164 = enum $Optional<SemanticExpansionError>, #Optional.none!enumelt // user: %166
+  dealloc_stack %68                               // id: %165
+  br bb3(%164)                                    // id: %166
+
+bb25:                                             // Preds: bb15
+  %167 = load %5                                  // users: %170, %168
+  switch_enum %167, case #Optional.some!enumelt: bb26, case #Optional.none!enumelt: bb27 // id: %168
+
+bb26(%169 : $SemanticExpansionError):             // Preds: bb25
+  br bb28(%167)                                   // id: %170
+
+bb27:                                             // Preds: bb25
+  %171 = enum $SemanticExpansionError, #SemanticExpansionError.invalidIdentity!enumelt // user: %172
+  %172 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %171 // users: %174, %173
+  store %172 to %5                                // id: %173
+  br bb28(%172)                                   // id: %174
+
+// %175                                           // user: %177
+bb28(%175 : $Optional<SemanticExpansionError>):   // Preds: bb27 bb26
+  dealloc_stack %68                               // id: %176
+  br bb3(%175)                                    // id: %177
+
+bb29:                                             // Preds: bb15
+  br bb24                                         // id: %178
+
+bb30:                                             // Preds: bb5 bb7 bb9
+  %179 = load %5                                  // users: %186, %180
+  switch_enum %179, case #Optional.some!enumelt: bb32, case #Optional.none!enumelt: bb31 // id: %180
+
+bb31:                                             // Preds: bb30
+  %181 = enum $SemanticExpansionError, #SemanticExpansionError.invalidIdentity!enumelt // user: %182
+  %182 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %181 // users: %184, %183
+  store %182 to %5                                // id: %183
+  br bb3(%182)                                    // id: %184
+
+bb32(%185 : $SemanticExpansionError):             // Preds: bb30
+  br bb3(%179)                                    // id: %186
+} // end sil function '$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0pq6SchemaN6ValuesOy0pQ7Runtime0Q6DomainOGG_Tg5'
+
+// ORIGINAL LINES 593184–593254
+sil shared @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF0A9UIDrawing0iD7PayloadOy15P08CounterTable0no6SchemaI6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, @guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Bool {
+[%0: noescape **, read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[%1: noescape **]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0                                             // users: %27, %3
+bb0(%0 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, %1 : $SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>):
+  %2 = integer_literal $Builtin.Int64, 0          // users: %12, %18, %10
+  %3 = struct_extract %0, #SemanticRecordBankBuffers.metadata // user: %4
+  %4 = struct_extract %3, #UnsafeMutablePointer._rawValue // user: %5
+  %5 = pointer_to_address %4 to [strict] $*SemanticRecordBankMetadata // user: %6
+  %6 = struct_element_addr %5, #SemanticRecordBankMetadata.records // user: %7
+  %7 = struct_element_addr %6, #UInt16._value     // user: %8
+  %8 = load %7                                    // user: %9
+  %9 = builtin "zextOrBitCast_Int16_Int64"(%8) : $Builtin.Int64 // users: %19, %14, %10
+  %10 = builtin "cmp_slt_Int64"(%9, %2) : $Builtin.Int1 // user: %11
+  cond_fail %10, "Range requires lowerBound <= upperBound" // id: %11
+  br bb1(%2)                                      // id: %12
+
+// %13                                            // users: %31, %24, %19, %18, %14
+// Loop header
+bb1(%13 : $Builtin.Int64):                        // Preds: bb6 bb0
+  %14 = builtin "cmp_eq_Int64"(%13, %9) : $Builtin.Int1 // user: %15
+  cond_br %14, bb2, bb3                           // id: %15
+
+bb2:                                              // Preds: bb1
+  %16 = integer_literal $Builtin.Int1, 0          // user: %17
+  br bb4(%16)                                     // id: %17
+
+bb3:                                              // Preds: bb1
+  %18 = builtin "cmp_slt_Int64"(%13, %2) : $Builtin.Int1 // user: %20
+  %19 = builtin "cmp_sge_Int64"(%13, %9) : $Builtin.Int1 // user: %20
+  %20 = builtin "or_Int1"(%18, %19) : $Builtin.Int1 // user: %21
+  cond_fail %20, "Index out of bounds"            // id: %21
+  %22 = integer_literal $Builtin.Int64, 1         // user: %24
+  %23 = integer_literal $Builtin.Int1, -1         // users: %50, %24
+  %24 = builtin "sadd_with_overflow_Int64"(%13, %22, %23) : $(Builtin.Int64, Builtin.Int1) // users: %25, %51
+  %25 = tuple_extract %24, 1                      // user: %26
+  cond_fail %25, "arithmetic overflow"            // id: %26
+  %27 = struct_extract %0, #SemanticRecordBankBuffers.records // user: %28
+  %28 = struct_extract %27, #UnsafeMutableBufferPointer._position // user: %29
+  %29 = unchecked_enum_data %28, #Optional.some!enumelt // user: %30
+  %30 = struct_extract %29, #UnsafeMutablePointer._rawValue // user: %32
+  %31 = builtin "truncOrBitCast_Int64_Word"(%13) : $Builtin.Word // user: %33
+  %32 = pointer_to_address %30 to [strict] $*SemanticRuntimeRecord // user: %33
+  %33 = index_addr [stack_protection] %32, %31    // user: %34
+  %34 = struct_element_addr %33, #SemanticRuntimeRecord.kind // user: %35
+  %35 = load %34                                  // user: %37
+  %36 = alloc_stack [lexical] $SemanticRuntimeRecord.Kind // users: %37, %45, %41
+  store %35 to %36                                // id: %37
+  %38 = enum $SemanticRuntimeRecord.Kind, #SemanticRuntimeRecord.Kind.pendingCanvas!enumelt // user: %40
+  %39 = alloc_stack [lexical] $SemanticRuntimeRecord.Kind // users: %40, %44, %42
+  store %38 to %39                                // id: %40
+  %41 = builtin "getEnumTag"<SemanticRuntimeRecord.Kind>(%36) : $Builtin.Int32 // user: %43
+  %42 = builtin "getEnumTag"<SemanticRuntimeRecord.Kind>(%39) : $Builtin.Int32 // user: %43
+  %43 = builtin "cmp_eq_Int32"(%41, %42) : $Builtin.Int1 // user: %46
+  dealloc_stack %39                               // id: %44
+  dealloc_stack %36                               // id: %45
+  cond_br %43, bb5, bb6                           // id: %46
+
+// %47                                            // user: %48
+bb4(%47 : $Builtin.Int1):                         // Preds: bb5 bb2
+  %48 = struct $Bool (%47)                        // user: %49
+  return %48                                      // id: %49
+
+bb5:                                              // Preds: bb3
+  br bb4(%23)                                     // id: %50
+
+bb6:                                              // Preds: bb3
+  %51 = tuple_extract %24, 0                      // user: %52
+  br bb1(%51)                                     // id: %52
+} // end sil function '$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF0A9UIDrawing0iD7PayloadOy15P08CounterTable0no6SchemaI6ValuesOy0nO7Runtime0O6DomainOGG_Tg5'
+
+// ORIGINAL LINES 593458–593518
+sil shared @$s18GiftUISemanticCore19SemanticRecordStoreV9publisheds5UInt8VSgvg0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0lm6SchemaJ6ValuesOy0lM7Runtime0M6DomainOGG_Tg5 : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<UInt8> {
+[%0: noescape **, read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0                                             // users: %22, %1
+bb0(%0 : $SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>):
+  %1 = struct_extract %0, #SemanticRecordStore.a  // user: %2
+  %2 = struct_extract %1, #SemanticRecordBankBuffers.metadata // user: %3
+  %3 = struct_extract %2, #UnsafeMutablePointer._rawValue // user: %4
+  %4 = pointer_to_address %3 to [strict] $*SemanticRecordBankMetadata // user: %5
+  %5 = struct_element_addr %4, #SemanticRecordBankMetadata.phase // user: %6
+  %6 = load %5                                    // user: %8
+  %7 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %8, %16, %12
+  store %6 to %7                                  // id: %8
+  %9 = enum $SemanticRecordBankMetadata.Phase, #SemanticRecordBankMetadata.Phase.published!enumelt // users: %31, %11
+  %10 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %11, %15, %13
+  store %9 to %10                                 // id: %11
+  %12 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%7) : $Builtin.Int32 // user: %14
+  %13 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%10) : $Builtin.Int32 // user: %14
+  %14 = builtin "cmp_eq_Int32"(%12, %13) : $Builtin.Int1 // user: %17
+  dealloc_stack %10                               // id: %15
+  dealloc_stack %7                                // id: %16
+  cond_br %14, bb1, bb2                           // id: %17
+
+bb1:                                              // Preds: bb0
+  %18 = integer_literal $Builtin.Int8, 0          // user: %19
+  %19 = struct $UInt8 (%18)                       // user: %20
+  %20 = enum $Optional<UInt8>, #Optional.some!enumelt, %19 // user: %21
+  br bb3(%20)                                     // id: %21
+
+bb2:                                              // Preds: bb0
+  %22 = struct_extract %0, #SemanticRecordStore.b // user: %23
+  %23 = struct_extract %22, #SemanticRecordBankBuffers.metadata // user: %24
+  %24 = struct_extract %23, #UnsafeMutablePointer._rawValue // user: %25
+  %25 = pointer_to_address %24 to [strict] $*SemanticRecordBankMetadata // user: %26
+  %26 = struct_element_addr %25, #SemanticRecordBankMetadata.phase // user: %27
+  %27 = load %26                                  // user: %29
+  %28 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %29, %36, %32
+  store %27 to %28                                // id: %29
+  %30 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %31, %35, %33
+  store %9 to %30                                 // id: %31
+  %32 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%28) : $Builtin.Int32 // user: %34
+  %33 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%30) : $Builtin.Int32 // user: %34
+  %34 = builtin "cmp_eq_Int32"(%32, %33) : $Builtin.Int1 // user: %37
+  dealloc_stack %30                               // id: %35
+  dealloc_stack %28                               // id: %36
+  cond_br %34, bb4, bb5                           // id: %37
+
+// %38                                            // user: %39
+bb3(%38 : $Optional<UInt8>):                      // Preds: bb5 bb4 bb1
+  return %38                                      // id: %39
+
+bb4:                                              // Preds: bb2
+  %40 = integer_literal $Builtin.Int8, 1          // user: %41
+  %41 = struct $UInt8 (%40)                       // user: %42
+  %42 = enum $Optional<UInt8>, #Optional.some!enumelt, %41 // user: %43
+  br bb3(%42)                                     // id: %43
+
+bb5:                                              // Preds: bb2
+  %44 = enum $Optional<UInt8>, #Optional.none!enumelt // user: %45
+  br bb3(%44)                                     // id: %45
+} // end sil function '$s18GiftUISemanticCore19SemanticRecordStoreV9publisheds5UInt8VSgvg0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0lm6SchemaJ6ValuesOy0lM7Runtime0M6DomainOGG_Tg5'
+
+// ORIGINAL LINES 593522–593824
+sil shared @$s18GiftUISemanticCore25SemanticRecordBankBuffersV9reconcile4with6limitsAA0D14ExpansionErrorOSgACyxG_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0qr6SchemaO6ValuesOy0qR7Runtime0R6DomainOGG_Tg5 : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, SemanticRecordLimits, SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> Optional<SemanticExpansionError> {
+[%0: noescape **, read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[%2: noescape **, read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0                                             // users: %193, %141, %19
+// %1                                             // user: %123
+// %2                                             // users: %57, %3
+bb0(%0 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, %1 : $SemanticRecordLimits, %2 : $SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>):
+  %3 = struct_extract %2, #SemanticRecordBankBuffers.metadata // user: %4
+  %4 = struct_extract %3, #UnsafeMutablePointer._rawValue // user: %5
+  %5 = pointer_to_address %4 to [strict] $*SemanticRecordBankMetadata // users: %205, %184, %168, %97, %45, %42, %38, %6
+  %6 = struct_element_addr %5, #SemanticRecordBankMetadata.phase // user: %7
+  %7 = load %6                                    // user: %9
+  %8 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %9, %17, %13
+  store %7 to %8                                  // id: %9
+  %10 = enum $SemanticRecordBankMetadata.Phase, #SemanticRecordBankMetadata.Phase.candidate!enumelt // user: %12
+  %11 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %12, %16, %14
+  store %10 to %11                                // id: %12
+  %13 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%8) : $Builtin.Int32 // user: %15
+  %14 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%11) : $Builtin.Int32 // user: %15
+  %15 = builtin "cmp_eq_Int32"(%13, %14) : $Builtin.Int1 // user: %18
+  dealloc_stack %11                               // id: %16
+  dealloc_stack %8                                // id: %17
+  cond_br %15, bb1, bb2                           // id: %18
+
+bb1:                                              // Preds: bb0
+  %19 = struct_extract %0, #SemanticRecordBankBuffers.metadata // user: %20
+  %20 = struct_extract %19, #UnsafeMutablePointer._rawValue // user: %21
+  %21 = pointer_to_address %20 to [strict] $*SemanticRecordBankMetadata // users: %117, %91, %40, %22
+  %22 = struct_element_addr %21, #SemanticRecordBankMetadata.phase // user: %23
+  %23 = load %22                                  // user: %25
+  %24 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %25, %33, %29
+  store %23 to %24                                // id: %25
+  %26 = enum $SemanticRecordBankMetadata.Phase, #SemanticRecordBankMetadata.Phase.published!enumelt // user: %28
+  %27 = alloc_stack [lexical] $SemanticRecordBankMetadata.Phase // users: %28, %32, %30
+  store %26 to %27                                // id: %28
+  %29 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%24) : $Builtin.Int32 // user: %31
+  %30 = builtin "getEnumTag"<SemanticRecordBankMetadata.Phase>(%27) : $Builtin.Int32 // user: %31
+  %31 = builtin "cmp_eq_Int32"(%29, %30) : $Builtin.Int1 // user: %34
+  dealloc_stack %27                               // id: %32
+  dealloc_stack %24                               // id: %33
+  cond_br %31, bb3, bb4                           // id: %34
+
+bb2:                                              // Preds: bb0
+  br bb40                                         // id: %35
+
+bb3:                                              // Preds: bb1
+  %36 = integer_literal $Builtin.Int32, 0         // user: %37
+  %37 = struct $UInt32 (%36)                      // user: %39
+  %38 = struct_element_addr %5, #SemanticRecordBankMetadata.componentComparisons // users: %131, %138, %39
+  store %37 to %38                                // id: %39
+  %40 = struct_element_addr %21, #SemanticRecordBankMetadata.revision // user: %41
+  %41 = load %40                                  // user: %43
+  %42 = struct_element_addr %5, #SemanticRecordBankMetadata.matchedRevision // user: %43
+  store %41 to %42                                // id: %43
+  %44 = integer_literal $Builtin.Int64, 0         // users: %64, %86, %70, %51, %49
+  %45 = struct_element_addr %5, #SemanticRecordBankMetadata.paths // user: %46
+  %46 = struct_element_addr %45, #UInt16._value   // user: %47
+  %47 = load %46                                  // user: %48
+  %48 = builtin "zextOrBitCast_Int16_Int64"(%47) : $Builtin.Int64 // users: %164, %71, %51, %49
+  %49 = builtin "cmp_slt_Int64"(%48, %44) : $Builtin.Int1 // user: %50
+  cond_fail %49, "Range requires lowerBound <= upperBound" // id: %50
+  %51 = builtin "cmp_eq_Int64"(%48, %44) : $Builtin.Int1 // user: %52
+  cond_br %51, bb5, bb6                           // id: %52
+
+bb4:                                              // Preds: bb1
+  br bb40                                         // id: %53
+
+bb5:                                              // Preds: bb3
+  br bb7                                          // id: %54
+
+bb6:                                              // Preds: bb3
+  %55 = integer_literal $Builtin.Int64, 1         // user: %74
+  %56 = integer_literal $Builtin.Int1, -1         // users: %133, %129, %74
+  %57 = struct_extract %2, #SemanticRecordBankBuffers.paths // user: %60
+  %58 = integer_literal $Builtin.Int16, -1        // users: %182, %115, %84, %59
+  %59 = struct $UInt16 (%58)                      // users: %80, %204, %108
+  %60 = struct_extract %57, #UnsafeMutableBufferPointer._position // user: %61
+  %61 = unchecked_enum_data %60, #Optional.some!enumelt // user: %62
+  %62 = struct_extract %61, #UnsafeMutablePointer._rawValue // user: %63
+  %63 = pointer_to_address %62 to [strict] $*SemanticPathEntry // users: %178, %78
+  br bb9(%44)                                     // id: %64
+
+bb7:                                              // Preds: bb29 bb5
+  %65 = enum $Optional<SemanticExpansionError>, #Optional.none!enumelt // user: %66
+  br bb8(%65)                                     // id: %66
+
+// %67                                            // user: %68
+bb8(%67 : $Optional<SemanticExpansionError>):     // Preds: bb14 bb32 bb36 bb41 bb42 bb37 bb15 bb33 bb7
+  return %67                                      // id: %68
+
+// %69                                            // users: %89, %86, %77, %74, %71, %70
+// Loop header
+bb9(%69 : $Builtin.Int64):                        // Preds: bb30 bb6
+  %70 = builtin "cmp_slt_Int64"(%69, %44) : $Builtin.Int1 // user: %72
+  %71 = builtin "cmp_sge_Int64"(%69, %48) : $Builtin.Int1 // user: %72
+  %72 = builtin "or_Int1"(%70, %71) : $Builtin.Int1 // user: %73
+  cond_fail %72, "Index out of bounds"            // id: %73
+  %74 = builtin "sadd_with_overflow_Int64"(%69, %55, %56) : $(Builtin.Int64, Builtin.Int1) // users: %75, %163
+  %75 = tuple_extract %74, 1                      // user: %76
+  cond_fail %75, "arithmetic overflow"            // id: %76
+  %77 = builtin "truncOrBitCast_Int64_Word"(%69) : $Builtin.Word // user: %78
+  %78 = index_addr [stack_protection] %63, %77    // users: %139, %81, %79
+  %79 = struct_element_addr %78, #SemanticPathEntry.matchedPath // users: %157, %80
+  store %59 to %79                                // id: %80
+  %81 = struct_element_addr %78, #SemanticPathEntry.parent // user: %82
+  %82 = struct_element_addr %81, #UInt16._value   // user: %83
+  %83 = load %82                                  // users: %84, %88
+  %84 = builtin "cmp_eq_Int16"(%83, %58) : $Builtin.Int1 // user: %85
+  cond_br %84, bb10, bb11                         // id: %85
+
+bb10:                                             // Preds: bb9
+  %86 = builtin "cmp_eq_Int64"(%69, %44) : $Builtin.Int1 // user: %87
+  cond_br %86, bb12, bb13                         // id: %87
+
+bb11:                                             // Preds: bb9
+  %88 = builtin "zextOrBitCast_Int16_Int64"(%83) : $Builtin.Int64 // users: %177, %89
+  %89 = builtin "cmp_slt_Int64"(%88, %69) : $Builtin.Int1 // user: %90
+  cond_br %89, bb34, bb35                         // id: %90
+
+bb12:                                             // Preds: bb10
+  %91 = struct_element_addr %21, #SemanticRecordBankMetadata.paths // user: %92
+  %92 = struct_element_addr %91, #UInt16._value   // user: %93
+  %93 = load %92                                  // user: %95
+  %94 = integer_literal $Builtin.Int16, 0         // users: %106, %95
+  %95 = builtin "cmp_ult_Int16"(%94, %93) : $Builtin.Int1 // user: %96
+  cond_br %95, bb16, bb17                         // id: %96
+
+bb13:                                             // Preds: bb10
+  %97 = struct_element_addr %5, #SemanticRecordBankMetadata.failure // users: %102, %98
+  %98 = load %97                                  // users: %105, %99
+  switch_enum %98, case #Optional.some!enumelt: bb15, case #Optional.none!enumelt: bb14 // id: %99
+
+bb14:                                             // Preds: bb13
+  %100 = enum $SemanticExpansionError, #SemanticExpansionError.invalidIdentity!enumelt // user: %101
+  %101 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %100 // users: %103, %102
+  store %101 to %97                               // id: %102
+  br bb8(%101)                                    // id: %103
+
+bb15(%104 : $SemanticExpansionError):             // Preds: bb13
+  br bb8(%98)                                     // id: %105
+
+bb16:                                             // Preds: bb12
+  %106 = struct $UInt16 (%94)                     // user: %107
+  br bb18(%106)                                   // id: %107
+
+bb17:                                             // Preds: bb12
+  br bb18(%59)                                    // id: %108
+
+// %109                                           // user: %111
+bb18(%109 : $UInt16):                             // Preds: bb39 bb38 bb17 bb16
+  %110 = integer_literal $Builtin.Int16, 0        // user: %111
+  br bb19(%110, %109)                             // id: %111
+
+// %112                                           // users: %129, %125
+// %113                                           // users: %157, %114
+// Loop header
+bb19(%112 : $Builtin.Int16, %113 : $UInt16):      // Preds: bb27 bb18
+  %114 = struct_extract %113, #UInt16._value      // users: %142, %120, %115
+  %115 = builtin "cmp_ne_Int16"(%114, %58) : $Builtin.Int1 // user: %116
+  cond_br %115, bb20, bb21                        // id: %116
+
+bb20:                                             // Preds: bb19
+  %117 = struct_element_addr %21, #SemanticRecordBankMetadata.paths // user: %118
+  %118 = struct_element_addr %117, #UInt16._value // user: %119
+  %119 = load %118                                // user: %120
+  %120 = builtin "cmp_ult_Int16"(%114, %119) : $Builtin.Int1 // user: %121
+  cond_br %120, bb22, bb23                        // id: %121
+
+bb21:                                             // Preds: bb19
+  br bb28                                         // id: %122
+
+bb22:                                             // Preds: bb20
+  %123 = struct_extract %1, #SemanticRecordLimits.fanout // user: %124
+  %124 = struct_extract %123, #UInt16._value      // user: %125
+  %125 = builtin "cmp_ult_Int16"(%112, %124) : $Builtin.Int1 // user: %126
+  cond_br %125, bb24, bb25                        // id: %126
+
+bb23:                                             // Preds: bb20
+  br bb31                                         // id: %127
+
+bb24:                                             // Preds: bb22
+  %128 = integer_literal $Builtin.Int16, 1        // user: %129
+  %129 = builtin "uadd_with_overflow_Int16"(%112, %128, %56) : $(Builtin.Int16, Builtin.Int1) // user: %159
+  %130 = integer_literal $Builtin.Int32, 1        // user: %133
+  %131 = struct_element_addr %38, #UInt32._value  // user: %132
+  %132 = load %131                                // user: %133
+  %133 = builtin "uadd_with_overflow_Int32"(%132, %130, %56) : $(Builtin.Int32, Builtin.Int1) // users: %135, %134
+  %134 = tuple_extract %133, 0                    // user: %137
+  %135 = tuple_extract %133, 1                    // user: %136
+  cond_fail %135, "arithmetic overflow"           // id: %136
+  %137 = struct $UInt32 (%134)                    // user: %138
+  store %137 to %38                               // id: %138
+  %139 = struct_element_addr %78, #SemanticPathEntry.component // user: %140
+  %140 = load %139                                // user: %153
+  %141 = struct_extract %0, #SemanticRecordBankBuffers.paths // user: %143
+  %142 = builtin "zextOrBitCast_Int16_Int64"(%114) : $Builtin.Int64 // user: %146
+  %143 = struct_extract %141, #UnsafeMutableBufferPointer._position // user: %144
+  %144 = unchecked_enum_data %143, #Optional.some!enumelt // user: %145
+  %145 = struct_extract %144, #UnsafeMutablePointer._rawValue // user: %147
+  %146 = builtin "truncOrBitCast_Int64_Word"(%142) : $Builtin.Word // user: %148
+  %147 = pointer_to_address %145 to [strict] $*SemanticPathEntry // user: %148
+  %148 = index_addr [stack_protection] %147, %146 // users: %160, %149
+  %149 = struct_element_addr %148, #SemanticPathEntry.component // user: %150
+  %150 = load %149                                // user: %153
+  %151 = metatype $@thin SemanticPathComponent.Type // user: %153
+  // function_ref static SemanticPathComponent.__derived_struct_equals(_:_:)
+  %152 = function_ref @$s18GiftUISemanticCore21SemanticPathComponentV23__derived_struct_equalsySbAC_ACtFZ : $@convention(method) (SemanticPathComponent, SemanticPathComponent, @thin SemanticPathComponent.Type) -> Bool // user: %153
+  %153 = apply %152(%140, %150, %151) : $@convention(method) (SemanticPathComponent, SemanticPathComponent, @thin SemanticPathComponent.Type) -> Bool // user: %154
+  %154 = struct_extract %153, #Bool._value        // user: %155
+  cond_br %154, bb26, bb27                        // id: %155
+
+bb25:                                             // Preds: bb22
+  br bb31                                         // id: %156
+
+bb26:                                             // Preds: bb24
+  store %113 to %79                               // id: %157
+  br bb28                                         // id: %158
+
+bb27:                                             // Preds: bb24
+  %159 = tuple_extract %129, 0                    // user: %162
+  %160 = struct_element_addr %148, #SemanticPathEntry.nextSibling // user: %161
+  %161 = load %160                                // user: %162
+  br bb19(%159, %161)                             // id: %162
+
+bb28:                                             // Preds: bb21 bb26
+  %163 = tuple_extract %74, 0                     // users: %167, %164
+  %164 = builtin "cmp_eq_Int64"(%163, %48) : $Builtin.Int1 // user: %165
+  cond_br %164, bb29, bb30                        // id: %165
+
+bb29:                                             // Preds: bb28
+  br bb7                                          // id: %166
+
+bb30:                                             // Preds: bb28
+  br bb9(%163)                                    // id: %167
+
+bb31:                                             // Preds: bb23 bb25
+  %168 = struct_element_addr %5, #SemanticRecordBankMetadata.failure // users: %173, %169
+  %169 = load %168                                // users: %176, %170
+  switch_enum %169, case #Optional.some!enumelt: bb33, case #Optional.none!enumelt: bb32 // id: %170
+
+bb32:                                             // Preds: bb31
+  %171 = enum $SemanticExpansionError, #SemanticExpansionError.invalidIdentity!enumelt // user: %172
+  %172 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %171 // users: %174, %173
+  store %172 to %168                              // id: %173
+  br bb8(%172)                                    // id: %174
+
+bb33(%175 : $SemanticExpansionError):             // Preds: bb31
+  br bb8(%169)                                    // id: %176
+
+bb34:                                             // Preds: bb11
+  %177 = builtin "truncOrBitCast_Int64_Word"(%88) : $Builtin.Word // user: %178
+  %178 = index_addr [stack_protection] %63, %177  // user: %179
+  %179 = struct_element_addr %178, #SemanticPathEntry.matchedPath // user: %180
+  %180 = struct_element_addr %179, #UInt16._value // user: %181
+  %181 = load %180                                // users: %182, %194
+  %182 = builtin "cmp_ne_Int16"(%181, %58) : $Builtin.Int1 // user: %183
+  cond_br %182, bb38, bb39                        // id: %183
+
+bb35:                                             // Preds: bb11
+  %184 = struct_element_addr %5, #SemanticRecordBankMetadata.failure // users: %189, %185
+  %185 = load %184                                // users: %192, %186
+  switch_enum %185, case #Optional.some!enumelt: bb37, case #Optional.none!enumelt: bb36 // id: %186
+
+bb36:                                             // Preds: bb35
+  %187 = enum $SemanticExpansionError, #SemanticExpansionError.invalidIdentity!enumelt // user: %188
+  %188 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %187 // users: %190, %189
+  store %188 to %184                              // id: %189
+  br bb8(%188)                                    // id: %190
+
+bb37(%191 : $SemanticExpansionError):             // Preds: bb35
+  br bb8(%185)                                    // id: %192
+
+bb38:                                             // Preds: bb34
+  %193 = struct_extract %0, #SemanticRecordBankBuffers.paths // user: %195
+  %194 = builtin "zextOrBitCast_Int16_Int64"(%181) : $Builtin.Int64 // user: %198
+  %195 = struct_extract %193, #UnsafeMutableBufferPointer._position // user: %196
+  %196 = unchecked_enum_data %195, #Optional.some!enumelt // user: %197
+  %197 = struct_extract %196, #UnsafeMutablePointer._rawValue // user: %199
+  %198 = builtin "truncOrBitCast_Int64_Word"(%194) : $Builtin.Word // user: %200
+  %199 = pointer_to_address %197 to [strict] $*SemanticPathEntry // user: %200
+  %200 = index_addr [stack_protection] %199, %198 // user: %201
+  %201 = struct_element_addr %200, #SemanticPathEntry.firstChild // user: %202
+  %202 = load %201                                // user: %203
+  br bb18(%202)                                   // id: %203
+
+bb39:                                             // Preds: bb34
+  br bb18(%59)                                    // id: %204
+
+bb40:                                             // Preds: bb2 bb4
+  %205 = struct_element_addr %5, #SemanticRecordBankMetadata.failure // users: %210, %206
+  %206 = load %205                                // users: %213, %207
+  switch_enum %206, case #Optional.some!enumelt: bb42, case #Optional.none!enumelt: bb41 // id: %207
+
+bb41:                                             // Preds: bb40
+  %208 = enum $SemanticExpansionError, #SemanticExpansionError.invariantViolation!enumelt // user: %209
+  %209 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %208 // users: %211, %210
+  store %209 to %205                              // id: %210
+  br bb8(%209)                                    // id: %211
+
+bb42(%212 : $SemanticExpansionError):             // Preds: bb40
+  br bb8(%206)                                    // id: %213
+} // end sil function '$s18GiftUISemanticCore25SemanticRecordBankBuffersV9reconcile4with6limitsAA0D14ExpansionErrorOSgACyxG_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0qr6SchemaO6ValuesOy0qR7Runtime0R6DomainOGG_Tg5'

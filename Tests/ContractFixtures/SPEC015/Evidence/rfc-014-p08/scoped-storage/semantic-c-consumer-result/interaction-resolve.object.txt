@@ -1,0 +1,48 @@
+0000000000002658 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF>:
+    2658:      	sub	sp, sp, #0x70
+    265c:      	stp	x24, x23, [sp, #0x30]
+    2660:      	stp	x22, x21, [sp, #0x40]
+    2664:      	stp	x20, x19, [sp, #0x50]
+    2668:      	stp	x29, x30, [sp, #0x60]
+    266c:      	add	x29, sp, #0x60
+    2670:      	mov	x19, x1
+    2674:      	mov	x21, x0
+    2678:      	ldp	q0, q1, [x1, #0x10]
+    267c:      	stp	q0, q1, [sp]
+    2680:      	ldr	q0, [x1, #0x30]
+    2684:      	bl	0x2684 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF+0x2c>
+		0000000000002684:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_15
+    2688:      	mov	x1, x0
+    268c:      	ldrsw	x8, [x0, #0x58]
+    2690:      	ldrb	w8, [x20, x8]
+    2694:      	cmp	w8, #0x2
+    2698:      	b.ne	0x26b0 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF+0x58>
+    269c:      	ldrsw	x8, [x19, #0x60]
+    26a0:      	ldrb	w8, [x20, x8]
+    26a4:      	cmp	w8, #0x9
+    26a8:      	cset	w8, eq
+    26ac:      	b	0x26b4 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF+0x5c>
+    26b0:      	mov	w8, #0x0                ; =0
+    26b4:      	and	x22, x21, #0xff00000000
+    26b8:      	mov	x23, #0x100000000       ; =4294967296
+    26bc:      	cmp	x22, x23
+    26c0:      	b.eq	0x26c8 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF+0x70>
+    26c4:      	cbz	w8, 0x26ec <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF+0x94>
+    26c8:      	and	x0, x21, #0xffffffffff
+    26cc:      	bl	0x26cc <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF+0x74>
+		00000000000026cc:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF
+    26d0:      	cmp	x22, x23
+    26d4:      	b.eq	0x26e4 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF+0x8c>
+    26d8:      	ldpsw	x8, x9, [x19, #0x54]
+    26dc:      	ldr	w8, [x20, x8]
+    26e0:      	str	w8, [x20, x9]
+    26e4:      	bl	0x26e4 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF+0x8c>
+		00000000000026e4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_144
+    26e8:      	strb	wzr, [x20, x8]
+    26ec:      	ldp	x29, x30, [sp, #0x60]
+    26f0:      	ldp	x20, x19, [sp, #0x50]
+    26f4:      	ldp	x22, x21, [sp, #0x40]
+    26f8:      	ldp	x24, x23, [sp, #0x30]
+    26fc:      	add	sp, sp, #0x70
+    2700:      	ret
+

@@ -1,0 +1,26 @@
+0000000000022dd4 <_$s18GiftUISemanticCore21SemanticPathComponentV7isValidSbvg>:
+   22dd4:      	ubfx	w8, w0, #8, #8
+   22dd8:      	lsr	w9, w0, #16
+   22ddc:      	ubfx	x10, x0, #32, #16
+   22de0:      	and	w11, w0, #0xff
+   22de4:      	cmp	w8, #0x0
+   22de8:      	ccmp	w9, #0x0, #0x4, eq
+   22dec:      	cset	w12, ne
+   22df0:      	cmp	w8, #0x2
+   22df4:      	orr	w9, w10, w9
+   22df8:      	ccmp	w9, #0x0, #0x0, lo
+   22dfc:      	cset	w10, eq
+   22e00:      	orr	w13, w8, w9
+   22e04:      	cmp	w13, #0x0
+   22e08:      	cset	w13, eq
+   22e0c:      	cmp	w8, #0x5
+   22e10:      	ccmp	w9, #0x0, #0x0, lo
+   22e14:      	cset	w8, eq
+   22e18:      	cmp	w11, #0x2
+   22e1c:      	csel	w8, w13, w8, ne
+   22e20:      	cmp	w11, #0x3
+   22e24:      	csel	w8, w10, w8, eq
+   22e28:      	cmp	w11, #0x5
+   22e2c:      	csel	w0, w12, w8, eq
+   22e30:      	ret
+

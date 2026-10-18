@@ -1,0 +1,22 @@
+157197: 
+157198: bb12:                                             // Preds: bb6
+157199:   %114 = struct_element_addr %1, #CounterPipelineOwner.observableCandidate // user: %115
+157200:   %115 = struct_element_addr %114, #Bool._value   // user: %116
+157201:   %116 = load %115                                // user: %117
+157202:   cond_br %116, bb22, bb23                        // id: %117
+157203: 
+157204: bb13:                                             // Preds: bb6
+157205:   debug_value undef : $*CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, var, name "self", argno 2, expr op_deref // id: %118
+157206:   %119 = enum $InteractionCandidateDisposition, #InteractionCandidateDisposition.discard!enumelt // user: %122
+157207:   %120 = struct_element_addr %1, #CounterPipelineOwner.interaction // user: %122
+157208:   // function_ref InteractionOwnedKeyState<>.resolveCandidate(_:)
+157209:   %121 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <τ_0_0, τ_0_1, τ_0_2 where τ_0_0 : InteractionCandidateRecordStorage, τ_0_1 : InteractionCommittedRecordStorage, τ_0_2 : InteractionHitRegionStorage, τ_0_0.Identity == SemanticCompleteIdentity, τ_0_1.Identity == SemanticCompleteIdentity, τ_0_2.Identity == SemanticCompleteIdentity, τ_0_0 : ~Copyable, τ_0_0 : ~Escapable, τ_0_1 : ~Copyable, τ_0_1 : ~Escapable, τ_0_2 : ~Copyable, τ_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<τ_0_0, τ_0_1, τ_0_2>) -> () // user: %122
+157210:   %122 = apply %121<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>(%119, %120) : $@convention(method) <τ_0_0, τ_0_1, τ_0_2 where τ_0_0 : InteractionCandidateRecordStorage, τ_0_1 : InteractionCommittedRecordStorage, τ_0_2 : InteractionHitRegionStorage, τ_0_0.Identity == SemanticCompleteIdentity, τ_0_1.Identity == SemanticCompleteIdentity, τ_0_2.Identity == SemanticCompleteIdentity, τ_0_0 : ~Copyable, τ_0_0 : ~Escapable, τ_0_1 : ~Copyable, τ_0_1 : ~Escapable, τ_0_2 : ~Copyable, τ_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<τ_0_0, τ_0_1, τ_0_2>) -> ()
+157211:   %123 = struct $Bool (%56)                       // users: %128, %126
+157212:   %124 = struct_element_addr %1, #CounterPipelineOwner.generations // user: %126
+157213:   // function_ref RuntimeActionGenerationAllocator.resolveCandidate(committed:)
+157214:   %125 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <τ_0_0 where τ_0_0 : Equatable, τ_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<τ_0_0>) -> () // user: %126
+157215:   %126 = apply %125<SemanticCompleteIdentity>(%123, %124) : $@convention(method) <τ_0_0 where τ_0_0 : Equatable, τ_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<τ_0_0>) -> ()
+157216:   %127 = struct_element_addr %1, #CounterPipelineOwner.interactionCandidate // user: %128
+157217:   store %123 to %127                              // id: %128
+157218:   br bb16                                         // id: %129

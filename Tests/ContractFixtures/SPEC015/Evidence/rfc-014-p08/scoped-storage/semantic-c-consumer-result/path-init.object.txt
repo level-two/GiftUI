@@ -1,0 +1,6 @@
+00000000000231f0 <_$s18GiftUISemanticCore17SemanticPathEntryVACycfC>:
+   231f0:      	mov	x0, #-0x1000000000000   ; =-281474976710656
+   231f4:      	mov	x1, #0xffffffffffff     ; =281474976710655
+   231f8:      	mov	x2, #0xffffffff0000     ; =281474976645120
+   231fc:      	ret
+

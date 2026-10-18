@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [semantic C actual consumer result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-consumer-result/README.md):
+all8C body boundaries concretize, F08metadata edge removed; publication/reconcile/
+borrow/readerdeferral proof retained.21/23selectedbodyboundaries resolved, E20generic
+metadata/dispatch and F21caller metadata instantiation blockcost/codegen (no heap
+claim). Sourcef2325b85 fixed/no repairreset; fullsafety/cold/P08 remain open.
+
 Current [semantic C explicit-return harness proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-escape-continuation1/README.md):
 87bodies/borrowpositive/internalnegative PASS retained. Prior escapecontrol discarded
 view (unusedexpression warning); explicitreturnedview +ownedUInt32 positive proposed,

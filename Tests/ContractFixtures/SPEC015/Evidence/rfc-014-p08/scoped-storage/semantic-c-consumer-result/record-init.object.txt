@@ -1,0 +1,6 @@
+0000000000023388 <_$s18GiftUISemanticCore21SemanticRuntimeRecordVACycfC>:
+   23388:      	mov	x0, #-0x1               ; =-1
+   2338c:      	mov	x1, #0xffff0000ffff     ; =281470681808895
+   23390:      	mov	w2, #0x0                ; =0
+   23394:      	ret
+
