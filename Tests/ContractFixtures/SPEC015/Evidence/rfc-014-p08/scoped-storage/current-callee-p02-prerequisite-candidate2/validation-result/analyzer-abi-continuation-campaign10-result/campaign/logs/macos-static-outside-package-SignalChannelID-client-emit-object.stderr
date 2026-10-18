@@ -1,0 +1,5 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign10/macos-static/scratch/outside-package-SignalChannelID/inputs/outside-package-SignalChannelID.swift:2:24: error: cannot find type 'SignalChannelID' in scope
+1 | import SignalAnalyzerDomain
+2 | func rejected(_ value: SignalChannelID) {}
+  |                        `- error: cannot find type 'SignalChannelID' in scope
+3 | 
