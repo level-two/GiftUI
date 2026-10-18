@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-17
+updated: 2026-10-18
 related_design_notes:
   - ../implementation-designs/spec-015-p08-checked-state-serialization.md
   - ../implementation-designs/spec-015-p08-native-cold-static.md
@@ -28,6 +28,14 @@ superseded_by: null
 ---
 
 # SPEC-015 Implementation Plan
+
+Current [grouped module-closure activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-activity.md):
+new explicit user authorization, initial0/1 plus corrections0/2; independent design
+review pending. Exact15-site/nine-file attribute correction, no ABI/access sweep;
+sequential fresh25-module dependency sweep collects independent failures and
+blocks stale dependents before physical/actual-host and strict safety/cold gates.
+No source/compiler work has begun; all prior budgets and P08/R07/T8.1 stay open
+or exhausted as recorded. Earlier no-source-allowance statements are historical.
 
 [Independent annotation package review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-final-independent-review.md)
 confirms compatibility/provider/helper PASS and Layout FAIL101. Next recommendation

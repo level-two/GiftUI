@@ -1,4 +1,13 @@
-# Grouped module closure — incomplete preflight
+# Grouped module closure — reduced candidate prepared
+
+The [new grouped activity](../p08-grouped-module-closure-activity.md) and
+[exact reduced map](candidate-map.json) are ready for independent design review:
+15 attribute sites/nine files, zero explicit ABI promotions, and a fresh25-module
+dependency DAG for the actual42-source host. Initial0/1 and corrections0/2 are
+unconsumed. No source/compiler execution occurred. The broad lexical inventory
+below remains historical, overinclusive and excluded from the source allowlist.
+
+## Historical incomplete preparation at db7dea79
 
 The maintainer authorized grouped Layout and remaining-module corrections after
 the [independent compatibility result](../p08-witness-annotation-compatibility-final-independent-review.md).

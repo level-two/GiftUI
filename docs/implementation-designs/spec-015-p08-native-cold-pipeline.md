@@ -16,6 +16,25 @@ superseded_by: null
 
 # P08 complete Native cold pipeline correction
 
+## Grouped dependency continuation — 2026-10-18
+
+The [new user-authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-activity.md)
+and [exact reduced map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-design/candidate-map.json)
+are prepared for independent review:15 attribute sites/nine files, zero explicit
+nominal/protocol/field ABI promotions; all other owners are fresh-recompile inputs.
+Private helpers retain access/body/inline hints while losing illegal source
+serialization directives. Four named package/internal entry bodies similarly
+avoid forcing private implementation into source `@inlinable` access. Unchanged
+default CMO and owning-module incorporation are candidate mechanisms only;
+physical callee-closure and actual concrete-host specialization are mandatory.
+The sequential fresh25-module compile sweep collects all independently runnable
+owner failures and blocks dependents without stale substitutions. No compilation,
+source edit, cycle consumption or specialization/resource claim occurs in this
+preflight. The new1initial+2corrections allowance is separate from every exhausted
+historical boundary below; contracts,42 origins,14 loans and strict cold stay exact.
+
+## Historical exhausted activity
+
 Current execution boundary: [corrective2 compile/privacy FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-cold-pipeline-correction2.md).
 The partial source overlay is unaccepted; both corrective cycles are consumed
 (2/2), with no new workload run. Private State backing prevents the direct

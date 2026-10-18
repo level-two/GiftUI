@@ -1,0 +1,1213 @@
+{
+  "status": "reduced derived initial candidate scope; independent design review pending; no source/compiler activity",
+  "prepared_head": "db7dea7951fbf39119febabc94b91a61839c8932",
+  "counts": {
+    "attribute_sites": 15,
+    "source_edit_files": 9,
+    "explicit_ABI_promotions": 0,
+    "fresh_modules": 25,
+    "real_host_source_files": 42
+  },
+  "source_edits": [
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 188,
+      "declaration": "LayoutEngine.measureText",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "private declaration is ineligible for @inlinable; retain private access/body",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    private mutating func measureText<Semantic, Metrics, Workspace>(\n        _ identity: Semantic.Identity,\n        semantic: borrowing Semantic,\n        metrics: borrowing Metrics,\n        proposal: ProposedSize,\n        workspace: inout Workspace\n    ) -> LayoutMeasurement?\n    where\n        Semantic: SemanticLayoutView & ~Escapable,\n        Metrics: CanonicalTextMetricsView,\n        Workspace: LayoutWorkspace,\n        Semantic.Identity == Workspace.Identity"
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 379,
+      "declaration": "LayoutEngine.finalizeTextLine",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "private declaration is ineligible for @inlinable; retain private access/body",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    private mutating func finalizeTextLine<Identity, Workspace>(\n        identity: Identity,\n        lineIndex: UInt16,\n        advance: GeometryScalar,\n        proposalWidth: GeometryScalar?,\n        ascent: GeometryScalar,\n        lineHeight: GeometryScalar,\n        baselineProgression: GeometryScalar,\n        maximumLineWidth: inout GeometryScalar,\n        workspace: inout Workspace\n    ) -> Bool\n    where Workspace: LayoutWorkspace, Workspace.Identity == Identity"
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1115,
+      "declaration": "LayoutEngine.placeTextGeometry",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "private declaration is ineligible for @inlinable; retain private access/body",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    private mutating func placeTextGeometry<Workspace: LayoutWorkspace>(\n        _ identity: Workspace.Identity,\n        origin: Point,\n        textClip: Rect,\n        workspace: inout Workspace\n    ) -> Bool"
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 51,
+      "declaration": "LayoutSemanticValidation.validateOccurrence",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "private declaration is ineligible for @inlinable; retain private access/body",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    private mutating func validateOccurrence<Semantic, Metrics, Workspace>(\n        _ identity: Semantic.Identity,\n        semantic: borrowing Semantic,\n        metrics: borrowing Metrics,\n        instance: inout FontInstanceDescriptor?,\n        workspace: inout Workspace,\n        flattenedCount: inout UInt16\n    ) -> LayoutError?\n    where\n        Semantic: SemanticLayoutView & ~Escapable,\n        Metrics: CanonicalTextMetricsView,\n        Workspace: LayoutWorkspace,\n        Semantic.Identity == Workspace.Identity"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 162,
+      "declaration": "MVPHostActivationController.contain",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "private declaration is ineligible for @inlinable; retain private access/body",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    private mutating func contain<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(\n        _ failure: Failure,\n        owner: inout Owner\n    ) -> HostActivationResult<Failure>\n    where Owner.ActivationFailure == Failure"
+    },
+    {
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 146,
+      "declaration": "InteractionState.matchingCommittedGeneration",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "private declaration is ineligible for @inlinable; retain private access/body",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    private borrowing func matchingCommittedGeneration(\n        identity: Identity,\n        isEnabled: Bool,\n        hitBounds: Rect,\n        paintOrder: UInt16,\n        action: BoundedApplicationAction,\n        targetGeneration: ObservableTargetGeneration\n    ) -> ActionGeneration?"
+    },
+    {
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 175,
+      "declaration": "InteractionState.containsCandidate",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "private declaration is ineligible for @inlinable; retain private access/body",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    private borrowing func containsCandidate(identity: borrowing Identity) -> Bool"
+    },
+    {
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 356,
+      "declaration": "InteractionState.topmostRecord",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "private declaration is ineligible for @inlinable; retain private access/body",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    private borrowing func topmostRecord(\n        at point: Point\n    ) -> BoundActionRecord<Identity>?"
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutPublication.swift",
+      "line": 5,
+      "declaration": "publishLayout",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "source serialized body reaches package/private implementation; preserve source access and delegate availability to unchanged compiler optimization, qualified by physical/actual-host gates",
+      "frozen_site": "@inlinable\n@inline(__always)\npackage func publishLayout<Workspace, Sink>(\n    summary: LayoutSummary,\n    workspace: inout Workspace,\n    sink: inout Sink\n) -> LayoutResult\nwhere\n    Workspace: LayoutWorkspace,\n    Sink: LayoutResultSink,\n    Workspace.Identity == Sink.Identity"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 25,
+      "declaration": "withCanvasStagedValues",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "source serialized body reaches package/private implementation; preserve source access and delegate availability to unchanged compiler optimization, qualified by physical/actual-host gates",
+      "frozen_site": "@inlinable\n@inline(__always)\npackage func withCanvasStagedValues<\n    Identity: Equatable & Sendable, Table: CanvasValueTable, Result\n>(\n    metadata: inout CanvasStagedMetadata,\n    entries: inout MutableSpan<CanvasStagedEntry<Identity, Table.CaptureStorage>?>,\n    table: borrowing Table, capacity: UInt16, limits: StaticCanvasLimits,\n    _ body: (borrowing CanvasStagedValues<Identity, Table>) throws(DrawingError) -> Result\n) throws(DrawingError) -> Result"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "line": 36,
+      "declaration": "RuntimeRecordInteractionBridge.appendProjected",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "source serialized body reaches package/private implementation; preserve source access and delegate availability to unchanged compiler optimization, qualified by physical/actual-host gates",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    static func appendProjected<\n        Candidate, Committed, Hits, Model, RootIdentity, Action, Roles, Payload\n    >(\n        record: SemanticRecordReference,\n        semantic: borrowing SemanticRecordView<Payload>,\n        root: borrowing ObservableStateRootScope<Model, RootIdentity>, rootIdentity: RootIdentity,\n        rootOrdinal: UInt16, actionType: Action.Type, roles: Roles.Type,\n        isEnabled: Bool, bounds: Rect, clip: Rect, paintOrder: UInt16,\n        interaction: inout InteractionOwnedKeyState<Candidate, Committed, Hits>,\n        projection: (Payload) -> SemanticStandardPayload?\n    ) -> InteractionCandidateAppendResult\n    where\n        Candidate: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,\n        Committed: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,\n        Hits: InteractionHitRegionStorage & ~Copyable & ~Escapable,\n        Candidate.Identity == SemanticCompleteIdentity,\n        Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity,\n        Model: ObservableStateModel & ~Copyable, RootIdentity: Equatable & Sendable,\n        Action: GiftUIAction, Roles: SemanticDeclarationRoles"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "line": 92,
+      "declaration": "RuntimeRecordInteractionBridge.dispatch",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "source serialized body reaches package/private implementation; preserve source access and delegate availability to unchanged compiler optimization, qualified by physical/actual-host gates",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package static func dispatch<Records, Model, RootIdentity, Action>(\n        _ captured: CapturedAction<Records.Identity>, records: borrowing Records,\n        target: borrowing ObservableStateRootTargetAccess<Model, RootIdentity>,\n        actionType: Action.Type, operation: (Action) -> Model.Mutation\n    ) -> RuntimeRecordInteractionDispatchResult\n    where\n        Records: InteractionCommittedActionView & ~Copyable & ~Escapable,\n        Model: ObservableStateModel & ObservableModelMutation & ~Copyable,\n        RootIdentity: Equatable & Sendable, Action: GiftUIAction"
+    },
+    {
+      "file": "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+      "line": 17,
+      "declaration": "FullSurfaceRGBA8888Storage.withBytes",
+      "edit": "remove @inlinable and @inline(__always) from bodyless requirement only",
+      "reason": "bodyless protocol requirement has no implementation body to serialize",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    borrowing func withBytes<Result>("
+    },
+    {
+      "file": "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+      "line": 26,
+      "declaration": "FullSurfaceReadableRaster.withBytes",
+      "edit": "remove @inlinable and @inline(__always) from bodyless requirement only",
+      "reason": "bodyless protocol requirement has no implementation body to serialize",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    borrowing func withBytes<Result>("
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 45,
+      "declaration": "SignalAnalyzerPresetLiveOwner.runOpportunity",
+      "edit": "remove @inlinable and @inline(__always) from bodyless requirement only",
+      "reason": "bodyless protocol requirement has no implementation body to serialize",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure>"
+    }
+  ],
+  "scope_exclusions": [
+    "No explicit nominal/protocol/field @usableFromInline promotions",
+    "No public/private/package access change, checked constructor change, body/algorithm/lifetime/storage change",
+    "All qualified State/macro/source tests frozen",
+    "144-nominal/85-witness lexical map is NOT an edit allowlist"
+  ],
+  "direct_source_serialization_closure": [
+    {
+      "entry": "publishLayout",
+      "current_direct_dependencies": "LayoutWorkspace/LayoutResultSink requirements; LayoutSummary/LayoutResult/LayoutError; LayoutPlacement/LayoutTextLine/LayoutPositionedGlyph fields",
+      "disposition": "remove source @inlinable at the entry; normal package source access remains legal; seven diagnosed Layout files remain inspected, only three named Layout files initially edited; source body carries no new public ABI requirement"
+    },
+    {
+      "entry": "withCanvasStagedValues",
+      "current_direct_dependencies": "CanvasValueTable/StaticCanvasCallableTable, StaticCanvasLimits, metadata fileprivate setters, scoped CanvasStagedValues fileprivate checked initializer/discard; raw backing borrow remains exact",
+      "disposition": "remove source @inlinable only; do not publish initializer or metadata/storage fields"
+    },
+    {
+      "entry": "RuntimeRecordInteractionBridge.appendProjected/dispatch",
+      "current_direct_dependencies": "SemanticRecordView/roles, root generation/target mutation, Interaction candidate/committed protocols and values, checked action conversion and first-failure ordering",
+      "disposition": "remove source @inlinable only; preserve package method/internal appendProjected access, checks and callbacks"
+    }
+  ],
+  "fresh_owner_order": [
+    {
+      "module": "GiftUI",
+      "fresh_prerequisites": [],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUI/ActionHandler.swift",
+        "Sources/GiftUI/BoundedText.swift",
+        "Sources/GiftUI/Button.swift",
+        "Sources/GiftUI/Canvas.swift",
+        "Sources/GiftUI/Color.swift",
+        "Sources/GiftUI/DeclarativeView.swift",
+        "Sources/GiftUI/Disabled.swift",
+        "Sources/GiftUI/DrawingStyles.swift",
+        "Sources/GiftUI/DrawingSurface.swift",
+        "Sources/GiftUI/GiftUI.swift",
+        "Sources/GiftUI/LayoutContainers.swift",
+        "Sources/GiftUI/LayoutModifiers.swift",
+        "Sources/GiftUI/LayoutValues.swift",
+        "Sources/GiftUI/ObservableState.swift",
+        "Sources/GiftUI/StyleModifiers.swift",
+        "Sources/GiftUI/Text.swift"
+      ],
+      "recipe": {
+        "basis": "fresh lowerer/provider/actual-host frozen recipe; exact argv must be staged before execution",
+        "existing_command": null
+      }
+    },
+    {
+      "module": "GiftUICapabilities",
+      "fresh_prerequisites": [],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUICapabilities/GiftUICapabilities.swift"
+      ],
+      "recipe": {
+        "basis": "fresh lowerer/provider/actual-host frozen recipe; exact argv must be staged before execution",
+        "existing_command": null
+      }
+    },
+    {
+      "module": "GiftUIFailureCore",
+      "fresh_prerequisites": [],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUIFailureCore/GiftUIFailureCore.swift"
+      ],
+      "recipe": {
+        "basis": "fresh lowerer/provider/actual-host frozen recipe; exact argv must be staged before execution",
+        "existing_command": null
+      }
+    },
+    {
+      "module": "GiftUISemanticCore",
+      "fresh_prerequisites": [
+        "GiftUI"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+        "Sources/GiftUISemanticCore/SemanticLayoutResultSink.swift",
+        "Sources/GiftUISemanticCore/SemanticLayoutView.swift",
+        "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+        "Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift",
+        "Sources/GiftUISemanticCore/SemanticRecordRenderView.swift",
+        "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+        "Sources/GiftUISemanticCore/SemanticRenderResultStorage.swift",
+        "Sources/GiftUISemanticCore/SemanticRenderView.swift",
+        "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+        "Sources/GiftUISemanticCore/SemanticStandardPayload.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 0,
+        "check_name": "GiftUISemanticCore",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "GiftUITextResources",
+      "fresh_prerequisites": [
+        "GiftUI"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUITextResources/GiftUITextResources.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 1,
+        "check_name": "GiftUITextResources",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "P08CounterSchema",
+      "fresh_prerequisites": [
+        "GiftUI"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        ".build/contracts/p08-witness-annotation-compatibility/CounterSchema.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 15,
+        "check_name": "P08CounterSchema",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "GiftUILayout",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUISemanticCore",
+        "GiftUITextResources"
+      ],
+      "disposition": "source correction: exact named attribute sites only",
+      "source_files": [
+        "Sources/GiftUILayout/Layout.swift",
+        "Sources/GiftUILayout/LayoutCounters.swift",
+        "Sources/GiftUILayout/LayoutEngine.swift",
+        "Sources/GiftUILayout/LayoutError.swift",
+        "Sources/GiftUILayout/LayoutGeometry.swift",
+        "Sources/GiftUILayout/LayoutPublication.swift",
+        "Sources/GiftUILayout/LayoutResultSink.swift",
+        "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+        "Sources/GiftUILayout/LayoutValues.swift",
+        "Sources/GiftUILayout/LayoutWorkspace.swift",
+        "Sources/GiftUILayout/ResolvedRenderLayoutView.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 3,
+        "check_name": "GiftUILayout",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "GiftUIReferenceTextResources",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUITextResources"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift",
+        "Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift",
+        "Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift",
+        "Sources/GiftUIReferenceTextResources/GiftUIPiCompactTextResources.swift",
+        "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift",
+        "Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactBitmapPayload.generated.swift",
+        "Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactCatalogue.generated.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 2,
+        "check_name": "GiftUIReferenceTextResources",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "GiftUIRenderCore",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUITextResources"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUIRenderCore/DrawingOperationSink.swift",
+        "Sources/GiftUIRenderCore/RenderOperationSink.swift",
+        "Sources/GiftUIRenderCore/RenderRecordingSink.swift",
+        "Sources/GiftUIRenderCore/RenderValues.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 4,
+        "check_name": "GiftUIRenderCore",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "P08CounterPresentation",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "P08CounterSchema"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        ".build/contracts/p08-witness-annotation-compatibility/Counter.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 16,
+        "check_name": "P08CounterPresentation",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "GiftUIExecution",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUIRenderCore"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUIExecution/AdmissionValues.swift",
+        "Sources/GiftUIExecution/ExecutionAdmissionController.swift",
+        "Sources/GiftUIExecution/ExecutionAdmissionSealTransaction.swift",
+        "Sources/GiftUIExecution/ExecutionAdmissionSealer.swift",
+        "Sources/GiftUIExecution/ExecutionMutationBatch.swift",
+        "Sources/GiftUIExecution/ExecutionOpportunityRunner.swift",
+        "Sources/GiftUIExecution/ExecutionPhaseMachine.swift",
+        "Sources/GiftUIExecution/ExecutionValues.swift",
+        "Sources/GiftUIExecution/ExecutionWakeAccumulator.swift",
+        "Sources/GiftUIExecution/FrameHandoffValues.swift",
+        "Sources/GiftUIExecution/FrameOfferNormalization.swift",
+        "Sources/GiftUIExecution/IdentityAllocators.swift",
+        "Sources/GiftUIExecution/InputSourceSequenceState.swift",
+        "Sources/GiftUIExecution/ObservableTargetGeneration.swift",
+        "Sources/GiftUIExecution/PointerActionCapture.swift",
+        "Sources/GiftUIExecution/RecordingCandidateOfferCoordinator.swift",
+        "Sources/GiftUIExecution/RecordingCycleCoordinator.swift",
+        "Sources/GiftUIExecution/RecordingCycleFinalizer.swift",
+        "Sources/GiftUIExecution/RecordingDerivationRecovery.swift",
+        "Sources/GiftUIExecution/RecordingDerivationTransaction.swift",
+        "Sources/GiftUIExecution/RecordingFocusedFailureSelection.swift",
+        "Sources/GiftUIExecution/RecordingFrameCommitTransaction.swift",
+        "Sources/GiftUIExecution/RecordingFrameEndpoint.swift",
+        "Sources/GiftUIExecution/RecordingMutationBatch.swift",
+        "Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift",
+        "Sources/GiftUIExecution/RecordingPresentationTerminalRecovery.swift",
+        "Sources/GiftUIExecution/RunCycleValues.swift",
+        "Sources/GiftUIExecution/WakeValues.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 5,
+        "check_name": "GiftUIExecution",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "GiftUIRenderLowering",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUILayout",
+        "GiftUIRenderCore",
+        "GiftUISemanticCore",
+        "GiftUITextResources"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUIRenderLowering/RenderExtensions.swift",
+        "Sources/GiftUIRenderLowering/RenderPreflight.swift",
+        "Sources/GiftUIRenderLowering/RenderProducer.swift",
+        "Sources/GiftUIRenderLowering/RenderProductionValues.swift",
+        "Sources/GiftUIRenderLowering/RenderStreaming.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 8,
+        "check_name": "GiftUIRenderLowering",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "GiftUISurfaceCore",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUICapabilities",
+        "GiftUIRenderCore"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUISurfaceCore/RasterSurface.swift",
+        "Sources/GiftUISurfaceCore/SurfaceValues.swift"
+      ],
+      "recipe": {
+        "basis": "fresh lowerer/provider/actual-host frozen recipe; exact argv must be staged before execution",
+        "existing_command": null
+      }
+    },
+    {
+      "module": "GiftUIDisplayCore",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUICapabilities",
+        "GiftUIFailureCore",
+        "GiftUISurfaceCore"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUIDisplayCore/DisplayContracts.swift",
+        "Sources/GiftUIDisplayCore/SurfaceDisplayContributionAdapter.swift"
+      ],
+      "recipe": {
+        "basis": "fresh lowerer/provider/actual-host frozen recipe; exact argv must be staged before execution",
+        "existing_command": null
+      }
+    },
+    {
+      "module": "GiftUIDrawing",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUIExecution",
+        "GiftUILayout",
+        "GiftUIRenderCore",
+        "GiftUIRenderLowering",
+        "GiftUISemanticCore",
+        "GiftUITextResources"
+      ],
+      "disposition": "source correction: exact named attribute sites only",
+      "source_files": [
+        "Sources/GiftUIDrawing/CanvasInvocationSource.swift",
+        "Sources/GiftUIDrawing/CanvasPlanProducer.swift",
+        "Sources/GiftUIDrawing/CanvasRenderProducer.swift",
+        "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+        "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+        "Sources/GiftUIDrawing/DrawingLimits.swift",
+        "Sources/GiftUIDrawing/DrawingPlan.swift",
+        "Sources/GiftUIDrawing/DrawingValues.swift",
+        "Sources/GiftUIDrawing/GiftUIDrawing.swift",
+        "Sources/GiftUIDrawing/PathConstruction.swift",
+        "Sources/GiftUIDrawing/StaticCanvasCallableTable.swift",
+        "Sources/GiftUIDrawing/StrokeSnapshot.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 9,
+        "check_name": "GiftUIDrawing",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "GiftUIInteraction",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUIExecution",
+        "GiftUILayout",
+        "GiftUISemanticCore"
+      ],
+      "disposition": "source correction: exact named attribute sites only",
+      "source_files": [
+        "Sources/GiftUIInteraction/EffectiveActionEnabledState.swift",
+        "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift",
+        "Sources/GiftUIInteraction/InteractionFailurePrecedence.swift",
+        "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+        "Sources/GiftUIInteraction/InteractionState.swift",
+        "Sources/GiftUIInteraction/InteractionStorage.swift",
+        "Sources/GiftUIInteraction/InteractionValues.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 6,
+        "check_name": "GiftUIInteraction",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "GiftUIObservableState",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUIExecution",
+        "GiftUISemanticCore"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUIObservableState/ObservableModelIdentity.swift",
+        "Sources/GiftUIObservableState/ObservableModelMutation.swift",
+        "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+        "Sources/GiftUIObservableState/ObservableModelScope.swift",
+        "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+        "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+        "Sources/GiftUIObservableState/ObservableStateAssociationLifecycle.swift",
+        "Sources/GiftUIObservableState/ObservableStateAttachmentGenerationAllocator.swift",
+        "Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift",
+        "Sources/GiftUIObservableState/ObservableStateCandidateLifecycle.swift",
+        "Sources/GiftUIObservableState/ObservableStateDirtyDerivation.swift",
+        "Sources/GiftUIObservableState/ObservableStateModel.swift",
+        "Sources/GiftUIObservableState/ObservableStateMutationResultSlot.swift",
+        "Sources/GiftUIObservableState/ObservableStateProtocols.swift",
+        "Sources/GiftUIObservableState/ObservableStateRegistrationBridge.swift",
+        "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift",
+        "Sources/GiftUIObservableState/ObservableStateReplacementBridge.swift",
+        "Sources/GiftUIObservableState/ObservableStateReplacementTransaction.swift",
+        "Sources/GiftUIObservableState/ObservableStateReportGuard.swift",
+        "Sources/GiftUIObservableState/ObservableStateReportRoute.swift",
+        "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+        "Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift",
+        "Sources/GiftUIObservableState/ObservableStateTargetLifetime.swift",
+        "Sources/GiftUIObservableState/ObservableStateTargetLookupSlot.swift",
+        "Sources/GiftUIObservableState/ObservableStateValues.swift",
+        "Sources/GiftUIObservableState/PresentationFactAdmission.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 7,
+        "check_name": "GiftUIObservableState",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "GiftUIRasterCore",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUICapabilities",
+        "GiftUIRenderCore",
+        "GiftUISurfaceCore",
+        "GiftUITextResources"
+      ],
+      "disposition": "source correction: exact named attribute sites only",
+      "source_files": [
+        "Sources/GiftUIRasterCore/FullSurfaceRGB565Framebuffer.swift",
+        "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+        "Sources/GiftUIRasterCore/RGB565TileWorkspace.swift",
+        "Sources/GiftUIRasterCore/RasterBackendContributionAdapter.swift",
+        "Sources/GiftUIRasterCore/RasterFillCoverage.swift",
+        "Sources/GiftUIRasterCore/RasterFrameSink.swift",
+        "Sources/GiftUIRasterCore/RasterFrameWork.swift",
+        "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift",
+        "Sources/GiftUIRasterCore/RasterPayloadLimits.swift",
+        "Sources/GiftUIRasterCore/RasterStrokeCoverage.swift",
+        "Sources/GiftUIRasterCore/RasterWorkTracker.swift"
+      ],
+      "recipe": {
+        "basis": "fresh lowerer/provider/actual-host frozen recipe; exact argv must be staged before execution",
+        "existing_command": null
+      }
+    },
+    {
+      "module": "GiftUIBackendIntegration",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUICapabilities",
+        "GiftUIDisplayCore",
+        "GiftUIExecution",
+        "GiftUIFailureCore",
+        "GiftUIRasterCore",
+        "GiftUIRenderCore",
+        "GiftUISurfaceCore",
+        "GiftUITextResources"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift",
+        "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+        "Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift",
+        "Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift",
+        "Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift",
+        "Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift",
+        "Sources/GiftUIBackendIntegration/RasterBackendOwnerFailureAdapter.swift",
+        "Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift",
+        "Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift",
+        "Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift"
+      ],
+      "recipe": {
+        "basis": "fresh lowerer/provider/actual-host frozen recipe; exact argv must be staged before execution",
+        "existing_command": null
+      }
+    },
+    {
+      "module": "GiftUIRuntimeCore",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUIDrawing",
+        "GiftUIExecution",
+        "GiftUIInteraction",
+        "GiftUILayout",
+        "GiftUIObservableState",
+        "GiftUIRenderCore",
+        "GiftUIRenderLowering",
+        "GiftUISemanticCore",
+        "GiftUITextResources"
+      ],
+      "disposition": "source correction: exact named attribute sites only",
+      "source_files": [
+        "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeCoordinatorLifecycle.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeCoordinatorQuiescence.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeCoreBoundary.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeFocusedFailureState.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateCoordinator.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateTransaction.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeInteractionDispatcher.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeInteractionMutationOwner.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeObservableProfileWorkspace.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeProfileStorage.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeProfileValidation.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+        "Sources/GiftUIRuntimeCore/RuntimeStorageRegistry.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 10,
+        "check_name": "GiftUIRuntimeCore",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "P08CounterTable",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUIDrawing",
+        "P08CounterPresentation",
+        "P08CounterSchema"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        ".build/contracts/p08-witness-annotation-compatibility/CounterTable.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 17,
+        "check_name": "P08CounterTable",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "GiftUIHostConfiguration",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUIBackendIntegration",
+        "GiftUICapabilities",
+        "GiftUIDisplayCore",
+        "GiftUIDrawing",
+        "GiftUIExecution",
+        "GiftUIFailureCore",
+        "GiftUIInteraction",
+        "GiftUILayout",
+        "GiftUIObservableState",
+        "GiftUIRasterCore",
+        "GiftUIRenderCore",
+        "GiftUIRenderLowering",
+        "GiftUIRuntimeCore",
+        "GiftUISemanticCore",
+        "GiftUISurfaceCore",
+        "GiftUITextResources"
+      ],
+      "disposition": "source correction: exact named attribute sites only",
+      "source_files": [
+        "Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift",
+        "Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift",
+        "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+        "Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift",
+        "Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift",
+        "Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift",
+        "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+        "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift",
+        "Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift",
+        "Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift",
+        "Sources/GiftUIHostConfiguration/HostFailureAdapter.swift",
+        "Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift",
+        "Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift",
+        "Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift",
+        "Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift",
+        "Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift",
+        "Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift",
+        "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift",
+        "Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift",
+        "Sources/GiftUIHostConfiguration/HostWakePacingController.swift",
+        "Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift",
+        "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+        "Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 13,
+        "check_name": "GiftUIHostConfiguration",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "GiftUIRuntimeDynamic",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUIDrawing",
+        "GiftUIExecution",
+        "GiftUIInteraction",
+        "GiftUILayout",
+        "GiftUIObservableState",
+        "GiftUIRenderCore",
+        "GiftUIRenderLowering",
+        "GiftUIRuntimeCore",
+        "GiftUISemanticCore",
+        "GiftUITextResources"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicDrawingPlanWorkspace.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicLivePathStorage.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicObservableProfileSlotStorage.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicObservableRootTargetAccess.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicObservableStateReconciler.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicProfileBoundary.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicProfileStorage.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionBindingAdapter.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicRuntimeProfileBinding.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 12,
+        "check_name": "GiftUIRuntimeDynamic",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "GiftUIRuntimeStatic",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUIDrawing",
+        "GiftUIExecution",
+        "GiftUIInteraction",
+        "GiftUILayout",
+        "GiftUIObservableState",
+        "GiftUIRenderCore",
+        "GiftUIRenderLowering",
+        "GiftUIRuntimeCore",
+        "GiftUISemanticCore"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Sources/GiftUIRuntimeStatic/StaticCanvasHostHandle.swift",
+        "Sources/GiftUIRuntimeStatic/StaticCanvasOccurrence.swift",
+        "Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift",
+        "Sources/GiftUIRuntimeStatic/StaticGeneratedProfileMetadata.swift",
+        "Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift",
+        "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift",
+        "Sources/GiftUIRuntimeStatic/StaticObservableProfileSlotStorage.swift",
+        "Sources/GiftUIRuntimeStatic/StaticObservableRegistrationRecord.swift",
+        "Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift",
+        "Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift",
+        "Sources/GiftUIRuntimeStatic/StaticProfileBoundary.swift",
+        "Sources/GiftUIRuntimeStatic/StaticProfileStorage.swift",
+        "Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift",
+        "Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionBindingAdapter.swift",
+        "Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift",
+        "Sources/GiftUIRuntimeStatic/StaticRuntimeProfileBinding.swift",
+        "Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 11,
+        "check_name": "GiftUIRuntimeStatic",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    },
+    {
+      "module": "P08CounterRuntime",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUIBackendIntegration",
+        "GiftUICapabilities",
+        "GiftUIDisplayCore",
+        "GiftUIDrawing",
+        "GiftUIExecution",
+        "GiftUIFailureCore",
+        "GiftUIHostConfiguration",
+        "GiftUIInteraction",
+        "GiftUILayout",
+        "GiftUIObservableState",
+        "GiftUIRasterCore",
+        "GiftUIReferenceTextResources",
+        "GiftUIRenderCore",
+        "GiftUIRenderLowering",
+        "GiftUIRuntimeCore",
+        "GiftUIRuntimeDynamic",
+        "GiftUIRuntimeStatic",
+        "GiftUISemanticCore",
+        "GiftUISurfaceCore",
+        "GiftUITextResources",
+        "P08CounterPresentation",
+        "P08CounterSchema",
+        "P08CounterTable"
+      ],
+      "disposition": "fresh recompile/qualification only; no source edits",
+      "source_files": [
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift"
+      ],
+      "recipe": {
+        "receipt": ".build/contracts/p08-counter-w700p_zi/checks.json",
+        "check_index": 18,
+        "check_name": "counter-model",
+        "receipt_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+      }
+    }
+  ],
+  "source_sha256": {
+    "Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift": "280fb6c4fe28db1b436cf28c7cc808437c8c0d5aaed6803e7136b5c395695f61",
+    "Sources/GiftUIRuntimeDynamic/DynamicDrawingPlanWorkspace.swift": "641f0e6c5bddd6ffe9b9d2b5284c96e0067a460db745c631f0205478324f506d",
+    "Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift": "374c7412495790f1de8e7e336be2902d7012d223edb0130c15ad4e422fdba904",
+    "Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift": "43669b288fa4f6810faa2eafa9c3b4f0ef834a5d9bab662585053dde42cec9a0",
+    "Sources/GiftUIRuntimeDynamic/DynamicLivePathStorage.swift": "229031aa031794b5241bc70e946e734860ad4fdd7d908524a379770f9dd150d2",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift": "a8c02c2e638a1f0138d9efdbd0d25d2890d7c66c8f8c1a1ee64e5c7830840d07",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift": "f7696e18e764f65c137d19e4c39ae92614ee80b9a1e056a11b4c37b334927fe0",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableProfileSlotStorage.swift": "5991d552b65e94afea75124d7291b5c5b3ce8d25286b6265daec6b1a76b0a435",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift": "ff9290f45e2a7c009d55ca90244bf034f0e5f19a57942d638812cab75777def2",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableRootTargetAccess.swift": "30597cee8b751b2f5f27034080227a1bbb1738fa75d46f484a4596defbfd1539",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableStateReconciler.swift": "e59c15cac625661d5863a4aebbef756a7d68b3359cfe3170d1a14bf09222b953",
+    "Sources/GiftUIRuntimeDynamic/DynamicProfileBoundary.swift": "4f82457985fc7bd411b022dbd527c8fcc005b546ebe44fd65aac75dd8890b168",
+    "Sources/GiftUIRuntimeDynamic/DynamicProfileStorage.swift": "fcb7594699584e5c75f6dd08dc8fbb572f533a86cce4915259579042ee219b24",
+    "Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift": "07e8dba114af4fcdaed8dc1c77545f4e1255b588c63a24782992e8d4479ec517",
+    "Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionBindingAdapter.swift": "ad4671bd154523175ee1cf691864a7c08d79ca29c4aa1c8af2df19c9c2f03847",
+    "Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift": "96689a3086bf2bc22f158a6aac1c84163b641b4da0d8fdc1a382047da26b306b",
+    "Sources/GiftUIRuntimeDynamic/DynamicRuntimeProfileBinding.swift": "02e75da1b712f1764b84bfa63d3fa92706ede11c7dd927a261bb348c572e28cb",
+    "Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift": "c0d545e0ac666eb98a7c6649e73ee0e93539faebba780f980e32b51d37f1aca8",
+    "Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift": "42357e32593459c879fa299b7a74bbcb787536fb176d147a0ebc2fbbf4200f9d",
+    "Sources/GiftUI/ActionHandler.swift": "d36a53f45d18892c235c02355cbed0e6bf92a20b7c64bc7e84ac39a03fa34d01",
+    "Sources/GiftUI/BoundedText.swift": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce",
+    "Sources/GiftUI/Button.swift": "bfef4dd797058b7c9c96e650f86ab9c068dffa5703200388c17631ad451af354",
+    "Sources/GiftUI/Canvas.swift": "4068c7a86e4523408968d37d6fce0197c4262d5984b749ea0c7ab02e771baf8a",
+    "Sources/GiftUI/Color.swift": "60009e3d58dcdfe65ba39bf6d036047207707837d73db308a5a25e81fc2ee835",
+    "Sources/GiftUI/DeclarativeView.swift": "15604c493d09f194252b05fdcb5fb31fdb412de3cb10a142fa7276a5e05e8bcf",
+    "Sources/GiftUI/Disabled.swift": "b38daff656c01cae87880bc8fda7b240c50e4cd46da52978a0b90caa7fc1bf36",
+    "Sources/GiftUI/DrawingStyles.swift": "eb28147b2dd565006f9d6b97c7b98e5bcfc52f42e19ebfae1dad1f79b08d130a",
+    "Sources/GiftUI/DrawingSurface.swift": "185607ede17d3eb8e655e1dc7e24a60fba22225028f1b1ae25a470355daa7a48",
+    "Sources/GiftUI/GiftUI.swift": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+    "Sources/GiftUI/LayoutContainers.swift": "5157a2cc20100ec15885d10d0da528202623901d885f6345d7dab89d07d49d20",
+    "Sources/GiftUI/LayoutModifiers.swift": "9df7df30a339bf4f6077581b108c855505ed6230d55d23e9fc55651f4fba877b",
+    "Sources/GiftUI/LayoutValues.swift": "70c7b34276f6f2d41382d14ee844fcf65d92c075f7caa0a12e79d17181c817f5",
+    "Sources/GiftUI/ObservableState.swift": "9f49b702c630be7e1ecc690973c73912142d731050bc4c62776c207e2ce68e86",
+    "Sources/GiftUI/StyleModifiers.swift": "5322bf0d7eda201882146c3be1162b23b43676c3ef9ce3286eb83ff82e173962",
+    "Sources/GiftUI/Text.swift": "b361224ecac936f5736fd777a96ad815889911644b19731fee2a947a2f5c054c",
+    "Sources/GiftUIObservableState/ObservableModelIdentity.swift": "b3100dea3f31eb0b508d07da66dc1aafb3da4235774502a36db9f46c9fd82a0a",
+    "Sources/GiftUIObservableState/ObservableModelMutation.swift": "d4edf05c126fa2ab43cb5cc073698fdaccb35c16dbd24f9282bef9ba3d9bb482",
+    "Sources/GiftUIObservableState/ObservableModelOwnership.swift": "3223e742ee24410a501f225368625d609dfc6fb66d66c6b0ead24fd4d0320c0a",
+    "Sources/GiftUIObservableState/ObservableModelScope.swift": "cf4fe6105ea05856ed229644a803fdbf1bab8d3eb8150b1ae0256d52634a21dc",
+    "Sources/GiftUIObservableState/ObservableModelTicket.swift": "fdee7c831f5a2d19b71e13df95968d5d1baba0d0d11dd8cc9ada07d4378d8649",
+    "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift": "e52aaae337bb1f56f6a228e5cb616d5480a45080628ceb5528b5376412b4b37f",
+    "Sources/GiftUIObservableState/ObservableStateAssociationLifecycle.swift": "433becfeee6f29a34a85c5fc07c5df5cb9cbc83bb4d47db061c91f4a8618b96e",
+    "Sources/GiftUIObservableState/ObservableStateAttachmentGenerationAllocator.swift": "5d93766c43fc5165f7a4471bd1e1146924fdddaea334103e971f80f9eb045d8a",
+    "Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift": "b88f911561ac3405bd4ed7264122488162828c395a6668ad9b314f54c37b04d6",
+    "Sources/GiftUIObservableState/ObservableStateCandidateLifecycle.swift": "5b452e404b01b32a7584b4c42a2cdd928c88a7ceff85dbfc333aa873dc554bcb",
+    "Sources/GiftUIObservableState/ObservableStateDirtyDerivation.swift": "d1e4ba239d7b3998f5ee4522ed10b32baadbb9e5b472d6a6ed362ad3b319fdfb",
+    "Sources/GiftUIObservableState/ObservableStateModel.swift": "f6add18fb5d078aa3fd749859a3421d86fe31e8fef0047aed34e90f39b46407e",
+    "Sources/GiftUIObservableState/ObservableStateMutationResultSlot.swift": "ec70c096e3e84d67a2db4c5edac9241700e9928f90ec064aceab8cc5ab0a6e94",
+    "Sources/GiftUIObservableState/ObservableStateProtocols.swift": "a192efc2b7be42a9c1950f11ec14a9bdf17dfe903c488c253dab9064e7b42629",
+    "Sources/GiftUIObservableState/ObservableStateRegistrationBridge.swift": "84f70d97f17c7bcfcc0be2f5626aa850a793816fe77ad003581a09863586d2da",
+    "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift": "58367baadd5b6213f1bf3809106c2aba2639ddc86ec01907b6d1e9e79a706774",
+    "Sources/GiftUIObservableState/ObservableStateReplacementBridge.swift": "29a648dd19183b1b388e36782def8c952c4eb269002de09e7903d0e646376f64",
+    "Sources/GiftUIObservableState/ObservableStateReplacementTransaction.swift": "659b8c2a7a5b76bf54a445a12e2463740df62267f7b2899da5621fea10cc7da9",
+    "Sources/GiftUIObservableState/ObservableStateReportGuard.swift": "b586d7b5386f11d13da8f42c8293a04b81cee738541864f4b183de6894ba6999",
+    "Sources/GiftUIObservableState/ObservableStateReportRoute.swift": "f02b30c16f1c568072d9280a2bb2b0a89890d822de889f5a014a7346e0870833",
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6",
+    "Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift": "55067eca3c7cf1c64a5f50d715808e859565ee9c36d426fb6ca871356f6a662b",
+    "Sources/GiftUIObservableState/ObservableStateTargetLifetime.swift": "35eb3304150a34856a4d135b870972935b4c69c7e730adad0d7065567ad6f175",
+    "Sources/GiftUIObservableState/ObservableStateTargetLookupSlot.swift": "44583f3fd29db18725080d618140e7f94855e870a7793e09a4b9b0ea2e400d11",
+    "Sources/GiftUIObservableState/ObservableStateValues.swift": "494913f81669772d868fbf63ebbfb2cc151d8c0739fc8b28647f4cdfd5465c77",
+    "Sources/GiftUIObservableState/PresentationFactAdmission.swift": "751aa39b158133261c66b591cc82780fc60286b6c5562e48186820cbe3234ceb",
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "fc787355d2ef5fecbe59e48db5fd54f036e93a012705cbdcd0b13e7e012d381f",
+    "Sources/GiftUISemanticCore/SemanticLayoutResultSink.swift": "2e9857d32da453382660186e140c20524ae12d0f19e6e56b36de8b448bc8af51",
+    "Sources/GiftUISemanticCore/SemanticLayoutView.swift": "f7d067f23913efcab81ebc27ef3c22073c00c2536360b8f866c2f10e5205196b",
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": "cf2b591a33b9814f40eb67b17dbdefd19d726fc115a37636ddc4d31c788da5bd",
+    "Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift": "6f2eb6c53e7849ed9cf489ac8b2165a3ab318ff89bb7253076043acfc42ea144",
+    "Sources/GiftUISemanticCore/SemanticRecordRenderView.swift": "5d0628083f3ebe29142f7c2245ae7831328ef93c40a28d27b2c2dd20dd029515",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": "776db41e501972481ca6e7d461e9b52d67918f3624b2a41429f714be238a9753",
+    "Sources/GiftUISemanticCore/SemanticRenderResultStorage.swift": "9b57946d2828782214052d5ad8200cadc342a27e64ba6d776553efc571ec9048",
+    "Sources/GiftUISemanticCore/SemanticRenderView.swift": "53f052d9cf5f4dba04edecb9713a11518718f315da8d83855623e41d6e8ebaca",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "d4d212e512d06829525da02e37992d0ac8e3d1ebb7a5acfccfd5e4bfdb33b546",
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift": "2dd204c2c7b5d4fe06e58a085ac7a59aa70dd734e56981231c414c10f7389c70",
+    "Sources/GiftUIExecution/AdmissionValues.swift": "33b73204d814331eef69c8caebc274b546b25d383a04c77656dc58f80ce85839",
+    "Sources/GiftUIExecution/ExecutionAdmissionController.swift": "0aea5ab996e95104ce476aeb7188cc6bfde37d31f6db51b5ee10ae241524d4e2",
+    "Sources/GiftUIExecution/ExecutionAdmissionSealTransaction.swift": "7a88abcca9f437db94ea1f647ae8fd5ec3dbed82bd629b739ba3446ef8cf67d0",
+    "Sources/GiftUIExecution/ExecutionAdmissionSealer.swift": "54f3a7809c277a37cf8acfa931d62086ebc0ae1d3e77839ab6dcc28085885345",
+    "Sources/GiftUIExecution/ExecutionMutationBatch.swift": "a0464225588b3101249112a88f404a3258ccb87e8d9eea5e56671a4975501567",
+    "Sources/GiftUIExecution/ExecutionOpportunityRunner.swift": "d28b28c94e179c58805de37cc1a42736541cc26a7ba5bcb187571b8ad8e15a9e",
+    "Sources/GiftUIExecution/ExecutionPhaseMachine.swift": "f2047c05efd5f2f2f7c96f57e3b20fd9b3826635c2fa922bdd1c0d81f545da34",
+    "Sources/GiftUIExecution/ExecutionValues.swift": "4520ec15d70aedb7f95dcbedb972b0b7fcc707cb1b08b2636cf5298820e6e12f",
+    "Sources/GiftUIExecution/ExecutionWakeAccumulator.swift": "856db20ee149c555a4d0c33731be4d69980486033592181187d8465b60ecf2d2",
+    "Sources/GiftUIExecution/FrameHandoffValues.swift": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba",
+    "Sources/GiftUIExecution/FrameOfferNormalization.swift": "761740fdf6fb11cb54a52c2817d006ec75a9322e2c9a4351952f893711698a33",
+    "Sources/GiftUIExecution/IdentityAllocators.swift": "8f9bab781054456d49e210b3700200f10abc7a47c1a2f85e3de6013d9f6a3e35",
+    "Sources/GiftUIExecution/InputSourceSequenceState.swift": "b69a01de3871a80fa7b9f556bc7d93f12945c9edcc6569d00faa3569d963c5b3",
+    "Sources/GiftUIExecution/ObservableTargetGeneration.swift": "e37666935262923eb79378f29436756f79844a10d369c3ad8661ff38c17d6483",
+    "Sources/GiftUIExecution/PointerActionCapture.swift": "a88eec3e2176873a65c577ef6e47cf41873a8b9d8124250c5e45d8a83c53c605",
+    "Sources/GiftUIExecution/RecordingCandidateOfferCoordinator.swift": "66b7d07d657785ba0ebf9fbc46c3b1d983b715cf45d4a7dd27d46b856fecff23",
+    "Sources/GiftUIExecution/RecordingCycleCoordinator.swift": "ccfffb285dde8e73132ddba6a32fab791eb488b673b316c09b397d10d292a620",
+    "Sources/GiftUIExecution/RecordingCycleFinalizer.swift": "bc9318cd92c095b9473878c575996b8b0b1e500faa3cbf121df1ba774673ffc3",
+    "Sources/GiftUIExecution/RecordingDerivationRecovery.swift": "e71108078104eb3f294bad9231ee819c3ec77cf11b0c059d3d670a9c95fbef35",
+    "Sources/GiftUIExecution/RecordingDerivationTransaction.swift": "380f3d5ec84f4ab6e45aa1e6054677b3080105fb7c445f79cc3ee6b9558e5bca",
+    "Sources/GiftUIExecution/RecordingFocusedFailureSelection.swift": "c2f005577a0a33d1d46c74d77836ec5ef03857d5716523d8cf6f4ef07a32fb8f",
+    "Sources/GiftUIExecution/RecordingFrameCommitTransaction.swift": "2cf669bd232c7310fc9650d33ccc242fc717b1071877d8a1b2dcbce32ee7e7c8",
+    "Sources/GiftUIExecution/RecordingFrameEndpoint.swift": "43b75fbc4d7ff5a09db83693f6e557f7256bf62960ed3ab2f4c37f4caca5f849",
+    "Sources/GiftUIExecution/RecordingMutationBatch.swift": "229c26f04e85f737a0c6f41d7bbd76eb9c33ff0955bfa878d70bcf8f2984ff39",
+    "Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift": "45ce481da6c05b8509f596d6e2a9eac9961c261afe6cc6401b6035772c9370ed",
+    "Sources/GiftUIExecution/RecordingPresentationTerminalRecovery.swift": "c163ff5b21c6a9f920b4b70c0d150403ccd2900c20c212be04d2985be90c53d0",
+    "Sources/GiftUIExecution/RunCycleValues.swift": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+    "Sources/GiftUIExecution/WakeValues.swift": "915e835c62177403893bf44318b0d06ded8e017e59ba4f1e11d9f333505275f6",
+    "Sources/GiftUIRenderCore/DrawingOperationSink.swift": "4d35496afb8dc6b4827b52b3441a8258a5f91754c765a8828cb5ff7ebaafba88",
+    "Sources/GiftUIRenderCore/RenderOperationSink.swift": "02ba1989d36434e1e7db7984acce9ccc4a7861857c53de7d49676968aaaf1f43",
+    "Sources/GiftUIRenderCore/RenderRecordingSink.swift": "3db5511a8127d03eb51c6e6bf232a817d0eb6a2768583433767a05267ebdead2",
+    "Sources/GiftUIRenderCore/RenderValues.swift": "d4a0e5274c7c8e88a4e7c6c9c0bf5345ea1e83b5086b1f32373f01c7a4940722",
+    "Sources/GiftUITextResources/GiftUITextResources.swift": "d1f60a53bf776c331ab57281f0874e08ef804f4e4d44c733134f92fc532f6a1f",
+    "Sources/GiftUIInteraction/EffectiveActionEnabledState.swift": "89e3dc5744fa9169605a04345ff52a3d483a72b80c7ff5ec56350520d0014f30",
+    "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift": "ee7d2b1db3604b904be3e3733c5eab4edf079fc7401d93a79035bb782fb82b8f",
+    "Sources/GiftUIInteraction/InteractionFailurePrecedence.swift": "ec6e49fd95484273c7fdf8408d1ebbad34d889e75eeb26bcfd923255ea9c644f",
+    "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": "17c79ca0e2726f8c10483c42f555f475804680f95d13c727cd3e9ee787e9216b",
+    "Sources/GiftUIInteraction/InteractionState.swift": "139c5fa64f1fd562c425993a7d911d76ca9eafae0ac60b241c5bf54f20fc0616",
+    "Sources/GiftUIInteraction/InteractionStorage.swift": "19434eff6929af855dc90dac2e8c271dac3e0fb62f676e1ce5dcd05cd049f31c",
+    "Sources/GiftUIInteraction/InteractionValues.swift": "1ba67e136dbe99b4c92d500ef0cd4a381a8b534d55bd0f93ce537c2ccd4f4194",
+    "Sources/GiftUILayout/Layout.swift": "17bd1188e891289330a447eaad77a5c53d149e653862939916b221589a9bf1a3",
+    "Sources/GiftUILayout/LayoutCounters.swift": "735a80dc1133d7fcae6ba5ba455b520a8f0224494b2357af224ddea8c200bc12",
+    "Sources/GiftUILayout/LayoutEngine.swift": "b700865c9ddb31f628b5a1f4149f6209b50ac5abd1664bcaa755a88d855155ab",
+    "Sources/GiftUILayout/LayoutError.swift": "5733fe30105131fe00b87c4812e787a4efa6aed7236c84d5f93a0e0ddbcf629b",
+    "Sources/GiftUILayout/LayoutGeometry.swift": "0ac0320ec58947aa4bc7c3f8ec0ff662e57f598d2a7764faa0d1c2bc33acfa92",
+    "Sources/GiftUILayout/LayoutPublication.swift": "1a47ed50c9801065217af7d7b982097519444cc7a1158709d24e6dcc6c24d9d1",
+    "Sources/GiftUILayout/LayoutResultSink.swift": "57a52e0187904a317a7d3b00acf28afcd1854d2e62120cafd4fd12011e2ad06a",
+    "Sources/GiftUILayout/LayoutSemanticValidation.swift": "1fc34ec4a6b89b8f14b3075292fb2b07ce693bd7ce534cbef5d0bc6bc7a8c5ba",
+    "Sources/GiftUILayout/LayoutValues.swift": "ec168c1eb9bc6dff3cfb5144ab752958dad62d4bc1c419e8f0dea1b4149e704b",
+    "Sources/GiftUILayout/LayoutWorkspace.swift": "bbec7289fc9cb6c1f506e895231257c58bdd818ba6d0a020258cb7c97b342f81",
+    "Sources/GiftUILayout/ResolvedRenderLayoutView.swift": "7278d5216c075b499bee43e8b646f00a34f70f6b877ab9b4fc72de1878f10b33",
+    "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift": "5158e4d8e23c16aa3f17da51885b26412a30444f7a2ee47b83d30d213653ab1b",
+    "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+    "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+    "Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift": "c19a8f8cb381a933dcb1d12d1cfc8df738f9408717d88b661e35a264b192bddb",
+    "Sources/GiftUIRuntimeCore/RuntimeCoordinatorLifecycle.swift": "e205b58cb2a3539dd3a2baff0d76b4de7d2244fd003f962b0b6f9e1d8b41e816",
+    "Sources/GiftUIRuntimeCore/RuntimeCoordinatorQuiescence.swift": "df6ee95bb5a9a5fdd7b5f325e0c5e8f74556fb515bd429537880e752eadb1f7e",
+    "Sources/GiftUIRuntimeCore/RuntimeCoreBoundary.swift": "25eb74d4020f6055e92d15157564c5b0107bc68b815b6fa7cd051b884b98dbaf",
+    "Sources/GiftUIRuntimeCore/RuntimeFocusedFailureState.swift": "c1fa51e550f8b3c16364e1c714fe16118c2549cf19191e789e550c7b46d9668d",
+    "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateCoordinator.swift": "eba70ff7d800375e1eb53ba29503bd098490cba28d9e817e78a13abb2dd0b214",
+    "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift": "5c402b3a80a52a598149ce8b441e87d9370ff985c173483123d1bd8d0ecd6231",
+    "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateTransaction.swift": "7144341765b4156879cb4653aeee883d456757eff1624ea115c8d79170308821",
+    "Sources/GiftUIRuntimeCore/RuntimeInteractionDispatcher.swift": "4ad68cc60d1122e6f2fac4c13ef8c7a97cbdcc6dc194e70c02e79bdcfdbed323",
+    "Sources/GiftUIRuntimeCore/RuntimeInteractionMutationOwner.swift": "a0581fb08298386442093a8ca8e6203baa94e040d8c898341f95fb3d98844122",
+    "Sources/GiftUIRuntimeCore/RuntimeObservableProfileWorkspace.swift": "c2ad1ad24c52c6870c3b35b9f0edf4ebb101a0297603db69b633264d330cf41b",
+    "Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift": "7728c6631e620e312f006ddc60e8fdec5d58efb3ea702b662b21ea187586ae57",
+    "Sources/GiftUIRuntimeCore/RuntimeProfileStorage.swift": "9b00d9d6ced10e8b4868953e67c998fb9addf2e55a228c857c2cf317b0367f66",
+    "Sources/GiftUIRuntimeCore/RuntimeProfileValidation.swift": "770bdb08b6bec4f93e76109838a1e511d88779018fe817b48bb5326608fdb8d1",
+    "Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift": "377ef975edb74d9e8b86b94228e0756e1bc15414875f74a1fb4dbec33f0d88ca",
+    "Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift": "0ba4dd8df9fcb3989d6da1f59dde68587b4bf85818340ba3d5958419cab9a570",
+    "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift": "b3e06e72261ccad9c981b1822212e3aa83cd53ea8a2cfc2e771a0fbc3c2fc59a",
+    "Sources/GiftUIRuntimeCore/RuntimeStorageRegistry.swift": "6f907f1f1c49f5b705439616dfbc5d0f5f6f047998fbb2dc02b1517554fd731e",
+    "Sources/GiftUIRenderLowering/RenderExtensions.swift": "b4b73e4193b61650d587b0134e626058da433b2c25176df35e3a9f74618fddf9",
+    "Sources/GiftUIRenderLowering/RenderPreflight.swift": "1c25158da80d1929699b9323c359ab5480e792bc6f34c6f783d46879194ef290",
+    "Sources/GiftUIRenderLowering/RenderProducer.swift": "0e25b626df694b56c95d6c444db1fbf40e45afd7c65c4b5b9253fe5a15226281",
+    "Sources/GiftUIRenderLowering/RenderProductionValues.swift": "0005e5774c9a7658547f91d79b685b2033d59928d01ecd07136b80eaab535bcc",
+    "Sources/GiftUIRenderLowering/RenderStreaming.swift": "4d06944c09c4ad685857df55e2577ff72a183cdfa8b03fb9e5f545a9ea10aa8f",
+    "Sources/GiftUIDrawing/CanvasInvocationSource.swift": "9b992bc729e793959c0d8ad3fcb374c0bf3ced7edb1cdd098c57e6ba48c451f2",
+    "Sources/GiftUIDrawing/CanvasPlanProducer.swift": "8a75acb55af64e06ad4aad12553c1e6c4c1a6c11aa937599f65e63a7bef68db7",
+    "Sources/GiftUIDrawing/CanvasRenderProducer.swift": "c98ac6df32afa04088b6958ed8f664db91dd111cd9d798b626c60adbed7ddf69",
+    "Sources/GiftUIDrawing/CanvasSemanticPayload.swift": "8ff2bf5049d4393d459fef253cf6a137a9796a70c2ad4c413111d7928070b531",
+    "Sources/GiftUIDrawing/CanvasStagedValues.swift": "b73c04032b1bd318647479ab4e720e255fdf909cac3ec483110ee879884d1e9c",
+    "Sources/GiftUIDrawing/DrawingLimits.swift": "eae0cc1be30bc22102c76613cd07b08ee577dbbb1f08d06caf350eb52d64be64",
+    "Sources/GiftUIDrawing/DrawingPlan.swift": "93e3216f2faaee98e2c025deef50cfb7513911efacdd56e90980be3cb6264da9",
+    "Sources/GiftUIDrawing/DrawingValues.swift": "d1008926323fdb292ec32e95e2cefb17958ea5ccbfb8d2e0c48fb67e565f0874",
+    "Sources/GiftUIDrawing/GiftUIDrawing.swift": "8356154905cc631456d0a51a04a19c52cbbac38fd667b14b9862cc940347868d",
+    "Sources/GiftUIDrawing/PathConstruction.swift": "ff7780b55c1b33f6b00ad322a20bfe9d7408160a13a2908b6da9019cb0bfc68d",
+    "Sources/GiftUIDrawing/StaticCanvasCallableTable.swift": "9c644426cf7f594dddff99cea8a21eb4c2fd57f295f4afdfbe049c55413ff9b6",
+    "Sources/GiftUIDrawing/StrokeSnapshot.swift": "3345b05fb9f6f219fb09e7aa4e7e7a9a18c70f77d192734c36a08d0f84836a51",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": "60d013e2570e5ea3ac6efbbadb97dd79d6b7fa0a47e680e72a7071909fddb686",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": "1129e33dcab9bb075d3c11dac16cedd72c26efad6da87adc204b68de25408ee7",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": "342585dd23bc2916176535bfdb9efd7ba115a138047afe3fcda082acbf7adf8e",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift": "b1f575db79c688b2534ebe3681fea99864222715f8b9ef83dd3fcde16e261c9f",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift": "cf9f5467416298dd64f604f5d0edf436b1736dc5972d78721da38c61151cb588",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": "be59651c2f7f657f1785f51fa31767f6319dc543c023d901057fa0deb4bace81",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": "d084112a1ee54cc8c01fc5f24a7416ee3a6b23afdc6710f42635a76c370fea26",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift": "d6cdcf1f033a26225d856eb4dd4c5401b76b63d7f78040e111417cdb82bfa41c",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": "46ab40914dade59536f53650bd97ce8d74ee57da86a8a826330f629c64a89f9c",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": "f7152c3e886322e482aaa040b98f15ac820d0aa9a15af86260229bc56df64010",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift": "b14a1667a899fc539c8a8d8011d2e377188ce0300012e464ac1f0d1203a999ab",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": "bfcf074ec49455e7d5cc527b4a65cf9b9374da2c96914f8b8bdf8908ca90ec6b",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift": "c49cc7ad1d5de5bcc3a228defd78ce16a1d6e56c775d9227f5648339540eaa2c",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift": "abae5f87b3390863d8a68657c98b46a0fe9829f96a332affe44fbbb4fcce4d5a",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift": "6d713ae96bf4982c46f30289068dc97e5d4e32e3dae69f1874dd5e808d053d2b",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": "06b5775b618a78b757495de8c86a2352b8e8371e0c854f3d93463f685585f05e",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift": "bfe4a208dd72fe47cb2a72331228cf9c9981114e03d49a91b99541957e7f80b5",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": "36d137a0fdf0d6159dfc8502b86bd5bc78037fa1cfa5a86038513c9523b31677",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": "0e13001714af86c5f93cc150678c07c0b3a32c58b3a524fd43edb23eae19990b",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893",
+    "Sources/GiftUIDisplayCore/DisplayContracts.swift": "b27ad7489ad1ec6076f0d53b3912d6b9ed85329d355ceda2678707374111f3f0",
+    "Sources/GiftUIDisplayCore/SurfaceDisplayContributionAdapter.swift": "6a53a85962e5a821e5d81c32a580f453f6332feceaf31997f8fc04f2d9d548cf",
+    "Sources/GiftUISurfaceCore/RasterSurface.swift": "cf0aa2fe88d7cf825e5b9bddb8b8e2fc48d76555f4a8ac94ff4ec0b884fe3b42",
+    "Sources/GiftUISurfaceCore/SurfaceValues.swift": "96e161fdf3d1f58dd4c1de04c043df647a3fa279d17993c57e2b0ce15e19d60c",
+    "Sources/GiftUICapabilities/GiftUICapabilities.swift": "79a2f7a749cbe3e8033d1d118f9c94fadb67b985d36dbc185996fc255e8ba884",
+    "Sources/GiftUIFailureCore/GiftUIFailureCore.swift": "9e1e92643cdf2aed4efea9684697481af01034b9ad34ef42aff8c6ff6445cae7",
+    "Sources/GiftUIRasterCore/FullSurfaceRGB565Framebuffer.swift": "449a1be1050367462f67ab32a98553f6c573a79f1a79a6a26be98e6df06ac5e1",
+    "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift": "203cc9c8eac3380098e1fac110ae20872927038cb6ae9135e27eb109f26c588c",
+    "Sources/GiftUIRasterCore/RGB565TileWorkspace.swift": "e7f8fdfe6b23a33aeaad656ffc0ad745d14026dd3e55c8a1d069c1cb60915ce4",
+    "Sources/GiftUIRasterCore/RasterBackendContributionAdapter.swift": "07daa8c1ac38863bdbe0340061b8c7de703e912a8990155d91560d07fa88dbb6",
+    "Sources/GiftUIRasterCore/RasterFillCoverage.swift": "e091a6fde4fdd9e0aaa01d15a0dccc7650039d654b4fffe36caa5e686460ace8",
+    "Sources/GiftUIRasterCore/RasterFrameSink.swift": "93e7455f817de8a665933761c3580c59451d4c9cf12d9b9e8773aa4b28e1582a",
+    "Sources/GiftUIRasterCore/RasterFrameWork.swift": "f2433ae30e9ed44bc16e2f1faca715f4c6e1608c7a13545e426e76b72bde5090",
+    "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift": "29cedc4f49e27d990cd076d51f65ff2dae5b7ff6932aef5a9dbba0c014a1bbfc",
+    "Sources/GiftUIRasterCore/RasterPayloadLimits.swift": "23234d9ba4e630bb6279e31a9ab8ae72b8f9e3b2f9477784bf42697ecab544c3",
+    "Sources/GiftUIRasterCore/RasterStrokeCoverage.swift": "9e26044f3f7e99516742b686767cfe5a03d24d1efceee28f4d7ee6e21a90b579",
+    "Sources/GiftUIRasterCore/RasterWorkTracker.swift": "16f7c34ef32538f22b340163c402f551e3fd875b66f2e074d8049d6f51d6468f",
+    ".build/contracts/p08-witness-annotation-compatibility/CounterTable.swift": "9c1a50d90b57b9f625986cbb7a37fcefc56234bfb0f1e0b2a10abd7ab73efd54",
+    ".build/contracts/p08-witness-annotation-compatibility/CounterSchema.swift": "4a3d38814efb03b675f3748c6c7e57e9ee444839fa51486ea8bb13ef6826f763",
+    ".build/contracts/p08-witness-annotation-compatibility/Counter.swift": "b29408c44c2d4fa403c95abca82dc4a260780e236d7e3152805e02b298db3310",
+    "Sources/GiftUIRuntimeStatic/StaticCanvasHostHandle.swift": "11d78c634eb3bc0a4b697d9ca36cd753d5d7a4a42d92da458a38a44779ce4f67",
+    "Sources/GiftUIRuntimeStatic/StaticCanvasOccurrence.swift": "3c67eddac83e101c536034988fc12a2ccb642916dfc8d3c861672f2f681404b8",
+    "Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift": "5f49964bca470e962471968f1010570732425ebe45cad74ed4ab19c79839b09b",
+    "Sources/GiftUIRuntimeStatic/StaticGeneratedProfileMetadata.swift": "7539730d2864f6d42f0336918b23cdd949088a0e43f4d5b0aa709bafa2b3ee45",
+    "Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift": "dc3648560338f093f912b7e0bc812bdaa95e7a434a3bd836c903560bf3971219",
+    "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift": "eb63e6c191b8e1af24f19dd2fd523ddb315d04e36151471f534fe6063658e0a0",
+    "Sources/GiftUIRuntimeStatic/StaticObservableProfileSlotStorage.swift": "2a2c81140cad3f32c3bb4cba5b0dc4c392b908e45c9c7b2c047f242f858eb946",
+    "Sources/GiftUIRuntimeStatic/StaticObservableRegistrationRecord.swift": "a1e03e572a3f5394efaa25dd3c59cf7e3c8bd568b77a24d3b2143056ae71a109",
+    "Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift": "f6bf84f47f4021eaa61dacd51da8e3a6b9d19066eb577934fc19b9dfd7785078",
+    "Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift": "f1bb6868e5f37e4deca9fe90707a2b985fda6cb0fa7c00c60ae01ac9b0847d4a",
+    "Sources/GiftUIRuntimeStatic/StaticProfileBoundary.swift": "95f0224489c4c38dc2a19a6cad5ac803ede53efbfec32df0891c8230ffbb39eb",
+    "Sources/GiftUIRuntimeStatic/StaticProfileStorage.swift": "4f6512bee4adedac5b85acf902d5e910544c8203d9a1aa7f4ae73e6235c94c3a",
+    "Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift": "42496e7873d81d55b2556699621885b04038b83d0d4941f250af000571ca6a45",
+    "Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionBindingAdapter.swift": "e1236fde0a85b7f11c4fb049f719d83acc4d864a0136d84be67b6edf577cab9c",
+    "Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift": "0dd731cdbefcca81360eb2ff896d2e757bedc9829faaaf5e4a4a75b2c48254bd",
+    "Sources/GiftUIRuntimeStatic/StaticRuntimeProfileBinding.swift": "1162d12ede897a255c5a76e58d0f481f451e7d4c97247e8c43045c8fe2f35a14",
+    "Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift": "db63a7743194b90fec3bc81c32f6280dbb487d40ba251358cfa639649e7be3cb",
+    "Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift": "c5cdf30474780eae3f27cec5c8d179bad0eaa5b5fa0a47c71de129e017322f14",
+    "Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift": "7a4085655de8b4738aeb9e27956922684c2d56235679b4775a7bd4f6de7ff70b",
+    "Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift": "77313fd03bd41cc977b4f63397d5ec119772c25eb18db48cf3fef81cc95577b8",
+    "Sources/GiftUIReferenceTextResources/GiftUIPiCompactTextResources.swift": "fadbaa0ad0a880800339390d1b3f9f3f151d93fba0e9107d9af24087f025cdce",
+    "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift": "c15131c18872115b83fe63d71247494092d29dfb31bbc05d208d5306572b89f4",
+    "Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactBitmapPayload.generated.swift": "6d9ae291e7c780cf049010cd8912742ccc36f8b89452db6132086776e0b7bca3",
+    "Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactCatalogue.generated.swift": "0f8900aaf2433a975276603039af1d4200759ec081394e193d149656d78c0c89",
+    "Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift": "8caf5a83d60ea858e2ecfbe5b1f76232a6dd85efc1a2fb3797adcf3a04810a3e",
+    "Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift": "2a541a9b1efbb142f6f6d7d5773ed12c4842d2dfe9e289750c9dc83205306402",
+    "Sources/GiftUIHostConfiguration/HostActivationController.swift": "0690842621866c1747d55966a4a7a2a48e343f0d42aeab3deee04baafae27c5b",
+    "Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift": "475df591e6c3fbd741a916dd6eefacf77a572a25678c9c4a27b84ce5d6974e03",
+    "Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift": "b94f4cbca83a180953ca84c2d18c7fd48565bf449d34af980f0bc5b5b9eb8b67",
+    "Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift": "1fe765b7348bdab18abf6b83da6c9e2cadbb2e7a868a729c8d075f5b5109f913",
+    "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": "3e00d5e22b04e6ccb25ab357f2d6fe96349f2ab31abf3cf9201206110d83b205",
+    "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift": "401908c35e265ad19b9788d17a32603bd966da81e4fef10b8ff2fc46a9d255c1",
+    "Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift": "b170fb7b19e0627ad7484c81c72bd9c532b4c06455c4d0cd9053e47b1639b434",
+    "Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift": "6f53a358ab30317e2290b162fcd68b4158ae941c3b4b753c546d35b5cd4db5c9",
+    "Sources/GiftUIHostConfiguration/HostFailureAdapter.swift": "6b886b52c8e96892207b7230b8ccf9301b56f9fc62f117d7131c025e0452fde8",
+    "Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift": "7bd20cd33825f33478e54a1921b670a857805f6a2cf83bf089810e83b93773a7",
+    "Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift": "c8d261e68ad8096015f070d9e896c4952ac36725ff2c3ccc4b8cce56674d635f",
+    "Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift": "15edb5e6d350cfdc95e2edc97d86a82b147e90b3bf391441eb04f173c218e12e",
+    "Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift": "c7d77a75bc192ccf226c82487e87108d0bd3e5d5a91630d4df3990d6eb3e258c",
+    "Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift": "6215618f39789acfa0a40aca1c0657fa8c66c1760884f44dceee1172ee7e7469",
+    "Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift": "b43e1f7bf466c3dea0266e498d579e78504eb1612740f1d24804a2b19e37b84c",
+    "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift": "8574092a20e81ed83225c662b121c100e66c9a3cc3c6be61a6d81e80c8860618",
+    "Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift": "4bd12f192077693af4be89b1483be4d4791f256f2ca5798d025cbef577da07cb",
+    "Sources/GiftUIHostConfiguration/HostWakePacingController.swift": "457479bb631966220e2bb2d26fb7a78ac0143fbcadae8b66c25b78b27125643b",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift": "3995cd72d80694e4d56cee8d29e70da7da0b825ae5fbfa2de4201da546268061",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift": "8a55d5e2f4abaa1b676bfc5b56f77f6341efd8427837623b5e69f943b5b49768",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift": "6676ad3b27a856c5ec74d5a72cd1020f468389abf5ddf5d8ed3c9a60c53c7d04",
+    "Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift": "25ceb74e6fdea87403ae112685960394adcd56012ad7366ec870b0b6217436af",
+    "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift": "fa9c4b3aa3c522a8bd39efa4560abb692f61a1ab578089ed5ea4af182e5dd778",
+    "Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift": "8b930d7dd1a226a8d4bdf5c827c1fd4471f0084f634ebe1144696fae2f50b4b5",
+    "Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift": "a61e6fbe4e1cd2ea1f1325e11ea2e37332fa1c9c2e09a4a0d7dabdd5a7a2d765",
+    "Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift": "0d0b245435a848f98bbc1996a0768298b1be2a03563d06d8bbd04d8077cf7c34",
+    "Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift": "f38c93f26953da1f265aa20b1678d8d1a515fe533707d3646e89556908f62754",
+    "Sources/GiftUIBackendIntegration/RasterBackendOwnerFailureAdapter.swift": "71185f98e32afd8353c6787c209ff671ef277e013df2ad11465ddf991b59d1e4",
+    "Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift": "37bcf7159a5263b154e76ee84bd6d5592ca5903917b27614f30eeedc99c667e2",
+    "Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift": "0dd3524e69afc0f87cc9b563f395d8fc46dd09d5a40a41072670bec032fb029e",
+    "Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift": "8b5b0a273bca73176816366ffdc6d917ef71fe3bebc797113722988b4604579b"
+  },
+  "protected_sha256": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+    "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+    "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+  },
+  "guard": "Sequential grouped compile sweep: attempt every module whose fresh prerequisites passed; keep collecting independent owner failures. Block dependent modules, never use stale modules to create PASS. Only all-fresh closure/privacy PASS permits physical/module/helper/concrete-host qualification; only complete physical/codegen/safety PASS permits strict cold.",
+  "prepared_date": "2026-10-18",
+  "budget": {
+    "initial_candidates": 1,
+    "initial_consumed": 0,
+    "corrective_cycles": 2,
+    "corrections_consumed": 0,
+    "historical": "all prior Native pipeline/checked-State budgets and witness candidate1/1 remain unchanged/exhausted or frozen; this is a separately user-authorized activity"
+  },
+  "protected_pycache_sha256": {
+    "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+  },
+  "authored_counter_schema_sha256": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.schema.json": "3428fbdeb1f321c28c3fa70a7a6ce6159fd86676e6520292366a6b269b3ecbd9"
+  },
+  "frozen_macro_and_tests_sha256": {
+    "Sources/GiftUIMacros/ObservableStateHostMacro.swift": "e78ffc777fd3f3ea5dbc59befccc2fed294e0e9c002cbedd84c2a7efe8865a19",
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift": "48265ebed5ea5fb964d51a2557cf27f2eeae6388097b29a09aebdeac5e8e88fb",
+    "Sources/GiftUI/ObservableState.swift": "9f49b702c630be7e1ecc690973c73912142d731050bc4c62776c207e2ce68e86",
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": "5349126ef1275e44a400ba6e290b36ab92c6e2534f9e1db9e96f741ba92d49b9"
+  },
+  "compiler_policy": "Pinned approved Swift6.4, existing SDK/optimization/lifetime/package/profile flags. No package-CMO/serialize-all/unchecked enforcement/availability policy change. Macro tool rebuilt from unchanged frozen source with retained working macOS runner/link/runtime recipes."
+}
