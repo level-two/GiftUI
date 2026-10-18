@@ -1,0 +1,19 @@
+{
+  "accepted_archived_forms": 45,
+  "campaign_invocations": 0,
+  "compiler_invocations": 0,
+  "derived_payload_sha256": {
+    "archived-captures.json": "01818c4c7c35c4227af694f65c72fc0d1c7d8e75735dc38e88aad813dadbbdc7",
+    "policy.json": "b16415ab48830c7bed7ee94e9e653a8a75b76968e8b23aca758a2d6504594dca"
+  },
+  "deterministic_derivation": true,
+  "fresh_campaign_integration": "blocked_missing_current_Embedded_Dynamic_P02_and_preceding_stage_receipts",
+  "limitations": "Historical identity matcher only; no finite relocation or current-producer adapter implemented. Independent policy review required.",
+  "prelaunch_rejected_drift_or_missing_capture_cases": 225,
+  "producer_invocations": 0,
+  "qualified_controls": 0,
+  "rejected_mutation_cases": 3108,
+  "source_edits": 0,
+  "status": "PASS_STATIC_ARCHIVED_POLICY_ONLY",
+  "test_groups": 8
+}

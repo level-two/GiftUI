@@ -1,0 +1,30 @@
+{
+  "README.md": {
+    "bytes": 8793,
+    "sha256": "8bdc952c0a220e435124a1066562d5daabae9f5d09026cd6badd134e2ee6ea99"
+  },
+  "archived-captures.json": {
+    "bytes": 449146,
+    "sha256": "01818c4c7c35c4227af694f65c72fc0d1c7d8e75735dc38e88aad813dadbbdc7"
+  },
+  "derive_policy.py": {
+    "bytes": 6554,
+    "sha256": "d294b099bcef67dcb537a2f531e2685d925e0905fb9397bbe66b5413e42c9208"
+  },
+  "policy.json": {
+    "bytes": 266927,
+    "sha256": "b16415ab48830c7bed7ee94e9e653a8a75b76968e8b23aca758a2d6504594dca"
+  },
+  "policy_binder.py": {
+    "bytes": 5051,
+    "sha256": "d386ec0a2d9a3e7765622ed8c13eabd6bc0e47753992644b7444c8ba95655a94"
+  },
+  "static-validation.json": {
+    "bytes": 850,
+    "sha256": "f58d5f4151a2cc007ea9a852785779300316e80adb04d64aee7ecdce3ff30104"
+  },
+  "test_policy.py": {
+    "bytes": 11105,
+    "sha256": "9e4888febbb7c18090159b66cc56b604b61905a4a84ccd3afeaf6935e78bf2da"
+  }
+}
