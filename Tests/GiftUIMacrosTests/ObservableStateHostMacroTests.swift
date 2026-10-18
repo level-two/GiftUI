@@ -602,14 +602,16 @@ final class ObservableStateHostMacroTests: XCTestCase {
                 @inlinable package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
                     throws(_GiftUIAccessFailure) -> some View<D> { EmptyView<D>() }
                 """,
-            header: "@ObservableStateHost @usableFromInline package struct Root<D: ReadDomain>: View")
+            header:
+                "@ObservableStateHost @usableFromInline package struct Root<D: ReadDomain>: View")
     }
 
     private func replacingExactlyOnce(
         _ source: String, original: String, replacement: String,
         file: StaticString = #filePath, line: UInt = #line
     ) -> String {
-        XCTAssertEqual(source.components(separatedBy: original).count, 2, original, file: file, line: line)
+        XCTAssertEqual(
+            source.components(separatedBy: original).count, 2, original, file: file, line: line)
         let variant = source.replacingOccurrences(of: original, with: replacement)
         XCTAssertNotEqual(
             Parser.parse(source: source).tokens(viewMode: .sourceAccurate).map(\.text),
