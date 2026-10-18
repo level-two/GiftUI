@@ -1,5 +1,10 @@
 # Grouped B-observable candidate — 2026-10-18
 
+[Independent callback design READY](p08-observable-callback-design-review.md):
+40 selectors/six files; scoped ownsClaim internal-ABI proposal fits the inspected
+release/lifetime/private-P08 contract, and both var-backed constructors preserve
+defaults. Separate source/budget authorization remains required; current STOP stays.
+
 [Grouped callback design](observable-callback-grouped-inventory/README.md):40sites/six
 files proposed only, actual seed path and typed error-release grouped; ownsClaim
 privacy review explicit. No source/compile/runtime/allowance; old fixed budget intact.
