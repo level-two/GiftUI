@@ -1,0 +1,30 @@
+0000000000025f64 ___swift_instantiateConcreteTypeFromMangledName
+   25f64:      	stp	x20, x19, [sp, #-0x20]!
+   25f68:      	stp	x29, x30, [sp, #0x10]
+   25f6c:      	add	x29, sp, #0x10
+   25f70:      	mov	x19, x0
+   25f74:      	ldr	x0, [x0]
+   25f78:      	tbnz	x0, #0x3f, 0x25f88 <___swift_instantiateConcreteTypeFromMangledName+0x24>
+   25f7c:      	ldp	x29, x30, [sp, #0x10]
+   25f80:      	ldp	x20, x19, [sp], #0x20
+   25f84:      	ret
+   25f88:      	neg	x1, x0, asr #32
+   25f8c:      	add	x0, x19, w0, sxtw
+   25f90:      	mov	x2, #0x0                ; =0
+   25f94:      	mov	x3, #0x0                ; =0
+   25f98:      	bl	0x25f98 <___swift_instantiateConcreteTypeFromMangledName+0x34>
+		0000000000025f98:  ARM64_RELOC_BRANCH26	_swift_getTypeByMangledNameInContext2
+   25f9c:      	str	x0, [x19]
+   25fa0:      	b	0x25f7c <___swift_instantiateConcreteTypeFromMangledName+0x18>
+
+00000000000918e8 _OUTLINED_FUNCTION_851
+   918e8:      	adrp	x0, 0x91000 <_OUTLINED_FUNCTION_751+0x28>
+		00000000000918e8:  ARM64_RELOC_PAGE21	demangling cache variable for type metadata for GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance<P08CounterRuntime.CounterHostOwner<P08CounterRuntime.(P08GeometryAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08CandidateAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08CommittedAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08HitAccess in _480B1BD841D053AE4FCDC18507668536)>>
+   918ec:      	add	x0, x0, #0x0
+		00000000000918ec:  ARM64_RELOC_PAGEOFF12	demangling cache variable for type metadata for GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance<P08CounterRuntime.CounterHostOwner<P08CounterRuntime.(P08GeometryAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08CandidateAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08CommittedAccess in _480B1BD841D053AE4FCDC18507668536), P08CounterRuntime.(P08HitAccess in _480B1BD841D053AE4FCDC18507668536)>>
+   918f0:      	b	0x918f0 <_OUTLINED_FUNCTION_851+0x8>
+		00000000000918f0:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+
+000000000006607c P08CounterRuntime.(p08RunStaticSessionPhase in _480B1BD841D053AE4FCDC18507668536)(session: __owned P08CounterRuntime.(P08StorageSession in _480B1BD841D053AE4FCDC18507668536), semantic: __owned GiftUISemanticCore.SemanticRecordStore<GiftUIDrawing.CanvasSemanticPayload<P08CounterTable.P08CounterSchemaCanvasValues<P08CounterRuntime.CounterDomain>>>, values: __owned GiftUIDrawing.CanvasStagedValues<GiftUISemanticCore.SemanticRecordReference, P08CounterTable.P08CounterSchemaCanvasTable<P08CounterRuntime.CounterDomain>>, activationSpan: Swift.Span<Swift.UInt8>, models: GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, root: GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, foreignModels: GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, foreignRoot: GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, control: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, foreignControl: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, facts: inout P08CounterRuntime.(P08HostRunFacts in _480B1BD841D053AE4FCDC18507668536), failAfterRuntime: Swift.Bool, early: Swift.UInt8, candidateFailure: GiftUIRuntimeCore.RuntimeCompletePipelineStage?, reuse: Swift.UnsafeMutablePointer<P08CounterRuntime.(P08HostReuseTranscript in _480B1BD841D053AE4FCDC18507668536)>?, baseline: Swift.UnsafeMutablePointer<P08CounterRuntime.(P08ReuseFingerprint in _480B1BD841D053AE4FCDC18507668536)>?) -> P08CounterRuntime.(P08BodyResult in _480B1BD841D053AE4FCDC18507668536)
+		00000000000660dc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_851
+		000000000006618c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_851

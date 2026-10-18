@@ -29,12 +29,13 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-**Registered P08 compile closure PASS; initial1/1 frozen, corrections0/2.**
-The [registered result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-registered-result/README.md) passes both canonical owners and the42-source
-actual host using22 verified fresh seeds and299 frozen inputs. Whole-directory
-failures remain preserved as broader scope limits. No source change/retry.
-Next applicable privacy/lifetime, physical42-origin/callee/actual-host codegen,
-safety and strict cold gates remain required; P08/R07/T8.1 stay open.
+Current [grouped result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-codegen-result/README.md):
+registered compile PASS; required physical body/callee gate FAIL at six entries,
+with actual generic consumer seams. Initial1/1 frozen, corrections0/2. No measured
+allocation failure is claimed; metadata/observer attribution is unresolved. Next
+read-only targeted corrective1 design and independent review precede any source
+edit. Fresh privacy/lifetime, actual-host SIL/callee closure, safety/cold and
+P08/R07/T8.1 remain open; prior budgets and protected inputs unchanged.
 
 [Independent annotation package review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-final-independent-review.md)
 confirms compatibility/provider/helper PASS and Layout FAIL101. Next recommendation

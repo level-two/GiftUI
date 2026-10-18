@@ -1,0 +1,192 @@
+{
+  "status": "physical required-body/callee gate FAIL; metadata/observer attribution unresolved; no measured allocation claim",
+  "source": "b89c4fac unchanged, initial1/1 frozen corrections0/2",
+  "records_verified": 2069,
+  "origins": 42,
+  "sites": 33,
+  "six_absent": [
+    [
+      "GiftUIDrawing",
+      71
+    ],
+    [
+      "GiftUIHostConfiguration",
+      783
+    ],
+    [
+      "GiftUIHostConfiguration",
+      784
+    ],
+    [
+      "GiftUILayout",
+      128
+    ],
+    [
+      "GiftUIRuntimeCore",
+      583
+    ],
+    [
+      "GiftUIRuntimeCore",
+      678
+    ]
+  ],
+  "members": {
+    "object-prepared.json": {
+      "sha256": "2334ced9e8dc572c7baa2461763ee6815c571522725f890787064124775dfa28",
+      "bytes": 1608
+    },
+    "object-result.json": {
+      "sha256": "93ed0f1ecc5964cc040058f31118a173d7e9e4c13b89bd896f5057a06373e362",
+      "bytes": 741
+    },
+    "boundaries-decode-prepared.json": {
+      "sha256": "48fd4eb7604d58e6a46912f031f06386160ea1c15e09ad22c21031e5ae10c405",
+      "bytes": 3497
+    },
+    "boundaries-decode-result.json": {
+      "sha256": "76147a69ca51a103dfcb7f57439c1e8de6e4ad318d2dfceeb784df8f629a5dc7",
+      "bytes": 1331
+    },
+    "boundary-physical-index.json": {
+      "sha256": "2a9b8a91b9cb634119d215cd4561f2cb35d990ed4e01ac37c6d081328fe27806",
+      "bytes": 2042097
+    },
+    "reviewed33-body-map.json": {
+      "sha256": "954b6350050623dbfe051c715019f5f43c21180c3e64686e2ab4e2a034d18ec3",
+      "bytes": 34598
+    },
+    "origin42-status.json": {
+      "sha256": "921f4ed91f8b05381c6d3cf00b403453763beb8b7178ecd731a08bf777c77810",
+      "bytes": 20069
+    },
+    "removed-boundary-edges.json": {
+      "sha256": "fa0014f30669c2867bbd6e35eb60200c08f2af52960a79ae11f4d6644f88a1d4",
+      "bytes": 287428
+    },
+    "layout-canvas-owner-edges.json": {
+      "sha256": "595f2652f7e0a08bdbd9d0bceb63b7bd83728ab92c06dbb577ea038604417cc5",
+      "bytes": 4945
+    },
+    "early-static-seams.json": {
+      "sha256": "44768a05f90297bc4186ce71056eebd11cd93aa89597fce3a71ff0ee36e2613f",
+      "bytes": 35143
+    },
+    "pipeline-static-seams.json": {
+      "sha256": "5950ccfdb80b951c70eca9cd874ac2c312785e39cf26011b27359f971b677a13",
+      "bytes": 8568
+    },
+    "grouped-result.json": {
+      "sha256": "ebc5a14fab307d0a432bf88fc1817ce38c9599c19cab7f3a7ebad680319a394f",
+      "bytes": 837
+    },
+    "host-symbols.stdout": {
+      "sha256": "c8f6916f452847036bfb34125be3751dae33ee36e2ea2430ebb67c4c167f0314",
+      "bytes": 1132799
+    },
+    "host-symbols.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "host-symbols.demangled": {
+      "sha256": "0e5ff232a7457df3322f6b913c55961ca8ec1b6b2981fbc88332a5288e41d2f5",
+      "bytes": 1694518
+    },
+    "host-disassembly.stdout": {
+      "sha256": "881efef2bb02a55a64c2c355a83ecdd4a2d3d4b6dd7456f6a317c6a45225b038",
+      "bytes": 20837516
+    },
+    "host-disassembly.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "host-disassembly.demangled": {
+      "sha256": "38515782ca0b6df7ac698125e47a34bbbe4fc2fe0f502984496a7e0351768ec8",
+      "bytes": 33802413
+    },
+    "GiftUIDrawing-decode.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "GiftUIDrawing-decode.stdout": {
+      "sha256": "9291821af5dcbdce32bbd9ca605d14968ab107a7ec0b7e29c0e50b6fae2b4771",
+      "bytes": 481595
+    },
+    "GiftUIHostConfiguration-decode.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "GiftUIHostConfiguration-decode.stdout": {
+      "sha256": "910f4c054c3eaa1bf7d09dea7b4626c104a5d6d0e00953841262f31528fb9325",
+      "bytes": 2208181
+    },
+    "GiftUIInteraction-decode.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "GiftUIInteraction-decode.stdout": {
+      "sha256": "d92badce7b6cae10863631907560ee4a51198fd5b0cec1be09b8d01c21ec8f3b",
+      "bytes": 662769
+    },
+    "GiftUILayout-decode.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "GiftUILayout-decode.stdout": {
+      "sha256": "52d05ac7650c75c43decd168bd32191b66de9b345ace044ad7b5481240757be7",
+      "bytes": 670400
+    },
+    "GiftUIRasterCore-decode.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "GiftUIRasterCore-decode.stdout": {
+      "sha256": "ef9aa0578b70ca2d294afcdcd35e4812b5743c0c467bb489aa847ff84dd52c7a",
+      "bytes": 641106
+    },
+    "GiftUIRuntimeCore-decode.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "GiftUIRuntimeCore-decode.stdout": {
+      "sha256": "2d9e49fffa225feafea29a96ceee5ab4391ddb03e340a955dffa549a98bfc67a",
+      "bytes": 1923109
+    },
+    "inputs/GiftUIDrawing.swiftmodule": {
+      "sha256": "93fe4871f000afa65a33fbe819634fae3f6186a9cf8ebed1adee75af4657e4a5",
+      "bytes": 105612
+    },
+    "inputs/GiftUIHostConfiguration.swiftmodule": {
+      "sha256": "a17275780845ca5a6841171f08f149c96c151dadcbe596eeb6ce3c09eb1e713b",
+      "bytes": 514740
+    },
+    "inputs/GiftUIInteraction.swiftmodule": {
+      "sha256": "450613347d72fde46d6e9e30c258c541ad0e8de7e2231f2ec9de9d64e9e59389",
+      "bytes": 149376
+    },
+    "inputs/GiftUILayout.swiftmodule": {
+      "sha256": "028ee9fb77f40659325179945db82342b122ba869b40452c653ce8a55e072323",
+      "bytes": 144052
+    },
+    "inputs/GiftUIRasterCore.swiftmodule": {
+      "sha256": "ccface57fd572fb3f24d3f460550b19c05c1f528485b49eb0ff0b2ea380e746b",
+      "bytes": 144036
+    },
+    "inputs/GiftUIRuntimeCore.swiftmodule": {
+      "sha256": "8eea5f9f2fe092101ee4d0f2d0bb3a376cda11b3743d504b8d7d8032b334a9d1",
+      "bytes": 442992
+    },
+    "inputs/P08CounterRuntime.o": {
+      "sha256": "7eedd50881c8cb1e7936505f1bf3595a7a5dcf4f2739cc41271d4891a8e394a6",
+      "bytes": 2244168
+    },
+    "derivation/interpret-giftui-grouped-boundaries.py": {
+      "sha256": "a68ff03224304eef6dfa0023c028a884e8d0557a9d48f230f4c43c0d9b2e491c",
+      "bytes": 3322
+    },
+    "derivation/group-giftui-codegen-findings.py": {
+      "sha256": "3747b73b60544ba1a35c483671f3d7dbca3962a8cc11d8f67fc93446239ebb24",
+      "bytes": 5376
+    }
+  },
+  "archive_sha256": "e8cbffef2788310f743a5e10b8f7d36a90baac2698ca0b20c6472b1bd3df50f0"
+}

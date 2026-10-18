@@ -1,0 +1,31 @@
+{
+  "accepted_manifest_sha256": "5b3625286739c1501e972106765a2286ce72a9614602cd1fa73ca58863b700b7",
+  "accepted_commands_sha256": "06445492f85c762f683a62b615a1a9ab96fdb2bab84da6269b4904fb315960e5",
+  "sources": [
+    {
+      "source": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "current_sha256": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+      "original_manifest_source_sha256": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+      "accepted_silent_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-static-screen-candidate1-prepared/silent/CounterPipelineOwner.swift",
+      "accepted_silent_sha256": "cbcc7b7d39b6849a7d719b831156219d523ce6f16d61fd89e59a5c8c3c607e8e",
+      "exact_current_two_print_only_derivation_matches_accepted": true,
+      "derivation": "only counterTrace print(label,value) and p08ReuseLabel print string replaced by preserved comments; no algorithm/observer-window change"
+    },
+    {
+      "source": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "current_sha256": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+      "original_manifest_source_sha256": "119cbf386093d8e20b476ac7876768c698802f057400969e37a11b11f3dc4251",
+      "accepted_silent_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-cold-static-screen-candidate1-prepared/silent/CounterScopedStorage.swift",
+      "accepted_silent_sha256": "9f6c0b50f8471c88e7d2cbe1e04aacec029cb5dbc3f5839af237728d6837a152",
+      "exact_current_two_print_only_derivation_matches_accepted": false,
+      "derivation": "only counterTrace print(label,value) and p08ReuseLabel print string replaced by preserved comments; no algorithm/observer-window change"
+    }
+  ],
+  "conclusion": "Ordinary traced object includes observer allocations. Metadata call is in the actual static session factory/defer path, but attribution to necessary framework operation versus compiler materialization induced by observation remains unresolved without the exact current silent shape. No strict allocation failure inferred. Independent physical missing-body/callee gate fails regardless of that attribution.",
+  "static_function_source_matches_accepted_silent": {
+    "p08RunStaticHostPhase": true,
+    "p08ConstructStaticHost": true,
+    "p08RunStaticSessionPhase": true
+  },
+  "scope_caveat": "CounterPipelineOwner quiet copy is exactly reproducible from current one print removal. Old CounterScopedStorage quiet copy additionally removes the SO06 role-label print and predates reviewed physical-facts closure removal; it is not a reusable current silent artifact. Three factory/session function bodies match, but optimizer effects of the complete current quiet shape remain unexecuted. No compiler flag matrix or new silent source was created."
+}

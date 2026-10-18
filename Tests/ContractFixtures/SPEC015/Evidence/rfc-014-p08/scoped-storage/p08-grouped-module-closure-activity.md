@@ -1,11 +1,12 @@
 # P08 grouped module closure activity — 2026-10-18
 
-**Registered P08 compile closure PASS; initial1/1 frozen, corrections0/2.**
-The [registered result](grouped-module-closure-registered-result/README.md) passes both canonical owners and the42-source
-actual host using22 verified fresh seeds and299 frozen inputs. Whole-directory
-failures remain preserved as broader scope limits. No source change/retry.
-Next applicable privacy/lifetime, physical42-origin/callee/actual-host codegen,
-safety and strict cold gates remain required; P08/R07/T8.1 stay open.
+**Registered compile PASS; required physical-body/callee gate FAIL. Initial1/1
+frozen, corrections0/2.** The [codegen result](grouped-module-closure-codegen-result/README.md)
+proves six required serialized bodies absent and actual generic consumer seams.
+Metadata/observer attribution and cold allocation remain unresolved. No source
+change, compiler/runtime retry or correction occurred. Next derive and independently
+review a targeted corrective1 design; privacy/lifetime, safety and strict cold stay
+gated. Whole-directory compatibility failures remain broader scope limits.
 Eugene explicitly authorized grouped Layout and remaining-module
 dependency corrections, then full-host/cold validation under the strict contract.
 This is a new allowance of one initial candidate and at most two grouped
