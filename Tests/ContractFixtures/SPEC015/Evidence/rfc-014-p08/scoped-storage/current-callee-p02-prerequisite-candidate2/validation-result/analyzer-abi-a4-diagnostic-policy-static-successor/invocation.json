@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/run-static-fixtures.py",
+    "--execute-reviewed-static-fixtures",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/packet-freeze.json",
+    "--output",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-a4-diagnostic-policy-static-successor/static-result.json"
+  ],
+  "automatic_repairs": 0,
+  "automatic_retries": 0,
+  "campaign_invocations": 0,
+  "compiler_invocations": 0,
+  "cwd": "/Users/eugene/work/GiftUI",
+  "failure_policy": "STOP first unexpected static fixture result; fresh output only; no tuning",
+  "parser_calls_if_all_inputs_reached": 59,
+  "producer_invocations": 0,
+  "status": "PREDECLARED; NOT EXECUTED; SEPARATE HUMAN STATIC EXECUTION AUTHORIZATION REQUIRED",
+  "total_static_inputs": 59
+}

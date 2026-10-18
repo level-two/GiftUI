@@ -1,0 +1,43 @@
+{
+  "archived_source_and_stream_copies_byte_identical": true,
+  "campaign_invocations": 0,
+  "compiler_invocations": 0,
+  "formatter_invocations": 0,
+  "inherited_case_count": 22,
+  "inherited_fixture_file_byte_identical": true,
+  "new_case_ids": 24,
+  "new_expected_accepts": 3,
+  "new_input_count": 37,
+  "outputs_created": [],
+  "parser_calls": 0,
+  "parser_imports": 0,
+  "policy_literal_matches_json": true,
+  "preserved_candidate2_files": 150,
+  "producer_invocations": 0,
+  "proposal_pinned_identities_match": 15,
+  "python_sources": [
+    {
+      "path": "diagnostic_parser.py",
+      "syntax": "ast.parse only; no import or execution",
+      "top_level_imports": [
+        "hashlib",
+        "re"
+      ]
+    },
+    {
+      "path": "run-static-fixtures.py",
+      "syntax": "ast.parse only; no import or execution",
+      "top_level_imports": [
+        "pathlib",
+        "hashlib",
+        "importlib.util",
+        "json",
+        "sys"
+      ]
+    }
+  ],
+  "runner_invocations": 0,
+  "status": "SYNTAX/STRUCTURE/IDENTITY INSPECTION ONLY; CLASSIFICATION UNEXECUTED",
+  "test_gate_invocations": 0,
+  "total_input_count": 59
+}
