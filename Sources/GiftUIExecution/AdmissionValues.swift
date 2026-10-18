@@ -86,6 +86,7 @@ where Identity: Equatable & Sendable {
     @usableFromInline package let identity: Identity
     @usableFromInline package let generation: ActionGeneration
 
+    @inlinable
     package init(identity: Identity, generation: ActionGeneration) {
         self.identity = identity
         self.generation = generation

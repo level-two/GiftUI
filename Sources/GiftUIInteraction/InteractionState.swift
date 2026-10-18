@@ -2,6 +2,7 @@ import GiftUI
 import GiftUIExecution
 import GiftUILayout
 
+@usableFromInline
 package struct InteractionState<CandidateRecords, CommittedRecords, HitRegions>: ~Copyable,
     ~Escapable,
     InteractionCandidateBuilder, InteractionCommittedActionView,
@@ -13,6 +14,7 @@ where
     CandidateRecords.Identity == CommittedRecords.Identity,
     CandidateRecords.Identity == HitRegions.Identity
 {
+    @usableFromInline
     package typealias Identity = CandidateRecords.Identity
 
     private enum Phase: UInt8 {
@@ -24,8 +26,10 @@ where
     private var candidateRecords: CandidateRecords
     private var candidateHitRegions: HitRegions
     private var candidateCommittedRecords: CommittedRecords
-    private var committedRecords: CommittedRecords
-    private var committedHitRegions: HitRegions
+    @usableFromInline
+    internal var committedRecords: CommittedRecords
+    @usableFromInline
+    internal var committedHitRegions: HitRegions
     private var limits: InteractionLimits?
     private var phase: Phase = .idle
     private var candidateError: InteractionError?
@@ -335,6 +339,7 @@ where
         committedHitRegions.region(at: index)
     }
 
+    @inlinable
     @inline(__always)
     package borrowing func resolveDown(
         at point: Point
@@ -349,8 +354,9 @@ where
         )
     }
 
+    @inlinable
     @inline(__always)
-    private borrowing func topmostRecord(
+    internal borrowing func topmostRecord(
         at point: Point
     ) -> BoundActionRecord<Identity>? {
         var best: InteractionHitRegion<Identity>?
@@ -370,7 +376,8 @@ where
         return record(identity: best.identity)
     }
 
-    private borrowing func record(
+    @inlinable
+    internal borrowing func record(
         identity: Identity
     ) -> BoundActionRecord<Identity>? {
         var index: UInt16 = 0
@@ -384,12 +391,14 @@ where
         return nil
     }
 
+    @usableFromInline
     package borrowing func committedRecord(
         for identity: Identity
     ) -> BoundActionRecord<Identity>? {
         record(identity: identity)
     }
 
+    @inlinable
     @inline(__always)
     package borrowing func resolveMove(
         _ captured: CapturedAction<Identity>,
@@ -401,7 +410,8 @@ where
         return .continued(captured)
     }
 
-    private borrowing func capturedRecord(
+    @inlinable
+    internal borrowing func capturedRecord(
         _ captured: CapturedAction<Identity>,
         contains point: Point
     ) -> BoundActionRecord<Identity>? {
@@ -413,6 +423,7 @@ where
         return record
     }
 
+    @inlinable
     @inline(__always)
     package borrowing func resolveUp(
         _ captured: CapturedAction<Identity>,

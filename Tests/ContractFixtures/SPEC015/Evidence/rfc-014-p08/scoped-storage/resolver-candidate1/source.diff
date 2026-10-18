@@ -1,0 +1,79 @@
+--- a/Sources/GiftUIExecution/AdmissionValues.swift
++++ b/Sources/GiftUIExecution/AdmissionValues.swift
+@@ -88,0 +89 @@
++    @inlinable
+--- a/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift
++++ b/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift
+@@ -7,0 +8 @@
++@usableFromInline
+@@ -16,0 +18 @@
++    @usableFromInline
+@@ -18 +20,2 @@
+-    private var state: InteractionState<Candidate, Committed, Hits>
++    @usableFromInline
++    internal var state: InteractionState<Candidate, Committed, Hits>
+@@ -176,0 +180 @@
++    @usableFromInline
+@@ -179,0 +184 @@
++    @inlinable
+@@ -183,0 +189 @@
++    @inlinable
+@@ -186,0 +193 @@
++    @inlinable
+--- a/Sources/GiftUIInteraction/InteractionState.swift
++++ b/Sources/GiftUIInteraction/InteractionState.swift
+@@ -4,0 +5 @@
++@usableFromInline
+@@ -15,0 +17 @@
++    @usableFromInline
+@@ -27,2 +29,4 @@
+-    private var committedRecords: CommittedRecords
+-    private var committedHitRegions: HitRegions
++    @usableFromInline
++    internal var committedRecords: CommittedRecords
++    @usableFromInline
++    internal var committedHitRegions: HitRegions
+@@ -337,0 +342 @@
++    @inlinable
+@@ -352,2 +357,3 @@
+-    @inline(__always)
+-    private borrowing func topmostRecord(
++    @inlinable
++    @inline(__always)
++    internal borrowing func topmostRecord(
+@@ -373 +379,2 @@
+-    private borrowing func record(
++    @inlinable
++    internal borrowing func record(
+@@ -386,0 +394 @@
++    @usableFromInline
+@@ -392,0 +401 @@
++    @inlinable
+@@ -404 +413,2 @@
+-    private borrowing func capturedRecord(
++    @inlinable
++    internal borrowing func capturedRecord(
+@@ -415,0 +426 @@
++    @inlinable
+--- a/Sources/GiftUIInteraction/InteractionStorage.swift
++++ b/Sources/GiftUIInteraction/InteractionStorage.swift
+@@ -3,0 +4 @@
++@usableFromInline
+@@ -14,0 +16 @@
++@usableFromInline
+@@ -16,0 +19 @@
++    @usableFromInline
+@@ -17,0 +21 @@
++    @usableFromInline
+@@ -18,0 +23 @@
++    @usableFromInline
+@@ -21,0 +27 @@
++@usableFromInline
+@@ -35,0 +42 @@
++@usableFromInline
+@@ -46,0 +54 @@
++@usableFromInline
+--- a/Sources/GiftUIInteraction/InteractionValues.swift
++++ b/Sources/GiftUIInteraction/InteractionValues.swift
+@@ -35,0 +36 @@
++    @usableFromInline

@@ -33,6 +33,7 @@ where Identity: Equatable & Sendable {
     @usableFromInline package let identity: Identity
     @usableFromInline package let generation: ActionGeneration
     @usableFromInline package let isEnabled: Bool
+    @usableFromInline
     package let hitBounds: Rect
     package let paintOrder: UInt16
     @usableFromInline package let action: BoundedApplicationAction

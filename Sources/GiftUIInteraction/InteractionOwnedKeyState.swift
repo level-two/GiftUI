@@ -5,6 +5,7 @@ import GiftUISemanticCore
 /// The configured component pools are independent of the two semantic banks.
 /// The selected storage types own complete inline keys (including the endpoint
 /// role); no reference or ordinal from a semantic bank is retained here.
+@usableFromInline
 package struct InteractionOwnedKeyState<Candidate, Committed, Hits>: ~Copyable, ~Escapable,
     InteractionCandidateBuilder, InteractionCommittedActionView, InteractionGestureResolver
 where
@@ -14,8 +15,10 @@ where
     Candidate.Identity == SemanticCompleteIdentity,
     Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity
 {
+    @usableFromInline
     package typealias Identity = SemanticCompleteIdentity
-    private var state: InteractionState<Candidate, Committed, Hits>
+    @usableFromInline
+    internal var state: InteractionState<Candidate, Committed, Hits>
     private let maximumComponentsPerKey: UInt16
     private let maximumComponents: UInt32
     private var configuredComponentsPerKey: UInt16
@@ -174,16 +177,20 @@ where
 
     package var committedRevision: PresentationRevision? { state.committedRevision }
     package var committedRecordCount: UInt16 { state.committedRecordCount }
+    @usableFromInline
     package borrowing func committedRecord(for identity: Identity) -> BoundActionRecord<Identity>? {
         state.committedRecord(for: identity)
     }
+    @inlinable
     @inline(__always)
     package borrowing func resolveDown(at point: Point) -> PointerGestureOutcome<Identity> {
         state.resolveDown(at: point)
     }
+    @inlinable
     package borrowing func resolveMove(_ captured: CapturedAction<Identity>, at point: Point)
         -> PointerGestureOutcome<Identity>
     { state.resolveMove(captured, at: point) }
+    @inlinable
     @inline(__always)
     package borrowing func resolveUp(_ captured: CapturedAction<Identity>, at point: Point)
         -> PointerGestureOutcome<Identity>

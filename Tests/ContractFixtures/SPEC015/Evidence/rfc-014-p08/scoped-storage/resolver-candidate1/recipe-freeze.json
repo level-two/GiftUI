@@ -1,0 +1,7 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-candidate1/run.py": "8f7fb50dd21bb9ae72c33a7473aad2311cec426142e5350df13751c9f5c770b8",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-candidate1/prepared.json": "afd1c8329ed54faadc95d241ed3bca9a5bb7b8643f89b2a24df89e25e20ea252",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-candidate1/input-freeze.json": "7f7710424f8717540e74aad34bab9bdde0dfbb0e63aa6e22ddf21a428a477c2c",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-candidate1/source.diff": "baeb8728462d1140455c560e89b0dc24f3b5734222f42e47a99bbcb2c6f5393a",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-candidate1/source-edits.json": "14255c6db181a4b10d1d4de7d46a4911284e9af1ca267a2cfb89fb99665f5cc9"
+}

@@ -18,7 +18,14 @@ superseded_by: null
 
 ## Grouped dependency continuation — 2026-10-18
 
-Current [finite23 stage/access/lifetime inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/stage23-grouped-inventory/README.md)
+Current [authorized resolver candidate1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-candidate1/README.md):
+reviewed28sites/five files applied/formatted/token audited;572other prior577inputs
+unchanged. NewONEcandidate1/1/no automaticrepairs; oldbudgets preserved. Fresh25
+registered recipe/329hashes frozen, validation-onlyPASS/compiler unexecuted.
+Remaining20frontier roots have no source edits; privacy/20physicalroots/concrete42/
+fullsafety/strictcold/P08 remain open.
+
+Historical [finite23 stage/access/lifetime inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/stage23-grouped-inventory/README.md)
 is read-only/proposal only: exact28sites/five files for confirmed three resolver
 family; remaining20actual roots classified into five grouped families, no blanket
 promotion or full23/all42 guarantee. Three framework internalABI field proposals

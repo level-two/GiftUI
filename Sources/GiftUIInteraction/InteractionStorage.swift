@@ -1,6 +1,7 @@
 import GiftUI
 import GiftUIExecution
 
+@usableFromInline
 package struct InteractionCandidateRecord<Identity>: Equatable, Sendable
 where Identity: Equatable & Sendable {
     package let identity: Identity
@@ -12,13 +13,18 @@ where Identity: Equatable & Sendable {
     package let targetGeneration: ObservableTargetGeneration
 }
 
+@usableFromInline
 package struct InteractionHitRegion<Identity>: Equatable, Sendable
 where Identity: Equatable & Sendable {
+    @usableFromInline
     package let identity: Identity
+    @usableFromInline
     package let bounds: Rect
+    @usableFromInline
     package let paintOrder: UInt16
 }
 
+@usableFromInline
 package protocol InteractionCandidateRecordStorage: ~Copyable, ~Escapable {
     associatedtype Identity: Equatable & Sendable
 
@@ -33,6 +39,7 @@ package protocol InteractionCandidateRecordStorage: ~Copyable, ~Escapable {
     ) -> Bool
 }
 
+@usableFromInline
 package protocol InteractionCommittedRecordStorage: ~Copyable, ~Escapable {
     associatedtype Identity: Equatable & Sendable
 
@@ -44,6 +51,7 @@ package protocol InteractionCommittedRecordStorage: ~Copyable, ~Escapable {
     mutating func exchangeContents(with other: inout Self)
 }
 
+@usableFromInline
 package protocol InteractionHitRegionStorage: ~Copyable, ~Escapable {
     associatedtype Identity: Equatable & Sendable
 
