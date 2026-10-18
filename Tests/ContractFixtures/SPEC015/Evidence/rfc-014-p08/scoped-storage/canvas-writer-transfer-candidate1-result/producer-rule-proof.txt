@@ -1,0 +1,50 @@
+--- Sources/GiftUIMacros/FiniteSourceLowering.swift lines 226-241 ---
+226:         }
+227:         var result = super.visit(node).cast(StructDeclSyntax.self)
+228:         // Inlinable witnesses need an ABI-usable enclosing nominal. Retain
+229:         // authored source access; the finite source transform owns this output.
+230:         if !node.modifiers.contains(where: {
+231:             ["public", "open", "private", "fileprivate"].contains($0.name.text)
+232:         }) {
+233:             result.attributes.append(
+234:                 .attribute(
+235:                     AttributeSyntax(
+236:                         leadingTrivia: .newline,
+237:                         attributeName: TypeSyntax(stringLiteral: "usableFromInline"),
+238:                         trailingTrivia: .newline)))
+239:         }
+240:         result.genericParameterClause = GenericParameterClauseSyntax(
+241:             parameters: GenericParameterListSyntax([
+--- Sources/GiftUIMacros/FiniteSourceLowering.swift lines 316-328 ---
+316:     override func visit(_ node: InitializerDeclSyntax) -> DeclSyntax {
+317:         var result = super.visit(node).cast(InitializerDeclSyntax.self)
+318:         if insideCanvas {
+319:             result.attributes.append(
+320:                 .attribute(
+321:                     AttributeSyntax(
+322:                         leadingTrivia: .newline,
+323:                         attributeName: TypeSyntax(stringLiteral: "inlinable"),
+324:                         trailingTrivia: .newline)))
+325:         }
+326:         return DeclSyntax(result)
+327:     }
+328: 
+--- Sources/GiftUIMacros/FiniteSourceLowering.swift lines 530-547 ---
+530:         evaluating = previous
+531:         guard case .getter(let statements) = lowered.bindings.first!.accessorBlock!.accessors else {
+532:             preconditionFailure("getter changed during lowering")
+533:         }
+534:         let access = node.modifiers.trimmedDescription
+535:         return DeclSyntax(
+536:             stringLiteral: """
+537: 
+538:                 @ViewBuilder
+539:                 @inlinable
+540:                 @inline(__always)
+541:                 \(access) func \(name == "body" ? "_giftUIEvaluate" : "_giftUI_" + name)(read: borrowing _GiftUIFrameRead<D>)
+542:                     throws(_GiftUIAccessFailure) -> some View<D> {
+543:                     \(statements.isEmpty ? "EmptyView<D>()" : statements.description)
+544:                 }
+545:                 """)
+546:     }
+547: 

@@ -1,0 +1,44 @@
+{
+  "source_commit": "7c54fe61",
+  "prepared_commit": "6d2d0456",
+  "status": "actual_lowering_variant_compile_failed_later_gates_blocked",
+  "macro": "fresh build+all17PASS",
+  "freshlower_owners": "lower+25PASS/0failedblocked",
+  "variants": "multiplePresentation+TablePASS; nestedPresentationFAIL one error; nestedTableBLOCKED",
+  "later": "privacy70/index11/body76/object/SIL/full safety/strictcold NOT RUN",
+  "immutable_input_counts_verified": {
+    "macro": 278,
+    "compile": 337,
+    "qualification": 535
+  },
+  "fresh_macro_artifacts_verified": 49,
+  "partial_compile_output_identities_verified": 241,
+  "final_provider_seal": "not created; never accepted through stale artifacts",
+  "archive_members": 59,
+  "archive_bytes": 45904,
+  "archive_sha256": "ffbb4a8bb5330f6ffcab98cb639dde6decdc7f2af71f7c8e9586834c5ec4c0ae",
+  "source_fixture_compiler_runtime_edits_or_retries": 0,
+  "candidate_budget": "1/1 fixed; zeroautomaticSOURCErepairs; all older exhausted budgets unchanged",
+  "inputs": [
+    {
+      "path": ".build/contracts/p08-canvas-writer-transfer-candidate1/macro/regression-output/nested-authored.swift",
+      "sha256": "d2e26c03cad9ed58c662d55dce075535b3a2da18d910e0c4ca35538a54f32fb8"
+    },
+    {
+      "path": ".build/contracts/p08-canvas-writer-transfer-candidate1/macro/regression-output/nested-presentation.swift",
+      "sha256": "0be05af5b90c7907b68a96c3043851521b8ce3b32c6355630e34792c7983856d"
+    },
+    {
+      "path": "Sources/GiftUIMacros/FiniteSourceLowering.swift",
+      "sha256": "48265ebed5ea5fb964d51a2557cf27f2eeae6388097b29a09aebdeac5e8e88fb"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/originals/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift",
+      "sha256": "5349126ef1275e44a400ba6e290b36ab92c6e2534f9e1db9e96f741ba92d49b9"
+    },
+    {
+      "path": ".build/contracts/p08-canvas-writer-transfer-candidate1/logs/nested-P08CounterPresentation.log",
+      "sha256": "b789de389fe589386f439ba57e64558796bf2eb233c95a198383adba63fb811b"
+    }
+  ]
+}

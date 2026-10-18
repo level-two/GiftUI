@@ -29,6 +29,14 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [Canvas candidate boundary STOP](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1-result/README.md):
+macro17/freshlower+25/multiplePresentation+Table PASS; valid maintained nestedPresentation
+FAIL (ChildScreen packageinit from serialized evaluator, generated70→92). Existing
+FiniteSourceLowering unchanged/Canvas-only initializer annotation; fixture construction
+predatescandidate. NestedTable/privacy70/index11/body76/object/SIL/safety/cold blocked/
+notrun. Onecandidate1/1 fixed/zero automatic SOURCE repairs, no retry or newallowance;
+source overlay/P08 unaccepted. Independent boundary review next.
+
 Current [Canvas candidate1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/README.md):
 source7c54fe61 exact68sites/11files formatted/token/default/emissionaudited. Onecandidate1/1
 zero automatic SOURCE repairs, oldbudgets preserved. Combined freshmacro17→fresh25→

@@ -1,0 +1,18 @@
+--- Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/originals/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift lines 267-283 ---
+267:         XCTAssertEqual(original.components(separatedBy: marker).count, 2)
+268:         let multiple = original.replacingOccurrences(
+269:             of: marker,
+270:             with: marker + "\n    @State private var other = CounterModel(value: 1)")
+271:         let statefulStart = try XCTUnwrap(original.range(of: "@ObservableStateHost"))
+272:         let child = String(original[statefulStart.lowerBound...])
+273:             .replacingOccurrences(of: "CounterScreen", with: "ChildScreen")
+274:         let nested =
+275:             original.replacingOccurrences(
+276:                 of: "CounterCanvas(model: model).frame(width: 48, height: 16)",
+277:                 with: "ChildScreen()") + "\n" + child
+278:         let temporary = FileManager.default.temporaryDirectory.appendingPathComponent(
+279:             UUID().uuidString)
+280:         let output =
+281:             ProcessInfo.processInfo.environment["GIFTUI_P08_REGRESSION_OUTPUT"]
+282:             .map { URL(fileURLWithPath: $0) } ?? temporary
+283:         try FileManager.default.createDirectory(at: output, withIntermediateDirectories: true)

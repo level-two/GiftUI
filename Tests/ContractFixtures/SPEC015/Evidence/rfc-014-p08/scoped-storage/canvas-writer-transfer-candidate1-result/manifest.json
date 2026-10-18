@@ -1,0 +1,238 @@
+{
+  "compile/generated/Counter.swift": {
+    "bytes": 3108,
+    "sha256": "b29408c44c2d4fa403c95abca82dc4a260780e236d7e3152805e02b298db3310"
+  },
+  "compile/generated/CounterSchema.swift": {
+    "bytes": 1440,
+    "sha256": "4a3d38814efb03b675f3748c6c7e57e9ee444839fa51486ea8bb13ef6826f763"
+  },
+  "compile/generated/CounterTable.swift": {
+    "bytes": 1531,
+    "sha256": "a3c737d3555f2ee5c48fe0fddf3c224fb9cb6a9397948b4073cc8009dce73ab5"
+  },
+  "compile/logs/GiftUI.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUIBackendIntegration.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUICapabilities.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUIDisplayCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUIDrawing.log": {
+    "bytes": 1559,
+    "sha256": "e3679bb12478d2a8eccdeb082fa86b3f2cbc2d0fbed028cbab00bb0f07dc0d40"
+  },
+  "compile/logs/GiftUIExecution.log": {
+    "bytes": 1146,
+    "sha256": "884478d30264d67294ffa2b07a2550e9e5439f44297ca6b53ea1b1ec38659557"
+  },
+  "compile/logs/GiftUIFailureCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUIHostConfiguration.log": {
+    "bytes": 9088,
+    "sha256": "c767db883dc6350e5e80c284650988f197b0d08d8f8e98c74b789be2272b5961"
+  },
+  "compile/logs/GiftUIInteraction.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUILayout.log": {
+    "bytes": 542,
+    "sha256": "9e023fa2a785e32655cbdbda3cca338df083fda7f3747b97a7a4418614b1e1ba"
+  },
+  "compile/logs/GiftUIObservableState.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUIRasterCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUIReferenceTextResources.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUIRenderCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUIRenderLowering.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUIRuntimeCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUIRuntimeDynamic.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUIRuntimeStatic.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUISemanticCore.log": {
+    "bytes": 720,
+    "sha256": "766aa23eb9473cd6e8802dd696f55190b427b03fbff0706d1f99c978d99a06a1"
+  },
+  "compile/logs/GiftUISurfaceCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/GiftUITextResources.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/P08CounterPresentation.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/P08CounterRuntime.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/P08CounterSchema.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/P08CounterTable.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/logs/lower.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile/result.json": {
+    "bytes": 251731,
+    "sha256": "22b60e1189788dd9390b8a739cf01e32b29170f6041b06d9d62424520a58a072"
+  },
+  "compile/variants-result.json": {
+    "bytes": 7113,
+    "sha256": "9e83faac66c007efe73c47cd6259e4b1b35dfd7211cc03a2bb9ea899ebbaffed"
+  },
+  "logs/compile.log": {
+    "bytes": 721,
+    "sha256": "ca6938e91eb392985112c3c826239813c6a20f3453a75cddd0d2bf21d671e69b"
+  },
+  "logs/macro.log": {
+    "bytes": 74,
+    "sha256": "a7980dd47cc331e03af9ac1cc54b5266859bc89cb6df8d4a7710e0b79fcae7e0"
+  },
+  "logs/multiple-P08CounterPresentation.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/multiple-P08CounterTable.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/nested-P08CounterPresentation.log": {
+    "bytes": 526,
+    "sha256": "b789de389fe589386f439ba57e64558796bf2eb233c95a198383adba63fb811b"
+  },
+  "macro/logs/macro-compile.log": {
+    "bytes": 31625,
+    "sha256": "3df2263e6f20d2e3cde4419563c4f410e7f909d308328de01e8c4ee554498867"
+  },
+  "macro/logs/macro-link.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "macro/logs/macro-tests-link.log": {
+    "bytes": 159,
+    "sha256": "6ef285ac97cbfae3abdfc0d8f6f61c5ead66235224a0f6d76bb9a32f184c34ca"
+  },
+  "macro/logs/macro-tests.log": {
+    "bytes": 4314,
+    "sha256": "cab1748b6ddbfcce5a6f95a3027ce5e1564b96441bba492ee1f11aae0d05bad0"
+  },
+  "macro/regression-output/counter-authored.swift": {
+    "bytes": 1724,
+    "sha256": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0"
+  },
+  "macro/regression-output/counter-expanded.swift": {
+    "bytes": 3913,
+    "sha256": "954693877aefb3fe13c3de49ded2e8c3aadcc236706949f5ccf00f7c9e5e4e4d"
+  },
+  "macro/regression-output/counter-presentation.swift": {
+    "bytes": 3108,
+    "sha256": "b29408c44c2d4fa403c95abca82dc4a260780e236d7e3152805e02b298db3310"
+  },
+  "macro/regression-output/counter-schema.swift": {
+    "bytes": 1440,
+    "sha256": "4a3d38814efb03b675f3748c6c7e57e9ee444839fa51486ea8bb13ef6826f763"
+  },
+  "macro/regression-output/counter-table.swift": {
+    "bytes": 1531,
+    "sha256": "a3c737d3555f2ee5c48fe0fddf3c224fb9cb6a9397948b4073cc8009dce73ab5"
+  },
+  "macro/regression-output/frozen-failing-presentation.swift": {
+    "bytes": 3106,
+    "sha256": "961830155d8a6a6835705b2588017aeab46e07f6f7731379f314d5f451b92ede"
+  },
+  "macro/regression-output/multiple-authored.swift": {
+    "bytes": 1778,
+    "sha256": "005711bb225c8757346ab05a08fa4a2aee8a20e145066507946d1e32bae54b92"
+  },
+  "macro/regression-output/multiple-expanded.swift": {
+    "bytes": 4434,
+    "sha256": "044adbe407ce0c91b2cdd5dc4cd2bd9e5396a3b7bee65aef4d51d1e0aa5f7ffb"
+  },
+  "macro/regression-output/multiple-presentation.swift": {
+    "bytes": 3551,
+    "sha256": "d71f4d0bdbde1412b65b4cb949ab7cf0e3775a033015463b5f21d1180c4f3349"
+  },
+  "macro/regression-output/multiple-schema.swift": {
+    "bytes": 1440,
+    "sha256": "4a3d38814efb03b675f3748c6c7e57e9ee444839fa51486ea8bb13ef6826f763"
+  },
+  "macro/regression-output/multiple-table.swift": {
+    "bytes": 1531,
+    "sha256": "a3c737d3555f2ee5c48fe0fddf3c224fb9cb6a9397948b4073cc8009dce73ab5"
+  },
+  "macro/regression-output/nested-authored.swift": {
+    "bytes": 2248,
+    "sha256": "d2e26c03cad9ed58c662d55dce075535b3a2da18d910e0c4ca35538a54f32fb8"
+  },
+  "macro/regression-output/nested-expanded.swift": {
+    "bytes": 6156,
+    "sha256": "ea858eeedd8ba075c78769ecf7c2166881cbff5a63e0d75a4ce2cc5683150e5d"
+  },
+  "macro/regression-output/nested-presentation.swift": {
+    "bytes": 4549,
+    "sha256": "0be05af5b90c7907b68a96c3043851521b8ce3b32c6355630e34792c7983856d"
+  },
+  "macro/regression-output/nested-schema.swift": {
+    "bytes": 1440,
+    "sha256": "4a3d38814efb03b675f3748c6c7e57e9ee444839fa51486ea8bb13ef6826f763"
+  },
+  "macro/regression-output/nested-table.swift": {
+    "bytes": 1531,
+    "sha256": "a3c737d3555f2ee5c48fe0fddf3c224fb9cb6a9397948b4073cc8009dce73ab5"
+  },
+  "macro/result.json": {
+    "bytes": 13300,
+    "sha256": "fac8ba3e4c34fcf62421b49e30138075666e17104553799429c7c03e4ad675ff"
+  },
+  "macro-artifact-freeze.json": {
+    "bytes": 9596,
+    "sha256": "4e1ad30fecd2965f098af80759a05274cf4e4d28fa05713dba1ea8a992ed678d"
+  },
+  "result.json": {
+    "bytes": 10182,
+    "sha256": "7638f2f75dd3c19b42ffe164bc911df259c24881754fb8fa6ef4c3852d574c21"
+  }
+}

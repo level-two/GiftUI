@@ -20,3 +20,10 @@ prepared/staticvalidatePASS: freshmacro17→freshlower+25→fouractualvariantmod
 fresh tested generated hashes and macro/provider output seals qualified dynamically.
 No compiler/test/decoder/runtime executed. Oldbudgets/remainingten/privateguards exact;
 actualcodegen/safety/strictcold/P08 remain unqualified.
+
+[Initial result STOP](canvas-writer-transfer-candidate1-result/README.md): macro17/
+freshlower+25/multiplePresentation+Table PASS; valid maintained nestedPresentation
+FAIL one packageinitializer-from-inlinable error. Pre-existing unchanged lowerer
+annotates Canvas constructors only. NestedTable/privacy/physical/object/SIL/safety/
+cold notrun. Candidate1/1 fixed, zero automatic SOURCE repairs, all oldbudgets exact.
+No source/fixture edits or retry; separate independent boundary review next.

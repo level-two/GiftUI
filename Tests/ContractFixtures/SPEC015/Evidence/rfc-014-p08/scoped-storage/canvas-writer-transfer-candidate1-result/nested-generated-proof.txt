@@ -1,0 +1,45 @@
+--- .build/contracts/p08-canvas-writer-transfer-candidate1/macro/regression-output/nested-presentation.swift lines 51-74 ---
+51: @ObservableStateHost
+52: @usableFromInline
+53: 
+54: package struct CounterScreen<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+55: 
+56:     @State<CounterModelSchema>(seed: CounterModelSchemaSeed(value: 0)) private var model: _GiftUIModelKey<CounterModelSchema>?
+57: 
+58:     package init() {}
+59: @ViewBuilder
+60: @inlinable
+61: @inline(__always)
+62: package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+63:     throws(_GiftUIAccessFailure) -> some View<D> {
+64: 
+65:         try VStack(spacing: 4) {() throws(_GiftUIAccessFailure) in
+66:             Text<D>("Counter")
+67:             Text<D>(counterText((try CounterRead<D>(try self._giftUIStateKey_model(), read: read)).value))
+68:             try Button(action: CounterAction.increment) { () throws(_GiftUIAccessFailure) in Text<D>("Increment") }.disabled((try CounterRead<D>(try self._giftUIStateKey_model(), read: read)).value == 9)
+69:             try Button(action: CounterAction.reset) { () throws(_GiftUIAccessFailure) in Text<D>("Reset") }.disabled((try CounterRead<D>(try self._giftUIStateKey_model(), read: read)).value == 0)
+70:             ChildScreen<D>()
+71:         }.background(.black)
+72: }
+73: @usableFromInline
+74: internal var _giftUIStateStorage_model: State<CounterModelSchema> {
+--- .build/contracts/p08-canvas-writer-transfer-candidate1/macro/regression-output/nested-presentation.swift lines 85-103 ---
+85: @ObservableStateHost
+86: @usableFromInline
+87: 
+88: package struct ChildScreen<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+89: 
+90:     @State<CounterModelSchema>(seed: CounterModelSchemaSeed(value: 0)) private var model: _GiftUIModelKey<CounterModelSchema>?
+91: 
+92:     package init() {}
+93: @ViewBuilder
+94: @inlinable
+95: @inline(__always)
+96: package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+97:     throws(_GiftUIAccessFailure) -> some View<D> {
+98: 
+99:         try VStack(spacing: 4) {() throws(_GiftUIAccessFailure) in
+100:             Text<D>("Counter")
+101:             Text<D>(counterText((try CounterRead<D>(try self._giftUIStateKey_model(), read: read)).value))
+102:             try Button(action: CounterAction.increment) { () throws(_GiftUIAccessFailure) in Text<D>("Increment") }.disabled((try CounterRead<D>(try self._giftUIStateKey_model(), read: read)).value == 9)
+103:             try Button(action: CounterAction.reset) { () throws(_GiftUIAccessFailure) in Text<D>("Reset") }.disabled((try CounterRead<D>(try self._giftUIStateKey_model(), read: read)).value == 0)

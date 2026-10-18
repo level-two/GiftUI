@@ -1,0 +1,33 @@
+{
+  "classification": "material valid maintained-fixture compile failure exposes pre-existing finite-lowerer initializer ABI gap; NOT harness selector/diagnostic/path error",
+  "error": "initializer 'init()' is package and cannot be referenced from an '@inlinable' function",
+  "origin": "nested fixture constructed in same maintained17test before candidate; pure reconstruction equals actual nested-authored bytes; FiniteSourceLowering byteexact vs f8da7a28 and unedited in68site map",
+  "cause": "source authored ChildScreen() and explicit package init(){} are normal package declarations; finite lowering makes parent evaluator @inlinable and nominals ABI but visit(InitializerDeclSyntax) adds attributes only insideCanvas. NonCanvas ChildScreen initializer remains package/nonABI. Generated call70 fails on initializer92. Private State backing remains private.",
+  "bounded_related_group": [
+    {
+      "owner": "CounterScreen",
+      "kind": "nonCanvas explicit package init(){}",
+      "current": "ordinary package/nonABI; same producer rule; actual25root construction passes because caller is not this nested inlinable initializer edge"
+    },
+    {
+      "owner": "ChildScreen",
+      "kind": "nonCanvas explicit package init(){}",
+      "current": "ordinary package/nonABI; direct live nested evaluator call fails"
+    },
+    {
+      "owner": "CounterCanvas",
+      "kind": "Canvas explicit package init(model:)",
+      "current": "already inlinable +ABI nominal/model fields; NOOP, no future widening needed"
+    }
+  ],
+  "possible_options_no_authorization": [
+    "Separately reviewed narrow ordinary ABI qualification for existing ABI-eligible finite nonCanvas constructors called by serialized evaluators, preserving authored access/signature/body/default/privateState initialization; prefer ordinary @usableFromInline over serializing private initialization. This would edit untouched FiniteSourceLowering outside exhaustedcandidate; no source fix authorized now.",
+    "If constructor/initializer eligibility cannot preserve authored visibility/side-effect/State requirements, review upstream scope/contract rather than open backing or suppress nested compile. No incompatibility/impossibility established here."
+  ],
+  "rejected_automatic_actions": [
+    "drop nested compile or relabel valid fixture invalid",
+    "mark all constructors @inlinable/open privateState",
+    "source orfixture edit/retry/implicitnewbudget"
+  ],
+  "gate": "STOP onecandidate1/1 fixed/zeroautomaticSOURCErepairs; current source overlay unaccepted; prior25/main/multiple compile PASS retained; nestedTable/privacy70/11indexes/76bodies/SIL/safety/cold unrun"
+}

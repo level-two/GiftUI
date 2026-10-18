@@ -1,0 +1,33 @@
+--- .build/contracts/p08-canvas-writer-transfer-candidate1/macro/regression-output/nested-authored.swift lines 32-67 ---
+32:     }
+33: }
+34: 
+35: @ObservableStateHost
+36: package struct CounterScreen: View {
+37:     @State private var model = CounterModel(value: 0)
+38:     package init() {}
+39:     package var body: some View {
+40:         VStack(spacing: 4) {
+41:             Text("Counter")
+42:             Text(counterText(model.value))
+43:             Button(action: CounterAction.increment) { Text("Increment") }.disabled(model.value == 9)
+44:             Button(action: CounterAction.reset) { Text("Reset") }.disabled(model.value == 0)
+45:             ChildScreen()
+46:         }.background(.black)
+47:     }
+48: }
+49: 
+50: @ObservableStateHost
+51: package struct ChildScreen: View {
+52:     @State private var model = CounterModel(value: 0)
+53:     package init() {}
+54:     package var body: some View {
+55:         VStack(spacing: 4) {
+56:             Text("Counter")
+57:             Text(counterText(model.value))
+58:             Button(action: CounterAction.increment) { Text("Increment") }.disabled(model.value == 9)
+59:             Button(action: CounterAction.reset) { Text("Reset") }.disabled(model.value == 0)
+60:             CounterCanvas(model: model).frame(width: 48, height: 16)
+61:         }.background(.black)
+62:     }
+63: }
