@@ -1,0 +1,341 @@
+{
+  "status": "READONLY PROPOSAL; independent READY before source; creates no source allowance",
+  "source_base": "f2325b85; consumer7a2d8c99 reviewed9427a425",
+  "counts": {
+    "edit_sites": 23,
+    "source_files": 4,
+    "serialized_methods_or_getters": 5,
+    "field_sites": 14,
+    "type_sites": 4
+  },
+  "source_inputs": [
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "sha256": "382a4b9b0c79c3cc3f8940c5c36cdf149746ac3ad310cee1aa8899eb5006ee12"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "sha256": "089ec1dd45912d7a2f2ee57d82a6ad4e92a7bf7c1a53493342dfba08995f1830"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "sha256": "8e1166f26ab752cb02de9f84384df35e170a8bfe89c0393b09914f215c495953"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift",
+      "sha256": "5c402b3a80a52a598149ce8b441e87d9370ff985c173483123d1bd8d0ecd6231"
+    }
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "file": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "owner": "InteractionOwnedKeyState",
+      "line": 158,
+      "selector": "package mutating func resolveCandidate(_ disposition: InteractionCandidateDisposition) {",
+      "change": "Insert @inlinable; preserve access, signature, ownership, lifetime, defaults and body.",
+      "required_by": "F20 root",
+      "owner_region_lines": [
+        9,
+        198
+      ]
+    },
+    {
+      "id": 2,
+      "file": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "owner": "InteractionOwnedKeyState",
+      "line": 26,
+      "selector": "private var candidateComponents: UInt32 = 0",
+      "change": "Insert @usableFromInline and replace private with internal only; preserve exact type/default/body.",
+      "required_by": "F20 readiness/poison/cleanup",
+      "owner_region_lines": [
+        9,
+        198
+      ]
+    },
+    {
+      "id": 3,
+      "file": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "owner": "InteractionOwnedKeyState",
+      "line": 28,
+      "selector": "private var isStaging = false",
+      "change": "Insert @usableFromInline and replace private with internal only; preserve exact type/default/body.",
+      "required_by": "F20 readiness/poison/cleanup",
+      "owner_region_lines": [
+        9,
+        198
+      ]
+    },
+    {
+      "id": 4,
+      "file": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "owner": "InteractionOwnedKeyState",
+      "line": 29,
+      "selector": "private var failure: InteractionError?",
+      "change": "Insert @usableFromInline and replace private with internal only; preserve exact type/default/body.",
+      "required_by": "F20 readiness/poison/cleanup",
+      "owner_region_lines": [
+        9,
+        198
+      ]
+    },
+    {
+      "id": 5,
+      "file": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "owner": "InteractionOwnedKeyState",
+      "line": 27,
+      "selector": "package private(set) var committedComponents: UInt32 = 0",
+      "change": "Insert @usableFromInline and replace private(set) with internal(set) only; package getter unchanged; setter remains inaccessible to importing modules.",
+      "required_by": "F20 committed counter",
+      "owner_region_lines": [
+        9,
+        198
+      ]
+    },
+    {
+      "id": 6,
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "owner": "InteractionState",
+      "line": 279,
+      "selector": "package mutating func resolveCandidate(",
+      "change": "Insert @inlinable; preserve access, signature, ownership, lifetime, defaults and body.",
+      "required_by": "F20 direct state resolver",
+      "owner_region_lines": [
+        6,
+        437
+      ]
+    },
+    {
+      "id": 7,
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "owner": "InteractionState",
+      "line": 318,
+      "selector": "package var candidateIsReadyForOffer: Bool {",
+      "change": "Insert @inlinable; preserve access, signature, ownership, lifetime, defaults and body.",
+      "required_by": "F20 readiness guard",
+      "owner_region_lines": [
+        6,
+        437
+      ]
+    },
+    {
+      "id": 8,
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "owner": "InteractionState",
+      "line": 20,
+      "selector": "private enum Phase: UInt8 {",
+      "change": "Insert @usableFromInline and replace private with internal only; preserve exact type/default/body.",
+      "required_by": "F20 phase switch/equality/reset",
+      "owner_region_lines": [
+        6,
+        437
+      ]
+    },
+    {
+      "id": 9,
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "owner": "InteractionState",
+      "line": 26,
+      "selector": "private var candidateRecords: CandidateRecords",
+      "change": "Insert @usableFromInline and replace private with internal only; preserve exact type/default/body.",
+      "required_by": "F20 exchange/reset/owned cleanup",
+      "owner_region_lines": [
+        6,
+        437
+      ]
+    },
+    {
+      "id": 10,
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "owner": "InteractionState",
+      "line": 27,
+      "selector": "private var candidateHitRegions: HitRegions",
+      "change": "Insert @usableFromInline and replace private with internal only; preserve exact type/default/body.",
+      "required_by": "F20 exchange/reset/owned cleanup",
+      "owner_region_lines": [
+        6,
+        437
+      ]
+    },
+    {
+      "id": 11,
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "owner": "InteractionState",
+      "line": 28,
+      "selector": "private var candidateCommittedRecords: CommittedRecords",
+      "change": "Insert @usableFromInline and replace private with internal only; preserve exact type/default/body.",
+      "required_by": "F20 exchange/reset/owned cleanup",
+      "owner_region_lines": [
+        6,
+        437
+      ]
+    },
+    {
+      "id": 12,
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "owner": "InteractionState",
+      "line": 33,
+      "selector": "private var limits: InteractionLimits?",
+      "change": "Insert @usableFromInline and replace private with internal only; preserve exact type/default/body.",
+      "required_by": "F20 exchange/reset/owned cleanup",
+      "owner_region_lines": [
+        6,
+        437
+      ]
+    },
+    {
+      "id": 13,
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "owner": "InteractionState",
+      "line": 34,
+      "selector": "private var phase: Phase = .idle",
+      "change": "Insert @usableFromInline and replace private with internal only; preserve exact type/default/body.",
+      "required_by": "F20 exchange/reset/owned cleanup",
+      "owner_region_lines": [
+        6,
+        437
+      ]
+    },
+    {
+      "id": 14,
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "owner": "InteractionState",
+      "line": 35,
+      "selector": "private var candidateError: InteractionError?",
+      "change": "Insert @usableFromInline and replace private with internal only; preserve exact type/default/body.",
+      "required_by": "F20 exchange/reset/owned cleanup",
+      "owner_region_lines": [
+        6,
+        437
+      ]
+    },
+    {
+      "id": 15,
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "owner": "InteractionState",
+      "line": 36,
+      "selector": "private var committedPresentationRevision: PresentationRevision?",
+      "change": "Insert @usableFromInline and replace private with internal only; preserve exact type/default/body.",
+      "required_by": "F20 exchange/reset/owned cleanup",
+      "owner_region_lines": [
+        6,
+        437
+      ]
+    },
+    {
+      "id": 16,
+      "file": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "owner": "InteractionLimits",
+      "line": 13,
+      "selector": "package struct InteractionLimits: Equatable, Sendable {",
+      "change": "Insert @usableFromInline; preserve all other tokens.",
+      "required_by": "F20 field type",
+      "owner_region_lines": [
+        13,
+        28
+      ]
+    },
+    {
+      "id": 17,
+      "file": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "owner": "InteractionCandidateDisposition",
+      "line": 74,
+      "selector": "package enum InteractionCandidateDisposition: Equatable, Sendable {",
+      "change": "Insert @usableFromInline; preserve all other tokens.",
+      "required_by": "F20 root signature/cases",
+      "owner_region_lines": [
+        74,
+        77
+      ]
+    },
+    {
+      "id": 18,
+      "file": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift",
+      "owner": "RuntimeActionGenerationAllocator",
+      "line": 12,
+      "selector": "package struct RuntimeActionGenerationAllocator<Identity>: RuntimeActionGenerationSource",
+      "change": "Insert @usableFromInline; preserve all other tokens.",
+      "required_by": "F21 enclosing formal ABI scope and caller metadata",
+      "owner_region_lines": [
+        12,
+        54
+      ]
+    },
+    {
+      "id": 19,
+      "file": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift",
+      "owner": "RuntimeActionGenerationAllocator",
+      "line": 35,
+      "selector": "package mutating func resolveCandidate(committed: Bool) {",
+      "change": "Insert @inlinable; preserve access, signature, ownership, lifetime, defaults and body.",
+      "required_by": "F21 actual caller boundary",
+      "owner_region_lines": [
+        12,
+        54
+      ]
+    },
+    {
+      "id": 20,
+      "file": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift",
+      "owner": "RuntimeActionGenerationAllocator",
+      "line": 15,
+      "selector": "private var pendingReservationCount: UInt32",
+      "change": "Insert @usableFromInline and replace private with internal only; preserve exact type/default/body.",
+      "required_by": "F21 pending/reset",
+      "owner_region_lines": [
+        12,
+        54
+      ]
+    },
+    {
+      "id": 21,
+      "file": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift",
+      "owner": "RuntimeActionGenerationAllocator",
+      "line": 16,
+      "selector": "package private(set) var committedReservationCount: UInt32",
+      "change": "Insert @usableFromInline and replace private(set) with internal(set) only; package getter unchanged; setter remains inaccessible to importing modules.",
+      "required_by": "F21 select/update counters",
+      "owner_region_lines": [
+        12,
+        54
+      ]
+    },
+    {
+      "id": 22,
+      "file": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift",
+      "owner": "RuntimeActionGenerationAllocator",
+      "line": 17,
+      "selector": "package private(set) var retiredReservationCount: UInt32",
+      "change": "Insert @usableFromInline and replace private(set) with internal(set) only; package getter unchanged; setter remains inaccessible to importing modules.",
+      "required_by": "F21 select/update counters",
+      "owner_region_lines": [
+        12,
+        54
+      ]
+    },
+    {
+      "id": 23,
+      "file": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift",
+      "owner": "RuntimeActionGenerationAllocator",
+      "line": 50,
+      "selector": "private func adding(_ count: UInt32, to total: UInt32) -> UInt32 {",
+      "change": "Replace private with internal and insert @inlinable. Preserve overflow/saturation body.",
+      "required_by": "F21 direct generic-Self helper; avoid another phantom metadata boundary",
+      "owner_region_lines": [
+        12,
+        54
+      ]
+    }
+  ],
+  "noops": [
+    "Existing ABI OwnedKeyState/InteractionState/typealiases, state/committedRecords/committedHitRegions, storage protocols, InteractionError and PresentationRevision.",
+    "RuntimeActionGenerationSource/InteractionCandidateBuilder remain package nonABI; no unrelated witnesses/init/generation promotion.",
+    "Every constructor/memberwise default/property initializer/body remains unchanged.",
+    "Static five reset/exchange witnesses and private slots helper, P08 five adapter witnesses are samehost source; no ABI edits. Dynamic five operations are compatibility-only ordinary imported edges."
+  ],
+  "compiler_dependent_checks": [
+    "Allocator enclosing nominal and resolve/adding bodies must be physically ABI eligible; no default-CMO assumption.",
+    "Property usableFromInline plus internal(set) must permit serialized mutation while package-client writes remain rejected.",
+    "Phase synthesized equality/raw-value helpers and enum cases need fresh compiler and actualconsumer verification; no speculative extra witness edits."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "status": "read-only design preparation; no source/compiler/tests/decoder/runtime",
+  "base_head": "9427a4254daef0547ca22dbf375faf6ea9c99d23",
+  "source_budget": "No allowance created. f2325b85 previous ONE1/1 ZERO automatic source repairs closed. Parent must assign bounded source activity after independent READY.",
+  "counts_verified": true,
+  "source_no_mutation": true,
+  "proof_inputs": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-consumer-result/next-boundary.json",
+      "sha256": "abf0480df84af55a30a55cd5e60d6fa62aa4b38ded3d33c41b73d91e1ea52edd",
+      "bytes": 12168
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-semantic-c-boundary-review.md",
+      "sha256": "e33cce074c0540ac55bc2090bb4350b3a4a81f9b18aea1d3afb014bfa6d4348e",
+      "bytes": 3168
+    },
+    {
+      "path": ".build/contracts/p08-semantic-c-candidate1/qualification/boundary-physical-index.json",
+      "sha256": "e68ae4ae8875201bf9b8d0910756ec74647da004aed6497d92c2b4a9337c8596",
+      "bytes": 5367686
+    },
+    {
+      "path": ".build/contracts/p08-semantic-c-escape-continuation1/actual-host.sil",
+      "sha256": "cd312eb53841f082f1bbf2a85361f68638f875ff112415a1f61718ba29cb576d",
+      "bytes": 61999526
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-grouped-inventory/matched-compiler-rule.json",
+      "sha256": "7d9e494dc02f26ff352a5b37cab00962d19efad3411d829fcf946ae485e9d2cf",
+      "bytes": 9707
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+      "sha256": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b",
+      "bytes": 4288
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "sha256": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+      "bytes": 254803
+    },
+    {
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift",
+      "sha256": "374c7412495790f1de8e7e336be2902d7012d223edb0130c15ad4e422fdba904",
+      "bytes": 4389
+    }
+  ],
+  "protected_unrelated": [
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+      "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+      "bytes": 9440
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+      "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+      "bytes": 2048
+    },
+    {
+      "path": "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+      "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+      "bytes": 26018
+    },
+    {
+      "path": "scripts/nrf52840/build.sh",
+      "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+      "bytes": 10914
+    },
+    {
+      "path": "scripts/raspberry-pi/build.sh",
+      "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea",
+      "bytes": 6433
+    },
+    {
+      "path": "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
+      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26",
+      "bytes": 44198
+    }
+  ]
+}

@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [grouped E/F commit-resolution proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-grouped-inventory/README.md):
+23sites/fourfiles cover both remaining actual metadata boundaries and direct
+readiness/reset/exchange/counter/helper closure; three scalar internal-setter
+exceptions explicit for review. Read-only/no source/compiler/runtime/newallowance;
+prior source activity closed. Independent review before any bounded implementation.
+
 Current [semantic C actual consumer result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-consumer-result/README.md):
 all8C body boundaries concretize, F08metadata edge removed; publication/reconcile/
 borrow/readerdeferral proof retained.21/23selectedbodyboundaries resolved, E20generic

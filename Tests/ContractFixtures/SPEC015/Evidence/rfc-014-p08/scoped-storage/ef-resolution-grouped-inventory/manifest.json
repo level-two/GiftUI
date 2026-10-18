@@ -1,0 +1,39 @@
+{
+  "files": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-grouped-inventory/README.md",
+      "sha256": "44ace0727899825d43db0f46512b63abef8b138b5efb1dbe90912382d318844a",
+      "bytes": 3000
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-grouped-inventory/correction-map.json",
+      "sha256": "624d7990ba440511dcbdbbc97c52097ea0cdb2172e68b76cfb08e3f61a503ab0",
+      "bytes": 12807
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-grouped-inventory/current-four-body-records.json",
+      "sha256": "b480529245596632721e2fc53173d8d5916122ccdc0a25c3330efa6d1d284d88",
+      "bytes": 4236
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-grouped-inventory/direct-storage-closure.json",
+      "sha256": "2e72ce220d48d4a7627843448f0258a73f3303d7cc7d4ca56e474835b8942de2",
+      "bytes": 5585
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-grouped-inventory/guards.json",
+      "sha256": "fc5d75e4c081d6642438e36ab70e9c9e549489d412b72fdb17f62439287888cd",
+      "bytes": 3063
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-grouped-inventory/read-only-receipt.json",
+      "sha256": "ac766fa7f8ad2869ec8bb06f4075bf283cbf3d2583c43def624598473225764d",
+      "bytes": 3388
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-grouped-inventory/tests-validation-proposal.json",
+      "sha256": "6dbd328d89882679906f2e268a06304b405ae1d4dee65b9ee365f4fcc873a201",
+      "bytes": 3303
+    }
+  ]
+}

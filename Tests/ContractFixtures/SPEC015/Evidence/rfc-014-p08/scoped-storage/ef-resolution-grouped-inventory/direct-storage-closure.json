@@ -1,0 +1,117 @@
+{
+  "witnesses": [
+    {
+      "file": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+      "owner": "StaticTwoInteractionCandidateStorage",
+      "line": 25,
+      "declaration": "package mutating func reset() {",
+      "disposition": "NO EDIT samehost source; preserve private backing"
+    },
+    {
+      "file": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+      "owner": "StaticTwoInteractionCommittedStorage",
+      "line": 68,
+      "declaration": "package mutating func reset() {",
+      "disposition": "NO EDIT samehost source; preserve private backing"
+    },
+    {
+      "file": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+      "owner": "StaticTwoInteractionCommittedStorage",
+      "line": 89,
+      "declaration": "package mutating func exchangeContents(with other: inout Self) {",
+      "disposition": "NO EDIT samehost source; preserve private backing"
+    },
+    {
+      "file": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+      "owner": "StaticTwoInteractionHitStorage",
+      "line": 108,
+      "declaration": "package mutating func reset() {",
+      "disposition": "NO EDIT samehost source; preserve private backing"
+    },
+    {
+      "file": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+      "owner": "StaticTwoInteractionHitStorage",
+      "line": 129,
+      "declaration": "package mutating func exchangeContents(with other: inout Self) {",
+      "disposition": "NO EDIT samehost source; preserve private backing"
+    },
+    {
+      "file": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "owner": "P08CandidateAccess",
+      "line": 674,
+      "declaration": "mutating func reset() { switch descriptor { case .static(let p, _, _): p.pointee.reset()",
+      "disposition": "NO EDIT samehost source; preserve private backing"
+    },
+    {
+      "file": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "owner": "P08CommittedAccess",
+      "line": 753,
+      "declaration": "mutating func reset() { switch descriptor { case .static(let p, _, _): p.pointee.reset()",
+      "disposition": "NO EDIT samehost source; preserve private backing"
+    },
+    {
+      "file": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "owner": "P08CommittedAccess",
+      "line": 770,
+      "declaration": "mutating func exchangeContents(with other: inout Self) {",
+      "disposition": "NO EDIT samehost source; preserve private backing"
+    },
+    {
+      "file": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "owner": "P08HitAccess",
+      "line": 838,
+      "declaration": "mutating func reset() { switch descriptor { case .static(let p, _, _): p.pointee.reset()",
+      "disposition": "NO EDIT samehost source; preserve private backing"
+    },
+    {
+      "file": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "owner": "P08HitAccess",
+      "line": 855,
+      "declaration": "mutating func exchangeContents(with other: inout Self) {",
+      "disposition": "NO EDIT samehost source; preserve private backing"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift",
+      "owner": "DynamicInteractionCandidateStorage",
+      "line": 23,
+      "declaration": "package mutating func reset() {",
+      "disposition": "NO EDIT Dynamic compatibility; strict Static cost unqualified"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift",
+      "owner": "DynamicInteractionCommittedStorage",
+      "line": 71,
+      "declaration": "package mutating func reset() {",
+      "disposition": "NO EDIT Dynamic compatibility; strict Static cost unqualified"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift",
+      "owner": "DynamicInteractionCommittedStorage",
+      "line": 90,
+      "declaration": "package mutating func exchangeContents(with other: inout Self) {",
+      "disposition": "NO EDIT Dynamic compatibility; strict Static cost unqualified"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift",
+      "owner": "DynamicInteractionHitStorage",
+      "line": 115,
+      "declaration": "package mutating func reset() {",
+      "disposition": "NO EDIT Dynamic compatibility; strict Static cost unqualified"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift",
+      "owner": "DynamicInteractionHitStorage",
+      "line": 134,
+      "declaration": "package mutating func exchangeContents(with other: inout Self) {",
+      "disposition": "NO EDIT Dynamic compatibility; strict Static cost unqualified"
+    }
+  ],
+  "host_private_helper": {
+    "file": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+    "owner": "StaticTwoInteractionSlots",
+    "line": 10,
+    "operation": "reset(count:); clears initialized optional slots/destructs elements; samehost source NO EDIT"
+  },
+  "P08_exchange_invariants": "Keep lifetime.matches/capacity/origin-id/address/count/retainedBytes checks and optional transcript; no private descriptor/factory/ledger changes.",
+  "qualification": "Samehost availability is not proof of resulting specialization/cost. Fresh concrete Static and P08 cleanup must prove witness removal/bounded operations; Dynamic imported costs not accepted by this map."
+}

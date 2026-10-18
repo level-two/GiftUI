@@ -1,0 +1,42 @@
+{
+  "authority": [
+    {
+      "path": "docs/specs/spec-011-interaction.md",
+      "lines": [
+        138,
+        203
+      ],
+      "rule": "Preserve five exact lifetime-bearing stored values, owned flags/counters/errors, union-of-five consuming initializer and copy-state failable initializer; no second state machine/lifetime erasure. No private access mandate for these framework implementation fields is specified here."
+    },
+    {
+      "path": "docs/specs/spec-015-host-configuration.md",
+      "lines": [
+        318,
+        368
+      ],
+      "rule": "P08 access wrappers/fileprivate and fields/constructors/private, session geometry/keys private, supplied/pipeline/retired storage private, all transfer lifetime unions and14 loans remain unchanged."
+    },
+    {
+      "path": "docs/implementation-designs/spec-015-p08-native-cold-static.md",
+      "lines": [
+        94,
+        112
+      ],
+      "rule": "Derived realization permits internal ABI helpers for specialization, never package/public unchecked factories; does not itself amend normative privacy."
+    }
+  ],
+  "visibility_decision_for_review": "Exactly three package private(set) scalar counters become package internal(set) with ABI attribute. Importing clients, INCLUDING same-package clients in another module, still cannot write. Trusted owner-module setter access changes private to internal; this exception is explicit, requires independent reviewer confirmation and all three isolated negative setter controls. No package/public writable storage or new capability.",
+  "must_preserve": [
+    "All property/parameter defaults, every constructor/signature/failable guard, exact lifetime/ownership/generic constraint and initializer body. No constructors added.",
+    "OwnedKeyState poison guard returns before partial commit; ready uses state readiness plus failure==nil; rejected commit must not reset/publish partial state.",
+    "State valid commit exchanges both records/hits, records revision; valid discard skips publication; invalid phases return; then resets three candidate stores, clears limits/error, phase idle in exact order.",
+    "Allocator committed/retired routing and UInt32 saturation, pending zeroing and generation reservation semantics exact.",
+    "All authored State/_model/raw keys/ledger/private P08 fields and constructors, Optional host construction, fourteen loan boundaries untouched.",
+    "No unchecked route, new pointer/closure/lease/fields, public/package access widening, algorithm/exclusivity/destruction changes."
+  ],
+  "proof_limits": [
+    "Phase derived equality/default CMO, concrete witness specialization, metadata elimination and cold costs are compiler/actualconsumer gates, not proved by annotations.",
+    "F21 scalar provider already qualified narrowly; proposed success requires its actual caller metadata setup removed or bounded-qualified, not callee-only proof.",
+    "P08 adapter descriptor assertions and Dynamic imported cleanup remain reachable-cost questions; samehost source availability alone is not acceptance."
+  ]
+}

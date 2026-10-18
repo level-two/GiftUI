@@ -18,6 +18,13 @@ superseded_by: null
 
 # Implementation Design — P08 Scoped Storage Ownership
 
+Current [grouped E/F proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-grouped-inventory/README.md), 2026-10-18:
+23sites/fourfiles group actual resolveCandidate metadata boundaries with direct
+readiness/poison/reset/exchange/saturation dependencies. Protected P08 backing and
+all lifetime/default/body rules unchanged; three private(set)→internal(set) scalar
+counter decisions explicit for independent review. No source/compiler/runtime or
+new allowance; previous source activity remains closed.
+
 Current [grouped C semantic proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-grouped-inventory/README.md), 2026-10-18:
 36sites/fourfiles cover all8Croots/directpublication/reconcile/borrow helpers.
 Exact ABI-only fields and existing constructor/default/lifetime guards; no protected

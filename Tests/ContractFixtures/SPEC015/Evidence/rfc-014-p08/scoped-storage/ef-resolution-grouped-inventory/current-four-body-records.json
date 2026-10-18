@@ -1,0 +1,106 @@
+[
+  {
+    "module": "GiftUIInteraction",
+    "record": {
+      "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+      "identifier_id": 113,
+      "function_id": 164,
+      "hash": 1008583663,
+      "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveCandidate(GiftUIInteraction.InteractionCandidateDisposition) -> ()",
+      "offset_bits": 526511,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 0,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=192 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    }
+  },
+  {
+    "module": "GiftUIInteraction",
+    "record": {
+      "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE24candidateIsReadyForOfferSbvg",
+      "identifier_id": 227,
+      "function_id": 165,
+      "hash": 889266314,
+      "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.candidateIsReadyForOffer.getter : Swift.Bool",
+      "offset_bits": 526865,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 0,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=385 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    }
+  },
+  {
+    "module": "GiftUIInteraction",
+    "record": {
+      "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF",
+      "identifier_id": 103,
+      "function_id": 166,
+      "hash": 717640648,
+      "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveCandidate(GiftUIInteraction.InteractionCandidateDisposition) -> ()",
+      "offset_bits": 527266,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 0,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=147 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    }
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "record": {
+      "name": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+      "identifier_id": 315,
+      "function_id": 679,
+      "hash": 3616162541,
+      "demangled": "GiftUIRuntimeCore.RuntimeActionGenerationAllocator.resolveCandidate(committed: Swift.Bool) -> ()",
+      "offset_bits": 1354885,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 0,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=230 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    }
+  }
+]
