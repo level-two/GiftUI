@@ -52,3 +52,8 @@ checkedborrowpositive/internalnegativePASS. Escapecontrol inferred discard/Void:
 exact warning says viewexpressionunused, zeroerrors; no actual escape attempted.
 Harnessflaw, not lifetime defect evidence; SILblocked, no source/budgetchange.
 One explicitreturn control+matchingpositive requires review, no compilerpretest.
+
+[Explicit-return control pair proposal](semantic-c-escape-continuation1/README.md)
+staticvalidatePASS: force returned SemanticRecordView vsownedUInt32 positive to
+prevent original unusedexpression/Void inference.1305frozeninputs; retain87/72,
+runonlypair→conditionalfresh42SIL afterREADY. No compilerpretest/source/budgetchange.

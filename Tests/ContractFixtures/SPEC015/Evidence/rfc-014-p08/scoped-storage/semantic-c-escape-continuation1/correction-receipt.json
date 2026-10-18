@@ -1,0 +1,18 @@
+{
+  "classification": "one exact isolated escapecontrol+matchingpositive, harness-only",
+  "original_evidence": "semantic-c-harness-continuation1-result/logs/semantic-c-borrow-escape-negative.stderr unused SemanticRecordView warning proves discarded expression",
+  "original_fragment": "_ = try borrowed.withCandidateView { view in view }",
+  "positive_fragment": "_ = try borrowed.withCandidateView { (view) -> UInt32 in return 0 }",
+  "negative_fragment": "_ = try borrowed.withCandidateView { (view) -> SemanticRecordView<UInt32> in return view }",
+  "only_delta": "Reader callback explicit return type and explicit return statement; common factory/typedthrows/borrow/outerUInt32 result exact",
+  "expected_negative": "instance method 'withCandidateView' requires that 'SemanticRecordView<UInt32>' conform to 'Escapable'",
+  "positive_errors": 0,
+  "negative_errors": 1,
+  "not_run": [
+    "compiler pretest",
+    "source repair",
+    "decoder",
+    "runtime"
+  ],
+  "source": "f2325b85 fixed/ONE1attempt ZEROautomaticSOURCErepairs"
+}

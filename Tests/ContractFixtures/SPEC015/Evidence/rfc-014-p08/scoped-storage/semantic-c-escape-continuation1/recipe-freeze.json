@@ -1,0 +1,6 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-escape-continuation1/run.py": "03e1bdec47108d2ac4c6c0b9d42692d3c971df541f941ce2516052c08ab77131",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-escape-continuation1/prepared.json": "d0801e643bb06d4673bba250d3bfb2335d83389b47a9785484cc84529ac00914",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-escape-continuation1/input-freeze.json": "6b269f4ddd5a09f3f399abc634bec95917ee01ab94791a02e554e18109cfd31e",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-escape-continuation1/correction-receipt.json": "ea89b3c2cb5f933e0129dcd026385e3b8e7b3394f5117434b8621567cb480694"
+}

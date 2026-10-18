@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [semantic C explicit-return harness proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-escape-continuation1/README.md):
+87bodies/borrowpositive/internalnegative PASS retained. Prior escapecontrol discarded
+view (unusedexpression warning); explicitreturnedview +ownedUInt32 positive proposed,
+validateonlyPASS/independentREADY before pair→fresh42SIL. No source/compile/pretest
+or repairreset; sourcef2325b85 fixed, actual safety/cold/P08 unqualified.
+
 Current [semantic C initial result / focused harness proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/README.md):
 macro17/lower25/fourvariants/prior70/decode11/interpreter/captures PASS. New3 typed
 closure fixtures invalid, one noncanonical bodyselector (actualbody kind1/1BB).
