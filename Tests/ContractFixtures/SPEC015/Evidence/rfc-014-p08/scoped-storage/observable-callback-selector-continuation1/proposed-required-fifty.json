@@ -1,0 +1,316 @@
+[
+  {
+    "module": "GiftUIDrawing",
+    "name": "$s13GiftUIDrawing22withCanvasStagedValues8metadata7entries5table8capacity6limits_q0_AA0dE8MetadataVz_s11MutableSpanVyAA0dE5EntryVyx14CaptureStorageQy_GSgGzq_s6UInt16VAA06StaticD6LimitsVq0_AA0deF0Vyxq_G0A2UI12DrawingErrorOYKXEtA0_YKSQRzs8SendableRzAA0D10ValueTableR_r1_lF",
+    "demangled": "GiftUIDrawing.withCanvasStagedValues<A, B, C where A: Swift.Equatable, A: Swift.Sendable, B: GiftUIDrawing.CanvasValueTable>(metadata: inout GiftUIDrawing.CanvasStagedMetadata, entries: inout Swift.MutableSpan<GiftUIDrawing.CanvasStagedEntry<A, B.CaptureStorage>?>, table: B, capacity: Swift.UInt16, limits: GiftUIDrawing.StaticCanvasLimits, _: (GiftUIDrawing.CanvasStagedValues<A, B>) throws(GiftUI.DrawingError) -> C) throws(GiftUI.DrawingError) -> C",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIHostConfiguration",
+    "name": "$s23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVAARi_zRi0_zrlE8activateAA0G16ActivationResultOy0J7FailureQzGyF",
+    "demangled": "(extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.activate() -> GiftUIHostConfiguration.HostActivationResult<A.ActivationFailure>",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIHostConfiguration",
+    "name": "$s23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVAARi_zRi0_zrlE8teardownyyF",
+    "demangled": "(extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.teardown() -> ()",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUILayout",
+    "name": "$s12GiftUILayout13publishLayout7summary9workspace4sinkAA0D6ResultOAA0D7SummaryV_xzq_ztAA0D9WorkspaceRzAA0dH4SinkR_8IdentityQy_ALRtzr0_lF",
+    "demangled": "GiftUILayout.publishLayout<A, B where A: GiftUILayout.LayoutWorkspace, B: GiftUILayout.LayoutResultSink, A.Identity == B.Identity>(summary: GiftUILayout.LayoutSummary, workspace: inout A, sink: inout B) -> GiftUILayout.LayoutResult",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore32ObservableCanvasInvocationSourceVAARi_zrlE06invokeE02at7context4sizeyq0__0A2UI15GraphicsContextVzAH4SizeVtAH12DrawingErrorOYKF",
+    "demangled": "(extension in GiftUIRuntimeCore):GiftUIRuntimeCore.ObservableCanvasInvocationSource< where A: ~Swift.Copyable>.invokeCanvas(at: C, context: inout GiftUI.GraphicsContext, size: GiftUI.Size) throws(GiftUI.DrawingError) -> ()",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO8dispatch_7records6target10actionType9operationAA0deF14DispatchResultO0A11UIExecution14CapturedActionVy8IdentityQzG_x0A17UIObservableState010ObservableU16RootTargetAccessVyq_q0_Gq1_m8MutationAQ0v5ModelZ0PQy_q1_XEt0A13UIInteraction0f9CommittedR4ViewRzAqVR_AQ0vU5ModelR_SQR0_s8SendableR0_0A2UI0A8UIActionR1_Ri_zRi0_zRi__r2_lFZ",
+    "demangled": "static GiftUIRuntimeCore.RuntimeRecordInteractionBridge.dispatch<A, B, C, D where A: GiftUIInteraction.InteractionCommittedActionView, B: GiftUIObservableState.ObservableModelMutation, B: GiftUIObservableState.ObservableStateModel, C: Swift.Equatable, C: Swift.Sendable, D: GiftUI.GiftUIAction, A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable>(_: GiftUIExecution.CapturedAction<A.Identity>, records: A, target: GiftUIObservableState.ObservableStateRootTargetAccess<B, C>, actionType: D.Type, operation: (D) -> B.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIRuntimeCore.RuntimeRecordInteractionDispatchResult",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO3run5ownerAA0deF6ResultOy12OwnerFailureQzGxz_tAA0defJ0RzRi_zRi0_zlFZ",
+    "demangled": "static GiftUIRuntimeCore.RuntimeCompletePipeline.run<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO24finishOfferWithoutCommit11operational5state11wakeReasons16frameDisposition11publication8acquired5ownerAA0deF6ResultOy12OwnerFailureQzG0A11UIExecution20ExecutionOperationalO_AQ23PresentationIntentStateOAQ0x4WakeN0VAQ012LogicalFrameP0OAA0dF11PublicationVAA0D14CleanupActionsVxztAA0defU0RzRi_zRi0_zlFZ",
+    "demangled": "static GiftUIRuntimeCore.RuntimeCompletePipeline.finishOfferWithoutCommit<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(operational: GiftUIExecution.ExecutionOperational, state: GiftUIExecution.PresentationIntentState, wakeReasons: GiftUIExecution.ExecutionWakeReasons, frameDisposition: GiftUIExecution.LogicalFrameDisposition, publication: GiftUIRuntimeCore.RuntimePipelinePublication, acquired: GiftUIRuntimeCore.RuntimeCleanupActions, owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO4fail11priorIntent2at7failure15mutationApplied11publication8acquired5ownerAA0deF6ResultOy12OwnerFailureQzG0A11UIExecution012PresentationI5StateO_AA0deF5StageOAQ08RunCycleS0OyAOGSbAA0dF11PublicationVSgAA0D14CleanupActionsVxztAA0defR0RzRi_zRi0_zlFZ",
+    "demangled": "static GiftUIRuntimeCore.RuntimeCompletePipeline.fail<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(priorIntent: GiftUIExecution.PresentationIntentState, at: GiftUIRuntimeCore.RuntimeCompletePipelineStage, failure: GiftUIExecution.RunCycleFailure<A.OwnerFailure>, mutationApplied: Swift.Bool, publication: GiftUIRuntimeCore.RuntimePipelinePublication?, acquired: GiftUIRuntimeCore.RuntimeCleanupActions, owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO7cleanup5after8acquired5owneryAA0D16CoordinatorStageO_AA0D14CleanupActionsVxztAA0deF5OwnerRzRi_zRi0_zlFZ",
+    "demangled": "static GiftUIRuntimeCore.RuntimeCompletePipeline.cleanup<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(after: GiftUIRuntimeCore.RuntimeCoordinatorStage, acquired: GiftUIRuntimeCore.RuntimeCleanupActions, owner: inout A) -> ()",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+    "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveDown(at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+    "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveMove(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+    "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveUp(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy8IdentityQzG0A2UI5PointV_tF",
+    "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveDown(at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy8IdentityQzG0A11UIExecution14CapturedActionVyAIG_0A2UI5PointVtF",
+    "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveMove(_: GiftUIExecution.CapturedAction<A.Identity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy8IdentityQzG0A11UIExecution14CapturedActionVyAIG_0A2UI5PointVtF",
+    "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveUp(_: GiftUIExecution.CapturedAction<A.Identity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13topmostRecord2atAA011BoundActionF0Vy8IdentityQzGSg0A2UI5PointV_tF",
+    "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.topmostRecord(at: GiftUI.Point) -> GiftUIInteraction.BoundActionRecord<A.Identity>?",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF",
+    "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.record(identity: A.Identity) -> GiftUIInteraction.BoundActionRecord<A.Identity>?",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE14capturedRecord_8containsAA011BoundActionF0Vy8IdentityQzGSg0A11UIExecution08CapturedI0VyAIG_0A2UI5PointVtF",
+    "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.capturedRecord(_: GiftUIExecution.CapturedAction<A.Identity>, contains: GiftUI.Point) -> GiftUIInteraction.BoundActionRecord<A.Identity>?",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIExecution",
+    "name": "$s15GiftUIExecution14CapturedActionV8identity10generationACyxGx_AA0D10GenerationVtcfC",
+    "demangled": "GiftUIExecution.CapturedAction.init(identity: A, generation: GiftUIExecution.ActionGeneration) -> GiftUIExecution.CapturedAction<A>",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.modelKey(identity: B, ordinal: Swift.UInt16) -> GiftUI._GiftUIModelKey<A.Schema>?",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8matching_7ordinalSiSgq__s6UInt16VtF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.matching(_: B, ordinal: Swift.UInt16) -> Swift.Int?",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE3key2at0A2UI01_A10UIModelKeyVy6SchemaQzGSi_tF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.key(at: Swift.Int) -> GiftUI._GiftUIModelKey<A.Schema>",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7belongs2toSbAA0d5ModelF0Vyx6SchemaQzG_tF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.belongs(to: GiftUIObservableState.ObservableModelScope<A, A.Schema>) -> Swift.Bool",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<A.GiftUIObservableState.ObservableStateModel.Schema>, mutation: A.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIObservableState.ObservableStateResult",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE11sharesOwner4withSbACyxq_G_tF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.sharesOwner(with: GiftUIObservableState.ObservableModelScope<A, B>) -> Swift.Bool",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6reporty0A2UI01_aB19ChangeReportOutcomeOAE01_A10UIModelKeyVyq_GAA0dcE0Rz6SchemaQzRs_rlF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.report< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(GiftUI._GiftUIModelKey<B>) -> GiftUI._GiftUIObservableChangeReportOutcome",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.endFrame() throws(GiftUIObservableState.ObservableStateError) -> ()",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE5phaseAA0dE9OwnershipV5PhaseOvg",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.phase.getter : GiftUIObservableState.ObservableModelOwnership.Phase",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_8mutation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, mutation: A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, operation: () -> A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE8evaluate_06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F0Qyd__AA0dC5ErrorOGqd___AG0e9ExpansionN0OSgyXEAK0A2UI01_A11UIFrameReadVyq0_GAR01_A15UIAccessFailureOYKXEt6DomainQyd__Rs0_AR4ViewRd__AJ_AXQYd__AYRSlF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableSemanticBodyBinding< where A: ~Swift.Copyable>.evaluate<A where C == A1.Domain, A1: GiftUI.View, A1.Domain == A1.Body.Domain>(_: A1, beforeBody: () -> GiftUISemanticCore.SemanticExpansionError?, body: (GiftUI._GiftUIFrameRead<C>) throws(GiftUI._GiftUIAccessFailure) -> A1.Body) -> GiftUISemanticCore.SemanticBodyEvaluation<A1.Body, GiftUIObservableState.ObservableStateError>",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableSemanticBodyBinding< where A: ~Swift.Copyable>.evaluateStateful<A where C == A1.GiftUI.View.Domain, A1: GiftUI.View, A1: GiftUI._GiftUIObservableStateHost, A1.GiftUI.View.Domain == A1.GiftUI.View.Body.Domain>(_: A1, structuralIdentity: B, beforeBody: () -> GiftUISemanticCore.SemanticExpansionError?, body: (A1, GiftUI._GiftUIFrameRead<C>) throws(GiftUI._GiftUIAccessFailure) -> A1.GiftUI.View.Body) -> GiftUISemanticCore.SemanticBodyEvaluation<A1.GiftUI.View.Body, GiftUIObservableState.ObservableStateError>",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState24ObservableModelOwnershipV7address3forAC7AddressV0A2UI01_A10UIModelKeyVyxG_tlF",
+    "demangled": "GiftUIObservableState.ObservableModelOwnership.address<A>(for: GiftUI._GiftUIModelKey<A>) -> GiftUIObservableState.ObservableModelOwnership.Address",
+    "selector_provenance": "reviewed successful continuation exact unique mangled identity; fresh current record required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "label": "ObservableStateRootScope.preserved",
+    "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE9preserved_7ordinal5stateSbq__s6UInt16V0A2UI0C0Vy6SchemaQzGztAA0dC5ErrorOYKF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.preserved(_: B, ordinal: Swift.UInt16, state: inout GiftUI.State<A.Schema>) throws(GiftUIObservableState.ObservableStateError) -> Swift.Bool"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "label": "ObservableStateRootScope.install",
+    "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.install(_: B, ordinal: Swift.UInt16, state: inout GiftUI.State<A.Schema>, ticket: inout GiftUIObservableState.ObservableModelTicket<A.Schema>) throws(GiftUIObservableState.ObservableStateError) -> ()"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "label": "ObservableStateRootScope.bind",
+    "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+    "demangled_regex": "^\\(extension in GiftUIObservableState\\):GiftUIObservableState\\.ObservableStateRootScope<[^>]*>\\.bind\\(",
+    "selector_note": "newly module-visible or constrained method absent old index; anchored qualified declaration with exact method, fresh unique match mandatory"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "label": "ObservableStateRootScope.checkOperation",
+    "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+    "demangled_regex": "^\\(extension in GiftUIObservableState\\):GiftUIObservableState\\.ObservableStateRootScope<[^>]*>\\.checkOperation\\(",
+    "selector_note": "newly module-visible or constrained method absent old index; anchored qualified declaration with exact method, fresh unique match mandatory"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "label": "ObservableModelScope.validateTicket",
+    "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE14validateTicketyyAA0deH0Vyq_GAA0dC5ErrorOYKF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.validateTicket(GiftUIObservableState.ObservableModelTicket<B>) throws(GiftUIObservableState.ObservableStateError) -> ()"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "label": "ObservableModelScope.validateAssociation",
+    "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE19validateAssociationyy0A2UI01_A10UIModelKeyVyq_GAA0dC5ErrorOYKF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.validateAssociation(GiftUI._GiftUIModelKey<B>) throws(GiftUIObservableState.ObservableStateError) -> ()"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "label": "ObservableModelScope.validateOperation",
+    "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE17validateOperation9discoveryySb_tAA0dC5ErrorOYKF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.validateOperation(discovery: Swift.Bool) throws(GiftUIObservableState.ObservableStateError) -> ()"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "label": "ObservableModelScope.requireStop",
+    "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE11requireStopyyF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.requireStop() -> ()"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6attach_4sink0A2UI01_A23UIObservationAttachmentVSgAF01_A10UIModelKeyVyq_G_AF01_aB10ChangeSinkVntAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.attach< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(_: GiftUI._GiftUIModelKey<B>, sink: __owned GiftUI._GiftUIObservableChangeSink) throws(GiftUIObservableState.ObservableStateError) -> GiftUI._GiftUIObservationAttachment?",
+    "selector_policy": "exact mangled declarationidentity; unique name; no closure/defer/prefix filtering or weakenedmultiplicity"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.detach< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(_: GiftUI._GiftUIModelKey<B>, attachment: GiftUI._GiftUIObservationAttachment) throws(GiftUIObservableState.ObservableStateError) -> ()",
+    "selector_policy": "exact mangled declarationidentity; unique name; no closure/defer/prefix filtering or weakenedmultiplicity"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "label": "ObservableModelScope.release",
+    "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE7releaseyyAA0dE6TicketVyq_GzAA0dC5ErrorOYKF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.release(inout GiftUIObservableState.ObservableModelTicket<B>) throws(GiftUIObservableState.ObservableStateError) -> ()"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "label": "ObservableModelScope.register",
+    "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8registeryyAA0dE6TicketVyq_GAA0dC5ErrorOYKF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.register(GiftUIObservableState.ObservableModelTicket<B>) throws(GiftUIObservableState.ObservableStateError) -> ()"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "label": "ObservableModelScope.pin",
+    "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE3pinyy0A2UI01_A10UIModelKeyVyq_GAA0dC5ErrorOYKF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.pin(GiftUI._GiftUIModelKey<B>) throws(GiftUIObservableState.ObservableStateError) -> ()"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "label": "ObservableModelTicket.requireClaim",
+    "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+    "name": "$s21GiftUIObservableState21ObservableModelTicketV12requireClaimAA0dE9OwnershipV0H0VyAA0dC5ErrorOYKF",
+    "demangled": "GiftUIObservableState.ObservableModelTicket.requireClaim() throws(GiftUIObservableState.ObservableStateError) -> GiftUIObservableState.ObservableModelOwnership.Claim"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "label": "ObservableModelTicket.endOwnership",
+    "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+    "name": "$s21GiftUIObservableState21ObservableModelTicketV12endOwnershipyyF",
+    "demangled": "GiftUIObservableState.ObservableModelTicket.endOwnership() -> ()"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "label": "ObservableModelTicket.key.getter",
+    "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+    "name": "$s21GiftUIObservableState21ObservableModelTicketV3key0A2UI01_A10UIModelKeyVyxGvg",
+    "demangled": "GiftUIObservableState.ObservableModelTicket.key.getter : GiftUI._GiftUIModelKey<A>"
+  }
+]

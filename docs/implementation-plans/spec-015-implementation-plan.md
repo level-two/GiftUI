@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+[Exact attach/detach selector continuation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-selector-continuation1/README.md)
+is prepared/staticvalidated only: two exactmangled identities/currentrecords,48other
+targets unchanged,861input hashes/two output-cache path changes; reuse all sealed
+prerequisites then50physicalgate/conditional42SIL. Independent review beforeexecution;
+source fixed, no source budgetreset or acceptancecriteria change.
+
 Current [callback initial result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1-result/README.md):
 fresh25/64privacy/8decode+index/2captures PASS;48/50physicalselection. Two attach/detach
 regexes omit method-level constraints; exact kind1/11BB and14BB bodies present. SIL

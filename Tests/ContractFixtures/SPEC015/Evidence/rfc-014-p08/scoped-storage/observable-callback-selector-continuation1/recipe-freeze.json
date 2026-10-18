@@ -1,0 +1,7 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-selector-continuation1/run.py": "75e95473b579806f37a41d2b34706779b69b2fe5aacdb93de4ab42bac0d3f569",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-selector-continuation1/prepared.json": "02de18b2a548e06aad09a074d44c0e50ab16da9faf6b08281b135551907d169a",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-selector-continuation1/selector-correction-map.json": "74722f4f70d92d5f3f0f97ecf4b5179863250f4fbe35d495f83b74c069732a5d",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-selector-continuation1/proposed-required-fifty.json": "13c6de937556381c9caf0a2602e9ff57c841922ffb5afbf0cc7ba61679ea64d6",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-selector-continuation1/input-freeze.json": "3ea28932a5d9ad0e1ed442d6fc50781655126f70df6fab40fc3e14dfa7034c27"
+}

@@ -1,0 +1,105 @@
+{
+  "status": "PROPOSED ONLY; pending independentreview beforeapplication/execution",
+  "source_commit": "f8da7a28",
+  "changes": 2,
+  "retained_unchanged": 48,
+  "rows": [
+    {
+      "target_index": 42,
+      "old_selector": {
+        "module": "GiftUIObservableState",
+        "label": "ObservableModelScope.attach",
+        "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+        "demangled_regex": "^\\(extension in GiftUIObservableState\\):GiftUIObservableState\\.ObservableModelScope<[^>]*>\\.attach\\(",
+        "selector_note": "newly module-visible or constrained method absent old index; anchored qualified declaration with exact method, fresh unique match mandatory"
+      },
+      "old_matches": [],
+      "proposed_selector": {
+        "module": "GiftUIObservableState",
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6attach_4sink0A2UI01_A23UIObservationAttachmentVSgAF01_A10UIModelKeyVyq_G_AF01_aB10ChangeSinkVntAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF",
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.attach< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(_: GiftUI._GiftUIModelKey<B>, sink: __owned GiftUI._GiftUIObservableChangeSink) throws(GiftUIObservableState.ObservableStateError) -> GiftUI._GiftUIObservationAttachment?",
+        "selector_policy": "exact mangled declarationidentity; unique name; no closure/defer/prefix filtering or weakenedmultiplicity"
+      },
+      "physical_record": {
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6attach_4sink0A2UI01_A23UIObservationAttachmentVSgAF01_A10UIModelKeyVyq_G_AF01_aB10ChangeSinkVntAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF",
+        "identifier_id": 215,
+        "function_id": 68,
+        "hash": 291005294,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.attach< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(_: GiftUI._GiftUIModelKey<B>, sink: __owned GiftUI._GiftUIObservableChangeSink) throws(GiftUIObservableState.ObservableStateError) -> GiftUI._GiftUIObservationAttachment?",
+        "offset_bits": 430253,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 11,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=262 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''"
+      },
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "source_line": 114,
+      "source_declaration": "package borrowing func attach(",
+      "source_sha256": "8fbcbae675ae704faebdd33e2aa3956e404ecfa0f75fe7c49d8bdd89c9a4c4d8",
+      "cause": "method-level genericconstraints between attach/detach and argumentlist omitted by originalregex",
+      "classification": "selectoronly defect; exact sourcefunction exists with kind1/nonzeroBB; no sourcecandidatefailure or absentbody",
+      "scope": "proposed only; original frozenrequired-body-targets.json unchanged"
+    },
+    {
+      "target_index": 43,
+      "old_selector": {
+        "module": "GiftUIObservableState",
+        "label": "ObservableModelScope.detach",
+        "selector_provenance": "fresh records mandatory; no stale functionID/offset; exactknown name or anchored declaration signature excludes closures/defer/defaultargument",
+        "demangled_regex": "^\\(extension in GiftUIObservableState\\):GiftUIObservableState\\.ObservableModelScope<[^>]*>\\.detach\\(",
+        "selector_note": "newly module-visible or constrained method absent old index; anchored qualified declaration with exact method, fresh unique match mandatory"
+      },
+      "old_matches": [],
+      "proposed_selector": {
+        "module": "GiftUIObservableState",
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF",
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.detach< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(_: GiftUI._GiftUIModelKey<B>, attachment: GiftUI._GiftUIObservationAttachment) throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "selector_policy": "exact mangled declarationidentity; unique name; no closure/defer/prefix filtering or weakenedmultiplicity"
+      },
+      "physical_record": {
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF",
+        "identifier_id": 220,
+        "function_id": 61,
+        "hash": 703460216,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.detach< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(_: GiftUI._GiftUIModelKey<B>, attachment: GiftUI._GiftUIObservationAttachment) throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "offset_bits": 393555,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 14,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=272 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''"
+      },
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "source_line": 125,
+      "source_declaration": "package borrowing func detach(",
+      "source_sha256": "8fbcbae675ae704faebdd33e2aa3956e404ecfa0f75fe7c49d8bdd89c9a4c4d8",
+      "cause": "method-level genericconstraints between attach/detach and argumentlist omitted by originalregex",
+      "classification": "selectoronly defect; exact sourcefunction exists with kind1/nonzeroBB; no sourcecandidatefailure or absentbody",
+      "scope": "proposed only; original frozenrequired-body-targets.json unchanged"
+    }
+  ],
+  "source_repairs": 0,
+  "original_selector_file_sha256": "7b65b930c1f2309301b4acc267f53fc964275bba334fe488e971ae1f0dd90686",
+  "budgets": "sourcecandidate1/1 fixed; zeroautomaticrepairs/oldbudgets unchanged"
+}

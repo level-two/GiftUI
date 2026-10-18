@@ -24,3 +24,9 @@ decoder/runtime NOT executed; no source acceptance/full safety/cold/P08 claim.
 8decode+index+2captures PASS;48/50physicalselection, attach/detach regex misses
 method-level constraints but exact bodies present. SILblocked/notinvoked. Source
 fixed, no repair allowance; exacttwo-selector recipe review next.
+
+[Exacttwo selector continuation proposal](observable-callback-selector-continuation1/README.md)
+prepared/staticvalidate PASS only: attach/detach exact current names/full records,
+other48 targets unchanged,861frozen inputs, two output/cache path-only changes.
+Reuse lower+25/64privacy/eightindexes/interpreter/twocaptures; focused50selection
+thenconditionalfresh42SIL only after independent review. No source repair/budgetreset.
