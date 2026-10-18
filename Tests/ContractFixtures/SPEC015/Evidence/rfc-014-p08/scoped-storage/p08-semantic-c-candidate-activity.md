@@ -89,6 +89,12 @@ selected E/F PASS; original23 selected boundaries resolved in limited scope. Fre
 Next grouped current-callee+safety needs fresh RuntimeCycleProbe/scoped-host schema
 receipts. Full costs/14loans/cold/P08 remain open; no source allowance/heapclaim.
 
+[Independent maintained safety campaign review](p08-current-callee-safety-campaign-review.md):
+c73c6a73 READY for fresh bounded four-producer native collection.435frozen inputs/
+genuine receipt-chain/failure gating/validation lock verify. Independent safety
+collection may proceed while full current-callee interpretation remains pending;
+producer PASS never grants cold/P08 acceptance or new source authority.
+
 [Explicit-return pair/fresh42SIL PASS](semantic-c-escape-continuation1-result/README.md):
 positive0errors/negative1exactEscapable; SILexit0/61,999,526bytes/1305inputsverified,
 prior87/72andsealedprerequisites retained. No source/repeat/repairreset; actual C
