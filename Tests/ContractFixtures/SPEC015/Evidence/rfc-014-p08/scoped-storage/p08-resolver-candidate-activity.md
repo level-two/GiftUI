@@ -1,5 +1,10 @@
 # Resolver family candidate — 2026-10-18
 
+[Independent B-observable design READY](p08-observable-grouped-design-review.md):
+36 sites/five files cover all four selected roots and the guarded Address
+equivalent. Separate source/budget authorization remains required; current
+observable FAIL/STOP and prior PASS remain. No new execution/allowance.
+
 Current [independent package disposition](p08-resolver-final-independent-review.md):
 resolver boundary PASS; dead Optional equality excluded; live modelKey/mutate
 gate FAIL/STOP. Compile25/privacy39/physical20 retained. No source/repair allowance

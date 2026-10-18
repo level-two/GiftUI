@@ -18,6 +18,11 @@ superseded_by: null
 
 ## Grouped dependency continuation — 2026-10-18
 
+[Independent B-observable design READY](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-observable-grouped-design-review.md)
+at d9fc4359: 36 sites/five files/four roots and required-three-scalar Address
+equivalent. Separate source/budget authorization required; current FAIL/STOP and
+prior PASS retained, no further execution or full23/42 acceptance.
+
 Current [grouped B-observable proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-grouped-inventory/README.md):
 all4roots/sharedhelpers mapped together,36sites/five files incl guarded3scalarAddress
 memberwise equivalent. Rawkeyprivate/authoredState/P08private/14loans preserved;
