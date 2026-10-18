@@ -1,6 +1,15 @@
 {
   "A4_A7_policy_literals_equal": true,
+  "A8_only_located_warning_remark_guard": "AST-inspected; not executed",
   "A8_policy_literal_equals_json": true,
+  "added_warning_remark_reject_oracles": [
+    "A8-N76",
+    "A8-N77",
+    "A8-N78",
+    "A8-N79",
+    "A8-N80",
+    "A8-N81"
+  ],
   "archived_input_bytes_equal": true,
   "authority_claim": "Identity and syntax inspection only; no behavioral outcome",
   "campaign_calls": 0,
@@ -8,17 +17,19 @@
   "inherited_fields_and_oracles_equal": true,
   "inherited_inputs": 113,
   "new_expected_accepts": 2,
-  "new_expected_rejects": 75,
-  "new_inputs": 77,
+  "new_expected_rejects": 81,
+  "new_inputs": 83,
   "parser_calls": 0,
   "preserved_files": 452,
   "preserved_hashes_equal": true,
+  "prior_190_case_fields_and_oracles_preserved": true,
   "python_ast_parsed_without_import": [
     "diagnostic_parser.py",
     "run-static-fixtures.py"
   ],
+  "static_execution_attempts": 0,
   "static_output_created": false,
   "status": "PREPARATION_ONLY_UNEXECUTED",
   "tests": 0,
-  "total_static_inputs": 190
+  "total_static_inputs": 196
 }

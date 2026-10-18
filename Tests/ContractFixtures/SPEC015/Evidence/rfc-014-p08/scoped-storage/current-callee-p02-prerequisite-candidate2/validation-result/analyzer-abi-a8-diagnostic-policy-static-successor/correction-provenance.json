@@ -1,0 +1,119 @@
+{
+  "blocked_preparation_commit": "2e9e5002",
+  "blocked_preparation_freeze_sha256": "d074e1437db1d9e94ed4f46b30ab6bcf3be994c5367e1201178c92002615b259",
+  "blocked_preparation_payload": [
+    {
+      "bytes": 5446,
+      "path": "README.md",
+      "sha256": "81403fd24353eb01a92abd072fbd57760e783001d4b786ec2aa21b9c810742f0"
+    },
+    {
+      "bytes": 16413,
+      "path": "diagnostic_parser.py",
+      "sha256": "3a761a89582e3344446118d7df7dba39ae5e90eb0b533aec5aa74bc9aaad98f8"
+    },
+    {
+      "bytes": 4865,
+      "path": "fixture-map.md",
+      "sha256": "58ec257f07b940a54fe894e4e6afd4bf04cc32e596183f3863b93b05de790b0c"
+    },
+    {
+      "bytes": 1696,
+      "path": "identity-map.json",
+      "sha256": "8190d1b39ca6cfa34c753ffd7150bcb745857158c62bf82864b8b7f61aaf1d6f"
+    },
+    {
+      "bytes": 998,
+      "path": "inherited-A8-control.json",
+      "sha256": "8b908cd59fcd48fe0a5562e4b4b1168b94f0489a80433a49461527ba3aa79cf4"
+    },
+    {
+      "bytes": 568659,
+      "path": "inherited-cases.json",
+      "sha256": "bd22e5b28385d6feb783be4a003a223888035b98fabbd5dac85b8a963cd7a5e2"
+    },
+    {
+      "bytes": 1217,
+      "path": "inputs/A8-AnalyzerPresentation.swift",
+      "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
+    },
+    {
+      "bytes": 1217,
+      "path": "inputs/AnalyzerPresentation.swift",
+      "sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2"
+    },
+    {
+      "bytes": 1564,
+      "path": "inputs/SignalPrimitiveValues.swift",
+      "sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d"
+    },
+    {
+      "bytes": 4495,
+      "path": "inputs/archived-A7.stderr",
+      "sha256": "76e7143184b2f8b039dc49f288b32ef03199a78b44ddd6658e9f998c284781b3"
+    },
+    {
+      "bytes": 0,
+      "path": "inputs/archived-A7.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1165,
+      "path": "inputs/archived-A8.stderr",
+      "sha256": "6f554d6c0e7434d70bf1b83c69391dc9f2a47cc7d94db28d94e3f70a326c597d"
+    },
+    {
+      "bytes": 0,
+      "path": "inputs/archived-A8.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1256,
+      "path": "invocation.json",
+      "sha256": "07d5502c5948ec8f8bc631fa31f41d59bf1462edfbe08d62fe3b5a4079cdbd9f"
+    },
+    {
+      "bytes": 295462,
+      "path": "new-cases.json",
+      "sha256": "297b870f26e617c8f38d7180ddc47fe6e576508086e45ec699098710f3a50d49"
+    },
+    {
+      "bytes": 1580,
+      "path": "opt-in-control.json",
+      "sha256": "c1b7c9105d85ef6b63f9922059d4a963fed14b6f4942c85dbd6670d1196cedf9"
+    },
+    {
+      "bytes": 974,
+      "path": "policy.json",
+      "sha256": "465e08af6fc5cff51abc1db49fcca3ca1a3c292964641bc30532fd03a19c4d4f"
+    },
+    {
+      "bytes": 168734,
+      "path": "preserved-inventory.json",
+      "sha256": "1db366e645e4d293286cf47adeb779bf673e5d0423305ffec50ee9b0e266c719"
+    },
+    {
+      "bytes": 6571,
+      "path": "run-static-fixtures.py",
+      "sha256": "2bde2c240c9fa8c2687d28e0f1392e78f34e571dd3b6bf7d2cfe8208615d3573"
+    },
+    {
+      "bytes": 706,
+      "path": "static-inspection.json",
+      "sha256": "cfb47f05bde960d570e212b20e9394d226fb9d8d78f4f7f776ab74c83894933b"
+    }
+  ],
+  "correction": "Reject either located severity only when explicit A8 policy ID is active; preserve A4/A7 handling.",
+  "inherited_113_and_prior_77_case_fields_oracles_preserved": true,
+  "new_fixture_ids": [
+    "A8-N76",
+    "A8-N77",
+    "A8-N78",
+    "A8-N79",
+    "A8-N80",
+    "A8-N81"
+  ],
+  "preserved_inventory_change": "None: all 452 external files still match; corrected packet identities are refrozen.",
+  "review_classification": "Strong review BLOCK: additive well-formed located warning/remark could be silently accepted with A8 opt-in.",
+  "static_execution_attempts": 0
+}

@@ -79,3 +79,10 @@
 - `A8-N73` — reject: Privacy control outside-package-SignalTransition cannot consume A8 display form.
 - `A8-N74` — reject: Privacy control outside-package-SignalChannelID cannot consume A8 display form.
 - `A8-N75` — reject: Privacy control outside-package-SignalAnalyzerDiagnostic cannot consume A8 display form.
+
+- `A8-N76` — reject: Add a well-formed located warning in stderr before the otherwise exact archived A8 diagnostic; reject every A8 located warning/remark.
+- `A8-N77` — reject: Add a well-formed located warning in stderr after the otherwise exact archived A8 diagnostic; reject every A8 located warning/remark.
+- `A8-N78` — reject: Add a well-formed located warning in stdout before-stderr the otherwise exact archived A8 diagnostic; reject every A8 located warning/remark.
+- `A8-N79` — reject: Add a well-formed located remark in stderr before the otherwise exact archived A8 diagnostic; reject every A8 located warning/remark.
+- `A8-N80` — reject: Add a well-formed located remark in stderr after the otherwise exact archived A8 diagnostic; reject every A8 located warning/remark.
+- `A8-N81` — reject: Add a well-formed located remark in stdout before-stderr the otherwise exact archived A8 diagnostic; reject every A8 located warning/remark.

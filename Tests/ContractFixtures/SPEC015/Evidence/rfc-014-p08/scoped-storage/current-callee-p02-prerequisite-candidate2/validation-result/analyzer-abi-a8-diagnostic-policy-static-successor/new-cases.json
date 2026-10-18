@@ -3787,6 +3787,306 @@
         "fixture_file": "inputs/A8-AnalyzerPresentation.swift",
         "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift"
       }
+    },
+    {
+      "context": {
+        "module": "AnalyzerPresentation",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/inputs/Analyzer.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+        "display_only_note": {
+          "input_sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c",
+          "policy_id": "macos-static-negative-A8-AnalyzerPresentation-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A8/Analyzer.swift"
+        ],
+        "first_expected_stage": "AnalyzerPresentation",
+        "id": "negative-A8",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A8",
+        "required_symbol": "index"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/inputs/Analyzer.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "expected_display_note_count": 1,
+      "expected_primary_count": 1,
+      "id": "A8-N76",
+      "mutation": "Add a well-formed located warning in stderr before the otherwise exact archived A8 diagnostic; reject every A8 located warning/remark.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: warning: additive unrelated diagnostic\n/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: error: property 'index' is package and cannot be referenced from an '@inlinable' function\n11 |     @usableFromInline\n12 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>\n13 |     package let index: Int\n   |                 `- note: property 'index' is not '@usableFromInline' or public\n14 |     package init(model: _GiftUIModelKey<AnalyzerModelSchema>, index: Int) { self.model = model; self.index = index }\n15 | @ViewBuilder\n   :\n23 |         Text<D>(BoundedText(Int32((try AnalyzerRead<D>(model, read: read)).state().capture().count)))\n24 |         if (try AnalyzerRead<D>(model, read: read)).state().capture().count > 0 {\n25 |             Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))\n   |                                                                                                                 `- error: property 'index' is package and cannot be referenced from an '@inlinable' function\n26 |         }\n27 | }\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/A8-AnalyzerPresentation.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift"
+      }
+    },
+    {
+      "context": {
+        "module": "AnalyzerPresentation",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/inputs/Analyzer.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+        "display_only_note": {
+          "input_sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c",
+          "policy_id": "macos-static-negative-A8-AnalyzerPresentation-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A8/Analyzer.swift"
+        ],
+        "first_expected_stage": "AnalyzerPresentation",
+        "id": "negative-A8",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A8",
+        "required_symbol": "index"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/inputs/Analyzer.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "expected_display_note_count": 1,
+      "expected_primary_count": 1,
+      "id": "A8-N77",
+      "mutation": "Add a well-formed located warning in stderr after the otherwise exact archived A8 diagnostic; reject every A8 located warning/remark.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: error: property 'index' is package and cannot be referenced from an '@inlinable' function\n11 |     @usableFromInline\n12 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>\n13 |     package let index: Int\n   |                 `- note: property 'index' is not '@usableFromInline' or public\n14 |     package init(model: _GiftUIModelKey<AnalyzerModelSchema>, index: Int) { self.model = model; self.index = index }\n15 | @ViewBuilder\n   :\n23 |         Text<D>(BoundedText(Int32((try AnalyzerRead<D>(model, read: read)).state().capture().count)))\n24 |         if (try AnalyzerRead<D>(model, read: read)).state().capture().count > 0 {\n25 |             Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))\n   |                                                                                                                 `- error: property 'index' is package and cannot be referenced from an '@inlinable' function\n26 |         }\n27 | }\n\n/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: warning: additive unrelated diagnostic\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/A8-AnalyzerPresentation.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift"
+      }
+    },
+    {
+      "context": {
+        "module": "AnalyzerPresentation",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/inputs/Analyzer.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+        "display_only_note": {
+          "input_sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c",
+          "policy_id": "macos-static-negative-A8-AnalyzerPresentation-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A8/Analyzer.swift"
+        ],
+        "first_expected_stage": "AnalyzerPresentation",
+        "id": "negative-A8",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A8",
+        "required_symbol": "index"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/inputs/Analyzer.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "expected_display_note_count": 1,
+      "expected_primary_count": 1,
+      "id": "A8-N78",
+      "mutation": "Add a well-formed located warning in stdout before-stderr the otherwise exact archived A8 diagnostic; reject every A8 located warning/remark.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: error: property 'index' is package and cannot be referenced from an '@inlinable' function\n11 |     @usableFromInline\n12 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>\n13 |     package let index: Int\n   |                 `- note: property 'index' is not '@usableFromInline' or public\n14 |     package init(model: _GiftUIModelKey<AnalyzerModelSchema>, index: Int) { self.model = model; self.index = index }\n15 | @ViewBuilder\n   :\n23 |         Text<D>(BoundedText(Int32((try AnalyzerRead<D>(model, read: read)).state().capture().count)))\n24 |         if (try AnalyzerRead<D>(model, read: read)).state().capture().count > 0 {\n25 |             Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))\n   |                                                                                                                 `- error: property 'index' is package and cannot be referenced from an '@inlinable' function\n26 |         }\n27 | }\n",
+      "stdout": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: warning: additive unrelated diagnostic\n",
+      "trusted_input": {
+        "fixture_file": "inputs/A8-AnalyzerPresentation.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift"
+      }
+    },
+    {
+      "context": {
+        "module": "AnalyzerPresentation",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/inputs/Analyzer.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+        "display_only_note": {
+          "input_sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c",
+          "policy_id": "macos-static-negative-A8-AnalyzerPresentation-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A8/Analyzer.swift"
+        ],
+        "first_expected_stage": "AnalyzerPresentation",
+        "id": "negative-A8",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A8",
+        "required_symbol": "index"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/inputs/Analyzer.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "expected_display_note_count": 1,
+      "expected_primary_count": 1,
+      "id": "A8-N79",
+      "mutation": "Add a well-formed located remark in stderr before the otherwise exact archived A8 diagnostic; reject every A8 located warning/remark.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: remark: additive unrelated diagnostic\n/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: error: property 'index' is package and cannot be referenced from an '@inlinable' function\n11 |     @usableFromInline\n12 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>\n13 |     package let index: Int\n   |                 `- note: property 'index' is not '@usableFromInline' or public\n14 |     package init(model: _GiftUIModelKey<AnalyzerModelSchema>, index: Int) { self.model = model; self.index = index }\n15 | @ViewBuilder\n   :\n23 |         Text<D>(BoundedText(Int32((try AnalyzerRead<D>(model, read: read)).state().capture().count)))\n24 |         if (try AnalyzerRead<D>(model, read: read)).state().capture().count > 0 {\n25 |             Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))\n   |                                                                                                                 `- error: property 'index' is package and cannot be referenced from an '@inlinable' function\n26 |         }\n27 | }\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/A8-AnalyzerPresentation.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift"
+      }
+    },
+    {
+      "context": {
+        "module": "AnalyzerPresentation",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/inputs/Analyzer.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+        "display_only_note": {
+          "input_sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c",
+          "policy_id": "macos-static-negative-A8-AnalyzerPresentation-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A8/Analyzer.swift"
+        ],
+        "first_expected_stage": "AnalyzerPresentation",
+        "id": "negative-A8",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A8",
+        "required_symbol": "index"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/inputs/Analyzer.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "expected_display_note_count": 1,
+      "expected_primary_count": 1,
+      "id": "A8-N80",
+      "mutation": "Add a well-formed located remark in stderr after the otherwise exact archived A8 diagnostic; reject every A8 located warning/remark.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: error: property 'index' is package and cannot be referenced from an '@inlinable' function\n11 |     @usableFromInline\n12 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>\n13 |     package let index: Int\n   |                 `- note: property 'index' is not '@usableFromInline' or public\n14 |     package init(model: _GiftUIModelKey<AnalyzerModelSchema>, index: Int) { self.model = model; self.index = index }\n15 | @ViewBuilder\n   :\n23 |         Text<D>(BoundedText(Int32((try AnalyzerRead<D>(model, read: read)).state().capture().count)))\n24 |         if (try AnalyzerRead<D>(model, read: read)).state().capture().count > 0 {\n25 |             Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))\n   |                                                                                                                 `- error: property 'index' is package and cannot be referenced from an '@inlinable' function\n26 |         }\n27 | }\n\n/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: remark: additive unrelated diagnostic\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/A8-AnalyzerPresentation.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift"
+      }
+    },
+    {
+      "context": {
+        "module": "AnalyzerPresentation",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/inputs/Analyzer.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+        "display_only_note": {
+          "input_sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c",
+          "policy_id": "macos-static-negative-A8-AnalyzerPresentation-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A8/Analyzer.swift"
+        ],
+        "first_expected_stage": "AnalyzerPresentation",
+        "id": "negative-A8",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A8",
+        "required_symbol": "index"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/inputs/Analyzer.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "expected_display_note_count": 1,
+      "expected_primary_count": 1,
+      "id": "A8-N81",
+      "mutation": "Add a well-formed located remark in stdout before-stderr the otherwise exact archived A8 diagnostic; reject every A8 located warning/remark.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: error: property 'index' is package and cannot be referenced from an '@inlinable' function\n11 |     @usableFromInline\n12 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>\n13 |     package let index: Int\n   |                 `- note: property 'index' is not '@usableFromInline' or public\n14 |     package init(model: _GiftUIModelKey<AnalyzerModelSchema>, index: Int) { self.model = model; self.index = index }\n15 | @ViewBuilder\n   :\n23 |         Text<D>(BoundedText(Int32((try AnalyzerRead<D>(model, read: read)).state().capture().count)))\n24 |         if (try AnalyzerRead<D>(model, read: read)).state().capture().count > 0 {\n25 |             Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))\n   |                                                                                                                 `- error: property 'index' is package and cannot be referenced from an '@inlinable' function\n26 |         }\n27 | }\n",
+      "stdout": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: remark: additive unrelated diagnostic\n",
+      "trusted_input": {
+        "fixture_file": "inputs/A8-AnalyzerPresentation.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift"
+      }
     }
   ],
   "status": "UNEXECUTED oracles; only P01/P02 expected accept"

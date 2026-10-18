@@ -10,22 +10,27 @@
   ],
   "campaign_authority": false,
   "inherited_inputs": 113,
-  "new_inputs": 77,
+  "new_inputs": 83,
   "packet_files": [
     {
-      "bytes": 5446,
+      "bytes": 6338,
       "path": "README.md",
-      "sha256": "81403fd24353eb01a92abd072fbd57760e783001d4b786ec2aa21b9c810742f0"
+      "sha256": "5b6bc54de0072593646ffbf6e12746250e41621a936c566c2d860b872a6acb30"
     },
     {
-      "bytes": 16413,
+      "bytes": 3914,
+      "path": "correction-provenance.json",
+      "sha256": "d7f83aa80621b75f140e7d6d2e14fcf533d6d26cd69a6f1771f4e679312b5423"
+    },
+    {
+      "bytes": 16610,
       "path": "diagnostic_parser.py",
-      "sha256": "3a761a89582e3344446118d7df7dba39ae5e90eb0b533aec5aa74bc9aaad98f8"
+      "sha256": "f5373a76a9539509dafcdb10a83d590a38a89bec523828c8771f5ff7da3583e2"
     },
     {
-      "bytes": 4865,
+      "bytes": 5823,
       "path": "fixture-map.md",
-      "sha256": "58ec257f07b940a54fe894e4e6afd4bf04cc32e596183f3863b93b05de790b0c"
+      "sha256": "e3e22091272b7d9044e82c7f4610aeedf8a5ecfaeaf1117d03c72440d13352c5"
     },
     {
       "bytes": 1696,
@@ -80,12 +85,12 @@
     {
       "bytes": 1256,
       "path": "invocation.json",
-      "sha256": "07d5502c5948ec8f8bc631fa31f41d59bf1462edfbe08d62fe3b5a4079cdbd9f"
+      "sha256": "6181f90b8325ef66b81573a13586ce599f1c447a1c31ab4351843954b3c9a049"
     },
     {
-      "bytes": 295462,
+      "bytes": 320672,
       "path": "new-cases.json",
-      "sha256": "297b870f26e617c8f38d7180ddc47fe6e576508086e45ec699098710f3a50d49"
+      "sha256": "921926ce0de6224b6d7c72803320372fc8814f63c9633b9df0cd2ae78b282143"
     },
     {
       "bytes": 1580,
@@ -105,12 +110,12 @@
     {
       "bytes": 6571,
       "path": "run-static-fixtures.py",
-      "sha256": "2bde2c240c9fa8c2687d28e0f1392e78f34e571dd3b6bf7d2cfe8208615d3573"
+      "sha256": "a7351ca20b7fdf51a9dcc08ab1febce65e05486912e1eb4bcb460d08de448dc0"
     },
     {
-      "bytes": 706,
+      "bytes": 999,
       "path": "static-inspection.json",
-      "sha256": "cfb47f05bde960d570e212b20e9394d226fb9d8d78f4f7f776ab74c83894933b"
+      "sha256": "ea27b708cd81dd437e745bcb94c71f90042054f9f98a0c573622af2867a090fa"
     }
   ],
   "preserved_files": [
@@ -2377,5 +2382,5 @@
   ],
   "source_identity": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c",
   "status": "PREPARED_ONLY_UNEXECUTED",
-  "total_static_inputs": 190
+  "total_static_inputs": 196
 }

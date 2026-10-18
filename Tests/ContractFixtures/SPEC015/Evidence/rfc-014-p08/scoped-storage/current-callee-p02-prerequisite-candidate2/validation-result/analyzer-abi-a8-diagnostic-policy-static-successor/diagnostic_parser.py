@@ -168,6 +168,8 @@ def classify_negative_diagnostics(control, exit_code, stdout, stderr,
                     current['notes'].append(item)
                     section = item
                 else:
+                    if control.get('display_only_note', {}).get('policy_id') == A8_POLICY['id']:
+                        raise AssertionError(('A8 forbids located warning/remark', severity, line))
                     current = section = None
                 continue
             match = source_line.fullmatch(line)

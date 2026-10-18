@@ -23,7 +23,7 @@ def main():
         raise RuntimeError('STOP: output exists; no overwrite/retry')
     freeze_bytes = Path(sys.argv[2]).read_bytes()
     freeze = json.loads(freeze_bytes)
-    if freeze['argv'] != invocation['argv'] or freeze['total_static_inputs'] != 190:
+    if freeze['argv'] != invocation['argv'] or freeze['total_static_inputs'] != 196:
         raise RuntimeError('STOP: freeze/invocation mismatch')
     expected_packet_files = {item['path'] for item in freeze['packet_files']} | {'packet-freeze.json'}
     if {str(path.relative_to(packet)) for path in packet.rglob('*') if path.is_file()} != expected_packet_files:
@@ -36,9 +36,9 @@ def main():
                 raise RuntimeError(('STOP: frozen identity changed', str(path)))
     inherited = json.loads((packet / 'inherited-cases.json').read_text())['cases']
     new = json.loads((packet / 'new-cases.json').read_text())['cases']
-    assert len(inherited) == 113 and len(new) == 77
+    assert len(inherited) == 113 and len(new) == 83
     cases = inherited + new
-    assert len({case['id'] for case in cases}) == 190
+    assert len({case['id'] for case in cases}) == 196
     spec = importlib.util.spec_from_file_location('a8_static_diagnostic_parser', packet / 'diagnostic_parser.py')
     parser = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(parser)
@@ -95,13 +95,13 @@ def main():
             assert records[0]['dependency_evidence'] == case['expected_dependency_evidence']
         results.append({'id': case['id'], 'accepted': True, 'display_note_count': display_count, 'records': records})
     receipt = {'status': 'STATIC_FIXTURE_EXPECTATIONS_MATCHED_ONLY', 'campaign_authority': False,
-               'compiler_invocations': 0, 'total_inputs': 190, 'inherited_inputs': 113, 'new_inputs': 77,
+               'compiler_invocations': 0, 'total_inputs': 196, 'inherited_inputs': 113, 'new_inputs': 83,
                'freeze_sha256': hashlib.sha256(freeze_bytes).hexdigest(), 'argv': invocation['argv'], 'results': results}
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open('x') as destination:
         json.dump(receipt, destination, indent=2, sort_keys=True)
         destination.write('\n')
-    print(json.dumps({'status': receipt['status'], 'inputs': 190, 'output': str(output)}))
+    print(json.dumps({'status': receipt['status'], 'inputs': 196, 'output': str(output)}))
 
 
 if __name__ == '__main__':
