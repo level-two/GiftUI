@@ -8,7 +8,7 @@
     "scripts/contracts/__pycache__/"
   ],
   "execution": "none; compiler/test/producers not run",
-  "inputs": 506,
+  "inputs": 529,
   "prior_macro_recipe": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/macro",
   "prior_safety_recipe": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1",
   "source_commits": [
