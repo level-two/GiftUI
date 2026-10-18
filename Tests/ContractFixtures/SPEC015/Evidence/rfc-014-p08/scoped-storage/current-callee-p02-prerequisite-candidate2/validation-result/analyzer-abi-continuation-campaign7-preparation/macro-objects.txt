@@ -1,0 +1,4 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign7/macro/macro/CanvasWitnessLowering.swift.o
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign7/macro/macro/FiniteSourceLowering.swift.o
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign7/macro/macro/GiftUIMacros.swift.o
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign7/macro/macro/ObservableStateHostMacro.swift.o

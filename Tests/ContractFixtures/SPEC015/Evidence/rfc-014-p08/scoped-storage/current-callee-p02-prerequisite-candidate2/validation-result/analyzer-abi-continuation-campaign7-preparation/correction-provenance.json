@@ -1,0 +1,49 @@
+{
+  "after": {
+    "macro-stages.json": {
+      "bytes": 11919,
+      "sha256": "91c0ec72e157e27a45634cb3bb97657f422d98ff9b62ba1f7b4d85c210370c3f"
+    },
+    "recipe.json": {
+      "bytes": 17883,
+      "sha256": "3ec815593c92742e4efa20a529d6486e32797c3e6e023fd591c44eae14609eba"
+    }
+  },
+  "before": {
+    "macro-stages.json": {
+      "bytes": 11919,
+      "sha256": "c38ba49a68b2e06e21e388e6f04635399147289155b9839d4abc2342c708c8a1"
+    },
+    "packet-hashes.json": {
+      "bytes": 4755,
+      "sha256": "e0eddb26f953d9623dd474ee4402e8de109b450926948975a6c52fe4a43852c7"
+    },
+    "recipe.json": {
+      "bytes": 17818,
+      "sha256": "6c92e6c2d2f527e96d542ffcc30cf5aa4272154dd27322b34cc41d00b2768f61"
+    }
+  },
+  "changes": {
+    "macro-stages.json": [
+      "macro-compile output-file-map path: campaign4-preparation/macro-outputs.json to campaign5-preparation/macro-outputs.json",
+      "macro-link response-file path: campaign4-preparation/macro-objects.txt to campaign5-preparation/macro-objects.txt"
+    ],
+    "recipe.json": [
+      "execution_argv[1]: campaign4 wrapper path to campaign5 wrapper path",
+      "lock[3]: campaign4 wrapper path to campaign5 wrapper path",
+      "status: CAMPAIGN4 to CAMPAIGN5",
+      "diagnostic_policy: corrected A8 parser and exact retained A4/A7 plus added A8 opt-ins"
+    ]
+  },
+  "corrected_packet_commit": "102f5d36",
+  "execution_authority": false,
+  "inspection": {
+    "active_files_no_remaining_campaign4_path_or_status": true,
+    "ast_json_hash_only": true,
+    "compiler_test_producer_formatter_campaign_invocations": 0,
+    "macro_stage_order_unchanged": true,
+    "parser_imports_or_calls": 0,
+    "retained_campaign4_strings": "Only historical receipt, inherited applicability/context, preserved inventory, historical provenance and packet-manifest names; README predecessor attribution. This correction record quotes the defect."
+  },
+  "reason": "Independent Strong review identified stale active campaign4 invocation/status and A7-only policy metadata; active-file scan additionally found two stale macro packet references."
+}

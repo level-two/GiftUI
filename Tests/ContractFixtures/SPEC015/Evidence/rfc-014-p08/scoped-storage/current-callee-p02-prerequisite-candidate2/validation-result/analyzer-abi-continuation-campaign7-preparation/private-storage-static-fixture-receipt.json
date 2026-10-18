@@ -1,0 +1,2544 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-private-storage-diagnostic-policy-static-successor/run-static-fixtures.py",
+    "--execute-reviewed-static-fixtures",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-private-storage-diagnostic-policy-static-successor/packet-freeze.json",
+    "--output",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-private-storage-diagnostic-policy-static-successor/static-result.json"
+  ],
+  "campaign_authority": false,
+  "compiler_invocations": 0,
+  "freeze_sha256": "4764e6fc1037dd7d4fcec146824dac396c2757489edbc0b6bd2164780996b326",
+  "inherited_inputs": 196,
+  "new_inputs": 150,
+  "results": [
+    {
+      "accepted": true,
+      "display_note_count": 0,
+      "id": "intended-single-named-error",
+      "records": [
+        {
+          "dependency_evidence": "enum 'AcquisitionState' is package and cannot be referenced from an '@inlinable' function",
+          "display_notes": [],
+          "notes": [],
+          "primary": {
+            "column": 13,
+            "file": "/scratch/cell/AnalyzerSchema.swift",
+            "line": 5,
+            "message": "enum 'AcquisitionState' is package and cannot be referenced from an '@inlinable' function",
+            "severity": "error",
+            "source": []
+          }
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "display_note_count": 0,
+      "id": "intended-generic-error-with-declared-note-and-excerpt",
+      "records": [
+        {
+          "dependency_evidence": "the result of a '@usableFromInline' method must be '@usableFromInline' or public\npackage func read() -> AcquisitionState\ntype declared here\npackage enum AcquisitionState: Equatable {",
+          "display_notes": [],
+          "notes": [
+            {
+              "column": 14,
+              "file": "/scratch/cell/inputs/AcquisitionState.swift",
+              "line": 2,
+              "message": "type declared here",
+              "severity": "note",
+              "source": [
+                "package enum AcquisitionState: Equatable {"
+              ]
+            }
+          ],
+          "primary": {
+            "column": 13,
+            "file": "/scratch/cell/AnalyzerSchema.swift",
+            "line": 5,
+            "message": "the result of a '@usableFromInline' method must be '@usableFromInline' or public",
+            "severity": "error",
+            "source": [
+              "package func read() -> AcquisitionState"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "display_note_count": 0,
+      "id": "intended-repeated-located-errors-and-gutter-repeats",
+      "records": [
+        {
+          "dependency_evidence": "the result of a '@usableFromInline' method must be '@usableFromInline' or public\npackage func read() -> AcquisitionState\ntype declared here\npackage enum AcquisitionState: Equatable {",
+          "display_notes": [],
+          "notes": [
+            {
+              "column": 14,
+              "file": "/scratch/cell/inputs/AcquisitionState.swift",
+              "line": 2,
+              "message": "type declared here",
+              "severity": "note",
+              "source": [
+                "package enum AcquisitionState: Equatable {"
+              ]
+            }
+          ],
+          "primary": {
+            "column": 13,
+            "file": "/scratch/cell/AnalyzerSchema.swift",
+            "line": 5,
+            "message": "the result of a '@usableFromInline' method must be '@usableFromInline' or public",
+            "severity": "error",
+            "source": [
+              "package func read() -> AcquisitionState"
+            ]
+          }
+        },
+        {
+          "dependency_evidence": "the result of a '@usableFromInline' method must be '@usableFromInline' or public\npackage func read() -> AcquisitionState\ntype declared here\npackage enum AcquisitionState: Equatable {",
+          "display_notes": [],
+          "notes": [
+            {
+              "column": 14,
+              "file": "/scratch/cell/inputs/AcquisitionState.swift",
+              "line": 2,
+              "message": "type declared here",
+              "severity": "note",
+              "source": [
+                "package enum AcquisitionState: Equatable {"
+              ]
+            }
+          ],
+          "primary": {
+            "column": 13,
+            "file": "/scratch/cell/AnalyzerSchema.swift",
+            "line": 5,
+            "message": "the result of a '@usableFromInline' method must be '@usableFromInline' or public",
+            "severity": "error",
+            "source": [
+              "package func read() -> AcquisitionState"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "display_note_count": 0,
+      "id": "private-primary-with-associated-declaration-note",
+      "records": [
+        {
+          "dependency_evidence": "'storage' is inaccessible due to 'private' protection level",
+          "display_notes": [],
+          "notes": [
+            {
+              "column": 17,
+              "file": "/scratch/positive/inputs/SignalAnalyzerDiagnostic.swift",
+              "line": 32,
+              "message": "'storage' declared here",
+              "severity": "note",
+              "source": [
+                "private var storage: SignalAnalyzerDiagnosticStorage"
+              ]
+            }
+          ],
+          "primary": {
+            "column": 13,
+            "file": "/scratch/cell/AnalyzerSchema.swift",
+            "line": 5,
+            "message": "'storage' is inaccessible due to 'private' protection level",
+            "severity": "error",
+            "source": []
+          }
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "display_note_count": 0,
+      "id": "outside-package-nominal-hidden",
+      "records": [
+        {
+          "dependency_evidence": "cannot find type 'AcquisitionState' in scope",
+          "display_notes": [],
+          "notes": [],
+          "primary": {
+            "column": 13,
+            "file": "/scratch/cell/AnalyzerSchema.swift",
+            "line": 5,
+            "message": "cannot find type 'AcquisitionState' in scope",
+            "severity": "error",
+            "source": []
+          }
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "id": "expected-plus-unrelated-primary-same-file",
+      "rejection": "('unrelated primary error/category', \"cannot find 'missing' in scope\")"
+    },
+    {
+      "accepted": false,
+      "id": "expected-plus-primary-in-wrong-file",
+      "rejection": "('primary error in wrong file', '/scratch/cell/Other.swift')"
+    },
+    {
+      "accepted": false,
+      "id": "wrong-primary-file-only",
+      "rejection": "('primary error in wrong file', '/scratch/cell/Other.swift')"
+    },
+    {
+      "accepted": false,
+      "id": "negative-signal-exit",
+      "rejection": "('non-diagnostic exit', -11)"
+    },
+    {
+      "accepted": false,
+      "id": "shell-signal-exit",
+      "rejection": "('non-diagnostic exit', 139)"
+    },
+    {
+      "accepted": false,
+      "id": "nonstandard-positive-exit",
+      "rejection": "('non-diagnostic exit', 2)"
+    },
+    {
+      "accepted": false,
+      "id": "unexpected-acceptance-zero-exit",
+      "rejection": "('non-diagnostic exit', 0)"
+    },
+    {
+      "accepted": false,
+      "id": "crash-marker-despite-normal-exit",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "fatal-marker-despite-normal-exit",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "unlocated-driver-error",
+      "rejection": "('unlocated/unparsed diagnostic record', 'error: emit-module command failed with exit code 1')"
+    },
+    {
+      "accepted": false,
+      "id": "unrelated-gutter-error-not-exact-repeat",
+      "rejection": "('gutter is not an exact repeat or declared display-only form', \"   |             `- error: cannot find 'missing' in scope\")"
+    },
+    {
+      "accepted": false,
+      "id": "note-at-undeclared-dependency",
+      "rejection": "('note outside declared dependency files', '/scratch/cell/Other.swift')"
+    },
+    {
+      "accepted": false,
+      "id": "neighboring-source-line-cannot-supply-symbol",
+      "rejection": "('primary lacks declared ABI dependency', 'AcquisitionState')"
+    },
+    {
+      "accepted": false,
+      "id": "different-named-ABI-dependency",
+      "rejection": "('different named ABI dependency', ['OtherState'])"
+    },
+    {
+      "accepted": false,
+      "id": "category-cannot-leak-from-note",
+      "rejection": "('unrelated primary error/category', \"cannot find 'missing' in scope\")"
+    },
+    {
+      "accepted": false,
+      "id": "orphan-note-cannot-cross-streams",
+      "rejection": "orphan note has no associated primary"
+    },
+    {
+      "accepted": false,
+      "id": "same-category-primary-missing-declared-symbol",
+      "rejection": "('primary lacks declared ABI dependency', 'AcquisitionState')"
+    },
+    {
+      "accepted": true,
+      "display_note_count": 1,
+      "id": "A4-P01",
+      "records": [
+        {
+          "dependency_evidence": "type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n    package let channelID: SignalChannelID",
+          "display_notes": [
+            {
+              "contributes_dependency_evidence": false,
+              "declared_source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+              "enclosing_primary": {
+                "column": 17,
+                "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+                "line": 22,
+                "message": "type referenced from a '@usableFromInline' property must be '@usableFromInline' or public",
+                "severity": "error"
+              },
+              "excerpt": {
+                "line": 1,
+                "raw": " 1 | package struct SignalChannelID: Hashable, Sendable {",
+                "text": "package struct SignalChannelID: Hashable, Sendable {"
+              },
+              "has_located_note_header": false,
+              "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+              "raw_gutter": "   |                `- note: type declared here",
+              "stream": "stderr"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 17,
+            "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+            "line": 22,
+            "message": "type referenced from a '@usableFromInline' property must be '@usableFromInline' or public",
+            "severity": "error",
+            "source": [
+              "    package let channelID: SignalChannelID"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "display_note_count": 1,
+      "id": "A4-P02",
+      "records": [
+        {
+          "dependency_evidence": "type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n    package let channelID: SignalChannelID",
+          "display_notes": [
+            {
+              "contributes_dependency_evidence": false,
+              "declared_source_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/synthetic-cells/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+              "enclosing_primary": {
+                "column": 17,
+                "file": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/synthetic-cells/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+                "line": 22,
+                "message": "type referenced from a '@usableFromInline' property must be '@usableFromInline' or public",
+                "severity": "error"
+              },
+              "excerpt": {
+                "line": 1,
+                "raw": " 1 | package struct SignalChannelID: Hashable, Sendable {",
+                "text": "package struct SignalChannelID: Hashable, Sendable {"
+              },
+              "has_located_note_header": false,
+              "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+              "raw_gutter": "   |                `- note: type declared here",
+              "stream": "stderr"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 17,
+            "file": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/synthetic-cells/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+            "line": 22,
+            "message": "type referenced from a '@usableFromInline' property must be '@usableFromInline' or public",
+            "severity": "error",
+            "source": [
+              "    package let channelID: SignalChannelID"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "display_note_count": 0,
+      "id": "A4-P03",
+      "records": [
+        {
+          "dependency_evidence": "type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n    package let channelID: SignalChannelID",
+          "display_notes": [],
+          "notes": [],
+          "primary": {
+            "column": 17,
+            "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+            "line": 22,
+            "message": "type referenced from a '@usableFromInline' property must be '@usableFromInline' or public",
+            "severity": "error",
+            "source": [
+              "    package let channelID: SignalChannelID"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "id": "A4-N01.exit-zero",
+      "rejection": "('non-diagnostic exit', 0)"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N01.exit-two",
+      "rejection": "('non-diagnostic exit', 2)"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N01.signal-minus-eleven",
+      "rejection": "('non-diagnostic exit', -11)"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N01.boolean-true",
+      "rejection": "('non-diagnostic exit', True)"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N02.stack-dump",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N02.llvm-error",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N02.fatal-error",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N03",
+      "rejection": "('primary error in wrong file', '/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/Other.swift')"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N04",
+      "rejection": "('unlocated/unparsed diagnostic record', \"error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\")"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N05",
+      "rejection": "('unrelated primary error/category', \"cannot find 'missing' in scope\")"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N06",
+      "rejection": "display policy primary mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N07",
+      "rejection": "('primary lacks declared ABI dependency', 'SignalChannelID')"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N08",
+      "rejection": "('primary lacks declared ABI dependency', 'SignalChannelID')"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N09",
+      "rejection": "('primary lacks declared ABI dependency', 'SignalChannelID')"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N10",
+      "rejection": "display note outside active primary"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N11",
+      "rejection": "display note outside active primary"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N12",
+      "rejection": "display note outside active primary"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N13",
+      "rejection": "display excerpt identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N14",
+      "rejection": "display excerpt identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N15.excerpt-byte",
+      "rejection": "display excerpt identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N15.gutter-byte",
+      "rejection": "display gutter bytes mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N16.message",
+      "rejection": "display gutter bytes mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N16.severity",
+      "rejection": "display gutter bytes mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N17",
+      "rejection": "duplicate display note"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N18.omit-opt-in",
+      "rejection": "('gutter is not an exact repeat or declared display-only form', '   |                `- note: type declared here')"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N18.control-id",
+      "rejection": "display policy control ID mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N18.profile",
+      "rejection": "display policy context mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N18.input-hash",
+      "rejection": "('gutter is not an exact repeat or declared display-only form', '   |                `- note: type declared here')"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N19.line",
+      "rejection": "display policy primary mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N19.column",
+      "rejection": "display policy primary mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N20.unparsed-note",
+      "rejection": "('unlocated/unparsed diagnostic record', 'note: unexpected unparsed note')"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N20.malformed-note",
+      "rejection": "('malformed located diagnostic record', '/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: note type declared here')"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N20.unknown-remark",
+      "rejection": "('unlocated/unparsed diagnostic record', 'remark: unexpected unknown remark')"
+    },
+    {
+      "accepted": false,
+      "id": "A4-N21",
+      "rejection": "('note outside declared dependency files', '/virtual/imported/SignalPrimitiveValues.swift')"
+    },
+    {
+      "accepted": true,
+      "display_note_count": 4,
+      "id": "A7-P01",
+      "records": [
+        {
+          "dependency_evidence": "property 'model' is package and cannot be referenced from an '@inlinable' function\n        let state = (try AnalyzerRead<D>(model, read: read)).state()",
+          "display_notes": [
+            {
+              "contributes_dependency_evidence": false,
+              "declared_source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+              "enclosing_primary": {
+                "column": 42,
+                "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+                "line": 21,
+                "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+                "severity": "error"
+              },
+              "excerpt": {
+                "line": 11,
+                "raw": "11 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>",
+                "text": "    package let model:_GiftUIModelKey<AnalyzerModelSchema>"
+              },
+              "has_located_note_header": false,
+              "input_sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2",
+              "raw_gutter": "   |                 `- note: property 'model' is not '@usableFromInline' or public",
+              "stream": "stderr"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 42,
+            "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+            "line": 21,
+            "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+            "severity": "error",
+            "source": [
+              "        let state = (try AnalyzerRead<D>(model, read: read)).state()"
+            ]
+          }
+        },
+        {
+          "dependency_evidence": "property 'model' is package and cannot be referenced from an '@inlinable' function\n        Text<D>(BoundedText(Int32((try AnalyzerRead<D>(model, read: read)).state().capture().count)))",
+          "display_notes": [
+            {
+              "contributes_dependency_evidence": false,
+              "declared_source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+              "enclosing_primary": {
+                "column": 56,
+                "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+                "line": 23,
+                "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+                "severity": "error"
+              },
+              "excerpt": {
+                "line": 11,
+                "raw": "11 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>",
+                "text": "    package let model:_GiftUIModelKey<AnalyzerModelSchema>"
+              },
+              "has_located_note_header": false,
+              "input_sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2",
+              "raw_gutter": "   |                 `- note: property 'model' is not '@usableFromInline' or public",
+              "stream": "stderr"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 56,
+            "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+            "line": 23,
+            "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+            "severity": "error",
+            "source": [
+              "        Text<D>(BoundedText(Int32((try AnalyzerRead<D>(model, read: read)).state().capture().count)))"
+            ]
+          }
+        },
+        {
+          "dependency_evidence": "property 'model' is package and cannot be referenced from an '@inlinable' function\n        if (try AnalyzerRead<D>(model, read: read)).state().capture().count > 0 {",
+          "display_notes": [
+            {
+              "contributes_dependency_evidence": false,
+              "declared_source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+              "enclosing_primary": {
+                "column": 33,
+                "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+                "line": 24,
+                "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+                "severity": "error"
+              },
+              "excerpt": {
+                "line": 11,
+                "raw": "11 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>",
+                "text": "    package let model:_GiftUIModelKey<AnalyzerModelSchema>"
+              },
+              "has_located_note_header": false,
+              "input_sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2",
+              "raw_gutter": "   |                 `- note: property 'model' is not '@usableFromInline' or public",
+              "stream": "stderr"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 33,
+            "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+            "line": 24,
+            "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+            "severity": "error",
+            "source": [
+              "        if (try AnalyzerRead<D>(model, read: read)).state().capture().count > 0 {"
+            ]
+          }
+        },
+        {
+          "dependency_evidence": "property 'model' is package and cannot be referenced from an '@inlinable' function\n            Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))",
+          "display_notes": [
+            {
+              "contributes_dependency_evidence": false,
+              "declared_source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+              "enclosing_primary": {
+                "column": 64,
+                "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+                "line": 25,
+                "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+                "severity": "error"
+              },
+              "excerpt": {
+                "line": 11,
+                "raw": "11 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>",
+                "text": "    package let model:_GiftUIModelKey<AnalyzerModelSchema>"
+              },
+              "has_located_note_header": false,
+              "input_sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2",
+              "raw_gutter": "   |                 `- note: property 'model' is not '@usableFromInline' or public",
+              "stream": "stderr"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 64,
+            "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+            "line": 25,
+            "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+            "severity": "error",
+            "source": [
+              "            Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "display_note_count": 4,
+      "id": "A7-P02",
+      "records": [
+        {
+          "dependency_evidence": "property 'model' is package and cannot be referenced from an '@inlinable' function\n        let state = (try AnalyzerRead<D>(model, read: read)).state()",
+          "display_notes": [
+            {
+              "contributes_dependency_evidence": false,
+              "declared_source_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/synthetic-cells/macos-static/negative-A7/AnalyzerPresentation.swift",
+              "enclosing_primary": {
+                "column": 42,
+                "file": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/synthetic-cells/macos-static/negative-A7/AnalyzerPresentation.swift",
+                "line": 21,
+                "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+                "severity": "error"
+              },
+              "excerpt": {
+                "line": 11,
+                "raw": "11 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>",
+                "text": "    package let model:_GiftUIModelKey<AnalyzerModelSchema>"
+              },
+              "has_located_note_header": false,
+              "input_sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2",
+              "raw_gutter": "   |                 `- note: property 'model' is not '@usableFromInline' or public",
+              "stream": "stderr"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 42,
+            "file": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/synthetic-cells/macos-static/negative-A7/AnalyzerPresentation.swift",
+            "line": 21,
+            "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+            "severity": "error",
+            "source": [
+              "        let state = (try AnalyzerRead<D>(model, read: read)).state()"
+            ]
+          }
+        },
+        {
+          "dependency_evidence": "property 'model' is package and cannot be referenced from an '@inlinable' function\n        Text<D>(BoundedText(Int32((try AnalyzerRead<D>(model, read: read)).state().capture().count)))",
+          "display_notes": [
+            {
+              "contributes_dependency_evidence": false,
+              "declared_source_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/synthetic-cells/macos-static/negative-A7/AnalyzerPresentation.swift",
+              "enclosing_primary": {
+                "column": 56,
+                "file": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/synthetic-cells/macos-static/negative-A7/AnalyzerPresentation.swift",
+                "line": 23,
+                "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+                "severity": "error"
+              },
+              "excerpt": {
+                "line": 11,
+                "raw": "11 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>",
+                "text": "    package let model:_GiftUIModelKey<AnalyzerModelSchema>"
+              },
+              "has_located_note_header": false,
+              "input_sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2",
+              "raw_gutter": "   |                 `- note: property 'model' is not '@usableFromInline' or public",
+              "stream": "stderr"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 56,
+            "file": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/synthetic-cells/macos-static/negative-A7/AnalyzerPresentation.swift",
+            "line": 23,
+            "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+            "severity": "error",
+            "source": [
+              "        Text<D>(BoundedText(Int32((try AnalyzerRead<D>(model, read: read)).state().capture().count)))"
+            ]
+          }
+        },
+        {
+          "dependency_evidence": "property 'model' is package and cannot be referenced from an '@inlinable' function\n        if (try AnalyzerRead<D>(model, read: read)).state().capture().count > 0 {",
+          "display_notes": [
+            {
+              "contributes_dependency_evidence": false,
+              "declared_source_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/synthetic-cells/macos-static/negative-A7/AnalyzerPresentation.swift",
+              "enclosing_primary": {
+                "column": 33,
+                "file": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/synthetic-cells/macos-static/negative-A7/AnalyzerPresentation.swift",
+                "line": 24,
+                "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+                "severity": "error"
+              },
+              "excerpt": {
+                "line": 11,
+                "raw": "11 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>",
+                "text": "    package let model:_GiftUIModelKey<AnalyzerModelSchema>"
+              },
+              "has_located_note_header": false,
+              "input_sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2",
+              "raw_gutter": "   |                 `- note: property 'model' is not '@usableFromInline' or public",
+              "stream": "stderr"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 33,
+            "file": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/synthetic-cells/macos-static/negative-A7/AnalyzerPresentation.swift",
+            "line": 24,
+            "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+            "severity": "error",
+            "source": [
+              "        if (try AnalyzerRead<D>(model, read: read)).state().capture().count > 0 {"
+            ]
+          }
+        },
+        {
+          "dependency_evidence": "property 'model' is package and cannot be referenced from an '@inlinable' function\n            Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))",
+          "display_notes": [
+            {
+              "contributes_dependency_evidence": false,
+              "declared_source_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/synthetic-cells/macos-static/negative-A7/AnalyzerPresentation.swift",
+              "enclosing_primary": {
+                "column": 64,
+                "file": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/synthetic-cells/macos-static/negative-A7/AnalyzerPresentation.swift",
+                "line": 25,
+                "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+                "severity": "error"
+              },
+              "excerpt": {
+                "line": 11,
+                "raw": "11 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>",
+                "text": "    package let model:_GiftUIModelKey<AnalyzerModelSchema>"
+              },
+              "has_located_note_header": false,
+              "input_sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2",
+              "raw_gutter": "   |                 `- note: property 'model' is not '@usableFromInline' or public",
+              "stream": "stderr"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 64,
+            "file": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/synthetic-cells/macos-static/negative-A7/AnalyzerPresentation.swift",
+            "line": 25,
+            "message": "property 'model' is package and cannot be referenced from an '@inlinable' function",
+            "severity": "error",
+            "source": [
+              "            Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "id": "A7-N01-no-opt-in",
+      "rejection": "('gutter is not an exact repeat or declared display-only form', \"   |                 `- note: property 'model' is not '@usableFromInline' or public\")"
+    },
+    {
+      "accepted": false,
+      "id": "A7-wrong-id",
+      "rejection": "display policy control ID mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-wrong-remove_only",
+      "rejection": "('display policy control mismatch', 'remove_only')"
+    },
+    {
+      "accepted": false,
+      "id": "A7-wrong-kind",
+      "rejection": "('display policy control mismatch', 'kind')"
+    },
+    {
+      "accepted": false,
+      "id": "A7-wrong-category",
+      "rejection": "('display policy control mismatch', 'category')"
+    },
+    {
+      "accepted": false,
+      "id": "A7-wrong-required_symbol",
+      "rejection": "('display policy control mismatch', 'required_symbol')"
+    },
+    {
+      "accepted": false,
+      "id": "A7-wrong-first_expected_stage",
+      "rejection": "display policy module mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-context-macos-dynamic",
+      "rejection": "display policy context mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-context-nrf52840-embedded",
+      "rejection": "display policy context mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-context-AnalyzerSchema",
+      "rejection": "display policy context mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-no-context",
+      "rejection": "display policy context mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-no-trusted-input",
+      "rejection": "trusted input path mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-trusted-path",
+      "rejection": "trusted input path mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-trusted-bytes",
+      "rejection": "trusted input hash mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-trusted-type",
+      "rejection": "trusted input must contain bytes"
+    },
+    {
+      "accepted": false,
+      "id": "A7-opt-policy_id",
+      "rejection": "('gutter is not an exact repeat or declared display-only form', \"   |                 `- note: property 'model' is not '@usableFromInline' or public\")"
+    },
+    {
+      "accepted": false,
+      "id": "A7-opt-source_path",
+      "rejection": "('gutter is not an exact repeat or declared display-only form', \"   |                 `- note: property 'model' is not '@usableFromInline' or public\")"
+    },
+    {
+      "accepted": false,
+      "id": "A7-opt-input_sha256",
+      "rejection": "('gutter is not an exact repeat or declared display-only form', \"   |                 `- note: property 'model' is not '@usableFromInline' or public\")"
+    },
+    {
+      "accepted": false,
+      "id": "A7-exit-0",
+      "rejection": "('non-diagnostic exit', 0)"
+    },
+    {
+      "accepted": false,
+      "id": "A7-exit-2",
+      "rejection": "('non-diagnostic exit', 2)"
+    },
+    {
+      "accepted": false,
+      "id": "A7-exit--11",
+      "rejection": "('non-diagnostic exit', -11)"
+    },
+    {
+      "accepted": false,
+      "id": "A7-exit-True",
+      "rejection": "('non-diagnostic exit', True)"
+    },
+    {
+      "accepted": false,
+      "id": "A7-stdout-display",
+      "rejection": "A7 display stream mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-declaration",
+      "rejection": "display excerpt identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-gutter-space",
+      "rejection": "display gutter bytes mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-gutter-marker",
+      "rejection": "display gutter bytes mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-gutter-message",
+      "rejection": "display gutter bytes mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-excerpt-line",
+      "rejection": "display excerpt identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-excerpt-space",
+      "rejection": "display excerpt identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-primary-column",
+      "rejection": "display policy primary mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-primary-line",
+      "rejection": "display policy primary mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-primary-message",
+      "rejection": "display policy primary mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-wrong-file",
+      "rejection": "('primary error in wrong file', '/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A7/AnalyzerPresentation.swift.other')"
+    },
+    {
+      "accepted": false,
+      "id": "A7-intervening",
+      "rejection": "display excerpt identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-duplicate-note",
+      "rejection": "display excerpt identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-located-note",
+      "rejection": "display note outside active primary"
+    },
+    {
+      "accepted": false,
+      "id": "A7-malformed-note",
+      "rejection": "('malformed located diagnostic record', \"/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign3/macos-static/scratch/negative-A7/AnalyzerPresentation.swift:11:17: note property 'model' is not '@usableFromInline' or public\")"
+    },
+    {
+      "accepted": false,
+      "id": "A7-unknown-note",
+      "rejection": "('unlocated/unparsed diagnostic record', 'note: unexpected')"
+    },
+    {
+      "accepted": false,
+      "id": "A7-wrong-target-line",
+      "rejection": "display primary target evidence mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-missing-primary",
+      "rejection": "A7 primary count mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-duplicate-primary",
+      "rejection": "A7 primary count mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-reordered",
+      "rejection": "A7 primary order/location mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-missing-all-displays",
+      "rejection": "A7 display inventory mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A7-crash-stdout-Stack-dump",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A7-crash-stdout-LLVM-ERROR",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A7-crash-stdout-fatal-error",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A7-crash-stdout-compiler-crashed",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A7-crash-stderr-Stack-dump",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A7-crash-stderr-LLVM-ERROR",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A7-crash-stderr-fatal-error",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A7-crash-stderr-compiler-crashed",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A7-unrelated-extra-error",
+      "rejection": "('unrelated primary error/category', 'missing module')"
+    },
+    {
+      "accepted": true,
+      "display_note_count": 1,
+      "id": "A8-P01",
+      "records": [
+        {
+          "dependency_evidence": "property 'index' is package and cannot be referenced from an '@inlinable' function\n            Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))",
+          "display_notes": [
+            {
+              "contributes_dependency_evidence": false,
+              "declared_source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+              "enclosing_primary": {
+                "column": 113,
+                "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+                "line": 25,
+                "message": "property 'index' is package and cannot be referenced from an '@inlinable' function",
+                "severity": "error"
+              },
+              "excerpt": {
+                "line": 13,
+                "raw": "13 |     package let index: Int",
+                "text": "    package let index: Int"
+              },
+              "has_located_note_header": false,
+              "input_sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c",
+              "raw_gutter": "   |                 `- note: property 'index' is not '@usableFromInline' or public",
+              "stream": "stderr"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 113,
+            "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+            "line": 25,
+            "message": "property 'index' is package and cannot be referenced from an '@inlinable' function",
+            "severity": "error",
+            "source": [
+              "            Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "display_note_count": 1,
+      "id": "A8-P02",
+      "records": [
+        {
+          "dependency_evidence": "property 'index' is package and cannot be referenced from an '@inlinable' function\n            Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))",
+          "display_notes": [
+            {
+              "contributes_dependency_evidence": false,
+              "declared_source_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a8-diagnostic-policy-static-successor/synthetic-cells/negative-A8/AnalyzerPresentation.swift",
+              "enclosing_primary": {
+                "column": 113,
+                "file": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a8-diagnostic-policy-static-successor/synthetic-cells/negative-A8/AnalyzerPresentation.swift",
+                "line": 25,
+                "message": "property 'index' is package and cannot be referenced from an '@inlinable' function",
+                "severity": "error"
+              },
+              "excerpt": {
+                "line": 13,
+                "raw": "13 |     package let index: Int",
+                "text": "    package let index: Int"
+              },
+              "has_located_note_header": false,
+              "input_sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c",
+              "raw_gutter": "   |                 `- note: property 'index' is not '@usableFromInline' or public",
+              "stream": "stderr"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 113,
+            "file": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a8-diagnostic-policy-static-successor/synthetic-cells/negative-A8/AnalyzerPresentation.swift",
+            "line": 25,
+            "message": "property 'index' is package and cannot be referenced from an '@inlinable' function",
+            "severity": "error",
+            "source": [
+              "            Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "id": "A8-N01",
+      "rejection": "('gutter is not an exact repeat or declared display-only form', \"   |                 `- note: property 'index' is not '@usableFromInline' or public\")"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N02",
+      "rejection": "('gutter is not an exact repeat or declared display-only form', \"   |                 `- note: property 'index' is not '@usableFromInline' or public\")"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N03",
+      "rejection": "('gutter is not an exact repeat or declared display-only form', \"   |                 `- note: property 'index' is not '@usableFromInline' or public\")"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N04",
+      "rejection": "A8 context mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N05",
+      "rejection": "A8 context mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N06",
+      "rejection": "A8 context mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N07",
+      "rejection": "A8 context mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N08",
+      "rejection": "A8 context mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N09",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N10",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N11",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N12",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N13",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N14",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N15",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N16",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N17",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N18",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N19",
+      "rejection": "trusted input path mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N20",
+      "rejection": "trusted input path mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N21",
+      "rejection": "trusted input hash mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N22",
+      "rejection": "trusted input must contain bytes"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N23",
+      "rejection": "trusted input hash mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N24",
+      "rejection": "display excerpt identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N25",
+      "rejection": "display excerpt identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N26",
+      "rejection": "display raw excerpt mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N27",
+      "rejection": "display gutter bytes mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N28",
+      "rejection": "display gutter bytes mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N29",
+      "rejection": "display excerpt identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N30",
+      "rejection": "A8 display inventory mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N31",
+      "rejection": "display policy primary mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N32",
+      "rejection": "display policy primary mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N33",
+      "rejection": "display policy primary mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N34",
+      "rejection": "display policy primary mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N35",
+      "rejection": "display primary target evidence mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N36",
+      "rejection": "display excerpt identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N37",
+      "rejection": "display excerpt identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N38",
+      "rejection": "A8 display inventory mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N39",
+      "rejection": "display note outside active primary"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N40",
+      "rejection": "A8 primary count mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N41",
+      "rejection": "('unrelated primary error/category', 'unrelated failure')"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N42",
+      "rejection": "('primary error in wrong file', '/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swiftx')"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N43",
+      "rejection": "A7 display stream mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N44",
+      "rejection": "display note outside active primary"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N45",
+      "rejection": "('non-diagnostic exit', 0)"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N46",
+      "rejection": "('non-diagnostic exit', 2)"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N47",
+      "rejection": "('non-diagnostic exit', -9)"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N48",
+      "rejection": "('non-diagnostic exit', True)"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N49",
+      "rejection": "('non-diagnostic exit', '1')"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N50",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N51",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N52",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N53",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N54",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N55",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N56",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N57",
+      "rejection": "crash/fatal marker in diagnostic output"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N58",
+      "rejection": "('unlocated/unparsed diagnostic record', 'note: unfamiliar')"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N59",
+      "rejection": "('unlocated/unparsed diagnostic record', 'warning: unfamiliar')"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N60",
+      "rejection": "('unlocated/unparsed diagnostic record', 'remark: unfamiliar')"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N61",
+      "rejection": "('malformed located diagnostic record', '/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:13:17: note missing colon')"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N62",
+      "rejection": "display gutter bytes mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N63",
+      "rejection": "A8 declared dependency paths mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N64",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N65",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N66",
+      "rejection": "display note outside active primary"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N67",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N68",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N69",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N70",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N71",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N72",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N73",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N74",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N75",
+      "rejection": "A8 control fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N76",
+      "rejection": "('A8 forbids located warning/remark', 'warning', '/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: warning: additive unrelated diagnostic')"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N77",
+      "rejection": "('A8 forbids located warning/remark', 'warning', '/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: warning: additive unrelated diagnostic')"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N78",
+      "rejection": "('A8 forbids located warning/remark', 'warning', '/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: warning: additive unrelated diagnostic')"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N79",
+      "rejection": "('A8 forbids located warning/remark', 'remark', '/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: remark: additive unrelated diagnostic')"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N80",
+      "rejection": "('A8 forbids located warning/remark', 'remark', '/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: remark: additive unrelated diagnostic')"
+    },
+    {
+      "accepted": false,
+      "id": "A8-N81",
+      "rejection": "('A8 forbids located warning/remark', 'remark', '/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: remark: additive unrelated diagnostic')"
+    },
+    {
+      "accepted": true,
+      "display_note_count": 1,
+      "id": "PS-P01",
+      "records": [
+        {
+          "dependency_evidence": "'storage' is inaccessible due to 'private' protection level",
+          "display_notes": [
+            {
+              "client_sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf",
+              "column": 13,
+              "contributes_dependency_evidence": false,
+              "domain_source_sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+              "enclosing_primary": {
+                "column": 62,
+                "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/private-storage/inputs/private-storage.swift",
+                "line": 2,
+                "message": "'storage' is inaccessible due to 'private' protection level",
+                "severity": "error"
+              },
+              "filesystem_lookup": false,
+              "has_located_note_header": true,
+              "imported_module_sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798",
+              "line": 2,
+              "message": "'storage' declared here",
+              "raw_block": "SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage:2:13: note: 'storage' declared here\n1 | struct SignalAnalyzerDiagnostic {\n2 | private var storage: SignalAnalyzerDomain.SignalAnalyzerDiagnosticStorage}\n  |             `- note: 'storage' declared here\n3 | \n",
+              "stream": "stderr",
+              "virtual_label": "SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 62,
+            "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/private-storage/inputs/private-storage.swift",
+            "line": 2,
+            "message": "'storage' is inaccessible due to 'private' protection level",
+            "severity": "error",
+            "source": [
+              "package func rejected(_ d: SignalAnalyzerDiagnostic) { _ = d.storage }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "id": "PS-N001",
+      "rejection": "('note outside declared dependency files', 'SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage')"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N002",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N003",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N004",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N005",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N006",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N007",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N008",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N009",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N010",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N011",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N012",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N013",
+      "rejection": "('note outside declared dependency files', 'SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage')"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N014",
+      "rejection": "private-storage profile/module/stage mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N015",
+      "rejection": "private-storage profile/module/stage mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N016",
+      "rejection": "private-storage profile/module/stage mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N017",
+      "rejection": "private-storage exit mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N018",
+      "rejection": "private-storage exit mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N019",
+      "rejection": "private-storage exit mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N020",
+      "rejection": "private-storage exit mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N021",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N022",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N023",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N024",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N025",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N026",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N027",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N028",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N029",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N030",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N031",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N032",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N033",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N034",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N035",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N036",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N037",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N038",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N039",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N040",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N041",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N042",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N043",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N044",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N045",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N046",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N047",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N048",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N049",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N050",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N051",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N052",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N053",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N054",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N055",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N056",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N057",
+      "rejection": "private-storage client bytes mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N058",
+      "rejection": "private-storage trusted client path mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N059",
+      "rejection": "private-storage trusted provenance required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N060",
+      "rejection": "private-storage source bytes mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N061",
+      "rejection": "private-storage artifact path mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N062",
+      "rejection": "private-storage artifact inventory mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N063",
+      "rejection": "private-storage source bytes mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N064",
+      "rejection": "private-storage artifact path mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N065",
+      "rejection": "private-storage artifact inventory mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N066",
+      "rejection": "private-storage source bytes mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N067",
+      "rejection": "private-storage artifact path mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N068",
+      "rejection": "private-storage artifact inventory mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N069",
+      "rejection": "private-storage authenticated module producer join mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N070",
+      "rejection": "private-storage artifact path mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N071",
+      "rejection": "private-storage artifact inventory mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N072",
+      "rejection": "private-storage producer identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N073",
+      "rejection": "private-storage consumer identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N074",
+      "rejection": "private-storage primary suffix mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N075",
+      "rejection": "private-storage dependency paths mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N076",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N077",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N078",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N079",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N080",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N081",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N082",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N083",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N084",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N085",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N086",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N087",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N088",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N089",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N090",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N091",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N092",
+      "rejection": "private-storage profile/module/stage mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N093",
+      "rejection": "private-storage profile/module/stage mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-N094",
+      "rejection": "private-storage profile/module/stage mismatch"
+    },
+    {
+      "accepted": true,
+      "display_note_count": 1,
+      "id": "PS-X095",
+      "records": [
+        {
+          "dependency_evidence": "'storage' is inaccessible due to 'private' protection level",
+          "display_notes": [
+            {
+              "client_sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf",
+              "column": 13,
+              "contributes_dependency_evidence": false,
+              "domain_source_sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+              "enclosing_primary": {
+                "column": 62,
+                "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign6/macos-static/scratch/private-storage/inputs/private-storage.swift",
+                "line": 2,
+                "message": "'storage' is inaccessible due to 'private' protection level",
+                "severity": "error"
+              },
+              "filesystem_lookup": false,
+              "has_located_note_header": true,
+              "imported_module_sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798",
+              "line": 2,
+              "message": "'storage' declared here",
+              "raw_block": "SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage:2:13: note: 'storage' declared here\n1 | struct SignalAnalyzerDiagnostic {\n2 | private var storage: SignalAnalyzerDomain.SignalAnalyzerDiagnosticStorage}\n  |             `- note: 'storage' declared here\n3 | \n",
+              "stream": "stderr",
+              "virtual_label": "SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 62,
+            "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign6/macos-static/scratch/private-storage/inputs/private-storage.swift",
+            "line": 2,
+            "message": "'storage' is inaccessible due to 'private' protection level",
+            "severity": "error",
+            "source": [
+              "package func rejected(_ d: SignalAnalyzerDiagnostic) { _ = d.storage }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "id": "PS-X096",
+      "rejection": "private-storage complete control mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-X097",
+      "rejection": "private-storage exact stderr sequence required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-X098",
+      "rejection": "private-storage provenance keys mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-X099",
+      "rejection": "private-storage authenticated module producer join mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-X100",
+      "rejection": "private-storage authenticated module producer join mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-X101",
+      "rejection": "private-storage authenticated module producer join mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-X102",
+      "rejection": "private-storage authenticated module producer join mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-X103",
+      "rejection": "private-storage authenticated module producer join mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-X104",
+      "rejection": "private-storage authenticated module producer join mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-X105",
+      "rejection": "private-storage authenticated module producer join mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-X106",
+      "rejection": "private-storage authenticated module producer join mismatch"
+    },
+    {
+      "accepted": true,
+      "display_note_count": 1,
+      "id": "PS-X107",
+      "records": [
+        {
+          "dependency_evidence": "'storage' is inaccessible due to 'private' protection level",
+          "display_notes": [
+            {
+              "client_sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf",
+              "column": 13,
+              "contributes_dependency_evidence": false,
+              "domain_source_sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+              "enclosing_primary": {
+                "column": 62,
+                "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/private-storage/inputs/private-storage.swift",
+                "line": 2,
+                "message": "'storage' is inaccessible due to 'private' protection level",
+                "severity": "error"
+              },
+              "filesystem_lookup": false,
+              "has_located_note_header": true,
+              "imported_module_sha256": "a931d56d19e4e212588137b7232db9a229aaec8e0d121bbcb90061d1d2725c2b",
+              "line": 2,
+              "message": "'storage' declared here",
+              "raw_block": "SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage:2:13: note: 'storage' declared here\n1 | struct SignalAnalyzerDiagnostic {\n2 | private var storage: SignalAnalyzerDomain.SignalAnalyzerDiagnosticStorage}\n  |             `- note: 'storage' declared here\n3 | \n",
+              "stream": "stderr",
+              "virtual_label": "SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 62,
+            "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/private-storage/inputs/private-storage.swift",
+            "line": 2,
+            "message": "'storage' is inaccessible due to 'private' protection level",
+            "severity": "error",
+            "source": [
+              "package func rejected(_ d: SignalAnalyzerDiagnostic) { _ = d.storage }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "id": "PS-X108",
+      "rejection": "private-storage canonical declared root required"
+    },
+    {
+      "accepted": true,
+      "display_note_count": 1,
+      "id": "PS-CORE-P01",
+      "records": [
+        {
+          "dependency_evidence": "'storage' is inaccessible due to 'private' protection level",
+          "display_notes": [
+            {
+              "client_sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf",
+              "column": 13,
+              "contributes_dependency_evidence": false,
+              "domain_source_sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+              "enclosing_primary": {
+                "column": 62,
+                "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign6/macos-static/scratch/private-storage/inputs/private-storage.swift",
+                "line": 2,
+                "message": "'storage' is inaccessible due to 'private' protection level",
+                "severity": "error"
+              },
+              "filesystem_lookup": false,
+              "has_located_note_header": true,
+              "imported_module_sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798",
+              "line": 2,
+              "message": "'storage' declared here",
+              "raw_block": "SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage:2:13: note: 'storage' declared here\n1 | struct SignalAnalyzerDiagnostic {\n2 | private var storage: SignalAnalyzerDomain.SignalAnalyzerDiagnosticStorage}\n  |             `- note: 'storage' declared here\n3 | \n",
+              "stream": "stderr",
+              "virtual_label": "SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 62,
+            "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign6/macos-static/scratch/private-storage/inputs/private-storage.swift",
+            "line": 2,
+            "message": "'storage' is inaccessible due to 'private' protection level",
+            "severity": "error",
+            "source": [
+              "package func rejected(_ d: SignalAnalyzerDiagnostic) { _ = d.storage }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N001",
+      "rejection": "private-storage producer identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N002",
+      "rejection": "current core must be fresh, not archived"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N003",
+      "rejection": "current core receipt path mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N004",
+      "rejection": "current core receipt path mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N005",
+      "rejection": "current core artifact path mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N006",
+      "rejection": "current core receipt bytes/hash mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N007",
+      "rejection": "current core receipt bytes/hash mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N008",
+      "rejection": "current core artifact/receipt join mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N009",
+      "rejection": "private-storage producer identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N010",
+      "rejection": "private-storage consumer identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N011",
+      "rejection": "private-storage authenticated module producer join mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N012",
+      "rejection": "current core root/profile structure mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N013",
+      "rejection": "current core canonical root required"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N014",
+      "rejection": "current core trusted map fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N015",
+      "rejection": "current core trusted map fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N016",
+      "rejection": "current core trusted map fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N017",
+      "rejection": "current core trusted map fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N018",
+      "rejection": "current core trusted map fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N019",
+      "rejection": "current core trusted map fields mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N020",
+      "rejection": "current core P02 receipt source/toolchain/profile/check identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N021",
+      "rejection": "current core P02 receipt source/toolchain/profile/check identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N022",
+      "rejection": "historical core input identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N023",
+      "rejection": "current core P02 receipt source/toolchain/profile/check identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N024",
+      "rejection": "current core P02 receipt source/toolchain/profile/check identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-CORE-N025",
+      "rejection": "current core artifact/receipt join mismatch"
+    },
+    {
+      "accepted": true,
+      "display_note_count": 1,
+      "id": "PS-COMMIT-P01",
+      "records": [
+        {
+          "dependency_evidence": "'storage' is inaccessible due to 'private' protection level",
+          "display_notes": [
+            {
+              "client_sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf",
+              "column": 13,
+              "contributes_dependency_evidence": false,
+              "domain_source_sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+              "enclosing_primary": {
+                "column": 62,
+                "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign6/macos-static/scratch/private-storage/inputs/private-storage.swift",
+                "line": 2,
+                "message": "'storage' is inaccessible due to 'private' protection level",
+                "severity": "error"
+              },
+              "filesystem_lookup": false,
+              "has_located_note_header": true,
+              "imported_module_sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798",
+              "line": 2,
+              "message": "'storage' declared here",
+              "raw_block": "SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage:2:13: note: 'storage' declared here\n1 | struct SignalAnalyzerDiagnostic {\n2 | private var storage: SignalAnalyzerDomain.SignalAnalyzerDiagnosticStorage}\n  |             `- note: 'storage' declared here\n3 | \n",
+              "stream": "stderr",
+              "virtual_label": "SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage"
+            }
+          ],
+          "notes": [],
+          "primary": {
+            "column": 62,
+            "file": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign6/macos-static/scratch/private-storage/inputs/private-storage.swift",
+            "line": 2,
+            "message": "'storage' is inaccessible due to 'private' protection level",
+            "severity": "error",
+            "source": [
+              "package func rejected(_ d: SignalAnalyzerDiagnostic) { _ = d.storage }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "id": "PS-COMMIT-N001",
+      "rejection": "current core recomputed input identity mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-COMMIT-N002",
+      "rejection": "current core receipt commit mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-COMMIT-N003",
+      "rejection": "current core receipt commit mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-COMMIT-N004",
+      "rejection": "current core receipt commit mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-COMMIT-N005",
+      "rejection": "current commit must be a full canonical Git SHA-1"
+    },
+    {
+      "accepted": false,
+      "id": "PS-COMMIT-N006",
+      "rejection": "current commit must be a full canonical Git SHA-1"
+    },
+    {
+      "accepted": false,
+      "id": "PS-COMMIT-N007",
+      "rejection": "current commit must be a full canonical Git SHA-1"
+    },
+    {
+      "accepted": false,
+      "id": "PS-COMMIT-N008",
+      "rejection": "current commit must be a full canonical Git SHA-1"
+    },
+    {
+      "accepted": false,
+      "id": "PS-COMMIT-N009",
+      "rejection": "current commit must be a full canonical Git SHA-1"
+    },
+    {
+      "accepted": false,
+      "id": "PS-COMMIT-N010",
+      "rejection": "current commit must be a full canonical Git SHA-1"
+    },
+    {
+      "accepted": false,
+      "id": "PS-COMMIT-N011",
+      "rejection": "current commit requires authenticated current core map"
+    },
+    {
+      "accepted": false,
+      "id": "PS-COMMIT-N012",
+      "rejection": "current core receipt bytes/hash mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-COMMIT-N013",
+      "rejection": "current core producer digest/root mismatch"
+    },
+    {
+      "accepted": false,
+      "id": "PS-COMMIT-N014",
+      "rejection": "current core recomputed input identity mismatch"
+    }
+  ],
+  "status": "STATIC_FIXTURE_EXPECTATIONS_MATCHED_ONLY",
+  "total_inputs": 346
+}

@@ -1,0 +1,57 @@
+{
+  "applicability": "Exact copied corrected A8 parser bytes covered by 196 prior static fixture cases (113 inherited, 83 new). Wrapper AST/hash inspection only; no execution or compiler dialect coverage inferred.",
+  "control_semantics": "controls.json unchanged byte-for-byte; adapter compares exact control semantics permitting resolved paths and display_only_note only",
+  "historical_A4_applicability": "inherited-A4-static-applicability.json preserves prior exact A4 module/receipt identities; historical receipt does not cover successor parser bytes",
+  "historical_A7_applicability": "inherited-A7-static-applicability.json preserves historical A7 coverage",
+  "observed_static_result": {
+    "inherited_inputs": 113,
+    "new_inputs": 83,
+    "status": "STATIC_FIXTURE_EXPECTATIONS_MATCHED_ONLY",
+    "total_inputs": 196
+  },
+  "opt_ins": [
+    {
+      "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+      "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+      "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+    },
+    {
+      "input_sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2",
+      "policy_id": "macos-static-negative-A7-AnalyzerPresentation-display-only-v1",
+      "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/negative-A7/AnalyzerPresentation.swift"
+    },
+    {
+      "input_sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c",
+      "policy_id": "macos-static-negative-A8-AnalyzerPresentation-display-only-v1",
+      "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/negative-A8/AnalyzerPresentation.swift"
+    }
+  ],
+  "static_freeze": {
+    "bytes": 172807,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a8-diagnostic-policy-static-successor/packet-freeze.json",
+    "sha256": "837c376e9eec929f2db345697bc1122cbe6a1c5a2dc6bf5acac3a36de9a2a192"
+  },
+  "static_receipt": {
+    "bytes": 61725,
+    "copy": "A8-static-fixture-receipt.json",
+    "original": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a8-diagnostic-policy-static-result/static-result.json",
+    "sha256": "3b12285668cf3eaaadddc9a92e0f0c2964022b2f0a28ba3cd4690c98107efb1f"
+  },
+  "status": "STATIC IDENTITY APPLICABILITY ONLY; NO PARSER CALL OR CAMPAIGN",
+  "trusted_A7_generated_source": {
+    "bytes": 1217,
+    "copy": "A7-frozen-AnalyzerPresentation.swift",
+    "sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2"
+  },
+  "trusted_A8_generated_source": {
+    "bytes": 1217,
+    "copy": "A8-frozen-AnalyzerPresentation.swift",
+    "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
+  },
+  "verified_parser": {
+    "bytes": 16610,
+    "copy": "diagnostic_parser.py",
+    "original": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a8-diagnostic-policy-static-successor/diagnostic_parser.py",
+    "sha256": "f5373a76a9539509dafcdb10a83d590a38a89bec523828c8771f5ff7da3583e2"
+  }
+}

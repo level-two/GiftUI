@@ -1,0 +1,65 @@
+{
+  "all_other_nested_wrapper_functions_ast_identical": true,
+  "candidate_source_input_count": 541,
+  "compiler_identities": {
+    ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+      "bytes": 230720,
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    },
+    ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+      "bytes": 230720,
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    }
+  },
+  "compiler_test_producer_formatter_campaign_invocations": 0,
+  "controls_byte_identical": true,
+  "exact_postformat_freeze": {
+    "bytes": 86847,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-freeze/postformat-freeze.json",
+    "sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333"
+  },
+  "execution_sequence": {
+    "automatic_repairs": 0,
+    "controls_per_profile": 20,
+    "dependent_stages": [
+      "P07",
+      "schema4-activation",
+      "counter384"
+    ],
+    "macro_stages": 4,
+    "profiles": [
+      "macos-static",
+      "raspberry-pi-armv6",
+      "nrf52840-embedded",
+      "macos-dynamic"
+    ],
+    "retries": 0,
+    "stop": "first material failure; later stages unrun",
+    "total_controls": 80
+  },
+  "input_mismatches": [],
+  "json_parse": true,
+  "known_risks": [
+    "Integrated adapter unexecuted; AST/identity inspection only",
+    "Static diagnostic fixtures cover archived macOS A4/A7 forms only; later profiles can STOP",
+    "Storage, lock and tool availability require execution preflight; no new allowance"
+  ],
+  "macro_files_exact_mechanical_relocation": true,
+  "only_nested_function_changed": "diagnostic (plus enclosing main AST)",
+  "output_roots_absent": {
+    "campaign": true,
+    "macos-dynamic": true,
+    "macos-static": true,
+    "nrf52840-embedded": true,
+    "raspberry-pi-armv6": true
+  },
+  "parser_calls": 0,
+  "parser_copy_identical": true,
+  "parser_imports": 0,
+  "preserved_files": 301,
+  "sdk": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+  "status": "STATIC PREPARATION ONLY",
+  "wrapper_ast_parse": true
+}

@@ -1,0 +1,28 @@
+{
+  "category": "serialized-ABI-access",
+  "dependency_note_sources": [
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign7/macos-static/scratch/negative-A7/inputs/Analyzer.swift"
+  ],
+  "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+  "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign7/macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+  "display_only_note": {
+    "input_sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2",
+    "policy_id": "macos-static-negative-A7-AnalyzerPresentation-display-only-v1",
+    "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign7/macos-static/scratch/negative-A7/AnalyzerPresentation.swift"
+  },
+  "expected_nonzero": true,
+  "files": [
+    "negative-A7/Analyzer.swift"
+  ],
+  "first_expected_stage": "AnalyzerPresentation",
+  "id": "negative-A7",
+  "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+  "kind": "abi-negative",
+  "later_stages": "unrun after expected first diagnostic",
+  "primary_message_patterns_all": [
+    "(?i)@(?:usableFromInline|inlinable)",
+    "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+  ],
+  "remove_only": "A7",
+  "required_symbol": "model"
+}
