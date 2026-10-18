@@ -1,0 +1,12 @@
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:19:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+        self.captured = captured
+        ^
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:6:49: note: setter for property 'captured' is not '@usableFromInline' or public
+    @usableFromInline internal private(set) var captured: CapturedAction<Identity>?
+                                                ^
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:68:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+        captured = nil
+        ^
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:6:49: note: setter for property 'captured' is not '@usableFromInline' or public
+    @usableFromInline internal private(set) var captured: CapturedAction<Identity>?
+                                                ^

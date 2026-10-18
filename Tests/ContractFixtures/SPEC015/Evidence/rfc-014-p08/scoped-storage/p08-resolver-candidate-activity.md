@@ -1,6 +1,8 @@
 # Resolver family candidate — 2026-10-18
 
-**New candidate1/1 in progress before source edit; compiler unexecuted.** Explicit
+**Candidate1/1 fixed at780c90c3; fresh compile boundary PASS.**
+Lower+all25 owners PASS/zero failed or blocked;329inputs and artifact/log identities
+verify. [Compile receipt](resolver-compile-result/README.md). Laterqualification open. Explicit
 user authorization follows independent READY ea856898/c9c307d5. ONE exact resolver
 candidate with zero automatic source repairs; all historical exhausted budgets and
 fixed prior candidates remain unchanged. [Reviewed28-site/five-file map](stage23-grouped-inventory/resolver-correction-map.json)

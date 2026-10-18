@@ -1,0 +1,16 @@
+{
+  "source_commit": "780c90c3",
+  "status": "compile_closure_passed",
+  "counts": {
+    "passed": 25,
+    "failed": 0,
+    "blocked": 0
+  },
+  "lower": "passed",
+  "verified_inputs": 329,
+  "verified_output_files": 203,
+  "source_mutations": 0,
+  "automatic_source_repairs": 0,
+  "result_sha256": "d16d20bd00983547d879ff3fab72cacc0a4d20ff761920cfa35d5f5e1d0a5eee",
+  "scope": "registered25/canonical8Static13Dynamic/42host only; no privacy/decoder/runtime"
+}

@@ -18,7 +18,13 @@ superseded_by: null
 
 ## Grouped dependency continuation — 2026-10-18
 
-Current [authorized resolver candidate1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-candidate1/README.md):
+Current [resolver compile boundary](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-compile-result/README.md):
+source780c90c3 lower+all25fresh owners PASS/zero failedblocked;329inputs/output/log
+identities verify. Candidate1/1 fixed/no automaticrepairs; oldbudgets preserved.
+Privacy/20physicalroots/concrete42/all23/full safety/strictcold remain unqualified;
+remaining20sourceedits0; P08/R07/T8.1 unaccepted.
+
+Historical [authorized resolver candidate1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-candidate1/README.md):
 reviewed28sites/five files applied/formatted/token audited;572other prior577inputs
 unchanged. NewONEcandidate1/1/no automaticrepairs; oldbudgets preserved. Fresh25
 registered recipe/329hashes frozen, validation-onlyPASS/compiler unexecuted.
