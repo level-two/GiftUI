@@ -1,0 +1,1776 @@
+{
+  "completed_ns": 1792364135895645000,
+  "context": {
+    "argv": [
+      "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "-swift-version",
+      "6",
+      "-Osize",
+      "-whole-module-optimization",
+      "-enable-experimental-feature",
+      "LifetimeDependence",
+      "-enable-experimental-feature",
+      "Lifetimes",
+      "-package-name",
+      "giftui",
+      "-module-cache-path",
+      "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/private-storage/cache",
+      "-disable-sandbox",
+      "-target",
+      "armv6-unknown-linux-gnueabihf",
+      "-sdk",
+      "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+      "-resource-dir",
+      "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+      "-use-ld=lld",
+      "-Xcc",
+      "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+      "-Xcc",
+      "-march=armv6",
+      "-Xcc",
+      "-mfloat-abi=hard",
+      "-Xcc",
+      "-mfpu=vfp",
+      "-load-plugin-executable",
+      "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+      "-parse-as-library",
+      "-emit-object",
+      "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/private-storage/inputs/private-storage.swift",
+      "-o",
+      "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/private-storage/negative.o"
+    ],
+    "compiler_identities": {
+      ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+        "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+        "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+      },
+      ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+        "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+        "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+      }
+    },
+    "control": {
+      "category": "private-member-access",
+      "dependency_note_sources": [
+        "{positive-cell}/inputs/SignalAnalyzerDiagnostic.swift"
+      ],
+      "expected_nonzero": true,
+      "files": [
+        "privacy/private-storage.swift"
+      ],
+      "first_expected_stage": "client-emit-object",
+      "id": "private-storage",
+      "kind": "privacy-negative",
+      "package_name": "giftui",
+      "positive_twin": "positive-semantics",
+      "primary_message_patterns_all": [
+        "(?i)inaccessible due to ['\"]private['\"] protection level"
+      ],
+      "required_symbol": "storage"
+    },
+    "current_commit": "496c3bdb960d3df2570fa9d44700213d57efc0d3",
+    "cwd": "/Users/eugene/work/GiftUI",
+    "effective_environment_sha256": "92b9104d3a731f809c3f7d4422f8b7e865a92bce8fce8f967b4303944bd145de",
+    "freeze_sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333",
+    "key": "raspberry-pi-armv6--private-storage--client-emit-object",
+    "p02": {
+      "artifacts": {
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/AnalyzerPresentation.o": {
+          "bytes": 14944,
+          "sha256": "07568fd5ac5a2600372b4acfdc52ff24876494cae55f261bed17ff24298ca688"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/AnalyzerPresentation.swift": {
+          "bytes": 1239,
+          "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/AnalyzerPresentation.swiftmodule": {
+          "bytes": 36604,
+          "sha256": "a9ed730c3f407b7bef42a0dd839700f41a7cb04b745302061b0fafb3944611f0"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/AnalyzerSchema.o": {
+          "bytes": 18572,
+          "sha256": "ba77aef2ae011166b3ef440622c116540793d2d194cfd9b1156ac47666801631"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/AnalyzerSchema.swift": {
+          "bytes": 3247,
+          "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/AnalyzerSchema.swiftmodule": {
+          "bytes": 33920,
+          "sha256": "1c9ad8b869e8046fb65f6737dc9586f92c3b1501037a523e5527d2235f2aa46b"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/CounterPresentation.o": {
+          "bytes": 134172,
+          "sha256": "5c8b2a095ab92ca0f995011a6668180a04df2cfee38fca1198bf8f24e78be7db"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/CounterPresentation.swift": {
+          "bytes": 9518,
+          "sha256": "d0140b613b33e99350f77370f1125b49d0a13b477d16f0f0f80c46a2f27ddd5c"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/CounterPresentation.swiftmodule": {
+          "bytes": 129668,
+          "sha256": "c77446945a8693ce5f4435c36471aa5cb4660888e914b5aaf797e833a7818579"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/CounterSchema.o": {
+          "bytes": 10524,
+          "sha256": "99241b084d0ed47e6e78e8a144504692a4f16a891adc84a8ad728661bd0c2915"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/CounterSchema.swift": {
+          "bytes": 1366,
+          "sha256": "b6f3c92cbc359951328591bb00b315fb71eebe7aa624adb3e04eb58842a7102b"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/CounterSchema.swiftmodule": {
+          "bytes": 26020,
+          "sha256": "b386dd0191f4f1bc8638bee54241c0e4a6f182abeabde6ef958cb0270c482f68"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/DeclarationHost.o": {
+          "bytes": 66148,
+          "sha256": "a719d68f1ebc7584504cda12b1c8b761742a9c95b29b276d2c660b220806bd08"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/DeclarationHost.swiftmodule": {
+          "bytes": 42684,
+          "sha256": "f59b2c428bb734024164154223021190b5ca2c5cb30dc1d3c831c1f3e44b15a4"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/GiftUI.o": {
+          "bytes": 442360,
+          "sha256": "0bee39ff9d205939d08d71f547ffbdc59255412bb5c761cd8ccddbce5b46d8c1"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/GiftUI.swiftmodule": {
+          "bytes": 342148,
+          "sha256": "045321a28264768adb549dc8ed04e6071c1a90c2f936e004fbb6d070a20439ad"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/SignalAnalyzerDomain.o": {
+          "bytes": 47336,
+          "sha256": "3026dfdb0574acedeefc4cd26d4aa4bca919d2d1ee2f7fccc2c2ecd67a24a9d1"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/SignalAnalyzerDomain.swiftmodule": {
+          "bytes": 47964,
+          "sha256": "7f7b076b5c49da21215480a7dbc5baa54b94964545f09bd701ba7dcf5d2766c9"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/custom-body-domain.swift": {
+          "bytes": 348,
+          "sha256": "c13c6b4c5ad8648976314783f2a9b1c0b87cf71db50fdafcc5e2589066a74ec0"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/disguised-effect.swift": {
+          "bytes": 120,
+          "sha256": "a74a76e3f90f18f53eba9ba2a4f5396943632f148d8569fb5dadc86309e75cd0"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/escaping-read.swift": {
+          "bytes": 157,
+          "sha256": "b8b4b223d9db745dc5e7123ea31df5a0469ad5c87910d3148e8cbb617016b60e"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/macro-checks": {
+          "bytes": 16005200,
+          "sha256": "d5a3f2df92bdb13a5ba3bf6dc58d06dd0d5224191efaad2528b5fc9481b50a5c"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/missing-body.swift": {
+          "bytes": 93,
+          "sha256": "07d611cf984244444aac377d1fb9667784345d7b5e786fb00abf985784ef327f"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/mixed-domains.swift": {
+          "bytes": 218,
+          "sha256": "f4df09108126a50bc0519f5a3c3ca2bca3f432530554d4531614fe75c8aafa11"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/owned-facade-escape.swift": {
+          "bytes": 128,
+          "sha256": "ed7b5fc56efd569a839272e7d72bdef1f0207eda6fa4f778e66e8421c232e468"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/private-key-construction.swift": {
+          "bytes": 99,
+          "sha256": "74f2478b5d680b7e752dafb944004e4c395de164ba3086d15e94f0320b855c9d"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/private-read-construction.swift": {
+          "bytes": 109,
+          "sha256": "56dbca1606a19905e74a1c2e4048484114fa5f9d5002e0ad8be92d02a7b828b0"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/six-children.swift": {
+          "bytes": 321,
+          "sha256": "f1d12f8dd14c2f4f6037dd1d94c6bb48b54e9d427585d81a67c6b36e6903684f"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/unchecked-inout.swift": {
+          "bytes": 109,
+          "sha256": "9953314ba0de05105aede93203388a5c67415056209d8658edbe2ba2ca99fd14"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/unknown-effect.swift": {
+          "bytes": 120,
+          "sha256": "db17156e119b084f82f301ed44c268bb05e44f291a3233c4ee35843b03ce1766"
+        },
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/unknown-model-member.swift": {
+          "bytes": 110,
+          "sha256": "2989320e89fd4e00d594d709ba90a226a5c4929f2f4619229242f198f5095995"
+        }
+      },
+      "receipt_sha256": "9940041d233af3c47e33aea771ba243869553bdd8bf0ce6314fc6df262408535",
+      "root": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+      "stage": {
+        "argv": [
+          "scripts/contracts/run-spec-006.sh",
+          "--profile",
+          "raspberry-pi-armv6",
+          "--compiler-baseline",
+          "rfc-014"
+        ],
+        "environment_overrides": {
+          "PYTHONDONTWRITEBYTECODE": "1"
+        },
+        "exit": 0,
+        "finished_ns": 1792363852148304000,
+        "name": "P02-raspberry-pi-armv6",
+        "seconds": 23.343,
+        "source_provenance": {},
+        "started_ns": 1792363828804767000,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "1e66e0f75d0a4aee6477cb441c52bec27ec6df6172bbcb9493205ad6d1f28d08"
+      }
+    },
+    "policy_sha256": "b16415ab48830c7bed7ee94e9e653a8a75b76968e8b23aca758a2d6504594dca",
+    "preceding_producers": {
+      "raspberry-pi-armv6-negative-A1-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/SignalAnalyzerDomain.o": {
+            "bytes": 47328,
+            "sha256": "f2a928c82cadbd6d043fe0d05b8307e01a85306fac8938e315866d630dd68cbd"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 47288,
+            "sha256": "fdf69db862f4265773bdc41ce6ccc885fe047d2b148cc2fc69b933b69f7aa7a6"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363925547166000,
+          "name": "raspberry-pi-armv6-negative-A1-SignalAnalyzerDomain",
+          "seconds": 2.878,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/inputs/AcquisitionState.swift": "a2fb47cf52972d8610a78e7ffe4d1e8771ea8fff315ca72aec2d29ca33776755",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/inputs/SignalPrimitiveValues.swift": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+          },
+          "started_ns": 1792363922669282000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A1-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363933291818000,
+          "name": "raspberry-pi-armv6-negative-A1-lower-Analyzer-source",
+          "seconds": 2.617,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792363930674869000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A2-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/SignalAnalyzerDomain.o": {
+            "bytes": 47336,
+            "sha256": "ca5ce9bd421437692648523e77b9d187253603e8b2c8f8356d01417018f02f43"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 46252,
+            "sha256": "7d2cca6703dc55898e980a822e26319ee8ceb564a1ea16961bf15cb395dd8c3f"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363949054935000,
+          "name": "raspberry-pi-armv6-negative-A2-SignalAnalyzerDomain",
+          "seconds": 2.835,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/inputs/SignalPrimitiveValues.swift": "d0031edd5d37014aabebd88b4ebdd15a811fb2587b8a984668e715c631253e52"
+          },
+          "started_ns": 1792363946219640000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A2-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363956854791000,
+          "name": "raspberry-pi-armv6-negative-A2-lower-Analyzer-source",
+          "seconds": 2.647,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792363954207521000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A3-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/AnalyzerSchema.o": {
+            "bytes": 18572,
+            "sha256": "84bcb8631bea4edf5aafc3052ad67a462aa9bc0f40bdb2f6fe20d20d7da5f153"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/AnalyzerSchema.swiftmodule": {
+            "bytes": 33920,
+            "sha256": "1c9ad8b869e8046fb65f6737dc9586f92c3b1501037a523e5527d2235f2aa46b"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363988455206000,
+          "name": "raspberry-pi-armv6-negative-A3-AnalyzerSchema",
+          "seconds": 2.753,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792363985702518000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A3-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/SignalAnalyzerDomain.o": {
+            "bytes": 47336,
+            "sha256": "206561f7832a418eedb6ab578a51fb30c2b95be8cdf13ad89490bf471389e856"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 47748,
+            "sha256": "a3d900c81ba2dc01275e408cba5ccb0179199a80a29d03581f0c3b951f84a376"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363972693288000,
+          "name": "raspberry-pi-armv6-negative-A3-SignalAnalyzerDomain",
+          "seconds": 2.9,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/inputs/SignalPrimitiveValues.swift": "9d3be6232f537e691edf54711d5549e9f862eadd68eda88568c0a51045aa48de"
+          },
+          "started_ns": 1792363969792981000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A3-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363980514701000,
+          "name": "raspberry-pi-armv6-negative-A3-lower-Analyzer-source",
+          "seconds": 2.623,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792363977892046000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A5-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/AnalyzerSchema.o": {
+            "bytes": 18572,
+            "sha256": "c3a0a94dca2eaf2dfdf1f14313084e0f455e669447f5d20e3e6378c58743b7ca"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/AnalyzerSchema.swiftmodule": {
+            "bytes": 33920,
+            "sha256": "1c9ad8b869e8046fb65f6737dc9586f92c3b1501037a523e5527d2235f2aa46b"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364041202230000,
+          "name": "raspberry-pi-armv6-negative-A5-AnalyzerSchema",
+          "seconds": 2.652,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792364038550490000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A5-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/SignalAnalyzerDomain.o": {
+            "bytes": 47336,
+            "sha256": "6f72277fe985079d45a4f2f7264ea4ea9f0913ec9ed22c388aa3c5218786c396"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 47816,
+            "sha256": "57461e5887118e1408ced5aa45a00689e1f8099d72697a366ea0ef2c8e682e32"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364025605141000,
+          "name": "raspberry-pi-armv6-negative-A5-SignalAnalyzerDomain",
+          "seconds": 2.883,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/inputs/SignalPrimitiveValues.swift": "511f5c4e5940d28746ee9fd0b2b9818544a0cc9ab107c0a0f7973d2a2775c416"
+          },
+          "started_ns": 1792364022721739000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A5-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364033385086000,
+          "name": "raspberry-pi-armv6-negative-A5-lower-Analyzer-source",
+          "seconds": 2.646,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364030739370000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A7-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/AnalyzerSchema.o": {
+            "bytes": 18572,
+            "sha256": "b2655a5aea2baf2bb4c3bff5613c84ea2bca31db9203849b24fd8bef90c393f6"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/AnalyzerSchema.swiftmodule": {
+            "bytes": 33920,
+            "sha256": "1c9ad8b869e8046fb65f6737dc9586f92c3b1501037a523e5527d2235f2aa46b"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364080635628000,
+          "name": "raspberry-pi-armv6-negative-A7-AnalyzerSchema",
+          "seconds": 2.72,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792364077915251000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A7-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/SignalAnalyzerDomain.o": {
+            "bytes": 47336,
+            "sha256": "53fdfe8de5ab7d02e488e7be99c4126e729ef7071aa1e24988106ceb3b13cd0c"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 47964,
+            "sha256": "7f7b076b5c49da21215480a7dbc5baa54b94964545f09bd701ba7dcf5d2766c9"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364064891605000,
+          "name": "raspberry-pi-armv6-negative-A7-SignalAnalyzerDomain",
+          "seconds": 2.886,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/inputs/SignalPrimitiveValues.swift": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+          },
+          "started_ns": 1792364062006033000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A7-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/AnalyzerPresentation.swift": {
+            "bytes": 1217,
+            "sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364072690659000,
+          "name": "raspberry-pi-armv6-negative-A7-lower-Analyzer-source",
+          "seconds": 2.624,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/inputs/Analyzer.swift": "93f984d6c60edc008af9370ca908bf9315463f02b7e54416188edf5aec0681dc",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364070066618000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A8-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/AnalyzerSchema.o": {
+            "bytes": 18572,
+            "sha256": "46078c1333c5d98597d1bca8d21488d4427f08b1b93fdc1a7803a32deb7c75d5"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/AnalyzerSchema.swiftmodule": {
+            "bytes": 33920,
+            "sha256": "1c9ad8b869e8046fb65f6737dc9586f92c3b1501037a523e5527d2235f2aa46b"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364117560956000,
+          "name": "raspberry-pi-armv6-negative-A8-AnalyzerSchema",
+          "seconds": 2.654,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792364114906926000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A8-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/SignalAnalyzerDomain.o": {
+            "bytes": 47336,
+            "sha256": "bbb39eabe91266aea3ae779f2163c8bdbdc5eb0a1ae1ecd3e9cd9d69a274a1c4"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 47964,
+            "sha256": "7f7b076b5c49da21215480a7dbc5baa54b94964545f09bd701ba7dcf5d2766c9"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364101997874000,
+          "name": "raspberry-pi-armv6-negative-A8-SignalAnalyzerDomain",
+          "seconds": 2.915,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/inputs/SignalPrimitiveValues.swift": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+          },
+          "started_ns": 1792364099082905000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-negative-A8-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/AnalyzerPresentation.swift": {
+            "bytes": 1217,
+            "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364109776561000,
+          "name": "raspberry-pi-armv6-negative-A8-lower-Analyzer-source",
+          "seconds": 2.629,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/inputs/Analyzer.swift": "158501c0a102b68bef50de440bc3fac88c0ef392f80879187d90c906379de767",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364107147074000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-positive-actual-lowering-AnalyzerPresentation": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerPresentation.o": {
+            "bytes": 14944,
+            "sha256": "e5970d43682704a5089246d08e949773ee8d44a75f371df11cc676b9b98518c8"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerPresentation.swiftmodule": {
+            "bytes": 36604,
+            "sha256": "a9ed730c3f407b7bef42a0dd839700f41a7cb04b745302061b0fafb3944611f0"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerPresentation",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerPresentation.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerPresentation.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerPresentation.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363885400953000,
+          "name": "raspberry-pi-armv6-positive-actual-lowering-AnalyzerPresentation",
+          "seconds": 2.916,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerPresentation.swift": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "started_ns": 1792363882485071000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-positive-actual-lowering-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerSchema.o": {
+            "bytes": 18572,
+            "sha256": "480dbad7dcfbac7d0f9f1842bc408b0eb901926540d523dcecc08586abe21d67"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerSchema.swiftmodule": {
+            "bytes": 33920,
+            "sha256": "1c9ad8b869e8046fb65f6737dc9586f92c3b1501037a523e5527d2235f2aa46b"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363876962112000,
+          "name": "raspberry-pi-armv6-positive-actual-lowering-AnalyzerSchema",
+          "seconds": 2.78,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792363874182219000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-positive-actual-lowering-DeclarationHost": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/DeclarationHost.o": {
+            "bytes": 66148,
+            "sha256": "b94d455cd511abb9de45ba2bcd87fd1145ba4b3beafeccf30e7e2722a887fd67"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/DeclarationHost.swiftmodule": {
+            "bytes": 42684,
+            "sha256": "f59b2c428bb734024164154223021190b5ca2c5cb30dc1d3c831c1f3e44b15a4"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "DeclarationHost",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/DeclarationHost.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/DeclarationHost.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/DeclarationHost.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363893927147000,
+          "name": "raspberry-pi-armv6-positive-actual-lowering-DeclarationHost",
+          "seconds": 3.114,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/DeclarationHost.swift": "5720a3b8fe8fc627fd569c7d3d3ed7818633dfb2194ff26340c192ccfb55674a"
+          },
+          "started_ns": 1792363890813338000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-positive-actual-lowering-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/SignalAnalyzerDomain.o": {
+            "bytes": 47336,
+            "sha256": "dc26ff30608999ccc3d843c279fb1880d76af02fb7cd28e04a43ba98fb465b34"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 47964,
+            "sha256": "7f7b076b5c49da21215480a7dbc5baa54b94964545f09bd701ba7dcf5d2766c9"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363860557421000,
+          "name": "raspberry-pi-armv6-positive-actual-lowering-SignalAnalyzerDomain",
+          "seconds": 2.961,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/SignalPrimitiveValues.swift": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+          },
+          "started_ns": 1792363857596640000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-positive-actual-lowering-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363868701642000,
+          "name": "raspberry-pi-armv6-positive-actual-lowering-lower-Analyzer-source",
+          "seconds": 2.77,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792363865931680000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-positive-actual-lowering-target-abi": {
+        "artifacts": {},
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+            "-h",
+            "-A",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/DeclarationHost.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363901700921000,
+          "name": "raspberry-pi-armv6-positive-actual-lowering-target-abi",
+          "seconds": 2.579,
+          "source_provenance": {},
+          "started_ns": 1792363899121790000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "597fb8f2e6c46b045b2df8312363b177d2aaaba1feb68338cfc6c44cf6fcea24"
+        }
+      },
+      "raspberry-pi-armv6-positive-semantics-ABISemantics": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/ABISemantics.o": {
+            "bytes": 7632,
+            "sha256": "2a44b9cd261af4df7731c6e0180d3f1a23557f8a01183bf8871be093cb5ecae9"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/ABISemantics.swiftmodule": {
+            "bytes": 18768,
+            "sha256": "276314f185e8a9f1784bd29267734696b0c8f59269eab3ffa67a436aedca787b"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "ABISemantics",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/Semantics.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/ABISemantics.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/ABISemantics.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363917490582000,
+          "name": "raspberry-pi-armv6-positive-semantics-ABISemantics",
+          "seconds": 2.746,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/Semantics.swift": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+          },
+          "started_ns": 1792363914744916000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raspberry-pi-armv6-positive-serialized-read-ABIRead": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/ABIRead.o": {
+            "bytes": 1856,
+            "sha256": "5d9eb916fe8b2a8a170d2535a17cae8e6da80607b734c1923db80ae97a01db24"
+          },
+          "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/ABIRead.swiftmodule": {
+            "bytes": 20128,
+            "sha256": "3408ec4a3fae6d2e6b9295899d9abae77400a13e1146dcbeecec4d41e7ca1556"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv6-unknown-linux-gnueabihf",
+            "-sdk",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+            "-resource-dir",
+            "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+            "-use-ld=lld",
+            "-Xcc",
+            "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+            "-Xcc",
+            "-march=armv6",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=vfp",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6",
+            "-parse-as-library",
+            "-module-name",
+            "ABIRead",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/ABIRead.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/ABIRead.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/ABIRead.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792363909575878000,
+          "name": "raspberry-pi-armv6-positive-serialized-read-ABIRead",
+          "seconds": 2.708,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/ABIRead.swift": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+          },
+          "started_ns": 1792363906867924000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "profile": "raspberry-pi-armv6",
+    "root_map": [
+      [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-diagnostic-discovery-sweep",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign10",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-diagnostic-discovery-sweep",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign10",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-diagnostic-discovery-sweep",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign10",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11"
+      ]
+    ],
+    "sdk": {
+      "archive_sha256": "3332907e1fe366a24cdd9b4af566cb4f1a1f39aa8fad785cb328af17c7484848",
+      "entry_count": 6965,
+      "install_sha256": "663ff75888fb2bd1dfc5340c90c3f6acced4b65efe3ccfb79414a9d6709eafed",
+      "inventory_sha256": "2f50709e80eb1829637aeaad8e230cff8e032aec39348bc45f1264dd9cd99875"
+    },
+    "stage": "client-emit-object"
+  },
+  "sources": {
+    "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/AcquisitionState.swift": {
+      "bytes": 243,
+      "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+    },
+    "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/Analyzer.swift": {
+      "bytes": 811,
+      "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+    },
+    "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift": {
+      "bytes": 5671,
+      "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+    },
+    "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/inputs/SignalPrimitiveValues.swift": {
+      "bytes": 1582,
+      "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+    },
+    "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/private-storage/inputs/private-storage.swift": {
+      "bytes": 99,
+      "sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf"
+    }
+  }
+}

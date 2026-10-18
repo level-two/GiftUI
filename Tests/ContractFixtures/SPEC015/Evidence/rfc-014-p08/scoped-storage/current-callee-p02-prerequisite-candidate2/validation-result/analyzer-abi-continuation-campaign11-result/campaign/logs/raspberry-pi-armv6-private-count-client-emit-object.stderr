@@ -1,0 +1,11 @@
+/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/private-count/inputs/private-count.swift:2:62: error: 'count' is inaccessible due to 'private' protection level
+1 | import SignalAnalyzerDomain
+2 | package func rejected(_ d: SignalAnalyzerDiagnostic) { _ = d.count }
+  |                                                              `- error: 'count' is inaccessible due to 'private' protection level
+3 | 
+
+SignalAnalyzerDomain.SignalAnalyzerDiagnostic.count:2:13: note: 'count' declared here
+1 | struct SignalAnalyzerDiagnostic {
+2 | private var count: UInt16}
+  |             `- note: 'count' declared here
+3 | 

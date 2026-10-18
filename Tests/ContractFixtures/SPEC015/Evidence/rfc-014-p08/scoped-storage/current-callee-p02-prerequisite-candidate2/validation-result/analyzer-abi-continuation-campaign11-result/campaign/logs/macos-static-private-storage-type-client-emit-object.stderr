@@ -1,0 +1,5 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/private-storage-type/inputs/private-storage-type.swift:2:34: error: cannot find type 'SignalAnalyzerDiagnosticStorage' in scope
+1 | import SignalAnalyzerDomain
+2 | package func rejected(_ storage: SignalAnalyzerDiagnosticStorage) {}
+  |                                  `- error: cannot find type 'SignalAnalyzerDiagnosticStorage' in scope
+3 | 

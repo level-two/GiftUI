@@ -1,0 +1,1760 @@
+{
+  "completed_ns": 1792364840403040000,
+  "context": {
+    "argv": [
+      "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "-swift-version",
+      "6",
+      "-Osize",
+      "-whole-module-optimization",
+      "-enable-experimental-feature",
+      "LifetimeDependence",
+      "-enable-experimental-feature",
+      "Lifetimes",
+      "-package-name",
+      "giftui",
+      "-module-cache-path",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/private-storage/cache",
+      "-disable-sandbox",
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-D",
+      "GIFTUI_DYNAMIC_PROFILE",
+      "-load-plugin-executable",
+      "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+      "-parse-as-library",
+      "-emit-object",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/private-storage/inputs/private-storage.swift",
+      "-o",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/private-storage/negative.o"
+    ],
+    "compiler_identities": {
+      ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+        "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+        "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+      },
+      ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+        "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+        "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+      }
+    },
+    "control": {
+      "category": "private-member-access",
+      "dependency_note_sources": [
+        "{positive-cell}/inputs/SignalAnalyzerDiagnostic.swift"
+      ],
+      "expected_nonzero": true,
+      "files": [
+        "privacy/private-storage.swift"
+      ],
+      "first_expected_stage": "client-emit-object",
+      "id": "private-storage",
+      "kind": "privacy-negative",
+      "package_name": "giftui",
+      "positive_twin": "positive-semantics",
+      "primary_message_patterns_all": [
+        "(?i)inaccessible due to ['\"]private['\"] protection level"
+      ],
+      "required_symbol": "storage"
+    },
+    "current_commit": "496c3bdb960d3df2570fa9d44700213d57efc0d3",
+    "cwd": "/Users/eugene/work/GiftUI",
+    "effective_environment_sha256": "92b9104d3a731f809c3f7d4422f8b7e865a92bce8fce8f967b4303944bd145de",
+    "freeze_sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333",
+    "key": "macos-dynamic--private-storage--client-emit-object",
+    "p02": {
+      "artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/AnalyzerPresentation.o": {
+          "bytes": 13784,
+          "sha256": "09479cdd88e864278335810bc3f4ff7700754431f6cc64b66d8db6760328312c"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/AnalyzerPresentation.swift": {
+          "bytes": 1239,
+          "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/AnalyzerPresentation.swiftmodule": {
+          "bytes": 37184,
+          "sha256": "42a9e3a319dc7c238c13b75baaf3cd1396664d6081cc9c755161df1190eb2283"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/AnalyzerSchema.o": {
+          "bytes": 13712,
+          "sha256": "cf362dc5f86c6b74d7392d682248ccca21a332302415af04ac19f88636f583bc"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/AnalyzerSchema.swift": {
+          "bytes": 3247,
+          "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/AnalyzerSchema.swiftmodule": {
+          "bytes": 34440,
+          "sha256": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/CounterPresentation.o": {
+          "bytes": 119872,
+          "sha256": "f6510485738c21cc5d6ae66ff00964c7fcddd4e791fb8267d92340a70feb7e99"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/CounterPresentation.swift": {
+          "bytes": 9518,
+          "sha256": "d0140b613b33e99350f77370f1125b49d0a13b477d16f0f0f80c46a2f27ddd5c"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/CounterPresentation.swiftmodule": {
+          "bytes": 129728,
+          "sha256": "d21d586706c48d12ebbff82b9ea6e47921ac3f5e47d0bb05d4662fa9616be281"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/CounterSchema.o": {
+          "bytes": 8880,
+          "sha256": "40f751c8a1876bc598d322618188c508f07ce42abd29e536a13e89679075318d"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/CounterSchema.swift": {
+          "bytes": 1366,
+          "sha256": "b6f3c92cbc359951328591bb00b315fb71eebe7aa624adb3e04eb58842a7102b"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/CounterSchema.swiftmodule": {
+          "bytes": 26440,
+          "sha256": "57d0fc3d8ba460a975f2fc602ff1c11107c5d6c185b0d561cb82ce7053169182"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/DeclarationHost.o": {
+          "bytes": 48168,
+          "sha256": "c630ea11d210ad92170a7af631f6bf8fc9c47b31e9f2fef1c693bc8473c869b1"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/DeclarationHost.swiftmodule": {
+          "bytes": 42704,
+          "sha256": "0c104b39342dadd1d8494d3cfe9c866c44f77fbe1b5fb0ad9e335db963e5cca2"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/GiftUI.o": {
+          "bytes": 354032,
+          "sha256": "532fe85760e45af5b63fc4d7f01a192e6129dfba1324666dff22f6526af66d68"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/GiftUI.swiftmodule": {
+          "bytes": 347436,
+          "sha256": "aa0f91486d612c2506b569c0e81aecb1ae616c10ef050664055f969927e10c48"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/SignalAnalyzerDomain.o": {
+          "bytes": 38392,
+          "sha256": "ffb0c5e77b362b663064266f1115b750a019e03acd3df4b6ff315a92467fc880"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/SignalAnalyzerDomain.swiftmodule": {
+          "bytes": 47984,
+          "sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/custom-body-domain.swift": {
+          "bytes": 348,
+          "sha256": "c13c6b4c5ad8648976314783f2a9b1c0b87cf71db50fdafcc5e2589066a74ec0"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/declarations": {
+          "bytes": 456992,
+          "sha256": "3f33c72d287de68658db99d68ffd79f8b7c30df54b05054c2757bb8605f7c929"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/disguised-effect.swift": {
+          "bytes": 120,
+          "sha256": "a74a76e3f90f18f53eba9ba2a4f5396943632f148d8569fb5dadc86309e75cd0"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/escaping-read.swift": {
+          "bytes": 157,
+          "sha256": "b8b4b223d9db745dc5e7123ea31df5a0469ad5c87910d3148e8cbb617016b60e"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/macro-checks": {
+          "bytes": 16005200,
+          "sha256": "d5a3f2df92bdb13a5ba3bf6dc58d06dd0d5224191efaad2528b5fc9481b50a5c"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/missing-body.swift": {
+          "bytes": 93,
+          "sha256": "07d611cf984244444aac377d1fb9667784345d7b5e786fb00abf985784ef327f"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/mixed-domains.swift": {
+          "bytes": 218,
+          "sha256": "f4df09108126a50bc0519f5a3c3ca2bca3f432530554d4531614fe75c8aafa11"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/owned-facade-escape.swift": {
+          "bytes": 128,
+          "sha256": "ed7b5fc56efd569a839272e7d72bdef1f0207eda6fa4f778e66e8421c232e468"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/private-key-construction.swift": {
+          "bytes": 99,
+          "sha256": "74f2478b5d680b7e752dafb944004e4c395de164ba3086d15e94f0320b855c9d"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/private-read-construction.swift": {
+          "bytes": 109,
+          "sha256": "56dbca1606a19905e74a1c2e4048484114fa5f9d5002e0ad8be92d02a7b828b0"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/six-children.swift": {
+          "bytes": 321,
+          "sha256": "f1d12f8dd14c2f4f6037dd1d94c6bb48b54e9d427585d81a67c6b36e6903684f"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/unchecked-inout.swift": {
+          "bytes": 109,
+          "sha256": "9953314ba0de05105aede93203388a5c67415056209d8658edbe2ba2ca99fd14"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/unknown-effect.swift": {
+          "bytes": 120,
+          "sha256": "db17156e119b084f82f301ed44c268bb05e44f291a3233c4ee35843b03ce1766"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/unknown-model-member.swift": {
+          "bytes": 110,
+          "sha256": "2989320e89fd4e00d594d709ba90a226a5c4929f2f4619229242f198f5095995"
+        }
+      },
+      "receipt_sha256": "3f5e5c459ad0c15619c6ee465ab86eb3b3bf6c9255ae181c06dbb75e81c208ca",
+      "root": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+      "stage": {
+        "argv": [
+          "scripts/contracts/run-spec-006.sh",
+          "--profile",
+          "macos-dynamic",
+          "--compiler-baseline",
+          "rfc-014"
+        ],
+        "environment_overrides": {
+          "PYTHONDONTWRITEBYTECODE": "1"
+        },
+        "exit": 0,
+        "finished_ns": 1792364603943112000,
+        "name": "P02-macos-dynamic",
+        "seconds": 23.81,
+        "source_provenance": {},
+        "started_ns": 1792364580133269000,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "413705bc22a2eedd505834cd31face5435dd1efbf7fdde9c51479b472450fe66"
+      }
+    },
+    "policy_sha256": "b16415ab48830c7bed7ee94e9e653a8a75b76968e8b23aca758a2d6504594dca",
+    "preceding_producers": {
+      "macos-dynamic-negative-A1-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/SignalAnalyzerDomain.o": {
+            "bytes": 38352,
+            "sha256": "46e340d257974c0959ac80073a58690659fd106cd311070be62ed7c1b20586c2"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 47308,
+            "sha256": "ca592512a41291c08a426ee2add3fce7073f301f632e5b209926cca0679e59ff"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364673825546000,
+          "name": "macos-dynamic-negative-A1-SignalAnalyzerDomain",
+          "seconds": 2.201,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/inputs/AcquisitionState.swift": "a2fb47cf52972d8610a78e7ffe4d1e8771ea8fff315ca72aec2d29ca33776755",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/inputs/SignalPrimitiveValues.swift": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+          },
+          "started_ns": 1792364671624493000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A1-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364679481355000,
+          "name": "macos-dynamic-negative-A1-lower-Analyzer-source",
+          "seconds": 1.903,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364677578410000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A2-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/SignalAnalyzerDomain.o": {
+            "bytes": 38392,
+            "sha256": "0b7c7fdf52c0afe9eebdbd1d35de18afba2658be7fc273d10d11f36214d42fc5"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 46272,
+            "sha256": "39c6aa28ee48f09b67aea6979a9f2346b5d6fc411c38a197d01ece134b494676"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364695016260000,
+          "name": "macos-dynamic-negative-A2-SignalAnalyzerDomain",
+          "seconds": 2.167,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/inputs/SignalPrimitiveValues.swift": "d0031edd5d37014aabebd88b4ebdd15a811fb2587b8a984668e715c631253e52"
+          },
+          "started_ns": 1792364692849380000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A2-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364700645440000,
+          "name": "macos-dynamic-negative-A2-lower-Analyzer-source",
+          "seconds": 1.908,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364698737878000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A3-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/AnalyzerSchema.o": {
+            "bytes": 13712,
+            "sha256": "76e2e3c04689bf6a60738bef5d81ca692ed9e343cff6ed1a1faae01d9165511a"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/AnalyzerSchema.swiftmodule": {
+            "bytes": 34440,
+            "sha256": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364727373723000,
+          "name": "macos-dynamic-negative-A3-AnalyzerSchema",
+          "seconds": 1.951,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792364725423036000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A3-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/SignalAnalyzerDomain.o": {
+            "bytes": 38392,
+            "sha256": "43cd0a711b908ba64c291d72efd83c3919ca05fbd438a7b12b9a64342257bbd5"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 47768,
+            "sha256": "4e05745391c19c9dda2a59f8848ae785337ef4ef32030f453abecd8803b88893"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364716116098000,
+          "name": "macos-dynamic-negative-A3-SignalAnalyzerDomain",
+          "seconds": 2.164,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/inputs/SignalPrimitiveValues.swift": "9d3be6232f537e691edf54711d5549e9f862eadd68eda88568c0a51045aa48de"
+          },
+          "started_ns": 1792364713951748000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A3-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364721701320000,
+          "name": "macos-dynamic-negative-A3-lower-Analyzer-source",
+          "seconds": 1.892,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364719809476000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A5-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/AnalyzerSchema.o": {
+            "bytes": 13712,
+            "sha256": "c5b0436439b26b9fd5ec6e1b36fed87c788fa41099b42357e4a4e7fdc1cbc8dd"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/AnalyzerSchema.swiftmodule": {
+            "bytes": 34440,
+            "sha256": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364763753811000,
+          "name": "macos-dynamic-negative-A5-AnalyzerSchema",
+          "seconds": 1.975,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792364761778442000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A5-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/SignalAnalyzerDomain.o": {
+            "bytes": 38392,
+            "sha256": "0c10cd216203e31b05d29db63786afa43bcd2510c078829e3879158b8d7848f6"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 47836,
+            "sha256": "db72bbc35ae0a1202e2412e79e1271f06a348751c54c156586163f03061629c9"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364752394350000,
+          "name": "macos-dynamic-negative-A5-SignalAnalyzerDomain",
+          "seconds": 2.163,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/inputs/SignalPrimitiveValues.swift": "511f5c4e5940d28746ee9fd0b2b9818544a0cc9ab107c0a0f7973d2a2775c416"
+          },
+          "started_ns": 1792364750231798000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A5-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364758044082000,
+          "name": "macos-dynamic-negative-A5-lower-Analyzer-source",
+          "seconds": 1.907,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364756136626000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A7-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/AnalyzerSchema.o": {
+            "bytes": 13712,
+            "sha256": "c84ed3e34616d02a2ad255a8d416bd4adc56cf07ae1d8cf36c3d21b699cfe570"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/AnalyzerSchema.swiftmodule": {
+            "bytes": 34440,
+            "sha256": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364800122557000,
+          "name": "macos-dynamic-negative-A7-AnalyzerSchema",
+          "seconds": 2.018,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792364798104511000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A7-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/SignalAnalyzerDomain.o": {
+            "bytes": 38392,
+            "sha256": "b84875853baf5825ea25415458d88b409ba264274be7783388999a52332ada0f"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 47984,
+            "sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364788727101000,
+          "name": "macos-dynamic-negative-A7-SignalAnalyzerDomain",
+          "seconds": 2.159,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/inputs/SignalPrimitiveValues.swift": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+          },
+          "started_ns": 1792364786568191000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A7-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/AnalyzerPresentation.swift": {
+            "bytes": 1217,
+            "sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364794374212000,
+          "name": "macos-dynamic-negative-A7-lower-Analyzer-source",
+          "seconds": 1.907,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/inputs/Analyzer.swift": "93f984d6c60edc008af9370ca908bf9315463f02b7e54416188edf5aec0681dc",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364792466754000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A8-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/AnalyzerSchema.o": {
+            "bytes": 13712,
+            "sha256": "70e4d9edd6f3ff5f9f71b34e5fbe97a0456a7ea8aa8e787836fe083e58ac7ebb"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/AnalyzerSchema.swiftmodule": {
+            "bytes": 34440,
+            "sha256": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364826951445000,
+          "name": "macos-dynamic-negative-A8-AnalyzerSchema",
+          "seconds": 2.0,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792364824951201000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A8-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/SignalAnalyzerDomain.o": {
+            "bytes": 38392,
+            "sha256": "d34fa5ef923378886cce59fa47552668307cf70da0369702a6d33e43ab10f4cc"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 47984,
+            "sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364815590852000,
+          "name": "macos-dynamic-negative-A8-SignalAnalyzerDomain",
+          "seconds": 2.175,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/inputs/SignalPrimitiveValues.swift": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+          },
+          "started_ns": 1792364813415681000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-negative-A8-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/AnalyzerPresentation.swift": {
+            "bytes": 1217,
+            "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364821244347000,
+          "name": "macos-dynamic-negative-A8-lower-Analyzer-source",
+          "seconds": 1.947,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/inputs/Analyzer.swift": "158501c0a102b68bef50de440bc3fac88c0ef392f80879187d90c906379de767",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364819297543000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-positive-actual-lowering-AnalyzerPresentation": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.o": {
+            "bytes": 13784,
+            "sha256": "9ed15ef9d146d81e8530320c6da1fcb46ddbac13a6ff85a8644881c7a99a6c76"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.swiftmodule": {
+            "bytes": 37184,
+            "sha256": "42a9e3a319dc7c238c13b75baaf3cd1396664d6081cc9c755161df1190eb2283"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerPresentation",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364627095921000,
+          "name": "macos-dynamic-positive-actual-lowering-AnalyzerPresentation",
+          "seconds": 2.059,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.swift": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "started_ns": 1792364625037261000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-positive-actual-lowering-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.o": {
+            "bytes": 13712,
+            "sha256": "6aae8fcb98bec195d950526559c0423d9136525686922685b97832badd8c6048"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.swiftmodule": {
+            "bytes": 34440,
+            "sha256": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364621306165000,
+          "name": "macos-dynamic-positive-actual-lowering-AnalyzerSchema",
+          "seconds": 1.998,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792364619308330000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-positive-actual-lowering-DeclarationHost": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/DeclarationHost.o": {
+            "bytes": 48168,
+            "sha256": "046d35618973698c18438610f7b1a3c203cfd0551a8a8cb241e04671e5fdb2e7"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/DeclarationHost.swiftmodule": {
+            "bytes": 42704,
+            "sha256": "0c104b39342dadd1d8494d3cfe9c866c44f77fbe1b5fb0ad9e335db963e5cca2"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "DeclarationHost",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/DeclarationHost.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/DeclarationHost.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/DeclarationHost.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364633069940000,
+          "name": "macos-dynamic-positive-actual-lowering-DeclarationHost",
+          "seconds": 2.243,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/DeclarationHost.swift": "5720a3b8fe8fc627fd569c7d3d3ed7818633dfb2194ff26340c192ccfb55674a"
+          },
+          "started_ns": 1792364630826654000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-positive-actual-lowering-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/SignalAnalyzerDomain.o": {
+            "bytes": 38392,
+            "sha256": "ae528dc444a9484ab8a7c6fe3032fab1d5ce16e24e91b6a2c6f2d6df6ce4c440"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 47984,
+            "sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364609945154000,
+          "name": "macos-dynamic-positive-actual-lowering-SignalAnalyzerDomain",
+          "seconds": 2.231,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/SignalPrimitiveValues.swift": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+          },
+          "started_ns": 1792364607713852000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-positive-actual-lowering-execute": {
+        "artifacts": {},
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/declarations"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364644831584000,
+          "name": "macos-dynamic-positive-actual-lowering-execute",
+          "seconds": 2.2,
+          "source_provenance": {},
+          "started_ns": 1792364642631979000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "94470d4cec26a2d7467a79311e5c31cf525905a7606457638de19f8e57a63570"
+        }
+      },
+      "macos-dynamic-positive-actual-lowering-link": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/declarations": {
+            "bytes": 456992,
+            "sha256": "3f33c72d287de68658db99d68ffd79f8b7c30df54b05054c2757bb8605f7c929"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Main.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/GiftUI.o",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/CounterSchema.o",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/CounterPresentation.o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/SignalAnalyzerDomain.o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/DeclarationHost.o",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/declarations"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364638891464000,
+          "name": "macos-dynamic-positive-actual-lowering-link",
+          "seconds": 2.067,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Main.swift": "034acd228ec9476d5c5a6dc2dcd50287849a4fa8e5503d582adbf41d16afdb35"
+          },
+          "started_ns": 1792364636824503000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-positive-actual-lowering-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364615576943000,
+          "name": "macos-dynamic-positive-actual-lowering-lower-Analyzer-source",
+          "seconds": 1.923,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364613654024000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-positive-semantics-ABISemantics": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/ABISemantics.o": {
+            "bytes": 6224,
+            "sha256": "ee46e336d772f265578006256bb7e37e97ffc43d38ffbb0a48ff391a218430a9"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/ABISemantics.swiftmodule": {
+            "bytes": 18788,
+            "sha256": "d278d591dbc6cc15460936101c003fe60bdd7b4edfd4b2b099aacc6a15754fb8"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "ABISemantics",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/Semantics.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/ABISemantics.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/ABISemantics.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364656258242000,
+          "name": "macos-dynamic-positive-semantics-ABISemantics",
+          "seconds": 2.038,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/Semantics.swift": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+          },
+          "started_ns": 1792364654219793000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-positive-semantics-execute": {
+        "artifacts": {},
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/semantics"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364667873509000,
+          "name": "macos-dynamic-positive-semantics-execute",
+          "seconds": 2.191,
+          "source_provenance": {},
+          "started_ns": 1792364665682021000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "5251afd6a5f704643bfcca1a6a3fab552f34f89e87a5f7fee2cea96bb1523cb0"
+        }
+      },
+      "macos-dynamic-positive-semantics-link": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/semantics": {
+            "bytes": 71272,
+            "sha256": "22206d228f09dcafc7a4fa9033885a5cd8c1ac196572160cfca155674bccbfbf"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering",
+            "-parse-as-library",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/Main.swift",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/ABISemantics.o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/SignalAnalyzerDomain.o",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/semantics"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364661995115000,
+          "name": "macos-dynamic-positive-semantics-link",
+          "seconds": 2.059,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/Main.swift": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a"
+          },
+          "started_ns": 1792364659936350000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "macos-dynamic-positive-serialized-read-ABIRead": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/ABIRead.o": {
+            "bytes": 1312,
+            "sha256": "a01435fc6f92e7e8538edbe2c7afb6a95fd3bd770cdbd5ea91606fee4dee0c6b"
+          },
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/ABIRead.swiftmodule": {
+            "bytes": 20148,
+            "sha256": "bb04a2500bdf48a573f6802626e9e062aca64502d7b9a9fcbc8d3e8e8dd57c95"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "arm64-apple-macosx26.0",
+            "-sdk",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+            "-D",
+            "GIFTUI_DYNAMIC_PROFILE",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic",
+            "-parse-as-library",
+            "-module-name",
+            "ABIRead",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/ABIRead.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/ABIRead.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/ABIRead.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364650487744000,
+          "name": "macos-dynamic-positive-serialized-read-ABIRead",
+          "seconds": 1.924,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/ABIRead.swift": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+          },
+          "started_ns": 1792364648563821000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "profile": "macos-dynamic",
+    "root_map": [
+      [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-diagnostic-discovery-sweep",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign10",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-diagnostic-discovery-sweep",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign10",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-diagnostic-discovery-sweep",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign10",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11"
+      ]
+    ],
+    "sdk": {
+      "archive_sha256": "3332907e1fe366a24cdd9b4af566cb4f1a1f39aa8fad785cb328af17c7484848",
+      "entry_count": 6965,
+      "install_sha256": "663ff75888fb2bd1dfc5340c90c3f6acced4b65efe3ccfb79414a9d6709eafed",
+      "inventory_sha256": "2f50709e80eb1829637aeaad8e230cff8e032aec39348bc45f1264dd9cd99875"
+    },
+    "stage": "client-emit-object"
+  },
+  "sources": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/AcquisitionState.swift": {
+      "bytes": 243,
+      "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/Analyzer.swift": {
+      "bytes": 811,
+      "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift": {
+      "bytes": 5671,
+      "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/inputs/SignalPrimitiveValues.swift": {
+      "bytes": 1582,
+      "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/private-storage/inputs/private-storage.swift": {
+      "bytes": 99,
+      "sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf"
+    }
+  }
+}

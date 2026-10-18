@@ -1,0 +1,16 @@
+CyclePresentation: /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp1smlxjvn/macos-static
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp1smlxjvn/macos-static/Cycle.swift:74:12: error: property 'show' is package and cannot be referenced from an '@inlinable' function
+64 | package struct CycleScene<D:CycleReadDomain>: View {@usableFromInline package typealias Domain = D
+65 | 
+66 |     package let show: Bool
+   |                 `- note: property 'show' is not '@usableFromInline' or public
+67 |     package init(show: Bool) { self.show = show }
+68 | @ViewBuilder
+   :
+72 |     throws(_GiftUIAccessFailure) -> some View<D> {
+73 |     
+74 |         if show { CycleRoot<D>() } else { Text<D>("gone") }
+   |            `- error: property 'show' is package and cannot be referenced from an '@inlinable' function
+75 | }
+76 | }
+

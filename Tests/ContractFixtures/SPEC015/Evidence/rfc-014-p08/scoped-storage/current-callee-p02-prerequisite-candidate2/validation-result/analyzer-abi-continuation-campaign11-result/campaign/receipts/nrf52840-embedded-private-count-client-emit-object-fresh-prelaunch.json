@@ -1,0 +1,1691 @@
+{
+  "completed_ns": 1792364503700150000,
+  "context": {
+    "argv": [
+      "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "-swift-version",
+      "6",
+      "-Osize",
+      "-whole-module-optimization",
+      "-enable-experimental-feature",
+      "LifetimeDependence",
+      "-enable-experimental-feature",
+      "Lifetimes",
+      "-package-name",
+      "giftui",
+      "-module-cache-path",
+      "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/private-count/cache",
+      "-disable-sandbox",
+      "-target",
+      "armv7em-none-none-eabi",
+      "-enable-experimental-feature",
+      "Embedded",
+      "-Xcc",
+      "-mcpu=cortex-m4",
+      "-Xcc",
+      "-mfloat-abi=hard",
+      "-Xcc",
+      "-mfpu=fpv4-sp-d16",
+      "-load-plugin-executable",
+      "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+      "-parse-as-library",
+      "-emit-object",
+      "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/private-count/inputs/private-count.swift",
+      "-o",
+      "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/private-count/negative.o"
+    ],
+    "compiler_identities": {
+      ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+        "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+        "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+      },
+      ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+        "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+        "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+      }
+    },
+    "control": {
+      "category": "private-member-access",
+      "dependency_note_sources": [
+        "{positive-cell}/inputs/SignalAnalyzerDiagnostic.swift"
+      ],
+      "expected_nonzero": true,
+      "files": [
+        "privacy/private-count.swift"
+      ],
+      "first_expected_stage": "client-emit-object",
+      "id": "private-count",
+      "kind": "privacy-negative",
+      "package_name": "giftui",
+      "positive_twin": "positive-semantics",
+      "primary_message_patterns_all": [
+        "(?i)inaccessible due to ['\"]private['\"] protection level"
+      ],
+      "required_symbol": "count"
+    },
+    "current_commit": "496c3bdb960d3df2570fa9d44700213d57efc0d3",
+    "cwd": "/Users/eugene/work/GiftUI",
+    "effective_environment_sha256": "92b9104d3a731f809c3f7d4422f8b7e865a92bce8fce8f967b4303944bd145de",
+    "freeze_sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333",
+    "key": "nrf52840-embedded--private-count--client-emit-object",
+    "p02": {
+      "artifacts": {
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/AnalyzerPresentation.o": {
+          "bytes": 7948,
+          "sha256": "904b100670739803e36a416aa9902c0483b53bde9afee5cbd2ba74c35e69d882"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/AnalyzerPresentation.swift": {
+          "bytes": 1239,
+          "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/AnalyzerPresentation.swiftmodule": {
+          "bytes": 89316,
+          "sha256": "f0fd762ef5dbfea055dbcab4d974763a045b02472fe3dd5248de91deaa32da13"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/AnalyzerSchema.o": {
+          "bytes": 8992,
+          "sha256": "da4692e1c9dcf1a75ba7f1f69eedfce48c8e487f00d41a04f4147e4c5aa9cd2c"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/AnalyzerSchema.swift": {
+          "bytes": 3247,
+          "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/AnalyzerSchema.swiftmodule": {
+          "bytes": 86852,
+          "sha256": "6428a3831464a537db9e417828a6243b25d891bb69305ffa175118d7a49b4df6"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/CounterPresentation.o": {
+          "bytes": 14340,
+          "sha256": "f44553afd60da6aa02b83ae137eb096cee0db0489e70baf6c8c260d3bc84a972"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/CounterPresentation.swift": {
+          "bytes": 9518,
+          "sha256": "d0140b613b33e99350f77370f1125b49d0a13b477d16f0f0f80c46a2f27ddd5c"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/CounterPresentation.swiftmodule": {
+          "bytes": 225060,
+          "sha256": "ef71813b606172d2a31467fa5ea9f89eeaa6a6e0b78bd28919179d5fb23cba9a"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/CounterSchema.o": {
+          "bytes": 7976,
+          "sha256": "ff25d55ddd5d00843b87e55701d73723a8453665da7917193a07b37885e993f5"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/CounterSchema.swift": {
+          "bytes": 1366,
+          "sha256": "b6f3c92cbc359951328591bb00b315fb71eebe7aa624adb3e04eb58842a7102b"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/CounterSchema.swiftmodule": {
+          "bytes": 76308,
+          "sha256": "b8008c1e8a538455253826a883b290d1674d5ed9d4ce034d25e26b2e41c17165"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/DeclarationHost.o": {
+          "bytes": 33136,
+          "sha256": "10e8cfc05ec8790f65f17c77ec8ffd9d13a545250a395467b0c1e0cfd9bc8b47"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/DeclarationHost.swiftmodule": {
+          "bytes": 442688,
+          "sha256": "fdb9a1aab6fd1c21f6c85404dd82580e3faf651b20070f7861aadc83da9aa054"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/GiftUI.o": {
+          "bytes": 43736,
+          "sha256": "7dba0abb9c206b49e1a00c9ad6cccbbaa56b6dccc5c72c4e18d3e1cba50ade7e"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/GiftUI.swiftmodule": {
+          "bytes": 635152,
+          "sha256": "5a9001b58bf06767b019814aa700b75283739b4aa06c608d85e800d3f7b67169"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/SignalAnalyzerDomain.o": {
+          "bytes": 14832,
+          "sha256": "809c131156682a95e65e31c869e1f29e5a099c991d96d5ee7c411172c90f92e5"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/SignalAnalyzerDomain.swiftmodule": {
+          "bytes": 161972,
+          "sha256": "2f10ae07206bea13e6d1b92a28e99374cefa6a4a9eb8a1d9289005c8c06d1aef"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/custom-body-domain.swift": {
+          "bytes": 348,
+          "sha256": "c13c6b4c5ad8648976314783f2a9b1c0b87cf71db50fdafcc5e2589066a74ec0"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/disguised-effect.swift": {
+          "bytes": 120,
+          "sha256": "a74a76e3f90f18f53eba9ba2a4f5396943632f148d8569fb5dadc86309e75cd0"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/escaping-read.swift": {
+          "bytes": 157,
+          "sha256": "b8b4b223d9db745dc5e7123ea31df5a0469ad5c87910d3148e8cbb617016b60e"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/macro-checks": {
+          "bytes": 16005200,
+          "sha256": "d5a3f2df92bdb13a5ba3bf6dc58d06dd0d5224191efaad2528b5fc9481b50a5c"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/missing-body.swift": {
+          "bytes": 93,
+          "sha256": "07d611cf984244444aac377d1fb9667784345d7b5e786fb00abf985784ef327f"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/mixed-domains.swift": {
+          "bytes": 218,
+          "sha256": "f4df09108126a50bc0519f5a3c3ca2bca3f432530554d4531614fe75c8aafa11"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/owned-facade-escape.swift": {
+          "bytes": 128,
+          "sha256": "ed7b5fc56efd569a839272e7d72bdef1f0207eda6fa4f778e66e8421c232e468"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/private-key-construction.swift": {
+          "bytes": 99,
+          "sha256": "74f2478b5d680b7e752dafb944004e4c395de164ba3086d15e94f0320b855c9d"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/private-read-construction.swift": {
+          "bytes": 109,
+          "sha256": "56dbca1606a19905e74a1c2e4048484114fa5f9d5002e0ad8be92d02a7b828b0"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/six-children.swift": {
+          "bytes": 321,
+          "sha256": "f1d12f8dd14c2f4f6037dd1d94c6bb48b54e9d427585d81a67c6b36e6903684f"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/unchecked-inout.swift": {
+          "bytes": 109,
+          "sha256": "9953314ba0de05105aede93203388a5c67415056209d8658edbe2ba2ca99fd14"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/unknown-effect.swift": {
+          "bytes": 120,
+          "sha256": "db17156e119b084f82f301ed44c268bb05e44f291a3233c4ee35843b03ce1766"
+        },
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/unknown-model-member.swift": {
+          "bytes": 110,
+          "sha256": "2989320e89fd4e00d594d709ba90a226a5c4929f2f4619229242f198f5095995"
+        }
+      },
+      "receipt_sha256": "3ab1ab29586086715218de74b70db78852f0e0f7a7dcbbe640d3a8d03dd6886e",
+      "root": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+      "stage": {
+        "argv": [
+          "scripts/contracts/run-spec-006.sh",
+          "--profile",
+          "nrf52840-embedded",
+          "--compiler-baseline",
+          "rfc-014"
+        ],
+        "environment_overrides": {
+          "PYTHONDONTWRITEBYTECODE": "1"
+        },
+        "exit": 0,
+        "finished_ns": 1792364275855611000,
+        "name": "P02-nrf52840-embedded",
+        "seconds": 22.681,
+        "source_provenance": {},
+        "started_ns": 1792364253174089000,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "99ee517a49cff2d5535b4d364c89312e1914973b44d5dab842cece8768e1dc86"
+      }
+    },
+    "policy_sha256": "b16415ab48830c7bed7ee94e9e653a8a75b76968e8b23aca758a2d6504594dca",
+    "preceding_producers": {
+      "nrf52840-embedded-negative-A1-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/SignalAnalyzerDomain.o": {
+            "bytes": 14832,
+            "sha256": "10104dba0f94fba6b431256e59a1f7dc88bfbec14196a2b6b8f9c997685915dc"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 162132,
+            "sha256": "428ddd8e374eda089249af90780fbef4ed50f48efd22c7961a9812395baef7cc"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364328182410000,
+          "name": "nrf52840-embedded-negative-A1-SignalAnalyzerDomain",
+          "seconds": 2.176,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/inputs/AcquisitionState.swift": "a2fb47cf52972d8610a78e7ffe4d1e8771ea8fff315ca72aec2d29ca33776755",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/inputs/SignalPrimitiveValues.swift": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+          },
+          "started_ns": 1792364326006730000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A1-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364333791468000,
+          "name": "nrf52840-embedded-negative-A1-lower-Analyzer-source",
+          "seconds": 1.905,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364331886737000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A2-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/SignalAnalyzerDomain.o": {
+            "bytes": 14832,
+            "sha256": "23fe989b4932e8de1a839bbddcecbb86927ab91262ebf35b888e4db7c1109bdc"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 162132,
+            "sha256": "82a81771502bdb4f0341dadab81fc2665cec955024e4c6f6ac95f2061b7e1384"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364349267302000,
+          "name": "nrf52840-embedded-negative-A2-SignalAnalyzerDomain",
+          "seconds": 2.132,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/inputs/SignalPrimitiveValues.swift": "d0031edd5d37014aabebd88b4ebdd15a811fb2587b8a984668e715c631253e52"
+          },
+          "started_ns": 1792364347135675000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A2-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364354904067000,
+          "name": "nrf52840-embedded-negative-A2-lower-Analyzer-source",
+          "seconds": 1.933,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364352970651000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A3-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/AnalyzerSchema.o": {
+            "bytes": 8992,
+            "sha256": "f32972d21a30bdefdf349bab17df23ce51b71c61a628710783e85686f0561baa"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/AnalyzerSchema.swiftmodule": {
+            "bytes": 86864,
+            "sha256": "ea482c622ca0b3d75b4d58250e6303218f71e96fb2d4cd5e5385f15f483b1d5e"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364381549476000,
+          "name": "nrf52840-embedded-negative-A3-AnalyzerSchema",
+          "seconds": 1.965,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792364379584477000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A3-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/SignalAnalyzerDomain.o": {
+            "bytes": 14832,
+            "sha256": "46d074a4b74360917ab043e0855e68e5065899bb024a0f822c224a5562f7c73f"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 162132,
+            "sha256": "e2acfc18248b244bd8767ac25d0cd9149448fcc5d1aa6b54d9b0b5b73bea069f"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364370247228000,
+          "name": "nrf52840-embedded-negative-A3-SignalAnalyzerDomain",
+          "seconds": 2.129,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/inputs/SignalPrimitiveValues.swift": "9d3be6232f537e691edf54711d5549e9f862eadd68eda88568c0a51045aa48de"
+          },
+          "started_ns": 1792364368117755000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A3-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364375872736000,
+          "name": "nrf52840-embedded-negative-A3-lower-Analyzer-source",
+          "seconds": 1.898,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364373974915000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A5-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/AnalyzerSchema.o": {
+            "bytes": 8992,
+            "sha256": "31ece578b526b4872a4fdd4482b2e949288ed89b7774fda73688f265f49baf83"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/AnalyzerSchema.swiftmodule": {
+            "bytes": 86864,
+            "sha256": "3370c26bc0eb964d2552c44322eb13645cdcfb7cdfcfed1f81c5c54d6b6f34b5"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364417864414000,
+          "name": "nrf52840-embedded-negative-A5-AnalyzerSchema",
+          "seconds": 2.031,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792364415833344000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A5-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/SignalAnalyzerDomain.o": {
+            "bytes": 14832,
+            "sha256": "ca79646b588f26053f059fe840e884b1dcca14127c206c5c25d1d5e12e80aa50"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 162132,
+            "sha256": "76ef633efcf3873580ad3fac48a7ffdf253172a15db0faca229a9e3471faf2d2"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364406454222000,
+          "name": "nrf52840-embedded-negative-A5-SignalAnalyzerDomain",
+          "seconds": 2.141,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/inputs/SignalPrimitiveValues.swift": "511f5c4e5940d28746ee9fd0b2b9818544a0cc9ab107c0a0f7973d2a2775c416"
+          },
+          "started_ns": 1792364404312949000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A5-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364412110050000,
+          "name": "nrf52840-embedded-negative-A5-lower-Analyzer-source",
+          "seconds": 1.91,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364410200526000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A7-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/AnalyzerSchema.o": {
+            "bytes": 8992,
+            "sha256": "6d55e8667898643d486e0b94871c61fd42febd6c8fd22cf079c4b3961a2ceea2"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/AnalyzerSchema.swiftmodule": {
+            "bytes": 86864,
+            "sha256": "d1f956195fe72c107dcb414fa730e78abbd8ae073f8450f175f05bad3e2366d0"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364454150383000,
+          "name": "nrf52840-embedded-negative-A7-AnalyzerSchema",
+          "seconds": 1.967,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792364452182976000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A7-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/SignalAnalyzerDomain.o": {
+            "bytes": 14832,
+            "sha256": "fd9d6bd6b7df88b8b9aabcb8c413259fdb26932c5813866fbee9e3ec504328a4"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 162136,
+            "sha256": "23f59b91b5348aced6722b1bff7546100aee04148bfcd33667c2bc9c6d67b33a"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364442878836000,
+          "name": "nrf52840-embedded-negative-A7-SignalAnalyzerDomain",
+          "seconds": 2.135,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/inputs/SignalPrimitiveValues.swift": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+          },
+          "started_ns": 1792364440743334000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A7-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/AnalyzerPresentation.swift": {
+            "bytes": 1217,
+            "sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364448475223000,
+          "name": "nrf52840-embedded-negative-A7-lower-Analyzer-source",
+          "seconds": 1.894,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/inputs/Analyzer.swift": "93f984d6c60edc008af9370ca908bf9315463f02b7e54416188edf5aec0681dc",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364446580745000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A8-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/AnalyzerSchema.o": {
+            "bytes": 8992,
+            "sha256": "a37de48867a7ea982dd175ea760896b7b66dead0e57332e041e5d0e3d51042e3"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/AnalyzerSchema.swiftmodule": {
+            "bytes": 86864,
+            "sha256": "921f4f027b9648b7c52daa41f01f596b02ea3447582ffecac75135f8073d63f2"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364480892831000,
+          "name": "nrf52840-embedded-negative-A8-AnalyzerSchema",
+          "seconds": 2.035,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792364478857440000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A8-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/SignalAnalyzerDomain.o": {
+            "bytes": 14832,
+            "sha256": "bb79bb12f052a7bde3ad5011bbe82f3ad0ba3e3b9c98da52639ecc447831101b"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 162136,
+            "sha256": "3a98a5e5297722f4070c269cd87624dda0c8527579115daf4cb9c7b194d419a1"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364469527830000,
+          "name": "nrf52840-embedded-negative-A8-SignalAnalyzerDomain",
+          "seconds": 2.124,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/inputs/SignalPrimitiveValues.swift": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+          },
+          "started_ns": 1792364467404069000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-negative-A8-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/AnalyzerPresentation.swift": {
+            "bytes": 1217,
+            "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364475135468000,
+          "name": "nrf52840-embedded-negative-A8-lower-Analyzer-source",
+          "seconds": 1.896,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/inputs/Analyzer.swift": "158501c0a102b68bef50de440bc3fac88c0ef392f80879187d90c906379de767",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364473239570000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-positive-actual-lowering-AnalyzerPresentation": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerPresentation.o": {
+            "bytes": 7948,
+            "sha256": "1896bf5d5c268a413ee9d6bc5e076a75a4cf31ec24ced3f79143252c91a7c66e"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerPresentation.swiftmodule": {
+            "bytes": 89340,
+            "sha256": "5f291d0b9293ed9e2f3b3596a539c8f648f6b6cf14ac097b37adeeb54eb8ea93"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerPresentation",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerPresentation.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerPresentation.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerPresentation.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364298853949000,
+          "name": "nrf52840-embedded-positive-actual-lowering-AnalyzerPresentation",
+          "seconds": 2.073,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerPresentation.swift": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "started_ns": 1792364296780520000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-positive-actual-lowering-AnalyzerSchema": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerSchema.o": {
+            "bytes": 8992,
+            "sha256": "83041d8eddff505b7968107069f24596fe4b8df364f4a765c371908bbfe7b001"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerSchema.swiftmodule": {
+            "bytes": 86876,
+            "sha256": "ab6bfd78e7633fbe7478f37b4874433575ab4ca1c0adf36777cf1235ad2d9505"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "AnalyzerSchema",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerSchema.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerSchema.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerSchema.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364293064221000,
+          "name": "nrf52840-embedded-positive-actual-lowering-AnalyzerSchema",
+          "seconds": 2.016,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerSchema.swift": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          },
+          "started_ns": 1792364291048333000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-positive-actual-lowering-DeclarationHost": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/DeclarationHost.o": {
+            "bytes": 33136,
+            "sha256": "e26b4a0cf82b06711b2dac46f8e6ec6f3489e12ddd7c6588d7853aa732b74b98"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/DeclarationHost.swiftmodule": {
+            "bytes": 442828,
+            "sha256": "07a5cd0c6dcb919f40f323fdd6dbbf61bae4af5d236f54dea8534e33ef6e88f2"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "DeclarationHost",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/DeclarationHost.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/DeclarationHost.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/DeclarationHost.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364304991496000,
+          "name": "nrf52840-embedded-positive-actual-lowering-DeclarationHost",
+          "seconds": 2.435,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/DeclarationHost.swift": "5720a3b8fe8fc627fd569c7d3d3ed7818633dfb2194ff26340c192ccfb55674a"
+          },
+          "started_ns": 1792364302556608000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-positive-actual-lowering-SignalAnalyzerDomain": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/SignalAnalyzerDomain.o": {
+            "bytes": 14832,
+            "sha256": "4df99d2c9c3c89778e95404dc748aeea01f2093f1b027ba2ee0ec8eb3be45e2c"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/SignalAnalyzerDomain.swiftmodule": {
+            "bytes": 162164,
+            "sha256": "64ae2bff7addf3262b86959b052474e5ca995d087bc4a2f4c1b9fbfba30177c2"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "SignalAnalyzerDomain",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/SignalPrimitiveValues.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/AcquisitionState.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/SignalAnalyzerDomain.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/SignalAnalyzerDomain.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364281735089000,
+          "name": "nrf52840-embedded-positive-actual-lowering-SignalAnalyzerDomain",
+          "seconds": 2.143,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/AcquisitionState.swift": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/SignalPrimitiveValues.swift": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+          },
+          "started_ns": 1792364279592224000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-positive-actual-lowering-lower-Analyzer-source": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerPresentation.swift": {
+            "bytes": 1239,
+            "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerSchema.swift": {
+            "bytes": 3247,
+            "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+            "--lower-source",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/Analyzer.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerSchema.swift",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/AnalyzerPresentation.swift"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364287335968000,
+          "name": "nrf52840-embedded-positive-actual-lowering-lower-Analyzer-source",
+          "seconds": 1.902,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/Analyzer.swift": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+            "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a"
+          },
+          "started_ns": 1792364285434076000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-positive-actual-lowering-target-abi": {
+        "artifacts": {},
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+            "-h",
+            "-A",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/DeclarationHost.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364310605338000,
+          "name": "nrf52840-embedded-positive-actual-lowering-target-abi",
+          "seconds": 1.862,
+          "source_provenance": {},
+          "started_ns": 1792364308743062000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "6254c25ea9dae9662630997e2b8adaabaf55c4c486d690cd84cf0680c8d209ca"
+        }
+      },
+      "nrf52840-embedded-positive-semantics-ABISemantics": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/ABISemantics.o": {
+            "bytes": 10688,
+            "sha256": "6b293269a964ffbe014e6b4dc6b3d195a6541095ba53d2c48603c4a378f84959"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/ABISemantics.swiftmodule": {
+            "bytes": 148052,
+            "sha256": "4206872b904a02ee844c0b30c81ce68f7239110df7565a99f1b4ad59b148ff9e"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "ABISemantics",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/Semantics.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/ABISemantics.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/ABISemantics.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364322274429000,
+          "name": "nrf52840-embedded-positive-semantics-ABISemantics",
+          "seconds": 2.214,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/Semantics.swift": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+          },
+          "started_ns": 1792364320060783000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "nrf52840-embedded-positive-serialized-read-ABIRead": {
+        "artifacts": {
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/ABIRead.o": {
+            "bytes": 7436,
+            "sha256": "41559bc25557cc754c9d94deee5cd365e796215dddbaf91a44eb9e03bc87592b"
+          },
+          "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/ABIRead.swiftmodule": {
+            "bytes": 68412,
+            "sha256": "44709ade785854f9fa1add0db215c6a09f7041d6d3f32962704b8de16450a6a0"
+          }
+        },
+        "stage": {
+          "argv": [
+            "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+            "-swift-version",
+            "6",
+            "-Osize",
+            "-whole-module-optimization",
+            "-enable-experimental-feature",
+            "LifetimeDependence",
+            "-enable-experimental-feature",
+            "Lifetimes",
+            "-package-name",
+            "giftui",
+            "-module-cache-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/cache",
+            "-disable-sandbox",
+            "-target",
+            "armv7em-none-none-eabi",
+            "-enable-experimental-feature",
+            "Embedded",
+            "-Xcc",
+            "-mcpu=cortex-m4",
+            "-Xcc",
+            "-mfloat-abi=hard",
+            "-Xcc",
+            "-mfpu=fpv4-sp-d16",
+            "-load-plugin-executable",
+            "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering",
+            "-I",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded",
+            "-parse-as-library",
+            "-module-name",
+            "ABIRead",
+            "-emit-module",
+            "-emit-object",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/ABIRead.swift",
+            "-emit-module-path",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/ABIRead.swiftmodule",
+            "-o",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/ABIRead.o"
+          ],
+          "environment_overrides": {
+            "PYTHONDONTWRITEBYTECODE": "1"
+          },
+          "exit": 0,
+          "finished_ns": 1792364316341365000,
+          "name": "nrf52840-embedded-positive-serialized-read-ABIRead",
+          "seconds": 2.009,
+          "source_provenance": {
+            "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/ABIRead.swift": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea"
+          },
+          "started_ns": 1792364314332642000,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "profile": "nrf52840-embedded",
+    "root_map": [
+      [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-diagnostic-discovery-sweep",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign10",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-diagnostic-discovery-sweep",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign10",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-diagnostic-discovery-sweep",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11"
+      ],
+      [
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign10",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11"
+      ]
+    ],
+    "sdk": {
+      "archive_sha256": "3332907e1fe366a24cdd9b4af566cb4f1a1f39aa8fad785cb328af17c7484848",
+      "entry_count": 6965,
+      "install_sha256": "663ff75888fb2bd1dfc5340c90c3f6acced4b65efe3ccfb79414a9d6709eafed",
+      "inventory_sha256": "2f50709e80eb1829637aeaad8e230cff8e032aec39348bc45f1264dd9cd99875"
+    },
+    "stage": "client-emit-object"
+  },
+  "sources": {
+    "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/AcquisitionState.swift": {
+      "bytes": 243,
+      "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+    },
+    "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/Analyzer.swift": {
+      "bytes": 811,
+      "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+    },
+    "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift": {
+      "bytes": 5671,
+      "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+    },
+    "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/SignalPrimitiveValues.swift": {
+      "bytes": 1582,
+      "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+    },
+    "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/private-count/inputs/private-count.swift": {
+      "bytes": 97,
+      "sha256": "1b5cfd33f2c1e7eb4a9c6567b56e4555faf1ea1efec4119d59d08a360f39f8bd"
+    }
+  }
+}

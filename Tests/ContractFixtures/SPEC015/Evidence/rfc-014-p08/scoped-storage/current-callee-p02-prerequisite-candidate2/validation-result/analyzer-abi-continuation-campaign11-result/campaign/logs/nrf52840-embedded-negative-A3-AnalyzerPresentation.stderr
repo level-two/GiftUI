@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/AnalyzerPresentation.swift:26:120: error: property 'channelID' is package and cannot be referenced from an '@inlinable' function
+24 |         Text<D>(BoundedText(Int32((try AnalyzerRead<D>(model, read: read)).state().capture().count)))
+25 |         if (try AnalyzerRead<D>(model, read: read)).state().capture().count > 0 {
+26 |             Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))
+   |                                                                                                                        `- error: property 'channelID' is package and cannot be referenced from an '@inlinable' function
+27 |         }
+28 | }
+
+/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/inputs/SignalPrimitiveValues.swift:22:17: note: property 'channelID' is not '@usableFromInline' or public
+20 | @usableFromInline
+21 | package struct SignalTransition: Equatable, Sendable {
+22 |     package let channelID: SignalChannelID
+   |                 `- note: property 'channelID' is not '@usableFromInline' or public
+23 |     package let timestamp: Duration
+24 |     package let level: DigitalLevel

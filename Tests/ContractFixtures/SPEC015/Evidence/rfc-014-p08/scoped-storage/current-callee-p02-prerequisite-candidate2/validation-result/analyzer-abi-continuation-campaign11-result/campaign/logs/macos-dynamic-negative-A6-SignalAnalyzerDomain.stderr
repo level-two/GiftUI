@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A6/inputs/AcquisitionState.swift:7:10: error: type of enum case in '@usableFromInline' enum must be '@usableFromInline' or public
+5 |     case running
+6 |     case stopped
+7 |     case failed(SignalAnalyzerDiagnostic)
+  |          `- error: type of enum case in '@usableFromInline' enum must be '@usableFromInline' or public
+8 | }
+9 | 
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A6/inputs/SignalAnalyzerDiagnostic.swift:28:16: note: type declared here
+ 26 | }
+ 27 | 
+ 28 | package struct SignalAnalyzerDiagnostic: Equatable, Sendable {
+    |                `- note: type declared here
+ 29 |     package static let maximumUTF8ByteCount: UInt16 = 96
+ 30 | 

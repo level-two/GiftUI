@@ -1,0 +1,79 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/AnalyzerSchema.swift:7:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public
+ 5 | static func AnalyzerRead_state_acquisitionState(at index: Int, slots: Span<Slot>) -> AcquisitionState
+ 6 | static func AnalyzerRead_state_capture_count(at index: Int, slots: Span<Slot>) -> UInt16
+ 7 | static func AnalyzerRead_state_capture_transition(_ position: Int, at index: Int, slots: Span<Slot>) throws(_GiftUIAccessFailure) -> SignalTransition
+   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public
+ 8 | }
+ 9 | @usableFromInline package struct AnalyzerModelSchemaSeed {
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/inputs/SignalPrimitiveValues.swift:20:16: note: type declared here
+18 | }
+19 | 
+20 | package struct SignalTransition: Equatable, Sendable {
+   |                `- note: type declared here
+21 |     @usableFromInline
+22 |     package let channelID: SignalChannelID
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/AnalyzerSchema.swift:70:14: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public
+68 | @inlinable package var count: UInt16 { D.AnalyzerRead_state_capture_count(at: index, slots: slots) }
+69 | @inlinable
+70 | package func transition(_ position: Int) throws(_GiftUIAccessFailure) -> SignalTransition {
+   |              `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public
+71 |     try D.AnalyzerRead_state_capture_transition(position, at: index, slots: slots)
+72 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/inputs/SignalPrimitiveValues.swift:20:16: note: type declared here
+18 | }
+19 | 
+20 | package struct SignalTransition: Equatable, Sendable {
+   |                `- note: type declared here
+21 |     @usableFromInline
+22 |     package let channelID: SignalChannelID
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/AnalyzerSchema.swift:70:74: error: struct 'SignalTransition' is package and cannot be referenced from an '@inlinable' function
+68 | @inlinable package var count: UInt16 { D.AnalyzerRead_state_capture_count(at: index, slots: slots) }
+69 | @inlinable
+70 | package func transition(_ position: Int) throws(_GiftUIAccessFailure) -> SignalTransition {
+   |                                                                          `- error: struct 'SignalTransition' is package and cannot be referenced from an '@inlinable' function
+71 |     try D.AnalyzerRead_state_capture_transition(position, at: index, slots: slots)
+72 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/inputs/SignalPrimitiveValues.swift:20:16: note: struct 'SignalTransition' is not '@usableFromInline' or public
+18 | }
+19 | 
+20 | package struct SignalTransition: Equatable, Sendable {
+   |                `- note: struct 'SignalTransition' is not '@usableFromInline' or public
+21 |     @usableFromInline
+22 |     package let channelID: SignalChannelID
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/AnalyzerSchema.swift:74:14: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public
+72 | }
+73 | @inlinable
+74 | package func _giftUIDrawing_transition(_ position: Int) throws(DrawingError) -> SignalTransition {
+   |              `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public
+75 |     do throws(_GiftUIAccessFailure) {
+76 |         return try D.AnalyzerRead_state_capture_transition(position, at: index, slots: slots)
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/inputs/SignalPrimitiveValues.swift:20:16: note: type declared here
+18 | }
+19 | 
+20 | package struct SignalTransition: Equatable, Sendable {
+   |                `- note: type declared here
+21 |     @usableFromInline
+22 |     package let channelID: SignalChannelID
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/AnalyzerSchema.swift:74:81: error: struct 'SignalTransition' is package and cannot be referenced from an '@inlinable' function
+72 | }
+73 | @inlinable
+74 | package func _giftUIDrawing_transition(_ position: Int) throws(DrawingError) -> SignalTransition {
+   |                                                                                 `- error: struct 'SignalTransition' is package and cannot be referenced from an '@inlinable' function
+75 |     do throws(_GiftUIAccessFailure) {
+76 |         return try D.AnalyzerRead_state_capture_transition(position, at: index, slots: slots)
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/inputs/SignalPrimitiveValues.swift:20:16: note: struct 'SignalTransition' is not '@usableFromInline' or public
+18 | }
+19 | 
+20 | package struct SignalTransition: Equatable, Sendable {
+   |                `- note: struct 'SignalTransition' is not '@usableFromInline' or public
+21 |     @usableFromInline
+22 |     package let channelID: SignalChannelID

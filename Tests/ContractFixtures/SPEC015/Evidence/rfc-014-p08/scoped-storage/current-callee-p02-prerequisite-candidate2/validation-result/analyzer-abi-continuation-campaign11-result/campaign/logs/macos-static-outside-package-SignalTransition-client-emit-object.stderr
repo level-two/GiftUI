@@ -1,0 +1,5 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/outside-package-SignalTransition/inputs/outside-package-SignalTransition.swift:2:24: error: cannot find type 'SignalTransition' in scope
+1 | import SignalAnalyzerDomain
+2 | func rejected(_ value: SignalTransition) {}
+  |                        `- error: cannot find type 'SignalTransition' in scope
+3 | 
