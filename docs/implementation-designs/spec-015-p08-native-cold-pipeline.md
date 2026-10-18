@@ -19,19 +19,20 @@ superseded_by: null
 ## Grouped dependency continuation — 2026-10-18
 
 The [independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-independent-design-review.md)
-finds the reduced candidate not ready: retained explicit `@inlinable` callers
-still cross the private-body source boundary. Default CMO cannot bypass that
-source check. Review the exact additional caller frontier as one amendment before
-source or compiler work. Initial0/1/corrections0/2 remain unconsumed.
+found retained explicit `@inlinable` callers crossing the private-body source
+boundary. The amended map adds its 16 named sites and two immediate host scheduler
+sites under the same remove-body-serialization mechanism. Quick independent
+recheck precedes source or compiler work; initial0/1/corrections0/2 are unconsumed.
 
 The [new user-authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-activity.md)
 and [exact reduced map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-design/candidate-map.json)
-are prepared for independent review:15 attribute sites/nine files, zero explicit
+are prepared for independent recheck:33 attribute sites/twelve files, zero explicit
 nominal/protocol/field ABI promotions; all other owners are fresh-recompile inputs.
 Private helpers retain access/body/inline hints while losing illegal source
-serialization directives. Four named package/internal entry bodies similarly
-avoid forcing private implementation into source `@inlinable` access. Unchanged
-default CMO and owning-module incorporation are candidate mechanisms only;
+serialization directives. Named package/internal entry and caller bodies similarly
+avoid forcing private implementation into source `@inlinable` access. The map
+records the one-hop caller inspection and the qualified/ordinary callers retained.
+Unchanged default CMO and owning-module incorporation are candidate mechanisms only;
 physical callee-closure and actual concrete-host specialization are mandatory.
 The sequential fresh25-module compile sweep collects all independently runnable
 owner failures and blocks dependents without stale substitutions. No compilation,

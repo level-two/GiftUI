@@ -1,9 +1,10 @@
 # P08 grouped module closure activity — 2026-10-18
 
-**Independent design review not ready; initial0/1, corrections0/2; no source/compiler
-execution.** The [review](p08-grouped-module-closure-independent-design-review.md)
-identifies retained source-serialized callers of private implementation. Amend
-that exact grouped frontier before source or compiler work; no allowance is used.
+**Caller-frontier amendment prepared; quick independent review pending; initial0/1,
+corrections0/2; no source/compiler execution.** The prior
+[not-ready review](p08-grouped-module-closure-independent-design-review.md) is
+preserved. Its 16 named sites plus two immediate host scheduler sites are now in
+the exact map; no allowance is used.
 Eugene explicitly authorized grouped Layout and remaining-module
 dependency corrections, then full-host/cold validation under the strict contract.
 This is a new allowance of one initial candidate and at most two grouped
@@ -21,9 +22,9 @@ complete lifetime union, failure order and backing-last cleanup remain exact.
 
 ## Exact grouped initial candidate
 
-The [reduced map](grouped-module-closure-design/candidate-map.json) names **15
-attribute sites in nine files**, their exact current declarations/hashes, three
-direct serialization frontiers, and the fresh 25-module dependency DAG rooted in
+The [reduced map](grouped-module-closure-design/candidate-map.json) names **33
+attribute sites in twelve files**, their exact current declarations/hashes, the finite
+direct serialization frontier, and the fresh 25-module dependency DAG rooted in
 the actual42-source CounterRuntime. It selects **zero nominal/protocol/field ABI
 promotions**. The preliminary144-nominal/85-witness lexical inventory is excluded
 from the edit allowance. No blanket annotation script is authorized.
@@ -37,6 +38,12 @@ from the edit allowance. No blanket annotation script is authorized.
   RuntimeRecordInteractionBridge's `appendProjected`/`dispatch`; retain inline
   hints. Their ordinary package/internal bodies may reference the existing
   package/private dependency closure without publishing backing or constructors.
+- Withhold source `@inlinable` at the review's 16 named callers and at the two
+  immediate host scheduler methods (`complete`/`service`), preserving all access,
+  signatures, bodies and legal inline hints. The map freezes each exact prefix.
+  One-hop inspection retains ordinary Canvas/raster/runtime/bootstrap callers and
+  the existing qualified generic gesture protocol adapters. No nominal sweep or
+  package protocol/field promotion follows from a lexical reference.
 
 All other current owners are fresh-recompile/qualification inputs. The seven
 diagnosed Layout files remain inspected; only the three named Layout files need

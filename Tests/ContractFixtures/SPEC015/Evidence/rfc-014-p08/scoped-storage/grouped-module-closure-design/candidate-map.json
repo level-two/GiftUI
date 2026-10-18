@@ -1,9 +1,9 @@
 {
-  "status": "reduced derived initial candidate scope; independent design review pending; no source/compiler activity",
-  "prepared_head": "db7dea7951fbf39119febabc94b91a61839c8932",
+  "status": "33-site caller-frontier amendment prepared after e1aa2111 NOTREADY; quick independent review pending; no source/compiler activity",
+  "prepared_head": "e1aa2111250d9b88117199f47ccac9eb6f9de147",
   "counts": {
-    "attribute_sites": 15,
-    "source_edit_files": 9,
+    "attribute_sites": 33,
+    "source_edit_files": 12,
     "explicit_ABI_promotions": 0,
     "fresh_modules": 25,
     "real_host_source_files": 42
@@ -128,6 +128,150 @@
       "edit": "remove @inlinable and @inline(__always) from bodyless requirement only",
       "reason": "bodyless protocol requirement has no implementation body to serialize",
       "frozen_site": "@inlinable\n    @inline(__always)\n    mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure>"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 92,
+      "declaration": "CanvasStagedValues.stage",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private state/entries/capacity, fileprivate entry payload and metadata setters.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package borrowing func stage(\n        identity: Identity, value: consuming Table.CaptureStorage,\n        table: borrowing Table\n    ) throws(DrawingError)"
+    },
+    {
+      "file": "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+      "line": 127,
+      "declaration": "FullSurfaceRGBA8888Buffer.withBytes",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Ordinary package storage and protocol requirement remain non-ABI after bodyless attributes are removed.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package borrowing func withBytes<Result>(\n        _ body: (UnsafeRawBufferPointer) throws -> Result\n    ) rethrows -> Result"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line": 28,
+      "declaration": "ObservableCanvasInvocationSource.invokeCanvas",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private models/values/table and staged Canvas/read ownership chain.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package mutating func invokeCanvas(\n        at identity: Identity, context: inout GraphicsContext,\n        size: Size\n    ) throws(DrawingError)"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift",
+      "line": 88,
+      "declaration": "HostScheduledOpportunityController.complete",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Immediate host scheduler frontier: private pacing and ordinary package result contract.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package mutating func complete<OwnerFailure: Equatable & Sendable>(\n        at timestampMicroseconds: UInt64,\n        reasons: ExecutionWakeReasons,\n        result: HostOpportunityResult<OwnerFailure>\n    ) -> HostScheduledOpportunityResult<OwnerFailure>"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift",
+      "line": 105,
+      "declaration": "HostScheduledOpportunityController.service",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Immediate host caller frontier: ordinary begin/complete methods and package MVPHostInstance contract; does not make private source dependencies ABI.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package mutating func service<Instance: MVPHostInstance & ~Copyable & ~Escapable>(\n        at timestampMicroseconds: UInt64,\n        instance: inout Instance\n    ) -> HostScheduledOpportunityResult<Instance.OwnerFailure>"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 77,
+      "declaration": "MVPHostActivationController.activate",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private record/contain and restricted lifecycle setters; retained caller cannot publish private body dependencies.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package mutating func activate<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(\n        owner: inout Owner,\n        invariantFailure: Failure\n    ) -> HostActivationResult<Failure>\n    where Owner.ActivationFailure == Failure"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 124,
+      "declaration": "MVPHostActivationController.teardown",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private record/contain and restricted lifecycle setters; ordinary package owner operations.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package mutating func teardown<Owner: MVPHostTeardownOwner & ~Copyable & ~Escapable>(\n        owner: inout Owner\n    )"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 75,
+      "declaration": "SignalAnalyzerPresetHostInstance.activate",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private invariantFailure and restricted owner/controller state; calls controller boundary.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package mutating func activate() -> HostActivationResult<Owner.ActivationFailure>"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 81,
+      "declaration": "SignalAnalyzerPresetHostInstance.runOpportunity",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private invariantFailure and restricted owner/controller state; ordinary live-owner requirement.",
+      "frozen_site": "@inlinable\n    package mutating func runOpportunity() -> HostOpportunityResult<RuntimeOwnerFailure>"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 87,
+      "declaration": "SignalAnalyzerPresetHostInstance.teardown",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private invariantFailure and restricted owner/controller state; calls controller boundary.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package mutating func teardown()"
+    },
+    {
+      "file": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 71,
+      "declaration": "InteractionOwnedKeyState.append",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private state/staging/failure/component accounting; calls InteractionState boundary (both overloads).",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package mutating func append<Payload>(\n        record: SemanticRecordReference, in view: borrowing SemanticRecordView<Payload>,\n        isEnabled: Bool, bounds: Rect, clip: Rect, paintOrder: UInt16,\n        action: BoundedApplicationAction, targetGeneration: ObservableTargetGeneration\n    ) -> InteractionCandidateAppendResult"
+    },
+    {
+      "file": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 87,
+      "declaration": "InteractionOwnedKeyState.append",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private state/staging/failure/component accounting; calls InteractionState boundary (both overloads).",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package mutating func append(\n        identity: Identity, isEnabled: Bool, bounds: Rect, clip: Rect, paintOrder: UInt16,\n        action: BoundedApplicationAction, targetGeneration: ObservableTargetGeneration\n    ) -> InteractionCandidateAppendResult"
+    },
+    {
+      "file": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 182,
+      "declaration": "InteractionOwnedKeyState.resolveDown",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private state and staging/failure; calls InteractionState boundary.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package borrowing func resolveDown(at point: Point) -> PointerGestureOutcome<Identity>"
+    },
+    {
+      "file": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 190,
+      "declaration": "InteractionOwnedKeyState.resolveUp",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private state and staging/failure; calls InteractionState boundary.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package borrowing func resolveUp(_ captured: CapturedAction<Identity>, at point: Point)\n        -> PointerGestureOutcome<Identity>"
+    },
+    {
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 69,
+      "declaration": "InteractionState.append",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private candidate/committed banks, phase, failure and matching/contains helpers.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package mutating func append(\n        identity: Identity,\n        isEnabled: Bool,\n        bounds: Rect,\n        clip: Rect,\n        paintOrder: UInt16,\n        action: BoundedApplicationAction,\n        targetGeneration: ObservableTargetGeneration\n    ) -> InteractionCandidateAppendResult"
+    },
+    {
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 341,
+      "declaration": "InteractionState.resolveDown",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private hit/committed banks and topmostRecord helper.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package borrowing func resolveDown(\n        at point: Point\n    ) -> PointerGestureOutcome<Identity>"
+    },
+    {
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 398,
+      "declaration": "InteractionState.resolveMove",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private phase/committed state and capturedRecord helper.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package borrowing func resolveMove(\n        _ captured: CapturedAction<Identity>,\n        at point: Point\n    ) -> PointerGestureOutcome<Identity>"
+    },
+    {
+      "file": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 422,
+      "declaration": "InteractionState.resolveUp",
+      "edit": "remove @inlinable only; retain existing @inline(__always)",
+      "reason": "Private phase/committed state and capturedRecord helper.",
+      "frozen_site": "@inlinable\n    @inline(__always)\n    package borrowing func resolveUp(\n        _ captured: CapturedAction<Identity>,\n        at point: Point\n    ) -> PointerGestureOutcome<Identity>"
     }
   ],
   "scope_exclusions": [
@@ -1209,5 +1353,23 @@
     "Sources/GiftUI/ObservableState.swift": "9f49b702c630be7e1ecc690973c73912142d731050bc4c62776c207e2ce68e86",
     "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": "5349126ef1275e44a400ba6e290b36ab92c6e2534f9e1db9e96f741ba92d49b9"
   },
-  "compiler_policy": "Pinned approved Swift6.4, existing SDK/optimization/lifetime/package/profile flags. No package-CMO/serialize-all/unchecked enforcement/availability policy change. Macro tool rebuilt from unchanged frozen source with retained working macOS runner/link/runtime recipes."
+  "compiler_policy": "Pinned approved Swift6.4, existing SDK/optimization/lifetime/package/profile flags. No package-CMO/serialize-all/unchecked enforcement/availability policy change. Macro tool rebuilt from unchanged frozen source with retained working macOS runner/link/runtime recipes.",
+  "caller_frontier_review": {
+    "review_basis": "e1aa2111: 16 named sites/seven files, including two new files; one-hop immediate caller inspection adds two HostScheduledOpportunityController methods/one further file. No lexical nominal sweep.",
+    "added_sites": 18,
+    "mechanism": "Remove source @inlinable only; preserve all access, signatures, bodies, legal inline hints, constructors, ownership/lifetime annotations and storage.",
+    "ordinary_callers_retained": [
+      "Sources/GiftUIDrawing/CanvasSemanticPayload.swift: CanvasSemanticTransfer.stage -> CanvasStagedValues.stage",
+      "Sources/GiftUIDrawing/CanvasPlanProducer.swift: CanvasPlanProducer.derive -> generic invokeCanvas",
+      "Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift: FullSurfacePayloadEmitter.finish -> generic withBytes",
+      "Sources/GiftUIRasterCore/FullSurfaceRGB565Framebuffer.swift: withBytes -> storage.withBytes",
+      "Sources/GiftUIRuntimeDynamic/DynamicRuntimeProfileBinding.swift: invokeCanvas",
+      "Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift: invokeCanvas",
+      "Sources/GiftUIRuntimeStatic/StaticRuntimeProfileBinding.swift: invokeCanvas",
+      "Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift: construct -> instance.teardown",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift: completeScheduledOpportunity -> scheduler.complete; CounterHostProbe service calls"
+    ],
+    "qualified_protocol_callers_retained": "ExecutionGestureAdapter.down/move/up dispatch through the unchanged @usableFromInline InteractionGestureResolver in InteractionValues.swift, using existing ABI-qualified PointerActionCapture operations in GiftUIExecution. Removing concrete witness serialization does not change these protocol requirements; do not remove unrelated qualified annotations.",
+    "boundary": "This finite inspection does not claim every owner source-clean; the grouped fresh compile sweep records all independently diagnosable remaining failures before any correction. No compiler has run."
+  }
 }
