@@ -1,12 +1,11 @@
 {
   "categories": {
     "package-nominal-hidden": "Named package nominal is unavailable outside giftui (package/inaccessible diagnostic or cannot find named type in scope); never accept missing module, wrong target or link error.",
-    "private-initializer-access": "Private init(storage:count:) inaccessible, or unavailable private initializer causing its exact labels to be rejected; category and location require pre-execution review because overload wording is not frozen.",
     "private-member-access": "Named member inaccessible due to private protection; do not accept a different access restriction or arbitrary type error.",
     "private-type-hidden": "Cannot find named private storage type in scope across file/module boundary.",
     "serialized-ABI-access": "Reject a dependency that lacks ABI eligibility from @inlinable/@usableFromInline declarations; diagnostic must identify removed selector or its use and contain serialized/inlinable/usableFromInline accessibility cause."
   },
-  "control_count": 21,
+  "control_count": 20,
   "controls": [
     {
       "exercise": "Actual Analyzer schema, presentation, DeclarationHost and unchanged native 120-check oracle; failed diagnostic payload preserved.",
@@ -42,7 +41,13 @@
     },
     {
       "category": "serialized-ABI-access",
+      "diagnostic_patterns_all": [
+        "(?i)(?:@usableFromInline|@inlinable)",
+        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
+        "\\bAcquisitionState\\b"
+      ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "diagnostic_source": "{cell}/AnalyzerSchema.swift",
       "expected_nonzero": true,
       "files": [
         "negative-A1/AcquisitionState.swift"
@@ -57,7 +62,13 @@
     },
     {
       "category": "serialized-ABI-access",
+      "diagnostic_patterns_all": [
+        "(?i)(?:@usableFromInline|@inlinable)",
+        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
+        "\\bSignalTransition\\b"
+      ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "diagnostic_source": "{cell}/AnalyzerSchema.swift",
       "expected_nonzero": true,
       "files": [
         "negative-A2/SignalPrimitiveValues.swift"
@@ -72,7 +83,13 @@
     },
     {
       "category": "serialized-ABI-access",
+      "diagnostic_patterns_all": [
+        "(?i)(?:@usableFromInline|@inlinable)",
+        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
+        "\\bchannelID\\b"
+      ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "diagnostic_source": "{cell}/AnalyzerPresentation.swift",
       "expected_nonzero": true,
       "files": [
         "negative-A3/SignalPrimitiveValues.swift"
@@ -87,12 +104,18 @@
     },
     {
       "category": "serialized-ABI-access",
+      "diagnostic_patterns_all": [
+        "(?i)(?:@usableFromInline|@inlinable)",
+        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
+        "\\bSignalChannelID\\b"
+      ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "diagnostic_source": "{cell}/inputs/SignalPrimitiveValues.swift",
       "expected_nonzero": true,
       "files": [
         "negative-A4/SignalPrimitiveValues.swift"
       ],
-      "first_expected_stage": "AnalyzerPresentation",
+      "first_expected_stage": "SignalAnalyzerDomain",
       "id": "negative-A4",
       "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
       "kind": "abi-negative",
@@ -102,7 +125,13 @@
     },
     {
       "category": "serialized-ABI-access",
+      "diagnostic_patterns_all": [
+        "(?i)(?:@usableFromInline|@inlinable)",
+        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
+        "\\brawValue\\b"
+      ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "diagnostic_source": "{cell}/AnalyzerPresentation.swift",
       "expected_nonzero": true,
       "files": [
         "negative-A5/SignalPrimitiveValues.swift"
@@ -117,7 +146,13 @@
     },
     {
       "category": "serialized-ABI-access",
+      "diagnostic_patterns_all": [
+        "(?i)(?:@usableFromInline|@inlinable)",
+        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
+        "\\bSignalAnalyzerDiagnostic\\b"
+      ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "diagnostic_source": "{cell}/inputs/AcquisitionState.swift",
       "expected_nonzero": true,
       "files": [
         "negative-A6/SignalAnalyzerDiagnostic.swift"
@@ -132,7 +167,13 @@
     },
     {
       "category": "serialized-ABI-access",
+      "diagnostic_patterns_all": [
+        "(?i)(?:@usableFromInline|@inlinable)",
+        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
+        "\\bmodel\\b"
+      ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "diagnostic_source": "{cell}/AnalyzerPresentation.swift",
       "expected_nonzero": true,
       "files": [
         "negative-A7/Analyzer.swift"
@@ -147,7 +188,13 @@
     },
     {
       "category": "serialized-ABI-access",
+      "diagnostic_patterns_all": [
+        "(?i)(?:@usableFromInline|@inlinable)",
+        "(?i)(?:cannot be referenced|must be|not.*usableFromInline|not.*public)",
+        "\\bindex\\b"
+      ],
       "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "diagnostic_source": "{cell}/AnalyzerPresentation.swift",
       "expected_nonzero": true,
       "files": [
         "negative-A8/Analyzer.swift"
@@ -162,6 +209,10 @@
     },
     {
       "category": "private-member-access",
+      "diagnostic_patterns_all": [
+        "(?i)inaccessible.*private",
+        "\\bstorage\\b"
+      ],
       "expected_nonzero": true,
       "files": [
         "privacy/private-storage.swift"
@@ -175,6 +226,10 @@
     },
     {
       "category": "private-member-access",
+      "diagnostic_patterns_all": [
+        "(?i)inaccessible.*private",
+        "\\bcount\\b"
+      ],
       "expected_nonzero": true,
       "files": [
         "privacy/private-count.swift"
@@ -188,6 +243,10 @@
     },
     {
       "category": "private-type-hidden",
+      "diagnostic_patterns_all": [
+        "(?i)cannot find.*in scope",
+        "\\bSignalAnalyzerDiagnosticStorage\\b"
+      ],
       "expected_nonzero": true,
       "files": [
         "privacy/private-storage-type.swift"
@@ -200,20 +259,11 @@
       "required_symbol": "SignalAnalyzerDiagnosticStorage"
     },
     {
-      "category": "private-initializer-access",
-      "expected_nonzero": true,
-      "files": [
-        "privacy/private-init.swift"
-      ],
-      "first_expected_stage": "client-emit-object",
-      "id": "private-init",
-      "kind": "privacy-negative",
-      "package_name": "giftui",
-      "positive_twin": "positive-semantics",
-      "required_symbol": "init(storage:count:)"
-    },
-    {
       "category": "private-member-access",
+      "diagnostic_patterns_all": [
+        "(?i)inaccessible.*private",
+        "\\bisContinuation\\b"
+      ],
       "expected_nonzero": true,
       "files": [
         "privacy/private-helper-continuation.swift"
@@ -227,6 +277,10 @@
     },
     {
       "category": "private-member-access",
+      "diagnostic_patterns_all": [
+        "(?i)inaccessible.*private",
+        "\\bisValidLeadingSequence\\b"
+      ],
       "expected_nonzero": true,
       "files": [
         "privacy/private-helper-leading.swift"
@@ -240,6 +294,10 @@
     },
     {
       "category": "package-nominal-hidden",
+      "diagnostic_patterns_all": [
+        "(?i)(?:inaccessible|cannot find.*in scope|package.*(?:access|use|reference))",
+        "\\bAcquisitionState\\b"
+      ],
       "expected_nonzero": true,
       "files": [
         "privacy/outside-package-AcquisitionState.swift"
@@ -253,6 +311,10 @@
     },
     {
       "category": "package-nominal-hidden",
+      "diagnostic_patterns_all": [
+        "(?i)(?:inaccessible|cannot find.*in scope|package.*(?:access|use|reference))",
+        "\\bSignalTransition\\b"
+      ],
       "expected_nonzero": true,
       "files": [
         "privacy/outside-package-SignalTransition.swift"
@@ -266,6 +328,10 @@
     },
     {
       "category": "package-nominal-hidden",
+      "diagnostic_patterns_all": [
+        "(?i)(?:inaccessible|cannot find.*in scope|package.*(?:access|use|reference))",
+        "\\bSignalChannelID\\b"
+      ],
       "expected_nonzero": true,
       "files": [
         "privacy/outside-package-SignalChannelID.swift"
@@ -279,6 +345,10 @@
     },
     {
       "category": "package-nominal-hidden",
+      "diagnostic_patterns_all": [
+        "(?i)(?:inaccessible|cannot find.*in scope|package.*(?:access|use|reference))",
+        "\\bSignalAnalyzerDiagnostic\\b"
+      ],
       "expected_nonzero": true,
       "files": [
         "privacy/outside-package-SignalAnalyzerDiagnostic.swift"
@@ -298,6 +368,13 @@
     "file:line:column and required symbol",
     "immutable expected category",
     "positive twin receipt"
+  ],
+  "explicit_omissions": [
+    {
+      "disposition": "OMITTED FROM PROPOSED CAMPAIGN",
+      "id": "private-init",
+      "reason": "Exact overload/access diagnostic is not statically settled. No compiler invocation to discover or tune it is authorized. This campaign cannot claim private-initializer negative coverage; a separate source/matcher proposal and allowance would be required."
+    }
   ],
   "private_type_additional_boundary": "Same-package other module is fixed here. Same-module other-file privacy negatives are a separate unprepared variant and are not silently added.",
   "status": "PROPOSED; expectations fixed before compiler invocation, never reclassify after seeing output"

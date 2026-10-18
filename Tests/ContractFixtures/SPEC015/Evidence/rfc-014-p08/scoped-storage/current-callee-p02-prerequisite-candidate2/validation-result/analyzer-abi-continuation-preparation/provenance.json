@@ -51,6 +51,14 @@
     "34601caa"
   ],
   "source_edits": 0,
+  "static_correction": {
+    "blockers": "A4 first stage; B01 wrapper; B02 initializer matcher; B03 historical macro qualification",
+    "compiler_test_producer_formatter_invocations": 0,
+    "disposition": "A4 corrected; exact guarded wrapper frozen; initializer control omitted; four fresh macro stages proposed",
+    "execution_allowance": false,
+    "maintained_or_generated_source_edits": 0,
+    "reviewed_packet_commit": "7b940c93"
+  },
   "status": "static preparation; no compiler/test/producer/formatter invoked",
   "test_invocations": 0,
   "toolchain_edits": 0

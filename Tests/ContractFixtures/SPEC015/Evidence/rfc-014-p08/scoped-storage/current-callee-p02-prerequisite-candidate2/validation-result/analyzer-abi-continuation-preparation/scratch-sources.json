@@ -110,11 +110,6 @@
       "sha256": "fa95ac63157a227d282faf57df64a5eb5865dc9b587faaa8062c28f9d69979f2",
       "text": "import SignalAnalyzerDomain\npackage func rejected() { _ = SignalAnalyzerDiagnostic.isValidLeadingSequence(first: 65, second: 0) }\n"
     },
-    "privacy/private-init.swift": {
-      "bytes": 113,
-      "sha256": "ed3054e81559dc05d398f5d0a7dab7c25d235daeaf0d006da61a8fd1bed022c7",
-      "text": "import SignalAnalyzerDomain\npackage func rejected() { _ = SignalAnalyzerDiagnostic(storage: .init(), count: 0) }\n"
-    },
     "privacy/private-storage-type.swift": {
       "bytes": 97,
       "sha256": "2c240b3f6bb3c1c96f5b06354504905e18d305c4b99ee4e1737311974a9f634c",

@@ -1,34 +1,50 @@
 {
   "README.md": {
-    "bytes": 12204,
-    "sha256": "9baa666049db95999891ace0ddd154b0b5bed4c60aedeedf866eaa592c458da4"
+    "bytes": 14725,
+    "sha256": "f927947dc09d35636f2d07d4943c2acf9facef7d7e112a16f79582d2cbce0423"
   },
   "baseline-inputs.json": {
-    "bytes": 85784,
-    "sha256": "1f5f2a73e2fafd11b19c6736d18c126d28230f9bbb2c976565755eb17a0b378d"
+    "bytes": 86847,
+    "sha256": "db158e6b6b540f0ebbdb869c554b4012b1e42132e220548a934edd67fcaf90eb"
   },
   "controls.json": {
-    "bytes": 12586,
-    "sha256": "6f8b58cee1f5b982e3815c8bebc5e869814f5914b978a06d80569852c74ebf2a"
+    "bytes": 15716,
+    "sha256": "0269addfa264b8d230c710fe2f76fd27e3c686b06bf3cc3e26f6d0b496f69ca6"
+  },
+  "execute-proposal.py": {
+    "bytes": 20437,
+    "sha256": "f4fa7accd733c5c35abbb5506d407394f1c15a62d94d99efbc51ae9fd563cea2"
+  },
+  "macro-objects.txt": {
+    "bytes": 493,
+    "sha256": "1905f7628384bdc8b88e31d67e6c5d3ddddc1b7d24ef7b28a98d7b9004fef764"
+  },
+  "macro-outputs.json": {
+    "bytes": 3427,
+    "sha256": "75c7a471ff5c5ded3cc47a642569a672de657cd481c09bba1790c1c9553d98d5"
+  },
+  "macro-stages.json": {
+    "bytes": 11899,
+    "sha256": "add164451866986d43aaa84e9a9d4389e3d6bf3a57d1ab675e3cbbf476d11018"
   },
   "provenance.json": {
-    "bytes": 3289,
-    "sha256": "5f0c58894117e63f4f01956da5076f210de915a77f8770af32ae04130b220906"
+    "bytes": 3732,
+    "sha256": "97458a3d1fb4ff887ba4ee249b017f25fd079a49afe049bf4755d99dcc2c7998"
   },
   "recipe.json": {
-    "bytes": 16173,
-    "sha256": "80a0205e73235ea36c1f0a519284ea1b51cc82053662beb147d1d1e4877ea608"
+    "bytes": 17084,
+    "sha256": "1a823620171e95cc6b9f601c6a33185877ab22e42c189da8d2187538dd8261d9"
   },
   "scratch-sources.json": {
-    "bytes": 30209,
-    "sha256": "4046824f07553d0d399b596e7f531d5f0a7f9d283943f9d25ceec3b68fa02b50"
+    "bytes": 29930,
+    "sha256": "785599545b58e75b03cce6cabe5884f803519ebeba975b3057c1fb226bb9ea76"
   },
   "selectors.json": {
     "bytes": 4489,
     "sha256": "6c401231bf2c0dc4905b178df977ab3674506b9ef70d672af428af6a1898c17f"
   },
   "static-validation.json": {
-    "bytes": 7277,
-    "sha256": "c9c23d29d8f91a2a1d65b034b4587375840644e40a96c063a4ee57f26a24757c"
+    "bytes": 7039,
+    "sha256": "39dd7811d3eda2e0f34fe926fd7135b9c0bac6927f7300d270526702230abf5f"
   }
 }

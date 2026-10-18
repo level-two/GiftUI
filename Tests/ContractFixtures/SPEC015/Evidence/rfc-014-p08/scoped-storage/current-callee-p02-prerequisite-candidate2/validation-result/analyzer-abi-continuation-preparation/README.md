@@ -1,6 +1,9 @@
 # Analyzer ABI continuation: static execution proposal
 
 Prepared 2026-10-18 from `03df67669f458b75664154b61cc3179416663820`.
+Static correction after independent Strong review of `7b940c93`: A4 now fails
+first in Domain; private-init is explicitly omitted; an exact guarded wrapper
+and four fresh macro stages replace unresolved wrapper/reuse choices.
 **PREPARATION ONLY / STOP. No source or validation allowance is granted.**
 Candidate 2 remains candidate 1/1 consumed, run 1/1 consumed, repairs 0/0.
 This packet proposes one separate eight-selector candidate and one sequential
@@ -45,12 +48,18 @@ current-callee attribution, hardware, deployment and conformance remain open.
 - `scratch-sources.json`: exact UTF-8 source texts/hashes stored as JSON data.
   It creates no maintained or generated Swift source. Positive Domain/probe texts
   contain exactly the proposed attributes. Eight ABI twins each remove one.
-- `controls.json`: 21 controls per profile: three positives, eight ABI negatives,
-  six same-package privacy negatives and four outside-package negatives. Semantic
+- `controls.json`: 20 controls per profile: three positives, eight ABI negatives,
+  five same-package privacy negatives and four outside-package negatives. Semantic
   expected categories are fixed now. Nonzero status alone never passes a negative.
 - `recipe.json`: exact registered command argv, compiler/flag arrays, module and
   cell order, lowering/link/readelf argv, output roots, deterministic token
-  expansion, dependency conditions and unresolved pre-execution boundaries.
+  expansion, dependency conditions and execution preconditions.
+- `execute-proposal.py`: exact proposed execution/receipt wrapper. Its only
+  invocation requires `--execute-newly-authorized-campaign` and an absolute
+  separately reviewed postformat freeze. It has only been parsed statically.
+- `macro-stages.json`, `macro-outputs.json`, `macro-objects.txt`: four fresh macro
+  stages with exact argv and output metadata, mechanically relocated from the
+  prior working recipe. No historical macro test PASS is reused.
 - `baseline-inputs.json`: current hashes of candidate 2's 529-input inventory and
   recipe/policy references. It is a **baseline**, not a post-source execution
   freeze; four changed source hashes must be separately frozen after authorized
@@ -64,17 +73,33 @@ current-callee attribution, hardware, deployment and conformance remain open.
 
 All paths and argv are repository-relative unless absolute in JSON. Brace tokens
 are typed recipe substitutions, never shell expansion or literal compiler flags.
-No execution entrypoint or new registered test driver is installed.
+The proposed guarded execution entrypoint is frozen, not invoked. No new
+registered test driver is installed; the packet wrapper orchestrates the existing
+registered producers and its predeclared scratch controls.
 
 ## Execution order proposed for authorization
 
-Before edits: review/resolve B01–B06 in `recipe.json`, select the new allowance,
-confirm baseline inputs and compiler hashes, assert every output path absent,
-and establish the old 19-method macro PASS qualification. No new macro test run
-is implicitly allowed. If identity is incomplete, stop for a concrete added
-macro stage recipe and allowance. Normal maintained P02 macro build/fixtures
-remain part of each P02 invocation.
+Before edits: approve the exact recipe and new allowance, confirm baseline inputs
+and compiler hashes, and assert every output path absent. The proposed allowance
+now explicitly includes the SDK identity preflight, four fresh macro stages,
+four P02/P04 profile routes, 20 scratch controls per profile (80 total), and the
+three dependent native stages, each listed invocation once. Repairs and retries
+remain zero. `recipe.json` records B01–B03 as resolved preparation dispositions;
+B04–B06 remain explicit execution preconditions and first-use uncertainties.
 
+The exact wrapper is `execute-proposal.py`; it requires the reviewed postformat
+freeze to have exactly the baseline path set and permits only the four selected
+source hashes to differ. It independently checks exact fixture bytes and
+formatting-only whitespace differences in the three maintained candidate files.
+It records and hashes that external freeze before any compiler stage. The wrapper
+never edits those sources or formats them.
+
+The fresh macro compile, link, test-link and 19-method test stages precede the
+first P02 route. `macro-stages.json` fixes the commands and native runner
+environment, with new output locations. `macro-outputs.json` and
+`macro-objects.txt` fix the output map and link list. Every other argument is
+identical to candidate 2's working command shape. The old PASS is provenance
+only. Maintained P02 still performs its normal macro target build/fixtures.
 After authorization: add only the eight attributes; compare every source against
 `selectors.json`; format exactly the three maintained Domain files with the
 `formatting_argv` in `recipe.json`. This invokes the selected local toolchain's
@@ -143,6 +168,13 @@ suffixes beneath `.build/contracts`, `.build/raspberry-pi/contracts`, or
 profile-specific root in `output_roots`. Driver-created paths remain dynamic
 until discovered; that is producer behavior, not an unresolved guessed pathname.
 
+The wrapper freezes source locations and semantic diagnostic regexes for each
+negative. A4 targets `SignalPrimitiveValues.swift` during Domain compilation;
+A6 targets the associated payload use in `AcquisitionState.swift`. The removed
+private-initializer test is excluded from sources, invocation count and privacy
+claims. Private-initializer negative coverage remains unproved; any future
+addition needs a separate reviewed source/matcher and allowance.
+
 Before accepting a receipt, require its mtime at/after that stage start, real
 path under the appropriate `.build` root, expected package/profile, all source
 input hashes equal the postformat freeze, compiler identity/flag identity, and
@@ -168,19 +200,23 @@ stage log/source/module/input inventory and leaves dependent stages unrun.
 
 ## Boundaries requiring a disposition before execution
 
-The JSON is a concrete proposed recipe, not a certified working scratch runner.
-B01 requires selecting and freezing its mechanical execution/receipt wrapper
-under the existing lock. B02 leaves the private-initializer overload diagnostic
-matcher unresolved; source and intended privacy category are fixed, but compiler
-wording cannot safely be guessed. Review/freeze that matcher before execution
-or explicitly narrow this proposed control. B03 requires exact historical macro
-PASS qualification or a separately approved fresh stage. B04 pins the SDK to the
-existing working transcript. B05 explicitly proposes restricted formatting.
-B06 records first-use source/diagnostic uncertainty: an unexpected error stops;
-compilation may not be used to tune these controls within the same allowance.
+B01 is resolved by the frozen guarded wrapper, whose lock, source materialization,
+argv expansion, stage stops, diagnostics, freshness, receipt discovery/hash joins
+and result writes are reviewable in `execute-proposal.py`. It is not claimed to
+have executed successfully. B02 is resolved by explicitly omitting the one
+unsettled private-initializer negative, leaving 20 declared controls per profile.
+B03 is resolved by the four explicit fresh macro stages; their new execution
+allowance remains ungranted. No historical PASS qualification is asserted.
+
+B04 pins the SDK to the prior working transcript and verifies discovery before
+a compiler. B05 proposes restricted formatting for the exact three maintained
+files. B06 preserves first-use compiler/source/diagnostic uncertainty. The
+prepared sources and matchers are immutable for the proposed campaign; an
+unexpected error, unexpected acceptance, wrong stage or source location stops.
+The wrapper has been syntax/structure checked only; no compiler run was used to
+invent or tune this correction.
 
 No automatic ninth selector, extra enum/helper visibility, alternate compiler,
 flag, source variant, diagnostic reclassification, setup retry, lowerer repair,
 new package or generated patch is allowed. Preserve material failures and return
-for review. This packet's static validation does not resolve any of B01–B06 and
-opens no execution allowance.
+for review. Static validation grants no execution allowance or P08 acceptance.
