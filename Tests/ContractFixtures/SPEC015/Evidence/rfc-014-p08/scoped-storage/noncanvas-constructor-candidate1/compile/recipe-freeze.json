@@ -1,0 +1,5 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/compile/prepared.json": "6cab5f79edf9dd2440d7f47942df9614970281c4fe06eac499be9fe973a9d7ae",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/compile/run.py": "d1e253405756985487054b9d0ec4f93ce201499a62f7734f862326a3cfe7223b",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/compile/input-freeze.json": "096cbb77e2ea3ba511cb2f9aa6828d31bf530ec8ce4ae911660fc5b0260d1e55"
+}

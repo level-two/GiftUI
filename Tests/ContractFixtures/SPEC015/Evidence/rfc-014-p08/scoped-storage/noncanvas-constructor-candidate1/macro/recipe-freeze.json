@@ -1,0 +1,10 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/macro/run.py": "34296c044263084a02a70f4ce242b07be92dfaa574fcdda92d5d0939e13d5ea0",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/macro/prepared.json": "15d65169b88bdc8387141f31b61a2e0ec407905fa90594af7645634634c19bfe",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/macro/input-freeze.json": "e11ad94cab9a4ac9739475ec6971bc1ca55b6393c293fd7150a697590573aa3c",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/macro/TestMain-macos.swift": "021840e0c04661c1ac3348174fbcc6796fc83cbf6104a73efbd63c3b74ca9f94",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/macro/registered-methods.json": "ad4d60228b84e0e1bbea3a595fe6f27434f91532f8f7f97f7baeccecabf1a16f",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/macro/runner-environment.json": "56f184593f19603f8bcec6c1b7f14ad513eef76e55510a8d6c941b90ad053f30",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/macro/outputs.json": "0d7bfd7815d7b1daf59fdd5b39ab1645248a3c354b8df7ae7b2dc8a376828b6e",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/macro/Objects.LinkFileList": "1f952f0d885ac0c1cd65192e8188bfb3db7ef51c75e9c5157f43b4c89b6ed67b"
+}

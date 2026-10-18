@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [finite constructor candidate1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/README.md):
+source d65b127c exact3selectors/2files formatted/audited; combined --validate PASS.
+Freshmacro17→fresh25→multiple/nested4→privacy70/index11/body76/object→conditional42SIL.
+Onecandidate1/1 zero automatic SOURCE repairs; no compiler/tests/decoder/runtime
+executed, all older budgets and actual safety/cold/P08 limits unchanged.
+
 Current [finite non-Canvas constructor review proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-grouped-inventory/README.md):
 three selectors/two maintained files; ordinary ABI-only zero-argument constructor
 profile with exact owner/access/attribute guards, CounterScreen+ChildScreen grouped.

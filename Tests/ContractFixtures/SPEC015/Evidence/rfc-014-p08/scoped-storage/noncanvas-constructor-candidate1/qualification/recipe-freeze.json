@@ -1,0 +1,10 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/qualification/prepared.json": "260cd5c178fd66fa0dec512c257b4d45e33e9178f8f859160c33d190ee68b25e",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/qualification/run.py": "7f8453ab15e38644126dec662a356b93e93f28076426061c9adb0a0187d2e6be",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/qualification/input-freeze.json": "79d64ad7e365c3c5f31e4f06c24ebf0c3741083e070bc66edc234f6b91a9d9aa",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/qualification/required-body-targets.json": "95182bf587ddbf0940fe65d338b4d0441d70e1b11dbc6bfc2189ee86de603607",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/qualification/boundaries-decode-prepared.json": "dca065f4f8efa19195e452284d95730b859c5c89316953b9bf4d5f648dcf1e4f",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/qualification/interpret.py": "61dd39344e3a36a488215680f9478194d95528a81a04d058712977c979bed848",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/qualification/origin42-scope.json": "5224b28a722fd0f340e2829ab2dc9b313ce8b6a7140e14b2b5353a2c6dc85db7",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/qualification/provenance.json": "97d80f7353c34ccf65725f4532cfbe7b2f1877581c19a98536cf4222861d758f"
+}

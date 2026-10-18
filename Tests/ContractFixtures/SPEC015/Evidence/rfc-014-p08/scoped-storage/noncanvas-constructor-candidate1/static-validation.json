@@ -1,0 +1,21 @@
+{
+  "status": "PASS combined --validate only; no compiler/test/decoder/runtime",
+  "source_commit": "d65b127c",
+  "source_scope": "exact3selectors2files; producer outside selectors byteexact; original Canvas branch byteexact; test additions only in existing17-method family",
+  "input_counts": {
+    "macro": 279,
+    "compile": 338,
+    "qualification": 536
+  },
+  "fresh_macro_methods": 17,
+  "fresh_modules": 25,
+  "actual_variant_module_checks": 4,
+  "privacy_controls": 70,
+  "complete_index_modules": 11,
+  "body_targets": 76,
+  "consumer_sources": 42,
+  "source_repairs": 0,
+  "future_output": "new isolated absent; no prior artifact acceptance",
+  "protected_external5_pycache": "unchanged/unstaged",
+  "validate_command": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/run.py --validate"
+}

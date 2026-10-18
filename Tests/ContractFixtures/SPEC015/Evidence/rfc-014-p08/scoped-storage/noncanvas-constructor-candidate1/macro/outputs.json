@@ -1,0 +1,33 @@
+{
+  "": {
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/primary.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIMacros/CanvasWitnessLowering.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/CanvasWitnessLowering.d",
+    "object": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/CanvasWitnessLowering.swift.o",
+    "swiftmodule": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/CanvasWitnessLowering~partial.swiftmodule",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/CanvasWitnessLowering.swiftdeps",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/CanvasWitnessLowering.dia"
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIMacros/FiniteSourceLowering.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/FiniteSourceLowering.d",
+    "object": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/FiniteSourceLowering.swift.o",
+    "swiftmodule": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/FiniteSourceLowering~partial.swiftmodule",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/FiniteSourceLowering.swiftdeps",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/FiniteSourceLowering.dia"
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIMacros/GiftUIMacros.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/GiftUIMacros.d",
+    "object": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/GiftUIMacros.swift.o",
+    "swiftmodule": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/GiftUIMacros~partial.swiftmodule",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/GiftUIMacros.swiftdeps",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/GiftUIMacros.dia"
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIMacros/ObservableStateHostMacro.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/ObservableStateHostMacro.d",
+    "object": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/ObservableStateHostMacro.swift.o",
+    "swiftmodule": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/ObservableStateHostMacro~partial.swiftmodule",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/ObservableStateHostMacro.swiftdeps",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/macro/macro/ObservableStateHostMacro.dia"
+  }
+}

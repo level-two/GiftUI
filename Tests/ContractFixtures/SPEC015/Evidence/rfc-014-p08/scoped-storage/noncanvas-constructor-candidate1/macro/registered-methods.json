@@ -1,0 +1,19 @@
+[
+  "testZeroStateExpansionIsDeterministic",
+  "testDirectStatesExpandOnceInLexicalOrder",
+  "testPortableProfileExpansionIsDeterministic",
+  "testPrivateHostUsesAccessibleProtocolWitnesses",
+  "testInheritedStateIsNotEnumeratedByDerivedHost",
+  "testMalformedStateDeclarationIsDiagnosed",
+  "testDeclarationLimitAcceptsUInt16MaxAndRejectsTheOverflowShape",
+  "testCheckedStateHelpersSelectOriginalWrappersInLexicalOrder",
+  "testNestedCheckedStateHelpersStayInTheirOwningNominal",
+  "testOrdinaryPrivateStateWitnessesAreNotSerializedAtAnyHostAccess",
+  "testCompleteFiniteShapeSelectsSerializedWitnesses",
+  "testIncompleteABIDependenciesDoNotSelectSerialization",
+  "testUnsupportedGenericHeadersDoNotSelectSerialization",
+  "testUnprovableEnclosingContextsDoNotSelectSerialization",
+  "testReservedStateHelperLookalikesAreDiagnosedWithoutFallback",
+  "testLowererRejectsReservedInputCollisionsIncludingEscapedNames",
+  "testActualLoweredStateOutputHasSeparatedHelperDeclarations"
+]

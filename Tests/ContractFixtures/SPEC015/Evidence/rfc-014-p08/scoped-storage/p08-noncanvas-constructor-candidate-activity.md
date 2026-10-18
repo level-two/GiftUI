@@ -11,3 +11,9 @@ Combined freshmacro17→freshlower25→multiple/nested fourvariants→privacy70�
 indexes/76unique bodies/object→conditional same42SIL. Preparation/static validation
 only; compiler/tests/decoder/runtime execute separately. No remainingfrontier edit,
 contract relaxation, automatic source retry, or P08 acceptance follows.
+
+Source/test commit d65b127c frozen with exact selector/Canvas byte audit and additions
+only inside existing17-method family. [Combined prepared runner](noncanvas-constructor-candidate1/README.md)
+static --validate PASS; fresh isolated macro/generated/module artifact seals qualify
+only after execution. No compiler/test/decoder/runtime executed in preparation;
+initial candidate remains unaccepted and no automatic SOURCE repair follows.
