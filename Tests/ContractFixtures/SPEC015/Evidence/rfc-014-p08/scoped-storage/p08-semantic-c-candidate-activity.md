@@ -32,3 +32,9 @@ prior70privacy/decode11/interpreter/object2 PASS. New3fixtures invalid outerthro
 inference; borrowedinit actualunique kind1/1BB has different canonical mangled
 substitution (initial86/87). Harness-only diagnosis; SILblocked. Source fixed/no
 repair or budgetreset, focused continuation requires independent review.
+
+[Focused harness continuation proposal](semantic-c-harness-continuation1/README.md)
+staticvalidatePASS: three explicit typedthrows outerclosures/observed exactnegative
+diagnostics +one canonical actual initializer rawrecord identity. Prior70/sealed
+macro25variants/index/captures retained,1293frozeninputs; execute corrected3/all87
+then conditionalfresh42SIL only after independentREADY. Source unchanged/no reset.

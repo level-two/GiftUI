@@ -1,0 +1,7 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/run.py": "efb563232a768ec2c469de0e563ac5eefacd7db69e69dc8e0481e0257c05d4e1",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/prepared.json": "2518409009057d0008b10c14eb5e3b68080a6c14a68315a973c65f0d649368a2",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/proposed-required-87.json": "970ce7d00ca7753014c97efd7529759b5ea310b778a9d8d8f20c461c223a0e27",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/harness-correction-map.json": "629a527bb54baf82e70d9a0e6efd60fd8cef73d23b441e12bdd72d44708b6ccd",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/input-freeze.json": "1a9cc5df585e676bc852e285c91393696bbf17da6374e3be48e0728745854180"
+}

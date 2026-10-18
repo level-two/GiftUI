@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [semantic C initial result / focused harness proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/README.md):
+macro17/lower25/fourvariants/prior70/decode11/interpreter/captures PASS. New3 typed
+closure fixtures invalid, one noncanonical bodyselector (actualbody kind1/1BB).
+Corrected3+same87→fresh42SIL continuation prepared/validatePASS; review before run.
+No source repair/reset, sourcef2325b85 fixed; actual safety/cold/P08 unqualified.
+
 Current [grouped C source/combined recipe prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/README.md):
 sourcef2325b85 exact36sites/4files audit/format PASS; ONE1/1 zeroautomaticSOURCErepairs.
 Freshmacro17→fresh25+all4variants→privacy73/index11/body87/current42; staticvalidate

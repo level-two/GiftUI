@@ -1,0 +1,80 @@
+{
+  "status": "PROPOSAL ONLY independentreview beforeexecution",
+  "source_commit": "f2325b85",
+  "classification": "harness fixture typedthrows/effect inference, exact diagnostic spelling and canonical fullsymbol identity only",
+  "rows": [
+    {
+      "target_index": 86,
+      "original_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticRecordStore.init(borrowing:)",
+        "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9borrowingACyxGACyxGh_tcfC",
+        "policy": "new internal fullmangled signature read-only-demanglechecked; freshunique/nonzero serializedkind/positiveBB mandatory, no permissivefallback"
+      },
+      "proposed_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticRecordStore.init(borrowing:)",
+        "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9borrowingACyxGAEh_tcfC",
+        "policy": "exact fresh fullmangled root +pinned complete current rawrecord; unique/kindnonzero/positiveBB unchanged"
+      },
+      "physical_record": {
+        "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9borrowingACyxGAEh_tcfC",
+        "identifier_id": 575,
+        "function_id": 546,
+        "hash": 2914793765,
+        "demangled": "GiftUISemanticCore.SemanticRecordStore.init(borrowing: __shared GiftUISemanticCore.SemanticRecordStore<A>) -> GiftUISemanticCore.SemanticRecordStore<A>",
+        "offset_bits": 4111261,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 1,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1813 op29=0 op30=0 op31=104 op32=0 op33=1/> record string = ''"
+      },
+      "source_signature": "@_lifetime(copy other) @inlinable internal init(borrowing other: borrowing SemanticRecordStore<Payload>)",
+      "reason": "Predicted noncanonical repeated type demangles equivalently but is not exact emitted symbol; actualrecord546/offset4111261/kind1/1BB uniquelymatches semantic signature, no closure/default/defer replacement"
+    }
+  ],
+  "fixture_changes": [
+    {
+      "name": "semantic-c-checked-borrow-positive",
+      "old_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/privacy/semantic-c-checked-borrow-positive.swift",
+      "new_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/privacy/semantic-c-checked-borrow-positive.swift",
+      "only_source_delta": ") { store in \u2192 ) { (store) throws(SemanticExpansionError) in",
+      "source_api_basis": "withSemanticRecordStore callback explicitly throws(SemanticExpansionError), existing maintained factory closures use typed annotation at SemanticRecordStore.swift:28\u201335; no sourceAPI or lifetime/default/body change",
+      "expected_errors": [],
+      "diagnostic_basis": "Exact intended diagnostics observed alongside incidental anyError conversion in initial result; zeroerrors positive/oneexact intendednegative criterion unchanged"
+    },
+    {
+      "name": "semantic-c-borrow-init-negative",
+      "old_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/privacy/semantic-c-borrow-init-negative.swift",
+      "new_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/privacy/semantic-c-borrow-init-negative.swift",
+      "only_source_delta": ") { store in \u2192 ) { (store) throws(SemanticExpansionError) in",
+      "source_api_basis": "withSemanticRecordStore callback explicitly throws(SemanticExpansionError), existing maintained factory closures use typed annotation at SemanticRecordStore.swift:28\u201335; no sourceAPI or lifetime/default/body change",
+      "expected_errors": [
+        "'SemanticRecordStore<Payload>' initializer is inaccessible due to 'internal' protection level"
+      ],
+      "diagnostic_basis": "Exact intended diagnostics observed alongside incidental anyError conversion in initial result; zeroerrors positive/oneexact intendednegative criterion unchanged"
+    },
+    {
+      "name": "semantic-c-borrow-escape-negative",
+      "old_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/privacy/semantic-c-borrow-escape-negative.swift",
+      "new_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/privacy/semantic-c-borrow-escape-negative.swift",
+      "only_source_delta": ") { store in \u2192 ) { (store) throws(SemanticExpansionError) in",
+      "source_api_basis": "withSemanticRecordStore callback explicitly throws(SemanticExpansionError), existing maintained factory closures use typed annotation at SemanticRecordStore.swift:28\u201335; no sourceAPI or lifetime/default/body change",
+      "expected_errors": [
+        "instance method 'withCandidateView' requires that 'SemanticRecordView<UInt32>' conform to 'Escapable'"
+      ],
+      "diagnostic_basis": "Exact intended diagnostics observed alongside incidental anyError conversion in initial result; zeroerrors positive/oneexact intendednegative criterion unchanged"
+    }
+  ]
+}
