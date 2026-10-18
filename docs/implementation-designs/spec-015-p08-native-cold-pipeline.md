@@ -18,6 +18,12 @@ superseded_by: null
 
 ## Grouped dependency continuation — 2026-10-18
 
+The [independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-independent-design-review.md)
+finds the reduced candidate not ready: retained explicit `@inlinable` callers
+still cross the private-body source boundary. Default CMO cannot bypass that
+source check. Review the exact additional caller frontier as one amendment before
+source or compiler work. Initial0/1/corrections0/2 remain unconsumed.
+
 The [new user-authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-activity.md)
 and [exact reduced map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-design/candidate-map.json)
 are prepared for independent review:15 attribute sites/nine files, zero explicit

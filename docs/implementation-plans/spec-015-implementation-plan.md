@@ -31,7 +31,9 @@ superseded_by: null
 
 Current [grouped module-closure activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-activity.md):
 new explicit user authorization, initial0/1 plus corrections0/2; independent design
-review pending. Exact15-site/nine-file attribute correction, no ABI/access sweep;
+review [not ready](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-independent-design-review.md):
+the exact private-body caller frontier needs one grouped amendment before source
+or compiler work. Proposed15-site/nine-file correction, no ABI/access sweep;
 sequential fresh25-module dependency sweep collects independent failures and
 blocks stale dependents before physical/actual-host and strict safety/cold gates.
 No source/compiler work has begun; all prior budgets and P08/R07/T8.1 stay open

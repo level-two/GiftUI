@@ -1,7 +1,10 @@
 # P08 grouped module closure activity — 2026-10-18
 
-**Prepared for independent review; initial0/1, corrections0/2; no source/compiler
-execution.** Eugene explicitly authorized grouped Layout and remaining-module
+**Independent design review not ready; initial0/1, corrections0/2; no source/compiler
+execution.** The [review](p08-grouped-module-closure-independent-design-review.md)
+identifies retained source-serialized callers of private implementation. Amend
+that exact grouped frontier before source or compiler work; no allowance is used.
+Eugene explicitly authorized grouped Layout and remaining-module
 dependency corrections, then full-host/cold validation under the strict contract.
 This is a new allowance of one initial candidate and at most two grouped
 corrective cycles. It preserves every exhausted prior budget, the frozen witness
