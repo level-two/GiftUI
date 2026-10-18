@@ -32,7 +32,10 @@ superseded_by: null
 Current [fixed-source qualification1 result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-fixed-qualification1-result/README.md):
 all31 checks PASS,22 selected privacy controls and six required serialized bodies
 available;569 frozen input/recipe/log hashes verify. Source22eea103 unchanged,
-fresh25 compile PASS retained. Independent boundary review next. All42 origins/
+fresh25 compile PASS retained.
+[Independent boundary PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-runtimecore-fixed-qualification-independent-review.md)
+qualifies selected prerequisites and the prepared actual42-source SIL command for
+already authorized execution/read-only interpretation. All42 origins/
 private callees/concrete-host specialization/observer attribution, full14-loan/
 lifetime/Optional/provenance/exclusivity/failure-cleanup safety and strict cold
 remain unqualified. No source repair/new allowance or P08/R07/T8.1 acceptance;

@@ -5,7 +5,9 @@ controls and six required bodies available; all569 input/recipe/log hashes verif
 [Qualification result](runtimecore-fixed-qualification1-result/README.md) preserves
 complete decoder/index/object/diagnostic evidence. Source22eea103 unchanged;
 no subsequent source/compiler/decoder/runtime action. Compile25 PASS retained.
-Independent boundary review next; all42/concrete-host/private-callee/observer,
+[Independent boundary PASS](p08-runtimecore-fixed-qualification-independent-review.md)
+qualifies these selected prerequisites and the prepared actual42-source SIL command
+for its already authorized execution/read-only interpretation. All42/concrete-host/private-callee/observer,
 full14-loan/lifetime/Optional/provenance/exclusivity/failure-cleanup safety and
 strict cold remain unqualified. No acceptance or new allowance. Eugene
 explicitly authorized the three previously diagnosed witness annotations followed

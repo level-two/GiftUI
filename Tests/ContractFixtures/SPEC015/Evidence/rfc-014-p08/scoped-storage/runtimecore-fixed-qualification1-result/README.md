@@ -28,8 +28,12 @@ raw host capture does not establish specialization, no allocations or attributio
 Normal-import checked positives and isolated negative diagnostics remain exact.
 No public/package capability, unchecked constructor or lifetime change follows.
 
-Independent boundary review precedes the existing prepared actual42-source
-optimized SIL command. All42 origins/private-callee closure and actual concrete
+[Independent boundary PASS](../p08-runtimecore-fixed-qualification-independent-review.md)
+verifies the frozen hashes, all 2,224 physical index entries and intended privacy
+diagnostics. The existing prepared actual42-source optimized SIL command is ready
+for its already authorized collection and read-only interpretation, using the
+frozen environment and input/recipe checks. All42 origins/private-callee closure
+and actual concrete
 CounterPipelineOwner lifecycle/action/binder/dispatch/Canvas/layout continuations
 and destruction still need specialization evidence, original State structural
 borrow without temporary/copy/context allocation, and metadata/TLS/observer
@@ -46,4 +50,5 @@ unchanged strict host-first cold/reuse windows/counts/baselines/enforcement.
 No new scope is prepared here. No source repair allowance or budget reset is
 granted; the sole candidate and all prior exhausted budgets remain recorded.
 Source candidate/combined overlay/P08/R07/T8.1 remain unaccepted. Protected
-external five/pycache remain exact and unstaged. Independent review is next.
+external five/pycache remain exact and unstaged. No compiler/runtime runs occurred
+during independent review; concrete consumer codegen is next.
