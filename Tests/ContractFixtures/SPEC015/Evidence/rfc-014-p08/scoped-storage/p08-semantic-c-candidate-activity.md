@@ -83,6 +83,12 @@ cb4b10f0/0f488a53 READY for assigned ONE attempt/ZERO repairs. Four-source inver
 projection and macro279/49 reuse verify; fresh25/fourvariants→privacy93/index11/
 body92/current42 strict gates coherent. No compiler/runtime/source or acceptance.
 
+[Independent E/F boundary review](p08-ef-resolution-boundary-review.md): a24d4ec6
+selected E/F PASS; original23 selected boundaries resolved in limited scope. Fresh
+25/4/93/11/92/current42 provenance verifies; actual Static/P08 caller metadata removed.
+Next grouped current-callee+safety needs fresh RuntimeCycleProbe/scoped-host schema
+receipts. Full costs/14loans/cold/P08 remain open; no source allowance/heapclaim.
+
 [Explicit-return pair/fresh42SIL PASS](semantic-c-escape-continuation1-result/README.md):
 positive0errors/negative1exactEscapable; SILexit0/61,999,526bytes/1305inputsverified,
 prior87/72andsealedprerequisites retained. No source/repeat/repairreset; actual C
