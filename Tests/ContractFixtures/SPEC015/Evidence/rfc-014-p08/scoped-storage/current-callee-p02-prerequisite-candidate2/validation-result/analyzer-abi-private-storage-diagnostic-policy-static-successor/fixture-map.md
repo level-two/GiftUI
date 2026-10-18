@@ -1,7 +1,6 @@
 # Private-storage static fixture map
 
-All 196 inherited case fields and oracles are identical to the A8 packet.
-Every following oracle is prepared and unexecuted.
+All prior 305 concrete fixture fields and oracles remain identical to preparation commit e08d14bb. Every following oracle is prepared and unexecuted.
 
 - `PS-P01`: True; Exact archived campaign5 sequence with trusted client, Domain inputs, imported module and producer/consumer identities.
 - `PS-N001`: False; Missing explicit policy opt-in
@@ -112,3 +111,29 @@ Every following oracle is prepared and unexecuted.
 - `PS-X106`: False; Wrong producer receipt source hash domain_state
 - `PS-X107`: True; Synthetic alternate module bytes with consistent authenticated producer join; no semantic module claim
 - `PS-X108`: False; Noncanonical caller path
+- `PS-CORE-P01`: True; Synthetic fresh campaign6 root AND fresh P02 core root with trusted receipt/hash/artifact join; logical fixtures only
+- `PS-CORE-N001`: False; Missing trusted current core map with fresh producer/consumer core operand
+- `PS-CORE-N002`: False; Stale archived core in caller-declared current root
+- `PS-CORE-N003`: False; Different declared current core root
+- `PS-CORE-N004`: False; Receipt path points to old core
+- `PS-CORE-N005`: False; Module artifact path points to old core
+- `PS-CORE-N006`: False; Core receipt hash mismatch
+- `PS-CORE-N007`: False; Altered receipt bytes without updated hash
+- `PS-CORE-N008`: False; Altered core artifact bytes without matching receipt artifact hash
+- `PS-CORE-N009`: False; Stale archived core operand in producer
+- `PS-CORE-N010`: False; Stale archived core operand in consumer
+- `PS-CORE-N011`: False; Stale archived core operand in module_receipt
+- `PS-CORE-N012`: False; Wrong profile in current core root
+- `PS-CORE-N013`: False; Noncanonical current core root
+- `PS-CORE-N014`: False; Missing current core map field root
+- `PS-CORE-N015`: False; Missing current core map field receipt_path
+- `PS-CORE-N016`: False; Missing current core map field receipt_sha256
+- `PS-CORE-N017`: False; Missing current core map field receipt_fixture
+- `PS-CORE-N018`: False; Missing current core map field artifact_path
+- `PS-CORE-N019`: False; Missing current core map field artifact_fixture
+- `PS-CORE-N020`: False; Authenticated-looking receipt has wrong-package
+- `PS-CORE-N021`: False; Authenticated-looking receipt has wrong-profile
+- `PS-CORE-N022`: False; Authenticated-looking receipt has wrong-source-hash
+- `PS-CORE-N023`: False; Authenticated-looking receipt has failed-check
+- `PS-CORE-N024`: False; Authenticated-looking receipt has wrong-compiler-hash
+- `PS-CORE-N025`: False; Authenticated-looking receipt has missing-artifact

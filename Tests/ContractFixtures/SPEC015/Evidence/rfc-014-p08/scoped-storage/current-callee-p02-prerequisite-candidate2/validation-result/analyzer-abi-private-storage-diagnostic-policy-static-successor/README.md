@@ -32,17 +32,17 @@ The unchanged historical primary classifier independently verifies private
 protection and the whole-token storage symbol from the primary message.
 
 A4/A7/A8 literal policies and historical classifier body remain identical.
-All 196 inherited concrete cases retain every field and oracle. 109 new
-concrete cases include three expected accepts and 106 rejects; see
+All 196 inherited concrete cases retain every field and oracle. 135 new
+concrete cases include four expected accepts and 131 rejects; see
 `fixture-map.md`. Other controls and profiles gain no allowance. The freeze
-preserves 642 external identities, including the historical 541-input
+preserves 644 external identities, including the historical 541-input
 freeze, A4/A7/A8 packets/results, campaign5 preparation and terminal archive.
 All historical stops, consumed allowances and unrun descendants are preserved.
 
 The deterministic future runner requires exact argv/cwd/interpreter, -B and
 active assertions, a fresh exclusive receipt, closed packet inventory, and all
 packet/external hashes before importing the pure parser. It allows at most
-305 classification calls, zero compiler/producer/campaign invocations, and
+331 classification calls, zero compiler/producer/campaign invocations, and
 stops at the first unexpected result with zero repairs or retries. Execution
 requires independent review and a separate static gate. No static receipt exists.
 
@@ -74,3 +74,28 @@ before the client compile. No diagnostic-selected path lookup is permitted.
 This integration prerequisite remains unimplemented by this packet. One
 synthetic alternate module byte fixture exercises hash-join consistency only
 and makes no claim of valid compiler output or an authenticated actual producer.
+
+Strong review of preparation commit `e08d14bb` found B01: the second core -I
+operand in producer/consumer argv still named campaign5's random P02 directory.
+This correction adds a separately caller-predeclared current core map. Its root
+must be canonical, fresh and under the exact P02 build parent with macos-static
+leaf. Its result.json path and bytes/SHA-256 must join to that root. Receipt
+package/profile, frozen source input hashes, compiler/plugin identities,
+execution and checks must match the frozen successful P02 shape. Actual
+GiftUI.swiftmodule bytes must join to the current receipt artifact size/hash
+and declared root. Only the exact archived core path operand may change;
+all remaining argv structure and flags remain exact. Neither path comes from
+diagnostics. The module producer receipt must use this same current core.
+
+The old 305 fixtures and their fields/oracles remain identical. Their omitted
+current-core map retains the sealed historical core identity for compatibility
+and archival static coverage only. Future integration must always supply the
+current-core map and authenticate the actual successful current P02 receipt,
+its path/hash, artifact bytes and invocation before using it. The parser can
+verify joins but cannot authenticate external provenance. This remains a
+mandatory integration wrapper responsibility and independent review gate.
+The added accept changes both campaign and core roots; additional rejects
+cover stale or inconsistent roots, argv, receipt fields/hashes and artifacts.
+Synthetic fresh paths reuse frozen reference bytes as logical fixtures only;
+they establish no new P02 result. `correction-provenance.json` preserves the
+blocked preparation identities. No parser or execution allowance was consumed.

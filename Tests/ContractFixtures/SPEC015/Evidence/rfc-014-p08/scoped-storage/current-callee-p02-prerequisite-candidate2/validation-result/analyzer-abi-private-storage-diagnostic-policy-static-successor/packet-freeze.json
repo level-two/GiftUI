@@ -10,27 +10,32 @@
   ],
   "campaign_authority": false,
   "inherited_inputs": 196,
-  "new_inputs": 109,
+  "new_inputs": 135,
   "packet_files": [
     {
-      "bytes": 5201,
+      "bytes": 6962,
       "path": "README.md",
-      "sha256": "1dd02532537f19025b5c3bddd2ca799b83153e63c44bd413dea8721b0c09915d"
+      "sha256": "30a74c6f73875da76f8c12dc4656087064cdf389e59633bd0e9a6da7da09059c"
     },
     {
-      "bytes": 29981,
+      "bytes": 4924,
+      "path": "correction-provenance.json",
+      "sha256": "23f53392a58d45b914f04a4d41e4e78736785801d2a96e639c9ee6d1cece7ece"
+    },
+    {
+      "bytes": 41965,
       "path": "diagnostic_parser.py",
-      "sha256": "ed851f8172c7fce95eecb123db175f81dc8c231d66e6eb51b325660fa219bad8"
+      "sha256": "c7db6e43c62cf1ddefbe428d7288ba457dd3d404e09f172e3bb4a55ca0be1480"
     },
     {
-      "bytes": 6561,
+      "bytes": 8483,
       "path": "fixture-map.md",
-      "sha256": "af1a005d6609db1e1eb6d80d94864f12ee9046249adcbf1b4631fc0e9ce046df"
+      "sha256": "4537563a675c309b09825ba3a976ce6079f940cfb432ff1f3d7e01057df9a946"
     },
     {
-      "bytes": 6907,
+      "bytes": 7622,
       "path": "identity-map.json",
-      "sha256": "3758fdf119b571f3823b15dbf2a534ea0806c6d0037dfc43e87476f6555cfa19"
+      "sha256": "681d71df4ab9fe30b4106dd0db9a7b4496d8b576007638268907383ce231415e"
     },
     {
       "bytes": 889176,
@@ -88,6 +93,46 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
+      "bytes": 347436,
+      "path": "inputs/core/GiftUI.swiftmodule",
+      "sha256": "aa0f91486d612c2506b569c0e81aecb1ae616c10ef050664055f969927e10c48"
+    },
+    {
+      "bytes": 15198,
+      "path": "inputs/core/P02-result.json",
+      "sha256": "f691d23bb06b2b0079cb00408365d291228cf4fa565f33bae69e6bd78de0067e"
+    },
+    {
+      "bytes": 15199,
+      "path": "inputs/core/reject-failed-check.json",
+      "sha256": "a0c6a46701d7f3050a0dbc0f31152209f2ea1a34457cd2331d3201782555c71b"
+    },
+    {
+      "bytes": 15057,
+      "path": "inputs/core/reject-missing-artifact.json",
+      "sha256": "f56cbe9a5d86c2d078826d6ad2d9874366febaac9dfa89baa120befa8f3dfa7b"
+    },
+    {
+      "bytes": 15198,
+      "path": "inputs/core/reject-wrong-compiler-hash.json",
+      "sha256": "3c96a2a66f0aeae9b819a427fd53a251c7a08c3891308dec66b5bcb858879d15"
+    },
+    {
+      "bytes": 15198,
+      "path": "inputs/core/reject-wrong-package.json",
+      "sha256": "6ecb8eeb5fa61a1f217c3660f84f93b4f0bcfbfb3869fcab8fe3beabe1ddf8d3"
+    },
+    {
+      "bytes": 15199,
+      "path": "inputs/core/reject-wrong-profile.json",
+      "sha256": "d0db9eca17c55dde3b159f298ab584a4209e35ae00573745b34b58f43057ac14"
+    },
+    {
+      "bytes": 15198,
+      "path": "inputs/core/reject-wrong-source-hash.json",
+      "sha256": "7b16732b8bd6feb3bfed30f05a8e0a188ff78057b427fd7982967e13927375f9"
+    },
+    {
       "bytes": 243,
       "path": "inputs/domain/AcquisitionState.swift",
       "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
@@ -115,12 +160,12 @@
     {
       "bytes": 1295,
       "path": "invocation.json",
-      "sha256": "65e2289a0ff33227bd66c9122ff66048eba93b3c1a83af2a9e557996cd82a309"
+      "sha256": "05931413636ffb9b1301e37690fec182b6214428700f079c3ba47060ccfa0154"
     },
     {
-      "bytes": 1354329,
+      "bytes": 1699348,
       "path": "new-cases.json",
-      "sha256": "cf1cb8dff54f73cef78fed5cde1e4916e8feea24b99d40eb30dc86838e1f82e4"
+      "sha256": "18b3a0a49d94849617188e10eb98cf5e49e79ef56c4fe4b574d0849f1ada0223"
     },
     {
       "bytes": 764,
@@ -128,24 +173,24 @@
       "sha256": "b072ac4620d92df666a1fc5d1e5be6282dfb576fc56cbe22bb49e1e7c213ab63"
     },
     {
-      "bytes": 7400,
+      "bytes": 19269,
       "path": "policy.json",
-      "sha256": "06cd42654a0ddf8c362ad8467ae6b6346750f7734f704d5b31916ac531d1edc8"
+      "sha256": "d208363448568e62a9198e885d1cef24637bcf00fc4dd01f0df3aabd977ed47b"
     },
     {
-      "bytes": 239725,
+      "bytes": 240241,
       "path": "preserved-inventory.json",
-      "sha256": "9f64da20e7017401efaadc940382ceccd4913df2d9f0defdc887f91a3307a6d7"
+      "sha256": "678eb02b6a749eebb326e8380548fb6754bc1f33d600067bea39f6971c16bcf1"
     },
     {
-      "bytes": 8126,
+      "bytes": 9048,
       "path": "run-static-fixtures.py",
-      "sha256": "9c9dcae2bbc00cc51af9f94c37f50604b209ae27c201b58426372a2842f6e097"
+      "sha256": "49df047caefedfd079b72d77e137c752e5a3e2c4a6628e65c9340768c9683de6"
     },
     {
-      "bytes": 510,
+      "bytes": 598,
       "path": "static-inspection.json",
-      "sha256": "d67aae435a72281982f76f72fba165422969eb647e604659ca1c0e00b48410d3"
+      "sha256": "e1ea2d87c3663f3030ab476018b8182c83a63c5dc9d62b92ce93c5b843db5c8f"
     }
   ],
   "preserved_files": [
@@ -173,6 +218,16 @@
       "bytes": 99,
       "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/private-storage/inputs/private-storage.swift",
       "sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf"
+    },
+    {
+      "bytes": 347436,
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8afb49da68a64d7-tcop19de/macos-static/GiftUI.swiftmodule",
+      "sha256": "aa0f91486d612c2506b569c0e81aecb1ae616c10ef050664055f969927e10c48"
+    },
+    {
+      "bytes": 15198,
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8afb49da68a64d7-tcop19de/macos-static/result.json",
+      "sha256": "f691d23bb06b2b0079cb00408365d291228cf4fa565f33bae69e6bd78de0067e"
     },
     {
       "bytes": 7360,
@@ -3361,5 +3416,5 @@
     }
   ],
   "status": "PREPARED_ONLY_UNEXECUTED_REVIEW_REQUIRED",
-  "total_static_inputs": 305
+  "total_static_inputs": 331
 }

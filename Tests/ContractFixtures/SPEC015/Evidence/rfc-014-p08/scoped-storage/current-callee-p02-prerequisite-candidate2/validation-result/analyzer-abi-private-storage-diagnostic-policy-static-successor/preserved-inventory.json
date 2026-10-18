@@ -26,6 +26,16 @@
       "sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf"
     },
     {
+      "bytes": 347436,
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8afb49da68a64d7-tcop19de/macos-static/GiftUI.swiftmodule",
+      "sha256": "aa0f91486d612c2506b569c0e81aecb1ae616c10ef050664055f969927e10c48"
+    },
+    {
+      "bytes": 15198,
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8afb49da68a64d7-tcop19de/macos-static/result.json",
+      "sha256": "f691d23bb06b2b0079cb00408365d291228cf4fa565f33bae69e6bd78de0067e"
+    },
+    {
       "bytes": 7360,
       "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/AnalyzerSchema.log",
       "sha256": "de911941bbf7fcb6aee9739b745906a4641be2a5eb5d2d325a1f8bba299a067f"

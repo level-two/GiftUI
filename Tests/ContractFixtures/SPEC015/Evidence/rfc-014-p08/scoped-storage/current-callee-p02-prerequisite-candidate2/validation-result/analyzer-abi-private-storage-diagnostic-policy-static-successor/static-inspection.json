@@ -3,15 +3,17 @@
   "active_module_hash_from_authenticated_caller_receipt": true,
   "campaign_invocations": 0,
   "compiler_invocations": 0,
-  "expected_accepts_new": 3,
+  "current_core_join_prepared": true,
+  "expected_accepts_new": 4,
   "historical_classifier_ast_identical": true,
   "inherited_fields_and_oracles_identical": true,
   "inherited_inputs": 196,
-  "new_inputs": 109,
+  "new_inputs": 135,
   "parser_calls": 0,
-  "preserved_files": 642,
+  "preserved_files": 644,
+  "prior_305_fields_and_oracles_identical": true,
   "producer_invocations": 0,
   "status": "PREPARATION_AST_JSON_HASH_ONLY_UNEXECUTED",
   "tests": 0,
-  "total_inputs": 305
+  "total_inputs": 331
 }

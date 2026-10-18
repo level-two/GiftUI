@@ -75,6 +75,13 @@
     "stderr_sha256": "c727e219810e43fbd21319232be8ce34405eeedf5c872798ec80907b250d85a8",
     "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
+  "current_core_join": {
+    "active_identity": "Caller-predeclared current root, authenticated actual current P02 result.json bytes/hash, and GiftUI.swiftmodule bytes joined to receipt; exact argv otherwise",
+    "archived_root": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8afb49da68a64d7-tcop19de/macos-static",
+    "authentication_boundary": "Integration wrapper must verify actual current core receipt before supplying trusted map",
+    "reference_receipt": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8afb49da68a64d7-tcop19de/macos-static/result.json",
+    "reference_receipt_sha256": "f691d23bb06b2b0079cb00408365d291228cf4fa565f33bae69e6bd78de0067e"
+  },
   "module_identity_observation": "Existing local campaign5 module bytes observed during preparation; producer argv/exit are archived. No module rebuild or semantic validation performed.",
   "producer": {
     "argv": [
