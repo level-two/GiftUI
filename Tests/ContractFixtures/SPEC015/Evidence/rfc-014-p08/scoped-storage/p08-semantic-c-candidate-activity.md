@@ -38,3 +38,11 @@ staticvalidatePASS: three explicit typedthrows outerclosures/observed exactnegat
 diagnostics +one canonical actual initializer rawrecord identity. Prior70/sealed
 macro25variants/index/captures retained,1293frozeninputs; execute corrected3/all87
 then conditionalfresh42SIL only after independentREADY. Source unchanged/no reset.
+
+# Focused harness review
+
+[Independent harness review](p08-semantic-c-harness-review.md):0368a573 READY;
+three outer typed-throws corrections isolate already observed intended diagnostics,
+canonical initializer546/kind1/1BB raw identity verifies. Other86 targets/strict87
+gate and1293input/49macro/251provider seals unchanged. Run corrected3→87→fresh42
+SIL only; no source repair/budget reset, metadata/cost/safety/cold/P08 acceptance.
