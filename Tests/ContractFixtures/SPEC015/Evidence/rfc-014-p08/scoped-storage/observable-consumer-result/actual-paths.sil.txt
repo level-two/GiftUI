@@ -1,0 +1,430 @@
+--- lines 121580-121635 ---
+121580:   %85 = struct_element_addr %37, #CounterAdmissionBacking.sealedAction // users: %88, %86
+121581:   %86 = load %85                                  // user: %89
+121582:   %87 = enum $Optional<CapturedAction<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %88
+121583:   store %87 to %85                                // id: %88
+121584:   switch_enum %86, case #Optional.some!enumelt: bb24, case #Optional.none!enumelt: bb25 // id: %89
+121585: 
+121586: // %90                                            // users: %97, %91
+121587: bb9(%90 : $SemanticCompleteIdentity):             // Preds: bb7
+121588:   debug_value %90, let, name "rootIdentity"       // id: %91
+121589:   %92 = integer_literal $Builtin.Int16, 0         // user: %93
+121590:   %93 = struct $UInt16 (%92)                      // user: %97
+121591:   %94 = struct_element_addr %0, #CounterPipelineOwner.root // users: %122, %95
+121592:   %95 = load %94                                  // users: %97, %101, %120
+121593:   // function_ref specialized ObservableStateRootScope<>.matching(_:ordinal:)
+121594:   %96 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8matching_7ordinalSiSgq__s6UInt16VtF17P08CounterRuntime0K10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5 : $@convention(method) (SemanticCompleteIdentity, UInt16, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> Optional<Int> // user: %97
+121595:   %97 = apply %96(%90, %93, %95) : $@convention(method) (SemanticCompleteIdentity, UInt16, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> Optional<Int> // user: %98
+121596:   switch_enum %97, case #Optional.some!enumelt: bb11, case #Optional.none!enumelt: bb22 // id: %98
+121597: 
+121598: bb10:                                             // Preds: bb7
+121599:   br bb23                                         // id: %99
+121600: 
+121601: // %100                                           // users: %106, %120
+121602: bb11(%100 : $Int):                                // Preds: bb9
+121603:   %101 = struct_extract %95, #ObservableStateRootScope.records // user: %102
+121604:   %102 = struct_extract %101, #UnsafeMutablePointer._rawValue // user: %103
+121605:   %103 = pointer_to_address %102 to [strict] $*ObservableStateRootControl // user: %104
+121606:   %104 = struct_element_addr %103, #ObservableStateRootControl.records // user: %111
+121607:   %105 = integer_literal $Builtin.Int64, 2        // user: %108
+121608:   %106 = struct_extract %100, #Int._value         // users: %112, %108, %107
+121609:   %107 = builtin "cmp_slt_Int64"(%106, %51) : $Builtin.Int1 // user: %109
+121610:   %108 = builtin "cmp_sge_Int64"(%106, %105) : $Builtin.Int1 // user: %109
+121611:   %109 = builtin "or_Int1"(%107, %108) : $Builtin.Int1 // user: %110
+121612:   cond_fail %109, "Index out of bounds"           // id: %110
+121613:   %111 = struct_element_addr %104, #InlineArray._storage // user: %113
+121614:   %112 = builtin "truncOrBitCast_Int64_Word"(%106) : $Builtin.Word // user: %114
+121615:   %113 = vector_base_addr %111                    // user: %114
+121616:   %114 = index_addr [stack_protection] %113, %112 // user: %115
+121617:   %115 = struct_element_addr %114, #ObservableStateRootControl.Record.published // user: %116
+121618:   %116 = struct_element_addr %115, #Bool._value   // user: %117
+121619:   %117 = load %116                                // user: %118
+121620:   cond_br %117, bb12, bb13                        // id: %118
+121621: 
+121622: bb12:                                             // Preds: bb11
+121623:   // function_ref specialized ObservableStateRootScope<>.key(at:)
+121624:   %119 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE3key2at0A2UI01_A10UIModelKeyVy6SchemaQzGSi_tF17P08CounterRuntime0N10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5 : $@convention(method) (Int, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> _GiftUIModelKey<CounterModelSchema> // user: %120
+121625:   %120 = apply %119(%100, %95) : $@convention(method) (Int, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> _GiftUIModelKey<CounterModelSchema> // users: %164, %164, %121
+121626:   debug_value %120, let, name "key"               // id: %121
+121627:   %122 = load %94                                 // users: %123, %151, %156, %164
+121628:   %123 = struct_extract %122, #ObservableStateRootScope.records // user: %124
+121629:   %124 = struct_extract %123, #UnsafeMutablePointer._rawValue // user: %125
+121630:   %125 = pointer_to_address %124 to [strict] $*ObservableStateRootControl // users: %138, %126
+121631:   %126 = struct_element_addr %125, #ObservableStateRootControl.retired // user: %127
+121632:   %127 = struct_element_addr %126, #Bool._value   // user: %128
+121633:   %128 = load %127                                // user: %129
+121634:   cond_br %128, bb14, bb15                        // id: %129
+121635: 
+--- lines 121665-121690 ---
+121665:   %150 = struct $Bool (%64)                       // users: %194, %183, %155, %180
+121666:   %151 = struct_extract %122, #ObservableStateRootScope.reports // user: %152
+121667:   %152 = struct_extract %151, #UnsafeMutablePointer._rawValue // user: %153
+121668:   %153 = pointer_to_address %152 to [strict] $*ObservableStateRootReports // user: %154
+121669:   %154 = struct_element_addr %153, #ObservableStateRootReports.mutationReporting // users: %167, %155
+121670:   store %150 to %154                              // id: %155
+121671:   %156 = struct_extract %122, #ObservableStateRootScope.models // user: %164
+121672:   %157 = alloc_stack $CounterOwnedModel.Mutation  // users: %158, %166, %161, %160
+121673:   store %149 to %157                              // id: %158
+121674:   // function_ref specialized closure #1 in ObservableModelScope<>.mutate<>(_:mutation:report:)
+121675:   %159 = function_ref @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_8mutation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlFANyXEfU_17P08CounterRuntime0s5OwnedE0V_0rS6Schema0seV0OTG5 : $@convention(thin) (@in_guaranteed CounterOwnedModel.Mutation) -> @out CounterOwnedModel.Mutation // user: %160
+121676:   %160 = partial_apply [callee_guaranteed] [on_stack] %159(%157) : $@convention(thin) (@in_guaranteed CounterOwnedModel.Mutation) -> @out CounterOwnedModel.Mutation // users: %165, %161
+121677:   %161 = mark_dependence [nonescaping] %160 on %157 // user: %162
+121678:   %162 = convert_function %161 to $@noescape @callee_guaranteed @substituted <τ_0_0> () -> @out τ_0_0 for <CounterOwnedModel.Mutation> // user: %164
+121679:   // function_ref specialized ObservableModelScope<>.mutate<>(_:operation:report:)
+121680:   %163 = function_ref @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF17P08CounterRuntime0s5OwnedE0V_0rS6Schema0seV0OTg504$s21ab8State010d6C9Rootf33VAARi_zrlE6mutate_8mutationAA0dC6j12O0A2UI01_A10lm3Vy6v6AA0dC5e6PQzG_8n28AA0dnO0PQztAaQRzrlFAH01_aB19opq9OyXEfU_17rs10Runtime0t5U52N0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5AA0dczF0VyAT0A14UISemanticCore24SemanticCompleteIdentityVGAKyAWGTf1nncn_n : $@convention(thin) (_GiftUIModelKey<CounterModelSchema>, @guaranteed @noescape @callee_guaranteed @substituted <τ_0_0> () -> @out τ_0_0 for <CounterOwnedModel.Mutation>, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, _GiftUIModelKey<CounterModelSchema>) -> ObservableStateResult // user: %164
+121681:   %164 = apply %163(%120, %162, %156, %122, %120) : $@convention(thin) (_GiftUIModelKey<CounterModelSchema>, @guaranteed @noescape @callee_guaranteed @substituted <τ_0_0> () -> @out τ_0_0 for <CounterOwnedModel.Mutation>, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, _GiftUIModelKey<CounterModelSchema>) -> ObservableStateResult // user: %168
+121682:   dealloc_stack %160                              // id: %165
+121683:   dealloc_stack %157                              // id: %166
+121684:   store %29 to %154                               // id: %167
+121685:   switch_enum %164, case #ObservableStateResult.success!enumelt: bb18, case #ObservableStateResult.failure!enumelt: bb19 // id: %168
+121686: 
+121687: // %169                                           // user: %170
+121688: bb18(%169 : $ObservableStateOperational):         // Preds: bb17
+121689:   switch_enum %169, case #ObservableStateOperational.unchanged!enumelt: bb20, default bb21 // id: %170
+121690: 
+--- lines 134915-134960 ---
+134915:   store %1023 to %1024                            // id: %1025
+134916:   %1026 = struct_extract %1014, #ObservableStateRootScope.models // users: %2572, %1067, %1027
+134917:   %1027 = struct_extract %1026, #ObservableModelScope.ownership // user: %1028
+134918:   %1028 = struct_extract %1027, #UnsafeMutablePointer._rawValue // user: %1029
+134919:   %1029 = pointer_to_address %1028 to [strict] $*ObservableModelOwnership // user: %1030
+134920:   try_apply %16(%1029) : $@convention(method) (@inout ObservableModelOwnership) -> @error ObservableStateError, normal bb222, error bb223 // id: %1030
+134921: 
+134922: bb221:                                            // Preds: bb218
+134923:   %1031 = init_enum_data_addr %1012, #SemanticBodyEvaluation.bindingFailure!enumelt // user: %1033
+134924:   %1032 = enum $ObservableStateError, #ObservableStateError.incompatibleAssociation!enumelt // user: %1033
+134925:   store %1032 to %1031                            // id: %1033
+134926:   inject_enum_addr %1012, #SemanticBodyEvaluation.bindingFailure!enumelt // id: %1034
+134927:   br bb231                                        // id: %1035
+134928: 
+134929: bb222(%1036 : $()):                               // Preds: bb220
+134930:   %1037 = unchecked_enum_data %1001, #Optional.some!enumelt // user: %1043
+134931:   %1038 = alloc_stack [lexical] [var_decl] $ScopedObservableDeclarationVisitor<CounterOwnedModel, SemanticCompleteIdentity> // users: %2571, %1056, %1055, %1066, %1044, %1043
+134932:   %1039 = metatype $@thin ScopedObservableDeclarationVisitor<CounterOwnedModel, SemanticCompleteIdentity>.Type // user: %1043
+134933:   // function_ref specialized ObservableStateRootScope<>.borrowedRoot()
+134934:   %1040 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE08borrowedE0ACyxq_GyF17P08CounterRuntime0I10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5 : $@convention(method) (@guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> @lifetime(copy 0) @owned ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity> // user: %1041
+134935:   %1041 = apply %1040(%1014) : $@convention(method) (@guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> @lifetime(copy 0) @owned ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity> // user: %1043
+134936:   // function_ref specialized ScopedObservableDeclarationVisitor<>.init(root:identity:)
+134937:   %1042 = function_ref @$s21GiftUIObservableState34ScopedObservableDeclarationVisitorVAARi_zrlE4root8identityACyxq_GAA0eC9RootScopeVyxq_G_q_tcfC17P08CounterRuntime0M10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5 : $@convention(method) (@owned ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, SemanticCompleteIdentity, @thin ScopedObservableDeclarationVisitor<CounterOwnedModel, SemanticCompleteIdentity>.Type) -> @lifetime(copy 0) @out ScopedObservableDeclarationVisitor<CounterOwnedModel, SemanticCompleteIdentity> // user: %1043
+134938:   %1043 = apply %1042(%1038, %1041, %1037, %1039) : $@convention(method) (@owned ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, SemanticCompleteIdentity, @thin ScopedObservableDeclarationVisitor<CounterOwnedModel, SemanticCompleteIdentity>.Type) -> @lifetime(copy 0) @out ScopedObservableDeclarationVisitor<CounterOwnedModel, SemanticCompleteIdentity>
+134939:   %1044 = struct_element_addr %1038, #ScopedObservableDeclarationVisitor.failure // user: %1045
+134940:   %1045 = load %1044                              // users: %1050, %1046
+134941:   switch_enum %1045, case #Optional.some!enumelt: bb224, case #Optional.none!enumelt: bb225 // id: %1046
+134942: 
+134943: // %1047                                          // user: %1048
+134944: bb223(%1047 : $ObservableStateError):             // Preds: bb220
+134945:   br bb227(%1047)                                 // id: %1048
+134946: 
+134947: bb224(%1049 : $ObservableStateError):             // Preds: bb222
+134948:   %1050 = unchecked_enum_data %1045, #Optional.some!enumelt // user: %1051
+134949:   br bb226(%1050)                                 // id: %1051
+134950: 
+134951: bb225:                                            // Preds: bb222
+134952:   %1052 = address_to_pointer [stack_protection] %1024 to $Builtin.RawPointer // users: %2944, %3142, %3165, %3112, %3015, %3009, %2564, %1054
+134953:   %1053 = integer_literal $Builtin.Word, 1        // users: %3044, %3017, %1054
+134954:   %1054 = bind_memory %1052, %1053 to $*State<CounterModelSchema> // users: %2944, %3142, %3165, %3112, %3015, %3009, %2564
+134955:   %1055 = struct_element_addr %1038, #ScopedObservableDeclarationVisitor.identity // users: %3162, %2997, %1059
+134956:   %1056 = struct_element_addr %1038, #ScopedObservableDeclarationVisitor.root // user: %1057
+134957:   %1057 = load %1056                              // users: %2949, %2958, %3128, %1059, %2997, %3162
+134958:   // function_ref ObservableStateRootScope<>.preserved(_:ordinal:state:)
+134959:   %1058 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE9preserved_7ordinal5stateSbq__s6UInt16V0A2UI0C0Vy6SchemaQzGztAA0dC5ErrorOYKF : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (@in_guaranteed τ_0_1, UInt16, @inout State<τ_0_0.Schema>, @guaranteed ObservableStateRootScope<τ_0_0, τ_0_1>) -> (Bool, @error ObservableStateError) // user: %1059
+134960:   try_apply %1058<CounterOwnedModel, SemanticCompleteIdentity>(%1055, %313, %1024, %1057) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (@in_guaranteed τ_0_1, UInt16, @inout State<τ_0_0.Schema>, @guaranteed ObservableStateRootScope<τ_0_0, τ_0_1>) -> (Bool, @error ObservableStateError), normal bb649, error bb650 // id: %1059
+--- lines 137287-137308 ---
+137287: bb649(%2559 : $Bool):                             // Preds: bb225
+137288:   %2560 = struct_extract %2559, #Bool._value      // user: %2561
+137289:   cond_br %2560, bb651, bb652                     // id: %2561
+137290: 
+137291: // %2562                                          // user: %2563
+137292: bb650(%2562 : $ObservableStateError):             // Preds: bb225
+137293:   br bb705(%2562)                                 // id: %2563
+137294: 
+137295: bb651:                                            // Preds: bb649
+137296:   %2564 = rebind_memory %1052 to %1054
+137297:   br bb653                                        // id: %2565
+137298: 
+137299: bb652:                                            // Preds: bb649
+137300:   %2566 = struct_element_addr %1024, #State.storage // user: %2567
+137301:   %2567 = load %2566                              // users: %2935, %2568
+137302:   switch_enum %2567, case #State.Storage.initial!enumelt: bb690, case #State.Storage.bound!enumelt: bb691 // id: %2568
+137303: 
+137304: bb653:                                            // Preds: bb737 bb703 bb651
+137305:   %2569 = struct_extract %420, #SemanticExpansionAttempt.bodyEvaluationCount // user: %2570
+137306:   %2570 = struct_extract %2569, #UInt16._value    // user: %2573
+137307:   dealloc_stack %1038                             // id: %2571
+137308:   %2572 = apply %26(%1026) : $@convention(thin) (@guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> ()
+--- lines 137833-137855 ---
+137833: // %2991                                          // user: %3006
+137834: // %2992                                          // user: %2994
+137835: bb702(%2990 : $Builtin.Int64, %2991 : $Builtin.Word, %2992 : $ObservableModelOwnership.Claim): // Preds: bb731 bb722 bb713 bb700
+137836:   %2993 = alloc_stack [lexical] [var_decl] $ObservableModelTicket<CounterModelSchema> // users: %2995, %2997, %3012, %3008
+137837:   %2994 = struct $ObservableModelTicket<CounterModelSchema> (%2992, %31) // user: %2995
+137838:   store %2994 to %2993                            // id: %2995
+137839:   // function_ref ObservableStateRootScope<>.install(_:ordinal:state:ticket:)
+137840:   %2996 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (@in_guaranteed τ_0_1, UInt16, @inout State<τ_0_0.Schema>, @lifetime(copy 3) @inout ObservableModelTicket<τ_0_0.Schema>, @guaranteed ObservableStateRootScope<τ_0_0, τ_0_1>) -> @error ObservableStateError // user: %2997
+137841:   try_apply %2996<CounterOwnedModel, SemanticCompleteIdentity>(%1055, %313, %1024, %2993, %1057) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (@in_guaranteed τ_0_1, UInt16, @inout State<τ_0_0.Schema>, @lifetime(copy 3) @inout ObservableModelTicket<τ_0_0.Schema>, @guaranteed ObservableStateRootScope<τ_0_0, τ_0_1>) -> @error ObservableStateError, normal bb703, error bb704 // id: %2997
+137842: 
+137843: bb703(%2998 : $()):                               // Preds: bb702
+137844:   %2999 = enum $Optional<ObservableModelOwnership.Claim>, #Optional.none!enumelt // user: %3007
+137845:   %3000 = integer_literal $Builtin.Int64, 4       // user: %3002
+137846:   %3001 = builtin "cmp_slt_Int64"(%2990, %2948) : $Builtin.Int1 // user: %3003
+137847:   %3002 = builtin "cmp_sge_Int64"(%2990, %3000) : $Builtin.Int1 // user: %3003
+137848:   %3003 = builtin "or_Int1"(%3001, %3002) : $Builtin.Int1 // user: %3004
+137849:   cond_fail %3003, "Index out of bounds"          // id: %3004
+137850:   %3005 = vector_base_addr %2953                  // user: %3006
+137851:   %3006 = index_addr [stack_protection] %3005, %2991 // user: %3007
+137852:   store %2999 to %3006                            // id: %3007
+137853:   dealloc_stack %2993                             // id: %3008
+137854:   %3009 = rebind_memory %1052 to %1054
+137855:   br bb653                                        // id: %3010
+--- lines 138060-138095 ---
+138060:   %3147 = struct_extract %3146, #UInt16._value    // user: %3148
+138061:   %3148 = builtin "zextOrBitCast_Int16_Int64"(%3147) : $Builtin.Int64 // user: %3154
+138062:   %3149 = struct $CounterOwnedModel (%3118, %3120) // user: %3157
+138063:   %3150 = struct_extract %3128, #ObservableModelScope.models // user: %3151
+138064:   %3151 = struct_extract %3150, #UnsafeMutableBufferPointer._position // user: %3152
+138065:   %3152 = unchecked_enum_data %3151, #Optional.some!enumelt // user: %3153
+138066:   %3153 = struct_extract %3152, #UnsafeMutablePointer._rawValue // user: %3155
+138067:   %3154 = builtin "truncOrBitCast_Int64_Word"(%3148) : $Builtin.Word // user: %3156
+138068:   %3155 = pointer_to_address %3153 to [strict] $*Optional<CounterOwnedModel> // user: %3156
+138069:   %3156 = index_addr [stack_protection] %3155, %3154 // user: %3158
+138070:   %3157 = enum $Optional<CounterOwnedModel>, #Optional.some!enumelt, %3149 // user: %3158
+138071:   store %3157 to %3156                            // id: %3158
+138072:   %3159 = struct $ObservableModelTicket<CounterModelSchema> (%3144, %31) // user: %3160
+138073:   store %3159 to %3116                            // id: %3160
+138074:   // function_ref ObservableStateRootScope<>.install(_:ordinal:state:ticket:)
+138075:   %3161 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (@in_guaranteed τ_0_1, UInt16, @inout State<τ_0_0.Schema>, @lifetime(copy 3) @inout ObservableModelTicket<τ_0_0.Schema>, @guaranteed ObservableStateRootScope<τ_0_0, τ_0_1>) -> @error ObservableStateError // user: %3162
+138076:   try_apply %3161<CounterOwnedModel, SemanticCompleteIdentity>(%1055, %313, %1024, %3116, %1057) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (@in_guaranteed τ_0_1, UInt16, @inout State<τ_0_0.Schema>, @lifetime(copy 3) @inout ObservableModelTicket<τ_0_0.Schema>, @guaranteed ObservableStateRootScope<τ_0_0, τ_0_1>) -> @error ObservableStateError, normal bb737, error bb738 // id: %3162
+138077: 
+138078: bb737(%3163 : $()):                               // Preds: bb736
+138079:   dealloc_stack %3116                             // id: %3164
+138080:   %3165 = rebind_memory %1052 to %1054
+138081:   br bb653                                        // id: %3166
+138082: 
+138083: // %3167                                          // users: %3175, %3180
+138084: bb738(%3167 : $ObservableStateError):             // Preds: bb736
+138085:   // function_ref ObservableModelScope<>.release(_:)
+138086:   %3168 = function_ref @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE7releaseyyAA0dE6TicketVyq_GzAA0dC5ErrorOYKF : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ~Copyable> (@lifetime(copy 0) @inout ObservableModelTicket<τ_0_1>, @guaranteed ObservableModelScope<τ_0_0, τ_0_1>) -> @error ObservableStateError // user: %3169
+138087:   try_apply %3168<CounterOwnedModel, CounterModelSchema>(%3116, %3128) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ~Copyable> (@lifetime(copy 0) @inout ObservableModelTicket<τ_0_1>, @guaranteed ObservableModelScope<τ_0_0, τ_0_1>) -> @error ObservableStateError, normal bb739, error bb740 // id: %3169
+138088: 
+138089: bb739(%3170 : $()):                               // Preds: bb738
+138090:   br bb741                                        // id: %3171
+138091: 
+138092: bb740(%3172 : $ObservableStateError):             // Preds: bb738
+138093:   br bb741                                        // id: %3173
+138094: 
+138095: bb741:                                            // Preds: bb740 bb739
+--- lines 156657-156690 ---
+156657: bb31:                                             // Preds: bb30 bb29
+156658:   cond_br %227, bb32, bb33                        // id: %254
+156659: 
+156660: bb32:                                             // Preds: bb31
+156661:   debug_value undef : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, var, name "self", argno 2, expr op_deref // id: %255
+156662:   // function_ref specialized closure #1 in ObservableModelScope<>.endFrame()
+156663:   %256 = function_ref @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKFys6UInt16VXEfU_17P08CounterRuntime0l5OwnedE0V_0kL6Schema0leO0OTg5 : $@convention(thin) (UInt16, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> () // user: %257
+156664:   %257 = partial_apply [callee_guaranteed] [on_stack] %256(%224) : $@convention(thin) (UInt16, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> () // users: %258, %266, %269
+156665:   %258 = mark_dependence %257 on %224             // user: %263
+156666:   %259 = struct_extract %224, #ObservableModelScope.ownership // user: %260
+156667:   %260 = struct_extract %259, #UnsafeMutablePointer._rawValue // user: %261
+156668:   %261 = pointer_to_address %260 to [strict] $*ObservableModelOwnership // user: %263
+156669:   // function_ref ObservableModelOwnership.endFrame(reclaim:)
+156670:   %262 = function_ref @$s21GiftUIObservableState24ObservableModelOwnershipV8endFrame7reclaimyys6UInt16VXE_tAA0dC5ErrorOYKF : $@convention(method) (@guaranteed @noescape @callee_guaranteed (UInt16) -> (), @inout ObservableModelOwnership) -> @error ObservableStateError // user: %263
+156671:   try_apply %262(%258, %261) : $@convention(method) (@guaranteed @noescape @callee_guaranteed (UInt16) -> (), @inout ObservableModelOwnership) -> @error ObservableStateError, normal bb34, error bb35 // id: %263
+156672: 
+156673: bb33:                                             // Preds: bb31
+156674:   br bb16                                         // id: %264
+156675: 
+156676: bb34(%265 : $()):                                 // Preds: bb32
+156677:   dealloc_stack %257                              // id: %266
+156678:   br bb36                                         // id: %267
+156679: 
+156680: bb35(%268 : $ObservableStateError):               // Preds: bb32
+156681:   dealloc_stack %257                              // id: %269
+156682:   debug_value undef : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, var, name "self", argno 2, expr op_deref // id: %270
+156683:   %271 = struct $Bool (%44)                       // user: %273
+156684:   %272 = struct_element_addr %1, #CounterPipelineOwner.quiescent // user: %273
+156685:   store %271 to %272                              // id: %273
+156686:   br bb36                                         // id: %274
+156687: 
+156688: bb36:                                             // Preds: bb35 bb34
+156689:   %275 = struct $Bool (%56)                       // user: %276
+156690:   store %275 to %225                              // id: %276
+--- lines 564384-564420 ---
+564384: sil shared @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE3key2at0A2UI01_A10UIModelKeyVy6SchemaQzGSi_tF17P08CounterRuntime0N10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5 : $@convention(method) (Int, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> _GiftUIModelKey<CounterModelSchema> {
+564385: [%1: noescape **, read v**.c*.v**]
+564386: [global: read,deinit_barrier]
+564387: // %0                                             // user: %8
+564388: // %1                                             // user: %2
+564389: bb0(%0 : $Int, %1 : $ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>):
+564390:   %2 = struct_extract %1, #ObservableStateRootScope.records // user: %3
+564391:   %3 = struct_extract %2, #UnsafeMutablePointer._rawValue // user: %4
+564392:   %4 = pointer_to_address %3 to [strict] $*ObservableStateRootControl // user: %5
+564393:   %5 = struct_element_addr %4, #ObservableStateRootControl.records // user: %13
+564394:   %6 = integer_literal $Builtin.Int64, 0          // user: %9
+564395:   %7 = integer_literal $Builtin.Int64, 2          // user: %10
+564396:   %8 = struct_extract %0, #Int._value             // users: %14, %22, %24, %10, %9
+564397:   %9 = builtin "cmp_slt_Int64"(%8, %6) : $Builtin.Int1 // user: %11
+564398:   %10 = builtin "cmp_sge_Int64"(%8, %7) : $Builtin.Int1 // user: %11
+564399:   %11 = builtin "or_Int1"(%9, %10) : $Builtin.Int1 // user: %12
+564400:   cond_fail %11, "Index out of bounds"            // id: %12
+564401:   %13 = struct_element_addr %5, #InlineArray._storage // user: %15
+564402:   %14 = builtin "truncOrBitCast_Int64_Word"(%8) : $Builtin.Word // user: %16
+564403:   %15 = vector_base_addr %13                      // user: %16
+564404:   %16 = index_addr [stack_protection] %15, %14    // users: %19, %17
+564405:   %17 = struct_element_addr %16, #ObservableStateRootControl.Record.keyOwner // user: %18
+564406:   %18 = load %17                                  // user: %26
+564407:   %19 = struct_element_addr %16, #ObservableStateRootControl.Record.keyGeneration // user: %20
+564408:   %20 = load %19                                  // user: %26
+564409:   %21 = integer_literal $Builtin.Int64, 65535     // user: %22
+564410:   %22 = builtin "cmp_slt_Int64"(%21, %8) : $Builtin.Int1 // user: %23
+564411:   cond_fail %22, "Not enough bits to represent the passed value" // id: %23
+564412:   %24 = builtin "truncOrBitCast_Int64_Int16"(%8) : $Builtin.Int16 // user: %25
+564413:   %25 = struct $UInt16 (%24)                      // user: %26
+564414:   %26 = struct $_GiftUIModelKey<CounterModelSchema> (%18, %20, %25) // user: %27
+564415:   return %26                                      // id: %27
+564416: } // end sil function '$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE3key2at0A2UI01_A10UIModelKeyVy6SchemaQzGSi_tF17P08CounterRuntime0N10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5'
+564417: 
+564418: // ObservableModelOwnership.retain(_:)
+564419: // Isolation: unspecified
+564420: sil @$s21GiftUIObservableState24ObservableModelOwnershipV6retainyAC5ClaimVAC7AddressVAA0dC5ErrorOYKF : $@convention(method) (ObservableModelOwnership.Address, @inout ObservableModelOwnership) -> (ObservableModelOwnership.Claim, @error ObservableStateError) {
+--- lines 564484-564507 ---
+564484: sil shared @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKFys6UInt16VXEfU_17P08CounterRuntime0l5OwnedE0V_0kL6Schema0leO0OTg5 : $@convention(thin) (UInt16, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> () {
+564485: [%1: noescape **, write v**.c*.v**]
+564486: [global: write,deinit_barrier]
+564487: // %0                                             // user: %2
+564488: // %1                                             // user: %5
+564489: bb0(%0 : $UInt16, %1 : @closureCapture $ObservableModelScope<CounterOwnedModel, CounterModelSchema>):
+564490:   %2 = struct_extract %0, #UInt16._value          // user: %3
+564491:   %3 = builtin "zextOrBitCast_Int16_Int64"(%2) : $Builtin.Int64 // user: %9
+564492:   %4 = enum $Optional<CounterOwnedModel>, #Optional.none!enumelt // user: %12
+564493:   %5 = struct_extract %1, #ObservableModelScope.models // user: %6
+564494:   %6 = struct_extract %5, #UnsafeMutableBufferPointer._position // user: %7
+564495:   %7 = unchecked_enum_data %6, #Optional.some!enumelt // user: %8
+564496:   %8 = struct_extract %7, #UnsafeMutablePointer._rawValue // user: %10
+564497:   %9 = builtin "truncOrBitCast_Int64_Word"(%3) : $Builtin.Word // user: %11
+564498:   %10 = pointer_to_address %8 to [strict] $*Optional<CounterOwnedModel> // user: %11
+564499:   %11 = index_addr [stack_protection] %10, %9     // user: %12
+564500:   store %4 to %11                                 // id: %12
+564501:   %13 = tuple ()                                  // user: %14
+564502:   return %13                                      // id: %14
+564503: } // end sil function '$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKFys6UInt16VXEfU_17P08CounterRuntime0l5OwnedE0V_0kL6Schema0leO0OTg5'
+564504: 
+564505: // ObservableModelOwnership.endFrame(reclaim:)
+564506: // Isolation: unspecified
+564507: sil @$s21GiftUIObservableState24ObservableModelOwnershipV8endFrame7reclaimyys6UInt16VXE_tAA0dC5ErrorOYKF : $@convention(method) (@guaranteed @noescape @callee_guaranteed (UInt16) -> (), @inout ObservableModelOwnership) -> @error ObservableStateError {
+--- lines 589737-589852 ---
+589737: sil shared @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF17P08CounterRuntime0s5OwnedE0V_0rS6Schema0seV0OTg504$s21ab8State010d6C9Rootf33VAARi_zrlE6mutate_8mutationAA0dC6j12O0A2UI01_A10lm3Vy6v6AA0dC5e6PQzG_8n28AA0dnO0PQztAaQRzrlFAH01_aB19opq9OyXEfU_17rs10Runtime0t5U52N0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5AA0dczF0VyAT0A14UISemanticCore24SemanticCompleteIdentityVGAKyAWGTf1nncn_n : $@convention(thin) (_GiftUIModelKey<CounterModelSchema>, @guaranteed @noescape @callee_guaranteed @substituted <τ_0_0> () -> @out τ_0_0 for <CounterOwnedModel.Mutation>, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, _GiftUIModelKey<CounterModelSchema>) -> ObservableStateResult {
+589738: [%1: noescape **, read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+589739: [%2: noescape **, read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+589740: [%3: read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+589741: [global: read,write,copy,destroy,allocate,deinit_barrier]
+589742: // %0                                             // users: %9, %8, %7
+589743: // %1                                             // user: %30
+589744: // %2                                             // users: %40, %57, %86, %128, %122, %116, %110, %104, %98, %92, %16, %11, %5
+589745: // %3                                             // user: %78
+589746: // %4                                             // user: %80
+589747: bb0(%0 : $_GiftUIModelKey<CounterModelSchema>, %1 : $@noescape @callee_guaranteed @substituted <τ_0_0> () -> @out τ_0_0 for <CounterOwnedModel.Mutation>, %2 : $ObservableModelScope<CounterOwnedModel, CounterModelSchema>, %3 : $ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, %4 : $_GiftUIModelKey<CounterModelSchema>):
+589748:   %5 = struct_extract %2, #ObservableModelScope.ownership // user: %6
+589749:   %6 = struct_extract %5, #UnsafeMutablePointer._rawValue // user: %12
+589750:   %7 = struct_extract %0, #_GiftUIModelKey.ownerInstance // user: %10
+589751:   %8 = struct_extract %0, #_GiftUIModelKey.allocationGeneration // user: %10
+589752:   %9 = struct_extract %0, #_GiftUIModelKey.slot   // user: %10
+589753:   %10 = struct $ObservableModelOwnership.Address (%7, %8, %9) // user: %14
+589754:   %11 = struct_extract %2, #ObservableModelScope.schema // user: %14
+589755:   %12 = pointer_to_address %6 to [strict] $*ObservableModelOwnership // user: %14
+589756:   // function_ref ObservableModelOwnership.beginMutation(_:schema:)
+589757:   %13 = function_ref @$s21GiftUIObservableState24ObservableModelOwnershipV13beginMutation_6schemaSiAC7AddressV_s6UInt16VtAA0dC5ErrorOYKF : $@convention(method) (ObservableModelOwnership.Address, UInt16, @inout ObservableModelOwnership) -> (Int, @error ObservableStateError) // user: %14
+589758:   try_apply %13(%10, %11, %12) : $@convention(method) (ObservableModelOwnership.Address, UInt16, @inout ObservableModelOwnership) -> (Int, @error ObservableStateError), normal bb1, error bb2 // id: %14
+589759: 
+589760: // %15                                            // user: %20
+589761: bb1(%15 : $Int):                                  // Preds: bb0
+589762:   %16 = struct_extract %2, #ObservableModelScope.models // user: %17
+589763:   %17 = struct_extract %16, #UnsafeMutableBufferPointer._position // user: %18
+589764:   %18 = unchecked_enum_data %17, #Optional.some!enumelt // user: %19
+589765:   %19 = struct_extract %18, #UnsafeMutablePointer._rawValue // user: %22
+589766:   %20 = struct_extract %15, #Int._value           // user: %21
+589767:   %21 = builtin "truncOrBitCast_Int64_Word"(%20) : $Builtin.Word // user: %23
+589768:   %22 = pointer_to_address %19 to [strict] $*Optional<CounterOwnedModel> // user: %23
+589769:   %23 = index_addr [stack_protection] %22, %21    // users: %60, %52, %31, %24
+589770:   %24 = load %23                                  // user: %25
+589771:   switch_enum %24, case #Optional.some!enumelt: bb3, case #Optional.none!enumelt: bb4 // id: %25
+589772: 
+589773: // %26                                            // user: %27
+589774: bb2(%26 : $ObservableStateError):                 // Preds: bb0
+589775:   br bb21(%26)                                    // id: %27
+589776: 
+589777: bb3(%28 : $CounterOwnedModel):                    // Preds: bb1
+589778:   %29 = alloc_stack [lexical] [var_decl] $CounterOwnedModel.Mutation // users: %44, %55, %84, %126, %120, %114, %108, %102, %96, %90, %30
+589779:   %30 = apply %1(%29) : $@noescape @callee_guaranteed @substituted <τ_0_0> () -> @out τ_0_0 for <CounterOwnedModel.Mutation>
+589780:   %31 = load %23                                  // users: %32, %45
+589781:   switch_enum %31, case #Optional.some!enumelt: bb5, case #Optional.none!enumelt: bb6 // id: %32
+589782: 
+589783: bb4:                                              // Preds: bb1
+589784:   %33 = enum $ObservableStateError, #ObservableStateError.invariantViolation!enumelt // users: %35, %41
+589785:   %34 = alloc_stack $ObservableStateError         // users: %35, %38, %37
+589786:   store %33 to %34                                // id: %35
+589787:   // function_ref swift_willThrowTypedImpl
+589788:   %36 = function_ref @swift_willThrowTypedImpl : $@convention(thin) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> () // user: %37
+589789:   %37 = apply %36<ObservableStateError>(%34) : $@convention(thin) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> ()
+589790:   dealloc_stack %34                               // id: %38
+589791:   // function_ref specialized $defer #1 <A, B>() in ObservableModelScope<>.mutate<>(_:operation:report:)
+589792:   %39 = function_ref @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF6$deferL_yyAaQRzRi_zr0_lF17P08CounterRuntime0t5OwnedE0V_0sT6Schema0teW0OTg5 : $@convention(thin) (@guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> () // user: %40
+589793:   %40 = apply %39(%2) : $@convention(thin) (@guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> ()
+589794:   %41 = enum $ObservableStateResult, #ObservableStateResult.failure!enumelt, %33 // user: %42
+589795:   br bb20(%41)                                    // id: %42
+589796: 
+589797: bb5(%43 : $CounterOwnedModel):                    // Preds: bb3
+589798:   %44 = load %29                                  // user: %47
+589799:   %45 = unchecked_enum_data %31, #Optional.some!enumelt // user: %47
+589800:   // function_ref CounterOwnedModel.preflight(_:)
+589801:   %46 = function_ref @$s17P08CounterRuntime0B10OwnedModelV9preflightys5UInt8VAC8MutationO21GiftUIObservableState010ObservableK5ErrorOYKF : $@convention(method) (CounterOwnedModel.Mutation, @guaranteed CounterOwnedModel) -> (UInt8, @error ObservableStateError) // user: %47
+589802:   try_apply %46(%44, %45) : $@convention(method) (CounterOwnedModel.Mutation, @guaranteed CounterOwnedModel) -> (UInt8, @error ObservableStateError), normal bb7, error bb8 // id: %47
+589803: 
+589804: bb6:                                              // Preds: bb3
+589805:   %48 = integer_literal $Builtin.Int1, -1         // user: %49
+589806:   cond_fail %48, "Unexpectedly found nil while unwrapping an Optional value" // id: %49
+589807:   unreachable                                     // id: %50
+589808: 
+589809: // %51                                            // users: %73, %64, %61
+589810: bb7(%51 : $UInt8):                                // Preds: bb5
+589811:   %52 = load %23                                  // user: %53
+589812:   switch_enum %52, case #Optional.some!enumelt: bb9, case #Optional.none!enumelt: bb10 // id: %53
+589813: 
+589814: // %54                                            // user: %58
+589815: bb8(%54 : $ObservableStateError):                 // Preds: bb5
+589816:   dealloc_stack %29                               // id: %55
+589817:   // function_ref specialized $defer #1 <A, B>() in ObservableModelScope<>.mutate<>(_:operation:report:)
+589818:   %56 = function_ref @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF6$deferL_yyAaQRzRi_zr0_lF17P08CounterRuntime0t5OwnedE0V_0sT6Schema0teW0OTg5 : $@convention(thin) (@guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> () // user: %57
+589819:   %57 = apply %56(%2) : $@convention(thin) (@guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> ()
+589820:   br bb21(%54)                                    // id: %58
+589821: 
+589822: bb9(%59 : $CounterOwnedModel):                    // Preds: bb7
+589823:   %60 = unchecked_inplace_enum_data_addr %23, #Optional.some!enumelt // users: %67, %62
+589824:   debug_value %51, let, name "prepared", argno 1  // id: %61
+589825:   debug_value %60, var, name "self", argno 2, expr op_deref // id: %62
+589826:   %63 = integer_literal $Builtin.Int8, 9          // user: %65
+589827:   %64 = struct_extract %51, #UInt8._value         // users: %71, %65
+589828:   %65 = builtin "cmp_ult_Int8"(%63, %64) : $Builtin.Int1 // user: %66
+589829:   cond_fail %65, "precondition failure"           // id: %66
+589830:   %67 = struct_element_addr %60, #CounterOwnedModel.value // users: %73, %68
+589831:   %68 = struct_element_addr %67, #UInt8._value    // user: %69
+589832:   %69 = load %68                                  // user: %71
+589833:   debug_value undef : $*CounterOwnedModel, var, name "self", argno 2, expr op_deref // id: %70
+589834:   %71 = builtin "cmp_ne_Int8"(%69, %64) : $Builtin.Int1 // users: %74, %72
+589835:   debug_value %71, let, name "changed", type $Bool, expr op_fragment:#Bool._value // id: %72
+589836:   store %51 to %67                                // id: %73
+589837:   cond_br %71, bb11, bb12                         // id: %74
+589838: 
+589839: bb10:                                             // Preds: bb7
+589840:   %75 = integer_literal $Builtin.Int1, -1         // user: %76
+589841:   cond_fail %75, "Unexpectedly found nil while unwrapping an Optional value" // id: %76
+589842:   unreachable                                     // id: %77
+589843: 
+589844: bb11:                                             // Preds: bb9
+589845:   %78 = struct_extract %3, #ObservableStateRootScope.models // user: %80
+589846:   // function_ref specialized ObservableModelScope<>.report<>(_:)
+589847:   %79 = function_ref @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6reporty0A2UI01_aB19ChangeReportOutcomeOAE01_A10UIModelKeyVyq_GAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0p5OwnedE0V_0opN00peN0OTg5 : $@convention(method) (_GiftUIModelKey<CounterModelSchema>, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> _GiftUIObservableChangeReportOutcome // user: %80
+589848:   %80 = apply %79(%4, %78) : $@convention(method) (_GiftUIModelKey<CounterModelSchema>, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> _GiftUIObservableChangeReportOutcome // user: %81
+589849:   switch_enum %80, case #_GiftUIObservableChangeReportOutcome.dirtied!enumelt: bb13, case #_GiftUIObservableChangeReportOutcome.coalesced!enumelt: bb14, case #_GiftUIObservableChangeReportOutcome.staleAttachment!enumelt: bb15, case #_GiftUIObservableChangeReportOutcome.invalidPhaseContained!enumelt: bb16, case #_GiftUIObservableChangeReportOutcome.invalidPhaseSafetyNotProven!enumelt: bb17, case #_GiftUIObservableChangeReportOutcome.reentrancyViolation!enumelt: bb18, case #_GiftUIObservableChangeReportOutcome.invariantViolation!enumelt: bb19 // id: %81
+589850: 
+589851: bb12:                                             // Preds: bb9
+589852:   %82 = enum $ObservableStateOperational, #ObservableStateOperational.unchanged!enumelt // user: %83

@@ -1,0 +1,755 @@
+{
+  "scope": "Only concrete scoped CounterPipelineOwner bodies, original exact23 symbols; no full-host closure or all-root failure inference",
+  "resolved_selected_boundaries": 7,
+  "remaining_original_opaque": 16,
+  "frontier": [
+    {
+      "id": "F00",
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+      "name": "// InteractionOwnedKeyState<>.resolveDown(at:)",
+      "family": "A-resolver",
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "callee_line": 586734,
+      "current_basic_blocks": 0,
+      "physical_record": {
+        "module": "GiftUIInteraction",
+        "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+        "identifier_id": 105,
+        "function_id": 150,
+        "hash": 2953884724,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveDown(at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+        "offset_bits": 345233,
+        "linkage": 7,
+        "serialized_kind": 0,
+        "inline_strategy": 2,
+        "basic_blocks": 0,
+        "raw_prefix": [
+          4,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=135 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+      },
+      "selection": "confirmed required resolver family: independently reviewed actual admission gate failure",
+      "current_edges": [],
+      "current_edge_count": 0,
+      "disposition": "selected_boundary_resolved",
+      "original_source_sha256": "cda0b3fe4b2165d7213c7cc4eb57f23859f3e854a116b3419f092a66cfec305c",
+      "original_line": 181,
+      "original_declaration": "package borrowing func resolveDown(at point: Point) -> PointerGestureOutcome<Identity> {"
+    },
+    {
+      "id": "F01",
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "name": "// InteractionOwnedKeyState<>.resolveMove(_:at:)",
+      "family": "A-resolver",
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "callee_line": 586741,
+      "current_basic_blocks": 0,
+      "physical_record": {
+        "module": "GiftUIInteraction",
+        "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+        "identifier_id": 103,
+        "function_id": 152,
+        "hash": 1752837523,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveMove(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+        "offset_bits": 346035,
+        "linkage": 7,
+        "serialized_kind": 0,
+        "inline_strategy": 0,
+        "basic_blocks": 0,
+        "raw_prefix": [
+          4,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=132 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+      },
+      "selection": "confirmed required resolver family: independently reviewed actual admission gate failure",
+      "current_edges": [],
+      "current_edge_count": 0,
+      "disposition": "selected_boundary_resolved",
+      "original_source_sha256": "cda0b3fe4b2165d7213c7cc4eb57f23859f3e854a116b3419f092a66cfec305c",
+      "original_line": 184,
+      "original_declaration": "package borrowing func resolveMove(_ captured: CapturedAction<Identity>, at point: Point)"
+    },
+    {
+      "id": "F02",
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "name": "// InteractionOwnedKeyState<>.resolveUp(_:at:)",
+      "family": "A-resolver",
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "callee_line": 508199,
+      "current_basic_blocks": 0,
+      "physical_record": {
+        "module": "GiftUIInteraction",
+        "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+        "identifier_id": 102,
+        "function_id": 154,
+        "hash": 1492478232,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveUp(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+        "offset_bits": 346884,
+        "linkage": 7,
+        "serialized_kind": 0,
+        "inline_strategy": 2,
+        "basic_blocks": 0,
+        "raw_prefix": [
+          4,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=132 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+      },
+      "selection": "confirmed required resolver family: independently reviewed actual admission gate failure",
+      "current_edges": [],
+      "current_edge_count": 0,
+      "disposition": "selected_boundary_resolved",
+      "original_source_sha256": "cda0b3fe4b2165d7213c7cc4eb57f23859f3e854a116b3419f092a66cfec305c",
+      "original_line": 188,
+      "original_declaration": "package borrowing func resolveUp(_ captured: CapturedAction<Identity>, at point: Point)"
+    },
+    {
+      "id": "F03",
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+      "name": "// ObservableStateRootScope<>.modelKey(identity:ordinal:)",
+      "family": "B-observable",
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "callee_line": 29722,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [],
+      "current_edge_count": 0,
+      "disposition": "selected_boundary_resolved",
+      "original_source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6",
+      "original_line": 247,
+      "original_declaration": "package borrowing func modelKey(identity: Identity, ordinal: UInt16) -> _GiftUIModelKey<"
+    },
+    {
+      "id": "F04",
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+      "name": "// ObservableStateRootScope<>.mutate<>(_:mutation:)",
+      "family": "B-observable",
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "callee_line": 119139,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [],
+      "current_edge_count": 0,
+      "disposition": "selected_boundary_resolved",
+      "original_source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6",
+      "original_line": 601,
+      "original_declaration": "package borrowing func mutate(_ key: _GiftUIModelKey<Model.Schema>, mutation: Model.Mutation)"
+    },
+    {
+      "id": "F05",
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+      "name": "// SemanticRecordStore.candidate.getter",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "callee_line": 583295,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 133538,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "reference": "%74 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %75",
+          "next": "%75 = apply %74<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%73) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %76"
+        },
+        {
+          "line": 148515,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE13resolveLayout17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5",
+          "reference": "%12 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %13",
+          "next": "%13 = apply %12<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%11) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %14"
+        },
+        {
+          "line": 149691,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE23preflightCombinedRender17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+          "reference": "%12 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %13",
+          "next": "%13 = apply %12<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%11) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %14"
+        },
+        {
+          "line": 150491,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+          "reference": "%61 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %62",
+          "next": "%62 = apply %61<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%60) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %63"
+        }
+      ],
+      "current_edge_count": 4,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "776db41e501972481ca6e7d461e9b52d67918f3624b2a41429f714be238a9753",
+      "original_line": 110,
+      "original_declaration": "var candidate: UInt8? {"
+    },
+    {
+      "id": "F06",
+      "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+      "name": "// SemanticRecordBankBuffers.clear()",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "callee_line": 583302,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 133824,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "reference": "%287 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>) -> () // users: %347, %288",
+          "next": "%288 = apply %287<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%279) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>) -> ()"
+        }
+      ],
+      "current_edge_count": 1,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "d4d212e512d06829525da02e37992d0ac8e3d1ebb7a5acfccfd5e4bfdb33b546",
+      "original_line": 218,
+      "original_declaration": "package func clear() {"
+    },
+    {
+      "id": "F07",
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+      "name": "// SemanticRecordStore.expansionBank(_:)",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "callee_line": 583309,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 133832,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "reference": "%294 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %295",
+          "next": "%295 = apply %294<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%281, %73) : $@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %296"
+        }
+      ],
+      "current_edge_count": 1,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "776db41e501972481ca6e7d461e9b52d67918f3624b2a41429f714be238a9753",
+      "original_line": 255,
+      "original_declaration": "borrowing func expansionBank(_ number: UInt8) -> SemanticRecordBankBuffers<Payload>? {"
+    },
+    {
+      "id": "F08",
+      "symbol": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+      "name": "// SemanticExpansionTraversal<>.stopped.getter",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "callee_line": 583322,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 134015,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "reference": "%447 = function_ref @$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // users: %2365, %2359, %2340, %2189, %2169, %2005, %2014, %2008, %1996, %1831, %1814, %1711, %1604, %1598, %1583, %1365, %1353, %1305, %1299, %1284, %1101, %1076, %870, %863, %854, %701, %691, %448",
+          "next": "%448 = apply %447<RecordWorkspace<CounterRoles, CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, RecordSink<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>, ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>>(%419) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // user: %449"
+        }
+      ],
+      "current_edge_count": 1,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "fc787355d2ef5fecbe59e48db5fd54f036e93a012705cbdcd0b13e7e012d381f",
+      "original_line": 992,
+      "original_declaration": "var stopped: Bool { failure != nil || bindingFailure != nil || accessFailure != nil }"
+    },
+    {
+      "id": "F09",
+      "symbol": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+      "name": "// RecordSink.publishExpansion(_:)",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "callee_line": 583524,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 134168,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "reference": "%538 = function_ref @$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %539",
+          "next": "%539 = apply %538<CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>>(%537, %310) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %540"
+        }
+      ],
+      "current_edge_count": 1,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "cf2b591a33b9814f40eb67b17dbdefd19d726fc115a37636ddc4d31c788da5bd",
+      "original_line": 223,
+      "original_declaration": "mutating func publishExpansion(_ summary: SemanticExpansionSummary) -> Bool {"
+    },
+    {
+      "id": "F10",
+      "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+      "name": "// SemanticRecordBankBuffers.enter(_:limits:)",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "callee_line": 583531,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 134264,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "reference": "%604 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %753, %605",
+          "next": "%605 = apply %604<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%599, %603, %601) : $@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %609, %606"
+        }
+      ],
+      "current_edge_count": 1,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "d4d212e512d06829525da02e37992d0ac8e3d1ebb7a5acfccfd5e4bfdb33b546",
+      "original_line": 232,
+      "original_declaration": "package func enter(_ component: SemanticPathComponent, limits: SemanticRecordLimits)"
+    },
+    {
+      "id": "F11",
+      "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+      "name": "// SemanticRecordBankBuffers.appendRecord(limits:)",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "callee_line": 583538,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 134640,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "reference": "%850 = function_ref @$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %851",
+          "next": "%851 = apply %850<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%849, %847) : $@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %852"
+        }
+      ],
+      "current_edge_count": 1,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "d4d212e512d06829525da02e37992d0ac8e3d1ebb7a5acfccfd5e4bfdb33b546",
+      "original_line": 290,
+      "original_declaration": "package func appendRecord(limits: SemanticRecordLimits) -> SemanticExpansionError? {"
+    },
+    {
+      "id": "F12",
+      "symbol": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+      "name": "// ObservableSemanticBodyBinding<>.evaluateStateful<A>(_:structuralIdentity:beforeBody:body:)",
+      "family": "B-observable",
+      "source": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "callee_line": 590100,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [],
+      "current_edge_count": 0,
+      "disposition": "selected_boundary_resolved",
+      "original_source_sha256": "e52aaae337bb1f56f6a228e5cb616d5480a45080628ceb5528b5376412b4b37f",
+      "original_line": 43,
+      "original_declaration": "package borrowing func evaluateStateful<Declaration: View & _GiftUIObservableStateHost>("
+    },
+    {
+      "id": "F13",
+      "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+      "name": "// static CanvasSemanticPayloadCodec.modifier<A>(_:chainIndex:writer:)",
+      "family": "D-canvas",
+      "source": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "callee_line": 590346,
+      "current_basic_blocks": 0,
+      "physical_record": {
+        "module": "GiftUIDrawing",
+        "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+        "identifier_id": 69,
+        "function_id": 96,
+        "hash": 613866557,
+        "demangled": "static GiftUIDrawing.CanvasSemanticPayloadCodec.modifier<A where A1: GiftUI._GiftUISemanticModifierPayload>(_: A1, chainIndex: Swift.UInt16, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUIDrawing.CanvasSemanticPayload<B.CaptureStorage>>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "offset_bits": 448604,
+        "linkage": 7,
+        "serialized_kind": 0,
+        "inline_strategy": 0,
+        "basic_blocks": 0,
+        "raw_prefix": [
+          4,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=139 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+      },
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 135521,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "reference": "%1418 = function_ref @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticModifierPayload> (@in_guaranteed \u03c4_1_0, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // user: %1419",
+          "next": "%1419 = apply %1418<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>, _GiftUIBackgroundPayload>(%1415, %1369, %1414, %1417) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticModifierPayload> (@in_guaranteed \u03c4_1_0, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // user: %1421"
+        }
+      ],
+      "current_edge_count": 1,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "8ff2bf5049d4393d459fef253cf6a137a9796a70c2ad4c413111d7928070b531",
+      "original_line": 43,
+      "original_declaration": "package static func modifier<Value: _GiftUISemanticModifierPayload>("
+    },
+    {
+      "id": "F14",
+      "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+      "name": "// static CanvasSemanticPayloadCodec.primitive<A>(_:writer:)",
+      "family": "D-canvas",
+      "source": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "callee_line": 590338,
+      "current_basic_blocks": 0,
+      "physical_record": {
+        "module": "GiftUIDrawing",
+        "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+        "identifier_id": 70,
+        "function_id": 95,
+        "hash": 3058718414,
+        "demangled": "static GiftUIDrawing.CanvasSemanticPayloadCodec.primitive<A where A1: GiftUI._GiftUISemanticPrimitivePayload>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUIDrawing.CanvasSemanticPayload<B.CaptureStorage>>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "offset_bits": 448156,
+        "linkage": 7,
+        "serialized_kind": 0,
+        "inline_strategy": 0,
+        "basic_blocks": 0,
+        "raw_prefix": [
+          4,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=146 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+      },
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 135933,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "reference": "%1685 = function_ref @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticPrimitivePayload> (@in_guaranteed \u03c4_1_0, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // users: %2435, %1686",
+          "next": "%1686 = apply %1685<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>, _GiftUIVStackPayload>(%1682, %1681, %1684) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticPrimitivePayload> (@in_guaranteed \u03c4_1_0, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // user: %1688"
+        }
+      ],
+      "current_edge_count": 1,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "8ff2bf5049d4393d459fef253cf6a137a9796a70c2ad4c413111d7928070b531",
+      "original_line": 34,
+      "original_declaration": "package static func primitive<Value: _GiftUISemanticPrimitivePayload>("
+    },
+    {
+      "id": "F15",
+      "symbol": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+      "name": "// static CanvasSemanticTransfer.stage<A>(from:into:table:)",
+      "family": "D-canvas",
+      "source": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "callee_line": 142006,
+      "current_basic_blocks": 0,
+      "physical_record": {
+        "module": "GiftUIDrawing",
+        "name": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+        "identifier_id": 147,
+        "function_id": 98,
+        "hash": 748443420,
+        "demangled": "static GiftUIDrawing.CanvasSemanticTransfer.stage<A where A: GiftUIDrawing.CanvasValueTable>(from: GiftUISemanticCore.SemanticRecordStore<GiftUIDrawing.CanvasSemanticPayload<A.CaptureStorage>>, into: GiftUIDrawing.CanvasStagedValues<GiftUISemanticCore.SemanticRecordReference, A>, table: A) throws(GiftUI.DrawingError) -> ()",
+        "offset_bits": 449500,
+        "linkage": 7,
+        "serialized_kind": 0,
+        "inline_strategy": 0,
+        "basic_blocks": 0,
+        "raw_prefix": [
+          4,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=287 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+      },
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 133600,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "reference": "%121 = function_ref @$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : CanvasValueTable> (@guaranteed SemanticRecordStore<CanvasSemanticPayload<\u03c4_0_0.CaptureStorage>>, @guaranteed CanvasStagedValues<SemanticRecordReference, \u03c4_0_0>, @in_guaranteed \u03c4_0_0, @thin CanvasSemanticTransfer.Type) -> @error DrawingError // user: %122",
+          "next": "try_apply %121<P08CounterSchemaCanvasTable<CounterDomain>>(%118, %120, %116, %114) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : CanvasValueTable> (@guaranteed SemanticRecordStore<CanvasSemanticPayload<\u03c4_0_0.CaptureStorage>>, @guaranteed CanvasStagedValues<SemanticRecordReference, \u03c4_0_0>, @in_guaranteed \u03c4_0_0, @thin CanvasSemanticTransfer.Type) -> @error DrawingError, normal bb17, error bb18 // id: %122"
+        }
+      ],
+      "current_edge_count": 1,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "8ff2bf5049d4393d459fef253cf6a137a9796a70c2ad4c413111d7928070b531",
+      "original_line": 59,
+      "original_declaration": "package static func stage<Table: CanvasValueTable>("
+    },
+    {
+      "id": "F16",
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+      "name": "// SemanticRecordStore.hasPendingCanvas(_:)",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "callee_line": 583749,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 148544,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE13resolveLayout17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5",
+          "reference": "%28 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %29",
+          "next": "%29 = apply %28<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%27, %11) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %30"
+        },
+        {
+          "line": 149720,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE23preflightCombinedRender17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+          "reference": "%28 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %29",
+          "next": "%29 = apply %28<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%27, %11) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %30"
+        },
+        {
+          "line": 150516,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+          "reference": "%75 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %76",
+          "next": "%76 = apply %75<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%74, %60) : $@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %77"
+        }
+      ],
+      "current_edge_count": 3,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "776db41e501972481ca6e7d461e9b52d67918f3624b2a41429f714be238a9753",
+      "original_line": 194,
+      "original_declaration": "borrowing func hasPendingCanvas(_ bank: SemanticRecordBankBuffers<Payload>) -> Bool {"
+    },
+    {
+      "id": "F17",
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+      "name": "// SemanticRecordStore.publishCandidate()",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "callee_line": 147512,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 153358,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ajR0ALLLVAA0a9CommittedR0ALLLVAA0a3HitR0ALLLVTg5",
+          "reference": "%85 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %86",
+          "next": "try_apply %85<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%84) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError, normal bb16, error bb17 // id: %86"
+        }
+      ],
+      "current_edge_count": 1,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "776db41e501972481ca6e7d461e9b52d67918f3624b2a41429f714be238a9753",
+      "original_line": 173,
+      "original_declaration": "package borrowing func publishCandidate() throws(SemanticExpansionError) {"
+    },
+    {
+      "id": "F18",
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+      "name": "// SemanticRecordStore.borrowedStore()",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "callee_line": 22182,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 154709,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE15offerAndProduce17GiftUIRuntimeCore0cD11OfferResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+          "reference": "%48 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // user: %49",
+          "next": "%49 = apply %48<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%47) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // users: %50, %80, %88"
+        }
+      ],
+      "current_edge_count": 1,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "776db41e501972481ca6e7d461e9b52d67918f3624b2a41429f714be238a9753",
+      "original_line": 93,
+      "original_declaration": "package borrowing func borrowedStore() -> SemanticRecordStore<Payload> {"
+    },
+    {
+      "id": "F19",
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+      "name": "// SemanticRecordStore.discardCandidate()",
+      "family": "C-semantic-banks",
+      "source": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "callee_line": 149150,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 147986,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AFLLVAA0a9CommittedJ0AFLLVAA0a3HitJ0AFLLVTg5",
+          "reference": "%13 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %14",
+          "next": "try_apply %13<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%12) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError, normal bb3, error bb4 // id: %14"
+        },
+        {
+          "line": 156498,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5",
+          "reference": "%132 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %133",
+          "next": "try_apply %132<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%131) : $@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError, normal bb19, error bb20 // id: %133"
+        }
+      ],
+      "current_edge_count": 2,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "776db41e501972481ca6e7d461e9b52d67918f3624b2a41429f714be238a9753",
+      "original_line": 155,
+      "original_declaration": "package borrowing func discardCandidate() throws(SemanticExpansionError) {"
+    },
+    {
+      "id": "F20",
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+      "name": "// InteractionOwnedKeyState<>.resolveCandidate(_:)",
+      "family": "E-interaction-commit",
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "callee_line": 150969,
+      "current_basic_blocks": 0,
+      "physical_record": {
+        "module": "GiftUIInteraction",
+        "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+        "identifier_id": 107,
+        "function_id": 145,
+        "hash": 1008583663,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveCandidate(GiftUIInteraction.InteractionCandidateDisposition) -> ()",
+        "offset_bits": 343275,
+        "linkage": 7,
+        "serialized_kind": 0,
+        "inline_strategy": 0,
+        "basic_blocks": 0,
+        "raw_prefix": [
+          4,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=144 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+      },
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 156463,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5",
+          "reference": "%108 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %109",
+          "next": "%109 = apply %108<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%106, %107) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        },
+        {
+          "line": 156533,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5",
+          "reference": "%153 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %154",
+          "next": "%154 = apply %153<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%151, %152) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        },
+        {
+          "line": 156589,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5",
+          "reference": "%201 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %202",
+          "next": "%202 = apply %201<P08CandidateAccess, P08CommittedAccess, P08HitAccess>(%199, %200) : $@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> ()"
+        }
+      ],
+      "current_edge_count": 3,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "cda0b3fe4b2165d7213c7cc4eb57f23859f3e854a116b3419f092a66cfec305c",
+      "original_line": 155,
+      "original_declaration": "package mutating func resolveCandidate(_ disposition: InteractionCandidateDisposition) {"
+    },
+    {
+      "id": "F21",
+      "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+      "name": "// RuntimeActionGenerationAllocator.resolveCandidate(committed:)",
+      "family": "F-generation",
+      "source": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift",
+      "callee_line": 150976,
+      "current_basic_blocks": 0,
+      "physical_record": {
+        "module": "GiftUIRuntimeCore",
+        "name": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+        "identifier_id": 315,
+        "function_id": 679,
+        "hash": 3616162541,
+        "demangled": "GiftUIRuntimeCore.RuntimeActionGenerationAllocator.resolveCandidate(committed: Swift.Bool) -> ()",
+        "offset_bits": 1354885,
+        "linkage": 7,
+        "serialized_kind": 0,
+        "inline_strategy": 0,
+        "basic_blocks": 0,
+        "raw_prefix": [
+          4,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=230 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+      },
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [
+        {
+          "line": 156468,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5",
+          "reference": "%112 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %113",
+          "next": "%113 = apply %112<SemanticCompleteIdentity>(%110, %111) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        },
+        {
+          "line": 156538,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5",
+          "reference": "%157 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %158",
+          "next": "%158 = apply %157<SemanticCompleteIdentity>(%155, %156) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        },
+        {
+          "line": 156594,
+          "owner_symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5",
+          "reference": "%205 = function_ref @$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %206",
+          "next": "%206 = apply %205<SemanticCompleteIdentity>(%203, %204) : $@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> ()"
+        }
+      ],
+      "current_edge_count": 3,
+      "disposition": "opaque_original_frontier_not_qualified",
+      "original_source_sha256": "5c402b3a80a52a598149ce8b441e87d9370ff985c173483123d1bd8d0ecd6231",
+      "original_line": 35,
+      "original_declaration": "package mutating func resolveCandidate(committed: Bool) {"
+    },
+    {
+      "id": "F22",
+      "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+      "name": "// ObservableModelScope<>.endFrame()",
+      "family": "B-observable",
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "callee_line": 95528,
+      "current_basic_blocks": 0,
+      "physical_record": null,
+      "selection": "current concrete operational edge, not yet selected as mandatory serialized body solely from zeroBB; review family cost/closure before source selection",
+      "current_edges": [],
+      "current_edge_count": 0,
+      "disposition": "selected_boundary_resolved",
+      "original_source_sha256": "cf4fe6105ea05856ed229644a803fdbf1bab8d3eb8150b1ae0256d52634a21dc",
+      "original_line": 278,
+      "original_declaration": "package borrowing func endFrame() throws(ObservableStateError) {"
+    }
+  ],
+  "origin_metadata": "Source lines/declarations/hashes retained from original frontier inventory; current edge lines refer to sealed continuation SIL. They are not current-source input qualification."
+}

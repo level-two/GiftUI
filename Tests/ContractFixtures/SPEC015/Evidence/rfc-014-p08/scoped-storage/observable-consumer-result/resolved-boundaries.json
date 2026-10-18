@@ -1,0 +1,63 @@
+{
+  "selected_original_roots": [
+    "modelKey",
+    "mutate(key:mutation:)",
+    "evaluateStateful",
+    "ModelScope.endFrame"
+  ],
+  "scope": "Selected boundary specialization only; B chain blocked at callback group",
+  "specialized_helpers": [
+    {
+      "reference_line": 121594,
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8matching_7ordinalSiSgq__s6UInt16VtF17P08CounterRuntime0K10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "line": 564261,
+      "header": "sil shared @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8matching_7ordinalSiSgq__s6UInt16VtF17P08CounterRuntime0K10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5 : $@convention(method) (SemanticCompleteIdentity, UInt16, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> Optional<Int> {",
+      "basic_blocks": 18,
+      "end_line": 564380
+    },
+    {
+      "reference_line": 121624,
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE3key2at0A2UI01_A10UIModelKeyVy6SchemaQzGSi_tF17P08CounterRuntime0N10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "line": 564384,
+      "header": "sil shared @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE3key2at0A2UI01_A10UIModelKeyVy6SchemaQzGSi_tF17P08CounterRuntime0N10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5 : $@convention(method) (Int, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> _GiftUIModelKey<CounterModelSchema> {",
+      "basic_blocks": 1,
+      "end_line": 564416
+    },
+    {
+      "reference_line": 121680,
+      "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF17P08CounterRuntime0s5OwnedE0V_0rS6Schema0seV0OTg504$s21ab8State010d6C9Rootf33VAARi_zrlE6mutate_8mutationAA0dC6j12O0A2UI01_A10lm3Vy6v6AA0dC5e6PQzG_8n28AA0dnO0PQztAaQRzrlFAH01_aB19opq9OyXEfU_17rs10Runtime0t5U52N0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5AA0dczF0VyAT0A14UISemanticCore24SemanticCompleteIdentityVGAKyAWGTf1nncn_n",
+      "line": 589737,
+      "header": "sil shared @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF17P08CounterRuntime0s5OwnedE0V_0rS6Schema0seV0OTg504$s21ab8State010d6C9Rootf33VAARi_zrlE6mutate_8mutationAA0dC6j12O0A2UI01_A10lm3Vy6v6AA0dC5e6PQzG_8n28AA0dnO0PQztAaQRzrlFAH01_aB19opq9OyXEfU_17rs10Runtime0t5U52N0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5AA0dczF0VyAT0A14UISemanticCore24SemanticCompleteIdentityVGAKyAWGTf1nncn_n : $@convention(thin) (_GiftUIModelKey<CounterModelSchema>, @guaranteed @noescape @callee_guaranteed @substituted <\u03c4_0_0> () -> @out \u03c4_0_0 for <CounterOwnedModel.Mutation>, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, _GiftUIModelKey<CounterModelSchema>) -> ObservableStateResult {",
+      "basic_blocks": 22,
+      "end_line": 589931
+    },
+    {
+      "reference_line": 134934,
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE08borrowedE0ACyxq_GyF17P08CounterRuntime0I10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "line": 22182,
+      "header": "sil shared @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE08borrowedE0ACyxq_GyF17P08CounterRuntime0I10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5 : $@convention(method) (@guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> @lifetime(copy 0) @owned ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity> {",
+      "basic_blocks": 1,
+      "end_line": 22203
+    },
+    {
+      "reference_line": 134937,
+      "symbol": "$s21GiftUIObservableState34ScopedObservableDeclarationVisitorVAARi_zrlE4root8identityACyxq_GAA0eC9RootScopeVyxq_G_q_tcfC17P08CounterRuntime0M10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "line": 597788,
+      "header": "sil shared @$s21GiftUIObservableState34ScopedObservableDeclarationVisitorVAARi_zrlE4root8identityACyxq_GAA0eC9RootScopeVyxq_G_q_tcfC17P08CounterRuntime0M10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5 : $@convention(method) (@owned ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, SemanticCompleteIdentity, @thin ScopedObservableDeclarationVisitor<CounterOwnedModel, SemanticCompleteIdentity>.Type) -> @lifetime(copy 0) @out ScopedObservableDeclarationVisitor<CounterOwnedModel, SemanticCompleteIdentity> {",
+      "basic_blocks": 1,
+      "end_line": 597805
+    },
+    {
+      "reference_line": 156663,
+      "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKFys6UInt16VXEfU_17P08CounterRuntime0l5OwnedE0V_0kL6Schema0leO0OTg5",
+      "line": 564484,
+      "header": "sil shared @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKFys6UInt16VXEfU_17P08CounterRuntime0l5OwnedE0V_0kL6Schema0leO0OTg5 : $@convention(thin) (UInt16, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> () {",
+      "basic_blocks": 1,
+      "end_line": 564503
+    }
+  ],
+  "key": "Selected key function directly constructs _GiftUIModelKey<CounterModelSchema> from validated record fields. Rawkey private fields unchanged; ordinary leaf total costs remain unqualified.",
+  "mutation": "Actual mutation specializes Model/Schema and direct key extraction/Address construction; beginMutation/Model.preflight/deferred endMutation remain calls; report follows model commit. Normal/error ordering in bounded slice, no full safety claim.",
+  "endFrame": "Concrete reclaim callback is 1BB, stack partial_apply [on_stack], @noescape Ownership.endFrame parameter; destroys model slot by writing Optional.none. Nongeneric ownership ledger body/cost remains unqualified.",
+  "retained": "Prior RuntimeCompletePipeline.run and three resolver selected boundaries PASS retained; dead Optional equality interpretation retained from resolver packet. No full23/all42/14loan/safety/cold pass."
+}

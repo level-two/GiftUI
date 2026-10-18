@@ -1,5 +1,11 @@
 # Grouped B-observable candidate — 2026-10-18
 
+[Concrete interpretation](observable-consumer-result/README.md): selectedfourB
+boundaries resolved; required actual preserved/install callback gate FAIL/STOP.
+Physical0BB +normalStatevisitor SIL +matching scopedobject calls; no allocationclaim.
+Seven original23 selected boundaries resolved/16opaque; no wholechain/safety/cold
+acceptance or automatic source repair. Prior run/resolver PASS retained.
+
 [Continuation result](observable-selector-continuation1-result/README.md):34/34 unique
 positive physical bodies and fresh42-source SIL PASS;832 input hashes verified.
 Source fixed; no compiler/decoder/runtime during evidence freeze. Actual callback

@@ -29,6 +29,13 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [observable concrete consumer interpretation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-consumer-result/README.md):
+four selected B boundaries resolve; actual generic preserved/install visitor callbacks
+remain unavailable (physicalkind0/0BB, concrete SIL calls, matching object relocations).
+Required callback gate FAIL/STOP; no allocation claim or whole-B acceptance. Original23
+status7selectedresolved/16opaque; prior run/resolver PASS retained. Candidate fixed;
+no source/repair/compile/runtime. Fullsafety/strictcold/P08 remain blocked/open.
+
 Current [observable selector continuation result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-selector-continuation1-result/README.md):
 all34 unique/body-positive physical selections PASS; fresh42-source SIL capture PASS,
 832 hashes verified. Source e4e4efc6 unchanged; candidate1/1/no automatic repairs and

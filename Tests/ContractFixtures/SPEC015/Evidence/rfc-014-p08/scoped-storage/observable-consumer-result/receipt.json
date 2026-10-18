@@ -1,0 +1,47 @@
+{
+  "source_commit": "e4e4efc6",
+  "continuation_result_commit": "9a374191",
+  "mode": "bounded_read_only_interpretation",
+  "source_edits": 0,
+  "compiler_decoder_runtime_executions": 0,
+  "candidate": "1/1 fixed, zero automatic repairs; previous budgets unchanged",
+  "inputs": [
+    {
+      "path": ".build/contracts/p08-observable-selector-continuation1/actual-host.sil",
+      "sha256": "6019e2b06de40aaf1f8184ab124147cab0c077ea2c8d4fd1459935b1df047837",
+      "bytes": 61694525
+    },
+    {
+      "path": ".build/contracts/p08-observable-candidate1/qualification/logs/host-disassembly.stdout",
+      "sha256": "fdb24e744391e9967b1440400a11f5fbb705f2e82ce8d95366074688b56ad768",
+      "bytes": 26358569
+    },
+    {
+      "path": ".build/contracts/p08-observable-candidate1/qualification/boundary-physical-index.json",
+      "sha256": "17dda9ffb1aa359d5d93e537763a5215ac0781254e39f3d4aab7310a021f7a86",
+      "bytes": 4026703
+    },
+    {
+      "path": ".build/contracts/p08-observable-candidate1/compile/owners/P08CounterRuntime/P08CounterRuntime.o",
+      "sha256": "26addb2a65536fadfbf6baf8e6542e85f69fe089e63242908ef284bddd8d02b4",
+      "bytes": 2529344
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4",
+      "bytes": 33283
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-selector-continuation1-result/receipt.json",
+      "sha256": "6ce54814be521e8b53050d9f36ff1bf6f8f5cc8c51da7f1f00da70a1bdf21897",
+      "bytes": 697
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-grouped-inventory/crossedges.json",
+      "sha256": "91dacdc8f6a4f6c8f8f96264f4d25b4a9d32b33da3444ef6bbca379ca7150f30",
+      "bytes": 1772
+    }
+  ],
+  "gate": "selected_B_boundaries_resolved_actual_callback_gate_fail_stop",
+  "full_safety_cold": "unrun_blocked"
+}

@@ -1,0 +1,170 @@
+--- lines 300-374 ---
+300:             state._giftUIBind(binding)
+301:         }
+302:     }
+303: 
+304:     @usableFromInline
+305:     borrowing func preserved(
+306:         _ identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>
+307:     ) throws(ObservableStateError) -> Bool {
+308:         try checkOperation(discovery: true)
+309:         guard models.phase == .discovering, records.pointee.candidateActive else {
+310:             throw .invalidPhaseSafetyNotProven
+311:         }
+312:         guard let slot = matching(identity, ordinal: ordinal) else { return false }
+313:         try models.pin(key(at: slot))
+314:         try bind(&state, slot: slot)
+315:         records.pointee.records[slot].encountered = true
+316:         return true
+317:     }
+318: 
+319:     @inlinable
+320:     @inline(__always)
+321:     package borrowing func encounter(
+322:         identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>
+323:     ) -> ObservableStateResult {
+324:         do throws(ObservableStateError) {
+325:             if try preserved(identity, ordinal: ordinal, state: &state) {
+326:                 return .success(.preserved)
+327:             }
+328:             if case .candidate(let key)? = state._giftUIInitial {
+329:                 for i in 0 ..< 4 {
+330:                     guard let claim = records.pointee.offeredClaims[i],
+331:                         models.key(for: claim.address) == key
+332:                     else { continue }
+333:                     var ticket = ObservableModelTicket<Model.Schema>(claim: claim, lifetime: models)
+334:                     try install(identity, ordinal: ordinal, state: &state, ticket: &ticket)
+335:                     records.pointee.offeredClaims[i] = nil
+336:                     return .success(.materialized)
+337:                 }
+338:                 throw .incompatibleAssociation
+339:             }
+340:             guard case .seed(let seed)? = state._giftUIInitial else {
+341:                 throw .incompatibleAssociation
+342:             }
+343:             // A fresh typed seed has no prior owner to duplicate. Generation
+344:             // exhaustion precedes every model metadata/backing capacity check.
+345:             guard records.pointee.nextGeneration != nil else {
+346:                 throw .registrationGenerationExhausted
+347:             }
+348:             var ticket = try models.materialize(Model.materialize(seed))
+349:             do {
+350:                 try install(identity, ordinal: ordinal, state: &state, ticket: &ticket)
+351:                 return .success(.materialized)
+352:             } catch {
+353:                 try? models.release(&ticket)
+354:                 throw error
+355:             }
+356:         } catch { return .failure(error) }
+357:     }
+358: 
+359:     /// Explicitly consumes the host's matching candidate claim after attachment
+360:     /// succeeds. On failure it remains the caller's ticket and model.
+361:     @inlinable
+362:     @inline(__always)
+363:     package borrowing func encounter(
+364:         identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>,
+365:         transferring ticket: inout ObservableModelTicket<Model.Schema>
+366:     ) -> ObservableStateResult {
+367:         do throws(ObservableStateError) {
+368:             if try preserved(identity, ordinal: ordinal, state: &state) {
+369:                 return .success(.preserved)
+370:             }
+371:             guard case .candidate(let descriptor)? = state._giftUIInitial, descriptor == ticket.key
+372:             else {
+373:                 throw .incompatibleAssociation
+374:             }
+--- lines 409-464 ---
+409:     @usableFromInline
+410:     borrowing func install(
+411:         _ identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>,
+412:         ticket: inout ObservableModelTicket<Model.Schema>
+413:     ) throws(ObservableStateError) {
+414:         let key = ticket.key
+415:         try models.validateAssociation(key)
+416:         let slot = Int(key._giftUISlot)
+417:         guard identities[slot] == nil else {
+418:             throw .locationCapacityExhausted
+419:         }
+420:         var locations = 0
+421:         var registrations = 0
+422:         var associations = 0
+423:         for index in 0 ..< 2 {
+424:             let item = records.pointee.records[index]
+425:             if identities[index] != nil { locations += 1 }
+426:             if item.attachment != nil { registrations += 1 }
+427:             if item.encountered { associations += 1 }
+428:         }
+429:         guard locations < Int(records.pointee.limits.maximumLocations) else {
+430:             throw .locationCapacityExhausted
+431:         }
+432:         guard registrations < Int(records.pointee.limits.maximumRegistrations) else {
+433:             throw .registrationCapacityExhausted
+434:         }
+435:         guard associations < Int(records.pointee.limits.maximumStagedAssociations) else {
+436:             throw .associationStagingCapacityExhausted
+437:         }
+438:         let attachment = try records.pointee.reserve(UInt16(slot))
+439:         try models.pin(key)
+440:         records.pointee.operationActive = true
+441:         defer { records.pointee.operationActive = false }
+442:         identities[slot] = identity
+443:         records.pointee.records[slot] = .init(
+444:             ordinal: ordinal,
+445:             keyOwner: key._giftUIOwnerInstance, keyGeneration: key._giftUIAllocationGeneration,
+446:             attachment: attachment, encountered: true)
+447:         reports.pointee.routes[slot] = .init()
+448:         if let failure = reports.pointee.routes[slot].lifecycle.beginAttachment(attachment) {
+449:             throw failure
+450:         }
+451:         let sink = _GiftUIObservableChangeSink(
+452:             attachment: attachment, context: UnsafeMutableRawPointer(reports),
+453:             reportRoute: reportObservableStateRoot)
+454:         let returned = try models.attach(key, sink: consume sink)
+455:         if let failure = reports.pointee.routes[slot].lifecycle.acceptAttachmentReturn(returned) {
+456:             if returned != nil {
+457:                 do { try models.detach(key, attachment: attachment) } catch { models.requireStop() }
+458:             }
+459:             identities[slot] = nil
+460:             records.pointee.records[slot] = .init()
+461:             throw failure
+462:         }
+463:         try models.register(ticket)
+464:         try bind(&state, slot: slot)
+--- lines 720-755 ---
+720: struct ScopedObservableDeclarationVisitor<
+721:     Model: ObservableStateModel & ~Copyable, Identity: Equatable & Sendable
+722: >: ~Copyable, ~Escapable, _GiftUIObservableStateDeclarationVisitor {
+723:     @usableFromInline
+724:     let root: ObservableStateRootScope<Model, Identity>
+725:     @usableFromInline
+726:     let identity: Identity
+727:     @usableFromInline
+728:     var failure: ObservableStateError?
+729: 
+730:     @_lifetime(copy root)
+731:     @usableFromInline
+732:     init(root: consuming ObservableStateRootScope<Model, Identity>, identity: Identity) {
+733:         self.root = consume root
+734:         self.identity = identity
+735:     }
+736: 
+737:     @inlinable
+738:     @inline(__always)
+739:     mutating func visit<Schema: _GiftUIModelSchema>(
+740:         _ state: inout State<Schema>, declarationOrdinal: UInt16
+741:     ) {
+742:         guard failure == nil else { return }
+743:         guard Schema.self == Model.Schema.self else {
+744:             failure = .incompatibleAssociation
+745:             return
+746:         }
+747:         let result = withUnsafeMutablePointer(to: &state) { pointer in
+748:             pointer.withMemoryRebound(to: State<Model.Schema>.self, capacity: 1) { typed in
+749:                 root.encounter(
+750:                     identity: identity, ordinal: declarationOrdinal, state: &typed.pointee)
+751:             }
+752:         }
+753:         if case .failure(let error) = result { failure = error }
+754:     }
+755: }

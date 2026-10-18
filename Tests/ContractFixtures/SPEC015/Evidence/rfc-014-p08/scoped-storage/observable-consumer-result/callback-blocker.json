@@ -1,0 +1,208 @@
+{
+  "gate": "FAIL_STOP_required_actual_generic_callback_availability_specialization",
+  "roots": [
+    {
+      "name": "preserved",
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE9preserved_7ordinal5stateSbq__s6UInt16V0A2UI0C0Vy6SchemaQzGztAA0dC5ErrorOYKF",
+      "sil_reference_line": 134959,
+      "sil_declaration": {
+        "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE9preserved_7ordinal5stateSbq__s6UInt16V0A2UI0C0Vy6SchemaQzGztAA0dC5ErrorOYKF",
+        "line": 597970,
+        "header": "sil @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE9preserved_7ordinal5stateSbq__s6UInt16V0A2UI0C0Vy6SchemaQzGztAA0dC5ErrorOYKF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @inout State<\u03c4_0_0.Schema>, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> (Bool, @error ObservableStateError) {",
+        "basic_blocks": 0,
+        "end_line": 597975
+      },
+      "physical_record": {
+        "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE9preserved_7ordinal5stateSbq__s6UInt16V0A2UI0C0Vy6SchemaQzGztAA0dC5ErrorOYKF",
+        "identifier_id": 168,
+        "function_id": 678,
+        "hash": 4198790047,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.preserved(_: B, ordinal: Swift.UInt16, state: inout GiftUI.State<A.Schema>) throws(GiftUIObservableState.ObservableStateError) -> Swift.Bool",
+        "offset_bits": 1300055,
+        "linkage": 7,
+        "serialized_kind": 0,
+        "inline_strategy": 0,
+        "basic_blocks": 0,
+        "raw_prefix": [
+          4,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=151 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+      },
+      "matching_object_edges": [
+        {
+          "line": 73258,
+          "owner_header_line": 71827,
+          "owner_header": "00000000000388fc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5>:",
+          "relocation": "0000000000039cf8:  ARM64_RELOC_BRANCH26\t_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE9preserved_7ordinal5stateSbq__s6UInt16V0A2UI0C0Vy6SchemaQzGztAA0dC5ErrorOYKF",
+          "instruction": "39cf8:      \tbl\t0x39cf8 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5+0x13fc>"
+        }
+      ],
+      "disposition": "required_generic_callback_body_blocker"
+    },
+    {
+      "name": "install",
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF",
+      "sil_reference_line": 137840,
+      "sil_declaration": {
+        "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF",
+        "line": 597979,
+        "header": "sil @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @inout State<\u03c4_0_0.Schema>, @lifetime(copy 3) @inout ObservableModelTicket<\u03c4_0_0.Schema>, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> @error ObservableStateError {",
+        "basic_blocks": 0,
+        "end_line": 597985
+      },
+      "physical_record": {
+        "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF",
+        "identifier_id": 175,
+        "function_id": 680,
+        "hash": 4120204302,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.install(_: B, ordinal: Swift.UInt16, state: inout GiftUI.State<A.Schema>, ticket: inout GiftUIObservableState.ObservableModelTicket<A.Schema>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "offset_bits": 1300951,
+        "linkage": 7,
+        "serialized_kind": 0,
+        "inline_strategy": 0,
+        "basic_blocks": 0,
+        "raw_prefix": [
+          4,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=6 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=182 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+      },
+      "matching_object_edges": [
+        {
+          "line": 73484,
+          "owner_header_line": 71827,
+          "owner_header": "00000000000388fc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5>:",
+          "relocation": "000000000003a038:  ARM64_RELOC_BRANCH26\t_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF",
+          "instruction": "3a038:      \tbl\t0x3a038 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5+0x173c>"
+        },
+        {
+          "line": 73776,
+          "owner_header_line": 71827,
+          "owner_header": "00000000000388fc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5>:",
+          "relocation": "000000000003a420:  ARM64_RELOC_BRANCH26\t_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF",
+          "instruction": "3a420:      \tbl\t0x3a420 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5+0x1b24>"
+        }
+      ],
+      "disposition": "required_generic_callback_body_blocker"
+    },
+    {
+      "name": "bind",
+      "symbol": "$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF",
+      "sil_reference_line": 137464,
+      "sil_declaration": {
+        "symbol": "$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF",
+        "line": 95696,
+        "header": "sil @$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF : $@convention(method) <\u03c4_0_0> (_GiftUIModelKey<\u03c4_0_0>, UInt16, @guaranteed ObservableModelOwnership) -> (Int, @error _GiftUIAccessFailure) {",
+        "basic_blocks": 0,
+        "end_line": 95699
+      },
+      "physical_record": {
+        "name": "$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF",
+        "identifier_id": 549,
+        "function_id": 573,
+        "hash": 2255709246,
+        "demangled": "GiftUIObservableState.ObservableModelOwnership.bind<A>(_: GiftUI._GiftUIModelKey<A>, schema: Swift.UInt16) throws(GiftUI._GiftUIAccessFailure) -> Swift.Int",
+        "offset_bits": 1263215,
+        "linkage": 7,
+        "serialized_kind": 0,
+        "inline_strategy": 0,
+        "basic_blocks": 0,
+        "raw_prefix": [
+          4,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1125 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+      },
+      "matching_object_edges": [
+        {
+          "line": 73601,
+          "owner_header_line": 71827,
+          "owner_header": "00000000000388fc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5>:",
+          "relocation": "000000000003a1c4:  ARM64_RELOC_BRANCH26\t_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF",
+          "instruction": "3a1c4:      \tbl\t0x3a1c4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5+0x18c8>"
+        },
+        {
+          "line": 73866,
+          "owner_header_line": 71827,
+          "owner_header": "00000000000388fc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5>:",
+          "relocation": "000000000003a568:  ARM64_RELOC_BRANCH26\t_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF",
+          "instruction": "3a568:      \tbl\t0x3a568 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5+0x1c6c>"
+        },
+        {
+          "line": 74021,
+          "owner_header_line": 71827,
+          "owner_header": "00000000000388fc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5>:",
+          "relocation": "000000000003a784:  ARM64_RELOC_BRANCH26\t_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF",
+          "instruction": "3a784:      \tbl\t0x3a784 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5+0x1e88>"
+        }
+      ],
+      "disposition": "related_callback_edge_inventory_not_separately_gate_qualified"
+    },
+    {
+      "name": "release",
+      "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE7releaseyyAA0dE6TicketVyq_GzAA0dC5ErrorOYKF",
+      "sil_reference_line": 138086,
+      "sil_declaration": {
+        "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE7releaseyyAA0dE6TicketVyq_GzAA0dC5ErrorOYKF",
+        "line": 33123,
+        "header": "sil @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE7releaseyyAA0dE6TicketVyq_GzAA0dC5ErrorOYKF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ~Copyable> (@lifetime(copy 0) @inout ObservableModelTicket<\u03c4_0_1>, @guaranteed ObservableModelScope<\u03c4_0_0, \u03c4_0_1>) -> @error ObservableStateError {",
+        "basic_blocks": 0,
+        "end_line": 33127
+      },
+      "physical_record": {
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE7releaseyyAA0dE6TicketVyq_GzAA0dC5ErrorOYKF",
+        "identifier_id": 176,
+        "function_id": 583,
+        "hash": 618431006,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.release(inout GiftUIObservableState.ObservableModelTicket<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "offset_bits": 1267366,
+        "linkage": 7,
+        "serialized_kind": 0,
+        "inline_strategy": 0,
+        "basic_blocks": 0,
+        "raw_prefix": [
+          4,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=184 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+      },
+      "matching_object_edges": [
+        {
+          "line": 73510,
+          "owner_header_line": 71827,
+          "owner_header": "00000000000388fc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5>:",
+          "relocation": "000000000003a084:  ARM64_RELOC_BRANCH26\t_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE7releaseyyAA0dE6TicketVyq_GzAA0dC5ErrorOYKF",
+          "instruction": "3a084:      \tbl\t0x3a084 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5+0x1788>"
+        }
+      ],
+      "disposition": "related_callback_edge_inventory_not_separately_gate_qualified"
+    }
+  ],
+  "normal_path": "beginObservableCandidateAndExpandSemantics -> borrowedRoot/visitor init -> visitor.failure.none bb225 -> preserved<CounterOwnedModel,SemanticCompleteIdentity> with inout original State pointer %1024; normal bb649 branches preserved true bb651 or false bb652 to actual State.storage initial/bound inspection. This precedes any Optional equality payload branch. install occurs on offered candidate bb702 and materialized seed bb736, both with actual inout State and scoped ticket; errors remain typed routes. No semantic constant-nil condition excludes preserved.",
+  "cost_limit": "Calls/physical absence prove specialization gate blockage, not allocation count or complete metadata/TLS/context cost. No source repair or full chain acceptance."
+}
