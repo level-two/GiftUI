@@ -1,13 +1,13 @@
 # P08 RuntimeCore witness compatibility activity — 2026-10-18
 
-**Compile boundary PASS: lower+25 fresh owners, zero failed/blocked.**
-[Result](runtimecore-witness-compatibility-result/README.md) freezes all309 input/
-recipe hashes, complete commands/logs and verified source/output identities.
-Candidate1/1 is fixed; no automatic source repair or budget reset. Independent
-[compile-boundary review PASS](p08-runtimecore-witness-independent-compile-review.md);
-current privacy/physical/codegen/safety/cold remain
-untested, P08/R07/T8.1/source candidate unaccepted. No source edits/new tests or
-later compiler/decoder/runtime execution followed the sweep. Eugene
+**Selected privacy/physical availability PASS:** all31 checks,22 source-access
+controls and six required bodies available; all569 input/recipe/log hashes verify.
+[Qualification result](runtimecore-fixed-qualification1-result/README.md) preserves
+complete decoder/index/object/diagnostic evidence. Source22eea103 unchanged;
+no subsequent source/compiler/decoder/runtime action. Compile25 PASS retained.
+Independent boundary review next; all42/concrete-host/private-callee/observer,
+full14-loan/lifetime/Optional/provenance/exclusivity/failure-cleanup safety and
+strict cold remain unqualified. No acceptance or new allowance. Eugene
 explicitly authorized the three previously diagnosed witness annotations followed
 by focused validation. This is one exact candidate with **zero automatic source
 repairs**; it does not reset the exhausted grouped initial1/1+corrective2/2 or any

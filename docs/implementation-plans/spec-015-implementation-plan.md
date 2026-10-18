@@ -29,13 +29,14 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current [RuntimeCore witness compatibility compile result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-witness-compatibility-result/README.md):
-lower+25 fresh owners PASS, zero failed/blocked;309 input/recipe hashes and all
-source/output identities verify. Candidate1/1 fixed, no automatic source repairs;
-all historical exhausted budgets unchanged. [Independent compile review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-runtimecore-witness-independent-compile-review.md)
-passes this boundary. Current privacy/physical six bodies/all42 origins/actual-host specialization,
-safety and strict cold remain untested; source candidate/P08/R07/T8.1 unaccepted.
-No source edits/new tests or later execution followed; earlier stages are historical.
+Current [fixed-source qualification1 result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-fixed-qualification1-result/README.md):
+all31 checks PASS,22 selected privacy controls and six required serialized bodies
+available;569 frozen input/recipe/log hashes verify. Source22eea103 unchanged,
+fresh25 compile PASS retained. Independent boundary review next. All42 origins/
+private callees/concrete-host specialization/observer attribution, full14-loan/
+lifetime/Optional/provenance/exclusivity/failure-cleanup safety and strict cold
+remain unqualified. No source repair/new allowance or P08/R07/T8.1 acceptance;
+earlier stages below remain historical.
 
 [Fixed-source qualification1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-fixed-qualification1/README.md)
 is prepared only:22 privacy controls, six-module/required-six-body physical gate

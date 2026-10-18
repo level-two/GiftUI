@@ -1,0 +1,22 @@
+{
+  "source_commit": "22eea103",
+  "prepared_commit": "d7583172",
+  "status": "qualification_prerequisites_passed",
+  "selected_privacy_controls_passed": 22,
+  "decoder_modules_passed": 6,
+  "interpreter_passed": true,
+  "object_captures_passed": 2,
+  "total_checks_passed": 31,
+  "six_required_bodies_available": true,
+  "input_hashes_verified": 569,
+  "recipe_hashes_verified": true,
+  "stdout_stderr_hashes_verified": true,
+  "archive_sha256": "768c1734af71b5f01113c202a63455dccad5f0876e51765575cce2800dc1b0db",
+  "archive_bytes": 2836040,
+  "archive_members": 65,
+  "excluded": "compiler cache only; never an acceptance/reuse artifact",
+  "source_changes": 0,
+  "subsequent_compiler_decoder_runtime_runs": 0,
+  "remaining": "actual42source optimized SIL/callee/continuation/destruction/observer review and full privacy/lifetime/14loan/Optional/provenance/exclusivity/failure-cleanup safety remain unqualified; strict cold blocked",
+  "protected5_pycache": "matching frozen input hashes; no staging"
+}
