@@ -1,0 +1,132 @@
+589960: sil shared @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5 : $@convention(method) (CapturedAction<SemanticCompleteIdentity>, Point, @guaranteed InteractionOwnedKeyState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> PointerGestureOutcome<SemanticCompleteIdentity> {
+589961: [%2: noescape **, read s0.v**.c*.v**, write s0.v**.c*.v**, copy s0.v**.c*.v**, destroy s0.v**.c*.v**]
+589962: [global: read,write,copy,destroy,allocate,deinit_barrier]
+589963: // %0                                             // users: %76, %6, %17
+589964: // %1                                             // user: %30
+589965: // %2                                             // user: %3
+589966: bb0(%0 : $CapturedAction<SemanticCompleteIdentity>, %1 : $Point, %2 : $InteractionOwnedKeyState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>):
+589967:   %3 = struct_extract %2, #InteractionOwnedKeyState.state // user: %7
+589968:   %4 = alloc_stack $Optional<BoundActionRecord<SemanticCompleteIdentity>> // users: %11, %8, %22, %13, %7
+589969:   // function_ref specialized InteractionState<>.record(identity:)
+589970:   %5 = function_ref @$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5 : $@convention(method) (SemanticCompleteIdentity, @guaranteed InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> @out Optional<BoundActionRecord<SemanticCompleteIdentity>> // user: %7
+589971:   %6 = struct_extract %0, #CapturedAction.identity // user: %7
+589972:   %7 = apply %5(%4, %6, %3) : $@convention(method) (SemanticCompleteIdentity, @guaranteed InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> @out Optional<BoundActionRecord<SemanticCompleteIdentity>>
+589973:   %8 = load %4                                    // user: %9
+589974:   switch_enum %8, case #Optional.some!enumelt: bb1, case #Optional.none!enumelt: bb2 // id: %9
+589975:
+589976: bb1(%10 : $BoundActionRecord<SemanticCompleteIdentity>): // Preds: bb0
+589977:   %11 = load %4                                   // users: %12, %34
+589978:   %12 = unchecked_enum_data %11, #Optional.some!enumelt // users: %28, %24, %14
+589979:   dealloc_stack %4                                // id: %13
+589980:   %14 = struct_extract %12, #BoundActionRecord.generation // user: %15
+589981:   %15 = struct_extract %14, #ActionGeneration.rawValue // user: %16
+589982:   %16 = struct_extract %15, #UInt32._value        // user: %20
+589983:   %17 = struct_extract %0, #CapturedAction.generation // user: %18
+589984:   %18 = struct_extract %17, #ActionGeneration.rawValue // user: %19
+589985:   %19 = struct_extract %18, #UInt32._value        // user: %20
+589986:   %20 = builtin "cmp_eq_Int32"(%16, %19) : $Builtin.Int1 // user: %21
+589987:   cond_br %20, bb3, bb4                           // id: %21
+589988:
+589989: bb2:                                              // Preds: bb0
+589990:   dealloc_stack %4                                // id: %22
+589991:   br bb10                                         // id: %23
+589992:
+589993: bb3:                                              // Preds: bb1
+589994:   %24 = struct_extract %12, #BoundActionRecord.isEnabled // user: %25
+589995:   %25 = struct_extract %24, #Bool._value          // user: %26
+589996:   cond_br %25, bb5, bb6                           // id: %26
+589997:
+589998: bb4:                                              // Preds: bb1
+589999:   br bb10                                         // id: %27
+590000:
+590001: bb5:                                              // Preds: bb3
+590002:   %28 = struct_extract %12, #BoundActionRecord.hitBounds // user: %30
+590003:   // function_ref Rect.contains(_:)
+590004:   %29 = function_ref @$s6GiftUI4RectV8containsySbAA5PointVF : $@convention(method) (Point, Rect) -> Bool // user: %30
+590005:   %30 = apply %29(%1, %28) : $@convention(method) (Point, Rect) -> Bool // user: %31
+590006:   %31 = struct_extract %30, #Bool._value          // user: %32
+590007:   cond_br %31, bb7, bb8                           // id: %32
+590008:
+590009: bb6:                                              // Preds: bb3
+590010:   br bb10                                         // id: %33
+590011:
+590012: bb7:                                              // Preds: bb5
+590013:   br bb9(%11)                                     // id: %34
+590014:
+590015: bb8:                                              // Preds: bb5
+590016:   br bb10                                         // id: %35
+590017:
+590018: // %36                                            // user: %41
+590019: bb9(%36 : $Optional<BoundActionRecord<SemanticCompleteIdentity>>): // Preds: bb7 bb10
+590020:   %37 = enum $Optional<BoundActionRecord<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %42
+590021:   %38 = alloc_stack $(Optional<BoundActionRecord<SemanticCompleteIdentity>>, Optional<BoundActionRecord<SemanticCompleteIdentity>>) // users: %80, %78, %67, %40, %39
+590022:   %39 = tuple_element_addr %38, 0                 // users: %54, %43, %41
+590023:   %40 = tuple_element_addr %38, 1                 // users: %58, %50, %48, %42
+590024:   store %36 to %39                                // id: %41
+590025:   store %37 to %40                                // id: %42
+590026:   %43 = load %39                                  // user: %44
+590027:   switch_enum %43, case #Optional.some!enumelt: bb11, case #Optional.none!enumelt: bb12 // id: %44
+590028:
+590029: bb10:                                             // Preds: bb2 bb4 bb6 bb8
+590030:   %45 = enum $Optional<BoundActionRecord<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %46
+590031:   br bb9(%45)                                     // id: %46
+590032:
+590033: bb11(%47 : $BoundActionRecord<SemanticCompleteIdentity>): // Preds: bb9
+590034:   %48 = load %40                                  // user: %49
+590035:   switch_enum %48, case #Optional.some!enumelt: bb13, case #Optional.none!enumelt: bb14 // id: %49
+590036:
+590037: bb12:                                             // Preds: bb9
+590038:   %50 = load %40                                  // user: %51
+590039:   switch_enum %50, case #Optional.none!enumelt: bb21, case #Optional.some!enumelt: bb22 // id: %51
+590040:
+590041: bb13(%52 : $BoundActionRecord<SemanticCompleteIdentity>): // Preds: bb11
+590042:   %53 = alloc_stack [lexical] [var_decl] $BoundActionRecord<SemanticCompleteIdentity> // users: %56, %65, %63
+590043:   %54 = load %39                                  // user: %55
+590044:   %55 = unchecked_enum_data %54, #Optional.some!enumelt // user: %56
+590045:   store %55 to %53                                // id: %56
+590046:   %57 = alloc_stack [lexical] [var_decl] $BoundActionRecord<SemanticCompleteIdentity> // users: %60, %64, %63
+590047:   %58 = load %40                                  // user: %59
+590048:   %59 = unchecked_enum_data %58, #Optional.some!enumelt // user: %60
+590049:   store %59 to %57                                // id: %60
+590050:   %61 = metatype $@thin BoundActionRecord<SemanticCompleteIdentity>.Type // user: %63
+590051:   // function_ref static BoundActionRecord.__derived_struct_equals(_:_:)
+590052:   %62 = function_ref @$s17GiftUIInteraction17BoundActionRecordV23__derived_struct_equalsySbACyxG_AEtFZ : $@convention(method) <τ_0_0 where τ_0_0 : Equatable, τ_0_0 : Sendable> (@in_guaranteed BoundActionRecord<τ_0_0>, @in_guaranteed BoundActionRecord<τ_0_0>, @thin BoundActionRecord<τ_0_0>.Type) -> Bool // user: %63
+590053:   %63 = apply %62<SemanticCompleteIdentity>(%53, %57, %61) : $@convention(method) <τ_0_0 where τ_0_0 : Equatable, τ_0_0 : Sendable> (@in_guaranteed BoundActionRecord<τ_0_0>, @in_guaranteed BoundActionRecord<τ_0_0>, @thin BoundActionRecord<τ_0_0>.Type) -> Bool // user: %66
+590054:   dealloc_stack %57                               // id: %64
+590055:   dealloc_stack %53                               // id: %65
+590056:   %66 = struct_extract %63, #Bool._value          // user: %68
+590057:   dealloc_stack %38                               // id: %67
+590058:   cond_br %66, bb15, bb16                         // id: %68
+590059:
+590060: bb14:                                             // Preds: bb11
+590061:   br bb20                                         // id: %69
+590062:
+590063: bb15:                                             // Preds: bb13
+590064:   br bb17                                         // id: %70
+590065:
+590066: bb16:                                             // Preds: bb13
+590067:   br bb19                                         // id: %71
+590068:
+590069: bb17:                                             // Preds: bb21 bb15
+590070:   %72 = enum $PointerGestureOutcome<SemanticCompleteIdentity>, #PointerGestureOutcome.cancelled!enumelt // user: %73
+590071:   br bb18(%72)                                    // id: %73
+590072:
+590073: // %74                                            // user: %75
+590074: bb18(%74 : $PointerGestureOutcome<SemanticCompleteIdentity>): // Preds: bb19 bb17
+590075:   return %74                                      // id: %75
+590076:
+590077: bb19:                                             // Preds: bb20 bb16
+590078:   %76 = enum $PointerGestureOutcome<SemanticCompleteIdentity>, #PointerGestureOutcome.continued!enumelt, %0 // user: %77
+590079:   br bb18(%76)                                    // id: %77
+590080:
+590081: bb20:                                             // Preds: bb22 bb14
+590082:   dealloc_stack %38                               // id: %78
+590083:   br bb19                                         // id: %79
+590084:
+590085: bb21:                                             // Preds: bb12
+590086:   dealloc_stack %38                               // id: %80
+590087:   br bb17                                         // id: %81
+590088:
+590089: bb22(%82 : $BoundActionRecord<SemanticCompleteIdentity>): // Preds: bb12
+590090:   br bb20                                         // id: %83
+590091: } // end sil function '$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5'

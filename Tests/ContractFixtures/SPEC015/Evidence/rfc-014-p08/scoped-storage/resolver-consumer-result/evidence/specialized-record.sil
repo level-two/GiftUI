@@ -1,0 +1,198 @@
+589319: sil shared @$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5 : $@convention(method) (SemanticCompleteIdentity, @guaranteed InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> @out Optional<BoundActionRecord<SemanticCompleteIdentity>> {
+589320: [%0: write v**]
+589321: [%2: noescape **, read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+589322: [global: read,write,copy,destroy,allocate,deinit_barrier]
+589323: // %0                                             // users: %140, %138, %127
+589324: // %1                                             // user: %134
+589325: // %2                                             // user: %4
+589326: bb0(%0 : $*Optional<BoundActionRecord<SemanticCompleteIdentity>>, %1 : $SemanticCompleteIdentity, %2 : $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>):
+589327:   %3 = integer_literal $Builtin.Int16, 0          // user: %8
+589328:   %4 = struct_extract %2, #InteractionState.committedRecords // users: %48, %5, %6
+589329:   debug_value %4, let, name "self", argno 1       // id: %5
+589330:   %6 = struct_extract %4, #P08CommittedAccess.descriptor // users: %49, %13, %7
+589331:   debug_value %6, let, name "self", argno 1       // id: %7
+589332:   br bb1(%3)                                      // id: %8
+589333:
+589334: // %9                                             // users: %12, %11, %10, %64, %90, %94, %76, %144, %46
+589335: // Loop header
+589336: bb1(%9 : $Builtin.Int16):                         // Preds: bb20 bb0
+589337:   debug_value %9, let, name "index", argno 1, type $UInt16, expr op_fragment:#UInt16._value // id: %10
+589338:   debug_value %9, let, name "index", argno 1, type $UInt16, expr op_fragment:#UInt16._value // id: %11
+589339:   debug_value %9, let, name "index", argno 1, type $UInt16, expr op_fragment:#UInt16._value // id: %12
+589340:   switch_enum %6, case #P08CommittedDescriptor.`static`!enumelt: bb2, case #P08CommittedDescriptor.dynamic!enumelt: bb3 // id: %13
+589341:
+589342: // %14                                            // user: %15
+589343: bb2(%14 : $(UnsafeMutablePointer<StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb1
+589344:   %15 = tuple_extract %14, 0                      // users: %17, %16
+589345:   debug_value %15, let, name "p"                  // id: %16
+589346:   %17 = struct_extract %15, #UnsafeMutablePointer._rawValue // user: %18
+589347:   %18 = pointer_to_address %17 to [strict] $*StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity> // user: %19
+589348:   %19 = struct_element_addr %18, #StaticTwoInteractionCommittedStorage.count // user: %20
+589349:   %20 = struct_element_addr %19, #UInt16._value   // user: %21
+589350:   %21 = load %20                                  // user: %22
+589351:   br bb4(%21)                                     // id: %22
+589352:
+589353: // %23                                            // user: %24
+589354: bb3(%23 : $(UnsafeMutablePointer<DynamicInteractionCommittedStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb1
+589355:   %24 = tuple_extract %23, 0                      // users: %26, %25
+589356:   debug_value %24, let, name "p"                  // id: %25
+589357:   %26 = struct_extract %24, #UnsafeMutablePointer._rawValue // user: %27
+589358:   %27 = pointer_to_address %26 to [strict] $*DynamicInteractionCommittedStorage<SemanticCompleteIdentity> // user: %28
+589359:   %28 = struct_element_addr %27, #DynamicInteractionCommittedStorage.records // user: %29
+589360:   %29 = struct_element_addr %28, #Array._buffer   // user: %30
+589361:   %30 = struct_element_addr %29, #_ArrayBuffer._storage // user: %31
+589362:   %31 = struct_element_addr %30, #_BridgeStorage.rawValue // user: %32
+589363:   %32 = load %31                                  // user: %33
+589364:   %33 = unchecked_ref_cast %32 to $__ContiguousArrayStorageBase // user: %34
+589365:   %34 = ref_element_addr [immutable] %33, #__ContiguousArrayStorageBase.countAndCapacity // user: %35
+589366:   %35 = struct_element_addr %34, #_ArrayBody._storage // user: %36
+589367:   %36 = struct_element_addr %35, #_SwiftArrayBodyStorage.count // user: %37
+589368:   %37 = struct_element_addr %36, #Int._value      // user: %38
+589369:   %38 = load %37                                  // user: %39
+589370:   %39 = builtin "assumeNonNegative_Int64"(%38) : $Builtin.Int64 // users: %41, %43
+589371:   %40 = integer_literal $Builtin.Int64, 65535     // user: %41
+589372:   %41 = builtin "cmp_slt_Int64"(%40, %39) : $Builtin.Int1 // user: %42
+589373:   cond_fail %41, "Not enough bits to represent the passed value" // id: %42
+589374:   %43 = builtin "truncOrBitCast_Int64_Int16"(%39) : $Builtin.Int16 // user: %44
+589375:   br bb4(%43)                                     // id: %44
+589376:
+589377: // %45                                            // user: %46
+589378: bb4(%45 : $Builtin.Int16):                        // Preds: bb3 bb2
+589379:   %46 = builtin "cmp_ult_Int16"(%9, %45) : $Builtin.Int1 // user: %47
+589380:   cond_br %46, bb5, bb16                          // id: %47
+589381:
+589382: bb5:                                              // Preds: bb4
+589383:   debug_value %4, let, name "self", argno 2       // id: %48
+589384:   switch_enum %6, case #P08CommittedDescriptor.`static`!enumelt: bb6, case #P08CommittedDescriptor.dynamic!enumelt: bb7 // id: %49
+589385:
+589386: // %50                                            // user: %51
+589387: bb6(%50 : $(UnsafeMutablePointer<StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb5
+589388:   %51 = tuple_extract %50, 0                      // users: %53, %52
+589389:   debug_value %51, let, name "p"                  // id: %52
+589390:   %53 = struct_extract %51, #UnsafeMutablePointer._rawValue // user: %54
+589391:   %54 = pointer_to_address %53 to [strict] $*StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity> // users: %59, %55
+589392:   %55 = struct_element_addr %54, #StaticTwoInteractionCommittedStorage.count // users: %58, %56
+589393:   %56 = struct_element_addr %55, #UInt16._value   // user: %57
+589394:   %57 = load %56                                  // user: %64
+589395:   debug_value %55, let, name "self", argno 2, type $StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, expr op_deref:op_fragment:#StaticTwoInteractionCommittedStorage.count // id: %58
+589396:   %59 = struct_element_addr %54, #StaticTwoInteractionCommittedStorage.slots // users: %63, %60
+589397:   %60 = struct_element_addr %59, #StaticTwoInteractionSlots.values // user: %61
+589398:   %61 = struct_element_addr %60, #InlineArray._storage // user: %62
+589399:   %62 = load %61                                  // user: %87
+589400:   debug_value %59, let, name "self", argno 2, type $StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, expr op_deref:op_fragment:#StaticTwoInteractionCommittedStorage.slots // id: %63
+589401:   %64 = builtin "cmp_ult_Int16"(%9, %57) : $Builtin.Int1 // user: %65
+589402:   cond_br %64, bb8, bb9                           // id: %65
+589403:
+589404: // %66                                            // user: %67
+589405: bb7(%66 : $(UnsafeMutablePointer<DynamicInteractionCommittedStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb5
+589406:   %67 = tuple_extract %66, 0                      // users: %69, %68
+589407:   debug_value %67, let, name "p"                  // id: %68
+589408:   %69 = struct_extract %67, #UnsafeMutablePointer._rawValue // user: %70
+589409:   %70 = pointer_to_address %69 to [strict] $*DynamicInteractionCommittedStorage<SemanticCompleteIdentity> // user: %71
+589410:   %71 = struct_element_addr %70, #DynamicInteractionCommittedStorage.records // user: %72
+589411:   %72 = struct_element_addr %71, #Array._buffer   // user: %73
+589412:   %73 = struct_element_addr %72, #_ArrayBuffer._storage // user: %74
+589413:   %74 = struct_element_addr %73, #_BridgeStorage.rawValue // user: %75
+589414:   %75 = load %74                                  // user: %77
+589415:   %76 = builtin "zextOrBitCast_Int16_Int64"(%9) : $Builtin.Int64 // users: %114, %115, %119, %84
+589416:   %77 = unchecked_ref_cast %75 to $__ContiguousArrayStorageBase // users: %118, %78
+589417:   %78 = ref_element_addr [immutable] %77, #__ContiguousArrayStorageBase.countAndCapacity // user: %79
+589418:   %79 = struct_element_addr %78, #_ArrayBody._storage // user: %80
+589419:   %80 = struct_element_addr %79, #_SwiftArrayBodyStorage.count // user: %81
+589420:   %81 = struct_element_addr %80, #Int._value      // user: %82
+589421:   %82 = load %81                                  // user: %83
+589422:   %83 = builtin "assumeNonNegative_Int64"(%82) : $Builtin.Int64 // users: %115, %84
+589423:   %84 = builtin "cmp_slt_Int64"(%76, %83) : $Builtin.Int1 // user: %85
+589424:   cond_br %84, bb14, bb15                         // id: %85
+589425:
+589426: bb8:                                              // Preds: bb6
+589427:   %86 = alloc_stack $Builtin.FixedArray<2, Optional<BoundActionRecord<SemanticCompleteIdentity>>> // users: %87, %108, %105, %102, %88
+589428:   store %62 to %86                                // id: %87
+589429:   debug_value %86, let, name "self", argno 2, type $StaticTwoInteractionSlots<BoundActionRecord<SemanticCompleteIdentity>>, expr op_deref:op_fragment:#StaticTwoInteractionSlots.values:op_fragment:#InlineArray._storage // id: %88
+589430:   %89 = integer_literal $Builtin.Int16, 2         // user: %90
+589431:   %90 = builtin "cmp_ult_Int16"(%9, %89) : $Builtin.Int1 // user: %91
+589432:   cond_br %90, bb10, bb11                         // id: %91
+589433:
+589434: bb9:                                              // Preds: bb6
+589435:   %92 = enum $Optional<BoundActionRecord<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %93
+589436:   br bb18(%92)                                    // id: %93
+589437:
+589438: bb10:                                             // Preds: bb8
+589439:   %94 = builtin "zextOrBitCast_Int16_Int64"(%9) : $Builtin.Int64 // users: %97, %98, %101
+589440:   %95 = integer_literal $Builtin.Int64, 0         // user: %97
+589441:   %96 = integer_literal $Builtin.Int64, 2         // user: %98
+589442:   %97 = builtin "cmp_slt_Int64"(%94, %95) : $Builtin.Int1 // user: %99
+589443:   %98 = builtin "cmp_sge_Int64"(%94, %96) : $Builtin.Int1 // user: %99
+589444:   %99 = builtin "or_Int1"(%97, %98) : $Builtin.Int1 // user: %100
+589445:   cond_fail %99, "Index out of bounds"            // id: %100
+589446:   %101 = builtin "truncOrBitCast_Int64_Word"(%94) : $Builtin.Word // user: %103
+589447:   %102 = vector_base_addr %86                     // user: %103
+589448:   %103 = index_addr [stack_protection] %102, %101 // user: %104
+589449:   %104 = load %103                                // users: %106, %110, %112
+589450:   dealloc_stack %86                               // id: %105
+589451:   switch_enum %104, case #Optional.some!enumelt: bb13, case #Optional.none!enumelt: bb12 // id: %106
+589452:
+589453: bb11:                                             // Preds: bb8
+589454:   %107 = enum $Optional<BoundActionRecord<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %109
+589455:   dealloc_stack %86                               // id: %108
+589456:   br bb18(%107)                                   // id: %109
+589457:
+589458: bb12:                                             // Preds: bb10
+589459:   br bb18(%104)                                   // id: %110
+589460:
+589461: bb13(%111 : $BoundActionRecord<SemanticCompleteIdentity>): // Preds: bb10
+589462:   br bb17(%104)                                   // id: %112
+589463:
+589464: bb14:                                             // Preds: bb7
+589465:   %113 = integer_literal $Builtin.Int64, 0        // user: %114
+589466:   %114 = builtin "cmp_slt_Int64"(%76, %113) : $Builtin.Int1 // user: %116
+589467:   %115 = builtin "cmp_sge_Int64"(%76, %83) : $Builtin.Int1 // user: %116
+589468:   %116 = builtin "or_Int1"(%114, %115) : $Builtin.Int1 // user: %117
+589469:   cond_fail %116, "Index out of range"            // id: %117
+589470:   %118 = ref_tail_addr [immutable] %77, $BoundActionRecord<SemanticCompleteIdentity> // user: %120
+589471:   %119 = builtin "truncOrBitCast_Int64_Word"(%76) : $Builtin.Word // user: %120
+589472:   %120 = index_addr [stack_protection] %118, %119 // user: %121
+589473:   %121 = load %120                                // user: %122
+589474:   %122 = enum $Optional<BoundActionRecord<SemanticCompleteIdentity>>, #Optional.some!enumelt, %121 // user: %123
+589475:   br bb17(%122)                                   // id: %123
+589476:
+589477: bb15:                                             // Preds: bb7
+589478:   %124 = enum $Optional<BoundActionRecord<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %125
+589479:   br bb18(%124)                                   // id: %125
+589480:
+589481: bb16:                                             // Preds: bb4
+589482:   %126 = enum $Optional<BoundActionRecord<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %127
+589483:   store %126 to %0                                // id: %127
+589484:   br bb21                                         // id: %128
+589485:
+589486: // %129                                           // users: %140, %130
+589487: bb17(%129 : $Optional<BoundActionRecord<SemanticCompleteIdentity>>): // Preds: bb14 bb13
+589488:   %130 = unchecked_enum_data %129, #Optional.some!enumelt // user: %131
+589489:   %131 = struct_extract %130, #BoundActionRecord.identity // user: %134
+589490:   %132 = metatype $@thin SemanticCompleteIdentity.Type // user: %134
+589491:   // function_ref static SemanticCompleteIdentity.== infix(_:_:)
+589492:   %133 = function_ref @$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ : $@convention(method) (SemanticCompleteIdentity, SemanticCompleteIdentity, @thin SemanticCompleteIdentity.Type) -> Bool // user: %134
+589493:   %134 = apply %133(%131, %1, %132) : $@convention(method) (SemanticCompleteIdentity, SemanticCompleteIdentity, @thin SemanticCompleteIdentity.Type) -> Bool // user: %135
+589494:   %135 = struct_extract %134, #Bool._value        // user: %136
+589495:   cond_br %135, bb19, bb20                        // id: %136
+589496:
+589497: // %137                                           // user: %138
+589498: bb18(%137 : $Optional<BoundActionRecord<SemanticCompleteIdentity>>): // Preds: bb9 bb12 bb11 bb15
+589499:   store %137 to %0                                // id: %138
+589500:   br bb21                                         // id: %139
+589501:
+589502: bb19:                                             // Preds: bb17
+589503:   store %129 to %0                                // id: %140
+589504:   br bb21                                         // id: %141
+589505:
+589506: bb20:                                             // Preds: bb17
+589507:   %142 = integer_literal $Builtin.Int16, 1        // user: %144
+589508:   %143 = integer_literal $Builtin.Int1, -1        // user: %144
+589509:   %144 = builtin "uadd_with_overflow_Int16"(%9, %142, %143) : $(Builtin.Int16, Builtin.Int1) // user: %145
+589510:   %145 = tuple_extract %144, 0                    // user: %146
+589511:   br bb1(%145)                                    // id: %146
+589512:
+589513: bb21:                                             // Preds: bb16 bb18 bb19
+589514:   %147 = tuple ()                                 // user: %148
+589515:   return %147                                     // id: %148
+589516: } // end sil function '$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5'

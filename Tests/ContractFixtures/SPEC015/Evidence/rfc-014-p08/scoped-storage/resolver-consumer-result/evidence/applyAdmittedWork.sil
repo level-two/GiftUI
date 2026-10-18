@@ -1,0 +1,334 @@
+120870: sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17applyAdmittedWork17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
+120871: [%0: read v**, write s7.v**, copy v**, destroy v**]
+120872: [global: read,write,copy,destroy,allocate,deinit_barrier]
+120873: // %0 "self"                                      // users: %60, %57, %191, %213, %17, %153, %31, %3, %1
+120874: bb0(%0 : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>):
+120875:   debug_value %0, var, name "self", argno 1, expr op_deref // id: %1
+120876:   %2 = enum $ExecutionPhase, #ExecutionPhase.mutating!enumelt // user: %5
+120877:   %3 = struct_element_addr %0, #CounterPipelineOwner.phase // user: %5
+120878:   // function_ref ExecutionPhaseMachine.transition(to:)
+120879:   %4 = function_ref @$s15GiftUIExecution21ExecutionPhaseMachineV10transition2toAA0C5ErrorOSgAA0cD0O_tF : $@convention(method) (ExecutionPhase, @inout ExecutionPhaseMachine) -> Optional<ExecutionError> // user: %5
+120880:   %5 = apply %4(%2, %3) : $@convention(method) (ExecutionPhase, @inout ExecutionPhaseMachine) -> Optional<ExecutionError> // user: %6
+120881:   switch_enum %5, case #Optional.some!enumelt: bb1, case #Optional.none!enumelt: bb2 // id: %6
+120882:
+120883: // %7                                             // users: %9, %8
+120884: bb1(%7 : $ExecutionError):                        // Preds: bb0
+120885:   debug_value %7, let, name "error"               // id: %8
+120886:   %9 = enum $RunCycleFailure<RuntimeOwnerFailure>, #RunCycleFailure.execution!enumelt, %7 // user: %12
+120887:   %10 = integer_literal $Builtin.Int1, 0          // user: %11
+120888:   %11 = struct $Bool (%10)                        // user: %12
+120889:   %12 = tuple $(RunCycleFailure<RuntimeOwnerFailure>, mutationApplied: Bool) (%9, %11) // user: %13
+120890:   %13 = enum $RuntimePipelineMutationResult<RuntimeOwnerFailure>, #RuntimePipelineMutationResult.failure!enumelt, %12 // user: %14
+120891:   br bb3(%13)                                     // id: %14
+120892:
+120893: bb2:                                              // Preds: bb0
+120894:   %15 = enum $RuntimeCompletePipelineStage, #RuntimeCompletePipelineStage.applyAdmittedWork!enumelt // user: %17
+120895:   // function_ref specialized CounterPipelineOwner<>.boundary(_:)
+120896:   %16 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8boundaryy15GiftUIExecution15RunCycleFailureOy0G13UIRuntimeCore0ceK0OGSgAH0c8CompleteD5StageOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0APLLVAA0a9CommittedQ0APLLVAA0a3HitQ0APLLVTg5 : $@convention(method) (RuntimeCompletePipelineStage, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Optional<RunCycleFailure<RuntimeOwnerFailure>> // user: %17
+120897:   %17 = apply %16(%15, %0) : $@convention(method) (RuntimeCompletePipelineStage, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Optional<RunCycleFailure<RuntimeOwnerFailure>> // user: %18
+120898:   switch_enum %17, case #Optional.some!enumelt: bb4, case #Optional.none!enumelt: bb5 // id: %18
+120899:
+120900: // %19                                            // user: %20
+120901: bb3(%19 : $RuntimePipelineMutationResult<RuntimeOwnerFailure>): // Preds: bb41 bb38 bb31 bb25 bb4 bb1
+120902:   return %19                                      // id: %20
+120903:
+120904: // %21                                            // users: %25, %22
+120905: bb4(%21 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb2
+120906:   debug_value %21, let, name "error"              // id: %22
+120907:   %23 = integer_literal $Builtin.Int1, 0          // user: %24
+120908:   %24 = struct $Bool (%23)                        // user: %25
+120909:   %25 = tuple $(RunCycleFailure<RuntimeOwnerFailure>, mutationApplied: Bool) (%21, %24) // user: %26
+120910:   %26 = enum $RuntimePipelineMutationResult<RuntimeOwnerFailure>, #RuntimePipelineMutationResult.failure!enumelt, %25 // user: %27
+120911:   br bb3(%26)                                     // id: %27
+120912:
+120913: bb5:                                              // Preds: bb2
+120914:   %28 = integer_literal $Builtin.Int1, 0          // users: %91, %119, %135, %125, %30, %29
+120915:   %29 = struct $Bool (%28)                        // users: %47, %65
+120916:   debug_value %28, var, name "applied", type $Bool, expr op_fragment:#Bool._value // id: %30
+120917:   %31 = struct_element_addr %0, #CounterPipelineOwner.control // user: %32
+120918:   %32 = struct_element_addr %31, #UnsafeMutablePointer._rawValue // user: %33
+120919:   %33 = load %32                                  // user: %34
+120920:   %34 = pointer_to_address %33 to [strict] $*CounterControl // users: %61, %62, %63, %64, %141, %138, %195, %36, %35
+120921:   debug_value %34, var, name "self", argno 1, expr op_deref // id: %35
+120922:   %36 = struct_element_addr %34, #CounterControl.runtime // users: %192, %37
+120923:   %37 = struct_element_addr %36, #CounterRuntimeControl.admission // users: %142, %139, %48, %41, %39, %38
+120924:   debug_value %37, var, name "self", argno 1, expr op_deref // id: %38
+120925:   %39 = struct_element_addr %37, #CounterAdmissionBacking.sealedStateCursor // users: %82, %40
+120926:   %40 = struct_element_addr %39, #UInt16._value   // users: %182, %43
+120927:   %41 = struct_element_addr %37, #CounterAdmissionBacking.sealedStateCount // user: %42
+120928:   %42 = struct_element_addr %41, #UInt16._value   // users: %183, %44
+120929:   %43 = load %40                                  // users: %45, %65
+120930:   %44 = load %42                                  // user: %45
+120931:   %45 = builtin "cmp_ult_Int16"(%43, %44) : $Builtin.Int1 // user: %46
+120932:   cond_br %45, bb7, bb6                           // id: %46
+120933:
+120934: bb6:                                              // Preds: bb5
+120935:   br bb19(%29)                                    // id: %47
+120936:
+120937: bb7:                                              // Preds: bb5
+120938:   %48 = struct_element_addr %37, #CounterAdmissionBacking.sealedStates // user: %49
+120939:   %49 = struct_element_addr %48, #InlineArray._storage // user: %50
+120940:   %50 = vector_base_addr %49                      // user: %74
+120941:   %51 = integer_literal $Builtin.Int16, 1         // user: %77
+120942:   %52 = integer_literal $Builtin.Int1, -1         // users: %119, %130, %198, %189, %188, %77
+120943:   %53 = enum $CounterRuntimeSlotPhase, #CounterRuntimeSlotPhase.installed!enumelt // user: %98
+120944:   %54 = enum $CounterRuntimeSlotPhase, #CounterRuntimeSlotPhase.quiesced!enumelt // user: %110
+120945:   %55 = integer_literal $Builtin.Int64, 0         // user: %69
+120946:   %56 = integer_literal $Builtin.Int64, 34        // user: %70
+120947:   %57 = struct_element_addr %0, #CounterPipelineOwner.runtimeClaim // user: %58
+120948:   %58 = struct_element_addr %57, #UInt64._value   // user: %59
+120949:   %59 = load %58                                  // user: %89
+120950:   debug_value %0, let, name "self", argno 1, expr op_deref // id: %60
+120951:   %61 = struct_element_addr %34, #CounterControl.runtimeSlotOwner // user: %84
+120952:   %62 = struct_element_addr %34, #CounterControl.runtimeSlotPhase // users: %106, %94
+120953:   %63 = struct_element_addr %34, #CounterControl.runtimeEndpoint // user: %118
+120954:   %64 = struct_element_addr %34, #CounterControl.runtimeRootIdentity // user: %132
+120955:   br bb8(%29, %43)                                // id: %65
+120956:
+120957: // %66                                            // users: %177, %207, %180
+120958: // %67                                            // users: %68, %77
+120959: // Loop header
+120960: bb8(%66 : $Bool, %67 : $Builtin.Int16):           // Preds: bb29 bb7
+120961:   %68 = builtin "zextOrBitCast_Int16_Int64"(%67) : $Builtin.Int64 // users: %69, %70, %73
+120962:   %69 = builtin "cmp_slt_Int64"(%68, %55) : $Builtin.Int1 // user: %71
+120963:   %70 = builtin "cmp_sge_Int64"(%68, %56) : $Builtin.Int1 // user: %71
+120964:   %71 = builtin "or_Int1"(%69, %70) : $Builtin.Int1 // user: %72
+120965:   cond_fail %71, "Index out of bounds"            // id: %72
+120966:   %73 = builtin "truncOrBitCast_Int64_Word"(%68) : $Builtin.Word // user: %74
+120967:   %74 = index_addr [stack_protection] %50, %73    // user: %75
+120968:   %75 = load %74                                  // users: %76, %83, %162
+120969:   debug_value %75, let, name "value"              // id: %76
+120970:   %77 = builtin "uadd_with_overflow_Int16"(%67, %51, %52) : $(Builtin.Int16, Builtin.Int1) // users: %79, %78
+120971:   %78 = tuple_extract %77, 0                      // user: %81
+120972:   %79 = tuple_extract %77, 1                      // user: %80
+120973:   cond_fail %79, "arithmetic overflow"            // id: %80
+120974:   %81 = struct $UInt16 (%78)                      // user: %82
+120975:   store %81 to %39                                // id: %82
+120976:   debug_value %75, let, name "value"              // id: %83
+120977:   %84 = load %61                                  // users: %87, %85
+120978:   switch_enum %84, case #Optional.some!enumelt: bb9, case #Optional.none!enumelt: bb10 // id: %85
+120979:
+120980: bb9(%86 : $UInt64):                               // Preds: bb8
+120981:   %87 = unchecked_enum_data %84, #Optional.some!enumelt // user: %88
+120982:   %88 = struct_extract %87, #UInt64._value        // user: %89
+120983:   %89 = builtin "cmp_eq_Int64"(%88, %59) : $Builtin.Int1 // user: %90
+120984:   br bb11(%89)                                    // id: %90
+120985:
+120986: bb10:                                             // Preds: bb8
+120987:   br bb11(%28)                                    // id: %91
+120988:
+120989: // %92                                            // users: %123, %122, %93
+120990: bb11(%92 : $Builtin.Int1):                        // Preds: bb10 bb9
+120991:   debug_value %92, let, name "sameOwner", type $Bool, expr op_fragment:#Bool._value // id: %93
+120992:   %94 = load %62                                  // user: %96
+120993:   %95 = alloc_stack [lexical] $CounterRuntimeSlotPhase // users: %96, %105, %99
+120994:   store %94 to %95                                // id: %96
+120995:   %97 = alloc_stack [lexical] $CounterRuntimeSlotPhase // users: %98, %104, %100
+120996:   store %53 to %97                                // id: %98
+120997:   %99 = builtin "getEnumTag"<CounterRuntimeSlotPhase>(%95) : $Builtin.Int32 // user: %101
+120998:   %100 = builtin "getEnumTag"<CounterRuntimeSlotPhase>(%97) : $Builtin.Int32 // user: %101
+120999:   %101 = builtin "cmp_eq_Int32"(%99, %100) : $Builtin.Int1 // users: %124, %103, %102
+121000:   debug_value %101, let, name "installed", argno 2, type $Bool, expr op_fragment:#Bool._value // id: %102
+121001:   debug_value %101, let, name "installed", type $Bool, expr op_fragment:#Bool._value // id: %103
+121002:   dealloc_stack %97                               // id: %104
+121003:   dealloc_stack %95                               // id: %105
+121004:   %106 = load %62                                 // user: %108
+121005:   %107 = alloc_stack [lexical] $CounterRuntimeSlotPhase // users: %108, %117, %111
+121006:   store %106 to %107                              // id: %108
+121007:   %109 = alloc_stack [lexical] $CounterRuntimeSlotPhase // users: %110, %116, %112
+121008:   store %54 to %109                               // id: %110
+121009:   %111 = builtin "getEnumTag"<CounterRuntimeSlotPhase>(%107) : $Builtin.Int32 // user: %113
+121010:   %112 = builtin "getEnumTag"<CounterRuntimeSlotPhase>(%109) : $Builtin.Int32 // user: %113
+121011:   %113 = builtin "cmp_eq_Int32"(%111, %112) : $Builtin.Int1 // users: %127, %115, %114
+121012:   debug_value %113, let, name "quiesced", argno 3, type $Bool, expr op_fragment:#Bool._value // id: %114
+121013:   debug_value %113, let, name "quiesced", type $Bool, expr op_fragment:#Bool._value // id: %115
+121014:   dealloc_stack %109                              // id: %116
+121015:   dealloc_stack %107                              // id: %117
+121016:   %118 = load %63                                 // user: %119
+121017:   %119 = select_enum %118, case #Optional.some!enumelt: %52, case #Optional.none!enumelt: %28 : $Builtin.Int1 // users: %134, %126, %121, %120
+121018:   debug_value %119, let, name "endpointPresent", argno 4, type $Bool, expr op_fragment:#Bool._value // id: %120
+121019:   debug_value %119, let, name "endpointPresent", type $Bool, expr op_fragment:#Bool._value // id: %121
+121020:   debug_value %92, let, name "sameOwner", argno 1, type $Bool, expr op_fragment:#Bool._value // id: %122
+121021:   cond_br %92, bb12, bb13                         // id: %123
+121022:
+121023: bb12:                                             // Preds: bb11
+121024:   cond_br %101, bb14, bb15                        // id: %124
+121025:
+121026: bb13:                                             // Preds: bb11
+121027:   br bb16(%28)                                    // id: %125
+121028:
+121029: bb14:                                             // Preds: bb12
+121030:   br bb16(%119)                                   // id: %126
+121031:
+121032: bb15:                                             // Preds: bb12
+121033:   cond_br %113, bb17, bb18                        // id: %127
+121034:
+121035: // %128                                           // users: %130, %129
+121036: bb16(%128 : $Builtin.Int1):                       // Preds: bb13 bb18 bb17 bb14
+121037:   debug_value %128, let, name "matches", type $Bool, expr op_fragment:#Bool._value // id: %129
+121038:   %130 = builtin "xor_Int1"(%128, %52) : $Builtin.Int1 // user: %131
+121039:   cond_fail %130, "precondition failure"          // id: %131
+121040:   %132 = load %64                                 // user: %133
+121041:   switch_enum %132, case #Optional.some!enumelt: bb20, case #Optional.none!enumelt: bb21 // id: %133
+121042:
+121043: bb17:                                             // Preds: bb15
+121044:   br bb16(%119)                                   // id: %134
+121045:
+121046: bb18:                                             // Preds: bb15
+121047:   br bb16(%28)                                    // id: %135
+121048:
+121049: // %136                                           // users: %218, %225, %215
+121050: bb19(%136 : $Bool):                               // Preds: bb28 bb6
+121051:   %137 = enum $Optional<UInt16>, #Optional.none!enumelt // user: %140
+121052:   debug_value %34, var, name "self", argno 1, expr op_deref // id: %138
+121053:   %139 = struct_element_addr %37, #CounterAdmissionBacking.sealedCompletion // user: %140
+121054:   store %137 to %139                              // id: %140
+121055:   debug_value %34, var, name "self", argno 1, expr op_deref // id: %141
+121056:   %142 = struct_element_addr %37, #CounterAdmissionBacking.sealedAction // users: %145, %143
+121057:   %143 = load %142                                // user: %146
+121058:   %144 = enum $Optional<CapturedAction<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %145
+121059:   store %144 to %142                              // id: %145
+121060:   switch_enum %143, case #Optional.some!enumelt: bb32, case #Optional.none!enumelt: bb33 // id: %146
+121061:
+121062: // %147                                           // users: %150, %148
+121063: bb20(%147 : $SemanticCompleteIdentity):           // Preds: bb16
+121064:   debug_value %147, let, name "rootIdentity"      // id: %148
+121065:   %149 = alloc_stack $SemanticCompleteIdentity    // users: %150, %157, %156
+121066:   store %147 to %149                              // id: %150
+121067:   %151 = integer_literal $Builtin.Int16, 0        // user: %152
+121068:   %152 = struct $UInt16 (%151)                    // user: %156
+121069:   %153 = struct_element_addr %0, #CounterPipelineOwner.root // users: %165, %154
+121070:   %154 = load %153                                // user: %156
+121071:   // function_ref ObservableStateRootScope<>.modelKey(identity:ordinal:)
+121072:   %155 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (@in_guaranteed τ_0_1, UInt16, @guaranteed ObservableStateRootScope<τ_0_0, τ_0_1>) -> Optional<_GiftUIModelKey<τ_0_0.Schema>> // user: %156
+121073:   %156 = apply %155<CounterOwnedModel, SemanticCompleteIdentity>(%149, %152, %154) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (@in_guaranteed τ_0_1, UInt16, @guaranteed ObservableStateRootScope<τ_0_0, τ_0_1>) -> Optional<_GiftUIModelKey<τ_0_0.Schema>> // user: %158
+121074:   dealloc_stack %149                              // id: %157
+121075:   switch_enum %156, case #Optional.some!enumelt: bb22, case #Optional.none!enumelt: bb23 // id: %158
+121076:
+121077: bb21:                                             // Preds: bb16
+121078:   br bb31                                         // id: %159
+121079:
+121080: // %160                                           // users: %167, %161
+121081: bb22(%160 : $_GiftUIModelKey<CounterModelSchema>): // Preds: bb20
+121082:   debug_value %160, let, name "key"               // id: %161
+121083:   %162 = enum $CounterOwnedModel.Mutation, #CounterOwnedModel.Mutation.fact!enumelt, %75 // user: %164
+121084:   %163 = alloc_stack $CounterOwnedModel.Mutation  // users: %164, %168, %167
+121085:   store %162 to %163                              // id: %164
+121086:   %165 = load %153                                // user: %167
+121087:   // function_ref ObservableStateRootScope<>.mutate<>(_:mutation:)
+121088:   %166 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableModelMutation, τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (_GiftUIModelKey<τ_0_0.Schema>, @in_guaranteed τ_0_0.Mutation, @guaranteed ObservableStateRootScope<τ_0_0, τ_0_1>) -> ObservableStateResult // user: %167
+121089:   %167 = apply %166<CounterOwnedModel, SemanticCompleteIdentity>(%160, %163, %165) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableModelMutation, τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (_GiftUIModelKey<τ_0_0.Schema>, @in_guaranteed τ_0_0.Mutation, @guaranteed ObservableStateRootScope<τ_0_0, τ_0_1>) -> ObservableStateResult // user: %169
+121090:   dealloc_stack %163                              // id: %168
+121091:   switch_enum %167, case #ObservableStateResult.success!enumelt: bb24, case #ObservableStateResult.failure!enumelt: bb25 // id: %169
+121092:
+121093: bb23:                                             // Preds: bb20
+121094:   br bb31                                         // id: %170
+121095:
+121096: // %171                                           // user: %172
+121097: bb24(%171 : $ObservableStateOperational):         // Preds: bb22
+121098:   switch_enum %171, case #ObservableStateOperational.unchanged!enumelt: bb26, default bb30 // id: %172
+121099:
+121100: // %173                                           // users: %175, %174
+121101: bb25(%173 : $ObservableStateError):               // Preds: bb22
+121102:   debug_value %173, let, name "error"             // id: %174
+121103:   %175 = enum $RuntimeOwnerFailure, #RuntimeOwnerFailure.observableState!enumelt, %173 // user: %176
+121104:   %176 = enum $RunCycleFailure<RuntimeOwnerFailure>, #RunCycleFailure.focusedOwner!enumelt, %175 // user: %177
+121105:   %177 = tuple $(RunCycleFailure<RuntimeOwnerFailure>, mutationApplied: Bool) (%176, %66) // user: %178
+121106:   %178 = enum $RuntimePipelineMutationResult<RuntimeOwnerFailure>, #RuntimePipelineMutationResult.failure!enumelt, %177 // user: %179
+121107:   br bb3(%178)                                    // id: %179
+121108:
+121109: bb26:                                             // Preds: bb24
+121110:   br bb27(%66)                                    // id: %180
+121111:
+121112: // %181                                           // users: %186, %187
+121113: bb27(%181 : $Bool):                               // Preds: bb26 bb30
+121114:   %182 = load %40                                 // users: %184, %187
+121115:   %183 = load %42                                 // user: %184
+121116:   %184 = builtin "cmp_ult_Int16"(%182, %183) : $Builtin.Int1 // user: %185
+121117:   cond_br %184, bb29, bb28                        // id: %185
+121118:
+121119: bb28:                                             // Preds: bb27
+121120:   br bb19(%181)                                   // id: %186
+121121:
+121122: bb29:                                             // Preds: bb27
+121123:   br bb8(%181, %182)                              // id: %187
+121124:
+121125: bb30:                                             // Preds: bb24
+121126:   %188 = struct $Bool (%52)                       // users: %193, %190, %204
+121127:   debug_value %52, var, name "applied", type $Bool, expr op_fragment:#Bool._value // id: %189
+121128:   debug_value %188, let, name "newValue", argno 1 // id: %190
+121129:   debug_value %0, var, name "self", argno 2, expr op_deref // id: %191
+121130:   %192 = struct_element_addr %36, #CounterRuntimeControl.changed // user: %193
+121131:   store %188 to %192                              // id: %193
+121132:   %194 = integer_literal $Builtin.Int64, 1        // user: %198
+121133:   %195 = struct_element_addr %34, #CounterControl.applied // users: %203, %196
+121134:   %196 = struct_element_addr %195, #Int._value    // user: %197
+121135:   %197 = load %196                                // user: %198
+121136:   %198 = builtin "sadd_with_overflow_Int64"(%197, %194, %52) : $(Builtin.Int64, Builtin.Int1) // users: %200, %199
+121137:   %199 = tuple_extract %198, 0                    // user: %202
+121138:   %200 = tuple_extract %198, 1                    // user: %201
+121139:   cond_fail %200, "arithmetic overflow"           // id: %201
+121140:   %202 = struct $Int (%199)                       // user: %203
+121141:   store %202 to %195                              // id: %203
+121142:   br bb27(%188)                                   // id: %204
+121143:
+121144: bb31:                                             // Preds: bb21 bb23
+121145:   %205 = enum $ExecutionError, #ExecutionError.invalidProvenance!enumelt // user: %206
+121146:   %206 = enum $RunCycleFailure<RuntimeOwnerFailure>, #RunCycleFailure.execution!enumelt, %205 // user: %207
+121147:   %207 = tuple $(RunCycleFailure<RuntimeOwnerFailure>, mutationApplied: Bool) (%206, %66) // user: %208
+121148:   %208 = enum $RuntimePipelineMutationResult<RuntimeOwnerFailure>, #RuntimePipelineMutationResult.failure!enumelt, %207 // user: %209
+121149:   br bb3(%208)                                    // id: %209
+121150:
+121151: // %210                                           // users: %213, %211
+121152: bb32(%210 : $CapturedAction<SemanticCompleteIdentity>): // Preds: bb19
+121153:   debug_value %210, let, name "captured"          // id: %211
+121154:   // function_ref specialized CounterPipelineOwner<>.dispatch(_:)
+121155:   %212 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateU0ASLLVAA0a9CommittedU0ASLLVAA0a3HitU0ASLLVTg5 : $@convention(method) (CapturedAction<SemanticCompleteIdentity>, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> // user: %213
+121156:   %213 = apply %212(%210, %0) : $@convention(method) (CapturedAction<SemanticCompleteIdentity>, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> // user: %214
+121157:   switch_enum %213, case #RuntimePipelineMutationResult.applied!enumelt: bb34, case #RuntimePipelineMutationResult.failure!enumelt: bb35 // id: %214
+121158:
+121159: bb33:                                             // Preds: bb19
+121160:   br bb38(%136)                                   // id: %215
+121161:
+121162: // %216                                           // users: %230, %217
+121163: bb34(%216 : $Bool):                               // Preds: bb32
+121164:   debug_value %216, let, name "changed"           // id: %217
+121165:   %218 = struct_extract %136, #Bool._value        // user: %219
+121166:   cond_br %218, bb36, bb37                        // id: %219
+121167:
+121168: // %220                                           // users: %222, %221
+121169: bb35(%220 : $(RunCycleFailure<RuntimeOwnerFailure>, mutationApplied: Bool)): // Preds: bb32
+121170:   %221 = tuple_extract %220, 0                    // users: %239, %223
+121171:   %222 = tuple_extract %220, 1                    // users: %237, %224
+121172:   debug_value %221, let, name "failure"           // id: %223
+121173:   debug_value %222, let, name "changed"           // id: %224
+121174:   %225 = struct_extract %136, #Bool._value        // user: %226
+121175:   cond_br %225, bb39, bb40                        // id: %226
+121176:
+121177: bb36:                                             // Preds: bb34
+121178:   %227 = integer_literal $Builtin.Int1, -1        // user: %228
+121179:   %228 = struct $Bool (%227)                      // user: %229
+121180:   br bb38(%228)                                   // id: %229
+121181:
+121182: bb37:                                             // Preds: bb34
+121183:   br bb38(%216)                                   // id: %230
+121184:
+121185: // %231                                           // user: %232
+121186: bb38(%231 : $Bool):                               // Preds: bb33 bb37 bb36
+121187:   %232 = enum $RuntimePipelineMutationResult<RuntimeOwnerFailure>, #RuntimePipelineMutationResult.applied!enumelt, %231 // user: %233
+121188:   br bb3(%232)                                    // id: %233
+121189:
+121190: bb39:                                             // Preds: bb35
+121191:   %234 = integer_literal $Builtin.Int1, -1        // user: %235
+121192:   %235 = struct $Bool (%234)                      // user: %236
+121193:   br bb41(%235)                                   // id: %236
+121194:
+121195: bb40:                                             // Preds: bb35
+121196:   br bb41(%222)                                   // id: %237
+121197:
+121198: // %238                                           // user: %239
+121199: bb41(%238 : $Bool):                               // Preds: bb40 bb39
+121200:   %239 = tuple $(RunCycleFailure<RuntimeOwnerFailure>, mutationApplied: Bool) (%221, %238) // user: %240
+121201:   %240 = enum $RuntimePipelineMutationResult<RuntimeOwnerFailure>, #RuntimePipelineMutationResult.failure!enumelt, %239 // user: %241
+121202:   br bb3(%240)                                    // id: %241
+121203: } // end sil function '$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17applyAdmittedWork17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5'

@@ -1,0 +1,20 @@
+{
+  "source_commit": "780c90c3",
+  "source_mutations": 0,
+  "compiler_decoder_runtime_executions": 0,
+  "automatic_source_repairs": 0,
+  "input_hashes_verified": 587,
+  "qualification": "../resolver-qualification1-result/README.md",
+  "sil_sha256": "c4f22537a1149ba7e14edd14527ab9460f48aa2ed0f1cd099a9b81e02162e6d2",
+  "object_sha256": "3a9ee93fa4a84c2819d239284002d3a2166884ee3ca7342f7c332e0fa20ee435",
+  "index_sha256": "8e320fccc67c477b6776a203dbecb04a4053088db2515bfaed22352b18af484d",
+  "prior_run_resolved": true,
+  "resolver3_resolved": true,
+  "frontier23": {
+    "resolved": 3,
+    "remainingopaque": 20,
+    "current_scopedcounter_refs": 32
+  },
+  "next_material_gate": "observablemodelKey/mutate actualstatefactbranch; equalitydeadbranches excluded",
+  "remaining": "full23/42/privatecallee/Stateborrow/metadataTLScontextobserver/full safety/strictcold unqualified"
+}

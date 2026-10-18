@@ -1,0 +1,229 @@
+{
+  "status": "NOT MATERIALFAIL; deadOptionalpayload-compare branches",
+  "proofs": [
+    {
+      "caller": {
+        "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+        "line": 118076,
+        "end_line": 119185,
+        "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+        "basic_blocks": 149,
+        "comment": "// specialized CounterPipelineOwner<>.admitAndSeal()"
+      },
+      "payload": "InteractionHitRegion",
+      "nil_value": "%223",
+      "right_addr": "%400",
+      "store_text": "store %223 to %400",
+      "gate_text": "switch_enum %408, case #Optional.some!enumelt: bb73",
+      "dead_block": "bb73",
+      "call_line": 118650,
+      "object_call": "0x2e3a0",
+      "object_witness_setup": "0x2e388",
+      "nil_definition": [
+        118378,
+        "  %223 = enum $Optional<InteractionHitRegion<SemanticCompleteIdentity>>, #Optional.none!enumelt // users: %403, %224"
+      ],
+      "right_operand_store": [
+        118624,
+        "  store %223 to %400                              // id: %403"
+      ],
+      "branch_requires_right_some": [
+        118633,
+        "  switch_enum %408, case #Optional.some!enumelt: bb73, case #Optional.none!enumelt: bb74 // id: %409"
+      ],
+      "right_address_uses": [
+        [
+          118619,
+          "  %398 = alloc_stack $(Optional<InteractionHitRegion<SemanticCompleteIdentity>>, Optional<InteractionHitRegion<SemanticCompleteIdentity>>) // users: %455, %453, %427, %400, %399"
+        ],
+        [
+          118621,
+          "  %400 = tuple_element_addr %398, 1               // users: %418, %410, %408, %403"
+        ],
+        [
+          118624,
+          "  store %223 to %400                              // id: %403"
+        ],
+        [
+          118632,
+          "  %408 = load %400                                // user: %409"
+        ],
+        [
+          118636,
+          "  %410 = load %400                                // user: %411"
+        ],
+        [
+          118645,
+          "  %418 = load %400                                // user: %419"
+        ]
+      ],
+      "classification": "payloadcompare+shown associatedwitness/metadatasetup semanticallyunreachable: locallystored Optional.none must be.some toenter; localtuplefield address never passed tocallee. Emittedrelocation alone is NOT operationalblocker/sourcecorrectionbasis"
+    },
+    {
+      "caller": {
+        "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+        "line": 118076,
+        "end_line": 119185,
+        "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+        "basic_blocks": 149,
+        "comment": "// specialized CounterPipelineOwner<>.admitAndSeal()"
+      },
+      "payload": "BoundActionRecord",
+      "nil_value": "%751",
+      "right_addr": "%754",
+      "store_text": "store %751 to %754",
+      "gate_text": "switch_enum %765, case #Optional.some!enumelt: bb139",
+      "dead_block": "bb139",
+      "call_line": 119139,
+      "object_call": "0x2e7ac",
+      "nil_definition": [
+        119102,
+        "  %751 = enum $Optional<BoundActionRecord<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %756"
+      ],
+      "right_operand_store": [
+        119107,
+        "  store %751 to %754                              // id: %756"
+      ],
+      "branch_requires_right_some": [
+        119122,
+        "  switch_enum %765, case #Optional.some!enumelt: bb139, case #Optional.none!enumelt: bb140 // id: %766"
+      ],
+      "right_address_uses": [
+        [
+          119103,
+          "  %752 = alloc_stack $(Optional<BoundActionRecord<SemanticCompleteIdentity>>, Optional<BoundActionRecord<SemanticCompleteIdentity>>) // users: %801, %799, %784, %754, %753"
+        ],
+        [
+          119105,
+          "  %754 = tuple_element_addr %752, 1               // users: %775, %767, %765, %756"
+        ],
+        [
+          119107,
+          "  store %751 to %754                              // id: %756"
+        ],
+        [
+          119121,
+          "  %765 = load %754                                // user: %766"
+        ],
+        [
+          119125,
+          "  %767 = load %754                                // user: %768"
+        ],
+        [
+          119134,
+          "  %775 = load %754                                // user: %776"
+        ]
+      ],
+      "classification": "payloadcompare+shown associatedwitness/metadatasetup semanticallyunreachable: locallystored Optional.none must be.some toenter; localtuplefield address never passed tocallee. Emittedrelocation alone is NOT operationalblocker/sourcecorrectionbasis"
+    },
+    {
+      "caller": {
+        "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5",
+        "line": 589960,
+        "end_line": 590091,
+        "header": "sil shared @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5 : $@convention(method) (CapturedAction<SemanticCompleteIdentity>, Point, @guaranteed InteractionOwnedKeyState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+        "basic_blocks": 23,
+        "comment": "// specialized InteractionOwnedKeyState<>.resolveMove(_:at:)"
+      },
+      "payload": "BoundActionRecord",
+      "nil_value": "%37",
+      "right_addr": "%40",
+      "store_text": "store %37 to %40",
+      "gate_text": "switch_enum %48, case #Optional.some!enumelt: bb13",
+      "dead_block": "bb13",
+      "call_line": null,
+      "object_call": "0x9cee0",
+      "object_witness_setup": "0x9cec8",
+      "nil_definition": [
+        590020,
+        "  %37 = enum $Optional<BoundActionRecord<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %42"
+      ],
+      "right_operand_store": [
+        590025,
+        "  store %37 to %40                                // id: %42"
+      ],
+      "branch_requires_right_some": [
+        590035,
+        "  switch_enum %48, case #Optional.some!enumelt: bb13, case #Optional.none!enumelt: bb14 // id: %49"
+      ],
+      "right_address_uses": [
+        [
+          590021,
+          "  %38 = alloc_stack $(Optional<BoundActionRecord<SemanticCompleteIdentity>>, Optional<BoundActionRecord<SemanticCompleteIdentity>>) // users: %80, %78, %67, %40, %39"
+        ],
+        [
+          590023,
+          "  %40 = tuple_element_addr %38, 1                 // users: %58, %50, %48, %42"
+        ],
+        [
+          590025,
+          "  store %37 to %40                                // id: %42"
+        ],
+        [
+          590034,
+          "  %48 = load %40                                  // user: %49"
+        ],
+        [
+          590038,
+          "  %50 = load %40                                  // user: %51"
+        ],
+        [
+          590047,
+          "  %58 = load %40                                  // user: %59"
+        ]
+      ],
+      "classification": "payloadcompare+shown associatedwitness/metadatasetup semanticallyunreachable: locallystored Optional.none must be.some toenter; localtuplefield address never passed tocallee. Emittedrelocation alone is NOT operationalblocker/sourcecorrectionbasis"
+    }
+  ],
+  "current_physical": [
+    {
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction20InteractionHitRegionV23__derived_struct_equalsySbACyxG_AEtFZ",
+      "identifier_id": 85,
+      "function_id": 173,
+      "hash": 1555863908,
+      "demangled": "static GiftUIInteraction.InteractionHitRegion.__derived_struct_equals(GiftUIInteraction.InteractionHitRegion<A>, GiftUIInteraction.InteractionHitRegion<A>) -> Swift.Bool",
+      "offset_bits": 530637,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 0,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=87 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    },
+    {
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction17BoundActionRecordV23__derived_struct_equalsySbACyxG_AEtFZ",
+      "identifier_id": 78,
+      "function_id": 174,
+      "hash": 2809093686,
+      "demangled": "static GiftUIInteraction.BoundActionRecord.__derived_struct_equals(GiftUIInteraction.BoundActionRecord<A>, GiftUIInteraction.BoundActionRecord<A>) -> Swift.Bool",
+      "offset_bits": 531038,
+      "linkage": 7,
+      "serialized_kind": 0,
+      "inline_strategy": 0,
+      "basic_blocks": 0,
+      "raw_prefix": [
+        4,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=63 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+    }
+  ],
+  "limits": "residualcodeexists/coldcodesize remainscounted; no claim allmetadata/TLS/context behavior analyzed or runtimeproof"
+}

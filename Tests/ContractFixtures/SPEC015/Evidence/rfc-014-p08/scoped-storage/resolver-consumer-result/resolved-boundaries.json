@@ -1,0 +1,77 @@
+{
+  "prior_run": "retainedRESOLVED oncurrent scopedopp/root;126BB/no originalgenericrun refs",
+  "run_physical": {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO3run5ownerAA0deF6ResultOy12OwnerFailureQzGxz_tAA0defJ0RzRi_zRi0_zlFZ",
+    "identifier_id": 687,
+    "function_id": 379,
+    "hash": 3252421790,
+    "demangled": "static GiftUIRuntimeCore.RuntimeCompletePipeline.run<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+    "offset_bits": 998023,
+    "linkage": 0,
+    "serialized_kind": 1,
+    "inline_strategy": 2,
+    "basic_blocks": 43,
+    "raw_prefix": [
+      4,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      2
+    ],
+    "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=731 op29=0 op30=0 op31=20 op32=0 op33=1/> record string = ''"
+  },
+  "concrete_runTracedPipeline": {
+    "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE09runTracedD017GiftUIRuntimeCore0c8CompleteD6ResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5",
+    "line": 10711,
+    "end_line": 12097,
+    "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE09runTracedD017GiftUIRuntimeCore0c8CompleteD6ResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateO0ALLLVAA0a9CommittedO0ALLLVAA0a3HitO0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimeCompletePipelineResult<RuntimeOwnerFailure> {",
+    "basic_blocks": 126,
+    "comment": "// specialized CounterPipelineOwner<>.runTracedPipeline()"
+  },
+  "current_admitAndSeal": {
+    "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+    "line": 118076,
+    "end_line": 119185,
+    "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {",
+    "basic_blocks": 149,
+    "comment": "// specialized CounterPipelineOwner<>.admitAndSeal()"
+  },
+  "original3resolver_edges": "no scopedCounterPipelineOwner references tooriginalF00/F01/F02; physicalrootsavailable",
+  "down_up": "inlined concretealgorithms in actualadmission; CapturedActionconstruction directfieldstores, committedhitdescriptor/recordpaths visible",
+  "move": {
+    "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5",
+    "line": 589960,
+    "end_line": 590091,
+    "header": "sil shared @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5 : $@convention(method) (CapturedAction<SemanticCompleteIdentity>, Point, @guaranteed InteractionOwnedKeyState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> PointerGestureOutcome<SemanticCompleteIdentity> {",
+    "basic_blocks": 23,
+    "comment": "// specialized InteractionOwnedKeyState<>.resolveMove(_:at:)"
+  },
+  "record": {
+    "symbol": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5",
+    "line": 589319,
+    "end_line": 589516,
+    "header": "sil shared @$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5 : $@convention(method) (SemanticCompleteIdentity, @guaranteed InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> @out Optional<BoundActionRecord<SemanticCompleteIdentity>> {",
+    "basic_blocks": 22,
+    "comment": "// specialized InteractionState<>.record(identity:)"
+  },
+  "backend": "scopedrecord22BB contains P08CommittedDescriptor static/dynamic switch; StaticTwoInlineArray and DynamicArray record/count accesses inline, no externalgenericstorage record/region callback remains in these inspected bodies. No owned/scopedstorage/privacy/cost acceptance inferred.",
+  "helper_call": {
+    "line": 589970,
+    "symbol": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5",
+    "reference": "  %5 = function_ref @$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5 : $@convention(method) (SemanticCompleteIdentity, @guaranteed InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> @out Optional<BoundActionRecord<SemanticCompleteIdentity>> // user: %7",
+    "following": "  %6 = struct_extract %0, #CapturedAction.identity // user: %7",
+    "callee": {
+      "symbol": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5",
+      "line": 589319,
+      "end_line": 589516,
+      "header": "sil shared @$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5 : $@convention(method) (SemanticCompleteIdentity, @guaranteed InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> @out Optional<BoundActionRecord<SemanticCompleteIdentity>> {",
+      "basic_blocks": 22,
+      "comment": "// specialized InteractionState<>.record(identity:)"
+    }
+  },
+  "not_claimed": "complete23/all42/continuation/lifetime/resourceproof"
+}

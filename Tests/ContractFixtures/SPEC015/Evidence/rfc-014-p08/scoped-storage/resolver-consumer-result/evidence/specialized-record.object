@@ -1,0 +1,101 @@
+193235: 000000000009bf38 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5>:
+193236:    9bf38:      	stp	x26, x25, [sp, #-0x50]!
+193237:    9bf3c:      	stp	x24, x23, [sp, #0x10]
+193238:    9bf40:      	stp	x22, x21, [sp, #0x20]
+193239:    9bf44:      	stp	x20, x19, [sp, #0x30]
+193240:    9bf48:      	stp	x29, x30, [sp, #0x40]
+193241:    9bf4c:      	add	x29, sp, #0x40
+193242:    9bf50:      	sub	sp, sp, #0x580
+193243:    9bf54:      	mov	x21, x0
+193244:    9bf58:      	mov	x19, x8
+193245:    9bf5c:      	mov	w22, #0x0               ; =0
+193246:    9bf60:      	ldp	x23, x20, [x20, #0x130]
+193247:    9bf64:      	add	x24, sp, #0xf0
+193248:    9bf68:      	mov	w25, #0xf0              ; =240
+193249:    9bf6c:      	tbnz	x20, #0x3f, 0x9bfc0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x88>
+193250:    9bf70:      	ldrh	w8, [x23, #0x2]
+193251:    9bf74:      	cmp	w22, w8
+193252:    9bf78:      	b.hs	0x9c030 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xf8>
+193253:    9bf7c:      	add	x0, sp, #0xf0
+193254:    9bf80:      	add	x1, x23, #0x4
+193255:    9bf84:      	mov	w2, #0x1e0              ; =480
+193256:    9bf88:      	bl	0x9bf88 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x50>
+193257: 		000000000009bf88:  ARM64_RELOC_BRANCH26	_memcpy
+193258:    9bf8c:      	cmp	w22, #0x1
+193259:    9bf90:      	b.hi	0x9c048 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x110>
+193260:    9bf94:      	umaddl	x1, w22, w25, x24
+193261:    9bf98:      	mov	x0, sp
+193262:    9bf9c:      	mov	w2, #0xf0               ; =240
+193263:    9bfa0:      	bl	0x9bfa0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x68>
+193264: 		000000000009bfa0:  ARM64_RELOC_BRANCH26	_memcpy
+193265:    9bfa4:      	mov	x0, sp
+193266:    9bfa8:      	bl	0x9bfa8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x70>
+193267: 		000000000009bfa8:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg
+193268:    9bfac:      	cmp	w0, #0x1
+193269:    9bfb0:      	b.eq	0x9c054 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x11c>
+193270:    9bfb4:      	add	x0, sp, #0x2d0
+193271:    9bfb8:      	mov	x1, sp
+193272:    9bfbc:      	b	0x9bffc <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xc4>
+193273:    9bfc0:      	ldr	x8, [x23, #0x8]
+193274:    9bfc4:      	ldr	x9, [x8, #0x10]
+193275:    9bfc8:      	lsr	x10, x9, #16
+193276:    9bfcc:      	cbnz	x10, 0x9c090 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x158>
+193277:    9bfd0:      	cmp	w22, w9
+193278:    9bfd4:      	b.hs	0x9c030 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xf8>
+193279:    9bfd8:      	umaddl	x8, w22, w25, x8
+193280:    9bfdc:      	add	x0, sp, #0xf0
+193281:    9bfe0:      	add	x1, x8, #0x20
+193282:    9bfe4:      	mov	w2, #0xf0               ; =240
+193283:    9bfe8:      	bl	0x9bfe8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xb0>
+193284: 		000000000009bfe8:  ARM64_RELOC_BRANCH26	_memcpy
+193285:    9bfec:      	add	x0, sp, #0xf0
+193286:    9bff0:      	bl	0x9bff0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xb8>
+193287: 		000000000009bff0:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_
+193288:    9bff4:      	add	x0, sp, #0x2d0
+193289:    9bff8:      	add	x1, sp, #0xf0
+193290:    9bffc:      	mov	w2, #0xf0               ; =240
+193291:    9c000:      	bl	0x9c000 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xc8>
+193292: 		000000000009c000:  ARM64_RELOC_BRANCH26	_memcpy
+193293:    9c004:      	add	x0, sp, #0x4b2
+193294:    9c008:      	add	x1, sp, #0x2d0
+193295:    9c00c:      	mov	w2, #0xce               ; =206
+193296:    9c010:      	bl	0x9c010 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xd8>
+193297: 		000000000009c010:  ARM64_RELOC_BRANCH26	_memcpy
+193298:    9c014:      	add	x0, sp, #0x4b2
+193299:    9c018:      	mov	x1, x21
+193300:    9c01c:      	bl	0x9c01c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xe4>
+193301: 		000000000009c01c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ
+193302:    9c020:      	tbnz	w0, #0x0, 0x9c040 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x108>
+193303:    9c024:      	add	w22, w22, #0x1
+193304:    9c028:      	tbnz	x20, #0x3f, 0x9bfc0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x88>
+193305:    9c02c:      	b	0x9bf70 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x38>
+193306:    9c030:      	add	x0, sp, #0xf0
+193307:    9c034:      	bl	0x9c034 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xfc>
+193308: 		000000000009c034:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+193309:    9c038:      	add	x1, sp, #0xf0
+193310:    9c03c:      	b	0x9c068 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x130>
+193311:    9c040:      	add	x1, sp, #0x2d0
+193312:    9c044:      	b	0x9c068 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x130>
+193313:    9c048:      	add	x0, sp, #0x3c0
+193314:    9c04c:      	bl	0x9c04c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x114>
+193315: 		000000000009c04c:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+193316:    9c050:      	b	0x9c064 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x12c>
+193317:    9c054:      	add	x0, sp, #0x3c0
+193318:    9c058:      	mov	x1, sp
+193319:    9c05c:      	mov	w2, #0xf0               ; =240
+193320:    9c060:      	bl	0x9c060 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x128>
+193321: 		000000000009c060:  ARM64_RELOC_BRANCH26	_memcpy
+193322:    9c064:      	add	x1, sp, #0x3c0
+193323:    9c068:      	mov	x0, x19
+193324:    9c06c:      	mov	w2, #0xf0               ; =240
+193325:    9c070:      	bl	0x9c070 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x138>
+193326: 		000000000009c070:  ARM64_RELOC_BRANCH26	_memcpy
+193327:    9c074:      	add	sp, sp, #0x580
+193328:    9c078:      	ldp	x29, x30, [sp, #0x40]
+193329:    9c07c:      	ldp	x20, x19, [sp, #0x30]
+193330:    9c080:      	ldp	x22, x21, [sp, #0x20]
+193331:    9c084:      	ldp	x24, x23, [sp, #0x10]
+193332:    9c088:      	ldp	x26, x25, [sp], #0x50
+193333:    9c08c:      	ret
+193334:    9c090:      	brk	#0x1
+193335:

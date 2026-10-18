@@ -1,0 +1,74 @@
+{
+  "interpret.py": {
+    "bytes": 11315,
+    "sha256": "ea6384e331557ae9f2a1f270e16791791d5515041f4ca426493d9bf0367a0ab5"
+  },
+  "frontier23-current.json": {
+    "bytes": 125458,
+    "sha256": "1986080461ca2dcbf4859cd27b826a4feeceb1978e8bd530632bce40e5eebec2"
+  },
+  "observer-attribution.json": {
+    "bytes": 736,
+    "sha256": "2ceb3deb367a72abd4da53f5ddf292b566c2ef18a29bee44635aaa272abcf4a8"
+  },
+  "excluded-equality-edges.json": {
+    "bytes": 11064,
+    "sha256": "a41928a98c2ca53ce82b03bc09621af04aac79b64afdf4322bd33140398929cc"
+  },
+  "README.md": {
+    "bytes": 4190,
+    "sha256": "0cf3a1021d2b06ac8446028e27e40c667a307beae3b1fc9d0beef3716f79e5b4"
+  },
+  "resolved-boundaries.json": {
+    "bytes": 7528,
+    "sha256": "fc6a69b3a3ef9ad3d0b4ed5d38a7345f79d4ee51cb9f1cb30b1fb3d1420a77a5"
+  },
+  "blocker.json": {
+    "bytes": 9606,
+    "sha256": "680d2172eb075dd444e6ecd6a7adc5dbe52d5e37c828cfa8cada9fca8a58629c"
+  },
+  "receipt.json": {
+    "bytes": 879,
+    "sha256": "8f4967e4a7d9200aeee4256978c16cfde7d264772ae4edaadfd40ab90cb32a2c"
+  },
+  "evidence/applyAdmittedWork.sil": {
+    "bytes": 28274,
+    "sha256": "d14e34a4bfcb7957f4f56d325527f4a196fe016a1c5f89dd05190062c60a0503"
+  },
+  "evidence/missing-observable-1.sil": {
+    "bytes": 974,
+    "sha256": "de978153c9b8750e34fe8908ae262db7fd706da27caf5a91bcbbc9a61a241088"
+  },
+  "evidence/missing-observable-0.sil": {
+    "bytes": 862,
+    "sha256": "9e12caadf20c03ecda73d92cf0e21a2a9b185ee88c43e81aba8ada5b53de9967"
+  },
+  "evidence/specialized-record.object": {
+    "bytes": 11538,
+    "sha256": "6da78233fe2ec903969a59169692a6055079a7167323a25b7d970600a6b447cc"
+  },
+  "evidence/specialized-resolveMove.object": {
+    "bytes": 22597,
+    "sha256": "4326d472dd56e0563e2b39ab37375847e913b723b6b96b8058f7a99bc655adbf"
+  },
+  "evidence/applyAdmittedWork.object": {
+    "bytes": 21057,
+    "sha256": "8580da9be8aa7bf248b32f953c33a37fc18b957b3b2353de5b34163466755484"
+  },
+  "evidence/specialized-record.sil": {
+    "bytes": 16169,
+    "sha256": "7efe0b9971989523d7b8fc8b43560db46e9e9697ed613f3c4d9ae21cc847211d"
+  },
+  "evidence/admitAndSeal.sil": {
+    "bytes": 89245,
+    "sha256": "02b7564caed98b5cedf951c7c379860d34fe72d35f4591e781fce2224c21f8c8"
+  },
+  "evidence/specialized-resolveMove.sil": {
+    "bytes": 10839,
+    "sha256": "d1a82d4384f5a9c0da1fe4f87cb84918cb0bc9cb7478334a59f91fd3f37ee1fc"
+  },
+  "evidence/admitAndSeal.object": {
+    "bytes": 112117,
+    "sha256": "d8589e2126e36a05305ddff2c58b9f53e3292eb1cf0127d992ec7006d279f85a"
+  }
+}

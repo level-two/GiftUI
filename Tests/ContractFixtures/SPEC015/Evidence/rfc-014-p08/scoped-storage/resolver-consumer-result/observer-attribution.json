@@ -1,0 +1,16 @@
+{
+  "source_call": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:483",
+  "source_trace": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:765-768",
+  "sil_lines": [
+    118750,
+    118804
+  ],
+  "evidence": "gesture label/PointerGestureOutcome value into Anyarray ->print; inlinedunchangedcounterTrace",
+  "classification": "emitted observer allocation/print attribution; not measuredframeworkheapFAIL and no resourceexception or coldwindowchange",
+  "object_relocations": [
+    "0x2e8e8 swift_allocObject",
+    "0x2e93c swift_allocObject",
+    "0x2e968 print"
+  ],
+  "remaining": "quietobserver vs framework metadata/lifetime/context costs still need completeactualpath evidence"
+}

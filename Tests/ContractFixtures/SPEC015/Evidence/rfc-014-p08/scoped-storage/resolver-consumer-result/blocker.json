@@ -1,0 +1,78 @@
+{
+  "gate": "FAIL required concrete model-state callee availability/specialization; STOP dependent safety/cold",
+  "source_commit": "780c90c3",
+  "scope": "next actualstatefact application branch, two related existingobservablefamily roots; no fullcallgraph",
+  "concrete_owner": "CounterPipelineOwner<P08GeometryAccess,P08CandidateAccess,P08CommittedAccess,P08HitAccess>",
+  "root_to_apply": {
+    "line": 10809,
+    "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17applyAdmittedWork17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+    "reference": "  %70 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17applyAdmittedWork17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> // user: %71",
+    "following": "  %71 = apply %70(%0) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> // users: %85, %90, %72",
+    "callee": {
+      "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17applyAdmittedWork17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+      "line": 120870,
+      "end_line": 121203,
+      "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17applyAdmittedWork17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {",
+      "basic_blocks": 42,
+      "comment": "// specialized CounterPipelineOwner<>.applyAdmittedWork()"
+    }
+  },
+  "applyAdmittedWork": {
+    "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17applyAdmittedWork17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+    "line": 120870,
+    "end_line": 121203,
+    "header": "sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17applyAdmittedWork17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {",
+    "basic_blocks": 42,
+    "comment": "// specialized CounterPipelineOwner<>.applyAdmittedWork()"
+  },
+  "edges": [
+    {
+      "line": 121072,
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+      "reference": "  %155 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> // user: %156",
+      "following": "  %156 = apply %155<CounterOwnedModel, SemanticCompleteIdentity>(%149, %152, %154) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> // user: %158",
+      "callee": {
+        "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+        "line": 29722,
+        "end_line": 29726,
+        "header": "sil @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> {",
+        "basic_blocks": 0,
+        "comment": "// ObservableStateRootScope<>.modelKey(identity:ordinal:)"
+      }
+    },
+    {
+      "line": 121088,
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+      "reference": "  %166 = function_ref @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableModelMutation, \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (_GiftUIModelKey<\u03c4_0_0.Schema>, @in_guaranteed \u03c4_0_0.Mutation, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> ObservableStateResult // user: %167",
+      "following": "  %167 = apply %166<CounterOwnedModel, SemanticCompleteIdentity>(%160, %163, %165) : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableModelMutation, \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (_GiftUIModelKey<\u03c4_0_0.Schema>, @in_guaranteed \u03c4_0_0.Mutation, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> ObservableStateResult // user: %169",
+      "callee": {
+        "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+        "line": 121453,
+        "end_line": 121457,
+        "header": "sil @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableModelMutation, \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (_GiftUIModelKey<\u03c4_0_0.Schema>, @in_guaranteed \u03c4_0_0.Mutation, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> ObservableStateResult {",
+        "basic_blocks": 0,
+        "comment": "// ObservableStateRootScope<>.mutate<>(_:mutation:)"
+      }
+    }
+  ],
+  "feasibility": "statefact read fromcontrol.admission.takeState, notconstantnil; publishedrootIdentity.some bb20 callsmodelKey; its.some key bb22 feeds mutate(.fact(value)); resultcontrols applied/changed/failure. SourceCounterPipelineOwner507-518. Not observer/deadpayloadcomparison.",
+  "object_caller": {
+    "start_line": 61720,
+    "end_line": 61917,
+    "header": "000000000002fbbc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE17applyAdmittedWork17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5>:"
+  },
+  "object_edges": [
+    {
+      "line": 61803,
+      "text": "\t\t000000000002fcdc:  ARM64_RELOC_BRANCH26\t_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF"
+    },
+    {
+      "line": 61821,
+      "text": "\t\t000000000002fd18:  ARM64_RELOC_BRANCH26\t_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF"
+    }
+  ],
+  "physical_limit": "ObservableState notamong7decodedmodules. No currentphysicalindexclaim for these2; current importedSIL0BB plus matchingobjectactualedges prove scopedavailabilityboundary. Nextpreparedphase must add matchedmoduledecode ifneeded.",
+  "observer_distinction": "business modelkey/result/mutationdatastructure path inapplyAdmittedWork; no trace instruction in selectedbb20/bb22. Genericcallpresence alone not allocationmeasurement.",
+  "next_boundary": "existingB-observablegroupF03/F04/F12/F22 read-only completeaccess/lifetime/directhelpermap, preserving checkedmodel/root construction and originalState refs; no one-symbol annotation or implicit sourceallowance",
+  "not_claimed": "no measuredallocation/heapcount, no deadEquatablefailure, no all20automaticfail/serialization map, no contractimpossibility"
+}

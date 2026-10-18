@@ -1,0 +1,8 @@
+29720: // ObservableStateRootScope<>.modelKey(identity:ordinal:)
+29721: // Isolation: unspecified
+29722: sil @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (@in_guaranteed τ_0_1, UInt16, @guaranteed ObservableStateRootScope<τ_0_0, τ_0_1>) -> Optional<_GiftUIModelKey<τ_0_0.Schema>> {
+29723: [%0: read v**, copy v**]
+29724: [%2: read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+29725: [global: read,write,copy,destroy,allocate,deinit_barrier]
+29726: } // end sil function '$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF'
+29727:

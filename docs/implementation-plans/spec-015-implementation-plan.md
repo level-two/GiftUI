@@ -29,7 +29,13 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current [resolver compile boundary](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-compile-result/README.md):
+Current [resolver actualconsumer interpretation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-consumer-result/README.md):
+run+three resolver boundaries RESOLVED; residual Optionalpayload equality branches
+proveddead, not operationalfailure. Next actualstatefact modelKey/mutate generic
+callee gate FAIL/STOP inSIL+matchingobject. All23:3resolved/20opaque, othersunqualified.
+No source/repair allowance/allocationclaim. Fullsafety/strictcold/P08 remainblocked.
+
+Retained [resolver compile boundary](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-compile-result/README.md):
 source780c90c3 lower+all25fresh owners PASS/zero failedblocked;329inputs/output/log
 identities verify. Candidate1/1 fixed/no automaticrepairs; oldbudgets preserved.
 Privacy/20physicalroots/concrete42/all23/full safety/strictcold remain unqualified;

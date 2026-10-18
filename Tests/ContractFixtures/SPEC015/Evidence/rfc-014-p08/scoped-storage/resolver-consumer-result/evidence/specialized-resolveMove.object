@@ -1,0 +1,185 @@
+194392: 000000000009ccd8 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5>:
+194393:    9ccd8:      	stp	x28, x27, [sp, #-0x60]!
+194394:    9ccdc:      	stp	x26, x25, [sp, #0x10]
+194395:    9cce0:      	stp	x24, x23, [sp, #0x20]
+194396:    9cce4:      	stp	x22, x21, [sp, #0x30]
+194397:    9cce8:      	stp	x20, x19, [sp, #0x40]
+194398:    9ccec:      	stp	x29, x30, [sp, #0x50]
+194399:    9ccf0:      	add	x29, sp, #0x50
+194400:    9ccf4:      	sub	sp, sp, #0x920
+194401:    9ccf8:      	mov	x21, x1
+194402:    9ccfc:      	mov	x22, x0
+194403:    9cd00:      	mov	x19, x8
+194404:    9cd04:      	add	x23, sp, #0x1e8
+194405:    9cd08:      	add	x0, sp, #0x844
+194406:    9cd0c:      	mov	x1, x22
+194407:    9cd10:      	mov	w2, #0xd4               ; =212
+194408:    9cd14:      	bl	0x9cd14 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x3c>
+194409: 		000000000009cd14:  ARM64_RELOC_BRANCH26	_memcpy
+194410:    9cd18:      	add	x0, sp, #0x588
+194411:    9cd1c:      	mov	x1, x20
+194412:    9cd20:      	mov	w2, #0x1e1              ; =481
+194413:    9cd24:      	bl	0x9cd24 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x4c>
+194414: 		000000000009cd24:  ARM64_RELOC_BRANCH26	_memcpy
+194415:    9cd28:      	add	x0, sp, #0x4ba
+194416:    9cd2c:      	mov	x1, x22
+194417:    9cd30:      	mov	w2, #0xce               ; =206
+194418:    9cd34:      	bl	0x9cd34 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x5c>
+194419: 		000000000009cd34:  ARM64_RELOC_BRANCH26	_memcpy
+194420:    9cd38:      	add	x8, sp, #0x1e8
+194421:    9cd3c:      	add	x0, sp, #0x4ba
+194422:    9cd40:      	add	x20, sp, #0x588
+194423:    9cd44:      	bl	0x9cd44 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x6c>
+194424: 		000000000009cd44:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5
+194425:    9cd48:      	add	x0, sp, #0x1e8
+194426:    9cd4c:      	bl	0x9cd4c <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x74>
+194427: 		000000000009cd4c:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg
+194428:    9cd50:      	cmp	w0, #0x1
+194429:    9cd54:      	b.ne	0x9ce1c <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x144>
+194430:    9cd58:      	add	x0, sp, #0x1e8
+194431:    9cd5c:      	bl	0x9cd5c <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x84>
+194432: 		000000000009cd5c:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+194433:    9cd60:      	add	x0, sp, #0x774
+194434:    9cd64:      	add	x1, sp, #0x1e8
+194435:    9cd68:      	mov	w2, #0xd0               ; =208
+194436:    9cd6c:      	bl	0x9cd6c <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x94>
+194437: 		000000000009cd6c:  ARM64_RELOC_BRANCH26	_memcpy
+194438:    9cd70:      	ldr	w20, [sp, #0x2b8]
+194439:    9cd74:      	ldrb	w24, [sp, #0x2bc]
+194440:    9cd78:      	ldurh	w8, [x23, #0xd5]
+194441:    9cd7c:      	strh	w8, [sp, #0x770]
+194442:    9cd80:      	ldrb	w8, [sp, #0x2bf]
+194443:    9cd84:      	strb	w8, [sp, #0x772]
+194444:    9cd88:      	ldr	w22, [sp, #0x2c0]
+194445:    9cd8c:      	ldr	w25, [sp, #0x2c4]
+194446:    9cd90:      	ldr	w26, [sp, #0x2c8]
+194447:    9cd94:      	ldr	w27, [sp, #0x2cc]
+194448:    9cd98:      	ldr	x28, [sp, #0x2d0]
+194449:    9cd9c:      	add	x0, sp, #0x3c8
+194450:    9cda0:      	bl	0x9cda0 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0xc8>
+194451: 		000000000009cda0:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+194452:    9cda4:      	add	x21, sp, #0x1e8
+194453:    9cda8:      	add	x0, sp, #0x1e8
+194454:    9cdac:      	add	x1, sp, #0x774
+194455:    9cdb0:      	mov	w2, #0xd0               ; =208
+194456:    9cdb4:      	bl	0x9cdb4 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0xdc>
+194457: 		000000000009cdb4:  ARM64_RELOC_BRANCH26	_memcpy
+194458:    9cdb8:      	str	w20, [sp, #0x2b8]
+194459:    9cdbc:      	strb	w24, [sp, #0x2bc]
+194460:    9cdc0:      	ldrh	w8, [sp, #0x770]
+194461:    9cdc4:      	sturh	w8, [x23, #0xd5]
+194462:    9cdc8:      	ldrb	w8, [sp, #0x772]
+194463:    9cdcc:      	strb	w8, [sp, #0x2bf]
+194464:    9cdd0:      	str	w22, [sp, #0x2c0]
+194465:    9cdd4:      	str	w25, [sp, #0x2c4]
+194466:    9cdd8:      	str	w26, [sp, #0x2c8]
+194467:    9cddc:      	str	w27, [sp, #0x2cc]
+194468:    9cde0:      	str	x28, [sp, #0x2d0]
+194469:    9cde4:      	add	x0, x21, #0xf0
+194470:    9cde8:      	add	x1, sp, #0x3c8
+194471:    9cdec:      	mov	w2, #0xf0               ; =240
+194472:    9cdf0:      	bl	0x9cdf0 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x118>
+194473: 		000000000009cdf0:  ARM64_RELOC_BRANCH26	_memcpy
+194474:    9cdf4:      	add	x0, sp, #0x1e8
+194475:    9cdf8:      	bl	0x9cdf8 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x120>
+194476: 		000000000009cdf8:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg
+194477:    9cdfc:      	mov	x20, x0
+194478:    9ce00:      	add	x0, x21, #0xf0
+194479:    9ce04:      	bl	0x9ce04 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x12c>
+194480: 		000000000009ce04:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg
+194481:    9ce08:      	cmp	w20, #0x1
+194482:    9ce0c:      	b.ne	0x9cea0 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x1c8>
+194483:    9ce10:      	cmp	w0, #0x1
+194484:    9ce14:      	b.eq	0x9cee8 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x210>
+194485:    9ce18:      	b	0x9cef4 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x21c>
+194486:    9ce1c:      	add	x0, sp, #0x3c8
+194487:    9ce20:      	add	x1, sp, #0x1e8
+194488:    9ce24:      	mov	w2, #0xd0               ; =208
+194489:    9ce28:      	bl	0x9ce28 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x150>
+194490: 		000000000009ce28:  ARM64_RELOC_BRANCH26	_memcpy
+194491:    9ce2c:      	ldr	w20, [sp, #0x2b8]
+194492:    9ce30:      	ldrb	w24, [sp, #0x2bc]
+194493:    9ce34:      	ldurh	w8, [x23, #0xd5]
+194494:    9ce38:      	strh	w8, [sp, #0xf8]
+194495:    9ce3c:      	ldrb	w8, [sp, #0x2bf]
+194496:    9ce40:      	strb	w8, [sp, #0xfa]
+194497:    9ce44:      	ldr	w8, [x22, #0xd0]
+194498:    9ce48:      	cmp	w20, w8
+194499:    9ce4c:      	b.ne	0x9cd58 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x80>
+194500:    9ce50:      	tbz	w24, #0x0, 0x9cd58 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x80>
+194501:    9ce54:      	ldr	w22, [sp, #0x2c0]
+194502:    9ce58:      	ldr	w25, [sp, #0x2c4]
+194503:    9ce5c:      	ldr	w26, [sp, #0x2c8]
+194504:    9ce60:      	ldr	w27, [sp, #0x2cc]
+194505:    9ce64:      	ldr	x28, [sp, #0x2d0]
+194506:    9ce68:      	orr	x1, x22, x25, lsl #32
+194507:    9ce6c:      	orr	x2, x26, x27, lsl #32
+194508:    9ce70:      	mov	x0, x21
+194509:    9ce74:      	bl	0x9ce74 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x19c>
+194510: 		000000000009ce74:  ARM64_RELOC_BRANCH26	_$s6GiftUI4RectV8containsySbAA5PointVF
+194511:    9ce78:      	tbz	w0, #0x0, 0x9cd58 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x80>
+194512:    9ce7c:      	add	x0, sp, #0x774
+194513:    9ce80:      	add	x1, sp, #0x3c8
+194514:    9ce84:      	mov	w2, #0xd0               ; =208
+194515:    9ce88:      	bl	0x9ce88 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x1b0>
+194516: 		000000000009ce88:  ARM64_RELOC_BRANCH26	_memcpy
+194517:    9ce8c:      	ldrh	w8, [sp, #0xf8]
+194518:    9ce90:      	strh	w8, [sp, #0x770]
+194519:    9ce94:      	ldrb	w8, [sp, #0xfa]
+194520:    9ce98:      	strb	w8, [sp, #0x772]
+194521:    9ce9c:      	b	0x9cd9c <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0xc4>
+194522:    9cea0:      	cmp	w0, #0x1
+194523:    9cea4:      	b.eq	0x9cef4 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x21c>
+194524:    9cea8:      	add	x0, sp, #0xf8
+194525:    9ceac:      	add	x1, sp, #0x1e8
+194526:    9ceb0:      	mov	w2, #0xf0               ; =240
+194527:    9ceb4:      	bl	0x9ceb4 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x1dc>
+194528: 		000000000009ceb4:  ARM64_RELOC_BRANCH26	_memcpy
+194529:    9ceb8:      	add	x0, sp, #0x8
+194530:    9cebc:      	add	x1, x21, #0xf0
+194531:    9cec0:      	mov	w2, #0xf0               ; =240
+194532:    9cec4:      	bl	0x9cec4 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x1ec>
+194533: 		000000000009cec4:  ARM64_RELOC_BRANCH26	_memcpy
+194534:    9cec8:      	bl	0x9cec8 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x1f0>
+194535: 		000000000009cec8:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl
+194536:    9cecc:      	mov	x3, x0
+194537:    9ced0:      	adrp	x2, 0x9c000 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xc8>
+194538: 		000000000009ced0:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore24SemanticCompleteIdentityVN
+194539:    9ced4:      	ldr	x2, [x2]
+194540: 		000000000009ced4:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore24SemanticCompleteIdentityVN
+194541:    9ced8:      	add	x0, sp, #0xf8
+194542:    9cedc:      	add	x1, sp, #0x8
+194543:    9cee0:      	bl	0x9cee0 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x208>
+194544: 		000000000009cee0:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordV23__derived_struct_equalsySbACyxG_AEtFZ
+194545:    9cee4:      	tbz	w0, #0x0, 0x9cef4 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x21c>
+194546:    9cee8:      	add	x0, sp, #0x1e8
+194547:    9ceec:      	bl	0x9ceec <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x214>
+194548: 		000000000009ceec:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVGWOi2_
+194549:    9cef0:      	b	0x9cf1c <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x244>
+194550:    9cef4:      	add	x0, sp, #0xf8
+194551:    9cef8:      	add	x1, sp, #0x844
+194552:    9cefc:      	mov	w2, #0xd4               ; =212
+194553:    9cf00:      	bl	0x9cf00 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x228>
+194554: 		000000000009cf00:  ARM64_RELOC_BRANCH26	_memcpy
+194555:    9cf04:      	add	x0, sp, #0xf8
+194556:    9cf08:      	bl	0x9cf08 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x230>
+194557: 		000000000009cf08:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVGWOi0_
+194558:    9cf0c:      	add	x0, sp, #0x1e8
+194559:    9cf10:      	add	x1, sp, #0xf8
+194560:    9cf14:      	mov	w2, #0xd5               ; =213
+194561:    9cf18:      	bl	0x9cf18 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x240>
+194562: 		000000000009cf18:  ARM64_RELOC_BRANCH26	_memcpy
+194563:    9cf1c:      	add	x1, sp, #0x1e8
+194564:    9cf20:      	mov	x0, x19
+194565:    9cf24:      	mov	w2, #0xd5               ; =213
+194566:    9cf28:      	bl	0x9cf28 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5+0x250>
+194567: 		000000000009cf28:  ARM64_RELOC_BRANCH26	_memcpy
+194568:    9cf2c:      	add	sp, sp, #0x920
+194569:    9cf30:      	ldp	x29, x30, [sp, #0x50]
+194570:    9cf34:      	ldp	x20, x19, [sp, #0x40]
+194571:    9cf38:      	ldp	x22, x21, [sp, #0x30]
+194572:    9cf3c:      	ldp	x24, x23, [sp, #0x20]
+194573:    9cf40:      	ldp	x26, x25, [sp, #0x10]
+194574:    9cf44:      	ldp	x28, x27, [sp], #0x60
+194575:    9cf48:      	ret
+194576:

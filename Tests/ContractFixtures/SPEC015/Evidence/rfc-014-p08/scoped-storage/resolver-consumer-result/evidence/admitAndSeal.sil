@@ -1,0 +1,1110 @@
+118076: sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+118077: [%0: read v**, write v**, copy v**, destroy v**]
+118078: [global: read,write,copy,destroy,allocate,deinit_barrier]
+118079: // %0 "self"                                      // users: %576, %574, %36, %119, %48, %44, %23, %22, %14, %4, %1
+118080: bb0(%0 : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>):
+118081:   debug_value %0, var, name "self", argno 1, expr op_deref // id: %1
+118082:   %2 = integer_literal $Builtin.Int16, 0          // users: %230, %86, %80, %3
+118083:   %3 = struct $UInt16 (%2)                        // users: %65, %63, %9, %572
+118084:   %4 = struct_element_addr %0, #CounterPipelineOwner.control // user: %5
+118085:   %5 = struct_element_addr %4, #UnsafeMutablePointer._rawValue // user: %6
+118086:   %6 = load %5                                    // user: %7
+118087:   %7 = pointer_to_address %6 to [strict] $*CounterControl // users: %637, %638, %633, %590, %600, %564, %560, %107, %73, %12, %8
+118088:   %8 = struct_element_addr %7, #CounterControl.cleanups // user: %9
+118089:   store %3 to %8                                  // id: %9
+118090:   %10 = integer_literal $Builtin.Int64, 0         // users: %340, %325, %86, %96, %84, %82, %11
+118091:   %11 = struct $Int (%10)                         // user: %13
+118092:   %12 = struct_element_addr %7, #CounterControl.cleanupCount // user: %13
+118093:   store %11 to %12                                // id: %13
+118094:   %14 = struct_element_addr %0, #CounterPipelineOwner.quiescent // user: %15
+118095:   %15 = struct_element_addr %14, #Bool._value     // user: %16
+118096:   %16 = load %15                                  // user: %17
+118097:   cond_br %16, bb1, bb2                           // id: %17
+118098:
+118099: bb1:                                              // Preds: bb0
+118100:   %18 = enum $ExecutionError, #ExecutionError.requiredFacilityUnavailable!enumelt // user: %19
+118101:   %19 = enum $RunCycleFailure<RuntimeOwnerFailure>, #RunCycleFailure.execution!enumelt, %18 // user: %20
+118102:   %20 = enum $RuntimePipelineStepResult<RuntimeOwnerFailure>, #RuntimePipelineStepResult.failure!enumelt, %19 // user: %21
+118103:   br bb3(%20)                                     // id: %21
+118104:
+118105: bb2:                                              // Preds: bb0
+118106:   %22 = struct_element_addr %0, #CounterPipelineOwner.phase // user: %25
+118107:   %23 = struct_element_addr %0, #CounterPipelineOwner.counters // user: %25
+118108:   // function_ref ExecutionPhaseMachine.beginCycle(reservingFrom:)
+118109:   %24 = function_ref @$s15GiftUIExecution21ExecutionPhaseMachineV10beginCycle13reservingFromAA0C5ErrorOSgAA03RunG11IDAllocatorVz_tF : $@convention(method) (@inout RunCycleIDAllocator, @inout ExecutionPhaseMachine) -> Optional<ExecutionError> // user: %25
+118110:   %25 = apply %24(%23, %22) : $@convention(method) (@inout RunCycleIDAllocator, @inout ExecutionPhaseMachine) -> Optional<ExecutionError> // user: %26
+118111:   switch_enum %25, case #Optional.some!enumelt: bb4, case #Optional.none!enumelt: bb5 // id: %26
+118112:
+118113: // %27                                            // user: %28
+118114: bb3(%27 : $RuntimePipelineStepResult<RuntimeOwnerFailure>): // Preds: bb111 bb110 bb109 bb108 bb6 bb4 bb1
+118115:   return %27                                      // id: %28
+118116:
+118117: // %29                                            // users: %31, %30
+118118: bb4(%29 : $ExecutionError):                       // Preds: bb2
+118119:   debug_value %29, let, name "error"              // id: %30
+118120:   %31 = enum $RunCycleFailure<RuntimeOwnerFailure>, #RunCycleFailure.execution!enumelt, %29 // user: %32
+118121:   %32 = enum $RuntimePipelineStepResult<RuntimeOwnerFailure>, #RuntimePipelineStepResult.failure!enumelt, %31 // user: %33
+118122:   br bb3(%32)                                     // id: %33
+118123:
+118124: bb5:                                              // Preds: bb2
+118125:   %34 = enum $RuntimeCompletePipelineStage, #RuntimeCompletePipelineStage.admissionAndSeal!enumelt // user: %36
+118126:   // function_ref specialized CounterPipelineOwner<>.boundary(_:)
+118127:   %35 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8boundaryy15GiftUIExecution15RunCycleFailureOy0G13UIRuntimeCore0ceK0OGSgAH0c8CompleteD5StageOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0APLLVAA0a9CommittedQ0APLLVAA0a3HitQ0APLLVTg5 : $@convention(method) (RuntimeCompletePipelineStage, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Optional<RunCycleFailure<RuntimeOwnerFailure>> // user: %36
+118128:   %36 = apply %35(%34, %0) : $@convention(method) (RuntimeCompletePipelineStage, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Optional<RunCycleFailure<RuntimeOwnerFailure>> // user: %37
+118129:   switch_enum %36, case #Optional.some!enumelt: bb6, case #Optional.none!enumelt: bb7 // id: %37
+118130:
+118131: // %38                                            // users: %40, %39
+118132: bb6(%38 : $RunCycleFailure<RuntimeOwnerFailure>): // Preds: bb5
+118133:   debug_value %38, let, name "error"              // id: %39
+118134:   %40 = enum $RuntimePipelineStepResult<RuntimeOwnerFailure>, #RuntimePipelineStepResult.failure!enumelt, %38 // user: %41
+118135:   br bb3(%40)                                     // id: %41
+118136:
+118137: bb7:                                              // Preds: bb5
+118138:   debug_value undef : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, var, name "self", argno 1, expr op_deref // id: %42
+118139:   %43 = enum $Optional<AdmissionSummary>, #Optional.none!enumelt // user: %45
+118140:   %44 = struct_element_addr %0, #CounterPipelineOwner.sealedAdmission // users: %641, %605, %45
+118141:   store %43 to %44                                // id: %45
+118142:   %46 = alloc_stack [lexical] [var_decl] $ExecutionAdmissionSealTransaction, var, name "transaction" // users: %59, %650, %644, %628, %622, %580, %543, %67, %64, %62, %60
+118143:   %47 = metatype $@thin ExecutionAdmissionSealTransaction.Type // user: %52
+118144:   %48 = struct_element_addr %0, #CounterPipelineOwner.limits // user: %49
+118145:   %49 = struct_element_addr %48, #RuntimeProfileLimits.execution // user: %50
+118146:   %50 = load %49                                  // users: %55, %52
+118147:   // function_ref ExecutionAdmissionSealTransaction.init(limits:)
+118148:   %51 = function_ref @$s15GiftUIExecution33ExecutionAdmissionSealTransactionV6limitsACSgAA0C6LimitsV_tcfC : $@convention(method) (ExecutionLimits, @thin ExecutionAdmissionSealTransaction.Type) -> Optional<ExecutionAdmissionSealTransaction> // user: %52
+118149:   %52 = apply %51(%50, %47) : $@convention(method) (ExecutionLimits, @thin ExecutionAdmissionSealTransaction.Type) -> Optional<ExecutionAdmissionSealTransaction> // user: %53
+118150:   switch_enum %52, case #Optional.some!enumelt: bb8, case #Optional.none!enumelt: bb9 // id: %53
+118151:
+118152: // %54                                            // users: %59, %57
+118153: bb8(%54 : $ExecutionAdmissionSealTransaction):    // Preds: bb7
+118154:   %55 = struct_extract %50, #ExecutionLimits.maximumInputEvents // user: %56
+118155:   %56 = struct_extract %55, #UInt16._value        // user: %105
+118156:   %57 = struct_extract %54, #ExecutionAdmissionSealTransaction.isActive // user: %58
+118157:   %58 = struct_extract %57, #Bool._value          // user: %61
+118158:   store %54 to %46                                // id: %59
+118159:   %60 = struct_element_addr %46, #ExecutionAdmissionSealTransaction.isActive // user: %71
+118160:   cond_fail %58, "precondition failure"           // id: %61
+118161:   %62 = struct_element_addr %46, #ExecutionAdmissionSealTransaction.stagedInputCount // user: %63
+118162:   store %3 to %62                                 // id: %63
+118163:   %64 = struct_element_addr %46, #ExecutionAdmissionSealTransaction.stagedActivationCount // user: %65
+118164:   store %3 to %64                                 // id: %65
+118165:   %66 = enum $Optional<ExecutionAdmissionSealFailureResult>, #Optional.none!enumelt // user: %68
+118166:   %67 = struct_element_addr %46, #ExecutionAdmissionSealTransaction.firstFailure // user: %68
+118167:   store %66 to %67                                // id: %68
+118168:   %69 = integer_literal $Builtin.Int1, -1         // users: %151, %152, %136, %708, %547, %449, %435, %100, %70
+118169:   %70 = struct $Bool (%69)                        // users: %71, %709, %179, %580, %543, %162
+118170:   store %70 to %60                                // id: %71
+118171:   %72 = alloc_stack [lexical] [var_decl] $CounterPointerState, var, name "staged" // users: %631, %77, %235, %231, %649, %643, %627, %621, %218, %213, %160
+118172:   %73 = struct_element_addr %7, #CounterControl.runtime // users: %577, %561, %108, %74
+118173:   %74 = struct_element_addr %73, #CounterRuntimeControl.pointer // users: %632, %75
+118174:   %75 = load %74                                  // users: %77, %76
+118175:   %76 = struct_extract %75, #CounterPointerState.source // user: %86
+118176:   store %75 to %72                                // id: %77
+118177:   %78 = enum $Optional<CapturedAction<SemanticCompleteIdentity>>, #Optional.none!enumelt // users: %698, %691, %796, %791, %86, %710, %219, %79
+118178:   debug_value %78, var, name "activation"         // id: %79
+118179:   debug_value %2, var, name "selected", type $UInt16, expr op_fragment:#UInt16._value // id: %80
+118180:   %81 = integer_literal $Builtin.Int64, 2         // users: %326, %555, %502, %97, %83
+118181:   debug_value %10, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._elements:op_fragment:#Range.lowerBound:op_fragment:#Int._value // id: %82
+118182:   debug_value %81, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._elements:op_fragment:#Range.upperBound:op_fragment:#Int._value // id: %83
+118183:   debug_value %10, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._position:op_fragment:#Int._value // id: %84
+118184:   %85 = integer_literal $Builtin.Int64, 1         // user: %100
+118185:   br bb10(%76, %2, %78, %10)                      // id: %86
+118186:
+118187: bb9:                                              // Preds: bb7
+118188:   %87 = integer_literal $Builtin.Int1, -1         // user: %88
+118189:   cond_fail %87, "Unexpectedly found nil while unwrapping an Optional value" // id: %88
+118190:   unreachable                                     // id: %89
+118191:
+118192: // %90                                            // users: %116, %124, %210, %216, %141, %144
+118193: // %91                                            // users: %116, %124, %547, %105
+118194: // %92                                            // users: %713, %700, %693, %793, %116, %124, %210, %216, %763, %673, %697, %472, %490, %487
+118195: // %93                                            // users: %95, %94, %111, %100, %97, %96
+118196: // Loop header
+118197: bb10(%90 : $Optional<InputSourceID>, %91 : $Builtin.Int16, %92 : $Optional<CapturedAction<SemanticCompleteIdentity>>, %93 : $Builtin.Int64): // Preds: bb98 bb8
+118198:   debug_value %93, let, name "index", type $Int, expr op_fragment:#Int._value // id: %94
+118199:   debug_value %93, let, name "$element", type $Int, expr op_fragment:#Int._value // id: %95
+118200:   %96 = builtin "cmp_slt_Int64"(%93, %10) : $Builtin.Int1 // user: %98
+118201:   %97 = builtin "cmp_sge_Int64"(%93, %81) : $Builtin.Int1 // user: %98
+118202:   %98 = builtin "or_Int1"(%96, %97) : $Builtin.Int1 // user: %99
+118203:   cond_fail %98, "Index out of bounds"            // id: %99
+118204:   %100 = builtin "sadd_with_overflow_Int64"(%93, %85, %69) : $(Builtin.Int64, Builtin.Int1) // users: %102, %101
+118205:   %101 = tuple_extract %100, 0                    // users: %558, %555, %104
+118206:   %102 = tuple_extract %100, 1                    // user: %103
+118207:   cond_fail %102, "arithmetic overflow"           // id: %103
+118208:   debug_value %101, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._position:op_fragment:#Int._value // id: %104
+118209:   %105 = builtin "cmp_ult_Int16"(%91, %56) : $Builtin.Int1 // user: %106
+118210:   cond_br %105, bb11, bb12                        // id: %106
+118211:
+118212: bb11:                                             // Preds: bb10
+118213:   debug_value %7, let, name "self", argno 1, expr op_deref // id: %107
+118214:   %108 = struct_element_addr %73, #CounterRuntimeControl.admission // user: %109
+118215:   %109 = struct_element_addr %108, #CounterAdmissionBacking.pendingPointers // user: %110
+118216:   %110 = struct_element_addr %109, #InlineArray._storage // user: %112
+118217:   %111 = builtin "truncOrBitCast_Int64_Word"(%93) : $Builtin.Word // user: %113
+118218:   %112 = vector_base_addr %110                    // user: %113
+118219:   %113 = index_addr [stack_protection] %112, %111 // user: %114
+118220:   %114 = load %113                                // user: %115
+118221:   switch_enum %114, case #Optional.some!enumelt: bb13, case #Optional.none!enumelt: bb14 // id: %115
+118222:
+118223: bb12:                                             // Preds: bb10
+118224:   br bb96(%90, %91, %92)                          // id: %116
+118225:
+118226: // %117                                           // users: %741, %664, %543, %217, %211, %159, %158, %157, %143, %126, %118
+118227: bb13(%117 : $NormalizedPointerEvent):             // Preds: bb11
+118228:   debug_value %117, let, name "pointer"           // id: %118
+118229:   %119 = struct_element_addr %0, #CounterPipelineOwner.interaction // users: %120, %667
+118230:   %120 = struct_element_addr %119, #InteractionOwnedKeyState.state // users: %716, %225, %657, %121
+118231:   %121 = struct_element_addr %120, #InteractionState.committedPresentationRevision // user: %122
+118232:   %122 = load %121                                // users: %123, %127
+118233:   switch_enum %122, case #Optional.some!enumelt: bb15, case #Optional.none!enumelt: bb16 // id: %123
+118234:
+118235: bb14:                                             // Preds: bb11
+118236:   br bb96(%90, %91, %92)                          // id: %124
+118237:
+118238: bb15(%125 : $PresentationRevision):               // Preds: bb13
+118239:   %126 = struct_extract %117, #NormalizedPointerEvent.presentationRevision // user: %128
+118240:   %127 = unchecked_enum_data %122, #Optional.some!enumelt // user: %129
+118241:   %128 = struct_extract %126, #PresentationRevision.rawValue // user: %130
+118242:   %129 = struct_extract %127, #PresentationRevision.rawValue // user: %131
+118243:   %130 = struct_extract %128, #UInt32._value      // user: %132
+118244:   %131 = struct_extract %129, #UInt32._value      // user: %132
+118245:   %132 = builtin "cmp_eq_Int32"(%130, %131) : $Builtin.Int1 // user: %133
+118246:   cond_br %132, bb17, bb18                        // id: %133
+118247:
+118248: bb16:                                             // Preds: bb13
+118249:   %134 = integer_literal $Builtin.Int1, 0         // user: %135
+118250:   br bb19(%134)                                   // id: %135
+118251:
+118252: bb17:                                             // Preds: bb15
+118253:   br bb19(%69)                                    // id: %136
+118254:
+118255: bb18:                                             // Preds: bb15
+118256:   %137 = integer_literal $Builtin.Int1, 0         // user: %138
+118257:   br bb19(%137)                                   // id: %138
+118258:
+118259: // %139                                           // users: %164, %140
+118260: bb19(%139 : $Builtin.Int1):                       // Preds: bb16 bb18 bb17
+118261:   debug_value %139, let, name "validRevision", type $Bool, expr op_fragment:#Bool._value // id: %140
+118262:   switch_enum %90, case #Optional.some!enumelt: bb20, case #Optional.none!enumelt: bb21 // id: %141
+118263:
+118264: bb20(%142 : $InputSourceID):                      // Preds: bb19
+118265:   %143 = struct_extract %117, #NormalizedPointerEvent.source // user: %146
+118266:   %144 = unchecked_enum_data %90, #Optional.some!enumelt // user: %145
+118267:   %145 = struct_extract %144, #InputSourceID.rawValue // user: %147
+118268:   %146 = struct_extract %143, #InputSourceID.rawValue // user: %148
+118269:   %147 = struct_extract %145, #UInt16._value      // user: %149
+118270:   %148 = struct_extract %146, #UInt16._value      // user: %149
+118271:   %149 = builtin "cmp_eq_Int16"(%147, %148) : $Builtin.Int1 // user: %150
+118272:   cond_br %149, bb22, bb23                        // id: %150
+118273:
+118274: bb21:                                             // Preds: bb19
+118275:   br bb24(%69)                                    // id: %151
+118276:
+118277: bb22:                                             // Preds: bb20
+118278:   br bb24(%69)                                    // id: %152
+118279:
+118280: bb23:                                             // Preds: bb20
+118281:   %153 = integer_literal $Builtin.Int1, 0         // user: %154
+118282:   br bb24(%153)                                   // id: %154
+118283:
+118284: // %155                                           // users: %165, %156
+118285: bb24(%155 : $Builtin.Int1):                       // Preds: bb21 bb23 bb22
+118286:   debug_value %155, let, name "validSource", type $Bool, expr op_fragment:#Bool._value // id: %156
+118287:   %157 = struct_extract %117, #NormalizedPointerEvent.phase // users: %215, %162
+118288:   %158 = struct_extract %117, #NormalizedPointerEvent.sequence // user: %162
+118289:   %159 = struct_extract %117, #NormalizedPointerEvent.ordinal // user: %162
+118290:   %160 = struct_element_addr %72, #CounterPointerState.sequence // user: %162
+118291:   // function_ref InputSourceSequenceState.validate(phase:sequence:ordinal:targetGateAllowsResynchronization:)
+118292:   %161 = function_ref @$s15GiftUIExecution24InputSourceSequenceStateV8validate5phase8sequence7ordinal33targetGateAllowsResynchronizationAA0cE10ValidationO0A2UI12PointerPhaseO_AK0qE2IDVAK0C7OrdinalVSbtF : $@convention(method) (PointerPhase, PointerSequenceID, InputOrdinal, Bool, @inout InputSourceSequenceState) -> InputSequenceValidation // user: %162
+118293:   %162 = apply %161(%157, %158, %159, %70, %160) : $@convention(method) (PointerPhase, PointerSequenceID, InputOrdinal, Bool, @inout InputSourceSequenceState) -> InputSequenceValidation // users: %200, %181, %168, %163
+118294:   debug_value %162, let, name "validation"        // id: %163
+118295:   cond_br %139, bb25, bb26                        // id: %164
+118296:
+118297: bb25:                                             // Preds: bb24
+118298:   cond_br %155, bb27, bb28                        // id: %165
+118299:
+118300: bb26:                                             // Preds: bb24
+118301:   br bb148                                        // id: %166
+118302:
+118303: bb27:                                             // Preds: bb25
+118304:   %167 = alloc_stack [lexical] $InputSequenceValidation // users: %168, %176, %172
+118305:   store %162 to %167                              // id: %168
+118306:   %169 = enum $InputSequenceValidation, #InputSequenceValidation.accepted!enumelt // user: %171
+118307:   %170 = alloc_stack [lexical] $InputSequenceValidation // users: %171, %175, %173
+118308:   store %169 to %170                              // id: %171
+118309:   %172 = builtin "getEnumTag"<InputSequenceValidation>(%167) : $Builtin.Int32 // user: %174
+118310:   %173 = builtin "getEnumTag"<InputSequenceValidation>(%170) : $Builtin.Int32 // user: %174
+118311:   %174 = builtin "cmp_eq_Int32"(%172, %173) : $Builtin.Int1 // user: %177
+118312:   dealloc_stack %170                              // id: %175
+118313:   dealloc_stack %167                              // id: %176
+118314:   cond_br %174, bb29, bb30                        // id: %177
+118315:
+118316: bb28:                                             // Preds: bb25
+118317:   br bb148                                        // id: %178
+118318:
+118319: bb29:                                             // Preds: bb27
+118320:   br bb31(%70)                                    // id: %179
+118321:
+118322: bb30:                                             // Preds: bb27
+118323:   %180 = alloc_stack [lexical] $InputSequenceValidation // users: %181, %190, %185
+118324:   store %162 to %180                              // id: %181
+118325:   %182 = enum $InputSequenceValidation, #InputSequenceValidation.consumedWhileCancelled!enumelt // user: %184
+118326:   %183 = alloc_stack [lexical] $InputSequenceValidation // users: %184, %189, %186
+118327:   store %182 to %183                              // id: %184
+118328:   %185 = builtin "getEnumTag"<InputSequenceValidation>(%180) : $Builtin.Int32 // user: %187
+118329:   %186 = builtin "getEnumTag"<InputSequenceValidation>(%183) : $Builtin.Int32 // user: %187
+118330:   %187 = builtin "cmp_eq_Int32"(%185, %186) : $Builtin.Int1 // user: %188
+118331:   %188 = struct $Bool (%187)                      // user: %191
+118332:   dealloc_stack %183                              // id: %189
+118333:   dealloc_stack %180                              // id: %190
+118334:   br bb31(%188)                                   // id: %191
+118335:
+118336: // %192                                           // users: %543, %197, %193
+118337: bb31(%192 : $Bool):                               // Preds: bb148 bb30 bb29
+118338:   debug_value %192, let, name "valid"             // id: %193
+118339:   %194 = integer_literal $Builtin.Int1, 0         // users: %388, %369, %196, %195
+118340:   %195 = struct $Bool (%194)                      // users: %713, %700, %693, %793, %210, %216, %763, %673, %697, %472, %490, %487
+118341:   debug_value %194, var, name "createsActivation", type $Bool, expr op_fragment:#Bool._value // id: %196
+118342:   %197 = struct_extract %192, #Bool._value        // user: %198
+118343:   cond_br %197, bb32, bb33                        // id: %198
+118344:
+118345: bb32:                                             // Preds: bb31
+118346:   %199 = alloc_stack [lexical] $InputSequenceValidation // users: %200, %208, %204
+118347:   store %162 to %199                              // id: %200
+118348:   %201 = enum $InputSequenceValidation, #InputSequenceValidation.accepted!enumelt // user: %203
+118349:   %202 = alloc_stack [lexical] $InputSequenceValidation // users: %203, %207, %205
+118350:   store %201 to %202                              // id: %203
+118351:   %204 = builtin "getEnumTag"<InputSequenceValidation>(%199) : $Builtin.Int32 // user: %206
+118352:   %205 = builtin "getEnumTag"<InputSequenceValidation>(%202) : $Builtin.Int32 // user: %206
+118353:   %206 = builtin "cmp_eq_Int32"(%204, %205) : $Builtin.Int1 // user: %209
+118354:   dealloc_stack %202                              // id: %207
+118355:   dealloc_stack %199                              // id: %208
+118356:   cond_br %206, bb34, bb35                        // id: %209
+118357:
+118358: bb33:                                             // Preds: bb31
+118359:   br bb93(%195, %90, %92)                         // id: %210
+118360:
+118361: bb34:                                             // Preds: bb32
+118362:   %211 = struct_extract %117, #NormalizedPointerEvent.source // user: %212
+118363:   %212 = enum $Optional<InputSourceID>, #Optional.some!enumelt, %211 // users: %214, %538
+118364:   %213 = struct_element_addr %72, #CounterPointerState.source // user: %214
+118365:   store %212 to %213                              // id: %214
+118366:   switch_enum %157, case #PointerPhase.down!enumelt: bb36, case #PointerPhase.move!enumelt: bb37, case #PointerPhase.up!enumelt: bb38 // id: %215
+118367:
+118368: bb35:                                             // Preds: bb32
+118369:   br bb93(%195, %90, %92)                         // id: %216
+118370:
+118371: bb36:                                             // Preds: bb34
+118372:   %217 = struct_extract %117, #NormalizedPointerEvent.position // users: %381, %359
+118373:   %218 = struct_element_addr %72, #CounterPointerState.capture // users: %486, %220
+118374:   %219 = struct $PointerActionCapture<SemanticCompleteIdentity> (%78) // user: %220
+118375:   store %219 to %218                              // id: %220
+118376:   %221 = alloc_stack $Optional<BoundActionRecord<SemanticCompleteIdentity>> // users: %661, %463, %460, %364, %658, %469, %465
+118377:   %222 = alloc_stack [lexical] [var_decl] $Optional<InteractionHitRegion<SemanticCompleteIdentity>> // users: %438, %432, %401, %351, %224, %653, %459, %443
+118378:   %223 = enum $Optional<InteractionHitRegion<SemanticCompleteIdentity>>, #Optional.none!enumelt // users: %403, %224
+118379:   store %223 to %222                              // id: %224
+118380:   %225 = struct_element_addr %120, #InteractionState.committedHitRegions // users: %279, %228, %226
+118381:   %226 = struct_element_addr %225, #P08HitAccess.descriptor // users: %278, %227
+118382:   %227 = load %226                                // users: %243, %229
+118383:   debug_value %225, let, name "self", argno 1, expr op_deref // id: %228
+118384:   debug_value %227, let, name "self", argno 1     // id: %229
+118385:   br bb39(%2)                                     // id: %230
+118386:
+118387: bb37:                                             // Preds: bb34
+118388:   %231 = struct_element_addr %72, #CounterPointerState.capture // users: %711, %699, %696, %692, %232
+118389:   %232 = struct_element_addr %231, #PointerActionCapture.captured // user: %233
+118390:   %233 = load %232                                // users: %665, %234
+118391:   switch_enum %233, case #Optional.some!enumelt: bb114, case #Optional.none!enumelt: bb115 // id: %234
+118392:
+118393: bb38:                                             // Preds: bb34
+118394:   %235 = struct_element_addr %72, #CounterPointerState.capture // users: %797, %792, %236
+118395:   %236 = struct_element_addr %235, #PointerActionCapture.captured // user: %237
+118396:   %237 = load %236                                // users: %715, %238
+118397:   switch_enum %237, case #Optional.some!enumelt: bb125, case #Optional.none!enumelt: bb136 // id: %238
+118398:
+118399: // %239                                           // users: %242, %241, %240, %295, %321, %324, %307, %435, %276
+118400: // Loop header
+118401: bb39(%239 : $Builtin.Int16):                      // Preds: bb78 bb36
+118402:   debug_value %239, let, name "index", argno 1, type $UInt16, expr op_fragment:#UInt16._value // id: %240
+118403:   debug_value %239, let, name "index", argno 1, type $UInt16, expr op_fragment:#UInt16._value // id: %241
+118404:   debug_value %239, let, name "index", argno 1, type $UInt16, expr op_fragment:#UInt16._value // id: %242
+118405:   switch_enum %227, case #P08HitDescriptor.`static`!enumelt: bb40, case #P08HitDescriptor.dynamic!enumelt: bb41 // id: %243
+118406:
+118407: // %244                                           // user: %245
+118408: bb40(%244 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb39
+118409:   %245 = tuple_extract %244, 0                    // users: %247, %246
+118410:   debug_value %245, let, name "p"                 // id: %246
+118411:   %247 = struct_extract %245, #UnsafeMutablePointer._rawValue // user: %248
+118412:   %248 = pointer_to_address %247 to [strict] $*StaticTwoInteractionHitStorage<SemanticCompleteIdentity> // user: %249
+118413:   %249 = struct_element_addr %248, #StaticTwoInteractionHitStorage.count // user: %250
+118414:   %250 = struct_element_addr %249, #UInt16._value // user: %251
+118415:   %251 = load %250                                // user: %252
+118416:   br bb42(%251)                                   // id: %252
+118417:
+118418: // %253                                           // user: %254
+118419: bb41(%253 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb39
+118420:   %254 = tuple_extract %253, 0                    // users: %256, %255
+118421:   debug_value %254, let, name "p"                 // id: %255
+118422:   %256 = struct_extract %254, #UnsafeMutablePointer._rawValue // user: %257
+118423:   %257 = pointer_to_address %256 to [strict] $*DynamicInteractionHitStorage<SemanticCompleteIdentity> // user: %258
+118424:   %258 = struct_element_addr %257, #DynamicInteractionHitStorage.regions // user: %259
+118425:   %259 = struct_element_addr %258, #Array._buffer // user: %260
+118426:   %260 = struct_element_addr %259, #_ArrayBuffer._storage // user: %261
+118427:   %261 = struct_element_addr %260, #_BridgeStorage.rawValue // user: %262
+118428:   %262 = load %261                                // user: %263
+118429:   %263 = unchecked_ref_cast %262 to $__ContiguousArrayStorageBase // user: %264
+118430:   %264 = ref_element_addr [immutable] %263, #__ContiguousArrayStorageBase.countAndCapacity // user: %265
+118431:   %265 = struct_element_addr %264, #_ArrayBody._storage // user: %266
+118432:   %266 = struct_element_addr %265, #_SwiftArrayBodyStorage.count // user: %267
+118433:   %267 = struct_element_addr %266, #Int._value    // user: %268
+118434:   %268 = load %267                                // user: %269
+118435:   %269 = builtin "assumeNonNegative_Int64"(%268) : $Builtin.Int64 // users: %271, %273
+118436:   %270 = integer_literal $Builtin.Int64, 65535    // user: %271
+118437:   %271 = builtin "cmp_slt_Int64"(%270, %269) : $Builtin.Int1 // user: %272
+118438:   cond_fail %271, "Not enough bits to represent the passed value" // id: %272
+118439:   %273 = builtin "truncOrBitCast_Int64_Int16"(%269) : $Builtin.Int16 // user: %274
+118440:   br bb42(%273)                                   // id: %274
+118441:
+118442: // %275                                           // user: %276
+118443: bb42(%275 : $Builtin.Int16):                      // Preds: bb41 bb40
+118444:   %276 = builtin "cmp_ult_Int16"(%239, %275) : $Builtin.Int1 // user: %277
+118445:   cond_br %276, bb43, bb54                        // id: %277
+118446:
+118447: bb43:                                             // Preds: bb42
+118448:   %278 = load %226                                // user: %280
+118449:   debug_value %225, let, name "self", argno 2, expr op_deref // id: %279
+118450:   switch_enum %278, case #P08HitDescriptor.`static`!enumelt: bb44, case #P08HitDescriptor.dynamic!enumelt: bb45 // id: %280
+118451:
+118452: // %281                                           // user: %282
+118453: bb44(%281 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb43
+118454:   %282 = tuple_extract %281, 0                    // users: %284, %283
+118455:   debug_value %282, let, name "p"                 // id: %283
+118456:   %284 = struct_extract %282, #UnsafeMutablePointer._rawValue // user: %285
+118457:   %285 = pointer_to_address %284 to [strict] $*StaticTwoInteractionHitStorage<SemanticCompleteIdentity> // users: %290, %286
+118458:   %286 = struct_element_addr %285, #StaticTwoInteractionHitStorage.count // users: %289, %287
+118459:   %287 = struct_element_addr %286, #UInt16._value // user: %288
+118460:   %288 = load %287                                // user: %295
+118461:   debug_value %286, let, name "self", argno 2, type $StaticTwoInteractionHitStorage<SemanticCompleteIdentity>, expr op_deref:op_fragment:#StaticTwoInteractionHitStorage.count // id: %289
+118462:   %290 = struct_element_addr %285, #StaticTwoInteractionHitStorage.slots // users: %294, %291
+118463:   %291 = struct_element_addr %290, #StaticTwoInteractionSlots.values // user: %292
+118464:   %292 = struct_element_addr %291, #InlineArray._storage // user: %293
+118465:   %293 = load %292                                // user: %318
+118466:   debug_value %290, let, name "self", argno 2, type $StaticTwoInteractionHitStorage<SemanticCompleteIdentity>, expr op_deref:op_fragment:#StaticTwoInteractionHitStorage.slots // id: %294
+118467:   %295 = builtin "cmp_ult_Int16"(%239, %288) : $Builtin.Int1 // user: %296
+118468:   cond_br %295, bb46, bb47                        // id: %296
+118469:
+118470: // %297                                           // user: %298
+118471: bb45(%297 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb43
+118472:   %298 = tuple_extract %297, 0                    // users: %300, %299
+118473:   debug_value %298, let, name "p"                 // id: %299
+118474:   %300 = struct_extract %298, #UnsafeMutablePointer._rawValue // user: %301
+118475:   %301 = pointer_to_address %300 to [strict] $*DynamicInteractionHitStorage<SemanticCompleteIdentity> // user: %302
+118476:   %302 = struct_element_addr %301, #DynamicInteractionHitStorage.regions // user: %303
+118477:   %303 = struct_element_addr %302, #Array._buffer // user: %304
+118478:   %304 = struct_element_addr %303, #_ArrayBuffer._storage // user: %305
+118479:   %305 = struct_element_addr %304, #_BridgeStorage.rawValue // user: %306
+118480:   %306 = load %305                                // user: %308
+118481:   %307 = builtin "zextOrBitCast_Int16_Int64"(%239) : $Builtin.Int64 // users: %340, %341, %345, %315
+118482:   %308 = unchecked_ref_cast %306 to $__ContiguousArrayStorageBase // users: %344, %309
+118483:   %309 = ref_element_addr [immutable] %308, #__ContiguousArrayStorageBase.countAndCapacity // user: %310
+118484:   %310 = struct_element_addr %309, #_ArrayBody._storage // user: %311
+118485:   %311 = struct_element_addr %310, #_SwiftArrayBodyStorage.count // user: %312
+118486:   %312 = struct_element_addr %311, #Int._value    // user: %313
+118487:   %313 = load %312                                // user: %314
+118488:   %314 = builtin "assumeNonNegative_Int64"(%313) : $Builtin.Int64 // users: %341, %315
+118489:   %315 = builtin "cmp_slt_Int64"(%307, %314) : $Builtin.Int1 // user: %316
+118490:   cond_br %315, bb52, bb53                        // id: %316
+118491:
+118492: bb46:                                             // Preds: bb44
+118493:   %317 = alloc_stack $Builtin.FixedArray<2, Optional<InteractionHitRegion<SemanticCompleteIdentity>>> // users: %318, %335, %333, %330, %319
+118494:   store %293 to %317                              // id: %318
+118495:   debug_value %317, let, name "self", argno 2, type $StaticTwoInteractionSlots<InteractionHitRegion<SemanticCompleteIdentity>>, expr op_deref:op_fragment:#StaticTwoInteractionSlots.values:op_fragment:#InlineArray._storage // id: %319
+118496:   %320 = integer_literal $Builtin.Int16, 2        // user: %321
+118497:   %321 = builtin "cmp_ult_Int16"(%239, %320) : $Builtin.Int1 // user: %322
+118498:   cond_br %321, bb48, bb49                        // id: %322
+118499:
+118500: bb47:                                             // Preds: bb44
+118501:   br bb56                                         // id: %323
+118502:
+118503: bb48:                                             // Preds: bb46
+118504:   %324 = builtin "zextOrBitCast_Int16_Int64"(%239) : $Builtin.Int64 // users: %325, %326, %329
+118505:   %325 = builtin "cmp_slt_Int64"(%324, %10) : $Builtin.Int1 // user: %327
+118506:   %326 = builtin "cmp_sge_Int64"(%324, %81) : $Builtin.Int1 // user: %327
+118507:   %327 = builtin "or_Int1"(%325, %326) : $Builtin.Int1 // user: %328
+118508:   cond_fail %327, "Index out of bounds"           // id: %328
+118509:   %329 = builtin "truncOrBitCast_Int64_Word"(%324) : $Builtin.Word // user: %331
+118510:   %330 = vector_base_addr %317                    // user: %331
+118511:   %331 = index_addr [stack_protection] %330, %329 // user: %332
+118512:   %332 = load %331                                // users: %334, %339
+118513:   dealloc_stack %317                              // id: %333
+118514:   switch_enum %332, case #Optional.some!enumelt: bb51, case #Optional.none!enumelt: bb50 // id: %334
+118515:
+118516: bb49:                                             // Preds: bb46
+118517:   dealloc_stack %317                              // id: %335
+118518:   br bb56                                         // id: %336
+118519:
+118520: bb50:                                             // Preds: bb48
+118521:   br bb56                                         // id: %337
+118522:
+118523: bb51(%338 : $InteractionHitRegion<SemanticCompleteIdentity>): // Preds: bb48
+118524:   br bb55(%332)                                   // id: %339
+118525:
+118526: bb52:                                             // Preds: bb45
+118527:   %340 = builtin "cmp_slt_Int64"(%307, %10) : $Builtin.Int1 // user: %342
+118528:   %341 = builtin "cmp_sge_Int64"(%307, %314) : $Builtin.Int1 // user: %342
+118529:   %342 = builtin "or_Int1"(%340, %341) : $Builtin.Int1 // user: %343
+118530:   cond_fail %342, "Index out of range"            // id: %343
+118531:   %344 = ref_tail_addr [immutable] %308, $InteractionHitRegion<SemanticCompleteIdentity> // user: %346
+118532:   %345 = builtin "truncOrBitCast_Int64_Word"(%307) : $Builtin.Word // user: %346
+118533:   %346 = index_addr [stack_protection] %344, %345 // user: %347
+118534:   %347 = load %346                                // user: %348
+118535:   %348 = enum $Optional<InteractionHitRegion<SemanticCompleteIdentity>>, #Optional.some!enumelt, %347 // user: %349
+118536:   br bb55(%348)                                   // id: %349
+118537:
+118538: bb53:                                             // Preds: bb45
+118539:   br bb56                                         // id: %350
+118540:
+118541: bb54:                                             // Preds: bb42
+118542:   %351 = load %222                                // user: %352
+118543:   switch_enum %351, case #Optional.some!enumelt: bb112, case #Optional.none!enumelt: bb113 // id: %352
+118544:
+118545: // %353                                           // users: %432, %354
+118546: bb55(%353 : $Optional<InteractionHitRegion<SemanticCompleteIdentity>>): // Preds: bb52 bb51
+118547:   %354 = unchecked_enum_data %353, #Optional.some!enumelt // users: %441, %355
+118548:   %355 = struct_extract %354, #InteractionHitRegion.bounds // users: %366, %356
+118549:   %356 = struct_extract %355, #Rect.origin        // users: %379, %357
+118550:   %357 = struct_extract %356, #Point.x            // user: %358
+118551:   %358 = struct_extract %357, #Int32._value       // users: %373, %369, %361
+118552:   %359 = struct_extract %217, #Point.x            // user: %360
+118553:   %360 = struct_extract %359, #Int32._value       // users: %377, %361
+118554:   %361 = builtin "cmp_sge_Int32"(%360, %358) : $Builtin.Int1 // user: %362
+118555:   cond_br %361, bb57, bb58                        // id: %362
+118556:
+118557: bb56:                                             // Preds: bb47 bb50 bb49 bb53
+118558:   %363 = enum $Optional<BoundActionRecord<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %364
+118559:   store %363 to %221                              // id: %364
+118560:   br bb87                                         // id: %365
+118561:
+118562: bb57:                                             // Preds: bb55
+118563:   %366 = struct_extract %355, #Rect.size          // users: %386, %367
+118564:   %367 = struct_extract %366, #Size.width         // user: %368
+118565:   %368 = struct_extract %367, #Int32._value       // user: %369
+118566:   %369 = builtin "sadd_with_overflow_Int32"(%358, %368, %194) : $(Builtin.Int32, Builtin.Int1) // users: %370, %374
+118567:   %370 = tuple_extract %369, 1                    // user: %371
+118568:   cond_br %370, bb59, bb60                        // id: %371
+118569:
+118570: bb58:                                             // Preds: bb55
+118571:   br bb78                                         // id: %372
+118572:
+118573: bb59:                                             // Preds: bb57
+118574:   br bb61(%358)                                   // id: %373
+118575:
+118576: bb60:                                             // Preds: bb57
+118577:   %374 = tuple_extract %369, 0                    // user: %375
+118578:   br bb61(%374)                                   // id: %375
+118579:
+118580: // %376                                           // user: %377
+118581: bb61(%376 : $Builtin.Int32):                      // Preds: bb60 bb59
+118582:   %377 = builtin "cmp_slt_Int32"(%360, %376) : $Builtin.Int1 // user: %378
+118583:   cond_br %377, bb62, bb63                        // id: %378
+118584:
+118585: bb62:                                             // Preds: bb61
+118586:   %379 = struct_extract %356, #Point.y            // user: %380
+118587:   %380 = struct_extract %379, #Int32._value       // users: %392, %388, %383
+118588:   %381 = struct_extract %217, #Point.y            // user: %382
+118589:   %382 = struct_extract %381, #Int32._value       // users: %396, %383
+118590:   %383 = builtin "cmp_sge_Int32"(%382, %380) : $Builtin.Int1 // user: %384
+118591:   cond_br %383, bb64, bb65                        // id: %384
+118592:
+118593: bb63:                                             // Preds: bb61
+118594:   br bb78                                         // id: %385
+118595:
+118596: bb64:                                             // Preds: bb62
+118597:   %386 = struct_extract %366, #Size.height        // user: %387
+118598:   %387 = struct_extract %386, #Int32._value       // user: %388
+118599:   %388 = builtin "sadd_with_overflow_Int32"(%380, %387, %194) : $(Builtin.Int32, Builtin.Int1) // users: %389, %393
+118600:   %389 = tuple_extract %388, 1                    // user: %390
+118601:   cond_br %389, bb66, bb67                        // id: %390
+118602:
+118603: bb65:                                             // Preds: bb62
+118604:   br bb78                                         // id: %391
+118605:
+118606: bb66:                                             // Preds: bb64
+118607:   br bb68(%380)                                   // id: %392
+118608:
+118609: bb67:                                             // Preds: bb64
+118610:   %393 = tuple_extract %388, 0                    // user: %394
+118611:   br bb68(%393)                                   // id: %394
+118612:
+118613: // %395                                           // user: %396
+118614: bb68(%395 : $Builtin.Int32):                      // Preds: bb67 bb66
+118615:   %396 = builtin "cmp_slt_Int32"(%382, %395) : $Builtin.Int1 // user: %397
+118616:   cond_br %396, bb69, bb70                        // id: %397
+118617:
+118618: bb69:                                             // Preds: bb68
+118619:   %398 = alloc_stack $(Optional<InteractionHitRegion<SemanticCompleteIdentity>>, Optional<InteractionHitRegion<SemanticCompleteIdentity>>) // users: %455, %453, %427, %400, %399
+118620:   %399 = tuple_element_addr %398, 0               // users: %414, %404, %402
+118621:   %400 = tuple_element_addr %398, 1               // users: %418, %410, %408, %403
+118622:   %401 = load %222                                // user: %402
+118623:   store %401 to %399                              // id: %402
+118624:   store %223 to %400                              // id: %403
+118625:   %404 = load %399                                // user: %405
+118626:   switch_enum %404, case #Optional.some!enumelt: bb71, case #Optional.none!enumelt: bb72 // id: %405
+118627:
+118628: bb70:                                             // Preds: bb68
+118629:   br bb78                                         // id: %406
+118630:
+118631: bb71(%407 : $InteractionHitRegion<SemanticCompleteIdentity>): // Preds: bb69
+118632:   %408 = load %400                                // user: %409
+118633:   switch_enum %408, case #Optional.some!enumelt: bb73, case #Optional.none!enumelt: bb74 // id: %409
+118634:
+118635: bb72:                                             // Preds: bb69
+118636:   %410 = load %400                                // user: %411
+118637:   switch_enum %410, case #Optional.none!enumelt: bb85, case #Optional.some!enumelt: bb86 // id: %411
+118638:
+118639: bb73(%412 : $InteractionHitRegion<SemanticCompleteIdentity>): // Preds: bb71
+118640:   %413 = alloc_stack [lexical] [var_decl] $InteractionHitRegion<SemanticCompleteIdentity> // users: %416, %425, %423
+118641:   %414 = load %399                                // user: %415
+118642:   %415 = unchecked_enum_data %414, #Optional.some!enumelt // user: %416
+118643:   store %415 to %413                              // id: %416
+118644:   %417 = alloc_stack [lexical] [var_decl] $InteractionHitRegion<SemanticCompleteIdentity> // users: %420, %424, %423
+118645:   %418 = load %400                                // user: %419
+118646:   %419 = unchecked_enum_data %418, #Optional.some!enumelt // user: %420
+118647:   store %419 to %417                              // id: %420
+118648:   %421 = metatype $@thin InteractionHitRegion<SemanticCompleteIdentity>.Type // user: %423
+118649:   // function_ref static InteractionHitRegion.__derived_struct_equals(_:_:)
+118650:   %422 = function_ref @$s17GiftUIInteraction20InteractionHitRegionV23__derived_struct_equalsySbACyxG_AEtFZ : $@convention(method) <τ_0_0 where τ_0_0 : Equatable, τ_0_0 : Sendable> (@in_guaranteed InteractionHitRegion<τ_0_0>, @in_guaranteed InteractionHitRegion<τ_0_0>, @thin InteractionHitRegion<τ_0_0>.Type) -> Bool // user: %423
+118651:   %423 = apply %422<SemanticCompleteIdentity>(%413, %417, %421) : $@convention(method) <τ_0_0 where τ_0_0 : Equatable, τ_0_0 : Sendable> (@in_guaranteed InteractionHitRegion<τ_0_0>, @in_guaranteed InteractionHitRegion<τ_0_0>, @thin InteractionHitRegion<τ_0_0>.Type) -> Bool // user: %426
+118652:   dealloc_stack %417                              // id: %424
+118653:   dealloc_stack %413                              // id: %425
+118654:   %426 = struct_extract %423, #Bool._value        // user: %428
+118655:   dealloc_stack %398                              // id: %427
+118656:   cond_br %426, bb75, bb76                        // id: %428
+118657:
+118658: bb74:                                             // Preds: bb71
+118659:   br bb84                                         // id: %429
+118660:
+118661: bb75:                                             // Preds: bb73
+118662:   br bb77                                         // id: %430
+118663:
+118664: bb76:                                             // Preds: bb73
+118665:   br bb79                                         // id: %431
+118666:
+118667: bb77:                                             // Preds: bb85 bb82 bb75
+118668:   store %353 to %222                              // id: %432
+118669:   br bb78                                         // id: %433
+118670:
+118671: bb78:                                             // Preds: bb58 bb63 bb65 bb70 bb83 bb77
+118672:   %434 = integer_literal $Builtin.Int16, 1        // user: %435
+118673:   %435 = builtin "uadd_with_overflow_Int16"(%239, %434, %69) : $(Builtin.Int16, Builtin.Int1) // user: %436
+118674:   %436 = tuple_extract %435, 0                    // user: %437
+118675:   br bb39(%436)                                   // id: %437
+118676:
+118677: bb79:                                             // Preds: bb84 bb76
+118678:   %438 = load %222                                // user: %439
+118679:   switch_enum %438, case #Optional.some!enumelt: bb80, case #Optional.none!enumelt: bb81 // id: %439
+118680:
+118681: bb80(%440 : $InteractionHitRegion<SemanticCompleteIdentity>): // Preds: bb79
+118682:   %441 = struct_extract %354, #InteractionHitRegion.paintOrder // user: %442
+118683:   %442 = struct_extract %441, #UInt16._value      // user: %447
+118684:   %443 = unchecked_inplace_enum_data_addr %222, #Optional.some!enumelt // user: %444
+118685:   %444 = struct_element_addr %443, #InteractionHitRegion.paintOrder // user: %445
+118686:   %445 = struct_element_addr %444, #UInt16._value // user: %446
+118687:   %446 = load %445                                // user: %447
+118688:   %447 = builtin "cmp_ult_Int16"(%446, %442) : $Builtin.Int1 // user: %448
+118689:   cond_br %447, bb82, bb83                        // id: %448
+118690:
+118691: bb81:                                             // Preds: bb79
+118692:   cond_fail %69, "Unexpectedly found nil while unwrapping an Optional value" // id: %449
+118693:   unreachable                                     // id: %450
+118694:
+118695: bb82:                                             // Preds: bb80
+118696:   br bb77                                         // id: %451
+118697:
+118698: bb83:                                             // Preds: bb80
+118699:   br bb78                                         // id: %452
+118700:
+118701: bb84:                                             // Preds: bb86 bb74
+118702:   dealloc_stack %398                              // id: %453
+118703:   br bb79                                         // id: %454
+118704:
+118705: bb85:                                             // Preds: bb72
+118706:   dealloc_stack %398                              // id: %455
+118707:   br bb77                                         // id: %456
+118708:
+118709: bb86(%457 : $InteractionHitRegion<SemanticCompleteIdentity>): // Preds: bb72
+118710:   br bb84                                         // id: %458
+118711:
+118712: bb87:                                             // Preds: bb113 bb112 bb56
+118713:   dealloc_stack %222                              // id: %459
+118714:   %460 = load %221                                // user: %461
+118715:   switch_enum %460, case #Optional.some!enumelt: bb88, case #Optional.none!enumelt: bb89 // id: %461
+118716:
+118717: bb88(%462 : $BoundActionRecord<SemanticCompleteIdentity>): // Preds: bb87
+118718:   %463 = load %221                                // user: %464
+118719:   %464 = unchecked_enum_data %463, #Optional.some!enumelt // users: %474, %473, %466
+118720:   dealloc_stack %221                              // id: %465
+118721:   %466 = struct_extract %464, #BoundActionRecord.isEnabled // user: %467
+118722:   %467 = struct_extract %466, #Bool._value        // user: %468
+118723:   cond_br %467, bb90, bb91                        // id: %468
+118724:
+118725: bb89:                                             // Preds: bb87
+118726:   dealloc_stack %221                              // id: %469
+118727:   %470 = enum $PointerGestureOutcome<SemanticCompleteIdentity>, #PointerGestureOutcome.ignored!enumelt // users: %472, %471
+118728:   debug_value %470, let, name "gesture"           // id: %471
+118729:   br bb92(%195, %92, %470)                        // id: %472
+118730:
+118731: bb90:                                             // Preds: bb88
+118732:   %473 = struct_extract %464, #BoundActionRecord.identity // user: %477
+118733:   %474 = struct_extract %464, #BoundActionRecord.generation // user: %479
+118734:   %475 = alloc_stack $CapturedAction<SemanticCompleteIdentity> // users: %480, %482, %478, %476
+118735:   %476 = struct_element_addr %475, #CapturedAction.identity // user: %477
+118736:   store %473 to %476                              // id: %477
+118737:   %478 = struct_element_addr %475, #CapturedAction.generation // user: %479
+118738:   store %474 to %478                              // id: %479
+118739:   %480 = load %475                                // users: %481, %484
+118740:   %481 = enum $PointerGestureOutcome<SemanticCompleteIdentity>, #PointerGestureOutcome.captured!enumelt, %480 // users: %487, %483
+118741:   dealloc_stack %475                              // id: %482
+118742:   debug_value %481, let, name "gesture"           // id: %483
+118743:   %484 = enum $Optional<CapturedAction<SemanticCompleteIdentity>>, #Optional.some!enumelt, %480 // user: %485
+118744:   %485 = struct $PointerActionCapture<SemanticCompleteIdentity> (%484) // user: %486
+118745:   store %485 to %218                              // id: %486
+118746:   br bb92(%195, %92, %481)                        // id: %487
+118747:
+118748: bb91:                                             // Preds: bb88
+118749:   %488 = enum $PointerGestureOutcome<SemanticCompleteIdentity>, #PointerGestureOutcome.ignored!enumelt // users: %490, %489
+118750:   debug_value %488, let, name "gesture"           // id: %489
+118751:   br bb92(%195, %92, %488)                        // id: %490
+118752:
+118753: // %491                                           // user: %538
+118754: // %492                                           // user: %538
+118755: // %493                                           // users: %517, %499
+118756: bb92(%491 : $Bool, %492 : $Optional<CapturedAction<SemanticCompleteIdentity>>, %493 : $PointerGestureOutcome<SemanticCompleteIdentity>): // Preds: bb124 bb120 bb118 bb143 bb136 bb115 bb119 bb122 bb89 bb91 bb90
+118757:   %494 = string_literal utf8 "gesture"            // user: %496
+118758:   %495 = integer_literal $Builtin.Word, 7         // user: %498
+118759:   %496 = builtin "ptrtoint_Word"(%494) : $Builtin.Word // user: %498
+118760:   %497 = integer_literal $Builtin.Int8, 2         // user: %498
+118761:   %498 = struct $StaticString (%496, %495, %497)  // users: %513, %500
+118762:   debug_value %493, let, name "value", argno 2    // id: %499
+118763:   debug_value %498, let, name "label", argno 1    // id: %500
+118764:   %501 = integer_literal $Builtin.Word, 2         // user: %503
+118765:   %502 = struct $Int (%81)                        // user: %507
+118766:   %503 = alloc_ref [tail_elems $Any * %501] $_ContiguousArrayStorage<Any> // users: %518, %504
+118767:   %504 = upcast %503 to $__ContiguousArrayStorageBase // users: %511, %509
+118768:   %505 = integer_literal $Builtin.Int64, 4        // user: %506
+118769:   %506 = struct $UInt (%505)                      // user: %507
+118770:   %507 = struct $_SwiftArrayBodyStorage (%502, %506) // user: %508
+118771:   %508 = struct $_ArrayBody (%507)                // user: %510
+118772:   %509 = ref_element_addr %504, #__ContiguousArrayStorageBase.countAndCapacity // user: %510
+118773:   store %508 to %509                              // id: %510
+118774:   %511 = ref_tail_addr %504, $Any                 // users: %515, %512
+118775:   %512 = init_existential_addr %511, $StaticString // user: %513
+118776:   store %498 to %512                              // id: %513
+118777:   %514 = integer_literal $Builtin.Word, 1         // user: %515
+118778:   %515 = index_addr %511, %514                    // user: %516
+118779:   %516 = init_existential_addr %515, $PointerGestureOutcome<SemanticCompleteIdentity> // user: %517
+118780:   store %493 to %516                              // id: %517
+118781:   %518 = end_cow_mutation %503                    // users: %537, %519
+118782:   %519 = unchecked_ref_cast %518 to $Builtin.BridgeObject // user: %520
+118783:   %520 = struct $_BridgeStorage<__ContiguousArrayStorageBase> (%519) // user: %521
+118784:   %521 = struct $_ArrayBuffer<Any> (%520)         // user: %522
+118785:   %522 = struct $Array<Any> (%521)                // user: %536
+118786:   %523 = integer_literal $Builtin.Int64, 32       // user: %524
+118787:   %524 = struct $UInt64 (%523)                    // user: %527
+118788:   %525 = integer_literal $Builtin.Int64, -2233785415175766016 // user: %526
+118789:   %526 = value_to_bridge_object %525              // users: %532, %527
+118790:   %527 = struct $_StringObject (%524, %526)       // user: %528
+118791:   %528 = struct $_StringGuts (%527)               // user: %529
+118792:   %529 = struct $String (%528)                    // user: %536
+118793:   %530 = integer_literal $Builtin.Int64, 10       // user: %531
+118794:   %531 = struct $UInt64 (%530)                    // user: %532
+118795:   %532 = struct $_StringObject (%531, %526)       // user: %533
+118796:   %533 = struct $_StringGuts (%532)               // user: %534
+118797:   %534 = struct $String (%533)                    // user: %536
+118798:   // function_ref print(_:separator:terminator:)
+118799:   %535 = function_ref @$ss5print_9separator10terminatoryypd_S2StF : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> () // user: %536
+118800:   %536 = apply %535(%522, %529, %534) : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+118801:   strong_release %518                             // id: %537
+118802:   br bb93(%491, %212, %492)                       // id: %538
+118803:
+118804: // %539                                           // user: %543
+118805: // %540                                           // user: %550
+118806: // %541                                           // users: %551, %550
+118807: bb93(%539 : $Bool, %540 : $Optional<InputSourceID>, %541 : $Optional<CapturedAction<SemanticCompleteIdentity>>): // Preds: bb33 bb35 bb92
+118808:   // function_ref ExecutionAdmissionSealTransaction.stagePointer(_:provenanceValid:createsActivation:transitionReservationAvailable:)
+118809:   %542 = function_ref @$s15GiftUIExecution33ExecutionAdmissionSealTransactionV12stagePointer_15provenanceValid17createsActivation30transitionReservationAvailableSb0A2UI010NormalizedH5EventV_S3btF : $@convention(method) (NormalizedPointerEvent, Bool, Bool, Bool, @inout ExecutionAdmissionSealTransaction) -> Bool // user: %543
+118810:   %543 = apply %542(%117, %192, %539, %70, %46) : $@convention(method) (NormalizedPointerEvent, Bool, Bool, Bool, @inout ExecutionAdmissionSealTransaction) -> Bool // user: %544
+118811:   %544 = struct_extract %543, #Bool._value        // user: %545
+118812:   cond_br %544, bb94, bb95                        // id: %545
+118813:
+118814: bb94:                                             // Preds: bb93
+118815:   %546 = integer_literal $Builtin.Int16, 1        // user: %547
+118816:   %547 = builtin "uadd_with_overflow_Int16"(%91, %546, %69) : $(Builtin.Int16, Builtin.Int1) // user: %548
+118817:   %548 = tuple_extract %547, 0                    // users: %550, %549
+118818:   debug_value %548, var, name "selected", type $UInt16, expr op_fragment:#UInt16._value // id: %549
+118819:   br bb96(%540, %548, %541)                       // id: %550
+118820:
+118821: bb95:                                             // Preds: bb93
+118822:   br bb99(%541)                                   // id: %551
+118823:
+118824: // %552                                           // user: %558
+118825: // %553                                           // user: %558
+118826: // %554                                           // users: %558, %557
+118827: bb96(%552 : $Optional<InputSourceID>, %553 : $Builtin.Int16, %554 : $Optional<CapturedAction<SemanticCompleteIdentity>>): // Preds: bb12 bb14 bb94
+118828:   %555 = builtin "cmp_eq_Int64"(%101, %81) : $Builtin.Int1 // user: %556
+118829:   cond_br %555, bb97, bb98                        // id: %556
+118830:
+118831: bb97:                                             // Preds: bb96
+118832:   br bb99(%554)                                   // id: %557
+118833:
+118834: bb98:                                             // Preds: bb96
+118835:   br bb10(%552, %553, %554, %101)                 // id: %558
+118836:
+118837: // %559                                           // users: %639, %635, %636
+118838: bb99(%559 : $Optional<CapturedAction<SemanticCompleteIdentity>>): // Preds: bb95 bb97
+118839:   debug_value %7, let, name "self", argno 1, expr op_deref // id: %560
+118840:   %561 = struct_element_addr %73, #CounterRuntimeControl.admission // users: %634, %592, %565, %562
+118841:   %562 = struct_element_addr %561, #CounterAdmissionBacking.pendingStateCount // user: %563
+118842:   %563 = load %562                                // user: %580
+118843:   debug_value %7, let, name "self", argno 1, expr op_deref // id: %564
+118844:   %565 = struct_element_addr %561, #CounterAdmissionBacking.pendingCompletion // user: %566
+118845:   %566 = load %565                                // user: %567
+118846:   switch_enum %566, case #Optional.some!enumelt: bb100, case #Optional.none!enumelt: bb101 // id: %567
+118847:
+118848: bb100(%568 : $UInt16):                            // Preds: bb99
+118849:   %569 = integer_literal $Builtin.Int16, 1        // user: %570
+118850:   %570 = struct $UInt16 (%569)                    // user: %571
+118851:   br bb102(%570)                                  // id: %571
+118852:
+118853: bb101:                                            // Preds: bb99
+118854:   br bb102(%3)                                    // id: %572
+118855:
+118856: // %573                                           // user: %580
+118857: bb102(%573 : $UInt16):                            // Preds: bb101 bb100
+118858:   %574 = struct_element_addr %0, #CounterPipelineOwner.pending // user: %575
+118859:   %575 = load %574                                // user: %580
+118860:   debug_value %0, let, name "self", argno 1, expr op_deref // id: %576
+118861:   %577 = struct_element_addr %73, #CounterRuntimeControl.changed // user: %578
+118862:   %578 = load %577                                // user: %580
+118863:   // function_ref ExecutionAdmissionSealTransaction.finish(pendingStateChangeFacts:pendingCompletionFacts:includesDirtyRederivation:includesPresentationRecovery:batchReservationAvailable:)
+118864:   %579 = function_ref @$s15GiftUIExecution33ExecutionAdmissionSealTransactionV6finish23pendingStateChangeFacts0h10CompletionK025includesDirtyRederivation0M20PresentationRecovery25batchReservationAvailables6ResultOyAA0cdE9SelectionVAA0cde7FailureU0VGs6UInt16V_ARS3btF : $@convention(method) (UInt16, UInt16, Bool, Bool, Bool, @inout ExecutionAdmissionSealTransaction) -> Result<ExecutionAdmissionSealSelection, ExecutionAdmissionSealFailureResult> // user: %580
+118865:   %580 = apply %579(%563, %573, %578, %575, %70, %46) : $@convention(method) (UInt16, UInt16, Bool, Bool, Bool, @inout ExecutionAdmissionSealTransaction) -> Result<ExecutionAdmissionSealSelection, ExecutionAdmissionSealFailureResult> // user: %581
+118866:   switch_enum %580, case #Result.failure!enumelt: bb103, case #Result.success!enumelt: bb104 // id: %581
+118867:
+118868: // %582                                           // users: %606, %603, %585, %584
+118869: bb103(%582 : $ExecutionAdmissionSealFailureResult): // Preds: bb102
+118870:   debug_value undef : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, var, name "self", argno 1, expr op_deref // id: %583
+118871:   debug_value %582, let, name "failure"           // id: %584
+118872:   %585 = struct_extract %582, #ExecutionAdmissionSealFailureResult.cancelledSequence // user: %586
+118873:   switch_enum %585, case #Optional.some!enumelt: bb105, case #Optional.none!enumelt: bb106 // id: %586
+118874:
+118875: // %587                                           // users: %589, %588
+118876: bb104(%587 : $ExecutionAdmissionSealSelection):   // Preds: bb102
+118877:   debug_value %587, let, name "selection"         // id: %588
+118878:   %589 = struct_extract %587, #ExecutionAdmissionSealSelection.summary // users: %640, %592
+118879:   debug_value %7, var, name "self", argno 1, expr op_deref // id: %590
+118880:   // function_ref CounterAdmissionBacking.seal(_:)
+118881:   %591 = function_ref @$s17P08CounterRuntime0B16AdmissionBackingV4sealySb15GiftUIExecution0D7SummaryVF : $@convention(method) (AdmissionSummary, @inout CounterAdmissionBacking) -> Bool // user: %592
+118882:   %592 = apply %591(%589, %561) : $@convention(method) (AdmissionSummary, @inout CounterAdmissionBacking) -> Bool // user: %593
+118883:   %593 = struct_extract %592, #Bool._value        // user: %594
+118884:   cond_br %593, bb110, bb111                      // id: %594
+118885:
+118886: // %595                                           // users: %598, %597, %596
+118887: bb105(%595 : $CancelledInputSequence):            // Preds: bb103
+118888:   debug_value %595, let, name "cancelled"         // id: %596
+118889:   %597 = struct_extract %595, #CancelledInputSequence.source // user: %600
+118890:   %598 = struct_extract %595, #CancelledInputSequence.sequence // user: %600
+118891:   // function_ref CounterControl.cancelPointerSequence(source:sequence:)
+118892:   %599 = function_ref @$s17P08CounterRuntime0B7ControlV21cancelPointerSequence6source8sequencey6GiftUI13InputSourceIDV_AG0fgN0VtF : $@convention(method) (InputSourceID, PointerSequenceID, @inout CounterControl) -> () // user: %600
+118893:   %600 = apply %599(%597, %598, %7) : $@convention(method) (InputSourceID, PointerSequenceID, @inout CounterControl) -> ()
+118894:   br bb107                                        // id: %601
+118895:
+118896: bb106:                                            // Preds: bb103
+118897:   br bb107                                        // id: %602
+118898:
+118899: bb107:                                            // Preds: bb106 bb105
+118900:   %603 = struct_extract %582, #ExecutionAdmissionSealFailureResult.summary // user: %604
+118901:   %604 = enum $Optional<AdmissionSummary>, #Optional.some!enumelt, %603 // user: %605
+118902:   store %604 to %44                               // id: %605
+118903:   %606 = struct_extract %582, #ExecutionAdmissionSealFailureResult.failure // user: %608
+118904:   %607 = alloc_stack [lexical] $ExecutionAdmissionSealFailure // users: %608, %616, %612
+118905:   store %606 to %607                              // id: %608
+118906:   %609 = enum $ExecutionAdmissionSealFailure, #ExecutionAdmissionSealFailure.invalidProvenance!enumelt // user: %611
+118907:   %610 = alloc_stack [lexical] $ExecutionAdmissionSealFailure // users: %611, %615, %613
+118908:   store %609 to %610                              // id: %611
+118909:   %612 = builtin "getEnumTag"<ExecutionAdmissionSealFailure>(%607) : $Builtin.Int32 // user: %614
+118910:   %613 = builtin "getEnumTag"<ExecutionAdmissionSealFailure>(%610) : $Builtin.Int32 // user: %614
+118911:   %614 = builtin "cmp_eq_Int32"(%612, %613) : $Builtin.Int1 // user: %617
+118912:   dealloc_stack %610                              // id: %615
+118913:   dealloc_stack %607                              // id: %616
+118914:   cond_br %614, bb108, bb109                      // id: %617
+118915:
+118916: bb108:                                            // Preds: bb107
+118917:   %618 = enum $ExecutionError, #ExecutionError.invalidProvenance!enumelt // user: %619
+118918:   %619 = enum $RunCycleFailure<RuntimeOwnerFailure>, #RunCycleFailure.execution!enumelt, %618 // user: %620
+118919:   %620 = enum $RuntimePipelineStepResult<RuntimeOwnerFailure>, #RuntimePipelineStepResult.failure!enumelt, %619 // user: %623
+118920:   dealloc_stack %72                               // id: %621
+118921:   dealloc_stack %46                               // id: %622
+118922:   br bb3(%620)                                    // id: %623
+118923:
+118924: bb109:                                            // Preds: bb107
+118925:   %624 = enum $ExecutionError, #ExecutionError.capacityExhausted!enumelt // user: %625
+118926:   %625 = enum $RunCycleFailure<RuntimeOwnerFailure>, #RunCycleFailure.execution!enumelt, %624 // user: %626
+118927:   %626 = enum $RuntimePipelineStepResult<RuntimeOwnerFailure>, #RuntimePipelineStepResult.failure!enumelt, %625 // user: %629
+118928:   dealloc_stack %72                               // id: %627
+118929:   dealloc_stack %46                               // id: %628
+118930:   br bb3(%626)                                    // id: %629
+118931:
+118932: bb110:                                            // Preds: bb104
+118933:   debug_value undef : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, var, name "self", argno 1, expr op_deref // id: %630
+118934:   %631 = load %72                                 // user: %632
+118935:   store %631 to %74                               // id: %632
+118936:   debug_value %7, var, name "self", argno 1, expr op_deref // id: %633
+118937:   %634 = struct_element_addr %561, #CounterAdmissionBacking.sealedAction // user: %635
+118938:   store %559 to %634                              // id: %635
+118939:   debug_value %559, let, name "action", argno 1   // id: %636
+118940:   debug_value %7, var, name "self", argno 2, expr op_deref // id: %637
+118941:   %638 = struct_element_addr %7, #CounterControl.lastSealedAction // user: %639
+118942:   store %559 to %638                              // id: %639
+118943:   %640 = enum $Optional<AdmissionSummary>, #Optional.some!enumelt, %589 // user: %641
+118944:   store %640 to %44                               // id: %641
+118945:   %642 = enum $RuntimePipelineStepResult<RuntimeOwnerFailure>, #RuntimePipelineStepResult.advanced!enumelt // user: %645
+118946:   dealloc_stack %72                               // id: %643
+118947:   dealloc_stack %46                               // id: %644
+118948:   br bb3(%642)                                    // id: %645
+118949:
+118950: bb111:                                            // Preds: bb104
+118951:   %646 = enum $ExecutionError, #ExecutionError.invariantViolation!enumelt // user: %647
+118952:   %647 = enum $RunCycleFailure<RuntimeOwnerFailure>, #RunCycleFailure.execution!enumelt, %646 // user: %648
+118953:   %648 = enum $RuntimePipelineStepResult<RuntimeOwnerFailure>, #RuntimePipelineStepResult.failure!enumelt, %647 // user: %651
+118954:   dealloc_stack %72                               // id: %649
+118955:   dealloc_stack %46                               // id: %650
+118956:   br bb3(%648)                                    // id: %651
+118957:
+118958: bb112(%652 : $InteractionHitRegion<SemanticCompleteIdentity>): // Preds: bb54
+118959:   %653 = unchecked_inplace_enum_data_addr %222, #Optional.some!enumelt // user: %654
+118960:   %654 = struct_element_addr %653, #InteractionHitRegion.identity // user: %656
+118961:   // function_ref specialized InteractionState<>.record(identity:)
+118962:   %655 = function_ref @$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5 : $@convention(method) (SemanticCompleteIdentity, @guaranteed InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> @out Optional<BoundActionRecord<SemanticCompleteIdentity>> // user: %658
+118963:   %656 = load %654                                // user: %658
+118964:   %657 = load %120                                // user: %658
+118965:   %658 = apply %655(%221, %656, %657) : $@convention(method) (SemanticCompleteIdentity, @guaranteed InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> @out Optional<BoundActionRecord<SemanticCompleteIdentity>>
+118966:   br bb87                                         // id: %659
+118967:
+118968: bb113:                                            // Preds: bb54
+118969:   %660 = enum $Optional<BoundActionRecord<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %661
+118970:   store %660 to %221                              // id: %661
+118971:   br bb87                                         // id: %662
+118972:
+118973: bb114(%663 : $CapturedAction<SemanticCompleteIdentity>): // Preds: bb37
+118974:   %664 = struct_extract %117, #NormalizedPointerEvent.position // user: %668
+118975:   %665 = unchecked_enum_data %233, #Optional.some!enumelt // users: %668, %686, %677
+118976:   // function_ref specialized InteractionOwnedKeyState<>.resolveMove(_:at:)
+118977:   %666 = function_ref @$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0W15CommittedAccessAULLVAS0W9HitAccessAULLVTg5 : $@convention(method) (CapturedAction<SemanticCompleteIdentity>, Point, @guaranteed InteractionOwnedKeyState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %668
+118978:   %667 = load %119                                // user: %668
+118979:   %668 = apply %666(%665, %664, %667) : $@convention(method) (CapturedAction<SemanticCompleteIdentity>, Point, @guaranteed InteractionOwnedKeyState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> PointerGestureOutcome<SemanticCompleteIdentity> // users: %713, %700, %693, %697, %702, %712, %669, %675, %670
+118980:   debug_value %668, let, name "gesture"           // id: %669
+118981:   switch_enum %668, case #PointerGestureOutcome.continued!enumelt: bb116, default bb123 // id: %670
+118982:
+118983: bb115:                                            // Preds: bb37
+118984:   %671 = enum $PointerGestureOutcome<SemanticCompleteIdentity>, #PointerGestureOutcome.cancelled!enumelt // users: %673, %672
+118985:   debug_value %671, let, name "gesture"           // id: %672
+118986:   br bb92(%195, %92, %671)                        // id: %673
+118987:
+118988: bb116(%674 : $CapturedAction<SemanticCompleteIdentity>): // Preds: bb114
+118989:   %675 = unchecked_enum_data %668, #PointerGestureOutcome.continued!enumelt // users: %694, %683, %676
+118990:   %676 = struct_extract %675, #CapturedAction.identity // user: %680
+118991:   %677 = struct_extract %665, #CapturedAction.identity // user: %680
+118992:   %678 = metatype $@thin SemanticCompleteIdentity.Type // user: %680
+118993:   // function_ref static SemanticCompleteIdentity.== infix(_:_:)
+118994:   %679 = function_ref @$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ : $@convention(method) (SemanticCompleteIdentity, SemanticCompleteIdentity, @thin SemanticCompleteIdentity.Type) -> Bool // user: %680
+118995:   %680 = apply %679(%676, %677, %678) : $@convention(method) (SemanticCompleteIdentity, SemanticCompleteIdentity, @thin SemanticCompleteIdentity.Type) -> Bool // user: %681
+118996:   %681 = struct_extract %680, #Bool._value        // user: %682
+118997:   cond_br %681, bb117, bb118                      // id: %682
+118998:
+118999: bb117:                                            // Preds: bb116
+119000:   %683 = struct_extract %675, #CapturedAction.generation // user: %684
+119001:   %684 = struct_extract %683, #ActionGeneration.rawValue // user: %685
+119002:   %685 = struct_extract %684, #UInt32._value      // user: %689
+119003:   %686 = struct_extract %665, #CapturedAction.generation // user: %687
+119004:   %687 = struct_extract %686, #ActionGeneration.rawValue // user: %688
+119005:   %688 = struct_extract %687, #UInt32._value      // user: %689
+119006:   %689 = builtin "cmp_eq_Int32"(%685, %688) : $Builtin.Int1 // user: %690
+119007:   cond_br %689, bb119, bb120                      // id: %690
+119008:
+119009: bb118:                                            // Preds: bb116
+119010:   %691 = struct $PointerActionCapture<SemanticCompleteIdentity> (%78) // user: %692
+119011:   store %691 to %231                              // id: %692
+119012:   br bb92(%195, %92, %668)                        // id: %693
+119013:
+119014: bb119:                                            // Preds: bb117
+119015:   %694 = enum $Optional<CapturedAction<SemanticCompleteIdentity>>, #Optional.some!enumelt, %675 // user: %695
+119016:   %695 = struct $PointerActionCapture<SemanticCompleteIdentity> (%694) // user: %696
+119017:   store %695 to %231                              // id: %696
+119018:   br bb92(%195, %92, %668)                        // id: %697
+119019:
+119020: bb120:                                            // Preds: bb117
+119021:   %698 = struct $PointerActionCapture<SemanticCompleteIdentity> (%78) // user: %699
+119022:   store %698 to %231                              // id: %699
+119023:   br bb92(%195, %92, %668)                        // id: %700
+119024:
+119025: // %701                                           // user: %702
+119026: bb121(%701 : $CapturedAction<SemanticCompleteIdentity>): // Preds: bb123
+119027:   br bb122(%701, %668)                            // id: %702
+119028:
+119029: // %703                                           // users: %706, %705
+119030: // %704                                           // user: %709
+119031: bb122(%703 : $CapturedAction<SemanticCompleteIdentity>, %704 : $PointerGestureOutcome<SemanticCompleteIdentity>): // Preds: bb144 bb121
+119032:   debug_value %703, let, name "captured"          // id: %705
+119033:   %706 = enum $Optional<CapturedAction<SemanticCompleteIdentity>>, #Optional.some!enumelt, %703 // users: %709, %707
+119034:   debug_value %706, var, name "activation"        // id: %707
+119035:   debug_value %69, var, name "createsActivation", type $Bool, expr op_fragment:#Bool._value // id: %708
+119036:   br bb92(%70, %706, %704)                        // id: %709
+119037:
+119038: bb123:                                            // Preds: bb114
+119039:   %710 = struct $PointerActionCapture<SemanticCompleteIdentity> (%78) // user: %711
+119040:   store %710 to %231                              // id: %711
+119041:   switch_enum %668, case #PointerGestureOutcome.activationAdmitted!enumelt: bb121, default bb124 // id: %712
+119042:
+119043: bb124:                                            // Preds: bb123
+119044:   br bb92(%195, %92, %668)                        // id: %713
+119045:
+119046: bb125(%714 : $CapturedAction<SemanticCompleteIdentity>): // Preds: bb38
+119047:   %715 = unchecked_enum_data %237, #Optional.some!enumelt // users: %798, %794, %719, %730
+119048:   %716 = load %120                                // user: %720
+119049:   %717 = alloc_stack $Optional<BoundActionRecord<SemanticCompleteIdentity>> // users: %724, %721, %735, %726, %720
+119050:   // function_ref specialized InteractionState<>.record(identity:)
+119051:   %718 = function_ref @$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5 : $@convention(method) (SemanticCompleteIdentity, @guaranteed InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> @out Optional<BoundActionRecord<SemanticCompleteIdentity>> // user: %720
+119052:   %719 = struct_extract %715, #CapturedAction.identity // user: %720
+119053:   %720 = apply %718(%717, %719, %716) : $@convention(method) (SemanticCompleteIdentity, @guaranteed InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> @out Optional<BoundActionRecord<SemanticCompleteIdentity>>
+119054:   %721 = load %717                                // user: %722
+119055:   switch_enum %721, case #Optional.some!enumelt: bb126, case #Optional.none!enumelt: bb127 // id: %722
+119056:
+119057: bb126(%723 : $BoundActionRecord<SemanticCompleteIdentity>): // Preds: bb125
+119058:   %724 = load %717                                // users: %725, %748
+119059:   %725 = unchecked_enum_data %724, #Optional.some!enumelt // users: %742, %737, %727
+119060:   dealloc_stack %717                              // id: %726
+119061:   %727 = struct_extract %725, #BoundActionRecord.generation // user: %728
+119062:   %728 = struct_extract %727, #ActionGeneration.rawValue // user: %729
+119063:   %729 = struct_extract %728, #UInt32._value      // user: %733
+119064:   %730 = struct_extract %715, #CapturedAction.generation // user: %731
+119065:   %731 = struct_extract %730, #ActionGeneration.rawValue // user: %732
+119066:   %732 = struct_extract %731, #UInt32._value      // user: %733
+119067:   %733 = builtin "cmp_eq_Int32"(%729, %732) : $Builtin.Int1 // user: %734
+119068:   cond_br %733, bb128, bb129                      // id: %734
+119069:
+119070: bb127:                                            // Preds: bb125
+119071:   dealloc_stack %717                              // id: %735
+119072:   br bb135                                        // id: %736
+119073:
+119074: bb128:                                            // Preds: bb126
+119075:   %737 = struct_extract %725, #BoundActionRecord.isEnabled // user: %738
+119076:   %738 = struct_extract %737, #Bool._value        // user: %739
+119077:   cond_br %738, bb130, bb131                      // id: %739
+119078:
+119079: bb129:                                            // Preds: bb126
+119080:   br bb135                                        // id: %740
+119081:
+119082: bb130:                                            // Preds: bb128
+119083:   %741 = struct_extract %117, #NormalizedPointerEvent.position // user: %744
+119084:   %742 = struct_extract %725, #BoundActionRecord.hitBounds // user: %744
+119085:   // function_ref Rect.contains(_:)
+119086:   %743 = function_ref @$s6GiftUI4RectV8containsySbAA5PointVF : $@convention(method) (Point, Rect) -> Bool // user: %744
+119087:   %744 = apply %743(%741, %742) : $@convention(method) (Point, Rect) -> Bool // user: %745
+119088:   %745 = struct_extract %744, #Bool._value        // user: %746
+119089:   cond_br %745, bb132, bb133                      // id: %746
+119090:
+119091: bb131:                                            // Preds: bb128
+119092:   br bb135                                        // id: %747
+119093:
+119094: bb132:                                            // Preds: bb130
+119095:   br bb134(%724)                                  // id: %748
+119096:
+119097: bb133:                                            // Preds: bb130
+119098:   br bb135                                        // id: %749
+119099:
+119100: // %750                                           // user: %755
+119101: bb134(%750 : $Optional<BoundActionRecord<SemanticCompleteIdentity>>): // Preds: bb132 bb135
+119102:   %751 = enum $Optional<BoundActionRecord<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %756
+119103:   %752 = alloc_stack $(Optional<BoundActionRecord<SemanticCompleteIdentity>>, Optional<BoundActionRecord<SemanticCompleteIdentity>>) // users: %801, %799, %784, %754, %753
+119104:   %753 = tuple_element_addr %752, 0               // users: %771, %757, %755
+119105:   %754 = tuple_element_addr %752, 1               // users: %775, %767, %765, %756
+119106:   store %750 to %753                              // id: %755
+119107:   store %751 to %754                              // id: %756
+119108:   %757 = load %753                                // user: %758
+119109:   switch_enum %757, case #Optional.some!enumelt: bb137, case #Optional.none!enumelt: bb138 // id: %758
+119110:
+119111: bb135:                                            // Preds: bb127 bb129 bb131 bb133
+119112:   %759 = enum $Optional<BoundActionRecord<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %760
+119113:   br bb134(%759)                                  // id: %760
+119114:
+119115: bb136:                                            // Preds: bb38
+119116:   %761 = enum $PointerGestureOutcome<SemanticCompleteIdentity>, #PointerGestureOutcome.cancelled!enumelt // users: %763, %762
+119117:   debug_value %761, let, name "gesture"           // id: %762
+119118:   br bb92(%195, %92, %761)                        // id: %763
+119119:
+119120: bb137(%764 : $BoundActionRecord<SemanticCompleteIdentity>): // Preds: bb134
+119121:   %765 = load %754                                // user: %766
+119122:   switch_enum %765, case #Optional.some!enumelt: bb139, case #Optional.none!enumelt: bb140 // id: %766
+119123:
+119124: bb138:                                            // Preds: bb134
+119125:   %767 = load %754                                // user: %768
+119126:   switch_enum %767, case #Optional.none!enumelt: bb146, case #Optional.some!enumelt: bb147 // id: %768
+119127:
+119128: bb139(%769 : $BoundActionRecord<SemanticCompleteIdentity>): // Preds: bb137
+119129:   %770 = alloc_stack [lexical] [var_decl] $BoundActionRecord<SemanticCompleteIdentity> // users: %773, %782, %780
+119130:   %771 = load %753                                // user: %772
+119131:   %772 = unchecked_enum_data %771, #Optional.some!enumelt // user: %773
+119132:   store %772 to %770                              // id: %773
+119133:   %774 = alloc_stack [lexical] [var_decl] $BoundActionRecord<SemanticCompleteIdentity> // users: %777, %781, %780
+119134:   %775 = load %754                                // user: %776
+119135:   %776 = unchecked_enum_data %775, #Optional.some!enumelt // user: %777
+119136:   store %776 to %774                              // id: %777
+119137:   %778 = metatype $@thin BoundActionRecord<SemanticCompleteIdentity>.Type // user: %780
+119138:   // function_ref static BoundActionRecord.__derived_struct_equals(_:_:)
+119139:   %779 = function_ref @$s17GiftUIInteraction17BoundActionRecordV23__derived_struct_equalsySbACyxG_AEtFZ : $@convention(method) <τ_0_0 where τ_0_0 : Equatable, τ_0_0 : Sendable> (@in_guaranteed BoundActionRecord<τ_0_0>, @in_guaranteed BoundActionRecord<τ_0_0>, @thin BoundActionRecord<τ_0_0>.Type) -> Bool // user: %780
+119140:   %780 = apply %779<SemanticCompleteIdentity>(%770, %774, %778) : $@convention(method) <τ_0_0 where τ_0_0 : Equatable, τ_0_0 : Sendable> (@in_guaranteed BoundActionRecord<τ_0_0>, @in_guaranteed BoundActionRecord<τ_0_0>, @thin BoundActionRecord<τ_0_0>.Type) -> Bool // user: %783
+119141:   dealloc_stack %774                              // id: %781
+119142:   dealloc_stack %770                              // id: %782
+119143:   %783 = struct_extract %780, #Bool._value        // user: %785
+119144:   dealloc_stack %752                              // id: %784
+119145:   cond_br %783, bb141, bb142                      // id: %785
+119146:
+119147: bb140:                                            // Preds: bb137
+119148:   br bb145                                        // id: %786
+119149:
+119150: bb141:                                            // Preds: bb139
+119151:   br bb143                                        // id: %787
+119152:
+119153: bb142:                                            // Preds: bb139
+119154:   br bb144                                        // id: %788
+119155:
+119156: bb143:                                            // Preds: bb141 bb146
+119157:   %789 = enum $PointerGestureOutcome<SemanticCompleteIdentity>, #PointerGestureOutcome.cancelled!enumelt // users: %793, %790
+119158:   debug_value %789, let, name "gesture"           // id: %790
+119159:   %791 = struct $PointerActionCapture<SemanticCompleteIdentity> (%78) // user: %792
+119160:   store %791 to %235                              // id: %792
+119161:   br bb92(%195, %92, %789)                        // id: %793
+119162:
+119163: bb144:                                            // Preds: bb142 bb145
+119164:   %794 = enum $PointerGestureOutcome<SemanticCompleteIdentity>, #PointerGestureOutcome.activationAdmitted!enumelt, %715 // users: %795, %798
+119165:   debug_value %794, let, name "gesture"           // id: %795
+119166:   %796 = struct $PointerActionCapture<SemanticCompleteIdentity> (%78) // user: %797
+119167:   store %796 to %235                              // id: %797
+119168:   br bb122(%715, %794)                            // id: %798
+119169:
+119170: bb145:                                            // Preds: bb147 bb140
+119171:   dealloc_stack %752                              // id: %799
+119172:   br bb144                                        // id: %800
+119173:
+119174: bb146:                                            // Preds: bb138
+119175:   dealloc_stack %752                              // id: %801
+119176:   br bb143                                        // id: %802
+119177:
+119178: bb147(%803 : $BoundActionRecord<SemanticCompleteIdentity>): // Preds: bb138
+119179:   br bb145                                        // id: %804
+119180:
+119181: bb148:                                            // Preds: bb26 bb28
+119182:   %805 = integer_literal $Builtin.Int1, 0         // user: %806
+119183:   %806 = struct $Bool (%805)                      // user: %807
+119184:   br bb31(%806)                                   // id: %807
+119185: } // end sil function '$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE12admitAndSeal17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5'

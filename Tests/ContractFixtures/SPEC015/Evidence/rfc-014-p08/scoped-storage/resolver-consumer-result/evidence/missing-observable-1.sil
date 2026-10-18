@@ -1,0 +1,8 @@
+121451: // ObservableStateRootScope<>.mutate<>(_:mutation:)
+121452: // Isolation: unspecified
+121453: sil @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableModelMutation, τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (_GiftUIModelKey<τ_0_0.Schema>, @in_guaranteed τ_0_0.Mutation, @guaranteed ObservableStateRootScope<τ_0_0, τ_0_1>) -> ObservableStateResult {
+121454: [%1: read v**, copy v**]
+121455: [%2: read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+121456: [global: read,write,copy,destroy,allocate,deinit_barrier]
+121457: } // end sil function '$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF'
+121458:

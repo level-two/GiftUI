@@ -32,3 +32,8 @@ fullactualprivateP08/14loan safety remains distinct, strictcold/P08 unaccepted.
 [Qualification1 result](resolver-qualification1-result/README.md):50checks/39privacy/
 20physical/7modules/2captures/42SIL PASS;587inputs verify. No sourcechanges; later
 concreteinterpretation/full safety/cold remainunqualified.
+
+[Concrete consumer interpretation](resolver-consumer-result/README.md): run+3resolver
+PASS retained; deadOptionalpayloadcompare refs excludedfromfailure. Actualstatefact
+modelKey/mutate nextcallee FAIL/STOP;23status3resolved20opaque. No source/repair;
+full safety/cold/P08 remainunqualified.
