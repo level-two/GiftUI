@@ -1,0 +1,9 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/privacy/semantic-c-borrow-escape-negative.swift:18:54: warning: expression of type 'SemanticRecordView<UInt32>' is unused [#NoUsage]
+16 |     ) { (store) throws(SemanticExpansionError) in
+17 |         let borrowed = store.borrowedStore()
+18 |         _ = try borrowed.withCandidateView { view in view }
+   |                                                      `- warning: expression of type 'SemanticRecordView<UInt32>' is unused [#NoUsage]
+19 |         return UInt32(borrowed.limits.records)
+20 |     }
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>

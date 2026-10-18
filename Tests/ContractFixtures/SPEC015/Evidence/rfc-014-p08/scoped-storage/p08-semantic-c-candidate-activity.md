@@ -46,3 +46,9 @@ three outer typed-throws corrections isolate already observed intended diagnosti
 canonical initializer546/kind1/1BB raw identity verifies. Other86 targets/strict87
 gate and1293input/49macro/251provider seals unchanged. Run corrected3→87→fresh42
 SIL only; no source repair/budget reset, metadata/cost/safety/cold/P08 acceptance.
+
+[Focused result](semantic-c-harness-continuation1-result/README.md): all87bodies/
+checkedborrowpositive/internalnegativePASS. Escapecontrol inferred discard/Void:
+exact warning says viewexpressionunused, zeroerrors; no actual escape attempted.
+Harnessflaw, not lifetime defect evidence; SILblocked, no source/budgetchange.
+One explicitreturn control+matchingpositive requires review, no compilerpretest.

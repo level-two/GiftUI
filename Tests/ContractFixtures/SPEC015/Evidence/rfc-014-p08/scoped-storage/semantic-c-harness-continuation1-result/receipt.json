@@ -1,0 +1,10 @@
+{
+  "source_commit": "f2325b85",
+  "recipe_commit": "0368a573",
+  "frozen_inputs_verified": 1293,
+  "physical87": "PASS",
+  "privacy": "borrowpositive/internalnegativePASS; escape0errorsFAIL intendednegative",
+  "source_mutations": 0,
+  "freeze_compiler_tests_decoder_runtime": false,
+  "budget": "ONE1/1 fixed/ZEROautomaticSOURCErepairs; allhistoricalbudgetsunchanged"
+}

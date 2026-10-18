@@ -1,0 +1,10 @@
+{
+  "classification": "harness control never returned the view; not lifetime defect evidence",
+  "concrete_evidence": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/privacy/semantic-c-borrow-escape-negative.swift:18:54: warning: expression of type 'SemanticRecordView<UInt32>' is unused [#NoUsage]\n16 |     ) { (store) throws(SemanticExpansionError) in\n17 |         let borrowed = store.borrowedStore()\n18 |         _ = try borrowed.withCandidateView { view in view }\n   |                                                      `- warning: expression of type 'SemanticRecordView<UInt32>' is unused [#NoUsage]\n19 |         return UInt32(borrowed.limits.records)\n20 |     }\n\n[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>\n",
+  "explanation": "Generic callback result was unconstrained at `_ =` and Swift accepted a Void-returning callback discarding the view expression. Warning explicitly reports the view expression unused; callback therefore did not try to return a nonescapable value through Result.",
+  "initial_anyError_secondary_diagnostic": "Before typedthrows correction the solver reported intended Escapable restriction alongside invalid anyError conversion; that ill-typed fixture was not proof that corrected inference must choose the same Result.",
+  "proposed_one_control": "Explicit callback result SemanticRecordView<UInt32> and explicit return view; matched positive explicitly returns UInt32. This prevents Void inference/discard; require exact Escapable diagnostic with zeroerrors positive. Proposal only/no compilerpretest.",
+  "source": "f2325b85 unchanged, no source repair or budgetreset",
+  "retained_pass": "87unique serialized positive bodies +checkedborrowpositive +internalconstructornegative; macro17/lower25/all4variants/prior70/privacy/index/captures/seals retained",
+  "SIL": "blocked/notinvoked; actualcodegen/safety/cold/P08 unqualified"
+}

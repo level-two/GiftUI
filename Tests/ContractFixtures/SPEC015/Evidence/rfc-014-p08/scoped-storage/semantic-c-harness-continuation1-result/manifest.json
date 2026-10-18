@@ -1,0 +1,42 @@
+{
+  "result.json": {
+    "bytes": 161063,
+    "sha256": "4e9352319fe37e649da890e01513381fd79e0a0f4950d69c02c9e9efc08ac290"
+  },
+  "README.md": {
+    "bytes": 1278,
+    "sha256": "d06b937955c0f45f2604c318ab12bc851e0474032d246aacb9df5fd97b7f3498"
+  },
+  "diagnosis.json": {
+    "bytes": 1994,
+    "sha256": "3e173983aa1165c974278e9c0982c2d99582736f37d1d01ecdf3dad21d372f6d"
+  },
+  "receipt.json": {
+    "bytes": 372,
+    "sha256": "6ff0399340e7ba583918da5209b2a1ffc446557064d8d777aa77019c2a54b850"
+  },
+  "logs/semantic-c-checked-borrow-positive.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/semantic-c-checked-borrow-positive.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/semantic-c-borrow-init-negative.stderr": {
+    "bytes": 1111,
+    "sha256": "ed671bdc45f1a12cb7646dccf4934c0ab19d81f41682ca7b918059ed71f296a2"
+  },
+  "logs/semantic-c-borrow-escape-negative.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/semantic-c-borrow-escape-negative.stderr": {
+    "bytes": 713,
+    "sha256": "37f8a019488faba3cb9207b558f706c53ae96116b4692ca0ce46f94c9fa7c674"
+  },
+  "logs/semantic-c-borrow-init-negative.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
