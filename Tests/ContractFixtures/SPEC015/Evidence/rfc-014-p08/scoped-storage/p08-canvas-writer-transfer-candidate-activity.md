@@ -34,6 +34,13 @@ FAIL/STOP confirmed as unchanged lowerer constructor ABI gap. Later gates NOT RU
 No harness relabel/retry/source allowance; two non-Canvas constructors are only a
 future bounded review subject. Current candidate remains fixed/unaccepted.
 
+[Independent non-Canvas constructor design review](p08-noncanvas-constructor-design-review.md):
+proposal c57f59a9 READY for separately authorized bounded candidate (3selectors/2files).
+Original direct owner/source-file ancestry and ordinary zero-argument eligibility
+preserve private State/access/defaults; no blanket inlining or syntax expansion.
+Fresh macro/main/multiple/nested compile and later gates remain required; no new
+candidate/source allowance or acceptance claim is issued by review.
+
 User-authorized next bounded read-only [constructor review proposal](noncanvas-constructor-grouped-inventory/README.md)
 groups CounterScreen/ChildScreen ordinary ABI-only zero-argument constructors under
 a structural finite-owner rule. Three selectors/two maintained files proposed;
