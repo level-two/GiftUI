@@ -1,0 +1,33 @@
+{
+  "source_commit": "d65b127c",
+  "prepared_commit": "3c7421cf",
+  "source_budget": "onecandidate1/1 fixed/zeroautomaticSOURCErepairs; all historical budgets unchanged",
+  "input_counts_verified": {
+    "macro": 279,
+    "compile": 338,
+    "qualification": 536
+  },
+  "fresh_seals_verified": {
+    "macro-artifact-freeze.json": {
+      "count": 49,
+      "sha256": "e478d9ed49e07c82000b0f978f20354f5c7842ad776e53da12156c90c01e65cc"
+    },
+    "compile-artifact-freeze.json": {
+      "count": 251,
+      "sha256": "475438de52d77f2b6f8d0c8587d6e8db4512d131a79da666a42253f55942ef93"
+    }
+  },
+  "qualification_checks": 84,
+  "all84_logpairs_verified": true,
+  "physical_initial": "66/76;10zero static-selector defects retained",
+  "consumer": "blocked/notinvoked",
+  "archive_members": 203,
+  "archive_bytes": 2553808,
+  "not_run_during_freeze": [
+    "compiler",
+    "tests",
+    "decoder",
+    "runtime",
+    "source/fixture edit"
+  ]
+}

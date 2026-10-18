@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [constructor initial result / exact10 selector continuation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-selector-continuation1/README.md):
+macro17/lower25/fourvariants (nested fixed)/privacy70/decode11/interpreter/object2 PASS.
+Initial66/76 selection: all ten roots exist, selectors omit static prefix. Exact full
+mangled/raw-record map and focused76→42SIL recipe prepared/validatePASS; independent
+review before execution. No source change/repair/reset; safety/cold/P08 remain open.
+
 Current [finite constructor candidate1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/README.md):
 source d65b127c exact3selectors/2files formatted/audited; combined --validate PASS.
 Freshmacro17→fresh25→multiple/nested4→privacy70/index11/body76/object→conditional42SIL.

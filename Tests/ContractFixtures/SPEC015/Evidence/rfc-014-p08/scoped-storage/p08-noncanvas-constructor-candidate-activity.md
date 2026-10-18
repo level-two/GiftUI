@@ -17,3 +17,12 @@ only inside existing17-method family. [Combined prepared runner](noncanvas-const
 static --validate PASS; fresh isolated macro/generated/module artifact seals qualify
 only after execution. No compiler/test/decoder/runtime executed in preparation;
 initial candidate remains unaccepted and no automatic SOURCE repair follows.
+
+[Initial combined result](noncanvas-constructor-candidate1-result/README.md): macro17/
+freshlower25/allfourvariants PASS, including prior nestedconstructor regression.
+Privacy70/11decodes/interpreter/twoobjectcaptures PASS; initial body selection66/76,
+ten omitted-static selector defects, all intended roots uniquely present kind1/BB>0.
+SIL correctly blocked; full physical76 gate not yet accepted. No source retry or
+sourcebudget reset. [Exact10 focused selector continuation](noncanvas-constructor-selector-continuation1/README.md)
+prepared/staticvalidatePASS; independent review required before76gate→fresh42SIL.
+Consumer/safety/strictcold/P08 unqualified, all older budgets/protectedfiles exact.

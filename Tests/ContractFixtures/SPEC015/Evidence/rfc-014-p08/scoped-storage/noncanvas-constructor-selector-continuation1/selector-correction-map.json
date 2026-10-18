@@ -1,0 +1,492 @@
+{
+  "status": "PROPOSAL ONLY independentreview before application/execution",
+  "source_commit": "d65b127c",
+  "classification": "all10 omitted-static selector defects; no absent body/source failure",
+  "acceptance": "exact same76 identities/unique root/nonzero serializedkind/positiveBB; change10 selectors to fullmangled exact names only; do not apply in original evidence",
+  "index": {
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-noncanvas-constructor-candidate1/qualification/boundary-physical-index.json",
+    "sha256": "ff5e2eb2172b24f603963d6e09afe1145297326d806bef28ff137890da9a568b"
+  },
+  "rows": [
+    {
+      "target_index": 56,
+      "label": "SemanticStandardPayloadCodec.primitive direct",
+      "module": "GiftUISemanticCore",
+      "original_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticStandardPayloadCodec.primitive direct",
+        "demangled_regex": "^(?:\\(extension in GiftUISemanticCore\\):)?GiftUISemanticCore\\.SemanticStandardPayloadCodec(?:<[^\\n]*?>)?\\.primitive(?:<[^\\n]*?>)?\\((?![^\\n]*wrapping:)",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "proposed_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticStandardPayloadCodec.primitive direct",
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writerAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyAA0deF0OGt0A2UI01_ab9PrimitiveF0Rd__lFZ",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "classification": "selector-only; omitted static prefix in anchored demangled regex",
+      "source": {
+        "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+        "line": 41,
+        "sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+        "excerpt": "39:     }\n40:     @inlinable\n41:     package static func primitive<Value: _GiftUISemanticPrimitivePayload>(\n42:         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>\n43:     ) -> SemanticExpansionError? {\n44:         primitive(value, writer: writer, wrapping: { $0 })\n45:     }\n46:     @inlinable\n47:     package static func primitive<Value: _GiftUISemanticPrimitivePayload, Target>(\n48:         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Target>,"
+      },
+      "physical_record": {
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writerAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyAA0deF0OGt0A2UI01_ab9PrimitiveF0Rd__lFZ",
+        "identifier_id": 243,
+        "function_id": 21,
+        "hash": 2908417614,
+        "demangled": "static GiftUISemanticCore.SemanticStandardPayloadCodec.primitive<A where A1: GiftUI._GiftUISemanticPrimitivePayload>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUISemanticCore.SemanticStandardPayload>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "offset_bits": 248080,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 1,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=165 op29=0 op30=0 op31=12 op32=0 op33=1/> record string = ''"
+      },
+      "closure_exclusion": "Root static declaration exactly matches source signature/constraints; closure/default/defer records not substitutes. Full mangled equality and exact fresh raw record pinned."
+    },
+    {
+      "target_index": 57,
+      "label": "SemanticStandardPayloadCodec.primitive wrapping",
+      "module": "GiftUISemanticCore",
+      "original_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticStandardPayloadCodec.primitive wrapping",
+        "demangled_regex": "^(?:\\(extension in GiftUISemanticCore\\):)?GiftUISemanticCore\\.SemanticStandardPayloadCodec(?:<[^\\n]*?>)?\\.primitive(?:<[^\\n]*?>)?\\([^\\n]*wrapping:",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "proposed_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticStandardPayloadCodec.primitive wrapping",
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZ",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "classification": "selector-only; omitted static prefix in anchored demangled regex",
+      "source": {
+        "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+        "line": 47,
+        "sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+        "excerpt": "45:     }\n46:     @inlinable\n47:     package static func primitive<Value: _GiftUISemanticPrimitivePayload, Target>(\n48:         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Target>,\n49:         wrapping wrap: (Payload) -> Target\n50:     ) -> SemanticExpansionError? {\n51:         if Value.self == _GiftUIVStackPayload.self {\n52:             return writer.store(\n53:                 wrap(.vStack(project(value, as: _GiftUIVStackPayload.self))), kind: .primitive)\n54:         }"
+      },
+      "physical_record": {
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZ",
+        "identifier_id": 245,
+        "function_id": 22,
+        "hash": 1425756594,
+        "demangled": "static GiftUISemanticCore.SemanticStandardPayloadCodec.primitive<A, B where A1: GiftUI._GiftUISemanticPrimitivePayload>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<B1>, wrapping: (GiftUISemanticCore.SemanticStandardPayload) -> B1) -> GiftUISemanticCore.SemanticExpansionError?",
+        "offset_bits": 249451,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 26,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=6 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=169 op29=0 op30=0 op31=13 op32=0 op33=1/> record string = ''"
+      },
+      "closure_exclusion": "Root static declaration exactly matches source signature/constraints; closure/default/defer records not substitutes. Full mangled equality and exact fresh raw record pinned."
+    },
+    {
+      "target_index": 58,
+      "label": "SemanticStandardPayloadCodec.modifier direct",
+      "module": "GiftUISemanticCore",
+      "original_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticStandardPayloadCodec.modifier direct",
+        "demangled_regex": "^(?:\\(extension in GiftUISemanticCore\\):)?GiftUISemanticCore\\.SemanticStandardPayloadCodec(?:<[^\\n]*?>)?\\.modifier(?:<[^\\n]*?>)?\\((?![^\\n]*wrapping:)",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "proposed_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticStandardPayloadCodec.modifier direct",
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO8modifier_10chainIndex6writerAA0D14ExpansionErrorOSgqd___s6UInt16VAA0dF6WriterVyAA0deF0OGt0A2UI01_ab8ModifierF0Rd__lFZ",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "classification": "selector-only; omitted static prefix in anchored demangled regex",
+      "source": {
+        "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+        "line": 117,
+        "sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+        "excerpt": "115:     }\n116:     @inlinable\n117:     package static func modifier<Value: _GiftUISemanticModifierPayload>(\n118:         _ value: borrowing Value, chainIndex: UInt16,\n119:         writer: borrowing SemanticPayloadWriter<Payload>\n120:     ) -> SemanticExpansionError? {\n121:         modifier(value, chainIndex: chainIndex, writer: writer, wrapping: { $0 })\n122:     }\n123:     @inlinable\n124:     package static func modifier<Value: _GiftUISemanticModifierPayload, Target>("
+      },
+      "physical_record": {
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO8modifier_10chainIndex6writerAA0D14ExpansionErrorOSgqd___s6UInt16VAA0dF6WriterVyAA0deF0OGt0A2UI01_ab8ModifierF0Rd__lFZ",
+        "identifier_id": 229,
+        "function_id": 13,
+        "hash": 3810968506,
+        "demangled": "static GiftUISemanticCore.SemanticStandardPayloadCodec.modifier<A where A1: GiftUI._GiftUISemanticModifierPayload>(_: A1, chainIndex: Swift.UInt16, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUISemanticCore.SemanticStandardPayload>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "offset_bits": 220622,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 1,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=101 op29=0 op30=0 op31=7 op32=0 op33=1/> record string = ''"
+      },
+      "closure_exclusion": "Root static declaration exactly matches source signature/constraints; closure/default/defer records not substitutes. Full mangled equality and exact fresh raw record pinned."
+    },
+    {
+      "target_index": 59,
+      "label": "SemanticStandardPayloadCodec.modifier wrapping",
+      "module": "GiftUISemanticCore",
+      "original_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticStandardPayloadCodec.modifier wrapping",
+        "demangled_regex": "^(?:\\(extension in GiftUISemanticCore\\):)?GiftUISemanticCore\\.SemanticStandardPayloadCodec(?:<[^\\n]*?>)?\\.modifier(?:<[^\\n]*?>)?\\([^\\n]*wrapping:",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "proposed_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticStandardPayloadCodec.modifier wrapping",
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO8modifier_10chainIndex6writer8wrappingAA0D14ExpansionErrorOSgqd___s6UInt16VAA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab8ModifierF0Rd__r0_lFZ",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "classification": "selector-only; omitted static prefix in anchored demangled regex",
+      "source": {
+        "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+        "line": 124,
+        "sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+        "excerpt": "122:     }\n123:     @inlinable\n124:     package static func modifier<Value: _GiftUISemanticModifierPayload, Target>(\n125:         _ value: borrowing Value, chainIndex: UInt16,\n126:         writer: borrowing SemanticPayloadWriter<Target>,\n127:         wrapping wrap: (Payload) -> Target\n128:     ) -> SemanticExpansionError? {\n129:         let owned: Payload\n130:         if Value.self == _GiftUIPaddingPayload.self {\n131:             owned = .padding(project(value, as: _GiftUIPaddingPayload.self))"
+      },
+      "physical_record": {
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO8modifier_10chainIndex6writer8wrappingAA0D14ExpansionErrorOSgqd___s6UInt16VAA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab8ModifierF0Rd__r0_lFZ",
+        "identifier_id": 231,
+        "function_id": 14,
+        "hash": 3915752670,
+        "demangled": "static GiftUISemanticCore.SemanticStandardPayloadCodec.modifier<A, B where A1: GiftUI._GiftUISemanticModifierPayload>(_: A1, chainIndex: Swift.UInt16, writer: GiftUISemanticCore.SemanticPayloadWriter<B1>, wrapping: (GiftUISemanticCore.SemanticStandardPayload) -> B1) -> GiftUISemanticCore.SemanticExpansionError?",
+        "offset_bits": 222117,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 17,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=6 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=105 op29=0 op30=0 op31=8 op32=0 op33=1/> record string = ''"
+      },
+      "closure_exclusion": "Root static declaration exactly matches source signature/constraints; closure/default/defer records not substitutes. Full mangled equality and exact fresh raw record pinned."
+    },
+    {
+      "target_index": 60,
+      "label": "SemanticStandardPayloadCodec.action direct",
+      "module": "GiftUISemanticCore",
+      "original_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticStandardPayloadCodec.action direct",
+        "demangled_regex": "^(?:\\(extension in GiftUISemanticCore\\):)?GiftUISemanticCore\\.SemanticStandardPayloadCodec(?:<[^\\n]*?>)?\\.action(?:<[^\\n]*?>)?\\((?![^\\n]*wrapping:)",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "proposed_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticStandardPayloadCodec.action direct",
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO6action_6writerAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyAA0deF0OGt0A2UI0A8UIActionRd__lFZ",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "classification": "selector-only; omitted static prefix in anchored demangled regex",
+      "source": {
+        "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+        "line": 150,
+        "sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+        "excerpt": "148:     }\n149:     @inlinable\n150:     package static func action<Value: GiftUIAction>(\n151:         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>\n152:     ) -> SemanticExpansionError? {\n153:         action(value, writer: writer, wrapping: { $0 })\n154:     }\n155:     @inlinable\n156:     package static func action<Value: GiftUIAction, Target>(\n157:         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Target>,"
+      },
+      "physical_record": {
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO6action_6writerAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyAA0deF0OGt0A2UI0A8UIActionRd__lFZ",
+        "identifier_id": 172,
+        "function_id": 3,
+        "hash": 263301290,
+        "demangled": "static GiftUISemanticCore.SemanticStandardPayloadCodec.action<A where A1: GiftUI.GiftUIAction>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUISemanticCore.SemanticStandardPayload>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "offset_bits": 158425,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 1,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=20 op29=0 op30=0 op31=2 op32=0 op33=1/> record string = ''"
+      },
+      "closure_exclusion": "Root static declaration exactly matches source signature/constraints; closure/default/defer records not substitutes. Full mangled equality and exact fresh raw record pinned."
+    },
+    {
+      "target_index": 61,
+      "label": "SemanticStandardPayloadCodec.action wrapping",
+      "module": "GiftUISemanticCore",
+      "original_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticStandardPayloadCodec.action wrapping",
+        "demangled_regex": "^(?:\\(extension in GiftUISemanticCore\\):)?GiftUISemanticCore\\.SemanticStandardPayloadCodec(?:<[^\\n]*?>)?\\.action(?:<[^\\n]*?>)?\\([^\\n]*wrapping:",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "proposed_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticStandardPayloadCodec.action wrapping",
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO6action_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI0A8UIActionRd__r0_lFZ",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "classification": "selector-only; omitted static prefix in anchored demangled regex",
+      "source": {
+        "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+        "line": 156,
+        "sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+        "excerpt": "154:     }\n155:     @inlinable\n156:     package static func action<Value: GiftUIAction, Target>(\n157:         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Target>,\n158:         wrapping wrap: (Payload) -> Target\n159:     ) -> SemanticExpansionError? {\n160:         guard let role = Roles.role(of: Value.self), role.rawValue != 0 else {\n161:             return .invalidIdentity\n162:         }\n163:         return writer.store(wrap(.action(role: role.rawValue, code: value.rawValue)), kind: .action)"
+      },
+      "physical_record": {
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO6action_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI0A8UIActionRd__r0_lFZ",
+        "identifier_id": 174,
+        "function_id": 4,
+        "hash": 1491788174,
+        "demangled": "static GiftUISemanticCore.SemanticStandardPayloadCodec.action<A, B where A1: GiftUI.GiftUIAction>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<B1>, wrapping: (GiftUISemanticCore.SemanticStandardPayload) -> B1) -> GiftUISemanticCore.SemanticExpansionError?",
+        "offset_bits": 159796,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 7,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=6 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=27 op29=0 op30=0 op31=3 op32=0 op33=1/> record string = ''"
+      },
+      "closure_exclusion": "Root static declaration exactly matches source signature/constraints; closure/default/defer records not substitutes. Full mangled equality and exact fresh raw record pinned."
+    },
+    {
+      "target_index": 62,
+      "label": "SemanticStandardPayloadCodec.project",
+      "module": "GiftUISemanticCore",
+      "original_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticStandardPayloadCodec.project",
+        "demangled_regex": "^(?:\\(extension in GiftUISemanticCore\\):)?GiftUISemanticCore\\.SemanticStandardPayloadCodec(?:<[^\\n]*?>)?\\.project(?:<[^\\n]*?>)?\\(",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "proposed_target": {
+        "module": "GiftUISemanticCore",
+        "label": "SemanticStandardPayloadCodec.project",
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO7project_2asqd_0_qd___qd_0_mtr0_lFZ",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "classification": "selector-only; omitted static prefix in anchored demangled regex",
+      "source": {
+        "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+        "line": 32,
+        "sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+        "excerpt": "30:     /// existential cast is used. The known finite value is copied while borrowed.\n31:     @inlinable\n32:     internal static func project<Value, Expected>(_ value: borrowing Value, as type: Expected.Type)\n33:         -> Expected\n34:     {\n35:         precondition(Value.self == Expected.self)\n36:         return withUnsafePointer(to: value) { source in\n37:             source.withMemoryRebound(to: Expected.self, capacity: 1) { $0.pointee }\n38:         }\n39:     }"
+      },
+      "physical_record": {
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO7project_2asqd_0_qd___qd_0_mtr0_lFZ",
+        "identifier_id": 233,
+        "function_id": 15,
+        "hash": 1722500041,
+        "demangled": "static GiftUISemanticCore.SemanticStandardPayloadCodec.project<A, B>(_: A1, as: B1.Type) -> B1",
+        "offset_bits": 236564,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 1,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=121 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''"
+      },
+      "closure_exclusion": "Root static declaration exactly matches source signature/constraints; closure/default/defer records not substitutes. Full mangled equality and exact fresh raw record pinned."
+    },
+    {
+      "target_index": 63,
+      "label": "CanvasSemanticPayloadCodec.action",
+      "module": "GiftUIDrawing",
+      "original_target": {
+        "module": "GiftUIDrawing",
+        "label": "CanvasSemanticPayloadCodec.action",
+        "demangled_regex": "^(?:\\(extension in GiftUIDrawing\\):)?GiftUIDrawing\\.CanvasSemanticPayloadCodec(?:<[^\\n]*?>)?\\.action(?:<[^\\n]*?>)?\\(",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "proposed_target": {
+        "module": "GiftUIDrawing",
+        "label": "CanvasSemanticPayloadCodec.action",
+        "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO6action_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI0A8UIActionRd__lFZ",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "classification": "selector-only; omitted static prefix in anchored demangled regex",
+      "source": {
+        "path": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+        "line": 56,
+        "sha256": "7c0348c6f27e2343ac33dc66e9e754b485e8dc5bfc7dd326d15f0c0b6569c951",
+        "excerpt": "54:     }\n55:     @inlinable\n56:     package static func action<Value: GiftUIAction>(\n57:         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>\n58:     ) -> SemanticExpansionError? {\n59:         SemanticStandardPayloadCodec<Roles>.action(\n60:             value, writer: writer, wrapping: { .standard($0) })\n61:     }\n62: }\n63: "
+      },
+      "physical_record": {
+        "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO6action_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI0A8UIActionRd__lFZ",
+        "identifier_id": 67,
+        "function_id": 24,
+        "hash": 757675044,
+        "demangled": "static GiftUIDrawing.CanvasSemanticPayloadCodec.action<A where A1: GiftUI.GiftUIAction>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUIDrawing.CanvasSemanticPayload<B.CaptureStorage>>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "offset_bits": 262454,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 1,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=131 op29=0 op30=0 op31=5 op32=0 op33=1/> record string = ''"
+      },
+      "closure_exclusion": "Root static declaration exactly matches source signature/constraints; closure/default/defer records not substitutes. Full mangled equality and exact fresh raw record pinned."
+    },
+    {
+      "target_index": 70,
+      "label": "P08CounterSchemaCanvasTable.payload",
+      "module": "P08CounterTable",
+      "original_target": {
+        "module": "P08CounterTable",
+        "label": "P08CounterSchemaCanvasTable.payload",
+        "demangled_regex": "^(?:\\(extension in P08CounterTable\\):)?P08CounterTable\\.P08CounterSchemaCanvasTable(?:<[^\\n]*?>)?\\.payload(?:<[^\\n]*?>)?\\(",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "proposed_target": {
+        "module": "P08CounterTable",
+        "label": "P08CounterSchemaCanvasTable.payload",
+        "name": "$s15P08CounterTable0ab12SchemaCanvasC0V7payloadyAA0abdE6ValuesOyxGSgqd__6GiftUI01_H26UISemanticPrimitivePayloadRd__lFZ",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "classification": "selector-only; omitted static prefix in anchored demangled regex",
+      "source": {
+        "path": ".build/contracts/p08-noncanvas-constructor-candidate1/compile/generated/CounterTable.swift",
+        "line": 19,
+        "sha256": "a3c737d3555f2ee5c48fe0fddf3c224fb9cb6a9397948b4073cc8009dce73ab5",
+        "excerpt": "17: case .v1: 1\n18: } }\n19: @inlinable package static func payload<Value: _GiftUISemanticPrimitivePayload>(_ value: borrowing Value) -> CaptureStorage? {\n20: if Value.self == CounterCanvas<D>.self {\n21:     return withUnsafePointer(to: value) { pointer in\n22:         pointer.withMemoryRebound(to: CounterCanvas<D>.self, capacity: 1) { .v1($0.pointee) }\n23:     }\n24: }\n25: return nil\n26: }"
+      },
+      "physical_record": {
+        "name": "$s15P08CounterTable0ab12SchemaCanvasC0V7payloadyAA0abdE6ValuesOyxGSgqd__6GiftUI01_H26UISemanticPrimitivePayloadRd__lFZ",
+        "identifier_id": 29,
+        "function_id": 10,
+        "hash": 1279387075,
+        "demangled": "static P08CounterTable.P08CounterSchemaCanvasTable.payload<A where A1: GiftUI._GiftUISemanticPrimitivePayload>(A1) -> P08CounterTable.P08CounterSchemaCanvasValues<A>?",
+        "offset_bits": 147058,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 4,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=43 op29=0 op30=0 op31=4 op32=0 op33=1/> record string = ''"
+      },
+      "closure_exclusion": "Root static declaration exactly matches source signature/constraints; closure/default/defer records not substitutes. Full mangled equality and exact fresh raw record pinned."
+    },
+    {
+      "target_index": 71,
+      "label": "P08CounterSchemaCanvasTable.caseID",
+      "module": "P08CounterTable",
+      "original_target": {
+        "module": "P08CounterTable",
+        "label": "P08CounterSchemaCanvasTable.caseID",
+        "demangled_regex": "^(?:\\(extension in P08CounterTable\\):)?P08CounterTable\\.P08CounterSchemaCanvasTable(?:<[^\\n]*?>)?\\.caseID(?:<[^\\n]*?>)?\\(",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "proposed_target": {
+        "module": "P08CounterTable",
+        "label": "P08CounterSchemaCanvasTable.caseID",
+        "name": "$s15P08CounterTable0ab12SchemaCanvasC0V6caseID3fors6UInt16VAA0abdE6ValuesOyxG_tFZ",
+        "policy": "fresh exact qualified declaration/method/signature; unique record required, no closure/defer/defaultarg or multiplicity weakening"
+      },
+      "classification": "selector-only; omitted static prefix in anchored demangled regex",
+      "source": {
+        "path": ".build/contracts/p08-noncanvas-constructor-candidate1/compile/generated/CounterTable.swift",
+        "line": 16,
+        "sha256": "a3c737d3555f2ee5c48fe0fddf3c224fb9cb6a9397948b4073cc8009dce73ab5",
+        "excerpt": "14: case 1: UInt16(exactly: MemoryLayout<CounterCanvas<D>>.stride)\n15: default: nil } }\n16: @inlinable package static func caseID(for value: borrowing CaptureStorage) -> UInt16 { switch value {\n17: case .v1: 1\n18: } }\n19: @inlinable package static func payload<Value: _GiftUISemanticPrimitivePayload>(_ value: borrowing Value) -> CaptureStorage? {\n20: if Value.self == CounterCanvas<D>.self {\n21:     return withUnsafePointer(to: value) { pointer in\n22:         pointer.withMemoryRebound(to: CounterCanvas<D>.self, capacity: 1) { .v1($0.pointee) }\n23:     }"
+      },
+      "physical_record": {
+        "name": "$s15P08CounterTable0ab12SchemaCanvasC0V6caseID3fors6UInt16VAA0abdE6ValuesOyxG_tFZ",
+        "identifier_id": 16,
+        "function_id": 4,
+        "hash": 3577391403,
+        "demangled": "static P08CounterTable.P08CounterSchemaCanvasTable.caseID(for: P08CounterTable.P08CounterSchemaCanvasValues<A>) -> Swift.UInt16",
+        "offset_bits": 140115,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 1,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=1 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=20 op29=0 op30=0 op31=1 op32=0 op33=1/> record string = ''"
+      },
+      "closure_exclusion": "Root static declaration exactly matches source signature/constraints; closure/default/defer records not substitutes. Full mangled equality and exact fresh raw record pinned."
+    }
+  ]
+}
