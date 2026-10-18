@@ -25,10 +25,11 @@ repairs; old budgets unchanged. Privacy/physical actual-consumer/safety/strict c
 remain unexecuted. P08/R07/T8.1 and combined source overlay remain unaccepted.
 
 [Focused qualification1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-qualification1/README.md)
-is prepared/validation-only PASS:577 input hashes,30 privacy controls, six complete
-module indexes/ten required physical bodies and matching42-source object capture;
-optimized42-source SIL collection runs only after prerequisite PASS. No compiler/
-decoder/runtime executed; full actual-consumer interpretation/safety/cold remain.
+PASS:577 input hashes/all40 checks,30 privacy controls, six complete module indexes/
+ten required physical bodies, matching object captures and fresh42-source SIL.
+[Qualification receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-qualification1-result/README.md)
+preserves full logs/index/SIL; actual-consumer interpretation/full safety/cold remain.
+No source or repair allowance added.
 
 Historical [authorized grouped candidate1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-candidate1/README.md):
 exact53 sites/six files applied, formatted and token audited; all14 constructor

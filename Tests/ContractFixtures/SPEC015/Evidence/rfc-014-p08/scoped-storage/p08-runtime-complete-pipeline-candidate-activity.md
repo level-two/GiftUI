@@ -41,3 +41,7 @@ pycache remain exact. [Prepared packet](runtime-complete-pipeline-candidate1/REA
 [Qualification1 packet](runtime-complete-pipeline-qualification1/README.md) prepared,
 577 hashes/30privacy/10physical roots+matching object/conditional42SIL; validation
 only PASS. No source/compiler/decoder/runtime execution; later safety/cold open.
+
+[Qualification1 result](runtime-complete-pipeline-qualification1-result/README.md):
+all40 checks/30privacy/10physical roots+matching object/42SIL PASS;577input hashes
+verify. Interpretation/full safety/cold still required; source fixed/no repairs.

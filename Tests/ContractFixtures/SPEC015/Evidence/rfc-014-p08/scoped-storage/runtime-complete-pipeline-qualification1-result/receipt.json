@@ -1,0 +1,19 @@
+{
+  "source_commit": "1db805a6",
+  "status": "qualification_prerequisites_passed",
+  "checks": 40,
+  "privacy_controls": 30,
+  "physical_roots": 10,
+  "decoded_modules": 6,
+  "input_hashes_verified": 577,
+  "source_mutations": 0,
+  "automatic_source_repairs": 0,
+  "archive_sha256": "6c4166101face0c39f1c4231bb7fd3d1e71a3229a632f836288cad4fd0b3594a",
+  "archive_bytes": 8908841,
+  "archive_members": 84,
+  "sil": {
+    "bytes": 61108362,
+    "sha256": "77bab1e09a61f6092c7fb8f63b8fe9668dba1c21af101f1e6982e1866cc0a17b"
+  },
+  "later_gates": "concrete42/privatecallee/16owner/Stateborrow/metadataTLScontextobserver interpretation; full safety/strictcold"
+}
