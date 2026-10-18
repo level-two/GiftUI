@@ -63,13 +63,13 @@
       "receipt_regex": "^P08_COUNTER_EVIDENCE (\\S+)\\s*$"
     }
   ],
-  "diagnostic_policy": "Byte-identical verified A7 successor parser; explicit opt-in only for macos-static / negative-A4 / SignalAnalyzerDomain and macos-static / negative-A7 / AnalyzerPresentation. Trusted actual bytes at predeclared resolved paths equal frozen scratch A4 or exact A7 generated snapshot. Other controls remain strict. See static-applicability.json.",
+  "diagnostic_policy": "Byte-identical verified corrected A8 successor parser; explicit opt-in only for macos-static / negative-A4 / SignalAnalyzerDomain, macos-static / negative-A7 / AnalyzerPresentation and macos-static / negative-A8 / AnalyzerPresentation. Trusted actual bytes at predeclared resolved paths equal frozen scratch A4 or exact A7/A8 generated snapshots. Other controls remain strict. See static-applicability.json.",
   "environment": {
     "PYTHONDONTWRITEBYTECODE": "1"
   },
   "execution_argv": [
     "python3",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-campaign4-preparation/execute-proposal.py",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-campaign5-preparation/execute-proposal.py",
     "--execute-newly-authorized-campaign",
     "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-freeze/postformat-freeze.json"
   ],
@@ -111,7 +111,7 @@
     "ruby",
     "scripts/lib/serialize-validation.rb",
     "python3",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-campaign4-preparation/execute-proposal.py",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-campaign5-preparation/execute-proposal.py",
     "--execute-newly-authorized-campaign",
     "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-freeze/postformat-freeze.json"
   ],
@@ -384,7 +384,7 @@
     ]
   },
   "source_candidates": 1,
-  "status": "CAMPAIGN4 PREPARATION ONLY; NO EXECUTION AUTHORITY",
+  "status": "CAMPAIGN5 PREPARATION ONLY; NO EXECUTION AUTHORITY",
   "target_readelf_argv": [
     "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
     "-h",

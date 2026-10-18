@@ -39,6 +39,10 @@
     "bytes": 18461,
     "sha256": "3cee9a943e1dc1a2e67c6319ac992a7f78c652e2e20772c50fa6c80792435553"
   },
+  "correction-provenance.json": {
+    "bytes": 2094,
+    "sha256": "bac379c5b790b992b1566406b2aa87aedd22f1112bd4d6b19d46c2937210276b"
+  },
   "diagnostic-static-validation.json": {
     "bytes": 4842,
     "sha256": "e3fbc99a572f00852c10cb998c6984eeb75773e711b80c449b09a4b9de51f8be"
@@ -101,7 +105,7 @@
   },
   "macro-stages.json": {
     "bytes": 11919,
-    "sha256": "c38ba49a68b2e06e21e388e6f04635399147289155b9839d4abc2342c708c8a1"
+    "sha256": "91c0ec72e157e27a45634cb3bb97657f422d98ff9b62ba1f7b4d85c210370c3f"
   },
   "preserved-inventory.json": {
     "bytes": 154361,
@@ -112,8 +116,8 @@
     "sha256": "a30be87f796dc64d0de20d2b02f77dca60bfd80242f17b2b27d45626f1c854ba"
   },
   "recipe.json": {
-    "bytes": 17818,
-    "sha256": "6c92e6c2d2f527e96d542ffcc30cf5aa4272154dd27322b34cc41d00b2768f61"
+    "bytes": 17883,
+    "sha256": "3ec815593c92742e4efa20a529d6486e32797c3e6e023fd591c44eae14609eba"
   },
   "scratch-sources.json": {
     "bytes": 29930,
