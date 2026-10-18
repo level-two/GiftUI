@@ -1,0 +1,158 @@
+{
+  "compiler_identities": [
+    {
+      "bytes": 230720,
+      "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    },
+    {
+      "bytes": 230720,
+      "path": ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    }
+  ],
+  "compiler_test_producer_formatter_campaign_invocations": 0,
+  "dependency_tool_paths_preserved": true,
+  "frozen_input_count": 541,
+  "frozen_input_mismatches": [],
+  "maintained_sources_unchanged": true,
+  "mechanical_relocation_files": [
+    "recipe.json",
+    "macro-stages.json",
+    "macro-outputs.json",
+    "macro-objects.txt"
+  ],
+  "original_packet_integrity": "PASS",
+  "original_packet_unchanged": true,
+  "original_static_receipts": "inherited; original bytes unchanged",
+  "output_roots_absent": [
+    ".build/contracts/p08-analyzer-abi-continuation-campaign2",
+    ".build/contracts/p08-analyzer-abi-continuation-campaign2/macos-dynamic",
+    ".build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static",
+    ".build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign2/nrf52840-embedded",
+    ".build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign2/raspberry-pi-armv6"
+  ],
+  "packet_integrity": "all sibling files except packet-hashes.json included; SHA-256 and byte sizes verified",
+  "parser_ast_sha256": "19c690d76f388f5d582d9b82b77f18b9697c9ef4a2a04860e6f6cf97a719dc35",
+  "parser_case_count": 22,
+  "parser_results": [
+    {
+      "accepted": true,
+      "id": "intended-single-named-error",
+      "pass": true
+    },
+    {
+      "accepted": true,
+      "id": "intended-generic-error-with-declared-note-and-excerpt",
+      "pass": true
+    },
+    {
+      "accepted": true,
+      "id": "intended-repeated-located-errors-and-gutter-repeats",
+      "pass": true
+    },
+    {
+      "accepted": true,
+      "id": "private-primary-with-associated-declaration-note",
+      "pass": true
+    },
+    {
+      "accepted": true,
+      "id": "outside-package-nominal-hidden",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "expected-plus-unrelated-primary-same-file",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "expected-plus-primary-in-wrong-file",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "wrong-primary-file-only",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "negative-signal-exit",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "shell-signal-exit",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "nonstandard-positive-exit",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "unexpected-acceptance-zero-exit",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "crash-marker-despite-normal-exit",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "fatal-marker-despite-normal-exit",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "unlocated-driver-error",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "unrelated-gutter-error-not-exact-repeat",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "note-at-undeclared-dependency",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "neighboring-source-line-cannot-supply-symbol",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "different-named-ABI-dependency",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "category-cannot-leak-from-note",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "orphan-note-cannot-cross-streams",
+      "pass": true
+    },
+    {
+      "accepted": false,
+      "id": "same-category-primary-missing-declared-symbol",
+      "pass": true
+    }
+  ],
+  "postformat_freeze": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-freeze/postformat-freeze.json",
+  "postformat_freeze_sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333",
+  "sdk": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+  "source_contract_control_diagnostic_logic_changes": 0,
+  "status": "PASS STATIC SUCCESSOR PREPARATION ONLY",
+  "wrapper_ast_identical": true
+}
