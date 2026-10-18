@@ -1,0 +1,18 @@
+{
+  "actual-host.sil": {
+    "bytes": 61809109,
+    "sha256": "f36857630a4e502343bda0d84d278bd94dfb0c59a67a68edf3d5d217316ee08f"
+  },
+  "logs/actual-host-sil.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "logs/actual-host-sil.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "result.json": {
+    "bytes": 104965,
+    "sha256": "e00e0f845c61acee0a91735adf72fb61c4c653b62edf1b5333d3e3bf053ee3cd"
+  }
+}

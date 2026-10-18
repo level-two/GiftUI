@@ -1,0 +1,19 @@
+{
+  "source_commit": "f8da7a28",
+  "status": "physical50_passed_sil_collected_unreviewed",
+  "physical": 50,
+  "unique_positive_bodies": 50,
+  "SILexit": 0,
+  "input_hashes_verified": 861,
+  "source_mutations": 0,
+  "compile_privacy_decoder_object_repeats": 0,
+  "automatic_source_repairs": 0,
+  "archive_members": 4,
+  "archive_sha256": "7422e8e6b9220ba436d6f50b3ad8d0a0832c38ad767304d43383dd0e21a1342d",
+  "archive_bytes": 5953007,
+  "sil": {
+    "bytes": 61809109,
+    "sha256": "f36857630a4e502343bda0d84d278bd94dfb0c59a67a68edf3d5d217316ee08f"
+  },
+  "later": "all4observableactualpaths/sharedcallbacks/ordinaryleaves/rawkeymetadataTLScontextobserver interpretation; fullsafety/strictcold"
+}

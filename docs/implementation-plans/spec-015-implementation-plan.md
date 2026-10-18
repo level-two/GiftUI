@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [callback continuation PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-selector-continuation1-result/README.md):
+all50unique/positive physical bodies and same42SIL capture exit0;861inputs verified.
+Sourcef8da7a28 unchanged; lower+25/privacy64/eightindexes/captures retained without
+repeats. Actual seed/binding/Model callback/cost interpretation then fullsafety/
+strictcold/P08 remain open. Candidate fixed/no source repair or budgetreset.
+
 [Exact attach/detach selector continuation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-selector-continuation1/README.md)
 is prepared/staticvalidated only: two exactmangled identities/currentrecords,48other
 targets unchanged,861input hashes/two output-cache path changes; reuse all sealed

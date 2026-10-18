@@ -37,3 +37,8 @@ signatures, decoded headers/blocks and raw module prefixes agree; only targets
 42/43 change and the unique/nonzero-body/full-record gates remain intact. Frozen
 861 inputs/230 artifacts verify. Execute the full50 gate before fresh42 SIL; no
 new source allowance or current50/actualcallback/full safety/cold acceptance.
+
+[Continuation result](observable-callback-selector-continuation1-result/README.md):
+50unique/bodypositive targets and same42SIL exit0;861inputs verified. Priorprivacy64
+retained (rawresult authoritative), no source/compile/privacy/decoder/object repeat.
+Concrete callbacks/cost interpretation and full safety/strictcold/P08 remain open.
