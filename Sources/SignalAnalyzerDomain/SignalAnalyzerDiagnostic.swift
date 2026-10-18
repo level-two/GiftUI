@@ -25,6 +25,7 @@ private struct SignalAnalyzerDiagnosticStorage: Equatable, Sendable {
     var word23: UInt32 = 0
 }
 
+@usableFromInline
 package struct SignalAnalyzerDiagnostic: Equatable, Sendable {
     package static let maximumUTF8ByteCount: UInt16 = 96
 

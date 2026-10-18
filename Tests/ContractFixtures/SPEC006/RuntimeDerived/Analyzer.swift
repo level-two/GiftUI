@@ -4,7 +4,9 @@ import SignalAnalyzerDomain
 // P02 declaration syntax from SA01/02/14: typed nested state/capture access.
 // Full application migration and capture ownership remain P03/P06/P09.
 package struct AnalyzerReadProbe: View {
+    @usableFromInline
     package let model: SignalAnalyzerViewModel
+    @usableFromInline
     package let index: Int
     package init(model: SignalAnalyzerViewModel, index: Int) { self.model = model; self.index = index }
     package var body: some View {

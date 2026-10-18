@@ -1,4 +1,6 @@
+@usableFromInline
 package struct SignalChannelID: Hashable, Sendable {
+    @usableFromInline
     package let rawValue: Int
 
     package init(rawValue: Int) {
@@ -15,7 +17,9 @@ package enum DigitalLevel: Equatable, Sendable {
     case high
 }
 
+@usableFromInline
 package struct SignalTransition: Equatable, Sendable {
+    @usableFromInline
     package let channelID: SignalChannelID
     package let timestamp: Duration
     package let level: DigitalLevel
