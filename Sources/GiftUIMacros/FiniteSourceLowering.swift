@@ -313,6 +313,38 @@ final class Lowerer: SyntaxRewriter {
         return super.visit(node)
     }
 
+    func qualifiesOrdinaryViewInitializer(_ node: InitializerDeclSyntax) -> Bool {
+        // Inspect the authored owner before lowering inserts generics. Traversal
+        // flags also cover nested helpers and cannot establish ABI eligibility.
+        guard let member = node.parent?.as(MemberBlockItemSyntax.self),
+            let members = member.parent?.as(MemberBlockItemListSyntax.self),
+            let block = members.parent?.as(MemberBlockSyntax.self),
+            let owner = block.parent?.as(StructDeclSyntax.self),
+            let item = owner.parent?.as(CodeBlockItemSyntax.self),
+            let items = item.parent?.as(CodeBlockItemListSyntax.self),
+            items.parent?.is(SourceFileSyntax.self) == true,
+            inventory.views.contains(owner.name.text),
+            owner.inheritanceClause?.inheritedTypes.contains(where: {
+                $0.type.trimmedDescription == "View"
+            }) == true,
+            owner.inheritanceClause?.inheritedTypes.contains(where: {
+                $0.type.trimmedDescription == "Canvas"
+            }) != true,
+            owner.genericParameterClause == nil, owner.genericWhereClause == nil,
+            !owner.modifiers.contains(where: {
+                ["private", "fileprivate", "open"].contains($0.name.text)
+            }),
+            node.body != nil, node.signature.parameterClause.parameters.isEmpty,
+            node.genericParameterClause == nil, node.genericWhereClause == nil,
+            node.optionalMark == nil, node.signature.effectSpecifiers == nil,
+            node.modifiers.allSatisfy({ ["internal", "package"].contains($0.name.text) }),
+            node.attributes.allSatisfy({
+                $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription == "available"
+            })
+        else { return false }
+        return true
+    }
+
     override func visit(_ node: InitializerDeclSyntax) -> DeclSyntax {
         var result = super.visit(node).cast(InitializerDeclSyntax.self)
         if insideCanvas {
@@ -321,6 +353,13 @@ final class Lowerer: SyntaxRewriter {
                     AttributeSyntax(
                         leadingTrivia: .newline,
                         attributeName: TypeSyntax(stringLiteral: "inlinable"),
+                        trailingTrivia: .newline)))
+        } else if qualifiesOrdinaryViewInitializer(node) {
+            result.attributes.append(
+                .attribute(
+                    AttributeSyntax(
+                        leadingTrivia: .newline,
+                        attributeName: TypeSyntax(stringLiteral: "usableFromInline"),
                         trailingTrivia: .newline)))
         }
         return DeclSyntax(result)

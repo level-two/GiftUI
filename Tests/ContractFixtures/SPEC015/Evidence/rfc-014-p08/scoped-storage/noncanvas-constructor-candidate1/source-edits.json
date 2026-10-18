@@ -1,0 +1,57 @@
+{
+  "base_head": "8136c5276a515dc7fa8da876efb16818d97687a8",
+  "review": "8136c527/c57f59a9",
+  "candidate": "ONE1/1 inprogress",
+  "automatic_source_repairs": 0,
+  "before_sha256": {
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift": "48265ebed5ea5fb964d51a2557cf27f2eeae6388097b29a09aebdeac5e8e88fb",
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": "e0df6aebf643ad6b4b77449328e0027c3b45758d000023bea198963750ee246a"
+  },
+  "status": "source candidate1/1 frozen; zeroautomaticSOURCErepairs",
+  "after_sha256": {
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift": "1873e5f07d48ea3caeda3fa906e3b0936ca33d975db3813207c2603ce8a77a07",
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": "4017f824182242e7b412cf5f0c98dece5758314557607845e51549b388da81d4"
+  },
+  "audit": {
+    "producer_outside_two_selectors_byteexact": true,
+    "Canvas_branch_original_byteexact": true,
+    "tests_only_additions_inside_existing_family": true,
+    "all17_method_names_unchanged": true,
+    "constructor/default/access/body/ownership/lifetime_edits": 0,
+    "formatter": "swift format format --configuration .swift-format --in-place <exact two maintained files>",
+    "not_run": [
+      "compiler",
+      "tests",
+      "decoder",
+      "runtime"
+    ]
+  },
+  "protected_external": [
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+      "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581"
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+      "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3"
+    },
+    {
+      "path": "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+      "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243"
+    },
+    {
+      "path": "scripts/nrf52840/build.sh",
+      "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72"
+    },
+    {
+      "path": "scripts/raspberry-pi/build.sh",
+      "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+    }
+  ],
+  "pycache": [
+    {
+      "path": "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
+      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+    }
+  ]
+}

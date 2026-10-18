@@ -1,0 +1,13 @@
+# Finite non-Canvas constructor candidate — 2026-10-18
+
+Explicit user authorization follows READY8136c527 and exact mapc57f59a9.
+ONE candidate1/1 IN PROGRESS recorded before maintained edits; zero automatic
+SOURCE repairs. All older fixed/exhausted budgets remain unchanged. Exact three
+selectors/two maintained files: original direct top-level finite non-Canvas View
+owner/ordinary-zeroarg predicate, ABI-only initializer emission, existing17-method
+test-family matrix. Private State/_model/access/body/default/ownership/lifetime
+and excluded forms/Canvas branch remain exact; no new constructor or syntax support.
+Combined freshmacro17→freshlower25→multiple/nested fourvariants→privacy70→eleven
+indexes/76unique bodies/object→conditional same42SIL. Preparation/static validation
+only; compiler/tests/decoder/runtime execute separately. No remainingfrontier edit,
+contract relaxation, automatic source retry, or P08 acceptance follows.

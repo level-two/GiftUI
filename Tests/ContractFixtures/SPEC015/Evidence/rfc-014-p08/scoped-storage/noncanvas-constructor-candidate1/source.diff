@@ -1,0 +1,191 @@
+diff --git a/Sources/GiftUIMacros/FiniteSourceLowering.swift b/Sources/GiftUIMacros/FiniteSourceLowering.swift
+index 73ed765a..5edecd22 100644
+--- a/Sources/GiftUIMacros/FiniteSourceLowering.swift
++++ b/Sources/GiftUIMacros/FiniteSourceLowering.swift
+@@ -313,6 +313,38 @@ final class Lowerer: SyntaxRewriter {
+         return super.visit(node)
+     }
+ 
++    func qualifiesOrdinaryViewInitializer(_ node: InitializerDeclSyntax) -> Bool {
++        // Inspect the authored owner before lowering inserts generics. Traversal
++        // flags also cover nested helpers and cannot establish ABI eligibility.
++        guard let member = node.parent?.as(MemberBlockItemSyntax.self),
++            let members = member.parent?.as(MemberBlockItemListSyntax.self),
++            let block = members.parent?.as(MemberBlockSyntax.self),
++            let owner = block.parent?.as(StructDeclSyntax.self),
++            let item = owner.parent?.as(CodeBlockItemSyntax.self),
++            let items = item.parent?.as(CodeBlockItemListSyntax.self),
++            items.parent?.is(SourceFileSyntax.self) == true,
++            inventory.views.contains(owner.name.text),
++            owner.inheritanceClause?.inheritedTypes.contains(where: {
++                $0.type.trimmedDescription == "View"
++            }) == true,
++            owner.inheritanceClause?.inheritedTypes.contains(where: {
++                $0.type.trimmedDescription == "Canvas"
++            }) != true,
++            owner.genericParameterClause == nil, owner.genericWhereClause == nil,
++            !owner.modifiers.contains(where: {
++                ["private", "fileprivate", "open"].contains($0.name.text)
++            }),
++            node.body != nil, node.signature.parameterClause.parameters.isEmpty,
++            node.genericParameterClause == nil, node.genericWhereClause == nil,
++            node.optionalMark == nil, node.signature.effectSpecifiers == nil,
++            node.modifiers.allSatisfy({ ["internal", "package"].contains($0.name.text) }),
++            node.attributes.allSatisfy({
++                $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription == "available"
++            })
++        else { return false }
++        return true
++    }
++
+     override func visit(_ node: InitializerDeclSyntax) -> DeclSyntax {
+         var result = super.visit(node).cast(InitializerDeclSyntax.self)
+         if insideCanvas {
+@@ -322,6 +354,13 @@ final class Lowerer: SyntaxRewriter {
+                         leadingTrivia: .newline,
+                         attributeName: TypeSyntax(stringLiteral: "inlinable"),
+                         trailingTrivia: .newline)))
++        } else if qualifiesOrdinaryViewInitializer(node) {
++            result.attributes.append(
++                .attribute(
++                    AttributeSyntax(
++                        leadingTrivia: .newline,
++                        attributeName: TypeSyntax(stringLiteral: "usableFromInline"),
++                        trailingTrivia: .newline)))
+         }
+         return DeclSyntax(result)
+     }
+diff --git a/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift b/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift
+index 746791d1..ebddb2f1 100644
+--- a/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift
++++ b/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift
+@@ -264,6 +264,77 @@ final class ObservableStateHostMacroTests: XCTestCase {
+         let configuration = try JSONDecoder().decode(
+             Configuration.self,
+             from: Data(contentsOf: fixture.appendingPathComponent("Counter.schema.json")))
++        func initializers(in node: Syntax) -> [InitializerDeclSyntax] {
++            if let initializer = node.as(InitializerDeclSyntax.self) { return [initializer] }
++            return node.children(viewMode: .sourceAccurate).flatMap { initializers(in: $0) }
++        }
++        func tokens(_ node: some SyntaxProtocol) -> [String] {
++            node.tokens(viewMode: .sourceAccurate).map(\.text)
++        }
++        // These isolate annotation eligibility, not semantic acceptance of new
++        // initializer syntax. Existing lowering diagnostics remain authoritative.
++        let constructorCases: [(String, [Bool])] = [
++            ("package struct Root: View { package init() {} }", [true]),
++            ("internal struct Root: View { internal init() {} }", [true]),
++            ("struct Root: View { init() {} }", [true]),
++            ("public struct Root: View { internal init() {} }", [true]),
++            ("public struct Root: View { package init() {} }", [true]),
++            ("public struct Root: View { public init() {} }", [false]),
++            ("private struct Root: View { init() {} }", [false]),
++            ("fileprivate struct Root: View { init() {} }", [false]),
++            ("struct Root: View { private init() {} }", [false]),
++            ("struct Root: View { fileprivate init() {} }", [false]),
++            ("struct Root: View { init(_ value: Int) {}; init() {} }", [false, true]),
++            ("struct Root: View { init(_ value: Int? = nil) {} }", [false]),
++            ("struct Root: View { init?() {} }", [false]),
++            ("struct Root: View { init!() {} }", [false]),
++            ("struct Root: View { init() throws {} }", [false]),
++            ("struct Root: View { init() throws(Failure) {} }", [false]),
++            ("struct Root: View { init() async {} }", [false]),
++            ("struct Root: View { init<T>() where T: Equatable {} }", [false]),
++            ("struct Root<T>: View { init() {} }", [false]),
++            ("struct Root: View { @usableFromInline init() {} }", [false]),
++            ("struct Root: View { @inlinable init() {} }", [false]),
++            ("struct Root: View { @available(*, deprecated) init() {} }", [true]),
++            ("struct Root: View { @inline(__always) init() {} }", [false]),
++            ("struct Root: View { nonisolated init() {} }", [false]),
++            ("struct Root: View { struct Helper { init() {} } }", [false]),
++            ("struct Outer { struct Root: View { init() {} } }", [false]),
++            ("func local() { struct Root: View { init() {} } }", [false]),
++            ("struct Root: View {}; extension Root { init() {} }", [false]),
++            ("#if DEBUG\nstruct Root: View { init() {} }\n#endif", [false]),
++            (
++                "struct Outer: View { struct Leaf { init() {} } }; "
++                    + "struct Leaf: View { init() {} }", [false, true]
++            ),
++        ]
++        for (input, expected) in constructorCases {
++            let syntax = Parser.parse(source: input)
++            XCTAssertFalse(syntax.hasError, input)
++            let inventory = Inventory(viewMode: .sourceAccurate)
++            inventory.walk(syntax)
++            let lowerer = Lowerer(
++                configuration: configuration, inventory: inventory, source: syntax,
++                file: "constructor-eligibility.swift")
++            let before = initializers(in: Syntax(syntax))
++            XCTAssertEqual(
++                before.map { lowerer.qualifiesOrdinaryViewInitializer($0) }, expected, input)
++            let after = initializers(in: lowerer.rewrite(syntax))
++            XCTAssertEqual(after.count, before.count, input)
++            for (index, initializer) in after.enumerated() {
++                let names = initializer.attributes.compactMap {
++                    $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription
++                }
++                let originalNames = before[index].attributes.compactMap {
++                    $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription
++                }
++                XCTAssertEqual(
++                    names, originalNames + (expected[index] ? ["usableFromInline"] : []), input)
++                var restored = initializer
++                restored.attributes = before[index].attributes
++                XCTAssertEqual(tokens(restored), tokens(before[index]), input)
++            }
++        }
+         let tableInventory = Inventory(viewMode: .sourceAccurate)
+         XCTAssertThrowsError(
+             try canvasWitnessTable(
+@@ -390,9 +461,51 @@ final class ObservableStateHostMacroTests: XCTestCase {
+             try expanded.write(
+                 to: output.appendingPathComponent(name + "-expanded.swift"), atomically: true,
+                 encoding: .utf8)
++            let canvas = try XCTUnwrap(
++                parsed.statements.compactMap { $0.item.as(StructDeclSyntax.self) }
++                    .first { $0.name.text == "CounterCanvas" })
++            let canvasConstructor = try XCTUnwrap(
++                canvas.memberBlock.members.compactMap { $0.decl.as(InitializerDeclSyntax.self) }
++                    .first)
++            XCTAssertEqual(
++                canvasConstructor.attributes.compactMap {
++                    $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription
++                }, ["inlinable"], name)
+             let nominals = parsed.statements.compactMap { $0.item.as(StructDeclSyntax.self) }
+             for (owner, states) in expected {
+                 let nominal = try XCTUnwrap(nominals.first { $0.name.text == owner })
++                let constructors = nominal.memberBlock.members.compactMap {
++                    $0.decl.as(InitializerDeclSyntax.self)
++                }
++                XCTAssertEqual(constructors.count, 1, owner)
++                for constructor in constructors {
++                    XCTAssertEqual(
++                        constructor.attributes.compactMap {
++                            $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription
++                        }, ["usableFromInline"], owner)
++                    var ordinary = constructor
++                    ordinary.attributes = []
++                    XCTAssertEqual(
++                        tokens(ordinary), tokens(DeclSyntax(stringLiteral: "package init() {}")),
++                        owner)
++                }
++                let privateState = nominal.memberBlock.members.compactMap {
++                    $0.decl.as(VariableDeclSyntax.self)
++                }.filter { variable in
++                    variable.attributes.contains {
++                        $0.as(AttributeSyntax.self)?.attributeName.as(IdentifierTypeSyntax.self)?
++                            .name.text == "State"
++                    }
++                }
++                XCTAssertEqual(privateState.count, states.count, owner)
++                XCTAssertTrue(
++                    privateState.allSatisfy {
++                        $0.modifiers.map(\.name.text) == ["private"]
++                            && !$0.attributes.contains {
++                                $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription
++                                    == "usableFromInline"
++                            }
++                    }, owner)
+                 let projections = nominal.memberBlock.members.compactMap {
+                     $0.decl.as(VariableDeclSyntax.self)
+                 }
