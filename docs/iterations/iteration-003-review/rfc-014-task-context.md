@@ -1,11 +1,12 @@
 # RFC-014 task context guide
 
 Current P08 work: [one bounded maintained P02 prerequisite correction](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-activity.md)
-has been assigned under Eugene's 2026-10-18 P08 execution instruction after
-independent Strong review and Astra Medium scope classification. One candidate,
-zero automatic source repairs; all earlier limits remain closed. The following
-first-stage STOP is historical for this new activity and its failed evidence is
-preserved. P08/R07/T8.1 remain open.
+stopped at initial source inspection. The [withdrawn candidate receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate1/README.md)
+preserves the exact partial diff and test-construction defect. Candidate 1/1
+is consumed with zero automatic source repairs; the four source/test files were
+restored, and no compiler or test ran. All earlier limits remain closed. The
+following older STOP is preserved as historical evidence. P08/R07/T8.1 remain
+open; no continuation or new allowance follows from this withdrawal.
 
 Current final boundary — STOP, initial1/1 and corrections2/2 consumed. The linked
 final receipt records exact actual-output regression1/0/0 and fresh provider PASS;

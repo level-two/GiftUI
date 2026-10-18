@@ -1,0 +1,189 @@
+diff --git a/Sources/GiftUI/DeclarativeView.swift b/Sources/GiftUI/DeclarativeView.swift
+index 5499742c..3c35d6bf 100644
+--- a/Sources/GiftUI/DeclarativeView.swift
++++ b/Sources/GiftUI/DeclarativeView.swift
+@@ -255,6 +255,7 @@ public struct EmptyView<D: _GiftUIReadDomain>: View {
+     public typealias Domain = D
+     public typealias Body = Never
+ 
++    @usableFromInline
+     package init() {}
+ 
+     public func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+diff --git a/Sources/GiftUIMacros/ObservableStateHostMacro.swift b/Sources/GiftUIMacros/ObservableStateHostMacro.swift
+index 3b630ae5..7f52002d 100644
+--- a/Sources/GiftUIMacros/ObservableStateHostMacro.swift
++++ b/Sources/GiftUIMacros/ObservableStateHostMacro.swift
+@@ -322,8 +322,9 @@ public struct ObservableStateHostMacro: MemberMacro, ExtensionMacro {
+         in declaration: some DeclGroupSyntax, context: some MacroExpansionContext
+     ) -> String {
+         // Visibility alone cannot serialize an ordinary private backing field.
+-        // Only the complete checked finite shape has ABI-usable dependencies.
+-        guard !declarations.isEmpty, projectionNames == Set(declarations),
++        // The complete finite shape permits zero States; nonempty declarations
++        // still require every checked projection before serialization.
++        guard projectionNames == Set(declarations),
+             let host = declaration.as(StructDeclSyntax.self), !host.hasError,
+             isABIUsable(modifiers: host.modifiers, attributes: host.attributes),
+             host.genericWhereClause == nil,
+diff --git a/Tests/ContractFixtures/SPEC006/RuntimeDerived/Counter.swift b/Tests/ContractFixtures/SPEC006/RuntimeDerived/Counter.swift
+index 827eec9c..27bad6bb 100644
+--- a/Tests/ContractFixtures/SPEC006/RuntimeDerived/Counter.swift
++++ b/Tests/ContractFixtures/SPEC006/RuntimeDerived/Counter.swift
+@@ -20,8 +20,10 @@ package func counterText(_ value: UInt8) -> BoundedText {
+ }
+ 
+ package struct CounterRoot: View {
++    @usableFromInline
+     package let model: CounterModel
+ 
++    @usableFromInline
+     package init(model: CounterModel) { self.model = model }
+ 
+     package var body: some View {
+@@ -39,18 +41,23 @@ package struct CounterRoot: View {
+ }
+ 
+ package struct CounterBadge: View {
++    @usableFromInline
+     package let value: UInt8
++
++    @usableFromInline
++    internal init(value: UInt8) { self.value = value }
++
+     package var body: some View {
+         Text(counterText(value)).padding(1).foregroundStyle(.white)
+     }
+ }
+ 
+-package struct ArityZero: View { package var body: some View {} }
+-package struct ArityOne: View { package var body: some View { Text("1") } }
+-package struct ArityTwo: View { package var body: some View { Text("1"); Text("2") } }
+-package struct ArityThree: View { package var body: some View { Text("1"); Text("2"); Text("3") } }
+-package struct ArityFour: View { package var body: some View { Text("1"); Text("2"); Text("3"); Text("4") } }
+-package struct ArityFive: View { package var body: some View { Text("1"); Text("2"); Text("3"); Text("4"); Text("5") } }
++package struct ArityZero: View { internal init() {}; package var body: some View {} }
++package struct ArityOne: View { internal init() {}; package var body: some View { Text("1") } }
++package struct ArityTwo: View { internal init() {}; package var body: some View { Text("1"); Text("2") } }
++package struct ArityThree: View { internal init() {}; package var body: some View { Text("1"); Text("2"); Text("3") } }
++package struct ArityFour: View { internal init() {}; package var body: some View { Text("1"); Text("2"); Text("3"); Text("4") } }
++package struct ArityFive: View { internal init() {}; package var body: some View { Text("1"); Text("2"); Text("3"); Text("4"); Text("5") } }
+ package struct ArityProbe: View {
+     package init() {}
+     package var body: some View {
+@@ -62,11 +69,12 @@ package struct ArityProbe: View {
+ }
+ 
+ @ViewBuilder
++@usableFromInline
+ package func freeLabels() -> some View { Text("a"); Text("b") }
+ package struct HelperProbe: View {
+     package init() {}
+     package var caption: some View { Text("caption") }
+-    @ViewBuilder package func makeLabel() -> some View { Text("method") }
++    @ViewBuilder @usableFromInline package func makeLabel() -> some View { Text("method") }
+     package var body: some View { caption; makeLabel(); freeLabels() }
+ }
+ 
+@@ -77,6 +85,7 @@ package struct StateHostWitnessProbe: View {
+ }
+ 
+ package struct LazyProbe: View {
++    @usableFromInline
+     package let model: CounterModel
+     package init(model: CounterModel) { self.model = model }
+     package var body: some View {
+@@ -89,6 +98,7 @@ package struct LazyProbe: View {
+     }
+ }
+ package struct SwitchProbe: View {
++    @usableFromInline
+     package let model: CounterModel
+     package init(model: CounterModel) { self.model = model }
+     package var body: some View {
+@@ -100,13 +110,17 @@ package struct SwitchProbe: View {
+     }
+ }
+ package struct ArgumentOrderProbe: View {
++    @usableFromInline
+     package let first: CounterModel
++    @usableFromInline
+     package let second: CounterModel
+     package init(first: CounterModel, second: CounterModel) { self.first = first; self.second = second }
+     package var body: some View { Text(counterText(first.value + second.value)) }
+ }
+ package struct SiblingFailureProbe: View {
++    @usableFromInline
+     package let first: CounterModel
++    @usableFromInline
+     package let second: CounterModel
+     package init(first: CounterModel, second: CounterModel) { self.first = first; self.second = second }
+     package var body: some View { CounterRoot(model: first); CounterRoot(model: second) }
+diff --git a/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift b/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift
+index ebddb2f1..c3fa5def 100644
+--- a/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift
++++ b/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift
+@@ -20,6 +20,33 @@ final class ObservableStateHostMacroTests: XCTestCase {
+         try assertFixture("zero")
+     }
+ 
++    func testCompleteFiniteZeroStateShapeHasNoStateBackingVisits() {
++        let source = serializedSource(names: [])
++        assertWitnessSerialization(source, expected: true)
++        let (expanded, diagnostics) = expandChecked(source)
++        XCTAssertTrue(diagnostics.isEmpty)
++        XCTAssertFalse(expanded.contains("visitor.visit("))
++        XCTAssertFalse(expanded.contains("_giftUIStateStorage_"))
++        XCTAssertFalse(expanded.contains("_giftUIStateKey_"))
++        XCTAssertFalse(expanded.contains("_model"))
++    }
++
++    func testOrdinaryZeroStateWitnessesAreNotSerializedAtAnyHostAccess() {
++        for access in ["private", "fileprivate", "", "package", "public"] {
++            assertWitnessSerialization(
++                "@ObservableStateHost \(access) struct Root: View {}", expected: false)
++            assertWitnessSerialization(
++                """
++                @ObservableStateHost
++                \(access) struct Root<D: ReadDomain>: View {
++                    typealias Domain = D
++                    func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
++                        throws(_GiftUIAccessFailure) -> some View<D> { EmptyView<D>() }
++                }
++                """, expected: false)
++        }
++    }
++
+     func testDirectStatesExpandOnceInLexicalOrder() throws {
+         try assertFixture("several")
+     }
+@@ -109,11 +136,12 @@ final class ObservableStateHostMacroTests: XCTestCase {
+     }
+ 
+     func testCompleteFiniteShapeSelectsSerializedWitnesses() {
+-        let source = serializedSource()
+-        assertWitnessSerialization(source, expected: true)
+-        assertWitnessSerialization(
+-            "@usableFromInline package struct Outer { \(source) }", expected: true)
+-        assertWitnessSerialization("public struct Outer { \(source) }", expected: true)
++        for source in [serializedSource(), serializedSource(names: [])] {
++            assertWitnessSerialization(source, expected: true)
++            assertWitnessSerialization(
++                "@usableFromInline package struct Outer { \(source) }", expected: true)
++            assertWitnessSerialization("public struct Outer { \(source) }", expected: true)
++        }
+     }
+ 
+     func testIncompleteABIDependenciesDoNotSelectSerialization() {
+@@ -155,6 +183,11 @@ final class ObservableStateHostMacroTests: XCTestCase {
+         for variant in variants {
+             XCTAssertNotEqual(variant, source)
+             assertWitnessSerialization(variant, expected: false)
++            let zeroStateVariant = variant.replacingOccurrences(
++                of: checkedSource(names: ["model"]), with: checkedSource(names: []))
++            let (expanded, _) = expandChecked(variant)
++            XCTAssertTrue(expanded.contains("_giftUIStateStorage_model"))
++            assertWitnessSerialization(zeroStateVariant, expected: false)
+         }
+     }
+ 

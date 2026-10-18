@@ -5,7 +5,7 @@ title: Implementation Design — P08 Checked State Serialization
 status: draft
 authors: [codex]
 created: 2026-10-17
-updated: 2026-10-17
+updated: 2026-10-18
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -15,6 +15,25 @@ superseded_by: null
 ---
 
 # P08 checked State serialization
+
+## Maintained P02 prerequisite candidate — STOP, 2026-10-18
+
+The separately authorized [maintained P02 prerequisite activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-activity.md)
+consumed its one candidate during initial source construction. Static inspection
+found an invalid zero-State test derivation and an incomplete test-helper update.
+The [STOP receipt and exact partial diff](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate1/README.md)
+freeze that source; all four source/test files were restored to their pre-candidate
+HEAD state. This withdrawal is not a repair or a second candidate. No formatter,
+compiler, tests, fresh validation recipe, or maintained producer ran.
+
+Candidate 1/1 is consumed, automatic source repairs remain zero, and the proposed
+zero-State eligibility amendment is unaccepted. The current nonempty-State guard
+described below remains in the restored source. The reviewed proposal would permit
+zero States only after every existing finite shape, ABI, evaluation, enclosure,
+and nonempty projection check; this records proposed intent, not a selected
+implementation. Historical E/F and checked-State allowances remain closed.
+Complete current-callee interpretation, safety, strict cold, resources, and
+P08/R07/T8.1 remain open; no continuation or new allowance follows from withdrawal.
 
 ## Annotation eligibility amendment — 2026-10-17
 
