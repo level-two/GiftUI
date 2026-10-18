@@ -223,7 +223,7 @@ struct RecordSink<Codec: SemanticRecordPayloadCodec>: SemanticExpansionSink {
         actionCount += 1
         return true
     }
-    @usableFromInline
+    @inlinable
     mutating func publishExpansion(_ summary: SemanticExpansionSummary) -> Bool {
         guard bank.metadata.pointee.phase == .expanding, bank.metadata.pointee.failure == nil,
             bank.metadata.pointee.activePath == .max, summary.bodyEvaluationCount == bodyCount,

@@ -34,9 +34,13 @@ package struct SemanticExpansionLimits: Equatable, Sendable {
 
 @usableFromInline
 package struct SemanticExpansionSummary: Equatable, Sendable {
+    @usableFromInline
     package let semanticNodeCount: UInt16
+    @usableFromInline
     package let bodyEvaluationCount: UInt16
+    @usableFromInline
     package let modifierApplicationCount: UInt16
+    @usableFromInline
     package let actionOccurrenceCount: UInt16
     package let maximumObservedDepth: UInt16
 
@@ -988,7 +992,7 @@ where
     var bindingFailure: StateBinding.Failure?
     @usableFromInline
     var accessFailure: _GiftUIAccessFailure?
-    @usableFromInline
+    @inlinable
     var stopped: Bool { failure != nil || bindingFailure != nil || accessFailure != nil }
     @usableFromInline
     var currentIdentity: Workspace.Identity?

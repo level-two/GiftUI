@@ -1,0 +1,63 @@
+{
+  "authorization": "User explicitly approved grouped C implementation+focusedvalidation after READY80564f13/map80b83eaa; renewed ONE1/1 zeroautomaticSOURCErepairs",
+  "base_head": "80564f13f47c4cbf2b6c92cc20e2fedaa5eb5c62",
+  "before_sha256": {
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "fc787355d2ef5fecbe59e48db5fd54f036e93a012705cbdcd0b13e7e012d381f",
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": "120526cb46950bae785a004a8c815c9c777dc992e702fe7afae239257e1a913e",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": "ea08e3afb62ddd629e03d7f4b128b3398e16e6d6a6e4ae256903c0b72c806557",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "dfdb603a7a0807a4ed5e7d1bf9793326db7998ec3f8c5f59a703e585a5204c02"
+  },
+  "candidate": "1/1 inprogress before edit",
+  "automatic_source_repairs": 0,
+  "historical_budgets": "all prior fixed/exhausted unchanged",
+  "map": "semantic-c-grouped-inventory/correction-map.json",
+  "protected_external": [
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+      "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581"
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+      "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3"
+    },
+    {
+      "path": "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+      "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243"
+    },
+    {
+      "path": "scripts/nrf52840/build.sh",
+      "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72"
+    },
+    {
+      "path": "scripts/raspberry-pi/build.sh",
+      "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+    }
+  ],
+  "pycache": [
+    {
+      "path": "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
+      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+    }
+  ],
+  "status": "source candidate1/1 frozen; zeroautomaticSOURCErepairs",
+  "after_sha256": {
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "c4a737e72288794967ca9892a2e515619c48d0ccecd86ad1a579da8f9ad75d60",
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": "e610496954dce3023b833fc07c785498025bf0e96372ab9430d8f7b5fc12c4a1",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": "4ffc05499e80646af0fb41bbe52f826b232a3bc8f3cb8654295a481819d9717c",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "4b4b80e91880466ab3daecff7e1a3db2c1e966af4b1a76fd3fc1f334ef3c0feb"
+  },
+  "audit": {
+    "exact36sites4files": true,
+    "only_inlinable_usable_markers_and_one_private_to_internal": true,
+    "nonannotation_body_access_defaults_ownership_lifetime_projection_byteexact": true,
+    "borrowed_constructor_parameters_assignments_and_copyother_lifetime_exact": true,
+    "no_new_constructor_or_defaults": true,
+    "targetformatter": "swift format format --configuration .swift-format --in-place <exact four files>",
+    "not_run": [
+      "compiler",
+      "tests",
+      "decoder",
+      "runtime"
+    ]
+  }
+}

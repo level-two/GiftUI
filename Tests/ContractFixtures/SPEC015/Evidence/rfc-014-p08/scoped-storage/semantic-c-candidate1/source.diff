@@ -1,0 +1,210 @@
+diff --git a/Sources/GiftUISemanticCore/GiftUISemanticCore.swift b/Sources/GiftUISemanticCore/GiftUISemanticCore.swift
+index eaec536b..7c7113d7 100644
+--- a/Sources/GiftUISemanticCore/GiftUISemanticCore.swift
++++ b/Sources/GiftUISemanticCore/GiftUISemanticCore.swift
+@@ -34,9 +34,13 @@ package struct SemanticExpansionLimits: Equatable, Sendable {
+ 
+ @usableFromInline
+ package struct SemanticExpansionSummary: Equatable, Sendable {
++    @usableFromInline
+     package let semanticNodeCount: UInt16
++    @usableFromInline
+     package let bodyEvaluationCount: UInt16
++    @usableFromInline
+     package let modifierApplicationCount: UInt16
++    @usableFromInline
+     package let actionOccurrenceCount: UInt16
+     package let maximumObservedDepth: UInt16
+ 
+@@ -988,7 +992,7 @@ where
+     var bindingFailure: StateBinding.Failure?
+     @usableFromInline
+     var accessFailure: _GiftUIAccessFailure?
+-    @usableFromInline
++    @inlinable
+     var stopped: Bool { failure != nil || bindingFailure != nil || accessFailure != nil }
+     @usableFromInline
+     var currentIdentity: Workspace.Identity?
+diff --git a/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift b/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift
+index 8197c638..bbc6f842 100644
+--- a/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift
++++ b/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift
+@@ -223,7 +223,7 @@ struct RecordSink<Codec: SemanticRecordPayloadCodec>: SemanticExpansionSink {
+         actionCount += 1
+         return true
+     }
+-    @usableFromInline
++    @inlinable
+     mutating func publishExpansion(_ summary: SemanticExpansionSummary) -> Bool {
+         guard bank.metadata.pointee.phase == .expanding, bank.metadata.pointee.failure == nil,
+             bank.metadata.pointee.activePath == .max, summary.bodyEvaluationCount == bodyCount,
+diff --git a/Sources/GiftUISemanticCore/SemanticRecordStore.swift b/Sources/GiftUISemanticCore/SemanticRecordStore.swift
+index 14dabd23..a1319040 100644
+--- a/Sources/GiftUISemanticCore/SemanticRecordStore.swift
++++ b/Sources/GiftUISemanticCore/SemanticRecordStore.swift
+@@ -90,12 +90,14 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
+         self.owner = owner
+     }
+     @_lifetime(copy self)
++    @inlinable
+     package borrowing func borrowedStore() -> SemanticRecordStore<Payload> {
+         SemanticRecordStore(borrowing: self)
+     }
+ 
+     @_lifetime(copy other)
+-    private init(borrowing other: borrowing SemanticRecordStore<Payload>) {
++    @inlinable
++    internal init(borrowing other: borrowing SemanticRecordStore<Payload>) {
+         a = other.a
+         b = other.b
+         limits = other.limits
+@@ -112,7 +114,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
+         if b.metadata.pointee.phase == .candidate { return 1 }
+         return nil
+     }
+-    @usableFromInline
++    @inlinable
+     var published: UInt8? {
+         if a.metadata.pointee.phase == .published { return 0 }
+         if b.metadata.pointee.phase == .published { return 1 }
+@@ -171,6 +173,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
+     }
+     /// The caller has prepared all other candidate products. This is the
+     /// semantic-bank swap, not accepted-offer action routing.
++    @inlinable
+     package borrowing func publishCandidate() throws(SemanticExpansionError) {
+         guard let candidate else { throw .invariantViolation }
+         let next = bank(candidate)
+@@ -191,7 +194,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
+         guard let candidate, !hasPendingCanvas(bank(candidate)) else { throw .invariantViolation }
+         return try withView(candidate, body)
+     }
+-    @usableFromInline
++    @inlinable
+     borrowing func hasPendingCanvas(_ bank: SemanticRecordBankBuffers<Payload>) -> Bool {
+         for index in 0 ..< Int(bank.metadata.pointee.records) {
+             if bank.records[index].kind == .pendingCanvas { return true }
+@@ -253,7 +256,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
+     }
+ 
+     // Restricted to the sole Semantic Core traversal adapter in this module.
+-    @usableFromInline
++    @inlinable
+     borrowing func expansionBank(_ number: UInt8) -> SemanticRecordBankBuffers<Payload>? {
+         guard number < 2 else { return nil }
+         let selected = bank(number)
+diff --git a/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift b/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift
+index 3e7e4638..7e371b7c 100644
+--- a/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift
++++ b/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift
+@@ -13,6 +13,7 @@ package struct SemanticPathComponent: Equatable, Sendable {
+     package enum Kind: UInt8, Sendable {
+         case root, customBody, fixedChild, conditionalBranch, optionalPresence, declarationRole
+     }
++    @usableFromInline
+     package let kind: Kind
+     package let ordinal: UInt8
+     package let role: UInt16
+@@ -25,6 +26,7 @@ package struct SemanticPathComponent: Equatable, Sendable {
+         self.role = role
+         self.modifier = modifier
+     }
++    @usableFromInline
+     package var isValid: Bool {
+         switch kind {
+         case .fixedChild: ordinal < 5 && role == 0 && modifier == 0
+@@ -78,7 +80,9 @@ package struct SemanticRecordLimits: Equatable, Sendable {
+     package let records: UInt16
+     @usableFromInline
+     package let paths: UInt16
++    @usableFromInline
+     package let depth: UInt16
++    @usableFromInline
+     package let fanout: UInt16
+     @usableFromInline
+     package let payloads: UInt16
+@@ -106,17 +110,26 @@ package struct SemanticRecordLimits: Equatable, Sendable {
+ /// UInt16.max is the absent-link sentinel and is never an initialized index.
+ @usableFromInline
+ package struct SemanticPathEntry: Sendable {
++    @usableFromInline
+     package var component = SemanticPathComponent(kind: .root)
++    @usableFromInline
+     package var parent: UInt16 = .max
++    @usableFromInline
+     package var firstChild: UInt16 = .max
++    @usableFromInline
+     package var lastChild: UInt16 = .max
++    @usableFromInline
+     package var nextSibling: UInt16 = .max
++    @usableFromInline
+     package var childCount: UInt16 = 0
++    @usableFromInline
+     package var depth: UInt16 = 0
+     @usableFromInline
+     package var nearestRecord: UInt16 = .max
+     /// Reconciliation scratch, valid only for the compared published revision.
++    @usableFromInline
+     package var matchedPath: UInt16 = .max
++    @usableFromInline
+     package init() {}
+ }
+ 
+@@ -126,9 +139,13 @@ package struct SemanticRuntimeRecord: Sendable {
+     package enum Kind: UInt8, Sendable {
+         case structural, primitive, action, modifier, pendingCanvas
+     }
++    @usableFromInline
+     package var parent: UInt16 = .max
++    @usableFromInline
+     package var firstChild: UInt16 = .max
++    @usableFromInline
+     package var lastChild: UInt16 = .max
++    @usableFromInline
+     package var nextSibling: UInt16 = .max
+     @usableFromInline
+     package var path: UInt16 = .max
+@@ -142,6 +159,7 @@ package struct SemanticRuntimeRecord: Sendable {
+     package var textScalarCount: UInt16 = 0
+     @usableFromInline
+     package var modifierChainIndex: UInt16 = 0
++    @usableFromInline
+     package init() {}
+ }
+ 
+@@ -203,8 +221,11 @@ package struct SemanticRecordBankMetadata {
+     package var payloadBytes: UInt32 = 0
+     @usableFromInline
+     package var activePath: UInt16 = .max
++    @usableFromInline
+     package var matchedRevision: UInt32 = 0
++    @usableFromInline
+     package var componentComparisons: UInt32 = 0
++    @usableFromInline
+     package var summary: SemanticExpansionSummary?
+     @usableFromInline
+     package var failure: SemanticExpansionError?
+@@ -260,6 +281,7 @@ package struct SemanticRecordBankBuffers<Payload> {
+         return metadata.pointee.failure!
+     }
+ 
++    @inlinable
+     package func enter(_ component: SemanticPathComponent, limits: SemanticRecordLimits)
+         -> SemanticExpansionError?
+     {
+@@ -318,6 +340,7 @@ package struct SemanticRecordBankBuffers<Payload> {
+         metadata.pointee.activePath = paths[Int(path)].parent
+     }
+ 
++    @inlinable
+     package func appendRecord(limits: SemanticRecordLimits) -> SemanticExpansionError? {
+         if let failure = metadata.pointee.failure { return failure }
+         let path = metadata.pointee.activePath
+@@ -388,6 +411,7 @@ package struct SemanticRecordBankBuffers<Payload> {
+ 
+     /// Parent-first candidate traversal; each node scans at most K children of
+     /// its already matched published parent. No path reconstruction/all-pairs scan.
++    @inlinable
+     package func reconcile(with published: Self, limits: SemanticRecordLimits)
+         -> SemanticExpansionError?
+     {

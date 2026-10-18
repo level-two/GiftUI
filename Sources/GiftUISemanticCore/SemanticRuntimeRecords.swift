@@ -13,6 +13,7 @@ package struct SemanticPathComponent: Equatable, Sendable {
     package enum Kind: UInt8, Sendable {
         case root, customBody, fixedChild, conditionalBranch, optionalPresence, declarationRole
     }
+    @usableFromInline
     package let kind: Kind
     package let ordinal: UInt8
     package let role: UInt16
@@ -25,6 +26,7 @@ package struct SemanticPathComponent: Equatable, Sendable {
         self.role = role
         self.modifier = modifier
     }
+    @usableFromInline
     package var isValid: Bool {
         switch kind {
         case .fixedChild: ordinal < 5 && role == 0 && modifier == 0
@@ -78,7 +80,9 @@ package struct SemanticRecordLimits: Equatable, Sendable {
     package let records: UInt16
     @usableFromInline
     package let paths: UInt16
+    @usableFromInline
     package let depth: UInt16
+    @usableFromInline
     package let fanout: UInt16
     @usableFromInline
     package let payloads: UInt16
@@ -106,17 +110,26 @@ package struct SemanticRecordLimits: Equatable, Sendable {
 /// UInt16.max is the absent-link sentinel and is never an initialized index.
 @usableFromInline
 package struct SemanticPathEntry: Sendable {
+    @usableFromInline
     package var component = SemanticPathComponent(kind: .root)
+    @usableFromInline
     package var parent: UInt16 = .max
+    @usableFromInline
     package var firstChild: UInt16 = .max
+    @usableFromInline
     package var lastChild: UInt16 = .max
+    @usableFromInline
     package var nextSibling: UInt16 = .max
+    @usableFromInline
     package var childCount: UInt16 = 0
+    @usableFromInline
     package var depth: UInt16 = 0
     @usableFromInline
     package var nearestRecord: UInt16 = .max
     /// Reconciliation scratch, valid only for the compared published revision.
+    @usableFromInline
     package var matchedPath: UInt16 = .max
+    @usableFromInline
     package init() {}
 }
 
@@ -126,9 +139,13 @@ package struct SemanticRuntimeRecord: Sendable {
     package enum Kind: UInt8, Sendable {
         case structural, primitive, action, modifier, pendingCanvas
     }
+    @usableFromInline
     package var parent: UInt16 = .max
+    @usableFromInline
     package var firstChild: UInt16 = .max
+    @usableFromInline
     package var lastChild: UInt16 = .max
+    @usableFromInline
     package var nextSibling: UInt16 = .max
     @usableFromInline
     package var path: UInt16 = .max
@@ -142,6 +159,7 @@ package struct SemanticRuntimeRecord: Sendable {
     package var textScalarCount: UInt16 = 0
     @usableFromInline
     package var modifierChainIndex: UInt16 = 0
+    @usableFromInline
     package init() {}
 }
 
@@ -203,8 +221,11 @@ package struct SemanticRecordBankMetadata {
     package var payloadBytes: UInt32 = 0
     @usableFromInline
     package var activePath: UInt16 = .max
+    @usableFromInline
     package var matchedRevision: UInt32 = 0
+    @usableFromInline
     package var componentComparisons: UInt32 = 0
+    @usableFromInline
     package var summary: SemanticExpansionSummary?
     @usableFromInline
     package var failure: SemanticExpansionError?
@@ -260,6 +281,7 @@ package struct SemanticRecordBankBuffers<Payload> {
         return metadata.pointee.failure!
     }
 
+    @inlinable
     package func enter(_ component: SemanticPathComponent, limits: SemanticRecordLimits)
         -> SemanticExpansionError?
     {
@@ -318,6 +340,7 @@ package struct SemanticRecordBankBuffers<Payload> {
         metadata.pointee.activePath = paths[Int(path)].parent
     }
 
+    @inlinable
     package func appendRecord(limits: SemanticRecordLimits) -> SemanticExpansionError? {
         if let failure = metadata.pointee.failure { return failure }
         let path = metadata.pointee.activePath
@@ -388,6 +411,7 @@ package struct SemanticRecordBankBuffers<Payload> {
 
     /// Parent-first candidate traversal; each node scans at most K children of
     /// its already matched published parent. No path reconstruction/all-pairs scan.
+    @inlinable
     package func reconcile(with published: Self, limits: SemanticRecordLimits)
         -> SemanticExpansionError?
     {

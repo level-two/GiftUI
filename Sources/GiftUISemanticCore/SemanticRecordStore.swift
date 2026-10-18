@@ -90,12 +90,14 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
         self.owner = owner
     }
     @_lifetime(copy self)
+    @inlinable
     package borrowing func borrowedStore() -> SemanticRecordStore<Payload> {
         SemanticRecordStore(borrowing: self)
     }
 
     @_lifetime(copy other)
-    private init(borrowing other: borrowing SemanticRecordStore<Payload>) {
+    @inlinable
+    internal init(borrowing other: borrowing SemanticRecordStore<Payload>) {
         a = other.a
         b = other.b
         limits = other.limits
@@ -112,7 +114,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
         if b.metadata.pointee.phase == .candidate { return 1 }
         return nil
     }
-    @usableFromInline
+    @inlinable
     var published: UInt8? {
         if a.metadata.pointee.phase == .published { return 0 }
         if b.metadata.pointee.phase == .published { return 1 }
@@ -171,6 +173,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     }
     /// The caller has prepared all other candidate products. This is the
     /// semantic-bank swap, not accepted-offer action routing.
+    @inlinable
     package borrowing func publishCandidate() throws(SemanticExpansionError) {
         guard let candidate else { throw .invariantViolation }
         let next = bank(candidate)
@@ -191,7 +194,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
         guard let candidate, !hasPendingCanvas(bank(candidate)) else { throw .invariantViolation }
         return try withView(candidate, body)
     }
-    @usableFromInline
+    @inlinable
     borrowing func hasPendingCanvas(_ bank: SemanticRecordBankBuffers<Payload>) -> Bool {
         for index in 0 ..< Int(bank.metadata.pointee.records) {
             if bank.records[index].kind == .pendingCanvas { return true }
@@ -253,7 +256,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     }
 
     // Restricted to the sole Semantic Core traversal adapter in this module.
-    @usableFromInline
+    @inlinable
     borrowing func expansionBank(_ number: UInt8) -> SemanticRecordBankBuffers<Payload>? {
         guard number < 2 else { return nil }
         let selected = bank(number)
