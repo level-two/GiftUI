@@ -1,0 +1,39 @@
+{
+  "status": "compile25/variants4/privacy93/completeindex11/physical92/object2/current42SIL PASS; actual consumer bounded interpretation only",
+  "source": "cb4b10f0 ONE1/1 ZERO automatic SOURCE repairs, historical budgets closed",
+  "checks": 108,
+  "qualified_compile_seal": {
+    "path": ".build/contracts/p08-ef-resolution-candidate1/compile-artifact-freeze.json",
+    "sha256": "a83b92998f23f2f1b31492c9b70a136b2c2e93a75a518d61f4aa0f95cb32ffa4",
+    "bytes": 50026
+  },
+  "qualified_compile_artifacts": 251,
+  "sil": {
+    "path": ".build/contracts/p08-ef-resolution-candidate1/qualification/actual-host.sil",
+    "sha256": "04805fe1b1662f16e8aee8eb0b3c2eec6261d731468df977a1407976158706e6",
+    "bytes": 62291653
+  },
+  "object": {
+    "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/P08CounterRuntime/P08CounterRuntime.o",
+    "sha256": "8ff9af1237b300f7453f09e8594ddff33c7eecf8ffdcbea307c49436629ae409",
+    "bytes": 2545256
+  },
+  "host_disassembly": {
+    "path": ".build/contracts/p08-ef-resolution-candidate1/qualification/logs/host-disassembly.stdout",
+    "sha256": "2ab5f06938c0a8a868619de39ced8a08b2b33f395edd0fcc2a0fae12656983ba",
+    "bytes": 26504187
+  },
+  "source_audit": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/source-edits.json",
+    "sha256": "f5ab54323d83973cb178ceb67b4b6824e8da554dde024271501fe800c2858d7a",
+    "bytes": 3175
+  },
+  "recipe_freeze": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/recipe-freeze.json",
+    "sha256": "d8e5fb5ac153b165361c757aa62bb8e57ff68b905628579a79090e4165f6fd0c",
+    "bytes": 744
+  },
+  "proof_source": "No new compiler/tests/decoder/runtime; current sealed output read-only",
+  "all_sources_and_artifacts_reverified": true,
+  "remaining": "Full currentcallee closure, source/private14loan/Optional/lifetime/provenance/exclusivity/failurecleanup controls, ordinaryText/cold witness/strictcold resources/P08 unqualified"
+}

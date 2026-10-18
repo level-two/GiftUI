@@ -1,0 +1,109 @@
+// current SIL lines 597475-597582
+sil shared @$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime0hF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AG0h9CommittedK0AILLVAG0h3HitK0AILLVTg5 : $@convention(method) (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () {
+[%1: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0                                             // user: %2
+// %1                                             // users: %17, %59, %56, %53, %49, %46, %43, %39, %35, %34, %31, %30, %4
+bb0(%0 : $InteractionCandidateDisposition, %1 : $*InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>):
+  switch_enum %0, case #InteractionCandidateDisposition.commit!enumelt: bb1, case #InteractionCandidateDisposition.discard!enumelt: bb2 // id: %2
+
+// %3                                             // user: %38
+bb1(%3 : $PresentationRevision):                  // Preds: bb0
+  %4 = struct_element_addr %1, #InteractionState.phase // user: %5
+  %5 = load %4                                    // user: %7
+  %6 = alloc_stack [lexical] $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase // users: %7, %15, %11
+  store %5 to %6                                  // id: %7
+  %8 = enum $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase, #InteractionState.Phase.readyForOffer!enumelt // user: %10
+  %9 = alloc_stack [lexical] $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase // users: %10, %14, %12
+  store %8 to %9                                  // id: %10
+  %11 = builtin "getEnumTag"<InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase>(%6) : $Builtin.Int32 // user: %13
+  %12 = builtin "getEnumTag"<InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase>(%9) : $Builtin.Int32 // user: %13
+  %13 = builtin "cmp_eq_Int32"(%11, %12) : $Builtin.Int1 // user: %16
+  dealloc_stack %9                                // id: %14
+  dealloc_stack %6                                // id: %15
+  cond_br %13, bb3, bb4                           // id: %16
+
+bb2:                                              // Preds: bb0
+  %17 = struct_element_addr %1, #InteractionState.phase // user: %18
+  %18 = load %17                                  // users: %66, %20
+  %19 = alloc_stack [lexical] $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase // users: %20, %28, %24
+  store %18 to %19                                // id: %20
+  %21 = enum $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase, #InteractionState.Phase.staging!enumelt // user: %23
+  %22 = alloc_stack [lexical] $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase // users: %23, %27, %25
+  store %21 to %22                                // id: %23
+  %24 = builtin "getEnumTag"<InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase>(%19) : $Builtin.Int32 // user: %26
+  %25 = builtin "getEnumTag"<InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase>(%22) : $Builtin.Int32 // user: %26
+  %26 = builtin "cmp_eq_Int32"(%24, %25) : $Builtin.Int1 // user: %29
+  dealloc_stack %22                               // id: %27
+  dealloc_stack %19                               // id: %28
+  cond_br %26, bb7, bb8                           // id: %29
+
+bb3:                                              // Preds: bb1
+  %30 = struct_element_addr %1, #InteractionState.committedRecords // user: %33
+  %31 = struct_element_addr %1, #InteractionState.candidateCommittedRecords // user: %33
+  // function_ref P08CommittedAccess.exchangeContents(with:)
+  %32 = function_ref @$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tF : $@convention(method) (@lifetime(copy 0) @inout P08CommittedAccess, @lifetime(copy 1) @inout P08CommittedAccess) -> () // user: %33
+  %33 = apply %32(%31, %30) : $@convention(method) (@lifetime(copy 0) @inout P08CommittedAccess, @lifetime(copy 1) @inout P08CommittedAccess) -> ()
+  %34 = struct_element_addr %1, #InteractionState.committedHitRegions // user: %37
+  %35 = struct_element_addr %1, #InteractionState.candidateHitRegions // user: %37
+  // function_ref P08HitAccess.exchangeContents(with:)
+  %36 = function_ref @$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tF : $@convention(method) (@lifetime(copy 0) @inout P08HitAccess, @lifetime(copy 1) @inout P08HitAccess) -> () // user: %37
+  %37 = apply %36(%35, %34) : $@convention(method) (@lifetime(copy 0) @inout P08HitAccess, @lifetime(copy 1) @inout P08HitAccess) -> ()
+  %38 = enum $Optional<PresentationRevision>, #Optional.some!enumelt, %3 // user: %40
+  %39 = struct_element_addr %1, #InteractionState.committedPresentationRevision // user: %40
+  store %38 to %39                                // id: %40
+  br bb5                                          // id: %41
+
+bb4:                                              // Preds: bb1
+  br bb6                                          // id: %42
+
+bb5:                                              // Preds: bb9 bb7 bb3
+  %43 = struct_element_addr %1, #InteractionState.candidateRecords // user: %45
+  // function_ref P08CandidateAccess.reset()
+  %44 = function_ref @$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF : $@convention(method) (@lifetime(copy 0) @inout P08CandidateAccess) -> () // user: %45
+  %45 = apply %44(%43) : $@convention(method) (@lifetime(copy 0) @inout P08CandidateAccess) -> ()
+  %46 = struct_element_addr %1, #InteractionState.candidateHitRegions // user: %48
+  // function_ref P08HitAccess.reset()
+  %47 = function_ref @$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF : $@convention(method) (@lifetime(copy 0) @inout P08HitAccess) -> () // user: %48
+  %48 = apply %47(%46) : $@convention(method) (@lifetime(copy 0) @inout P08HitAccess) -> ()
+  %49 = struct_element_addr %1, #InteractionState.candidateCommittedRecords // user: %51
+  // function_ref P08CommittedAccess.reset()
+  %50 = function_ref @$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF : $@convention(method) (@lifetime(copy 0) @inout P08CommittedAccess) -> () // user: %51
+  %51 = apply %50(%49) : $@convention(method) (@lifetime(copy 0) @inout P08CommittedAccess) -> ()
+  %52 = enum $Optional<InteractionLimits>, #Optional.none!enumelt // user: %54
+  %53 = struct_element_addr %1, #InteractionState.limits // user: %54
+  store %52 to %53                                // id: %54
+  %55 = enum $Optional<InteractionError>, #Optional.none!enumelt // user: %57
+  %56 = struct_element_addr %1, #InteractionState.candidateError // user: %57
+  store %55 to %56                                // id: %57
+  %58 = enum $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase, #InteractionState.Phase.idle!enumelt // user: %60
+  %59 = struct_element_addr %1, #InteractionState.phase // user: %60
+  store %58 to %59                                // id: %60
+  br bb6                                          // id: %61
+
+bb6:                                              // Preds: bb10 bb4 bb5
+  %62 = tuple ()                                  // user: %63
+  return %62                                      // id: %63
+
+bb7:                                              // Preds: bb2
+  br bb5                                          // id: %64
+
+bb8:                                              // Preds: bb2
+  %65 = alloc_stack [lexical] $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase // users: %66, %74, %70
+  store %18 to %65                                // id: %66
+  %67 = enum $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase, #InteractionState.Phase.readyForOffer!enumelt // user: %69
+  %68 = alloc_stack [lexical] $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase // users: %69, %73, %71
+  store %67 to %68                                // id: %69
+  %70 = builtin "getEnumTag"<InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase>(%65) : $Builtin.Int32 // user: %72
+  %71 = builtin "getEnumTag"<InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase>(%68) : $Builtin.Int32 // user: %72
+  %72 = builtin "cmp_eq_Int32"(%70, %71) : $Builtin.Int1 // user: %75
+  dealloc_stack %68                               // id: %73
+  dealloc_stack %65                               // id: %74
+  cond_br %72, bb9, bb10                          // id: %75
+
+bb9:                                              // Preds: bb8
+  br bb5                                          // id: %76
+
+bb10:                                             // Preds: bb8
+  br bb6                                          // id: %77
+} // end sil function '$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime0hF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AG0h9CommittedK0AILLVAG0h3HitK0AILLVTg5'

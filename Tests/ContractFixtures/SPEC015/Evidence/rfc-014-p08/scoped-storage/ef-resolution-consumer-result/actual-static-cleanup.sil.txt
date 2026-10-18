@@ -1,0 +1,658 @@
+// current SIL lines 157201-157857
+sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA06StaticB8GeometryV_AA0L30TwoInteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAA0lno9CommittedQ0VyANGAA0lno3HitQ0VyANGTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> () {
+[%1: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "action"                                    // users: %79, %30, %20, %2
+// %1 "self"                                      // users: %314, %308, %306, %396, %393, %391, %382, %380, %185, %160, %440, %401, %357, %332, %161, %320, %294, %271, %200, %156, %196, %145, %120, %114, %178, %168, %110, %106, %89, %85, %80, %4, %3
+bb0(%0 : $RuntimeCleanupAction, %1 : $*CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>):
+  debug_value %0, let, name "action", argno 1     // id: %2
+  debug_value %1, var, name "self", argno 2, expr op_deref // id: %3
+  %4 = struct_element_addr %1, #CounterPipelineOwner.control // users: %379, %5
+  %5 = struct_element_addr %4, #UnsafeMutablePointer._rawValue // user: %6
+  %6 = load %5                                    // users: %7, %305
+  %7 = pointer_to_address %6 to [strict] $*CounterControl // users: %317, %312, %326, %322, %296, %51, %32, %8
+  %8 = struct_element_addr %7, #CounterControl.cleanupCount // users: %50, %9
+  %9 = struct_element_addr %8, #Int._value        // users: %21, %10
+  %10 = load %9                                   // user: %12
+  %11 = integer_literal $Builtin.Int64, 9         // users: %35, %12
+  %12 = builtin "cmp_sge_Int64"(%10, %11) : $Builtin.Int1 // user: %13
+  cond_fail %12, "precondition failure"           // id: %13
+  %14 = string_literal utf8 "cleanup"             // user: %16
+  %15 = integer_literal $Builtin.Word, 7          // user: %18
+  %16 = builtin "ptrtoint_Word"(%14) : $Builtin.Word // user: %18
+  %17 = integer_literal $Builtin.Int8, 2          // users: %30, %18
+  %18 = struct $StaticString (%16, %15, %17)      // user: %20
+  // function_ref specialized counterTrace<A>(_:_:)
+  %19 = function_ref @$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF17GiftUIRuntimeCore0C13CleanupActionO_Tg5 : $@convention(thin) (StaticString, RuntimeCleanupAction) -> () // user: %20
+  %20 = apply %19(%18, %0) : $@convention(thin) (StaticString, RuntimeCleanupAction) -> ()
+  %21 = load %9                                   // users: %39, %34, %35, %45
+  %22 = integer_literal $Builtin.Int8, 0          // users: %416, %101, %30
+  %23 = integer_literal $Builtin.Int8, 1          // user: %30
+  %24 = integer_literal $Builtin.Int8, 3          // user: %30
+  %25 = integer_literal $Builtin.Int8, 4          // user: %30
+  %26 = integer_literal $Builtin.Int8, 5          // user: %30
+  %27 = integer_literal $Builtin.Int8, 6          // user: %30
+  %28 = integer_literal $Builtin.Int8, 7          // user: %30
+  %29 = integer_literal $Builtin.Int8, 8          // user: %30
+  %30 = select_enum %0, case #RuntimeCleanupAction.releaseCanvasCallable!enumelt: %22, case #RuntimeCleanupAction.discardInteractionCandidate!enumelt: %23, case #RuntimeCleanupAction.commitInteractionCandidate!enumelt: %17, case #RuntimeCleanupAction.resetRenderWorkspace!enumelt: %24, case #RuntimeCleanupAction.resetDrawingPlan!enumelt: %25, case #RuntimeCleanupAction.resetLayoutCandidate!enumelt: %26, case #RuntimeCleanupAction.discardSemanticCandidate!enumelt: %27, case #RuntimeCleanupAction.discardObservableCandidate!enumelt: %28, case #RuntimeCleanupAction.resetAttemptStorage!enumelt: %29 : $Builtin.Int8 // users: %484, %456, %57, %31
+  %31 = struct $UInt8 (%30)                       // user: %42
+  %32 = struct_element_addr %7, #CounterControl.cleanupOrder // user: %38
+  %33 = integer_literal $Builtin.Int64, 0         // users: %475, %491, %447, %463, %34
+  %34 = builtin "cmp_slt_Int64"(%21, %33) : $Builtin.Int1 // user: %36
+  %35 = builtin "cmp_sge_Int64"(%21, %11) : $Builtin.Int1 // user: %36
+  %36 = builtin "or_Int1"(%34, %35) : $Builtin.Int1 // user: %37
+  cond_fail %36, "Index out of bounds"            // id: %37
+  %38 = struct_element_addr %32, #InlineArray._storage // user: %40
+  %39 = builtin "truncOrBitCast_Int64_Word"(%21) : $Builtin.Word // user: %41
+  %40 = vector_base_addr %38                      // user: %41
+  %41 = index_addr [stack_protection] %40, %39    // user: %42
+  store %31 to %41                                // id: %42
+  %43 = integer_literal $Builtin.Int64, 1         // users: %299, %45
+  %44 = integer_literal $Builtin.Int1, -1         // users: %491, %479, %476, %463, %451, %448, %439, %281, %299, %177, %45
+  %45 = builtin "sadd_with_overflow_Int64"(%21, %43, %44) : $(Builtin.Int64, Builtin.Int1) // users: %47, %46
+  %46 = tuple_extract %45, 0                      // user: %49
+  %47 = tuple_extract %45, 1                      // user: %48
+  cond_fail %47, "arithmetic overflow"            // id: %48
+  %49 = struct $Int (%46)                         // user: %50
+  store %49 to %8                                 // id: %50
+  %51 = struct_element_addr %7, #CounterControl.cleanups // users: %78, %52
+  %52 = struct_element_addr %51, #UInt16._value   // user: %53
+  %53 = load %52                                  // users: %66, %76
+  %54 = integer_literal $Builtin.Int16, 1         // users: %498, %487, %470, %459
+  %55 = integer_literal $Builtin.Int64, -16       // users: %481, %453, %58
+  %56 = integer_literal $Builtin.Int1, 0          // users: %354, %267, %142, %482, %454, %443, %364, %293, %278, %152, %181
+  %57 = builtin "zextOrBitCast_Int8_Int64"(%30) : $Builtin.Int64 // users: %491, %481, %478, %475, %63, %463, %453, %450, %447, %73, %58
+  %58 = builtin "cmp_slt_Int64"(%57, %55) : $Builtin.Int1 // users: %70, %59
+  cond_br %58, bb1, bb2                           // id: %59
+
+bb1:                                              // Preds: bb0
+  %60 = integer_literal $Builtin.Int16, 0         // user: %61
+  br bb3(%60)                                     // id: %61
+
+bb2:                                              // Preds: bb0
+  %62 = integer_literal $Builtin.Int64, 16        // users: %478, %63
+  %63 = builtin "cmp_slt_Int64"(%62, %57) : $Builtin.Int1 // user: %64
+  cond_br %63, bb59, bb60                         // id: %64
+
+// %65                                            // user: %66
+bb3(%65 : $Builtin.Int16):                        // Preds: bb66 bb65 bb64 bb63 bb59 bb1
+  %66 = builtin "and_Int16"(%53, %65) : $Builtin.Int16 // user: %68
+  %67 = integer_literal $Builtin.Int16, 0         // users: %462, %461, %446, %71, %68
+  %68 = builtin "cmp_ne_Int16"(%66, %67) : $Builtin.Int1 // user: %69
+  cond_fail %68, "precondition failure"           // id: %69
+  cond_br %58, bb4, bb5                           // id: %70
+
+bb4:                                              // Preds: bb3
+  br bb6(%67)                                     // id: %71
+
+bb5:                                              // Preds: bb3
+  %72 = integer_literal $Builtin.Int64, 16        // users: %450, %73
+  %73 = builtin "cmp_slt_Int64"(%72, %57) : $Builtin.Int1 // user: %74
+  cond_br %73, bb51, bb52                         // id: %74
+
+// %75                                            // user: %76
+bb6(%75 : $Builtin.Int16):                        // Preds: bb58 bb57 bb56 bb55 bb51 bb4
+  %76 = builtin "or_Int16"(%53, %75) : $Builtin.Int16 // user: %77
+  %77 = struct $UInt16 (%76)                      // user: %78
+  store %77 to %51                                // id: %78
+  switch_enum %0, case #RuntimeCleanupAction.releaseCanvasCallable!enumelt: bb7, case #RuntimeCleanupAction.resetRenderWorkspace!enumelt: bb8, case #RuntimeCleanupAction.resetDrawingPlan!enumelt: bb9, case #RuntimeCleanupAction.resetLayoutCandidate!enumelt: bb10, case #RuntimeCleanupAction.discardSemanticCandidate!enumelt: bb11, case #RuntimeCleanupAction.discardObservableCandidate!enumelt: bb12, case #RuntimeCleanupAction.discardInteractionCandidate!enumelt: bb13, case #RuntimeCleanupAction.commitInteractionCandidate!enumelt: bb14, case #RuntimeCleanupAction.resetAttemptStorage!enumelt: bb15 // id: %79
+
+bb7:                                              // Preds: bb6
+  %80 = struct_element_addr %1, #CounterPipelineOwner.values // user: %81
+  %81 = load %80                                  // user: %83
+  // function_ref specialized CanvasStagedValues.discard()
+  %82 = function_ref @$s13GiftUIDrawing18CanvasStagedValuesV7discardyyF0A14UISemanticCore23SemanticRecordReferenceV_15P08CounterTable0lm6SchemacN0Vy0lM7Runtime0M6DomainOGTg5 : $@convention(method) (@guaranteed CanvasStagedValues<SemanticRecordReference, P08CounterSchemaCanvasTable<CounterDomain>>) -> () // user: %83
+  %83 = apply %82(%81) : $@convention(method) (@guaranteed CanvasStagedValues<SemanticRecordReference, P08CounterSchemaCanvasTable<CounterDomain>>) -> ()
+  br bb16                                         // id: %84
+
+bb8:                                              // Preds: bb6
+  %85 = struct_element_addr %1, #CounterPipelineOwner.geometry // user: %87
+  // function_ref StaticCounterGeometry.resetRender()
+  %86 = function_ref @$s17P08CounterRuntime06StaticB8GeometryV11resetRenderyyF : $@convention(method) (@inout StaticCounterGeometry) -> () // user: %87
+  %87 = apply %86(%85) : $@convention(method) (@inout StaticCounterGeometry) -> ()
+  br bb16                                         // id: %88
+
+bb9:                                              // Preds: bb6
+  %89 = struct_element_addr %1, #CounterPipelineOwner.geometry // users: %91, %90
+  debug_value %89, var, name "self", argno 1, expr op_deref // id: %90
+  %91 = struct_element_addr %89, #StaticCounterGeometry.plan // users: %96, %92
+  %92 = struct_element_addr %91, #StaticRecordDrawingWorkspace.base // users: %99, %98, %97, %94
+  // function_ref StaticCounterDrawingWorkspace.discard()
+  %93 = function_ref @$s17P08CounterRuntime06StaticB16DrawingWorkspaceV7discardyyF : $@convention(method) (@inout StaticCounterDrawingWorkspace) -> () // users: %98, %94
+  %94 = apply %93(%92) : $@convention(method) (@inout StaticCounterDrawingWorkspace) -> ()
+  %95 = enum $Optional<SemanticRecordReference>, #Optional.none!enumelt // user: %104
+  %96 = struct_element_addr %91, #StaticRecordDrawingWorkspace.qualification // user: %104
+  debug_value %92, var, name "self", argno 1, expr op_deref // id: %97
+  %98 = apply %93(%92) : $@convention(method) (@inout StaticCounterDrawingWorkspace) -> ()
+  %99 = struct_element_addr %92, #StaticCounterDrawingWorkspace.pathRegion // user: %100
+  %100 = load %99                                 // user: %103
+  %101 = struct $UInt8 (%22)                      // user: %103
+  // function_ref specialized UnsafeMutableRawBufferPointer.initializeMemory<A>(as:repeating:)
+  %102 = function_ref @$sSw16initializeMemory2as9repeatingSryxGxm_xtlFs5UInt8V_Ttg5 : $@convention(method) (UInt8, UnsafeMutableRawBufferPointer) -> UnsafeMutableBufferPointer<UInt8> // user: %103
+  %103 = apply %102(%101, %100) : $@convention(method) (UInt8, UnsafeMutableRawBufferPointer) -> UnsafeMutableBufferPointer<UInt8>
+  store %95 to %96                                // id: %104
+  br bb16                                         // id: %105
+
+bb10:                                             // Preds: bb6
+  %106 = struct_element_addr %1, #CounterPipelineOwner.geometry // user: %108
+  // function_ref StaticCounterGeometry.resetLayout()
+  %107 = function_ref @$s17P08CounterRuntime06StaticB8GeometryV11resetLayoutyyF : $@convention(method) (@inout StaticCounterGeometry) -> () // user: %108
+  %108 = apply %107(%106) : $@convention(method) (@inout StaticCounterGeometry) -> ()
+  br bb16                                         // id: %109
+
+bb11:                                             // Preds: bb6
+  %110 = struct_element_addr %1, #CounterPipelineOwner.semanticCandidate // users: %182, %111
+  %111 = struct_element_addr %110, #Bool._value   // user: %112
+  %112 = load %111                                // user: %113
+  cond_br %112, bb17, bb18                        // id: %113
+
+bb12:                                             // Preds: bb6
+  %114 = struct_element_addr %1, #CounterPipelineOwner.observableCandidate // user: %115
+  %115 = struct_element_addr %114, #Bool._value   // user: %116
+  %116 = load %115                                // user: %117
+  cond_br %116, bb22, bb23                        // id: %117
+
+bb13:                                             // Preds: bb6
+  debug_value undef : $*CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, var, name "self", argno 2, expr op_deref // id: %118
+  %119 = enum $InteractionCandidateDisposition, #InteractionCandidateDisposition.discard!enumelt // user: %134
+  %120 = struct_element_addr %1, #CounterPipelineOwner.interaction // users: %143, %140, %137, %121
+  %121 = struct_element_addr %120, #InteractionOwnedKeyState.state // users: %134, %122
+  %122 = struct_element_addr %121, #InteractionState.phase // user: %123
+  %123 = load %122                                // user: %125
+  %124 = alloc_stack [lexical] $InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase // users: %125, %132, %129
+  store %123 to %124                              // id: %125
+  %126 = enum $InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase, #InteractionState.Phase.readyForOffer!enumelt // user: %128
+  %127 = alloc_stack [lexical] $InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase // users: %128, %131, %130
+  store %126 to %127                              // id: %128
+  %129 = builtin "getEnumTag"<InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase>(%124) : $Builtin.Int32
+  %130 = builtin "getEnumTag"<InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase>(%127) : $Builtin.Int32
+  dealloc_stack %127                              // id: %131
+  dealloc_stack %124                              // id: %132
+  // function_ref specialized InteractionState<>.resolveCandidate(_:)
+  %133 = function_ref @$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5 : $@convention(method) (InteractionCandidateDisposition, @inout InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> () // user: %134
+  %134 = apply %133(%119, %121) : $@convention(method) (InteractionCandidateDisposition, @inout InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> ()
+  %135 = integer_literal $Builtin.Int32, 0        // user: %136
+  %136 = struct $UInt32 (%135)                    // users: %195, %138
+  %137 = struct_element_addr %120, #InteractionOwnedKeyState.candidateComponents // user: %138
+  store %136 to %137                              // id: %138
+  %139 = enum $Optional<InteractionError>, #Optional.none!enumelt // user: %141
+  %140 = struct_element_addr %120, #InteractionOwnedKeyState.failure // user: %141
+  store %139 to %140                              // id: %141
+  %142 = struct $Bool (%56)                       // users: %197, %144
+  %143 = struct_element_addr %120, #InteractionOwnedKeyState.isStaging // user: %144
+  store %142 to %143                              // id: %144
+  %145 = struct_element_addr %1, #CounterPipelineOwner.generations // users: %149, %146
+  %146 = struct_element_addr %145, #RuntimeActionGenerationAllocator.pendingReservationCount // users: %195, %147
+  %147 = struct_element_addr %146, #UInt32._value // user: %148
+  %148 = load %147                                // user: %152
+  %149 = struct_element_addr %145, #RuntimeActionGenerationAllocator.retiredReservationCount // users: %194, %150
+  %150 = struct_element_addr %149, #UInt32._value // user: %151
+  %151 = load %150                                // user: %152
+  %152 = builtin "uadd_with_overflow_Int32"(%151, %148, %56) : $(Builtin.Int32, Builtin.Int1) // users: %153, %190
+  %153 = tuple_extract %152, 1                    // user: %154
+  cond_br %153, bb24, bb25                        // id: %154
+
+bb14:                                             // Preds: bb6
+  debug_value undef : $*CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, var, name "self", argno 2, expr op_deref // id: %155
+  %156 = struct_element_addr %1, #CounterPipelineOwner.presentation // user: %157
+  %157 = load %156                                // users: %324, %321, %325, %158
+  switch_enum %157, case #Optional.some!enumelt: bb27, case #Optional.none!enumelt: bb36 // id: %158
+
+bb15:                                             // Preds: bb6
+  // function_ref specialized CounterPipelineOwner<>.discardLocalCandidates()
+  %159 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA06StaticB8GeometryV_AA0I30TwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGAA0ikl9CommittedN0VyAKGAA0ikl3HitN0VyAKGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> () // user: %160
+  %160 = apply %159(%1) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> ()
+  %161 = struct_element_addr %1, #CounterPipelineOwner.interactionCandidate // users: %376, %162
+  %162 = struct_element_addr %161, #Bool._value   // user: %163
+  %163 = load %162                                // user: %164
+  cond_br %163, bb40, bb41                        // id: %164
+
+bb16:                                             // Preds: bb47 bb50 bb39 bb26 bb23 bb22 bb18 bb21 bb10 bb9 bb8 bb7
+  %165 = tuple ()                                 // user: %166
+  return %165                                     // id: %166
+
+bb17:                                             // Preds: bb11
+  debug_value undef : $*CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, var, name "self", argno 2, expr op_deref // id: %167
+  %168 = struct_element_addr %1, #CounterPipelineOwner.semantic // user: %169
+  %169 = load %168                                // user: %171
+  // function_ref specialized SemanticRecordStore.discardCandidate()
+  %170 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> @error SemanticExpansionError // user: %171
+  try_apply %170(%169) : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> @error SemanticExpansionError, normal bb19, error bb20 // id: %171
+
+bb18:                                             // Preds: bb11
+  br bb16                                         // id: %172
+
+bb19(%173 : $()):                                 // Preds: bb17
+  br bb21                                         // id: %174
+
+bb20(%175 : $SemanticExpansionError):             // Preds: bb17
+  debug_value undef : $*CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, var, name "self", argno 2, expr op_deref // id: %176
+  %177 = struct $Bool (%44)                       // user: %179
+  %178 = struct_element_addr %1, #CounterPipelineOwner.quiescent // user: %179
+  store %177 to %178                              // id: %179
+  br bb21                                         // id: %180
+
+bb21:                                             // Preds: bb20 bb19
+  %181 = struct $Bool (%56)                       // user: %182
+  store %181 to %110                              // id: %182
+  br bb16                                         // id: %183
+
+bb22:                                             // Preds: bb12
+  // function_ref specialized CounterPipelineOwner<>.discardLocalCandidates()
+  %184 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA06StaticB8GeometryV_AA0I30TwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGAA0ikl9CommittedN0VyAKGAA0ikl3HitN0VyAKGTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> () // user: %185
+  %185 = apply %184(%1) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> ()
+  br bb16                                         // id: %186
+
+bb23:                                             // Preds: bb12
+  br bb16                                         // id: %187
+
+bb24:                                             // Preds: bb13
+  %188 = integer_literal $Builtin.Int32, -1       // user: %189
+  br bb26(%188)                                   // id: %189
+
+bb25:                                             // Preds: bb13
+  %190 = tuple_extract %152, 0                    // user: %191
+  br bb26(%190)                                   // id: %191
+
+// %192                                           // user: %193
+bb26(%192 : $Builtin.Int32):                      // Preds: bb25 bb24
+  %193 = struct $UInt32 (%192)                    // user: %194
+  store %193 to %149                              // id: %194
+  store %136 to %146                              // id: %195
+  %196 = struct_element_addr %1, #CounterPipelineOwner.interactionCandidate // user: %197
+  store %142 to %196                              // id: %197
+  br bb16                                         // id: %198
+
+// %199                                           // user: %240
+bb27(%199 : $PresentationRevision):               // Preds: bb14
+  %200 = struct_element_addr %1, #CounterPipelineOwner.interaction // users: %268, %261, %259, %215, %201
+  %201 = struct_element_addr %200, #InteractionOwnedKeyState.state // users: %254, %251, %243, %241, %237, %236, %233, %232, %202
+  %202 = struct_element_addr %201, #InteractionState.phase // users: %257, %203
+  %203 = load %202                                // users: %222, %205
+  %204 = alloc_stack [lexical] $InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase // users: %205, %213, %209
+  store %203 to %204                              // id: %205
+  %206 = enum $InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase, #InteractionState.Phase.readyForOffer!enumelt // users: %224, %208
+  %207 = alloc_stack [lexical] $InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase // users: %208, %212, %210
+  store %206 to %207                              // id: %208
+  %209 = builtin "getEnumTag"<InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase>(%204) : $Builtin.Int32 // user: %211
+  %210 = builtin "getEnumTag"<InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase>(%207) : $Builtin.Int32 // user: %211
+  %211 = builtin "cmp_eq_Int32"(%209, %210) : $Builtin.Int1 // user: %214
+  dealloc_stack %207                              // id: %212
+  dealloc_stack %204                              // id: %213
+  cond_br %211, bb28, bb29                        // id: %214
+
+bb28:                                             // Preds: bb27
+  %215 = struct_element_addr %200, #InteractionOwnedKeyState.failure // users: %266, %216
+  %216 = load %215                                // users: %266, %217
+  switch_enum %216, case #Optional.none!enumelt: bb31, case #Optional.some!enumelt: bb30 // id: %217
+
+bb29:                                             // Preds: bb27
+  br bb35                                         // id: %218
+
+bb30(%219 : $InteractionError):                   // Preds: bb28
+  br bb35                                         // id: %220
+
+bb31:                                             // Preds: bb28
+  %221 = alloc_stack [lexical] $InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase // users: %222, %229, %225
+  store %203 to %221                              // id: %222
+  %223 = alloc_stack [lexical] $InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase // users: %224, %228, %226
+  store %206 to %223                              // id: %224
+  %225 = builtin "getEnumTag"<InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase>(%221) : $Builtin.Int32 // user: %227
+  %226 = builtin "getEnumTag"<InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase>(%223) : $Builtin.Int32 // user: %227
+  %227 = builtin "cmp_eq_Int32"(%225, %226) : $Builtin.Int1 // user: %230
+  dealloc_stack %223                              // id: %228
+  dealloc_stack %221                              // id: %229
+  cond_br %227, bb33, bb32                        // id: %230
+
+bb32:                                             // Preds: bb31
+  br bb34                                         // id: %231
+
+bb33:                                             // Preds: bb31
+  %232 = struct_element_addr %201, #InteractionState.committedRecords // user: %235
+  %233 = struct_element_addr %201, #InteractionState.candidateCommittedRecords // users: %249, %235
+  // function_ref specialized StaticTwoInteractionCommittedStorage.exchangeContents(with:)
+  %234 = function_ref @$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageV16exchangeContents4withyACyxGz_tF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5 : $@convention(method) (@inout StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, @inout StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>) -> () // user: %235
+  %235 = apply %234(%233, %232) : $@convention(method) (@inout StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, @inout StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>) -> ()
+  %236 = struct_element_addr %201, #InteractionState.committedHitRegions // user: %239
+  %237 = struct_element_addr %201, #InteractionState.candidateHitRegions // users: %247, %239
+  // function_ref specialized StaticTwoInteractionHitStorage.exchangeContents(with:)
+  %238 = function_ref @$s17P08CounterRuntime30StaticTwoInteractionHitStorageV16exchangeContents4withyACyxGz_tF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5 : $@convention(method) (@inout StaticTwoInteractionHitStorage<SemanticCompleteIdentity>, @inout StaticTwoInteractionHitStorage<SemanticCompleteIdentity>) -> () // user: %239
+  %239 = apply %238(%237, %236) : $@convention(method) (@inout StaticTwoInteractionHitStorage<SemanticCompleteIdentity>, @inout StaticTwoInteractionHitStorage<SemanticCompleteIdentity>) -> ()
+  %240 = enum $Optional<PresentationRevision>, #Optional.some!enumelt, %199 // user: %242
+  %241 = struct_element_addr %201, #InteractionState.committedPresentationRevision // user: %242
+  store %240 to %241                              // id: %242
+  %243 = struct_element_addr %201, #InteractionState.candidateRecords // user: %245
+  // function_ref specialized StaticTwoInteractionCandidateStorage.reset()
+  %244 = function_ref @$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5 : $@convention(method) (@inout StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>) -> () // user: %245
+  %245 = apply %244(%243) : $@convention(method) (@inout StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>) -> ()
+  // function_ref specialized StaticTwoInteractionHitStorage.reset()
+  %246 = function_ref @$s17P08CounterRuntime30StaticTwoInteractionHitStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5 : $@convention(method) (@inout StaticTwoInteractionHitStorage<SemanticCompleteIdentity>) -> () // user: %247
+  %247 = apply %246(%237) : $@convention(method) (@inout StaticTwoInteractionHitStorage<SemanticCompleteIdentity>) -> ()
+  // function_ref specialized StaticTwoInteractionCommittedStorage.reset()
+  %248 = function_ref @$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5 : $@convention(method) (@inout StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>) -> () // user: %249
+  %249 = apply %248(%233) : $@convention(method) (@inout StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>) -> ()
+  %250 = enum $Optional<InteractionLimits>, #Optional.none!enumelt // user: %252
+  %251 = struct_element_addr %201, #InteractionState.limits // user: %252
+  store %250 to %251                              // id: %252
+  %253 = enum $Optional<InteractionError>, #Optional.none!enumelt // user: %255
+  %254 = struct_element_addr %201, #InteractionState.candidateError // user: %255
+  store %253 to %254                              // id: %255
+  %256 = enum $InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase, #InteractionState.Phase.idle!enumelt // user: %257
+  store %256 to %202                              // id: %257
+  br bb34                                         // id: %258
+
+bb34:                                             // Preds: bb32 bb33
+  %259 = struct_element_addr %200, #InteractionOwnedKeyState.candidateComponents // users: %265, %260
+  %260 = load %259                                // user: %262
+  %261 = struct_element_addr %200, #InteractionOwnedKeyState.committedComponents // user: %262
+  store %260 to %261                              // id: %262
+  %263 = integer_literal $Builtin.Int32, 0        // user: %264
+  %264 = struct $UInt32 (%263)                    // user: %265
+  store %264 to %259                              // id: %265
+  store %216 to %215                              // id: %266
+  %267 = struct $Bool (%56)                       // user: %269
+  %268 = struct_element_addr %200, #InteractionOwnedKeyState.isStaging // user: %269
+  store %267 to %268                              // id: %269
+  br bb35                                         // id: %270
+
+bb35:                                             // Preds: bb29 bb30 bb34
+  %271 = struct_element_addr %1, #CounterPipelineOwner.generations // users: %275, %272
+  %272 = struct_element_addr %271, #RuntimeActionGenerationAllocator.pendingReservationCount // users: %292, %273
+  %273 = struct_element_addr %272, #UInt32._value // user: %274
+  %274 = load %273                                // user: %278
+  %275 = struct_element_addr %271, #RuntimeActionGenerationAllocator.committedReservationCount // users: %289, %276
+  %276 = struct_element_addr %275, #UInt32._value // user: %277
+  %277 = load %276                                // user: %278
+  %278 = builtin "uadd_with_overflow_Int32"(%277, %274, %56) : $(Builtin.Int32, Builtin.Int1) // users: %279, %285
+  %279 = tuple_extract %278, 1                    // user: %280
+  cond_br %279, bb37, bb38                        // id: %280
+
+bb36:                                             // Preds: bb14
+  cond_fail %44, "Unexpectedly found nil while unwrapping an Optional value" // id: %281
+  unreachable                                     // id: %282
+
+bb37:                                             // Preds: bb35
+  %283 = integer_literal $Builtin.Int32, -1       // user: %284
+  br bb39(%283)                                   // id: %284
+
+bb38:                                             // Preds: bb35
+  %285 = tuple_extract %278, 0                    // user: %286
+  br bb39(%285)                                   // id: %286
+
+// %287                                           // user: %288
+bb39(%287 : $Builtin.Int32):                      // Preds: bb38 bb37
+  %288 = struct $UInt32 (%287)                    // user: %289
+  store %288 to %275                              // id: %289
+  %290 = integer_literal $Builtin.Int32, 0        // user: %291
+  %291 = struct $UInt32 (%290)                    // user: %292
+  store %291 to %272                              // id: %292
+  %293 = struct $Bool (%56)                       // user: %295
+  %294 = struct_element_addr %1, #CounterPipelineOwner.interactionCandidate // user: %295
+  store %293 to %294                              // id: %295
+  %296 = struct_element_addr %7, #CounterControl.commits // users: %304, %297
+  %297 = struct_element_addr %296, #Int._value    // user: %298
+  %298 = load %297                                // user: %299
+  %299 = builtin "sadd_with_overflow_Int64"(%298, %43, %44) : $(Builtin.Int64, Builtin.Int1) // users: %301, %300
+  %300 = tuple_extract %299, 0                    // user: %303
+  %301 = tuple_extract %299, 1                    // user: %302
+  cond_fail %301, "arithmetic overflow"           // id: %302
+  %303 = struct $Int (%300)                       // user: %304
+  store %303 to %296                              // id: %304
+  %305 = struct $UnsafeMutablePointer<CounterControl> (%6) // users: %316, %311
+  %306 = struct_element_addr %1, #CounterPipelineOwner.runtimeClaim // user: %307
+  %307 = load %306                                // users: %311, %316
+  debug_value %1, let, name "self", argno 1, expr op_deref // id: %308
+  %309 = metatype $@thin CounterControl.Type      // users: %316, %311
+  // function_ref static CounterControl.requireRuntimeClaim(at:_:)
+  %310 = function_ref @$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ : $@convention(method) (UnsafeMutablePointer<CounterControl>, UInt64, @thin CounterControl.Type) -> () // users: %316, %311
+  %311 = apply %310(%305, %307, %309) : $@convention(method) (UnsafeMutablePointer<CounterControl>, UInt64, @thin CounterControl.Type) -> ()
+  %312 = struct_element_addr %7, #CounterControl.runtimeCandidateActionIdentity // user: %313
+  %313 = load %312                                // users: %318, %315
+  debug_value %1, let, name "self", argno 2, expr op_deref // id: %314
+  debug_value %313, let, name "newValue", argno 1 // id: %315
+  %316 = apply %310(%305, %307, %309) : $@convention(method) (UnsafeMutablePointer<CounterControl>, UInt64, @thin CounterControl.Type) -> ()
+  %317 = struct_element_addr %7, #CounterControl.runtimeActionIdentity // user: %318
+  store %313 to %317                              // id: %318
+  debug_value undef : $*CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, var, name "self", argno 2, expr op_deref // id: %319
+  %320 = struct_element_addr %1, #CounterPipelineOwner.committedPresentation // user: %321
+  store %157 to %320                              // id: %321
+  %322 = struct_element_addr %7, #CounterControl.runtime // user: %323
+  %323 = struct_element_addr %322, #CounterRuntimeControl.committedPresentation // user: %324
+  store %157 to %323                              // id: %324
+  %325 = unchecked_enum_data %157, #Optional.some!enumelt // user: %328
+  %326 = struct_element_addr %7, #CounterControl.inputGate // user: %328
+  // function_ref HostNormalizedInputGate.installPhysicalPresentation(_:)
+  %327 = function_ref @$s23GiftUIHostConfiguration23HostNormalizedInputGateV27installPhysicalPresentationyy0A2UI0J8RevisionVF : $@convention(method) (PresentationRevision, @inout HostNormalizedInputGate) -> () // user: %328
+  %328 = apply %327(%325, %326) : $@convention(method) (PresentationRevision, @inout HostNormalizedInputGate) -> ()
+  br bb16                                         // id: %329
+
+bb40:                                             // Preds: bb15
+  debug_value undef : $*CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, var, name "self", argno 2, expr op_deref // id: %330
+  %331 = enum $InteractionCandidateDisposition, #InteractionCandidateDisposition.discard!enumelt // user: %346
+  %332 = struct_element_addr %1, #CounterPipelineOwner.interaction // users: %355, %352, %349, %333
+  %333 = struct_element_addr %332, #InteractionOwnedKeyState.state // users: %346, %334
+  %334 = struct_element_addr %333, #InteractionState.phase // user: %335
+  %335 = load %334                                // user: %337
+  %336 = alloc_stack [lexical] $InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase // users: %337, %344, %341
+  store %335 to %336                              // id: %337
+  %338 = enum $InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase, #InteractionState.Phase.readyForOffer!enumelt // user: %340
+  %339 = alloc_stack [lexical] $InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase // users: %340, %343, %342
+  store %338 to %339                              // id: %340
+  %341 = builtin "getEnumTag"<InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase>(%336) : $Builtin.Int32
+  %342 = builtin "getEnumTag"<InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>.Phase>(%339) : $Builtin.Int32
+  dealloc_stack %339                              // id: %343
+  dealloc_stack %336                              // id: %344
+  // function_ref specialized InteractionState<>.resolveCandidate(_:)
+  %345 = function_ref @$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5 : $@convention(method) (InteractionCandidateDisposition, @inout InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> () // user: %346
+  %346 = apply %345(%331, %333) : $@convention(method) (InteractionCandidateDisposition, @inout InteractionState<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>) -> ()
+  %347 = integer_literal $Builtin.Int32, 0        // user: %348
+  %348 = struct $UInt32 (%347)                    // users: %375, %350
+  %349 = struct_element_addr %332, #InteractionOwnedKeyState.candidateComponents // user: %350
+  store %348 to %349                              // id: %350
+  %351 = enum $Optional<InteractionError>, #Optional.none!enumelt // user: %353
+  %352 = struct_element_addr %332, #InteractionOwnedKeyState.failure // user: %353
+  store %351 to %352                              // id: %353
+  %354 = struct $Bool (%56)                       // users: %376, %356
+  %355 = struct_element_addr %332, #InteractionOwnedKeyState.isStaging // user: %356
+  store %354 to %355                              // id: %356
+  %357 = struct_element_addr %1, #CounterPipelineOwner.generations // users: %361, %358
+  %358 = struct_element_addr %357, #RuntimeActionGenerationAllocator.pendingReservationCount // users: %375, %359
+  %359 = struct_element_addr %358, #UInt32._value // user: %360
+  %360 = load %359                                // user: %364
+  %361 = struct_element_addr %357, #RuntimeActionGenerationAllocator.retiredReservationCount // users: %374, %362
+  %362 = struct_element_addr %361, #UInt32._value // user: %363
+  %363 = load %362                                // user: %364
+  %364 = builtin "uadd_with_overflow_Int32"(%363, %360, %56) : $(Builtin.Int32, Builtin.Int1) // users: %365, %370
+  %365 = tuple_extract %364, 1                    // user: %366
+  cond_br %365, bb42, bb43                        // id: %366
+
+bb41:                                             // Preds: bb15
+  br bb45                                         // id: %367
+
+bb42:                                             // Preds: bb40
+  %368 = integer_literal $Builtin.Int32, -1       // user: %369
+  br bb44(%368)                                   // id: %369
+
+bb43:                                             // Preds: bb40
+  %370 = tuple_extract %364, 0                    // user: %371
+  br bb44(%370)                                   // id: %371
+
+// %372                                           // user: %373
+bb44(%372 : $Builtin.Int32):                      // Preds: bb43 bb42
+  %373 = struct $UInt32 (%372)                    // user: %374
+  store %373 to %361                              // id: %374
+  store %348 to %358                              // id: %375
+  store %354 to %161                              // id: %376
+  br bb45                                         // id: %377
+
+bb45:                                             // Preds: bb41 bb44
+  %378 = enum $Optional<SemanticCompleteIdentity>, #Optional.none!enumelt // users: %400, %390, %383, %397
+  %379 = load %4                                  // users: %387, %385, %398
+  %380 = struct_element_addr %1, #CounterPipelineOwner.runtimeClaim // user: %381
+  %381 = load %380                                // users: %387, %398
+  debug_value %1, let, name "self", argno 2, expr op_deref // id: %382
+  debug_value %378, let, name "newValue", argno 1 // id: %383
+  %384 = metatype $@thin CounterControl.Type      // users: %398, %387
+  %385 = struct_extract %379, #UnsafeMutablePointer._rawValue // user: %388
+  // function_ref static CounterControl.requireRuntimeClaim(at:_:)
+  %386 = function_ref @$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ : $@convention(method) (UnsafeMutablePointer<CounterControl>, UInt64, @thin CounterControl.Type) -> () // users: %398, %387
+  %387 = apply %386(%379, %381, %384) : $@convention(method) (UnsafeMutablePointer<CounterControl>, UInt64, @thin CounterControl.Type) -> ()
+  %388 = pointer_to_address %385 to [strict] $*CounterControl // users: %399, %389
+  %389 = struct_element_addr %388, #CounterControl.runtimeCandidateRootIdentity // user: %390
+  store %378 to %389                              // id: %390
+  %391 = struct_element_addr %1, #CounterPipelineOwner.models // user: %392
+  %392 = load %391                                // users: %426, %425, %427
+  %393 = struct_element_addr %1, #CounterPipelineOwner.frameActive // users: %444, %394
+  %394 = struct_element_addr %393, #Bool._value   // user: %395
+  %395 = load %394                                // user: %422
+  debug_value %1, let, name "self", argno 2, expr op_deref // id: %396
+  debug_value %378, let, name "newValue", argno 1 // id: %397
+  %398 = apply %386(%379, %381, %384) : $@convention(method) (UnsafeMutablePointer<CounterControl>, UInt64, @thin CounterControl.Type) -> ()
+  %399 = struct_element_addr %388, #CounterControl.runtimeCandidateActionIdentity // user: %400
+  store %378 to %399                              // id: %400
+  %401 = struct_element_addr %1, #CounterPipelineOwner.geometry // users: %421, %406, %405, %404, %402
+  debug_value %401, var, name "self", argno 1, expr op_deref // id: %402
+  // function_ref StaticCounterGeometry.resetRender()
+  %403 = function_ref @$s17P08CounterRuntime06StaticB8GeometryV11resetRenderyyF : $@convention(method) (@inout StaticCounterGeometry) -> () // user: %404
+  %404 = apply %403(%401) : $@convention(method) (@inout StaticCounterGeometry) -> ()
+  debug_value %401, var, name "self", argno 1, expr op_deref // id: %405
+  %406 = struct_element_addr %401, #StaticCounterGeometry.plan // users: %411, %407
+  %407 = struct_element_addr %406, #StaticRecordDrawingWorkspace.base // users: %414, %413, %412, %409
+  // function_ref StaticCounterDrawingWorkspace.discard()
+  %408 = function_ref @$s17P08CounterRuntime06StaticB16DrawingWorkspaceV7discardyyF : $@convention(method) (@inout StaticCounterDrawingWorkspace) -> () // users: %413, %409
+  %409 = apply %408(%407) : $@convention(method) (@inout StaticCounterDrawingWorkspace) -> ()
+  %410 = enum $Optional<SemanticRecordReference>, #Optional.none!enumelt // user: %419
+  %411 = struct_element_addr %406, #StaticRecordDrawingWorkspace.qualification // user: %419
+  debug_value %407, var, name "self", argno 1, expr op_deref // id: %412
+  %413 = apply %408(%407) : $@convention(method) (@inout StaticCounterDrawingWorkspace) -> ()
+  %414 = struct_element_addr %407, #StaticCounterDrawingWorkspace.pathRegion // user: %415
+  %415 = load %414                                // user: %418
+  %416 = struct $UInt8 (%22)                      // user: %418
+  // function_ref specialized UnsafeMutableRawBufferPointer.initializeMemory<A>(as:repeating:)
+  %417 = function_ref @$sSw16initializeMemory2as9repeatingSryxGxm_xtlFs5UInt8V_Ttg5 : $@convention(method) (UInt8, UnsafeMutableRawBufferPointer) -> UnsafeMutableBufferPointer<UInt8> // user: %418
+  %418 = apply %417(%416, %415) : $@convention(method) (UInt8, UnsafeMutableRawBufferPointer) -> UnsafeMutableBufferPointer<UInt8>
+  store %410 to %411                              // id: %419
+  // function_ref StaticCounterGeometry.resetLayout()
+  %420 = function_ref @$s17P08CounterRuntime06StaticB8GeometryV11resetLayoutyyF : $@convention(method) (@inout StaticCounterGeometry) -> () // user: %421
+  %421 = apply %420(%401) : $@convention(method) (@inout StaticCounterGeometry) -> ()
+  cond_br %395, bb46, bb47                        // id: %422
+
+bb46:                                             // Preds: bb45
+  debug_value undef : $*CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, var, name "self", argno 2, expr op_deref // id: %423
+  // function_ref specialized closure #1 in ObservableModelScope<>.endFrame()
+  %424 = function_ref @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKFys6UInt16VXEfU_17P08CounterRuntime0l5OwnedE0V_0kL6Schema0leO0OTg5 : $@convention(thin) (UInt16, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> () // user: %425
+  %425 = partial_apply [callee_guaranteed] [on_stack] %424(%392) : $@convention(thin) (UInt16, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> () // users: %426, %434, %437
+  %426 = mark_dependence %425 on %392             // user: %431
+  %427 = struct_extract %392, #ObservableModelScope.ownership // user: %428
+  %428 = struct_extract %427, #UnsafeMutablePointer._rawValue // user: %429
+  %429 = pointer_to_address %428 to [strict] $*ObservableModelOwnership // user: %431
+  // function_ref ObservableModelOwnership.endFrame(reclaim:)
+  %430 = function_ref @$s21GiftUIObservableState24ObservableModelOwnershipV8endFrame7reclaimyys6UInt16VXE_tAA0dC5ErrorOYKF : $@convention(method) (@guaranteed @noescape @callee_guaranteed (UInt16) -> (), @inout ObservableModelOwnership) -> @error ObservableStateError // user: %431
+  try_apply %430(%426, %429) : $@convention(method) (@guaranteed @noescape @callee_guaranteed (UInt16) -> (), @inout ObservableModelOwnership) -> @error ObservableStateError, normal bb48, error bb49 // id: %431
+
+bb47:                                             // Preds: bb45
+  br bb16                                         // id: %432
+
+bb48(%433 : $()):                                 // Preds: bb46
+  dealloc_stack %425                              // id: %434
+  br bb50                                         // id: %435
+
+bb49(%436 : $ObservableStateError):               // Preds: bb46
+  dealloc_stack %425                              // id: %437
+  debug_value undef : $*CounterPipelineOwner<StaticCounterGeometry, StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>, StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>, StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, var, name "self", argno 2, expr op_deref // id: %438
+  %439 = struct $Bool (%44)                       // user: %441
+  %440 = struct_element_addr %1, #CounterPipelineOwner.quiescent // user: %441
+  store %439 to %440                              // id: %441
+  br bb50                                         // id: %442
+
+bb50:                                             // Preds: bb49 bb48
+  %443 = struct $Bool (%56)                       // user: %444
+  store %443 to %393                              // id: %444
+  br bb16                                         // id: %445
+
+bb51:                                             // Preds: bb5
+  br bb6(%67)                                     // id: %446
+
+bb52:                                             // Preds: bb5
+  %447 = builtin "cmp_sge_Int64"(%57, %33) : $Builtin.Int1 // user: %448
+  %448 = builtin "int_expect_Int1"(%447, %44) : $Builtin.Int1 // user: %449
+  cond_br %448, bb53, bb54                        // id: %449
+
+bb53:                                             // Preds: bb52
+  %450 = builtin "cmp_slt_Int64"(%57, %72) : $Builtin.Int1 // user: %451
+  %451 = builtin "int_expect_Int1"(%450, %44) : $Builtin.Int1 // user: %452
+  cond_br %451, bb55, bb56                        // id: %452
+
+bb54:                                             // Preds: bb52
+  %453 = builtin "cmp_sge_Int64"(%55, %57) : $Builtin.Int1 // user: %454
+  %454 = builtin "int_expect_Int1"(%453, %56) : $Builtin.Int1 // user: %455
+  cond_br %454, bb57, bb58                        // id: %455
+
+bb55:                                             // Preds: bb53
+  %456 = builtin "zextOrBitCast_Int8_Int16"(%30) : $Builtin.Int16 // user: %458
+  %457 = integer_literal $Builtin.Int16, 15       // user: %458
+  %458 = builtin "and_Int16"(%456, %457) : $Builtin.Int16 // user: %459
+  %459 = builtin "shl_Int16"(%54, %458) : $Builtin.Int16 // user: %460
+  br bb6(%459)                                    // id: %460
+
+bb56:                                             // Preds: bb53
+  br bb6(%67)                                     // id: %461
+
+bb57:                                             // Preds: bb54
+  br bb6(%67)                                     // id: %462
+
+bb58:                                             // Preds: bb54
+  %463 = builtin "ssub_with_overflow_Int64"(%33, %57, %44) : $(Builtin.Int64, Builtin.Int1) // users: %465, %464
+  %464 = tuple_extract %463, 0                    // user: %467
+  %465 = tuple_extract %463, 1                    // user: %466
+  cond_fail %465, "arithmetic overflow"           // id: %466
+  %467 = builtin "truncOrBitCast_Int64_Int16"(%464) : $Builtin.Int16 // user: %469
+  %468 = integer_literal $Builtin.Int16, 15       // user: %469
+  %469 = builtin "and_Int16"(%467, %468) : $Builtin.Int16 // user: %470
+  %470 = builtin "lshr_Int16"(%54, %469) : $Builtin.Int16 // user: %471
+  br bb6(%470)                                    // id: %471
+
+bb59:                                             // Preds: bb2
+  %472 = integer_literal $Builtin.Int16, 0        // user: %473
+  br bb3(%472)                                    // id: %473
+
+bb60:                                             // Preds: bb2
+  %474 = integer_literal $Builtin.Int16, 0        // users: %490, %489
+  %475 = builtin "cmp_sge_Int64"(%57, %33) : $Builtin.Int1 // user: %476
+  %476 = builtin "int_expect_Int1"(%475, %44) : $Builtin.Int1 // user: %477
+  cond_br %476, bb61, bb62                        // id: %477
+
+bb61:                                             // Preds: bb60
+  %478 = builtin "cmp_slt_Int64"(%57, %62) : $Builtin.Int1 // user: %479
+  %479 = builtin "int_expect_Int1"(%478, %44) : $Builtin.Int1 // user: %480
+  cond_br %479, bb63, bb64                        // id: %480
+
+bb62:                                             // Preds: bb60
+  %481 = builtin "cmp_sge_Int64"(%55, %57) : $Builtin.Int1 // user: %482
+  %482 = builtin "int_expect_Int1"(%481, %56) : $Builtin.Int1 // user: %483
+  cond_br %482, bb65, bb66                        // id: %483
+
+bb63:                                             // Preds: bb61
+  %484 = builtin "zextOrBitCast_Int8_Int16"(%30) : $Builtin.Int16 // user: %486
+  %485 = integer_literal $Builtin.Int16, 15       // user: %486
+  %486 = builtin "and_Int16"(%484, %485) : $Builtin.Int16 // user: %487
+  %487 = builtin "shl_Int16"(%54, %486) : $Builtin.Int16 // user: %488
+  br bb3(%487)                                    // id: %488
+
+bb64:                                             // Preds: bb61
+  br bb3(%474)                                    // id: %489
+
+bb65:                                             // Preds: bb62
+  br bb3(%474)                                    // id: %490
+
+bb66:                                             // Preds: bb62
+  %491 = builtin "ssub_with_overflow_Int64"(%33, %57, %44) : $(Builtin.Int64, Builtin.Int1) // users: %493, %492
+  %492 = tuple_extract %491, 0                    // user: %495
+  %493 = tuple_extract %491, 1                    // user: %494
+  cond_fail %493, "arithmetic overflow"           // id: %494
+  %495 = builtin "truncOrBitCast_Int64_Int16"(%492) : $Builtin.Int16 // user: %497
+  %496 = integer_literal $Builtin.Int16, 15       // user: %497
+  %497 = builtin "and_Int16"(%495, %496) : $Builtin.Int16 // user: %498
+  %498 = builtin "lshr_Int16"(%54, %497) : $Builtin.Int16 // user: %499
+  br bb3(%498)                                    // id: %499
+} // end sil function '$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA06StaticB8GeometryV_AA0L30TwoInteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAA0lno9CommittedQ0VyANGAA0lno3HitQ0VyANGTg5'

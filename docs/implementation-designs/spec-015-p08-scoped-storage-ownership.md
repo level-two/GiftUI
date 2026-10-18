@@ -18,6 +18,12 @@ superseded_by: null
 
 # Implementation Design — P08 Scoped Storage Ownership
 
+Current [E/F bounded actual consumer result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/README.md), 2026-10-18:
+allfocused compile/privacy/body/SIL prerequisites PASS; bothactualselected metadata
+boundaries resolve with concrete typed cleanup/scalar counters. Fullcurrentcallee,
+private14loan/Optional/lifetime/safety/strictcold/P08 remain open; no source repair
+or budgetreset. Next grouped existingcommand preparation records receipt prerequisites.
+
 Current [grouped E/F proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-grouped-inventory/README.md), 2026-10-18:
 23sites/fourfiles group actual resolveCandidate metadata boundaries with direct
 readiness/poison/reset/exchange/saturation dependencies. Protected P08 backing and

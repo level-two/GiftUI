@@ -1,0 +1,139 @@
+{
+  "files": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/README.md",
+      "sha256": "ed5c2b820b9ba0022727c0e2232bae7b4cb833ccd583abdd288339bfd0961ac0",
+      "bytes": 3365
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/actual-p08-cleanup.sil.txt",
+      "sha256": "2e30564be499a5fe9ceb97304fa3a3f74de8e0e71585cda51c52e54d7d532ef3",
+      "bytes": 51865
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/actual-sil-functions.json",
+      "sha256": "86ffb90b9b92a14210e837bccc69bfdbe98904e814fb8747d8e24b624d30ad9e",
+      "bytes": 14389
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/actual-static-cleanup.object.txt",
+      "sha256": "595171b2190e42d402788e0134a26e0e75f54c8308df789d403d405a30f6773f",
+      "bytes": 33546
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/actual-static-cleanup.sil.txt",
+      "sha256": "8d764ace9441ecf30b4b04b2a2101c9ce74604400009e1df33c3c0e7bb8f5748",
+      "bytes": 58378
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/compile-result.json",
+      "sha256": "7ad0e256b37b304ed2b367473647e0d80afeb03c6a6d28e9ebe11637c8c3c231",
+      "bytes": 244920
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/direct-10.sil.txt",
+      "sha256": "16307622b23d360d897146ae220f0d46dd461decaa865bdd7b43386492be622b",
+      "bytes": 32005
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/direct-11.sil.txt",
+      "sha256": "c98d9ad8801114c0b52e253283ea768e0dba72bc1845433569f0cbae5447b8e1",
+      "bytes": 6929
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/direct-12.sil.txt",
+      "sha256": "ef854c60a6f08932b0261b0cb74e31e51947b3e48d24b5e99af7acf40c125e99",
+      "bytes": 6819
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/direct-13.sil.txt",
+      "sha256": "f1bebef0aa0c8d724f96997fd82f6ff9668fa6867b24175a61312bdb810fc64a",
+      "bytes": 6920
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/direct-4.sil.txt",
+      "sha256": "ab2e4c7689b5bd8353904cf4ed568f6994dcda396634e1976f5fa3e9713943ea",
+      "bytes": 2472
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/direct-5.sil.txt",
+      "sha256": "7180d79f7a205cdb23104aebfda213358c732c13e063481b7838d6bc4ad0e721",
+      "bytes": 2400
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/direct-6.sil.txt",
+      "sha256": "a5b44e3e3015ee7401d247ffb48021db116874af5b417f64851ab18109f04fd6",
+      "bytes": 4967
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/direct-7.sil.txt",
+      "sha256": "faa9d7518d31527273e59aa5ed50ac07e3b373bc66295ff39cdb137d81a52864",
+      "bytes": 4925
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/direct-8.sil.txt",
+      "sha256": "076a9141c7f13a57872e8d1e81c29274a6c7bab1f39d3af50b1d441add3c6aa6",
+      "bytes": 4958
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/direct-9.sil.txt",
+      "sha256": "f33200823a9dc7a4139423934c8041ac82a8fa37af3fbfc85515f95943b33db7",
+      "bytes": 32560
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/findings.json",
+      "sha256": "9d9d70109358a2aa2c95bfc4cf5350cb5c0132607fb0c8a78f277084dc1286fc",
+      "bytes": 3779
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/frontier23-current.json",
+      "sha256": "08ce720a158201de898f0641726976d90df50fbe299dec985b35d480a6ff7633",
+      "bytes": 90427
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/matching-object-functions.json",
+      "sha256": "45e37dfccde6371222d5802f0055ca78c0450c84e75410874f00fdfc2cc28f33",
+      "bytes": 903
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/next-group-preparation.json",
+      "sha256": "1ed7529a952192c05d4d6780e156b644b884b362502575dc821f28abafb1ed34",
+      "bytes": 35258
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/p08-state-resolve.sil.txt",
+      "sha256": "f3e0c51f8d8c515bb4e5305d0f981929bca9d9284871a18829d155ee35272dd4",
+      "bytes": 9367
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/qualification-result.json",
+      "sha256": "8ccbe1a692b0f4d0638caabfe16af7c7865597fdca7bfedaca6fd64b1ba3c59b",
+      "bytes": 341293
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/receipt.json",
+      "sha256": "6e819240e865d4b006c6d03e5e18dfcefc10ba565587564bc231bda095b72cc8",
+      "bytes": 2036
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/result.json",
+      "sha256": "8bb1a2444dd670acce341a9012e7510cfc63cd59ada0de9ded8c26c0bb733ada",
+      "bytes": 11902
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/static-state-resolve.object.txt",
+      "sha256": "4320eee4cbf2624d3dcb193e54f2f50a18b169989d487c784d824258a9234f3b",
+      "bytes": 6215
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/static-state-resolve.sil.txt",
+      "sha256": "d9509ba179762a41ef3018f544359610d968765f1e97d76e7e205446edd083a8",
+      "bytes": 12439
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/variants-result.json",
+      "sha256": "887b13be9d682b3001928706aa628a67776052cb9349468c696e791ee4c97d44",
+      "bytes": 9184
+    }
+  ]
+}

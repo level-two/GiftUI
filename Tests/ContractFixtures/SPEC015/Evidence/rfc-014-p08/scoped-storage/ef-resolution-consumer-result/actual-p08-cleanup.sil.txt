@@ -1,0 +1,650 @@
+// current SIL lines 157861-158509
+sil shared @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5 : $@convention(method) (RuntimeCleanupAction, @lifetime(copy 1) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () {
+[%1: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "action"                                    // users: %79, %30, %20, %2
+// %1 "self"                                      // users: %300, %294, %292, %382, %379, %377, %368, %366, %172, %147, %426, %387, %343, %318, %148, %306, %280, %257, %187, %143, %183, %132, %107, %101, %165, %155, %97, %93, %89, %85, %80, %4, %3
+bb0(%0 : $RuntimeCleanupAction, %1 : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>):
+  debug_value %0, let, name "action", argno 1     // id: %2
+  debug_value %1, var, name "self", argno 2, expr op_deref // id: %3
+  %4 = struct_element_addr %1, #CounterPipelineOwner.control // users: %365, %5
+  %5 = struct_element_addr %4, #UnsafeMutablePointer._rawValue // user: %6
+  %6 = load %5                                    // users: %7, %291
+  %7 = pointer_to_address %6 to [strict] $*CounterControl // users: %312, %308, %303, %298, %282, %51, %32, %8
+  %8 = struct_element_addr %7, #CounterControl.cleanupCount // users: %50, %9
+  %9 = struct_element_addr %8, #Int._value        // users: %21, %10
+  %10 = load %9                                   // user: %12
+  %11 = integer_literal $Builtin.Int64, 9         // users: %35, %12
+  %12 = builtin "cmp_sge_Int64"(%10, %11) : $Builtin.Int1 // user: %13
+  cond_fail %12, "precondition failure"           // id: %13
+  %14 = string_literal utf8 "cleanup"             // user: %16
+  %15 = integer_literal $Builtin.Word, 7          // user: %18
+  %16 = builtin "ptrtoint_Word"(%14) : $Builtin.Word // user: %18
+  %17 = integer_literal $Builtin.Int8, 2          // users: %30, %18
+  %18 = struct $StaticString (%16, %15, %17)      // user: %20
+  // function_ref specialized counterTrace<A>(_:_:)
+  %19 = function_ref @$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF17GiftUIRuntimeCore0C13CleanupActionO_Tg5 : $@convention(thin) (StaticString, RuntimeCleanupAction) -> () // user: %20
+  %20 = apply %19(%18, %0) : $@convention(thin) (StaticString, RuntimeCleanupAction) -> ()
+  %21 = load %9                                   // users: %39, %34, %35, %45
+  %22 = integer_literal $Builtin.Int8, 0          // user: %30
+  %23 = integer_literal $Builtin.Int8, 1          // user: %30
+  %24 = integer_literal $Builtin.Int8, 3          // user: %30
+  %25 = integer_literal $Builtin.Int8, 4          // user: %30
+  %26 = integer_literal $Builtin.Int8, 5          // user: %30
+  %27 = integer_literal $Builtin.Int8, 6          // user: %30
+  %28 = integer_literal $Builtin.Int8, 7          // user: %30
+  %29 = integer_literal $Builtin.Int8, 8          // user: %30
+  %30 = select_enum %0, case #RuntimeCleanupAction.releaseCanvasCallable!enumelt: %22, case #RuntimeCleanupAction.discardInteractionCandidate!enumelt: %23, case #RuntimeCleanupAction.commitInteractionCandidate!enumelt: %17, case #RuntimeCleanupAction.resetRenderWorkspace!enumelt: %24, case #RuntimeCleanupAction.resetDrawingPlan!enumelt: %25, case #RuntimeCleanupAction.resetLayoutCandidate!enumelt: %26, case #RuntimeCleanupAction.discardSemanticCandidate!enumelt: %27, case #RuntimeCleanupAction.discardObservableCandidate!enumelt: %28, case #RuntimeCleanupAction.resetAttemptStorage!enumelt: %29 : $Builtin.Int8 // users: %470, %442, %57, %31
+  %31 = struct $UInt8 (%30)                       // user: %42
+  %32 = struct_element_addr %7, #CounterControl.cleanupOrder // user: %38
+  %33 = integer_literal $Builtin.Int64, 0         // users: %461, %477, %433, %449, %34
+  %34 = builtin "cmp_slt_Int64"(%21, %33) : $Builtin.Int1 // user: %36
+  %35 = builtin "cmp_sge_Int64"(%21, %11) : $Builtin.Int1 // user: %36
+  %36 = builtin "or_Int1"(%34, %35) : $Builtin.Int1 // user: %37
+  cond_fail %36, "Index out of bounds"            // id: %37
+  %38 = struct_element_addr %32, #InlineArray._storage // user: %40
+  %39 = builtin "truncOrBitCast_Int64_Word"(%21) : $Builtin.Word // user: %41
+  %40 = vector_base_addr %38                      // user: %41
+  %41 = index_addr [stack_protection] %40, %39    // user: %42
+  store %31 to %41                                // id: %42
+  %43 = integer_literal $Builtin.Int64, 1         // users: %285, %45
+  %44 = integer_literal $Builtin.Int1, -1         // users: %477, %465, %462, %449, %437, %434, %425, %267, %285, %164, %45
+  %45 = builtin "sadd_with_overflow_Int64"(%21, %43, %44) : $(Builtin.Int64, Builtin.Int1) // users: %47, %46
+  %46 = tuple_extract %45, 0                      // user: %49
+  %47 = tuple_extract %45, 1                      // user: %48
+  cond_fail %47, "arithmetic overflow"            // id: %48
+  %49 = struct $Int (%46)                         // user: %50
+  store %49 to %8                                 // id: %50
+  %51 = struct_element_addr %7, #CounterControl.cleanups // users: %78, %52
+  %52 = struct_element_addr %51, #UInt16._value   // user: %53
+  %53 = load %52                                  // users: %66, %76
+  %54 = integer_literal $Builtin.Int16, 1         // users: %484, %473, %456, %445
+  %55 = integer_literal $Builtin.Int64, -16       // users: %467, %439, %58
+  %56 = integer_literal $Builtin.Int1, 0          // users: %253, %340, %129, %468, %440, %429, %350, %279, %264, %139, %168
+  %57 = builtin "zextOrBitCast_Int8_Int64"(%30) : $Builtin.Int64 // users: %477, %467, %464, %461, %63, %449, %439, %436, %433, %73, %58
+  %58 = builtin "cmp_slt_Int64"(%57, %55) : $Builtin.Int1 // users: %70, %59
+  cond_br %58, bb1, bb2                           // id: %59
+
+bb1:                                              // Preds: bb0
+  %60 = integer_literal $Builtin.Int16, 0         // user: %61
+  br bb3(%60)                                     // id: %61
+
+bb2:                                              // Preds: bb0
+  %62 = integer_literal $Builtin.Int64, 16        // users: %464, %63
+  %63 = builtin "cmp_slt_Int64"(%62, %57) : $Builtin.Int1 // user: %64
+  cond_br %63, bb62, bb63                         // id: %64
+
+// %65                                            // user: %66
+bb3(%65 : $Builtin.Int16):                        // Preds: bb69 bb68 bb67 bb66 bb62 bb1
+  %66 = builtin "and_Int16"(%53, %65) : $Builtin.Int16 // user: %68
+  %67 = integer_literal $Builtin.Int16, 0         // users: %448, %447, %432, %71, %68
+  %68 = builtin "cmp_ne_Int16"(%66, %67) : $Builtin.Int1 // user: %69
+  cond_fail %68, "precondition failure"           // id: %69
+  cond_br %58, bb4, bb5                           // id: %70
+
+bb4:                                              // Preds: bb3
+  br bb6(%67)                                     // id: %71
+
+bb5:                                              // Preds: bb3
+  %72 = integer_literal $Builtin.Int64, 16        // users: %436, %73
+  %73 = builtin "cmp_slt_Int64"(%72, %57) : $Builtin.Int1 // user: %74
+  cond_br %73, bb54, bb55                         // id: %74
+
+// %75                                            // user: %76
+bb6(%75 : $Builtin.Int16):                        // Preds: bb61 bb60 bb59 bb58 bb54 bb4
+  %76 = builtin "or_Int16"(%53, %75) : $Builtin.Int16 // user: %77
+  %77 = struct $UInt16 (%76)                      // user: %78
+  store %77 to %51                                // id: %78
+  switch_enum %0, case #RuntimeCleanupAction.releaseCanvasCallable!enumelt: bb7, case #RuntimeCleanupAction.resetRenderWorkspace!enumelt: bb8, case #RuntimeCleanupAction.resetDrawingPlan!enumelt: bb9, case #RuntimeCleanupAction.resetLayoutCandidate!enumelt: bb10, case #RuntimeCleanupAction.discardSemanticCandidate!enumelt: bb11, case #RuntimeCleanupAction.discardObservableCandidate!enumelt: bb12, case #RuntimeCleanupAction.discardInteractionCandidate!enumelt: bb13, case #RuntimeCleanupAction.commitInteractionCandidate!enumelt: bb14, case #RuntimeCleanupAction.resetAttemptStorage!enumelt: bb15 // id: %79
+
+bb7:                                              // Preds: bb6
+  %80 = struct_element_addr %1, #CounterPipelineOwner.values // user: %81
+  %81 = load %80                                  // user: %83
+  // function_ref specialized CanvasStagedValues.discard()
+  %82 = function_ref @$s13GiftUIDrawing18CanvasStagedValuesV7discardyyF0A14UISemanticCore23SemanticRecordReferenceV_15P08CounterTable0lm6SchemacN0Vy0lM7Runtime0M6DomainOGTg5 : $@convention(method) (@guaranteed CanvasStagedValues<SemanticRecordReference, P08CounterSchemaCanvasTable<CounterDomain>>) -> () // user: %83
+  %83 = apply %82(%81) : $@convention(method) (@guaranteed CanvasStagedValues<SemanticRecordReference, P08CounterSchemaCanvasTable<CounterDomain>>) -> ()
+  br bb16                                         // id: %84
+
+bb8:                                              // Preds: bb6
+  %85 = struct_element_addr %1, #CounterPipelineOwner.geometry // user: %87
+  // function_ref P08GeometryAccess.resetRender()
+  %86 = function_ref @$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV11resetRenderyyF : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> () // user: %87
+  %87 = apply %86(%85) : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> ()
+  br bb16                                         // id: %88
+
+bb9:                                              // Preds: bb6
+  %89 = struct_element_addr %1, #CounterPipelineOwner.geometry // user: %91
+  // function_ref P08GeometryAccess.resetPlan()
+  %90 = function_ref @$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV9resetPlanyyF : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> () // user: %91
+  %91 = apply %90(%89) : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> ()
+  br bb16                                         // id: %92
+
+bb10:                                             // Preds: bb6
+  %93 = struct_element_addr %1, #CounterPipelineOwner.geometry // user: %95
+  // function_ref P08GeometryAccess.resetLayout()
+  %94 = function_ref @$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV11resetLayoutyyF : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> () // user: %95
+  %95 = apply %94(%93) : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> ()
+  br bb16                                         // id: %96
+
+bb11:                                             // Preds: bb6
+  %97 = struct_element_addr %1, #CounterPipelineOwner.semanticCandidate // users: %169, %98
+  %98 = struct_element_addr %97, #Bool._value     // user: %99
+  %99 = load %98                                  // user: %100
+  cond_br %99, bb17, bb18                         // id: %100
+
+bb12:                                             // Preds: bb6
+  %101 = struct_element_addr %1, #CounterPipelineOwner.observableCandidate // user: %102
+  %102 = struct_element_addr %101, #Bool._value   // user: %103
+  %103 = load %102                                // user: %104
+  cond_br %103, bb22, bb23                        // id: %104
+
+bb13:                                             // Preds: bb6
+  debug_value undef : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, var, name "self", argno 2, expr op_deref // id: %105
+  %106 = enum $InteractionCandidateDisposition, #InteractionCandidateDisposition.discard!enumelt // user: %121
+  %107 = struct_element_addr %1, #CounterPipelineOwner.interaction // users: %130, %127, %124, %108
+  %108 = struct_element_addr %107, #InteractionOwnedKeyState.state // users: %109, %121
+  %109 = struct_element_addr %108, #InteractionState.phase // user: %110
+  %110 = load %109                                // user: %112
+  %111 = alloc_stack [lexical] $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase // users: %112, %119, %116
+  store %110 to %111                              // id: %112
+  %113 = enum $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase, #InteractionState.Phase.readyForOffer!enumelt // user: %115
+  %114 = alloc_stack [lexical] $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase // users: %115, %118, %117
+  store %113 to %114                              // id: %115
+  %116 = builtin "getEnumTag"<InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase>(%111) : $Builtin.Int32
+  %117 = builtin "getEnumTag"<InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase>(%114) : $Builtin.Int32
+  dealloc_stack %114                              // id: %118
+  dealloc_stack %111                              // id: %119
+  // function_ref specialized InteractionState<>.resolveCandidate(_:)
+  %120 = function_ref @$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime0hF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AG0h9CommittedK0AILLVAG0h3HitK0AILLVTg5 : $@convention(method) (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () // user: %121
+  %121 = apply %120(%106, %108) : $@convention(method) (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> ()
+  %122 = integer_literal $Builtin.Int32, 0        // user: %123
+  %123 = struct $UInt32 (%122)                    // users: %182, %125
+  %124 = struct_element_addr %107, #InteractionOwnedKeyState.candidateComponents // user: %125
+  store %123 to %124                              // id: %125
+  %126 = enum $Optional<InteractionError>, #Optional.none!enumelt // user: %128
+  %127 = struct_element_addr %107, #InteractionOwnedKeyState.failure // user: %128
+  store %126 to %127                              // id: %128
+  %129 = struct $Bool (%56)                       // users: %184, %131
+  %130 = struct_element_addr %107, #InteractionOwnedKeyState.isStaging // user: %131
+  store %129 to %130                              // id: %131
+  %132 = struct_element_addr %1, #CounterPipelineOwner.generations // users: %136, %133
+  %133 = struct_element_addr %132, #RuntimeActionGenerationAllocator.pendingReservationCount // users: %182, %134
+  %134 = struct_element_addr %133, #UInt32._value // user: %135
+  %135 = load %134                                // user: %139
+  %136 = struct_element_addr %132, #RuntimeActionGenerationAllocator.retiredReservationCount // users: %181, %137
+  %137 = struct_element_addr %136, #UInt32._value // user: %138
+  %138 = load %137                                // user: %139
+  %139 = builtin "uadd_with_overflow_Int32"(%138, %135, %56) : $(Builtin.Int32, Builtin.Int1) // users: %140, %177
+  %140 = tuple_extract %139, 1                    // user: %141
+  cond_br %140, bb24, bb25                        // id: %141
+
+bb14:                                             // Preds: bb6
+  debug_value undef : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, var, name "self", argno 2, expr op_deref // id: %142
+  %143 = struct_element_addr %1, #CounterPipelineOwner.presentation // user: %144
+  %144 = load %143                                // users: %310, %307, %311, %145
+  switch_enum %144, case #Optional.some!enumelt: bb27, case #Optional.none!enumelt: bb36 // id: %145
+
+bb15:                                             // Preds: bb6
+  // function_ref specialized CounterPipelineOwner<>.discardLocalCandidates()
+  %146 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AFLLVAA0a9CommittedJ0AFLLVAA0a3HitJ0AFLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () // user: %147
+  %147 = apply %146(%1) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> ()
+  %148 = struct_element_addr %1, #CounterPipelineOwner.interactionCandidate // users: %362, %149
+  %149 = struct_element_addr %148, #Bool._value   // user: %150
+  %150 = load %149                                // user: %151
+  cond_br %150, bb40, bb41                        // id: %151
+
+bb16:                                             // Preds: bb50 bb53 bb39 bb26 bb23 bb22 bb18 bb21 bb10 bb9 bb8 bb7
+  %152 = tuple ()                                 // user: %153
+  return %152                                     // id: %153
+
+bb17:                                             // Preds: bb11
+  debug_value undef : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, var, name "self", argno 2, expr op_deref // id: %154
+  %155 = struct_element_addr %1, #CounterPipelineOwner.semantic // user: %156
+  %156 = load %155                                // user: %158
+  // function_ref specialized SemanticRecordStore.discardCandidate()
+  %157 = function_ref @$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5 : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> @error SemanticExpansionError // user: %158
+  try_apply %157(%156) : $@convention(method) (@guaranteed SemanticRecordStore<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>) -> @error SemanticExpansionError, normal bb19, error bb20 // id: %158
+
+bb18:                                             // Preds: bb11
+  br bb16                                         // id: %159
+
+bb19(%160 : $()):                                 // Preds: bb17
+  br bb21                                         // id: %161
+
+bb20(%162 : $SemanticExpansionError):             // Preds: bb17
+  debug_value undef : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, var, name "self", argno 2, expr op_deref // id: %163
+  %164 = struct $Bool (%44)                       // user: %166
+  %165 = struct_element_addr %1, #CounterPipelineOwner.quiescent // user: %166
+  store %164 to %165                              // id: %166
+  br bb21                                         // id: %167
+
+bb21:                                             // Preds: bb20 bb19
+  %168 = struct $Bool (%56)                       // user: %169
+  store %168 to %97                               // id: %169
+  br bb16                                         // id: %170
+
+bb22:                                             // Preds: bb12
+  // function_ref specialized CounterPipelineOwner<>.discardLocalCandidates()
+  %171 = function_ref @$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AFLLVAA0a9CommittedJ0AFLLVAA0a3HitJ0AFLLVTg5 : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () // user: %172
+  %172 = apply %171(%1) : $@convention(method) (@lifetime(copy 0) @inout CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> ()
+  br bb16                                         // id: %173
+
+bb23:                                             // Preds: bb12
+  br bb16                                         // id: %174
+
+bb24:                                             // Preds: bb13
+  %175 = integer_literal $Builtin.Int32, -1       // user: %176
+  br bb26(%175)                                   // id: %176
+
+bb25:                                             // Preds: bb13
+  %177 = tuple_extract %139, 0                    // user: %178
+  br bb26(%177)                                   // id: %178
+
+// %179                                           // user: %180
+bb26(%179 : $Builtin.Int32):                      // Preds: bb25 bb24
+  %180 = struct $UInt32 (%179)                    // user: %181
+  store %180 to %136                              // id: %181
+  store %123 to %133                              // id: %182
+  %183 = struct_element_addr %1, #CounterPipelineOwner.interactionCandidate // user: %184
+  store %129 to %183                              // id: %184
+  br bb16                                         // id: %185
+
+// %186                                           // user: %226
+bb27(%186 : $PresentationRevision):               // Preds: bb14
+  %187 = struct_element_addr %1, #CounterPipelineOwner.interaction // users: %254, %247, %245, %202, %188
+  %188 = struct_element_addr %187, #InteractionOwnedKeyState.state // users: %240, %237, %229, %227, %223, %222, %219, %218, %189
+  %189 = struct_element_addr %188, #InteractionState.phase // users: %243, %190
+  %190 = load %189                                // users: %192, %208
+  %191 = alloc_stack [lexical] $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase // users: %200, %196, %192
+  store %190 to %191                              // id: %192
+  %193 = enum $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase, #InteractionState.Phase.readyForOffer!enumelt // users: %210, %195
+  %194 = alloc_stack [lexical] $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase // users: %199, %197, %195
+  store %193 to %194                              // id: %195
+  %196 = builtin "getEnumTag"<InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase>(%191) : $Builtin.Int32 // user: %198
+  %197 = builtin "getEnumTag"<InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase>(%194) : $Builtin.Int32 // user: %198
+  %198 = builtin "cmp_eq_Int32"(%196, %197) : $Builtin.Int1 // user: %201
+  dealloc_stack %194                              // id: %199
+  dealloc_stack %191                              // id: %200
+  cond_br %198, bb28, bb29                        // id: %201
+
+bb28:                                             // Preds: bb27
+  %202 = struct_element_addr %187, #InteractionOwnedKeyState.failure // users: %252, %203
+  %203 = load %202                                // users: %204, %252
+  switch_enum %203, case #Optional.none!enumelt: bb31, case #Optional.some!enumelt: bb30 // id: %204
+
+bb29:                                             // Preds: bb27
+  br bb35                                         // id: %205
+
+bb30:                                             // Preds: bb28
+  br bb35                                         // id: %206
+
+bb31:                                             // Preds: bb28
+  %207 = alloc_stack [lexical] $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase // users: %215, %211, %208
+  store %190 to %207                              // id: %208
+  %209 = alloc_stack [lexical] $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase // users: %214, %212, %210
+  store %193 to %209                              // id: %210
+  %211 = builtin "getEnumTag"<InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase>(%207) : $Builtin.Int32 // user: %213
+  %212 = builtin "getEnumTag"<InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase>(%209) : $Builtin.Int32 // user: %213
+  %213 = builtin "cmp_eq_Int32"(%211, %212) : $Builtin.Int1 // user: %216
+  dealloc_stack %209                              // id: %214
+  dealloc_stack %207                              // id: %215
+  cond_br %213, bb33, bb32                        // id: %216
+
+bb32:                                             // Preds: bb31
+  br bb34                                         // id: %217
+
+bb33:                                             // Preds: bb31
+  %218 = struct_element_addr %188, #InteractionState.committedRecords // user: %221
+  %219 = struct_element_addr %188, #InteractionState.candidateCommittedRecords // users: %235, %221
+  // function_ref P08CommittedAccess.exchangeContents(with:)
+  %220 = function_ref @$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tF : $@convention(method) (@lifetime(copy 0) @inout P08CommittedAccess, @lifetime(copy 1) @inout P08CommittedAccess) -> () // user: %221
+  %221 = apply %220(%219, %218) : $@convention(method) (@lifetime(copy 0) @inout P08CommittedAccess, @lifetime(copy 1) @inout P08CommittedAccess) -> ()
+  %222 = struct_element_addr %188, #InteractionState.committedHitRegions // user: %225
+  %223 = struct_element_addr %188, #InteractionState.candidateHitRegions // users: %233, %225
+  // function_ref P08HitAccess.exchangeContents(with:)
+  %224 = function_ref @$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tF : $@convention(method) (@lifetime(copy 0) @inout P08HitAccess, @lifetime(copy 1) @inout P08HitAccess) -> () // user: %225
+  %225 = apply %224(%223, %222) : $@convention(method) (@lifetime(copy 0) @inout P08HitAccess, @lifetime(copy 1) @inout P08HitAccess) -> ()
+  %226 = enum $Optional<PresentationRevision>, #Optional.some!enumelt, %186 // user: %228
+  %227 = struct_element_addr %188, #InteractionState.committedPresentationRevision // user: %228
+  store %226 to %227                              // id: %228
+  %229 = struct_element_addr %188, #InteractionState.candidateRecords // user: %231
+  // function_ref P08CandidateAccess.reset()
+  %230 = function_ref @$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF : $@convention(method) (@lifetime(copy 0) @inout P08CandidateAccess) -> () // user: %231
+  %231 = apply %230(%229) : $@convention(method) (@lifetime(copy 0) @inout P08CandidateAccess) -> ()
+  // function_ref P08HitAccess.reset()
+  %232 = function_ref @$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF : $@convention(method) (@lifetime(copy 0) @inout P08HitAccess) -> () // user: %233
+  %233 = apply %232(%223) : $@convention(method) (@lifetime(copy 0) @inout P08HitAccess) -> ()
+  // function_ref P08CommittedAccess.reset()
+  %234 = function_ref @$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF : $@convention(method) (@lifetime(copy 0) @inout P08CommittedAccess) -> () // user: %235
+  %235 = apply %234(%219) : $@convention(method) (@lifetime(copy 0) @inout P08CommittedAccess) -> ()
+  %236 = enum $Optional<InteractionLimits>, #Optional.none!enumelt // user: %238
+  %237 = struct_element_addr %188, #InteractionState.limits // user: %238
+  store %236 to %237                              // id: %238
+  %239 = enum $Optional<InteractionError>, #Optional.none!enumelt // user: %241
+  %240 = struct_element_addr %188, #InteractionState.candidateError // user: %241
+  store %239 to %240                              // id: %241
+  %242 = enum $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase, #InteractionState.Phase.idle!enumelt // user: %243
+  store %242 to %189                              // id: %243
+  br bb34                                         // id: %244
+
+bb34:                                             // Preds: bb32 bb33
+  %245 = struct_element_addr %187, #InteractionOwnedKeyState.candidateComponents // users: %251, %246
+  %246 = load %245                                // user: %248
+  %247 = struct_element_addr %187, #InteractionOwnedKeyState.committedComponents // user: %248
+  store %246 to %247                              // id: %248
+  %249 = integer_literal $Builtin.Int32, 0        // user: %250
+  %250 = struct $UInt32 (%249)                    // user: %251
+  store %250 to %245                              // id: %251
+  store %203 to %202                              // id: %252
+  %253 = struct $Bool (%56)                       // user: %255
+  %254 = struct_element_addr %187, #InteractionOwnedKeyState.isStaging // user: %255
+  store %253 to %254                              // id: %255
+  br bb35                                         // id: %256
+
+bb35:                                             // Preds: bb29 bb30 bb34
+  %257 = struct_element_addr %1, #CounterPipelineOwner.generations // users: %261, %258
+  %258 = struct_element_addr %257, #RuntimeActionGenerationAllocator.pendingReservationCount // users: %278, %259
+  %259 = struct_element_addr %258, #UInt32._value // user: %260
+  %260 = load %259                                // user: %264
+  %261 = struct_element_addr %257, #RuntimeActionGenerationAllocator.committedReservationCount // users: %275, %262
+  %262 = struct_element_addr %261, #UInt32._value // user: %263
+  %263 = load %262                                // user: %264
+  %264 = builtin "uadd_with_overflow_Int32"(%263, %260, %56) : $(Builtin.Int32, Builtin.Int1) // users: %265, %271
+  %265 = tuple_extract %264, 1                    // user: %266
+  cond_br %265, bb37, bb38                        // id: %266
+
+bb36:                                             // Preds: bb14
+  cond_fail %44, "Unexpectedly found nil while unwrapping an Optional value" // id: %267
+  unreachable                                     // id: %268
+
+bb37:                                             // Preds: bb35
+  %269 = integer_literal $Builtin.Int32, -1       // user: %270
+  br bb39(%269)                                   // id: %270
+
+bb38:                                             // Preds: bb35
+  %271 = tuple_extract %264, 0                    // user: %272
+  br bb39(%271)                                   // id: %272
+
+// %273                                           // user: %274
+bb39(%273 : $Builtin.Int32):                      // Preds: bb38 bb37
+  %274 = struct $UInt32 (%273)                    // user: %275
+  store %274 to %261                              // id: %275
+  %276 = integer_literal $Builtin.Int32, 0        // user: %277
+  %277 = struct $UInt32 (%276)                    // user: %278
+  store %277 to %258                              // id: %278
+  %279 = struct $Bool (%56)                       // user: %281
+  %280 = struct_element_addr %1, #CounterPipelineOwner.interactionCandidate // user: %281
+  store %279 to %280                              // id: %281
+  %282 = struct_element_addr %7, #CounterControl.commits // users: %290, %283
+  %283 = struct_element_addr %282, #Int._value    // user: %284
+  %284 = load %283                                // user: %285
+  %285 = builtin "sadd_with_overflow_Int64"(%284, %43, %44) : $(Builtin.Int64, Builtin.Int1) // users: %287, %286
+  %286 = tuple_extract %285, 0                    // user: %289
+  %287 = tuple_extract %285, 1                    // user: %288
+  cond_fail %287, "arithmetic overflow"           // id: %288
+  %289 = struct $Int (%286)                       // user: %290
+  store %289 to %282                              // id: %290
+  %291 = struct $UnsafeMutablePointer<CounterControl> (%6) // users: %302, %297
+  %292 = struct_element_addr %1, #CounterPipelineOwner.runtimeClaim // user: %293
+  %293 = load %292                                // users: %297, %302
+  debug_value %1, let, name "self", argno 1, expr op_deref // id: %294
+  %295 = metatype $@thin CounterControl.Type      // users: %302, %297
+  // function_ref static CounterControl.requireRuntimeClaim(at:_:)
+  %296 = function_ref @$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ : $@convention(method) (UnsafeMutablePointer<CounterControl>, UInt64, @thin CounterControl.Type) -> () // users: %302, %297
+  %297 = apply %296(%291, %293, %295) : $@convention(method) (UnsafeMutablePointer<CounterControl>, UInt64, @thin CounterControl.Type) -> ()
+  %298 = struct_element_addr %7, #CounterControl.runtimeCandidateActionIdentity // user: %299
+  %299 = load %298                                // users: %304, %301
+  debug_value %1, let, name "self", argno 2, expr op_deref // id: %300
+  debug_value %299, let, name "newValue", argno 1 // id: %301
+  %302 = apply %296(%291, %293, %295) : $@convention(method) (UnsafeMutablePointer<CounterControl>, UInt64, @thin CounterControl.Type) -> ()
+  %303 = struct_element_addr %7, #CounterControl.runtimeActionIdentity // user: %304
+  store %299 to %303                              // id: %304
+  debug_value undef : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, var, name "self", argno 2, expr op_deref // id: %305
+  %306 = struct_element_addr %1, #CounterPipelineOwner.committedPresentation // user: %307
+  store %144 to %306                              // id: %307
+  %308 = struct_element_addr %7, #CounterControl.runtime // user: %309
+  %309 = struct_element_addr %308, #CounterRuntimeControl.committedPresentation // user: %310
+  store %144 to %309                              // id: %310
+  %311 = unchecked_enum_data %144, #Optional.some!enumelt // user: %314
+  %312 = struct_element_addr %7, #CounterControl.inputGate // user: %314
+  // function_ref HostNormalizedInputGate.installPhysicalPresentation(_:)
+  %313 = function_ref @$s23GiftUIHostConfiguration23HostNormalizedInputGateV27installPhysicalPresentationyy0A2UI0J8RevisionVF : $@convention(method) (PresentationRevision, @inout HostNormalizedInputGate) -> () // user: %314
+  %314 = apply %313(%311, %312) : $@convention(method) (PresentationRevision, @inout HostNormalizedInputGate) -> ()
+  br bb16                                         // id: %315
+
+bb40:                                             // Preds: bb15
+  debug_value undef : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, var, name "self", argno 2, expr op_deref // id: %316
+  %317 = enum $InteractionCandidateDisposition, #InteractionCandidateDisposition.discard!enumelt // user: %332
+  %318 = struct_element_addr %1, #CounterPipelineOwner.interaction // users: %341, %338, %335, %319
+  %319 = struct_element_addr %318, #InteractionOwnedKeyState.state // users: %320, %332
+  %320 = struct_element_addr %319, #InteractionState.phase // user: %321
+  %321 = load %320                                // user: %323
+  %322 = alloc_stack [lexical] $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase // users: %323, %330, %327
+  store %321 to %322                              // id: %323
+  %324 = enum $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase, #InteractionState.Phase.readyForOffer!enumelt // user: %326
+  %325 = alloc_stack [lexical] $InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase // users: %326, %329, %328
+  store %324 to %325                              // id: %326
+  %327 = builtin "getEnumTag"<InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase>(%322) : $Builtin.Int32
+  %328 = builtin "getEnumTag"<InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>.Phase>(%325) : $Builtin.Int32
+  dealloc_stack %325                              // id: %329
+  dealloc_stack %322                              // id: %330
+  // function_ref specialized InteractionState<>.resolveCandidate(_:)
+  %331 = function_ref @$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime0hF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AG0h9CommittedK0AILLVAG0h3HitK0AILLVTg5 : $@convention(method) (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> () // user: %332
+  %332 = apply %331(%317, %319) : $@convention(method) (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> ()
+  %333 = integer_literal $Builtin.Int32, 0        // user: %334
+  %334 = struct $UInt32 (%333)                    // users: %361, %336
+  %335 = struct_element_addr %318, #InteractionOwnedKeyState.candidateComponents // user: %336
+  store %334 to %335                              // id: %336
+  %337 = enum $Optional<InteractionError>, #Optional.none!enumelt // user: %339
+  %338 = struct_element_addr %318, #InteractionOwnedKeyState.failure // user: %339
+  store %337 to %338                              // id: %339
+  %340 = struct $Bool (%56)                       // users: %362, %342
+  %341 = struct_element_addr %318, #InteractionOwnedKeyState.isStaging // user: %342
+  store %340 to %341                              // id: %342
+  %343 = struct_element_addr %1, #CounterPipelineOwner.generations // users: %347, %344
+  %344 = struct_element_addr %343, #RuntimeActionGenerationAllocator.pendingReservationCount // users: %361, %345
+  %345 = struct_element_addr %344, #UInt32._value // user: %346
+  %346 = load %345                                // user: %350
+  %347 = struct_element_addr %343, #RuntimeActionGenerationAllocator.retiredReservationCount // users: %360, %348
+  %348 = struct_element_addr %347, #UInt32._value // user: %349
+  %349 = load %348                                // user: %350
+  %350 = builtin "uadd_with_overflow_Int32"(%349, %346, %56) : $(Builtin.Int32, Builtin.Int1) // users: %351, %356
+  %351 = tuple_extract %350, 1                    // user: %352
+  cond_br %351, bb42, bb43                        // id: %352
+
+bb41:                                             // Preds: bb15
+  br bb45                                         // id: %353
+
+bb42:                                             // Preds: bb40
+  %354 = integer_literal $Builtin.Int32, -1       // user: %355
+  br bb44(%354)                                   // id: %355
+
+bb43:                                             // Preds: bb40
+  %356 = tuple_extract %350, 0                    // user: %357
+  br bb44(%356)                                   // id: %357
+
+// %358                                           // user: %359
+bb44(%358 : $Builtin.Int32):                      // Preds: bb43 bb42
+  %359 = struct $UInt32 (%358)                    // user: %360
+  store %359 to %347                              // id: %360
+  store %334 to %344                              // id: %361
+  store %340 to %148                              // id: %362
+  br bb45                                         // id: %363
+
+bb45:                                             // Preds: bb41 bb44
+  %364 = enum $Optional<SemanticCompleteIdentity>, #Optional.none!enumelt // users: %386, %376, %369, %383
+  %365 = load %4                                  // users: %373, %371, %384
+  %366 = struct_element_addr %1, #CounterPipelineOwner.runtimeClaim // user: %367
+  %367 = load %366                                // users: %373, %384
+  debug_value %1, let, name "self", argno 2, expr op_deref // id: %368
+  debug_value %364, let, name "newValue", argno 1 // id: %369
+  %370 = metatype $@thin CounterControl.Type      // users: %384, %373
+  %371 = struct_extract %365, #UnsafeMutablePointer._rawValue // user: %374
+  // function_ref static CounterControl.requireRuntimeClaim(at:_:)
+  %372 = function_ref @$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ : $@convention(method) (UnsafeMutablePointer<CounterControl>, UInt64, @thin CounterControl.Type) -> () // users: %384, %373
+  %373 = apply %372(%365, %367, %370) : $@convention(method) (UnsafeMutablePointer<CounterControl>, UInt64, @thin CounterControl.Type) -> ()
+  %374 = pointer_to_address %371 to [strict] $*CounterControl // users: %385, %375
+  %375 = struct_element_addr %374, #CounterControl.runtimeCandidateRootIdentity // user: %376
+  store %364 to %375                              // id: %376
+  %377 = struct_element_addr %1, #CounterPipelineOwner.models // user: %378
+  %378 = load %377                                // users: %412, %411, %413
+  %379 = struct_element_addr %1, #CounterPipelineOwner.frameActive // users: %430, %380
+  %380 = struct_element_addr %379, #Bool._value   // user: %381
+  %381 = load %380                                // user: %408
+  debug_value %1, let, name "self", argno 2, expr op_deref // id: %382
+  debug_value %364, let, name "newValue", argno 1 // id: %383
+  %384 = apply %372(%365, %367, %370) : $@convention(method) (UnsafeMutablePointer<CounterControl>, UInt64, @thin CounterControl.Type) -> ()
+  %385 = struct_element_addr %374, #CounterControl.runtimeCandidateActionIdentity // user: %386
+  store %364 to %385                              // id: %386
+  %387 = struct_element_addr %1, #CounterPipelineOwner.geometry // users: %406, %404, %402, %398, %396, %394, %389, %388
+  debug_value %387, var, name "self", argno 1, expr op_deref // id: %388
+  %389 = struct_element_addr %387, #P08GeometryAccess.descriptor // user: %390
+  %390 = load %389                                // user: %391
+  switch_enum %390, case #P08GeometryDescriptor.`static`!enumelt: bb46, case #P08GeometryDescriptor.dynamic!enumelt: bb47 // id: %391
+
+bb46(%392 : $P08StaticGeometryDescriptor):        // Preds: bb45
+  // function_ref P08GeometryAccess.resetRender()
+  %393 = function_ref @$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV11resetRenderyyF : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> () // user: %394
+  %394 = apply %393(%387) : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> ()
+  // function_ref P08GeometryAccess.resetPlan()
+  %395 = function_ref @$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV9resetPlanyyF : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> () // user: %396
+  %396 = apply %395(%387) : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> ()
+  // function_ref P08GeometryAccess.resetLayout()
+  %397 = function_ref @$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV11resetLayoutyyF : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> () // user: %398
+  %398 = apply %397(%387) : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> ()
+  br bb48                                         // id: %399
+
+bb47(%400 : $P08DynamicGeometryDescriptor):       // Preds: bb45
+  // function_ref P08GeometryAccess.resetRender()
+  %401 = function_ref @$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV11resetRenderyyF : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> () // user: %402
+  %402 = apply %401(%387) : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> ()
+  // function_ref P08GeometryAccess.resetPlan()
+  %403 = function_ref @$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV9resetPlanyyF : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> () // user: %404
+  %404 = apply %403(%387) : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> ()
+  // function_ref P08GeometryAccess.resetLayout()
+  %405 = function_ref @$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV11resetLayoutyyF : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> () // user: %406
+  %406 = apply %405(%387) : $@convention(method) (@lifetime(copy 0) @inout P08GeometryAccess) -> ()
+  br bb48                                         // id: %407
+
+bb48:                                             // Preds: bb47 bb46
+  cond_br %381, bb49, bb50                        // id: %408
+
+bb49:                                             // Preds: bb48
+  debug_value undef : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, var, name "self", argno 2, expr op_deref // id: %409
+  // function_ref specialized closure #1 in ObservableModelScope<>.endFrame()
+  %410 = function_ref @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKFys6UInt16VXEfU_17P08CounterRuntime0l5OwnedE0V_0kL6Schema0leO0OTg5 : $@convention(thin) (UInt16, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> () // user: %411
+  %411 = partial_apply [callee_guaranteed] [on_stack] %410(%378) : $@convention(thin) (UInt16, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> () // users: %412, %420, %423
+  %412 = mark_dependence %411 on %378             // user: %417
+  %413 = struct_extract %378, #ObservableModelScope.ownership // user: %414
+  %414 = struct_extract %413, #UnsafeMutablePointer._rawValue // user: %415
+  %415 = pointer_to_address %414 to [strict] $*ObservableModelOwnership // user: %417
+  // function_ref ObservableModelOwnership.endFrame(reclaim:)
+  %416 = function_ref @$s21GiftUIObservableState24ObservableModelOwnershipV8endFrame7reclaimyys6UInt16VXE_tAA0dC5ErrorOYKF : $@convention(method) (@guaranteed @noescape @callee_guaranteed (UInt16) -> (), @inout ObservableModelOwnership) -> @error ObservableStateError // user: %417
+  try_apply %416(%412, %415) : $@convention(method) (@guaranteed @noescape @callee_guaranteed (UInt16) -> (), @inout ObservableModelOwnership) -> @error ObservableStateError, normal bb51, error bb52 // id: %417
+
+bb50:                                             // Preds: bb48
+  br bb16                                         // id: %418
+
+bb51(%419 : $()):                                 // Preds: bb49
+  dealloc_stack %411                              // id: %420
+  br bb53                                         // id: %421
+
+bb52(%422 : $ObservableStateError):               // Preds: bb49
+  dealloc_stack %411                              // id: %423
+  debug_value undef : $*CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>, var, name "self", argno 2, expr op_deref // id: %424
+  %425 = struct $Bool (%44)                       // user: %427
+  %426 = struct_element_addr %1, #CounterPipelineOwner.quiescent // user: %427
+  store %425 to %426                              // id: %427
+  br bb53                                         // id: %428
+
+bb53:                                             // Preds: bb52 bb51
+  %429 = struct $Bool (%56)                       // user: %430
+  store %429 to %379                              // id: %430
+  br bb16                                         // id: %431
+
+bb54:                                             // Preds: bb5
+  br bb6(%67)                                     // id: %432
+
+bb55:                                             // Preds: bb5
+  %433 = builtin "cmp_sge_Int64"(%57, %33) : $Builtin.Int1 // user: %434
+  %434 = builtin "int_expect_Int1"(%433, %44) : $Builtin.Int1 // user: %435
+  cond_br %434, bb56, bb57                        // id: %435
+
+bb56:                                             // Preds: bb55
+  %436 = builtin "cmp_slt_Int64"(%57, %72) : $Builtin.Int1 // user: %437
+  %437 = builtin "int_expect_Int1"(%436, %44) : $Builtin.Int1 // user: %438
+  cond_br %437, bb58, bb59                        // id: %438
+
+bb57:                                             // Preds: bb55
+  %439 = builtin "cmp_sge_Int64"(%55, %57) : $Builtin.Int1 // user: %440
+  %440 = builtin "int_expect_Int1"(%439, %56) : $Builtin.Int1 // user: %441
+  cond_br %440, bb60, bb61                        // id: %441
+
+bb58:                                             // Preds: bb56
+  %442 = builtin "zextOrBitCast_Int8_Int16"(%30) : $Builtin.Int16 // user: %444
+  %443 = integer_literal $Builtin.Int16, 15       // user: %444
+  %444 = builtin "and_Int16"(%442, %443) : $Builtin.Int16 // user: %445
+  %445 = builtin "shl_Int16"(%54, %444) : $Builtin.Int16 // user: %446
+  br bb6(%445)                                    // id: %446
+
+bb59:                                             // Preds: bb56
+  br bb6(%67)                                     // id: %447
+
+bb60:                                             // Preds: bb57
+  br bb6(%67)                                     // id: %448
+
+bb61:                                             // Preds: bb57
+  %449 = builtin "ssub_with_overflow_Int64"(%33, %57, %44) : $(Builtin.Int64, Builtin.Int1) // users: %451, %450
+  %450 = tuple_extract %449, 0                    // user: %453
+  %451 = tuple_extract %449, 1                    // user: %452
+  cond_fail %451, "arithmetic overflow"           // id: %452
+  %453 = builtin "truncOrBitCast_Int64_Int16"(%450) : $Builtin.Int16 // user: %455
+  %454 = integer_literal $Builtin.Int16, 15       // user: %455
+  %455 = builtin "and_Int16"(%453, %454) : $Builtin.Int16 // user: %456
+  %456 = builtin "lshr_Int16"(%54, %455) : $Builtin.Int16 // user: %457
+  br bb6(%456)                                    // id: %457
+
+bb62:                                             // Preds: bb2
+  %458 = integer_literal $Builtin.Int16, 0        // user: %459
+  br bb3(%458)                                    // id: %459
+
+bb63:                                             // Preds: bb2
+  %460 = integer_literal $Builtin.Int16, 0        // users: %476, %475
+  %461 = builtin "cmp_sge_Int64"(%57, %33) : $Builtin.Int1 // user: %462
+  %462 = builtin "int_expect_Int1"(%461, %44) : $Builtin.Int1 // user: %463
+  cond_br %462, bb64, bb65                        // id: %463
+
+bb64:                                             // Preds: bb63
+  %464 = builtin "cmp_slt_Int64"(%57, %62) : $Builtin.Int1 // user: %465
+  %465 = builtin "int_expect_Int1"(%464, %44) : $Builtin.Int1 // user: %466
+  cond_br %465, bb66, bb67                        // id: %466
+
+bb65:                                             // Preds: bb63
+  %467 = builtin "cmp_sge_Int64"(%55, %57) : $Builtin.Int1 // user: %468
+  %468 = builtin "int_expect_Int1"(%467, %56) : $Builtin.Int1 // user: %469
+  cond_br %468, bb68, bb69                        // id: %469
+
+bb66:                                             // Preds: bb64
+  %470 = builtin "zextOrBitCast_Int8_Int16"(%30) : $Builtin.Int16 // user: %472
+  %471 = integer_literal $Builtin.Int16, 15       // user: %472
+  %472 = builtin "and_Int16"(%470, %471) : $Builtin.Int16 // user: %473
+  %473 = builtin "shl_Int16"(%54, %472) : $Builtin.Int16 // user: %474
+  br bb3(%473)                                    // id: %474
+
+bb67:                                             // Preds: bb64
+  br bb3(%460)                                    // id: %475
+
+bb68:                                             // Preds: bb65
+  br bb3(%460)                                    // id: %476
+
+bb69:                                             // Preds: bb65
+  %477 = builtin "ssub_with_overflow_Int64"(%33, %57, %44) : $(Builtin.Int64, Builtin.Int1) // users: %479, %478
+  %478 = tuple_extract %477, 0                    // user: %481
+  %479 = tuple_extract %477, 1                    // user: %480
+  cond_fail %479, "arithmetic overflow"           // id: %480
+  %481 = builtin "truncOrBitCast_Int64_Int16"(%478) : $Builtin.Int16 // user: %483
+  %482 = integer_literal $Builtin.Int16, 15       // user: %483
+  %483 = builtin "and_Int16"(%481, %482) : $Builtin.Int16 // user: %484
+  %484 = builtin "lshr_Int16"(%54, %483) : $Builtin.Int16 // user: %485
+  br bb3(%484)                                    // id: %485
+} // end sil function '$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5'

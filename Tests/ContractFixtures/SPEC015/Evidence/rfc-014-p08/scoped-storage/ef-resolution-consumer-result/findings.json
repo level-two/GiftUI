@@ -1,0 +1,46 @@
+{
+  "disposition": "Selected E/F caller metadata blockers RESOLVED; original23 selected frontier resolved, full codegen/safety gate remains OPEN",
+  "F20": {
+    "actual_static_cleanup_lines": [
+      157201,
+      157857
+    ],
+    "actual_p08_cleanup_lines": [
+      157861,
+      158509
+    ],
+    "State_static_lines": [
+      597235,
+      597342
+    ],
+    "State_p08_lines": [
+      597475,
+      597582
+    ],
+    "proof": "Owned resolver/readiness inline into callers; State resolves to concrete11BB Static/P08 functions with five concrete reset/exchange calls and zero witness_method, no original generic State metadata argument/accessor path. Matching Static caller and State machine functions contain no prior EF metadata references.",
+    "poison_commit": "Static bb27 compares phase; bb28 tests failure Optional; nonready bb29 and poisoned bb30 bypass routing swaps and candidate reset to bb35. Ready/unpoisoned bb31 reaches existing phase check and bb33 swap/reset/revision. Preserve distinction: allocator owner commit handling remains its existing independent cleanup behavior.",
+    "discard": "Static bb13 materializes discard and invokes typed State resolver, clears owned candidate counters/failure/staging, then inline retired counter saturation/pending reset. State discard accepts staging/ready, invalid phase returns, valid branch resets three candidate stores and clears limits/error/phase.",
+    "storage": "Static exchanges direct-4/5 are1BB with no calls; resets direct-6/7/8 are7BB with no calls, exact count-bounded Optional nil writes and count zero. These source types have max2 validated capacity. Machine merged reset/value-initialization helper costs remain next complete-callee screen. P08 reset10BB selects descriptor and retains imported Dynamic alternate; P08 exchanges58BB retain lifetime/capacity/origin/count/retainedBytes checks and optional observer transcript. Do not claim complete P08 adapter transitive costs."
+  },
+  "F21": {
+    "proof": "Allocator resolve/adding entirely inline into actual Static/P08 cleanup; committed/retired fields use UInt32 uadd_with_overflow, select UInt32.max on overflow, then zero pending. No allocator generic call or metadata result argument remains at these call sites.",
+    "static_selected_lines": {
+      "discard": [
+        157352,
+        157395
+      ],
+      "commit": [
+        157555,
+        157592
+      ]
+    },
+    "object": "Actual Static cleanup0x47814 replaces prior allocator instantiateConcreteTypeFromMangledName\u2192resolve pair with scalar field operations. No allocator/metadata reference in captured machine function; do not infer unrelated outlined helper or wholehost cost."
+  },
+  "contracts": {
+    "constructors_defaults_lifetime": "Source cb4b10f0 inverse-token audit preserves all default/body/ownership/lifetime/constructor tokens; privacy93 includes importer getter/three setter/internal-field controls PASS. No capability constructor or mandatory backing opened.",
+    "readers": "C publication/reconcile/borrow/final-reader deferral source is unchanged by EF; previous limited structural result retained with currentfresh selected bodies. No new complete reader/destruction behavioral proof asserted.",
+    "observer": "The cleanup functions contain partial_apply [on_stack] for existing ModelScope endFrame, not evidence of heap allocation. P08 transcript and counterTrace remain observation paths requiring attribution.",
+    "no_claim": "No allocation existence/count, cold cache/witness costs, complete safety/strictzeroheap/resource/P08 acceptance from symbols or global allocate effects."
+  },
+  "next": "Grouped complete current concrete callee and safety screen, then cold only after PASS. No further source candidate is requested by this evidence."
+}

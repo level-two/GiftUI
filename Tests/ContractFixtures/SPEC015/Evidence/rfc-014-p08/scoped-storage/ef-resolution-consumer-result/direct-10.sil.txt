@@ -1,0 +1,472 @@
+// current SIL lines 226402-226872
+sil private @$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tF : $@convention(method) (@lifetime(copy 0) @inout P08HitAccess, @lifetime(copy 1) @inout P08HitAccess) -> () {
+[%0: read v**, write s2.v**, copy v**, destroy v**]
+[%1: read v**, write s2.v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "other"                                     // users: %217, %139, %42, %40, %12, %2
+// %1 "self"                                      // users: %211, %134, %26, %24, %4, %3
+bb0(%0 : $*P08HitAccess, %1 : $*P08HitAccess):
+  debug_value %0, var, name "other", argno 1, expr op_deref // id: %2
+  debug_value %1, var, name "self", argno 2, expr op_deref // id: %3
+  %4 = struct_element_addr %1, #P08HitAccess.lifetime // users: %11, %8, %5
+  %5 = struct_element_addr %4, #P08SessionLifetime.ownerIdentity // user: %6
+  %6 = struct_element_addr %5, #UInt._value       // user: %7
+  %7 = load %6                                    // user: %20
+  %8 = struct_element_addr %4, #P08SessionLifetime.serial // user: %9
+  %9 = struct_element_addr %8, #UInt64._value     // user: %10
+  %10 = load %9                                   // user: %21
+  debug_value %4, let, name "self", argno 2, expr op_deref // id: %11
+  %12 = struct_element_addr %0, #P08HitAccess.lifetime // users: %19, %16, %13
+  %13 = struct_element_addr %12, #P08SessionLifetime.ownerIdentity // user: %14
+  %14 = struct_element_addr %13, #UInt._value     // user: %15
+  %15 = load %14                                  // user: %20
+  %16 = struct_element_addr %12, #P08SessionLifetime.serial // user: %17
+  %17 = struct_element_addr %16, #UInt64._value   // user: %18
+  %18 = load %17                                  // user: %21
+  debug_value %12, let, name "other", argno 1, expr op_deref // id: %19
+  %20 = builtin "cmp_ne_Int64"(%7, %15) : $Builtin.Int1 // user: %22
+  %21 = builtin "cmp_ne_Int64"(%10, %18) : $Builtin.Int1 // user: %22
+  %22 = builtin "or_Int1"(%20, %21) : $Builtin.Int1 // user: %23
+  cond_fail %22, "precondition failure"           // id: %23
+  %24 = struct_element_addr %1, #P08HitAccess.descriptor // users: %314, %223, %145, %143, %130, %96, %58, %25
+  %25 = load %24                                  // users: %28, %27
+  debug_value %1, let, name "self", argno 1, expr op_deref // id: %26
+  debug_value %25, let, name "self", argno 1      // id: %27
+  switch_enum %25, case #P08HitDescriptor.`static`!enumelt: bb1, case #P08HitDescriptor.dynamic!enumelt: bb2 // id: %28
+
+// %29                                            // user: %30
+bb1(%29 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb0
+  %30 = tuple_extract %29, 2                      // users: %32, %31
+  debug_value %30, let, name "capacity"           // id: %31
+  %32 = struct_extract %30, #UInt16._value        // user: %33
+  br bb3(%32)                                     // id: %33
+
+// %34                                            // user: %35
+bb2(%34 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb0
+  %35 = tuple_extract %34, 2                      // users: %37, %36
+  debug_value %35, let, name "capacity"           // id: %36
+  %37 = struct_extract %35, #UInt16._value        // user: %38
+  br bb3(%37)                                     // id: %38
+
+// %39                                            // user: %56
+bb3(%39 : $Builtin.Int16):                        // Preds: bb2 bb1
+  %40 = struct_element_addr %0, #P08HitAccess.descriptor // users: %326, %256, %178, %144, %132, %112, %74, %41
+  %41 = load %40                                  // users: %44, %43
+  debug_value %0, let, name "self", argno 1, expr op_deref // id: %42
+  debug_value %41, let, name "self", argno 1      // id: %43
+  switch_enum %41, case #P08HitDescriptor.`static`!enumelt: bb4, case #P08HitDescriptor.dynamic!enumelt: bb5 // id: %44
+
+// %45                                            // user: %46
+bb4(%45 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb3
+  %46 = tuple_extract %45, 2                      // users: %48, %47
+  debug_value %46, let, name "capacity"           // id: %47
+  %48 = struct_extract %46, #UInt16._value        // user: %49
+  br bb6(%48)                                     // id: %49
+
+// %50                                            // user: %51
+bb5(%50 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb3
+  %51 = tuple_extract %50, 2                      // users: %53, %52
+  debug_value %51, let, name "capacity"           // id: %52
+  %53 = struct_extract %51, #UInt16._value        // user: %54
+  br bb6(%53)                                     // id: %54
+
+// %55                                            // user: %56
+bb6(%55 : $Builtin.Int16):                        // Preds: bb5 bb4
+  %56 = builtin "cmp_ne_Int16"(%39, %55) : $Builtin.Int1 // user: %57
+  cond_fail %56, "precondition failure"           // id: %57
+  %58 = load %24                                  // users: %59, %60
+  debug_value %58, let, name "self", argno 1      // id: %59
+  switch_enum %58, case #P08HitDescriptor.`static`!enumelt: bb7, case #P08HitDescriptor.dynamic!enumelt: bb8 // id: %60
+
+// %61                                            // user: %62
+bb7(%61 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb6
+  %62 = tuple_extract %61, 1                      // users: %64, %63
+  debug_value %62, let, name "facts"              // id: %63
+  %64 = struct_extract %62, #P08InitializedEntry.id // user: %65
+  br bb9(%64)                                     // id: %65
+
+// %66                                            // user: %67
+bb8(%66 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb6
+  %67 = tuple_extract %66, 1                      // users: %69, %68
+  debug_value %67, let, name "facts"              // id: %68
+  %69 = struct_extract %67, #P08InitializedEntry.id // user: %70
+  br bb9(%69)                                     // id: %70
+
+// %71                                            // user: %73
+bb9(%71 : $P08PhysicalID):                        // Preds: bb8 bb7
+  %72 = alloc_stack [lexical] $P08PhysicalID      // users: %73, %90, %94
+  store %71 to %72                                // id: %73
+  %74 = load %40                                  // users: %75, %76
+  debug_value %74, let, name "self", argno 1      // id: %75
+  switch_enum %74, case #P08HitDescriptor.`static`!enumelt: bb10, case #P08HitDescriptor.dynamic!enumelt: bb11 // id: %76
+
+// %77                                            // user: %78
+bb10(%77 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb9
+  %78 = tuple_extract %77, 1                      // users: %80, %79
+  debug_value %78, let, name "facts"              // id: %79
+  %80 = struct_extract %78, #P08InitializedEntry.id // user: %81
+  br bb12(%80)                                    // id: %81
+
+// %82                                            // user: %83
+bb11(%82 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb9
+  %83 = tuple_extract %82, 1                      // users: %85, %84
+  debug_value %83, let, name "facts"              // id: %84
+  %85 = struct_extract %83, #P08InitializedEntry.id // user: %86
+  br bb12(%85)                                    // id: %86
+
+// %87                                            // user: %89
+bb12(%87 : $P08PhysicalID):                       // Preds: bb11 bb10
+  %88 = alloc_stack [lexical] $P08PhysicalID      // users: %89, %91, %93
+  store %87 to %88                                // id: %89
+  %90 = builtin "getEnumTag"<P08PhysicalID>(%72) : $Builtin.Int32 // user: %92
+  %91 = builtin "getEnumTag"<P08PhysicalID>(%88) : $Builtin.Int32 // user: %92
+  %92 = builtin "cmp_eq_Int32"(%90, %91) : $Builtin.Int1 // user: %95
+  dealloc_stack %88                               // id: %93
+  dealloc_stack %72                               // id: %94
+  cond_fail %92, "precondition failure"           // id: %95
+  %96 = load %24                                  // users: %97, %98
+  debug_value %96, let, name "self", argno 1      // id: %97
+  switch_enum %96, case #P08HitDescriptor.`static`!enumelt: bb13, case #P08HitDescriptor.dynamic!enumelt: bb14 // id: %98
+
+// %99                                            // user: %100
+bb13(%99 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb12
+  %100 = tuple_extract %99, 1                     // users: %102, %101
+  debug_value %100, let, name "facts"             // id: %101
+  %102 = struct_extract %100, #P08InitializedEntry.address // user: %103
+  %103 = struct_extract %102, #UInt._value        // user: %104
+  br bb15(%103)                                   // id: %104
+
+// %105                                           // user: %106
+bb14(%105 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb12
+  %106 = tuple_extract %105, 1                    // users: %108, %107
+  debug_value %106, let, name "facts"             // id: %107
+  %108 = struct_extract %106, #P08InitializedEntry.address // user: %109
+  %109 = struct_extract %108, #UInt._value        // user: %110
+  br bb15(%109)                                   // id: %110
+
+// %111                                           // user: %128
+bb15(%111 : $Builtin.Int64):                      // Preds: bb14 bb13
+  %112 = load %40                                 // users: %113, %114
+  debug_value %112, let, name "self", argno 1     // id: %113
+  switch_enum %112, case #P08HitDescriptor.`static`!enumelt: bb16, case #P08HitDescriptor.dynamic!enumelt: bb17 // id: %114
+
+// %115                                           // user: %116
+bb16(%115 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb15
+  %116 = tuple_extract %115, 1                    // users: %118, %117
+  debug_value %116, let, name "facts"             // id: %117
+  %118 = struct_extract %116, #P08InitializedEntry.address // user: %119
+  %119 = struct_extract %118, #UInt._value        // user: %120
+  br bb18(%119)                                   // id: %120
+
+// %121                                           // user: %122
+bb17(%121 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb15
+  %122 = tuple_extract %121, 1                    // users: %124, %123
+  debug_value %122, let, name "facts"             // id: %123
+  %124 = struct_extract %122, #P08InitializedEntry.address // user: %125
+  %125 = struct_extract %124, #UInt._value        // user: %126
+  br bb18(%125)                                   // id: %126
+
+// %127                                           // user: %128
+bb18(%127 : $Builtin.Int64):                      // Preds: bb17 bb16
+  %128 = builtin "cmp_eq_Int64"(%111, %127) : $Builtin.Int1 // user: %129
+  cond_fail %128, "precondition failure"          // id: %129
+  %130 = load %24                                 // users: %144, %131, %292, %293, %272, %273, %194, %195
+  debug_value %130, let, name "old"               // id: %131
+  %132 = load %40                                 // users: %143, %133, %303, %304, %239, %240, %161, %162
+  debug_value %132, let, name "right"             // id: %133
+  %134 = load %1                                  // user: %136
+  // function_ref P08HitAccess.count.getter
+  %135 = function_ref @$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16Vvg : $@convention(method) (@guaranteed P08HitAccess) -> UInt16 // users: %218, %212, %140, %136
+  %136 = apply %135(%134) : $@convention(method) (@guaranteed P08HitAccess) -> UInt16 // users: %340, %220, %137
+  debug_value %136, let, name "leftCount"         // id: %137
+  debug_value undef : $*P08HitAccess, var, name "self", argno 2, expr op_deref // id: %138
+  %139 = load %0                                  // user: %140
+  %140 = apply %135(%139) : $@convention(method) (@guaranteed P08HitAccess) -> UInt16 // users: %340, %214, %141
+  debug_value %140, let, name "rightCount"        // id: %141
+  debug_value undef : $*P08HitAccess, var, name "other", argno 1, expr op_deref // id: %142
+  store %132 to %24                               // id: %143
+  store %130 to %40                               // id: %144
+  %145 = load %24                                 // users: %146, %147
+  debug_value %145, let, name "self", argno 1     // id: %146
+  switch_enum %145, case #P08HitDescriptor.`static`!enumelt: bb19, case #P08HitDescriptor.dynamic!enumelt: bb20 // id: %147
+
+// %148                                           // user: %149
+bb19(%148 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb18
+  %149 = tuple_extract %148, 1                    // users: %151, %150
+  debug_value %149, let, name "facts"             // id: %150
+  %151 = struct_extract %149, #P08InitializedEntry.address // user: %152
+  %152 = struct_extract %151, #UInt._value        // user: %153
+  br bb21(%152)                                   // id: %153
+
+// %154                                           // user: %155
+bb20(%154 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb18
+  %155 = tuple_extract %154, 1                    // users: %157, %156
+  debug_value %155, let, name "facts"             // id: %156
+  %157 = struct_extract %155, #P08InitializedEntry.address // user: %158
+  %158 = struct_extract %157, #UInt._value        // user: %159
+  br bb21(%158)                                   // id: %159
+
+// %160                                           // user: %176
+bb21(%160 : $Builtin.Int64):                      // Preds: bb20 bb19
+  debug_value %132, let, name "self", argno 1     // id: %161
+  switch_enum %132, case #P08HitDescriptor.`static`!enumelt: bb22, case #P08HitDescriptor.dynamic!enumelt: bb23 // id: %162
+
+// %163                                           // user: %164
+bb22(%163 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb21
+  %164 = tuple_extract %163, 1                    // users: %166, %165
+  debug_value %164, let, name "facts"             // id: %165
+  %166 = struct_extract %164, #P08InitializedEntry.address // user: %167
+  %167 = struct_extract %166, #UInt._value        // user: %168
+  br bb24(%167)                                   // id: %168
+
+// %169                                           // user: %170
+bb23(%169 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb21
+  %170 = tuple_extract %169, 1                    // users: %172, %171
+  debug_value %170, let, name "facts"             // id: %171
+  %172 = struct_extract %170, #P08InitializedEntry.address // user: %173
+  %173 = struct_extract %172, #UInt._value        // user: %174
+  br bb24(%173)                                   // id: %174
+
+// %175                                           // user: %176
+bb24(%175 : $Builtin.Int64):                      // Preds: bb23 bb22
+  %176 = builtin "cmp_ne_Int64"(%160, %175) : $Builtin.Int1 // user: %177
+  cond_fail %176, "precondition failure"          // id: %177
+  %178 = load %40                                 // users: %179, %180
+  debug_value %178, let, name "self", argno 1     // id: %179
+  switch_enum %178, case #P08HitDescriptor.`static`!enumelt: bb25, case #P08HitDescriptor.dynamic!enumelt: bb26 // id: %180
+
+// %181                                           // user: %182
+bb25(%181 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb24
+  %182 = tuple_extract %181, 1                    // users: %184, %183
+  debug_value %182, let, name "facts"             // id: %183
+  %184 = struct_extract %182, #P08InitializedEntry.address // user: %185
+  %185 = struct_extract %184, #UInt._value        // user: %186
+  br bb27(%185)                                   // id: %186
+
+// %187                                           // user: %188
+bb26(%187 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb24
+  %188 = tuple_extract %187, 1                    // users: %190, %189
+  debug_value %188, let, name "facts"             // id: %189
+  %190 = struct_extract %188, #P08InitializedEntry.address // user: %191
+  %191 = struct_extract %190, #UInt._value        // user: %192
+  br bb27(%191)                                   // id: %192
+
+// %193                                           // user: %209
+bb27(%193 : $Builtin.Int64):                      // Preds: bb26 bb25
+  debug_value %130, let, name "self", argno 1     // id: %194
+  switch_enum %130, case #P08HitDescriptor.`static`!enumelt: bb28, case #P08HitDescriptor.dynamic!enumelt: bb29 // id: %195
+
+// %196                                           // user: %197
+bb28(%196 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb27
+  %197 = tuple_extract %196, 1                    // users: %199, %198
+  debug_value %197, let, name "facts"             // id: %198
+  %199 = struct_extract %197, #P08InitializedEntry.address // user: %200
+  %200 = struct_extract %199, #UInt._value        // user: %201
+  br bb30(%200)                                   // id: %201
+
+// %202                                           // user: %203
+bb29(%202 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb27
+  %203 = tuple_extract %202, 1                    // users: %205, %204
+  debug_value %203, let, name "facts"             // id: %204
+  %205 = struct_extract %203, #P08InitializedEntry.address // user: %206
+  %206 = struct_extract %205, #UInt._value        // user: %207
+  br bb30(%206)                                   // id: %207
+
+// %208                                           // user: %209
+bb30(%208 : $Builtin.Int64):                      // Preds: bb29 bb28
+  %209 = builtin "cmp_ne_Int64"(%193, %208) : $Builtin.Int1 // user: %210
+  cond_fail %209, "precondition failure"          // id: %210
+  %211 = load %1                                  // users: %287, %212
+  %212 = apply %135(%211) : $@convention(method) (@guaranteed P08HitAccess) -> UInt16 // user: %213
+  %213 = struct_extract %212, #UInt16._value      // user: %215
+  %214 = struct_extract %140, #UInt16._value      // user: %215
+  %215 = builtin "cmp_ne_Int16"(%213, %214) : $Builtin.Int1 // user: %216
+  cond_fail %215, "precondition failure"          // id: %216
+  %217 = load %0                                  // user: %218
+  %218 = apply %135(%217) : $@convention(method) (@guaranteed P08HitAccess) -> UInt16 // user: %219
+  %219 = struct_extract %218, #UInt16._value      // user: %221
+  %220 = struct_extract %136, #UInt16._value      // user: %221
+  %221 = builtin "cmp_ne_Int16"(%219, %220) : $Builtin.Int1 // user: %222
+  cond_fail %221, "precondition failure"          // id: %222
+  %223 = load %24                                 // users: %224, %225
+  debug_value %223, let, name "self", argno 1     // id: %224
+  switch_enum %223, case #P08HitDescriptor.`static`!enumelt: bb31, case #P08HitDescriptor.dynamic!enumelt: bb32 // id: %225
+
+// %226                                           // user: %227
+bb31(%226 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb30
+  %227 = tuple_extract %226, 1                    // users: %229, %228
+  debug_value %227, let, name "facts"             // id: %228
+  %229 = struct_extract %227, #P08InitializedEntry.retainedBytes // user: %230
+  %230 = struct_extract %229, #Int._value         // user: %231
+  br bb33(%230)                                   // id: %231
+
+// %232                                           // user: %233
+bb32(%232 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb30
+  %233 = tuple_extract %232, 1                    // users: %235, %234
+  debug_value %233, let, name "facts"             // id: %234
+  %235 = struct_extract %233, #P08InitializedEntry.retainedBytes // user: %236
+  %236 = struct_extract %235, #Int._value         // user: %237
+  br bb33(%236)                                   // id: %237
+
+// %238                                           // user: %254
+bb33(%238 : $Builtin.Int64):                      // Preds: bb32 bb31
+  debug_value %132, let, name "self", argno 1     // id: %239
+  switch_enum %132, case #P08HitDescriptor.`static`!enumelt: bb34, case #P08HitDescriptor.dynamic!enumelt: bb35 // id: %240
+
+// %241                                           // user: %242
+bb34(%241 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb33
+  %242 = tuple_extract %241, 1                    // users: %244, %243
+  debug_value %242, let, name "facts"             // id: %243
+  %244 = struct_extract %242, #P08InitializedEntry.retainedBytes // user: %245
+  %245 = struct_extract %244, #Int._value         // user: %246
+  br bb36(%245)                                   // id: %246
+
+// %247                                           // user: %248
+bb35(%247 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb33
+  %248 = tuple_extract %247, 1                    // users: %250, %249
+  debug_value %248, let, name "facts"             // id: %249
+  %250 = struct_extract %248, #P08InitializedEntry.retainedBytes // user: %251
+  %251 = struct_extract %250, #Int._value         // user: %252
+  br bb36(%251)                                   // id: %252
+
+// %253                                           // user: %254
+bb36(%253 : $Builtin.Int64):                      // Preds: bb35 bb34
+  %254 = builtin "cmp_ne_Int64"(%238, %253) : $Builtin.Int1 // user: %255
+  cond_fail %254, "precondition failure"          // id: %255
+  %256 = load %40                                 // users: %257, %258
+  debug_value %256, let, name "self", argno 1     // id: %257
+  switch_enum %256, case #P08HitDescriptor.`static`!enumelt: bb37, case #P08HitDescriptor.dynamic!enumelt: bb38 // id: %258
+
+// %259                                           // user: %260
+bb37(%259 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb36
+  %260 = tuple_extract %259, 1                    // users: %262, %261
+  debug_value %260, let, name "facts"             // id: %261
+  %262 = struct_extract %260, #P08InitializedEntry.retainedBytes // user: %263
+  %263 = struct_extract %262, #Int._value         // user: %264
+  br bb39(%263)                                   // id: %264
+
+// %265                                           // user: %266
+bb38(%265 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb36
+  %266 = tuple_extract %265, 1                    // users: %268, %267
+  debug_value %266, let, name "facts"             // id: %267
+  %268 = struct_extract %266, #P08InitializedEntry.retainedBytes // user: %269
+  %269 = struct_extract %268, #Int._value         // user: %270
+  br bb39(%269)                                   // id: %270
+
+// %271                                           // user: %288
+bb39(%271 : $Builtin.Int64):                      // Preds: bb38 bb37
+  debug_value %130, let, name "self", argno 1     // id: %272
+  switch_enum %130, case #P08HitDescriptor.`static`!enumelt: bb40, case #P08HitDescriptor.dynamic!enumelt: bb41 // id: %273
+
+// %274                                           // user: %275
+bb40(%274 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb39
+  %275 = tuple_extract %274, 1                    // users: %277, %276
+  debug_value %275, let, name "facts"             // id: %276
+  %277 = struct_extract %275, #P08InitializedEntry.retainedBytes // user: %278
+  %278 = struct_extract %277, #Int._value         // user: %279
+  br bb42(%278)                                   // id: %279
+
+// %280                                           // user: %281
+bb41(%280 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb39
+  %281 = tuple_extract %280, 1                    // users: %283, %282
+  debug_value %281, let, name "facts"             // id: %282
+  %283 = struct_extract %281, #P08InitializedEntry.retainedBytes // user: %284
+  %284 = struct_extract %283, #Int._value         // user: %285
+  br bb42(%284)                                   // id: %285
+
+// %286                                           // user: %288
+bb42(%286 : $Builtin.Int64):                      // Preds: bb41 bb40
+  %287 = struct_extract %211, #P08HitAccess.transcript // user: %290
+  %288 = builtin "cmp_ne_Int64"(%271, %286) : $Builtin.Int1 // user: %289
+  cond_fail %288, "precondition failure"          // id: %289
+  switch_enum %287, case #Optional.some!enumelt: bb43, case #Optional.none!enumelt: bb57 // id: %290
+
+// %291                                           // user: %341
+bb43(%291 : $UnsafeMutablePointer<P08RoleTranscript>): // Preds: bb42
+  debug_value %130, let, name "self", argno 1     // id: %292
+  switch_enum %130, case #P08HitDescriptor.`static`!enumelt: bb44, case #P08HitDescriptor.dynamic!enumelt: bb45 // id: %293
+
+// %294                                           // user: %295
+bb44(%294 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb43
+  %295 = tuple_extract %294, 1                    // users: %297, %296
+  debug_value %295, let, name "facts"             // id: %296
+  br bb46(%295)                                   // id: %297
+
+// %298                                           // user: %299
+bb45(%298 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb43
+  %299 = tuple_extract %298, 1                    // users: %301, %300
+  debug_value %299, let, name "facts"             // id: %300
+  br bb46(%299)                                   // id: %301
+
+// %302                                           // user: %340
+bb46(%302 : $P08InitializedEntry):                // Preds: bb45 bb44
+  debug_value %132, let, name "self", argno 1     // id: %303
+  switch_enum %132, case #P08HitDescriptor.`static`!enumelt: bb47, case #P08HitDescriptor.dynamic!enumelt: bb48 // id: %304
+
+// %305                                           // user: %306
+bb47(%305 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb46
+  %306 = tuple_extract %305, 1                    // users: %308, %307
+  debug_value %306, let, name "facts"             // id: %307
+  br bb49(%306)                                   // id: %308
+
+// %309                                           // user: %310
+bb48(%309 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb46
+  %310 = tuple_extract %309, 1                    // users: %312, %311
+  debug_value %310, let, name "facts"             // id: %311
+  br bb49(%310)                                   // id: %312
+
+// %313                                           // user: %340
+bb49(%313 : $P08InitializedEntry):                // Preds: bb48 bb47
+  %314 = load %24                                 // users: %315, %316
+  debug_value %314, let, name "self", argno 1     // id: %315
+  switch_enum %314, case #P08HitDescriptor.`static`!enumelt: bb50, case #P08HitDescriptor.dynamic!enumelt: bb51 // id: %316
+
+// %317                                           // user: %318
+bb50(%317 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb49
+  %318 = tuple_extract %317, 1                    // users: %320, %319
+  debug_value %318, let, name "facts"             // id: %319
+  br bb52(%318)                                   // id: %320
+
+// %321                                           // user: %322
+bb51(%321 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb49
+  %322 = tuple_extract %321, 1                    // users: %324, %323
+  debug_value %322, let, name "facts"             // id: %323
+  br bb52(%322)                                   // id: %324
+
+// %325                                           // user: %340
+bb52(%325 : $P08InitializedEntry):                // Preds: bb51 bb50
+  %326 = load %40                                 // users: %327, %328
+  debug_value %326, let, name "self", argno 1     // id: %327
+  switch_enum %326, case #P08HitDescriptor.`static`!enumelt: bb53, case #P08HitDescriptor.dynamic!enumelt: bb54 // id: %328
+
+// %329                                           // user: %330
+bb53(%329 : $(UnsafeMutablePointer<StaticTwoInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb52
+  %330 = tuple_extract %329, 1                    // users: %332, %331
+  debug_value %330, let, name "facts"             // id: %331
+  br bb55(%330)                                   // id: %332
+
+// %333                                           // user: %334
+bb54(%333 : $(UnsafeMutablePointer<DynamicInteractionHitStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb52
+  %334 = tuple_extract %333, 1                    // users: %336, %335
+  debug_value %334, let, name "facts"             // id: %335
+  br bb55(%334)                                   // id: %336
+
+// %337                                           // user: %340
+bb55(%337 : $P08InitializedEntry):                // Preds: bb54 bb53
+  %338 = integer_literal $Builtin.Int8, 1         // user: %339
+  %339 = struct $UInt8 (%338)                     // user: %340
+  %340 = struct $P08RoleObservation (%339, %302, %313, %136, %140, %325, %337) // user: %344
+  %341 = struct_extract %291, #UnsafeMutablePointer._rawValue // user: %342
+  %342 = pointer_to_address %341 to [strict] $*P08RoleTranscript // user: %344
+  // function_ref P08RoleTranscript.record(_:)
+  %343 = function_ref @$s17P08CounterRuntime0A14RoleTranscript33_480B1BD841D053AE4FCDC18507668536LLV6recordyyAA0aD11ObservationACLLVF : $@convention(method) (P08RoleObservation, @inout P08RoleTranscript) -> () // user: %344
+  %344 = apply %343(%340, %342) : $@convention(method) (P08RoleObservation, @inout P08RoleTranscript) -> ()
+  br bb56                                         // id: %345
+
+bb56:                                             // Preds: bb55 bb57
+  %346 = tuple ()                                 // user: %347
+  return %346                                     // id: %347
+
+bb57:                                             // Preds: bb42
+  br bb56                                         // id: %348
+} // end sil function '$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tF'

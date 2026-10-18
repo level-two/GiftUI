@@ -1,0 +1,94 @@
+// current SIL lines 223023-223115
+sil private @$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF : $@convention(method) (@lifetime(copy 0) @inout P08CandidateAccess) -> () {
+[%0: noescape **, read s1.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $*P08CandidateAccess):
+  debug_value %0, var, name "self", argno 1, expr op_deref // id: %1
+  %2 = struct_element_addr %0, #P08CandidateAccess.descriptor // user: %3
+  %3 = load %2                                    // user: %4
+  switch_enum %3, case #P08CandidateDescriptor.`static`!enumelt: bb1, case #P08CandidateDescriptor.dynamic!enumelt: bb8 // id: %4
+
+// %5                                             // user: %6
+bb1(%5 : $(UnsafeMutablePointer<StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb0
+  %6 = tuple_extract %5, 0                        // users: %7, %8
+  debug_value %6, let, name "p"                   // id: %7
+  %8 = struct_extract %6, #UnsafeMutablePointer._rawValue // user: %9
+  %9 = pointer_to_address %8 to [strict] $*StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity> // users: %15, %11, %10
+  debug_value %9, var, name "self", argno 1, expr op_deref // id: %10
+  %11 = struct_element_addr %9, #StaticTwoInteractionCandidateStorage.count // users: %39, %14, %12
+  %12 = struct_element_addr %11, #UInt16._value   // user: %13
+  %13 = load %12                                  // user: %18
+  debug_value %11, let, name "count", argno 1, expr op_deref // id: %14
+  %15 = struct_element_addr %9, #StaticTwoInteractionCandidateStorage.slots // users: %29, %16
+  debug_value %15, var, name "self", argno 2, expr op_deref // id: %16
+  %17 = integer_literal $Builtin.Int64, 0         // users: %47, %36, %32, %24, %23, %21, %19
+  %18 = builtin "zextOrBitCast_Int16_Int64"(%13) : $Builtin.Int64 // users: %54, %32, %24, %22, %19
+  %19 = builtin "cmp_slt_Int64"(%18, %17) : $Builtin.Int1 // user: %20
+  cond_fail %19, "Range requires lowerBound <= upperBound" // id: %20
+  debug_value %17, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._elements:op_fragment:#Range.lowerBound:op_fragment:#Int._value // id: %21
+  debug_value %18, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._elements:op_fragment:#Range.upperBound:op_fragment:#Int._value // id: %22
+  debug_value %17, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._position:op_fragment:#Int._value // id: %23
+  %24 = builtin "cmp_eq_Int64"(%18, %17) : $Builtin.Int1 // user: %25
+  cond_br %24, bb2, bb3                           // id: %25
+
+bb2:                                              // Preds: bb1
+  br bb4                                          // id: %26
+
+bb3:                                              // Preds: bb1
+  %27 = integer_literal $Builtin.Int64, 1         // user: %44
+  %28 = integer_literal $Builtin.Int1, -1         // user: %44
+  %29 = struct_element_addr %15, #StaticTwoInteractionSlots.values // user: %30
+  %30 = struct_element_addr %29, #InlineArray._storage // user: %31
+  %31 = vector_base_addr %30                      // user: %52
+  %32 = builtin "cmp_sge_Int64"(%17, %18) : $Builtin.Int1 // user: %33
+  cond_fail %32, "loop induction variable overflowed" // id: %33
+  %34 = enum $Optional<InteractionCandidateRecord<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %53
+  %35 = integer_literal $Builtin.Int64, 2         // user: %48
+  br bb5(%17)                                     // id: %36
+
+bb4:                                              // Preds: bb6 bb2
+  %37 = integer_literal $Builtin.Int16, 0         // user: %38
+  %38 = struct $UInt16 (%37)                      // user: %39
+  store %38 to %11                                // id: %39
+  br bb9                                          // id: %40
+
+// %41                                            // users: %43, %42, %47, %48, %51, %44
+// Loop header
+bb5(%41 : $Builtin.Int64):                        // Preds: bb7 bb3
+  debug_value %41, let, name "index", type $Int, expr op_fragment:#Int._value // id: %42
+  debug_value %41, let, name "$element", type $Int, expr op_fragment:#Int._value // id: %43
+  %44 = builtin "sadd_with_overflow_Int64"(%41, %27, %28) : $(Builtin.Int64, Builtin.Int1) // user: %45
+  %45 = tuple_extract %44, 0                      // users: %57, %54, %46
+  debug_value %45, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._position:op_fragment:#Int._value // id: %46
+  %47 = builtin "cmp_slt_Int64"(%41, %17) : $Builtin.Int1 // user: %49
+  %48 = builtin "cmp_sge_Int64"(%41, %35) : $Builtin.Int1 // user: %49
+  %49 = builtin "or_Int1"(%47, %48) : $Builtin.Int1 // user: %50
+  cond_fail %49, "Index out of bounds"            // id: %50
+  %51 = builtin "truncOrBitCast_Int64_Word"(%41) : $Builtin.Word // user: %52
+  %52 = index_addr [stack_protection] %31, %51    // user: %53
+  store %34 to %52                                // id: %53
+  %54 = builtin "cmp_eq_Int64"(%45, %18) : $Builtin.Int1 // user: %55
+  cond_br %54, bb6, bb7                           // id: %55
+
+bb6:                                              // Preds: bb5
+  br bb4                                          // id: %56
+
+bb7:                                              // Preds: bb5
+  br bb5(%45)                                     // id: %57
+
+// %58                                            // user: %59
+bb8(%58 : $(UnsafeMutablePointer<DynamicInteractionCandidateStorage<SemanticCompleteIdentity>>, P08InitializedEntry, UInt16)): // Preds: bb0
+  %59 = tuple_extract %58, 0                      // users: %60, %61
+  debug_value %59, let, name "p"                  // id: %60
+  %61 = struct_extract %59, #UnsafeMutablePointer._rawValue // user: %62
+  %62 = pointer_to_address %61 to [strict] $*DynamicInteractionCandidateStorage<SemanticCompleteIdentity> // user: %64
+  // function_ref specialized DynamicInteractionCandidateStorage.reset()
+  %63 = function_ref @$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5 : $@convention(method) (@inout DynamicInteractionCandidateStorage<SemanticCompleteIdentity>) -> () // user: %64
+  %64 = apply %63(%62) : $@convention(method) (@inout DynamicInteractionCandidateStorage<SemanticCompleteIdentity>) -> ()
+  br bb9                                          // id: %65
+
+bb9:                                              // Preds: bb8 bb4
+  %66 = tuple ()                                  // user: %67
+  return %66                                      // id: %67
+} // end sil function '$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF'

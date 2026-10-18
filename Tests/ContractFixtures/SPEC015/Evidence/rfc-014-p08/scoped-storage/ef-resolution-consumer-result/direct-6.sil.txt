@@ -1,0 +1,69 @@
+// current SIL lines 223119-223186
+sil shared @$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5 : $@convention(method) (@inout StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>) -> () {
+[%0: read s1.s0.v**, write v**]
+[global: ]
+// %0 "self"                                      // users: %6, %2, %1
+bb0(%0 : $*StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>):
+  debug_value %0, var, name "self", argno 1, expr op_deref // id: %1
+  %2 = struct_element_addr %0, #StaticTwoInteractionCandidateStorage.count // users: %30, %5, %3
+  %3 = struct_element_addr %2, #UInt16._value     // user: %4
+  %4 = load %3                                    // user: %9
+  debug_value %2, let, name "count", argno 1, expr op_deref // id: %5
+  %6 = struct_element_addr %0, #StaticTwoInteractionCandidateStorage.slots // users: %20, %7
+  debug_value %6, var, name "self", argno 2, expr op_deref // id: %7
+  %8 = integer_literal $Builtin.Int64, 0          // users: %39, %27, %23, %15, %14, %12, %10
+  %9 = builtin "zextOrBitCast_Int16_Int64"(%4) : $Builtin.Int64 // users: %46, %23, %15, %13, %10
+  %10 = builtin "cmp_slt_Int64"(%9, %8) : $Builtin.Int1 // user: %11
+  cond_fail %10, "Range requires lowerBound <= upperBound" // id: %11
+  debug_value %8, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._elements:op_fragment:#Range.lowerBound:op_fragment:#Int._value // id: %12
+  debug_value %9, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._elements:op_fragment:#Range.upperBound:op_fragment:#Int._value // id: %13
+  debug_value %8, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._position:op_fragment:#Int._value // id: %14
+  %15 = builtin "cmp_eq_Int64"(%9, %8) : $Builtin.Int1 // user: %16
+  cond_br %15, bb1, bb2                           // id: %16
+
+bb1:                                              // Preds: bb0
+  br bb3                                          // id: %17
+
+bb2:                                              // Preds: bb0
+  %18 = integer_literal $Builtin.Int64, 1         // user: %36
+  %19 = integer_literal $Builtin.Int1, -1         // user: %36
+  %20 = struct_element_addr %6, #StaticTwoInteractionSlots.values // user: %21
+  %21 = struct_element_addr %20, #InlineArray._storage // user: %22
+  %22 = vector_base_addr %21                      // user: %44
+  %23 = builtin "cmp_sge_Int64"(%8, %9) : $Builtin.Int1 // user: %24
+  cond_fail %23, "loop induction variable overflowed" // id: %24
+  %25 = enum $Optional<InteractionCandidateRecord<SemanticCompleteIdentity>>, #Optional.none!enumelt // user: %45
+  %26 = integer_literal $Builtin.Int64, 2         // user: %40
+  br bb4(%8)                                      // id: %27
+
+bb3:                                              // Preds: bb5 bb1
+  %28 = integer_literal $Builtin.Int16, 0         // user: %29
+  %29 = struct $UInt16 (%28)                      // user: %30
+  store %29 to %2                                 // id: %30
+  %31 = tuple ()                                  // user: %32
+  return %31                                      // id: %32
+
+// %33                                            // users: %35, %34, %39, %40, %43, %36
+// Loop header
+bb4(%33 : $Builtin.Int64):                        // Preds: bb6 bb2
+  debug_value %33, let, name "index", type $Int, expr op_fragment:#Int._value // id: %34
+  debug_value %33, let, name "$element", type $Int, expr op_fragment:#Int._value // id: %35
+  %36 = builtin "sadd_with_overflow_Int64"(%33, %18, %19) : $(Builtin.Int64, Builtin.Int1) // user: %37
+  %37 = tuple_extract %36, 0                      // users: %49, %46, %38
+  debug_value %37, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._position:op_fragment:#Int._value // id: %38
+  %39 = builtin "cmp_slt_Int64"(%33, %8) : $Builtin.Int1 // user: %41
+  %40 = builtin "cmp_sge_Int64"(%33, %26) : $Builtin.Int1 // user: %41
+  %41 = builtin "or_Int1"(%39, %40) : $Builtin.Int1 // user: %42
+  cond_fail %41, "Index out of bounds"            // id: %42
+  %43 = builtin "truncOrBitCast_Int64_Word"(%33) : $Builtin.Word // user: %44
+  %44 = index_addr [stack_protection] %22, %43    // user: %45
+  store %25 to %44                                // id: %45
+  %46 = builtin "cmp_eq_Int64"(%37, %9) : $Builtin.Int1 // user: %47
+  cond_br %46, bb5, bb6                           // id: %47
+
+bb5:                                              // Preds: bb4
+  br bb3                                          // id: %48
+
+bb6:                                              // Preds: bb4
+  br bb4(%37)                                     // id: %49
+} // end sil function '$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5'

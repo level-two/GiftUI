@@ -29,6 +29,13 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [grouped E/F actual consumer result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/README.md):
+fresh25/fourvariants/privacy93/index11/body92/current42 PASS firstattempt. Both E/F
+selected actualcaller metadata boundaries resolved;23/23finite selected frontier.
+Sourcecb4b10f0 fixed ONE1/1 zeroautomaticSOURCErepairs; no new allowance. Complete
+currentcallee+safety beforestrictcold/P08; driver fresh-receipt preparation explicitly
+open, existingcommands/inputs grouped. Independent boundary review next.
+
 Current grouped E/F source candidate1 ([source receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/source-edits.json)):
 reviewed23sites/fourfiles applied/targetformatted/exact inverse-token audit PASS.
 New ONE1/1 ZERO automatic SOURCE repairs; all historical activities remain closed.

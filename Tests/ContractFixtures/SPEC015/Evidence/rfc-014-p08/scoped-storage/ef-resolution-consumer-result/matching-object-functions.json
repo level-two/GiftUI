@@ -1,0 +1,22 @@
+[
+  {
+    "label": "actual-static-cleanup",
+    "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA06StaticB8GeometryV_AA0L30TwoInteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAA0lno9CommittedQ0VyANGAA0lno3HitQ0VyANGTg5",
+    "start_address": "0x0000000000047814",
+    "object_lines": [
+      89217,
+      89556
+    ],
+    "metadata_lines": []
+  },
+  {
+    "label": "static-state-resolve",
+    "symbol": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5",
+    "start_address": "0x00000000000a1798",
+    "object_lines": [
+      198870,
+      198924
+    ],
+    "metadata_lines": []
+  }
+]

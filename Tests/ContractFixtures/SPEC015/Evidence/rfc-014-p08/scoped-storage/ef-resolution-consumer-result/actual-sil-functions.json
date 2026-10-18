@@ -1,0 +1,251 @@
+[
+  {
+    "label": "actual-static-cleanup",
+    "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA06StaticB8GeometryV_AA0L30TwoInteractionCandidateStorageVy0g10UISemanticI024SemanticCompleteIdentityVGAA0lno9CommittedQ0VyANGAA0lno3HitQ0VyANGTg5",
+    "sil_lines": [
+      157201,
+      157857
+    ],
+    "basic_blocks": 67,
+    "references": [
+      "$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF17GiftUIRuntimeCore0C13CleanupActionO_Tg5",
+      "$s13GiftUIDrawing18CanvasStagedValuesV7discardyyF0A14UISemanticCore23SemanticRecordReferenceV_15P08CounterTable0lm6SchemacN0Vy0lM7Runtime0M6DomainOGTg5",
+      "$s17P08CounterRuntime06StaticB8GeometryV11resetRenderyyF",
+      "$s17P08CounterRuntime06StaticB16DrawingWorkspaceV7discardyyF",
+      "$sSw16initializeMemory2as9repeatingSryxGxm_xtlFs5UInt8V_Ttg5",
+      "$s17P08CounterRuntime06StaticB8GeometryV11resetLayoutyyF",
+      "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5",
+      "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA06StaticB8GeometryV_AA0I30TwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGAA0ikl9CommittedN0VyAKGAA0ikl3HitN0VyAKGTg5",
+      "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5",
+      "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA06StaticB8GeometryV_AA0I30TwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGAA0ikl9CommittedN0VyAKGAA0ikl3HitN0VyAKGTg5",
+      "$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageV16exchangeContents4withyACyxGz_tF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5",
+      "$s17P08CounterRuntime30StaticTwoInteractionHitStorageV16exchangeContents4withyACyxGz_tF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5",
+      "$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5",
+      "$s17P08CounterRuntime30StaticTwoInteractionHitStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5",
+      "$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5",
+      "$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ",
+      "$s23GiftUIHostConfiguration23HostNormalizedInputGateV27installPhysicalPresentationyy0A2UI0J8RevisionVF",
+      "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5",
+      "$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ",
+      "$s17P08CounterRuntime06StaticB8GeometryV11resetRenderyyF",
+      "$s17P08CounterRuntime06StaticB16DrawingWorkspaceV7discardyyF",
+      "$sSw16initializeMemory2as9repeatingSryxGxm_xtlFs5UInt8V_Ttg5",
+      "$s17P08CounterRuntime06StaticB8GeometryV11resetLayoutyyF",
+      "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKFys6UInt16VXEfU_17P08CounterRuntime0l5OwnedE0V_0kL6Schema0leO0OTg5",
+      "$s21GiftUIObservableState24ObservableModelOwnershipV8endFrame7reclaimyys6UInt16VXE_tAA0dC5ErrorOYKF"
+    ],
+    "witness_method_lines": [],
+    "explicit_alloc_ref_box_lines": [
+      "%425 = partial_apply [callee_guaranteed] [on_stack] %424(%392) : $@convention(thin) (UInt16, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> () // users: %426, %434, %437"
+    ]
+  },
+  {
+    "label": "actual-p08-cleanup",
+    "symbol": "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE7cleanupyy17GiftUIRuntimeCore0C13CleanupActionOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateM0AILLVAA0a9CommittedM0AILLVAA0a3HitM0AILLVTg5",
+    "sil_lines": [
+      157861,
+      158509
+    ],
+    "basic_blocks": 70,
+    "references": [
+      "$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF17GiftUIRuntimeCore0C13CleanupActionO_Tg5",
+      "$s13GiftUIDrawing18CanvasStagedValuesV7discardyyF0A14UISemanticCore23SemanticRecordReferenceV_15P08CounterTable0lm6SchemacN0Vy0lM7Runtime0M6DomainOGTg5",
+      "$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV11resetRenderyyF",
+      "$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV9resetPlanyyF",
+      "$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV11resetLayoutyyF",
+      "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime0hF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AG0h9CommittedK0AILLVAG0h3HitK0AILLVTg5",
+      "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AFLLVAA0a9CommittedJ0AFLLVAA0a3HitJ0AFLLVTg5",
+      "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0no6SchemaL6ValuesOy0nO7Runtime0O6DomainOGG_Tg5",
+      "$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AFLLVAA0a9CommittedJ0AFLLVAA0a3HitJ0AFLLVTg5",
+      "$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tF",
+      "$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tF",
+      "$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+      "$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+      "$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+      "$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ",
+      "$s23GiftUIHostConfiguration23HostNormalizedInputGateV27installPhysicalPresentationyy0A2UI0J8RevisionVF",
+      "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime0hF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AG0h9CommittedK0AILLVAG0h3HitK0AILLVTg5",
+      "$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ",
+      "$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV11resetRenderyyF",
+      "$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV9resetPlanyyF",
+      "$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV11resetLayoutyyF",
+      "$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV11resetRenderyyF",
+      "$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV9resetPlanyyF",
+      "$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV11resetLayoutyyF",
+      "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKFys6UInt16VXEfU_17P08CounterRuntime0l5OwnedE0V_0kL6Schema0leO0OTg5",
+      "$s21GiftUIObservableState24ObservableModelOwnershipV8endFrame7reclaimyys6UInt16VXE_tAA0dC5ErrorOYKF"
+    ],
+    "witness_method_lines": [],
+    "explicit_alloc_ref_box_lines": [
+      "%411 = partial_apply [callee_guaranteed] [on_stack] %410(%378) : $@convention(thin) (UInt16, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> () // users: %412, %420, %423"
+    ]
+  },
+  {
+    "label": "static-state-resolve",
+    "symbol": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5",
+    "sil_lines": [
+      597235,
+      597342
+    ],
+    "basic_blocks": 11,
+    "references": [
+      "$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageV16exchangeContents4withyACyxGz_tF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5",
+      "$s17P08CounterRuntime30StaticTwoInteractionHitStorageV16exchangeContents4withyACyxGz_tF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5",
+      "$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5",
+      "$s17P08CounterRuntime30StaticTwoInteractionHitStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5",
+      "$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5"
+    ],
+    "witness_method_lines": [],
+    "explicit_alloc_ref_box_lines": []
+  },
+  {
+    "label": "p08-state-resolve",
+    "symbol": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime0hF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AG0h9CommittedK0AILLVAG0h3HitK0AILLVTg5",
+    "sil_lines": [
+      597475,
+      597582
+    ],
+    "basic_blocks": 11,
+    "references": [
+      "$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tF",
+      "$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tF",
+      "$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+      "$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+      "$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF"
+    ],
+    "witness_method_lines": [],
+    "explicit_alloc_ref_box_lines": []
+  },
+  {
+    "label": "direct-4",
+    "symbol": "$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageV16exchangeContents4withyACyxGz_tF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5",
+    "sil_lines": [
+      554079,
+      554108
+    ],
+    "basic_blocks": 1,
+    "references": [],
+    "witness_method_lines": [],
+    "explicit_alloc_ref_box_lines": []
+  },
+  {
+    "label": "direct-5",
+    "symbol": "$s17P08CounterRuntime30StaticTwoInteractionHitStorageV16exchangeContents4withyACyxGz_tF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5",
+    "sil_lines": [
+      554298,
+      554327
+    ],
+    "basic_blocks": 1,
+    "references": [],
+    "witness_method_lines": [],
+    "explicit_alloc_ref_box_lines": []
+  },
+  {
+    "label": "direct-6",
+    "symbol": "$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5",
+    "sil_lines": [
+      223119,
+      223186
+    ],
+    "basic_blocks": 7,
+    "references": [],
+    "witness_method_lines": [],
+    "explicit_alloc_ref_box_lines": []
+  },
+  {
+    "label": "direct-7",
+    "symbol": "$s17P08CounterRuntime30StaticTwoInteractionHitStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5",
+    "sil_lines": [
+      225825,
+      225892
+    ],
+    "basic_blocks": 7,
+    "references": [],
+    "witness_method_lines": [],
+    "explicit_alloc_ref_box_lines": []
+  },
+  {
+    "label": "direct-8",
+    "symbol": "$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5",
+    "sil_lines": [
+      224292,
+      224359
+    ],
+    "basic_blocks": 7,
+    "references": [],
+    "witness_method_lines": [],
+    "explicit_alloc_ref_box_lines": []
+  },
+  {
+    "label": "direct-9",
+    "symbol": "$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tF",
+    "sil_lines": [
+      224869,
+      225339
+    ],
+    "basic_blocks": 58,
+    "references": [
+      "$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16Vvg",
+      "$s17P08CounterRuntime0A14RoleTranscript33_480B1BD841D053AE4FCDC18507668536LLV6recordyyAA0aD11ObservationACLLVF"
+    ],
+    "witness_method_lines": [],
+    "explicit_alloc_ref_box_lines": []
+  },
+  {
+    "label": "direct-10",
+    "symbol": "$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tF",
+    "sil_lines": [
+      226402,
+      226872
+    ],
+    "basic_blocks": 58,
+    "references": [
+      "$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16Vvg",
+      "$s17P08CounterRuntime0A14RoleTranscript33_480B1BD841D053AE4FCDC18507668536LLV6recordyyAA0aD11ObservationACLLVF"
+    ],
+    "witness_method_lines": [],
+    "explicit_alloc_ref_box_lines": []
+  },
+  {
+    "label": "direct-11",
+    "symbol": "$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+    "sil_lines": [
+      223023,
+      223115
+    ],
+    "basic_blocks": 10,
+    "references": [
+      "$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5"
+    ],
+    "witness_method_lines": [],
+    "explicit_alloc_ref_box_lines": []
+  },
+  {
+    "label": "direct-12",
+    "symbol": "$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+    "sil_lines": [
+      225729,
+      225821
+    ],
+    "basic_blocks": 10,
+    "references": [
+      "$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5"
+    ],
+    "witness_method_lines": [],
+    "explicit_alloc_ref_box_lines": []
+  },
+  {
+    "label": "direct-13",
+    "symbol": "$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+    "sil_lines": [
+      224196,
+      224288
+    ],
+    "basic_blocks": 10,
+    "references": [
+      "$s20GiftUIRuntimeDynamic0C27InteractionCommittedStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5"
+    ],
+    "witness_method_lines": [],
+    "explicit_alloc_ref_box_lines": []
+  }
+]

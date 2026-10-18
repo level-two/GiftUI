@@ -1,0 +1,55 @@
+00000000000a1798 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5>:
+   a1798:      	stp	x22, x21, [sp, #-0x30]!
+   a179c:      	stp	x20, x19, [sp, #0x10]
+   a17a0:      	stp	x29, x30, [sp, #0x20]
+   a17a4:      	add	x29, sp, #0x20
+   a17a8:      	mov	x19, x20
+   a17ac:      	and	x9, x0, #0xff00000000
+   a17b0:      	ldrb	w8, [x20, #0x949]
+   a17b4:      	mov	x10, #0x100000000       ; =4294967296
+   a17b8:      	cmp	x9, x10
+   a17bc:      	b.ne	0xa17d0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5+0x38>
+   a17c0:      	sub	w8, w8, #0x1
+   a17c4:      	cmp	w8, #0x2
+   a17c8:      	b.lo	0xa17fc <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5+0x64>
+   a17cc:      	b	0xa1838 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5+0xa0>
+   a17d0:      	cmp	w8, #0x2
+   a17d4:      	b.ne	0xa1838 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5+0xa0>
+   a17d8:      	mov	x21, x0
+   a17dc:      	add	x0, x19, #0x3b0
+   a17e0:      	add	x20, x19, #0x594
+   a17e4:      	bl	0xa17e4 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5+0x4c>
+		00000000000a17e4:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageV16exchangeContents4withyACyxGz_tF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5
+   a17e8:      	add	x0, x19, #0x1e4
+   a17ec:      	add	x20, x19, #0x778
+   a17f0:      	bl	0xa17f0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5+0x58>
+		00000000000a17f0:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime30StaticTwoInteractionHitStorageV16exchangeContents4withyACyxGz_tF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5
+   a17f4:      	str	w21, [x19, #0x94c]
+   a17f8:      	strb	wzr, [x19, #0x950]
+   a17fc:      	adrp	x0, 0xa1000 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZyAT_AOztAH0d9ExpansionV0OYKXEfU_010P08CounterX00z13CounterSchemacX0Vy0Z14CounterRuntime13CounterDomainOG_Tg5+0x84>
+		00000000000a17fc:  ARM64_RELOC_PAGE21	_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   a1800:      	add	x0, x0, #0x0
+		00000000000a1800:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   a1804:      	mov	x20, x19
+   a1808:      	bl	0xa1808 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5+0x70>
+		00000000000a1808:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5Tm
+   a180c:      	add	x20, x19, #0x1e4
+   a1810:      	bl	0xa1810 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5+0x78>
+		00000000000a1810:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime30StaticTwoInteractionHitStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5
+   a1814:      	adrp	x0, 0xa1000 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZyAT_AOztAH0d9ExpansionV0OYKXEfU_010P08CounterX00z13CounterSchemacX0Vy0Z14CounterRuntime13CounterDomainOG_Tg5+0x84>
+		00000000000a1814:  ARM64_RELOC_PAGE21	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   a1818:      	add	x0, x0, #0x0
+		00000000000a1818:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   a181c:      	add	x20, x19, #0x3b0
+   a1820:      	bl	0xa1820 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AG0klc9CommittedM0VyALGAG0klc3HitM0VyALGTg5+0x88>
+		00000000000a1820:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageV5resetyyF18GiftUISemanticCore24SemanticCompleteIdentityV_Tg5Tm
+   a1824:      	str	wzr, [x19, #0x944]
+   a1828:      	mov	w8, #0x1                ; =1
+   a182c:      	strh	w8, [x19, #0x948]
+   a1830:      	mov	w8, #0x9                ; =9
+   a1834:      	strb	w8, [x19, #0x94a]
+   a1838:      	ldp	x29, x30, [sp, #0x20]
+   a183c:      	ldp	x20, x19, [sp, #0x10]
+   a1840:      	ldp	x22, x21, [sp], #0x30
+   a1844:      	ret
+
