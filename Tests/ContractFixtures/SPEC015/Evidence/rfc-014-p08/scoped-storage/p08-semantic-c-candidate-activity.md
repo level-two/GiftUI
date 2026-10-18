@@ -26,3 +26,9 @@ for the authorized single focused run. Exact source projection and frozen recipe
 verify; Copyable/~Escapable view escape control isolates intended Result boundary
 with shared UInt32 positive. Freshmacro17→25+4variants→privacy73/index11/body87/
 current42 retains dynamic seals/strict gates. No execution PASS or repair allowance.
+
+[Initial result](semantic-c-candidate1-result/README.md): macro17/lower25/fourvariants/
+prior70privacy/decode11/interpreter/object2 PASS. New3fixtures invalid outerthrows
+inference; borrowedinit actualunique kind1/1BB has different canonical mangled
+substitution (initial86/87). Harness-only diagnosis; SILblocked. Source fixed/no
+repair or budgetreset, focused continuation requires independent review.

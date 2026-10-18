@@ -1,0 +1,32 @@
+{
+  "classification": "three invalid fixture outer typedthrows closures + one noncanonical exact-symbol prediction; sourcecompile PASS/selected constructor body exists",
+  "fixture_cause": "Outer factory closure inferred any Error from inner try withCandidateView; source API requires typed SemanticExpansionError. Add only explicit (store) throws(SemanticExpansionError) in, same as maintained source factory callback patterns. Intended internal access and Escapable constraints already diagnosed; no source API change required.",
+  "internal_diagnostic_observed": "'SemanticRecordStore<Payload>' initializer is inaccessible due to 'internal' protection level",
+  "escape_diagnostic_observed": "instance method 'withCandidateView' requires that 'SemanticRecordView<UInt32>' conform to 'Escapable'",
+  "constructor_body": {
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9borrowingACyxGAEh_tcfC",
+    "identifier_id": 575,
+    "function_id": 546,
+    "hash": 2914793765,
+    "demangled": "GiftUISemanticCore.SemanticRecordStore.init(borrowing: __shared GiftUISemanticCore.SemanticRecordStore<A>) -> GiftUISemanticCore.SemanticRecordStore<A>",
+    "offset_bits": 4111261,
+    "linkage": 0,
+    "serialized_kind": 1,
+    "inline_strategy": 0,
+    "basic_blocks": 1,
+    "raw_prefix": [
+      4,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1813 op29=0 op30=0 op31=104 op32=0 op33=1/> record string = ''"
+  },
+  "selector_cause": "Predicted ACyxG argument spelling demangles to equivalent signature, actual canonical emitted substitution is AEh_. Pin exact actual raw record; no regex or alternativeidentity fallback.",
+  "preserved_acceptance": "sourcefixed1/1 zeroautomaticSOURCErepairs; oneunique root/nonzero serializedkind/positiveBB and intendedexactnegative diagnostic unchanged",
+  "remaining": "Corrected3typedcontrols and all87gate unexecuted; SILblocked; actual C/cost/safety/strictcold/P08 unqualified"
+}
