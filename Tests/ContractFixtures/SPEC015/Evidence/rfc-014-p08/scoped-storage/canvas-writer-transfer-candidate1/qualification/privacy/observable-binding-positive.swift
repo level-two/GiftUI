@@ -1,0 +1,4 @@
+import GiftUI
+import GiftUIObservableState
+import GiftUISemanticCore
+package func forward<Model, Identity, Domain, Declaration>(_ binding: borrowing ObservableSemanticBodyBinding<Model, Identity, Domain>, declaration: borrowing Declaration, identity: Identity, beforeBody: () -> SemanticExpansionError?, body: (borrowing Declaration, borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure) -> Declaration.Body) -> SemanticBodyEvaluation<Declaration.Body, ObservableStateError> where Model: ObservableStateModel & ~Copyable, Identity: Equatable & Sendable, Domain: _GiftUIReadDomain, Domain.Slot == ObservableModelReadSlot<Model>, Declaration: View & _GiftUIObservableStateHost, Declaration.Domain == Domain, Declaration.Body.Domain == Domain { binding.evaluateStateful(declaration, structuralIdentity: identity, beforeBody: beforeBody, body: body) }

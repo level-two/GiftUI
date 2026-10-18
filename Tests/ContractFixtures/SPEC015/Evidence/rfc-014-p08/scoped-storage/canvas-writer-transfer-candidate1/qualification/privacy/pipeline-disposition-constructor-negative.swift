@@ -1,0 +1,4 @@
+import GiftUI
+import GiftUIExecution
+import GiftUIRuntimeCore
+package func forward(semanticDisposition: SemanticCycleDisposition, logicalFrameDisposition: LogicalFrameDisposition, presentationIntentState: PresentationIntentState, wakeReasons: ExecutionWakeReasons, commitsInteractionCandidate: Bool, preservesPublishedSemanticRevision: Bool) -> RuntimePipelineDisposition { RuntimePipelineDisposition(semanticDisposition: semanticDisposition, logicalFrameDisposition: logicalFrameDisposition, presentationIntentState: presentationIntentState, wakeReasons: wakeReasons, commitsInteractionCandidate: commitsInteractionCandidate, preservesPublishedSemanticRevision: preservesPublishedSemanticRevision) }

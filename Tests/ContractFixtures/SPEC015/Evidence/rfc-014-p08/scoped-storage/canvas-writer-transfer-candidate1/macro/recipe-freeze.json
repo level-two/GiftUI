@@ -1,0 +1,10 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/macro/run.py": "34296c044263084a02a70f4ce242b07be92dfaa574fcdda92d5d0939e13d5ea0",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/macro/prepared.json": "b4e19b214991f96280c8f105d0fb3256fbfb67069e36b0c4d21a62bf95f0c09b",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/macro/input-freeze.json": "7a50555b4f7e1a641b3d8f36df6dfbe385fb89794f24fbc9dd4a7b7f43a07430",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/macro/TestMain-macos.swift": "021840e0c04661c1ac3348174fbcc6796fc83cbf6104a73efbd63c3b74ca9f94",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/macro/registered-methods.json": "ad4d60228b84e0e1bbea3a595fe6f27434f91532f8f7f97f7baeccecabf1a16f",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/macro/runner-environment.json": "b2b8788428c2206651336d9602ff2c592803719dce3c6ed1698e89dce218d582",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/macro/outputs.json": "2ec3eb2237bee7d64c4a43fd7b4f8c0d1f111e8ef2605f3dc66dab0601823901",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/macro/Objects.LinkFileList": "7de917aa0562acbd5110ec079ed5e135d9473e6324857e2157b338b1f8e5e685"
+}

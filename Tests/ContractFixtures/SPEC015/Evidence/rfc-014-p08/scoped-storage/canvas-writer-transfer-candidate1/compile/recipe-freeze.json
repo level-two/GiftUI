@@ -1,0 +1,5 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/compile/prepared.json": "beb6449067c651f7350374cd1c89150ea0d13b931d3a1675e47423ff3a753525",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/compile/run.py": "d1e253405756985487054b9d0ec4f93ce201499a62f7734f862326a3cfe7223b",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/compile/input-freeze.json": "6cfa9ef6bb9c5dc846827821a4b40dd94f3f6790eefce04d201f4546405cbc76"
+}

@@ -29,6 +29,13 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [Canvas candidate1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/README.md):
+source7c54fe61 exact68sites/11files formatted/token/default/emissionaudited. Onecandidate1/1
+zero automatic SOURCE repairs, oldbudgets preserved. Combined freshmacro17→fresh25→
+actualvariants4→privacy70→completeindexes11/required76bodies→conditional42SIL/object
+staticvalidatePASS only, no compiler/test/decoder/runtime. Fresh generated/output seals
+required; no other10roots/contract/privateguard edits. Actualsafety/cold/P08 remainopen.
+
 Canvas proposal selector amendment after16f1d689: exact typed BankBuffers fields
 records/paths/payloads195–197 replace three already-ABI Limits scalar matches;
 scalars198 constrained to same nominal region.68sites/11files unchanged, Limits3

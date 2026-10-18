@@ -1,0 +1,6 @@
+{
+  "GIFTUI_P08_REGRESSION_ROOT": "/Users/eugene/work/GiftUI",
+  "GIFTUI_P08_REGRESSION_OUTPUT": "/Users/eugene/work/GiftUI/.build/contracts/p08-canvas-writer-transfer-candidate1/macro/regression-output",
+  "DYLD_FRAMEWORK_PATH": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks:/Applications/Xcode.app/Contents/SharedFrameworks:/Library/Developer/PrivateFrameworks",
+  "DYLD_LIBRARY_PATH": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib:/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing"
+}

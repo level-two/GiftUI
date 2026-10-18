@@ -1,0 +1,18 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/run.py": "2111328649586faa0b11677b65a7d87c0c2e03f84d164cb2ec687342ff2a6269",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/prepared.json": "05a4ed7ccd94a9ea4201b67163823bd03c80bd062123669e242ebb5fc4696a7e",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/source-edits.json": "4b8f063317c0fb239e59a627d7d1b24cc57999691a51d08e61a8ddd7d1e7bb94",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/macro/run.py": "34296c044263084a02a70f4ce242b07be92dfaa574fcdda92d5d0939e13d5ea0",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/macro/prepared.json": "b4e19b214991f96280c8f105d0fb3256fbfb67069e36b0c4d21a62bf95f0c09b",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/macro/input-freeze.json": "7a50555b4f7e1a641b3d8f36df6dfbe385fb89794f24fbc9dd4a7b7f43a07430",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/macro/recipe-freeze.json": "d4e955c617cfa63be351349c636b44c929fd4958cdf99285acdff8dd579ca5c2",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/compile/run.py": "d1e253405756985487054b9d0ec4f93ce201499a62f7734f862326a3cfe7223b",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/compile/prepared.json": "beb6449067c651f7350374cd1c89150ea0d13b931d3a1675e47423ff3a753525",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/compile/input-freeze.json": "6cfa9ef6bb9c5dc846827821a4b40dd94f3f6790eefce04d201f4546405cbc76",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/compile/recipe-freeze.json": "bb5954c249e85c1b2a9a4e3892942fffa54118eacfe1e914b415cb9176a8b4df",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/qualification/run.py": "7f8453ab15e38644126dec662a356b93e93f28076426061c9adb0a0187d2e6be",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/qualification/prepared.json": "410f69d2d5f78a777928eae02a5d0e5fe79a48a4164a676388468723f88a1229",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/qualification/input-freeze.json": "86a75b43151fc9620c830c1961c9bc0daf95c22937cb1c77c249f6e2225942a6",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/qualification/recipe-freeze.json": "f5496db31aad9172706d7293dbc8b29f80a02e330520c52130e94843bc72e8bc",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/static-validation.json": "974b5a99919bb07ac0ada85a861fab88fccc603ff4c07c93587c77ae7afb5d9f"
+}

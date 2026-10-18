@@ -1,0 +1,22 @@
+{
+  "status": "PASS --validate only; no compiler/test/decoder/runtime",
+  "source_commit": "7c54fe61",
+  "source_scope": "exact68sites/11files; source/emission/default/ownership/lifetime audit and targetedformat PASS",
+  "input_counts": {
+    "macro": 278,
+    "compile": 337,
+    "qualification": 535
+  },
+  "fresh_macro": "all17methods/currentgoldens/testinputs/supportinputs; future produced outputs hashsealed",
+  "generated_inputs": "expectedlowerbytes derive after fresh17test PASS from actualsealed counter outputs, not old hashes",
+  "fresh_modules": 25,
+  "actual_variant_module_checks": 4,
+  "privacy_controls": 70,
+  "complete_index_modules": 11,
+  "body_targets": 76,
+  "prior_exact_names": 50,
+  "consumer_sources": 42,
+  "source_repairs": 0,
+  "future_output": "new isolated absent",
+  "protected_external5_pycache": "unchanged/unstaged"
+}

@@ -1,0 +1,82 @@
+{
+  "command_policy": "sameLLVM21/schema0/1003/11fresh modules; complete index/hash/offset/rawprefix",
+  "commands": {
+    "GiftUIDrawing": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-canvas-writer-transfer-candidate1/compile/owners/GiftUIDrawing/GiftUIDrawing.swiftmodule"
+    ],
+    "GiftUIHostConfiguration": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-canvas-writer-transfer-candidate1/compile/owners/GiftUIHostConfiguration/GiftUIHostConfiguration.swiftmodule"
+    ],
+    "GiftUIInteraction": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-canvas-writer-transfer-candidate1/compile/owners/GiftUIInteraction/GiftUIInteraction.swiftmodule"
+    ],
+    "GiftUILayout": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-canvas-writer-transfer-candidate1/compile/owners/GiftUILayout/GiftUILayout.swiftmodule"
+    ],
+    "GiftUIRasterCore": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-canvas-writer-transfer-candidate1/compile/owners/GiftUIRasterCore/GiftUIRasterCore.swiftmodule"
+    ],
+    "GiftUIRuntimeCore": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-canvas-writer-transfer-candidate1/compile/owners/GiftUIRuntimeCore/GiftUIRuntimeCore.swiftmodule"
+    ],
+    "GiftUIExecution": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-canvas-writer-transfer-candidate1/compile/owners/GiftUIExecution/GiftUIExecution.swiftmodule"
+    ],
+    "GiftUIObservableState": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-canvas-writer-transfer-candidate1/compile/owners/GiftUIObservableState/GiftUIObservableState.swiftmodule"
+    ],
+    "GiftUI": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-canvas-writer-transfer-candidate1/compile/owners/GiftUI/GiftUI.swiftmodule"
+    ],
+    "GiftUISemanticCore": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-canvas-writer-transfer-candidate1/compile/owners/GiftUISemanticCore/GiftUISemanticCore.swiftmodule"
+    ],
+    "P08CounterTable": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-canvas-writer-transfer-candidate1/compile/owners/P08CounterTable/P08CounterTable.swiftmodule"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/qualification/prepared.json": "410f69d2d5f78a777928eae02a5d0e5fe79a48a4164a676388468723f88a1229",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/qualification/run.py": "7f8453ab15e38644126dec662a356b93e93f28076426061c9adb0a0187d2e6be",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/qualification/input-freeze.json": "86a75b43151fc9620c830c1961c9bc0daf95c22937cb1c77c249f6e2225942a6",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/qualification/required-body-targets.json": "95182bf587ddbf0940fe65d338b4d0441d70e1b11dbc6bfc2189ee86de603607",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/qualification/boundaries-decode-prepared.json": "67421ecb0572bc1d0b2fdb44dee7d6032db9b09f54613365f1e40eaeb3e07459",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/qualification/interpret.py": "61dd39344e3a36a488215680f9478194d95528a81a04d058712977c979bed848",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/qualification/origin42-scope.json": "5224b28a722fd0f340e2829ab2dc9b313ce8b6a7140e14b2b5353a2c6dc85db7",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1/qualification/provenance.json": "97d80f7353c34ccf65725f4532cfbe7b2f1877581c19a98536cf4222861d758f"
+}
