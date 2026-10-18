@@ -17,7 +17,8 @@ Negative ABI controls A1, A2 and A3 each produced their declared diagnostic and
 were accepted by the frozen parser. At A4, the scratch Domain compile exited 1
 with the expected semantic dependency error: `SignalTransition.channelID` referred
 to `SignalChannelID` after its `@usableFromInline` annotation was removed. The
-compiler emitted a located declaration note with a gutter repeat:
+compiler emitted the declaration note only inside the source excerpt, without
+its own located note header:
 
 ```text
 SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public
