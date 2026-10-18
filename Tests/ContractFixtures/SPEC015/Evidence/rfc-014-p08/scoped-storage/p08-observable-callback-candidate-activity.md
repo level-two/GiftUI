@@ -63,3 +63,10 @@ Fullsafety/strictcold/P08 open; oldbudgets unchanged.
 68sites/11files A+B closure, sixoriginalroots plus generated finite tableproducer/tests.
 No source/compiler/runtime/newbudget; currentcandidate1/1 staysfixed. Cpublish3/
 Ctraversal5/E-Fcommit2 and text/cold costs remain named unqualified groups.
+
+[Independent grouped design review](p08-canvas-writer-transfer-design-review.md):
+proposal BLOCKED only on map entries29–31, which select already-ABI limits instead
+of actual BankBuffers.records/paths/payloads. Replace exact typed field selectors
+at195–197 and classify limits as no-ops; no source/compiler action or allowance.
+The remaining finite codec/writer/transfer/ten-emission design is coherent, subject
+to the proposed fresh generated-source/privacy/physical/actual-consumer gates.
