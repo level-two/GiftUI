@@ -66,6 +66,12 @@ force intended UInt32-positive vs ~Escapable-view-negative.1305frozen inputs ver
 reuse87bodies+72privacy, run pair then conditionalfresh42SIL only. Source/budgets/
 strict diagnostics unchanged; no lifetime/source acceptance or repair allowance.
 
+[Independent C package boundary review](p08-semantic-c-boundary-review.md):
+57a68926/7a2d8c99 selected8 C PASS, old stopped metadata boundary removed; original
+frontier21resolved/2remaining. F20 live provider metadata/storage dispatch and F21
+caller metadata setup remain codegen/cost BLOCKED/STOP despite scalar F21callee.
+No heapcount/source allowance/full safety/cold/P08 acceptance; grouped E/F review next.
+
 [Explicit-return pair/fresh42SIL PASS](semantic-c-escape-continuation1-result/README.md):
 positive0errors/negative1exactEscapable; SILexit0/61,999,526bytes/1305inputsverified,
 prior87/72andsealedprerequisites retained. No source/repeat/repairreset; actual C
