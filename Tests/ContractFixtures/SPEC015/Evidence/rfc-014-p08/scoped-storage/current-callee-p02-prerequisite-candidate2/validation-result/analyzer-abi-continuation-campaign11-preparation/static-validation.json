@@ -1,10 +1,14 @@
 {
   "campaign_launches": 0,
   "compiler_launches": 0,
+  "discovered_input_files": 498,
+  "external_object_pins": "required from independent review at launch; trusted Git bootstrap only",
+  "filesystem_adversarial_tests": 4,
   "finite_forms": 45,
   "freeze_inputs": 541,
+  "readiness_blockers_addressed": 5,
   "runner_syntax": "pass",
   "scope": "matcher accepts and adversarial mutations, all exact recipe argv; not producer/compiler evidence",
-  "status": "static_pass_independent_readiness_pending",
-  "tests": 4
+  "status": "corrected_static_pass_new_independent_readiness_pending",
+  "tests": 8
 }

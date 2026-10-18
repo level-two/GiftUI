@@ -96,3 +96,55 @@ must produce a stop with later controls/dependents unrun and no repair/retry.
 
 P08/current-callee/cold/resources/P09–P12/I4-07/runtime/safety/conformance remain
 open. Historical closed campaign budgets are not reopened by this preparation.
+
+## Readiness correction after independent Strong review
+
+The correction addresses the five readiness blockers in the review of
+`019bf10a`. It introduces no new campaign allowance and executes no compiler.
+
+1. Launch requires independent review to supply the exact committed revision,
+   repository tree and packet subtree IDs. The sole intended launch route reads
+   `reviewed-launch.py` from that reviewed Git object using `git show`, piping
+   its bytes to `PYTHONDONTWRITEBYTECODE=1 python3 - COMMIT TREE PACKET_TREE`.
+   The bootstrap reads its verifier from the same Git commit before loading any
+   working-tree packet Python or JSON. It authenticates the commit/tree object
+   bytes, joins the three IDs, compares the exact packet inventory and every
+   actual blob byte, then invokes the runner with all three external pins.
+   Directly invoking a mutable working-tree launcher is not the reviewed launch
+   route. The IDs must come from the completed independent review; the packet's
+   mutable manifest supplies no external trust. The runner repeats this check at
+   every verification boundary. Its lock re-execution preserves all external IDs.
+2. `fresh_context` calls full verification before creating or rechecking a
+   capture. Every launch verifies actual HEAD, all 541 frozen input bytes,
+   compiler bytes and resolved identities, packet Git blobs and input inventories
+   both before subprocess start and after it returns. Cached labels/digests do
+   not substitute for these actual filesystem checks.
+3. ARM P02 and every ARM scratch producer/consumer launch reauthenticate the
+   complete SDK inventory, links, bytes, archive and installation receipt before
+   and after the process. ARM fresh capture and dependent gates also reauthenticate
+   it. A changed SDK cannot qualify a negative or release the dependent gate.
+4. `producer-input-inventory.json` seals 498 discovered maintained source and
+   fixture files. Rules cover all files under Sources, the complete P02 fixture
+   discovery directories, all SPEC015 RuntimeDerived files, generated workload
+   TSVs and macro test Swift sources. Every launch checks both exact discovered
+   membership and bytes, preventing newly added files from entering a producer's
+   glob between reviewed preparation and launch. Frozen producer scripts retain
+   their exact glob rules. Completed imported object/module inventories are
+   checked separately against sealed producer/control receipts.
+5. The 80-receipt gate now reauthenticates exact order, every control receipt and
+   artifact, all producer receipts and their preserved copies, current P02 fields,
+   inputs and artifacts, transitive positive modules, every captured producer
+   output and stage log, actual object/module inventories, and the ARM SDK. The
+   gate runs before dependent release and before and after every dependent
+   subprocess. Legal additions to the shared positive cell are checked against
+   the union of its sealed control receipts; unknown additions reject.
+
+`test_readiness.py` adds four tests using real temporary files. They exercise
+resealed packet manifests and changed HEAD against externally pinned Git objects;
+all 541 frozen inputs, compiler mutations, added discovered files and symlink
+aliases; the actual SDK authenticator against changed bytes/added files/symlinks;
+and the actual 80-receipt gate against first/last receipt, core artifact,
+positive module and extra imported-object mutations. These complement the four
+finite matcher tests. No compiler or campaign ran. The corrected commit requires
+a new independent readiness review and externally supplied object pins before
+launch.

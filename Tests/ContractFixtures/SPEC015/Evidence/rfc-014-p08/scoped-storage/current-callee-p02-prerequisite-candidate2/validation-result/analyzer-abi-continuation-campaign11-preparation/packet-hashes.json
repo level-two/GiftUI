@@ -8,8 +8,8 @@
     "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
   },
   "README.md": {
-    "bytes": 6086,
-    "sha256": "024bb6010d12eb28430f2d7e001c9d78ae6b24e9522dbbc98d2ed06027257f55"
+    "bytes": 9735,
+    "sha256": "3d4f7f50cfeb0d35a9de2f6d209485c542e4ef9b5ff4ac3ba45100d1969b9563"
   },
   "armv6-A4-archived-policy.json": {
     "bytes": 7521,
@@ -52,8 +52,8 @@
     "sha256": "00e17518b8ccb5da306f097dcc43460acb6cbde2a8f82e677789ebc66c4f24ab"
   },
   "execute-proposal.py": {
-    "bytes": 90269,
-    "sha256": "1b147b2f40dee9d1d4ca0d857ff7ac20d18903c31d868e42f98a1653c904a13a"
+    "bytes": 95009,
+    "sha256": "31bfc110f7aca0028ffedd4ddb93afc6ed0d97e72239917a11e6bbed19d4d426"
   },
   "fresh-core-fields.json": {
     "bytes": 43259,
@@ -127,6 +127,10 @@
     "bytes": 19378,
     "sha256": "b39b46b2d1a45834c4cf4160e5fa0a7df7d2542dc7fa3d962d3aafdd6b59e8f0"
   },
+  "producer-input-inventory.json": {
+    "bytes": 71404,
+    "sha256": "ce018c3501cada38d7b6776423bca6d190fe4242317ee3ecc9cbaceb7b59779f"
+  },
   "provenance.json": {
     "bytes": 933,
     "sha256": "8faf0d5b89d7922533dede6dbebbc03779a6d34c519b306809fe524e9a5157a0"
@@ -135,9 +139,17 @@
     "bytes": 1707,
     "sha256": "2f12a942cbad13f0c0d931e3bfb2265038146bb32370b953bc89c40009667502"
   },
+  "readiness.py": {
+    "bytes": 4444,
+    "sha256": "a127b194b8d98dad3d58c6b301335760c9cceb952d4969b656f1d0c6999a7459"
+  },
   "recipe.json": {
     "bytes": 18123,
     "sha256": "cadd3ef63acdcc3910f19af0ceb17ea38f5a5aac04c713bc21991f4d6cacafa8"
+  },
+  "reviewed-launch.py": {
+    "bytes": 1176,
+    "sha256": "5586cac4b74c553ee6495636b75a10856b9211aaf1d400881e7710b2f440d197"
   },
   "scratch-sources.json": {
     "bytes": 29930,
@@ -148,11 +160,15 @@
     "sha256": "6c401231bf2c0dc4905b178df977ab3674506b9ef70d672af428af6a1898c17f"
   },
   "static-validation.json": {
-    "bytes": 310,
-    "sha256": "d4bcdad7fe4ffed00e18b42e8d936c0931fbcf3386b1c487e0b6bc21be34ddac"
+    "bytes": 531,
+    "sha256": "cd951da74516553e817c4d487596c72d29238135d1b8c5faba156c3711aa6907"
   },
   "test_fresh_policy.py": {
     "bytes": 6154,
     "sha256": "66587e71a2700776de817a9cb52240a0ffd8c01e7a95a3e348b45e2e6b8e9e2e"
+  },
+  "test_readiness.py": {
+    "bytes": 8354,
+    "sha256": "536d956622d48ab8a28e135c489f567579699beb5bdab4a6848e7b530da23333"
   }
 }

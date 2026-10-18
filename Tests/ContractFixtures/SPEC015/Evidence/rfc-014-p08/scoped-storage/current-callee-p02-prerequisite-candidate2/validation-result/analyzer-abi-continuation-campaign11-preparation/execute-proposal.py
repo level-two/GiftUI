@@ -30,11 +30,15 @@ def read(name):
 
 
 def main():
-    assert len(sys.argv) == 3 and sys.argv[1] == '--execute-newly-authorized-campaign', (
+    assert len(sys.argv) == 9 and sys.argv[1] == '--execute-newly-authorized-campaign', (
         'STOP: proposal only; separate explicit source/campaign authorization required')
     if not __debug__ or sys.flags.optimize:
         raise SystemExit('STOP: assertions must be active')
     sys.dont_write_bytecode = True
+    assert sys.argv[3::2] == ['--reviewed-commit', '--reviewed-tree', '--reviewed-packet-tree']
+    reviewed_commit, reviewed_tree, reviewed_packet_tree = sys.argv[4::2]
+    import readiness
+    readiness.verify_reviewed_packet(ROOT, PACKET, reviewed_commit, reviewed_tree, reviewed_packet_tree)
     freeze_path = Path(sys.argv[2])
     assert freeze_path == PACKET / 'postformat-freeze.json'
     assert freeze_path.is_absolute() and freeze_path.is_file()
@@ -42,14 +46,14 @@ def main():
     plan, selectors, sources, controls = [read(n) for n in (
         'recipe.json', 'selectors.json', 'scratch-sources.json', 'controls.json')]
     assert Path.cwd().resolve() == ROOT, 'exact repository cwd required'
-    assert sys.argv == plan['execution_argv'][1:], 'exact frozen campaign11 invocation required'
+    assert sys.argv[:3] == plan['execution_argv'][1:], 'exact frozen campaign11 invocation required'
     assert plan['lock'] == ['ruby', 'scripts/lib/serialize-validation.rb', *plan['execution_argv']], 'lock argv drift'
     baseline = read('baseline-inputs.json')
     frozen = json.loads(freeze_path.read_text())
     assert set(frozen) == set(baseline), 'postformat freeze path set differs'
     assert {k for k in frozen if frozen[k] != baseline[k]} <= set(selectors['files'])
     if not os.environ.get('GIFTUI_VALIDATION_LOCK_OWNER'):
-        os.execvp('ruby', plan['lock'])
+        os.execvp('ruby', plan['lock'] + sys.argv[3:])
     lock_owner = int(os.environ['GIFTUI_VALIDATION_LOCK_OWNER'])
     assert lock_owner == os.getppid(), 'campaign must be direct child of lock owner'
     lock_path = ROOT / '.build/validation.lock'
@@ -91,7 +95,7 @@ def main():
     armv6_a4_captures = {}
     current_commit = subprocess.check_output(
         ['git', 'rev-parse', '--verify', 'HEAD'], cwd=ROOT, text=True).strip()
-    assert re.fullmatch(r'[0-9a-f]{40}', current_commit)
+    assert re.fullmatch(r'[0-9a-f]{40}', current_commit) and current_commit == reviewed_commit
     state['authenticated_current_commit'] = current_commit
     private_policy = read('private-storage-policy.json')
     private_count_policy = read('private-count-policy.json')
@@ -100,6 +104,8 @@ def main():
 
     def verify():
         verify_lock()
+        readiness.verify_reviewed_packet(ROOT, PACKET, reviewed_commit, reviewed_tree, reviewed_packet_tree)
+        readiness.verify_inventory(ROOT, read('producer-input-inventory.json'))
         assert shutil.disk_usage(ROOT).free >= plan['minimum_free_bytes'], 'storage below frozen stage threshold'
         assert subprocess.check_output(['git', 'rev-parse', '--verify', 'HEAD'],
                                        cwd=ROOT, text=True).strip() == current_commit, 'HEAD drift'
@@ -109,8 +115,7 @@ def main():
         assert all(not p.is_symlink() for p in PACKET.rglob('*')), 'symlinked packet'
         for name, value in manifest.items():
             assert digest(PACKET / name) == value['sha256'], ('changed packet', name)
-        for name, value in frozen.items():
-            assert digest(ROOT / name) == value, ('changed frozen input', name)
+        readiness.verify_files(ROOT, frozen)
         for name in selectors['files']:
             actual = (ROOT / name).read_text()
             positive = sources['sources']['positive/' + Path(name).name]['text']
@@ -119,8 +124,7 @@ def main():
             else:
                 assert re.sub(r'\s+', '', actual) == re.sub(r'\s+', '', positive), (
                     'nonformat candidate change', name)
-        for name, value in read('provenance.json')['compiler_identities'].items():
-            assert digest(ROOT / name) == value['sha256']
+        readiness.verify_tools(ROOT, read('provenance.json')['compiler_identities'])
         for name, value in sources['sources'].items():
             assert hashlib.sha256(value['text'].encode()).hexdigest() == value['sha256']
 
@@ -189,6 +193,9 @@ def main():
         producer_snapshots[row['name']] = {'stage': dict(row), 'artifacts': artifacts}
 
     def fresh_context(label, argv, env):
+        verify()
+        if label.startswith('raspberry-pi-armv6-'):
+            assert authenticate_armv6_sdk() == state['armv6_sdk_preflight'], 'ARM SDK boundary drift'
         key = next((key for key, case in json.loads(batch_policy)['cases'].items()
                     if label == case['profile'] + '-' + case['control'] + '-' + case['stage']), None)
         if key is None:
@@ -290,6 +297,10 @@ def main():
 
     def launch(label, argv, extra_environment=None):
         verify()
+        if label == 'P02-raspberry-pi-armv6' or label.startswith('raspberry-pi-armv6-'):
+            assert authenticate_armv6_sdk() == state['armv6_sdk_preflight'], 'ARM SDK prelaunch drift'
+        if label in {stage['name'] for stage in plan['dependent_stages']}:
+            authenticate_campaign_receipts()
         env = dict(os.environ)
         env.update(plan['environment'])
         if extra_environment:
@@ -338,6 +349,11 @@ def main():
             assert Path(helper_audit['path']).stat().st_mtime_ns <= started
         with Path(str(prefix) + '.stdout').open('xb') as stdout, Path(str(prefix) + '.stderr').open('xb') as stderr:
             process = subprocess.run(argv, cwd=ROOT, env=env, stdout=stdout, stderr=stderr)
+        verify()
+        if label == 'P02-raspberry-pi-armv6' or label.startswith('raspberry-pi-armv6-'):
+            assert authenticate_armv6_sdk() == state['armv6_sdk_preflight'], 'ARM SDK postlaunch drift'
+        if label in {stage['name'] for stage in plan['dependent_stages']}:
+            authenticate_campaign_receipts()
         text = Path(str(prefix) + '.stdout').read_text(errors='replace')
         diagnostics = Path(str(prefix) + '.stderr').read_text(errors='replace')
         row = {'name': label, 'argv': argv, 'environment_overrides': {
@@ -1132,6 +1148,51 @@ def main():
                                           'path': str(path), 'sha256': digest(path)})
         save()
 
+    def authenticate_campaign_receipts():
+        verify()
+        assert len(state['control_receipts']) == 80, 'incomplete control gate'
+        expected_order = [(profile, control['id']) for profile in plan['profile_order'] for control in controls['controls']]
+        assert [(item['profile'], item['control']) for item in state['control_receipts']] == expected_order
+        for item in state['producer_receipts']:
+            data = readiness.verify_receipt(item['path'], item['sha256'], ROOT)
+            assert actual_bytes(item['copy']) == actual_bytes(item['path']), 'producer receipt copy drift'
+            if 'source_commit' in data:
+                assert data['source_commit'] == current_commit, 'transitive current commit drift'
+            if data.get('package') == 'P02':
+                assert data['source_commit'] == current_commit
+                assert all(exact_identity(data.get(key), value) for key, value in read('fresh-core-fields.json')[data['profile']].items())
+            # Dependent scripts use *.o inventories from completed producer roots.
+            base = Path(item['path']).parent
+            expected = {name for name in data.get('artifacts',{}) if name.endswith(('.o','.swiftmodule'))}
+            assert {path.name for path in base.iterdir() if path.name.endswith(('.o','.swiftmodule'))} == expected, 'extra imported producer artifact'
+        for item in state['control_receipts']:
+            data = readiness.verify_receipt(item['path'], item['sha256'], ROOT)
+            assert data['passed'] is True and data['profile'] == item['profile'] and data['control'] == item['control']
+            core = refs[item['profile']]
+            assert data['core_receipt_sha256'] == core['sha256']
+            assert data['transitive_imports']['core'] == {'path': core['path'], 'sha256': core['sha256']}
+            positive = Path(data['positive_cell'])
+            retained = data['transitive_imports']['positive_scratch']
+            readiness.verify_files(positive, retained)
+            cell = Path(item['path']).parent
+        for cell_name in {str(Path(item['path']).parent) for item in state['control_receipts']}:
+            cell = Path(cell_name)
+            items = [item for item in state['control_receipts'] if Path(item['path']).parent == cell]
+            allowed = {Path(item['path']).name for item in items}
+            for item in items:
+                allowed.update(json.loads(actual_bytes(item['path']))['artifacts'])
+            actual_inventory = {str(path.relative_to(cell)) for path in cell.rglob('*') if path.is_file() and 'cache' not in path.relative_to(cell).parts}
+            assert actual_inventory == allowed, 'control artifact inventory drift'
+        for captured in producer_snapshots.values():
+            producer = captured['stage']
+            assert producer in state['stages'] and type(producer['exit']) is int and producer['exit'] == 0
+            for stream in ('stdout','stderr'):
+                assert digest(out / 'logs' / (producer['name'] + '.' + stream)) == producer[stream + '_sha256'], 'transitive stage log drift'
+            for name, identity in captured['artifacts'].items():
+                content = actual_bytes(name, producer['started_ns'])
+                assert {'bytes': len(content), 'sha256': hashlib.sha256(content).hexdigest()} == identity, 'transitive producer artifact drift'
+        assert authenticate_armv6_sdk() == state['armv6_sdk_preflight'], 'dependent ARM SDK drift'
+
     assert private_count_policy['core_policy']['parent'] == private_policy['core_policy']['parent']
     assert private_helper_continuation_policy['core_policy']['parent'] == private_policy['core_policy']['parent']
     assert private_helper_leading_policy['core_policy']['parent'] == private_policy['core_policy']['parent']
@@ -1253,6 +1314,7 @@ def main():
                     diagnostic(control, row, output, errors, path, cell, positive_cell, profile, name)
                 control_receipt(control, profile, cell, base, positive_cell)
         assert len(state['control_receipts']) == len(controls['controls']) * 4 == 80
+        authenticate_campaign_receipts()
         values = {'core-macos-static': str(Path(refs['macos-static']['path']).parent)}
         for stage in plan['dependent_stages']:
             argv = [values[token[1:-1]] if token.startswith('{') and token.endswith('}') else token for token in stage['argv']]
