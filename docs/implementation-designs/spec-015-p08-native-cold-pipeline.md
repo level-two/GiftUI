@@ -18,7 +18,15 @@ superseded_by: null
 
 ## Grouped dependency continuation — 2026-10-18
 
-Current [actual-consumer result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-consumer-result/README.md):
+Current [authorized grouped candidate1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-candidate1/README.md):
+exact53 sites/six files applied, formatted and token audited; all14 constructor
+arguments required. Source and fresh registered25-owner recipe frozen/319 hashes;
+validation-only PASS, compiler unexecuted. New ONE candidate1/1, zero automatic
+repairs; historical exhausted budgets remain exhausted. Prior boundaries below
+are historical. Privacy/physical actual-consumer/full safety/strict cold and
+P08/R07/T8.1 remain open;23 latent stage symbols are outside this edit scope.
+
+Historical [actual-consumer result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-consumer-result/README.md):
 fresh SIL collected/573hashes verified; one required callee gate FAIL:
 concrete scoped Static pipeline calls RuntimeCompletePipeline.run, physical611/
 serializedKind0/zeroBB, effect-summary-only SIL and object0x198c agree. Compile25/

@@ -1,3 +1,4 @@
+@usableFromInline
 package enum RuntimeCoordinatorStage: UInt8, Equatable, Sendable {
     case observableBindingOrSemanticExpansion = 0
     case layout = 1
@@ -8,6 +9,7 @@ package enum RuntimeCoordinatorStage: UInt8, Equatable, Sendable {
     case acceptedOffer = 6
 }
 
+@usableFromInline
 package enum RuntimeCleanupAction: UInt8, Equatable, Sendable {
     case releaseCanvasCallable = 0
     case discardInteractionCandidate = 1
@@ -20,21 +22,33 @@ package enum RuntimeCleanupAction: UInt8, Equatable, Sendable {
     case resetAttemptStorage = 8
 }
 
+@usableFromInline
 package struct RuntimeCleanupActions: OptionSet, Equatable, Sendable {
+    @usableFromInline
     package let rawValue: UInt16
 
+    @usableFromInline
     package init(rawValue: UInt16) {
         self.rawValue = rawValue & 0x01FF
     }
 
+    @usableFromInline
     package static let releaseCanvasCallable = action(.releaseCanvasCallable)
+    @usableFromInline
     package static let discardInteractionCandidate = action(.discardInteractionCandidate)
+    @usableFromInline
     package static let commitInteractionCandidate = action(.commitInteractionCandidate)
+    @usableFromInline
     package static let resetRenderWorkspace = action(.resetRenderWorkspace)
+    @usableFromInline
     package static let resetDrawingPlan = action(.resetDrawingPlan)
+    @usableFromInline
     package static let resetLayoutCandidate = action(.resetLayoutCandidate)
+    @usableFromInline
     package static let discardSemanticCandidate = action(.discardSemanticCandidate)
+    @usableFromInline
     package static let discardObservableCandidate = action(.discardObservableCandidate)
+    @usableFromInline
     package static let resetAttemptStorage = action(.resetAttemptStorage)
 
     private static func action(_ action: RuntimeCleanupAction) -> Self {
@@ -47,13 +61,16 @@ package struct RuntimeCleanupActions: OptionSet, Equatable, Sendable {
 
 }
 
+@usableFromInline
 package struct RuntimeCleanupPlan: Equatable, Sendable {
     package let stage: RuntimeCoordinatorStage
     package let actions: RuntimeCleanupActions
     package let laterFallibleWorkIsPermitted: Bool
 }
 
+@usableFromInline
 package enum RuntimeCoordinatorCleanupOracle {
+    @usableFromInline
     package static func plan(
         after stage: RuntimeCoordinatorStage
     ) -> RuntimeCleanupPlan {
@@ -119,9 +136,11 @@ package enum RuntimeCoordinatorCleanupOracle {
     }
 }
 
+@usableFromInline
 package struct RuntimeCleanupTracker: Equatable, Sendable {
     private var outstanding: RuntimeCleanupActions
 
+    @usableFromInline
     package init(plan: RuntimeCleanupPlan, acquired: RuntimeCleanupActions) {
         outstanding = plan.actions.intersection(acquired)
     }
@@ -130,6 +149,7 @@ package struct RuntimeCleanupTracker: Equatable, Sendable {
         outstanding.isEmpty
     }
 
+    @usableFromInline
     package mutating func takeNext() -> RuntimeCleanupAction? {
         if take(.releaseCanvasCallable) { return .releaseCanvasCallable }
         if take(.discardInteractionCandidate) { return .discardInteractionCandidate }

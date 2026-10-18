@@ -1,0 +1,7 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-candidate1/run.py": "a7bd2e22007b099fd80bbba58859fdea46be9ba7211ea5c6e2bf598f18a355d5",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-candidate1/prepared.json": "c03baf8e005bdab9b1a89807bb2c76cf19990c162783ab01e570ebf3c32f1da0",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-candidate1/input-freeze.json": "ee6dcd39d60ccfdbd67ca02a7fba1852aa25923172741f58e7c44a99317e0f33",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-candidate1/source.diff": "6075c3343f7f946352fe252bf719af1d5396222e87dc7f8285e07bd7678a3fab",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-candidate1/source-edits.json": "343e044832fc3c3885119aa4dd2b0cb3ff2354ce3fdb41b6fa6ac12c9566a28c"
+}

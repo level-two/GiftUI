@@ -1,6 +1,7 @@
 import GiftUI
 import GiftUIExecution
 
+@usableFromInline
 package enum RuntimeCompletePipelineStage: UInt8, Equatable, Sendable {
     case admissionAndSeal = 0
     case applyAdmittedWork = 1
@@ -15,19 +16,23 @@ package enum RuntimeCompletePipelineStage: UInt8, Equatable, Sendable {
     case offerAndProduction = 10
 }
 
+@usableFromInline
 package enum RuntimePipelineStepResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {
     case advanced
     case failure(RunCycleFailure<OwnerFailure>)
 }
 
+@usableFromInline
 package enum RuntimePipelineMutationResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable
 {
     case applied(Bool)
     case failure(RunCycleFailure<OwnerFailure>, mutationApplied: Bool)
 }
 
+@usableFromInline
 package struct RuntimePipelinePublication: Equatable, Sendable {
     package let semanticRevision: SemanticRevision
+    @usableFromInline
     package let changed: Bool
 
     package init(semanticRevision: SemanticRevision, changed: Bool) {
@@ -36,6 +41,7 @@ package struct RuntimePipelinePublication: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum RuntimePipelinePublicationResult<OwnerFailure: Equatable & Sendable>: Equatable,
     Sendable
 {
@@ -43,6 +49,7 @@ package enum RuntimePipelinePublicationResult<OwnerFailure: Equatable & Sendable
     case failure(RunCycleFailure<OwnerFailure>)
 }
 
+@usableFromInline
 package enum RuntimePipelineOfferResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {
     case accepted(PresentationRevision)
     case noChange
@@ -52,6 +59,7 @@ package enum RuntimePipelineOfferResult<OwnerFailure: Equatable & Sendable>: Equ
     case failure(RunCycleFailure<OwnerFailure>)
 }
 
+@usableFromInline
 package struct RuntimePipelineDisposition: Equatable, Sendable {
     package let semanticDisposition: SemanticCycleDisposition
     package let logicalFrameDisposition: LogicalFrameDisposition
@@ -59,29 +67,80 @@ package struct RuntimePipelineDisposition: Equatable, Sendable {
     package let wakeReasons: ExecutionWakeReasons
     package let commitsInteractionCandidate: Bool
     package let preservesPublishedSemanticRevision: Bool
+
+    @usableFromInline
+    internal init(
+        semanticDisposition: SemanticCycleDisposition,
+        logicalFrameDisposition: LogicalFrameDisposition,
+        presentationIntentState: PresentationIntentState,
+        wakeReasons: ExecutionWakeReasons,
+        commitsInteractionCandidate: Bool,
+        preservesPublishedSemanticRevision: Bool
+    ) {
+        self.semanticDisposition = semanticDisposition
+        self.logicalFrameDisposition = logicalFrameDisposition
+        self.presentationIntentState = presentationIntentState
+        self.wakeReasons = wakeReasons
+        self.commitsInteractionCandidate = commitsInteractionCandidate
+        self.preservesPublishedSemanticRevision = preservesPublishedSemanticRevision
+    }
 }
 
+@usableFromInline
 package struct RuntimePipelineCompletion: Equatable, Sendable {
     package let publication: RuntimePipelinePublication
     package let committedPresentationRevision: PresentationRevision?
     package let operational: ExecutionOperational?
     package let disposition: RuntimePipelineDisposition
+
+    @usableFromInline
+    internal init(
+        publication: RuntimePipelinePublication,
+        committedPresentationRevision: PresentationRevision?,
+        operational: ExecutionOperational?,
+        disposition: RuntimePipelineDisposition
+    ) {
+        self.publication = publication
+        self.committedPresentationRevision = committedPresentationRevision
+        self.operational = operational
+        self.disposition = disposition
+    }
 }
 
+@usableFromInline
 package struct RuntimePipelineFailureRecord<OwnerFailure: Equatable & Sendable>: Equatable, Sendable
 {
+    @usableFromInline
     package let stage: RuntimeCompletePipelineStage
+    @usableFromInline
     package let failure: RunCycleFailure<OwnerFailure>
+    @usableFromInline
     package let publication: RuntimePipelinePublication?
+    @usableFromInline
     package let disposition: RuntimePipelineDisposition
+
+    @inlinable
+    internal init(
+        stage: RuntimeCompletePipelineStage,
+        failure: RunCycleFailure<OwnerFailure>,
+        publication: RuntimePipelinePublication?,
+        disposition: RuntimePipelineDisposition
+    ) {
+        self.stage = stage
+        self.failure = failure
+        self.publication = publication
+        self.disposition = disposition
+    }
 }
 
+@usableFromInline
 package enum RuntimeCompletePipelineResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable
 {
     case completed(RuntimePipelineCompletion)
     case failed(RuntimePipelineFailureRecord<OwnerFailure>)
 }
 
+@usableFromInline
 package protocol RuntimeCompletePipelineOwner: ~Copyable, ~Escapable {
     associatedtype OwnerFailure: Equatable & Sendable = RuntimeOwnerFailure
     var presentationIntentState: PresentationIntentState { get }
@@ -106,6 +165,7 @@ package protocol RuntimeCompletePipelineOwner: ~Copyable, ~Escapable {
     mutating func finalizePipeline()
 }
 
+@usableFromInline
 package enum RuntimeCompletePipeline {
     package static func rejectInactive<Owner>(
         owner: inout Owner
@@ -371,7 +431,8 @@ package enum RuntimeCompletePipeline {
         return result
     }
 
-    private static func finishOfferWithoutCommit<Owner>(
+    @inlinable
+    internal static func finishOfferWithoutCommit<Owner>(
         operational: ExecutionOperational,
         state: PresentationIntentState,
         wakeReasons: ExecutionWakeReasons,
@@ -402,7 +463,8 @@ package enum RuntimeCompletePipeline {
         )
     }
 
-    private static func fail<Owner>(
+    @inlinable
+    internal static func fail<Owner>(
         priorIntent: PresentationIntentState,
         at stage: RuntimeCompletePipelineStage,
         failure: RunCycleFailure<Owner.OwnerFailure>,
@@ -446,7 +508,8 @@ package enum RuntimeCompletePipeline {
         )
     }
 
-    private static func cleanup<Owner>(
+    @inlinable
+    internal static func cleanup<Owner>(
         after stage: RuntimeCoordinatorStage,
         acquired: RuntimeCleanupActions,
         owner: inout Owner
@@ -460,7 +523,8 @@ package enum RuntimeCompletePipeline {
         }
     }
 
-    private static func cleanupStage(
+    @usableFromInline
+    internal static func cleanupStage(
         for stage: RuntimeCompletePipelineStage,
         wasPublished: Bool
     ) -> RuntimeCoordinatorStage {

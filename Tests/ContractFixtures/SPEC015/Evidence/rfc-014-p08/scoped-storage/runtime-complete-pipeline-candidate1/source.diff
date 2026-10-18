@@ -1,0 +1,175 @@
+--- a/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift
++++ b/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift
+@@ -3,0 +4 @@
++@usableFromInline
+@@ -17,0 +19 @@
++@usableFromInline
+@@ -22,0 +25 @@
++@usableFromInline
+@@ -28,0 +32 @@
++@usableFromInline
+@@ -30,0 +35 @@
++    @usableFromInline
+@@ -38,0 +44 @@
++@usableFromInline
+@@ -45,0 +52 @@
++@usableFromInline
+@@ -54,0 +62 @@
++@usableFromInline
+@@ -62,2 +70,20 @@
+-}
+-
++
++    @usableFromInline
++    internal init(
++        semanticDisposition: SemanticCycleDisposition,
++        logicalFrameDisposition: LogicalFrameDisposition,
++        presentationIntentState: PresentationIntentState,
++        wakeReasons: ExecutionWakeReasons,
++        commitsInteractionCandidate: Bool,
++        preservesPublishedSemanticRevision: Bool
++    ) {
++        self.semanticDisposition = semanticDisposition
++        self.logicalFrameDisposition = logicalFrameDisposition
++        self.presentationIntentState = presentationIntentState
++        self.wakeReasons = wakeReasons
++        self.commitsInteractionCandidate = commitsInteractionCandidate
++        self.preservesPublishedSemanticRevision = preservesPublishedSemanticRevision
++    }
++}
++
++@usableFromInline
+@@ -69,2 +95,16 @@
+-}
+-
++
++    @usableFromInline
++    internal init(
++        publication: RuntimePipelinePublication,
++        committedPresentationRevision: PresentationRevision?,
++        operational: ExecutionOperational?,
++        disposition: RuntimePipelineDisposition
++    ) {
++        self.publication = publication
++        self.committedPresentationRevision = committedPresentationRevision
++        self.operational = operational
++        self.disposition = disposition
++    }
++}
++
++@usableFromInline
+@@ -72,0 +113 @@
++    @usableFromInline
+@@ -73,0 +115 @@
++    @usableFromInline
+@@ -74,0 +117 @@
++    @usableFromInline
+@@ -75,0 +119 @@
++    @usableFromInline
+@@ -77,2 +121,16 @@
+-}
+-
++
++    @inlinable
++    internal init(
++        stage: RuntimeCompletePipelineStage,
++        failure: RunCycleFailure<OwnerFailure>,
++        publication: RuntimePipelinePublication?,
++        disposition: RuntimePipelineDisposition
++    ) {
++        self.stage = stage
++        self.failure = failure
++        self.publication = publication
++        self.disposition = disposition
++    }
++}
++
++@usableFromInline
+@@ -84,0 +143 @@
++@usableFromInline
+@@ -108,0 +168 @@
++@usableFromInline
+@@ -374 +434,2 @@
+-    private static func finishOfferWithoutCommit<Owner>(
++    @inlinable
++    internal static func finishOfferWithoutCommit<Owner>(
+@@ -405 +466,2 @@
+-    private static func fail<Owner>(
++    @inlinable
++    internal static func fail<Owner>(
+@@ -449 +511,2 @@
+-    private static func cleanup<Owner>(
++    @inlinable
++    internal static func cleanup<Owner>(
+@@ -463 +526,2 @@
+-    private static func cleanupStage(
++    @usableFromInline
++    internal static func cleanupStage(
+--- a/Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift
++++ b/Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift
+@@ -0,0 +1 @@
++@usableFromInline
+@@ -10,0 +12 @@
++@usableFromInline
+@@ -22,0 +25 @@
++@usableFromInline
+@@ -23,0 +27 @@
++    @usableFromInline
+@@ -25,0 +30 @@
++    @usableFromInline
+@@ -29,0 +35 @@
++    @usableFromInline
+@@ -30,0 +37 @@
++    @usableFromInline
+@@ -31,0 +39 @@
++    @usableFromInline
+@@ -32,0 +41 @@
++    @usableFromInline
+@@ -33,0 +43 @@
++    @usableFromInline
+@@ -34,0 +45 @@
++    @usableFromInline
+@@ -35,0 +47 @@
++    @usableFromInline
+@@ -36,0 +49 @@
++    @usableFromInline
+@@ -37,0 +51 @@
++    @usableFromInline
+@@ -49,0 +64 @@
++@usableFromInline
+@@ -55,0 +71 @@
++@usableFromInline
+@@ -56,0 +73 @@
++    @usableFromInline
+@@ -121,0 +139 @@
++@usableFromInline
+@@ -124,0 +143 @@
++    @usableFromInline
+@@ -132,0 +152 @@
++    @usableFromInline
+--- a/Sources/GiftUIExecution/RunCycleValues.swift
++++ b/Sources/GiftUIExecution/RunCycleValues.swift
+@@ -16,0 +17 @@
++@usableFromInline
+@@ -45,0 +47 @@
++@usableFromInline
+--- a/Sources/GiftUIExecution/FrameHandoffValues.swift
++++ b/Sources/GiftUIExecution/FrameHandoffValues.swift
+@@ -26,0 +27 @@
++@usableFromInline
+--- a/Sources/GiftUIExecution/WakeValues.swift
++++ b/Sources/GiftUIExecution/WakeValues.swift
+@@ -0,0 +1 @@
++@usableFromInline
+@@ -1,0 +3 @@
++    @usableFromInline
+@@ -3,0 +6 @@
++    @usableFromInline
+@@ -8,0 +12 @@
++    @usableFromInline
+@@ -9,0 +14 @@
++    @usableFromInline
+--- a/Sources/GiftUI/GiftUI.swift
++++ b/Sources/GiftUI/GiftUI.swift
+@@ -136,0 +137 @@
++@usableFromInline

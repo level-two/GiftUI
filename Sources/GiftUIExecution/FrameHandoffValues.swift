@@ -24,6 +24,7 @@ package enum FrameOfferDisposition: UInt8, Equatable, Sendable {
     case failed = 4
 }
 
+@usableFromInline
 package enum LogicalFrameDisposition: UInt8, Equatable, Sendable {
     case notProduced = 0
     case committed = 1

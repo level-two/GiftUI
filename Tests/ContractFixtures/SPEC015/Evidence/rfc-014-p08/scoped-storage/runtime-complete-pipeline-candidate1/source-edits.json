@@ -1,0 +1,812 @@
+{
+  "basis": "explicit authorization after ec2fc8e2 READY/d98fd154",
+  "activity": "runtime-complete-pipeline-grouped-candidate",
+  "candidate": "1/1",
+  "automatic_source_repairs": 0,
+  "edits": [
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 4,
+      "owner": null,
+      "selector": "RuntimeCompletePipelineStage",
+      "declaration": "package enum RuntimeCompletePipelineStage: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "required run/helper signatures, enum payloads or enclosing ABI formal scope",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "package enum RuntimeCompletePipelineStage: UInt8, Equatable, Sendable {",
+      "after": "package enum RuntimeCompletePipelineStage: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 18,
+      "owner": null,
+      "selector": "RuntimePipelineStepResult",
+      "declaration": "package enum RuntimePipelineStepResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "required run/helper signatures, enum payloads or enclosing ABI formal scope",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "package enum RuntimePipelineStepResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {",
+      "after": "package enum RuntimePipelineStepResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 23,
+      "owner": null,
+      "selector": "RuntimePipelineMutationResult",
+      "declaration": "package enum RuntimePipelineMutationResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "action": "add @usableFromInline only",
+      "trace": "required run/helper signatures, enum payloads or enclosing ABI formal scope",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "package enum RuntimePipelineMutationResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "after": "package enum RuntimePipelineMutationResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 29,
+      "owner": null,
+      "selector": "RuntimePipelinePublication",
+      "declaration": "package struct RuntimePipelinePublication: Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "required run/helper signatures, enum payloads or enclosing ABI formal scope",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "package struct RuntimePipelinePublication: Equatable, Sendable {",
+      "after": "package struct RuntimePipelinePublication: Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 39,
+      "owner": null,
+      "selector": "RuntimePipelinePublicationResult",
+      "declaration": "package enum RuntimePipelinePublicationResult<OwnerFailure: Equatable & Sendable>: Equatable,",
+      "action": "add @usableFromInline only",
+      "trace": "required run/helper signatures, enum payloads or enclosing ABI formal scope",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "package enum RuntimePipelinePublicationResult<OwnerFailure: Equatable & Sendable>: Equatable,",
+      "after": "package enum RuntimePipelinePublicationResult<OwnerFailure: Equatable & Sendable>: Equatable,"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 46,
+      "owner": null,
+      "selector": "RuntimePipelineOfferResult",
+      "declaration": "package enum RuntimePipelineOfferResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "required run/helper signatures, enum payloads or enclosing ABI formal scope",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "package enum RuntimePipelineOfferResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {",
+      "after": "package enum RuntimePipelineOfferResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 55,
+      "owner": null,
+      "selector": "RuntimePipelineDisposition",
+      "declaration": "package struct RuntimePipelineDisposition: Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "required run/helper signatures, enum payloads or enclosing ABI formal scope",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "package struct RuntimePipelineDisposition: Equatable, Sendable {",
+      "after": "package struct RuntimePipelineDisposition: Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 64,
+      "owner": null,
+      "selector": "RuntimePipelineCompletion",
+      "declaration": "package struct RuntimePipelineCompletion: Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "required run/helper signatures, enum payloads or enclosing ABI formal scope",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "package struct RuntimePipelineCompletion: Equatable, Sendable {",
+      "after": "package struct RuntimePipelineCompletion: Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 71,
+      "owner": null,
+      "selector": "RuntimePipelineFailureRecord",
+      "declaration": "package struct RuntimePipelineFailureRecord<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "action": "add @usableFromInline only",
+      "trace": "required run/helper signatures, enum payloads or enclosing ABI formal scope",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "package struct RuntimePipelineFailureRecord<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "after": "package struct RuntimePipelineFailureRecord<OwnerFailure: Equatable & Sendable>: Equatable, Sendable"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 79,
+      "owner": null,
+      "selector": "RuntimeCompletePipelineResult",
+      "declaration": "package enum RuntimeCompletePipelineResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "action": "add @usableFromInline only",
+      "trace": "required run/helper signatures, enum payloads or enclosing ABI formal scope",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "package enum RuntimeCompletePipelineResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "after": "package enum RuntimeCompletePipelineResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 85,
+      "owner": null,
+      "selector": "RuntimeCompletePipelineOwner",
+      "declaration": "package protocol RuntimeCompletePipelineOwner: ~Copyable, ~Escapable {",
+      "action": "add @usableFromInline only",
+      "trace": "required run/helper signatures, enum payloads or enclosing ABI formal scope",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "package protocol RuntimeCompletePipelineOwner: ~Copyable, ~Escapable {",
+      "after": "package protocol RuntimeCompletePipelineOwner: ~Copyable, ~Escapable {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 109,
+      "owner": null,
+      "selector": "RuntimeCompletePipeline",
+      "declaration": "package enum RuntimeCompletePipeline {",
+      "action": "add @usableFromInline only",
+      "trace": "required run/helper signatures, enum payloads or enclosing ABI formal scope",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "package enum RuntimeCompletePipeline {",
+      "after": "package enum RuntimeCompletePipeline {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 31,
+      "owner": "RuntimePipelinePublication",
+      "selector": "changed",
+      "declaration": "package let changed: Bool",
+      "action": "add @usableFromInline only",
+      "trace": "run/finish/fail directly read publication.changed",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "    package let changed: Bool",
+      "after": "    package let changed: Bool"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 73,
+      "owner": "RuntimePipelineFailureRecord",
+      "selector": "stage",
+      "declaration": "package let stage: RuntimeCompletePipelineStage",
+      "action": "add @usableFromInline only",
+      "trace": "new serialized generic FailureRecord memberwise-equivalent initializer only",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "    package let stage: RuntimeCompletePipelineStage",
+      "after": "    package let stage: RuntimeCompletePipelineStage"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 74,
+      "owner": "RuntimePipelineFailureRecord",
+      "selector": "failure",
+      "declaration": "package let failure: RunCycleFailure<OwnerFailure>",
+      "action": "add @usableFromInline only",
+      "trace": "new serialized generic FailureRecord memberwise-equivalent initializer only",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "    package let failure: RunCycleFailure<OwnerFailure>",
+      "after": "    package let failure: RunCycleFailure<OwnerFailure>"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 75,
+      "owner": "RuntimePipelineFailureRecord",
+      "selector": "publication",
+      "declaration": "package let publication: RuntimePipelinePublication?",
+      "action": "add @usableFromInline only",
+      "trace": "new serialized generic FailureRecord memberwise-equivalent initializer only",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "    package let publication: RuntimePipelinePublication?",
+      "after": "    package let publication: RuntimePipelinePublication?"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 76,
+      "owner": "RuntimePipelineFailureRecord",
+      "selector": "disposition",
+      "declaration": "package let disposition: RuntimePipelineDisposition",
+      "action": "add @usableFromInline only",
+      "trace": "new serialized generic FailureRecord memberwise-equivalent initializer only",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "    package let disposition: RuntimePipelineDisposition",
+      "after": "    package let disposition: RuntimePipelineDisposition"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 374,
+      "owner": "RuntimeCompletePipeline",
+      "selector": "finishOfferWithoutCommit",
+      "declaration": "private static func finishOfferWithoutCommit<Owner>(",
+      "action": "private -> internal, add @inlinable; existing body/constraints unchanged",
+      "trace": "direct generic run/failure/cleanup call closure",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@inlinable",
+      "before": "    private static func finishOfferWithoutCommit<Owner>(",
+      "after": "    internal static func finishOfferWithoutCommit<Owner>("
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 405,
+      "owner": "RuntimeCompletePipeline",
+      "selector": "fail",
+      "declaration": "private static func fail<Owner>(",
+      "action": "private -> internal, add @inlinable; existing body/constraints unchanged",
+      "trace": "direct generic run/failure/cleanup call closure",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@inlinable",
+      "before": "    private static func fail<Owner>(",
+      "after": "    internal static func fail<Owner>("
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 449,
+      "owner": "RuntimeCompletePipeline",
+      "selector": "cleanup",
+      "declaration": "private static func cleanup<Owner>(",
+      "action": "private -> internal, add @inlinable; existing body/constraints unchanged",
+      "trace": "direct generic run/failure/cleanup call closure",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@inlinable",
+      "before": "    private static func cleanup<Owner>(",
+      "after": "    internal static func cleanup<Owner>("
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 463,
+      "owner": "RuntimeCompletePipeline",
+      "selector": "cleanupStage",
+      "declaration": "private static func cleanupStage(",
+      "action": "private -> internal, add @usableFromInline; ordinary body unchanged",
+      "trace": "ordinary nongeneric fail -> cleanupStage boundary",
+      "source_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "added_attribute": "@usableFromInline",
+      "before": "    private static func cleanupStage(",
+      "after": "    internal static func cleanupStage("
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 1,
+      "owner": null,
+      "selector": "RuntimeCoordinatorStage",
+      "declaration": "package enum RuntimeCoordinatorStage: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "cleanupStage/signature, OptionSet or ordinary cleanup oracle/tracker signature",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "package enum RuntimeCoordinatorStage: UInt8, Equatable, Sendable {",
+      "after": "package enum RuntimeCoordinatorStage: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 11,
+      "owner": null,
+      "selector": "RuntimeCleanupAction",
+      "declaration": "package enum RuntimeCleanupAction: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "cleanupStage/signature, OptionSet or ordinary cleanup oracle/tracker signature",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "package enum RuntimeCleanupAction: UInt8, Equatable, Sendable {",
+      "after": "package enum RuntimeCleanupAction: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 23,
+      "owner": null,
+      "selector": "RuntimeCleanupActions",
+      "declaration": "package struct RuntimeCleanupActions: OptionSet, Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "cleanupStage/signature, OptionSet or ordinary cleanup oracle/tracker signature",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "package struct RuntimeCleanupActions: OptionSet, Equatable, Sendable {",
+      "after": "package struct RuntimeCleanupActions: OptionSet, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 50,
+      "owner": null,
+      "selector": "RuntimeCleanupPlan",
+      "declaration": "package struct RuntimeCleanupPlan: Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "cleanupStage/signature, OptionSet or ordinary cleanup oracle/tracker signature",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "package struct RuntimeCleanupPlan: Equatable, Sendable {",
+      "after": "package struct RuntimeCleanupPlan: Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 56,
+      "owner": null,
+      "selector": "RuntimeCoordinatorCleanupOracle",
+      "declaration": "package enum RuntimeCoordinatorCleanupOracle {",
+      "action": "add @usableFromInline only",
+      "trace": "cleanupStage/signature, OptionSet or ordinary cleanup oracle/tracker signature",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "package enum RuntimeCoordinatorCleanupOracle {",
+      "after": "package enum RuntimeCoordinatorCleanupOracle {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 122,
+      "owner": null,
+      "selector": "RuntimeCleanupTracker",
+      "declaration": "package struct RuntimeCleanupTracker: Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "cleanupStage/signature, OptionSet or ordinary cleanup oracle/tracker signature",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "package struct RuntimeCleanupTracker: Equatable, Sendable {",
+      "after": "package struct RuntimeCleanupTracker: Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 24,
+      "owner": "RuntimeCleanupActions",
+      "selector": "rawValue",
+      "declaration": "package let rawValue: UInt16",
+      "action": "add @usableFromInline only",
+      "trace": "serialized run/helpers use exact OptionSet raw witness/static flags",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "    package let rawValue: UInt16",
+      "after": "    package let rawValue: UInt16"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 30,
+      "owner": "RuntimeCleanupActions",
+      "selector": "releaseCanvasCallable",
+      "declaration": "package static let releaseCanvasCallable = action(.releaseCanvasCallable)",
+      "action": "add @usableFromInline only",
+      "trace": "serialized run/helpers use exact OptionSet raw witness/static flags",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "    package static let releaseCanvasCallable = action(.releaseCanvasCallable)",
+      "after": "    package static let releaseCanvasCallable = action(.releaseCanvasCallable)"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 31,
+      "owner": "RuntimeCleanupActions",
+      "selector": "discardInteractionCandidate",
+      "declaration": "package static let discardInteractionCandidate = action(.discardInteractionCandidate)",
+      "action": "add @usableFromInline only",
+      "trace": "serialized run/helpers use exact OptionSet raw witness/static flags",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "    package static let discardInteractionCandidate = action(.discardInteractionCandidate)",
+      "after": "    package static let discardInteractionCandidate = action(.discardInteractionCandidate)"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 32,
+      "owner": "RuntimeCleanupActions",
+      "selector": "commitInteractionCandidate",
+      "declaration": "package static let commitInteractionCandidate = action(.commitInteractionCandidate)",
+      "action": "add @usableFromInline only",
+      "trace": "serialized run/helpers use exact OptionSet raw witness/static flags",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "    package static let commitInteractionCandidate = action(.commitInteractionCandidate)",
+      "after": "    package static let commitInteractionCandidate = action(.commitInteractionCandidate)"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 33,
+      "owner": "RuntimeCleanupActions",
+      "selector": "resetRenderWorkspace",
+      "declaration": "package static let resetRenderWorkspace = action(.resetRenderWorkspace)",
+      "action": "add @usableFromInline only",
+      "trace": "serialized run/helpers use exact OptionSet raw witness/static flags",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "    package static let resetRenderWorkspace = action(.resetRenderWorkspace)",
+      "after": "    package static let resetRenderWorkspace = action(.resetRenderWorkspace)"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 34,
+      "owner": "RuntimeCleanupActions",
+      "selector": "resetDrawingPlan",
+      "declaration": "package static let resetDrawingPlan = action(.resetDrawingPlan)",
+      "action": "add @usableFromInline only",
+      "trace": "serialized run/helpers use exact OptionSet raw witness/static flags",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "    package static let resetDrawingPlan = action(.resetDrawingPlan)",
+      "after": "    package static let resetDrawingPlan = action(.resetDrawingPlan)"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 35,
+      "owner": "RuntimeCleanupActions",
+      "selector": "resetLayoutCandidate",
+      "declaration": "package static let resetLayoutCandidate = action(.resetLayoutCandidate)",
+      "action": "add @usableFromInline only",
+      "trace": "serialized run/helpers use exact OptionSet raw witness/static flags",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "    package static let resetLayoutCandidate = action(.resetLayoutCandidate)",
+      "after": "    package static let resetLayoutCandidate = action(.resetLayoutCandidate)"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 36,
+      "owner": "RuntimeCleanupActions",
+      "selector": "discardSemanticCandidate",
+      "declaration": "package static let discardSemanticCandidate = action(.discardSemanticCandidate)",
+      "action": "add @usableFromInline only",
+      "trace": "serialized run/helpers use exact OptionSet raw witness/static flags",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "    package static let discardSemanticCandidate = action(.discardSemanticCandidate)",
+      "after": "    package static let discardSemanticCandidate = action(.discardSemanticCandidate)"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 37,
+      "owner": "RuntimeCleanupActions",
+      "selector": "discardObservableCandidate",
+      "declaration": "package static let discardObservableCandidate = action(.discardObservableCandidate)",
+      "action": "add @usableFromInline only",
+      "trace": "serialized run/helpers use exact OptionSet raw witness/static flags",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "    package static let discardObservableCandidate = action(.discardObservableCandidate)",
+      "after": "    package static let discardObservableCandidate = action(.discardObservableCandidate)"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 38,
+      "owner": "RuntimeCleanupActions",
+      "selector": "resetAttemptStorage",
+      "declaration": "package static let resetAttemptStorage = action(.resetAttemptStorage)",
+      "action": "add @usableFromInline only",
+      "trace": "serialized run/helpers use exact OptionSet raw witness/static flags",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "    package static let resetAttemptStorage = action(.resetAttemptStorage)",
+      "after": "    package static let resetAttemptStorage = action(.resetAttemptStorage)"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 26,
+      "owner": "RuntimeCleanupActions",
+      "selector": "rawValue:",
+      "declaration": "package init(rawValue: UInt16) {",
+      "action": "add @usableFromInline only",
+      "trace": "ordinary nongeneric ABI callee; no serialization/body promotion required",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "    package init(rawValue: UInt16) {",
+      "after": "    package init(rawValue: UInt16) {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 57,
+      "owner": "RuntimeCoordinatorCleanupOracle",
+      "selector": "plan",
+      "declaration": "package static func plan(",
+      "action": "add @usableFromInline only",
+      "trace": "ordinary nongeneric ABI callee; no serialization/body promotion required",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "    package static func plan(",
+      "after": "    package static func plan("
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 125,
+      "owner": "RuntimeCleanupTracker",
+      "selector": "plan:",
+      "declaration": "package init(plan: RuntimeCleanupPlan, acquired: RuntimeCleanupActions) {",
+      "action": "add @usableFromInline only",
+      "trace": "ordinary nongeneric ABI callee; no serialization/body promotion required",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "    package init(plan: RuntimeCleanupPlan, acquired: RuntimeCleanupActions) {",
+      "after": "    package init(plan: RuntimeCleanupPlan, acquired: RuntimeCleanupActions) {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 133,
+      "owner": "RuntimeCleanupTracker",
+      "selector": "takeNext",
+      "declaration": "package mutating func takeNext() -> RuntimeCleanupAction? {",
+      "action": "add @usableFromInline only",
+      "trace": "ordinary nongeneric ABI callee; no serialization/body promotion required",
+      "source_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "added_attribute": "@usableFromInline",
+      "before": "    package mutating func takeNext() -> RuntimeCleanupAction? {",
+      "after": "    package mutating func takeNext() -> RuntimeCleanupAction? {"
+    },
+    {
+      "file": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 17,
+      "owner": null,
+      "selector": "SemanticCycleDisposition",
+      "declaration": "package enum SemanticCycleDisposition: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "exact reached run/helper/constructor enum case or signature type; no unrelated stored members",
+      "source_sha256": "f1377873d91c82a47ecad39b23651b85622964b9c3896c8c142875a81a6b9b95",
+      "added_attribute": "@usableFromInline",
+      "before": "package enum SemanticCycleDisposition: UInt8, Equatable, Sendable {",
+      "after": "package enum SemanticCycleDisposition: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 46,
+      "owner": null,
+      "selector": "PresentationIntentState",
+      "declaration": "package enum PresentationIntentState: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "exact reached run/helper/constructor enum case or signature type; no unrelated stored members",
+      "source_sha256": "f1377873d91c82a47ecad39b23651b85622964b9c3896c8c142875a81a6b9b95",
+      "added_attribute": "@usableFromInline",
+      "before": "package enum PresentationIntentState: UInt8, Equatable, Sendable {",
+      "after": "package enum PresentationIntentState: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "line": 27,
+      "owner": null,
+      "selector": "LogicalFrameDisposition",
+      "declaration": "package enum LogicalFrameDisposition: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "exact reached run/helper/constructor enum case or signature type; no unrelated stored members",
+      "source_sha256": "f80188a59c6bc162c37de581cafdda9fa0698b6743c6c7442bd3bda6f111f0aa",
+      "added_attribute": "@usableFromInline",
+      "before": "package enum LogicalFrameDisposition: UInt8, Equatable, Sendable {",
+      "after": "package enum LogicalFrameDisposition: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIExecution/WakeValues.swift",
+      "line": 1,
+      "owner": null,
+      "selector": "ExecutionWakeReasons",
+      "declaration": "package struct ExecutionWakeReasons: OptionSet, Equatable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "exact reached run/helper/constructor enum case or signature type; no unrelated stored members",
+      "source_sha256": "915e835c62177403893bf44318b0d06ded8e017e59ba4f1e11d9f333505275f6",
+      "added_attribute": "@usableFromInline",
+      "before": "package struct ExecutionWakeReasons: OptionSet, Equatable, Sendable {",
+      "after": "package struct ExecutionWakeReasons: OptionSet, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIExecution/WakeValues.swift",
+      "line": 2,
+      "owner": "ExecutionWakeReasons",
+      "selector": "rawValue",
+      "declaration": "package let rawValue: UInt8",
+      "action": "add @usableFromInline only",
+      "trace": "exact OptionSet witness or used failure/offer wake flag",
+      "source_sha256": "915e835c62177403893bf44318b0d06ded8e017e59ba4f1e11d9f333505275f6",
+      "added_attribute": "@usableFromInline",
+      "before": "    package let rawValue: UInt8",
+      "after": "    package let rawValue: UInt8"
+    },
+    {
+      "file": "Sources/GiftUIExecution/WakeValues.swift",
+      "line": 9,
+      "owner": "ExecutionWakeReasons",
+      "selector": "semanticDirty",
+      "declaration": "package static let semanticDirty = Self(rawValue: 0x02)",
+      "action": "add @usableFromInline only",
+      "trace": "exact OptionSet witness or used failure/offer wake flag",
+      "source_sha256": "915e835c62177403893bf44318b0d06ded8e017e59ba4f1e11d9f333505275f6",
+      "added_attribute": "@usableFromInline",
+      "before": "    package static let semanticDirty = Self(rawValue: 0x02)",
+      "after": "    package static let semanticDirty = Self(rawValue: 0x02)"
+    },
+    {
+      "file": "Sources/GiftUIExecution/WakeValues.swift",
+      "line": 10,
+      "owner": "ExecutionWakeReasons",
+      "selector": "presentationPending",
+      "declaration": "package static let presentationPending = Self(rawValue: 0x04)",
+      "action": "add @usableFromInline only",
+      "trace": "exact OptionSet witness or used failure/offer wake flag",
+      "source_sha256": "915e835c62177403893bf44318b0d06ded8e017e59ba4f1e11d9f333505275f6",
+      "added_attribute": "@usableFromInline",
+      "before": "    package static let presentationPending = Self(rawValue: 0x04)",
+      "after": "    package static let presentationPending = Self(rawValue: 0x04)"
+    },
+    {
+      "file": "Sources/GiftUIExecution/WakeValues.swift",
+      "line": 4,
+      "owner": "ExecutionWakeReasons",
+      "selector": "rawValue:",
+      "declaration": "package init(rawValue: UInt8) {",
+      "action": "add @usableFromInline only",
+      "trace": "OptionSet ordinary nongeneric initializer witness; retain mask",
+      "source_sha256": "915e835c62177403893bf44318b0d06ded8e017e59ba4f1e11d9f333505275f6",
+      "added_attribute": "@usableFromInline",
+      "before": "    package init(rawValue: UInt8) {",
+      "after": "    package init(rawValue: UInt8) {"
+    },
+    {
+      "file": "Sources/GiftUI/GiftUI.swift",
+      "line": 137,
+      "owner": null,
+      "selector": "PresentationRevision",
+      "declaration": "package struct PresentationRevision: Equatable, Hashable, Sendable {",
+      "action": "add @usableFromInline only",
+      "trace": "exact reached run/helper/constructor enum case or signature type; no unrelated stored members",
+      "source_sha256": "a12109e3a8d3c84d51da206e62110f5a91f66937b3cc5d78120b06b21d3169c2",
+      "added_attribute": "@usableFromInline",
+      "before": "package struct PresentationRevision: Equatable, Hashable, Sendable {",
+      "after": "package struct PresentationRevision: Equatable, Hashable, Sendable {"
+    }
+  ],
+  "constructor_equivalents": [
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "owner": "RuntimePipelineDisposition",
+      "attribute": "@usableFromInline",
+      "access": "internal",
+      "parameters": [
+        {
+          "name": "semanticDisposition",
+          "type": "SemanticCycleDisposition",
+          "default": null
+        },
+        {
+          "name": "logicalFrameDisposition",
+          "type": "LogicalFrameDisposition",
+          "default": null
+        },
+        {
+          "name": "presentationIntentState",
+          "type": "PresentationIntentState",
+          "default": null
+        },
+        {
+          "name": "wakeReasons",
+          "type": "ExecutionWakeReasons",
+          "default": null
+        },
+        {
+          "name": "commitsInteractionCandidate",
+          "type": "Bool",
+          "default": null
+        },
+        {
+          "name": "preservesPublishedSemanticRevision",
+          "type": "Bool",
+          "default": null
+        }
+      ],
+      "assignments": "self fields in declaration/parameter order; ordinary nongeneric ABI body",
+      "guard": "Exact existing synthesized internal memberwise equivalence: implicit ownership, all labels/types/order, ALL let-backed parameters required (including Optional parameters), no default arguments, no additional check/algorithm/public/package access; no backing capability constructor.",
+      "source": "\n    @usableFromInline\n    internal init(\n        semanticDisposition: SemanticCycleDisposition,\n        logicalFrameDisposition: LogicalFrameDisposition,\n        presentationIntentState: PresentationIntentState,\n        wakeReasons: ExecutionWakeReasons,\n        commitsInteractionCandidate: Bool,\n        preservesPublishedSemanticRevision: Bool\n    ) {\n        self.semanticDisposition = semanticDisposition\n        self.logicalFrameDisposition = logicalFrameDisposition\n        self.presentationIntentState = presentationIntentState\n        self.wakeReasons = wakeReasons\n        self.commitsInteractionCandidate = commitsInteractionCandidate\n        self.preservesPublishedSemanticRevision = preservesPublishedSemanticRevision\n    }\n"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "owner": "RuntimePipelineCompletion",
+      "attribute": "@usableFromInline",
+      "access": "internal",
+      "parameters": [
+        {
+          "name": "publication",
+          "type": "RuntimePipelinePublication",
+          "default": null
+        },
+        {
+          "name": "committedPresentationRevision",
+          "type": "PresentationRevision?",
+          "default": null
+        },
+        {
+          "name": "operational",
+          "type": "ExecutionOperational?",
+          "default": null
+        },
+        {
+          "name": "disposition",
+          "type": "RuntimePipelineDisposition",
+          "default": null
+        }
+      ],
+      "assignments": "self fields in declaration/parameter order; ordinary nongeneric ABI body",
+      "guard": "Exact existing synthesized internal memberwise equivalence: implicit ownership, all labels/types/order, ALL let-backed parameters required (including Optional parameters), no default arguments, no additional check/algorithm/public/package access; no backing capability constructor.",
+      "source": "\n    @usableFromInline\n    internal init(\n        publication: RuntimePipelinePublication,\n        committedPresentationRevision: PresentationRevision?,\n        operational: ExecutionOperational?,\n        disposition: RuntimePipelineDisposition\n    ) {\n        self.publication = publication\n        self.committedPresentationRevision = committedPresentationRevision\n        self.operational = operational\n        self.disposition = disposition\n    }\n"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "owner": "RuntimePipelineFailureRecord",
+      "attribute": "@inlinable",
+      "access": "internal",
+      "parameters": [
+        {
+          "name": "stage",
+          "type": "RuntimeCompletePipelineStage",
+          "default": null
+        },
+        {
+          "name": "failure",
+          "type": "RunCycleFailure<OwnerFailure>",
+          "default": null
+        },
+        {
+          "name": "publication",
+          "type": "RuntimePipelinePublication?",
+          "default": null
+        },
+        {
+          "name": "disposition",
+          "type": "RuntimePipelineDisposition",
+          "default": null
+        }
+      ],
+      "assignments": "self fields in declaration/parameter order; generic serialized ABI body",
+      "guard": "Exact existing synthesized internal memberwise equivalence: implicit ownership, all labels/types/order, ALL let-backed parameters required (including Optional parameters), no default arguments, no additional check/algorithm/public/package access; no backing capability constructor.",
+      "source": "\n    @inlinable\n    internal init(\n        stage: RuntimeCompletePipelineStage,\n        failure: RunCycleFailure<OwnerFailure>,\n        publication: RuntimePipelinePublication?,\n        disposition: RuntimePipelineDisposition\n    ) {\n        self.stage = stage\n        self.failure = failure\n        self.publication = publication\n        self.disposition = disposition\n    }\n"
+    }
+  ],
+  "counts": {
+    "files": 6,
+    "existing_declaration_edits": 50,
+    "new_internal_constructor_equivalents": 3,
+    "total_sites": 53,
+    "existing_generic_helpers_serialized": 3,
+    "source_edits_performed": 53
+  },
+  "source_files": [
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "before_sha256": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+      "after_sha256": "f2ff73faa06c4a41ace3510da6ef7039f6b6de19024c4282a7e5f1ad67b5b828",
+      "audit": "PASS exact reviewed ABI/access additions and three required-argument initializer equivalents; every other body/default/ownership/lifetime/visibility/hint token unchanged"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "before_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "after_sha256": "bf5551a5b012d8c1f8d9b3f3e79dc0f223005925998eedd26be14ef7c7920d73",
+      "audit": "PASS exact reviewed ABI/access additions and three required-argument initializer equivalents; every other body/default/ownership/lifetime/visibility/hint token unchanged"
+    },
+    {
+      "file": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "before_sha256": "f1377873d91c82a47ecad39b23651b85622964b9c3896c8c142875a81a6b9b95",
+      "after_sha256": "5d677ef57ea144dba744b844123eda718bed46353128520650606c30f0fc478a",
+      "audit": "PASS exact reviewed ABI/access additions and three required-argument initializer equivalents; every other body/default/ownership/lifetime/visibility/hint token unchanged"
+    },
+    {
+      "file": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "before_sha256": "f80188a59c6bc162c37de581cafdda9fa0698b6743c6c7442bd3bda6f111f0aa",
+      "after_sha256": "6936c7ee158fadd3241a6b2cac73e668b4b1a5bd5f9ec593932b9e4f967e0ac7",
+      "audit": "PASS exact reviewed ABI/access additions and three required-argument initializer equivalents; every other body/default/ownership/lifetime/visibility/hint token unchanged"
+    },
+    {
+      "file": "Sources/GiftUIExecution/WakeValues.swift",
+      "before_sha256": "915e835c62177403893bf44318b0d06ded8e017e59ba4f1e11d9f333505275f6",
+      "after_sha256": "8457b076dafb1cc26bddf6683a55ed1e906242c5c23883a6e8b20bcd50bf501d",
+      "audit": "PASS exact reviewed ABI/access additions and three required-argument initializer equivalents; every other body/default/ownership/lifetime/visibility/hint token unchanged"
+    },
+    {
+      "file": "Sources/GiftUI/GiftUI.swift",
+      "before_sha256": "a12109e3a8d3c84d51da206e62110f5a91f66937b3cc5d78120b06b21d3169c2",
+      "after_sha256": "aef4b66eeec863c29068d1054535401707604f71eda3f740fc7e581b3066d6c6",
+      "audit": "PASS exact reviewed ABI/access additions and three required-argument initializer equivalents; every other body/default/ownership/lifetime/visibility/hint token unchanged"
+    }
+  ],
+  "other_frozen_inputs_unchanged": 567,
+  "constructor_audit": "All14 let-backed parameters required; zero defaults. Assignments/order/internal access/implicit ownership exact. Ordinary nonGeneric two constructors ABI-only; generic FailureRecord serialized with exact4 field qualifications.",
+  "excluded": "23latent project stage symbols, all16Counter/Pi witnesses/private backing and all other source"
+}

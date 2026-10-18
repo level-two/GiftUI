@@ -14,6 +14,7 @@ package enum ExecutionError: UInt8, Equatable, Sendable {
     case invariantViolation = 8
 }
 
+@usableFromInline
 package enum SemanticCycleDisposition: UInt8, Equatable, Sendable {
     case unchanged = 0
     case published = 1
@@ -43,6 +44,7 @@ package struct ExecutionOperationalEvents: OptionSet, Equatable, Sendable {
     package static let deferredToLaterAdmission = Self(rawValue: 0x10)
 }
 
+@usableFromInline
 package enum PresentationIntentState: UInt8, Equatable, Sendable {
     case satisfied = 0
     case pending = 1

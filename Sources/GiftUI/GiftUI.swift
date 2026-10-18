@@ -134,6 +134,7 @@ package struct InputOrdinal: Equatable, Hashable, Sendable {
     }
 }
 
+@usableFromInline
 package struct PresentationRevision: Equatable, Hashable, Sendable {
     package let rawValue: UInt32
 
