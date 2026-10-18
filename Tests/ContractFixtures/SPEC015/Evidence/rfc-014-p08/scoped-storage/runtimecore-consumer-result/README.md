@@ -58,4 +58,8 @@ strict host-first cold/reuse remain blocked; no broader safety or runtime follow
 Key-failure Error-witness first-use resource costs remain unresolved. Source
 candidate/combined overlay/P08/R07/T8.1 remain unaccepted. The sole witness
 candidate permits no automatic source repairs; every exhausted budget and
-protected external five/pycache stays unchanged. Independent boundary review next.
+protected external five/pycache stays unchanged.
+[Independent review confirms this gate failure and STOP](../p08-runtimecore-consumer-independent-review.md):
+the actual operation result requires this exact callee; prior compile/privacy/
+six-body PASS is retained. The grouped inventory is a read-only next boundary,
+with no source allowance or further execution.

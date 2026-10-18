@@ -155,7 +155,7 @@ features:
       - canvas-drawing
     milestone: MVP
   giftui-mvp-architecture:
-    # Current grouped module closure: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-consumer-result/README.md; freshSIL573hashes, requiredcallee RuntimeCompletePipeline.run0BB genericactualedgeFAIL; compile25/privacy22/sixbodyPASS retained; all42/safety/cold unqualified; independent review next; no source repairs/P08 acceptance.
+    # Current grouped module closure: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-runtimecore-consumer-independent-review.md; confirmed actual required callee gate FAIL/STOP, 573 inputs verified; compile25/privacy22/sixbody PASS retained; finite grouped inventory read-only next; all42/safety/cold unqualified; no source repairs/P08 acceptance.
     # Independent annotation package review: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-final-independent-review.md; compatibility/provider/helper PASS, fresh Layout101 blocks actualconsumer; grouped prerequisite review next, source1/1 frozen, P08 open; historical budgets unchanged.
     # ADR-038 accepted: Option B docs approved 2026-10-12; implementation separate, not started.
     # Approval: docs/iterations/iteration-003-review/rfc-014-spec-approval.md.

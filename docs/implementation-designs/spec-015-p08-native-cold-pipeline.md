@@ -23,8 +23,10 @@ fresh SIL collected/573hashes verified; one required callee gate FAIL:
 concrete scoped Static pipeline calls RuntimeCompletePipeline.run, physical611/
 serializedKind0/zeroBB, effect-summary-only SIL and object0x198c agree. Compile25/
 selected22privacy/sixbody PASS retained. Source unchanged; no allocation/contract-
-impossibility claim or repair allowance. Independent boundary review next, with
-finite transitive run/helper/16requirement inventory before any future candidate.
+impossibility claim or repair allowance.
+[Independent review confirms FAIL/STOP](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-runtimecore-consumer-independent-review.md),
+with finite transitive run/helper/16requirement read-only inventory as the next
+boundary before any future candidate. No further execution/source allowance.
 All42/privatecallee/State structural-borrow/observer coverage, full safety and
 strict cold remain unqualified; source candidate/P08/R07/T8.1 unaccepted.
 

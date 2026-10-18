@@ -7,7 +7,9 @@ FunctionID611/serializedKind0/zeroBB, effect-summary-only SIL, object branch0x19
 Compile25/selected22privacy/sixbody PASS retained. No heapcount, contract
 impossibility or broader closure failure inferred. Source unchanged; no further
 compiler/decoder/runtime or automatic repair. Finite run/helper/16requirement
-read-only inventory precedes independent review; all42/privatecallee/State-borrow/
+read-only inventory is the next boundary.
+[Independent review confirms FAIL/STOP](p08-runtimecore-consumer-independent-review.md);
+no further execution/source allowance. All42/privatecallee/State-borrow/
 metadata-observer/safety/cold remain unqualified, P08/R07/T8.1 unaccepted. Eugene
 explicitly authorized the three previously diagnosed witness annotations followed
 by focused validation. This is one exact candidate with **zero automatic source
