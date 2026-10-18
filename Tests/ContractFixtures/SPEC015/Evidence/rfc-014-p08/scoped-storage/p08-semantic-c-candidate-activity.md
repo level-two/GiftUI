@@ -11,3 +11,11 @@ Prepare combined fresh25/all4variants/privacy70+3typed/index11/87bodies/current4
 objectSIL; macro17/49 reuse only with exact producer/test/dependency hashes unchanged.
 Compiler/tests/decoder/runtime execution remains separate after frozen recipe review.
 No source repair follows material validation failure. P08/safety/strictcold unaccepted.
+
+Source commit f2325b85 fixed, exact annotation/access projection audit and targeted
+format PASS. [Combined recipe](semantic-c-candidate1/README.md) staticvalidatePASS;
+freshmacro17 retained because old inputfreeze includes changedCorefiles, then
+fresh25/all4variants/privacy73/index11/body87/current42. Three typedcontrols prepared,
+escape negative refined to existing Copyable/~Escapable reader result. No compiler/
+test/decoder/runtime pretest. Sourcecandidate1/1/zeroautomaticSOURCErepairs unchanged;
+independent source+recipe review next, fullconsumer/safety/strictcold/P08 unqualified.

@@ -1,0 +1,10 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/prepared.json": "007718f97fcb48a8f08b3350be69d17c412c59887fd33da5324dc815f283adc1",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/run.py": "06fa7d24d22919fdfc6a7685cf7899f0a138c1b37ca7de1bbf98122af3608674",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/input-freeze.json": "22c5231b9ce93ce978bdd1198ac6badc6c5fa31a99f4517f371360e7c08a7605",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/required-body-targets.json": "7e8c052fbdd1eca669545b0389aade19e54c7f9569107f5548d9d646539b855b",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/boundaries-decode-prepared.json": "6f92b93142ce24e9c506ba2350f07fab4ef2bfc7987ff76af2d2bfd66b6f4b95",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/interpret.py": "61dd39344e3a36a488215680f9478194d95528a81a04d058712977c979bed848",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/origin42-scope.json": "5224b28a722fd0f340e2829ab2dc9b313ce8b6a7140e14b2b5353a2c6dc85db7",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/provenance.json": "97d80f7353c34ccf65725f4532cfbe7b2f1877581c19a98536cf4222861d758f"
+}

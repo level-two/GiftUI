@@ -1,0 +1,23 @@
+{
+  "status": "PASS combined --validate only; no compiler/tests/decoder-module/runtime",
+  "source_commit": "f2325b85",
+  "exact_scope": "36sites4files, elevenserialized/threeordinaryABI/22fieldsites; oneexistingborrowedinitaccessqualification",
+  "input_counts": {
+    "macro": 279,
+    "compile": 338,
+    "qualification": 539
+  },
+  "fresh_macro_methods": 17,
+  "fresh_modules": 25,
+  "variant_checks": 4,
+  "privacy": 73,
+  "index_modules": 11,
+  "body_targets": 87,
+  "retained_exact_prior_targets": 76,
+  "new_fullmangled_targets": 11,
+  "actualhost_sources": 42,
+  "automatic_source_repairs": 0,
+  "source_or_tool_execution": "No compiler/test/decoder-module/runtime; read-only swift-demangle identitycheck only",
+  "macro_reuse": "Notqualified old279receipt includes3changedCorefiles; freshmacro17 included",
+  "lifetime_control": "Refined pre-run to Copyable/~Escapable reader result, shared valid positive; no compiler pretest"
+}

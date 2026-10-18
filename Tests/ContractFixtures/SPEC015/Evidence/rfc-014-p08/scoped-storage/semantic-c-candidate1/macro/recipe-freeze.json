@@ -1,0 +1,10 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/macro/run.py": "34296c044263084a02a70f4ce242b07be92dfaa574fcdda92d5d0939e13d5ea0",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/macro/prepared.json": "5e690329698b50b173e48e16f4b3cc20363f662c648871e499637ed31755598d",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/macro/input-freeze.json": "00cf35d457b76da7959f09f7b7d3ff78fb6b1116c7a9ed4abd4582cd6bf6d793",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/macro/TestMain-macos.swift": "021840e0c04661c1ac3348174fbcc6796fc83cbf6104a73efbd63c3b74ca9f94",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/macro/registered-methods.json": "ad4d60228b84e0e1bbea3a595fe6f27434f91532f8f7f97f7baeccecabf1a16f",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/macro/runner-environment.json": "21142c851c52227d21a538ca1f86e1068ae7849bf4460756466cb2e5601bae16",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/macro/outputs.json": "5e2bf5be9e4f9f5012bf8b2130d05584f65104a8e4a470e733e3a08028fced35",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/macro/Objects.LinkFileList": "c4d0717f93e438909fa95c208e6c18c63b9ff7280828b1583c5e751ec9459aee"
+}

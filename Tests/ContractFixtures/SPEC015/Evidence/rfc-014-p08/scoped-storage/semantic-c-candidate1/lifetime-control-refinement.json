@@ -1,0 +1,8 @@
+{
+  "scope": "test-only pre-run validity refinement; no source changes or material execution",
+  "reason": "SemanticRecordStore is ~Copyable and ~Escapable; directly returning it through unconstrained Result could produce two independent constraint errors, violating isolated lifetime control.",
+  "positive": "Inside valid typed withSemanticRecordStore callback borrow actualstore, then borrowed.withCandidateView { _ in UInt32(0) }, and return UInt32 limits.records.",
+  "negative": "Same source/setup, change only inner reader callback to { view in view }; SemanticRecordView is implicitly Copyable and explicitly ~Escapable, isolating existing Escapable Result restriction.",
+  "internal-init-negative": "Same legitimate positive setup, change only store.borrowedStore() to SemanticRecordStore(borrowing:store); isolate internal access.",
+  "execution": "No compiler/test/decoder/runtime; independent prepared-step review before run"
+}

@@ -1,0 +1,5 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/compile/prepared.json": "daa448ed332d6e9433dc961fb4b10f1bae9916f658e389e955618bb9058675da",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/compile/run.py": "d1e253405756985487054b9d0ec4f93ce201499a62f7734f862326a3cfe7223b",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/compile/input-freeze.json": "8987edc97af5ee1f70f5580e30821ec63fc4d9a8e5348eec4979e16a43cf2be3"
+}

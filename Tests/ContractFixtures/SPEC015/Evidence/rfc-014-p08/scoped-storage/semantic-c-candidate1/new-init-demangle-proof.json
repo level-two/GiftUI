@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-demangle",
+    "$s18GiftUISemanticCore19SemanticRecordStoreV9borrowingACyxGACyxGh_tcfC"
+  ],
+  "exit": 0,
+  "stdout": "$s18GiftUISemanticCore19SemanticRecordStoreV9borrowingACyxGACyxGh_tcfC ---> GiftUISemanticCore.SemanticRecordStore.init(borrowing: __shared GiftUISemanticCore.SemanticRecordStore<A>) -> GiftUISemanticCore.SemanticRecordStore<A>\n",
+  "stderr": "",
+  "tool_sha256": "0aec308f732c6276e3ed4110b6581b6bad5bb9258593be1ce1c5c376f3760cb0",
+  "kind": "read-only mangled identity syntax check; no compiler/decoder-module/runtime",
+  "expectation": "new internal initializer, no private discriminator; failclosed on exact fresh name/unique positive body"
+}

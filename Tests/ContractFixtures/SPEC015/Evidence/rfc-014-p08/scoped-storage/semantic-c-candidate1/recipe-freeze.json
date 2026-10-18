@@ -1,0 +1,21 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/run.py": "f17ccb60d2bfdad7212b94fda60736104d20abb34121036a6a48e9b67fab3f89",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/prepared.json": "bb49aa4f2811d6b7540679ec035ea4ec24f9bba5a2ca93c512d1fc5ea2037138",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/source-edits.json": "6ce961f26dd54f0c2381bee9ade4be5b8bf238df79f31a71d679e82b920e2001",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/macro/run.py": "34296c044263084a02a70f4ce242b07be92dfaa574fcdda92d5d0939e13d5ea0",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/macro/prepared.json": "5e690329698b50b173e48e16f4b3cc20363f662c648871e499637ed31755598d",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/macro/input-freeze.json": "00cf35d457b76da7959f09f7b7d3ff78fb6b1116c7a9ed4abd4582cd6bf6d793",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/macro/recipe-freeze.json": "b41dea75496a7cd13147425a0d0abae0451338f003c74a0a2841bbeafbf0abc3",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/compile/run.py": "d1e253405756985487054b9d0ec4f93ce201499a62f7734f862326a3cfe7223b",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/compile/prepared.json": "daa448ed332d6e9433dc961fb4b10f1bae9916f658e389e955618bb9058675da",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/compile/input-freeze.json": "8987edc97af5ee1f70f5580e30821ec63fc4d9a8e5348eec4979e16a43cf2be3",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/compile/recipe-freeze.json": "47219ca8ddb6367642b59a037118b064ecc2ce3faa2bb56273e9c03584d7c9cd",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/run.py": "06fa7d24d22919fdfc6a7685cf7899f0a138c1b37ca7de1bbf98122af3608674",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/prepared.json": "007718f97fcb48a8f08b3350be69d17c412c59887fd33da5324dc815f283adc1",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/input-freeze.json": "22c5231b9ce93ce978bdd1198ac6badc6c5fa31a99f4517f371360e7c08a7605",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/qualification/recipe-freeze.json": "10b58057d691c23b9ed611cb4189c815cfdb79d481baca9bb74463c262e5b1ee",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/static-validation.json": "27103150e778cb05eaab533650e9ff25fdbe79cd202ed08f3f9dc04f543cb1c4",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/new-init-demangle-proof.json": "ca0d8556b72fb7680fc75c825f47c9b3c608130e8847e1a288cb979bfb096ba5",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/new-required-body-identities.json": "db220435476174e68aef821d406c2c5d546d4520a500ac4fb4ec8c1007a8d2fa",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/lifetime-control-refinement.json": "f9cfd2f480c5d0d11bbdc46aa30a2c778ccb36f2c03a1bc276a2bc6074908cd3"
+}

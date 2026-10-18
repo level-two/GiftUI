@@ -1,0 +1,14 @@
+{
+  "source_identity": {
+    "base": "780c90c3",
+    "review": "11d6aabd/d9fc4359",
+    "frozen_after_hashes": "../../source-edits.json"
+  },
+  "old39": "byteidenticalfixtures, sameargv withfreshimport/cache/fixturepaths",
+  "new16": "4typedcheckedoperation positives,12isolatedinternal/private/setter/constructor negatives; no runtimecoverageclaim",
+  "consumer": "exactsame42source order/flags/environment; output/import/generated/cache path-only",
+  "artifact_qualification": "fresh25result every emitted/published/generatedsha verified; only compile-subtreepath accepted; wrapperwrites hashseal beforeprivacy; beforeafterqualification verify",
+  "source_mutations": 0,
+  "automatic_source_repairs": 0,
+  "later": "actualnormal/error provenance/callback/metadata costs+fullsafety/cold remainunqualified"
+}

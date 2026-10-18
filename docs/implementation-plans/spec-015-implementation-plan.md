@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [grouped C source/combined recipe prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-candidate1/README.md):
+sourcef2325b85 exact36sites/4files audit/format PASS; ONE1/1 zeroautomaticSOURCErepairs.
+Freshmacro17→fresh25+all4variants→privacy73/index11/body87/current42; staticvalidate
+only, no compiler/tests/runtime. Three typedcontrols isolate access/borrow lifetime.
+Independent source/recipe review before Luna; safety/cold/P08 remain unaccepted.
+
 Current [grouped C traversal/publication proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-grouped-inventory/README.md):
 36sites/fourfiles, all8Croots+directhelpers;11serialized/3ordinaryABI/22fieldsites.
 Borrowed initializer keeps copy-other lifetime/internal-only access; E/F excluded.

@@ -1,0 +1,78 @@
+[
+  {
+    "module": "GiftUISemanticCore",
+    "label": "SemanticExpansionTraversal.stopped.getter",
+    "name": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+    "demangled": "(extension in GiftUISemanticCore):GiftUISemanticCore.SemanticExpansionTraversal< where C: ~Swift.Copyable, C: ~Swift.Escapable>.stopped.getter : Swift.Bool",
+    "policy": "exact fullmangled original signature; fresh unique nonzero serializedkind/positiveBB; no staleIDs/closure/default/defer substitute"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "label": "RecordSink.publishExpansion(",
+    "name": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+    "demangled": "GiftUISemanticCore.RecordSink.publishExpansion(GiftUISemanticCore.SemanticExpansionSummary) -> Swift.Bool",
+    "policy": "exact fullmangled original signature; fresh unique nonzero serializedkind/positiveBB; no staleIDs/closure/default/defer substitute"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "label": "SemanticRecordStore.borrowedStore(",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+    "demangled": "GiftUISemanticCore.SemanticRecordStore.borrowedStore() -> GiftUISemanticCore.SemanticRecordStore<A>",
+    "policy": "exact fullmangled original signature; fresh unique nonzero serializedkind/positiveBB; no staleIDs/closure/default/defer substitute"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "label": "SemanticRecordStore.publishCandidate(",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+    "demangled": "GiftUISemanticCore.SemanticRecordStore.publishCandidate() throws(GiftUISemanticCore.SemanticExpansionError) -> ()",
+    "policy": "exact fullmangled original signature; fresh unique nonzero serializedkind/positiveBB; no staleIDs/closure/default/defer substitute"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "label": "SemanticRecordStore.hasPendingCanvas(",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+    "demangled": "GiftUISemanticCore.SemanticRecordStore.hasPendingCanvas(GiftUISemanticCore.SemanticRecordBankBuffers<A>) -> Swift.Bool",
+    "policy": "exact fullmangled original signature; fresh unique nonzero serializedkind/positiveBB; no staleIDs/closure/default/defer substitute"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "label": "SemanticRecordStore.expansionBank(",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+    "demangled": "GiftUISemanticCore.SemanticRecordStore.expansionBank(Swift.UInt8) -> GiftUISemanticCore.SemanticRecordBankBuffers<A>?",
+    "policy": "exact fullmangled original signature; fresh unique nonzero serializedkind/positiveBB; no staleIDs/closure/default/defer substitute"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "label": "SemanticRecordBankBuffers.enter(",
+    "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+    "demangled": "GiftUISemanticCore.SemanticRecordBankBuffers.enter(_: GiftUISemanticCore.SemanticPathComponent, limits: GiftUISemanticCore.SemanticRecordLimits) -> GiftUISemanticCore.SemanticExpansionError?",
+    "policy": "exact fullmangled original signature; fresh unique nonzero serializedkind/positiveBB; no staleIDs/closure/default/defer substitute"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "label": "SemanticRecordBankBuffers.appendRecord(",
+    "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+    "demangled": "GiftUISemanticCore.SemanticRecordBankBuffers.appendRecord(limits: GiftUISemanticCore.SemanticRecordLimits) -> GiftUISemanticCore.SemanticExpansionError?",
+    "policy": "exact fullmangled original signature; fresh unique nonzero serializedkind/positiveBB; no staleIDs/closure/default/defer substitute"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "label": "SemanticRecordBankBuffers.reconcile(",
+    "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV9reconcile4with6limitsAA0D14ExpansionErrorOSgACyxG_AA0dE6LimitsVtF",
+    "demangled": "GiftUISemanticCore.SemanticRecordBankBuffers.reconcile(with: GiftUISemanticCore.SemanticRecordBankBuffers<A>, limits: GiftUISemanticCore.SemanticRecordLimits) -> GiftUISemanticCore.SemanticExpansionError?",
+    "policy": "exact fullmangled original signature; fresh unique nonzero serializedkind/positiveBB; no staleIDs/closure/default/defer substitute"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "label": "SemanticRecordStore.published.getter",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9publisheds5UInt8VSgvg",
+    "demangled": "GiftUISemanticCore.SemanticRecordStore.published.getter : Swift.UInt8?",
+    "policy": "exact fullmangled original signature; fresh unique nonzero serializedkind/positiveBB; no staleIDs/closure/default/defer substitute"
+  },
+  {
+    "module": "GiftUISemanticCore",
+    "label": "SemanticRecordStore.init(borrowing:)",
+    "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9borrowingACyxGACyxGh_tcfC",
+    "policy": "new internal fullmangled signature read-only-demanglechecked; freshunique/nonzero serializedkind/positiveBB mandatory, no permissivefallback"
+  }
+]
