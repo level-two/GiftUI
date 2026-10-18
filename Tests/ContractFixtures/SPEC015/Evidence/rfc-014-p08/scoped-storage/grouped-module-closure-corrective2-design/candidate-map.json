@@ -1,0 +1,406 @@
+{
+  "basis": "ea7398ff corrective1 result; b46a8239 unchanged source; db0cd74c/53fdbb7f reviewed prior closure",
+  "status": "design only; independent review required; source/compiler unexecuted; initial1/1 corrections1/2 consumed",
+  "source_allowlist": [
+    {
+      "file": "Sources/GiftUI/GiftUI.swift",
+      "line": 77,
+      "declaration": "package enum GeometryArithmetic {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ordinary ABI type",
+      "trace": "R4 LayoutEngine serialized arithmetic calls (18 exact diagnosed call expressions)",
+      "source_sha256": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c"
+    },
+    {
+      "file": "Sources/GiftUI/GiftUI.swift",
+      "line": 78,
+      "declaration": "package static func add(",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ordinary ABI callee",
+      "trace": "R4 GeometryArithmetic.add referenced at15 diagnosed expressions",
+      "source_sha256": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c"
+    },
+    {
+      "file": "Sources/GiftUI/GiftUI.swift",
+      "line": 86,
+      "declaration": "package static func subtract(",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ordinary ABI callee",
+      "trace": "R4 GeometryArithmetic.subtract referenced at2 diagnosed expressions",
+      "source_sha256": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c"
+    },
+    {
+      "file": "Sources/GiftUI/GiftUI.swift",
+      "line": 94,
+      "declaration": "package static func multiply(",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ordinary ABI callee",
+      "trace": "R4 GeometryArithmetic.multiply referenced at1 diagnosed expression",
+      "source_sha256": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 54,
+      "declaration": "package let assemblyReport: HostAssemblyReport",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI stored property",
+      "trace": "R2/R3 checked serialized HostInstance.init assigns self.assemblyReport",
+      "source_sha256": "4a2e6673340864a4d4cd11038dd3f5460e94e2506861e41de81d0856264ba7f2"
+    },
+    {
+      "file": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 113,
+      "declaration": "package enum RunCycleResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "R2/R3 SignalAnalyzerPresetLiveOwner.runOpportunity requirement return type inherits ABI scope",
+      "source_sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift",
+      "line": 7,
+      "declaration": "package enum RuntimeOwnerFailure: Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "R2/R3 live-owner requirement result generic argument and macOS activation failure .runtime payload",
+      "source_sha256": "7728c6631e620e312f006ddc60e8fdec5d58efb3ea702b662b21ea187586ae57"
+    },
+    {
+      "file": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 58,
+      "declaration": "package struct RunCycleSummary: Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "RunCycleResult .success/.operational/.failure payload; nominal only, no fields/init",
+      "source_sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1"
+    },
+    {
+      "file": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 22,
+      "declaration": "package enum ExecutionOperational: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "RunCycleResult.operational payload",
+      "source_sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1"
+    },
+    {
+      "file": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 50,
+      "declaration": "package enum RunCycleFailure<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "RunCycleResult.failure payload",
+      "source_sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1"
+    },
+    {
+      "file": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 4,
+      "declaration": "package enum ExecutionError: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "RunCycleFailure.execution payload",
+      "source_sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1"
+    },
+    {
+      "file": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "line": 85,
+      "declaration": "package enum RenderProductionError: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "RunCycleFailure.renderProduction payload",
+      "source_sha256": "d4a0e5274c7c8e88a4e7c6c9c0bf5345ea1e83b5086b1f32373f01c7a4940722"
+    },
+    {
+      "file": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "line": 55,
+      "declaration": "package enum FrameOfferFailure: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "RunCycleFailure.frameOffer payload",
+      "source_sha256": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba"
+    },
+    {
+      "file": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "line": 62,
+      "declaration": "package enum FrameRefusalOrigin: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "RunCycleFailure.nonRetryableRefusal payload",
+      "source_sha256": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba"
+    },
+    {
+      "file": "Sources/GiftUIRasterCore/RasterPayloadLimits.swift",
+      "line": 83,
+      "declaration": "package enum RasterBackendError: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "R2/R3 already ABI macOS activation failures .endpoint payload",
+      "source_sha256": "23234d9ba4e630bb6279e31a9ab8ae72b8f9e3b2f9477784bf42697ecab544c3"
+    },
+    {
+      "file": "Sources/GiftUIDisplayCore/DisplayContracts.swift",
+      "line": 28,
+      "declaration": "package enum DisplayTargetError: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "R2/R3 already ABI macOS activation failures .display payload",
+      "source_sha256": "b27ad7489ad1ec6076f0d53b3912d6b9ed85329d355ceda2678707374111f3f0"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "line": 19,
+      "declaration": "package enum HostConfigurationError: Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "R2/R3 already ABI macOS activation failures .configuration payload",
+      "source_sha256": "41ae54160ebb7fc27b0bd1541d57617f049c38f78d0b071425020fbc548d8482"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostWakePacingController.swift",
+      "line": 8,
+      "declaration": "package enum HostWakePacingError: UInt8, Error, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "R2/R3 already ABI macOS activation failures .pacing payload",
+      "source_sha256": "457479bb631966220e2bb2d26fb7a78ac0143fbcadae8b66c25b78b27125643b"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift",
+      "line": 17,
+      "declaration": "package enum HostComponentRole: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "HostConfigurationError.duplicateRole/.missingRole payload",
+      "source_sha256": "10583aec3c00ff8246e5652a5f16085e1b5e93fa235e91fbc5dd94ff901fadeb"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift",
+      "line": 362,
+      "declaration": "package enum RuntimeProfileValidationError: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "HostConfigurationError.invalidRuntimeProfile payload",
+      "source_sha256": "377ef975edb74d9e8b86b94228e0756e1bc15414875f74a1fb4dbec33f0d88ca"
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 280,
+      "declaration": "package enum TextResourceValidationError: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "HostConfigurationError.invalidTextResources payload",
+      "source_sha256": "eb6ae9a1e094003656a3528cc1b5a5c5d03d3dbfaff3081e3d954c2df365baba"
+    }
+  ],
+  "counts": {
+    "files": 13,
+    "declarations": 21,
+    "ordinary_arithmetic_entries": 4,
+    "direct_property": 1,
+    "signature_nominals": 16,
+    "new_serialized_bodies": 0,
+    "access_changes": 0,
+    "constructor_changes": 0,
+    "noops": 0
+  },
+  "blocked_selected_serialized_entries_inspected": [
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "selectors": [
+        "withCanvasStagedValues"
+      ],
+      "source_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "selectors": [
+        "CanvasStagedMetadata.init"
+      ],
+      "source_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "selectors": [
+        "CanvasStagedValues.init(state:entries:capacity:)"
+      ],
+      "source_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "selectors": [
+        "CanvasStagedValues.init(borrowing:)"
+      ],
+      "source_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "selectors": [
+        "CanvasStagedValues.borrowedValues"
+      ],
+      "source_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "selectors": [
+        "CanvasStagedValues.count"
+      ],
+      "source_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "selectors": [
+        "CanvasStagedValues.releaseCount"
+      ],
+      "source_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "selectors": [
+        "CanvasStagedValues.identity"
+      ],
+      "source_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "selectors": [
+        "CanvasStagedValues.stage"
+      ],
+      "source_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "selectors": [
+        "CanvasStagedValues.invoke"
+      ],
+      "source_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "selectors": [
+        "CanvasStagedValues.release"
+      ],
+      "source_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "selectors": [
+        "CanvasStagedValues.discard"
+      ],
+      "source_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasPlanProducer.swift",
+      "selectors": [
+        "derive"
+      ],
+      "source_sha256": "1e1f16e886d672fe7bce48d469aa9faaf67ab3b2612c06a86c25feac11d9f436"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasPlanProducer.swift",
+      "selectors": [
+        "validateOccurrences"
+      ],
+      "source_sha256": "1e1f16e886d672fe7bce48d469aa9faaf67ab3b2612c06a86c25feac11d9f436"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasPlanProducer.swift",
+      "selectors": [
+        "fail"
+      ],
+      "source_sha256": "1e1f16e886d672fe7bce48d469aa9faaf67ab3b2612c06a86c25feac11d9f436"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "selectors": [
+        "invokeCanvas"
+      ],
+      "source_sha256": "cf249695d610d27623e0d6c3334b7e043632ce475ff8e2c6e3e0e85035ee1ff5"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "selectors": [
+        "dispatch"
+      ],
+      "source_sha256": "6c0fe638dbf5a00e2d88726be77b550013f1c2549a07ef1e9ee82c7264e72e65"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "selectors": [
+        "HostActivationProgress.init"
+      ],
+      "source_sha256": "c4f1b48f28a384324a342aa8ee73c979c29f73207fd1b41aceda2248ccebfdae"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "selectors": [
+        "HostActivationProgress.merging"
+      ],
+      "source_sha256": "c4f1b48f28a384324a342aa8ee73c979c29f73207fd1b41aceda2248ccebfdae"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "selectors": [
+        "MVPHostActivationController.activate"
+      ],
+      "source_sha256": "c4f1b48f28a384324a342aa8ee73c979c29f73207fd1b41aceda2248ccebfdae"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "selectors": [
+        "MVPHostActivationController.teardown"
+      ],
+      "source_sha256": "c4f1b48f28a384324a342aa8ee73c979c29f73207fd1b41aceda2248ccebfdae"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "selectors": [
+        "MVPHostActivationController.record"
+      ],
+      "source_sha256": "c4f1b48f28a384324a342aa8ee73c979c29f73207fd1b41aceda2248ccebfdae"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "selectors": [
+        "MVPHostActivationController.contain"
+      ],
+      "source_sha256": "c4f1b48f28a384324a342aa8ee73c979c29f73207fd1b41aceda2248ccebfdae"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "selectors": [
+        "SignalAnalyzerPresetHostInstance.activate"
+      ],
+      "source_sha256": "4a2e6673340864a4d4cd11038dd3f5460e94e2506861e41de81d0856264ba7f2"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "selectors": [
+        "SignalAnalyzerPresetHostInstance.teardown"
+      ],
+      "source_sha256": "4a2e6673340864a4d4cd11038dd3f5460e94e2506861e41de81d0856264ba7f2"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "selectors": [
+        "SignalAnalyzerPresetHostInstance.init(expectedKind:assemblyReport:owner:invariantFailure:)"
+      ],
+      "source_sha256": "4a2e6673340864a4d4cd11038dd3f5460e94e2506861e41de81d0856264ba7f2"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "selectors": [
+        "SignalAnalyzerPresetHostInstances.macOSDynamic"
+      ],
+      "source_sha256": "4a2e6673340864a4d4cd11038dd3f5460e94e2506861e41de81d0856264ba7f2"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "selectors": [
+        "SignalAnalyzerPresetHostInstances.macOSStatic"
+      ],
+      "source_sha256": "4a2e6673340864a4d4cd11038dd3f5460e94e2506861e41de81d0856264ba7f2"
+    }
+  ],
+  "extra_constructor_inspected": "CanvasStagedEntry internal explicit equivalent (default invoked=false); no edits",
+  "unchanged_protected_freeze": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-prepared/input-freeze.json"
+}

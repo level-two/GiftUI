@@ -1,0 +1,22 @@
+{
+  "verified_inputs": 302,
+  "basis_freeze_sha256": "a4fc81019670541b8e23b35b66328b827974e8d70bffc268d74aba511258ab17",
+  "map_sha256": "c86342ac40f5508d459c5779e2e60df5c4bc82001f27b8eea5e6fadf14164410",
+  "allowlist_file_sha256": {
+    "Sources/GiftUI/GiftUI.swift": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift": "4a2e6673340864a4d4cd11038dd3f5460e94e2506861e41de81d0856264ba7f2",
+    "Sources/GiftUIExecution/RunCycleValues.swift": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+    "Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift": "7728c6631e620e312f006ddc60e8fdec5d58efb3ea702b662b21ea187586ae57",
+    "Sources/GiftUIRenderCore/RenderValues.swift": "d4a0e5274c7c8e88a4e7c6c9c0bf5345ea1e83b5086b1f32373f01c7a4940722",
+    "Sources/GiftUIExecution/FrameHandoffValues.swift": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba",
+    "Sources/GiftUIRasterCore/RasterPayloadLimits.swift": "23234d9ba4e630bb6279e31a9ab8ae72b8f9e3b2f9477784bf42697ecab544c3",
+    "Sources/GiftUIDisplayCore/DisplayContracts.swift": "b27ad7489ad1ec6076f0d53b3912d6b9ed85329d355ceda2678707374111f3f0",
+    "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": "41ae54160ebb7fc27b0bd1541d57617f049c38f78d0b071425020fbc548d8482",
+    "Sources/GiftUIHostConfiguration/HostWakePacingController.swift": "457479bb631966220e2bb2d26fb7a78ac0143fbcadae8b66c25b78b27125643b",
+    "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift": "10583aec3c00ff8246e5652a5f16085e1b5e93fa235e91fbc5dd94ff901fadeb",
+    "Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift": "377ef975edb74d9e8b86b94228e0756e1bc15414875f74a1fb4dbec33f0d88ca",
+    "Sources/GiftUITextResources/GiftUITextResources.swift": "eb6ae9a1e094003656a3528cc1b5a5c5d03d3dbfaff3081e3d954c2df365baba"
+  },
+  "source_mutations": 0,
+  "compiler_invocations": 0
+}

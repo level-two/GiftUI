@@ -1,0 +1,18 @@
+{
+  "commit": "b8189d766d86ad7fc8106787d6ce9e402f38dd72",
+  "TypeCheckAccess.cpp": {
+    "url": "https://github.com/swiftlang/swift/blob/b8189d766d86ad7fc8106787d6ce9e402f38dd72/lib/Sema/TypeCheckAccess.cpp",
+    "sha256": "9b9a69fd4939fcab90923d04705ac5805a6ff0ab8ae869a9d039e5f8d37e1a7c",
+    "excerpts": {
+      "151-159": "bool AccessControlCheckerBase::shouldSkipChecking(const ValueDecl *decl) {\n  if (!checkUsableFromInline)\n    return false;\n\n  if (decl->getFormalAccess() != AccessLevel::Internal &&\n      decl->getFormalAccess() != AccessLevel::Package)\n    return true;\n  return !decl->isUsableFromInline();\n}",
+      "1933-1952": "  void visitEnumElementDecl(EnumElementDecl *EED) {\n    if (!EED->hasAssociatedValues())\n      return;\n    for (auto &P : *EED->getParameterList()) {\n      checkTypeAccess(\n          P->getInterfaceType(), P->getTypeRepr(), EED, /*mayBeInferred*/ false,\n          [&](AccessScope typeAccessScope, const TypeRepr *complainRepr,\n              DowngradeToWarning downgradeToWarning,\n              ImportAccessLevel importLimit) {\n            auto diagID = diag::enum_case_usable_from_inline;\n            if (!EED->getASTContext().isLanguageModeAtLeast(LanguageMode::v5))\n              diagID = diag::enum_case_usable_from_inline_warn;\n            auto diag = EED->diagnose(diagID);\n            highlightOffendingType(diag, complainRepr);\n            noteLimitingImport(EED, importLimit, complainRepr);\n          });\n    }\n  }\n};\n"
+    }
+  },
+  "Decl.cpp": {
+    "path": ".toolchains/p08-serialization-decoder/schema/Decl.cpp",
+    "sha256": "74990349e51f434609ba2c79b1da61db7cce79311f242976f233b7963dae1edb",
+    "excerpts": {
+      "5180-5223": "bool ValueDecl::isUsableFromInline() const {\n  assert(getFormalAccess() < AccessLevel::Public);\n\n  // ABI decls share the access level of their API decl.\n  auto abiRole = ABIRoleInfo(this);\n  if (!abiRole.providesAPI() && abiRole.getCounterpart())\n    return abiRole.getCounterpart()->isUsableFromInline();\n\n  if (getAttrs().hasAttribute<UsableFromInlineAttr>() ||\n      isAlwaysEmittedIntoClient() ||\n      hasAttributeWithInlinableSemantics())\n    return true;\n\n  if (auto *accessor = dyn_cast<AccessorDecl>(this)) {\n    auto *storage = accessor->getStorage();\n    if (storage->getAttrs().hasAttribute<UsableFromInlineAttr>() ||\n        storage->isAlwaysEmittedIntoClient() ||\n        storage->hasAttributeWithInlinableSemantics())\n      return true;\n  }\n\n  if (auto *opaqueType = dyn_cast<OpaqueTypeDecl>(this)) {\n    if (auto *namingDecl = opaqueType->getNamingDecl()) {\n      if (namingDecl->getAttrs().hasAttribute<UsableFromInlineAttr>() ||\n          namingDecl->isAlwaysEmittedIntoClient() ||\n          namingDecl->hasAttributeWithInlinableSemantics())\n        return true;\n    }\n  }\n\n  if (auto *EED = dyn_cast<EnumElementDecl>(this))\n    if (EED->getParentEnum()->getAttrs().hasAttribute<UsableFromInlineAttr>())\n      return true;\n\n  if (auto *containingProto = dyn_cast<ProtocolDecl>(getDeclContext())) {\n    if (containingProto->getAttrs().hasAttribute<UsableFromInlineAttr>())\n      return true;\n  }\n\n  if (auto *DD = dyn_cast<DestructorDecl>(this))\n    if (auto *CD = dyn_cast<ClassDecl>(DD->getDeclContext()))\n      if (CD->getAttrs().hasAttribute<UsableFromInlineAttr>())\n        return true;\n"
+    }
+  }
+}

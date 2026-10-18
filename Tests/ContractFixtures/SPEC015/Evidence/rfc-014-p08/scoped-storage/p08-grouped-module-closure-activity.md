@@ -6,6 +6,11 @@ preserves full diagnostics and all302 unchanged input hashes. Initial1/1 and
 corrective1/2 consumed; one final correction remains, read-only grouped design
 before independent review/source. Privacy/lifetime, physical/actual-host,
 safety/cold and P08/R07/T8.1 remain open; observer costs unresolved.
+The [final corrective2 design](grouped-module-closure-corrective2-design/README.md)
+is ready for independent review: exact21 annotation-only declarations in13 files,
+28 blocked serialized entries inspected; no source/compiler execution or further
+cycle consumed. It completes the concrete arithmetic/property/signature frontier,
+with no new serialized bodies/access/constructor/contract changes.
 Eugene explicitly authorized grouped Layout and remaining-module
 dependency corrections, then full-host/cold validation under the strict contract.
 This is a new allowance of one initial candidate and at most two grouped

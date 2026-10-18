@@ -35,6 +35,10 @@ verify. Initial1/1 and corrective1/2 consumed, one final correction remains.
 Group concrete arithmetic/source dependency evidence for independent design review
 before source. Fresh privacy/lifetime, six-body/all42-origin/actual-host codegen,
 safety/cold and P08/R07/T8.1 remain open. Prior budgets and protected bytes unchanged.
+The [final corrective2 design](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective2-design/README.md)
+awaits independent review: exact21 annotation-only declarations in13 files,28
+blocked serialized entries inspected. Source/compiler unchanged; corrections1/2.
+
 
 [Independent annotation package review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-final-independent-review.md)
 confirms compatibility/provider/helper PASS and Layout FAIL101. Next recommendation

@@ -23,6 +23,10 @@ lower+15 owners PASS, Layout FAIL36, nine dependents blocked;302 frozen inputs
 verify. Initial1/1 and corrective1/2 consumed, final correction design/review next.
 No source repair, retry, privacy/codegen/safety/cold run or P08 acceptance follows.
 Earlier boundaries below are historical.
+The [final corrective2 design](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective2-design/README.md)
+awaits independent review: exact21 annotation-only declarations in13 files,28
+blocked serialized entries inspected. Source/compiler unchanged; corrections1/2.
+
 
 The [corrective1 root/dependency map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-design/README.md)
 has [independent design PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-corrective1-independent-design-review.md):
