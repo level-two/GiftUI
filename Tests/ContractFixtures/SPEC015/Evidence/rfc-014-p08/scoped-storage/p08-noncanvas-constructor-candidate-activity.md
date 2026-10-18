@@ -26,3 +26,11 @@ SIL correctly blocked; full physical76 gate not yet accepted. No source retry or
 sourcebudget reset. [Exact10 focused selector continuation](noncanvas-constructor-selector-continuation1/README.md)
 prepared/staticvalidatePASS; independent review required before76gate→fresh42SIL.
 Consumer/safety/strictcold/P08 unqualified, all older budgets/protectedfiles exact.
+
+# Independent focused harness disposition
+
+[Selector continuation review](p08-noncanvas-selector-continuation-review.md):
+333ae25e READY. Exact ten static declaration identities/source/raw records verify;
+other66 targets and strict76 gate unchanged.1281input/49macro/251provider seals and
+203archive members verify. Gate76 then fresh42 SIL only, no prerequisite repeats,
+source repair/budget reset or actual-consumer/safety/cold acceptance.
