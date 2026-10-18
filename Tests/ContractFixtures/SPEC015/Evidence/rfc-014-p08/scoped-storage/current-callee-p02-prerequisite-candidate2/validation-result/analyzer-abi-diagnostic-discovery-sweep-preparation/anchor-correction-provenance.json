@@ -1,0 +1,79 @@
+{
+  "added_payload": "anchor-correction-provenance.json",
+  "blocker": "B01: editable packet manifest alone was not anchored outside the packet",
+  "cells": 56,
+  "changed_prior_payloads": [
+    "README.md",
+    "execute-discovery.py",
+    "plan.json",
+    "static-inspect.py",
+    "static-inspection.json",
+    "packet-hashes.json"
+  ],
+  "compiler_parser_runner_producer_test_formatter_invocations": 0,
+  "correction": "Required external full reviewed packet commit argument; authenticate complete immutable packet tree/blob bytes before plan trust and before launch; keep dynamic HEAD separate",
+  "future_command": "After correction commit, external readiness record must substitute its full SHA into plan execution_argv and lock_argv. No packet-local value or runtime HEAD may select that SHA.",
+  "maintained_source_edits": 0,
+  "planned_stages": 118,
+  "profile_target_counts": [
+    10,
+    20,
+    20
+  ],
+  "repairs": 0,
+  "retries": 0,
+  "reviewed_preparation_base_commit": "b8935ba312302d856f0a46ff68d2d2bf1be05c50",
+  "source_candidates": 1,
+  "status": "NARROW_B01_PREPARATION_CORRECTION_ONLY_UNEXECUTED",
+  "target_count": 50,
+  "unchanged_base_payload_blobs": {
+    "armv6-sdk-inventory.json": {
+      "blob": "94bdff1fcedc2139214e30a3eba400c2864a546e",
+      "mode": "100644"
+    },
+    "compiler-install-inventory.json": {
+      "blob": "36a1470b28363f29bb8018cffa72fd629e897339",
+      "mode": "100644"
+    },
+    "environment-context.json": {
+      "blob": "4a17ab3118b00f3c94b49801a93db086ca3f868b",
+      "mode": "100644"
+    },
+    "external-identities.json": {
+      "blob": "f589ef8a4e4e4c1c1cf741198331657018b3fd7e",
+      "mode": "100644"
+    },
+    "historical-preservation.json": {
+      "blob": "93b5c4e96bff1bd411fe110f6c2e4ff6a992b286",
+      "mode": "100644"
+    },
+    "home-config-identities.json": {
+      "blob": "02d8133aaa8f1f0f5727de16042497174e39efb1",
+      "mode": "100644"
+    },
+    "macos-sdk-inventory.json": {
+      "blob": "97bba33c3f01b4f54c4a07a421a9cd8b8faab84d",
+      "mode": "100644"
+    },
+    "preparation-provenance.json": {
+      "blob": "419e5335f0ed85d3bdedcaa8163c86ced1069ef7",
+      "mode": "100644"
+    },
+    "producer-derivation.json": {
+      "blob": "739777a7ba712c060cd5ba76264f7448c0632293",
+      "mode": "100644"
+    },
+    "registered-controls.json": {
+      "blob": "7e607f8c723bb9046707b1ed3a913b9e74946cc9",
+      "mode": "100644"
+    },
+    "scratch-sources.json": {
+      "blob": "afa99986cc69541534534927a8819ee814f49112",
+      "mode": "100644"
+    },
+    "selectors.json": {
+      "blob": "95d18046c710071c5d0f7b8cbc9a4e109d8eef05",
+      "mode": "100644"
+    }
+  }
+}

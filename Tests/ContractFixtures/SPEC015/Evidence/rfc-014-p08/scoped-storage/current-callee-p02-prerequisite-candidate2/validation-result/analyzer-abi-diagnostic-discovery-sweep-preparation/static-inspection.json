@@ -16,5 +16,7 @@
     "armv6-sdk-inventory.json": 6965
   },
   "calls_to_compiler_parser_runner_producer_tests_formatter": 0,
+  "external_anchor_gate": "required before plan trust and immediately before every launch",
+  "externally_anchored_commit_checked": null,
   "independent_readiness_review_required": true
 }

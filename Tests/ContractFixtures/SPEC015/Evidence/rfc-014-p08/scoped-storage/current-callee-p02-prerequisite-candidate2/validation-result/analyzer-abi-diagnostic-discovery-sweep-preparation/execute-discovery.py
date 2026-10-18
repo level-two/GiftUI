@@ -15,7 +15,8 @@ import sys
 import time
 
 ROOT = Path('/Users/eugene/work/GiftUI')
-PACKET = Path(__file__).resolve().parent
+PACKET_RELATIVE = 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-diagnostic-discovery-sweep-preparation'
+PACKET = ROOT / PACKET_RELATIVE
 
 
 def sha(path):
@@ -45,17 +46,83 @@ def require(condition, message):
         raise RuntimeError(message)
 
 
+def authenticate_reviewed_packet(commit):
+    """Authenticate every packet byte against the externally reviewed Git commit.
+
+    This runs before any packet JSON is read. Neither the working plan nor its
+    editable manifest supplies the anchor. Replacement objects/config cannot
+    reinterpret the external full commit ID.
+    """
+    require(len(commit) == 40 and all(c in '0123456789abcdef' for c in commit),
+            'external reviewed packet commit must be a full lowercase SHA-1')
+    require(ROOT.resolve(strict=True) == ROOT and PACKET.resolve(strict=True) == PACKET,
+            'canonical repository/packet paths required')
+    require(Path(__file__).absolute() == PACKET / 'execute-discovery.py', 'runner path drift')
+    bootstrap_environment = {'PATH': '/usr/bin:/bin:/usr/sbin:/sbin',
+                             'HOME': os.environ['HOME'], 'LANG': 'C', 'LC_ALL': 'C',
+                             'GIT_CONFIG_NOSYSTEM': '1', 'GIT_CONFIG_GLOBAL': '/dev/null'}
+
+    def git(*arguments):
+        return subprocess.check_output(['/usr/bin/git', '--no-replace-objects',
+                                        '--git-dir=' + str(ROOT / '.git'), *arguments],
+                                       cwd=ROOT, env=bootstrap_environment)
+
+    resolved = git('rev-parse', '--verify', commit + '^{commit}').decode().strip()
+    require(resolved == commit, 'reviewed commit object drift')
+    packet_tree = git('rev-parse', '--verify', commit + ':' + PACKET_RELATIVE).decode().strip()
+    entries = git('ls-tree', '-r', '-z', '--full-tree', commit, '--', PACKET_RELATIVE).split(b'\0')
+    snapshot = {}
+    for entry in entries:
+        if not entry:
+            continue
+        metadata, filename = entry.split(b'\t', 1)
+        mode, kind, blob = metadata.decode('ascii').split(' ')
+        require(mode in ('100644', '100755') and kind == 'blob', 'non-file in reviewed packet tree')
+        filename = filename.decode('utf-8')
+        require(filename.startswith(PACKET_RELATIVE + '/'), 'unexpected reviewed tree prefix')
+        name = filename[len(PACKET_RELATIVE) + 1:]
+        path = PACKET / name
+        require(path.is_file() and not path.is_symlink() and path.resolve(strict=True) == path,
+                'missing/symlinked reviewed packet file: ' + name)
+        immutable_bytes = git('cat-file', 'blob', blob)
+        require(hashlib.sha1(b'blob ' + str(len(immutable_bytes)).encode() + b'\0' + immutable_bytes).hexdigest() == blob,
+                'Git blob object content mismatch: ' + name)
+        require(path.read_bytes() == immutable_bytes, 'reviewed Git blob byte mismatch: ' + name)
+        require(bool(path.stat().st_mode & 0o111) == (mode == '100755'), 'reviewed file mode drift: ' + name)
+        snapshot[name] = {'git_blob': blob, 'mode': mode, 'bytes': len(immutable_bytes),
+                          'sha256': hashlib.sha256(immutable_bytes).hexdigest()}
+    require(snapshot and 'execute-discovery.py' in snapshot and 'packet-hashes.json' in snapshot,
+            'incomplete reviewed packet tree')
+    require(not any(path.is_symlink() for path in PACKET.rglob('*')), 'packet symlink')
+    expected_entries = set(snapshot)
+    for name in snapshot:
+        expected_entries.update(str(parent) for parent in Path(name).parents if str(parent) != '.')
+    require({str(path.relative_to(PACKET)) for path in PACKET.rglob('*')} == expected_entries,
+            'reviewed packet file inventory mismatch; additions/replacements forbidden')
+    return {'commit': commit, 'packet_tree': packet_tree, 'files': snapshot,
+            'snapshot_sha256': hashlib.sha256(canonical(snapshot)).hexdigest()}
+
+
 def main():
     sys.dont_write_bytecode = True
     require(__debug__ and not sys.flags.optimize, 'assertions must be active')
+    require(Path.cwd() == ROOT, 'repository cwd required')
+    require(len(sys.argv) == 4 and sys.argv[1:3] ==
+            ['--execute-reviewed-discovery-once', '--reviewed-packet-commit'],
+            'external reviewed packet commit argument required')
+    reviewed_commit = sys.argv[3]
+    reviewed_packet = authenticate_reviewed_packet(reviewed_commit)
     plan = read('plan.json')
+    execution_argv = [reviewed_commit if value == '{reviewed_packet_commit}' else value
+                      for value in plan['execution_argv']]
+    lock_argv = [reviewed_commit if value == '{reviewed_packet_commit}' else value
+                 for value in plan['lock_argv']]
     require(str(Path(sys.executable).resolve(strict=True)) ==
             str(Path(plan['execution_argv'][0]).resolve(strict=True)), 'Python runtime drift')
-    require(Path.cwd() == ROOT, 'repository cwd required')
-    require(sys.argv == plan['execution_argv'][1:], 'exact reviewed invocation required')
+    require(sys.argv == execution_argv[1:], 'exact reviewed invocation required')
     require(os.environ.get('HOME') == plan['environment']['HOME'], 'actual HOME drift')
     if not os.environ.get('GIFTUI_VALIDATION_LOCK_OWNER'):
-        os.execv(plan['lock_argv'][0], plan['lock_argv'])
+        os.execv(lock_argv[0], lock_argv)
     owner = int(os.environ['GIFTUI_VALIDATION_LOCK_OWNER'])
     lock = ROOT / '.build/validation.lock'
     inode = lock.stat().st_ino
@@ -68,7 +135,8 @@ def main():
     state = {'status': 'running', 'current_commit': head, 'source_candidates': 1,
              'retries': 0, 'repairs': 0, 'qualified_controls': 0,
              'target_count': 50, 'cells': [], 'stages': [], 'acceptance': False,
-             'environment': environment, 'effective_environment_sha256': environment_hash}
+             'environment': environment, 'effective_environment_sha256': environment_hash,
+             'reviewed_packet': reviewed_packet}
     completed = {}
     produced = {}
     sealed_evidence = {}
@@ -109,6 +177,8 @@ def main():
                         and sha(path) == record['sha256'], 'inventory byte drift: ' + str(path))
 
     def verify():
+        require(authenticate_reviewed_packet(reviewed_commit) == reviewed_packet,
+                'externally anchored packet identity drift')
         verify_lock()
         require(shutil.disk_usage(ROOT).free >= plan['minimum_free_bytes'], 'storage threshold')
         require(subprocess.check_output(['/usr/bin/git', 'rev-parse', '--verify', 'HEAD'], cwd=ROOT,
@@ -211,6 +281,9 @@ def main():
                 require(all(not Path(path).exists() for path in stage['outputs']), 'stage output reuse')
                 audit = {'stage': stage, 'inputs': inputs, 'environment': environment,
                          'effective_environment_sha256': environment_hash, 'current_commit': head,
+                         'reviewed_packet_commit': reviewed_commit,
+                         'reviewed_packet_tree': reviewed_packet['packet_tree'],
+                         'reviewed_packet_snapshot_sha256': reviewed_packet['snapshot_sha256'],
                          'compiler_and_tool_identities': read('external-identities.json'),
                          'dependencies': {key: completed[key] for key in cell['dependencies']},
                          'prior_artifacts': list(produced.values()), 'completed_ns': time.time_ns()}
@@ -219,6 +292,8 @@ def main():
                 audit_hash = sha(audit_path)
                 verify_files(inputs)
                 require(sha(audit_path) == audit_hash, 'prelaunch audit drift')
+                require(authenticate_reviewed_packet(reviewed_commit) == reviewed_packet,
+                        'immutable reviewed packet changed immediately before launch')
                 stdout = out / 'logs' / (stage['id'] + '.stdout')
                 stderr = out / 'logs' / (stage['id'] + '.stderr')
                 started = time.time_ns()

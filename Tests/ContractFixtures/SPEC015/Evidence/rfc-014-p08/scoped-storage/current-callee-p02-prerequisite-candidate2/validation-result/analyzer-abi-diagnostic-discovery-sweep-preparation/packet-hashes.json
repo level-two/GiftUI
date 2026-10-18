@@ -1,7 +1,11 @@
 {
   "README.md": {
-    "bytes": 10155,
-    "sha256": "03c47bd0ac9de698d8740f28d4bd18074573cbf9b0fa4a11c011ca0c3dc53bf5"
+    "bytes": 12201,
+    "sha256": "c6fb60345ac804d0143b2a0f9b24ae66798526aad74506252b91ee2d0dbbda8b"
+  },
+  "anchor-correction-provenance.json": {
+    "bytes": 2650,
+    "sha256": "8f5b79ae3930e41d1264d98e9cb211c9b071367de484884e819900da6308f7d4"
   },
   "armv6-sdk-inventory.json": {
     "bytes": 1615913,
@@ -16,8 +20,8 @@
     "sha256": "a62f87207ec2af997c9254b52c08da997f15c4108b9856d4bf74c1e966b8ca54"
   },
   "execute-discovery.py": {
-    "bytes": 16726,
-    "sha256": "e43f257031b0c812606ab671bba225287c5135d11453dbf490ccb020e63324d7"
+    "bytes": 21719,
+    "sha256": "059eeb7845b613294ecb6b9f2d92b564460e014c25c7437b9357071be172bb6b"
   },
   "external-identities.json": {
     "bytes": 1674705,
@@ -36,8 +40,8 @@
     "sha256": "d3c22e195df3a928ea1fda67b0a4143a42f37790a823e4e3a8707a8e81ad48ab"
   },
   "plan.json": {
-    "bytes": 801635,
-    "sha256": "631f7aba5934d73185d9485037efb91962de1bbe866b7f64137551c0e0ffe330"
+    "bytes": 802689,
+    "sha256": "261376db1d60b2d80365bc30aaa2839adf0d40ab1b3707f1745ddef857f804de"
   },
   "preparation-provenance.json": {
     "bytes": 2260,
@@ -60,11 +64,11 @@
     "sha256": "6c401231bf2c0dc4905b178df977ab3674506b9ef70d672af428af6a1898c17f"
   },
   "static-inspect.py": {
-    "bytes": 14801,
-    "sha256": "e169c37c7069863d6bfe93be41ecae4dc93b7544212ff1b6eec3c344bb18ae3c"
+    "bytes": 18713,
+    "sha256": "5d7a7f78c0fac1dceb55fea166293be68a6cba09f7aa734b7c1912284e9e1341"
   },
   "static-inspection.json": {
-    "bytes": 497,
-    "sha256": "0f9f9b7ee7a3a8a2071b54606da7148be5730254c246962ebf40462bf4f100de"
+    "bytes": 635,
+    "sha256": "f8e9e331964acda8bf2765342bff1ad15a7ee2879adfbd6b7493bd57f94b7c23"
   }
 }

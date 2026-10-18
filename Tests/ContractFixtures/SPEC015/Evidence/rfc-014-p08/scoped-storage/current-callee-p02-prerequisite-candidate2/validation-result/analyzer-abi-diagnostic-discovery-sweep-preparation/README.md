@@ -9,6 +9,12 @@ and zero repairs. It confers no compiler execution authority, diagnostic policy,
 qualified control receipt or P02/P08 acceptance. Historical campaigns, stops,
 allowances and policy packets retain their meanings.
 
+This narrow correction addresses readiness blocker B01 from packet commit
+`b8935ba312302d856f0a46ff68d2d2bf1be05c50`: the editable local manifest was not an
+immutable review anchor. `anchor-correction-provenance.json` lists the unchanged
+base blobs and the exact corrected payloads. Target/control/source/environment
+identities and execution budgets are unchanged.
+
 SPEC-015 remains implementing, its plan active and P08/R07/T8.1 open. Accepted
 ADR-036/039 and approved SPEC-006/010/015 supply the existing contract context;
 ITERATION-003 revision 5 I3-04/I3-05 supplies evidence maintenance context.
@@ -102,6 +108,17 @@ checks repeat after launch. Each actual exit and complete binary stdout/stderr
 file receives byte count and SHA-256. Raw logs, audits and source copies are
 sealed against later drift. No diagnostic parser is imported or invoked.
 
+The invocation now requires an **external full reviewed packet commit SHA**.
+Before reading any packet JSON, the runner authenticates every packet file,
+including itself, the plan and its manifest, against that commit's exact Git
+tree/blob bytes and file modes. It rejects missing files, untracked additions,
+symlinks, replacements and Git object-content mismatch. Git replacement objects
+and inherited Git configuration/environment cannot reinterpret the anchor.
+The immutable packet snapshot is checked before every stage, immediately before
+each process launch and after launch. Its commit/tree/snapshot identity joins
+the run record and each prelaunch audit. Runtime HEAD is frozen separately as
+source provenance; it never chooses or replaces the reviewed packet anchor.
+
 Expected exit one is an **unqualified observation only**. Exit zero at a negative
 stage is a failed negative observation; abnormal exits are archived unqualified.
 Unexpected failure before the intended rejection stage blocks the rest of that
@@ -111,11 +128,18 @@ profile completion, acceptance or diagnostic allowance.
 ## Future invocation and fresh roots
 
 From `/Users/eugene/work/GiftUI`, only after independent readiness review and
-separate authorization for the one sweep invocation:
+separate authorization for the one sweep invocation, use this template with the
+externally reviewed correction commit's full SHA:
 
 ```sh
-/usr/bin/ruby /Users/eugene/work/GiftUI/scripts/lib/serialize-validation.rb /Applications/Xcode.app/Contents/Developer/usr/bin/python3 /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-diagnostic-discovery-sweep-preparation/execute-discovery.py --execute-reviewed-discovery-once
+/usr/bin/ruby /Users/eugene/work/GiftUI/scripts/lib/serialize-validation.rb /Applications/Xcode.app/Contents/Developer/usr/bin/python3 /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-diagnostic-discovery-sweep-preparation/execute-discovery.py --execute-reviewed-discovery-once --reviewed-packet-commit REVIEWED_FULL_COMMIT_SHA
 ```
+
+The concrete command with the resulting full commit SHA is supplied outside
+this packet in the correction handoff/readiness review. Keeping the anchor in
+that external invocation avoids embedding a commit ID inside its own committed
+payload. `plan.json` stores only the `{reviewed_packet_commit}` argument template.
+Do not choose the SHA from editable packet data, a branch name or runtime HEAD.
 
 The reserved roots must all be absent:
 
@@ -152,6 +176,12 @@ The read-only inspection command is:
 ```sh
 python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-diagnostic-discovery-sweep-preparation/static-inspect.py
 ```
+
+After the correction is committed, add `--reviewed-packet-commit` followed by
+that external full SHA to independently compare the entire working packet to
+the committed Git blobs. This is read-only inspection and never invokes or
+imports the discovery runner. The precommit static report cannot contain its
+own resulting commit SHA; the postcommit check is reported externally.
 
 Independent review must assess the complete integrated wrapper, direct producer
 derivation and new environment context before execution. AST/JSON/hash checks

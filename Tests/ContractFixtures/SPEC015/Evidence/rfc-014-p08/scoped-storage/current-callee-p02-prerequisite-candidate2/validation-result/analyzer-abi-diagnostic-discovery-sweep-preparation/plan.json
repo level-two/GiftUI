@@ -9165,7 +9165,9 @@
   "execution_argv": [
     "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
     "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-diagnostic-discovery-sweep-preparation/execute-discovery.py",
-    "--execute-reviewed-discovery-once"
+    "--execute-reviewed-discovery-once",
+    "--reviewed-packet-commit",
+    "{reviewed_packet_commit}"
   ],
   "freeze": {
     "bytes": 86847,
@@ -9178,12 +9180,22 @@
     "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-diagnostic-discovery-sweep",
     "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-diagnostic-discovery-sweep"
   ],
+  "immutable_packet_anchor": {
+    "argument": "--reviewed-packet-commit",
+    "authentication": "Before any packet JSON is read, enumerate exact packet Git tree from supplied immutable commit with replacement objects/config disabled; require exact file inventory, blob bytes/hash and mode and no symlinks. Recheck before every stage, immediately before process launch and after invocation.",
+    "dynamic_HEAD": "Current runtime HEAD separately frozen and recorded as provenance; never substitutes for external reviewed packet commit.",
+    "self_reference": "Packet stores command template only; external readiness record/final report supplies concrete full commit SHA after this correction is committed. No digest/commit embedded in its own payload.",
+    "source": "full Git commit ID supplied by external reviewed invocation; never selected from plan/manifest/HEAD",
+    "template_token": "{reviewed_packet_commit}"
+  },
   "lock_argv": [
     "/usr/bin/ruby",
     "/Users/eugene/work/GiftUI/scripts/lib/serialize-validation.rb",
     "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
     "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-diagnostic-discovery-sweep-preparation/execute-discovery.py",
-    "--execute-reviewed-discovery-once"
+    "--execute-reviewed-discovery-once",
+    "--reviewed-packet-commit",
+    "{reviewed_packet_commit}"
   ],
   "minimum_free_bytes": 34359738368,
   "omissions": {

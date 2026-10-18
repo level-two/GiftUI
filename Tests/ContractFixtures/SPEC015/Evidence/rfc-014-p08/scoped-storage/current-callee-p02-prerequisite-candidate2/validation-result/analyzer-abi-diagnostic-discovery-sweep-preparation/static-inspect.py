@@ -6,6 +6,8 @@ import hashlib
 import json
 import os
 import shutil
+import subprocess
+import sys
 
 ROOT = Path('/Users/eugene/work/GiftUI')
 PACKET = Path(__file__).resolve().parent
@@ -26,6 +28,7 @@ def load(path):
 
 
 def inspect():
+    assert len(sys.argv) == 1 or (len(sys.argv) == 3 and sys.argv[1] == '--reviewed-packet-commit')
     plan = load(PACKET / 'plan.json')
     recipe = load(OLD / 'recipe.json')
     controls = load(OLD / 'controls.json')['controls']
@@ -71,7 +74,14 @@ def inspect():
                     if 'resolved_directory' in item:
                         assert str(q.resolve(strict=True)) == item['resolved_directory']
     assert plan['lock_argv'] == ['/usr/bin/ruby', str(ROOT / 'scripts/lib/serialize-validation.rb'), *plan['execution_argv']]
-    assert plan['execution_argv'][1:] == [str(PACKET / 'execute-discovery.py'), '--execute-reviewed-discovery-once']
+    assert plan['execution_argv'][1:] == [str(PACKET / 'execute-discovery.py'), '--execute-reviewed-discovery-once',
+                                        '--reviewed-packet-commit', '{reviewed_packet_commit}']
+    assert plan['immutable_packet_anchor']['source'] == 'full Git commit ID supplied by external reviewed invocation; never selected from plan/manifest/HEAD'
+    correction = load(PACKET / 'anchor-correction-provenance.json')
+    assert correction['reviewed_preparation_base_commit'] == 'b8935ba312302d856f0a46ff68d2d2bf1be05c50'
+    for name, record in correction['unchanged_base_payload_blobs'].items():
+        data = (PACKET / name).read_bytes()
+        assert hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest() == record['blob']
     assert all(not Path(p).exists() for p in plan['fresh_roots'])
     assert shutil.disk_usage(ROOT).free >= plan['minimum_free_bytes'] == 34359738368
     freeze = load(plan['freeze']['path'])
@@ -219,6 +229,17 @@ def inspect():
         tree = ast.parse(path.read_text(), filename=str(path))
         imports = [n.module or '' for n in ast.walk(tree) if isinstance(n, ast.ImportFrom)] + [v.name for n in ast.walk(tree) if isinstance(n, ast.Import) for v in n.names]
         assert not any('diagnostic_parser' in name for name in imports)
+    runner_tree = ast.parse((PACKET / 'execute-discovery.py').read_text())
+    main = next(n for n in runner_tree.body if isinstance(n, ast.FunctionDef) and n.name == 'main')
+    anchor_capture = next(n for n in main.body if isinstance(n, ast.Assign) and
+                          isinstance(n.value, ast.Call) and isinstance(n.value.func, ast.Name) and
+                          n.value.func.id == 'authenticate_reviewed_packet')
+    plan_read = next(n for n in main.body if isinstance(n, ast.Assign) and
+                     isinstance(n.value, ast.Call) and isinstance(n.value.func, ast.Name) and n.value.func.id == 'read')
+    assert anchor_capture.lineno < plan_read.lineno
+    anchor_calls = [n for n in ast.walk(main) if isinstance(n, ast.Call) and
+                    isinstance(n.func, ast.Name) and n.func.id == 'authenticate_reviewed_packet']
+    assert len(anchor_calls) == 3  # Before plan trust, verify(), and immediately before launch.
     for path in PACKET.glob('*.json'):
         load(path)
     seal = PACKET / 'packet-hashes.json'
@@ -227,10 +248,43 @@ def inspect():
         assert {str(p.relative_to(PACKET)) for p in PACKET.rglob('*') if p.is_file()} == set(hashes) | {'packet-hashes.json'}
         for name, value in hashes.items():
             assert (PACKET / name).stat().st_size == value['bytes'] and sha(PACKET / name) == value['sha256']
+    external_anchor = None
+    if len(sys.argv) == 3:
+        external_anchor = sys.argv[2]
+        assert len(external_anchor) == 40 and all(c in '0123456789abcdef' for c in external_anchor)
+        git_environment = {'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'HOME': os.environ['HOME'],
+                           'LANG': 'C', 'LC_ALL': 'C', 'GIT_CONFIG_NOSYSTEM': '1', 'GIT_CONFIG_GLOBAL': '/dev/null'}
+        def git(*args):
+            return subprocess.check_output(['/usr/bin/git', '--no-replace-objects', '--git-dir=' + str(ROOT / '.git'),
+                                            *args], cwd=ROOT, env=git_environment)
+        assert git('rev-parse', '--verify', external_anchor + '^{commit}').decode().strip() == external_anchor
+        relative = str(PACKET.relative_to(ROOT))
+        anchored_files = set()
+        for row in git('ls-tree', '-r', '-z', '--full-tree', external_anchor, '--', relative).split(b'\0'):
+            if not row:
+                continue
+            metadata, name = row.split(b'\t', 1)
+            mode, kind, blob = metadata.decode().split(' ')
+            assert mode in ('100644', '100755') and kind == 'blob'
+            name = name.decode()
+            path = ROOT / name
+            assert not path.is_symlink() and path.resolve(strict=True) == path
+            data = git('cat-file', 'blob', blob)
+            assert path.read_bytes() == data
+            assert hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest() == blob
+            assert bool(path.stat().st_mode & 0o111) == (mode == '100755')
+            anchored_files.add(str(path.relative_to(PACKET)))
+        anchored_entries = set(anchored_files)
+        for name in anchored_files:
+            anchored_entries.update(str(parent) for parent in Path(name).parents if str(parent) != '.')
+        assert {str(path.relative_to(PACKET)) for path in PACKET.rglob('*')} == anchored_entries
+        assert not any(path.is_symlink() for path in PACKET.rglob('*'))
     print(json.dumps({'status': 'STATIC_ONLY_PASS_UNEXECUTED', 'targets': 50, 'profile_targets': [10, 20, 20],
                       'cells': 56, 'expanded_argv_checked': commands_checked, 'frozen_inputs': 541,
                       'historical_files_preserved': len(preserved), 'platform_inventory_entries': inventory_counts,
                       'calls_to_compiler_parser_runner_producer_tests_formatter': 0,
+                      'external_anchor_gate': 'required before plan trust and immediately before every launch',
+                      'externally_anchored_commit_checked': external_anchor,
                       'independent_readiness_review_required': True}, indent=2))
 
 
