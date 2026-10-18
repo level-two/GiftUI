@@ -1,0 +1,21 @@
+{
+  "selected": "only fourB-observable roots and mappedhelpers",
+  "same_family_callbacks": [
+    "Model.preflight/commit/reportChange and declarationvisit/read closure must specialize for CounterOwnedModel/actualCounter; no Callback API change",
+    "existing RootScope.withBoundDeclaration ->ScopedObservableDeclarationVisitor ->rootvisit/matching/bind may become next concreteedge; alreadyserializedboundary, no automaticvisitor/bindsourceexpansion",
+    "existing ModelScope.withRead ->readslots/_GiftUIFrameRead/actualgeneratedStatehelper; previouscheckedStatecontract retained"
+  ],
+  "other_families": [
+    "semanticbank/traversal/stopped/publishExpansion and Canvaspayloadcodec roots remain currentopaque; no source edits selected",
+    "Interactioncandidatecommit/scalargeneration cleanup roots remain separate; no backing/witness blanketpromotion",
+    "deadOptional-derivedequality callbacks remain excludedfromoperationalfailure; emittedcode stillcountsimage",
+    "observer print/Any metadata remains distinct; no quietobserverresourceexception"
+  ],
+  "uncertainties": [
+    "compiler-dependent record/associatedtype/synthesis legality diagnosed asgroup, not automatic source fix",
+    "rawModelKey ABI-only genericphantomSchema leaves may still need metadata/cost work; private logicalfields are a hardguard, no guessed@inlinable promotion",
+    "nongeneric ownershipendFrame nonescaping reclaimcallback context must be proven concrete/noheap inactualcaller",
+    "postserialization visit/bind/report Model witnesses could expose furtherrequiredhelpers; inventory is bounded not wholehostclosure"
+  ],
+  "scope_changes": "Any request to open authoredState/privatekeys/P08fields or uncheckedconstruction stops for contractreview; no such change proposed"
+}

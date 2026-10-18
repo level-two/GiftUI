@@ -29,6 +29,13 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [grouped B-observable proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-grouped-inventory/README.md):
+all4roots/sharedhelpers mapped together,36sites/five files incl guarded3scalarAddress
+memberwise equivalent. Rawkeyprivate/authoredState/P08private/14loans preserved;
+ordinaryABI leafcosts+relatedcallbacks explicit.587inputs unchanged, no source/
+compiler/runtime/candidate/repair allowance. Combinedfocusedgate proposal; independent
+review next. Remaining16roots/full23/42/safety/cold/P08 unaccepted.
+
 Current [resolver actualconsumer interpretation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-consumer-result/README.md):
 run+three resolver boundaries RESOLVED; residual Optionalpayload equality branches
 proveddead, not operationalfailure. Next actualstatefact modelKey/mutate generic

@@ -1,0 +1,404 @@
+{
+  "status": "DERIVED PROPOSAL ONLY; no source/compiler/runtime/candidate/repair allowance",
+  "review_base": "20da07df",
+  "source_commit": "780c90c3",
+  "roots": [
+    "F03 modelKey",
+    "F04 mutate(key:mutation:)",
+    "F12 evaluateStateful",
+    "F22 endFrame"
+  ],
+  "counts": {
+    "sites": 36,
+    "files": 5,
+    "existing_declaration_edits": 35,
+    "guarded_memberwise_equivalent": 1
+  },
+  "edits": [
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 247,
+      "selector": "package borrowing func modelKey(",
+      "declaration": "package borrowing func modelKey(identity: Identity, ordinal: UInt16) -> _GiftUIModelKey<",
+      "edit": "add @inlinable; preserve package access/body/defaults/lifetimes",
+      "root_trace": "F03",
+      "reason": "actualstatefactkeylookup",
+      "source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 601,
+      "selector": "package borrowing func mutate(_ key:",
+      "declaration": "package borrowing func mutate(_ key: _GiftUIModelKey<Model.Schema>, mutation: Model.Mutation)",
+      "edit": "add @inlinable; preserve package access/body/defaults/lifetimes",
+      "root_trace": "F04",
+      "reason": "actualcheckedstatefactmutation",
+      "source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 205,
+      "selector": "package borrowing func belongs(to scope:",
+      "declaration": "package borrowing func belongs(to scope: borrowing ObservableModelScope<Model, Model.Schema>)",
+      "edit": "add @inlinable; preserve package access/body/defaults/lifetimes",
+      "root_trace": "F12",
+      "reason": "bindingchecks actualmodelowner/backing equality",
+      "source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 232,
+      "selector": "private borrowing func matching(",
+      "declaration": "private borrowing func matching(_ identity: Identity, ordinal: UInt16) -> Int? {",
+      "edit": "private -> internal; add @inlinable; body/signature unchanged",
+      "root_trace": "F03",
+      "reason": "finite identitymatching/key helper closure; ordinaryimports cannot name internal helpers",
+      "source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 240,
+      "selector": "private borrowing func key(at slot:",
+      "declaration": "private borrowing func key(at slot: Int) -> _GiftUIModelKey<Model.Schema> {",
+      "edit": "private -> internal; add @inlinable; body/signature unchanged",
+      "root_trace": "F03",
+      "reason": "finite identitymatching/key helper closure; ordinaryimports cannot name internal helpers",
+      "source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 29,
+      "selector": "    struct Record {",
+      "declaration": "struct Record {",
+      "edit": "add @usableFromInline; preserve internal access",
+      "root_trace": "F03",
+      "reason": "selected controlrecords hold scalarroot/modelkey provenance",
+      "source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 30,
+      "selector": "ObservableStateRootControl.Record.ordinal",
+      "declaration": "var ordinal: UInt16 = 0",
+      "edit": "add @usableFromInline; keep internal access/default/body",
+      "root_trace": "F03 ->matching/key",
+      "reason": "only exactfield read by selectedhelper/key/publishedguard",
+      "source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 31,
+      "selector": "ObservableStateRootControl.Record.keyOwner",
+      "declaration": "var keyOwner: UInt32 = 0",
+      "edit": "add @usableFromInline; keep internal access/default/body",
+      "root_trace": "F03 ->matching/key",
+      "reason": "only exactfield read by selectedhelper/key/publishedguard",
+      "source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 32,
+      "selector": "ObservableStateRootControl.Record.keyGeneration",
+      "declaration": "var keyGeneration: UInt32 = 0",
+      "edit": "add @usableFromInline; keep internal access/default/body",
+      "root_trace": "F03 ->matching/key",
+      "reason": "only exactfield read by selectedhelper/key/publishedguard",
+      "source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 34,
+      "selector": "ObservableStateRootControl.Record.published",
+      "declaration": "var published = false",
+      "edit": "add @usableFromInline; keep internal access/default/body",
+      "root_trace": "F03 ->matching/key",
+      "reason": "only exactfield read by selectedhelper/key/publishedguard",
+      "source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 37,
+      "selector": "fileprivate var records:",
+      "declaration": "fileprivate var records: InlineArray<2, Record> = .init(repeating: Record())",
+      "edit": "fileprivate -> internal; add @usableFromInline; preserve type/default",
+      "root_trace": "F03",
+      "reason": "frameworkrootcontrol bookkeeping; no public/package accessor, no rawP08backing widening",
+      "source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 45,
+      "selector": "fileprivate var operationActive =",
+      "declaration": "fileprivate var operationActive = false",
+      "edit": "fileprivate -> internal; add @usableFromInline; preserve type/default",
+      "root_trace": "F04",
+      "reason": "frameworkrootcontrol bookkeeping; no public/package accessor, no rawP08backing widening",
+      "source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 46,
+      "selector": "fileprivate var retired =",
+      "declaration": "fileprivate var retired = false",
+      "edit": "fileprivate -> internal; add @usableFromInline; preserve type/default",
+      "root_trace": "F04",
+      "reason": "frameworkrootcontrol bookkeeping; no public/package accessor, no rawP08backing widening",
+      "source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 75,
+      "selector": "    var mutationReporting = false",
+      "declaration": "var mutationReporting = false",
+      "edit": "add @usableFromInline; preserve internal access/default",
+      "root_trace": "F04",
+      "reason": "mutationreporting flag brackets existing deferredreport route",
+      "source_sha256": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 64,
+      "selector": "package borrowing func sharesOwner(",
+      "declaration": "package borrowing func sharesOwner(with other: borrowing ObservableModelScope<Model, Schema>)",
+      "edit": "add @inlinable; preserve package access/body/defaults/lifetimes",
+      "root_trace": "F12",
+      "reason": "shared owner/provenance/mutation/report/reclaim closure; concreteModel callbacks must remain inspectable",
+      "source_sha256": "cf4fe6105ea05856ed229644a803fdbf1bab8d3eb8150b1ae0256d52634a21dc"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 236,
+      "selector": "package borrowing func mutate(",
+      "declaration": "package borrowing func mutate(",
+      "edit": "add @inlinable; preserve package access/body/defaults/lifetimes",
+      "root_trace": "F04",
+      "reason": "shared owner/provenance/mutation/report/reclaim closure; concreteModel callbacks must remain inspectable",
+      "source_sha256": "cf4fe6105ea05856ed229644a803fdbf1bab8d3eb8150b1ae0256d52634a21dc"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 245,
+      "selector": "package borrowing func mutate(",
+      "declaration": "package borrowing func mutate(",
+      "edit": "add @inlinable; preserve package access/body/defaults/lifetimes",
+      "root_trace": "F04",
+      "reason": "shared owner/provenance/mutation/report/reclaim closure; concreteModel callbacks must remain inspectable",
+      "source_sha256": "cf4fe6105ea05856ed229644a803fdbf1bab8d3eb8150b1ae0256d52634a21dc"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 130,
+      "selector": "package borrowing func report(",
+      "declaration": "package borrowing func report(_ key: _GiftUIModelKey<Schema>)",
+      "edit": "add @inlinable; preserve package access/body/defaults/lifetimes",
+      "root_trace": "F04",
+      "reason": "shared owner/provenance/mutation/report/reclaim closure; concreteModel callbacks must remain inspectable",
+      "source_sha256": "cf4fe6105ea05856ed229644a803fdbf1bab8d3eb8150b1ae0256d52634a21dc"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 90,
+      "selector": "package var phase: ObservableModelOwnership.Phase",
+      "declaration": "package var phase: ObservableModelOwnership.Phase { ownership.pointee.phase }",
+      "edit": "add @inlinable; preserve package access/body/defaults/lifetimes",
+      "root_trace": "F04",
+      "reason": "shared owner/provenance/mutation/report/reclaim closure; concreteModel callbacks must remain inspectable",
+      "source_sha256": "cf4fe6105ea05856ed229644a803fdbf1bab8d3eb8150b1ae0256d52634a21dc"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 278,
+      "selector": "package borrowing func endFrame()",
+      "declaration": "package borrowing func endFrame() throws(ObservableStateError) {",
+      "edit": "add @inlinable; preserve package access/body/defaults/lifetimes",
+      "root_trace": "F22",
+      "reason": "shared owner/provenance/mutation/report/reclaim closure; concreteModel callbacks must remain inspectable",
+      "source_sha256": "cf4fe6105ea05856ed229644a803fdbf1bab8d3eb8150b1ae0256d52634a21dc"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 7,
+      "selector": "    package enum Phase:",
+      "declaration": "package enum Phase: UInt8 {",
+      "edit": "add @usableFromInline; preserve package access",
+      "root_trace": "F04",
+      "reason": "ModelScope.phase serializedsignature uses exactledger phase",
+      "source_sha256": "3223e742ee24410a501f225368625d609dfc6fb66d66c6b0ead24fd4d0320c0a"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 60,
+      "selector": "package private(set) var phase:",
+      "declaration": "package private(set) var phase: Phase = .mutating",
+      "edit": "add @usableFromInline; KEEP package private(set) unchanged",
+      "root_trace": "F04",
+      "reason": "ordinaryABIgetter for nongenericownershipledger; setter staysprivate",
+      "source_sha256": "3223e742ee24410a501f225368625d609dfc6fb66d66c6b0ead24fd4d0320c0a"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 138,
+      "selector": "package func address<Schema>",
+      "declaration": "package func address<Schema>(for key: _GiftUIModelKey<Schema>) -> Address {",
+      "edit": "add @inlinable; preserve package access/body",
+      "root_trace": "F04",
+      "reason": "genericphantomSchema conversion reads existing checkedkey getters and constructs scalarAddress",
+      "source_sha256": "3223e742ee24410a501f225368625d609dfc6fb66d66c6b0ead24fd4d0320c0a"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 175,
+      "selector": "package mutating func beginMutation(",
+      "declaration": "package mutating func beginMutation(_ address: Address, schema: UInt16)",
+      "edit": "add @usableFromInline ONLY; preserve body/access/defaults",
+      "root_trace": "F04",
+      "reason": "nongenericownership checks/phase transitions/reclaim remain ordinaryABI; do NOT publish privateledgers",
+      "source_sha256": "3223e742ee24410a501f225368625d609dfc6fb66d66c6b0ead24fd4d0320c0a"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 185,
+      "selector": "package mutating func endMutation()",
+      "declaration": "package mutating func endMutation() {",
+      "edit": "add @usableFromInline ONLY; preserve body/access/defaults",
+      "root_trace": "F04",
+      "reason": "nongenericownership checks/phase transitions/reclaim remain ordinaryABI; do NOT publish privateledgers",
+      "source_sha256": "3223e742ee24410a501f225368625d609dfc6fb66d66c6b0ead24fd4d0320c0a"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 209,
+      "selector": "package func callbackIndex(",
+      "declaration": "package func callbackIndex(_ address: Address, schema: UInt16)",
+      "edit": "add @usableFromInline ONLY; preserve body/access/defaults",
+      "root_trace": "F04",
+      "reason": "nongenericownership checks/phase transitions/reclaim remain ordinaryABI; do NOT publish privateledgers",
+      "source_sha256": "3223e742ee24410a501f225368625d609dfc6fb66d66c6b0ead24fd4d0320c0a"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 352,
+      "selector": "package mutating func endFrame(reclaim:",
+      "declaration": "package mutating func endFrame(reclaim: (UInt16) -> Void) throws(ObservableStateError) {",
+      "edit": "add @usableFromInline ONLY; preserve body/access/defaults",
+      "root_trace": "F22",
+      "reason": "nongenericownership checks/phase transitions/reclaim remain ordinaryABI; do NOT publish privateledgers",
+      "source_sha256": "3223e742ee24410a501f225368625d609dfc6fb66d66c6b0ead24fd4d0320c0a"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 12,
+      "selector": "    package struct Address:",
+      "declaration": "package struct Address: Equatable {",
+      "edit": "ADD guarded @usableFromInline internal init(owner: UInt32, generation: UInt32, slot: UInt16) after fields; keep struct declaration unchanged",
+      "root_trace": "F04",
+      "reason": "serializecaller needs ordinaryABI scalarAddress constructor; implicitmemberwise internalaccess/default/ownership exactly preserved",
+      "source_sha256": "3223e742ee24410a501f225368625d609dfc6fb66d66c6b0ead24fd4d0320c0a"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "line": 6,
+      "selector": "package struct ObservableSemanticBodyBinding<",
+      "declaration": "package struct ObservableSemanticBodyBinding<",
+      "edit": "add @usableFromInline; preserve package constraints/ownership",
+      "root_trace": "F12",
+      "reason": "existingevaluate/evaluateStateful annotations need ABIeligibleenclosingnominal",
+      "source_sha256": "e52aaae337bb1f56f6a228e5cb616d5480a45080628ceb5528b5376412b4b37f"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "line": 12,
+      "selector": "package typealias Failure =",
+      "declaration": "package typealias Failure = ObservableStateError",
+      "edit": "add @usableFromInline; preserve package alias",
+      "root_trace": "F12",
+      "reason": "existingABI SemanticStatefulBinding conformance signature",
+      "source_sha256": "e52aaae337bb1f56f6a228e5cb616d5480a45080628ceb5528b5376412b4b37f"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "line": 13,
+      "selector": "private let models:",
+      "declaration": "private let models: ObservableModelScope<Model, Model.Schema>",
+      "edit": "private -> internal; add @usableFromInline; exact scopedfieldtype unchanged",
+      "root_trace": "F12",
+      "reason": "existing bindingbodies borrow samemodelscope; no newconstructor",
+      "source_sha256": "e52aaae337bb1f56f6a228e5cb616d5480a45080628ceb5528b5376412b4b37f"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "line": 14,
+      "selector": "private let root:",
+      "declaration": "private let root: ObservableStateRootScope<Model, Identity>",
+      "edit": "private -> internal; add @usableFromInline; exact scopedfieldtype unchanged",
+      "root_trace": "F12",
+      "reason": "existing bindingbodies borrow samerootscope; no newconstructor",
+      "source_sha256": "e52aaae337bb1f56f6a228e5cb616d5480a45080628ceb5528b5376412b4b37f"
+    },
+    {
+      "source": "Sources/GiftUI/DeclarativeView.swift",
+      "line": 37,
+      "selector": "package init(ownerInstance: UInt32, allocationGeneration: UInt32, slot: UInt16)",
+      "declaration": "package init(ownerInstance: UInt32, allocationGeneration: UInt32, slot: UInt16) {",
+      "edit": "add @usableFromInline ONLY; existing package access/body/private storage unchanged",
+      "root_trace": "F03/F04",
+      "reason": "ordinaryABI phantomSchema keyvalue constructor/getters; do NOT serializebody or promote keyprivatefields; actualmetadata/cost gate remains required",
+      "source_sha256": "15604c493d09f194252b05fdcb5fb31fdb412de3cb10a142fa7276a5e05e8bcf"
+    },
+    {
+      "source": "Sources/GiftUI/DeclarativeView.swift",
+      "line": 44,
+      "selector": "package var _giftUIOwnerInstance:",
+      "declaration": "package var _giftUIOwnerInstance: UInt32 { ownerInstance }",
+      "edit": "add @usableFromInline ONLY; existing package access/body/private storage unchanged",
+      "root_trace": "F03/F04",
+      "reason": "ordinaryABI phantomSchema keyvalue constructor/getters; do NOT serializebody or promote keyprivatefields; actualmetadata/cost gate remains required",
+      "source_sha256": "15604c493d09f194252b05fdcb5fb31fdb412de3cb10a142fa7276a5e05e8bcf"
+    },
+    {
+      "source": "Sources/GiftUI/DeclarativeView.swift",
+      "line": 45,
+      "selector": "package var _giftUIAllocationGeneration:",
+      "declaration": "package var _giftUIAllocationGeneration: UInt32 { allocationGeneration }",
+      "edit": "add @usableFromInline ONLY; existing package access/body/private storage unchanged",
+      "root_trace": "F03/F04",
+      "reason": "ordinaryABI phantomSchema keyvalue constructor/getters; do NOT serializebody or promote keyprivatefields; actualmetadata/cost gate remains required",
+      "source_sha256": "15604c493d09f194252b05fdcb5fb31fdb412de3cb10a142fa7276a5e05e8bcf"
+    },
+    {
+      "source": "Sources/GiftUI/DeclarativeView.swift",
+      "line": 46,
+      "selector": "package var _giftUISlot:",
+      "declaration": "package var _giftUISlot: UInt16 { slot }",
+      "edit": "add @usableFromInline ONLY; existing package access/body/private storage unchanged",
+      "root_trace": "F03/F04",
+      "reason": "ordinaryABI phantomSchema keyvalue constructor/getters; do NOT serializebody or promote keyprivatefields; actualmetadata/cost gate remains required",
+      "source_sha256": "15604c493d09f194252b05fdcb5fb31fdb412de3cb10a142fa7276a5e05e8bcf"
+    }
+  ],
+  "constructor_guard": {
+    "type": "ObservableModelOwnership.Address",
+    "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+    "existing": "implicit internal memberwise init(owner:generation:slot:)",
+    "proposed": "    @usableFromInline\n    internal init(owner: UInt32, generation: UInt32, slot: UInt16) {\n        self.owner = owner\n        self.generation = generation\n        self.slot = slot\n    }\n",
+    "parameters": "three let-backed nonOptional UInt32/UInt32/UInt16 fields, originalorder/implicitownership/allrequired/zero defaults",
+    "semantics": "exact assignments, no check removed/no new public orpackage API; scalarbookkeeping Address, not rawscope/capability/P08constructor",
+    "matched_rule": "existing CodeSynthesis.cpp134-138 letfields return beforedefaultinference; no nildefault issue"
+  },
+  "forbidden": [
+    "private _GiftUIModelKey.ownerInstance/allocationGeneration/slot unchanged",
+    "authoredState/_model/generatedhelper/macro references unchanged",
+    "all P08private access/session/supplied/pipeline/retired/backing/14loans unchanged",
+    "all existingconstructor bodies/access/defaults/_lifetime unchanged",
+    "all ownership records/claims/validation/reclaim algorithm privatefields untouched",
+    "all remaining16frontier sourcefamilies unselected"
+  ],
+  "noops": [
+    "Binding.evaluate/evaluateStateful already@inlinable; no extra attributes/body edits",
+    "RootScope/ModelScope nominals+storedscopepointer descriptors alreadyABI",
+    "ObservableStateModel/ObservableModelMutation/SemanticStatefulBinding/StateError/Operational/Result/SemanticBodyEvaluation alreadyABI",
+    "RootScope.withBoundDeclaration/borrowedRoot and ModelScope.withRead/withDiscovery/borrowedScope alreadyserialized; normal/error routes preserved",
+    "ModelReadSlot constructor/domainFrameRead and actualState lowering remain unchanged",
+    "nonGeneric ownership validators/callback/endFrame and rawmodelkey getters/constructor ordinaryABI may stay bodyopaque; exactcost must still be proven"
+  ]
+}

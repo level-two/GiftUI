@@ -43,3 +43,7 @@ concreteinterpretation/full safety/cold remainunqualified.
 PASS retained; deadOptionalpayloadcompare refs excludedfromfailure. Actualstatefact
 modelKey/mutate nextcallee FAIL/STOP;23status3resolved20opaque. No source/repair;
 full safety/cold/P08 remainunqualified.
+
+[Grouped B-observable proposal](observable-grouped-inventory/README.md):4roots/shared
+helpers36sites5files/guardedAddress equivalent; readonly/no source/compiler/runtime/
+repair allowance.587inputs unchanged; ordinaryleafcost/privacy guards explicit.

@@ -1,0 +1,25 @@
+{
+  "status": "read-only grouped proposal",
+  "inputs": {
+    "Sources/GiftUIObservableState/ObservableModelScope.swift": "cf4fe6105ea05856ed229644a803fdbf1bab8d3eb8150b1ae0256d52634a21dc",
+    "Sources/GiftUI/DeclarativeView.swift": "15604c493d09f194252b05fdcb5fb31fdb412de3cb10a142fa7276a5e05e8bcf",
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6",
+    "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift": "e52aaae337bb1f56f6a228e5cb616d5480a45080628ceb5528b5376412b4b37f",
+    "Sources/GiftUIObservableState/ObservableModelOwnership.swift": "3223e742ee24410a501f225368625d609dfc6fb66d66c6b0ead24fd4d0320c0a",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-consumer-result/blocker.json": "680d2172eb075dd444e6ecd6a7adc5dbe52d5e37c828cfa8cada9fca8a58629c",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-consumer-result/frontier23-current.json": "1986080461ca2dcbf4859cd27b826a4feeceb1978e8bd530632bce40e5eebec2",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-resolver-final-independent-review.md": "9013dee16247bb329d758aa4b4f09eb59f09f6fe2bdba2b168c764528703de0d",
+    "docs/specs/spec-015-host-configuration.md": "05cfccbe91974726e888db8e399bed614626ac98587a0ffb89323cbae2e891f7",
+    "docs/specs/spec-010-observable-reference-state.md": "0b8f6dff84375829adf413f961eba75546445f88e07d45dbedb64d90a3e23a09",
+    "docs/specs/spec-006-declarative-view-semantics.md": "cb1570fd599e1472b76aafacc8895b381eee18a1e20342d3aa8ddebbe6382a6e",
+    "docs/adrs/adr-039-scoped-storage-ownership.md": "e276924300e3bf101c289b0e7cf0baa3fb966f8b8134549f860702b7c600fe12"
+  },
+  "587qualificationinputs_verified": true,
+  "source_mutations": 0,
+  "compiler_decoder_runtime_executions": 0,
+  "automatic_source_repairs": 0,
+  "sites": 36,
+  "files": 5,
+  "roots": 4,
+  "remaining16frontier_roots_source_edits": 0
+}
