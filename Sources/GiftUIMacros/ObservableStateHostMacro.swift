@@ -322,8 +322,9 @@ public struct ObservableStateHostMacro: MemberMacro, ExtensionMacro {
         in declaration: some DeclGroupSyntax, context: some MacroExpansionContext
     ) -> String {
         // Visibility alone cannot serialize an ordinary private backing field.
-        // Only the complete checked finite shape has ABI-usable dependencies.
-        guard !declarations.isEmpty, projectionNames == Set(declarations),
+        // The complete finite shape permits zero States; nonempty declarations
+        // still require every checked projection before serialization.
+        guard projectionNames == Set(declarations),
             let host = declaration.as(StructDeclSyntax.self), !host.hasError,
             isABIUsable(modifiers: host.modifiers, attributes: host.attributes),
             host.genericWhereClause == nil,

@@ -20,8 +20,10 @@ package func counterText(_ value: UInt8) -> BoundedText {
 }
 
 package struct CounterRoot: View {
+    @usableFromInline
     package let model: CounterModel
 
+    @usableFromInline
     package init(model: CounterModel) { self.model = model }
 
     package var body: some View {
@@ -39,18 +41,23 @@ package struct CounterRoot: View {
 }
 
 package struct CounterBadge: View {
+    @usableFromInline
     package let value: UInt8
+
+    @usableFromInline
+    internal init(value: UInt8) { self.value = value }
+
     package var body: some View {
         Text(counterText(value)).padding(1).foregroundStyle(.white)
     }
 }
 
-package struct ArityZero: View { package var body: some View {} }
-package struct ArityOne: View { package var body: some View { Text("1") } }
-package struct ArityTwo: View { package var body: some View { Text("1"); Text("2") } }
-package struct ArityThree: View { package var body: some View { Text("1"); Text("2"); Text("3") } }
-package struct ArityFour: View { package var body: some View { Text("1"); Text("2"); Text("3"); Text("4") } }
-package struct ArityFive: View { package var body: some View { Text("1"); Text("2"); Text("3"); Text("4"); Text("5") } }
+package struct ArityZero: View { internal init() {}; package var body: some View {} }
+package struct ArityOne: View { internal init() {}; package var body: some View { Text("1") } }
+package struct ArityTwo: View { internal init() {}; package var body: some View { Text("1"); Text("2") } }
+package struct ArityThree: View { internal init() {}; package var body: some View { Text("1"); Text("2"); Text("3") } }
+package struct ArityFour: View { internal init() {}; package var body: some View { Text("1"); Text("2"); Text("3"); Text("4") } }
+package struct ArityFive: View { internal init() {}; package var body: some View { Text("1"); Text("2"); Text("3"); Text("4"); Text("5") } }
 package struct ArityProbe: View {
     package init() {}
     package var body: some View {
@@ -62,11 +69,12 @@ package struct ArityProbe: View {
 }
 
 @ViewBuilder
+@usableFromInline
 package func freeLabels() -> some View { Text("a"); Text("b") }
 package struct HelperProbe: View {
     package init() {}
     package var caption: some View { Text("caption") }
-    @ViewBuilder package func makeLabel() -> some View { Text("method") }
+    @ViewBuilder @usableFromInline package func makeLabel() -> some View { Text("method") }
     package var body: some View { caption; makeLabel(); freeLabels() }
 }
 
@@ -77,6 +85,7 @@ package struct StateHostWitnessProbe: View {
 }
 
 package struct LazyProbe: View {
+    @usableFromInline
     package let model: CounterModel
     package init(model: CounterModel) { self.model = model }
     package var body: some View {
@@ -89,6 +98,7 @@ package struct LazyProbe: View {
     }
 }
 package struct SwitchProbe: View {
+    @usableFromInline
     package let model: CounterModel
     package init(model: CounterModel) { self.model = model }
     package var body: some View {
@@ -100,13 +110,17 @@ package struct SwitchProbe: View {
     }
 }
 package struct ArgumentOrderProbe: View {
+    @usableFromInline
     package let first: CounterModel
+    @usableFromInline
     package let second: CounterModel
     package init(first: CounterModel, second: CounterModel) { self.first = first; self.second = second }
     package var body: some View { Text(counterText(first.value + second.value)) }
 }
 package struct SiblingFailureProbe: View {
+    @usableFromInline
     package let first: CounterModel
+    @usableFromInline
     package let second: CounterModel
     package init(first: CounterModel, second: CounterModel) { self.first = first; self.second = second }
     package var body: some View { CounterRoot(model: first); CounterRoot(model: second) }

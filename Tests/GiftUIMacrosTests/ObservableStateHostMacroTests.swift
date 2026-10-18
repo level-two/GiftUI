@@ -20,6 +20,34 @@ final class ObservableStateHostMacroTests: XCTestCase {
         try assertFixture("zero")
     }
 
+    func testCompleteFiniteZeroStateShapeHasNoStateBackingVisits() {
+        let source = serializedSource(names: [])
+        assertWitnessSerialization(source, expected: true, hasNoState: true)
+    }
+
+    func testOrdinaryZeroStateWitnessesAreNotSerializedAtAnyHostAccess() {
+        for access in ["private", "fileprivate", "", "package", "public"] {
+            assertWitnessSerialization(
+                "@ObservableStateHost \(access) struct Root: View {}",
+                expected: false, hasNoState: true)
+            assertWitnessSerialization(
+                """
+                @ObservableStateHost
+                \(access) struct Root<D: ReadDomain>: View {
+                    typealias Domain = D
+                    func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+                        throws(_GiftUIAccessFailure) -> EmptyView<D> { EmptyView<D>() }
+                }
+                """, expected: false, hasNoState: true)
+        }
+        assertWitnessSerialization(
+            checkedSource(
+                names: [],
+                header:
+                    "@ObservableStateHost @usableFromInline package struct Root<D: ReadDomain>: View"
+            ), expected: false, hasNoState: true)
+    }
+
     func testDirectStatesExpandOnceInLexicalOrder() throws {
         try assertFixture("several")
     }
@@ -109,77 +137,77 @@ final class ObservableStateHostMacroTests: XCTestCase {
     }
 
     func testCompleteFiniteShapeSelectsSerializedWitnesses() {
-        let source = serializedSource()
-        assertWitnessSerialization(source, expected: true)
-        assertWitnessSerialization(
-            "@usableFromInline package struct Outer { \(source) }", expected: true)
-        assertWitnessSerialization("public struct Outer { \(source) }", expected: true)
+        for names in [["model"], []] {
+            let source = serializedSource(names: names)
+            assertWitnessSerialization(source, expected: true, hasNoState: names.isEmpty)
+            assertWitnessSerialization(
+                "@usableFromInline package struct Outer { \(source) }",
+                expected: true, hasNoState: names.isEmpty)
+            assertWitnessSerialization(
+                "public struct Outer { \(source) }", expected: true, hasNoState: names.isEmpty)
+        }
     }
 
     func testIncompleteABIDependenciesDoNotSelectSerialization() {
-        let source = serializedSource()
-        let variants = [
-            source.replacingOccurrences(
-                of: "@usableFromInline package struct Root", with: "package struct Root"),
-            source.replacingOccurrences(
-                of: "package struct Root", with: "private struct Root"),
-            source.replacingOccurrences(
-                of: "package struct Root", with: "fileprivate struct Root"),
-            source.replacingOccurrences(
-                of: "@usableFromInline package typealias Domain", with: "package typealias Domain"),
-            source.replacingOccurrences(
-                of: "typealias Domain = D", with: "typealias Domain = Other"),
-            source.replacingOccurrences(
-                of: "typealias Domain = D", with: "typealias Domain<T> = D"),
-            source.replacingOccurrences(
-                of: "@inlinable package func _giftUIEvaluate", with: "package func _giftUIEvaluate"),
-            source.replacingOccurrences(
-                of: "package func _giftUIEvaluate", with: "private func _giftUIEvaluate"),
-            source.replacingOccurrences(
-                of: "package func _giftUIEvaluate", with: "package static func _giftUIEvaluate"),
-            source.replacingOccurrences(
-                of: "_giftUIEvaluate(read:", with: "_giftUIEvaluate<T>(read:"),
-            source.replacingOccurrences(of: "read: borrowing", with: "context: borrowing"),
-            source.replacingOccurrences(of: "read: borrowing", with: "read: consuming"),
-            source.replacingOccurrences(
-                of: "_GiftUIFrameRead<D>)", with: "_GiftUIFrameRead<D>, extra: Int = 0)"),
-            source.replacingOccurrences(
-                of: "throws(_GiftUIAccessFailure) -> some",
-                with: "async throws(_GiftUIAccessFailure) -> some"),
-            source.replacingOccurrences(
-                of: "throws(_GiftUIAccessFailure) -> some", with: "throws(OtherFailure) -> some"),
-            source.replacingOccurrences(of: "-> some View<D>", with: "-> EmptyView<D>"),
-            source.replacingOccurrences(
-                of: "-> some View<D> {", with: "-> some View<D> where D: OtherDomain {"),
-        ]
-        for variant in variants {
-            XCTAssertNotEqual(variant, source)
-            assertWitnessSerialization(variant, expected: false)
+        for names in [["model"], []] {
+            let source = serializedSource(names: names)
+            let replacements = [
+                ("@usableFromInline package struct Root", "package struct Root"),
+                ("package struct Root", "private struct Root"),
+                ("package struct Root", "fileprivate struct Root"),
+                ("@usableFromInline package typealias Domain", "package typealias Domain"),
+                ("typealias Domain = D", "typealias Domain = Other"),
+                ("typealias Domain = D", "typealias Domain<T> = D"),
+                ("@inlinable package func _giftUIEvaluate", "package func _giftUIEvaluate"),
+                ("package func _giftUIEvaluate", "private func _giftUIEvaluate"),
+                ("package func _giftUIEvaluate", "package static func _giftUIEvaluate"),
+                ("_giftUIEvaluate(read:", "_giftUIEvaluate<T>(read:"),
+                ("read: borrowing", "context: borrowing"),
+                ("read: borrowing", "read: consuming"),
+                ("_GiftUIFrameRead<D>)", "_GiftUIFrameRead<D>, extra: Int = 0)"),
+                (
+                    "throws(_GiftUIAccessFailure) -> some",
+                    "async throws(_GiftUIAccessFailure) -> some"
+                ),
+                ("throws(_GiftUIAccessFailure) -> some", "throws(OtherFailure) -> some"),
+                ("-> some View<D>", "-> EmptyView<D>"),
+                ("-> some View<D> {", "-> some View<D> where D: OtherDomain {"),
+            ]
+            for (original, replacement) in replacements {
+                let variant = replacingExactlyOnce(
+                    source, original: original, replacement: replacement)
+                assertWitnessSerialization(variant, expected: false, hasNoState: names.isEmpty)
+            }
         }
     }
 
     func testUnsupportedGenericHeadersDoNotSelectSerialization() {
-        let source = serializedSource()
-        for header in [
-            "Root<D: ReadDomain, T>", "Root<each D: ReadDomain>", "Root<D>",
-            "Root<T: ReadDomain>", "Root<D: Other.ReadDomain>",
-            "Root<D: ReadDomain<Other>>", "Root<D: ReadDomain & OtherDomain>",
-            "Root<D: ReadDomain> where D: OtherDomain",
-        ] {
-            let variant = source.replacingOccurrences(of: "Root<D: ReadDomain>", with: header)
-            XCTAssertNotEqual(variant, source)
-            assertWitnessSerialization(variant, expected: false)
+        for names in [["model"], []] {
+            let source = serializedSource(names: names)
+            for header in [
+                "Root<D: ReadDomain, T>", "Root<each D: ReadDomain>", "Root<D>",
+                "Root<T: ReadDomain>", "Root<D: Other.ReadDomain>",
+                "Root<D: ReadDomain<Other>>", "Root<D: ReadDomain & OtherDomain>",
+                "Root<D: ReadDomain> where D: OtherDomain",
+            ] {
+                let variant = replacingExactlyOnce(
+                    source, original: "Root<D: ReadDomain>", replacement: header)
+                assertWitnessSerialization(variant, expected: false, hasNoState: names.isEmpty)
+            }
         }
     }
 
     func testUnprovableEnclosingContextsDoNotSelectSerialization() {
-        let source = serializedSource()
-        for prefix in [
-            "private struct Outer", "fileprivate struct Outer", "struct Outer",
-            "@usableFromInline package struct Outer<T>", "extension Outer",
-            "func local()", "let local =", "private struct Root",
-        ] {
-            assertWitnessSerialization("\(prefix) { \(source) }", expected: false)
+        for names in [["model"], []] {
+            let source = serializedSource(names: names)
+            for prefix in [
+                "private struct Outer", "fileprivate struct Outer", "struct Outer",
+                "@usableFromInline package struct Outer<T>", "extension Outer",
+                "func local()", "let local =", "private struct Root",
+            ] {
+                assertWitnessSerialization(
+                    "\(prefix) { \(source) }", expected: false, hasNoState: names.isEmpty)
+            }
         }
     }
 
@@ -551,7 +579,10 @@ final class ObservableStateHostMacroTests: XCTestCase {
             diagnostics.filter { $0.message.contains("consecutive declarations") }.count, 2)
     }
 
-    private func checkedSource(names: [String], extra: String = "") -> String {
+    private func checkedSource(
+        names: [String], extra: String = "",
+        header: String = "@ObservableStateHost struct Root: View"
+    ) -> String {
         let fields = names.map {
             "@State<Schema>(seed: Seed()) private var \($0): _GiftUIModelKey<Schema>?"
         }
@@ -559,28 +590,56 @@ final class ObservableStateHostMacroTests: XCTestCase {
             ObservableStateHostMacro.checkedStateHelpers(name: $0, schema: "Schema")
         }
         .map(\.description)
-        return "@ObservableStateHost struct Root: View {\n"
+        return header + " {\n"
             + (fields + helpers + [extra]).joined(separator: "\n") + "\n}"
     }
 
-    private func serializedSource() -> String {
+    private func serializedSource(names: [String] = ["model"]) -> String {
         checkedSource(
-            names: ["model"],
+            names: names,
             extra: """
                 @usableFromInline package typealias Domain = D
                 @inlinable package func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
                     throws(_GiftUIAccessFailure) -> some View<D> { EmptyView<D>() }
-                """
-        ).replacingOccurrences(
-            of: "@ObservableStateHost struct Root: View",
-            with: "@ObservableStateHost @usableFromInline package struct Root<D: ReadDomain>: View")
+                """,
+            header: "@ObservableStateHost @usableFromInline package struct Root<D: ReadDomain>: View")
+    }
+
+    private func replacingExactlyOnce(
+        _ source: String, original: String, replacement: String,
+        file: StaticString = #filePath, line: UInt = #line
+    ) -> String {
+        XCTAssertEqual(source.components(separatedBy: original).count, 2, original, file: file, line: line)
+        let variant = source.replacingOccurrences(of: original, with: replacement)
+        XCTAssertNotEqual(
+            Parser.parse(source: source).tokens(viewMode: .sourceAccurate).map(\.text),
+            Parser.parse(source: variant).tokens(viewMode: .sourceAccurate).map(\.text),
+            original, file: file, line: line)
+        return variant
+    }
+
+    private func assertNoStateBacking(
+        _ source: String, file: StaticString = #filePath, line: UInt = #line
+    ) {
+        let tokens = Parser.parse(source: source).tokens(viewMode: .sourceAccurate).map(\.text)
+        XCTAssertFalse(
+            tokens.contains {
+                $0 == "State" || $0 == "_model" || $0.hasPrefix("_giftUIStateStorage_")
+                    || $0.hasPrefix("_giftUIStateKey_")
+            }, source, file: file, line: line)
     }
 
     private func assertWitnessSerialization(
-        _ source: String, expected: Bool, file: StaticString = #filePath, line: UInt = #line
+        _ source: String, expected: Bool, hasNoState: Bool = false,
+        file: StaticString = #filePath, line: UInt = #line
     ) {
         let (expanded, diagnostics) = expandChecked(source)
         XCTAssertTrue(diagnostics.isEmpty, "\(diagnostics): \(source)", file: file, line: line)
+        if hasNoState {
+            assertNoStateBacking(source, file: file, line: line)
+            assertNoStateBacking(expanded, file: file, line: line)
+            XCTAssertFalse(expanded.contains("visitor.visit("), expanded, file: file, line: line)
+        }
         assertSerializedWitnesses(
             in: Syntax(Parser.parse(source: expanded)), expected: expected, file: file, line: line)
     }

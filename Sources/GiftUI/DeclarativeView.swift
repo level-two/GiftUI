@@ -255,6 +255,7 @@ public struct EmptyView<D: _GiftUIReadDomain>: View {
     public typealias Domain = D
     public typealias Body = Never
 
+    @usableFromInline
     package init() {}
 
     public func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)

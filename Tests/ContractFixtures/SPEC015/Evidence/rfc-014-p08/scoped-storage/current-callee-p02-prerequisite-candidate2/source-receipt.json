@@ -1,0 +1,75 @@
+{
+  "status": "SOURCE ONLY \u2014 static diff inspected; validation unrun",
+  "date": "2026-10-18",
+  "base_head": "88214f619b6113471dcc2a7f390af337db3a1e60",
+  "authorization": "../current-callee-p02-prerequisite-continuation.md",
+  "proposal": "../current-callee-safety-campaign1-result/grouped-correction-proposal.json",
+  "source_candidate": 1,
+  "source_candidate_limit": 1,
+  "automatic_source_repairs": 0,
+  "automatic_source_repair_limit": 0,
+  "source_files_sha256": {
+    "Sources/GiftUI/DeclarativeView.swift": "1451f910208735955fe7f188800d639f024ac1cb75fdb7dd49c5a3d835672c24",
+    "Sources/GiftUIMacros/ObservableStateHostMacro.swift": "1b1a0e91b1694c11ec02e56af35ee861decec7b4662a0a0eca65e51029e0ad3d",
+    "Tests/ContractFixtures/SPEC006/RuntimeDerived/Counter.swift": "2abe29596021e08b6c64b909ee034ed4afc6875ee8fe749f00c05be3bb92d4d2",
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": "0cd0244d1f0194cd927e7eee6bedce73a1a6f0d1146a4cb42dc45e9b8a9f60a3"
+  },
+  "source_patch_sha256": "14ac477b241fc25acae5946d7f252eac7f57ced1eeec4c34833d6bd9d6e8d557",
+  "original_test_methods": [
+    "testZeroStateExpansionIsDeterministic",
+    "testDirectStatesExpandOnceInLexicalOrder",
+    "testPortableProfileExpansionIsDeterministic",
+    "testPrivateHostUsesAccessibleProtocolWitnesses",
+    "testInheritedStateIsNotEnumeratedByDerivedHost",
+    "testMalformedStateDeclarationIsDiagnosed",
+    "testDeclarationLimitAcceptsUInt16MaxAndRejectsTheOverflowShape",
+    "testCheckedStateHelpersSelectOriginalWrappersInLexicalOrder",
+    "testNestedCheckedStateHelpersStayInTheirOwningNominal",
+    "testOrdinaryPrivateStateWitnessesAreNotSerializedAtAnyHostAccess",
+    "testCompleteFiniteShapeSelectsSerializedWitnesses",
+    "testIncompleteABIDependenciesDoNotSelectSerialization",
+    "testUnsupportedGenericHeadersDoNotSelectSerialization",
+    "testUnprovableEnclosingContextsDoNotSelectSerialization",
+    "testReservedStateHelperLookalikesAreDiagnosedWithoutFallback",
+    "testLowererRejectsReservedInputCollisionsIncludingEscapedNames",
+    "testActualLoweredStateOutputHasSeparatedHelperDeclarations"
+  ],
+  "added_test_methods": [
+    "testCompleteFiniteZeroStateShapeHasNoStateBackingVisits",
+    "testOrdinaryZeroStateWitnessesAreNotSerializedAtAnyHostAccess"
+  ],
+  "static_inspection": {
+    "production_and_fixture": "Reviewed 20 selectors unchanged from original proposal; test-family extension is selector 21.",
+    "test_construction": "Direct header and names forwarding; no whole-source/header replacement in constructors.",
+    "matrices": {
+      "state_shapes": [
+        [
+          "model"
+        ],
+        []
+      ],
+      "abi_negative_count_per_shape": 17,
+      "generic_negative_count_per_shape": 8,
+      "enclosure_negative_count_per_shape": 8,
+      "positive_count_per_shape": 3
+    },
+    "scope_issue_found": false
+  },
+  "execution": {
+    "formatter": "unrun",
+    "compiler": "unrun",
+    "macro_tests": "unrun",
+    "maintained_p02": "unrun",
+    "registered_p07": "unrun",
+    "schema_4_activation": "unrun",
+    "counter_384_controls": "unrun"
+  },
+  "preexisting_dirty_files_excluded": [
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+    "scripts/nrf52840/build.sh",
+    "scripts/raspberry-pi/build.sh",
+    "scripts/contracts/__pycache__/"
+  ]
+}

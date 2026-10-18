@@ -16,7 +16,44 @@ superseded_by: null
 
 # P08 checked State serialization
 
-## Maintained P02 prerequisite candidate — STOP, 2026-10-18
+## Maintained P02 prerequisite continuation candidate 2 — source only, 2026-10-18
+
+The [explicit bounded continuation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-continuation.md)
+authorizes one new candidate after the withdrawn candidate 1 below, with zero
+automatic source repairs. The [candidate 2 source receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/README.md)
+freezes the reviewed 21 selectors in four maintained files. Static diff inspection
+found no source exactness or scope issue. No formatter, compiler, test, or
+validation has run for this candidate; source acceptance remains pending.
+
+The macro's initial nonempty-State guard is removed. A zero-State host may select
+the paired witness attributes only after all existing finite host/domain/alias,
+evaluation signature/ABI and enclosure checks succeed. The projection set must
+still equal the lexical declaration set, including the empty-set case. Every
+nonempty State still requires its exact structurally checked original-wrapper
+helper pair. Ordinary empty hosts without the complete finite shape remain
+unserialized; empty serialized visitors visit no State and capture no backing.
+This is a guarded zero-State exception to item 1 below, with no new visibility,
+ownership, helper, or lowerer language rule.
+
+Tests construct each shape directly with `checkedSource(names:extra:header:)`;
+`serializedSource(names:)` forwards its names and supplies the finite host header.
+The 17 original methods remain, with two added zero-State methods. The finite
+positive, ABI-negative, generic-header and enclosure matrices each cover both
+`["model"]` and `[]`. Each matrix substitution asserts one match and changed
+parsed tokens. Every zero-State matrix input and expansion must contain no State,
+backing or checked helper tokens, and its expansion must contain no State visit.
+Existing ordinary/private-State and original-wrapper controls remain.
+
+The fixture changes only the reviewed ABI annotations and equivalent internal
+constructors: required CounterBadge value argument, arity 0–5 empty constructors,
+eight stored properties, CounterRoot's existing initializer and the two helpers.
+EmptyView's existing package constructor gains only `@usableFromInline`.
+Maintained P02, P07, schema-4 activation and 384 controls remain unrun. Candidate
+1's consumed allowance and all historical E/F/checked-State budgets stay closed;
+complete current-callee interpretation, safety, strict cold, resources and
+P08/R07/T8.1 remain open. No new deferred item was discovered.
+
+## Historical maintained P02 prerequisite candidate 1 — STOP, 2026-10-18
 
 The separately authorized [maintained P02 prerequisite activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-activity.md)
 consumed its one candidate during initial source construction. Static inspection
@@ -27,8 +64,8 @@ HEAD state. This withdrawal is not a repair or a second candidate. No formatter,
 compiler, tests, fresh validation recipe, or maintained producer ran.
 
 Candidate 1/1 is consumed, automatic source repairs remain zero, and the proposed
-zero-State eligibility amendment is unaccepted. The current nonempty-State guard
-described below remains in the restored source. The reviewed proposal would permit
+zero-State eligibility amendment is unaccepted. At that withdrawal checkpoint the nonempty-State guard
+described below remained in the restored source. The reviewed proposal would permit
 zero States only after every existing finite shape, ABI, evaluation, enclosure,
 and nonempty projection check; this records proposed intent, not a selected
 implementation. Historical E/F and checked-State allowances remain closed.
@@ -67,9 +104,12 @@ Witness names/access/signatures and public macro/protocol declarations stay exac
 
 Serialize both witnesses only when **all** these syntactic prerequisites hold:
 
-1. At least one lexical State exists and the existing structural validator
-   accepts the complete concrete-schema helper pair for **every** State in this
-   owning nominal. No direct private-field visit remains in a serialized witness.
+1. For a nonempty lexical State set, the existing structural validator accepts
+   the complete concrete-schema helper pair for **every** State in this owning
+   nominal. Under continuation candidate 2, an empty lexical State set is also
+   eligible only after all prerequisites below hold; its visitor has no State
+   visit or backing capture. The projection set must equal the declaration set
+   in either case. No direct private-field visit remains in a serialized witness.
 2. The host and every enclosing nominal are ABI usable: public/open, or
    internal/package with `@usableFromInline`. Private/fileprivate, local-function
    contexts and unprovable extension/enclosing contexts are ineligible. Use macro
