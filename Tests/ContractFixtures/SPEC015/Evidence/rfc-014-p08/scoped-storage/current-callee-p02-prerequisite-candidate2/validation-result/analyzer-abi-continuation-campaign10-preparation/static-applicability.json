@@ -1,0 +1,32 @@
+{
+  "historical_applicability": "inherited-campaign9-static-applicability.json",
+  "limits": "1192 static fixtures verify parser and explicit pure binder only. No integrated wrapper/current P02/core/compiler/SDK authentication, capture timing, campaign or P08/resource/safety/conformance success is established. ARM A4 gets a separate precompile authentication audit and exact bound snapshot; old macOS opt-ins and captures remain separate.",
+  "opt_ins": [
+    "macos-static/negative-A4/SignalAnalyzerDomain",
+    "macos-static/negative-A7/AnalyzerPresentation",
+    "macos-static/negative-A8/AnalyzerPresentation",
+    "macos-static/private-storage/client-emit-object",
+    "macos-static/private-count/client-emit-object",
+    "macos-static/private-helper-continuation/client-emit-object",
+    "macos-static/private-helper-leading/client-emit-object",
+    "raspberry-pi-armv6/negative-A4/SignalAnalyzerDomain"
+  ],
+  "parser_copy": "diagnostic_parser.py",
+  "receipt_copy": "armv6-A4-binding-static-fixture-receipt.json",
+  "static_freeze": {
+    "bytes": 788997,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-armv6-a4-binding-static-successor/packet-freeze.json",
+    "sha256": "b2239ed8233f76ac258794f3f84336c7fc956b8558add264b22780c0e6e7694e"
+  },
+  "static_receipt": {
+    "bytes": 227728,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-armv6-a4-binding-static-result/static-result.json",
+    "sha256": "9160208beaf84be272dfd6e47df0150ec2395b18a56905dfc3d4c1b39db08e8f"
+  },
+  "status": "STATIC IDENTITY APPLICABILITY ONLY; WRAPPER UNEXECUTED",
+  "verified_parser": {
+    "bytes": 175709,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-armv6-a4-binding-static-successor/diagnostic_parser.py",
+    "sha256": "04053fd9619e1ae636c5e468fd78e81c2fa8f7819683eef164e8a62d2204466f"
+  }
+}

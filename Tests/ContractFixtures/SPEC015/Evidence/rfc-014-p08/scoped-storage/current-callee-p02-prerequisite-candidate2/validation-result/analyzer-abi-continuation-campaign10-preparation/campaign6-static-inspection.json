@@ -1,0 +1,26 @@
+{
+  "campaign_invocations": 0,
+  "compiler_invocations": 0,
+  "controls_per_profile": 20,
+  "controls_sources_selectors_baseline_byte_identical": true,
+  "current_commit_obtained_independently_by_wrapper": true,
+  "fresh_output_roots_absent": true,
+  "limits": "Inspection validates static identity/shape only; integrated guard behavior remains unexecuted and independently unreviewed.",
+  "mechanical_recipe_delta_except_diagnostic_policy": true,
+  "original_freeze_count": 541,
+  "original_freeze_sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333",
+  "parser_byte_identical": true,
+  "parser_invocations": 0,
+  "parser_policy_literal_matches_standalone_policy": true,
+  "preclient_capture_code_present": true,
+  "preserved_files": 681,
+  "producer_invocations": 0,
+  "profiles": [
+    "macos-static",
+    "raspberry-pi-armv6",
+    "nrf52840-embedded",
+    "macos-dynamic"
+  ],
+  "status": "AST_JSON_HASH_PATH_PROVENANCE_INSPECTION_ONLY",
+  "test_invocations": 0
+}

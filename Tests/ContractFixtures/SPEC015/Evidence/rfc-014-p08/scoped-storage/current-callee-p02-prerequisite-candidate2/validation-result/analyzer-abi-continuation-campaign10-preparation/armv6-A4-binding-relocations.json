@@ -1,0 +1,223 @@
+[
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+    "path": [
+      "policy",
+      "dependency_paths",
+      0
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+  },
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9",
+    "path": [
+      "policy",
+      "precompile_identity",
+      "campaign_root"
+    ],
+    "suffix": ""
+  },
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/cache",
+    "path": [
+      "policy",
+      "precompile_identity",
+      "planned_stage",
+      "argv",
+      12
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/cache"
+  },
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4",
+    "path": [
+      "policy",
+      "precompile_identity",
+      "planned_stage",
+      "argv",
+      32
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4"
+  },
+  {
+    "base": "core",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/f5043b879e490dab-k9hbqn_m/raspberry-pi-armv6",
+    "path": [
+      "policy",
+      "precompile_identity",
+      "planned_stage",
+      "argv",
+      34
+    ],
+    "suffix": ""
+  },
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+    "path": [
+      "policy",
+      "precompile_identity",
+      "planned_stage",
+      "argv",
+      40
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+  },
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/inputs/AcquisitionState.swift",
+    "path": [
+      "policy",
+      "precompile_identity",
+      "planned_stage",
+      "argv",
+      41
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/inputs/AcquisitionState.swift"
+  },
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalAnalyzerDiagnostic.swift",
+    "path": [
+      "policy",
+      "precompile_identity",
+      "planned_stage",
+      "argv",
+      42
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalAnalyzerDiagnostic.swift"
+  },
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/SignalAnalyzerDomain.swiftmodule",
+    "path": [
+      "policy",
+      "precompile_identity",
+      "planned_stage",
+      "argv",
+      44
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/SignalAnalyzerDomain.swiftmodule"
+  },
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/SignalAnalyzerDomain.o",
+    "path": [
+      "policy",
+      "precompile_identity",
+      "planned_stage",
+      "argv",
+      46
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/SignalAnalyzerDomain.o"
+  },
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+    "path": [
+      "policy",
+      "primary_path"
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+  },
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+    "path": [
+      "policy",
+      "stderr"
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n"
+  },
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+    "path": [
+      "policy",
+      "stderr_without_note"
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n"
+  },
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+    "path": [
+      "control",
+      "armv6_a4_display_only_note",
+      "source_path"
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+  },
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+    "path": [
+      "control",
+      "dependency_note_sources",
+      0
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+  },
+  {
+    "base": "campaign",
+    "kind": "value",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+    "path": [
+      "control",
+      "diagnostic_source"
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+  },
+  {
+    "base": "campaign",
+    "kind": "key",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/inputs/AcquisitionState.swift",
+    "path": [
+      "policy",
+      "precompile_identity",
+      "source_inputs"
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/inputs/AcquisitionState.swift"
+  },
+  {
+    "base": "campaign",
+    "kind": "key",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalAnalyzerDiagnostic.swift",
+    "path": [
+      "policy",
+      "precompile_identity",
+      "source_inputs"
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalAnalyzerDiagnostic.swift"
+  },
+  {
+    "base": "campaign",
+    "kind": "key",
+    "old": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign9/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+    "path": [
+      "policy",
+      "precompile_identity",
+      "source_inputs"
+    ],
+    "suffix": "/raspberry-pi-armv6/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+  }
+]

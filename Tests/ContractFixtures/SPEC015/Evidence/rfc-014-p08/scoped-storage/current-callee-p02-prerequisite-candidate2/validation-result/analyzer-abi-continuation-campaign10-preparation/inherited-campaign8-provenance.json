@@ -1,0 +1,30 @@
+{
+  "automatic_repairs": 0,
+  "campaign5_terminal_stop": "28510d09",
+  "campaign6_terminal_stop": "7de78a99",
+  "campaign7_terminal_stop": "4f03af559f45d53a6aaf1857b0008a29bfe7e888",
+  "compiler_identities": {
+    ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    },
+    ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    }
+  },
+  "compiler_invocations": 0,
+  "execution_authority": false,
+  "inherited_provenance": "inherited-campaign7-provenance.json",
+  "original_541_freeze_sha256": "0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333",
+  "parser_invocations": 0,
+  "preparation_head": "2901ddef296a8941e28b1c10036bb49397b836f6",
+  "producer_invocations": 0,
+  "retries": 0,
+  "source_edits": 0,
+  "source_packet_commit": "930585aa68ee912a56523409d703dcc312080ad7",
+  "static_packet_commit": "b97cd33f4028dd95be7153dbb1e53bf22ddc4a48",
+  "static_result_commit": "2901ddef296a8941e28b1c10036bb49397b836f6",
+  "status": "CAMPAIGN8 PREPARATION ONLY; UNEXECUTED",
+  "test_invocations": 0
+}

@@ -1,0 +1,31 @@
+{
+  "historical_applicability": "inherited-campaign8-static-applicability.json",
+  "limits": "888 parser-only static cases do not authenticate or execute this integrated wrapper, producer/compiler, P02/P08, resources, privacy or conformance. Leading requires its own fresh preclient audit before invocation; historical storage/count/continuation audits cannot satisfy it.",
+  "opt_ins": [
+    "macos-static/negative-A4/SignalAnalyzerDomain",
+    "macos-static/negative-A7/AnalyzerPresentation",
+    "macos-static/negative-A8/AnalyzerPresentation",
+    "macos-static/private-storage/client-emit-object",
+    "macos-static/private-count/client-emit-object",
+    "macos-static/private-helper-continuation/client-emit-object",
+    "macos-static/private-helper-leading/client-emit-object"
+  ],
+  "parser_copy": "diagnostic_parser.py",
+  "receipt_copy": "private-helper-leading-static-fixture-receipt.json",
+  "static_freeze": {
+    "bytes": 565767,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-private-helper-leading-diagnostic-policy-static-successor/packet-freeze.json",
+    "sha256": "cd79ebf58853f6d04627b7336726ac4f3b25bb63cc0801590b4213eaa8bb4d3b"
+  },
+  "static_receipt": {
+    "bytes": 177763,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-private-helper-leading-diagnostic-policy-static-result/static-result.json",
+    "sha256": "585b5d75417431752ee68cb3214d8c939d276260bfc4339c4d66d5d1a4ffb438"
+  },
+  "status": "STATIC IDENTITY APPLICABILITY ONLY; WRAPPER UNEXECUTED",
+  "verified_parser": {
+    "bytes": 127163,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-private-helper-leading-diagnostic-policy-static-successor/diagnostic_parser.py",
+    "sha256": "cce27387e312012676f79402f4388a1d64ef6d55472de76debb24faf294915ca"
+  }
+}

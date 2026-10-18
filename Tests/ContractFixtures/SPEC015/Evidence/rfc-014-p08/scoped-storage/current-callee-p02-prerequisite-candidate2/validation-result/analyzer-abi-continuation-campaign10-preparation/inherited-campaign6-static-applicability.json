@@ -1,0 +1,28 @@
+{
+  "historical_applicability": "inherited-campaign5-static-applicability.json",
+  "limits": "346 parser-only static cases do not authenticate or execute the integrated wrapper, producer, compiler, P02/P08, resources, privacy or conformance.",
+  "opt_ins": [
+    "macos-static/negative-A4/SignalAnalyzerDomain",
+    "macos-static/negative-A7/AnalyzerPresentation",
+    "macos-static/negative-A8/AnalyzerPresentation",
+    "macos-static/private-storage/client-emit-object"
+  ],
+  "parser_copy": "diagnostic_parser.py",
+  "receipt_copy": "private-storage-static-fixture-receipt.json",
+  "static_freeze": {
+    "bytes": 247954,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-private-storage-diagnostic-policy-static-successor/packet-freeze.json",
+    "sha256": "4764e6fc1037dd7d4fcec146824dac396c2757489edbc0b6bd2164780996b326"
+  },
+  "static_receipt": {
+    "bytes": 91690,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-private-storage-diagnostic-policy-static-result/static-result.json",
+    "sha256": "01b192c2953a5c76e39c958dada91a6f778bc58ea57632a7b8b2ee95f12f3e82"
+  },
+  "status": "STATIC IDENTITY APPLICABILITY ONLY; WRAPPER UNEXECUTED",
+  "verified_parser": {
+    "bytes": 43425,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-private-storage-diagnostic-policy-static-successor/diagnostic_parser.py",
+    "sha256": "c49aac1c1f3016873c5b6db43b4187d6e517c632f0d187034e97327c6b4e5ead"
+  }
+}
