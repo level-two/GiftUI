@@ -70,3 +70,8 @@ of actual BankBuffers.records/paths/payloads. Replace exact typed field selector
 at195–197 and classify limits as no-ops; no source/compiler action or allowance.
 The remaining finite codec/writer/transfer/ten-emission design is coherent, subject
 to the proposed fresh generated-source/privacy/physical/actual-consumer gates.
+
+Final focused recheck of proposal7271feb3: READY for separately authorized bounded
+candidate. Exact typed BankBuffers195–197/scalars198 selectors are unique in192–216;
+Limits3 explicit no-ops, other64 edit entries/source hashes/68sites11files unchanged.
+Updated packet hashes verify; no source/compiler/runtime/newallowance or gate PASS.

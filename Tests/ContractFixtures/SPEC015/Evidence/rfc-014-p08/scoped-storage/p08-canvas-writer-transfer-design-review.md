@@ -1,6 +1,17 @@
 # Independent Canvas writer/transfer design review — 2026-10-18
 
-**BLOCKED on three exact field selectors; otherwise coherent selected design.**
+**READY for a separately authorized bounded candidate after proposal 7271feb3.**
+The final focused recheck confirms entries 29–31 uniquely select the exact typed
+BankBuffers fields at lines 195–197, bounded to its 192–216 nominal region; scalars
+at 198 uses the same region. The three already-ABI limits fields are explicit
+no-ops. Only these three replacements and scalars selector precision changed;
+the other 64 edit entries, source hashes and 68-site/11-file scope are unchanged.
+Updated packet hashes verify; the amendment changes proposal/docs only. This
+closes the concrete blocker below without a compiler probe, source allowance or
+claim that compile/privacy/codegen/safety/cold gates have passed.
+
+Initial disposition at 3582c0be: blocked on three exact field selectors;
+otherwise coherent selected design.
 Reviewed proposal 3582c0be: 68 selectors/11 files, six original roots
 F05/F06/F13/F14/F15/F19. Source hashes and all declared source locations agree.
 No source/compiler/runtime or new candidate allowance occurred in review.
