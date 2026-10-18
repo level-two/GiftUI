@@ -27,3 +27,9 @@ FAIL one packageinitializer-from-inlinable error. Pre-existing unchanged lowerer
 annotates Canvas constructors only. NestedTable/privacy/physical/object/SIL/safety/
 cold notrun. Candidate1/1 fixed, zero automatic SOURCE repairs, all oldbudgets exact.
 No source/fixture edits or retry; separate independent boundary review next.
+
+[Independent boundary review](p08-canvas-writer-transfer-boundary-review.md): frozen
+evidence and limited macro17/lower25/multiple-pair compile PASS; valid nested variant
+FAIL/STOP confirmed as unchanged lowerer constructor ABI gap. Later gates NOT RUN.
+No harness relabel/retry/source allowance; two non-Canvas constructors are only a
+future bounded review subject. Current candidate remains fixed/unaccepted.
