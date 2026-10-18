@@ -1,0 +1,117 @@
+[
+  {
+    "family": "A-resolver",
+    "roots": [
+      "F00",
+      "F01",
+      "F02"
+    ],
+    "status": "exact28site5file coherent resolver body/access proposal",
+    "direct_generic_helpers": [
+      "InteractionState.resolveDown/resolveMove/resolveUp",
+      "InteractionState.topmostRecord/record/capturedRecord",
+      "CapturedAction.init(identity:generation:)"
+    ],
+    "ordinary_ABI_leaves": [
+      "Rect.contains",
+      "SemanticCompleteIdentity.==",
+      "ActionGeneration value comparisons"
+    ],
+    "potential_after_specialization": [
+      "P08Candidate/Committed/HitAccess descriptors remain unchanged/private",
+      "StaticTwo/Dynamic committed storage record/count and hit storage region/count may remain crossmodule generic; inspect only resulting concrete paths before selecting edits"
+    ],
+    "source_authorization": "NONE"
+  },
+  {
+    "family": "B-observable",
+    "roots": [
+      "F03",
+      "F04",
+      "F12",
+      "F22"
+    ],
+    "status": "grouped direct-dependency review retained; no edit selection",
+    "directions": [
+      "modelKey ->matching(identity:ordinal:)/key(at:) and RootControl.Record fields",
+      "mutate ->RootControl.retired/operationActive, Reports.mutationReporting, ModelScope.mutate/report",
+      "ModelScope.mutate overloads ->nonGeneric ObservableModelOwnership.beginMutation/address/endMutation; generic Model.preflight/commit callback must specialize",
+      "endFrame ->nonGeneric ObservableModelOwnership.endFrame with generic reclaim closure",
+      "evaluateStateful already@inlinable but packageBinding nonABI; private models/root, root.belongs and ModelScope.sharesOwner, existing withBoundDeclaration/withRead path"
+    ],
+    "privacy_boundary": "models/root are framework scope holders; any internalABI promotion must retain all lifetime attributes. AuthoredState originalstorage, rawkey fields and P08model/root/session private loans excluded. NonGeneric ownership operations may remain ordinary ABI; never serialize ownership records indiscriminately.",
+    "pending": "exact field/helper legality map and physical/concretecost classification required before source candidate"
+  },
+  {
+    "family": "C-semantic-banks",
+    "roots": [
+      "F05",
+      "F06",
+      "F07",
+      "F08",
+      "F09",
+      "F10",
+      "F11",
+      "F16",
+      "F17",
+      "F18",
+      "F19"
+    ],
+    "status": "alreadyABI accessors/operations mixed with generic payload cleanup and scalar bookkeeping; no blanket serialization",
+    "directions": [
+      "candidate/expansionBank/hasPendingCanvas use alreadyABI store/bank but selected package metadata/record fields require exactABI legality",
+      "clear destroys Payload? entries; payload release is a generic operational cost path, not just a scalar leaf",
+      "enter/appendRecord write bank metadata/path/record scalar fields; fail() may remain ordinary ABI if no Payload-dependent cost",
+      "publishExpansion writes summary/candidatephase via RecordSink alreadyABI fields",
+      "stopped reads existingABI traversal failure/binding/access Optional fields; bodyserialization may suffice",
+      "publishCandidate ->bank/hasPendingCanvas/published/reconcile/clear",
+      "discardCandidate ->bank/clear/retired lifecycle",
+      "borrowedStore ->private init(borrowing:) with @_lifetime(copy other); promoting internalABI serialized copy initializer must preserve lifetime, no unchecked raw constructor",
+      "reconcile ->matchedPath/metadata fields; preserve existing parent-first bounded scan and limits"
+    ],
+    "pending": "peroperation scalar-vsPayload ownership/metadata classification; exact selected fields+signature/default map; sourceallowance NONE"
+  },
+  {
+    "family": "D-canvas",
+    "roots": [
+      "F13",
+      "F14",
+      "F15"
+    ],
+    "status": "generic callback/value transfer roots; directcallee families recorded, no edit selection",
+    "directions": [
+      "primitive/modifier ->CanvasSemanticPayloadCodec parent/alias/payload enum; SemanticStandardPayloadCodec wrapping overloads; generic project(Value,Expected)",
+      "writer.store overloads ->privatebank/limits, bank.store; inlinebounded scalars and payload writes",
+      "stage ->SemanticRecordStore.takePendingCanvas ->callback, CanvasStagedValues.stage/discard, SemanticRecordStore.discardCandidate",
+      "Canvas codec action witness requiresABI if conformingnominalABI; protocol alreadyABI, no automatic actionbody serialization"
+    ],
+    "privacy_boundary": "no unchecked Semantic/Canvas scope constructor or rawbacking source widening; table/capture state lifetime and concrete values remain owned/borrowed exactly",
+    "pending": "larger finite payloadcodec/writer helper family; do not add to resolver candidate merely because mentioned"
+  },
+  {
+    "family": "E-interaction-commit",
+    "roots": [
+      "F20"
+    ],
+    "status": "actual cleanup/offer routing root; separate from nonmutating resolver family",
+    "directions": [
+      "OwnedKeyState.resolveCandidate ->state.candidateIsReadyForOffer/failure; InteractionState.resolveCandidate ->phase/candidateerrors +exchangeContents/resets +committed revision",
+      "committedComponents/candidateComponents/failure/isStaging update semantics unchanged",
+      "depends on same nominal qualification asA but additional candidate fields/body scope are not inA"
+    ],
+    "pending": "exact candidatephase/backing ABI/lifecycle review before selection; no broadprivatefieldsweep"
+  },
+  {
+    "family": "F-generation",
+    "roots": [
+      "F21"
+    ],
+    "status": "generic nominal but body only scalar counts; candidate ordinary concrete cost leaf assessment",
+    "directions": [
+      "resolveCandidate ->pendingReservationCount,committedReservationCount,retiredReservationCount,privateadding",
+      "Identity not referenced in method algorithm; do not assume bodyserialization required simply because declarationgeneric",
+      "adding saturates UInt32; keep existing nonGeneric arithmetic/control result"
+    ],
+    "pending": "prove actual ABI/callsite metadata-cost requirement from currentobject; possible ordinary ABI leaf, no source selection"
+  }
+]

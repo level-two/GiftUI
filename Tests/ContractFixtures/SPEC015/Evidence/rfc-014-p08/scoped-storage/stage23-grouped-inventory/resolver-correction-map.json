@@ -1,0 +1,306 @@
+{
+  "status": "PROPOSAL ONLY; read-only inventory; no source/candidate/repair authorization",
+  "selected_roots": [
+    "F00",
+    "F01",
+    "F02"
+  ],
+  "sites": 28,
+  "files": 5,
+  "edits": [
+    {
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 8,
+      "selector": "package struct InteractionOwnedKeyState<",
+      "existing_declaration": "package struct InteractionOwnedKeyState<Candidate, Committed, Hits>: ~Copyable, ~Escapable,",
+      "edit": "add @usableFromInline; keep package access/generic/ownership constraints",
+      "root_trace": "F00/F01/F02",
+      "reason": "enclosing nominal formal scope must become ABI eligible",
+      "source_sha256": "cda0b3fe4b2165d7213c7cc4eb57f23859f3e854a116b3419f092a66cfec305c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 17,
+      "selector": "package typealias Identity =",
+      "existing_declaration": "package typealias Identity = SemanticCompleteIdentity",
+      "edit": "add @usableFromInline; preserve typealias",
+      "root_trace": "F00/F01/F02",
+      "reason": "generic method signatures use associated Identity",
+      "source_sha256": "cda0b3fe4b2165d7213c7cc4eb57f23859f3e854a116b3419f092a66cfec305c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 181,
+      "selector": "package borrowing func resolveDown(",
+      "existing_declaration": "package borrowing func resolveDown(at point: Point) -> PointerGestureOutcome<Identity> {",
+      "edit": "add @inlinable; preserve any existing @inline(__always) and exact body",
+      "root_trace": "F00/F01/F02",
+      "reason": "actual wrapper delegation / concrete generic resolver algorithm body",
+      "source_sha256": "cda0b3fe4b2165d7213c7cc4eb57f23859f3e854a116b3419f092a66cfec305c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 184,
+      "selector": "package borrowing func resolveMove(",
+      "existing_declaration": "package borrowing func resolveMove(_ captured: CapturedAction<Identity>, at point: Point)",
+      "edit": "add @inlinable; preserve any existing @inline(__always) and exact body",
+      "root_trace": "F00/F01/F02",
+      "reason": "actual wrapper delegation / concrete generic resolver algorithm body",
+      "source_sha256": "cda0b3fe4b2165d7213c7cc4eb57f23859f3e854a116b3419f092a66cfec305c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 188,
+      "selector": "package borrowing func resolveUp(",
+      "existing_declaration": "package borrowing func resolveUp(_ captured: CapturedAction<Identity>, at point: Point)",
+      "edit": "add @inlinable; preserve any existing @inline(__always) and exact body",
+      "root_trace": "F00/F01/F02",
+      "reason": "actual wrapper delegation / concrete generic resolver algorithm body",
+      "source_sha256": "cda0b3fe4b2165d7213c7cc4eb57f23859f3e854a116b3419f092a66cfec305c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 177,
+      "selector": "package borrowing func committedRecord(",
+      "existing_declaration": "package borrowing func committedRecord(for identity: Identity) -> BoundActionRecord<Identity>? {",
+      "edit": "add @usableFromInline ONLY; body/access unchanged",
+      "root_trace": "F00/F01/F02",
+      "reason": "ABI nominal plus alreadyABI InteractionCommittedActionView requires witness ABI visibility; ordinary nonselected witness need not serialize",
+      "source_sha256": "cda0b3fe4b2165d7213c7cc4eb57f23859f3e854a116b3419f092a66cfec305c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 5,
+      "selector": "package struct InteractionState<",
+      "existing_declaration": "package struct InteractionState<CandidateRecords, CommittedRecords, HitRegions>: ~Copyable,",
+      "edit": "add @usableFromInline; keep package access/generic/ownership constraints",
+      "root_trace": "F00/F01/F02",
+      "reason": "enclosing nominal formal scope must become ABI eligible",
+      "source_sha256": "d8b2d3dc91cb701f003ac9fa22ebd91666173947b858ae36d311254b4f1c5f51"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 16,
+      "selector": "package typealias Identity =",
+      "existing_declaration": "package typealias Identity = CandidateRecords.Identity",
+      "edit": "add @usableFromInline; preserve typealias",
+      "root_trace": "F00/F01/F02",
+      "reason": "generic method signatures use associated Identity",
+      "source_sha256": "d8b2d3dc91cb701f003ac9fa22ebd91666173947b858ae36d311254b4f1c5f51"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 339,
+      "selector": "package borrowing func resolveDown(",
+      "existing_declaration": "package borrowing func resolveDown(",
+      "edit": "add @inlinable; preserve any existing @inline(__always) and exact body",
+      "root_trace": "F00/F01/F02",
+      "reason": "actual wrapper delegation / concrete generic resolver algorithm body",
+      "source_sha256": "d8b2d3dc91cb701f003ac9fa22ebd91666173947b858ae36d311254b4f1c5f51"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 394,
+      "selector": "package borrowing func resolveMove(",
+      "existing_declaration": "package borrowing func resolveMove(",
+      "edit": "add @inlinable; preserve any existing @inline(__always) and exact body",
+      "root_trace": "F00/F01/F02",
+      "reason": "actual wrapper delegation / concrete generic resolver algorithm body",
+      "source_sha256": "d8b2d3dc91cb701f003ac9fa22ebd91666173947b858ae36d311254b4f1c5f51"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 417,
+      "selector": "package borrowing func resolveUp(",
+      "existing_declaration": "package borrowing func resolveUp(",
+      "edit": "add @inlinable; preserve any existing @inline(__always) and exact body",
+      "root_trace": "F00/F01/F02",
+      "reason": "actual wrapper delegation / concrete generic resolver algorithm body",
+      "source_sha256": "d8b2d3dc91cb701f003ac9fa22ebd91666173947b858ae36d311254b4f1c5f51"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 387,
+      "selector": "package borrowing func committedRecord(",
+      "existing_declaration": "package borrowing func committedRecord(",
+      "edit": "add @usableFromInline ONLY; body/access unchanged",
+      "root_trace": "F00/F01/F02",
+      "reason": "ABI nominal plus alreadyABI InteractionCommittedActionView requires witness ABI visibility; ordinary nonselected witness need not serialize",
+      "source_sha256": "d8b2d3dc91cb701f003ac9fa22ebd91666173947b858ae36d311254b4f1c5f51"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 18,
+      "selector": "private var state:",
+      "existing_declaration": "private var state: InteractionState<Candidate, Committed, Hits>",
+      "edit": "replace private with internal; add @usableFromInline; exact field type unchanged",
+      "root_trace": "F00/F01/F02",
+      "reason": "three wrapper bodies borrow the same framework state; no raw scope/accessor/constructor added",
+      "source_sha256": "cda0b3fe4b2165d7213c7cc4eb57f23859f3e854a116b3419f092a66cfec305c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 27,
+      "selector": "private var committedRecords:",
+      "existing_declaration": "private var committedRecords: CommittedRecords",
+      "edit": "replace private with internal; add @usableFromInline; exact field type unchanged",
+      "root_trace": "F00/F01/F02",
+      "reason": "selected resolver helpers require only committed record/hit backing; no candidate fields promoted",
+      "source_sha256": "d8b2d3dc91cb701f003ac9fa22ebd91666173947b858ae36d311254b4f1c5f51"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 28,
+      "selector": "private var committedHitRegions:",
+      "existing_declaration": "private var committedHitRegions: HitRegions",
+      "edit": "replace private with internal; add @usableFromInline; exact field type unchanged",
+      "root_trace": "F00/F01/F02",
+      "reason": "selected resolver helpers require only committed record/hit backing; no candidate fields promoted",
+      "source_sha256": "d8b2d3dc91cb701f003ac9fa22ebd91666173947b858ae36d311254b4f1c5f51"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 353,
+      "selector": "private borrowing func topmostRecord(",
+      "existing_declaration": "private borrowing func topmostRecord(",
+      "edit": "replace private with internal; add @inlinable; preserve hints/body/ownership",
+      "root_trace": "F00/F01/F02",
+      "reason": "direct finite resolver helper closure; still source-inaccessible to ordinary crossmodule clients",
+      "source_sha256": "d8b2d3dc91cb701f003ac9fa22ebd91666173947b858ae36d311254b4f1c5f51"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 373,
+      "selector": "private borrowing func record(",
+      "existing_declaration": "private borrowing func record(",
+      "edit": "replace private with internal; add @inlinable; preserve hints/body/ownership",
+      "root_trace": "F00/F01/F02",
+      "reason": "direct finite resolver helper closure; still source-inaccessible to ordinary crossmodule clients",
+      "source_sha256": "d8b2d3dc91cb701f003ac9fa22ebd91666173947b858ae36d311254b4f1c5f51"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 404,
+      "selector": "private borrowing func capturedRecord(",
+      "existing_declaration": "private borrowing func capturedRecord(",
+      "edit": "replace private with internal; add @inlinable; preserve hints/body/ownership",
+      "root_trace": "F00/F01/F02",
+      "reason": "direct finite resolver helper closure; still source-inaccessible to ordinary crossmodule clients",
+      "source_sha256": "d8b2d3dc91cb701f003ac9fa22ebd91666173947b858ae36d311254b4f1c5f51"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "line": 22,
+      "selector": "package protocol InteractionCandidateRecordStorage:",
+      "existing_declaration": "package protocol InteractionCandidateRecordStorage: ~Copyable, ~Escapable {",
+      "edit": "add @usableFromInline; do not annotate every requirement separately",
+      "root_trace": "F00/F01/F02",
+      "reason": "ABI nominal generic constraints use these exact protocols; witness demand checked against each conforming nominal",
+      "source_sha256": "19434eff6929af855dc90dac2e8c271dac3e0fb62f676e1ce5dcd05cd049f31c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "line": 36,
+      "selector": "package protocol InteractionCommittedRecordStorage:",
+      "existing_declaration": "package protocol InteractionCommittedRecordStorage: ~Copyable, ~Escapable {",
+      "edit": "add @usableFromInline; do not annotate every requirement separately",
+      "root_trace": "F00/F01/F02",
+      "reason": "ABI nominal generic constraints use these exact protocols; witness demand checked against each conforming nominal",
+      "source_sha256": "19434eff6929af855dc90dac2e8c271dac3e0fb62f676e1ce5dcd05cd049f31c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "line": 47,
+      "selector": "package protocol InteractionHitRegionStorage:",
+      "existing_declaration": "package protocol InteractionHitRegionStorage: ~Copyable, ~Escapable {",
+      "edit": "add @usableFromInline; do not annotate every requirement separately",
+      "root_trace": "F00/F01/F02",
+      "reason": "ABI nominal generic constraints use these exact protocols; witness demand checked against each conforming nominal",
+      "source_sha256": "19434eff6929af855dc90dac2e8c271dac3e0fb62f676e1ce5dcd05cd049f31c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "line": 4,
+      "selector": "package struct InteractionCandidateRecord<",
+      "existing_declaration": "package struct InteractionCandidateRecord<Identity>: Equatable, Sendable",
+      "edit": "add @usableFromInline; preserve package access",
+      "root_trace": "F00/F01/F02",
+      "reason": "storage protocol requirements mention exact payload type; no initializer changes",
+      "source_sha256": "19434eff6929af855dc90dac2e8c271dac3e0fb62f676e1ce5dcd05cd049f31c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "line": 15,
+      "selector": "package struct InteractionHitRegion<",
+      "existing_declaration": "package struct InteractionHitRegion<Identity>: Equatable, Sendable",
+      "edit": "add @usableFromInline; preserve package access",
+      "root_trace": "F00/F01/F02",
+      "reason": "storage protocol requirements mention exact payload type; no initializer changes",
+      "source_sha256": "19434eff6929af855dc90dac2e8c271dac3e0fb62f676e1ce5dcd05cd049f31c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "line": 17,
+      "selector": "InteractionHitRegion.identity",
+      "existing_declaration": "package let identity: Identity",
+      "edit": "add @usableFromInline; keep package let",
+      "root_trace": "F00 ->InteractionState.topmostRecord",
+      "reason": "exact value field read by selected helper; no general payload-field sweep",
+      "source_sha256": "19434eff6929af855dc90dac2e8c271dac3e0fb62f676e1ce5dcd05cd049f31c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "line": 18,
+      "selector": "InteractionHitRegion.bounds",
+      "existing_declaration": "package let bounds: Rect",
+      "edit": "add @usableFromInline; keep package let",
+      "root_trace": "F00 ->InteractionState.topmostRecord",
+      "reason": "exact value field read by selected helper; no general payload-field sweep",
+      "source_sha256": "19434eff6929af855dc90dac2e8c271dac3e0fb62f676e1ce5dcd05cd049f31c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "line": 19,
+      "selector": "InteractionHitRegion.paintOrder",
+      "existing_declaration": "package let paintOrder: UInt16",
+      "edit": "add @usableFromInline; keep package let",
+      "root_trace": "F00 ->InteractionState.topmostRecord",
+      "reason": "exact value field read by selected helper; no general payload-field sweep",
+      "source_sha256": "19434eff6929af855dc90dac2e8c271dac3e0fb62f676e1ce5dcd05cd049f31c"
+    },
+    {
+      "source": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "line": 36,
+      "selector": "package let hitBounds:",
+      "existing_declaration": "package let hitBounds: Rect",
+      "edit": "add @usableFromInline; keep package let",
+      "root_trace": "F00/F01/F02",
+      "reason": "capturedRecord point containment reads this existing BoundActionRecord value",
+      "source_sha256": "1ba67e136dbe99b4c92d500ef0cd4a381a8b534d55bd0f93ce537c2ccd4f4194"
+    },
+    {
+      "source": "Sources/GiftUIExecution/AdmissionValues.swift",
+      "line": 89,
+      "selector": "package init(identity: Identity, generation: ActionGeneration)",
+      "existing_declaration": "package init(identity: Identity, generation: ActionGeneration) {",
+      "edit": "add @inlinable; preserve existing package access/two required arguments/body",
+      "root_trace": "F00/F01/F02",
+      "reason": "resolveDown constructs generic CapturedAction; physical concrete value construction must remain visible without creating a new constructor",
+      "source_sha256": "33b73204d814331eef69c8caebc274b546b25d383a04c77656dc58f80ce85839"
+    }
+  ],
+  "forbidden": "no P08private/session/loan fields, constructors, Optional/default/lifetime/algorithm/API/flags changes; no other20root source edits",
+  "expected_noops": [
+    "Rect.contains and SemanticCompleteIdentity.== ordinary concrete ABI leaves",
+    "BoundActionRecord nominal/identity/generation/isEnabled alreadyABI",
+    "CapturedAction nominal/identity/generation alreadyABI",
+    "InteractionGestureResolver/InteractionCommittedActionView alreadyABI",
+    "all checked InteractionState/OwnedKeyState/Scope constructors remain unchanged",
+    "all Static/Dynamic/P08 storage conformer source access remains unchanged"
+  ],
+  "compiler_uncertainties": [
+    "signature/conformance synthesized requirements after formalABI changes need grouped fresh compile diagnostics; do not assume no further legality errors",
+    "new specialization may expose backend record/region/descriptor calls or generic Optional/equality leaves; not authorized in this map",
+    "this family does not claim complete23root/all42 closure or resource PASS"
+  ]
+}

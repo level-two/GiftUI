@@ -56,3 +56,7 @@ verify. Interpretation/full safety/cold still required; source fixed/no repairs.
 [Actual consumer interpretation](runtime-complete-pipeline-consumer-result/README.md):
 priorrun resolved; concreteadmission generickeyresolver family FAIL/STOP.16owner/
 23knownedges recorded, no heapclaim/source repair. Safety/cold/P08 remain blocked.
+
+[Finite stage23 inventory](stage23-grouped-inventory/README.md) prepared read-only:
+28site/fivefile resolver proposal;20remainingroots classified/noedit allowlist.
+577inputs unchanged; no newsourcecandidate/compiler/runtime/repair allowance.

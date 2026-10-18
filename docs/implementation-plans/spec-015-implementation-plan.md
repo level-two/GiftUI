@@ -29,6 +29,13 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [finite23 stage/access/lifetime inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/stage23-grouped-inventory/README.md)
+is read-only/proposal only: exact28sites/five files for confirmed three resolver
+family; remaining20actual roots classified into five grouped families, no blanket
+promotion or full23/all42 guarantee. Three framework internalABI field proposals
+exclude normative privateP08carriers/constructors/14loans.577inputs unchanged;
+source/compiler/runtime/repair allowance NONE. Independent stagedmap review next.
+
 Current [concrete Static consumer interpretation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-consumer-result/README.md):
 prior genericrun blocker RESOLVED (concrete126BB pipeline), next actual admission
 FAIL: three InteractionOwnedKeyState genericresolver calls remain body-opaque in

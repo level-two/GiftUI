@@ -1,0 +1,40 @@
+{
+  "authority": [
+    {
+      "path": "docs/specs/spec-015-host-configuration.md",
+      "lines": "319-375",
+      "constraint": "explicit private P08access/session/supplied/pipeline/retired carriers and complete lifetime unions remain exact; excluded from map"
+    },
+    {
+      "path": "docs/specs/spec-013-runtime-profiles.md",
+      "lines": "1112-1130",
+      "constraint": "generic specialization introduces no heap/boxederror/escapingcapture/retained replay; actual binary/stack evidence required"
+    },
+    {
+      "path": "docs/adrs/adr-036-scoped-model-access-and-bounded-ownership.md",
+      "lines": "104-123",
+      "constraint": "actual backing lifetime enforcement; no unchecked compatibility fallback"
+    },
+    {
+      "path": "docs/adrs/adr-039-scoped-storage-ownership.md",
+      "lines": "60-72",
+      "constraint": "complete origins/loans preserved; provenance must not duplicate mutableauthority"
+    }
+  ],
+  "framework_field_exception": "Only OwnedKeyState.state and InteractionState.committedRecords/committedHitRegions are proposed private->internalABI, with no public/package accessor or constructor. They are framework implementation holders, not the normative privateP08access/session/loan fields; ordinary imports cannot name internal fields. This is a derived authority interpretation for independent review, not permission to widen otherprivatefields.",
+  "unchanged": [
+    "all maintained source bytes",
+    "all14backing loans and Optional union",
+    "all~Copyable/~Escapable/borrowing/consuming/inout annotations",
+    "all @_lifetime clauses/defaults/constructors/checks",
+    "raw modelkey constructors and authoredState storage",
+    "all algorithms/failure precedence/backing-last cleanup/resource windows/compiler flags"
+  ],
+  "planned_controls": [
+    "reuse30 current normal-import controls",
+    "typed generic resolver operation positive fordown/move/up",
+    "isolated ordinary samepackage imports cannot read Owned.state or State.committedRecords/committedHitRegions or call topmostRecord/record/capturedRecord",
+    "existing protected P08construction/extraction/lifetime controls remain required, not superseded by genericoperation probes",
+    "repeat complete14loan/Optional/provenance/exclusivity/failurecleanup gate only after concretecodegen passes"
+  ]
+}
