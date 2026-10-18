@@ -72,6 +72,12 @@ frontier21resolved/2remaining. F20 live provider metadata/storage dispatch and F
 caller metadata setup remain codegen/cost BLOCKED/STOP despite scalar F21callee.
 No heapcount/source allowance/full safety/cold/P08 acceptance; grouped E/F review next.
 
+[Independent grouped E/F design review](p08-ef-resolution-design-review.md):
+b7313891 READY for separately assigned bounded attempt.23sites/4files/direct15
+storage-operation closure verify; three internal setters preserve importer readonly
+and require isolated negatives/getter positives. No mandated P08 privacy conflict,
+source action/allowance or actual metadata/cost/safety/cold acceptance from review.
+
 [Explicit-return pair/fresh42SIL PASS](semantic-c-escape-continuation1-result/README.md):
 positive0errors/negative1exactEscapable; SILexit0/61,999,526bytes/1305inputsverified,
 prior87/72andsealedprerequisites retained. No source/repeat/repairreset; actual C
