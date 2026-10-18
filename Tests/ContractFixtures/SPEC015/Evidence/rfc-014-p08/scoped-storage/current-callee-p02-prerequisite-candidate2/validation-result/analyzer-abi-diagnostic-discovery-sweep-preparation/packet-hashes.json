@@ -1,7 +1,7 @@
 {
   "README.md": {
-    "bytes": 12201,
-    "sha256": "c6fb60345ac804d0143b2a0f9b24ae66798526aad74506252b91ee2d0dbbda8b"
+    "bytes": 12434,
+    "sha256": "83d0039f9588b8f41a372ce8e3fa0abab742caaeb5a0d7b206ef2a4a97fbcf17"
   },
   "anchor-correction-provenance.json": {
     "bytes": 2650,
@@ -20,8 +20,8 @@
     "sha256": "a62f87207ec2af997c9254b52c08da997f15c4108b9856d4bf74c1e966b8ca54"
   },
   "execute-discovery.py": {
-    "bytes": 21719,
-    "sha256": "059eeb7845b613294ecb6b9f2d92b564460e014c25c7437b9357071be172bb6b"
+    "bytes": 22014,
+    "sha256": "223a185e5f74d7a7d29f10d99fb3b489b670f11ef2598d1f7d099cbd6e8cc46d"
   },
   "external-identities.json": {
     "bytes": 1674705,
@@ -62,6 +62,10 @@
   "selectors.json": {
     "bytes": 4489,
     "sha256": "6c401231bf2c0dc4905b178df977ab3674506b9ef70d672af428af6a1898c17f"
+  },
+  "snapshot-correction-provenance.json": {
+    "bytes": 890,
+    "sha256": "c5ca785382571d51e873a027295f2cdbc4b3405ac232f2bbdf9cacab6847148f"
   },
   "static-inspect.py": {
     "bytes": 18713,

@@ -1,0 +1,19 @@
+{
+  "base_anchor_correction_commit": "8974d07e44638df1081e510075e59ade345b2d30",
+  "status": "NARROW_REVIEWED_PACKET_SNAPSHOT_CORRECTION_UNEXECUTED",
+  "reason": "Close the read-after-authentication race between validating packet disk bytes and parsing plan or other packet JSON.",
+  "change": "Capture every authenticated Git blob byte string, decode packet JSON only from that captured immutable snapshot, and continue checking live packet bytes against the reviewed external commit before and after launches.",
+  "changed_prior_payloads": [
+    "README.md",
+    "execute-discovery.py",
+    "packet-hashes.json"
+  ],
+  "new_payload": "snapshot-correction-provenance.json",
+  "target_count": 50,
+  "planned_stages": 118,
+  "source_candidates": 1,
+  "automatic_repairs": 0,
+  "retries": 0,
+  "compiler_parser_runner_producer_test_formatter_invocations": 0,
+  "maintained_source_edits": 0
+}

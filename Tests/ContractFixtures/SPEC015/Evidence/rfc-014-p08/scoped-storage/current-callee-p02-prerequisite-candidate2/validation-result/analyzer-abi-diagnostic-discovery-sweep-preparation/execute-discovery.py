@@ -27,10 +27,6 @@ def sha(path):
     return result.hexdigest()
 
 
-def read(name):
-    return json.loads((PACKET / name).read_text())
-
-
 def canonical(value):
     return json.dumps(value, sort_keys=True, separators=(',', ':')).encode()
 
@@ -72,6 +68,7 @@ def authenticate_reviewed_packet(commit):
     packet_tree = git('rev-parse', '--verify', commit + ':' + PACKET_RELATIVE).decode().strip()
     entries = git('ls-tree', '-r', '-z', '--full-tree', commit, '--', PACKET_RELATIVE).split(b'\0')
     snapshot = {}
+    captured_bytes = {}
     for entry in entries:
         if not entry:
             continue
@@ -91,6 +88,7 @@ def authenticate_reviewed_packet(commit):
         require(bool(path.stat().st_mode & 0o111) == (mode == '100755'), 'reviewed file mode drift: ' + name)
         snapshot[name] = {'git_blob': blob, 'mode': mode, 'bytes': len(immutable_bytes),
                           'sha256': hashlib.sha256(immutable_bytes).hexdigest()}
+        captured_bytes[name] = immutable_bytes
     require(snapshot and 'execute-discovery.py' in snapshot and 'packet-hashes.json' in snapshot,
             'incomplete reviewed packet tree')
     require(not any(path.is_symlink() for path in PACKET.rglob('*')), 'packet symlink')
@@ -99,8 +97,9 @@ def authenticate_reviewed_packet(commit):
         expected_entries.update(str(parent) for parent in Path(name).parents if str(parent) != '.')
     require({str(path.relative_to(PACKET)) for path in PACKET.rglob('*')} == expected_entries,
             'reviewed packet file inventory mismatch; additions/replacements forbidden')
-    return {'commit': commit, 'packet_tree': packet_tree, 'files': snapshot,
-            'snapshot_sha256': hashlib.sha256(canonical(snapshot)).hexdigest()}
+    return ({'commit': commit, 'packet_tree': packet_tree, 'files': snapshot,
+             'snapshot_sha256': hashlib.sha256(canonical(snapshot)).hexdigest()},
+            captured_bytes)
 
 
 def main():
@@ -111,7 +110,12 @@ def main():
             ['--execute-reviewed-discovery-once', '--reviewed-packet-commit'],
             'external reviewed packet commit argument required')
     reviewed_commit = sys.argv[3]
-    reviewed_packet = authenticate_reviewed_packet(reviewed_commit)
+    reviewed_packet, reviewed_bytes = authenticate_reviewed_packet(reviewed_commit)
+
+    def read(name):
+        require(name in reviewed_bytes, 'JSON absent from reviewed packet: ' + name)
+        return json.loads(reviewed_bytes[name])
+
     plan = read('plan.json')
     execution_argv = [reviewed_commit if value == '{reviewed_packet_commit}' else value
                       for value in plan['execution_argv']]
@@ -177,7 +181,8 @@ def main():
                         and sha(path) == record['sha256'], 'inventory byte drift: ' + str(path))
 
     def verify():
-        require(authenticate_reviewed_packet(reviewed_commit) == reviewed_packet,
+        current_packet, current_bytes = authenticate_reviewed_packet(reviewed_commit)
+        require(current_packet == reviewed_packet and current_bytes == reviewed_bytes,
                 'externally anchored packet identity drift')
         verify_lock()
         require(shutil.disk_usage(ROOT).free >= plan['minimum_free_bytes'], 'storage threshold')

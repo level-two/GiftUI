@@ -114,6 +114,9 @@ including itself, the plan and its manifest, against that commit's exact Git
 tree/blob bytes and file modes. It rejects missing files, untracked additions,
 symlinks, replacements and Git object-content mismatch. Git replacement objects
 and inherited Git configuration/environment cannot reinterpret the anchor.
+Every packet JSON value used by the run is decoded from the captured Git blob
+bytes, so a disk change between authentication and parsing cannot change the
+reviewed plan. Live disk bytes are still rechecked before and after launches.
 The immutable packet snapshot is checked before every stage, immediately before
 each process launch and after launch. Its commit/tree/snapshot identity joins
 the run record and each prelaunch audit. Runtime HEAD is frozen separately as
