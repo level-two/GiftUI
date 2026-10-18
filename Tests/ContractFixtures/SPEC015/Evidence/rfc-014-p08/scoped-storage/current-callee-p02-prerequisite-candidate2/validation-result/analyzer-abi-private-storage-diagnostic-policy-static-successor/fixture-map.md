@@ -137,3 +137,24 @@ All prior 305 concrete fixture fields and oracles remain identical to preparatio
 - `PS-CORE-N023`: False; Authenticated-looking receipt has failed-check
 - `PS-CORE-N024`: False; Authenticated-looking receipt has wrong-compiler-hash
 - `PS-CORE-N025`: False; Authenticated-looking receipt has missing-artifact
+
+## Current commit digest correction (static data only)
+
+The preceding 331 full case objects and oracles are preserved exactly.
+The current commit is caller authenticated; these synthetic receipts claim no producer run.
+
+- `PS-COMMIT-P01`: True; Synthetic current correction-commit receipt with exact producer digest, current source_commit and digest-root join; no producer execution
+- `PS-COMMIT-N001`: False; Archived digest retained with current commit
+- `PS-COMMIT-N002`: False; Caller current commit differs from successful receipt source_commit
+- `PS-COMMIT-N003`: False; Current digest but stale receipt source_commit
+- `PS-COMMIT-N004`: False; Archived receipt supplied for authenticated current commit
+- `PS-COMMIT-N005`: False; Reject abbreviated caller current commit
+- `PS-COMMIT-N006`: False; Reject uppercase caller current commit
+- `PS-COMMIT-N007`: False; Reject nonhex caller current commit
+- `PS-COMMIT-N008`: False; Reject empty caller current commit
+- `PS-COMMIT-N009`: False; Reject numeric caller current commit
+- `PS-COMMIT-N010`: False; Reject list caller current commit
+- `PS-COMMIT-N011`: False; Current commit without authenticated core map
+- `PS-COMMIT-N012`: False; Current receipt digest changed without matching receipt bytes/hash
+- `PS-COMMIT-N013`: False; Current digest with stale root prefix
+- `PS-COMMIT-N014`: False; Current receipt producer digest is arbitrary even with updated receipt hash

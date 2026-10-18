@@ -32,8 +32,8 @@ The unchanged historical primary classifier independently verifies private
 protection and the whole-token storage symbol from the primary message.
 
 A4/A7/A8 literal policies and historical classifier body remain identical.
-All 196 inherited concrete cases retain every field and oracle. 135 new
-concrete cases include four expected accepts and 131 rejects; see
+All 196 inherited concrete cases retain every field and oracle. 150 new
+concrete cases include five expected accepts and 145 rejects; see
 `fixture-map.md`. Other controls and profiles gain no allowance. The freeze
 preserves 644 external identities, including the historical 541-input
 freeze, A4/A7/A8 packets/results, campaign5 preparation and terminal archive.
@@ -42,7 +42,7 @@ All historical stops, consumed allowances and unrun descendants are preserved.
 The deterministic future runner requires exact argv/cwd/interpreter, -B and
 active assertions, a fresh exclusive receipt, closed packet inventory, and all
 packet/external hashes before importing the pure parser. It allows at most
-331 classification calls, zero compiler/producer/campaign invocations, and
+346 classification calls, zero compiler/producer/campaign invocations, and
 stops at the first unexpected result with zero repairs or retries. Execution
 requires independent review and a separate static gate. No static receipt exists.
 
@@ -99,3 +99,46 @@ cover stale or inconsistent roots, argv, receipt fields/hashes and artifacts.
 Synthetic fresh paths reuse frozen reference bytes as logical fixtures only;
 they establish no new P02 result. `correction-provenance.json` preserves the
 blocked preparation identities. No parser or execution allowance was consumed.
+
+Strong review of correction `644c1bcd` found B02: the P02 input digest includes
+`source_commit`, so campaign5's frozen digest rejects a genuine fresh P02 receipt.
+This final pre-execution correction adds the separate caller-authenticated
+`trusted_current_commit` argument. Current integration requires it together with
+`trusted_core`. The parser checks a full lowercase 40-character commit, exact
+receipt `source_commit`, the unchanged frozen source/compiler/toolchain/check
+identities, and recomputes `input_sha256` with the producer's exact expression:
+`sha256(json.dumps({'inputs': cr['inputs'], 'commit': trusted_current_commit,
+'compiler': cr['compiler_sha256']}, sort_keys=True).encode()).hexdigest()`.
+The fresh producer directory must also carry that digest's sixteen-character
+prefix. A stale or inconsistent digest fails even if receipt bytes/hash agree.
+The archived digest now lives separately as `archived_input_sha256`; calls that
+omit the current commit retain sealed historical compatibility only.
+
+All original 331 case objects, fields and oracles remain unchanged. Fifteen
+additional concrete cases contain one synthetic current-commit accept and
+fourteen rejects for stale digest/receipt/source commit, inconsistent or malformed
+caller commit, missing core map, wrong receipt hash, wrong digest and stale root
+prefix. The synthetic positive uses correction commit `644c1bcd` and changes only
+the archived receipt's source_commit/input_sha256; it does not claim fresh P02
+execution or module production. Committing this packet changes HEAD again; the
+runtime algorithm accepts whatever actual current commit the wrapper authenticates,
+without changing this policy. There are 346 total cases, 150 new to the original
+A4/A7/A8 inheritance, including five expected accepts and 145 rejects.
+
+Before integration, the reviewed wrapper must obtain actual repository HEAD,
+verify all frozen producer input paths/bytes and compiler/toolchain identities,
+and authenticate that commit against the actual successful P02 receipt's
+`source_commit`, invocation and captured output. It must verify the receipt's
+actual fresh path/bytes/hash and module artifact before supplying both trusted
+arguments; merely echoing a commit from an untrusted receipt is insufficient.
+Capture the module producer's matching current core join before client compile.
+No diagnostic can choose any identity, commit or path. This wrapper remains an
+unimplemented prerequisite, followed by separate review and execution allowance.
+
+This is the final pre-execution correction attempt for this package. B01 narrowed
+the root cause; B02 identified the commit-dependent digest. No new passing parser
+check is claimed. A further blocking review stops the affected package; no further
+automatic repair, retry or budget reset is authorized. Historical stops remain.
+`commit-identity-correction-provenance.json` preserves the blocked correction's
+payload identities. Inspection remains AST/JSON/hash only, with zero parser,
+runner, compiler, producer, test or campaign execution.

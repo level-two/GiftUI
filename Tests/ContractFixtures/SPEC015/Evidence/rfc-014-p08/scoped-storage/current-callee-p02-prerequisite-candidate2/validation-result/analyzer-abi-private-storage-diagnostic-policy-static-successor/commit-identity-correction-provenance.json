@@ -1,0 +1,192 @@
+{
+  "algorithm": "sha256(json.dumps({inputs: receipt.inputs, commit: caller authenticated current commit, compiler: receipt.compiler_sha256}, sort_keys=True).encode()).hexdigest(); exact producer expression at scripts/contracts/check-spec-006-typed-lowering.py",
+  "blocked_commit": "644c1bcd7f74975911ed64f629114d3c024db0b6",
+  "blocker": "B02: fresh P02 input_sha256 changes with current Git commit; frozen campaign5 equality rejects current receipts",
+  "execution_status": "AST_JSON_HASH_ONLY_NO_PARSER_COMPILER_TESTS_OR_CAMPAIGN",
+  "previous_freeze_sha256": "90744da99e71e3c033cea1af1b08bc5d655c56b6e11e7311bcc0bfe5e6ce94fb",
+  "previous_payload_files": [
+    {
+      "bytes": 6962,
+      "path": "README.md",
+      "sha256": "30a74c6f73875da76f8c12dc4656087064cdf389e59633bd0e9a6da7da09059c"
+    },
+    {
+      "bytes": 4924,
+      "path": "correction-provenance.json",
+      "sha256": "23f53392a58d45b914f04a4d41e4e78736785801d2a96e639c9ee6d1cece7ece"
+    },
+    {
+      "bytes": 41965,
+      "path": "diagnostic_parser.py",
+      "sha256": "c7db6e43c62cf1ddefbe428d7288ba457dd3d404e09f172e3bb4a55ca0be1480"
+    },
+    {
+      "bytes": 8483,
+      "path": "fixture-map.md",
+      "sha256": "4537563a675c309b09825ba3a976ce6079f940cfb432ff1f3d7e01057df9a946"
+    },
+    {
+      "bytes": 7622,
+      "path": "identity-map.json",
+      "sha256": "681d71df4ab9fe30b4106dd0db9a7b4496d8b576007638268907383ce231415e"
+    },
+    {
+      "bytes": 889176,
+      "path": "inherited-cases.json",
+      "sha256": "7d484780e993e9a64ff87aa7128bd1a0e09a4474c14443343cdf670527eedf0a"
+    },
+    {
+      "bytes": 532,
+      "path": "inherited-private-storage-control.json",
+      "sha256": "2933d73be6e4f0ea9642ad554702792583578e8d61ee1dee11c74b886f7e62f9"
+    },
+    {
+      "bytes": 1217,
+      "path": "inputs/A8-AnalyzerPresentation.swift",
+      "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
+    },
+    {
+      "bytes": 1217,
+      "path": "inputs/AnalyzerPresentation.swift",
+      "sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2"
+    },
+    {
+      "bytes": 1564,
+      "path": "inputs/SignalPrimitiveValues.swift",
+      "sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d"
+    },
+    {
+      "bytes": 4495,
+      "path": "inputs/archived-A7.stderr",
+      "sha256": "76e7143184b2f8b039dc49f288b32ef03199a78b44ddd6658e9f998c284781b3"
+    },
+    {
+      "bytes": 0,
+      "path": "inputs/archived-A7.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1165,
+      "path": "inputs/archived-A8.stderr",
+      "sha256": "6f554d6c0e7434d70bf1b83c69391dc9f2a47cc7d94db28d94e3f70a326c597d"
+    },
+    {
+      "bytes": 0,
+      "path": "inputs/archived-A8.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 731,
+      "path": "inputs/archived-private-storage.stderr",
+      "sha256": "c727e219810e43fbd21319232be8ce34405eeedf5c872798ec80907b250d85a8"
+    },
+    {
+      "bytes": 0,
+      "path": "inputs/archived-private-storage.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 347436,
+      "path": "inputs/core/GiftUI.swiftmodule",
+      "sha256": "aa0f91486d612c2506b569c0e81aecb1ae616c10ef050664055f969927e10c48"
+    },
+    {
+      "bytes": 15198,
+      "path": "inputs/core/P02-result.json",
+      "sha256": "f691d23bb06b2b0079cb00408365d291228cf4fa565f33bae69e6bd78de0067e"
+    },
+    {
+      "bytes": 15199,
+      "path": "inputs/core/reject-failed-check.json",
+      "sha256": "a0c6a46701d7f3050a0dbc0f31152209f2ea1a34457cd2331d3201782555c71b"
+    },
+    {
+      "bytes": 15057,
+      "path": "inputs/core/reject-missing-artifact.json",
+      "sha256": "f56cbe9a5d86c2d078826d6ad2d9874366febaac9dfa89baa120befa8f3dfa7b"
+    },
+    {
+      "bytes": 15198,
+      "path": "inputs/core/reject-wrong-compiler-hash.json",
+      "sha256": "3c96a2a66f0aeae9b819a427fd53a251c7a08c3891308dec66b5bcb858879d15"
+    },
+    {
+      "bytes": 15198,
+      "path": "inputs/core/reject-wrong-package.json",
+      "sha256": "6ecb8eeb5fa61a1f217c3660f84f93b4f0bcfbfb3869fcab8fe3beabe1ddf8d3"
+    },
+    {
+      "bytes": 15199,
+      "path": "inputs/core/reject-wrong-profile.json",
+      "sha256": "d0db9eca17c55dde3b159f298ab584a4209e35ae00573745b34b58f43057ac14"
+    },
+    {
+      "bytes": 15198,
+      "path": "inputs/core/reject-wrong-source-hash.json",
+      "sha256": "7b16732b8bd6feb3bfed30f05a8e0a188ff78057b427fd7982967e13927375f9"
+    },
+    {
+      "bytes": 243,
+      "path": "inputs/domain/AcquisitionState.swift",
+      "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+    },
+    {
+      "bytes": 5671,
+      "path": "inputs/domain/SignalAnalyzerDiagnostic.swift",
+      "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+    },
+    {
+      "bytes": 47984,
+      "path": "inputs/domain/SignalAnalyzerDomain.swiftmodule",
+      "sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798"
+    },
+    {
+      "bytes": 1582,
+      "path": "inputs/domain/SignalPrimitiveValues.swift",
+      "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+    },
+    {
+      "bytes": 99,
+      "path": "inputs/private-storage.swift",
+      "sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf"
+    },
+    {
+      "bytes": 1295,
+      "path": "invocation.json",
+      "sha256": "05931413636ffb9b1301e37690fec182b6214428700f079c3ba47060ccfa0154"
+    },
+    {
+      "bytes": 1699348,
+      "path": "new-cases.json",
+      "sha256": "18b3a0a49d94849617188e10eb98cf5e49e79ef56c4fe4b574d0849f1ada0223"
+    },
+    {
+      "bytes": 764,
+      "path": "opt-in-control.json",
+      "sha256": "b072ac4620d92df666a1fc5d1e5be6282dfb576fc56cbe22bb49e1e7c213ab63"
+    },
+    {
+      "bytes": 19269,
+      "path": "policy.json",
+      "sha256": "d208363448568e62a9198e885d1cef24637bcf00fc4dd01f0df3aabd977ed47b"
+    },
+    {
+      "bytes": 240241,
+      "path": "preserved-inventory.json",
+      "sha256": "678eb02b6a749eebb326e8380548fb6754bc1f33d600067bea39f6971c16bcf1"
+    },
+    {
+      "bytes": 9048,
+      "path": "run-static-fixtures.py",
+      "sha256": "49df047caefedfd079b72d77e137c752e5a3e2c4a6628e65c9340768c9683de6"
+    },
+    {
+      "bytes": 598,
+      "path": "static-inspection.json",
+      "sha256": "e1ea2d87c3663f3030ab476018b8182c83a63c5dc9d62b92ce93c5b843db5c8f"
+    }
+  ],
+  "prior_fields_and_oracles_preserved": 331,
+  "repair_budget": "Final pre-execution correction attempt; independent review required; further blocking review stops affected package with no automatic repair or retry",
+  "trust_boundary": "Reviewed integration wrapper authenticates actual repository HEAD and unchanged frozen producer inputs/compiler, successful actual P02 receipt source_commit, receipt bytes/path/hash, emitted artifact bytes, and producer invocation before Domain/client compile; pure parser verifies supplied joins only."
+}

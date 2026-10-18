@@ -14,7 +14,7 @@
   "compiler_invocations": 0,
   "cwd": "/Users/eugene/work/GiftUI",
   "failure_policy": "STOP first unexpected static fixture result; fresh output only; no tuning",
-  "parser_calls_if_all_inputs_reached": 331,
+  "parser_calls_if_all_inputs_reached": 346,
   "producer_invocations": 0,
   "python_executable": "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
   "python_version": [
@@ -23,5 +23,5 @@
     6
   ],
   "status": "PREPARED ONLY; INDEPENDENT REVIEW AND SEPARATE STATIC EXECUTION GATE; UNEXECUTED",
-  "total_static_inputs": 331
+  "total_static_inputs": 346
 }

@@ -78,6 +78,7 @@
   "current_core_join": {
     "active_identity": "Caller-predeclared current root, authenticated actual current P02 result.json bytes/hash, and GiftUI.swiftmodule bytes joined to receipt; exact argv otherwise",
     "archived_root": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8afb49da68a64d7-tcop19de/macos-static",
+    "authenticated_current_commit": "Mandatory trusted_current_commit from actual repository HEAD, matched to successful current P02 source_commit; recompute input_sha256 with frozen inputs/compiler using exact producer algorithm; root digest prefix must join. Omission is archival fixture compatibility only.",
     "authentication_boundary": "Integration wrapper must verify actual current core receipt before supplying trusted map",
     "reference_receipt": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8afb49da68a64d7-tcop19de/macos-static/result.json",
     "reference_receipt_sha256": "f691d23bb06b2b0079cb00408365d291228cf4fa565f33bae69e6bd78de0067e"

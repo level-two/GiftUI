@@ -1,19 +1,25 @@
 {
   "A4_A7_A8_policy_ast_identical": true,
   "active_module_hash_from_authenticated_caller_receipt": true,
+  "authenticated_current_commit_join_prepared": true,
   "campaign_invocations": 0,
   "compiler_invocations": 0,
   "current_core_join_prepared": true,
-  "expected_accepts_new": 4,
+  "expected_accepts_new": 5,
   "historical_classifier_ast_identical": true,
   "inherited_fields_and_oracles_identical": true,
   "inherited_inputs": 196,
-  "new_inputs": 135,
+  "new_inputs": 150,
   "parser_calls": 0,
   "preserved_files": 644,
   "prior_305_fields_and_oracles_identical": true,
+  "prior_331_fields_and_oracles_identical": true,
+  "producer_identity_algorithm_ast_inspected": true,
   "producer_invocations": 0,
+  "repair_budget": "Final pre-execution correction; further blocking review stops package; no execution or budget reset",
   "status": "PREPARATION_AST_JSON_HASH_ONLY_UNEXECUTED",
+  "synthetic_current_commit": "644c1bcd7f74975911ed64f629114d3c024db0b6",
+  "synthetic_current_commit_input_sha256": "62e69f5d6e9c283f9559d82dd674ed1e6d1a6c3b6b9406af78f57ce033ec1d29",
   "tests": 0,
-  "total_inputs": 331
+  "total_inputs": 346
 }

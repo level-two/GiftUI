@@ -10,12 +10,17 @@
   ],
   "campaign_authority": false,
   "inherited_inputs": 196,
-  "new_inputs": 135,
+  "new_inputs": 150,
   "packet_files": [
     {
-      "bytes": 6962,
+      "bytes": 10015,
       "path": "README.md",
-      "sha256": "30a74c6f73875da76f8c12dc4656087064cdf389e59633bd0e9a6da7da09059c"
+      "sha256": "2bccb5f08a1a1e18a6f4abbc34c70a9285572784349485bb77f04cb17107db6e"
+    },
+    {
+      "bytes": 7109,
+      "path": "commit-identity-correction-provenance.json",
+      "sha256": "eba88a005120869bfea28346211fd0b8f36b1e2c165c335f0bdcc46b0ecece6f"
     },
     {
       "bytes": 4924,
@@ -23,19 +28,19 @@
       "sha256": "23f53392a58d45b914f04a4d41e4e78736785801d2a96e639c9ee6d1cece7ece"
     },
     {
-      "bytes": 41965,
+      "bytes": 43425,
       "path": "diagnostic_parser.py",
-      "sha256": "c7db6e43c62cf1ddefbe428d7288ba457dd3d404e09f172e3bb4a55ca0be1480"
+      "sha256": "c49aac1c1f3016873c5b6db43b4187d6e517c632f0d187034e97327c6b4e5ead"
     },
     {
-      "bytes": 8483,
+      "bytes": 9913,
       "path": "fixture-map.md",
-      "sha256": "4537563a675c309b09825ba3a976ce6079f940cfb432ff1f3d7e01057df9a946"
+      "sha256": "1d3a725ccd36ff02732173a8c2539cc22bd2df113029285c6bd3fa87be8e0961"
     },
     {
-      "bytes": 7622,
+      "bytes": 7934,
       "path": "identity-map.json",
-      "sha256": "681d71df4ab9fe30b4106dd0db9a7b4496d8b576007638268907383ce231415e"
+      "sha256": "2e1569dee7b88991a764447257a524867cf63b7e20f31db703d4eb0b383fdc8f"
     },
     {
       "bytes": 889176,
@@ -103,6 +108,26 @@
       "sha256": "f691d23bb06b2b0079cb00408365d291228cf4fa565f33bae69e6bd78de0067e"
     },
     {
+      "bytes": 15198,
+      "path": "inputs/core/current-commit-result.json",
+      "sha256": "8ac499ad251f8fa5500fd744cfb62d810839135ef66ac1141f55003ffbe669d8"
+    },
+    {
+      "bytes": 15198,
+      "path": "inputs/core/current-commit-stale-digest.json",
+      "sha256": "3472956121bb9a9a711b382cf3b4a143fe7addf4d264ae01f3361deb1529245f"
+    },
+    {
+      "bytes": 15198,
+      "path": "inputs/core/current-commit-stale-source-commit.json",
+      "sha256": "65686ac4939f12882dce8dad0b52a8a1602209e4f31d192d9acfa7a2b2d843e3"
+    },
+    {
+      "bytes": 15198,
+      "path": "inputs/core/current-commit-wrong-digest.json",
+      "sha256": "f21edef13db8b44142f2300b7bd6b56ac7f5d39477d8a56d3e623f8d638da075"
+    },
+    {
       "bytes": 15199,
       "path": "inputs/core/reject-failed-check.json",
       "sha256": "a0c6a46701d7f3050a0dbc0f31152209f2ea1a34457cd2331d3201782555c71b"
@@ -160,12 +185,12 @@
     {
       "bytes": 1295,
       "path": "invocation.json",
-      "sha256": "05931413636ffb9b1301e37690fec182b6214428700f079c3ba47060ccfa0154"
+      "sha256": "080fe225fd1479ca252fed76832684cf5d0167591ee0812735641e8eae4d4eb8"
     },
     {
-      "bytes": 1699348,
+      "bytes": 1902306,
       "path": "new-cases.json",
-      "sha256": "18b3a0a49d94849617188e10eb98cf5e49e79ef56c4fe4b574d0849f1ada0223"
+      "sha256": "f37ab80afae651aed227cd85bbd1a48bfa50e7d3b494e9ba5a8ad6964622e68b"
     },
     {
       "bytes": 764,
@@ -173,9 +198,9 @@
       "sha256": "b072ac4620d92df666a1fc5d1e5be6282dfb576fc56cbe22bb49e1e7c213ab63"
     },
     {
-      "bytes": 19269,
+      "bytes": 19378,
       "path": "policy.json",
-      "sha256": "d208363448568e62a9198e885d1cef24637bcf00fc4dd01f0df3aabd977ed47b"
+      "sha256": "b39b46b2d1a45834c4cf4160e5fa0a7df7d2542dc7fa3d962d3aafdd6b59e8f0"
     },
     {
       "bytes": 240241,
@@ -183,14 +208,14 @@
       "sha256": "678eb02b6a749eebb326e8380548fb6754bc1f33d600067bea39f6971c16bcf1"
     },
     {
-      "bytes": 9048,
+      "bytes": 9367,
       "path": "run-static-fixtures.py",
-      "sha256": "49df047caefedfd079b72d77e137c752e5a3e2c4a6628e65c9340768c9683de6"
+      "sha256": "3098a352b24e956422a3c29edef24d8c1685266c8c130169e6514ec537cdbe01"
     },
     {
-      "bytes": 598,
+      "bytes": 1062,
       "path": "static-inspection.json",
-      "sha256": "e1ea2d87c3663f3030ab476018b8182c83a63c5dc9d62b92ce93c5b843db5c8f"
+      "sha256": "0c67b991aedb2adc2bfeb9fe25f3778673f0554ae6d02af55c46276ed7f2fa89"
     }
   ],
   "preserved_files": [
@@ -3416,5 +3441,5 @@
     }
   ],
   "status": "PREPARED_ONLY_UNEXECUTED_REVIEW_REQUIRED",
-  "total_static_inputs": 331
+  "total_static_inputs": 346
 }
