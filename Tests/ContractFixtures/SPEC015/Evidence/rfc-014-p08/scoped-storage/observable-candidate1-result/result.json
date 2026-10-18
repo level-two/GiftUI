@@ -1,0 +1,46 @@
+{
+  "status": "qualification_failed_consumer_gated",
+  "candidate": "1/1",
+  "automatic_source_repairs": 0,
+  "source_identity": {
+    "base": "780c90c3",
+    "review": "11d6aabd/d9fc4359",
+    "frozen_source_receipt": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-candidate1/source-edits.json",
+    "after_sha256": {
+      "Sources/GiftUI/DeclarativeView.swift": "e1acc57d20c5a0bc3d9707aebfa261e64158ae360a6c24254f9698b713cebfd9",
+      "Sources/GiftUIObservableState/ObservableModelOwnership.swift": "8b7eade40fd1512353d4aef2312feb0d4e9cb6be55c74d59023da6e316dcee8f",
+      "Sources/GiftUIObservableState/ObservableModelScope.swift": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de",
+      "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift": "578514c2224b9311fbfa51c3e58b87a9c6b3801af961ba3a1a18d316d681eec0",
+      "Sources/GiftUIObservableState/ObservableStateRootScope.swift": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    }
+  },
+  "historical_budgets": "all exhausted/fixedprioractivities unchanged",
+  "phases": [
+    {
+      "name": "compile",
+      "command": [
+        "python3",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-candidate1/compile/run.py"
+      ],
+      "exit": 0,
+      "seconds": 59.721,
+      "log_sha256": "ca6938e91eb392985112c3c826239813c6a20f3453a75cddd0d2bf21d671e69b"
+    },
+    {
+      "name": "qualification",
+      "command": [
+        "python3",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-candidate1/qualification/run.py"
+      ],
+      "exit": 1,
+      "seconds": 6.302,
+      "log_sha256": "470e29e0f0390e7045502e280abe369c4b0fef0605904cc1aceb2ca22b49172d"
+    }
+  ],
+  "qualified_fresh_artifacts": {
+    "count": 230,
+    "seal": "/Users/eugene/work/GiftUI/.build/contracts/p08-observable-candidate1/compile-artifact-freeze.json",
+    "sha256": "8e1dc10853946b4ec36635ae06f4815caf9701e7307c50b0836f1afed8a8dab8"
+  },
+  "remaining": "actual42/privatecallee/normal-error provenance/model/report/reclaim/metadataTLScontextobserver interpretation; fullprivateP08/14loan safety and strictcold/P08 unaccepted"
+}

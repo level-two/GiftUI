@@ -22,3 +22,7 @@ blockdeps; any materialfailure freezes this solecandidate and dependentgates.
 Actualcallee/provenance/normal-error/report/reclaim/observer-cost interpretation
 and fullprivateP08/14loan safety precede unchangedstrictcold/reuse. P08/R07/T8.1
 remain unaccepted. [Prepared combined packet](observable-candidate1/README.md).
+
+[Initial combinedresult](observable-candidate1-result/README.md):compile25/privacy55/
+8decodes+interpreter+capturesPASS,29/34physicalselectorsPASS;5selector-onlyissues.
+SILblocked/notinvoked. Exactfunctionbodiesexist; sourcefixed/no sourcerepaircycle.
