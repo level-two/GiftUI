@@ -1,0 +1,131 @@
+{
+  "artifacts": {
+    "domain_primitives": {
+      "bytes": 1582,
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/positive-actual-lowering/inputs/SignalPrimitiveValues.swift",
+      "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+    },
+    "domain_source": {
+      "bytes": 5671,
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift",
+      "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+    },
+    "domain_state": {
+      "bytes": 243,
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/positive-actual-lowering/inputs/AcquisitionState.swift",
+      "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+    },
+    "imported_module": {
+      "bytes": 47984,
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/positive-actual-lowering/SignalAnalyzerDomain.swiftmodule",
+      "role": "observed-archive-provenance-only-not-active-hash-authority",
+      "sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798"
+    }
+  },
+  "campaign_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5",
+  "client_sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf",
+  "consumer": {
+    "argv": [
+      "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "-swift-version",
+      "6",
+      "-Osize",
+      "-whole-module-optimization",
+      "-enable-experimental-feature",
+      "LifetimeDependence",
+      "-enable-experimental-feature",
+      "Lifetimes",
+      "-package-name",
+      "giftui",
+      "-module-cache-path",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/private-storage/cache",
+      "-disable-sandbox",
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-load-plugin-executable",
+      "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/positive-actual-lowering",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8afb49da68a64d7-tcop19de/macos-static",
+      "-parse-as-library",
+      "-emit-object",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/private-storage/inputs/private-storage.swift",
+      "-o",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/private-storage/negative.o"
+    ],
+    "environment_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "exit": 1,
+    "name": "macos-static-private-storage-client-emit-object"
+  },
+  "context": {
+    "module": "SignalAnalyzerDomain",
+    "profile": "macos-static",
+    "stage": "client-emit-object"
+  },
+  "dependency_paths": [
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift"
+  ],
+  "id": "macos-static-private-storage-client-emit-object-virtual-display-v1",
+  "primary_block": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/private-storage/inputs/private-storage.swift:2:62: error: 'storage' is inaccessible due to 'private' protection level\n1 | import SignalAnalyzerDomain\n2 | package func rejected(_ d: SignalAnalyzerDiagnostic) { _ = d.storage }\n  |                                                              `- error: 'storage' is inaccessible due to 'private' protection level\n3 | \n\n",
+  "primary_column": 62,
+  "primary_line": 2,
+  "primary_message": "'storage' is inaccessible due to 'private' protection level",
+  "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/private-storage/inputs/private-storage.swift",
+  "primary_source": "package func rejected(_ d: SignalAnalyzerDiagnostic) { _ = d.storage }",
+  "primary_suffix": "/macos-static/scratch/private-storage/inputs/private-storage.swift",
+  "producer": {
+    "argv": [
+      "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "-swift-version",
+      "6",
+      "-Osize",
+      "-whole-module-optimization",
+      "-enable-experimental-feature",
+      "LifetimeDependence",
+      "-enable-experimental-feature",
+      "Lifetimes",
+      "-package-name",
+      "giftui",
+      "-module-cache-path",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/positive-actual-lowering/cache",
+      "-disable-sandbox",
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-load-plugin-executable",
+      "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/positive-actual-lowering",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8afb49da68a64d7-tcop19de/macos-static",
+      "-parse-as-library",
+      "-module-name",
+      "SignalAnalyzerDomain",
+      "-emit-module",
+      "-emit-object",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/positive-actual-lowering/inputs/SignalPrimitiveValues.swift",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/positive-actual-lowering/inputs/AcquisitionState.swift",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/positive-actual-lowering/inputs/SignalAnalyzerDiagnostic.swift",
+      "-emit-module-path",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/positive-actual-lowering/SignalAnalyzerDomain.swiftmodule",
+      "-o",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign5/macos-static/scratch/positive-actual-lowering/SignalAnalyzerDomain.o"
+    ],
+    "environment_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "exit": 0,
+    "name": "macos-static-positive-actual-lowering-SignalAnalyzerDomain"
+  },
+  "virtual_block": "SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage:2:13: note: 'storage' declared here\n1 | struct SignalAnalyzerDiagnostic {\n2 | private var storage: SignalAnalyzerDomain.SignalAnalyzerDiagnosticStorage}\n  |             `- note: 'storage' declared here\n3 | \n",
+  "virtual_column": 13,
+  "virtual_label": "SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage",
+  "virtual_line": 2,
+  "virtual_message": "'storage' declared here"
+}

@@ -1,0 +1,114 @@
+# Private-storage static fixture map
+
+All 196 inherited case fields and oracles are identical to the A8 packet.
+Every following oracle is prepared and unexecuted.
+
+- `PS-P01`: True; Exact archived campaign5 sequence with trusted client, Domain inputs, imported module and producer/consumer identities.
+- `PS-N001`: False; Missing explicit policy opt-in
+- `PS-N002`: False; Remove complete control field category
+- `PS-N003`: False; Remove complete control field dependency_note_sources
+- `PS-N004`: False; Remove complete control field expected_nonzero
+- `PS-N005`: False; Remove complete control field files
+- `PS-N006`: False; Remove complete control field first_expected_stage
+- `PS-N007`: False; Remove complete control field id
+- `PS-N008`: False; Remove complete control field kind
+- `PS-N009`: False; Remove complete control field package_name
+- `PS-N010`: False; Remove complete control field positive_twin
+- `PS-N011`: False; Remove complete control field primary_message_patterns_all
+- `PS-N012`: False; Remove complete control field required_symbol
+- `PS-N013`: False; Remove complete control field virtual_display_note
+- `PS-N014`: False; Wrong context profile
+- `PS-N015`: False; Wrong context module
+- `PS-N016`: False; Wrong context stage
+- `PS-N017`: False; Wrong exit 0
+- `PS-N018`: False; Wrong exit 2
+- `PS-N019`: False; Wrong exit -1
+- `PS-N020`: False; Wrong exit True
+- `PS-N021`: False; Changed/missing/duplicate/reordered stderr inventory 21
+- `PS-N022`: False; Changed/missing/duplicate/reordered stderr inventory 22
+- `PS-N023`: False; Changed/missing/duplicate/reordered stderr inventory 23
+- `PS-N024`: False; Changed/missing/duplicate/reordered stderr inventory 24
+- `PS-N025`: False; Changed/missing/duplicate/reordered stderr inventory 25
+- `PS-N026`: False; Changed/missing/duplicate/reordered stderr inventory 26
+- `PS-N027`: False; Changed/missing/duplicate/reordered stderr inventory 27
+- `PS-N028`: False; Changed/missing/duplicate/reordered stderr inventory 28
+- `PS-N029`: False; Changed/missing/duplicate/reordered stderr inventory 29
+- `PS-N030`: False; Changed/missing/duplicate/reordered stderr inventory 30
+- `PS-N031`: False; Changed/missing/duplicate/reordered stderr inventory 31
+- `PS-N032`: False; Changed/missing/duplicate/reordered stderr inventory 32
+- `PS-N033`: False; Changed/missing/duplicate/reordered stderr inventory 33
+- `PS-N034`: False; Changed/missing/duplicate/reordered stderr inventory 34
+- `PS-N035`: False; All diagnostic text on stdout
+- `PS-N036`: False; Virtual note on stdout
+- `PS-N037`: False; Extra error stdout before
+- `PS-N038`: False; Extra error stdout after
+- `PS-N039`: False; Extra error stderr before
+- `PS-N040`: False; Extra error stderr after
+- `PS-N041`: False; Extra warning stdout before
+- `PS-N042`: False; Extra warning stdout after
+- `PS-N043`: False; Extra warning stderr before
+- `PS-N044`: False; Extra warning stderr after
+- `PS-N045`: False; Extra remark stdout before
+- `PS-N046`: False; Extra remark stdout after
+- `PS-N047`: False; Extra remark stderr before
+- `PS-N048`: False; Extra remark stderr after
+- `PS-N049`: False; Crash marker Stack dump: stdout
+- `PS-N050`: False; Crash marker Stack dump: stderr
+- `PS-N051`: False; Crash marker LLVM ERROR: stdout
+- `PS-N052`: False; Crash marker LLVM ERROR: stderr
+- `PS-N053`: False; Crash marker Segmentation fault stdout
+- `PS-N054`: False; Crash marker Segmentation fault stderr
+- `PS-N055`: False; Crash marker fatal error: failure stdout
+- `PS-N056`: False; Crash marker fatal error: failure stderr
+- `PS-N057`: False; Wrong client bytes
+- `PS-N058`: False; Wrong client path
+- `PS-N059`: False; Missing trusted provenance
+- `PS-N060`: False; Alter trusted domain_source bytes
+- `PS-N061`: False; Alter trusted domain_source path
+- `PS-N062`: False; Missing trusted domain_source
+- `PS-N063`: False; Alter trusted domain_primitives bytes
+- `PS-N064`: False; Alter trusted domain_primitives path
+- `PS-N065`: False; Missing trusted domain_primitives
+- `PS-N066`: False; Alter trusted domain_state bytes
+- `PS-N067`: False; Alter trusted domain_state path
+- `PS-N068`: False; Missing trusted domain_state
+- `PS-N069`: False; Alter trusted imported_module bytes
+- `PS-N070`: False; Alter trusted imported_module path
+- `PS-N071`: False; Missing trusted imported_module
+- `PS-N072`: False; Wrong producer identity
+- `PS-N073`: False; Wrong consumer identity
+- `PS-N074`: False; Wrong primary path
+- `PS-N075`: False; Virtual label grafted into dependency paths
+- `PS-N076`: False; Allowance grafted onto negative-A1
+- `PS-N077`: False; Allowance grafted onto negative-A2
+- `PS-N078`: False; Allowance grafted onto negative-A3
+- `PS-N079`: False; Allowance grafted onto negative-A4
+- `PS-N080`: False; Allowance grafted onto negative-A5
+- `PS-N081`: False; Allowance grafted onto negative-A6
+- `PS-N082`: False; Allowance grafted onto negative-A7
+- `PS-N083`: False; Allowance grafted onto negative-A8
+- `PS-N084`: False; Allowance grafted onto private-count
+- `PS-N085`: False; Allowance grafted onto private-storage-type
+- `PS-N086`: False; Allowance grafted onto private-helper-continuation
+- `PS-N087`: False; Allowance grafted onto private-helper-leading
+- `PS-N088`: False; Allowance grafted onto outside-package-AcquisitionState
+- `PS-N089`: False; Allowance grafted onto outside-package-SignalTransition
+- `PS-N090`: False; Allowance grafted onto outside-package-SignalChannelID
+- `PS-N091`: False; Allowance grafted onto outside-package-SignalAnalyzerDiagnostic
+- `PS-N092`: False; Other profile macos-dynamic
+- `PS-N093`: False; Other profile raspberry-pi-armv6
+- `PS-N094`: False; Other profile nrf52840-embedded
+- `PS-X095`: True; Consistent predeclared campaign6 root remap
+- `PS-X096`: False; Remapped primary but stale control/dependency/provenance paths
+- `PS-X097`: False; Remapped stderr alone
+- `PS-X098`: False; Missing module producer receipt join
+- `PS-X099`: False; Wrong module receipt module_name
+- `PS-X100`: False; Wrong module receipt module_path
+- `PS-X101`: False; Wrong module receipt module_sha256
+- `PS-X102`: False; Wrong module receipt producer
+- `PS-X103`: False; Wrong module receipt source_inputs
+- `PS-X104`: False; Wrong producer receipt source hash domain_source
+- `PS-X105`: False; Wrong producer receipt source hash domain_primitives
+- `PS-X106`: False; Wrong producer receipt source hash domain_state
+- `PS-X107`: True; Synthetic alternate module bytes with consistent authenticated producer join; no semantic module claim
+- `PS-X108`: False; Noncanonical caller path

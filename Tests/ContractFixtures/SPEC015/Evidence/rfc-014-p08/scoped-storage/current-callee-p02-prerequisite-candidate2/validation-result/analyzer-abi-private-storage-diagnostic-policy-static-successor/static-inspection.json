@@ -1,0 +1,17 @@
+{
+  "A4_A7_A8_policy_ast_identical": true,
+  "active_module_hash_from_authenticated_caller_receipt": true,
+  "campaign_invocations": 0,
+  "compiler_invocations": 0,
+  "expected_accepts_new": 3,
+  "historical_classifier_ast_identical": true,
+  "inherited_fields_and_oracles_identical": true,
+  "inherited_inputs": 196,
+  "new_inputs": 109,
+  "parser_calls": 0,
+  "preserved_files": 642,
+  "producer_invocations": 0,
+  "status": "PREPARATION_AST_JSON_HASH_ONLY_UNEXECUTED",
+  "tests": 0,
+  "total_inputs": 305
+}
