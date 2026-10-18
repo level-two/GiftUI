@@ -1,7 +1,8 @@
 # RuntimeCompletePipeline — bounded grouped inventory and correction proposal
 
-**Read-only, ready for independent design review; no source candidate or new
-repair allowance approved.** Fixed source22eea103 and all573 frozen inputs verify.
+**Read-only design READY after [independent review](../p08-runtime-complete-pipeline-grouped-design-review.md)
+of amended proposal `d98fd154`; no source candidate or new repair allowance
+approved.** Fixed source22eea103 and all573 frozen inputs verify.
 [Receipt](read-only-receipt.json). No source/compiler/decoder/runtime experiment
 occurred. [85e1f676 evidence](../runtimecore-consumer-result/README.md) and
 [dd43fde3 independent boundary](../p08-runtimecore-consumer-independent-review.md)
@@ -53,7 +54,7 @@ initializer is serialized, with its four stored fields separately qualified.
 Matched CodeSynthesis.cpp134–138 returns for let-backed properties before the
 Optional nil branch at170–182. All these fields are let; the initial proposed
 three nil defaults were incorrect and are removed before any source candidate.
-Independent recheck remains required; the scope stays53sites/sixfiles.
+Independent recheck confirms all14 parameters required; the scope stays53sites/sixfiles.
 No pointer/scope/capability constructor, validation or algorithm is introduced.
 Existing checked factories, all other defaults and bodies remain byte/token exact.
 

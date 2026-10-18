@@ -42,7 +42,8 @@ All42/privatecallee/State structural-borrow/observer coverage, full safety and
 strict cold remain unqualified; source candidate/P08/R07/T8.1 unaccepted.
 
 [Grouped root/helper inventory and proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-grouped-inventory/README.md)
-is ready for independent review: exact enclosing-formal-scope cause,53 proposed
+has [independent design READY](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-runtime-complete-pipeline-grouped-design-review.md)
+at amended d98fd154: exact enclosing-formal-scope cause,53 proposed
 sites in six files, three guarded memberwise equivalents,16 owner witnesses with
 no ABI edits;23 separate latent project-stage symbols remain unqualified. Source/
 compiler/runtime unchanged; no candidate/repair authorization or full42 guarantee.

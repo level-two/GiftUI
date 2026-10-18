@@ -19,8 +19,9 @@ and [exact three-witness map](grouped-module-closure-corrective2-result/next-wit
 remain historical evidence; this authorization makes that finite scope executable.
 
 [Grouped read-only inventory/proposal](runtime-complete-pipeline-grouped-inventory/README.md)
-is ready for independent review: matched compiler proves enclosing-formal-scope
-cause;53 root/helper sites in six files, exact constructor defaults and16 no-edit
+has [independent design READY](p08-runtime-complete-pipeline-grouped-design-review.md)
+at amended d98fd154: matched compiler proves enclosing-formal-scope cause;
+53 root/helper sites in six files, all14 constructor arguments required and16 no-edit
 owner witnesses. Separate23-symbol latent stage frontier remains unqualified,
 not an extra edit allowance or full42 guarantee. No source/compiler/runtime work
 or new repair budget; prior FAIL/PASS evidence and exhausted budgets unchanged.
