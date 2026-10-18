@@ -1,0 +1,94 @@
+{
+  "status": "PASS reviewed68sites/11files applied, targeted Swift formatter and exact body/emission/default/ownership/lifetime audit",
+  "review": "6499ee39/7271feb3",
+  "files": [
+    "Sources/GiftUI/Canvas.swift",
+    "Sources/GiftUI/Disabled.swift",
+    "Sources/GiftUI/StyleModifiers.swift",
+    "Sources/GiftUI/Text.swift",
+    "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+    "Sources/GiftUIMacros/CanvasWitnessLowering.swift",
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift"
+  ],
+  "source_candidate": "1/1 zeroautomaticSOURCErepairs",
+  "audit": [
+    {
+      "source": "Sources/GiftUI/Canvas.swift",
+      "before_sha256": "4068c7a86e4523408968d37d6fce0197c4262d5984b749ea0c7ab02e771baf8a",
+      "after_sha256": "2d71ef1d9bd7947fc358e5c286cebe79d51312cabdfe13d777da881432c3f91f",
+      "audit": "PASS exact nonannotation tokens after three reviewed private->internal declarations and sole four-required-let constructor projection"
+    },
+    {
+      "source": "Sources/GiftUI/Disabled.swift",
+      "before_sha256": "b38daff656c01cae87880bc8fda7b240c50e4cd46da52978a0b90caa7fc1bf36",
+      "after_sha256": "db9726d9b26fdf2c08b781791acc97a3d9359e148594f0291b0e66661524b755",
+      "audit": "PASS exact nonannotation tokens after three reviewed private->internal declarations and sole four-required-let constructor projection"
+    },
+    {
+      "source": "Sources/GiftUI/StyleModifiers.swift",
+      "before_sha256": "5322bf0d7eda201882146c3be1162b23b43676c3ef9ce3286eb83ff82e173962",
+      "after_sha256": "e0ddb0ff8d5edbcd9c737483abdf1c79e71f36770e09a440940d3cf5af8153aa",
+      "audit": "PASS exact nonannotation tokens after three reviewed private->internal declarations and sole four-required-let constructor projection"
+    },
+    {
+      "source": "Sources/GiftUI/Text.swift",
+      "before_sha256": "b361224ecac936f5736fd777a96ad815889911644b19731fee2a947a2f5c054c",
+      "after_sha256": "5461073a644fa488103b5d6306647b9b4db3f332d421f64735100eba7b8b0efd",
+      "audit": "PASS exact nonannotation tokens after three reviewed private->internal declarations and sole four-required-let constructor projection"
+    },
+    {
+      "source": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "before_sha256": "8ff2bf5049d4393d459fef253cf6a137a9796a70c2ad4c413111d7928070b531",
+      "after_sha256": "7c0348c6f27e2343ac33dc66e9e754b485e8dc5bfc7dd326d15f0c0b6569c951",
+      "audit": "PASS exact nonannotation tokens after three reviewed private->internal declarations and sole four-required-let constructor projection"
+    },
+    {
+      "source": "Sources/GiftUIMacros/CanvasWitnessLowering.swift",
+      "before_sha256": "e84c9b92d9819a0954213a7cfa9252c3ee40006457f9eb5e6e3d536cdd5bd84c",
+      "after_sha256": "735e4e9388a7d64f634975c8b46202335f94c1a8008afdc5b3fa2bc6356d22ba",
+      "audit": "PASS exact nonannotation tokens after three reviewed private->internal declarations and sole four-required-let constructor projection"
+    },
+    {
+      "source": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "before_sha256": "cf2b591a33b9814f40eb67b17dbdefd19d726fc115a37636ddc4d31c788da5bd",
+      "after_sha256": "120526cb46950bae785a004a8c815c9c777dc992e702fe7afae239257e1a913e",
+      "audit": "PASS exact nonannotation tokens after three reviewed private->internal declarations and sole four-required-let constructor projection"
+    },
+    {
+      "source": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "before_sha256": "776db41e501972481ca6e7d461e9b52d67918f3624b2a41429f714be238a9753",
+      "after_sha256": "ea08e3afb62ddd629e03d7f4b128b3398e16e6d6a6e4ae256903c0b72c806557",
+      "audit": "PASS exact nonannotation tokens after three reviewed private->internal declarations and sole four-required-let constructor projection"
+    },
+    {
+      "source": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "before_sha256": "d4d212e512d06829525da02e37992d0ac8e3d1ebb7a5acfccfd5e4bfdb33b546",
+      "after_sha256": "dfdb603a7a0807a4ed5e7d1bf9793326db7998ec3f8c5f59a703e585a5204c02",
+      "audit": "PASS exact nonannotation tokens after three reviewed private->internal declarations and sole four-required-let constructor projection"
+    },
+    {
+      "source": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "before_sha256": "2dd204c2c7b5d4fe06e58a085ac7a59aa70dd734e56981231c414c10f7389c70",
+      "after_sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+      "audit": "PASS exact nonannotation tokens after three reviewed private->internal declarations and sole four-required-let constructor projection"
+    },
+    {
+      "source": "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift",
+      "before_sha256": "5349126ef1275e44a400ba6e290b36ab92c6e2534f9e1db9e96f741ba92d49b9",
+      "after_sha256": "e0df6aebf643ad6b4b77449328e0027c3b45758d000023bea198963750ee246a",
+      "audit": "PASS only reviewed actual-output test body extended; all17method names/order/other16test bodies exact"
+    }
+  ],
+  "constructors": "Reference four REQUIRED let args/no defaults/same-order assignments; all other constructors/defaults exact",
+  "emission": "ten generated attributes only (fourusable/sixinlinable), existing finite inventory/identifier guards and emitted signatures/bodies exact",
+  "existing_noops": [
+    "Limits.records/paths/payloads",
+    "FiniteSourceLowering/CounterCanvas",
+    "privateP08/State/key/ledger/Text",
+    "remainingtenoriginalroots"
+  ]
+}

@@ -17,8 +17,10 @@ package protocol SemanticRecordPayloadCodec {
 
 @usableFromInline
 package struct SemanticPayloadWriter<Payload>: ~Copyable, ~Escapable {
-    private let bank: SemanticRecordBankBuffers<Payload>
-    private let limits: SemanticRecordLimits
+    @usableFromInline
+    internal let bank: SemanticRecordBankBuffers<Payload>
+    @usableFromInline
+    internal let limits: SemanticRecordLimits
     @_lifetime(borrow bank)
     @usableFromInline
     init(
@@ -27,12 +29,14 @@ package struct SemanticPayloadWriter<Payload>: ~Copyable, ~Escapable {
         self.bank = copy bank
         self.limits = limits
     }
+    @inlinable
     package borrowing func store(
         _ value: consuming Payload, kind: SemanticRuntimeRecord.Kind,
         chainIndex: UInt16 = 0, text: borrowing Span<UInt32>
     ) -> SemanticExpansionError? {
         bank.store(consume value, kind: kind, chainIndex: chainIndex, text: text, limits: limits)
     }
+    @inlinable
     package borrowing func store(
         _ value: consuming Payload, kind: SemanticRuntimeRecord.Kind,
         chainIndex: UInt16 = 0

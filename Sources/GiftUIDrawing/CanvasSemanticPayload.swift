@@ -3,6 +3,7 @@ import GiftUISemanticCore
 
 /// Owned only during candidate expansion. Transfer replaces every concrete
 /// value with a marker before any Layout/Render borrow or semantic publication.
+@usableFromInline
 package enum CanvasSemanticPayload<Value>: SemanticRecordConsumerPayload {
     case standard(SemanticStandardPayload)
     case canvas(Value?)
@@ -27,10 +28,13 @@ package enum CanvasSemanticPayload<Value>: SemanticRecordConsumerPayload {
     }
 }
 
+@usableFromInline
 package enum CanvasSemanticPayloadCodec<Roles: SemanticDeclarationRoles, Table: CanvasValueTable>:
     SemanticRecordPayloadCodec
 {
+    @usableFromInline
     package typealias Payload = CanvasSemanticPayload<Table.CaptureStorage>
+    @inlinable
     package static func primitive<Value: _GiftUISemanticPrimitivePayload>(
         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
     ) -> SemanticExpansionError? {
@@ -40,6 +44,7 @@ package enum CanvasSemanticPayloadCodec<Roles: SemanticDeclarationRoles, Table: 
         return SemanticStandardPayloadCodec<Roles>.primitive(
             value, writer: writer, wrapping: { .standard($0) })
     }
+    @inlinable
     package static func modifier<Value: _GiftUISemanticModifierPayload>(
         _ value: borrowing Value, chainIndex: UInt16,
         writer: borrowing SemanticPayloadWriter<Payload>
@@ -47,6 +52,7 @@ package enum CanvasSemanticPayloadCodec<Roles: SemanticDeclarationRoles, Table: 
         SemanticStandardPayloadCodec<Roles>.modifier(
             value, chainIndex: chainIndex, writer: writer, wrapping: { .standard($0) })
     }
+    @inlinable
     package static func action<Value: GiftUIAction>(
         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
     ) -> SemanticExpansionError? {
@@ -55,7 +61,9 @@ package enum CanvasSemanticPayloadCodec<Roles: SemanticDeclarationRoles, Table: 
     }
 }
 
+@usableFromInline
 package enum CanvasSemanticTransfer {
+    @inlinable
     package static func stage<Table: CanvasValueTable>(
         from semantic: borrowing SemanticRecordStore<CanvasSemanticPayload<Table.CaptureStorage>>,
         into values: borrowing CanvasStagedValues<SemanticRecordReference, Table>,

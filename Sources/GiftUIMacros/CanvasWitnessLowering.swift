@@ -19,22 +19,24 @@ func canvasWitnessTable(
     let table = configuration.module + "CanvasTable"
     var result =
         "import GiftUI\nimport GiftUIDrawing\nimport \(configuration.module)\nimport \(presentationModule)\n"
-    result += "package enum \(values)<D: \(domain)> {\n"
+    result += "@usableFromInline package enum \(values)<D: \(domain)> {\n"
     for (index, name) in names.enumerated() { result += "case v\(index + 1)(\(name)<D>)\n" }
-    result += "}\npackage struct \(table)<D: \(domain)>: CanvasValueTable {\n"
-    result += "package typealias Domain = D\npackage typealias CaptureStorage = \(values)<D>\n"
-    result += "package init() {}\npackage var callableCaseCount: UInt16 { \(names.count) }\n"
-    result += "package func captureByteCount(for id: UInt16) -> UInt16? { switch id {\n"
+    result += "}\n@usableFromInline package struct \(table)<D: \(domain)>: CanvasValueTable {\n"
+    result +=
+        "@usableFromInline package typealias Domain = D\n@usableFromInline package typealias CaptureStorage = \(values)<D>\n"
+    result +=
+        "@inlinable package init() {}\n@inlinable package var callableCaseCount: UInt16 { \(names.count) }\n"
+    result += "@inlinable package func captureByteCount(for id: UInt16) -> UInt16? { switch id {\n"
     for (index, name) in names.enumerated() {
         result += "case \(index + 1): UInt16(exactly: MemoryLayout<\(name)<D>>.stride)\n"
     }
     result += "default: nil } }\n"
     result +=
-        "package static func caseID(for value: borrowing CaptureStorage) -> UInt16 { switch value {\n"
+        "@inlinable package static func caseID(for value: borrowing CaptureStorage) -> UInt16 { switch value {\n"
     for index in names.indices { result += "case .v\(index + 1): \(index + 1)\n" }
     result += "} }\n"
     result +=
-        "package static func payload<Value: _GiftUISemanticPrimitivePayload>(_ value: borrowing Value) -> CaptureStorage? {\n"
+        "@inlinable package static func payload<Value: _GiftUISemanticPrimitivePayload>(_ value: borrowing Value) -> CaptureStorage? {\n"
     for (index, name) in names.enumerated() {
         result += """
             if Value.self == \(name)<D>.self {
@@ -47,7 +49,7 @@ func canvasWitnessTable(
     }
     result += "return nil\n}\n"
     result += """
-        package mutating func invoke(id: UInt16, captures: borrowing CaptureStorage,
+        @inlinable package mutating func invoke(id: UInt16, captures: borrowing CaptureStorage,
             context: inout GraphicsContext, size: Size, read: borrowing _GiftUIFrameRead<D>) throws(DrawingError) {
             guard id == Self.caseID(for: captures) else { throw .invariantViolation }
             switch captures {

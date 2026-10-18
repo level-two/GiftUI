@@ -261,6 +261,24 @@ final class ObservableStateHostMacroTests: XCTestCase {
         )
         let fixture = repository.appendingPathComponent(
             "Tests/ContractFixtures/SPEC015/RuntimeDerived")
+        let configuration = try JSONDecoder().decode(
+            Configuration.self,
+            from: Data(contentsOf: fixture.appendingPathComponent("Counter.schema.json")))
+        let tableInventory = Inventory(viewMode: .sourceAccurate)
+        XCTAssertThrowsError(
+            try canvasWitnessTable(
+                configuration: configuration, inventory: tableInventory,
+                presentationModule: "P08CounterPresentation"))
+        tableInventory.canvases = ["CounterCanvas"]
+        XCTAssertThrowsError(
+            try canvasWitnessTable(
+                configuration: configuration, inventory: tableInventory,
+                presentationModule: "invalid-module"))
+        tableInventory.canvases = Set((0 ... Int(UInt16.max)).map { "Canvas\($0)" })
+        XCTAssertThrowsError(
+            try canvasWitnessTable(
+                configuration: configuration, inventory: tableInventory,
+                presentationModule: "P08CounterPresentation"))
         let original = try String(
             contentsOf: fixture.appendingPathComponent("Counter.swift"), encoding: .utf8)
         let marker = "@State private var model = CounterModel(value: 0)"
@@ -291,11 +309,76 @@ final class ObservableStateHostMacroTests: XCTestCase {
             let authored = output.appendingPathComponent(name + "-authored.swift")
             try input.write(to: authored, atomically: true, encoding: .utf8)
             let presentation = output.appendingPathComponent(name + "-presentation.swift")
+            let table = output.appendingPathComponent(name + "-table.swift")
             try lowerGiftUISource(arguments: [
                 "--lower-source",
                 fixture.appendingPathComponent("Counter.schema.json").path, authored.path,
                 output.appendingPathComponent(name + "-schema.swift").path, presentation.path,
+                table.path, "P08CounterPresentation",
             ])
+            let tableBytes = try String(contentsOf: table, encoding: .utf8)
+            let tableSyntax = Parser.parse(source: tableBytes)
+            XCTAssertFalse(tableSyntax.hasError, name)
+            XCTAssertTrue(ParseDiagnosticsGenerator.diagnostics(for: tableSyntax).isEmpty, name)
+            let values = try XCTUnwrap(
+                tableSyntax.statements.compactMap {
+                    $0.item.as(EnumDeclSyntax.self)
+                }.first { $0.name.text == configuration.module + "CanvasValues" })
+            XCTAssertTrue(
+                values.attributes.contains {
+                    $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription
+                        == "usableFromInline"
+                }, name)
+            let tableType = try XCTUnwrap(
+                tableSyntax.statements.compactMap {
+                    $0.item.as(StructDeclSyntax.self)
+                }.first { $0.name.text == configuration.module + "CanvasTable" })
+            XCTAssertTrue(
+                tableType.attributes.contains {
+                    $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription
+                        == "usableFromInline"
+                }, name)
+            let aliases = tableType.memberBlock.members.compactMap {
+                $0.decl.as(TypeAliasDeclSyntax.self)
+            }
+            XCTAssertEqual(aliases.map(\.name.text).sorted(), ["CaptureStorage", "Domain"])
+            XCTAssertTrue(
+                aliases.allSatisfy { alias in
+                    alias.attributes.contains {
+                        $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription
+                            == "usableFromInline"
+                    }
+                }, name)
+            let functions = tableType.memberBlock.members.compactMap {
+                $0.decl.as(FunctionDeclSyntax.self)
+            }
+            XCTAssertEqual(
+                functions.map(\.name.text).sorted(),
+                ["captureByteCount", "caseID", "invoke", "payload"])
+            XCTAssertTrue(
+                functions.allSatisfy { function in
+                    function.attributes.contains {
+                        $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription == "inlinable"
+                    }
+                }, name)
+            let initializer = try XCTUnwrap(
+                tableType.memberBlock.members.compactMap {
+                    $0.decl.as(InitializerDeclSyntax.self)
+                }.first)
+            XCTAssertTrue(
+                initializer.attributes.contains {
+                    $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription == "inlinable"
+                }, name)
+            let count = try XCTUnwrap(
+                tableType.memberBlock.members.compactMap {
+                    $0.decl.as(VariableDeclSyntax.self)
+                }.first { $0.bindings.first?.pattern.trimmedDescription == "callableCaseCount" })
+            XCTAssertTrue(
+                count.attributes.contains {
+                    $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription == "inlinable"
+                }, name)
+            XCTAssertTrue(tableBytes.contains("borrowing CaptureStorage"), name)
+            XCTAssertTrue(tableBytes.contains("read: borrowing _GiftUIFrameRead<D>"), name)
             // Read exact emitter bytes. No formatting, joining or output repair.
             let emitted = try String(contentsOf: presentation, encoding: .utf8)
             let parsed = Parser.parse(source: emitted)

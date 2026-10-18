@@ -1,6 +1,8 @@
+@usableFromInline
 package struct DisabledSemanticPayload: _GiftUISemanticModifierPayload,
     Equatable, Sendable
 {
+    @usableFromInline
     package let isDisabled: Bool
 
     package init(isDisabled: Bool) {

@@ -84,6 +84,7 @@ package struct SemanticRecordLimits: Equatable, Sendable {
     package let payloads: UInt16
     @usableFromInline
     package let textScalars: UInt16
+    @usableFromInline
     package let payloadBytes: UInt32
     package init?(
         records: UInt16, paths: UInt16, depth: UInt16, fanout: UInt16,
@@ -112,6 +113,7 @@ package struct SemanticPathEntry: Sendable {
     package var nextSibling: UInt16 = .max
     package var childCount: UInt16 = 0
     package var depth: UInt16 = 0
+    @usableFromInline
     package var nearestRecord: UInt16 = .max
     /// Reconciliation scratch, valid only for the compared published revision.
     package var matchedPath: UInt16 = .max
@@ -128,11 +130,17 @@ package struct SemanticRuntimeRecord: Sendable {
     package var firstChild: UInt16 = .max
     package var lastChild: UInt16 = .max
     package var nextSibling: UInt16 = .max
+    @usableFromInline
     package var path: UInt16 = .max
+    @usableFromInline
     package var kind: Kind = .structural
+    @usableFromInline
     package var payload: UInt16 = .max
+    @usableFromInline
     package var firstTextScalar: UInt16 = 0
+    @usableFromInline
     package var textScalarCount: UInt16 = 0
+    @usableFromInline
     package var modifierChainIndex: UInt16 = 0
     package init() {}
 }
@@ -155,11 +163,22 @@ package struct SemanticRecordOwnerNamespace: ~Copyable {
     }
 }
 
+@usableFromInline
 package struct SemanticRecordReference: Equatable, Sendable {
     package let owner: SemanticRecordOwnerIdentity
     package let bank: UInt8
     package let revision: UInt32
     package let ordinal: UInt16
+
+    @usableFromInline
+    internal init(
+        owner: SemanticRecordOwnerIdentity, bank: UInt8, revision: UInt32, ordinal: UInt16
+    ) {
+        self.owner = owner
+        self.bank = bank
+        self.revision = revision
+        self.ordinal = ordinal
+    }
 }
 
 @usableFromInline
@@ -172,16 +191,24 @@ package struct SemanticRecordBankMetadata {
     package var revision: UInt32 = 0
     @usableFromInline
     package var readers: UInt16 = 0
+    @usableFromInline
     package var records: UInt16 = 0
+    @usableFromInline
     package var paths: UInt16 = 0
+    @usableFromInline
     package var payloads: UInt16 = 0
+    @usableFromInline
     package var scalars: UInt16 = 0
+    @usableFromInline
     package var payloadBytes: UInt32 = 0
+    @usableFromInline
     package var activePath: UInt16 = .max
     package var matchedRevision: UInt32 = 0
     package var componentComparisons: UInt32 = 0
     package var summary: SemanticExpansionSummary?
+    @usableFromInline
     package var failure: SemanticExpansionError?
+    @usableFromInline
     package init() {}
 }
 
@@ -192,9 +219,13 @@ package struct SemanticRecordBankMetadata {
 package struct SemanticRecordBankBuffers<Payload> {
     @usableFromInline
     package let metadata: UnsafeMutablePointer<SemanticRecordBankMetadata>
+    @usableFromInline
     package let records: UnsafeMutableBufferPointer<SemanticRuntimeRecord>
+    @usableFromInline
     package let paths: UnsafeMutableBufferPointer<SemanticPathEntry>
+    @usableFromInline
     package let payloads: UnsafeMutableBufferPointer<Payload?>
+    @usableFromInline
     package let scalars: UnsafeMutableBufferPointer<UInt32>
     @usableFromInline
     package init(
@@ -214,7 +245,7 @@ package struct SemanticRecordBankBuffers<Payload> {
             && payloads.count >= Int(limits.payloads) && scalars.count >= Int(limits.textScalars)
     }
 
-    @usableFromInline
+    @inlinable
     package func clear() {
         precondition(metadata.pointee.readers == 0)
         for index in 0 ..< Int(metadata.pointee.payloads) { payloads[index] = nil }
@@ -223,7 +254,7 @@ package struct SemanticRecordBankBuffers<Payload> {
         metadata.pointee.revision = revision
     }
 
-    @usableFromInline
+    @inlinable
     package func fail(_ failure: SemanticExpansionError) -> SemanticExpansionError {
         if metadata.pointee.failure == nil { metadata.pointee.failure = failure }
         return metadata.pointee.failure!
@@ -317,6 +348,7 @@ package struct SemanticRecordBankBuffers<Payload> {
         return nil
     }
 
+    @inlinable
     package func store(
         _ value: consuming Payload, kind: SemanticRuntimeRecord.Kind, chainIndex: UInt16 = 0,
         text: borrowing Span<UInt32>, limits: SemanticRecordLimits

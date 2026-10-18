@@ -2,6 +2,7 @@ import GiftUI
 
 /// Owned finite values only. Text scalars reside in the separately bounded pool;
 /// no case retains a declaration, model, handler, reference or drawing closure.
+@usableFromInline
 package enum SemanticStandardPayload: Equatable, Sendable {
     case vStack(_GiftUIVStackPayload)
     case hStack(_GiftUIHStackPayload)
@@ -18,14 +19,17 @@ package enum SemanticStandardPayload: Equatable, Sendable {
     case action(role: UInt16, code: UInt16)
 }
 
+@usableFromInline
 package enum SemanticStandardPayloadCodec<Roles: SemanticDeclarationRoles>:
     SemanticRecordPayloadCodec
 {
+    @usableFromInline
     package typealias Payload = SemanticStandardPayload
 
     /// Exact generic type equality precedes rebinding; no runtime reflection or
     /// existential cast is used. The known finite value is copied while borrowed.
-    private static func project<Value, Expected>(_ value: borrowing Value, as type: Expected.Type)
+    @inlinable
+    internal static func project<Value, Expected>(_ value: borrowing Value, as type: Expected.Type)
         -> Expected
     {
         precondition(Value.self == Expected.self)
@@ -33,11 +37,13 @@ package enum SemanticStandardPayloadCodec<Roles: SemanticDeclarationRoles>:
             source.withMemoryRebound(to: Expected.self, capacity: 1) { $0.pointee }
         }
     }
+    @inlinable
     package static func primitive<Value: _GiftUISemanticPrimitivePayload>(
         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
     ) -> SemanticExpansionError? {
         primitive(value, writer: writer, wrapping: { $0 })
     }
+    @inlinable
     package static func primitive<Value: _GiftUISemanticPrimitivePayload, Target>(
         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Target>,
         wrapping wrap: (Payload) -> Target
@@ -107,12 +113,14 @@ package enum SemanticStandardPayloadCodec<Roles: SemanticDeclarationRoles>:
         // Unknown finite payloads fail closed; Canvas uses its dedicated wrapper codec.
         return .invariantViolation
     }
+    @inlinable
     package static func modifier<Value: _GiftUISemanticModifierPayload>(
         _ value: borrowing Value, chainIndex: UInt16,
         writer: borrowing SemanticPayloadWriter<Payload>
     ) -> SemanticExpansionError? {
         modifier(value, chainIndex: chainIndex, writer: writer, wrapping: { $0 })
     }
+    @inlinable
     package static func modifier<Value: _GiftUISemanticModifierPayload, Target>(
         _ value: borrowing Value, chainIndex: UInt16,
         writer: borrowing SemanticPayloadWriter<Target>,
@@ -138,11 +146,13 @@ package enum SemanticStandardPayloadCodec<Roles: SemanticDeclarationRoles>:
         }
         return writer.store(wrap(owned), kind: .modifier, chainIndex: chainIndex)
     }
+    @inlinable
     package static func action<Value: GiftUIAction>(
         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
     ) -> SemanticExpansionError? {
         action(value, writer: writer, wrapping: { $0 })
     }
+    @inlinable
     package static func action<Value: GiftUIAction, Target>(
         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Target>,
         wrapping wrap: (Payload) -> Target

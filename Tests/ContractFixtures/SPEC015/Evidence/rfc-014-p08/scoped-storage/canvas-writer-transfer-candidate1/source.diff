@@ -1,0 +1,530 @@
+diff --git a/Sources/GiftUI/Canvas.swift b/Sources/GiftUI/Canvas.swift
+index 6d3e285a..fcccb3be 100644
+--- a/Sources/GiftUI/Canvas.swift
++++ b/Sources/GiftUI/Canvas.swift
+@@ -22,6 +22,7 @@ public extension Canvas {
+         visitor.visitPrimitive(self)
+     }
+ 
++    @inlinable
+     package func _giftUIInvokeCanvas(
+         context: inout GraphicsContext, size: Size,
+         read: borrowing _GiftUIFrameRead<Domain>
+diff --git a/Sources/GiftUI/Disabled.swift b/Sources/GiftUI/Disabled.swift
+index d66ce8d7..465f62a3 100644
+--- a/Sources/GiftUI/Disabled.swift
++++ b/Sources/GiftUI/Disabled.swift
+@@ -1,6 +1,8 @@
++@usableFromInline
+ package struct DisabledSemanticPayload: _GiftUISemanticModifierPayload,
+     Equatable, Sendable
+ {
++    @usableFromInline
+     package let isDisabled: Bool
+ 
+     package init(isDisabled: Bool) {
+diff --git a/Sources/GiftUI/StyleModifiers.swift b/Sources/GiftUI/StyleModifiers.swift
+index 8f404029..65e2c9c0 100644
+--- a/Sources/GiftUI/StyleModifiers.swift
++++ b/Sources/GiftUI/StyleModifiers.swift
+@@ -1,6 +1,7 @@
+ public struct _GiftUIForegroundStylePayload: _GiftUISemanticModifierPayload,
+     Equatable, Sendable
+ {
++    @usableFromInline
+     package let color: Color
+ 
+     package init(color: Color) {
+@@ -11,6 +12,7 @@ public struct _GiftUIForegroundStylePayload: _GiftUISemanticModifierPayload,
+ public struct _GiftUIBackgroundPayload: _GiftUISemanticModifierPayload,
+     Equatable, Sendable
+ {
++    @usableFromInline
+     package let color: Color
+ 
+     package init(color: Color) {
+diff --git a/Sources/GiftUI/Text.swift b/Sources/GiftUI/Text.swift
+index c12a48ea..274ae932 100644
+--- a/Sources/GiftUI/Text.swift
++++ b/Sources/GiftUI/Text.swift
+@@ -1,9 +1,11 @@
++@usableFromInline
+ package enum _GiftUITextContent: Equatable, Sendable {
+     case admitted(BoundedText)
+     case invalidDeclaration
+ }
+ 
+ public struct _GiftUITextPayload: _GiftUISemanticPrimitivePayload, Equatable, Sendable {
++    @usableFromInline
+     package let content: _GiftUITextContent
+ 
+     package init(content: _GiftUITextContent) {
+diff --git a/Sources/GiftUIDrawing/CanvasSemanticPayload.swift b/Sources/GiftUIDrawing/CanvasSemanticPayload.swift
+index 5038a12f..d21689d5 100644
+--- a/Sources/GiftUIDrawing/CanvasSemanticPayload.swift
++++ b/Sources/GiftUIDrawing/CanvasSemanticPayload.swift
+@@ -3,6 +3,7 @@ import GiftUISemanticCore
+ 
+ /// Owned only during candidate expansion. Transfer replaces every concrete
+ /// value with a marker before any Layout/Render borrow or semantic publication.
++@usableFromInline
+ package enum CanvasSemanticPayload<Value>: SemanticRecordConsumerPayload {
+     case standard(SemanticStandardPayload)
+     case canvas(Value?)
+@@ -27,10 +28,13 @@ package enum CanvasSemanticPayload<Value>: SemanticRecordConsumerPayload {
+     }
+ }
+ 
++@usableFromInline
+ package enum CanvasSemanticPayloadCodec<Roles: SemanticDeclarationRoles, Table: CanvasValueTable>:
+     SemanticRecordPayloadCodec
+ {
++    @usableFromInline
+     package typealias Payload = CanvasSemanticPayload<Table.CaptureStorage>
++    @inlinable
+     package static func primitive<Value: _GiftUISemanticPrimitivePayload>(
+         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+     ) -> SemanticExpansionError? {
+@@ -40,6 +44,7 @@ package enum CanvasSemanticPayloadCodec<Roles: SemanticDeclarationRoles, Table:
+         return SemanticStandardPayloadCodec<Roles>.primitive(
+             value, writer: writer, wrapping: { .standard($0) })
+     }
++    @inlinable
+     package static func modifier<Value: _GiftUISemanticModifierPayload>(
+         _ value: borrowing Value, chainIndex: UInt16,
+         writer: borrowing SemanticPayloadWriter<Payload>
+@@ -47,6 +52,7 @@ package enum CanvasSemanticPayloadCodec<Roles: SemanticDeclarationRoles, Table:
+         SemanticStandardPayloadCodec<Roles>.modifier(
+             value, chainIndex: chainIndex, writer: writer, wrapping: { .standard($0) })
+     }
++    @inlinable
+     package static func action<Value: GiftUIAction>(
+         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+     ) -> SemanticExpansionError? {
+@@ -55,7 +61,9 @@ package enum CanvasSemanticPayloadCodec<Roles: SemanticDeclarationRoles, Table:
+     }
+ }
+ 
++@usableFromInline
+ package enum CanvasSemanticTransfer {
++    @inlinable
+     package static func stage<Table: CanvasValueTable>(
+         from semantic: borrowing SemanticRecordStore<CanvasSemanticPayload<Table.CaptureStorage>>,
+         into values: borrowing CanvasStagedValues<SemanticRecordReference, Table>,
+diff --git a/Sources/GiftUIMacros/CanvasWitnessLowering.swift b/Sources/GiftUIMacros/CanvasWitnessLowering.swift
+index e04aeedf..56d0dbde 100644
+--- a/Sources/GiftUIMacros/CanvasWitnessLowering.swift
++++ b/Sources/GiftUIMacros/CanvasWitnessLowering.swift
+@@ -19,22 +19,24 @@ func canvasWitnessTable(
+     let table = configuration.module + "CanvasTable"
+     var result =
+         "import GiftUI\nimport GiftUIDrawing\nimport \(configuration.module)\nimport \(presentationModule)\n"
+-    result += "package enum \(values)<D: \(domain)> {\n"
++    result += "@usableFromInline package enum \(values)<D: \(domain)> {\n"
+     for (index, name) in names.enumerated() { result += "case v\(index + 1)(\(name)<D>)\n" }
+-    result += "}\npackage struct \(table)<D: \(domain)>: CanvasValueTable {\n"
+-    result += "package typealias Domain = D\npackage typealias CaptureStorage = \(values)<D>\n"
+-    result += "package init() {}\npackage var callableCaseCount: UInt16 { \(names.count) }\n"
+-    result += "package func captureByteCount(for id: UInt16) -> UInt16? { switch id {\n"
++    result += "}\n@usableFromInline package struct \(table)<D: \(domain)>: CanvasValueTable {\n"
++    result +=
++        "@usableFromInline package typealias Domain = D\n@usableFromInline package typealias CaptureStorage = \(values)<D>\n"
++    result +=
++        "@inlinable package init() {}\n@inlinable package var callableCaseCount: UInt16 { \(names.count) }\n"
++    result += "@inlinable package func captureByteCount(for id: UInt16) -> UInt16? { switch id {\n"
+     for (index, name) in names.enumerated() {
+         result += "case \(index + 1): UInt16(exactly: MemoryLayout<\(name)<D>>.stride)\n"
+     }
+     result += "default: nil } }\n"
+     result +=
+-        "package static func caseID(for value: borrowing CaptureStorage) -> UInt16 { switch value {\n"
++        "@inlinable package static func caseID(for value: borrowing CaptureStorage) -> UInt16 { switch value {\n"
+     for index in names.indices { result += "case .v\(index + 1): \(index + 1)\n" }
+     result += "} }\n"
+     result +=
+-        "package static func payload<Value: _GiftUISemanticPrimitivePayload>(_ value: borrowing Value) -> CaptureStorage? {\n"
++        "@inlinable package static func payload<Value: _GiftUISemanticPrimitivePayload>(_ value: borrowing Value) -> CaptureStorage? {\n"
+     for (index, name) in names.enumerated() {
+         result += """
+             if Value.self == \(name)<D>.self {
+@@ -47,7 +49,7 @@ func canvasWitnessTable(
+     }
+     result += "return nil\n}\n"
+     result += """
+-        package mutating func invoke(id: UInt16, captures: borrowing CaptureStorage,
++        @inlinable package mutating func invoke(id: UInt16, captures: borrowing CaptureStorage,
+             context: inout GraphicsContext, size: Size, read: borrowing _GiftUIFrameRead<D>) throws(DrawingError) {
+             guard id == Self.caseID(for: captures) else { throw .invariantViolation }
+             switch captures {
+diff --git a/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift b/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift
+index b5e78f5c..8197c638 100644
+--- a/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift
++++ b/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift
+@@ -17,8 +17,10 @@ package protocol SemanticRecordPayloadCodec {
+ 
+ @usableFromInline
+ package struct SemanticPayloadWriter<Payload>: ~Copyable, ~Escapable {
+-    private let bank: SemanticRecordBankBuffers<Payload>
+-    private let limits: SemanticRecordLimits
++    @usableFromInline
++    internal let bank: SemanticRecordBankBuffers<Payload>
++    @usableFromInline
++    internal let limits: SemanticRecordLimits
+     @_lifetime(borrow bank)
+     @usableFromInline
+     init(
+@@ -27,12 +29,14 @@ package struct SemanticPayloadWriter<Payload>: ~Copyable, ~Escapable {
+         self.bank = copy bank
+         self.limits = limits
+     }
++    @inlinable
+     package borrowing func store(
+         _ value: consuming Payload, kind: SemanticRuntimeRecord.Kind,
+         chainIndex: UInt16 = 0, text: borrowing Span<UInt32>
+     ) -> SemanticExpansionError? {
+         bank.store(consume value, kind: kind, chainIndex: chainIndex, text: text, limits: limits)
+     }
++    @inlinable
+     package borrowing func store(
+         _ value: consuming Payload, kind: SemanticRuntimeRecord.Kind,
+         chainIndex: UInt16 = 0
+diff --git a/Sources/GiftUISemanticCore/SemanticRecordStore.swift b/Sources/GiftUISemanticCore/SemanticRecordStore.swift
+index 97e1729c..14dabd23 100644
+--- a/Sources/GiftUISemanticCore/SemanticRecordStore.swift
++++ b/Sources/GiftUISemanticCore/SemanticRecordStore.swift
+@@ -102,11 +102,11 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
+         owner = other.owner
+     }
+ 
+-    @usableFromInline
++    @inlinable
+     borrowing func bank(_ number: UInt8) -> SemanticRecordBankBuffers<Payload> {
+         number == 0 ? a : b
+     }
+-    @usableFromInline
++    @inlinable
+     var candidate: UInt8? {
+         if a.metadata.pointee.phase == .candidate { return 0 }
+         if b.metadata.pointee.phase == .candidate { return 1 }
+@@ -152,6 +152,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
+         selected.metadata.pointee.phase = .expanding
+         return number
+     }
++    @inlinable
+     package borrowing func discardCandidate() throws(SemanticExpansionError) {
+         for number: UInt8 in 0 ..< 2 {
+             let selected = bank(number)
+@@ -201,6 +202,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
+     /// Transfer transient owned Canvas values before lending consumer views.
+     /// A failed transfer remains unpublished; the drawing adapter discards both
+     /// this candidate and any already-transferred entries.
++    @inlinable
+     package borrowing func takePendingCanvas(
+         _ body: (SemanticRecordReference, inout Payload) throws(SemanticExpansionError) -> Void
+     ) throws(SemanticExpansionError) {
+diff --git a/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift b/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift
+index 53ee88c1..3e7e4638 100644
+--- a/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift
++++ b/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift
+@@ -84,6 +84,7 @@ package struct SemanticRecordLimits: Equatable, Sendable {
+     package let payloads: UInt16
+     @usableFromInline
+     package let textScalars: UInt16
++    @usableFromInline
+     package let payloadBytes: UInt32
+     package init?(
+         records: UInt16, paths: UInt16, depth: UInt16, fanout: UInt16,
+@@ -112,6 +113,7 @@ package struct SemanticPathEntry: Sendable {
+     package var nextSibling: UInt16 = .max
+     package var childCount: UInt16 = 0
+     package var depth: UInt16 = 0
++    @usableFromInline
+     package var nearestRecord: UInt16 = .max
+     /// Reconciliation scratch, valid only for the compared published revision.
+     package var matchedPath: UInt16 = .max
+@@ -128,11 +130,17 @@ package struct SemanticRuntimeRecord: Sendable {
+     package var firstChild: UInt16 = .max
+     package var lastChild: UInt16 = .max
+     package var nextSibling: UInt16 = .max
++    @usableFromInline
+     package var path: UInt16 = .max
++    @usableFromInline
+     package var kind: Kind = .structural
++    @usableFromInline
+     package var payload: UInt16 = .max
++    @usableFromInline
+     package var firstTextScalar: UInt16 = 0
++    @usableFromInline
+     package var textScalarCount: UInt16 = 0
++    @usableFromInline
+     package var modifierChainIndex: UInt16 = 0
+     package init() {}
+ }
+@@ -155,11 +163,22 @@ package struct SemanticRecordOwnerNamespace: ~Copyable {
+     }
+ }
+ 
++@usableFromInline
+ package struct SemanticRecordReference: Equatable, Sendable {
+     package let owner: SemanticRecordOwnerIdentity
+     package let bank: UInt8
+     package let revision: UInt32
+     package let ordinal: UInt16
++
++    @usableFromInline
++    internal init(
++        owner: SemanticRecordOwnerIdentity, bank: UInt8, revision: UInt32, ordinal: UInt16
++    ) {
++        self.owner = owner
++        self.bank = bank
++        self.revision = revision
++        self.ordinal = ordinal
++    }
+ }
+ 
+ @usableFromInline
+@@ -172,16 +191,24 @@ package struct SemanticRecordBankMetadata {
+     package var revision: UInt32 = 0
+     @usableFromInline
+     package var readers: UInt16 = 0
++    @usableFromInline
+     package var records: UInt16 = 0
++    @usableFromInline
+     package var paths: UInt16 = 0
++    @usableFromInline
+     package var payloads: UInt16 = 0
++    @usableFromInline
+     package var scalars: UInt16 = 0
++    @usableFromInline
+     package var payloadBytes: UInt32 = 0
++    @usableFromInline
+     package var activePath: UInt16 = .max
+     package var matchedRevision: UInt32 = 0
+     package var componentComparisons: UInt32 = 0
+     package var summary: SemanticExpansionSummary?
++    @usableFromInline
+     package var failure: SemanticExpansionError?
++    @usableFromInline
+     package init() {}
+ }
+ 
+@@ -192,9 +219,13 @@ package struct SemanticRecordBankMetadata {
+ package struct SemanticRecordBankBuffers<Payload> {
+     @usableFromInline
+     package let metadata: UnsafeMutablePointer<SemanticRecordBankMetadata>
++    @usableFromInline
+     package let records: UnsafeMutableBufferPointer<SemanticRuntimeRecord>
++    @usableFromInline
+     package let paths: UnsafeMutableBufferPointer<SemanticPathEntry>
++    @usableFromInline
+     package let payloads: UnsafeMutableBufferPointer<Payload?>
++    @usableFromInline
+     package let scalars: UnsafeMutableBufferPointer<UInt32>
+     @usableFromInline
+     package init(
+@@ -214,7 +245,7 @@ package struct SemanticRecordBankBuffers<Payload> {
+             && payloads.count >= Int(limits.payloads) && scalars.count >= Int(limits.textScalars)
+     }
+ 
+-    @usableFromInline
++    @inlinable
+     package func clear() {
+         precondition(metadata.pointee.readers == 0)
+         for index in 0 ..< Int(metadata.pointee.payloads) { payloads[index] = nil }
+@@ -223,7 +254,7 @@ package struct SemanticRecordBankBuffers<Payload> {
+         metadata.pointee.revision = revision
+     }
+ 
+-    @usableFromInline
++    @inlinable
+     package func fail(_ failure: SemanticExpansionError) -> SemanticExpansionError {
+         if metadata.pointee.failure == nil { metadata.pointee.failure = failure }
+         return metadata.pointee.failure!
+@@ -317,6 +348,7 @@ package struct SemanticRecordBankBuffers<Payload> {
+         return nil
+     }
+ 
++    @inlinable
+     package func store(
+         _ value: consuming Payload, kind: SemanticRuntimeRecord.Kind, chainIndex: UInt16 = 0,
+         text: borrowing Span<UInt32>, limits: SemanticRecordLimits
+diff --git a/Sources/GiftUISemanticCore/SemanticStandardPayload.swift b/Sources/GiftUISemanticCore/SemanticStandardPayload.swift
+index 5d934d11..7f647969 100644
+--- a/Sources/GiftUISemanticCore/SemanticStandardPayload.swift
++++ b/Sources/GiftUISemanticCore/SemanticStandardPayload.swift
+@@ -2,6 +2,7 @@ import GiftUI
+ 
+ /// Owned finite values only. Text scalars reside in the separately bounded pool;
+ /// no case retains a declaration, model, handler, reference or drawing closure.
++@usableFromInline
+ package enum SemanticStandardPayload: Equatable, Sendable {
+     case vStack(_GiftUIVStackPayload)
+     case hStack(_GiftUIHStackPayload)
+@@ -18,14 +19,17 @@ package enum SemanticStandardPayload: Equatable, Sendable {
+     case action(role: UInt16, code: UInt16)
+ }
+ 
++@usableFromInline
+ package enum SemanticStandardPayloadCodec<Roles: SemanticDeclarationRoles>:
+     SemanticRecordPayloadCodec
+ {
++    @usableFromInline
+     package typealias Payload = SemanticStandardPayload
+ 
+     /// Exact generic type equality precedes rebinding; no runtime reflection or
+     /// existential cast is used. The known finite value is copied while borrowed.
+-    private static func project<Value, Expected>(_ value: borrowing Value, as type: Expected.Type)
++    @inlinable
++    internal static func project<Value, Expected>(_ value: borrowing Value, as type: Expected.Type)
+         -> Expected
+     {
+         precondition(Value.self == Expected.self)
+@@ -33,11 +37,13 @@ package enum SemanticStandardPayloadCodec<Roles: SemanticDeclarationRoles>:
+             source.withMemoryRebound(to: Expected.self, capacity: 1) { $0.pointee }
+         }
+     }
++    @inlinable
+     package static func primitive<Value: _GiftUISemanticPrimitivePayload>(
+         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+     ) -> SemanticExpansionError? {
+         primitive(value, writer: writer, wrapping: { $0 })
+     }
++    @inlinable
+     package static func primitive<Value: _GiftUISemanticPrimitivePayload, Target>(
+         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Target>,
+         wrapping wrap: (Payload) -> Target
+@@ -107,12 +113,14 @@ package enum SemanticStandardPayloadCodec<Roles: SemanticDeclarationRoles>:
+         // Unknown finite payloads fail closed; Canvas uses its dedicated wrapper codec.
+         return .invariantViolation
+     }
++    @inlinable
+     package static func modifier<Value: _GiftUISemanticModifierPayload>(
+         _ value: borrowing Value, chainIndex: UInt16,
+         writer: borrowing SemanticPayloadWriter<Payload>
+     ) -> SemanticExpansionError? {
+         modifier(value, chainIndex: chainIndex, writer: writer, wrapping: { $0 })
+     }
++    @inlinable
+     package static func modifier<Value: _GiftUISemanticModifierPayload, Target>(
+         _ value: borrowing Value, chainIndex: UInt16,
+         writer: borrowing SemanticPayloadWriter<Target>,
+@@ -138,11 +146,13 @@ package enum SemanticStandardPayloadCodec<Roles: SemanticDeclarationRoles>:
+         }
+         return writer.store(wrap(owned), kind: .modifier, chainIndex: chainIndex)
+     }
++    @inlinable
+     package static func action<Value: GiftUIAction>(
+         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+     ) -> SemanticExpansionError? {
+         action(value, writer: writer, wrapping: { $0 })
+     }
++    @inlinable
+     package static func action<Value: GiftUIAction, Target>(
+         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Target>,
+         wrapping wrap: (Payload) -> Target
+diff --git a/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift b/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift
+index ea3d4258..746791d1 100644
+--- a/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift
++++ b/Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift
+@@ -261,6 +261,24 @@ final class ObservableStateHostMacroTests: XCTestCase {
+         )
+         let fixture = repository.appendingPathComponent(
+             "Tests/ContractFixtures/SPEC015/RuntimeDerived")
++        let configuration = try JSONDecoder().decode(
++            Configuration.self,
++            from: Data(contentsOf: fixture.appendingPathComponent("Counter.schema.json")))
++        let tableInventory = Inventory(viewMode: .sourceAccurate)
++        XCTAssertThrowsError(
++            try canvasWitnessTable(
++                configuration: configuration, inventory: tableInventory,
++                presentationModule: "P08CounterPresentation"))
++        tableInventory.canvases = ["CounterCanvas"]
++        XCTAssertThrowsError(
++            try canvasWitnessTable(
++                configuration: configuration, inventory: tableInventory,
++                presentationModule: "invalid-module"))
++        tableInventory.canvases = Set((0 ... Int(UInt16.max)).map { "Canvas\($0)" })
++        XCTAssertThrowsError(
++            try canvasWitnessTable(
++                configuration: configuration, inventory: tableInventory,
++                presentationModule: "P08CounterPresentation"))
+         let original = try String(
+             contentsOf: fixture.appendingPathComponent("Counter.swift"), encoding: .utf8)
+         let marker = "@State private var model = CounterModel(value: 0)"
+@@ -291,11 +309,76 @@ final class ObservableStateHostMacroTests: XCTestCase {
+             let authored = output.appendingPathComponent(name + "-authored.swift")
+             try input.write(to: authored, atomically: true, encoding: .utf8)
+             let presentation = output.appendingPathComponent(name + "-presentation.swift")
++            let table = output.appendingPathComponent(name + "-table.swift")
+             try lowerGiftUISource(arguments: [
+                 "--lower-source",
+                 fixture.appendingPathComponent("Counter.schema.json").path, authored.path,
+                 output.appendingPathComponent(name + "-schema.swift").path, presentation.path,
++                table.path, "P08CounterPresentation",
+             ])
++            let tableBytes = try String(contentsOf: table, encoding: .utf8)
++            let tableSyntax = Parser.parse(source: tableBytes)
++            XCTAssertFalse(tableSyntax.hasError, name)
++            XCTAssertTrue(ParseDiagnosticsGenerator.diagnostics(for: tableSyntax).isEmpty, name)
++            let values = try XCTUnwrap(
++                tableSyntax.statements.compactMap {
++                    $0.item.as(EnumDeclSyntax.self)
++                }.first { $0.name.text == configuration.module + "CanvasValues" })
++            XCTAssertTrue(
++                values.attributes.contains {
++                    $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription
++                        == "usableFromInline"
++                }, name)
++            let tableType = try XCTUnwrap(
++                tableSyntax.statements.compactMap {
++                    $0.item.as(StructDeclSyntax.self)
++                }.first { $0.name.text == configuration.module + "CanvasTable" })
++            XCTAssertTrue(
++                tableType.attributes.contains {
++                    $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription
++                        == "usableFromInline"
++                }, name)
++            let aliases = tableType.memberBlock.members.compactMap {
++                $0.decl.as(TypeAliasDeclSyntax.self)
++            }
++            XCTAssertEqual(aliases.map(\.name.text).sorted(), ["CaptureStorage", "Domain"])
++            XCTAssertTrue(
++                aliases.allSatisfy { alias in
++                    alias.attributes.contains {
++                        $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription
++                            == "usableFromInline"
++                    }
++                }, name)
++            let functions = tableType.memberBlock.members.compactMap {
++                $0.decl.as(FunctionDeclSyntax.self)
++            }
++            XCTAssertEqual(
++                functions.map(\.name.text).sorted(),
++                ["captureByteCount", "caseID", "invoke", "payload"])
++            XCTAssertTrue(
++                functions.allSatisfy { function in
++                    function.attributes.contains {
++                        $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription == "inlinable"
++                    }
++                }, name)
++            let initializer = try XCTUnwrap(
++                tableType.memberBlock.members.compactMap {
++                    $0.decl.as(InitializerDeclSyntax.self)
++                }.first)
++            XCTAssertTrue(
++                initializer.attributes.contains {
++                    $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription == "inlinable"
++                }, name)
++            let count = try XCTUnwrap(
++                tableType.memberBlock.members.compactMap {
++                    $0.decl.as(VariableDeclSyntax.self)
++                }.first { $0.bindings.first?.pattern.trimmedDescription == "callableCaseCount" })
++            XCTAssertTrue(
++                count.attributes.contains {
++                    $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription == "inlinable"
++                }, name)
++            XCTAssertTrue(tableBytes.contains("borrowing CaptureStorage"), name)
++            XCTAssertTrue(tableBytes.contains("read: borrowing _GiftUIFrameRead<D>"), name)
+             // Read exact emitter bytes. No formatting, joining or output repair.
+             let emitted = try String(contentsOf: presentation, encoding: .utf8)
+             let parsed = Parser.parse(source: emitted)

@@ -1,6 +1,7 @@
 public struct _GiftUIForegroundStylePayload: _GiftUISemanticModifierPayload,
     Equatable, Sendable
 {
+    @usableFromInline
     package let color: Color
 
     package init(color: Color) {
@@ -11,6 +12,7 @@ public struct _GiftUIForegroundStylePayload: _GiftUISemanticModifierPayload,
 public struct _GiftUIBackgroundPayload: _GiftUISemanticModifierPayload,
     Equatable, Sendable
 {
+    @usableFromInline
     package let color: Color
 
     package init(color: Color) {

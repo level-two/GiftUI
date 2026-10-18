@@ -102,11 +102,11 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
         owner = other.owner
     }
 
-    @usableFromInline
+    @inlinable
     borrowing func bank(_ number: UInt8) -> SemanticRecordBankBuffers<Payload> {
         number == 0 ? a : b
     }
-    @usableFromInline
+    @inlinable
     var candidate: UInt8? {
         if a.metadata.pointee.phase == .candidate { return 0 }
         if b.metadata.pointee.phase == .candidate { return 1 }
@@ -152,6 +152,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
         selected.metadata.pointee.phase = .expanding
         return number
     }
+    @inlinable
     package borrowing func discardCandidate() throws(SemanticExpansionError) {
         for number: UInt8 in 0 ..< 2 {
             let selected = bank(number)
@@ -201,6 +202,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     /// Transfer transient owned Canvas values before lending consumer views.
     /// A failed transfer remains unpublished; the drawing adapter discards both
     /// this candidate and any already-transferred entries.
+    @inlinable
     package borrowing func takePendingCanvas(
         _ body: (SemanticRecordReference, inout Payload) throws(SemanticExpansionError) -> Void
     ) throws(SemanticExpansionError) {

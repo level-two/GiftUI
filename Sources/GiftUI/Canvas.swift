@@ -22,6 +22,7 @@ public extension Canvas {
         visitor.visitPrimitive(self)
     }
 
+    @inlinable
     package func _giftUIInvokeCanvas(
         context: inout GraphicsContext, size: Size,
         read: borrowing _GiftUIFrameRead<Domain>

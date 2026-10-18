@@ -1,9 +1,11 @@
+@usableFromInline
 package enum _GiftUITextContent: Equatable, Sendable {
     case admitted(BoundedText)
     case invalidDeclaration
 }
 
 public struct _GiftUITextPayload: _GiftUISemanticPrimitivePayload, Equatable, Sendable {
+    @usableFromInline
     package let content: _GiftUITextContent
 
     package init(content: _GiftUITextContent) {
