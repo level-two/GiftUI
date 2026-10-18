@@ -32,9 +32,8 @@ superseded_by: null
 Current [grouped result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-codegen-result/README.md):
 registered compile PASS; required physical body/callee gate FAIL at six entries,
 with actual generic consumer seams. Initial1/1 frozen, corrections0/2. No measured
-allocation failure is claimed; metadata/observer attribution is unresolved. Next
-read-only targeted corrective1 design and independent review precede any source
-edit. Fresh privacy/lifetime, actual-host SIL/callee closure, safety/cold and
+allocation failure is claimed; metadata/observer attribution is unresolved. The [targeted28-file corrective1 design](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-design/README.md)
+is ready for independent review before any source edit. Fresh privacy/lifetime, actual-host SIL/callee closure, safety/cold and
 P08/R07/T8.1 remain open; prior budgets and protected inputs unchanged.
 
 [Independent annotation package review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-final-independent-review.md)

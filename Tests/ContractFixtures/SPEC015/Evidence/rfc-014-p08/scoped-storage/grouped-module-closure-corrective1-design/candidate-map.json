@@ -1,0 +1,1047 @@
+{
+  "status": "derived corrective1 candidate for independent design review only; no source/compiler execution",
+  "budget": {
+    "initial_consumed": "1/1",
+    "corrections_consumed": "0/2",
+    "next_first_source_edit_consumes": "1/2"
+  },
+  "proven_roots": 6,
+  "required_outer_callers": [
+    "GiftUILayout.layout",
+    "CanvasPlanProducer.derive"
+  ],
+  "file_count": 28,
+  "ABI_type_protocol_targets": 67,
+  "ABI_field_property_targets": 81,
+  "serialized_function_targets": 65,
+  "ordinary_ABI_function_targets": 42,
+  "source_allowlist": [
+    {
+      "file": "Sources/GiftUILayout/Layout.swift",
+      "sha256": "17bd1188e891289330a447eaad77a5c53d149e653862939916b221589a9bf1a3",
+      "ABI_nominals_or_protocols": [],
+      "ABI_fields_or_properties": [],
+      "explicit_serialized_functions": [
+        "layout"
+      ],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "actualStaticgeometry generic call0x11cac; otherwise publication body cannot reach caller",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutPublication.swift",
+      "sha256": "476824b1f5a566de27a36c10f4bea4165d73dd617baa718fcc72769667a6ae01",
+      "ABI_nominals_or_protocols": [],
+      "ABI_fields_or_properties": [],
+      "explicit_serialized_functions": [
+        "publishLayout"
+      ],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "physicalFunction128 kind0/BB0",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "sha256": "30a34ad86cde9eea063c7973247ad52e1c1384d6b0392eaa07cfe2bdd9840c33",
+      "ABI_nominals_or_protocols": [
+        "LayoutEngine",
+        "StackMeasure"
+      ],
+      "ABI_fields_or_properties": [
+        "limits",
+        "counters",
+        "failure",
+        "StackMeasure.childCount",
+        "StackMeasure.flexibleSpacerCount",
+        "StackMeasure.mainExtent",
+        "StackMeasure.crossExtent",
+        "finalCounters"
+      ],
+      "explicit_serialized_functions": [
+        {
+          "name": "measure",
+          "line": 25,
+          "prefix": "package mutating func measure<Semantic, Metrics, Workspace>("
+        },
+        {
+          "name": "place",
+          "line": 47,
+          "prefix": "package mutating func place<Semantic, Metrics, Workspace>("
+        },
+        {
+          "name": "measureOccurrence",
+          "line": 69,
+          "prefix": "private mutating func measureOccurrence<Semantic, Metrics, Workspace>("
+        },
+        {
+          "name": "measureModifier",
+          "line": 104,
+          "prefix": "private mutating func measureModifier<Semantic, Metrics, Workspace>("
+        },
+        {
+          "name": "measureText",
+          "line": 189,
+          "prefix": "private mutating func measureText<Semantic, Metrics, Workspace>("
+        },
+        {
+          "name": "finalizeTextLine",
+          "line": 379,
+          "prefix": "private mutating func finalizeTextLine<Identity, Workspace>("
+        },
+        {
+          "name": "measureContent",
+          "line": 436,
+          "prefix": "private mutating func measureContent<Semantic, Metrics, Workspace>("
+        },
+        {
+          "name": "measureZStack",
+          "line": 520,
+          "prefix": "private mutating func measureZStack<Semantic, Metrics, Workspace>("
+        },
+        {
+          "name": "measureOnlyFlattenedChild",
+          "line": 559,
+          "prefix": "private mutating func measureOnlyFlattenedChild<Semantic, Metrics, Workspace>("
+        },
+        {
+          "name": "measureStack",
+          "line": 595,
+          "prefix": "private mutating func measureStack<Semantic, Metrics, Workspace>("
+        },
+        {
+          "name": "measureFlattenedChildren",
+          "line": 682,
+          "prefix": "private mutating func measureFlattenedChildren<Semantic, Metrics, Workspace>("
+        },
+        {
+          "name": "measureFlattenedOccurrence",
+          "line": 723,
+          "prefix": "private mutating func measureFlattenedOccurrence<Semantic, Metrics, Workspace>("
+        },
+        {
+          "name": "assignFlexibleSpacers",
+          "line": 806,
+          "prefix": "private mutating func assignFlexibleSpacers<Semantic, Workspace>("
+        },
+        {
+          "name": "placeOccurrence",
+          "line": 872,
+          "prefix": "private mutating func placeOccurrence<Semantic, Workspace>("
+        },
+        {
+          "name": "placeModifier",
+          "line": 907,
+          "prefix": "private mutating func placeModifier<Semantic, Workspace>("
+        },
+        {
+          "name": "placeContent",
+          "line": 1009,
+          "prefix": "private mutating func placeContent<Semantic, Workspace>("
+        },
+        {
+          "name": "placeTextGeometry",
+          "line": 1114,
+          "prefix": "private mutating func placeTextGeometry<Workspace: LayoutWorkspace>("
+        },
+        {
+          "name": "placeZStack",
+          "line": 1195,
+          "prefix": "private mutating func placeZStack<Semantic, Workspace>("
+        },
+        {
+          "name": "placeZFlattenedOccurrence",
+          "line": 1228,
+          "prefix": "private mutating func placeZFlattenedOccurrence<Semantic, Workspace>("
+        },
+        {
+          "name": "measurementForOccurrence",
+          "line": 1314,
+          "prefix": "private mutating func measurementForOccurrence<Semantic, Workspace>("
+        },
+        {
+          "name": "innerMeasurement",
+          "line": 1339,
+          "prefix": "private mutating func innerMeasurement<Semantic, Workspace>("
+        },
+        {
+          "name": "onlyFlattenedChildMeasurement",
+          "line": 1369,
+          "prefix": "private mutating func onlyFlattenedChildMeasurement<Semantic, Workspace>("
+        },
+        {
+          "name": "placeOnlyFlattenedChild",
+          "line": 1526,
+          "prefix": "private mutating func placeOnlyFlattenedChild<Semantic, Workspace>("
+        },
+        {
+          "name": "placeStack",
+          "line": 1553,
+          "prefix": "private mutating func placeStack<Semantic, Workspace>("
+        },
+        {
+          "name": "placeFlattenedChildrenAtOrigin",
+          "line": 1593,
+          "prefix": "private mutating func placeFlattenedChildrenAtOrigin<Semantic, Workspace>("
+        },
+        {
+          "name": "placeStackChildren",
+          "line": 1646,
+          "prefix": "private mutating func placeStackChildren<Semantic, Workspace>("
+        },
+        {
+          "name": "flattenedChildCount",
+          "line": 1755,
+          "prefix": "private mutating func flattenedChildCount<Semantic: SemanticLayoutView & ~Escapable>("
+        },
+        {
+          "name": "fail",
+          "line": 1785,
+          "prefix": "private mutating func fail<T>(_ error: LayoutError) -> T? {"
+        },
+        "init"
+      ],
+      "ordinary_ABI_functions": [
+        {
+          "name": "textBaselineY",
+          "line": 418,
+          "prefix": "private mutating func textBaselineY("
+        },
+        {
+          "name": "paddingInsets",
+          "line": 1282,
+          "prefix": "private mutating func paddingInsets("
+        },
+        {
+          "name": "frameChildProposal",
+          "line": 1416,
+          "prefix": "private func frameChildProposal("
+        },
+        {
+          "name": "childFrameProposalAxis",
+          "line": 1452,
+          "prefix": "private func childFrameProposalAxis("
+        },
+        {
+          "name": "frameMeasurement",
+          "line": 1470,
+          "prefix": "private func frameMeasurement("
+        },
+        {
+          "name": "requestedFrameAxis",
+          "line": 1509,
+          "prefix": "private func requestedFrameAxis("
+        },
+        {
+          "name": "fail",
+          "line": 1791,
+          "prefix": "private mutating func fail(_ error: LayoutError) -> Bool {"
+        },
+        {
+          "name": "increment",
+          "line": 1796,
+          "prefix": "private func increment(_ value: UInt16) -> UInt16? {"
+        },
+        "zeroRect getter"
+      ],
+      "same_module_visibility_changes": [
+        "Only listed private generic/scalar helpers -> internal; private fields -> internal ABI; keep package getters, failure setter private->internal only",
+        "zeroRect private getter -> internal ABI only",
+        "nested private StackMeasure -> internal @usableFromInline only"
+      ],
+      "special": [
+        "StackMeasure: add internal explicit zero initializer matching four existing default field values; no new package constructor"
+      ],
+      "reason": "direct measured/validated generic helper call closure of actual layout; no algorithm or external API change",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "sha256": "6d86059b20f8a99bd1e8cd99dbafd4b13082330d097d96eaf697b856a4da6ab0",
+      "ABI_nominals_or_protocols": [
+        "LayoutSemanticValidation"
+      ],
+      "ABI_fields_or_properties": [
+        "limits",
+        "counters",
+        "countersSnapshot"
+      ],
+      "explicit_serialized_functions": [
+        {
+          "name": "validate",
+          "line": 16,
+          "prefix": "package mutating func validate<Semantic, Metrics, Workspace>("
+        },
+        {
+          "name": "validateOccurrence",
+          "line": 52,
+          "prefix": "private mutating func validateOccurrence<Semantic, Metrics, Workspace>("
+        },
+        {
+          "name": "validatePrimitiveContent",
+          "line": 163,
+          "prefix": "private mutating func validatePrimitiveContent<Semantic, Metrics, Workspace>("
+        },
+        {
+          "name": "validateText",
+          "line": 227,
+          "prefix": "private mutating func validateText<Semantic, Metrics>("
+        },
+        {
+          "name": "reserveScope",
+          "line": 288,
+          "prefix": "private mutating func reserveScope<Workspace: LayoutWorkspace>("
+        },
+        "init"
+      ],
+      "ordinary_ABI_functions": [
+        {
+          "name": "validate",
+          "line": 305,
+          "prefix": "private func validate(_ primitive: SemanticLayoutPrimitive) -> LayoutError? {"
+        },
+        {
+          "name": "validate",
+          "line": 316,
+          "prefix": "private func validate(_ modifier: SemanticLayoutModifier) -> LayoutError? {"
+        },
+        {
+          "name": "invalid",
+          "line": 344,
+          "prefix": "private func invalid(_ value: GeometryScalar?) -> Bool {"
+        },
+        {
+          "name": "invalid",
+          "line": 348,
+          "prefix": "private func invalid(_ value: FrameLimit?) -> Bool {"
+        },
+        {
+          "name": "relationIsValid",
+          "line": 353,
+          "prefix": "private func relationIsValid("
+        },
+        {
+          "name": "isValidUnicodeScalar",
+          "line": 363,
+          "prefix": "private func isValidUnicodeScalar(_ value: UInt32) -> Bool {"
+        }
+      ],
+      "same_module_visibility_changes": [
+        "Only listed private generic/scalar helpers -> internal; private fields -> internal ABI; keep package getters, failure setter private->internal only"
+      ],
+      "special": [],
+      "reason": "direct measured/validated generic helper call closure of actual layout; no algorithm or external API change",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "sha256": "735a80dc1133d7fcae6ba5ba455b520a8f0224494b2357af224ddea8c200bc12",
+      "ABI_nominals_or_protocols": [
+        "LayoutCounters"
+      ],
+      "ABI_fields_or_properties": [
+        "scopeCount",
+        "currentDepth",
+        "maximumObservedDepth",
+        "textScalarCount",
+        "textLineCount",
+        "positionedGlyphCount"
+      ],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [
+        "init",
+        "reserveScope",
+        "enterScope",
+        "leaveScope",
+        "reserveTextScalar",
+        "reserveTextLine",
+        "reservePositionedGlyph",
+        "resetTextCounts",
+        "finish"
+      ],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "nongeneric checked scalar counter operations called by serialized generic Layout helpers; retain private storage and setters",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "sha256": "0ac0320ec58947aa4bc7c3f8ec0ff662e57f598d2a7764faa0d1c2bc33acfa92",
+      "ABI_nominals_or_protocols": [
+        "LayoutGeometry"
+      ],
+      "ABI_fields_or_properties": [
+        "zeroSize"
+      ],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [
+        "cap",
+        "adding",
+        "insetProposal",
+        "translated",
+        "offset(horizontal)",
+        "offset(vertical)",
+        "spacingTotal",
+        "intersection",
+        "clamped"
+      ],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "nongeneric geometry operations called by generic Layout bodies; no body serialization requirement introduced",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "sha256": "bbec7289fc9cb6c1f506e895231257c58bdd818ba6d0a020258cb7c97b342f81",
+      "ABI_nominals_or_protocols": [
+        "LayoutMeasurement",
+        "LayoutPlacement",
+        "LayoutTextLine",
+        "LayoutPositionedGlyph",
+        "LayoutWorkspace"
+      ],
+      "ABI_fields_or_properties": [
+        "LayoutMeasurement.idealSize",
+        "LayoutMeasurement.resolvedSize",
+        "LayoutPlacement.bounds",
+        "LayoutPlacement.clip",
+        "LayoutTextLine.identity",
+        "LayoutTextLine.lineIndex",
+        "LayoutTextLine.bounds",
+        "LayoutTextLine.baseline",
+        "LayoutTextLine.clip",
+        "LayoutPositionedGlyph.identity",
+        "LayoutPositionedGlyph.lineIndex",
+        "LayoutPositionedGlyph.glyphIndex",
+        "LayoutPositionedGlyph.instance",
+        "LayoutPositionedGlyph.glyph",
+        "LayoutPositionedGlyph.baseline",
+        "LayoutPositionedGlyph.clip"
+      ],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [
+        "LayoutMeasurement.init",
+        "LayoutPlacement.init",
+        "LayoutTextLine.init",
+        "LayoutPositionedGlyph.init"
+      ],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "actual Layout signature/field/constructor closure; no protocol requirement attributes or external conformance expansion",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutResultSink.swift",
+      "sha256": "57a52e0187904a317a7d3b00acf28afcd1854d2e62120cafd4fd12011e2ad06a",
+      "ABI_nominals_or_protocols": [
+        "LayoutResultSink",
+        "LayoutResultSinkState"
+      ],
+      "ABI_fields_or_properties": [],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "actual publication and outerlayout generic requirements; annotate protocols only, no bodyless directives",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "sha256": "ec168c1eb9bc6dff3cfb5144ab752958dad62d4bc1c419e8f0dea1b4149e704b",
+      "ABI_nominals_or_protocols": [
+        "LayoutLimits",
+        "LayoutSummary",
+        "LayoutResult"
+      ],
+      "ABI_fields_or_properties": [
+        "LayoutLimits.maximumScopes",
+        "LayoutLimits.maximumDepth",
+        "LayoutLimits.maximumTextScalars",
+        "LayoutLimits.maximumTextLines",
+        "LayoutLimits.maximumPositionedGlyphs",
+        "LayoutSummary.scopeCount",
+        "LayoutSummary.textScalarCount",
+        "LayoutSummary.textLineCount",
+        "LayoutSummary.positionedGlyphCount",
+        "LayoutSummary.maximumObservedDepth",
+        "LayoutSummary.rootBounds"
+      ],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [
+        "LayoutSummary.init"
+      ],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "only fields directly read by outerlayout/publication; checked LayoutLimits init stays unchanged",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutError.swift",
+      "sha256": "5733fe30105131fe00b87c4812e787a4efa6aed7236c84d5f93a0e0ddbcf629b",
+      "ABI_nominals_or_protocols": [
+        "LayoutError"
+      ],
+      "ABI_fields_or_properties": [],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "root/result/error cases already used by publication and generic helpers",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUILayout/ResolvedRenderLayoutView.swift",
+      "sha256": "7278d5216c075b499bee43e8b646f00a34f70f6b877ab9b4fc72de1878f10b33",
+      "ABI_nominals_or_protocols": [
+        "ResolvedRenderTextLine",
+        "ResolvedRenderGlyph",
+        "ResolvedRenderLayoutView"
+      ],
+      "ABI_fields_or_properties": [],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "Canvas derive protocol signature closure only; no fields/constructors promoted merely because referenced",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUISemanticCore/SemanticLayoutView.swift",
+      "sha256": "f7d067f23913efcab81ebc27ef3c22073c00c2536360b8f866c2f10e5205196b",
+      "ABI_nominals_or_protocols": [
+        "SemanticLayoutPrimitive",
+        "SemanticLayoutModifier",
+        "SemanticLayoutView"
+      ],
+      "ABI_fields_or_properties": [],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "outerlayout generic signature and actual Layout helper enum/protocol operations",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "sha256": "d1f60a53bf776c331ab57281f0874e08ef804f4e4d44c733134f92fc532f6a1f",
+      "ABI_nominals_or_protocols": [
+        "FontInstanceID",
+        "GlyphID",
+        "FontLineMetrics",
+        "GlyphMetrics",
+        "FontInstanceDescriptor",
+        "TextResourceDescriptor",
+        "GlyphMapping",
+        "ScalarGlyphMappingRecord",
+        "CanonicalTextMetricsView"
+      ],
+      "ABI_fields_or_properties": [
+        "TextResourceDescriptor.instanceCount",
+        "FontInstanceDescriptor.id",
+        "FontInstanceDescriptor.lineMetrics",
+        "FontLineMetrics.ascent",
+        "FontLineMetrics.descent",
+        "FontLineMetrics.lineGap",
+        "GlyphMetrics.advanceX",
+        "GlyphID.rawValue"
+      ],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [
+        "GlyphID.init(rawValue:)"
+      ],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "exact CanonicalTextMetricsView requirement types and actual Layout read fields; no raster/validator or arbitrary stored-field sweep GlyphID explicit RawRepresentable witnesses follow its named ABI nominal; no other explicit witness sweep.",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "sha256": "72e143423b6f5c9d1eba62377b031dedf896fba4a884e96fa85545941fbbf2fb",
+      "ABI_nominals_or_protocols": [
+        "CanvasValueTable",
+        "CanvasStagedEntry",
+        "CanvasStagedMetadata",
+        "CanvasStagedValues"
+      ],
+      "ABI_fields_or_properties": [
+        "CanvasStagedEntry.identity",
+        "CanvasStagedEntry.witness",
+        "CanvasStagedEntry.value",
+        "CanvasStagedEntry.invoked",
+        "CanvasStagedMetadata.count",
+        "CanvasStagedMetadata.releases",
+        "CanvasStagedValues.state",
+        "CanvasStagedValues.entries",
+        "CanvasStagedValues.capacity"
+      ],
+      "explicit_serialized_functions": [
+        "withCanvasStagedValues",
+        "CanvasStagedMetadata.init",
+        "CanvasStagedValues.init(state:entries:capacity:)",
+        "CanvasStagedValues.init(borrowing:)",
+        "CanvasStagedValues.borrowedValues",
+        "CanvasStagedValues.count",
+        "CanvasStagedValues.releaseCount",
+        "CanvasStagedValues.identity",
+        "CanvasStagedValues.stage",
+        "CanvasStagedValues.invoke",
+        "CanvasStagedValues.release",
+        "CanvasStagedValues.discard"
+      ],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [
+        "fileprivate payload/invocation fields and private scope fields -> internal ABI, never package",
+        "metadata getters remain package; fileprivate setters -> internal only",
+        "scope pointer/borrow-copy initializers -> internal serialized only; all lifetime clauses exact"
+      ],
+      "special": [
+        "Add internal explicit CanvasStagedEntry memberwise initializer matching current synthesized identity/witness/value/invoked=false behavior; no package/public constructor"
+      ],
+      "reason": "Function71 absent and actualscopedlender call; preserves exact pointer borrow union, checked lender and discard/release ordering",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIDrawing/StaticCanvasCallableTable.swift",
+      "sha256": "9c644426cf7f594dddff99cea8a21eb4c2fd57f295f4afdfbe049c55413ff9b6",
+      "ABI_nominals_or_protocols": [
+        "StaticCanvasCallableTable"
+      ],
+      "ABI_fields_or_properties": [],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "CanvasValueTable inherited Domain/CaptureStorage/read requirement; protocol only, original signature exact",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasInvocationSource.swift",
+      "sha256": "9b992bc729e793959c0d8ad3fcb374c0bf3ced7edb1cdd098c57e6ba48c451f2",
+      "ABI_nominals_or_protocols": [
+        "CanvasInvocationSource"
+      ],
+      "ABI_fields_or_properties": [],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "observed outerCanvas derive constraint; original scoped source signatures exact",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasPlanProducer.swift",
+      "sha256": "8a75acb55af64e06ad4aad12553c1e6c4c1a6c11aa937599f65e63a7bef68db7",
+      "ABI_nominals_or_protocols": [
+        "CanvasPlanProducer"
+      ],
+      "ABI_fields_or_properties": [],
+      "explicit_serialized_functions": [
+        "derive",
+        "validateOccurrences",
+        "fail"
+      ],
+      "ordinary_ABI_functions": [
+        "productionError"
+      ],
+      "same_module_visibility_changes": [
+        "private validateOccurrences/fail/productionError -> internal only"
+      ],
+      "special": [],
+      "reason": "actualStaticdraw generic edge0x11e84; invokeCanvas otherwise hidden behind ordinarygeneric outercaller",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingPlan.swift",
+      "sha256": "93e3216f2faaee98e2c025deef50cfb7513911efacdd56e90980be3cb6264da9",
+      "ABI_nominals_or_protocols": [
+        "DrawingPlanView",
+        "DrawingPlanWorkspace",
+        "DrawingPlanConstructionWorkspace"
+      ],
+      "ABI_fields_or_properties": [],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "derive Workspace signature + inherited protocol requirements; no attributes on bodyless members",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingLimits.swift",
+      "sha256": "eae0cc1be30bc22102c76613cd07b08ee577dbbb1f08d06caf350eb52d64be64",
+      "ABI_nominals_or_protocols": [
+        "DrawingLimits",
+        "StaticCanvasLimits"
+      ],
+      "ABI_fields_or_properties": [
+        "DrawingLimits.maximumCanvasOccurrences",
+        "StaticCanvasLimits.maximumStaticCallableCases",
+        "StaticCanvasLimits.maximumStaticCaptureBytes"
+      ],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "only direct fields checked in derive/lender; checked failable initializers preserved",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingValues.swift",
+      "sha256": "d1008926323fdb292ec32e95e2cefb17958ea5ccbfb8d2e0c48fb67e565f0874",
+      "ABI_nominals_or_protocols": [
+        "DrawingPlanSummary",
+        "DrawingProductionError",
+        "DrawingPlanResult"
+      ],
+      "ABI_fields_or_properties": [],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "derive return/protocol signature/error cases; no field blanket annotations",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIRenderCore/DrawingOperationSink.swift",
+      "sha256": "4d35496afb8dc6b4827b52b3441a8258a5f91754c765a8828cb5ff7ebaafba88",
+      "ABI_nominals_or_protocols": [
+        "SubpathRange",
+        "StraightLineStrokeHeader"
+      ],
+      "ABI_fields_or_properties": [],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "inherited DrawingPlanView requirement return types only; no fields/initializers",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIExecution/ExecutionValues.swift",
+      "sha256": "4520ec15d70aedb7f95dcbedb972b0b7fcc707cb1b08b2636cf5298820e6e12f",
+      "ABI_nominals_or_protocols": [
+        "RunCycleID",
+        "CandidateFrameID",
+        "ExecutionPhase",
+        "ExecutionContext"
+      ],
+      "ABI_fields_or_properties": [
+        "ExecutionContext.cycle",
+        "ExecutionContext.candidateFrame",
+        "ExecutionContext.phase"
+      ],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "derive directly checks execution phase/cycle/frame fields; no unrelated execution state annotations",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "sha256": "ba8501378a85365ce7e303a7c063419d740fee83151f1aea7c025af1dd1d30f5",
+      "ABI_nominals_or_protocols": [
+        "ObservableCanvasInvocationSource"
+      ],
+      "ABI_fields_or_properties": [
+        "models",
+        "values",
+        "table"
+      ],
+      "explicit_serialized_functions": [
+        "invokeCanvas"
+      ],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [
+        "private models/values/table -> internal ABI only, no package getters"
+      ],
+      "special": [],
+      "reason": "Function583 absent; preserves fresh models.withRead, original-value invoke, failure mapping, table inout and no retained read",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "sha256": "920b52c7b8d018b4bcfeb11c0468ef5632e9dbaea2670ba79cfc0647f1111501",
+      "ABI_nominals_or_protocols": [],
+      "ABI_fields_or_properties": [],
+      "explicit_serialized_functions": [
+        "dispatch"
+      ],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "Function678 absent; referenced target/record/action/result APIs already ABI-qualified; no other bridge body changes",
+      "trace_roots": [
+        "R6:dispatch"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "sha256": "3caac8f68d3f5b176e4c04b300d26b9c9cca96d2d0c6bf573b414da159fc7fe2",
+      "ABI_nominals_or_protocols": [
+        "HostActivationProgress",
+        "HostActivationStepResult",
+        "MVPHostActivationOwner",
+        "MVPHostTeardownOwner",
+        "MVPHostActivationController"
+      ],
+      "ABI_fields_or_properties": [
+        "HostActivationProgress.runtimeConstructed",
+        "HostActivationProgress.observationInstalled",
+        "HostActivationProgress.sourceStarted",
+        "MVPHostActivationController.lifecycleState",
+        "MVPHostActivationController.progress",
+        "MVPHostActivationController.assemblyReportRuntimeUseIsValid"
+      ],
+      "explicit_serialized_functions": [
+        "HostActivationProgress.init",
+        "HostActivationProgress.merging",
+        "MVPHostActivationController.activate",
+        "MVPHostActivationController.teardown",
+        "MVPHostActivationController.record",
+        "MVPHostActivationController.contain"
+      ],
+      "ordinary_ABI_functions": [
+        "MVPHostActivationController.init()",
+        "MVPHostActivationController.init(lifecycleState:)"
+      ],
+      "same_module_visibility_changes": [
+        "record/contain internal, not private @inlinable",
+        "controller package getters retain visibility; private setters -> internal only"
+      ],
+      "special": [],
+      "reason": "direct callee closure of absent hostactivate/teardown; all state transitions/failure precedence and teardown order exact",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "sha256": "d1dde13c8fce951c74376d21bac1855192a7c87371cefdf2fe195bd377f42d7f",
+      "ABI_nominals_or_protocols": [
+        "SignalAnalyzerPresetLiveOwner",
+        "SignalAnalyzerPresetHostInstance",
+        "SignalAnalyzerPresetHostInstances",
+        "MacOSDynamicHostActivationFailure",
+        "MacOSStaticHostActivationFailure"
+      ],
+      "ABI_fields_or_properties": [
+        "owner",
+        "controller",
+        "invariantFailure"
+      ],
+      "explicit_serialized_functions": [
+        "SignalAnalyzerPresetHostInstance.activate",
+        "SignalAnalyzerPresetHostInstance.teardown",
+        "SignalAnalyzerPresetHostInstance.init(expectedKind:assemblyReport:owner:invariantFailure:)",
+        "SignalAnalyzerPresetHostInstances.macOSDynamic",
+        "SignalAnalyzerPresetHostInstances.macOSStatic"
+      ],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [
+        "owner/controller package getters remain, setters internal only",
+        "invariantFailure private->internal ABI",
+        "checked fileprivate host initializer internal only; guard/Optional/@_lifetime(copy owner) exact"
+      ],
+      "special": [],
+      "reason": "Functions783/784 and actual p08ConstructStaticHost\u2192macOSStatic at0x65f54 / p08ConstructDynamicHost\u2192macOSDynamic at0x668f4. The Pi/nRF factories remain ordinary and excluded.",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "sha256": "3e00d5e22b04e6ccb25ab357f2d6fe96349f2ab31abf3cf9201206110d83b205",
+      "ABI_nominals_or_protocols": [
+        "MVPHostLifecycleState",
+        "HostActivationResult",
+        "HostAssemblyReport"
+      ],
+      "ABI_fields_or_properties": [
+        "HostAssemblyReport.kind"
+      ],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "hostactivation return/lifecycle and unchanged checkedfactory kind guard; no report-field blanket sweep",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift",
+      "sha256": "401908c35e265ad19b9788d17a32603bd966da81e4fef10b8ff2fc46a9d255c1",
+      "ABI_nominals_or_protocols": [
+        "MVPHostKind"
+      ],
+      "ABI_fields_or_properties": [],
+      "explicit_serialized_functions": [],
+      "ordinary_ABI_functions": [],
+      "same_module_visibility_changes": [],
+      "special": [],
+      "reason": "unchanged checkedhost init expectedKind comparison",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ],
+      "selector_policy": "Each listed type/field/function is an edit target only if it lacks the target attribute; existing qualified selectors are explicit no-ops and excluded from source changes. No unlisted field, initializer, requirement, witness or file is permitted.",
+      "existing_ABI_nominal_noops": []
+    }
+  ],
+  "compiler_dependent_frontier": "Not a claim of exhaustively preproved access legality. Compiler may expose additional signature/inherited associated-type dependencies or synthesized accessors. Group all independent owner diagnostics in the frozen sweep; no automatic edit/widening. Any additional file/declaration needs exact independent amendment before a next source variant; no source edit mid-sweep.",
+  "mechanism": "Explicit @inlinable at provenroots and requiredgenericcaller/helper closure; @usableFromInline only on named package/internal types, fields and nongeneric callees. Framework private fields/helpers may become internal ABI-only where named; no public/package capability widening. No wrapper algorithm or compiler policy change.",
+  "invariants": [
+    "authored Counter/private _model, State macro/tests/helpers frozen",
+    "concrete P08 access/session/provenance/owner inventory and supplied/pipeline/retired privatefields/constructors unchanged",
+    "coordinator admission/opportunity private setters and lifetime annotations unchanged",
+    "all14loans, Optional destination/complete lifetime union, checked capacity/provenance constructors, exclusivity, failure ordering/backinglast cleanup unchanged",
+    "no public API, package unchecked initializer, source-callable raw pointer/bank getters, storage copy, algorithm, limit, IDs/payload/workload, flags or enforcement change"
+  ],
+  "excluded_adjacent_factories": [
+    "SignalAnalyzerPresetHostInstances.raspberryPiDynamic",
+    "SignalAnalyzerPresetHostInstances.nrf52840Static"
+  ],
+  "ordinary_ABI_callee_rationale": "Nongeneric arithmetic/counter/helper bodies need legal ABI-callable linkage from serialized generic algorithms; their bodies need not be forcibly serialized. Generic operation helpers remain explicit serialized targets to avoid the default20-cost cutoff.",
+  "new_initializer_limit": "Only CanvasStagedEntry memberwise equivalent and LayoutEngine.StackMeasure zero equivalent; internal source access, original field values/ownership/defaults, no public/package unchecked constructor. Constructor/capture SIL and privacy controls required."
+}

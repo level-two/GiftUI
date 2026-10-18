@@ -7,6 +7,11 @@ Metadata/observer attribution and cold allocation remain unresolved. No source
 change, compiler/runtime retry or correction occurred. Next derive and independently
 review a targeted corrective1 design; privacy/lifetime, safety and strict cold stay
 gated. Whole-directory compatibility failures remain broader scope limits.
+The [targeted corrective1 design](grouped-module-closure-corrective1-design/README.md)
+is prepared for independent review:28 files, six proven roots plus exact required
+callers/helpers; no source/compiler execution or corrective-cycle consumption.
+Its framework internal ABI-only visibility choices revise the initial realization,
+while every normative concrete P08/private/lifetime/capability boundary stays exact.
 Eugene explicitly authorized grouped Layout and remaining-module
 dependency corrections, then full-host/cold validation under the strict contract.
 This is a new allowance of one initial candidate and at most two grouped

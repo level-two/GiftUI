@@ -18,6 +18,11 @@ superseded_by: null
 
 ## Grouped dependency continuation — 2026-10-18
 
+The [corrective1 root/dependency map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-design/README.md)
+is prepared for independent review: exact28-file framework ABI-only realization,
+six proven roots and required actual callers/helpers. No source/compiler work;
+corrections0/2. Normative P08/private/ownership/lifetime boundaries remain exact.
+
 Current [physical body/callee gate FAIL](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-codegen-result/README.md):
 six required entries lack serialized bodies; actual generic caller seams persist.
 Registered compile PASS is retained. Initial1/1 frozen, corrections0/2; targeted

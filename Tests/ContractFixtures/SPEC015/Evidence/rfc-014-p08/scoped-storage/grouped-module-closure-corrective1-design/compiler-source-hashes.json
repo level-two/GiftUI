@@ -1,0 +1,11 @@
+{
+  "official_commit": "b8189d766d86ad7fc8106787d6ce9e402f38dd72",
+  "tag": "swift-6.4.0-RELEASE",
+  "files": {
+    "CrossModuleOptimization.cpp": "8e869f1c7b6c515ad043f23618d97172e49e4d7504baab718a19cff117c6369b",
+    "MandatoryInlining.cpp": "78857d6f56f7403bebb51d205e0f791e71b740468dd874876f1e2aa47fef36f0",
+    "SILInliner.cpp": "d447a8b61a867fd6ca57abdd46018e4c5e057028b3d05a3049366b3a4abffb9c",
+    "TypeCheckAttr.cpp": "5bdc73109778d262b3f60523d506bf21fcf8ed397bf351f08aaadb8ce8126e1f",
+    "DeclContext.cpp": "b52375f35217ca5c0bb4d48f7a0bcc5a7784e5601eaa9af9594b9ac77dc494f7"
+  }
+}
