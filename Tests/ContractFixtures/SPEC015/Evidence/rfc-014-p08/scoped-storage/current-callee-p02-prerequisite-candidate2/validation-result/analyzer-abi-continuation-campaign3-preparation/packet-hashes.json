@@ -1,0 +1,90 @@
+{
+  "README.md": {
+    "bytes": 5507,
+    "sha256": "79d0b0eb42bcc070fa71583d5848a07bf9c2b9cb0bff2946b48b4895d8ec27c0"
+  },
+  "baseline-inputs.json": {
+    "bytes": 86847,
+    "sha256": "db158e6b6b540f0ebbdb869c554b4012b1e42132e220548a934edd67fcaf90eb"
+  },
+  "campaign3-static-inspection.json": {
+    "bytes": 2823,
+    "sha256": "f8a4fcacde43c3adc6643ea0a026b6932db47008a53e0430bcd077414385e44b"
+  },
+  "controls.json": {
+    "bytes": 18461,
+    "sha256": "3cee9a943e1dc1a2e67c6319ac992a7f78c652e2e20772c50fa6c80792435553"
+  },
+  "diagnostic-static-validation.json": {
+    "bytes": 4842,
+    "sha256": "e3fbc99a572f00852c10cb998c6984eeb75773e711b80c449b09a4b9de51f8be"
+  },
+  "diagnostic-synthetic-cases.json": {
+    "bytes": 40358,
+    "sha256": "f79bc14bbfdb36cd20f9178fa6aaef1f299233533cec7b485cd006e2ee4b3c99"
+  },
+  "diagnostic_parser.py": {
+    "bytes": 9620,
+    "sha256": "fe25ee0d8918635c25aff6766f6541428311e16fbd6719603a50f592cd28001a"
+  },
+  "execute-proposal.py": {
+    "bytes": 22638,
+    "sha256": "e18e26010fd0395a0aadf4d91944e8b5af96eba4861ff2159904559c4d6030b9"
+  },
+  "inherited-campaign2-context.md": {
+    "bytes": 18455,
+    "sha256": "9d90d9d05767997b2b02a97788fe8770e6cb3acecd89b49df2de13a287620b15"
+  },
+  "inherited-campaign2-static-validation.json": {
+    "bytes": 4850,
+    "sha256": "1c0aa7362ec362409d6c9d5d48f8aa7fc0c6eea34e13ecb7b3673968be2cc2ae"
+  },
+  "macos-static-A4-opt-in-control.json": {
+    "bytes": 1632,
+    "sha256": "a44a9bc4937cf32dbbaf149a12e75c9d2741c85e08d13435f67ac63762d59545"
+  },
+  "macro-objects.txt": {
+    "bytes": 493,
+    "sha256": "6e1f9d155fdf1587d25f765a9289a2a62b568341bcd7a2fe77402b7fd81d983d"
+  },
+  "macro-outputs.json": {
+    "bytes": 3427,
+    "sha256": "555dc7ccefa51d04004ce2f99ee1c13e272fbd624e46271e5eeaba94ba5a3e2a"
+  },
+  "macro-stages.json": {
+    "bytes": 11919,
+    "sha256": "087a3a59d95c65342d13305cfb2c9da47a28534a3450412395c5c867d1d38d75"
+  },
+  "preserved-inventory.json": {
+    "bytes": 39314,
+    "sha256": "d551dcb5d659811f2e290de58a42b3d431c626c7dd040808c8f090851f991bd9"
+  },
+  "provenance.json": {
+    "bytes": 9371,
+    "sha256": "3792db5937b44098c24d39926e638721fccd27a2b56f659dba236ae4570bebad"
+  },
+  "recipe.json": {
+    "bytes": 17764,
+    "sha256": "b0c061d53c2ff5eafcdd4dab834d58f749bc457d77d52eca1dbe640e60dcc46c"
+  },
+  "scratch-sources.json": {
+    "bytes": 29930,
+    "sha256": "785599545b58e75b03cce6cabe5884f803519ebeba975b3057c1fb226bb9ea76"
+  },
+  "selectors.json": {
+    "bytes": 4489,
+    "sha256": "6c401231bf2c0dc4905b178df977ab3674506b9ef70d672af428af6a1898c17f"
+  },
+  "static-applicability.json": {
+    "bytes": 2584,
+    "sha256": "97205458ed5009e77bdec9da7ed12f66a5bd1e3748ced06ec59c41dcf462f66e"
+  },
+  "static-fixture-receipt.json": {
+    "bytes": 21635,
+    "sha256": "5958a593b617f61284773636316f30a18936511ecf9fecb98eb097661a1c09a8"
+  },
+  "static-validation.json": {
+    "bytes": 7327,
+    "sha256": "2a87bf2de10319ab3278e5fa447023fbf1afea5d21766849e7086a7d1e8725b8"
+  }
+}
