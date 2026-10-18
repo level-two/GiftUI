@@ -1,0 +1,114 @@
+{
+  "profile": "macos-static",
+  "control": "negative-A8",
+  "passed": true,
+  "category": "serialized-ABI-access",
+  "core_receipt_sha256": "a172a535619eff2965210f54d5992eb1c9d4965ecb79978b11198605a71e09a8",
+  "positive_cell": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign8/macos-static/scratch/positive-actual-lowering",
+  "compiler": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "artifacts": {
+    "SignalAnalyzerDomain.o": {
+      "sha256": "d3648d106b38a55f20f00c59f096439b2d577a95da9ccbab7564ecf42809222c",
+      "bytes": 38392
+    },
+    "SignalAnalyzerDomain.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    },
+    "AnalyzerSchema.o": {
+      "sha256": "c8f21230bd3392d9be88afeb49208a503da75cf8928536ffb5489cb66d320d8a",
+      "bytes": 13712
+    },
+    "AnalyzerSchema.swift": {
+      "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85",
+      "bytes": 3247
+    },
+    "AnalyzerSchema.swiftsourceinfo": {
+      "sha256": "fe6251f90b6a2c45d4d1c98bbc319af737235fc2d5c7468f702cd255c09b50d7",
+      "bytes": 6244
+    },
+    "SignalAnalyzerDomain.swiftsourceinfo": {
+      "sha256": "6989d4f4c403642755c7af1f88f0018c604c66823612fd33be2c55578195a612",
+      "bytes": 7872
+    },
+    "AnalyzerSchema.swiftdoc": {
+      "sha256": "3ce1e1e8c0a6933bf57ea88c63c2604fc83731ad3a56926d3f7e561583347d2f",
+      "bytes": 380
+    },
+    "SignalAnalyzerDomain.swiftdoc": {
+      "sha256": "2b2d2532522a33761c9d9a982206b9b6ccb16e7d64d99d70d5bf628f38d67295",
+      "bytes": 624
+    },
+    "SignalAnalyzerDomain.swiftmodule": {
+      "sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798",
+      "bytes": 47984
+    },
+    "AnalyzerSchema.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    },
+    "AnalyzerSchema.swiftmodule": {
+      "sha256": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218",
+      "bytes": 34440
+    },
+    "AnalyzerPresentation.swift": {
+      "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c",
+      "bytes": 1217
+    },
+    "inputs/SignalAnalyzerDiagnostic.swift": {
+      "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+      "bytes": 5671
+    },
+    "inputs/ABIRead.swift": {
+      "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea",
+      "bytes": 205
+    },
+    "inputs/SignalPrimitiveValues.swift": {
+      "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c",
+      "bytes": 1582
+    },
+    "inputs/Analyzer.swift": {
+      "sha256": "158501c0a102b68bef50de440bc3fac88c0ef392f80879187d90c906379de767",
+      "bytes": 789
+    },
+    "inputs/AcquisitionState.swift": {
+      "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+      "bytes": 243
+    },
+    "inputs/Semantics.swift": {
+      "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005",
+      "bytes": 1620
+    },
+    "inputs/Main.swift": {
+      "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a",
+      "bytes": 176
+    }
+  },
+  "command_labels": [
+    "macos-static-negative-A8-SignalAnalyzerDomain",
+    "macos-static-negative-A8-lower-Analyzer-source",
+    "macos-static-negative-A8-AnalyzerSchema",
+    "macos-static-negative-A8-AnalyzerPresentation"
+  ],
+  "transitive_imports": {
+    "core": {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/d6e71aeacace2f01-22xgcr6w/macos-static/result.json",
+      "sha256": "a172a535619eff2965210f54d5992eb1c9d4965ecb79978b11198605a71e09a8"
+    },
+    "positive_scratch": {
+      "AnalyzerPresentation.swiftmodule": "42a9e3a319dc7c238c13b75baaf3cd1396664d6081cc9c755161df1190eb2283",
+      "ABIRead.o": "a5184af445b0e7982e7feccc1e77acaf7a4078aee8686ae8f87acf6644825848",
+      "SignalAnalyzerDomain.o": "0b1319bfecd00565cf95e5949417164841e7bd130303c5e0f3adbe17c51973c5",
+      "ABISemantics.swiftmodule": "d278d591dbc6cc15460936101c003fe60bdd7b4edfd4b2b099aacc6a15754fb8",
+      "AnalyzerSchema.o": "d08b4d6c3212c690109f98cdec2d6f1789418d67e008e7f12fcb947ba7caad96",
+      "DeclarationHost.o": "7c051cbfe95a1fb580c31488555c0b7f69f079ae158ef4f0c44c3a8fb11a72ba",
+      "SignalAnalyzerDomain.swiftmodule": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798",
+      "ABIRead.swiftmodule": "bb04a2500bdf48a573f6802626e9e062aca64502d7b9a9fcbc8d3e8e8dd57c95",
+      "AnalyzerSchema.swiftmodule": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218",
+      "DeclarationHost.swiftmodule": "0c104b39342dadd1d8494d3cfe9c866c44f77fbe1b5fb0ad9e335db963e5cca2",
+      "ABISemantics.o": "931f2e42d537d4e90a2c39ebc6dbdaf6cbd2e90c6c9a177f96488c867ceb8291",
+      "AnalyzerPresentation.o": "8b8e50943a16fa57549332449115e14b7be3c86732ae847182d9e24df1c6c519"
+    }
+  }
+}

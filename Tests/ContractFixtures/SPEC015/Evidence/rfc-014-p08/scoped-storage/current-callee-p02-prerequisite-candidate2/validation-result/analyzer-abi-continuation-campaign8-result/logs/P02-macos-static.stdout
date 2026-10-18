@@ -1,0 +1,6 @@
+P04 macos-static: record-high-water records=5 prefixes=11 payloads=3 scalars=2 depth=9 payload-bytes=100
+record-high-water records=5 prefixes=11 payloads=3 scalars=2 depth=9 payload-bytes=100
+derived-records checks=57 per-profile
+record-bank checks=58
+scoped-traversal assertions=30 failures=0; /Users/eugene/work/GiftUI/.build/contracts/spec-006-records/tmp_y7uyx9e/macos-static/result.json
+P02 macos-static: 28 checks passed; checks=120 failures=0; /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/d6e71aeacace2f01-22xgcr6w/macos-static/result.json
