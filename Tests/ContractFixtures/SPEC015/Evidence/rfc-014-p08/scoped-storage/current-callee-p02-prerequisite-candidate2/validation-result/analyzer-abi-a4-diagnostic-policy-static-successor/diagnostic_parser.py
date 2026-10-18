@@ -44,6 +44,9 @@ def classify_negative_diagnostics(control, exit_code, stdout, stderr,
     header = re.compile(r'^(.*?):([1-9][0-9]*):([1-9][0-9]*): (error|note|warning|remark): (.*)$')
     source_line = re.compile(r'^\s*([0-9]+)\s*\| ?(.*)$')
     gutter = re.compile(r'^\s*\|.*?\b(error|note|warning):\s*(.*)$')
+    malformed_located = re.compile(
+        r'^.*?:[0-9]+:[0-9]+:\s*(?:fatal\s+error|error|note|warning|remark)\b',
+        re.IGNORECASE)
     diagnostic_like = re.compile(r'\b(?:fatal\s+error|error|note|warning|remark)\s*:', re.IGNORECASE)
     crash = re.compile(
         r'(?im)^.*(?:Stack dump:|Stack trace:|Please submit a bug report|'
@@ -130,6 +133,8 @@ def classify_negative_diagnostics(control, exit_code, stdout, stderr,
                 # Do not change section/current or append to primary source/notes.
                 continue
             previous_excerpt = None
+            if malformed_located.match(line):
+                raise AssertionError(('malformed located diagnostic record', line))
             if diagnostic_like.search(line):
                 raise AssertionError(('unlocated/unparsed diagnostic record', line))
     assert records, 'no located primary Swift errors'

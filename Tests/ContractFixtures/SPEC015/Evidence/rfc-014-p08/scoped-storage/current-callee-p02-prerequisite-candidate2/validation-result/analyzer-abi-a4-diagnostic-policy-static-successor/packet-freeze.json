@@ -20,24 +20,24 @@
   "new_inputs": 37,
   "packet_files": [
     {
-      "bytes": 9249,
+      "bytes": 10124,
       "path": "README.md",
-      "sha256": "761326ac3d2b92821a077e10e3e54a40ec59eb3818be4d07e0bbfedf39570662"
+      "sha256": "d48fb72f71a1e5c2e20cdc896e4bd6f2c36baeb468f9ce8f8ec7b2dfda98f866"
     },
     {
-      "bytes": 9351,
+      "bytes": 9620,
       "path": "diagnostic_parser.py",
-      "sha256": "e5c4bd884ad0317ef8bf37734ff48808e116743a6ff2269dc9b65758433a8116"
+      "sha256": "fe25ee0d8918635c25aff6766f6541428311e16fbd6719603a50f592cd28001a"
     },
     {
-      "bytes": 3727,
+      "bytes": 3758,
       "path": "fixture-map.md",
-      "sha256": "a05c821e810e3726d34ceca2c6579e567a969f2b2d8d877f713dffde391f1cdb"
+      "sha256": "492eff54706f502e4382d0bbaaae9df1a4b6ac04511aec202ec2a2c5253272ff"
     },
     {
       "bytes": 2204,
       "path": "identity-map.md",
-      "sha256": "aef1ca7ed91bfb849ad8bf48ae122dd0c3880d433a57fc417ed1ec622a7ff0f2"
+      "sha256": "6083b6cb9f1f9c6fd97f23f1d16105a545ff2c538a779a2f7b921d1784a2fc6f"
     },
     {
       "bytes": 1042,
@@ -65,14 +65,14 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "bytes": 1123,
+      "bytes": 1243,
       "path": "invocation.json",
-      "sha256": "e4a8d0680b2bdf777567495ab9d16cfe42eddea4fa075ffdbcbf4469facc4c44"
+      "sha256": "fc1e0a9b1804d993d82301133f3e604a044006ac189087a5f0522f655d2e5ced"
     },
     {
-      "bytes": 134206,
+      "bytes": 134271,
       "path": "new-cases.json",
-      "sha256": "74ff0b1e03f0d4f37b7e073812f0f51dba55bcd4c1f05cf1a0bffa849fbe4913"
+      "sha256": "b4153279abc9bcc596843e3eabd3c4e0906261f2a1eef8aa738c0aee68750d1f"
     },
     {
       "bytes": 1632,
@@ -90,14 +90,14 @@
       "sha256": "1c641d5e16976175700ab6ff4f35d1133fb66a0b696a382c7a95c344d7fe65f4"
     },
     {
-      "bytes": 6428,
+      "bytes": 6687,
       "path": "run-static-fixtures.py",
-      "sha256": "e24c86e3a52493fe3fbf92e79d050db71e7352ddd15b0e9d6db86c58acf4d36b"
+      "sha256": "f3c9b361fc90440cd627e062f85d569186fbd3b32c223c4ad93726cd70ec3633"
     },
     {
-      "bytes": 1136,
+      "bytes": 1385,
       "path": "static-inspection.json",
-      "sha256": "e70d1266a1ce9fcdb8c14e532e25670a5ab420064f203e8ea688776c88124889"
+      "sha256": "ffb12ef57096802150a465d92b97b05f801f7a2b33bd0bc0d89fbc4d1ea06e69"
     }
   ],
   "parser_calls_during_preparation": 0,

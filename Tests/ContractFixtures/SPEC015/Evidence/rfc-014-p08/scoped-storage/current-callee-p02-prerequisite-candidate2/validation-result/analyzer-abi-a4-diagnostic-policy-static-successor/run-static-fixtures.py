@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Guarded static runner candidate. Requires separate reviewed execution authority.
+"""Guarded static runner candidate. Run only under the current reviewed allowance.
 
 Imports only the packet's pure parser; never imports a campaign entrypoint.
 This file has been prepared by source/syntax inspection, not executed.
@@ -17,8 +17,12 @@ def main():
     packet = Path(__file__).resolve().parent
     invocation = json.loads((packet / 'invocation.json').read_text())
     if (sys.argv != invocation['argv'][2:]
-            or getattr(sys, 'orig_argv', None) != invocation['argv']):
+            or Path(__file__).resolve() != Path(invocation['argv'][2])
+            or invocation['argv'][:2] != ['python3', '-B']):
         raise RuntimeError('STOP: exact separately authorized static argv required')
+    if (list(sys.version_info[:3]) != invocation['python_version']
+            or sys.executable != invocation['python_executable']):
+        raise RuntimeError('STOP: interpreter identity changed')
     if Path.cwd().resolve() != Path(invocation['cwd']):
         raise RuntimeError('STOP: run from the declared repository root')
     freeze_path = Path(sys.argv[2])

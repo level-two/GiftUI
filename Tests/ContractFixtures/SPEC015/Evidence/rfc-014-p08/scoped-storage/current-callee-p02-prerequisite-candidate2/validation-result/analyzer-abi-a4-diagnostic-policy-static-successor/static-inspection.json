@@ -9,6 +9,10 @@
   "new_expected_accepts": 3,
   "new_input_count": 37,
   "outputs_created": [],
+  "pre_execution_review_corrections": [
+    "Python 3.9 compatible effective-argv/interpreter guard; no sys.orig_argv dependency",
+    "Reject malformed located severity prefixes; A4-N20.malformed-note now targets missing colon after severity"
+  ],
   "parser_calls": 0,
   "parser_imports": 0,
   "policy_literal_matches_json": true,

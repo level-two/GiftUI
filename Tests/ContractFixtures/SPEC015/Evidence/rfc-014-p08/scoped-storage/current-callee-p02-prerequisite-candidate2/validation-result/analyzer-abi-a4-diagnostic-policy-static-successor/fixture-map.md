@@ -40,6 +40,6 @@ IDs and expectations; no mutation is applied to that file.
 | A4-N19.line | A4-N19 | reject | Replace primary location with 21:17. |
 | A4-N19.column | A4-N19 | reject | Replace primary location with 22:18. |
 | A4-N20.unparsed-note | A4-N20 | reject | Append 'note: unexpected unparsed note'. |
-| A4-N20.malformed-note | A4-N20 | reject | Append '/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:x: note: type declared here'. |
+| A4-N20.malformed-note | A4-N20 | reject | Append '/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: note type declared here' (missing colon after severity). |
 | A4-N20.unknown-remark | A4-N20 | reject | Append 'remark: unexpected unknown remark'. |
 | A4-N21 | A4-N21 | reject | Append located note at undeclared imported virtual file. |

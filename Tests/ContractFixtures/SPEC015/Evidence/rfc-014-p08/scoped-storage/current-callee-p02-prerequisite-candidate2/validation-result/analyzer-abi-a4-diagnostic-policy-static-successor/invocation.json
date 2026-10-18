@@ -15,7 +15,13 @@
   "cwd": "/Users/eugene/work/GiftUI",
   "failure_policy": "STOP first unexpected static fixture result; fresh output only; no tuning",
   "parser_calls_if_all_inputs_reached": 59,
+  "python_executable": "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+  "python_version": [
+    3,
+    9,
+    6
+  ],
   "producer_invocations": 0,
-  "status": "PREDECLARED; NOT EXECUTED; SEPARATE HUMAN STATIC EXECUTION AUTHORIZATION REQUIRED",
+  "status": "USER-AUTHORIZED STATIC STEP; INDEPENDENT REVIEW PENDING; NOT EXECUTED",
   "total_static_inputs": 59
 }

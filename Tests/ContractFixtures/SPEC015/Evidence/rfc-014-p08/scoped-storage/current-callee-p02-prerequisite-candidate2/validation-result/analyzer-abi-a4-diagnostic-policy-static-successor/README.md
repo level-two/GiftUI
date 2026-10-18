@@ -7,7 +7,7 @@ Prepared 2026-10-18 under the user's bounded authorization to implement the
 (commit `541a4cb9`). The assigning parent records Astra's classification as a
 diagnostic acceptance policy issue, with no source or normative defect. That
 classification is supplied review provenance. Independent review of this
-implementation and separate authorization to run static checks remain open.
+implementation remains the required gate before the user-authorized static check.
 
 Campaign2's one execution allowance is consumed. Its terminal STOP, A4's
 unqualified disposition, source candidate, freezes, outputs, invocation order
@@ -97,9 +97,12 @@ numbered excerpt rows and the archived omission row remain display syntax.
 ## Guarded static runner; invocation remains unexecuted
 
 The only predeclared future invocation is the exact argv array in
-`invocation.json`; its script arguments and cwd must match. Python must use
-`-B` and no optimization, so assertions remain active and imports create no
-bytecode. No execution authorization is conferred by the flag or this file.
+`invocation.json`; its script arguments, Python 3.9.6 executable identity and
+cwd must match. Python must use `-B` and no optimization, so assertions remain
+active and imports create no bytecode. Python 3.9 has no `sys.orig_argv`, so the
+runner checks the effective script arguments plus interpreter flags and identity.
+The user's current allowance covers one reviewed static invocation; the flag
+and this file confer no independent execution authority.
 
 Before import, the runner verifies every frozen payload and all 150 preserved
 files. It combines the 22 inherited and 37 new inputs, checks the closed
@@ -131,7 +134,17 @@ inspection cannot establish parser behavior, complete guard behavior or the
 correctness of every mutation; independent review and separately authorized
 static execution must resolve those uncertainties. Assertion-based rejection
 requires an interpreter without optimization; the runner enforces that gate.
-The system `python3` binary/version is not frozen as campaign toolchain evidence.
+The Python executable/version is fixed for these static checks; this is not a
+campaign toolchain or compiler identity claim.
+
+Independent pre-execution review of the first packet found two blockers, both
+corrected before any parser check: `sys.orig_argv` was unavailable on the pinned
+Python 3.9 interpreter, and a located note header missing the colon after
+`note` could fall through. The runner now checks the effective invocation and
+interpreter identity; the parser rejects malformed located severity prefixes.
+The existing A4-N20 malformed-note subcase now exercises that exact form, so
+the bounded inventory remains 59 inputs. The correction does not broaden the
+display-note allowance or alter the archived A4 record.
 
 The exact observed form comes only from the archived macOS Static A4 output.
 No ARMv6, Embedded, Dynamic, A5–A8 or privacy dialect coverage is inferred.
