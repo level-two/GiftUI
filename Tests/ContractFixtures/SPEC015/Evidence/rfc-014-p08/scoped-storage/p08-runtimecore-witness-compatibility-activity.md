@@ -1,6 +1,12 @@
 # P08 RuntimeCore witness compatibility activity — 2026-10-18
 
-**Candidate1/1 in progress before source edit; compiler unexecuted.** Eugene
+**Compile boundary PASS: lower+25 fresh owners, zero failed/blocked.**
+[Result](runtimecore-witness-compatibility-result/README.md) freezes all309 input/
+recipe hashes, complete commands/logs and verified source/output identities.
+Candidate1/1 is fixed; no automatic source repair or budget reset. Independent
+compile-boundary review next; current privacy/physical/codegen/safety/cold remain
+untested, P08/R07/T8.1/source candidate unaccepted. No source edits/new tests or
+later compiler/decoder/runtime execution followed the sweep. Eugene
 explicitly authorized the three previously diagnosed witness annotations followed
 by focused validation. This is one exact candidate with **zero automatic source
 repairs**; it does not reset the exhausted grouped initial1/1+corrective2/2 or any

@@ -1,0 +1,6 @@
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1845:29: warning: setter for property 'failure' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+        if failure == nil { failure = error }
+                            ^
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:37:31: note: setter for property 'failure' is not '@usableFromInline' or public
+    package internal(set) var failure: LayoutError?
+                              ^

@@ -1,0 +1,8 @@
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutResultSink.swift:18:34: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+        } else if payloadCopy is Canvas {
+                                 ^~~~~~
+                                 (any Canvas)
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRenderResultStorage.swift:9:30: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+        } else if payload is Canvas {
+                             ^~~~~~
+                             (any Canvas)

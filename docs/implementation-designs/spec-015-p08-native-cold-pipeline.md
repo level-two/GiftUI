@@ -18,14 +18,13 @@ superseded_by: null
 
 ## Grouped dependency continuation — 2026-10-18
 
-Current [RuntimeCore witness compatibility activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-runtimecore-witness-compatibility-activity.md):
-explicitly authorized one exact candidate1/1, no automatic repairs. Three witness
-annotations applied; source/token/protected audit and isolated25-owner runner
-validation PASS,309 frozen inputs; compiler unexecuted. Historical grouped
-initial1/1+corrective2/2 and every prior exhausted budget remain unchanged.
-[Prepared command](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-witness-compatibility-candidate1/README.md).
-Compile/privacy/codegen/safety/cold and P08/R07/T8.1 remain open; earlier records
-below are historical, without new acceptance or resource claims.
+Current [RuntimeCore witness compatibility compile result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-witness-compatibility-result/README.md):
+lower+25 fresh owners PASS, zero failed/blocked;309 input/recipe hashes and all
+source/output identities verify. Candidate1/1 fixed, no automatic source repairs;
+all historical exhausted budgets unchanged. Independent compile-boundary review
+next. Current privacy/physical six bodies/all42 origins/actual-host specialization,
+safety and strict cold remain untested; source candidate/P08/R07/T8.1 unaccepted.
+No source edits/new tests or later execution followed; earlier stages are historical.
 
 Current [final corrective2 result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective2-result/README.md):
 lower+20 owners PASS, RuntimeCore FAIL3 witness ABI requirements, four dependents
