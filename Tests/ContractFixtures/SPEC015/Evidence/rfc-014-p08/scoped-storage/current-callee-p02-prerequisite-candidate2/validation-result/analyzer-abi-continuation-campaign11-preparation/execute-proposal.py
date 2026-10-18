@@ -52,6 +52,54 @@ def main():
     frozen = json.loads(freeze_path.read_text())
     assert set(frozen) == set(baseline), 'postformat freeze path set differs'
     assert {k for k in frozen if frozen[k] != baseline[k]} <= set(selectors['files'])
+    def stream_digest(path):
+        value = hashlib.sha256()
+        with Path(path).open('rb') as source:
+            for block in iter(lambda: source.read(1024 * 1024), b''):
+                value.update(block)
+        return value.hexdigest()
+
+    def authenticate_armv6_sdk():
+        inventory = read(plan['armv6_sdk_inventory'])
+        root = Path(inventory['root'])
+        assert root == Path(read('armv6-A4-archived-policy.json')['precompile_identity']['sdk']['path']).parent, 'SDK inventory must cover fixed SDK root'
+        assert root.resolve() == root and root.is_dir(), 'SDK install root drift'
+        actual_names = {str(path.relative_to(root)) for path in root.rglob('*')}
+        assert actual_names == {item['path'] for item in inventory['entries']}, 'SDK entry inventory drift'
+        for item in inventory['entries']:
+            path = root / item['path']
+            if item['kind'] == 'symlink':
+                assert path.is_symlink() and os.readlink(path) == item['target'], ('SDK symlink drift', path)
+            elif item['kind'] == 'directory':
+                assert not path.is_symlink() and path.is_dir(), ('SDK directory drift', path)
+            else:
+                assert not path.is_symlink() and path.is_file(), ('SDK file kind drift', path)
+                assert path.stat().st_size == item['bytes'] and stream_digest(path) == item['sha256'], ('SDK byte drift', path)
+        archived = inventory['archive']
+        assert Path(archived['path']).stat().st_size == archived['bytes']
+        assert stream_digest(archived['path']) == archived['sha256']
+        provenance = inventory['install_provenance']
+        assert stream_digest(provenance['path']) == provenance['sha256']
+        return {'inventory_sha256': digest(PACKET / plan['armv6_sdk_inventory']),
+                'archive_sha256': archived['sha256'], 'install_sha256': provenance['sha256'],
+                'entry_count': len(inventory['entries'])}
+
+    def verify_unlocked():
+        # Authenticate every lock-independent input before executing Ruby.
+        readiness.verify_reviewed_packet(ROOT, PACKET, reviewed_commit, reviewed_tree, reviewed_packet_tree)
+        assert digest(freeze_path) == '0cb2c32520e4344940c4801c9bfea21206e828dd2d6db07dfb8ae06dd4840333'
+        readiness.verify_files(ROOT, frozen, read('frozen-links.json'))
+        readiness.verify_tools(ROOT, read('provenance.json')['compiler_identities'])
+        readiness.verify_inventory(ROOT, read('producer-input-inventory.json'))
+        authenticate_armv6_sdk()
+        for name, value in sources['sources'].items():
+            assert hashlib.sha256(value['text'].encode()).hexdigest() == value['sha256']
+        for name in selectors['files']:
+            actual = (ROOT / name).read_text()
+            positive = sources['sources']['positive/' + Path(name).name]['text']
+            assert actual == positive if name.startswith('Tests/') else re.sub(r'\s+', '', actual) == re.sub(r'\s+', '', positive)
+
+    verify_unlocked()
     if not os.environ.get('GIFTUI_VALIDATION_LOCK_OWNER'):
         os.execvp('ruby', plan['lock'] + sys.argv[3:])
     lock_owner = int(os.environ['GIFTUI_VALIDATION_LOCK_OWNER'])
@@ -94,7 +142,7 @@ def main():
     private_helper_leading_captures = {}
     armv6_a4_captures = {}
     current_commit = subprocess.check_output(
-        ['git', 'rev-parse', '--verify', 'HEAD'], cwd=ROOT, text=True).strip()
+        ['git', '--no-replace-objects', 'rev-parse', '--verify', 'HEAD'], cwd=ROOT, text=True).strip()
     assert re.fullmatch(r'[0-9a-f]{40}', current_commit) and current_commit == reviewed_commit
     state['authenticated_current_commit'] = current_commit
     private_policy = read('private-storage-policy.json')
@@ -104,10 +152,11 @@ def main():
 
     def verify():
         verify_lock()
+        verify_unlocked()
         readiness.verify_reviewed_packet(ROOT, PACKET, reviewed_commit, reviewed_tree, reviewed_packet_tree)
         readiness.verify_inventory(ROOT, read('producer-input-inventory.json'))
         assert shutil.disk_usage(ROOT).free >= plan['minimum_free_bytes'], 'storage below frozen stage threshold'
-        assert subprocess.check_output(['git', 'rev-parse', '--verify', 'HEAD'],
+        assert subprocess.check_output(['git', '--no-replace-objects', 'rev-parse', '--verify', 'HEAD'],
                                        cwd=ROOT, text=True).strip() == current_commit, 'HEAD drift'
         assert digest(freeze_path) == state['postformat_freeze_sha256']
         manifest = read('packet-hashes.json')
@@ -115,7 +164,7 @@ def main():
         assert all(not p.is_symlink() for p in PACKET.rglob('*')), 'symlinked packet'
         for name, value in manifest.items():
             assert digest(PACKET / name) == value['sha256'], ('changed packet', name)
-        readiness.verify_files(ROOT, frozen)
+        readiness.verify_files(ROOT, frozen, read('frozen-links.json'))
         for name in selectors['files']:
             actual = (ROOT / name).read_text()
             positive = sources['sources']['positive/' + Path(name).name]['text']
@@ -143,38 +192,6 @@ def main():
 
     def save():
         (out / 'result.json').write_text(json.dumps(state, indent=2) + '\n')
-
-    def stream_digest(path):
-        value = hashlib.sha256()
-        with Path(path).open('rb') as source:
-            for block in iter(lambda: source.read(1024 * 1024), b''):
-                value.update(block)
-        return value.hexdigest()
-
-    def authenticate_armv6_sdk():
-        inventory = read(plan['armv6_sdk_inventory'])
-        root = Path(inventory['root'])
-        assert root == Path(read('armv6-A4-archived-policy.json')['precompile_identity']['sdk']['path']).parent, 'SDK inventory must cover fixed SDK root'
-        assert root.resolve() == root and root.is_dir(), 'SDK install root drift'
-        actual_names = {str(path.relative_to(root)) for path in root.rglob('*')}
-        assert actual_names == {item['path'] for item in inventory['entries']}, 'SDK entry inventory drift'
-        for item in inventory['entries']:
-            path = root / item['path']
-            if item['kind'] == 'symlink':
-                assert path.is_symlink() and os.readlink(path) == item['target'], ('SDK symlink drift', path)
-            elif item['kind'] == 'directory':
-                assert not path.is_symlink() and path.is_dir(), ('SDK directory drift', path)
-            else:
-                assert not path.is_symlink() and path.is_file(), ('SDK file kind drift', path)
-                assert path.stat().st_size == item['bytes'] and stream_digest(path) == item['sha256'], ('SDK byte drift', path)
-        archived = inventory['archive']
-        assert Path(archived['path']).stat().st_size == archived['bytes']
-        assert stream_digest(archived['path']) == archived['sha256']
-        provenance = inventory['install_provenance']
-        assert stream_digest(provenance['path']) == provenance['sha256']
-        return {'inventory_sha256': digest(PACKET / plan['armv6_sdk_inventory']),
-                'archive_sha256': archived['sha256'], 'install_sha256': provenance['sha256'],
-                'entry_count': len(inventory['entries'])}
 
     def remember_producer(row):
         if type(row['exit']) is not int or row['exit'] != 0:
@@ -295,6 +312,31 @@ def main():
                    'root_map': fresh_policy.MAP}
         return key, context, sources_now, str(base)
 
+    def source_provenance(argv):
+        captured = {}
+        candidates = [Path(token) for token in argv if token.startswith(str(ROOT) + '/') and token.endswith('.swift')]
+        if '--lower-source' in argv:
+            candidates = [Path(argv[argv.index('--lower-source') + 1]), Path(argv[argv.index('--lower-source') + 2])]
+        inventory = read('producer-input-inventory.json')['files']
+        for path in candidates:
+            # A source token can also name an output on lowerer commands; the
+            # lowerer case above selects only its two declared input operands.
+            data = actual_bytes(path)
+            relative = str(path.relative_to(ROOT))
+            identity = hashlib.sha256(data).hexdigest()
+            if relative in frozen or relative in inventory:
+                assert identity == frozen.get(relative, inventory.get(relative)), 'maintained source input drift'
+            elif path.parent.name == 'inputs':
+                cell_id = path.parent.parent.name
+                candidate = cell_id + '/' + path.name
+                if candidate not in sources['sources']:
+                    candidate = 'privacy/' + path.name if ('privacy/' + path.name) in sources['sources'] else 'positive/' + path.name
+                assert data == sources['sources'][candidate]['text'].encode(), 'materialized source input drift'
+            else:
+                assert any(str(path) in record['artifacts'] and record['artifacts'][str(path)]['sha256'] == identity for record in producer_snapshots.values()), 'unsealed generated source input'
+            captured[str(path)] = identity
+        return captured
+
     def launch(label, argv, extra_environment=None):
         verify()
         if label == 'P02-raspberry-pi-armv6' or label.startswith('raspberry-pi-armv6-'):
@@ -338,6 +380,7 @@ def main():
             audit_hash = digest(audit_path)
             assert fresh_context(label, argv, env) == fresh, 'prelaunch recheck drift'
             fresh_captures[label] = (capture, fresh, str(audit_path), audit_hash, audit['completed_ns'])
+        source_capture = source_provenance(argv)
         started, timer = time.time_ns(), time.monotonic()
         if label == 'raspberry-pi-armv6-negative-A4-SignalAnalyzerDomain':
             assert arm_audit['completed_ns'] <= started and Path(arm_audit['path']).stat().st_mtime_ns <= started, 'ARM audit must precede compiler start'
@@ -354,6 +397,7 @@ def main():
             assert authenticate_armv6_sdk() == state['armv6_sdk_preflight'], 'ARM SDK postlaunch drift'
         if label in {stage['name'] for stage in plan['dependent_stages']}:
             authenticate_campaign_receipts()
+        assert source_provenance(argv) == source_capture, 'postlaunch source provenance drift'
         text = Path(str(prefix) + '.stdout').read_text(errors='replace')
         diagnostics = Path(str(prefix) + '.stderr').read_text(errors='replace')
         row = {'name': label, 'argv': argv, 'environment_overrides': {
@@ -363,6 +407,7 @@ def main():
             'stderr_sha256': digest(str(prefix) + '.stderr')}
         if label == 'raspberry-pi-armv6-negative-A4-SignalAnalyzerDomain':
             row['effective_environment_sha256'] = hashlib.sha256(json.dumps(env, sort_keys=True).encode()).hexdigest()
+        row['source_provenance'] = source_capture
         state['stages'].append(row)
         remember_producer(row)
         if fresh is not None:
@@ -1142,6 +1187,11 @@ def main():
                                        'positive_scratch': {str(p.relative_to(positive_cell)): digest(p)
                                                             for p in positive_cell.glob('*')
                                                             if p.suffix in ('.o', '.swiftmodule')}}}
+        matching = [row for row in state['stages'] if row['name'].startswith(profile + '-' + control['id'] + '-')]
+        data['stage_captures'] = [{'name': row['name'], 'exit': row['exit'], 'source_provenance': row.get('source_provenance',{}), **{stream: {'path': str(out / 'logs' / (row['name'] + '.' + stream)), 'sha256': row[stream + '_sha256']} for stream in ('stdout','stderr')}} for row in matching]
+        data['prelaunch_audits'] = [row['prelaunch_audit'] for row in matching if 'prelaunch_audit' in row]
+        data['prelaunch_audits'].extend(value for key,value in state.items() if key.endswith('_authentication') and isinstance(value,dict) and 'path' in value and 'sha256' in value)
+        readiness.verify_stage_captures(data)
         path = cell / ('control-' + control['id'] + '.json')
         path.write_text(json.dumps(data, indent=2) + '\n')
         state['control_receipts'].append({'profile': profile, 'control': control['id'],
@@ -1167,6 +1217,7 @@ def main():
             assert {path.name for path in base.iterdir() if path.name.endswith(('.o','.swiftmodule'))} == expected, 'extra imported producer artifact'
         for item in state['control_receipts']:
             data = readiness.verify_receipt(item['path'], item['sha256'], ROOT)
+            readiness.verify_stage_captures(data)
             assert data['passed'] is True and data['profile'] == item['profile'] and data['control'] == item['control']
             core = refs[item['profile']]
             assert data['core_receipt_sha256'] == core['sha256']

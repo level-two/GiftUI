@@ -8,8 +8,8 @@
     "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
   },
   "README.md": {
-    "bytes": 9735,
-    "sha256": "3d4f7f50cfeb0d35a9de2f6d209485c542e4ef9b5ff4ac3ba45100d1969b9563"
+    "bytes": 12466,
+    "sha256": "6b95358205083a51f87090a8af47302303b49b9fd012df069fb10c42a3b68d95"
   },
   "armv6-A4-archived-policy.json": {
     "bytes": 7521,
@@ -52,8 +52,8 @@
     "sha256": "00e17518b8ccb5da306f097dcc43460acb6cbde2a8f82e677789ebc66c4f24ab"
   },
   "execute-proposal.py": {
-    "bytes": 95009,
-    "sha256": "31bfc110f7aca0028ffedd4ddb93afc6ed0d97e72239917a11e6bbed19d4d426"
+    "bytes": 98789,
+    "sha256": "d8e4e9507f1032c3398ac50f44df2abb65976f2103e3dfba34fd8294a8b4a7d3"
   },
   "fresh-core-fields.json": {
     "bytes": 43259,
@@ -70,6 +70,10 @@
   "fresh_policy.py": {
     "bytes": 4751,
     "sha256": "85cecc502ba56fbcfa21bd8d36842a654288797cfdd38fd006894cf3d4ccac1e"
+  },
+  "frozen-links.json": {
+    "bytes": 700,
+    "sha256": "7f3cfe8789864d9fcb63f423f8e4adc7a0443adbfe8c5f5e457a43960e8da237"
   },
   "macos-static-A4-opt-in-control.json": {
     "bytes": 1635,
@@ -140,16 +144,16 @@
     "sha256": "2f12a942cbad13f0c0d931e3bfb2265038146bb32370b953bc89c40009667502"
   },
   "readiness.py": {
-    "bytes": 4444,
-    "sha256": "a127b194b8d98dad3d58c6b301335760c9cceb952d4969b656f1d0c6999a7459"
+    "bytes": 5631,
+    "sha256": "c557ee377109d53019cc676d1242a7434273bab2c1479d4320f713e336c43f73"
   },
   "recipe.json": {
     "bytes": 18123,
     "sha256": "cadd3ef63acdcc3910f19af0ceb17ea38f5a5aac04c713bc21991f4d6cacafa8"
   },
   "reviewed-launch.py": {
-    "bytes": 1176,
-    "sha256": "5586cac4b74c553ee6495636b75a10856b9211aaf1d400881e7710b2f440d197"
+    "bytes": 1500,
+    "sha256": "928b0d82978f5751d3b976f92a4bdb6953a3b276a99641af92feb29ed52bffc0"
   },
   "scratch-sources.json": {
     "bytes": 29930,
@@ -160,15 +164,15 @@
     "sha256": "6c401231bf2c0dc4905b178df977ab3674506b9ef70d672af428af6a1898c17f"
   },
   "static-validation.json": {
-    "bytes": 531,
-    "sha256": "cd951da74516553e817c4d487596c72d29238135d1b8c5faba156c3711aa6907"
+    "bytes": 796,
+    "sha256": "a00c47c35a913fef721ff3fbb94c3e588391cc8f66dc0d6b20c812c960dfd708"
   },
   "test_fresh_policy.py": {
     "bytes": 6154,
     "sha256": "66587e71a2700776de817a9cb52240a0ffd8c01e7a95a3e348b45e2e6b8e9e2e"
   },
   "test_readiness.py": {
-    "bytes": 8354,
-    "sha256": "536d956622d48ab8a28e135c489f567579699beb5bdab4a6848e7b530da23333"
+    "bytes": 14296,
+    "sha256": "023bbac6d3dec982dce5755d16fe2ce90660e69bb04b9057812e9211b0051754"
   }
 }

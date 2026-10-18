@@ -148,3 +148,45 @@ positive module and extra imported-object mutations. These complement the four
 finite matcher tests. No compiler or campaign ran. The corrected commit requires
 a new independent readiness review and externally supplied object pins before
 launch.
+
+## Second readiness correction
+
+The four residual blockers in the review of `d4d78043` are corrected here.
+
+- `frozen-links.json` explicitly pins the real freeze's two supported `swift`
+  and `swiftc` links by exact path, literal link target, resolved path and bytes.
+  The other 539 frozen files still reject aliases. The compiler-free suite now
+  authenticates the actual real 541-input freeze and tests an alternate link
+  targeting identical bytes.
+- Every authentication Git subprocess and trusted bootstrap uses
+  `git --no-replace-objects`. Every retrieved packet blob is independently hashed
+  as a Git blob object, in addition to the commit and tree objects. The bootstrap
+  independently hashes its retrieved verifier blob. A real temporary repository
+  with an active blob replacement ref cannot substitute changed packet bytes.
+  The external trusted launch command must likewise use
+  `git --no-replace-objects show REVIEWED_COMMIT:.../reviewed-launch.py` before
+  piping to `PYTHONDONTWRITEBYTECODE=1 python3 - COMMIT TREE PACKET_TREE`.
+- `verify_unlocked` authenticates the reviewed Git packet, exact freeze, supported
+  links, compiler identities, input discovery inventory, complete installed ARM
+  SDK/archive/provenance and materialization candidate before the Ruby lock
+  script can execute. This includes the frozen
+  `scripts/lib/serialize-validation.rb` bytes. Verification repeats under the
+  lock and at producer/consumer boundaries. The actual pre-Ruby verifier is tested
+  against a changed lock script.
+- Every control receipt now seals every matching stage's complete stdout/stderr
+  identity, source provenance and prelaunch audit references, including negative
+  stages. Existing policy authentication audits are also retained. The complete
+  80-receipt gate rechecks these actual files before each dependent use; actual
+  negative-stream and fresh-audit mutations are rejected by its filesystem test.
+
+Positive scratch sources needed additional provenance checks. Every explicit
+Swift input and each lowerer's two input operands now has exact provenance checked
+before and after process execution. Maintained inputs join the reviewed freeze or
+input inventory; materialized inputs join the exact positive/negative candidate;
+generated inputs join an already completed lowerer output snapshot. These source
+captures are sealed into stage/control receipts and checked again at the dependent
+gate. Tests mutate both materialized positive and generated inputs.
+
+The suite now has twelve compiler-free tests (eight filesystem/readiness tests
+and four finite matcher tests). No compiler, campaign or producer command ran.
+This correction requires a fresh independent review and new external object pins.

@@ -20,9 +20,18 @@ def actual(path):
     return path.read_bytes()
 
 
-def verify_files(root, expected):
+def verify_files(root, expected, links=None):
+    links = links or {}
+    require(set(links) <= set(expected), 'extra frozen link identity')
     for name, identity in expected.items():
-        require(sha(actual(Path(root) / name)) == identity, 'file identity: ' + name)
+        path = Path(root)/name
+        if name in links:
+            import os
+            link = links[name]
+            require(path.is_symlink() and os.readlink(path) == link['target'] and str(path.resolve()) == link['resolved'], 'frozen link identity')
+            require(sha(path.read_bytes()) == identity == link['sha256'], 'frozen link bytes')
+        else:
+            require(sha(actual(path)) == identity, 'file identity: ' + name)
 
 
 def verify_tools(root, identities):
@@ -52,7 +61,7 @@ def verify_inventory(root, definition):
 
 
 def git(root, *args):
-    return subprocess.check_output(['git', *args], cwd=root)
+    return subprocess.check_output(['git', '--no-replace-objects', *args], cwd=root)
 
 
 def verify_reviewed_packet(root, packet, commit, tree, packet_tree):
@@ -75,7 +84,9 @@ def verify_reviewed_packet(root, packet, commit, tree, packet_tree):
         header,name = record.split(b'\t',1)
         mode,kind,oid = header.split()
         require(mode in (b'100644',b'100755') and kind == b'blob', 'packet mode/type')
-        expected[name.decode()] = git(root,'cat-file','blob',oid.decode())
+        data = git(root,'cat-file','blob',oid.decode())
+        require(hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest() == oid.decode(), 'Git blob object bytes')
+        expected[name.decode()] = data
     actual_names = {str(path.relative_to(packet)) for path in Path(packet).rglob('*') if path.is_file() or path.is_symlink()}
     require(actual_names == set(expected), 'reviewed packet inventory')
     for name,data in expected.items():
@@ -100,3 +111,14 @@ def verify_receipt(path, expected_hash, root):
         content = actual(target)
         require({'sha256':sha(content),'bytes':len(content)} == value, 'receipt artifact identity')
     return data
+
+
+def verify_stage_captures(data):
+    for stage in data.get('stage_captures', []):
+        for stream in ('stdout','stderr'):
+            item = stage[stream]
+            require(sha(actual(item['path'])) == item['sha256'], 'sealed stage stream drift')
+        for path,identity in stage.get('source_provenance',{}).items():
+            require(sha(actual(path)) == identity, 'sealed stage source drift')
+    for audit in data.get('prelaunch_audits',[]):
+        require(sha(actual(audit['path'])) == audit['sha256'], 'sealed prelaunch audit drift')

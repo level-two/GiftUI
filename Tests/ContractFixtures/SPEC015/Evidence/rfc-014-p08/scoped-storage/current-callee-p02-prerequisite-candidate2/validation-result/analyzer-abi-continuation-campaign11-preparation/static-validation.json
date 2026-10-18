@@ -3,12 +3,16 @@
   "compiler_launches": 0,
   "discovered_input_files": 498,
   "external_object_pins": "required from independent review at launch; trusted Git bootstrap only",
-  "filesystem_adversarial_tests": 4,
+  "filesystem_adversarial_tests": 8,
   "finite_forms": 45,
   "freeze_inputs": 541,
+  "git_replacement_refs": "pass no-replace and independent blob object hashing",
+  "positive_source_prepost": "pass materialized/generated mutation tests",
   "readiness_blockers_addressed": 5,
+  "readiness_residuals_addressed": 4,
+  "real_541_input_freeze": "pass including exact two-link allowlist",
   "runner_syntax": "pass",
   "scope": "matcher accepts and adversarial mutations, all exact recipe argv; not producer/compiler evidence",
   "status": "corrected_static_pass_new_independent_readiness_pending",
-  "tests": 8
+  "tests": 12
 }
