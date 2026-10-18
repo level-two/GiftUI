@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [observable selector continuation result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-selector-continuation1-result/README.md):
+all34 unique/body-positive physical selections PASS; fresh42-source SIL capture PASS,
+832 hashes verified. Source e4e4efc6 unchanged; candidate1/1/no automatic repairs and
+historical budgets retained. Concrete callbacks/ordinary leaves require read-only
+interpretation; safety/strictcold/P08 remain open. Earlier selector status is history.
+
 [Independent B-observable design READY](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-observable-grouped-design-review.md)
 at d9fc4359: 36 sites/five files/four roots and required-three-scalar Address
 equivalent. Separate source/budget authorization required; current FAIL/STOP and

@@ -1,5 +1,10 @@
 # Grouped B-observable candidate — 2026-10-18
 
+[Continuation result](observable-selector-continuation1-result/README.md):34/34 unique
+positive physical bodies and fresh42-source SIL PASS;832 input hashes verified.
+Source fixed; no compiler/decoder/runtime during evidence freeze. Actual callback
+interpretation next; no whole-chain/safety/cold/P08 acceptance.
+
 [Independent selector continuation READY](p08-observable-selector-continuation-review.md):
 five exact identities correct only the harness matcher. Reuse sealed prerequisites,
 then one34-target gate before fresh same42 SIL. Original result preserved; source
