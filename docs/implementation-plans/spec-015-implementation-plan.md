@@ -29,6 +29,14 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [Canvas+writer+transfer proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-grouped-inventory/README.md):
+68sites/11files including finite Table producer/tests; six original roots grouped
+F05/F06/F13/F14/F15/F19 with direct typed writer/storage/cleanup closure. Exact
+Reference fourrequiredletargs, current generated CanvasABI is NOOP. Remaining Cpublish3/
+Ctraversal5/E-Fcommit2 unselected/unqualified; ordinary text/cold costs explicit.
+Derived read-only design/no source/compiler/runtime/new allowance; independent review
+next. Current codec body FAIL/STOP and prior limited PASS remain; P08 not accepted.
+
 Current [callback concrete interpretation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-consumer-result/README.md):
 selected callbacks now specialize; ordinary phantom-Schema bind success passes bounded
 scalar object inspection, cold failure witness remains unqualified. Next actual generic

@@ -1,0 +1,25 @@
+{
+  "actual_roots": "reuse frozen current F13 background/F14 VStack capacity-success SIL +physical0BB/object calls; F15 buildRenderPlan live generic transfer previously recorded. Proposal no fresh execution.",
+  "source_chain": [
+    "CanvasCodec.primitive -> Table.payload -> Canvas enum case or StandardCodec.primitive(wrapping) -> project/typecheck/text decode -> writer.store(empty or span) -> Bank.store -> fail; consumedPayload+actualbuffer writes",
+    "CanvasCodec.modifier/action -> StandardCodec wrapping -> project/roles/value -> writer/Bank.store",
+    "Transfer.stage -> values.count -> SemanticStore.takePendingCanvas -> candidate/bank -> checked record/reference callback -> values.stage/Table.caseID/count/capturebytes -> payload.canvas(nil), record.kind primitive",
+    "Transfer failure -> values.discard +try?semantic.discardCandidate -> bank.clear; original DrawingError capacity mapping preserved",
+    "generatedTable.invoke -> existing Canvas._giftUIInvokeCanvas -> concrete _giftUIDraw; existing generatedCanvas ABI/fields already proven no source change"
+  ],
+  "existing_noops": [
+    "CanvasStagedValues nominal/fields/checkedlender/stage/invoke/release/discard already ABI/inlinable; preserve all entries/claims/value moves",
+    "CanvasValueTable/StaticCanvasCallableTable/SemanticRecordPayloadCodec protocols already ABI; no protocol name/signature/API change",
+    "generatedCounterCanvas has @usableFromInline before blanktrivia at24 and draw/model/Domain already ABI; FiniteSourceLowering.swift NOT edited",
+    "Writer/Bank/Store scopes/limits/metadata phase/revision/readers ABI already present; no factory access/lifetime edit",
+    "SemanticExpansionError/Role/recordlimits nominal/recordkind already ABI"
+  ],
+  "ordinary_leaves_cost_unknown": [
+    "BoundedText.withUTF8 remains ordinary public generic-result checked callback; private storage untouched. Require actual stack/noescape closure and normal/cold cost inspection after specialization, do not assume noheap or force storage ABI.",
+    "Schema/raw key ordinarysuccess qualification from prior packet retained; cold Error witness cachemiss resource unresolved, no warmup exemption.",
+    "Rect.checkedconstruction and fixed scalar metadata/reset initializers can remain ordinary ABI if actual proof supports them; pointer symbols alone are not failure.",
+    "generated public/ABI table witness can expose further source-legal field dependencies; grouped compile diagnostics required, not automaticrepair"
+  ],
+  "producer_bounds": "canvasWitnessTable already rejects invalid presentation identifier/empty or oversized inventory, inventory owns concrete Canvas names. Only this finite table emitter output attributes change; ordinary ObservableStateHost macro eligibility and authoredState backing untouched. Actual authoredprivate Canvas compatibility should use current validator/sourceaccess outcome, never autochangeprivate access.",
+  "compile_uncertainties": "Synthesis of ABI Equatable/Sendable witness access for newly ABI enums/logicalreference; source legality of exact signatures/associated types; fresh generated table/body bytes and parser trivia. Reviewer/source compiler must verify; no assumed defaultCMO."
+}

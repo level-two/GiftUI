@@ -1,0 +1,20 @@
+{
+  "SemanticRecordReference": "existing implicit internal memberwise -> internal @usableFromInline init(owner: SemanticRecordOwnerIdentity, bank: UInt8, revision: UInt32, ordinal: UInt16); ALL FOUR let arguments REQUIRED, no defaults, four same-order assignments. Ordinary body; preserve Equatable/Sendable behavior.",
+  "others": "No other constructor replacement/default; existing checked Writer/Store/Bank/Canvas stage factories/limits/recordmetadata resets preserved; existing empty generated Table.init gains @inlinable only.",
+  "authority": [
+    "SPEC015319\u2013375 private P08 supplied/pipeline/session/access/retired storage,14loans andOptional remain exact",
+    "SPEC01095\u2013103/131\u2013145 State/reference/seed/ownership/backing contracts retained",
+    "ADR03961\u201384 actual backing loans/restricted factory/provenance retained",
+    "SPEC006 bounded record/payload/text semantics and existing unknownpayload failclosed retained",
+    "matched Swift6.4 CodeSynthesis.cpp b8189d766d86ad7fc8106787d6ce9e402f38dd72 returns for let before Optional nil; no fabricated nil default"
+  ],
+  "narrow_visibility": "Only framework SemanticPayloadWriter.bank/limits and StandardPayloadCodec.project private->internal ABI. These are not normative privateP08 carriers, State backing, raw key, model claim/ledger or authored Canvas storage. Ordinary crossmodule imports still cannot name internals. SemanticRecordView.private bank/owner/valid unchanged. Buffer fields already package; ABI annotation does not widen source access.",
+  "forbidden": [
+    "authored State/_model, macro ordinary-host eligibility changes",
+    "private rawkey/P08/modelledger/lifecycle/Text storage opening",
+    "generated output hand edits",
+    "unchecked public/package constructors/raw descriptor APIs",
+    "Payload ownership/Table capture consumption/callback escaping/lifetime changes",
+    "algorithm/normal/default/unknownpayload/errorprecedence/capacity/resourcewindow/compilerflags changes"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "source_base": "f8da7a28",
+  "review_base": "1daf75ff",
+  "counts": {
+    "sites": 68,
+    "files": 11
+  },
+  "source_edits": 0,
+  "compiler_runtime": 0,
+  "new_budget": "NONE; previousfixed/exhaustedbudgets preserved",
+  "inputs": [
+    {
+      "path": "Sources/GiftUI/Canvas.swift",
+      "sha256": "4068c7a86e4523408968d37d6fce0197c4262d5984b749ea0c7ab02e771baf8a"
+    },
+    {
+      "path": "Sources/GiftUI/Disabled.swift",
+      "sha256": "b38daff656c01cae87880bc8fda7b240c50e4cd46da52978a0b90caa7fc1bf36"
+    },
+    {
+      "path": "Sources/GiftUI/StyleModifiers.swift",
+      "sha256": "5322bf0d7eda201882146c3be1162b23b43676c3ef9ce3286eb83ff82e173962"
+    },
+    {
+      "path": "Sources/GiftUI/Text.swift",
+      "sha256": "b361224ecac936f5736fd777a96ad815889911644b19731fee2a947a2f5c054c"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "sha256": "8ff2bf5049d4393d459fef253cf6a137a9796a70c2ad4c413111d7928070b531"
+    },
+    {
+      "path": "Sources/GiftUIMacros/CanvasWitnessLowering.swift",
+      "sha256": "e84c9b92d9819a0954213a7cfa9252c3ee40006457f9eb5e6e3d536cdd5bd84c"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "sha256": "cf2b591a33b9814f40eb67b17dbdefd19d726fc115a37636ddc4d31c788da5bd"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "sha256": "776db41e501972481ca6e7d461e9b52d67918f3624b2a41429f714be238a9753"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "sha256": "d4d212e512d06829525da02e37992d0ac8e3d1ebb7a5acfccfd5e4bfdb33b546"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "sha256": "2dd204c2c7b5d4fe06e58a085ac7a59aa70dd734e56981231c414c10f7389c70"
+    },
+    {
+      "path": "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift",
+      "sha256": "5349126ef1275e44a400ba6e290b36ab92c6e2534f9e1db9e96f741ba92d49b9"
+    }
+  ]
+}

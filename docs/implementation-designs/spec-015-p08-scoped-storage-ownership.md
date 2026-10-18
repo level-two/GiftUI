@@ -18,6 +18,15 @@ superseded_by: null
 
 # Implementation Design — P08 Scoped Storage Ownership
 
+Current grouped Canvas/writer/transfer derived proposal, 2026-10-18: [exact68site/11file map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-grouped-inventory/README.md)
+groups F13/F14/F15 plus direct F05/F06/F19 candidate/clear/discard overlap, standard
+codec/project, scoped writer/bank storage and ten finite Table/Values emission selectors.
+One internal four-required-let Reference memberwise equivalent; no other defaults/
+ownership/algorithms or private P08/State/key/ledger/Text storage change. Remaining
+ten original roots split Cpublication3/Ctraversal5/E-Fcommit2; no blanket promotion.
+BoundedText callback/cold witness and fresh generated/body legality remain explicit
+unknowns. No source/compiler/runtime/new allowance; independent design review next.
+
 Current bounded callback serialization proposal, 2026-10-18: [exact40site/six-file map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-grouped-inventory/README.md)
 groups actual preserved/seed-install/bind/release and checked operation callbacks.
 Internal ABI qualification preserves private P08/State/raw-key/ledger/lifecycle backing;

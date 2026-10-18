@@ -58,3 +58,8 @@ actualF13/F14 Canvas payload codec bodyavailability FAIL/STOP; no allocationclai
 Original23 sevenselectedresolved/16opaque; other14 not scanned/qualified. No source/
 compiler/runtime or allowance; two matched readonly object disassemblies only.
 Fullsafety/strictcold/P08 open; oldbudgets unchanged.
+
+[Next grouped Canvas proposal](canvas-writer-transfer-grouped-inventory/README.md):
+68sites/11files A+B closure, sixoriginalroots plus generated finite tableproducer/tests.
+No source/compiler/runtime/newbudget; currentcandidate1/1 staysfixed. Cpublish3/
+Ctraversal5/E-Fcommit2 and text/cold costs remain named unqualified groups.

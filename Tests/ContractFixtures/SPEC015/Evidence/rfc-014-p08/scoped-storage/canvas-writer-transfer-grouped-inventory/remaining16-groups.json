@@ -1,0 +1,130 @@
+{
+  "selected_direct_overlap": 6,
+  "remaining_C_publication": 3,
+  "remaining_C_traversal": 5,
+  "remaining_EF_commit": 2,
+  "groups": [
+    {
+      "id": "F05",
+      "name": "// SemanticRecordStore.candidate.getter",
+      "family": "A+B selected Canvas/writer/transfer bank overlap",
+      "current_actual_edges": 4,
+      "reason": "candidate selection/clear/discard required directly by transfer; codec and staging actual generic roots"
+    },
+    {
+      "id": "F06",
+      "name": "// SemanticRecordBankBuffers.clear()",
+      "family": "A+B selected Canvas/writer/transfer bank overlap",
+      "current_actual_edges": 1,
+      "reason": "candidate selection/clear/discard required directly by transfer; codec and staging actual generic roots"
+    },
+    {
+      "id": "F07",
+      "name": "// SemanticRecordStore.expansionBank(_:)",
+      "family": "C traversal/record staging (not selected)",
+      "current_actual_edges": 1,
+      "reason": "separate actual caller stage; not direct callee of selected codec/writer/transfer bodies; remains explicitly unqualified, no all16 guarantee"
+    },
+    {
+      "id": "F08",
+      "name": "// SemanticExpansionTraversal<>.stopped.getter",
+      "family": "C traversal/record staging (not selected)",
+      "current_actual_edges": 1,
+      "reason": "separate actual caller stage; not direct callee of selected codec/writer/transfer bodies; remains explicitly unqualified, no all16 guarantee"
+    },
+    {
+      "id": "F09",
+      "name": "// RecordSink.publishExpansion(_:)",
+      "family": "C traversal/record staging (not selected)",
+      "current_actual_edges": 1,
+      "reason": "separate actual caller stage; not direct callee of selected codec/writer/transfer bodies; remains explicitly unqualified, no all16 guarantee"
+    },
+    {
+      "id": "F10",
+      "name": "// SemanticRecordBankBuffers.enter(_:limits:)",
+      "family": "C traversal/record staging (not selected)",
+      "current_actual_edges": 1,
+      "reason": "separate actual caller stage; not direct callee of selected codec/writer/transfer bodies; remains explicitly unqualified, no all16 guarantee"
+    },
+    {
+      "id": "F11",
+      "name": "// SemanticRecordBankBuffers.appendRecord(limits:)",
+      "family": "C traversal/record staging (not selected)",
+      "current_actual_edges": 1,
+      "reason": "separate actual caller stage; not direct callee of selected codec/writer/transfer bodies; remains explicitly unqualified, no all16 guarantee"
+    },
+    {
+      "id": "F13",
+      "name": "// static CanvasSemanticPayloadCodec.modifier<A>(_:chainIndex:writer:)",
+      "family": "A+B selected Canvas/writer/transfer bank overlap",
+      "current_actual_edges": 1,
+      "reason": "candidate selection/clear/discard required directly by transfer; codec and staging actual generic roots"
+    },
+    {
+      "id": "F14",
+      "name": "// static CanvasSemanticPayloadCodec.primitive<A>(_:writer:)",
+      "family": "A+B selected Canvas/writer/transfer bank overlap",
+      "current_actual_edges": 1,
+      "reason": "candidate selection/clear/discard required directly by transfer; codec and staging actual generic roots"
+    },
+    {
+      "id": "F15",
+      "name": "// static CanvasSemanticTransfer.stage<A>(from:into:table:)",
+      "family": "A+B selected Canvas/writer/transfer bank overlap",
+      "current_actual_edges": 1,
+      "reason": "candidate selection/clear/discard required directly by transfer; codec and staging actual generic roots"
+    },
+    {
+      "id": "F16",
+      "name": "// SemanticRecordStore.hasPendingCanvas(_:)",
+      "family": "C publication/reconcile (not selected)",
+      "current_actual_edges": 3,
+      "reason": "separate actual caller stage; not direct callee of selected codec/writer/transfer bodies; remains explicitly unqualified, no all16 guarantee"
+    },
+    {
+      "id": "F17",
+      "name": "// SemanticRecordStore.publishCandidate()",
+      "family": "C publication/reconcile (not selected)",
+      "current_actual_edges": 1,
+      "reason": "separate actual caller stage; not direct callee of selected codec/writer/transfer bodies; remains explicitly unqualified, no all16 guarantee"
+    },
+    {
+      "id": "F18",
+      "name": "// SemanticRecordStore.borrowedStore()",
+      "family": "C publication/reconcile (not selected)",
+      "current_actual_edges": 1,
+      "reason": "separate actual caller stage; not direct callee of selected codec/writer/transfer bodies; remains explicitly unqualified, no all16 guarantee"
+    },
+    {
+      "id": "F19",
+      "name": "// SemanticRecordStore.discardCandidate()",
+      "family": "A+B selected Canvas/writer/transfer bank overlap",
+      "current_actual_edges": 2,
+      "reason": "candidate selection/clear/discard required directly by transfer; codec and staging actual generic roots"
+    },
+    {
+      "id": "F20",
+      "name": "// InteractionOwnedKeyState<>.resolveCandidate(_:)",
+      "family": "E/F Interaction/generation commit (not selected)",
+      "current_actual_edges": 3,
+      "reason": "separate actual caller stage; not direct callee of selected codec/writer/transfer bodies; remains explicitly unqualified, no all16 guarantee"
+    },
+    {
+      "id": "F21",
+      "name": "// RuntimeActionGenerationAllocator.resolveCandidate(committed:)",
+      "family": "E/F Interaction/generation commit (not selected)",
+      "current_actual_edges": 3,
+      "reason": "separate actual caller stage; not direct callee of selected codec/writer/transfer bodies; remains explicitly unqualified, no all16 guarantee"
+    }
+  ],
+  "C_publish_known_helper_set": [
+    "publishCandidate -> candidate/published/bank/hasPendingCanvas/Bank.reconcile/clear",
+    "borrowedStore -> private borrowing initializer; actual reader/view chain separate"
+  ],
+  "C_traversal_known_helper_set": [
+    "expansionBank -> bank/phase; traversal.stopped reads failure/bindingFailure/accessFailure Optional fields",
+    "RecordSink.publishExpansion -> counters/summary/phase",
+    "Bank.enter/appendRecord -> fail/metadata/path links/identity validation; requires more path/record fields and equality checks"
+  ],
+  "disposition": "coherent Canvas+writer+transfer group includes six original roots, not one-symbol repair. Remaining ten original roots are sized named groups above; do not expand to wholehost lexical catalog."
+}
