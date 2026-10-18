@@ -1,0 +1,36 @@
+{
+  "source_commit": "e4e4efc6",
+  "candidate_budget": "none newly authorized; old candidates/budgets unchanged",
+  "executions": {
+    "source_mutations": 0,
+    "compiler": 0,
+    "decoder": 0,
+    "runtime": 0
+  },
+  "files": [
+    {
+      "path": "Sources/GiftUI/ObservableState.swift",
+      "sha256": "9f49b702c630be7e1ecc690973c73912142d731050bc4c62776c207e2ce68e86"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "sha256": "8b7eade40fd1512353d4aef2312feb0d4e9cb6be55c74d59023da6e316dcee8f"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+      "sha256": "fdee7c831f5a2d19b71e13df95968d5d1baba0d0d11dd8cc9ada07d4378d8649"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift",
+      "sha256": "58367baadd5b6213f1bf3809106c2aba2639ddc86ec01907b6d1e9e79a706774"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    }
+  ]
+}

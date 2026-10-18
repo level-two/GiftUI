@@ -1,5 +1,9 @@
 # Grouped B-observable candidate — 2026-10-18
 
+[Grouped callback design](observable-callback-grouped-inventory/README.md):40sites/six
+files proposed only, actual seed path and typed error-release grouped; ownsClaim
+privacy review explicit. No source/compile/runtime/allowance; old fixed budget intact.
+
 [Independent package disposition](p08-observable-final-independent-review.md):
 selected four B roots PASS; live preserved/seed-install callback gate FAIL/STOP.
 Compile25/privacy55/physical34 and prior root/resolver PASS retained. Finite grouped

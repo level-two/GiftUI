@@ -1,0 +1,32 @@
+{
+  "members": [
+    {
+      "path": "README.md",
+      "sha256": "e2f29c85bf42ebbe90bb989f2422a67b7dbe45a56a7e15c17aca62fb5864b228"
+    },
+    {
+      "path": "constructors.json",
+      "sha256": "d94d96dfa83143df20b9789f6dea987b8f5da0ada4ab38f82e0ba863991b736a"
+    },
+    {
+      "path": "correction-map.json",
+      "sha256": "6b730f0e8e1b6bf0f67bb0ef2df0b2a8f99969a22ecd10c3e586edd0605dcc31"
+    },
+    {
+      "path": "guards.json",
+      "sha256": "f591744a701f3473ada08cafc19180ab5000aacdfeb37f7eb6aca1b1d9ba53c1"
+    },
+    {
+      "path": "path-and-leaves.json",
+      "sha256": "cc63a6524f287b21fd3d0d38c6354ccbbca9800de745d709bd86060bccc21b4c"
+    },
+    {
+      "path": "read-only-receipt.json",
+      "sha256": "46dbe6374fe1c0ec214bce0f70fb7b2245d73d65a5c7e0512ffbf3ef1aed5858"
+    },
+    {
+      "path": "validation-proposal.json",
+      "sha256": "a7952d84b179ac51a6a73cb307df799fc9823d473e0ffa773f678600cd599f50"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "authority": [
+    {
+      "path": "docs/specs/spec-010-observable-reference-state.md",
+      "lines": "95-103",
+      "quote": "The concrete binder that carries backing access MUST be noncopyable and nonescapable with compiler-visible lifetime dependence on actual borrowed root and model storage."
+    },
+    {
+      "path": "docs/specs/spec-010-observable-reference-state.md",
+      "lines": "131-137",
+      "quote": "every successful ownership transfer has exactly one release obligation. An application ticket cannot outlive its caller-supplied backing."
+    },
+    {
+      "path": "docs/specs/spec-010-observable-reference-state.md",
+      "lines": "408-418",
+      "purpose": "private authored wrapper witness access, no public attachment/sink initializer"
+    },
+    {
+      "path": "docs/specs/spec-015-host-configuration.md",
+      "lines": "319-375",
+      "purpose": "normative private P08 accesses/session/supplied/pipeline/retired fields, checked constructors,14loans/Optional union"
+    },
+    {
+      "path": "docs/adrs/adr-039-scoped-storage-ownership.md",
+      "lines": "61-84",
+      "purpose": "actual borrowed backing/provenance and restricted factory construction"
+    }
+  ],
+  "ownsClaim_decision": "No inspected authoritative clause mandates this framework ticket flag itself be source-private. Proposed private->internal ABI keeps it inaccessible to other modules and adds no package/public setter or ticket issuance route; Claim index/serial and Ownership private claims/records remain private. It MUST preserve checked requireClaim/endOwnership methods, noncopyable/nonescapable lifetime and exactly-one release. Independent reviewer must explicitly accept this narrower implementation visibility distinction; if authority mandates private flag or rejects this guard, do not apply this map\u2014retain checked ordinary API and design a bounded ABI wrapper alternative rather than silently opening storage. No architectural exception is claimed.",
+  "forbidden": [
+    "authored State/_model changes",
+    "private raw key fields opening",
+    "private P08 carriers/session fields/constructors/14loans edits",
+    "Ownership records/claims/generations/limits/activeRead/replacement visibility changes",
+    "lifecycle private State/state opening",
+    "unchecked public/package constructors",
+    "ownership/borrowing/inout/lifetime/default/algorithm/failure-order changes",
+    "capacity/zeroheap/resourcewindow/compilerflag relaxations"
+  ],
+  "allowed_field_scope": "Only exact framework root control/route fields and proposed module-internal ticket claim flag above. Ordinary imports must still reject internal names."
+}

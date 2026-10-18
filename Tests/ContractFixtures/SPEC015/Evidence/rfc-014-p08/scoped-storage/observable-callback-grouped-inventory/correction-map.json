@@ -1,0 +1,449 @@
+{
+  "status": "DERIVED PROPOSAL ONLY; independent review required, no source/compiler/runtime/candidate/repair allowance",
+  "source_commit": "e4e4efc6",
+  "review_base": "903b0436",
+  "counts": {
+    "sites": 40,
+    "files": 6
+  },
+  "edits": [
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 305,
+      "selector": "borrowing func preserved(",
+      "declaration": "borrowing func preserved(",
+      "edit": "replace @usableFromInline with @inlinable; preserve internal access/body",
+      "root_trace": "live visitor -> borrowing func preserved(",
+      "reason": "actual preserved/seed install generic body unavailable",
+      "source_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 410,
+      "selector": "borrowing func install(",
+      "declaration": "borrowing func install(",
+      "edit": "replace @usableFromInline with @inlinable; preserve internal access/body",
+      "root_trace": "live visitor -> borrowing func install(",
+      "reason": "actual preserved/seed install generic body unavailable",
+      "source_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 225,
+      "selector": "private borrowing func checkOperation(",
+      "declaration": "private borrowing func checkOperation(discovery: Bool = false) throws(ObservableStateError) {",
+      "edit": "private -> internal; add @inlinable; all parameters/defaults/ownership/body unchanged",
+      "root_trace": "preserved/install -> private borrowing func checkOperation(",
+      "reason": "shared generic operation/binding helper",
+      "source_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 283,
+      "selector": "private borrowing func bind(",
+      "declaration": "private borrowing func bind(_ state: inout State<Model.Schema>, slot: Int)",
+      "edit": "private -> internal; add @inlinable; all parameters/defaults/ownership/body unchanged",
+      "root_trace": "preserved/install -> private borrowing func bind(",
+      "reason": "shared generic operation/binding helper",
+      "source_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 37,
+      "selector": "var attachment: _GiftUIObservationAttachment?",
+      "declaration": "var attachment: _GiftUIObservationAttachment?",
+      "edit": "add @usableFromInline; internal access unchanged",
+      "root_trace": "preserved/install -> Record",
+      "reason": "exact direct field read/write",
+      "source_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 40,
+      "selector": "var encountered = false",
+      "declaration": "var encountered = false",
+      "edit": "add @usableFromInline; internal access unchanged",
+      "root_trace": "preserved/install -> Record",
+      "reason": "exact direct field read/write",
+      "source_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 50,
+      "selector": "fileprivate var candidateActive = false",
+      "declaration": "fileprivate var candidateActive = false",
+      "edit": "fileprivate -> internal; add @usableFromInline; default unchanged",
+      "root_trace": "preserved -> phase guard",
+      "reason": "scalar framework root bookkeeping",
+      "source_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 64,
+      "selector": "fileprivate mutating func reserve(",
+      "declaration": "fileprivate mutating func reserve(_ slot: UInt16) throws(ObservableStateError)",
+      "edit": "fileprivate -> internal; add @usableFromInline; retain ordinary body",
+      "root_trace": "install -> checked generation reservation",
+      "reason": "nongeneric checked ABI boundary, private implementation need not serialize",
+      "source_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 30,
+      "selector": "    struct Record {",
+      "declaration": "struct Record {",
+      "edit": "add explicit internal @usableFromInline memberwise-equivalent initializer; no nominal access change",
+      "root_trace": "install -> records[slot] assignment",
+      "reason": "required initializer call from serialized install; exact recipe in constructors.json",
+      "source_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 78,
+      "selector": "    struct Route {",
+      "declaration": "struct Route {",
+      "edit": "add @usableFromInline to existing internal nominal; add explicit internal @usableFromInline memberwise-equivalent initializer",
+      "root_trace": "install -> reports.routes initialization",
+      "reason": "required route type and constructor, exact recipe in constructors.json",
+      "source_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 79,
+      "selector": "        var lifecycle = ObservableStateRegistrationLifecycle()",
+      "declaration": "var lifecycle = ObservableStateRegistrationLifecycle()",
+      "edit": "add @usableFromInline; preserve internal access/default",
+      "root_trace": "install -> lifecycle begin/accept",
+      "reason": "ordinary checked lifecycle callable boundaries",
+      "source_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 82,
+      "selector": "    var routes: InlineArray<2, Route>",
+      "declaration": "var routes: InlineArray<2, Route> = .init(repeating: Route())",
+      "edit": "add @usableFromInline; preserve internal access/default",
+      "root_trace": "install -> routes slot",
+      "reason": "same storage, no new pointer/alias",
+      "source_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 101,
+      "selector": "func reportObservableStateRoot(",
+      "declaration": "func reportObservableStateRoot(",
+      "edit": "add @usableFromInline; preserve internal access/ordinary body",
+      "root_trace": "install -> fixed C reportRoute",
+      "reason": "fixed nongeneric callback identity, no capture or metadata-dependent context",
+      "source_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 73,
+      "selector": "package borrowing func validateTicket(",
+      "declaration": "package borrowing func validateTicket(_ ticket: borrowing ObservableModelTicket<Schema>)",
+      "edit": "add @inlinable (replace existing @usableFromInline where present); access/body/defaults/lifetimes unchanged",
+      "root_trace": "preserved/install -> ModelScope -> package borrowing func validateTicket(",
+      "reason": "Model/Schema dependent checked callback/validation/reclaim wrapper; underlying nongeneric ledger remains ordinary",
+      "source_sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 79,
+      "selector": "package borrowing func validateAssociation(",
+      "declaration": "package borrowing func validateAssociation(_ key: _GiftUIModelKey<Schema>)",
+      "edit": "add @inlinable (replace existing @usableFromInline where present); access/body/defaults/lifetimes unchanged",
+      "root_trace": "preserved/install -> ModelScope -> package borrowing func validateAssociation(",
+      "reason": "Model/Schema dependent checked callback/validation/reclaim wrapper; underlying nongeneric ledger remains ordinary",
+      "source_sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 87,
+      "selector": "package borrowing func validateOperation(",
+      "declaration": "package borrowing func validateOperation(discovery: Bool = false) throws(ObservableStateError) {",
+      "edit": "add @inlinable (replace existing @usableFromInline where present); access/body/defaults/lifetimes unchanged",
+      "root_trace": "preserved/install -> ModelScope -> package borrowing func validateOperation(",
+      "reason": "Model/Schema dependent checked callback/validation/reclaim wrapper; underlying nongeneric ledger remains ordinary",
+      "source_sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 94,
+      "selector": "package borrowing func requireStop(",
+      "declaration": "package borrowing func requireStop() { ownership.pointee.retireActivation() }",
+      "edit": "add @inlinable (replace existing @usableFromInline where present); access/body/defaults/lifetimes unchanged",
+      "root_trace": "preserved/install -> ModelScope -> package borrowing func requireStop(",
+      "reason": "Model/Schema dependent checked callback/validation/reclaim wrapper; underlying nongeneric ledger remains ordinary",
+      "source_sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 111,
+      "selector": "package borrowing func attach(",
+      "declaration": "package borrowing func attach(",
+      "edit": "add @inlinable (replace existing @usableFromInline where present); access/body/defaults/lifetimes unchanged",
+      "root_trace": "preserved/install -> ModelScope -> package borrowing func attach(",
+      "reason": "Model/Schema dependent checked callback/validation/reclaim wrapper; underlying nongeneric ledger remains ordinary",
+      "source_sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 121,
+      "selector": "package borrowing func detach(",
+      "declaration": "package borrowing func detach(",
+      "edit": "add @inlinable (replace existing @usableFromInline where present); access/body/defaults/lifetimes unchanged",
+      "root_trace": "preserved/install -> ModelScope -> package borrowing func detach(",
+      "reason": "Model/Schema dependent checked callback/validation/reclaim wrapper; underlying nongeneric ledger remains ordinary",
+      "source_sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 207,
+      "selector": "package borrowing func release(",
+      "declaration": "package borrowing func release(_ ticket: inout ObservableModelTicket<Schema>)",
+      "edit": "add @inlinable (replace existing @usableFromInline where present); access/body/defaults/lifetimes unchanged",
+      "root_trace": "preserved/install -> ModelScope -> package borrowing func release(",
+      "reason": "Model/Schema dependent checked callback/validation/reclaim wrapper; underlying nongeneric ledger remains ordinary",
+      "source_sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 216,
+      "selector": "package borrowing func register(",
+      "declaration": "package borrowing func register(_ ticket: borrowing ObservableModelTicket<Schema>)",
+      "edit": "add @inlinable (replace existing @usableFromInline where present); access/body/defaults/lifetimes unchanged",
+      "root_trace": "preserved/install -> ModelScope -> package borrowing func register(",
+      "reason": "Model/Schema dependent checked callback/validation/reclaim wrapper; underlying nongeneric ledger remains ordinary",
+      "source_sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 303,
+      "selector": "package borrowing func pin(",
+      "declaration": "package borrowing func pin(_ key: _GiftUIModelKey<Schema>) throws(ObservableStateError) {",
+      "edit": "add @inlinable (replace existing @usableFromInline where present); access/body/defaults/lifetimes unchanged",
+      "root_trace": "preserved/install -> ModelScope -> package borrowing func pin(",
+      "reason": "Model/Schema dependent checked callback/validation/reclaim wrapper; underlying nongeneric ledger remains ordinary",
+      "source_sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+      "line": 6,
+      "selector": "package let claim:",
+      "declaration": "package let claim: ObservableModelOwnership.Claim",
+      "edit": "add @usableFromInline; package access unchanged",
+      "root_trace": "install/release -> ticket.key/requireClaim",
+      "reason": "claim descriptor ABI only; no constructor or ownership issuance widening",
+      "source_sha256": "fdee7c831f5a2d19b71e13df95968d5d1baba0d0d11dd8cc9ada07d4378d8649"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+      "line": 7,
+      "selector": "private var ownsClaim = true",
+      "declaration": "private var ownsClaim = true",
+      "edit": "private -> internal @usableFromInline; preserve true default; PROPOSED subject explicit privacy review",
+      "root_trace": "release/register -> requireClaim/endOwnership",
+      "reason": "only framework one-release flag; normative comparison in guards.json; no public/package setter",
+      "source_sha256": "fdee7c831f5a2d19b71e13df95968d5d1baba0d0d11dd8cc9ada07d4378d8649"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+      "line": 17,
+      "selector": "package borrowing func requireClaim(",
+      "declaration": "package borrowing func requireClaim() throws(ObservableStateError)",
+      "edit": "add @inlinable (replace existing @usableFromInline where present); preserve access/body",
+      "root_trace": "install/release -> ticket typed descriptor",
+      "reason": "serialize generic phantom-schema helper while preserving checked ownership flag",
+      "source_sha256": "fdee7c831f5a2d19b71e13df95968d5d1baba0d0d11dd8cc9ada07d4378d8649"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+      "line": 24,
+      "selector": "package mutating func endOwnership()",
+      "declaration": "package mutating func endOwnership() { ownsClaim = false }",
+      "edit": "add @inlinable (replace existing @usableFromInline where present); preserve access/body",
+      "root_trace": "install/release -> ticket typed descriptor",
+      "reason": "serialize generic phantom-schema helper while preserving checked ownership flag",
+      "source_sha256": "fdee7c831f5a2d19b71e13df95968d5d1baba0d0d11dd8cc9ada07d4378d8649"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+      "line": 27,
+      "selector": "package var key:",
+      "declaration": "package var key: _GiftUIModelKey<Schema> {",
+      "edit": "add @inlinable (replace existing @usableFromInline where present); preserve access/body",
+      "root_trace": "install/release -> ticket typed descriptor",
+      "reason": "serialize generic phantom-schema helper while preserving checked ownership flag",
+      "source_sha256": "fdee7c831f5a2d19b71e13df95968d5d1baba0d0d11dd8cc9ada07d4378d8649"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 14,
+      "selector": "package let owner: UInt32",
+      "declaration": "package let owner: UInt32",
+      "edit": "add @usableFromInline; preserve package access",
+      "root_trace": "ticket.key -> claim.address",
+      "reason": "already package-readable scalar provenance; no private key/ledger field opening",
+      "source_sha256": "8b7eade40fd1512353d4aef2312feb0d4e9cb6be55c74d59023da6e316dcee8f"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 15,
+      "selector": "package let generation: UInt32",
+      "declaration": "package let generation: UInt32",
+      "edit": "add @usableFromInline; preserve package access",
+      "root_trace": "ticket.key -> claim.address",
+      "reason": "already package-readable scalar provenance; no private key/ledger field opening",
+      "source_sha256": "8b7eade40fd1512353d4aef2312feb0d4e9cb6be55c74d59023da6e316dcee8f"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 154,
+      "selector": "package mutating func retireActivation()",
+      "declaration": "package mutating func retireActivation() { phase = .retired }",
+      "edit": "add @usableFromInline; ordinary body and package access unchanged",
+      "root_trace": "ModelScope wrappers -> checked Ownership operation",
+      "reason": "nongeneric checked leaf retains private records/claims/limits/state and all validation",
+      "source_sha256": "8b7eade40fd1512353d4aef2312feb0d4e9cb6be55c74d59023da6e316dcee8f"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 203,
+      "selector": "package func validatedClaim(",
+      "declaration": "package func validatedClaim(_ claim: Claim, schema: UInt16)",
+      "edit": "add @usableFromInline; ordinary body and package access unchanged",
+      "root_trace": "ModelScope wrappers -> checked Ownership operation",
+      "reason": "nongeneric checked leaf retains private records/claims/limits/state and all validation",
+      "source_sha256": "8b7eade40fd1512353d4aef2312feb0d4e9cb6be55c74d59023da6e316dcee8f"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 212,
+      "selector": "package func validateAssociation(",
+      "declaration": "package func validateAssociation(_ address: Address, schema: UInt16)",
+      "edit": "add @usableFromInline; ordinary body and package access unchanged",
+      "root_trace": "ModelScope wrappers -> checked Ownership operation",
+      "reason": "nongeneric checked leaf retains private records/claims/limits/state and all validation",
+      "source_sha256": "8b7eade40fd1512353d4aef2312feb0d4e9cb6be55c74d59023da6e316dcee8f"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 285,
+      "selector": "package mutating func release(",
+      "declaration": "package mutating func release(_ claim: Claim) throws(ObservableStateError) -> UInt16? {",
+      "edit": "add @usableFromInline; ordinary body and package access unchanged",
+      "root_trace": "ModelScope wrappers -> checked Ownership operation",
+      "reason": "nongeneric checked leaf retains private records/claims/limits/state and all validation",
+      "source_sha256": "8b7eade40fd1512353d4aef2312feb0d4e9cb6be55c74d59023da6e316dcee8f"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 293,
+      "selector": "package mutating func register(",
+      "declaration": "package mutating func register(_ address: Address, schema: UInt16) throws(ObservableStateError)",
+      "edit": "add @usableFromInline; ordinary body and package access unchanged",
+      "root_trace": "ModelScope wrappers -> checked Ownership operation",
+      "reason": "nongeneric checked leaf retains private records/claims/limits/state and all validation",
+      "source_sha256": "8b7eade40fd1512353d4aef2312feb0d4e9cb6be55c74d59023da6e316dcee8f"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "line": 328,
+      "selector": "package mutating func pin(",
+      "declaration": "package mutating func pin(_ address: Address) throws(ObservableStateError) {",
+      "edit": "add @usableFromInline; ordinary body and package access unchanged",
+      "root_trace": "ModelScope wrappers -> checked Ownership operation",
+      "reason": "nongeneric checked leaf retains private records/claims/limits/state and all validation",
+      "source_sha256": "8b7eade40fd1512353d4aef2312feb0d4e9cb6be55c74d59023da6e316dcee8f"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift",
+      "line": 3,
+      "selector": "struct ObservableStateRegistrationLifecycle:",
+      "declaration": "struct ObservableStateRegistrationLifecycle: Equatable, Sendable {",
+      "edit": "add @usableFromInline; internal access and ordinary body unchanged",
+      "root_trace": "install -> Route lifecycle",
+      "reason": "nongeneric checked state machine; private State/state remains private",
+      "source_sha256": "58367baadd5b6213f1bf3809106c2aba2639ddc86ec01907b6d1e9e79a706774"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift",
+      "line": 14,
+      "selector": "    init() {}",
+      "declaration": "init() {}",
+      "edit": "add @usableFromInline; internal access and ordinary body unchanged",
+      "root_trace": "install -> Route lifecycle",
+      "reason": "nongeneric checked state machine; private State/state remains private",
+      "source_sha256": "58367baadd5b6213f1bf3809106c2aba2639ddc86ec01907b6d1e9e79a706774"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift",
+      "line": 29,
+      "selector": "    mutating func beginAttachment(",
+      "declaration": "mutating func beginAttachment(",
+      "edit": "add @usableFromInline; internal access and ordinary body unchanged",
+      "root_trace": "install -> Route lifecycle",
+      "reason": "nongeneric checked state machine; private State/state remains private",
+      "source_sha256": "58367baadd5b6213f1bf3809106c2aba2639ddc86ec01907b6d1e9e79a706774"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift",
+      "line": 43,
+      "selector": "    mutating func acceptAttachmentReturn(",
+      "declaration": "mutating func acceptAttachmentReturn(",
+      "edit": "add @usableFromInline; internal access and ordinary body unchanged",
+      "root_trace": "install -> Route lifecycle",
+      "reason": "nongeneric checked state machine; private State/state remains private",
+      "source_sha256": "58367baadd5b6213f1bf3809106c2aba2639ddc86ec01907b6d1e9e79a706774"
+    },
+    {
+      "source": "Sources/GiftUI/ObservableState.swift",
+      "line": 130,
+      "selector": "        attachment: _GiftUIObservationAttachment,",
+      "declaration": "attachment: _GiftUIObservationAttachment,",
+      "edit": "add @usableFromInline to enclosing existing package init only; body/access unchanged",
+      "root_trace": "install -> fixed change sink constructor",
+      "reason": "nongeneric ordinary ABI constructor; three required arguments; all sink private fields remain private",
+      "source_sha256": "9f49b702c630be7e1ecc690973c73912142d731050bc4c62776c207e2ce68e86"
+    }
+  ],
+  "noops": [
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "selector": "matching/key/belongs/encounter/visitor.visit/borrowedRoot",
+      "trace": "existing serialized traversal",
+      "edit": "NONE; existing ABI/serialized or ordinary checked callee"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "selector": "address/report/phase/materialize",
+      "trace": "existing serialized and actual direct materialization",
+      "edit": "NONE; existing ABI/serialized or ordinary checked callee"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+      "selector": "init(claim:lifetime:)",
+      "trace": "existing ABI; actual seed ticket direct struct with lifetime retained",
+      "edit": "NONE; existing ABI/serialized or ordinary checked callee"
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "selector": "operationAllowed/callbackIndex/Address.init/address",
+      "trace": "existing ABI checked operations/serialized Address construction",
+      "edit": "NONE; existing ABI/serialized or ordinary checked callee"
+    },
+    {
+      "source": "Sources/GiftUI/ObservableState.swift",
+      "selector": "State._giftUIBinding/_giftUIBind/_GiftUIBoundState.init",
+      "trace": "existing serialized binding SPI",
+      "edit": "NONE; existing ABI/serialized or ordinary checked callee"
+    }
+  ],
+  "exclusions": [
+    "offered-candidate branch not actual seed path proof",
+    "no other16 original roots selected",
+    "Ownership.bind generic phantom-schema leaf remains unresolved cost/serialization boundary; no ledger field expansion or adapter authorized",
+    "no source implementation or implicit new budget"
+  ]
+}

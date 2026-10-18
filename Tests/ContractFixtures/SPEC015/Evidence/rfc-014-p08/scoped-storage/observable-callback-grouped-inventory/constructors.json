@@ -1,0 +1,6 @@
+{
+  "compiler_rule": "Reuse matched CodeSynthesis.cpp b8189d766d86ad7fc8106787d6ce9e402f38dd72: var optional uninitialized gains nil; let never does. Only var-backed Record/Route synthesized equivalents added here.",
+  "Record": "internal @usableFromInline init(ordinal: UInt16 = 0, keyOwner: UInt32 = 0, keyGeneration: UInt32 = 0, attachment: _GiftUIObservationAttachment? = nil, published: Bool = false, encountered: Bool = false) with six same-order self.field=field assignments; ordinary body, no @inlinable",
+  "Route": "internal @usableFromInline init(lifecycle: ObservableStateRegistrationLifecycle = ObservableStateRegistrationLifecycle(), dirty: Bool = false) with two same-order assignments; ordinary body",
+  "other_constructors": "unchanged including scoped tickets, State, raw keys, root/model scope checked factories and _GiftUIObservableChangeSink existing three REQUIRED arguments. No new unchecked public/package constructor/default."
+}

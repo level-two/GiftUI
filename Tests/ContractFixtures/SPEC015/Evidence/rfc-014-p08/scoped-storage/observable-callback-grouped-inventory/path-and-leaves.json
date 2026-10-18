@@ -1,0 +1,35 @@
+{
+  "actual_seed_path": {
+    "input": "sealed continuation SIL hash6019e2b06de40aaf1f8184ab124147cab0c077ea2c8d4fd1459935b1df047837",
+    "State_seed": "134910-15",
+    "preserved": "134951-60 -> normal137287-302; no matching returns false without State mutation",
+    "materialize": "138023-34 bb734; checked ledger materialize returns claim -> bb736 direct model storage/ticket construction",
+    "seed_install": "138060-76 (bb736); original inoutState %1024, same borrowedroot %1057, actualticket %3116",
+    "normal": "bb737 -> dealloc ticket/rebind memory -> bb653 body evaluation",
+    "error": "bb738 -> ModelScope.release typed normal/error both join bb741; original install error retained; ticket cleanup then original failure. No failed-release substitution."
+  },
+  "callback_chain": "install -> validateAssociation -> checked slot/limits/reserve -> pin -> operationActive defer -> record/route/lifecycle.beginAttachment -> fixed report sink -> ModelScope.attach -> actual Model.attach -> lifecycle.acceptAttachmentReturn; bad return -> detach if necessary/requireStop -> clear identity/record -> throw; success -> validate/register ticket -> bind originalState -> release ticket",
+  "preserved": "checkOperation validates retirement/reentry/ledger discovery; phase/candidate guard; matching identity+ordinal; pin original key; bind existing State or install structural binding; mark encountered",
+  "ordinary_nongeneric_leaves": [
+    "Ownership operationAllowed/validatedClaim/validateAssociation/callbackIndex/pin/register/release/retireActivation/materialize; private ledger remains opaque",
+    "RootControl.reserve; checked monotonic generation and exhaustion unchanged",
+    "RegistrationLifecycle init/beginAttachment/acceptAttachmentReturn; private lifecycle state remains opaque",
+    "fixed reportObservableStateRoot C callback and sink initializer; no new capture",
+    "Model preflight/attach/detach/report callbacks must specialize in concrete consumer; no witness API edits"
+  ],
+  "unresolved_not_selected": [
+    {
+      "edge": "Ownership.bind<Schema>",
+      "fact": "actual live read after binding SIL137464; generic phantomSchema, checks private phase/read/owner/schema/occupied/generation/pin ledger fields",
+      "disposition": "ordinary checked API preserves privacy; cost/metadata remains unqualified. Do not serialize by opening private ledger. A nongeneric checked scalar adapter would be a separately reviewed body refactor if concrete next-stage evidence requires it."
+    },
+    {
+      "edge": "raw key synthesized equality/access and typed ticket generic operations",
+      "disposition": "map only explicit typed helpers; exact actual specialization/metadata cost remains postcandidate gate, no blanket key-field visibility"
+    },
+    {
+      "edge": "offered candidate installation and transferring encounter",
+      "disposition": "emitted compatibility branches; same install/helper source closure must compile, no claim feasible from this concrete seed State"
+    }
+  ]
+}

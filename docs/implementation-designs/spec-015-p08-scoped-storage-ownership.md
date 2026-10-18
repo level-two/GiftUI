@@ -18,6 +18,15 @@ superseded_by: null
 
 # Implementation Design — P08 Scoped Storage Ownership
 
+Current bounded callback serialization proposal, 2026-10-18: [exact40site/six-file map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-grouped-inventory/README.md)
+groups actual preserved/seed-install/bind/release and checked operation callbacks.
+Internal ABI qualification preserves private P08/State/raw-key/ledger/lifecycle backing;
+proposed framework ownsClaim flag qualification needs explicit authority review.
+Two var-backed memberwise equivalents preserve original defaults. Nongeneric checked
+leaves remain ordinary; Ownership.bind metadata/cost remains unresolved without any
+adapter proposal. No source/compiler/runtime or new allowance; independent review
+required. Actual callback gate FAIL/STOP, full safety/strictcold/P08 remain open.
+
 Current stack candidate A — **STOP; object rejection after one screen, 2026-10-15**.
 The [screen result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-stack-candidate-a-screen-result.md) records 25 passing preparation/module/layout checks,
 202 controls not run, and incomplete aggregate coverage. The object still requires

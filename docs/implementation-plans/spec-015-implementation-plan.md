@@ -29,6 +29,14 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [grouped observable callback proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-grouped-inventory/README.md):
+40sites/six files for preserved/live seed install and necessary checked typed helpers;
+ordinary ledger/lifecycle calls ABI-only, private internals retained. Explicit ownsClaim
+privacy-authority review and exact var-memberwise defaults required. Offered-candidate
+compatibility is not actual-seed evidence; Ownership.bind cost remains unqualified,
+no adapter/source expansion. Derived read-only design, no new candidate/repair allowance.
+Independent review next; current actual callback FAIL/STOP and prior limited PASS retained.
+
 Current [independent observable package boundary](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-observable-final-independent-review.md):
 four selected roots PASS; required preservation/seed-install callback gate FAIL/STOP.
 Compile25/privacy55/physical34 and earlier root/resolver PASS retained. Seven of23
