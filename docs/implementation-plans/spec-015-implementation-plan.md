@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [callback initial result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1-result/README.md):
+fresh25/64privacy/8decode+index/2captures PASS;48/50physicalselection. Two attach/detach
+regexes omit method-level constraints; exact kind1/11BB and14BB bodies present. SIL
+blocked/notinvoked. Sourcef8da7a28 fixed, no source repair/budgetreset; exactselector
+review/focusedcontinuation next. Actualcallback/full safety/strictcold/P08 remainopen.
+
 Current [authorized callback candidate1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/README.md):
 reviewed40sites/sixfiles applied/formatted/tokenaudited, Record6var/Route2defaults/sink3
 requiredargs exact. ONEcandidate1/1, zero automatic SOURCE repairs; oldbudgets preserved.

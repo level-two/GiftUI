@@ -1,0 +1,47 @@
+{
+  "status": "qualification_failed_consumer_gated",
+  "candidate": "1/1",
+  "automatic_source_repairs": 0,
+  "source_identity": {
+    "base": "e4e4efc6",
+    "review": "42432867/9b4b9be5",
+    "frozen_source_receipt": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/source-edits.json",
+    "after_sha256": {
+      "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift": "b2d0ccffa645cc32c27a5fb26fb3e9e1aa2ffd16db2d5f37306c1afb0f1539e1",
+      "Sources/GiftUIObservableState/ObservableStateRootScope.swift": "1c7279188f67289665fff485c91e6d55a13e1f127bde6ba98928696cf3158639",
+      "Sources/GiftUIObservableState/ObservableModelTicket.swift": "fbe273372d34c2535002a2465076559adb9b6c9239fbab7abda0b7587107ae82",
+      "Sources/GiftUIObservableState/ObservableModelOwnership.swift": "0b1b73168a16d20cfcb3dd283e52af12aa414cdfe57e1720601198d9649b126d",
+      "Sources/GiftUIObservableState/ObservableModelScope.swift": "8fbcbae675ae704faebdd33e2aa3956e404ecfa0f75fe7c49d8bdd89c9a4c4d8",
+      "Sources/GiftUI/ObservableState.swift": "0b293757d79cfa7b5c5e78fe06b2d1897b592f0ef6938cc9b75791dd5126d3e7"
+    }
+  },
+  "historical_budgets": "all exhausted/fixedprioractivities unchanged",
+  "phases": [
+    {
+      "name": "compile",
+      "command": [
+        "python3",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/compile/run.py"
+      ],
+      "exit": 0,
+      "seconds": 59.304,
+      "log_sha256": "ca6938e91eb392985112c3c826239813c6a20f3453a75cddd0d2bf21d671e69b"
+    },
+    {
+      "name": "qualification",
+      "command": [
+        "python3",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/qualification/run.py"
+      ],
+      "exit": 1,
+      "seconds": 6.935,
+      "log_sha256": "5193623d47ae05cb5b67a840c30728a3dce4ba8949b90843546743b8bb9a2645"
+    }
+  ],
+  "qualified_fresh_artifacts": {
+    "count": 230,
+    "seal": "/Users/eugene/work/GiftUI/.build/contracts/p08-observable-callback-candidate1/compile-artifact-freeze.json",
+    "sha256": "b065877335b5bed04876d2a76d4bccee06c36ed183a15cfc8971f5cf62905487"
+  },
+  "remaining": "actual42/privatecallee/normal-error provenance/model/report/reclaim/metadataTLScontextobserver interpretation; fullprivateP08/14loan safety and strictcold/P08 unaccepted"
+}

@@ -19,3 +19,8 @@ fresh25→64privacy→8completeindexes/50bodytargets→conditional same42SIL/obj
 New isolated output absent,340compile/463qualification static inputs plus future
 freshartifactseal. Prior34 selectors exactmangled, no stale IDs accepted. Compiler/
 decoder/runtime NOT executed; no source acceptance/full safety/cold/P08 claim.
+
+[Initial result](observable-callback-candidate1-result/README.md): lower+25/64privacy/
+8decode+index+2captures PASS;48/50physicalselection, attach/detach regex misses
+method-level constraints but exact bodies present. SILblocked/notinvoked. Source
+fixed, no repair allowance; exacttwo-selector recipe review next.

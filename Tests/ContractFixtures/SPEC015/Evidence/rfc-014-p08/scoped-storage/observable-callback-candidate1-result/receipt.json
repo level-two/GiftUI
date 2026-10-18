@@ -1,0 +1,22 @@
+{
+  "source_commit": "f8da7a28",
+  "compile": "lower+25PASS/0failedblocked",
+  "privacy": "64PASS",
+  "decoder_index_captures": "8decodes+interpreter+2capturesPASS",
+  "checks": 75,
+  "selected_physical": {
+    "passed": 48,
+    "selector_problem": 2,
+    "total": 50
+  },
+  "SIL": "blocked/notinvoked/nooutput",
+  "compile_static_inputs": 340,
+  "qualification_static_inputs": 463,
+  "fresh_artifacts_sealed_verified": 230,
+  "source_mutations": 0,
+  "automatic_source_repairs": 0,
+  "archive_members": 187,
+  "archive_bytes": 3758074,
+  "archive_sha256": "facc7ad1f315150fc478cf968032ad9d090ea6f88cc1aad9de10d87dfec21cd1",
+  "later": "selector-onlyproposal review next; actualconsumer/safety/cold unqualified"
+}
