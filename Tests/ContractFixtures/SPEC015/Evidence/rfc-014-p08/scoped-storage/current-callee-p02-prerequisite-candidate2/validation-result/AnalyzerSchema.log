@@ -1,0 +1,109 @@
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8a3a315f9ee95ca-s9gcp7qu/macos-static/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public
+ 3 | @usableFromInline package protocol AnalyzerReadDomain: _GiftUIReadDomain {
+ 4 | static func bind(_ key: _GiftUIModelKey<AnalyzerModelSchema>, slots: Span<Slot>) throws(_GiftUIAccessFailure) -> Int
+ 5 | static func AnalyzerRead_state_acquisitionState(at index: Int, slots: Span<Slot>) -> AcquisitionState
+   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public
+ 6 | static func AnalyzerRead_state_capture_count(at index: Int, slots: Span<Slot>) -> UInt16
+ 7 | static func AnalyzerRead_state_capture_transition(_ position: Int, at index: Int, slots: Span<Slot>) throws(_GiftUIAccessFailure) -> SignalTransition
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerDomain/AcquisitionState.swift:2:14: note: type declared here
+1 | /// Portable acquisition state shared by host and Embedded Swift model storage.
+2 | package enum AcquisitionState: Equatable, Sendable {
+  |              `- note: type declared here
+3 |     case idle
+4 |     case running
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8a3a315f9ee95ca-s9gcp7qu/macos-static/AnalyzerSchema.swift:7:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public
+ 5 | static func AnalyzerRead_state_acquisitionState(at index: Int, slots: Span<Slot>) -> AcquisitionState
+ 6 | static func AnalyzerRead_state_capture_count(at index: Int, slots: Span<Slot>) -> UInt16
+ 7 | static func AnalyzerRead_state_capture_transition(_ position: Int, at index: Int, slots: Span<Slot>) throws(_GiftUIAccessFailure) -> SignalTransition
+   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public
+ 8 | }
+ 9 | @usableFromInline package struct AnalyzerModelSchemaSeed {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerDomain/SignalPrimitiveValues.swift:18:16: note: type declared here
+16 | }
+17 | 
+18 | package struct SignalTransition: Equatable, Sendable {
+   |                `- note: type declared here
+19 |     package let channelID: SignalChannelID
+20 |     package let timestamp: Duration
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8a3a315f9ee95ca-s9gcp7qu/macos-static/AnalyzerSchema.swift:51:24: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public
+49 |     self.index = index
+50 | }
+51 | @inlinable package var acquisitionState: AcquisitionState { D.AnalyzerRead_state_acquisitionState(at: index, slots: slots) }
+   |                        `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public
+52 | @inlinable
+53 | @_lifetime(copy self)
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerDomain/AcquisitionState.swift:2:14: note: type declared here
+1 | /// Portable acquisition state shared by host and Embedded Swift model storage.
+2 | package enum AcquisitionState: Equatable, Sendable {
+  |              `- note: type declared here
+3 |     case idle
+4 |     case running
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8a3a315f9ee95ca-s9gcp7qu/macos-static/AnalyzerSchema.swift:70:14: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public
+68 | @inlinable package var count: UInt16 { D.AnalyzerRead_state_capture_count(at: index, slots: slots) }
+69 | @inlinable
+70 | package func transition(_ position: Int) throws(_GiftUIAccessFailure) -> SignalTransition {
+   |              `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public
+71 |     try D.AnalyzerRead_state_capture_transition(position, at: index, slots: slots)
+72 | }
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerDomain/SignalPrimitiveValues.swift:18:16: note: type declared here
+16 | }
+17 | 
+18 | package struct SignalTransition: Equatable, Sendable {
+   |                `- note: type declared here
+19 |     package let channelID: SignalChannelID
+20 |     package let timestamp: Duration
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8a3a315f9ee95ca-s9gcp7qu/macos-static/AnalyzerSchema.swift:70:74: error: struct 'SignalTransition' is package and cannot be referenced from an '@inlinable' function
+68 | @inlinable package var count: UInt16 { D.AnalyzerRead_state_capture_count(at: index, slots: slots) }
+69 | @inlinable
+70 | package func transition(_ position: Int) throws(_GiftUIAccessFailure) -> SignalTransition {
+   |                                                                          `- error: struct 'SignalTransition' is package and cannot be referenced from an '@inlinable' function
+71 |     try D.AnalyzerRead_state_capture_transition(position, at: index, slots: slots)
+72 | }
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerDomain/SignalPrimitiveValues.swift:18:16: note: struct 'SignalTransition' is not '@usableFromInline' or public
+16 | }
+17 | 
+18 | package struct SignalTransition: Equatable, Sendable {
+   |                `- note: struct 'SignalTransition' is not '@usableFromInline' or public
+19 |     package let channelID: SignalChannelID
+20 |     package let timestamp: Duration
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8a3a315f9ee95ca-s9gcp7qu/macos-static/AnalyzerSchema.swift:74:14: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public
+72 | }
+73 | @inlinable
+74 | package func _giftUIDrawing_transition(_ position: Int) throws(DrawingError) -> SignalTransition {
+   |              `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public
+75 |     do throws(_GiftUIAccessFailure) {
+76 |         return try D.AnalyzerRead_state_capture_transition(position, at: index, slots: slots)
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerDomain/SignalPrimitiveValues.swift:18:16: note: type declared here
+16 | }
+17 | 
+18 | package struct SignalTransition: Equatable, Sendable {
+   |                `- note: type declared here
+19 |     package let channelID: SignalChannelID
+20 |     package let timestamp: Duration
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8a3a315f9ee95ca-s9gcp7qu/macos-static/AnalyzerSchema.swift:74:81: error: struct 'SignalTransition' is package and cannot be referenced from an '@inlinable' function
+72 | }
+73 | @inlinable
+74 | package func _giftUIDrawing_transition(_ position: Int) throws(DrawingError) -> SignalTransition {
+   |                                                                                 `- error: struct 'SignalTransition' is package and cannot be referenced from an '@inlinable' function
+75 |     do throws(_GiftUIAccessFailure) {
+76 |         return try D.AnalyzerRead_state_capture_transition(position, at: index, slots: slots)
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerDomain/SignalPrimitiveValues.swift:18:16: note: struct 'SignalTransition' is not '@usableFromInline' or public
+16 | }
+17 | 
+18 | package struct SignalTransition: Equatable, Sendable {
+   |                `- note: struct 'SignalTransition' is not '@usableFromInline' or public
+19 |     package let channelID: SignalChannelID
+20 |     package let timestamp: Duration

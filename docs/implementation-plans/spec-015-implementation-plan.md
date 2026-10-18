@@ -29,11 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current renewed P08 activity: Eugene authorized [one bounded maintained P02
-prerequisite continuation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-continuation.md)
-after the withdrawn candidate 1 STOP. A new candidate 0/1 with zero automatic
-source repairs is pending; all historical counts remain closed. Source and
-validation have not started under this continuation. P08/R07/T8.1 remain open.
+Current P08 prerequisite result — [candidate 2 STOP receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/README.md).
+The single maintained run consumed candidate 1/1 with zero automatic source
+repairs (0/0); macro compile/link and registered macro tests passed, then fresh
+P02 core/registered-record compilation failed at generated AnalyzerSchema.swift.
+Dependent stages were unrun. No retry, repair, or contract/scope conclusion is
+recorded. Historical closed budgets remain closed; P08/R07/T8.1 remain open.
 
 Current P08 execution activity: [one bounded maintained P02 prerequisite correction](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-activity.md)
 stopped during initial source construction. The [withdrawn candidate receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate1/README.md)

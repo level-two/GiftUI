@@ -1,9 +1,11 @@
 # RFC-014 task context guide
 
-Current P08 resumption: [one bounded maintained P02 prerequisite continuation](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-continuation.md)
-is authorized by Eugene's “Yes, allowed, please go ahead” after the candidate 1
-STOP. New candidate 0/1, zero automatic source repairs; prior budgets remain
-closed. No new source or validation has run yet. P08/R07/T8.1 remain open.
+Current P08 prerequisite result — [candidate 2 STOP receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/README.md).
+The single maintained run consumed candidate 1/1 with zero automatic source
+repairs (0/0); macro compile/link and registered macro tests passed, then fresh
+P02 core/registered-record compilation failed at generated AnalyzerSchema.swift.
+Dependent stages were unrun. No retry, repair, or contract/scope conclusion is
+recorded. Historical closed budgets remain closed; P08/R07/T8.1 remain open.
 
 Current P08 work: [one bounded maintained P02 prerequisite correction](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-activity.md)
 stopped at initial source inspection. The [withdrawn candidate receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate1/README.md)
