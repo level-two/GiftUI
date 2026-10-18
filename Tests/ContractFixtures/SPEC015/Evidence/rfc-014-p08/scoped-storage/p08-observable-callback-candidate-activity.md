@@ -38,6 +38,13 @@ signatures, decoded headers/blocks and raw module prefixes agree; only targets
 861 inputs/230 artifacts verify. Execute the full50 gate before fresh42 SIL; no
 new source allowance or current50/actualcallback/full safety/cold acceptance.
 
+[Independent package boundary review](p08-observable-callback-boundary-review.md):
+selected concrete callback/structural State paths PASS; actual F13/F14 payload-codec
+body-availability gate FAIL/STOP. Finite ordinary bind success leaf qualifies only
+its inspected scalar closure; cold Error witness/full safety/cost remain open.
+Seven original roots resolved,16 opaque (two confirmed codecs/14 unqualified).
+Next finite grouped codec review only; no source allowance or zero-heap/P08 claim.
+
 [Continuation result](observable-callback-selector-continuation1-result/README.md):
 50unique/bodypositive targets and same42SIL exit0;861inputs verified. Priorprivacy64
 retained (rawresult authoritative), no source/compile/privacy/decoder/object repeat.
