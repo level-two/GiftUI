@@ -1,0 +1,57 @@
+{
+  "baseline_dirty": [
+    " M Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+    " M Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+    " M firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+    " M scripts/nrf52840/build.sh",
+    " M scripts/raspberry-pi/build.sh",
+    "?? Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-preparation/",
+    "?? scripts/contracts/__pycache__/"
+  ],
+  "candidate2": "candidate 1/1 consumed; run 1/1 consumed; automatic repairs 0/0",
+  "compiler_identities": {
+    ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    },
+    ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    }
+  },
+  "compiler_invocations": 0,
+  "formatter_invocations": 0,
+  "head": "03df67669f458b75664154b61cc3179416663820",
+  "historical_files": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/AnalyzerSchema.log": {
+      "bytes": 7360,
+      "sha256": "de911941bbf7fcb6aee9739b745906a4641be2a5eb5d2d325a1f8bba299a067f"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/AnalyzerSchema.swift": {
+      "bytes": 3247,
+      "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/runner-result.json": {
+      "bytes": 12629,
+      "sha256": "1fe685148784644e60c294bda8be45d514161582789fc9577c4e0d73e120295c"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation/prepared.json": {
+      "bytes": 13981,
+      "sha256": "66857b539f9b6ab842e6dbc305c271074d822afba6f5016398bc3dc99d589c7a"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation/run.py": {
+      "bytes": 8849,
+      "sha256": "a4bcbbae40d49eca52e14a84f48d6421973381d762e8437fa46e48240b25a926"
+    }
+  },
+  "producer_invocations": 0,
+  "review_context": "Assigning parent reports Astra Medium and Strong agreement that exactly these eight selectors preserve the P02 contract. This is review provenance supplied by the assignment, not new execution authorization.",
+  "source_commit_history": [
+    "778233fc",
+    "34601caa"
+  ],
+  "source_edits": 0,
+  "status": "static preparation; no compiler/test/producer/formatter invoked",
+  "test_invocations": 0,
+  "toolchain_edits": 0
+}

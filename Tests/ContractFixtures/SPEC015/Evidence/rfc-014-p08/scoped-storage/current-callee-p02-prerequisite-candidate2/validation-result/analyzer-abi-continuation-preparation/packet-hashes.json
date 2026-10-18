@@ -1,0 +1,34 @@
+{
+  "README.md": {
+    "bytes": 12204,
+    "sha256": "9baa666049db95999891ace0ddd154b0b5bed4c60aedeedf866eaa592c458da4"
+  },
+  "baseline-inputs.json": {
+    "bytes": 85784,
+    "sha256": "1f5f2a73e2fafd11b19c6736d18c126d28230f9bbb2c976565755eb17a0b378d"
+  },
+  "controls.json": {
+    "bytes": 12586,
+    "sha256": "6f8b58cee1f5b982e3815c8bebc5e869814f5914b978a06d80569852c74ebf2a"
+  },
+  "provenance.json": {
+    "bytes": 3289,
+    "sha256": "5f0c58894117e63f4f01956da5076f210de915a77f8770af32ae04130b220906"
+  },
+  "recipe.json": {
+    "bytes": 16173,
+    "sha256": "80a0205e73235ea36c1f0a519284ea1b51cc82053662beb147d1d1e4877ea608"
+  },
+  "scratch-sources.json": {
+    "bytes": 30209,
+    "sha256": "4046824f07553d0d399b596e7f531d5f0a7f9d283943f9d25ceec3b68fa02b50"
+  },
+  "selectors.json": {
+    "bytes": 4489,
+    "sha256": "6c401231bf2c0dc4905b178df977ab3674506b9ef70d672af428af6a1898c17f"
+  },
+  "static-validation.json": {
+    "bytes": 7277,
+    "sha256": "c9c23d29d8f91a2a1d65b034b4587375840644e40a96c063a4ee57f26a24757c"
+  }
+}

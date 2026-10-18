@@ -3,6 +3,11 @@
 Date: 2026-10-18. Inspected HEAD: `655d22d8`.
 Disposition: **documentation only; candidate 2 remains STOP**.
 
+The [static continuation preparation packet](analyzer-abi-continuation-preparation/README.md)
+freezes the proposed selectors, scratch source texts/categories, command recipes
+and pre-execution boundaries. It grants no allowance and contains no executed
+compiler or producer result.
+
 This inventory follows the [candidate 2 failure](README.md), its immutable
 [diagnostic](AnalyzerSchema.log), and its copied [schema](AnalyzerSchema.swift).
 The current assignment classifies this as a P02 prerequisite encountered inside

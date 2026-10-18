@@ -1,0 +1,304 @@
+{
+  "categories": {
+    "package-nominal-hidden": "Named package nominal is unavailable outside giftui (package/inaccessible diagnostic or cannot find named type in scope); never accept missing module, wrong target or link error.",
+    "private-initializer-access": "Private init(storage:count:) inaccessible, or unavailable private initializer causing its exact labels to be rejected; category and location require pre-execution review because overload wording is not frozen.",
+    "private-member-access": "Named member inaccessible due to private protection; do not accept a different access restriction or arbitrary type error.",
+    "private-type-hidden": "Cannot find named private storage type in scope across file/module boundary.",
+    "serialized-ABI-access": "Reject a dependency that lacks ABI eligibility from @inlinable/@usableFromInline declarations; diagnostic must identify removed selector or its use and contain serialized/inlinable/usableFromInline accessibility cause."
+  },
+  "control_count": 21,
+  "controls": [
+    {
+      "exercise": "Actual Analyzer schema, presentation, DeclarationHost and unchanged native 120-check oracle; failed diagnostic payload preserved.",
+      "expect": "exit_zero",
+      "files": [
+        "positive/AcquisitionState.swift",
+        "positive/SignalPrimitiveValues.swift",
+        "positive/SignalAnalyzerDiagnostic.swift",
+        "positive/Analyzer.swift"
+      ],
+      "id": "positive-actual-lowering",
+      "kind": "positive"
+    },
+    {
+      "exercise": "Separate-module inlinable enum equality and channelID.rawValue expression.",
+      "expect": "exit_zero",
+      "files": [
+        "positive/ABIRead.swift"
+      ],
+      "id": "positive-serialized-read",
+      "kind": "positive"
+    },
+    {
+      "expect": "exit_zero",
+      "files": [
+        "positive/Semantics.swift",
+        "positive/Main.swift"
+      ],
+      "id": "positive-semantics",
+      "kind": "positive",
+      "native_stdout": "analyzer-abi semantics=18 failures=0",
+      "target": "Compile Semantics.swift only; no runtime evidence and no Main.swift link on cross targets."
+    },
+    {
+      "category": "serialized-ABI-access",
+      "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "expected_nonzero": true,
+      "files": [
+        "negative-A1/AcquisitionState.swift"
+      ],
+      "first_expected_stage": "AnalyzerSchema",
+      "id": "negative-A1",
+      "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+      "kind": "abi-negative",
+      "later_stages": "unrun after expected first diagnostic",
+      "remove_only": "A1",
+      "required_symbol": "AcquisitionState"
+    },
+    {
+      "category": "serialized-ABI-access",
+      "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "expected_nonzero": true,
+      "files": [
+        "negative-A2/SignalPrimitiveValues.swift"
+      ],
+      "first_expected_stage": "AnalyzerSchema",
+      "id": "negative-A2",
+      "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+      "kind": "abi-negative",
+      "later_stages": "unrun after expected first diagnostic",
+      "remove_only": "A2",
+      "required_symbol": "SignalTransition"
+    },
+    {
+      "category": "serialized-ABI-access",
+      "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "expected_nonzero": true,
+      "files": [
+        "negative-A3/SignalPrimitiveValues.swift"
+      ],
+      "first_expected_stage": "AnalyzerPresentation",
+      "id": "negative-A3",
+      "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+      "kind": "abi-negative",
+      "later_stages": "unrun after expected first diagnostic",
+      "remove_only": "A3",
+      "required_symbol": "channelID"
+    },
+    {
+      "category": "serialized-ABI-access",
+      "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "expected_nonzero": true,
+      "files": [
+        "negative-A4/SignalPrimitiveValues.swift"
+      ],
+      "first_expected_stage": "AnalyzerPresentation",
+      "id": "negative-A4",
+      "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+      "kind": "abi-negative",
+      "later_stages": "unrun after expected first diagnostic",
+      "remove_only": "A4",
+      "required_symbol": "SignalChannelID"
+    },
+    {
+      "category": "serialized-ABI-access",
+      "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "expected_nonzero": true,
+      "files": [
+        "negative-A5/SignalPrimitiveValues.swift"
+      ],
+      "first_expected_stage": "AnalyzerPresentation",
+      "id": "negative-A5",
+      "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+      "kind": "abi-negative",
+      "later_stages": "unrun after expected first diagnostic",
+      "remove_only": "A5",
+      "required_symbol": "rawValue"
+    },
+    {
+      "category": "serialized-ABI-access",
+      "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "expected_nonzero": true,
+      "files": [
+        "negative-A6/SignalAnalyzerDiagnostic.swift"
+      ],
+      "first_expected_stage": "SignalAnalyzerDomain",
+      "id": "negative-A6",
+      "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+      "kind": "abi-negative",
+      "later_stages": "unrun after expected first diagnostic",
+      "remove_only": "A6",
+      "required_symbol": "SignalAnalyzerDiagnostic"
+    },
+    {
+      "category": "serialized-ABI-access",
+      "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "expected_nonzero": true,
+      "files": [
+        "negative-A7/Analyzer.swift"
+      ],
+      "first_expected_stage": "AnalyzerPresentation",
+      "id": "negative-A7",
+      "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+      "kind": "abi-negative",
+      "later_stages": "unrun after expected first diagnostic",
+      "remove_only": "A7",
+      "required_symbol": "model"
+    },
+    {
+      "category": "serialized-ABI-access",
+      "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+      "expected_nonzero": true,
+      "files": [
+        "negative-A8/Analyzer.swift"
+      ],
+      "first_expected_stage": "AnalyzerPresentation",
+      "id": "negative-A8",
+      "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+      "kind": "abi-negative",
+      "later_stages": "unrun after expected first diagnostic",
+      "remove_only": "A8",
+      "required_symbol": "index"
+    },
+    {
+      "category": "private-member-access",
+      "expected_nonzero": true,
+      "files": [
+        "privacy/private-storage.swift"
+      ],
+      "first_expected_stage": "client-emit-object",
+      "id": "private-storage",
+      "kind": "privacy-negative",
+      "package_name": "giftui",
+      "positive_twin": "positive-semantics",
+      "required_symbol": "storage"
+    },
+    {
+      "category": "private-member-access",
+      "expected_nonzero": true,
+      "files": [
+        "privacy/private-count.swift"
+      ],
+      "first_expected_stage": "client-emit-object",
+      "id": "private-count",
+      "kind": "privacy-negative",
+      "package_name": "giftui",
+      "positive_twin": "positive-semantics",
+      "required_symbol": "count"
+    },
+    {
+      "category": "private-type-hidden",
+      "expected_nonzero": true,
+      "files": [
+        "privacy/private-storage-type.swift"
+      ],
+      "first_expected_stage": "client-emit-object",
+      "id": "private-storage-type",
+      "kind": "privacy-negative",
+      "package_name": "giftui",
+      "positive_twin": "positive-semantics",
+      "required_symbol": "SignalAnalyzerDiagnosticStorage"
+    },
+    {
+      "category": "private-initializer-access",
+      "expected_nonzero": true,
+      "files": [
+        "privacy/private-init.swift"
+      ],
+      "first_expected_stage": "client-emit-object",
+      "id": "private-init",
+      "kind": "privacy-negative",
+      "package_name": "giftui",
+      "positive_twin": "positive-semantics",
+      "required_symbol": "init(storage:count:)"
+    },
+    {
+      "category": "private-member-access",
+      "expected_nonzero": true,
+      "files": [
+        "privacy/private-helper-continuation.swift"
+      ],
+      "first_expected_stage": "client-emit-object",
+      "id": "private-helper-continuation",
+      "kind": "privacy-negative",
+      "package_name": "giftui",
+      "positive_twin": "positive-semantics",
+      "required_symbol": "isContinuation"
+    },
+    {
+      "category": "private-member-access",
+      "expected_nonzero": true,
+      "files": [
+        "privacy/private-helper-leading.swift"
+      ],
+      "first_expected_stage": "client-emit-object",
+      "id": "private-helper-leading",
+      "kind": "privacy-negative",
+      "package_name": "giftui",
+      "positive_twin": "positive-semantics",
+      "required_symbol": "isValidLeadingSequence"
+    },
+    {
+      "category": "package-nominal-hidden",
+      "expected_nonzero": true,
+      "files": [
+        "privacy/outside-package-AcquisitionState.swift"
+      ],
+      "first_expected_stage": "client-emit-object",
+      "id": "outside-package-AcquisitionState",
+      "kind": "privacy-negative",
+      "package_name": null,
+      "positive_twin": "positive-semantics",
+      "required_symbol": "AcquisitionState"
+    },
+    {
+      "category": "package-nominal-hidden",
+      "expected_nonzero": true,
+      "files": [
+        "privacy/outside-package-SignalTransition.swift"
+      ],
+      "first_expected_stage": "client-emit-object",
+      "id": "outside-package-SignalTransition",
+      "kind": "privacy-negative",
+      "package_name": null,
+      "positive_twin": "positive-semantics",
+      "required_symbol": "SignalTransition"
+    },
+    {
+      "category": "package-nominal-hidden",
+      "expected_nonzero": true,
+      "files": [
+        "privacy/outside-package-SignalChannelID.swift"
+      ],
+      "first_expected_stage": "client-emit-object",
+      "id": "outside-package-SignalChannelID",
+      "kind": "privacy-negative",
+      "package_name": null,
+      "positive_twin": "positive-semantics",
+      "required_symbol": "SignalChannelID"
+    },
+    {
+      "category": "package-nominal-hidden",
+      "expected_nonzero": true,
+      "files": [
+        "privacy/outside-package-SignalAnalyzerDiagnostic.swift"
+      ],
+      "first_expected_stage": "client-emit-object",
+      "id": "outside-package-SignalAnalyzerDiagnostic",
+      "kind": "privacy-negative",
+      "package_name": null,
+      "positive_twin": "positive-semantics",
+      "required_symbol": "SignalAnalyzerDiagnostic"
+    }
+  ],
+  "diagnostic_record": [
+    "raw stdout/stderr bytes and sha256",
+    "exact argv, compiler/flags/source/module hashes",
+    "actual nonzero exit",
+    "file:line:column and required symbol",
+    "immutable expected category",
+    "positive twin receipt"
+  ],
+  "private_type_additional_boundary": "Same-package other module is fixed here. Same-module other-file privacy negatives are a separate unprepared variant and are not silently added.",
+  "status": "PROPOSED; expectations fixed before compiler invocation, never reclassify after seeing output"
+}
