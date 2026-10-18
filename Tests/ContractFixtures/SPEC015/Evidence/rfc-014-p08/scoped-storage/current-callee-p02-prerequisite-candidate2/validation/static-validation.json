@@ -1,0 +1,25 @@
+{
+  "status": "PASS static preparation only",
+  "command": [
+    "python3",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation/run.py",
+    "--validate"
+  ],
+  "exit": 0,
+  "stdout": "PASS static frozen inputs/recipe, 19 registered macro methods, prior working macOS environment, sequential P02+P04/P07/schema4-activation/counter384; no compiler/tests/producers executed\n",
+  "stderr": "",
+  "input_count": 529,
+  "input_freeze_sha256": "b96e00fcd0edddc1d261810a3ed4030e60f201dca5a7664ea482e86b925910b2",
+  "recipe_freeze_sha256": "10207411d716776014c2bebfbe712e6f0f74d4a7e67c7eab7272e07661b14ae6",
+  "syntax_parse": "PASS ast.parse; no import or bytecode",
+  "compiler_tests_producers_executed": false,
+  "dirty_exclusions": [
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+    "scripts/nrf52840/build.sh",
+    "scripts/raspberry-pi/build.sh",
+    "scripts/contracts/__pycache__/"
+  ],
+  "output_exists": false
+}

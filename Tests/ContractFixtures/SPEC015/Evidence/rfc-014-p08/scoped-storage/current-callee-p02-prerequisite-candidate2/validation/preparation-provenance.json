@@ -1,0 +1,19 @@
+{
+  "dirty_exclusions": [
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+    "scripts/nrf52840/build.sh",
+    "scripts/raspberry-pi/build.sh",
+    "scripts/contracts/__pycache__/"
+  ],
+  "execution": "none; compiler/test/producers not run",
+  "inputs": 506,
+  "prior_macro_recipe": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-candidate1/macro",
+  "prior_safety_recipe": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-safety-campaign1",
+  "source_commits": [
+    "778233fc",
+    "34601caa"
+  ],
+  "source_response": "Copied unchanged four maintained macro source paths into packet-owned macro-sources; no mutable .build sources response dependency."
+}
