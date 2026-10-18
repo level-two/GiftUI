@@ -1,0 +1,3559 @@
+{
+  "status": "read-only direct ABI signature/interface closure inventory; independent review pending; no compiler/source execution",
+  "seed_entries": [
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderProducer.swift",
+      "line": 8,
+      "name": "produce",
+      "signature": "@inlinable\n    @inline(__always)\n    package static func produce<Semantic, Layout, Metrics, Workspace, Sink>(\n        semantic: borrowing Semantic,\n        layout: borrowing Layout,\n        textMetrics: borrowing Metrics,\n        surfaceBounds: Rect,\n        damageMode: RenderDamageMode,\n        rootForeground: Color,\n        limits: RenderLimits,\n        workspace: inout Workspace,\n        sink: inout Sink\n    ) -> RenderProductionResult\n    where\n        Semantic: SemanticRenderView & ~Escapable,\n        Layout: ResolvedRenderLayoutView,\n        Metrics: CanonicalTextMetricsView,\n        Workspace: RenderProductionWorkspace,\n        Sink: RenderOperationSink,\n        Semantic.Identity == Layout.Identity,\n        Semantic.Identity == Workspace.Identity",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderProducer.swift",
+      "line": 67,
+      "name": "produce",
+      "signature": "@inlinable\n    @inline(__always)\n    package static func produce<\n        Semantic, Layout, Metrics, Workspace,\n        PreflightExtension, StreamingExtension, Sink\n    >(\n        semantic: borrowing Semantic,\n        layout: borrowing Layout,\n        textMetrics: borrowing Metrics,\n        surfaceBounds: Rect,\n        damageMode: RenderDamageMode,\n        rootForeground: Color,\n        limits: RenderLimits,\n        expectedHeader: RenderPlanHeader,\n        workspace: inout Workspace,\n        preflightExtension: inout PreflightExtension,\n        streamingExtension: inout StreamingExtension,\n        sink: inout Sink\n    ) -> RenderProductionResult\n    where\n        Semantic: SemanticRenderView & ~Escapable,\n        Layout: ResolvedRenderLayoutView,\n        Metrics: CanonicalTextMetricsView,\n        Workspace: RenderProductionWorkspace,\n        PreflightExtension: RenderPreflightExtension,\n        StreamingExtension: RenderStreamingExtension,\n        Sink: RenderOperationSink,\n        Semantic.Identity == Layout.Identity,\n        Semantic.Identity == Workspace.Identity,\n        Semantic.Identity == PreflightExtension.Identity,\n        Semantic.Identity == StreamingExtension.Identity,\n        StreamingExtension.Sink == Sink",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 280,
+      "name": "TextResourceValidator.validate",
+      "signature": "@inlinable\n    @inline(__always)\n    package static func validate<M, R>(\n        _ resourcePackage: borrowing TextResourcePackage<M, R>,\n        requiring requiredRealization: RasterRealizationID\n    ) -> TextResourceValidationResult\n    where M: CanonicalTextMetricsView, R: TextRasterResourceView",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasRenderProducer.swift",
+      "line": 9,
+      "name": "CanvasRenderProducer.preflight",
+      "signature": "@inlinable\n    @inline(__always)\n    package static func preflight<Semantic, Layout, Metrics, Plan, Workspace>(\n        semantic: borrowing Semantic,\n        layout: borrowing Layout,\n        textMetrics: borrowing Metrics,\n        drawingPlan: borrowing Plan,\n        surfaceBounds: Rect,\n        damageMode: RenderDamageMode,\n        rootForeground: Color,\n        limits: RenderLimits,\n        configuredSinkCapacity: RenderSinkCapacity,\n        workspace: inout Workspace\n    ) -> RenderProductionResult\n    where\n        Semantic: SemanticRenderView & ~Escapable,\n        Layout: ResolvedRenderLayoutView,\n        Metrics: CanonicalTextMetricsView,\n        Plan: DrawingPlanView,\n        Workspace: RenderProductionWorkspace,\n        Semantic.Identity == Layout.Identity,\n        Semantic.Identity == Plan.Identity,\n        Semantic.Identity == Workspace.Identity",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasRenderProducer.swift",
+      "line": 54,
+      "name": "CanvasRenderProducer.produce",
+      "signature": "@inlinable\n    @inline(__always)\n    package static func produce<\n        Semantic, Layout, Metrics, Plan, Workspace, Sink\n    >(\n        semantic: borrowing Semantic,\n        layout: borrowing Layout,\n        textMetrics: borrowing Metrics,\n        drawingPlan: borrowing Plan,\n        surfaceBounds: Rect,\n        damageMode: RenderDamageMode,\n        rootForeground: Color,\n        limits: RenderLimits,\n        expectedHeader: RenderPlanHeader,\n        workspace: inout Workspace,\n        sink: inout Sink\n    ) -> RenderProductionResult\n    where\n        Semantic: SemanticRenderView & ~Escapable,\n        Layout: ResolvedRenderLayoutView,\n        Metrics: CanonicalTextMetricsView,\n        Plan: DrawingPlanView,\n        Workspace: RenderProductionWorkspace,\n        Sink: DrawingOperationSink,\n        Semantic.Identity == Layout.Identity,\n        Semantic.Identity == Plan.Identity,\n        Semantic.Identity == Workspace.Identity",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasRenderProducer.swift",
+      "line": 125,
+      "name": "CanvasPreflightExtension.visit",
+      "signature": "@inlinable\n    @inline(__always)\n    mutating func visit(\n        scope: SemanticRenderScope,\n        identity: Identity,\n        bounds: Rect,\n        clip: Rect\n    ) -> RenderExtensionVisitResult",
+      "operation": "remove @inlinable only; retain source access and existing inline hint",
+      "signature_root": false
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasRenderProducer.swift",
+      "line": 282,
+      "name": "CanvasStreamingExtension.visit",
+      "signature": "@inlinable\n    @inline(__always)\n    mutating func visit(\n        scope: SemanticRenderScope,\n        identity: Identity,\n        bounds: Rect,\n        clip: Rect,\n        sink: inout Sink\n    ) -> RenderExtensionVisitResult",
+      "operation": "remove @inlinable only; retain source access and existing inline hint",
+      "signature_root": false
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 25,
+      "name": "withCanvasStagedValues",
+      "signature": "@inlinable\n@inline(__always)\npackage func withCanvasStagedValues<\n    Identity: Equatable & Sendable, Table: CanvasValueTable, Result\n>(\n    metadata: inout CanvasStagedMetadata,\n    entries: inout MutableSpan<CanvasStagedEntry<Identity, Table.CaptureStorage>?>,\n    table: borrowing Table, capacity: UInt16, limits: StaticCanvasLimits,\n    _ body: (borrowing CanvasStagedValues<Identity, Table>) throws(DrawingError) -> Result\n) throws(DrawingError) -> Result",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 92,
+      "name": "CanvasStagedValues.stage",
+      "signature": "@inlinable\n    @inline(__always)\n    package borrowing func stage(\n        identity: Identity, value: consuming Table.CaptureStorage,\n        table: borrowing Table\n    ) throws(DrawingError)",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutPublication.swift",
+      "line": 5,
+      "name": "publishLayout",
+      "signature": "@inlinable\n@inline(__always)\npackage func publishLayout<Workspace, Sink>(\n    summary: LayoutSummary,\n    workspace: inout Workspace,\n    sink: inout Sink\n) -> LayoutResult\nwhere\n    Workspace: LayoutWorkspace,\n    Sink: LayoutResultSink,\n    Workspace.Identity == Sink.Identity",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 188,
+      "name": "LayoutEngine.measureText",
+      "signature": "@inlinable\n    @inline(__always)\n    private mutating func measureText<Semantic, Metrics, Workspace>(\n        _ identity: Semantic.Identity,\n        semantic: borrowing Semantic,\n        metrics: borrowing Metrics,\n        proposal: ProposedSize,\n        workspace: inout Workspace\n    ) -> LayoutMeasurement?\n    where\n        Semantic: SemanticLayoutView & ~Escapable,\n        Metrics: CanonicalTextMetricsView,\n        Workspace: LayoutWorkspace,\n        Semantic.Identity == Workspace.Identity",
+      "operation": "remove @inlinable only; retain source access and existing inline hint",
+      "signature_root": false
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 379,
+      "name": "LayoutEngine.finalizeTextLine",
+      "signature": "@inlinable\n    @inline(__always)\n    private mutating func finalizeTextLine<Identity, Workspace>(\n        identity: Identity,\n        lineIndex: UInt16,\n        advance: GeometryScalar,\n        proposalWidth: GeometryScalar?,\n        ascent: GeometryScalar,\n        lineHeight: GeometryScalar,\n        baselineProgression: GeometryScalar,\n        maximumLineWidth: inout GeometryScalar,\n        workspace: inout Workspace\n    ) -> Bool\n    where Workspace: LayoutWorkspace, Workspace.Identity == Identity",
+      "operation": "remove @inlinable only; retain source access and existing inline hint",
+      "signature_root": false
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1115,
+      "name": "LayoutEngine.placeTextGeometry",
+      "signature": "@inlinable\n    @inline(__always)\n    private mutating func placeTextGeometry<Workspace: LayoutWorkspace>(\n        _ identity: Workspace.Identity,\n        origin: Point,\n        textClip: Rect,\n        workspace: inout Workspace\n    ) -> Bool",
+      "operation": "remove @inlinable only; retain source access and existing inline hint",
+      "signature_root": false
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 51,
+      "name": "LayoutSemanticValidation.validateOccurrence",
+      "signature": "@inlinable\n    @inline(__always)\n    private mutating func validateOccurrence<Semantic, Metrics, Workspace>(\n        _ identity: Semantic.Identity,\n        semantic: borrowing Semantic,\n        metrics: borrowing Metrics,\n        instance: inout FontInstanceDescriptor?,\n        workspace: inout Workspace,\n        flattenedCount: inout UInt16\n    ) -> LayoutError?\n    where\n        Semantic: SemanticLayoutView & ~Escapable,\n        Metrics: CanonicalTextMetricsView,\n        Workspace: LayoutWorkspace,\n        Semantic.Identity == Workspace.Identity",
+      "operation": "remove @inlinable only; retain source access and existing inline hint",
+      "signature_root": false
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift",
+      "line": 24,
+      "name": "RasterGlyphCoverage.rasterize",
+      "signature": "@inlinable\n    @inline(__always)\n    package static func rasterize<\n        Metrics: CanonicalTextMetricsView,\n        Raster: TextRasterResourceView\n    >(\n        _ glyph: PositionedGlyph,\n        operation: PositionedGlyphOperationHeader,\n        metrics: borrowing Metrics,\n        raster: borrowing Raster,\n        realization: RasterRealizationDescriptor,\n        descriptor: RasterSurfaceDescriptor,\n        damageBounds: Rect,\n        _ replace: (Point, CanonicalEncodedPixel) -> Bool\n    ) -> RasterGlyphResult",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift",
+      "line": 67,
+      "name": "RasterGlyphCoverage.withValidatedPayload",
+      "signature": "@inlinable\n    @inline(__always)\n    package static func withValidatedPayload<\n        Result,\n        Metrics: CanonicalTextMetricsView,\n        Raster: TextRasterResourceView\n    >(\n        _ glyph: PositionedGlyph,\n        operation: PositionedGlyphOperationHeader,\n        metrics: borrowing Metrics,\n        raster: borrowing Raster,\n        realization: RasterRealizationDescriptor,\n        descriptor: RasterSurfaceDescriptor,\n        damageBounds: Rect,\n        _ body: (\n            Rect,\n            GlyphRasterRecord,\n            UnsafeRawBufferPointer\n        ) -> Result\n    ) -> RasterGlyphPayloadAccessResult<Result>",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+      "line": 17,
+      "name": "FullSurfaceRGBA8888Storage.withBytes",
+      "signature": "@inlinable\n    @inline(__always)\n    borrowing func withBytes<Result>(",
+      "operation": "remove @inlinable only; retain source access and existing inline hint",
+      "signature_root": false
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+      "line": 26,
+      "name": "FullSurfaceReadableRaster.withBytes",
+      "signature": "@inlinable\n    @inline(__always)\n    borrowing func withBytes<Result>(",
+      "operation": "remove @inlinable only; retain source access and existing inline hint",
+      "signature_root": false
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+      "line": 127,
+      "name": "FullSurfaceRGBA8888Buffer.withBytes",
+      "signature": "@inlinable\n    @inline(__always)\n    package borrowing func withBytes<Result>(\n        _ body: (UnsafeRawBufferPointer) throws -> Result\n    ) rethrows -> Result",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 125,
+      "name": "RuntimeCompletePipeline.run",
+      "signature": "@inlinable\n    @inline(__always)\n    package static func run<Owner>(\n        owner: inout Owner\n    ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>\n    where Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line": 28,
+      "name": "ObservableCanvasInvocationSource.invokeCanvas",
+      "signature": "@inlinable\n    @inline(__always)\n    package mutating func invokeCanvas(\n        at identity: Identity, context: inout GraphicsContext,\n        size: Size\n    ) throws(DrawingError)",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "line": 36,
+      "name": "RuntimeRecordInteractionBridge.appendProjected",
+      "signature": "@inlinable\n    @inline(__always)\n    static func appendProjected<\n        Candidate, Committed, Hits, Model, RootIdentity, Action, Roles, Payload\n    >(\n        record: SemanticRecordReference,\n        semantic: borrowing SemanticRecordView<Payload>,\n        root: borrowing ObservableStateRootScope<Model, RootIdentity>, rootIdentity: RootIdentity,\n        rootOrdinal: UInt16, actionType: Action.Type, roles: Roles.Type,\n        isEnabled: Bool, bounds: Rect, clip: Rect, paintOrder: UInt16,\n        interaction: inout InteractionOwnedKeyState<Candidate, Committed, Hits>,\n        projection: (Payload) -> SemanticStandardPayload?\n    ) -> InteractionCandidateAppendResult\n    where\n        Candidate: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,\n        Committed: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,\n        Hits: InteractionHitRegionStorage & ~Copyable & ~Escapable,\n        Candidate.Identity == SemanticCompleteIdentity,\n        Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity,\n        Model: ObservableStateModel & ~Copyable, RootIdentity: Equatable & Sendable,\n        Action: GiftUIAction, Roles: SemanticDeclarationRoles",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "line": 92,
+      "name": "RuntimeRecordInteractionBridge.dispatch",
+      "signature": "@inlinable\n    @inline(__always)\n    package static func dispatch<Records, Model, RootIdentity, Action>(\n        _ captured: CapturedAction<Records.Identity>, records: borrowing Records,\n        target: borrowing ObservableStateRootTargetAccess<Model, RootIdentity>,\n        actionType: Action.Type, operation: (Action) -> Model.Mutation\n    ) -> RuntimeRecordInteractionDispatchResult\n    where\n        Records: InteractionCommittedActionView & ~Copyable & ~Escapable,\n        Model: ObservableStateModel & ObservableModelMutation & ~Copyable,\n        RootIdentity: Equatable & Sendable, Action: GiftUIAction",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift",
+      "line": 88,
+      "name": "HostScheduledOpportunityController.complete",
+      "signature": "@inlinable\n    @inline(__always)\n    package mutating func complete<OwnerFailure: Equatable & Sendable>(\n        at timestampMicroseconds: UInt64,\n        reasons: ExecutionWakeReasons,\n        result: HostOpportunityResult<OwnerFailure>\n    ) -> HostScheduledOpportunityResult<OwnerFailure>",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift",
+      "line": 105,
+      "name": "HostScheduledOpportunityController.service",
+      "signature": "@inlinable\n    @inline(__always)\n    package mutating func service<Instance: MVPHostInstance & ~Copyable & ~Escapable>(\n        at timestampMicroseconds: UInt64,\n        instance: inout Instance\n    ) -> HostScheduledOpportunityResult<Instance.OwnerFailure>",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 77,
+      "name": "MVPHostActivationController.activate",
+      "signature": "@inlinable\n    @inline(__always)\n    package mutating func activate<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(\n        owner: inout Owner,\n        invariantFailure: Failure\n    ) -> HostActivationResult<Failure>\n    where Owner.ActivationFailure == Failure",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 124,
+      "name": "MVPHostActivationController.teardown",
+      "signature": "@inlinable\n    @inline(__always)\n    package mutating func teardown<Owner: MVPHostTeardownOwner & ~Copyable & ~Escapable>(\n        owner: inout Owner\n    )",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 162,
+      "name": "MVPHostActivationController.contain",
+      "signature": "@inlinable\n    @inline(__always)\n    private mutating func contain<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(\n        _ failure: Failure,\n        owner: inout Owner\n    ) -> HostActivationResult<Failure>\n    where Owner.ActivationFailure == Failure",
+      "operation": "remove @inlinable only; retain source access and existing inline hint",
+      "signature_root": false
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 45,
+      "name": "SignalAnalyzerPresetLiveOwner.runOpportunity",
+      "signature": "@inlinable\n    @inline(__always)\n    mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure>",
+      "operation": "remove @inlinable only; retain source access and existing inline hint",
+      "signature_root": false
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 75,
+      "name": "SignalAnalyzerPresetHostInstance.activate",
+      "signature": "@inlinable\n    @inline(__always)\n    package mutating func activate() -> HostActivationResult<Owner.ActivationFailure>",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 81,
+      "name": "SignalAnalyzerPresetHostInstance.runOpportunity",
+      "signature": "@inlinable\n    package mutating func runOpportunity() -> HostOpportunityResult<RuntimeOwnerFailure>",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 87,
+      "name": "SignalAnalyzerPresetHostInstance.teardown",
+      "signature": "@inlinable\n    @inline(__always)\n    package mutating func teardown()",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 71,
+      "name": "InteractionOwnedKeyState.append",
+      "signature": "@inlinable\n    @inline(__always)\n    package mutating func append<Payload>(\n        record: SemanticRecordReference, in view: borrowing SemanticRecordView<Payload>,\n        isEnabled: Bool, bounds: Rect, clip: Rect, paintOrder: UInt16,\n        action: BoundedApplicationAction, targetGeneration: ObservableTargetGeneration\n    ) -> InteractionCandidateAppendResult",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 87,
+      "name": "InteractionOwnedKeyState.append",
+      "signature": "@inlinable\n    @inline(__always)\n    package mutating func append(\n        identity: Identity, isEnabled: Bool, bounds: Rect, clip: Rect, paintOrder: UInt16,\n        action: BoundedApplicationAction, targetGeneration: ObservableTargetGeneration\n    ) -> InteractionCandidateAppendResult",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 182,
+      "name": "InteractionOwnedKeyState.resolveDown",
+      "signature": "@inlinable\n    @inline(__always)\n    package borrowing func resolveDown(at point: Point) -> PointerGestureOutcome<Identity>",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 190,
+      "name": "InteractionOwnedKeyState.resolveUp",
+      "signature": "@inlinable\n    @inline(__always)\n    package borrowing func resolveUp(_ captured: CapturedAction<Identity>, at point: Point)\n        -> PointerGestureOutcome<Identity>",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 69,
+      "name": "InteractionState.append",
+      "signature": "@inlinable\n    @inline(__always)\n    package mutating func append(\n        identity: Identity,\n        isEnabled: Bool,\n        bounds: Rect,\n        clip: Rect,\n        paintOrder: UInt16,\n        action: BoundedApplicationAction,\n        targetGeneration: ObservableTargetGeneration\n    ) -> InteractionCandidateAppendResult",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 146,
+      "name": "InteractionState.matchingCommittedGeneration",
+      "signature": "@inlinable\n    @inline(__always)\n    private borrowing func matchingCommittedGeneration(\n        identity: Identity,\n        isEnabled: Bool,\n        hitBounds: Rect,\n        paintOrder: UInt16,\n        action: BoundedApplicationAction,\n        targetGeneration: ObservableTargetGeneration\n    ) -> ActionGeneration?",
+      "operation": "remove @inlinable only; retain source access and existing inline hint",
+      "signature_root": false
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 175,
+      "name": "InteractionState.containsCandidate",
+      "signature": "@inlinable\n    @inline(__always)\n    private borrowing func containsCandidate(identity: borrowing Identity) -> Bool",
+      "operation": "remove @inlinable only; retain source access and existing inline hint",
+      "signature_root": false
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 341,
+      "name": "InteractionState.resolveDown",
+      "signature": "@inlinable\n    @inline(__always)\n    package borrowing func resolveDown(\n        at point: Point\n    ) -> PointerGestureOutcome<Identity>",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 356,
+      "name": "InteractionState.topmostRecord",
+      "signature": "@inlinable\n    @inline(__always)\n    private borrowing func topmostRecord(\n        at point: Point\n    ) -> BoundActionRecord<Identity>?",
+      "operation": "remove @inlinable only; retain source access and existing inline hint",
+      "signature_root": false
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 398,
+      "name": "InteractionState.resolveMove",
+      "signature": "@inlinable\n    @inline(__always)\n    package borrowing func resolveMove(\n        _ captured: CapturedAction<Identity>,\n        at point: Point\n    ) -> PointerGestureOutcome<Identity>",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 422,
+      "name": "InteractionState.resolveUp",
+      "signature": "@inlinable\n    @inline(__always)\n    package borrowing func resolveUp(\n        _ captured: CapturedAction<Identity>,\n        at point: Point\n    ) -> PointerGestureOutcome<Identity>",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift",
+      "line": 6,
+      "name": "ExecutionGestureAdapter.down",
+      "signature": "@inlinable\n    @inline(__always)\n    package static func down<Resolver>(\n        at point: Point,\n        capture: inout PointerActionCapture<Resolver.Identity>,\n        resolver: borrowing Resolver\n    ) -> PointerGestureOutcome<Resolver.Identity>\n    where Resolver: InteractionGestureResolver & ~Copyable & ~Escapable",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift",
+      "line": 22,
+      "name": "ExecutionGestureAdapter.move",
+      "signature": "@inlinable\n    @inline(__always)\n    package static func move<Resolver>(\n        at point: Point,\n        capture: inout PointerActionCapture<Resolver.Identity>,\n        resolver: borrowing Resolver\n    ) -> PointerGestureOutcome<Resolver.Identity>\n    where Resolver: InteractionGestureResolver & ~Copyable & ~Escapable",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift",
+      "line": 41,
+      "name": "ExecutionGestureAdapter.up",
+      "signature": "@inlinable\n    @inline(__always)\n    package static func up<Resolver>(\n        at point: Point,\n        capture: inout PointerActionCapture<Resolver.Identity>,\n        resolver: borrowing Resolver\n    ) -> PointerGestureOutcome<Resolver.Identity>\n    where Resolver: InteractionGestureResolver & ~Copyable & ~Escapable",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift",
+      "line": 54,
+      "name": "ExecutionGestureAdapter.cancel",
+      "signature": "@inlinable\n    package static func cancel<Identity>(\n        capture: inout PointerActionCapture<Identity>\n    ) where Identity: Equatable & Sendable",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift",
+      "line": 94,
+      "name": "GiftUIReferenceTextRasterView.withPayload",
+      "signature": "@inlinable\n    @inline(__always)\n    package func withPayload<Result>(\n        for record: GlyphRasterRecord,\n        realization: RasterRealizationID,\n        _ body: (UnsafeRawBufferPointer) throws -> Result\n    ) rethrows -> Result?",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "line": 26,
+      "name": "ObservableSemanticBodyBinding.evaluate",
+      "signature": "@inlinable\n    @inline(__always)\n    package borrowing func evaluate<Declaration: View>(\n        _ declaration: borrowing Declaration,\n        beforeBody: () -> SemanticExpansionError?,\n        body: (borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure) -> Declaration.Body\n    ) -> SemanticBodyEvaluation<Declaration.Body, ObservableStateError>\n    where Declaration.Domain == Domain, Declaration.Body.Domain == Domain",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "line": 41,
+      "name": "ObservableSemanticBodyBinding.evaluateStateful",
+      "signature": "@inlinable\n    @inline(__always)\n    package borrowing func evaluateStateful<Declaration: View & _GiftUIObservableStateHost>(\n        _ declaration: borrowing Declaration,\n        structuralIdentity: Identity,\n        beforeBody: () -> SemanticExpansionError?,\n        body: (borrowing Declaration, borrowing _GiftUIFrameRead<Domain>)\n            throws(_GiftUIAccessFailure) -> Declaration.Body\n    ) -> SemanticBodyEvaluation<Declaration.Body, ObservableStateError>\n    where Declaration.Domain == Domain, Declaration.Body.Domain == Domain",
+      "operation": "replace @inlinable with @usableFromInline; retain inline hint/source access/body",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+      "line": 59,
+      "name": "OneShotRasterBackendEndpoint.init",
+      "signature": "package init?(\n        effectivePresentation: EffectiveRasterPresentation,\n        descriptor: RasterSurfaceDescriptor,\n        payloadLimits: RasterPayloadLimits,\n        textMetrics: consuming TextMetrics,\n        textRaster: consuming TextRaster,\n        textRasterRealization: RasterRealizationID,\n        envelopeValidator: consuming EnvelopeValidator,\n        sink: consuming Sink,\n        startupFailure: RasterBackendError?\n    )",
+      "operation": "add @usableFromInline and targeted @inline(__always); retain checked body/source access/lifetime annotations",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+      "line": 44,
+      "name": "FullSurfaceRGBA8888Buffer.init",
+      "signature": "package init?(\n        descriptor: RasterSurfaceDescriptor,\n        storage: consuming Storage\n    )",
+      "operation": "add @usableFromInline and targeted @inline(__always); retain checked body/source access/lifetime annotations",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift",
+      "line": 43,
+      "name": "StaticObservableModelStorage.withLifetime",
+      "signature": "package mutating func withLifetime<Result>(\n        _ body: (borrowing ObservableModelScope<Model, Schema>) throws(ObservableStateError) ->\n            Result\n    ) throws(ObservableStateError) -> Result",
+      "operation": "add @usableFromInline and targeted @inline(__always); retain checked body/source access/lifetime annotations",
+      "signature_root": true
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift",
+      "line": 47,
+      "name": "StaticObservableRootAdapter.withLifetime",
+      "signature": "package mutating func withLifetime<Result>(\n        limits: ObservableStateLimits = .init(\n            maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!,\n        _ body: (\n            borrowing ObservableModelScope<Model, Model.Schema>,\n            borrowing ObservableStateRootScope<Model, Identity>\n        ) throws(ObservableStateError) -> Result\n    ) throws(ObservableStateError) -> Result",
+      "operation": "add @usableFromInline and targeted @inline(__always); retain checked body/source access/lifetime annotations",
+      "signature_root": true
+    }
+  ],
+  "new_abi_declarations": [
+    {
+      "path": "Sources/GiftUI/GiftUI.swift",
+      "line": 133,
+      "name": "PresentationRevision",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct PresentationRevision: Equatable, Hashable, Sendable",
+      "reasons": [
+        "InteractionCandidateDisposition ABI interface",
+        "PresentationRevision ABI interface",
+        "RuntimePipelineOfferResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+      "line": 10,
+      "name": "RasterFrameEnvelopeValidator",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol RasterFrameEnvelopeValidator",
+      "reasons": [
+        "OneShotRasterBackendEndpoint ABI interface",
+        "OneShotRasterBackendEndpoint.init enclosing header",
+        "RasterFrameEnvelopeValidator ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+      "line": 14,
+      "name": "RasterOfferSessionSink",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol RasterOfferSessionSink: RasterFrameSink",
+      "reasons": [
+        "OneShotRasterBackendEndpoint ABI interface",
+        "OneShotRasterBackendEndpoint.init enclosing header",
+        "RasterOfferSessionSink ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+      "line": 32,
+      "name": "OneShotRasterBackendEndpoint",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct OneShotRasterBackendEndpoint<\n    Sink,\n    TextMetrics,\n    TextRaster,\n    EnvelopeValidator\n>: RasterBackendEndpoint\nwhere\n    Sink: RasterOfferSessionSink,\n    TextMetrics: CanonicalTextMetricsView,\n    TextRaster: TextRasterResourceView,\n    EnvelopeValidator: RasterFrameEnvelopeValidator",
+      "reasons": [
+        "OneShotRasterBackendEndpoint ABI interface",
+        "OneShotRasterBackendEndpoint.init enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift",
+      "line": 10,
+      "name": "RasterBackendEndpoint",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol RasterBackendEndpoint: SynchronousFrameEndpoint\nwhere Sink: RasterFrameSink",
+      "reasons": [
+        "OneShotRasterBackendEndpoint ABI interface",
+        "OneShotRasterBackendEndpoint.init enclosing header",
+        "RasterBackendEndpoint ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIDisplayCore/DisplayContracts.swift",
+      "line": 6,
+      "name": "DisplayReservationID",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct DisplayReservationID: Equatable, Hashable, Sendable",
+      "reasons": [
+        "DisplayReservationID ABI interface",
+        "DisplayReservationResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIDisplayCore/DisplayContracts.swift",
+      "line": 14,
+      "name": "DisplayReservationResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum DisplayReservationResult: Equatable, Sendable",
+      "reasons": [
+        "DisplayReservationResult ABI interface",
+        "RasterOfferSessionSink ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIDisplayCore/DisplayContracts.swift",
+      "line": 28,
+      "name": "DisplayTargetError",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum DisplayTargetError: UInt8, Equatable, Sendable",
+      "reasons": [
+        "DisplayReservationResult ABI interface",
+        "DisplayTargetError ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasInvocationSource.swift",
+      "line": 3,
+      "name": "CanvasInvocationSource",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol CanvasInvocationSource: ~Copyable, ~Escapable",
+      "reasons": [
+        "CanvasInvocationSource ABI interface",
+        "ObservableCanvasInvocationSource ABI interface",
+        "ObservableCanvasInvocationSource.invokeCanvas enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasRenderProducer.swift",
+      "line": 8,
+      "name": "CanvasRenderProducer",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum CanvasRenderProducer",
+      "reasons": [
+        "CanvasRenderProducer ABI interface",
+        "CanvasRenderProducer.preflight enclosing header",
+        "CanvasRenderProducer.produce enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 4,
+      "name": "CanvasValueTable",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol CanvasValueTable: StaticCanvasCallableTable",
+      "reasons": [
+        "CanvasStagedValues ABI interface",
+        "CanvasStagedValues.stage enclosing header",
+        "CanvasValueTable ABI interface",
+        "ObservableCanvasInvocationSource ABI interface",
+        "ObservableCanvasInvocationSource.invokeCanvas enclosing header",
+        "withCanvasStagedValues signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 11,
+      "name": "CanvasStagedEntry",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct CanvasStagedEntry<Identity: Equatable & Sendable, Payload>",
+      "reasons": [
+        "CanvasStagedEntry ABI interface",
+        "withCanvasStagedValues signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 18,
+      "name": "CanvasStagedMetadata",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct CanvasStagedMetadata",
+      "reasons": [
+        "CanvasStagedMetadata ABI interface",
+        "withCanvasStagedValues signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 56,
+      "name": "CanvasStagedValues",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasValueTable>:\n    ~Copyable, ~Escapable",
+      "reasons": [
+        "CanvasStagedValues ABI interface",
+        "CanvasStagedValues.stage enclosing header",
+        "withCanvasStagedValues signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIDrawing/DrawingLimits.swift",
+      "line": 55,
+      "name": "StaticCanvasLimits",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct StaticCanvasLimits: Equatable, Sendable",
+      "reasons": [
+        "StaticCanvasLimits ABI interface",
+        "withCanvasStagedValues signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIDrawing/DrawingPlan.swift",
+      "line": 4,
+      "name": "DrawingPlanView",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol DrawingPlanView",
+      "reasons": [
+        "CanvasRenderProducer.preflight signature",
+        "CanvasRenderProducer.produce signature",
+        "DrawingPlanView ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIDrawing/DrawingValues.swift",
+      "line": 1,
+      "name": "DrawingPlanSummary",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct DrawingPlanSummary: Equatable, Sendable",
+      "reasons": [
+        "DrawingPlanSummary ABI interface",
+        "DrawingPlanView ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIDrawing/DrawingValues.swift",
+      "line": 23,
+      "name": "DrawingProductionError",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum DrawingProductionError: UInt8, Equatable, Sendable",
+      "reasons": [
+        "DrawingProductionError ABI interface",
+        "RuntimeOwnerFailure ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIDrawing/StaticCanvasCallableTable.swift",
+      "line": 3,
+      "name": "StaticCanvasCallableTable",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol StaticCanvasCallableTable",
+      "reasons": [
+        "CanvasValueTable ABI interface",
+        "StaticCanvasCallableTable ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "line": 3,
+      "name": "FrameProvenance",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct FrameProvenance: Equatable, Sendable",
+      "reasons": [
+        "FrameProvenance ABI interface",
+        "RasterFrameEnvelopeValidator ABI interface",
+        "SynchronousFrameEndpoint ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "line": 33,
+      "name": "FrameStreamResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum FrameStreamResult: UInt8, Equatable, Sendable",
+      "reasons": [
+        "FrameStreamResult ABI interface",
+        "SynchronousFrameEndpoint ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "line": 41,
+      "name": "FrameOfferResult",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct FrameOfferResult: Equatable, Sendable",
+      "reasons": [
+        "FrameOfferResult ABI interface",
+        "SynchronousFrameEndpoint ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "line": 55,
+      "name": "FrameOfferFailure",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum FrameOfferFailure: UInt8, Equatable, Sendable",
+      "reasons": [
+        "FrameOfferFailure ABI interface",
+        "RunCycleFailure ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "line": 62,
+      "name": "FrameRefusalOrigin",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum FrameRefusalOrigin: UInt8, Equatable, Sendable",
+      "reasons": [
+        "FrameRefusalOrigin ABI interface",
+        "RunCycleFailure ABI interface",
+        "RuntimePipelineOfferResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "line": 67,
+      "name": "SynchronousFrameEndpoint",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol SynchronousFrameEndpoint",
+      "reasons": [
+        "RasterBackendEndpoint ABI interface",
+        "SynchronousFrameEndpoint ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 4,
+      "name": "ExecutionError",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum ExecutionError: UInt8, Equatable, Sendable",
+      "reasons": [
+        "ExecutionError ABI interface",
+        "RunCycleFailure ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 22,
+      "name": "ExecutionOperational",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum ExecutionOperational: UInt8, Equatable, Sendable",
+      "reasons": [
+        "ExecutionOperational ABI interface",
+        "RunCycleResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 44,
+      "name": "PresentationIntentState",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum PresentationIntentState: UInt8, Equatable, Sendable",
+      "reasons": [
+        "PresentationIntentState ABI interface",
+        "RuntimeCompletePipelineOwner ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 50,
+      "name": "RunCycleFailure",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RunCycleFailure<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "reasons": [
+        "RunCycleFailure ABI interface",
+        "RuntimePipelineMutationResult ABI interface",
+        "RuntimePipelineOfferResult ABI interface",
+        "RuntimePipelinePublicationResult ABI interface",
+        "RuntimePipelineStepResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 58,
+      "name": "RunCycleSummary",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct RunCycleSummary: Equatable, Sendable",
+      "reasons": [
+        "RunCycleResult ABI interface",
+        "RunCycleSummary ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 113,
+      "name": "RunCycleResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RunCycleResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "reasons": [
+        "HostOpportunityResult ABI interface",
+        "RunCycleResult ABI interface",
+        "SignalAnalyzerPresetLiveOwner ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIExecution/WakeValues.swift",
+      "line": 1,
+      "name": "ExecutionWakeReasons",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct ExecutionWakeReasons: OptionSet, Equatable, Sendable",
+      "reasons": [
+        "ExecutionWakeReasons ABI interface",
+        "HostScheduledOpportunityController.complete signature",
+        "HostScheduledOpportunityResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 1,
+      "name": "HostActivationProgress",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct HostActivationProgress: Equatable, Sendable",
+      "reasons": [
+        "HostActivationProgress ABI interface",
+        "HostActivationStepResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 25,
+      "name": "HostActivationStepResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum HostActivationStepResult<Failure: Equatable & Sendable>:\n    Equatable, Sendable",
+      "reasons": [
+        "HostActivationStepResult ABI interface",
+        "MVPHostActivationOwner ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 32,
+      "name": "MVPHostActivationOwner",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol MVPHostActivationOwner: ~Copyable, ~Escapable",
+      "reasons": [
+        "MVPHostActivationController.activate signature",
+        "MVPHostActivationOwner ABI interface",
+        "SignalAnalyzerPresetLiveOwner ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 55,
+      "name": "MVPHostTeardownOwner",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol MVPHostTeardownOwner: ~Copyable, ~Escapable",
+      "reasons": [
+        "MVPHostActivationController.teardown signature",
+        "MVPHostTeardownOwner ABI interface",
+        "SignalAnalyzerPresetLiveOwner ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 66,
+      "name": "MVPHostActivationController",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct MVPHostActivationController<Failure: Equatable & Sendable>",
+      "reasons": [
+        "MVPHostActivationController ABI interface",
+        "MVPHostActivationController.activate enclosing header",
+        "MVPHostActivationController.teardown enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "line": 40,
+      "name": "HostAssemblyReport",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct HostAssemblyReport: Equatable, Sendable",
+      "reasons": [
+        "HostAssemblyReport ABI interface",
+        "MVPHostInstance ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "line": 80,
+      "name": "MVPHostLifecycleState",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum MVPHostLifecycleState: UInt8, Equatable, Sendable",
+      "reasons": [
+        "MVPHostInstance ABI interface",
+        "MVPHostLifecycleState ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "line": 89,
+      "name": "HostActivationResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum HostActivationResult<Failure: Equatable & Sendable>:\n    Equatable, Sendable",
+      "reasons": [
+        "HostActivationResult ABI interface",
+        "MVPHostActivationController.activate signature",
+        "MVPHostInstance ABI interface",
+        "SignalAnalyzerPresetHostInstance.activate signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "line": 96,
+      "name": "HostOpportunityResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum HostOpportunityResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "reasons": [
+        "HostOpportunityResult ABI interface",
+        "HostScheduledOpportunityController.complete signature",
+        "HostScheduledOpportunityResult ABI interface",
+        "MVPHostInstance ABI interface",
+        "SignalAnalyzerPresetHostInstance.runOpportunity signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "line": 101,
+      "name": "MVPHostInstance",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol MVPHostInstance: ~Copyable, ~Escapable",
+      "reasons": [
+        "HostScheduledOpportunityController.service signature",
+        "MVPHostInstance ABI interface",
+        "SignalAnalyzerPresetHostInstance ABI interface",
+        "SignalAnalyzerPresetHostInstance.activate enclosing header",
+        "SignalAnalyzerPresetHostInstance.runOpportunity enclosing header",
+        "SignalAnalyzerPresetHostInstance.teardown enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift",
+      "line": 3,
+      "name": "HostScheduledOpportunityError",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum HostScheduledOpportunityError: UInt8, Error, Equatable, Sendable",
+      "reasons": [
+        "HostScheduledOpportunityError ABI interface",
+        "HostScheduledOpportunityResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift",
+      "line": 11,
+      "name": "HostScheduledOpportunityResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum HostScheduledOpportunityResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "reasons": [
+        "HostScheduledOpportunityController.complete signature",
+        "HostScheduledOpportunityController.service signature",
+        "HostScheduledOpportunityResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift",
+      "line": 28,
+      "name": "HostScheduledOpportunityController",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct HostScheduledOpportunityController: Sendable",
+      "reasons": [
+        "HostScheduledOpportunityController ABI interface",
+        "HostScheduledOpportunityController.complete enclosing header",
+        "HostScheduledOpportunityController.service enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostWakePacingController.swift",
+      "line": 8,
+      "name": "HostWakePacingError",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum HostWakePacingError: UInt8, Error, Equatable, Sendable",
+      "reasons": [
+        "HostScheduledOpportunityResult ABI interface",
+        "HostWakePacingError ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 42,
+      "name": "SignalAnalyzerPresetLiveOwner",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol SignalAnalyzerPresetLiveOwner:\n    ~Copyable, ~Escapable, MVPHostActivationOwner, MVPHostTeardownOwner",
+      "reasons": [
+        "SignalAnalyzerPresetHostInstance ABI interface",
+        "SignalAnalyzerPresetHostInstance.activate enclosing header",
+        "SignalAnalyzerPresetHostInstance.runOpportunity enclosing header",
+        "SignalAnalyzerPresetHostInstance.teardown enclosing header",
+        "SignalAnalyzerPresetLiveOwner ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 50,
+      "name": "SignalAnalyzerPresetHostInstance",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct SignalAnalyzerPresetHostInstance<Owner>: MVPHostInstance, ~Copyable, ~Escapable\nwhere Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable",
+      "reasons": [
+        "SignalAnalyzerPresetHostInstance ABI interface",
+        "SignalAnalyzerPresetHostInstance.activate enclosing header",
+        "SignalAnalyzerPresetHostInstance.runOpportunity enclosing header",
+        "SignalAnalyzerPresetHostInstance.teardown enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line": 8,
+      "name": "InteractionOwnedKeyState",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct InteractionOwnedKeyState<Candidate, Committed, Hits>: ~Copyable, ~Escapable,\n    InteractionCandidateBuilder, InteractionCommittedActionView, InteractionGestureResolver\nwhere\n    Candidate: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,\n    Committed: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,\n    Hits: InteractionHitRegionStorage & ~Copyable & ~Escapable,\n    Candidate.Identity == SemanticCompleteIdentity,\n    Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity",
+      "reasons": [
+        "InteractionOwnedKeyState ABI interface",
+        "InteractionOwnedKeyState.append enclosing header",
+        "InteractionOwnedKeyState.resolveDown enclosing header",
+        "InteractionOwnedKeyState.resolveUp enclosing header",
+        "RuntimeRecordInteractionBridge.appendProjected signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line": 5,
+      "name": "InteractionState",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct InteractionState<CandidateRecords, CommittedRecords, HitRegions>: ~Copyable,\n    ~Escapable,\n    InteractionCandidateBuilder, InteractionCommittedActionView,\n    InteractionGestureResolver\nwhere\n    CandidateRecords: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,\n    CommittedRecords: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,\n    HitRegions: InteractionHitRegionStorage & ~Copyable & ~Escapable,\n    CandidateRecords.Identity == CommittedRecords.Identity,\n    CandidateRecords.Identity == HitRegions.Identity",
+      "reasons": [
+        "InteractionState ABI interface",
+        "InteractionState.append enclosing header",
+        "InteractionState.resolveDown enclosing header",
+        "InteractionState.resolveMove enclosing header",
+        "InteractionState.resolveUp enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "line": 4,
+      "name": "InteractionCandidateRecord",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct InteractionCandidateRecord<Identity>: Equatable, Sendable\nwhere Identity: Equatable & Sendable",
+      "reasons": [
+        "InteractionCandidateRecord ABI interface",
+        "InteractionCandidateRecordStorage ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "line": 15,
+      "name": "InteractionHitRegion",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct InteractionHitRegion<Identity>: Equatable, Sendable\nwhere Identity: Equatable & Sendable",
+      "reasons": [
+        "InteractionHitRegion ABI interface",
+        "InteractionHitRegionStorage ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "line": 22,
+      "name": "InteractionCandidateRecordStorage",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol InteractionCandidateRecordStorage: ~Copyable, ~Escapable",
+      "reasons": [
+        "InteractionCandidateRecordStorage ABI interface",
+        "InteractionOwnedKeyState ABI interface",
+        "InteractionOwnedKeyState.append enclosing header",
+        "InteractionOwnedKeyState.resolveDown enclosing header",
+        "InteractionOwnedKeyState.resolveUp enclosing header",
+        "InteractionState ABI interface",
+        "InteractionState.append enclosing header",
+        "InteractionState.resolveDown enclosing header",
+        "InteractionState.resolveMove enclosing header",
+        "InteractionState.resolveUp enclosing header",
+        "RuntimeRecordInteractionBridge.appendProjected signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "line": 36,
+      "name": "InteractionCommittedRecordStorage",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol InteractionCommittedRecordStorage: ~Copyable, ~Escapable",
+      "reasons": [
+        "InteractionCommittedRecordStorage ABI interface",
+        "InteractionOwnedKeyState ABI interface",
+        "InteractionOwnedKeyState.append enclosing header",
+        "InteractionOwnedKeyState.resolveDown enclosing header",
+        "InteractionOwnedKeyState.resolveUp enclosing header",
+        "InteractionState ABI interface",
+        "InteractionState.append enclosing header",
+        "InteractionState.resolveDown enclosing header",
+        "InteractionState.resolveMove enclosing header",
+        "InteractionState.resolveUp enclosing header",
+        "RuntimeRecordInteractionBridge.appendProjected signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "line": 47,
+      "name": "InteractionHitRegionStorage",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol InteractionHitRegionStorage: ~Copyable, ~Escapable",
+      "reasons": [
+        "InteractionHitRegionStorage ABI interface",
+        "InteractionOwnedKeyState ABI interface",
+        "InteractionOwnedKeyState.append enclosing header",
+        "InteractionOwnedKeyState.resolveDown enclosing header",
+        "InteractionOwnedKeyState.resolveUp enclosing header",
+        "InteractionState ABI interface",
+        "InteractionState.append enclosing header",
+        "InteractionState.resolveDown enclosing header",
+        "InteractionState.resolveMove enclosing header",
+        "InteractionState.resolveUp enclosing header",
+        "RuntimeRecordInteractionBridge.appendProjected signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "line": 13,
+      "name": "InteractionLimits",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct InteractionLimits: Equatable, Sendable",
+      "reasons": [
+        "InteractionCandidateBuilder ABI interface",
+        "InteractionLimits ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "line": 73,
+      "name": "InteractionCandidateDisposition",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum InteractionCandidateDisposition: Equatable, Sendable",
+      "reasons": [
+        "InteractionCandidateBuilder ABI interface",
+        "InteractionCandidateDisposition ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "line": 78,
+      "name": "InteractionCandidateAppendResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum InteractionCandidateAppendResult: Equatable, Sendable",
+      "reasons": [
+        "InteractionCandidateAppendResult ABI interface",
+        "InteractionCandidateBuilder ABI interface",
+        "InteractionOwnedKeyState.append signature",
+        "InteractionState.append signature",
+        "RuntimeRecordInteractionBridge.appendProjected signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "line": 101,
+      "name": "InteractionCandidateBuilder",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol InteractionCandidateBuilder: ~Copyable, ~Escapable",
+      "reasons": [
+        "InteractionCandidateBuilder ABI interface",
+        "InteractionOwnedKeyState ABI interface",
+        "InteractionOwnedKeyState.append enclosing header",
+        "InteractionOwnedKeyState.resolveDown enclosing header",
+        "InteractionOwnedKeyState.resolveUp enclosing header",
+        "InteractionState ABI interface",
+        "InteractionState.append enclosing header",
+        "InteractionState.resolveDown enclosing header",
+        "InteractionState.resolveMove enclosing header",
+        "InteractionState.resolveUp enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutError.swift",
+      "line": 5,
+      "name": "LayoutError",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum LayoutError: UInt8, Equatable, Sendable",
+      "reasons": [
+        "LayoutError ABI interface",
+        "LayoutResult ABI interface",
+        "RuntimeOwnerFailure ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutResultSink.swift",
+      "line": 5,
+      "name": "LayoutResultSink",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol LayoutResultSink",
+      "reasons": [
+        "LayoutResultSink ABI interface",
+        "publishLayout signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 35,
+      "name": "LayoutSummary",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct LayoutSummary: Equatable, Sendable",
+      "reasons": [
+        "LayoutResult ABI interface",
+        "LayoutResultSink ABI interface",
+        "LayoutSummary ABI interface",
+        "publishLayout signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 60,
+      "name": "LayoutResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum LayoutResult: Equatable, Sendable",
+      "reasons": [
+        "LayoutResult ABI interface",
+        "publishLayout signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 5,
+      "name": "LayoutMeasurement",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct LayoutMeasurement: Equatable, Sendable",
+      "reasons": [
+        "LayoutMeasurement ABI interface",
+        "LayoutWorkspace ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 15,
+      "name": "LayoutPlacement",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct LayoutPlacement: Equatable, Sendable",
+      "reasons": [
+        "LayoutPlacement ABI interface",
+        "LayoutWorkspace ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 25,
+      "name": "LayoutTextLine",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct LayoutTextLine<Identity>: Equatable, Sendable\nwhere Identity: Equatable & Sendable",
+      "reasons": [
+        "LayoutTextLine ABI interface",
+        "LayoutWorkspace ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 48,
+      "name": "LayoutPositionedGlyph",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct LayoutPositionedGlyph<Identity>: Equatable, Sendable\nwhere Identity: Equatable & Sendable",
+      "reasons": [
+        "LayoutPositionedGlyph ABI interface",
+        "LayoutWorkspace ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 77,
+      "name": "LayoutWorkspace",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol LayoutWorkspace",
+      "reasons": [
+        "LayoutWorkspace ABI interface",
+        "publishLayout signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUILayout/ResolvedRenderLayoutView.swift",
+      "line": 4,
+      "name": "ResolvedRenderTextLine",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct ResolvedRenderTextLine: Equatable, Sendable",
+      "reasons": [
+        "ResolvedRenderLayoutView ABI interface",
+        "ResolvedRenderTextLine ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUILayout/ResolvedRenderLayoutView.swift",
+      "line": 26,
+      "name": "ResolvedRenderGlyph",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct ResolvedRenderGlyph: Equatable, Sendable",
+      "reasons": [
+        "ResolvedRenderGlyph ABI interface",
+        "ResolvedRenderLayoutView ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUILayout/ResolvedRenderLayoutView.swift",
+      "line": 51,
+      "name": "ResolvedRenderLayoutView",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol ResolvedRenderLayoutView",
+      "reasons": [
+        "CanvasRenderProducer.preflight signature",
+        "CanvasRenderProducer.produce signature",
+        "ResolvedRenderLayoutView ABI interface",
+        "produce signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIMacros/FiniteSourceLowering.swift",
+      "line": 21,
+      "name": "Model",
+      "kind": "struct",
+      "access": "internal",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "struct Model: Decodable",
+      "reasons": [
+        "Model ABI interface",
+        "ObservableCanvasInvocationSource ABI interface",
+        "ObservableCanvasInvocationSource.invokeCanvas enclosing header",
+        "ObservableModelReadSlot ABI interface",
+        "ObservableModelScope ABI interface",
+        "ObservableSemanticBodyBinding ABI interface",
+        "ObservableSemanticBodyBinding.evaluate enclosing header",
+        "ObservableSemanticBodyBinding.evaluateStateful enclosing header",
+        "ObservableStateRootScope ABI interface",
+        "ObservableStateRootTargetAccess ABI interface",
+        "RuntimeRecordInteractionBridge.appendProjected signature",
+        "RuntimeRecordInteractionBridge.dispatch signature",
+        "StaticObservableModelStorage ABI interface",
+        "StaticObservableModelStorage.withLifetime enclosing header",
+        "StaticObservableModelStorage.withLifetime signature",
+        "StaticObservableRootAdapter ABI interface",
+        "StaticObservableRootAdapter.withLifetime enclosing header",
+        "StaticObservableRootAdapter.withLifetime signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "line": 6,
+      "name": "ObservableSemanticBodyBinding",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct ObservableSemanticBodyBinding<\n    Model: ObservableStateModel & ~Copyable,\n    Identity: Equatable & Sendable,\n    Domain: _GiftUIReadDomain\n>: ~Copyable, ~Escapable, SemanticStatefulBinding\nwhere Domain.Slot == ObservableModelReadSlot<Model>",
+      "reasons": [
+        "ObservableSemanticBodyBinding ABI interface",
+        "ObservableSemanticBodyBinding.evaluate enclosing header",
+        "ObservableSemanticBodyBinding.evaluateStateful enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+      "line": 6,
+      "name": "FullSurfaceRGBA8888Storage",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol FullSurfaceRGBA8888Storage",
+      "reasons": [
+        "FullSurfaceRGBA8888Buffer ABI interface",
+        "FullSurfaceRGBA8888Buffer.init enclosing header",
+        "FullSurfaceRGBA8888Buffer.withBytes enclosing header",
+        "FullSurfaceRGBA8888Storage ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+      "line": 24,
+      "name": "FullSurfaceReadableRaster",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol FullSurfaceReadableRaster: RasterSurface",
+      "reasons": [
+        "FullSurfaceRGBA8888Buffer ABI interface",
+        "FullSurfaceRGBA8888Buffer.init enclosing header",
+        "FullSurfaceRGBA8888Buffer.withBytes enclosing header",
+        "FullSurfaceReadableRaster ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+      "line": 33,
+      "name": "FullSurfaceRGBA8888Buffer",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct FullSurfaceRGBA8888Buffer<Storage>: FullSurfaceReadableRaster\nwhere Storage: FullSurfaceRGBA8888Storage",
+      "reasons": [
+        "FullSurfaceRGBA8888Buffer ABI interface",
+        "FullSurfaceRGBA8888Buffer.init enclosing header",
+        "FullSurfaceRGBA8888Buffer.withBytes enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterFrameSink.swift",
+      "line": 4,
+      "name": "RasterFrameSink",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol RasterFrameSink: DrawingOperationSink",
+      "reasons": [
+        "RasterBackendEndpoint ABI interface",
+        "RasterFrameSink ABI interface",
+        "RasterOfferSessionSink ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift",
+      "line": 7,
+      "name": "RasterGlyphResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RasterGlyphResult: Equatable, Sendable",
+      "reasons": [
+        "RasterGlyphCoverage.rasterize signature",
+        "RasterGlyphResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift",
+      "line": 15,
+      "name": "RasterGlyphPayloadAccessResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RasterGlyphPayloadAccessResult<Result>",
+      "reasons": [
+        "RasterGlyphCoverage.withValidatedPayload signature",
+        "RasterGlyphPayloadAccessResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift",
+      "line": 23,
+      "name": "RasterGlyphCoverage",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RasterGlyphCoverage",
+      "reasons": [
+        "RasterGlyphCoverage ABI interface",
+        "RasterGlyphCoverage.rasterize enclosing header",
+        "RasterGlyphCoverage.withValidatedPayload enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterPayloadLimits.swift",
+      "line": 1,
+      "name": "RasterPayloadLimits",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct RasterPayloadLimits: Equatable, Sendable",
+      "reasons": [
+        "OneShotRasterBackendEndpoint.init signature",
+        "RasterBackendEndpoint ABI interface",
+        "RasterFrameSink ABI interface",
+        "RasterPayloadLimits ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterPayloadLimits.swift",
+      "line": 83,
+      "name": "RasterBackendError",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RasterBackendError: UInt8, Equatable, Sendable",
+      "reasons": [
+        "OneShotRasterBackendEndpoint.init signature",
+        "RasterBackendError ABI interface",
+        "RasterFrameSink ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift",
+      "line": 42,
+      "name": "GiftUIReferenceTextRasterView",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct GiftUIReferenceTextRasterView: TextRasterResourceView",
+      "reasons": [
+        "GiftUIReferenceTextRasterView ABI interface",
+        "GiftUIReferenceTextRasterView.withPayload enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/DrawingOperationSink.swift",
+      "line": 3,
+      "name": "SubpathRange",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct SubpathRange: Equatable, Sendable",
+      "reasons": [
+        "DrawingPlanView ABI interface",
+        "StraightLineStrokeView ABI interface",
+        "SubpathRange ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/DrawingOperationSink.swift",
+      "line": 16,
+      "name": "StraightLineStrokeHeader",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct StraightLineStrokeHeader: Equatable, Sendable",
+      "reasons": [
+        "DrawingPlanView ABI interface",
+        "StraightLineStrokeHeader ABI interface",
+        "StraightLineStrokeView ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/DrawingOperationSink.swift",
+      "line": 47,
+      "name": "StraightLineStrokeView",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol StraightLineStrokeView",
+      "reasons": [
+        "DrawingOperationSink ABI interface",
+        "StraightLineStrokeView ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/DrawingOperationSink.swift",
+      "line": 53,
+      "name": "DrawingOperationSink",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol DrawingOperationSink: RenderOperationSink",
+      "reasons": [
+        "CanvasRenderProducer.produce signature",
+        "DrawingOperationSink ABI interface",
+        "RasterFrameSink ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderOperationSink.swift",
+      "line": 1,
+      "name": "RenderOperationSink",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol RenderOperationSink",
+      "reasons": [
+        "DrawingOperationSink ABI interface",
+        "RenderOperationSink ABI interface",
+        "RenderStreamingExtension ABI interface",
+        "SynchronousFrameEndpoint ABI interface",
+        "produce signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "line": 4,
+      "name": "RenderSinkCapacity",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct RenderSinkCapacity: Equatable, Sendable",
+      "reasons": [
+        "CanvasRenderProducer.preflight signature",
+        "RenderOperationSink ABI interface",
+        "RenderSinkCapacity ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "line": 17,
+      "name": "RenderDamageMode",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RenderDamageMode: UInt8, Equatable, Sendable",
+      "reasons": [
+        "CanvasRenderProducer.preflight signature",
+        "CanvasRenderProducer.produce signature",
+        "RenderDamageMode ABI interface",
+        "produce signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "line": 22,
+      "name": "RenderPlanHeader",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct RenderPlanHeader: Equatable, Sendable",
+      "reasons": [
+        "CanvasRenderProducer.produce signature",
+        "RasterSurface ABI interface",
+        "RenderOperationSink ABI interface",
+        "RenderPlanHeader ABI interface",
+        "RenderProductionResult ABI interface",
+        "produce signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "line": 44,
+      "name": "PositionedGlyph",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct PositionedGlyph: Equatable, Sendable",
+      "reasons": [
+        "PositionedGlyph ABI interface",
+        "RasterGlyphCoverage.rasterize signature",
+        "RasterGlyphCoverage.withValidatedPayload signature",
+        "RenderOperationSink ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "line": 54,
+      "name": "FillRectOperation",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct FillRectOperation: Equatable, Sendable",
+      "reasons": [
+        "FillRectOperation ABI interface",
+        "RenderOperationSink ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "line": 66,
+      "name": "PositionedGlyphOperationHeader",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct PositionedGlyphOperationHeader: Equatable, Sendable",
+      "reasons": [
+        "PositionedGlyphOperationHeader ABI interface",
+        "RasterGlyphCoverage.rasterize signature",
+        "RasterGlyphCoverage.withValidatedPayload signature",
+        "RenderOperationSink ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "line": 85,
+      "name": "RenderProductionError",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RenderProductionError: UInt8, Equatable, Sendable",
+      "reasons": [
+        "RasterOfferSessionSink ABI interface",
+        "RenderExtensionCompletionResult ABI interface",
+        "RenderExtensionVisitResult ABI interface",
+        "RenderProductionError ABI interface",
+        "RenderProductionResult ABI interface",
+        "RunCycleFailure ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderExtensions.swift",
+      "line": 6,
+      "name": "RenderExtensionVisit",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct RenderExtensionVisit: Equatable, Sendable",
+      "reasons": [
+        "RenderExtensionVisit ABI interface",
+        "RenderExtensionVisitResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderExtensions.swift",
+      "line": 14,
+      "name": "RenderExtensionVisitResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RenderExtensionVisitResult: Equatable, Sendable",
+      "reasons": [
+        "RenderExtensionVisitResult ABI interface",
+        "RenderPreflightExtension ABI interface",
+        "RenderStreamingExtension ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderExtensions.swift",
+      "line": 19,
+      "name": "RenderExtensionCompletionResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RenderExtensionCompletionResult: Equatable, Sendable",
+      "reasons": [
+        "RenderExtensionCompletionResult ABI interface",
+        "RenderPreflightExtension ABI interface",
+        "RenderStreamingExtension ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderExtensions.swift",
+      "line": 24,
+      "name": "RenderPreflightExtension",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol RenderPreflightExtension",
+      "reasons": [
+        "RenderPreflightExtension ABI interface",
+        "produce signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderExtensions.swift",
+      "line": 37,
+      "name": "RenderStreamingExtension",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol RenderStreamingExtension",
+      "reasons": [
+        "RenderStreamingExtension ABI interface",
+        "produce signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderProductionValues.swift",
+      "line": 4,
+      "name": "RenderLimits",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct RenderLimits: Equatable, Sendable",
+      "reasons": [
+        "CanvasRenderProducer.preflight signature",
+        "CanvasRenderProducer.produce signature",
+        "RenderLimits ABI interface",
+        "RenderProductionWorkspace ABI interface",
+        "produce signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderProductionValues.swift",
+      "line": 26,
+      "name": "RenderWorkspaceCapacity",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct RenderWorkspaceCapacity: Equatable, Sendable",
+      "reasons": [
+        "RenderProductionWorkspace ABI interface",
+        "RenderWorkspaceCapacity ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderProductionValues.swift",
+      "line": 52,
+      "name": "RenderProductionResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RenderProductionResult: Equatable, Sendable",
+      "reasons": [
+        "CanvasRenderProducer.preflight signature",
+        "CanvasRenderProducer.produce signature",
+        "RenderProductionResult ABI interface",
+        "produce signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderProductionValues.swift",
+      "line": 57,
+      "name": "RenderWorkspaceVisit",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RenderWorkspaceVisit: UInt8, Equatable, Sendable",
+      "reasons": [
+        "RenderProductionWorkspace ABI interface",
+        "RenderWorkspaceVisit ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderProductionValues.swift",
+      "line": 63,
+      "name": "RenderProductionWorkspace",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol RenderProductionWorkspace",
+      "reasons": [
+        "CanvasRenderProducer.preflight signature",
+        "CanvasRenderProducer.produce signature",
+        "RenderProductionWorkspace ABI interface",
+        "produce signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line": 7,
+      "name": "ObservableCanvasInvocationSource",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct ObservableCanvasInvocationSource<\n    Model: ~Copyable, Schema,\n    Identity: Equatable & Sendable, Table: CanvasValueTable\n>:\n    ~Copyable, ~Escapable, CanvasInvocationSource\nwhere Table.Domain.Slot == ObservableModelReadSlot<Model>",
+      "reasons": [
+        "ObservableCanvasInvocationSource ABI interface",
+        "ObservableCanvasInvocationSource.invokeCanvas enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 18,
+      "name": "RuntimePipelineStepResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RuntimePipelineStepResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "reasons": [
+        "RuntimeCompletePipelineOwner ABI interface",
+        "RuntimePipelineStepResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 23,
+      "name": "RuntimePipelineMutationResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RuntimePipelineMutationResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "reasons": [
+        "RuntimeCompletePipelineOwner ABI interface",
+        "RuntimePipelineMutationResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 29,
+      "name": "RuntimePipelinePublication",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct RuntimePipelinePublication: Equatable, Sendable",
+      "reasons": [
+        "RuntimePipelinePublication ABI interface",
+        "RuntimePipelinePublicationResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 39,
+      "name": "RuntimePipelinePublicationResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RuntimePipelinePublicationResult<OwnerFailure: Equatable & Sendable>: Equatable,\n    Sendable",
+      "reasons": [
+        "RuntimeCompletePipelineOwner ABI interface",
+        "RuntimePipelinePublicationResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 46,
+      "name": "RuntimePipelineOfferResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RuntimePipelineOfferResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "reasons": [
+        "RuntimeCompletePipelineOwner ABI interface",
+        "RuntimePipelineOfferResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 55,
+      "name": "RuntimePipelineDisposition",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct RuntimePipelineDisposition: Equatable, Sendable",
+      "reasons": [
+        "RuntimeCompletePipelineOwner ABI interface",
+        "RuntimePipelineDisposition ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 64,
+      "name": "RuntimePipelineCompletion",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct RuntimePipelineCompletion: Equatable, Sendable",
+      "reasons": [
+        "RuntimeCompletePipelineResult ABI interface",
+        "RuntimePipelineCompletion ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 71,
+      "name": "RuntimePipelineFailureRecord",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct RuntimePipelineFailureRecord<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "reasons": [
+        "RuntimeCompletePipelineResult ABI interface",
+        "RuntimePipelineFailureRecord ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 79,
+      "name": "RuntimeCompletePipelineResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RuntimeCompletePipelineResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable",
+      "reasons": [
+        "RuntimeCompletePipeline.run signature",
+        "RuntimeCompletePipelineResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 85,
+      "name": "RuntimeCompletePipelineOwner",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol RuntimeCompletePipelineOwner: ~Copyable, ~Escapable",
+      "reasons": [
+        "RuntimeCompletePipeline.run signature",
+        "RuntimeCompletePipelineOwner ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line": 109,
+      "name": "RuntimeCompletePipeline",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RuntimeCompletePipeline",
+      "reasons": [
+        "RuntimeCompletePipeline ABI interface",
+        "RuntimeCompletePipeline.run enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "line": 11,
+      "name": "RuntimeCleanupAction",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RuntimeCleanupAction: UInt8, Equatable, Sendable",
+      "reasons": [
+        "RuntimeCleanupAction ABI interface",
+        "RuntimeCompletePipelineOwner ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift",
+      "line": 7,
+      "name": "RuntimeOwnerFailure",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum RuntimeOwnerFailure: Equatable, Sendable",
+      "reasons": [
+        "MVPHostInstance ABI interface",
+        "RuntimeCompletePipelineOwner ABI interface",
+        "RuntimeOwnerFailure ABI interface",
+        "SignalAnalyzerPresetHostInstance.runOpportunity signature",
+        "SignalAnalyzerPresetLiveOwner ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift",
+      "line": 6,
+      "name": "StaticObservableModelStorage",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct StaticObservableModelStorage<Model: ~Copyable, Schema>: ~Copyable",
+      "reasons": [
+        "StaticObservableModelStorage ABI interface",
+        "StaticObservableModelStorage.withLifetime enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift",
+      "line": 6,
+      "name": "StaticObservableRootAdapter",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct StaticObservableRootAdapter<\n    Model: ObservableStateModel & ~Copyable, Identity: Equatable & Sendable\n>: ~Copyable",
+      "reasons": [
+        "StaticObservableRootAdapter ABI interface",
+        "StaticObservableRootAdapter.withLifetime enclosing header"
+      ]
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRenderView.swift",
+      "line": 3,
+      "name": "SemanticRenderScope",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum SemanticRenderScope: Equatable, Sendable",
+      "reasons": [
+        "RenderPreflightExtension ABI interface",
+        "RenderStreamingExtension ABI interface",
+        "SemanticRenderScope ABI interface",
+        "SemanticRenderView ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRenderView.swift",
+      "line": 13,
+      "name": "SemanticRenderView",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol SemanticRenderView: ~Escapable",
+      "reasons": [
+        "CanvasRenderProducer.preflight signature",
+        "CanvasRenderProducer.produce signature",
+        "SemanticRenderView ABI interface",
+        "produce signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "line": 158,
+      "name": "SemanticRecordReference",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct SemanticRecordReference: Equatable, Sendable",
+      "reasons": [
+        "InteractionOwnedKeyState.append signature",
+        "RuntimeRecordInteractionBridge.appendProjected signature",
+        "SemanticRecordReference ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "line": 5,
+      "name": "SemanticStandardPayload",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum SemanticStandardPayload: Equatable, Sendable",
+      "reasons": [
+        "RuntimeRecordInteractionBridge.appendProjected signature",
+        "SemanticStandardPayload ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUISurfaceCore/RasterSurface.swift",
+      "line": 4,
+      "name": "RasterSurface",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol RasterSurface",
+      "reasons": [
+        "FullSurfaceReadableRaster ABI interface",
+        "RasterSurface ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUISurfaceCore/SurfaceValues.swift",
+      "line": 4,
+      "name": "CanonicalEncodedPixel",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct CanonicalEncodedPixel: Equatable, Sendable",
+      "reasons": [
+        "CanonicalEncodedPixel ABI interface",
+        "RasterGlyphCoverage.rasterize signature",
+        "RasterSurface ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUISurfaceCore/SurfaceValues.swift",
+      "line": 46,
+      "name": "RasterSurfaceDescriptor",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct RasterSurfaceDescriptor: Equatable, Sendable",
+      "reasons": [
+        "FullSurfaceRGBA8888Buffer.init signature",
+        "OneShotRasterBackendEndpoint.init signature",
+        "RasterBackendEndpoint ABI interface",
+        "RasterFrameSink ABI interface",
+        "RasterGlyphCoverage.rasterize signature",
+        "RasterGlyphCoverage.withValidatedPayload signature",
+        "RasterOfferSessionSink ABI interface",
+        "RasterSurface ABI interface",
+        "RasterSurfaceDescriptor ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 42,
+      "name": "FontInstanceID",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct FontInstanceID: Equatable, Hashable, Sendable",
+      "reasons": [
+        "CanonicalTextMetricsView ABI interface",
+        "FontInstanceID ABI interface",
+        "LayoutResultSink ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 52,
+      "name": "GlyphID",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct GlyphID: RawRepresentable, Equatable, Hashable, Sendable",
+      "reasons": [
+        "CanonicalTextMetricsView ABI interface",
+        "GlyphID ABI interface",
+        "GlyphMapping ABI interface",
+        "LayoutResultSink ABI interface",
+        "TextRasterResourceView ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 60,
+      "name": "RasterRealizationID",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct RasterRealizationID:\n    RawRepresentable, Equatable, Hashable, Sendable",
+      "reasons": [
+        "GiftUIReferenceTextRasterView.withPayload signature",
+        "OneShotRasterBackendEndpoint.init signature",
+        "RasterBackendEndpoint ABI interface",
+        "RasterRealizationID ABI interface",
+        "TextRasterResourceView ABI interface",
+        "TextResourceValidator.validate signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 91,
+      "name": "GlyphMetrics",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct GlyphMetrics: Equatable, Sendable",
+      "reasons": [
+        "CanonicalTextMetricsView ABI interface",
+        "GlyphMetrics ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 110,
+      "name": "FontInstanceDescriptor",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct FontInstanceDescriptor: Equatable, Sendable",
+      "reasons": [
+        "CanonicalTextMetricsView ABI interface",
+        "FontInstanceDescriptor ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 132,
+      "name": "RasterRealizationDescriptor",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct RasterRealizationDescriptor: Equatable, Sendable",
+      "reasons": [
+        "RasterGlyphCoverage.rasterize signature",
+        "RasterGlyphCoverage.withValidatedPayload signature",
+        "RasterRealizationDescriptor ABI interface",
+        "TextRasterResourceView ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 157,
+      "name": "TextResourceDescriptor",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct TextResourceDescriptor: Equatable, Sendable",
+      "reasons": [
+        "CanonicalTextMetricsView ABI interface",
+        "TextRasterResourceView ABI interface",
+        "TextResourceDescriptor ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 179,
+      "name": "GlyphMapping",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum GlyphMapping: Equatable, Sendable",
+      "reasons": [
+        "CanonicalTextMetricsView ABI interface",
+        "GlyphMapping ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 184,
+      "name": "ScalarGlyphMappingRecord",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct ScalarGlyphMappingRecord: Equatable, Sendable",
+      "reasons": [
+        "CanonicalTextMetricsView ABI interface",
+        "ScalarGlyphMappingRecord ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 194,
+      "name": "GlyphRasterRecord",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct GlyphRasterRecord: Equatable, Sendable",
+      "reasons": [
+        "GiftUIReferenceTextRasterView.withPayload signature",
+        "GlyphRasterRecord ABI interface",
+        "RasterGlyphCoverage.withValidatedPayload signature",
+        "TextRasterResourceView ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 219,
+      "name": "CanonicalTextMetricsView",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol CanonicalTextMetricsView",
+      "reasons": [
+        "CanonicalTextMetricsView ABI interface",
+        "CanvasRenderProducer.preflight signature",
+        "CanvasRenderProducer.produce signature",
+        "OneShotRasterBackendEndpoint ABI interface",
+        "OneShotRasterBackendEndpoint.init enclosing header",
+        "RasterBackendEndpoint ABI interface",
+        "RasterGlyphCoverage.rasterize signature",
+        "RasterGlyphCoverage.withValidatedPayload signature",
+        "TextResourcePackage ABI interface",
+        "TextResourceValidator.validate signature",
+        "produce signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 236,
+      "name": "TextRasterResourceView",
+      "kind": "protocol",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package protocol TextRasterResourceView",
+      "reasons": [
+        "GiftUIReferenceTextRasterView ABI interface",
+        "GiftUIReferenceTextRasterView.withPayload enclosing header",
+        "OneShotRasterBackendEndpoint ABI interface",
+        "OneShotRasterBackendEndpoint.init enclosing header",
+        "RasterBackendEndpoint ABI interface",
+        "RasterGlyphCoverage.rasterize signature",
+        "RasterGlyphCoverage.withValidatedPayload signature",
+        "TextRasterResourceView ABI interface",
+        "TextResourcePackage ABI interface",
+        "TextResourceValidator.validate signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 251,
+      "name": "TextResourcePackage",
+      "kind": "struct",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package struct TextResourcePackage<Metrics, Raster>\nwhere Metrics: CanonicalTextMetricsView, Raster: TextRasterResourceView",
+      "reasons": [
+        "TextResourcePackage ABI interface",
+        "TextResourceValidator.validate signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 262,
+      "name": "TextResourceValidationError",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum TextResourceValidationError: UInt8, Equatable, Sendable",
+      "reasons": [
+        "TextResourceValidationError ABI interface",
+        "TextResourceValidationResult ABI interface"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 274,
+      "name": "TextResourceValidationResult",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum TextResourceValidationResult: Equatable, Sendable",
+      "reasons": [
+        "TextResourceValidationResult ABI interface",
+        "TextResourceValidator.validate signature"
+      ]
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 279,
+      "name": "TextResourceValidator",
+      "kind": "enum",
+      "access": "package",
+      "operation": "add @usableFromInline only; retain source access, members and checked constructors",
+      "header": "package enum TextResourceValidator",
+      "reasons": [
+        "TextResourceValidator ABI interface",
+        "TextResourceValidator.validate enclosing header"
+      ]
+    }
+  ],
+  "existing_abi_interface_nodes": [
+    {
+      "path": "Sources/GiftUI/Color.swift",
+      "line": 1,
+      "name": "Color"
+    },
+    {
+      "path": "Sources/GiftUI/DeclarativeView.swift",
+      "line": 1,
+      "name": "GiftUIAction"
+    },
+    {
+      "path": "Sources/GiftUI/DeclarativeView.swift",
+      "line": 4,
+      "name": "_GiftUISemanticPrimitivePayload"
+    },
+    {
+      "path": "Sources/GiftUI/DeclarativeView.swift",
+      "line": 6,
+      "name": "_GiftUISemanticActionPayload"
+    },
+    {
+      "path": "Sources/GiftUI/DeclarativeView.swift",
+      "line": 12,
+      "name": "_GiftUISemanticModifierPayload"
+    },
+    {
+      "path": "Sources/GiftUI/DeclarativeView.swift",
+      "line": 14,
+      "name": "_GiftUIReadDomain"
+    },
+    {
+      "path": "Sources/GiftUI/DeclarativeView.swift",
+      "line": 16,
+      "name": "_GiftUIAccessFailure"
+    },
+    {
+      "path": "Sources/GiftUI/DeclarativeView.swift",
+      "line": 24,
+      "name": "_GiftUIFrameRead"
+    },
+    {
+      "path": "Sources/GiftUI/DeclarativeView.swift",
+      "line": 53,
+      "name": "View"
+    },
+    {
+      "path": "Sources/GiftUI/DeclarativeView.swift",
+      "line": 84,
+      "name": "_GiftUISemanticTraversalVisitor"
+    },
+    {
+      "path": "Sources/GiftUI/DrawingSurface.swift",
+      "line": 72,
+      "name": "GraphicsContext"
+    },
+    {
+      "path": "Sources/GiftUI/DrawingSurface.swift",
+      "line": 217,
+      "name": "DrawingError"
+    },
+    {
+      "path": "Sources/GiftUI/GiftUI.swift",
+      "line": 3,
+      "name": "Point"
+    },
+    {
+      "path": "Sources/GiftUI/GiftUI.swift",
+      "line": 13,
+      "name": "Size"
+    },
+    {
+      "path": "Sources/GiftUI/GiftUI.swift",
+      "line": 26,
+      "name": "Rect"
+    },
+    {
+      "path": "Sources/GiftUI/LayoutContainers.swift",
+      "line": 1,
+      "name": "_GiftUIVStackPayload"
+    },
+    {
+      "path": "Sources/GiftUI/LayoutContainers.swift",
+      "line": 13,
+      "name": "_GiftUIHStackPayload"
+    },
+    {
+      "path": "Sources/GiftUI/LayoutContainers.swift",
+      "line": 25,
+      "name": "_GiftUIZStackPayload"
+    },
+    {
+      "path": "Sources/GiftUI/LayoutContainers.swift",
+      "line": 35,
+      "name": "_GiftUISpacerPayload"
+    },
+    {
+      "path": "Sources/GiftUI/LayoutModifiers.swift",
+      "line": 1,
+      "name": "_GiftUIPaddingPayload"
+    },
+    {
+      "path": "Sources/GiftUI/LayoutModifiers.swift",
+      "line": 11,
+      "name": "_GiftUIPaddingInsetsPayload"
+    },
+    {
+      "path": "Sources/GiftUI/LayoutModifiers.swift",
+      "line": 21,
+      "name": "_GiftUIFixedFramePayload"
+    },
+    {
+      "path": "Sources/GiftUI/LayoutModifiers.swift",
+      "line": 39,
+      "name": "_GiftUIFlexibleFramePayload"
+    },
+    {
+      "path": "Sources/GiftUI/ObservableState.swift",
+      "line": 13,
+      "name": "_GiftUIModelSchema"
+    },
+    {
+      "path": "Sources/GiftUI/ObservableState.swift",
+      "line": 49,
+      "name": "State"
+    },
+    {
+      "path": "Sources/GiftUI/ObservableState.swift",
+      "line": 104,
+      "name": "_GiftUIObservableChangeReportOutcome"
+    },
+    {
+      "path": "Sources/GiftUI/ObservableState.swift",
+      "line": 114,
+      "name": "_GiftUIObservationAttachment"
+    },
+    {
+      "path": "Sources/GiftUI/ObservableState.swift",
+      "line": 124,
+      "name": "_GiftUIObservableChangeSink"
+    },
+    {
+      "path": "Sources/GiftUI/ObservableState.swift",
+      "line": 162,
+      "name": "_GiftUIObservableStateDeclarationVisitor"
+    },
+    {
+      "path": "Sources/GiftUI/ObservableState.swift",
+      "line": 169,
+      "name": "_GiftUIObservableStateHost"
+    },
+    {
+      "path": "Sources/GiftUICapabilities/GiftUICapabilities.swift",
+      "line": 921,
+      "name": "EffectiveRasterPresentation"
+    },
+    {
+      "path": "Sources/GiftUIExecution/AdmissionValues.swift",
+      "line": 84,
+      "name": "CapturedAction"
+    },
+    {
+      "path": "Sources/GiftUIExecution/ExecutionValues.swift",
+      "line": 29,
+      "name": "ActionGeneration"
+    },
+    {
+      "path": "Sources/GiftUIExecution/ObservableTargetGeneration.swift",
+      "line": 2,
+      "name": "ObservableTargetGeneration"
+    },
+    {
+      "path": "Sources/GiftUIExecution/PointerActionCapture.swift",
+      "line": 4,
+      "name": "PointerActionCapture"
+    },
+    {
+      "path": "Sources/GiftUIFailureCore/GiftUIFailureCore.swift",
+      "line": 316,
+      "name": "GiftUIOperationalHealth"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift",
+      "line": 5,
+      "name": "ExecutionGestureAdapter"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "line": 5,
+      "name": "BoundedApplicationAction"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "line": 31,
+      "name": "BoundActionRecord"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "line": 61,
+      "name": "InteractionError"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "line": 85,
+      "name": "PointerGestureOutcome"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "line": 95,
+      "name": "InteractionDispatchResult"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "line": 123,
+      "name": "InteractionGestureResolver"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "line": 148,
+      "name": "InteractionCommittedActionView"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelMutation.swift",
+      "line": 8,
+      "name": "ObservableModelMutation"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "line": 25,
+      "name": "ObservableModelScope"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+      "line": 39,
+      "name": "ObservableModelReadSlot"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateModel.swift",
+      "line": 6,
+      "name": "ObservableStateModel"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "line": 165,
+      "name": "ObservableStateRootScope"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift",
+      "line": 6,
+      "name": "ObservableStateRootTargetAccess"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateValues.swift",
+      "line": 4,
+      "name": "ObservableStateLimits"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateValues.swift",
+      "line": 27,
+      "name": "ObservableStateError"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "line": 11,
+      "name": "RuntimeRecordInteractionBridge"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "line": 120,
+      "name": "RuntimeRecordInteractionDispatchResult"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "line": 60,
+      "name": "SemanticExpansionError"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "line": 76,
+      "name": "SemanticBodyEvaluation"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "line": 84,
+      "name": "SemanticStatefulBinding"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "line": 215,
+      "name": "SemanticRecordingRole"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "line": 264,
+      "name": "SemanticRecordView"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "line": 5,
+      "name": "SemanticDeclarationRoles"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "line": 42,
+      "name": "SemanticCompleteIdentity"
+    }
+  ],
+  "new_explicit_conformance_witnesses": [
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderProductionValues.swift",
+      "line_approx": 8,
+      "owner": "RenderLimits",
+      "name": "init",
+      "declaration": "package init?(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "line_approx": 28,
+      "owner": "RenderPlanHeader",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line_approx": 61,
+      "owner": "RasterRealizationID",
+      "name": "rawValue",
+      "declaration": "package let rawValue: UInt16",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line_approx": 63,
+      "owner": "RasterRealizationID",
+      "name": "init",
+      "declaration": "package init(rawValue: UInt16) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line_approx": 252,
+      "owner": "TextResourcePackage",
+      "name": "metrics",
+      "declaration": "package let metrics: Metrics",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "line_approx": 7,
+      "owner": "RenderSinkCapacity",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/DrawingLimits.swift",
+      "line_approx": 58,
+      "owner": "StaticCanvasLimits",
+      "name": "init",
+      "declaration": "package init?(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutValues.swift",
+      "line_approx": 42,
+      "owner": "LayoutSummary",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUISurfaceCore/SurfaceValues.swift",
+      "line_approx": 11,
+      "owner": "CanonicalEncodedPixel",
+      "name": "init",
+      "declaration": "package init(color: Color, encoding: CanonicalPixelEncoding) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUISurfaceCore/SurfaceValues.swift",
+      "line_approx": 60,
+      "owner": "RasterSurfaceDescriptor",
+      "name": "init",
+      "declaration": "package init?(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line_approx": 139,
+      "owner": "RasterRealizationDescriptor",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "line_approx": 47,
+      "owner": "PositionedGlyph",
+      "name": "init",
+      "declaration": "package init(glyph: GlyphID, baseline: Point) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "line_approx": 71,
+      "owner": "PositionedGlyphOperationHeader",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line_approx": 201,
+      "owner": "GlyphRasterRecord",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+      "line_approx": 120,
+      "owner": "FullSurfaceRGBA8888Buffer",
+      "name": "acceptPresentationResponsibility",
+      "declaration": "package mutating func acceptPresentationResponsibility() -> Bool {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line_approx": 18,
+      "owner": "ObservableCanvasInvocationSource",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line_approx": 26,
+      "owner": "ObservableCanvasInvocationSource",
+      "name": "canvasOccurrenceCount",
+      "declaration": "package var canvasOccurrenceCount: UInt16 { values.count }",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line_approx": 27,
+      "owner": "ObservableCanvasInvocationSource",
+      "name": "canvasIdentity",
+      "declaration": "package func canvasIdentity(at index: UInt16) -> Identity? { values.identity(at: index) }",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line_approx": 46,
+      "owner": "ObservableCanvasInvocationSource",
+      "name": "releaseCanvas",
+      "declaration": "package mutating func releaseCanvas(at identity: Identity) { values.release(at: identity) }",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line_approx": 15,
+      "owner": "InteractionOwnedKeyState",
+      "name": "Identity",
+      "declaration": "package typealias Identity = SemanticCompleteIdentity",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line_approx": 53,
+      "owner": "InteractionOwnedKeyState",
+      "name": "beginCandidate",
+      "declaration": "package mutating func beginCandidate(limits: InteractionLimits) -> InteractionError? {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line_approx": 136,
+      "owner": "InteractionOwnedKeyState",
+      "name": "assignGeneration",
+      "declaration": "package mutating func assignGeneration(_ generation: ActionGeneration, to identity: Identity)",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line_approx": 147,
+      "owner": "InteractionOwnedKeyState",
+      "name": "finishCandidate",
+      "declaration": "package mutating func finishCandidate() -> InteractionError? {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line_approx": 156,
+      "owner": "InteractionOwnedKeyState",
+      "name": "resolveCandidate",
+      "declaration": "package mutating func resolveCandidate(_ disposition: InteractionCandidateDisposition) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line_approx": 178,
+      "owner": "InteractionOwnedKeyState",
+      "name": "committedRecord",
+      "declaration": "package borrowing func committedRecord(for identity: Identity) -> BoundActionRecord<Identity>? {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "line_approx": 186,
+      "owner": "InteractionOwnedKeyState",
+      "name": "resolveMove",
+      "declaration": "package borrowing func resolveMove(_ captured: CapturedAction<Identity>, at point: Point)",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIExecution/WakeValues.swift",
+      "line_approx": 1,
+      "owner": "ExecutionWakeReasons",
+      "name": "rawValue",
+      "declaration": "package let rawValue: UInt8",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIExecution/WakeValues.swift",
+      "line_approx": 3,
+      "owner": "ExecutionWakeReasons",
+      "name": "init",
+      "declaration": "package init(rawValue: UInt8) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line_approx": 70,
+      "owner": "MVPHostActivationController",
+      "name": "init",
+      "declaration": "package init() {}",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line_approx": 72,
+      "owner": "MVPHostActivationController",
+      "name": "init",
+      "declaration": "package init(lifecycleState: MVPHostLifecycleState) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line_approx": 51,
+      "owner": "SignalAnalyzerPresetHostInstance",
+      "name": "assemblyReport",
+      "declaration": "package let assemblyReport: HostAssemblyReport",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line_approx": 70,
+      "owner": "SignalAnalyzerPresetHostInstance",
+      "name": "lifecycleState",
+      "declaration": "package var lifecycleState: MVPHostLifecycleState {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line_approx": 14,
+      "owner": "InteractionState",
+      "name": "Identity",
+      "declaration": "package typealias Identity = CandidateRecords.Identity",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line_approx": 49,
+      "owner": "InteractionState",
+      "name": "beginCandidate",
+      "declaration": "package mutating func beginCandidate(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line_approx": 96,
+      "owner": "InteractionState",
+      "name": "record",
+      "declaration": "let record = InteractionCandidateRecord(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line_approx": 109,
+      "owner": "InteractionState",
+      "name": "region",
+      "declaration": "let region = InteractionHitRegion(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line_approx": 196,
+      "owner": "InteractionState",
+      "name": "assignGeneration",
+      "declaration": "package mutating func assignGeneration(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line_approx": 226,
+      "owner": "InteractionState",
+      "name": "finishCandidate",
+      "declaration": "package mutating func finishCandidate() -> InteractionError? {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line_approx": 276,
+      "owner": "InteractionState",
+      "name": "resolveCandidate",
+      "declaration": "package mutating func resolveCandidate(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line_approx": 327,
+      "owner": "InteractionState",
+      "name": "committedRecord",
+      "declaration": "package borrowing func committedRecord(at index: UInt16)",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "line_approx": 390,
+      "owner": "InteractionState",
+      "name": "committedRecord",
+      "declaration": "package borrowing func committedRecord(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift",
+      "line_approx": 44,
+      "owner": "GiftUIReferenceTextRasterView",
+      "name": "descriptor",
+      "declaration": "package var descriptor: TextResourceDescriptor {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift",
+      "line_approx": 48,
+      "owner": "GiftUIReferenceTextRasterView",
+      "name": "realization",
+      "declaration": "package func realization(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift",
+      "line_approx": 57,
+      "owner": "GiftUIReferenceTextRasterView",
+      "name": "record",
+      "declaration": "package func record(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift",
+      "line_approx": 72,
+      "owner": "GiftUIReferenceTextRasterView",
+      "name": "isPayloadAvailable",
+      "declaration": "package func isPayloadAvailable(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "line_approx": 11,
+      "owner": "ObservableSemanticBodyBinding",
+      "name": "Failure",
+      "declaration": "package typealias Failure = ObservableStateError",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "line_approx": 17,
+      "owner": "ObservableSemanticBodyBinding",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRasterCore/RasterPayloadLimits.swift",
+      "line_approx": 10,
+      "owner": "RasterPayloadLimits",
+      "name": "init",
+      "declaration": "package init?(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+      "line_approx": 42,
+      "owner": "OneShotRasterBackendEndpoint",
+      "name": "effectivePresentation",
+      "declaration": "package let effectivePresentation: EffectiveRasterPresentation",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+      "line_approx": 44,
+      "owner": "OneShotRasterBackendEndpoint",
+      "name": "descriptor",
+      "declaration": "package let descriptor: RasterSurfaceDescriptor",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+      "line_approx": 45,
+      "owner": "OneShotRasterBackendEndpoint",
+      "name": "payloadLimits",
+      "declaration": "package let payloadLimits: RasterPayloadLimits",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+      "line_approx": 46,
+      "owner": "OneShotRasterBackendEndpoint",
+      "name": "textMetrics",
+      "declaration": "package let textMetrics: TextMetrics",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+      "line_approx": 47,
+      "owner": "OneShotRasterBackendEndpoint",
+      "name": "textRaster",
+      "declaration": "package let textRaster: TextRaster",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+      "line_approx": 48,
+      "owner": "OneShotRasterBackendEndpoint",
+      "name": "textRasterRealization",
+      "declaration": "package let textRasterRealization: RasterRealizationID",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+      "line_approx": 153,
+      "owner": "OneShotRasterBackendEndpoint",
+      "name": "health",
+      "declaration": "package borrowing func health() -> GiftUIOperationalHealth {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift",
+      "line_approx": 11,
+      "owner": "StaticObservableRootAdapter",
+      "name": "init",
+      "declaration": "package init?(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "line_approx": 7,
+      "owner": "FrameProvenance",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "line_approx": 44,
+      "owner": "FrameOfferResult",
+      "name": "init",
+      "declaration": "package init?(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIDisplayCore/DisplayContracts.swift",
+      "line_approx": 6,
+      "owner": "DisplayReservationID",
+      "name": "rawValue",
+      "declaration": "package let rawValue: UInt32",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIDisplayCore/DisplayContracts.swift",
+      "line_approx": 8,
+      "owner": "DisplayReservationID",
+      "name": "init",
+      "declaration": "package init(rawValue: UInt32) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "line_approx": 16,
+      "owner": "InteractionLimits",
+      "name": "init",
+      "declaration": "package init?(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUI/GiftUI.swift",
+      "line_approx": 133,
+      "owner": "PresentationRevision",
+      "name": "rawValue",
+      "declaration": "package let rawValue: UInt32",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUI/GiftUI.swift",
+      "line_approx": 135,
+      "owner": "PresentationRevision",
+      "name": "init",
+      "declaration": "package init(rawValue: UInt32) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line_approx": 68,
+      "owner": "RunCycleSummary",
+      "name": "init",
+      "declaration": "package init?(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line_approx": 5,
+      "owner": "HostActivationProgress",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "line_approx": 32,
+      "owner": "RuntimePipelinePublication",
+      "name": "init",
+      "declaration": "package init(semanticRevision: SemanticRevision, changed: Bool) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line_approx": 45,
+      "owner": "FontInstanceID",
+      "name": "init",
+      "declaration": "package init(resource: FontResourceID, instanceIndex: UInt16) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line_approx": 52,
+      "owner": "GlyphID",
+      "name": "rawValue",
+      "declaration": "package let rawValue: UInt16",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line_approx": 54,
+      "owner": "GlyphID",
+      "name": "init",
+      "declaration": "package init(rawValue: UInt16) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line_approx": 57,
+      "owner": "LayoutPositionedGlyph",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line_approx": 18,
+      "owner": "LayoutPlacement",
+      "name": "init",
+      "declaration": "package init(bounds: Rect, clip: Rect) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line_approx": 8,
+      "owner": "LayoutMeasurement",
+      "name": "init",
+      "declaration": "package init(idealSize: Size, resolvedSize: Size) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line_approx": 32,
+      "owner": "LayoutTextLine",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/DrawingOperationSink.swift",
+      "line_approx": 6,
+      "owner": "SubpathRange",
+      "name": "init",
+      "declaration": "package init?(firstPoint: UInt16, pointCount: UInt16) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/DrawingOperationSink.swift",
+      "line_approx": 25,
+      "owner": "StraightLineStrokeHeader",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/DrawingValues.swift",
+      "line_approx": 7,
+      "owner": "DrawingPlanSummary",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line_approx": 163,
+      "owner": "TextResourceDescriptor",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderExtensions.swift",
+      "line_approx": 8,
+      "owner": "RenderExtensionVisit",
+      "name": "init",
+      "declaration": "package init(operationCount: UInt16) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line_approx": 116,
+      "owner": "FontInstanceDescriptor",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line_approx": 187,
+      "owner": "ScalarGlyphMappingRecord",
+      "name": "init",
+      "declaration": "package init(scalarValue: UInt32, glyph: GlyphID) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line_approx": 96,
+      "owner": "GlyphMetrics",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRenderLowering/RenderProductionValues.swift",
+      "line_approx": 31,
+      "owner": "RenderWorkspaceCapacity",
+      "name": "init",
+      "declaration": "package init?(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUILayout/ResolvedRenderLayoutView.swift",
+      "line_approx": 10,
+      "owner": "ResolvedRenderTextLine",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUILayout/ResolvedRenderLayoutView.swift",
+      "line_approx": 33,
+      "owner": "ResolvedRenderGlyph",
+      "name": "init",
+      "declaration": "package init(",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    },
+    {
+      "path": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "line_approx": 58,
+      "owner": "FillRectOperation",
+      "name": "init",
+      "declaration": "package init(bounds: Rect, clip: Rect, color: Color) {",
+      "operation": "add @usableFromInline to existing source-accessible conformance witness/associated type only; no body/source-access change"
+    }
+  ],
+  "limits": "Only listed declarations/entries may receive ABI annotations. Body dependencies remain private and are qualified through unchanged default CMO physical bodies/actual specialization; no body-closure success is assumed. Compiler remains final qualifier. No blanket file annotations.",
+  "lexical_method": "Top-level nominal interface recursion; protocol requirements and enum associated types; existing ABI declarations followed read-only; public standard library/framework declarations unchanged. Witness matching is recorded for human review; exact source declarations/signatures are frozen by file hash.",
+  "source_sha256": {
+    "Sources/GiftUI/GiftUI.swift": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+    "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift": "fa9c4b3aa3c522a8bd39efa4560abb692f61a1ab578089ed5ea4af182e5dd778",
+    "Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift": "f38c93f26953da1f265aa20b1678d8d1a515fe533707d3646e89556908f62754",
+    "Sources/GiftUIDisplayCore/DisplayContracts.swift": "b27ad7489ad1ec6076f0d53b3912d6b9ed85329d355ceda2678707374111f3f0",
+    "Sources/GiftUIDrawing/CanvasInvocationSource.swift": "9b992bc729e793959c0d8ad3fcb374c0bf3ced7edb1cdd098c57e6ba48c451f2",
+    "Sources/GiftUIDrawing/CanvasRenderProducer.swift": "c98ac6df32afa04088b6958ed8f664db91dd111cd9d798b626c60adbed7ddf69",
+    "Sources/GiftUIDrawing/CanvasStagedValues.swift": "b73c04032b1bd318647479ab4e720e255fdf909cac3ec483110ee879884d1e9c",
+    "Sources/GiftUIDrawing/DrawingLimits.swift": "eae0cc1be30bc22102c76613cd07b08ee577dbbb1f08d06caf350eb52d64be64",
+    "Sources/GiftUIDrawing/DrawingPlan.swift": "93e3216f2faaee98e2c025deef50cfb7513911efacdd56e90980be3cb6264da9",
+    "Sources/GiftUIDrawing/DrawingValues.swift": "d1008926323fdb292ec32e95e2cefb17958ea5ccbfb8d2e0c48fb67e565f0874",
+    "Sources/GiftUIDrawing/StaticCanvasCallableTable.swift": "9c644426cf7f594dddff99cea8a21eb4c2fd57f295f4afdfbe049c55413ff9b6",
+    "Sources/GiftUIExecution/FrameHandoffValues.swift": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba",
+    "Sources/GiftUIExecution/RunCycleValues.swift": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+    "Sources/GiftUIExecution/WakeValues.swift": "915e835c62177403893bf44318b0d06ded8e017e59ba4f1e11d9f333505275f6",
+    "Sources/GiftUIHostConfiguration/HostActivationController.swift": "0690842621866c1747d55966a4a7a2a48e343f0d42aeab3deee04baafae27c5b",
+    "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": "3e00d5e22b04e6ccb25ab357f2d6fe96349f2ab31abf3cf9201206110d83b205",
+    "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift": "8574092a20e81ed83225c662b121c100e66c9a3cc3c6be61a6d81e80c8860618",
+    "Sources/GiftUIHostConfiguration/HostWakePacingController.swift": "457479bb631966220e2bb2d26fb7a78ac0143fbcadae8b66c25b78b27125643b",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift": "8a55d5e2f4abaa1b676bfc5b56f77f6341efd8427837623b5e69f943b5b49768",
+    "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift": "ee7d2b1db3604b904be3e3733c5eab4edf079fc7401d93a79035bb782fb82b8f",
+    "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": "17c79ca0e2726f8c10483c42f555f475804680f95d13c727cd3e9ee787e9216b",
+    "Sources/GiftUIInteraction/InteractionState.swift": "139c5fa64f1fd562c425993a7d911d76ca9eafae0ac60b241c5bf54f20fc0616",
+    "Sources/GiftUIInteraction/InteractionStorage.swift": "19434eff6929af855dc90dac2e8c271dac3e0fb62f676e1ce5dcd05cd049f31c",
+    "Sources/GiftUIInteraction/InteractionValues.swift": "1ba67e136dbe99b4c92d500ef0cd4a381a8b534d55bd0f93ce537c2ccd4f4194",
+    "Sources/GiftUILayout/LayoutEngine.swift": "b700865c9ddb31f628b5a1f4149f6209b50ac5abd1664bcaa755a88d855155ab",
+    "Sources/GiftUILayout/LayoutError.swift": "5733fe30105131fe00b87c4812e787a4efa6aed7236c84d5f93a0e0ddbcf629b",
+    "Sources/GiftUILayout/LayoutPublication.swift": "1a47ed50c9801065217af7d7b982097519444cc7a1158709d24e6dcc6c24d9d1",
+    "Sources/GiftUILayout/LayoutResultSink.swift": "57a52e0187904a317a7d3b00acf28afcd1854d2e62120cafd4fd12011e2ad06a",
+    "Sources/GiftUILayout/LayoutSemanticValidation.swift": "1fc34ec4a6b89b8f14b3075292fb2b07ce693bd7ce534cbef5d0bc6bc7a8c5ba",
+    "Sources/GiftUILayout/LayoutValues.swift": "ec168c1eb9bc6dff3cfb5144ab752958dad62d4bc1c419e8f0dea1b4149e704b",
+    "Sources/GiftUILayout/LayoutWorkspace.swift": "bbec7289fc9cb6c1f506e895231257c58bdd818ba6d0a020258cb7c97b342f81",
+    "Sources/GiftUILayout/ResolvedRenderLayoutView.swift": "7278d5216c075b499bee43e8b646f00a34f70f6b877ab9b4fc72de1878f10b33",
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift": "48265ebed5ea5fb964d51a2557cf27f2eeae6388097b29a09aebdeac5e8e88fb",
+    "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift": "e52aaae337bb1f56f6a228e5cb616d5480a45080628ceb5528b5376412b4b37f",
+    "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift": "203cc9c8eac3380098e1fac110ae20872927038cb6ae9135e27eb109f26c588c",
+    "Sources/GiftUIRasterCore/RasterFrameSink.swift": "93e7455f817de8a665933761c3580c59451d4c9cf12d9b9e8773aa4b28e1582a",
+    "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift": "29cedc4f49e27d990cd076d51f65ff2dae5b7ff6932aef5a9dbba0c014a1bbfc",
+    "Sources/GiftUIRasterCore/RasterPayloadLimits.swift": "23234d9ba4e630bb6279e31a9ab8ae72b8f9e3b2f9477784bf42697ecab544c3",
+    "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift": "c15131c18872115b83fe63d71247494092d29dfb31bbc05d208d5306572b89f4",
+    "Sources/GiftUIRenderCore/DrawingOperationSink.swift": "4d35496afb8dc6b4827b52b3441a8258a5f91754c765a8828cb5ff7ebaafba88",
+    "Sources/GiftUIRenderCore/RenderOperationSink.swift": "02ba1989d36434e1e7db7984acce9ccc4a7861857c53de7d49676968aaaf1f43",
+    "Sources/GiftUIRenderCore/RenderValues.swift": "d4a0e5274c7c8e88a4e7c6c9c0bf5345ea1e83b5086b1f32373f01c7a4940722",
+    "Sources/GiftUIRenderLowering/RenderExtensions.swift": "b4b73e4193b61650d587b0134e626058da433b2c25176df35e3a9f74618fddf9",
+    "Sources/GiftUIRenderLowering/RenderProducer.swift": "0e25b626df694b56c95d6c444db1fbf40e45afd7c65c4b5b9253fe5a15226281",
+    "Sources/GiftUIRenderLowering/RenderProductionValues.swift": "0005e5774c9a7658547f91d79b685b2033d59928d01ecd07136b80eaab535bcc",
+    "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift": "5158e4d8e23c16aa3f17da51885b26412a30444f7a2ee47b83d30d213653ab1b",
+    "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+    "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+    "Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift": "7728c6631e620e312f006ddc60e8fdec5d58efb3ea702b662b21ea187586ae57",
+    "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift": "b3e06e72261ccad9c981b1822212e3aa83cd53ea8a2cfc2e771a0fbc3c2fc59a",
+    "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift": "eb63e6c191b8e1af24f19dd2fd523ddb315d04e36151471f534fe6063658e0a0",
+    "Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift": "f6bf84f47f4021eaa61dacd51da8e3a6b9d19066eb577934fc19b9dfd7785078",
+    "Sources/GiftUISemanticCore/SemanticRenderView.swift": "53f052d9cf5f4dba04edecb9713a11518718f315da8d83855623e41d6e8ebaca",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "d4d212e512d06829525da02e37992d0ac8e3d1ebb7a5acfccfd5e4bfdb33b546",
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift": "2dd204c2c7b5d4fe06e58a085ac7a59aa70dd734e56981231c414c10f7389c70",
+    "Sources/GiftUISurfaceCore/RasterSurface.swift": "cf0aa2fe88d7cf825e5b9bddb8b8e2fc48d76555f4a8ac94ff4ec0b884fe3b42",
+    "Sources/GiftUISurfaceCore/SurfaceValues.swift": "96e161fdf3d1f58dd4c1de04c043df647a3fa279d17993c57e2b0ce15e19d60c",
+    "Sources/GiftUITextResources/GiftUITextResources.swift": "d1f60a53bf776c331ab57281f0874e08ef804f4e4d44c733134f92fc532f6a1f"
+  },
+  "counts": {
+    "seed_entries": 54,
+    "abi_declarations_needed": 144,
+    "explicit_witnesses": 85,
+    "source_files": 58,
+    "abi_interface_nodes_already_usable": 61
+  }
+}
