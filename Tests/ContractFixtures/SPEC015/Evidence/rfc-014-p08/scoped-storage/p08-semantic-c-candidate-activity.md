@@ -19,3 +19,10 @@ fresh25/all4variants/privacy73/index11/body87/current42. Three typedcontrols pre
 escape negative refined to existing Copyable/~Escapable reader result. No compiler/
 test/decoder/runtime pretest. Sourcecandidate1/1/zeroautomaticSOURCErepairs unchanged;
 independent source+recipe review next, fullconsumer/safety/strictcold/P08 unqualified.
+# Independent pre-run disposition
+
+[Source/prepared review](p08-semantic-c-prepared-review.md): f2325b85/78af8059 READY
+for the authorized single focused run. Exact source projection and frozen recipes
+verify; Copyable/~Escapable view escape control isolates intended Result boundary
+with shared UInt32 positive. Freshmacro17→25+4variants→privacy73/index11/body87/
+current42 retains dynamic seals/strict gates. No execution PASS or repair allowance.
