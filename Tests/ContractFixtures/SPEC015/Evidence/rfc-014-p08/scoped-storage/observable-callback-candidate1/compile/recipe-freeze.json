@@ -1,0 +1,5 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/compile/prepared.json": "72de5beed8d6456854c7bc56e540f02d97f06f3742bbf1566ade19de164f683a",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/compile/run.py": "75fda06ecfe1b6f652e8017ce3a124d4192083fd9712ff1461862dc3acb33ef9",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/compile/input-freeze.json": "eb3e03e1a1816ee2981c5e2ac066f16cfca1e3ca381c9f004433de8d306d0ad1"
+}

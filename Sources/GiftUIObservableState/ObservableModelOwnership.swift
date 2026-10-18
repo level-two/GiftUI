@@ -11,7 +11,9 @@ package struct ObservableModelOwnership: ~Copyable {
 
     @usableFromInline
     package struct Address: Equatable {
+        @usableFromInline
         package let owner: UInt32
+        @usableFromInline
         package let generation: UInt32
         @usableFromInline
         package let slot: UInt16
@@ -151,6 +153,7 @@ package struct ObservableModelOwnership: ~Copyable {
             slot: key._giftUISlot)
     }
 
+    @usableFromInline
     package mutating func retireActivation() { phase = .retired }
 
     @usableFromInline
@@ -200,6 +203,7 @@ package struct ObservableModelOwnership: ~Copyable {
         if phase == .writing { phase = .mutating }
     }
 
+    @usableFromInline
     package func validatedClaim(_ claim: Claim, schema: UInt16)
         throws(ObservableStateError) -> Int
     {
@@ -209,6 +213,7 @@ package struct ObservableModelOwnership: ~Copyable {
         return index
     }
 
+    @usableFromInline
     package func validateAssociation(_ address: Address, schema: UInt16)
         throws(ObservableStateError)
     {
@@ -282,6 +287,7 @@ package struct ObservableModelOwnership: ~Copyable {
         return UInt16(index)
     }
 
+    @usableFromInline
     package mutating func release(_ claim: Claim) throws(ObservableStateError) -> UInt16? {
         if let failure = operationAllowed(discovery: true) { throw failure }
         let index = try validate(claim)
@@ -290,6 +296,7 @@ package struct ObservableModelOwnership: ~Copyable {
         return reclaimIfUnowned(index)
     }
 
+    @usableFromInline
     package mutating func register(_ address: Address, schema: UInt16) throws(ObservableStateError)
     {
         if let failure = operationAllowed(discovery: true) { throw failure }
@@ -325,6 +332,7 @@ package struct ObservableModelOwnership: ~Copyable {
         phase = .reading
     }
 
+    @usableFromInline
     package mutating func pin(_ address: Address) throws(ObservableStateError) {
         guard phase != .replacing else { throw .reentrancyViolation }
         guard phase == .reading || phase == .discovering, !activeRead else {

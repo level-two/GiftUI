@@ -1,0 +1,65 @@
+{
+  "status": "PASS exact40site/sixfile token/access/default/ownership audit; targeted Swift formatter; static combined recipe validation PASS",
+  "map_sha256": "6b730f0e8e1b6bf0f67bb0ef2df0b2a8f99969a22ecd10c3e586edd0605dcc31",
+  "files": [
+    "Sources/GiftUI/ObservableState.swift",
+    "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+    "Sources/GiftUIObservableState/ObservableModelScope.swift",
+    "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+    "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift",
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift"
+  ],
+  "sites": 40,
+  "audit": [
+    {
+      "source": "Sources/GiftUI/ObservableState.swift",
+      "before_sha256": "9f49b702c630be7e1ecc690973c73912142d731050bc4c62776c207e2ce68e86",
+      "after_sha256": "0b293757d79cfa7b5c5e78fe06b2d1897b592f0ef6938cc9b75791dd5126d3e7",
+      "non_attribute_tokens_equal_after_exact_access_and_two_constructor_projection": true
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "before_sha256": "8b7eade40fd1512353d4aef2312feb0d4e9cb6be55c74d59023da6e316dcee8f",
+      "after_sha256": "0b1b73168a16d20cfcb3dd283e52af12aa414cdfe57e1720601198d9649b126d",
+      "non_attribute_tokens_equal_after_exact_access_and_two_constructor_projection": true
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "before_sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de",
+      "after_sha256": "8fbcbae675ae704faebdd33e2aa3956e404ecfa0f75fe7c49d8bdd89c9a4c4d8",
+      "non_attribute_tokens_equal_after_exact_access_and_two_constructor_projection": true
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+      "before_sha256": "fdee7c831f5a2d19b71e13df95968d5d1baba0d0d11dd8cc9ada07d4378d8649",
+      "after_sha256": "fbe273372d34c2535002a2465076559adb9b6c9239fbab7abda0b7587107ae82",
+      "non_attribute_tokens_equal_after_exact_access_and_two_constructor_projection": true
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift",
+      "before_sha256": "58367baadd5b6213f1bf3809106c2aba2639ddc86ec01907b6d1e9e79a706774",
+      "after_sha256": "b2d0ccffa645cc32c27a5fb26fb3e9e1aa2ffd16db2d5f37306c1afb0f1539e1",
+      "non_attribute_tokens_equal_after_exact_access_and_two_constructor_projection": true
+    },
+    {
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "before_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4",
+      "after_sha256": "1c7279188f67289665fff485c91e6d55a13e1f127bde6ba98928696cf3158639",
+      "non_attribute_tokens_equal_after_exact_access_and_two_constructor_projection": true
+    }
+  ],
+  "constructor_guards": {
+    "Record": "six var defaults ordinal0,keyOwner0,keyGeneration0,attachmentnil,publishedfalse,encounteredfalse same-order assignments",
+    "Route": "lifecycle default ObservableStateRegistrationLifecycle(),dirtyfalse same-order assignments",
+    "sink": "existing three REQUIRED args; private fields exact",
+    "all_other_defaults_ownership_lifetimes": "token exact",
+    "generic_ledger_bind": "unchanged"
+  },
+  "annotation_delta": {
+    "inlinable": 16,
+    "usableFromInline": 19,
+    "inline": 0,
+    "_lifetime": 0
+  },
+  "access_delta": "exact five private/fileprivate->internal declarations: RootScope.checkOperation/bind, RootControl.candidateActive/reserve, Ticket.ownsClaim; no public/package widening"
+}

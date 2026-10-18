@@ -34,10 +34,26 @@ package struct ObservableStateRootControl {
         var keyOwner: UInt32 = 0
         @usableFromInline
         var keyGeneration: UInt32 = 0
+        @usableFromInline
         var attachment: _GiftUIObservationAttachment?
         @usableFromInline
         var published = false
+        @usableFromInline
         var encountered = false
+
+        @usableFromInline
+        internal init(
+            ordinal: UInt16 = 0, keyOwner: UInt32 = 0, keyGeneration: UInt32 = 0,
+            attachment: _GiftUIObservationAttachment? = nil,
+            published: Bool = false, encountered: Bool = false
+        ) {
+            self.ordinal = ordinal
+            self.keyOwner = keyOwner
+            self.keyGeneration = keyGeneration
+            self.attachment = attachment
+            self.published = published
+            self.encountered = encountered
+        }
     }
     @usableFromInline
     internal var records: InlineArray<2, Record> = .init(repeating: Record())
@@ -47,7 +63,8 @@ package struct ObservableStateRootControl {
         repeating: nil)
     @usableFromInline
     var nextGeneration: UInt32? = 0
-    fileprivate var candidateActive = false
+    @usableFromInline
+    internal var candidateActive = false
     @usableFromInline
     internal var operationActive = false
     @usableFromInline
@@ -61,7 +78,8 @@ package struct ObservableStateRootControl {
     package init() {}
     init(nextGeneration: UInt32?) { self.nextGeneration = nextGeneration }
 
-    fileprivate mutating func reserve(_ slot: UInt16) throws(ObservableStateError)
+    @usableFromInline
+    internal mutating func reserve(_ slot: UInt16) throws(ObservableStateError)
         -> _GiftUIObservationAttachment
     {
         guard let generation = nextGeneration else { throw .registrationGenerationExhausted }
@@ -75,10 +93,23 @@ package struct ObservableStateRootControl {
 /// pointer is lent independently from model storage for the activation interval.
 @usableFromInline
 struct ObservableStateRootReports {
+    @usableFromInline
     struct Route {
+        @usableFromInline
         var lifecycle = ObservableStateRegistrationLifecycle()
         var dirty = false
+
+        @usableFromInline
+        internal init(
+            lifecycle: ObservableStateRegistrationLifecycle =
+                ObservableStateRegistrationLifecycle(),
+            dirty: Bool = false
+        ) {
+            self.lifecycle = lifecycle
+            self.dirty = dirty
+        }
     }
+    @usableFromInline
     var routes: InlineArray<2, Route> = .init(repeating: Route())
     @usableFromInline
     var mutationReporting = false
@@ -98,6 +129,7 @@ struct ObservableStateRootReports {
     }
 }
 
+@usableFromInline
 func reportObservableStateRoot(
     _ context: UnsafeMutableRawPointer, _ slot: UInt16, _ generation: UInt32
 ) -> UInt8 {
@@ -222,7 +254,8 @@ package struct ObservableStateRootScope<
         reports.pointee.routes[0].dirty || reports.pointee.routes[1].dirty
     }
 
-    private borrowing func checkOperation(discovery: Bool = false) throws(ObservableStateError) {
+    @inlinable
+    internal borrowing func checkOperation(discovery: Bool = false) throws(ObservableStateError) {
         guard !records.pointee.retired else { throw .invalidPhaseSafetyNotProven }
         guard !records.pointee.operationActive else { throw .reentrancyViolation }
         try models.validateOperation(discovery: discovery)
@@ -280,7 +313,8 @@ package struct ObservableStateRootScope<
         return record.attachment?.generation
     }
 
-    private borrowing func bind(_ state: inout State<Model.Schema>, slot: Int)
+    @inlinable
+    internal borrowing func bind(_ state: inout State<Model.Schema>, slot: Int)
         throws(ObservableStateError)
     {
         let record = records.pointee.records[slot]
@@ -301,7 +335,7 @@ package struct ObservableStateRootScope<
         }
     }
 
-    @usableFromInline
+    @inlinable
     borrowing func preserved(
         _ identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>
     ) throws(ObservableStateError) -> Bool {
@@ -406,7 +440,7 @@ package struct ObservableStateRootScope<
         if let failure { throw failure }
     }
 
-    @usableFromInline
+    @inlinable
     borrowing func install(
         _ identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>,
         ticket: inout ObservableModelTicket<Model.Schema>

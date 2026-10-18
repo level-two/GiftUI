@@ -69,13 +69,14 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
             && schema == other.schema
     }
 
-    @usableFromInline
+    @inlinable
     package borrowing func validateTicket(_ ticket: borrowing ObservableModelTicket<Schema>)
         throws(ObservableStateError)
     {
         _ = try ownership.pointee.validatedClaim(ticket.requireClaim(), schema: schema)
     }
 
+    @inlinable
     package borrowing func validateAssociation(_ key: _GiftUIModelKey<Schema>)
         throws(ObservableStateError)
     {
@@ -83,7 +84,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
             ownership.pointee.address(for: key), schema: schema)
     }
 
-    @usableFromInline
+    @inlinable
     package borrowing func validateOperation(discovery: Bool = false) throws(ObservableStateError) {
         if let failure = ownership.pointee.operationAllowed(discovery: discovery) { throw failure }
     }
@@ -91,6 +92,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
     @inlinable
     package var phase: ObservableModelOwnership.Phase { ownership.pointee.phase }
 
+    @inlinable
     package borrowing func requireStop() { ownership.pointee.retireActivation() }
 
     // Called before the root report-storage borrow ends, even if an independent
@@ -108,6 +110,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         }
     }
 
+    @inlinable
     package borrowing func attach(
         _ key: _GiftUIModelKey<Schema>, sink: consuming _GiftUIObservableChangeSink
     ) throws(ObservableStateError) -> _GiftUIObservationAttachment?
@@ -118,6 +121,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         return models[index]!.attach(consume sink)
     }
 
+    @inlinable
     package borrowing func detach(
         _ key: _GiftUIModelKey<Schema>, attachment: _GiftUIObservationAttachment
     ) throws(ObservableStateError)
@@ -203,7 +207,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         return ObservableModelTicket(claim: claim, lifetime: self)
     }
 
-    @usableFromInline
+    @inlinable
     package borrowing func release(_ ticket: inout ObservableModelTicket<Schema>)
         throws(ObservableStateError)
     {
@@ -213,6 +217,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         ticket.endOwnership()
     }
 
+    @inlinable
     package borrowing func register(_ ticket: borrowing ObservableModelTicket<Schema>)
         throws(ObservableStateError)
     {
@@ -300,6 +305,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         }
     }
 
+    @inlinable
     package borrowing func pin(_ key: _GiftUIModelKey<Schema>) throws(ObservableStateError) {
         try ownership.pointee.pin(ownership.pointee.address(for: key))
     }

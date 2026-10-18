@@ -1,0 +1,14 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/run.py": "8872c6b8afc76bf280b5b47d23fa5f1242df593b0f8e0e1a28ad2d5788e512c6",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/prepared.json": "cbdace21d01a9208e0047d773974ff46b722c490bd64f504b8c7a8b4376afab4",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/source-edits.json": "33a679e34a06c23b9bb481aaeb3646965cceca196c2380da6a7995938f8fe5af",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/compile/run.py": "75fda06ecfe1b6f652e8017ce3a124d4192083fd9712ff1461862dc3acb33ef9",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/compile/prepared.json": "72de5beed8d6456854c7bc56e540f02d97f06f3742bbf1566ade19de164f683a",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/compile/input-freeze.json": "eb3e03e1a1816ee2981c5e2ac066f16cfca1e3ca381c9f004433de8d306d0ad1",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/compile/recipe-freeze.json": "12b54fbdd69ded6318f511e277a3d1fe1ebf1039bf20b48ba1af3436bcc062b1",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/qualification/run.py": "4a6ef4d5b6ff75b99e4586adc6fef29561cfb17a0f153be510a490d221961b27",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/qualification/prepared.json": "3b2a31785f6be7887242bcd10338a4264a58ce5f1e9fba8397c9167651e6e2b3",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/qualification/input-freeze.json": "428d5be546b3d755577b82debd248a394fb14794535f81612716ed370066e7d2",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/qualification/recipe-freeze.json": "0237a105e02798089ef7bfd7a068658c52ea9fc91e49b32386de02c885b0c95a",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/static-validation.json": "cbbbe166e4abebf4e850211f0b69ead21cefea27c759045456ee6401924da255"
+}

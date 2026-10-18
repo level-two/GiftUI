@@ -3,8 +3,10 @@ import GiftUI
 /// A profile-issued claim whose lifetime cannot exceed the activation scope.
 @usableFromInline
 package struct ObservableModelTicket<Schema>: ~Copyable, ~Escapable {
+    @usableFromInline
     package let claim: ObservableModelOwnership.Claim
-    private var ownsClaim = true
+    @usableFromInline
+    internal var ownsClaim = true
 
     @_lifetime(copy lifetime)
     @usableFromInline
@@ -14,6 +16,7 @@ package struct ObservableModelTicket<Schema>: ~Copyable, ~Escapable {
         self.claim = claim
     }
 
+    @inlinable
     package borrowing func requireClaim() throws(ObservableStateError)
         -> ObservableModelOwnership.Claim
     {
@@ -21,9 +24,10 @@ package struct ObservableModelTicket<Schema>: ~Copyable, ~Escapable {
         return claim
     }
 
+    @inlinable
     package mutating func endOwnership() { ownsClaim = false }
 
-    @usableFromInline
+    @inlinable
     package var key: _GiftUIModelKey<Schema> {
         _GiftUIModelKey(
             ownerInstance: claim.address.owner,

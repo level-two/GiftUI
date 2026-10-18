@@ -1,0 +1,10 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/qualification/prepared.json": "3b2a31785f6be7887242bcd10338a4264a58ce5f1e9fba8397c9167651e6e2b3",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/qualification/run.py": "4a6ef4d5b6ff75b99e4586adc6fef29561cfb17a0f153be510a490d221961b27",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/qualification/input-freeze.json": "428d5be546b3d755577b82debd248a394fb14794535f81612716ed370066e7d2",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/qualification/required-body-targets.json": "7b65b930c1f2309301b4acc267f53fc964275bba334fe488e971ae1f0dd90686",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/qualification/boundaries-decode-prepared.json": "08244b5c5baa4f388b8f3ef731ad3bf2ed620a52646ab8edacee86469f7895c1",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/qualification/interpret.py": "61dd39344e3a36a488215680f9478194d95528a81a04d058712977c979bed848",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/qualification/origin42-scope.json": "5224b28a722fd0f340e2829ab2dc9b313ce8b6a7140e14b2b5353a2c6dc85db7",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/qualification/provenance.json": "97d80f7353c34ccf65725f4532cfbe7b2f1877581c19a98536cf4222861d758f"
+}

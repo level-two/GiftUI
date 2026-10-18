@@ -1,0 +1,344 @@
+diff --git a/Sources/GiftUI/ObservableState.swift b/Sources/GiftUI/ObservableState.swift
+index 11564c31..ccefa810 100644
+--- a/Sources/GiftUI/ObservableState.swift
++++ b/Sources/GiftUI/ObservableState.swift
+@@ -126,6 +126,7 @@ public struct _GiftUIObservableChangeSink: ~Copyable {
+     private let context: UnsafeMutableRawPointer
+     private let reportRoute: @convention(c) (UnsafeMutableRawPointer, UInt16, UInt32) -> UInt8
+ 
++    @usableFromInline
+     package init(
+         attachment: _GiftUIObservationAttachment,
+         context: UnsafeMutableRawPointer,
+diff --git a/Sources/GiftUIObservableState/ObservableModelOwnership.swift b/Sources/GiftUIObservableState/ObservableModelOwnership.swift
+index 5da33ccb..57b28959 100644
+--- a/Sources/GiftUIObservableState/ObservableModelOwnership.swift
++++ b/Sources/GiftUIObservableState/ObservableModelOwnership.swift
+@@ -11,7 +11,9 @@ package struct ObservableModelOwnership: ~Copyable {
+ 
+     @usableFromInline
+     package struct Address: Equatable {
++        @usableFromInline
+         package let owner: UInt32
++        @usableFromInline
+         package let generation: UInt32
+         @usableFromInline
+         package let slot: UInt16
+@@ -151,6 +153,7 @@ package struct ObservableModelOwnership: ~Copyable {
+             slot: key._giftUISlot)
+     }
+ 
++    @usableFromInline
+     package mutating func retireActivation() { phase = .retired }
+ 
+     @usableFromInline
+@@ -200,6 +203,7 @@ package struct ObservableModelOwnership: ~Copyable {
+         if phase == .writing { phase = .mutating }
+     }
+ 
++    @usableFromInline
+     package func validatedClaim(_ claim: Claim, schema: UInt16)
+         throws(ObservableStateError) -> Int
+     {
+@@ -209,6 +213,7 @@ package struct ObservableModelOwnership: ~Copyable {
+         return index
+     }
+ 
++    @usableFromInline
+     package func validateAssociation(_ address: Address, schema: UInt16)
+         throws(ObservableStateError)
+     {
+@@ -282,6 +287,7 @@ package struct ObservableModelOwnership: ~Copyable {
+         return UInt16(index)
+     }
+ 
++    @usableFromInline
+     package mutating func release(_ claim: Claim) throws(ObservableStateError) -> UInt16? {
+         if let failure = operationAllowed(discovery: true) { throw failure }
+         let index = try validate(claim)
+@@ -290,6 +296,7 @@ package struct ObservableModelOwnership: ~Copyable {
+         return reclaimIfUnowned(index)
+     }
+ 
++    @usableFromInline
+     package mutating func register(_ address: Address, schema: UInt16) throws(ObservableStateError)
+     {
+         if let failure = operationAllowed(discovery: true) { throw failure }
+@@ -325,6 +332,7 @@ package struct ObservableModelOwnership: ~Copyable {
+         phase = .reading
+     }
+ 
++    @usableFromInline
+     package mutating func pin(_ address: Address) throws(ObservableStateError) {
+         guard phase != .replacing else { throw .reentrancyViolation }
+         guard phase == .reading || phase == .discovering, !activeRead else {
+diff --git a/Sources/GiftUIObservableState/ObservableModelScope.swift b/Sources/GiftUIObservableState/ObservableModelScope.swift
+index 6ddbf9b1..69ecf24c 100644
+--- a/Sources/GiftUIObservableState/ObservableModelScope.swift
++++ b/Sources/GiftUIObservableState/ObservableModelScope.swift
+@@ -69,13 +69,14 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
+             && schema == other.schema
+     }
+ 
+-    @usableFromInline
++    @inlinable
+     package borrowing func validateTicket(_ ticket: borrowing ObservableModelTicket<Schema>)
+         throws(ObservableStateError)
+     {
+         _ = try ownership.pointee.validatedClaim(ticket.requireClaim(), schema: schema)
+     }
+ 
++    @inlinable
+     package borrowing func validateAssociation(_ key: _GiftUIModelKey<Schema>)
+         throws(ObservableStateError)
+     {
+@@ -83,7 +84,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
+             ownership.pointee.address(for: key), schema: schema)
+     }
+ 
+-    @usableFromInline
++    @inlinable
+     package borrowing func validateOperation(discovery: Bool = false) throws(ObservableStateError) {
+         if let failure = ownership.pointee.operationAllowed(discovery: discovery) { throw failure }
+     }
+@@ -91,6 +92,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
+     @inlinable
+     package var phase: ObservableModelOwnership.Phase { ownership.pointee.phase }
+ 
++    @inlinable
+     package borrowing func requireStop() { ownership.pointee.retireActivation() }
+ 
+     // Called before the root report-storage borrow ends, even if an independent
+@@ -108,6 +110,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
+         }
+     }
+ 
++    @inlinable
+     package borrowing func attach(
+         _ key: _GiftUIModelKey<Schema>, sink: consuming _GiftUIObservableChangeSink
+     ) throws(ObservableStateError) -> _GiftUIObservationAttachment?
+@@ -118,6 +121,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
+         return models[index]!.attach(consume sink)
+     }
+ 
++    @inlinable
+     package borrowing func detach(
+         _ key: _GiftUIModelKey<Schema>, attachment: _GiftUIObservationAttachment
+     ) throws(ObservableStateError)
+@@ -203,7 +207,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
+         return ObservableModelTicket(claim: claim, lifetime: self)
+     }
+ 
+-    @usableFromInline
++    @inlinable
+     package borrowing func release(_ ticket: inout ObservableModelTicket<Schema>)
+         throws(ObservableStateError)
+     {
+@@ -213,6 +217,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
+         ticket.endOwnership()
+     }
+ 
++    @inlinable
+     package borrowing func register(_ ticket: borrowing ObservableModelTicket<Schema>)
+         throws(ObservableStateError)
+     {
+@@ -300,6 +305,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
+         }
+     }
+ 
++    @inlinable
+     package borrowing func pin(_ key: _GiftUIModelKey<Schema>) throws(ObservableStateError) {
+         try ownership.pointee.pin(ownership.pointee.address(for: key))
+     }
+diff --git a/Sources/GiftUIObservableState/ObservableModelTicket.swift b/Sources/GiftUIObservableState/ObservableModelTicket.swift
+index dabe7228..56193d1c 100644
+--- a/Sources/GiftUIObservableState/ObservableModelTicket.swift
++++ b/Sources/GiftUIObservableState/ObservableModelTicket.swift
+@@ -3,8 +3,10 @@ import GiftUI
+ /// A profile-issued claim whose lifetime cannot exceed the activation scope.
+ @usableFromInline
+ package struct ObservableModelTicket<Schema>: ~Copyable, ~Escapable {
++    @usableFromInline
+     package let claim: ObservableModelOwnership.Claim
+-    private var ownsClaim = true
++    @usableFromInline
++    internal var ownsClaim = true
+ 
+     @_lifetime(copy lifetime)
+     @usableFromInline
+@@ -14,6 +16,7 @@ package struct ObservableModelTicket<Schema>: ~Copyable, ~Escapable {
+         self.claim = claim
+     }
+ 
++    @inlinable
+     package borrowing func requireClaim() throws(ObservableStateError)
+         -> ObservableModelOwnership.Claim
+     {
+@@ -21,9 +24,10 @@ package struct ObservableModelTicket<Schema>: ~Copyable, ~Escapable {
+         return claim
+     }
+ 
++    @inlinable
+     package mutating func endOwnership() { ownsClaim = false }
+ 
+-    @usableFromInline
++    @inlinable
+     package var key: _GiftUIModelKey<Schema> {
+         _GiftUIModelKey(
+             ownerInstance: claim.address.owner,
+diff --git a/Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift b/Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift
+index 79d39c6d..efa3db88 100644
+--- a/Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift
++++ b/Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift
+@@ -1,5 +1,6 @@
+ import GiftUI
+ 
++@usableFromInline
+ struct ObservableStateRegistrationLifecycle: Equatable, Sendable {
+     private enum State: Equatable, Sendable {
+         case vacant
+@@ -11,6 +12,7 @@ struct ObservableStateRegistrationLifecycle: Equatable, Sendable {
+ 
+     private var state: State = .vacant
+ 
++    @usableFromInline
+     init() {}
+ 
+     init(activeAttachment: _GiftUIObservationAttachment) {
+@@ -26,6 +28,7 @@ struct ObservableStateRegistrationLifecycle: Equatable, Sendable {
+         state == .shutdown
+     }
+ 
++    @usableFromInline
+     mutating func beginAttachment(
+         _ attachment: _GiftUIObservationAttachment
+     ) -> ObservableStateError? {
+@@ -40,6 +43,7 @@ struct ObservableStateRegistrationLifecycle: Equatable, Sendable {
+         }
+     }
+ 
++    @usableFromInline
+     mutating func acceptAttachmentReturn(
+         _ returned: _GiftUIObservationAttachment?
+     ) -> ObservableStateError? {
+diff --git a/Sources/GiftUIObservableState/ObservableStateRootScope.swift b/Sources/GiftUIObservableState/ObservableStateRootScope.swift
+index 3fd92c8c..497fdc4c 100644
+--- a/Sources/GiftUIObservableState/ObservableStateRootScope.swift
++++ b/Sources/GiftUIObservableState/ObservableStateRootScope.swift
+@@ -34,10 +34,26 @@ package struct ObservableStateRootControl {
+         var keyOwner: UInt32 = 0
+         @usableFromInline
+         var keyGeneration: UInt32 = 0
++        @usableFromInline
+         var attachment: _GiftUIObservationAttachment?
+         @usableFromInline
+         var published = false
++        @usableFromInline
+         var encountered = false
++
++        @usableFromInline
++        internal init(
++            ordinal: UInt16 = 0, keyOwner: UInt32 = 0, keyGeneration: UInt32 = 0,
++            attachment: _GiftUIObservationAttachment? = nil,
++            published: Bool = false, encountered: Bool = false
++        ) {
++            self.ordinal = ordinal
++            self.keyOwner = keyOwner
++            self.keyGeneration = keyGeneration
++            self.attachment = attachment
++            self.published = published
++            self.encountered = encountered
++        }
+     }
+     @usableFromInline
+     internal var records: InlineArray<2, Record> = .init(repeating: Record())
+@@ -47,7 +63,8 @@ package struct ObservableStateRootControl {
+         repeating: nil)
+     @usableFromInline
+     var nextGeneration: UInt32? = 0
+-    fileprivate var candidateActive = false
++    @usableFromInline
++    internal var candidateActive = false
+     @usableFromInline
+     internal var operationActive = false
+     @usableFromInline
+@@ -61,7 +78,8 @@ package struct ObservableStateRootControl {
+     package init() {}
+     init(nextGeneration: UInt32?) { self.nextGeneration = nextGeneration }
+ 
+-    fileprivate mutating func reserve(_ slot: UInt16) throws(ObservableStateError)
++    @usableFromInline
++    internal mutating func reserve(_ slot: UInt16) throws(ObservableStateError)
+         -> _GiftUIObservationAttachment
+     {
+         guard let generation = nextGeneration else { throw .registrationGenerationExhausted }
+@@ -75,10 +93,23 @@ package struct ObservableStateRootControl {
+ /// pointer is lent independently from model storage for the activation interval.
+ @usableFromInline
+ struct ObservableStateRootReports {
++    @usableFromInline
+     struct Route {
++        @usableFromInline
+         var lifecycle = ObservableStateRegistrationLifecycle()
+         var dirty = false
++
++        @usableFromInline
++        internal init(
++            lifecycle: ObservableStateRegistrationLifecycle =
++                ObservableStateRegistrationLifecycle(),
++            dirty: Bool = false
++        ) {
++            self.lifecycle = lifecycle
++            self.dirty = dirty
++        }
+     }
++    @usableFromInline
+     var routes: InlineArray<2, Route> = .init(repeating: Route())
+     @usableFromInline
+     var mutationReporting = false
+@@ -98,6 +129,7 @@ struct ObservableStateRootReports {
+     }
+ }
+ 
++@usableFromInline
+ func reportObservableStateRoot(
+     _ context: UnsafeMutableRawPointer, _ slot: UInt16, _ generation: UInt32
+ ) -> UInt8 {
+@@ -222,7 +254,8 @@ package struct ObservableStateRootScope<
+         reports.pointee.routes[0].dirty || reports.pointee.routes[1].dirty
+     }
+ 
+-    private borrowing func checkOperation(discovery: Bool = false) throws(ObservableStateError) {
++    @inlinable
++    internal borrowing func checkOperation(discovery: Bool = false) throws(ObservableStateError) {
+         guard !records.pointee.retired else { throw .invalidPhaseSafetyNotProven }
+         guard !records.pointee.operationActive else { throw .reentrancyViolation }
+         try models.validateOperation(discovery: discovery)
+@@ -280,7 +313,8 @@ package struct ObservableStateRootScope<
+         return record.attachment?.generation
+     }
+ 
+-    private borrowing func bind(_ state: inout State<Model.Schema>, slot: Int)
++    @inlinable
++    internal borrowing func bind(_ state: inout State<Model.Schema>, slot: Int)
+         throws(ObservableStateError)
+     {
+         let record = records.pointee.records[slot]
+@@ -301,7 +335,7 @@ package struct ObservableStateRootScope<
+         }
+     }
+ 
+-    @usableFromInline
++    @inlinable
+     borrowing func preserved(
+         _ identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>
+     ) throws(ObservableStateError) -> Bool {
+@@ -406,7 +440,7 @@ package struct ObservableStateRootScope<
+         if let failure { throw failure }
+     }
+ 
+-    @usableFromInline
++    @inlinable
+     borrowing func install(
+         _ identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>,
+         ticket: inout ObservableModelTicket<Model.Schema>

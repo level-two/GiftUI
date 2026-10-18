@@ -126,6 +126,7 @@ public struct _GiftUIObservableChangeSink: ~Copyable {
     private let context: UnsafeMutableRawPointer
     private let reportRoute: @convention(c) (UnsafeMutableRawPointer, UInt16, UInt32) -> UInt8
 
+    @usableFromInline
     package init(
         attachment: _GiftUIObservationAttachment,
         context: UnsafeMutableRawPointer,

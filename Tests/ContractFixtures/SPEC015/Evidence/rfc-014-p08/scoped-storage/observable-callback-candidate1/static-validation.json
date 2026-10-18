@@ -1,0 +1,21 @@
+{
+  "status": "PASS --validate only; no compiler/decoder/runtime",
+  "source_token_audit": "six files /40 selectors, two exact memberwise equivalents,16 newinlinable,19 netusable,zero lifetime/inlinehint change",
+  "prior_inputs": "all old compile/qualification input-freeze entries outside selected6source and clonedpacket paths verified unchanged during preparation",
+  "compile_inputs": 340,
+  "qualification_static_inputs": 463,
+  "roots": {
+    "prior_exact_mangled": 34,
+    "new_callback": 16,
+    "total": 50
+  },
+  "privacy": {
+    "retained": 55,
+    "new_positive": 3,
+    "new_isolated_negative": 6,
+    "total": 64
+  },
+  "fresh_outputs": "new isolated output absent; future artifactseal required after lower+25PASS",
+  "ordinaryOwnershipbind": "unchanged/unqualified",
+  "protected_external5_and_pycache": "not staged/touched"
+}

@@ -29,6 +29,13 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [authorized callback candidate1 prepared](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-candidate1/README.md):
+reviewed40sites/sixfiles applied/formatted/tokenaudited, Record6var/Route2defaults/sink3
+requiredargs exact. ONEcandidate1/1, zero automatic SOURCE repairs; oldbudgets preserved.
+Combinedfresh25→64privacy→8indexes/50bodies→conditional42SIL/object staticvalidatePASS;
+new isolated output/futurefreshartifactseal. No compiler/decoder/runtime or remaining16
+edits. OrdinaryOwnership.bind costs/fullactualcallbacks/safety/strictcold/P08 unqualified.
+
 Current [grouped observable callback proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-grouped-inventory/README.md):
 40sites/six files for preserved/live seed install and necessary checked typed helpers;
 ordinary ledger/lifecycle calls ABI-only, private internals retained. Explicit ownsClaim

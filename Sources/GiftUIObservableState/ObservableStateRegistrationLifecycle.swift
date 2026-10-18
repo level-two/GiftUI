@@ -1,5 +1,6 @@
 import GiftUI
 
+@usableFromInline
 struct ObservableStateRegistrationLifecycle: Equatable, Sendable {
     private enum State: Equatable, Sendable {
         case vacant
@@ -11,6 +12,7 @@ struct ObservableStateRegistrationLifecycle: Equatable, Sendable {
 
     private var state: State = .vacant
 
+    @usableFromInline
     init() {}
 
     init(activeAttachment: _GiftUIObservationAttachment) {
@@ -26,6 +28,7 @@ struct ObservableStateRegistrationLifecycle: Equatable, Sendable {
         state == .shutdown
     }
 
+    @usableFromInline
     mutating func beginAttachment(
         _ attachment: _GiftUIObservationAttachment
     ) -> ObservableStateError? {
@@ -40,6 +43,7 @@ struct ObservableStateRegistrationLifecycle: Equatable, Sendable {
         }
     }
 
+    @usableFromInline
     mutating func acceptAttachmentReturn(
         _ returned: _GiftUIObservationAttachment?
     ) -> ObservableStateError? {
