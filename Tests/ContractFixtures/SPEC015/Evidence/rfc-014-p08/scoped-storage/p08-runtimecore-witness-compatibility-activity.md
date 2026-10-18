@@ -18,6 +18,13 @@ prior activity. [Prior independent boundary](p08-grouped-module-closure-final-in
 and [exact three-witness map](grouped-module-closure-corrective2-result/next-witness-boundary.json)
 remain historical evidence; this authorization makes that finite scope executable.
 
+[Grouped read-only inventory/proposal](runtime-complete-pipeline-grouped-inventory/README.md)
+is ready for independent review: matched compiler proves enclosing-formal-scope
+cause;53 root/helper sites in six files, exact constructor defaults and16 no-edit
+owner witnesses. Separate23-symbol latent stage frontier remains unqualified,
+not an extra edit allowance or full42 guarantee. No source/compiler/runtime work
+or new repair budget; prior FAIL/PASS evidence and exhausted budgets unchanged.
+
 [Unique actual-host SIL collection setup](runtimecore-consumer-collection1/README.md)
 is frozen after the original output's absent-file guard stopped execution.
 Existing58MB SIL has unqualified provenance and is preserved. Only output/cache/

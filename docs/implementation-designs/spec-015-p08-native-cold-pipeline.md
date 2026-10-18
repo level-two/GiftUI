@@ -30,6 +30,12 @@ boundary before any future candidate. No further execution/source allowance.
 All42/privatecallee/State structural-borrow/observer coverage, full safety and
 strict cold remain unqualified; source candidate/P08/R07/T8.1 unaccepted.
 
+[Grouped root/helper inventory and proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtime-complete-pipeline-grouped-inventory/README.md)
+is ready for independent review: exact enclosing-formal-scope cause,53 proposed
+sites in six files, three guarded memberwise equivalents,16 owner witnesses with
+no ABI edits;23 separate latent project-stage symbols remain unqualified. Source/
+compiler/runtime unchanged; no candidate/repair authorization or full42 guarantee.
+
 [Fixed-source qualification1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-fixed-qualification1/README.md)
 is prepared only:22 privacy controls, six-module/required-six-body physical gate
 and actualhost object capture; exact commands/hash inputs validated, no execution.

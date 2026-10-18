@@ -1,0 +1,14 @@
+{
+  "status": "read-only review packet, not implementation approval",
+  "source_basis": "22eea103",
+  "review_basis": "85e1f676/dd43fde3",
+  "frozen_inputs_verified": 573,
+  "mapped_declarations_verified": 50,
+  "constructor_equivalents_proposed": 3,
+  "source_files_proposed": 6,
+  "latent_project_symbols": 23,
+  "source_edits": 0,
+  "compiler_decoder_runtime_executions": 0,
+  "protected5_pycache": "matching573freeze",
+  "map_sha256": "efca3ab779e4ae369b6f6b27d685e060a3915db3c791628459d59405dfd46e4e"
+}

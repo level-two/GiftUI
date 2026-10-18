@@ -1,0 +1,26 @@
+{
+  "search": "exact RuntimeCompletePipelineOwner references in maintained Sources and current RuntimeDerived; no conformer source edits",
+  "entries": [
+    {
+      "file": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "sha256": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+      "disposition": "internal, nonABI type; current registered42;16 witnesses no edits"
+    },
+    {
+      "file": "Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiInitialPresentationOwner.swift",
+      "sha256": "21a95f740d025b3c29b5555a1a1a24e929287e8ec865f19636744821009116b7",
+      "disposition": "package nonABI type; conformance extension550; outside registered25/42; no ABI witness demand under matched rule, no compile qualification claimed"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeStatic/StaticRuntimeProfileBinding.swift",
+      "sha256": "1162d12ede897a255c5a76e58d0f481f451e7d4c97247e8c43045c8fe2f35a14",
+      "disposition": "generic constrained consumer; legacy file excluded canonical8; no conformance declaration/edits"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeDynamic/DynamicRuntimeProfileBinding.swift",
+      "sha256": "02e75da1b712f1764b84bfa63d3fa92706ede11c7dd927a261bb348c572e28cb",
+      "disposition": "generic constrained consumer; legacy file excluded canonical13; no conformance declaration/edits"
+    }
+  ],
+  "rule": "TypeCheckProtocol.cpp1910\u20131937 requires both protocol AND conforming nominal to be formally public after ABI adjustment to demand usable witnesses. Both known conformers remain nonABI. No Counter/Pi witness widening. Out-of-composition full builds remain unqualified."
+}

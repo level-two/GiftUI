@@ -1,0 +1,621 @@
+{
+  "scope": "exact16 CounterPipelineOwner requirements, direct current SIL references only; no lexical nominal or broader-host sweep",
+  "current_sil_sha256": "fa68e401a9fff2ad690dc62213b29cd3f074c97c218876f9f86c2986f8f235b6",
+  "requirements_inspected": [
+    {
+      "owner_requirement": "presentationIntentState",
+      "sil_line": 108974,
+      "missing_generic_external_declarations": []
+    },
+    {
+      "owner_requirement": "hasAllocatedCandidateFrame",
+      "sil_line": 109028,
+      "missing_generic_external_declarations": []
+    },
+    {
+      "owner_requirement": "admitAndSeal",
+      "sil_line": 109917,
+      "missing_generic_external_declarations": [
+        {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %215",
+          "current_bb": 0,
+          "current_callee_line": 555408
+        },
+        {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %233",
+          "current_bb": 0,
+          "current_callee_line": 555415
+        },
+        {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %274",
+          "current_bb": 0,
+          "current_callee_line": 477554
+        }
+      ]
+    },
+    {
+      "owner_requirement": "applyAdmittedWork",
+      "sil_line": 110612,
+      "missing_generic_external_declarations": [
+        {
+          "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> // user: %81",
+          "current_bb": 0,
+          "current_callee_line": 25063
+        },
+        {
+          "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableModelMutation, \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (_GiftUIModelKey<\u03c4_0_0.Schema>, @in_guaranteed \u03c4_0_0.Mutation, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> ObservableStateResult // user: %92",
+          "current_bb": 0,
+          "current_callee_line": 110858
+        }
+      ]
+    },
+    {
+      "owner_requirement": "freezeObservableMutation",
+      "sil_line": 111221,
+      "missing_generic_external_declarations": [
+        {
+          "symbol": "swift_willThrowTypedImpl",
+          "declaration_header": "$@convention(thin) <\u03c4_0_0 where \u03c4_0_0 : Error> (@in_guaranteed \u03c4_0_0) -> () // user: %25",
+          "current_bb": 0,
+          "current_callee_line": null
+        }
+      ]
+    },
+    {
+      "owner_requirement": "beginObservableCandidateAndExpandSemantics",
+      "sil_line": 111319,
+      "missing_generic_external_declarations": [
+        {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+          "declaration_header": "$@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %73",
+          "current_bb": 0,
+          "current_callee_line": 551965
+        },
+        {
+          "symbol": "swift_willThrowTypedImpl",
+          "declaration_header": "$@convention(thin) <\u03c4_0_0 where \u03c4_0_0 : Error> (@in_guaranteed \u03c4_0_0) -> () // user: %109",
+          "current_bb": 0,
+          "current_callee_line": null
+        },
+        {
+          "symbol": "swift_willThrowTypedImpl",
+          "declaration_header": "$@convention(thin) <\u03c4_0_0 where \u03c4_0_0 : Error> (@in_guaranteed \u03c4_0_0) -> () // user: %181",
+          "current_bb": 0,
+          "current_callee_line": null
+        },
+        {
+          "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>) -> () // users: %252, %193",
+          "current_bb": 0,
+          "current_callee_line": 551972
+        },
+        {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %200",
+          "current_bb": 0,
+          "current_callee_line": 551979
+        },
+        {
+          "symbol": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+          "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // users: %2294, %2289, %2267, %2105, %2089, %1922, %1931, %1925, %1913, %1740, %1726, %1621, %1506, %1500, %1481, %1256, %1244, %1196, %1190, %1171, %964, %937, %779, %772, %756, %606, %596, %353",
+          "current_bb": 0,
+          "current_callee_line": 551992
+        },
+        {
+          "symbol": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %444",
+          "current_bb": 0,
+          "current_callee_line": 552194
+        },
+        {
+          "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %654, %510",
+          "current_bb": 0,
+          "current_callee_line": 552201
+        },
+        {
+          "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %752",
+          "current_bb": 0,
+          "current_callee_line": 552208
+        },
+        {
+          "symbol": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_2.Slot == ObservableModelReadSlot<\u03c4_0_0>, \u03c4_0_0 : ~Copyable><\u03c4_1_0 where \u03c4_0_2 == \u03c4_1_0.Domain, \u03c4_1_0 : View, \u03c4_1_0 : _GiftUIObservableStateHost, \u03c4_1_0.Domain == \u03c4_1_0.Body.Domain> (@in_guaranteed \u03c4_1_0, @in_guaranteed \u03c4_0_1, @guaranteed @noescape @callee_guaranteed () -> Optional<SemanticExpansionError>, @guaranteed @noescape @callee_guaranteed @substituted <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_1 : _GiftUIReadDomain> (@in_guaranteed \u03c4_0_0, @guaranteed _GiftUIFrameRead<\u03c4_0_1>) -> (@out \u03c4_0_2, @error _GiftUIAccessFailure) for <\u03c4_1_0, \u03c4_0_2, \u03c4_1_0.Body>, @guaranteed ObservableSemanticBodyBinding<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> @out SemanticBodyEvaluation<\u03c4_1_0.Body, ObservableStateError> // user: %932",
+          "current_bb": 0,
+          "current_callee_line": 559684
+        },
+        {
+          "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+          "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticModifierPayload> (@in_guaranteed \u03c4_1_0, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // user: %1309",
+          "current_bb": 0,
+          "current_callee_line": 559930
+        },
+        {
+          "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+          "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticPrimitivePayload> (@in_guaranteed \u03c4_1_0, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // users: %2373, %1597",
+          "current_bb": 0,
+          "current_callee_line": 559922
+        },
+        {
+          "symbol": "swift_willThrowTypedImpl",
+          "declaration_header": "$@convention(thin) <\u03c4_0_0 where \u03c4_0_0 : Error> (@in_guaranteed \u03c4_0_0) -> () // user: %2579",
+          "current_bb": 0,
+          "current_callee_line": null
+        },
+        {
+          "symbol": "swift_willThrowTypedImpl",
+          "declaration_header": "$@convention(thin) <\u03c4_0_0 where \u03c4_0_0 : Error> (@in_guaranteed \u03c4_0_0) -> () // user: %2592",
+          "current_bb": 0,
+          "current_callee_line": null
+        },
+        {
+          "symbol": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+          "declaration_header": "$@convention(method) <\u03c4_0_0 where \u03c4_0_0 : CanvasValueTable> (@guaranteed SemanticRecordStore<CanvasSemanticPayload<\u03c4_0_0.CaptureStorage>>, @guaranteed CanvasStagedValues<SemanticRecordReference, \u03c4_0_0>, @in_guaranteed \u03c4_0_0, @thin CanvasSemanticTransfer.Type) -> @error DrawingError // user: %2644",
+          "current_bb": 0,
+          "current_callee_line": 119524
+        }
+      ]
+    },
+    {
+      "owner_requirement": "resolveLayout",
+      "sil_line": 119533,
+      "missing_generic_external_declarations": [
+        {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+          "declaration_header": "$@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %14",
+          "current_bb": 0,
+          "current_callee_line": 551965
+        },
+        {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %28",
+          "current_bb": 0,
+          "current_callee_line": 552419
+        },
+        {
+          "symbol": "swift_willThrowTypedImpl",
+          "declaration_header": "$@convention(thin) <\u03c4_0_0 where \u03c4_0_0 : Error> (@in_guaranteed \u03c4_0_0) -> () // user: %47",
+          "current_bb": 0,
+          "current_callee_line": null
+        },
+        {
+          "symbol": "swift_willThrowTypedImpl",
+          "declaration_header": "$@convention(thin) <\u03c4_0_0 where \u03c4_0_0 : Error> (@in_guaranteed \u03c4_0_0) -> () // user: %69",
+          "current_bb": 0,
+          "current_callee_line": null
+        }
+      ]
+    },
+    {
+      "owner_requirement": "invokeCanvasesAndDerivePlan",
+      "sil_line": 119733,
+      "missing_generic_external_declarations": []
+    },
+    {
+      "owner_requirement": "preflightCombinedRender",
+      "sil_line": 119818,
+      "missing_generic_external_declarations": [
+        {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+          "declaration_header": "$@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %14",
+          "current_bb": 0,
+          "current_callee_line": 551965
+        },
+        {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %28",
+          "current_bb": 0,
+          "current_callee_line": 552419
+        },
+        {
+          "symbol": "swift_willThrowTypedImpl",
+          "declaration_header": "$@convention(thin) <\u03c4_0_0 where \u03c4_0_0 : Error> (@in_guaranteed \u03c4_0_0) -> () // user: %47",
+          "current_bb": 0,
+          "current_callee_line": null
+        },
+        {
+          "symbol": "swift_willThrowTypedImpl",
+          "declaration_header": "$@convention(thin) <\u03c4_0_0 where \u03c4_0_0 : Error> (@in_guaranteed \u03c4_0_0) -> () // user: %69",
+          "current_bb": 0,
+          "current_callee_line": null
+        }
+      ]
+    },
+    {
+      "owner_requirement": "buildInteractionCandidate",
+      "sil_line": 120012,
+      "missing_generic_external_declarations": [
+        {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+          "declaration_header": "$@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %37",
+          "current_bb": 0,
+          "current_callee_line": 551965
+        },
+        {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %51",
+          "current_bb": 0,
+          "current_callee_line": 552419
+        },
+        {
+          "symbol": "swift_willThrowTypedImpl",
+          "declaration_header": "$@convention(thin) <\u03c4_0_0 where \u03c4_0_0 : Error> (@in_guaranteed \u03c4_0_0) -> () // user: %70",
+          "current_bb": 0,
+          "current_callee_line": null
+        },
+        {
+          "symbol": "swift_willThrowTypedImpl",
+          "declaration_header": "$@convention(thin) <\u03c4_0_0 where \u03c4_0_0 : Error> (@in_guaranteed \u03c4_0_0) -> () // user: %92",
+          "current_bb": 0,
+          "current_callee_line": null
+        }
+      ]
+    },
+    {
+      "owner_requirement": "publishSemanticAndObservableCandidate",
+      "sil_line": 120883,
+      "missing_generic_external_declarations": [
+        {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %72",
+          "current_bb": 0,
+          "current_callee_line": 121131
+        }
+      ]
+    },
+    {
+      "owner_requirement": "allocateCandidate",
+      "sil_line": 121177,
+      "missing_generic_external_declarations": []
+    },
+    {
+      "owner_requirement": "offerAndProduce",
+      "sil_line": 121299,
+      "missing_generic_external_declarations": [
+        {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // user: %47",
+          "current_bb": 0,
+          "current_callee_line": 17523
+        }
+      ]
+    },
+    {
+      "owner_requirement": "cleanup",
+      "sil_line": 121799,
+      "missing_generic_external_declarations": [
+        {
+          "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %159",
+          "current_bb": 0,
+          "current_callee_line": 121758
+        },
+        {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %178",
+          "current_bb": 0,
+          "current_callee_line": 122201
+        },
+        {
+          "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %182",
+          "current_bb": 0,
+          "current_callee_line": 122208
+        },
+        {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %196",
+          "current_bb": 0,
+          "current_callee_line": 122201
+        },
+        {
+          "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %200",
+          "current_bb": 0,
+          "current_callee_line": 122208
+        },
+        {
+          "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %238",
+          "current_bb": 0,
+          "current_callee_line": 122201
+        },
+        {
+          "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %242",
+          "current_bb": 0,
+          "current_callee_line": 122208
+        },
+        {
+          "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+          "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ~Copyable> (@guaranteed ObservableModelScope<\u03c4_0_0, \u03c4_0_1>) -> @error ObservableStateError // user: %262",
+          "current_bb": 0,
+          "current_callee_line": 90869
+        }
+      ]
+    },
+    {
+      "owner_requirement": "applyDisposition",
+      "sil_line": 122222,
+      "missing_generic_external_declarations": []
+    },
+    {
+      "owner_requirement": "finalizePipeline",
+      "sil_line": 122301,
+      "missing_generic_external_declarations": []
+    }
+  ],
+  "generic_project_symbol_count": 23,
+  "unique_latent_project_symbols": [
+    {
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %215",
+      "current_bb": 0,
+      "current_callee_line": 555408,
+      "callee_comment": "// InteractionOwnedKeyState<>.resolveDown(at:)",
+      "owner_requirements": [
+        "admitAndSeal"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %233",
+      "current_bb": 0,
+      "current_callee_line": 555415,
+      "callee_comment": "// InteractionOwnedKeyState<>.resolveMove(_:at:)",
+      "owner_requirements": [
+        "admitAndSeal"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (CapturedAction<SemanticCompleteIdentity>, Point, @in_guaranteed InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> PointerGestureOutcome<SemanticCompleteIdentity> // user: %274",
+      "current_bb": 0,
+      "current_callee_line": 477554,
+      "callee_comment": "// InteractionOwnedKeyState<>.resolveUp(_:at:)",
+      "owner_requirements": [
+        "admitAndSeal"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (@in_guaranteed \u03c4_0_1, UInt16, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> Optional<_GiftUIModelKey<\u03c4_0_0.Schema>> // user: %81",
+      "current_bb": 0,
+      "current_callee_line": 25063,
+      "callee_comment": "// ObservableStateRootScope<>.modelKey(identity:ordinal:)",
+      "owner_requirements": [
+        "applyAdmittedWork"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ObservableModelMutation, \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_0 : ~Copyable> (_GiftUIModelKey<\u03c4_0_0.Schema>, @in_guaranteed \u03c4_0_0.Mutation, @guaranteed ObservableStateRootScope<\u03c4_0_0, \u03c4_0_1>) -> ObservableStateResult // user: %92",
+      "current_bb": 0,
+      "current_callee_line": 110858,
+      "callee_comment": "// ObservableStateRootScope<>.mutate<>(_:mutation:)",
+      "owner_requirements": [
+        "applyAdmittedWork"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+      "declaration_header": "$@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<UInt8> // user: %73",
+      "current_bb": 0,
+      "current_callee_line": 551965,
+      "callee_comment": "// SemanticRecordStore.candidate.getter",
+      "owner_requirements": [
+        "beginObservableCandidateAndExpandSemantics",
+        "resolveLayout",
+        "preflightCombinedRender",
+        "buildInteractionCandidate"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>) -> () // users: %252, %193",
+      "current_bb": 0,
+      "current_callee_line": 551972,
+      "callee_comment": "// SemanticRecordBankBuffers.clear()",
+      "owner_requirements": [
+        "beginObservableCandidateAndExpandSemantics"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0> (UInt8, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Optional<SemanticRecordBankBuffers<\u03c4_0_0>> // user: %200",
+      "current_bb": 0,
+      "current_callee_line": 551979,
+      "callee_comment": "// SemanticRecordStore.expansionBank(_:)",
+      "owner_requirements": [
+        "beginObservableCandidateAndExpandSemantics"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+      "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : SemanticExpansionWorkspace, \u03c4_0_1 : SemanticExpansionSink, \u03c4_0_2 : SemanticStatefulBinding, \u03c4_0_0.Identity == \u03c4_0_1.Identity, \u03c4_0_1.Identity == \u03c4_0_2.Identity, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (@in_guaranteed SemanticExpansionTraversal<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> Bool // users: %2294, %2289, %2267, %2105, %2089, %1922, %1931, %1925, %1913, %1740, %1726, %1621, %1506, %1500, %1481, %1256, %1244, %1196, %1190, %1171, %964, %937, %779, %772, %756, %606, %596, %353",
+      "current_bb": 0,
+      "current_callee_line": 551992,
+      "callee_comment": "// SemanticExpansionTraversal<>.stopped.getter",
+      "owner_requirements": [
+        "beginObservableCandidateAndExpandSemantics"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0 where \u03c4_0_0 : SemanticRecordPayloadCodec> (SemanticExpansionSummary, @inout RecordSink<\u03c4_0_0>) -> Bool // user: %444",
+      "current_bb": 0,
+      "current_callee_line": 552194,
+      "callee_comment": "// RecordSink.publishExpansion(_:)",
+      "owner_requirements": [
+        "beginObservableCandidateAndExpandSemantics"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0> (SemanticPathComponent, SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // users: %654, %510",
+      "current_bb": 0,
+      "current_callee_line": 552201,
+      "callee_comment": "// SemanticRecordBankBuffers.enter(_:limits:)",
+      "owner_requirements": [
+        "beginObservableCandidateAndExpandSemantics"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0> (SemanticRecordLimits, SemanticRecordBankBuffers<\u03c4_0_0>) -> Optional<SemanticExpansionError> // user: %752",
+      "current_bb": 0,
+      "current_callee_line": 552208,
+      "callee_comment": "// SemanticRecordBankBuffers.appendRecord(limits:)",
+      "owner_requirements": [
+        "beginObservableCandidateAndExpandSemantics"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : ObservableStateModel, \u03c4_0_1 : Equatable, \u03c4_0_1 : Sendable, \u03c4_0_2.Slot == ObservableModelReadSlot<\u03c4_0_0>, \u03c4_0_0 : ~Copyable><\u03c4_1_0 where \u03c4_0_2 == \u03c4_1_0.Domain, \u03c4_1_0 : View, \u03c4_1_0 : _GiftUIObservableStateHost, \u03c4_1_0.Domain == \u03c4_1_0.Body.Domain> (@in_guaranteed \u03c4_1_0, @in_guaranteed \u03c4_0_1, @guaranteed @noescape @callee_guaranteed () -> Optional<SemanticExpansionError>, @guaranteed @noescape @callee_guaranteed @substituted <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_1 : _GiftUIReadDomain> (@in_guaranteed \u03c4_0_0, @guaranteed _GiftUIFrameRead<\u03c4_0_1>) -> (@out \u03c4_0_2, @error _GiftUIAccessFailure) for <\u03c4_1_0, \u03c4_0_2, \u03c4_1_0.Body>, @guaranteed ObservableSemanticBodyBinding<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> @out SemanticBodyEvaluation<\u03c4_1_0.Body, ObservableStateError> // user: %932",
+      "current_bb": 0,
+      "current_callee_line": 559684,
+      "callee_comment": "// ObservableSemanticBodyBinding<>.evaluateStateful<A>(_:structuralIdentity:beforeBody:body:)",
+      "owner_requirements": [
+        "beginObservableCandidateAndExpandSemantics"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+      "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticModifierPayload> (@in_guaranteed \u03c4_1_0, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // user: %1309",
+      "current_bb": 0,
+      "current_callee_line": 559930,
+      "callee_comment": "// static CanvasSemanticPayloadCodec.modifier<A>(_:chainIndex:writer:)",
+      "owner_requirements": [
+        "beginObservableCandidateAndExpandSemantics"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+      "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticPrimitivePayload> (@in_guaranteed \u03c4_1_0, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> // users: %2373, %1597",
+      "current_bb": 0,
+      "current_callee_line": 559922,
+      "callee_comment": "// static CanvasSemanticPayloadCodec.primitive<A>(_:writer:)",
+      "owner_requirements": [
+        "beginObservableCandidateAndExpandSemantics"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+      "declaration_header": "$@convention(method) <\u03c4_0_0 where \u03c4_0_0 : CanvasValueTable> (@guaranteed SemanticRecordStore<CanvasSemanticPayload<\u03c4_0_0.CaptureStorage>>, @guaranteed CanvasStagedValues<SemanticRecordReference, \u03c4_0_0>, @in_guaranteed \u03c4_0_0, @thin CanvasSemanticTransfer.Type) -> @error DrawingError // user: %2644",
+      "current_bb": 0,
+      "current_callee_line": 119524,
+      "callee_comment": "// static CanvasSemanticTransfer.stage<A>(from:into:table:)",
+      "owner_requirements": [
+        "beginObservableCandidateAndExpandSemantics"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0> (SemanticRecordBankBuffers<\u03c4_0_0>, @guaranteed SemanticRecordStore<\u03c4_0_0>) -> Bool // user: %28",
+      "current_bb": 0,
+      "current_callee_line": 552419,
+      "callee_comment": "// SemanticRecordStore.hasPendingCanvas(_:)",
+      "owner_requirements": [
+        "resolveLayout",
+        "preflightCombinedRender",
+        "buildInteractionCandidate"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %72",
+      "current_bb": 0,
+      "current_callee_line": 121131,
+      "callee_comment": "// SemanticRecordStore.publishCandidate()",
+      "owner_requirements": [
+        "publishSemanticAndObservableCandidate"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @lifetime(copy 0) @owned SemanticRecordStore<\u03c4_0_0> // user: %47",
+      "current_bb": 0,
+      "current_callee_line": 17523,
+      "callee_comment": "// SemanticRecordStore.borrowedStore()",
+      "owner_requirements": [
+        "offerAndProduce"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0> (@guaranteed SemanticRecordStore<\u03c4_0_0>) -> @error SemanticExpansionError // user: %159",
+      "current_bb": 0,
+      "current_callee_line": 121758,
+      "callee_comment": "// SemanticRecordStore.discardCandidate()",
+      "owner_requirements": [
+        "cleanup"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1, \u03c4_0_2 where \u03c4_0_0 : InteractionCandidateRecordStorage, \u03c4_0_1 : InteractionCommittedRecordStorage, \u03c4_0_2 : InteractionHitRegionStorage, \u03c4_0_0.Identity == SemanticCompleteIdentity, \u03c4_0_1.Identity == SemanticCompleteIdentity, \u03c4_0_2.Identity == SemanticCompleteIdentity, \u03c4_0_0 : ~Copyable, \u03c4_0_0 : ~Escapable, \u03c4_0_1 : ~Copyable, \u03c4_0_1 : ~Escapable, \u03c4_0_2 : ~Copyable, \u03c4_0_2 : ~Escapable> (InteractionCandidateDisposition, @lifetime(copy 1) @inout InteractionOwnedKeyState<\u03c4_0_0, \u03c4_0_1, \u03c4_0_2>) -> () // user: %178",
+      "current_bb": 0,
+      "current_callee_line": 122201,
+      "callee_comment": "// InteractionOwnedKeyState<>.resolveCandidate(_:)",
+      "owner_requirements": [
+        "cleanup",
+        "cleanup",
+        "cleanup"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0 where \u03c4_0_0 : Equatable, \u03c4_0_0 : Sendable> (Bool, @inout RuntimeActionGenerationAllocator<\u03c4_0_0>) -> () // user: %182",
+      "current_bb": 0,
+      "current_callee_line": 122208,
+      "callee_comment": "// RuntimeActionGenerationAllocator.resolveCandidate(committed:)",
+      "owner_requirements": [
+        "cleanup",
+        "cleanup",
+        "cleanup"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    },
+    {
+      "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+      "declaration_header": "$@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : ~Copyable> (@guaranteed ObservableModelScope<\u03c4_0_0, \u03c4_0_1>) -> @error ObservableStateError // user: %262",
+      "current_bb": 0,
+      "current_callee_line": 90869,
+      "callee_comment": "// ObservableModelScope<>.endFrame()",
+      "owner_requirements": [
+        "cleanup"
+      ],
+      "classification": "LATENT current generic-stage external reference; not proved to survive future concrete specialization, no source edit selected. Generic accessors/ordinary leaves are not automatically required serialized roots."
+    }
+  ],
+  "excluded_runtime_refs": "swift_willThrowTypedImpl is a typed-error runtime edge, not a Swift body serialization obligation; first-use Error witness still unqualified",
+  "disposition": "Separate from six-file root edit proposal. Classify each surviving actual-concrete edge by body requirement vs valid ordinary ABI call/actual cost before extending any source scope. This inventory does not declare all these symbols blockers or propose blanket annotations."
+}
