@@ -1,13 +1,11 @@
 # P08 grouped module closure activity — 2026-10-18
 
-**Initial1/1 in progress; corrections0/2; source correction authorized by the
-independent caller-amendment PASS. Compiler execution remains unstarted.** The prior
-[not-ready review](p08-grouped-module-closure-independent-design-review.md) is
-preserved. Its 16 named sites plus two immediate host scheduler sites are now in
-the exact map; the [bounded recheck](p08-grouped-module-closure-caller-amendment-review.md)
-passes implementation and the prepared grouped compile sweep. Initial1/1 is now
-consumed; the [source/argv freeze](grouped-module-closure-initial1/README.md) is
-ready for the single sweep, with no compiler execution yet.
+**Initial1/1 frozen: lower +22 owners PASS; whole-directory Dynamic/Static FAIL,
+actual host BLOCKED; corrections0/2.** The [result and exact registered-input
+continuation](grouped-module-closure-initial1-result/README.md) preserve all errors
+and prove the two owner lists were broader than the registered P08 recipes.
+Independent recipe review precedes the source-unchanged two-owner/actual-host
+continuation; no source repair or corrective cycle is authorized by that recipe.
 Eugene explicitly authorized grouped Layout and remaining-module
 dependency corrections, then full-host/cold validation under the strict contract.
 This is a new allowance of one initial candidate and at most two grouped

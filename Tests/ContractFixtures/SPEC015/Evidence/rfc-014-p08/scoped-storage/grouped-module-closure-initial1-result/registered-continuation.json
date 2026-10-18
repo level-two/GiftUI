@@ -1,0 +1,1504 @@
+{
+  "status": "source-UNCHANGED registered-input continuation proposed; independent recipe review required; unexecuted",
+  "budget": {
+    "initial_consumed": "1/1",
+    "corrections_consumed": "0/2",
+    "source_allowlist": []
+  },
+  "output": "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1-registered",
+  "basis": {
+    "canonical_checker": "scripts/contracts/check-spec-013-runtime-cycle.py",
+    "canonical_checker_sha256": "8e8bb63b15214a8da8a907c6705ee477f4aaddbd6aa6beaafe5ac092fddb5991",
+    "canonical_lines": [
+      83,
+      85
+    ],
+    "structured_archive": ".build/contracts/p08-counter-w700p_zi/checks.json",
+    "structured_archive_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c",
+    "counter_source_inheritance": "check-spec-015-counter.py: selected modules rebuilt from runtime receipt commands, not whole-directory RuntimeDynamic/Static globs",
+    "counter_checker_sha256": "8150d2cbd864222dfba32bd91543d7f7d3ac3be81639b0a86fa00aacc6dcf970"
+  },
+  "scope": {
+    "GiftUIRuntimeDynamic": {
+      "registered_sources": [
+        "Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicObservableRootTargetAccess.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicObservableStateReconciler.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicDrawingPlanWorkspace.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicLivePathStorage.swift",
+        "Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift"
+      ],
+      "whole_directory_sources": [
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicDrawingPlanWorkspace.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLivePathStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableProfileSlotStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootTargetAccess.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableStateReconciler.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicProfileBoundary.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicProfileStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionBindingAdapter.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeProfileBinding.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift"
+      ],
+      "excluded_from_registered": [
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableProfileSlotStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicProfileBoundary.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicProfileStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionBindingAdapter.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeProfileBinding.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift"
+      ]
+    },
+    "GiftUIRuntimeStatic": {
+      "registered_sources": [
+        "Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift",
+        "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift",
+        "Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift",
+        "Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift",
+        "Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift",
+        "Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift",
+        "Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift",
+        "Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift"
+      ],
+      "whole_directory_sources": [
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasHostHandle.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasOccurrence.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticGeneratedProfileMetadata.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableProfileSlotStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRegistrationRecord.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticProfileBoundary.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticProfileStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionBindingAdapter.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRuntimeProfileBinding.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift"
+      ],
+      "excluded_from_registered": [
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasHostHandle.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasOccurrence.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticGeneratedProfileMetadata.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableProfileSlotStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRegistrationRecord.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticProfileBoundary.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticProfileStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionBindingAdapter.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRuntimeProfileBinding.swift"
+      ]
+    }
+  },
+  "qualified_initial_result_sha256": "ca6f0230afd91fcdd5f23626f3cce21d770dcf9c5d4c2a58c33c001b3e29d3a8",
+  "qualified_seed22": {
+    "GiftUI": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUI/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUI/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUI/GiftUI.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUI/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUI/GiftUI.o": "cb132ff8a6ef4bdbef179197b0923776b63876aedf7c2deb44341f7a49129091"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/ActionHandler.swift": "d36a53f45d18892c235c02355cbed0e6bf92a20b7c64bc7e84ac39a03fa34d01",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/BoundedText.swift": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/Button.swift": "bfef4dd797058b7c9c96e650f86ab9c068dffa5703200388c17631ad451af354",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/Canvas.swift": "4068c7a86e4523408968d37d6fce0197c4262d5984b749ea0c7ab02e771baf8a",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/Color.swift": "60009e3d58dcdfe65ba39bf6d036047207707837d73db308a5a25e81fc2ee835",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift": "15604c493d09f194252b05fdcb5fb31fdb412de3cb10a142fa7276a5e05e8bcf",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/Disabled.swift": "b38daff656c01cae87880bc8fda7b240c50e4cd46da52978a0b90caa7fc1bf36",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/DrawingStyles.swift": "eb28147b2dd565006f9d6b97c7b98e5bcfc52f42e19ebfae1dad1f79b08d130a",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/DrawingSurface.swift": "185607ede17d3eb8e655e1dc7e24a60fba22225028f1b1ae25a470355daa7a48",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutContainers.swift": "5157a2cc20100ec15885d10d0da528202623901d885f6345d7dab89d07d49d20",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutModifiers.swift": "9df7df30a339bf4f6077581b108c855505ed6230d55d23e9fc55651f4fba877b",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutValues.swift": "70c7b34276f6f2d41382d14ee844fcf65d92c075f7caa0a12e79d17181c817f5",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift": "9f49b702c630be7e1ecc690973c73912142d731050bc4c62776c207e2ce68e86",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/StyleModifiers.swift": "5322bf0d7eda201882146c3be1162b23b43676c3ef9ce3286eb83ff82e173962",
+        "/Users/eugene/work/GiftUI/Sources/GiftUI/Text.swift": "b361224ecac936f5736fd777a96ad815889911644b19731fee2a947a2f5c054c"
+      },
+      "resolved_fresh_imports": {}
+    },
+    "GiftUICapabilities": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftmodule": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftdoc": "b599a0290ae0283fc584bc0c996f6402a9e27e52fe85902bd85632d276beaec7",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftsourceinfo": "a269048819bbf11d33c0bfb4bb6ac7e3b28da1c6b2c51e05bf24b8048a6bf98a"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUICapabilities/GiftUICapabilities.swiftdoc": "b599a0290ae0283fc584bc0c996f6402a9e27e52fe85902bd85632d276beaec7",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUICapabilities/GiftUICapabilities.swiftsourceinfo": "a269048819bbf11d33c0bfb4bb6ac7e3b28da1c6b2c51e05bf24b8048a6bf98a",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUICapabilities/GiftUICapabilities.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUICapabilities/GiftUICapabilities.o": "38d216e96f2dff252c3d300d54f2fe3f38be4a29de6c49aa3db35d189f180685",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUICapabilities/GiftUICapabilities.swiftmodule": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUICapabilities/GiftUICapabilities.swift": "79a2f7a749cbe3e8033d1d118f9c94fadb67b985d36dbc185996fc255e8ba884"
+      },
+      "resolved_fresh_imports": {}
+    },
+    "GiftUIFailureCore": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIFailureCore.swiftmodule": "ce7ffbc90a1067d01bc0eabf58048af72941c51cc2325a3573dcd2a30e25b465",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIFailureCore.swiftdoc": "59356d4bca216fc88757be9b711f72d33c4b59d209327c8dcaedb92f7063fbbf",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIFailureCore.swiftsourceinfo": "9d732c7ac46434874c988bda7f6972ee7a7afa59beb085ddf0443f966b9c86f1"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIFailureCore/GiftUIFailureCore.swiftdoc": "59356d4bca216fc88757be9b711f72d33c4b59d209327c8dcaedb92f7063fbbf",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIFailureCore/GiftUIFailureCore.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIFailureCore/GiftUIFailureCore.swiftsourceinfo": "9d732c7ac46434874c988bda7f6972ee7a7afa59beb085ddf0443f966b9c86f1",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIFailureCore/GiftUIFailureCore.swiftmodule": "ce7ffbc90a1067d01bc0eabf58048af72941c51cc2325a3573dcd2a30e25b465",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIFailureCore/GiftUIFailureCore.o": "d20f207be7eb56ac16fb72326438f9bea7a41cb35389486698950b413ae0a4a9"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIFailureCore/GiftUIFailureCore.swift": "9e1e92643cdf2aed4efea9684697481af01034b9ad34ef42aff8c6ff6445cae7"
+      },
+      "resolved_fresh_imports": {}
+    },
+    "GiftUISemanticCore": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftmodule": "df458a307cba31787b392553b5379d88bf4e71a2c76e3cda71e5af8e0d6253d4",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftdoc": "90dc08eaed2bb60b8cddd279717f0b481a07ce512ed6b6a68b3b63049ab005cb",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftsourceinfo": "6f228c22c9c618a1cfd2a9d6d4cba21b4a58d45f2c496008a4a75d79d455924d"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUISemanticCore/GiftUISemanticCore.swiftmodule": "df458a307cba31787b392553b5379d88bf4e71a2c76e3cda71e5af8e0d6253d4",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUISemanticCore/GiftUISemanticCore.swiftsourceinfo": "6f228c22c9c618a1cfd2a9d6d4cba21b4a58d45f2c496008a4a75d79d455924d",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUISemanticCore/GiftUISemanticCore.swiftdoc": "90dc08eaed2bb60b8cddd279717f0b481a07ce512ed6b6a68b3b63049ab005cb",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUISemanticCore/GiftUISemanticCore.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUISemanticCore/GiftUISemanticCore.o": "119789d094127c6b1f5a10f3d59c7fc1100a0f072633a6459cf5e026d747de24"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "fc787355d2ef5fecbe59e48db5fd54f036e93a012705cbdcd0b13e7e012d381f",
+        "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutResultSink.swift": "2e9857d32da453382660186e140c20524ae12d0f19e6e56b36de8b448bc8af51",
+        "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutView.swift": "f7d067f23913efcab81ebc27ef3c22073c00c2536360b8f866c2f10e5205196b",
+        "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": "cf2b591a33b9814f40eb67b17dbdefd19d726fc115a37636ddc4d31c788da5bd",
+        "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift": "6f2eb6c53e7849ed9cf489ac8b2165a3ab318ff89bb7253076043acfc42ea144",
+        "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordRenderView.swift": "5d0628083f3ebe29142f7c2245ae7831328ef93c40a28d27b2c2dd20dd029515",
+        "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordStore.swift": "776db41e501972481ca6e7d461e9b52d67918f3624b2a41429f714be238a9753",
+        "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRenderResultStorage.swift": "9b57946d2828782214052d5ad8200cadc342a27e64ba6d776553efc571ec9048",
+        "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRenderView.swift": "53f052d9cf5f4dba04edecb9713a11518718f315da8d83855623e41d6e8ebaca",
+        "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "d4d212e512d06829525da02e37992d0ac8e3d1ebb7a5acfccfd5e4bfdb33b546",
+        "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticStandardPayload.swift": "2dd204c2c7b5d4fe06e58a085ac7a59aa70dd734e56981231c414c10f7389c70"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        }
+      }
+    },
+    "GiftUITextResources": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftmodule": "9c29e4568c9b98bf36c4009a868b4e92ae1d506817ca0c9a5c89f645b4e2b35c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftdoc": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftsourceinfo": "d2fd565b3b80cbb0574dfaefdf4fd6d7abbe2ef46fe45f5234abbcead9843025"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUITextResources/GiftUITextResources.swiftdoc": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUITextResources/GiftUITextResources.o": "ccd54e4f774e19c84f983d2ba1b0ff10db07988aaef58029046ca113d7a2e098",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUITextResources/GiftUITextResources.swiftmodule": "9c29e4568c9b98bf36c4009a868b4e92ae1d506817ca0c9a5c89f645b4e2b35c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUITextResources/GiftUITextResources.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUITextResources/GiftUITextResources.swiftsourceinfo": "d2fd565b3b80cbb0574dfaefdf4fd6d7abbe2ef46fe45f5234abbcead9843025"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUITextResources/GiftUITextResources.swift": "d1f60a53bf776c331ab57281f0874e08ef804f4e4d44c733134f92fc532f6a1f"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        }
+      }
+    },
+    "P08CounterSchema": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterSchema.swiftmodule": "0ca47e048d96177f97538d326fb8744ae3084095ac8503898b930dbae0bc4ba0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterSchema.swiftdoc": "87956c631d40c5661d711f3b8125d5f10e9c72ab2287c1f9d78dbb25977882c9",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterSchema.swiftsourceinfo": "2180cba9d360d0f909299f64f4ac9c78f1dd8b44be6d18e02e76bc31e2acbf9b"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterSchema/P08CounterSchema.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterSchema/P08CounterSchema.o": "b77a5ee1b89a643ee010218b5b12027cd812b3419042d05e3780161bdae0a5bf",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterSchema/P08CounterSchema.swiftmodule": "0ca47e048d96177f97538d326fb8744ae3084095ac8503898b930dbae0bc4ba0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterSchema/P08CounterSchema.swiftsourceinfo": "2180cba9d360d0f909299f64f4ac9c78f1dd8b44be6d18e02e76bc31e2acbf9b",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterSchema/P08CounterSchema.swiftdoc": "87956c631d40c5661d711f3b8125d5f10e9c72ab2287c1f9d78dbb25977882c9"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/generated/CounterSchema.swift": "4a3d38814efb03b675f3748c6c7e57e9ee444839fa51486ea8bb13ef6826f763"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        }
+      }
+    },
+    "GiftUILayout": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftmodule": "028ee9fb77f40659325179945db82342b122ba869b40452c653ce8a55e072323",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftdoc": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftsourceinfo": "4ac84f6d53805c8573ed23230e97ff02b927fd743846bec20fe1f2784b2ba0fd"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUILayout/GiftUILayout.o": "7a041e09a161543193a6a5fdabc6355c0eb9d29cabf12b65f421ef71dbc71881",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUILayout/GiftUILayout.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUILayout/GiftUILayout.swiftmodule": "028ee9fb77f40659325179945db82342b122ba869b40452c653ce8a55e072323",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUILayout/GiftUILayout.swiftsourceinfo": "4ac84f6d53805c8573ed23230e97ff02b927fd743846bec20fe1f2784b2ba0fd",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUILayout/GiftUILayout.swiftdoc": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUILayout/Layout.swift": "17bd1188e891289330a447eaad77a5c53d149e653862939916b221589a9bf1a3",
+        "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutCounters.swift": "735a80dc1133d7fcae6ba5ba455b520a8f0224494b2357af224ddea8c200bc12",
+        "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift": "30a34ad86cde9eea063c7973247ad52e1c1384d6b0392eaa07cfe2bdd9840c33",
+        "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutError.swift": "5733fe30105131fe00b87c4812e787a4efa6aed7236c84d5f93a0e0ddbcf629b",
+        "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutGeometry.swift": "0ac0320ec58947aa4bc7c3f8ec0ff662e57f598d2a7764faa0d1c2bc33acfa92",
+        "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutPublication.swift": "476824b1f5a566de27a36c10f4bea4165d73dd617baa718fcc72769667a6ae01",
+        "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutResultSink.swift": "57a52e0187904a317a7d3b00acf28afcd1854d2e62120cafd4fd12011e2ad06a",
+        "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutSemanticValidation.swift": "6d86059b20f8a99bd1e8cd99dbafd4b13082330d097d96eaf697b856a4da6ab0",
+        "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutValues.swift": "ec168c1eb9bc6dff3cfb5144ab752958dad62d4bc1c419e8f0dea1b4149e704b",
+        "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutWorkspace.swift": "bbec7289fc9cb6c1f506e895231257c58bdd818ba6d0a020258cb7c97b342f81",
+        "/Users/eugene/work/GiftUI/Sources/GiftUILayout/ResolvedRenderLayoutView.swift": "7278d5216c075b499bee43e8b646f00a34f70f6b877ab9b4fc72de1878f10b33"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUISemanticCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftmodule": "df458a307cba31787b392553b5379d88bf4e71a2c76e3cda71e5af8e0d6253d4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftdoc": "90dc08eaed2bb60b8cddd279717f0b481a07ce512ed6b6a68b3b63049ab005cb",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftsourceinfo": "6f228c22c9c618a1cfd2a9d6d4cba21b4a58d45f2c496008a4a75d79d455924d"
+        },
+        "GiftUITextResources": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftmodule": "9c29e4568c9b98bf36c4009a868b4e92ae1d506817ca0c9a5c89f645b4e2b35c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftdoc": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftsourceinfo": "d2fd565b3b80cbb0574dfaefdf4fd6d7abbe2ef46fe45f5234abbcead9843025"
+        }
+      }
+    },
+    "GiftUIReferenceTextResources": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIReferenceTextResources.swiftmodule": "30afc9c2faa6c1d02cd546b900c832f71cf4f22dd093c87074a7c29c4d320583",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIReferenceTextResources.swiftdoc": "5b9ec28b8006d1ef6ab4fa01d3ed6ba5e09d65e51e94251294b726771da9fa54",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIReferenceTextResources.swiftsourceinfo": "c907b6675120c63a4f4a55567d49ac9d3ade76cac19399983006ef2ffaac07c8"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swiftdoc": "5b9ec28b8006d1ef6ab4fa01d3ed6ba5e09d65e51e94251294b726771da9fa54",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swiftmodule": "30afc9c2faa6c1d02cd546b900c832f71cf4f22dd093c87074a7c29c4d320583",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIReferenceTextResources/GiftUIReferenceTextResources.o": "8c93ac55005b5bd41d19ce7ed510931b41f1f205e9081a86684b1ece16ac5a94",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIReferenceTextResources/GiftUIReferenceTextResources.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swiftsourceinfo": "c907b6675120c63a4f4a55567d49ac9d3ade76cac19399983006ef2ffaac07c8"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift": "c5cdf30474780eae3f27cec5c8d179bad0eaa5b5fa0a47c71de129e017322f14",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift": "7a4085655de8b4738aeb9e27956922684c2d56235679b4775a7bd4f6de7ff70b",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift": "77313fd03bd41cc977b4f63397d5ec119772c25eb18db48cf3fef81cc95577b8",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/GiftUIPiCompactTextResources.swift": "fadbaa0ad0a880800339390d1b3f9f3f151d93fba0e9107d9af24087f025cdce",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift": "c15131c18872115b83fe63d71247494092d29dfb31bbc05d208d5306572b89f4",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactBitmapPayload.generated.swift": "6d9ae291e7c780cf049010cd8912742ccc36f8b89452db6132086776e0b7bca3",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactCatalogue.generated.swift": "0f8900aaf2433a975276603039af1d4200759ec081394e193d149656d78c0c89"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUITextResources": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftmodule": "9c29e4568c9b98bf36c4009a868b4e92ae1d506817ca0c9a5c89f645b4e2b35c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftdoc": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftsourceinfo": "d2fd565b3b80cbb0574dfaefdf4fd6d7abbe2ef46fe45f5234abbcead9843025"
+        }
+      }
+    },
+    "GiftUIRenderCore": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftmodule": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftdoc": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftsourceinfo": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRenderCore/GiftUIRenderCore.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRenderCore/GiftUIRenderCore.swiftdoc": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRenderCore/GiftUIRenderCore.o": "59610a40d5d61e6fca859d72ef5dbd0eb5f01316f506e8d641acc31b94236a3e",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRenderCore/GiftUIRenderCore.swiftmodule": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRenderCore/GiftUIRenderCore.swiftsourceinfo": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/DrawingOperationSink.swift": "4d35496afb8dc6b4827b52b3441a8258a5f91754c765a8828cb5ff7ebaafba88",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderOperationSink.swift": "02ba1989d36434e1e7db7984acce9ccc4a7861857c53de7d49676968aaaf1f43",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderRecordingSink.swift": "3db5511a8127d03eb51c6e6bf232a817d0eb6a2768583433767a05267ebdead2",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderValues.swift": "d4a0e5274c7c8e88a4e7c6c9c0bf5345ea1e83b5086b1f32373f01c7a4940722"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUITextResources": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftmodule": "9c29e4568c9b98bf36c4009a868b4e92ae1d506817ca0c9a5c89f645b4e2b35c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftdoc": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftsourceinfo": "d2fd565b3b80cbb0574dfaefdf4fd6d7abbe2ef46fe45f5234abbcead9843025"
+        }
+      }
+    },
+    "P08CounterPresentation": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterPresentation.swiftmodule": "343915dc4300145c3be75bfc0b64bad55d72eaa657c3b6788d2fac7430b90d37",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterPresentation.swiftdoc": "65fd59b043cbe222e88e65581f48c54d425c335304d73c8550513bf3971cc008",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterPresentation.swiftsourceinfo": "473479b25518ef7383737e0b5bb9fa575742bce63b5d5bb83b3f0427afb69bac"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterPresentation/P08CounterPresentation.o": "11254fe2583f7728c8bfc37a2ff6dd704272ef6797148ec80ef348bd366c750e",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterPresentation/P08CounterPresentation.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterPresentation/P08CounterPresentation.swiftdoc": "65fd59b043cbe222e88e65581f48c54d425c335304d73c8550513bf3971cc008",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterPresentation/P08CounterPresentation.swiftsourceinfo": "473479b25518ef7383737e0b5bb9fa575742bce63b5d5bb83b3f0427afb69bac",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterPresentation/P08CounterPresentation.swiftmodule": "343915dc4300145c3be75bfc0b64bad55d72eaa657c3b6788d2fac7430b90d37"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/generated/Counter.swift": "b29408c44c2d4fa403c95abca82dc4a260780e236d7e3152805e02b298db3310"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "P08CounterSchema": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterSchema.swiftmodule": "0ca47e048d96177f97538d326fb8744ae3084095ac8503898b930dbae0bc4ba0",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterSchema.swiftdoc": "87956c631d40c5661d711f3b8125d5f10e9c72ab2287c1f9d78dbb25977882c9",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterSchema.swiftsourceinfo": "2180cba9d360d0f909299f64f4ac9c78f1dd8b44be6d18e02e76bc31e2acbf9b"
+        }
+      }
+    },
+    "GiftUIExecution": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftmodule": "0558529e3dbc43cb78ea94e1c98eaac89625dd4139676d48db523dc9dbe31d98",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftdoc": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftsourceinfo": "7b0e230a4a3d70a5e8d63ebdee8710dcacdb2616fce60c27ab63627f48a8ecf3"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIExecution/GiftUIExecution.swiftsourceinfo": "7b0e230a4a3d70a5e8d63ebdee8710dcacdb2616fce60c27ab63627f48a8ecf3",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIExecution/GiftUIExecution.o": "c5d59b2a8d160851237acaaef8acc3b1996ba48fe342a58b5702c532ccd6c020",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIExecution/GiftUIExecution.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIExecution/GiftUIExecution.swiftmodule": "0558529e3dbc43cb78ea94e1c98eaac89625dd4139676d48db523dc9dbe31d98",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIExecution/GiftUIExecution.swiftdoc": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/AdmissionValues.swift": "33b73204d814331eef69c8caebc274b546b25d383a04c77656dc58f80ce85839",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionController.swift": "0aea5ab996e95104ce476aeb7188cc6bfde37d31f6db51b5ee10ae241524d4e2",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionSealTransaction.swift": "7a88abcca9f437db94ea1f647ae8fd5ec3dbed82bd629b739ba3446ef8cf67d0",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionSealer.swift": "54f3a7809c277a37cf8acfa931d62086ebc0ae1d3e77839ab6dcc28085885345",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionMutationBatch.swift": "a0464225588b3101249112a88f404a3258ccb87e8d9eea5e56671a4975501567",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionOpportunityRunner.swift": "d28b28c94e179c58805de37cc1a42736541cc26a7ba5bcb187571b8ad8e15a9e",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionPhaseMachine.swift": "f2047c05efd5f2f2f7c96f57e3b20fd9b3826635c2fa922bdd1c0d81f545da34",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionValues.swift": "4520ec15d70aedb7f95dcbedb972b0b7fcc707cb1b08b2636cf5298820e6e12f",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionWakeAccumulator.swift": "856db20ee149c555a4d0c33731be4d69980486033592181187d8465b60ecf2d2",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/FrameHandoffValues.swift": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/FrameOfferNormalization.swift": "761740fdf6fb11cb54a52c2817d006ec75a9322e2c9a4351952f893711698a33",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/IdentityAllocators.swift": "8f9bab781054456d49e210b3700200f10abc7a47c1a2f85e3de6013d9f6a3e35",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/InputSourceSequenceState.swift": "b69a01de3871a80fa7b9f556bc7d93f12945c9edcc6569d00faa3569d963c5b3",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ObservableTargetGeneration.swift": "e37666935262923eb79378f29436756f79844a10d369c3ad8661ff38c17d6483",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift": "a88eec3e2176873a65c577ef6e47cf41873a8b9d8124250c5e45d8a83c53c605",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCandidateOfferCoordinator.swift": "66b7d07d657785ba0ebf9fbc46c3b1d983b715cf45d4a7dd27d46b856fecff23",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCycleCoordinator.swift": "ccfffb285dde8e73132ddba6a32fab791eb488b673b316c09b397d10d292a620",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCycleFinalizer.swift": "bc9318cd92c095b9473878c575996b8b0b1e500faa3cbf121df1ba774673ffc3",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingDerivationRecovery.swift": "e71108078104eb3f294bad9231ee819c3ec77cf11b0c059d3d670a9c95fbef35",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingDerivationTransaction.swift": "380f3d5ec84f4ab6e45aa1e6054677b3080105fb7c445f79cc3ee6b9558e5bca",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFocusedFailureSelection.swift": "c2f005577a0a33d1d46c74d77836ec5ef03857d5716523d8cf6f4ef07a32fb8f",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFrameCommitTransaction.swift": "2cf669bd232c7310fc9650d33ccc242fc717b1071877d8a1b2dcbce32ee7e7c8",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFrameEndpoint.swift": "43b75fbc4d7ff5a09db83693f6e557f7256bf62960ed3ab2f4c37f4caca5f849",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingMutationBatch.swift": "229c26f04e85f737a0c6f41d7bbd76eb9c33ff0955bfa878d70bcf8f2984ff39",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift": "45ce481da6c05b8509f596d6e2a9eac9961c261afe6cc6401b6035772c9370ed",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingPresentationTerminalRecovery.swift": "c163ff5b21c6a9f920b4b70c0d150403ccd2900c20c212be04d2985be90c53d0",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RunCycleValues.swift": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/WakeValues.swift": "915e835c62177403893bf44318b0d06ded8e017e59ba4f1e11d9f333505275f6"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUIRenderCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftmodule": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftdoc": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftsourceinfo": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e"
+        }
+      }
+    },
+    "GiftUIRenderLowering": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderLowering.swiftmodule": "2f78f910754d5b831679716b683f9b351909f6f65c2a35794808bee5638d5b53",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderLowering.swiftdoc": "88210ce918b2b4e43c16186d30cf3755703c4d9901a27367fc0e11d225cd8c48",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderLowering.swiftsourceinfo": "962dec676d4aeabf64285ef9b8037ec53a20bbb235394a649da9983717a99f87"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRenderLowering/GiftUIRenderLowering.swiftsourceinfo": "962dec676d4aeabf64285ef9b8037ec53a20bbb235394a649da9983717a99f87",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRenderLowering/GiftUIRenderLowering.o": "34a7fe5c8cdbd1dff46980fab9143864a99be05fdff71a2ae219ba6fcea9543c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRenderLowering/GiftUIRenderLowering.swiftmodule": "2f78f910754d5b831679716b683f9b351909f6f65c2a35794808bee5638d5b53",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRenderLowering/GiftUIRenderLowering.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRenderLowering/GiftUIRenderLowering.swiftdoc": "88210ce918b2b4e43c16186d30cf3755703c4d9901a27367fc0e11d225cd8c48"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderExtensions.swift": "b4b73e4193b61650d587b0134e626058da433b2c25176df35e3a9f74618fddf9",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderPreflight.swift": "1c25158da80d1929699b9323c359ab5480e792bc6f34c6f783d46879194ef290",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderProducer.swift": "0e25b626df694b56c95d6c444db1fbf40e45afd7c65c4b5b9253fe5a15226281",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderProductionValues.swift": "0005e5774c9a7658547f91d79b685b2033d59928d01ecd07136b80eaab535bcc",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderStreaming.swift": "4d06944c09c4ad685857df55e2577ff72a183cdfa8b03fb9e5f545a9ea10aa8f"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUILayout": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftmodule": "028ee9fb77f40659325179945db82342b122ba869b40452c653ce8a55e072323",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftdoc": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftsourceinfo": "4ac84f6d53805c8573ed23230e97ff02b927fd743846bec20fe1f2784b2ba0fd"
+        },
+        "GiftUIRenderCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftmodule": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftdoc": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftsourceinfo": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e"
+        },
+        "GiftUISemanticCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftmodule": "df458a307cba31787b392553b5379d88bf4e71a2c76e3cda71e5af8e0d6253d4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftdoc": "90dc08eaed2bb60b8cddd279717f0b481a07ce512ed6b6a68b3b63049ab005cb",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftsourceinfo": "6f228c22c9c618a1cfd2a9d6d4cba21b4a58d45f2c496008a4a75d79d455924d"
+        },
+        "GiftUITextResources": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftmodule": "9c29e4568c9b98bf36c4009a868b4e92ae1d506817ca0c9a5c89f645b4e2b35c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftdoc": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftsourceinfo": "d2fd565b3b80cbb0574dfaefdf4fd6d7abbe2ef46fe45f5234abbcead9843025"
+        }
+      }
+    },
+    "GiftUISurfaceCore": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftmodule": "ebfeb04dfebf4e6c2c5f1d36d50c670968f482fb5f1161362f686545b79373b1",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftdoc": "52b06b587a35dbdc7c0e1680829f8073b508e612b3e45e029bd9d7264ceb7804",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftsourceinfo": "adf0fed4a5a824dcbf441095a608bc4cd5d25be485c0a456fd2e39d4ab2ef31f"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUISurfaceCore/GiftUISurfaceCore.swiftdoc": "52b06b587a35dbdc7c0e1680829f8073b508e612b3e45e029bd9d7264ceb7804",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUISurfaceCore/GiftUISurfaceCore.swiftsourceinfo": "adf0fed4a5a824dcbf441095a608bc4cd5d25be485c0a456fd2e39d4ab2ef31f",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUISurfaceCore/GiftUISurfaceCore.swiftmodule": "ebfeb04dfebf4e6c2c5f1d36d50c670968f482fb5f1161362f686545b79373b1",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUISurfaceCore/GiftUISurfaceCore.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUISurfaceCore/GiftUISurfaceCore.o": "56df9b135717257b1c82c9bea55f304c0cf370f816d9f3c982dac762bf26189a"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/RasterSurface.swift": "cf0aa2fe88d7cf825e5b9bddb8b8e2fc48d76555f4a8ac94ff4ec0b884fe3b42",
+        "/Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/SurfaceValues.swift": "96e161fdf3d1f58dd4c1de04c043df647a3fa279d17993c57e2b0ce15e19d60c"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUICapabilities": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftmodule": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftdoc": "b599a0290ae0283fc584bc0c996f6402a9e27e52fe85902bd85632d276beaec7",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftsourceinfo": "a269048819bbf11d33c0bfb4bb6ac7e3b28da1c6b2c51e05bf24b8048a6bf98a"
+        },
+        "GiftUIRenderCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftmodule": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftdoc": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftsourceinfo": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e"
+        }
+      }
+    },
+    "GiftUIDisplayCore": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDisplayCore.swiftmodule": "71a5cbb5d9024428b31a166bda49c8ba43db465e7a1b3c1410c55331be4b6f71",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDisplayCore.swiftdoc": "b8966a9094804b51db0fc90c9e785961c89b0a9f5f4a90587370efd2739089ca",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDisplayCore.swiftsourceinfo": "89c32bfc5622a2a9f12f822c2dd735df8fd50fb4551de9a259ef45b5c73e363c"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIDisplayCore/GiftUIDisplayCore.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIDisplayCore/GiftUIDisplayCore.o": "a3a8fce0f94bffef26fc1ed8553bd8e024e560caa13862deaa77a5845c79e8ae",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIDisplayCore/GiftUIDisplayCore.swiftsourceinfo": "89c32bfc5622a2a9f12f822c2dd735df8fd50fb4551de9a259ef45b5c73e363c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIDisplayCore/GiftUIDisplayCore.swiftmodule": "71a5cbb5d9024428b31a166bda49c8ba43db465e7a1b3c1410c55331be4b6f71",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIDisplayCore/GiftUIDisplayCore.swiftdoc": "b8966a9094804b51db0fc90c9e785961c89b0a9f5f4a90587370efd2739089ca"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIDisplayCore/DisplayContracts.swift": "b27ad7489ad1ec6076f0d53b3912d6b9ed85329d355ceda2678707374111f3f0",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIDisplayCore/SurfaceDisplayContributionAdapter.swift": "6a53a85962e5a821e5d81c32a580f453f6332feceaf31997f8fc04f2d9d548cf"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUICapabilities": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftmodule": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftdoc": "b599a0290ae0283fc584bc0c996f6402a9e27e52fe85902bd85632d276beaec7",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftsourceinfo": "a269048819bbf11d33c0bfb4bb6ac7e3b28da1c6b2c51e05bf24b8048a6bf98a"
+        },
+        "GiftUIFailureCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIFailureCore.swiftmodule": "ce7ffbc90a1067d01bc0eabf58048af72941c51cc2325a3573dcd2a30e25b465",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIFailureCore.swiftdoc": "59356d4bca216fc88757be9b711f72d33c4b59d209327c8dcaedb92f7063fbbf",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIFailureCore.swiftsourceinfo": "9d732c7ac46434874c988bda7f6972ee7a7afa59beb085ddf0443f966b9c86f1"
+        },
+        "GiftUISurfaceCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftmodule": "ebfeb04dfebf4e6c2c5f1d36d50c670968f482fb5f1161362f686545b79373b1",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftdoc": "52b06b587a35dbdc7c0e1680829f8073b508e612b3e45e029bd9d7264ceb7804",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftsourceinfo": "adf0fed4a5a824dcbf441095a608bc4cd5d25be485c0a456fd2e39d4ab2ef31f"
+        }
+      }
+    },
+    "GiftUIDrawing": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDrawing.swiftmodule": "93fe4871f000afa65a33fbe819634fae3f6186a9cf8ebed1adee75af4657e4a5",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDrawing.swiftdoc": "c82f8ecfc41c957a83843695214c51e84a3543a68d2d6a0585cc0491b411b632",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDrawing.swiftsourceinfo": "4e3e8f1841a7b6d4eee28b70a77dd8460c33e0d7dc66173f1fa36d2c0ac247a7"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIDrawing/GiftUIDrawing.swiftmodule": "93fe4871f000afa65a33fbe819634fae3f6186a9cf8ebed1adee75af4657e4a5",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIDrawing/GiftUIDrawing.swiftdoc": "c82f8ecfc41c957a83843695214c51e84a3543a68d2d6a0585cc0491b411b632",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIDrawing/GiftUIDrawing.o": "c9a602e9da83547482c009bafa620f9b08cb418700f4256094992ad2c1c3f3cf",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIDrawing/GiftUIDrawing.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIDrawing/GiftUIDrawing.swiftsourceinfo": "4e3e8f1841a7b6d4eee28b70a77dd8460c33e0d7dc66173f1fa36d2c0ac247a7"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasInvocationSource.swift": "9b992bc729e793959c0d8ad3fcb374c0bf3ced7edb1cdd098c57e6ba48c451f2",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasPlanProducer.swift": "8a75acb55af64e06ad4aad12553c1e6c4c1a6c11aa937599f65e63a7bef68db7",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasRenderProducer.swift": "c98ac6df32afa04088b6958ed8f664db91dd111cd9d798b626c60adbed7ddf69",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift": "8ff2bf5049d4393d459fef253cf6a137a9796a70c2ad4c413111d7928070b531",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift": "72e143423b6f5c9d1eba62377b031dedf896fba4a884e96fa85545941fbbf2fb",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingLimits.swift": "eae0cc1be30bc22102c76613cd07b08ee577dbbb1f08d06caf350eb52d64be64",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingPlan.swift": "93e3216f2faaee98e2c025deef50cfb7513911efacdd56e90980be3cb6264da9",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingValues.swift": "d1008926323fdb292ec32e95e2cefb17958ea5ccbfb8d2e0c48fb67e565f0874",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/GiftUIDrawing.swift": "8356154905cc631456d0a51a04a19c52cbbac38fd667b14b9862cc940347868d",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift": "ff7780b55c1b33f6b00ad322a20bfe9d7408160a13a2908b6da9019cb0bfc68d",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StaticCanvasCallableTable.swift": "9c644426cf7f594dddff99cea8a21eb4c2fd57f295f4afdfbe049c55413ff9b6",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StrokeSnapshot.swift": "3345b05fb9f6f219fb09e7aa4e7e7a9a18c70f77d192734c36a08d0f84836a51"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUIExecution": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftmodule": "0558529e3dbc43cb78ea94e1c98eaac89625dd4139676d48db523dc9dbe31d98",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftdoc": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftsourceinfo": "7b0e230a4a3d70a5e8d63ebdee8710dcacdb2616fce60c27ab63627f48a8ecf3"
+        },
+        "GiftUILayout": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftmodule": "028ee9fb77f40659325179945db82342b122ba869b40452c653ce8a55e072323",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftdoc": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftsourceinfo": "4ac84f6d53805c8573ed23230e97ff02b927fd743846bec20fe1f2784b2ba0fd"
+        },
+        "GiftUIRenderCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftmodule": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftdoc": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftsourceinfo": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e"
+        },
+        "GiftUIRenderLowering": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderLowering.swiftmodule": "2f78f910754d5b831679716b683f9b351909f6f65c2a35794808bee5638d5b53",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderLowering.swiftdoc": "88210ce918b2b4e43c16186d30cf3755703c4d9901a27367fc0e11d225cd8c48",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderLowering.swiftsourceinfo": "962dec676d4aeabf64285ef9b8037ec53a20bbb235394a649da9983717a99f87"
+        },
+        "GiftUISemanticCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftmodule": "df458a307cba31787b392553b5379d88bf4e71a2c76e3cda71e5af8e0d6253d4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftdoc": "90dc08eaed2bb60b8cddd279717f0b481a07ce512ed6b6a68b3b63049ab005cb",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftsourceinfo": "6f228c22c9c618a1cfd2a9d6d4cba21b4a58d45f2c496008a4a75d79d455924d"
+        },
+        "GiftUITextResources": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftmodule": "9c29e4568c9b98bf36c4009a868b4e92ae1d506817ca0c9a5c89f645b4e2b35c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftdoc": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftsourceinfo": "d2fd565b3b80cbb0574dfaefdf4fd6d7abbe2ef46fe45f5234abbcead9843025"
+        }
+      }
+    },
+    "GiftUIInteraction": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIInteraction.swiftmodule": "450613347d72fde46d6e9e30c258c541ad0e8de7e2231f2ec9de9d64e9e59389",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIInteraction.swiftdoc": "30d00dc258251a48bb559f7bdf3436f452bde966fe685f607aec491339a30676",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIInteraction.swiftsourceinfo": "15c0bb64f5a43cc78d7ff36e341e9754f8e7cff024ca3e1969e56e3a167db116"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIInteraction/GiftUIInteraction.swiftsourceinfo": "15c0bb64f5a43cc78d7ff36e341e9754f8e7cff024ca3e1969e56e3a167db116",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIInteraction/GiftUIInteraction.swiftmodule": "450613347d72fde46d6e9e30c258c541ad0e8de7e2231f2ec9de9d64e9e59389",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIInteraction/GiftUIInteraction.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIInteraction/GiftUIInteraction.swiftdoc": "30d00dc258251a48bb559f7bdf3436f452bde966fe685f607aec491339a30676",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIInteraction/GiftUIInteraction.o": "048194bebcd62965a9c2d424cf4c5d3bfe4624cd47f3c2e2c72642a402c5cb6a"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/EffectiveActionEnabledState.swift": "89e3dc5744fa9169605a04345ff52a3d483a72b80c7ff5ec56350520d0014f30",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/ExecutionGestureAdapter.swift": "ee7d2b1db3604b904be3e3733c5eab4edf079fc7401d93a79035bb782fb82b8f",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionFailurePrecedence.swift": "ec6e49fd95484273c7fdf8408d1ebbad34d889e75eeb26bcfd923255ea9c644f",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": "cda0b3fe4b2165d7213c7cc4eb57f23859f3e854a116b3419f092a66cfec305c",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionState.swift": "d8b2d3dc91cb701f003ac9fa22ebd91666173947b858ae36d311254b4f1c5f51",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionStorage.swift": "19434eff6929af855dc90dac2e8c271dac3e0fb62f676e1ce5dcd05cd049f31c",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionValues.swift": "1ba67e136dbe99b4c92d500ef0cd4a381a8b534d55bd0f93ce537c2ccd4f4194"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUIExecution": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftmodule": "0558529e3dbc43cb78ea94e1c98eaac89625dd4139676d48db523dc9dbe31d98",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftdoc": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftsourceinfo": "7b0e230a4a3d70a5e8d63ebdee8710dcacdb2616fce60c27ab63627f48a8ecf3"
+        },
+        "GiftUILayout": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftmodule": "028ee9fb77f40659325179945db82342b122ba869b40452c653ce8a55e072323",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftdoc": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftsourceinfo": "4ac84f6d53805c8573ed23230e97ff02b927fd743846bec20fe1f2784b2ba0fd"
+        },
+        "GiftUISemanticCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftmodule": "df458a307cba31787b392553b5379d88bf4e71a2c76e3cda71e5af8e0d6253d4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftdoc": "90dc08eaed2bb60b8cddd279717f0b481a07ce512ed6b6a68b3b63049ab005cb",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftsourceinfo": "6f228c22c9c618a1cfd2a9d6d4cba21b4a58d45f2c496008a4a75d79d455924d"
+        }
+      }
+    },
+    "GiftUIObservableState": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIObservableState.swiftmodule": "19e99fa08e9434c4575c98a02c7e21c971d1394b20034a66e5547c8a8749b0d4",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIObservableState.swiftdoc": "766de0d9e31e4303181300612327f6cdbbd8a73cd081ef4d7582f4de51adacb1",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIObservableState.swiftsourceinfo": "08f42d662cd3705e268b95a12687575e650f0e4a4afbedfb6307294b666ed7b3"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIObservableState/GiftUIObservableState.swiftdoc": "766de0d9e31e4303181300612327f6cdbbd8a73cd081ef4d7582f4de51adacb1",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIObservableState/GiftUIObservableState.swiftmodule": "19e99fa08e9434c4575c98a02c7e21c971d1394b20034a66e5547c8a8749b0d4",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIObservableState/GiftUIObservableState.o": "c69cba8bc93aeb655b6c4b64cf707368f61e025dd2c6cb40a6dfedc39e31de2d",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIObservableState/GiftUIObservableState.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIObservableState/GiftUIObservableState.swiftsourceinfo": "08f42d662cd3705e268b95a12687575e650f0e4a4afbedfb6307294b666ed7b3"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelIdentity.swift": "b3100dea3f31eb0b508d07da66dc1aafb3da4235774502a36db9f46c9fd82a0a",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelMutation.swift": "d4edf05c126fa2ab43cb5cc073698fdaccb35c16dbd24f9282bef9ba3d9bb482",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelOwnership.swift": "3223e742ee24410a501f225368625d609dfc6fb66d66c6b0ead24fd4d0320c0a",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelScope.swift": "cf4fe6105ea05856ed229644a803fdbf1bab8d3eb8150b1ae0256d52634a21dc",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelTicket.swift": "fdee7c831f5a2d19b71e13df95968d5d1baba0d0d11dd8cc9ada07d4378d8649",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift": "e52aaae337bb1f56f6a228e5cb616d5480a45080628ceb5528b5376412b4b37f",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateAssociationLifecycle.swift": "433becfeee6f29a34a85c5fc07c5df5cb9cbc83bb4d47db061c91f4a8618b96e",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateAttachmentGenerationAllocator.swift": "5d93766c43fc5165f7a4471bd1e1146924fdddaea334103e971f80f9eb045d8a",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift": "b88f911561ac3405bd4ed7264122488162828c395a6668ad9b314f54c37b04d6",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateCandidateLifecycle.swift": "5b452e404b01b32a7584b4c42a2cdd928c88a7ceff85dbfc333aa873dc554bcb",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateDirtyDerivation.swift": "d1e4ba239d7b3998f5ee4522ed10b32baadbb9e5b472d6a6ed362ad3b319fdfb",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateModel.swift": "f6add18fb5d078aa3fd749859a3421d86fe31e8fef0047aed34e90f39b46407e",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateMutationResultSlot.swift": "ec70c096e3e84d67a2db4c5edac9241700e9928f90ec064aceab8cc5ab0a6e94",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateProtocols.swift": "a192efc2b7be42a9c1950f11ec14a9bdf17dfe903c488c253dab9064e7b42629",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRegistrationBridge.swift": "84f70d97f17c7bcfcc0be2f5626aa850a793816fe77ad003581a09863586d2da",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift": "58367baadd5b6213f1bf3809106c2aba2639ddc86ec01907b6d1e9e79a706774",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateReplacementBridge.swift": "29a648dd19183b1b388e36782def8c952c4eb269002de09e7903d0e646376f64",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateReplacementTransaction.swift": "659b8c2a7a5b76bf54a445a12e2463740df62267f7b2899da5621fea10cc7da9",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateReportGuard.swift": "b586d7b5386f11d13da8f42c8293a04b81cee738541864f4b183de6894ba6999",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateReportRoute.swift": "f02b30c16f1c568072d9280a2bb2b0a89890d822de889f5a014a7346e0870833",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift": "35af4fdfa757cd6ddc75cb7d65c298f87a554544b9b011881620f69b98984af6",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift": "55067eca3c7cf1c64a5f50d715808e859565ee9c36d426fb6ca871356f6a662b",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateTargetLifetime.swift": "35eb3304150a34856a4d135b870972935b4c69c7e730adad0d7065567ad6f175",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateTargetLookupSlot.swift": "44583f3fd29db18725080d618140e7f94855e870a7793e09a4b9b0ea2e400d11",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateValues.swift": "494913f81669772d868fbf63ebbfb2cc151d8c0739fc8b28647f4cdfd5465c77",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/PresentationFactAdmission.swift": "751aa39b158133261c66b591cc82780fc60286b6c5562e48186820cbe3234ceb"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUIExecution": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftmodule": "0558529e3dbc43cb78ea94e1c98eaac89625dd4139676d48db523dc9dbe31d98",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftdoc": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftsourceinfo": "7b0e230a4a3d70a5e8d63ebdee8710dcacdb2616fce60c27ab63627f48a8ecf3"
+        },
+        "GiftUISemanticCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftmodule": "df458a307cba31787b392553b5379d88bf4e71a2c76e3cda71e5af8e0d6253d4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftdoc": "90dc08eaed2bb60b8cddd279717f0b481a07ce512ed6b6a68b3b63049ab005cb",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftsourceinfo": "6f228c22c9c618a1cfd2a9d6d4cba21b4a58d45f2c496008a4a75d79d455924d"
+        }
+      }
+    },
+    "GiftUIRasterCore": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRasterCore.swiftmodule": "ccface57fd572fb3f24d3f460550b19c05c1f528485b49eb0ff0b2ea380e746b",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRasterCore.swiftdoc": "a7eee3aee99992439e6e7ed7de698e1f8bf9139a1fecf3064686ef561be50f6d",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRasterCore.swiftsourceinfo": "872c24a9715975d457d57bd02fb55af1446e8541c9bf92945bf0ddb3323e651f"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRasterCore/GiftUIRasterCore.o": "40b10a98db9a9414f8e179abecd82d9f496ccacd1d4ea354ba659789be8b3b38",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRasterCore/GiftUIRasterCore.swiftdoc": "a7eee3aee99992439e6e7ed7de698e1f8bf9139a1fecf3064686ef561be50f6d",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRasterCore/GiftUIRasterCore.swiftsourceinfo": "872c24a9715975d457d57bd02fb55af1446e8541c9bf92945bf0ddb3323e651f",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRasterCore/GiftUIRasterCore.swiftmodule": "ccface57fd572fb3f24d3f460550b19c05c1f528485b49eb0ff0b2ea380e746b",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRasterCore/GiftUIRasterCore.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGB565Framebuffer.swift": "449a1be1050367462f67ab32a98553f6c573a79f1a79a6a26be98e6df06ac5e1",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift": "db5f975e9c5984592606342eb212b206cc3950a466e50e4b018ab6741f720cdb",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RGB565TileWorkspace.swift": "e7f8fdfe6b23a33aeaad656ffc0ad745d14026dd3e55c8a1d069c1cb60915ce4",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterBackendContributionAdapter.swift": "07daa8c1ac38863bdbe0340061b8c7de703e912a8990155d91560d07fa88dbb6",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFillCoverage.swift": "e091a6fde4fdd9e0aaa01d15a0dccc7650039d654b4fffe36caa5e686460ace8",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFrameSink.swift": "93e7455f817de8a665933761c3580c59451d4c9cf12d9b9e8773aa4b28e1582a",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFrameWork.swift": "f2433ae30e9ed44bc16e2f1faca715f4c6e1608c7a13545e426e76b72bde5090",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterGlyphCoverage.swift": "29cedc4f49e27d990cd076d51f65ff2dae5b7ff6932aef5a9dbba0c014a1bbfc",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterPayloadLimits.swift": "23234d9ba4e630bb6279e31a9ab8ae72b8f9e3b2f9477784bf42697ecab544c3",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterStrokeCoverage.swift": "9e26044f3f7e99516742b686767cfe5a03d24d1efceee28f4d7ee6e21a90b579",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterWorkTracker.swift": "16f7c34ef32538f22b340163c402f551e3fd875b66f2e074d8049d6f51d6468f"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUICapabilities": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftmodule": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftdoc": "b599a0290ae0283fc584bc0c996f6402a9e27e52fe85902bd85632d276beaec7",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftsourceinfo": "a269048819bbf11d33c0bfb4bb6ac7e3b28da1c6b2c51e05bf24b8048a6bf98a"
+        },
+        "GiftUIRenderCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftmodule": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftdoc": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftsourceinfo": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e"
+        },
+        "GiftUISurfaceCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftmodule": "ebfeb04dfebf4e6c2c5f1d36d50c670968f482fb5f1161362f686545b79373b1",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftdoc": "52b06b587a35dbdc7c0e1680829f8073b508e612b3e45e029bd9d7264ceb7804",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftsourceinfo": "adf0fed4a5a824dcbf441095a608bc4cd5d25be485c0a456fd2e39d4ab2ef31f"
+        },
+        "GiftUITextResources": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftmodule": "9c29e4568c9b98bf36c4009a868b4e92ae1d506817ca0c9a5c89f645b4e2b35c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftdoc": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftsourceinfo": "d2fd565b3b80cbb0574dfaefdf4fd6d7abbe2ef46fe45f5234abbcead9843025"
+        }
+      }
+    },
+    "GiftUIBackendIntegration": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIBackendIntegration.swiftmodule": "d07e1ef9aefd8a91aca96a834c77255611f0fba50eabd7ecf31ba0f4e00bf19d",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIBackendIntegration.swiftdoc": "0cce2bc0737aedbe37bba83cc6c16f427c5b904b03f177f17bbfaed6af511f57",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIBackendIntegration.swiftsourceinfo": "1079047880ce90fb4292031fc6f67dab4a1da18ba152ca594a54bdc87d3a2978"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIBackendIntegration/GiftUIBackendIntegration.swiftsourceinfo": "1079047880ce90fb4292031fc6f67dab4a1da18ba152ca594a54bdc87d3a2978",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIBackendIntegration/GiftUIBackendIntegration.swiftdoc": "0cce2bc0737aedbe37bba83cc6c16f427c5b904b03f177f17bbfaed6af511f57",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIBackendIntegration/GiftUIBackendIntegration.o": "2649b9e8e41b9e4b4a6acb2faeda42fa6e31183c3249493a4182c9a7893266ed",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIBackendIntegration/GiftUIBackendIntegration.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIBackendIntegration/GiftUIBackendIntegration.swiftmodule": "d07e1ef9aefd8a91aca96a834c77255611f0fba50eabd7ecf31ba0f4e00bf19d"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift": "25ceb74e6fdea87403ae112685960394adcd56012ad7366ec870b0b6217436af",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift": "fa9c4b3aa3c522a8bd39efa4560abb692f61a1ab578089ed5ea4af182e5dd778",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift": "8b930d7dd1a226a8d4bdf5c827c1fd4471f0084f634ebe1144696fae2f50b4b5",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift": "a61e6fbe4e1cd2ea1f1325e11ea2e37332fa1c9c2e09a4a0d7dabdd5a7a2d765",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift": "0d0b245435a848f98bbc1996a0768298b1be2a03563d06d8bbd04d8077cf7c34",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift": "f38c93f26953da1f265aa20b1678d8d1a515fe533707d3646e89556908f62754",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendOwnerFailureAdapter.swift": "71185f98e32afd8353c6787c209ff671ef277e013df2ad11465ddf991b59d1e4",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift": "37bcf7159a5263b154e76ee84bd6d5592ca5903917b27614f30eeedc99c667e2",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift": "0dd3524e69afc0f87cc9b563f395d8fc46dd09d5a40a41072670bec032fb029e",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift": "8b5b0a273bca73176816366ffdc6d917ef71fe3bebc797113722988b4604579b"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUICapabilities": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftmodule": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftdoc": "b599a0290ae0283fc584bc0c996f6402a9e27e52fe85902bd85632d276beaec7",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftsourceinfo": "a269048819bbf11d33c0bfb4bb6ac7e3b28da1c6b2c51e05bf24b8048a6bf98a"
+        },
+        "GiftUIDisplayCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDisplayCore.swiftmodule": "71a5cbb5d9024428b31a166bda49c8ba43db465e7a1b3c1410c55331be4b6f71",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDisplayCore.swiftdoc": "b8966a9094804b51db0fc90c9e785961c89b0a9f5f4a90587370efd2739089ca",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDisplayCore.swiftsourceinfo": "89c32bfc5622a2a9f12f822c2dd735df8fd50fb4551de9a259ef45b5c73e363c"
+        },
+        "GiftUIExecution": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftmodule": "0558529e3dbc43cb78ea94e1c98eaac89625dd4139676d48db523dc9dbe31d98",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftdoc": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftsourceinfo": "7b0e230a4a3d70a5e8d63ebdee8710dcacdb2616fce60c27ab63627f48a8ecf3"
+        },
+        "GiftUIFailureCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIFailureCore.swiftmodule": "ce7ffbc90a1067d01bc0eabf58048af72941c51cc2325a3573dcd2a30e25b465",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIFailureCore.swiftdoc": "59356d4bca216fc88757be9b711f72d33c4b59d209327c8dcaedb92f7063fbbf",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIFailureCore.swiftsourceinfo": "9d732c7ac46434874c988bda7f6972ee7a7afa59beb085ddf0443f966b9c86f1"
+        },
+        "GiftUIRasterCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRasterCore.swiftmodule": "ccface57fd572fb3f24d3f460550b19c05c1f528485b49eb0ff0b2ea380e746b",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRasterCore.swiftdoc": "a7eee3aee99992439e6e7ed7de698e1f8bf9139a1fecf3064686ef561be50f6d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRasterCore.swiftsourceinfo": "872c24a9715975d457d57bd02fb55af1446e8541c9bf92945bf0ddb3323e651f"
+        },
+        "GiftUIRenderCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftmodule": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftdoc": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftsourceinfo": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e"
+        },
+        "GiftUISurfaceCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftmodule": "ebfeb04dfebf4e6c2c5f1d36d50c670968f482fb5f1161362f686545b79373b1",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftdoc": "52b06b587a35dbdc7c0e1680829f8073b508e612b3e45e029bd9d7264ceb7804",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftsourceinfo": "adf0fed4a5a824dcbf441095a608bc4cd5d25be485c0a456fd2e39d4ab2ef31f"
+        },
+        "GiftUITextResources": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftmodule": "9c29e4568c9b98bf36c4009a868b4e92ae1d506817ca0c9a5c89f645b4e2b35c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftdoc": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftsourceinfo": "d2fd565b3b80cbb0574dfaefdf4fd6d7abbe2ef46fe45f5234abbcead9843025"
+        }
+      }
+    },
+    "GiftUIRuntimeCore": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRuntimeCore.swiftmodule": "8eea5f9f2fe092101ee4d0f2d0bb3a376cda11b3743d504b8d7d8032b334a9d1",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRuntimeCore.swiftdoc": "fd801775ac1f2cef4d70cc991745d39f0522ca7855ed356a87a3fbcb7947d5df",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRuntimeCore.swiftsourceinfo": "55d311c73a95e20b1a7e6d6154367405887a860f25a59564006f8b39a278356e"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRuntimeCore/GiftUIRuntimeCore.swiftdoc": "fd801775ac1f2cef4d70cc991745d39f0522ca7855ed356a87a3fbcb7947d5df",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRuntimeCore/GiftUIRuntimeCore.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRuntimeCore/GiftUIRuntimeCore.swiftmodule": "8eea5f9f2fe092101ee4d0f2d0bb3a376cda11b3743d504b8d7d8032b334a9d1",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRuntimeCore/GiftUIRuntimeCore.o": "a66c477bce39ffe2a4b46ae31d693fdfd40ac2c90521a00b0b0c193d87a8f63c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIRuntimeCore/GiftUIRuntimeCore.swiftsourceinfo": "55d311c73a95e20b1a7e6d6154367405887a860f25a59564006f8b39a278356e"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift": "ba8501378a85365ce7e303a7c063419d740fee83151f1aea7c025af1dd1d30f5",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift": "39f94eec4ef8b81ff9ecb5bd8d2035cd8096681aee2745f917cfe5f616212ce4",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift": "c19a8f8cb381a933dcb1d12d1cfc8df738f9408717d88b661e35a264b192bddb",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorLifecycle.swift": "e205b58cb2a3539dd3a2baff0d76b4de7d2244fd003f962b0b6f9e1d8b41e816",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorQuiescence.swift": "df6ee95bb5a9a5fdd7b5f325e0c5e8f74556fb515bd429537880e752eadb1f7e",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoreBoundary.swift": "25eb74d4020f6055e92d15157564c5b0107bc68b815b6fa7cd051b884b98dbaf",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeFocusedFailureState.swift": "c1fa51e550f8b3c16364e1c714fe16118c2549cf19191e789e550c7b46d9668d",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateCoordinator.swift": "eba70ff7d800375e1eb53ba29503bd098490cba28d9e817e78a13abb2dd0b214",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift": "5c402b3a80a52a598149ce8b441e87d9370ff985c173483123d1bd8d0ecd6231",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateTransaction.swift": "7144341765b4156879cb4653aeee883d456757eff1624ea115c8d79170308821",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionDispatcher.swift": "4ad68cc60d1122e6f2fac4c13ef8c7a97cbdcc6dc194e70c02e79bdcfdbed323",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionMutationOwner.swift": "a0581fb08298386442093a8ca8e6203baa94e040d8c898341f95fb3d98844122",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeObservableProfileWorkspace.swift": "c2ad1ad24c52c6870c3b35b9f0edf4ebb101a0297603db69b633264d330cf41b",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift": "7728c6631e620e312f006ddc60e8fdec5d58efb3ea702b662b21ea187586ae57",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileStorage.swift": "9b00d9d6ced10e8b4868953e67c998fb9addf2e55a228c857c2cf317b0367f66",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileValidation.swift": "770bdb08b6bec4f93e76109838a1e511d88779018fe817b48bb5326608fdb8d1",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift": "377ef975edb74d9e8b86b94228e0756e1bc15414875f74a1fb4dbec33f0d88ca",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift": "0ba4dd8df9fcb3989d6da1f59dde68587b4bf85818340ba3d5958419cab9a570",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift": "920b52c7b8d018b4bcfeb11c0468ef5632e9dbaea2670ba79cfc0647f1111501",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeStorageRegistry.swift": "6f907f1f1c49f5b705439616dfbc5d0f5f6f047998fbb2dc02b1517554fd731e"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUIDrawing": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDrawing.swiftmodule": "93fe4871f000afa65a33fbe819634fae3f6186a9cf8ebed1adee75af4657e4a5",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDrawing.swiftdoc": "c82f8ecfc41c957a83843695214c51e84a3543a68d2d6a0585cc0491b411b632",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDrawing.swiftsourceinfo": "4e3e8f1841a7b6d4eee28b70a77dd8460c33e0d7dc66173f1fa36d2c0ac247a7"
+        },
+        "GiftUIExecution": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftmodule": "0558529e3dbc43cb78ea94e1c98eaac89625dd4139676d48db523dc9dbe31d98",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftdoc": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftsourceinfo": "7b0e230a4a3d70a5e8d63ebdee8710dcacdb2616fce60c27ab63627f48a8ecf3"
+        },
+        "GiftUIInteraction": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIInteraction.swiftmodule": "450613347d72fde46d6e9e30c258c541ad0e8de7e2231f2ec9de9d64e9e59389",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIInteraction.swiftdoc": "30d00dc258251a48bb559f7bdf3436f452bde966fe685f607aec491339a30676",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIInteraction.swiftsourceinfo": "15c0bb64f5a43cc78d7ff36e341e9754f8e7cff024ca3e1969e56e3a167db116"
+        },
+        "GiftUILayout": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftmodule": "028ee9fb77f40659325179945db82342b122ba869b40452c653ce8a55e072323",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftdoc": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftsourceinfo": "4ac84f6d53805c8573ed23230e97ff02b927fd743846bec20fe1f2784b2ba0fd"
+        },
+        "GiftUIObservableState": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIObservableState.swiftmodule": "19e99fa08e9434c4575c98a02c7e21c971d1394b20034a66e5547c8a8749b0d4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIObservableState.swiftdoc": "766de0d9e31e4303181300612327f6cdbbd8a73cd081ef4d7582f4de51adacb1",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIObservableState.swiftsourceinfo": "08f42d662cd3705e268b95a12687575e650f0e4a4afbedfb6307294b666ed7b3"
+        },
+        "GiftUIRenderCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftmodule": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftdoc": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftsourceinfo": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e"
+        },
+        "GiftUIRenderLowering": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderLowering.swiftmodule": "2f78f910754d5b831679716b683f9b351909f6f65c2a35794808bee5638d5b53",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderLowering.swiftdoc": "88210ce918b2b4e43c16186d30cf3755703c4d9901a27367fc0e11d225cd8c48",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderLowering.swiftsourceinfo": "962dec676d4aeabf64285ef9b8037ec53a20bbb235394a649da9983717a99f87"
+        },
+        "GiftUISemanticCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftmodule": "df458a307cba31787b392553b5379d88bf4e71a2c76e3cda71e5af8e0d6253d4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftdoc": "90dc08eaed2bb60b8cddd279717f0b481a07ce512ed6b6a68b3b63049ab005cb",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftsourceinfo": "6f228c22c9c618a1cfd2a9d6d4cba21b4a58d45f2c496008a4a75d79d455924d"
+        },
+        "GiftUITextResources": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftmodule": "9c29e4568c9b98bf36c4009a868b4e92ae1d506817ca0c9a5c89f645b4e2b35c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftdoc": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftsourceinfo": "d2fd565b3b80cbb0574dfaefdf4fd6d7abbe2ef46fe45f5234abbcead9843025"
+        }
+      }
+    },
+    "P08CounterTable": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterTable.swiftmodule": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterTable.swiftdoc": "cc020f27b9190ff407a99244647077d6c9c73651d5f6677c7b556c3934beffb9",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterTable.swiftsourceinfo": "9bd304f9c29f6c9db5406a4f6c88e51ded8cbd53e32918b2358c13b303251097"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterTable/P08CounterTable.o": "5364dc95d07314f9f62b6c50cfafe708421780f86b19a67db0cf236e502f3072",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterTable/P08CounterTable.swiftsourceinfo": "9bd304f9c29f6c9db5406a4f6c88e51ded8cbd53e32918b2358c13b303251097",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterTable/P08CounterTable.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterTable/P08CounterTable.swiftdoc": "cc020f27b9190ff407a99244647077d6c9c73651d5f6677c7b556c3934beffb9",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/P08CounterTable/P08CounterTable.swiftmodule": "a6f1d6df7b30937f33e3a8b071e8d33b0336187325acb86dad068f1361a6c8df"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/generated/CounterTable.swift": "9c1a50d90b57b9f625986cbb7a37fcefc56234bfb0f1e0b2a10abd7ab73efd54"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUIDrawing": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDrawing.swiftmodule": "93fe4871f000afa65a33fbe819634fae3f6186a9cf8ebed1adee75af4657e4a5",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDrawing.swiftdoc": "c82f8ecfc41c957a83843695214c51e84a3543a68d2d6a0585cc0491b411b632",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDrawing.swiftsourceinfo": "4e3e8f1841a7b6d4eee28b70a77dd8460c33e0d7dc66173f1fa36d2c0ac247a7"
+        },
+        "P08CounterPresentation": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterPresentation.swiftmodule": "343915dc4300145c3be75bfc0b64bad55d72eaa657c3b6788d2fac7430b90d37",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterPresentation.swiftdoc": "65fd59b043cbe222e88e65581f48c54d425c335304d73c8550513bf3971cc008",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterPresentation.swiftsourceinfo": "473479b25518ef7383737e0b5bb9fa575742bce63b5d5bb83b3f0427afb69bac"
+        },
+        "P08CounterSchema": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterSchema.swiftmodule": "0ca47e048d96177f97538d326fb8744ae3084095ac8503898b930dbae0bc4ba0",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterSchema.swiftdoc": "87956c631d40c5661d711f3b8125d5f10e9c72ab2287c1f9d78dbb25977882c9",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/P08CounterSchema.swiftsourceinfo": "2180cba9d360d0f909299f64f4ac9c78f1dd8b44be6d18e02e76bc31e2acbf9b"
+        }
+      }
+    },
+    "GiftUIHostConfiguration": {
+      "module_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIHostConfiguration.swiftmodule": "a17275780845ca5a6841171f08f149c96c151dadcbe596eeb6ce3c09eb1e713b",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIHostConfiguration.swiftdoc": "518543d8aa4befbf770cb35d98a488b3f33cb089a3e555aa3cd52a94dfe7dab0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIHostConfiguration.swiftsourceinfo": "5c5f848eda86d40ca74db7f8c888f458d1e436aae9320a91f61ac577983724d1"
+      },
+      "owner_artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIHostConfiguration/GiftUIHostConfiguration.swiftdoc": "518543d8aa4befbf770cb35d98a488b3f33cb089a3e555aa3cd52a94dfe7dab0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIHostConfiguration/GiftUIHostConfiguration.swiftmodule": "a17275780845ca5a6841171f08f149c96c151dadcbe596eeb6ce3c09eb1e713b",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIHostConfiguration/GiftUIHostConfiguration.o": "2525733bfb4c0114cc705b7aae8bd3da48d682a04b25eb6f326dd0ff3439c10b",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIHostConfiguration/GiftUIHostConfiguration.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/owners/GiftUIHostConfiguration/GiftUIHostConfiguration.swiftsourceinfo": "5c5f848eda86d40ca74db7f8c888f458d1e436aae9320a91f61ac577983724d1"
+      },
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift": "8caf5a83d60ea858e2ecfbe5b1f76232a6dd85efc1a2fb3797adcf3a04810a3e",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift": "2a541a9b1efbb142f6f6d7d5773ed12c4842d2dfe9e289750c9dc83205306402",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift": "3caac8f68d3f5b176e4c04b300d26b9c9cca96d2d0c6bf573b414da159fc7fe2",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift": "475df591e6c3fbd741a916dd6eefacf77a572a25678c9c4a27b84ce5d6974e03",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift": "b94f4cbca83a180953ca84c2d18c7fd48565bf449d34af980f0bc5b5b9eb8b67",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift": "1fe765b7348bdab18abf6b83da6c9e2cadbb2e7a868a729c8d075f5b5109f913",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": "3e00d5e22b04e6ccb25ab357f2d6fe96349f2ab31abf3cf9201206110d83b205",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift": "401908c35e265ad19b9788d17a32603bd966da81e4fef10b8ff2fc46a9d255c1",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift": "b170fb7b19e0627ad7484c81c72bd9c532b4c06455c4d0cd9053e47b1639b434",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift": "6f53a358ab30317e2290b162fcd68b4158ae941c3b4b753c546d35b5cd4db5c9",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostFailureAdapter.swift": "6b886b52c8e96892207b7230b8ccf9301b56f9fc62f117d7131c025e0452fde8",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift": "7bd20cd33825f33478e54a1921b670a857805f6a2cf83bf089810e83b93773a7",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift": "c8d261e68ad8096015f070d9e896c4952ac36725ff2c3ccc4b8cce56674d635f",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift": "15edb5e6d350cfdc95e2edc97d86a82b147e90b3bf391441eb04f173c218e12e",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift": "c7d77a75bc192ccf226c82487e87108d0bd3e5d5a91630d4df3990d6eb3e258c",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift": "6215618f39789acfa0a40aca1c0657fa8c66c1760884f44dceee1172ee7e7469",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift": "b43e1f7bf466c3dea0266e498d579e78504eb1612740f1d24804a2b19e37b84c",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift": "3f21154d0b6d6b416ebcacef4932902a72649968969246c601791272f66316f6",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift": "4bd12f192077693af4be89b1483be4d4791f256f2ca5798d025cbef577da07cb",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostWakePacingController.swift": "457479bb631966220e2bb2d26fb7a78ac0143fbcadae8b66c25b78b27125643b",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift": "3995cd72d80694e4d56cee8d29e70da7da0b825ae5fbfa2de4201da546268061",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift": "d1dde13c8fce951c74376d21bac1855192a7c87371cefdf2fe195bd377f42d7f",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift": "6676ad3b27a856c5ec74d5a72cd1020f468389abf5ddf5d8ed3c9a60c53c7d04"
+      },
+      "resolved_fresh_imports": {
+        "GiftUI": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftmodule": "296fa8caa0855e3927a8cab3546534f6c8ef0b73cca69ee7aebc63a5529d830d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftdoc": "b7d502fd76c404c9dac4641ea84064d3c5e067662ab15e0243d3212ad3fe1e1d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUI.swiftsourceinfo": "cadc6068a7987cec6707343fad03db2ffca8695ab22397081d140c66536195b0"
+        },
+        "GiftUIBackendIntegration": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIBackendIntegration.swiftmodule": "d07e1ef9aefd8a91aca96a834c77255611f0fba50eabd7ecf31ba0f4e00bf19d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIBackendIntegration.swiftdoc": "0cce2bc0737aedbe37bba83cc6c16f427c5b904b03f177f17bbfaed6af511f57",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIBackendIntegration.swiftsourceinfo": "1079047880ce90fb4292031fc6f67dab4a1da18ba152ca594a54bdc87d3a2978"
+        },
+        "GiftUICapabilities": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftmodule": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftdoc": "b599a0290ae0283fc584bc0c996f6402a9e27e52fe85902bd85632d276beaec7",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUICapabilities.swiftsourceinfo": "a269048819bbf11d33c0bfb4bb6ac7e3b28da1c6b2c51e05bf24b8048a6bf98a"
+        },
+        "GiftUIDisplayCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDisplayCore.swiftmodule": "71a5cbb5d9024428b31a166bda49c8ba43db465e7a1b3c1410c55331be4b6f71",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDisplayCore.swiftdoc": "b8966a9094804b51db0fc90c9e785961c89b0a9f5f4a90587370efd2739089ca",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDisplayCore.swiftsourceinfo": "89c32bfc5622a2a9f12f822c2dd735df8fd50fb4551de9a259ef45b5c73e363c"
+        },
+        "GiftUIDrawing": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDrawing.swiftmodule": "93fe4871f000afa65a33fbe819634fae3f6186a9cf8ebed1adee75af4657e4a5",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDrawing.swiftdoc": "c82f8ecfc41c957a83843695214c51e84a3543a68d2d6a0585cc0491b411b632",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIDrawing.swiftsourceinfo": "4e3e8f1841a7b6d4eee28b70a77dd8460c33e0d7dc66173f1fa36d2c0ac247a7"
+        },
+        "GiftUIExecution": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftmodule": "0558529e3dbc43cb78ea94e1c98eaac89625dd4139676d48db523dc9dbe31d98",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftdoc": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIExecution.swiftsourceinfo": "7b0e230a4a3d70a5e8d63ebdee8710dcacdb2616fce60c27ab63627f48a8ecf3"
+        },
+        "GiftUIFailureCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIFailureCore.swiftmodule": "ce7ffbc90a1067d01bc0eabf58048af72941c51cc2325a3573dcd2a30e25b465",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIFailureCore.swiftdoc": "59356d4bca216fc88757be9b711f72d33c4b59d209327c8dcaedb92f7063fbbf",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIFailureCore.swiftsourceinfo": "9d732c7ac46434874c988bda7f6972ee7a7afa59beb085ddf0443f966b9c86f1"
+        },
+        "GiftUIInteraction": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIInteraction.swiftmodule": "450613347d72fde46d6e9e30c258c541ad0e8de7e2231f2ec9de9d64e9e59389",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIInteraction.swiftdoc": "30d00dc258251a48bb559f7bdf3436f452bde966fe685f607aec491339a30676",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIInteraction.swiftsourceinfo": "15c0bb64f5a43cc78d7ff36e341e9754f8e7cff024ca3e1969e56e3a167db116"
+        },
+        "GiftUILayout": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftmodule": "028ee9fb77f40659325179945db82342b122ba869b40452c653ce8a55e072323",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftdoc": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUILayout.swiftsourceinfo": "4ac84f6d53805c8573ed23230e97ff02b927fd743846bec20fe1f2784b2ba0fd"
+        },
+        "GiftUIObservableState": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIObservableState.swiftmodule": "19e99fa08e9434c4575c98a02c7e21c971d1394b20034a66e5547c8a8749b0d4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIObservableState.swiftdoc": "766de0d9e31e4303181300612327f6cdbbd8a73cd081ef4d7582f4de51adacb1",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIObservableState.swiftsourceinfo": "08f42d662cd3705e268b95a12687575e650f0e4a4afbedfb6307294b666ed7b3"
+        },
+        "GiftUIRasterCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRasterCore.swiftmodule": "ccface57fd572fb3f24d3f460550b19c05c1f528485b49eb0ff0b2ea380e746b",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRasterCore.swiftdoc": "a7eee3aee99992439e6e7ed7de698e1f8bf9139a1fecf3064686ef561be50f6d",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRasterCore.swiftsourceinfo": "872c24a9715975d457d57bd02fb55af1446e8541c9bf92945bf0ddb3323e651f"
+        },
+        "GiftUIRenderCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftmodule": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftdoc": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderCore.swiftsourceinfo": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e"
+        },
+        "GiftUIRenderLowering": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderLowering.swiftmodule": "2f78f910754d5b831679716b683f9b351909f6f65c2a35794808bee5638d5b53",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderLowering.swiftdoc": "88210ce918b2b4e43c16186d30cf3755703c4d9901a27367fc0e11d225cd8c48",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRenderLowering.swiftsourceinfo": "962dec676d4aeabf64285ef9b8037ec53a20bbb235394a649da9983717a99f87"
+        },
+        "GiftUIRuntimeCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRuntimeCore.swiftmodule": "8eea5f9f2fe092101ee4d0f2d0bb3a376cda11b3743d504b8d7d8032b334a9d1",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRuntimeCore.swiftdoc": "fd801775ac1f2cef4d70cc991745d39f0522ca7855ed356a87a3fbcb7947d5df",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUIRuntimeCore.swiftsourceinfo": "55d311c73a95e20b1a7e6d6154367405887a860f25a59564006f8b39a278356e"
+        },
+        "GiftUISemanticCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftmodule": "df458a307cba31787b392553b5379d88bf4e71a2c76e3cda71e5af8e0d6253d4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftdoc": "90dc08eaed2bb60b8cddd279717f0b481a07ce512ed6b6a68b3b63049ab005cb",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISemanticCore.swiftsourceinfo": "6f228c22c9c618a1cfd2a9d6d4cba21b4a58d45f2c496008a4a75d79d455924d"
+        },
+        "GiftUISurfaceCore": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftmodule": "ebfeb04dfebf4e6c2c5f1d36d50c670968f482fb5f1161362f686545b79373b1",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftdoc": "52b06b587a35dbdc7c0e1680829f8073b508e612b3e45e029bd9d7264ceb7804",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUISurfaceCore.swiftsourceinfo": "adf0fed4a5a824dcbf441095a608bc4cd5d25be485c0a456fd2e39d4ab2ef31f"
+        },
+        "GiftUITextResources": {
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftmodule": "9c29e4568c9b98bf36c4009a868b4e92ae1d506817ca0c9a5c89f645b4e2b35c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftdoc": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/modules/GiftUITextResources.swiftsourceinfo": "d2fd565b3b80cbb0574dfaefdf4fd6d7abbe2ef46fe45f5234abbcead9843025"
+        }
+      }
+    }
+  },
+  "nodes": [
+    {
+      "module": "GiftUIRuntimeDynamic",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUIDrawing",
+        "GiftUIExecution",
+        "GiftUIInteraction",
+        "GiftUILayout",
+        "GiftUIObservableState",
+        "GiftUIRenderCore",
+        "GiftUIRenderLowering",
+        "GiftUIRuntimeCore",
+        "GiftUISemanticCore",
+        "GiftUITextResources"
+      ],
+      "source_files": [
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootTargetAccess.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableStateReconciler.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicDrawingPlanWorkspace.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLivePathStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift"
+      ],
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift": "96689a3086bf2bc22f158a6aac1c84163b641b4da0d8fdc1a382047da26b306b",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift": "f7696e18e764f65c137d19e4c39ae92614ee80b9a1e056a11b4c37b334927fe0",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift": "a8c02c2e638a1f0138d9efdbd0d25d2890d7c66c8f8c1a1ee64e5c7830840d07",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift": "ff9290f45e2a7c009d55ca90244bf034f0e5f19a57942d638812cab75777def2",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootTargetAccess.swift": "30597cee8b751b2f5f27034080227a1bbb1738fa75d46f484a4596defbfd1539",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableStateReconciler.swift": "e59c15cac625661d5863a4aebbef756a7d68b3359cfe3170d1a14bf09222b953",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift": "280fb6c4fe28db1b436cf28c7cc808437c8c0d5aaed6803e7136b5c395695f61",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift": "42357e32593459c879fa299b7a74bbcb787536fb176d147a0ebc2fbbf4200f9d",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift": "374c7412495790f1de8e7e336be2902d7012d223edb0130c15ad4e422fdba904",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift": "43669b288fa4f6810faa2eafa9c3b4f0ef834a5d9bab662585053dde42cec9a0",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicDrawingPlanWorkspace.swift": "641f0e6c5bddd6ffe9b9d2b5284c96e0067a460db745c631f0205478324f506d",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLivePathStorage.swift": "229031aa031794b5241bc70e946e734860ad4fdd7d908524a379770f9dd150d2",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift": "07e8dba114af4fcdaed8dc1c77545f4e1255b588c63a24782992e8d4479ec517"
+      },
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1-registered/modules",
+        "-swift-version",
+        "6",
+        "-Osize",
+        "-whole-module-optimization",
+        "-enable-experimental-feature",
+        "LifetimeDependence",
+        "-enable-experimental-feature",
+        "Lifetimes",
+        "-package-name",
+        "giftui",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1-registered/cache",
+        "-disable-sandbox",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-load-plugin-executable",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-witness-annotation-compatibility/macro/GiftUIMacros-tool#GiftUIMacros",
+        "-parse-as-library",
+        "-enable-testing",
+        "-module-name",
+        "GiftUIRuntimeDynamic",
+        "-emit-module",
+        "-emit-object",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootTargetAccess.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableStateReconciler.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicDrawingPlanWorkspace.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLivePathStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift",
+        "-emit-module-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1-registered/owners/GiftUIRuntimeDynamic/GiftUIRuntimeDynamic.swiftmodule",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1-registered/owners/GiftUIRuntimeDynamic/GiftUIRuntimeDynamic.o",
+        "-diagnostic-style",
+        "llvm"
+      ]
+    },
+    {
+      "module": "GiftUIRuntimeStatic",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUIDrawing",
+        "GiftUIExecution",
+        "GiftUIInteraction",
+        "GiftUIObservableState",
+        "GiftUIRenderCore",
+        "GiftUIRuntimeCore",
+        "GiftUISemanticCore"
+      ],
+      "source_files": [
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift"
+      ],
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift": "0dd731cdbefcca81360eb2ff896d2e757bedc9829faaaf5e4a4a75b2c48254bd",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift": "eb63e6c191b8e1af24f19dd2fd523ddb315d04e36151471f534fe6063658e0a0",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift": "f6bf84f47f4021eaa61dacd51da8e3a6b9d19066eb577934fc19b9dfd7785078",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift": "f1bb6868e5f37e4deca9fe90707a2b985fda6cb0fa7c00c60ae01ac9b0847d4a",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift": "5f49964bca470e962471968f1010570732425ebe45cad74ed4ab19c79839b09b",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift": "db63a7743194b90fec3bc81c32f6280dbb487d40ba251358cfa639649e7be3cb",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift": "dc3648560338f093f912b7e0bc812bdaa95e7a434a3bd836c903560bf3971219",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift": "42496e7873d81d55b2556699621885b04038b83d0d4941f250af000571ca6a45"
+      },
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1-registered/modules",
+        "-swift-version",
+        "6",
+        "-Osize",
+        "-whole-module-optimization",
+        "-enable-experimental-feature",
+        "LifetimeDependence",
+        "-enable-experimental-feature",
+        "Lifetimes",
+        "-package-name",
+        "giftui",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1-registered/cache",
+        "-disable-sandbox",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-load-plugin-executable",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-witness-annotation-compatibility/macro/GiftUIMacros-tool#GiftUIMacros",
+        "-parse-as-library",
+        "-enable-testing",
+        "-module-name",
+        "GiftUIRuntimeStatic",
+        "-emit-module",
+        "-emit-object",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift",
+        "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift",
+        "-emit-module-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1-registered/owners/GiftUIRuntimeStatic/GiftUIRuntimeStatic.swiftmodule",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1-registered/owners/GiftUIRuntimeStatic/GiftUIRuntimeStatic.o",
+        "-diagnostic-style",
+        "llvm"
+      ]
+    },
+    {
+      "module": "P08CounterRuntime",
+      "fresh_prerequisites": [
+        "GiftUI",
+        "GiftUIBackendIntegration",
+        "GiftUICapabilities",
+        "GiftUIDisplayCore",
+        "GiftUIDrawing",
+        "GiftUIExecution",
+        "GiftUIFailureCore",
+        "GiftUIHostConfiguration",
+        "GiftUIInteraction",
+        "GiftUILayout",
+        "GiftUIObservableState",
+        "GiftUIRasterCore",
+        "GiftUIReferenceTextResources",
+        "GiftUIRenderCore",
+        "GiftUIRenderLowering",
+        "GiftUIRuntimeCore",
+        "GiftUIRuntimeDynamic",
+        "GiftUIRuntimeStatic",
+        "GiftUISemanticCore",
+        "GiftUISurfaceCore",
+        "GiftUITextResources",
+        "P08CounterPresentation",
+        "P08CounterSchema",
+        "P08CounterTable"
+      ],
+      "source_files": [
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift"
+      ],
+      "source_sha256": {
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": "60d013e2570e5ea3ac6efbbadb97dd79d6b7fa0a47e680e72a7071909fddb686",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": "1129e33dcab9bb075d3c11dac16cedd72c26efad6da87adc204b68de25408ee7",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": "342585dd23bc2916176535bfdb9efd7ba115a138047afe3fcda082acbf7adf8e",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift": "b1f575db79c688b2534ebe3681fea99864222715f8b9ef83dd3fcde16e261c9f",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift": "cf9f5467416298dd64f604f5d0edf436b1736dc5972d78721da38c61151cb588",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": "be59651c2f7f657f1785f51fa31767f6319dc543c023d901057fa0deb4bace81",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": "d084112a1ee54cc8c01fc5f24a7416ee3a6b23afdc6710f42635a76c370fea26",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift": "d6cdcf1f033a26225d856eb4dd4c5401b76b63d7f78040e111417cdb82bfa41c",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": "46ab40914dade59536f53650bd97ce8d74ee57da86a8a826330f629c64a89f9c",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": "f7152c3e886322e482aaa040b98f15ac820d0aa9a15af86260229bc56df64010",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift": "b14a1667a899fc539c8a8d8011d2e377188ce0300012e464ac1f0d1203a999ab",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": "bfcf074ec49455e7d5cc527b4a65cf9b9374da2c96914f8b8bdf8908ca90ec6b",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift": "c49cc7ad1d5de5bcc3a228defd78ce16a1d6e56c775d9227f5648339540eaa2c",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift": "abae5f87b3390863d8a68657c98b46a0fe9829f96a332affe44fbbb4fcce4d5a",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift": "6d713ae96bf4982c46f30289068dc97e5d4e32e3dae69f1874dd5e808d053d2b",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": "06b5775b618a78b757495de8c86a2352b8e8371e0c854f3d93463f685585f05e",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift": "bfe4a208dd72fe47cb2a72331228cf9c9981114e03d49a91b99541957e7f80b5",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": "36d137a0fdf0d6159dfc8502b86bd5bc78037fa1cfa5a86038513c9523b31677",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": "0e13001714af86c5f93cc150678c07c0b3a32c58b3a524fd43edb23eae19990b",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893"
+      },
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1-registered/modules",
+        "-swift-version",
+        "6",
+        "-Osize",
+        "-whole-module-optimization",
+        "-enable-experimental-feature",
+        "LifetimeDependence",
+        "-enable-experimental-feature",
+        "Lifetimes",
+        "-package-name",
+        "giftui",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1-registered/cache",
+        "-disable-sandbox",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-load-plugin-executable",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-witness-annotation-compatibility/macro/GiftUIMacros-tool#GiftUIMacros",
+        "-parse-as-library",
+        "-enable-testing",
+        "-module-name",
+        "P08CounterRuntime",
+        "-emit-module",
+        "-emit-object",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift",
+        "-emit-module-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1-registered/owners/P08CounterRuntime/P08CounterRuntime.swiftmodule",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1-registered/owners/P08CounterRuntime/P08CounterRuntime.o",
+        "-diagnostic-style",
+        "llvm"
+      ]
+    }
+  ],
+  "guard": "Revalidate299 initial input hashes plus all seed source/module/object identities. Copy only22 PASS project modules into a new empty isolated import directory; failed outputs never admitted. Sequentially compile both registered owners regardless independent failure, then actual42-source host only if its prerequisites passed. Same flags/macro/lowered outputs; no maintained source or recipe source mutation. No automatic retry/correction; full privacy/codegen/cold gates remain."
+}

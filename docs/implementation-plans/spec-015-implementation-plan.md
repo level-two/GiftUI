@@ -30,13 +30,13 @@ superseded_by: null
 # SPEC-015 Implementation Plan
 
 Current [grouped module-closure activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-activity.md):
-independent caller-amendment PASS implemented; initial1/1 source and exact argv
-[frozen](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-initial1/README.md),
-corrections0/2, compiler unexecuted. Exactly33 sites/twelve files lose the reviewed
-body-serialization attributes, preserving bodies/access/contracts. Next run the
-single sequential fresh25-module sweep, collecting independent failures and
-blocking dependents without stale modules. Privacy then physical/actual-host and
-strict safety/cold remain gated; P08/R07/T8.1 stay open and prior budgets unchanged.
+initial1/1 frozen, corrections0/2. [Initial result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-initial1-result/README.md)
+passes lower+22 owners including Layout; whole-directory Dynamic/Static fail and
+actual host is blocked. Proven registered P08 selections exclude the four legacy
+files carrying all10 diagnostics. Next independently review the source-unchanged
+8Static/13Dynamic-owner plus42-source host continuation, reusing only the22 exact
+fresh qualified artifacts. No source repair/cycle is implicit. Privacy, physical/
+actual-host, safety/cold and P08/R07/T8.1 remain open; prior budgets unchanged.
 
 [Independent annotation package review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-final-independent-review.md)
 confirms compatibility/provider/helper PASS and Layout FAIL101. Next recommendation

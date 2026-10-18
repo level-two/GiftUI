@@ -5,7 +5,9 @@ The [new grouped activity](../p08-grouped-module-closure-activity.md) and
 in twelve files, zero explicit ABI promotions and a fresh25-module dependency DAG
 for the actual42-source host. Initial1/1 is consumed, corrections0/2; the
 [source/argv freeze](../grouped-module-closure-initial1/README.md) is ready and
-compiler execution is unstarted. Only the reviewed attribute removals occurred.
+the [initial sweep](../grouped-module-closure-initial1-result/README.md) passes lower+22
+owners and preserves whole-directory Dynamic/Static failures plus host blockage.
+The proven registered-input continuation awaits independent review; source is unchanged.
 The broad lexical inventory below remains historical, overinclusive and excluded
 from the source allowlist.
 

@@ -1,0 +1,44 @@
+{
+  "status": "observed whole-directory compile fail, not complete registered P08 qualification",
+  "source_head": "b89c4fac",
+  "counts": {
+    "passed": 22,
+    "failed": 2,
+    "blocked": 1
+  },
+  "lower": "passed",
+  "errors": [
+    {
+      "module": "GiftUIRuntimeDynamic",
+      "errors": [
+        "cannot copy the lifetime of an Escapable type",
+        "cannot copy the lifetime of an Escapable type",
+        "generic type 'DynamicCanvasCallableStorage' specialized with too few type parameters (got 1, but expected 2)",
+        "generic parameter 'Identity' could not be inferred",
+        "generic parameter 'Table' could not be inferred",
+        "generic type 'DynamicCanvasCallableStorage' specialized with too few type parameters (got 1, but expected 2)",
+        "generic parameter 'Identity' could not be inferred",
+        "generic parameter 'Table' could not be inferred"
+      ],
+      "log_sha256": "83ae7c3036b975e88b677fbb0210d1c28441d1c5ec31c80f80a4a639e0876384",
+      "log": "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/logs/GiftUIRuntimeDynamic.log"
+    },
+    {
+      "module": "GiftUIRuntimeStatic",
+      "errors": [
+        "type 'StaticGeneratedProfileMetadata<Slots, Action, CanvasTable, Coverage>' does not conform to protocol 'StaticCanvasCallableTable'",
+        "missing argument for parameter 'read' in call"
+      ],
+      "log_sha256": "d33aba215dd504fb35ef2642fa36fc2ca7800913df1e1f086a1da8966f275a20",
+      "log": "/Users/eugene/work/GiftUI/.build/contracts/p08-grouped-module-closure-initial1/logs/GiftUIRuntimeStatic.log"
+    }
+  ],
+  "candidate_source_qualification": "33site/12file exact36 attribute removals; current299 frozen inputs verified; no source edits during/after sweep",
+  "protected": "Original5+pycache hashes match initial input freeze",
+  "raw_archive_sha256": "4ca3c67758231a8047b3a2f2c80df20f7aba1a5649d15022e2393e8ac3126411",
+  "raw_result_sha256": "ca6f0230afd91fcdd5f23626f3cce21d770dcf9c5d4c2a58c33c001b3e29d3a8",
+  "retained_checks": 25,
+  "registered_provenance": "AST checker lists exactly match archived ordered compiler JSON arrays:8Static,13Dynamic; all4 diagnostic-bearing files excluded in both",
+  "corrections_consumed": "0/2",
+  "next": "Independent source-unchanged registered continuation recipe review; no lifetime/Table/metadata source change"
+}

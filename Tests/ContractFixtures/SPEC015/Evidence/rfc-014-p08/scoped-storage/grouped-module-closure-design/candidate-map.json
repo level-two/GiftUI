@@ -1,5 +1,5 @@
 {
-  "status": "afdb3e97 independent PASS implemented; initial1/1 source and argv frozen; compile unexecuted; corrections0/2",
+  "status": "initial1/1 frozen: lower+22PASS; whole-directory2FAIL+hostBLOCKED; exact registered-input source-unchanged continuation review pending; corrections0/2",
   "prepared_head": "e1aa2111250d9b88117199f47ccac9eb6f9de147",
   "counts": {
     "attribute_sites": 33,
