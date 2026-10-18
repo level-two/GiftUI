@@ -1,0 +1,19 @@
+{
+  "checks": [
+    "Python AST syntax only",
+    "literal A7 policy equals JSON",
+    "59 inherited case objects unchanged",
+    "54 closed new IDs; 2 accepts / 52 rejects",
+    "281 preserved byte identities unchanged"
+  ],
+  "compiler_invocations": 0,
+  "diff_whitespace_check": "six findings in exact archived inputs only; intentionally preserved",
+  "inherited_fixtures": 59,
+  "new_fixtures": 54,
+  "oracles_observed": false,
+  "parser_executed": false,
+  "preserved_files": 281,
+  "runner_executed": false,
+  "status": "AST_JSON_HASH_INSPECTION_ONLY",
+  "total_fixtures": 113
+}

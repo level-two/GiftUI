@@ -1,0 +1,11 @@
+{
+  "a4_parser_sha256": "fe25ee0d8918635c25aff6766f6541428311e16fbd6719603a50f592cd28001a",
+  "historical_result_requalification": false,
+  "note_dependency_evidence": false,
+  "prior_failure_commit": "1b186aa8",
+  "source": {
+    "archive": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-campaign3-result/macos-static/scratch/negative-A7/AnalyzerPresentation.swift",
+    "packet": "inputs/AnalyzerPresentation.swift",
+    "sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2"
+  }
+}

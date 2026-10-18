@@ -1,0 +1,2558 @@
+{
+  "cases": [
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": true,
+      "id": "intended-single-named-error",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: enum 'AcquisitionState' is package and cannot be referenced from an '@inlinable' function\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": true,
+      "id": "intended-generic-error-with-declared-note-and-excerpt",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": true,
+      "id": "intended-repeated-located-errors-and-gutter-repeats",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n\n/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "private-member-access",
+        "dependency_note_sources": [
+          "{positive-cell}/inputs/SignalAnalyzerDiagnostic.swift"
+        ],
+        "expected_nonzero": true,
+        "files": [
+          "privacy/private-storage.swift"
+        ],
+        "first_expected_stage": "client-emit-object",
+        "id": "private-storage",
+        "kind": "privacy-negative",
+        "package_name": "giftui",
+        "positive_twin": "positive-semantics",
+        "primary_message_patterns_all": [
+          "(?i)inaccessible due to ['\"]private['\"] protection level"
+        ],
+        "required_symbol": "storage"
+      },
+      "dependency_paths": [
+        "/scratch/positive/inputs/SignalAnalyzerDiagnostic.swift"
+      ],
+      "exit": 1,
+      "expected_accept": true,
+      "id": "private-primary-with-associated-declaration-note",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: 'storage' is inaccessible due to 'private' protection level\n/scratch/positive/inputs/SignalAnalyzerDiagnostic.swift:32:17: note: 'storage' declared here\n32 | private var storage: SignalAnalyzerDiagnosticStorage\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "package-nominal-hidden",
+        "dependency_note_sources": [],
+        "expected_nonzero": true,
+        "files": [
+          "privacy/outside-package-AcquisitionState.swift"
+        ],
+        "first_expected_stage": "client-emit-object",
+        "id": "outside-package-AcquisitionState",
+        "kind": "privacy-negative",
+        "package_name": null,
+        "positive_twin": "positive-semantics",
+        "primary_message_patterns_all": [
+          "(?i)(?:cannot find (?:type )?['\"]AcquisitionState['\"] in scope|['\"]AcquisitionState['\"] is inaccessible due to ['\"]package['\"] protection level)"
+        ],
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [],
+      "exit": 1,
+      "expected_accept": true,
+      "id": "outside-package-nominal-hidden",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: cannot find type 'AcquisitionState' in scope\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "expected-plus-unrelated-primary-same-file",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n\n/scratch/cell/AnalyzerSchema.swift:9:1: error: cannot find 'missing' in scope\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "expected-plus-primary-in-wrong-file",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n\n/scratch/cell/Other.swift:5:13: error: enum 'AcquisitionState' is package and cannot be referenced from an '@inlinable' function\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "wrong-primary-file-only",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/Other.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": -11,
+      "expected_accept": false,
+      "id": "negative-signal-exit",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 139,
+      "expected_accept": false,
+      "id": "shell-signal-exit",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 2,
+      "expected_accept": false,
+      "id": "nonstandard-positive-exit",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 0,
+      "expected_accept": false,
+      "id": "unexpected-acceptance-zero-exit",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "crash-marker-despite-normal-exit",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n\nStack dump:\n0 swift-frontend\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "fatal-marker-despite-normal-exit",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n\nLLVM ERROR: compiler crashed\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "unlocated-driver-error",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n\nerror: emit-module command failed with exit code 1\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "unrelated-gutter-error-not-exact-repeat",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n   |             `- error: cannot find 'missing' in scope\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "note-at-undeclared-dependency",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 5 | package func read() -> AcquisitionState\n   |             `- error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n/scratch/cell/Other.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "neighboring-source-line-cannot-supply-symbol",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n 4 | let unused: AcquisitionState\n 5 | package func read() -> OtherState\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "different-named-ABI-dependency",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: enum 'OtherState' is package and cannot be referenced from an '@inlinable' function\n5 | let value: AcquisitionState\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "category-cannot-leak-from-note",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: cannot find 'missing' in scope\n/scratch/cell/inputs/AcquisitionState.swift:2:14: note: AcquisitionState is not '@usableFromInline' or public\n",
+      "stdout": ""
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "orphan-note-cannot-cross-streams",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: enum 'AcquisitionState' is package and cannot be referenced from an '@inlinable' function\n",
+      "stdout": "/scratch/cell/inputs/AcquisitionState.swift:2:14: note: type declared here\n2 | package enum AcquisitionState: Equatable {\n  |              `- note: type declared here\n"
+    },
+    {
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "{cell}/inputs/AcquisitionState.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "{cell}/AnalyzerSchema.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A1/AcquisitionState.swift"
+        ],
+        "first_expected_stage": "AnalyzerSchema",
+        "id": "negative-A1",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A1",
+        "required_symbol": "AcquisitionState"
+      },
+      "dependency_paths": [
+        "/scratch/cell/inputs/AcquisitionState.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "same-category-primary-missing-declared-symbol",
+      "primary_path": "/scratch/cell/AnalyzerSchema.swift",
+      "stderr": "/scratch/cell/AnalyzerSchema.swift:5:13: error: enum 'AcquisitionState' is package and cannot be referenced from an '@inlinable' function\n\n/scratch/cell/AnalyzerSchema.swift:7:13: error: the result of a '@usableFromInline' method must be '@usableFromInline' or public\n7 | func readOther() -> OtherState\n",
+      "stdout": ""
+    },
+    {
+      "case_id": "A4-P01",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": true,
+      "expected_dependency_evidence": "type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n    package let channelID: SignalChannelID",
+      "expected_display_note_count": 1,
+      "expected_primary_count": 1,
+      "id": "A4-P01",
+      "mutation": "Exact archived A4 streams/exit/control plus explicit policy opt-in.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-P02",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/synthetic-cells/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/synthetic-cells/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/synthetic-cells/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/synthetic-cells/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": true,
+      "expected_dependency_evidence": "type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n    package let channelID: SignalChannelID",
+      "expected_display_note_count": 1,
+      "expected_primary_count": 1,
+      "id": "A4-P02",
+      "mutation": "Remap exact cell root consistently in header, control and trusted input inventory; retain source bytes.",
+      "primary_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/synthetic-cells/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/synthetic-cells/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a4-diagnostic-policy-static-successor/synthetic-cells/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-P03",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": true,
+      "expected_dependency_evidence": "type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n    package let channelID: SignalChannelID",
+      "expected_display_note_count": 0,
+      "expected_primary_count": 1,
+      "id": "A4-P03",
+      "mutation": "Remove declaration excerpt and its display-note gutter only.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N01",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 0,
+      "expected_accept": false,
+      "id": "A4-N01.exit-zero",
+      "mutation": "Replace exit with 0.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N01",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 2,
+      "expected_accept": false,
+      "id": "A4-N01.exit-two",
+      "mutation": "Replace exit with 2.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N01",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": -11,
+      "expected_accept": false,
+      "id": "A4-N01.signal-minus-eleven",
+      "mutation": "Replace exit with -11.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N01",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": true,
+      "expected_accept": false,
+      "id": "A4-N01.boolean-true",
+      "mutation": "Replace exit with True.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N02",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N02.stack-dump",
+      "mutation": "Append exact crash/fatal marker 'Stack dump:'.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\nStack dump:\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N02",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N02.llvm-error",
+      "mutation": "Append exact crash/fatal marker 'LLVM ERROR:'.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\nLLVM ERROR:\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N02",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N02.fatal-error",
+      "mutation": "Append exact crash/fatal marker 'fatal error: unexpected'.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\nfatal error: unexpected\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N03",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N03",
+      "mutation": "Replace primary located header path with undeclared sibling.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/Other.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N04",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N04",
+      "mutation": "Remove file/line/column prefix from primary header.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N05",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N05",
+      "mutation": "Append unrelated located primary at allowed file.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: cannot find 'missing' in scope\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N06",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N06",
+      "mutation": "Replace primary header message with named OtherChannelID ABI dependency.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: struct 'OtherChannelID' is package and cannot be referenced from an '@inlinable' function\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N07",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N07",
+      "mutation": "Remove symbol from primary row 22; declaration excerpt remains.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: OtherChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N08",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N08",
+      "mutation": "Put symbol only in neighboring rows 21 and 23, omitting row 22.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     let neighborBefore: SignalChannelID\n22 |     package let channelID: OtherChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     let neighborAfter: SignalChannelID\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N09",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N09",
+      "mutation": "Prepend generic ABI primary without its own symbol before qualifying primary.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:30:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n30 |     package let other: OtherChannelID\n/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N10",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N10",
+      "mutation": "Move header alone to stdout; all excerpt/note rows stay in stderr.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": " 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N11",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N11",
+      "mutation": "Move declaration excerpt/display note before any primary.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": " 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N12",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N12",
+      "mutation": "Insert located warning after primary, before declaration excerpt.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: warning: unrelated warning\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N13",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N13",
+      "mutation": "Insert one ordinary line between declaration excerpt and note.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\nordinary intervening line\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N14",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N14",
+      "mutation": "Replace declaration excerpt line 1 with line 2.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 2 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N15",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N15.excerpt-byte",
+      "mutation": "Replace one declaration excerpt byte.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: HashablX, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N15",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N15.gutter-byte",
+      "mutation": "Remove one space from display gutter.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |               `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N16",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N16.message",
+      "mutation": "Replace note message with type declared elsewhere.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared elsewhere\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N16",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N16.severity",
+      "mutation": "Replace display note severity with error.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- error: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N17",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N17",
+      "mutation": "Duplicate declaration excerpt and exact display note.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N18",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N18.omit-opt-in",
+      "mutation": "Omit display-only opt-in.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N18",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A5",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N18.control-id",
+      "mutation": "Replace control ID.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N18",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-dynamic"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N18.profile",
+      "mutation": "Replace profile.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N18",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "0c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N18.input-hash",
+      "mutation": "Replace one byte of declared input hash.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N19",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N19.line",
+      "mutation": "Replace primary location with 21:17.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:21:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N19",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N19.column",
+      "mutation": "Replace primary location with 22:18.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:18: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N20",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N20.unparsed-note",
+      "mutation": "Append 'note: unexpected unparsed note'.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\nnote: unexpected unparsed note\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N20",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N20.malformed-note",
+      "mutation": "Append exact located-note-shaped line with missing colon after severity: '/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: note type declared here'",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: note type declared here\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N20",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N20.unknown-remark",
+      "mutation": "Append 'remark: unexpected unknown remark'.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\nremark: unexpected unknown remark\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    },
+    {
+      "case_id": "A4-N21",
+      "context": {
+        "module": "SignalAnalyzerDomain",
+        "profile": "macos-static"
+      },
+      "control": {
+        "category": "serialized-ABI-access",
+        "dependency_note_sources": [
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        ],
+        "diagnostic_rules": "diagnostic at the dependency use/declaration with @usableFromInline or @inlinable ABI/access restriction; unrelated compile failure is failure",
+        "diagnostic_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+        "display_only_note": {
+          "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+          "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+          "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+        },
+        "expected_nonzero": true,
+        "files": [
+          "negative-A4/SignalPrimitiveValues.swift"
+        ],
+        "first_expected_stage": "SignalAnalyzerDomain",
+        "id": "negative-A4",
+        "inherit": "positive copies for every other input; isolated module/cache directory; regenerate via actual lowerer, never patch generated output",
+        "kind": "abi-negative",
+        "later_stages": "unrun after expected first diagnostic",
+        "primary_message_patterns_all": [
+          "(?i)@(?:usableFromInline|inlinable)",
+          "(?i)(?:cannot be referenced from|must be ['\"]?@usableFromInline['\"]? or public|is not ['\"]?@usableFromInline['\"]? or public)"
+        ],
+        "remove_only": "A4",
+        "required_symbol": "SignalChannelID"
+      },
+      "dependency_paths": [
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      ],
+      "exit": 1,
+      "expected_accept": false,
+      "id": "A4-N21",
+      "mutation": "Append located note at undeclared imported virtual file.",
+      "primary_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift",
+      "stderr": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift:22:17: error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n 1 | package struct SignalChannelID: Hashable, Sendable {\n   |                `- note: type declared here\n 2 |     @usableFromInline\n 3 |     package let rawValue: Int\n   :\n20 | package struct SignalTransition: Equatable, Sendable {\n21 |     @usableFromInline\n22 |     package let channelID: SignalChannelID\n   |                 `- error: type referenced from a '@usableFromInline' property must be '@usableFromInline' or public\n23 |     package let timestamp: Duration\n24 |     package let level: DigitalLevel\n/virtual/imported/SignalPrimitiveValues.swift:1:16: note: type declared here\n",
+      "stdout": "",
+      "trusted_input": {
+        "fixture_file": "inputs/SignalPrimitiveValues.swift",
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign2/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+      }
+    }
+  ],
+  "count": 59
+}
