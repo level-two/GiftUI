@@ -1,14 +1,13 @@
 # P08 grouped module closure activity — 2026-10-18
 
-**Final corrective2/2 source and command frozen; compiler unexecuted.**
-[Prepared packet](grouped-module-closure-corrective2-prepared/README.md): exact21
-ABI annotations plus one approved value=nil default completion,22 edits14files.
-Token/default/lifetime audit PASS;288 other inputs unchanged;307 hashes freeze the
-fresh25-owner registered runner. Independent design PASS1d567952 precedes edits.
-Initial1/1 and corrective1/2 remain consumed. Next one sequential compile sweep;
-no retry/third correction after material failure. Earlier [corrective1 result](grouped-module-closure-corrective1-result/README.md)
-remains immutable. Privacy/lifetime, physical/actual-host, safety/cold and
-P08/R07/T8.1 stay open; observer/key-failure costs unresolved.
+**STOP: final corrective2/2 frozen; initial1/1 and both corrections exhausted.**
+[Result](grouped-module-closure-corrective2-result/README.md): lower+20 owners PASS,
+RuntimeCore FAIL3 ABI witness dependencies, four dependent owners blocked;
+all307 input/recipe and source/output identities verify. No retry/source/decoder/
+privacy/safety/cold run follows. Exact three-witness potential-next boundary is
+read-only, with no new allowance. Independent boundary review next. Current
+physical six-body/all42-origin/actual-host result remains untested; P08/R07/T8.1,
+observer/key-failure costs and the combined candidate stay unaccepted.
 Eugene explicitly authorized grouped Layout and remaining-module
 dependency corrections, then full-host/cold validation under the strict contract.
 This is a new allowance of one initial candidate and at most two grouped

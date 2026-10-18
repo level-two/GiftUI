@@ -29,11 +29,14 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current [final corrective2 source/argv freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective2-prepared/README.md):
-22 edits14files, token/default/lifetime audit PASS;307 frozen inputs, fresh25-owner
-registered runner validated without compilation. Final2/2 in progress after
-independent PASS1d567952; no further repair allowance. Compile/privacy/codegen/
-safety/cold and P08/R07/T8.1 remain open. Earlier stage records below are historical.
+Current [final corrective2 result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective2-result/README.md):
+lower+20 owners PASS, RuntimeCore FAIL3 witness ABI requirements, four dependents
+blocked;307 input hashes and source/output identities verify. Initial1/1 and
+corrective2/2 exhausted: STOP, no source/compiler/decoder/privacy/safety/cold retry.
+Independent boundary review next; three exact witness annotations are a potential
+read-only next boundary, not a new allowance. Current physical six-body/all42/
+actual-host result remains untested. Source candidate and P08/R07/T8.1 unaccepted.
+Earlier stage records below remain historical.
 
 Current [corrective1 compile result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-result/README.md):
 lower+15 owners PASS, Layout FAIL36, nine dependencies blocked;302 input hashes

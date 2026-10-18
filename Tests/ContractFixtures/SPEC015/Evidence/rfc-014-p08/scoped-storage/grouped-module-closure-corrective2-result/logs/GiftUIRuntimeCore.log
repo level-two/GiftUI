@@ -1,0 +1,9 @@
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift:30:17: error: property 'canvasOccurrenceCount' must be declared '@usableFromInline' because it matches a requirement in protocol 'CanvasInvocationSource'
+    package var canvasOccurrenceCount: UInt16 { values.count }
+                ^
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift:31:18: error: instance method 'canvasIdentity(at:)' must be declared '@usableFromInline' because it matches a requirement in protocol 'CanvasInvocationSource'
+    package func canvasIdentity(at index: UInt16) -> Identity? { values.identity(at: index) }
+                 ^
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift:50:27: error: instance method 'releaseCanvas(at:)' must be declared '@usableFromInline' because it matches a requirement in protocol 'CanvasInvocationSource'
+    package mutating func releaseCanvas(at identity: Identity) { values.release(at: identity) }
+                          ^
