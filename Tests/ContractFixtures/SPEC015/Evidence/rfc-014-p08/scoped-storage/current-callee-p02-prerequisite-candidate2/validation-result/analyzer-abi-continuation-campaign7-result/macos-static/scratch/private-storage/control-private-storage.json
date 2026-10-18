@@ -1,0 +1,39 @@
+{
+  "profile": "macos-static",
+  "control": "private-storage",
+  "passed": true,
+  "category": "private-member-access",
+  "core_receipt_sha256": "cdb2b67c188325a72c8251cd8356a2c003f61d4b6cd3af81dce5a0edd2a04c43",
+  "positive_cell": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign7/macos-static/scratch/positive-actual-lowering",
+  "compiler": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "artifacts": {
+    "inputs/private-storage.swift": {
+      "sha256": "85376a27c29aa8f160bb38b73d316418b66d04f36bbc3719191cdf013615edaf",
+      "bytes": 99
+    }
+  },
+  "command_labels": [
+    "macos-static-private-storage-client-emit-object"
+  ],
+  "transitive_imports": {
+    "core": {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/78e8b9cce5a57abd-geka61i5/macos-static/result.json",
+      "sha256": "cdb2b67c188325a72c8251cd8356a2c003f61d4b6cd3af81dce5a0edd2a04c43"
+    },
+    "positive_scratch": {
+      "AnalyzerPresentation.swiftmodule": "42a9e3a319dc7c238c13b75baaf3cd1396664d6081cc9c755161df1190eb2283",
+      "ABIRead.o": "88d1d916029e9396eaae7719d84085772e4f6916c3f236d4508675d548f8881b",
+      "SignalAnalyzerDomain.o": "04e2db32341193433d1bfd04dcb12c86690646241771b96a2746228fda028e60",
+      "ABISemantics.swiftmodule": "d278d591dbc6cc15460936101c003fe60bdd7b4edfd4b2b099aacc6a15754fb8",
+      "AnalyzerSchema.o": "0c481f0a68056d9e37f0481c2f26ec46a3a0b99e0f4ed7fe7468d49f1d885b6e",
+      "DeclarationHost.o": "f26cf53e5056a5091e7bc38ea296501e5e8de68d1c0d803af94c390edbd6639b",
+      "SignalAnalyzerDomain.swiftmodule": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798",
+      "ABIRead.swiftmodule": "bb04a2500bdf48a573f6802626e9e062aca64502d7b9a9fcbc8d3e8e8dd57c95",
+      "AnalyzerSchema.swiftmodule": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218",
+      "DeclarationHost.swiftmodule": "0c104b39342dadd1d8494d3cfe9c866c44f77fbe1b5fb0ad9e335db963e5cca2",
+      "ABISemantics.o": "28cc2a14367b459cdabacb2978c3ac4a445de4319588549c43a1c2abcc6777fa",
+      "AnalyzerPresentation.o": "b554729b8dbab0764b12ba4c36cf37f1a9dca7ef39af0d560ae42c1214a9682f"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign7/macos-static/scratch/private-storage/inputs/private-storage.swift:2:62: error: 'storage' is inaccessible due to 'private' protection level
+1 | import SignalAnalyzerDomain
+2 | package func rejected(_ d: SignalAnalyzerDiagnostic) { _ = d.storage }
+  |                                                              `- error: 'storage' is inaccessible due to 'private' protection level
+3 | 
+
+SignalAnalyzerDomain.SignalAnalyzerDiagnostic.storage:2:13: note: 'storage' declared here
+1 | struct SignalAnalyzerDiagnostic {
+2 | private var storage: SignalAnalyzerDomain.SignalAnalyzerDiagnosticStorage}
+  |             `- note: 'storage' declared here
+3 | 

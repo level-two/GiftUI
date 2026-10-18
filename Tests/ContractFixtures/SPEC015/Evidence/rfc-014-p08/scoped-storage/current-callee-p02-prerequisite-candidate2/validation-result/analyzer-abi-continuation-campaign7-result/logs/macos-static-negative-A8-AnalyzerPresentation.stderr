@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign7/macos-static/scratch/negative-A8/AnalyzerPresentation.swift:25:113: error: property 'index' is package and cannot be referenced from an '@inlinable' function
+11 |     @usableFromInline
+12 |     package let model:_GiftUIModelKey<AnalyzerModelSchema>
+13 |     package let index: Int
+   |                 `- note: property 'index' is not '@usableFromInline' or public
+14 |     package init(model: _GiftUIModelKey<AnalyzerModelSchema>, index: Int) { self.model = model; self.index = index }
+15 | @ViewBuilder
+   :
+23 |         Text<D>(BoundedText(Int32((try AnalyzerRead<D>(model, read: read)).state().capture().count)))
+24 |         if (try AnalyzerRead<D>(model, read: read)).state().capture().count > 0 {
+25 |             Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))
+   |                                                                                                                 `- error: property 'index' is package and cannot be referenced from an '@inlinable' function
+26 |         }
+27 | }
