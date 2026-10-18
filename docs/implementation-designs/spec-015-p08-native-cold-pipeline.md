@@ -21,7 +21,8 @@ superseded_by: null
 Current [initial result and registered-input amendment](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-initial1-result/README.md):
 lower+22 owners PASS; whole-directory Dynamic/Static FAIL, host BLOCKED.
 All10 errors are in files excluded by the proven registered P08 owner recipes.
-Independent review precedes a source-unchanged two-owner/host continuation;
+[Independent recipe review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-registered-continuation-review.md)
+passes the source-unchanged two-owner/host continuation, still unexecuted;
 initial1/1 frozen, corrections0/2. The source/command preparation below is historical.
 
 The [independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-independent-design-review.md)

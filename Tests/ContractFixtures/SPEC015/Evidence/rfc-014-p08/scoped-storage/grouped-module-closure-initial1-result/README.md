@@ -1,5 +1,9 @@
 # Grouped initial1 result and registered-input continuation
 
+[Independent recipe review](../p08-grouped-module-closure-registered-continuation-review.md)
+passes the exact source-unchanged two-owner/actual-host continuation below.
+It remains unexecuted; whole-directory failures remain qualification limits.
+
 **Lowering +22 owners PASS; whole-directory Dynamic/Static FAIL; actual host
 BLOCKED.** Initial1/1 stays frozen; corrections0/2. No source edit or retry followed
 the sweep. [Manifest](manifest.json) and [raw result/all logs](result.tar.gz)

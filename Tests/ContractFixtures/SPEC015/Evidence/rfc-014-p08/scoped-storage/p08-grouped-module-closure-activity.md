@@ -4,8 +4,10 @@
 actual host BLOCKED; corrections0/2.** The [result and exact registered-input
 continuation](grouped-module-closure-initial1-result/README.md) preserve all errors
 and prove the two owner lists were broader than the registered P08 recipes.
-Independent recipe review precedes the source-unchanged two-owner/actual-host
-continuation; no source repair or corrective cycle is authorized by that recipe.
+[Independent recipe review](p08-grouped-module-closure-registered-continuation-review.md)
+passes the source-unchanged two-owner/actual-host continuation, still unexecuted;
+no source repair or corrective cycle is authorized by that recipe. Whole-directory
+failures remain broader qualification limits.
 Eugene explicitly authorized grouped Layout and remaining-module
 dependency corrections, then full-host/cold validation under the strict contract.
 This is a new allowance of one initial candidate and at most two grouped
