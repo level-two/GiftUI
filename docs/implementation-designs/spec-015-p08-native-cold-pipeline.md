@@ -25,9 +25,10 @@ Privacy/20physicalroots/concrete42/all23/full safety/strictcold remain unqualifi
 remaining20sourceedits0; P08/R07/T8.1 unaccepted.
 
 [Resolver qualification1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-qualification1/README.md)
-is prepared/validation-onlyPASS:587inputs,39privacy controls,7modulecompleteindexes/
-20requiredphysicalbodies,matchingobjectcapture and conditional42SIL. No compiler/
-decoder/runtime executed. FullprivateP08/14loan safety remains separate/unqualified.
+PASS:587inputs/all50checks,39privacy controls,7complete moduleindexes/20required
+physicalbodies,matchingobject and42SIL. [Resultarchive](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-qualification1-result/README.md)
+preserves currentevidence. Actualconsumer interpretation/fullprivateP08/14loan safety
+and strictcold remain separate/unqualified.
 
 Historical [authorized resolver candidate1](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/resolver-candidate1/README.md):
 reviewed28sites/five files applied/formatted/token audited;572other prior577inputs

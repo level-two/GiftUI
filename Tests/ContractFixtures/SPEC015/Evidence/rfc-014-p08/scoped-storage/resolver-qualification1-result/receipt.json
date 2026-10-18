@@ -1,0 +1,19 @@
+{
+  "source_commit": "780c90c3",
+  "status": "qualification_prerequisites_passed",
+  "checks": 50,
+  "privacy_controls": 39,
+  "physical_roots": 20,
+  "decoded_modules": 7,
+  "input_hashes_verified": 587,
+  "source_mutations": 0,
+  "automatic_source_repairs": 0,
+  "archive_sha256": "759532158eef13be35edb64d368ecdc56b813f099791110388133df563f4f5fd",
+  "archive_bytes": 9275652,
+  "archive_members": 104,
+  "sil": {
+    "bytes": 61333816,
+    "sha256": "c4f22537a1149ba7e14edd14527ab9460f48aa2ed0f1cd099a9b81e02162e6d2"
+  },
+  "later_gates": "concreteadmission/backendcallbacks/all23/privatecallee/Stateborrow/metadataTLScontextobserver interpretation; full safety/strictcold"
+}

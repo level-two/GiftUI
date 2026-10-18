@@ -28,3 +28,7 @@ required before P08/R07/T8.1 acceptance. [Prepared packet](resolver-candidate1/R
 [Qualification1](resolver-qualification1/README.md) prepared/validationonlyPASS:
 587inputs/39privacy/20physical/7modules/matchingobject/conditional42SIL. Noexecution;
 fullactualprivateP08/14loan safety remains distinct, strictcold/P08 unaccepted.
+
+[Qualification1 result](resolver-qualification1-result/README.md):50checks/39privacy/
+20physical/7modules/2captures/42SIL PASS;587inputs verify. No sourcechanges; later
+concreteinterpretation/full safety/cold remainunqualified.
