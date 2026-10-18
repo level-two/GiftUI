@@ -1,0 +1,25 @@
+{
+  "archive_commit": "d1be1895137486db9cd83a642e8ce3f4e8233dcf",
+  "archive_generated": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-continuation-campaign4-result/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+  "display_excerpt": {
+    "contributes_dependency_evidence": false,
+    "gutter": "   |                 `- note: property 'index' is not '@usableFromInline' or public",
+    "line": 13,
+    "text": "    package let index: Int"
+  },
+  "generated_source": {
+    "bytes": 1217,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a8-diagnostic-policy-static-successor/inputs/A8-AnalyzerPresentation.swift",
+    "sha256": "1085b6e5c6126cc31dabf25b65234143fb2292400b4fd45e6d6246e3d8879b1c"
+  },
+  "observed_logical_source": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A8/AnalyzerPresentation.swift",
+  "primary": [
+    {
+      "column": 113,
+      "line": 25,
+      "source": "            Text<D>(BoundedText(Int32(try (try AnalyzerRead<D>(model, read: read)).state().capture().transition(index).channelID.rawValue)))"
+    }
+  ],
+  "synthetic_remap_cell": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a8-diagnostic-policy-static-successor/synthetic-cells/negative-A8",
+  "trusted_fixture": "inputs/A8-AnalyzerPresentation.swift"
+}

@@ -1,0 +1,24 @@
+{
+  "A4_A7_policy_literals_equal": true,
+  "A8_policy_literal_equals_json": true,
+  "archived_input_bytes_equal": true,
+  "authority_claim": "Identity and syntax inspection only; no behavioral outcome",
+  "campaign_calls": 0,
+  "compiler_calls": 0,
+  "inherited_fields_and_oracles_equal": true,
+  "inherited_inputs": 113,
+  "new_expected_accepts": 2,
+  "new_expected_rejects": 75,
+  "new_inputs": 77,
+  "parser_calls": 0,
+  "preserved_files": 452,
+  "preserved_hashes_equal": true,
+  "python_ast_parsed_without_import": [
+    "diagnostic_parser.py",
+    "run-static-fixtures.py"
+  ],
+  "static_output_created": false,
+  "status": "PREPARATION_ONLY_UNEXECUTED",
+  "tests": 0,
+  "total_static_inputs": 190
+}
