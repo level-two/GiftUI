@@ -365,50 +365,62 @@
     },
     {
       "source": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
-      "line": 78,
-      "selector": "package let records:",
+      "line": 195,
+      "selector": "package let records: UnsafeMutableBufferPointer<SemanticRuntimeRecord>",
       "selector_occurrence_in_region": 0,
-      "region": null,
-      "declaration": "package let records: UInt16",
+      "region": [
+        192,
+        216
+      ],
+      "declaration": "package let records: UnsafeMutableBufferPointer<SemanticRuntimeRecord>",
       "edit": "add @usableFromInline; existing package access unchanged",
       "trace": "bank.store/clear/takePendingCanvas -> typed actual buffers",
-      "reason": "no new alias/extractor/factory; existing trusted buffer descriptor fields",
+      "reason": "exact SemanticRecordBankBuffers typed buffer field used by selected bank.store/clear/takePendingCanvas; existing package access, not similarly named Limits scalar",
       "source_sha256": "d4d212e512d06829525da02e37992d0ac8e3d1ebb7a5acfccfd5e4bfdb33b546"
     },
     {
       "source": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
-      "line": 80,
-      "selector": "package let paths:",
+      "line": 196,
+      "selector": "package let paths: UnsafeMutableBufferPointer<SemanticPathEntry>",
       "selector_occurrence_in_region": 0,
-      "region": null,
-      "declaration": "package let paths: UInt16",
+      "region": [
+        192,
+        216
+      ],
+      "declaration": "package let paths: UnsafeMutableBufferPointer<SemanticPathEntry>",
       "edit": "add @usableFromInline; existing package access unchanged",
       "trace": "bank.store/clear/takePendingCanvas -> typed actual buffers",
-      "reason": "no new alias/extractor/factory; existing trusted buffer descriptor fields",
+      "reason": "exact SemanticRecordBankBuffers typed buffer field used by selected bank.store/clear/takePendingCanvas; existing package access, not similarly named Limits scalar",
       "source_sha256": "d4d212e512d06829525da02e37992d0ac8e3d1ebb7a5acfccfd5e4bfdb33b546"
     },
     {
       "source": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
-      "line": 84,
-      "selector": "package let payloads:",
+      "line": 197,
+      "selector": "package let payloads: UnsafeMutableBufferPointer<Payload?>",
       "selector_occurrence_in_region": 0,
-      "region": null,
-      "declaration": "package let payloads: UInt16",
+      "region": [
+        192,
+        216
+      ],
+      "declaration": "package let payloads: UnsafeMutableBufferPointer<Payload?>",
       "edit": "add @usableFromInline; existing package access unchanged",
       "trace": "bank.store/clear/takePendingCanvas -> typed actual buffers",
-      "reason": "no new alias/extractor/factory; existing trusted buffer descriptor fields",
+      "reason": "exact SemanticRecordBankBuffers typed buffer field used by selected bank.store/clear/takePendingCanvas; existing package access, not similarly named Limits scalar",
       "source_sha256": "d4d212e512d06829525da02e37992d0ac8e3d1ebb7a5acfccfd5e4bfdb33b546"
     },
     {
       "source": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
       "line": 198,
-      "selector": "package let scalars:",
+      "selector": "package let scalars: UnsafeMutableBufferPointer<UInt32>",
       "selector_occurrence_in_region": 0,
-      "region": null,
+      "region": [
+        192,
+        216
+      ],
       "declaration": "package let scalars: UnsafeMutableBufferPointer<UInt32>",
       "edit": "add @usableFromInline; existing package access unchanged",
       "trace": "bank.store/clear/takePendingCanvas -> typed actual buffers",
-      "reason": "no new alias/extractor/factory; existing trusted buffer descriptor fields",
+      "reason": "exact SemanticRecordBankBuffers typed buffer field used by selected bank.store/clear/takePendingCanvas; existing package access, not similarly named Limits scalar",
       "source_sha256": "d4d212e512d06829525da02e37992d0ac8e3d1ebb7a5acfccfd5e4bfdb33b546"
     },
     {
@@ -874,5 +886,39 @@
       "source_sha256": "5349126ef1275e44a400ba6e290b36ab92c6e2534f9e1db9e96f741ba92d49b9"
     }
   ],
-  "policy": "exact annotation/access only; one four-required-let memberwise equivalent; macro10emission selectors plus actualsource regression; no algorithm/ownership/default changes"
+  "policy": "exact annotation/access only; one four-required-let memberwise equivalent; macro10emission selectors plus actualsource regression; no algorithm/ownership/default changes",
+  "existing_noops": [
+    {
+      "source": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "line": 78,
+      "selector": "package let records:",
+      "declaration": "package let records: UInt16",
+      "edit": "NONE; SemanticRecordLimits existing @usableFromInline scalar field, retain exactly",
+      "reason": "not the buffer field used by selected writer/store/takePending closure"
+    },
+    {
+      "source": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "line": 80,
+      "selector": "package let paths:",
+      "declaration": "package let paths: UInt16",
+      "edit": "NONE; SemanticRecordLimits existing @usableFromInline scalar field, retain exactly",
+      "reason": "not the buffer field used by selected writer/store/takePending closure"
+    },
+    {
+      "source": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "line": 84,
+      "selector": "package let payloads:",
+      "declaration": "package let payloads: UInt16",
+      "edit": "NONE; SemanticRecordLimits existing @usableFromInline scalar field, retain exactly",
+      "reason": "not the buffer field used by selected writer/store/takePending closure"
+    }
+  ],
+  "proposal_amendment": {
+    "review": "16f1d689",
+    "change": "three mistaken Limits scalar selectors replaced by exact typed BankBuffers declarations; scalars same nominal region; no source changes",
+    "counts_unchanged": {
+      "sites": 68,
+      "files": 11
+    }
+  }
 }

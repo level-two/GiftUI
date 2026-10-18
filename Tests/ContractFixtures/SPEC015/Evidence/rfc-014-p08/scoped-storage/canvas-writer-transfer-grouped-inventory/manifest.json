@@ -2,11 +2,11 @@
   "members": [
     {
       "path": "README.md",
-      "sha256": "86b785c43ed3b92bf1157611a3f1c4768590d19562e04168e074627a73164275"
+      "sha256": "2f779ceb1363e86b09a82d0805ff9a440ad41001ddc917325a9b2c44bf49331c"
     },
     {
       "path": "closure-and-unknowns.json",
-      "sha256": "27021711aa82ac96aab6cbe839b705ea92d1e4974b35e3331025669f1b7c8954"
+      "sha256": "15073b3452fafc1a66d4a4e1ce11dab208c4ad424221f5bef1b45279916d441c"
     },
     {
       "path": "constructors-and-guards.json",
@@ -14,7 +14,7 @@
     },
     {
       "path": "correction-map.json",
-      "sha256": "672adcd96936c612cea1ea6e51212585867bc8b63ebecf16ffb866a8f41709ae"
+      "sha256": "96ca6fd9803b7137da27baf3d30501e6c44da2e1a4eb8a322a051caa60ee4007"
     },
     {
       "path": "read-only-receipt.json",

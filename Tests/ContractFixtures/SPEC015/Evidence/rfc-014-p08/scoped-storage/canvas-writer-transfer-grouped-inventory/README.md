@@ -35,3 +35,9 @@ compile→privacy→complete physical index→same42SIL/object, then required sa
 Source/API/ownership/privacy contract conflict stops; compiler-dependent visibility
 or specialization is not claimed proven. Prior limited run/resolver/B/callback/ordinary
 success-leaf PASS retained; full23/all42/safety/strictcold/P08 remain unaccepted.
+
+Proposal-only selector amendment after [review16f1d689](../p08-canvas-writer-transfer-design-review.md):
+three mistaken Limits scalar selectors now name exact BankBuffers typed fields
+records195/paths196/payloads197; scalars198 uses the same192–216 nominal region.
+Limits.records/paths/payloads remain explicit existing-ABI NOOP. Counts68/11 and all
+source hashes unchanged; no source/compiler/budget mutation. Independent recheck next.

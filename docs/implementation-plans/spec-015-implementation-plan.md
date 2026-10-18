@@ -29,6 +29,11 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Canvas proposal selector amendment after16f1d689: exact typed BankBuffers fields
+records/paths/payloads195–197 replace three already-ABI Limits scalar matches;
+scalars198 constrained to same nominal region.68sites/11files unchanged, Limits3
+explicitNOOP; source/compiler/newbudget0. Independent corrected-map recheck next.
+
 Current [Canvas+writer+transfer proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-grouped-inventory/README.md):
 68sites/11files including finite Table producer/tests; six original roots grouped
 F05/F06/F13/F14/F15/F19 with direct typed writer/storage/cleanup closure. Exact

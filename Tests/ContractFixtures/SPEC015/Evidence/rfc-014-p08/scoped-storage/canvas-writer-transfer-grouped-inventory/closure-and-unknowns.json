@@ -12,7 +12,8 @@
     "CanvasValueTable/StaticCanvasCallableTable/SemanticRecordPayloadCodec protocols already ABI; no protocol name/signature/API change",
     "generatedCounterCanvas has @usableFromInline before blanktrivia at24 and draw/model/Domain already ABI; FiniteSourceLowering.swift NOT edited",
     "Writer/Bank/Store scopes/limits/metadata phase/revision/readers ABI already present; no factory access/lifetime edit",
-    "SemanticExpansionError/Role/recordlimits nominal/recordkind already ABI"
+    "SemanticExpansionError/Role/recordlimits nominal/recordkind already ABI",
+    "SemanticRecordLimits.records/paths/payloads existing ABI scalars remain exact; corrected map selects only BankBuffers records/paths/payloads/scalars typed pointer fields192\u2013216."
   ],
   "ordinary_leaves_cost_unknown": [
     "BoundedText.withUTF8 remains ordinary public generic-result checked callback; private storage untouched. Require actual stack/noescape closure and normal/cold cost inspection after specialization, do not assume noheap or force storage ABI.",
