@@ -18,6 +18,11 @@ superseded_by: null
 
 ## Grouped dependency continuation — 2026-10-18
 
+The [registered continuation passes](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-registered-result/README.md):
+two canonical owners+42-source host;22 fresh seeds/299 inputs verify.
+Initial1/1 frozen, corrections0/2. Privacy/lifetime, physical/actual-host,
+safety and strict cold gates remain; older freeze boundaries below are historical.
+
 Current [initial result and registered-input amendment](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-initial1-result/README.md):
 lower+22 owners PASS; whole-directory Dynamic/Static FAIL, host BLOCKED.
 All10 errors are in files excluded by the proven registered P08 owner recipes.

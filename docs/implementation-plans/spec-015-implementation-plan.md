@@ -29,15 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current [grouped module-closure activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-activity.md):
-initial1/1 frozen, corrections0/2. [Initial result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-initial1-result/README.md)
-passes lower+22 owners including Layout; whole-directory Dynamic/Static fail and
-actual host is blocked. Proven registered P08 selections exclude the four legacy
-files carrying all10 diagnostics. The source-unchanged 8Static/13Dynamic-owner
-plus42-source host continuation has [independent recipe PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-registered-continuation-review.md),
-still unexecuted, reusing only the22 exact fresh qualified artifacts. Whole-directory
-failures remain qualification limits; no source repair/cycle is implicit. Privacy, physical/
-actual-host, safety/cold and P08/R07/T8.1 remain open; prior budgets unchanged.
+**Registered P08 compile closure PASS; initial1/1 frozen, corrections0/2.**
+The [registered result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-registered-result/README.md) passes both canonical owners and the42-source
+actual host using22 verified fresh seeds and299 frozen inputs. Whole-directory
+failures remain preserved as broader scope limits. No source change/retry.
+Next applicable privacy/lifetime, physical42-origin/callee/actual-host codegen,
+safety and strict cold gates remain required; P08/R07/T8.1 stay open.
 
 [Independent annotation package review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-final-independent-review.md)
 confirms compatibility/provider/helper PASS and Layout FAIL101. Next recommendation

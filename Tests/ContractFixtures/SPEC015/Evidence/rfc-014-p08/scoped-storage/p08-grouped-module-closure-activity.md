@@ -1,13 +1,11 @@
 # P08 grouped module closure activity — 2026-10-18
 
-**Initial1/1 frozen: lower +22 owners PASS; whole-directory Dynamic/Static FAIL,
-actual host BLOCKED; corrections0/2.** The [result and exact registered-input
-continuation](grouped-module-closure-initial1-result/README.md) preserve all errors
-and prove the two owner lists were broader than the registered P08 recipes.
-[Independent recipe review](p08-grouped-module-closure-registered-continuation-review.md)
-passes the source-unchanged two-owner/actual-host continuation, still unexecuted;
-no source repair or corrective cycle is authorized by that recipe. Whole-directory
-failures remain broader qualification limits.
+**Registered P08 compile closure PASS; initial1/1 frozen, corrections0/2.**
+The [registered result](grouped-module-closure-registered-result/README.md) passes both canonical owners and the42-source
+actual host using22 verified fresh seeds and299 frozen inputs. Whole-directory
+failures remain preserved as broader scope limits. No source change/retry.
+Next applicable privacy/lifetime, physical42-origin/callee/actual-host codegen,
+safety and strict cold gates remain required; P08/R07/T8.1 stay open.
 Eugene explicitly authorized grouped Layout and remaining-module
 dependency corrections, then full-host/cold validation under the strict contract.
 This is a new allowance of one initial candidate and at most two grouped
