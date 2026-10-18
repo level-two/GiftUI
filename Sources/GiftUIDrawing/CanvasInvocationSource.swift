@@ -1,5 +1,6 @@
 import GiftUI
 
+@usableFromInline
 package protocol CanvasInvocationSource: ~Copyable, ~Escapable {
     associatedtype Identity: Equatable, Sendable
 

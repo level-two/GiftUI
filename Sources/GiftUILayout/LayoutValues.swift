@@ -2,11 +2,17 @@ import GiftUI
 import GiftUISemanticCore
 import GiftUITextResources
 
+@usableFromInline
 package struct LayoutLimits: Equatable, Sendable {
+    @usableFromInline
     package let maximumScopes: UInt16
+    @usableFromInline
     package let maximumDepth: UInt16
+    @usableFromInline
     package let maximumTextScalars: UInt16
+    @usableFromInline
     package let maximumTextLines: UInt16
+    @usableFromInline
     package let maximumPositionedGlyphs: UInt16
 
     package init?(
@@ -32,14 +38,22 @@ package struct LayoutLimits: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct LayoutSummary: Equatable, Sendable {
+    @usableFromInline
     package let scopeCount: UInt16
+    @usableFromInline
     package let textScalarCount: UInt16
+    @usableFromInline
     package let textLineCount: UInt16
+    @usableFromInline
     package let positionedGlyphCount: UInt16
+    @usableFromInline
     package let maximumObservedDepth: UInt16
+    @usableFromInline
     package let rootBounds: Rect
 
+    @usableFromInline
     package init(
         scopeCount: UInt16,
         textScalarCount: UInt16,
@@ -57,6 +71,7 @@ package struct LayoutSummary: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum LayoutResult: Equatable, Sendable {
     case success(LayoutSummary)
     case failure(LayoutError)

@@ -29,13 +29,13 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-Current [grouped result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-codegen-result/README.md):
-registered compile PASS; required physical body/callee gate FAIL at six entries,
-with actual generic consumer seams. Initial1/1 frozen, corrections0/2. No measured
-allocation failure is claimed; metadata/observer attribution is unresolved. The [targeted28-file corrective1 design](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-design/README.md)
-has [independent design PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-corrective1-independent-design-review.md)
-before source starts. Fresh privacy/lifetime, actual-host SIL/callee closure, safety/cold and
-P08/R07/T8.1 remain open; prior budgets and protected inputs unchanged.
+Current [corrective1 source/command freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-prepared/README.md):
+reviewed28-file implementation and token audit pass; corrective1/2 in progress,
+compiler unexecuted. Next single sequential fresh25-owner registered sweep collects
+all independent errors/blocks dependents without edits or stale modules. Initial1/1
+compile/physical failures remain evidence; fresh privacy/lifetime, six-body/all42-
+origin/actual-host codegen, safety/cold and P08/R07/T8.1 stay open. Protected bytes
+and prior budgets unchanged; no allocation/resource acceptance is claimed.
 
 [Independent annotation package review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-final-independent-review.md)
 confirms compatibility/provider/helper PASS and Layout FAIL101. Next recommendation

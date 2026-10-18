@@ -2,7 +2,9 @@ import GiftUI
 import GiftUIExecution
 import GiftUILayout
 
+@usableFromInline
 package enum CanvasPlanProducer {
+    @inlinable
     package static func derive<Source, Layout, Workspace>(
         source: inout Source,
         layout: borrowing Layout,
@@ -102,7 +104,8 @@ package enum CanvasPlanProducer {
         return result
     }
 
-    private static func validateOccurrences<Source, Layout>(
+    @inlinable
+    internal static func validateOccurrences<Source, Layout>(
         source: borrowing Source,
         layout: borrowing Layout,
         occurrenceCount: UInt16
@@ -139,7 +142,8 @@ package enum CanvasPlanProducer {
         return source.canvasIdentity(at: occurrenceCount) == nil
     }
 
-    private static func fail<Source, Workspace>(
+    @inlinable
+    internal static func fail<Source, Workspace>(
         _ error: DrawingProductionError,
         source: inout Source,
         releasingFrom firstIndex: UInt16,
@@ -173,7 +177,8 @@ package enum CanvasPlanProducer {
         return .failure(error)
     }
 
-    private static func productionError(
+    @usableFromInline
+    internal static func productionError(
         for error: DrawingError
     ) -> DrawingProductionError {
         switch error {

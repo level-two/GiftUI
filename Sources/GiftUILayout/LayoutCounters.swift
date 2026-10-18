@@ -1,18 +1,27 @@
+@usableFromInline
 package struct LayoutCounters: Equatable, Sendable {
+    @usableFromInline
     package private(set) var scopeCount: UInt16 = 0
+    @usableFromInline
     package private(set) var currentDepth: UInt16 = 0
+    @usableFromInline
     package private(set) var maximumObservedDepth: UInt16 = 0
+    @usableFromInline
     package private(set) var textScalarCount: UInt16 = 0
+    @usableFromInline
     package private(set) var textLineCount: UInt16 = 0
+    @usableFromInline
     package private(set) var positionedGlyphCount: UInt16 = 0
 
     private let limits: LayoutLimits
     private var firstFailure: LayoutError?
 
+    @usableFromInline
     package init(limits: LayoutLimits) {
         self.limits = limits
     }
 
+    @usableFromInline
     package mutating func reserveScope() -> LayoutError? {
         guard let next = reserve(after: scopeCount, limit: limits.maximumScopes) else {
             return record(.capacityExhausted)
@@ -21,6 +30,7 @@ package struct LayoutCounters: Equatable, Sendable {
         return nil
     }
 
+    @usableFromInline
     package mutating func enterScope() -> LayoutError? {
         guard firstFailure == nil else { return firstFailure }
         guard let next = incremented(currentDepth), next <= limits.maximumDepth else {
@@ -33,6 +43,7 @@ package struct LayoutCounters: Equatable, Sendable {
         return nil
     }
 
+    @usableFromInline
     package mutating func leaveScope() -> LayoutError? {
         guard firstFailure == nil else { return firstFailure }
         guard currentDepth > 0 else { return record(.invariantViolation) }
@@ -40,6 +51,7 @@ package struct LayoutCounters: Equatable, Sendable {
         return nil
     }
 
+    @usableFromInline
     package mutating func reserveTextScalar() -> LayoutError? {
         guard
             let next = reserve(
@@ -51,6 +63,7 @@ package struct LayoutCounters: Equatable, Sendable {
         return nil
     }
 
+    @usableFromInline
     package mutating func reserveTextLine() -> LayoutError? {
         guard
             let next = reserve(
@@ -62,6 +75,7 @@ package struct LayoutCounters: Equatable, Sendable {
         return nil
     }
 
+    @usableFromInline
     package mutating func reservePositionedGlyph() -> LayoutError? {
         guard
             let next = reserve(
@@ -73,12 +87,14 @@ package struct LayoutCounters: Equatable, Sendable {
         return nil
     }
 
+    @usableFromInline
     package mutating func resetTextCounts() {
         textScalarCount = 0
         textLineCount = 0
         positionedGlyphCount = 0
     }
 
+    @usableFromInline
     package mutating func finish(expectedScopeCount: UInt16) -> LayoutError? {
         guard firstFailure == nil else { return firstFailure }
         guard currentDepth == 0, scopeCount == expectedScopeCount else {

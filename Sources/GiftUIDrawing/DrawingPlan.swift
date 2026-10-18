@@ -1,6 +1,7 @@
 import GiftUI
 import GiftUIRenderCore
 
+@usableFromInline
 package protocol DrawingPlanView {
     associatedtype Identity: Equatable, Sendable
 
@@ -26,6 +27,7 @@ package protocol DrawingPlanView {
     ) -> SubpathRange?
 }
 
+@usableFromInline
 package protocol DrawingPlanWorkspace: DrawingPlanView {
     var capacity: DrawingLimits { get }
     var isActive: Bool { get }
@@ -35,6 +37,7 @@ package protocol DrawingPlanWorkspace: DrawingPlanView {
     mutating func reset()
 }
 
+@usableFromInline
 package protocol DrawingPlanConstructionWorkspace: DrawingPlanWorkspace {
     mutating func withCanvasContext<Result>(
         identity: Identity,

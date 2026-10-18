@@ -1,5 +1,6 @@
 import GiftUI
 
+@usableFromInline
 package protocol StaticCanvasCallableTable {
     associatedtype Domain: _GiftUIReadDomain
     associatedtype CaptureStorage

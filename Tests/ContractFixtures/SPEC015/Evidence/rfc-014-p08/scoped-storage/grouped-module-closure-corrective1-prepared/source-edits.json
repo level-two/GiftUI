@@ -1,0 +1,4368 @@
+{
+  "basis": "db0cd74c PASS exact53fdbb7f map + constructor guard",
+  "correction": "1/2 inprogress before first source edit",
+  "edits": [
+    {
+      "file": "Sources/GiftUILayout/Layout.swift",
+      "line": 5,
+      "selectors": [
+        "layout"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "package func layout<Semantic, Metrics, Workspace, Sink>(",
+      "after": "package func layout<Semantic, Metrics, Workspace, Sink>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutPublication.swift",
+      "line": 6,
+      "selectors": [
+        "publishLayout"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "package func publishLayout<Workspace, Sink>(",
+      "after": "package func publishLayout<Workspace, Sink>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 5,
+      "selectors": [
+        "LayoutEngine"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct LayoutEngine {",
+      "after": "package struct LayoutEngine {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 6,
+      "selectors": [
+        "StackMeasure"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private struct StackMeasure {",
+      "after": "    internal struct StackMeasure {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 13,
+      "selectors": [
+        "limits"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private let limits: LayoutLimits",
+      "after": "    internal let limits: LayoutLimits",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 14,
+      "selectors": [
+        "counters"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private var counters: LayoutCounters",
+      "after": "    internal var counters: LayoutCounters",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 15,
+      "selectors": [
+        "failure"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package private(set) var failure: LayoutError?",
+      "after": "    package internal(set) var failure: LayoutError?",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 7,
+      "selectors": [
+        "StackMeasure.childCount"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "        var childCount: UInt16 = 0",
+      "after": "        var childCount: UInt16 = 0",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 8,
+      "selectors": [
+        "StackMeasure.flexibleSpacerCount"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "        var flexibleSpacerCount: UInt16 = 0",
+      "after": "        var flexibleSpacerCount: UInt16 = 0",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 9,
+      "selectors": [
+        "StackMeasure.mainExtent"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "        var mainExtent: GeometryScalar = 0",
+      "after": "        var mainExtent: GeometryScalar = 0",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 10,
+      "selectors": [
+        "StackMeasure.crossExtent"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "        var crossExtent: GeometryScalar = 0",
+      "after": "        var crossExtent: GeometryScalar = 0",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 23,
+      "selectors": [
+        "finalCounters"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package var finalCounters: LayoutCounters { counters }",
+      "after": "    package var finalCounters: LayoutCounters { counters }",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 25,
+      "selectors": [
+        {
+          "name": "measure",
+          "line": 25,
+          "prefix": "package mutating func measure<Semantic, Metrics, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package mutating func measure<Semantic, Metrics, Workspace>(",
+      "after": "    package mutating func measure<Semantic, Metrics, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 47,
+      "selectors": [
+        {
+          "name": "place",
+          "line": 47,
+          "prefix": "package mutating func place<Semantic, Metrics, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package mutating func place<Semantic, Metrics, Workspace>(",
+      "after": "    package mutating func place<Semantic, Metrics, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 69,
+      "selectors": [
+        {
+          "name": "measureOccurrence",
+          "line": 69,
+          "prefix": "private mutating func measureOccurrence<Semantic, Metrics, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func measureOccurrence<Semantic, Metrics, Workspace>(",
+      "after": "    internal mutating func measureOccurrence<Semantic, Metrics, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 104,
+      "selectors": [
+        {
+          "name": "measureModifier",
+          "line": 104,
+          "prefix": "private mutating func measureModifier<Semantic, Metrics, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func measureModifier<Semantic, Metrics, Workspace>(",
+      "after": "    internal mutating func measureModifier<Semantic, Metrics, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 189,
+      "selectors": [
+        {
+          "name": "measureText",
+          "line": 189,
+          "prefix": "private mutating func measureText<Semantic, Metrics, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func measureText<Semantic, Metrics, Workspace>(",
+      "after": "    internal mutating func measureText<Semantic, Metrics, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 379,
+      "selectors": [
+        {
+          "name": "finalizeTextLine",
+          "line": 379,
+          "prefix": "private mutating func finalizeTextLine<Identity, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func finalizeTextLine<Identity, Workspace>(",
+      "after": "    internal mutating func finalizeTextLine<Identity, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 436,
+      "selectors": [
+        {
+          "name": "measureContent",
+          "line": 436,
+          "prefix": "private mutating func measureContent<Semantic, Metrics, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func measureContent<Semantic, Metrics, Workspace>(",
+      "after": "    internal mutating func measureContent<Semantic, Metrics, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 520,
+      "selectors": [
+        {
+          "name": "measureZStack",
+          "line": 520,
+          "prefix": "private mutating func measureZStack<Semantic, Metrics, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func measureZStack<Semantic, Metrics, Workspace>(",
+      "after": "    internal mutating func measureZStack<Semantic, Metrics, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 559,
+      "selectors": [
+        {
+          "name": "measureOnlyFlattenedChild",
+          "line": 559,
+          "prefix": "private mutating func measureOnlyFlattenedChild<Semantic, Metrics, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func measureOnlyFlattenedChild<Semantic, Metrics, Workspace>(",
+      "after": "    internal mutating func measureOnlyFlattenedChild<Semantic, Metrics, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 595,
+      "selectors": [
+        {
+          "name": "measureStack",
+          "line": 595,
+          "prefix": "private mutating func measureStack<Semantic, Metrics, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func measureStack<Semantic, Metrics, Workspace>(",
+      "after": "    internal mutating func measureStack<Semantic, Metrics, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 682,
+      "selectors": [
+        {
+          "name": "measureFlattenedChildren",
+          "line": 682,
+          "prefix": "private mutating func measureFlattenedChildren<Semantic, Metrics, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func measureFlattenedChildren<Semantic, Metrics, Workspace>(",
+      "after": "    internal mutating func measureFlattenedChildren<Semantic, Metrics, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 723,
+      "selectors": [
+        {
+          "name": "measureFlattenedOccurrence",
+          "line": 723,
+          "prefix": "private mutating func measureFlattenedOccurrence<Semantic, Metrics, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func measureFlattenedOccurrence<Semantic, Metrics, Workspace>(",
+      "after": "    internal mutating func measureFlattenedOccurrence<Semantic, Metrics, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 806,
+      "selectors": [
+        {
+          "name": "assignFlexibleSpacers",
+          "line": 806,
+          "prefix": "private mutating func assignFlexibleSpacers<Semantic, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func assignFlexibleSpacers<Semantic, Workspace>(",
+      "after": "    internal mutating func assignFlexibleSpacers<Semantic, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 872,
+      "selectors": [
+        {
+          "name": "placeOccurrence",
+          "line": 872,
+          "prefix": "private mutating func placeOccurrence<Semantic, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func placeOccurrence<Semantic, Workspace>(",
+      "after": "    internal mutating func placeOccurrence<Semantic, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 907,
+      "selectors": [
+        {
+          "name": "placeModifier",
+          "line": 907,
+          "prefix": "private mutating func placeModifier<Semantic, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func placeModifier<Semantic, Workspace>(",
+      "after": "    internal mutating func placeModifier<Semantic, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1009,
+      "selectors": [
+        {
+          "name": "placeContent",
+          "line": 1009,
+          "prefix": "private mutating func placeContent<Semantic, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func placeContent<Semantic, Workspace>(",
+      "after": "    internal mutating func placeContent<Semantic, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1114,
+      "selectors": [
+        {
+          "name": "placeTextGeometry",
+          "line": 1114,
+          "prefix": "private mutating func placeTextGeometry<Workspace: LayoutWorkspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func placeTextGeometry<Workspace: LayoutWorkspace>(",
+      "after": "    internal mutating func placeTextGeometry<Workspace: LayoutWorkspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1195,
+      "selectors": [
+        {
+          "name": "placeZStack",
+          "line": 1195,
+          "prefix": "private mutating func placeZStack<Semantic, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func placeZStack<Semantic, Workspace>(",
+      "after": "    internal mutating func placeZStack<Semantic, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1228,
+      "selectors": [
+        {
+          "name": "placeZFlattenedOccurrence",
+          "line": 1228,
+          "prefix": "private mutating func placeZFlattenedOccurrence<Semantic, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func placeZFlattenedOccurrence<Semantic, Workspace>(",
+      "after": "    internal mutating func placeZFlattenedOccurrence<Semantic, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1314,
+      "selectors": [
+        {
+          "name": "measurementForOccurrence",
+          "line": 1314,
+          "prefix": "private mutating func measurementForOccurrence<Semantic, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func measurementForOccurrence<Semantic, Workspace>(",
+      "after": "    internal mutating func measurementForOccurrence<Semantic, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1339,
+      "selectors": [
+        {
+          "name": "innerMeasurement",
+          "line": 1339,
+          "prefix": "private mutating func innerMeasurement<Semantic, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func innerMeasurement<Semantic, Workspace>(",
+      "after": "    internal mutating func innerMeasurement<Semantic, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1369,
+      "selectors": [
+        {
+          "name": "onlyFlattenedChildMeasurement",
+          "line": 1369,
+          "prefix": "private mutating func onlyFlattenedChildMeasurement<Semantic, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func onlyFlattenedChildMeasurement<Semantic, Workspace>(",
+      "after": "    internal mutating func onlyFlattenedChildMeasurement<Semantic, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1526,
+      "selectors": [
+        {
+          "name": "placeOnlyFlattenedChild",
+          "line": 1526,
+          "prefix": "private mutating func placeOnlyFlattenedChild<Semantic, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func placeOnlyFlattenedChild<Semantic, Workspace>(",
+      "after": "    internal mutating func placeOnlyFlattenedChild<Semantic, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1553,
+      "selectors": [
+        {
+          "name": "placeStack",
+          "line": 1553,
+          "prefix": "private mutating func placeStack<Semantic, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func placeStack<Semantic, Workspace>(",
+      "after": "    internal mutating func placeStack<Semantic, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1593,
+      "selectors": [
+        {
+          "name": "placeFlattenedChildrenAtOrigin",
+          "line": 1593,
+          "prefix": "private mutating func placeFlattenedChildrenAtOrigin<Semantic, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func placeFlattenedChildrenAtOrigin<Semantic, Workspace>(",
+      "after": "    internal mutating func placeFlattenedChildrenAtOrigin<Semantic, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1646,
+      "selectors": [
+        {
+          "name": "placeStackChildren",
+          "line": 1646,
+          "prefix": "private mutating func placeStackChildren<Semantic, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func placeStackChildren<Semantic, Workspace>(",
+      "after": "    internal mutating func placeStackChildren<Semantic, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1755,
+      "selectors": [
+        {
+          "name": "flattenedChildCount",
+          "line": 1755,
+          "prefix": "private mutating func flattenedChildCount<Semantic: SemanticLayoutView & ~Escapable>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func flattenedChildCount<Semantic: SemanticLayoutView & ~Escapable>(",
+      "after": "    internal mutating func flattenedChildCount<Semantic: SemanticLayoutView & ~Escapable>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1785,
+      "selectors": [
+        {
+          "name": "fail",
+          "line": 1785,
+          "prefix": "private mutating func fail<T>(_ error: LayoutError) -> T? {"
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func fail<T>(_ error: LayoutError) -> T? {",
+      "after": "    internal mutating func fail<T>(_ error: LayoutError) -> T? {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 17,
+      "selectors": [
+        "init"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package init(limits: LayoutLimits, validatedCounters: LayoutCounters) {",
+      "after": "    package init(limits: LayoutLimits, validatedCounters: LayoutCounters) {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 418,
+      "selectors": [
+        {
+          "name": "textBaselineY",
+          "line": 418,
+          "prefix": "private mutating func textBaselineY("
+        }
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private mutating func textBaselineY(",
+      "after": "    internal mutating func textBaselineY(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1282,
+      "selectors": [
+        {
+          "name": "paddingInsets",
+          "line": 1282,
+          "prefix": "private mutating func paddingInsets("
+        }
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private mutating func paddingInsets(",
+      "after": "    internal mutating func paddingInsets(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1416,
+      "selectors": [
+        {
+          "name": "frameChildProposal",
+          "line": 1416,
+          "prefix": "private func frameChildProposal("
+        }
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private func frameChildProposal(",
+      "after": "    internal func frameChildProposal(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1452,
+      "selectors": [
+        {
+          "name": "childFrameProposalAxis",
+          "line": 1452,
+          "prefix": "private func childFrameProposalAxis("
+        }
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private func childFrameProposalAxis(",
+      "after": "    internal func childFrameProposalAxis(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1470,
+      "selectors": [
+        {
+          "name": "frameMeasurement",
+          "line": 1470,
+          "prefix": "private func frameMeasurement("
+        }
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private func frameMeasurement(",
+      "after": "    internal func frameMeasurement(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1509,
+      "selectors": [
+        {
+          "name": "requestedFrameAxis",
+          "line": 1509,
+          "prefix": "private func requestedFrameAxis("
+        }
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private func requestedFrameAxis(",
+      "after": "    internal func requestedFrameAxis(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1791,
+      "selectors": [
+        {
+          "name": "fail",
+          "line": 1791,
+          "prefix": "private mutating func fail(_ error: LayoutError) -> Bool {"
+        }
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private mutating func fail(_ error: LayoutError) -> Bool {",
+      "after": "    internal mutating func fail(_ error: LayoutError) -> Bool {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 1796,
+      "selectors": [
+        {
+          "name": "increment",
+          "line": 1796,
+          "prefix": "private func increment(_ value: UInt16) -> UInt16? {"
+        }
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private func increment(_ value: UInt16) -> UInt16? {",
+      "after": "    internal func increment(_ value: UInt16) -> UInt16? {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "line": 432,
+      "selectors": [
+        "zeroRect getter"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private var zeroRect: Rect {",
+      "after": "    internal var zeroRect: Rect {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 5,
+      "selectors": [
+        "LayoutSemanticValidation"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct LayoutSemanticValidation {",
+      "after": "package struct LayoutSemanticValidation {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 6,
+      "selectors": [
+        "limits"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private let limits: LayoutLimits",
+      "after": "    internal let limits: LayoutLimits",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 7,
+      "selectors": [
+        "counters"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private var counters: LayoutCounters",
+      "after": "    internal var counters: LayoutCounters",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 14,
+      "selectors": [
+        "countersSnapshot"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package var countersSnapshot: LayoutCounters { counters }",
+      "after": "    package var countersSnapshot: LayoutCounters { counters }",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 16,
+      "selectors": [
+        {
+          "name": "validate",
+          "line": 16,
+          "prefix": "package mutating func validate<Semantic, Metrics, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package mutating func validate<Semantic, Metrics, Workspace>(",
+      "after": "    package mutating func validate<Semantic, Metrics, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 52,
+      "selectors": [
+        {
+          "name": "validateOccurrence",
+          "line": 52,
+          "prefix": "private mutating func validateOccurrence<Semantic, Metrics, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func validateOccurrence<Semantic, Metrics, Workspace>(",
+      "after": "    internal mutating func validateOccurrence<Semantic, Metrics, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 163,
+      "selectors": [
+        {
+          "name": "validatePrimitiveContent",
+          "line": 163,
+          "prefix": "private mutating func validatePrimitiveContent<Semantic, Metrics, Workspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func validatePrimitiveContent<Semantic, Metrics, Workspace>(",
+      "after": "    internal mutating func validatePrimitiveContent<Semantic, Metrics, Workspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 227,
+      "selectors": [
+        {
+          "name": "validateText",
+          "line": 227,
+          "prefix": "private mutating func validateText<Semantic, Metrics>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func validateText<Semantic, Metrics>(",
+      "after": "    internal mutating func validateText<Semantic, Metrics>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 288,
+      "selectors": [
+        {
+          "name": "reserveScope",
+          "line": 288,
+          "prefix": "private mutating func reserveScope<Workspace: LayoutWorkspace>("
+        }
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func reserveScope<Workspace: LayoutWorkspace>(",
+      "after": "    internal mutating func reserveScope<Workspace: LayoutWorkspace>(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 9,
+      "selectors": [
+        "init"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package init(limits: LayoutLimits) {",
+      "after": "    package init(limits: LayoutLimits) {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 305,
+      "selectors": [
+        {
+          "name": "validate",
+          "line": 305,
+          "prefix": "private func validate(_ primitive: SemanticLayoutPrimitive) -> LayoutError? {"
+        }
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private func validate(_ primitive: SemanticLayoutPrimitive) -> LayoutError? {",
+      "after": "    internal func validate(_ primitive: SemanticLayoutPrimitive) -> LayoutError? {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 316,
+      "selectors": [
+        {
+          "name": "validate",
+          "line": 316,
+          "prefix": "private func validate(_ modifier: SemanticLayoutModifier) -> LayoutError? {"
+        }
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private func validate(_ modifier: SemanticLayoutModifier) -> LayoutError? {",
+      "after": "    internal func validate(_ modifier: SemanticLayoutModifier) -> LayoutError? {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 344,
+      "selectors": [
+        {
+          "name": "invalid",
+          "line": 344,
+          "prefix": "private func invalid(_ value: GeometryScalar?) -> Bool {"
+        }
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private func invalid(_ value: GeometryScalar?) -> Bool {",
+      "after": "    internal func invalid(_ value: GeometryScalar?) -> Bool {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 348,
+      "selectors": [
+        {
+          "name": "invalid",
+          "line": 348,
+          "prefix": "private func invalid(_ value: FrameLimit?) -> Bool {"
+        }
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private func invalid(_ value: FrameLimit?) -> Bool {",
+      "after": "    internal func invalid(_ value: FrameLimit?) -> Bool {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 353,
+      "selectors": [
+        {
+          "name": "relationIsValid",
+          "line": 353,
+          "prefix": "private func relationIsValid("
+        }
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private func relationIsValid(",
+      "after": "    internal func relationIsValid(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "line": 363,
+      "selectors": [
+        {
+          "name": "isValidUnicodeScalar",
+          "line": 363,
+          "prefix": "private func isValidUnicodeScalar(_ value: UInt32) -> Bool {"
+        }
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private func isValidUnicodeScalar(_ value: UInt32) -> Bool {",
+      "after": "    internal func isValidUnicodeScalar(_ value: UInt32) -> Bool {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 1,
+      "selectors": [
+        "LayoutCounters"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct LayoutCounters: Equatable, Sendable {",
+      "after": "package struct LayoutCounters: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 2,
+      "selectors": [
+        "scopeCount"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package private(set) var scopeCount: UInt16 = 0",
+      "after": "    package private(set) var scopeCount: UInt16 = 0",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 3,
+      "selectors": [
+        "currentDepth"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package private(set) var currentDepth: UInt16 = 0",
+      "after": "    package private(set) var currentDepth: UInt16 = 0",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 4,
+      "selectors": [
+        "maximumObservedDepth"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package private(set) var maximumObservedDepth: UInt16 = 0",
+      "after": "    package private(set) var maximumObservedDepth: UInt16 = 0",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 5,
+      "selectors": [
+        "textScalarCount"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package private(set) var textScalarCount: UInt16 = 0",
+      "after": "    package private(set) var textScalarCount: UInt16 = 0",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 6,
+      "selectors": [
+        "textLineCount"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package private(set) var textLineCount: UInt16 = 0",
+      "after": "    package private(set) var textLineCount: UInt16 = 0",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 7,
+      "selectors": [
+        "positionedGlyphCount"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package private(set) var positionedGlyphCount: UInt16 = 0",
+      "after": "    package private(set) var positionedGlyphCount: UInt16 = 0",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 12,
+      "selectors": [
+        "init"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package init(limits: LayoutLimits) {",
+      "after": "    package init(limits: LayoutLimits) {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 16,
+      "selectors": [
+        "reserveScope"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package mutating func reserveScope() -> LayoutError? {",
+      "after": "    package mutating func reserveScope() -> LayoutError? {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 24,
+      "selectors": [
+        "enterScope"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package mutating func enterScope() -> LayoutError? {",
+      "after": "    package mutating func enterScope() -> LayoutError? {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 36,
+      "selectors": [
+        "leaveScope"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package mutating func leaveScope() -> LayoutError? {",
+      "after": "    package mutating func leaveScope() -> LayoutError? {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 43,
+      "selectors": [
+        "reserveTextScalar"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package mutating func reserveTextScalar() -> LayoutError? {",
+      "after": "    package mutating func reserveTextScalar() -> LayoutError? {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 54,
+      "selectors": [
+        "reserveTextLine"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package mutating func reserveTextLine() -> LayoutError? {",
+      "after": "    package mutating func reserveTextLine() -> LayoutError? {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 65,
+      "selectors": [
+        "reservePositionedGlyph"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package mutating func reservePositionedGlyph() -> LayoutError? {",
+      "after": "    package mutating func reservePositionedGlyph() -> LayoutError? {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 76,
+      "selectors": [
+        "resetTextCounts"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package mutating func resetTextCounts() {",
+      "after": "    package mutating func resetTextCounts() {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "line": 82,
+      "selectors": [
+        "finish"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package mutating func finish(expectedScopeCount: UInt16) -> LayoutError? {",
+      "after": "    package mutating func finish(expectedScopeCount: UInt16) -> LayoutError? {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "line": 3,
+      "selectors": [
+        "LayoutGeometry"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum LayoutGeometry {",
+      "after": "package enum LayoutGeometry {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "line": 4,
+      "selectors": [
+        "zeroSize"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package static let zeroSize = Size(width: 0, height: 0)!",
+      "after": "    package static let zeroSize = Size(width: 0, height: 0)!",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "line": 6,
+      "selectors": [
+        "cap"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package static func cap(",
+      "after": "    package static func cap(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "line": 19,
+      "selectors": [
+        "adding"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package static func adding(",
+      "after": "    package static func adding(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "line": 30,
+      "selectors": [
+        "insetProposal"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package static func insetProposal(",
+      "after": "    package static func insetProposal(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "line": 63,
+      "selectors": [
+        "translated"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package static func translated(",
+      "after": "    package static func translated(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "line": 74,
+      "selectors": [
+        "offset(horizontal)"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package static func offset(",
+      "after": "    package static func offset(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "line": 89,
+      "selectors": [
+        "offset(vertical)"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package static func offset(",
+      "after": "    package static func offset(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "line": 107,
+      "selectors": [
+        "spacingTotal"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package static func spacingTotal(",
+      "after": "    package static func spacingTotal(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "line": 118,
+      "selectors": [
+        "intersection"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package static func intersection(_ lhs: Rect, _ rhs: Rect) -> Rect? {",
+      "after": "    package static func intersection(_ lhs: Rect, _ rhs: Rect) -> Rect? {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "line": 136,
+      "selectors": [
+        "clamped"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package static func clamped(",
+      "after": "    package static func clamped(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 5,
+      "selectors": [
+        "LayoutMeasurement"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct LayoutMeasurement: Equatable, Sendable {",
+      "after": "package struct LayoutMeasurement: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 15,
+      "selectors": [
+        "LayoutPlacement"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct LayoutPlacement: Equatable, Sendable {",
+      "after": "package struct LayoutPlacement: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 25,
+      "selectors": [
+        "LayoutTextLine"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct LayoutTextLine<Identity>: Equatable, Sendable",
+      "after": "package struct LayoutTextLine<Identity>: Equatable, Sendable",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 48,
+      "selectors": [
+        "LayoutPositionedGlyph"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct LayoutPositionedGlyph<Identity>: Equatable, Sendable",
+      "after": "package struct LayoutPositionedGlyph<Identity>: Equatable, Sendable",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 77,
+      "selectors": [
+        "LayoutWorkspace"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol LayoutWorkspace {",
+      "after": "package protocol LayoutWorkspace {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 6,
+      "selectors": [
+        "LayoutMeasurement.idealSize"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let idealSize: Size",
+      "after": "    package let idealSize: Size",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 7,
+      "selectors": [
+        "LayoutMeasurement.resolvedSize"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let resolvedSize: Size",
+      "after": "    package let resolvedSize: Size",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 16,
+      "selectors": [
+        "LayoutPlacement.bounds"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let bounds: Rect",
+      "after": "    package let bounds: Rect",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 17,
+      "selectors": [
+        "LayoutPlacement.clip"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let clip: Rect",
+      "after": "    package let clip: Rect",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 27,
+      "selectors": [
+        "LayoutTextLine.identity"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let identity: Identity",
+      "after": "    package let identity: Identity",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 28,
+      "selectors": [
+        "LayoutTextLine.lineIndex"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let lineIndex: UInt16",
+      "after": "    package let lineIndex: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 29,
+      "selectors": [
+        "LayoutTextLine.bounds"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let bounds: Rect",
+      "after": "    package let bounds: Rect",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 30,
+      "selectors": [
+        "LayoutTextLine.baseline"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let baseline: Point",
+      "after": "    package let baseline: Point",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 31,
+      "selectors": [
+        "LayoutTextLine.clip"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let clip: Rect",
+      "after": "    package let clip: Rect",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 50,
+      "selectors": [
+        "LayoutPositionedGlyph.identity"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let identity: Identity",
+      "after": "    package let identity: Identity",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 51,
+      "selectors": [
+        "LayoutPositionedGlyph.lineIndex"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let lineIndex: UInt16",
+      "after": "    package let lineIndex: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 52,
+      "selectors": [
+        "LayoutPositionedGlyph.glyphIndex"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let glyphIndex: UInt16",
+      "after": "    package let glyphIndex: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 53,
+      "selectors": [
+        "LayoutPositionedGlyph.instance"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let instance: FontInstanceID",
+      "after": "    package let instance: FontInstanceID",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 54,
+      "selectors": [
+        "LayoutPositionedGlyph.glyph"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let glyph: GlyphID",
+      "after": "    package let glyph: GlyphID",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 55,
+      "selectors": [
+        "LayoutPositionedGlyph.baseline"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let baseline: Point",
+      "after": "    package let baseline: Point",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 56,
+      "selectors": [
+        "LayoutPositionedGlyph.clip"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let clip: Rect",
+      "after": "    package let clip: Rect",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 9,
+      "selectors": [
+        "LayoutMeasurement.init"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package init(idealSize: Size, resolvedSize: Size) {",
+      "after": "    package init(idealSize: Size, resolvedSize: Size) {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 19,
+      "selectors": [
+        "LayoutPlacement.init"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package init(bounds: Rect, clip: Rect) {",
+      "after": "    package init(bounds: Rect, clip: Rect) {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 33,
+      "selectors": [
+        "LayoutTextLine.init"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package init(",
+      "after": "    package init(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "line": 58,
+      "selectors": [
+        "LayoutPositionedGlyph.init"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package init(",
+      "after": "    package init(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutResultSink.swift",
+      "line": 5,
+      "selectors": [
+        "LayoutResultSink"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol LayoutResultSink {",
+      "after": "package protocol LayoutResultSink {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutResultSink.swift",
+      "line": 34,
+      "selectors": [
+        "LayoutResultSinkState"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol LayoutResultSinkState {",
+      "after": "package protocol LayoutResultSinkState {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 5,
+      "selectors": [
+        "LayoutLimits"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct LayoutLimits: Equatable, Sendable {",
+      "after": "package struct LayoutLimits: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 35,
+      "selectors": [
+        "LayoutSummary"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct LayoutSummary: Equatable, Sendable {",
+      "after": "package struct LayoutSummary: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 60,
+      "selectors": [
+        "LayoutResult"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum LayoutResult: Equatable, Sendable {",
+      "after": "package enum LayoutResult: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 6,
+      "selectors": [
+        "LayoutLimits.maximumScopes"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let maximumScopes: UInt16",
+      "after": "    package let maximumScopes: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 7,
+      "selectors": [
+        "LayoutLimits.maximumDepth"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let maximumDepth: UInt16",
+      "after": "    package let maximumDepth: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 8,
+      "selectors": [
+        "LayoutLimits.maximumTextScalars"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let maximumTextScalars: UInt16",
+      "after": "    package let maximumTextScalars: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 9,
+      "selectors": [
+        "LayoutLimits.maximumTextLines"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let maximumTextLines: UInt16",
+      "after": "    package let maximumTextLines: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 10,
+      "selectors": [
+        "LayoutLimits.maximumPositionedGlyphs"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let maximumPositionedGlyphs: UInt16",
+      "after": "    package let maximumPositionedGlyphs: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 36,
+      "selectors": [
+        "LayoutSummary.scopeCount"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let scopeCount: UInt16",
+      "after": "    package let scopeCount: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 37,
+      "selectors": [
+        "LayoutSummary.textScalarCount"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let textScalarCount: UInt16",
+      "after": "    package let textScalarCount: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 38,
+      "selectors": [
+        "LayoutSummary.textLineCount"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let textLineCount: UInt16",
+      "after": "    package let textLineCount: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 39,
+      "selectors": [
+        "LayoutSummary.positionedGlyphCount"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let positionedGlyphCount: UInt16",
+      "after": "    package let positionedGlyphCount: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 40,
+      "selectors": [
+        "LayoutSummary.maximumObservedDepth"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let maximumObservedDepth: UInt16",
+      "after": "    package let maximumObservedDepth: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 41,
+      "selectors": [
+        "LayoutSummary.rootBounds"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let rootBounds: Rect",
+      "after": "    package let rootBounds: Rect",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "line": 43,
+      "selectors": [
+        "LayoutSummary.init"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package init(",
+      "after": "    package init(",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutError.swift",
+      "line": 5,
+      "selectors": [
+        "LayoutError"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum LayoutError: UInt8, Equatable, Sendable {",
+      "after": "package enum LayoutError: UInt8, Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/ResolvedRenderLayoutView.swift",
+      "line": 4,
+      "selectors": [
+        "ResolvedRenderTextLine"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct ResolvedRenderTextLine: Equatable, Sendable {",
+      "after": "package struct ResolvedRenderTextLine: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/ResolvedRenderLayoutView.swift",
+      "line": 26,
+      "selectors": [
+        "ResolvedRenderGlyph"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct ResolvedRenderGlyph: Equatable, Sendable {",
+      "after": "package struct ResolvedRenderGlyph: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUILayout/ResolvedRenderLayoutView.swift",
+      "line": 51,
+      "selectors": [
+        "ResolvedRenderLayoutView"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol ResolvedRenderLayoutView {",
+      "after": "package protocol ResolvedRenderLayoutView {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUISemanticCore/SemanticLayoutView.swift",
+      "line": 3,
+      "selectors": [
+        "SemanticLayoutPrimitive"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum SemanticLayoutPrimitive: Equatable, Sendable {",
+      "after": "package enum SemanticLayoutPrimitive: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUISemanticCore/SemanticLayoutView.swift",
+      "line": 14,
+      "selectors": [
+        "SemanticLayoutModifier"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum SemanticLayoutModifier: Equatable, Sendable {",
+      "after": "package enum SemanticLayoutModifier: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUISemanticCore/SemanticLayoutView.swift",
+      "line": 33,
+      "selectors": [
+        "SemanticLayoutView"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol SemanticLayoutView: ~Escapable {",
+      "after": "package protocol SemanticLayoutView: ~Escapable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 42,
+      "selectors": [
+        "FontInstanceID"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct FontInstanceID: Equatable, Hashable, Sendable {",
+      "after": "package struct FontInstanceID: Equatable, Hashable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 52,
+      "selectors": [
+        "GlyphID"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct GlyphID: RawRepresentable, Equatable, Hashable, Sendable {",
+      "after": "package struct GlyphID: RawRepresentable, Equatable, Hashable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 75,
+      "selectors": [
+        "FontLineMetrics"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct FontLineMetrics: Equatable, Sendable {",
+      "after": "package struct FontLineMetrics: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 91,
+      "selectors": [
+        "GlyphMetrics"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct GlyphMetrics: Equatable, Sendable {",
+      "after": "package struct GlyphMetrics: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 110,
+      "selectors": [
+        "FontInstanceDescriptor"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct FontInstanceDescriptor: Equatable, Sendable {",
+      "after": "package struct FontInstanceDescriptor: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 157,
+      "selectors": [
+        "TextResourceDescriptor"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct TextResourceDescriptor: Equatable, Sendable {",
+      "after": "package struct TextResourceDescriptor: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 179,
+      "selectors": [
+        "GlyphMapping"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum GlyphMapping: Equatable, Sendable {",
+      "after": "package enum GlyphMapping: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 184,
+      "selectors": [
+        "ScalarGlyphMappingRecord"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct ScalarGlyphMappingRecord: Equatable, Sendable {",
+      "after": "package struct ScalarGlyphMappingRecord: Equatable, Sendable {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 219,
+      "selectors": [
+        "CanonicalTextMetricsView"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol CanonicalTextMetricsView {",
+      "after": "package protocol CanonicalTextMetricsView {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 160,
+      "selectors": [
+        "TextResourceDescriptor.instanceCount"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let instanceCount: UInt16",
+      "after": "    package let instanceCount: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 111,
+      "selectors": [
+        "FontInstanceDescriptor.id"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let id: FontInstanceID",
+      "after": "    package let id: FontInstanceID",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 112,
+      "selectors": [
+        "FontInstanceDescriptor.lineMetrics"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let lineMetrics: FontLineMetrics",
+      "after": "    package let lineMetrics: FontLineMetrics",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 76,
+      "selectors": [
+        "FontLineMetrics.ascent"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let ascent: GeometryScalar",
+      "after": "    package let ascent: GeometryScalar",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 77,
+      "selectors": [
+        "FontLineMetrics.descent"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let descent: GeometryScalar",
+      "after": "    package let descent: GeometryScalar",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 78,
+      "selectors": [
+        "FontLineMetrics.lineGap"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let lineGap: GeometryScalar",
+      "after": "    package let lineGap: GeometryScalar",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 92,
+      "selectors": [
+        "GlyphMetrics.advanceX"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let advanceX: GeometryScalar",
+      "after": "    package let advanceX: GeometryScalar",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 53,
+      "selectors": [
+        "GlyphID.rawValue"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let rawValue: UInt16",
+      "after": "    package let rawValue: UInt16",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 55,
+      "selectors": [
+        "GlyphID.init(rawValue:)"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package init(rawValue: UInt16) {",
+      "after": "    package init(rawValue: UInt16) {",
+      "trace_roots": [
+        "R4:publication",
+        "O1:actual layout caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 4,
+      "selectors": [
+        "CanvasValueTable"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol CanvasValueTable: StaticCanvasCallableTable {",
+      "after": "package protocol CanvasValueTable: StaticCanvasCallableTable {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 11,
+      "selectors": [
+        "CanvasStagedEntry"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct CanvasStagedEntry<Identity: Equatable & Sendable, Payload> {",
+      "after": "package struct CanvasStagedEntry<Identity: Equatable & Sendable, Payload> {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 18,
+      "selectors": [
+        "CanvasStagedMetadata"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct CanvasStagedMetadata {",
+      "after": "package struct CanvasStagedMetadata {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 55,
+      "selectors": [
+        "CanvasStagedValues"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasValueTable>:",
+      "after": "package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasValueTable>:",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 12,
+      "selectors": [
+        "CanvasStagedEntry.identity"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let identity: Identity",
+      "after": "    package let identity: Identity",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 13,
+      "selectors": [
+        "CanvasStagedEntry.witness"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let witness: UInt16",
+      "after": "    package let witness: UInt16",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 14,
+      "selectors": [
+        "CanvasStagedEntry.value"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    fileprivate var value: Payload?",
+      "after": "    internal var value: Payload?",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 15,
+      "selectors": [
+        "CanvasStagedEntry.invoked"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    fileprivate var invoked = false",
+      "after": "    internal var invoked = false",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 19,
+      "selectors": [
+        "CanvasStagedMetadata.count"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package fileprivate(set) var count: UInt16 = 0",
+      "after": "    package internal(set) var count: UInt16 = 0",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 20,
+      "selectors": [
+        "CanvasStagedMetadata.releases"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package fileprivate(set) var releases: UInt16 = 0",
+      "after": "    package internal(set) var releases: UInt16 = 0",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 58,
+      "selectors": [
+        "CanvasStagedValues.state"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private let state: UnsafeMutablePointer<CanvasStagedMetadata>",
+      "after": "    internal let state: UnsafeMutablePointer<CanvasStagedMetadata>",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 59,
+      "selectors": [
+        "CanvasStagedValues.entries"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private let entries:",
+      "after": "    internal let entries:",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 61,
+      "selectors": [
+        "CanvasStagedValues.capacity"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private let capacity: UInt16",
+      "after": "    internal let capacity: UInt16",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 26,
+      "selectors": [
+        "withCanvasStagedValues"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "package func withCanvasStagedValues<",
+      "after": "package func withCanvasStagedValues<",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 21,
+      "selectors": [
+        "CanvasStagedMetadata.init"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package init() {}",
+      "after": "    package init() {}",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 64,
+      "selectors": [
+        "CanvasStagedValues.init(state:entries:capacity:)"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    fileprivate init(",
+      "after": "    internal init(",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 80,
+      "selectors": [
+        "CanvasStagedValues.init(borrowing:)"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private init(borrowing other: borrowing CanvasStagedValues<Identity, Table>) {",
+      "after": "    internal init(borrowing other: borrowing CanvasStagedValues<Identity, Table>) {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 76,
+      "selectors": [
+        "CanvasStagedValues.borrowedValues"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package borrowing func borrowedValues() -> CanvasStagedValues<Identity, Table> {",
+      "after": "    package borrowing func borrowedValues() -> CanvasStagedValues<Identity, Table> {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 85,
+      "selectors": [
+        "CanvasStagedValues.count"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package var count: UInt16 { state.pointee.count }",
+      "after": "    package var count: UInt16 { state.pointee.count }",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 86,
+      "selectors": [
+        "CanvasStagedValues.releaseCount"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package var releaseCount: UInt16 { state.pointee.releases }",
+      "after": "    package var releaseCount: UInt16 { state.pointee.releases }",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 87,
+      "selectors": [
+        "CanvasStagedValues.identity"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package borrowing func identity(at index: UInt16) -> Identity? {",
+      "after": "    package borrowing func identity(at index: UInt16) -> Identity? {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 92,
+      "selectors": [
+        "CanvasStagedValues.stage"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package borrowing func stage(",
+      "after": "    package borrowing func stage(",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 107,
+      "selectors": [
+        "CanvasStagedValues.invoke"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package borrowing func invoke(",
+      "after": "    package borrowing func invoke(",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 122,
+      "selectors": [
+        "CanvasStagedValues.release"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package borrowing func release(at identity: Identity) {",
+      "after": "    package borrowing func release(at identity: Identity) {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "line": 130,
+      "selectors": [
+        "CanvasStagedValues.discard"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package borrowing func discard() {",
+      "after": "    package borrowing func discard() {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/StaticCanvasCallableTable.swift",
+      "line": 3,
+      "selectors": [
+        "StaticCanvasCallableTable"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol StaticCanvasCallableTable {",
+      "after": "package protocol StaticCanvasCallableTable {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasInvocationSource.swift",
+      "line": 3,
+      "selectors": [
+        "CanvasInvocationSource"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol CanvasInvocationSource: ~Copyable, ~Escapable {",
+      "after": "package protocol CanvasInvocationSource: ~Copyable, ~Escapable {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasPlanProducer.swift",
+      "line": 5,
+      "selectors": [
+        "CanvasPlanProducer"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum CanvasPlanProducer {",
+      "after": "package enum CanvasPlanProducer {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasPlanProducer.swift",
+      "line": 6,
+      "selectors": [
+        "derive"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package static func derive<Source, Layout, Workspace>(",
+      "after": "    package static func derive<Source, Layout, Workspace>(",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasPlanProducer.swift",
+      "line": 105,
+      "selectors": [
+        "validateOccurrences"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private static func validateOccurrences<Source, Layout>(",
+      "after": "    internal static func validateOccurrences<Source, Layout>(",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasPlanProducer.swift",
+      "line": 142,
+      "selectors": [
+        "fail"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private static func fail<Source, Workspace>(",
+      "after": "    internal static func fail<Source, Workspace>(",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasPlanProducer.swift",
+      "line": 176,
+      "selectors": [
+        "productionError"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private static func productionError(",
+      "after": "    internal static func productionError(",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingPlan.swift",
+      "line": 4,
+      "selectors": [
+        "DrawingPlanView"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol DrawingPlanView {",
+      "after": "package protocol DrawingPlanView {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingPlan.swift",
+      "line": 29,
+      "selectors": [
+        "DrawingPlanWorkspace"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol DrawingPlanWorkspace: DrawingPlanView {",
+      "after": "package protocol DrawingPlanWorkspace: DrawingPlanView {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingPlan.swift",
+      "line": 38,
+      "selectors": [
+        "DrawingPlanConstructionWorkspace"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol DrawingPlanConstructionWorkspace: DrawingPlanWorkspace {",
+      "after": "package protocol DrawingPlanConstructionWorkspace: DrawingPlanWorkspace {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingLimits.swift",
+      "line": 3,
+      "selectors": [
+        "DrawingLimits"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct DrawingLimits: Equatable, Sendable {",
+      "after": "package struct DrawingLimits: Equatable, Sendable {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingLimits.swift",
+      "line": 55,
+      "selectors": [
+        "StaticCanvasLimits"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct StaticCanvasLimits: Equatable, Sendable {",
+      "after": "package struct StaticCanvasLimits: Equatable, Sendable {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingLimits.swift",
+      "line": 5,
+      "selectors": [
+        "DrawingLimits.maximumCanvasOccurrences"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let maximumCanvasOccurrences: UInt16",
+      "after": "    package let maximumCanvasOccurrences: UInt16",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingLimits.swift",
+      "line": 56,
+      "selectors": [
+        "StaticCanvasLimits.maximumStaticCallableCases"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let maximumStaticCallableCases: UInt16",
+      "after": "    package let maximumStaticCallableCases: UInt16",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingLimits.swift",
+      "line": 57,
+      "selectors": [
+        "StaticCanvasLimits.maximumStaticCaptureBytes"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let maximumStaticCaptureBytes: UInt16",
+      "after": "    package let maximumStaticCaptureBytes: UInt16",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingValues.swift",
+      "line": 1,
+      "selectors": [
+        "DrawingPlanSummary"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct DrawingPlanSummary: Equatable, Sendable {",
+      "after": "package struct DrawingPlanSummary: Equatable, Sendable {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingValues.swift",
+      "line": 23,
+      "selectors": [
+        "DrawingProductionError"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum DrawingProductionError: UInt8, Equatable, Sendable {",
+      "after": "package enum DrawingProductionError: UInt8, Equatable, Sendable {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingValues.swift",
+      "line": 36,
+      "selectors": [
+        "DrawingPlanResult"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum DrawingPlanResult: Equatable, Sendable {",
+      "after": "package enum DrawingPlanResult: Equatable, Sendable {",
+      "trace_roots": [
+        "R1:withCanvasStagedValues",
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIRenderCore/DrawingOperationSink.swift",
+      "line": 3,
+      "selectors": [
+        "SubpathRange"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct SubpathRange: Equatable, Sendable {",
+      "after": "package struct SubpathRange: Equatable, Sendable {",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIRenderCore/DrawingOperationSink.swift",
+      "line": 16,
+      "selectors": [
+        "StraightLineStrokeHeader"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct StraightLineStrokeHeader: Equatable, Sendable {",
+      "after": "package struct StraightLineStrokeHeader: Equatable, Sendable {",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIExecution/ExecutionValues.swift",
+      "line": 4,
+      "selectors": [
+        "RunCycleID"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct RunCycleID: Equatable, Hashable, Sendable {",
+      "after": "package struct RunCycleID: Equatable, Hashable, Sendable {",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIExecution/ExecutionValues.swift",
+      "line": 20,
+      "selectors": [
+        "CandidateFrameID"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct CandidateFrameID: Equatable, Hashable, Sendable {",
+      "after": "package struct CandidateFrameID: Equatable, Hashable, Sendable {",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIExecution/ExecutionValues.swift",
+      "line": 37,
+      "selectors": [
+        "ExecutionPhase"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum ExecutionPhase: UInt8, Equatable, Sendable {",
+      "after": "package enum ExecutionPhase: UInt8, Equatable, Sendable {",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIExecution/ExecutionValues.swift",
+      "line": 79,
+      "selectors": [
+        "ExecutionContext"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct ExecutionContext: Equatable, Sendable {",
+      "after": "package struct ExecutionContext: Equatable, Sendable {",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIExecution/ExecutionValues.swift",
+      "line": 80,
+      "selectors": [
+        "ExecutionContext.cycle"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let cycle: RunCycleID?",
+      "after": "    package let cycle: RunCycleID?",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIExecution/ExecutionValues.swift",
+      "line": 82,
+      "selectors": [
+        "ExecutionContext.candidateFrame"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let candidateFrame: CandidateFrameID?",
+      "after": "    package let candidateFrame: CandidateFrameID?",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIExecution/ExecutionValues.swift",
+      "line": 83,
+      "selectors": [
+        "ExecutionContext.phase"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let phase: ExecutionPhase",
+      "after": "    package let phase: ExecutionPhase",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line": 7,
+      "selectors": [
+        "ObservableCanvasInvocationSource"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct ObservableCanvasInvocationSource<",
+      "after": "package struct ObservableCanvasInvocationSource<",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line": 13,
+      "selectors": [
+        "models"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private let models: ObservableModelScope<Model, Schema>",
+      "after": "    internal let models: ObservableModelScope<Model, Schema>",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line": 14,
+      "selectors": [
+        "values"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private let values: CanvasStagedValues<Identity, Table>",
+      "after": "    internal let values: CanvasStagedValues<Identity, Table>",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line": 15,
+      "selectors": [
+        "table"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private var table: Table",
+      "after": "    internal var table: Table",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line": 29,
+      "selectors": [
+        "invokeCanvas"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package mutating func invokeCanvas(",
+      "after": "    package mutating func invokeCanvas(",
+      "trace_roots": [
+        "R5:invokeCanvas",
+        "O2:actual Canvas derive caller"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "line": 92,
+      "selectors": [
+        "dispatch"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package static func dispatch<Records, Model, RootIdentity, Action>(",
+      "after": "    package static func dispatch<Records, Model, RootIdentity, Action>(",
+      "trace_roots": [
+        "R6:dispatch"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 1,
+      "selectors": [
+        "HostActivationProgress"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct HostActivationProgress: Equatable, Sendable {",
+      "after": "package struct HostActivationProgress: Equatable, Sendable {",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 25,
+      "selectors": [
+        "HostActivationStepResult"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum HostActivationStepResult<Failure: Equatable & Sendable>:",
+      "after": "package enum HostActivationStepResult<Failure: Equatable & Sendable>:",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 32,
+      "selectors": [
+        "MVPHostActivationOwner"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol MVPHostActivationOwner: ~Copyable, ~Escapable {",
+      "after": "package protocol MVPHostActivationOwner: ~Copyable, ~Escapable {",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 55,
+      "selectors": [
+        "MVPHostTeardownOwner"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol MVPHostTeardownOwner: ~Copyable, ~Escapable {",
+      "after": "package protocol MVPHostTeardownOwner: ~Copyable, ~Escapable {",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 66,
+      "selectors": [
+        "MVPHostActivationController"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct MVPHostActivationController<Failure: Equatable & Sendable> {",
+      "after": "package struct MVPHostActivationController<Failure: Equatable & Sendable> {",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 2,
+      "selectors": [
+        "HostActivationProgress.runtimeConstructed"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let runtimeConstructed: Bool",
+      "after": "    package let runtimeConstructed: Bool",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 3,
+      "selectors": [
+        "HostActivationProgress.observationInstalled"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let observationInstalled: Bool",
+      "after": "    package let observationInstalled: Bool",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 4,
+      "selectors": [
+        "HostActivationProgress.sourceStarted"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let sourceStarted: Bool",
+      "after": "    package let sourceStarted: Bool",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 67,
+      "selectors": [
+        "MVPHostActivationController.lifecycleState"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package private(set) var lifecycleState: MVPHostLifecycleState = .valid",
+      "after": "    package internal(set) var lifecycleState: MVPHostLifecycleState = .valid",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 68,
+      "selectors": [
+        "MVPHostActivationController.progress"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package private(set) var progress = HostActivationProgress()",
+      "after": "    package internal(set) var progress = HostActivationProgress()",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 69,
+      "selectors": [
+        "MVPHostActivationController.assemblyReportRuntimeUseIsValid"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package private(set) var assemblyReportRuntimeUseIsValid = true",
+      "after": "    package internal(set) var assemblyReportRuntimeUseIsValid = true",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 6,
+      "selectors": [
+        "HostActivationProgress.init"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package init(",
+      "after": "    package init(",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 16,
+      "selectors": [
+        "HostActivationProgress.merging"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    func merging(_ other: Self) -> Self {",
+      "after": "    func merging(_ other: Self) -> Self {",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 78,
+      "selectors": [
+        "MVPHostActivationController.activate"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package mutating func activate<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(",
+      "after": "    package mutating func activate<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 124,
+      "selectors": [
+        "MVPHostActivationController.teardown"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package mutating func teardown<Owner: MVPHostTeardownOwner & ~Copyable & ~Escapable>(",
+      "after": "    package mutating func teardown<Owner: MVPHostTeardownOwner & ~Copyable & ~Escapable>(",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 146,
+      "selectors": [
+        "MVPHostActivationController.record"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func record(",
+      "after": "    internal mutating func record(",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 161,
+      "selectors": [
+        "MVPHostActivationController.contain"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    private mutating func contain<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(",
+      "after": "    internal mutating func contain<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 71,
+      "selectors": [
+        "MVPHostActivationController.init()"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package init() {}",
+      "after": "    package init() {}",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "line": 73,
+      "selectors": [
+        "MVPHostActivationController.init(lifecycleState:)"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package init(lifecycleState: MVPHostLifecycleState) {",
+      "after": "    package init(lifecycleState: MVPHostLifecycleState) {",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 42,
+      "selectors": [
+        "SignalAnalyzerPresetLiveOwner"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package protocol SignalAnalyzerPresetLiveOwner:",
+      "after": "package protocol SignalAnalyzerPresetLiveOwner:",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 48,
+      "selectors": [
+        "SignalAnalyzerPresetHostInstance"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct SignalAnalyzerPresetHostInstance<Owner>: MVPHostInstance, ~Copyable, ~Escapable",
+      "after": "package struct SignalAnalyzerPresetHostInstance<Owner>: MVPHostInstance, ~Copyable, ~Escapable",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 89,
+      "selectors": [
+        "SignalAnalyzerPresetHostInstances"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum SignalAnalyzerPresetHostInstances {",
+      "after": "package enum SignalAnalyzerPresetHostInstances {",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 6,
+      "selectors": [
+        "MacOSDynamicHostActivationFailure"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum MacOSDynamicHostActivationFailure: Equatable, Sendable {",
+      "after": "package enum MacOSDynamicHostActivationFailure: Equatable, Sendable {",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 15,
+      "selectors": [
+        "MacOSStaticHostActivationFailure"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum MacOSStaticHostActivationFailure: Equatable, Sendable {",
+      "after": "package enum MacOSStaticHostActivationFailure: Equatable, Sendable {",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 51,
+      "selectors": [
+        "owner"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package private(set) var owner: Owner",
+      "after": "    package internal(set) var owner: Owner",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 52,
+      "selectors": [
+        "controller"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package private(set) var controller: MVPHostActivationController<Owner.ActivationFailure>",
+      "after": "    package internal(set) var controller: MVPHostActivationController<Owner.ActivationFailure>",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 53,
+      "selectors": [
+        "invariantFailure"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    private let invariantFailure: Owner.ActivationFailure",
+      "after": "    internal let invariantFailure: Owner.ActivationFailure",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 74,
+      "selectors": [
+        "SignalAnalyzerPresetHostInstance.activate"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package mutating func activate() -> HostActivationResult<Owner.ActivationFailure> {",
+      "after": "    package mutating func activate() -> HostActivationResult<Owner.ActivationFailure> {",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 84,
+      "selectors": [
+        "SignalAnalyzerPresetHostInstance.teardown"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package mutating func teardown() {",
+      "after": "    package mutating func teardown() {",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 56,
+      "selectors": [
+        "SignalAnalyzerPresetHostInstance.init(expectedKind:assemblyReport:owner:invariantFailure:)"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    fileprivate init?(",
+      "after": "    internal init?(",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 91,
+      "selectors": [
+        "SignalAnalyzerPresetHostInstances.macOSDynamic"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package static func macOSDynamic<Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable>(",
+      "after": "    package static func macOSDynamic<Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable>(",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 105,
+      "selectors": [
+        "SignalAnalyzerPresetHostInstances.macOSStatic"
+      ],
+      "added_attributes": [
+        "@inlinable"
+      ],
+      "before": "    package static func macOSStatic<Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable>(",
+      "after": "    package static func macOSStatic<Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable>(",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "line": 80,
+      "selectors": [
+        "MVPHostLifecycleState"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum MVPHostLifecycleState: UInt8, Equatable, Sendable {",
+      "after": "package enum MVPHostLifecycleState: UInt8, Equatable, Sendable {",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "line": 89,
+      "selectors": [
+        "HostActivationResult"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum HostActivationResult<Failure: Equatable & Sendable>:",
+      "after": "package enum HostActivationResult<Failure: Equatable & Sendable>:",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "line": 40,
+      "selectors": [
+        "HostAssemblyReport"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package struct HostAssemblyReport: Equatable, Sendable {",
+      "after": "package struct HostAssemblyReport: Equatable, Sendable {",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "line": 41,
+      "selectors": [
+        "HostAssemblyReport.kind"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "    package let kind: MVPHostKind",
+      "after": "    package let kind: MVPHostKind",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift",
+      "line": 9,
+      "selectors": [
+        "MVPHostKind"
+      ],
+      "added_attributes": [
+        "@usableFromInline"
+      ],
+      "before": "package enum MVPHostKind: UInt8, Equatable, Sendable {",
+      "after": "package enum MVPHostKind: UInt8, Equatable, Sendable {",
+      "trace_roots": [
+        "R2:activate",
+        "R3:teardown",
+        "F1/F2:actual checked host factory callers"
+      ]
+    }
+  ],
+  "noops": [],
+  "initializer_equivalents": [
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "type": "StackMeasure",
+      "source": "\n        @inlinable\n        internal init(\n            childCount: UInt16 = 0,\n            flexibleSpacerCount: UInt16 = 0,\n            mainExtent: GeometryScalar = 0,\n            crossExtent: GeometryScalar = 0\n        ) {\n            self.childCount = childCount\n            self.flexibleSpacerCount = flexibleSpacerCount\n            self.mainExtent = mainExtent\n            self.crossExtent = crossExtent\n        }\n",
+      "guard": "same four memberwise parameter defaults/field assignments, all trivial scalar ownership; internal serialized ABI only"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "type": "CanvasStagedEntry",
+      "source": "\n    @inlinable\n    internal init(\n        identity: Identity,\n        witness: UInt16,\n        value: Payload?,\n        invoked: Bool = false\n    ) {\n        self.identity = identity\n        self.witness = witness\n        self.value = value\n        self.invoked = invoked\n    }\n",
+      "guard": "same synthesized memberwise parameter order/types/default invoked=false and field assignments; internal serialized ABI only, no pointer capability constructor"
+    }
+  ]
+}

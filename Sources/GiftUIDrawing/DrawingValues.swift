@@ -1,3 +1,4 @@
+@usableFromInline
 package struct DrawingPlanSummary: Equatable, Sendable {
     package let canvasOccurrenceCount: UInt16
     package let strokeCount: UInt16
@@ -20,6 +21,7 @@ package struct DrawingPlanSummary: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum DrawingProductionError: UInt8, Equatable, Sendable {
     case invalidValue = 0
     case invalidPathState = 1
@@ -33,6 +35,7 @@ package enum DrawingProductionError: UInt8, Equatable, Sendable {
     case invalidModelAccess = 9
 }
 
+@usableFromInline
 package enum DrawingPlanResult: Equatable, Sendable {
     case success(DrawingPlanSummary)
     case failure(DrawingProductionError)

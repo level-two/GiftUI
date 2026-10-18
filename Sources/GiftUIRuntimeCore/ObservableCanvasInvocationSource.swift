@@ -4,15 +4,19 @@ import GiftUIObservableState
 
 /// The source owns no read or model. Both actual owner and staged backing must
 /// outlive this lexical adapter; each invocation creates and ends a fresh read.
+@usableFromInline
 package struct ObservableCanvasInvocationSource<
     Model: ~Copyable, Schema,
     Identity: Equatable & Sendable, Table: CanvasValueTable
 >:
     ~Copyable, ~Escapable, CanvasInvocationSource
 where Table.Domain.Slot == ObservableModelReadSlot<Model> {
-    private let models: ObservableModelScope<Model, Schema>
-    private let values: CanvasStagedValues<Identity, Table>
-    private var table: Table
+    @usableFromInline
+    internal let models: ObservableModelScope<Model, Schema>
+    @usableFromInline
+    internal let values: CanvasStagedValues<Identity, Table>
+    @usableFromInline
+    internal var table: Table
 
     @_lifetime(copy models, copy values)
     package init(
@@ -26,6 +30,7 @@ where Table.Domain.Slot == ObservableModelReadSlot<Model> {
     package var canvasOccurrenceCount: UInt16 { values.count }
     package func canvasIdentity(at index: UInt16) -> Identity? { values.identity(at: index) }
     @inline(__always)
+    @inlinable
     package mutating func invokeCanvas(
         at identity: Identity, context: inout GraphicsContext,
         size: Size

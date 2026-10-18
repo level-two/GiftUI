@@ -1,0 +1,786 @@
+diff --git a/Sources/GiftUIDrawing/CanvasInvocationSource.swift b/Sources/GiftUIDrawing/CanvasInvocationSource.swift
+index 00d88461..7355256a 100644
+--- a/Sources/GiftUIDrawing/CanvasInvocationSource.swift
++++ b/Sources/GiftUIDrawing/CanvasInvocationSource.swift
+@@ -2,0 +3 @@ import GiftUI
++@usableFromInline
+diff --git a/Sources/GiftUIDrawing/CanvasPlanProducer.swift b/Sources/GiftUIDrawing/CanvasPlanProducer.swift
+index 01a98a05..8e459078 100644
+--- a/Sources/GiftUIDrawing/CanvasPlanProducer.swift
++++ b/Sources/GiftUIDrawing/CanvasPlanProducer.swift
+@@ -4,0 +5 @@ import GiftUILayout
++@usableFromInline
+@@ -5,0 +7 @@ package enum CanvasPlanProducer {
++    @inlinable
+@@ -105 +107,2 @@ package enum CanvasPlanProducer {
+-    private static func validateOccurrences<Source, Layout>(
++    @inlinable
++    internal static func validateOccurrences<Source, Layout>(
+@@ -142 +145,2 @@ package enum CanvasPlanProducer {
+-    private static func fail<Source, Workspace>(
++    @inlinable
++    internal static func fail<Source, Workspace>(
+@@ -176 +180,2 @@ package enum CanvasPlanProducer {
+-    private static func productionError(
++    @usableFromInline
++    internal static func productionError(
+diff --git a/Sources/GiftUIDrawing/CanvasStagedValues.swift b/Sources/GiftUIDrawing/CanvasStagedValues.swift
+index 122518fb..b0f56ad0 100644
+--- a/Sources/GiftUIDrawing/CanvasStagedValues.swift
++++ b/Sources/GiftUIDrawing/CanvasStagedValues.swift
+@@ -3,0 +4 @@ import GiftUI
++@usableFromInline
+@@ -10,0 +12 @@ package protocol CanvasValueTable: StaticCanvasCallableTable {
++@usableFromInline
+@@ -11,0 +14 @@ package struct CanvasStagedEntry<Identity: Equatable & Sendable, Payload> {
++    @usableFromInline
+@@ -12,0 +16 @@ package struct CanvasStagedEntry<Identity: Equatable & Sendable, Payload> {
++    @usableFromInline
+@@ -14,2 +18,17 @@ package struct CanvasStagedEntry<Identity: Equatable & Sendable, Payload> {
+-    fileprivate var value: Payload?
+-    fileprivate var invoked = false
++    @usableFromInline
++    internal var value: Payload?
++    @usableFromInline
++    internal var invoked = false
++
++    @inlinable
++    internal init(
++        identity: Identity,
++        witness: UInt16,
++        value: Payload?,
++        invoked: Bool = false
++    ) {
++        self.identity = identity
++        self.witness = witness
++        self.value = value
++        self.invoked = invoked
++    }
+@@ -17,0 +37 @@ package struct CanvasStagedEntry<Identity: Equatable & Sendable, Payload> {
++@usableFromInline
+@@ -19,2 +39,5 @@ package struct CanvasStagedMetadata {
+-    package fileprivate(set) var count: UInt16 = 0
+-    package fileprivate(set) var releases: UInt16 = 0
++    @usableFromInline
++    package internal(set) var count: UInt16 = 0
++    @usableFromInline
++    package internal(set) var releases: UInt16 = 0
++    @inlinable
+@@ -25,0 +49 @@ package struct CanvasStagedMetadata {
++@inlinable
+@@ -54,0 +79 @@ package func withCanvasStagedValues<
++@usableFromInline
+@@ -58,2 +83,4 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
+-    private let state: UnsafeMutablePointer<CanvasStagedMetadata>
+-    private let entries:
++    @usableFromInline
++    internal let state: UnsafeMutablePointer<CanvasStagedMetadata>
++    @usableFromInline
++    internal let entries:
+@@ -61 +88,2 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
+-    private let capacity: UInt16
++    @usableFromInline
++    internal let capacity: UInt16
+@@ -64 +92,2 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
+-    fileprivate init(
++    @inlinable
++    internal init(
+@@ -75,0 +105 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
++    @inlinable
+@@ -80 +110,2 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
+-    private init(borrowing other: borrowing CanvasStagedValues<Identity, Table>) {
++    @inlinable
++    internal init(borrowing other: borrowing CanvasStagedValues<Identity, Table>) {
+@@ -84,0 +116 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
++    @inlinable
+@@ -85,0 +118 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
++    @inlinable
+@@ -86,0 +120 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
++    @inlinable
+@@ -91,0 +126 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
++    @inlinable
+@@ -106,0 +142 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
++    @inlinable
+@@ -121,0 +158 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
++    @inlinable
+@@ -129,0 +167 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
++    @inlinable
+diff --git a/Sources/GiftUIDrawing/DrawingLimits.swift b/Sources/GiftUIDrawing/DrawingLimits.swift
+index 4d05075b..ad7b3bd3 100644
+--- a/Sources/GiftUIDrawing/DrawingLimits.swift
++++ b/Sources/GiftUIDrawing/DrawingLimits.swift
+@@ -2,0 +3 @@ import GiftUI
++@usableFromInline
+@@ -4,0 +6 @@ package struct DrawingLimits: Equatable, Sendable {
++    @usableFromInline
+@@ -54,0 +57 @@ package struct DrawingLimits: Equatable, Sendable {
++@usableFromInline
+@@ -55,0 +59 @@ package struct StaticCanvasLimits: Equatable, Sendable {
++    @usableFromInline
+@@ -56,0 +61 @@ package struct StaticCanvasLimits: Equatable, Sendable {
++    @usableFromInline
+diff --git a/Sources/GiftUIDrawing/DrawingPlan.swift b/Sources/GiftUIDrawing/DrawingPlan.swift
+index 61c86cb7..3e8c068f 100644
+--- a/Sources/GiftUIDrawing/DrawingPlan.swift
++++ b/Sources/GiftUIDrawing/DrawingPlan.swift
+@@ -3,0 +4 @@ import GiftUIRenderCore
++@usableFromInline
+@@ -28,0 +30 @@ package protocol DrawingPlanView {
++@usableFromInline
+@@ -37,0 +40 @@ package protocol DrawingPlanWorkspace: DrawingPlanView {
++@usableFromInline
+diff --git a/Sources/GiftUIDrawing/DrawingValues.swift b/Sources/GiftUIDrawing/DrawingValues.swift
+index fbca83c3..1c2a8be4 100644
+--- a/Sources/GiftUIDrawing/DrawingValues.swift
++++ b/Sources/GiftUIDrawing/DrawingValues.swift
+@@ -0,0 +1 @@
++@usableFromInline
+@@ -22,0 +24 @@ package struct DrawingPlanSummary: Equatable, Sendable {
++@usableFromInline
+@@ -35,0 +38 @@ package enum DrawingProductionError: UInt8, Equatable, Sendable {
++@usableFromInline
+diff --git a/Sources/GiftUIDrawing/StaticCanvasCallableTable.swift b/Sources/GiftUIDrawing/StaticCanvasCallableTable.swift
+index 11d94f2a..1664c3b4 100644
+--- a/Sources/GiftUIDrawing/StaticCanvasCallableTable.swift
++++ b/Sources/GiftUIDrawing/StaticCanvasCallableTable.swift
+@@ -2,0 +3 @@ import GiftUI
++@usableFromInline
+diff --git a/Sources/GiftUIExecution/ExecutionValues.swift b/Sources/GiftUIExecution/ExecutionValues.swift
+index ce50fd36..547d2f29 100644
+--- a/Sources/GiftUIExecution/ExecutionValues.swift
++++ b/Sources/GiftUIExecution/ExecutionValues.swift
+@@ -3,0 +4 @@ import GiftUIRenderCore
++@usableFromInline
+@@ -19,0 +21 @@ package struct SemanticRevision: Equatable, Hashable, Sendable {
++@usableFromInline
+@@ -36,0 +39 @@ package struct ActionGeneration: Equatable, Hashable, Sendable {
++@usableFromInline
+@@ -78,0 +82 @@ package struct ExecutionLimits: Equatable, Sendable {
++@usableFromInline
+@@ -79,0 +84 @@ package struct ExecutionContext: Equatable, Sendable {
++    @usableFromInline
+@@ -81,0 +87 @@ package struct ExecutionContext: Equatable, Sendable {
++    @usableFromInline
+@@ -82,0 +89 @@ package struct ExecutionContext: Equatable, Sendable {
++    @usableFromInline
+diff --git a/Sources/GiftUIHostConfiguration/HostActivationController.swift b/Sources/GiftUIHostConfiguration/HostActivationController.swift
+index 581fe9ed..98e73064 100644
+--- a/Sources/GiftUIHostConfiguration/HostActivationController.swift
++++ b/Sources/GiftUIHostConfiguration/HostActivationController.swift
+@@ -0,0 +1 @@
++@usableFromInline
+@@ -1,0 +3 @@ package struct HostActivationProgress: Equatable, Sendable {
++    @usableFromInline
+@@ -2,0 +5 @@ package struct HostActivationProgress: Equatable, Sendable {
++    @usableFromInline
+@@ -3,0 +7 @@ package struct HostActivationProgress: Equatable, Sendable {
++    @usableFromInline
+@@ -5,0 +10 @@ package struct HostActivationProgress: Equatable, Sendable {
++    @inlinable
+@@ -15,0 +21 @@ package struct HostActivationProgress: Equatable, Sendable {
++    @inlinable
+@@ -24,0 +31 @@ package struct HostActivationProgress: Equatable, Sendable {
++@usableFromInline
+@@ -31,0 +39 @@ package enum HostActivationStepResult<Failure: Equatable & Sendable>:
++@usableFromInline
+@@ -54,0 +63 @@ package protocol MVPHostActivationOwner: ~Copyable, ~Escapable {
++@usableFromInline
+@@ -65,0 +75 @@ package protocol MVPHostTeardownOwner: ~Copyable, ~Escapable {
++@usableFromInline
+@@ -67,4 +77,8 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
+-    package private(set) var lifecycleState: MVPHostLifecycleState = .valid
+-    package private(set) var progress = HostActivationProgress()
+-    package private(set) var assemblyReportRuntimeUseIsValid = true
+-
++    @usableFromInline
++    package internal(set) var lifecycleState: MVPHostLifecycleState = .valid
++    @usableFromInline
++    package internal(set) var progress = HostActivationProgress()
++    @usableFromInline
++    package internal(set) var assemblyReportRuntimeUseIsValid = true
++
++    @usableFromInline
+@@ -72,0 +87 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
++    @usableFromInline
+@@ -77,0 +93 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
++    @inlinable
+@@ -123,0 +140 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
++    @inlinable
+@@ -146 +163,2 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
+-    private mutating func record(
++    @inlinable
++    internal mutating func record(
+@@ -161 +179,2 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
+-    private mutating func contain<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(
++    @inlinable
++    internal mutating func contain<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(
+diff --git a/Sources/GiftUIHostConfiguration/HostConfigurationResults.swift b/Sources/GiftUIHostConfiguration/HostConfigurationResults.swift
+index edadb945..66851d7f 100644
+--- a/Sources/GiftUIHostConfiguration/HostConfigurationResults.swift
++++ b/Sources/GiftUIHostConfiguration/HostConfigurationResults.swift
+@@ -39,0 +40 @@ package enum HostConfigurationError: Equatable, Sendable {
++@usableFromInline
+@@ -40,0 +42 @@ package struct HostAssemblyReport: Equatable, Sendable {
++    @usableFromInline
+@@ -79,0 +82 @@ package struct HostValidationAccessLedger: Equatable, Sendable {
++@usableFromInline
+@@ -88,0 +92 @@ package enum MVPHostLifecycleState: UInt8, Equatable, Sendable {
++@usableFromInline
+diff --git a/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift b/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift
+index 8bbdd5f2..51125edd 100644
+--- a/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift
++++ b/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift
+@@ -8,0 +9 @@ import GiftUITextResources
++@usableFromInline
+diff --git a/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift b/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift
+index 7f61077a..bc129c75 100644
+--- a/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift
++++ b/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift
+@@ -5,0 +6 @@ import GiftUIRuntimeCore
++@usableFromInline
+@@ -14,0 +16 @@ package enum MacOSDynamicHostActivationFailure: Equatable, Sendable {
++@usableFromInline
+@@ -41,0 +44 @@ package enum NRF52840StaticHostActivationFailure: Equatable, Sendable {
++@usableFromInline
+@@ -47,0 +51 @@ package protocol SignalAnalyzerPresetLiveOwner:
++@usableFromInline
+@@ -51,3 +55,6 @@ where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
+-    package private(set) var owner: Owner
+-    package private(set) var controller: MVPHostActivationController<Owner.ActivationFailure>
+-    private let invariantFailure: Owner.ActivationFailure
++    @usableFromInline
++    package internal(set) var owner: Owner
++    @usableFromInline
++    package internal(set) var controller: MVPHostActivationController<Owner.ActivationFailure>
++    @usableFromInline
++    internal let invariantFailure: Owner.ActivationFailure
+@@ -56 +63,2 @@ where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
+-    fileprivate init?(
++    @inlinable
++    internal init?(
+@@ -73,0 +82 @@ where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
++    @inlinable
+@@ -83,0 +93 @@ where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
++    @inlinable
+@@ -88,0 +99 @@ where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
++@usableFromInline
+@@ -90,0 +102 @@ package enum SignalAnalyzerPresetHostInstances {
++    @inlinable
+@@ -104,0 +117 @@ package enum SignalAnalyzerPresetHostInstances {
++    @inlinable
+diff --git a/Sources/GiftUILayout/Layout.swift b/Sources/GiftUILayout/Layout.swift
+index fafa3b0a..6d95fa42 100644
+--- a/Sources/GiftUILayout/Layout.swift
++++ b/Sources/GiftUILayout/Layout.swift
+@@ -4,0 +5 @@ import GiftUITextResources
++@inlinable
+diff --git a/Sources/GiftUILayout/LayoutCounters.swift b/Sources/GiftUILayout/LayoutCounters.swift
+index c6355610..9eb33acd 100644
+--- a/Sources/GiftUILayout/LayoutCounters.swift
++++ b/Sources/GiftUILayout/LayoutCounters.swift
+@@ -0,0 +1 @@
++@usableFromInline
+@@ -1,0 +3 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+@@ -2,0 +5 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+@@ -3,0 +7 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+@@ -4,0 +9 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+@@ -5,0 +11 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+@@ -6,0 +13 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+@@ -11,0 +19 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+@@ -15,0 +24 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+@@ -23,0 +33 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+@@ -35,0 +46 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+@@ -42,0 +54 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+@@ -53,0 +66 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+@@ -64,0 +78 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+@@ -75,0 +90 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+@@ -81,0 +97 @@ package struct LayoutCounters: Equatable, Sendable {
++    @usableFromInline
+diff --git a/Sources/GiftUILayout/LayoutEngine.swift b/Sources/GiftUILayout/LayoutEngine.swift
+index 850c3bc8..3653275b 100644
+--- a/Sources/GiftUILayout/LayoutEngine.swift
++++ b/Sources/GiftUILayout/LayoutEngine.swift
+@@ -4,0 +5 @@ import GiftUITextResources
++@usableFromInline
+@@ -6 +7,3 @@ package struct LayoutEngine {
+-    private struct StackMeasure {
++    @usableFromInline
++    internal struct StackMeasure {
++        @usableFromInline
+@@ -7,0 +11 @@ package struct LayoutEngine {
++        @usableFromInline
+@@ -8,0 +13 @@ package struct LayoutEngine {
++        @usableFromInline
+@@ -9,0 +15 @@ package struct LayoutEngine {
++        @usableFromInline
+@@ -10,0 +17,13 @@ package struct LayoutEngine {
++
++        @inlinable
++        internal init(
++            childCount: UInt16 = 0,
++            flexibleSpacerCount: UInt16 = 0,
++            mainExtent: GeometryScalar = 0,
++            crossExtent: GeometryScalar = 0
++        ) {
++            self.childCount = childCount
++            self.flexibleSpacerCount = flexibleSpacerCount
++            self.mainExtent = mainExtent
++            self.crossExtent = crossExtent
++        }
+@@ -13,3 +32,6 @@ package struct LayoutEngine {
+-    private let limits: LayoutLimits
+-    private var counters: LayoutCounters
+-    package private(set) var failure: LayoutError?
++    @usableFromInline
++    internal let limits: LayoutLimits
++    @usableFromInline
++    internal var counters: LayoutCounters
++    @usableFromInline
++    package internal(set) var failure: LayoutError?
+@@ -16,0 +39 @@ package struct LayoutEngine {
++    @inlinable
+@@ -22,0 +46 @@ package struct LayoutEngine {
++    @usableFromInline
+@@ -24,0 +49 @@ package struct LayoutEngine {
++    @inlinable
+@@ -46,0 +72 @@ package struct LayoutEngine {
++    @inlinable
+@@ -69 +95,2 @@ package struct LayoutEngine {
+-    private mutating func measureOccurrence<Semantic, Metrics, Workspace>(
++    @inlinable
++    internal mutating func measureOccurrence<Semantic, Metrics, Workspace>(
+@@ -104 +131,2 @@ package struct LayoutEngine {
+-    private mutating func measureModifier<Semantic, Metrics, Workspace>(
++    @inlinable
++    internal mutating func measureModifier<Semantic, Metrics, Workspace>(
+@@ -189 +217,2 @@ package struct LayoutEngine {
+-    private mutating func measureText<Semantic, Metrics, Workspace>(
++    @inlinable
++    internal mutating func measureText<Semantic, Metrics, Workspace>(
+@@ -379 +408,2 @@ package struct LayoutEngine {
+-    private mutating func finalizeTextLine<Identity, Workspace>(
++    @inlinable
++    internal mutating func finalizeTextLine<Identity, Workspace>(
+@@ -418 +448,2 @@ package struct LayoutEngine {
+-    private mutating func textBaselineY(
++    @usableFromInline
++    internal mutating func textBaselineY(
+@@ -432 +463,2 @@ package struct LayoutEngine {
+-    private var zeroRect: Rect {
++    @usableFromInline
++    internal var zeroRect: Rect {
+@@ -436 +468,2 @@ package struct LayoutEngine {
+-    private mutating func measureContent<Semantic, Metrics, Workspace>(
++    @inlinable
++    internal mutating func measureContent<Semantic, Metrics, Workspace>(
+@@ -520 +553,2 @@ package struct LayoutEngine {
+-    private mutating func measureZStack<Semantic, Metrics, Workspace>(
++    @inlinable
++    internal mutating func measureZStack<Semantic, Metrics, Workspace>(
+@@ -559 +593,2 @@ package struct LayoutEngine {
+-    private mutating func measureOnlyFlattenedChild<Semantic, Metrics, Workspace>(
++    @inlinable
++    internal mutating func measureOnlyFlattenedChild<Semantic, Metrics, Workspace>(
+@@ -595 +630,2 @@ package struct LayoutEngine {
+-    private mutating func measureStack<Semantic, Metrics, Workspace>(
++    @inlinable
++    internal mutating func measureStack<Semantic, Metrics, Workspace>(
+@@ -682 +718,2 @@ package struct LayoutEngine {
+-    private mutating func measureFlattenedChildren<Semantic, Metrics, Workspace>(
++    @inlinable
++    internal mutating func measureFlattenedChildren<Semantic, Metrics, Workspace>(
+@@ -723 +760,2 @@ package struct LayoutEngine {
+-    private mutating func measureFlattenedOccurrence<Semantic, Metrics, Workspace>(
++    @inlinable
++    internal mutating func measureFlattenedOccurrence<Semantic, Metrics, Workspace>(
+@@ -806 +844,2 @@ package struct LayoutEngine {
+-    private mutating func assignFlexibleSpacers<Semantic, Workspace>(
++    @inlinable
++    internal mutating func assignFlexibleSpacers<Semantic, Workspace>(
+@@ -872 +911,2 @@ package struct LayoutEngine {
+-    private mutating func placeOccurrence<Semantic, Workspace>(
++    @inlinable
++    internal mutating func placeOccurrence<Semantic, Workspace>(
+@@ -907 +947,2 @@ package struct LayoutEngine {
+-    private mutating func placeModifier<Semantic, Workspace>(
++    @inlinable
++    internal mutating func placeModifier<Semantic, Workspace>(
+@@ -1009 +1050,2 @@ package struct LayoutEngine {
+-    private mutating func placeContent<Semantic, Workspace>(
++    @inlinable
++    internal mutating func placeContent<Semantic, Workspace>(
+@@ -1114 +1156,2 @@ package struct LayoutEngine {
+-    private mutating func placeTextGeometry<Workspace: LayoutWorkspace>(
++    @inlinable
++    internal mutating func placeTextGeometry<Workspace: LayoutWorkspace>(
+@@ -1195 +1238,2 @@ package struct LayoutEngine {
+-    private mutating func placeZStack<Semantic, Workspace>(
++    @inlinable
++    internal mutating func placeZStack<Semantic, Workspace>(
+@@ -1228 +1272,2 @@ package struct LayoutEngine {
+-    private mutating func placeZFlattenedOccurrence<Semantic, Workspace>(
++    @inlinable
++    internal mutating func placeZFlattenedOccurrence<Semantic, Workspace>(
+@@ -1282 +1327,2 @@ package struct LayoutEngine {
+-    private mutating func paddingInsets(
++    @usableFromInline
++    internal mutating func paddingInsets(
+@@ -1314 +1360,2 @@ package struct LayoutEngine {
+-    private mutating func measurementForOccurrence<Semantic, Workspace>(
++    @inlinable
++    internal mutating func measurementForOccurrence<Semantic, Workspace>(
+@@ -1339 +1386,2 @@ package struct LayoutEngine {
+-    private mutating func innerMeasurement<Semantic, Workspace>(
++    @inlinable
++    internal mutating func innerMeasurement<Semantic, Workspace>(
+@@ -1369 +1417,2 @@ package struct LayoutEngine {
+-    private mutating func onlyFlattenedChildMeasurement<Semantic, Workspace>(
++    @inlinable
++    internal mutating func onlyFlattenedChildMeasurement<Semantic, Workspace>(
+@@ -1416 +1465,2 @@ package struct LayoutEngine {
+-    private func frameChildProposal(
++    @usableFromInline
++    internal func frameChildProposal(
+@@ -1452 +1502,2 @@ package struct LayoutEngine {
+-    private func childFrameProposalAxis(
++    @usableFromInline
++    internal func childFrameProposalAxis(
+@@ -1470 +1521,2 @@ package struct LayoutEngine {
+-    private func frameMeasurement(
++    @usableFromInline
++    internal func frameMeasurement(
+@@ -1509 +1561,2 @@ package struct LayoutEngine {
+-    private func requestedFrameAxis(
++    @usableFromInline
++    internal func requestedFrameAxis(
+@@ -1526 +1579,2 @@ package struct LayoutEngine {
+-    private mutating func placeOnlyFlattenedChild<Semantic, Workspace>(
++    @inlinable
++    internal mutating func placeOnlyFlattenedChild<Semantic, Workspace>(
+@@ -1553 +1607,2 @@ package struct LayoutEngine {
+-    private mutating func placeStack<Semantic, Workspace>(
++    @inlinable
++    internal mutating func placeStack<Semantic, Workspace>(
+@@ -1593 +1648,2 @@ package struct LayoutEngine {
+-    private mutating func placeFlattenedChildrenAtOrigin<Semantic, Workspace>(
++    @inlinable
++    internal mutating func placeFlattenedChildrenAtOrigin<Semantic, Workspace>(
+@@ -1646 +1702,2 @@ package struct LayoutEngine {
+-    private mutating func placeStackChildren<Semantic, Workspace>(
++    @inlinable
++    internal mutating func placeStackChildren<Semantic, Workspace>(
+@@ -1755 +1812,2 @@ package struct LayoutEngine {
+-    private mutating func flattenedChildCount<Semantic: SemanticLayoutView & ~Escapable>(
++    @inlinable
++    internal mutating func flattenedChildCount<Semantic: SemanticLayoutView & ~Escapable>(
+@@ -1785 +1843,2 @@ package struct LayoutEngine {
+-    private mutating func fail<T>(_ error: LayoutError) -> T? {
++    @inlinable
++    internal mutating func fail<T>(_ error: LayoutError) -> T? {
+@@ -1791 +1850,2 @@ package struct LayoutEngine {
+-    private mutating func fail(_ error: LayoutError) -> Bool {
++    @usableFromInline
++    internal mutating func fail(_ error: LayoutError) -> Bool {
+@@ -1796 +1856,2 @@ package struct LayoutEngine {
+-    private func increment(_ value: UInt16) -> UInt16? {
++    @usableFromInline
++    internal func increment(_ value: UInt16) -> UInt16? {
+diff --git a/Sources/GiftUILayout/LayoutError.swift b/Sources/GiftUILayout/LayoutError.swift
+index e5d55ea9..bba3713f 100644
+--- a/Sources/GiftUILayout/LayoutError.swift
++++ b/Sources/GiftUILayout/LayoutError.swift
+@@ -4,0 +5 @@ import GiftUITextResources
++@usableFromInline
+diff --git a/Sources/GiftUILayout/LayoutGeometry.swift b/Sources/GiftUILayout/LayoutGeometry.swift
+index 9fb97b25..573685b6 100644
+--- a/Sources/GiftUILayout/LayoutGeometry.swift
++++ b/Sources/GiftUILayout/LayoutGeometry.swift
+@@ -2,0 +3 @@ import GiftUI
++@usableFromInline
+@@ -3,0 +5 @@ package enum LayoutGeometry {
++    @usableFromInline
+@@ -5,0 +8 @@ package enum LayoutGeometry {
++    @usableFromInline
+@@ -18,0 +22 @@ package enum LayoutGeometry {
++    @usableFromInline
+@@ -29,0 +34 @@ package enum LayoutGeometry {
++    @usableFromInline
+@@ -62,0 +68 @@ package enum LayoutGeometry {
++    @usableFromInline
+@@ -73,0 +80 @@ package enum LayoutGeometry {
++    @usableFromInline
+@@ -88,0 +96 @@ package enum LayoutGeometry {
++    @usableFromInline
+@@ -106,0 +115 @@ package enum LayoutGeometry {
++    @usableFromInline
+@@ -117,0 +127 @@ package enum LayoutGeometry {
++    @usableFromInline
+@@ -135,0 +146 @@ package enum LayoutGeometry {
++    @usableFromInline
+diff --git a/Sources/GiftUILayout/LayoutPublication.swift b/Sources/GiftUILayout/LayoutPublication.swift
+index ddfe932e..10f70686 100644
+--- a/Sources/GiftUILayout/LayoutPublication.swift
++++ b/Sources/GiftUILayout/LayoutPublication.swift
+@@ -5,0 +6 @@ import GiftUITextResources
++@inlinable
+diff --git a/Sources/GiftUILayout/LayoutResultSink.swift b/Sources/GiftUILayout/LayoutResultSink.swift
+index 98ffeebb..3e554f24 100644
+--- a/Sources/GiftUILayout/LayoutResultSink.swift
++++ b/Sources/GiftUILayout/LayoutResultSink.swift
+@@ -4,0 +5 @@ import GiftUITextResources
++@usableFromInline
+@@ -33,0 +35 @@ package protocol LayoutResultSink {
++@usableFromInline
+diff --git a/Sources/GiftUILayout/LayoutSemanticValidation.swift b/Sources/GiftUILayout/LayoutSemanticValidation.swift
+index 6fe6a299..e9471f27 100644
+--- a/Sources/GiftUILayout/LayoutSemanticValidation.swift
++++ b/Sources/GiftUILayout/LayoutSemanticValidation.swift
+@@ -4,0 +5 @@ import GiftUITextResources
++@usableFromInline
+@@ -6,2 +7,4 @@ package struct LayoutSemanticValidation {
+-    private let limits: LayoutLimits
+-    private var counters: LayoutCounters
++    @usableFromInline
++    internal let limits: LayoutLimits
++    @usableFromInline
++    internal var counters: LayoutCounters
+@@ -8,0 +12 @@ package struct LayoutSemanticValidation {
++    @inlinable
+@@ -13,0 +18 @@ package struct LayoutSemanticValidation {
++    @usableFromInline
+@@ -15,0 +21 @@ package struct LayoutSemanticValidation {
++    @inlinable
+@@ -52 +58,2 @@ package struct LayoutSemanticValidation {
+-    private mutating func validateOccurrence<Semantic, Metrics, Workspace>(
++    @inlinable
++    internal mutating func validateOccurrence<Semantic, Metrics, Workspace>(
+@@ -163 +170,2 @@ package struct LayoutSemanticValidation {
+-    private mutating func validatePrimitiveContent<Semantic, Metrics, Workspace>(
++    @inlinable
++    internal mutating func validatePrimitiveContent<Semantic, Metrics, Workspace>(
+@@ -227 +235,2 @@ package struct LayoutSemanticValidation {
+-    private mutating func validateText<Semantic, Metrics>(
++    @inlinable
++    internal mutating func validateText<Semantic, Metrics>(
+@@ -288 +297,2 @@ package struct LayoutSemanticValidation {
+-    private mutating func reserveScope<Workspace: LayoutWorkspace>(
++    @inlinable
++    internal mutating func reserveScope<Workspace: LayoutWorkspace>(
+@@ -305 +315,2 @@ package struct LayoutSemanticValidation {
+-    private func validate(_ primitive: SemanticLayoutPrimitive) -> LayoutError? {
++    @usableFromInline
++    internal func validate(_ primitive: SemanticLayoutPrimitive) -> LayoutError? {
+@@ -316 +327,2 @@ package struct LayoutSemanticValidation {
+-    private func validate(_ modifier: SemanticLayoutModifier) -> LayoutError? {
++    @usableFromInline
++    internal func validate(_ modifier: SemanticLayoutModifier) -> LayoutError? {
+@@ -344 +356,2 @@ package struct LayoutSemanticValidation {
+-    private func invalid(_ value: GeometryScalar?) -> Bool {
++    @usableFromInline
++    internal func invalid(_ value: GeometryScalar?) -> Bool {
+@@ -348 +361,2 @@ package struct LayoutSemanticValidation {
+-    private func invalid(_ value: FrameLimit?) -> Bool {
++    @usableFromInline
++    internal func invalid(_ value: FrameLimit?) -> Bool {
+@@ -353 +367,2 @@ package struct LayoutSemanticValidation {
+-    private func relationIsValid(
++    @usableFromInline
++    internal func relationIsValid(
+@@ -363 +378,2 @@ package struct LayoutSemanticValidation {
+-    private func isValidUnicodeScalar(_ value: UInt32) -> Bool {
++    @usableFromInline
++    internal func isValidUnicodeScalar(_ value: UInt32) -> Bool {
+diff --git a/Sources/GiftUILayout/LayoutValues.swift b/Sources/GiftUILayout/LayoutValues.swift
+index 341188ec..7cbded0a 100644
+--- a/Sources/GiftUILayout/LayoutValues.swift
++++ b/Sources/GiftUILayout/LayoutValues.swift
+@@ -4,0 +5 @@ import GiftUITextResources
++@usableFromInline
+@@ -5,0 +7 @@ package struct LayoutLimits: Equatable, Sendable {
++    @usableFromInline
+@@ -6,0 +9 @@ package struct LayoutLimits: Equatable, Sendable {
++    @usableFromInline
+@@ -7,0 +11 @@ package struct LayoutLimits: Equatable, Sendable {
++    @usableFromInline
+@@ -8,0 +13 @@ package struct LayoutLimits: Equatable, Sendable {
++    @usableFromInline
+@@ -9,0 +15 @@ package struct LayoutLimits: Equatable, Sendable {
++    @usableFromInline
+@@ -34,0 +41 @@ package struct LayoutLimits: Equatable, Sendable {
++@usableFromInline
+@@ -35,0 +43 @@ package struct LayoutSummary: Equatable, Sendable {
++    @usableFromInline
+@@ -36,0 +45 @@ package struct LayoutSummary: Equatable, Sendable {
++    @usableFromInline
+@@ -37,0 +47 @@ package struct LayoutSummary: Equatable, Sendable {
++    @usableFromInline
+@@ -38,0 +49 @@ package struct LayoutSummary: Equatable, Sendable {
++    @usableFromInline
+@@ -39,0 +51 @@ package struct LayoutSummary: Equatable, Sendable {
++    @usableFromInline
+@@ -40,0 +53 @@ package struct LayoutSummary: Equatable, Sendable {
++    @usableFromInline
+@@ -42,0 +56 @@ package struct LayoutSummary: Equatable, Sendable {
++    @usableFromInline
+@@ -59,0 +74 @@ package struct LayoutSummary: Equatable, Sendable {
++@usableFromInline
+diff --git a/Sources/GiftUILayout/LayoutWorkspace.swift b/Sources/GiftUILayout/LayoutWorkspace.swift
+index d95bdb28..7d93b64a 100644
+--- a/Sources/GiftUILayout/LayoutWorkspace.swift
++++ b/Sources/GiftUILayout/LayoutWorkspace.swift
+@@ -4,0 +5 @@ import GiftUITextResources
++@usableFromInline
+@@ -5,0 +7 @@ package struct LayoutMeasurement: Equatable, Sendable {
++    @usableFromInline
+@@ -6,0 +9 @@ package struct LayoutMeasurement: Equatable, Sendable {
++    @usableFromInline
+@@ -8,0 +12 @@ package struct LayoutMeasurement: Equatable, Sendable {
++    @usableFromInline
+@@ -14,0 +19 @@ package struct LayoutMeasurement: Equatable, Sendable {
++@usableFromInline
+@@ -15,0 +21 @@ package struct LayoutPlacement: Equatable, Sendable {
++    @usableFromInline
+@@ -16,0 +23 @@ package struct LayoutPlacement: Equatable, Sendable {
++    @usableFromInline
+@@ -18,0 +26 @@ package struct LayoutPlacement: Equatable, Sendable {
++    @usableFromInline
+@@ -24,0 +33 @@ package struct LayoutPlacement: Equatable, Sendable {
++@usableFromInline
+@@ -26,0 +36 @@ where Identity: Equatable & Sendable {
++    @usableFromInline
+@@ -27,0 +38 @@ where Identity: Equatable & Sendable {
++    @usableFromInline
+@@ -28,0 +40 @@ where Identity: Equatable & Sendable {
++    @usableFromInline
+@@ -29,0 +42 @@ where Identity: Equatable & Sendable {
++    @usableFromInline
+@@ -30,0 +44 @@ where Identity: Equatable & Sendable {
++    @usableFromInline
+@@ -32,0 +47 @@ where Identity: Equatable & Sendable {
++    @usableFromInline
+@@ -47,0 +63 @@ where Identity: Equatable & Sendable {
++@usableFromInline
+@@ -49,0 +66 @@ where Identity: Equatable & Sendable {
++    @usableFromInline
+@@ -50,0 +68 @@ where Identity: Equatable & Sendable {
++    @usableFromInline
+@@ -51,0 +70 @@ where Identity: Equatable & Sendable {
++    @usableFromInline
+@@ -52,0 +72 @@ where Identity: Equatable & Sendable {
++    @usableFromInline
+@@ -53,0 +74 @@ where Identity: Equatable & Sendable {
++    @usableFromInline
+@@ -54,0 +76 @@ where Identity: Equatable & Sendable {
++    @usableFromInline
+@@ -55,0 +78 @@ where Identity: Equatable & Sendable {
++    @usableFromInline
+@@ -57,0 +81 @@ where Identity: Equatable & Sendable {
++    @usableFromInline
+@@ -76,0 +101 @@ where Identity: Equatable & Sendable {
++@usableFromInline
+diff --git a/Sources/GiftUILayout/ResolvedRenderLayoutView.swift b/Sources/GiftUILayout/ResolvedRenderLayoutView.swift
+index 6feb2573..e1b98180 100644
+--- a/Sources/GiftUILayout/ResolvedRenderLayoutView.swift
++++ b/Sources/GiftUILayout/ResolvedRenderLayoutView.swift
+@@ -3,0 +4 @@ import GiftUITextResources
++@usableFromInline
+@@ -25,0 +27 @@ package struct ResolvedRenderTextLine: Equatable, Sendable {
++@usableFromInline
+@@ -50,0 +53 @@ package struct ResolvedRenderGlyph: Equatable, Sendable {
++@usableFromInline
+diff --git a/Sources/GiftUIRenderCore/DrawingOperationSink.swift b/Sources/GiftUIRenderCore/DrawingOperationSink.swift
+index 284e3ccf..cbbd9b8c 100644
+--- a/Sources/GiftUIRenderCore/DrawingOperationSink.swift
++++ b/Sources/GiftUIRenderCore/DrawingOperationSink.swift
+@@ -2,0 +3 @@ import GiftUI
++@usableFromInline
+@@ -15,0 +17 @@ package struct SubpathRange: Equatable, Sendable {
++@usableFromInline
+diff --git a/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift b/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift
+index a65e7133..28af384d 100644
+--- a/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift
++++ b/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift
+@@ -6,0 +7 @@ import GiftUIObservableState
++@usableFromInline
+@@ -13,3 +14,6 @@ where Table.Domain.Slot == ObservableModelReadSlot<Model> {
+-    private let models: ObservableModelScope<Model, Schema>
+-    private let values: CanvasStagedValues<Identity, Table>
+-    private var table: Table
++    @usableFromInline
++    internal let models: ObservableModelScope<Model, Schema>
++    @usableFromInline
++    internal let values: CanvasStagedValues<Identity, Table>
++    @usableFromInline
++    internal var table: Table
+@@ -28,0 +33 @@ where Table.Domain.Slot == ObservableModelReadSlot<Model> {
++    @inlinable
+diff --git a/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift b/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift
+index 5bf295b2..fb6728d5 100644
+--- a/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift
++++ b/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift
+@@ -91,0 +92 @@ package enum RuntimeRecordInteractionBridge {
++    @inlinable
+diff --git a/Sources/GiftUISemanticCore/SemanticLayoutView.swift b/Sources/GiftUISemanticCore/SemanticLayoutView.swift
+index 580209ea..c40bddbf 100644
+--- a/Sources/GiftUISemanticCore/SemanticLayoutView.swift
++++ b/Sources/GiftUISemanticCore/SemanticLayoutView.swift
+@@ -2,0 +3 @@ import GiftUI
++@usableFromInline
+@@ -13,0 +15 @@ package enum SemanticLayoutPrimitive: Equatable, Sendable {
++@usableFromInline
+@@ -32,0 +35 @@ package enum SemanticLayoutModifier: Equatable, Sendable {
++@usableFromInline
+diff --git a/Sources/GiftUITextResources/GiftUITextResources.swift b/Sources/GiftUITextResources/GiftUITextResources.swift
+index de9a7085..3e2a7353 100644
+--- a/Sources/GiftUITextResources/GiftUITextResources.swift
++++ b/Sources/GiftUITextResources/GiftUITextResources.swift
+@@ -41,0 +42 @@ package struct FontResourceID: RawRepresentable, Equatable, Hashable, Sendable {
++@usableFromInline
+@@ -51,0 +53 @@ package struct FontInstanceID: Equatable, Hashable, Sendable {
++@usableFromInline
+@@ -52,0 +55 @@ package struct GlyphID: RawRepresentable, Equatable, Hashable, Sendable {
++    @usableFromInline
+@@ -54,0 +58 @@ package struct GlyphID: RawRepresentable, Equatable, Hashable, Sendable {
++    @usableFromInline
+@@ -74,0 +79 @@ package enum TextRasterKind: UInt8, Equatable, Sendable {
++@usableFromInline
+@@ -75,0 +81 @@ package struct FontLineMetrics: Equatable, Sendable {
++    @usableFromInline
+@@ -76,0 +83 @@ package struct FontLineMetrics: Equatable, Sendable {
++    @usableFromInline
+@@ -77,0 +85 @@ package struct FontLineMetrics: Equatable, Sendable {
++    @usableFromInline
+@@ -90,0 +99 @@ package struct FontLineMetrics: Equatable, Sendable {
++@usableFromInline
+@@ -91,0 +101 @@ package struct GlyphMetrics: Equatable, Sendable {
++    @usableFromInline
+@@ -109,0 +120 @@ package struct GlyphMetrics: Equatable, Sendable {
++@usableFromInline
+@@ -110,0 +122 @@ package struct FontInstanceDescriptor: Equatable, Sendable {
++    @usableFromInline
+@@ -111,0 +124 @@ package struct FontInstanceDescriptor: Equatable, Sendable {
++    @usableFromInline
+@@ -156,0 +170 @@ package struct RasterRealizationDescriptor: Equatable, Sendable {
++@usableFromInline
+@@ -159,0 +174 @@ package struct TextResourceDescriptor: Equatable, Sendable {
++    @usableFromInline
+@@ -178,0 +194 @@ package struct TextResourceDescriptor: Equatable, Sendable {
++@usableFromInline
+@@ -183,0 +200 @@ package enum GlyphMapping: Equatable, Sendable {
++@usableFromInline
+@@ -218,0 +236 @@ package struct GlyphRasterRecord: Equatable, Sendable {
++@usableFromInline

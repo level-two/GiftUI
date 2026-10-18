@@ -37,7 +37,9 @@ package enum HostConfigurationError: Equatable, Sendable {
     case invariantViolation
 }
 
+@usableFromInline
 package struct HostAssemblyReport: Equatable, Sendable {
+    @usableFromInline
     package let kind: MVPHostKind
     package let profile: RuntimeProfileKind
     package let storageAudit: RuntimeStorageAudit
@@ -77,6 +79,7 @@ package struct HostValidationAccessLedger: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum MVPHostLifecycleState: UInt8, Equatable, Sendable {
     case valid = 0
     case activating = 1
@@ -86,6 +89,7 @@ package enum MVPHostLifecycleState: UInt8, Equatable, Sendable {
     case quiescent = 5
 }
 
+@usableFromInline
 package enum HostActivationResult<Failure: Equatable & Sendable>:
     Equatable, Sendable
 {

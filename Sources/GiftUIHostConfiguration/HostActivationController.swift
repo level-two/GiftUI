@@ -1,8 +1,13 @@
+@usableFromInline
 package struct HostActivationProgress: Equatable, Sendable {
+    @usableFromInline
     package let runtimeConstructed: Bool
+    @usableFromInline
     package let observationInstalled: Bool
+    @usableFromInline
     package let sourceStarted: Bool
 
+    @inlinable
     package init(
         runtimeConstructed: Bool = false,
         observationInstalled: Bool = false,
@@ -13,6 +18,7 @@ package struct HostActivationProgress: Equatable, Sendable {
         self.sourceStarted = sourceStarted
     }
 
+    @inlinable
     func merging(_ other: Self) -> Self {
         Self(
             runtimeConstructed: runtimeConstructed || other.runtimeConstructed,
@@ -22,6 +28,7 @@ package struct HostActivationProgress: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum HostActivationStepResult<Failure: Equatable & Sendable>:
     Equatable, Sendable
 {
@@ -29,6 +36,7 @@ package enum HostActivationStepResult<Failure: Equatable & Sendable>:
     case failure(Failure, progress: HostActivationProgress)
 }
 
+@usableFromInline
 package protocol MVPHostActivationOwner: ~Copyable, ~Escapable {
     associatedtype ActivationFailure: Equatable & Sendable
 
@@ -52,6 +60,7 @@ package protocol MVPHostActivationOwner: ~Copyable, ~Escapable {
     mutating func quiesceConstructedRuntime()
 }
 
+@usableFromInline
 package protocol MVPHostTeardownOwner: ~Copyable, ~Escapable {
     mutating func refuseApplicationDeliveryAndInput()
     mutating func stopSourceDeliveryAndDetachObservations()
@@ -63,18 +72,25 @@ package protocol MVPHostTeardownOwner: ~Copyable, ~Escapable {
     mutating func invalidateAssemblyReportRuntimeUse()
 }
 
+@usableFromInline
 package struct MVPHostActivationController<Failure: Equatable & Sendable> {
-    package private(set) var lifecycleState: MVPHostLifecycleState = .valid
-    package private(set) var progress = HostActivationProgress()
-    package private(set) var assemblyReportRuntimeUseIsValid = true
+    @usableFromInline
+    package internal(set) var lifecycleState: MVPHostLifecycleState = .valid
+    @usableFromInline
+    package internal(set) var progress = HostActivationProgress()
+    @usableFromInline
+    package internal(set) var assemblyReportRuntimeUseIsValid = true
 
+    @usableFromInline
     package init() {}
 
+    @usableFromInline
     package init(lifecycleState: MVPHostLifecycleState) {
         self.lifecycleState = lifecycleState
     }
 
     @inline(__always)
+    @inlinable
     package mutating func activate<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(
         owner: inout Owner,
         invariantFailure: Failure
@@ -121,6 +137,7 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
     }
 
     @inline(__always)
+    @inlinable
     package mutating func teardown<Owner: MVPHostTeardownOwner & ~Copyable & ~Escapable>(
         owner: inout Owner
     ) {
@@ -143,7 +160,8 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
         lifecycleState = .quiescent
     }
 
-    private mutating func record(
+    @inlinable
+    internal mutating func record(
         _ result: HostActivationStepResult<Failure>,
         successfulProgress: HostActivationProgress = HostActivationProgress()
     ) -> Failure? {
@@ -158,7 +176,8 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
     }
 
     @inline(__always)
-    private mutating func contain<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(
+    @inlinable
+    internal mutating func contain<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(
         _ failure: Failure,
         owner: inout Owner
     ) -> HostActivationResult<Failure>

@@ -3,6 +3,7 @@ import GiftUIExecution
 import GiftUIRasterCore
 import GiftUIRuntimeCore
 
+@usableFromInline
 package enum MacOSDynamicHostActivationFailure: Equatable, Sendable {
     case runtime(RuntimeOwnerFailure)
     case endpoint(RasterBackendError)
@@ -12,6 +13,7 @@ package enum MacOSDynamicHostActivationFailure: Equatable, Sendable {
     case invariant
 }
 
+@usableFromInline
 package enum MacOSStaticHostActivationFailure: Equatable, Sendable {
     case runtime(RuntimeOwnerFailure)
     case endpoint(RasterBackendError)
@@ -39,21 +41,27 @@ package enum NRF52840StaticHostActivationFailure: Equatable, Sendable {
     case invariant
 }
 
+@usableFromInline
 package protocol SignalAnalyzerPresetLiveOwner:
     ~Copyable, ~Escapable, MVPHostActivationOwner, MVPHostTeardownOwner
 {
     mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure>
 }
 
+@usableFromInline
 package struct SignalAnalyzerPresetHostInstance<Owner>: MVPHostInstance, ~Copyable, ~Escapable
 where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
     package let assemblyReport: HostAssemblyReport
-    package private(set) var owner: Owner
-    package private(set) var controller: MVPHostActivationController<Owner.ActivationFailure>
-    private let invariantFailure: Owner.ActivationFailure
+    @usableFromInline
+    package internal(set) var owner: Owner
+    @usableFromInline
+    package internal(set) var controller: MVPHostActivationController<Owner.ActivationFailure>
+    @usableFromInline
+    internal let invariantFailure: Owner.ActivationFailure
 
     @_lifetime(copy owner)
-    fileprivate init?(
+    @inlinable
+    internal init?(
         expectedKind: MVPHostKind,
         assemblyReport: HostAssemblyReport,
         owner: consuming Owner,
@@ -71,6 +79,7 @@ where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
     }
 
     @inline(__always)
+    @inlinable
     package mutating func activate() -> HostActivationResult<Owner.ActivationFailure> {
         controller.activate(owner: &owner, invariantFailure: invariantFailure)
     }
@@ -81,13 +90,16 @@ where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
     }
 
     @inline(__always)
+    @inlinable
     package mutating func teardown() {
         controller.teardown(owner: &owner)
     }
 }
 
+@usableFromInline
 package enum SignalAnalyzerPresetHostInstances {
     @_lifetime(copy owner)
+    @inlinable
     package static func macOSDynamic<Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable>(
         report: HostAssemblyReport,
         owner: consuming Owner
@@ -102,6 +114,7 @@ package enum SignalAnalyzerPresetHostInstances {
     }
 
     @_lifetime(copy owner)
+    @inlinable
     package static func macOSStatic<Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable>(
         report: HostAssemblyReport,
         owner: consuming Owner

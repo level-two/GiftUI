@@ -1,0 +1,8 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-prepared/run.py": "d103dbaaf2ab4055a618db5b67c41d577862616fcb5402970a5f456ee581c314",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-prepared/prepared.json": "dfb46b127ca5c98cb67b5dab966540d0b05db0862a9a2bc4bf57c26464a1824d",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-prepared/input-freeze.json": "a4fc81019670541b8e23b35b66328b827974e8d70bffc268d74aba511258ab17",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-prepared/source.diff": "ccac1e5bd9e5aac5017f7b240083596a4e3cf630071faaf0c3a34d8109bc05d2",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-prepared/source-edits.json": "8a0314e1b2b795174429eb53e1b6063235c57f5a4562d1c19c531c03fa98a5f1",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-prepared/source-qualification.json": "b19c8e619ce03eeee1c83876e7b1b5b6de40137975b90a9b781f5dc852c4be51"
+}

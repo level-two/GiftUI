@@ -1,18 +1,14 @@
 # P08 grouped module closure activity — 2026-10-18
 
-**Registered compile PASS; required physical-body/callee gate FAIL. Initial1/1
-frozen, corrections0/2.** The [codegen result](grouped-module-closure-codegen-result/README.md)
-proves six required serialized bodies absent and actual generic consumer seams.
-Metadata/observer attribution and cold allocation remain unresolved. No source
-change, compiler/runtime retry or correction occurred. Next derive and independently
-review a targeted corrective1 design; privacy/lifetime, safety and strict cold stay
-gated. Whole-directory compatibility failures remain broader scope limits.
-The [targeted corrective1 design](grouped-module-closure-corrective1-design/README.md)
-has [independent design PASS](p08-grouped-module-closure-corrective1-independent-design-review.md):
-28 files, six proven roots plus exact required callers/helpers; no source/compiler
-execution or corrective-cycle consumption.
-Its framework internal ABI-only visibility choices revise the initial realization,
-while every normative concrete P08/private/lifetime/capability boundary stays exact.
+**Corrective1/2 source and commands frozen; compiler unexecuted. Initial1/1
+remains frozen.** The [reviewed28-file implementation](grouped-module-closure-corrective1-prepared/README.md)
+contains exactly255 named declaration edits and two internal initializer equivalents;
+body/parameter/lifetime token audit and271 other/protected input hashes pass.
+Next run the single fresh25-owner registered sweep, collecting all independent
+errors and blocking dependents; no automatic source repair. The initial
+[physical6-body failure](grouped-module-closure-codegen-result/README.md) and broader
+whole-directory failures remain historical evidence. Privacy/lifetime, physical/
+actual-host, safety/cold and P08/R07/T8.1 remain open; observer costs unresolved.
 Eugene explicitly authorized grouped Layout and remaining-module
 dependency corrections, then full-host/cold validation under the strict contract.
 This is a new allowance of one initial candidate and at most two grouped

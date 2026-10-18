@@ -1,6 +1,7 @@
 import GiftUI
 import GiftUIRenderCore
 
+@usableFromInline
 package struct RunCycleID: Equatable, Hashable, Sendable {
     package let rawValue: UInt32
 
@@ -17,6 +18,7 @@ package struct SemanticRevision: Equatable, Hashable, Sendable {
     }
 }
 
+@usableFromInline
 package struct CandidateFrameID: Equatable, Hashable, Sendable {
     package let rawValue: UInt32
 
@@ -34,6 +36,7 @@ package struct ActionGeneration: Equatable, Hashable, Sendable {
     }
 }
 
+@usableFromInline
 package enum ExecutionPhase: UInt8, Equatable, Sendable {
     case idle = 0
     case admitting = 1
@@ -76,10 +79,14 @@ package struct ExecutionLimits: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct ExecutionContext: Equatable, Sendable {
+    @usableFromInline
     package let cycle: RunCycleID?
     package let semanticRevision: SemanticRevision?
+    @usableFromInline
     package let candidateFrame: CandidateFrameID?
+    @usableFromInline
     package let phase: ExecutionPhase
 
     package init(

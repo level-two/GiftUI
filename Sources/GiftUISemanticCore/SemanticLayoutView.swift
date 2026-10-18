@@ -1,5 +1,6 @@
 import GiftUI
 
+@usableFromInline
 package enum SemanticLayoutPrimitive: Equatable, Sendable {
     case proxy
     case vStack(alignment: HorizontalAlignment, spacing: GeometryScalar)
@@ -11,6 +12,7 @@ package enum SemanticLayoutPrimitive: Equatable, Sendable {
 
 }
 
+@usableFromInline
 package enum SemanticLayoutModifier: Equatable, Sendable {
     case passthrough
     case padding(edges: EdgeSet, length: GeometryScalar)
@@ -30,6 +32,7 @@ package enum SemanticLayoutModifier: Equatable, Sendable {
 
 }
 
+@usableFromInline
 package protocol SemanticLayoutView: ~Escapable {
     associatedtype Identity: Equatable, Sendable
 

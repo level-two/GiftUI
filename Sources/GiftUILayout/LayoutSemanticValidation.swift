@@ -2,17 +2,23 @@ import GiftUI
 import GiftUISemanticCore
 import GiftUITextResources
 
+@usableFromInline
 package struct LayoutSemanticValidation {
-    private let limits: LayoutLimits
-    private var counters: LayoutCounters
+    @usableFromInline
+    internal let limits: LayoutLimits
+    @usableFromInline
+    internal var counters: LayoutCounters
 
+    @inlinable
     package init(limits: LayoutLimits) {
         self.limits = limits
         counters = LayoutCounters(limits: limits)
     }
 
+    @usableFromInline
     package var countersSnapshot: LayoutCounters { counters }
 
+    @inlinable
     package mutating func validate<Semantic, Metrics, Workspace>(
         semantic: borrowing Semantic,
         metrics: borrowing Metrics,
@@ -49,7 +55,8 @@ package struct LayoutSemanticValidation {
     }
 
     @inline(__always)
-    private mutating func validateOccurrence<Semantic, Metrics, Workspace>(
+    @inlinable
+    internal mutating func validateOccurrence<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         metrics: borrowing Metrics,
@@ -160,7 +167,8 @@ package struct LayoutSemanticValidation {
         return nil
     }
 
-    private mutating func validatePrimitiveContent<Semantic, Metrics, Workspace>(
+    @inlinable
+    internal mutating func validatePrimitiveContent<Semantic, Metrics, Workspace>(
         _ primitive: SemanticLayoutPrimitive,
         identity: Semantic.Identity,
         childCount: UInt16,
@@ -224,7 +232,8 @@ package struct LayoutSemanticValidation {
         return nil
     }
 
-    private mutating func validateText<Semantic, Metrics>(
+    @inlinable
+    internal mutating func validateText<Semantic, Metrics>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         metrics: borrowing Metrics,
@@ -285,7 +294,8 @@ package struct LayoutSemanticValidation {
         return nil
     }
 
-    private mutating func reserveScope<Workspace: LayoutWorkspace>(
+    @inlinable
+    internal mutating func reserveScope<Workspace: LayoutWorkspace>(
         _ identity: Workspace.Identity,
         workspace: inout Workspace
     ) -> LayoutError? {
@@ -302,7 +312,8 @@ package struct LayoutSemanticValidation {
         return nil
     }
 
-    private func validate(_ primitive: SemanticLayoutPrimitive) -> LayoutError? {
+    @usableFromInline
+    internal func validate(_ primitive: SemanticLayoutPrimitive) -> LayoutError? {
         switch primitive {
         case .proxy, .text, .canvas, .zStack:
             return nil
@@ -313,7 +324,8 @@ package struct LayoutSemanticValidation {
         }
     }
 
-    private func validate(_ modifier: SemanticLayoutModifier) -> LayoutError? {
+    @usableFromInline
+    internal func validate(_ modifier: SemanticLayoutModifier) -> LayoutError? {
         switch modifier {
         case .passthrough:
             return nil
@@ -341,16 +353,19 @@ package struct LayoutSemanticValidation {
         }
     }
 
-    private func invalid(_ value: GeometryScalar?) -> Bool {
+    @usableFromInline
+    internal func invalid(_ value: GeometryScalar?) -> Bool {
         value.map { $0 < 0 } ?? false
     }
 
-    private func invalid(_ value: FrameLimit?) -> Bool {
+    @usableFromInline
+    internal func invalid(_ value: FrameLimit?) -> Bool {
         guard case .points(let points) = value else { return false }
         return points < 0
     }
 
-    private func relationIsValid(
+    @usableFromInline
+    internal func relationIsValid(
         minimum: GeometryScalar?,
         maximum: FrameLimit?
     ) -> Bool {
@@ -360,7 +375,8 @@ package struct LayoutSemanticValidation {
         return maximum >= minimum
     }
 
-    private func isValidUnicodeScalar(_ value: UInt32) -> Bool {
+    @usableFromInline
+    internal func isValidUnicodeScalar(_ value: UInt32) -> Bool {
         value <= 0x10ffff && !(0xd800 ... 0xdfff).contains(value)
     }
 }

@@ -6,6 +6,7 @@ import GiftUIRuntimeCore
 import GiftUISurfaceCore
 import GiftUITextResources
 
+@usableFromInline
 package enum MVPHostKind: UInt8, Equatable, Sendable {
     case macOSDynamic = 0
     case macOSStatic = 1

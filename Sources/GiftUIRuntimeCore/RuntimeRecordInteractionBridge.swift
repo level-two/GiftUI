@@ -89,6 +89,7 @@ package enum RuntimeRecordInteractionBridge {
     }
 
     @inline(__always)
+    @inlinable
     package static func dispatch<Records, Model, RootIdentity, Action>(
         _ captured: CapturedAction<Records.Identity>, records: borrowing Records,
         target: borrowing ObservableStateRootTargetAccess<Model, RootIdentity>,

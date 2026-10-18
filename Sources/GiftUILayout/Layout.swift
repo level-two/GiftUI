@@ -2,6 +2,7 @@ import GiftUI
 import GiftUISemanticCore
 import GiftUITextResources
 
+@inlinable
 package func layout<Semantic, Metrics, Workspace, Sink>(
     semantic: borrowing Semantic,
     metrics: borrowing Metrics,

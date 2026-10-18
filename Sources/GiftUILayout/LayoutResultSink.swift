@@ -2,6 +2,7 @@ import GiftUI
 import GiftUISemanticCore
 import GiftUITextResources
 
+@usableFromInline
 package protocol LayoutResultSink {
     associatedtype Identity: Equatable, Sendable
 
@@ -31,6 +32,7 @@ package protocol LayoutResultSink {
     mutating func discard()
 }
 
+@usableFromInline
 package protocol LayoutResultSinkState {
     var isLayoutActive: Bool { get }
 }

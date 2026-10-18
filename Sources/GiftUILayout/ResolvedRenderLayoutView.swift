@@ -1,6 +1,7 @@
 import GiftUI
 import GiftUITextResources
 
+@usableFromInline
 package struct ResolvedRenderTextLine: Equatable, Sendable {
     package let lineIndex: UInt16
     package let bounds: Rect
@@ -23,6 +24,7 @@ package struct ResolvedRenderTextLine: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct ResolvedRenderGlyph: Equatable, Sendable {
     package let lineIndex: UInt16
     package let glyphIndex: UInt16
@@ -48,6 +50,7 @@ package struct ResolvedRenderGlyph: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package protocol ResolvedRenderLayoutView {
     associatedtype Identity: Equatable, Sendable
 

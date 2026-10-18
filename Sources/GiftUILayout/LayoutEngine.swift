@@ -2,26 +2,51 @@ import GiftUI
 import GiftUISemanticCore
 import GiftUITextResources
 
+@usableFromInline
 package struct LayoutEngine {
-    private struct StackMeasure {
+    @usableFromInline
+    internal struct StackMeasure {
+        @usableFromInline
         var childCount: UInt16 = 0
+        @usableFromInline
         var flexibleSpacerCount: UInt16 = 0
+        @usableFromInline
         var mainExtent: GeometryScalar = 0
+        @usableFromInline
         var crossExtent: GeometryScalar = 0
+
+        @inlinable
+        internal init(
+            childCount: UInt16 = 0,
+            flexibleSpacerCount: UInt16 = 0,
+            mainExtent: GeometryScalar = 0,
+            crossExtent: GeometryScalar = 0
+        ) {
+            self.childCount = childCount
+            self.flexibleSpacerCount = flexibleSpacerCount
+            self.mainExtent = mainExtent
+            self.crossExtent = crossExtent
+        }
     }
 
-    private let limits: LayoutLimits
-    private var counters: LayoutCounters
-    package private(set) var failure: LayoutError?
+    @usableFromInline
+    internal let limits: LayoutLimits
+    @usableFromInline
+    internal var counters: LayoutCounters
+    @usableFromInline
+    package internal(set) var failure: LayoutError?
 
+    @inlinable
     package init(limits: LayoutLimits, validatedCounters: LayoutCounters) {
         self.limits = limits
         counters = validatedCounters
         counters.resetTextCounts()
     }
 
+    @usableFromInline
     package var finalCounters: LayoutCounters { counters }
 
+    @inlinable
     package mutating func measure<Semantic, Metrics, Workspace>(
         semantic: borrowing Semantic,
         metrics: borrowing Metrics,
@@ -44,6 +69,7 @@ package struct LayoutEngine {
         )
     }
 
+    @inlinable
     package mutating func place<Semantic, Metrics, Workspace>(
         semantic: borrowing Semantic,
         metrics: borrowing Metrics,
@@ -66,7 +92,8 @@ package struct LayoutEngine {
         )
     }
 
-    private mutating func measureOccurrence<Semantic, Metrics, Workspace>(
+    @inlinable
+    internal mutating func measureOccurrence<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         metrics: borrowing Metrics,
@@ -101,7 +128,8 @@ package struct LayoutEngine {
         )
     }
 
-    private mutating func measureModifier<Semantic, Metrics, Workspace>(
+    @inlinable
+    internal mutating func measureModifier<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         index: UInt16,
         semantic: borrowing Semantic,
@@ -186,7 +214,8 @@ package struct LayoutEngine {
     }
 
     @inline(__always)
-    private mutating func measureText<Semantic, Metrics, Workspace>(
+    @inlinable
+    internal mutating func measureText<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         metrics: borrowing Metrics,
@@ -376,7 +405,8 @@ package struct LayoutEngine {
     }
 
     @inline(__always)
-    private mutating func finalizeTextLine<Identity, Workspace>(
+    @inlinable
+    internal mutating func finalizeTextLine<Identity, Workspace>(
         identity: Identity,
         lineIndex: UInt16,
         advance: GeometryScalar,
@@ -415,7 +445,8 @@ package struct LayoutEngine {
         return true
     }
 
-    private mutating func textBaselineY(
+    @usableFromInline
+    internal mutating func textBaselineY(
         lineIndex: UInt16,
         ascent: GeometryScalar,
         progression: GeometryScalar
@@ -429,11 +460,13 @@ package struct LayoutEngine {
         return baseline
     }
 
-    private var zeroRect: Rect {
+    @usableFromInline
+    internal var zeroRect: Rect {
         Rect(origin: Point(x: 0, y: 0), size: LayoutGeometry.zeroSize)!
     }
 
-    private mutating func measureContent<Semantic, Metrics, Workspace>(
+    @inlinable
+    internal mutating func measureContent<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         metrics: borrowing Metrics,
@@ -517,7 +550,8 @@ package struct LayoutEngine {
         return measurement
     }
 
-    private mutating func measureZStack<Semantic, Metrics, Workspace>(
+    @inlinable
+    internal mutating func measureZStack<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         metrics: borrowing Metrics,
@@ -556,7 +590,8 @@ package struct LayoutEngine {
         )
     }
 
-    private mutating func measureOnlyFlattenedChild<Semantic, Metrics, Workspace>(
+    @inlinable
+    internal mutating func measureOnlyFlattenedChild<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         metrics: borrowing Metrics,
@@ -592,7 +627,8 @@ package struct LayoutEngine {
         return found
     }
 
-    private mutating func measureStack<Semantic, Metrics, Workspace>(
+    @inlinable
+    internal mutating func measureStack<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         metrics: borrowing Metrics,
@@ -679,7 +715,8 @@ package struct LayoutEngine {
         return measurement
     }
 
-    private mutating func measureFlattenedChildren<Semantic, Metrics, Workspace>(
+    @inlinable
+    internal mutating func measureFlattenedChildren<Semantic, Metrics, Workspace>(
         of identity: Semantic.Identity,
         semantic: borrowing Semantic,
         metrics: borrowing Metrics,
@@ -720,7 +757,8 @@ package struct LayoutEngine {
         return true
     }
 
-    private mutating func measureFlattenedOccurrence<Semantic, Metrics, Workspace>(
+    @inlinable
+    internal mutating func measureFlattenedOccurrence<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         metrics: borrowing Metrics,
@@ -803,7 +841,8 @@ package struct LayoutEngine {
         )
     }
 
-    private mutating func assignFlexibleSpacers<Semantic, Workspace>(
+    @inlinable
+    internal mutating func assignFlexibleSpacers<Semantic, Workspace>(
         of identity: Semantic.Identity,
         semantic: borrowing Semantic,
         vertical: Bool,
@@ -869,7 +908,8 @@ package struct LayoutEngine {
         return true
     }
 
-    private mutating func placeOccurrence<Semantic, Workspace>(
+    @inlinable
+    internal mutating func placeOccurrence<Semantic, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         origin: Point,
@@ -904,7 +944,8 @@ package struct LayoutEngine {
         )
     }
 
-    private mutating func placeModifier<Semantic, Workspace>(
+    @inlinable
+    internal mutating func placeModifier<Semantic, Workspace>(
         _ identity: Semantic.Identity,
         index: UInt16,
         semantic: borrowing Semantic,
@@ -1006,7 +1047,8 @@ package struct LayoutEngine {
         )
     }
 
-    private mutating func placeContent<Semantic, Workspace>(
+    @inlinable
+    internal mutating func placeContent<Semantic, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         origin: Point,
@@ -1111,7 +1153,8 @@ package struct LayoutEngine {
     }
 
     @inline(__always)
-    private mutating func placeTextGeometry<Workspace: LayoutWorkspace>(
+    @inlinable
+    internal mutating func placeTextGeometry<Workspace: LayoutWorkspace>(
         _ identity: Workspace.Identity,
         origin: Point,
         textClip: Rect,
@@ -1192,7 +1235,8 @@ package struct LayoutEngine {
         return true
     }
 
-    private mutating func placeZStack<Semantic, Workspace>(
+    @inlinable
+    internal mutating func placeZStack<Semantic, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         bounds: Rect,
@@ -1225,7 +1269,8 @@ package struct LayoutEngine {
         return true
     }
 
-    private mutating func placeZFlattenedOccurrence<Semantic, Workspace>(
+    @inlinable
+    internal mutating func placeZFlattenedOccurrence<Semantic, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         bounds: Rect,
@@ -1279,7 +1324,8 @@ package struct LayoutEngine {
         )
     }
 
-    private mutating func paddingInsets(
+    @usableFromInline
+    internal mutating func paddingInsets(
         for modifier: SemanticLayoutModifier
     ) -> (
         top: GeometryScalar,
@@ -1311,7 +1357,8 @@ package struct LayoutEngine {
         return (top, leading, horizontal, vertical)
     }
 
-    private mutating func measurementForOccurrence<Semantic, Workspace>(
+    @inlinable
+    internal mutating func measurementForOccurrence<Semantic, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         workspace: borrowing Workspace
@@ -1336,7 +1383,8 @@ package struct LayoutEngine {
         return workspace.measurement(for: identity)
     }
 
-    private mutating func innerMeasurement<Semantic, Workspace>(
+    @inlinable
+    internal mutating func innerMeasurement<Semantic, Workspace>(
         _ identity: Semantic.Identity,
         modifierIndex: UInt16,
         semantic: borrowing Semantic,
@@ -1366,7 +1414,8 @@ package struct LayoutEngine {
         )
     }
 
-    private mutating func onlyFlattenedChildMeasurement<Semantic, Workspace>(
+    @inlinable
+    internal mutating func onlyFlattenedChildMeasurement<Semantic, Workspace>(
         of identity: Semantic.Identity,
         semantic: borrowing Semantic,
         workspace: borrowing Workspace
@@ -1413,7 +1462,8 @@ package struct LayoutEngine {
         return found
     }
 
-    private func frameChildProposal(
+    @usableFromInline
+    internal func frameChildProposal(
         modifier: SemanticLayoutModifier,
         parent: ProposedSize
     ) -> ProposedSize? {
@@ -1449,7 +1499,8 @@ package struct LayoutEngine {
         }
     }
 
-    private func childFrameProposalAxis(
+    @usableFromInline
+    internal func childFrameProposalAxis(
         parent: GeometryScalar?,
         fixed: GeometryScalar?,
         maximum: FrameLimit?
@@ -1467,7 +1518,8 @@ package struct LayoutEngine {
         return nil
     }
 
-    private func frameMeasurement(
+    @usableFromInline
+    internal func frameMeasurement(
         modifier: SemanticLayoutModifier,
         child: LayoutMeasurement,
         parent: ProposedSize
@@ -1506,7 +1558,8 @@ package struct LayoutEngine {
         return LayoutGeometry.cap(ideal: ideal, to: parent)
     }
 
-    private func requestedFrameAxis(
+    @usableFromInline
+    internal func requestedFrameAxis(
         child: GeometryScalar,
         minimum: GeometryScalar,
         maximum: FrameLimit?,
@@ -1523,7 +1576,8 @@ package struct LayoutEngine {
         return requested
     }
 
-    private mutating func placeOnlyFlattenedChild<Semantic, Workspace>(
+    @inlinable
+    internal mutating func placeOnlyFlattenedChild<Semantic, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         origin: Point,
@@ -1550,7 +1604,8 @@ package struct LayoutEngine {
         return true
     }
 
-    private mutating func placeStack<Semantic, Workspace>(
+    @inlinable
+    internal mutating func placeStack<Semantic, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         bounds: Rect,
@@ -1590,7 +1645,8 @@ package struct LayoutEngine {
         )
     }
 
-    private mutating func placeFlattenedChildrenAtOrigin<Semantic, Workspace>(
+    @inlinable
+    internal mutating func placeFlattenedChildrenAtOrigin<Semantic, Workspace>(
         of identity: Semantic.Identity,
         semantic: borrowing Semantic,
         origin: Point,
@@ -1643,7 +1699,8 @@ package struct LayoutEngine {
         return flattenedCount
     }
 
-    private mutating func placeStackChildren<Semantic, Workspace>(
+    @inlinable
+    internal mutating func placeStackChildren<Semantic, Workspace>(
         of identity: Semantic.Identity,
         semantic: borrowing Semantic,
         bounds: Rect,
@@ -1752,7 +1809,8 @@ package struct LayoutEngine {
         return true
     }
 
-    private mutating func flattenedChildCount<Semantic: SemanticLayoutView & ~Escapable>(
+    @inlinable
+    internal mutating func flattenedChildCount<Semantic: SemanticLayoutView & ~Escapable>(
         of identity: Semantic.Identity,
         semantic: borrowing Semantic
     ) -> UInt16? {
@@ -1782,18 +1840,21 @@ package struct LayoutEngine {
     }
 
     @discardableResult
-    private mutating func fail<T>(_ error: LayoutError) -> T? {
+    @inlinable
+    internal mutating func fail<T>(_ error: LayoutError) -> T? {
         if failure == nil { failure = error }
         return nil
     }
 
     @discardableResult
-    private mutating func fail(_ error: LayoutError) -> Bool {
+    @usableFromInline
+    internal mutating func fail(_ error: LayoutError) -> Bool {
         if failure == nil { failure = error }
         return false
     }
 
-    private func increment(_ value: UInt16) -> UInt16? {
+    @usableFromInline
+    internal func increment(_ value: UInt16) -> UInt16? {
         let result = value.addingReportingOverflow(1)
         return result.overflow ? nil : result.partialValue
     }

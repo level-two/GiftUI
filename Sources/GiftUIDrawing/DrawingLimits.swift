@@ -1,7 +1,9 @@
 import GiftUI
 
+@usableFromInline
 package struct DrawingLimits: Equatable, Sendable {
     package let maximumLineWidth: GeometryScalar
+    @usableFromInline
     package let maximumCanvasOccurrences: UInt16
     package let maximumLivePathPoints: UInt16
     package let maximumLivePathSubpaths: UInt16
@@ -52,8 +54,11 @@ package struct DrawingLimits: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct StaticCanvasLimits: Equatable, Sendable {
+    @usableFromInline
     package let maximumStaticCallableCases: UInt16
+    @usableFromInline
     package let maximumStaticCaptureBytes: UInt16
 
     package init?(

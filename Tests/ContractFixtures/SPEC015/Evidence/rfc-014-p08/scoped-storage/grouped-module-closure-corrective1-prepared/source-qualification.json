@@ -1,0 +1,206 @@
+{
+  "status": "PASS exact bounded token/signature audit; no compiler",
+  "files": [
+    {
+      "file": "Sources/GiftUILayout/Layout.swift",
+      "before_sha256": "17bd1188e891289330a447eaad77a5c53d149e653862939916b221589a9bf1a3",
+      "after_sha256": "58a8adc56b26a09abdf9106e58dcf92dd5799971e94ccd5513469d12c1d24d5e",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutPublication.swift",
+      "before_sha256": "476824b1f5a566de27a36c10f4bea4165d73dd617baa718fcc72769667a6ae01",
+      "after_sha256": "45f23eaf015a2501a061ab7d4d09a0a1a59c16d5a624225a658193f5486a58fb",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutEngine.swift",
+      "before_sha256": "30a34ad86cde9eea063c7973247ad52e1c1384d6b0392eaa07cfe2bdd9840c33",
+      "after_sha256": "dd70e9816f6a4904dbec00a14b97bc0ba4466ead725f6e27953370bd1756b21a",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "before_sha256": "6d86059b20f8a99bd1e8cd99dbafd4b13082330d097d96eaf697b856a4da6ab0",
+      "after_sha256": "02972a30aae2b9be0f97e3b0eb0782aba063b17eb3b643cfdc16af96574601ae",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutCounters.swift",
+      "before_sha256": "735a80dc1133d7fcae6ba5ba455b520a8f0224494b2357af224ddea8c200bc12",
+      "after_sha256": "a5ebfd695e74c17574bba7f8de075c3f365d6ae9ca3dfd6266ec114df9157894",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "before_sha256": "0ac0320ec58947aa4bc7c3f8ec0ff662e57f598d2a7764faa0d1c2bc33acfa92",
+      "after_sha256": "5349d9cf4af66e459bedca4f4004b571f2ad54b0727164b0685f1db55d0388ab",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "before_sha256": "bbec7289fc9cb6c1f506e895231257c58bdd818ba6d0a020258cb7c97b342f81",
+      "after_sha256": "ebf9307a6123fd7e52e96c9a8caf0f5dcca20db12649d1243155c6124acd4e05",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutResultSink.swift",
+      "before_sha256": "57a52e0187904a317a7d3b00acf28afcd1854d2e62120cafd4fd12011e2ad06a",
+      "after_sha256": "cbff5b124b0be92575091994c2ceb452cf504745021027bfff5c25be82adac13",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutValues.swift",
+      "before_sha256": "ec168c1eb9bc6dff3cfb5144ab752958dad62d4bc1c419e8f0dea1b4149e704b",
+      "after_sha256": "29d40d755afff76ff779ca6b06a53c754fd0cd147ab6f551d62f6b2b6047c1c5",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUILayout/LayoutError.swift",
+      "before_sha256": "5733fe30105131fe00b87c4812e787a4efa6aed7236c84d5f93a0e0ddbcf629b",
+      "after_sha256": "a03c17620f835d6a2afd57c2aadf0b9e2ded17c1b25e0c5d94aa2be29d3a310a",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUILayout/ResolvedRenderLayoutView.swift",
+      "before_sha256": "7278d5216c075b499bee43e8b646f00a34f70f6b877ab9b4fc72de1878f10b33",
+      "after_sha256": "0b5bd48b5a34b20d2afc43a1f4e26e23242d72645e41cdc88543d6f7d532c29f",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUISemanticCore/SemanticLayoutView.swift",
+      "before_sha256": "f7d067f23913efcab81ebc27ef3c22073c00c2536360b8f866c2f10e5205196b",
+      "after_sha256": "6fd6c725f82d0526064201f5121a14a91197d141fa338d7c9d0711d7872a0f48",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "before_sha256": "d1f60a53bf776c331ab57281f0874e08ef804f4e4d44c733134f92fc532f6a1f",
+      "after_sha256": "eb6ae9a1e094003656a3528cc1b5a5c5d03d3dbfaff3081e3d954c2df365baba",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "before_sha256": "72e143423b6f5c9d1eba62377b031dedf896fba4a884e96fa85545941fbbf2fb",
+      "after_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/StaticCanvasCallableTable.swift",
+      "before_sha256": "9c644426cf7f594dddff99cea8a21eb4c2fd57f295f4afdfbe049c55413ff9b6",
+      "after_sha256": "cf495d6f53b2d92ca7543dd3cb78eaeb4774bad57a81974c3fbece650f59111f",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasInvocationSource.swift",
+      "before_sha256": "9b992bc729e793959c0d8ad3fcb374c0bf3ced7edb1cdd098c57e6ba48c451f2",
+      "after_sha256": "d4bf788e28878af88e9b8247f5b92a5d69c714b02b232e39ed3e80a0ad09b539",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasPlanProducer.swift",
+      "before_sha256": "8a75acb55af64e06ad4aad12553c1e6c4c1a6c11aa937599f65e63a7bef68db7",
+      "after_sha256": "1e1f16e886d672fe7bce48d469aa9faaf67ab3b2612c06a86c25feac11d9f436",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingPlan.swift",
+      "before_sha256": "93e3216f2faaee98e2c025deef50cfb7513911efacdd56e90980be3cb6264da9",
+      "after_sha256": "d6ea74257a8d24652392eb05fb0361907a3aa5b60a4f727d9ab11a7bcb9357ad",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingLimits.swift",
+      "before_sha256": "eae0cc1be30bc22102c76613cd07b08ee577dbbb1f08d06caf350eb52d64be64",
+      "after_sha256": "b0536b67ce01bf07422ce132edd978b47e5fd1d5dc48b37ae3fac3e096658ee1",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/DrawingValues.swift",
+      "before_sha256": "d1008926323fdb292ec32e95e2cefb17958ea5ccbfb8d2e0c48fb67e565f0874",
+      "after_sha256": "b7f6e25dd6cc4830377134a4c76c24097c46c326136710a2e6cfe9b74d5ac842",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIRenderCore/DrawingOperationSink.swift",
+      "before_sha256": "4d35496afb8dc6b4827b52b3441a8258a5f91754c765a8828cb5ff7ebaafba88",
+      "after_sha256": "4e333bec72c92fb2ab02a82c8f1381741f11cb2cc55a450434d97c968a8e2bc2",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIExecution/ExecutionValues.swift",
+      "before_sha256": "4520ec15d70aedb7f95dcbedb972b0b7fcc707cb1b08b2636cf5298820e6e12f",
+      "after_sha256": "7e67ecb69e8f1fdf82a0aca819f4c77253cfb9560b0047de83f81b97194f3252",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "before_sha256": "ba8501378a85365ce7e303a7c063419d740fee83151f1aea7c025af1dd1d30f5",
+      "after_sha256": "cf249695d610d27623e0d6c3334b7e043632ce475ff8e2c6e3e0e85035ee1ff5",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "before_sha256": "920b52c7b8d018b4bcfeb11c0468ef5632e9dbaea2670ba79cfc0647f1111501",
+      "after_sha256": "6c0fe638dbf5a00e2d88726be77b550013f1c2549a07ef1e9ee82c7264e72e65",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "before_sha256": "3caac8f68d3f5b176e4c04b300d26b9c9cca96d2d0c6bf573b414da159fc7fe2",
+      "after_sha256": "c4f1b48f28a384324a342aa8ee73c979c29f73207fd1b41aceda2248ccebfdae",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "before_sha256": "d1dde13c8fce951c74376d21bac1855192a7c87371cefdf2fe195bd377f42d7f",
+      "after_sha256": "4a2e6673340864a4d4cd11038dd3f5460e94e2506861e41de81d0856264ba7f2",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "before_sha256": "3e00d5e22b04e6ccb25ab357f2d6fe96349f2ab31abf3cf9201206110d83b205",
+      "after_sha256": "41ae54160ebb7fc27b0bd1541d57617f049c38f78d0b071425020fbc548d8482",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift",
+      "before_sha256": "401908c35e265ad19b9788d17a32603bd966da81e4fef10b8ff2fc46a9d255c1",
+      "after_sha256": "10583aec3c00ff8246e5652a5f16085e1b5e93fa235e91fbc5dd94ff901fadeb",
+      "body_tokens": "identical after only reviewed ABI attributes/access tokens and two exact initializer-equivalent removals",
+      "all_lifetime_attributes_and_function_parameter_tokens": "unchanged"
+    }
+  ],
+  "qualified_nonallowlisted_inputs": 271,
+  "declaration_sites": 255,
+  "new_initializer_equivalents": 2,
+  "noops": 0,
+  "correction": "1/2 source frozen; no compiler"
+}

@@ -2,6 +2,7 @@ import GiftUI
 import GiftUISemanticCore
 import GiftUITextResources
 
+@usableFromInline
 package enum LayoutError: UInt8, Equatable, Sendable {
     case invalidDeclaration = 0
     case arithmeticOverflow = 1

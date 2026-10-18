@@ -2,34 +2,49 @@ import GiftUI
 import GiftUISemanticCore
 import GiftUITextResources
 
+@usableFromInline
 package struct LayoutMeasurement: Equatable, Sendable {
+    @usableFromInline
     package let idealSize: Size
+    @usableFromInline
     package let resolvedSize: Size
 
+    @usableFromInline
     package init(idealSize: Size, resolvedSize: Size) {
         self.idealSize = idealSize
         self.resolvedSize = resolvedSize
     }
 }
 
+@usableFromInline
 package struct LayoutPlacement: Equatable, Sendable {
+    @usableFromInline
     package let bounds: Rect
+    @usableFromInline
     package let clip: Rect
 
+    @usableFromInline
     package init(bounds: Rect, clip: Rect) {
         self.bounds = bounds
         self.clip = clip
     }
 }
 
+@usableFromInline
 package struct LayoutTextLine<Identity>: Equatable, Sendable
 where Identity: Equatable & Sendable {
+    @usableFromInline
     package let identity: Identity
+    @usableFromInline
     package let lineIndex: UInt16
+    @usableFromInline
     package let bounds: Rect
+    @usableFromInline
     package let baseline: Point
+    @usableFromInline
     package let clip: Rect
 
+    @usableFromInline
     package init(
         identity: Identity,
         lineIndex: UInt16,
@@ -45,16 +60,25 @@ where Identity: Equatable & Sendable {
     }
 }
 
+@usableFromInline
 package struct LayoutPositionedGlyph<Identity>: Equatable, Sendable
 where Identity: Equatable & Sendable {
+    @usableFromInline
     package let identity: Identity
+    @usableFromInline
     package let lineIndex: UInt16
+    @usableFromInline
     package let glyphIndex: UInt16
+    @usableFromInline
     package let instance: FontInstanceID
+    @usableFromInline
     package let glyph: GlyphID
+    @usableFromInline
     package let baseline: Point
+    @usableFromInline
     package let clip: Rect
 
+    @usableFromInline
     package init(
         identity: Identity,
         lineIndex: UInt16,
@@ -74,6 +98,7 @@ where Identity: Equatable & Sendable {
     }
 }
 
+@usableFromInline
 package protocol LayoutWorkspace {
     associatedtype Identity: Equatable, Sendable
 

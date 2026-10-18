@@ -1,8 +1,11 @@
 import GiftUI
 
+@usableFromInline
 package enum LayoutGeometry {
+    @usableFromInline
     package static let zeroSize = Size(width: 0, height: 0)!
 
+    @usableFromInline
     package static func cap(
         ideal: Size,
         to proposal: ProposedSize
@@ -16,6 +19,7 @@ package enum LayoutGeometry {
         )
     }
 
+    @usableFromInline
     package static func adding(
         width: GeometryScalar,
         height: GeometryScalar,
@@ -27,6 +31,7 @@ package enum LayoutGeometry {
         return Size(width: resolvedWidth, height: resolvedHeight)
     }
 
+    @usableFromInline
     package static func insetProposal(
         _ proposal: ProposedSize,
         horizontal: GeometryScalar,
@@ -60,6 +65,7 @@ package enum LayoutGeometry {
         return ProposedSize(width: width, height: height)
     }
 
+    @usableFromInline
     package static func translated(
         _ point: Point,
         x: GeometryScalar,
@@ -71,6 +77,7 @@ package enum LayoutGeometry {
         return Point(x: translatedX, y: translatedY)
     }
 
+    @usableFromInline
     package static func offset(
         container: GeometryScalar,
         child: GeometryScalar,
@@ -86,6 +93,7 @@ package enum LayoutGeometry {
         }
     }
 
+    @usableFromInline
     package static func offset(
         container: GeometryScalar,
         child: GeometryScalar,
@@ -104,6 +112,7 @@ package enum LayoutGeometry {
         }
     }
 
+    @usableFromInline
     package static func spacingTotal(
         spacing: GeometryScalar,
         childCount: UInt16
@@ -115,6 +124,7 @@ package enum LayoutGeometry {
         )
     }
 
+    @usableFromInline
     package static func intersection(_ lhs: Rect, _ rhs: Rect) -> Rect? {
         let minimumX = max(lhs.minX, rhs.minX)
         let minimumY = max(lhs.minY, rhs.minY)
@@ -133,6 +143,7 @@ package enum LayoutGeometry {
         return Rect(origin: Point(x: minimumX, y: minimumY), size: size)
     }
 
+    @usableFromInline
     package static func clamped(
         _ value: GeometryScalar,
         minimum: GeometryScalar,

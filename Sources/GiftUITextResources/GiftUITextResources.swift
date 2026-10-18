@@ -39,6 +39,7 @@ package struct FontResourceID: RawRepresentable, Equatable, Hashable, Sendable {
     }
 }
 
+@usableFromInline
 package struct FontInstanceID: Equatable, Hashable, Sendable {
     package let resource: FontResourceID
     package let instanceIndex: UInt16
@@ -49,9 +50,12 @@ package struct FontInstanceID: Equatable, Hashable, Sendable {
     }
 }
 
+@usableFromInline
 package struct GlyphID: RawRepresentable, Equatable, Hashable, Sendable {
+    @usableFromInline
     package let rawValue: UInt16
 
+    @usableFromInline
     package init(rawValue: UInt16) {
         self.rawValue = rawValue
     }
@@ -72,9 +76,13 @@ package enum TextRasterKind: UInt8, Equatable, Sendable {
     case packagedOutline = 1
 }
 
+@usableFromInline
 package struct FontLineMetrics: Equatable, Sendable {
+    @usableFromInline
     package let ascent: GeometryScalar
+    @usableFromInline
     package let descent: GeometryScalar
+    @usableFromInline
     package let lineGap: GeometryScalar
 
     package init(
@@ -88,7 +96,9 @@ package struct FontLineMetrics: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct GlyphMetrics: Equatable, Sendable {
+    @usableFromInline
     package let advanceX: GeometryScalar
     package let offsetX: GeometryScalar
     package let offsetY: GeometryScalar
@@ -107,8 +117,11 @@ package struct GlyphMetrics: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct FontInstanceDescriptor: Equatable, Sendable {
+    @usableFromInline
     package let id: FontInstanceID
+    @usableFromInline
     package let lineMetrics: FontLineMetrics
     package let replacementGlyph: GlyphID
     package let glyphCount: UInt16
@@ -154,9 +167,11 @@ package struct RasterRealizationDescriptor: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct TextResourceDescriptor: Equatable, Sendable {
     package let schemaVersion: UInt16
     package let resource: FontResourceID
+    @usableFromInline
     package let instanceCount: UInt16
     package let realizationCount: UInt16
     package let canonicalManifestByteCount: UInt32
@@ -176,11 +191,13 @@ package struct TextResourceDescriptor: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum GlyphMapping: Equatable, Sendable {
     case exact(GlyphID)
     case replacement(GlyphID)
 }
 
+@usableFromInline
 package struct ScalarGlyphMappingRecord: Equatable, Sendable {
     package let scalarValue: UInt32
     package let glyph: GlyphID
@@ -216,6 +233,7 @@ package struct GlyphRasterRecord: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package protocol CanonicalTextMetricsView {
     var descriptor: TextResourceDescriptor { get }
     func instance(at index: UInt16) -> FontInstanceDescriptor?

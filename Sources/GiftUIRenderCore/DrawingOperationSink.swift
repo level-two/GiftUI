@@ -1,5 +1,6 @@
 import GiftUI
 
+@usableFromInline
 package struct SubpathRange: Equatable, Sendable {
     package let firstPoint: UInt16
     package let pointCount: UInt16
@@ -13,6 +14,7 @@ package struct SubpathRange: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct StraightLineStrokeHeader: Equatable, Sendable {
     package let color: Color
     package let lineWidth: GeometryScalar
