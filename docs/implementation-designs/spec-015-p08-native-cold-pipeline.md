@@ -18,6 +18,12 @@ superseded_by: null
 
 ## Grouped dependency continuation — 2026-10-18
 
+Current [independent observable package boundary](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-observable-final-independent-review.md):
+four selected roots PASS; required preservation/seed-install callback gate FAIL/STOP.
+Compile25/privacy55/physical34 and earlier root/resolver PASS retained. Seven of23
+selected boundaries resolved/16 original opaque unqualified. Grouped callback
+review is next; no source allowance/full observable-chain/safety/cold acceptance.
+
 [Independent B-observable design READY](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-observable-grouped-design-review.md)
 at d9fc4359: 36 sites/five files/four roots and required-three-scalar Address
 equivalent. Separate source/budget authorization required; current FAIL/STOP and

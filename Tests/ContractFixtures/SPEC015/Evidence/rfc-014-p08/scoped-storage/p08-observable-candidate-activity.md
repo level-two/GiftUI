@@ -1,5 +1,10 @@
 # Grouped B-observable candidate — 2026-10-18
 
+[Independent package disposition](p08-observable-final-independent-review.md):
+selected four B roots PASS; live preserved/seed-install callback gate FAIL/STOP.
+Compile25/privacy55/physical34 and prior root/resolver PASS retained. Finite grouped
+callback review is next; no new source/execution allowance or whole-B acceptance.
+
 [Concrete interpretation](observable-consumer-result/README.md): selectedfourB
 boundaries resolved; required actual preserved/install callback gate FAIL/STOP.
 Physical0BB +normalStatevisitor SIL +matching scopedobject calls; no allocationclaim.

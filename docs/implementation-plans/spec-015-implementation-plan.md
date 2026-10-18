@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [independent observable package boundary](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-observable-final-independent-review.md):
+four selected roots PASS; required preservation/seed-install callback gate FAIL/STOP.
+Compile25/privacy55/physical34 and earlier root/resolver PASS retained. Seven of23
+selected boundaries resolved/16 original opaque unqualified. Grouped callback
+review is next; no source allowance/full observable-chain/safety/cold acceptance.
+
 Current [observable concrete consumer interpretation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-consumer-result/README.md):
 four selected B boundaries resolve; actual generic preserved/install visitor callbacks
 remain unavailable (physicalkind0/0BB, concrete SIL calls, matching object relocations).
