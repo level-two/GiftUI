@@ -1,0 +1,45 @@
+{
+  "applicability": "Exact parser bytes covered by prior 113 static fixture cases; same A4 policy and added A7 policy. Integrated wrapper has AST/identity inspection only. Static logs are historical campaign3 paths; execution paths relocate mechanically to campaign4. No other compiler dialect coverage inferred.",
+  "control_semantics": "controls.json unchanged byte-for-byte; adapter compares exact control semantics permitting resolved paths and display_only_note only",
+  "historical_A4_applicability": "inherited-A4-static-applicability.json preserves prior exact A4 module/receipt identities; historical receipt does not cover successor parser bytes",
+  "observed_static_result": {
+    "inherited_inputs": 59,
+    "new_inputs": 54,
+    "status": "STATIC_FIXTURE_EXPECTATIONS_MATCHED_ONLY"
+  },
+  "opt_ins": [
+    {
+      "input_sha256": "9c19b9df952323041e6b0f4e7bce3bcfe73d3557af2e40c47719c19e55993e1d",
+      "policy_id": "macos-static-negative-A4-SignalAnalyzerDomain-display-only-v1",
+      "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A4/inputs/SignalPrimitiveValues.swift"
+    },
+    {
+      "input_sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2",
+      "policy_id": "macos-static-negative-A7-AnalyzerPresentation-display-only-v1",
+      "source_path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign4/macos-static/scratch/negative-A7/AnalyzerPresentation.swift"
+    }
+  ],
+  "static_freeze": {
+    "bytes": 107555,
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/packet-freeze.json",
+    "sha256": "a271243acaa828e857ab03c1cb03f72e78cb02d68a807fbe646805ce801a60e8"
+  },
+  "static_receipt": {
+    "bytes": 45822,
+    "copy": "A7-static-fixture-receipt.json",
+    "original": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-result/static-result.json",
+    "sha256": "43c16178dde87491c79403658ff8d70a1de4341a88bb136e82d7dbfe478835fd"
+  },
+  "status": "STATIC IDENTITY APPLICABILITY ONLY; NO PARSER CALL OR CAMPAIGN",
+  "trusted_A7_generated_source": {
+    "bytes": 1217,
+    "copy": "A7-frozen-AnalyzerPresentation.swift",
+    "sha256": "3e3429824b630c383408b3a9d8cf9bca4b614f19ac61fa333a2b6eb5c8521dd2"
+  },
+  "verified_parser": {
+    "bytes": 12796,
+    "copy": "diagnostic_parser.py",
+    "original": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/analyzer-abi-a7-diagnostic-policy-static-successor/diagnostic_parser.py",
+    "sha256": "6fe6a57c8d0937f25b5bfc3b33d3cfce5091916f93067c9f0a0d8139e6275f3e"
+  }
+}

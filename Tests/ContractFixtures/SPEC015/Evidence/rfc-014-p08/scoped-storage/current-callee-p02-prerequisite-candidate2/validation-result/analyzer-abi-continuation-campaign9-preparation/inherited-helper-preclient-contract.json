@@ -1,0 +1,76 @@
+{
+  "client_sha256": "44101e2ed2e09a31263a016036d03bc30b0a55fd8a43abc55ab6f409c503acbc",
+  "context": {
+    "module": "SignalAnalyzerDomain",
+    "profile": "macos-static",
+    "stage": "client-emit-object"
+  },
+  "control_id": "private-helper-continuation",
+  "historical_evidence": "Campaign7 has storage/count audits for the same preceding core/Domain chain. It has no helper audit and no qualified helper receipt. These historical audits cannot satisfy this helper contract.",
+  "id": "macos-static-private-helper-continuation-preclient-authentication-v1",
+  "limits": "Pure static parser cannot authenticate external maps or execution ordering. Later wrapper implementation, independent review, fresh freeze/preflight and separate execution allowance are required. Two-attempt package ceiling retained; zero automatic repair/retry.",
+  "must_complete_before": "macos-static-private-helper-continuation-client-emit-object",
+  "parser_trusted_arguments": [
+    "trusted_current_commit",
+    "trusted_core",
+    "trusted_provenance",
+    "trusted_input",
+    "context"
+  ],
+  "planned_consumer": {
+    "argv": [
+      "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "-swift-version",
+      "6",
+      "-Osize",
+      "-whole-module-optimization",
+      "-enable-experimental-feature",
+      "LifetimeDependence",
+      "-enable-experimental-feature",
+      "Lifetimes",
+      "-package-name",
+      "giftui",
+      "-module-cache-path",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign7/macos-static/scratch/private-helper-continuation/cache",
+      "-disable-sandbox",
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-load-plugin-executable",
+      "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign7/macos-static/scratch/positive-actual-lowering",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/a8afb49da68a64d7-tcop19de/macos-static",
+      "-parse-as-library",
+      "-emit-object",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign7/macos-static/scratch/private-helper-continuation/inputs/private-helper-continuation.swift",
+      "-o",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign7/macos-static/scratch/private-helper-continuation/negative.o"
+    ],
+    "environment_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "exit": 1,
+    "name": "macos-static-private-helper-continuation-client-emit-object"
+  },
+  "policy_id": "macos-static-private-helper-continuation-client-emit-object-virtual-display-v1",
+  "required_sequence": [
+    "Read actual full canonical repository HEAD immediately before this helper compile; authenticate it independently of supplied parser maps.",
+    "Require successful fresh P02 producer stage for that HEAD and frozen compiler/plugin/source inputs, checks and native execution; recompute exact P02 digest and require fresh root prefix, receipt bytes/hash and GiftUI artifact bytes/hash.",
+    "Join the successful scratch SignalAnalyzerDomain producer argv/environment/exit, three source paths/hashes and imported module bytes/hash to that current core receipt. Authenticate actual captured producer stage and artifacts.",
+    "Resolve complete original helper control only by declared positive-cell dependency path and explicit exact helper policy id; validate full helper client bytes and planned helper consumer argv/environment before invocation.",
+    "Write a separate helper audit with authenticated current HEAD, full successful core and Domain stages/artifacts, planned helper consumer and parser argument identities before invoking helper compiler.",
+    "After compile, require exit1, empty stdout and exact complete helper stderr; pass only authenticated caller maps; archive helper audit and any qualified receipt separately. Independent review must check audit time precedes actual helper consumer start."
+  ],
+  "separate_audit_leaf": "receipts/private-helper-continuation-preclient-authentication.json",
+  "status": "PREPARED_ONLY_NOT_AN_AUTHENTICATION_RECEIPT",
+  "virtual_note": {
+    "column": 21,
+    "contributes_dependency_evidence": false,
+    "filesystem_lookup": false,
+    "label": "SignalAnalyzerDomain.SignalAnalyzerDiagnostic.isContinuation",
+    "line": 2
+  }
+}

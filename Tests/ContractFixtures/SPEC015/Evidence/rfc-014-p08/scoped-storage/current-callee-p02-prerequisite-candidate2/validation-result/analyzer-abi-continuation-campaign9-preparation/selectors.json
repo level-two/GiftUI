@@ -1,0 +1,105 @@
+{
+  "attribute": "@usableFromInline",
+  "count": 8,
+  "files": {
+    "Sources/SignalAnalyzerDomain/AcquisitionState.swift": {
+      "baseline_bytes": 225,
+      "baseline_sha256": "a2fb47cf52972d8610a78e7ffe4d1e8771ea8fff315ca72aec2d29ca33776755",
+      "proposed_preformat_bytes": 243,
+      "proposed_preformat_sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425"
+    },
+    "Sources/SignalAnalyzerDomain/SignalAnalyzerDiagnostic.swift": {
+      "baseline_bytes": 5653,
+      "baseline_sha256": "f44b7d121c9d290f877ad43c361b4d90d79ecb27a3f8ac1e112062077b53dcf4",
+      "proposed_preformat_bytes": 5671,
+      "proposed_preformat_sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7"
+    },
+    "Sources/SignalAnalyzerDomain/SignalPrimitiveValues.swift": {
+      "baseline_bytes": 1502,
+      "baseline_sha256": "c37d6271a0c077fbc99e694b98d0c094e311a0f42681f1c09bbcc64f1ae101c1",
+      "proposed_preformat_bytes": 1582,
+      "proposed_preformat_sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c"
+    },
+    "Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.swift": {
+      "baseline_bytes": 767,
+      "baseline_sha256": "455f88cda1ddc91c4c38db7fb469c8c809d4df18505b1f5e16e7cbfb150209b2",
+      "proposed_preformat_bytes": 811,
+      "proposed_preformat_sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5"
+    }
+  },
+  "selectors": [
+    {
+      "anchor": "package enum AcquisitionState: Equatable, Sendable {",
+      "anchor_sha256": "6339d046a470037cd3b4e4c9e466c7879c3ea2d4917b4ce7399a4e459b4d1be7",
+      "id": "A1",
+      "insert_before": "@usableFromInline",
+      "path": "Sources/SignalAnalyzerDomain/AcquisitionState.swift",
+      "selector": "AcquisitionState",
+      "source_line": 2
+    },
+    {
+      "anchor": "package struct SignalTransition: Equatable, Sendable {",
+      "anchor_sha256": "944346bc54d0d73834739fc8157faf2aaf1dce11e84af75fb9a95d0cf80a5de8",
+      "id": "A2",
+      "insert_before": "@usableFromInline",
+      "path": "Sources/SignalAnalyzerDomain/SignalPrimitiveValues.swift",
+      "selector": "SignalTransition",
+      "source_line": 18
+    },
+    {
+      "anchor": "    package let channelID: SignalChannelID",
+      "anchor_sha256": "66364a81b5c98583c6a4f4cbd5f3654ba53c62eb0d7faccc5244e745a83548ad",
+      "id": "A3",
+      "insert_before": "    @usableFromInline",
+      "path": "Sources/SignalAnalyzerDomain/SignalPrimitiveValues.swift",
+      "selector": "SignalTransition.channelID",
+      "source_line": 19
+    },
+    {
+      "anchor": "package struct SignalChannelID: Hashable, Sendable {",
+      "anchor_sha256": "470c258a1c674e99d77ad04be42d862276173db7affb0de095eb46f14ad84a09",
+      "id": "A4",
+      "insert_before": "@usableFromInline",
+      "path": "Sources/SignalAnalyzerDomain/SignalPrimitiveValues.swift",
+      "selector": "SignalChannelID",
+      "source_line": 1
+    },
+    {
+      "anchor": "    package let rawValue: Int",
+      "anchor_sha256": "c45aeff30146ed39a326ef4ac3eac23911cfadcf93673abb25d1bb16ebe0f664",
+      "id": "A5",
+      "insert_before": "    @usableFromInline",
+      "path": "Sources/SignalAnalyzerDomain/SignalPrimitiveValues.swift",
+      "selector": "SignalChannelID.rawValue",
+      "source_line": 2
+    },
+    {
+      "anchor": "package struct SignalAnalyzerDiagnostic: Equatable, Sendable {",
+      "anchor_sha256": "48a53a5cfe38e2815ff202f31cf6c8681a0f6ce5762bfc72ec069b5648dc8fac",
+      "id": "A6",
+      "insert_before": "@usableFromInline",
+      "path": "Sources/SignalAnalyzerDomain/SignalAnalyzerDiagnostic.swift",
+      "selector": "SignalAnalyzerDiagnostic",
+      "source_line": 28
+    },
+    {
+      "anchor": "    package let model: SignalAnalyzerViewModel",
+      "anchor_sha256": "b28b7b9815b6003c655b773c04273852f011c2ff5be51fa653e3210b36ec8aa1",
+      "id": "A7",
+      "insert_before": "    @usableFromInline",
+      "path": "Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.swift",
+      "selector": "AnalyzerReadProbe.model",
+      "source_line": 7
+    },
+    {
+      "anchor": "    package let index: Int",
+      "anchor_sha256": "a5dcb191e1fcca552146b39d31fe9667fba2b6b0bcf7dfe577f8746e24116916",
+      "id": "A8",
+      "insert_before": "    @usableFromInline",
+      "path": "Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.swift",
+      "selector": "AnalyzerReadProbe.index",
+      "source_line": 8
+    }
+  ],
+  "status": "PROPOSED ONLY; NO EXECUTION AUTHORITY"
+}
