@@ -22,7 +22,8 @@ Current [final corrective2 result](../../Tests/ContractFixtures/SPEC015/Evidence
 lower+20 owners PASS, RuntimeCore FAIL3 witness ABI requirements, four dependents
 blocked;307 input hashes and source/output identities verify. Initial1/1 and
 corrective2/2 exhausted: STOP, no source/compiler/decoder/privacy/safety/cold retry.
-Independent boundary review next; three exact witness annotations are a potential
+[Independent final review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-final-independent-review.md)
+confirms STOP; three exact witness annotations are a potential
 read-only next boundary, not a new allowance. Current physical six-body/all42/
 actual-host result remains untested. Source candidate and P08/R07/T8.1 unaccepted.
 Earlier stage records below remain historical.

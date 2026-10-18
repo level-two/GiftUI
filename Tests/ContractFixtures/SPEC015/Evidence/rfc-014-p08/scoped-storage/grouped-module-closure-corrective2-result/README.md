@@ -1,5 +1,9 @@
 # Final corrective2 frozen result — allowance exhausted
 
+[Independent final boundary review](../p08-grouped-module-closure-final-independent-review.md)
+confirms the evidence, compile failure and exhausted STOP. Three witness
+annotations are a potential newly authorized correction only; none is granted.
+
 **STOP: initial1/1 and corrective2/2 consumed; no further source/compiler run.**
 One exact registered sweep of source `0f2351ff`: lower PASS, **20 owners PASS,
 RuntimeCore FAIL3, four dependent owners blocked**. All307 frozen inputs and recipe

@@ -5,7 +5,8 @@
 RuntimeCore FAIL3 ABI witness dependencies, four dependent owners blocked;
 all307 input/recipe and source/output identities verify. No retry/source/decoder/
 privacy/safety/cold run follows. Exact three-witness potential-next boundary is
-read-only, with no new allowance. Independent boundary review next. Current
+read-only, with no new allowance. [Independent final review](p08-grouped-module-closure-final-independent-review.md)
+confirms STOP and recommends a new explicit maintainer decision before any repair. Current
 physical six-body/all42-origin/actual-host result remains untested; P08/R07/T8.1,
 observer/key-failure costs and the combined candidate stay unaccepted.
 Eugene explicitly authorized grouped Layout and remaining-module
