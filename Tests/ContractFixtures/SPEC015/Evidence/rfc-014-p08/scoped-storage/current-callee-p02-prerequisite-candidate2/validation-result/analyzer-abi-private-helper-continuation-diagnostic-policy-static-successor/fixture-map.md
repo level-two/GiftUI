@@ -1,0 +1,193 @@
+# Helper continuation diagnostic static fixture map
+
+All 493 inherited concrete objects, fields and oracles are identical to the sealed count successor. All expectations below are prepared and unexecuted.
+
+- `PHC-P01`: True; Exact archived helper continuation diagnostic; mandatory campaign7 current commit/core and Domain joins; no qualified helper receipt claim
+- `PHC-N001`: False; Missing complete helper control field category
+- `PHC-N002`: False; Missing complete helper control field dependency_note_sources
+- `PHC-N003`: False; Missing complete helper control field expected_nonzero
+- `PHC-N004`: False; Missing complete helper control field files
+- `PHC-N005`: False; Missing complete helper control field first_expected_stage
+- `PHC-N006`: False; Missing complete helper control field id
+- `PHC-N007`: False; Missing complete helper control field kind
+- `PHC-N008`: False; Missing complete helper control field package_name
+- `PHC-N009`: False; Missing complete helper control field positive_twin
+- `PHC-N010`: False; Missing complete helper control field primary_message_patterns_all
+- `PHC-N011`: False; Missing complete helper control field required_symbol
+- `PHC-N012`: False; Missing complete helper control field virtual_display_note
+- `PHC-N013`: False; Alter complete helper control field category
+- `PHC-N014`: False; Alter complete helper control field dependency_note_sources
+- `PHC-N015`: False; Alter complete helper control field expected_nonzero
+- `PHC-N016`: False; Alter complete helper control field files
+- `PHC-N017`: False; Alter complete helper control field first_expected_stage
+- `PHC-N018`: False; Alter complete helper control field id
+- `PHC-N019`: False; Alter complete helper control field kind
+- `PHC-N020`: False; Alter complete helper control field package_name
+- `PHC-N021`: False; Alter complete helper control field positive_twin
+- `PHC-N022`: False; Alter complete helper control field primary_message_patterns_all
+- `PHC-N023`: False; Alter complete helper control field required_symbol
+- `PHC-N024`: False; Alter complete helper control field virtual_display_note
+- `PHC-N025`: False; Wrong context profile=macos-dynamic
+- `PHC-N026`: False; Wrong context profile=raspberry-pi-armv6
+- `PHC-N027`: False; Wrong context profile=nrf52840-embedded
+- `PHC-N028`: False; Wrong context module=GiftUI
+- `PHC-N029`: False; Wrong context stage=emit-module
+- `PHC-N030`: False; Missing mandatory caller argument context
+- `PHC-N031`: False; Missing mandatory caller argument trusted_input
+- `PHC-N032`: False; Missing mandatory caller argument trusted_provenance
+- `PHC-N033`: False; Missing mandatory caller argument trusted_core
+- `PHC-N034`: False; Missing mandatory caller argument trusted_current_commit
+- `PHC-N035`: False; Wrong diagnostic exit 0
+- `PHC-N036`: False; Wrong diagnostic exit 2
+- `PHC-N037`: False; Wrong diagnostic exit -1
+- `PHC-N038`: False; Wrong diagnostic exit True
+- `PHC-N039`: False; missing note
+- `PHC-N040`: False; missing primary
+- `PHC-N041`: False; note before primary
+- `PHC-N042`: False; duplicate note
+- `PHC-N043`: False; duplicate primary
+- `PHC-N044`: False; extra whitespace
+- `PHC-N045`: False; wrong primary row
+- `PHC-N046`: False; wrong primary column
+- `PHC-N047`: False; wrong note row
+- `PHC-N048`: False; wrong note column
+- `PHC-N049`: False; wrong declaration excerpt
+- `PHC-N050`: False; wrong virtual label
+- `PHC-N051`: False; wrong primary symbol
+- `PHC-N052`: False; wrong primary access
+- `PHC-N053`: False; wrong note symbol
+- `PHC-N054`: False; wrong primary source
+- `PHC-N055`: False; unrelated note path
+- `PHC-N056`: False; wrong note severity
+- `PHC-N057`: False; missing source gutter
+- `PHC-N058`: False; helper leading declaration
+- `PHC-N059`: False; Entire diagnostic moved to stdout
+- `PHC-N060`: False; Virtual note moved to stdout
+- `PHC-N061`: False; Whitespace stdout
+- `PHC-N062`: False; Extra error stdout before
+- `PHC-N063`: False; Extra error stdout after
+- `PHC-N064`: False; Extra error stderr before
+- `PHC-N065`: False; Extra error stderr after
+- `PHC-N066`: False; Extra warning stdout before
+- `PHC-N067`: False; Extra warning stdout after
+- `PHC-N068`: False; Extra warning stderr before
+- `PHC-N069`: False; Extra warning stderr after
+- `PHC-N070`: False; Extra remark stdout before
+- `PHC-N071`: False; Extra remark stdout after
+- `PHC-N072`: False; Extra remark stderr before
+- `PHC-N073`: False; Extra remark stderr after
+- `PHC-N074`: False; Extra note stdout before
+- `PHC-N075`: False; Extra note stdout after
+- `PHC-N076`: False; Extra note stderr before
+- `PHC-N077`: False; Extra note stderr after
+- `PHC-N078`: False; Crash marker Stack dump: stdout
+- `PHC-N079`: False; Crash marker Stack dump: stderr
+- `PHC-N080`: False; Crash marker LLVM ERROR: stdout
+- `PHC-N081`: False; Crash marker LLVM ERROR: stderr
+- `PHC-N082`: False; Crash marker Segmentation fault stdout
+- `PHC-N083`: False; Crash marker Segmentation fault stderr
+- `PHC-N084`: False; Crash marker fatal error: failure stdout
+- `PHC-N085`: False; Crash marker fatal error: failure stderr
+- `PHC-N086`: False; Alter client bytes
+- `PHC-N087`: False; Client bytes supplied as text
+- `PHC-N088`: False; Wrong trusted client path
+- `PHC-N089`: False; Wrong primary path
+- `PHC-N090`: False; Virtual label used as dependency evidence
+- `PHC-N091`: False; Missing dependency source
+- `PHC-N092`: False; Noncanonical campaign root
+- `PHC-N093`: False; Missing source/module domain_primitives
+- `PHC-N094`: False; Alter source/module bytes domain_primitives
+- `PHC-N095`: False; Alter source/module path domain_primitives
+- `PHC-N096`: False; Missing source/module domain_source
+- `PHC-N097`: False; Alter source/module bytes domain_source
+- `PHC-N098`: False; Alter source/module path domain_source
+- `PHC-N099`: False; Missing source/module domain_state
+- `PHC-N100`: False; Alter source/module bytes domain_state
+- `PHC-N101`: False; Alter source/module path domain_state
+- `PHC-N102`: False; Missing source/module imported_module
+- `PHC-N103`: False; Alter source/module bytes imported_module
+- `PHC-N104`: False; Alter source/module path imported_module
+- `PHC-N105`: False; Missing provenance producer
+- `PHC-N106`: False; Missing provenance consumer
+- `PHC-N107`: False; Missing provenance module_receipt
+- `PHC-N108`: False; Module receipt mismatch module_name
+- `PHC-N109`: False; Module receipt mismatch module_path
+- `PHC-N110`: False; Module receipt mismatch module_sha256
+- `PHC-N111`: False; Module receipt mismatch producer
+- `PHC-N112`: False; Module receipt mismatch source_inputs
+- `PHC-N113`: False; Wrong producer argv
+- `PHC-N114`: False; Wrong producer exit
+- `PHC-N115`: False; Wrong producer environment_overrides
+- `PHC-N116`: False; Wrong producer name
+- `PHC-N117`: False; Wrong consumer argv
+- `PHC-N118`: False; Wrong consumer exit
+- `PHC-N119`: False; Wrong consumer environment_overrides
+- `PHC-N120`: False; Wrong consumer name
+- `PHC-N121`: False; Missing current core artifact_path
+- `PHC-N122`: False; Missing current core receipt_path
+- `PHC-N123`: False; Missing current core receipt_sha256
+- `PHC-N124`: False; Missing current core root
+- `PHC-N125`: False; Missing current core receipt_fixture
+- `PHC-N126`: False; Missing current core artifact_fixture
+- `PHC-N127`: False; Wrong current core root
+- `PHC-N128`: False; Wrong current core receipt_path
+- `PHC-N129`: False; Wrong current core artifact_path
+- `PHC-N130`: False; Wrong current core receipt_sha256
+- `PHC-N131`: False; Core receipt bytes altered
+- `PHC-N132`: False; Core module bytes altered
+- `PHC-N133`: False; Stale archived core root
+- `PHC-N134`: False; Malformed or stale current commit abc
+- `PHC-N135`: False; Malformed or stale current commit FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+- `PHC-N136`: False; Malformed or stale current commit 0000000000000000000000000000000000000000
+- `PHC-N137`: False; Malformed or stale current commit True
+- `PHC-N138`: False; private-storage policy grafted on helper
+- `PHC-N139`: False; private-storage complete control grafted on helper
+- `PHC-N140`: False; private-storage stderr grafted on helper
+- `PHC-N141`: False; private-storage client fixture grafted on helper
+- `PHC-N142`: False; Helper policy grafted on private-storage
+- `PHC-N143`: False; Helper complete control grafted on private-storage
+- `PHC-N144`: False; Helper stderr grafted on private-storage
+- `PHC-N145`: False; private-storage consumer grafted on helper
+- `PHC-N146`: False; private-count policy grafted on helper
+- `PHC-N147`: False; private-count complete control grafted on helper
+- `PHC-N148`: False; private-count stderr grafted on helper
+- `PHC-N149`: False; private-count client fixture grafted on helper
+- `PHC-N150`: False; Helper policy grafted on private-count
+- `PHC-N151`: False; Helper complete control grafted on private-count
+- `PHC-N152`: False; Helper stderr grafted on private-count
+- `PHC-N153`: False; private-count consumer grafted on helper
+- `PHC-N154`: False; Helper opt-in grafted onto private-storage-type
+- `PHC-N155`: False; Helper opt-in grafted onto private-helper-leading
+- `PHC-N156`: False; Helper opt-in grafted onto negative-A1
+- `PHC-N157`: False; Helper opt-in grafted onto negative-A4
+- `PHC-N158`: False; Helper opt-in grafted onto negative-A7
+- `PHC-N159`: False; Helper opt-in grafted onto negative-A8
+- `PHC-N160`: False; Helper opt-in grafted onto outside-package-SignalAnalyzerDiagnostic
+- `PHC-N161`: False; Module receipt source hash differs domain_primitives
+- `PHC-N162`: False; Module receipt source hash differs domain_source
+- `PHC-N163`: False; Module receipt source hash differs domain_state
+- `PHC-P02`: True; Synthetic alternate fresh campaign/current commit/core with exact recomputed digest join; reused module bytes prove logical joins only
+- `PHC-N164`: False; Fresh commit with stale core receipt
+- `PHC-N165`: False; Fresh producer with stale core argv
+- `PHC-N166`: False; Fresh consumer with stale core argv
+- `PHC-N167`: False; Fresh module receipt with stale producer
+- `PHC-N168`: False; Fresh stderr retains archived paths
+- `PHC-N169`: False; Fresh noncanonical core root
+- `PHC-N170`: False; Rehashed authenticated-looking P02 receipt wrong-package
+- `PHC-N171`: False; Rehashed authenticated-looking P02 receipt wrong-profile
+- `PHC-N172`: False; Rehashed authenticated-looking P02 receipt failed-check
+- `PHC-N173`: False; Rehashed authenticated-looking P02 receipt wrong-source
+- `PHC-N174`: False; Rehashed authenticated-looking P02 receipt wrong-compiler
+- `PHC-N175`: False; Rehashed authenticated-looking P02 receipt wrong-plugin
+- `PHC-N176`: False; Rehashed authenticated-looking P02 receipt missing-artifact
+- `PHC-N177`: False; Rehashed authenticated-looking P02 receipt wrong-artifact-hash
+- `PHC-N178`: False; Rehashed authenticated-looking P02 receipt stale-commit
+- `PHC-N179`: False; Rehashed authenticated-looking P02 receipt stale-digest
+- `PHC-N180`: False; Rehashed authenticated-looking P02 receipt wrong-execution
+- `PHC-N181`: False; Rehashed authenticated-looking P02 receipt wrong-toolchain-path
+- `PHC-N182`: False; Boolean/integer spoof of complete helper control expected_nonzero
+- `PHC-N183`: False; Boolean/integer spoof of Domain producer exit
+- `PHC-N184`: False; Boolean/integer spoof of helper consumer exit
+- `PHC-N185`: False; Boolean/integer spoof of module receipt producer exit
+- `PHC-N186`: False; Rehashed P02 receipt boolean/integer spoof check-exit-bool
+- `PHC-N187`: False; Rehashed P02 receipt boolean/integer spoof check-pass-int
