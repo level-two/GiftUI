@@ -1,0 +1,16 @@
+{
+  "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-runtimecore-fixed-qualification1/actual-host.sil",
+  "bytes": 58377712,
+  "sha256": "600d3a910112cd7aa293765017edffa753a32418c7efcae8eef248f047917e30",
+  "mtime_utc": "2026-10-18T08:53:51.929925+00:00",
+  "ctime_utc": "2026-10-18T08:53:51.931177+00:00",
+  "status": "UNQUALIFIED provenance; preserved without adoption, removal or overwrite",
+  "receipt_inventory": [
+    "actual-host.sil",
+    "result.json",
+    "boundaries-decode-prepared.json",
+    "boundary-physical-index.json"
+  ],
+  "bounded_receipt_reference_search": "No actual-host.sil reference in JSON receipts under current qualification1 and current fresh25compile output; phase1 runner never executes consumer command. No command/exit/input/log collection receipt found for existing SIL. Origin not established.",
+  "compiler_invoked_by_this_adjustment": false
+}

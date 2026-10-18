@@ -17,6 +17,12 @@ prior activity. [Prior independent boundary](p08-grouped-module-closure-final-in
 and [exact three-witness map](grouped-module-closure-corrective2-result/next-witness-boundary.json)
 remain historical evidence; this authorization makes that finite scope executable.
 
+[Unique actual-host SIL collection setup](runtimecore-consumer-collection1/README.md)
+is frozen after the original output's absent-file guard stopped execution.
+Existing58MB SIL has unqualified provenance and is preserved. Only output/cache/
+log paths change;573 hashes/42sources/currentimports/flags verify. No compiler
+invoked by setup; no source repair or allowance added. Consumer review remains open.
+
 The [fixed-source first qualification packet](runtimecore-fixed-qualification1/README.md)
 is prepared and validated without compiler/decoder/runtime execution:22 normal-import
 privacy controls, six-module physical index/required six-body gate, actualhost

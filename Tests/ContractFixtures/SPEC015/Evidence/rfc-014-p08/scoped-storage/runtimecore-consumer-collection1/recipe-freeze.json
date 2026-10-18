@@ -1,0 +1,7 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-consumer-collection1/run.py": "128ddd42422c497cb410cf385362afe2d3658eef00bd2eae2835d70c20d289fc",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-consumer-collection1/existing-unqualified-output.json": "b51466e9607f7e89e69ee88d06946a5f7fb566d692865cbf3487ccdf746c77c1",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-consumer-collection1/prepared.json": "16516b5deb1546d1b594ca6a0cb732b6b6efe2c8c76fd381c4b54c8e5e9f1033",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-consumer-collection1/README.md": "738e3c69228351d8aa796a4bb9b68f9196fb75569392d3299fbf1f64a03fda3a",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-consumer-collection1/input-freeze.json": "40fda187d05c7c0a0e64d527f99b4ba70d9141675afcc9b689f6d1fee692c897"
+}
