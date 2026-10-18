@@ -1,10 +1,11 @@
 # P08 grouped module closure activity — 2026-10-18
 
-**Caller-frontier amendment prepared; quick independent review pending; initial0/1,
+**Caller-frontier amendment independently PASS; initial0/1,
 corrections0/2; no source/compiler execution.** The prior
 [not-ready review](p08-grouped-module-closure-independent-design-review.md) is
 preserved. Its 16 named sites plus two immediate host scheduler sites are now in
-the exact map; no allowance is used.
+the exact map; the [bounded recheck](p08-grouped-module-closure-caller-amendment-review.md)
+passes implementation and the prepared grouped compile sweep. No allowance is used.
 Eugene explicitly authorized grouped Layout and remaining-module
 dependency corrections, then full-host/cold validation under the strict contract.
 This is a new allowance of one initial candidate and at most two grouped

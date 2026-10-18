@@ -21,12 +21,14 @@ superseded_by: null
 The [independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-independent-design-review.md)
 found retained explicit `@inlinable` callers crossing the private-body source
 boundary. The amended map adds its 16 named sites and two immediate host scheduler
-sites under the same remove-body-serialization mechanism. Quick independent
-recheck precedes source or compiler work; initial0/1/corrections0/2 are unconsumed.
+sites under the same remove-body-serialization mechanism. The
+[bounded independent recheck](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-caller-amendment-review.md)
+passes implementation and the prepared grouped compile sweep;
+initial0/1/corrections0/2 are unconsumed.
 
 The [new user-authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-activity.md)
 and [exact reduced map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-design/candidate-map.json)
-are prepared for independent recheck:33 attribute sites/twelve files, zero explicit
+have independent design PASS:33 attribute sites/twelve files, zero explicit
 nominal/protocol/field ABI promotions; all other owners are fresh-recompile inputs.
 Private helpers retain access/body/inline hints while losing illegal source
 serialization directives. Named package/internal entry and caller bodies similarly
