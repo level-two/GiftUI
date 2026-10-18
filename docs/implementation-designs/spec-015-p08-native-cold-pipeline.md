@@ -18,6 +18,12 @@ superseded_by: null
 
 ## Grouped dependency continuation — 2026-10-18
 
+Current [final corrective2 source/argv freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective2-prepared/README.md):
+22 edits14files, token/default/lifetime audit PASS;307 frozen inputs, fresh25-owner
+registered runner validated without compilation. Final2/2 in progress after
+independent PASS1d567952; no further repair allowance. Compile/privacy/codegen/
+safety/cold and P08/R07/T8.1 remain open. Earlier stage records below are historical.
+
 [Corrective1 compile result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-corrective1-result/README.md):
 lower+15 owners PASS, Layout FAIL36, nine dependents blocked;302 frozen inputs
 verify. Initial1/1 and corrective1/2 consumed, final correction design/review next.

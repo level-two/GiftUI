@@ -80,6 +80,7 @@ package struct RasterPayloadLimits: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum RasterBackendError: UInt8, Equatable, Sendable {
     case invalidEnvelope = 0
     case unsupportedOperation = 1

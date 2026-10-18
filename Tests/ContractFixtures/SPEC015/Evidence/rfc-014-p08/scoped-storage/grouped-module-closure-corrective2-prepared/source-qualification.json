@@ -1,0 +1,96 @@
+{
+  "basis": "1d567952 immutable source/map/default guard",
+  "files": [
+    {
+      "file": "Sources/GiftUI/GiftUI.swift",
+      "before_sha256": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+      "after_sha256": "a12109e3a8d3c84d51da206e62110f5a91f66937b3cc5d78120b06b21d3169c2",
+      "token_audit": "PASS only reviewed attributes and sole default; all other body/signature/ownership/default/lifetime tokens exact"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "before_sha256": "4a2e6673340864a4d4cd11038dd3f5460e94e2506861e41de81d0856264ba7f2",
+      "after_sha256": "55466bd192b6e5e1296de66a20ed2bdee97caa69432608b9c0e9436548786650",
+      "token_audit": "PASS only reviewed attributes and sole default; all other body/signature/ownership/default/lifetime tokens exact"
+    },
+    {
+      "file": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "before_sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+      "after_sha256": "f1377873d91c82a47ecad39b23651b85622964b9c3896c8c142875a81a6b9b95",
+      "token_audit": "PASS only reviewed attributes and sole default; all other body/signature/ownership/default/lifetime tokens exact"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift",
+      "before_sha256": "7728c6631e620e312f006ddc60e8fdec5d58efb3ea702b662b21ea187586ae57",
+      "after_sha256": "bedb5fbc642516740f4804822c6b67da1ae0d2fe3d50def3068a61d5a0367d92",
+      "token_audit": "PASS only reviewed attributes and sole default; all other body/signature/ownership/default/lifetime tokens exact"
+    },
+    {
+      "file": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "before_sha256": "d4a0e5274c7c8e88a4e7c6c9c0bf5345ea1e83b5086b1f32373f01c7a4940722",
+      "after_sha256": "760cb1dc1ed7144da8a181261d1e245c8f2dc07c3af7a8dd1e5721b4943a3a4c",
+      "token_audit": "PASS only reviewed attributes and sole default; all other body/signature/ownership/default/lifetime tokens exact"
+    },
+    {
+      "file": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "before_sha256": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba",
+      "after_sha256": "f80188a59c6bc162c37de581cafdda9fa0698b6743c6c7442bd3bda6f111f0aa",
+      "token_audit": "PASS only reviewed attributes and sole default; all other body/signature/ownership/default/lifetime tokens exact"
+    },
+    {
+      "file": "Sources/GiftUIRasterCore/RasterPayloadLimits.swift",
+      "before_sha256": "23234d9ba4e630bb6279e31a9ab8ae72b8f9e3b2f9477784bf42697ecab544c3",
+      "after_sha256": "b7d21c2ab3aacbb953f6e9b43f5d8850af6638087aaf8c68e0b991779b9c322b",
+      "token_audit": "PASS only reviewed attributes and sole default; all other body/signature/ownership/default/lifetime tokens exact"
+    },
+    {
+      "file": "Sources/GiftUIDisplayCore/DisplayContracts.swift",
+      "before_sha256": "b27ad7489ad1ec6076f0d53b3912d6b9ed85329d355ceda2678707374111f3f0",
+      "after_sha256": "1fa223e3bc58565b6e1ad25db6bd4fcdfae21f7d6934b5b5d25d757fe165e3a8",
+      "token_audit": "PASS only reviewed attributes and sole default; all other body/signature/ownership/default/lifetime tokens exact"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "before_sha256": "41ae54160ebb7fc27b0bd1541d57617f049c38f78d0b071425020fbc548d8482",
+      "after_sha256": "fb89a072235041053cd739b4a65da6c5c67cfe38c47f4d49db3aad86e0f9bdab",
+      "token_audit": "PASS only reviewed attributes and sole default; all other body/signature/ownership/default/lifetime tokens exact"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostWakePacingController.swift",
+      "before_sha256": "457479bb631966220e2bb2d26fb7a78ac0143fbcadae8b66c25b78b27125643b",
+      "after_sha256": "ea04fa3fb0c52da2aa8c1719cb68abb229c3d24f6ad3de597527b2f026dede11",
+      "token_audit": "PASS only reviewed attributes and sole default; all other body/signature/ownership/default/lifetime tokens exact"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift",
+      "before_sha256": "10583aec3c00ff8246e5652a5f16085e1b5e93fa235e91fbc5dd94ff901fadeb",
+      "after_sha256": "1c529f7ccbd4c59aafa9589b177f0a602079d8588ba0cc1643c60cde41ebe2fe",
+      "token_audit": "PASS only reviewed attributes and sole default; all other body/signature/ownership/default/lifetime tokens exact"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift",
+      "before_sha256": "377ef975edb74d9e8b86b94228e0756e1bc15414875f74a1fb4dbec33f0d88ca",
+      "after_sha256": "570e74dc2c57f3e05ae9bdb7a845e2cbf6066be3ea9a3cb5eaa0c0f6fc9b5d36",
+      "token_audit": "PASS only reviewed attributes and sole default; all other body/signature/ownership/default/lifetime tokens exact"
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "before_sha256": "eb6ae9a1e094003656a3528cc1b5a5c5d03d3dbfaff3081e3d954c2df365baba",
+      "after_sha256": "b7eb4b8689ddda6077cfc3d0416a422c2207642ab1ab440d72b2c375a9aef3b4",
+      "token_audit": "PASS only reviewed attributes and sole default; all other body/signature/ownership/default/lifetime tokens exact"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "before_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3",
+      "after_sha256": "ce95e9f298dbd3fbfd42bfdf7d689b5e81db40390d60e6ca9eff3a48e18b0dfc",
+      "token_audit": "PASS only reviewed attributes and sole default; all other body/signature/ownership/default/lifetime tokens exact"
+    }
+  ],
+  "source_files": 14,
+  "annotation_edits": 21,
+  "sole_default_edit": "CanvasStagedEntry value: Payload? = nil",
+  "other_frozen_inputs_verified": 288,
+  "constructor_defaults_and_assignments": "Exact except approved missing value=nil completion; invoked=false, StackMeasure four zero defaults, field order, ownership and lifetime headers unchanged",
+  "source_compiler_invocations": 0,
+  "protected5_pycache_originalState_macro_counter": "unchanged hashes"
+}

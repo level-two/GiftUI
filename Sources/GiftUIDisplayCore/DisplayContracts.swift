@@ -25,6 +25,7 @@ package enum DisplayTransferResult: Equatable, Sendable {
     case failureAfterAcceptance(DisplayTargetError)
 }
 
+@usableFromInline
 package enum DisplayTargetError: UInt8, Equatable, Sendable {
     case invalidDescriptor = 0
     case invalidReservation = 1

@@ -1,0 +1,73 @@
+--- a/Sources/GiftUI/GiftUI.swift
++++ b/Sources/GiftUI/GiftUI.swift
+@@ -76,0 +77 @@
++@usableFromInline
+@@ -77,0 +79 @@
++    @usableFromInline
+@@ -85,0 +88 @@
++    @usableFromInline
+@@ -93,0 +97 @@
++    @usableFromInline
+--- a/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift
++++ b/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift
+@@ -53,0 +54 @@
++    @usableFromInline
+--- a/Sources/GiftUIExecution/RunCycleValues.swift
++++ b/Sources/GiftUIExecution/RunCycleValues.swift
+@@ -3,0 +4 @@
++@usableFromInline
+@@ -21,0 +23 @@
++@usableFromInline
+@@ -49,0 +52 @@
++@usableFromInline
+@@ -57,0 +61 @@
++@usableFromInline
+@@ -112,0 +117 @@
++@usableFromInline
+--- a/Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift
++++ b/Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift
+@@ -6,0 +7 @@
++@usableFromInline
+--- a/Sources/GiftUIRenderCore/RenderValues.swift
++++ b/Sources/GiftUIRenderCore/RenderValues.swift
+@@ -84,0 +85 @@
++@usableFromInline
+--- a/Sources/GiftUIExecution/FrameHandoffValues.swift
++++ b/Sources/GiftUIExecution/FrameHandoffValues.swift
+@@ -54,0 +55 @@
++@usableFromInline
+@@ -61,0 +63 @@
++@usableFromInline
+--- a/Sources/GiftUIRasterCore/RasterPayloadLimits.swift
++++ b/Sources/GiftUIRasterCore/RasterPayloadLimits.swift
+@@ -82,0 +83 @@
++@usableFromInline
+--- a/Sources/GiftUIDisplayCore/DisplayContracts.swift
++++ b/Sources/GiftUIDisplayCore/DisplayContracts.swift
+@@ -27,0 +28 @@
++@usableFromInline
+--- a/Sources/GiftUIHostConfiguration/HostConfigurationResults.swift
++++ b/Sources/GiftUIHostConfiguration/HostConfigurationResults.swift
+@@ -18,0 +19 @@
++@usableFromInline
+--- a/Sources/GiftUIHostConfiguration/HostWakePacingController.swift
++++ b/Sources/GiftUIHostConfiguration/HostWakePacingController.swift
+@@ -7,0 +8 @@
++@usableFromInline
+--- a/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift
++++ b/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift
+@@ -16,0 +17 @@
++@usableFromInline
+--- a/Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift
++++ b/Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift
+@@ -361,0 +362 @@
++@usableFromInline
+--- a/Sources/GiftUITextResources/GiftUITextResources.swift
++++ b/Sources/GiftUITextResources/GiftUITextResources.swift
+@@ -279,0 +280 @@
++@usableFromInline
+--- a/Sources/GiftUIDrawing/CanvasStagedValues.swift
++++ b/Sources/GiftUIDrawing/CanvasStagedValues.swift
+@@ -27 +27 @@
+-        value: Payload?,
++        value: Payload? = nil,

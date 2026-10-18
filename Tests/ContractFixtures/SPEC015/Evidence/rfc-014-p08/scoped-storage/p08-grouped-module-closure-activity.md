@@ -1,17 +1,14 @@
 # P08 grouped module closure activity — 2026-10-18
 
-**Corrective1/2 compile sweep frozen: lower PASS,15 owners PASS, Layout FAIL36,
-nine dependents blocked.** [Result](grouped-module-closure-corrective1-result/README.md)
-preserves full diagnostics and all302 unchanged input hashes. Initial1/1 and
-corrective1/2 consumed; one final correction remains, read-only grouped design
-before independent review/source. Privacy/lifetime, physical/actual-host,
-safety/cold and P08/R07/T8.1 remain open; observer costs unresolved.
-The [final corrective2 design](grouped-module-closure-corrective2-design/README.md)
-has [independent design PASS](p08-grouped-module-closure-corrective2-independent-design-review.md):
-21 ABI annotations plus one completion of the previously approved Canvas value=nil
-default,22 edits in14 files. The28 blocked serialized entries were inspected;
-no source/compiler execution or further cycle consumed. No new serialized body,
-source access, constructor body or contract change is included.
+**Final corrective2/2 source and command frozen; compiler unexecuted.**
+[Prepared packet](grouped-module-closure-corrective2-prepared/README.md): exact21
+ABI annotations plus one approved value=nil default completion,22 edits14files.
+Token/default/lifetime audit PASS;288 other inputs unchanged;307 hashes freeze the
+fresh25-owner registered runner. Independent design PASS1d567952 precedes edits.
+Initial1/1 and corrective1/2 remain consumed. Next one sequential compile sweep;
+no retry/third correction after material failure. Earlier [corrective1 result](grouped-module-closure-corrective1-result/README.md)
+remains immutable. Privacy/lifetime, physical/actual-host, safety/cold and
+P08/R07/T8.1 stay open; observer/key-failure costs unresolved.
 Eugene explicitly authorized grouped Layout and remaining-module
 dependency corrections, then full-host/cold validation under the strict contract.
 This is a new allowance of one initial candidate and at most two grouped

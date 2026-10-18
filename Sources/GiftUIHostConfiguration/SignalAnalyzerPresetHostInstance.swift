@@ -51,6 +51,7 @@ package protocol SignalAnalyzerPresetLiveOwner:
 @usableFromInline
 package struct SignalAnalyzerPresetHostInstance<Owner>: MVPHostInstance, ~Copyable, ~Escapable
 where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
+    @usableFromInline
     package let assemblyReport: HostAssemblyReport
     @usableFromInline
     package internal(set) var owner: Owner

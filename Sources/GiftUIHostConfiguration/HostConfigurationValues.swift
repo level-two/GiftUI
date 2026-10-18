@@ -14,6 +14,7 @@ package enum MVPHostKind: UInt8, Equatable, Sendable {
     case nrf52840Static = 3
 }
 
+@usableFromInline
 package enum HostComponentRole: UInt8, Equatable, Sendable {
     case runtimeProfile = 0
     case textResourcePackage = 1

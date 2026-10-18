@@ -4,6 +4,7 @@ import GiftUILayout
 import GiftUIObservableState
 import GiftUISemanticCore
 
+@usableFromInline
 package enum RuntimeOwnerFailure: Equatable, Sendable {
     case semantic(SemanticExpansionError)
     case layout(LayoutError)

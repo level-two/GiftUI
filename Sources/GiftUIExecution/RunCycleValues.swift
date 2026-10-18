@@ -1,6 +1,7 @@
 import GiftUI
 import GiftUIRenderCore
 
+@usableFromInline
 package enum ExecutionError: UInt8, Equatable, Sendable {
     case invalidValue = 0
     case arithmeticOverflow = 1
@@ -19,6 +20,7 @@ package enum SemanticCycleDisposition: UInt8, Equatable, Sendable {
     case dirty = 2
 }
 
+@usableFromInline
 package enum ExecutionOperational: UInt8, Equatable, Sendable {
     case noChange = 0
     case backpressured = 1
@@ -47,6 +49,7 @@ package enum PresentationIntentState: UInt8, Equatable, Sendable {
     case unavailable = 2
 }
 
+@usableFromInline
 package enum RunCycleFailure<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {
     case execution(ExecutionError)
     case renderProduction(RenderProductionError)
@@ -55,6 +58,7 @@ package enum RunCycleFailure<OwnerFailure: Equatable & Sendable>: Equatable, Sen
     case focusedOwner(OwnerFailure)
 }
 
+@usableFromInline
 package struct RunCycleSummary: Equatable, Sendable {
     package let cycle: RunCycleID
     package let admission: AdmissionSummary
@@ -110,6 +114,7 @@ package struct RunCycleSummary: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum RunCycleResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {
     case success(RunCycleSummary)
     case operational(ExecutionOperational, RunCycleSummary)

@@ -52,6 +52,7 @@ package struct FrameOfferResult: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum FrameOfferFailure: UInt8, Equatable, Sendable {
     case invalidEnvelope = 0
     case insufficientCapacity = 1
@@ -59,6 +60,7 @@ package enum FrameOfferFailure: UInt8, Equatable, Sendable {
     case contractViolation = 3
 }
 
+@usableFromInline
 package enum FrameRefusalOrigin: UInt8, Equatable, Sendable {
     case renderProducer = 0
     case endpoint = 1

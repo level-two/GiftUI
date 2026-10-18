@@ -82,6 +82,7 @@ package struct PositionedGlyphOperationHeader: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum RenderProductionError: UInt8, Equatable, Sendable {
     case invalidInput = 0
     case arithmeticOverflow = 1

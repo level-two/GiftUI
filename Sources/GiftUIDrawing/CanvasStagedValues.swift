@@ -24,7 +24,7 @@ package struct CanvasStagedEntry<Identity: Equatable & Sendable, Payload> {
     internal init(
         identity: Identity,
         witness: UInt16,
-        value: Payload?,
+        value: Payload? = nil,
         invoked: Bool = false
     ) {
         self.identity = identity

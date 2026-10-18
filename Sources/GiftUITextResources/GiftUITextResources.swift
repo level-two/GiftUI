@@ -277,6 +277,7 @@ where Metrics: CanonicalTextMetricsView, Raster: TextRasterResourceView {
     }
 }
 
+@usableFromInline
 package enum TextResourceValidationError: UInt8, Equatable, Sendable {
     case unsupportedSchema = 0
     case capacityExceeded = 1

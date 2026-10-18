@@ -1,0 +1,269 @@
+{
+  "basis": "1d567952 PASS original49fdc3ee map plus constructor-default-amendment.json",
+  "correction": "final2/2 in progress before first source write",
+  "edits": [
+    {
+      "file": "Sources/GiftUI/GiftUI.swift",
+      "line": 77,
+      "declaration": "package enum GeometryArithmetic {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ordinary ABI type",
+      "trace": "R4 LayoutEngine serialized arithmetic calls (18 exact diagnosed call expressions)",
+      "source_sha256": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+      "before": "package enum GeometryArithmetic {",
+      "after": "@usableFromInline\npackage enum GeometryArithmetic {"
+    },
+    {
+      "file": "Sources/GiftUI/GiftUI.swift",
+      "line": 78,
+      "declaration": "package static func add(",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ordinary ABI callee",
+      "trace": "R4 GeometryArithmetic.add referenced at15 diagnosed expressions",
+      "source_sha256": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+      "before": "package static func add(",
+      "after": "@usableFromInline\npackage static func add("
+    },
+    {
+      "file": "Sources/GiftUI/GiftUI.swift",
+      "line": 86,
+      "declaration": "package static func subtract(",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ordinary ABI callee",
+      "trace": "R4 GeometryArithmetic.subtract referenced at2 diagnosed expressions",
+      "source_sha256": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+      "before": "package static func subtract(",
+      "after": "@usableFromInline\npackage static func subtract("
+    },
+    {
+      "file": "Sources/GiftUI/GiftUI.swift",
+      "line": 94,
+      "declaration": "package static func multiply(",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ordinary ABI callee",
+      "trace": "R4 GeometryArithmetic.multiply referenced at1 diagnosed expression",
+      "source_sha256": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+      "before": "package static func multiply(",
+      "after": "@usableFromInline\npackage static func multiply("
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "line": 54,
+      "declaration": "package let assemblyReport: HostAssemblyReport",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI stored property",
+      "trace": "R2/R3 checked serialized HostInstance.init assigns self.assemblyReport",
+      "source_sha256": "4a2e6673340864a4d4cd11038dd3f5460e94e2506861e41de81d0856264ba7f2",
+      "before": "package let assemblyReport: HostAssemblyReport",
+      "after": "@usableFromInline\npackage let assemblyReport: HostAssemblyReport"
+    },
+    {
+      "file": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 113,
+      "declaration": "package enum RunCycleResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "R2/R3 SignalAnalyzerPresetLiveOwner.runOpportunity requirement return type inherits ABI scope",
+      "source_sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+      "before": "package enum RunCycleResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum RunCycleResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift",
+      "line": 7,
+      "declaration": "package enum RuntimeOwnerFailure: Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "R2/R3 live-owner requirement result generic argument and macOS activation failure .runtime payload",
+      "source_sha256": "7728c6631e620e312f006ddc60e8fdec5d58efb3ea702b662b21ea187586ae57",
+      "before": "package enum RuntimeOwnerFailure: Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum RuntimeOwnerFailure: Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 58,
+      "declaration": "package struct RunCycleSummary: Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "RunCycleResult .success/.operational/.failure payload; nominal only, no fields/init",
+      "source_sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+      "before": "package struct RunCycleSummary: Equatable, Sendable {",
+      "after": "@usableFromInline\npackage struct RunCycleSummary: Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 22,
+      "declaration": "package enum ExecutionOperational: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "RunCycleResult.operational payload",
+      "source_sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+      "before": "package enum ExecutionOperational: UInt8, Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum ExecutionOperational: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 50,
+      "declaration": "package enum RunCycleFailure<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "RunCycleResult.failure payload",
+      "source_sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+      "before": "package enum RunCycleFailure<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum RunCycleFailure<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "line": 4,
+      "declaration": "package enum ExecutionError: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "RunCycleFailure.execution payload",
+      "source_sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+      "before": "package enum ExecutionError: UInt8, Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum ExecutionError: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "line": 85,
+      "declaration": "package enum RenderProductionError: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "RunCycleFailure.renderProduction payload",
+      "source_sha256": "d4a0e5274c7c8e88a4e7c6c9c0bf5345ea1e83b5086b1f32373f01c7a4940722",
+      "before": "package enum RenderProductionError: UInt8, Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum RenderProductionError: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "line": 55,
+      "declaration": "package enum FrameOfferFailure: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "RunCycleFailure.frameOffer payload",
+      "source_sha256": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba",
+      "before": "package enum FrameOfferFailure: UInt8, Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum FrameOfferFailure: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "line": 62,
+      "declaration": "package enum FrameRefusalOrigin: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "RunCycleFailure.nonRetryableRefusal payload",
+      "source_sha256": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba",
+      "before": "package enum FrameRefusalOrigin: UInt8, Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum FrameRefusalOrigin: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRasterCore/RasterPayloadLimits.swift",
+      "line": 83,
+      "declaration": "package enum RasterBackendError: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "R2/R3 already ABI macOS activation failures .endpoint payload",
+      "source_sha256": "23234d9ba4e630bb6279e31a9ab8ae72b8f9e3b2f9477784bf42697ecab544c3",
+      "before": "package enum RasterBackendError: UInt8, Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum RasterBackendError: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIDisplayCore/DisplayContracts.swift",
+      "line": 28,
+      "declaration": "package enum DisplayTargetError: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "R2/R3 already ABI macOS activation failures .display payload",
+      "source_sha256": "b27ad7489ad1ec6076f0d53b3912d6b9ed85329d355ceda2678707374111f3f0",
+      "before": "package enum DisplayTargetError: UInt8, Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum DisplayTargetError: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "line": 19,
+      "declaration": "package enum HostConfigurationError: Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "R2/R3 already ABI macOS activation failures .configuration payload",
+      "source_sha256": "41ae54160ebb7fc27b0bd1541d57617f049c38f78d0b071425020fbc548d8482",
+      "before": "package enum HostConfigurationError: Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum HostConfigurationError: Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostWakePacingController.swift",
+      "line": 8,
+      "declaration": "package enum HostWakePacingError: UInt8, Error, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "R2/R3 already ABI macOS activation failures .pacing payload",
+      "source_sha256": "457479bb631966220e2bb2d26fb7a78ac0143fbcadae8b66c25b78b27125643b",
+      "before": "package enum HostWakePacingError: UInt8, Error, Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum HostWakePacingError: UInt8, Error, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift",
+      "line": 17,
+      "declaration": "package enum HostComponentRole: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "HostConfigurationError.duplicateRole/.missingRole payload",
+      "source_sha256": "10583aec3c00ff8246e5652a5f16085e1b5e93fa235e91fbc5dd94ff901fadeb",
+      "before": "package enum HostComponentRole: UInt8, Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum HostComponentRole: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift",
+      "line": 362,
+      "declaration": "package enum RuntimeProfileValidationError: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "HostConfigurationError.invalidRuntimeProfile payload",
+      "source_sha256": "377ef975edb74d9e8b86b94228e0756e1bc15414875f74a1fb4dbec33f0d88ca",
+      "before": "package enum RuntimeProfileValidationError: UInt8, Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum RuntimeProfileValidationError: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "line": 280,
+      "declaration": "package enum TextResourceValidationError: UInt8, Equatable, Sendable {",
+      "action": "add @usableFromInline only; preserve access/signature/body",
+      "kind": "ABI signature nominal",
+      "trace": "HostConfigurationError.invalidTextResources payload",
+      "source_sha256": "eb6ae9a1e094003656a3528cc1b5a5c5d03d3dbfaff3081e3d954c2df365baba",
+      "before": "package enum TextResourceValidationError: UInt8, Equatable, Sendable {",
+      "after": "@usableFromInline\npackage enum TextResourceValidationError: UInt8, Equatable, Sendable {"
+    },
+    {
+      "file": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "source_sha256": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3",
+      "line": 27,
+      "declaration": "CanvasStagedEntry.init(identity:witness:value:invoked:)",
+      "before": "        value: Payload?,",
+      "after": "        value: Payload? = nil,",
+      "action": "restore only the omitted optional memberwise default; preserve access, ownership, invoked=false, assignments and all other tokens",
+      "authority": "db0cd74c explicitly required preserving optional value=nil in the internal initializer equivalent; parent authorized completing this guard in the same final correction",
+      "historical_source": "b89c4fac:Sources/GiftUIDrawing/CanvasStagedValues.swift contains fileprivate var value: Payload? and no custom CanvasStagedEntry initializer",
+      "rule_sources": [
+        "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/initialization/#Optional-Property-Types",
+        "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/initialization/#Memberwise-Initializers-for-Structure-Types",
+        "https://github.com/swiftlang/swift-evolution/blob/main/proposals/0242-default-values-memberwise.md"
+      ]
+    }
+  ],
+  "source_before_sha256": {
+    "Sources/GiftUI/GiftUI.swift": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift": "4a2e6673340864a4d4cd11038dd3f5460e94e2506861e41de81d0856264ba7f2",
+    "Sources/GiftUIExecution/RunCycleValues.swift": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+    "Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift": "7728c6631e620e312f006ddc60e8fdec5d58efb3ea702b662b21ea187586ae57",
+    "Sources/GiftUIRenderCore/RenderValues.swift": "d4a0e5274c7c8e88a4e7c6c9c0bf5345ea1e83b5086b1f32373f01c7a4940722",
+    "Sources/GiftUIExecution/FrameHandoffValues.swift": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba",
+    "Sources/GiftUIRasterCore/RasterPayloadLimits.swift": "23234d9ba4e630bb6279e31a9ab8ae72b8f9e3b2f9477784bf42697ecab544c3",
+    "Sources/GiftUIDisplayCore/DisplayContracts.swift": "b27ad7489ad1ec6076f0d53b3912d6b9ed85329d355ceda2678707374111f3f0",
+    "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": "41ae54160ebb7fc27b0bd1541d57617f049c38f78d0b071425020fbc548d8482",
+    "Sources/GiftUIHostConfiguration/HostWakePacingController.swift": "457479bb631966220e2bb2d26fb7a78ac0143fbcadae8b66c25b78b27125643b",
+    "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift": "10583aec3c00ff8246e5652a5f16085e1b5e93fa235e91fbc5dd94ff901fadeb",
+    "Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift": "377ef975edb74d9e8b86b94228e0756e1bc15414875f74a1fb4dbec33f0d88ca",
+    "Sources/GiftUITextResources/GiftUITextResources.swift": "eb6ae9a1e094003656a3528cc1b5a5c5d03d3dbfaff3081e3d954c2df365baba",
+    "Sources/GiftUIDrawing/CanvasStagedValues.swift": "b68ee98d3bb5f7ed6786f2b4b5d1c36512fbf48e7a8231e86d50367a243e30e3"
+  }
+}

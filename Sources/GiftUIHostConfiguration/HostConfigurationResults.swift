@@ -16,6 +16,7 @@ package enum HostValidationStage: UInt8, Equatable, Sendable {
     case policy = 8
 }
 
+@usableFromInline
 package enum HostConfigurationError: Equatable, Sendable {
     case duplicateRole(HostComponentRole)
     case missingRole(HostComponentRole)

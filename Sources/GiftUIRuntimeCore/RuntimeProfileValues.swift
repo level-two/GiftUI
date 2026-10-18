@@ -359,6 +359,7 @@ package struct RuntimeStorageByteCounts: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum RuntimeProfileValidationError: UInt8, Equatable, Sendable {
     case invalidLimits = 0
     case incompatibleLimits = 1

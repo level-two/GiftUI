@@ -74,7 +74,9 @@ public struct ProposedSize: Equatable, Hashable, Sendable {
     }
 }
 
+@usableFromInline
 package enum GeometryArithmetic {
+    @usableFromInline
     package static func add(
         _ lhs: GeometryScalar,
         _ rhs: GeometryScalar
@@ -83,6 +85,7 @@ package enum GeometryArithmetic {
         return result.overflow ? nil : result.partialValue
     }
 
+    @usableFromInline
     package static func subtract(
         _ lhs: GeometryScalar,
         _ rhs: GeometryScalar
@@ -91,6 +94,7 @@ package enum GeometryArithmetic {
         return result.overflow ? nil : result.partialValue
     }
 
+    @usableFromInline
     package static func multiply(
         _ lhs: GeometryScalar,
         _ rhs: GeometryScalar

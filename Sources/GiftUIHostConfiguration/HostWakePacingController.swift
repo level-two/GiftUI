@@ -5,6 +5,7 @@ package enum HostWakeDirective: UInt8, Equatable, Sendable {
     case coalesced = 1
 }
 
+@usableFromInline
 package enum HostWakePacingError: UInt8, Error, Equatable, Sendable {
     case unavailable = 0
     case reentrant = 1
