@@ -1,0 +1,13 @@
+{
+  "accepted": 8,
+  "bytes": 21635,
+  "campaign_authority": false,
+  "compiler_invocations": 0,
+  "display_notes": 2,
+  "freeze_sha256": "09b3cd74aa8faea8f4702b8cc061a9b580aee76c16994dcd66d49684663a74e5",
+  "rejected": 51,
+  "sha256": "5958a593b617f61284773636316f30a18936511ecf9fecb98eb097661a1c09a8",
+  "source": ".build/contracts/p08-a4-diagnostic-policy-static-successor/static-result.json",
+  "status": "STATIC_FIXTURE_EXPECTATIONS_MATCHED_ONLY",
+  "total_inputs": 59
+}
