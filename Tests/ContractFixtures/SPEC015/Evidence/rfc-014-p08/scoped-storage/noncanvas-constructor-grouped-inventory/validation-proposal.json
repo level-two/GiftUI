@@ -1,0 +1,20 @@
+{
+  "execution": "PROPOSAL ONLY; no command prepared/executed and no source allowance allocated",
+  "baseline": "31f48166 boundary review / 6057ef5f frozen valid nested failure; Canvas source7c54fe61 and recipe6d2d0456 retained",
+  "combined_sequential_stages": [
+    "Freeze reviewed new source/test hashes, exact compiler/tool/runtime/fixtures/registered source lists; validate recipe without execution; use fresh isolated paths",
+    "Rebuild changed GiftUIMacros producer and test binary with established macOS17-method runner. Reuse only source-unchanged pinned SwiftSyntax/compiler/framework dependencies by exact hash. Run all17 methods with new assertions; fresh actual --lower-source produces main counter and test multiple/nested schema/Presentation/Table",
+    "Seal fresh macro tool/test/generated artifacts only AFTER gate PASS; never reuse old tool or claim old generated hashes fresh",
+    "Fresh actual lowerer plus registered25-owner DAG canonical8Static/13Dynamic/42host; collect independently runnable compile failures, dependent owners blocked; no stale dependency success",
+    "Compile actual multiple Presentation+Table AND nested Presentation+Table, with same fresh provider/schema imports and exact existing flags; nested70\u219292 original failure retained as regression target",
+    "Only on complete compile PASS: existing applicable70privacy plus new nested construction positive and isolated crossmodule private State/_model/constructor access negatives, exact intended diagnostics and accessible positive twins",
+    "Only on privacy PASS: existing11 matched complete indexes/76unique positive bodies and matching current object +conditional same42host SIL; constructor ABI/access does not require its ordinary body to be serialized",
+    "Interpret actual paths/ordinary constructor call costs and private State borrow/provenance; full14loan/Optional/lifetime/exclusivity/failurecleanup and strictcold remain prerequisite/open; stop dependent gates on material failure"
+  ],
+  "guard": "No compiler flag/capacity/window changes, no dropped nested/Table gate or weakened multiplicity/privacy. Low-priority harness errors require reviewed focused continuation; no automatic source repair.",
+  "outside_scope": [
+    "Remaining10 frontier source roots",
+    "All-repository suites/images/hardware/global toolchain mutations",
+    "New syntax support or authored initializer visibility/body/default change"
+  ]
+}

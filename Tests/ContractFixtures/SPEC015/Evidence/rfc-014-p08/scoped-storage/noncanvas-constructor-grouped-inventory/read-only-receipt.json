@@ -1,0 +1,53 @@
+{
+  "base_head": "31f4816687fe8b0a4bd1b2337248beb9eb24f7d9",
+  "implementation_sources": [
+    {
+      "path": "Sources/GiftUIMacros/FiniteSourceLowering.swift",
+      "sha256": "48265ebed5ea5fb964d51a2557cf27f2eeae6388097b29a09aebdeac5e8e88fb"
+    },
+    {
+      "path": "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift",
+      "sha256": "e0df6aebf643ad6b4b77449328e0027c3b45758d000023bea198963750ee246a"
+    }
+  ],
+  "protected_external": [
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+      "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581"
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+      "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3"
+    },
+    {
+      "path": "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+      "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243"
+    },
+    {
+      "path": "scripts/nrf52840/build.sh",
+      "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72"
+    },
+    {
+      "path": "scripts/raspberry-pi/build.sh",
+      "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+    }
+  ],
+  "pycache": [
+    {
+      "path": "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
+      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+    }
+  ],
+  "ran": [
+    "read-only source/log/receipt inspection",
+    "proposal JSON/Markdown generation only"
+  ],
+  "not_run": [
+    "source/fixture mutation",
+    "compiler",
+    "macro test",
+    "decoder",
+    "runtime"
+  ],
+  "budgets": "No new budget; Canvas candidate1/1 fixed with zero automatic source repairs; all older budgets preserved"
+}

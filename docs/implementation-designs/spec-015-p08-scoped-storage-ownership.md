@@ -18,6 +18,12 @@ superseded_by: null
 
 # Implementation Design — P08 Scoped Storage Ownership
 
+Current [finite non-Canvas constructor proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-grouped-inventory/README.md), 2026-10-18:
+ABI-only ordinary zero-argument constructors in exact top-level finite View owners;
+three selectors/two maintained files, private State/access/defaults unchanged.
+Nested helper nonleakage and unsupported signatures guarded; proposal only, review
+required. No source/compiler/runtime or allowance; existing Canvas STOP retained.
+
 Current grouped Canvas/writer/transfer derived proposal, 2026-10-18: [exact68site/11file map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-grouped-inventory/README.md)
 groups F13/F14/F15 plus direct F05/F06/F19 candidate/clear/discard overlap, standard
 codec/project, scoped writer/bank storage and ten finite Table/Values emission selectors.

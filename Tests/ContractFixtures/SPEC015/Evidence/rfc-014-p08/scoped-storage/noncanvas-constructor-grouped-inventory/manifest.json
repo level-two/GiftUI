@@ -1,0 +1,20 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "76f090d2717d46e66bd54c4fc84e7175c1a1920658a5c0b06aa573dd4e7fe4d2"
+    },
+    {
+      "path": "correction-map.json",
+      "sha256": "e3291578379cb130e69768abf8cc7c4c8c5f16ce7c10c2813a7168fb7054e073"
+    },
+    {
+      "path": "read-only-receipt.json",
+      "sha256": "d767bd768ffd215246368d7e97cd1e418404b4e515126a03773fd47b974190f3"
+    },
+    {
+      "path": "validation-proposal.json",
+      "sha256": "2aa0c3dfd036ea9f1af00e58d0a2c99a12428cecb4323bc3357eaa33fedd32f5"
+    }
+  ]
+}

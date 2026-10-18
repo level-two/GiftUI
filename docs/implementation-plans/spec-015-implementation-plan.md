@@ -29,6 +29,12 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [finite non-Canvas constructor review proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/noncanvas-constructor-grouped-inventory/README.md):
+three selectors/two maintained files; ordinary ABI-only zero-argument constructor
+profile with exact owner/access/attribute guards, CounterScreen+ChildScreen grouped.
+Read-only, independent review pending; no source/compiler/runtime or new allowance.
+Canvas failure/budgets and unrun privacy/codegen/safety/cold remain unchanged.
+
 Current [Canvas candidate boundary STOP](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/canvas-writer-transfer-candidate1-result/README.md):
 macro17/freshlower+25/multiplePresentation+Table PASS; valid maintained nestedPresentation
 FAIL (ChildScreen packageinit from serialized evaluator, generated70→92). Existing

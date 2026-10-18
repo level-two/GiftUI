@@ -1,0 +1,111 @@
+{
+  "status": "PROPOSAL ONLY; independent review required; no source/compiler/runtime or candidate allowance",
+  "scope": "3 implementation selectors in 2 maintained files; all eligible owners, not Counter/Child name matching",
+  "current_instances": [
+    "CounterScreen.package init() {}",
+    "ChildScreen.package init() {}"
+  ],
+  "source_inputs": [
+    {
+      "path": "Sources/GiftUIMacros/FiniteSourceLowering.swift",
+      "sha256": "48265ebed5ea5fb964d51a2557cf27f2eeae6388097b29a09aebdeac5e8e88fb"
+    },
+    {
+      "path": "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift",
+      "sha256": "e0df6aebf643ad6b4b77449328e0027c3b45758d000023bea198963750ee246a"
+    }
+  ],
+  "selectors": [
+    {
+      "id": 1,
+      "file": "Sources/GiftUIMacros/FiniteSourceLowering.swift",
+      "selector": "Lowerer: new pure eligibility predicate immediately before visit(InitializerDeclSyntax)",
+      "change": "Recognize direct explicit ordinary zero-parameter initializer of an actual top-level finite non-Canvas View struct. Determine original node parent/owner structurally, not inherited insideView/insideCanvas or inventory name alone.",
+      "owner_guards": [
+        "Initializer must be direct MemberBlockItem of this StructDeclSyntax; owner must be direct source-file top-level CodeBlockItem, no local/nested/extension/#if owner",
+        "Owner is in validated inventory AND its own inheritance contains View, not Canvas; owner has no authored generic parameters/where clause",
+        "Owner authored access is package/internal/default-internal or public, never private/fileprivate/open; existing lowerer makes package/internal/default owner ABI-usable; public already is",
+        "No change to existing nominal annotation, State helper generation, ordinary macro witness eligibility or declaration traversal"
+      ],
+      "initializer_guards": [
+        "Explicit initializer has body, zero parameters, no generic clause/where, no optional/failable marker, no async or throws effects",
+        "Modifiers are absent or access-only package/internal; effective default access remains internal. Public/private/fileprivate or other modifiers leave unchanged",
+        "No attributes, or only ordinary @available attributes, can receive the new attribute; existing @usableFromInline/@inlinable are unchanged and never duplicated; other attributes remain unchanged",
+        "All checks are predicates: nonmatching declarations receive existing lowering behavior, not new acceptance, rejection or syntax support"
+      ]
+    },
+    {
+      "id": 2,
+      "file": "Sources/GiftUIMacros/FiniteSourceLowering.swift",
+      "selector": "Lowerer.visit(_ node: InitializerDeclSyntax) currently lines316\u2013328",
+      "change": "Preserve existing Canvas branch byte/token behavior. Otherwise, if the pure predicate matches, append exactly one @usableFromInline to rewritten initializer; never @inlinable. Preserve every existing signature/access/body/default/attribute token and super.visit behavior.",
+      "forbidden": [
+        "No synthesized/memberwise initializer insertion",
+        "No parameter/default/rethrows/ownership/lifetime rewriting",
+        "No private field access change or authored State/_model change",
+        "No Canvas constructor or ordinary ObservableStateHost macro change"
+      ]
+    },
+    {
+      "id": 3,
+      "file": "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift",
+      "selector": "ObservableStateHostMacroTests.testActualLoweredStateOutputHasSeparatedHelperDeclarations",
+      "change": "Extend existing actual-lowerer family with exact constructor AST/token assertions and finite eligibility matrix below; retain all17 existing methods, actual counter/multiple/nested output family, schema/Table output and semantic variant compile gates."
+    }
+  ],
+  "test_matrix": [
+    {
+      "case": "counter/multiple/nested actual emitted bytes",
+      "expected": "Each CounterScreen/ChildScreen explicit package init receives exactly one usableFromInline, no inlinable; access/signature/body exact; CounterCanvas unchanged inlinable; private State and generated _model references exact"
+    },
+    {
+      "case": "top-level finite non-Canvas View, package/internal/implicit-internal init()",
+      "expected": "One usableFromInline. Current Counter/Child are package instances; no hardcoded owner names"
+    },
+    {
+      "case": "public top-level finite View, internal/package init()",
+      "expected": "One usableFromInline; public init() unchanged with no redundant usableFromInline"
+    },
+    {
+      "case": "private/fileprivate finite View owner OR private/fileprivate initializer",
+      "expected": "Initializer attrs/access/body unchanged; no annotation or visibility widening; do not claim whole private finite View semantics pass"
+    },
+    {
+      "case": "ordinary macro-only State hosts at all existing access levels",
+      "expected": "Existing17-test ordinary privacy controls unchanged; no finite-lowerer rule applied to ordinary macro expansion"
+    },
+    {
+      "case": "noninventory nested helper struct inside eligible View, nested/local/extension/conditional owners and same-spelling non-View struct",
+      "expected": "No new initializer annotation; exact owning declaration/ancestry wins over inherited insideView or name inventory"
+    },
+    {
+      "case": "multiple explicit initializers in one eligible owner",
+      "expected": "Only ordinary zero-parameter member qualifies; typed parameter overload remains unchanged; no first-initializer assumption"
+    },
+    {
+      "case": "parameterized/defaulted, failable, throwing/typed-throwing, async, generic/where initializers",
+      "expected": "Predicate false, original lowering/diagnostic behavior unchanged; no newly supported syntax or default-generator legality claim; isolated syntax/eligibility assertions, not falsely successful semantic module controls"
+    },
+    {
+      "case": "already usableFromInline/inlinable initializers",
+      "expected": "No duplicate or incompatible new attribute; exact existing attrs preserved"
+    },
+    {
+      "case": "@available ordinary init() / other attributes or modifiers",
+      "expected": "Available retained plus one usableFromInline; unknown combinations untouched. No generic attribute-compatibility claim"
+    }
+  ],
+  "before_after": {
+    "before": "package init() {}",
+    "after": "@usableFromInline\npackage init() {}",
+    "serialized_body": false,
+    "explicit_defaults_added": 0,
+    "parameters_added": 0,
+    "stored_fields_changed": 0
+  },
+  "remaining_uncertainties": [
+    "Compiler semantic proof for the newly emitted ordinary ABI constructors is pending; no claim from syntax tests",
+    "No broad parameterized/defaulted/effectful constructor ABI profile is established; a future required live edge outside this predicate needs a separately reviewed scope amendment",
+    "Ordinary constructor machine cost and private State initialization lifetime/resource qualification remain subject to later physical/actual consumer and safety/cold gates; ABI access alone is not a zero-heap proof"
+  ]
+}

@@ -33,3 +33,10 @@ evidence and limited macro17/lower25/multiple-pair compile PASS; valid nested va
 FAIL/STOP confirmed as unchanged lowerer constructor ABI gap. Later gates NOT RUN.
 No harness relabel/retry/source allowance; two non-Canvas constructors are only a
 future bounded review subject. Current candidate remains fixed/unaccepted.
+
+User-authorized next bounded read-only [constructor review proposal](noncanvas-constructor-grouped-inventory/README.md)
+groups CounterScreen/ChildScreen ordinary ABI-only zero-argument constructors under
+a structural finite-owner rule. Three selectors/two maintained files proposed;
+private State/access/body/default/ownership exact. No source/compiler/runtime, new
+candidate or repair allowance; independent design review required. This does not
+resume or accept the fixed Canvas candidate or its blocked qualification gates.
