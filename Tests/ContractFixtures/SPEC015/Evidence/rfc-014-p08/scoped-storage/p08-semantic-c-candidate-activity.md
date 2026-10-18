@@ -95,6 +95,12 @@ genuine receipt-chain/failure gating/validation lock verify. Independent safety
 collection may proceed while full current-callee interpretation remains pending;
 producer PASS never grants cold/P08 acceptance or new source authority.
 
+[Independent maintained-producer STOP/proposal review](p08-maintained-safety-producer-review.md):
+35e3187c STOP verified (64rendered/32primary; preEF inputs unchanged). Proposed
+21selector/fourfile group READY for renewed authorization, including fixture ABI/
+equivalent constructors plus EmptyView/fully guarded zero-State production changes.
+No source/fixture-only workaround, retry or allowance from the closed activity.
+
 [Explicit-return pair/fresh42SIL PASS](semantic-c-escape-continuation1-result/README.md):
 positive0errors/negative1exactEscapable; SILexit0/61,999,526bytes/1305inputsverified,
 prior87/72andsealedprerequisites retained. No source/repeat/repairreset; actual C
