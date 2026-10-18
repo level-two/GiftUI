@@ -1,0 +1,218 @@
+{
+  "profile": "nrf52840-embedded",
+  "control": "positive-semantics",
+  "passed": true,
+  "category": null,
+  "core_receipt_sha256": "3ab1ab29586086715218de74b70db78852f0e0f7a7dcbbe640d3a8d03dd6886e",
+  "positive_cell": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering",
+  "compiler": "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "artifacts": {
+    "AnalyzerPresentation.swiftmodule": {
+      "sha256": "5f291d0b9293ed9e2f3b3596a539c8f648f6b6cf14ac097b37adeeb54eb8ea93",
+      "bytes": 89340
+    },
+    "ABIRead.o": {
+      "sha256": "41559bc25557cc754c9d94deee5cd365e796215dddbaf91a44eb9e03bc87592b",
+      "bytes": 7436
+    },
+    "SignalAnalyzerDomain.o": {
+      "sha256": "4df99d2c9c3c89778e95404dc748aeea01f2093f1b027ba2ee0ec8eb3be45e2c",
+      "bytes": 14832
+    },
+    "DeclarationHost.swiftsourceinfo": {
+      "sha256": "c2c0d5623ccbab7657db9707b2c43123aea15ea0d4a247aa366ee0b077cace43",
+      "bytes": 10388
+    },
+    "ABISemantics.swiftdoc": {
+      "sha256": "08cd92c5fd3f7e93104edabeacdfba6449be48e1c5140239cf8a2e84cb683074",
+      "bytes": 376
+    },
+    "ABISemantics.swiftmodule": {
+      "sha256": "4206872b904a02ee844c0b30c81ce68f7239110df7565a99f1b4ad59b148ff9e",
+      "bytes": 148052
+    },
+    "AnalyzerSchema.o": {
+      "sha256": "83041d8eddff505b7968107069f24596fe4b8df364f4a765c371908bbfe7b001",
+      "bytes": 8992
+    },
+    "AnalyzerSchema.swift": {
+      "sha256": "421e09a47b2d1f117f6a752681943a386345d078fcbf7a19af05797d1e3e3b85",
+      "bytes": 3247
+    },
+    "AnalyzerSchema.swiftsourceinfo": {
+      "sha256": "7315438d848dfaaef0b8add74ea66b70118d058d99b28277ab883b702c9ce68e",
+      "bytes": 6272
+    },
+    "SignalAnalyzerDomain.swiftsourceinfo": {
+      "sha256": "5c246a28df589ffdeb46b43883941b6aaa313448a4c4175f650d128d4edd254e",
+      "bytes": 7956
+    },
+    "AnalyzerSchema.swiftdoc": {
+      "sha256": "689fbccc5f30611e33acafe7442a60fb2025c5680ad53a19673c3839d4ba76bf",
+      "bytes": 380
+    },
+    "AnalyzerPresentation.swiftsourceinfo": {
+      "sha256": "65394010a9676610bcb28d3cfc792028309e77fdab295fe27073b3dcf6aeacd8",
+      "bytes": 1872
+    },
+    "ABISemantics.swiftsourceinfo": {
+      "sha256": "ee927df1fbc9639c5984985008f3ba79218cde56d2aaee905d9284dc4b9c1906",
+      "bytes": 876
+    },
+    "SignalAnalyzerDomain.swiftdoc": {
+      "sha256": "ace91fc5e01fbf475b1052b39eac364a0653a17c22f998161ec8f1a4a8a7592b",
+      "bytes": 624
+    },
+    "ABIRead.swiftsourceinfo": {
+      "sha256": "724db6ce471d0285c5a1c99acf4160a021bf8b1a1c928dc0f0e72fa9e60d955c",
+      "bytes": 920
+    },
+    "control-positive-serialized-read.json": {
+      "sha256": "fec8ebcc18efa6ad24ea958298aa98f97b53a9e7c5be358fbbfe22592ba76614",
+      "bytes": 8869
+    },
+    "DeclarationHost.o": {
+      "sha256": "e26b4a0cf82b06711b2dac46f8e6ec6f3489e12ddd7c6588d7853aa732b74b98",
+      "bytes": 33136
+    },
+    "SignalAnalyzerDomain.swiftmodule": {
+      "sha256": "64ae2bff7addf3262b86959b052474e5ca995d087bc4a2f4c1b9fbfba30177c2",
+      "bytes": 162164
+    },
+    "ABIRead.swiftmodule": {
+      "sha256": "44709ade785854f9fa1add0db215c6a09f7041d6d3f32962704b8de16450a6a0",
+      "bytes": 68412
+    },
+    "ABIRead.swiftdoc": {
+      "sha256": "a6820b6d836c4b9080a60f292a53d7b7f3e8d4e7cf5856d0f5e8dbefdf21105d",
+      "bytes": 372
+    },
+    "AnalyzerSchema.swiftmodule": {
+      "sha256": "ab6bfd78e7633fbe7478f37b4874433575ab4ca1c0adf36777cf1235ad2d9505",
+      "bytes": 86876
+    },
+    "AnalyzerPresentation.swift": {
+      "sha256": "800ca6cba4b3d241d8dedb2f9d2f3b2ef391d23b5b47f2cce77a4cfb797c8727",
+      "bytes": 1239
+    },
+    "DeclarationHost.swiftmodule": {
+      "sha256": "07a5cd0c6dcb919f40f323fdd6dbbf61bae4af5d236f54dea8534e33ef6e88f2",
+      "bytes": 442828
+    },
+    "DeclarationHost.swiftdoc": {
+      "sha256": "e8c5c7cf5f2bd947ef1966baa25208492ebc85cecaa35a6216a6c6d9fc25c72f",
+      "bytes": 380
+    },
+    "control-positive-actual-lowering.json": {
+      "sha256": "7ccc10b63d3d4294ebbf848d2759d0a06f8d21a997cc21a1caf1f10ad8f8de85",
+      "bytes": 13554
+    },
+    "ABISemantics.o": {
+      "sha256": "6b293269a964ffbe014e6b4dc6b3d195a6541095ba53d2c48603c4a378f84959",
+      "bytes": 10688
+    },
+    "AnalyzerPresentation.o": {
+      "sha256": "1896bf5d5c268a413ee9d6bc5e076a75a4cf31ec24ced3f79143252c91a7c66e",
+      "bytes": 7948
+    },
+    "AnalyzerPresentation.swiftdoc": {
+      "sha256": "3220e084c901be626f59a730986335cb113bbe9b0f52cc59e234525f1962bfcb",
+      "bytes": 384
+    },
+    "inputs/SignalAnalyzerDiagnostic.swift": {
+      "sha256": "47c39490cf20470b653eacbc29473ce5f936e0d80111d42dec6e4942016458a7",
+      "bytes": 5671
+    },
+    "inputs/ABIRead.swift": {
+      "sha256": "22fe6f11d47fd9d2128262a32858bf721f9edc976715ddf6960c01f3a7d25aea",
+      "bytes": 205
+    },
+    "inputs/SignalPrimitiveValues.swift": {
+      "sha256": "421b32bb5ceafe40ffd41322650f8c4f905854525a9880f63c5c2bcada69373c",
+      "bytes": 1582
+    },
+    "inputs/Analyzer.swift": {
+      "sha256": "23236acaa231e084f6e4a9d6ba285e841ce077b58492bcfa00ab510f5f0a94e5",
+      "bytes": 811
+    },
+    "inputs/AcquisitionState.swift": {
+      "sha256": "c55975c2b7414eba721b7493300bdd47cdc32e2eb4e4023d1a70840457ab8425",
+      "bytes": 243
+    },
+    "inputs/Semantics.swift": {
+      "sha256": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005",
+      "bytes": 1620
+    },
+    "inputs/Main.swift": {
+      "sha256": "a7986e67c0bfb4b661d7e55e15d304ab42529638d6e7986f8b5f69b81516073a",
+      "bytes": 176
+    }
+  },
+  "command_labels": [
+    "nrf52840-embedded-positive-semantics-ABISemantics"
+  ],
+  "transitive_imports": {
+    "core": {
+      "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/result.json",
+      "sha256": "3ab1ab29586086715218de74b70db78852f0e0f7a7dcbbe640d3a8d03dd6886e"
+    },
+    "positive_scratch": {
+      "AnalyzerPresentation.swiftmodule": "5f291d0b9293ed9e2f3b3596a539c8f648f6b6cf14ac097b37adeeb54eb8ea93",
+      "ABIRead.o": "41559bc25557cc754c9d94deee5cd365e796215dddbaf91a44eb9e03bc87592b",
+      "SignalAnalyzerDomain.o": "4df99d2c9c3c89778e95404dc748aeea01f2093f1b027ba2ee0ec8eb3be45e2c",
+      "ABISemantics.swiftmodule": "4206872b904a02ee844c0b30c81ce68f7239110df7565a99f1b4ad59b148ff9e",
+      "AnalyzerSchema.o": "83041d8eddff505b7968107069f24596fe4b8df364f4a765c371908bbfe7b001",
+      "DeclarationHost.o": "e26b4a0cf82b06711b2dac46f8e6ec6f3489e12ddd7c6588d7853aa732b74b98",
+      "SignalAnalyzerDomain.swiftmodule": "64ae2bff7addf3262b86959b052474e5ca995d087bc4a2f4c1b9fbfba30177c2",
+      "ABIRead.swiftmodule": "44709ade785854f9fa1add0db215c6a09f7041d6d3f32962704b8de16450a6a0",
+      "AnalyzerSchema.swiftmodule": "ab6bfd78e7633fbe7478f37b4874433575ab4ca1c0adf36777cf1235ad2d9505",
+      "DeclarationHost.swiftmodule": "07a5cd0c6dcb919f40f323fdd6dbbf61bae4af5d236f54dea8534e33ef6e88f2",
+      "ABISemantics.o": "6b293269a964ffbe014e6b4dc6b3d195a6541095ba53d2c48603c4a378f84959",
+      "AnalyzerPresentation.o": "1896bf5d5c268a413ee9d6bc5e076a75a4cf31ec24ced3f79143252c91a7c66e"
+    }
+  },
+  "stage_captures": [
+    {
+      "name": "nrf52840-embedded-positive-semantics-ABISemantics",
+      "exit": 0,
+      "source_provenance": {
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/inputs/Semantics.swift": "0ce5862ee2c50f2a25a8d1a1a60c6d8597f6c42ff4a67f960577dabd9e103005"
+      },
+      "stdout": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/logs/nrf52840-embedded-positive-semantics-ABISemantics.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/logs/nrf52840-embedded-positive-semantics-ABISemantics.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "prelaunch_audits": [
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-storage-preclient-authentication.json",
+      "sha256": "458cdca49b140ba6c6d73663c3795f1b80d41515af88c6a9b443b7a62335ba76"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-count-preclient-authentication.json",
+      "sha256": "92d0db8410c8092afa15258380866e95380030d8ac5ac89db903265707ba600e"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-helper-continuation-preclient-authentication.json",
+      "sha256": "550145cd4087bfcff93a8f6287abeed5156c0e1d2e85171d03baf7f2a40f55d0",
+      "completed_ns": 1792363785126208000
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-helper-leading-preclient-authentication.json",
+      "sha256": "b76cdef7899d854419a80768529464f172ec728968afa70b380cd441d941be7e",
+      "completed_ns": 1792363794877117000
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/armv6-A4-precompile-authentication.json",
+      "sha256": "21de052dd55dd75950fc49131954f1382a7e396fc73ece8c6a22951268fa8b81",
+      "binding_sha256": "9b6cac2e8557850fa5a305950c2f5d61d0a56286e46b2ec19dd47247da4cb7e7",
+      "completed_ns": 1792364000768735000
+    }
+  ]
+}

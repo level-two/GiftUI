@@ -1,0 +1,87 @@
+{
+  "profile": "raspberry-pi-armv6",
+  "control": "outside-package-SignalTransition",
+  "passed": true,
+  "category": "package-nominal-hidden",
+  "core_receipt_sha256": "9940041d233af3c47e33aea771ba243869553bdd8bf0ce6314fc6df262408535",
+  "positive_cell": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering",
+  "compiler": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "artifacts": {
+    "inputs/outside-package-SignalTransition.swift": {
+      "sha256": "09ee8166f3495a4c3236dd4ac88af65a6b248f3c21bd8e83f1232e8b216561f4",
+      "bytes": 72
+    }
+  },
+  "command_labels": [
+    "raspberry-pi-armv6-outside-package-SignalTransition-client-emit-object"
+  ],
+  "transitive_imports": {
+    "core": {
+      "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-plsgwkuy/raspberry-pi-armv6/result.json",
+      "sha256": "9940041d233af3c47e33aea771ba243869553bdd8bf0ce6314fc6df262408535"
+    },
+    "positive_scratch": {
+      "AnalyzerPresentation.swiftmodule": "a9ed730c3f407b7bef42a0dd839700f41a7cb04b745302061b0fafb3944611f0",
+      "ABIRead.o": "5d9eb916fe8b2a8a170d2535a17cae8e6da80607b734c1923db80ae97a01db24",
+      "SignalAnalyzerDomain.o": "dc26ff30608999ccc3d843c279fb1880d76af02fb7cd28e04a43ba98fb465b34",
+      "ABISemantics.swiftmodule": "276314f185e8a9f1784bd29267734696b0c8f59269eab3ffa67a436aedca787b",
+      "AnalyzerSchema.o": "480dbad7dcfbac7d0f9f1842bc408b0eb901926540d523dcecc08586abe21d67",
+      "DeclarationHost.o": "b94d455cd511abb9de45ba2bcd87fd1145ba4b3beafeccf30e7e2722a887fd67",
+      "SignalAnalyzerDomain.swiftmodule": "7f7b076b5c49da21215480a7dbc5baa54b94964545f09bd701ba7dcf5d2766c9",
+      "ABIRead.swiftmodule": "3408ec4a3fae6d2e6b9295899d9abae77400a13e1146dcbeecec4d41e7ca1556",
+      "AnalyzerSchema.swiftmodule": "1c9ad8b869e8046fb65f6737dc9586f92c3b1501037a523e5527d2235f2aa46b",
+      "DeclarationHost.swiftmodule": "f59b2c428bb734024164154223021190b5ca2c5cb30dc1d3c831c1f3e44b15a4",
+      "ABISemantics.o": "2a44b9cd261af4df7731c6e0180d3f1a23557f8a01183bf8871be093cb5ecae9",
+      "AnalyzerPresentation.o": "e5970d43682704a5089246d08e949773ee8d44a75f371df11cc676b9b98518c8"
+    }
+  },
+  "stage_captures": [
+    {
+      "name": "raspberry-pi-armv6-outside-package-SignalTransition-client-emit-object",
+      "exit": 1,
+      "source_provenance": {
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/outside-package-SignalTransition/inputs/outside-package-SignalTransition.swift": "09ee8166f3495a4c3236dd4ac88af65a6b248f3c21bd8e83f1232e8b216561f4"
+      },
+      "stdout": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/logs/raspberry-pi-armv6-outside-package-SignalTransition-client-emit-object.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/logs/raspberry-pi-armv6-outside-package-SignalTransition-client-emit-object.stderr",
+        "sha256": "9be268d9f9a5b31134795021471733121965f7712d96ba528f15ef5d65e41d34"
+      }
+    }
+  ],
+  "prelaunch_audits": [
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/raspberry-pi-armv6-outside-package-SignalTransition-client-emit-object-fresh-prelaunch.json",
+      "sha256": "b0fa3da257a3f8267c8e766a7de19f138475e778e5a8b0d9805173ef92a1df73",
+      "completed_ns": 1792364215113343000
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-storage-preclient-authentication.json",
+      "sha256": "458cdca49b140ba6c6d73663c3795f1b80d41515af88c6a9b443b7a62335ba76"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-count-preclient-authentication.json",
+      "sha256": "92d0db8410c8092afa15258380866e95380030d8ac5ac89db903265707ba600e"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-helper-continuation-preclient-authentication.json",
+      "sha256": "550145cd4087bfcff93a8f6287abeed5156c0e1d2e85171d03baf7f2a40f55d0",
+      "completed_ns": 1792363785126208000
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-helper-leading-preclient-authentication.json",
+      "sha256": "b76cdef7899d854419a80768529464f172ec728968afa70b380cd441d941be7e",
+      "completed_ns": 1792363794877117000
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/armv6-A4-precompile-authentication.json",
+      "sha256": "21de052dd55dd75950fc49131954f1382a7e396fc73ece8c6a22951268fa8b81",
+      "binding_sha256": "9b6cac2e8557850fa5a305950c2f5d61d0a56286e46b2ec19dd47247da4cb7e7",
+      "completed_ns": 1792364000768735000
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "profile": "nrf52840-embedded",
+  "control": "outside-package-SignalTransition",
+  "passed": true,
+  "category": "package-nominal-hidden",
+  "core_receipt_sha256": "3ab1ab29586086715218de74b70db78852f0e0f7a7dcbbe640d3a8d03dd6886e",
+  "positive_cell": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering",
+  "compiler": "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "artifacts": {
+    "inputs/outside-package-SignalTransition.swift": {
+      "sha256": "09ee8166f3495a4c3236dd4ac88af65a6b248f3c21bd8e83f1232e8b216561f4",
+      "bytes": 72
+    }
+  },
+  "command_labels": [
+    "nrf52840-embedded-outside-package-SignalTransition-client-emit-object"
+  ],
+  "transitive_imports": {
+    "core": {
+      "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i46b9mge/nrf52840-embedded/result.json",
+      "sha256": "3ab1ab29586086715218de74b70db78852f0e0f7a7dcbbe640d3a8d03dd6886e"
+    },
+    "positive_scratch": {
+      "AnalyzerPresentation.swiftmodule": "5f291d0b9293ed9e2f3b3596a539c8f648f6b6cf14ac097b37adeeb54eb8ea93",
+      "ABIRead.o": "41559bc25557cc754c9d94deee5cd365e796215dddbaf91a44eb9e03bc87592b",
+      "SignalAnalyzerDomain.o": "4df99d2c9c3c89778e95404dc748aeea01f2093f1b027ba2ee0ec8eb3be45e2c",
+      "ABISemantics.swiftmodule": "4206872b904a02ee844c0b30c81ce68f7239110df7565a99f1b4ad59b148ff9e",
+      "AnalyzerSchema.o": "83041d8eddff505b7968107069f24596fe4b8df364f4a765c371908bbfe7b001",
+      "DeclarationHost.o": "e26b4a0cf82b06711b2dac46f8e6ec6f3489e12ddd7c6588d7853aa732b74b98",
+      "SignalAnalyzerDomain.swiftmodule": "64ae2bff7addf3262b86959b052474e5ca995d087bc4a2f4c1b9fbfba30177c2",
+      "ABIRead.swiftmodule": "44709ade785854f9fa1add0db215c6a09f7041d6d3f32962704b8de16450a6a0",
+      "AnalyzerSchema.swiftmodule": "ab6bfd78e7633fbe7478f37b4874433575ab4ca1c0adf36777cf1235ad2d9505",
+      "DeclarationHost.swiftmodule": "07a5cd0c6dcb919f40f323fdd6dbbf61bae4af5d236f54dea8534e33ef6e88f2",
+      "ABISemantics.o": "6b293269a964ffbe014e6b4dc6b3d195a6541095ba53d2c48603c4a378f84959",
+      "AnalyzerPresentation.o": "1896bf5d5c268a413ee9d6bc5e076a75a4cf31ec24ced3f79143252c91a7c66e"
+    }
+  },
+  "stage_captures": [
+    {
+      "name": "nrf52840-embedded-outside-package-SignalTransition-client-emit-object",
+      "exit": 1,
+      "source_provenance": {
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/outside-package-SignalTransition/inputs/outside-package-SignalTransition.swift": "09ee8166f3495a4c3236dd4ac88af65a6b248f3c21bd8e83f1232e8b216561f4"
+      },
+      "stdout": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/logs/nrf52840-embedded-outside-package-SignalTransition-client-emit-object.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/logs/nrf52840-embedded-outside-package-SignalTransition-client-emit-object.stderr",
+        "sha256": "a7cb09b222cace9f0b62baae333f30b07753d0e3e26b300e50310c657ba07107"
+      }
+    }
+  ],
+  "prelaunch_audits": [
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/nrf52840-embedded-outside-package-SignalTransition-client-emit-object-fresh-prelaunch.json",
+      "sha256": "f3a7741270fd46fa5964969c002c7d73494cdd8e81e8e992fe236b347e2f4156",
+      "completed_ns": 1792364551572681000
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-storage-preclient-authentication.json",
+      "sha256": "458cdca49b140ba6c6d73663c3795f1b80d41515af88c6a9b443b7a62335ba76"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-count-preclient-authentication.json",
+      "sha256": "92d0db8410c8092afa15258380866e95380030d8ac5ac89db903265707ba600e"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-helper-continuation-preclient-authentication.json",
+      "sha256": "550145cd4087bfcff93a8f6287abeed5156c0e1d2e85171d03baf7f2a40f55d0",
+      "completed_ns": 1792363785126208000
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-helper-leading-preclient-authentication.json",
+      "sha256": "b76cdef7899d854419a80768529464f172ec728968afa70b380cd441d941be7e",
+      "completed_ns": 1792363794877117000
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/armv6-A4-precompile-authentication.json",
+      "sha256": "21de052dd55dd75950fc49131954f1382a7e396fc73ece8c6a22951268fa8b81",
+      "binding_sha256": "9b6cac2e8557850fa5a305950c2f5d61d0a56286e46b2ec19dd47247da4cb7e7",
+      "completed_ns": 1792364000768735000
+    }
+  ]
+}

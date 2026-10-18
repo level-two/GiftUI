@@ -1,0 +1,87 @@
+{
+  "profile": "macos-dynamic",
+  "control": "private-helper-leading",
+  "passed": true,
+  "category": "private-member-access",
+  "core_receipt_sha256": "3f5e5c459ad0c15619c6ee465ab86eb3b3bf6c9255ae181c06dbb75e81c208ca",
+  "positive_cell": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering",
+  "compiler": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "artifacts": {
+    "inputs/private-helper-leading.swift": {
+      "sha256": "fa95ac63157a227d282faf57df64a5eb5865dc9b587faaa8062c28f9d69979f2",
+      "bytes": 130
+    }
+  },
+  "command_labels": [
+    "macos-dynamic-private-helper-leading-client-emit-object"
+  ],
+  "transitive_imports": {
+    "core": {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-h_aux3k_/macos-dynamic/result.json",
+      "sha256": "3f5e5c459ad0c15619c6ee465ab86eb3b3bf6c9255ae181c06dbb75e81c208ca"
+    },
+    "positive_scratch": {
+      "AnalyzerPresentation.swiftmodule": "42a9e3a319dc7c238c13b75baaf3cd1396664d6081cc9c755161df1190eb2283",
+      "ABIRead.o": "a01435fc6f92e7e8538edbe2c7afb6a95fd3bd770cdbd5ea91606fee4dee0c6b",
+      "SignalAnalyzerDomain.o": "ae528dc444a9484ab8a7c6fe3032fab1d5ce16e24e91b6a2c6f2d6df6ce4c440",
+      "ABISemantics.swiftmodule": "d278d591dbc6cc15460936101c003fe60bdd7b4edfd4b2b099aacc6a15754fb8",
+      "AnalyzerSchema.o": "6aae8fcb98bec195d950526559c0423d9136525686922685b97832badd8c6048",
+      "DeclarationHost.o": "046d35618973698c18438610f7b1a3c203cfd0551a8a8cb241e04671e5fdb2e7",
+      "SignalAnalyzerDomain.swiftmodule": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798",
+      "ABIRead.swiftmodule": "bb04a2500bdf48a573f6802626e9e062aca64502d7b9a9fcbc8d3e8e8dd57c95",
+      "AnalyzerSchema.swiftmodule": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218",
+      "DeclarationHost.swiftmodule": "0c104b39342dadd1d8494d3cfe9c866c44f77fbe1b5fb0ad9e335db963e5cca2",
+      "ABISemantics.o": "ee46e336d772f265578006256bb7e37e97ffc43d38ffbb0a48ff391a218430a9",
+      "AnalyzerPresentation.o": "9ed15ef9d146d81e8530320c6da1fcb46ddbac13a6ff85a8644881c7a99a6c76"
+    }
+  },
+  "stage_captures": [
+    {
+      "name": "macos-dynamic-private-helper-leading-client-emit-object",
+      "exit": 1,
+      "source_provenance": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/private-helper-leading/inputs/private-helper-leading.swift": "fa95ac63157a227d282faf57df64a5eb5865dc9b587faaa8062c28f9d69979f2"
+      },
+      "stdout": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/logs/macos-dynamic-private-helper-leading-client-emit-object.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/logs/macos-dynamic-private-helper-leading-client-emit-object.stderr",
+        "sha256": "2f2d91ee534848b96656639d974b48ec4121248e792948a0335c57ea2898862c"
+      }
+    }
+  ],
+  "prelaunch_audits": [
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/macos-dynamic-private-helper-leading-client-emit-object-fresh-prelaunch.json",
+      "sha256": "0fa4dcbfc2ddd92afa554878309934121c52b458636a8346e6184c8706f94644",
+      "completed_ns": 1792364878870635000
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-storage-preclient-authentication.json",
+      "sha256": "458cdca49b140ba6c6d73663c3795f1b80d41515af88c6a9b443b7a62335ba76"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-count-preclient-authentication.json",
+      "sha256": "92d0db8410c8092afa15258380866e95380030d8ac5ac89db903265707ba600e"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-helper-continuation-preclient-authentication.json",
+      "sha256": "550145cd4087bfcff93a8f6287abeed5156c0e1d2e85171d03baf7f2a40f55d0",
+      "completed_ns": 1792363785126208000
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/private-helper-leading-preclient-authentication.json",
+      "sha256": "b76cdef7899d854419a80768529464f172ec728968afa70b380cd441d941be7e",
+      "completed_ns": 1792363794877117000
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/armv6-A4-precompile-authentication.json",
+      "sha256": "21de052dd55dd75950fc49131954f1382a7e396fc73ece8c6a22951268fa8b81",
+      "binding_sha256": "9b6cac2e8557850fa5a305950c2f5d61d0a56286e46b2ec19dd47247da4cb7e7",
+      "completed_ns": 1792364000768735000
+    }
+  ]
+}
