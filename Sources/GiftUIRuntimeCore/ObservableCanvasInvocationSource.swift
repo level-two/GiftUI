@@ -25,7 +25,6 @@ where Table.Domain.Slot == ObservableModelReadSlot<Model> {
     }
     package var canvasOccurrenceCount: UInt16 { values.count }
     package func canvasIdentity(at index: UInt16) -> Identity? { values.identity(at: index) }
-    @inlinable
     @inline(__always)
     package mutating func invokeCanvas(
         at identity: Identity, context: inout GraphicsContext,

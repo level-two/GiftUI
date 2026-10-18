@@ -33,7 +33,6 @@ package enum RuntimeRecordInteractionBridge {
             interaction: &interaction, projection: { $0 })
     }
 
-    @inlinable
     @inline(__always)
     static func appendProjected<
         Candidate, Committed, Hits, Model, RootIdentity, Action, Roles, Payload
@@ -89,7 +88,6 @@ package enum RuntimeRecordInteractionBridge {
             targetGeneration: .init(rawValue: generation!))
     }
 
-    @inlinable
     @inline(__always)
     package static func dispatch<Records, Model, RootIdentity, Action>(
         _ captured: CapturedAction<Records.Identity>, records: borrowing Records,

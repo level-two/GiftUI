@@ -66,7 +66,6 @@ where
         return nil
     }
 
-    @inlinable
     @inline(__always)
     package mutating func append(
         identity: Identity,
@@ -143,7 +142,6 @@ where
         return InteractionFailurePrecedence.select(from: failures)
     }
 
-    @inlinable
     @inline(__always)
     private borrowing func matchingCommittedGeneration(
         identity: Identity,
@@ -172,7 +170,6 @@ where
         return nil
     }
 
-    @inlinable
     @inline(__always)
     private borrowing func containsCandidate(identity: borrowing Identity) -> Bool {
         let soughtIdentity = copy identity
@@ -338,7 +335,6 @@ where
         committedHitRegions.region(at: index)
     }
 
-    @inlinable
     @inline(__always)
     package borrowing func resolveDown(
         at point: Point
@@ -353,7 +349,6 @@ where
         )
     }
 
-    @inlinable
     @inline(__always)
     private borrowing func topmostRecord(
         at point: Point
@@ -395,7 +390,6 @@ where
         record(identity: identity)
     }
 
-    @inlinable
     @inline(__always)
     package borrowing func resolveMove(
         _ captured: CapturedAction<Identity>,
@@ -419,7 +413,6 @@ where
         return record
     }
 
-    @inlinable
     @inline(__always)
     package borrowing func resolveUp(
         _ captured: CapturedAction<Identity>,

@@ -1,0 +1,117 @@
+diff --git a/Sources/GiftUIDrawing/CanvasStagedValues.swift b/Sources/GiftUIDrawing/CanvasStagedValues.swift
+index ea765ce3..122518fb 100644
+--- a/Sources/GiftUIDrawing/CanvasStagedValues.swift
++++ b/Sources/GiftUIDrawing/CanvasStagedValues.swift
+@@ -25 +24,0 @@ package struct CanvasStagedMetadata {
+-@inlinable
+@@ -92 +90,0 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
+-    @inlinable
+diff --git a/Sources/GiftUIHostConfiguration/HostActivationController.swift b/Sources/GiftUIHostConfiguration/HostActivationController.swift
+index 510494f1..581fe9ed 100644
+--- a/Sources/GiftUIHostConfiguration/HostActivationController.swift
++++ b/Sources/GiftUIHostConfiguration/HostActivationController.swift
+@@ -77 +76,0 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
+-    @inlinable
+@@ -124 +122,0 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
+-    @inlinable
+@@ -162 +159,0 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
+-    @inlinable
+diff --git a/Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift b/Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift
+index f39f9bb3..90fb8557 100644
+--- a/Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift
++++ b/Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift
+@@ -88 +87,0 @@ package struct HostScheduledOpportunityController: Sendable {
+-    @inlinable
+@@ -105 +103,0 @@ package struct HostScheduledOpportunityController: Sendable {
+-    @inlinable
+diff --git a/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift b/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift
+index ec97e22e..7f61077a 100644
+--- a/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift
++++ b/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift
+@@ -45,2 +44,0 @@ package protocol SignalAnalyzerPresetLiveOwner:
+-    @inlinable
+-    @inline(__always)
+@@ -75 +72,0 @@ where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
+-    @inlinable
+@@ -81 +77,0 @@ where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
+-    @inlinable
+@@ -87 +82,0 @@ where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
+-    @inlinable
+diff --git a/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift b/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift
+index 3fbce059..b6f5ced8 100644
+--- a/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift
++++ b/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift
+@@ -71 +70,0 @@ where
+-    @inlinable
+@@ -87 +85,0 @@ where
+-    @inlinable
+@@ -182 +179,0 @@ where
+-    @inlinable
+@@ -190 +186,0 @@ where
+-    @inlinable
+diff --git a/Sources/GiftUIInteraction/InteractionState.swift b/Sources/GiftUIInteraction/InteractionState.swift
+index c8620008..95b79ec2 100644
+--- a/Sources/GiftUIInteraction/InteractionState.swift
++++ b/Sources/GiftUIInteraction/InteractionState.swift
+@@ -69 +68,0 @@ where
+-    @inlinable
+@@ -146 +144,0 @@ where
+-    @inlinable
+@@ -175 +172,0 @@ where
+-    @inlinable
+@@ -341 +337,0 @@ where
+-    @inlinable
+@@ -356 +351,0 @@ where
+-    @inlinable
+@@ -398 +392,0 @@ where
+-    @inlinable
+@@ -422 +415,0 @@ where
+-    @inlinable
+diff --git a/Sources/GiftUILayout/LayoutEngine.swift b/Sources/GiftUILayout/LayoutEngine.swift
+index dd0ccf7f..850c3bc8 100644
+--- a/Sources/GiftUILayout/LayoutEngine.swift
++++ b/Sources/GiftUILayout/LayoutEngine.swift
+@@ -188 +187,0 @@ package struct LayoutEngine {
+-    @inlinable
+@@ -379 +377,0 @@ package struct LayoutEngine {
+-    @inlinable
+@@ -1115 +1112,0 @@ package struct LayoutEngine {
+-    @inlinable
+diff --git a/Sources/GiftUILayout/LayoutPublication.swift b/Sources/GiftUILayout/LayoutPublication.swift
+index 5ea7c713..ddfe932e 100644
+--- a/Sources/GiftUILayout/LayoutPublication.swift
++++ b/Sources/GiftUILayout/LayoutPublication.swift
+@@ -5 +4,0 @@ import GiftUITextResources
+-@inlinable
+diff --git a/Sources/GiftUILayout/LayoutSemanticValidation.swift b/Sources/GiftUILayout/LayoutSemanticValidation.swift
+index 4f3cbdda..6fe6a299 100644
+--- a/Sources/GiftUILayout/LayoutSemanticValidation.swift
++++ b/Sources/GiftUILayout/LayoutSemanticValidation.swift
+@@ -51 +50,0 @@ package struct LayoutSemanticValidation {
+-    @inlinable
+diff --git a/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift b/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift
+index 49e0e05d..4be97f7f 100644
+--- a/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift
++++ b/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift
+@@ -17,2 +16,0 @@ package protocol FullSurfaceRGBA8888Storage {
+-    @inlinable
+-    @inline(__always)
+@@ -26,2 +23,0 @@ package protocol FullSurfaceReadableRaster: RasterSurface {
+-    @inlinable
+-    @inline(__always)
+@@ -127 +122,0 @@ where Storage: FullSurfaceRGBA8888Storage {
+-    @inlinable
+diff --git a/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift b/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift
+index d7e8c564..a65e7133 100644
+--- a/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift
++++ b/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift
+@@ -28 +27,0 @@ where Table.Domain.Slot == ObservableModelReadSlot<Model> {
+-    @inlinable
+diff --git a/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift b/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift
+index 1302738b..5bf295b2 100644
+--- a/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift
++++ b/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift
+@@ -36 +35,0 @@ package enum RuntimeRecordInteractionBridge {
+-    @inlinable
+@@ -92 +90,0 @@ package enum RuntimeRecordInteractionBridge {
+-    @inlinable

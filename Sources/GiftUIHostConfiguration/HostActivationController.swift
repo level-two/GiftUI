@@ -74,7 +74,6 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
         self.lifecycleState = lifecycleState
     }
 
-    @inlinable
     @inline(__always)
     package mutating func activate<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(
         owner: inout Owner,
@@ -121,7 +120,6 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
         return .active
     }
 
-    @inlinable
     @inline(__always)
     package mutating func teardown<Owner: MVPHostTeardownOwner & ~Copyable & ~Escapable>(
         owner: inout Owner
@@ -159,7 +157,6 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
         }
     }
 
-    @inlinable
     @inline(__always)
     private mutating func contain<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(
         _ failure: Failure,

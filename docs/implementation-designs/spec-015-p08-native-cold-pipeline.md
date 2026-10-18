@@ -23,8 +23,9 @@ found retained explicit `@inlinable` callers crossing the private-body source
 boundary. The amended map adds its 16 named sites and two immediate host scheduler
 sites under the same remove-body-serialization mechanism. The
 [bounded independent recheck](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-caller-amendment-review.md)
-passes implementation and the prepared grouped compile sweep;
-initial0/1/corrections0/2 are unconsumed.
+passes implementation and the prepared grouped compile sweep. Initial1/1 source
+and [argv are frozen](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-initial1/README.md);
+corrections0/2, compiler unexecuted.
 
 The [new user-authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-activity.md)
 and [exact reduced map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-design/candidate-map.json)
@@ -37,9 +38,9 @@ records the one-hop caller inspection and the qualified/ordinary callers retaine
 Unchanged default CMO and owning-module incorporation are candidate mechanisms only;
 physical callee-closure and actual concrete-host specialization are mandatory.
 The sequential fresh25-module compile sweep collects all independently runnable
-owner failures and blocks dependents without stale substitutions. No compilation,
-source edit, cycle consumption or specialization/resource claim occurs in this
-preflight. The new1initial+2corrections allowance is separate from every exhausted
+owner failures and blocks dependents without stale substitutions. Source initial1/1
+is consumed; no compilation or specialization/resource claim has occurred. The
+new1initial+2corrections allowance is separate from every exhausted
 historical boundary below; contracts,42 origins,14 loans and strict cold stay exact.
 
 ## Historical exhausted activity

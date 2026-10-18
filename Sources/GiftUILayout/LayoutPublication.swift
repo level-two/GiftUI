@@ -2,7 +2,6 @@ import GiftUI
 import GiftUISemanticCore
 import GiftUITextResources
 
-@inlinable
 @inline(__always)
 package func publishLayout<Workspace, Sink>(
     summary: LayoutSummary,

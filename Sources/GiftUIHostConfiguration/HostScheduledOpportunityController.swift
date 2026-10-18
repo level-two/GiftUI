@@ -85,7 +85,6 @@ package struct HostScheduledOpportunityController: Sendable {
         }
     }
 
-    @inlinable
     @inline(__always)
     package mutating func complete<OwnerFailure: Equatable & Sendable>(
         at timestampMicroseconds: UInt64,
@@ -102,7 +101,6 @@ package struct HostScheduledOpportunityController: Sendable {
         return .cycle(reasons: reasons, result: result)
     }
 
-    @inlinable
     @inline(__always)
     package mutating func service<Instance: MVPHostInstance & ~Copyable & ~Escapable>(
         at timestampMicroseconds: UInt64,

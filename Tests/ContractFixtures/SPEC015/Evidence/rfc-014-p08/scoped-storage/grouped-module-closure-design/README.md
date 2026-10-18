@@ -1,12 +1,13 @@
 # Grouped module closure — reduced candidate prepared
 
 The [new grouped activity](../p08-grouped-module-closure-activity.md) and
-[exact reduced map](candidate-map.json) are amended for quick independent design review:
-33 attribute sites/twelve files, zero explicit ABI promotions, and a fresh25-module
-dependency DAG for the actual42-source host. Initial0/1 and corrections0/2 are
-unconsumed. The e1aa2111 review's 16 sites and two immediate host scheduler sites use the same
-remove-body-serialization mechanism. No source/compiler execution occurred. The broad lexical inventory
-below remains historical, overinclusive and excluded from the source allowlist.
+[exact map](candidate-map.json) have independent design PASS: 33 attribute sites
+in twelve files, zero explicit ABI promotions and a fresh25-module dependency DAG
+for the actual42-source host. Initial1/1 is consumed, corrections0/2; the
+[source/argv freeze](../grouped-module-closure-initial1/README.md) is ready and
+compiler execution is unstarted. Only the reviewed attribute removals occurred.
+The broad lexical inventory below remains historical, overinclusive and excluded
+from the source allowlist.
 
 ## Historical incomplete preparation at db7dea79
 

@@ -14,8 +14,6 @@ package protocol FullSurfaceRGBA8888Storage {
         at offset: UInt32
     ) -> Bool
 
-    @inlinable
-    @inline(__always)
     borrowing func withBytes<Result>(
         _ body: (UnsafeRawBufferPointer) throws -> Result
     ) rethrows -> Result
@@ -23,8 +21,6 @@ package protocol FullSurfaceRGBA8888Storage {
 
 package protocol FullSurfaceReadableRaster: RasterSurface {
     mutating func acceptPresentationResponsibility() -> Bool
-    @inlinable
-    @inline(__always)
     borrowing func withBytes<Result>(
         _ body: (UnsafeRawBufferPointer) throws -> Result
     ) rethrows -> Result
@@ -124,7 +120,6 @@ where Storage: FullSurfaceRGBA8888Storage {
         return true
     }
 
-    @inlinable
     @inline(__always)
     package borrowing func withBytes<Result>(
         _ body: (UnsafeRawBufferPointer) throws -> Result

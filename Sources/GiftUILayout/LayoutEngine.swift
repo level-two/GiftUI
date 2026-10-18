@@ -185,7 +185,6 @@ package struct LayoutEngine {
         return measurement
     }
 
-    @inlinable
     @inline(__always)
     private mutating func measureText<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
@@ -376,7 +375,6 @@ package struct LayoutEngine {
         )
     }
 
-    @inlinable
     @inline(__always)
     private mutating func finalizeTextLine<Identity, Workspace>(
         identity: Identity,
@@ -1112,7 +1110,6 @@ package struct LayoutEngine {
         }
     }
 
-    @inlinable
     @inline(__always)
     private mutating func placeTextGeometry<Workspace: LayoutWorkspace>(
         _ identity: Workspace.Identity,

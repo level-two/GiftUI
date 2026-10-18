@@ -30,16 +30,13 @@ superseded_by: null
 # SPEC-015 Implementation Plan
 
 Current [grouped module-closure activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-activity.md):
-new explicit user authorization, initial0/1 plus corrections0/2; independent design
-review [not ready for the prior map](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-independent-design-review.md):
-the amended exact caller frontier (33 sites/twelve files, including its 16 named
-sites and two immediate host scheduler sites) now has
-[bounded recheck PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-grouped-module-closure-caller-amendment-review.md)
-for implementation and the prepared sweep. Same body-serialization removal, no ABI/access sweep;
-sequential fresh25-module dependency sweep collects independent failures and
-blocks stale dependents before physical/actual-host and strict safety/cold gates.
-No source/compiler work has begun; all prior budgets and P08/R07/T8.1 stay open
-or exhausted as recorded. Earlier no-source-allowance statements are historical.
+independent caller-amendment PASS implemented; initial1/1 source and exact argv
+[frozen](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-initial1/README.md),
+corrections0/2, compiler unexecuted. Exactly33 sites/twelve files lose the reviewed
+body-serialization attributes, preserving bodies/access/contracts. Next run the
+single sequential fresh25-module sweep, collecting independent failures and
+blocking dependents without stale modules. Privacy then physical/actual-host and
+strict safety/cold remain gated; P08/R07/T8.1 stay open and prior budgets unchanged.
 
 [Independent annotation package review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-witness-annotation-compatibility-final-independent-review.md)
 confirms compatibility/provider/helper PASS and Layout FAIL101. Next recommendation

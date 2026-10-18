@@ -1,5 +1,5 @@
 {
-  "status": "33-site caller-frontier amendment prepared after e1aa2111 NOTREADY; quick independent review pending; no source/compiler activity",
+  "status": "afdb3e97 independent PASS implemented; initial1/1 source and argv frozen; compile unexecuted; corrections0/2",
   "prepared_head": "e1aa2111250d9b88117199f47ccac9eb6f9de147",
   "counts": {
     "attribute_sites": 33,
@@ -1335,7 +1335,7 @@
   "prepared_date": "2026-10-18",
   "budget": {
     "initial_candidates": 1,
-    "initial_consumed": 0,
+    "initial_consumed": 1,
     "corrective_cycles": 2,
     "corrections_consumed": 0,
     "historical": "all prior Native pipeline/checked-State budgets and witness candidate1/1 remain unchanged/exhausted or frozen; this is a separately user-authorized activity"

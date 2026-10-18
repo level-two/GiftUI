@@ -1,0 +1,6 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-initial1/run.py": "5e8a8e29ea63d361e15b7dee66f649d1828a9af330988a0bb7cbe4b84311324e",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-initial1/prepared.json": "4ac7333f2ff91a67bb38240630ee61754bed93b96fdc17181de3a86a7e85fbcc",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-initial1/input-freeze.json": "6253edd7318c62dfd66e1c62baeb7f818134dd0fdeca60e8543b9d50e6339e14",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/grouped-module-closure-initial1/source.diff": "62f209d4d17208f387810d9717efcf4c807d6812c65e37a0c1c183197c852124"
+}

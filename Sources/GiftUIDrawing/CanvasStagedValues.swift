@@ -22,7 +22,6 @@ package struct CanvasStagedMetadata {
 }
 
 /// Both profile lenders provide actual initialized backing for this lifetime.
-@inlinable
 @inline(__always)
 package func withCanvasStagedValues<
     Identity: Equatable & Sendable, Table: CanvasValueTable, Result
@@ -89,7 +88,6 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
         guard index < count else { return nil }
         return entries[Int(index)]?.identity
     }
-    @inlinable
     @inline(__always)
     package borrowing func stage(
         identity: Identity, value: consuming Table.CaptureStorage,
