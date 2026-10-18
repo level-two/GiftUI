@@ -1,0 +1,8 @@
+--- a/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift
++++ b/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift
+@@ -29,0 +30 @@
++    @usableFromInline
+@@ -30,0 +32 @@
++    @usableFromInline
+@@ -49,0 +52 @@
++    @usableFromInline

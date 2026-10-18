@@ -1,0 +1,50 @@
+{
+  "activity": "runtimecore-witness-compatibility",
+  "candidate": "1/1",
+  "automatic_source_repairs": 0,
+  "basis": "explicit human authorization plus reviewed exact3witness map",
+  "historical_grouped_allowance": "initial1/1+corrective2/2 exhausted, unchanged",
+  "source_before_sha256": "cf249695d610d27623e0d6c3334b7e043632ce475ff8e2c6e3e0e85035ee1ff5",
+  "source_after_sha256": "0ed77324a09b25fcc683a61ef659abbc1c32709ae36f1e43ffaa54433fd89675",
+  "file": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+  "edits": [
+    {
+      "file": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line": 30,
+      "declaration": "package var canvasOccurrenceCount: UInt16 { values.count }",
+      "source_sha256": "cf249695d610d27623e0d6c3334b7e043632ce475ff8e2c6e3e0e85035ee1ff5",
+      "requirement_file": "Sources/GiftUIDrawing/CanvasInvocationSource.swift",
+      "requirement_line": 7,
+      "requirement": "var canvasOccurrenceCount: UInt16 { get }",
+      "requirement_file_sha256": "d4bf788e28878af88e9b8247f5b92a5d69c714b02b232e39ed3e80a0ad09b539",
+      "diagnostic": "property 'canvasOccurrenceCount' must be declared '@usableFromInline' because it matches a requirement in protocol 'CanvasInvocationSource'",
+      "potential_next_review": "add only @usableFromInline to this existing package witness; preserve access, body, signature, lifetime and inline policy; not authorized or executed"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line": 31,
+      "declaration": "package func canvasIdentity(at index: UInt16) -> Identity? { values.identity(at: index) }",
+      "source_sha256": "cf249695d610d27623e0d6c3334b7e043632ce475ff8e2c6e3e0e85035ee1ff5",
+      "requirement_file": "Sources/GiftUIDrawing/CanvasInvocationSource.swift",
+      "requirement_line": 9,
+      "requirement": "func canvasIdentity(at index: UInt16) -> Identity?",
+      "requirement_file_sha256": "d4bf788e28878af88e9b8247f5b92a5d69c714b02b232e39ed3e80a0ad09b539",
+      "diagnostic": "instance method 'canvasIdentity(at:)' must be declared '@usableFromInline' because it matches a requirement in protocol 'CanvasInvocationSource'",
+      "potential_next_review": "add only @usableFromInline to this existing package witness; preserve access, body, signature, lifetime and inline policy; not authorized or executed"
+    },
+    {
+      "file": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "line": 50,
+      "declaration": "package mutating func releaseCanvas(at identity: Identity) { values.release(at: identity) }",
+      "source_sha256": "cf249695d610d27623e0d6c3334b7e043632ce475ff8e2c6e3e0e85035ee1ff5",
+      "requirement_file": "Sources/GiftUIDrawing/CanvasInvocationSource.swift",
+      "requirement_line": 17,
+      "requirement": "mutating func releaseCanvas(at identity: Identity)",
+      "requirement_file_sha256": "d4bf788e28878af88e9b8247f5b92a5d69c714b02b232e39ed3e80a0ad09b539",
+      "diagnostic": "instance method 'releaseCanvas(at:)' must be declared '@usableFromInline' because it matches a requirement in protocol 'CanvasInvocationSource'",
+      "potential_next_review": "add only @usableFromInline to this existing package witness; preserve access, body, signature, lifetime and inline policy; not authorized or executed"
+    }
+  ],
+  "token_audit": "PASS exactly three added @usableFromInline; all other access/body/signature/default/ownership/lifetime/hint tokens unchanged",
+  "other_frozen_inputs_unchanged": 306
+}

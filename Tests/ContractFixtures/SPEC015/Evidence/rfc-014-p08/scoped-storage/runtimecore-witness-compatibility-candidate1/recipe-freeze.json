@@ -1,0 +1,7 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-witness-compatibility-candidate1/run.py": "d42670154e4f2ae8c5754fd3ff536cc00bd2f6126e7e9e10f4645c3c5f4890c7",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-witness-compatibility-candidate1/prepared.json": "06b5ce1dac51bc29d4a50512b583a1079d90f66eeb068d7ff9aed07d6cb0ffd2",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-witness-compatibility-candidate1/input-freeze.json": "7b1d03e4f9b67ce1801cce4af5afeaa61f04c74cf2416d1a410406c0d77ba0b6",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-witness-compatibility-candidate1/source.diff": "25ff0e52805b72667ea5b5960ea720c664303a641506b5dd4058f5773a67cc98",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/runtimecore-witness-compatibility-candidate1/source-edits.json": "c3a71e7814bf7bac5d52012ffb58ac4bb11500f0da2da86f9abf67f115f4d8ad"
+}

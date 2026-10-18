@@ -27,7 +27,9 @@ where Table.Domain.Slot == ObservableModelReadSlot<Model> {
         self.values = consume values
         self.table = consume table
     }
+    @usableFromInline
     package var canvasOccurrenceCount: UInt16 { values.count }
+    @usableFromInline
     package func canvasIdentity(at index: UInt16) -> Identity? { values.identity(at: index) }
     @inline(__always)
     @inlinable
@@ -47,5 +49,6 @@ where Table.Domain.Slot == ObservableModelReadSlot<Model> {
         } catch { throw DrawingError(accessFailure: error) }
         if let failure { throw failure }
     }
+    @usableFromInline
     package mutating func releaseCanvas(at identity: Identity) { values.release(at: identity) }
 }
