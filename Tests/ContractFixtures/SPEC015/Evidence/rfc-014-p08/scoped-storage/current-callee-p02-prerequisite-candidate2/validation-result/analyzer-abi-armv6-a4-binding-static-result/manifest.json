@@ -1,0 +1,17 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 1095,
+      "sha256": "a84c7e1b7c783940dd97d27995bc537df9fbea9ea735c022e00fc2a7639ffbee"
+    },
+    "attempt.json": {
+      "bytes": 130,
+      "sha256": "e40daad1f817506c071dc3ebf97e7903f184dc122de58559b06cd6632ad116b5"
+    },
+    "static-result.json": {
+      "bytes": 227728,
+      "sha256": "9160208beaf84be272dfd6e47df0150ec2395b18a56905dfc3d4c1b39db08e8f"
+    }
+  },
+  "source_packet_commit": "d5a8388f"
+}
