@@ -1,0 +1,7 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-selector-continuation1/run.py": "262b120c1f52e126c65fc70d3ec060854ec5f25b3a779219b354d911d3c917f1",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-selector-continuation1/prepared.json": "49de13624ad3145f73590354da07f1aba18a06e1e505e26308e43624817d2156",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-selector-continuation1/selector-correction-map.json": "a52210a5ae28fc0042c5685315488b42ebcb67918a0e226a1d79a72e5b8841c3",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-selector-continuation1/input-freeze.json": "3105049b0ed3d46fa81a71eb8323b39bf235c8ba840df221aed71f70d84d280f",
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-selector-continuation1/proposed-required-thirtyfour.json": "b723da6a99b4b4b0e9e82f1480dc7a4fabc545fd9289a4a5d01c73470731c593"
+}

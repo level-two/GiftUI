@@ -26,3 +26,8 @@ remain unaccepted. [Prepared combined packet](observable-candidate1/README.md).
 [Initial combinedresult](observable-candidate1-result/README.md):compile25/privacy55/
 8decodes+interpreter+capturesPASS,29/34physicalselectorsPASS;5selector-onlyissues.
 SILblocked/notinvoked. Exactfunctionbodiesexist; sourcefixed/no sourcerepaircycle.
+
+[Exact5selector proposal](observable-selector-continuation1/README.md): allfive
+sourcefunctions have uniquephysicalidentity/kind1/nonzeroBB; matchpatterns alone
+wrong.29others/acceptancecriteria unchanged, no sourcecycle/budgetreset. Prepared
+832hash/SILonlycontinuation pendingindependentreview; no selectionapplication/run.

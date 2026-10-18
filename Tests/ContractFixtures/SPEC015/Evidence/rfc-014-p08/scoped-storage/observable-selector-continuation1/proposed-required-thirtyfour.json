@@ -1,0 +1,177 @@
+[
+  {
+    "module": "GiftUIDrawing",
+    "name": "$s13GiftUIDrawing22withCanvasStagedValues8metadata7entries5table8capacity6limits_q0_AA0dE8MetadataVz_s11MutableSpanVyAA0dE5EntryVyx14CaptureStorageQy_GSgGzq_s6UInt16VAA06StaticD6LimitsVq0_AA0deF0Vyxq_G0A2UI12DrawingErrorOYKXEtA0_YKSQRzs8SendableRzAA0D10ValueTableR_r1_lF",
+    "demangled": "GiftUIDrawing.withCanvasStagedValues<A, B, C where A: Swift.Equatable, A: Swift.Sendable, B: GiftUIDrawing.CanvasValueTable>(metadata: inout GiftUIDrawing.CanvasStagedMetadata, entries: inout Swift.MutableSpan<GiftUIDrawing.CanvasStagedEntry<A, B.CaptureStorage>?>, table: B, capacity: Swift.UInt16, limits: GiftUIDrawing.StaticCanvasLimits, _: (GiftUIDrawing.CanvasStagedValues<A, B>) throws(GiftUI.DrawingError) -> C) throws(GiftUI.DrawingError) -> C"
+  },
+  {
+    "module": "GiftUIHostConfiguration",
+    "name": "$s23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVAARi_zRi0_zrlE8activateAA0G16ActivationResultOy0J7FailureQzGyF",
+    "demangled": "(extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.activate() -> GiftUIHostConfiguration.HostActivationResult<A.ActivationFailure>"
+  },
+  {
+    "module": "GiftUIHostConfiguration",
+    "name": "$s23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVAARi_zRi0_zrlE8teardownyyF",
+    "demangled": "(extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.teardown() -> ()"
+  },
+  {
+    "module": "GiftUILayout",
+    "name": "$s12GiftUILayout13publishLayout7summary9workspace4sinkAA0D6ResultOAA0D7SummaryV_xzq_ztAA0D9WorkspaceRzAA0dH4SinkR_8IdentityQy_ALRtzr0_lF",
+    "demangled": "GiftUILayout.publishLayout<A, B where A: GiftUILayout.LayoutWorkspace, B: GiftUILayout.LayoutResultSink, A.Identity == B.Identity>(summary: GiftUILayout.LayoutSummary, workspace: inout A, sink: inout B) -> GiftUILayout.LayoutResult"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore32ObservableCanvasInvocationSourceVAARi_zrlE06invokeE02at7context4sizeyq0__0A2UI15GraphicsContextVzAH4SizeVtAH12DrawingErrorOYKF",
+    "demangled": "(extension in GiftUIRuntimeCore):GiftUIRuntimeCore.ObservableCanvasInvocationSource< where A: ~Swift.Copyable>.invokeCanvas(at: C, context: inout GiftUI.GraphicsContext, size: GiftUI.Size) throws(GiftUI.DrawingError) -> ()"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO8dispatch_7records6target10actionType9operationAA0deF14DispatchResultO0A11UIExecution14CapturedActionVy8IdentityQzG_x0A17UIObservableState010ObservableU16RootTargetAccessVyq_q0_Gq1_m8MutationAQ0v5ModelZ0PQy_q1_XEt0A13UIInteraction0f9CommittedR4ViewRzAqVR_AQ0vU5ModelR_SQR0_s8SendableR0_0A2UI0A8UIActionR1_Ri_zRi0_zRi__r2_lFZ",
+    "demangled": "static GiftUIRuntimeCore.RuntimeRecordInteractionBridge.dispatch<A, B, C, D where A: GiftUIInteraction.InteractionCommittedActionView, B: GiftUIObservableState.ObservableModelMutation, B: GiftUIObservableState.ObservableStateModel, C: Swift.Equatable, C: Swift.Sendable, D: GiftUI.GiftUIAction, A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable>(_: GiftUIExecution.CapturedAction<A.Identity>, records: A, target: GiftUIObservableState.ObservableStateRootTargetAccess<B, C>, actionType: D.Type, operation: (D) -> B.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIRuntimeCore.RuntimeRecordInteractionDispatchResult"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO3run5ownerAA0deF6ResultOy12OwnerFailureQzGxz_tAA0defJ0RzRi_zRi0_zlFZ",
+    "demangled": "static GiftUIRuntimeCore.RuntimeCompletePipeline.run<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "demangled_prefix": "static GiftUIRuntimeCore.RuntimeCompletePipeline.finishOfferWithoutCommit<",
+    "selector_policy": "exact current nonprivate method prefix; uniqueness required; no previous private discriminator reuse"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "demangled_prefix": "static GiftUIRuntimeCore.RuntimeCompletePipeline.fail<",
+    "selector_policy": "exact current nonprivate method prefix; uniqueness required; no previous private discriminator reuse"
+  },
+  {
+    "module": "GiftUIRuntimeCore",
+    "demangled_prefix": "static GiftUIRuntimeCore.RuntimeCompletePipeline.cleanup<",
+    "selector_policy": "exact current nonprivate method prefix; uniqueness required; no previous private discriminator reuse"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "demangled_regex": "GiftUIInteraction\\.InteractionOwnedKeyState(?:<.*>)?\\.resolveDown\\(",
+    "selector_policy": "exactnamespace+nominal+method, unique currentfunctionrequired; no oldprivate discriminator reuse"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "demangled_regex": "GiftUIInteraction\\.InteractionOwnedKeyState(?:<.*>)?\\.resolveMove\\(",
+    "selector_policy": "exactnamespace+nominal+method, unique currentfunctionrequired; no oldprivate discriminator reuse"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "demangled_regex": "GiftUIInteraction\\.InteractionOwnedKeyState(?:<.*>)?\\.resolveUp\\(",
+    "selector_policy": "exactnamespace+nominal+method, unique currentfunctionrequired; no oldprivate discriminator reuse"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "demangled_regex": "GiftUIInteraction\\.InteractionState(?:<.*>)?\\.resolveDown\\(",
+    "selector_policy": "exactnamespace+nominal+method, unique currentfunctionrequired; no oldprivate discriminator reuse"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "demangled_regex": "GiftUIInteraction\\.InteractionState(?:<.*>)?\\.resolveMove\\(",
+    "selector_policy": "exactnamespace+nominal+method, unique currentfunctionrequired; no oldprivate discriminator reuse"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "demangled_regex": "GiftUIInteraction\\.InteractionState(?:<.*>)?\\.resolveUp\\(",
+    "selector_policy": "exactnamespace+nominal+method, unique currentfunctionrequired; no oldprivate discriminator reuse"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "demangled_regex": "GiftUIInteraction\\.InteractionState(?:<.*>)?\\.topmostRecord\\(",
+    "selector_policy": "exactnamespace+nominal+method, unique currentfunctionrequired; no oldprivate discriminator reuse"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "demangled_regex": "GiftUIInteraction\\.InteractionState(?:<.*>)?\\.record\\(",
+    "selector_policy": "exactnamespace+nominal+method, unique currentfunctionrequired; no oldprivate discriminator reuse"
+  },
+  {
+    "module": "GiftUIInteraction",
+    "demangled_regex": "GiftUIInteraction\\.InteractionState(?:<.*>)?\\.capturedRecord\\(",
+    "selector_policy": "exactnamespace+nominal+method, unique currentfunctionrequired; no oldprivate discriminator reuse"
+  },
+  {
+    "module": "GiftUIExecution",
+    "demangled_regex": "GiftUIExecution\\.CapturedAction(?:<.*>)?\\.init\\(identity:",
+    "selector_policy": "unique existingtwoargument generic initializer; no allocation/default overload"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "demangled_regex": "GiftUIObservableState\\.ObservableStateRootScope(?:<.*>)?\\.modelKey\\(",
+    "selector_policy": "exactnominal/method/signature;unique currentfunction required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "demangled_regex": "GiftUIObservableState\\.ObservableStateRootScope(?:<.*>)?\\.matching\\(",
+    "selector_policy": "exactnominal/method/signature;unique currentfunction required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "demangled_regex": "GiftUIObservableState\\.ObservableStateRootScope(?:<.*>)?\\.key\\(",
+    "selector_policy": "exactnominal/method/signature;unique currentfunction required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "demangled_regex": "GiftUIObservableState\\.ObservableStateRootScope(?:<.*>)?\\.belongs\\(",
+    "selector_policy": "exactnominal/method/signature;unique currentfunction required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<A.GiftUIObservableState.ObservableStateModel.Schema>, mutation: A.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIObservableState.ObservableStateResult",
+    "selector_policy": "exact mangled declarationidentity; unique name; no closure/defer/prefix filtering or weakenedmultiplicity"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "demangled_regex": "GiftUIObservableState\\.ObservableModelScope(?:<.*>)?\\.sharesOwner\\(",
+    "selector_policy": "exactnominal/method/signature;unique currentfunction required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6reporty0A2UI01_aB19ChangeReportOutcomeOAE01_A10UIModelKeyVyq_GAA0dcE0Rz6SchemaQzRs_rlF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.report< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(GiftUI._GiftUIModelKey<B>) -> GiftUI._GiftUIObservableChangeReportOutcome",
+    "selector_policy": "exact mangled declarationidentity; unique name; no closure/defer/prefix filtering or weakenedmultiplicity"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.endFrame() throws(GiftUIObservableState.ObservableStateError) -> ()",
+    "selector_policy": "exact mangled declarationidentity; unique name; no closure/defer/prefix filtering or weakenedmultiplicity"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "demangled_regex": "GiftUIObservableState\\.ObservableModelScope(?:<.*>)?\\.phase\\.getter",
+    "selector_policy": "exactnominal/method/signature;unique currentfunction required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_8mutation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, mutation: A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+    "selector_policy": "exact mangled declarationidentity; unique name; no closure/defer/prefix filtering or weakenedmultiplicity"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+    "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, operation: () -> A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+    "selector_policy": "exact mangled declarationidentity; unique name; no closure/defer/prefix filtering or weakenedmultiplicity"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "demangled_regex": "GiftUIObservableState\\.ObservableSemanticBodyBinding(?:<.*>)?\\.evaluate(?:<.*>)?\\(",
+    "selector_policy": "exactnominal/method/signature;unique currentfunction required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "demangled_regex": "GiftUIObservableState\\.ObservableSemanticBodyBinding(?:<.*>)?\\.evaluateStateful(?:<.*>)?\\(",
+    "selector_policy": "exactnominal/method/signature;unique currentfunction required"
+  },
+  {
+    "module": "GiftUIObservableState",
+    "demangled_regex": "GiftUIObservableState\\.ObservableModelOwnership(?:<.*>)?\\.address(?:<.*>)?\\(for:",
+    "selector_policy": "exactnominal/method/signature;unique currentfunction required"
+  }
+]

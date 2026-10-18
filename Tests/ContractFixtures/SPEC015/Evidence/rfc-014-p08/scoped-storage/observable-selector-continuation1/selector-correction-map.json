@@ -1,0 +1,447 @@
+{
+  "status": "PROPOSED ONLY; pending independentreview beforeapplication/execution",
+  "source_commit": "e4e4efc6",
+  "changes": 5,
+  "retained_unchanged": 29,
+  "rows": [
+    {
+      "target_index": 24,
+      "old_selector": {
+        "module": "GiftUIObservableState",
+        "demangled_regex": "GiftUIObservableState\\.ObservableStateRootScope(?:<.*>)?\\.mutate(?:<.*>)?\\(_:",
+        "selector_policy": "exactnominal/method/signature;unique currentfunction required"
+      },
+      "old_matches": [
+        {
+          "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+          "identifier_id": 642,
+          "function_id": 518,
+          "hash": 3092051206,
+          "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<A.GiftUIObservableState.ObservableStateModel.Schema>, mutation: A.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIObservableState.ObservableStateResult",
+          "offset_bits": 1212897,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 6,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1062 op29=0 op30=0 op31=38 op32=0 op33=1/> record string = ''"
+        },
+        {
+          "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF6$deferL_yyAaQRzAaLRzSQR_s8SendableR_Ri_zr0_lF",
+          "identifier_id": 463,
+          "function_id": 519,
+          "hash": 2576883026,
+          "demangled": "$defer #1 <A, B where A: GiftUIObservableState.ObservableModelMutation, A: GiftUIObservableState.ObservableStateModel, B: Swift.Equatable, B: Swift.Sendable, A: ~Swift.Copyable>() -> () in (extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<A.GiftUIObservableState.ObservableStateModel.Schema>, mutation: A.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIObservableState.ObservableStateResult",
+          "offset_bits": 1218160,
+          "linkage": 5,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 1,
+          "raw_prefix": [
+            4,
+            5,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=5 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1068 op29=0 op30=0 op31=38 op32=0 op33=1/> record string = ''"
+        },
+        {
+          "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlFAH01_aB19ChangeReportOutcomeOyXEfU_",
+          "identifier_id": 461,
+          "function_id": 520,
+          "hash": 4017637113,
+          "demangled": "closure #1 () -> GiftUI._GiftUIObservableChangeReportOutcome in (extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<A.GiftUIObservableState.ObservableStateModel.Schema>, mutation: A.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIObservableState.ObservableStateResult",
+          "offset_bits": 1219594,
+          "linkage": 5,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 1,
+          "raw_prefix": [
+            4,
+            5,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=5 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1066 op29=0 op30=0 op31=38 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "proposed_selector": {
+        "module": "GiftUIObservableState",
+        "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<A.GiftUIObservableState.ObservableStateModel.Schema>, mutation: A.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIObservableState.ObservableStateResult",
+        "selector_policy": "exact mangled declarationidentity; unique name; no closure/defer/prefix filtering or weakenedmultiplicity"
+      },
+      "physical_record": {
+        "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+        "identifier_id": 642,
+        "function_id": 518,
+        "hash": 3092051206,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<A.GiftUIObservableState.ObservableStateModel.Schema>, mutation: A.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIObservableState.ObservableStateResult",
+        "offset_bits": 1212897,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 6,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1062 op29=0 op30=0 op31=38 op32=0 op33=1/> record string = ''"
+      },
+      "source": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "source_line": 615,
+      "source_declaration": "package borrowing func mutate(_ key: _GiftUIModelKey<Model.Schema>, mutation: Model.Mutation)",
+      "source_sha256": "28091bc86e7742500e441fb622b5440c0d24aac809cbb7741adfe2d4abea7cc4",
+      "cause": "demangled substring also occurs in nestedclosure/defer names",
+      "classification": "selectoronly defect; exact sourcefunction exists with kind1/nonzeroBB; no sourcecandidatefailure or absentbody",
+      "scope": "proposed only; original frozenrequired-thirtyfour.json unchanged"
+    },
+    {
+      "target_index": 26,
+      "old_selector": {
+        "module": "GiftUIObservableState",
+        "demangled_regex": "GiftUIObservableState\\.ObservableModelScope(?:<.*>)?\\.report\\(",
+        "selector_policy": "exactnominal/method/signature;unique currentfunction required"
+      },
+      "old_matches": [],
+      "proposed_selector": {
+        "module": "GiftUIObservableState",
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6reporty0A2UI01_aB19ChangeReportOutcomeOAE01_A10UIModelKeyVyq_GAA0dcE0Rz6SchemaQzRs_rlF",
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.report< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(GiftUI._GiftUIModelKey<B>) -> GiftUI._GiftUIObservableChangeReportOutcome",
+        "selector_policy": "exact mangled declarationidentity; unique name; no closure/defer/prefix filtering or weakenedmultiplicity"
+      },
+      "physical_record": {
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6reporty0A2UI01_aB19ChangeReportOutcomeOAE01_A10UIModelKeyVyq_GAA0dcE0Rz6SchemaQzRs_rlF",
+        "identifier_id": 464,
+        "function_id": 281,
+        "hash": 687445614,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.report< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(GiftUI._GiftUIModelKey<B>) -> GiftUI._GiftUIObservableChangeReportOutcome",
+        "offset_bits": 767113,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 10,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=640 op29=0 op30=0 op31=24 op32=0 op33=1/> record string = ''"
+      },
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "source_line": 133,
+      "source_declaration": "package borrowing func report(_ key: _GiftUIModelKey<Schema>)",
+      "source_sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de",
+      "cause": "missing method-level genericconstraints in demangledpattern",
+      "classification": "selectoronly defect; exact sourcefunction exists with kind1/nonzeroBB; no sourcecandidatefailure or absentbody",
+      "scope": "proposed only; original frozenrequired-thirtyfour.json unchanged"
+    },
+    {
+      "target_index": 27,
+      "old_selector": {
+        "module": "GiftUIObservableState",
+        "demangled_regex": "GiftUIObservableState\\.ObservableModelScope(?:<.*>)?\\.endFrame\\(",
+        "selector_policy": "exactnominal/method/signature;unique currentfunction required"
+      },
+      "old_matches": [
+        {
+          "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+          "identifier_id": 387,
+          "function_id": 294,
+          "hash": 714026603,
+          "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.endFrame() throws(GiftUIObservableState.ObservableStateError) -> ()",
+          "offset_bits": 828547,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 3,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=695 op29=0 op30=0 op31=5 op32=0 op33=1/> record string = ''"
+        },
+        {
+          "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKFys6UInt16VXEfU_",
+          "identifier_id": 384,
+          "function_id": 295,
+          "hash": 1407614657,
+          "demangled": "closure #1 (Swift.UInt16) -> () in (extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.endFrame() throws(GiftUIObservableState.ObservableStateError) -> ()",
+          "offset_bits": 830557,
+          "linkage": 5,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 4,
+          "raw_prefix": [
+            4,
+            5,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=5 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=696 op29=0 op30=0 op31=5 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "proposed_selector": {
+        "module": "GiftUIObservableState",
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.endFrame() throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "selector_policy": "exact mangled declarationidentity; unique name; no closure/defer/prefix filtering or weakenedmultiplicity"
+      },
+      "physical_record": {
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+        "identifier_id": 387,
+        "function_id": 294,
+        "hash": 714026603,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.endFrame() throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "offset_bits": 828547,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 3,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=695 op29=0 op30=0 op31=5 op32=0 op33=1/> record string = ''"
+      },
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "source_line": 284,
+      "source_declaration": "package borrowing func endFrame() throws(ObservableStateError) {",
+      "source_sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de",
+      "cause": "demangled substring also occurs in nestedclosure/defer names",
+      "classification": "selectoronly defect; exact sourcefunction exists with kind1/nonzeroBB; no sourcecandidatefailure or absentbody",
+      "scope": "proposed only; original frozenrequired-thirtyfour.json unchanged"
+    },
+    {
+      "target_index": 29,
+      "old_selector": {
+        "module": "GiftUIObservableState",
+        "demangled_regex": "GiftUIObservableState\\.ObservableModelScope(?:<.*>)?\\.mutate(?:<.*>)?\\(_:.*?, mutation:",
+        "selector_policy": "exactnominal/method/signature;unique currentfunction required"
+      },
+      "old_matches": [
+        {
+          "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_8mutation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+          "identifier_id": 462,
+          "function_id": 289,
+          "hash": 1811034102,
+          "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, mutation: A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+          "offset_bits": 802385,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 1,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=5 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=671 op29=0 op30=0 op31=25 op32=0 op33=1/> record string = ''"
+        },
+        {
+          "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_8mutation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlFANyXEfU_",
+          "identifier_id": 378,
+          "function_id": 292,
+          "hash": 2547747253,
+          "demangled": "closure #1 () -> A.Mutation in (extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, mutation: A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+          "offset_bits": 824548,
+          "linkage": 5,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 1,
+          "raw_prefix": [
+            4,
+            5,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=5 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=6 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=676 op29=0 op30=0 op31=25 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "proposed_selector": {
+        "module": "GiftUIObservableState",
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_8mutation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, mutation: A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+        "selector_policy": "exact mangled declarationidentity; unique name; no closure/defer/prefix filtering or weakenedmultiplicity"
+      },
+      "physical_record": {
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_8mutation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+        "identifier_id": 462,
+        "function_id": 289,
+        "hash": 1811034102,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, mutation: A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+        "offset_bits": 802385,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 1,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=5 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=671 op29=0 op30=0 op31=25 op32=0 op33=1/> record string = ''"
+      },
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "source_line": 240,
+      "source_declaration": "package borrowing func mutate(",
+      "source_sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de",
+      "cause": "demangled substring also occurs in nestedclosure/defer names",
+      "classification": "selectoronly defect; exact sourcefunction exists with kind1/nonzeroBB; no sourcecandidatefailure or absentbody",
+      "scope": "proposed only; original frozenrequired-thirtyfour.json unchanged"
+    },
+    {
+      "target_index": 30,
+      "old_selector": {
+        "module": "GiftUIObservableState",
+        "demangled_regex": "GiftUIObservableState\\.ObservableModelScope(?:<.*>)?\\.mutate(?:<.*>)?\\(_:.*?, operation:",
+        "selector_policy": "exactnominal/method/signature;unique currentfunction required"
+      },
+      "old_matches": [
+        {
+          "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+          "identifier_id": 379,
+          "function_id": 290,
+          "hash": 3976850989,
+          "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, operation: () -> A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+          "offset_bits": 804302,
+          "linkage": 0,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 25,
+          "raw_prefix": [
+            4,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=6 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=679 op29=0 op30=0 op31=25 op32=0 op33=1/> record string = ''"
+        },
+        {
+          "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF6$deferL_yyAaQRzRi_zr0_lF",
+          "identifier_id": 381,
+          "function_id": 291,
+          "hash": 560238288,
+          "demangled": "$defer #1 <A, B where A: GiftUIObservableState.ObservableModelMutation, A: ~Swift.Copyable>() -> () in (extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, operation: () -> A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+          "offset_bits": 823302,
+          "linkage": 5,
+          "serialized_kind": 1,
+          "inline_strategy": 0,
+          "basic_blocks": 1,
+          "raw_prefix": [
+            4,
+            5,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "record": "<SIL_FUNCTION abbrevid=4 op0=5 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=687 op29=0 op30=0 op31=25 op32=0 op33=1/> record string = ''"
+        }
+      ],
+      "proposed_selector": {
+        "module": "GiftUIObservableState",
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, operation: () -> A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+        "selector_policy": "exact mangled declarationidentity; unique name; no closure/defer/prefix filtering or weakenedmultiplicity"
+      },
+      "physical_record": {
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+        "identifier_id": 379,
+        "function_id": 290,
+        "hash": 3976850989,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, operation: () -> A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+        "offset_bits": 804302,
+        "linkage": 0,
+        "serialized_kind": 1,
+        "inline_strategy": 0,
+        "basic_blocks": 25,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=6 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=679 op29=0 op30=0 op31=25 op32=0 op33=1/> record string = ''"
+      },
+      "source": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "source_line": 250,
+      "source_declaration": "package borrowing func mutate(",
+      "source_sha256": "3b6c2e804ef7899651be32f0e0663603cfb80798d6c4cda50db7b0dea007c2de",
+      "cause": "demangled substring also occurs in nestedclosure/defer names",
+      "classification": "selectoronly defect; exact sourcefunction exists with kind1/nonzeroBB; no sourcecandidatefailure or absentbody",
+      "scope": "proposed only; original frozenrequired-thirtyfour.json unchanged"
+    }
+  ],
+  "source_repairs": 0,
+  "original_selector_file_sha256": "c1cc85472204d023ab7e5831dca798b6a6d608f893fd2f273db68a9d32b13e4d",
+  "budgets": "sourcecandidate1/1 fixed; zeroautomaticrepairs/oldbudgets unchanged"
+}
