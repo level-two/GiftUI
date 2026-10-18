@@ -1,0 +1,49 @@
+--- lines 5847-5875 ---
+5847: 00000000000041ac <_$s6GiftUI01_A15UIAccessFailureOACs5ErrorAAWl>:
+5848:     41ac:      	adrp	x8, 0x4000 <_$s6GiftUI5StateV7storageAC7StorageOyx_Gvs+0x28>
+5849: 		00000000000041ac:  ARM64_RELOC_PAGE21	_$s6GiftUI01_A15UIAccessFailureOACs5ErrorAAWL
+5850:     41b0:      	ldr	x0, [x8]
+5851: 		00000000000041b0:  ARM64_RELOC_PAGEOFF12	_$s6GiftUI01_A15UIAccessFailureOACs5ErrorAAWL
+5852:     41b4:      	cbz	x0, 0x41bc <_$s6GiftUI01_A15UIAccessFailureOACs5ErrorAAWl+0x10>
+5853:     41b8:      	ret
+5854:     41bc:      	stp	x29, x30, [sp, #-0x10]!
+5855:     41c0:      	mov	x29, sp
+5856:     41c4:      	adrp	x0, 0x4000 <_$s6GiftUI5StateV7storageAC7StorageOyx_Gvs+0x28>
+5857: 		00000000000041c4:  ARM64_RELOC_PAGE21	_$s6GiftUI01_A15UIAccessFailureOs5ErrorAAMc
+5858:     41c8:      	add	x0, x0, #0x0
+5859: 		00000000000041c8:  ARM64_RELOC_PAGEOFF12	_$s6GiftUI01_A15UIAccessFailureOs5ErrorAAMc
+5860:     41cc:      	adrp	x1, 0x4000 <_$s6GiftUI5StateV7storageAC7StorageOyx_Gvs+0x28>
+5861: 		00000000000041cc:  ARM64_RELOC_ADDEND	0x10
+5862: 		00000000000041cc:  ARM64_RELOC_PAGE21	_$s6GiftUI01_A15UIAccessFailureOMf
+5863:     41d0:      	add	x1, x1, #0x0
+5864: 		00000000000041d0:  ARM64_RELOC_ADDEND	0x10
+5865: 		00000000000041d0:  ARM64_RELOC_PAGEOFF12	_$s6GiftUI01_A15UIAccessFailureOMf
+5866:     41d4:      	bl	0x41d4 <_$s6GiftUI01_A15UIAccessFailureOACs5ErrorAAWl+0x28>
+5867: 		00000000000041d4:  ARM64_RELOC_BRANCH26	_swift_getWitnessTable
+5868:     41d8:      	adrp	x8, 0x4000 <_$s6GiftUI5StateV7storageAC7StorageOyx_Gvs+0x28>
+5869: 		00000000000041d8:  ARM64_RELOC_PAGE21	_$s6GiftUI01_A15UIAccessFailureOACs5ErrorAAWL
+5870:     41dc:      	add	x8, x8, #0x0
+5871: 		00000000000041dc:  ARM64_RELOC_PAGEOFF12	_$s6GiftUI01_A15UIAccessFailureOACs5ErrorAAWL
+5872:     41e0:      	stlr	x0, [x8]
+5873:     41e4:      	ldp	x29, x30, [sp], #0x10
+5874:     41e8:      	ret
+5875: 
+--- lines 1417-1419 ---
+1417: 0000000000001110 <_$s6GiftUI01_A10UIModelKeyV20_giftUIOwnerInstances6UInt32Vvg>:
+1418:     1110:      	ret
+1419: 
+--- lines 1424-1427 ---
+1424: 0000000000001118 <_$s6GiftUI01_A10UIModelKeyV11_giftUISlots6UInt16Vvg>:
+1425:     1118:      	mov	x0, x1
+1426:     111c:      	ret
+1427: 
+--- lines 1420-1423 ---
+1420: 0000000000001114 <_$s6GiftUI01_A10UIModelKeyV27_giftUIAllocationGenerations6UInt32Vvg>:
+1421:     1114:      	b	0x1114 <_$s6GiftUI01_A10UIModelKeyV27_giftUIAllocationGenerations6UInt32Vvg>
+1422: 		0000000000001114:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_163
+1423: 
+--- lines 19261-19264 ---
+19261: 000000000000ced4 <_OUTLINED_FUNCTION_163>:
+19262:     ced4:      	lsr	x0, x0, #32
+19263:     ced8:      	ret
+19264: 

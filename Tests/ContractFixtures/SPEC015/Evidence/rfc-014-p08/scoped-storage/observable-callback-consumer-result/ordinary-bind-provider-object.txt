@@ -1,0 +1,197 @@
+--- lines 2285-2416 ---
+2285: 0000000000001b34 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF>:
+2286:     1b34:      	sub	sp, sp, #0xb0
+2287:     1b38:      	stp	x27, x26, [sp, #0x60]
+2288:     1b3c:      	stp	x25, x24, [sp, #0x70]
+2289:     1b40:      	stp	x23, x22, [sp, #0x80]
+2290:     1b44:      	stp	x20, x19, [sp, #0x90]
+2291:     1b48:      	stp	x29, x30, [sp, #0xa0]
+2292:     1b4c:      	add	x29, sp, #0xa0
+2293:     1b50:      	bl	0x1b50 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x1c>
+2294: 		0000000000001b50:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_465
+2295:     1b54:      	b.ne	0x1c8c <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x158>
+2296:     1b58:      	ldrb	w8, [x20, #0x7d]
+2297:     1b5c:      	tbz	w8, #0x0, 0x1c8c <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x158>
+2298:     1b60:      	mov	x19, x21
+2299:     1b64:      	mov	x22, x3
+2300:     1b68:      	mov	x25, x2
+2301:     1b6c:      	mov	x23, x1
+2302:     1b70:      	mov	x24, x0
+2303:     1b74:      	mov	x2, x3
+2304:     1b78:      	bl	0x1b78 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x44>
+2305: 		0000000000001b78:  ARM64_RELOC_BRANCH26	_$s6GiftUI01_A10UIModelKeyV20_giftUIOwnerInstances6UInt32Vvg
+2306:     1b7c:      	ldr	w8, [x20]
+2307:     1b80:      	cmp	w0, w8
+2308:     1b84:      	b.ne	0x1ca4 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x170>
+2309:     1b88:      	bl	0x1b88 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x54>
+2310: 		0000000000001b88:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_477
+2311:     1b8c:      	mov	x2, x22
+2312:     1b90:      	bl	0x1b90 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x5c>
+2313: 		0000000000001b90:  ARM64_RELOC_BRANCH26	_$s6GiftUI01_A10UIModelKeyV11_giftUISlots6UInt16Vvg
+2314:     1b94:      	ldrh	w8, [x20, #0x74]
+2315:     1b98:      	cmp	w8, w0, uxth
+2316:     1b9c:      	b.ls	0x1cac <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x178>
+2317:     1ba0:      	bl	0x1ba0 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x6c>
+2318: 		0000000000001ba0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_153
+2319:     1ba4:      	bl	0x1ba4 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x70>
+2320: 		0000000000001ba4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_4
+2321:     1ba8:      	b.ne	0x1ba4 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x70>
+2322:     1bac:      	bl	0x1bac <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x78>
+2323: 		0000000000001bac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_385
+2324:     1bb0:      	bl	0x1bb0 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x7c>
+2325: 		0000000000001bb0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_4
+2326:     1bb4:      	b.ne	0x1bb0 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x7c>
+2327:     1bb8:      	and	w8, w0, #0xffff
+2328:     1bbc:      	cmp	w8, #0x1
+2329:     1bc0:      	b.hi	0x1cf0 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x1bc>
+2330:     1bc4:      	and	x20, x0, #0xffff
+2331:     1bc8:      	mov	x8, sp
+2332:     1bcc:      	add	x9, x8, x20, lsl #4
+2333:     1bd0:      	ldrh	w9, [x9, #0x4]
+2334:     1bd4:      	cmp	w9, w25, uxth
+2335:     1bd8:      	b.ne	0x1cb4 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x180>
+2336:     1bdc:      	mov	x9, #0x0                ; =0
+2337:     1be0:      	lsl	x25, x20, #4
+2338:     1be4:      	add	x10, sp, #0x40
+2339:     1be8:      	add	x11, x8, x9
+2340:     1bec:      	add	x12, x10, x9
+2341:     1bf0:      	bl	0x1bf0 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0xbc>
+2342: 		0000000000001bf0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_29
+2343:     1bf4:      	add	x9, x9, #0x10
+2344:     1bf8:      	cmp	x9, #0x20
+2345:     1bfc:      	b.ne	0x1be8 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0xb4>
+2346:     1c00:      	mov	x8, sp
+2347:     1c04:      	add	x9, x8, x25
+2348:     1c08:      	ldrb	w9, [x9, #0x6]
+2349:     1c0c:      	cmp	w9, #0x1
+2350:     1c10:      	b.ne	0x1cac <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x178>
+2351:     1c14:      	mov	x9, #0x0                ; =0
+2352:     1c18:      	add	x10, sp, #0x40
+2353:     1c1c:      	add	x11, x8, x9
+2354:     1c20:      	add	x12, x10, x9
+2355:     1c24:      	bl	0x1c24 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0xf0>
+2356: 		0000000000001c24:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_29
+2357:     1c28:      	add	x9, x9, #0x10
+2358:     1c2c:      	cmp	x9, #0x20
+2359:     1c30:      	b.ne	0x1c1c <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0xe8>
+2360:     1c34:      	mov	x26, sp
+2361:     1c38:      	ldr	w27, [x26, x25]
+2362:     1c3c:      	bl	0x1c3c <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x108>
+2363: 		0000000000001c3c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_477
+2364:     1c40:      	mov	x2, x22
+2365:     1c44:      	bl	0x1c44 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x110>
+2366: 		0000000000001c44:  ARM64_RELOC_BRANCH26	_$s6GiftUI01_A10UIModelKeyV27_giftUIAllocationGenerations6UInt32Vvg
+2367:     1c48:      	cmp	w27, w0
+2368:     1c4c:      	b.ne	0x1cac <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x178>
+2369:     1c50:      	mov	x8, #0x0                ; =0
+2370:     1c54:      	add	x9, sp, #0x40
+2371:     1c58:      	add	x10, x26, x8
+2372:     1c5c:      	add	x11, x9, x8
+2373:     1c60:      	ldr	x12, [x11]
+2374:     1c64:      	str	x12, [x10]
+2375:     1c68:      	ldur	x11, [x11, #0x5]
+2376:     1c6c:      	stur	x11, [x10, #0x5]
+2377:     1c70:      	add	x8, x8, #0x10
+2378:     1c74:      	cmp	x8, #0x20
+2379:     1c78:      	b.ne	0x1c58 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x124>
+2380:     1c7c:      	mov	x8, sp
+2381:     1c80:      	add	x8, x8, x25
+2382:     1c84:      	ldrb	w8, [x8, #0xb]
+2383:     1c88:      	tbnz	w8, #0x0, 0x1ccc <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x198>
+2384:     1c8c:      	strb	wzr, [sp]
+2385:     1c90:      	bl	0x1c90 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x15c>
+2386: 		0000000000001c90:  ARM64_RELOC_BRANCH26	_$s6GiftUI01_A15UIAccessFailureOACs5ErrorAAWl
+2387:     1c94:      	bl	0x1c94 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x160>
+2388: 		0000000000001c94:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_154
+2389:     1c98:      	bl	0x1c98 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x164>
+2390: 		0000000000001c98:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_251
+2391:     1c9c:      	mov	x20, #0x0               ; =0
+2392:     1ca0:      	b	0x1cc8 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x194>
+2393:     1ca4:      	mov	w20, #0x1               ; =1
+2394:     1ca8:      	b	0x1cb8 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x184>
+2395:     1cac:      	mov	w20, #0x3               ; =3
+2396:     1cb0:      	b	0x1cb8 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x184>
+2397:     1cb4:      	mov	w20, #0x2               ; =2
+2398:     1cb8:      	strb	w20, [sp]
+2399:     1cbc:      	bl	0x1cbc <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x188>
+2400: 		0000000000001cbc:  ARM64_RELOC_BRANCH26	_$s6GiftUI01_A15UIAccessFailureOACs5ErrorAAWl
+2401:     1cc0:      	bl	0x1cc0 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x18c>
+2402: 		0000000000001cc0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_154
+2403:     1cc4:      	bl	0x1cc4 <_$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF+0x190>
+2404: 		0000000000001cc4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_251
+2405:     1cc8:      	mov	w19, #0x1               ; =1
+2406:     1ccc:      	mov	x0, x20
+2407:     1cd0:      	mov	x21, x19
+2408:     1cd4:      	ldp	x29, x30, [sp, #0xa0]
+2409:     1cd8:      	ldp	x20, x19, [sp, #0x90]
+2410:     1cdc:      	ldp	x23, x22, [sp, #0x80]
+2411:     1ce0:      	ldp	x25, x24, [sp, #0x70]
+2412:     1ce4:      	ldp	x27, x26, [sp, #0x60]
+2413:     1ce8:      	add	sp, sp, #0xb0
+2414:     1cec:      	ret
+2415:     1cf0:      	brk	#0x1
+2416: 
+--- lines 36332-36336 ---
+36332: 000000000001b484 <_OUTLINED_FUNCTION_465>:
+36333:    1b484:      	ldrb	w8, [x20, #0x7c]
+36334:    1b488:      	cmp	w8, #0x2
+36335:    1b48c:      	ret
+36336: 
+--- lines 36402-36406 ---
+36402: 000000000001b53c <_OUTLINED_FUNCTION_477>:
+36403:    1b53c:      	mov	x0, x24
+36404:    1b540:      	mov	x1, x23
+36405:    1b544:      	ret
+36406: 
+--- lines 34280-34288 ---
+34280: 0000000000019fc8 <_OUTLINED_FUNCTION_153>:
+34281:    19fc8:      	mov	x8, #0x0                ; =0
+34282:    19fcc:      	ldur	q0, [x20, #0x14]
+34283:    19fd0:      	ldur	q1, [x20, #0x24]
+34284:    19fd4:      	stp	q0, q1, [sp, #0x20]
+34285:    19fd8:      	add	x9, sp, #0x40
+34286:    19fdc:      	add	x10, sp, #0x20
+34287:    19fe0:      	ret
+34288: 
+--- lines 33089-33099 ---
+33089: 00000000000192e4 <_OUTLINED_FUNCTION_4>:
+33090:    192e4:      	add	x11, x9, x8
+33091:    192e8:      	add	x12, x10, x8
+33092:    192ec:      	ldr	x13, [x12]
+33093:    192f0:      	str	x13, [x11]
+33094:    192f4:      	ldur	x12, [x12, #0x5]
+33095:    192f8:      	stur	x12, [x11, #0x5]
+33096:    192fc:      	add	x8, x8, #0x10
+33097:    19300:      	cmp	x8, #0x20
+33098:    19304:      	ret
+33099: 
+--- lines 35864-35869 ---
+35864: 000000000001b024 <_OUTLINED_FUNCTION_385>:
+35865:    1b024:      	mov	x8, #0x0                ; =0
+35866:    1b028:      	mov	x9, sp
+35867:    1b02c:      	add	x10, sp, #0x40
+35868:    1b030:      	ret
+35869: 
+--- lines 33370-33376 ---
+33370: 0000000000019650 <_OUTLINED_FUNCTION_29>:
+33371:    19650:      	ldr	x13, [x12]
+33372:    19654:      	str	x13, [x11]
+33373:    19658:      	ldur	x12, [x12, #0x5]
+33374:    1965c:      	stur	x12, [x11, #0x5]
+33375:    19660:      	ret
+33376: 
+--- lines 34289-34296 ---
+34289: 0000000000019fe4 <_OUTLINED_FUNCTION_154>:
+34290:    19fe4:      	mov	x2, x0
+34291:    19fe8:      	adrp	x1, 0x19000 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE9borrowingACyxq_GAEh_tcfC>
+34292: 		0000000000019fe8:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s6GiftUI01_A15UIAccessFailureON
+34293:    19fec:      	ldr	x1, [x1]
+34294: 		0000000000019fec:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s6GiftUI01_A15UIAccessFailureON
+34295:    19ff0:      	ret
+34296: 
+--- lines 35016-35020 ---
+35016: 000000000001a7b4 <_OUTLINED_FUNCTION_251>:
+35017:    1a7b4:      	mov	x0, sp
+35018:    1a7b8:      	b	0x1a7b8 <_OUTLINED_FUNCTION_251+0x4>
+35019: 		000000000001a7b8:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+35020: 

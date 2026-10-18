@@ -1,0 +1,31 @@
+{
+  "disposition": "normal success leaf qualified by bounded matched provider+GiftUI callee inspection; failure cold witness UNQUALIFIED",
+  "physical_record": {
+    "name": "$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF",
+    "identifier_id": 574,
+    "function_id": 590,
+    "hash": 2255709246,
+    "demangled": "GiftUIObservableState.ObservableModelOwnership.bind<A>(_: GiftUI._GiftUIModelKey<A>, schema: Swift.UInt16) throws(GiftUI._GiftUIAccessFailure) -> Swift.Int",
+    "offset_bits": 1392004,
+    "linkage": 7,
+    "serialized_kind": 0,
+    "inline_strategy": 0,
+    "basic_blocks": 0,
+    "raw_prefix": [
+      4,
+      7,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1163 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+  },
+  "actual_read": "SIL137785 State.bound -> actualkey -> frameSlot.ownership/schema -> try_apply Ownership.bind<CounterModelSchema>137810-11; normal result supplies actual Model slot, errors existing typed accessfailure. Binding direct State.bound store at599115-20 establishes normal initial State to bound transition; three body reads use same checked ABI method.",
+  "caller_metadata": "matching scoped object loads STATIC CounterModelSchema metadata via GOT into x3 before calls0x39fa4/0x3a31c/0x3a530. This is not a metadata accessor/instantiation call or observer formatting edge.",
+  "provider_success": "bind1b34 frame176bytes, phase/read/owner/slot/schema/occupied/generation/pin scalar checks; bounded two-record stack copies. Metadata x3 forwarded to key getters as x2, which ignore it: owner ret; slot movx0,x1; generation->outlined163 lsrx0,32. Eight local outlined helpers used by bind are only register/stack/loads/stores/compare/return on success; no normal allocator/TLS/metadata-instantiation/context allocation in this finite inspected closure. No generic body serialization is needed solely for this phantom parameter.",
+  "failure": "guard failures branch to _GiftUIAccessFailure.Error witness accessor0x41ac; if cache=0 calls swift_getWitnessTable0x41d4 and stores result, then swift_willThrowTypedImpl through outlined251. This is definite cold witness lookup path, not proof of allocation or actual cache-miss occurrence in a run. Required actual cold failure resource remains unresolved; no warmup/resource waiver.",
+  "bounds": "Host memcpy and complete other ledger/callback/error-runtime costs not globally accepted; no wholehost heap/cost proof."
+}

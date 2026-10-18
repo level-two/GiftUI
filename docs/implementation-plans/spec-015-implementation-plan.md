@@ -29,6 +29,14 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current [callback concrete interpretation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-consumer-result/README.md):
+selected callbacks now specialize; ordinary phantom-Schema bind success passes bounded
+scalar object inspection, cold failure witness remains unqualified. Next actual generic
+Canvas modifier/primitive bodyavailability FAIL/STOP (F13/F14, physical0BB+concrete
+SIL/object calls); no heapcount/wholehoststack claim. Seven original23 boundaries
+resolved/16opaque, other14 unqualified. Source fixed/no repair allowance; fullsafety/
+strictcold/P08 remain open. Independent result review next.
+
 Current [callback continuation PASS](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/observable-callback-selector-continuation1-result/README.md):
 all50unique/positive physical bodies and same42SIL capture exit0;861inputs verified.
 Sourcef8da7a28 unchanged; lower+25/privacy64/eightindexes/captures retained without

@@ -1,0 +1,26 @@
+{
+  "capture.json": {
+    "bytes": 718,
+    "sha256": "8ffaee10d67250838bc92f86efc000f38fcaf54bf747cf89baa80d404d5c0fb1"
+  },
+  "giftui-capture.json": {
+    "bytes": 610,
+    "sha256": "eaec9c9456e28c864cea47898615d92e663f873925f6aa099d1f0b9a3a7475e0"
+  },
+  "giftui-disassembly.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "giftui-disassembly.stdout": {
+    "bytes": 963746,
+    "sha256": "83808add50d131ddd8c05575673720988cd4f98a4cda4445236269411c43783a"
+  },
+  "provider-disassembly.stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "provider-disassembly.stdout": {
+    "bytes": 2379904,
+    "sha256": "47f30caf94f3660ffa3499755c960ff0b31c99f5627d23d0698c0a28767c8442"
+  }
+}

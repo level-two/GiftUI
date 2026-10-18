@@ -42,3 +42,12 @@ new source allowance or current50/actualcallback/full safety/cold acceptance.
 50unique/bodypositive targets and same42SIL exit0;861inputs verified. Priorprivacy64
 retained (rawresult authoritative), no source/compile/privacy/decoder/object repeat.
 Concrete callbacks/cost interpretation and full safety/strictcold/P08 remain open.
+
+[Current concrete interpretation](observable-callback-consumer-result/README.md):
+selected callback specialization PASS; ordinaryOwnership.bind success leaf qualified
+by matched provider/key scalar object closure (176byte localframe only, no wholehost
+stack/cost claim). Failure lazy Error witness/cold resources UNQUALIFIED. Next current
+actualF13/F14 Canvas payload codec bodyavailability FAIL/STOP; no allocationclaim.
+Original23 sevenselectedresolved/16opaque; other14 not scanned/qualified. No source/
+compiler/runtime or allowance; two matched readonly object disassemblies only.
+Fullsafety/strictcold/P08 open; oldbudgets unchanged.

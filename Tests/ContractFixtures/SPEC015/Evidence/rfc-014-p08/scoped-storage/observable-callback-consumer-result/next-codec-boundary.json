@@ -1,0 +1,105 @@
+{
+  "gate": "FAIL_STOP_required_actual_generic_payload_body_availability_specialization",
+  "group": "existing F13/F14 CanvasSemanticPayloadCodec modifier+primitive together; no new source allowance",
+  "roots": [
+    {
+      "id": "F13",
+      "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+      "sil_reference_line": 135867,
+      "imported_declaration": {
+        "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+        "line": 598345,
+        "header": "sil @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticModifierPayload> (@in_guaranteed \u03c4_1_0, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> {",
+        "basic_blocks": 0,
+        "comment": " // static CanvasSemanticPayloadCodec.modifier<A>(_:chainIndex:writer:) // Isolation: unspecified",
+        "end_line": 598349
+      },
+      "physical_record": {
+        "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+        "identifier_id": 69,
+        "function_id": 96,
+        "hash": 613866557,
+        "demangled": "static GiftUIDrawing.CanvasSemanticPayloadCodec.modifier<A where A1: GiftUI._GiftUISemanticModifierPayload>(_: A1, chainIndex: Swift.UInt16, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUIDrawing.CanvasSemanticPayload<B.CaptureStorage>>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "offset_bits": 448604,
+        "linkage": 7,
+        "serialized_kind": 0,
+        "inline_strategy": 0,
+        "basic_blocks": 0,
+        "raw_prefix": [
+          4,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=139 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+      },
+      "matching_object": [
+        {
+          "line": 75693,
+          "owner_header_line": 71740,
+          "owner_header": "0000000000038780 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5>:",
+          "instruction": "3be68:      \tbl\t0x3be68 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5+0x36e8>",
+          "relocation": "000000000003be68:  ARM64_RELOC_BRANCH26\t_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ"
+        }
+      ]
+    },
+    {
+      "id": "F14",
+      "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+      "sil_reference_line": 136279,
+      "imported_declaration": {
+        "symbol": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+        "line": 598337,
+        "header": "sil @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ : $@convention(method) <\u03c4_0_0, \u03c4_0_1 where \u03c4_0_0 : SemanticDeclarationRoles, \u03c4_0_1 : CanvasValueTable><\u03c4_1_0 where \u03c4_1_0 : _GiftUISemanticPrimitivePayload> (@in_guaranteed \u03c4_1_0, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<\u03c4_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<\u03c4_0_0, \u03c4_0_1>.Type) -> Optional<SemanticExpansionError> {",
+        "basic_blocks": 0,
+        "comment": " // static CanvasSemanticPayloadCodec.primitive<A>(_:writer:) // Isolation: unspecified",
+        "end_line": 598341
+      },
+      "physical_record": {
+        "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+        "identifier_id": 70,
+        "function_id": 95,
+        "hash": 3058718414,
+        "demangled": "static GiftUIDrawing.CanvasSemanticPayloadCodec.primitive<A where A1: GiftUI._GiftUISemanticPrimitivePayload>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUIDrawing.CanvasSemanticPayload<B.CaptureStorage>>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "offset_bits": 448156,
+        "linkage": 7,
+        "serialized_kind": 0,
+        "inline_strategy": 0,
+        "basic_blocks": 0,
+        "raw_prefix": [
+          4,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=7 op1=0 op2=0 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=146 op29=0 op30=0 op31=0 op32=0 op33=1/> record string = ''"
+      },
+      "matching_object": [
+        {
+          "line": 74486,
+          "owner_header_line": 71740,
+          "owner_header": "0000000000038780 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5>:",
+          "instruction": "3ad78:      \tbl\t0x3ad78 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5+0x25f8>",
+          "relocation": "000000000003ad78:  ARM64_RELOC_BRANCH26\t_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ"
+        },
+        {
+          "line": 75290,
+          "owner_header_line": 71740,
+          "owner_header": "0000000000038780 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5>:",
+          "instruction": "3b8c8:      \tbl\t0x3b8c8 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5+0x3148>",
+          "relocation": "000000000003b8c8:  ARM64_RELOC_BRANCH26\t_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ"
+        }
+      ]
+    }
+  ],
+  "feasibility": "actual concrete Counter body _GiftUIBackgroundPayload atbb327 after modifiercapacity checks and _GiftUIVStackPayload atbb400 after semanticcapacity checks. They receive actual borrowed SemanticPayloadWriter tied to attempted bank. No constant-nil payload condition excludes these success branches. Matching object confirms retained calls; body absent prevents concrete generic payload/Table/Role serialization specialization, unlike phantom-Schema key getter ABI leaf.",
+  "limitation": "No allocation count or all16 opaque-root failure inferred. Codec direct/transitive helper family needs read-only grouped design before any new source allowance; no one-symbol repair."
+}

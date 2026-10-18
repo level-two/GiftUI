@@ -1,0 +1,129 @@
+--- lines 135842-135870 ---
+135842: 
+135843: bb325:                                            // Preds: bb323
+135844:   %1402 = struct $UInt16 (%1395)                  // user: %1403
+135845:   store %1402 to %1377                            // id: %1403
+135846:   %1404 = struct_element_addr %445, #SemanticExpansionAttempt.sinkModifierCapacity // user: %1405
+135847:   %1405 = struct_element_addr %1404, #UInt16._value // user: %1406
+135848:   %1406 = load %1405                              // user: %1407
+135849:   %1407 = builtin "cmp_uge_Int16"(%1406, %1395) : $Builtin.Int1 // user: %1408
+135850:   cond_br %1407, bb327, bb328                     // id: %1408
+135851: 
+135852: bb326:                                            // Preds: bb323
+135853:   br bb324                                        // id: %1409
+135854: 
+135855: bb327:                                            // Preds: bb325
+135856:   %1410 = metatype $@thin SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>.Type // user: %1414
+135857:   %1411 = load %846                               // user: %1414
+135858:   %1412 = load %848                               // user: %1414
+135859:   // function_ref specialized SemanticPayloadWriter.init(bank:limits:)
+135860:   %1413 = function_ref @$s18GiftUISemanticCore21SemanticPayloadWriterV4bank6limitsACyxGAA0D17RecordBankBuffersVyxGh_AA0dI6LimitsVtcfC0A9UIDrawing06CanvasdE0Oy15P08CounterTable0op6SchemaN6ValuesOy0oP7Runtime0P6DomainOGG_Tg5 : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, SemanticRecordLimits, @thin SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>.Type) -> @lifetime(borrow 0) @owned SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>> // user: %1414
+135861:   %1414 = apply %1413(%1411, %1412, %1410) : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, SemanticRecordLimits, @thin SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>.Type) -> @lifetime(borrow 0) @owned SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>> // user: %1415
+135862:   %1415 = mark_dependence [nonescaping] %1414 on %425 // user: %1420
+135863:   %1416 = alloc_stack $_GiftUIBackgroundPayload   // users: %1417, %1421, %1420
+135864:   store %1284 to %1416                            // id: %1417
+135865:   %1418 = metatype $@thin CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>.Type // user: %1420
+135866:   // function_ref static CanvasSemanticPayloadCodec.modifier<A>(_:chainIndex:writer:)
+135867:   %1419 = function_ref @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : SemanticDeclarationRoles, τ_0_1 : CanvasValueTable><τ_1_0 where τ_1_0 : _GiftUISemanticModifierPayload> (@in_guaranteed τ_1_0, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<τ_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<τ_0_0, τ_0_1>.Type) -> Optional<SemanticExpansionError> // user: %1420
+135868:   %1420 = apply %1419<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>, _GiftUIBackgroundPayload>(%1416, %1370, %1415, %1418) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : SemanticDeclarationRoles, τ_0_1 : CanvasValueTable><τ_1_0 where τ_1_0 : _GiftUISemanticModifierPayload> (@in_guaranteed τ_1_0, UInt16, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<τ_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<τ_0_0, τ_0_1>.Type) -> Optional<SemanticExpansionError> // user: %1422
+135869:   dealloc_stack %1416                             // id: %1421
+135870:   switch_enum %1420, case #Optional.some!enumelt: bb329, case #Optional.none!enumelt: bb330 // id: %1422
+--- lines 136245-136282 ---
+136245:   %1662 = builtin "cmp_uge_Int16"(%1660, %1661) : $Builtin.Int1 // user: %1663
+136246:   cond_br %1662, bb398, bb399                     // id: %1663
+136247: 
+136248: bb397:                                            // Preds: bb399 bb395
+136249:   %1664 = enum $SemanticExpansionError, #SemanticExpansionError.capacityExhausted!enumelt // user: %1665
+136250:   %1665 = enum $Optional<SemanticExpansionError>, #Optional.some!enumelt, %1664 // users: %1667, %1666
+136251:   store %1665 to %572                             // id: %1666
+136252:   store %1665 to %429                             // id: %1667
+136253:   br bb375                                        // id: %1668
+136254: 
+136255: bb398:                                            // Preds: bb396
+136256:   %1669 = struct_extract %420, #SemanticExpansionAttempt.sinkSemanticCapacity // user: %1670
+136257:   %1670 = struct_extract %1669, #UInt16._value    // users: %2427, %1674
+136258:   %1671 = struct_element_addr %445, #SemanticExpansionAttempt.semanticNodeCount // users: %2426, %1673
+136259:   %1672 = struct $UInt16 (%1661)                  // user: %1673
+136260:   store %1672 to %1671                            // id: %1673
+136261:   %1674 = builtin "cmp_uge_Int16"(%1670, %1661) : $Builtin.Int1 // user: %1675
+136262:   cond_br %1674, bb400, bb401                     // id: %1675
+136263: 
+136264: bb399:                                            // Preds: bb396
+136265:   br bb397                                        // id: %1676
+136266: 
+136267: bb400:                                            // Preds: bb398
+136268:   %1677 = metatype $@thin SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>.Type // users: %2432, %1681
+136269:   %1678 = load %846                               // user: %1681
+136270:   %1679 = load %848                               // user: %1681
+136271:   // function_ref specialized SemanticPayloadWriter.init(bank:limits:)
+136272:   %1680 = function_ref @$s18GiftUISemanticCore21SemanticPayloadWriterV4bank6limitsACyxGAA0D17RecordBankBuffersVyxGh_AA0dI6LimitsVtcfC0A9UIDrawing06CanvasdE0Oy15P08CounterTable0op6SchemaN6ValuesOy0oP7Runtime0P6DomainOGG_Tg5 : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, SemanticRecordLimits, @thin SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>.Type) -> @lifetime(borrow 0) @owned SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>> // users: %2432, %1681
+136273:   %1681 = apply %1680(%1678, %1679, %1677) : $@convention(method) (SemanticRecordBankBuffers<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>, SemanticRecordLimits, @thin SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>.Type) -> @lifetime(borrow 0) @owned SemanticPayloadWriter<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>> // user: %1682
+136274:   %1682 = mark_dependence [nonescaping] %1681 on %425 // user: %1687
+136275:   %1683 = alloc_stack $_GiftUIVStackPayload       // users: %1684, %1688, %1687
+136276:   store %1583 to %1683                            // id: %1684
+136277:   %1685 = metatype $@thin CanvasSemanticPayloadCodec<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>>.Type // users: %2436, %1687
+136278:   // function_ref static CanvasSemanticPayloadCodec.primitive<A>(_:writer:)
+136279:   %1686 = function_ref @$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : SemanticDeclarationRoles, τ_0_1 : CanvasValueTable><τ_1_0 where τ_1_0 : _GiftUISemanticPrimitivePayload> (@in_guaranteed τ_1_0, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<τ_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<τ_0_0, τ_0_1>.Type) -> Optional<SemanticExpansionError> // users: %2436, %1687
+136280:   %1687 = apply %1686<CounterRoles, P08CounterSchemaCanvasTable<CounterDomain>, _GiftUIVStackPayload>(%1683, %1682, %1685) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : SemanticDeclarationRoles, τ_0_1 : CanvasValueTable><τ_1_0 where τ_1_0 : _GiftUISemanticPrimitivePayload> (@in_guaranteed τ_1_0, @guaranteed SemanticPayloadWriter<CanvasSemanticPayload<τ_0_1.CaptureStorage>>, @thin CanvasSemanticPayloadCodec<τ_0_0, τ_0_1>.Type) -> Optional<SemanticExpansionError> // user: %1689
+136281:   dealloc_stack %1683                             // id: %1688
+136282:   switch_enum %1687, case #Optional.some!enumelt: bb402, case #Optional.none!enumelt: bb403 // id: %1689
+--- lines 137783-137841 ---
+137783: // %2671                                          // user: %2887
+137784: bb667(%2671 : $Text<CounterDomain>):              // Preds: bb666 bb665
+137785:   switch_enum %2640, case #State.Storage.bound!enumelt: bb668, case #State.Storage.initial!enumelt: bb669 // id: %2672
+137786: 
+137787: bb668(%2673 : $_GiftUIBoundState<CounterModelSchema>): // Preds: bb667
+137788:   %2674 = unchecked_enum_data %2640, #State.Storage.bound!enumelt // user: %2675
+137789:   %2675 = struct_extract %2674, #_GiftUIBoundState.key // users: %2831, %2764, %2696, %2869, %2825, %2758, %2677
+137790:   %2676 = struct_extract %2638, #_GiftUIFrameRead.slots // users: %2681, %2834, %2826, %2767, %2759, %2707, %2686, %2678
+137791:   debug_value %2675, let, name "key", argno 1     // id: %2677
+137792:   debug_value %2676, let, name "slots", argno 2   // id: %2678
+137793:   debug_value undef : $_GiftUIAccessFailure, var, name "$error", argno 4 // id: %2679
+137794:   %2680 = integer_literal $Builtin.Int64, 0       // users: %2836, %2769, %2709, %2684
+137795:   %2681 = struct_extract %2676, #Span._count      // user: %2682
+137796:   %2682 = struct_extract %2681, #Int._value       // user: %2683
+137797:   %2683 = builtin "assumeNonNegative_Int64"(%2682) : $Builtin.Int64 // users: %2837, %2770, %2710, %2684
+137798:   %2684 = builtin "cmp_sge_Int64"(%2680, %2683) : $Builtin.Int1 // user: %2685
+137799:   cond_fail %2684, "Index out of bounds"          // id: %2685
+137800:   %2686 = struct_extract %2676, #Span._pointer    // user: %2687
+137801:   %2687 = unchecked_enum_data %2686, #Optional.some!enumelt // user: %2688
+137802:   %2688 = struct_extract %2687, #UnsafeRawPointer._rawValue // user: %2689
+137803:   %2689 = pointer_to_address %2688 to [strict] $*ObservableModelReadSlot<CounterOwnedModel> // users: %2841, %2774, %2714, %2690
+137804:   %2690 = struct_element_addr %2689, #ObservableModelReadSlot.ownership // user: %2691
+137805:   %2691 = struct_element_addr %2690, #UnsafePointer._rawValue // users: %2828, %2761, %2692
+137806:   %2692 = load %2691                              // user: %2693
+137807:   %2693 = pointer_to_address %2692 to [strict] $*ObservableModelOwnership // user: %2694
+137808:   %2694 = load %2693                              // user: %2696
+137809:   // function_ref ObservableModelOwnership.bind<A>(_:schema:)
+137810:   %2695 = function_ref @$s21GiftUIObservableState24ObservableModelOwnershipV4bind_6schemaSi0A2UI01_A10UIModelKeyVyxG_s6UInt16VtAF01_A15UIAccessFailureOYKlF : $@convention(method) <τ_0_0> (_GiftUIModelKey<τ_0_0>, UInt16, @guaranteed ObservableModelOwnership) -> (Int, @error _GiftUIAccessFailure) // users: %2831, %2764, %2696
+137811:   try_apply %2695<CounterModelSchema>(%2675, %748, %2694) : $@convention(method) <τ_0_0> (_GiftUIModelKey<τ_0_0>, UInt16, @guaranteed ObservableModelOwnership) -> (Int, @error _GiftUIAccessFailure), normal bb670, error bb671 // id: %2696
+137812: 
+137813: bb669(%2697 : $_GiftUIStateInitial<CounterModelSchema>): // Preds: bb667
+137814:   %2698 = enum $_GiftUIAccessFailure, #_GiftUIAccessFailure.invalidPhase!enumelt // users: %2700, %2704
+137815:   %2699 = alloc_stack $_GiftUIAccessFailure       // users: %2700, %2703, %2702
+137816:   store %2698 to %2699                            // id: %2700
+137817:   // function_ref swift_willThrowTypedImpl
+137818:   %2701 = function_ref @swift_willThrowTypedImpl : $@convention(thin) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> () // user: %2702
+137819:   %2702 = apply %2701<_GiftUIAccessFailure>(%2699) : $@convention(thin) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> ()
+137820:   dealloc_stack %2699                             // id: %2703
+137821:   br bb688(%2698)                                 // id: %2704
+137822: 
+137823: // %2705                                          // users: %2708, %2706
+137824: bb670(%2705 : $Int):                              // Preds: bb668
+137825:   debug_value %2705, let, name "index", argno 1   // id: %2706
+137826:   debug_value %2676, let, name "slots", argno 2   // id: %2707
+137827:   %2708 = struct_extract %2705, #Int._value       // users: %2713, %2710, %2709
+137828:   %2709 = builtin "cmp_slt_Int64"(%2708, %2680) : $Builtin.Int1 // user: %2711
+137829:   %2710 = builtin "cmp_sge_Int64"(%2708, %2683) : $Builtin.Int1 // user: %2711
+137830:   %2711 = builtin "or_Int1"(%2709, %2710) : $Builtin.Int1 // user: %2712
+137831:   cond_fail %2711, "Index out of bounds"          // id: %2712
+137832:   %2713 = builtin "truncOrBitCast_Int64_Word"(%2708) : $Builtin.Word // user: %2714
+137833:   %2714 = index_addr %2689, %2713                 // user: %2715
+137834:   %2715 = struct_element_addr %2714, #ObservableModelReadSlot.model // user: %2716
+137835:   %2716 = struct_element_addr %2715, #UnsafePointer._rawValue // user: %2717
+137836:   %2717 = load %2716                              // user: %2718
+137837:   %2718 = pointer_to_address %2717 to [strict] $*Optional<CounterOwnedModel> // user: %2719
+137838:   %2719 = load %2718                              // user: %2720
+137839:   switch_enum %2719, case #Optional.some!enumelt: bb672, case #Optional.none!enumelt: bb673 // id: %2720
+137840: 
+137841: // %2721                                          // user: %2722

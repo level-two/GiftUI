@@ -1,0 +1,74 @@
+{
+  "members": [
+    {
+      "path": "README.md",
+      "bytes": 3425,
+      "sha256": "0c91f55a295163f6cdaac5e757ce1989259772cf2a66a4389dfdff1448b853fa"
+    },
+    {
+      "path": "callback-boundaries.json",
+      "bytes": 10299,
+      "sha256": "cf7c0fdabd3d4a97a3600d0926776754e4ecbc37d8bf175789b40d3e07efa863"
+    },
+    {
+      "path": "callback-paths.sil.txt",
+      "bytes": 73648,
+      "sha256": "709d82c7c3c0357a3cf1dc4d148b4cd7afaebadb7d8c6aacae8e38e565f50e81"
+    },
+    {
+      "path": "codec-and-read.sil.txt",
+      "bytes": 14201,
+      "sha256": "efe0cfdf2942205697c4a4d9d6272dc1ce653e13832e0f4a48aea67e44c11499"
+    },
+    {
+      "path": "codec-source.swift.txt",
+      "bytes": 1367,
+      "sha256": "9b0b5397fa000a16dc1f57c532321ce0d0245866a56a8ffbfd6e9e97244488b4"
+    },
+    {
+      "path": "frontier23-current.json",
+      "bytes": 61037,
+      "sha256": "39d1d908f2c8df1a3c9fb29807b041ec666ecdef80691961996f247ccc16f726"
+    },
+    {
+      "path": "matching-host-object.txt",
+      "bytes": 10065,
+      "sha256": "1f3e83231dd38f9a9c0299878015792368aac6e845583c7d3902ed01217449a5"
+    },
+    {
+      "path": "next-codec-boundary.json",
+      "bytes": 9212,
+      "sha256": "fb71d33bffeab9d5d8b78367403c31a08a754a00186eefeb1d5b10cd8cc880af"
+    },
+    {
+      "path": "ordinary-bind-cost.json",
+      "bytes": 2753,
+      "sha256": "ccfe15a11883896799c2728c6841ee61b2afb5c89b1cc362b0c20ac0acbf28fd"
+    },
+    {
+      "path": "ordinary-bind-key-witness-object.txt",
+      "bytes": 2656,
+      "sha256": "3fdd859f34d5b36f7766760fa5acf315847ff0e82caa925560d41a28730ce665"
+    },
+    {
+      "path": "ordinary-bind-provider-object.txt",
+      "bytes": 13304,
+      "sha256": "76b076f045cabcb55d77ec36202a8589171f9ff903edddf58e6257dee8a8ac37"
+    },
+    {
+      "path": "read-only-disassembly-manifest.json",
+      "bytes": 813,
+      "sha256": "638536569b59cee812a8de9c705d61185d019bea4fdce213c43f9bde5897b606"
+    },
+    {
+      "path": "read-only-provider-disassembly.tar.gz",
+      "bytes": 404748,
+      "sha256": "d734fd9de2e67fe26e3fce5d8fcb12bd16f3015283123ff1413eedd5158d10db"
+    },
+    {
+      "path": "receipt.json",
+      "bytes": 1873,
+      "sha256": "1268a95707341836f2a9bbd915c9e6c5ba4927e8e840cb05ede0b8b079b3ceb5"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "source_commit": "f8da7a28",
+  "continuation_result_commit": "8bd59230",
+  "source_edits": 0,
+  "compiler_runtime": 0,
+  "read_only_object_inspection": "two existing fresh sealed provider objects disassembled by already-pinned LLVM21; no compiler/decoder/runtime; commands+hashes archived",
+  "inputs": [
+    {
+      "path": ".build/contracts/p08-observable-callback-selector-continuation1/actual-host.sil",
+      "bytes": 61809109,
+      "sha256": "f36857630a4e502343bda0d84d278bd94dfb0c59a67a68edf3d5d217316ee08f"
+    },
+    {
+      "path": ".build/contracts/p08-observable-callback-candidate1/qualification/logs/host-disassembly.stdout",
+      "bytes": 26398951,
+      "sha256": "58044684b154f7ead89265d31a2803a730b49b51acd956f4f26891e1b8e47089"
+    },
+    {
+      "path": ".build/contracts/p08-observable-callback-candidate1/qualification/boundary-physical-index.json",
+      "bytes": 4040397,
+      "sha256": "12e16303a07a25322f05301024cb43fb67be8a3d0a88994f8a1d50beadcf5f62"
+    },
+    {
+      "path": ".build/contracts/p08-observable-callback-candidate1/compile/owners/GiftUIObservableState/GiftUIObservableState.o",
+      "bytes": 500504,
+      "sha256": "98f98fba4857dec50a88868bc93cfe22ae3c1474d7c5fe24b2e142b4b926b008"
+    },
+    {
+      "path": ".build/contracts/p08-observable-callback-candidate1/compile/owners/GiftUI/GiftUI.o",
+      "bytes": 354240,
+      "sha256": "b52b2de92fed635219a147493e0ebf9c8f29465c5d26510a3b5754895c668434"
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "bytes": 3398,
+      "sha256": "8ff2bf5049d4393d459fef253cf6a137a9796a70c2ad4c413111d7928070b531"
+    }
+  ],
+  "gate": "selected_callbacks_resolved; ordinarybindnormalqualified/failurecoldunqualified; nextactualF13F14genericbodyFAIL_STOP",
+  "source_budget": "candidate1/1 fixed, zeroautomaticSOURCErepairs; alloldbudgetsunchanged"
+}

@@ -1,0 +1,25 @@
+--- lines 30-53 ---
+30: package enum CanvasSemanticPayloadCodec<Roles: SemanticDeclarationRoles, Table: CanvasValueTable>:
+31:     SemanticRecordPayloadCodec
+32: {
+33:     package typealias Payload = CanvasSemanticPayload<Table.CaptureStorage>
+34:     package static func primitive<Value: _GiftUISemanticPrimitivePayload>(
+35:         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+36:     ) -> SemanticExpansionError? {
+37:         if let canvas = Table.payload(value) {
+38:             return writer.store(.canvas(canvas), kind: .pendingCanvas)
+39:         }
+40:         return SemanticStandardPayloadCodec<Roles>.primitive(
+41:             value, writer: writer, wrapping: { .standard($0) })
+42:     }
+43:     package static func modifier<Value: _GiftUISemanticModifierPayload>(
+44:         _ value: borrowing Value, chainIndex: UInt16,
+45:         writer: borrowing SemanticPayloadWriter<Payload>
+46:     ) -> SemanticExpansionError? {
+47:         SemanticStandardPayloadCodec<Roles>.modifier(
+48:             value, chainIndex: chainIndex, writer: writer, wrapping: { .standard($0) })
+49:     }
+50:     package static func action<Value: GiftUIAction>(
+51:         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+52:     ) -> SemanticExpansionError? {
+53:         SemanticStandardPayloadCodec<Roles>.action(

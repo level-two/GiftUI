@@ -1,0 +1,100 @@
+{
+  "gate": "selected_callback_generic_specialization_PASS, not wholechain/safety/cold",
+  "resolved": [
+    {
+      "call_reference_line": 135305,
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE9preserved_7ordinal5stateSbq__s6UInt16V0A2UI0C0Vy6SchemaQzGztAA0dC5ErrorOYKF17P08CounterRuntime0O10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "line": 598353,
+      "header": "sil shared @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE9preserved_7ordinal5stateSbq__s6UInt16V0A2UI0C0Vy6SchemaQzGztAA0dC5ErrorOYKF17P08CounterRuntime0O10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5 : $@convention(method) (SemanticCompleteIdentity, UInt16, @inout State<CounterModelSchema>, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> (Bool, @error ObservableStateError) {",
+      "basic_blocks": 16,
+      "comment": " // specialized ObservableStateRootScope<>.preserved(_:ordinal:state:) // Isolation: unspecified",
+      "end_line": 598477
+    },
+    {
+      "call_reference_line": 138421,
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF17P08CounterRuntime0r5OwnedN0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "line": 598481,
+      "header": "sil shared @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF17P08CounterRuntime0r5OwnedN0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5 : $@convention(method) (SemanticCompleteIdentity, UInt16, @inout State<CounterModelSchema>, @lifetime(copy 3) @inout ObservableModelTicket<CounterModelSchema>, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> @error ObservableStateError {",
+      "basic_blocks": 62,
+      "comment": " // specialized ObservableStateRootScope<>.install(_:ordinal:state:ticket:) // Isolation: unspecified",
+      "end_line": 598979
+    },
+    {
+      "call_reference_line": 138432,
+      "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE7releaseyyAA0dE6TicketVyq_GzAA0dC5ErrorOYKF17P08CounterRuntime0k5OwnedE0V_0jK6Schema0keN0OTg5",
+      "line": 33238,
+      "header": "sil shared @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE7releaseyyAA0dE6TicketVyq_GzAA0dC5ErrorOYKF17P08CounterRuntime0k5OwnedE0V_0jK6Schema0keN0OTg5 : $@convention(method) (@lifetime(copy 0) @inout ObservableModelTicket<CounterModelSchema>, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> @error ObservableStateError {",
+      "basic_blocks": 11,
+      "comment": " // specialized ObservableModelScope<>.release(_:) // Isolation: unspecified",
+      "end_line": 33325
+    },
+    {
+      "call_reference_line": 598365,
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE14checkOperation9discoveryySb_tAA0dC5ErrorOYKF17P08CounterRuntime0L10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "line": 598983,
+      "header": "sil shared @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE14checkOperation9discoveryySb_tAA0dC5ErrorOYKF17P08CounterRuntime0L10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5 : $@convention(method) (Bool, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> @error ObservableStateError {",
+      "basic_blocks": 8,
+      "comment": " // specialized ObservableStateRootScope<>.checkOperation(discovery:) // Isolation: unspecified",
+      "end_line": 599051
+    },
+    {
+      "call_reference_line": 598427,
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE4bind_4sloty0A2UI0C0Vy6SchemaQzGz_SitAA0dC5ErrorOYKF17P08CounterRuntime0M10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "line": 599055,
+      "header": "sil shared @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE4bind_4sloty0A2UI0C0Vy6SchemaQzGz_SitAA0dC5ErrorOYKF17P08CounterRuntime0M10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5 : $@convention(method) (@inout State<CounterModelSchema>, Int, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> @error ObservableStateError {",
+      "basic_blocks": 20,
+      "comment": " // specialized ObservableStateRootScope<>.bind(_:slot:) // Isolation: unspecified",
+      "end_line": 599200
+    },
+    {
+      "call_reference_line": 598809,
+      "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6attach_4sink0A2UI01_A23UIObservationAttachmentVSgAF01_A10UIModelKeyVyq_G_AF01_aB10ChangeSinkVntAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0s5OwnedE0V_0rsQ00seQ0OTg5",
+      "line": 599280,
+      "header": "sil shared @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6attach_4sink0A2UI01_A23UIObservationAttachmentVSgAF01_A10UIModelKeyVyq_G_AF01_aB10ChangeSinkVntAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0s5OwnedE0V_0rsQ00seQ0OTg5 : $@convention(method) (_GiftUIModelKey<CounterModelSchema>, @owned _GiftUIObservableChangeSink, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> (Optional<_GiftUIObservationAttachment>, @error ObservableStateError) {",
+      "basic_blocks": 6,
+      "comment": " // specialized ObservableModelScope<>.attach<>(_:sink:) // Isolation: unspecified",
+      "end_line": 599346
+    },
+    {
+      "call_reference_line": 598856,
+      "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8registeryyAA0dE6TicketVyq_GAA0dC5ErrorOYKF17P08CounterRuntime0k5OwnedE0V_0jK6Schema0keN0OTg5",
+      "line": 599357,
+      "header": "sil shared @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8registeryyAA0dE6TicketVyq_GAA0dC5ErrorOYKF17P08CounterRuntime0k5OwnedE0V_0jK6Schema0keN0OTg5 : $@convention(method) (@guaranteed ObservableModelTicket<CounterModelSchema>, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> @error ObservableStateError {",
+      "basic_blocks": 8,
+      "comment": " // specialized ObservableModelScope<>.register(_:) // Isolation: unspecified",
+      "end_line": 599419
+    },
+    {
+      "call_reference_line": 598861,
+      "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0q5OwnedE0V_0pqO00qeO0OTg5",
+      "line": 599423,
+      "header": "sil shared @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0q5OwnedE0V_0pqO00qeO0OTg5 : $@convention(method) (_GiftUIModelKey<CounterModelSchema>, _GiftUIObservationAttachment, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> @error ObservableStateError {",
+      "basic_blocks": 9,
+      "comment": " // specialized ObservableModelScope<>.detach<>(_:attachment:) // Isolation: unspecified",
+      "end_line": 599491
+    },
+    {
+      "call_reference_line": 598913,
+      "symbol": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE4bind_4sloty0A2UI0C0Vy6SchemaQzGz_SitAA0dC5ErrorOYKF17P08CounterRuntime0M10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "line": 599055,
+      "header": "sil shared @$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE4bind_4sloty0A2UI0C0Vy6SchemaQzGz_SitAA0dC5ErrorOYKF17P08CounterRuntime0M10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5 : $@convention(method) (@inout State<CounterModelSchema>, Int, @guaranteed ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>) -> @error ObservableStateError {",
+      "basic_blocks": 20,
+      "comment": " // specialized ObservableStateRootScope<>.bind(_:slot:) // Isolation: unspecified",
+      "end_line": 599200
+    },
+    {
+      "call_reference_line": 598923,
+      "symbol": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE7releaseyyAA0dE6TicketVyq_GzAA0dC5ErrorOYKF17P08CounterRuntime0k5OwnedE0V_0jK6Schema0keN0OTg5",
+      "line": 33238,
+      "header": "sil shared @$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE7releaseyyAA0dE6TicketVyq_GzAA0dC5ErrorOYKF17P08CounterRuntime0k5OwnedE0V_0jK6Schema0keN0OTg5 : $@convention(method) (@lifetime(copy 0) @inout ObservableModelTicket<CounterModelSchema>, @guaranteed ObservableModelScope<CounterOwnedModel, CounterModelSchema>) -> @error ObservableStateError {",
+      "basic_blocks": 11,
+      "comment": " // specialized ObservableModelScope<>.release(_:) // Isolation: unspecified",
+      "end_line": 33325
+    }
+  ],
+  "normal_error": "original seed State %1024 enters preserved; no match -> unchanged seed -> checked materialize -> same storage/ticket -> specialized install. Models.attach stores concrete sink in actual CounterOwnedModel; error detach reaches concrete model method. Success register->structuralbind->release; seed install error releases same ticket but retains original error on either release outcome. Release clears reclaimed Optional model slot and sets ownsClaim=false only after successful ledger release.",
+  "callback_context": "install builds _GiftUIObservableChangeSink directly from attachment, existing report-storage pointer and fixed @convention(c) thunk; thunk has1BB forwarding ordinary reportRoot. No closure capture introduced; transitive report/lifecycle costs remain ordinary unqualified.",
+  "original_state": "Root.bind initial branch stores State.bound structural descriptor directly into original inout address; existing-bound branch compares scalar location/ordinal/registration/key fields directly. No raw-key constructor/getter call in selected bind body.",
+  "compatibility": "offered-candidate install is emitted but not assumed feasible on initial seed path; detach-failed/attachment-return mismatches are structural error continuations, no runtime occurrence claim",
+  "prior": "run/three resolvers/four original B boundaries retained; generic Model callbacks resolved in bounded examined attach/detach/release chain, not every callback in host"
+}
