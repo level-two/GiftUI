@@ -1,5 +1,14 @@
 # RFC-014 task context guide
 
+Current P08 U02 startup boundary — **STOP / uncertain startup; session 1/1 consumed**.
+The [independent startup review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/startup-stop-review.md)
+records a wrapper failure after reported session startup, with process output,
+clock and ledger unavailable. Separate opaque preservation inspection matches
+all frozen inputs/controls, dirty/cache/marker identities and absent fixed result.
+No execution success or attribution result is established; repairs/retries 0/0,
+no restart/resume or manufactured result. U01–U05/P08/R07/T8.1 stay open;
+no contract/scope/lifecycle change. Earlier checkpoints below are historical.
+
 Current P08 U02 preparation B01 re-review — **PASS / technical readiness**.
 The [exact 3db4e1b1 Strong re-review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/b01-independent-review.md)
 resolves B01: disjoint 79+48 content sets, six exact controls and one inclusive

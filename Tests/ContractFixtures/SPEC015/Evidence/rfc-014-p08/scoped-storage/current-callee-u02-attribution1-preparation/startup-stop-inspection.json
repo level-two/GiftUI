@@ -1,0 +1,116 @@
+{
+  "kind": "separate_independent_startup_STOP_preservation_review",
+  "reviewed_head": "0ce4e6e1d4ce752c45ad455a80dc4fb1f9e9d506",
+  "preparation_commit": "3db4e1b13a728947569a700f35957bb4d17ef943",
+  "readiness_review_commit": "eae5e6ab3810b077e8cfa7ca8b3e65ff22e01892",
+  "preflight_commit": "0ce4e6e1d4ce752c45ad455a80dc4fb1f9e9d506",
+  "scope": "opaque hashes and exact frozen metadata/diff only; no evidence semantics or attribution",
+  "original_session_clock_ledger_exit_output": "unavailable; this inspection does not reconstruct or reset them",
+  "attempt_disposition": "STOP; conservatively consumed 1/1; repairs 0/0; retries 0/0",
+  "controls": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/README.md",
+      "bytes": 22022,
+      "sha256": "a8413884de82ee7d696fb81fa2d834ea8e2a60e0d61e1965799221596caf0301",
+      "equals_preparation_blob": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/inputs.json",
+      "bytes": 48197,
+      "sha256": "83535ca92bdefd3f132133d88a10a6ff65530f2219547009de9852f007fd23bf",
+      "equals_preparation_blob": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/roots.json",
+      "bytes": 70161,
+      "sha256": "ce9e7d4b62c885230f970d831ef84f3d1b3d02bf87de3e809415431777d259c0",
+      "equals_preparation_blob": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/selected-rows.json",
+      "bytes": 867601,
+      "sha256": "0c0953116114e7e5f1c61671faa07f125a6b9c33b5e00894fbf570822fdcc064",
+      "equals_preparation_blob": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/preservation.json",
+      "bytes": 2214,
+      "sha256": "4dc777db0f14d7ac00fb72e2a75dca5ee2c39420f3ff1bfddc4639d6928494ab",
+      "equals_preparation_blob": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/preservation-reads.json",
+      "bytes": 28190,
+      "sha256": "31ed4e23365cadc34891028651eb64962625d62a09e4501c8c4fe2093fdc250d",
+      "equals_preparation_blob": true
+    }
+  ],
+  "evidence": {
+    "files": 79,
+    "encoded_bytes": 126694715,
+    "all_worktree_sizes_hashes_and_frozen_blobs_match": true
+  },
+  "preservation": {
+    "files": 48,
+    "encoded_bytes": 875385,
+    "all_worktree_sizes_and_hashes_match": true,
+    "source42_matches": true,
+    "five_dirty_files_match": true,
+    "cache_matches": true
+  },
+  "content_sets_disjoint": true,
+  "original_inputs_roots_rows_preservation_equal_b8c45969": true,
+  "no_symlink_components_in_checked_paths": true,
+  "fixed_result_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-result",
+  "fixed_result_absent_lstat": true,
+  "fixed_result_output_files_observed": 0,
+  "cache_exact_member_names": [
+    "p08_layout_facts.cpython-314.pyc"
+  ],
+  "markers": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": {
+      "identity": [
+        16777234,
+        29640436
+      ],
+      "matches_frozen_identity": true,
+      "consumption": "1/1"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": {
+      "identity": [
+        16777234,
+        29650609
+      ],
+      "matches_frozen_identity": true,
+      "consumption": "1/1"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": {
+      "identity": [
+        16777234,
+        29652748
+      ],
+      "matches_frozen_identity": true,
+      "consumption": "1/1"
+    }
+  },
+  "dirty_diff": {
+    "bytes": 5230,
+    "sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+    "stderr_bytes": 0,
+    "all_five_index_bases_equal_pinned_blobs": true
+  },
+  "git_status_before_review_writes": [
+    " M Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+    " M Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+    " M firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+    " M scripts/nrf52840/build.sh",
+    " M scripts/raspberry-pi/build.sh",
+    "?? scripts/contracts/__pycache__/"
+  ],
+  "separate_review_observed_content_blob_and_diff_bytes": 258569497,
+  "separate_review_elapsed_seconds": 1.363,
+  "accounting_note": "Review operation counter only; includes repeated control/payload and Git blob outputs plus frozen diff charges; not the failed session ledger or a reconstructed complete metadata/transcript tally.",
+  "attribution_executed_in_review": false,
+  "new_classifications_or_proof": false,
+  "mismatches": []
+}
