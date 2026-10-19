@@ -1,0 +1,13 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-sendable-negative.swift:4024:64: error: type 'P08StorageSession' does not conform to the 'Sendable' protocol
+1084 | 
+1085 | fileprivate typealias P08ScopedKeys = InteractionOwnedKeyState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>
+1086 | fileprivate struct P08StorageSession: ~Copyable, ~Escapable {
+     |                    `- note: consider making struct 'P08StorageSession' conform to the 'Sendable' protocol
+1087 |     private var geometry: P08GeometryAccess
+1088 |     private var interaction: P08ScopedKeys
+     :
+4022 | 
+4023 | fileprivate func send<T: Sendable & ~Copyable & ~Escapable>(_ value: borrowing T) {}
+4024 | fileprivate func probe(_ value: borrowing P08StorageSession) { send(value) }
+     |                                                                `- error: type 'P08StorageSession' does not conform to the 'Sendable' protocol
+4025 | 

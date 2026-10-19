@@ -1,0 +1,239 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:159: error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08GeometryAccess' conform to 'Copyable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                               `- error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08GeometryAccess' conform to 'Copyable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:823:1: note: 'where Geometry: Copyable' is implicit here
+ 821 | }
+ 822 | 
+ 823 | extension CounterPipelineOwner
+     | `- note: 'where Geometry: Copyable' is implicit here
+ 824 | where Geometry: Copyable & Escapable, Candidate: Copyable & Escapable, Committed: Copyable & Escapable, Hits: Copyable & Escapable {
+ 825 |     consuming func returnWorkspaces(checks: Int) -> CounterReturnedWorkspaces<Geometry, Candidate, Committed, Hits> {
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:159: error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08GeometryAccess' conform to 'Escapable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                               `- error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08GeometryAccess' conform to 'Escapable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:823:1: note: 'where Geometry: Escapable' is implicit here
+ 821 | }
+ 822 | 
+ 823 | extension CounterPipelineOwner
+     | `- note: 'where Geometry: Escapable' is implicit here
+ 824 | where Geometry: Copyable & Escapable, Candidate: Copyable & Escapable, Committed: Copyable & Escapable, Hits: Copyable & Escapable {
+ 825 |     consuming func returnWorkspaces(checks: Int) -> CounterReturnedWorkspaces<Geometry, Candidate, Committed, Hits> {
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:159: error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08CandidateAccess' conform to 'Copyable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                               `- error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08CandidateAccess' conform to 'Copyable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:823:1: note: 'where Candidate: Copyable' is implicit here
+ 821 | }
+ 822 | 
+ 823 | extension CounterPipelineOwner
+     | `- note: 'where Candidate: Copyable' is implicit here
+ 824 | where Geometry: Copyable & Escapable, Candidate: Copyable & Escapable, Committed: Copyable & Escapable, Hits: Copyable & Escapable {
+ 825 |     consuming func returnWorkspaces(checks: Int) -> CounterReturnedWorkspaces<Geometry, Candidate, Committed, Hits> {
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:159: error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08CandidateAccess' conform to 'Escapable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                               `- error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08CandidateAccess' conform to 'Escapable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:823:1: note: 'where Candidate: Escapable' is implicit here
+ 821 | }
+ 822 | 
+ 823 | extension CounterPipelineOwner
+     | `- note: 'where Candidate: Escapable' is implicit here
+ 824 | where Geometry: Copyable & Escapable, Candidate: Copyable & Escapable, Committed: Copyable & Escapable, Hits: Copyable & Escapable {
+ 825 |     consuming func returnWorkspaces(checks: Int) -> CounterReturnedWorkspaces<Geometry, Candidate, Committed, Hits> {
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:159: error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08CommittedAccess' conform to 'Copyable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                               `- error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08CommittedAccess' conform to 'Copyable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:823:1: note: 'where Committed: Copyable' is implicit here
+ 821 | }
+ 822 | 
+ 823 | extension CounterPipelineOwner
+     | `- note: 'where Committed: Copyable' is implicit here
+ 824 | where Geometry: Copyable & Escapable, Candidate: Copyable & Escapable, Committed: Copyable & Escapable, Hits: Copyable & Escapable {
+ 825 |     consuming func returnWorkspaces(checks: Int) -> CounterReturnedWorkspaces<Geometry, Candidate, Committed, Hits> {
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:159: error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08CommittedAccess' conform to 'Escapable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                               `- error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08CommittedAccess' conform to 'Escapable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:823:1: note: 'where Committed: Escapable' is implicit here
+ 821 | }
+ 822 | 
+ 823 | extension CounterPipelineOwner
+     | `- note: 'where Committed: Escapable' is implicit here
+ 824 | where Geometry: Copyable & Escapable, Candidate: Copyable & Escapable, Committed: Copyable & Escapable, Hits: Copyable & Escapable {
+ 825 |     consuming func returnWorkspaces(checks: Int) -> CounterReturnedWorkspaces<Geometry, Candidate, Committed, Hits> {
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:159: error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08HitAccess' conform to 'Copyable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                               `- error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08HitAccess' conform to 'Copyable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:823:1: note: 'where Hits: Copyable' is implicit here
+ 821 | }
+ 822 | 
+ 823 | extension CounterPipelineOwner
+     | `- note: 'where Hits: Copyable' is implicit here
+ 824 | where Geometry: Copyable & Escapable, Candidate: Copyable & Escapable, Committed: Copyable & Escapable, Hits: Copyable & Escapable {
+ 825 |     consuming func returnWorkspaces(checks: Int) -> CounterReturnedWorkspaces<Geometry, Candidate, Committed, Hits> {
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:159: error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08HitAccess' conform to 'Escapable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                               `- error: referencing instance method 'returnWorkspaces(checks:)' on 'CounterPipelineOwner' requires that 'P08HitAccess' conform to 'Escapable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:823:1: note: 'where Hits: Escapable' is implicit here
+ 821 | }
+ 822 | 
+ 823 | extension CounterPipelineOwner
+     | `- note: 'where Hits: Escapable' is implicit here
+ 824 | where Geometry: Copyable & Escapable, Candidate: Copyable & Escapable, Committed: Copyable & Escapable, Hits: Copyable & Escapable {
+ 825 |     consuming func returnWorkspaces(checks: Int) -> CounterReturnedWorkspaces<Geometry, Candidate, Committed, Hits> {
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:187: error: generic struct 'CounterReturnedWorkspaces' requires that 'P08GeometryAccess' conform to 'Copyable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                                                           `- error: generic struct 'CounterReturnedWorkspaces' requires that 'P08GeometryAccess' conform to 'Copyable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift:130:8: note: 'where G: Copyable' is implicit here
+128 | // Only the escapable, owned workspaces leave the enclosing scoped opportunity.
+129 | // Model/root/semantic/Canvas scopes are destroyed before this transfer returns.
+130 | struct CounterReturnedWorkspaces<G: CounterGeometry & Copyable & Escapable, C: CounterCandidateBacking & Copyable & Escapable, R: CounterCommittedBacking & Copyable & Escapable, H: CounterHitBacking & Copyable & Escapable> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    |        `- note: 'where G: Copyable' is implicit here
+131 |     var geometry: G
+132 |     var interaction: InteractionOwnedKeyState<C, R, H>
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:187: error: generic struct 'CounterReturnedWorkspaces' requires that 'P08GeometryAccess' conform to 'Escapable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                                                           `- error: generic struct 'CounterReturnedWorkspaces' requires that 'P08GeometryAccess' conform to 'Escapable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift:130:8: note: 'where G: Escapable' is implicit here
+128 | // Only the escapable, owned workspaces leave the enclosing scoped opportunity.
+129 | // Model/root/semantic/Canvas scopes are destroyed before this transfer returns.
+130 | struct CounterReturnedWorkspaces<G: CounterGeometry & Copyable & Escapable, C: CounterCandidateBacking & Copyable & Escapable, R: CounterCommittedBacking & Copyable & Escapable, H: CounterHitBacking & Copyable & Escapable> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    |        `- note: 'where G: Escapable' is implicit here
+131 |     var geometry: G
+132 |     var interaction: InteractionOwnedKeyState<C, R, H>
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:187: error: generic struct 'CounterReturnedWorkspaces' requires that 'P08CandidateAccess' conform to 'Copyable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                                                           `- error: generic struct 'CounterReturnedWorkspaces' requires that 'P08CandidateAccess' conform to 'Copyable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift:130:8: note: 'where C: Copyable' is implicit here
+128 | // Only the escapable, owned workspaces leave the enclosing scoped opportunity.
+129 | // Model/root/semantic/Canvas scopes are destroyed before this transfer returns.
+130 | struct CounterReturnedWorkspaces<G: CounterGeometry & Copyable & Escapable, C: CounterCandidateBacking & Copyable & Escapable, R: CounterCommittedBacking & Copyable & Escapable, H: CounterHitBacking & Copyable & Escapable> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    |        `- note: 'where C: Copyable' is implicit here
+131 |     var geometry: G
+132 |     var interaction: InteractionOwnedKeyState<C, R, H>
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:187: error: generic struct 'CounterReturnedWorkspaces' requires that 'P08CandidateAccess' conform to 'Escapable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                                                           `- error: generic struct 'CounterReturnedWorkspaces' requires that 'P08CandidateAccess' conform to 'Escapable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift:130:8: note: 'where C: Escapable' is implicit here
+128 | // Only the escapable, owned workspaces leave the enclosing scoped opportunity.
+129 | // Model/root/semantic/Canvas scopes are destroyed before this transfer returns.
+130 | struct CounterReturnedWorkspaces<G: CounterGeometry & Copyable & Escapable, C: CounterCandidateBacking & Copyable & Escapable, R: CounterCommittedBacking & Copyable & Escapable, H: CounterHitBacking & Copyable & Escapable> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    |        `- note: 'where C: Escapable' is implicit here
+131 |     var geometry: G
+132 |     var interaction: InteractionOwnedKeyState<C, R, H>
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:187: error: generic struct 'CounterReturnedWorkspaces' requires that 'P08CommittedAccess' conform to 'Copyable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                                                           `- error: generic struct 'CounterReturnedWorkspaces' requires that 'P08CommittedAccess' conform to 'Copyable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift:130:8: note: 'where R: Copyable' is implicit here
+128 | // Only the escapable, owned workspaces leave the enclosing scoped opportunity.
+129 | // Model/root/semantic/Canvas scopes are destroyed before this transfer returns.
+130 | struct CounterReturnedWorkspaces<G: CounterGeometry & Copyable & Escapable, C: CounterCandidateBacking & Copyable & Escapable, R: CounterCommittedBacking & Copyable & Escapable, H: CounterHitBacking & Copyable & Escapable> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    |        `- note: 'where R: Copyable' is implicit here
+131 |     var geometry: G
+132 |     var interaction: InteractionOwnedKeyState<C, R, H>
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:187: error: generic struct 'CounterReturnedWorkspaces' requires that 'P08CommittedAccess' conform to 'Escapable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                                                           `- error: generic struct 'CounterReturnedWorkspaces' requires that 'P08CommittedAccess' conform to 'Escapable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift:130:8: note: 'where R: Escapable' is implicit here
+128 | // Only the escapable, owned workspaces leave the enclosing scoped opportunity.
+129 | // Model/root/semantic/Canvas scopes are destroyed before this transfer returns.
+130 | struct CounterReturnedWorkspaces<G: CounterGeometry & Copyable & Escapable, C: CounterCandidateBacking & Copyable & Escapable, R: CounterCommittedBacking & Copyable & Escapable, H: CounterHitBacking & Copyable & Escapable> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    |        `- note: 'where R: Escapable' is implicit here
+131 |     var geometry: G
+132 |     var interaction: InteractionOwnedKeyState<C, R, H>
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:187: error: generic struct 'CounterReturnedWorkspaces' requires that 'P08HitAccess' conform to 'Copyable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                                                           `- error: generic struct 'CounterReturnedWorkspaces' requires that 'P08HitAccess' conform to 'Copyable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift:130:8: note: 'where H: Copyable' is implicit here
+128 | // Only the escapable, owned workspaces leave the enclosing scoped opportunity.
+129 | // Model/root/semantic/Canvas scopes are destroyed before this transfer returns.
+130 | struct CounterReturnedWorkspaces<G: CounterGeometry & Copyable & Escapable, C: CounterCandidateBacking & Copyable & Escapable, R: CounterCommittedBacking & Copyable & Escapable, H: CounterHitBacking & Copyable & Escapable> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    |        `- note: 'where H: Copyable' is implicit here
+131 |     var geometry: G
+132 |     var interaction: InteractionOwnedKeyState<C, R, H>
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.swift:4023:187: error: generic struct 'CounterReturnedWorkspaces' requires that 'P08HitAccess' conform to 'Escapable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ pipeline: consuming CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>) -> Int { pipeline.returnWorkspaces(checks: 1).checks }
+     |                                                                                                                                                                                           `- error: generic struct 'CounterReturnedWorkspaces' requires that 'P08HitAccess' conform to 'Escapable'
+4024 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift:130:8: note: 'where H: Escapable' is implicit here
+128 | // Only the escapable, owned workspaces leave the enclosing scoped opportunity.
+129 | // Model/root/semantic/Canvas scopes are destroyed before this transfer returns.
+130 | struct CounterReturnedWorkspaces<G: CounterGeometry & Copyable & Escapable, C: CounterCandidateBacking & Copyable & Escapable, R: CounterCommittedBacking & Copyable & Escapable, H: CounterHitBacking & Copyable & Escapable> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    |        `- note: 'where H: Escapable' is implicit here
+131 |     var geometry: G
+132 |     var interaction: InteractionOwnedKeyState<C, R, H>

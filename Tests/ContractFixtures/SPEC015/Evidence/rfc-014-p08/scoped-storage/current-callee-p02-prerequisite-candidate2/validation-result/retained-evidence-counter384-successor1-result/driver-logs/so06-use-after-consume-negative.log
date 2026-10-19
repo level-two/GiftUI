@@ -1,0 +1,8 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-use-after-consume-negative.swift:4023:26: error: 'input' consumed more than once
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ input: consuming P08StorageSession) { let first = consume input; let second = consume input; _ = consume first; _ = consume second }
+     |                          |                                                         |                           `- note: consumed again here
+     |                          |                                                         `- note: consumed here
+     |                          `- error: 'input' consumed more than once
+4024 | 

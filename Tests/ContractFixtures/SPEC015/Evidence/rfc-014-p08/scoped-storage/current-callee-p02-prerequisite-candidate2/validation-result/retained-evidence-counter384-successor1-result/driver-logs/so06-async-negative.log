@@ -1,0 +1,7 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-async-negative.swift:4024:102: error: cannot pass function of type '(consuming P08StorageSession) async -> Int' to parameter expecting synchronous function type
+4022 | 
+4023 | fileprivate func scopedOperation(_ input: consuming P08StorageSession) async -> Int { var value = consume input; value.reset(); return 1 }
+4024 | fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { withP08Storage(backing: &owner) { session in await scopedOperation(session) } }
+     |                                                                                                      |            `- note: 'async' inferred from asynchronous operation used here
+     |                                                                                                      `- error: cannot pass function of type '(consuming P08StorageSession) async -> Int' to parameter expecting synchronous function type
+4025 | 

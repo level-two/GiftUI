@@ -1,0 +1,27 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-task-negative.swift:4023:68: error: passing closure as a 'sending' parameter risks causing data races between code in the current isolation context and concurrent execution of the closure [#RegionIsolation::SendingClosureRisksDataRace]
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ input: consuming P08StorageSession) { _ = Task { _ = consume input; return 1 } }
+     |                                                                    |                  `- note: closure captures 'input' which is accessible to code in the current isolation context
+     |                                                                    `- error: passing closure as a 'sending' parameter risks causing data races between code in the current isolation context and concurrent execution of the closure [#RegionIsolation::SendingClosureRisksDataRace]
+4024 | 
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-task-negative.swift:4023:26: error: lifetime-dependent variable 'input' escapes its scope
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ input: consuming P08StorageSession) { _ = Task { _ = consume input; return 1 } }
+     |                          |- error: lifetime-dependent variable 'input' escapes its scope
+     |                          |- note: it depends on the lifetime of argument 'input'
+     |                          `- note: this use causes the lifetime-dependent value to escape
+4024 | 
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-task-negative.swift:4023:87: error: missing reinitialization of closure capture 'input' after consume while accessing memory
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ input: consuming P08StorageSession) { _ = Task { _ = consume input; return 1 } }
+     |                                                                                       |- error: missing reinitialization of closure capture 'input' after consume while accessing memory
+     |                                                                                       `- note: consumed here
+4024 | 
+
+[#RegionIsolation]: <https://docs.swift.org/compiler/documentation/diagnostics/region-isolation>
+[#SendingClosureRisksDataRace]: <https://docs.swift.org/compiler/documentation/diagnostics/sending-closure-risks-data-race>

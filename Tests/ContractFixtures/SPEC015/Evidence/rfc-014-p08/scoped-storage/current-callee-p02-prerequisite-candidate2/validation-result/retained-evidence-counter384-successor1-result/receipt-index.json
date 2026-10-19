@@ -1,0 +1,2594 @@
+{
+  "archive": {
+    "bytes": 34966033,
+    "files": 952,
+    "members": 957,
+    "path": "raw-output-roots.tar.gz",
+    "root_members": [
+      "p08-retained-evidence-counter384-successor1",
+      "p08-counter-npoej3u2"
+    ],
+    "sha256": "37f307a868980e1e75583d817d0ae6e9e084d24a904e4802386fcbe0661823ed"
+  },
+  "automatic_repairs": 0,
+  "child_exit": 0,
+  "driver_checks_passed": 426,
+  "driver_checks_recorded": 426,
+  "driver_collection_complete": true,
+  "driver_passed": true,
+  "driver_planned_scoped_labels": 384,
+  "extracted_receipts": [
+    {
+      "archived": "wrapper-child-launch-consumed.json",
+      "bytes": 667,
+      "sha256": "07c3caa9517ecd29c94fc558b379f4c8164f1d3565dade1734e3b6403c7526d4",
+      "source": ".build/contracts/p08-retained-evidence-counter384-successor1/child-launch-consumed.json"
+    },
+    {
+      "archived": "wrapper-child-start.json",
+      "bytes": 3728,
+      "sha256": "6b6db4f1b374de343d3fbefc7ac0d0b9b4bb8a4fc1c24ae9fc7ff57d9a6651c2",
+      "source": ".build/contracts/p08-retained-evidence-counter384-successor1/child-start.json"
+    },
+    {
+      "archived": "wrapper-counter384.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-retained-evidence-counter384-successor1/counter384.stderr"
+    },
+    {
+      "archived": "wrapper-counter384.stdout",
+      "bytes": 138,
+      "sha256": "adc0b372ac156c5c2700e40be62158a71a9b80c9bdc26cbcca91821fe2166ac3",
+      "source": ".build/contracts/p08-retained-evidence-counter384-successor1/counter384.stdout"
+    },
+    {
+      "archived": "wrapper-detach.json",
+      "bytes": 618,
+      "sha256": "91421d2bf3388f820a61321c01f2540bc3c1f23690facac02121a84261efb2d2",
+      "source": ".build/contracts/p08-retained-evidence-counter384-successor1/detach.json"
+    },
+    {
+      "archived": "wrapper-launch.json",
+      "bytes": 1576,
+      "sha256": "9175985761eae886507047699673c7ea98adc60f871c247645656bd69dd40cc5",
+      "source": ".build/contracts/p08-retained-evidence-counter384-successor1/launch.json"
+    },
+    {
+      "archived": "wrapper-supervisor-claim.json",
+      "bytes": 310,
+      "sha256": "9d8eb08e6557421ab69c6e3909ef4f21ff8f25a1ff4e8bf356247321bde9dafb",
+      "source": ".build/contracts/p08-retained-evidence-counter384-successor1/supervisor-claim.json"
+    },
+    {
+      "archived": "wrapper-supervisor-start.json",
+      "bytes": 3339,
+      "sha256": "e42127ba53462ca14db66c0becb385094f88a143c3c2118aa4321179c6debf0b",
+      "source": ".build/contracts/p08-retained-evidence-counter384-successor1/supervisor-start.json"
+    },
+    {
+      "archived": "wrapper-supervisor.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-retained-evidence-counter384-successor1/supervisor.stderr"
+    },
+    {
+      "archived": "wrapper-supervisor.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-retained-evidence-counter384-successor1/supervisor.stdout"
+    },
+    {
+      "archived": "wrapper-terminal.json",
+      "bytes": 393857,
+      "sha256": "71c478591e6cc0a47f4df89090686cc27a767ec9f0416bbd17c090cd7944171b",
+      "source": ".build/contracts/p08-retained-evidence-counter384-successor1/terminal.json"
+    },
+    {
+      "archived": "counter384-result.json",
+      "bytes": 8548218,
+      "sha256": "6850a3f150938e2a755f2260c94c42d7f103b0110639599a27925ba377b8ecb8",
+      "source": ".build/contracts/p08-counter-npoej3u2/result.json"
+    },
+    {
+      "archived": "counter384-checks.json",
+      "bytes": 5568738,
+      "sha256": "ad3adbbc5158fa5c46be92bc09d33f851651a10abb922681ad4981c949463249",
+      "source": ".build/contracts/p08-counter-npoej3u2/checks.json"
+    },
+    {
+      "archived": "counter384-commands.txt",
+      "bytes": 2146153,
+      "sha256": "4161b61adeecb98aed0a3ed526e4336165736f4b5d12fa8f1d38aad94ab4379b",
+      "source": ".build/contracts/p08-counter-npoej3u2/commands.txt"
+    },
+    {
+      "archived": "driver-logs/GiftUIDrawing.log",
+      "bytes": 2749,
+      "sha256": "3619c373f70813fd97656514a3a2f0ed35f62bbc3220c11dec1a15789712ae25",
+      "source": ".build/contracts/p08-counter-npoej3u2/GiftUIDrawing.log"
+    },
+    {
+      "archived": "driver-logs/GiftUIExecution.log",
+      "bytes": 1819,
+      "sha256": "6e7e6153fb4a0d6417703ec768f1f71a36053629c9e86acc7ff8daaf7a40b633",
+      "source": ".build/contracts/p08-counter-npoej3u2/GiftUIExecution.log"
+    },
+    {
+      "archived": "driver-logs/GiftUIHostConfiguration.log",
+      "bytes": 15479,
+      "sha256": "6437586b465ed2e7736756f462346b90db9371207bf50a37b038e47082e8bde1",
+      "source": ".build/contracts/p08-counter-npoej3u2/GiftUIHostConfiguration.log"
+    },
+    {
+      "archived": "driver-logs/GiftUIInteraction.log",
+      "bytes": 1105,
+      "sha256": "d30ce5cfc470ece7c6898495188c4f5c43e6f6212c93824d5274926cc1df57fa",
+      "source": ".build/contracts/p08-counter-npoej3u2/GiftUIInteraction.log"
+    },
+    {
+      "archived": "driver-logs/GiftUILayout.log",
+      "bytes": 908,
+      "sha256": "d8daa51c4c3b791790c0a980e7cf78c3ae1e0318ac6ffb463cf9c0daac9b071f",
+      "source": ".build/contracts/p08-counter-npoej3u2/GiftUILayout.log"
+    },
+    {
+      "archived": "driver-logs/GiftUIObservableState.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/GiftUIObservableState.log"
+    },
+    {
+      "archived": "driver-logs/GiftUIReferenceTextResources.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/GiftUIReferenceTextResources.log"
+    },
+    {
+      "archived": "driver-logs/GiftUIRenderCore.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/GiftUIRenderCore.log"
+    },
+    {
+      "archived": "driver-logs/GiftUIRenderLowering.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/GiftUIRenderLowering.log"
+    },
+    {
+      "archived": "driver-logs/GiftUIRuntimeCore.log",
+      "bytes": 2096,
+      "sha256": "75e1d58702ae1c44c0d12e15b897678f2d299ab5bf4e30488881235df6f9108e",
+      "source": ".build/contracts/p08-counter-npoej3u2/GiftUIRuntimeCore.log"
+    },
+    {
+      "archived": "driver-logs/GiftUIRuntimeDynamic.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/GiftUIRuntimeDynamic.log"
+    },
+    {
+      "archived": "driver-logs/GiftUIRuntimeStatic.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/GiftUIRuntimeStatic.log"
+    },
+    {
+      "archived": "driver-logs/GiftUISemanticCore.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.log"
+    },
+    {
+      "archived": "driver-logs/GiftUITextResources.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/GiftUITextResources.log"
+    },
+    {
+      "archived": "driver-logs/P08CounterPresentation.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/P08CounterPresentation.log"
+    },
+    {
+      "archived": "driver-logs/P08CounterSchema.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/P08CounterSchema.log"
+    },
+    {
+      "archived": "driver-logs/P08CounterTable.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/P08CounterTable.log"
+    },
+    {
+      "archived": "driver-logs/control-resident-projection-negative.log",
+      "bytes": 1164,
+      "sha256": "25ee3707b31dfd8da553cb17ca4d2387c2d5ff46296c2fcfc8ba536cdeb58030",
+      "source": ".build/contracts/p08-counter-npoej3u2/control-resident-projection-negative.log"
+    },
+    {
+      "archived": "driver-logs/control-resident-projection-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/control-resident-projection-positive.log"
+    },
+    {
+      "archived": "driver-logs/counter-dynamic-host-backing-negative.log",
+      "bytes": 11583,
+      "sha256": "0b5dc63cf3fc02e434df7a123e343bc8342d8ac4923b9f0cdde87dfea6bf2be5",
+      "source": ".build/contracts/p08-counter-npoej3u2/counter-dynamic-host-backing-negative.log"
+    },
+    {
+      "archived": "driver-logs/counter-dynamic-host-backing-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/counter-dynamic-host-backing-positive.log"
+    },
+    {
+      "archived": "driver-logs/counter-host-backing-negative.log",
+      "bytes": 11470,
+      "sha256": "68b8946812f20b4a7e61819549db99a23bd4409b247b9ef8300157ed80b67926",
+      "source": ".build/contracts/p08-counter-npoej3u2/counter-host-backing-negative.log"
+    },
+    {
+      "archived": "driver-logs/counter-host-backing-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/counter-host-backing-positive.log"
+    },
+    {
+      "archived": "driver-logs/counter-host-copy-negative.log",
+      "bytes": 434,
+      "sha256": "02b296fa0555074556e9f664a70f75f76979f59c75d20671cdfffd1f5f98d6a4",
+      "source": ".build/contracts/p08-counter-npoej3u2/counter-host-copy-negative.log"
+    },
+    {
+      "archived": "driver-logs/counter-host-copy-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/counter-host-copy-positive.log"
+    },
+    {
+      "archived": "driver-logs/counter-lowering.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/counter-lowering.log"
+    },
+    {
+      "archived": "driver-logs/counter-model.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/counter-model.log"
+    },
+    {
+      "archived": "driver-logs/execute.log",
+      "bytes": 611254,
+      "sha256": "6208c2ad672b032a39062c31636fd84a94f77ae0be305f5aa99e4bd0c9334a62",
+      "source": ".build/contracts/p08-counter-npoej3u2/execute.log"
+    },
+    {
+      "archived": "driver-logs/link.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/link.log"
+    },
+    {
+      "archived": "driver-logs/so06-arbitrary-factory-negative.log",
+      "bytes": 649,
+      "sha256": "70c07ee144b34da8d9fb6378b1df98190cc1e9d726b1b1f50f48b7de8c77a772",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-arbitrary-factory-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-arbitrary-factory-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-arbitrary-factory-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-async-negative.log",
+      "bytes": 974,
+      "sha256": "a50d163d1a09b4c417a0b9bdfdadb93e0c3474cc96cb3f2f666ecfcd2433adbb",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-async-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-async-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-async-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-activationSpan-negative.log",
+      "bytes": 3245,
+      "sha256": "03514a6d0d9830940d0fe47bc768496cfa7f209bd95def665ad452e9e0e3f31d",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-activationSpan-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-activationSpan-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-activationSpan-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-candidateCommittedRecords-negative.log",
+      "bytes": 2762,
+      "sha256": "45cd81af22c75eb3c3850de1f480c95ec77cd19025d68c0f63fc0e84d316bb16",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-candidateCommittedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-candidateCommittedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-candidateCommittedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-candidateHitRegions-negative.log",
+      "bytes": 2711,
+      "sha256": "de2dafeba4ed450cd0cdf7b66dc87987b49d75a5c08d0bbcd565c5370edfb580",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-candidateHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-candidateHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-candidateHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-candidateRecords-negative.log",
+      "bytes": 2660,
+      "sha256": "347e3f32e0dab194f13a05c2e251fef8db666ac20ac8cdd11a9f2c32e528af3e",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-candidateRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-candidateRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-candidateRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-committedHitRegions-negative.log",
+      "bytes": 2861,
+      "sha256": "122068385ad40f4767b27c297df2b28ccc9e02a440fbc1ffa7f46d1da5544c29",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-committedHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-committedHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-committedHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-committedRecords-negative.log",
+      "bytes": 2810,
+      "sha256": "eaee7115436052d7b4dcaca2de23a580c3ac65e929a01b97dafff2acb844ad6a",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-committedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-committedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-committedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-control-negative.log",
+      "bytes": 3199,
+      "sha256": "09b8d7e245fcf023ede7e9306efbdd040c76094c468bcc1c0df108bbc35a5929",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-control-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-control-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-control-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-geometry-negative.log",
+      "bytes": 2613,
+      "sha256": "155e903960149e2c7ad523b73ff77240701d1cc25b781050c18a7f5057405c13",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-geometry-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-geometry-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-geometry-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-models-negative.log",
+      "bytes": 2893,
+      "sha256": "a53f2e5b985db42016e524b7545e9115893a983ebb988d29f955b5baf140153c",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-models-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-models-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-models-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-root-negative.log",
+      "bytes": 2970,
+      "sha256": "1902816937d63098e54b8337c356a2c02977b6d05ff294818082025c9cff3095",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-root-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-root-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-root-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-semantic-negative.log",
+      "bytes": 3061,
+      "sha256": "93164216367c7ce861f2864bd31b0b9b5f083ce3ca5b39a5e78c368baf55781d",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-semantic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-semantic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-semantic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-values-negative.log",
+      "bytes": 3116,
+      "sha256": "26866809145e79b44a8b7341bf2bd1aa9a48c7338615f1f0c1c590e251d4956c",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-values-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-active-host-values-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-active-host-values-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-activationSpan-negative.log",
+      "bytes": 2841,
+      "sha256": "98fee22c48c6fa0fe0a725bd47b63ee070c39b888f342677e0c65b103c1d99b4",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-activationSpan-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-activationSpan-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-activationSpan-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-candidateCommittedRecords-negative.log",
+      "bytes": 2358,
+      "sha256": "4de0a0280f78530d1f51a66773e9b9c60e4151cb9e7a6f1e42674f120b72dc20",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-candidateCommittedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-candidateCommittedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-candidateCommittedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-candidateHitRegions-negative.log",
+      "bytes": 2307,
+      "sha256": "018b2aa1d9a0349c738a065fd72e031ac3ec3727f49d92245839ac3bc21fec7d",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-candidateHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-candidateHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-candidateHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-candidateRecords-negative.log",
+      "bytes": 2256,
+      "sha256": "caa774e5a3e5cdcacfd66d116f6df5e82e9fabbd2f35ec87fb2510658ead2c02",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-candidateRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-candidateRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-candidateRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-committedHitRegions-negative.log",
+      "bytes": 2457,
+      "sha256": "b95fa22503629928e0377771046c6e47282880b60493af4545a3fd3e405082be",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-committedHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-committedHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-committedHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-committedRecords-negative.log",
+      "bytes": 2406,
+      "sha256": "38781b30b66b9049b016a7d2304f87d7fb0b5fed898448467c5224a7ed68012f",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-committedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-committedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-committedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-control-negative.log",
+      "bytes": 2795,
+      "sha256": "6a3745ec2f246494c2503828d422ae77c15d433bf90ac0381c7abd2d9c3c9b1d",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-control-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-control-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-control-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-geometry-negative.log",
+      "bytes": 2209,
+      "sha256": "e783ed6ab9d14c142647ce983b60972e8b46aa71ce457b0c968187a403893706",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-geometry-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-geometry-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-geometry-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-models-negative.log",
+      "bytes": 2489,
+      "sha256": "ed472d122b87e62caeb49e961ebe3224248169e432d27c3fcd12852a89badbd8",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-models-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-models-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-models-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-root-negative.log",
+      "bytes": 2566,
+      "sha256": "bf5c444da7c13a902b8d9595a23d7353ff19d842663ea218be7af395b0ef4f5b",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-root-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-root-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-root-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-semantic-negative.log",
+      "bytes": 2657,
+      "sha256": "da906f89dbd2b8052d0586095b38928a7f81c1a4a3b3e8a8fba6a6741e45a999",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-semantic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-semantic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-semantic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-values-negative.log",
+      "bytes": 2712,
+      "sha256": "75818c87948a4f47da87075368ad3f12013f767b09615760a0379fd09091ab2b",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-values-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-direct-retired-optional-values-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-direct-retired-optional-values-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-activationSpan-negative.log",
+      "bytes": 3238,
+      "sha256": "ceec68080d0347990c7ffbd358e3dcbcbfd1f4a30b4f1180a72345776dca39b7",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-activationSpan-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-activationSpan-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-activationSpan-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-candidateCommittedRecords-negative.log",
+      "bytes": 2800,
+      "sha256": "0e807b674e8638cad6736390e77a6b0219e2a152d1f1830c66a04af0687ae97d",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-candidateCommittedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-candidateCommittedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-candidateCommittedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-candidateHitRegions-negative.log",
+      "bytes": 2760,
+      "sha256": "89af4628196e68c77778bf17d2c28f519429322094709ee40485248fb0b20ab4",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-candidateHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-candidateHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-candidateHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-candidateRecords-negative.log",
+      "bytes": 2726,
+      "sha256": "dd766983462cff980dc8e3a049d7a6e45d6e61f783ab62fd1b6778f392df4f7b",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-candidateRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-candidateRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-candidateRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-committedHitRegions-negative.log",
+      "bytes": 2865,
+      "sha256": "f7426fd115cd5e37a47b64ed33c1d1fb7a57d6e9ba6f40e8cece3d671a5de0bf",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-committedHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-committedHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-committedHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-committedRecords-negative.log",
+      "bytes": 2831,
+      "sha256": "c0b9264d11adbd54c7ca0bfe68c9c4a8ae552aef3c704592e53ac715ca8e3a1b",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-committedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-committedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-committedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-control-negative.log",
+      "bytes": 3192,
+      "sha256": "7b54cafa70c9fe8272a8bd288799884927824c273b384c77a35aa264fbf76bfc",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-control-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-control-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-control-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-geometry-negative.log",
+      "bytes": 2695,
+      "sha256": "b2ccb238eb441d401696b39e12f817ec0e5e82db5cead25cb08c3257a91e8712",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-geometry-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-geometry-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-geometry-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-models-negative.log",
+      "bytes": 2886,
+      "sha256": "34bd8d8d134eccabf04b88a8048d5573aa67d90e2b159109df95362af4ab240c",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-models-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-models-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-models-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-root-negative.log",
+      "bytes": 2963,
+      "sha256": "5fe71ac1a36fde86023d33a26f75f963bc5f0f81977e7b6384fedc0794b9388f",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-root-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-root-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-root-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-semantic-negative.log",
+      "bytes": 3054,
+      "sha256": "d4c5dbe2390e0a08a6a560f8218ab5c2389297b6927741ac231d6889499538c6",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-semantic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-semantic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-semantic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-values-negative.log",
+      "bytes": 3109,
+      "sha256": "5b9ccf7c0a5a1227356206402276e20c7bf413fac85df4155bf769d6e5740e26",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-values-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-active-host-values-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-active-host-values-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-activationSpan-negative.log",
+      "bytes": 3568,
+      "sha256": "1d33f7df29a9477ead2f1b2f8dd6dd532293ef052a711d7927334929feed547c",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-activationSpan-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-activationSpan-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-activationSpan-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-candidateCommittedRecords-negative.log",
+      "bytes": 2528,
+      "sha256": "31a00bbe0b2b46bc50732b2d7f5a8054cc1e22774420af30bf87f3d603848b0e",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-candidateCommittedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-candidateCommittedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-candidateCommittedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-candidateHitRegions-negative.log",
+      "bytes": 2488,
+      "sha256": "d45e5ebe71ff9f3d735eec5ed2cf9169d27bfbe309e7cd3a8dfafb3cb5ac54d0",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-candidateHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-candidateHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-candidateHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-candidateRecords-negative.log",
+      "bytes": 2454,
+      "sha256": "9e70891599135228deb07d2ef10242ddc524d0b46cbd915ae0b9100bc72a5afc",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-candidateRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-candidateRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-candidateRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-committedHitRegions-negative.log",
+      "bytes": 2593,
+      "sha256": "28cf79f9373a955ff928bc7bd63bfbb970c220fb03d8bfe2438bf5abb7e39c6f",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-committedHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-committedHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-committedHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-committedRecords-negative.log",
+      "bytes": 2559,
+      "sha256": "ae7128bbf512d434fc8bdddb5df901b27311d83967f801002cf114c01b2f3327",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-committedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-committedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-committedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-control-negative.log",
+      "bytes": 2920,
+      "sha256": "b6b5b216ecaeb1bff4ba062f7d4dcd09a0cb1e613b73c060c8c21dc33ecdcb4d",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-control-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-control-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-control-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-geometry-negative.log",
+      "bytes": 2423,
+      "sha256": "ef4e649a62bc9cc7f75a0a7220d22e00db3523cfa98536fa7bd0819f42e4b05a",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-geometry-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-geometry-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-geometry-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-models-negative.log",
+      "bytes": 2614,
+      "sha256": "d575d99b2c97ddea9ba4abddb7835b7fd8b2174abeb67cd953225d0b1af57b91",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-models-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-models-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-models-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-root-negative.log",
+      "bytes": 2691,
+      "sha256": "d9531e2e15398a80efc8ec57cd59f589bff002973d70074c8273b066c3a6e76a",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-root-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-root-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-root-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-semantic-negative.log",
+      "bytes": 2782,
+      "sha256": "715d5b4acdeb82feb89b28ca10d1440ff9f72b1275910b94876e8dbf1f3ee674",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-semantic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-semantic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-semantic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-values-negative.log",
+      "bytes": 2837,
+      "sha256": "7ec514ba21832dae46a8962be521fcd5c37c2049ebb90a6155e2fd4affad6985",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-values-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-dynamic-generic-retired-optional-values-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-dynamic-generic-retired-optional-values-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-activationSpan-negative.log",
+      "bytes": 3222,
+      "sha256": "b4b54bba4b4abef6f5f76ff6cc74413bcafa5c5e3c0c217ce9ad30ed9b38f68f",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-activationSpan-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-activationSpan-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-activationSpan-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-candidateCommittedRecords-negative.log",
+      "bytes": 2739,
+      "sha256": "a5b32284ebb1817702b0eac645b3689630e7c6c92be301803f6c4c4e342c9b45",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-candidateCommittedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-candidateCommittedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-candidateCommittedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-candidateHitRegions-negative.log",
+      "bytes": 2688,
+      "sha256": "63e6553b915af85e1fe48000f592be36efbbc550f16d4465c3fd09e6f4e18684",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-candidateHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-candidateHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-candidateHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-candidateRecords-negative.log",
+      "bytes": 2637,
+      "sha256": "eb7f0de87f1b7fceb0955cc03ac6c8efcb7eb1083ed995afed81a9288926eee3",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-candidateRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-candidateRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-candidateRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-committedHitRegions-negative.log",
+      "bytes": 2838,
+      "sha256": "86a3c8ea915022bbd76b9a26ec6f47965b075c49e190400e669ff4584c825f65",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-committedHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-committedHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-committedHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-committedRecords-negative.log",
+      "bytes": 2787,
+      "sha256": "55310ba0ccd3c4ab4ab4716eb2636fdf2d4d12d7ae63a672c1909128b2d482cb",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-committedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-committedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-committedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-control-negative.log",
+      "bytes": 3176,
+      "sha256": "95383c001777427b5aa89de6a4ae47d85f39dcd3b9472159974cb5fb25e254c8",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-control-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-control-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-control-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-geometry-negative.log",
+      "bytes": 2590,
+      "sha256": "4decc36082efedae7bebfa3394f7fbd770d8ef110184cc029c418f1fbd6f0ea1",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-geometry-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-geometry-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-geometry-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-models-negative.log",
+      "bytes": 2870,
+      "sha256": "5e90ee96b5abae0824897b49393c535203765ba274bfc1cb01a64d1526d09325",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-models-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-models-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-models-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-root-negative.log",
+      "bytes": 2947,
+      "sha256": "a490f1a0cc144eec76205c037bc89420b0e18922cd5074ea57fe7094d726e3ba",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-root-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-root-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-root-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-semantic-negative.log",
+      "bytes": 3038,
+      "sha256": "f73d31d9af9ededb33464eb0ba8fe328b4977dfc00b3e2b6a706518ce410967c",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-semantic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-semantic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-semantic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-values-negative.log",
+      "bytes": 3093,
+      "sha256": "09a97254722fa8f7222db668a08bd6214a21325f581c76a11b10c23688deec54",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-values-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-active-host-values-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-active-host-values-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-activationSpan-negative.log",
+      "bytes": 2833,
+      "sha256": "3c96bf01f96dec0a3cf32649d3c7a8da5bfefdbe2d14143925d8d1ccf642d0d2",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-activationSpan-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-activationSpan-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-activationSpan-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-candidateCommittedRecords-negative.log",
+      "bytes": 2350,
+      "sha256": "a3abd497ccc01a64ad03fc6dfbe2156a360bd9badf4d4a5ce95aa32840eaf04f",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-candidateCommittedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-candidateCommittedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-candidateCommittedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-candidateHitRegions-negative.log",
+      "bytes": 2299,
+      "sha256": "85332504bf84b785c80d5db9c5081099c249f0ba0a0917deea1cde8c9f036ad9",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-candidateHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-candidateHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-candidateHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-candidateRecords-negative.log",
+      "bytes": 2248,
+      "sha256": "cfaf4e4d98e049529e5a48e3783edf7a2445cd8cfbef93970d0433d7e3e521a3",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-candidateRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-candidateRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-candidateRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-committedHitRegions-negative.log",
+      "bytes": 2449,
+      "sha256": "a5c550d27918a508e4739fa18c431d3233dcd67022655cba8ed990d622ebdd59",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-committedHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-committedHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-committedHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-committedRecords-negative.log",
+      "bytes": 2398,
+      "sha256": "acabe88a87ef73eb0ec11c4edb5a64643fa259ee8ac66b683ed0c68c22082c05",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-committedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-committedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-committedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-control-negative.log",
+      "bytes": 2787,
+      "sha256": "21210797aabee7beae9f72b4ccc628164fd91918fecba5aa8e199544fc2e40a1",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-control-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-control-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-control-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-geometry-negative.log",
+      "bytes": 2201,
+      "sha256": "3f2a6aa2fb713121f7ca007f3225c15eec6e070a9f77208c467cc22e677faa11",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-geometry-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-geometry-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-geometry-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-models-negative.log",
+      "bytes": 2481,
+      "sha256": "d843afffd09519fecac67af39096cddca45003cddc2206ff657dc7828cda2ffc",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-models-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-models-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-models-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-root-negative.log",
+      "bytes": 2558,
+      "sha256": "a9f0a9098890e7c53d5b354ff49554fd94bc148ec326696dcf0ee1adf84db307",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-root-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-root-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-root-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-semantic-negative.log",
+      "bytes": 2649,
+      "sha256": "6e239bc717a0517bfcfc95abab1c95e2bbe5e51806bf02b7c74b28a2d6039835",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-semantic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-semantic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-semantic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-values-negative.log",
+      "bytes": 2704,
+      "sha256": "c321d369b5d02c40f121633226fa25cb8f25b01f2d541e37aef6fb88a014a268",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-values-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-direct-retired-optional-values-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-direct-retired-optional-values-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-activationSpan-negative.log",
+      "bytes": 3215,
+      "sha256": "83e9f319ee270c9ec3764ca630679ac8161cf4cddb4b40ac6a3eb76f5ec9e6e5",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-activationSpan-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-activationSpan-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-activationSpan-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-candidateCommittedRecords-negative.log",
+      "bytes": 2777,
+      "sha256": "9d46d71e4f614d1af3d5dbffdf361b03dcf9d1047d0de00b4e2c30b16953b037",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-candidateCommittedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-candidateCommittedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-candidateCommittedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-candidateHitRegions-negative.log",
+      "bytes": 2737,
+      "sha256": "99509e547396e2d9325a568db068615df57c97c9a197cb3d6276845a18b1dbf4",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-candidateHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-candidateHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-candidateHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-candidateRecords-negative.log",
+      "bytes": 2703,
+      "sha256": "66f0e9469a5e2b83f4c4866bc7f5b64ac18ad2c4ae95cae9279c77cc55187ed4",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-candidateRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-candidateRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-candidateRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-committedHitRegions-negative.log",
+      "bytes": 2842,
+      "sha256": "4a55727f867a61dcc49c1e86d94fd2180099af1ae500b4eeda8f2b58b845c5d9",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-committedHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-committedHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-committedHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-committedRecords-negative.log",
+      "bytes": 2808,
+      "sha256": "f11042cd5c28227ab3ec4f9fb8b8a4ef0016872bd95f9aa5c17ab657900f67a5",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-committedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-committedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-committedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-control-negative.log",
+      "bytes": 3169,
+      "sha256": "8ee11144ff16a6728f717a4673bc1079f76914646278e48f436532ceed000580",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-control-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-control-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-control-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-geometry-negative.log",
+      "bytes": 2672,
+      "sha256": "5e5ceb186ae8697d9eeb3dec6f340ce97fcede8153040d9cb89384b2b865a09d",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-geometry-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-geometry-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-geometry-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-models-negative.log",
+      "bytes": 2863,
+      "sha256": "bb0c552f3662eaa2b9076859ef00559e46b71e6752279b582259b5a3fdaddcd1",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-models-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-models-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-models-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-root-negative.log",
+      "bytes": 2940,
+      "sha256": "0af48a5cc89d0537a288e13b0f9120293b6d5501653f2407882425f1358934dd",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-root-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-root-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-root-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-semantic-negative.log",
+      "bytes": 3031,
+      "sha256": "5336215be8ac38f5e1c7956b227fd4ac47b5186a3f4e0a2e6cbd196b97089f4a",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-semantic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-semantic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-semantic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-values-negative.log",
+      "bytes": 3086,
+      "sha256": "8c2ad33fdbd99129ea8c399728f11db51cb5cba3bb9ef422e330f7bcf28a1570",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-values-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-active-host-values-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-active-host-values-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-activationSpan-negative.log",
+      "bytes": 3560,
+      "sha256": "0772b0ea6d753371cfe1afe5bee77d9509e4625c77caa9b5db545fa69a231f8f",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-activationSpan-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-activationSpan-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-activationSpan-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-candidateCommittedRecords-negative.log",
+      "bytes": 2520,
+      "sha256": "3c158cb32e43eb9263b6edab3750c5f219ecbd72ed0a6c20afb7362d4cf8adbf",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-candidateCommittedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-candidateCommittedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-candidateCommittedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-candidateHitRegions-negative.log",
+      "bytes": 2480,
+      "sha256": "1ec0ed77ed4d9c58b0784c3d8b17a4a3163014bf7dd4c5e60a15681bad722724",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-candidateHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-candidateHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-candidateHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-candidateRecords-negative.log",
+      "bytes": 2446,
+      "sha256": "7f97fc5fb5e167e8165904c1cd325d276063bd1eb3916333a3eaf54324a0a336",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-candidateRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-candidateRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-candidateRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-committedHitRegions-negative.log",
+      "bytes": 2585,
+      "sha256": "139f0fcede5d7337915014c0ea416e13f4bd247bad71aaa04a645e4e826d6397",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-committedHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-committedHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-committedHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-committedRecords-negative.log",
+      "bytes": 2551,
+      "sha256": "f7ea0844bddfaf4586774a3f9f5ff06fed522ca96559ace31c36d4bf5baed763",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-committedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-committedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-committedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-control-negative.log",
+      "bytes": 2912,
+      "sha256": "72210572b5a6eabf90c14611a2840231e70609295995d31df21f636bf454352b",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-control-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-control-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-control-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-geometry-negative.log",
+      "bytes": 2415,
+      "sha256": "e5185805033ea2074581995a7ee9d01697c5be3b0e6df2d3ecccf0defd5afd63",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-geometry-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-geometry-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-geometry-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-models-negative.log",
+      "bytes": 2606,
+      "sha256": "979e4732a02f69b9d548d2b4a0179c5b66365a91de6e40601417db35fe5d5df7",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-models-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-models-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-models-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-root-negative.log",
+      "bytes": 2683,
+      "sha256": "a9e7eb54bcca60dcf061a64b77c9920fb3293e38d55445087b2e7d8e1b0ba90f",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-root-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-root-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-root-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-semantic-negative.log",
+      "bytes": 2774,
+      "sha256": "4e5f70ddb524f7ccf0f1594b8eb0dcae0a28600221e0c8491d7653485cc4c0fd",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-semantic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-semantic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-semantic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-values-negative.log",
+      "bytes": 2829,
+      "sha256": "6bf5a57a45f3b8fbd1e6f2cd56db7b7ceb849619d50057ac71857c3b9379fc67",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-values-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-carrier-static-generic-retired-optional-values-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-carrier-static-generic-retired-optional-values-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-closure-erasure-negative.log",
+      "bytes": 690,
+      "sha256": "16f507a34d22beb7439978c88434b7e605661d2e93bc09937f5bf5887dde2d56",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-closure-erasure-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-closure-erasure-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-closure-erasure-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-active-host-closure-negative.log",
+      "bytes": 2093,
+      "sha256": "56c19c60b64c028aa4c10d471f61776f142916aa95268f958ac4d67a0f31ab15",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-active-host-closure-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-active-host-closure-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-active-host-closure-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-active-host-generic-negative.log",
+      "bytes": 1667,
+      "sha256": "6e62ebd316ea1c86e5d3c0df106e32ca1b67e3baf157ceeae3ea1985a5d35a7b",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-active-host-generic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-active-host-generic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-active-host-generic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-active-host-optional-negative.log",
+      "bytes": 3363,
+      "sha256": "a671fbdc49d25f76486e16fd36d1b920c4a5c77f288f3c592ebd3b69da130aff",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-active-host-optional-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-active-host-optional-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-active-host-optional-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-active-host-tuple-negative.log",
+      "bytes": 3312,
+      "sha256": "f2cf45f7b3e24cdff83fd5f8838a95cc6cc1bf41356035a4dd7970b04b6a84a1",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-active-host-tuple-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-active-host-tuple-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-active-host-tuple-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-retired-optional-closure-negative.log",
+      "bytes": 1899,
+      "sha256": "b29dad9a6f8fe86a25d2fc8ae456b42e91b2110acdb34d2258781e19f139c094",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-retired-optional-closure-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-retired-optional-closure-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-retired-optional-closure-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-retired-optional-generic-negative.log",
+      "bytes": 983,
+      "sha256": "c996e7d0bcbb9061ec1823bc8c84a9945bb1d38be6fa8cc4a6542bc5a14a34d5",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-retired-optional-generic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-retired-optional-generic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-retired-optional-generic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-retired-optional-optional-negative.log",
+      "bytes": 998,
+      "sha256": "b608e03fd35ebefa2b4a8f8d45906d01a3e67eb9df4b57419f856e64879315d9",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-retired-optional-optional-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-retired-optional-optional-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-retired-optional-optional-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-retired-optional-tuple-negative.log",
+      "bytes": 2851,
+      "sha256": "e83841fd4f585545edd5b98aae90043ecb3e7a1336b08d20cda469905f24a466",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-retired-optional-tuple-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-direct-retired-optional-tuple-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-retired-optional-tuple-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-active-host-closure-negative.log",
+      "bytes": 3672,
+      "sha256": "7eda74889640eb5d5b6be7028f09774eb33eb821f94633f375c20047675d493d",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-active-host-closure-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-active-host-closure-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-active-host-closure-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-active-host-generic-negative.log",
+      "bytes": 1970,
+      "sha256": "a98f2d5f2960b99fef2f1231a122ad6249cf3e0ee3d5f392a9d483675b691351",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-active-host-generic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-active-host-generic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-active-host-generic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-active-host-optional-negative.log",
+      "bytes": 3969,
+      "sha256": "4fd6ae9119e79806217648f9cddaed3d99d393e922a854daca3788e32d2d2eec",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-active-host-optional-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-active-host-optional-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-active-host-optional-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-active-host-tuple-negative.log",
+      "bytes": 3821,
+      "sha256": "43d6ea1e4bf9319e1b0d457a6eb960662326a0a375a425c0f5a12759db09bd67",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-active-host-tuple-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-active-host-tuple-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-active-host-tuple-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-retired-optional-closure-negative.log",
+      "bytes": 3478,
+      "sha256": "5df0823810ad3664fde7bbb4f78fd6e712ee88944f0ea8aeca6541fcd414df34",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-retired-optional-closure-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-retired-optional-closure-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-retired-optional-closure-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-retired-optional-generic-negative.log",
+      "bytes": 1408,
+      "sha256": "cd1e7c7510b11af93c34bb85eb4bf07ff8847eb1ceade7135ce71f36986313a3",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-retired-optional-generic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-retired-optional-generic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-retired-optional-generic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-retired-optional-optional-negative.log",
+      "bytes": 1423,
+      "sha256": "48226da71574aa074e50845f0ad56968ca590f65c593d75b0f0f43434c89eb32",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-retired-optional-optional-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-retired-optional-optional-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-retired-optional-optional-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-retired-optional-tuple-negative.log",
+      "bytes": 3358,
+      "sha256": "53d79e879f7c0b341b9aa9f4ac8e9b6299bc9c529273251541a0077bc2087793",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-retired-optional-tuple-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-dynamic-generic-retired-optional-tuple-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-retired-optional-tuple-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-active-host-closure-negative.log",
+      "bytes": 2049,
+      "sha256": "426ef52a3154c59ff89beb266aa1b3f335aa62a91d98c1a0394f259378fe99e8",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-active-host-closure-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-active-host-closure-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-active-host-closure-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-active-host-generic-negative.log",
+      "bytes": 1624,
+      "sha256": "f28509baba4a2b1d24651c0f9f108079b1ffae94147cf3e257285b0470ea9066",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-active-host-generic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-active-host-generic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-active-host-generic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-active-host-optional-negative.log",
+      "bytes": 3277,
+      "sha256": "043037d9477cc445f758582334d54ffea75ecc015441735bdb961030bbb10879",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-active-host-optional-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-active-host-optional-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-active-host-optional-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-active-host-tuple-negative.log",
+      "bytes": 3211,
+      "sha256": "ee7d8400fac416b30f3dfd083592ef4577c35df48bc4d5069a4167b6f78415c9",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-active-host-tuple-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-active-host-tuple-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-active-host-tuple-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-retired-optional-closure-negative.log",
+      "bytes": 1855,
+      "sha256": "ff8773d07e02b710331af59713c4f1cce11f5c60bccefdacef942323e8331265",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-retired-optional-closure-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-retired-optional-closure-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-retired-optional-closure-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-retired-optional-generic-negative.log",
+      "bytes": 954,
+      "sha256": "23063fedc03fa443f3ed3d8ef6d8e66458d3a44d4989b1015cd6749f3cc560b2",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-retired-optional-generic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-retired-optional-generic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-retired-optional-generic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-retired-optional-optional-negative.log",
+      "bytes": 969,
+      "sha256": "9145214f7abd6bb12914255fc653e261ae157148803d8eaeaba9493ce54b834a",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-retired-optional-optional-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-retired-optional-optional-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-retired-optional-optional-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-retired-optional-tuple-negative.log",
+      "bytes": 2750,
+      "sha256": "8b6731ea6749cc80d92b21faa924a80fd00d4328da4475b65bad0532c7c1bad5",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-retired-optional-tuple-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-direct-retired-optional-tuple-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-direct-retired-optional-tuple-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-active-host-closure-negative.log",
+      "bytes": 3628,
+      "sha256": "0f4ab5480f883ea437ec55dd31ceb2b47f86836ac7520c24c7f7246ebd1dd3a8",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-active-host-closure-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-active-host-closure-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-active-host-closure-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-active-host-generic-negative.log",
+      "bytes": 1927,
+      "sha256": "c0f56cde136a5e402440fab0b46d927e6e41102db14276935fe30bfa82f9d031",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-active-host-generic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-active-host-generic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-active-host-generic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-active-host-optional-negative.log",
+      "bytes": 3883,
+      "sha256": "ec1fbb91ad5ed40ed235a8fc07a77f8e84307f1e0f0768c1f6af17b608203bb7",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-active-host-optional-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-active-host-optional-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-active-host-optional-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-active-host-tuple-negative.log",
+      "bytes": 3720,
+      "sha256": "1a7cea352917db01866cc05987bb72cecf1c8b3dd47db652e0e43267052b03f2",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-active-host-tuple-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-active-host-tuple-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-active-host-tuple-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-retired-optional-closure-negative.log",
+      "bytes": 3434,
+      "sha256": "69ff042b6b0e214544ff5b31644d13d38af673947f2d0495ebd96ad178c48c48",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-retired-optional-closure-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-retired-optional-closure-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-retired-optional-closure-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-retired-optional-generic-negative.log",
+      "bytes": 1379,
+      "sha256": "9640d0262cbaa426ce220a39995ea0b640a66817ccd946dcde4eef9ef9ef9cc0",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-retired-optional-generic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-retired-optional-generic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-retired-optional-generic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-retired-optional-optional-negative.log",
+      "bytes": 1394,
+      "sha256": "c3a5615bf321805cd83561abfc41a00bb0157740cbca05c5b05bb75a2a13236e",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-retired-optional-optional-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-retired-optional-optional-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-retired-optional-optional-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-retired-optional-tuple-negative.log",
+      "bytes": 3257,
+      "sha256": "3e746238e8d92e5b5e22c6433859d2546cafca671c9ee21842d296cfc2a0fc3f",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-retired-optional-tuple-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-erasure-static-generic-retired-optional-tuple-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-retired-optional-tuple-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-generic-erasure-negative.log",
+      "bytes": 613,
+      "sha256": "7c2871825a1506fec0e169e8537ddfe3abbbb08a51cdf54be04ec7fedc744304",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-generic-erasure-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-generic-erasure-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-generic-erasure-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-native-exclusivity-module.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-module.log"
+    },
+    {
+      "archived": "driver-logs/so06-native-exclusivity-negative-execute.log",
+      "bytes": 1447,
+      "sha256": "e277a9c7eb12c0500ac32091d68a7657d9d4afe62901c56c60c74c9abad00f5f",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-negative-execute.log"
+    },
+    {
+      "archived": "driver-logs/so06-native-exclusivity-negative-link.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-negative-link.log"
+    },
+    {
+      "archived": "driver-logs/so06-native-exclusivity-positive-execute.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-positive-execute.log"
+    },
+    {
+      "archived": "driver-logs/so06-native-exclusivity-positive-link.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-positive-link.log"
+    },
+    {
+      "archived": "driver-logs/so06-optional-erasure-negative.log",
+      "bytes": 627,
+      "sha256": "0069fed868cac113624162872db820893f23ba20f5b8ebdd07b9698a966fc65c",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-optional-erasure-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-optional-erasure-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-optional-erasure-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-owned-return-negative.log",
+      "bytes": 23303,
+      "sha256": "9d3b9fb28ba7de4bda8400150b34d9c9a94783c54ff2173a9c0efe331ca270f7",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-owned-return-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-owned-return-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-owned-return-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-private-construction-negative.log",
+      "bytes": 1052,
+      "sha256": "7161ccc8f217e3e30a39e863cab28019c2c316a629590608e9b5f79925e9230b",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-private-construction-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-private-construction-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-private-construction-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-private-extraction-negative.log",
+      "bytes": 1344,
+      "sha256": "f2e4facc143d554875b7e5b16380ed6a7dfbdc0700eac8f232ab7f4cbcb961df",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-private-extraction-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-private-extraction-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-private-extraction-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-sendable-negative.log",
+      "bytes": 941,
+      "sha256": "d91218d7b357fd833427493cd2eb635389728d8b298cf99b96c9649bc6f4dc6b",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-sendable-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-sendable-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-sendable-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-static-overlap-negative.log",
+      "bytes": 919,
+      "sha256": "c58b06b6ffefa9ecc28dfd3c7997c160d3cd72929995ccdb8161ad4a9a15f7cd",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-static-overlap-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-static-overlap-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-static-overlap-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-task-negative.log",
+      "bytes": 2371,
+      "sha256": "7c50101f0cb6885ac138dfc4a1b1ce30583e745599a119bf505e18b55650e10c",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-task-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-task-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-task-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-tuple-erasure-negative.log",
+      "bytes": 1642,
+      "sha256": "194e7650645c2ef481dd73d0e0df929f214a3c68137400cd74507af5d67794af",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-tuple-erasure-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-tuple-erasure-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-tuple-erasure-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-activationSpan-negative.log",
+      "bytes": 3088,
+      "sha256": "7af65e6d4632fca2691e8ba3aaec20ba31bcc467d7d96e29caa62e4ac7986395",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-activationSpan-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-activationSpan-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-activationSpan-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-candidateCommittedRecords-negative.log",
+      "bytes": 2605,
+      "sha256": "f77d0bf336c2921a12029771ca734f96745afeb659cd65a5ec679f1690e20c3e",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-candidateCommittedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-candidateCommittedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-candidateCommittedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-candidateHitRegions-negative.log",
+      "bytes": 2554,
+      "sha256": "8c7c7706374791f1b11b17b829849a8239f227a777bcfd4b7ee3a0a71192735e",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-candidateHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-candidateHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-candidateHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-candidateRecords-negative.log",
+      "bytes": 2503,
+      "sha256": "9be7daa8fc5760d892e3e453bb553c060cb96c91ccc51f40f1606ca8403f7510",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-candidateRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-candidateRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-candidateRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-committedHitRegions-negative.log",
+      "bytes": 2704,
+      "sha256": "dcb8cec510260048002bb517274ea5692232023ee139ade52aaf282978d9c266",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-committedHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-committedHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-committedHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-committedRecords-negative.log",
+      "bytes": 2653,
+      "sha256": "ea8aabdd9069aeb28fb9a4ba68618675b56c2b0b63e888926ef8a48f9f8501b9",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-committedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-committedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-committedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-control-negative.log",
+      "bytes": 3042,
+      "sha256": "e9b538d7682496d3bea23b7a8e7c24dbe745185224a23439075ccee42fa8c3a0",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-control-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-control-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-control-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-geometry-negative.log",
+      "bytes": 2456,
+      "sha256": "4e4b7091699f9df6f9d22e26143c917517705907c65eaf9c73f568821c9a04f1",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-geometry-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-geometry-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-geometry-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-models-negative.log",
+      "bytes": 2736,
+      "sha256": "50900594f90ffb3e7d456697f76b9c0ca1a0951c665b7803c6a738511197bcb2",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-models-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-models-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-models-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-root-negative.log",
+      "bytes": 2813,
+      "sha256": "d9ea7905aafce5995b5c713f9350ae7fe4cece8fe61264c84b9711e4282190db",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-root-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-root-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-root-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-semantic-negative.log",
+      "bytes": 2904,
+      "sha256": "b4edd7eab94eab0b221f5d410b959da4cef3ee826dcc3b970259a09c8be5830b",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-semantic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-semantic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-semantic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-values-negative.log",
+      "bytes": 2959,
+      "sha256": "d813e264214eaf78a138ec0a9ce27175d7a17af42f0d40ebce8e085c5f6851aa",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-values-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-direct-values-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-direct-values-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-activationSpan-negative.log",
+      "bytes": 3630,
+      "sha256": "53c52b515026accce944dd062a6f8471a0cc682bb6cfd7f04ccdeb59076fde73",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-activationSpan-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-activationSpan-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-activationSpan-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-candidateCommittedRecords-negative.log",
+      "bytes": 2605,
+      "sha256": "e3bb3a55da8e46221b9fd73c4898d7f2bd36c3c2863a1d5e5be59ab6efec5beb",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-candidateCommittedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-candidateCommittedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-candidateCommittedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-candidateHitRegions-negative.log",
+      "bytes": 2565,
+      "sha256": "081e02c24f8838bb2381e2a5b063320a937fe8cacde9d8f3295ddb6e9c6efeef",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-candidateHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-candidateHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-candidateHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-candidateRecords-negative.log",
+      "bytes": 2531,
+      "sha256": "9c524eba1792b28bf58e9a13b26b04912127bde6d1cb8a4dcfb17ec69b6e0487",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-candidateRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-candidateRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-candidateRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-committedHitRegions-negative.log",
+      "bytes": 2670,
+      "sha256": "c3de2ff4bbab92ca7f4954325b13822609b3977c8762628c9bd6da519b20245d",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-committedHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-committedHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-committedHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-committedRecords-negative.log",
+      "bytes": 2636,
+      "sha256": "36c7d0c2462c6060e73e2aa9f7a9adef08a6b2448343a0a53f6b7aac20f64859",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-committedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-committedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-committedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-control-negative.log",
+      "bytes": 2997,
+      "sha256": "e46942a3a8dc4cb6e56bc067cf3426b754f1779cd7b13bebee7e3fd3e3e7c12f",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-control-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-control-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-control-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-geometry-negative.log",
+      "bytes": 2500,
+      "sha256": "dcff816fb9b350b2e6d023ae6773c97fd7eb8db4ca25b2213fd5b16447427920",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-geometry-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-geometry-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-geometry-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-models-negative.log",
+      "bytes": 2691,
+      "sha256": "cdae137d492fadaf8b0ccfcac2efa1c02bec3a6b214acde3047b9f7c00eaa401",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-models-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-models-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-models-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-root-negative.log",
+      "bytes": 2768,
+      "sha256": "6f7feaf3fb4910c55a72b796ea17b60a09cd6f9d58e3cf351095014609b7c06d",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-root-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-root-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-root-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-semantic-negative.log",
+      "bytes": 2859,
+      "sha256": "5f6d0ba3c52c8b6ae02d475f741710f9a6b5d6b2b29a1e3e8f3d09f9b3cac260",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-semantic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-semantic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-semantic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-values-negative.log",
+      "bytes": 2914,
+      "sha256": "d22ea2efacb7a01c3bd2c7d68304b718510d1e47a98b69e05fae0b951ee9af9d",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-values-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-dynamic-generic-values-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-dynamic-generic-values-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-activationSpan-negative.log",
+      "bytes": 3058,
+      "sha256": "f4f1cdeeb03334c32a8d6fc110d21c78509a4d5877594d0bf2c7cfdc4137afc8",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-activationSpan-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-activationSpan-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-activationSpan-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-candidateCommittedRecords-negative.log",
+      "bytes": 2575,
+      "sha256": "f01ce8e4ce0d7c01584b8d941f0b96ae54e8bbbf749eb54e2246bbf0f7c15774",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-candidateCommittedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-candidateCommittedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-candidateCommittedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-candidateHitRegions-negative.log",
+      "bytes": 2524,
+      "sha256": "49e017918f5808d0472f213ec5e14498c3fb245838155b1cc3daa796d0e39a39",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-candidateHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-candidateHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-candidateHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-candidateRecords-negative.log",
+      "bytes": 2473,
+      "sha256": "8c71326a02928c2b45cd597a3d516c4b1f91e1bbddfa5309e0655d0a7863311a",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-candidateRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-candidateRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-candidateRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-committedHitRegions-negative.log",
+      "bytes": 2674,
+      "sha256": "bde6b302343f9e78da2f014309bdfebcdd0350364314f435367004b55de72c4b",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-committedHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-committedHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-committedHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-committedRecords-negative.log",
+      "bytes": 2623,
+      "sha256": "8cdb8556e70dcde3a52c448771aecfba7933bdf48d0317dec9a0d11def1380a0",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-committedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-committedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-committedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-control-negative.log",
+      "bytes": 3012,
+      "sha256": "3ff9e4634808d95d5a754daa9db2816f323aba2fba3f5e38a70a5243f402081c",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-control-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-control-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-control-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-geometry-negative.log",
+      "bytes": 2426,
+      "sha256": "478db039ef6227d73b1a3d8c3746bfcc020122e3cc4f26e2f9898d78ea9cdc5b",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-geometry-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-geometry-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-geometry-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-models-negative.log",
+      "bytes": 2706,
+      "sha256": "223093dca881590049b6212cf8b6f3854ba598a1f2df83c9fdf041d205125341",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-models-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-models-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-models-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-root-negative.log",
+      "bytes": 2783,
+      "sha256": "d89e2b9624e7c24df35e04c54e9f25b98148f367aaf2b17278eb50be5ada29bd",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-root-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-root-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-root-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-semantic-negative.log",
+      "bytes": 2874,
+      "sha256": "c20455b4d9c02af52b28980e4044f176ca6a3726a7485cdc464c684e1df6a780",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-semantic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-semantic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-semantic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-values-negative.log",
+      "bytes": 2929,
+      "sha256": "34d5790b2cea3467135d8cf633466a42d8458895bd628d43965c83ec779a31f8",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-values-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-direct-values-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-direct-values-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-activationSpan-negative.log",
+      "bytes": 3601,
+      "sha256": "572fe244a4316b3741cf6afcc8d0ad791d353204427d71d1f8b8ddc6cdcc0421",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-activationSpan-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-activationSpan-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-activationSpan-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-candidateCommittedRecords-negative.log",
+      "bytes": 2576,
+      "sha256": "30f902948639cf65a02087b312fdc8c54769324315a98e3e00a3a07964163d98",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-candidateCommittedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-candidateCommittedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-candidateCommittedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-candidateHitRegions-negative.log",
+      "bytes": 2536,
+      "sha256": "d0d9b92c2e9746939b3033731baf868195184cd5c7e693e64f7b1034bb76c286",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-candidateHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-candidateHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-candidateHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-candidateRecords-negative.log",
+      "bytes": 2502,
+      "sha256": "1307d9044a046088874fba11e66abaa24cfa7d3fa701f27e011b06562dd4cb62",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-candidateRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-candidateRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-candidateRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-committedHitRegions-negative.log",
+      "bytes": 2641,
+      "sha256": "d5e575d0ea9ceefa608574c3bbac985a1017e96fc4f813dbac29f75b9f126879",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-committedHitRegions-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-committedHitRegions-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-committedHitRegions-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-committedRecords-negative.log",
+      "bytes": 2607,
+      "sha256": "6c9f6c63f1ccf44fe417bf5d1e6ed5bf56971da3ffb08a3ca95623c722050aac",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-committedRecords-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-committedRecords-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-committedRecords-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-control-negative.log",
+      "bytes": 2968,
+      "sha256": "a32b89b1004e32764a63ed1107ac76569a92325b8f94ab0cd70373c652197446",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-control-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-control-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-control-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-geometry-negative.log",
+      "bytes": 2471,
+      "sha256": "544f7cfbd0fa0178d6532e6888c0c76032e223dd813310da5336b913f891f616",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-geometry-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-geometry-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-geometry-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-models-negative.log",
+      "bytes": 2662,
+      "sha256": "d9f6c06f39264ae5b6fe4d62a60e8468a3b4bf62becc91d54904b7367449ed6b",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-models-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-models-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-models-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-root-negative.log",
+      "bytes": 2739,
+      "sha256": "83d671de65e85ee6292eab7ce8b9a9436ed84bbb74af9054ab66be74b542fee6",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-root-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-root-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-root-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-semantic-negative.log",
+      "bytes": 2830,
+      "sha256": "c51477d4d3280f3405b986c52ab4a5fe7932417708aaaa4b674d87ce4a2078ab",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-semantic-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-semantic-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-semantic-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-values-negative.log",
+      "bytes": 2885,
+      "sha256": "6c9df6f362e81a7a19f81a514bb289f0c55f5136984514e7fc99aabc36559972",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-values-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-union-static-generic-values-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-union-static-generic-values-positive.log"
+    },
+    {
+      "archived": "driver-logs/so06-use-after-consume-negative.log",
+      "bytes": 679,
+      "sha256": "9a9faffa33f6c044d90f053536848ff065ea8abdc71bc6d5bb0458507da65642",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-use-after-consume-negative.log"
+    },
+    {
+      "archived": "driver-logs/so06-use-after-consume-positive.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-counter-npoej3u2/so06-use-after-consume-positive.log"
+    }
+  ],
+  "initial_launch_allowance": 1,
+  "initial_launches": 1,
+  "one_shot_allowance_consumed": true,
+  "postflight_qualification_performed": false,
+  "remaining_initial_launches": 0,
+  "retries": 0,
+  "reviewed_commit": "065efeb6e52d57e3cf7e0c67f333c27ff7ac500f",
+  "schema4_launches": 0,
+  "status": "STOP",
+  "verification": {
+    "all_archive_file_bytes_sizes_and_sha256_match_manifest": true,
+    "all_extracted_receipts_match_live_originals": true,
+    "all_live_original_sizes_and_sha256_match_manifest": true,
+    "archive_member_set_equals_manifest": true
+  },
+  "wrapper_error": "Traceback (most recent call last):\n  File \"<reviewed detached supervisor>\", line 135, in main\n  File \"<reviewed readiness>\", line 283, in qualify_counter\n  File \"<reviewed readiness>\", line 10, in require\nValueError: exact 384 unique labels\n"
+}

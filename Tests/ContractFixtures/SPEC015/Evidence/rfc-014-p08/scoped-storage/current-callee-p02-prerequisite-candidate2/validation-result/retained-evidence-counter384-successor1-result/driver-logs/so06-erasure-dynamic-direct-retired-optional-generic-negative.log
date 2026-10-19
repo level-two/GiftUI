@@ -1,0 +1,8 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-retired-optional-generic-negative.swift:4024:144: error: global function 'erase' requires that 'CounterDynamicHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>' conform to 'Escapable'
+4021 | #endif
+4022 | 
+4023 | fileprivate func erase<T: ~Copyable>(_ input: consuming T) { _ = consume input }
+     |                  `- note: 'where T: Escapable' is implicit here
+4024 | fileprivate func probe(_ input: consuming CounterDynamicHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>)  { erase(input) }
+     |                                                                                                                                                `- error: global function 'erase' requires that 'CounterDynamicHostState<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>' conform to 'Escapable'
+4025 | 

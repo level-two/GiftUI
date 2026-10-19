@@ -1,0 +1,151 @@
+{
+  "automatic_repairs": 0,
+  "before": {
+    "p08-a4-diagnostic-policy-static-successor": [
+      16777234,
+      29473695
+    ],
+    "p08-a7-diagnostic-policy-static-successor": [
+      16777234,
+      29482808
+    ],
+    "p08-a8-diagnostic-policy-static-successor": [
+      16777234,
+      29492546
+    ],
+    "p08-analyzer-abi-continuation-campaign10": [
+      16777234,
+      29550116
+    ],
+    "p08-analyzer-abi-continuation-campaign11": [
+      16777234,
+      29582800
+    ],
+    "p08-analyzer-abi-continuation-campaign2": [
+      16777234,
+      29460491
+    ],
+    "p08-analyzer-abi-continuation-campaign3": [
+      16777234,
+      29475556
+    ],
+    "p08-analyzer-abi-continuation-campaign4": [
+      16777234,
+      29483568
+    ],
+    "p08-analyzer-abi-continuation-campaign5": [
+      16777234,
+      29494122
+    ],
+    "p08-analyzer-abi-continuation-campaign6": [
+      16777234,
+      29505097
+    ],
+    "p08-analyzer-abi-continuation-campaign7": [
+      16777234,
+      29512384
+    ],
+    "p08-analyzer-abi-continuation-campaign8": [
+      16777234,
+      29522424
+    ],
+    "p08-analyzer-abi-continuation-campaign9": [
+      16777234,
+      29536414
+    ],
+    "p08-analyzer-abi-diagnostic-discovery-sweep": [
+      16777234,
+      29562980
+    ],
+    "p08-armv6-a4-binding-static-successor": [
+      16777234,
+      29549578
+    ],
+    "p08-armv6-a4-diagnostic-policy-static-successor": [
+      16777234,
+      29545869
+    ],
+    "p08-counter-tu_d8qq1": [
+      16777234,
+      29608374
+    ],
+    "p08-p07-cyclescene-correction-probe1": [
+      16777234,
+      29604400
+    ],
+    "p08-private-count-diagnostic-policy-static-successor": [
+      16777234,
+      29511960
+    ],
+    "p08-private-helper-continuation-diagnostic-policy-static-successor": [
+      16777234,
+      29520080
+    ],
+    "p08-private-helper-leading-diagnostic-policy-static-successor": [
+      16777234,
+      29534517
+    ],
+    "p08-private-storage-diagnostic-policy-static-successor": [
+      16777234,
+      29504649
+    ],
+    "p08-retained-evidence-counter384-successor1": [
+      16777234,
+      29620106
+    ],
+    "p08-retained-evidence-dependent-continuation1": [
+      16777234,
+      29608134
+    ],
+    "p08-scoped-host-7gj3vxnl": [
+      16777234,
+      29608150
+    ],
+    "spec-006-records": [
+      16777234,
+      29466767
+    ],
+    "spec-006-rfc-014-swift64": [
+      16777234,
+      29464818
+    ],
+    "spec-013-runtime-cycle": [
+      16777234,
+      29592707
+    ]
+  },
+  "child_exit": null,
+  "child_observation": {
+    "observed_monotonic_ns": 35320651166,
+    "observed_wall_ns": 1792400637109110000,
+    "pid": 45989
+  },
+  "child_pid": 45989,
+  "child_spawn_after": {
+    "observed_monotonic_ns": 35320584250,
+    "observed_wall_ns": 1792400637109043000
+  },
+  "child_spawn_before": {
+    "observed_monotonic_ns": 35319264208,
+    "observed_wall_ns": 1792400637107723000
+  },
+  "initial_launches": 1,
+  "marker_identity": [
+    16777234,
+    29620106
+  ],
+  "retries": 0,
+  "reviewed_pins": [
+    "065efeb6e52d57e3cf7e0c67f333c27ff7ac500f",
+    "184298036deabcdb510f25da1490e4ccc32b8d6c",
+    "377ff7d44bdfcdb11cc075cddd72d06d11f9d837"
+  ],
+  "schema4_launches": 0,
+  "status": "STOP",
+  "supervisor_observation": {
+    "observed_monotonic_ns": 73914625,
+    "observed_wall_ns": 1792400601862033000,
+    "pid": 45914
+  },
+  "working_tree_before": " M Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift\n M Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift\n M firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt\n M scripts/nrf52840/build.sh\n M scripts/raspberry-pi/build.sh\n?? scripts/contracts/__pycache__/\n"
+}

@@ -1,0 +1,13 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-private-construction-negative.swift:4024:123: error: 'P08GeometryAccess' initializer is inaccessible due to 'private' protection level
+ 893 |     private let descriptor: P08GeometryDescriptor
+ 894 |     @_lifetime(copy sessionLifetime)
+ 895 |     private init(sessionLifetime: borrowing P08SessionLifetime, descriptor: P08GeometryDescriptor) {
+     |             `- note: 'init(sessionLifetime:descriptor:)' declared here
+ 896 |         lifetime = copy sessionLifetime; self.descriptor = descriptor
+ 897 |     }
+     :
+4022 | 
+4023 | @_lifetime(copy token)
+4024 | fileprivate func probe(_ token: borrowing P08SessionLifetime, _ descriptor: P08GeometryDescriptor) -> P08GeometryAccess { P08GeometryAccess(sessionLifetime: token, descriptor: descriptor) }
+     |                                                                                                                           `- error: 'P08GeometryAccess' initializer is inaccessible due to 'private' protection level
+4025 | 

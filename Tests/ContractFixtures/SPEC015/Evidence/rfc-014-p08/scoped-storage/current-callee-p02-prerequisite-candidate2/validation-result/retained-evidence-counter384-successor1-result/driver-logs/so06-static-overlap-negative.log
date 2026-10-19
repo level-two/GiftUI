@@ -1,0 +1,9 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-static-overlap-negative.swift:4023:94: error: overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ owner: inout P08TypedBackingOwner) -> Int { withP08Storage(backing: &owner) { session in owner.release(); var current = consume session; current.reset(); return 1 } }
+     |                                                                                              |                    `- note: conflicting access is here
+     |                                                                                              `- error: overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]
+4024 | 
+
+[#ExclusivityViolation]: <https://docs.swift.org/compiler/documentation/diagnostics/exclusivity-violation>

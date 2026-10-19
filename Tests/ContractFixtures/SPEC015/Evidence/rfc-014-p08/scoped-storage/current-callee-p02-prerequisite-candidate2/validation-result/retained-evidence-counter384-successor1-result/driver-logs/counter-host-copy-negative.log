@@ -1,0 +1,6 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter-host-copy-negative.swift:4023:75: error: 'copy' cannot be applied to noncopyable types
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ host: borrowing P08StaticHost) { let duplicate = copy host; _ = duplicate }
+     |                                                                           `- error: 'copy' cannot be applied to noncopyable types
+4024 | 

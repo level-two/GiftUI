@@ -1,0 +1,8 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-optional-erasure-negative.swift:4024:68: error: generic struct 'Box' requires that 'P08StorageSession' conform to 'Escapable'
+4021 | #endif
+4022 | 
+4023 | fileprivate struct Box<T: ~Copyable>: ~Copyable { var value: T? }
+     |                    `- note: 'where T: Escapable' is implicit here
+4024 | fileprivate func probe(_ value: consuming P08StorageSession) { _ = Box(value: value) }
+     |                                                                    `- error: generic struct 'Box' requires that 'P08StorageSession' conform to 'Escapable'
+4025 | 

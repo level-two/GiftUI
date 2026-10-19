@@ -1,0 +1,13 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-generic-active-host-generic-negative.swift:4024:451: error: global function 'erase' requires that 'CounterDynamicHostOwner<G, C, R, H>' conform to 'Escapable'
+4022 | 
+4023 | fileprivate func erase<T: ~Copyable>(_ input: consuming T) { _ = consume input }
+4024 | fileprivate func probe<G, C, R, H>(_ input: consuming SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner<G, C, R, H>>) where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & ~Copyable & ~Escapable, R: CounterCommittedBacking & ~Copyable & ~Escapable, H: CounterHitBacking & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity { erase(input) }
+     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                   `- error: global function 'erase' requires that 'CounterDynamicHostOwner<G, C, R, H>' conform to 'Escapable'
+4025 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift:166:1: note: requirement from conditional conformance of 'SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner<G, C, R, H>>' to 'Escapable'
+164 | 
+165 | // Ordinary owned hosts retain their previous escapable construction surface.
+166 | extension SignalAnalyzerPresetHostInstance: Escapable where Owner: Escapable & ~Copyable {}
+    | `- note: requirement from conditional conformance of 'SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner<G, C, R, H>>' to 'Escapable'
+167 | 

@@ -1,0 +1,8 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-closure-erasure-negative.swift:4023:26: error: lifetime-dependent variable 'input' escapes its scope
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ input: consuming P08StorageSession) -> () -> Int { var value = consume input; return { value.reset(); return 1 } }
+     |                          |                                                              `- note: this use causes the lifetime-dependent value to escape
+     |                          |- error: lifetime-dependent variable 'input' escapes its scope
+     |                          `- note: it depends on the lifetime of argument 'input'
+4024 | 

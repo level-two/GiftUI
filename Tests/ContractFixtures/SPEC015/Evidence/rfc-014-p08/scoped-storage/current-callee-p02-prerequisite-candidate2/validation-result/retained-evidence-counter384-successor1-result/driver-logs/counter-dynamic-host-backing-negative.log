@@ -1,0 +1,118 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter-dynamic-host-backing-negative.swift:4024:5: error: lifetime-dependent variable 'escaped' escapes its scope
+4022 | 
+4023 | fileprivate func probe(_ owner: inout P08TypedBackingOwner, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CounterPayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly) -> Int {
+4024 | var escaped: P08DynamicHost? = nil
+     |     `- error: lifetime-dependent variable 'escaped' escapes its scope
+4025 | let count = withP08Storage(backing: &owner) { session in
+     |                                               `- note: it depends on the lifetime of argument 'session'
+4026 | let supplied = session.intoDynamicSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control.borrowed(), audit: assembly.report.storageAudit)
+4027 | let current = P08DynamicHostOwner(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: false)
+     :
+4029 | precondition(host.activate() == .active)
+4030 | escaped = consume host
+4031 | return 1
+     | `- note: this use causes the lifetime-dependent value to escape
+4032 | }
+4033 | if var host = escaped.take() { host.teardown() }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter-dynamic-host-backing-negative.swift:4024:5: error: lifetime-dependent variable 'escaped' escapes its scope
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ owner: inout P08TypedBackingOwner, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CounterPayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly) -> Int {
+     |                                                             `- note: it depends on a closure capture; this is not yet supported
+4024 | var escaped: P08DynamicHost? = nil
+     |     `- error: lifetime-dependent variable 'escaped' escapes its scope
+4025 | let count = withP08Storage(backing: &owner) { session in
+4026 | let supplied = session.intoDynamicSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control.borrowed(), audit: assembly.report.storageAudit)
+     :
+4029 | precondition(host.activate() == .active)
+4030 | escaped = consume host
+4031 | return 1
+     | `- note: this use causes the lifetime-dependent value to escape
+4032 | }
+4033 | if var host = escaped.take() { host.teardown() }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter-dynamic-host-backing-negative.swift:4024:5: error: lifetime-dependent variable 'escaped' escapes its scope
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ owner: inout P08TypedBackingOwner, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CounterPayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly) -> Int {
+     |                                                                                                                                            `- note: it depends on a closure capture; this is not yet supported
+4024 | var escaped: P08DynamicHost? = nil
+     |     `- error: lifetime-dependent variable 'escaped' escapes its scope
+4025 | let count = withP08Storage(backing: &owner) { session in
+4026 | let supplied = session.intoDynamicSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control.borrowed(), audit: assembly.report.storageAudit)
+     :
+4029 | precondition(host.activate() == .active)
+4030 | escaped = consume host
+4031 | return 1
+     | `- note: this use causes the lifetime-dependent value to escape
+4032 | }
+4033 | if var host = escaped.take() { host.teardown() }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter-dynamic-host-backing-negative.swift:4024:5: error: lifetime-dependent variable 'escaped' escapes its scope
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ owner: inout P08TypedBackingOwner, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CounterPayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly) -> Int {
+     |                                                                                                                                                                                                                                   `- note: it depends on a closure capture; this is not yet supported
+4024 | var escaped: P08DynamicHost? = nil
+     |     `- error: lifetime-dependent variable 'escaped' escapes its scope
+4025 | let count = withP08Storage(backing: &owner) { session in
+4026 | let supplied = session.intoDynamicSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control.borrowed(), audit: assembly.report.storageAudit)
+     :
+4029 | precondition(host.activate() == .active)
+4030 | escaped = consume host
+4031 | return 1
+     | `- note: this use causes the lifetime-dependent value to escape
+4032 | }
+4033 | if var host = escaped.take() { host.teardown() }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter-dynamic-host-backing-negative.swift:4024:5: error: lifetime-dependent variable 'escaped' escapes its scope
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ owner: inout P08TypedBackingOwner, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CounterPayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly) -> Int {
+     |                                                                                                                                                                                                                                                                                            `- note: it depends on a closure capture; this is not yet supported
+4024 | var escaped: P08DynamicHost? = nil
+     |     `- error: lifetime-dependent variable 'escaped' escapes its scope
+4025 | let count = withP08Storage(backing: &owner) { session in
+4026 | let supplied = session.intoDynamicSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control.borrowed(), audit: assembly.report.storageAudit)
+     :
+4029 | precondition(host.activate() == .active)
+4030 | escaped = consume host
+4031 | return 1
+     | `- note: this use causes the lifetime-dependent value to escape
+4032 | }
+4033 | if var host = escaped.take() { host.teardown() }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter-dynamic-host-backing-negative.swift:4024:5: error: lifetime-dependent variable 'escaped' escapes its scope
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ owner: inout P08TypedBackingOwner, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CounterPayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly) -> Int {
+     |                                                                                                                                                                                                                                                                                                                                                                              `- note: it depends on a closure capture; this is not yet supported
+4024 | var escaped: P08DynamicHost? = nil
+     |     `- error: lifetime-dependent variable 'escaped' escapes its scope
+4025 | let count = withP08Storage(backing: &owner) { session in
+4026 | let supplied = session.intoDynamicSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control.borrowed(), audit: assembly.report.storageAudit)
+     :
+4029 | precondition(host.activate() == .active)
+4030 | escaped = consume host
+4031 | return 1
+     | `- note: this use causes the lifetime-dependent value to escape
+4032 | }
+4033 | if var host = escaped.take() { host.teardown() }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter-dynamic-host-backing-negative.swift:4024:5: error: lifetime-dependent variable 'escaped' escapes its scope
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ owner: inout P08TypedBackingOwner, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CounterPayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly) -> Int {
+     |                                                                                                                                                                                                                                                                                                                                                                                                                     `- note: it depends on a closure capture; this is not yet supported
+4024 | var escaped: P08DynamicHost? = nil
+     |     `- error: lifetime-dependent variable 'escaped' escapes its scope
+4025 | let count = withP08Storage(backing: &owner) { session in
+4026 | let supplied = session.intoDynamicSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control.borrowed(), audit: assembly.report.storageAudit)
+     :
+4029 | precondition(host.activate() == .active)
+4030 | escaped = consume host
+4031 | return 1
+     | `- note: this use causes the lifetime-dependent value to escape
+4032 | }
+4033 | if var host = escaped.take() { host.teardown() }

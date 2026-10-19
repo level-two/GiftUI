@@ -1,0 +1,20 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-private-extraction-negative.swift:4023:81: error: 'interaction' is inaccessible due to 'private' protection level
+1086 | fileprivate struct P08StorageSession: ~Copyable, ~Escapable {
+1087 |     private var geometry: P08GeometryAccess
+1088 |     private var interaction: P08ScopedKeys
+     |                 `- note: 'interaction' declared here
+1089 |     private let ownerIdentity: UInt
+1090 |     private let sessionSerial: UInt64
+     :
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ session: borrowing P08StorageSession) -> Int { session.interaction.committedRecordCount }
+     |                                                                                 `- error: 'interaction' is inaccessible due to 'private' protection level
+4024 | 
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-private-extraction-negative.swift:4023:93: error: cannot convert return expression of type 'UInt16' to return type 'Int'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ session: borrowing P08StorageSession) -> Int { session.interaction.committedRecordCount }
+     |                                                                                             `- error: cannot convert return expression of type 'UInt16' to return type 'Int'
+4024 | 

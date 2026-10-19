@@ -1,0 +1,20 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-active-host-tuple-negative.swift:4023:179: error: tuple with noncopyable element type 'SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>' is not supported
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ input: consuming SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>) -> (SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>, Int)  { (input, 1) }
+     |                                                                                                                                                                                   `- error: tuple with noncopyable element type 'SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>' is not supported
+4024 | 
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-active-host-tuple-negative.swift:4023:178: error: cannot infer the lifetime dependence scope on a function with a ~Escapable parameter, specify '@_lifetime(borrow input)' or '@_lifetime(copy input)'
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ input: consuming SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>) -> (SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>, Int)  { (input, 1) }
+     |                                                                                                                                                                                  `- error: cannot infer the lifetime dependence scope on a function with a ~Escapable parameter, specify '@_lifetime(borrow input)' or '@_lifetime(copy input)'
+4024 | 
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-erasure-dynamic-direct-active-host-tuple-negative.swift:4023:319: error: type '(SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>, Int)' containing noncopyable element is not supported
+4021 | #endif
+4022 | 
+4023 | fileprivate func probe(_ input: consuming SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>) -> (SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>, Int)  { (input, 1) }
+     |                                                                                                                                                                                                                                                                                                                               `- error: type '(SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>>, Int)' containing noncopyable element is not supported
+4024 | 

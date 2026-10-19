@@ -1,0 +1,29 @@
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:19:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 4 | package struct PointerActionCapture<Identity>: Equatable, Sendable
+ 5 | where Identity: Equatable & Sendable {
+ 6 |     @usableFromInline internal private(set) var captured: CapturedAction<Identity>?
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+ 7 | 
+ 8 |     package init() {}
+   :
+17 |         with captured: CapturedAction<Identity>?
+18 |     ) {
+19 |         self.captured = captured
+   |         `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+20 |     }
+21 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:68:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 4 | package struct PointerActionCapture<Identity>: Equatable, Sendable
+ 5 | where Identity: Equatable & Sendable {
+ 6 |     @usableFromInline internal private(set) var captured: CapturedAction<Identity>?
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+ 7 | 
+ 8 |     package init() {}
+   :
+66 |     @inlinable
+67 |     package mutating func cancel() {
+68 |         captured = nil
+   |         `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+69 |     }
+70 | }

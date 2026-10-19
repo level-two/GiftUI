@@ -1,0 +1,9 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/control-resident-projection-negative.swift:4024:69: error: overlapping accesses to 'control.runtimeEndpoint', but modification requires exclusive access; consider copying to a local variable [#ExclusivityViolation]
+4022 | 
+4023 | fileprivate func projected(_ endpoint: inout CounterEndpoint?, _ streams: inout Int, _ body: (inout CounterEndpoint?, inout Int) -> Void) { body(&endpoint, &streams) }
+4024 | fileprivate func probe(_ control: inout CounterControl) { projected(&control.runtimeEndpoint, &control.streams) { _, _ in _ = control.runtimeEndpoint == nil } }
+     |                                                                     |                                                                 `- note: conflicting access is here
+     |                                                                     `- error: overlapping accesses to 'control.runtimeEndpoint', but modification requires exclusive access; consider copying to a local variable [#ExclusivityViolation]
+4025 | 
+
+[#ExclusivityViolation]: <https://docs.swift.org/compiler/documentation/diagnostics/exclusivity-violation>

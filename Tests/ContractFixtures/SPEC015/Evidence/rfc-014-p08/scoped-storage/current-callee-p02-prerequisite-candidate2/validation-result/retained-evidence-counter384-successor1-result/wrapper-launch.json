@@ -1,0 +1,44 @@
+{
+  "argv": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--profile",
+    "macos-static",
+    "--runtime-build",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+    "--host-build",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+    "--collect-failures"
+  ],
+  "automatic_repairs": 0,
+  "consumed_ns": 1792400601491671000,
+  "environment": {
+    "HOME": "/Users/eugene",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONNOUSERSITE": "1",
+    "PYTHONPYCACHEPREFIX": "/dev/null",
+    "TMPDIR": "/var/folders/38/tc_rs_016rz5chj25dzt9nfm0000gn/T/",
+    "USER": "eugene"
+  },
+  "initial_launches": 1,
+  "launcher_observation": {
+    "observed_monotonic_ns": 70046364083,
+    "observed_wall_ns": 1792400601491266000,
+    "pid": 45781
+  },
+  "marker_identity": [
+    16777234,
+    29620106
+  ],
+  "retries": 0,
+  "reviewed_pins": [
+    "065efeb6e52d57e3cf7e0c67f333c27ff7ac500f",
+    "184298036deabcdb510f25da1490e4ccc32b8d6c",
+    "377ff7d44bdfcdb11cc075cddd72d06d11f9d837"
+  ],
+  "schema4_launches": 0,
+  "status": "CONSUMED_not_terminal",
+  "working_tree": " M Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift\n M Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift\n M firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt\n M scripts/nrf52840/build.sh\n M scripts/raspberry-pi/build.sh\n?? scripts/contracts/__pycache__/\n"
+}

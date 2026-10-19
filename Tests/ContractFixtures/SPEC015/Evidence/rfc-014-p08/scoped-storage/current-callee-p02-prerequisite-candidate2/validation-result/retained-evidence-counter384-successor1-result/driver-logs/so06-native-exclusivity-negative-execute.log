@@ -1,0 +1,13 @@
+Simultaneous accesses to 0x101151d40, but modification requires exclusive access.
+Previous access (a modification) started at so06-native-exclusivity-negative`counterScopedNativeExclusivity(negative:) + 556 (0x10102ccf0).
+Current access (a read) started at:
+0    libswiftCore.dylib                 0x00000001964c7904 swift::runtime::AccessSet::insert(swift::runtime::Access*, void*, void*, swift::ExclusivityFlags) + 476
+1    libswiftCore.dylib                 0x0000000196462bd0 swift_beginAccess + 84
+2    so06-native-exclusivity-negative   0x000000010102ca7c p08ReadNativeExclusiveOwner() + 32
+3    so06-native-exclusivity-negative   0x000000010108d4a0 partial apply for closure #1 in exercise #1 (_:) in counterScopedNativeExclusivity(negative:) + 80
+4    so06-native-exclusivity-negative   0x0000000101009c84 specialized closure #1 in closure #1 in closure #1 in closure #1 in closure #1 in closure #1 in closure #1 in closure #1 in closure #1 in closure #1 in closure #1 in P08TypedBackingOwner.withStorage<A>(transcript:_:) + 5252
+5    so06-native-exclusivity-negative   0x0000000100ff5c44 specialized P08TypedBackingOwner.withStorage<A>(transcript:_:) + 3424
+6    so06-native-exclusivity-negative   0x000000010102cac4 counterScopedNativeExclusivity(negative:) + 580
+7    so06-native-exclusivity-negative   0x0000000100ec4c78 main + 16
+8    dyld                               0x0000000182942994 start + 6992
+Fatal access conflict detected.

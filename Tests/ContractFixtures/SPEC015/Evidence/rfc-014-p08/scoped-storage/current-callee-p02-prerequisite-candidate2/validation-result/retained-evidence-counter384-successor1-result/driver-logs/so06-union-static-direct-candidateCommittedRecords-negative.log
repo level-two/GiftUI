@@ -1,0 +1,13 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-union-static-direct-candidateCommittedRecords-negative.swift:4028:96: error: lifetime-dependent value escapes its scope
+4022 | 
+4023 | @_lifetime(copy geometry, copy candidateRecords, copy candidateHitRegions, copy committedRecords, copy committedHitRegions, copy models, copy root, copy semantic, copy values, copy control, copy activationSpan)
+4024 | fileprivate func unionProbe(geometry: consuming P08GeometryAccess, candidateRecords: consuming P08CandidateAccess, candidateHitRegions: consuming P08HitAccess, candidateCommittedRecords: consuming P08CommittedAccess, committedRecords: consuming P08CommittedAccess, committedHitRegions: consuming P08HitAccess, models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: consuming CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly) -> CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>  {
+     |                                                                                                                                                                 `- note: it depends on the lifetime of argument 'candidateCommittedRecords'
+4025 | let state = InteractionState(candidateRecords: candidateRecords, candidateHitRegions: candidateHitRegions, candidateCommittedRecords: candidateCommittedRecords, committedRecords: committedRecords, committedHitRegions: committedHitRegions)
+4026 | let interaction = InteractionOwnedKeyState(state: state, maximumComponentsPerKey: 24, maximumComponents: 48)!
+4027 | let supplied = CounterHostSuppliedStorage<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>(models: models, root: root, semantic: semantic, values: values, scopedControl: control, audit: assembly.report.storageAudit, geometry: geometry, interaction: interaction)
+4028 | return CounterHostOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: false)
+     | |                                                                                              `- error: lifetime-dependent value escapes its scope
+     | `- note: this use causes the lifetime-dependent value to escape
+4029 | }
+4030 | 

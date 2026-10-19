@@ -1,0 +1,27 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-active-host-optional-negative.swift:4024:448: error: generic struct 'OwnedBox' requires that 'CounterHostOwner<G, C, R, H>' conform to 'Escapable'
+4022 | 
+4023 | fileprivate struct OwnedBox<T: ~Copyable>: ~Copyable { var value: T? }
+4024 | fileprivate func probe<G, C, R, H>(_ input: consuming SignalAnalyzerPresetHostInstance<CounterHostOwner<G, C, R, H>>) where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & ~Copyable & ~Escapable, R: CounterCommittedBacking & ~Copyable & ~Escapable, H: CounterHitBacking & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity { _ = OwnedBox(value: input) }
+     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                `- error: generic struct 'OwnedBox' requires that 'CounterHostOwner<G, C, R, H>' conform to 'Escapable'
+4025 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift:166:1: note: requirement from conditional conformance of 'SignalAnalyzerPresetHostInstance<CounterHostOwner<G, C, R, H>>' to 'Escapable'
+164 | 
+165 | // Ordinary owned hosts retain their previous escapable construction surface.
+166 | extension SignalAnalyzerPresetHostInstance: Escapable where Owner: Escapable & ~Copyable {}
+    | `- note: requirement from conditional conformance of 'SignalAnalyzerPresetHostInstance<CounterHostOwner<G, C, R, H>>' to 'Escapable'
+167 | 
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-erasure-static-generic-active-host-optional-negative.swift:4024:448: error: initializer 'init(value:)' requires that 'CounterHostOwner<G, C, R, H>' conform to 'Escapable'
+4022 | 
+4023 | fileprivate struct OwnedBox<T: ~Copyable>: ~Copyable { var value: T? }
+4024 | fileprivate func probe<G, C, R, H>(_ input: consuming SignalAnalyzerPresetHostInstance<CounterHostOwner<G, C, R, H>>) where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & ~Copyable & ~Escapable, R: CounterCommittedBacking & ~Copyable & ~Escapable, H: CounterHitBacking & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity { _ = OwnedBox(value: input) }
+     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                `- error: initializer 'init(value:)' requires that 'CounterHostOwner<G, C, R, H>' conform to 'Escapable'
+4025 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift:166:1: note: requirement from conditional conformance of 'SignalAnalyzerPresetHostInstance<CounterHostOwner<G, C, R, H>>' to 'Escapable'
+164 | 
+165 | // Ordinary owned hosts retain their previous escapable construction surface.
+166 | extension SignalAnalyzerPresetHostInstance: Escapable where Owner: Escapable & ~Copyable {}
+    | `- note: requirement from conditional conformance of 'SignalAnalyzerPresetHostInstance<CounterHostOwner<G, C, R, H>>' to 'Escapable'
+167 | 

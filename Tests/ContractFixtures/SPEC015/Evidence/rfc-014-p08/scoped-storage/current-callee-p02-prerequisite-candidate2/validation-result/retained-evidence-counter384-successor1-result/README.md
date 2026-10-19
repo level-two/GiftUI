@@ -1,0 +1,9 @@
+# P08 retained-evidence counter384 successor 1: wrapper STOP
+
+The reviewed successor packet at `065efeb6e52d57e3cf7e0c67f333c27ff7ac500f` consumed its one permitted initial launch. The consumed marker is `.build/contracts/p08-retained-evidence-counter384-successor1`; its fresh driver output is `.build/contracts/p08-counter-npoej3u2`.
+
+The raw driver reports **PASS**: all 426 of 426 checks have `status: passed` and `passed: true`, and both `result.json` and `checks.json` report `collection_complete: true` and `passed: true`. The driver's planned scoped subset contains 384 labels; this subset count differs from the total collection count of 426. These are retained driver facts, with no postflight qualification performed by this archive step.
+
+The reviewed wrapper terminal receipt reports **STOP**, child exit 0, and `ValueError: exact 384 unique labels`. Its exact terminal receipt and error are preserved. The driver PASS does not replace the wrapper STOP. This archive does not requalify the packet or establish P08/R07/T8.1 completion. The initial allowance is consumed: 0 of 1 launches remain; automatic repairs 0; retries 0; schema-4 launches 0. No compiler, retry, repair, source change, or dependent launch was performed for this archive.
+
+`raw-output-roots.tar.gz` preserves the complete raw wrapper and fresh driver roots, including binary files and cache files. `raw-file-manifest.json` lists every original absolute path, repository path, archive member path, byte count, and SHA-256. `receipt-index.json` records the archive hash, size, member/file counts, extracted receipt hashes, and verification results. The wrapper receipts, driver result/checks/commands, and every driver `.log` are copied directly for accessibility; their bytes match the original files and archive members. Archive membership and every file's byte count and SHA-256 were verified against the manifest and live originals. Prior preparation and result packets are unchanged.
