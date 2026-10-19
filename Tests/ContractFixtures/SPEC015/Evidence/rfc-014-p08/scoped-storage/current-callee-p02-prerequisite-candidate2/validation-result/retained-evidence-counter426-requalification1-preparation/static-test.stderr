@@ -29,8 +29,12 @@ test_28_review_pins_and_packet_inventory (__main__.StaticTests) ... ok
 test_29_negative_cannot_be_reclassified_as_positive (__main__.StaticTests) ... ok
 test_30_no_wildcard_or_wrong_named_control_diagnostic (__main__.StaticTests) ... ok
 test_31_python_and_git_environment_injection (__main__.StaticTests) ... ok
+test_32_fsmonitor_cannot_execute_in_any_verifier_git_path (__main__.StaticTests) ... ok
+test_33_git_config_includes_and_alias_execution_rejected (__main__.StaticTests) ... ok
+test_34_external_diff_textconv_hooks_and_pager_are_inert (__main__.StaticTests) ... ok
+test_35_readme_blob_bootstrap_ignores_ambient_git_and_config (__main__.StaticTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 31 tests in 45.993s
+Ran 35 tests in 53.988s
 
 OK

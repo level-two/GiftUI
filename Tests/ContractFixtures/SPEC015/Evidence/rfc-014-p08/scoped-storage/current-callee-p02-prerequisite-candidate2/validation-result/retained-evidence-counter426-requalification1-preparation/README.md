@@ -119,7 +119,7 @@ After independent readiness PASS supplies the exact three pins, the execution
 form is:
 
 ```sh
-git --no-replace-objects show REVIEWED_COMMIT:Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-preparation/reviewed-launch.py | /usr/bin/env -i HOME=/Users/eugene TMPDIR=/private/tmp PATH=/usr/bin:/bin:/usr/sbin:/sbin /Applications/Xcode.app/Contents/Developer/usr/bin/python3 -I -S -B -X pycache_prefix=/dev/null - REVIEWED_COMMIT REVIEWED_REPOSITORY_TREE REVIEWED_PACKET_TREE
+/usr/bin/env -i HOME=/Users/eugene TMPDIR=/private/tmp PATH=/usr/bin:/bin:/usr/sbin:/sbin LC_CTYPE=C.UTF-8 GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_SYSTEM=/dev/null GIT_CONFIG_GLOBAL=/dev/null GIT_TERMINAL_PROMPT=0 GIT_NO_LAZY_FETCH=1 GIT_ALLOW_PROTOCOL= /usr/bin/git --no-replace-objects --no-pager --no-optional-locks -c core.fsmonitor=false -c core.hooksPath=/dev/null -c diff.external= -c credential.helper= -c core.sshCommand=/usr/bin/false -c submodule.recurse=false show --no-ext-diff --no-textconv REVIEWED_COMMIT:Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-preparation/reviewed-launch.py | /usr/bin/env -i HOME=/Users/eugene TMPDIR=/private/tmp PATH=/usr/bin:/bin:/usr/sbin:/sbin /Applications/Xcode.app/Contents/Developer/usr/bin/python3 -I -S -B -X pycache_prefix=/dev/null - REVIEWED_COMMIT REVIEWED_REPOSITORY_TREE REVIEWED_PACKET_TREE
 ```
 
 The command is unexecuted. Review pins must come from the independent review;
@@ -131,7 +131,7 @@ other profiles, resource bounds, images, full SO and conformance remain open.
 
 ## Static verification
 
-`test_static.py` runs 31 compiler-free tests with the real complete retained
+`test_static.py` runs 35 compiler-free tests with the real complete retained
 context and temporary fixtures. It covers missing/duplicate/unknown/mispartitioned
 labels, incorrect status and exits, reclassified negatives, wrong/wildcard named
 diagnostics, wrong primary locations even after log resealing, altered logs and
@@ -150,3 +150,32 @@ Run from the repository root with the absolute Xcode Python and startup flags
 shown above, replacing the final bootstrap `-` and pins with the path to
 `test_static.py`. No repository Swift test gate or formatter is part of this
 compiler-free preparation; no maintained Swift source changes.
+
+## Bounded readiness correction: Git execution configuration
+
+Independent readiness blocked candidate `1927f4c2`: the pre-claim Git status
+capture and inherited verifier Git helper could execute a configured
+`core.fsmonitor`; the documented pipe's left command used ambient `git`.
+That candidate remains a historical BLOCK and was never executed.
+
+Every new packet Git call now uses absolute `/usr/bin/git`, an explicit clean
+environment with system/global configuration disabled, no pager or optional
+locks, `core.fsmonitor=false`, an inert hooks path, and disabled external diff,
+credential and SSH helpers. Lazy object fetch and all transport protocols are
+disabled in the subprocess environment. Only seven read-only Git builtins are accepted;
+aliases and writable/network commands are rejected. Diff/show additionally
+force `--no-ext-diff --no-textconv`. A `git config --no-includes` scan rejects
+local and worktree include directives before evidence/status operations. The
+prior verifier's global Git binding is replaced with this same hardened helper
+immediately after its authenticated source is loaded; its stored bytes and all
+historical evidence remain unchanged. The README pipe's left command also uses
+an empty environment, absolute Git and the same execution overrides.
+
+Four specific adversarial tests use harmless temporary repositories and marker
+scripts. A positive control proves a configured fsmonitor hook runs without the
+new guard; qualifier, actual bootstrap-helper definitions and inherited verifier
+all suppress it. Other tests reject aliases/config includes, suppress external
+diff/textconv and pager/hooks capabilities, and execute only the README pipe's
+blob-fetch side under a fake ambient Git and hostile Git environment. Production
+bootstrap/main and the qualification marker remain unexecuted. No source,
+compiler allowance, result boundary, historical STOP or closure claim changes.

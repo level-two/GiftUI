@@ -26,9 +26,42 @@ def actual(path):
 def read(path):
     return json.loads(actual(path))
 
+def git_environment():
+    return dict(HOME='/Users/eugene', TMPDIR='/private/tmp',
+                PATH='/usr/bin:/bin:/usr/sbin:/sbin', LC_CTYPE='C.UTF-8',
+                GIT_CONFIG_NOSYSTEM='1', GIT_CONFIG_SYSTEM='/dev/null',
+                GIT_CONFIG_GLOBAL='/dev/null', GIT_TERMINAL_PROMPT='0',
+                GIT_NO_LAZY_FETCH='1', GIT_ALLOW_PROTOCOL='')
+
+def git_prefix():
+    return ['/usr/bin/git', '--no-replace-objects', '--no-pager', '--no-optional-locks',
+            '-c', 'core.fsmonitor=false', '-c', 'core.hooksPath=/dev/null',
+            '-c', 'diff.external=', '-c', 'credential.helper=',
+            '-c', 'core.sshCommand=/usr/bin/false', '-c', 'submodule.recurse=false']
+
+def guarded_git(root, *args):
+    # Only these builtins are reachable, so configured aliases, transports,
+    # filters, editors and signing tools cannot become command capabilities.
+    require(args and args[0] in ('cat-file', 'rev-parse', 'ls-tree', 'merge-base',
+                                'diff', 'show', 'status'), 'read-only Git builtin required')
+    prefix, environment = git_prefix(), git_environment()
+    configuration = subprocess.check_output(
+        [*prefix, 'config', '--no-includes', '--null', '--list'],
+        cwd=root, env=environment, stdin=subprocess.DEVNULL)
+    for entry in configuration.split(b'\0'):
+        name = entry.split(b'\n', 1)[0].lower()
+        require(not (name == b'include.path' or name.startswith(b'includeif.')),
+                'Git configuration includes forbidden')
+    arguments = list(args)
+    if arguments[0] in ('diff', 'show'):
+        arguments[1:1] = ['--no-ext-diff', '--no-textconv']
+    elif arguments[0] == 'status':
+        arguments[1:1] = ['--ignore-submodules=all']
+    return subprocess.check_output([*prefix, *arguments], cwd=root,
+                                   env=environment, stdin=subprocess.DEVNULL)
+
 def git(root, *args):
-    # The sole process capability used by this packet is read-only Git.
-    return subprocess.check_output(['/usr/bin/git', '--no-replace-objects', *args], cwd=root)
+    return guarded_git(root, *args)
 
 def verify_environment(environment):
     observed = dict(environment)
@@ -76,6 +109,9 @@ def load_prior(root, packet, recipe):
     source = object_bytes(root, 'blob', oid)
     namespace = {}
     exec(compile(source, '<pinned prior read-only verifier>', 'exec'), namespace)
+    # All prior functions resolve this global binding at call time. Preserve
+    # pinned verifier bytes while removing its ambient Git process capability.
+    namespace['git'] = git
     return directory, namespace
 
 def verify_recipe(recipe):

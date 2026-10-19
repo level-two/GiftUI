@@ -1,6 +1,8 @@
 """Compiler-free tests. Production launcher/main/marker are never invoked."""
 from pathlib import Path
 import copy
+import ast
+import shlex
 import hashlib
 import json
 import os
@@ -283,7 +285,7 @@ class StaticTests(unittest.TestCase):
             root = Path(temporary); packet = root / 'packet'; packet.mkdir()
             (packet / 'qualify.py').write_bytes(q.actual(PACKET / 'qualify.py'))
             def git(*args):
-                return subprocess.check_output(['git', '--no-replace-objects', *args], cwd=root, stderr=subprocess.DEVNULL)
+                return subprocess.check_output([*q.git_prefix(), *args], cwd=root, env=q.git_environment(), stdin=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             git('init', '-q'); git('config', 'user.email', 'fixture@example.invalid'); git('config', 'user.name', 'Static fixture')
             git('add', 'packet'); git('commit', '-qm', 'fixture')
             commit = git('rev-parse', 'HEAD').decode().strip(); tree = git('rev-parse', 'HEAD^{tree}').decode().strip(); ptree = git('rev-parse', 'HEAD:packet').decode().strip()
@@ -296,6 +298,130 @@ class StaticTests(unittest.TestCase):
             (packet / 'injected.py').unlink(); (packet / 'qualify.py').write_text('raise SystemExit(0)\n')
             with self.assertRaisesRegex(ValueError, 'committed directory bytes'):
                 q.verify_packet(root, packet, commit, tree, ptree)
+
+    def git_fixture(self, root):
+        def command(*args):
+            return subprocess.check_output([*q.git_prefix(), *args], cwd=root,
+                                           env=q.git_environment(), stdin=subprocess.DEVNULL,
+                                           stderr=subprocess.DEVNULL)
+        command('init', '-q')
+        command('config', 'user.email', 'fixture@example.invalid')
+        command('config', 'user.name', 'Static Git fixture')
+        return command
+
+    def bootstrap_git(self, root):
+        # Exercise the actual bootstrap helper definitions without executing any
+        # object-loading, runner, main or production-marker code.
+        names = {'require', 'git_environment', 'git_prefix', 'guarded_git', 'git'}
+        parsed = ast.parse((PACKET / 'reviewed-launch.py').read_text())
+        nodes = [node for node in parsed.body if isinstance(node, ast.FunctionDef) and node.name in names]
+        self.assertEqual({node.name for node in nodes}, names)
+        namespace = dict(root=root, subprocess=subprocess)
+        exec(compile(ast.Module(body=nodes, type_ignores=[]), '<actual bootstrap Git helper fixture>', 'exec'), namespace)
+        for name in ('git_environment', 'git_prefix', 'guarded_git'):
+            primary = next(node for node in ast.parse((PACKET / 'qualify.py').read_text()).body if isinstance(node, ast.FunctionDef) and node.name == name)
+            bootstrap = next(node for node in nodes if node.name == name)
+            self.assertEqual(ast.dump(primary, include_attributes=False), ast.dump(bootstrap, include_attributes=False))
+        return namespace['git']
+
+    def test_32_fsmonitor_cannot_execute_in_any_verifier_git_path(self):
+        with tempfile.TemporaryDirectory(dir='/private/tmp') as temporary:
+            root = Path(temporary); command = self.git_fixture(root)
+            marker = root / 'fsmonitor-executed'
+            hook = root / 'fsmonitor-hook'
+            hook.write_text('#!/bin/sh\nprintf executed > ' + shlex.quote(str(marker)) + '\nprintf "fixture-token\\0"\n')
+            hook.chmod(0o700)
+            command('config', 'core.fsmonitor', str(hook))
+            command('config', 'core.fsmonitorHookVersion', '2')
+            # A harmless positive control proves this configured hook is runnable.
+            subprocess.check_output(['/usr/bin/git', '--no-pager', 'status', '--porcelain'],
+                                    cwd=root, env=q.git_environment(), stdin=subprocess.DEVNULL,
+                                    stderr=subprocess.DEVNULL)
+            self.assertTrue(marker.exists())
+            marker.unlink()
+            q.git(root, 'status', '--porcelain')
+            self.assertFalse(marker.exists())
+            self.bootstrap_git(root)('status', '--porcelain')
+            self.assertFalse(marker.exists())
+            _, inherited = q.load_prior(q.ROOT, PACKET, RECIPE)
+            self.assertIs(inherited['verify_prior_context'].__globals__['git'], q.git)
+            inherited['git'](root, 'status', '--porcelain')
+            self.assertFalse(marker.exists())
+
+    def test_33_git_config_includes_and_alias_execution_rejected(self):
+        with tempfile.TemporaryDirectory(dir='/private/tmp') as temporary:
+            root = Path(temporary); command = self.git_fixture(root)
+            marker = root / 'alias-executed'
+            command('config', 'alias.p08-danger', '!printf executed > ' + shlex.quote(str(marker)))
+            with self.assertRaisesRegex(ValueError, 'read-only Git builtin'):
+                q.git(root, 'p08-danger')
+            with self.assertRaisesRegex(ValueError, 'read-only Git builtin'):
+                self.bootstrap_git(root)('p08-danger')
+            self.assertFalse(marker.exists())
+            included = root / 'included-config'
+            included.write_text('[core]\nfsmonitor = /usr/bin/false\n')
+            command('config', 'include.path', str(included))
+            with self.assertRaisesRegex(ValueError, 'configuration includes forbidden'):
+                q.git(root, 'status', '--porcelain')
+            with self.assertRaisesRegex(ValueError, 'configuration includes forbidden'):
+                self.bootstrap_git(root)('status', '--porcelain')
+
+    def test_34_external_diff_textconv_hooks_and_pager_are_inert(self):
+        with tempfile.TemporaryDirectory(dir='/private/tmp') as temporary:
+            root = Path(temporary); command = self.git_fixture(root)
+            marker = root / 'configured-command-executed'
+            helper = root / 'configured-helper'
+            helper.write_text('#!/bin/sh\nprintf executed > ' + shlex.quote(str(marker)) + '\n')
+            helper.chmod(0o700)
+            (root / '.gitattributes').write_text('sample.txt diff=p08fixture\n')
+            sample = root / 'sample.txt'; sample.write_text('alpha\n')
+            command('add', '.gitattributes', 'sample.txt'); command('commit', '-qm', 'fixture')
+            sample.write_text('beta\n')
+            command('config', 'diff.external', str(helper))
+            command('config', 'diff.p08fixture.textconv', str(helper))
+            command('config', 'core.pager', str(helper))
+            command('config', 'core.hooksPath', str(root))
+            output = q.git(root, 'diff', 'HEAD')
+            self.assertIn(b'+beta', output)
+            self.assertIn(b'+beta', self.bootstrap_git(root)('diff', 'HEAD'))
+            self.assertFalse(marker.exists())
+            self.assertIn('core.hooksPath=/dev/null', q.git_prefix())
+            self.assertEqual(q.git_environment()['GIT_NO_LAZY_FETCH'], '1')
+            self.assertEqual(q.git_environment()['GIT_ALLOW_PROTOCOL'], '')
+            self.assertIn('--no-pager', q.git_prefix())
+            with self.assertRaisesRegex(ValueError, 'read-only Git builtin'):
+                q.git(root, 'commit', '-am', 'forbidden')
+            self.assertFalse(marker.exists())
+
+    def test_35_readme_blob_bootstrap_ignores_ambient_git_and_config(self):
+        line = next(line for line in (PACKET / 'README.md').read_text().splitlines()
+                    if 'show --no-ext-diff --no-textconv REVIEWED_COMMIT:' in line)
+        left = shlex.split(line.split(' | ', 1)[0])
+        self.assertEqual(left[:2], ['/usr/bin/env', '-i'])
+        self.assertIn('/usr/bin/git', left)
+        self.assertNotIn('git', left)
+        self.assertIn('GIT_CONFIG_NOSYSTEM=1', left)
+        self.assertIn('GIT_CONFIG_GLOBAL=/dev/null', left)
+        self.assertIn('core.fsmonitor=false', left)
+        with tempfile.TemporaryDirectory(dir='/private/tmp') as temporary:
+            root = Path(temporary); command = self.git_fixture(root)
+            reference = left[-1].split(':', 1)[1]
+            blob = root / reference; blob.parent.mkdir(parents=True)
+            blob.write_bytes(b'harmless reviewed blob fixture\n')
+            command('add', reference); command('commit', '-qm', 'fixture')
+            commit = command('rev-parse', 'HEAD').decode().strip()
+            marker = root / 'ambient-git-executed'
+            fake_directory = root / 'fake-bin'; fake_directory.mkdir()
+            fake = fake_directory / 'git'
+            fake.write_text('#!/bin/sh\nprintf substituted > ' + shlex.quote(str(marker)) + '\n')
+            fake.chmod(0o700)
+            argv = [item.replace('REVIEWED_COMMIT:', commit + ':') for item in left]
+            ambient = dict(os.environ, PATH=str(fake_directory), GIT_DIR='/untrusted',
+                           GIT_CONFIG_GLOBAL='/untrusted', GIT_CONFIG_COUNT='1',
+                           GIT_CONFIG_KEY_0='core.fsmonitor', GIT_CONFIG_VALUE_0=str(fake))
+            output = subprocess.check_output(argv, cwd=root, env=ambient, stdin=subprocess.DEVNULL)
+            self.assertEqual(output, blob.read_bytes())
+            self.assertFalse(marker.exists())
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

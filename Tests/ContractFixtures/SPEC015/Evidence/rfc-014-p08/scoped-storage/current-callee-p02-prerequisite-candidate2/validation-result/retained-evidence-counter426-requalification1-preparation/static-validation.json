@@ -16,29 +16,29 @@
     "TMPDIR": "/private/tmp"
   },
   "exit": 0,
-  "finished_ns": 1792409303869095000,
+  "finished_ns": 1792409787570462000,
   "historical_stop_after_sha256": "71c478591e6cc0a47f4df89090686cc27a767ec9f0416bbd17c090cd7944171b",
   "historical_stop_before_sha256": "71c478591e6cc0a47f4df89090686cc27a767ec9f0416bbd17c090cd7944171b",
   "input_sha256": {
-    "README.md": "ca30e09705ee83ad27c9ff54432ec44523b71836ce0cf45d8daadb6fdfe70add",
+    "README.md": "64f8d9ff658fcf4b2a00ada9f933f3a197f93cbe6d52c1549724e4f2bbb57984",
     "artifacts.json": "7190c73871d5ec0288f631830995b86d1c52e42034bff9dca02706b682d7291b",
     "driver-identities.json": "d3bbdc1711ebe77696a6f5575136cd4c75d120826777876fecc2cfed58ffdce9",
     "enumerate_labels.py": "2314a9dab230b96a9e5fd83015bd7f3813e46d85aa89911a112d3356bab10488",
     "historical-terminal.json": "71c478591e6cc0a47f4df89090686cc27a767ec9f0416bbd17c090cd7944171b",
     "labels.json": "47c33d48fd6b77505034c1981554e3249f7ead375c7fb8fa5db99957c2c18412",
-    "qualify.py": "8bb7176f21c26419a8da270d2cb03b51fbb51dbf398483c0b7eefc0a8a93420f",
+    "qualify.py": "993875652567df1c3196ae0d619528fcfed24b6b8adfb8a5d061e01cfc297af8",
     "raw-roots.json": "008931d9536e202234b075105c4311fd8fb818cc07301232482e5904c6db43b5",
     "recipe.json": "214dc01953c40283723a15a1780dea8dc356df726f2acc6b9e0b576048de99a5",
-    "reviewed-launch.py": "56025f86ab5a7ec76170c955244d2fd34fa090751404985bf52992338722a58c",
+    "reviewed-launch.py": "dbb350a932b805b9dce9e583299f31aa0a72850740652a500acf6e24b1ad5e85",
     "run.py": "cc03b45fe0ec964849baf968d9eb8d644ab28054877378297f3362dfca579cd3",
     "source-identities.json": "a5ece21d63d68c71531b7adc6822cf2e13609ceb20355aea9329b7101a60abbf",
-    "test_static.py": "f8d969f64a0d3f59b8ec4350fccf4539c31ed0c6d9b7282bfa0e70412b6af707"
+    "test_static.py": "b99ce7991d8f4dcb805cf711305e837e650bc291dc105596edefbc0006dd3e25"
   },
   "production_marker_absent": true,
   "schema4_launches": 0,
   "scope": "compiler-free preparation static tests only; no production qualification",
-  "start_ns": 1792409257696204000,
-  "stderr_sha256": "920d60ea1af87c76fa1b0e714df7ee4c2fe2acde3324bbc8c537db9a74655ed2",
+  "start_ns": 1792409733406455000,
+  "stderr_sha256": "91337ff3bee8281e7bdf9cdc16cc1a339c1f06cc844ac776fba80560d32fee2b",
   "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "tests": 31
+  "tests": 35
 }
