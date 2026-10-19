@@ -6,7 +6,7 @@ status: accepted
 authors:
   - codex
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-19
 proposal:
   - PROPOSAL-007
 related_rfcs:
@@ -24,7 +24,8 @@ related_specs:
   - SPEC-011
   - SPEC-013
   - SPEC-015
-related_future_work: []
+related_future_work:
+  - FW-040
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -153,10 +154,16 @@ explicit without claiming that fewer copies alone prove a speedup or image fit.
 
 ## Deferred and Follow-up Work
 
-No new deferred item. The required work above remains in RFC-014's IH-1–6
+The required work above remains in RFC-014's IH-1–6
 implementation handoff after ADR acceptance and Spec approval. Terminal
 SPIKE-069–074 evidence stays linked through the source RFC; no successor
 investigation is authorized. External delivery remains RFC-013 / ITERATION-004.
+
+[FW-040](../future-work/fw-040-compiler-specialized-view-derivation.md), captured
+on 2026-10-19, preserves a future investigation of compiler specialization and
+invariant-work elimination in typed derivation. It changes no decision or
+current implementation requirement and authorizes no experiment. Precomputed
+occurrence topology remains excluded by this ADR.
 
 ## Rejected Alternatives
 

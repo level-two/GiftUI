@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-10-06
-updated: 2026-10-13
+updated: 2026-10-19
 source:
   - SPEC-015
   - RFC-014
@@ -15,6 +15,7 @@ source:
   - RFC-013
 related_future_work:
   - FW-037
+  - FW-040
 related_explorations: []
 related_spikes: []
 promoted_to: []
@@ -68,6 +69,13 @@ implementation, frontend/IR or service-framework scope is added.
 Captured. Revisit through Exploration or the main lifecycle when the trigger
 occurs. Any adoption requires reviewed architecture and approved contracts;
 this item grants no implementation authority.
+
+## Deferred and Follow-up Work
+
+[FW-040](fw-040-compiler-specialized-view-derivation.md) separately captures
+compiler specialization of typed runtime derivation. That investigation need
+not wait for interchangeable frontends, because it does not select precomputed
+occurrence topology. This item's scope, status and revisit triggers are unchanged.
 
 ## References
 
