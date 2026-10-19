@@ -1,0 +1,16 @@
+HTTP/1.1 200 OK
+Server: GitHub-Babel/3.0
+Content-Type: application/x-git-upload-pack-result
+Content-Security-Policy: default-src 'none'; sandbox
+expires: Fri, 01 Jan 1980 00:00:00 GMT
+pragma: no-cache
+Cache-Control: no-cache, max-age=0, must-revalidate
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+Transfer-Encoding: chunked
+Date: Mon, 19 Oct 2026 18:09:55 GMT
+X-Frame-Options: DENY
+X-GitHub-Request-Id: D489:A06A6:3DDF0C5:4DEC2D5:6AD65CF3
+x-github-edge-region: fra
+connection: close
+

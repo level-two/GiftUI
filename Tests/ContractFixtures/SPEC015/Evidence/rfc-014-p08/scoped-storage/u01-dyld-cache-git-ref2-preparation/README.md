@@ -1,5 +1,15 @@
 # U01 exact Git ref route 2 preparation — 2026-10-19
 
+**Current disposition: STOP / one-shot result observed; independent result review pending.**
+The [separate outcome record](result-README.md) and [inspection](result-inspection.json)
+package the unchanged fixed result: two HTTP 200 responses, exact empty ls-refs
+flush, 195 accepted body bytes and actual exit 0. Only no exact
+refs/tags/macos-2662 advertised at lookup time is established. The session is
+permanently 1/1 consumed; prior API1/1, repairs/retries0, five dirty files/cache,
+three 1/1 markers and all P08 open gates are preserved. STOP for independent
+result review and separately prepared next evidence; no automatic follow/retry.
+Earlier preparation checkpoints below are historical.
+
 **Current disposition: GO / independent technical launch readiness PASS** for
 exact `046ecbda` and the final hashes frozen in the
 [startup re-review](startup-environment-independent-review.md). Exact env -i

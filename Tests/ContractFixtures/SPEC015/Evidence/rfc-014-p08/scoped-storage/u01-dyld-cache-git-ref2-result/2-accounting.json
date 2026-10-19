@@ -1,0 +1,10 @@
+{
+  "aggregate_body_bytes": 195,
+  "body_bytes": 4,
+  "error": null,
+  "framing_bytes": 10,
+  "framing_complete": true,
+  "headers_bytes": 522,
+  "request_number": 2,
+  "status": 200
+}

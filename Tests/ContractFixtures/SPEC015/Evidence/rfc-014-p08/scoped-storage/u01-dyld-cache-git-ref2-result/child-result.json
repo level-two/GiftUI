@@ -1,0 +1,31 @@
+{
+  "accepted_body_bytes": 195,
+  "accounting_complete": true,
+  "end_monotonic": 2674663.705032625,
+  "observation": "no exact candidate advertised",
+  "refs": [],
+  "request_intents": 2,
+  "responses": [
+    {
+      "aggregate_body_bytes": 191,
+      "body_bytes": 191,
+      "error": null,
+      "framing_bytes": 11,
+      "framing_complete": true,
+      "headers_bytes": 529,
+      "request_number": 1,
+      "status": 200
+    },
+    {
+      "aggregate_body_bytes": 195,
+      "body_bytes": 4,
+      "error": null,
+      "framing_bytes": 10,
+      "framing_complete": true,
+      "headers_bytes": 522,
+      "request_number": 2,
+      "status": 200
+    }
+  ],
+  "status": "OBSERVED"
+}

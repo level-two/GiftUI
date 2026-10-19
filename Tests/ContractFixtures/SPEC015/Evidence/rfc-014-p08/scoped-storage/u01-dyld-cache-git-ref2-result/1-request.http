@@ -1,0 +1,8 @@
+GET /apple-oss-distributions/distribution-macOS.git/info/refs?service=git-upload-pack HTTP/1.1
+Host: github.com
+Git-Protocol: version=2
+Accept: application/x-git-upload-pack-advertisement
+Accept-Encoding: identity
+Connection: close
+User-Agent: GiftUI-U01-ref2/1
+

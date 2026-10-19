@@ -1,0 +1,21 @@
+{
+  "aggregate_body_cap": 1048576,
+  "argv": [
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/controller.py",
+    "4e357ba8bc5ff1c41135ef25afeb76a03265577455dbf8390945c70caa72f33a",
+    "9125e13998120ae2f15d71948110b5141c0915e7939955595c6f41076057a374"
+  ],
+  "controller_sha256": "9125e13998120ae2f15d71948110b5141c0915e7939955595c6f41076057a374",
+  "deadline_monotonic": 2674692.8354115,
+  "environment": {
+    "LANG": "C",
+    "LC_ALL": "C",
+    "TZ": "UTC",
+    "__CF_USER_TEXT_ENCODING": "0x1F5:0x7:0x3D"
+  },
+  "max_requests": 2,
+  "pid": 1430,
+  "runtime_lock_sha256": "4e357ba8bc5ff1c41135ef25afeb76a03265577455dbf8390945c70caa72f33a",
+  "start_monotonic": 2674662.8354115,
+  "status": "CONSUMED before emission"
+}

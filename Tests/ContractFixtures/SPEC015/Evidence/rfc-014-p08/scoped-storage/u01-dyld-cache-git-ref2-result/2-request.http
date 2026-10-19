@@ -1,0 +1,15 @@
+POST /apple-oss-distributions/distribution-macOS.git/git-upload-pack HTTP/1.1
+Host: github.com
+Git-Protocol: version=2
+Accept: application/x-git-upload-pack-result
+Accept-Encoding: identity
+Connection: close
+User-Agent: GiftUI-U01-ref2/1
+Content-Type: application/x-git-upload-pack-request
+Content-Length: 96
+
+0014command=ls-refs
+0017object-format=sha1
+00010009peel
+0024ref-prefix refs/tags/macos-2662
+0000

@@ -1,0 +1,8 @@
+[
+  "version 2",
+  "agent=git/github-41cc7379a75f-Linux",
+  "ls-refs=unborn",
+  "fetch=shallow wait-for-done filter",
+  "server-option",
+  "object-format=sha1"
+]

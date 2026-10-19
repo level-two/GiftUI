@@ -1,5 +1,16 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+Current P08 Git-ref2 result — **STOP / bounded observation; independent result review pending**.
+The [packaged result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/result-README.md)
+retains two HTTP 200 responses, exact empty ls-refs flush, 195 accepted body bytes,
+complete accounting and actual exit 0. Only no exact refs/tags/macos-2662 advertised
+at lookup time is established; release/source absence and build/dyld/cache association
+remain unproved. Fixed raw result permanently consumed 1/1 and unchanged;
+API1/1, requests2/2, repairs/retries0, five dirty files/cache and three 1/1 markers
+preserved. STOP for separate independent result review, then separately prepared
+bounded next evidence; no automatic follow/retry or P08/R07/T8.1 acceptance.
+Earlier checkpoints below are historical.
+
 Current P08 startup re-review — **GO / independent technical launch readiness PASS**.
 The [exact 046ecbda review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/startup-environment-independent-review.md)
 freezes final source/lock/request pins and verifies exact three-entry env -i input,

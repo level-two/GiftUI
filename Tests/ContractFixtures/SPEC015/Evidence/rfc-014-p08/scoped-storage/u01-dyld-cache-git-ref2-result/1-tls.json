@@ -1,0 +1,13 @@
+{
+  "cipher": [
+    "TLS_AES_128_GCM_SHA256",
+    "TLSv1.3",
+    128
+  ],
+  "peer": [
+    "140.82.121.3",
+    443
+  ],
+  "peer_certificate_sha256": "46b601ee08b418cf8a3a1ebfe670ba5ce43bb05a917fa8b2dd087a30471cfc63",
+  "version": "TLSv1.3"
+}
