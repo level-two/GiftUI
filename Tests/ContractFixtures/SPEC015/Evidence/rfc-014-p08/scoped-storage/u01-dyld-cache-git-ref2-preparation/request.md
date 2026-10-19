@@ -1,102 +1,143 @@
-# Proposed exact smart-HTTPS Git ref read
+# Revised exact Git candidate-ref request — 2026-10-19
 
-## Provenance and question
+**Preparation only; readiness NOT READY pending independent review.**
+The concrete [controller](controller.py), [enforcement explanation](controller-preparation.md),
+[runtime lock](runtime-lock.json) and [exact invocation/pins](request.json)
+replace the bare-Git proposal in `8250f8ec`. The B01/B02 STOP review in `0625592a`
+remains historical evidence. This revision proposes their resolution, without
+claiming independent acceptance or launch permission. The controller has never
+been imported/executed; no network operation occurred.
 
-Use only `https://github.com/apple-oss-distributions/distribution-macOS.git`.
-The earlier [retained metadata packet](../u01-dyld-cache-schema-source1-preparation/README.md)
-identifies the Apple distribution repository and retains API tag/commit records
-from that exact repository. The HTTPS Git remote is the same Apple-maintained
-repository through a distinct protocol endpoint. Its ref advertisement would
-be first-party publication metadata, not a claim that the advertised source
-built the installed binary. TLS verifies the transport endpoint; a Git object
-ID identifies content and does not attest a build.
+## Fixed origin and operations
 
-The exact candidate is `refs/tags/macos-2662`; include only its possible peeled
-advertisement `refs/tags/macos-2662^{}`. Both spellings are fixed in
-[request.json](request.json). The spelling is inferred from retained names such
-as `macos-265` and `macos-264`, not from any retained 26.6.2 release/build record.
-No `main`, neighboring tag, page, broad search or alternate spelling is allowed.
-This is a new separately reviewed protocol route; do not replay the consumed
-GitHub API `/git/ref/tags/macos-2662` GET or wait for its rate limit to reset.
+The sole repository is Apple's already identified
+`https://github.com/apple-oss-distributions/distribution-macOS.git`.
+Retained API metadata supports that repository identity. Candidate spelling
+`refs/tags/macos-2662` remains inferred from retained release names; existence,
+release meaning, 26.6.2/build 25G83 and cache applicability are unknown.
 
-## Proposed operations and limits
+1. One GET to
+   `https://github.com/apple-oss-distributions/distribution-macOS.git/info/refs?service=git-upload-pack`,
+   with `Git-Protocol: version=2`, for capability discovery.
+2. Only after valid v2 capabilities, at most one POST to
+   `https://github.com/apple-oss-distributions/distribution-macOS.git/git-upload-pack`
+   with `Content-Type: application/x-git-upload-pack-request` and the exact
+   contiguous 96-byte packet body pinned as ASCII and hex in request.json:
 
-One `git ls-remote --exit-code --tags` process with the exact argv in
-`request.json`, protocol v2 requested, redirect following disabled, TLS
-verification enabled, and no credentials, cookies, extra HTTP headers or prompts.
-The command is declared, not executed. The expected smart-HTTPS exchange is:
+```text
+0014command=ls-refs\n0017object-format=sha1\n00010009peel\n0024ref-prefix refs/tags/macos-2662\n0000
+```
 
-1. GET `https://github.com/apple-oss-distributions/distribution-macOS.git/info/refs?service=git-upload-pack`
-   for protocol v2 capability discovery.
-2. POST `https://github.com/apple-oss-distributions/distribution-macOS.git/git-upload-pack`
-   for `ls-refs` with the candidate ref prefix. No `fetch` command, packfile,
-   clone, tree, commit/tag object body, submodule or source read is allowed.
+Here `\n` represents a literal LF. Data length prefixes include four hex digits
+and the LF. `0001` separates command capabilities from arguments; `0000` ends
+this request. No agent, symrefs, unborn, fetch, want/have, object ID, pack, clone
+or broad prefix is sent. The prefix can match similarly named refs; any such
+response is STOP. Fixed request headers are constructed by `request_bytes`:
+Host github.com, Git-Protocol version=2, exact response media type, identity
+encoding, Connection close and fixed User-Agent, plus POST type/length only.
 
-There may be fewer requests on failure. Maximum accepted is two logical HTTP
-requests, 1,048,576 aggregate HTTP response-body bytes and 30 seconds wall time;
-retries zero. Protocol v0/v1 fallback, auth challenge/retry, redirect,
-additional logical request, excess bytes or missing/incomplete receipts is STOP.
-An exact ref-prefix can also advertise similarly prefixed names; accept only
-the two declared exact names and treat any other advertised ref as STOP.
+The capability parser requires `version 2`, unique printable capability lines,
+`ls-refs` and explicit `object-format=sha1`. It rejects unknown ls-refs arguments.
+An optional exact smart-HTTP `001e# service=git-upload-pack\n0000` envelope may
+precede the required v2 packets. Lowercase four-digit hex lengths, printable
+ASCII payloads with one terminal LF, valid data lengths 5–65,520, and exactly
+one terminal flush with no trailing bytes are required. Unexpected response
+control packets, malformed lengths or truncation are STOP; there is no fallback.
 
-**Unresolved execution-envelope prerequisite:** Git's `http.maxRequests=1`
-limits concurrency, not total requests. Bare `ls-remote` offers no hard total
-transfer-byte cap and may perform protocol negotiation before a wrapper can
-inspect it. The two-request/1-MiB limits above are acceptance ceilings, not a
-claim of hard wire enforcement. Before launch, independent readiness review
-must require a concrete envelope with enforceable bounds or explicitly return
-STOP for this proposal. Do not convert observation of an overrun into a pass.
-Do not add proxy/tool/controller operations or relax limits without a revised
-bounded preparation and review. This packet clears no execution.
+The ls-refs response is empty or exactly one record with a nonzero 40-digit
+lowercase SHA-1 and exact `refs/tags/macos-2662`, optionally with one
+`peeled:<40-digit-nonzero-SHA1>` attribute. V2 carries peeling as that attribute,
+not a second wire ref record. The result normalizes it to
+`refs/tags/macos-2662^{}`. Other/duplicate records, names, attributes or hash
+formats are STOP. No returned tag/commit/tree/gitlink/object is followed.
 
-## Environment, receipts and destinations
+## B01: enforced envelope
 
-Any future reviewed launcher must start from the repository root and use a new
-result directory
+The controller has two fixed slots checked before emission. It durably records
+an intent before DNS/connect, conservatively consuming that slot even if no HTTP
+bytes reach the server. One socket/address and one sendall are permitted per
+slot; there is no address fallback or replay after partial failure. No generic
+URL, third request, retry, redirect, auth replay, alternate origin or protocol
+fallback path exists. GET and POST use separate verified TLS connections. The
+pinned CA file validates github.com with minimum TLS 1.2.
+
+Only HTTP/1.1 with unique Content-Length or strictly parsed chunked framing is
+accepted. Duplicate/folded/conflicting headers, informational status, chunk
+extensions/trailers, unsupported content encoding and unknown framing fail
+closed. Accepted failure-body bytes count toward the same aggregate limit;
+failure status never permits the POST. No decompression exists.
+
+The ceiling is **1,048,576 accepted HTTP entity-body octets** across both
+operations. Every body receive is bounded by the shared remaining budget. An
+oversized declared body/chunk stops before acceptance. Unknown/inconsistent
+framing stops. Exactly the ceiling is acceptable only with completed framing;
+there is no extra sentinel body read. Headers and chunk framing have separate
+65,536-byte caps per response; each retained file is capped at 1 MiB. This is
+**not a cap on all server-sent, TLS/socket-buffered or wire bytes**. HTTP framing,
+headers, DNS/TCP/TLS and unaccepted data are outside the body-byte measure.
+
+One absolute monotonic 30-second deadline begins after the first time import,
+before other imports, identity checks, marker/receipt creation, fork or network.
+Startup exhaustion prevents emission. A supervisor enforces the same deadline
+and kills the complete child process group/PID; the child also arms a matching
+alarm and bounds socket operations. Blocking DNS is bounded by the supervisor.
+No child can spawn processes. Bootstrap/filesystem delays before supervision
+cannot emit network; durable terminal cleanup may continue after termination.
+Missing/incomplete accounting, partial/truncated files or uncertain completion
+are STOP. See controller-preparation.md for exact interruption/death behavior.
+
+## B02: isolation and identity
+
+No Git executable/library or repository discovery/configuration is used. There
+is no config/URL rewrite mechanism to isolate. No empty descendant directory is
+created or asserted as isolation. The pinned `env -i` invocation and `-I -S -B`
+remove inherited environment/Python/site effects before interpreter startup;
+the controller requires exactly LANG=C, LC_ALL=C and TZ=UTC. Direct sockets do
+not read proxy settings, credential/cookie providers, Git config or tracing.
+Offline AST import inspection confirms no subprocess/HTTP-client imports;
+independent review must inspect the actual construction and call paths.
+
+request.json pins the absolute executable, argv and externally supplied final
+controller/runtime-lock SHA-256 arguments. The reviewer must independently
+freeze those pins; the script does not approve its own mutable request packet.
+Before emission it checks those hashes, Python flags/version, all dependency
+bytes and exact OS release/kernel build. Runtime-lock pins Python 3.14.6,
+stdlib/extension/framework/OpenSSL and CA bytes. Shared-cache system runtime
+bytes are identified by OS build, not extracted/hashed or attested. Normal
+filesystem/OS trust remains necessary; identity checks are not a hostile-kernel
+attestation.
+
+## Durable result boundary
+
+The sole destination is
 `Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-result/`.
-Replace literal `RESULT` in the pinned argv only with that absolute directory.
-Create its empty `empty-git-context/` directory exclusively and run Git with
-`-C` there so repository config cannot rewrite the remote. Supply a clean,
-explicit environment, disable global/system Git config, prompts, askpass,
-credential managers and tracing inherited from the caller, and disallow proxy
-or URL rewriting configuration. Record the Git executable/version/hash and
-final argv/environment policy before launch. This is metadata tooling, not a
-target execution allowance.
+Its exclusive mkdir and parent fsync create the permanent consumed session
+marker. Exclusive fsynced launch.json precedes emission. Existing destination
+means STOP. Never remove/replace/rename it, use another destination, resume,
+repair or retry. Failure before a complete launch receipt still consumes the
+created marker. Request bytes/intents, TLS endpoint/certificate metadata,
+original status/headers, body and chunk framing, per-operation accounting and
+partial files are retained. Empty stdout/stderr are explicit. Terminal records
+include monotonic times, actual wait/exit/signal, sizes/SHA-256 and completeness.
+Local receipts/hashes do not independently attest transport. There is no Git
+trace. Missing/malformed receipts are STOP regardless of other apparent success.
 
-Retain original stdout, stderr, complete raw Git curl trace and packet trace as
-`ls-remote.stdout`, `ls-remote.stderr`, `git-curl.trace`, `git-packet.trace`.
-Enable only launcher-selected `GIT_TRACE_CURL` (with data enabled) and
-`GIT_TRACE_PACKET`; keep authentication absent. Trace files are raw trace
-receipts, not raw binary HTTP response bodies or cryptographic attestations.
-The final execution envelope must specify how aggregate body-byte/request
-accounting is derived without confusing trace-format overhead with wire bytes.
-Retain a launch receipt, monotonic start/end/timeout, actual exit/signal,
-per-stream sizes/SHA-256, request/status/protocol accounting, exact ref records
-and any partial files on failure. Retained streams must each be capped at
-1 MiB and truncation must fail. A supervising process must enforce the
-30-second wall limit and terminate the entire child process group on any stop.
-No execution/receipt is fabricated in this preparation.
+Every result, including no exact match or successful advertisement, ends this
+session. No match concerns this candidate at lookup time; it does not prove
+absence of corresponding Apple source. Success identifies only an advertised
+publication/content name. The missing chain stays: official 26.6.2/build 25G83
+association → immutable distribution revision → dyld source revision → exact
+schema and cache UUID f2e86c53-6052-388b-ba71-5a0c9b569413 applicability.
+Header candidates/bytes stay 0/3 / 0. No source/header/Git-object acquisition,
+schema/parser/cache/dyld research, extraction, compiler/build/test/runtime or
+target operation follows.
 
-## Interpretation boundary and stops
-
-Stop after the one session and retained result, including a successful exact
-ref advertisement. Exit 2/no match is an observation about this exact candidate
-at this time; it does not prove that Apple published no corresponding source.
-Nonzero exit, timeout, malformed/duplicate/inconsistent ref records, unexpected
-hash format, protocol fallback, failure status or any bound violation is STOP.
-No automatic repair, retry, second session, ref spelling or fallback follows.
-
-A successful advertisement may identify a candidate tag/object ID; it does
-not establish the release spelling's meaning, macOS 26.6.2 **build 25G83**, the
-distribution tree's dyld gitlink/source revision, or their applicability to
-shared-cache UUID `f2e86c53-6052-388b-ba71-5a0c9b569413`. The missing chain is:
-official exact version/build association → immutable distribution revision →
-dyld source revision → exact source schema and cache applicability. Every
-missing link remains unproved. No returned object may be followed in this
-session, and no header candidate/field offset may be selected from its result.
-
-No cache parser, source/header acquisition, binary extraction/acquisition,
-controller/dyld inspection, target runtime/compiler/build/test or repair is
-authorized. Preserve the five dirty files/cache and all three consumed P08
-markers. The current STOP/open gates in the README remain binding. Any actual
-warm-up, heap/ownership/privacy/bound/scope decision goes to Astra Medium.
+Prior API GET remains 1/1 consumed. Three P08 markers stay each 1/1 consumed,
+repairs/retries 0; five dirty files and exact cache membership/hash are preserved.
+S and old B stay closed. U01/R01–R04, ordinary identity, standalone/cache
+ equivalence, Error size/body/transitive costs, U02–U05, complete callee/safety,
+strict cold/zero heap, four-profile ABI/resources, remaining SO criteria,
+P08/R07/T8.1/conformance and I4-07/P09–P12 stay open. No architecture, contract,
+scope, criterion, resource exception, lifecycle or repair allowance changed.
+Actual contract/scope choices return to the parent for requested Astra Medium
+review. No such choice was needed for this preparation.

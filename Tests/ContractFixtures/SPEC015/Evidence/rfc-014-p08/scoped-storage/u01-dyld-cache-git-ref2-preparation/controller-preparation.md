@@ -69,13 +69,13 @@ complete framed accounting and a child observation before the deadline can yield
 local controller receipts and hashes, not independent transport attestations.
 
 `runtime-lock.json` pins the resolved Homebrew Python 3.14.6 executable, framework,
-1,927 stdlib Python/extension files, OpenSSL libssl/libcrypto, and `/etc/ssl/cert.pem`
-by exact byte SHA-256 (1,933 paths total). Version strings and exact Darwin
+2,159 stdlib source/extension/cached-bytecode files, OpenSSL libssl/libcrypto, and `/etc/ssl/cert.pem`
+by exact byte SHA-256 (2,165 paths total). Version strings and exact Darwin
 release/kernel build are checked. System shared-cache libraries are identified
 by that OS build; they were not extracted or hashed and this is not a runtime
 attestation. The fixed `env -i` invocation in revised request.json removes all
 inherited environment before interpreter startup; `-I -S -B` removes Python
-environment/search/site effects and bytecode writes. No custom import path or
+environment/search/site effects and bytecode writes. Existing bytecode reads remain possible, so exact stdlib/bytecode membership and hashes, import search paths/absent archive paths, and loaded module origins are also checked. No custom import path or
 environment variable is accepted. Normal filesystem/OS trust remains necessary;
 the pins are reproducible identity checks, not a defense against a hostile kernel.
 
@@ -84,6 +84,6 @@ or executing it, inspected forbidden imports, and compared the five dirty files,
 exact cache membership/hash and three device/inode pairs with the retained
 baseline. The [inspection](controller-preparation-inspection.json) records PASS
 for these limited checks. No behavioral/network test, result directory, request,
-source/header/object read or dyld/cache tool ran. No maintained Swift change or
+dyld research source/header/Git-object read or dyld/cache tool ran. No maintained Swift change or
 repository test gate is part of this tooling preparation. All original API 1/1,
 markers 1/1, repair/retry zero and P08 open/closed dispositions remain binding.

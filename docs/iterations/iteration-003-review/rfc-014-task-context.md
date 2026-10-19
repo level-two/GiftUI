@@ -1,17 +1,19 @@
 # RFC-014 task context guide
 
-Current P08 metadata preparation — **exact smart-HTTPS Git candidate-ref route independently reviewed: STOP / readiness NOT READY**.
-The [separate route preparation](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/README.md)
-pins the Apple distribution Git remote and only candidate `refs/tags/macos-2662`
-plus its peeled form. No network request ran. Candidate existence, 25G83/build
-association, dyld revision and cache applicability remain unproved. The proposed
-two-request/1-MiB acceptance limits need a concrete enforced execution envelope;
-bare Git does not supply those hard caps. The [independent Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/independent-review.md)
-requires an enforcing controller and explicit repository-config isolation: an
-empty descendant directory still permits parent Git discovery. Both block
-launch; no object/header/parser/controller follow is cleared.
-The five dirty files/cache and three 1/1 markers remain unchanged, repairs/retries
-0. S and old B remain closed; U01/R01–R04, strict cold and P08/R07/T8.1 stay open.
+Current P08 metadata preparation — **concrete offline smart-HTTPS controller prepared; readiness NOT READY pending independent review**.
+The [revised packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/README.md)
+now supplies a pinned Python stdlib controller for only GET capability discovery
+and at most one exact-prefix POST ls-refs. It proposes B01 request/body/time
+ enforcement and B02 isolation by using no Git executable/config discovery.
+The ceiling counts accepted HTTP body octets, not wire bytes. Exclusive durable
+one-session receipts, strict parsing, clean runtime/bytecode dependency pins and
+no retry/redirect/auth replay/fallback are concrete and unexecuted. The original
+[independent B01/B02 STOP](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/independent-review.md)
+remains historical; no independent acceptance or launch is claimed. No network,
+controller execution/import or source/header/Git-object read ran. Prior API GET
+1/1, five dirty files/cache, three 1/1 markers and repairs/retries 0 are preserved.
+Candidate existence/build/dyld/cache proof remains missing. S/old B stay closed;
+U01/R01–R04, strict cold and P08/R07/T8.1 remain open.
 
 Prior P08 metadata boundary — **exact ref HTTP 403 result independently PASS/STOP**.
 The [independent result review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-macos-2662-ref1-result/independent-review.md)

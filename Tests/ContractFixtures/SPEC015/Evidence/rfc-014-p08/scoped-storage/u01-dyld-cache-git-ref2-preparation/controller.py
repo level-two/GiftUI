@@ -313,6 +313,17 @@ def verify_identity(expected_lock, expected_controller):
             'require -I -S -B')
     require(dict(os.environ) == ENV, 'require exact clean environment')
     require(os.uname().release == lock['os_release'] and os.uname().version == lock['os_version'], 'OS identity')
+    require(sys.path == lock['sys_path'], 'runtime search path mismatch')
+    require(all(not Path(path).exists() for path in lock['absent_sys_path']), 'new import archive/path')
+    members = {str(path.resolve()) for path in Path(lock['stdlib']).rglob('*')
+               if path.is_file() and path.suffix in ('.py', '.pyc', '.so')
+               and 'site-packages' not in path.parts}
+    require(members == set(lock['stdlib_members']), 'stdlib/bytecode membership changed')
+    for module in list(sys.modules.values()):
+        if module is sys.modules.get('__main__'):
+            continue  # externally pinned controller, verified above
+        path = getattr(module, '__file__', None)
+        require(path is None or str(Path(path).resolve()) in lock['files'], 'unpinned imported module')
     for path, sha in lock['files'].items():
         require(digest(path) == sha, 'runtime dependency identity mismatch: ' + path)
 

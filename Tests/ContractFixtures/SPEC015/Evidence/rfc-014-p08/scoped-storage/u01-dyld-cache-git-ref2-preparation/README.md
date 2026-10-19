@@ -1,48 +1,50 @@
 # U01 exact Git ref route 2 preparation — 2026-10-19
 
-**Preparation only; network execution not ready.** Following the independently
-reviewed [HTTP 403 STOP](../u01-dyld-cache-macos-2662-ref1-result/independent-review.md)
-at `1a7339aa9386197d916d6855882177caffe06866`, the human continuation “Please
-proceed” covers preparation of a separately bounded route and independent
-review. No new network operation ran. The consumed API GET remains consumed.
+**Revised offline controller preparation; readiness NOT READY pending independent
+review.** The parent authorized preparing a concrete controller and revised
+packet after `8250f8ec` and the B01/B02 STOP review at `0625592a`. No network
+operation or controller execution/import ran. The prior API GET stays consumed.
 
-The proposed route is one smart-HTTPS Git `ls-remote` session against Apple's
-already identified distribution repository, restricted to candidate
-`refs/tags/macos-2662` and its peeled form. [Request and stops](request.md) and
-[exact argv and limits](request.json) pin the proposal. The remote identity is
-supported by retained metadata; the candidate spelling is inferred from the
-retained release naming convention and has not been established as a published
-release. This route answers only whether the candidate ref resolves and, if so,
-its advertised object ID. It cannot establish build 25G83, a dyld revision or
-installed-cache applicability. A source mapping remains a later separately
-prepared and reviewed dependency.
+[request.md](request.md) and [request.json](request.json) now pin the exact Python
+stdlib direct HTTPS controller, runtime/dependency hashes, clean invocation,
+GET capability discovery and at most one POST ls-refs with only candidate prefix
+refs/tags/macos-2662 and peel. [Controller enforcement](controller-preparation.md)
+explains fixed request slots, shared accepted-body budget, strict HTTP/pkt-line
+parsing, durable exclusive marker/receipt, partial files and supervisor deadline.
+No Git executable/configuration discovery exists, addressing B02's mechanism.
+B01's body limit is explicitly accepted HTTP body octets, not a wire-byte cap.
+The original [independent review](independent-review.md) is preserved unchanged;
+its findings require a fresh independent readiness disposition on this revision.
 
-The proposed session accepts at most two logical HTTP requests, 1 MiB aggregate
-response bytes and 30 seconds. Bare Git cannot enforce the first two limits;
-`http.maxRequests=1` limits concurrency only. Independent review must resolve
-that execution-envelope gap before launch. Neither a review of this preparation
-nor the human continuation silently waives the gap. No launch controller is
-provided or executed by this packet.
+The session ceiling stays two requests, 1,048,576 aggregate accepted HTTP
+response-body bytes, 1 MiB per retained file and one 30-second monotonic deadline;
+retries/repairs/redirects/auth replays/fallback zero. The sole fixed result directory
+must be exclusively created and permanently consumed before emission. There is
+no successor destination, resume or retry. External final hashes in request.json
+must be independently frozen before any possible launch; this packet approves
+none. Script/runtime identity checks are local integrity checks, not transport
+or hostile-OS attestations. System runtime libraries are identified by exact
+Darwin build without shared-cache extraction.
 
-[Offline inspection](inspection.json) records exact retained-metadata hashes,
-the five dirty-file hashes, one-file cache membership/hash and three marker
-device/inode identities. All preservation checks match the prior baseline.
-Markers remain each 1/1 consumed, repairs 0, retries 0. Header candidates/bytes
-remain 0/3 / 0. No header, Git object, cache parser or dyld tool was read/run.
+[Original inspection](inspection.json) preserves retained-metadata identity and
+[controller preparation inspection](controller-preparation-inspection.json)
+records AST-only syntax/import inspection, unchanged five dirty-file/cache
+hashes/membership and three marker device/inode pairs. No behavioral or transport
+test was run. The controller was not imported or executed. The fixed result
+directory does not exist. All markers remain 1/1 consumed, repairs/retries 0;
+header candidates/bytes 0/3 / 0. The earlier API HTTP 403 STOP remains intact.
 
-This remains post-MVP ITERATION-003 revision 5 I3-04/I3-05 evidence under accepted
-ADR-039/040 and implementing SPEC-015. Closed ITERATION-001 analyzer/stack
-obligations are preserved. No architecture, contract, scope, criterion, resource
-exception, lifecycle status or repair allowance changes. S and old B remain
-closed. U01/R01–R04, ordinary loaded identity, standalone/cache equivalence,
-Error size/body/transitive costs, U02–U05, complete callee/safety, strict cold,
-four-profile ABI/resources, P08/R07/T8.1 and conformance remain open. No new
-deferred discovery or actual contract/scope choice arose; any relaxation goes
-upstream for the requested Astra Medium decision.
+The only possible observation is whether that exact inferred candidate ref is
+advertised and its object ID/peeled ID. Candidate existence, official 26.6.2/
+25G83 association, distribution/dyld revision and cache applicability remain
+unproved. No returned object, source/header, schema/parser, cache/dyld research,
+compiler/build/test/target operation or other P08 activity follows automatically.
 
-[Independent Strong review](independent-review.md) confirms **STOP / readiness
-NOT READY**. B01 requires a concrete enforcing request/byte/time/receipt
-controller; B02 requires explicit isolation from parent repository configuration.
-The proposed empty descendant Git directory does not itself provide isolation.
-No network/source/header/parser/controller/runtime/compiler/build/test,
-acquisition, repair or retry is cleared.
+This stays post-MVP ITERATION-003 revision 5 I3-04/I3-05 evidence under accepted
+ADR-039/040 and implementing SPEC-015; closed ITERATION-001 analyzer/four-stack
+obligations remain preserved. S and old B stay closed. U01/R01–R04, ordinary
+loaded identity, standalone/cache equivalence, Error size/body/transitive costs,
+U02–U05, complete callee/safety, strict cold/zero heap, four-profile ABI/resources,
+remaining SO criteria, P08/R07/T8.1/conformance and I4-07/P09–P12 remain open.
+No architecture, contract, scope, criterion, exception, lifecycle or repair
+allowance changed. No new optional deferred-work item arose.
