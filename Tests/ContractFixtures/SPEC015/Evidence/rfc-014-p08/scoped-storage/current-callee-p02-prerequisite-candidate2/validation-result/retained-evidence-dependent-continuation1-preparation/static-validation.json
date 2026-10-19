@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "compiler_invocations": 0,
+  "dependent_invocations": 0,
+  "tests": 9,
+  "argv": [
+    "python3",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-dependent-continuation1-preparation/test_static.py"
+  ],
+  "exit": 0,
+  "started_ns": 1792388284910747000,
+  "finished_ns": 1792388298892322000,
+  "raw_logs": {
+    "static-test.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "static-test.stderr": "bafa8d9c2e7e7c5b34acd223b927661684f17d60f90322bfe3a8ff3a20389936"
+  }
+}

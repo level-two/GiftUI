@@ -1,0 +1,46 @@
+{
+  ".build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool": {
+    "resolved": "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/arm64-apple-macosx/debug/GiftUIMacros-tool",
+    "sha256": "651cf63bd8c07d18d143fd09370427fdacf8c6967c38e14c71d2ea5f7d9b2814"
+  },
+  ".build/rfc014-p02-swift64/tool/prebuilts/swift-syntax/603.0.2/swift-6.4.0-RELEASE-macos_universal-MacroSupport/lib/libMacroSupport.a": {
+    "resolved": "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/prebuilts/swift-syntax/603.0.2/swift-6.4.0-RELEASE-macos_universal-MacroSupport/lib/libMacroSupport.a",
+    "sha256": "63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308"
+  },
+  ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+    "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+  },
+  "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool": {
+    "resolved": "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/arm64-apple-macosx/debug/GiftUIMacros-tool",
+    "sha256": "651cf63bd8c07d18d143fd09370427fdacf8c6967c38e14c71d2ea5f7d9b2814"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+    "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+    "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm": {
+    "kind": "directory",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm"
+  },
+  "/usr/bin/python3": {
+    "resolved": "/usr/bin/python3",
+    "sha256": "b8763cf250e607a778bb4603cecb5b90338814d0a3dfcba0d57b1de242f610e9"
+  },
+  "/usr/bin/ruby": {
+    "resolved": "/usr/bin/ruby",
+    "sha256": "4d57327e7abe67e1c3f84a0869f4239b3324a3d7ea20a70077450e688282fe4f"
+  }
+}

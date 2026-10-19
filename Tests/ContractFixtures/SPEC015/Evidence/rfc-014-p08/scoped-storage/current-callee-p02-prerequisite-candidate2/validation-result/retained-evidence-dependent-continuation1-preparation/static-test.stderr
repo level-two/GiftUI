@@ -1,0 +1,17 @@
+test_counter_384_aggregate_and_exact_dependencies (__main__.FilesystemTests) ... ok
+test_external_git_pins_and_packet_substitution (__main__.FilesystemTests) ... fatal: git cat-file 0000000000000000000000000000000000000000: bad file
+fatal: git cat-file 0000000000000000000000000000000000000000: bad file
+fatal: git cat-file 0000000000000000000000000000000000000000: bad file
+ok
+test_git_bootstrap_uses_frozen_code_and_rejects_substitution (__main__.FilesystemTests) ... ok
+test_raw_stage_and_audit_mutation (__main__.FilesystemTests) ... ok
+test_real_complete_applicability (__main__.FilesystemTests) ... ok
+test_receipt_source_artifact_and_traversal (__main__.FilesystemTests) ... ok
+test_schema4_required_joins_and_provenance (__main__.FilesystemTests) ... ok
+test_tree_bytes_additions_deletions_aliases (__main__.FilesystemTests) ... ok
+test_tree_directory_and_link_identity (__main__.FilesystemTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 13.916s
+
+OK

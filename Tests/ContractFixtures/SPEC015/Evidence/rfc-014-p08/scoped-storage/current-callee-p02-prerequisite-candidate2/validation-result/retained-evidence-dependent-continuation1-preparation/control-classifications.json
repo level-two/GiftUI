@@ -1,0 +1,562 @@
+[
+  {
+    "profile": "macos-static",
+    "control": "positive-actual-lowering",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/positive-actual-lowering/control-positive-actual-lowering.json",
+    "sha256": "a040dea03e06bb894df705323be726f44f03e1cbc2b6e0939e3afc5643a6670e",
+    "category": null
+  },
+  {
+    "profile": "macos-static",
+    "control": "positive-serialized-read",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/positive-actual-lowering/control-positive-serialized-read.json",
+    "sha256": "cce04ab27aa42a1bc4bb256ffc47d996adea47ef4e2c95e95b8d0adf85584a01",
+    "category": null
+  },
+  {
+    "profile": "macos-static",
+    "control": "positive-semantics",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/positive-actual-lowering/control-positive-semantics.json",
+    "sha256": "d195d4f06c080f9bd3e1b1922cfaeba2b8b09d290982fcda78e14d284c504fd6",
+    "category": null
+  },
+  {
+    "profile": "macos-static",
+    "control": "negative-A1",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/negative-A1/control-negative-A1.json",
+    "sha256": "52b76b4b135acb5963d2ea98e74975c5bba6c45447794ff079243a2bc6418f02",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-static",
+    "control": "negative-A2",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/negative-A2/control-negative-A2.json",
+    "sha256": "773f8796b7710762e2b5883ffc26097fd71b533889c747f97a724f8f3b810e52",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-static",
+    "control": "negative-A3",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/negative-A3/control-negative-A3.json",
+    "sha256": "f2507dbcfed6db844d51535427b768b54793a1d23b2f8c82f6c96a06a93801ad",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-static",
+    "control": "negative-A4",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/negative-A4/control-negative-A4.json",
+    "sha256": "52ad79c9d3dd206d20ebe90b5ca83e383851255b08dd7a46a1c1fdb8d8bfbd2b",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-static",
+    "control": "negative-A5",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/negative-A5/control-negative-A5.json",
+    "sha256": "a48dc4f4bf9b760b6816dddaf1ea6cb42723ce2add1b0601e2b2d20c0800c016",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-static",
+    "control": "negative-A6",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/negative-A6/control-negative-A6.json",
+    "sha256": "4d718207dd72ac49a75df848d23647e29fde7bca6efd0f75f70d3d4b9d5db538",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-static",
+    "control": "negative-A7",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/negative-A7/control-negative-A7.json",
+    "sha256": "74f655b60704f13c0efbeda6a05d8fa0fad8a44848393e4bd4390eea0d861e31",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-static",
+    "control": "negative-A8",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/negative-A8/control-negative-A8.json",
+    "sha256": "410d341a71d9564604a9abcc87944ff09990f8ff54b16ba305149e50e1d154c0",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-static",
+    "control": "private-storage",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/private-storage/control-private-storage.json",
+    "sha256": "154d81092e8bdad2e1dd287a571ad9c85d7fb60fa65f45f3a8d30396f81483e0",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "macos-static",
+    "control": "private-count",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/private-count/control-private-count.json",
+    "sha256": "7d7dfd1ea3abcab33f773a56c82bab2cbbba925d9edab3fb1f4ead41b92f57b5",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "macos-static",
+    "control": "private-storage-type",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/private-storage-type/control-private-storage-type.json",
+    "sha256": "679c57aaa4afcafc6ccf55ab2c7789ad29648fcaccf36b994838dac37475ca88",
+    "category": "private-type-hidden"
+  },
+  {
+    "profile": "macos-static",
+    "control": "private-helper-continuation",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/private-helper-continuation/control-private-helper-continuation.json",
+    "sha256": "ea9e8461cc66aacee0cd8f7673ec55c873e203353ddf60e555a4ce50c39ebddd",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "macos-static",
+    "control": "private-helper-leading",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/private-helper-leading/control-private-helper-leading.json",
+    "sha256": "3c7e23185c444ccbd34f29cadfa3c5a68d57c86941d0a568d20a299c693b0fe1",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "macos-static",
+    "control": "outside-package-AcquisitionState",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/outside-package-AcquisitionState/control-outside-package-AcquisitionState.json",
+    "sha256": "769fa32c82c05fac16daf7d320c8270d4f34ef19cf04639ae9baa27bcdb9aece",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "macos-static",
+    "control": "outside-package-SignalTransition",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/outside-package-SignalTransition/control-outside-package-SignalTransition.json",
+    "sha256": "ccd1066dd4229a521c1ff5fca88ecfb2c67f6a584f11798c8b323b11832e2f47",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "macos-static",
+    "control": "outside-package-SignalChannelID",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/outside-package-SignalChannelID/control-outside-package-SignalChannelID.json",
+    "sha256": "bec870d04aa95eeb15feb64ce88a16cad3fab9af5e23410a0575cd707456a996",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "macos-static",
+    "control": "outside-package-SignalAnalyzerDiagnostic",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-static/scratch/outside-package-SignalAnalyzerDiagnostic/control-outside-package-SignalAnalyzerDiagnostic.json",
+    "sha256": "154986e982ac1c0642468616be2d122824ff62a98d8e16f020ed3859c7930957",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "positive-actual-lowering",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/control-positive-actual-lowering.json",
+    "sha256": "31c9aeaf9fec8c818ee70025767be2864639bcd889cb8ca8d2c41036625a7286",
+    "category": null
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "positive-serialized-read",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/control-positive-serialized-read.json",
+    "sha256": "23d30c609bd77ae763dcc00569735b835d91f1498e8247642115432a78d62fe6",
+    "category": null
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "positive-semantics",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/positive-actual-lowering/control-positive-semantics.json",
+    "sha256": "46c5f606235cba1a7e15c7b515a7af22fd9a015050eede8125537afdd90d5296",
+    "category": null
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "negative-A1",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A1/control-negative-A1.json",
+    "sha256": "3975c63cf0205b93a23085596b00f0c5886a84340ff51ef16b1e42d23201eab3",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "negative-A2",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A2/control-negative-A2.json",
+    "sha256": "093f85578edccdf49fd3c4486ec2c3c006867988eec20a3f5d752a965c772a6f",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "negative-A3",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A3/control-negative-A3.json",
+    "sha256": "8f51076e266aa9874fc58d00bfacaae4e8ae9089e96ded8f27ec7e50b670d3ea",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "negative-A4",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A4/control-negative-A4.json",
+    "sha256": "ce81597f6425c46c5ccaaac059ae2ede9962c1f9571ea897a86f0aec7e153468",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "negative-A5",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A5/control-negative-A5.json",
+    "sha256": "f63add230319cb651824e23b73d47ba3e588249753ffc5f92b262779f5cd88d5",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "negative-A6",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A6/control-negative-A6.json",
+    "sha256": "337931652a3239e45a77d6907cceee319b961122afe800048bd1bf3daeb74376",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "negative-A7",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A7/control-negative-A7.json",
+    "sha256": "9a2e814c4c25f1f0c32c6e9277d69318d71bfa79c07b3ebe1d23d38cae316fbf",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "negative-A8",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/negative-A8/control-negative-A8.json",
+    "sha256": "4921dd75b88fab6c0c8985fe196c687892a4f9f0a9ac7d7a714ddc3fee494bc6",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "private-storage",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/private-storage/control-private-storage.json",
+    "sha256": "a9d571216667d47a36b5803df34ab75c7509360f3bc77b7721f7cb1dc6ec3d70",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "private-count",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/private-count/control-private-count.json",
+    "sha256": "cb196af002eab3c45ea7fbc91f71c8dd84f5098355f63c7275f70e72b7b60911",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "private-storage-type",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/private-storage-type/control-private-storage-type.json",
+    "sha256": "365efee9ee5fa7bb0ec4f5f3fd0036820e104167e30a0077b35696789e9fd79e",
+    "category": "private-type-hidden"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "private-helper-continuation",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/private-helper-continuation/control-private-helper-continuation.json",
+    "sha256": "b687e41cd9a32444938b6f6b5e5175427e923424916664d116aa7a290608b564",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "private-helper-leading",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/private-helper-leading/control-private-helper-leading.json",
+    "sha256": "d472d40dbccb80de19f501c9cf405229d4ba825447d8d76285790af9514166ef",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "outside-package-AcquisitionState",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/outside-package-AcquisitionState/control-outside-package-AcquisitionState.json",
+    "sha256": "ced4d2d8b8cb947676a6e43800a2983bf5a97a9c448fb4f076c935cd3320811e",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "outside-package-SignalTransition",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/outside-package-SignalTransition/control-outside-package-SignalTransition.json",
+    "sha256": "f8074c5f3382a9896e1d176a409de3773325e5643769542cdcd69b4e50b7aa9b",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "outside-package-SignalChannelID",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/outside-package-SignalChannelID/control-outside-package-SignalChannelID.json",
+    "sha256": "7168ef67533e1e7c543f5fb7a05735f1ba82b0d12b35fd7ca1e69ca0b5ac1750",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "control": "outside-package-SignalAnalyzerDiagnostic",
+    "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-analyzer-abi-continuation-campaign11/raspberry-pi-armv6/scratch/outside-package-SignalAnalyzerDiagnostic/control-outside-package-SignalAnalyzerDiagnostic.json",
+    "sha256": "d9884df3904ce432836d55b7fafacdd1f03f3594364fcd2eb2ae961e7f792ecb",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "positive-actual-lowering",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/control-positive-actual-lowering.json",
+    "sha256": "7ccc10b63d3d4294ebbf848d2759d0a06f8d21a997cc21a1caf1f10ad8f8de85",
+    "category": null
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "positive-serialized-read",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/control-positive-serialized-read.json",
+    "sha256": "fec8ebcc18efa6ad24ea958298aa98f97b53a9e7c5be358fbbfe22592ba76614",
+    "category": null
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "positive-semantics",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/positive-actual-lowering/control-positive-semantics.json",
+    "sha256": "f070fddd8b8ce5a5e93872907d949908458b4f01f36aab90b7818c3b2c3af064",
+    "category": null
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "negative-A1",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A1/control-negative-A1.json",
+    "sha256": "bf2dca9fe54cd532469e493e9917ccac1f58ffdb63324c69a1eaebc13b28e9e4",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "negative-A2",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A2/control-negative-A2.json",
+    "sha256": "b7187cd97d801cae9b73c03a9db5c7df557639ec8e2590a9a28496215d578e2b",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "negative-A3",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A3/control-negative-A3.json",
+    "sha256": "4995503f54773c1e07bfd3540d07a2eed38a9ddb3ffec1ba53926f6b9f8f2f5d",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "negative-A4",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A4/control-negative-A4.json",
+    "sha256": "0dcacc3abacb03411f710ffdbc3644750204e431d964b108a68f8d934f7a020a",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "negative-A5",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A5/control-negative-A5.json",
+    "sha256": "cf1a1946f4ffb521f8c0e0a538e30802a019a25eed0de5493078dca06b5ea90b",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "negative-A6",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A6/control-negative-A6.json",
+    "sha256": "2bb15392146c657a2cc4ccc7c1e3e2a51417c41816c72eb7575073ac75a05be6",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "negative-A7",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A7/control-negative-A7.json",
+    "sha256": "d2cf083190bc8b934370506ff5d89513c86923bf8c48c90548730ad0070464cf",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "negative-A8",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/negative-A8/control-negative-A8.json",
+    "sha256": "e419b6240934a90958f9de1304f34c29ab060ea6d93a04d60ef52fc6d7853fd6",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "private-storage",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/private-storage/control-private-storage.json",
+    "sha256": "abf173802dfb1e8240625ed83b9c69632ac10f8af18aaea3ce106f361e0b9849",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "private-count",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/private-count/control-private-count.json",
+    "sha256": "7b6547ca144e4b5aa7a67fc4b6ec8adb9e82d1bad7244acce256d91ae87cb1db",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "private-storage-type",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/private-storage-type/control-private-storage-type.json",
+    "sha256": "57362f3ea8611b6af31eb7ca13d87ab7e45eaecc90725b9b893e51c3efd8b32c",
+    "category": "private-type-hidden"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "private-helper-continuation",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/private-helper-continuation/control-private-helper-continuation.json",
+    "sha256": "94eac9c873344c40d22e7783653d76c049097d6f02bad46101fb0bc1285af3dd",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "private-helper-leading",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/private-helper-leading/control-private-helper-leading.json",
+    "sha256": "c3aea6a8798de6a86438523234de2f6f7b7bf277132f9ce4851fc1657107c124",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "outside-package-AcquisitionState",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/outside-package-AcquisitionState/control-outside-package-AcquisitionState.json",
+    "sha256": "be9119e1a377c9c25aad9284a45fc17c15d9fcf8f9f7b449abac09e955821108",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "outside-package-SignalTransition",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/outside-package-SignalTransition/control-outside-package-SignalTransition.json",
+    "sha256": "4fada9a3c3e13b137c51bb0458da70705177f92b01a55d65a24ecf61b55c772d",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "outside-package-SignalChannelID",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/outside-package-SignalChannelID/control-outside-package-SignalChannelID.json",
+    "sha256": "f90722d727dc8577c9baa3bb237e1a86dfb677a61179d7cf38ab3bc1c8e4c25c",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "control": "outside-package-SignalAnalyzerDiagnostic",
+    "path": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-analyzer-abi-continuation-campaign11/nrf52840-embedded/scratch/outside-package-SignalAnalyzerDiagnostic/control-outside-package-SignalAnalyzerDiagnostic.json",
+    "sha256": "88ab188d00963ef229cb728f95ae120f6780becf82259769561562cf3c44fbde",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "positive-actual-lowering",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/control-positive-actual-lowering.json",
+    "sha256": "5952d70107288fedcbb954e5f2b1c487230b7e49df845a4bd8deb339534aa5a6",
+    "category": null
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "positive-serialized-read",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/control-positive-serialized-read.json",
+    "sha256": "157e08bc25118b78219aff75d380c1cd39f32ab27e604cc7665c89ac34046f5a",
+    "category": null
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "positive-semantics",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/positive-actual-lowering/control-positive-semantics.json",
+    "sha256": "709b51fda6d97d7b4770ff5989e1b0bae492b90a6cc9fa25d541627c94f344b5",
+    "category": null
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "negative-A1",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A1/control-negative-A1.json",
+    "sha256": "7a8185d88055b6a4c298731eecfc311591c326386d134bb26c462708af2d353c",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "negative-A2",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A2/control-negative-A2.json",
+    "sha256": "09c4fbf83cd3bd2b854a6e4701d1258b56f055f48dcb442988057b3d873d388a",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "negative-A3",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A3/control-negative-A3.json",
+    "sha256": "e3916881fc7ae10e4e9897defe5a31587be074bfb31ff4a92ae5ca3d392eb3b5",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "negative-A4",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A4/control-negative-A4.json",
+    "sha256": "3e0acedc9421f2a263b6c4efa2bf0f4da12498e4bf231bdc865e08a442dcb1c6",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "negative-A5",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A5/control-negative-A5.json",
+    "sha256": "f5874d5512c4d440fff8784bbfc9087ec663282908f39ff596f3e022161d74d6",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "negative-A6",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A6/control-negative-A6.json",
+    "sha256": "f184cf0c549ed394465e3460fb5d7152b4d06f549f5e971d48a0f8754efe3929",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "negative-A7",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A7/control-negative-A7.json",
+    "sha256": "ee7e13899a0e29f04039525b9a51ee0c029fcd00f77a974e255b2a7cb170163b",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "negative-A8",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/negative-A8/control-negative-A8.json",
+    "sha256": "69db97011a885e86ece42fcdeca06d694a689cb9cfeac7b8da9805ee9dfdf739",
+    "category": "serialized-ABI-access"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "private-storage",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/private-storage/control-private-storage.json",
+    "sha256": "740de3db29f939c3ea86601ec0bac490ce875d67a992701076c43157deb30961",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "private-count",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/private-count/control-private-count.json",
+    "sha256": "78b3ba93e0818aedf95ba8e59610ec8aaf53fd9e1f9c3bef152552051084fe7b",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "private-storage-type",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/private-storage-type/control-private-storage-type.json",
+    "sha256": "87cfeb4b25c300e57450f36d70587752b9661109f5484f0d3f3d326845e99788",
+    "category": "private-type-hidden"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "private-helper-continuation",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/private-helper-continuation/control-private-helper-continuation.json",
+    "sha256": "0a774a227a81caedebbde80c0b260beeecaca00d75de0e2837e42b6f47f19f65",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "private-helper-leading",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/private-helper-leading/control-private-helper-leading.json",
+    "sha256": "4b4a8e1d46a30090e33b062b539c8fe654ea6b3813af61be9198c7ebc0605404",
+    "category": "private-member-access"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "outside-package-AcquisitionState",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/outside-package-AcquisitionState/control-outside-package-AcquisitionState.json",
+    "sha256": "47b50fee91bdb884d3fafdd4bbf638013c71189e58ae4c4ad517fe207cb293cd",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "outside-package-SignalTransition",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/outside-package-SignalTransition/control-outside-package-SignalTransition.json",
+    "sha256": "564324e379d9a6b9cbdf857f1ee307e2f17306ed2fa79703db199ec1604c6f15",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "outside-package-SignalChannelID",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/outside-package-SignalChannelID/control-outside-package-SignalChannelID.json",
+    "sha256": "011ede970917378c1ef480717bf70f387f2417c4e99b5f642009bafc08475ed7",
+    "category": "package-nominal-hidden"
+  },
+  {
+    "profile": "macos-dynamic",
+    "control": "outside-package-SignalAnalyzerDiagnostic",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/macos-dynamic/scratch/outside-package-SignalAnalyzerDiagnostic/control-outside-package-SignalAnalyzerDiagnostic.json",
+    "sha256": "e0364e14b1225936e59ce722fea6edfe1592f9892e92db81d3328af49c1b852f",
+    "category": "package-nominal-hidden"
+  }
+]

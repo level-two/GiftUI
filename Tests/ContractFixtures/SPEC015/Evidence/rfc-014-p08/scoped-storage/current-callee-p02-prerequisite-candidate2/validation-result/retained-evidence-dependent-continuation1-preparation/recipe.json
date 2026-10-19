@@ -1,0 +1,45 @@
+{
+  "source_commit": "c5e3996689d17ef6d9cce6dd86317258355b9ea4",
+  "campaign_archive": "101ced00950e224a33f3fd454ef186f81676b217",
+  "p07_archive": "c50d0c8cf4a9ceb92210798b58f81f84ac0818f0",
+  "campaign_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11",
+  "p07_root": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+  "p07_terminal": "/Users/eugene/work/GiftUI/.build/contracts/p08-p07-cyclescene-correction-probe1/terminal.json",
+  "output_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-retained-evidence-dependent-continuation1",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "source_candidates": 1,
+  "retries": 0,
+  "automatic_repairs": 0,
+  "schema4_argv": [
+    "python3",
+    "scripts/contracts/check-spec-015-schema4.py",
+    "--runtime-build",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+    "--activation-join"
+  ],
+  "counter_argv_prefix": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--profile",
+    "macos-static",
+    "--runtime-build",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+    "--host-build"
+  ],
+  "counter_argv_suffix": [
+    "--collect-failures"
+  ],
+  "schema4_prefix": "p08-scoped-host-",
+  "counter_prefix": "p08-counter-",
+  "environment": {
+    "HOME": "/Users/eugene",
+    "TMPDIR": "/var/folders/38/tc_rs_016rz5chj25dzt9nfm0000gn/T/",
+    "USER": "eugene",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONNOUSERSITE": "1"
+  }
+}
