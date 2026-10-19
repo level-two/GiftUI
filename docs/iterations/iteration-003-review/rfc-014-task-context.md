@@ -1,17 +1,19 @@
 # RFC-014 task context guide
 
-Current P08 boundary — **U01 I-only controller prepared; independent readiness pending; full callee/safety STOP**.
+Current P08 boundary — **U01 I-only controller/environment independently ready; full callee/safety STOP**.
 The [concrete one-shot controller](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider1-preparation/CONTROLLER.md)
 authenticates full cache/report/linked/loader inputs with external final pins.
 Applicable cache-header schema remains unavailable; no heuristic UUID-field
 parser is introduced. Only exact I identity capture is proposed; both S commands
-are always skipped. The [independent preparation review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider1-preparation/independent-review.md)
-passed the inventory/request, requiring concrete readiness before launch. No
-controller/decoder/acquisition/runtime/compiler/build/test ran. Old B remains
+are always skipped. The [independent Strong readiness review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider1-preparation/controller-independent-review.md)
+passes exact external pins/direct203/cache15/loader8720/aliases72, closed S gate,
+60s child/240s aggregate and 320MiB raw+receipt bounds. One exact I-only bootstrap
+is cleared under existing P08 authorization using final external review pins;
+none ran during review. Zero repair/retry or broader launch follows. Old B remains
 inapplicable/unexecuted. R01–R04, Error size, implementation/cold costs and ordinary
 loaded identity remain open; strict cold stays false. Both consumed attempts
 remain1/1, repairs0/retries0: A-only [16777234,29650609], historical collection
-[16777234,29640436]. No new launch clearance or contract/scope decision follows;
+[16777234,29640436]. No contract/scope decision or historical allowance reset follows;
 U02–U05, P08/R07/T8.1 and remaining gates stay open.
 
 Historical pre-collection checkpoint — **retained counter426 PASS; controller readiness PASS; collection unused 0/1**.

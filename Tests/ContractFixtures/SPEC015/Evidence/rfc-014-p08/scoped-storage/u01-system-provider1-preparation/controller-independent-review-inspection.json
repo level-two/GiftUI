@@ -1,0 +1,72 @@
+{
+  "I_raw_cap_bytes": 16777216,
+  "S_launch_enabled": false,
+  "aggregate_seconds": 240,
+  "cache_bytes_verified": 5824684071,
+  "cache_file_sha256": {
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+  },
+  "cache_header_schema_assumed": false,
+  "cache_members_verified": 15,
+  "complete_loader_entries_verified": 8720,
+  "concrete_I_decoder_commands_max": 1,
+  "consumed_marker_identities": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+      16777234,
+      29640436
+    ],
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+      16777234,
+      29650609
+    ]
+  },
+  "direct_inputs_verified": 203,
+  "loader_aliases_verified": 72,
+  "method": "Independent standard-library file/hash/JSON/tree/alias and read-only Git inspection plus syntax parsing; no controller/bootstrap/verifier/preparation module executed/imported and no decoder/runtime launch.",
+  "nine_external_file_sha256": {
+    "controller-accounting.json": "62e2204f0a802bb4f6622d8daf7c539dfaf4900a592dde32996f646e168759a0",
+    "controller-inputs.json": "09e28a314a7c7577c6e7bb67d53046ed89da4bef337c31b0f32bc8671a62f517",
+    "controller.py": "20cf83dd17ab2e8b98e686568b709ce82ec0746b31273e335e8f293311de6461",
+    "gate-policy.json": "054ebc1fa0acd67b89bf4ec7df04d40233be54806da05986dbe526c6de70f8f3",
+    "identity-verifier.py": "26bf41b769329917b4fd6a7f10dc4d53c6338b57be0acadcd8b47f83ddbe5497",
+    "inventory.json": "d23ce68798ff54c3796913097aa5303a3ef5649b5ad4b01ffb96996ad785e3d8",
+    "loader-policy.json": "3338d16f794b10b878013cb200ef51adc4723f6a34bcf3bd5384b3972a7be8f3",
+    "request.json": "9bdab0ec64452dec484a8f2698c6838d2f662bb475f745da3cac4efe4c9ab70a",
+    "reviewed-launch.py": "82a70ed3da8209bc674439dc8846330a1f3096a27d68f5eaa4a27abf9512ece6"
+  },
+  "output_absent": true,
+  "per_decoder_seconds": 60,
+  "preserved_dirty_file_sha256": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+    "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+    "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+  },
+  "raw_and_receipt_cap_bytes": 335544320,
+  "receipt_reserve_bytes": 1048576,
+  "reviewed_controller_commit": "0e485568e39d674c8244ce55e82ea6ae2a64fb74",
+  "reviewed_design_commit": "b2e94bc8bbba4ecf8261056d6c843b4bdf6d22c8",
+  "reviewed_packet_sha256": {
+    "CONTROLLER.md": "58f66ef3104880f1fef05c26286d3ac16dca3c091d94075a9147fdb4b3cfb034",
+    "IDENTITY-DESIGN.md": "ab44bd65b6e7fffbe1bea42d328a2bf37784e931e861a8fc66b5993e6b11e83b",
+    "README.md": "2a789cdbe6c87acf761081e1ae030f288d2aef685e10be82c0754512bcac1807",
+    "controller-accounting.json": "62e2204f0a802bb4f6622d8daf7c539dfaf4900a592dde32996f646e168759a0",
+    "controller-inputs.json": "09e28a314a7c7577c6e7bb67d53046ed89da4bef337c31b0f32bc8671a62f517",
+    "controller-preparation-inspection.json": "6d177aad4fb2fd65d23c242d1fec4622bbf2e24ad64b967ad62842216cce2f2c",
+    "controller.py": "20cf83dd17ab2e8b98e686568b709ce82ec0746b31273e335e8f293311de6461",
+    "gate-policy.json": "054ebc1fa0acd67b89bf4ec7df04d40233be54806da05986dbe526c6de70f8f3",
+    "identity-verifier.py": "26bf41b769329917b4fd6a7f10dc4d53c6338b57be0acadcd8b47f83ddbe5497",
+    "independent-review-inspection.json": "e3379a58de14b005e5fc11090d1d5f9b1a13eb43562dfb72a20d15c07aac8684",
+    "independent-review.md": "ce9d5e3909111cac26b55bba7fe22daa1fbd90f2c139b5a3bdb4289d66acce42",
+    "inventory.json": "d23ce68798ff54c3796913097aa5303a3ef5649b5ad4b01ffb96996ad785e3d8",
+    "inventory.py": "057013c3baf27f9a0271d95bea69a5e38a9592fc3f6b77c350829b2ff98c2471",
+    "loader-policy.json": "3338d16f794b10b878013cb200ef51adc4723f6a34bcf3bd5384b3972a7be8f3",
+    "prepare-controller.py": "d0bd61f3208da45f336c92c1e65cdf94f58f6c8dfe950f2792ec748eef6aa251",
+    "request.json": "9bdab0ec64452dec484a8f2698c6838d2f662bb475f745da3cac4efe4c9ab70a",
+    "reviewed-launch.py": "82a70ed3da8209bc674439dc8846330a1f3096a27d68f5eaa4a27abf9512ece6"
+  },
+  "source42_hashes_match": true,
+  "strict_cold_eligible": false,
+  "verdict": "PASS_exact_I_only_controller_environment_and_closed_schema_gate_readiness"
+}
