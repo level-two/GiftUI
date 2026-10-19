@@ -1,0 +1,2099 @@
+[
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "privacy-same-package-positive"
+    },
+    "name": "privacy-same-package-positive",
+    "raw": {
+      "privacy-same-package-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "privacy-same-package-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'_model' is inaccessible due to 'private' protection level"
+    ],
+    "expected": {
+      "expected_errors": [
+        "'_model' is inaccessible due to 'private' protection level"
+      ],
+      "name": "privacy-private-wrapper"
+    },
+    "name": "privacy-private-wrapper",
+    "raw": {
+      "privacy-private-wrapper.stderr": {
+        "bytes": 845,
+        "sha256": "a5a14a02861220c2b3793ecbd7c54a2c35e064340f71ca477b15219656bd1fa0"
+      },
+      "privacy-private-wrapper.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'_giftUIStateStorage_model' is inaccessible due to 'internal' protection level",
+      "'_giftUIStateKey_model' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_errors": [
+        "'_giftUIStateStorage_model' is inaccessible due to 'internal' protection level",
+        "'_giftUIStateKey_model' is inaccessible due to 'internal' protection level"
+      ],
+      "name": "privacy-internal-helper-pair"
+    },
+    "name": "privacy-internal-helper-pair",
+    "raw": {
+      "privacy-internal-helper-pair.stderr": {
+        "bytes": 2356,
+        "sha256": "831ef72a463b1a27c8c5c7c73c25e8cd1c644e91fc77d95827927adba13c0262"
+      },
+      "privacy-internal-helper-pair.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'Storage' is inaccessible due to 'internal' protection level",
+      "'storage' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_errors": [
+        "'storage' is inaccessible due to 'internal' protection level",
+        "'Storage' is inaccessible due to 'internal' protection level"
+      ],
+      "name": "privacy-same-package-state-storage"
+    },
+    "name": "privacy-same-package-state-storage",
+    "raw": {
+      "privacy-same-package-state-storage.stderr": {
+        "bytes": 1799,
+        "sha256": "cf0301262d1ec6c89fa1808f320afc06f6b135954630539b150641b7e9bc3bd0"
+      },
+      "privacy-same-package-state-storage.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "privacy-external-positive"
+    },
+    "name": "privacy-external-positive",
+    "raw": {
+      "privacy-external-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "privacy-external-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "privacy-ordinary-private"
+    },
+    "name": "privacy-ordinary-private",
+    "raw": {
+      "privacy-ordinary-private.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "privacy-ordinary-private.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "privacy-ordinary-fileprivate"
+    },
+    "name": "privacy-ordinary-fileprivate",
+    "raw": {
+      "privacy-ordinary-fileprivate.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "privacy-ordinary-fileprivate.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "privacy-ordinary-internal"
+    },
+    "name": "privacy-ordinary-internal",
+    "raw": {
+      "privacy-ordinary-internal.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "privacy-ordinary-internal.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "privacy-ordinary-package"
+    },
+    "name": "privacy-ordinary-package",
+    "raw": {
+      "privacy-ordinary-package.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "privacy-ordinary-package.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "privacy-ordinary-public"
+    },
+    "name": "privacy-ordinary-public",
+    "raw": {
+      "privacy-ordinary-public.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "privacy-ordinary-public.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "privacy-ordinary-abi"
+    },
+    "name": "privacy-ordinary-abi",
+    "raw": {
+      "privacy-ordinary-abi.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "privacy-ordinary-abi.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "privacy-ordinary-enclosing-private"
+    },
+    "name": "privacy-ordinary-enclosing-private",
+    "raw": {
+      "privacy-ordinary-enclosing-private.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "privacy-ordinary-enclosing-private.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "privacy-scope-positive"
+    },
+    "name": "privacy-scope-positive",
+    "raw": {
+      "privacy-scope-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "privacy-scope-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'_GiftUIFrameRead<D>' initializer is inaccessible due to 'package' protection level"
+    ],
+    "expected": {
+      "expected_errors": [
+        "'_GiftUIFrameRead<D>' initializer is inaccessible due to 'package' protection level"
+      ],
+      "name": "privacy-scope-negative"
+    },
+    "name": "privacy-scope-negative",
+    "raw": {
+      "privacy-scope-negative.stderr": {
+        "bytes": 871,
+        "sha256": "4b18d133ff8b7cf1a94bf78badd7f79f8efdd8173c58be18f8b708ca8d6c991f"
+      },
+      "privacy-scope-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "canvas-lender-positive"
+    },
+    "name": "canvas-lender-positive",
+    "raw": {
+      "canvas-lender-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canvas-lender-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'state' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'state' is inaccessible due to 'internal' protection level",
+      "name": "canvas-state-negative"
+    },
+    "name": "canvas-state-negative",
+    "raw": {
+      "canvas-state-negative.stderr": {
+        "bytes": 954,
+        "sha256": "c720883193dedccbf3fe6d6f9f46addef27bd8dd48983c5655bdb16ac0d1ddd4"
+      },
+      "canvas-state-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'entries' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'entries' is inaccessible due to 'internal' protection level",
+      "name": "canvas-entries-negative"
+    },
+    "name": "canvas-entries-negative",
+    "raw": {
+      "canvas-entries-negative.stderr": {
+        "bytes": 1051,
+        "sha256": "0eba3582071c9d97470686d41220d5192838a83724aac17f76745d8fecbdf421"
+      },
+      "canvas-entries-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'CanvasStagedValues<Identity, Table>' initializer is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "initializer is inaccessible due to 'internal' protection level",
+      "name": "canvas-construction-negative"
+    },
+    "name": "canvas-construction-negative",
+    "raw": {
+      "canvas-construction-negative.stderr": {
+        "bytes": 1457,
+        "sha256": "4620d484480ca8bc03d670897943a344179ae7e51f80817dfbabee7718f38cfb"
+      },
+      "canvas-construction-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "host-controller-positive"
+    },
+    "name": "host-controller-positive",
+    "raw": {
+      "host-controller-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "host-controller-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "cannot assign to property: 'lifecycleState' setter is inaccessible"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "cannot assign to property: 'lifecycleState' setter is inaccessible",
+      "name": "host-lifecycle-negative"
+    },
+    "name": "host-lifecycle-negative",
+    "raw": {
+      "host-lifecycle-negative.stderr": {
+        "bytes": 623,
+        "sha256": "c85d714d549b9fcf634c839115619c0021a8412d4a229815348530d9d685acac"
+      },
+      "host-lifecycle-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "host-checked-factory-positive"
+    },
+    "name": "host-checked-factory-positive",
+    "raw": {
+      "host-checked-factory-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "host-checked-factory-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "cannot assign to property: 'controller' setter is inaccessible"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "cannot assign to property: 'controller' setter is inaccessible",
+      "name": "host-controller-field-negative"
+    },
+    "name": "host-controller-field-negative",
+    "raw": {
+      "host-controller-field-negative.stderr": {
+        "bytes": 726,
+        "sha256": "c131591e38d647ac47bfb22525720647811a3c0a6eda1be63fbacbf85c331fb4"
+      },
+      "host-controller-field-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "pipeline-operation-positive"
+    },
+    "name": "pipeline-operation-positive",
+    "raw": {
+      "pipeline-operation-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "pipeline-operation-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'finishOfferWithoutCommit' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'finishOfferWithoutCommit' is inaccessible due to 'internal' protection level",
+      "name": "pipeline-helper-finish-negative"
+    },
+    "name": "pipeline-helper-finish-negative",
+    "raw": {
+      "pipeline-helper-finish-negative.stderr": {
+        "bytes": 1981,
+        "sha256": "e8126be72b695a515bb00e0a04d4b9161782b7294911be451174b77cd91a2c74"
+      },
+      "pipeline-helper-finish-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'fail' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'fail' is inaccessible due to 'internal' protection level",
+      "name": "pipeline-helper-fail-negative"
+    },
+    "name": "pipeline-helper-fail-negative",
+    "raw": {
+      "pipeline-helper-fail-negative.stderr": {
+        "bytes": 1841,
+        "sha256": "17b5e2a05e66bbe1a1906acaabd4b2645cf3e2a24bd4e4e13265de344706b22d"
+      },
+      "pipeline-helper-fail-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'cleanup' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'cleanup' is inaccessible due to 'internal' protection level",
+      "name": "pipeline-helper-cleanup-negative"
+    },
+    "name": "pipeline-helper-cleanup-negative",
+    "raw": {
+      "pipeline-helper-cleanup-negative.stderr": {
+        "bytes": 1250,
+        "sha256": "60026855931839ad8aefa20b81d41439d8fa9e6101e4e6e8cc70f32920adfa06"
+      },
+      "pipeline-helper-cleanup-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'cleanupStage' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'cleanupStage' is inaccessible due to 'internal' protection level",
+      "name": "pipeline-helper-cleanupStage-negative"
+    },
+    "name": "pipeline-helper-cleanupStage-negative",
+    "raw": {
+      "pipeline-helper-cleanupStage-negative.stderr": {
+        "bytes": 1127,
+        "sha256": "5768aa94190ca6e9f6c30a6d97972cab94fa8e4f907e3a7a507a7504815a6553"
+      },
+      "pipeline-helper-cleanupStage-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'RuntimePipelineDisposition' initializer is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "initializer is inaccessible due to 'internal' protection level",
+      "name": "pipeline-disposition-constructor-negative"
+    },
+    "name": "pipeline-disposition-constructor-negative",
+    "raw": {
+      "pipeline-disposition-constructor-negative.stderr": {
+        "bytes": 2057,
+        "sha256": "a7b7154ad83ec656e98f38d65faadad58501f9727d8d5fa712df47656c18fe9b"
+      },
+      "pipeline-disposition-constructor-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'RuntimePipelineCompletion' initializer is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "initializer is inaccessible due to 'internal' protection level",
+      "name": "pipeline-completion-constructor-negative"
+    },
+    "name": "pipeline-completion-constructor-negative",
+    "raw": {
+      "pipeline-completion-constructor-negative.stderr": {
+        "bytes": 1563,
+        "sha256": "0924699f6f715c1f91fde2bd8fe8127727a448c0694253eaeb001dfd6d3c4c29"
+      },
+      "pipeline-completion-constructor-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'RuntimePipelineFailureRecord<OwnerFailure>' initializer is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "initializer is inaccessible due to 'internal' protection level",
+      "name": "pipeline-failure-constructor-negative"
+    },
+    "name": "pipeline-failure-constructor-negative",
+    "raw": {
+      "pipeline-failure-constructor-negative.stderr": {
+        "bytes": 1522,
+        "sha256": "e42df1c54059a5a353affe162d8abc37af5101862e9b049b9669f283fa62a0b2"
+      },
+      "pipeline-failure-constructor-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "resolver-resolveDown-positive"
+    },
+    "name": "resolver-resolveDown-positive",
+    "raw": {
+      "resolver-resolveDown-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "resolver-resolveDown-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "resolver-resolveMove-positive"
+    },
+    "name": "resolver-resolveMove-positive",
+    "raw": {
+      "resolver-resolveMove-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "resolver-resolveMove-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "resolver-resolveUp-positive"
+    },
+    "name": "resolver-resolveUp-positive",
+    "raw": {
+      "resolver-resolveUp-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "resolver-resolveUp-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'state' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'state' is inaccessible due to 'internal' protection level",
+      "name": "resolver-owned-state-negative"
+    },
+    "name": "resolver-owned-state-negative",
+    "raw": {
+      "resolver-owned-state-negative.stderr": {
+        "bytes": 1793,
+        "sha256": "fe49ef725886bfc2740fe4b39df33f07b8722cd8b90882219b80287ab44eb8ec"
+      },
+      "resolver-owned-state-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'committedRecords' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'committedRecords' is inaccessible due to 'internal' protection level",
+      "name": "resolver-committedRecords-negative"
+    },
+    "name": "resolver-committedRecords-negative",
+    "raw": {
+      "resolver-committedRecords-negative.stderr": {
+        "bytes": 1669,
+        "sha256": "4fce08187dc591bef308fbbe9731f4ded03c7128a1b8ae1e4a4518bf769dc91e"
+      },
+      "resolver-committedRecords-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'committedHitRegions' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'committedHitRegions' is inaccessible due to 'internal' protection level",
+      "name": "resolver-committedHitRegions-negative"
+    },
+    "name": "resolver-committedHitRegions-negative",
+    "raw": {
+      "resolver-committedHitRegions-negative.stderr": {
+        "bytes": 1670,
+        "sha256": "ca1ca7964c55e060fbd0ee8be292e593c7c8043b47b8fe3827e5deaea6404eb6"
+      },
+      "resolver-committedHitRegions-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'topmostRecord' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'topmostRecord' is inaccessible due to 'internal' protection level",
+      "name": "resolver-topmostRecord-negative"
+    },
+    "name": "resolver-topmostRecord-negative",
+    "raw": {
+      "resolver-topmostRecord-negative.stderr": {
+        "bytes": 1720,
+        "sha256": "6b14210a5b203e10d2e2822869ebf34cd8ed76633227ff20c3e1212b8a755056"
+      },
+      "resolver-topmostRecord-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'record' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'record' is inaccessible due to 'internal' protection level",
+      "name": "resolver-record-negative"
+    },
+    "name": "resolver-record-negative",
+    "raw": {
+      "resolver-record-negative.stderr": {
+        "bytes": 1718,
+        "sha256": "6479f69f07fa9b55efd5196e67c5a4581a4e6e870e01e4e6c3bb20076e0fc0cc"
+      },
+      "resolver-record-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'capturedRecord' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'capturedRecord' is inaccessible due to 'internal' protection level",
+      "name": "resolver-capturedRecord-negative"
+    },
+    "name": "resolver-capturedRecord-negative",
+    "raw": {
+      "resolver-capturedRecord-negative.stderr": {
+        "bytes": 1854,
+        "sha256": "28fd55426b7fb71ef642fdf8b5b94885bbb5985176678a23ee420d1d12c01251"
+      },
+      "resolver-capturedRecord-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "observable-modelKey-positive"
+    },
+    "name": "observable-modelKey-positive",
+    "raw": {
+      "observable-modelKey-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "observable-modelKey-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "observable-mutate-positive"
+    },
+    "name": "observable-mutate-positive",
+    "raw": {
+      "observable-mutate-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "observable-mutate-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "observable-endFrame-positive"
+    },
+    "name": "observable-endFrame-positive",
+    "raw": {
+      "observable-endFrame-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "observable-endFrame-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "observable-binding-positive"
+    },
+    "name": "observable-binding-positive",
+    "raw": {
+      "observable-binding-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "observable-binding-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'matching' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'matching' is inaccessible due to 'internal' protection level",
+      "name": "observable-matching-negative"
+    },
+    "name": "observable-matching-negative",
+    "raw": {
+      "observable-matching-negative.stderr": {
+        "bytes": 1304,
+        "sha256": "9adc2f54b7c13046ec6d3f261cc6e326733fea4fcc6592ee1ffaeb447d6c8ace"
+      },
+      "observable-matching-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'key' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'key' is inaccessible due to 'internal' protection level",
+      "name": "observable-key-helper-negative"
+    },
+    "name": "observable-key-helper-negative",
+    "raw": {
+      "observable-key-helper-negative.stderr": {
+        "bytes": 1210,
+        "sha256": "d9ea90c375da387ca24628eac6ba86aa1efd5fd75af00ff059adadfe9fc83cce"
+      },
+      "observable-key-helper-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'models' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'models' is inaccessible due to 'internal' protection level",
+      "name": "observable-binding-models-negative"
+    },
+    "name": "observable-binding-models-negative",
+    "raw": {
+      "observable-binding-models-negative.stderr": {
+        "bytes": 1471,
+        "sha256": "d4c86d13dafe905e2b3c1e125d3b8a9ac09ca56fa5ae78ecb67fa4f0b3c048b3"
+      },
+      "observable-binding-models-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'root' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'root' is inaccessible due to 'internal' protection level",
+      "name": "observable-binding-root-negative"
+    },
+    "name": "observable-binding-root-negative",
+    "raw": {
+      "observable-binding-root-negative.stderr": {
+        "bytes": 1459,
+        "sha256": "336caaa7f01197b5693a7b9f9f177b34fdd33f917d3b910e1fa1c146d0dd82cb"
+      },
+      "observable-binding-root-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'records' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'records' is inaccessible due to 'internal' protection level",
+      "name": "observable-control-records-negative"
+    },
+    "name": "observable-control-records-negative",
+    "raw": {
+      "observable-control-records-negative.stderr": {
+        "bytes": 965,
+        "sha256": "699f07bb7a1676242e5e0fe2b36573eef590e3d420d277875062c376855e1544"
+      },
+      "observable-control-records-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'operationActive' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'operationActive' is inaccessible due to 'internal' protection level",
+      "name": "observable-control-operationActive-negative"
+    },
+    "name": "observable-control-operationActive-negative",
+    "raw": {
+      "observable-control-operationActive-negative.stderr": {
+        "bytes": 979,
+        "sha256": "648d2e807db60a51f16961353d693a56ea853eca00e543b19ba58baf5f332677"
+      },
+      "observable-control-operationActive-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'retired' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'retired' is inaccessible due to 'internal' protection level",
+      "name": "observable-control-retired-negative"
+    },
+    "name": "observable-control-retired-negative",
+    "raw": {
+      "observable-control-retired-negative.stderr": {
+        "bytes": 1011,
+        "sha256": "d007a548cf93082fa7eeb2c5ebcf14603c21d90b52538a91f84a2b834cb86a52"
+      },
+      "observable-control-retired-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "cannot assign to property: 'phase' setter is inaccessible"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "cannot assign to property: 'phase' setter is inaccessible",
+      "name": "observable-phase-setter-negative"
+    },
+    "name": "observable-phase-setter-negative",
+    "raw": {
+      "observable-phase-setter-negative.stderr": {
+        "bytes": 554,
+        "sha256": "466b785e4bd0ca70060a55f3349387e3ad8e2d105360a110f0bbe3c77ca1ffe8"
+      },
+      "observable-phase-setter-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'ownerInstance' is inaccessible due to 'private' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'ownerInstance' is inaccessible due to 'private' protection level",
+      "name": "observable-rawkey-ownerInstance-negative"
+    },
+    "name": "observable-rawkey-ownerInstance-negative",
+    "raw": {
+      "observable-rawkey-ownerInstance-negative.stderr": {
+        "bytes": 792,
+        "sha256": "d3d4affadb62724d42ea4515bda866abe6d14c44dd291064c444af0e1207e769"
+      },
+      "observable-rawkey-ownerInstance-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'allocationGeneration' is inaccessible due to 'private' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'allocationGeneration' is inaccessible due to 'private' protection level",
+      "name": "observable-rawkey-allocationGeneration-negative"
+    },
+    "name": "observable-rawkey-allocationGeneration-negative",
+    "raw": {
+      "observable-rawkey-allocationGeneration-negative.stderr": {
+        "bytes": 848,
+        "sha256": "f35664c818d38d265216a98ee72beadb89e76e9e34cef7f51118929081c008ea"
+      },
+      "observable-rawkey-allocationGeneration-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'slot' is inaccessible due to 'private' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'slot' is inaccessible due to 'private' protection level",
+      "name": "observable-rawkey-slot-negative"
+    },
+    "name": "observable-rawkey-slot-negative",
+    "raw": {
+      "observable-rawkey-slot-negative.stderr": {
+        "bytes": 720,
+        "sha256": "df8b7eddaf37ea55b1d6d8ff6840c61e2d3b095916e35a135a1ad6f4108370ef"
+      },
+      "observable-rawkey-slot-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'ObservableModelOwnership.Address' initializer is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "initializer is inaccessible due to 'internal' protection level",
+      "name": "observable-address-constructor-negative"
+    },
+    "name": "observable-address-constructor-negative",
+    "raw": {
+      "observable-address-constructor-negative.stderr": {
+        "bytes": 1208,
+        "sha256": "0f7c307bf3a6bac28f57b374bc8dd3e07e8d0539fab75b326f7212ba3d272b7d"
+      },
+      "observable-address-constructor-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "callback-checked-scope-positive"
+    },
+    "name": "callback-checked-scope-positive",
+    "raw": {
+      "callback-checked-scope-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "callback-checked-scope-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "callback-model-attachment-positive"
+    },
+    "name": "callback-model-attachment-positive",
+    "raw": {
+      "callback-model-attachment-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "callback-model-attachment-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "callback-ticket-checked-positive"
+    },
+    "name": "callback-ticket-checked-positive",
+    "raw": {
+      "callback-ticket-checked-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "callback-ticket-checked-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'ownsClaim' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'ownsClaim' is inaccessible due to 'internal' protection level",
+      "name": "callback-ticket-flag-negative"
+    },
+    "name": "callback-ticket-flag-negative",
+    "raw": {
+      "callback-ticket-flag-negative.stderr": {
+        "bytes": 945,
+        "sha256": "f41e03aa671c71f0744025f9fd8b004d3949cc07a2d42767c8051c2f5a133a9c"
+      },
+      "callback-ticket-flag-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'candidateActive' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'candidateActive' is inaccessible due to 'internal' protection level",
+      "name": "callback-candidate-flag-negative"
+    },
+    "name": "callback-candidate-flag-negative",
+    "raw": {
+      "callback-candidate-flag-negative.stderr": {
+        "bytes": 971,
+        "sha256": "e8076c413aa1444c1046db733737b402095e4c4ce92b861a4da750e0ea4f7f7f"
+      },
+      "callback-candidate-flag-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'bind' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'bind' is inaccessible due to 'internal' protection level",
+      "name": "callback-root-bind-negative"
+    },
+    "name": "callback-root-bind-negative",
+    "raw": {
+      "callback-root-bind-negative.stderr": {
+        "bytes": 1246,
+        "sha256": "0aa69fec1c76460ab09500bcb4e6ddd20a33ec32df92fd269a1ea4f8b8b5c3dc"
+      },
+      "callback-root-bind-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'checkOperation' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'checkOperation' is inaccessible due to 'internal' protection level",
+      "name": "callback-root-check-negative"
+    },
+    "name": "callback-root-check-negative",
+    "raw": {
+      "callback-root-check-negative.stderr": {
+        "bytes": 1377,
+        "sha256": "526e038ba97c51f21fa54453b296b4b393b2a93266e3ae05e71b0fa988fb1c58"
+      },
+      "callback-root-check-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'preserved' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'preserved' is inaccessible due to 'internal' protection level",
+      "name": "callback-root-preserved-negative"
+    },
+    "name": "callback-root-preserved-negative",
+    "raw": {
+      "callback-root-preserved-negative.stderr": {
+        "bytes": 1385,
+        "sha256": "19dbcdcf02cf5d211fda577070576745977f53f201d7cc283e45403c85a87e1e"
+      },
+      "callback-root-preserved-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'install' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'install' is inaccessible due to 'internal' protection level",
+      "name": "callback-root-install-negative"
+    },
+    "name": "callback-root-install-negative",
+    "raw": {
+      "callback-root-install-negative.stderr": {
+        "bytes": 1510,
+        "sha256": "bedae673d086988b01c7f2aad034d3033f07bb299fbb71cd966ccd436366beaf"
+      },
+      "callback-root-install-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "canvas-writer-checked-positive"
+    },
+    "name": "canvas-writer-checked-positive",
+    "raw": {
+      "canvas-writer-checked-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canvas-writer-checked-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_count": 0,
+      "expected_error_regex": null,
+      "name": "canvas-transfer-checked-positive"
+    },
+    "name": "canvas-transfer-checked-positive",
+    "raw": {
+      "canvas-transfer-checked-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canvas-transfer-checked-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'bank' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'bank' is inaccessible due to 'internal' protection level",
+      "name": "canvas-writer-bank-negative"
+    },
+    "name": "canvas-writer-bank-negative",
+    "raw": {
+      "canvas-writer-bank-negative.stderr": {
+        "bytes": 998,
+        "sha256": "74a6b46d33f9de67321d1ffe3315404ea376c55c5d1c73450ca32c5ed291eeab"
+      },
+      "canvas-writer-bank-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'limits' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'limits' is inaccessible due to 'internal' protection level",
+      "name": "canvas-writer-limits-negative"
+    },
+    "name": "canvas-writer-limits-negative",
+    "raw": {
+      "canvas-writer-limits-negative.stderr": {
+        "bytes": 967,
+        "sha256": "c009a2e57d2f65182e132274eee85cfbb494b5f6a537545339ec0bce08a5ed15"
+      },
+      "canvas-writer-limits-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'project' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'project' is inaccessible due to 'internal' protection level",
+      "name": "canvas-project-helper-negative"
+    },
+    "name": "canvas-project-helper-negative",
+    "raw": {
+      "canvas-project-helper-negative.stderr": {
+        "bytes": 1251,
+        "sha256": "861ca6cfac94b06127c8276b394f588e6e23f7b05db5d889828ab56d94e29f40"
+      },
+      "canvas-project-helper-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'SemanticRecordReference' initializer is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "initializer is inaccessible due to 'internal' protection level",
+      "name": "canvas-reference-constructor-negative"
+    },
+    "name": "canvas-reference-constructor-negative",
+    "raw": {
+      "canvas-reference-constructor-negative.stderr": {
+        "bytes": 1101,
+        "sha256": "adfc6df1a4a2569c69096a65a26913f5ead908b5658d2eea32eab9590e4452bb"
+      },
+      "canvas-reference-constructor-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "semantic-c-checked-borrow-positive",
+      "path_only_adjustments": [
+        {
+          "after": "/Users/eugene/work/GiftUI/.build/contracts/p08-semantic-c-harness-continuation1/cache",
+          "argument_index": 14,
+          "before": "/Users/eugene/work/GiftUI/.build/contracts/p08-ef-resolution-candidate1/qualification/cache"
+        },
+        {
+          "after": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/privacy/semantic-c-checked-borrow-positive.swift",
+          "argument_index": 27,
+          "before": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/semantic-c-checked-borrow-positive.swift"
+        }
+      ]
+    },
+    "name": "semantic-c-checked-borrow-positive",
+    "raw": {
+      "semantic-c-checked-borrow-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "semantic-c-checked-borrow-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'SemanticRecordStore<Payload>' initializer is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_errors": [
+        "'SemanticRecordStore<Payload>' initializer is inaccessible due to 'internal' protection level"
+      ],
+      "name": "semantic-c-borrow-init-negative",
+      "path_only_adjustments": [
+        {
+          "after": "/Users/eugene/work/GiftUI/.build/contracts/p08-semantic-c-harness-continuation1/cache",
+          "argument_index": 14,
+          "before": "/Users/eugene/work/GiftUI/.build/contracts/p08-ef-resolution-candidate1/qualification/cache"
+        },
+        {
+          "after": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/privacy/semantic-c-borrow-init-negative.swift",
+          "argument_index": 27,
+          "before": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/semantic-c-borrow-init-negative.swift"
+        }
+      ]
+    },
+    "name": "semantic-c-borrow-init-negative",
+    "raw": {
+      "semantic-c-borrow-init-negative.stderr": {
+        "bytes": 1117,
+        "sha256": "884218a03dcf19717358096c5823a2a7ccc2183ccf92fbb5142d8aa625e794ae"
+      },
+      "semantic-c-borrow-init-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_callback_result": "UInt32",
+      "expected_errors": [],
+      "expected_return_expression": "0",
+      "name": "semantic-c-explicit-return-positive"
+    },
+    "name": "semantic-c-explicit-return-positive",
+    "raw": {
+      "semantic-c-explicit-return-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "semantic-c-explicit-return-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "instance method 'withCandidateView' requires that 'SemanticRecordView<UInt32>' conform to 'Escapable'"
+    ],
+    "expected": {
+      "expected_callback_result": "SemanticRecordView<UInt32>",
+      "expected_errors": [
+        "instance method 'withCandidateView' requires that 'SemanticRecordView<UInt32>' conform to 'Escapable'"
+      ],
+      "expected_return_expression": "view",
+      "name": "semantic-c-explicit-return-escape-negative"
+    },
+    "name": "semantic-c-explicit-return-escape-negative",
+    "raw": {
+      "semantic-c-explicit-return-escape-negative.stderr": {
+        "bytes": 1175,
+        "sha256": "929c447e4b7466664e4b3268a817ce5107cbded8366051d7994ea0283cae403b"
+      },
+      "semantic-c-explicit-return-escape-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "ef-resolution-positive"
+    },
+    "name": "ef-resolution-positive",
+    "raw": {
+      "ef-resolution-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "ef-resolution-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "ef-committedComponents-getter-positive"
+    },
+    "name": "ef-committedComponents-getter-positive",
+    "raw": {
+      "ef-committedComponents-getter-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "ef-committedComponents-getter-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "cannot assign to property: 'committedComponents' setter is inaccessible"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "cannot assign to property: 'committedComponents' setter is inaccessible",
+      "name": "ef-committedComponents-setter-negative"
+    },
+    "name": "ef-committedComponents-setter-negative",
+    "raw": {
+      "ef-committedComponents-setter-negative.stderr": {
+        "bytes": 1243,
+        "sha256": "190cb42ce3b146db92ec8ef255bcafc0034316ad657e0cfa318afc6d158a90d6"
+      },
+      "ef-committedComponents-setter-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "ef-committedReservationCount-getter-positive"
+    },
+    "name": "ef-committedReservationCount-getter-positive",
+    "raw": {
+      "ef-committedReservationCount-getter-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "ef-committedReservationCount-getter-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "cannot assign to property: 'committedReservationCount' setter is inaccessible"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "cannot assign to property: 'committedReservationCount' setter is inaccessible",
+      "name": "ef-committedReservationCount-setter-negative"
+    },
+    "name": "ef-committedReservationCount-setter-negative",
+    "raw": {
+      "ef-committedReservationCount-setter-negative.stderr": {
+        "bytes": 683,
+        "sha256": "9725caeed294bfc95cb800481087d09c45840e2025da749ca3e20cc006b4d58f"
+      },
+      "ef-committedReservationCount-setter-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 0,
+    "classified_errors": [],
+    "expected": {
+      "expected_errors": [],
+      "name": "ef-retiredReservationCount-getter-positive"
+    },
+    "name": "ef-retiredReservationCount-getter-positive",
+    "raw": {
+      "ef-retiredReservationCount-getter-positive.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "ef-retiredReservationCount-getter-positive.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "cannot assign to property: 'retiredReservationCount' setter is inaccessible"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "cannot assign to property: 'retiredReservationCount' setter is inaccessible",
+      "name": "ef-retiredReservationCount-setter-negative"
+    },
+    "name": "ef-retiredReservationCount-setter-negative",
+    "raw": {
+      "ef-retiredReservationCount-setter-negative.stderr": {
+        "bytes": 675,
+        "sha256": "5f2125eb8621c827bb5efcfa01ba7f6c003c488d747c9019fb49f9ade4404d5f"
+      },
+      "ef-retiredReservationCount-setter-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'candidateComponents' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'candidateComponents' is inaccessible due to 'internal' protection level",
+      "name": "ef-candidateComponents-internal-negative"
+    },
+    "name": "ef-candidateComponents-internal-negative",
+    "raw": {
+      "ef-candidateComponents-internal-negative.stderr": {
+        "bytes": 1690,
+        "sha256": "c18177d45950c4187ce753c6b48d52fa7f6f24180d69326bdc146f76d7837731"
+      },
+      "ef-candidateComponents-internal-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'isStaging' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'isStaging' is inaccessible due to 'internal' protection level",
+      "name": "ef-isStaging-internal-negative"
+    },
+    "name": "ef-isStaging-internal-negative",
+    "raw": {
+      "ef-isStaging-internal-negative.stderr": {
+        "bytes": 1615,
+        "sha256": "b937d964356e472edb0049a06b80134a14a5de3e3c5e00c9d42ec4eee3e09d2d"
+      },
+      "ef-isStaging-internal-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'failure' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'failure' is inaccessible due to 'internal' protection level",
+      "name": "ef-failure-internal-negative"
+    },
+    "name": "ef-failure-internal-negative",
+    "raw": {
+      "ef-failure-internal-negative.stderr": {
+        "bytes": 1565,
+        "sha256": "e611a0d3d59f52b8affe7d723530387275b6b1afe1b50715303b570dfb87ed14"
+      },
+      "ef-failure-internal-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'candidateRecords' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'candidateRecords' is inaccessible due to 'internal' protection level",
+      "name": "ef-candidateRecords-internal-negative"
+    },
+    "name": "ef-candidateRecords-internal-negative",
+    "raw": {
+      "ef-candidateRecords-internal-negative.stderr": {
+        "bytes": 1600,
+        "sha256": "429bb7cc88a7e1a9ce4c780f3d02a6930ab27ac7f6d4828c431d4ac560f5b78b"
+      },
+      "ef-candidateRecords-internal-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'candidateHitRegions' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'candidateHitRegions' is inaccessible due to 'internal' protection level",
+      "name": "ef-candidateHitRegions-internal-negative"
+    },
+    "name": "ef-candidateHitRegions-internal-negative",
+    "raw": {
+      "ef-candidateHitRegions-internal-negative.stderr": {
+        "bytes": 1678,
+        "sha256": "cf6fc4e8b338a4fcb44df268ea12e29a81849c8d74343965cdc09a9eaf37e2f1"
+      },
+      "ef-candidateHitRegions-internal-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'candidateCommittedRecords' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'candidateCommittedRecords' is inaccessible due to 'internal' protection level",
+      "name": "ef-candidateCommittedRecords-internal-negative"
+    },
+    "name": "ef-candidateCommittedRecords-internal-negative",
+    "raw": {
+      "ef-candidateCommittedRecords-internal-negative.stderr": {
+        "bytes": 1714,
+        "sha256": "e7d96b2364231c479d4dee9ab07e1fae51b142b095847c1428086b3364402f14"
+      },
+      "ef-candidateCommittedRecords-internal-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'limits' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'limits' is inaccessible due to 'internal' protection level",
+      "name": "ef-limits-internal-negative"
+    },
+    "name": "ef-limits-internal-negative",
+    "raw": {
+      "ef-limits-internal-negative.stderr": {
+        "bytes": 1563,
+        "sha256": "990928e95d94e580bc520acf5b2884f4f07367ea57d428f88b23e35d92b32db5"
+      },
+      "ef-limits-internal-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'phase' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'phase' is inaccessible due to 'internal' protection level",
+      "name": "ef-phase-internal-negative"
+    },
+    "name": "ef-phase-internal-negative",
+    "raw": {
+      "ef-phase-internal-negative.stderr": {
+        "bytes": 1559,
+        "sha256": "ce6097c8cced65ada2f8cbbc4f8a5d2f99ab493d2f2859bc36bc2213a1040baa"
+      },
+      "ef-phase-internal-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'candidateError' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'candidateError' is inaccessible due to 'internal' protection level",
+      "name": "ef-candidateError-internal-negative"
+    },
+    "name": "ef-candidateError-internal-negative",
+    "raw": {
+      "ef-candidateError-internal-negative.stderr": {
+        "bytes": 1639,
+        "sha256": "c2bcb7199b6a8c71fcf9dd49c01a9b08c2c9f443c01108984436d6942cf8295f"
+      },
+      "ef-candidateError-internal-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'committedPresentationRevision' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'committedPresentationRevision' is inaccessible due to 'internal' protection level",
+      "name": "ef-committedPresentationRevision-internal-negative"
+    },
+    "name": "ef-committedPresentationRevision-internal-negative",
+    "raw": {
+      "ef-committedPresentationRevision-internal-negative.stderr": {
+        "bytes": 1686,
+        "sha256": "d2c193beddaadec6d5ae17548ae28ff97f590ecca009adf84fce8fd5d01f71f8"
+      },
+      "ef-committedPresentationRevision-internal-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'pendingReservationCount' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'pendingReservationCount' is inaccessible due to 'internal' protection level",
+      "name": "ef-pendingReservationCount-internal-negative"
+    },
+    "name": "ef-pendingReservationCount-internal-negative",
+    "raw": {
+      "ef-pendingReservationCount-internal-negative.stderr": {
+        "bytes": 1147,
+        "sha256": "d19068bee657935f04611aa22c9fac2d89a46ca9ed2f6f9b85b48a59624aba84"
+      },
+      "ef-pendingReservationCount-internal-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  },
+  {
+    "actual_exit": 1,
+    "classified_errors": [
+      "'adding' is inaccessible due to 'internal' protection level"
+    ],
+    "expected": {
+      "expected_count": 1,
+      "expected_error_regex": "'adding' is inaccessible due to 'internal' protection level",
+      "name": "ef-adding-internal-negative"
+    },
+    "name": "ef-adding-internal-negative",
+    "raw": {
+      "ef-adding-internal-negative.stderr": {
+        "bytes": 1092,
+        "sha256": "17c76a123d0a3876d6a7d107be2f030a20b03778d6f9105be810b6ecc1fb42b5"
+      },
+      "ef-adding-internal-negative.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "recorded_passed": true
+  }
+]

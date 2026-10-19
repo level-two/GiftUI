@@ -30,3 +30,9 @@ evidence only. Its [inspection facts](independent-review-inspection.json)
 verify the archived/raw/live identities, 94 actual compiler exits and fixed
 capture/classifier inventory. Complete current-callee and safety interpretation
 is next; strict cold and P08/R07/T8.1 remain open, with no new allowance.
+
+The subsequent [bounded current-callee and safety interpretation](../current-callee-interpretation1-result/README.md)
+records exact SIL/object edge inventories and **STOP**: ordinary Text cold
+metadata, callback/value-witness attribution and complete safety remain unproved.
+Strict cold remains ineligible; this preserves the collection-only PASS and all
+closed allowances.

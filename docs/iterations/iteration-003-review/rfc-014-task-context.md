@@ -1,6 +1,16 @@
 # RFC-014 task context guide
 
-Current P08 boundary — **retained counter426 PASS; controller readiness PASS; collection unused 0/1**.
+Current P08 boundary — **collection-only PASS; bounded current-callee/safety interpretation STOP**.
+The [interpretation result and exact edge inventories](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/README.md)
+resolve selected Static constructor/reset/helper paths but retain ordinary Text
+cold metadata, callback/value-witness attribution and complete safety obligations.
+`strict_cold_eligible` remains false. Independent interpretation review and
+compiler-free attribution of the named retained edges are next; no compiler,
+runtime, strict-cold, source repair or new collection allowance follows.
+Collection1/1 is consumed, repairs0/retries0; P08/R07/T8.1 and all remaining gates
+stay open. The collection marker and historical budgets remain unchanged.
+
+Historical pre-collection checkpoint — **retained counter426 PASS; controller readiness PASS; collection unused 0/1**.
 The [retained macOS Static result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)
 and [independent result review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/independent-review.md)
 qualify 426 checks / 1,736,320 assertions / zero failures from retained evidence.

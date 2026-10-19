@@ -1,0 +1,49 @@
+{
+  "bodyless_nodes": 282,
+  "bodyless_with_object_definition": 272,
+  "bodyless_with_serialized_body": 0,
+  "call_sites": 9544,
+  "five_preexisting_dirty_hashes_match": true,
+  "indirect_call_sites_including_closure_construction": 106,
+  "input_sil_sha256": "6cc9e7b6cecbeb46dd71b2ac8b6e023182354e7fcc08c814374b9c23303c71ed",
+  "interpretation_status": "STOP_required_current_callee_and_safety_not_proved",
+  "method_limit": "Conservative reference closure; no feasible-path, indirect-target, metadata/value-witness, linked-branch, allocator, cost or safety completion claim.",
+  "object_closure_external_branch_sites": 1892,
+  "object_closure_external_branch_symbols": 56,
+  "object_closure_functions": 4064,
+  "object_closure_indirect_branches": 852,
+  "object_function_records": 24152,
+  "objects": 25,
+  "privacy_exit_nonzero": 61,
+  "privacy_exit_zero": 32,
+  "privacy_recorded_passes": 93,
+  "reference_closure_nodes": 1064,
+  "reference_sites": 8068,
+  "required_bodies": 92,
+  "required_exact_in_reference_closure": 0,
+  "required_exact_with_sil_blocks": 11,
+  "required_with_specialization_prefix_candidates_in_closure": 42,
+  "roots": [
+    {
+      "label": "p08CounterHost(write:backing:)",
+      "line": 400836,
+      "symbol": "$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+    },
+    {
+      "label": "p08CounterScopedStorage(backing:write:)",
+      "line": 417207,
+      "symbol": "$s17P08CounterRuntime03p08B13ScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF"
+    },
+    {
+      "label": "p08CounterRoute(write:backing:)",
+      "line": 562306,
+      "symbol": "$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+    }
+  ],
+  "serialized_function_records": 4796,
+  "serialized_indexes": 11,
+  "sil_function_records": 3994,
+  "sil_records_with_blocks": 3654,
+  "source42_hashes_match": true,
+  "strict_cold_eligible": false
+}
