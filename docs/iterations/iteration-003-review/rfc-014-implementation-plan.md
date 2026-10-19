@@ -1,10 +1,13 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current P08 metadata boundary — **one exact ref GET stopped at HTTP 403 rate limit**.
-The [raw result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-macos-2662-ref1-result/README.md)
-contains no ref object; the one-GET/no-retry allowance is consumed. Tag existence,
-applicable dyld revision and cache-field semantics remain unknown. The prior
-readiness below is historical; no fallback URL, page, object or header read follows.
+Current P08 metadata boundary — **exact ref HTTP 403 result independently PASS/STOP**.
+The [independent result review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-macos-2662-ref1-result/independent-review.md)
+verifies raw headers/body hashes, rate-limit failure, no ref object and preserved
+five dirty files/cache/three consumed markers. The one-GET/no-retry allowance is
+consumed. Tag existence, applicable dyld revision and cache-field semantics remain
+unknown. A separate exact bounded evidence preparation and independent review
+must precede further reads; no automatic retry or alternate route follows.
+The prior readiness below is historical; all P08 gates remain open.
 
 Prior P08 boundary — **official dyld schema-source preparation independently PASS/STOP; exact applicable revision missing; full callee/safety STOP**.
 The [independent metadata review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-schema-source1-preparation/independent-review.md)

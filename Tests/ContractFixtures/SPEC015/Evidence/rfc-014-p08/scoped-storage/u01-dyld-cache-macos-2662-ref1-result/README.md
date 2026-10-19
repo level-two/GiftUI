@@ -9,6 +9,9 @@ failure. The raw [headers](macos-2662-ref.headers) report HTTP/2 403 and
 public GitHub API rate limit. No ref object or release/build association was
 returned. This does not establish whether the tag exists.
 
+[Independent Strong review](independent-review.md) passes the bounded failure
+result and STOP; no retry or alternate read is cleared.
+
 | Raw file | Bytes | SHA-256 |
 | --- | ---: | --- |
 | `macos-2662-ref.headers` | 1,021 | `d643282007c6eaacbc7190e8d5a59f7b990ffac8f9b69f1915cc2e6d754f4b21` |
