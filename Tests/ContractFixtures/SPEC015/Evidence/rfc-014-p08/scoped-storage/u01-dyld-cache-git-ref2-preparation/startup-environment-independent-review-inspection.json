@@ -1,0 +1,247 @@
+{
+  "AST_parse": "PASS; controller and probe not imported/executed in review",
+  "all_other_functions_unchanged": true,
+  "cache_files": {
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": {
+      "matches_baseline": true,
+      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+    }
+  },
+  "cache_membership_matches": true,
+  "controller_function_changes_from_e9c7a059": [
+    "verify_identity"
+  ],
+  "diagnostic_commit": "9542d659e74e625b383b044a57b0c96ee37532c9",
+  "dirty_files": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": {
+      "matches_baseline": true,
+      "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": {
+      "matches_baseline": true,
+      "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3"
+    },
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": {
+      "matches_baseline": true,
+      "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243"
+    },
+    "scripts/nrf52840/build.sh": {
+      "matches_baseline": true,
+      "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72"
+    },
+    "scripts/raspberry-pi/build.sh": {
+      "matches_baseline": true,
+      "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+    }
+  },
+  "disposition": "GO / independent technical launch readiness PASS; separate launch authorization remains required",
+  "environment": {
+    "exact_launch_prefix_matches": true,
+    "exact_startup_equality": true,
+    "launch_input_matches_request_and_lock": true,
+    "source_predicate": "dict(os.environ) == ENV == lock['startup_environment']"
+  },
+  "header_bytes": 0,
+  "header_candidates": "0/3",
+  "markers": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": {
+      "identity": [
+        16777234,
+        29640436
+      ],
+      "matches_baseline": true
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": {
+      "identity": [
+        16777234,
+        29650609
+      ],
+      "matches_baseline": true
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": {
+      "identity": [
+        16777234,
+        29652748
+      ],
+      "matches_baseline": true
+    }
+  },
+  "markers_each": "1/1 consumed",
+  "packet_blobs": {
+    "README.md": {
+      "bytes": 6134,
+      "matches_reviewed_blob": true,
+      "sha256": "bc6790bea40ebb3860276321105a9e57ba4676f035ea937fb2172d61e0ae20ae"
+    },
+    "controller-independent-review-inspection.json": {
+      "bytes": 6397,
+      "matches_reviewed_blob": true,
+      "sha256": "239aea2c60737b622d329d9a41c20d64d1a68d93cd0a35f9d2bdc36ffc5887e0"
+    },
+    "controller-independent-review.md": {
+      "bytes": 8622,
+      "matches_reviewed_blob": true,
+      "sha256": "43fec26e7008ab788e3914728075c999bc7ac8fc66f1983870032e0cc88728c4"
+    },
+    "controller-preparation-inspection.json": {
+      "bytes": 1992,
+      "matches_reviewed_blob": true,
+      "sha256": "3933c7e5444855c8c2e4fb5997a2db2740c52751e27c3e529d3daf553e154222"
+    },
+    "controller-preparation.md": {
+      "bytes": 9828,
+      "matches_reviewed_blob": true,
+      "sha256": "f461dfac34b0758e9a7aaa9dc77f383aab0bd9d9acecd448c280cc89565b7910"
+    },
+    "controller.py": {
+      "bytes": 20071,
+      "matches_reviewed_blob": true,
+      "sha256": "9125e13998120ae2f15d71948110b5141c0915e7939955595c6f41076057a374"
+    },
+    "failed-launch-diagnostic-inspection.json": {
+      "bytes": 4471,
+      "matches_reviewed_blob": true,
+      "sha256": "81c89ced416a5c41497851910ecb97908183aab0478a6b0642a5c4ec1452f08e"
+    },
+    "failed-launch-diagnostic.md": {
+      "bytes": 5503,
+      "matches_reviewed_blob": true,
+      "sha256": "e32e227797ce4fba791df871057b9dfd4a38847049f19d0ef5ea17c4d00267a6"
+    },
+    "full-stream-correction-inspection.json": {
+      "bytes": 2474,
+      "matches_reviewed_blob": true,
+      "sha256": "453a863dd97846fddd071eb92d4e9c32ed3fcbb8e28f94cd942837517f1f7e09"
+    },
+    "full-stream-independent-review-inspection.json": {
+      "bytes": 7858,
+      "matches_reviewed_blob": true,
+      "sha256": "c6e7474543c0646e970693e2da0e1c634d7562765d3fcdfc2523a191af308cb2"
+    },
+    "full-stream-independent-review.md": {
+      "bytes": 4796,
+      "matches_reviewed_blob": true,
+      "sha256": "9fd66fbdcfd61b35c3ef9658d3c40b394fc41f9bcfbb59fa9a0d217e8f0109f2"
+    },
+    "independent-review-inspection.json": {
+      "bytes": 3932,
+      "matches_reviewed_blob": true,
+      "sha256": "bf7617f73b5268422a1dcb58e31ab406fd1a56b671310ad7ca7507cb7cefa30f"
+    },
+    "independent-review.md": {
+      "bytes": 9047,
+      "matches_reviewed_blob": true,
+      "sha256": "a41c365ddfdd3d2899463bd96e9b498b7d4c124f52eecfa5c0af89249bde8d22"
+    },
+    "inspection.json": {
+      "bytes": 2778,
+      "matches_reviewed_blob": true,
+      "sha256": "b458b2f4151e92d3f041e27eff495b44a6c493886100ca7c4f1f82f932019c8a"
+    },
+    "request.json": {
+      "bytes": 4205,
+      "matches_reviewed_blob": true,
+      "sha256": "7f527096c16712ea7f13fcb9f04a84bb45413a7b29aa909ac63065b61a7f02a5"
+    },
+    "request.md": {
+      "bytes": 10940,
+      "matches_reviewed_blob": true,
+      "sha256": "4dd6148582e803f7c0e0d398b756d1c06dc99dbe3be4b487876406d1396a3817"
+    },
+    "runtime-lock.json": {
+      "bytes": 725536,
+      "matches_reviewed_blob": true,
+      "sha256": "4e357ba8bc5ff1c41135ef25afeb76a03265577455dbf8390945c70caa72f33a"
+    },
+    "startup-environment-correction-inspection.json": {
+      "bytes": 3485,
+      "matches_reviewed_blob": true,
+      "sha256": "10aae844289c409c11fa3fd8a4ca3a65ee420dfaeb6b85e546b6383a4c2bb63c"
+    },
+    "startup-environment-correction.md": {
+      "bytes": 2728,
+      "matches_reviewed_blob": true,
+      "sha256": "43d68c2abc3ca7699b8242f52f105022420ba23aad300ed0066cca5bcc34621e"
+    },
+    "startup-environment-probe.py": {
+      "bytes": 1054,
+      "matches_reviewed_blob": true,
+      "sha256": "6ed7ea01ea245b54c265ec157beece5b8c8a421c200831f21624502fc018fe34"
+    },
+    "startup-environment-probe.stdout.json": {
+      "bytes": 779,
+      "matches_reviewed_blob": true,
+      "sha256": "7657bad83215bb5bb7b95ecaaf1011109e9167baa744e7fe0e555299965113dc"
+    }
+  },
+  "pins": {
+    "OS_build_matches": true,
+    "POST_ASCII_hex_size_matches": true,
+    "absent_sys_paths_absent": true,
+    "controller_sha256": "9125e13998120ae2f15d71948110b5141c0915e7939955595c6f41076057a374",
+    "dependency_file_map_unchanged": true,
+    "lock_sha256": "4e357ba8bc5ff1c41135ef25afeb76a03265577455dbf8390945c70caa72f33a",
+    "request_hash_matches_inspection": true,
+    "request_sha256": "7f527096c16712ea7f13fcb9f04a84bb45413a7b29aa909ac63065b61a7f02a5",
+    "runtime_hash_mismatches": [],
+    "runtime_hashes_checked": 2165,
+    "runtime_lock_changes": [
+      "launch_environment",
+      "startup_environment"
+    ],
+    "source_lock_request_argv_match": true,
+    "stdlib_membership_matches": true,
+    "stdlib_resolved_members": 2160
+  },
+  "prior_API_GET": "1/1 consumed",
+  "prior_failed_launch_attempt": "Preserved; process start/exception not established; no automatic retry",
+  "probe": {
+    "argv_prefix_matches_controller": true,
+    "authenticity_limit": "Retained original stdout/source and trusted preparation execution record checked by immutable blob/pin and static consistency; no independent rerun, process attestation or reconstruction of failed controller attempt.",
+    "observed_exit_record": 0,
+    "same_stdlib_import_order": true,
+    "source_pin_matches": true,
+    "source_sha256": "6ed7ea01ea245b54c265ec157beece5b8c8a421c200831f21624502fc018fe34",
+    "stdout_bytes_match": true,
+    "stdout_flags_and_exact_match": true,
+    "stdout_pin_matches": true,
+    "stdout_runtime_identity_matches": true,
+    "stdout_sha256": "7657bad83215bb5bb7b95ecaaf1011109e9167baa744e7fe0e555299965113dc"
+  },
+  "ref2_HTTP_allowance_consumed": 0,
+  "repairs": 0,
+  "result_directory_exists": false,
+  "retained_metadata": {
+    "u01-dyld-cache-macos-2662-ref1-result/macos-2662-ref.headers": {
+      "bytes": 1021,
+      "hash_matches_baseline": true,
+      "sha256": "d643282007c6eaacbc7190e8d5a59f7b990ffac8f9b69f1915cc2e6d754f4b21",
+      "size_matches_baseline": true
+    },
+    "u01-dyld-cache-macos-2662-ref1-result/macos-2662-ref.json": {
+      "bytes": 279,
+      "hash_matches_baseline": true,
+      "sha256": "16b605b4b536a18a4158a564f5f2f836d47da19bb8c3c5b201a226d528c20b15",
+      "size_matches_baseline": true
+    },
+    "u01-dyld-cache-schema-source1-preparation/distribution-tags.headers": {
+      "bytes": 1478,
+      "hash_matches_baseline": true,
+      "sha256": "0882476addc240934a7db06052073bc05633e2570422bee52a949be9023d8a6f",
+      "size_matches_baseline": true
+    },
+    "u01-dyld-cache-schema-source1-preparation/distribution-tags.json": {
+      "bytes": 55838,
+      "hash_matches_baseline": true,
+      "sha256": "8e52205de326cf31289a8443ae889bc44b0a16c39e867247a0bad828ee435105",
+      "size_matches_baseline": true
+    }
+  },
+  "retries": 0,
+  "review_compiler_build_test_target": 0,
+  "review_controller_executions": 0,
+  "review_controller_imports": 0,
+  "review_network": 0,
+  "review_probe_executions": 0,
+  "reviewed_commit": "046ecbda98021a9ad645462213d772ef60e13a12"
+}

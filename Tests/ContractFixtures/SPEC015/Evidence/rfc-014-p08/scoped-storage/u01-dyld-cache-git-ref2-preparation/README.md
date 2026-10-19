@@ -1,5 +1,13 @@
 # U01 exact Git ref route 2 preparation — 2026-10-19
 
+**Current disposition: GO / independent technical launch readiness PASS** for
+exact `046ecbda` and the final hashes frozen in the
+[startup re-review](startup-environment-independent-review.md). Exact env -i
+input/four-entry startup equality, retained standalone probe and all earlier
+B01/B02/pin/preservation checks pass. Result directory remains absent; no
+controller/probe/network ran during review. The prior failed attempt is preserved;
+separate launch authorization is still required. Earlier checkpoints are historical.
+
 **Current disposition: offline startup-environment correction prepared; NOT READY
 pending separate Strong review.** The [correction](startup-environment-correction.md)
 pins only the observed additional __CF_USER_TEXT_ENCODING value while retaining
