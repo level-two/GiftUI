@@ -1,7 +1,8 @@
 # Current-callee complete environment preparation — 2026-10-19
 
 Compiler-free response to [independent review B2](independent-review.md).
-Readiness remains pending. No compiler, build, test, runtime or decoder ran;
+[Independent controller readiness review](controller-independent-review.md) passes B1/B2.
+No compiler, build, test, runtime or decoder ran;
 collection use remains 0/1, maximum 94 swiftc invocations, zero repairs/retries.
 
 [process-environment.json](process-environment.json) supplies complete dictionaries
@@ -36,6 +37,6 @@ OS image. Developer/user/toolchain search roots are frozen, including symlink
 resolution; existence alone supplies no authentication.
 
 [environment-preparation-inspection.json](environment-preparation-inspection.json)
-records file-read/hash/inventory observations only. The next dependency is the
-independent Strong readiness review of the [concrete one-shot controller](CONTROLLER.md)
-and complete code/environment packet. These snapshots do not authorize a launch.
+records file-read/hash/inventory observations only. The independent review clears
+only the [concrete one-shot controller](CONTROLLER.md) bootstrap with external final
+reviewed pins; the collection remains unused.

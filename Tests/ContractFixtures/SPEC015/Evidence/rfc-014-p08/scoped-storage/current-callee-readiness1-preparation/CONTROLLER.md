@@ -1,6 +1,8 @@
 # One-shot current-callee controller preparation — 2026-10-19
 
-Status: **concrete compiler-free controller; independent Strong readiness pending**.
+Status: **independent Strong readiness PASS; collection unused 0/1**.
+The [independent review](controller-independent-review.md) closes B1/B2 and clears
+only the sole bootstrap collection with external final reviewed pins.
 This implements preparation review [B1/B2](independent-review.md), retaining its
 applicability PASS and all historical STOPs. The collection remains **0/1 used**,
 maximum **94 swiftc invocations**, zero source candidates, zero automatic source
@@ -110,8 +112,9 @@ environment and loader closure, exclusive lock/marker/claim semantics, durable
 actual exits, privacy classifiers, body-index gates and all stop paths. Code has
 not been executed or adversarially tested in this preparation; AST inspection
 does not establish runtime correctness. Do not infer readiness from a commit.
-The reviewer must issue full external pins for the final reviewed HEAD/tree and
-this packet tree. No reviewed pins or launch clearance are asserted here.
+The [independent review](controller-independent-review.md) is complete. Its reviewer
+supplies full external final HEAD/tree and packet-tree pins after committing the
+verdict; that review provides the bounded launch clearance.
 
 Only after that separate independent readiness PASS, the sole bootstrap form is:
 

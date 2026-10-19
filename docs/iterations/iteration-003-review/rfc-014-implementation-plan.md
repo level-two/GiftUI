@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current P08 boundary — **retained counter426 PASS; controller/environment prepared; independent readiness pending**.
+Current P08 boundary — **retained counter426 PASS; controller readiness PASS; collection unused 0/1**.
 The [retained macOS Static result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)
 and [independent result review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/independent-review.md)
 qualify 426 checks / 1,736,320 assertions / zero failures from retained evidence.
@@ -10,8 +10,8 @@ records missing old E/F artifacts and proposes retained current imports/objects,
 93 privacy controls and one exact 42-source optimized SIL collection. No compiler,
 build, test, decoder or runtime ran. The [independent Strong preparation review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/independent-review.md)
 passes applicability and the bounded recipe. The concrete authenticated one-shot
-controller and complete environment/loader packet are now prepared; separate
-independent Strong readiness review remains required before launch. Zero automatic
+controller and complete environment/loader packet have [independent Strong readiness PASS](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/controller-independent-review.md).
+Only one bootstrap collection using external final reviewed pins is cleared. Zero automatic
 repairs/retries; no historical budget reset. Full current-callee/safety/strict cold,
 resources and P08/R07/T8.1 remain open. Earlier checkpoints below retain their
 historical dispositions.

@@ -1,15 +1,16 @@
 # P08 complete current-callee preparation 1 — 2026-10-19
 
-Status: **applicability reviewed; concrete controller/environment prepared; independent readiness pending**.
+Status: **independent controller/environment readiness PASS; collection unused 0/1**.
 The [independent Strong review](independent-review.md) passes applicability and the
 bounded recipe. The [concrete controller/environment packet](CONTROLLER.md) is now
-prepared; independent Strong readiness review remains required before production.
+prepared and has [independent Strong readiness PASS](controller-independent-review.md)
+for the sole pinned bootstrap collection.
 The [complete environment/loader preparation](ENVIRONMENT.md) now freezes all
-seven proposed loader roots, including review B2's three missing roots; its
-independent readiness review remains pending with the controller.
+seven proposed loader roots, including review B2's three missing roots.
+B1/B2 are closed by the controller readiness review.
 No compiler, build, test, decoder or runtime command ran. This packet supplies
 fixed collection data, authenticated one-shot controller code and review requirements;
-it does not claim launch readiness. The output
+launch clearance is limited to the reviewed bootstrap and external final pins. The output
 `.build/contracts/p08-current-callee-collection1` is absent.
 
 ## Authority and current boundary
@@ -140,8 +141,9 @@ bounds for independent review under the current P08 instruction, not a reset of
 any earlier budget. Existing two-unproductive and all historical stop rules apply.
 
 The [independent Strong applicability/minimal-recipe review](independent-review.md)
-of preparation commit `0bc382b4` is complete. The exact next dependency is a
-**independent Strong readiness review of the concrete controller/environment packet**.
+of preparation commit `0bc382b4` is complete. The [controller readiness review](controller-independent-review.md)
+also passes. The next action is **one launch of the reviewed bootstrap using the
+independently supplied final commit/repository-tree/packet-tree pins**.
 The original preparation requirements below remain production launch conditions;
 authenticated inputs and producer joins must still be rechecked at launch:
 
