@@ -1,0 +1,1101 @@
+{
+  "R01": "OPEN: matching supplemental/current Swift image identity and cold-entry export/start; no implementation instructions, cache initialization or feasible transitive costs",
+  "R02": "OPEN: ErrorWS export offset is not Error value size; metadata/value-witness bytes/layout applicability/numeric S and D remain missing",
+  "R03": "PARTIAL: four I image identities, two supplemental UUID matches and pinned cache/map/input correspondence; ordinary historical loaded identity and cache schema unestablished; platform standalone/cache identity not equated",
+  "R04": "OPEN_COST: recorded libSystem umbrella/C reexport/platform target and C canary exports/starts; no unique complete umbrella search/runtime variant/resolver selection or bodies/data/cost proof",
+  "S_executed_or_released": false,
+  "archive_members_equal_manifest_Git": 13,
+  "baseline": "2c6570e6daf716d632a91cc2f15445de7e8a36c4",
+  "cache_UUID_field_decoded": false,
+  "cache_header_schema_authenticated": false,
+  "cache_members_verified": 15,
+  "current_callee_and_safety": "STOP",
+  "direct_context_files_verified": 203,
+  "export_start_arithmetic": [
+    {
+      "export_line": 14843,
+      "export_offset": "0x0009B7A4",
+      "function_line": 18862,
+      "image": "/usr/lib/swift/libswiftCore.dylib",
+      "implementation_bytes_present": false,
+      "map_base": "0x193c4f000",
+      "printed_function_start": "0x193CEA7A4",
+      "symbol": "_swift_getTypeByMangledNameInContext2"
+    },
+    {
+      "export_line": 37704,
+      "export_offset": "0x00078A94",
+      "function_line": 40977,
+      "image": "/usr/lib/system/libsystem_c.dylib",
+      "implementation_bytes_present": false,
+      "map_base": "0x18038d000",
+      "printed_function_start": "0x180405A94",
+      "symbol": "___stack_chk_fail"
+    }
+  ],
+  "image_joins": [
+    {
+      "UUID": "83794FB3-DE9B-3D23-AB5E-2C1D5D30F134",
+      "arch": "arm64e",
+      "historical_report_base": "0x19645f000",
+      "input_origin_limit": "Absent standalone operand; installed tool documents cache-backed lookup. Pinned cache family/map correspondence, not decoded header-field proof.",
+      "map_TEXT_base": "0x193C4F000",
+      "map_TEXT_end": "0x1941F1800",
+      "ordinary_counter_loaded_identity": false,
+      "path": "/usr/lib/swift/libswiftCore.dylib",
+      "report_map_slide_candidate": "0x2810000",
+      "standalone_existed_at_capture": false,
+      "supplemental_report_exact_UUID_path_arch_match": true
+    },
+    {
+      "UUID": "4FED5EE2-5D3E-35B1-A170-9859C4B683BB",
+      "arch": "arm64e",
+      "historical_report_base": null,
+      "input_origin_limit": "Absent standalone operand; installed tool documents cache-backed lookup. Pinned cache family/map correspondence, not decoded header-field proof.",
+      "map_TEXT_base": "0x19035A000",
+      "map_TEXT_end": "0x19035BCE4",
+      "ordinary_counter_loaded_identity": false,
+      "path": "/usr/lib/libSystem.B.dylib",
+      "report_map_slide_candidate": null,
+      "standalone_existed_at_capture": false,
+      "supplemental_report_exact_UUID_path_arch_match": false
+    },
+    {
+      "UUID": "D77CEB62-AFF6-3CEC-BA9B-4F057FBE2EB5",
+      "arch": "arm64e",
+      "historical_report_base": "0x182b9d000",
+      "input_origin_limit": "Absent standalone operand; installed tool documents cache-backed lookup. Pinned cache family/map correspondence, not decoded header-field proof.",
+      "map_TEXT_base": "0x18038D000",
+      "map_TEXT_end": "0x18040E1E8",
+      "ordinary_counter_loaded_identity": false,
+      "path": "/usr/lib/system/libsystem_c.dylib",
+      "report_map_slide_candidate": "0x2810000",
+      "standalone_existed_at_capture": false,
+      "supplemental_report_exact_UUID_path_arch_match": true
+    },
+    {
+      "UUID": "EDB83A19-EC17-32DE-9350-6145970A85D6",
+      "arch": "arm64e",
+      "historical_report_base": null,
+      "input_origin_limit": "Pinned standalone platform operand exists; do not transfer its relative offsets/UUID into cache without exact cache-image qualification",
+      "map_TEXT_base": "0x180506000",
+      "map_TEXT_end": "0x18050E964",
+      "ordinary_counter_loaded_identity": false,
+      "path": "/usr/lib/system/libsystem_platform.dylib",
+      "report_map_slide_candidate": null,
+      "standalone_existed_at_capture": true,
+      "supplemental_report_exact_UUID_path_arch_match": false
+    }
+  ],
+  "method": "Retained text/JSON/Git and pinned existing-file SHA-256 only; no instruction/cache-format decoder or controller/target execution",
+  "old_B_applicable": false,
+  "ordinary_counter_loaded_identity_complete": false,
+  "p08_r07_t8_1": "OPEN",
+  "records": [
+    {
+      "SDK": "26.6.1",
+      "UUID": "83794FB3-DE9B-3D23-AB5E-2C1D5D30F134",
+      "UUID_line": 6,
+      "arch": "arm64e",
+      "dynamic_resolver_exports": [],
+      "export_rows": 15042,
+      "first_line": 1,
+      "function_start_rows": 22057,
+      "function_variants_heading_present": false,
+      "import_rows": 246,
+      "last_line": 37364,
+      "linked_dylibs": [
+        {
+          "attributes": "upward delay-init",
+          "line": 9,
+          "path": "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation"
+        },
+        {
+          "attributes": "upward delay-init",
+          "line": 10,
+          "path": "/usr/lib/swift/libswiftObjectiveC.dylib"
+        },
+        {
+          "attributes": "delay-init",
+          "line": 11,
+          "path": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation"
+        },
+        {
+          "attributes": "",
+          "line": 12,
+          "path": "/usr/lib/libc++.1.dylib"
+        },
+        {
+          "attributes": "",
+          "line": 13,
+          "path": "/usr/lib/libSystem.B.dylib"
+        },
+        {
+          "attributes": "",
+          "line": 14,
+          "path": "/usr/lib/libobjc.A.dylib"
+        },
+        {
+          "attributes": "",
+          "line": 15,
+          "path": "/usr/lib/libswiftPrespecialized.dylib"
+        }
+      ],
+      "minOS": "26.6",
+      "path": "/usr/lib/swift/libswiftCore.dylib",
+      "platform": "zippered(macOS/Catalyst)",
+      "reexport_rows": 0,
+      "sections": {
+        "exports": {
+          "end_line": 15059,
+          "heading_line": 16
+        },
+        "function_starts": {
+          "end_line": 37364,
+          "heading_line": 15307
+        },
+        "imports": {
+          "end_line": 15306,
+          "heading_line": 15060
+        },
+        "linked_dylibs": {
+          "end_line": 15,
+          "heading_line": 7
+        },
+        "platform": {
+          "end_line": 4,
+          "heading_line": 2
+        },
+        "uuid": {
+          "end_line": 6,
+          "heading_line": 5
+        }
+      },
+      "selected_rows": [
+        {
+          "annotation": "",
+          "line": 10510,
+          "offset_or_reexport": "0x5C0FC8C0",
+          "section": "exports",
+          "symbol": "_$ss5ErrorWS"
+        },
+        {
+          "annotation": "",
+          "line": 14843,
+          "offset_or_reexport": "0x0009B7A4",
+          "section": "exports",
+          "symbol": "_swift_getTypeByMangledNameInContext2"
+        },
+        {
+          "attributes": "",
+          "from_as_printed": "libSystem",
+          "line": 15111,
+          "ordinal_as_printed": null,
+          "section": "imports",
+          "symbol": "___stack_chk_fail"
+        },
+        {
+          "attributes": "",
+          "from_as_printed": "libSystem",
+          "line": 15112,
+          "ordinal_as_printed": null,
+          "section": "imports",
+          "symbol": "___stack_chk_guard"
+        },
+        {
+          "attributes": "",
+          "from_as_printed": "libSystem",
+          "line": 15217,
+          "ordinal_as_printed": null,
+          "section": "imports",
+          "symbol": "_memcpy"
+        },
+        {
+          "attributes": "",
+          "from_as_printed": "libSystem",
+          "line": 15218,
+          "ordinal_as_printed": null,
+          "section": "imports",
+          "symbol": "_memmove"
+        },
+        {
+          "address_as_printed": "0x193CEA7A4",
+          "line": 18862,
+          "section": "function_starts",
+          "symbol": "_swift_getTypeByMangledNameInContext2"
+        }
+      ],
+      "structured_function_variant_rows_present": false,
+      "variant_limit": "Flag was requested; no separate variant heading/table is emitted. No absence-of-variants or implementation-selection claim follows."
+    },
+    {
+      "SDK": "26.6.1",
+      "UUID": "4FED5EE2-5D3E-35B1-A170-9859C4B683BB",
+      "UUID_line": 37370,
+      "arch": "arm64e",
+      "dynamic_resolver_exports": [],
+      "export_rows": 3,
+      "first_line": 37365,
+      "function_start_rows": 22,
+      "function_variants_heading_present": false,
+      "import_rows": 77,
+      "last_line": 37517,
+      "linked_dylibs": [
+        {
+          "attributes": "re-export",
+          "line": 37373,
+          "path": "/usr/lib/system/libcache.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37374,
+          "path": "/usr/lib/system/libcommonCrypto.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37375,
+          "path": "/usr/lib/system/libcompiler_rt.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37376,
+          "path": "/usr/lib/system/libcopyfile.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37377,
+          "path": "/usr/lib/system/libcorecrypto.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37378,
+          "path": "/usr/lib/system/libdispatch.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37379,
+          "path": "/usr/lib/system/libdyld.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37380,
+          "path": "/usr/lib/system/libkeymgr.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37381,
+          "path": "/usr/lib/system/libmacho.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37382,
+          "path": "/usr/lib/system/libquarantine.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37383,
+          "path": "/usr/lib/system/libremovefile.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37384,
+          "path": "/usr/lib/system/libsystem_asl.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37385,
+          "path": "/usr/lib/system/libsystem_blocks.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37386,
+          "path": "/usr/lib/system/libsystem_c.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37387,
+          "path": "/usr/lib/system/libsystem_collections.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37388,
+          "path": "/usr/lib/system/libsystem_configuration.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37389,
+          "path": "/usr/lib/system/libsystem_containermanager.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37390,
+          "path": "/usr/lib/system/libsystem_coreservices.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37391,
+          "path": "/usr/lib/system/libsystem_darwin.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37392,
+          "path": "/usr/lib/system/libsystem_darwindirectory.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37393,
+          "path": "/usr/lib/system/libsystem_dnssd.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37394,
+          "path": "/usr/lib/system/libsystem_eligibility.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37395,
+          "path": "/usr/lib/system/libsystem_featureflags.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37396,
+          "path": "/usr/lib/system/libsystem_info.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37397,
+          "path": "/usr/lib/system/libsystem_m.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37398,
+          "path": "/usr/lib/system/libsystem_malloc.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37399,
+          "path": "/usr/lib/system/libsystem_networkextension.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37400,
+          "path": "/usr/lib/system/libsystem_notify.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37401,
+          "path": "/usr/lib/system/libsystem_sandbox.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37402,
+          "path": "/usr/lib/system/libsystem_sanitizers.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37403,
+          "path": "/usr/lib/system/libsystem_secinit.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37404,
+          "path": "/usr/lib/system/libsystem_kernel.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37405,
+          "path": "/usr/lib/system/libsystem_platform.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37406,
+          "path": "/usr/lib/system/libsystem_pthread.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37407,
+          "path": "/usr/lib/system/libsystem_symptoms.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37408,
+          "path": "/usr/lib/system/libsystem_trace.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37409,
+          "path": "/usr/lib/system/libsystem_trial.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37410,
+          "path": "/usr/lib/system/libunwind.dylib"
+        },
+        {
+          "attributes": "re-export",
+          "line": 37411,
+          "path": "/usr/lib/system/libxpc.dylib"
+        }
+      ],
+      "minOS": "26.6",
+      "path": "/usr/lib/libSystem.B.dylib",
+      "platform": "zippered(macOS/Catalyst)",
+      "reexport_rows": 0,
+      "sections": {
+        "exports": {
+          "end_line": 37416,
+          "heading_line": 37412
+        },
+        "function_starts": {
+          "end_line": 37517,
+          "heading_line": 37495
+        },
+        "imports": {
+          "end_line": 37494,
+          "heading_line": 37417
+        },
+        "linked_dylibs": {
+          "end_line": 37411,
+          "heading_line": 37371
+        },
+        "platform": {
+          "end_line": 37368,
+          "heading_line": 37366
+        },
+        "uuid": {
+          "end_line": 37370,
+          "heading_line": 37369
+        }
+      },
+      "selected_rows": [],
+      "structured_function_variant_rows_present": false,
+      "variant_limit": "Flag was requested; no separate variant heading/table is emitted. No absence-of-variants or implementation-selection claim follows."
+    },
+    {
+      "SDK": "26.6.1",
+      "UUID": "D77CEB62-AFF6-3CEC-BA9B-4F057FBE2EB5",
+      "UUID_line": 37523,
+      "arch": "arm64e",
+      "dynamic_resolver_exports": [],
+      "export_rows": 1321,
+      "first_line": 37518,
+      "function_start_rows": 1880,
+      "function_variants_heading_present": false,
+      "import_rows": 271,
+      "last_line": 41017,
+      "linked_dylibs": [
+        {
+          "attributes": "",
+          "line": 37526,
+          "path": "/usr/lib/system/libcompiler_rt.dylib"
+        },
+        {
+          "attributes": "",
+          "line": 37527,
+          "path": "/usr/lib/system/libdyld.dylib"
+        },
+        {
+          "attributes": "",
+          "line": 37528,
+          "path": "/usr/lib/system/libsystem_kernel.dylib"
+        },
+        {
+          "attributes": "",
+          "line": 37529,
+          "path": "/usr/lib/system/libsystem_m.dylib"
+        },
+        {
+          "attributes": "",
+          "line": 37530,
+          "path": "/usr/lib/system/libsystem_malloc.dylib"
+        },
+        {
+          "attributes": "",
+          "line": 37531,
+          "path": "/usr/lib/system/libsystem_platform.dylib"
+        },
+        {
+          "attributes": "",
+          "line": 37532,
+          "path": "/usr/lib/system/libsystem_pthread.dylib"
+        },
+        {
+          "attributes": "upward",
+          "line": 37533,
+          "path": "/usr/lib/system/libdispatch.dylib"
+        },
+        {
+          "attributes": "upward",
+          "line": 37534,
+          "path": "/usr/lib/system/libmacho.dylib"
+        },
+        {
+          "attributes": "upward",
+          "line": 37535,
+          "path": "/usr/lib/system/libsystem_asl.dylib"
+        },
+        {
+          "attributes": "upward",
+          "line": 37536,
+          "path": "/usr/lib/system/libsystem_blocks.dylib"
+        },
+        {
+          "attributes": "upward",
+          "line": 37537,
+          "path": "/usr/lib/system/libsystem_info.dylib"
+        },
+        {
+          "attributes": "upward",
+          "line": 37538,
+          "path": "/usr/lib/system/libsystem_notify.dylib"
+        },
+        {
+          "attributes": "upward",
+          "line": 37539,
+          "path": "/usr/lib/system/libxpc.dylib"
+        },
+        {
+          "attributes": "upward",
+          "line": 37540,
+          "path": "/usr/lib/system/libcorecrypto.dylib"
+        },
+        {
+          "attributes": "upward",
+          "line": 37541,
+          "path": "/usr/lib/system/libsystem_trace.dylib"
+        }
+      ],
+      "minOS": "26.6",
+      "path": "/usr/lib/system/libsystem_c.dylib",
+      "platform": "zippered(macOS/Catalyst)",
+      "reexport_rows": 22,
+      "sections": {
+        "exports": {
+          "end_line": 38864,
+          "heading_line": 37542
+        },
+        "function_starts": {
+          "end_line": 41017,
+          "heading_line": 39137
+        },
+        "imports": {
+          "end_line": 39136,
+          "heading_line": 38865
+        },
+        "linked_dylibs": {
+          "end_line": 37541,
+          "heading_line": 37524
+        },
+        "platform": {
+          "end_line": 37521,
+          "heading_line": 37519
+        },
+        "uuid": {
+          "end_line": 37523,
+          "heading_line": 37522
+        }
+      },
+      "selected_rows": [
+        {
+          "annotation": "",
+          "line": 37704,
+          "offset_or_reexport": "0x00078A94",
+          "section": "exports",
+          "symbol": "___stack_chk_fail"
+        },
+        {
+          "annotation": "",
+          "line": 37705,
+          "offset_or_reexport": "0x6CBBB4E0",
+          "section": "exports",
+          "symbol": "___stack_chk_guard"
+        },
+        {
+          "annotation": "(__platform_memmove from libsystem_platform)",
+          "line": 38307,
+          "offset_or_reexport": "[re-export]",
+          "section": "exports",
+          "symbol": "_memcpy"
+        },
+        {
+          "annotation": "(__platform_memmove from libsystem_platform)",
+          "line": 38309,
+          "offset_or_reexport": "[re-export]",
+          "section": "exports",
+          "symbol": "_memmove"
+        },
+        {
+          "attributes": "",
+          "from_as_printed": "libsystem_platform",
+          "line": 38926,
+          "ordinal_as_printed": null,
+          "section": "imports",
+          "symbol": "__platform_memmove"
+        },
+        {
+          "address_as_printed": "0x180405A94",
+          "line": 40977,
+          "section": "function_starts",
+          "symbol": "___stack_chk_fail"
+        }
+      ],
+      "structured_function_variant_rows_present": false,
+      "variant_limit": "Flag was requested; no separate variant heading/table is emitted. No absence-of-variants or implementation-selection claim follows."
+    },
+    {
+      "SDK": "26.6.1",
+      "UUID": "EDB83A19-EC17-32DE-9350-6145970A85D6",
+      "UUID_line": 41023,
+      "arch": "arm64e",
+      "dynamic_resolver_exports": [
+        {
+          "annotation": "[dynamic-resolver=0x00007900]",
+          "line": 41051,
+          "offset_or_reexport": "0x00001030",
+          "symbol": "_OSAtomicDequeue"
+        },
+        {
+          "annotation": "[dynamic-resolver=0x0000790C]",
+          "line": 41123,
+          "offset_or_reexport": "0x00000920",
+          "symbol": "__platform_strcmp"
+        },
+        {
+          "annotation": "[dynamic-resolver=0x00007918]",
+          "line": 41128,
+          "offset_or_reexport": "0x000009B4",
+          "symbol": "__platform_strncmp"
+        },
+        {
+          "annotation": "[dynamic-resolver=0x00007924]",
+          "line": 41168,
+          "offset_or_reexport": "0x00006874",
+          "symbol": "_os_apt_msg_async_task_running_4swift"
+        },
+        {
+          "annotation": "[dynamic-resolver=0x00007930]",
+          "line": 41169,
+          "offset_or_reexport": "0x000069E4",
+          "symbol": "_os_apt_msg_async_task_stopped_4swift"
+        },
+        {
+          "annotation": "[dynamic-resolver=0x0000793C]",
+          "line": 41170,
+          "offset_or_reexport": "0x00006AD4",
+          "symbol": "_os_apt_msg_async_task_waiting_on_4swift"
+        }
+      ],
+      "export_rows": 185,
+      "first_line": 41018,
+      "function_start_rows": 279,
+      "function_variants_heading_present": false,
+      "import_rows": 40,
+      "last_line": 41534,
+      "linked_dylibs": [
+        {
+          "attributes": "",
+          "line": 41026,
+          "path": "/usr/lib/system/libsystem_kernel.dylib"
+        }
+      ],
+      "minOS": "26.6",
+      "path": "/usr/lib/system/libsystem_platform.dylib",
+      "platform": "zippered(macOS/Catalyst)",
+      "reexport_rows": 0,
+      "sections": {
+        "exports": {
+          "end_line": 41213,
+          "heading_line": 41027
+        },
+        "function_starts": {
+          "end_line": 41534,
+          "heading_line": 41255
+        },
+        "imports": {
+          "end_line": 41254,
+          "heading_line": 41214
+        },
+        "linked_dylibs": {
+          "end_line": 41026,
+          "heading_line": 41024
+        },
+        "platform": {
+          "end_line": 41021,
+          "heading_line": 41019
+        },
+        "uuid": {
+          "end_line": 41023,
+          "heading_line": 41022
+        }
+      },
+      "selected_rows": [
+        {
+          "annotation": "",
+          "line": 41082,
+          "offset_or_reexport": "0x00006E9C",
+          "section": "exports",
+          "symbol": "___sme_memcpy"
+        },
+        {
+          "annotation": "",
+          "line": 41083,
+          "offset_or_reexport": "0x00006F7C",
+          "section": "exports",
+          "symbol": "___sme_memmove"
+        },
+        {
+          "annotation": "",
+          "line": 41117,
+          "offset_or_reexport": "0x00003360",
+          "section": "exports",
+          "symbol": "__platform_memmove"
+        },
+        {
+          "address_as_printed": "0x00003360",
+          "line": 41341,
+          "section": "function_starts",
+          "symbol": "__platform_memmove"
+        },
+        {
+          "address_as_printed": "0x00003640",
+          "line": 41342,
+          "section": "function_starts",
+          "symbol": "__platform_memmove+736"
+        },
+        {
+          "address_as_printed": "0x00006E9C",
+          "line": 41496,
+          "section": "function_starts",
+          "symbol": "___sme_memcpy"
+        },
+        {
+          "address_as_printed": "0x00006F7C",
+          "line": 41497,
+          "section": "function_starts",
+          "symbol": "___sme_memmove"
+        }
+      ],
+      "structured_function_variant_rows_present": false,
+      "variant_limit": "Flag was requested; no separate variant heading/table is emitted. No absence-of-variants or implementation-selection claim follows."
+    }
+  ],
+  "repairs": 0,
+  "report_OS_build": {
+    "build": "25G83",
+    "releaseType": "User",
+    "train": "macOS 26.6.2"
+  },
+  "reported_shared_cache_UUID": "f2e86c53-6052-388b-ba71-5a0c9b569413",
+  "retries": 0,
+  "runtime_compiler_build_test_decoder_controller_acquisition_launches": 0,
+  "selected_linked_imports_unchanged": [
+    {
+      "encoded_import": "0x00001601",
+      "fixups": [
+        {
+          "line": 1142,
+          "text": "__DATA_CONST __got        0x10025C548 0x8010000000000001 bind   0x0      libSystem                  ___stack_chk_fail"
+        }
+      ],
+      "index": 1,
+      "indirect_symbols": [
+        {
+          "line": 600,
+          "text": "0x00000001001d859c 35841 ___stack_chk_fail"
+        },
+        {
+          "line": 829,
+          "text": "0x000000010025c548 35841 ___stack_chk_fail"
+        }
+      ],
+      "install_name": "/usr/lib/libSystem.B.dylib",
+      "line": 12097,
+      "name_offset": 11,
+      "ordinal": 1,
+      "provider_label": "libSystem",
+      "symbol": "___stack_chk_fail",
+      "weak_import": 0
+    },
+    {
+      "encoded_import": "0x00003a01",
+      "fixups": [
+        {
+          "line": 1143,
+          "text": "__DATA_CONST __got        0x10025C550 0x8010000000000002 bind   0x0      libSystem                  ___stack_chk_guard"
+        }
+      ],
+      "index": 2,
+      "indirect_symbols": [
+        {
+          "line": 830,
+          "text": "0x000000010025c550 35842 ___stack_chk_guard"
+        }
+      ],
+      "install_name": "/usr/lib/libSystem.B.dylib",
+      "line": 12101,
+      "name_offset": 29,
+      "ordinal": 1,
+      "provider_label": "libSystem",
+      "symbol": "___stack_chk_guard",
+      "weak_import": 0
+    },
+    {
+      "encoded_import": "0x0000ba01",
+      "fixups": [
+        {
+          "line": 1149,
+          "text": "__DATA_CONST __got        0x10025C580 0x8010000000000008 bind   0x0      libSystem                  _memcpy"
+        }
+      ],
+      "index": 8,
+      "indirect_symbols": [
+        {
+          "line": 607,
+          "text": "0x00000001001d85f0 35853 _memcpy"
+        },
+        {
+          "line": 836,
+          "text": "0x000000010025c580 35853 _memcpy"
+        }
+      ],
+      "install_name": "/usr/lib/libSystem.B.dylib",
+      "line": 12125,
+      "name_offset": 93,
+      "ordinal": 1,
+      "provider_label": "libSystem",
+      "symbol": "_memcpy",
+      "weak_import": 0
+    },
+    {
+      "encoded_import": "0x000ca403",
+      "fixups": [
+        {
+          "line": 1209,
+          "text": "__DATA_CONST __got        0x10025C760 0x8010000000000044 bind   0x0      libswiftCore               _$ss5ErrorWS"
+        }
+      ],
+      "index": 68,
+      "indirect_symbols": [
+        {
+          "line": 896,
+          "text": "0x000000010025c760 35810 _$ss5ErrorWS"
+        }
+      ],
+      "install_name": "/usr/lib/swift/libswiftCore.dylib",
+      "line": 12365,
+      "name_offset": 1618,
+      "ordinal": 3,
+      "provider_label": "libswiftCore",
+      "symbol": "_$ss5ErrorWS",
+      "weak_import": 0
+    },
+    {
+      "encoded_import": "0x0017bc03",
+      "fixups": [
+        {
+          "line": 1266,
+          "text": "__DATA_CONST __got        0x10025C928 0x801000000000007D bind   0x0      libswiftCore               _swift_getTypeByMangledNameInContext2"
+        }
+      ],
+      "index": 125,
+      "indirect_symbols": [
+        {
+          "line": 642,
+          "text": "0x00000001001d8794 35889 _swift_getTypeByMangledNameInContext2"
+        },
+        {
+          "line": 953,
+          "text": "0x000000010025c928 35889 _swift_getTypeByMangledNameInContext2"
+        }
+      ],
+      "install_name": "/usr/lib/swift/libswiftCore.dylib",
+      "line": 12593,
+      "name_offset": 3038,
+      "ordinal": 3,
+      "provider_label": "libswiftCore",
+      "symbol": "_swift_getTypeByMangledNameInContext2",
+      "weak_import": 0
+    }
+  ],
+  "selected_symbol_rows": [
+    {
+      "annotation": "",
+      "image": "/usr/lib/swift/libswiftCore.dylib",
+      "line": 10510,
+      "offset_or_reexport": "0x5C0FC8C0",
+      "section": "exports",
+      "symbol": "_$ss5ErrorWS"
+    },
+    {
+      "annotation": "",
+      "image": "/usr/lib/swift/libswiftCore.dylib",
+      "line": 14843,
+      "offset_or_reexport": "0x0009B7A4",
+      "section": "exports",
+      "symbol": "_swift_getTypeByMangledNameInContext2"
+    },
+    {
+      "attributes": "",
+      "from_as_printed": "libSystem",
+      "image": "/usr/lib/swift/libswiftCore.dylib",
+      "line": 15111,
+      "ordinal_as_printed": null,
+      "section": "imports",
+      "symbol": "___stack_chk_fail"
+    },
+    {
+      "attributes": "",
+      "from_as_printed": "libSystem",
+      "image": "/usr/lib/swift/libswiftCore.dylib",
+      "line": 15112,
+      "ordinal_as_printed": null,
+      "section": "imports",
+      "symbol": "___stack_chk_guard"
+    },
+    {
+      "attributes": "",
+      "from_as_printed": "libSystem",
+      "image": "/usr/lib/swift/libswiftCore.dylib",
+      "line": 15217,
+      "ordinal_as_printed": null,
+      "section": "imports",
+      "symbol": "_memcpy"
+    },
+    {
+      "attributes": "",
+      "from_as_printed": "libSystem",
+      "image": "/usr/lib/swift/libswiftCore.dylib",
+      "line": 15218,
+      "ordinal_as_printed": null,
+      "section": "imports",
+      "symbol": "_memmove"
+    },
+    {
+      "address_as_printed": "0x193CEA7A4",
+      "image": "/usr/lib/swift/libswiftCore.dylib",
+      "line": 18862,
+      "section": "function_starts",
+      "symbol": "_swift_getTypeByMangledNameInContext2"
+    },
+    {
+      "annotation": "",
+      "image": "/usr/lib/system/libsystem_c.dylib",
+      "line": 37704,
+      "offset_or_reexport": "0x00078A94",
+      "section": "exports",
+      "symbol": "___stack_chk_fail"
+    },
+    {
+      "annotation": "",
+      "image": "/usr/lib/system/libsystem_c.dylib",
+      "line": 37705,
+      "offset_or_reexport": "0x6CBBB4E0",
+      "section": "exports",
+      "symbol": "___stack_chk_guard"
+    },
+    {
+      "annotation": "(__platform_memmove from libsystem_platform)",
+      "image": "/usr/lib/system/libsystem_c.dylib",
+      "line": 38307,
+      "offset_or_reexport": "[re-export]",
+      "section": "exports",
+      "symbol": "_memcpy"
+    },
+    {
+      "annotation": "(__platform_memmove from libsystem_platform)",
+      "image": "/usr/lib/system/libsystem_c.dylib",
+      "line": 38309,
+      "offset_or_reexport": "[re-export]",
+      "section": "exports",
+      "symbol": "_memmove"
+    },
+    {
+      "attributes": "",
+      "from_as_printed": "libsystem_platform",
+      "image": "/usr/lib/system/libsystem_c.dylib",
+      "line": 38926,
+      "ordinal_as_printed": null,
+      "section": "imports",
+      "symbol": "__platform_memmove"
+    },
+    {
+      "address_as_printed": "0x180405A94",
+      "image": "/usr/lib/system/libsystem_c.dylib",
+      "line": 40977,
+      "section": "function_starts",
+      "symbol": "___stack_chk_fail"
+    },
+    {
+      "annotation": "",
+      "image": "/usr/lib/system/libsystem_platform.dylib",
+      "line": 41082,
+      "offset_or_reexport": "0x00006E9C",
+      "section": "exports",
+      "symbol": "___sme_memcpy"
+    },
+    {
+      "annotation": "",
+      "image": "/usr/lib/system/libsystem_platform.dylib",
+      "line": 41083,
+      "offset_or_reexport": "0x00006F7C",
+      "section": "exports",
+      "symbol": "___sme_memmove"
+    },
+    {
+      "annotation": "",
+      "image": "/usr/lib/system/libsystem_platform.dylib",
+      "line": 41117,
+      "offset_or_reexport": "0x00003360",
+      "section": "exports",
+      "symbol": "__platform_memmove"
+    },
+    {
+      "address_as_printed": "0x00003360",
+      "image": "/usr/lib/system/libsystem_platform.dylib",
+      "line": 41341,
+      "section": "function_starts",
+      "symbol": "__platform_memmove"
+    },
+    {
+      "address_as_printed": "0x00003640",
+      "image": "/usr/lib/system/libsystem_platform.dylib",
+      "line": 41342,
+      "section": "function_starts",
+      "symbol": "__platform_memmove+736"
+    },
+    {
+      "address_as_printed": "0x00006E9C",
+      "image": "/usr/lib/system/libsystem_platform.dylib",
+      "line": 41496,
+      "section": "function_starts",
+      "symbol": "___sme_memcpy"
+    },
+    {
+      "address_as_printed": "0x00006F7C",
+      "image": "/usr/lib/system/libsystem_platform.dylib",
+      "line": 41497,
+      "section": "function_starts",
+      "symbol": "___sme_memmove"
+    }
+  ],
+  "source42_five_dirty_cache_preserved": true,
+  "stdout_bytes": 2944589,
+  "stdout_lines": 41534,
+  "stdout_sha256": "3c05b9f22facbe4e624915e637e13dfc9ba6bed21e92f89413db7f5a69f88cba",
+  "strict_cold_eligible": false,
+  "three_consumed_marker_identities_unchanged": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+      16777234,
+      29640436
+    ],
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+      16777234,
+      29650609
+    ],
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": [
+      16777234,
+      29652748
+    ]
+  },
+  "u02_u05": "OPEN"
+}

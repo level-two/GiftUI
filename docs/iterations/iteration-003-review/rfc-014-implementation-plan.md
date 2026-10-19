@@ -1,16 +1,20 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current P08 boundary — **system-provider I-only capture/archive independently PASS; full callee/safety STOP**.
-The [independent I-only result review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/independent-review.md)
-verifies all 13 archived/live files, exact external pins and one actual exit-zero
-I capture of 2,944,589 complete raw bytes. Terminal is STOP_cache_schema_unestablished;
-both S commands are skipped, with no provider/current-callee/strict-cold PASS.
-Next is one U01 retained-byte identity interpretation using the review's exact
-handoff. No new decoder/controller/runtime/acquisition/extraction/repair/retry,
-S or old-B allowance follows. The I attempt1/1 is consumed, repairs0/retries0,
-marker [16777234,29652748]. Historical collection [16777234,29640436] and A-only
-[16777234,29650609] remain1/1 consumed. R01–R04, ordinary loaded identity,
-U02–U05, P08/R07/T8.1 and remaining gates stay open.
+Current P08 boundary — **retained U01 four-image identity interpretation recorded; independent review pending; full callee/safety STOP**.
+The [retained identity result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-identity-interpretation1-result/README.md)
+delimits four arm64e records, joins Swift/C UUIDs to the supplemental different
+process, and maps cold-entry/ErrorWS exports plus C memcpy/platform and canary
+records. No variant table is emitted; platform's standalone/cache identity and
+ordinary-counter loaded identity remain unproved. Cache-header schema, numeric
+Error size, implementation bodies and R01–R04 costs stay open. Next is independent
+Strong interpretation review, then at most a separately prepared schema request.
+The [independently reviewed I archive](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/independent-review.md)
+retains capture-only PASS/STOP_cache_schema_unestablished. No decoder/controller/
+runtime/compiler/build/test/acquisition/repair/retry ran; S and old B remain closed.
+Three attempts remain1/1 consumed, repairs0/retries0: collection [16777234,29640436],
+A-only [16777234,29650609], I-only [16777234,29652748]. No new execution allowance
+or contract/scope decision; U02–U05, strict cold, P08/R07/T8.1 and remaining gates
+stay open.
 
 Historical pre-collection checkpoint — **retained counter426 PASS; controller readiness PASS; collection unused 0/1**.
 The [retained macOS Static result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)

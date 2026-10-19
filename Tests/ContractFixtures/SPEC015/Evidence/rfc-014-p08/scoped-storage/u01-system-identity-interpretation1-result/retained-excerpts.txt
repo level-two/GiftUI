@@ -1,0 +1,137 @@
+Source: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/system-image-identities.stdout
+SHA-256: 3c05b9f22facbe4e624915e637e13dfc9ba6bed21e92f89413db7f5a69f88cba
+Display excerpts strip trailing whitespace; canonical stdout bytes are unchanged.
+
+1: /usr/lib/swift/libswiftCore.dylib [arm64e]:
+2:     -platform:
+3:         platform     minOS      sdk
+4:  zippered(macOS/Catalyst)     26.6      26.6.1
+5:     -uuid:
+6:         83794FB3-DE9B-3D23-AB5E-2C1D5D30F134
+7:     -linked_dylibs:
+8:         attributes     load path
+9:         upward delay-init    /System/Library/Frameworks/Foundation.framework/Versions/C/Foundation
+10:         upward delay-init    /usr/lib/swift/libswiftObjectiveC.dylib
+11:         delay-init     /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation
+12:                        /usr/lib/libc++.1.dylib
+13:                        /usr/lib/libSystem.B.dylib
+14:                        /usr/lib/libobjc.A.dylib
+15:                        /usr/lib/libswiftPrespecialized.dylib
+16:     -exports:
+10510:         0x5C0FC8C0  _$ss5ErrorWS
+14843:         0x0009B7A4  _swift_getTypeByMangledNameInContext2
+15060:     -imports:
+15111:       ___stack_chk_fail  (from libSystem)
+15112:       ___stack_chk_guard  (from libSystem)
+15217:       _memcpy  (from libSystem)
+15218:       _memmove  (from libSystem)
+15307:     -function_starts:
+18862:         0x193CEA7A4  _swift_getTypeByMangledNameInContext2
+37365: /usr/lib/libSystem.B.dylib [arm64e]:
+37366:     -platform:
+37367:         platform     minOS      sdk
+37368:  zippered(macOS/Catalyst)     26.6      26.6.1
+37369:     -uuid:
+37370:         4FED5EE2-5D3E-35B1-A170-9859C4B683BB
+37371:     -linked_dylibs:
+37372:         attributes     load path
+37373:         re-export      /usr/lib/system/libcache.dylib
+37374:         re-export      /usr/lib/system/libcommonCrypto.dylib
+37375:         re-export      /usr/lib/system/libcompiler_rt.dylib
+37376:         re-export      /usr/lib/system/libcopyfile.dylib
+37377:         re-export      /usr/lib/system/libcorecrypto.dylib
+37378:         re-export      /usr/lib/system/libdispatch.dylib
+37379:         re-export      /usr/lib/system/libdyld.dylib
+37380:         re-export      /usr/lib/system/libkeymgr.dylib
+37381:         re-export      /usr/lib/system/libmacho.dylib
+37382:         re-export      /usr/lib/system/libquarantine.dylib
+37383:         re-export      /usr/lib/system/libremovefile.dylib
+37384:         re-export      /usr/lib/system/libsystem_asl.dylib
+37385:         re-export      /usr/lib/system/libsystem_blocks.dylib
+37386:         re-export      /usr/lib/system/libsystem_c.dylib
+37387:         re-export      /usr/lib/system/libsystem_collections.dylib
+37388:         re-export      /usr/lib/system/libsystem_configuration.dylib
+37389:         re-export      /usr/lib/system/libsystem_containermanager.dylib
+37390:         re-export      /usr/lib/system/libsystem_coreservices.dylib
+37391:         re-export      /usr/lib/system/libsystem_darwin.dylib
+37392:         re-export      /usr/lib/system/libsystem_darwindirectory.dylib
+37393:         re-export      /usr/lib/system/libsystem_dnssd.dylib
+37394:         re-export      /usr/lib/system/libsystem_eligibility.dylib
+37395:         re-export      /usr/lib/system/libsystem_featureflags.dylib
+37396:         re-export      /usr/lib/system/libsystem_info.dylib
+37397:         re-export      /usr/lib/system/libsystem_m.dylib
+37398:         re-export      /usr/lib/system/libsystem_malloc.dylib
+37399:         re-export      /usr/lib/system/libsystem_networkextension.dylib
+37400:         re-export      /usr/lib/system/libsystem_notify.dylib
+37401:         re-export      /usr/lib/system/libsystem_sandbox.dylib
+37402:         re-export      /usr/lib/system/libsystem_sanitizers.dylib
+37403:         re-export      /usr/lib/system/libsystem_secinit.dylib
+37404:         re-export      /usr/lib/system/libsystem_kernel.dylib
+37405:         re-export      /usr/lib/system/libsystem_platform.dylib
+37406:         re-export      /usr/lib/system/libsystem_pthread.dylib
+37407:         re-export      /usr/lib/system/libsystem_symptoms.dylib
+37408:         re-export      /usr/lib/system/libsystem_trace.dylib
+37409:         re-export      /usr/lib/system/libsystem_trial.dylib
+37410:         re-export      /usr/lib/system/libunwind.dylib
+37411:         re-export      /usr/lib/system/libxpc.dylib
+37412:     -exports:
+37417:     -imports:
+37495:     -function_starts:
+37518: /usr/lib/system/libsystem_c.dylib [arm64e]:
+37519:     -platform:
+37520:         platform     minOS      sdk
+37521:  zippered(macOS/Catalyst)     26.6      26.6.1
+37522:     -uuid:
+37523:         D77CEB62-AFF6-3CEC-BA9B-4F057FBE2EB5
+37524:     -linked_dylibs:
+37525:         attributes     load path
+37526:                        /usr/lib/system/libcompiler_rt.dylib
+37527:                        /usr/lib/system/libdyld.dylib
+37528:                        /usr/lib/system/libsystem_kernel.dylib
+37529:                        /usr/lib/system/libsystem_m.dylib
+37530:                        /usr/lib/system/libsystem_malloc.dylib
+37531:                        /usr/lib/system/libsystem_platform.dylib
+37532:                        /usr/lib/system/libsystem_pthread.dylib
+37533:         upward         /usr/lib/system/libdispatch.dylib
+37534:         upward         /usr/lib/system/libmacho.dylib
+37535:         upward         /usr/lib/system/libsystem_asl.dylib
+37536:         upward         /usr/lib/system/libsystem_blocks.dylib
+37537:         upward         /usr/lib/system/libsystem_info.dylib
+37538:         upward         /usr/lib/system/libsystem_notify.dylib
+37539:         upward         /usr/lib/system/libxpc.dylib
+37540:         upward         /usr/lib/system/libcorecrypto.dylib
+37541:         upward         /usr/lib/system/libsystem_trace.dylib
+37542:     -exports:
+37704:         0x00078A94  ___stack_chk_fail
+37705:         0x6CBBB4E0  ___stack_chk_guard
+38307:         [re-export] _memcpy (__platform_memmove from libsystem_platform)
+38309:         [re-export] _memmove (__platform_memmove from libsystem_platform)
+38865:     -imports:
+38926:       __platform_memmove  (from libsystem_platform)
+39137:     -function_starts:
+40977:         0x180405A94  ___stack_chk_fail
+41018: /usr/lib/system/libsystem_platform.dylib [arm64e]:
+41019:     -platform:
+41020:         platform     minOS      sdk
+41021:  zippered(macOS/Catalyst)     26.6      26.6.1
+41022:     -uuid:
+41023:         EDB83A19-EC17-32DE-9350-6145970A85D6
+41024:     -linked_dylibs:
+41025:         attributes     load path
+41026:                        /usr/lib/system/libsystem_kernel.dylib
+41027:     -exports:
+41051:         0x00001030  _OSAtomicDequeue [dynamic-resolver=0x00007900]
+41082:         0x00006E9C  ___sme_memcpy
+41083:         0x00006F7C  ___sme_memmove
+41117:         0x00003360  __platform_memmove
+41123:         0x00000920  __platform_strcmp [dynamic-resolver=0x0000790C]
+41128:         0x000009B4  __platform_strncmp [dynamic-resolver=0x00007918]
+41168:         0x00006874  _os_apt_msg_async_task_running_4swift [dynamic-resolver=0x00007924]
+41169:         0x000069E4  _os_apt_msg_async_task_stopped_4swift [dynamic-resolver=0x00007930]
+41170:         0x00006AD4  _os_apt_msg_async_task_waiting_on_4swift [dynamic-resolver=0x0000793C]
+41214:     -imports:
+41255:     -function_starts:
+41341:         0x00003360  __platform_memmove
+41342:         0x00003640  __platform_memmove+736
+41496:         0x00006E9C  ___sme_memcpy
+41497:         0x00006F7C  ___sme_memmove
