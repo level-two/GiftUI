@@ -1,5 +1,13 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+Current P08 U02 preparation independent review — **STOP / NOT READY: B01**.
+The [exact b8c45969 Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/independent-review.md)
+verifies all input identities, roots and 56/1,892 groups, but requires reconciling
+the complete 79-file read boundary with 48 mandatory preservation content paths.
+Next is offline correction and separate Strong re-review; no attribution or new
+allowance follows. Preservation, consumed limits and all open P08 gates remain.
+Earlier preparation checkpoints below are historical.
+
 Current P08 U02 preparation — **NOT READY / separate Strong review pending**.
 The [bounded retained-evidence packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/README.md)
 freezes 79 inputs, three actual root memberships and all 56 external-symbol /
