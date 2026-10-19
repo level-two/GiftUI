@@ -1,0 +1,19 @@
+{
+  "B_launch_enabled": false,
+  "acquisitions": 0,
+  "aggregate_seconds_including_authentication_and_gate": 360,
+  "attempts_proposed": 1,
+  "attempts_used": 0,
+  "boundary": "This proposes one new orchestration bootstrap only; it grants no execution and borrows/resets no historical marker or allowance. Deadline expiry stops work; only finite reaping and durable receipt persistence follow.",
+  "concrete_decoder_commands_max": 3,
+  "controller_bootstrap_launches_proposed": 1,
+  "controller_bootstrap_launches_used": 0,
+  "executed": false,
+  "historical_collection_attempts_consumed": 1,
+  "maximum_retained_decoder_bytes": 536870912,
+  "per_decoder_seconds": 60,
+  "repairs": 0,
+  "request_decoder_commands_ceiling": 6,
+  "retries": 0,
+  "runtime_compiler_build_test_strict_cold_launches": 0
+}

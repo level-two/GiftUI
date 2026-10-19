@@ -1,0 +1,12 @@
+{
+  "B_disposition": "Always record all three B commands skipped for this concrete controller; retain request's conditional B forms for later separately reviewed/authorized work only.",
+  "B_launch_enabled": false,
+  "future_gate_change": "New reviewed proof/verifier and external final pins plus separately explicit allowance required; never edit gate data during an active attempt.",
+  "mode": "STOP_AFTER_A_PROVIDER_PROOF_UNESTABLISHED",
+  "permitted_A_commands": [
+    "counter-metadata",
+    "counter-symbols",
+    "counter-body-data"
+  ],
+  "reason": "No reviewed exact linked/provider verifier or authenticated applicable provider proof exists before this attempt. A raw captures are necessary evidence, not a release certificate."
+}

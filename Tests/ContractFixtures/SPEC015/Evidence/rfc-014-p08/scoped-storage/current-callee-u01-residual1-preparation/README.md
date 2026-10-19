@@ -14,6 +14,13 @@ values to all six complete environments and authenticates applicable loader
 roots/aliases. Concrete controller preparation and independent readiness review
 remain required; no proposed decoder command has run.
 
+The subsequent [concrete A-only controller preparation](CONTROLLER.md) implements
+external final pins, fresh atomic consumption, full input/loader authentication,
+aggregate/per-command limits, raw/actual-exit receipts and an explicit closed
+provider gate. A maximum of three decoder commands is proposed for this concrete
+attempt; all B commands are skipped. One separately accounted bootstrap remains
+unused, unexecuted and unapproved. Independent Strong readiness review is next.
+
 The [request JSON](request.json) contains six exact proposed argv arrays,
 input/tool hashes, environments, ordering, gates, output limits and stop rules.
 The [inventory](inventory.json) records availability and hash/provenance joins.

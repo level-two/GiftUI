@@ -3,9 +3,11 @@
   "budgets": {
     "attempts_proposed": 1,
     "attempts_used": 0,
+    "controller_bootstrap_launches_proposed": 1,
+    "controller_bootstrap_launches_used": 0,
     "maximum_acquisitions": 0,
     "maximum_attempt_wall_seconds": 360,
-    "maximum_compiler_build_test_runtime_controller_strict_cold_launches": 0,
+    "maximum_compiler_build_test_runtime_strict_cold_launches": 0,
     "maximum_decoder_commands": 6,
     "maximum_total_output_bytes": 536870912,
     "retries": 0,
