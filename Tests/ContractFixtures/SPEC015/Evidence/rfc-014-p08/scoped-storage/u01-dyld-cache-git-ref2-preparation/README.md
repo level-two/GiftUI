@@ -1,11 +1,15 @@
 # U01 exact Git ref route 2 preparation — 2026-10-19
 
-**Independent controller review STOP; readiness NOT READY.** The
-[controller review](controller-independent-review.md) verifies the concrete
-request/body/time mechanisms, runtime pins and B02 isolation, but records one
-unresolved B01 prerequisite: the earlier full-stream STOP requirement has been
-replaced by an equality allowance. A full GET capability stream can permit POST
-emission. Reconcile and independently review this condition before any launch.
+**Offline B01 full-stream correction prepared; readiness NOT READY pending
+separate re-review.** Following [controller review](controller-independent-review.md)
+at `49228097`, every retained stream reaching CAP now forces STOP, including a
+full GET body before parsing or POST. Body counters include all retained bytes
+before the equality rejection; supervisor terminal accounting records full-file
+names/sizes/hashes and cannot accept them. No controller import/execution or
+network ran. Historical reviews remain unchanged; independent acceptance and
+launch permission are not claimed.
+The [offline correction inspection](full-stream-correction-inspection.json)
+records AST guard/accounting-order checks, unchanged runtime lock and preservation.
 The parent authorized preparing a concrete controller and revised
 packet after `8250f8ec` and the B01/B02 STOP review at `0625592a`. No network
 operation or controller execution/import ran. The prior API GET stays consumed.

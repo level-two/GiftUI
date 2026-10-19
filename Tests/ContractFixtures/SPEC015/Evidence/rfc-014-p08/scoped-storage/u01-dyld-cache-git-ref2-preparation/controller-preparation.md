@@ -29,7 +29,7 @@ HTTP entity-body octets**, including error-body octets, across both operations.
 Every receive request for body data is bounded by the remaining budget. An
 overlarge declared body/chunk stops before accepting that body/chunk. This can
 leave a partial response without consuming every allowed byte; STOP is required.
-Exactly the ceiling may be accepted only with completed framing. There is no
+Reaching CAP in any retained stream is STOP, including a complete framed body. The body reader records all received octets in its local and aggregate counters before raising at equality, so a full GET body cannot reach capability parsing or POST. Exclusive metadata/request writers reject equality before writing; the supervisor hashes any full raw file and forces STOP. Aggregate equality alone is not a full-stream condition when both individual body streams stay below CAP and have complete framing. There is no
 over-budget sentinel read. TLS buffering, HTTP headers/chunk framing, TCP/TLS/DNS
 traffic and server-sent but unaccepted bytes are outside this body-byte measure.
 **No total wire-byte cap is claimed.** Headers and chunk framing are each capped
@@ -69,8 +69,8 @@ complete framed accounting and a child observation before the deadline can yield
 local controller receipts and hashes, not independent transport attestations.
 
 `runtime-lock.json` pins the resolved Homebrew Python 3.14.6 executable, framework,
-2,159 stdlib source/extension/cached-bytecode files, OpenSSL libssl/libcrypto, and `/etc/ssl/cert.pem`
-by exact byte SHA-256 (2,165 paths total). Version strings and exact Darwin
+2,160 resolved stdlib source/extension/cached-bytecode members, OpenSSL libssl/libcrypto, and `/etc/ssl/cert.pem`
+by exact byte SHA-256 (2,165 total pinned paths including five additional paths). Version strings and exact Darwin
 release/kernel build are checked. System shared-cache libraries are identified
 by that OS build; they were not extracted or hashed and this is not a runtime
 attestation. The fixed `env -i` invocation in revised request.json removes all
@@ -87,3 +87,21 @@ for these limited checks. No behavioral/network test, result directory, request,
 dyld research source/header/Git-object read or dyld/cache tool ran. No maintained Swift change or
 repository test gate is part of this tooling preparation. All original API 1/1,
 markers 1/1, repair/retry zero and P08 open/closed dispositions remain binding.
+
+
+## Full-stream correction after review 49228097
+
+The parent authorized only this offline B01 correction. `save` now requires
+length strictly below CAP. `take` preserves and increments local/aggregate body
+counts before rejecting a body at CAP, and cannot return that full GET body to
+capability parsing or POST. The supervisor retains full-file size/hash accounting,
+records its names in `full_retained_streams`, and includes an empty list in its
+success prerequisites. A full/truncated stream cannot pass even with completed
+HTTP framing. The aggregate accepted-body ceiling stays <=1 MiB; no wire-byte
+claim, request, time, environment or protocol rule changed.
+
+Runtime dependency bytes/membership were rehashed offline and remain unchanged;
+the lock SHA-256 is retained. Only source/packet pins change. Validation is AST
+and byte/hash/JSON/stat inspection only, with no controller execution/import.
+Readiness remains NOT READY pending separate independent re-review. Historical
+review records are unchanged; all preservation and no-follow boundaries remain.

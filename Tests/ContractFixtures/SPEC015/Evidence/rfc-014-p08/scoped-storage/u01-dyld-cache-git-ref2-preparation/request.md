@@ -3,8 +3,9 @@
 **Preparation only; readiness NOT READY pending independent review.**
 The concrete [controller](controller.py), [enforcement explanation](controller-preparation.md),
 [runtime lock](runtime-lock.json) and [exact invocation/pins](request.json)
-replace the bare-Git proposal in `8250f8ec`. The B01/B02 STOP review in `0625592a`
-remains historical evidence. This revision proposes their resolution, without
+replace the bare-Git proposal in `8250f8ec`. The B01/B02 STOP review in `0625592a` and controller review `49228097`
+remain historical evidence. This revision corrects only the latter full-stream
+condition for separate re-review. This revision proposes their resolution, without
 claiming independent acceptance or launch permission. The controller has never
 been imported/executed; no network operation occurred.
 
@@ -70,8 +71,12 @@ failure status never permits the POST. No decompression exists.
 The ceiling is **1,048,576 accepted HTTP entity-body octets** across both
 operations. Every body receive is bounded by the shared remaining budget. An
 oversized declared body/chunk stops before acceptance. Unknown/inconsistent
-framing stops. Exactly the ceiling is acceptable only with completed framing;
-there is no extra sentinel body read. Headers and chunk framing have separate
+framing stops. Every retained stream reaching CAP is STOP, even with completed framing.
+Body bytes and aggregate counters are updated before the equality STOP; a full
+GET body cannot return to parsing or permit POST. The supervisor hashes and names
+full files and forces STOP. Metadata/request writers require length below CAP.
+Aggregate equality alone remains bounded when both individual body streams are
+below CAP with complete framing. There is no extra sentinel body read. Headers and chunk framing have separate
 65,536-byte caps per response; each retained file is capped at 1 MiB. This is
 **not a cap on all server-sent, TLS/socket-buffered or wire bytes**. HTTP framing,
 headers, DNS/TCP/TLS and unaccepted data are outside the body-byte measure.

@@ -1,14 +1,15 @@
 # RFC-014 task context guide
 
-Current P08 controller review — **STOP / readiness NOT READY**.
-The [independent source/pin review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/controller-independent-review.md)
-of `3af5a9f8`/`a61bb9e3` confirms B02 isolation and concrete two-request/shared-body/
-deadline enforcement. B01's explicit full-stream STOP condition remains unresolved:
-the revised controller permits a full capability body before POST emission.
-All 2,165 runtime file hashes and 2,160 resolved stdlib members match; no controller
-import/execution or network ran. API 1/1, five dirty files/cache and three consumed
-markers remain preserved. No launch, repair/retry, contract/scope change or P08
-acceptance follows. The preparation checkpoint below is historical.
+Current P08 controller correction — **offline B01 full-stream correction prepared; readiness NOT READY pending separate re-review**.
+The [revised packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/README.md)
+now stops for every retained stream at CAP, including GET before parsing/POST,
+counts retained body bytes before stopping, and preserves full-file terminal
+size/hash accounting with no equality pass. [Review 49228097](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/controller-independent-review.md)
+is preserved historically. Runtime lock unchanged after offline verification;
+source/packet pins updated. No controller import/execution/network or launch
+clearance. API 1/1, five dirty files/cache, three markers 1/1 and repairs/retries 0
+are preserved. S/old B stay closed; U01/R01–R04, strict cold and P08/R07/T8.1
+stay open. The preparation checkpoint below is historical.
 
 Current P08 metadata preparation — **concrete offline smart-HTTPS controller prepared; readiness NOT READY pending independent review**.
 The [revised packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/README.md)

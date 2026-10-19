@@ -56,7 +56,7 @@ def sync_dir(path):
 
 def save(name, data):
     """Exclusive, bounded, fsynced file. Never replace an earlier receipt."""
-    require(len(data) <= CAP, 'retained stream cap')
+    require(len(data) < CAP, 'full/oversized retained stream')
     fd = os.open(RESULT / name, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     try:
         with os.fdopen(fd, 'wb') as stream:
@@ -256,6 +256,9 @@ class Session:
                     body.extend(chunk)
                     self.body_bytes += len(chunk)
                     count -= len(chunk)
+                    # Count and retain these octets before rejecting equality.
+                    # A full GET stream must stop before parsing or POST emission.
+                    require(len(body) < CAP, 'full retained response-body stream')
 
             def framing_line():
                 start = len(framing)
@@ -420,21 +423,26 @@ def main():
                     pass
             _, wait_status = os.waitpid(pid, 0)
         streams = {}
+        full_streams = []
         for path in sorted(RESULT.iterdir()):
             require(path.is_file() and not path.is_symlink() and path.stat().st_size <= CAP,
                     'unexpected/oversized retained stream')
             streams[path.name] = {'bytes': path.stat().st_size, 'sha256': digest(path)}
+            if streams[path.name]['bytes'] == CAP:
+                full_streams.append(path.name)
         success = False
         child_path = RESULT / 'child-result.json'
         if child_path.is_file():
             report = json.loads(child_path.read_text())
-            success = (wait_status == 0 and not timed_out and report.get('status') == 'OBSERVED'
+            success = (wait_status == 0 and not timed_out and not full_streams
+                       and report.get('status') == 'OBSERVED'
                        and report.get('accounting_complete') is True
                        and report.get('end_monotonic', deadline) < deadline)
         record('terminal.json', {'status': 'OBSERVED' if success else 'STOP',
                'timed_out': timed_out, 'actual_wait_status': wait_status,
                'actual_exit': os.waitstatus_to_exitcode(wait_status) if wait_status is not None else None,
                'end_monotonic': time.monotonic(), 'streams': streams,
+               'full_retained_streams': full_streams,
                'missing_child_result_is_incomplete_accounting': not child_path.is_file(),
                'wire_byte_limit_claimed': False})
     return 0 if success else 1

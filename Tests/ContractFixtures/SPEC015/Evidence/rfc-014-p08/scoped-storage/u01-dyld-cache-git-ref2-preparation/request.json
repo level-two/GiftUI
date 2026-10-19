@@ -28,10 +28,10 @@
   ],
   "network_execution_ready": false,
   "controller": "controller.py",
-  "controller_sha256": "37ef2dafa0396d31cd71f162f0db1aada9487dfa5f7c4dce461034c1269fe901",
+  "controller_sha256": "50e71a68c2338711bab014489bc4aa039c0e6f93994fd40dc74471093df3b752",
   "runtime_lock": "runtime-lock.json",
   "runtime_lock_sha256": "aec1718d0aa2b1574a7aa30010743dcad8fc2982c2bdac2b738c7539219c99fa",
-  "controller_commit": "3af5a9f8 initial; final bytecode-membership pin revision in packet commit",
+  "controller_commit": "3af5a9f8 initial / a61bb9e3 packet; full-stream B01 correction in this commit",
   "git_executable_used": false,
   "environment": {
     "LANG": "C",
@@ -50,7 +50,7 @@
     "-B",
     "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/controller.py",
     "aec1718d0aa2b1574a7aa30010743dcad8fc2982c2bdac2b738c7539219c99fa",
-    "37ef2dafa0396d31cd71f162f0db1aada9487dfa5f7c4dce461034c1269fe901"
+    "50e71a68c2338711bab014489bc4aa039c0e6f93994fd40dc74471093df3b752"
   ],
   "fixed_result_directory": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-result",
   "one_shot_marker": "exclusive fixed result directory; never remove/replace/resume/change destination",
@@ -63,7 +63,8 @@
   "network_sessions_launched": 0,
   "HTTP_requests_emitted": 0,
   "automatic_repairs": 0,
-  "readiness": "NOT READY; independent review required",
+  "readiness": "NOT READY; separate independent re-review required",
   "runtime_identity_limit": "System shared-cache dependencies identified by exact OS release/kernel build, not extracted/hashed or attested.",
-  "previous_review": "independent-review.md at 0625592a; original blockers preserved historically"
+  "previous_review": "controller-independent-review.md at 49228097; B01 full-stream correction requires separate re-review",
+  "full_retained_stream_policy": "Every retained stream reaching CAP (1048576 bytes) is STOP, including complete framed GET before parsing/POST. Body bytes count before equality rejection. Supervisor retains size/hash and full-stream names while forcing STOP."
 }
