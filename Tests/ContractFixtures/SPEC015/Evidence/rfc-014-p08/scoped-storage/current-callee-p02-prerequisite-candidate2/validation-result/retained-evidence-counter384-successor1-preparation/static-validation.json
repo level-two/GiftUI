@@ -1,0 +1,97 @@
+{
+  "command": [
+    "/usr/bin/env",
+    "-i",
+    "HOME=/Users/eugene",
+    "TMPDIR=/private/tmp",
+    "PATH=/usr/bin:/bin:/usr/sbin:/sbin",
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "-I",
+    "-S",
+    "-B",
+    "-X",
+    "pycache_prefix=/dev/null",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter384-successor1-preparation/test_static.py"
+  ],
+  "started_ns": 1792399423934833000,
+  "finished_ns": 1792399461751953000,
+  "exit": 0,
+  "compiler_invocations": 0,
+  "production_launches": 0,
+  "scope": "compiler-free adversarial applicability and harmless detached-child verification",
+  "fixture_process_identity": "Harmless disconnection fixture supplies pid and observed_ns without ps because sandbox denied ps; real production ps/start identity remains readiness-review item.",
+  "files": {
+    "reviewed-launch.py": {
+      "bytes": 3517,
+      "sha256": "6fb6266e047864f0807110ea3e326062eda60bb42031500dc030fac3465b8629"
+    },
+    "run.py": {
+      "bytes": 3842,
+      "sha256": "5499f4c3cd8d122375bf5c5e6ff8b6644fc559d0fd8cfc1ecfbfec0b3c70de08"
+    },
+    "source-differences.json": {
+      "bytes": 199945,
+      "sha256": "24d93ae42882c9bd24386e25857f01a51a90939103f1bd91a82aac44bf256b60"
+    },
+    "source-inventory.json": {
+      "bytes": 78253,
+      "sha256": "a69d7fa085f00bb8809ed733dd8d42839f8101d6c06b33b1a0bc33fb4f69ec22"
+    },
+    "test_static.py": {
+      "bytes": 25111,
+      "sha256": "5e8bba093736732609140e91c0ec55ca053be8258fb704a569ef2b91005f367b"
+    },
+    "frozen-links.json": {
+      "bytes": 700,
+      "sha256": "7f3cfe8789864d9fcb63f423f8e4adc7a0443adbfe8c5f5e457a43960e8da237"
+    },
+    "supervisor.py": {
+      "bytes": 7749,
+      "sha256": "73a4db0748c064312fdc32e8ee18e0a4ba189d34956b734dc0889ad96fd7c473"
+    },
+    "tools.json": {
+      "bytes": 3569,
+      "sha256": "b1d301630767e7c07cadb777ab287c16535c97c0f6812fb1d63016e23d9c3250"
+    },
+    "recipe.json": {
+      "bytes": 2100,
+      "sha256": "bbb3f3cd15c3097bc3be196a7cbf01004cfaf1e1345d2fbd8803916a1403c43f"
+    },
+    "import-directory.json": {
+      "bytes": 62620,
+      "sha256": "34b959bcffd008bc9819018f35d113447bcbf1a12710406f552b967708296e9d"
+    },
+    "retained-trees.json": {
+      "bytes": 12921943,
+      "sha256": "c2fbc28c6a9a193bb23f19dd020023d285f6e5be7d5afee61ae1f97330e7d1a3"
+    },
+    "retained-files.json": {
+      "bytes": 89001,
+      "sha256": "09aa9ab07f571ca00355f086252eb7727dbc548e46b88a5801e604182b4eff2d"
+    },
+    "macro-result.json": {
+      "bytes": 53,
+      "sha256": "e7475ccc2fc56416a543cd7bd50e158ed95ac51d041266f4ec63a390a9c61477"
+    },
+    "control-classifications.json": {
+      "bytes": 30639,
+      "sha256": "384221df4183f139fcee2a51b025773068abe26ed3c67babaa763315d24a00d3"
+    },
+    "static-test.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "source-freeze.json": {
+      "bytes": 86847,
+      "sha256": "3f663f6987a6e53c62c28dcbd9faab7508c95be36f80f70a2563f031692624b5"
+    },
+    "readiness.py": {
+      "bytes": 24045,
+      "sha256": "565495d2a5faac79c8face63c43172b7bc416386b653cf2cd28a73ee89732491"
+    },
+    "static-test.stderr": {
+      "bytes": 1632,
+      "sha256": "11adea244d309400acc3705c0932765908e4c6ca41ee4d9781c07e3d377fd3db"
+    }
+  }
+}

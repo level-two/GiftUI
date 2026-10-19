@@ -1,0 +1,46 @@
+{
+  "source_commit": "c5e3996689d17ef6d9cce6dd86317258355b9ea4",
+  "campaign_archive": "101ced00950e224a33f3fd454ef186f81676b217",
+  "p07_archive": "c50d0c8cf4a9ceb92210798b58f81f84ac0818f0",
+  "campaign_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11",
+  "p07_root": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+  "p07_terminal": "/Users/eugene/work/GiftUI/.build/contracts/p08-p07-cyclescene-correction-probe1/terminal.json",
+  "output_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-retained-evidence-counter384-successor1",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPYCACHEPREFIX": "/dev/null"
+  },
+  "source_candidates": 1,
+  "retries": 0,
+  "automatic_repairs": 0,
+  "counter_prefix": "p08-counter-",
+  "environment": {
+    "HOME": "/Users/eugene",
+    "TMPDIR": "/var/folders/38/tc_rs_016rz5chj25dzt9nfm0000gn/T/",
+    "USER": "eugene",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONNOUSERSITE": "1",
+    "PYTHONPYCACHEPREFIX": "/dev/null"
+  },
+  "python_executable": "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+  "schema4_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+  "prior_output_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-retained-evidence-dependent-continuation1",
+  "prior_counter_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-tu_d8qq1",
+  "prior_preparation_commit": "41911d2ae75d30bf0e0699cb3a1eee3dcc6304f9",
+  "prior_result_commit": "09c36719e34546eb0bd536270ae96e39dee40bc3",
+  "initial_launches": 1,
+  "schema4_launches": 0,
+  "counter_argv": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--profile",
+    "macos-static",
+    "--runtime-build",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+    "--host-build",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+    "--collect-failures"
+  ]
+}
