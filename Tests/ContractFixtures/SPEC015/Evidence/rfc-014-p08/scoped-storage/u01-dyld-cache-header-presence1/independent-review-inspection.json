@@ -1,0 +1,58 @@
+{
+  "README_sha256": "d9ad790e2e526b1e44240c0573c57b3479d6b9eaf46418b86a12b225cbd50aa0",
+  "aggregate_ceiling_seconds": 60,
+  "all_three_attempts_consumed": true,
+  "byte_ceiling": 16777216,
+  "cache_file_sha256": {
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+  },
+  "candidate_bytes_read": 0,
+  "candidate_paths_checked": 3,
+  "candidate_results": [
+    {
+      "lstat_errno": "ENOENT",
+      "path": "/usr/include/mach-o/dyld_cache_format.h",
+      "stat_errno": "ENOENT"
+    },
+    {
+      "lstat_errno": "ENOENT",
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/mach-o/dyld_cache_format.h",
+      "stat_errno": "ENOENT"
+    },
+    {
+      "lstat_errno": "ENOENT",
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/include/mach-o/dyld_cache_format.h",
+      "stat_errno": "ENOENT"
+    }
+  ],
+  "consumed_marker_identities": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+      16777234,
+      29640436
+    ],
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+      16777234,
+      29650609
+    ],
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": [
+      16777234,
+      29652748
+    ]
+  },
+  "method": "Independent os.stat/os.lstat only at the three literal header candidate paths; no candidate opened/read and no broader header search. Separate standard-library hash/Git checks for packet/preservation evidence only. No tool/controller/runtime/acquisition.",
+  "presence_check_elapsed_seconds": 4.670799999999947e-05,
+  "preserved_dirty_file_sha256": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+    "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+    "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+  },
+  "provider_proof_established": false,
+  "repairs": 0,
+  "retries": 0,
+  "reviewed_commit": "6e6c5f88f8b97e7b76a563db18ca919a537f5220",
+  "schema_applicability_established": false,
+  "strict_cold_eligible": false,
+  "verdict": "PASS_exact_three_path_presence_result_and_STOP"
+}

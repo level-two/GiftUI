@@ -1,24 +1,16 @@
 # RFC-014 task context guide
 
-Current P08 boundary — **retained U01 four-image identity interpretation independently PASS within bounds; full callee/safety STOP**.
-The [retained identity result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-identity-interpretation1-result/README.md)
-delimits four arm64e records, joins Swift/C UUIDs to the supplemental different
-process, and maps cold-entry/ErrorWS exports plus C memcpy/platform and canary
-records. No variant table is emitted; platform's standalone/cache identity and
-ordinary-counter loaded identity remain unproved. Cache-header schema, numeric
-Error size, implementation bodies and R01–R04 costs stay open. The [independent
-Strong interpretation review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-identity-interpretation1-result/independent-review.md)
-passes exact records/counts/UUID/symbol/standalone distinctions. Next is a
-preparation-only inventory of three exact cache-format header candidates,
-16MiB/60s maximum, standard-library/Git reads only; no parser/schema qualification
-or broader execution allowance follows.
-The [independently reviewed I archive](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/independent-review.md)
-retains capture-only PASS/STOP_cache_schema_unestablished. No decoder/controller/
-runtime/compiler/build/test/acquisition/repair/retry ran; S and old B remain closed.
-Three attempts remain1/1 consumed, repairs0/retries0: collection [16777234,29640436],
-A-only [16777234,29650609], I-only [16777234,29652748]. No new execution allowance
-or contract/scope decision; U02–U05, strict cold, P08/R07/T8.1 and remaining gates
-stay open.
+Current P08 boundary — **three exact dyld header candidates absent; independent presence review PASS; full callee/safety STOP**.
+The [independent bounded presence review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-header-presence1/independent-review.md)
+confirms stat/lstat ENOENT at all three authorized candidates, zero candidate
+bytes read and no broader search. The three-path inventory is finished; no
+cache schema/provider/ordinary loaded identity proof follows. Further schema
+evidence requires a separate concrete source/revision/provenance/applicability
+preparation with bounded operations/review/stops; no replacement source, broader
+hunt/acquisition, parser or execution is authorized here. S and old B stay closed.
+R01–R04, Error size/body costs, U02–U05, strict cold and P08/R07/T8.1 remain open.
+Three markers [16777234,29640436]/[16777234,29650609]/[16777234,29652748]
+remain unchanged, each1/1 consumed, repairs0/retries0; no allowance reset.
 
 Historical pre-collection checkpoint — **retained counter426 PASS; controller readiness PASS; collection unused 0/1**.
 The [retained macOS Static result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)
