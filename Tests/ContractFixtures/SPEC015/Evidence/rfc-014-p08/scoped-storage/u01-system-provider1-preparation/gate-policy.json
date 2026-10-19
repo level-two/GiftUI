@@ -1,0 +1,16 @@
+{
+  "I_launch_enabled": true,
+  "S_launch_enabled": false,
+  "cache_header_schema_authenticated": false,
+  "cache_uuid_field_offset": null,
+  "cache_uuid_parser": null,
+  "expected_os_build": "25G83",
+  "expected_os_version": "26.6.2",
+  "expected_supplemental_cache_uuid": "f2e86c53-6052-388b-ba71-5a0c9b569413",
+  "mode": "STOP_AFTER_I_CACHE_SCHEMA_UNESTABLISHED",
+  "old_B_retargeted": false,
+  "ordinary_counter_loaded_identity_complete": false,
+  "reason": "Retained evidence authenticates literal known UUID bytes at 0x58, not applicable cache-header field semantics. No independently justified applicable schema is frozen. This controller cannot release S under any I output.",
+  "schema": 1,
+  "schema_evidence": []
+}
