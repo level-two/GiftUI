@@ -1,0 +1,30 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/privacy-same-package-state-storage.swift:4:54: error: 'Storage' is inaccessible due to 'internal' protection level
+2 | import P08CounterSchema
+3 | package func reject(_ state: State<CounterModelSchema>) { _ = state.storage }
+4 | package typealias Hidden = State<CounterModelSchema>.Storage
+  |                                                      `- error: 'Storage' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift:51:19: note: type declared here
+ 49 | public struct State<Schema: _GiftUIModelSchema> {
+ 50 |     @usableFromInline
+ 51 |     internal enum Storage {
+    |                   `- note: type declared here
+ 52 |         case initial(_GiftUIStateInitial<Schema>)
+ 53 |         case bound(_GiftUIBoundState<Schema>)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/privacy-same-package-state-storage.swift:3:69: error: 'storage' is inaccessible due to 'internal' protection level
+1 | import GiftUI
+2 | import P08CounterSchema
+3 | package func reject(_ state: State<CounterModelSchema>) { _ = state.storage }
+  |                                                                     `- error: 'storage' is inaccessible due to 'internal' protection level
+4 | package typealias Hidden = State<CounterModelSchema>.Storage
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift:56:18: note: 'storage' declared here
+ 54 |     }
+ 55 |     @usableFromInline
+ 56 |     internal var storage: Storage
+    |                  `- note: 'storage' declared here
+ 57 | 
+ 58 |     @inlinable

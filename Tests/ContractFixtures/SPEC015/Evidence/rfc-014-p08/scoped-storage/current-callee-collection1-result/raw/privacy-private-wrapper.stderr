@@ -1,0 +1,12 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/privacy-private-wrapper.swift:4:104: error: '_model' is inaccessible due to 'private' protection level
+2 | import P08CounterSchema
+3 | import P08CounterPresentation
+4 | package func reject<D: CounterReadDomain>(_ declaration: borrowing CounterScreen<D>) { _ = declaration._model }
+  |                                                                                                        `- error: '_model' is inaccessible due to 'private' protection level
+5 | 
+
+P08CounterPresentation.CounterScreen._model:2:13: note: '_model' declared here
+1 | generic struct CounterScreen {
+2 | private var _model: GiftUI.State<P08CounterSchema.CounterModelSchema>}
+  |             `- note: '_model' declared here
+3 | 

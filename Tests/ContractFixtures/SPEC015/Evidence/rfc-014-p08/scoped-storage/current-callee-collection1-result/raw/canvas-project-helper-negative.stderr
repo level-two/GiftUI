@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/canvas-project-helper-negative.swift:4:191: error: 'project' is inaccessible due to 'internal' protection level
+2 | import GiftUIDrawing
+3 | import GiftUISemanticCore
+4 | package func forward<Roles: SemanticDeclarationRoles, Value, Expected>(_ value: borrowing Value, as type: Expected.Type, roles: Roles.Type) -> Expected { SemanticStandardPayloadCodec<Roles>.project(value, as: type) }
+  |                                                                                                                                                                                               `- error: 'project' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticStandardPayload.swift:32:26: note: 'project(_:as:)' declared here
+ 30 |     /// existential cast is used. The known finite value is copied while borrowed.
+ 31 |     @inlinable
+ 32 |     internal static func project<Value, Expected>(_ value: borrowing Value, as type: Expected.Type)
+    |                          `- note: 'project(_:as:)' declared here
+ 33 |         -> Expected
+ 34 |     {

@@ -1,0 +1,29 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/privacy-internal-helper-pair.swift:4:133: error: '_giftUIStateStorage_model' is inaccessible due to 'internal' protection level
+2 | import P08CounterSchema
+3 | import P08CounterPresentation
+4 | package func reject<D: CounterReadDomain>(_ declaration: borrowing CounterScreen<D>) throws(_GiftUIAccessFailure) { _ = declaration._giftUIStateStorage_model; _ = try declaration._giftUIStateKey_model() }
+  |                                                                                                                                     `- error: '_giftUIStateStorage_model' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/Counter.swift:76:14: note: '_giftUIStateStorage_model' declared here
+74 | }
+75 | @usableFromInline
+76 | internal var _giftUIStateStorage_model: State<CounterModelSchema> {
+   |              `- note: '_giftUIStateStorage_model' declared here
+77 |     _read { yield _model }
+78 |     _modify { yield &_model }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/privacy-internal-helper-pair.swift:4:180: error: '_giftUIStateKey_model' is inaccessible due to 'internal' protection level
+2 | import P08CounterSchema
+3 | import P08CounterPresentation
+4 | package func reject<D: CounterReadDomain>(_ declaration: borrowing CounterScreen<D>) throws(_GiftUIAccessFailure) { _ = declaration._giftUIStateStorage_model; _ = try declaration._giftUIStateKey_model() }
+  |                                                                                                                                                                                    `- error: '_giftUIStateKey_model' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/Counter.swift:81:25: note: '_giftUIStateKey_model()' declared here
+79 | }
+80 | @usableFromInline
+81 | internal borrowing func _giftUIStateKey_model()
+   |                         `- note: '_giftUIStateKey_model()' declared here
+82 |     throws(_GiftUIAccessFailure) -> _GiftUIModelKey<CounterModelSchema> {
+83 |     try _model._giftUIKey()

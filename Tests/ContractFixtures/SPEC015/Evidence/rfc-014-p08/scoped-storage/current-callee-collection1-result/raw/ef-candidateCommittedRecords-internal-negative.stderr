@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/ef-candidateCommittedRecords-internal-negative.swift:6:397: error: 'candidateCommittedRecords' is inaccessible due to 'internal' protection level
+4 | import GiftUISemanticCore
+5 | import GiftUIRuntimeCore
+6 | package func forward<C, R, H>(_ state: borrowing InteractionState<C, R, H>) where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable, R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable, H: InteractionHitRegionStorage & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity { _ = state.candidateCommittedRecords.count }
+  |                                                                                                                                                                                                                                                                                                                                                                                                             `- error: 'candidateCommittedRecords' is inaccessible due to 'internal' protection level
+7 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionState.swift:32:18: note: 'candidateCommittedRecords' declared here
+ 30 |     internal var candidateHitRegions: HitRegions
+ 31 |     @usableFromInline
+ 32 |     internal var candidateCommittedRecords: CommittedRecords
+    |                  `- note: 'candidateCommittedRecords' declared here
+ 33 |     @usableFromInline
+ 34 |     internal var committedRecords: CommittedRecords

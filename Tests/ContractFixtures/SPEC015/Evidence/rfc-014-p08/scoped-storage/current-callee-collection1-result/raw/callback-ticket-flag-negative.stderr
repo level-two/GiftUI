@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/callback-ticket-flag-negative.swift:4:94: error: 'ownsClaim' is inaccessible due to 'internal' protection level
+2 | import GiftUIObservableState
+3 | import GiftUISemanticCore
+4 | package func forward<Schema>(_ ticket: borrowing ObservableModelTicket<Schema>) { _ = ticket.ownsClaim }
+  |                                                                                              `- error: 'ownsClaim' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelTicket.swift:9:18: note: 'ownsClaim' declared here
+ 7 |     package let claim: ObservableModelOwnership.Claim
+ 8 |     @usableFromInline
+ 9 |     internal var ownsClaim = true
+   |                  `- note: 'ownsClaim' declared here
+10 | 
+11 |     @_lifetime(copy lifetime)

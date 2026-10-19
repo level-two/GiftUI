@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/callback-root-install-negative.swift:4:301: error: 'install' is inaccessible due to 'internal' protection level
+2 | import GiftUIObservableState
+3 | import GiftUISemanticCore
+4 | package func forward<Model: ObservableStateModel & ~Copyable, Identity: Equatable & Sendable>(_ root: borrowing ObservableStateRootScope<Model, Identity>, identity: Identity, state: inout State<Model.Schema>, ticket: inout ObservableModelTicket<Model.Schema>) throws(ObservableStateError) { try root.install(identity, ordinal: 0, state: &state, ticket: &ticket) }
+  |                                                                                                                                                                                                                                                                                                             `- error: 'install' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift:444:20: note: 'install(_:ordinal:state:ticket:)' declared here
+442 | 
+443 |     @inlinable
+444 |     borrowing func install(
+    |                    `- note: 'install(_:ordinal:state:ticket:)' declared here
+445 |         _ identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>,
+446 |         ticket: inout ObservableModelTicket<Model.Schema>

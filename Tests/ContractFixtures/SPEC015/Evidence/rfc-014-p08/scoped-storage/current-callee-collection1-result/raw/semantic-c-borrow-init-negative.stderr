@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/semantic-c-borrow-init-negative.swift:17:24: error: 'SemanticRecordStore<Payload>' initializer is inaccessible due to 'internal' protection level
+15 |         payloads: &payloads, scalars: &scalars, limits: limits, owner: owner
+16 |     ) { (store) throws(SemanticExpansionError) in
+17 |         let borrowed = SemanticRecordStore(borrowing: store)
+   |                        `- error: 'SemanticRecordStore<Payload>' initializer is inaccessible due to 'internal' protection level
+18 |         _ = try borrowed.withCandidateView { _ in UInt32(0) }
+19 |         return UInt32(borrowed.limits.records)
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordStore.swift:100:14: note: 'init(borrowing:)' declared here
+ 98 |     @_lifetime(copy other)
+ 99 |     @inlinable
+100 |     internal init(borrowing other: borrowing SemanticRecordStore<Payload>) {
+    |              `- note: 'init(borrowing:)' declared here
+101 |         a = other.a
+102 |         b = other.b

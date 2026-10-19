@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/observable-matching-negative.swift:4:226: error: 'matching' is inaccessible due to 'internal' protection level
+2 | import GiftUIObservableState
+3 | import GiftUISemanticCore
+4 | package func forward<Model, Identity>(_ root: borrowing ObservableStateRootScope<Model, Identity>, identity: Identity, ordinal: UInt16) where Model: ObservableStateModel & ~Copyable, Identity: Equatable & Sendable { _ = root.matching(identity, ordinal: ordinal) }
+  |                                                                                                                                                                                                                                  `- error: 'matching' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift:276:29: note: 'matching(_:ordinal:)' declared here
+274 | 
+275 |     @inlinable
+276 |     internal borrowing func matching(_ identity: Identity, ordinal: UInt16) -> Int? {
+    |                             `- note: 'matching(_:ordinal:)' declared here
+277 |         for i in 0 ..< 2
+278 |         where identities[i] == identity

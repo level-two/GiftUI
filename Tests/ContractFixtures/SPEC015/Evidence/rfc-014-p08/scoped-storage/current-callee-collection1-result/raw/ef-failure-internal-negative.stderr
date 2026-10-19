@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/ef-failure-internal-negative.swift:6:405: error: 'failure' is inaccessible due to 'internal' protection level
+4 | import GiftUISemanticCore
+5 | import GiftUIRuntimeCore
+6 | package func forward<C, R, H>(_ state: borrowing InteractionOwnedKeyState<C, R, H>) where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable, R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable, H: InteractionHitRegionStorage & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity { _ = state.failure }
+  |                                                                                                                                                                                                                                                                                                                                                                                                                     `- error: 'failure' is inaccessible due to 'internal' protection level
+7 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:33:18: note: 'failure' declared here
+ 31 |     internal var isStaging = false
+ 32 |     @usableFromInline
+ 33 |     internal var failure: InteractionError?
+    |                  `- note: 'failure' declared here
+ 34 |     @_lifetime(copy state)
+ 35 |     package init?(

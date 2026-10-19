@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/semantic-c-explicit-return-escape-negative.swift:18:26: error: instance method 'withCandidateView' requires that 'SemanticRecordView<UInt32>' conform to 'Escapable'
+16 |     ) { (store) throws(SemanticExpansionError) in
+17 |         let borrowed = store.borrowedStore()
+18 |         _ = try borrowed.withCandidateView { (view) -> SemanticRecordView<UInt32> in
+   |                          `- error: instance method 'withCandidateView' requires that 'SemanticRecordView<UInt32>' conform to 'Escapable'
+19 |             return view
+20 |         }
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordStore.swift:191:28: note: 'where Result: Escapable' is implicit here
+189 |     @inlinable
+190 |     @inline(__always)
+191 |     package borrowing func withCandidateView<Result>(
+    |                            `- note: 'where Result: Escapable' is implicit here
+192 |         _ body: (borrowing SemanticRecordView<Payload>) throws(SemanticExpansionError) -> Result
+193 |     ) throws(SemanticExpansionError) -> Result {

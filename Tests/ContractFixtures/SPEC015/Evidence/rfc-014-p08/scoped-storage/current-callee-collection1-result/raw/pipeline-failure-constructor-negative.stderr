@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/pipeline-failure-constructor-negative.swift:4:251: error: 'RuntimePipelineFailureRecord<OwnerFailure>' initializer is inaccessible due to 'internal' protection level
+2 | import GiftUIExecution
+3 | import GiftUIRuntimeCore
+4 | package func forward<Failure: Equatable & Sendable>(stage: RuntimeCompletePipelineStage, failure: RunCycleFailure<Failure>, publication: RuntimePipelinePublication?, disposition: RuntimePipelineDisposition) -> RuntimePipelineFailureRecord<Failure> { RuntimePipelineFailureRecord<Failure>(stage: stage, failure: failure, publication: publication, disposition: disposition) }
+  |                                                                                                                                                                                                                                                           `- error: 'RuntimePipelineFailureRecord<OwnerFailure>' initializer is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift:123:14: note: 'init(stage:failure:publication:disposition:)' declared here
+121 | 
+122 |     @inlinable
+123 |     internal init(
+    |              `- note: 'init(stage:failure:publication:disposition:)' declared here
+124 |         stage: RuntimeCompletePipelineStage,
+125 |         failure: RunCycleFailure<OwnerFailure>,

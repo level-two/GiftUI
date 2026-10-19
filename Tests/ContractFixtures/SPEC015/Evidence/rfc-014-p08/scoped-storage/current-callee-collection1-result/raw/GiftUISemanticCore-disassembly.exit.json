@@ -1,0 +1,59 @@
+{
+  "actual_exit": 0,
+  "argv": [
+    "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-objdump-21",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.o"
+  ],
+  "claimed_observation": {
+    "observed_monotonic_ns": 2800103764416,
+    "observed_wall_ns": 1792416771674480000
+  },
+  "compiler": false,
+  "environment": {
+    "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+    "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
+    "DYLD_LIBRARY_PATH": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
+    "HOME": "/Users/eugene",
+    "LC_CTYPE": "C.UTF-8",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "TMPDIR": "/private/tmp",
+    "USER": "eugene"
+  },
+  "marker_identity": [
+    16777234,
+    29640436
+  ],
+  "name": "GiftUISemanticCore-disassembly",
+  "pid": 79484,
+  "raw": {
+    "GiftUISemanticCore-disassembly.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUISemanticCore-disassembly.stdout": {
+      "bytes": 4035988,
+      "sha256": "808f12f81e643cc6c9bfebe1abed9fa2faedc4c2287d0fa6f1bb82ceb22306b6"
+    }
+  },
+  "reviewed_pins": [
+    "4b33eecc1763867b00d59ccbb843df40ca39fa93",
+    "903499d41840b626fc10028527631512212cff78",
+    "851bc71165e472ca98f1fbe6a46c140114bcc6fd"
+  ],
+  "spawn_after": {
+    "observed_monotonic_ns": 2800112802416,
+    "observed_wall_ns": 1792416771683518000
+  },
+  "spawn_before": {
+    "observed_monotonic_ns": 2800110613583,
+    "observed_wall_ns": 1792416771681329000
+  },
+  "wait_observation": {
+    "observed_monotonic_ns": 2800252136125,
+    "observed_wall_ns": 1792416771822850000
+  }
+}

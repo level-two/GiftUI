@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/callback-root-check-negative.swift:4:196: error: 'checkOperation' is inaccessible due to 'internal' protection level
+2 | import GiftUIObservableState
+3 | import GiftUISemanticCore
+4 | package func forward<Model: ObservableStateModel & ~Copyable, Identity: Equatable & Sendable>(_ root: borrowing ObservableStateRootScope<Model, Identity>) throws(ObservableStateError) { try root.checkOperation(discovery: true) }
+  |                                                                                                                                                                                                    `- error: 'checkOperation' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift:258:29: note: 'checkOperation(discovery:)' declared here
+256 | 
+257 |     @inlinable
+258 |     internal borrowing func checkOperation(discovery: Bool = false) throws(ObservableStateError) {
+    |                             `- note: 'checkOperation(discovery:)' declared here
+259 |         guard !records.pointee.retired else { throw .invalidPhaseSafetyNotProven }
+260 |         guard !records.pointee.operationActive else { throw .reentrancyViolation }

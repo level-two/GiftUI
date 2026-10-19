@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/pipeline-helper-cleanup-negative.swift:4:197: error: 'cleanup' is inaccessible due to 'internal' protection level
+2 | import GiftUIExecution
+3 | import GiftUIRuntimeCore
+4 | package func forward<Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable>(_ owner: inout Owner, stage: RuntimeCoordinatorStage, acquired: RuntimeCleanupActions) { RuntimeCompletePipeline.cleanup(after: stage, acquired: acquired, owner: &owner) }
+  |                                                                                                                                                                                                     `- error: 'cleanup' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift:512:26: note: 'cleanup(after:acquired:owner:)' declared here
+510 | 
+511 |     @inlinable
+512 |     internal static func cleanup<Owner>(
+    |                          `- note: 'cleanup(after:acquired:owner:)' declared here
+513 |         after stage: RuntimeCoordinatorStage,
+514 |         acquired: RuntimeCleanupActions,

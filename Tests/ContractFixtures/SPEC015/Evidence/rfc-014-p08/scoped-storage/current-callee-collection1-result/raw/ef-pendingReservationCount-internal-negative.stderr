@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/ef-pendingReservationCount-internal-negative.swift:6:113: error: 'pendingReservationCount' is inaccessible due to 'internal' protection level
+4 | import GiftUISemanticCore
+5 | import GiftUIRuntimeCore
+6 | package func forward(_ state: borrowing RuntimeActionGenerationAllocator<SemanticCompleteIdentity>) { _ = state.pendingReservationCount }
+  |                                                                                                                 `- error: 'pendingReservationCount' is inaccessible due to 'internal' protection level
+7 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift:17:18: note: 'pendingReservationCount' declared here
+15 |     private var allocator: ActionGenerationAllocator
+16 |     @usableFromInline
+17 |     internal var pendingReservationCount: UInt32
+   |                  `- note: 'pendingReservationCount' declared here
+18 |     @usableFromInline
+19 |     package internal(set) var committedReservationCount: UInt32

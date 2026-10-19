@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/pipeline-helper-finish-negative.swift:4:404: error: 'finishOfferWithoutCommit' is inaccessible due to 'internal' protection level
+2 | import GiftUIExecution
+3 | import GiftUIRuntimeCore
+4 | package func forward<Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable>(_ owner: inout Owner, operational: ExecutionOperational, state: PresentationIntentState, wakeReasons: ExecutionWakeReasons, frameDisposition: LogicalFrameDisposition, publication: RuntimePipelinePublication, acquired: RuntimeCleanupActions) -> RuntimeCompletePipelineResult<Owner.OwnerFailure> { RuntimeCompletePipeline.finishOfferWithoutCommit(operational: operational, state: state, wakeReasons: wakeReasons, frameDisposition: frameDisposition, publication: publication, acquired: acquired, owner: &owner) }
+  |                                                                                                                                                                                                                                                                                                                                                                                                                    `- error: 'finishOfferWithoutCommit' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift:435:26: note: 'finishOfferWithoutCommit(operational:state:wakeReasons:frameDisposition:publication:acquired:owner:)' declared here
+433 | 
+434 |     @inlinable
+435 |     internal static func finishOfferWithoutCommit<Owner>(
+    |                          `- note: 'finishOfferWithoutCommit(operational:state:wakeReasons:frameDisposition:publication:acquired:owner:)' declared here
+436 |         operational: ExecutionOperational,
+437 |         state: PresentationIntentState,

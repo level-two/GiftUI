@@ -1,0 +1,59 @@
+{
+  "actual_exit": 0,
+  "argv": [
+    "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+    "--dump",
+    "--dump-blockinfo",
+    "--show-binary-blobs",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIObservableState.swiftmodule"
+  ],
+  "claimed_observation": {
+    "observed_monotonic_ns": 2503750796083,
+    "observed_wall_ns": 1792416475323589000
+  },
+  "compiler": false,
+  "environment": {
+    "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+    "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
+    "DYLD_LIBRARY_PATH": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
+    "HOME": "/Users/eugene",
+    "LC_CTYPE": "C.UTF-8",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "TMPDIR": "/private/tmp",
+    "USER": "eugene"
+  },
+  "marker_identity": [
+    16777234,
+    29640436
+  ],
+  "name": "GiftUIObservableState-decode",
+  "pid": 77835,
+  "raw": {
+    "GiftUIObservableState-decode.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIObservableState-decode.stdout": {
+      "bytes": 1572001,
+      "sha256": "32d5ebc2e159fff754770fe3cdeaf938b06d0be5d41f834841851f9d92f303fc"
+    }
+  },
+  "reviewed_pins": [
+    "4b33eecc1763867b00d59ccbb843df40ca39fa93",
+    "903499d41840b626fc10028527631512212cff78",
+    "851bc71165e472ca98f1fbe6a46c140114bcc6fd"
+  ],
+  "spawn_after": {
+    "observed_monotonic_ns": 2503759516541,
+    "observed_wall_ns": 1792416475332310000
+  },
+  "spawn_before": {
+    "observed_monotonic_ns": 2503757338625,
+    "observed_wall_ns": 1792416475330132000
+  },
+  "wait_observation": {
+    "observed_monotonic_ns": 2503801614625,
+    "observed_wall_ns": 1792416475374408000
+  }
+}

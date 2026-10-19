@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/pipeline-disposition-constructor-negative.swift:4:313: error: 'RuntimePipelineDisposition' initializer is inaccessible due to 'internal' protection level
+2 | import GiftUIExecution
+3 | import GiftUIRuntimeCore
+4 | package func forward(semanticDisposition: SemanticCycleDisposition, logicalFrameDisposition: LogicalFrameDisposition, presentationIntentState: PresentationIntentState, wakeReasons: ExecutionWakeReasons, commitsInteractionCandidate: Bool, preservesPublishedSemanticRevision: Bool) -> RuntimePipelineDisposition { RuntimePipelineDisposition(semanticDisposition: semanticDisposition, logicalFrameDisposition: logicalFrameDisposition, presentationIntentState: presentationIntentState, wakeReasons: wakeReasons, commitsInteractionCandidate: commitsInteractionCandidate, preservesPublishedSemanticRevision: preservesPublishedSemanticRevision) }
+  |                                                                                                                                                                                                                                                                                                                         `- error: 'RuntimePipelineDisposition' initializer is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift:72:14: note: 'init(semanticDisposition:logicalFrameDisposition:presentationIntentState:wakeReasons:commitsInteractionCandidate:preservesPublishedSemanticRevision:)' declared here
+ 70 | 
+ 71 |     @usableFromInline
+ 72 |     internal init(
+    |              `- note: 'init(semanticDisposition:logicalFrameDisposition:presentationIntentState:wakeReasons:commitsInteractionCandidate:preservesPublishedSemanticRevision:)' declared here
+ 73 |         semanticDisposition: SemanticCycleDisposition,
+ 74 |         logicalFrameDisposition: LogicalFrameDisposition,

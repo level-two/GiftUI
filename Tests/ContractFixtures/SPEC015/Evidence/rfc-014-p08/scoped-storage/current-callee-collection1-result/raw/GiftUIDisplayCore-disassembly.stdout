@@ -1,0 +1,734 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIDisplayCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000000000 <ltmp0>:
+       0:      	ret
+
+0000000000000004 <_$s17GiftUIDisplayCore20DisplayReservationIDV8rawValueACs6UInt32V_tcfC>:
+       4:      	ret
+
+0000000000000008 <_$s17GiftUIDisplayCore20DisplayReservationIDV23__derived_struct_equalsySbAC_ACtFZ>:
+       8:      	cmp	w0, w1
+       c:      	cset	w0, eq
+      10:      	ret
+
+0000000000000014 <_$s17GiftUIDisplayCore20DisplayReservationIDV4hash4intoys6HasherVz_tF>:
+      14:      	stp	x20, x19, [sp, #-0x20]!
+      18:      	stp	x29, x30, [sp, #0x10]
+      1c:      	add	x29, sp, #0x10
+      20:      	mov	x20, x0
+      24:      	mov	x0, x1
+      28:      	bl	0x28 <_$s17GiftUIDisplayCore20DisplayReservationIDV4hash4intoys6HasherVz_tF+0x14>
+		0000000000000028:  ARM64_RELOC_BRANCH26	_$ss6HasherV8_combineyys6UInt32VF
+      2c:      	ldp	x29, x30, [sp, #0x10]
+      30:      	ldp	x20, x19, [sp], #0x20
+      34:      	ret
+
+0000000000000038 <_$s17GiftUIDisplayCore20DisplayReservationIDV9hashValueSivg>:
+      38:      	sub	sp, sp, #0x70
+      3c:      	stp	x20, x19, [sp, #0x50]
+      40:      	stp	x29, x30, [sp, #0x60]
+      44:      	add	x29, sp, #0x60
+      48:      	mov	x19, x0
+      4c:      	add	x8, sp, #0x8
+      50:      	mov	x0, #0x0                ; =0
+      54:      	bl	0x54 <_$s17GiftUIDisplayCore20DisplayReservationIDV9hashValueSivg+0x1c>
+		0000000000000054:  ARM64_RELOC_BRANCH26	_$ss6HasherV5_seedABSi_tcfC
+      58:      	add	x20, sp, #0x8
+      5c:      	mov	x0, x19
+      60:      	bl	0x60 <_$s17GiftUIDisplayCore20DisplayReservationIDV9hashValueSivg+0x28>
+		0000000000000060:  ARM64_RELOC_BRANCH26	_$ss6HasherV8_combineyys6UInt32VF
+      64:      	add	x20, sp, #0x8
+      68:      	bl	0x68 <_$s17GiftUIDisplayCore20DisplayReservationIDV9hashValueSivg+0x30>
+		0000000000000068:  ARM64_RELOC_BRANCH26	_$ss6HasherV9_finalizeSiyF
+      6c:      	ldp	x29, x30, [sp, #0x60]
+      70:      	ldp	x20, x19, [sp, #0x50]
+      74:      	add	sp, sp, #0x70
+      78:      	ret
+
+000000000000007c <_$s17GiftUIDisplayCore20DisplayReservationIDVSQAASQ2eeoiySbx_xtFZTW>:
+      7c:      	ldr	w0, [x0]
+      80:      	ldr	w1, [x1]
+      84:      	b	0x84 <_$s17GiftUIDisplayCore20DisplayReservationIDVSQAASQ2eeoiySbx_xtFZTW+0x8>
+		0000000000000084:  ARM64_RELOC_BRANCH26	_$s17GiftUIDisplayCore20DisplayReservationIDV23__derived_struct_equalsySbAC_ACtFZ
+
+0000000000000088 <_$s17GiftUIDisplayCore20DisplayReservationIDVSHAASH9hashValueSivgTW>:
+      88:      	ldr	w0, [x20]
+      8c:      	b	0x8c <_$s17GiftUIDisplayCore20DisplayReservationIDVSHAASH9hashValueSivgTW+0x4>
+		000000000000008c:  ARM64_RELOC_BRANCH26	_$s17GiftUIDisplayCore20DisplayReservationIDV9hashValueSivg
+
+0000000000000090 <_$s17GiftUIDisplayCore20DisplayReservationIDVSHAASH4hash4intoys6HasherVz_tFTW>:
+      90:      	ldr	w1, [x20]
+      94:      	b	0x94 <_$s17GiftUIDisplayCore20DisplayReservationIDVSHAASH4hash4intoys6HasherVz_tFTW+0x4>
+		0000000000000094:  ARM64_RELOC_BRANCH26	_$s17GiftUIDisplayCore20DisplayReservationIDV4hash4intoys6HasherVz_tF
+
+0000000000000098 <_$s17GiftUIDisplayCore20DisplayReservationIDVSHAASH13_rawHashValue4seedS2i_tFTW>:
+      98:      	sub	sp, sp, #0x70
+      9c:      	stp	x20, x19, [sp, #0x50]
+      a0:      	stp	x29, x30, [sp, #0x60]
+      a4:      	add	x29, sp, #0x60
+      a8:      	ldr	w19, [x20]
+      ac:      	add	x8, sp, #0x8
+      b0:      	bl	0xb0 <_$s17GiftUIDisplayCore20DisplayReservationIDVSHAASH13_rawHashValue4seedS2i_tFTW+0x18>
+		00000000000000b0:  ARM64_RELOC_BRANCH26	_$ss6HasherV5_seedABSi_tcfC
+      b4:      	add	x0, sp, #0x8
+      b8:      	mov	x1, x19
+      bc:      	bl	0xbc <_$s17GiftUIDisplayCore20DisplayReservationIDVSHAASH13_rawHashValue4seedS2i_tFTW+0x24>
+		00000000000000bc:  ARM64_RELOC_BRANCH26	_$s17GiftUIDisplayCore20DisplayReservationIDV4hash4intoys6HasherVz_tF
+      c0:      	add	x20, sp, #0x8
+      c4:      	bl	0xc4 <_$s17GiftUIDisplayCore20DisplayReservationIDVSHAASH13_rawHashValue4seedS2i_tFTW+0x2c>
+		00000000000000c4:  ARM64_RELOC_BRANCH26	_$ss6HasherV9_finalizeSiyF
+      c8:      	ldp	x29, x30, [sp, #0x60]
+      cc:      	ldp	x20, x19, [sp, #0x50]
+      d0:      	add	sp, sp, #0x70
+      d4:      	ret
+
+00000000000000d8 <_$s17GiftUIDisplayCore24DisplayReservationResultO21__derived_enum_equalsySbAC_ACtFZ>:
+      d8:      	ubfx	x8, x1, #32, #8
+      dc:      	ubfx	x9, x0, #32, #8
+      e0:      	cbz	w9, 0x100 <_$s17GiftUIDisplayCore24DisplayReservationResultO21__derived_enum_equalsySbAC_ACtFZ+0x28>
+      e4:      	cmp	w9, #0x1
+      e8:      	b.ne	0x110 <_$s17GiftUIDisplayCore24DisplayReservationResultO21__derived_enum_equalsySbAC_ACtFZ+0x38>
+      ec:      	cmp	w8, #0x1
+      f0:      	b.ne	0x14c <_$s17GiftUIDisplayCore24DisplayReservationResultO21__derived_enum_equalsySbAC_ACtFZ+0x74>
+      f4:      	eor	w8, w1, w0
+      f8:      	tst	x8, #0xff
+      fc:      	b	0x108 <_$s17GiftUIDisplayCore24DisplayReservationResultO21__derived_enum_equalsySbAC_ACtFZ+0x30>
+     100:      	cbnz	w8, 0x14c <_$s17GiftUIDisplayCore24DisplayReservationResultO21__derived_enum_equalsySbAC_ACtFZ+0x74>
+     104:      	cmp	w0, w1
+     108:      	cset	w0, eq
+     10c:      	ret
+     110:      	cbz	w0, 0x12c <_$s17GiftUIDisplayCore24DisplayReservationResultO21__derived_enum_equalsySbAC_ACtFZ+0x54>
+     114:      	cmp	w0, #0x1
+     118:      	b.ne	0x140 <_$s17GiftUIDisplayCore24DisplayReservationResultO21__derived_enum_equalsySbAC_ACtFZ+0x68>
+     11c:      	cmp	w8, #0x2
+     120:      	ccmp	w1, #0x1, #0x0, eq
+     124:      	b.eq	0x138 <_$s17GiftUIDisplayCore24DisplayReservationResultO21__derived_enum_equalsySbAC_ACtFZ+0x60>
+     128:      	b	0x14c <_$s17GiftUIDisplayCore24DisplayReservationResultO21__derived_enum_equalsySbAC_ACtFZ+0x74>
+     12c:      	cmp	w8, #0x2
+     130:      	b.ne	0x14c <_$s17GiftUIDisplayCore24DisplayReservationResultO21__derived_enum_equalsySbAC_ACtFZ+0x74>
+     134:      	cbnz	w1, 0x14c <_$s17GiftUIDisplayCore24DisplayReservationResultO21__derived_enum_equalsySbAC_ACtFZ+0x74>
+     138:      	mov	w0, #0x1                ; =1
+     13c:      	ret
+     140:      	cmp	w8, #0x2
+     144:      	ccmp	w1, #0x2, #0x0, eq
+     148:      	b.eq	0x138 <_$s17GiftUIDisplayCore24DisplayReservationResultO21__derived_enum_equalsySbAC_ACtFZ+0x60>
+     14c:      	mov	w0, #0x0                ; =0
+     150:      	ret
+
+0000000000000154 <_$s17GiftUIDisplayCore24DisplayReservationResultOSQAASQ2eeoiySbx_xtFZTW>:
+     154:      	ldr	w8, [x0]
+     158:      	ldrb	w9, [x0, #0x4]
+     15c:      	ldr	w10, [x1]
+     160:      	ldrb	w11, [x1, #0x4]
+     164:      	orr	x0, x8, x9, lsl #32
+     168:      	orr	x1, x10, x11, lsl #32
+     16c:      	b	0x16c <_$s17GiftUIDisplayCore24DisplayReservationResultOSQAASQ2eeoiySbx_xtFZTW+0x18>
+		000000000000016c:  ARM64_RELOC_BRANCH26	_$s17GiftUIDisplayCore24DisplayReservationResultO21__derived_enum_equalsySbAC_ACtFZ
+
+0000000000000170 <_$s17GiftUIDisplayCore21DisplayTransferResultO21__derived_enum_equalsySbAC_ACtFZ>:
+     170:      	and	w9, w0, #0xff
+     174:      	and	w8, w1, #0xff
+     178:      	ubfx	w10, w0, #6, #2
+     17c:      	cbz	w10, 0x1a0 <_$s17GiftUIDisplayCore21DisplayTransferResultO21__derived_enum_equalsySbAC_ACtFZ+0x30>
+     180:      	cmp	w10, #0x1
+     184:      	b.ne	0x1b4 <_$s17GiftUIDisplayCore21DisplayTransferResultO21__derived_enum_equalsySbAC_ACtFZ+0x44>
+     188:      	and	w10, w8, #0xc0
+     18c:      	cmp	w10, #0x40
+     190:      	b.ne	0x1c4 <_$s17GiftUIDisplayCore21DisplayTransferResultO21__derived_enum_equalsySbAC_ACtFZ+0x54>
+     194:      	eor	w8, w8, w9
+     198:      	tst	w8, #0x3f
+     19c:      	b	0x1ac <_$s17GiftUIDisplayCore21DisplayTransferResultO21__derived_enum_equalsySbAC_ACtFZ+0x3c>
+     1a0:      	cmp	w8, #0x3f
+     1a4:      	b.hi	0x1c4 <_$s17GiftUIDisplayCore21DisplayTransferResultO21__derived_enum_equalsySbAC_ACtFZ+0x54>
+     1a8:      	cmp	w9, w8
+     1ac:      	cset	w0, eq
+     1b0:      	ret
+     1b4:      	cmp	w8, #0x80
+     1b8:      	b.ne	0x1c4 <_$s17GiftUIDisplayCore21DisplayTransferResultO21__derived_enum_equalsySbAC_ACtFZ+0x54>
+     1bc:      	mov	w0, #0x1                ; =1
+     1c0:      	ret
+     1c4:      	mov	w0, #0x0                ; =0
+     1c8:      	ret
+
+00000000000001cc <_$s17GiftUIDisplayCore21DisplayTransferResultOSQAASQ2eeoiySbx_xtFZTW>:
+     1cc:      	ldrb	w1, [x1]
+     1d0:      	ldrb	w0, [x0]
+     1d4:      	b	0x1d4 <_$s17GiftUIDisplayCore21DisplayTransferResultOSQAASQ2eeoiySbx_xtFZTW+0x8>
+		00000000000001d4:  ARM64_RELOC_BRANCH26	_$s17GiftUIDisplayCore21DisplayTransferResultO21__derived_enum_equalsySbAC_ACtFZ
+
+00000000000001d8 <_$s17GiftUIDisplayCore18DisplayTargetErrorO8rawValueACSgs5UInt8V_tcfC>:
+     1d8:      	and	w8, w0, #0xff
+     1dc:      	mov	w9, #0x7                ; =7
+     1e0:      	cmp	w8, #0x7
+     1e4:      	csel	w0, w8, w9, lo
+     1e8:      	ret
+
+00000000000001ec <_$s17GiftUIDisplayCore18DisplayTargetErrorO8rawValues5UInt8Vvg>:
+     1ec:      	ret
+
+00000000000001f0 <_$s17GiftUIDisplayCore18DisplayTargetErrorOSHAASH9hashValueSivgTW>:
+     1f0:      	ldrb	w0, [x20]
+     1f4:      	b	0x1f4 <_$s17GiftUIDisplayCore18DisplayTargetErrorOSHAASH9hashValueSivgTW+0x4>
+		00000000000001f4:  ARM64_RELOC_BRANCH26	_$sSYsSHRzSH8RawValueSYRpzrlE04hashB0Sivg17GiftUIDisplayCore18DisplayTargetErrorO_Tgq5
+
+00000000000001f8 <_$sSYsSHRzSH8RawValueSYRpzrlE04hashB0Sivg17GiftUIDisplayCore18DisplayTargetErrorO_Tgq5>:
+     1f8:      	sub	sp, sp, #0x70
+     1fc:      	stp	x20, x19, [sp, #0x50]
+     200:      	stp	x29, x30, [sp, #0x60]
+     204:      	add	x29, sp, #0x60
+     208:      	mov	x19, x0
+     20c:      	add	x8, sp, #0x8
+     210:      	mov	x0, #0x0                ; =0
+     214:      	bl	0x214 <_$sSYsSHRzSH8RawValueSYRpzrlE04hashB0Sivg17GiftUIDisplayCore18DisplayTargetErrorO_Tgq5+0x1c>
+		0000000000000214:  ARM64_RELOC_BRANCH26	_$ss6HasherV5_seedABSi_tcfC
+     218:      	add	x20, sp, #0x8
+     21c:      	mov	x0, x19
+     220:      	bl	0x220 <_$sSYsSHRzSH8RawValueSYRpzrlE04hashB0Sivg17GiftUIDisplayCore18DisplayTargetErrorO_Tgq5+0x28>
+		0000000000000220:  ARM64_RELOC_BRANCH26	_$ss6HasherV8_combineyys5UInt8VF
+     224:      	add	x20, sp, #0x8
+     228:      	bl	0x228 <_$sSYsSHRzSH8RawValueSYRpzrlE04hashB0Sivg17GiftUIDisplayCore18DisplayTargetErrorO_Tgq5+0x30>
+		0000000000000228:  ARM64_RELOC_BRANCH26	_$ss6HasherV9_finalizeSiyF
+     22c:      	ldp	x29, x30, [sp, #0x60]
+     230:      	ldp	x20, x19, [sp, #0x50]
+     234:      	add	sp, sp, #0x70
+     238:      	ret
+
+000000000000023c <_$s17GiftUIDisplayCore18DisplayTargetErrorOSHAASH4hash4intoys6HasherVz_tFTW>:
+     23c:      	ldrb	w1, [x20]
+     240:      	b	0x240 <_$s17GiftUIDisplayCore18DisplayTargetErrorOSHAASH4hash4intoys6HasherVz_tFTW+0x4>
+		0000000000000240:  ARM64_RELOC_BRANCH26	_$sSYsSHRzSH8RawValueSYRpzrlE4hash4intoys6HasherVz_tF17GiftUIDisplayCore18DisplayTargetErrorO_Tgq5
+
+0000000000000244 <_$sSYsSHRzSH8RawValueSYRpzrlE4hash4intoys6HasherVz_tF17GiftUIDisplayCore18DisplayTargetErrorO_Tgq5>:
+     244:      	stp	x20, x19, [sp, #-0x20]!
+     248:      	stp	x29, x30, [sp, #0x10]
+     24c:      	add	x29, sp, #0x10
+     250:      	mov	x20, x0
+     254:      	mov	x0, x1
+     258:      	bl	0x258 <_$sSYsSHRzSH8RawValueSYRpzrlE4hash4intoys6HasherVz_tF17GiftUIDisplayCore18DisplayTargetErrorO_Tgq5+0x14>
+		0000000000000258:  ARM64_RELOC_BRANCH26	_$ss6HasherV8_combineyys5UInt8VF
+     25c:      	ldp	x29, x30, [sp, #0x10]
+     260:      	ldp	x20, x19, [sp], #0x20
+     264:      	ret
+
+0000000000000268 <_$s17GiftUIDisplayCore18DisplayTargetErrorOSHAASH13_rawHashValue4seedS2i_tFTW>:
+     268:      	ldrb	w1, [x20]
+     26c:      	b	0x26c <_$s17GiftUIDisplayCore18DisplayTargetErrorOSHAASH13_rawHashValue4seedS2i_tFTW+0x4>
+		000000000000026c:  ARM64_RELOC_BRANCH26	_$sSYsSHRzSH8RawValueSYRpzrlE08_rawHashB04seedS2i_tF17GiftUIDisplayCore18DisplayTargetErrorO_Tgq5
+
+0000000000000270 <_$sSYsSHRzSH8RawValueSYRpzrlE08_rawHashB04seedS2i_tF17GiftUIDisplayCore18DisplayTargetErrorO_Tgq5>:
+     270:      	sub	sp, sp, #0x70
+     274:      	stp	x20, x19, [sp, #0x50]
+     278:      	stp	x29, x30, [sp, #0x60]
+     27c:      	add	x29, sp, #0x60
+     280:      	mov	x19, x1
+     284:      	add	x8, sp, #0x8
+     288:      	bl	0x288 <_$sSYsSHRzSH8RawValueSYRpzrlE08_rawHashB04seedS2i_tF17GiftUIDisplayCore18DisplayTargetErrorO_Tgq5+0x18>
+		0000000000000288:  ARM64_RELOC_BRANCH26	_$ss6HasherV5_seedABSi_tcfC
+     28c:      	add	x20, sp, #0x8
+     290:      	mov	x0, x19
+     294:      	bl	0x294 <_$sSYsSHRzSH8RawValueSYRpzrlE08_rawHashB04seedS2i_tF17GiftUIDisplayCore18DisplayTargetErrorO_Tgq5+0x24>
+		0000000000000294:  ARM64_RELOC_BRANCH26	_$ss6HasherV8_combineyys5UInt8VF
+     298:      	add	x20, sp, #0x8
+     29c:      	bl	0x29c <_$sSYsSHRzSH8RawValueSYRpzrlE08_rawHashB04seedS2i_tF17GiftUIDisplayCore18DisplayTargetErrorO_Tgq5+0x2c>
+		000000000000029c:  ARM64_RELOC_BRANCH26	_$ss6HasherV9_finalizeSiyF
+     2a0:      	ldp	x29, x30, [sp, #0x60]
+     2a4:      	ldp	x20, x19, [sp, #0x50]
+     2a8:      	add	sp, sp, #0x70
+     2ac:      	ret
+
+00000000000002b0 <_$s17GiftUIDisplayCore18DisplayTargetErrorOSYAASY8rawValuexSg03RawH0Qz_tcfCTW>:
+     2b0:      	stp	x20, x19, [sp, #-0x20]!
+     2b4:      	stp	x29, x30, [sp, #0x10]
+     2b8:      	add	x29, sp, #0x10
+     2bc:      	mov	x19, x8
+     2c0:      	ldrb	w0, [x0]
+     2c4:      	bl	0x2c4 <_$s17GiftUIDisplayCore18DisplayTargetErrorOSYAASY8rawValuexSg03RawH0Qz_tcfCTW+0x14>
+		00000000000002c4:  ARM64_RELOC_BRANCH26	_$s17GiftUIDisplayCore18DisplayTargetErrorO8rawValueACSgs5UInt8V_tcfC
+     2c8:      	and	w8, w0, #0xff
+     2cc:      	strb	w8, [x19]
+     2d0:      	ldp	x29, x30, [sp, #0x10]
+     2d4:      	ldp	x20, x19, [sp], #0x20
+     2d8:      	ret
+
+00000000000002dc <_$s17GiftUIDisplayCore18DisplayTargetErrorOSYAASY8rawValue03RawH0QzvgTW>:
+     2dc:      	ldrb	w9, [x20]
+     2e0:      	strb	w9, [x8]
+     2e4:      	ret
+
+00000000000002e8 <_$s17GiftUIDisplayCore18DisplayTargetErrorOSQAASQ2eeoiySbx_xtFZTW>:
+     2e8:      	ldrb	w8, [x0]
+     2ec:      	ldrb	w9, [x1]
+     2f0:      	cmp	w8, w9
+     2f4:      	cset	w0, eq
+     2f8:      	ret
+
+00000000000002fc <_$s17GiftUIDisplayCore20DisplayPayloadWriterPAAE10writePixel19mostSignificantByte05leastjK0Sbs5UInt8V_AHtF>:
+     2fc:      	sub	sp, sp, #0x40
+     300:      	stp	x22, x21, [sp, #0x10]
+     304:      	stp	x20, x19, [sp, #0x20]
+     308:      	stp	x29, x30, [sp, #0x30]
+     30c:      	add	x29, sp, #0x30
+     310:      	mov	x19, x3
+     314:      	mov	x21, x2
+     318:      	mov	x22, x1
+     31c:      	ldr	x3, [x3, #0x30]
+     320:      	mov	x1, x2
+     324:      	mov	x2, x19
+     328:      	str	x3, [sp, #0x8]
+     32c:      	blr	x3
+     330:      	tbz	w0, #0x0, 0x358 <_$s17GiftUIDisplayCore20DisplayPayloadWriterPAAE10writePixel19mostSignificantByte05leastjK0Sbs5UInt8V_AHtF+0x5c>
+     334:      	mov	x0, x22
+     338:      	mov	x1, x21
+     33c:      	mov	x2, x19
+     340:      	ldr	x3, [sp, #0x8]
+     344:      	ldp	x29, x30, [sp, #0x30]
+     348:      	ldp	x20, x19, [sp, #0x20]
+     34c:      	ldp	x22, x21, [sp, #0x10]
+     350:      	add	sp, sp, #0x40
+     354:      	br	x3
+     358:      	mov	w0, #0x0                ; =0
+     35c:      	ldp	x29, x30, [sp, #0x30]
+     360:      	ldp	x20, x19, [sp, #0x20]
+     364:      	ldp	x22, x21, [sp, #0x10]
+     368:      	add	sp, sp, #0x40
+     36c:      	ret
+
+0000000000000370 <_$s17GiftUIDisplayCore33SurfaceDisplayContributionAdapterO12contribution6extent9encodings27acceptedSubmissionLifetimes8handoffs18maximumRegionWidth0oP6Height16rowByteAlignment0O13InFlightCount0ovW5Bytes0A14UICapabilities0deF0VSgAN16CapabilityExtentV_AN25CanonicalPixelEncodingSetVAN0L11LifetimeSetVAN0L10HandoffSetVs6UInt16VA_A_s5UInt8VAN010CapabilitytX0VtFZ>:
+     370:      	sub	sp, sp, #0x20
+     374:      	stp	x29, x30, [sp, #0x10]
+     378:      	add	x29, sp, #0x10
+     37c:      	ldr	w8, [x29, #0x10]
+     380:      	str	w8, [sp]
+     384:      	bl	0x384 <_$s17GiftUIDisplayCore33SurfaceDisplayContributionAdapterO12contribution6extent9encodings27acceptedSubmissionLifetimes8handoffs18maximumRegionWidth0oP6Height16rowByteAlignment0O13InFlightCount0ovW5Bytes0A14UICapabilities0deF0VSgAN16CapabilityExtentV_AN25CanonicalPixelEncodingSetVAN0L11LifetimeSetVAN0L10HandoffSetVs6UInt16VA_A_s5UInt8VAN010CapabilitytX0VtFZ+0x14>
+		0000000000000384:  ARM64_RELOC_BRANCH26	_$s18GiftUICapabilities26SurfaceDisplayContributionV6extent9encodings27acceptedSubmissionLifetimes8handoffs18maximumRegionWidth0lM6Height16rowByteAlignment0L13InFlightCount0lsT5BytesACSgAA16CapabilityExtentV_AA25CanonicalPixelEncodingSetVAA0I11LifetimeSetVAA0I10HandoffSetVs6UInt16VA2Ws5UInt8VAA0wqU0VtcfC
+     388:      	and	x2, x2, #0xffffffffff
+     38c:      	ldp	x29, x30, [sp, #0x10]
+     390:      	add	sp, sp, #0x20
+     394:      	ret
+
+0000000000000398 <_$s17GiftUIDisplayCore20DisplayReservationIDVSHAASQWb>:
+     398:      	b	0x398 <_$s17GiftUIDisplayCore20DisplayReservationIDVSHAASQWb>
+		0000000000000398:  ARM64_RELOC_BRANCH26	_$s17GiftUIDisplayCore20DisplayReservationIDVACSQAAWl
+
+000000000000039c <_$s17GiftUIDisplayCore20DisplayReservationIDVACSQAAWl>:
+     39c:      	adrp	x8, 0x0 <ltmp0>
+		000000000000039c:  ARM64_RELOC_PAGE21	_$s17GiftUIDisplayCore20DisplayReservationIDVACSQAAWL
+     3a0:      	ldr	x0, [x8]
+		00000000000003a0:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIDisplayCore20DisplayReservationIDVACSQAAWL
+     3a4:      	cbz	x0, 0x3ac <_$s17GiftUIDisplayCore20DisplayReservationIDVACSQAAWl+0x10>
+     3a8:      	ret
+     3ac:      	stp	x29, x30, [sp, #-0x10]!
+     3b0:      	mov	x29, sp
+     3b4:      	adrp	x0, 0x0 <ltmp0>
+		00000000000003b4:  ARM64_RELOC_PAGE21	_$s17GiftUIDisplayCore20DisplayReservationIDVSQAAMc
+     3b8:      	add	x0, x0, #0x0
+		00000000000003b8:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIDisplayCore20DisplayReservationIDVSQAAMc
+     3bc:      	adrp	x1, 0x0 <ltmp0>
+		00000000000003bc:  ARM64_RELOC_ADDEND	0x10
+		00000000000003bc:  ARM64_RELOC_PAGE21	_$s17GiftUIDisplayCore20DisplayReservationIDVMf
+     3c0:      	add	x1, x1, #0x0
+		00000000000003c0:  ARM64_RELOC_ADDEND	0x10
+		00000000000003c0:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIDisplayCore20DisplayReservationIDVMf
+     3c4:      	bl	0x3c4 <_$s17GiftUIDisplayCore20DisplayReservationIDVACSQAAWl+0x28>
+		00000000000003c4:  ARM64_RELOC_BRANCH26	_swift_getWitnessTable
+     3c8:      	adrp	x8, 0x0 <ltmp0>
+		00000000000003c8:  ARM64_RELOC_PAGE21	_$s17GiftUIDisplayCore20DisplayReservationIDVACSQAAWL
+     3cc:      	add	x8, x8, #0x0
+		00000000000003cc:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIDisplayCore20DisplayReservationIDVACSQAAWL
+     3d0:      	stlr	x0, [x8]
+     3d4:      	ldp	x29, x30, [sp], #0x10
+     3d8:      	ret
+
+00000000000003dc <_$s17GiftUIDisplayCore18DisplayTargetErrorOSHAASQWb>:
+     3dc:      	b	0x3dc <_$s17GiftUIDisplayCore18DisplayTargetErrorOSHAASQWb>
+		00000000000003dc:  ARM64_RELOC_BRANCH26	_$s17GiftUIDisplayCore18DisplayTargetErrorOACSQAAWl
+
+00000000000003e0 <_$s17GiftUIDisplayCore18DisplayTargetErrorOACSQAAWl>:
+     3e0:      	adrp	x8, 0x0 <ltmp0>
+		00000000000003e0:  ARM64_RELOC_PAGE21	_$s17GiftUIDisplayCore18DisplayTargetErrorOACSQAAWL
+     3e4:      	ldr	x0, [x8]
+		00000000000003e4:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIDisplayCore18DisplayTargetErrorOACSQAAWL
+     3e8:      	cbz	x0, 0x3f0 <_$s17GiftUIDisplayCore18DisplayTargetErrorOACSQAAWl+0x10>
+     3ec:      	ret
+     3f0:      	stp	x29, x30, [sp, #-0x10]!
+     3f4:      	mov	x29, sp
+     3f8:      	adrp	x0, 0x0 <ltmp0>
+		00000000000003f8:  ARM64_RELOC_PAGE21	_$s17GiftUIDisplayCore18DisplayTargetErrorOSQAAMc
+     3fc:      	add	x0, x0, #0x0
+		00000000000003fc:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIDisplayCore18DisplayTargetErrorOSQAAMc
+     400:      	adrp	x1, 0x0 <ltmp0>
+		0000000000000400:  ARM64_RELOC_ADDEND	0x10
+		0000000000000400:  ARM64_RELOC_PAGE21	_$s17GiftUIDisplayCore18DisplayTargetErrorOMf
+     404:      	add	x1, x1, #0x0
+		0000000000000404:  ARM64_RELOC_ADDEND	0x10
+		0000000000000404:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIDisplayCore18DisplayTargetErrorOMf
+     408:      	bl	0x408 <_$s17GiftUIDisplayCore18DisplayTargetErrorOACSQAAWl+0x28>
+		0000000000000408:  ARM64_RELOC_BRANCH26	_swift_getWitnessTable
+     40c:      	adrp	x8, 0x0 <ltmp0>
+		000000000000040c:  ARM64_RELOC_PAGE21	_$s17GiftUIDisplayCore18DisplayTargetErrorOACSQAAWL
+     410:      	add	x8, x8, #0x0
+		0000000000000410:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIDisplayCore18DisplayTargetErrorOACSQAAWL
+     414:      	stlr	x0, [x8]
+     418:      	ldp	x29, x30, [sp], #0x10
+     41c:      	ret
+
+0000000000000420 <_$s17GiftUIDisplayCore20DisplayReservationIDVMa>:
+     420:      	adrp	x0, 0x0 <ltmp0>
+		0000000000000420:  ARM64_RELOC_ADDEND	0x10
+		0000000000000420:  ARM64_RELOC_PAGE21	_$s17GiftUIDisplayCore20DisplayReservationIDVMf
+     424:      	add	x0, x0, #0x0
+		0000000000000424:  ARM64_RELOC_ADDEND	0x10
+		0000000000000424:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIDisplayCore20DisplayReservationIDVMf
+     428:      	b	0x428 <_$s17GiftUIDisplayCore20DisplayReservationIDVMa+0x8>
+		0000000000000428:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1
+
+000000000000042c <___swift_memcpy5_4>:
+     42c:      	ldr	w8, [x1]
+     430:      	ldrb	w9, [x1, #0x4]
+     434:      	strb	w9, [x0, #0x4]
+     438:      	str	w8, [x0]
+     43c:      	ret
+
+0000000000000440 <___swift_noop_void_return>:
+     440:      	ret
+
+0000000000000444 <_$s17GiftUIDisplayCore24DisplayReservationResultOwet>:
+     444:      	cbz	w1, 0x478 <_$s17GiftUIDisplayCore24DisplayReservationResultOwet+0x34>
+     448:      	cmp	w1, #0xfe
+     44c:      	b.lo	0x464 <_$s17GiftUIDisplayCore24DisplayReservationResultOwet+0x20>
+     450:      	ldrb	w8, [x0, #0x5]
+     454:      	cbz	w8, 0x464 <_$s17GiftUIDisplayCore24DisplayReservationResultOwet+0x20>
+     458:      	ldr	w8, [x0]
+     45c:      	add	w8, w8, #0xfd
+     460:      	b	0x47c <_$s17GiftUIDisplayCore24DisplayReservationResultOwet+0x38>
+     464:      	ldrb	w8, [x0, #0x4]
+     468:      	eor	w9, w8, #0xff
+     46c:      	cmp	w8, #0x2
+     470:      	csinv	w8, w9, wzr, hi
+     474:      	b	0x47c <_$s17GiftUIDisplayCore24DisplayReservationResultOwet+0x38>
+     478:      	mov	w8, #-0x1               ; =-1
+     47c:      	b	0x47c <_$s17GiftUIDisplayCore24DisplayReservationResultOwet+0x38>
+		000000000000047c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_3
+
+0000000000000480 <_$s17GiftUIDisplayCore24DisplayReservationResultOwst>:
+     480:      	cmp	w1, #0xfd
+     484:      	b.hi	0x4a4 <_$s17GiftUIDisplayCore24DisplayReservationResultOwst+0x24>
+     488:      	cmp	w2, #0xfe
+     48c:      	b.lo	0x494 <_$s17GiftUIDisplayCore24DisplayReservationResultOwst+0x14>
+     490:      	strb	wzr, [x0, #0x5]
+     494:      	cbz	w1, 0x4c0 <_$s17GiftUIDisplayCore24DisplayReservationResultOwst+0x40>
+     498:      	neg	w8, w1
+     49c:      	strb	w8, [x0, #0x4]
+     4a0:      	ret
+     4a4:      	sub	w8, w1, #0xfe
+     4a8:      	strb	wzr, [x0, #0x4]
+     4ac:      	str	w8, [x0]
+     4b0:      	cmp	w2, #0xfe
+     4b4:      	b.lo	0x4c0 <_$s17GiftUIDisplayCore24DisplayReservationResultOwst+0x40>
+     4b8:      	mov	w8, #0x1                ; =1
+     4bc:      	strb	w8, [x0, #0x5]
+     4c0:      	ret
+
+00000000000004c4 <_$s17GiftUIDisplayCore24DisplayReservationResultOwug>:
+     4c4:      	ldr	w8, [x0]
+     4c8:      	ldrb	w9, [x0, #0x4]
+     4cc:      	add	w8, w8, #0x2
+     4d0:      	cmp	w9, #0x1
+     4d4:      	csel	w0, w8, w9, hi
+     4d8:      	ret
+
+00000000000004dc <_$s17GiftUIDisplayCore24DisplayReservationResultOwup>:
+     4dc:      	ret
+
+00000000000004e0 <_$s17GiftUIDisplayCore24DisplayReservationResultOwui>:
+     4e0:      	subs	w8, w1, #0x2
+     4e4:      	b.lo	0x4f0 <_$s17GiftUIDisplayCore24DisplayReservationResultOwui+0x10>
+     4e8:      	str	w8, [x0]
+     4ec:      	mov	w1, #0x2                ; =2
+     4f0:      	strb	w1, [x0, #0x4]
+     4f4:      	ret
+
+00000000000004f8 <_$s17GiftUIDisplayCore24DisplayReservationResultOMa>:
+     4f8:      	adrp	x0, 0x0 <ltmp0>
+		00000000000004f8:  ARM64_RELOC_ADDEND	0x10
+		00000000000004f8:  ARM64_RELOC_PAGE21	_$s17GiftUIDisplayCore24DisplayReservationResultOMf
+     4fc:      	add	x0, x0, #0x0
+		00000000000004fc:  ARM64_RELOC_ADDEND	0x10
+		00000000000004fc:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIDisplayCore24DisplayReservationResultOMf
+     500:      	b	0x500 <_$s17GiftUIDisplayCore24DisplayReservationResultOMa+0x8>
+		0000000000000500:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1
+
+0000000000000504 <___swift_memcpy1_1>:
+     504:      	ldrb	w8, [x1]
+     508:      	strb	w8, [x0]
+     50c:      	ret
+
+0000000000000510 <_$s17GiftUIDisplayCore21DisplayTransferResultOwet>:
+     510:      	cbz	w1, 0x548 <_$s17GiftUIDisplayCore21DisplayTransferResultOwet+0x38>
+     514:      	cmp	w1, #0x1e
+     518:      	b.lo	0x570 <_$s17GiftUIDisplayCore21DisplayTransferResultOwet+0x60>
+     51c:      	add	w8, w1, #0xe2
+     520:      	mov	x1, x30
+     524:      	bl	0x524 <_$s17GiftUIDisplayCore21DisplayTransferResultOwet+0x14>
+		0000000000000524:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_0
+     528:      	mov	x30, x1
+     52c:      	cmp	w8, #0x4
+     530:      	b.eq	0x550 <_$s17GiftUIDisplayCore21DisplayTransferResultOwet+0x40>
+     534:      	cmp	w8, #0x2
+     538:      	b.ne	0x568 <_$s17GiftUIDisplayCore21DisplayTransferResultOwet+0x58>
+     53c:      	ldurh	w8, [x0, #0x1]
+     540:      	cbnz	w8, 0x558 <_$s17GiftUIDisplayCore21DisplayTransferResultOwet+0x48>
+     544:      	b	0x570 <_$s17GiftUIDisplayCore21DisplayTransferResultOwet+0x60>
+     548:      	mov	w8, #-0x1               ; =-1
+     54c:      	b	0x58c <_$s17GiftUIDisplayCore21DisplayTransferResultOwet+0x7c>
+     550:      	ldur	w8, [x0, #0x1]
+     554:      	cbz	w8, 0x570 <_$s17GiftUIDisplayCore21DisplayTransferResultOwet+0x60>
+     558:      	ldrb	w9, [x0]
+     55c:      	orr	w8, w9, w8, lsl #8
+     560:      	sub	w8, w8, #0xe3
+     564:      	b	0x58c <_$s17GiftUIDisplayCore21DisplayTransferResultOwet+0x7c>
+     568:      	ldrb	w8, [x0, #0x1]
+     56c:      	cbnz	w8, 0x558 <_$s17GiftUIDisplayCore21DisplayTransferResultOwet+0x48>
+     570:      	ldrb	w8, [x0]
+     574:      	lsr	w9, w8, #1
+     578:      	and	w9, w9, #0x1c
+     57c:      	orr	w8, w9, w8, lsr #6
+     580:      	eor	w8, w8, #0x1f
+     584:      	cmp	w8, #0x1d
+     588:      	csinv	w8, w8, wzr, lo
+     58c:      	b	0x58c <_$s17GiftUIDisplayCore21DisplayTransferResultOwet+0x7c>
+		000000000000058c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_3
+
+0000000000000590 <_$s17GiftUIDisplayCore21DisplayTransferResultOwst>:
+     590:      	add	w8, w2, #0xe2
+     594:      	mov	x3, x30
+     598:      	bl	0x598 <_$s17GiftUIDisplayCore21DisplayTransferResultOwst+0x8>
+		0000000000000598:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_0
+     59c:      	mov	x30, x3
+     5a0:      	cmp	w2, #0x1e
+     5a4:      	csel	w8, wzr, w8, lo
+     5a8:      	cmp	w1, #0x1d
+     5ac:      	b.hi	0x5d4 <_$s17GiftUIDisplayCore21DisplayTransferResultOwst+0x44>
+     5b0:      	adrp	x9, 0x0 <ltmp0>
+		00000000000005b0:  ARM64_RELOC_ADDEND	0x5
+		00000000000005b0:  ARM64_RELOC_PAGE21	ltmp1
+     5b4:      	add	x9, x9, #0x0
+		00000000000005b4:  ARM64_RELOC_ADDEND	0x5
+		00000000000005b4:  ARM64_RELOC_PAGEOFF12	ltmp1
+     5b8:      	adr	x10, 0x5c8 <_$s17GiftUIDisplayCore21DisplayTransferResultOwst+0x38>
+     5bc:      	ldrb	w11, [x9, x8]
+     5c0:      	add	x10, x10, x11, lsl #2
+     5c4:      	br	x10
+     5c8:      	strb	wzr, [x0, #0x1]
+     5cc:      	cbnz	w1, 0x60c <_$s17GiftUIDisplayCore21DisplayTransferResultOwst+0x7c>
+     5d0:      	b	0x628 <_$s17GiftUIDisplayCore21DisplayTransferResultOwst+0x98>
+     5d4:      	sub	w10, w1, #0x1e
+     5d8:      	lsr	w9, w10, #8
+     5dc:      	add	w9, w9, #0x1
+     5e0:      	strb	w10, [x0]
+     5e4:      	adrp	x10, 0x0 <ltmp0>
+		00000000000005e4:  ARM64_RELOC_PAGE21	ltmp1
+     5e8:      	add	x10, x10, #0x0
+		00000000000005e8:  ARM64_RELOC_PAGEOFF12	ltmp1
+     5ec:      	adr	x11, 0x5fc <_$s17GiftUIDisplayCore21DisplayTransferResultOwst+0x6c>
+     5f0:      	ldrb	w12, [x10, x8]
+     5f4:      	add	x11, x11, x12, lsl #2
+     5f8:      	br	x11
+     5fc:      	strb	w9, [x0, #0x1]
+     600:      	ret
+     604:      	sturh	wzr, [x0, #0x1]
+     608:      	cbz	w1, 0x628 <_$s17GiftUIDisplayCore21DisplayTransferResultOwst+0x98>
+     60c:      	neg	w8, w1
+     610:      	ubfx	w8, w8, #2, #3
+     614:      	sub	w8, w8, w1, lsl #3
+     618:      	lsl	w8, w8, #3
+     61c:      	b	0x61c <_$s17GiftUIDisplayCore21DisplayTransferResultOwst+0x8c>
+		000000000000061c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2
+     620:      	stur	wzr, [x0, #0x1]
+     624:      	cbnz	w1, 0x60c <_$s17GiftUIDisplayCore21DisplayTransferResultOwst+0x7c>
+     628:      	ret
+     62c:      	stur	w9, [x0, #0x1]
+     630:      	ret
+     634:      	sturh	w9, [x0, #0x1]
+     638:      	ret
+     63c:      	brk	#0x1
+
+0000000000000640 <_$s17GiftUIDisplayCore21DisplayTransferResultOwug>:
+     640:      	ldrsb	w8, [x0]
+     644:      	ubfx	w9, w8, #6, #2
+     648:      	and	w10, w8, #0x7
+     64c:      	add	w10, w10, #0x2
+     650:      	cmp	w8, #0x0
+     654:      	csel	w0, w10, w9, lt
+     658:      	ret
+
+000000000000065c <_$s17GiftUIDisplayCore21DisplayTransferResultOwup>:
+     65c:      	ldrb	w8, [x0]
+     660:      	and	w8, w8, #0x3f
+     664:      	b	0x664 <_$s17GiftUIDisplayCore21DisplayTransferResultOwup+0x8>
+		0000000000000664:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2
+
+0000000000000668 <_$s17GiftUIDisplayCore21DisplayTransferResultOwui>:
+     668:      	cmp	w1, #0x2
+     66c:      	b.lo	0x680 <_$s17GiftUIDisplayCore21DisplayTransferResultOwui+0x18>
+     670:      	add	w9, w1, #0x6
+     674:      	mov	w8, #-0x80              ; =-128
+     678:      	bfxil	w8, w9, #0, #3
+     67c:      	b	0x68c <_$s17GiftUIDisplayCore21DisplayTransferResultOwui+0x24>
+     680:      	ldrb	w8, [x0]
+     684:      	and	w8, w8, #0x7
+     688:      	orr	w8, w8, w1, lsl #6
+     68c:      	b	0x68c <_$s17GiftUIDisplayCore21DisplayTransferResultOwui+0x24>
+		000000000000068c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2
+
+0000000000000690 <_$s17GiftUIDisplayCore21DisplayTransferResultOMa>:
+     690:      	adrp	x0, 0x0 <ltmp0>
+		0000000000000690:  ARM64_RELOC_ADDEND	0x10
+		0000000000000690:  ARM64_RELOC_PAGE21	_$s17GiftUIDisplayCore21DisplayTransferResultOMf
+     694:      	add	x0, x0, #0x0
+		0000000000000694:  ARM64_RELOC_ADDEND	0x10
+		0000000000000694:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIDisplayCore21DisplayTransferResultOMf
+     698:      	b	0x698 <_$s17GiftUIDisplayCore21DisplayTransferResultOMa+0x8>
+		0000000000000698:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1
+
+000000000000069c <_$s17GiftUIDisplayCore18DisplayTargetErrorOwet>:
+     69c:      	cbz	w1, 0x6d4 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwet+0x38>
+     6a0:      	cmp	w1, #0xfa
+     6a4:      	b.lo	0x6fc <_$s17GiftUIDisplayCore18DisplayTargetErrorOwet+0x60>
+     6a8:      	add	w8, w1, #0x6
+     6ac:      	mov	x1, x30
+     6b0:      	bl	0x6b0 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwet+0x14>
+		00000000000006b0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_0
+     6b4:      	mov	x30, x1
+     6b8:      	cmp	w8, #0x4
+     6bc:      	b.eq	0x6dc <_$s17GiftUIDisplayCore18DisplayTargetErrorOwet+0x40>
+     6c0:      	cmp	w8, #0x2
+     6c4:      	b.ne	0x6f4 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwet+0x58>
+     6c8:      	ldurh	w8, [x0, #0x1]
+     6cc:      	cbnz	w8, 0x6e4 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwet+0x48>
+     6d0:      	b	0x6fc <_$s17GiftUIDisplayCore18DisplayTargetErrorOwet+0x60>
+     6d4:      	mov	w8, #-0x1               ; =-1
+     6d8:      	b	0x708 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwet+0x6c>
+     6dc:      	ldur	w8, [x0, #0x1]
+     6e0:      	cbz	w8, 0x6fc <_$s17GiftUIDisplayCore18DisplayTargetErrorOwet+0x60>
+     6e4:      	ldrb	w9, [x0]
+     6e8:      	orr	w8, w9, w8, lsl #8
+     6ec:      	sub	w8, w8, #0x7
+     6f0:      	b	0x708 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwet+0x6c>
+     6f4:      	ldrb	w8, [x0, #0x1]
+     6f8:      	cbnz	w8, 0x6e4 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwet+0x48>
+     6fc:      	ldrb	w8, [x0]
+     700:      	subs	w8, w8, #0x7
+     704:      	csinv	w8, w8, wzr, hs
+     708:      	b	0x708 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwet+0x6c>
+		0000000000000708:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_3
+
+000000000000070c <_$s17GiftUIDisplayCore18DisplayTargetErrorOwst>:
+     70c:      	add	w8, w2, #0x6
+     710:      	mov	x3, x30
+     714:      	bl	0x714 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwst+0x8>
+		0000000000000714:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_0
+     718:      	mov	x30, x3
+     71c:      	cmp	w2, #0xfa
+     720:      	csel	w8, wzr, w8, lo
+     724:      	cmp	w1, #0xf9
+     728:      	b.hi	0x750 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwst+0x44>
+     72c:      	adrp	x9, 0x0 <ltmp0>
+		000000000000072c:  ARM64_RELOC_ADDEND	0xf
+		000000000000072c:  ARM64_RELOC_PAGE21	ltmp1
+     730:      	add	x9, x9, #0x0
+		0000000000000730:  ARM64_RELOC_ADDEND	0xf
+		0000000000000730:  ARM64_RELOC_PAGEOFF12	ltmp1
+     734:      	adr	x10, 0x744 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwst+0x38>
+     738:      	ldrb	w11, [x9, x8]
+     73c:      	add	x10, x10, x11, lsl #2
+     740:      	br	x10
+     744:      	strb	wzr, [x0, #0x1]
+     748:      	cbnz	w1, 0x788 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwst+0x7c>
+     74c:      	b	0x798 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwst+0x8c>
+     750:      	sub	w10, w1, #0xfa
+     754:      	lsr	w9, w10, #8
+     758:      	add	w9, w9, #0x1
+     75c:      	strb	w10, [x0]
+     760:      	adrp	x10, 0x0 <ltmp0>
+		0000000000000760:  ARM64_RELOC_ADDEND	0xa
+		0000000000000760:  ARM64_RELOC_PAGE21	ltmp1
+     764:      	add	x10, x10, #0x0
+		0000000000000764:  ARM64_RELOC_ADDEND	0xa
+		0000000000000764:  ARM64_RELOC_PAGEOFF12	ltmp1
+     768:      	adr	x11, 0x778 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwst+0x6c>
+     76c:      	ldrb	w12, [x10, x8]
+     770:      	add	x11, x11, x12, lsl #2
+     774:      	br	x11
+     778:      	strb	w9, [x0, #0x1]
+     77c:      	ret
+     780:      	sturh	wzr, [x0, #0x1]
+     784:      	cbz	w1, 0x798 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwst+0x8c>
+     788:      	add	w8, w1, #0x6
+     78c:      	b	0x78c <_$s17GiftUIDisplayCore18DisplayTargetErrorOwst+0x80>
+		000000000000078c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2
+     790:      	stur	wzr, [x0, #0x1]
+     794:      	cbnz	w1, 0x788 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwst+0x7c>
+     798:      	ret
+     79c:      	stur	w9, [x0, #0x1]
+     7a0:      	ret
+     7a4:      	sturh	w9, [x0, #0x1]
+     7a8:      	ret
+     7ac:      	brk	#0x1
+
+00000000000007b0 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwug>:
+     7b0:      	ldrb	w0, [x0]
+     7b4:      	ret
+
+00000000000007b8 <_$s17GiftUIDisplayCore18DisplayTargetErrorOwup>:
+     7b8:      	ret
+
+00000000000007bc <_$s17GiftUIDisplayCore18DisplayTargetErrorOwui>:
+     7bc:      	strb	w1, [x0]
+     7c0:      	ret
+
+00000000000007c4 <_$s17GiftUIDisplayCore18DisplayTargetErrorOMa>:
+     7c4:      	adrp	x0, 0x0 <ltmp0>
+		00000000000007c4:  ARM64_RELOC_ADDEND	0x10
+		00000000000007c4:  ARM64_RELOC_PAGE21	_$s17GiftUIDisplayCore18DisplayTargetErrorOMf
+     7c8:      	add	x0, x0, #0x0
+		00000000000007c8:  ARM64_RELOC_ADDEND	0x10
+		00000000000007c8:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIDisplayCore18DisplayTargetErrorOMf
+     7cc:      	b	0x7cc <_$s17GiftUIDisplayCore18DisplayTargetErrorOMa+0x8>
+		00000000000007cc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1
+
+00000000000007d0 <_$s17GiftUIDisplayCore33SurfaceDisplayContributionAdapterOMa>:
+     7d0:      	adrp	x0, 0x0 <ltmp0>
+		00000000000007d0:  ARM64_RELOC_ADDEND	0x10
+		00000000000007d0:  ARM64_RELOC_PAGE21	_$s17GiftUIDisplayCore33SurfaceDisplayContributionAdapterOMf
+     7d4:      	add	x0, x0, #0x0
+		00000000000007d4:  ARM64_RELOC_ADDEND	0x10
+		00000000000007d4:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIDisplayCore33SurfaceDisplayContributionAdapterOMf
+     7d8:      	b	0x7d8 <_$s17GiftUIDisplayCore33SurfaceDisplayContributionAdapterOMa+0x8>
+		00000000000007d8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1
+
+00000000000007dc <_OUTLINED_FUNCTION_0>:
+     7dc:      	mov	w9, #0xffff00           ; =16776960
+     7e0:      	mov	w10, #0x4               ; =4
+     7e4:      	mov	w11, #0x2               ; =2
+     7e8:      	cmp	w8, w9
+     7ec:      	csel	w9, w11, w10, lo
+     7f0:      	lsr	w8, w8, #8
+     7f4:      	cmp	w8, #0xff
+     7f8:      	csinc	w8, w9, wzr, hs
+     7fc:      	ret
+
+0000000000000800 <_OUTLINED_FUNCTION_1>:
+     800:      	mov	x1, #0x0                ; =0
+     804:      	ret
+
+0000000000000808 <_OUTLINED_FUNCTION_2>:
+     808:      	strb	w8, [x0]
+     80c:      	ret
+
+0000000000000810 <_OUTLINED_FUNCTION_3>:
+     810:      	add	w0, w8, #0x1
+     814:      	ret

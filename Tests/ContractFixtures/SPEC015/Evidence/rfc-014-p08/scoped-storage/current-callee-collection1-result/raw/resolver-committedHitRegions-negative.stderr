@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/resolver-committedHitRegions-negative.swift:5:403: error: 'committedHitRegions' is inaccessible due to 'internal' protection level
+3 | import GiftUIInteraction
+4 | import GiftUISemanticCore
+5 | package func forward<C, R, H>(_ state: borrowing InteractionState<C, R, H>) -> UInt16 where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable, R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable, H: InteractionHitRegionStorage & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity { state.committedHitRegions.count }
+  |                                                                                                                                                                                                                                                                                                                                                                                                                   `- error: 'committedHitRegions' is inaccessible due to 'internal' protection level
+6 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionState.swift:36:18: note: 'committedHitRegions' declared here
+ 34 |     internal var committedRecords: CommittedRecords
+ 35 |     @usableFromInline
+ 36 |     internal var committedHitRegions: HitRegions
+    |                  `- note: 'committedHitRegions' declared here
+ 37 |     @usableFromInline
+ 38 |     internal var limits: InteractionLimits?

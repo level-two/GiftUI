@@ -1,0 +1,49 @@
+{
+  "actual_exit": null,
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "-I",
+    "-S",
+    "-B",
+    "-X",
+    "pycache_prefix=/dev/null",
+    "-c",
+    "from pathlib import Path\nimport codecs,json,re,struct,subprocess,sys\nR=Path.cwd();O=Path(sys.argv[1]);prepared=json.loads((O/'boundaries-decode-prepared.json').read_text());demangler=R/'.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-demangle';results={}\nfor module,argv in prepared['commands'].items():\n lines=(O/(module+'-decode.stdout')).read_text().splitlines();data=Path(argv[-1]).read_bytes()\n def rec(n):return next(x for x in lines if x.strip().startswith('<'+n+' '))\n def ops(n):return list(map(int,re.findall(r'op\\d+=(\\d+)',rec(n))))\n def blob(n):return codecs.decode(rec(n).split(\"blob data = '\",1)[1][:-1],'unicode_escape').encode('latin1')\n strings=blob('IDENTIFIER_DATA');names={i+6:strings[o:strings.index(0,o)].decode() for i,o in enumerate(ops('IDENTIFIER_OFFSETS'))};table=blob('SIL_FUNC_NAMES');off=ops('SIL_FUNC_NAMES')[0];bcount,ecount=struct.unpack_from('<II',table,off);buckets=struct.unpack_from('<'+'I'*bcount,table,off+8);entries=[]\n for o in buckets:\n  if not o:continue\n  count=struct.unpack_from('<H',table,o)[0];o+=2\n  for _ in range(count):\n   h,k,v=struct.unpack_from('<III',table,o);o+=12;expected=5381\n   for b in names[k].encode():expected=(expected*33+b)&0xffffffff\n   assert h==expected;entries.append({'name':names[k],'identifier_id':k,'function_id':v,'hash':h})\n assert len(entries)==ecount;assert sorted(e['function_id'] for e in entries)==list(range(1,ecount+1));offsets=ops('SIL_FUNC_OFFSETS');records=[(i,x) for i,x in enumerate(lines) if x.strip().startswith('<SIL_FUNCTION ')];assert len(records)==len(offsets)==ecount\n demangled=subprocess.check_output([str(demangler),'--compact'],input=('\\n'.join(e['name'] for e in entries)+'\\n').encode()).decode().splitlines();assert len(demangled)==len(entries)\n for row,demangle in zip(entries,demangled):\n  fid=row['function_id'];start,header=records[fid-1];stop=records[fid][0] if fid<ecount else next(i for i in range(start+1,len(lines)) if '</SIL_BLOCK>' in lines[i]);values=list(map(int,re.findall(r'op\\d+=(\\d+)',header)));offset=offsets[fid-1];prefix=[];pos=offset\n  for width in (6,4,1,2,3,1,3,2):prefix.append(sum(((data[(pos+i)//8]>>((pos+i)%8))&1)<<i for i in range(width)));pos+=width\n  assert prefix==[4]+values[:7],(module,row['name'],prefix,values[:7])\n  row.update(demangled=demangle,offset_bits=offset,linkage=values[0],serialized_kind=values[2],inline_strategy=values[6],basic_blocks=sum('<SIL_BASIC_BLOCK ' in x for x in lines[start+1:stop]),raw_prefix=prefix,record=header.strip())\n results[module]={'metadata_version':ops('METADATA')[:2],'entry_count':ecount,'functions':sorted(entries,key=lambda e:e['function_id'])};assert results[module]['metadata_version']==[0,1003]\n print(module,ecount,'all-index/hash/offset/rawprefixPASS')\n(O/'boundary-physical-index.json').write_text(json.dumps(results,indent=2)+'\\n')\nfor module,d in results.items():\n for e in d['functions']:\n  if any(m in e['demangled'] for m in ('SignalAnalyzerPresetHostInstance<','withCanvasStagedValues','RuntimeRecordInteractionBridge.dispatch','ObservableCanvasInvocationSource','publishLayout')) and not any(m in e['demangled'] for m in ('getter','setter','allocator','initializer','deallocator','destroyer')):\n   print(module,e['function_id'],e['serialized_kind'],e['basic_blocks'],e['demangled'][:210])\n",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1"
+  ],
+  "claimed_observation": {
+    "observed_monotonic_ns": 2602260422250,
+    "observed_wall_ns": 1792416573832525000
+  },
+  "compiler": false,
+  "environment": {
+    "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+    "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
+    "DYLD_LIBRARY_PATH": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
+    "HOME": "/Users/eugene",
+    "LC_CTYPE": "C.UTF-8",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "TMPDIR": "/private/tmp",
+    "USER": "eugene"
+  },
+  "marker_identity": [
+    16777234,
+    29640436
+  ],
+  "name": "body-index-interpret",
+  "pid": 78398,
+  "reviewed_pins": [
+    "4b33eecc1763867b00d59ccbb843df40ca39fa93",
+    "903499d41840b626fc10028527631512212cff78",
+    "851bc71165e472ca98f1fbe6a46c140114bcc6fd"
+  ],
+  "spawn_after": {
+    "observed_monotonic_ns": 2602268908625,
+    "observed_wall_ns": 1792416573841012000
+  },
+  "spawn_before": {
+    "observed_monotonic_ns": 2602266841458,
+    "observed_wall_ns": 1792416573838945000
+  }
+}

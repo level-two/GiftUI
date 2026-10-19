@@ -1,0 +1,41 @@
+GiftUI 464 all-index/hash/offset/rawprefixPASS
+GiftUIDrawing 120 all-index/hash/offset/rawprefixPASS
+GiftUIExecution 1104 all-index/hash/offset/rawprefixPASS
+GiftUIHostConfiguration 812 all-index/hash/offset/rawprefixPASS
+GiftUIInteraction 224 all-index/hash/offset/rawprefixPASS
+GiftUILayout 237 all-index/hash/offset/rawprefixPASS
+GiftUIObservableState 446 all-index/hash/offset/rawprefixPASS
+GiftUIRasterCore 181 all-index/hash/offset/rawprefixPASS
+GiftUIRuntimeCore 466 all-index/hash/offset/rawprefixPASS
+GiftUISemanticCore 725 all-index/hash/offset/rawprefixPASS
+P08CounterTable 17 all-index/hash/offset/rawprefixPASS
+GiftUIDrawing 60 1 36 GiftUIDrawing.withCanvasStagedValues<A, B, C where A: Swift.Equatable, A: Swift.Sendable, B: GiftUIDrawing.CanvasValueTable>(metadata: inout GiftUIDrawing.CanvasStagedMetadata, entries: inout Swift.MutableSpan<
+GiftUIDrawing 61 1 1 $defer #1 <A, B, C where A: Swift.Equatable, A: Swift.Sendable, B: GiftUIDrawing.CanvasValueTable>() -> () in closure #1 (Swift.UnsafeMutableBufferPointer<GiftUIDrawing.CanvasStagedEntry<A, B.CaptureStorage>?>)
+GiftUIHostConfiguration 8 1 6 protocol witness for GiftUIHostConfiguration.MVPHostInstance.teardown() -> () in conformance < where A: ~Swift.Copyable, A: ~Swift.Escapable> GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance<A> : GiftUI
+GiftUIHostConfiguration 9 1 1 protocol witness for GiftUIHostConfiguration.MVPHostInstance.runOpportunity() -> GiftUIHostConfiguration.HostOpportunityResult<A.OwnerFailure> in conformance < where A: ~Swift.Copyable, A: ~Swift.Escapable> Gif
+GiftUIHostConfiguration 10 1 4 (extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.runOpportunity() -> GiftUIHostConfiguration.HostOpportunityResult<
+GiftUIHostConfiguration 12 1 81 protocol witness for GiftUIHostConfiguration.MVPHostInstance.activate() -> GiftUIHostConfiguration.HostActivationResult<A.ActivationFailure> in conformance < where A: ~Swift.Copyable, A: ~Swift.Escapable> GiftU
+GiftUIHostConfiguration 631 1 3 (extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.owner.read : A
+GiftUIHostConfiguration 633 1 3 (extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.owner.modify : A
+GiftUIHostConfiguration 636 1 3 (extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.controller.modify : GiftUIHostConfiguration.MVPHostActivationContr
+GiftUIHostConfiguration 638 1 4 (extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.init(expectedKind: GiftUIHostConfiguration.MVPHostKind, assemblyRe
+GiftUIHostConfiguration 639 1 81 (extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.activate() -> GiftUIHostConfiguration.HostActivationResult<A.Activ
+GiftUIHostConfiguration 640 1 6 (extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.teardown() -> ()
+GiftUIHostConfiguration 641 1 1 static GiftUIHostConfiguration.SignalAnalyzerPresetHostInstances.macOSDynamic<A where A: GiftUIHostConfiguration.SignalAnalyzerPresetLiveOwner, A.ActivationFailure == GiftUIHostConfiguration.MacOSDynamicHostAct
+GiftUIHostConfiguration 642 1 1 static GiftUIHostConfiguration.SignalAnalyzerPresetHostInstances.macOSStatic<A where A: GiftUIHostConfiguration.SignalAnalyzerPresetLiveOwner, A.ActivationFailure == GiftUIHostConfiguration.MacOSStaticHostActiv
+GiftUIHostConfiguration 643 1 1 static GiftUIHostConfiguration.SignalAnalyzerPresetHostInstances.raspberryPiDynamic<A where A: GiftUIHostConfiguration.SignalAnalyzerPresetLiveOwner, A.ActivationFailure == GiftUIHostConfiguration.RaspberryPiDy
+GiftUIHostConfiguration 644 1 1 static GiftUIHostConfiguration.SignalAnalyzerPresetHostInstances.nrf52840Static<A where A: GiftUIHostConfiguration.SignalAnalyzerPresetLiveOwner, A.ActivationFailure == GiftUIHostConfiguration.NRF52840StaticHos
+GiftUILayout 2 1 1 $defer #1 <A, B where A: GiftUILayout.LayoutWorkspace, B: GiftUILayout.LayoutResultSink, A.Identity == B.Identity>() -> () in GiftUILayout.publishLayout<A, B where A: GiftUILayout.LayoutWorkspace, B: GiftUILayo
+GiftUILayout 107 1 117 GiftUILayout.publishLayout<A, B where A: GiftUILayout.LayoutWorkspace, B: GiftUILayout.LayoutResultSink, A.Identity == B.Identity>(summary: GiftUILayout.LayoutSummary, workspace: inout A, sink: inout B) -> Gift
+GiftUIRuntimeCore 162 1 1 protocol witness for GiftUIDrawing.CanvasInvocationSource.releaseCanvas(at: A.Identity) -> () in conformance < where A: ~Swift.Copyable> GiftUIRuntimeCore.ObservableCanvasInvocationSource<A, B, C, D> : GiftUIDr
+GiftUIRuntimeCore 163 1 1 (extension in GiftUIRuntimeCore):GiftUIRuntimeCore.ObservableCanvasInvocationSource< where A: ~Swift.Copyable>.releaseCanvas(at: C) -> ()
+GiftUIRuntimeCore 164 1 18 protocol witness for GiftUIDrawing.CanvasInvocationSource.invokeCanvas(at: A.Identity, context: inout GiftUI.GraphicsContext, size: GiftUI.Size) throws(GiftUI.DrawingError) -> () in conformance < where A: ~Swif
+GiftUIRuntimeCore 171 1 1 protocol witness for GiftUIDrawing.CanvasInvocationSource.canvasIdentity(at: Swift.UInt16) -> A.Identity? in conformance < where A: ~Swift.Copyable> GiftUIRuntimeCore.ObservableCanvasInvocationSource<A, B, C, D
+GiftUIRuntimeCore 172 1 1 (extension in GiftUIRuntimeCore):GiftUIRuntimeCore.ObservableCanvasInvocationSource< where A: ~Swift.Copyable>.canvasIdentity(at: Swift.UInt16) -> C?
+GiftUIRuntimeCore 183 1 25 static GiftUIRuntimeCore.RuntimeRecordInteractionBridge.dispatch<A, B, C, D where A: GiftUIInteraction.InteractionCommittedActionView, B: GiftUIObservableState.ObservableModelMutation, B: GiftUIObservableState.
+GiftUIRuntimeCore 184 1 1 closure #1 () -> B.GiftUIObservableState.ObservableModelMutation.Mutation in static GiftUIRuntimeCore.RuntimeRecordInteractionBridge.dispatch<A, B, C, D where A: GiftUIInteraction.InteractionCommittedActionView
+GiftUIRuntimeCore 196 1 3 (extension in GiftUIRuntimeCore):GiftUIRuntimeCore.ObservableCanvasInvocationSource< where A: ~Swift.Copyable>.models.read : GiftUIObservableState.ObservableModelScope<A, B>
+GiftUIRuntimeCore 197 1 3 (extension in GiftUIRuntimeCore):GiftUIRuntimeCore.ObservableCanvasInvocationSource< where A: ~Swift.Copyable>.values.read : GiftUIDrawing.CanvasStagedValues<C, D>
+GiftUIRuntimeCore 200 1 3 (extension in GiftUIRuntimeCore):GiftUIRuntimeCore.ObservableCanvasInvocationSource< where A: ~Swift.Copyable>.table.modify : D
+GiftUIRuntimeCore 201 1 1 (extension in GiftUIRuntimeCore):GiftUIRuntimeCore.ObservableCanvasInvocationSource< where A: ~Swift.Copyable>.init(models: GiftUIObservableState.ObservableModelScope<A, B>, values: GiftUIDrawing.CanvasStagedVa
+GiftUIRuntimeCore 202 1 18 (extension in GiftUIRuntimeCore):GiftUIRuntimeCore.ObservableCanvasInvocationSource< where A: ~Swift.Copyable>.invokeCanvas(at: C, context: inout GiftUI.GraphicsContext, size: GiftUI.Size) throws(GiftUI.Drawing

@@ -1,0 +1,57 @@
+{
+  "actual_exit": 0,
+  "argv": [
+    "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-nm-21",
+    "--numeric-sort",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIFailureCore.o"
+  ],
+  "claimed_observation": {
+    "observed_monotonic_ns": 2725994409125,
+    "observed_wall_ns": 1792416697565644000
+  },
+  "compiler": false,
+  "environment": {
+    "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+    "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
+    "DYLD_LIBRARY_PATH": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
+    "HOME": "/Users/eugene",
+    "LC_CTYPE": "C.UTF-8",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "TMPDIR": "/private/tmp",
+    "USER": "eugene"
+  },
+  "marker_identity": [
+    16777234,
+    29640436
+  ],
+  "name": "GiftUIFailureCore-symbols",
+  "pid": 79080,
+  "raw": {
+    "GiftUIFailureCore-symbols.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIFailureCore-symbols.stdout": {
+      "bytes": 79565,
+      "sha256": "a4a06674a2c0ea1ad051b5a502e1c879413626adac77f6daa99ac9cb92b02443"
+    }
+  },
+  "reviewed_pins": [
+    "4b33eecc1763867b00d59ccbb843df40ca39fa93",
+    "903499d41840b626fc10028527631512212cff78",
+    "851bc71165e472ca98f1fbe6a46c140114bcc6fd"
+  ],
+  "spawn_after": {
+    "observed_monotonic_ns": 2726004351458,
+    "observed_wall_ns": 1792416697575587000
+  },
+  "spawn_before": {
+    "observed_monotonic_ns": 2726002324875,
+    "observed_wall_ns": 1792416697573560000
+  },
+  "wait_observation": {
+    "observed_monotonic_ns": 2726042903750,
+    "observed_wall_ns": 1792416697614139000
+  }
+}

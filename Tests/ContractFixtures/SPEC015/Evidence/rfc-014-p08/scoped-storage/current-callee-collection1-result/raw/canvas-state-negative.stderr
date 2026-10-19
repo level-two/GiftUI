@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/canvas-state-negative.swift:3:125: error: 'state' is inaccessible due to 'internal' protection level
+1 | import GiftUI
+2 | import GiftUIDrawing
+3 | package func reject<I: Equatable & Sendable, T: CanvasValueTable>(_ values: borrowing CanvasStagedValues<I,T>) { _ = values.state }
+  |                                                                                                                             `- error: 'state' is inaccessible due to 'internal' protection level
+4 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:84:18: note: 'state' declared here
+ 82 | {
+ 83 |     @usableFromInline
+ 84 |     internal let state: UnsafeMutablePointer<CanvasStagedMetadata>
+    |                  `- note: 'state' declared here
+ 85 |     @usableFromInline
+ 86 |     internal let entries:

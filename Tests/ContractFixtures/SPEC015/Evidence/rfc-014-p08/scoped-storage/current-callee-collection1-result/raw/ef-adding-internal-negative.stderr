@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/ef-adding-internal-negative.swift:6:126: error: 'adding' is inaccessible due to 'internal' protection level
+4 | import GiftUISemanticCore
+5 | import GiftUIRuntimeCore
+6 | package func forward(_ state: borrowing RuntimeActionGenerationAllocator<SemanticCompleteIdentity>) -> UInt32 { return state.adding(1, to: 2) }
+  |                                                                                                                              `- error: 'adding' is inaccessible due to 'internal' protection level
+7 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift:56:19: note: 'adding(_:to:)' declared here
+54 | 
+55 |     @inlinable
+56 |     internal func adding(_ count: UInt32, to total: UInt32) -> UInt32 {
+   |                   `- note: 'adding(_:to:)' declared here
+57 |         let next = total.addingReportingOverflow(count)
+58 |         return next.overflow ? UInt32.max : next.partialValue

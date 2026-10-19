@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/resolver-topmostRecord-negative.swift:5:455: error: 'topmostRecord' is inaccessible due to 'internal' protection level
+3 | import GiftUIInteraction
+4 | import GiftUISemanticCore
+5 | package func forward<C, R, H>(_ state: borrowing InteractionState<C, R, H>, point: Point) -> BoundActionRecord<SemanticCompleteIdentity>? where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable, R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable, H: InteractionHitRegionStorage & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity { state.topmostRecord(at: point) }
+  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                       `- error: 'topmostRecord' is inaccessible due to 'internal' protection level
+6 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionState.swift:369:29: note: 'topmostRecord(at:)' declared here
+367 |     @inlinable
+368 |     @inline(__always)
+369 |     internal borrowing func topmostRecord(
+    |                             `- note: 'topmostRecord(at:)' declared here
+370 |         at point: Point
+371 |     ) -> BoundActionRecord<Identity>? {

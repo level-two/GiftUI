@@ -1,0 +1,2557 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRenderCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000000000 <ltmp0>:
+       0:      	ret
+
+0000000000000004 <_$s16GiftUIRenderCore12SubpathRangeV10pointCounts6UInt16Vvg>:
+       4:      	lsr	w0, w0, #16
+       8:      	ret
+
+000000000000000c <_$s16GiftUIRenderCore12SubpathRangeV10firstPoint10pointCountACSgs6UInt16V_AHtcfC>:
+       c:      	tst	w1, #0xffff
+      10:      	b.eq	0x34 <_$s16GiftUIRenderCore12SubpathRangeV10firstPoint10pointCountACSgs6UInt16V_AHtcfC+0x28>
+      14:      	and	w8, w0, #0xffff
+      18:      	add	w8, w8, w1, uxth
+      1c:      	mov	x9, #0x100000000        ; =4294967296
+      20:      	lsl	w10, w1, #16
+      24:      	bfxil	x10, x0, #0, #16
+      28:      	tst	w8, #0x10000
+      2c:      	csel	x0, x9, x10, ne
+      30:      	ret
+      34:      	mov	x0, #0x100000000        ; =4294967296
+      38:      	ret
+
+000000000000003c <_$s16GiftUIRenderCore12SubpathRangeV23__derived_struct_equalsySbAC_ACtFZ>:
+      3c:      	cmp	w0, w1
+      40:      	cset	w0, eq
+      44:      	ret
+
+0000000000000048 <l___unnamed_1>:
+      48:      	ldr	w0, [x0]
+      4c:      	ldr	w1, [x1]
+      50:      	b	0x50 <l___unnamed_1+0x8>
+		0000000000000050:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore12SubpathRangeV23__derived_struct_equalsySbAC_ACtFZ
+
+0000000000000054 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV5color0A2UI5ColorVvg>:
+      54:      	ldrb	w8, [x20, #0x2]
+      58:      	ldrh	w9, [x20]
+      5c:      	b	0x5c <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV5color0A2UI5ColorVvg+0x8>
+		000000000000005c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_19
+
+0000000000000060 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV9lineWidths5Int32Vvg>:
+      60:      	ldr	w0, [x20, #0x4]
+      64:      	ret
+
+0000000000000068 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV7lineCap0A2UI0eI0Ovg>:
+      68:      	ldrb	w0, [x20, #0x8]
+      6c:      	ret
+
+0000000000000070 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV8lineJoin0A2UI0eI0Ovg>:
+      70:      	ldrb	w0, [x20, #0x9]
+      74:      	ret
+
+0000000000000078 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV13surfaceOrigin0A2UI5PointVvg>:
+      78:      	ldur	x0, [x20, #0xc]
+      7c:      	ret
+
+0000000000000080 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV13inheritedClip0A2UI4RectVvg>:
+      80:      	ldur	x0, [x20, #0x14]
+      84:      	ldur	x1, [x20, #0x1c]
+      88:      	ret
+
+000000000000008c <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV10pointCounts6UInt16Vvg>:
+      8c:      	ldrh	w0, [x20, #0x24]
+      90:      	ret
+
+0000000000000094 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV12subpathCounts6UInt16Vvg>:
+      94:      	ldrh	w0, [x20, #0x26]
+      98:      	ret
+
+000000000000009c <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV5color9lineWidth0I3Cap0I4Join13surfaceOrigin13inheritedClip10pointCount07subpathR0AC0A2UI5ColorV_s5Int32VAL0eK0OAL0eL0OAL5PointVAL4RectVs6UInt16VAZtcfC>:
+      9c:      	ldrh	w9, [sp]
+      a0:      	strb	w0, [x8]
+      a4:      	lsr	w10, w0, #8
+      a8:      	strb	w10, [x8, #0x1]
+      ac:      	lsr	w10, w0, #16
+      b0:      	strb	w10, [x8, #0x2]
+      b4:      	str	w1, [x8, #0x4]
+      b8:      	strb	w2, [x8, #0x8]
+      bc:      	lsr	x10, x4, #32
+      c0:      	lsr	x11, x5, #32
+      c4:      	strb	w3, [x8, #0x9]
+      c8:      	lsr	x12, x6, #32
+      cc:      	stp	w4, w10, [x8, #0xc]
+      d0:      	stp	w5, w11, [x8, #0x14]
+      d4:      	stp	w6, w12, [x8, #0x1c]
+      d8:      	strh	w7, [x8, #0x24]
+      dc:      	strh	w9, [x8, #0x26]
+      e0:      	ret
+
+00000000000000e4 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV23__derived_struct_equalsySbAC_ACtFZ>:
+      e4:      	ldrb	w8, [x0]
+      e8:      	ldrb	w9, [x1]
+      ec:      	cmp	w8, w9
+      f0:      	b.ne	0x1b0 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xcc>
+      f4:      	stp	x20, x19, [sp, #-0x20]!
+      f8:      	stp	x29, x30, [sp, #0x10]
+      fc:      	add	x29, sp, #0x10
+     100:      	mov	x19, x1
+     104:      	mov	x20, x0
+     108:      	ldrb	w8, [x1, #0x2]
+     10c:      	ldrb	w9, [x0, #0x2]
+     110:      	ldrb	w10, [x1, #0x1]
+     114:      	ldrb	w11, [x0, #0x1]
+     118:      	cmp	w11, w10
+     11c:      	ccmp	w9, w8, #0x0, eq
+     120:      	b.ne	0x1b4 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xd0>
+     124:      	ldr	w8, [x20, #0x4]
+     128:      	ldr	w9, [x19, #0x4]
+     12c:      	cmp	w8, w9
+     130:      	b.ne	0x1b4 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xd0>
+     134:      	ldrb	w8, [x20, #0x8]
+     138:      	ldrb	w9, [x19, #0x8]
+     13c:      	cmp	w8, w9
+     140:      	b.ne	0x1b4 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xd0>
+     144:      	ldrb	w8, [x20, #0x9]
+     148:      	ldrb	w9, [x19, #0x9]
+     14c:      	cmp	w8, w9
+     150:      	b.ne	0x1b4 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xd0>
+     154:      	ldr	w8, [x20, #0xc]
+     158:      	ldr	w9, [x19, #0xc]
+     15c:      	cmp	w8, w9
+     160:      	b.ne	0x1b4 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xd0>
+     164:      	ldr	w8, [x19, #0x10]
+     168:      	ldr	w9, [x20, #0x10]
+     16c:      	cmp	w9, w8
+     170:      	b.ne	0x1b4 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xd0>
+     174:      	ldur	x0, [x20, #0x14]
+     178:      	ldur	x1, [x20, #0x1c]
+     17c:      	ldur	x2, [x19, #0x14]
+     180:      	ldur	x3, [x19, #0x1c]
+     184:      	bl	0x184 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xa0>
+		0000000000000184:  ARM64_RELOC_BRANCH26	_$s6GiftUI4RectV23__derived_struct_equalsySbAC_ACtFZ
+     188:      	tbz	w0, #0x0, 0x1b4 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xd0>
+     18c:      	ldrh	w8, [x20, #0x24]
+     190:      	ldrh	w9, [x19, #0x24]
+     194:      	cmp	w8, w9
+     198:      	b.ne	0x1b4 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xd0>
+     19c:      	ldrh	w8, [x20, #0x26]
+     1a0:      	ldrh	w9, [x19, #0x26]
+     1a4:      	cmp	w8, w9
+     1a8:      	cset	w0, eq
+     1ac:      	b	0x1b8 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xd4>
+     1b0:      	b	0x1b0 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xcc>
+		00000000000001b0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+     1b4:      	mov	w0, #0x0                ; =0
+     1b8:      	ldp	x29, x30, [sp, #0x10]
+     1bc:      	ldp	x20, x19, [sp], #0x20
+     1c0:      	ret
+
+00000000000001c4 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVSQAASQ2eeoiySbx_xtFZTW>:
+     1c4:      	b	0x1c4 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVSQAASQ2eeoiySbx_xtFZTW>
+		00000000000001c4:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore24StraightLineStrokeHeaderV23__derived_struct_equalsySbAC_ACtFZ
+
+00000000000001c8 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ>:
+     1c8:      	sub	sp, sp, #0xb0
+     1cc:      	stp	x26, x25, [sp, #0x60]
+     1d0:      	stp	x24, x23, [sp, #0x70]
+     1d4:      	stp	x22, x21, [sp, #0x80]
+     1d8:      	stp	x20, x19, [sp, #0x90]
+     1dc:      	stp	x29, x30, [sp, #0xa0]
+     1e0:      	add	x29, sp, #0xa0
+     1e4:      	ldp	x9, x8, [x0]
+     1e8:      	ldp	x11, x10, [x0, #0x10]
+     1ec:      	ldp	x19, x24, [x0, #0x20]
+     1f0:      	ldr	x21, [x0, #0x30]
+     1f4:      	ldrh	w20, [x0, #0x38]
+     1f8:      	lsr	x12, x21, #61
+     1fc:      	adrp	x13, 0x0 <ltmp0>
+		00000000000001fc:  ARM64_RELOC_PAGE21	ltmp1
+     200:      	add	x13, x13, #0x0
+		0000000000000200:  ARM64_RELOC_PAGEOFF12	ltmp1
+     204:      	adr	x14, 0x214 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x4c>
+     208:      	ldrb	w15, [x13, x12]
+     20c:      	add	x14, x14, x15, lsl #2
+     210:      	br	x14
+     214:      	ldr	x12, [x1, #0x30]
+     218:      	lsr	x12, x12, #61
+     21c:      	cbnz	x12, 0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     220:      	ldp	x13, x12, [x1, #0x10]
+     224:      	ldp	x15, x14, [x1]
+     228:      	cmp	x9, x15
+     22c:      	ccmp	x8, x14, #0x0, eq
+     230:      	ccmp	x11, x13, #0x0, eq
+     234:      	ccmp	x10, x12, #0x0, eq
+     238:      	b.ne	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     23c:      	ldr	x8, [x1, #0x20]
+     240:      	and	w9, w19, #0xffff
+     244:      	cmp	w9, w8, uxth
+     248:      	b.ne	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     24c:      	lsr	w9, w19, #16
+     250:      	cmp	w9, w8, lsr #16
+     254:      	b.ne	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     258:      	ubfx	x9, x19, #32, #16
+     25c:      	lsr	x8, x8, #32
+     260:      	cmp	w9, w8, uxth
+     264:      	b.eq	0x450 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x288>
+     268:      	b	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     26c:      	orr	x8, x11, x8
+     270:      	orr	x9, x9, x10
+     274:      	orr	x8, x8, x9
+     278:      	orr	x9, x19, x24
+     27c:      	orr	x8, x8, x9
+     280:      	cmp	x8, #0x0
+     284:      	mov	x8, #-0x8000000000000000 ; =-9223372036854775808
+     288:      	ccmp	x21, x8, #0x0, eq
+     28c:      	ccmp	w20, #0x0, #0x0, eq
+     290:      	b.eq	0x408 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x240>
+     294:      	ldr	x8, [x1, #0x30]
+     298:      	mov	x9, #-0x6000000000000000 ; =-6917529027641081856
+     29c:      	cmp	x8, x9
+     2a0:      	b.ge	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     2a4:      	ldrh	w9, [x1, #0x38]
+     2a8:      	cbnz	w9, 0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     2ac:      	ldr	x9, [x1]
+     2b0:      	mov	x10, #-0x8000000000000000 ; =-9223372036854775808
+     2b4:      	cmp	x8, x10
+     2b8:      	ccmp	x9, #0x1, #0x0, eq
+     2bc:      	b.ne	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     2c0:      	ldp	q1, q0, [x1, #0x10]
+     2c4:      	ldr	x8, [x1, #0x8]
+     2c8:      	orr.16b	v0, v1, v0
+     2cc:      	ext.16b	v1, v0, v0, #0x8
+     2d0:      	orr.8b	v0, v0, v1
+     2d4:      	fmov	x9, d0
+     2d8:      	orr	x8, x9, x8
+     2dc:      	cbz	x8, 0x450 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x288>
+     2e0:      	b	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     2e4:      	ldr	x22, [x1, #0x30]
+     2e8:      	lsr	x12, x22, #61
+     2ec:      	cmp	x12, #0x2
+     2f0:      	b.ne	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     2f4:      	ldp	x26, x25, [x1, #0x20]
+     2f8:      	ldrh	w23, [x1, #0x38]
+     2fc:      	stp	x9, x8, [sp, #0x8]
+     300:      	stp	x11, x10, [sp, #0x18]
+     304:      	strh	w19, [sp, #0x28]
+     308:      	ldp	q0, q1, [x1]
+     30c:      	stp	q0, q1, [sp, #0x30]
+     310:      	strh	w26, [sp, #0x50]
+     314:      	add	x0, sp, #0x8
+     318:      	add	x1, sp, #0x30
+     31c:      	bl	0x31c <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x154>
+		000000000000031c:  ARM64_RELOC_BRANCH26	_$s19GiftUITextResources14FontInstanceIDV23__derived_struct_equalsySbAC_ACtFZ
+     320:      	tbz	w0, #0x0, 0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     324:      	eor	x8, x26, x19
+     328:      	lsr	x8, x8, #32
+     32c:      	cbnz	x8, 0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     330:      	cmp	x24, x25
+     334:      	ccmp	w21, w22, #0x0, eq
+     338:      	b.ne	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     33c:      	lsr	x8, x22, #32
+     340:      	ubfx	x9, x21, #32, #8
+     344:      	cmp	w9, w8, uxtb
+     348:      	b.ne	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     34c:      	ubfx	x8, x21, #40, #8
+     350:      	lsr	x9, x22, #40
+     354:      	cmp	w8, w9, uxtb
+     358:      	b.ne	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     35c:      	ubfx	x8, x21, #48, #8
+     360:      	lsr	x9, x22, #48
+     364:      	cmp	w8, w9, uxtb
+     368:      	ccmp	w20, w23, #0x0, eq
+     36c:      	b.eq	0x450 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x288>
+     370:      	b	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     374:      	ldr	x10, [x1, #0x30]
+     378:      	lsr	x10, x10, #61
+     37c:      	cmp	x10, #0x3
+     380:      	b.ne	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     384:      	ldp	x10, x11, [x1]
+     388:      	and	w12, w9, #0xffff
+     38c:      	cmp	w12, w10, uxth
+     390:      	eor	x9, x10, x9
+     394:      	lsr	x9, x9, #32
+     398:      	ccmp	w8, w11, #0x0, eq
+     39c:      	ccmp	x9, #0x0, #0x0, eq
+     3a0:      	cset	w0, eq
+     3a4:      	b	0x45c <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x294>
+     3a8:      	ldr	x12, [x1, #0x30]
+     3ac:      	lsr	x12, x12, #61
+     3b0:      	cmp	x12, #0x1
+     3b4:      	b.ne	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     3b8:      	ldp	x13, x12, [x1, #0x10]
+     3bc:      	ldp	x15, x14, [x1]
+     3c0:      	cmp	x9, x15
+     3c4:      	ccmp	x8, x14, #0x0, eq
+     3c8:      	ccmp	x11, x13, #0x0, eq
+     3cc:      	ccmp	x10, x12, #0x0, eq
+     3d0:      	b.ne	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     3d4:      	ldr	x8, [x1, #0x20]
+     3d8:      	and	w9, w19, #0xff
+     3dc:      	cmp	w9, w8, uxtb
+     3e0:      	b.ne	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     3e4:      	ubfx	w9, w19, #8, #8
+     3e8:      	lsr	w10, w8, #8
+     3ec:      	cmp	w9, w10, uxtb
+     3f0:      	b.ne	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     3f4:      	ubfx	w9, w19, #16, #8
+     3f8:      	lsr	w8, w8, #16
+     3fc:      	cmp	w9, w8, uxtb
+     400:      	b.eq	0x450 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x288>
+     404:      	b	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     408:      	ldr	x8, [x1, #0x30]
+     40c:      	mov	x9, #-0x6000000000000001 ; =-6917529027641081857
+     410:      	cmp	x8, x9
+     414:      	b.gt	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     418:      	ldrh	w9, [x1, #0x38]
+     41c:      	cbnz	w9, 0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     420:      	mov	x9, #-0x8000000000000000 ; =-9223372036854775808
+     424:      	cmp	x8, x9
+     428:      	b.ne	0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     42c:      	ldp	q1, q0, [x1, #0x10]
+     430:      	ldp	x9, x8, [x1]
+     434:      	orr.16b	v0, v1, v0
+     438:      	ext.16b	v1, v0, v0, #0x8
+     43c:      	orr.8b	v0, v0, v1
+     440:      	fmov	x10, d0
+     444:      	orr	x8, x10, x8
+     448:      	orr	x8, x8, x9
+     44c:      	cbnz	x8, 0x458 <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x290>
+     450:      	mov	w0, #0x1                ; =1
+     454:      	b	0x45c <_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ+0x294>
+     458:      	mov	w0, #0x0                ; =0
+     45c:      	ldp	x29, x30, [sp, #0xa0]
+     460:      	ldp	x20, x19, [sp, #0x90]
+     464:      	ldp	x22, x21, [sp, #0x80]
+     468:      	ldp	x24, x23, [sp, #0x70]
+     46c:      	ldp	x26, x25, [sp, #0x60]
+     470:      	add	sp, sp, #0xb0
+     474:      	ret
+
+0000000000000478 <_$s16GiftUIRenderCore20RenderRecordingEventOSQAASQ2eeoiySbx_xtFZTW>:
+     478:      	b	0x478 <_$s16GiftUIRenderCore20RenderRecordingEventOSQAASQ2eeoiySbx_xtFZTW>
+		0000000000000478:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore20RenderRecordingEventO21__derived_enum_equalsySbAC_ACtFZ
+
+000000000000047c <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begins6UInt32Vvpfi>:
+     47c:      	b	0x47c <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begins6UInt32Vvpfi>
+		000000000000047c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+0000000000000480 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begins6UInt32Vvg>:
+     480:      	ret
+
+0000000000000484 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV8fillRects6UInt32Vvpfi>:
+     484:      	b	0x484 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV8fillRects6UInt32Vvpfi>
+		0000000000000484:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+0000000000000488 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV8fillRects6UInt32Vvg>:
+     488:      	lsr	x0, x0, #32
+     48c:      	ret
+
+0000000000000490 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV21beginPositionedGlyphss6UInt32Vvpfi>:
+     490:      	b	0x490 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV21beginPositionedGlyphss6UInt32Vvpfi>
+		0000000000000490:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+0000000000000494 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV21beginPositionedGlyphss6UInt32Vvg>:
+     494:      	mov	x0, x1
+     498:      	ret
+
+000000000000049c <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV15positionedGlyphs6UInt32Vvpfi>:
+     49c:      	b	0x49c <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV15positionedGlyphs6UInt32Vvpfi>
+		000000000000049c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+00000000000004a0 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV15positionedGlyphs6UInt32Vvg>:
+     4a0:      	lsr	x0, x1, #32
+     4a4:      	ret
+
+00000000000004a8 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV19endPositionedGlyphss6UInt32Vvpfi>:
+     4a8:      	b	0x4a8 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV19endPositionedGlyphss6UInt32Vvpfi>
+		00000000000004a8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+00000000000004ac <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV19endPositionedGlyphss6UInt32Vvg>:
+     4ac:      	mov	x0, x2
+     4b0:      	ret
+
+00000000000004b4 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV6finishs6UInt32Vvpfi>:
+     4b4:      	b	0x4b4 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV6finishs6UInt32Vvpfi>
+		00000000000004b4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+00000000000004b8 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV6finishs6UInt32Vvg>:
+     4b8:      	lsr	x0, x2, #32
+     4bc:      	ret
+
+00000000000004c0 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV7discards6UInt32Vvpfi>:
+     4c0:      	b	0x4c0 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV7discards6UInt32Vvpfi>
+		00000000000004c0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+00000000000004c4 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV7discards6UInt32Vvg>:
+     4c4:      	mov	x0, x3
+     4c8:      	ret
+
+00000000000004cc <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV23__derived_struct_equalsySbAC_ACtFZ>:
+     4cc:      	cmp	x0, x4
+     4d0:      	ccmp	x1, x5, #0x0, eq
+     4d4:      	ccmp	x2, x6, #0x0, eq
+     4d8:      	ccmp	w3, w7, #0x0, eq
+     4dc:      	cset	w0, eq
+     4e0:      	ret
+
+00000000000004e4 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVACycfC>:
+     4e4:      	b	0x4e4 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVACycfC>
+		00000000000004e4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_14
+
+00000000000004e8 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfcfA_>:
+     4e8:      	b	0x4e8 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfcfA_>
+		00000000000004e8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+00000000000004ec <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfcfA0_>:
+     4ec:      	b	0x4ec <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfcfA0_>
+		00000000000004ec:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+00000000000004f0 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfcfA1_>:
+     4f0:      	b	0x4f0 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfcfA1_>
+		00000000000004f0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+00000000000004f4 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfcfA2_>:
+     4f4:      	b	0x4f4 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfcfA2_>
+		00000000000004f4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+00000000000004f8 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfcfA3_>:
+     4f8:      	b	0x4f8 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfcfA3_>
+		00000000000004f8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+00000000000004fc <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfcfA4_>:
+     4fc:      	b	0x4fc <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfcfA4_>
+		00000000000004fc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+0000000000000500 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfcfA5_>:
+     500:      	b	0x500 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfcfA5_>
+		0000000000000500:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+0000000000000504 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsV5begin8fillRect0H16PositionedGlyphs15positionedGlyph03endkL06finish7discardACs6UInt32V_A6LtcfC>:
+     504:      	mov	w8, w0
+     508:      	orr	x0, x8, x1, lsl #32
+     50c:      	mov	w8, w2
+     510:      	orr	x1, x8, x3, lsl #32
+     514:      	mov	w8, w4
+     518:      	orr	x2, x8, x5, lsl #32
+     51c:      	mov	x3, x6
+     520:      	ret
+
+0000000000000524 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVSQAASQ2eeoiySbx_xtFZTW>:
+     524:      	ldp	x8, x9, [x0]
+     528:      	ldr	x2, [x0, #0x10]
+     52c:      	ldr	w3, [x0, #0x18]
+     530:      	ldp	x4, x5, [x1]
+     534:      	ldr	x6, [x1, #0x10]
+     538:      	ldr	w7, [x1, #0x18]
+     53c:      	mov	x0, x8
+     540:      	mov	x1, x9
+     544:      	b	0x544 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVSQAASQ2eeoiySbx_xtFZTW+0x20>
+		0000000000000544:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore23RenderSinkAttemptCountsV23__derived_struct_equalsySbAC_ACtFZ
+
+0000000000000548 <_$s16GiftUIRenderCore19RenderRecordingSinkV7storagexvg>:
+     548:      	mov	x1, x20
+     54c:      	ldr	x2, [x0, #0x10]
+     550:      	ldur	x9, [x2, #-0x8]
+     554:      	ldr	x3, [x9, #0x10]
+     558:      	mov	x0, x8
+     55c:      	br	x3
+
+0000000000000560 <_$s16GiftUIRenderCore19RenderRecordingSinkV7storagexvs>:
+     560:      	mov	x8, x0
+     564:      	ldr	x2, [x1, #0x10]
+     568:      	ldur	x9, [x2, #-0x8]
+     56c:      	ldr	x3, [x9, #0x28]
+     570:      	mov	x0, x20
+     574:      	mov	x1, x8
+     578:      	br	x3
+
+000000000000057c <_$s16GiftUIRenderCore19RenderRecordingSinkV7storagexvM>:
+     57c:      	mov	x1, x20
+     580:      	adrp	x0, 0x0 <ltmp0>
+		0000000000000580:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore19RenderRecordingSinkV7storagexvM.resume.0
+     584:      	add	x0, x0, #0x0
+		0000000000000584:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore19RenderRecordingSinkV7storagexvM.resume.0
+     588:      	ret
+
+000000000000058c <_$s16GiftUIRenderCore19RenderRecordingSinkV7storagexvM.resume.0>:
+     58c:      	ret
+
+0000000000000590 <_$s16GiftUIRenderCore19RenderRecordingSinkV14attemptedCallsAA0dF13AttemptCountsVvpfi>:
+     590:      	b	0x590 <_$s16GiftUIRenderCore19RenderRecordingSinkV14attemptedCallsAA0dF13AttemptCountsVvpfi>
+		0000000000000590:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_14
+
+0000000000000594 <_$s16GiftUIRenderCore19RenderRecordingSinkV14attemptedCallsAA0dF13AttemptCountsVvg>:
+     594:      	ldrsw	x8, [x0, #0x24]
+     598:      	add	x8, x20, x8
+     59c:      	ldp	x0, x1, [x8]
+     5a0:      	ldr	x2, [x8, #0x10]
+     5a4:      	ldr	w3, [x8, #0x18]
+     5a8:      	ret
+
+00000000000005ac <_$s16GiftUIRenderCore19RenderRecordingSinkV7storageACyxGx_tcfC>:
+     5ac:      	stp	x22, x21, [sp, #-0x30]!
+     5b0:      	stp	x20, x19, [sp, #0x10]
+     5b4:      	stp	x29, x30, [sp, #0x20]
+     5b8:      	add	x29, sp, #0x20
+     5bc:      	mov	x19, x1
+     5c0:      	mov	x20, x0
+     5c4:      	mov	x21, x8
+     5c8:      	mov	x0, #0x0                ; =0
+     5cc:      	bl	0x5cc <_$s16GiftUIRenderCore19RenderRecordingSinkV7storageACyxGx_tcfC+0x20>
+		00000000000005cc:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore19RenderRecordingSinkVMa
+     5d0:      	ldrsw	x8, [x0, #0x24]
+     5d4:      	add	x8, x21, x8
+     5d8:      	stp	xzr, xzr, [x8]
+     5dc:      	str	wzr, [x8, #0x18]
+     5e0:      	str	xzr, [x8, #0x10]
+     5e4:      	ldur	x8, [x19, #-0x8]
+     5e8:      	ldr	x3, [x8, #0x20]
+     5ec:      	mov	x0, x21
+     5f0:      	mov	x1, x20
+     5f4:      	mov	x2, x19
+     5f8:      	ldp	x29, x30, [sp, #0x20]
+     5fc:      	ldp	x20, x19, [sp, #0x10]
+     600:      	ldp	x22, x21, [sp], #0x30
+     604:      	br	x3
+
+0000000000000608 <_$s16GiftUIRenderCore19RenderRecordingSinkV8capacityAA0dF8CapacityVvg>:
+     608:      	ldp	x0, x1, [x0, #0x10]
+     60c:      	ldr	x2, [x1, #0x8]
+     610:      	br	x2
+
+0000000000000614 <_$s16GiftUIRenderCore19RenderRecordingSinkV5beginySbAA0D10PlanHeaderVF>:
+     614:      	stp	x24, x23, [sp, #-0x40]!
+     618:      	stp	x22, x21, [sp, #0x10]
+     61c:      	stp	x20, x19, [sp, #0x20]
+     620:      	stp	x29, x30, [sp, #0x30]
+     624:      	add	x29, sp, #0x30
+     628:      	sub	sp, sp, #0x60
+     62c:      	mov	x19, x1
+     630:      	ldp	q0, q1, [x0]
+     634:      	stp	q1, q0, [x29, #-0x90]
+     638:      	ldrh	w8, [x0, #0x24]
+     63c:      	ldr	w9, [x0, #0x20]
+     640:      	orr	x22, x9, x8, lsl #32
+     644:      	ldur	x23, [x1, #-0x8]
+     648:      	ldr	x8, [x23, #0x40]
+     64c:      	bl	0x64c <_$s16GiftUIRenderCore19RenderRecordingSinkV5beginySbAA0D10PlanHeaderVF+0x38>
+		000000000000064c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_0
+     650:      	ldr	x8, [x23, #0x10]
+     654:      	bl	0x654 <_$s16GiftUIRenderCore19RenderRecordingSinkV5beginySbAA0D10PlanHeaderVF+0x40>
+		0000000000000654:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1
+     658:      	ldrsw	x8, [x19, #0x24]
+     65c:      	ldr	w9, [x20, x8]
+     660:      	cmn	w9, #0x1
+     664:      	b.eq	0x670 <_$s16GiftUIRenderCore19RenderRecordingSinkV5beginySbAA0D10PlanHeaderVF+0x5c>
+     668:      	add	w9, w9, #0x1
+     66c:      	str	w9, [x20, x8]
+     670:      	ldr	x8, [x23, #0x8]
+     674:      	bl	0x674 <_$s16GiftUIRenderCore19RenderRecordingSinkV5beginySbAA0D10PlanHeaderVF+0x60>
+		0000000000000674:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_4
+     678:      	and	x8, x22, #0xffffffffffff
+     67c:      	ldp	q1, q0, [x29, #-0x90]
+     680:      	stp	q0, q1, [x29, #-0x70]
+     684:      	stur	x8, [x29, #-0x50]
+     688:      	stur	xzr, [x29, #-0x40]
+     68c:      	ldp	x1, x2, [x19, #0x10]
+     690:      	ldr	x8, [x2, #0x10]
+     694:      	sub	x0, x29, #0x70
+     698:      	blr	x8
+     69c:      	bl	0x69c <_$s16GiftUIRenderCore19RenderRecordingSinkV5beginySbAA0D10PlanHeaderVF+0x88>
+		000000000000069c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_21
+     6a0:      	ldp	x29, x30, [sp, #0x30]
+     6a4:      	b	0x6a4 <_$s16GiftUIRenderCore19RenderRecordingSinkV5beginySbAA0D10PlanHeaderVF+0x90>
+		00000000000006a4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_6
+
+00000000000006a8 <_$s16GiftUIRenderCore19RenderRecordingSinkV8fillRectySbAA04FillH9OperationVF>:
+     6a8:      	stp	x24, x23, [sp, #-0x40]!
+     6ac:      	stp	x22, x21, [sp, #0x10]
+     6b0:      	stp	x20, x19, [sp, #0x20]
+     6b4:      	stp	x29, x30, [sp, #0x30]
+     6b8:      	add	x29, sp, #0x30
+     6bc:      	sub	sp, sp, #0x60
+     6c0:      	mov	x19, x1
+     6c4:      	ldp	q0, q1, [x0]
+     6c8:      	stp	q1, q0, [x29, #-0x90]
+     6cc:      	ldrb	w8, [x0, #0x22]
+     6d0:      	ldrh	w9, [x0, #0x20]
+     6d4:      	orr	w22, w9, w8, lsl #16
+     6d8:      	ldur	x23, [x1, #-0x8]
+     6dc:      	ldr	x8, [x23, #0x40]
+     6e0:      	bl	0x6e0 <_$s16GiftUIRenderCore19RenderRecordingSinkV8fillRectySbAA04FillH9OperationVF+0x38>
+		00000000000006e0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_0
+     6e4:      	ldr	x8, [x23, #0x10]
+     6e8:      	bl	0x6e8 <_$s16GiftUIRenderCore19RenderRecordingSinkV8fillRectySbAA04FillH9OperationVF+0x40>
+		00000000000006e8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1
+     6ec:      	bl	0x6ec <_$s16GiftUIRenderCore19RenderRecordingSinkV8fillRectySbAA04FillH9OperationVF+0x44>
+		00000000000006ec:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_15
+     6f0:      	ldr	w9, [x8, #0x4]
+     6f4:      	cmn	w9, #0x1
+     6f8:      	b.eq	0x704 <_$s16GiftUIRenderCore19RenderRecordingSinkV8fillRectySbAA04FillH9OperationVF+0x5c>
+     6fc:      	add	w9, w9, #0x1
+     700:      	str	w9, [x8, #0x4]
+     704:      	ldr	x8, [x23, #0x8]
+     708:      	bl	0x708 <_$s16GiftUIRenderCore19RenderRecordingSinkV8fillRectySbAA04FillH9OperationVF+0x60>
+		0000000000000708:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_4
+     70c:      	and	x8, x22, #0xffffff
+     710:      	ldp	q1, q0, [x29, #-0x90]
+     714:      	stp	q0, q1, [x29, #-0x70]
+     718:      	mov	x9, #0x2000000000000000 ; =2305843009213693952
+     71c:      	stur	x8, [x29, #-0x50]
+     720:      	stur	x9, [x29, #-0x40]
+     724:      	bl	0x724 <_$s16GiftUIRenderCore19RenderRecordingSinkV8fillRectySbAA04FillH9OperationVF+0x7c>
+		0000000000000724:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_9
+     728:      	bl	0x728 <_$s16GiftUIRenderCore19RenderRecordingSinkV8fillRectySbAA04FillH9OperationVF+0x80>
+		0000000000000728:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_21
+     72c:      	ldp	x29, x30, [sp, #0x30]
+     730:      	b	0x730 <_$s16GiftUIRenderCore19RenderRecordingSinkV8fillRectySbAA04FillH9OperationVF+0x88>
+		0000000000000730:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_6
+
+0000000000000734 <_$s16GiftUIRenderCore19RenderRecordingSinkV21beginPositionedGlyphsySbAA0H20GlyphOperationHeaderVF>:
+     734:      	stp	x24, x23, [sp, #-0x40]!
+     738:      	stp	x22, x21, [sp, #0x10]
+     73c:      	stp	x20, x19, [sp, #0x20]
+     740:      	stp	x29, x30, [sp, #0x30]
+     744:      	add	x29, sp, #0x30
+     748:      	sub	sp, sp, #0xa0
+     74c:      	mov	x19, x1
+     750:      	ldp	q1, q0, [x0, #0x10]
+     754:      	ldr	q2, [x0]
+     758:      	stur	q0, [x29, #-0x80]
+     75c:      	ext.16b	v0, v0, v0, #0x8
+     760:      	stp	q1, q0, [x29, #-0xa0]
+     764:      	ext.16b	v0, v1, v1, #0x8
+     768:      	stp	q0, q2, [x29, #-0xc0]
+     76c:      	ext.16b	v0, v2, v2, #0x8
+     770:      	stur	q0, [x29, #-0xd0]
+     774:      	ldr	x23, [x0, #0x30]
+     778:      	ldrh	w22, [x0, #0x38]
+     77c:      	ldur	x24, [x1, #-0x8]
+     780:      	ldr	x8, [x24, #0x40]
+     784:      	bl	0x784 <_$s16GiftUIRenderCore19RenderRecordingSinkV21beginPositionedGlyphsySbAA0H20GlyphOperationHeaderVF+0x50>
+		0000000000000784:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_0
+     788:      	ldr	x8, [x24, #0x10]
+     78c:      	bl	0x78c <_$s16GiftUIRenderCore19RenderRecordingSinkV21beginPositionedGlyphsySbAA0H20GlyphOperationHeaderVF+0x58>
+		000000000000078c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1
+     790:      	bl	0x790 <_$s16GiftUIRenderCore19RenderRecordingSinkV21beginPositionedGlyphsySbAA0H20GlyphOperationHeaderVF+0x5c>
+		0000000000000790:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_15
+     794:      	ldr	w9, [x8, #0x8]
+     798:      	cmn	w9, #0x1
+     79c:      	b.eq	0x7a8 <_$s16GiftUIRenderCore19RenderRecordingSinkV21beginPositionedGlyphsySbAA0H20GlyphOperationHeaderVF+0x74>
+     7a0:      	add	w9, w9, #0x1
+     7a4:      	str	w9, [x8, #0x8]
+     7a8:      	ldr	x8, [x24, #0x8]
+     7ac:      	bl	0x7ac <_$s16GiftUIRenderCore19RenderRecordingSinkV21beginPositionedGlyphsySbAA0H20GlyphOperationHeaderVF+0x78>
+		00000000000007ac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_4
+     7b0:      	mov	x8, #0x4000000000000000 ; =4611686018427387904
+     7b4:      	bfxil	x8, x23, #0, #56
+     7b8:      	ldp	q2, q1, [x29, #-0xc0]
+     7bc:      	ldur	q0, [x29, #-0xd0]
+     7c0:      	mov.d	v1[1], v0[0]
+     7c4:      	ldur	q0, [x29, #-0xa0]
+     7c8:      	mov.d	v0[1], v2[0]
+     7cc:      	stp	q1, q0, [x29, #-0x70]
+     7d0:      	ldp	q1, q0, [x29, #-0x90]
+     7d4:      	mov.d	v0[1], v1[0]
+     7d8:      	stur	q0, [x29, #-0x50]
+     7dc:      	stur	x8, [x29, #-0x40]
+     7e0:      	sturh	w22, [x29, #-0x38]
+     7e4:      	bl	0x7e4 <_$s16GiftUIRenderCore19RenderRecordingSinkV21beginPositionedGlyphsySbAA0H20GlyphOperationHeaderVF+0xb0>
+		00000000000007e4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_9
+     7e8:      	bl	0x7e8 <_$s16GiftUIRenderCore19RenderRecordingSinkV21beginPositionedGlyphsySbAA0H20GlyphOperationHeaderVF+0xb4>
+		00000000000007e8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_21
+     7ec:      	ldp	x29, x30, [sp, #0x30]
+     7f0:      	b	0x7f0 <_$s16GiftUIRenderCore19RenderRecordingSinkV21beginPositionedGlyphsySbAA0H20GlyphOperationHeaderVF+0xbc>
+		00000000000007f0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_6
+
+00000000000007f4 <_$s16GiftUIRenderCore19RenderRecordingSinkV15positionedGlyphySbAA010PositionedH0VF>:
+     7f4:      	stp	x24, x23, [sp, #-0x40]!
+     7f8:      	stp	x22, x21, [sp, #0x10]
+     7fc:      	stp	x20, x19, [sp, #0x20]
+     800:      	stp	x29, x30, [sp, #0x30]
+     804:      	add	x29, sp, #0x30
+     808:      	sub	sp, sp, #0x40
+     80c:      	mov	x19, x2
+     810:      	mov	x22, x1
+     814:      	mov	x21, x0
+     818:      	ldur	x24, [x2, #-0x8]
+     81c:      	ldr	x8, [x24, #0x40]
+     820:      	mov	x9, sp
+     824:      	add	x8, x8, #0xf
+     828:      	and	x8, x8, #0xfffffffffffffff0
+     82c:      	sub	x23, x9, x8
+     830:      	mov	sp, x23
+     834:      	ldr	x8, [x24, #0x10]
+     838:      	mov	x0, x23
+     83c:      	mov	x1, x20
+     840:      	blr	x8
+     844:      	bl	0x844 <_$s16GiftUIRenderCore19RenderRecordingSinkV15positionedGlyphySbAA010PositionedH0VF+0x50>
+		0000000000000844:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_15
+     848:      	ldr	w9, [x8, #0xc]
+     84c:      	cmn	w9, #0x1
+     850:      	b.eq	0x85c <_$s16GiftUIRenderCore19RenderRecordingSinkV15positionedGlyphySbAA010PositionedH0VF+0x68>
+     854:      	add	w9, w9, #0x1
+     858:      	str	w9, [x8, #0xc]
+     85c:      	ldr	x8, [x24, #0x8]
+     860:      	mov	x0, x23
+     864:      	mov	x1, x19
+     868:      	blr	x8
+     86c:      	mov	w8, w22
+     870:      	and	x9, x21, #0xffffffff0000ffff
+     874:      	stp	x9, x8, [x29, #-0x70]
+     878:      	mov	x8, #0x6000000000000000 ; =6917529027641081856
+     87c:      	stur	x8, [x29, #-0x40]
+     880:      	bl	0x880 <_$s16GiftUIRenderCore19RenderRecordingSinkV15positionedGlyphySbAA010PositionedH0VF+0x8c>
+		0000000000000880:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_9
+     884:      	bl	0x884 <_$s16GiftUIRenderCore19RenderRecordingSinkV15positionedGlyphySbAA010PositionedH0VF+0x90>
+		0000000000000884:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_21
+     888:      	ldp	x29, x30, [sp, #0x30]
+     88c:      	b	0x88c <_$s16GiftUIRenderCore19RenderRecordingSinkV15positionedGlyphySbAA010PositionedH0VF+0x98>
+		000000000000088c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_6
+
+0000000000000890 <_$s16GiftUIRenderCore19RenderRecordingSinkV19endPositionedGlyphsSbyF>:
+     890:      	stp	x22, x21, [sp, #-0x30]!
+     894:      	stp	x20, x19, [sp, #0x10]
+     898:      	stp	x29, x30, [sp, #0x20]
+     89c:      	add	x29, sp, #0x20
+     8a0:      	sub	sp, sp, #0x40
+     8a4:      	mov	x19, x0
+     8a8:      	ldur	x22, [x0, #-0x8]
+     8ac:      	ldr	x8, [x22, #0x40]
+     8b0:      	bl	0x8b0 <_$s16GiftUIRenderCore19RenderRecordingSinkV19endPositionedGlyphsSbyF+0x20>
+		00000000000008b0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_0
+     8b4:      	ldr	x8, [x22, #0x10]
+     8b8:      	bl	0x8b8 <_$s16GiftUIRenderCore19RenderRecordingSinkV19endPositionedGlyphsSbyF+0x28>
+		00000000000008b8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1
+     8bc:      	bl	0x8bc <_$s16GiftUIRenderCore19RenderRecordingSinkV19endPositionedGlyphsSbyF+0x2c>
+		00000000000008bc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_15
+     8c0:      	ldr	w9, [x8, #0x10]
+     8c4:      	cmn	w9, #0x1
+     8c8:      	b.eq	0x8d4 <_$s16GiftUIRenderCore19RenderRecordingSinkV19endPositionedGlyphsSbyF+0x44>
+     8cc:      	add	w9, w9, #0x1
+     8d0:      	str	w9, [x8, #0x10]
+     8d4:      	ldr	x8, [x22, #0x8]
+     8d8:      	bl	0x8d8 <_$s16GiftUIRenderCore19RenderRecordingSinkV19endPositionedGlyphsSbyF+0x48>
+		00000000000008d8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_4
+     8dc:      	movi.2d	v0, #0000000000000000
+     8e0:      	stp	q0, q0, [x29, #-0x50]
+     8e4:      	stur	q0, [x29, #-0x60]
+     8e8:      	mov	x8, #-0x8000000000000000 ; =-9223372036854775808
+     8ec:      	stur	x8, [x29, #-0x30]
+     8f0:      	sturh	wzr, [x29, #-0x28]
+     8f4:      	ldp	x1, x2, [x19, #0x10]
+     8f8:      	ldr	x8, [x2, #0x18]
+     8fc:      	sub	x0, x29, #0x60
+     900:      	blr	x8
+     904:      	and	w0, w0, #0x1
+     908:      	sub	sp, x29, #0x20
+     90c:      	ldp	x29, x30, [sp, #0x20]
+     910:      	b	0x910 <_$s16GiftUIRenderCore19RenderRecordingSinkV19endPositionedGlyphsSbyF+0x80>
+		0000000000000910:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_20
+
+0000000000000914 <_$s16GiftUIRenderCore19RenderRecordingSinkV6finishSbyF>:
+     914:      	stp	x22, x21, [sp, #-0x30]!
+     918:      	stp	x20, x19, [sp, #0x10]
+     91c:      	stp	x29, x30, [sp, #0x20]
+     920:      	add	x29, sp, #0x20
+     924:      	sub	sp, sp, #0x40
+     928:      	mov	x19, x0
+     92c:      	ldur	x22, [x0, #-0x8]
+     930:      	ldr	x8, [x22, #0x40]
+     934:      	bl	0x934 <_$s16GiftUIRenderCore19RenderRecordingSinkV6finishSbyF+0x20>
+		0000000000000934:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_0
+     938:      	ldr	x8, [x22, #0x10]
+     93c:      	bl	0x93c <_$s16GiftUIRenderCore19RenderRecordingSinkV6finishSbyF+0x28>
+		000000000000093c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1
+     940:      	bl	0x940 <_$s16GiftUIRenderCore19RenderRecordingSinkV6finishSbyF+0x2c>
+		0000000000000940:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_15
+     944:      	ldr	w9, [x8, #0x14]
+     948:      	cmn	w9, #0x1
+     94c:      	b.eq	0x958 <_$s16GiftUIRenderCore19RenderRecordingSinkV6finishSbyF+0x44>
+     950:      	add	w9, w9, #0x1
+     954:      	str	w9, [x8, #0x14]
+     958:      	ldr	x8, [x22, #0x8]
+     95c:      	bl	0x95c <_$s16GiftUIRenderCore19RenderRecordingSinkV6finishSbyF+0x48>
+		000000000000095c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_4
+     960:      	mov	w8, #0x1                ; =1
+     964:      	stur	x8, [x29, #-0x60]
+     968:      	movi.2d	v0, #0000000000000000
+     96c:      	stur	q0, [x29, #-0x58]
+     970:      	stur	q0, [x29, #-0x48]
+     974:      	mov	x8, #-0x8000000000000000 ; =-9223372036854775808
+     978:      	stp	xzr, x8, [x29, #-0x38]
+     97c:      	sturh	wzr, [x29, #-0x28]
+     980:      	ldp	x19, x21, [x19, #0x10]
+     984:      	ldr	x8, [x21, #0x18]
+     988:      	sub	x0, x29, #0x60
+     98c:      	mov	x1, x19
+     990:      	mov	x2, x21
+     994:      	blr	x8
+     998:      	mov	x8, x0
+     99c:      	mov	w0, #0x0                ; =0
+     9a0:      	tbz	w8, #0x0, 0x9b4 <_$s16GiftUIRenderCore19RenderRecordingSinkV6finishSbyF+0xa0>
+     9a4:      	ldr	x8, [x21, #0x20]
+     9a8:      	mov	x0, x19
+     9ac:      	mov	x1, x21
+     9b0:      	blr	x8
+     9b4:      	and	w0, w0, #0x1
+     9b8:      	sub	sp, x29, #0x20
+     9bc:      	ldp	x29, x30, [sp, #0x20]
+     9c0:      	b	0x9c0 <_$s16GiftUIRenderCore19RenderRecordingSinkV6finishSbyF+0xac>
+		00000000000009c0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_20
+
+00000000000009c4 <_$s16GiftUIRenderCore19RenderRecordingSinkV7discardyyF>:
+     9c4:      	stp	x22, x21, [sp, #-0x30]!
+     9c8:      	stp	x20, x19, [sp, #0x10]
+     9cc:      	stp	x29, x30, [sp, #0x20]
+     9d0:      	add	x29, sp, #0x20
+     9d4:      	mov	x19, x0
+     9d8:      	ldur	x22, [x0, #-0x8]
+     9dc:      	ldr	x8, [x22, #0x40]
+     9e0:      	bl	0x9e0 <_$s16GiftUIRenderCore19RenderRecordingSinkV7discardyyF+0x1c>
+		00000000000009e0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_0
+     9e4:      	ldr	x8, [x22, #0x10]
+     9e8:      	bl	0x9e8 <_$s16GiftUIRenderCore19RenderRecordingSinkV7discardyyF+0x24>
+		00000000000009e8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1
+     9ec:      	bl	0x9ec <_$s16GiftUIRenderCore19RenderRecordingSinkV7discardyyF+0x28>
+		00000000000009ec:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_15
+     9f0:      	ldr	w9, [x8, #0x18]
+     9f4:      	cmn	w9, #0x1
+     9f8:      	b.eq	0xa04 <_$s16GiftUIRenderCore19RenderRecordingSinkV7discardyyF+0x40>
+     9fc:      	add	w9, w9, #0x1
+     a00:      	str	w9, [x8, #0x18]
+     a04:      	ldr	x8, [x22, #0x8]
+     a08:      	bl	0xa08 <_$s16GiftUIRenderCore19RenderRecordingSinkV7discardyyF+0x44>
+		0000000000000a08:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_4
+     a0c:      	ldp	x0, x1, [x19, #0x10]
+     a10:      	ldr	x8, [x1, #0x28]
+     a14:      	blr	x8
+     a18:      	sub	sp, x29, #0x20
+     a1c:      	ldp	x29, x30, [sp, #0x20]
+     a20:      	ldp	x20, x19, [sp, #0x10]
+     a24:      	ldp	x22, x21, [sp], #0x30
+     a28:      	ret
+
+0000000000000a2c <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP8capacityAA0dF8CapacityVvgTW>:
+     a2c:      	b	0xa2c <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP8capacityAA0dF8CapacityVvgTW>
+		0000000000000a2c:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore19RenderRecordingSinkV8capacityAA0dF8CapacityVvg
+
+0000000000000a30 <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP5beginySbAA0D10PlanHeaderVFTW>:
+     a30:      	b	0xa30 <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP5beginySbAA0D10PlanHeaderVFTW>
+		0000000000000a30:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore19RenderRecordingSinkV5beginySbAA0D10PlanHeaderVF
+
+0000000000000a34 <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP8fillRectySbAA04FilliG0VFTW>:
+     a34:      	b	0xa34 <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP8fillRectySbAA04FilliG0VFTW>
+		0000000000000a34:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore19RenderRecordingSinkV8fillRectySbAA04FillH9OperationVF
+
+0000000000000a38 <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP21beginPositionedGlyphsySbAA0i5GlyphG6HeaderVFTW>:
+     a38:      	b	0xa38 <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP21beginPositionedGlyphsySbAA0i5GlyphG6HeaderVFTW>
+		0000000000000a38:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore19RenderRecordingSinkV21beginPositionedGlyphsySbAA0H20GlyphOperationHeaderVF
+
+0000000000000a3c <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP15positionedGlyphySbAA010PositionedI0VFTW>:
+     a3c:      	and	x0, x0, #0xffffffff0000ffff
+     a40:      	b	0xa40 <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP15positionedGlyphySbAA010PositionedI0VFTW+0x4>
+		0000000000000a40:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore19RenderRecordingSinkV15positionedGlyphySbAA010PositionedH0VF
+
+0000000000000a44 <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP19endPositionedGlyphsSbyFTW>:
+     a44:      	b	0xa44 <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP19endPositionedGlyphsSbyFTW>
+		0000000000000a44:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore19RenderRecordingSinkV19endPositionedGlyphsSbyF
+
+0000000000000a48 <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP6finishSbyFTW>:
+     a48:      	b	0xa48 <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP6finishSbyFTW>
+		0000000000000a48:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore19RenderRecordingSinkV6finishSbyF
+
+0000000000000a4c <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP7discardyyFTW>:
+     a4c:      	b	0xa4c <_$s16GiftUIRenderCore19RenderRecordingSinkVyxGAA0d9OperationF0A2aEP7discardyyFTW>
+		0000000000000a4c:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore19RenderRecordingSinkV7discardyyF
+
+0000000000000a50 <_$s16GiftUIRenderCore18RenderSinkCapacityV17maximumOperations0G16PositionedGlyphsACs6UInt16V_AGtcfC>:
+     a50:      	bfi	w0, w1, #16, #16
+     a54:      	ret
+
+0000000000000a58 <_$s16GiftUIRenderCore16RenderDamageModeO8rawValueACSgs5UInt8V_tcfC>:
+     a58:      	ands	w8, w0, #0xff
+     a5c:      	cmp	w8, #0x1
+     a60:      	mov	w8, #0x1                ; =1
+     a64:      	cinc	w8, w8, ne
+     a68:      	tst	w0, #0xff
+     a6c:      	csel	w0, wzr, w8, eq
+     a70:      	ret
+
+0000000000000a74 <_$s16GiftUIRenderCore16RenderDamageModeO8rawValues5UInt8Vvg>:
+     a74:      	ret
+
+0000000000000a78 <l___unnamed_2>:
+     a78:      	stp	x29, x30, [sp, #-0x10]!
+     a7c:      	mov	x29, sp
+     a80:      	ldrb	w0, [x20]
+     a84:      	bl	0xa84 <l___unnamed_2+0xc>
+		0000000000000a84:  ARM64_RELOC_BRANCH26	_$sSYsSHRzSH8RawValueSYRpzrlE04hashB0Sivg16GiftUIRenderCore16RenderDamageModeO_Tgq5Tm
+     a88:      	ldp	x29, x30, [sp], #0x10
+     a8c:      	ret
+
+0000000000000a90 <_$sSYsSHRzSH8RawValueSYRpzrlE04hashB0Sivg16GiftUIRenderCore16RenderDamageModeO_Tgq5Tm>:
+     a90:      	sub	sp, sp, #0x70
+     a94:      	stp	x20, x19, [sp, #0x50]
+     a98:      	stp	x29, x30, [sp, #0x60]
+     a9c:      	add	x29, sp, #0x60
+     aa0:      	mov	x19, x0
+     aa4:      	add	x8, sp, #0x8
+     aa8:      	mov	x0, #0x0                ; =0
+     aac:      	bl	0xaac <_$sSYsSHRzSH8RawValueSYRpzrlE04hashB0Sivg16GiftUIRenderCore16RenderDamageModeO_Tgq5Tm+0x1c>
+		0000000000000aac:  ARM64_RELOC_BRANCH26	_$ss6HasherV5_seedABSi_tcfC
+     ab0:      	bl	0xab0 <_$sSYsSHRzSH8RawValueSYRpzrlE04hashB0Sivg16GiftUIRenderCore16RenderDamageModeO_Tgq5Tm+0x20>
+		0000000000000ab0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_18
+     ab4:      	add	x20, sp, #0x8
+     ab8:      	bl	0xab8 <_$sSYsSHRzSH8RawValueSYRpzrlE04hashB0Sivg16GiftUIRenderCore16RenderDamageModeO_Tgq5Tm+0x28>
+		0000000000000ab8:  ARM64_RELOC_BRANCH26	_$ss6HasherV9_finalizeSiyF
+     abc:      	ldp	x29, x30, [sp, #0x60]
+     ac0:      	b	0xac0 <_$sSYsSHRzSH8RawValueSYRpzrlE04hashB0Sivg16GiftUIRenderCore16RenderDamageModeO_Tgq5Tm+0x30>
+		0000000000000ac0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_17
+
+0000000000000ac4 <l___unnamed_3>:
+     ac4:      	ldrb	w1, [x20]
+     ac8:      	b	0xac8 <l___unnamed_3+0x4>
+		0000000000000ac8:  ARM64_RELOC_BRANCH26	l___unnamed_4
+
+0000000000000acc <l___unnamed_4>:
+     acc:      	stp	x20, x19, [sp, #-0x20]!
+     ad0:      	stp	x29, x30, [sp, #0x10]
+     ad4:      	add	x29, sp, #0x10
+     ad8:      	mov	x20, x0
+     adc:      	mov	x0, x1
+     ae0:      	bl	0xae0 <l___unnamed_4+0x14>
+		0000000000000ae0:  ARM64_RELOC_BRANCH26	_$ss6HasherV8_combineyys5UInt8VF
+     ae4:      	ldp	x29, x30, [sp, #0x10]
+     ae8:      	ldp	x20, x19, [sp], #0x20
+     aec:      	ret
+
+0000000000000af0 <l___unnamed_5>:
+     af0:      	stp	x29, x30, [sp, #-0x10]!
+     af4:      	mov	x29, sp
+     af8:      	ldrb	w1, [x20]
+     afc:      	bl	0xafc <l___unnamed_5+0xc>
+		0000000000000afc:  ARM64_RELOC_BRANCH26	_$sSYsSHRzSH8RawValueSYRpzrlE08_rawHashB04seedS2i_tF16GiftUIRenderCore16RenderDamageModeO_Tgq5Tm
+     b00:      	ldp	x29, x30, [sp], #0x10
+     b04:      	ret
+
+0000000000000b08 <_$sSYsSHRzSH8RawValueSYRpzrlE08_rawHashB04seedS2i_tF16GiftUIRenderCore16RenderDamageModeO_Tgq5Tm>:
+     b08:      	sub	sp, sp, #0x70
+     b0c:      	stp	x20, x19, [sp, #0x50]
+     b10:      	stp	x29, x30, [sp, #0x60]
+     b14:      	add	x29, sp, #0x60
+     b18:      	mov	x19, x1
+     b1c:      	add	x8, sp, #0x8
+     b20:      	bl	0xb20 <_$sSYsSHRzSH8RawValueSYRpzrlE08_rawHashB04seedS2i_tF16GiftUIRenderCore16RenderDamageModeO_Tgq5Tm+0x18>
+		0000000000000b20:  ARM64_RELOC_BRANCH26	_$ss6HasherV5_seedABSi_tcfC
+     b24:      	bl	0xb24 <_$sSYsSHRzSH8RawValueSYRpzrlE08_rawHashB04seedS2i_tF16GiftUIRenderCore16RenderDamageModeO_Tgq5Tm+0x1c>
+		0000000000000b24:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_18
+     b28:      	add	x20, sp, #0x8
+     b2c:      	bl	0xb2c <_$sSYsSHRzSH8RawValueSYRpzrlE08_rawHashB04seedS2i_tF16GiftUIRenderCore16RenderDamageModeO_Tgq5Tm+0x24>
+		0000000000000b2c:  ARM64_RELOC_BRANCH26	_$ss6HasherV9_finalizeSiyF
+     b30:      	ldp	x29, x30, [sp, #0x60]
+     b34:      	b	0xb34 <_$sSYsSHRzSH8RawValueSYRpzrlE08_rawHashB04seedS2i_tF16GiftUIRenderCore16RenderDamageModeO_Tgq5Tm+0x2c>
+		0000000000000b34:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_17
+
+0000000000000b38 <_$s16GiftUIRenderCore16RenderDamageModeOSYAASY8rawValuexSg03RawH0Qz_tcfCTW>:
+     b38:      	stp	x20, x19, [sp, #-0x20]!
+     b3c:      	stp	x29, x30, [sp, #0x10]
+     b40:      	add	x29, sp, #0x10
+     b44:      	mov	x19, x8
+     b48:      	ldrb	w0, [x0]
+     b4c:      	bl	0xb4c <_$s16GiftUIRenderCore16RenderDamageModeOSYAASY8rawValuexSg03RawH0Qz_tcfCTW+0x14>
+		0000000000000b4c:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore16RenderDamageModeO8rawValueACSgs5UInt8V_tcfC
+     b50:      	and	w8, w0, #0xff
+     b54:      	strb	w8, [x19]
+     b58:      	ldp	x29, x30, [sp, #0x10]
+     b5c:      	ldp	x20, x19, [sp], #0x20
+     b60:      	ret
+
+0000000000000b64 <l___unnamed_6>:
+     b64:      	ldrb	w9, [x20]
+     b68:      	strb	w9, [x8]
+     b6c:      	ret
+
+0000000000000b70 <l___unnamed_7>:
+     b70:      	ldrb	w8, [x0]
+     b74:      	ldrb	w9, [x1]
+     b78:      	cmp	w8, w9
+     b7c:      	cset	w0, eq
+     b80:      	ret
+
+0000000000000b84 <_$s16GiftUIRenderCore16RenderPlanHeaderV13surfaceBounds0A2UI4RectVvg>:
+     b84:      	ldp	x0, x1, [x20]
+     b88:      	ret
+
+0000000000000b8c <_$s16GiftUIRenderCore16RenderPlanHeaderV12damageBounds0A2UI4RectVvg>:
+     b8c:      	ldp	x0, x1, [x20, #0x10]
+     b90:      	ret
+
+0000000000000b94 <_$s16GiftUIRenderCore16RenderPlanHeaderV14operationCounts6UInt16Vvg>:
+     b94:      	ldrh	w0, [x20, #0x20]
+     b98:      	ret
+
+0000000000000b9c <_$s16GiftUIRenderCore16RenderPlanHeaderV20positionedGlyphCounts6UInt16Vvg>:
+     b9c:      	ldrh	w0, [x20, #0x22]
+     ba0:      	ret
+
+0000000000000ba4 <_$s16GiftUIRenderCore16RenderPlanHeaderV24maximumObservedClipDepths6UInt16Vvg>:
+     ba4:      	ldrh	w0, [x20, #0x24]
+     ba8:      	ret
+
+0000000000000bac <_$s16GiftUIRenderCore16RenderPlanHeaderV13surfaceBounds06damageH014operationCount015positionedGlyphK024maximumObservedClipDepthAC0A2UI4RectV_AKs6UInt16VA2MtcfC>:
+     bac:      	lsr	x9, x0, #32
+     bb0:      	stp	w0, w9, [x8]
+     bb4:      	lsr	x9, x1, #32
+     bb8:      	stp	w1, w9, [x8, #0x8]
+     bbc:      	lsr	x9, x2, #32
+     bc0:      	stp	w2, w9, [x8, #0x10]
+     bc4:      	lsr	x9, x3, #32
+     bc8:      	stp	w3, w9, [x8, #0x18]
+     bcc:      	strh	w4, [x8, #0x20]
+     bd0:      	strh	w5, [x8, #0x22]
+     bd4:      	strh	w6, [x8, #0x24]
+     bd8:      	ret
+
+0000000000000bdc <_$s16GiftUIRenderCore16RenderPlanHeaderV23__derived_struct_equalsySbAC_ACtFZ>:
+     bdc:      	ldr	w8, [x0]
+     be0:      	ldr	w9, [x1]
+     be4:      	cmp	w8, w9
+     be8:      	b.ne	0xc70 <_$s16GiftUIRenderCore16RenderPlanHeaderV23__derived_struct_equalsySbAC_ACtFZ+0x94>
+     bec:      	ldp	w10, w8, [x1, #0x8]
+     bf0:      	ldp	w12, w9, [x0, #0x8]
+     bf4:      	ldr	w11, [x1, #0x4]
+     bf8:      	ldr	w13, [x0, #0x4]
+     bfc:      	cmp	w13, w11
+     c00:      	ccmp	w12, w10, #0x0, eq
+     c04:      	ccmp	w9, w8, #0x0, eq
+     c08:      	b.ne	0xc70 <_$s16GiftUIRenderCore16RenderPlanHeaderV23__derived_struct_equalsySbAC_ACtFZ+0x94>
+     c0c:      	ldr	w8, [x0, #0x10]
+     c10:      	ldr	w9, [x1, #0x10]
+     c14:      	cmp	w8, w9
+     c18:      	b.ne	0xc70 <_$s16GiftUIRenderCore16RenderPlanHeaderV23__derived_struct_equalsySbAC_ACtFZ+0x94>
+     c1c:      	ldp	w10, w8, [x1, #0x18]
+     c20:      	ldp	w12, w9, [x0, #0x18]
+     c24:      	ldr	w11, [x1, #0x14]
+     c28:      	ldr	w13, [x0, #0x14]
+     c2c:      	cmp	w13, w11
+     c30:      	ccmp	w12, w10, #0x0, eq
+     c34:      	ccmp	w9, w8, #0x0, eq
+     c38:      	b.ne	0xc70 <_$s16GiftUIRenderCore16RenderPlanHeaderV23__derived_struct_equalsySbAC_ACtFZ+0x94>
+     c3c:      	ldrh	w8, [x0, #0x20]
+     c40:      	ldrh	w9, [x1, #0x20]
+     c44:      	cmp	w8, w9
+     c48:      	b.ne	0xc70 <_$s16GiftUIRenderCore16RenderPlanHeaderV23__derived_struct_equalsySbAC_ACtFZ+0x94>
+     c4c:      	ldrh	w8, [x0, #0x22]
+     c50:      	ldrh	w9, [x1, #0x22]
+     c54:      	cmp	w8, w9
+     c58:      	b.ne	0xc70 <_$s16GiftUIRenderCore16RenderPlanHeaderV23__derived_struct_equalsySbAC_ACtFZ+0x94>
+     c5c:      	ldrh	w8, [x0, #0x24]
+     c60:      	ldrh	w9, [x1, #0x24]
+     c64:      	cmp	w8, w9
+     c68:      	cset	w0, eq
+     c6c:      	ret
+     c70:      	b	0xc70 <_$s16GiftUIRenderCore16RenderPlanHeaderV23__derived_struct_equalsySbAC_ACtFZ+0x94>
+		0000000000000c70:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+0000000000000c74 <_$s16GiftUIRenderCore16RenderPlanHeaderVSQAASQ2eeoiySbx_xtFZTW>:
+     c74:      	b	0xc74 <_$s16GiftUIRenderCore16RenderPlanHeaderVSQAASQ2eeoiySbx_xtFZTW>
+		0000000000000c74:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore16RenderPlanHeaderV23__derived_struct_equalsySbAC_ACtFZ
+
+0000000000000c78 <_$s16GiftUIRenderCore15PositionedGlyphV5glyph0A15UITextResources0E2IDVvg>:
+     c78:      	ret
+
+0000000000000c7c <_$s16GiftUIRenderCore15PositionedGlyphV8baseline0A2UI5PointVvg>:
+     c7c:      	extr	x0, x1, x0, #0x20
+     c80:      	ret
+
+0000000000000c84 <_$s16GiftUIRenderCore15PositionedGlyphV5glyph8baselineAC0A15UITextResources0E2IDV_0A2UI5PointVtcfC>:
+     c84:      	lsr	x8, x1, #32
+     c88:      	and	x9, x0, #0xffff
+     c8c:      	orr	x0, x9, x1, lsl #32
+     c90:      	mov	x1, x8
+     c94:      	ret
+
+0000000000000c98 <_$s16GiftUIRenderCore15PositionedGlyphV23__derived_struct_equalsySbAC_ACtFZ>:
+     c98:      	and	w8, w0, #0xffff
+     c9c:      	eor	x9, x2, x0
+     ca0:      	lsr	x9, x9, #32
+     ca4:      	cmp	x9, #0x0
+     ca8:      	ccmp	w1, w3, #0x0, eq
+     cac:      	cset	w9, eq
+     cb0:      	cmp	w8, w2, uxth
+     cb4:      	csel	w0, wzr, w9, ne
+     cb8:      	ret
+
+0000000000000cbc <_$s16GiftUIRenderCore15PositionedGlyphVSQAASQ2eeoiySbx_xtFZTW>:
+     cbc:      	ldrh	w9, [x0]
+     cc0:      	ldrh	w10, [x1]
+     cc4:      	ldp	w11, w8, [x0, #0x4]
+     cc8:      	orr	x0, x9, x11, lsl #32
+     ccc:      	ldp	w9, w3, [x1, #0x4]
+     cd0:      	orr	x2, x10, x9, lsl #32
+     cd4:      	mov	x1, x8
+     cd8:      	b	0xcd8 <_$s16GiftUIRenderCore15PositionedGlyphVSQAASQ2eeoiySbx_xtFZTW+0x1c>
+		0000000000000cd8:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore15PositionedGlyphV23__derived_struct_equalsySbAC_ACtFZ
+
+0000000000000cdc <_$s16GiftUIRenderCore17FillRectOperationV6bounds0A2UI0E0Vvg>:
+     cdc:      	ldp	x0, x1, [x20]
+     ce0:      	ret
+
+0000000000000ce4 <_$s16GiftUIRenderCore17FillRectOperationV4clip0A2UI0E0Vvg>:
+     ce4:      	ldp	x0, x1, [x20, #0x10]
+     ce8:      	ret
+
+0000000000000cec <_$s16GiftUIRenderCore17FillRectOperationV5color0A2UI5ColorVvg>:
+     cec:      	ldrb	w8, [x20, #0x22]
+     cf0:      	ldrh	w9, [x20, #0x20]
+     cf4:      	b	0xcf4 <_$s16GiftUIRenderCore17FillRectOperationV5color0A2UI5ColorVvg+0x8>
+		0000000000000cf4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_19
+
+0000000000000cf8 <_$s16GiftUIRenderCore17FillRectOperationV6bounds4clip5colorAC0A2UI0E0V_AiG5ColorVtcfC>:
+     cf8:      	lsr	x9, x0, #32
+     cfc:      	stp	w0, w9, [x8]
+     d00:      	lsr	x9, x1, #32
+     d04:      	stp	w1, w9, [x8, #0x8]
+     d08:      	lsr	x9, x2, #32
+     d0c:      	lsr	x10, x3, #32
+     d10:      	lsr	w11, w4, #8
+     d14:      	stp	w2, w9, [x8, #0x10]
+     d18:      	lsr	w9, w4, #16
+     d1c:      	stp	w3, w10, [x8, #0x18]
+     d20:      	strb	w4, [x8, #0x20]
+     d24:      	strb	w11, [x8, #0x21]
+     d28:      	strb	w9, [x8, #0x22]
+     d2c:      	ret
+
+0000000000000d30 <_$s16GiftUIRenderCore17FillRectOperationV23__derived_struct_equalsySbAC_ACtFZ>:
+     d30:      	ldr	w8, [x0]
+     d34:      	ldr	w9, [x1]
+     d38:      	cmp	w8, w9
+     d3c:      	b.ne	0xdbc <_$s16GiftUIRenderCore17FillRectOperationV23__derived_struct_equalsySbAC_ACtFZ+0x8c>
+     d40:      	ldp	w10, w8, [x1, #0x8]
+     d44:      	ldp	w12, w9, [x0, #0x8]
+     d48:      	ldr	w11, [x1, #0x4]
+     d4c:      	ldr	w13, [x0, #0x4]
+     d50:      	cmp	w13, w11
+     d54:      	ccmp	w12, w10, #0x0, eq
+     d58:      	ccmp	w9, w8, #0x0, eq
+     d5c:      	b.ne	0xdbc <_$s16GiftUIRenderCore17FillRectOperationV23__derived_struct_equalsySbAC_ACtFZ+0x8c>
+     d60:      	ldr	w8, [x0, #0x10]
+     d64:      	ldr	w9, [x1, #0x10]
+     d68:      	cmp	w8, w9
+     d6c:      	b.ne	0xdbc <_$s16GiftUIRenderCore17FillRectOperationV23__derived_struct_equalsySbAC_ACtFZ+0x8c>
+     d70:      	ldp	w10, w8, [x1, #0x18]
+     d74:      	ldp	w12, w9, [x0, #0x18]
+     d78:      	ldr	w11, [x1, #0x14]
+     d7c:      	ldr	w13, [x0, #0x14]
+     d80:      	cmp	w13, w11
+     d84:      	ccmp	w12, w10, #0x0, eq
+     d88:      	ccmp	w9, w8, #0x0, eq
+     d8c:      	b.ne	0xdbc <_$s16GiftUIRenderCore17FillRectOperationV23__derived_struct_equalsySbAC_ACtFZ+0x8c>
+     d90:      	ldrb	w8, [x0, #0x20]
+     d94:      	ldrb	w9, [x1, #0x20]
+     d98:      	cmp	w8, w9
+     d9c:      	b.ne	0xdbc <_$s16GiftUIRenderCore17FillRectOperationV23__derived_struct_equalsySbAC_ACtFZ+0x8c>
+     da0:      	ldrb	w8, [x1, #0x22]
+     da4:      	ldrb	w9, [x0, #0x22]
+     da8:      	ldrb	w10, [x1, #0x21]
+     dac:      	ldrb	w11, [x0, #0x21]
+     db0:      	cmp	w11, w10
+     db4:      	ccmp	w9, w8, #0x0, eq
+     db8:      	b.eq	0xdc0 <_$s16GiftUIRenderCore17FillRectOperationV23__derived_struct_equalsySbAC_ACtFZ+0x90>
+     dbc:      	b	0xdbc <_$s16GiftUIRenderCore17FillRectOperationV23__derived_struct_equalsySbAC_ACtFZ+0x8c>
+		0000000000000dbc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+     dc0:      	mov	w0, #0x1                ; =1
+     dc4:      	ret
+
+0000000000000dc8 <_$s16GiftUIRenderCore17FillRectOperationVSQAASQ2eeoiySbx_xtFZTW>:
+     dc8:      	b	0xdc8 <_$s16GiftUIRenderCore17FillRectOperationVSQAASQ2eeoiySbx_xtFZTW>
+		0000000000000dc8:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore17FillRectOperationV23__derived_struct_equalsySbAC_ACtFZ
+
+0000000000000dcc <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV8instance0A15UITextResources14FontInstanceIDVvg>:
+     dcc:      	ldp	q0, q1, [x20]
+     dd0:      	stp	q0, q1, [x8]
+     dd4:      	ldrh	w9, [x20, #0x20]
+     dd8:      	strh	w9, [x8, #0x20]
+     ddc:      	ret
+
+0000000000000de0 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV4clip0A2UI4RectVvg>:
+     de0:      	ldur	x0, [x20, #0x24]
+     de4:      	ldur	x1, [x20, #0x2c]
+     de8:      	ret
+
+0000000000000dec <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV5color0A2UI5ColorVvg>:
+     dec:      	ldrb	w8, [x20, #0x36]
+     df0:      	ldrh	w9, [x20, #0x34]
+     df4:      	b	0xdf4 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV5color0A2UI5ColorVvg+0x8>
+		0000000000000df4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_19
+
+0000000000000df8 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV10glyphCounts6UInt16Vvg>:
+     df8:      	ldrh	w0, [x20, #0x38]
+     dfc:      	ret
+
+0000000000000e00 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV8instance4clip5color10glyphCountAC0A15UITextResources14FontInstanceIDV_0A2UI4RectVAK5ColorVs6UInt16VtcfC>:
+     e00:      	ldp	q0, q1, [x0]
+     e04:      	lsr	x9, x1, #32
+     e08:      	stp	q0, q1, [x8]
+     e0c:      	lsr	x10, x2, #32
+     e10:      	lsr	w11, w3, #8
+     e14:      	ldrh	w12, [x0, #0x20]
+     e18:      	lsr	w13, w3, #16
+     e1c:      	strh	w12, [x8, #0x20]
+     e20:      	stp	w1, w9, [x8, #0x24]
+     e24:      	stp	w2, w10, [x8, #0x2c]
+     e28:      	strb	w3, [x8, #0x34]
+     e2c:      	strb	w11, [x8, #0x35]
+     e30:      	strb	w13, [x8, #0x36]
+     e34:      	strh	w4, [x8, #0x38]
+     e38:      	ret
+
+0000000000000e3c <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV23__derived_struct_equalsySbAC_ACtFZ>:
+     e3c:      	sub	sp, sp, #0x80
+     e40:      	stp	x20, x19, [sp, #0x60]
+     e44:      	stp	x29, x30, [sp, #0x70]
+     e48:      	add	x29, sp, #0x70
+     e4c:      	mov	x19, x1
+     e50:      	mov	x20, x0
+     e54:      	ldp	q0, q1, [x0]
+     e58:      	stp	q0, q1, [sp, #0x30]
+     e5c:      	ldrh	w8, [x0, #0x20]
+     e60:      	strh	w8, [sp, #0x50]
+     e64:      	ldp	q0, q1, [x1]
+     e68:      	stp	q0, q1, [sp]
+     e6c:      	ldrh	w8, [x1, #0x20]
+     e70:      	strh	w8, [sp, #0x20]
+     e74:      	add	x0, sp, #0x30
+     e78:      	mov	x1, sp
+     e7c:      	bl	0xe7c <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV23__derived_struct_equalsySbAC_ACtFZ+0x40>
+		0000000000000e7c:  ARM64_RELOC_BRANCH26	_$s19GiftUITextResources14FontInstanceIDV23__derived_struct_equalsySbAC_ACtFZ
+     e80:      	tbz	w0, #0x0, 0xee0 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xa4>
+     e84:      	ldr	w8, [x20, #0x24]
+     e88:      	ldr	w9, [x19, #0x24]
+     e8c:      	cmp	w8, w9
+     e90:      	b.ne	0xee0 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xa4>
+     e94:      	ldp	w10, w8, [x19, #0x2c]
+     e98:      	ldp	w12, w9, [x20, #0x2c]
+     e9c:      	ldr	w11, [x19, #0x28]
+     ea0:      	ldr	w13, [x20, #0x28]
+     ea4:      	cmp	w13, w11
+     ea8:      	ccmp	w12, w10, #0x0, eq
+     eac:      	ccmp	w9, w8, #0x0, eq
+     eb0:      	b.ne	0xee0 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xa4>
+     eb4:      	ldrb	w8, [x20, #0x34]
+     eb8:      	ldrb	w9, [x19, #0x34]
+     ebc:      	cmp	w8, w9
+     ec0:      	b.ne	0xee0 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xa4>
+     ec4:      	ldrb	w8, [x19, #0x36]
+     ec8:      	ldrb	w9, [x20, #0x36]
+     ecc:      	ldrb	w10, [x19, #0x35]
+     ed0:      	ldrb	w11, [x20, #0x35]
+     ed4:      	cmp	w11, w10
+     ed8:      	ccmp	w9, w8, #0x0, eq
+     edc:      	b.eq	0xef4 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xb8>
+     ee0:      	mov	w0, #0x0                ; =0
+     ee4:      	ldp	x29, x30, [sp, #0x70]
+     ee8:      	ldp	x20, x19, [sp, #0x60]
+     eec:      	add	sp, sp, #0x80
+     ef0:      	ret
+     ef4:      	ldrh	w8, [x20, #0x38]
+     ef8:      	ldrh	w9, [x19, #0x38]
+     efc:      	cmp	w8, w9
+     f00:      	cset	w0, eq
+     f04:      	b	0xee4 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV23__derived_struct_equalsySbAC_ACtFZ+0xa8>
+
+0000000000000f08 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVSQAASQ2eeoiySbx_xtFZTW>:
+     f08:      	b	0xf08 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVSQAASQ2eeoiySbx_xtFZTW>
+		0000000000000f08:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderV23__derived_struct_equalsySbAC_ACtFZ
+
+0000000000000f0c <_$s16GiftUIRenderCore21RenderProductionErrorO8rawValueACSgs5UInt8V_tcfC>:
+     f0c:      	and	w8, w0, #0xff
+     f10:      	mov	w9, #0x7                ; =7
+     f14:      	cmp	w8, #0x7
+     f18:      	csel	w0, w8, w9, lo
+     f1c:      	ret
+
+0000000000000f20 <_$s16GiftUIRenderCore21RenderProductionErrorO8rawValues5UInt8Vvg>:
+     f20:      	ret
+
+0000000000000f24 <_$s16GiftUIRenderCore21RenderProductionErrorOSYAASY8rawValuexSg03RawH0Qz_tcfCTW>:
+     f24:      	stp	x20, x19, [sp, #-0x20]!
+     f28:      	stp	x29, x30, [sp, #0x10]
+     f2c:      	add	x29, sp, #0x10
+     f30:      	mov	x19, x8
+     f34:      	ldrb	w0, [x0]
+     f38:      	bl	0xf38 <_$s16GiftUIRenderCore21RenderProductionErrorOSYAASY8rawValuexSg03RawH0Qz_tcfCTW+0x14>
+		0000000000000f38:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore21RenderProductionErrorO8rawValueACSgs5UInt8V_tcfC
+     f3c:      	and	w8, w0, #0xff
+     f40:      	strb	w8, [x19]
+     f44:      	ldp	x29, x30, [sp, #0x10]
+     f48:      	ldp	x20, x19, [sp], #0x20
+     f4c:      	ret
+
+0000000000000f50 <_$s16GiftUIRenderCore19RenderRecordingSinkVMa>:
+     f50:      	adrp	x4, 0x0 <ltmp0>
+		0000000000000f50:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore19RenderRecordingSinkVMn
+     f54:      	add	x4, x4, #0x0
+		0000000000000f54:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore19RenderRecordingSinkVMn
+     f58:      	b	0xf58 <_$s16GiftUIRenderCore19RenderRecordingSinkVMa+0x8>
+		0000000000000f58:  ARM64_RELOC_BRANCH26	___swift_instantiateGenericMetadata
+
+0000000000000f5c <_$s16GiftUIRenderCore16RenderDamageModeOSHAASQWb>:
+     f5c:      	b	0xf5c <_$s16GiftUIRenderCore16RenderDamageModeOSHAASQWb>
+		0000000000000f5c:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore16RenderDamageModeOACSQAAWl
+
+0000000000000f60 <_$s16GiftUIRenderCore16RenderDamageModeOACSQAAWl>:
+     f60:      	adrp	x8, 0x0 <ltmp0>
+		0000000000000f60:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore16RenderDamageModeOACSQAAWL
+     f64:      	ldr	x0, [x8]
+		0000000000000f64:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore16RenderDamageModeOACSQAAWL
+     f68:      	cbz	x0, 0xf70 <_$s16GiftUIRenderCore16RenderDamageModeOACSQAAWl+0x10>
+     f6c:      	ret
+     f70:      	stp	x29, x30, [sp, #-0x10]!
+     f74:      	mov	x29, sp
+     f78:      	adrp	x0, 0x0 <ltmp0>
+		0000000000000f78:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore16RenderDamageModeOSQAAMc
+     f7c:      	add	x0, x0, #0x0
+		0000000000000f7c:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore16RenderDamageModeOSQAAMc
+     f80:      	adrp	x1, 0x0 <ltmp0>
+		0000000000000f80:  ARM64_RELOC_ADDEND	0x10
+		0000000000000f80:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore16RenderDamageModeOMf
+     f84:      	add	x1, x1, #0x0
+		0000000000000f84:  ARM64_RELOC_ADDEND	0x10
+		0000000000000f84:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore16RenderDamageModeOMf
+     f88:      	bl	0xf88 <_$s16GiftUIRenderCore16RenderDamageModeOACSQAAWl+0x28>
+		0000000000000f88:  ARM64_RELOC_BRANCH26	_swift_getWitnessTable
+     f8c:      	adrp	x8, 0x0 <ltmp0>
+		0000000000000f8c:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore16RenderDamageModeOACSQAAWL
+     f90:      	add	x8, x8, #0x0
+		0000000000000f90:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore16RenderDamageModeOACSQAAWL
+     f94:      	stlr	x0, [x8]
+     f98:      	ldp	x29, x30, [sp], #0x10
+     f9c:      	ret
+
+0000000000000fa0 <_$s16GiftUIRenderCore21RenderProductionErrorOSHAASQWb>:
+     fa0:      	b	0xfa0 <_$s16GiftUIRenderCore21RenderProductionErrorOSHAASQWb>
+		0000000000000fa0:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore21RenderProductionErrorOACSQAAWl
+
+0000000000000fa4 <_$s16GiftUIRenderCore21RenderProductionErrorOACSQAAWl>:
+     fa4:      	adrp	x8, 0x0 <ltmp0>
+		0000000000000fa4:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore21RenderProductionErrorOACSQAAWL
+     fa8:      	ldr	x0, [x8]
+		0000000000000fa8:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore21RenderProductionErrorOACSQAAWL
+     fac:      	cbz	x0, 0xfb4 <_$s16GiftUIRenderCore21RenderProductionErrorOACSQAAWl+0x10>
+     fb0:      	ret
+     fb4:      	stp	x29, x30, [sp, #-0x10]!
+     fb8:      	mov	x29, sp
+     fbc:      	adrp	x0, 0x0 <ltmp0>
+		0000000000000fbc:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore21RenderProductionErrorOSQAAMc
+     fc0:      	add	x0, x0, #0x0
+		0000000000000fc0:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore21RenderProductionErrorOSQAAMc
+     fc4:      	adrp	x1, 0x0 <ltmp0>
+		0000000000000fc4:  ARM64_RELOC_ADDEND	0x10
+		0000000000000fc4:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore21RenderProductionErrorOMf
+     fc8:      	add	x1, x1, #0x0
+		0000000000000fc8:  ARM64_RELOC_ADDEND	0x10
+		0000000000000fc8:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore21RenderProductionErrorOMf
+     fcc:      	bl	0xfcc <_$s16GiftUIRenderCore21RenderProductionErrorOACSQAAWl+0x28>
+		0000000000000fcc:  ARM64_RELOC_BRANCH26	_swift_getWitnessTable
+     fd0:      	adrp	x8, 0x0 <ltmp0>
+		0000000000000fd0:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore21RenderProductionErrorOACSQAAWL
+     fd4:      	add	x8, x8, #0x0
+		0000000000000fd4:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore21RenderProductionErrorOACSQAAWL
+     fd8:      	stlr	x0, [x8]
+     fdc:      	ldp	x29, x30, [sp], #0x10
+     fe0:      	ret
+
+0000000000000fe4 <___swift_memcpy4_2>:
+     fe4:      	ldr	w8, [x1]
+     fe8:      	str	w8, [x0]
+     fec:      	ret
+
+0000000000000ff0 <___swift_noop_void_return>:
+     ff0:      	ret
+
+0000000000000ff4 <_$s16GiftUIRenderCore12SubpathRangeVwet>:
+     ff4:      	cbz	w1, 0x1004 <_$s16GiftUIRenderCore12SubpathRangeVwet+0x10>
+     ff8:      	ldrb	w8, [x0, #0x4]
+     ffc:      	cbz	w8, 0x1004 <_$s16GiftUIRenderCore12SubpathRangeVwet+0x10>
+    1000:      	b	0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		0000000000001000:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_3
+    1004:      	b	0x1004 <_$s16GiftUIRenderCore12SubpathRangeVwet+0x10>
+		0000000000001004:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+0000000000001008 <_$s16GiftUIRenderCore12SubpathRangeVwst>:
+    1008:      	cbz	w1, 0x1020 <_$s16GiftUIRenderCore12SubpathRangeVwst+0x18>
+    100c:      	sub	w8, w1, #0x1
+    1010:      	str	w8, [x0]
+    1014:      	cbz	w2, 0x102c <_$s16GiftUIRenderCore12SubpathRangeVwst+0x24>
+    1018:      	mov	w8, #0x1                ; =1
+    101c:      	b	0x1028 <_$s16GiftUIRenderCore12SubpathRangeVwst+0x20>
+    1020:      	cbz	w2, 0x102c <_$s16GiftUIRenderCore12SubpathRangeVwst+0x24>
+    1024:      	mov	w8, #0x0                ; =0
+    1028:      	strb	w8, [x0, #0x4]
+    102c:      	ret
+
+0000000000001030 <_$s16GiftUIRenderCore12SubpathRangeVMa>:
+    1030:      	adrp	x0, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		0000000000001030:  ARM64_RELOC_ADDEND	0x10
+		0000000000001030:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore12SubpathRangeVMf
+    1034:      	add	x0, x0, #0x0
+		0000000000001034:  ARM64_RELOC_ADDEND	0x10
+		0000000000001034:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore12SubpathRangeVMf
+    1038:      	b	0x1038 <_$s16GiftUIRenderCore12SubpathRangeVMa+0x8>
+		0000000000001038:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_10
+
+000000000000103c <___swift_memcpy40_4>:
+    103c:      	ldp	q0, q1, [x1]
+    1040:      	ldr	x8, [x1, #0x20]
+    1044:      	str	x8, [x0, #0x20]
+    1048:      	stp	q0, q1, [x0]
+    104c:      	ret
+
+0000000000001050 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVwet>:
+    1050:      	cbz	w1, 0x1080 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVwet+0x30>
+    1054:      	cmp	w1, #0xff
+    1058:      	b.lo	0x1070 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVwet+0x20>
+    105c:      	ldrb	w8, [x0, #0x28]
+    1060:      	cbz	w8, 0x1070 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVwet+0x20>
+    1064:      	ldr	w8, [x0]
+    1068:      	add	w8, w8, #0xfe
+    106c:      	b	0x1084 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVwet+0x34>
+    1070:      	ldrb	w8, [x0, #0x8]
+    1074:      	subs	w8, w8, #0x2
+    1078:      	csinv	w8, w8, wzr, hs
+    107c:      	b	0x1084 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVwet+0x34>
+    1080:      	mov	w8, #-0x1               ; =-1
+    1084:      	b	0x1084 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVwet+0x34>
+		0000000000001084:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+
+0000000000001088 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVwst>:
+    1088:      	cmp	w1, #0xfe
+    108c:      	b.hi	0x10ac <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVwst+0x24>
+    1090:      	cmp	w2, #0xff
+    1094:      	b.lo	0x109c <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVwst+0x14>
+    1098:      	strb	wzr, [x0, #0x28]
+    109c:      	cbz	w1, 0x10d0 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVwst+0x48>
+    10a0:      	add	w8, w1, #0x1
+    10a4:      	strb	w8, [x0, #0x8]
+    10a8:      	ret
+    10ac:      	sub	w8, w1, #0xff
+    10b0:      	str	x8, [x0]
+    10b4:      	movi.2d	v0, #0000000000000000
+    10b8:      	stur	q0, [x0, #0x8]
+    10bc:      	stur	q0, [x0, #0x18]
+    10c0:      	cmp	w2, #0xff
+    10c4:      	b.lo	0x10d0 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVwst+0x48>
+    10c8:      	mov	w8, #0x1                ; =1
+    10cc:      	strb	w8, [x0, #0x28]
+    10d0:      	ret
+
+00000000000010d4 <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVMa>:
+    10d4:      	adrp	x0, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		00000000000010d4:  ARM64_RELOC_ADDEND	0x10
+		00000000000010d4:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore24StraightLineStrokeHeaderVMf
+    10d8:      	add	x0, x0, #0x0
+		00000000000010d8:  ARM64_RELOC_ADDEND	0x10
+		00000000000010d8:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore24StraightLineStrokeHeaderVMf
+    10dc:      	b	0x10dc <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVMa+0x8>
+		00000000000010dc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_10
+
+00000000000010e0 <___swift_memcpy58_4>:
+    10e0:      	ldp	q0, q1, [x1]
+    10e4:      	ldr	q2, [x1, #0x20]
+    10e8:      	ldur	q3, [x1, #0x2a]
+    10ec:      	stur	q3, [x0, #0x2a]
+    10f0:      	stp	q1, q2, [x0, #0x10]
+    10f4:      	str	q0, [x0]
+    10f8:      	ret
+
+00000000000010fc <_$s16GiftUIRenderCore20RenderRecordingEventOwet>:
+    10fc:      	cbz	w1, 0x1138 <_$s16GiftUIRenderCore20RenderRecordingEventOwet+0x3c>
+    1100:      	cmp	w1, #0xfc
+    1104:      	b.lo	0x111c <_$s16GiftUIRenderCore20RenderRecordingEventOwet+0x20>
+    1108:      	ldrb	w8, [x0, #0x3a]
+    110c:      	cbz	w8, 0x111c <_$s16GiftUIRenderCore20RenderRecordingEventOwet+0x20>
+    1110:      	ldr	w8, [x0]
+    1114:      	add	w8, w8, #0xfb
+    1118:      	b	0x113c <_$s16GiftUIRenderCore20RenderRecordingEventOwet+0x40>
+    111c:      	ldrb	w8, [x0, #0x37]
+    1120:      	lsr	w9, w8, #5
+    1124:      	bfi	w9, w8, #3, #5
+    1128:      	eor	w8, w9, #0xff
+    112c:      	cmp	w8, #0xfb
+    1130:      	csinv	w8, w8, wzr, lo
+    1134:      	b	0x113c <_$s16GiftUIRenderCore20RenderRecordingEventOwet+0x40>
+    1138:      	mov	w8, #-0x1               ; =-1
+    113c:      	b	0x113c <_$s16GiftUIRenderCore20RenderRecordingEventOwet+0x40>
+		000000000000113c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+
+0000000000001140 <_$s16GiftUIRenderCore20RenderRecordingEventOwst>:
+    1140:      	cmp	w1, #0xfb
+    1144:      	b.hi	0x1180 <_$s16GiftUIRenderCore20RenderRecordingEventOwst+0x40>
+    1148:      	cmp	w2, #0xfc
+    114c:      	b.lo	0x1154 <_$s16GiftUIRenderCore20RenderRecordingEventOwst+0x14>
+    1150:      	strb	wzr, [x0, #0x3a]
+    1154:      	cbz	w1, 0x11ac <_$s16GiftUIRenderCore20RenderRecordingEventOwst+0x6c>
+    1158:      	neg	w8, w1
+    115c:      	ubfx	w8, w8, #3, #5
+    1160:      	movi.2d	v0, #0000000000000000
+    1164:      	stp	q0, q0, [x0, #0x10]
+    1168:      	sub	w8, w8, w1, lsl #5
+    116c:      	str	q0, [x0]
+    1170:      	lsl	x8, x8, #56
+    1174:      	str	x8, [x0, #0x30]
+    1178:      	strh	wzr, [x0, #0x38]
+    117c:      	ret
+    1180:      	sub	w8, w1, #0xfc
+    1184:      	str	x8, [x0]
+    1188:      	movi.2d	v0, #0000000000000000
+    118c:      	stur	q0, [x0, #0x8]
+    1190:      	stur	q0, [x0, #0x18]
+    1194:      	stur	q0, [x0, #0x28]
+    1198:      	strh	wzr, [x0, #0x38]
+    119c:      	cmp	w2, #0xfc
+    11a0:      	b.lo	0x11ac <_$s16GiftUIRenderCore20RenderRecordingEventOwst+0x6c>
+    11a4:      	mov	w8, #0x1                ; =1
+    11a8:      	strb	w8, [x0, #0x3a]
+    11ac:      	ret
+
+00000000000011b0 <_$s16GiftUIRenderCore20RenderRecordingEventOwug>:
+    11b0:      	ldr	w8, [x0]
+    11b4:      	ldr	x9, [x0, #0x30]
+    11b8:      	lsr	x10, x9, #61
+    11bc:      	add	w8, w8, #0x4
+    11c0:      	cmp	x9, #0x0
+    11c4:      	csel	w0, w8, w10, lt
+    11c8:      	ret
+
+00000000000011cc <_$s16GiftUIRenderCore20RenderRecordingEventOwup>:
+    11cc:      	ldr	x8, [x0, #0x30]
+    11d0:      	and	x8, x8, #0x1fffffffffffffff
+    11d4:      	str	x8, [x0, #0x30]
+    11d8:      	ret
+
+00000000000011dc <_$s16GiftUIRenderCore20RenderRecordingEventOwui>:
+    11dc:      	subs	w8, w1, #0x4
+    11e0:      	b.lo	0x1204 <_$s16GiftUIRenderCore20RenderRecordingEventOwui+0x28>
+    11e4:      	str	x8, [x0]
+    11e8:      	movi.2d	v0, #0000000000000000
+    11ec:      	stur	q0, [x0, #0x8]
+    11f0:      	stur	q0, [x0, #0x18]
+    11f4:      	mov	x8, #-0x8000000000000000 ; =-9223372036854775808
+    11f8:      	stp	xzr, x8, [x0, #0x28]
+    11fc:      	strh	wzr, [x0, #0x38]
+    1200:      	ret
+    1204:      	lsl	w8, w1, #5
+    1208:      	strb	w8, [x0, #0x37]
+    120c:      	ret
+
+0000000000001210 <_$s16GiftUIRenderCore20RenderRecordingEventOMa>:
+    1210:      	adrp	x0, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		0000000000001210:  ARM64_RELOC_ADDEND	0x10
+		0000000000001210:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore20RenderRecordingEventOMf
+    1214:      	add	x0, x0, #0x0
+		0000000000001214:  ARM64_RELOC_ADDEND	0x10
+		0000000000001214:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore20RenderRecordingEventOMf
+    1218:      	b	0x1218 <_$s16GiftUIRenderCore20RenderRecordingEventOMa+0x8>
+		0000000000001218:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_10
+
+000000000000121c <___swift_memcpy28_4>:
+    121c:      	ldr	q0, [x1]
+    1220:      	ldur	q1, [x1, #0xc]
+    1224:      	stur	q1, [x0, #0xc]
+    1228:      	str	q0, [x0]
+    122c:      	ret
+
+0000000000001230 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVwet>:
+    1230:      	cbz	w1, 0x1240 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVwet+0x10>
+    1234:      	ldrb	w8, [x0, #0x1c]
+    1238:      	cbz	w8, 0x1240 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVwet+0x10>
+    123c:      	b	0x123c <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVwet+0xc>
+		000000000000123c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_3
+    1240:      	b	0x1240 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVwet+0x10>
+		0000000000001240:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+0000000000001244 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVwst>:
+    1244:      	cbz	w1, 0x1264 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVwst+0x20>
+    1248:      	sub	w8, w1, #0x1
+    124c:      	stp	xzr, xzr, [x0, #0x8]
+    1250:      	str	x8, [x0]
+    1254:      	str	wzr, [x0, #0x18]
+    1258:      	cbz	w2, 0x1270 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVwst+0x2c>
+    125c:      	mov	w8, #0x1                ; =1
+    1260:      	b	0x126c <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVwst+0x28>
+    1264:      	cbz	w2, 0x1270 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVwst+0x2c>
+    1268:      	mov	w8, #0x0                ; =0
+    126c:      	strb	w8, [x0, #0x1c]
+    1270:      	ret
+
+0000000000001274 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVMa>:
+    1274:      	adrp	x0, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		0000000000001274:  ARM64_RELOC_ADDEND	0x10
+		0000000000001274:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore23RenderSinkAttemptCountsVMf
+    1278:      	add	x0, x0, #0x0
+		0000000000001278:  ARM64_RELOC_ADDEND	0x10
+		0000000000001278:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore23RenderSinkAttemptCountsVMf
+    127c:      	b	0x127c <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVMa+0x8>
+		000000000000127c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_10
+
+0000000000001280 <_$s16GiftUIRenderCore19RenderRecordingSinkVMi>:
+    1280:      	mov	w3, #0x18               ; =24
+    1284:      	b	0x1284 <_$s16GiftUIRenderCore19RenderRecordingSinkVMi+0x4>
+		0000000000001284:  ARM64_RELOC_BRANCH26	_swift_allocateGenericValueMetadata
+
+0000000000001288 <_$s16GiftUIRenderCore19RenderRecordingSinkVMr>:
+    1288:      	sub	sp, sp, #0x30
+    128c:      	stp	x20, x19, [sp, #0x10]
+    1290:      	stp	x29, x30, [sp, #0x20]
+    1294:      	add	x29, sp, #0x20
+    1298:      	mov	x19, x0
+    129c:      	ldr	x1, [x0, #0x10]
+    12a0:      	mov	w0, #0x13f              ; =319
+    12a4:      	bl	0x12a4 <_$s16GiftUIRenderCore19RenderRecordingSinkVMr+0x1c>
+		00000000000012a4:  ARM64_RELOC_BRANCH26	_swift_checkMetadataState
+    12a8:      	cmp	x1, #0x3f
+    12ac:      	b.hi	0x12e8 <_$s16GiftUIRenderCore19RenderRecordingSinkVMr+0x60>
+    12b0:      	ldur	x8, [x0, #-0x8]
+    12b4:      	add	x8, x8, #0x40
+    12b8:      	adrp	x9, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		00000000000012b8:  ARM64_RELOC_PAGE21	l_type_layout_28_4_0_pod
+    12bc:      	add	x9, x9, #0x0
+		00000000000012bc:  ARM64_RELOC_PAGEOFF12	l_type_layout_28_4_0_pod
+    12c0:      	stp	x8, x9, [sp]
+    12c4:      	mov	x3, sp
+    12c8:      	add	x4, x19, #0x20
+    12cc:      	mov	x0, x19
+    12d0:      	mov	x1, #0x0                ; =0
+    12d4:      	mov	w2, #0x2                ; =2
+    12d8:      	bl	0x12d8 <_$s16GiftUIRenderCore19RenderRecordingSinkVMr+0x50>
+		00000000000012d8:  ARM64_RELOC_BRANCH26	_swift_initStructMetadata
+    12dc:      	mov	x0, #0x0                ; =0
+    12e0:      	mov	x1, #0x0                ; =0
+    12e4:      	b	0x12ec <_$s16GiftUIRenderCore19RenderRecordingSinkVMr+0x64>
+    12e8:      	mov	w1, #0x3f               ; =63
+    12ec:      	ldp	x29, x30, [sp, #0x20]
+    12f0:      	ldp	x20, x19, [sp, #0x10]
+    12f4:      	add	sp, sp, #0x30
+    12f8:      	ret
+
+00000000000012fc <_$s16GiftUIRenderCore19RenderRecordingSinkVwCP>:
+    12fc:      	stp	x22, x21, [sp, #-0x30]!
+    1300:      	stp	x20, x19, [sp, #0x10]
+    1304:      	stp	x29, x30, [sp, #0x20]
+    1308:      	add	x29, sp, #0x20
+    130c:      	mov	x20, x1
+    1310:      	mov	x19, x0
+    1314:      	ldr	x2, [x2, #0x10]
+    1318:      	ldur	x8, [x2, #-0x8]
+    131c:      	ldr	x21, [x8, #0x40]
+    1320:      	add	x9, x21, #0x3
+    1324:      	and	x9, x9, #0xfffffffffffffffc
+    1328:      	add	x10, x9, #0x1c
+    132c:      	ldr	w11, [x8, #0x50]
+    1330:      	and	x9, x11, #0xfc
+    1334:      	and	w11, w11, #0x100000
+    1338:      	cmp	w9, #0x7
+    133c:      	ccmp	w11, #0x0, #0x0, ls
+    1340:      	ccmp	x10, #0x18, #0x2, eq
+    1344:      	b.ls	0x1368 <_$s16GiftUIRenderCore19RenderRecordingSinkVwCP+0x6c>
+    1348:      	ldr	x0, [x20]
+    134c:      	str	x0, [x19]
+    1350:      	add	w8, w9, #0x13
+    1354:      	bic	w8, w8, w9
+    1358:      	and	x8, x8, #0x1fc
+    135c:      	add	x19, x0, x8
+    1360:      	bl	0x1360 <_$s16GiftUIRenderCore19RenderRecordingSinkVwCP+0x64>
+		0000000000001360:  ARM64_RELOC_BRANCH26	_swift_retain
+    1364:      	b	0x13a0 <_$s16GiftUIRenderCore19RenderRecordingSinkVwCP+0xa4>
+    1368:      	ldr	x8, [x8, #0x10]
+    136c:      	mov	x0, x19
+    1370:      	mov	x1, x20
+    1374:      	blr	x8
+    1378:      	add	x8, x19, x21
+    137c:      	add	x8, x8, #0x3
+    1380:      	add	x9, x20, x21
+    1384:      	add	x9, x9, #0x3
+    1388:      	and	x9, x9, #0xfffffffffffffffc
+    138c:      	ldur	q0, [x9, #0xc]
+    1390:      	ldr	q1, [x9]
+    1394:      	and	x8, x8, #0xfffffffffffffffc
+    1398:      	str	q1, [x8]
+    139c:      	stur	q0, [x8, #0xc]
+    13a0:      	mov	x0, x19
+    13a4:      	ldp	x29, x30, [sp, #0x20]
+    13a8:      	b	0x13a8 <_$s16GiftUIRenderCore19RenderRecordingSinkVwCP+0xac>
+		00000000000013a8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_7
+
+00000000000013ac <_$s16GiftUIRenderCore19RenderRecordingSinkVwxx>:
+    13ac:      	ldr	x1, [x1, #0x10]
+    13b0:      	ldur	x8, [x1, #-0x8]
+    13b4:      	ldr	x2, [x8, #0x8]
+    13b8:      	br	x2
+
+00000000000013bc <_$s16GiftUIRenderCore19RenderRecordingSinkVwcp>:
+    13bc:      	stp	x22, x21, [sp, #-0x30]!
+    13c0:      	stp	x20, x19, [sp, #0x10]
+    13c4:      	stp	x29, x30, [sp, #0x20]
+    13c8:      	bl	0x13c8 <_$s16GiftUIRenderCore19RenderRecordingSinkVwcp+0xc>
+		00000000000013c8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_5
+    13cc:      	ldr	x8, [x21, #0x10]
+    13d0:      	blr	x8
+    13d4:      	bl	0x13d4 <_$s16GiftUIRenderCore19RenderRecordingSinkVwcp+0x18>
+		00000000000013d4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2
+    13d8:      	bl	0x13d8 <_$s16GiftUIRenderCore19RenderRecordingSinkVwcp+0x1c>
+		00000000000013d8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_16
+    13dc:      	ldp	x29, x30, [sp, #0x20]
+    13e0:      	b	0x13e0 <_$s16GiftUIRenderCore19RenderRecordingSinkVwcp+0x24>
+		00000000000013e0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_7
+
+00000000000013e4 <_$s16GiftUIRenderCore19RenderRecordingSinkVwca>:
+    13e4:      	stp	x22, x21, [sp, #-0x30]!
+    13e8:      	stp	x20, x19, [sp, #0x10]
+    13ec:      	stp	x29, x30, [sp, #0x20]
+    13f0:      	bl	0x13f0 <_$s16GiftUIRenderCore19RenderRecordingSinkVwca+0xc>
+		00000000000013f0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_5
+    13f4:      	ldr	x8, [x21, #0x18]
+    13f8:      	blr	x8
+    13fc:      	bl	0x13fc <_$s16GiftUIRenderCore19RenderRecordingSinkVwca+0x18>
+		00000000000013fc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2
+    1400:      	bl	0x1400 <_$s16GiftUIRenderCore19RenderRecordingSinkVwca+0x1c>
+		0000000000001400:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_12
+    1404:      	ldp	x29, x30, [sp, #0x20]
+    1408:      	b	0x1408 <_$s16GiftUIRenderCore19RenderRecordingSinkVwca+0x24>
+		0000000000001408:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_7
+
+000000000000140c <_$s16GiftUIRenderCore19RenderRecordingSinkVwtk>:
+    140c:      	stp	x22, x21, [sp, #-0x30]!
+    1410:      	stp	x20, x19, [sp, #0x10]
+    1414:      	stp	x29, x30, [sp, #0x20]
+    1418:      	bl	0x1418 <_$s16GiftUIRenderCore19RenderRecordingSinkVwtk+0xc>
+		0000000000001418:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_5
+    141c:      	ldr	x8, [x21, #0x20]
+    1420:      	blr	x8
+    1424:      	bl	0x1424 <_$s16GiftUIRenderCore19RenderRecordingSinkVwtk+0x18>
+		0000000000001424:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2
+    1428:      	bl	0x1428 <_$s16GiftUIRenderCore19RenderRecordingSinkVwtk+0x1c>
+		0000000000001428:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_16
+    142c:      	ldp	x29, x30, [sp, #0x20]
+    1430:      	b	0x1430 <_$s16GiftUIRenderCore19RenderRecordingSinkVwtk+0x24>
+		0000000000001430:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_7
+
+0000000000001434 <_$s16GiftUIRenderCore19RenderRecordingSinkVwta>:
+    1434:      	stp	x22, x21, [sp, #-0x30]!
+    1438:      	stp	x20, x19, [sp, #0x10]
+    143c:      	stp	x29, x30, [sp, #0x20]
+    1440:      	bl	0x1440 <_$s16GiftUIRenderCore19RenderRecordingSinkVwta+0xc>
+		0000000000001440:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_5
+    1444:      	ldr	x8, [x21, #0x28]
+    1448:      	blr	x8
+    144c:      	bl	0x144c <_$s16GiftUIRenderCore19RenderRecordingSinkVwta+0x18>
+		000000000000144c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2
+    1450:      	bl	0x1450 <_$s16GiftUIRenderCore19RenderRecordingSinkVwta+0x1c>
+		0000000000001450:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_12
+    1454:      	ldp	x29, x30, [sp, #0x20]
+    1458:      	b	0x1458 <_$s16GiftUIRenderCore19RenderRecordingSinkVwta+0x24>
+		0000000000001458:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_7
+
+000000000000145c <_$s16GiftUIRenderCore19RenderRecordingSinkVwet>:
+    145c:      	cbz	w1, 0x150c <_$s16GiftUIRenderCore19RenderRecordingSinkVwet+0xb0>
+    1460:      	mov	x8, x1
+    1464:      	ldr	x2, [x2, #0x10]
+    1468:      	ldur	x9, [x2, #-0x8]
+    146c:      	ldr	w1, [x9, #0x54]
+    1470:      	subs	w10, w8, w1
+    1474:      	b.ls	0x1508 <_$s16GiftUIRenderCore19RenderRecordingSinkVwet+0xac>
+    1478:      	ldr	x8, [x9, #0x40]
+    147c:      	add	x8, x8, #0x3
+    1480:      	and	x8, x8, #0xfffffffffffffffc
+    1484:      	add	x9, x8, #0x1c
+    1488:      	ands	x8, x9, #0xfffffffc
+    148c:      	mov	w11, #0x2               ; =2
+    1490:      	csinc	w10, w11, w10, ne
+    1494:      	mov	w12, #0x4               ; =4
+    1498:      	cmp	w10, #0x10, lsl #12     ; =0x10000
+    149c:      	csel	w11, w11, w12, lo
+    14a0:      	cmp	w10, #0x100
+    14a4:      	csinc	w11, w11, wzr, hs
+    14a8:      	cmp	w10, #0x2
+    14ac:      	csel	w10, wzr, w11, lo
+    14b0:      	adrp	x11, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		00000000000014b0:  ARM64_RELOC_ADDEND	0x5
+		00000000000014b0:  ARM64_RELOC_PAGE21	ltmp1
+    14b4:      	add	x11, x11, #0x0
+		00000000000014b4:  ARM64_RELOC_ADDEND	0x5
+		00000000000014b4:  ARM64_RELOC_PAGEOFF12	ltmp1
+    14b8:      	adr	x12, 0x14c8 <_$s16GiftUIRenderCore19RenderRecordingSinkVwet+0x6c>
+    14bc:      	ldrb	w13, [x11, x10]
+    14c0:      	add	x12, x12, x13, lsl #2
+    14c4:      	br	x12
+    14c8:      	ldrb	w9, [x0, x9]
+    14cc:      	cbnz	w9, 0x14dc <_$s16GiftUIRenderCore19RenderRecordingSinkVwet+0x80>
+    14d0:      	b	0x1504 <_$s16GiftUIRenderCore19RenderRecordingSinkVwet+0xa8>
+    14d4:      	ldrh	w9, [x0, x9]
+    14d8:      	cbz	w9, 0x1504 <_$s16GiftUIRenderCore19RenderRecordingSinkVwet+0xa8>
+    14dc:      	sub	w9, w9, #0x1
+    14e0:      	cmp	x8, #0x0
+    14e4:      	csel	w9, w9, wzr, eq
+    14e8:      	cbz	x8, 0x14f0 <_$s16GiftUIRenderCore19RenderRecordingSinkVwet+0x94>
+    14ec:      	ldr	w8, [x0]
+    14f0:      	orr	w8, w8, w9
+    14f4:      	add	w8, w1, w8
+    14f8:      	b	0x14f8 <_$s16GiftUIRenderCore19RenderRecordingSinkVwet+0x9c>
+		00000000000014f8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    14fc:      	ldr	w9, [x0, x9]
+    1500:      	cbnz	w9, 0x14dc <_$s16GiftUIRenderCore19RenderRecordingSinkVwet+0x80>
+    1504:      	cbz	w1, 0x150c <_$s16GiftUIRenderCore19RenderRecordingSinkVwet+0xb0>
+    1508:      	b	0x1508 <_$s16GiftUIRenderCore19RenderRecordingSinkVwet+0xac>
+		0000000000001508:  ARM64_RELOC_BRANCH26	___swift_getEnumTagSinglePayload
+    150c:      	b	0x150c <_$s16GiftUIRenderCore19RenderRecordingSinkVwet+0xb0>
+		000000000000150c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+    1510:      	brk	#0x1
+
+0000000000001514 <___swift_getEnumTagSinglePayload>:
+    1514:      	ldur	x8, [x2, #-0x8]
+    1518:      	ldr	x3, [x8, #0x30]
+    151c:      	br	x3
+
+0000000000001520 <_$s16GiftUIRenderCore19RenderRecordingSinkVwst>:
+    1520:      	stp	x24, x23, [sp, #-0x40]!
+    1524:      	stp	x22, x21, [sp, #0x10]
+    1528:      	stp	x20, x19, [sp, #0x20]
+    152c:      	stp	x29, x30, [sp, #0x30]
+    1530:      	add	x29, sp, #0x30
+    1534:      	mov	x8, x2
+    1538:      	mov	x19, x0
+    153c:      	ldr	x3, [x3, #0x10]
+    1540:      	ldur	x9, [x3, #-0x8]
+    1544:      	ldr	w2, [x9, #0x54]
+    1548:      	ldr	x9, [x9, #0x40]
+    154c:      	add	x9, x9, #0x3
+    1550:      	and	x9, x9, #0xfffffffffffffffc
+    1554:      	add	x20, x9, #0x1c
+    1558:      	subs	w8, w8, w2
+    155c:      	b.ls	0x158c <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0x6c>
+    1560:      	cmp	w20, #0x0
+    1564:      	mov	w9, #0x2                ; =2
+    1568:      	csinc	w8, w9, w8, ne
+    156c:      	mov	w10, #0x4               ; =4
+    1570:      	cmp	w8, #0x10, lsl #12      ; =0x10000
+    1574:      	csel	w9, w9, w10, lo
+    1578:      	cmp	w8, #0x100
+    157c:      	csinc	w9, w9, wzr, hs
+    1580:      	cmp	w8, #0x2
+    1584:      	csel	w21, wzr, w9, lo
+    1588:      	b	0x1590 <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0x70>
+    158c:      	mov	w21, #0x0               ; =0
+    1590:      	subs	w8, w1, w2
+    1594:      	b.ls	0x15e0 <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0xc0>
+    1598:      	cmp	w20, #0x0
+    159c:      	csinc	w22, w8, wzr, eq
+    15a0:      	cbz	w20, 0x15bc <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0x9c>
+    15a4:      	mvn	w8, w2
+    15a8:      	add	w23, w1, w8
+    15ac:      	mov	x0, x19
+    15b0:      	mov	x1, x20
+    15b4:      	bl	0x15b4 <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0x94>
+		00000000000015b4:  ARM64_RELOC_BRANCH26	_bzero
+    15b8:      	str	w23, [x19]
+    15bc:      	mov	w8, w21
+    15c0:      	adrp	x9, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		00000000000015c0:  ARM64_RELOC_ADDEND	0xf
+		00000000000015c0:  ARM64_RELOC_PAGE21	ltmp1
+    15c4:      	add	x9, x9, #0x0
+		00000000000015c4:  ARM64_RELOC_ADDEND	0xf
+		00000000000015c4:  ARM64_RELOC_PAGEOFF12	ltmp1
+    15c8:      	adr	x10, 0x15d8 <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0xb8>
+    15cc:      	ldrb	w11, [x9, x8]
+    15d0:      	add	x10, x10, x11, lsl #2
+    15d4:      	br	x10
+    15d8:      	strb	w22, [x19, x20]
+    15dc:      	b	0x1640 <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0x120>
+    15e0:      	mov	w8, w21
+    15e4:      	adrp	x9, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		00000000000015e4:  ARM64_RELOC_ADDEND	0xa
+		00000000000015e4:  ARM64_RELOC_PAGE21	ltmp1
+    15e8:      	add	x9, x9, #0x0
+		00000000000015e8:  ARM64_RELOC_ADDEND	0xa
+		00000000000015e8:  ARM64_RELOC_PAGEOFF12	ltmp1
+    15ec:      	adr	x10, 0x15fc <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0xdc>
+    15f0:      	ldrb	w11, [x9, x8]
+    15f4:      	add	x10, x10, x11, lsl #2
+    15f8:      	br	x10
+    15fc:      	strb	wzr, [x19, x20]
+    1600:      	cbnz	w1, 0x1620 <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0x100>
+    1604:      	b	0x1640 <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0x120>
+    1608:      	strh	w22, [x19, x20]
+    160c:      	b	0x1640 <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0x120>
+    1610:      	str	w22, [x19, x20]
+    1614:      	b	0x1640 <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0x120>
+    1618:      	str	wzr, [x19, x20]
+    161c:      	cbz	w1, 0x1640 <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0x120>
+    1620:      	mov	x0, x19
+    1624:      	ldp	x29, x30, [sp, #0x30]
+    1628:      	ldp	x20, x19, [sp, #0x20]
+    162c:      	ldp	x22, x21, [sp, #0x10]
+    1630:      	ldp	x24, x23, [sp], #0x40
+    1634:      	b	0x1634 <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0x114>
+		0000000000001634:  ARM64_RELOC_BRANCH26	___swift_storeEnumTagSinglePayload
+    1638:      	strh	wzr, [x19, x20]
+    163c:      	cbnz	w1, 0x1620 <_$s16GiftUIRenderCore19RenderRecordingSinkVwst+0x100>
+    1640:      	ldp	x29, x30, [sp, #0x30]
+    1644:      	ldp	x20, x19, [sp, #0x20]
+    1648:      	ldp	x22, x21, [sp, #0x10]
+    164c:      	ldp	x24, x23, [sp], #0x40
+    1650:      	ret
+    1654:      	brk	#0x1
+
+0000000000001658 <___swift_storeEnumTagSinglePayload>:
+    1658:      	ldur	x8, [x3, #-0x8]
+    165c:      	ldr	x4, [x8, #0x38]
+    1660:      	br	x4
+
+0000000000001664 <_$s16GiftUIRenderCore18RenderSinkCapacityVMa>:
+    1664:      	adrp	x0, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		0000000000001664:  ARM64_RELOC_ADDEND	0x10
+		0000000000001664:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore18RenderSinkCapacityVMf
+    1668:      	add	x0, x0, #0x0
+		0000000000001668:  ARM64_RELOC_ADDEND	0x10
+		0000000000001668:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore18RenderSinkCapacityVMf
+    166c:      	b	0x166c <_$s16GiftUIRenderCore18RenderSinkCapacityVMa+0x8>
+		000000000000166c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_10
+
+0000000000001670 <___swift_memcpy1_1>:
+    1670:      	ldrb	w8, [x1]
+    1674:      	strb	w8, [x0]
+    1678:      	ret
+
+000000000000167c <_$s16GiftUIRenderCore16RenderDamageModeOwet>:
+    167c:      	cbz	w1, 0x16b4 <_$s16GiftUIRenderCore16RenderDamageModeOwet+0x38>
+    1680:      	cmp	w1, #0xff
+    1684:      	b.lo	0x16dc <_$s16GiftUIRenderCore16RenderDamageModeOwet+0x60>
+    1688:      	add	w8, w1, #0x1
+    168c:      	mov	x1, x30
+    1690:      	bl	0x1690 <_$s16GiftUIRenderCore16RenderDamageModeOwet+0x14>
+		0000000000001690:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_13
+    1694:      	mov	x30, x1
+    1698:      	cmp	w8, #0x4
+    169c:      	b.eq	0x16bc <_$s16GiftUIRenderCore16RenderDamageModeOwet+0x40>
+    16a0:      	cmp	w8, #0x2
+    16a4:      	b.ne	0x16d4 <_$s16GiftUIRenderCore16RenderDamageModeOwet+0x58>
+    16a8:      	ldurh	w8, [x0, #0x1]
+    16ac:      	cbnz	w8, 0x16c4 <_$s16GiftUIRenderCore16RenderDamageModeOwet+0x48>
+    16b0:      	b	0x16dc <_$s16GiftUIRenderCore16RenderDamageModeOwet+0x60>
+    16b4:      	mov	w8, #-0x1               ; =-1
+    16b8:      	b	0x16e8 <_$s16GiftUIRenderCore16RenderDamageModeOwet+0x6c>
+    16bc:      	ldur	w8, [x0, #0x1]
+    16c0:      	cbz	w8, 0x16dc <_$s16GiftUIRenderCore16RenderDamageModeOwet+0x60>
+    16c4:      	ldrb	w9, [x0]
+    16c8:      	orr	w8, w9, w8, lsl #8
+    16cc:      	sub	w8, w8, #0x2
+    16d0:      	b	0x16e8 <_$s16GiftUIRenderCore16RenderDamageModeOwet+0x6c>
+    16d4:      	ldrb	w8, [x0, #0x1]
+    16d8:      	cbnz	w8, 0x16c4 <_$s16GiftUIRenderCore16RenderDamageModeOwet+0x48>
+    16dc:      	ldrb	w8, [x0]
+    16e0:      	subs	w8, w8, #0x2
+    16e4:      	csinv	w8, w8, wzr, hs
+    16e8:      	b	0x16e8 <_$s16GiftUIRenderCore16RenderDamageModeOwet+0x6c>
+		00000000000016e8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+
+00000000000016ec <_$s16GiftUIRenderCore16RenderDamageModeOwst>:
+    16ec:      	add	w8, w2, #0x1
+    16f0:      	mov	x3, x30
+    16f4:      	bl	0x16f4 <_$s16GiftUIRenderCore16RenderDamageModeOwst+0x8>
+		00000000000016f4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_13
+    16f8:      	mov	x30, x3
+    16fc:      	cmp	w2, #0xff
+    1700:      	csel	w8, wzr, w8, lo
+    1704:      	cmp	w1, #0xfe
+    1708:      	b.hi	0x1730 <_$s16GiftUIRenderCore16RenderDamageModeOwst+0x44>
+    170c:      	adrp	x9, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		000000000000170c:  ARM64_RELOC_ADDEND	0x19
+		000000000000170c:  ARM64_RELOC_PAGE21	ltmp1
+    1710:      	add	x9, x9, #0x0
+		0000000000001710:  ARM64_RELOC_ADDEND	0x19
+		0000000000001710:  ARM64_RELOC_PAGEOFF12	ltmp1
+    1714:      	adr	x10, 0x1724 <_$s16GiftUIRenderCore16RenderDamageModeOwst+0x38>
+    1718:      	ldrb	w11, [x9, x8]
+    171c:      	add	x10, x10, x11, lsl #2
+    1720:      	br	x10
+    1724:      	strb	wzr, [x0, #0x1]
+    1728:      	cbnz	w1, 0x1768 <_$s16GiftUIRenderCore16RenderDamageModeOwst+0x7c>
+    172c:      	b	0x177c <_$s16GiftUIRenderCore16RenderDamageModeOwst+0x90>
+    1730:      	sub	w10, w1, #0xff
+    1734:      	lsr	w9, w10, #8
+    1738:      	add	w9, w9, #0x1
+    173c:      	strb	w10, [x0]
+    1740:      	adrp	x10, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		0000000000001740:  ARM64_RELOC_ADDEND	0x14
+		0000000000001740:  ARM64_RELOC_PAGE21	ltmp1
+    1744:      	add	x10, x10, #0x0
+		0000000000001744:  ARM64_RELOC_ADDEND	0x14
+		0000000000001744:  ARM64_RELOC_PAGEOFF12	ltmp1
+    1748:      	adr	x11, 0x1758 <_$s16GiftUIRenderCore16RenderDamageModeOwst+0x6c>
+    174c:      	ldrb	w12, [x10, x8]
+    1750:      	add	x11, x11, x12, lsl #2
+    1754:      	br	x11
+    1758:      	strb	w9, [x0, #0x1]
+    175c:      	ret
+    1760:      	sturh	wzr, [x0, #0x1]
+    1764:      	cbz	w1, 0x177c <_$s16GiftUIRenderCore16RenderDamageModeOwst+0x90>
+    1768:      	add	w8, w1, #0x1
+    176c:      	strb	w8, [x0]
+    1770:      	ret
+    1774:      	stur	wzr, [x0, #0x1]
+    1778:      	cbnz	w1, 0x1768 <_$s16GiftUIRenderCore16RenderDamageModeOwst+0x7c>
+    177c:      	ret
+    1780:      	stur	w9, [x0, #0x1]
+    1784:      	ret
+    1788:      	sturh	w9, [x0, #0x1]
+    178c:      	ret
+    1790:      	brk	#0x1
+
+0000000000001794 <_$s16GiftUIRenderCore16RenderDamageModeOwug>:
+    1794:      	ldrb	w0, [x0]
+    1798:      	ret
+
+000000000000179c <_$s16GiftUIRenderCore16RenderDamageModeOwup>:
+    179c:      	ret
+
+00000000000017a0 <_$s16GiftUIRenderCore16RenderDamageModeOwui>:
+    17a0:      	strb	w1, [x0]
+    17a4:      	ret
+
+00000000000017a8 <_$s16GiftUIRenderCore16RenderDamageModeOMa>:
+    17a8:      	adrp	x0, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		00000000000017a8:  ARM64_RELOC_ADDEND	0x10
+		00000000000017a8:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore16RenderDamageModeOMf
+    17ac:      	add	x0, x0, #0x0
+		00000000000017ac:  ARM64_RELOC_ADDEND	0x10
+		00000000000017ac:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore16RenderDamageModeOMf
+    17b0:      	b	0x17b0 <_$s16GiftUIRenderCore16RenderDamageModeOMa+0x8>
+		00000000000017b0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_10
+
+00000000000017b4 <_$s16GiftUIRenderCore16RenderPlanHeaderVwCP>:
+    17b4:      	stp	x20, x19, [sp, #-0x20]!
+    17b8:      	stp	x29, x30, [sp, #0x10]
+    17bc:      	add	x29, sp, #0x10
+    17c0:      	ldr	x19, [x1]
+    17c4:      	str	x19, [x0]
+    17c8:      	mov	x0, x19
+    17cc:      	bl	0x17cc <_$s16GiftUIRenderCore16RenderPlanHeaderVwCP+0x18>
+		00000000000017cc:  ARM64_RELOC_BRANCH26	_swift_retain
+    17d0:      	add	x0, x19, #0x10
+    17d4:      	ldp	x29, x30, [sp, #0x10]
+    17d8:      	ldp	x20, x19, [sp], #0x20
+    17dc:      	ret
+
+00000000000017e0 <___swift_memcpy38_4>:
+    17e0:      	ldp	q0, q1, [x1]
+    17e4:      	ldur	x8, [x1, #0x1e]
+    17e8:      	stur	x8, [x0, #0x1e]
+    17ec:      	stp	q0, q1, [x0]
+    17f0:      	ret
+
+00000000000017f4 <_$s16GiftUIRenderCore16RenderPlanHeaderVwet>:
+    17f4:      	cbz	w1, 0x1804 <_$s16GiftUIRenderCore16RenderPlanHeaderVwet+0x10>
+    17f8:      	ldrb	w8, [x0, #0x26]
+    17fc:      	cbz	w8, 0x1804 <_$s16GiftUIRenderCore16RenderPlanHeaderVwet+0x10>
+    1800:      	b	0x1800 <_$s16GiftUIRenderCore16RenderPlanHeaderVwet+0xc>
+		0000000000001800:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_3
+    1804:      	b	0x1804 <_$s16GiftUIRenderCore16RenderPlanHeaderVwet+0x10>
+		0000000000001804:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+0000000000001808 <_$s16GiftUIRenderCore16RenderPlanHeaderVwst>:
+    1808:      	cbz	w1, 0x1828 <_$s16GiftUIRenderCore16RenderPlanHeaderVwst+0x20>
+    180c:      	sub	w8, w1, #0x1
+    1810:      	stp	x8, xzr, [x0]
+    1814:      	stp	xzr, xzr, [x0, #0x10]
+    1818:      	stur	xzr, [x0, #0x1e]
+    181c:      	cbz	w2, 0x1834 <_$s16GiftUIRenderCore16RenderPlanHeaderVwst+0x2c>
+    1820:      	mov	w8, #0x1                ; =1
+    1824:      	b	0x1830 <_$s16GiftUIRenderCore16RenderPlanHeaderVwst+0x28>
+    1828:      	cbz	w2, 0x1834 <_$s16GiftUIRenderCore16RenderPlanHeaderVwst+0x2c>
+    182c:      	mov	w8, #0x0                ; =0
+    1830:      	strb	w8, [x0, #0x26]
+    1834:      	ret
+
+0000000000001838 <_$s16GiftUIRenderCore16RenderPlanHeaderVMa>:
+    1838:      	adrp	x0, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		0000000000001838:  ARM64_RELOC_ADDEND	0x10
+		0000000000001838:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore16RenderPlanHeaderVMf
+    183c:      	add	x0, x0, #0x0
+		000000000000183c:  ARM64_RELOC_ADDEND	0x10
+		000000000000183c:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore16RenderPlanHeaderVMf
+    1840:      	b	0x1840 <_$s16GiftUIRenderCore16RenderPlanHeaderVMa+0x8>
+		0000000000001840:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_10
+
+0000000000001844 <___swift_memcpy12_4>:
+    1844:      	ldr	x8, [x1]
+    1848:      	ldr	w9, [x1, #0x8]
+    184c:      	str	w9, [x0, #0x8]
+    1850:      	str	x8, [x0]
+    1854:      	ret
+
+0000000000001858 <_$s16GiftUIRenderCore15PositionedGlyphVwet>:
+    1858:      	cbz	w1, 0x1868 <_$s16GiftUIRenderCore15PositionedGlyphVwet+0x10>
+    185c:      	ldrb	w8, [x0, #0xc]
+    1860:      	cbz	w8, 0x1868 <_$s16GiftUIRenderCore15PositionedGlyphVwet+0x10>
+    1864:      	b	0x1864 <_$s16GiftUIRenderCore15PositionedGlyphVwet+0xc>
+		0000000000001864:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_3
+    1868:      	b	0x1868 <_$s16GiftUIRenderCore15PositionedGlyphVwet+0x10>
+		0000000000001868:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+000000000000186c <_$s16GiftUIRenderCore15PositionedGlyphVwst>:
+    186c:      	cbz	w1, 0x1888 <_$s16GiftUIRenderCore15PositionedGlyphVwst+0x1c>
+    1870:      	sub	w8, w1, #0x1
+    1874:      	str	wzr, [x0, #0x8]
+    1878:      	str	x8, [x0]
+    187c:      	cbz	w2, 0x1894 <_$s16GiftUIRenderCore15PositionedGlyphVwst+0x28>
+    1880:      	mov	w8, #0x1                ; =1
+    1884:      	b	0x1890 <_$s16GiftUIRenderCore15PositionedGlyphVwst+0x24>
+    1888:      	cbz	w2, 0x1894 <_$s16GiftUIRenderCore15PositionedGlyphVwst+0x28>
+    188c:      	mov	w8, #0x0                ; =0
+    1890:      	strb	w8, [x0, #0xc]
+    1894:      	ret
+
+0000000000001898 <_$s16GiftUIRenderCore15PositionedGlyphVMa>:
+    1898:      	adrp	x0, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		0000000000001898:  ARM64_RELOC_ADDEND	0x10
+		0000000000001898:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore15PositionedGlyphVMf
+    189c:      	add	x0, x0, #0x0
+		000000000000189c:  ARM64_RELOC_ADDEND	0x10
+		000000000000189c:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore15PositionedGlyphVMf
+    18a0:      	b	0x18a0 <_$s16GiftUIRenderCore15PositionedGlyphVMa+0x8>
+		00000000000018a0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_10
+
+00000000000018a4 <___swift_memcpy35_4>:
+    18a4:      	ldp	q0, q1, [x1]
+    18a8:      	ldur	w8, [x1, #0x1f]
+    18ac:      	stur	w8, [x0, #0x1f]
+    18b0:      	stp	q0, q1, [x0]
+    18b4:      	ret
+
+00000000000018b8 <_$s16GiftUIRenderCore17FillRectOperationVwet>:
+    18b8:      	cbz	w1, 0x18c8 <_$s16GiftUIRenderCore17FillRectOperationVwet+0x10>
+    18bc:      	ldrb	w8, [x0, #0x23]
+    18c0:      	cbz	w8, 0x18c8 <_$s16GiftUIRenderCore17FillRectOperationVwet+0x10>
+    18c4:      	b	0x18c4 <_$s16GiftUIRenderCore17FillRectOperationVwet+0xc>
+		00000000000018c4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_3
+    18c8:      	b	0x18c8 <_$s16GiftUIRenderCore17FillRectOperationVwet+0x10>
+		00000000000018c8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+00000000000018cc <_$s16GiftUIRenderCore17FillRectOperationVwst>:
+    18cc:      	cbz	w1, 0x18ec <_$s16GiftUIRenderCore17FillRectOperationVwst+0x20>
+    18d0:      	sub	w8, w1, #0x1
+    18d4:      	stp	x8, xzr, [x0]
+    18d8:      	stp	xzr, xzr, [x0, #0x10]
+    18dc:      	stur	wzr, [x0, #0x1f]
+    18e0:      	cbz	w2, 0x18f8 <_$s16GiftUIRenderCore17FillRectOperationVwst+0x2c>
+    18e4:      	mov	w8, #0x1                ; =1
+    18e8:      	b	0x18f4 <_$s16GiftUIRenderCore17FillRectOperationVwst+0x28>
+    18ec:      	cbz	w2, 0x18f8 <_$s16GiftUIRenderCore17FillRectOperationVwst+0x2c>
+    18f0:      	mov	w8, #0x0                ; =0
+    18f4:      	strb	w8, [x0, #0x23]
+    18f8:      	ret
+
+00000000000018fc <_$s16GiftUIRenderCore17FillRectOperationVMa>:
+    18fc:      	adrp	x0, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		00000000000018fc:  ARM64_RELOC_ADDEND	0x10
+		00000000000018fc:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore17FillRectOperationVMf
+    1900:      	add	x0, x0, #0x0
+		0000000000001900:  ARM64_RELOC_ADDEND	0x10
+		0000000000001900:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore17FillRectOperationVMf
+    1904:      	b	0x1904 <_$s16GiftUIRenderCore17FillRectOperationVMa+0x8>
+		0000000000001904:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_10
+
+0000000000001908 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVwet>:
+    1908:      	cbz	w1, 0x1918 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVwet+0x10>
+    190c:      	ldrb	w8, [x0, #0x3a]
+    1910:      	cbz	w8, 0x1918 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVwet+0x10>
+    1914:      	b	0x1914 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVwet+0xc>
+		0000000000001914:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_3
+    1918:      	b	0x1918 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVwet+0x10>
+		0000000000001918:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_8
+
+000000000000191c <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVwst>:
+    191c:      	cbz	w1, 0x1948 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVwst+0x2c>
+    1920:      	sub	w8, w1, #0x1
+    1924:      	str	x8, [x0]
+    1928:      	movi.2d	v0, #0000000000000000
+    192c:      	stur	q0, [x0, #0x8]
+    1930:      	stur	q0, [x0, #0x18]
+    1934:      	stur	q0, [x0, #0x28]
+    1938:      	strh	wzr, [x0, #0x38]
+    193c:      	cbz	w2, 0x1954 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVwst+0x38>
+    1940:      	mov	w8, #0x1                ; =1
+    1944:      	b	0x1950 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVwst+0x34>
+    1948:      	cbz	w2, 0x1954 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVwst+0x38>
+    194c:      	mov	w8, #0x0                ; =0
+    1950:      	strb	w8, [x0, #0x3a]
+    1954:      	ret
+
+0000000000001958 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVMa>:
+    1958:      	adrp	x0, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		0000000000001958:  ARM64_RELOC_ADDEND	0x10
+		0000000000001958:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVMf
+    195c:      	add	x0, x0, #0x0
+		000000000000195c:  ARM64_RELOC_ADDEND	0x10
+		000000000000195c:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVMf
+    1960:      	b	0x1960 <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVMa+0x8>
+		0000000000001960:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_10
+
+0000000000001964 <_$s16GiftUIRenderCore21RenderProductionErrorOwet>:
+    1964:      	cbz	w1, 0x199c <_$s16GiftUIRenderCore21RenderProductionErrorOwet+0x38>
+    1968:      	cmp	w1, #0xfa
+    196c:      	b.lo	0x19c4 <_$s16GiftUIRenderCore21RenderProductionErrorOwet+0x60>
+    1970:      	add	w8, w1, #0x6
+    1974:      	mov	x1, x30
+    1978:      	bl	0x1978 <_$s16GiftUIRenderCore21RenderProductionErrorOwet+0x14>
+		0000000000001978:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_13
+    197c:      	mov	x30, x1
+    1980:      	cmp	w8, #0x4
+    1984:      	b.eq	0x19a4 <_$s16GiftUIRenderCore21RenderProductionErrorOwet+0x40>
+    1988:      	cmp	w8, #0x2
+    198c:      	b.ne	0x19bc <_$s16GiftUIRenderCore21RenderProductionErrorOwet+0x58>
+    1990:      	ldurh	w8, [x0, #0x1]
+    1994:      	cbnz	w8, 0x19ac <_$s16GiftUIRenderCore21RenderProductionErrorOwet+0x48>
+    1998:      	b	0x19c4 <_$s16GiftUIRenderCore21RenderProductionErrorOwet+0x60>
+    199c:      	mov	w8, #-0x1               ; =-1
+    19a0:      	b	0x19d0 <_$s16GiftUIRenderCore21RenderProductionErrorOwet+0x6c>
+    19a4:      	ldur	w8, [x0, #0x1]
+    19a8:      	cbz	w8, 0x19c4 <_$s16GiftUIRenderCore21RenderProductionErrorOwet+0x60>
+    19ac:      	ldrb	w9, [x0]
+    19b0:      	orr	w8, w9, w8, lsl #8
+    19b4:      	sub	w8, w8, #0x7
+    19b8:      	b	0x19d0 <_$s16GiftUIRenderCore21RenderProductionErrorOwet+0x6c>
+    19bc:      	ldrb	w8, [x0, #0x1]
+    19c0:      	cbnz	w8, 0x19ac <_$s16GiftUIRenderCore21RenderProductionErrorOwet+0x48>
+    19c4:      	ldrb	w8, [x0]
+    19c8:      	subs	w8, w8, #0x7
+    19cc:      	csinv	w8, w8, wzr, hs
+    19d0:      	b	0x19d0 <_$s16GiftUIRenderCore21RenderProductionErrorOwet+0x6c>
+		00000000000019d0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+
+00000000000019d4 <_$s16GiftUIRenderCore21RenderProductionErrorOwst>:
+    19d4:      	add	w8, w2, #0x6
+    19d8:      	mov	x3, x30
+    19dc:      	bl	0x19dc <_$s16GiftUIRenderCore21RenderProductionErrorOwst+0x8>
+		00000000000019dc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_13
+    19e0:      	mov	x30, x3
+    19e4:      	cmp	w2, #0xfa
+    19e8:      	csel	w8, wzr, w8, lo
+    19ec:      	cmp	w1, #0xf9
+    19f0:      	b.hi	0x1a18 <_$s16GiftUIRenderCore21RenderProductionErrorOwst+0x44>
+    19f4:      	adrp	x9, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		00000000000019f4:  ARM64_RELOC_ADDEND	0x23
+		00000000000019f4:  ARM64_RELOC_PAGE21	ltmp1
+    19f8:      	add	x9, x9, #0x0
+		00000000000019f8:  ARM64_RELOC_ADDEND	0x23
+		00000000000019f8:  ARM64_RELOC_PAGEOFF12	ltmp1
+    19fc:      	adr	x10, 0x1a0c <_$s16GiftUIRenderCore21RenderProductionErrorOwst+0x38>
+    1a00:      	ldrb	w11, [x9, x8]
+    1a04:      	add	x10, x10, x11, lsl #2
+    1a08:      	br	x10
+    1a0c:      	strb	wzr, [x0, #0x1]
+    1a10:      	cbnz	w1, 0x1a50 <_$s16GiftUIRenderCore21RenderProductionErrorOwst+0x7c>
+    1a14:      	b	0x1a64 <_$s16GiftUIRenderCore21RenderProductionErrorOwst+0x90>
+    1a18:      	sub	w10, w1, #0xfa
+    1a1c:      	lsr	w9, w10, #8
+    1a20:      	add	w9, w9, #0x1
+    1a24:      	strb	w10, [x0]
+    1a28:      	adrp	x10, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		0000000000001a28:  ARM64_RELOC_ADDEND	0x1e
+		0000000000001a28:  ARM64_RELOC_PAGE21	ltmp1
+    1a2c:      	add	x10, x10, #0x0
+		0000000000001a2c:  ARM64_RELOC_ADDEND	0x1e
+		0000000000001a2c:  ARM64_RELOC_PAGEOFF12	ltmp1
+    1a30:      	adr	x11, 0x1a40 <_$s16GiftUIRenderCore21RenderProductionErrorOwst+0x6c>
+    1a34:      	ldrb	w12, [x10, x8]
+    1a38:      	add	x11, x11, x12, lsl #2
+    1a3c:      	br	x11
+    1a40:      	strb	w9, [x0, #0x1]
+    1a44:      	ret
+    1a48:      	sturh	wzr, [x0, #0x1]
+    1a4c:      	cbz	w1, 0x1a64 <_$s16GiftUIRenderCore21RenderProductionErrorOwst+0x90>
+    1a50:      	add	w8, w1, #0x6
+    1a54:      	strb	w8, [x0]
+    1a58:      	ret
+    1a5c:      	stur	wzr, [x0, #0x1]
+    1a60:      	cbnz	w1, 0x1a50 <_$s16GiftUIRenderCore21RenderProductionErrorOwst+0x7c>
+    1a64:      	ret
+    1a68:      	stur	w9, [x0, #0x1]
+    1a6c:      	ret
+    1a70:      	sturh	w9, [x0, #0x1]
+    1a74:      	ret
+    1a78:      	brk	#0x1
+
+0000000000001a7c <_$s16GiftUIRenderCore21RenderProductionErrorOwup>:
+    1a7c:      	ret
+
+0000000000001a80 <_$s16GiftUIRenderCore21RenderProductionErrorOMa>:
+    1a80:      	adrp	x0, 0x1000 <_$s16GiftUIRenderCore12SubpathRangeVwet+0xc>
+		0000000000001a80:  ARM64_RELOC_ADDEND	0x10
+		0000000000001a80:  ARM64_RELOC_PAGE21	_$s16GiftUIRenderCore21RenderProductionErrorOMf
+    1a84:      	add	x0, x0, #0x0
+		0000000000001a84:  ARM64_RELOC_ADDEND	0x10
+		0000000000001a84:  ARM64_RELOC_PAGEOFF12	_$s16GiftUIRenderCore21RenderProductionErrorOMf
+    1a88:      	b	0x1a88 <_$s16GiftUIRenderCore21RenderProductionErrorOMa+0x8>
+		0000000000001a88:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_10
+
+0000000000001a8c <___swift_instantiateGenericMetadata>:
+    1a8c:      	sub	sp, sp, #0x30
+    1a90:      	stp	x29, x30, [sp, #0x20]
+    1a94:      	add	x29, sp, #0x20
+    1a98:      	stp	x1, x2, [sp, #0x8]
+    1a9c:      	str	x3, [sp, #0x18]
+    1aa0:      	add	x1, sp, #0x8
+    1aa4:      	mov	x2, x4
+    1aa8:      	bl	0x1aa8 <___swift_instantiateGenericMetadata+0x1c>
+		0000000000001aa8:  ARM64_RELOC_BRANCH26	_swift_getGenericMetadata
+    1aac:      	ldp	x29, x30, [sp, #0x20]
+    1ab0:      	add	sp, sp, #0x30
+    1ab4:      	ret
+
+0000000000001ab8 <_$s16GiftUIRenderCore21RenderProductionErrorOSHAASH9hashValueSivgTW>:
+    1ab8:      	b	0x1ab8 <_$s16GiftUIRenderCore21RenderProductionErrorOSHAASH9hashValueSivgTW>
+		0000000000001ab8:  ARM64_RELOC_BRANCH26	l___unnamed_2
+
+0000000000001abc <_$s16GiftUIRenderCore16RenderDamageModeOSHAASH9hashValueSivgTW>:
+    1abc:      	b	0x1abc <_$s16GiftUIRenderCore16RenderDamageModeOSHAASH9hashValueSivgTW>
+		0000000000001abc:  ARM64_RELOC_BRANCH26	l___unnamed_2
+
+0000000000001ac0 <_$s16GiftUIRenderCore21RenderProductionErrorOwug>:
+    1ac0:      	b	0x1ac0 <_$s16GiftUIRenderCore21RenderProductionErrorOwug>
+		0000000000001ac0:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore16RenderDamageModeOwug
+
+0000000000001ac4 <_$s16GiftUIRenderCore18RenderSinkCapacityV23maximumPositionedGlyphss6UInt16Vvg>:
+    1ac4:      	b	0x1ac4 <_$s16GiftUIRenderCore18RenderSinkCapacityV23maximumPositionedGlyphss6UInt16Vvg>
+		0000000000001ac4:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore12SubpathRangeV10pointCounts6UInt16Vvg
+
+0000000000001ac8 <_$s16GiftUIRenderCore18RenderSinkCapacityV23__derived_struct_equalsySbAC_ACtFZ>:
+    1ac8:      	b	0x1ac8 <_$s16GiftUIRenderCore18RenderSinkCapacityV23__derived_struct_equalsySbAC_ACtFZ>
+		0000000000001ac8:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore12SubpathRangeV23__derived_struct_equalsySbAC_ACtFZ
+
+0000000000001acc <_$s16GiftUIRenderCore21RenderProductionErrorOSQAASQ2eeoiySbx_xtFZTW>:
+    1acc:      	b	0x1acc <_$s16GiftUIRenderCore21RenderProductionErrorOSQAASQ2eeoiySbx_xtFZTW>
+		0000000000001acc:  ARM64_RELOC_BRANCH26	l___unnamed_7
+
+0000000000001ad0 <_$s16GiftUIRenderCore16RenderDamageModeOSQAASQ2eeoiySbx_xtFZTW>:
+    1ad0:      	b	0x1ad0 <_$s16GiftUIRenderCore16RenderDamageModeOSQAASQ2eeoiySbx_xtFZTW>
+		0000000000001ad0:  ARM64_RELOC_BRANCH26	l___unnamed_7
+
+0000000000001ad4 <_$s16GiftUIRenderCore21RenderProductionErrorOwui>:
+    1ad4:      	b	0x1ad4 <_$s16GiftUIRenderCore21RenderProductionErrorOwui>
+		0000000000001ad4:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore16RenderDamageModeOwui
+
+0000000000001ad8 <_$s16GiftUIRenderCore18RenderSinkCapacityVwet>:
+    1ad8:      	b	0x1ad8 <_$s16GiftUIRenderCore18RenderSinkCapacityVwet>
+		0000000000001ad8:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore12SubpathRangeVwet
+
+0000000000001adc <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVwCP>:
+    1adc:      	b	0x1adc <_$s16GiftUIRenderCore24StraightLineStrokeHeaderVwCP>
+		0000000000001adc:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore16RenderPlanHeaderVwCP
+
+0000000000001ae0 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVwCP>:
+    1ae0:      	b	0x1ae0 <_$s16GiftUIRenderCore23RenderSinkAttemptCountsVwCP>
+		0000000000001ae0:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore16RenderPlanHeaderVwCP
+
+0000000000001ae4 <_$s16GiftUIRenderCore20RenderRecordingEventOwCP>:
+    1ae4:      	b	0x1ae4 <_$s16GiftUIRenderCore20RenderRecordingEventOwCP>
+		0000000000001ae4:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore16RenderPlanHeaderVwCP
+
+0000000000001ae8 <_$s16GiftUIRenderCore17FillRectOperationVwCP>:
+    1ae8:      	b	0x1ae8 <_$s16GiftUIRenderCore17FillRectOperationVwCP>
+		0000000000001ae8:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore16RenderPlanHeaderVwCP
+
+0000000000001aec <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVwCP>:
+    1aec:      	b	0x1aec <_$s16GiftUIRenderCore30PositionedGlyphOperationHeaderVwCP>
+		0000000000001aec:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore16RenderPlanHeaderVwCP
+
+0000000000001af0 <_$s16GiftUIRenderCore21RenderProductionErrorOSYAASY8rawValue03RawH0QzvgTW>:
+    1af0:      	b	0x1af0 <_$s16GiftUIRenderCore21RenderProductionErrorOSYAASY8rawValue03RawH0QzvgTW>
+		0000000000001af0:  ARM64_RELOC_BRANCH26	l___unnamed_6
+
+0000000000001af4 <_$s16GiftUIRenderCore16RenderDamageModeOSYAASY8rawValue03RawH0QzvgTW>:
+    1af4:      	b	0x1af4 <_$s16GiftUIRenderCore16RenderDamageModeOSYAASY8rawValue03RawH0QzvgTW>
+		0000000000001af4:  ARM64_RELOC_BRANCH26	l___unnamed_6
+
+0000000000001af8 <_$s16GiftUIRenderCore18RenderSinkCapacityVwst>:
+    1af8:      	b	0x1af8 <_$s16GiftUIRenderCore18RenderSinkCapacityVwst>
+		0000000000001af8:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore12SubpathRangeVwst
+
+0000000000001afc <_$s16GiftUIRenderCore21RenderProductionErrorOSHAASH4hash4intoys6HasherVz_tFTW>:
+    1afc:      	b	0x1afc <_$s16GiftUIRenderCore21RenderProductionErrorOSHAASH4hash4intoys6HasherVz_tFTW>
+		0000000000001afc:  ARM64_RELOC_BRANCH26	l___unnamed_3
+
+0000000000001b00 <_$s16GiftUIRenderCore16RenderDamageModeOSHAASH4hash4intoys6HasherVz_tFTW>:
+    1b00:      	b	0x1b00 <_$s16GiftUIRenderCore16RenderDamageModeOSHAASH4hash4intoys6HasherVz_tFTW>
+		0000000000001b00:  ARM64_RELOC_BRANCH26	l___unnamed_3
+
+0000000000001b04 <_$s16GiftUIRenderCore21RenderProductionErrorOSHAASH13_rawHashValue4seedS2i_tFTW>:
+    1b04:      	b	0x1b04 <_$s16GiftUIRenderCore21RenderProductionErrorOSHAASH13_rawHashValue4seedS2i_tFTW>
+		0000000000001b04:  ARM64_RELOC_BRANCH26	l___unnamed_5
+
+0000000000001b08 <_$s16GiftUIRenderCore16RenderDamageModeOSHAASH13_rawHashValue4seedS2i_tFTW>:
+    1b08:      	b	0x1b08 <_$s16GiftUIRenderCore16RenderDamageModeOSHAASH13_rawHashValue4seedS2i_tFTW>
+		0000000000001b08:  ARM64_RELOC_BRANCH26	l___unnamed_5
+
+0000000000001b0c <_$s16GiftUIRenderCore18RenderSinkCapacityV17maximumOperationss6UInt16Vvg>:
+    1b0c:      	b	0x1b0c <_$s16GiftUIRenderCore18RenderSinkCapacityV17maximumOperationss6UInt16Vvg>
+		0000000000001b0c:  ARM64_RELOC_BRANCH26	_$s16GiftUIRenderCore12SubpathRangeV10firstPoints6UInt16Vvg
+
+0000000000001b10 <_$s16GiftUIRenderCore18RenderSinkCapacityVSQAASQ2eeoiySbx_xtFZTW>:
+    1b10:      	b	0x1b10 <_$s16GiftUIRenderCore18RenderSinkCapacityVSQAASQ2eeoiySbx_xtFZTW>
+		0000000000001b10:  ARM64_RELOC_BRANCH26	l___unnamed_1
+
+0000000000001b14 <_$s16GiftUIRenderCore12SubpathRangeVSQAASQ2eeoiySbx_xtFZTW>:
+    1b14:      	b	0x1b14 <_$s16GiftUIRenderCore12SubpathRangeVSQAASQ2eeoiySbx_xtFZTW>
+		0000000000001b14:  ARM64_RELOC_BRANCH26	l___unnamed_1
+
+0000000000001b18 <_OUTLINED_FUNCTION_0>:
+    1b18:      	mov	x9, sp
+    1b1c:      	add	x8, x8, #0xf
+    1b20:      	and	x8, x8, #0xfffffffffffffff0
+    1b24:      	sub	x21, x9, x8
+    1b28:      	mov	sp, x21
+    1b2c:      	ret
+
+0000000000001b30 <_OUTLINED_FUNCTION_1>:
+    1b30:      	mov	x0, x21
+    1b34:      	mov	x1, x20
+    1b38:      	mov	x2, x19
+    1b3c:      	br	x8
+
+0000000000001b40 <_OUTLINED_FUNCTION_2>:
+    1b40:      	ldr	x8, [x21, #0x40]
+    1b44:      	add	x8, x8, #0x3
+    1b48:      	add	x9, x8, x20
+    1b4c:      	and	x9, x9, #0xfffffffffffffffc
+    1b50:      	add	x8, x8, x19
+    1b54:      	and	x8, x8, #0xfffffffffffffffc
+    1b58:      	ret
+
+0000000000001b5c <_OUTLINED_FUNCTION_3>:
+    1b5c:      	ldr	w8, [x0]
+    1b60:      	add	w0, w8, #0x1
+    1b64:      	ret
+
+0000000000001b68 <_OUTLINED_FUNCTION_4>:
+    1b68:      	mov	x0, x21
+    1b6c:      	mov	x1, x19
+    1b70:      	br	x8
+
+0000000000001b74 <_OUTLINED_FUNCTION_5>:
+    1b74:      	add	x29, sp, #0x20
+    1b78:      	mov	x19, x1
+    1b7c:      	mov	x20, x0
+    1b80:      	ldr	x2, [x2, #0x10]
+    1b84:      	ldur	x21, [x2, #-0x8]
+    1b88:      	ret
+
+0000000000001b8c <_OUTLINED_FUNCTION_6>:
+    1b8c:      	ldp	x20, x19, [sp, #0x20]
+    1b90:      	ldp	x22, x21, [sp, #0x10]
+    1b94:      	ldp	x24, x23, [sp], #0x40
+    1b98:      	ret
+
+0000000000001b9c <_OUTLINED_FUNCTION_7>:
+    1b9c:      	ldp	x20, x19, [sp, #0x10]
+    1ba0:      	ldp	x22, x21, [sp], #0x30
+    1ba4:      	ret
+
+0000000000001ba8 <_OUTLINED_FUNCTION_8>:
+    1ba8:      	mov	w0, #0x0                ; =0
+    1bac:      	ret
+
+0000000000001bb0 <_OUTLINED_FUNCTION_9>:
+    1bb0:      	ldp	x1, x2, [x19, #0x10]
+    1bb4:      	ldr	x8, [x2, #0x18]
+    1bb8:      	sub	x0, x29, #0x70
+    1bbc:      	br	x8
+
+0000000000001bc0 <_OUTLINED_FUNCTION_10>:
+    1bc0:      	mov	x1, #0x0                ; =0
+    1bc4:      	ret
+
+0000000000001bc8 <_OUTLINED_FUNCTION_11>:
+    1bc8:      	add	w0, w8, #0x1
+    1bcc:      	ret
+
+0000000000001bd0 <_OUTLINED_FUNCTION_12>:
+    1bd0:      	ldr	w10, [x8]
+    1bd4:      	str	w10, [x9]
+    1bd8:      	ldr	w10, [x8, #0x4]
+    1bdc:      	str	w10, [x9, #0x4]
+    1be0:      	ldr	w10, [x8, #0x8]
+    1be4:      	str	w10, [x9, #0x8]
+    1be8:      	ldr	w10, [x8, #0xc]
+    1bec:      	str	w10, [x9, #0xc]
+    1bf0:      	ldr	w10, [x8, #0x10]
+    1bf4:      	str	w10, [x9, #0x10]
+    1bf8:      	ldr	w10, [x8, #0x14]
+    1bfc:      	str	w10, [x9, #0x14]
+    1c00:      	ldr	w8, [x8, #0x18]
+    1c04:      	str	w8, [x9, #0x18]
+    1c08:      	mov	x0, x20
+    1c0c:      	ret
+
+0000000000001c10 <_OUTLINED_FUNCTION_13>:
+    1c10:      	mov	w9, #0xffff00           ; =16776960
+    1c14:      	mov	w10, #0x4               ; =4
+    1c18:      	mov	w11, #0x2               ; =2
+    1c1c:      	cmp	w8, w9
+    1c20:      	csel	w9, w11, w10, lo
+    1c24:      	lsr	w8, w8, #8
+    1c28:      	cmp	w8, #0xff
+    1c2c:      	csinc	w8, w9, wzr, hs
+    1c30:      	ret
+
+0000000000001c34 <_OUTLINED_FUNCTION_14>:
+    1c34:      	mov	x0, #0x0                ; =0
+    1c38:      	mov	x1, #0x0                ; =0
+    1c3c:      	mov	x2, #0x0                ; =0
+    1c40:      	mov	w3, #0x0                ; =0
+    1c44:      	ret
+
+0000000000001c48 <_OUTLINED_FUNCTION_15>:
+    1c48:      	ldrsw	x8, [x19, #0x24]
+    1c4c:      	add	x8, x20, x8
+    1c50:      	ret
+
+0000000000001c54 <_OUTLINED_FUNCTION_16>:
+    1c54:      	ldur	q0, [x8, #0xc]
+    1c58:      	ldr	q1, [x8]
+    1c5c:      	str	q1, [x9]
+    1c60:      	stur	q0, [x9, #0xc]
+    1c64:      	mov	x0, x20
+    1c68:      	ret
+
+0000000000001c6c <_OUTLINED_FUNCTION_17>:
+    1c6c:      	ldp	x20, x19, [sp, #0x50]
+    1c70:      	add	sp, sp, #0x70
+    1c74:      	ret
+
+0000000000001c78 <_OUTLINED_FUNCTION_18>:
+    1c78:      	add	x20, sp, #0x8
+    1c7c:      	mov	x0, x19
+    1c80:      	b	0x1c80 <_OUTLINED_FUNCTION_18+0x8>
+		0000000000001c80:  ARM64_RELOC_BRANCH26	_$ss6HasherV8_combineyys5UInt8VF
+
+0000000000001c84 <_OUTLINED_FUNCTION_19>:
+    1c84:      	orr	w0, w9, w8, lsl #16
+    1c88:      	ret
+
+0000000000001c8c <_OUTLINED_FUNCTION_20>:
+    1c8c:      	ldp	x20, x19, [sp, #0x10]
+    1c90:      	ldp	x22, x21, [sp], #0x30
+    1c94:      	ret
+
+0000000000001c98 <_OUTLINED_FUNCTION_21>:
+    1c98:      	and	w0, w0, #0x1
+    1c9c:      	sub	sp, x29, #0x30
+    1ca0:      	ret

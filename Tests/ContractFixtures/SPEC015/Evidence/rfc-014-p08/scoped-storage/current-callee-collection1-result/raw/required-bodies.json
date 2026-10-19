@@ -1,0 +1,3125 @@
+[
+  {
+    "matches": [
+      {
+        "basic_blocks": 36,
+        "demangled": "GiftUIDrawing.withCanvasStagedValues<A, B, C where A: Swift.Equatable, A: Swift.Sendable, B: GiftUIDrawing.CanvasValueTable>(metadata: inout GiftUIDrawing.CanvasStagedMetadata, entries: inout Swift.MutableSpan<GiftUIDrawing.CanvasStagedEntry<A, B.CaptureStorage>?>, table: B, capacity: Swift.UInt16, limits: GiftUIDrawing.StaticCanvasLimits, _: (GiftUIDrawing.CanvasStagedValues<A, B>) throws(GiftUI.DrawingError) -> C) throws(GiftUI.DrawingError) -> C",
+        "function_id": 60,
+        "hash": 2337297152,
+        "identifier_id": 155,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s13GiftUIDrawing22withCanvasStagedValues8metadata7entries5table8capacity6limits_q0_AA0dE8MetadataVz_s11MutableSpanVyAA0dE5EntryVyx14CaptureStorageQy_GSgGzq_s6UInt16VAA06StaticD6LimitsVq0_AA0deF0Vyxq_G0A2UI12DrawingErrorOYKXEtA0_YKSQRzs8SendableRzAA0D10ValueTableR_r1_lF",
+        "offset_bits": 307161,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=7 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=233 op29=0 op30=0 op31=14 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "GiftUIDrawing.withCanvasStagedValues<A, B, C where A: Swift.Equatable, A: Swift.Sendable, B: GiftUIDrawing.CanvasValueTable>(metadata: inout GiftUIDrawing.CanvasStagedMetadata, entries: inout Swift.MutableSpan<GiftUIDrawing.CanvasStagedEntry<A, B.CaptureStorage>?>, table: B, capacity: Swift.UInt16, limits: GiftUIDrawing.StaticCanvasLimits, _: (GiftUIDrawing.CanvasStagedValues<A, B>) throws(GiftUI.DrawingError) -> C) throws(GiftUI.DrawingError) -> C",
+      "module": "GiftUIDrawing",
+      "name": "$s13GiftUIDrawing22withCanvasStagedValues8metadata7entries5table8capacity6limits_q0_AA0dE8MetadataVz_s11MutableSpanVyAA0dE5EntryVyx14CaptureStorageQy_GSgGzq_s6UInt16VAA06StaticD6LimitsVq0_AA0deF0Vyxq_G0A2UI12DrawingErrorOYKXEtA0_YKSQRzs8SendableRzAA0D10ValueTableR_r1_lF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 81,
+        "demangled": "(extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.activate() -> GiftUIHostConfiguration.HostActivationResult<A.ActivationFailure>",
+        "function_id": 639,
+        "hash": 334253165,
+        "identifier_id": 824,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVAARi_zRi0_zrlE8activateAA0G16ActivationResultOy0J7FailureQzGyF",
+        "offset_bits": 1264095,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=963 op29=0 op30=0 op31=3 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.activate() -> GiftUIHostConfiguration.HostActivationResult<A.ActivationFailure>",
+      "module": "GiftUIHostConfiguration",
+      "name": "$s23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVAARi_zRi0_zrlE8activateAA0G16ActivationResultOy0J7FailureQzGyF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 6,
+        "demangled": "(extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.teardown() -> ()",
+        "function_id": 640,
+        "hash": 904058677,
+        "identifier_id": 952,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVAARi_zRi0_zrlE8teardownyyF",
+        "offset_bits": 1311606,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=970 op29=0 op30=0 op31=3 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIHostConfiguration):GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance< where A: ~Swift.Copyable, A: ~Swift.Escapable>.teardown() -> ()",
+      "module": "GiftUIHostConfiguration",
+      "name": "$s23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVAARi_zRi0_zrlE8teardownyyF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 117,
+        "demangled": "GiftUILayout.publishLayout<A, B where A: GiftUILayout.LayoutWorkspace, B: GiftUILayout.LayoutResultSink, A.Identity == B.Identity>(summary: GiftUILayout.LayoutSummary, workspace: inout A, sink: inout B) -> GiftUILayout.LayoutResult",
+        "function_id": 107,
+        "hash": 785444219,
+        "identifier_id": 300,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s12GiftUILayout13publishLayout7summary9workspace4sinkAA0D6ResultOAA0D7SummaryV_xzq_ztAA0D9WorkspaceRzAA0dH4SinkR_8IdentityQy_ALRtzr0_lF",
+        "offset_bits": 1038599,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=570 op29=0 op30=0 op31=2 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "GiftUILayout.publishLayout<A, B where A: GiftUILayout.LayoutWorkspace, B: GiftUILayout.LayoutResultSink, A.Identity == B.Identity>(summary: GiftUILayout.LayoutSummary, workspace: inout A, sink: inout B) -> GiftUILayout.LayoutResult",
+      "module": "GiftUILayout",
+      "name": "$s12GiftUILayout13publishLayout7summary9workspace4sinkAA0D6ResultOAA0D7SummaryV_xzq_ztAA0D9WorkspaceRzAA0dH4SinkR_8IdentityQy_ALRtzr0_lF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 18,
+        "demangled": "(extension in GiftUIRuntimeCore):GiftUIRuntimeCore.ObservableCanvasInvocationSource< where A: ~Swift.Copyable>.invokeCanvas(at: C, context: inout GiftUI.GraphicsContext, size: GiftUI.Size) throws(GiftUI.DrawingError) -> ()",
+        "function_id": 202,
+        "hash": 2317015156,
+        "identifier_id": 465,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s17GiftUIRuntimeCore32ObservableCanvasInvocationSourceVAARi_zrlE06invokeE02at7context4sizeyq0__0A2UI15GraphicsContextVzAH4SizeVtAH12DrawingErrorOYKF",
+        "offset_bits": 606334,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=5 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=490 op29=0 op30=0 op31=4 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIRuntimeCore):GiftUIRuntimeCore.ObservableCanvasInvocationSource< where A: ~Swift.Copyable>.invokeCanvas(at: C, context: inout GiftUI.GraphicsContext, size: GiftUI.Size) throws(GiftUI.DrawingError) -> ()",
+      "module": "GiftUIRuntimeCore",
+      "name": "$s17GiftUIRuntimeCore32ObservableCanvasInvocationSourceVAARi_zrlE06invokeE02at7context4sizeyq0__0A2UI15GraphicsContextVzAH4SizeVtAH12DrawingErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 25,
+        "demangled": "static GiftUIRuntimeCore.RuntimeRecordInteractionBridge.dispatch<A, B, C, D where A: GiftUIInteraction.InteractionCommittedActionView, B: GiftUIObservableState.ObservableModelMutation, B: GiftUIObservableState.ObservableStateModel, C: Swift.Equatable, C: Swift.Sendable, D: GiftUI.GiftUIAction, A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable>(_: GiftUIExecution.CapturedAction<A.Identity>, records: A, target: GiftUIObservableState.ObservableStateRootTargetAccess<B, C>, actionType: D.Type, operation: (D) -> B.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIRuntimeCore.RuntimeRecordInteractionDispatchResult",
+        "function_id": 183,
+        "hash": 273334774,
+        "identifier_id": 557,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO8dispatch_7records6target10actionType9operationAA0deF14DispatchResultO0A11UIExecution14CapturedActionVy8IdentityQzG_x0A17UIObservableState010ObservableU16RootTargetAccessVyq_q0_Gq1_m8MutationAQ0v5ModelZ0PQy_q1_XEt0A13UIInteraction0f9CommittedR4ViewRzAqVR_AQ0vU5ModelR_SQR0_s8SendableR0_0A2UI0A8UIActionR1_Ri_zRi0_zRi__r2_lFZ",
+        "offset_bits": 570465,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=6 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=434 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "static GiftUIRuntimeCore.RuntimeRecordInteractionBridge.dispatch<A, B, C, D where A: GiftUIInteraction.InteractionCommittedActionView, B: GiftUIObservableState.ObservableModelMutation, B: GiftUIObservableState.ObservableStateModel, C: Swift.Equatable, C: Swift.Sendable, D: GiftUI.GiftUIAction, A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable>(_: GiftUIExecution.CapturedAction<A.Identity>, records: A, target: GiftUIObservableState.ObservableStateRootTargetAccess<B, C>, actionType: D.Type, operation: (D) -> B.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIRuntimeCore.RuntimeRecordInteractionDispatchResult",
+      "module": "GiftUIRuntimeCore",
+      "name": "$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO8dispatch_7records6target10actionType9operationAA0deF14DispatchResultO0A11UIExecution14CapturedActionVy8IdentityQzG_x0A17UIObservableState010ObservableU16RootTargetAccessVyq_q0_Gq1_m8MutationAQ0v5ModelZ0PQy_q1_XEt0A13UIInteraction0f9CommittedR4ViewRzAqVR_AQ0vU5ModelR_SQR0_s8SendableR0_0A2UI0A8UIActionR1_Ri_zRi0_zRi__r2_lFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 43,
+        "demangled": "static GiftUIRuntimeCore.RuntimeCompletePipeline.run<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+        "function_id": 382,
+        "hash": 3252421790,
+        "identifier_id": 474,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO3run5ownerAA0deF6ResultOy12OwnerFailureQzGxz_tAA0defJ0RzRi_zRi0_zlFZ",
+        "offset_bits": 794863,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=621 op29=0 op30=0 op31=15 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "static GiftUIRuntimeCore.RuntimeCompletePipeline.run<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+      "module": "GiftUIRuntimeCore",
+      "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO3run5ownerAA0deF6ResultOy12OwnerFailureQzGxz_tAA0defJ0RzRi_zRi0_zlFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 4,
+        "demangled": "static GiftUIRuntimeCore.RuntimeCompletePipeline.finishOfferWithoutCommit<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(operational: GiftUIExecution.ExecutionOperational, state: GiftUIExecution.PresentationIntentState, wakeReasons: GiftUIExecution.ExecutionWakeReasons, frameDisposition: GiftUIExecution.LogicalFrameDisposition, publication: GiftUIRuntimeCore.RuntimePipelinePublication, acquired: GiftUIRuntimeCore.RuntimeCleanupActions, owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+        "function_id": 383,
+        "hash": 3558831572,
+        "identifier_id": 424,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO24finishOfferWithoutCommit11operational5state11wakeReasons16frameDisposition11publication8acquired5ownerAA0deF6ResultOy12OwnerFailureQzG0A11UIExecution20ExecutionOperationalO_AQ23PresentationIntentStateOAQ0x4WakeN0VAQ012LogicalFrameP0OAA0dF11PublicationVAA0D14CleanupActionsVxztAA0defU0RzRi_zRi0_zlFZ",
+        "offset_bits": 907808,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=689 op29=0 op30=0 op31=16 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "static GiftUIRuntimeCore.RuntimeCompletePipeline.finishOfferWithoutCommit<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(operational: GiftUIExecution.ExecutionOperational, state: GiftUIExecution.PresentationIntentState, wakeReasons: GiftUIExecution.ExecutionWakeReasons, frameDisposition: GiftUIExecution.LogicalFrameDisposition, publication: GiftUIRuntimeCore.RuntimePipelinePublication, acquired: GiftUIRuntimeCore.RuntimeCleanupActions, owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+      "module": "GiftUIRuntimeCore",
+      "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO24finishOfferWithoutCommit11operational5state11wakeReasons16frameDisposition11publication8acquired5ownerAA0deF6ResultOy12OwnerFailureQzG0A11UIExecution20ExecutionOperationalO_AQ23PresentationIntentStateOAQ0x4WakeN0VAQ012LogicalFrameP0OAA0dF11PublicationVAA0D14CleanupActionsVxztAA0defU0RzRi_zRi0_zlFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 26,
+        "demangled": "static GiftUIRuntimeCore.RuntimeCompletePipeline.fail<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(priorIntent: GiftUIExecution.PresentationIntentState, at: GiftUIRuntimeCore.RuntimeCompletePipelineStage, failure: GiftUIExecution.RunCycleFailure<A.OwnerFailure>, mutationApplied: Swift.Bool, publication: GiftUIRuntimeCore.RuntimePipelinePublication?, acquired: GiftUIRuntimeCore.RuntimeCleanupActions, owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+        "function_id": 373,
+        "hash": 3993184623,
+        "identifier_id": 391,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO4fail11priorIntent2at7failure15mutationApplied11publication8acquired5ownerAA0deF6ResultOy12OwnerFailureQzG0A11UIExecution012PresentationI5StateO_AA0deF5StageOAQ08RunCycleS0OyAOGSbAA0dF11PublicationVSgAA0D14CleanupActionsVxztAA0defR0RzRi_zRi0_zlFZ",
+        "offset_bits": 745145,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=5 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=629 op29=0 op30=0 op31=13 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "static GiftUIRuntimeCore.RuntimeCompletePipeline.fail<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(priorIntent: GiftUIExecution.PresentationIntentState, at: GiftUIRuntimeCore.RuntimeCompletePipelineStage, failure: GiftUIExecution.RunCycleFailure<A.OwnerFailure>, mutationApplied: Swift.Bool, publication: GiftUIRuntimeCore.RuntimePipelinePublication?, acquired: GiftUIRuntimeCore.RuntimeCleanupActions, owner: inout A) -> GiftUIRuntimeCore.RuntimeCompletePipelineResult<A.OwnerFailure>",
+      "module": "GiftUIRuntimeCore",
+      "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO4fail11priorIntent2at7failure15mutationApplied11publication8acquired5ownerAA0deF6ResultOy12OwnerFailureQzG0A11UIExecution012PresentationI5StateO_AA0deF5StageOAQ08RunCycleS0OyAOGSbAA0dF11PublicationVSgAA0D14CleanupActionsVxztAA0defR0RzRi_zRi0_zlFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 4,
+        "demangled": "static GiftUIRuntimeCore.RuntimeCompletePipeline.cleanup<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(after: GiftUIRuntimeCore.RuntimeCoordinatorStage, acquired: GiftUIRuntimeCore.RuntimeCleanupActions, owner: inout A) -> ()",
+        "function_id": 374,
+        "hash": 1989828777,
+        "identifier_id": 402,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO7cleanup5after8acquired5owneryAA0D16CoordinatorStageO_AA0D14CleanupActionsVxztAA0deF5OwnerRzRi_zRi0_zlFZ",
+        "offset_bits": 764659,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=645 op29=0 op30=0 op31=14 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "static GiftUIRuntimeCore.RuntimeCompletePipeline.cleanup<A where A: GiftUIRuntimeCore.RuntimeCompletePipelineOwner, A: ~Swift.Copyable, A: ~Swift.Escapable>(after: GiftUIRuntimeCore.RuntimeCoordinatorStage, acquired: GiftUIRuntimeCore.RuntimeCleanupActions, owner: inout A) -> ()",
+      "module": "GiftUIRuntimeCore",
+      "name": "$s17GiftUIRuntimeCore23RuntimeCompletePipelineO7cleanup5after8acquired5owneryAA0D16CoordinatorStageO_AA0D14CleanupActionsVxztAA0deF5OwnerRzRi_zRi0_zlFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 44,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveDown(at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+        "function_id": 111,
+        "hash": 2953884724,
+        "identifier_id": 207,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+        "offset_bits": 423075,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=336 op29=0 op30=0 op31=5 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveDown(at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A2UI5PointV_tF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 13,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveMove(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+        "function_id": 55,
+        "hash": 1752837523,
+        "identifier_id": 121,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+        "offset_bits": 300607,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=209 op29=0 op30=0 op31=5 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveMove(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 13,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveUp(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+        "function_id": 114,
+        "hash": 1492478232,
+        "identifier_id": 249,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+        "offset_bits": 477733,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=209 op29=0 op30=0 op31=5 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveUp(_: GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<GiftUISemanticCore.SemanticCompleteIdentity>",
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy0A14UISemanticCore24SemanticCompleteIdentityVG0A11UIExecution14CapturedActionVyAJG_0A2UI5PointVtF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 45,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveDown(at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>",
+        "function_id": 112,
+        "hash": 2876897784,
+        "identifier_id": 317,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy8IdentityQzG0A2UI5PointV_tF",
+        "offset_bits": 446402,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=339 op29=0 op30=0 op31=3 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveDown(at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>",
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveDown2atAA21PointerGestureOutcomeOy8IdentityQzG0A2UI5PointV_tF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 12,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveMove(_: GiftUIExecution.CapturedAction<A.Identity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>",
+        "function_id": 113,
+        "hash": 3712671542,
+        "identifier_id": 261,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy8IdentityQzG0A11UIExecution14CapturedActionVyAIG_0A2UI5PointVtF",
+        "offset_bits": 470832,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=5 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=350 op29=0 op30=0 op31=3 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveMove(_: GiftUIExecution.CapturedAction<A.Identity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>",
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE11resolveMove_2atAA21PointerGestureOutcomeOy8IdentityQzG0A11UIExecution14CapturedActionVyAIG_0A2UI5PointVtF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 12,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveUp(_: GiftUIExecution.CapturedAction<A.Identity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>",
+        "function_id": 115,
+        "hash": 3031139163,
+        "identifier_id": 271,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy8IdentityQzG0A11UIExecution14CapturedActionVyAIG_0A2UI5PointVtF",
+        "offset_bits": 484539,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=5 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=350 op29=0 op30=0 op31=3 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveUp(_: GiftUIExecution.CapturedAction<A.Identity>, at: GiftUI.Point) -> GiftUIInteraction.PointerGestureOutcome<A.Identity>",
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE9resolveUp_2atAA21PointerGestureOutcomeOy8IdentityQzG0A11UIExecution14CapturedActionVyAIG_0A2UI5PointVtF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 40,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.topmostRecord(at: GiftUI.Point) -> GiftUIInteraction.BoundActionRecord<A.Identity>?",
+        "function_id": 156,
+        "hash": 1564633111,
+        "identifier_id": 199,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13topmostRecord2atAA011BoundActionF0Vy8IdentityQzGSg0A2UI5PointV_tF",
+        "offset_bits": 540504,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=410 op29=0 op30=0 op31=3 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.topmostRecord(at: GiftUI.Point) -> GiftUIInteraction.BoundActionRecord<A.Identity>?",
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13topmostRecord2atAA011BoundActionF0Vy8IdentityQzGSg0A2UI5PointV_tF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 9,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.record(identity: A.Identity) -> GiftUIInteraction.BoundActionRecord<A.Identity>?",
+        "function_id": 34,
+        "hash": 1735550625,
+        "identifier_id": 97,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF",
+        "offset_bits": 221528,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=5 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=111 op29=0 op30=0 op31=3 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.record(identity: A.Identity) -> GiftUIInteraction.BoundActionRecord<A.Identity>?",
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 11,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.capturedRecord(_: GiftUIExecution.CapturedAction<A.Identity>, contains: GiftUI.Point) -> GiftUIInteraction.BoundActionRecord<A.Identity>?",
+        "function_id": 33,
+        "hash": 2516063527,
+        "identifier_id": 96,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE14capturedRecord_8containsAA011BoundActionF0Vy8IdentityQzGSg0A11UIExecution08CapturedI0VyAIG_0A2UI5PointVtF",
+        "offset_bits": 215348,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=5 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=101 op29=0 op30=0 op31=3 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.capturedRecord(_: GiftUIExecution.CapturedAction<A.Identity>, contains: GiftUI.Point) -> GiftUIInteraction.BoundActionRecord<A.Identity>?",
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE14capturedRecord_8containsAA011BoundActionF0Vy8IdentityQzGSg0A11UIExecution08CapturedI0VyAIG_0A2UI5PointVtF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "GiftUIExecution.CapturedAction.init(identity: A, generation: GiftUIExecution.ActionGeneration) -> GiftUIExecution.CapturedAction<A>",
+        "function_id": 608,
+        "hash": 754488970,
+        "identifier_id": 1185,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s15GiftUIExecution14CapturedActionV8identity10generationACyxGx_AA0D10GenerationVtcfC",
+        "offset_bits": 1388401,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=6 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=947 op29=0 op30=0 op31=11 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "GiftUIExecution.CapturedAction.init(identity: A, generation: GiftUIExecution.ActionGeneration) -> GiftUIExecution.CapturedAction<A>",
+      "module": "GiftUIExecution",
+      "name": "$s15GiftUIExecution14CapturedActionV8identity10generationACyxGx_AA0D10GenerationVtcfC",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 7,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.modelKey(identity: B, ordinal: Swift.UInt16) -> GiftUI._GiftUIModelKey<A.Schema>?",
+        "function_id": 335,
+        "hash": 3001702673,
+        "identifier_id": 412,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+        "offset_bits": 921932,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=728 op29=0 op30=0 op31=8 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.modelKey(identity: B, ordinal: Swift.UInt16) -> GiftUI._GiftUIModelKey<A.Schema>?",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 18,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.matching(_: B, ordinal: Swift.UInt16) -> Swift.Int?",
+        "function_id": 48,
+        "hash": 1665217331,
+        "identifier_id": 189,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8matching_7ordinalSiSgq__s6UInt16VtF",
+        "offset_bits": 418986,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=340 op29=0 op30=0 op31=8 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.matching(_: B, ordinal: Swift.UInt16) -> Swift.Int?",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8matching_7ordinalSiSgq__s6UInt16VtF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.key(at: Swift.Int) -> GiftUI._GiftUIModelKey<A.Schema>",
+        "function_id": 34,
+        "hash": 3575272487,
+        "identifier_id": 178,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE3key2at0A2UI01_A10UIModelKeyVy6SchemaQzGSi_tF",
+        "offset_bits": 370387,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=307 op29=0 op30=0 op31=8 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.key(at: Swift.Int) -> GiftUI._GiftUIModelKey<A.Schema>",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE3key2at0A2UI01_A10UIModelKeyVy6SchemaQzGSi_tF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.belongs(to: GiftUIObservableState.ObservableModelScope<A, A.Schema>) -> Swift.Bool",
+        "function_id": 15,
+        "hash": 176243202,
+        "identifier_id": 49,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7belongs2toSbAA0d5ModelF0Vyx6SchemaQzG_tF",
+        "offset_bits": 198560,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=1 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=20 op29=0 op30=0 op31=8 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.belongs(to: GiftUIObservableState.ObservableModelScope<A, A.Schema>) -> Swift.Bool",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7belongs2toSbAA0d5ModelF0Vyx6SchemaQzG_tF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 6,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<A.GiftUIObservableState.ObservableStateModel.Schema>, mutation: A.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIObservableState.ObservableStateResult",
+        "function_id": 341,
+        "hash": 3092051206,
+        "identifier_id": 408,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+        "offset_bits": 977540,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=747 op29=0 op30=0 op31=27 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<A.GiftUIObservableState.ObservableStateModel.Schema>, mutation: A.GiftUIObservableState.ObservableModelMutation.Mutation) -> GiftUIObservableState.ObservableStateResult",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate_8mutationAA0dC6ResultO0A2UI01_A10UIModelKeyVy6SchemaAA0dC5ModelPQzG_8MutationAA0dnO0PQztAaQRzrlF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 14,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.sharesOwner(with: GiftUIObservableState.ObservableModelScope<A, B>) -> Swift.Bool",
+        "function_id": 16,
+        "hash": 1315856875,
+        "identifier_id": 114,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE11sharesOwner4withSbACyxq_G_tF",
+        "offset_bits": 199551,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=1 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=120 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.sharesOwner(with: GiftUIObservableState.ObservableModelScope<A, B>) -> Swift.Bool",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE11sharesOwner4withSbACyxq_G_tF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 10,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.report< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(GiftUI._GiftUIModelKey<B>) -> GiftUI._GiftUIObservableChangeReportOutcome",
+        "function_id": 221,
+        "hash": 687445614,
+        "identifier_id": 307,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6reporty0A2UI01_aB19ChangeReportOutcomeOAE01_A10UIModelKeyVyq_GAA0dcE0Rz6SchemaQzRs_rlF",
+        "offset_bits": 724337,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=548 op29=0 op30=0 op31=16 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.report< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(GiftUI._GiftUIModelKey<B>) -> GiftUI._GiftUIObservableChangeReportOutcome",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6reporty0A2UI01_aB19ChangeReportOutcomeOAE01_A10UIModelKeyVyq_GAA0dcE0Rz6SchemaQzRs_rlF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 3,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.endFrame() throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "function_id": 232,
+        "hash": 714026603,
+        "identifier_id": 277,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+        "offset_bits": 779830,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=589 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.endFrame() throws(GiftUIObservableState.ObservableStateError) -> ()",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8endFrameyyAA0dC5ErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.phase.getter : GiftUIObservableState.ObservableModelOwnership.Phase",
+        "function_id": 49,
+        "hash": 113530575,
+        "identifier_id": 188,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE5phaseAA0dE9OwnershipV5PhaseOvg",
+        "offset_bits": 431614,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=338 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.phase.getter : GiftUIObservableState.ObservableModelOwnership.Phase",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE5phaseAA0dE9OwnershipV5PhaseOvg",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, mutation: A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+        "function_id": 227,
+        "hash": 1811034102,
+        "identifier_id": 305,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_8mutation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+        "offset_bits": 753668,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=5 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=565 op29=0 op30=0 op31=21 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, mutation: A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_8mutation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 25,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, operation: () -> A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+        "function_id": 228,
+        "hash": 3976850989,
+        "identifier_id": 269,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+        "offset_bits": 755585,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=6 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=573 op29=0 op30=0 op31=21 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.mutate< where A: GiftUIObservableState.ObservableModelMutation>(_: GiftUI._GiftUIModelKey<B>, operation: () -> A.Mutation, report: () -> GiftUI._GiftUIObservableChangeReportOutcome) -> GiftUIObservableState.ObservableStateResult",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 14,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableSemanticBodyBinding< where A: ~Swift.Copyable>.evaluate<A where C == A1.Domain, A1: GiftUI.View, A1.Domain == A1.Body.Domain>(_: A1, beforeBody: () -> GiftUISemanticCore.SemanticExpansionError?, body: (GiftUI._GiftUIFrameRead<C>) throws(GiftUI._GiftUIAccessFailure) -> A1.Body) -> GiftUISemanticCore.SemanticBodyEvaluation<A1.Body, GiftUIObservableState.ObservableStateError>",
+        "function_id": 362,
+        "hash": 1961371892,
+        "identifier_id": 403,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE8evaluate_06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F0Qyd__AA0dC5ErrorOGqd___AG0e9ExpansionN0OSgyXEAK0A2UI01_A11UIFrameReadVyq0_GAR01_A15UIAccessFailureOYKXEt6DomainQyd__Rs0_AR4ViewRd__AJ_AXQYd__AYRSlF",
+        "offset_bits": 1020527,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=8 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=814 op29=0 op30=0 op31=31 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableSemanticBodyBinding< where A: ~Swift.Copyable>.evaluate<A where C == A1.Domain, A1: GiftUI.View, A1.Domain == A1.Body.Domain>(_: A1, beforeBody: () -> GiftUISemanticCore.SemanticExpansionError?, body: (GiftUI._GiftUIFrameRead<C>) throws(GiftUI._GiftUIAccessFailure) -> A1.Body) -> GiftUISemanticCore.SemanticBodyEvaluation<A1.Body, GiftUIObservableState.ObservableStateError>",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE8evaluate_06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F0Qyd__AA0dC5ErrorOGqd___AG0e9ExpansionN0OSgyXEAK0A2UI01_A11UIFrameReadVyq0_GAR01_A15UIAccessFailureOYKXEt6DomainQyd__Rs0_AR4ViewRd__AJ_AXQYd__AYRSlF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 23,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableSemanticBodyBinding< where A: ~Swift.Copyable>.evaluateStateful<A where C == A1.GiftUI.View.Domain, A1: GiftUI.View, A1: GiftUI._GiftUIObservableStateHost, A1.GiftUI.View.Domain == A1.GiftUI.View.Body.Domain>(_: A1, structuralIdentity: B, beforeBody: () -> GiftUISemanticCore.SemanticExpansionError?, body: (A1, GiftUI._GiftUIFrameRead<C>) throws(GiftUI._GiftUIAccessFailure) -> A1.GiftUI.View.Body) -> GiftUISemanticCore.SemanticBodyEvaluation<A1.GiftUI.View.Body, GiftUIObservableState.ObservableStateError>",
+        "function_id": 363,
+        "hash": 2605861673,
+        "identifier_id": 530,
+        "inline_strategy": 2,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+        "offset_bits": 1031747,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=2 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=9 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=835 op29=0 op30=0 op31=32 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableSemanticBodyBinding< where A: ~Swift.Copyable>.evaluateStateful<A where C == A1.GiftUI.View.Domain, A1: GiftUI.View, A1: GiftUI._GiftUIObservableStateHost, A1.GiftUI.View.Domain == A1.GiftUI.View.Body.Domain>(_: A1, structuralIdentity: B, beforeBody: () -> GiftUISemanticCore.SemanticExpansionError?, body: (A1, GiftUI._GiftUIFrameRead<C>) throws(GiftUI._GiftUIAccessFailure) -> A1.GiftUI.View.Body) -> GiftUISemanticCore.SemanticBodyEvaluation<A1.GiftUI.View.Body, GiftUIObservableState.ObservableStateError>",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState29ObservableSemanticBodyBindingVAARi_zrlE16evaluateStateful_18structuralIdentity06beforeF04body0A14UISemanticCore0eF10EvaluationOy0F00A2UI4ViewPQyd__AA0dC5ErrorOGqd___q_AH0e9ExpansionS0OSgyXEAOqd___AL01_A11UIFrameReadVyq0_GtAL01_A15UIAccessFailureOYKXEt6DomainANQyd__Rs0_AlMRd__AL01_abC4HostRd__AkN_A_QYd__A0_RSlF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "GiftUIObservableState.ObservableModelOwnership.address<A>(for: GiftUI._GiftUIModelKey<A>) -> GiftUIObservableState.ObservableModelOwnership.Address",
+        "function_id": 31,
+        "hash": 3085845690,
+        "identifier_id": 174,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState24ObservableModelOwnershipV7address3forAC7AddressV0A2UI01_A10UIModelKeyVyxG_tlF",
+        "offset_bits": 353126,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=291 op29=0 op30=0 op31=17 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "GiftUIObservableState.ObservableModelOwnership.address<A>(for: GiftUI._GiftUIModelKey<A>) -> GiftUIObservableState.ObservableModelOwnership.Address",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState24ObservableModelOwnershipV7address3forAC7AddressV0A2UI01_A10UIModelKeyVyxG_tlF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 19,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.preserved(_: B, ordinal: Swift.UInt16, state: inout GiftUI.State<A.Schema>) throws(GiftUIObservableState.ObservableStateError) -> Swift.Bool",
+        "function_id": 47,
+        "hash": 4198790047,
+        "identifier_id": 123,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE9preserved_7ordinal5stateSbq__s6UInt16V0A2UI0C0Vy6SchemaQzGztAA0dC5ErrorOYKF",
+        "offset_bits": 407604,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=174 op29=0 op30=0 op31=8 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.preserved(_: B, ordinal: Swift.UInt16, state: inout GiftUI.State<A.Schema>) throws(GiftUIObservableState.ObservableStateError) -> Swift.Bool",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE9preserved_7ordinal5stateSbq__s6UInt16V0A2UI0C0Vy6SchemaQzGztAA0dC5ErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 80,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.install(_: B, ordinal: Swift.UInt16, state: inout GiftUI.State<A.Schema>, ticket: inout GiftUIObservableState.ObservableModelTicket<A.Schema>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "function_id": 27,
+        "hash": 4120204302,
+        "identifier_id": 128,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF",
+        "offset_bits": 283888,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=6 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=200 op29=0 op30=0 op31=8 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.install(_: B, ordinal: Swift.UInt16, state: inout GiftUI.State<A.Schema>, ticket: inout GiftUIObservableState.ObservableModelTicket<A.Schema>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 22,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.bind(_: inout GiftUI.State<A.Schema>, slot: Swift.Int) throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "function_id": 33,
+        "hash": 2110180785,
+        "identifier_id": 167,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE4bind_4sloty0A2UI0C0Vy6SchemaQzGz_SitAA0dC5ErrorOYKF",
+        "offset_bits": 356058,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=281 op29=0 op30=0 op31=8 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.bind(_: inout GiftUI.State<A.Schema>, slot: Swift.Int) throws(GiftUIObservableState.ObservableStateError) -> ()",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE4bind_4sloty0A2UI0C0Vy6SchemaQzGz_SitAA0dC5ErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 14,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.checkOperation(discovery: Swift.Bool) throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "function_id": 50,
+        "hash": 1702154723,
+        "identifier_id": 187,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE14checkOperation9discoveryySb_tAA0dC5ErrorOYKF",
+        "offset_bits": 432738,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=336 op29=0 op30=0 op31=8 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableStateRootScope< where A: ~Swift.Copyable>.checkOperation(discovery: Swift.Bool) throws(GiftUIObservableState.ObservableStateError) -> ()",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE14checkOperation9discoveryySb_tAA0dC5ErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 6,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.validateTicket(GiftUIObservableState.ObservableModelTicket<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "function_id": 218,
+        "hash": 2722032221,
+        "identifier_id": 303,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE14validateTicketyyAA0deH0Vyq_GAA0dC5ErrorOYKF",
+        "offset_bits": 717407,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=5 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=279 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.validateTicket(GiftUIObservableState.ObservableModelTicket<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE14validateTicketyyAA0deH0Vyq_GAA0dC5ErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 3,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.validateAssociation(GiftUI._GiftUIModelKey<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "function_id": 44,
+        "hash": 2070463011,
+        "identifier_id": 147,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE19validateAssociationyy0A2UI01_A10UIModelKeyVyq_GAA0dC5ErrorOYKF",
+        "offset_bits": 402217,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=239 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.validateAssociation(GiftUI._GiftUIModelKey<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE19validateAssociationyy0A2UI01_A10UIModelKeyVyq_GAA0dC5ErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 6,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.validateOperation(discovery: Swift.Bool) throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "function_id": 51,
+        "hash": 2403319924,
+        "identifier_id": 190,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE17validateOperation9discoveryySb_tAA0dC5ErrorOYKF",
+        "offset_bits": 439163,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=343 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.validateOperation(discovery: Swift.Bool) throws(GiftUIObservableState.ObservableStateError) -> ()",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE17validateOperation9discoveryySb_tAA0dC5ErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.requireStop() -> ()",
+        "function_id": 28,
+        "hash": 2325625067,
+        "identifier_id": 169,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE11requireStopyyF",
+        "offset_bits": 343061,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=286 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.requireStop() -> ()",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE11requireStopyyF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 11,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.attach< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(_: GiftUI._GiftUIModelKey<B>, sink: __owned GiftUI._GiftUIObservableChangeSink) throws(GiftUIObservableState.ObservableStateError) -> GiftUI._GiftUIObservationAttachment?",
+        "function_id": 37,
+        "hash": 291005294,
+        "identifier_id": 163,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6attach_4sink0A2UI01_A23UIObservationAttachmentVSgAF01_A10UIModelKeyVyq_G_AF01_aB10ChangeSinkVntAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF",
+        "offset_bits": 382012,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=274 op29=0 op30=0 op31=16 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.attach< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(_: GiftUI._GiftUIModelKey<B>, sink: __owned GiftUI._GiftUIObservableChangeSink) throws(GiftUIObservableState.ObservableStateError) -> GiftUI._GiftUIObservationAttachment?",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6attach_4sink0A2UI01_A23UIObservationAttachmentVSgAF01_A10UIModelKeyVyq_G_AF01_aB10ChangeSinkVntAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 14,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.detach< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(_: GiftUI._GiftUIModelKey<B>, attachment: GiftUI._GiftUIObservationAttachment) throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "function_id": 30,
+        "hash": 703460216,
+        "identifier_id": 168,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF",
+        "offset_bits": 345314,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=284 op29=0 op30=0 op31=16 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.detach< where A: GiftUIObservableState.ObservableStateModel, B == A.Schema>(_: GiftUI._GiftUIModelKey<B>, attachment: GiftUI._GiftUIObservationAttachment) throws(GiftUIObservableState.ObservableStateError) -> ()",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 17,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.release(inout GiftUIObservableState.ObservableModelTicket<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "function_id": 24,
+        "hash": 618431006,
+        "identifier_id": 129,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE7releaseyyAA0dE6TicketVyq_GzAA0dC5ErrorOYKF",
+        "offset_bits": 271498,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=202 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.release(inout GiftUIObservableState.ObservableModelTicket<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE7releaseyyAA0dE6TicketVyq_GzAA0dC5ErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 11,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.register(GiftUIObservableState.ObservableModelTicket<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "function_id": 35,
+        "hash": 2379250665,
+        "identifier_id": 166,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8registeryyAA0dE6TicketVyq_GAA0dC5ErrorOYKF",
+        "offset_bits": 374921,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=5 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=279 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.register(GiftUIObservableState.ObservableModelTicket<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE8registeryyAA0dE6TicketVyq_GAA0dC5ErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 3,
+        "demangled": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.pin(GiftUI._GiftUIModelKey<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+        "function_id": 42,
+        "hash": 2420037548,
+        "identifier_id": 154,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE3pinyy0A2UI01_A10UIModelKeyVyq_GAA0dC5ErrorOYKF",
+        "offset_bits": 398011,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=239 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIObservableState):GiftUIObservableState.ObservableModelScope< where A: ~Swift.Copyable>.pin(GiftUI._GiftUIModelKey<B>) throws(GiftUIObservableState.ObservableStateError) -> ()",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE3pinyy0A2UI01_A10UIModelKeyVyq_GAA0dC5ErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 6,
+        "demangled": "GiftUIObservableState.ObservableModelTicket.requireClaim() throws(GiftUIObservableState.ObservableStateError) -> GiftUIObservableState.ObservableModelOwnership.Claim",
+        "function_id": 26,
+        "hash": 2505331863,
+        "identifier_id": 142,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState21ObservableModelTicketV12requireClaimAA0dE9OwnershipV0H0VyAA0dC5ErrorOYKF",
+        "offset_bits": 281226,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=225 op29=0 op30=0 op31=15 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "GiftUIObservableState.ObservableModelTicket.requireClaim() throws(GiftUIObservableState.ObservableStateError) -> GiftUIObservableState.ObservableModelOwnership.Claim",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState21ObservableModelTicketV12requireClaimAA0dE9OwnershipV0H0VyAA0dC5ErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "GiftUIObservableState.ObservableModelTicket.endOwnership() -> ()",
+        "function_id": 25,
+        "hash": 2656286833,
+        "identifier_id": 144,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState21ObservableModelTicketV12endOwnershipyyF",
+        "offset_bits": 280135,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=231 op29=0 op30=0 op31=15 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "GiftUIObservableState.ObservableModelTicket.endOwnership() -> ()",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState21ObservableModelTicketV12endOwnershipyyF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "GiftUIObservableState.ObservableModelTicket.key.getter : GiftUI._GiftUIModelKey<A>",
+        "function_id": 45,
+        "hash": 770620290,
+        "identifier_id": 146,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s21GiftUIObservableState21ObservableModelTicketV3key0A2UI01_A10UIModelKeyVyxGvg",
+        "offset_bits": 404907,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=237 op29=0 op30=0 op31=15 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "GiftUIObservableState.ObservableModelTicket.key.getter : GiftUI._GiftUIModelKey<A>",
+      "module": "GiftUIObservableState",
+      "name": "$s21GiftUIObservableState21ObservableModelTicketV3key0A2UI01_A10UIModelKeyVyxGvg",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "static GiftUIDrawing.CanvasSemanticPayloadCodec.modifier<A where A1: GiftUI._GiftUISemanticModifierPayload>(_: A1, chainIndex: Swift.UInt16, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUIDrawing.CanvasSemanticPayload<B.CaptureStorage>>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 22,
+        "hash": 613866557,
+        "identifier_id": 63,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+        "offset_bits": 187001,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=76 op29=0 op30=0 op31=4 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "F13 actual generic boundary",
+      "module": "GiftUIDrawing",
+      "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 4,
+        "demangled": "static GiftUIDrawing.CanvasSemanticPayloadCodec.primitive<A where A1: GiftUI._GiftUISemanticPrimitivePayload>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUIDrawing.CanvasSemanticPayload<B.CaptureStorage>>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 25,
+        "hash": 3058718414,
+        "identifier_id": 66,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+        "offset_bits": 191043,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=93 op29=0 op30=0 op31=6 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "F14 actual generic boundary",
+      "module": "GiftUIDrawing",
+      "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 18,
+        "demangled": "static GiftUIDrawing.CanvasSemanticTransfer.stage<A where A: GiftUIDrawing.CanvasValueTable>(from: GiftUISemanticCore.SemanticRecordStore<GiftUIDrawing.CanvasSemanticPayload<A.CaptureStorage>>, into: GiftUIDrawing.CanvasStagedValues<GiftUISemanticCore.SemanticRecordReference, A>, table: A) throws(GiftUI.DrawingError) -> ()",
+        "function_id": 76,
+        "hash": 748443420,
+        "identifier_id": 160,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+        "offset_bits": 431985,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=304 op29=0 op30=0 op31=17 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "F15 actual generic boundary",
+      "module": "GiftUIDrawing",
+      "name": "$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from4into5tabley0A14UISemanticCore0D11RecordStoreVyAA0cD7PayloadOy14CaptureStorageQzGG_AA0C12StagedValuesVyAH0dL9ReferenceVxGxt0A2UI12DrawingErrorOYKAA0C10ValueTableRzlFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 6,
+        "demangled": "GiftUISemanticCore.SemanticRecordStore.candidate.getter : Swift.UInt8?",
+        "function_id": 612,
+        "hash": 1223589293,
+        "identifier_id": 515,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+        "offset_bits": 3992421,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1642 op29=0 op30=0 op31=91 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "F05 actual generic boundary",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 7,
+        "demangled": "GiftUISemanticCore.SemanticRecordBankBuffers.clear() -> ()",
+        "function_id": 592,
+        "hash": 3394786711,
+        "identifier_id": 506,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+        "offset_bits": 3571080,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=394 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "F06 actual generic boundary",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 15,
+        "demangled": "GiftUISemanticCore.SemanticRecordStore.discardCandidate() throws(GiftUISemanticCore.SemanticExpansionError) -> ()",
+        "function_id": 615,
+        "hash": 2303078701,
+        "identifier_id": 686,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+        "offset_bits": 4027224,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1648 op29=0 op30=0 op31=91 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "F19 actual generic boundary",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidateyyAA0D14ExpansionErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "static GiftUISemanticCore.SemanticStandardPayloadCodec.primitive<A where A1: GiftUI._GiftUISemanticPrimitivePayload>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUISemanticCore.SemanticStandardPayload>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 59,
+        "hash": 2908417614,
+        "identifier_id": 253,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writerAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyAA0deF0OGt0A2UI01_ab9PrimitiveF0Rd__lFZ",
+        "offset_bits": 313305,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=265 op29=0 op30=0 op31=16 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticStandardPayloadCodec.primitive direct",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writerAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyAA0deF0OGt0A2UI01_ab9PrimitiveF0Rd__lFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 26,
+        "demangled": "static GiftUISemanticCore.SemanticStandardPayloadCodec.primitive<A, B where A1: GiftUI._GiftUISemanticPrimitivePayload>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<B1>, wrapping: (GiftUISemanticCore.SemanticStandardPayload) -> B1) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 60,
+        "hash": 1425756594,
+        "identifier_id": 255,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZ",
+        "offset_bits": 314676,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=6 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=269 op29=0 op30=0 op31=17 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticStandardPayloadCodec.primitive wrapping",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "static GiftUISemanticCore.SemanticStandardPayloadCodec.modifier<A where A1: GiftUI._GiftUISemanticModifierPayload>(_: A1, chainIndex: Swift.UInt16, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUISemanticCore.SemanticStandardPayload>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 51,
+        "hash": 3810968506,
+        "identifier_id": 239,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO8modifier_10chainIndex6writerAA0D14ExpansionErrorOSgqd___s6UInt16VAA0dF6WriterVyAA0deF0OGt0A2UI01_ab8ModifierF0Rd__lFZ",
+        "offset_bits": 285847,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=207 op29=0 op30=0 op31=11 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticStandardPayloadCodec.modifier direct",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO8modifier_10chainIndex6writerAA0D14ExpansionErrorOSgqd___s6UInt16VAA0dF6WriterVyAA0deF0OGt0A2UI01_ab8ModifierF0Rd__lFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 17,
+        "demangled": "static GiftUISemanticCore.SemanticStandardPayloadCodec.modifier<A, B where A1: GiftUI._GiftUISemanticModifierPayload>(_: A1, chainIndex: Swift.UInt16, writer: GiftUISemanticCore.SemanticPayloadWriter<B1>, wrapping: (GiftUISemanticCore.SemanticStandardPayload) -> B1) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 52,
+        "hash": 3915752670,
+        "identifier_id": 241,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO8modifier_10chainIndex6writer8wrappingAA0D14ExpansionErrorOSgqd___s6UInt16VAA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab8ModifierF0Rd__r0_lFZ",
+        "offset_bits": 287342,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=6 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=211 op29=0 op30=0 op31=12 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticStandardPayloadCodec.modifier wrapping",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO8modifier_10chainIndex6writer8wrappingAA0D14ExpansionErrorOSgqd___s6UInt16VAA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab8ModifierF0Rd__r0_lFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "static GiftUISemanticCore.SemanticStandardPayloadCodec.action<A where A1: GiftUI.GiftUIAction>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUISemanticCore.SemanticStandardPayload>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 41,
+        "hash": 263301290,
+        "identifier_id": 191,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO6action_6writerAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyAA0deF0OGt0A2UI0A8UIActionRd__lFZ",
+        "offset_bits": 223650,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=134 op29=0 op30=0 op31=6 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticStandardPayloadCodec.action direct",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO6action_6writerAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyAA0deF0OGt0A2UI0A8UIActionRd__lFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 7,
+        "demangled": "static GiftUISemanticCore.SemanticStandardPayloadCodec.action<A, B where A1: GiftUI.GiftUIAction>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<B1>, wrapping: (GiftUISemanticCore.SemanticStandardPayload) -> B1) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 42,
+        "hash": 1491788174,
+        "identifier_id": 193,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO6action_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI0A8UIActionRd__r0_lFZ",
+        "offset_bits": 225021,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=6 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=141 op29=0 op30=0 op31=7 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticStandardPayloadCodec.action wrapping",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO6action_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI0A8UIActionRd__r0_lFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "static GiftUISemanticCore.SemanticStandardPayloadCodec.project<A, B>(_: A1, as: B1.Type) -> B1",
+        "function_id": 53,
+        "hash": 1722500041,
+        "identifier_id": 243,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO7project_2asqd_0_qd___qd_0_mtr0_lFZ",
+        "offset_bits": 301789,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=227 op29=0 op30=0 op31=13 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticStandardPayloadCodec.project",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO7project_2asqd_0_qd___qd_0_mtr0_lFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "static GiftUIDrawing.CanvasSemanticPayloadCodec.action<A where A1: GiftUI.GiftUIAction>(_: A1, writer: GiftUISemanticCore.SemanticPayloadWriter<GiftUIDrawing.CanvasSemanticPayload<B.CaptureStorage>>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 19,
+        "hash": 757675044,
+        "identifier_id": 58,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO6action_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI0A8UIActionRd__lFZ",
+        "offset_bits": 182959,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=57 op29=0 op30=0 op31=2 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "CanvasSemanticPayloadCodec.action",
+      "module": "GiftUIDrawing",
+      "name": "$s13GiftUIDrawing26CanvasSemanticPayloadCodecO6action_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI0A8UIActionRd__lFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "GiftUISemanticCore.SemanticPayloadWriter.store(_: __owned A, kind: GiftUISemanticCore.SemanticRuntimeRecord.Kind, chainIndex: Swift.UInt16, text: Swift.Span<Swift.UInt32>) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 44,
+        "hash": 4107087013,
+        "identifier_id": 199,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndex4textAA0D14ExpansionErrorOSgxn_AA0D13RuntimeRecordV4KindOs6UInt16Vs4SpanVys6UInt32VGtF",
+        "offset_bits": 233786,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=7 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=171 op29=0 op30=0 op31=8 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticPayloadWriter.store text",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndex4textAA0D14ExpansionErrorOSgxn_AA0D13RuntimeRecordV4KindOs6UInt16Vs4SpanVys6UInt32VGtF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "GiftUISemanticCore.SemanticPayloadWriter.store(_: __owned A, kind: GiftUISemanticCore.SemanticRuntimeRecord.Kind, chainIndex: Swift.UInt16) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 43,
+        "hash": 2419030073,
+        "identifier_id": 196,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndexAA0D14ExpansionErrorOSgxn_AA0D13RuntimeRecordV4KindOs6UInt16VtF",
+        "offset_bits": 230671,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=5 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=161 op29=0 op30=0 op31=8 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticPayloadWriter.store empty",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndexAA0D14ExpansionErrorOSgxn_AA0D13RuntimeRecordV4KindOs6UInt16VtF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 31,
+        "demangled": "GiftUISemanticCore.SemanticRecordBankBuffers.store(_: __owned A, kind: GiftUISemanticCore.SemanticRuntimeRecord.Kind, chainIndex: Swift.UInt16, text: Swift.Span<Swift.UInt32>, limits: GiftUISemanticCore.SemanticRecordLimits) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 45,
+        "hash": 975508820,
+        "identifier_id": 201,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5store_4kind10chainIndex4text6limitsAA0D14ExpansionErrorOSgxn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGAA0dE6LimitsVtF",
+        "offset_bits": 235573,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=7 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=173 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticRecordBankBuffers.store",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5store_4kind10chainIndex4text6limitsAA0D14ExpansionErrorOSgxn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGAA0dE6LimitsVtF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 6,
+        "demangled": "GiftUISemanticCore.SemanticRecordBankBuffers.fail(GiftUISemanticCore.SemanticExpansionError) -> GiftUISemanticCore.SemanticExpansionError",
+        "function_id": 47,
+        "hash": 1648042370,
+        "identifier_id": 204,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV4failyAA0D14ExpansionErrorOAFF",
+        "offset_bits": 279945,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=182 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticRecordBankBuffers.fail",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV4failyAA0D14ExpansionErrorOAFF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 4,
+        "demangled": "GiftUISemanticCore.SemanticRecordStore.bank(Swift.UInt8) -> GiftUISemanticCore.SemanticRecordBankBuffers<A>",
+        "function_id": 611,
+        "hash": 1146905571,
+        "identifier_id": 517,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore19SemanticRecordStoreV4bankyAA0dE11BankBuffersVyxGs5UInt8VF",
+        "offset_bits": 3990392,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1641 op29=0 op30=0 op31=91 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticRecordStore.bank",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore19SemanticRecordStoreV4bankyAA0dE11BankBuffersVyxGs5UInt8VF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 33,
+        "demangled": "GiftUISemanticCore.SemanticRecordStore.takePendingCanvas((GiftUISemanticCore.SemanticRecordReference, inout A) throws(GiftUISemanticCore.SemanticExpansionError) -> ()) throws(GiftUISemanticCore.SemanticExpansionError) -> ()",
+        "function_id": 622,
+        "hash": 1266891486,
+        "identifier_id": 847,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore19SemanticRecordStoreV17takePendingCanvasyyyAA0dE9ReferenceV_xztAA0D14ExpansionErrorOYKXEAHYKF",
+        "offset_bits": 4084307,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1680 op29=0 op30=0 op31=91 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticRecordStore.takePendingCanvas",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore19SemanticRecordStoreV17takePendingCanvasyyyAA0dE9ReferenceV_xztAA0D14ExpansionErrorOYKXEAHYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 4,
+        "demangled": "static P08CounterTable.P08CounterSchemaCanvasTable.payload<A where A1: GiftUI._GiftUISemanticPrimitivePayload>(A1) -> P08CounterTable.P08CounterSchemaCanvasValues<A>?",
+        "function_id": 10,
+        "hash": 1279387075,
+        "identifier_id": 29,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s15P08CounterTable0ab12SchemaCanvasC0V7payloadyAA0abdE6ValuesOyxGSgqd__6GiftUI01_H26UISemanticPrimitivePayloadRd__lFZ",
+        "offset_bits": 147058,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=43 op29=0 op30=0 op31=4 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "P08CounterSchemaCanvasTable.payload",
+      "module": "P08CounterTable",
+      "name": "$s15P08CounterTable0ab12SchemaCanvasC0V7payloadyAA0abdE6ValuesOyxGSgqd__6GiftUI01_H26UISemanticPrimitivePayloadRd__lFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "static P08CounterTable.P08CounterSchemaCanvasTable.caseID(for: P08CounterTable.P08CounterSchemaCanvasValues<A>) -> Swift.UInt16",
+        "function_id": 4,
+        "hash": 3577391403,
+        "identifier_id": 16,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s15P08CounterTable0ab12SchemaCanvasC0V6caseID3fors6UInt16VAA0abdE6ValuesOyxG_tFZ",
+        "offset_bits": 140115,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=1 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=20 op29=0 op30=0 op31=1 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "P08CounterSchemaCanvasTable.caseID",
+      "module": "P08CounterTable",
+      "name": "$s15P08CounterTable0ab12SchemaCanvasC0V6caseID3fors6UInt16VAA0abdE6ValuesOyxG_tFZ",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 9,
+        "demangled": "P08CounterTable.P08CounterSchemaCanvasTable.invoke(id: Swift.UInt16, captures: P08CounterTable.P08CounterSchemaCanvasValues<A>, context: inout GiftUI.GraphicsContext, size: GiftUI.Size, read: GiftUI._GiftUIFrameRead<A>) throws(GiftUI.DrawingError) -> ()",
+        "function_id": 3,
+        "hash": 3214484218,
+        "identifier_id": 15,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s15P08CounterTable0ab12SchemaCanvasC0V6invoke2id8captures7context4size4readys6UInt16V_AA0abdE6ValuesOyxG6GiftUI15GraphicsContextVzAO4SizeVAO01_N11UIFrameReadVyxGtAO12DrawingErrorOYKF",
+        "offset_bits": 134904,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=14 op29=0 op30=0 op31=1 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "P08CounterSchemaCanvasTable.invoke",
+      "module": "P08CounterTable",
+      "name": "$s15P08CounterTable0ab12SchemaCanvasC0V6invoke2id8captures7context4size4readys6UInt16V_AA0abdE6ValuesOyxG6GiftUI15GraphicsContextVzAO4SizeVAO01_N11UIFrameReadVyxGtAO12DrawingErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 4,
+        "demangled": "P08CounterTable.P08CounterSchemaCanvasTable.captureByteCount(for: Swift.UInt16) -> Swift.UInt16?",
+        "function_id": 6,
+        "hash": 4243277857,
+        "identifier_id": 24,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s15P08CounterTable0ab12SchemaCanvasC0V16captureByteCount3fors6UInt16VSgAG_tF",
+        "offset_bits": 141939,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=1 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=32 op29=0 op30=0 op31=1 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "P08CounterSchemaCanvasTable.captureByteCount",
+      "module": "P08CounterTable",
+      "name": "$s15P08CounterTable0ab12SchemaCanvasC0V16captureByteCount3fors6UInt16VSgAG_tF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "P08CounterTable.P08CounterSchemaCanvasTable.callableCaseCount.getter : Swift.UInt16",
+        "function_id": 8,
+        "hash": 822656718,
+        "identifier_id": 26,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s15P08CounterTable0ab12SchemaCanvasC0V17callableCaseCounts6UInt16Vvg",
+        "offset_bits": 145053,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=1 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=36 op29=0 op30=0 op31=1 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "P08CounterSchemaCanvasTable.callableCaseCount.getter",
+      "module": "P08CounterTable",
+      "name": "$s15P08CounterTable0ab12SchemaCanvasC0V17callableCaseCounts6UInt16Vvg",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 9,
+        "demangled": "(extension in GiftUI):GiftUI.Canvas._giftUIInvokeCanvas(context: inout GiftUI.GraphicsContext, size: GiftUI.Size, read: GiftUI._GiftUIFrameRead<A.Domain>) throws(GiftUI.DrawingError) -> ()",
+        "function_id": 273,
+        "hash": 534650054,
+        "identifier_id": 523,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s6GiftUI6CanvasPAAE013_giftUIInvokeC07context4size4readyAA15GraphicsContextVz_AA4SizeVAA01_A11UIFrameReadVy6DomainQzGtAA12DrawingErrorOYKF",
+        "offset_bits": 715527,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=613 op29=0 op30=0 op31=47 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "Canvas._giftUIInvokeCanvas",
+      "module": "GiftUI",
+      "name": "$s6GiftUI6CanvasPAAE013_giftUIInvokeC07context4size4readyAA15GraphicsContextVz_AA4SizeVAA01_A11UIFrameReadVy6DomainQzGtAA12DrawingErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 15,
+        "demangled": "(extension in GiftUISemanticCore):GiftUISemanticCore.SemanticExpansionTraversal< where C: ~Swift.Copyable, C: ~Swift.Escapable>.stopped.getter : Swift.Bool",
+        "function_id": 170,
+        "hash": 3788899604,
+        "identifier_id": 367,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+        "offset_bits": 709654,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=512 op29=0 op30=0 op31=30 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticExpansionTraversal.stopped.getter",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE7stoppedSbvg",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 17,
+        "demangled": "GiftUISemanticCore.RecordSink.publishExpansion(GiftUISemanticCore.SemanticExpansionSummary) -> Swift.Bool",
+        "function_id": 72,
+        "hash": 1887275708,
+        "identifier_id": 294,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+        "offset_bits": 380938,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=323 op29=0 op30=0 op31=19 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "RecordSink.publishExpansion(",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "GiftUISemanticCore.SemanticRecordStore.borrowedStore() -> GiftUISemanticCore.SemanticRecordStore<A>",
+        "function_id": 609,
+        "hash": 3367460263,
+        "identifier_id": 719,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+        "offset_bits": 3987230,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1638 op29=0 op30=0 op31=91 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticRecordStore.borrowedStore(",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore19SemanticRecordStoreV08borrowedF0ACyxGyF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 22,
+        "demangled": "GiftUISemanticCore.SemanticRecordStore.publishCandidate() throws(GiftUISemanticCore.SemanticExpansionError) -> ()",
+        "function_id": 616,
+        "hash": 3214904746,
+        "identifier_id": 720,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+        "offset_bits": 4038615,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1648 op29=0 op30=0 op31=91 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticRecordStore.publishCandidate(",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16publishCandidateyyAA0D14ExpansionErrorOYKF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 7,
+        "demangled": "GiftUISemanticCore.SemanticRecordStore.hasPendingCanvas(GiftUISemanticCore.SemanticRecordBankBuffers<A>) -> Swift.Bool",
+        "function_id": 617,
+        "hash": 3103952438,
+        "identifier_id": 520,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+        "offset_bits": 4050287,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1650 op29=0 op30=0 op31=91 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticRecordStore.hasPendingCanvas(",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 6,
+        "demangled": "GiftUISemanticCore.SemanticRecordStore.expansionBank(Swift.UInt8) -> GiftUISemanticCore.SemanticRecordBankBuffers<A>?",
+        "function_id": 624,
+        "hash": 2097703107,
+        "identifier_id": 535,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+        "offset_bits": 4115967,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=4 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1696 op29=0 op30=0 op31=91 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticRecordStore.expansionBank(",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore19SemanticRecordStoreV13expansionBankyAA0deH7BuffersVyxGSgs5UInt8VF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 53,
+        "demangled": "GiftUISemanticCore.SemanticRecordBankBuffers.enter(_: GiftUISemanticCore.SemanticPathComponent, limits: GiftUISemanticCore.SemanticRecordLimits) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 109,
+        "hash": 3942665186,
+        "identifier_id": 326,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+        "offset_bits": 490831,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=411 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticRecordBankBuffers.enter(",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 23,
+        "demangled": "GiftUISemanticCore.SemanticRecordBankBuffers.appendRecord(limits: GiftUISemanticCore.SemanticRecordLimits) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 81,
+        "hash": 3443474899,
+        "identifier_id": 303,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+        "offset_bits": 419252,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=369 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticRecordBankBuffers.appendRecord(",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 35,
+        "demangled": "GiftUISemanticCore.SemanticRecordBankBuffers.reconcile(with: GiftUISemanticCore.SemanticRecordBankBuffers<A>, limits: GiftUISemanticCore.SemanticRecordLimits) -> GiftUISemanticCore.SemanticExpansionError?",
+        "function_id": 594,
+        "hash": 3214486457,
+        "identifier_id": 522,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV9reconcile4with6limitsAA0D14ExpansionErrorOSgACyxG_AA0dE6LimitsVtF",
+        "offset_bits": 3580437,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=5 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1589 op29=0 op30=0 op31=9 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticRecordBankBuffers.reconcile(",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore25SemanticRecordBankBuffersV9reconcile4with6limitsAA0D14ExpansionErrorOSgACyxG_AA0dE6LimitsVtF",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 6,
+        "demangled": "GiftUISemanticCore.SemanticRecordStore.published.getter : Swift.UInt8?",
+        "function_id": 613,
+        "hash": 3859409488,
+        "identifier_id": 521,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9publisheds5UInt8VSgvg",
+        "offset_bits": 3998898,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1642 op29=0 op30=0 op31=91 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticRecordStore.published.getter",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9publisheds5UInt8VSgvg",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "GiftUISemanticCore.SemanticRecordStore.init(borrowing: __shared GiftUISemanticCore.SemanticRecordStore<A>) -> GiftUISemanticCore.SemanticRecordStore<A>",
+        "function_id": 610,
+        "hash": 2914793765,
+        "identifier_id": 513,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9borrowingACyxGAEh_tcfC",
+        "offset_bits": 3988163,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=1639 op29=0 op30=0 op31=91 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "SemanticRecordStore.init(borrowing:)",
+      "module": "GiftUISemanticCore",
+      "name": "$s18GiftUISemanticCore19SemanticRecordStoreV9borrowingACyxGAEh_tcfC",
+      "policy": "Exact previously qualified full mangled root; fresh unique nonzero body required"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 13,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveCandidate(GiftUIInteraction.InteractionCandidateDisposition) -> ()",
+        "function_id": 60,
+        "hash": 1008583663,
+        "identifier_id": 124,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF",
+        "offset_bits": 334914,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=229 op29=0 op30=0 op31=5 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionOwnedKeyState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveCandidate(GiftUIInteraction.InteractionCandidateDisposition) -> ()",
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cH11DispositionOF"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 1,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.candidateIsReadyForOffer.getter : Swift.Bool",
+        "function_id": 61,
+        "hash": 889266314,
+        "identifier_id": 125,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE24candidateIsReadyForOfferSbvg",
+        "offset_bits": 340761,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=3 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=231 op29=0 op30=0 op31=3 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.candidateIsReadyForOffer.getter : Swift.Bool",
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE24candidateIsReadyForOfferSbvg"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 11,
+        "demangled": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveCandidate(GiftUIInteraction.InteractionCandidateDisposition) -> ()",
+        "function_id": 40,
+        "hash": 717640648,
+        "identifier_id": 109,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF",
+        "offset_bits": 263455,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=147 op29=0 op30=0 op31=3 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "(extension in GiftUIInteraction):GiftUIInteraction.InteractionState< where A: ~Swift.Copyable, A: ~Swift.Escapable, B: ~Swift.Copyable, B: ~Swift.Escapable, C: ~Swift.Copyable, C: ~Swift.Escapable>.resolveCandidate(GiftUIInteraction.InteractionCandidateDisposition) -> ()",
+      "module": "GiftUIInteraction",
+      "name": "$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 4,
+        "demangled": "GiftUIRuntimeCore.RuntimeActionGenerationAllocator.resolveCandidate(committed: Swift.Bool) -> ()",
+        "function_id": 178,
+        "hash": 3616162541,
+        "identifier_id": 352,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF",
+        "offset_bits": 558592,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=2 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=415 op29=0 op30=0 op31=8 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "label": "GiftUIRuntimeCore.RuntimeActionGenerationAllocator.resolveCandidate(committed: Swift.Bool) -> ()",
+      "module": "GiftUIRuntimeCore",
+      "name": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV16resolveCandidate9committedySb_tF"
+    }
+  },
+  {
+    "matches": [
+      {
+        "basic_blocks": 4,
+        "demangled": "GiftUIRuntimeCore.RuntimeActionGenerationAllocator.adding(_: Swift.UInt32, to: Swift.UInt32) -> Swift.UInt32",
+        "function_id": 179,
+        "hash": 2186506113,
+        "identifier_id": 353,
+        "inline_strategy": 0,
+        "linkage": 0,
+        "name": "$s17GiftUIRuntimeCore32RuntimeActionGenerationAllocatorV6adding_2tos6UInt32VAG_AGtF",
+        "offset_bits": 561859,
+        "raw_prefix": [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record": "<SIL_FUNCTION abbrevid=4 op0=0 op1=0 op2=1 op3=0 op4=0 op5=0 op6=0 op7=0 op8=0 op9=3 op10=0 op11=0 op12=4 op13=1 op14=1 op15=0 op16=0 op17=0 op18=0 op19=0 op20=0 op21=0 op22=0 op23=0 op24=0 op25=0 op26=0 op27=0 op28=418 op29=0 op30=0 op31=8 op32=0 op33=1/> record string = ''",
+        "serialized_kind": 1
+      }
+    ],
+    "passed": true,
+    "target": {
+      "demangled_exact": "GiftUIRuntimeCore.RuntimeActionGenerationAllocator.adding(_: Swift.UInt32, to: Swift.UInt32) -> Swift.UInt32",
+      "label": "allocator adding exact source signature; capture fresh full mangled raw record",
+      "module": "GiftUIRuntimeCore"
+    }
+  }
+]

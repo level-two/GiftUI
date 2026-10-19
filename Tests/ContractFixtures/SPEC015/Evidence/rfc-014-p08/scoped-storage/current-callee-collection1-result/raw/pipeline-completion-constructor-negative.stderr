@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/pipeline-completion-constructor-negative.swift:4:225: error: 'RuntimePipelineCompletion' initializer is inaccessible due to 'internal' protection level
+2 | import GiftUIExecution
+3 | import GiftUIRuntimeCore
+4 | package func forward(publication: RuntimePipelinePublication, committedPresentationRevision: PresentationRevision?, operational: ExecutionOperational?, disposition: RuntimePipelineDisposition) -> RuntimePipelineCompletion { RuntimePipelineCompletion(publication: publication, committedPresentationRevision: committedPresentationRevision, operational: operational, disposition: disposition) }
+  |                                                                                                                                                                                                                                 `- error: 'RuntimePipelineCompletion' initializer is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift:97:14: note: 'init(publication:committedPresentationRevision:operational:disposition:)' declared here
+ 95 | 
+ 96 |     @usableFromInline
+ 97 |     internal init(
+    |              `- note: 'init(publication:committedPresentationRevision:operational:disposition:)' declared here
+ 98 |         publication: RuntimePipelinePublication,
+ 99 |         committedPresentationRevision: PresentationRevision?,

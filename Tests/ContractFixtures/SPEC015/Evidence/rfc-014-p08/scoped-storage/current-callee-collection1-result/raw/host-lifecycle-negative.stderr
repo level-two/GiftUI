@@ -1,0 +1,5 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/host-lifecycle-negative.swift:2:111: error: cannot assign to property: 'lifecycleState' setter is inaccessible
+1 | import GiftUIHostConfiguration
+2 | package func reject<F: Equatable & Sendable>(_ controller: inout MVPHostActivationController<F>) { controller.lifecycleState = .failed }
+  |                                                                                                               `- error: cannot assign to property: 'lifecycleState' setter is inaccessible
+3 | 

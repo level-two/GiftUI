@@ -1,0 +1,12 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/observable-rawkey-ownerInstance-negative.swift:4:72: error: 'ownerInstance' is inaccessible due to 'private' protection level
+2 | import GiftUIObservableState
+3 | import GiftUISemanticCore
+4 | package func forward<Schema>(_ key: _GiftUIModelKey<Schema>) { _ = key.ownerInstance }
+  |                                                                        `- error: 'ownerInstance' is inaccessible due to 'private' protection level
+5 | 
+
+GiftUI._GiftUIModelKey.ownerInstance:2:13: note: 'ownerInstance' declared here
+1 | generic struct _GiftUIModelKey {
+2 | private let ownerInstance: UInt32}
+  |             `- note: 'ownerInstance' declared here
+3 | 

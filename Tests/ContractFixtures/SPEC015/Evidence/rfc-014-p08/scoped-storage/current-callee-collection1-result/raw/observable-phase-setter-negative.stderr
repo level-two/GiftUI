@@ -1,0 +1,6 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/observable-phase-setter-negative.swift:4:71: error: cannot assign to property: 'phase' setter is inaccessible
+2 | import GiftUIObservableState
+3 | import GiftUISemanticCore
+4 | package func forward(_ owner: inout ObservableModelOwnership) { owner.phase = .mutating }
+  |                                                                       `- error: cannot assign to property: 'phase' setter is inaccessible
+5 | 

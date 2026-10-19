@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/observable-address-constructor-negative.swift:4:109: error: 'ObservableModelOwnership.Address' initializer is inaccessible due to 'internal' protection level
+2 | import GiftUIObservableState
+3 | import GiftUISemanticCore
+4 | package func forward(owner: UInt32, generation: UInt32, slot: UInt16) -> ObservableModelOwnership.Address { ObservableModelOwnership.Address(owner: owner, generation: generation, slot: slot) }
+  |                                                                                                             `- error: 'ObservableModelOwnership.Address' initializer is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelOwnership.swift:22:18: note: 'init(owner:generation:slot:)' declared here
+ 20 | 
+ 21 |         @usableFromInline
+ 22 |         internal init(owner: UInt32, generation: UInt32, slot: UInt16) {
+    |                  `- note: 'init(owner:generation:slot:)' declared here
+ 23 |             self.owner = owner
+ 24 |             self.generation = generation

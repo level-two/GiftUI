@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/ef-candidateComponents-internal-negative.swift:6:405: error: 'candidateComponents' is inaccessible due to 'internal' protection level
+4 | import GiftUISemanticCore
+5 | import GiftUIRuntimeCore
+6 | package func forward<C, R, H>(_ state: borrowing InteractionOwnedKeyState<C, R, H>) where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable, R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable, H: InteractionHitRegionStorage & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity { _ = state.candidateComponents }
+  |                                                                                                                                                                                                                                                                                                                                                                                                                     `- error: 'candidateComponents' is inaccessible due to 'internal' protection level
+7 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:27:18: note: 'candidateComponents' declared here
+ 25 |     private var configuredComponents: UInt32
+ 26 |     @usableFromInline
+ 27 |     internal var candidateComponents: UInt32 = 0
+    |                  `- note: 'candidateComponents' declared here
+ 28 |     @usableFromInline
+ 29 |     package internal(set) var committedComponents: UInt32 = 0

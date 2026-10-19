@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/callback-root-preserved-negative.swift:4:254: error: 'preserved' is inaccessible due to 'internal' protection level
+2 | import GiftUIObservableState
+3 | import GiftUISemanticCore
+4 | package func forward<Model: ObservableStateModel & ~Copyable, Identity: Equatable & Sendable>(_ root: borrowing ObservableStateRootScope<Model, Identity>, identity: Identity, state: inout State<Model.Schema>) throws(ObservableStateError) { _ = try root.preserved(identity, ordinal: 0, state: &state) }
+  |                                                                                                                                                                                                                                                              `- error: 'preserved' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift:339:20: note: 'preserved(_:ordinal:state:)' declared here
+337 | 
+338 |     @inlinable
+339 |     borrowing func preserved(
+    |                    `- note: 'preserved(_:ordinal:state:)' declared here
+340 |         _ identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>
+341 |     ) throws(ObservableStateError) -> Bool {

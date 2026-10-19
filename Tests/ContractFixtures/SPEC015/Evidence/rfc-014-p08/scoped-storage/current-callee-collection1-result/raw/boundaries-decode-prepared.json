@@ -1,0 +1,81 @@
+{
+  "commands": {
+    "GiftUI": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.swiftmodule"
+    ],
+    "GiftUIDrawing": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIDrawing.swiftmodule"
+    ],
+    "GiftUIExecution": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIExecution.swiftmodule"
+    ],
+    "GiftUIHostConfiguration": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIHostConfiguration.swiftmodule"
+    ],
+    "GiftUIInteraction": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIInteraction.swiftmodule"
+    ],
+    "GiftUILayout": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUILayout.swiftmodule"
+    ],
+    "GiftUIObservableState": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIObservableState.swiftmodule"
+    ],
+    "GiftUIRasterCore": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIRasterCore.swiftmodule"
+    ],
+    "GiftUIRuntimeCore": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeCore.swiftmodule"
+    ],
+    "GiftUISemanticCore": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.swiftmodule"
+    ],
+    "P08CounterTable": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+      "--dump",
+      "--dump-blockinfo",
+      "--show-binary-blobs",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterTable.swiftmodule"
+    ]
+  }
+}

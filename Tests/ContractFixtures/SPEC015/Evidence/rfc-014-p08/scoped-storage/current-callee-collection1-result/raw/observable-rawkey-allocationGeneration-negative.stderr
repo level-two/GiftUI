@@ -1,0 +1,12 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/observable-rawkey-allocationGeneration-negative.swift:4:72: error: 'allocationGeneration' is inaccessible due to 'private' protection level
+2 | import GiftUIObservableState
+3 | import GiftUISemanticCore
+4 | package func forward<Schema>(_ key: _GiftUIModelKey<Schema>) { _ = key.allocationGeneration }
+  |                                                                        `- error: 'allocationGeneration' is inaccessible due to 'private' protection level
+5 | 
+
+GiftUI._GiftUIModelKey.allocationGeneration:2:13: note: 'allocationGeneration' declared here
+1 | generic struct _GiftUIModelKey {
+2 | private let allocationGeneration: UInt32}
+  |             `- note: 'allocationGeneration' declared here
+3 | 

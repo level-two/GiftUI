@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/canvas-reference-constructor-negative.swift:4:89: error: 'SemanticRecordReference' initializer is inaccessible due to 'internal' protection level
+2 | import GiftUIDrawing
+3 | import GiftUISemanticCore
+4 | package func forward(_ owner: SemanticRecordOwnerIdentity) -> SemanticRecordReference { SemanticRecordReference(owner: owner, bank: 0, revision: 1, ordinal: 0) }
+  |                                                                                         `- error: 'SemanticRecordReference' initializer is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift:192:14: note: 'init(owner:bank:revision:ordinal:)' declared here
+190 | 
+191 |     @usableFromInline
+192 |     internal init(
+    |              `- note: 'init(owner:bank:revision:ordinal:)' declared here
+193 |         owner: SemanticRecordOwnerIdentity, bank: UInt8, revision: UInt32, ordinal: UInt16
+194 |     ) {

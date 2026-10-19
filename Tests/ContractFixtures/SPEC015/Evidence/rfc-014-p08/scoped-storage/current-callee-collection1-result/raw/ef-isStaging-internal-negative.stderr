@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/ef-isStaging-internal-negative.swift:6:405: error: 'isStaging' is inaccessible due to 'internal' protection level
+4 | import GiftUISemanticCore
+5 | import GiftUIRuntimeCore
+6 | package func forward<C, R, H>(_ state: borrowing InteractionOwnedKeyState<C, R, H>) where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable, R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable, H: InteractionHitRegionStorage & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity { _ = state.isStaging }
+  |                                                                                                                                                                                                                                                                                                                                                                                                                     `- error: 'isStaging' is inaccessible due to 'internal' protection level
+7 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:31:18: note: 'isStaging' declared here
+ 29 |     package internal(set) var committedComponents: UInt32 = 0
+ 30 |     @usableFromInline
+ 31 |     internal var isStaging = false
+    |                  `- note: 'isStaging' declared here
+ 32 |     @usableFromInline
+ 33 |     internal var failure: InteractionError?

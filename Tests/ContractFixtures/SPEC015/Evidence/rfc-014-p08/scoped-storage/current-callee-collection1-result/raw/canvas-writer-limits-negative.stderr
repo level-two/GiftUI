@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/canvas-writer-limits-negative.swift:4:96: error: 'limits' is inaccessible due to 'internal' protection level
+2 | import GiftUIDrawing
+3 | import GiftUISemanticCore
+4 | package func forward<Payload>(_ writer: borrowing SemanticPayloadWriter<Payload>) { _ = writer.limits }
+  |                                                                                                `- error: 'limits' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift:23:18: note: 'limits' declared here
+ 21 |     internal let bank: SemanticRecordBankBuffers<Payload>
+ 22 |     @usableFromInline
+ 23 |     internal let limits: SemanticRecordLimits
+    |                  `- note: 'limits' declared here
+ 24 |     @_lifetime(borrow bank)
+ 25 |     @usableFromInline

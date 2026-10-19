@@ -1,0 +1,59 @@
+{
+  "actual_exit": 0,
+  "argv": [
+    "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-bcanalyzer-21",
+    "--dump",
+    "--dump-blockinfo",
+    "--show-binary-blobs",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterTable.swiftmodule"
+  ],
+  "claimed_observation": {
+    "observed_monotonic_ns": 2577562312416,
+    "observed_wall_ns": 1792416549134588000
+  },
+  "compiler": false,
+  "environment": {
+    "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+    "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
+    "DYLD_LIBRARY_PATH": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
+    "HOME": "/Users/eugene",
+    "LC_CTYPE": "C.UTF-8",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "TMPDIR": "/private/tmp",
+    "USER": "eugene"
+  },
+  "marker_identity": [
+    16777234,
+    29640436
+  ],
+  "name": "P08CounterTable-decode",
+  "pid": 78265,
+  "raw": {
+    "P08CounterTable-decode.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "P08CounterTable-decode.stdout": {
+      "bytes": 164751,
+      "sha256": "7f9530899501f728e115fed11c88df9b9679732758839eee735095d0d9d968e0"
+    }
+  },
+  "reviewed_pins": [
+    "4b33eecc1763867b00d59ccbb843df40ca39fa93",
+    "903499d41840b626fc10028527631512212cff78",
+    "851bc71165e472ca98f1fbe6a46c140114bcc6fd"
+  ],
+  "spawn_after": {
+    "observed_monotonic_ns": 2577571116083,
+    "observed_wall_ns": 1792416549143392000
+  },
+  "spawn_before": {
+    "observed_monotonic_ns": 2577568945458,
+    "observed_wall_ns": 1792416549141222000
+  },
+  "wait_observation": {
+    "observed_monotonic_ns": 2577610722833,
+    "observed_wall_ns": 1792416549182998000
+  }
+}

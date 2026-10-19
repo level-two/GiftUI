@@ -1,0 +1,13 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/privacy-scope-negative.swift:2:74: error: '_GiftUIFrameRead<D>' initializer is inaccessible due to 'package' protection level
+1 | import GiftUI
+2 | func scope<D: _GiftUIReadDomain>(_: D.Type, _ slots: Span<D.Slot>) { _ = _GiftUIFrameRead<D>(slots: slots) }
+  |                                                                          `- error: '_GiftUIFrameRead<D>' initializer is inaccessible due to 'package' protection level
+3 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:29:13: note: 'init(slots:)' declared here
+ 27 |     @_lifetime(copy slots)
+ 28 |     @inlinable
+ 29 |     package init(slots: Span<D.Slot>) { self.slots = slots }
+    |             `- note: 'init(slots:)' declared here
+ 30 | }
+ 31 | 

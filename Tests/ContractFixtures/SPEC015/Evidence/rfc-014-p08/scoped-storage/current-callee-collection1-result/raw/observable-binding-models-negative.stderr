@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/observable-binding-models-negative.swift:4:310: error: 'models' is inaccessible due to 'internal' protection level
+2 | import GiftUIObservableState
+3 | import GiftUISemanticCore
+4 | package func forward<Model, Identity, Domain>(_ binding: borrowing ObservableSemanticBodyBinding<Model, Identity, Domain>, identity: Identity) where Model: ObservableStateModel & ~Copyable, Identity: Equatable & Sendable, Domain: _GiftUIReadDomain, Domain.Slot == ObservableModelReadSlot<Model> { _ = binding.models.phase }
+  |                                                                                                                                                                                                                                                                                                                      `- error: 'models' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift:16:18: note: 'models' declared here
+14 |     package typealias Failure = ObservableStateError
+15 |     @usableFromInline
+16 |     internal let models: ObservableModelScope<Model, Model.Schema>
+   |                  `- note: 'models' declared here
+17 |     @usableFromInline
+18 |     internal let root: ObservableStateRootScope<Model, Identity>

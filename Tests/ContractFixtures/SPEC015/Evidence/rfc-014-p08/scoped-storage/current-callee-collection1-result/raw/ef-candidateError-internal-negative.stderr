@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/ef-candidateError-internal-negative.swift:6:397: error: 'candidateError' is inaccessible due to 'internal' protection level
+4 | import GiftUISemanticCore
+5 | import GiftUIRuntimeCore
+6 | package func forward<C, R, H>(_ state: borrowing InteractionState<C, R, H>) where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable, R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable, H: InteractionHitRegionStorage & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity { _ = state.candidateError }
+  |                                                                                                                                                                                                                                                                                                                                                                                                             `- error: 'candidateError' is inaccessible due to 'internal' protection level
+7 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionState.swift:42:18: note: 'candidateError' declared here
+ 40 |     internal var phase: Phase = .idle
+ 41 |     @usableFromInline
+ 42 |     internal var candidateError: InteractionError?
+    |                  `- note: 'candidateError' declared here
+ 43 |     @usableFromInline
+ 44 |     internal var committedPresentationRevision: PresentationRevision?

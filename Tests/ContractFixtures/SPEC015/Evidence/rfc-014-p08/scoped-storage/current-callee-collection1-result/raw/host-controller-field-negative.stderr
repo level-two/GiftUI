@@ -1,0 +1,5 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/host-controller-field-negative.swift:2:154: error: cannot assign to property: 'controller' setter is inaccessible
+1 | import GiftUIHostConfiguration
+2 | package func reject<Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable>(_ instance: inout SignalAnalyzerPresetHostInstance<Owner>) { instance.controller = MVPHostActivationController() }
+  |                                                                                                                                                          `- error: cannot assign to property: 'controller' setter is inaccessible
+3 | 

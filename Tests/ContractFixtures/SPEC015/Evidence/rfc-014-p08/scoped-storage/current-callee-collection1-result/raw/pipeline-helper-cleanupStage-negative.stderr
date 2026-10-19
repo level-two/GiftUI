@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/pipeline-helper-cleanupStage-negative.swift:4:132: error: 'cleanupStage' is inaccessible due to 'internal' protection level
+2 | import GiftUIExecution
+3 | import GiftUIRuntimeCore
+4 | package func forward(stage: RuntimeCompletePipelineStage, wasPublished: Bool) -> RuntimeCoordinatorStage { RuntimeCompletePipeline.cleanupStage(for: stage, wasPublished: wasPublished) }
+  |                                                                                                                                    `- error: 'cleanupStage' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift:527:26: note: 'cleanupStage(for:wasPublished:)' declared here
+525 | 
+526 |     @usableFromInline
+527 |     internal static func cleanupStage(
+    |                          `- note: 'cleanupStage(for:wasPublished:)' declared here
+528 |         for stage: RuntimeCompletePipelineStage,
+529 |         wasPublished: Bool

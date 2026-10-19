@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/ef-committedPresentationRevision-internal-negative.swift:6:397: error: 'committedPresentationRevision' is inaccessible due to 'internal' protection level
+4 | import GiftUISemanticCore
+5 | import GiftUIRuntimeCore
+6 | package func forward<C, R, H>(_ state: borrowing InteractionState<C, R, H>) where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable, R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable, H: InteractionHitRegionStorage & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity { _ = state.committedPresentationRevision }
+  |                                                                                                                                                                                                                                                                                                                                                                                                             `- error: 'committedPresentationRevision' is inaccessible due to 'internal' protection level
+7 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionState.swift:44:18: note: 'committedPresentationRevision' declared here
+ 42 |     internal var candidateError: InteractionError?
+ 43 |     @usableFromInline
+ 44 |     internal var committedPresentationRevision: PresentationRevision?
+    |                  `- note: 'committedPresentationRevision' declared here
+ 45 | 
+ 46 |     @_lifetime(

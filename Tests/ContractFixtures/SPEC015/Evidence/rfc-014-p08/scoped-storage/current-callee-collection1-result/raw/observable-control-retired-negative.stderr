@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/observable-control-retired-negative.swift:4:75: error: 'retired' is inaccessible due to 'internal' protection level
+2 | import GiftUIObservableState
+3 | import GiftUISemanticCore
+4 | package func forward(_ control: ObservableStateRootControl) { _ = control.retired }
+  |                                                                           `- error: 'retired' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift:71:18: note: 'retired' declared here
+ 69 |     internal var operationActive = false
+ 70 |     @usableFromInline
+ 71 |     internal var retired = false
+    |                  `- note: 'retired' declared here
+ 72 |     @usableFromInline var limits = ObservableStateLimits(
+ 73 |         maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!

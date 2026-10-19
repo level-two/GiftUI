@@ -1,0 +1,6 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/ef-committedComponents-setter-negative.swift:6:397: error: cannot assign to property: 'committedComponents' setter is inaccessible
+4 | import GiftUISemanticCore
+5 | import GiftUIRuntimeCore
+6 | package func forward<C, R, H>(_ state: inout InteractionOwnedKeyState<C, R, H>) where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable, R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable, H: InteractionHitRegionStorage & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity { state.committedComponents = 0 }
+  |                                                                                                                                                                                                                                                                                                                                                                                                             `- error: cannot assign to property: 'committedComponents' setter is inaccessible
+7 | 

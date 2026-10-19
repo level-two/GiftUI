@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/canvas-construction-negative.swift:3:261: error: 'CanvasStagedValues<Identity, Table>' initializer is inaccessible due to 'internal' protection level
+1 | import GiftUI
+2 | import GiftUIDrawing
+3 | package func reject<I: Equatable & Sendable, T: CanvasValueTable>(_: I.Type, _: T.Type, state: borrowing UnsafeMutablePointer<CanvasStagedMetadata>, entries: borrowing UnsafeMutableBufferPointer<CanvasStagedEntry<I,T.CaptureStorage>?>, capacity: UInt16) { _ = CanvasStagedValues<I,T>(state: state, entries: entries, capacity: capacity) }
+  |                                                                                                                                                                                                                                                                     `- error: 'CanvasStagedValues<Identity, Table>' initializer is inaccessible due to 'internal' protection level
+4 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:93:14: note: 'init(state:entries:capacity:)' declared here
+ 91 |     @_lifetime(borrow state, borrow entries)
+ 92 |     @inlinable
+ 93 |     internal init(
+    |              `- note: 'init(state:entries:capacity:)' declared here
+ 94 |         state: borrowing UnsafeMutablePointer<CanvasStagedMetadata>,
+ 95 |         entries:

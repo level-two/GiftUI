@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/ef-phase-internal-negative.swift:6:397: error: 'phase' is inaccessible due to 'internal' protection level
+4 | import GiftUISemanticCore
+5 | import GiftUIRuntimeCore
+6 | package func forward<C, R, H>(_ state: borrowing InteractionState<C, R, H>) where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable, R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable, H: InteractionHitRegionStorage & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity { _ = state.phase }
+  |                                                                                                                                                                                                                                                                                                                                                                                                             `- error: 'phase' is inaccessible due to 'internal' protection level
+7 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionState.swift:40:18: note: 'phase' declared here
+ 38 |     internal var limits: InteractionLimits?
+ 39 |     @usableFromInline
+ 40 |     internal var phase: Phase = .idle
+    |                  `- note: 'phase' declared here
+ 41 |     @usableFromInline
+ 42 |     internal var candidateError: InteractionError?

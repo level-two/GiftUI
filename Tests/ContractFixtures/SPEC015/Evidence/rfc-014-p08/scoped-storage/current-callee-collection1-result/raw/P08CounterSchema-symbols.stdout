@@ -1,0 +1,99 @@
+                 U _$s6GiftUI01_A12UIReadDomainMp
+                 U _$s6GiftUI01_A13UIModelSchemaMp
+                 U _$s6GiftUI12DrawingErrorON
+                 U _$s6GiftUI12DrawingErrorOs0D0AAMc
+                 U _$sBi8_WV
+                 U _$ss4SpanVMn
+                 U _$ss5UInt8VMn
+                 U _$sytWV
+                 U _swift_allocateGenericValueMetadata
+                 U _swift_getGenericMetadata
+                 U _swift_getWitnessTable
+                 U _swift_willThrowTypedImpl
+0000000000000000 T _$s16P08CounterSchema0b5ModelC4SeedV5values5UInt8Vvg
+0000000000000000 t ltmp0
+0000000000000004 T _$s16P08CounterSchema0b5ModelC4SeedV5valueACs5UInt8V_tcfC
+0000000000000008 T _$s16P08CounterSchema0B4ReadV5slotss4SpanVy4SlotQzGvg
+000000000000000c T _$s16P08CounterSchema0B4ReadV5indexSivg
+0000000000000014 T _$s16P08CounterSchema0B4ReadV_4readACyxG6GiftUI01_F10UIModelKeyVyAA0b5ModelC0OG_AF01_f7UIFrameD0VyxGhtAF01_F15UIAccessFailureOYKcfC
+0000000000000058 T _$s16P08CounterSchema0B4ReadV_07drawingD0ACyxG6GiftUI01_F10UIModelKeyVyAA0b5ModelC0OG_AF01_f7UIFrameD0VyxGhtAF12DrawingErrorOYKcfC
+00000000000000c0 T _$s6GiftUI12DrawingErrorOACs0D0AAWl
+0000000000000100 T _$s16P08CounterSchema0B4ReadV5values5UInt8Vvg
+0000000000000134 T _$s16P08CounterSchema0b5ModelC4SeedVMa
+0000000000000144 T _$s16P08CounterSchema0b5ModelC0OMa
+0000000000000154 t _$s16P08CounterSchema0B4ReadVMi
+000000000000015c T ___swift_memcpy24_8
+0000000000000170 T ___swift_noop_void_return
+0000000000000174 t _$s16P08CounterSchema0B4ReadVwet
+0000000000000194 t _$s16P08CounterSchema0B4ReadVwst
+00000000000001c0 T _$s16P08CounterSchema0B4ReadVMa
+00000000000001cc T ___swift_instantiateGenericMetadata
+00000000000001f8 t _OUTLINED_FUNCTION_0
+0000000000000204 t _OUTLINED_FUNCTION_1
+0000000000000210 D _$s6GiftUI12DrawingErrorOACs0D0AAWL
+0000000000000210 d ltmp1
+0000000000000218 D _$s16P08CounterSchema0b5ModelC0O6GiftUI01_e7UIModelC0AAWP
+0000000000000230 S _$s16P08CounterSchema0b5ModelC0O6GiftUI01_e7UIModelC0AAMc
+0000000000000230 s ltmp2
+0000000000000240 S _$s16P08CounterSchema0b5ModelC4SeedV5values5UInt8VvpMV
+0000000000000250 s l_.str.16.P08CounterSchema
+0000000000000270 s l_.str.17.CounterReadDomain
+0000000000000290 s l_.str.22.CounterModelSchemaSeed
+00000000000002b0 s l_.str.18.CounterModelSchema
+00000000000002c8 s ___unnamed_3
+00000000000002d0 s l_.str.11.CounterRead
+00000000000002e0 s _$s16P08CounterSchema0B4ReadVMP
+00000000000002f8 S ___swift_reflection_version
+00000000000002fa S _symbolic _____ 16P08CounterSchema0b5ModelC4SeedV
+00000000000002fa s ltmp3
+0000000000000300 S _symbolic _____ 16P08CounterSchema0b5ModelC0O
+0000000000000306 S _symbolic $s6GiftUI01_A13UIModelSchemaP
+0000000000000324 S _symbolic $s16P08CounterSchema0B10ReadDomainP
+0000000000000348 S _symbolic x
+000000000000034a S _symbolic _____ s5UInt8V
+0000000000000350 S _symbolic _____ 16P08CounterSchema0B4ReadV
+0000000000000356 S _symbolic _____y4Slot_____QzG s4SpanVsRi_zrlE 6GiftUI01_B12UIReadDomainP
+000000000000036a S _symbolic Si
+000000000000036d s l___unnamed_1
+000000000000036d s ltmp4
+0000000000000372 s l___unnamed_2
+0000000000000378 s l___unnamed_4
+000000000000037e s l___unnamed_5
+0000000000000384 s _$s16P08CounterSchema0b5ModelC0O6GiftUI01_e7UIModelC0AAMA
+0000000000000384 s ltmp5
+000000000000039c s _$s16P08CounterSchema0B10ReadDomain_pMF
+000000000000039c s ltmp6
+00000000000003ac s _$s16P08CounterSchema0b5ModelC4SeedVMF
+00000000000003c8 s _$s16P08CounterSchema0b5ModelC0OMF
+00000000000003d8 s _$s16P08CounterSchema0B4ReadVMF
+0000000000000400 S _$s16P08CounterSchemaMXM
+0000000000000400 s ltmp7
+000000000000040c S _$s16P08CounterSchema0B10ReadDomainMp
+0000000000000428 S _$s16P08CounterSchema0B10ReadDomainTL
+0000000000000430 S _$s16P08CounterSchema0B10ReadDomainP6GiftUI01_f6UIReadE0Tb
+0000000000000448 S _$s16P08CounterSchema0b5ModelC4SeedVMn
+0000000000000464 S _$s16P08CounterSchema0b5ModelC0OMn
+0000000000000480 S _$s16P08CounterSchema0B4ReadVMn
+00000000000004c0 s _$s16P08CounterSchema0b5ModelC4SeedVMf
+00000000000004c0 s ltmp8
+00000000000004d0 S _$s16P08CounterSchema0b5ModelC4SeedVN
+00000000000004e8 s _$s16P08CounterSchema0b5ModelC0OMf
+00000000000004f8 S _$s16P08CounterSchema0b5ModelC0ON
+0000000000000508 s _$s16P08CounterSchema0B4ReadVWV
+0000000000000560 s l_got.$s6GiftUI01_A13UIModelSchemaMp
+0000000000000568 s l_got.$s6GiftUI01_A12UIReadDomainMp
+0000000000000570 s l_$s16P08CounterSchema0B10ReadDomainHr
+0000000000000570 s ltmp10
+0000000000000574 s l_$s16P08CounterSchema0b5ModelC0O6GiftUI01_e7UIModelC0AAHc
+0000000000000574 s ltmp11
+0000000000000578 s l_$s16P08CounterSchema0b5ModelC4SeedVHn
+0000000000000578 s ltmp12
+000000000000057c s l_$s16P08CounterSchema0b5ModelC0OHn
+0000000000000580 s l_$s16P08CounterSchema0B4ReadVHn
+0000000000000584 s l_llvm.swift_module_hash
+0000000000000584 s ltmp13
+0000000000000594 s ltmp14
+00000000000005a0 s ltmp15
+0000000000000640 s ltmp16
+00000000000006a8 b _$s16P08CounterSchema0B4ReadVMI
+00000000000006a8 b ltmp9

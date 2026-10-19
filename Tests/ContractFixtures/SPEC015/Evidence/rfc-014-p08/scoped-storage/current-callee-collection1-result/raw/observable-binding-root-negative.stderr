@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/observable-binding-root-negative.swift:4:310: error: 'root' is inaccessible due to 'internal' protection level
+2 | import GiftUIObservableState
+3 | import GiftUISemanticCore
+4 | package func forward<Model, Identity, Domain>(_ binding: borrowing ObservableSemanticBodyBinding<Model, Identity, Domain>, identity: Identity) where Model: ObservableStateModel & ~Copyable, Identity: Equatable & Sendable, Domain: _GiftUIReadDomain, Domain.Slot == ObservableModelReadSlot<Model> { _ = binding.root.modelKey(identity: identity, ordinal: 0) }
+  |                                                                                                                                                                                                                                                                                                                      `- error: 'root' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift:18:18: note: 'root' declared here
+16 |     internal let models: ObservableModelScope<Model, Model.Schema>
+17 |     @usableFromInline
+18 |     internal let root: ObservableStateRootScope<Model, Identity>
+   |                  `- note: 'root' declared here
+19 | 
+20 |     @_lifetime(copy models, copy root)

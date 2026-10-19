@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/canvas-writer-bank-negative.swift:4:96: error: 'bank' is inaccessible due to 'internal' protection level
+2 | import GiftUIDrawing
+3 | import GiftUISemanticCore
+4 | package func forward<Payload>(_ writer: borrowing SemanticPayloadWriter<Payload>) { _ = writer.bank }
+  |                                                                                                `- error: 'bank' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift:21:18: note: 'bank' declared here
+ 19 | package struct SemanticPayloadWriter<Payload>: ~Copyable, ~Escapable {
+ 20 |     @usableFromInline
+ 21 |     internal let bank: SemanticRecordBankBuffers<Payload>
+    |                  `- note: 'bank' declared here
+ 22 |     @usableFromInline
+ 23 |     internal let limits: SemanticRecordLimits

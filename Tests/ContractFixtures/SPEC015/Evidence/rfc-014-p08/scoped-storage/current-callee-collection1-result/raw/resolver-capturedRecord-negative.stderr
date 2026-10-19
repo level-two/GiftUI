@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/resolver-capturedRecord-negative.swift:5:507: error: 'capturedRecord' is inaccessible due to 'internal' protection level
+3 | import GiftUIInteraction
+4 | import GiftUISemanticCore
+5 | package func forward<C, R, H>(_ state: borrowing InteractionState<C, R, H>, captured: CapturedAction<SemanticCompleteIdentity>, point: Point) -> BoundActionRecord<SemanticCompleteIdentity>? where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable, R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable, H: InteractionHitRegionStorage & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity { state.capturedRecord(captured, contains: point) }
+  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           `- error: 'capturedRecord' is inaccessible due to 'internal' protection level
+6 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionState.swift:424:29: note: 'capturedRecord(_:contains:)' declared here
+422 | 
+423 |     @inlinable
+424 |     internal borrowing func capturedRecord(
+    |                             `- note: 'capturedRecord(_:contains:)' declared here
+425 |         _ captured: CapturedAction<Identity>,
+426 |         contains point: Point

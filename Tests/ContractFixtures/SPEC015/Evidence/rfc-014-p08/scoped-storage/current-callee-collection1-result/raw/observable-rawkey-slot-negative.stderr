@@ -1,0 +1,12 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/observable-rawkey-slot-negative.swift:4:72: error: 'slot' is inaccessible due to 'private' protection level
+2 | import GiftUIObservableState
+3 | import GiftUISemanticCore
+4 | package func forward<Schema>(_ key: _GiftUIModelKey<Schema>) { _ = key.slot }
+  |                                                                        `- error: 'slot' is inaccessible due to 'private' protection level
+5 | 
+
+GiftUI._GiftUIModelKey.slot:2:13: note: 'slot' declared here
+1 | generic struct _GiftUIModelKey {
+2 | private let slot: UInt16}
+  |             `- note: 'slot' declared here
+3 | 

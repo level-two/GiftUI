@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/pipeline-helper-fail-negative.swift:4:404: error: 'fail' is inaccessible due to 'internal' protection level
+2 | import GiftUIExecution
+3 | import GiftUIRuntimeCore
+4 | package func forward<Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable>(_ owner: inout Owner, priorIntent: PresentationIntentState, stage: RuntimeCompletePipelineStage, failure: RunCycleFailure<Owner.OwnerFailure>, mutationApplied: Bool, publication: RuntimePipelinePublication?, acquired: RuntimeCleanupActions) -> RuntimeCompletePipelineResult<Owner.OwnerFailure> { RuntimeCompletePipeline.fail(priorIntent: priorIntent, at: stage, failure: failure, mutationApplied: mutationApplied, publication: publication, acquired: acquired, owner: &owner) }
+  |                                                                                                                                                                                                                                                                                                                                                                                                                    `- error: 'fail' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift:467:26: note: 'fail(priorIntent:at:failure:mutationApplied:publication:acquired:owner:)' declared here
+465 | 
+466 |     @inlinable
+467 |     internal static func fail<Owner>(
+    |                          `- note: 'fail(priorIntent:at:failure:mutationApplied:publication:acquired:owner:)' declared here
+468 |         priorIntent: PresentationIntentState,
+469 |         at stage: RuntimeCompletePipelineStage,

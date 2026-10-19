@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/privacy/callback-candidate-flag-negative.swift:4:75: error: 'candidateActive' is inaccessible due to 'internal' protection level
+2 | import GiftUIObservableState
+3 | import GiftUISemanticCore
+4 | package func forward(_ control: ObservableStateRootControl) { _ = control.candidateActive }
+  |                                                                           `- error: 'candidateActive' is inaccessible due to 'internal' protection level
+5 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift:67:18: note: 'candidateActive' declared here
+ 65 |     var nextGeneration: UInt32? = 0
+ 66 |     @usableFromInline
+ 67 |     internal var candidateActive = false
+    |                  `- note: 'candidateActive' declared here
+ 68 |     @usableFromInline
+ 69 |     internal var operationActive = false
