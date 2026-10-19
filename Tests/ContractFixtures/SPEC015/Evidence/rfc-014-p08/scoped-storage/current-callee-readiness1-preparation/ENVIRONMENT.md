@@ -11,6 +11,8 @@ complete dictionary. Ambient PATH, Python/startup, loader, Swift and Git setting
 are excluded. Python uses the absolute Xcode interpreter with
 `-I -S -B -X pycache_prefix=/dev/null`. Only the named exact interpreter-added
 LC_CTYPE/CF encoding values may appear at the bootstrap boundary.
+Controller and child dictionaries explicitly restrict fallback library/framework
+searches to /usr/lib and /System/Library/Frameworks, excluding HOME fallbacks.
 
 [loader-roots.json](loader-roots.json) inventories all seven proposed loader
 roots, including the three omitted by the earlier inherited manifest:
@@ -35,5 +37,5 @@ resolution; existence alone supplies no authentication.
 
 [environment-preparation-inspection.json](environment-preparation-inspection.json)
 records file-read/hash/inventory observations only. The next dependency is the
-concrete one-shot controller plus independent Strong readiness review of the
-complete code/environment packet. These snapshots do not authorize a launch.
+independent Strong readiness review of the [concrete one-shot controller](CONTROLLER.md)
+and complete code/environment packet. These snapshots do not authorize a launch.

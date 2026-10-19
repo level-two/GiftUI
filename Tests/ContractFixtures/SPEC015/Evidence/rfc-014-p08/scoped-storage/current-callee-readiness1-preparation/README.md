@@ -1,15 +1,15 @@
 # P08 complete current-callee preparation 1 — 2026-10-19
 
-Status: **compiler-free preparation independently reviewed; execution blocked**.
+Status: **applicability reviewed; concrete controller/environment prepared; independent readiness pending**.
 The [independent Strong review](independent-review.md) passes applicability and the
-bounded recipe; a complete controller/environment packet and independent readiness
-review remain required before production.
+bounded recipe. The [concrete controller/environment packet](CONTROLLER.md) is now
+prepared; independent Strong readiness review remains required before production.
 The [complete environment/loader preparation](ENVIRONMENT.md) now freezes all
 seven proposed loader roots, including review B2's three missing roots; its
 independent readiness review remains pending with the controller.
 No compiler, build, test, decoder or runtime command ran. This packet supplies
-fixed collection data and review requirements; it does not supply a production
-launcher or claim launch readiness. The output
+fixed collection data, authenticated one-shot controller code and review requirements;
+it does not claim launch readiness. The output
 `.build/contracts/p08-current-callee-collection1` is absent.
 
 ## Authority and current boundary
@@ -141,7 +141,7 @@ any earlier budget. Existing two-unproductive and all historical stop rules appl
 
 The [independent Strong applicability/minimal-recipe review](independent-review.md)
 of preparation commit `0bc382b4` is complete. The exact next dependency is a
-**concrete controller/environment packet and independent Strong readiness review**.
+**independent Strong readiness review of the concrete controller/environment packet**.
 The original preparation requirements below remain production launch conditions;
 authenticated inputs and producer joins must still be rechecked at launch:
 
@@ -150,21 +150,22 @@ authenticated inputs and producer joins must still be rechecked at launch:
 - Authenticate source discovery, SDK/compiler/Python/decoder library roots,
   import membership and exact private-body target identity. Confirm each privacy
   fixture retains its isolated intended failure with the proposed imports.
-- Prepare and independently review the production collection controller. No
-  launcher is supplied here. It must use external full reviewed commit/repository/
+- Independently review the prepared production collection controller in
+  [CONTROLLER.md](CONTROLLER.md). It must use external full reviewed commit/repository/
   packet-tree pins, authenticate code before loading it, hold/inherit the existing
   repository validation lock, claim a permanent exclusive one-shot marker,
   reauthenticate at production boundaries, retain durable raw streams and actual
   exits, and handle session loss without relaunch or synthesized completion.
   Any absent terminal means unknown/incomplete with the allowance consumed.
-- Resolve the recipe's process environment proposal: pin complete environment,
-  loader-library roots and Python isolation before launch. Retaining old DYLD
-  strings in preparation is not evidence that their old directories still apply.
+- Independently review [the complete process environments](process-environment.json),
+  full loader trees/aliases, applicable inherited roots and Python isolation. The
+  earlier proposed dictionaries remain provenance; the controller uses the complete
+  pinned dictionaries and system-only fallback paths.
 
 No compiler command is execution-ready until these dependencies pass. Review
 failure stops this packet; it grants no automatic compiler run, source variant,
 diagnostic change, controller retry or new repair allowance. The next implementer
-must preserve actual counts rather than reinterpret this data packet as a launcher.
+must preserve actual counts and must use only the independently reviewed bootstrap form.
 
 ## Required interpretation and later gates
 

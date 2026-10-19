@@ -32,6 +32,18 @@
   "automatic_source_repairs": 0,
   "automatic_tooling_repairs": 0,
   "retries": 0,
-  "next_dependency": "Independent applicability/minimal-recipe review; prepare and review a permanent one-shot collection controller and complete process environment before any launch.",
-  "scope_or_contract_issue": "No new architectural/contract defect established; current source/artifact applicability and launch readiness remain evidence prerequisites."
+  "next_dependency": "Independent Strong readiness review of concrete one-shot controller, complete environment/loader inventories and retained applicability; no launch clearance asserted.",
+  "scope_or_contract_issue": "No new architectural/contract defect established; current source/artifact applicability and launch readiness remain evidence prerequisites.",
+  "controller_preparation_phase": {
+    "input_review_commit": "763d8487f560622d946f86aa09ae3d8e22ca47e1",
+    "environment_preparation_commit": "9435d83f",
+    "model": "gpt-6.1-sol",
+    "reasoning": "high",
+    "compiler_launches": 0,
+    "tests_run": 0,
+    "collection_used": "0/1",
+    "max_swiftc_invocations": 94,
+    "repairs": 0,
+    "retries": 0
+  }
 }

@@ -4902,13 +4902,13 @@
   ],
   "ordered_stages": [
     "under existing exclusive repository validation lock verify all frozen inputs, import memberships, external reviewed pins and output absence",
-    "acquire permanent one-shot collection marker and durable launch record before compiler work using a separately prepared/reviewed controller",
+    "acquire permanent one-shot marker and durable launch record before compiler work with reviewed controller_launch.py, detach authenticated controller_worker.py with inherited validation lock",
     "collect all 93 independent privacy controls with original expected diagnostics; freeze failures and block dependent SIL on any failure",
     "capture complete indexes for the 11 retained modules and all 25 retained matching objects without recompiling; require exact raw/module/tool hashes",
     "emit optimized 42-source actual-host SIL once only after privacy/body applicability prerequisites pass",
     "reauthenticate inputs; preserve raw argv/environment/start/finish/actual exit/logs and immutable output manifests; independent full transitive interpretation follows"
   ],
-  "controller_status": "not supplied; exact launch/terminal/lock mechanism must be prepared and independently reviewed before production execution",
+  "controller_status": "concrete authenticated bootstrap/launcher/detached worker prepared; independent Strong readiness pending; unexecuted",
   "launch_authorized_by_this_packet": false,
   "strict_cold_eligible": false,
   "later_stages_authorized": false,
@@ -4925,6 +4925,12 @@
     "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1"
   ],
   "decode_interpreter_preparation": "controller writes boundaries-decode-prepared.json containing the exact serialized_module_captures keyed by module to the new output; existing interpreter reads that file and corresponding name-decode.stdout streams",
-  "environment_status": "prior macOS compile environment proposal retained for review; the reviewed controller must pin complete process environment and authenticate library roots before a production launch",
-  "source_identity_comparison": "same 42-source set as old E/F consumer, ordered exactly as retained counter command 18; no claim that old E/F generated code/artifacts remain current"
+  "environment_status": "process-environment.json provides complete isolated dictionaries; legacy environment/decoder_environment fields retain original proposals for provenance only; controller uses complete dictionaries",
+  "source_identity_comparison": "same 42-source set as old E/F consumer, ordered exactly as retained counter command 18; no claim that old E/F generated code/artifacts remain current",
+  "controller_files": [
+    "reviewed-launch.py",
+    "controller_common.py",
+    "controller_launch.py",
+    "controller_worker.py"
+  ]
 }

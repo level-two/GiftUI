@@ -1,6 +1,6 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-Current P08 boundary — **retained counter426 PASS; current-callee preparation reviewed, execution blocked**.
+Current P08 boundary — **retained counter426 PASS; controller/environment prepared; independent readiness pending**.
 The [retained macOS Static result](scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)
 and [independent result review](scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/independent-review.md)
 qualify 426 checks / 1,736,320 assertions / zero failures from retained evidence.
@@ -9,9 +9,9 @@ The [new compiler-free preparation](scoped-storage/current-callee-readiness1-pre
 records missing old E/F artifacts and proposes retained current imports/objects,
 93 privacy controls and one exact 42-source optimized SIL collection. No compiler,
 build, test, decoder or runtime ran. The [independent Strong preparation review](scoped-storage/current-callee-readiness1-preparation/independent-review.md)
-passes applicability and the bounded recipe. A complete environment and separately
-prepared/reviewed one-shot collection controller remain required before launch;
-this data packet supplies no launcher or execution-ready command. Zero automatic
+passes applicability and the bounded recipe. The concrete authenticated one-shot
+controller and complete environment/loader packet are now prepared; separate
+independent Strong readiness review remains required before launch. Zero automatic
 repairs/retries; no historical budget reset. Full current-callee/safety/strict cold,
 resources and P08/R07/T8.1 remain open. Earlier checkpoints below retain their
 historical dispositions.

@@ -1,0 +1,65 @@
+{
+  "kind": "AST/file-read/hash inspection only; controller functions not imported or executed",
+  "input_review": "763d8487f560622d946f86aa09ae3d8e22ca47e1",
+  "environment_commit": "9435d83f",
+  "python_3_9_ast_parsed": {
+    "reviewed-launch.py": {
+      "sha256": "df22e6cbe405f01272738caf988c0e2a93187a35f359a456bbf63a78ca093eff",
+      "lines": 83
+    },
+    "controller_worker.py": {
+      "sha256": "efb54bbc7abed3ea7d30bc26a92d2730288eb78bdd76647a5a24d416e427d18a",
+      "lines": 217
+    },
+    "controller_common.py": {
+      "sha256": "7cf986b5f74efa59c1f9496f7b291e6baa621d294281c46dde51e5e96eec4c0d",
+      "lines": 282
+    },
+    "controller_launch.py": {
+      "sha256": "68436ef4cd931820d1fe82394b688718f1196a5a38997c177ed4bc94c09e06f0",
+      "lines": 74
+    }
+  },
+  "json_files_parsed": [
+    "collection-recipe.json",
+    "controller-context-policy.json",
+    "controller-preparation-inspection.json",
+    "decoder-library-tree.json",
+    "dispatch.json",
+    "environment-preparation-inspection.json",
+    "historical-artifact-audit.json",
+    "import-trees.json",
+    "input-freeze.json",
+    "inspection.json",
+    "loader-aliases.json",
+    "loader-roots.json",
+    "preparation-inspection.json",
+    "preserved-dirty-files.json",
+    "process-environment.json",
+    "retained-module-selection.json",
+    "source42.json"
+  ],
+  "direct_frozen_inputs": 388,
+  "direct_input_drift": [],
+  "preexisting_dirty_files_unchanged": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": true,
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": true,
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": true,
+    "scripts/nrf52840/build.sh": true,
+    "scripts/raspberry-pi/build.sh": true
+  },
+  "permanent_output_absent": true,
+  "collection_used": "0/1",
+  "max_swiftc_invocations": 94,
+  "source_candidates": 0,
+  "automatic_source_repairs": 0,
+  "automatic_tooling_repairs": 0,
+  "retries": 0,
+  "compiler_launches": 0,
+  "builds": 0,
+  "tests": 0,
+  "controller_launches": 0,
+  "decoder_launches": 0,
+  "runtime_launches": 0,
+  "independent_readiness": "pending; no self-approval"
+}

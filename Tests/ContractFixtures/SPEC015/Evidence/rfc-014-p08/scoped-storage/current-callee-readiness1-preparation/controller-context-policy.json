@@ -21,5 +21,6 @@
   "scope": "Only selected native compiler/SDK/Python/macro roots apply. Historical ARMv6/Embedded/probe trees are not production operands of this collection; their evidence remains unchanged. Import roots independently cover current retained 25 modules and producer receipts.",
   "source_discovery": "source-inventory.json",
   "source_freeze": "source-freeze.json",
+  "source_links_manifest_sha256": "7f3cfe8789864d9fcb63f423f8e4adc7a0443adbfe8c5f5e457a43960e8da237",
   "tools": "tools.json"
 }

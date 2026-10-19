@@ -1,11 +1,13 @@
 {
-  "ambient_policy": "env-i bootstrap; each Popen receives exactly one complete dictionary. No PATH/PYTHONPATH/LD/DYLD/SWIFT/GIT or startup variable inherited. Python-added LC_CTYPE and __CF_USER_TEXT_ENCODING accepted only at explicitly named exact values.",
+  "ambient_policy": "env-i bootstrap; each Popen receives exactly one complete dictionary. No PATH/PYTHONPATH/LD/DYLD/SWIFT/GIT or startup variable inherited. Python-added LC_CTYPE and __CF_USER_TEXT_ENCODING accepted only at explicitly named exact values. Explicit fallback paths permit only installed system libraries/frameworks, excluding default HOME fallback searches.",
   "bootstrap": {
     "HOME": "/Users/eugene",
     "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
     "TMPDIR": "/private/tmp"
   },
   "compiler_and_macro": {
+    "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+    "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
     "DYLD_FRAMEWORK_PATH": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks:/Applications/Xcode.app/Contents/SharedFrameworks:/Library/Developer/PrivateFrameworks",
     "DYLD_LIBRARY_PATH": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib:/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing",
     "HOME": "/Users/eugene",
@@ -16,6 +18,8 @@
     "USER": "eugene"
   },
   "controller": {
+    "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+    "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
     "HOME": "/Users/eugene",
     "LC_CTYPE": "C.UTF-8",
     "LOGNAME": "eugene",
@@ -24,6 +28,8 @@
     "USER": "eugene"
   },
   "decoder": {
+    "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+    "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
     "DYLD_LIBRARY_PATH": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
     "HOME": "/Users/eugene",
     "LC_CTYPE": "C.UTF-8",
@@ -37,6 +43,8 @@
     "__CF_USER_TEXT_ENCODING": "0x1F5:0x7:0x3D"
   },
   "interpreter_and_demangler": {
+    "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+    "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
     "DYLD_LIBRARY_PATH": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
     "HOME": "/Users/eugene",
     "LC_CTYPE": "C.UTF-8",
