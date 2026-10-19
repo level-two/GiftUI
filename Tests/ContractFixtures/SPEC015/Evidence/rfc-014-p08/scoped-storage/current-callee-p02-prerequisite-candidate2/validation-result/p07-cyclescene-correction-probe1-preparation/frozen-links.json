@@ -1,0 +1,12 @@
+{
+  ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift": {
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+    "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "target": "swift-driver"
+  },
+  ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+    "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "target": "swift-driver"
+  }
+}

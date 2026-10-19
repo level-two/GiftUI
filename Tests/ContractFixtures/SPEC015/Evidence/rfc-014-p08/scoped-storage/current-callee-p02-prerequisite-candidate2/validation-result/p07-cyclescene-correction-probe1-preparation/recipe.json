@@ -1,0 +1,29 @@
+{
+  "argv": [
+    "python3",
+    "scripts/contracts/check-spec-013-runtime-cycle.py",
+    "--profile",
+    "macos-static",
+    "--giftui-build",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static"
+  ],
+  "automatic_repairs": 0,
+  "campaign_result": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/result.json",
+  "campaign_result_sha256": "fdc17bd258ea25c4dbc16ecbade9c4a404ccb395b020336905df4baabf712778",
+  "core_commands_sha256": "c72e567953ab6abb7286abefdf0f947269fdd536816234a50ee0f0514d0137e4",
+  "driver_output_parent": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "output_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-p07-cyclescene-correction-probe1",
+  "producer": {
+    "bytes": 15198,
+    "copy": "/Users/eugene/work/GiftUI/.build/contracts/p08-analyzer-abi-continuation-campaign11/receipts/0.json",
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/result.json",
+    "sha256": "f1ac3d8b44b2e187d98d3e2be55b1f82bcdd6a2c164ca47ac95459e6876353c1"
+  },
+  "retries": 0,
+  "scope": "isolated P07 macos-static correction only; no campaign resume",
+  "source_candidates": 1,
+  "source_commit": "c5e3996689d17ef6d9cce6dd86317258355b9ea4"
+}
