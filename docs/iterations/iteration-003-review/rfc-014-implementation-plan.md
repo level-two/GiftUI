@@ -1,13 +1,14 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current P08 boundary — **U01 linked/provider interpretation complete within bounds; full callee/safety STOP**.
+Current P08 boundary — **U01 linked/provider interpretation independently PASS within bounds; full callee/safety STOP**.
 The [linked/provider result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/README.md)
 resolves actual linked Text bodies/branches and strong system install-name imports:
 Error runtime entry/ErrorWS use absolute system Swift, memcpy/canary use libSystem;
 no LC_RPATH selects the pinned toolchain core. Numeric Error size and selected
 system implementation/cold costs remain open; B is inapplicable/unexecuted and
-`strict_cold_eligible` stays false. Independent interpretation review, then one
-separately bounded system-provider evidence preparation is next. The
+`strict_cold_eligible` stays false. The [independent interpretation review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/independent-review.md)
+passes exact provider/branch/cache distinctions. One separately bounded
+system-provider evidence request is next, preparation only. The
 [independently reviewed A-only archive](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/independent-review.md)
 retains its capture-only PASS. No new decoder/controller/runtime/compiler/
 acquisition/repair/retry or B allowance follows. Both attempts remain1/1 consumed,

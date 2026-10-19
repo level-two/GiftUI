@@ -1,0 +1,183 @@
+{
+  "B_applicable_or_authorized": false,
+  "UUID": "3DEE5FE5-1F72-3C9A-8A36-4F30A2CE9ADF",
+  "actual_P08_caller_object_linked_joins": [
+    {
+      "call_offset_in_both_bodies": "0x558",
+      "linked_call": "0x1001b87d4",
+      "object_call": "0xa2adc",
+      "same_exact_caller_symbol": true
+    },
+    {
+      "call_offset_in_both_bodies": "0x9c",
+      "linked_call": "0x1001b9b64",
+      "object_call": "0xa3e6c",
+      "same_exact_caller_symbol": true
+    }
+  ],
+  "archive_files_equal_baseline_sha256": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/README.md": "53800e2f66a00ba1e4b8ed29ad51f7f3e720b965f6e0cbaf7af0d745ac12ac92",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/attempt-consumed.json": "14dfb3e954f0f73a23bc5a55c180d096c3550aabd1725c1032b9a640933c00b8",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-body-data-authentication.json": "01bddb8c623c9de2b172c9d79513f0477c6edd288f3608244d43b16bacf349da",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-body-data.claim.json": "cb460648fda511af507a462141e00dadf916abc323e50ac3600d1c608cc382c6",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-body-data.exit.json": "6997b7013af991c1e86e6688e342de25a5eb095c8388de67929f39dc42a7720a",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-body-data.record-check.json": "f104730dc933a2a91f10b17778ae90adc1f581cb091fdcd9a721e8fc259aa2b6",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-body-data.start.json": "1076c55cb6390ac43650f52825d20460d7802fdf10139881bd3ec00410dba680",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-body-data.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-body-data.stdout": "914f309f3b54da8c36e5c29b520d049d2ea4e3c74c0653e751fc46cf41ecc5a7",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-metadata-authentication.json": "6fcd9e79651e5cf846a70eb42d462ad8e6d8bb95f6d985a9e97680dfdeacf08f",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-metadata.claim.json": "ca4256f141bbefbe4cd8363a77d5bda64cd08379ae88c0c2324e6fa8e672f6dc",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-metadata.exit.json": "9c92cca57542612c467f1462202d495f241661010cf613a7320c997b4b1d6a1b",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-metadata.record-check.json": "f104730dc933a2a91f10b17778ae90adc1f581cb091fdcd9a721e8fc259aa2b6",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-metadata.start.json": "918f1cded1489df7c8dce1cc8c19710e5f0264d95921af125b7bfb8cc5a2c73b",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-metadata.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-metadata.stdout": "9aa429f57837b45c8c2c7f8afa2f360f6fc214a1390e2831a293572965e90aea",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-symbols-authentication.json": "2ec4c618f59ce4b0c6805c7a06926dbc4120e87341b3cb70a66dfefa05331217",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-symbols.claim.json": "f7ade9126fb839453e3f210be2cf991c02d7fff8889c92ee0589efe271e0a56b",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-symbols.exit.json": "abc87c3469cc36f5c8e2c6a2c048e48646d43573c27899f7a62498dea51c27ab",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-symbols.record-check.json": "f104730dc933a2a91f10b17778ae90adc1f581cb091fdcd9a721e8fc259aa2b6",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-symbols.start.json": "5b7514533d5ad04d0d66393353dc4351a9ed20855ff3065e3e4a8e494b19ada9",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-symbols.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-symbols.stdout": "604eeeaa71f1ac5b271f77d8e39820d55c879f6241284ab3cb642bef4761fdea",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/independent-review-inspection.json": "d2c86980d310f93f42df4d2bfe2b347c0d592c1ad461cb66b96c44912adb51de",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/independent-review.md": "da1d12a8a4819b1326ab54f4fdc0ee7e678d3bdd6b3b65237e55141c445baf2e",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/manifest.json": "e020dea510a3acf5ea4c0448f892e62a6f71d19cb4c927a30ffefdc5aec7065f",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/prelaunch-authentication.json": "9c0d8b73a59d836d88e50eafa4ec227e48e1e33c8961e06d4e8297526015383b",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/provider-gate.json": "4c05168ef6d6286883f56a586f5c55166e8cd9b52c4b6abb4a13f36612ac105b",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/terminal.json": "a0c1d996789fc36b364ba7336fc94db28b2313563a37f0f44ebee0f33a0e7bb9",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/toolchain-core-body-data.exit.json": "6d7b3690c83f14fb5e844ff3accd49d01cf3613423c689cce9ba6e0575d9bf9c",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/toolchain-core-metadata.exit.json": "928106613fe204f2569409db92641a8dd262bf8ef47436efa3a3560d2a7e7f78",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/toolchain-core-symbols.exit.json": "d022101fa60d738b5b99aba69ebf7678e1a6a34e7e051d3327e60bdfe7b1b106"
+  },
+  "archived_source_members_verified": 28,
+  "cache_descriptor_bytes": "508af6fff9ffffff",
+  "cache_file_sha256": {
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+  },
+  "cache_name_address": "0x1001f4c50",
+  "cache_name_bytes": "02df7a06005f70",
+  "cache_name_length": 7,
+  "cache_name_relative_offset": -619952,
+  "chained_imports_verified": 203,
+  "consumed_marker_identities": {
+    "p08-current-callee-collection1": [
+      16777234,
+      29640436
+    ],
+    "p08-u01-residual-static1": [
+      16777234,
+      29650609
+    ]
+  },
+  "dependency_install_names": [
+    "/usr/lib/libSystem.B.dylib",
+    "/usr/lib/libobjc.A.dylib",
+    "/usr/lib/swift/libswiftCore.dylib",
+    "/usr/lib/swift/libswift_Builtin_float.dylib",
+    "/usr/lib/swift/libswift_DarwinFoundation2.dylib"
+  ],
+  "direct_inputs_verified": 180,
+  "duplicate_local_thunk_addresses": [
+    "0x100106634",
+    "0x1001c90cc"
+  ],
+  "exact_excerpt_spans_verified": 55,
+  "literal_ADRP_ADD_address_targets": {
+    "0x100001690": "0x10028c200",
+    "0x1000016a0": "0x100001704",
+    "0x1001b87bc": "0x1001cc2b0",
+    "0x1001b9b4c": "0x1001c90cc"
+  },
+  "literal_BL_targets": {
+    "0x100000e90": "0x1001d8794",
+    "0x100001674": "0x10000d790",
+    "0x100001684": "0x1001d85f0",
+    "0x100001698": "0x100000e5c",
+    "0x1000016d0": "0x100001740",
+    "0x1000016e0": "0x10000d508",
+    "0x100001700": "0x1001d859c",
+    "0x100106640": "0x100106574",
+    "0x1001b87d4": "0x100001648",
+    "0x1001b9b64": "0x100001648",
+    "0x1001c90d8": "0x100106574",
+    "0x1001cc2b8": "0x1001c90cc"
+  },
+  "load_commands": 22,
+  "method": "Independent standard-library raw text/JSON/hex/hash and read-only Git inspection; author extractor read only, never executed/imported. Finite BL and ADRP+ADD integer arithmetic on archived hex only; no decoder or producer invocation.",
+  "numeric_Error_size_established": false,
+  "object_body_equalities_core_decoder_p08_decoder_giftui_generic_reference_generic": [
+    true,
+    false,
+    true,
+    true
+  ],
+  "preserved_dirty_file_sha256": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+    "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+    "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+  },
+  "reviewed_commit": "7848788d84e3e67988c06bd696fcab197552bb9f",
+  "rpath_count": 0,
+  "selected_imports": {
+    "_$ss5ErrorWS": {
+      "got": "0x10025c760",
+      "index": 68,
+      "ordinal": 3,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "weak": 0
+    },
+    "___stack_chk_fail": {
+      "got": "0x10025c548",
+      "index": 1,
+      "ordinal": 1,
+      "provider": "/usr/lib/libSystem.B.dylib",
+      "weak": 0
+    },
+    "___stack_chk_guard": {
+      "got": "0x10025c550",
+      "index": 2,
+      "ordinal": 1,
+      "provider": "/usr/lib/libSystem.B.dylib",
+      "weak": 0
+    },
+    "_memcpy": {
+      "got": "0x10025c580",
+      "index": 8,
+      "ordinal": 1,
+      "provider": "/usr/lib/libSystem.B.dylib",
+      "weak": 0
+    },
+    "_swift_getTypeByMangledNameInContext2": {
+      "got": "0x10025c928",
+      "index": 125,
+      "ordinal": 3,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "weak": 0
+    }
+  },
+  "selected_stub_and_GOT_indirect_symbol_addresses": {
+    "_$ss5ErrorWS": [
+      "0x10025c760"
+    ],
+    "___stack_chk_fail": [
+      "0x1001d859c",
+      "0x10025c548"
+    ],
+    "___stack_chk_guard": [
+      "0x10025c550"
+    ],
+    "_memcpy": [
+      "0x1001d85f0",
+      "0x10025c580"
+    ],
+    "_swift_getTypeByMangledNameInContext2": [
+      "0x1001d8794",
+      "0x10025c928"
+    ]
+  },
+  "source42_hashes_match": true,
+  "strict_cold_eligible": false,
+  "verdict": "PASS_bounded_linked_provider_interpretation_and_STOP_disposition"
+}
