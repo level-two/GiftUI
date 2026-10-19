@@ -1,0 +1,78 @@
+{
+  "baseline_commit": "1a7339aa9386197d916d6855882177caffe06866",
+  "cache_files": {
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": {
+      "matches_baseline": true,
+      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+    }
+  },
+  "cache_membership_matches_baseline": true,
+  "dirty_files": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": {
+      "matches_baseline": true,
+      "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": {
+      "matches_baseline": true,
+      "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3"
+    },
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": {
+      "matches_baseline": true,
+      "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243"
+    },
+    "scripts/nrf52840/build.sh": {
+      "matches_baseline": true,
+      "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72"
+    },
+    "scripts/raspberry-pi/build.sh": {
+      "matches_baseline": true,
+      "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+    }
+  },
+  "header_bytes_read": 0,
+  "header_candidates_selected": 0,
+  "markers": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": {
+      "identity": [
+        16777234,
+        29640436
+      ],
+      "matches_baseline": true
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": {
+      "identity": [
+        16777234,
+        29650609
+      ],
+      "matches_baseline": true
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": {
+      "identity": [
+        16777234,
+        29652748
+      ],
+      "matches_baseline": true
+    }
+  },
+  "network_requests_made": 0,
+  "repairs": 0,
+  "retained_metadata": {
+    "u01-dyld-cache-macos-2662-ref1-result/macos-2662-ref.headers": {
+      "bytes": 1021,
+      "sha256": "d643282007c6eaacbc7190e8d5a59f7b990ffac8f9b69f1915cc2e6d754f4b21"
+    },
+    "u01-dyld-cache-macos-2662-ref1-result/macos-2662-ref.json": {
+      "bytes": 279,
+      "sha256": "16b605b4b536a18a4158a564f5f2f836d47da19bb8c3c5b201a226d528c20b15"
+    },
+    "u01-dyld-cache-schema-source1-preparation/distribution-tags.headers": {
+      "bytes": 1478,
+      "sha256": "0882476addc240934a7db06052073bc05633e2570422bee52a949be9023d8a6f"
+    },
+    "u01-dyld-cache-schema-source1-preparation/distribution-tags.json": {
+      "bytes": 55838,
+      "sha256": "8e52205de326cf31289a8443ae889bc44b0a16c39e867247a0bad828ee435105"
+    }
+  },
+  "retries": 0
+}

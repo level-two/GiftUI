@@ -1,0 +1,61 @@
+{
+  "status": "prepared; independent readiness review required; no network execution",
+  "repository": "https://github.com/apple-oss-distributions/distribution-macOS.git",
+  "protocol": "Git smart HTTPS v2",
+  "refs": [
+    "refs/tags/macos-2662",
+    "refs/tags/macos-2662^{}"
+  ],
+  "candidate_ref_exists": null,
+  "build_association_established": false,
+  "dyld_revision_established": false,
+  "maximum_logical_http_requests_accepted": 2,
+  "maximum_aggregate_response_bytes_accepted": 1048576,
+  "maximum_wall_seconds": 30,
+  "maximum_retained_bytes_per_stream": 1048576,
+  "automatic_retries": 0,
+  "redirects": false,
+  "planned_http_operations": [
+    {
+      "method": "GET",
+      "url": "https://github.com/apple-oss-distributions/distribution-macOS.git/info/refs?service=git-upload-pack"
+    },
+    {
+      "method": "POST",
+      "url": "https://github.com/apple-oss-distributions/distribution-macOS.git/git-upload-pack",
+      "command": "ls-refs with ref-prefix refs/tags/macos-2662"
+    }
+  ],
+  "argv": [
+    "git",
+    "--no-optional-locks",
+    "-C",
+    "RESULT/empty-git-context",
+    "-c",
+    "protocol.version=2",
+    "-c",
+    "http.followRedirects=false",
+    "-c",
+    "http.sslVerify=true",
+    "-c",
+    "http.maxRequests=1",
+    "-c",
+    "credential.helper=",
+    "-c",
+    "core.askPass=",
+    "-c",
+    "http.extraHeader=",
+    "-c",
+    "http.cookieFile=",
+    "-c",
+    "http.saveCookies=false",
+    "ls-remote",
+    "--exit-code",
+    "--tags",
+    "https://github.com/apple-oss-distributions/distribution-macOS.git",
+    "refs/tags/macos-2662",
+    "refs/tags/macos-2662^{}"
+  ],
+  "bounds_limitation": "Bare Git does not enforce aggregate transferred-byte or logical request-count ceilings. http.maxRequests=1 only limits concurrency. Independent review must resolve execution envelope before launch.",
+  "network_execution_ready": false
+}

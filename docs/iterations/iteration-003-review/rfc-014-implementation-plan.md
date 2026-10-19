@@ -1,6 +1,17 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current P08 metadata boundary — **exact ref HTTP 403 result independently PASS/STOP**.
+Current P08 metadata preparation — **exact smart-HTTPS Git candidate-ref route prepared; independent review pending; network execution not ready**.
+The [separate route preparation](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/README.md)
+pins the Apple distribution Git remote and only candidate `refs/tags/macos-2662`
+plus its peeled form. No network request ran. Candidate existence, 25G83/build
+association, dyld revision and cache applicability remain unproved. The proposed
+two-request/1-MiB acceptance limits need a concrete enforced execution envelope;
+bare Git does not supply those hard caps. Independent review must resolve that
+prerequisite before launch; no object/header/parser/controller follow is cleared.
+The five dirty files/cache and three 1/1 markers remain unchanged, repairs/retries
+0. S and old B remain closed; U01/R01–R04, strict cold and P08/R07/T8.1 stay open.
+
+Prior P08 metadata boundary — **exact ref HTTP 403 result independently PASS/STOP**.
 The [independent result review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-macos-2662-ref1-result/independent-review.md)
 verifies raw headers/body hashes, rate-limit failure, no ref object and preserved
 five dirty files/cache/three consumed markers. The one-GET/no-retry allowance is
