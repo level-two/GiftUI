@@ -7,6 +7,13 @@ prepared; independent preparation review is next. No acquisition, decoder or
 runtime execution allowance is granted here.** U01 remains open; complete
 callee/safety proof remains STOP and `strict_cold_eligible=false`.
 
+The subsequent [independent preparation review](independent-review.md) passes
+identity/scope and stops execution readiness on B1's omitted system-only fallback
+paths. The [narrow environment correction](ENVIRONMENT.md) now applies those
+values to all six complete environments and authenticates applicable loader
+roots/aliases. Concrete controller preparation and independent readiness review
+remain required; no proposed decoder command has run.
+
 The [request JSON](request.json) contains six exact proposed argv arrays,
 input/tool hashes, environments, ordering, gates, output limits and stop rules.
 The [inventory](inventory.json) records availability and hash/provenance joins.

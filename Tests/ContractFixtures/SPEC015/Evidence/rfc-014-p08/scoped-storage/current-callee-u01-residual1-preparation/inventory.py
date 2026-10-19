@@ -158,7 +158,7 @@ if (HERE / "inventory.json").exists():
     for key in ("tools", "current_installation_metadata", "sdk_stubs", "current_cache_map", "system_standalone_candidates"):
         assert inventory[key] == old[key], "newly inventoried input drift: " + key
 
-common_env = {"HOME": "/Users/eugene", "USER": "eugene", "LOGNAME": "eugene", "PATH": "/usr/bin:/bin:/usr/sbin:/sbin", "TMPDIR": "/private/tmp", "LC_CTYPE": "C.UTF-8"}
+common_env = {"HOME": "/Users/eugene", "USER": "eugene", "LOGNAME": "eugene", "PATH": "/usr/bin:/bin:/usr/sbin:/sbin", "TMPDIR": "/private/tmp", "LC_CTYPE": "C.UTF-8", "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib", "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks"}
 commands = []
 for stage, p in (("A", receipt.parent / "counter"), ("B", core)):
     label = "counter" if stage == "A" else "toolchain-core"

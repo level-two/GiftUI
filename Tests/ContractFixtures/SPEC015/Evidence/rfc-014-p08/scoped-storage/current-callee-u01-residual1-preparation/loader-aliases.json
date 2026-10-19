@@ -1,0 +1,514 @@
+{
+  "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/bin/2to3": {
+    "bytes": 99,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/bin/2to3-3.9",
+    "sha256": "aa0f7d915e0861469a47febdef7916ee750f207a13eb1a371943527e0cd78cd1",
+    "system_trust": false,
+    "target": "2to3-3.9"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/bin/pydoc3": {
+    "bytes": 82,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/bin/pydoc3.9",
+    "sha256": "d3c41069981e09467e4941cc1eb89fbe98fca929d837153f00841a833235cd18",
+    "system_trust": false,
+    "target": "pydoc3.9"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3": {
+    "bytes": 102352,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "271143990bc83af0fb2404a255038f5faafb96df1584ed7f085e5018c0f33ffb",
+    "system_trust": false,
+    "target": "python3.9"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/include/python3.9": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Headers",
+    "system_trust": false,
+    "target": "../Headers"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/libpython3.9.dylib": {
+    "bytes": 5864880,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Python3",
+    "sha256": "e631cdd2553d2c52fa9df3da34b7b751a47369428da9ef2b7625de0085c74ffe",
+    "system_trust": false,
+    "target": "../Python3"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/pkgconfig/python3-embed.pc": {
+    "bytes": 401,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/pkgconfig/python-3.9-embed.pc",
+    "sha256": "975d6f844ecd22005169e1c10cc7fa46097fff0114a7e92bcfe15f5bdd09bb65",
+    "system_trust": false,
+    "target": "python-3.9-embed.pc"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/pkgconfig/python3.pc": {
+    "bytes": 375,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/pkgconfig/python-3.9.pc",
+    "sha256": "ba275eafb19c8633ff8cf897255cefef00d69be832bd684fb6466fcafd2051ec",
+    "system_trust": false,
+    "target": "python-3.9.pc"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/config-3.9-darwin/libpython3.9.a": {
+    "bytes": 5864880,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Python3",
+    "sha256": "e631cdd2553d2c52fa9df3da34b7b751a47369428da9ef2b7625de0085c74ffe",
+    "system_trust": false,
+    "target": "../../../Python3"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/config-3.9-darwin/libpython3.9.dylib": {
+    "bytes": 5864880,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Python3",
+    "sha256": "e631cdd2553d2c52fa9df3da34b7b751a47369428da9ef2b7625de0085c74ffe",
+    "system_trust": false,
+    "target": "../../../Python3"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/share/man/man1/python3.1": {
+    "bytes": 18232,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/share/man/man1/python3.9.1",
+    "sha256": "53895876607067b415d8b2362efeaa8dec5a837400782537e9079799a114cdd0",
+    "system_trust": false,
+    "target": "python3.9.1"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentSchemas.framework/AppIntentSchemas": {
+    "bytes": 998768,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentSchemas.framework/Versions/A/AppIntentSchemas",
+    "sha256": "d39f4bb20ec0cdeaf4ddde8c89388cd391073cc24d031478176df5568d0a01ea",
+    "system_trust": false,
+    "target": "Versions/Current/AppIntentSchemas"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentSchemas.framework/Modules": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentSchemas.framework/Versions/A/Modules",
+    "system_trust": false,
+    "target": "Versions/Current/Modules"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentSchemas.framework/Resources": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentSchemas.framework/Versions/A/Resources",
+    "system_trust": false,
+    "target": "Versions/Current/Resources"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentSchemas.framework/Versions/Current": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentSchemas.framework/Versions/A",
+    "system_trust": false,
+    "target": "A"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsMetadataExtractor.framework/AppIntentsMetadataExtractor": {
+    "bytes": 3255504,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsMetadataExtractor.framework/Versions/A/AppIntentsMetadataExtractor",
+    "sha256": "518f65eddb9c946801ad08f0ff8b05b35b1657066ae64f605af4cbc4fccca64d",
+    "system_trust": false,
+    "target": "Versions/Current/AppIntentsMetadataExtractor"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsMetadataExtractor.framework/Modules": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsMetadataExtractor.framework/Versions/A/Modules",
+    "system_trust": false,
+    "target": "Versions/Current/Modules"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsMetadataExtractor.framework/Resources": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsMetadataExtractor.framework/Versions/A/Resources",
+    "system_trust": false,
+    "target": "Versions/Current/Resources"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsMetadataExtractor.framework/Versions/Current": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsMetadataExtractor.framework/Versions/A",
+    "system_trust": false,
+    "target": "A"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsSupport.framework/AppIntentsSupport": {
+    "bytes": 1314656,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsSupport.framework/Versions/A/AppIntentsSupport",
+    "sha256": "7a3ee1b4b6b01770cf372303b5243710008409f8e04b7be7e6ee2a305ac68db8",
+    "system_trust": false,
+    "target": "Versions/Current/AppIntentsSupport"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsSupport.framework/Modules": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsSupport.framework/Versions/A/Modules",
+    "system_trust": false,
+    "target": "Versions/Current/Modules"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsSupport.framework/Resources": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsSupport.framework/Versions/A/Resources",
+    "system_trust": false,
+    "target": "Versions/Current/Resources"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsSupport.framework/Versions/Current": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/AppIntentsSupport.framework/Versions/A",
+    "system_trust": false,
+    "target": "A"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/LinkMetadataDT.framework/LinkMetadataDT": {
+    "bytes": 2906416,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/LinkMetadataDT.framework/Versions/A/LinkMetadataDT",
+    "sha256": "0fb8d8ba450b779b3b0805f7173db7ec34812c0ea20a66f42672fb9dc9347f22",
+    "system_trust": false,
+    "target": "Versions/Current/LinkMetadataDT"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/LinkMetadataDT.framework/Modules": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/LinkMetadataDT.framework/Versions/A/Modules",
+    "system_trust": false,
+    "target": "Versions/Current/Modules"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/LinkMetadataDT.framework/Resources": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/LinkMetadataDT.framework/Versions/A/Resources",
+    "system_trust": false,
+    "target": "Versions/Current/Resources"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/LinkMetadataDT.framework/Versions/Current": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/LinkMetadataDT.framework/Versions/A",
+    "system_trust": false,
+    "target": "A"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/MetalPerformanceShadersGraph_host.framework/MetalPerformanceShadersGraph_host": {
+    "bytes": 40134432,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/MetalPerformanceShadersGraph_host.framework/Versions/A/MetalPerformanceShadersGraph_host",
+    "sha256": "beba12fd52334e95b926ecd94f3c9f5ad74b9fac2b3c0974d2b3564be87871c1",
+    "system_trust": false,
+    "target": "Versions/Current/MetalPerformanceShadersGraph_host"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/MetalPerformanceShadersGraph_host.framework/Modules": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/MetalPerformanceShadersGraph_host.framework/Versions/A/Modules",
+    "system_trust": false,
+    "target": "Versions/Current/Modules"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/MetalPerformanceShadersGraph_host.framework/Resources": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/MetalPerformanceShadersGraph_host.framework/Versions/A/Resources",
+    "system_trust": false,
+    "target": "Versions/Current/Resources"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/MetalPerformanceShadersGraph_host.framework/Versions/Current": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/MetalPerformanceShadersGraph_host.framework/Versions/A",
+    "system_trust": false,
+    "target": "A"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitClientPlugin.framework/Modules": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitClientPlugin.framework/Versions/A/Modules",
+    "system_trust": false,
+    "target": "Versions/Current/Modules"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitClientPlugin.framework/Resources": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitClientPlugin.framework/Versions/A/Resources",
+    "system_trust": false,
+    "target": "Versions/Current/Resources"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitClientPlugin.framework/SwiftSourceKitClientPlugin": {
+    "bytes": 70224,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitClientPlugin.framework/Versions/A/SwiftSourceKitClientPlugin",
+    "sha256": "868c5a03e8c817a0ca65dac22ba7be34b0c8d1f844c7766bf415bc8de46db4fb",
+    "system_trust": false,
+    "target": "Versions/Current/SwiftSourceKitClientPlugin"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitClientPlugin.framework/Versions/Current": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitClientPlugin.framework/Versions/A",
+    "system_trust": false,
+    "target": "A"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitPlugin.framework/Modules": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitPlugin.framework/Versions/A/Modules",
+    "system_trust": false,
+    "target": "Versions/Current/Modules"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitPlugin.framework/Resources": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitPlugin.framework/Versions/A/Resources",
+    "system_trust": false,
+    "target": "Versions/Current/Resources"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitPlugin.framework/SwiftSourceKitPlugin": {
+    "bytes": 419600,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitPlugin.framework/Versions/A/SwiftSourceKitPlugin",
+    "sha256": "da94215db60dcd6bbb9064a3ac6764672c7283d3b0638c864eddf8c34cfe893a",
+    "system_trust": false,
+    "target": "Versions/Current/SwiftSourceKitPlugin"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitPlugin.framework/Versions/Current": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/SwiftSourceKitPlugin.framework/Versions/A",
+    "system_trust": false,
+    "target": "A"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21.0.0": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21",
+    "system_trust": false,
+    "target": "21"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/lib/macho_embedded": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/lib/darwin/macho_embedded",
+    "system_trust": false,
+    "target": "darwin/macho_embedded"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitd.framework/Resources": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitd.framework/Versions/A/Resources",
+    "system_trust": false,
+    "target": "Versions/Current/Resources"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitd.framework/Versions/Current": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitd.framework/Versions/A",
+    "system_trust": false,
+    "target": "A"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitd.framework/XPCServices": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitd.framework/Versions/A/XPCServices",
+    "system_trust": false,
+    "target": "Versions/Current/XPCServices"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitd.framework/sourcekitd": {
+    "bytes": 430352,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitd.framework/Versions/A/sourcekitd",
+    "sha256": "a3c2f5f46d09b6a309790813be72ce23fd6c7ee4bb70a79ed26751eb258de06e",
+    "system_trust": false,
+    "target": "Versions/Current/sourcekitd"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitdInProc.framework/Modules": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitdInProc.framework/Versions/A/Modules",
+    "system_trust": false,
+    "target": "Versions/Current/Modules"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitdInProc.framework/Resources": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitdInProc.framework/Versions/A/Resources",
+    "system_trust": false,
+    "target": "Versions/Current/Resources"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitdInProc.framework/Versions/Current": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitdInProc.framework/Versions/A",
+    "system_trust": false,
+    "target": "A"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitdInProc.framework/sourcekitdInProc": {
+    "bytes": 169456864,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitdInProc.framework/Versions/A/sourcekitdInProc",
+    "sha256": "b685533ba71f1d1ffe8e6c5f3a2421c78a4d298141de1f697a4502b617e0c868",
+    "system_trust": false,
+    "target": "Versions/Current/sourcekitdInProc"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/clang": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21",
+    "system_trust": false,
+    "target": "../clang/21"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/lib_InternalSwiftScan.dylib": {
+    "bytes": 168488304,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/compiler/lib_InternalSwiftScan.dylib",
+    "sha256": "8213ecbc61d4e1bfd390ce05244c678ebf1b03ef841aab287785d597afd83cfa",
+    "system_trust": false,
+    "target": "compiler/lib_InternalSwiftScan.dylib"
+  },
+  "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift_static/clang": {
+    "kind": "directory",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21",
+    "system_trust": false,
+    "target": "../clang/21"
+  },
+  "/Applications/Xcode.app/Contents/Developer/usr/bin/python3": {
+    "bytes": 102352,
+    "kind": "file",
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "271143990bc83af0fb2404a255038f5faafb96df1584ed7f085e5018c0f33ffb",
+    "system_trust": false,
+    "target": "../../Library/Frameworks/Python3.framework/Versions/3.9/bin/python3"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libLLVM-21.dylib": {
+    "bytes": 141051200,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libLLVM.21.1.dylib",
+    "sha256": "fdd700d1a45d5b570b322835f1581a0cd3eb132718487df865a2f3c8c79053ed",
+    "system_trust": false,
+    "target": "libLLVM.21.1.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libc++.1.dylib": {
+    "bytes": 1173024,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libc++.1.0.dylib",
+    "sha256": "7047f2d0fd7db7bed22b253229137ca1ea0c0d1a075f17e3cf19d8943b780786",
+    "system_trust": false,
+    "target": "libc++.1.0.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libc++.dylib": {
+    "bytes": 1173024,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libc++.1.0.dylib",
+    "sha256": "7047f2d0fd7db7bed22b253229137ca1ea0c0d1a075f17e3cf19d8943b780786",
+    "system_trust": false,
+    "target": "libc++.1.0.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libcharset.dylib": {
+    "bytes": 51360,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libcharset.1.dylib",
+    "sha256": "b301a4791a56bc4bc99af05c9b2e05f048c31380ec93bcb9c39958abfa28b8a0",
+    "system_trust": false,
+    "target": "libcharset.1.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libiconv.dylib": {
+    "bytes": 1174832,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libiconv.2.dylib",
+    "sha256": "6254ff68033b1b62ae44a57d5d83145f9a6602fb13dd232b8b29b8affb6b1f43",
+    "system_trust": false,
+    "target": "libiconv.2.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicudata.78.dylib": {
+    "bytes": 33389104,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicudata.78.3.dylib",
+    "sha256": "bc00cc5bf0d5c45e562f47fe27f6a7b9e956c5d167c7e8233b4b2c3f22f8cbbc",
+    "system_trust": false,
+    "target": "libicudata.78.3.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicudata.dylib": {
+    "bytes": 33389104,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicudata.78.3.dylib",
+    "sha256": "bc00cc5bf0d5c45e562f47fe27f6a7b9e956c5d167c7e8233b4b2c3f22f8cbbc",
+    "system_trust": false,
+    "target": "libicudata.78.3.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicui18n.78.dylib": {
+    "bytes": 3507376,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicui18n.78.3.dylib",
+    "sha256": "6ac18c87f87887646b67fda4918b8a42901b4215570ce7292f295d3aa6e61b27",
+    "system_trust": false,
+    "target": "libicui18n.78.3.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicui18n.dylib": {
+    "bytes": 3507376,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicui18n.78.3.dylib",
+    "sha256": "6ac18c87f87887646b67fda4918b8a42901b4215570ce7292f295d3aa6e61b27",
+    "system_trust": false,
+    "target": "libicui18n.78.3.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicuio.78.dylib": {
+    "bytes": 117808,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicuio.78.3.dylib",
+    "sha256": "e90f3e79263603eee061f0e8f386345e0b87694797d01e21961ba0106abec474",
+    "system_trust": false,
+    "target": "libicuio.78.3.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicuio.dylib": {
+    "bytes": 117808,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicuio.78.3.dylib",
+    "sha256": "e90f3e79263603eee061f0e8f386345e0b87694797d01e21961ba0106abec474",
+    "system_trust": false,
+    "target": "libicuio.78.3.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicutest.78.dylib": {
+    "bytes": 124624,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicutest.78.3.dylib",
+    "sha256": "4b2460f4688c793f8ee280879173c1cfb70402d91782a216203c25809378b53e",
+    "system_trust": false,
+    "target": "libicutest.78.3.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicutest.dylib": {
+    "bytes": 124624,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicutest.78.3.dylib",
+    "sha256": "4b2460f4688c793f8ee280879173c1cfb70402d91782a216203c25809378b53e",
+    "system_trust": false,
+    "target": "libicutest.78.3.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicutu.78.dylib": {
+    "bytes": 274416,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicutu.78.3.dylib",
+    "sha256": "261e3c45f7284a35ea4e787b3bd16902f2f7a5912e8bb5a07eb4ea8de984b9c1",
+    "system_trust": false,
+    "target": "libicutu.78.3.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicutu.dylib": {
+    "bytes": 274416,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicutu.78.3.dylib",
+    "sha256": "261e3c45f7284a35ea4e787b3bd16902f2f7a5912e8bb5a07eb4ea8de984b9c1",
+    "system_trust": false,
+    "target": "libicutu.78.3.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicuuc.78.dylib": {
+    "bytes": 2101856,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicuuc.78.3.dylib",
+    "sha256": "20062b2bd5de7f6ba8dbf053a68c04823d41992bd7783653dce2e574ec92b550",
+    "system_trust": false,
+    "target": "libicuuc.78.3.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicuuc.dylib": {
+    "bytes": 2101856,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libicuuc.78.3.dylib",
+    "sha256": "20062b2bd5de7f6ba8dbf053a68c04823d41992bd7783653dce2e574ec92b550",
+    "system_trust": false,
+    "target": "libicuuc.78.3.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libz.1.dylib": {
+    "bytes": 124304,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libz.1.3.2.dylib",
+    "sha256": "8020844faf07e3a0a3058cf2eb8cc859ee3981297cdb3f3620db0714e2813b77",
+    "system_trust": false,
+    "target": "libz.1.3.2.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libzstd.1.dylib": {
+    "bytes": 831824,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libzstd.1.5.7.dylib",
+    "sha256": "94dde7b52917a03b23b96d7ec895a814f246b3f16423bc9d51bf27a224af5625",
+    "system_trust": false,
+    "target": "libzstd.1.5.7.dylib"
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libzstd.dylib": {
+    "bytes": 831824,
+    "kind": "file",
+    "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib/libzstd.1.5.7.dylib",
+    "sha256": "94dde7b52917a03b23b96d7ec895a814f246b3f16423bc9d51bf27a224af5625",
+    "system_trust": false,
+    "target": "libzstd.1.dylib"
+  }
+}
