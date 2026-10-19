@@ -1,0 +1,68 @@
+{
+  "A_decoder_commands_max": 3,
+  "B_launch_enabled": false,
+  "absent_paths_verified": 6,
+  "cache_file_sha256": {
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+  },
+  "complete_loader_entries_verified": 8720,
+  "current_collection_boundary": {
+    "automatic_source_repairs": 0,
+    "automatic_tooling_repairs": 0,
+    "collection_attempts": 1,
+    "marker_identity": [
+      16777234,
+      29640436
+    ],
+    "retries": 0
+  },
+  "direct_inputs_verified": 180,
+  "loader_aliases_verified": 72,
+  "loader_membership_and_alias_endpoints_match": true,
+  "loader_roots_verified": 3,
+  "method": "Independent file/SHA-256/JSON/tree/alias checks, syntax parsing and read-only Git; controller/bootstrap/preparation modules not executed or imported.",
+  "nine_external_file_sha256": {
+    "controller-accounting.json": "897069c9d215bdf07ed176778e08fb64b0b4c5c41026d142eba54b4e065a866f",
+    "controller-inputs.json": "fa3316fc1df57c5e33f4cf1d41a4bb5ad056652829297063431abfe296c99122",
+    "controller.py": "b4c791218df1377f75fa0c1969e1ae0870e7071a7a21791a1397ff5644266b30",
+    "gate-policy.json": "24589ec26a5a91c378449453e14711f2bbedd78c991f1fac700c763262f8feb5",
+    "loader-aliases.json": "0b89de91542996f265691146ca4cfd0add9b7a740b4680e83858e56b238aa05d",
+    "loader-policy.json": "3338d16f794b10b878013cb200ef51adc4723f6a34bcf3bd5384b3972a7be8f3",
+    "loader-roots.json": "a4d838770cfbe08c24cabaa386e5654d9bc05b2e711af9011e618c72bb9c2229",
+    "request.json": "f573f07ff8a1352e6f2d0a3d9866d4f01b8447edb8000e4ae1dea339f3714ea2",
+    "reviewed-launch.py": "69b5953ae80715ddc633859353b18a8ae2d857be18969118e3e2a45ddb99ac58"
+  },
+  "output_absent": true,
+  "preserved_dirty_file_sha256": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+    "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+    "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+  },
+  "reviewed_controller_commit": "75cafff6dcd3677ebcdb5ef06e22d3b48f9f7af1",
+  "reviewed_environment_commit": "e6704db4e8e941663b48aacf797959125be88145",
+  "reviewed_packet_file_sha256": {
+    "CONTROLLER.md": "8c3c6c4f266bff4179e5d12f578889997ee5eeb9c435447c8dc2cdb90a1b5247",
+    "ENVIRONMENT.md": "55a1cc2bb195707b048f02122736ed181ee6309148a914f4b98cdadece1454ae",
+    "README.md": "1d0b4b417570d884ca2dd8806c82deecbf34c4bfe04ba4148da8fcef01de5e45",
+    "controller-accounting.json": "897069c9d215bdf07ed176778e08fb64b0b4c5c41026d142eba54b4e065a866f",
+    "controller-inputs.json": "fa3316fc1df57c5e33f4cf1d41a4bb5ad056652829297063431abfe296c99122",
+    "controller.py": "b4c791218df1377f75fa0c1969e1ae0870e7071a7a21791a1397ff5644266b30",
+    "gate-policy.json": "24589ec26a5a91c378449453e14711f2bbedd78c991f1fac700c763262f8feb5",
+    "independent-review-inspection.json": "c1c8ae0baefb9f3879974a00b8f6a6b286172f101ea9387fa4b5a3176a2ebf4d",
+    "independent-review.md": "2766cbd0eab298fd0122fd5eb198f0c1e868314c62eca1b464d04c2bb53a7f48",
+    "inventory.json": "a8413f0ff20bf4c7bcbb66fd63026422da89e01b13f1f124b796d6b191564180",
+    "inventory.py": "e5f58b214bf8646d30b256cb0556c1ee6bf51db2754f5a52f60167ed500e4131",
+    "loader-aliases.json": "0b89de91542996f265691146ca4cfd0add9b7a740b4680e83858e56b238aa05d",
+    "loader-policy.json": "3338d16f794b10b878013cb200ef51adc4723f6a34bcf3bd5384b3972a7be8f3",
+    "loader-roots.json": "a4d838770cfbe08c24cabaa386e5654d9bc05b2e711af9011e618c72bb9c2229",
+    "prepare-controller.py": "5fc716d5bf23aa714ae05af3e0cf5f413fc4a7ba025a817c55c52e906140532e",
+    "prepare-loader.py": "7d58f6e1f83cfa1988c42dcf4c033b3b501750d44d8e15e0eb1ec22fe405eadb",
+    "request.json": "f573f07ff8a1352e6f2d0a3d9866d4f01b8447edb8000e4ae1dea339f3714ea2",
+    "reviewed-launch.py": "69b5953ae80715ddc633859353b18a8ae2d857be18969118e3e2a45ddb99ac58"
+  },
+  "source42_hashes_match": true,
+  "strict_cold_eligible": false,
+  "verdict": "PASS_A_only_controller_and_environment_readiness"
+}

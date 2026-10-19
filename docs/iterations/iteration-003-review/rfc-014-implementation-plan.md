@@ -9,10 +9,11 @@ unproved loader/provider, cold metadata, numeric Error size and library costs.
 The [concrete A-only controller](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/CONTROLLER.md)
 now prepares external final pins, authenticated complete fallback environments,
 fresh consumption and hard caps; it proposes at most three A captures, then STOP
-with all B commands skipped. The [prior preparation review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/independent-review.md)
-identified B1, now corrected at e6704db4. No controller/decoder ran. Independent
-Strong readiness review and explicit execution authorization remain required;
-no acquisition/runtime/compiler/repair/strict-cold allowance follows. U02–U05 retain their open
+with all B commands skipped. The [independent Strong readiness review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/controller-independent-review.md)
+passes B1 correction and concrete controller/environment readiness. One exact
+A-only bootstrap is cleared under existing P08 authorization using final external
+review pins; no controller/decoder ran during review. Zero repair/retry, no B,
+acquisition/runtime/compiler/strict-cold launch or historical budget reset follows. U02–U05 retain their open
 interpretation dispositions. `strict_cold_eligible` remains false;
 collection1/1 is consumed, repairs0/retries0. P08/R07/T8.1, remaining gates,
 collection marker and historical budgets remain unchanged.
