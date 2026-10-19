@@ -5,7 +5,7 @@ Eugene's “Please proceed” authorizes a separate counter-only initial **0/1**
 automatic repairs **0/0**, retries **0/0**, after independent readiness PASS.
 The [successor packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter384-successor1-preparation/README.md)
 freezes retained schema4/P07/ABI applicability and a detached one-child launch with
-permanent marker and durable actual-exit records. Its 16 compiler-free static
+permanent marker and durable actual-exit records. Its 18 compiler-free static
 tests pass; no compiler or production launch ran. The
 [prior continuation](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-dependent-continuation1-result/README.md)
 remains STOP with 317 passed checks and one unfinished check, no counter result

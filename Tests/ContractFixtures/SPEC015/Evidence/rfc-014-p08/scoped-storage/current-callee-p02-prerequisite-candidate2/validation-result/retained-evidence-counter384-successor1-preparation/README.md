@@ -6,6 +6,12 @@ No production launcher, compiler, counter or schema4 invocation has run for this
 packet. The new permanent marker is
 `.build/contracts/p08-retained-evidence-counter384-successor1` and is absent.
 
+Readiness review of `09bd541b` blocked process inspection under the intended
+sandbox and initialization outside terminal handling. The bounded correction
+removes `/bin/ps`, uses observed clocks without an OS-start claim, retains
+initialization errors after the worker claim, and exercises the real routine
+without fixture substitution. Independent readiness review remains pending.
+
 ## Authority and fixed scope
 
 Eugene's “Please proceed”, after the interrupted counter result and the proposal
@@ -61,7 +67,7 @@ pre-existing dirty file identities/exclusions. New evidence and navigation files
 are outside compiled/discovered inputs. No excluded changed source gains reuse
 applicability. Complete discovery, import directory, SDK, compiler/frontend,
 Python runtime, macro search, producer/control and tool manifests are checked at
-both production boundaries; `/bin/ps` and `/usr/bin/env` are also pinned.
+both production boundaries; `/usr/bin/env` is also pinned.
 
 ## One detached launch after review
 
@@ -95,8 +101,11 @@ has no stream, terminal or process-group dependency on the supervisor.
 
 Permanent O_EXCL supervisor and child claims prevent a second worker or child.
 All consumed markers/claims remain even if launch or supervision fails. Never
-remove them to enable a relaunch. The supervisor records PID, parent/group IDs,
-OS process start text and observation/spawn times in durable records. Raw child
+remove them to enable a relaunch. The supervisor records PID with accurately named wall and monotonic observation
+times, and brackets each Popen with before/after observations. These are observed
+spawn facts; they establish neither OS creation time nor identity immune to PID
+reuse. Reviewed Git pins, consumed marker device/inode and permanent claims bind
+the recorded activity. No process-inspection command is used. Raw child
 logs go directly to files. `terminal.json` is atomically renamed and fsynced after
 waiting for the actual child exit, with authentication, fresh-root discovery,
 raw hashes and complete observed-root manifests. Exactly one fresh `p08-counter-`
@@ -126,7 +135,7 @@ calls `run.py`, the bootstrap, supervisor or maintained driver again.
 From the repository root run the isolated absolute interpreter with
 `test_static.py`, using the same startup flags as above. `static-validation.json`
 and raw static-test streams retain the exact command, exit, times and input hashes.
-Sixteen tests cover real full-context authentication, archive/source/receipt/tool
+Eighteen tests cover real full-context authentication, archive/source/receipt/tool
 and membership drift, Python import/bytecode attacks, external Git pins and code
 substitution, missing schema joins, invalid counter aggregate/dependency/label
 states, replay statuses, forbidden recipes and budgets, replaced lock inodes,
@@ -135,16 +144,17 @@ atomic terminal writing, and a real detached harmless Python child.
 The disconnection test destroys its launcher process group with SIGHUP while the
 harmless child runs. It verifies independent process groups, inherited lock fd,
 durable stdout/stderr, actual child exit 7, terminal/raw hashes, and second-child
-claim rejection. Its fixture supplies PID/observation identity without `ps`:
-process inspection was denied by the sandbox, and the escalated static-test
-request was interrupted. Production `/bin/ps` remains pinned and unchanged;
-its availability in the eventual execution environment is a readiness item.
-No compiler, maintained driver or production launcher is called by these tests.
+claim rejection. It exercises the real unmodified observation routine in the
+intended sandbox. A separate isolated preflight exercises that routine before
+marker consumption. An initialization-failure fixture confirms a STOP terminal
+with child_exit=null and that a replay cannot overwrite it. Only the original
+Popen.wait result supplies a launched child's exit; no observation failure implies
+that the child exited. No compiler, maintained driver or production launcher is
+called by these tests; supervisor-main fixtures use temporary roots only.
 
 Independent Strong review must assess source/evidence applicability, bounds,
 Python bootstrap/code authentication, detached supervision, permanent claims,
-lock inheritance, raw retention and terminal semantics, including the process
-inspection limitation. This packet can qualify only the new macOS Static
+lock inheritance, raw retention and terminal semantics. This packet can qualify only the new macOS Static
 counter384. Even a future PASS leaves P08/R07/T8.1, other profiles, full safety,
 cold/resource, images, hardware and conformance gates open. Archive any eventual
 raw results in a new sibling result packet; preserve every historical result.

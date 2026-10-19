@@ -47,10 +47,6 @@
     "resolved": "/usr/bin/ruby",
     "sha256": "4d57327e7abe67e1c3f84a0869f4239b3324a3d7ea20a70077450e688282fe4f"
   },
-  "/bin/ps": {
-    "resolved": "/bin/ps",
-    "sha256": "3bbba882e30d91fc4ff6e6844ca7c59fef4351b9a3fea35dca55708d6d487d1c"
-  },
   "/usr/bin/env": {
     "resolved": "/usr/bin/env",
     "sha256": "75690864f0e7397db05bcc0f4439915559ce24c2d834d530e4e619c14b938556"

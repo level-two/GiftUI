@@ -12,13 +12,15 @@ test_import_packages_cannot_shadow_helper_or_subprocess (__main__.FilesystemTest
 test_permanent_lock_identity_and_atomic_terminal (__main__.FilesystemTests) ... ok
 test_raw_stage_and_audit_mutation (__main__.FilesystemTests) ... ok
 test_real_complete_applicability (__main__.FilesystemTests) ... ok
+test_real_observation_preflight_before_marker (__main__.FilesystemTests) ... ok
 test_receipt_source_artifact_and_traversal (__main__.FilesystemTests) ... ok
 test_schema4_required_joins_and_provenance (__main__.FilesystemTests) ... ok
+test_supervisor_initialization_failure_retained_and_replay_preserved (__main__.FilesystemTests) ... ok
 test_tree_bytes_additions_deletions_aliases (__main__.FilesystemTests) ... ok
 test_tree_directory_and_link_identity (__main__.FilesystemTests) ... ok
 test_valid_helper_bytecode_is_rejected_by_exact_driver_environment (__main__.FilesystemTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 16 tests in 37.683s
+Ran 18 tests in 37.936s
 
 OK

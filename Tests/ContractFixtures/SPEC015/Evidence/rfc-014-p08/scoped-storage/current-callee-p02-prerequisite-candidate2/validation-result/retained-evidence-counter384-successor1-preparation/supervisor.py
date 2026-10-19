@@ -31,9 +31,14 @@ def atomic_json(path, data):
         os.close(fd)
 
 
-def process_identity(pid):
-    return dict(pid=pid, observed_ns=time.time_ns(),
-                ps=subprocess.check_output(['/bin/ps', '-p', str(pid), '-o', 'pid=,ppid=,pgid=,lstart=']).decode().strip())
+def clock_observation():
+    return dict(observed_wall_ns=time.time_ns(),
+                observed_monotonic_ns=time.monotonic_ns())
+
+
+def process_observation(pid):
+    """PID and observation clocks only; never an OS process creation identity."""
+    return dict(pid=pid, **clock_observation())
 
 
 def check_lock(fd, path):
@@ -54,29 +59,27 @@ def supervise_child(out, argv, executable, cwd, environment, lock_fd, report):
     require(not (out / 'child-launch-consumed.json').exists(), 'child claim consumed; no relaunch')
     # O_EXCL provides permanent at-most-once consumption even if two supervisors race.
     with (out / 'child-launch-consumed.json').open('x') as stream:
-        json.dump(dict(claimed_ns=time.time_ns(), supervisor=process_identity(os.getpid()), argv=argv), stream)
+        json.dump(dict(claimed_ns=time.time_ns(), supervisor_observation=process_observation(os.getpid()),
+                       reviewed_pins=report['reviewed_pins'], marker_identity=report['marker_identity'], argv=argv), stream)
         stream.flush()
         os.fsync(stream.fileno())
     signal.signal(signal.SIGHUP, signal.SIG_IGN)
     with (out / 'counter384.stdout').open('xb') as stdout, (out / 'counter384.stderr').open('xb') as stderr:
+        report['child_spawn_before'] = clock_observation()
         process = subprocess.Popen(argv, executable=executable, cwd=cwd,
                                    env=environment, stdin=subprocess.DEVNULL,
                                    stdout=stdout, stderr=stderr, pass_fds=(lock_fd,))
         report['child_pid'] = process.pid
-        report['child_started_ns'] = time.time_ns()
+        report['child_spawn_after'] = clock_observation()
         try:
             for sig in (signal.SIGINT, signal.SIGTERM):
                 signal.signal(sig, lambda signum, frame: process.send_signal(signum))
-            # A very short child can exit before ps; spawn facts remain durable.
-            try:
-                report['child_identity'] = process_identity(process.pid)
-            except subprocess.CalledProcessError:
-                report['child_identity'] = dict(pid=process.pid, already_exited=True)
+            report['child_observation'] = process_observation(process.pid)
             atomic_json(out / 'child-start.json', report)
         finally:
             # Once spawned, always reap the actual child even if recording fails.
             report['child_exit'] = process.wait()
-            report['child_finished_ns'] = time.time_ns()
+            report['child_wait_observation'] = clock_observation()
         stdout.flush(); stderr.flush()
         os.fsync(stdout.fileno()); os.fsync(stderr.fileno())
     report['raw_logs'] = {name: stream_sha(out / ('counter384.' + name)) for name in ('stdout', 'stderr')}
@@ -86,16 +89,11 @@ def main():
     require(len(sys.argv) == 7, 'supervisor needs reviewed pins, inherited lock and marker identity')
     pins = sys.argv[1:4]
     lock_fd, device, inode = map(int, sys.argv[4:])
-    recipe = json.loads(actual(PACKET / 'recipe.json'))
-    out = Path(recipe['output_root'])
-    require(out.resolve() == out and (out.stat().st_dev, out.stat().st_ino) == (device, inode), 'consumed marker identity')
-    # Permanent exclusive worker claim; no second supervisor can launch a child.
-    with (out / 'supervisor-claim.json').open('x') as stream:
-        json.dump(dict(pid=os.getpid(), started_ns=time.time_ns()), stream)
-        stream.flush(); os.fsync(stream.fileno())
+    out = ROOT / '.build/contracts/p08-retained-evidence-counter384-successor1'
     report = dict(status='STOP', initial_launches=1, automatic_repairs=0, retries=0,
-                  schema4_launches=0, reviewed_pins=pins, started_ns=time.time_ns(),
-                  supervisor=process_identity(os.getpid()), child_exit=None)
+                  schema4_launches=0, reviewed_pins=pins, child_exit=None,
+                  marker_identity=[device, inode])
+    claimed = False
     parent = ROOT / '.build/contracts'
     def verify():
         check_lock(lock_fd, ROOT / '.build/validation.lock')
@@ -104,6 +102,16 @@ def main():
         verify_context(ROOT, PACKET, recipe)
     code = 1
     try:
+        require(out.resolve() == out and (out.stat().st_dev, out.stat().st_ino) == (device, inode), 'consumed marker identity')
+        # Only this claim's owner can write its terminal; replay never overwrites it.
+        with (out / 'supervisor-claim.json').open('x') as stream:
+            claimed = True
+            report['supervisor_observation'] = process_observation(os.getpid())
+            json.dump(dict(reviewed_pins=pins, marker_identity=[device, inode],
+                           supervisor_observation=report['supervisor_observation']), stream)
+            stream.flush(); os.fsync(stream.fileno())
+        recipe = json.loads(actual(PACKET / 'recipe.json'))
+        require(recipe['output_root'] == str(out), 'fixed consumed marker operand')
         signal.signal(signal.SIGHUP, signal.SIG_IGN)
         verify()
         launch = json.loads(actual(out / 'launch.json'))
@@ -143,7 +151,8 @@ def main():
                     report['observed_new_roots'][name] = dict(collection_error=traceback.format_exc())
         except BaseException:
             report['collection_error'] = traceback.format_exc()
-        atomic_json(out / 'terminal.json', report)
+        if claimed:
+            atomic_json(out / 'terminal.json', report)
     os.close(lock_fd)
     return code
 

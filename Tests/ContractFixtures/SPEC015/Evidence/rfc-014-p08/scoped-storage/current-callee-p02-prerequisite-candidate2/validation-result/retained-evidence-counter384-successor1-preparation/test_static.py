@@ -262,7 +262,7 @@ class FilesystemTests(unittest.TestCase):
             source=actual(PACKET/'supervisor.py').decode()
             worker="import sys,types\nm=types.ModuleType('readiness')\nexec("+repr(actual(PACKET/'readiness.py').decode())+",m.__dict__)\nsys.modules['readiness']=m\n"
             worker+="n={'__file__':"+repr(str(PACKET/'supervisor.py'))+",'__name__':'fixture'}\nexec("+repr(source)+",n)\n"
-            worker+="n['process_identity']=lambda pid: {'pid':pid,'fixture_observed_ns':__import__('time').time_ns()}\nfrom pathlib import Path\nimport os\nout=Path("+repr(str(out))+")\nfd=int(sys.argv[1])\nn['check_lock'](fd,Path("+repr(str(lock))+"))\nr={'status':'STOP','supervisor':n['process_identity'](os.getpid())}\n"
+            worker+="from pathlib import Path\nimport os\nout=Path("+repr(str(out))+")\nfd=int(sys.argv[1])\nn['check_lock'](fd,Path("+repr(str(lock))+"))\nr={'status':'STOP','supervisor_observation':n['process_observation'](os.getpid()),'reviewed_pins':['fixture']*3,'marker_identity':[out.stat().st_dev,out.stat().st_ino]}\n"
             worker+="n['supervise_child'](out,[sys.executable,'-c',"+repr(child_code)+",str(fd)],sys.executable,out,{},fd,r)\nn['atomic_json'](out/'terminal.json',r)\n"
             parent="import fcntl,json,os,signal,subprocess,sys\nfrom pathlib import Path\nlock=Path("+repr(str(lock))+").open('a+b')\nfcntl.flock(lock,fcntl.LOCK_EX)\nout=Path("+repr(str(out))+")\n"
             parent+="with (out/'supervisor.stdout').open('wb') as a,(out/'supervisor.stderr').open('wb') as b:\n p=subprocess.Popen([sys.executable,'-I','-S','-B','-X','pycache_prefix=/dev/null','-c',"+repr(worker)+",str(lock.fileno())],stdin=subprocess.DEVNULL,stdout=a,stderr=b,start_new_session=True,pass_fds=(lock.fileno(),))\n"
@@ -281,6 +281,13 @@ class FilesystemTests(unittest.TestCase):
                 self.assertTrue((out/'terminal.json').exists(),(out/'supervisor.stderr').read_text())
                 terminal=json.loads((out/'terminal.json').read_text())
                 self.assertEqual(terminal['child_exit'],7)
+                self.assertEqual(terminal['child_observation']['pid'],terminal['child_pid'])
+                self.assertLessEqual(terminal['child_spawn_before']['observed_monotonic_ns'],terminal['child_spawn_after']['observed_monotonic_ns'])
+                self.assertGreaterEqual(terminal['child_observation']['observed_monotonic_ns'],terminal['child_spawn_after']['observed_monotonic_ns'])
+                self.assertEqual(set(terminal['child_observation']),{'pid','observed_wall_ns','observed_monotonic_ns'})
+                claim=json.loads((out/'child-launch-consumed.json').read_text())
+                self.assertEqual(claim['reviewed_pins'],terminal['reviewed_pins'])
+                self.assertEqual(claim['marker_identity'],terminal['marker_identity'])
                 self.assertIn(b'HARMLESS_CHILD_LOCK_INHERITED',actual(out/'counter384.stdout'))
                 self.assertIn(b'HARMLESS_STDERR',actual(out/'counter384.stderr'))
                 self.assertEqual(terminal['raw_logs']['stdout'],sha(actual(out/'counter384.stdout')))
@@ -308,6 +315,52 @@ class FilesystemTests(unittest.TestCase):
             supervisor.atomic_json(root/'terminal.json',dict(child_exit=-15,status='STOP'))
             self.assertEqual(json.loads(actual(root/'terminal.json'))['child_exit'],-15)
             self.assertFalse(list(root.glob('*.writing-*')))
+
+
+    def test_real_observation_preflight_before_marker(self):
+        import supervisor
+        marker=Path(json.loads(actual(PACKET/'recipe.json'))['output_root'])
+        self.assertFalse(marker.exists() or marker.is_symlink())
+        before=supervisor.clock_observation()
+        observation=supervisor.process_observation(os.getpid())
+        after=supervisor.clock_observation()
+        self.assertEqual(set(observation),{'pid','observed_wall_ns','observed_monotonic_ns'})
+        self.assertEqual(observation['pid'],os.getpid())
+        self.assertLessEqual(before['observed_monotonic_ns'],observation['observed_monotonic_ns'])
+        self.assertLessEqual(observation['observed_monotonic_ns'],after['observed_monotonic_ns'])
+        # Use the exact isolated interpreter/environment, with unmodified source.
+        code="import types,os,json\nm=types.ModuleType('readiness')\nexec("+repr(actual(PACKET/'readiness.py').decode())+",m.__dict__)\nimport sys\nsys.modules['readiness']=m\nn={'__file__':"+repr(str(PACKET/'supervisor.py'))+",'__name__':'preflight'}\nexec("+repr(actual(PACKET/'supervisor.py').decode())+",n)\nprint(json.dumps(n['process_observation'](os.getpid())))\n"
+        recipe=json.loads(actual(PACKET/'recipe.json'))
+        result=subprocess.run([recipe['python_executable'],'-I','-S','-B','-X','pycache_prefix=/dev/null','-c',code],env=recipe['environment'],cwd=ROOT,capture_output=True)
+        self.assertEqual(result.returncode,0,result.stderr.decode())
+        self.assertEqual(set(json.loads(result.stdout)),{'pid','observed_wall_ns','observed_monotonic_ns'})
+        self.assertFalse(marker.exists() or marker.is_symlink())
+
+    def test_supervisor_initialization_failure_retained_and_replay_preserved(self):
+        import fcntl
+        import supervisor
+        with tempfile.TemporaryDirectory(dir='/private/tmp') as temp:
+            root=Path(temp);packet=root/'packet';packet.mkdir()
+            out=root/'.build/contracts/p08-retained-evidence-counter384-successor1';out.mkdir(parents=True)
+            (packet/'recipe.json').write_text('{invalid JSON')
+            subprocess.run(['git','init',str(root)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,check=True)
+            saved=(supervisor.ROOT,supervisor.PACKET,list(sys.argv))
+            try:
+                supervisor.ROOT=root;supervisor.PACKET=packet
+                with (root/'.build/validation.lock').open('a+b') as handle:
+                    fcntl.flock(handle,fcntl.LOCK_EX)
+                    def invoke():
+                        sys.argv=['fixture',*(['0'*40]*3),str(os.dup(handle.fileno())),str(out.stat().st_dev),str(out.stat().st_ino)]
+                        return supervisor.main()
+                    self.assertEqual(invoke(),1)
+                    terminal=actual(out/'terminal.json');data=json.loads(terminal)
+                    self.assertIn('JSONDecodeError',data['error']);self.assertIsNone(data['child_exit'])
+                    self.assertEqual(set(data['supervisor_observation']),{'pid','observed_wall_ns','observed_monotonic_ns'})
+                    self.assertFalse((out/'child-launch-consumed.json').exists())
+                    self.assertEqual(invoke(),1)
+                    self.assertEqual(actual(out/'terminal.json'),terminal)
+            finally:
+                supervisor.ROOT,supervisor.PACKET,sys.argv=saved
 
 
 if __name__=='__main__':

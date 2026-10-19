@@ -14,7 +14,7 @@ iterations:
 features:
   external-application-integration:
     title: External Application and Backend Integration
-    # P08 counter384 successor1 compiler-free preparation: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter384-successor1-preparation/README.md; 16 static tests pass, independent readiness pending, counter initial0/1 repairs0/0 retries0/0. Prior interrupted continuation remains STOP; P08/R07/T8.1 open.
+    # P08 counter384 successor1 compiler-free preparation: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter384-successor1-preparation/README.md; 18 static tests pass, independent readiness pending, counter initial0/1 repairs0/0 retries0/0. Prior interrupted continuation remains STOP; P08/R07/T8.1 open.
     # PROPOSAL-007 accepted; RFC-013 draft; RFC-014 approved 2026-10-10 under conditional finalization.
     # RFC-015 approved 2026-10-13 under conditional human instruction after fresh readiness review.
     # Approval: docs/iterations/iteration-003-review/rfc-015-readiness-and-approval.md; B1–B4 are downstream obligations.

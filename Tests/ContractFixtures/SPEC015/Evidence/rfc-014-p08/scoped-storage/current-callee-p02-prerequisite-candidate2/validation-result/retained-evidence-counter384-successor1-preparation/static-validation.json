@@ -13,21 +13,21 @@
     "pycache_prefix=/dev/null",
     "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter384-successor1-preparation/test_static.py"
   ],
-  "started_ns": 1792399423934833000,
-  "finished_ns": 1792399461751953000,
+  "started_ns": 1792400342240256000,
+  "finished_ns": 1792400380307569000,
   "exit": 0,
   "compiler_invocations": 0,
   "production_launches": 0,
   "scope": "compiler-free adversarial applicability and harmless detached-child verification",
-  "fixture_process_identity": "Harmless disconnection fixture supplies pid and observed_ns without ps because sandbox denied ps; real production ps/start identity remains readiness-review item.",
+  "process_observation": "Real unmodified PID/wall/monotonic observation routine exercised in isolated pre-consumption preflight and detached child test; no OS creation-time or PID-reuse-proof claim, no process inspection subprocess.",
   "files": {
     "reviewed-launch.py": {
       "bytes": 3517,
       "sha256": "6fb6266e047864f0807110ea3e326062eda60bb42031500dc030fac3465b8629"
     },
     "run.py": {
-      "bytes": 3842,
-      "sha256": "5499f4c3cd8d122375bf5c5e6ff8b6644fc559d0fd8cfc1ecfbfec0b3c70de08"
+      "bytes": 4191,
+      "sha256": "e152b191478bf49bb59befa3f07030d9ba3b9129749ce462b9d7c95644552995"
     },
     "source-differences.json": {
       "bytes": 199945,
@@ -38,20 +38,20 @@
       "sha256": "a69d7fa085f00bb8809ed733dd8d42839f8101d6c06b33b1a0bc33fb4f69ec22"
     },
     "test_static.py": {
-      "bytes": 25111,
-      "sha256": "5e8bba093736732609140e91c0ec55ca053be8258fb704a569ef2b91005f367b"
+      "bytes": 29239,
+      "sha256": "ba61473767f3a5b1c21a211ab49dbddde84ba25d5b569463a4ba765af26b02b0"
     },
     "frozen-links.json": {
       "bytes": 700,
       "sha256": "7f3cfe8789864d9fcb63f423f8e4adc7a0443adbfe8c5f5e457a43960e8da237"
     },
     "supervisor.py": {
-      "bytes": 7749,
-      "sha256": "73a4db0748c064312fdc32e8ee18e0a4ba189d34956b734dc0889ad96fd7c473"
+      "bytes": 8162,
+      "sha256": "87dc70b2b521237d977f532fd9781e7bd94b5ae6981b99db0ba8a98b8895dd0f"
     },
     "tools.json": {
-      "bytes": 3569,
-      "sha256": "b1d301630767e7c07cadb777ab287c16535c97c0f6812fb1d63016e23d9c3250"
+      "bytes": 3441,
+      "sha256": "4be497bd1280d14480d9e72cdb2a439da46a7e5bc8d2e5406c1cb6f74b4cd8d7"
     },
     "recipe.json": {
       "bytes": 2100,
@@ -90,8 +90,8 @@
       "sha256": "565495d2a5faac79c8face63c43172b7bc416386b653cf2cd28a73ee89732491"
     },
     "static-test.stderr": {
-      "bytes": 1632,
-      "sha256": "11adea244d309400acc3705c0932765908e4c6ca41ee4d9781c07e3d377fd3db"
+      "bytes": 1815,
+      "sha256": "259e8b822d7225388aa2e8a0e02cd516edab239d0b81d793a49f2872e3a57538"
     }
   }
 }
