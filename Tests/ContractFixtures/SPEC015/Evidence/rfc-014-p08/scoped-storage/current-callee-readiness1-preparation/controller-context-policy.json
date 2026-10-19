@@ -1,0 +1,25 @@
+{
+  "current_import_trees": "import-trees.json",
+  "decoder_libraries": "decoder-library-tree.json",
+  "direct_freeze": "input-freeze.json",
+  "inherited_packet": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter384-successor1-preparation",
+  "inherited_tree_manifest_sha256": "c2fbc28c6a9a193bb23f19dd020023d285f6e5be7d5afee61ae1f97330e7d1a3",
+  "inherited_tree_roots": [
+    "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/arm64-apple-macosx/debug",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/checkouts/swift-syntax/Sources/_SwiftLibraryPluginProviderCShims/include",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/checkouts/swift-syntax/Sources/_SwiftSyntaxCShims/include",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/prebuilts/swift-syntax/603.0.2/swift-6.4.0-RELEASE-macos_universal-MacroSupport/Modules",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/prebuilts/swift-syntax/603.0.2/swift-6.4.0-RELEASE-macos_universal-MacroSupport/lib",
+    "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin",
+    "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/clang",
+    "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift"
+  ],
+  "loader_aliases": "loader-aliases.json",
+  "loader_trees": "loader-roots.json",
+  "scope": "Only selected native compiler/SDK/Python/macro roots apply. Historical ARMv6/Embedded/probe trees are not production operands of this collection; their evidence remains unchanged. Import roots independently cover current retained 25 modules and producer receipts.",
+  "source_discovery": "source-inventory.json",
+  "source_freeze": "source-freeze.json",
+  "tools": "tools.json"
+}

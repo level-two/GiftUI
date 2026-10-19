@@ -1,0 +1,58 @@
+{
+  "ambient_policy": "env-i bootstrap; each Popen receives exactly one complete dictionary. No PATH/PYTHONPATH/LD/DYLD/SWIFT/GIT or startup variable inherited. Python-added LC_CTYPE and __CF_USER_TEXT_ENCODING accepted only at explicitly named exact values.",
+  "bootstrap": {
+    "HOME": "/Users/eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "TMPDIR": "/private/tmp"
+  },
+  "compiler_and_macro": {
+    "DYLD_FRAMEWORK_PATH": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks:/Applications/Xcode.app/Contents/SharedFrameworks:/Library/Developer/PrivateFrameworks",
+    "DYLD_LIBRARY_PATH": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib:/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing",
+    "HOME": "/Users/eugene",
+    "LC_CTYPE": "C.UTF-8",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "TMPDIR": "/private/tmp",
+    "USER": "eugene"
+  },
+  "controller": {
+    "HOME": "/Users/eugene",
+    "LC_CTYPE": "C.UTF-8",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "TMPDIR": "/private/tmp",
+    "USER": "eugene"
+  },
+  "decoder": {
+    "DYLD_LIBRARY_PATH": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
+    "HOME": "/Users/eugene",
+    "LC_CTYPE": "C.UTF-8",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "TMPDIR": "/private/tmp",
+    "USER": "eugene"
+  },
+  "interpreter_added_environment": {
+    "LC_CTYPE": "C.UTF-8",
+    "__CF_USER_TEXT_ENCODING": "0x1F5:0x7:0x3D"
+  },
+  "interpreter_and_demangler": {
+    "DYLD_LIBRARY_PATH": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
+    "HOME": "/Users/eugene",
+    "LC_CTYPE": "C.UTF-8",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "TMPDIR": "/private/tmp",
+    "USER": "eugene"
+  },
+  "os_runtime_boundary": "Apple system /usr/lib and /System/Library loader/runtime are the trusted installed OS. This packet freezes user/developer/toolchain search roots; it does not claim a portable or hermetic OS image.",
+  "python_executable": "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+  "python_flags": [
+    "-I",
+    "-S",
+    "-B",
+    "-X",
+    "pycache_prefix=/dev/null"
+  ],
+  "schema": 1
+}

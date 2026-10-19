@@ -1,0 +1,14 @@
+{
+  "builds": 0,
+  "compiler_launches": 0,
+  "decoder_launches": 0,
+  "inherited_tool_tree_roots": 10,
+  "kind": "file-read/hash/inventory inspection only",
+  "loader_alias_count": 1062,
+  "loader_entry_count": 8578,
+  "loader_root_count": 7,
+  "missing_aliases": [],
+  "review_status": "pending independent readiness",
+  "runtime_launches": 0,
+  "tests": 0
+}

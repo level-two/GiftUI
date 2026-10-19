@@ -4,6 +4,9 @@ Status: **compiler-free preparation independently reviewed; execution blocked**.
 The [independent Strong review](independent-review.md) passes applicability and the
 bounded recipe; a complete controller/environment packet and independent readiness
 review remain required before production.
+The [complete environment/loader preparation](ENVIRONMENT.md) now freezes all
+seven proposed loader roots, including review B2's three missing roots; its
+independent readiness review remains pending with the controller.
 No compiler, build, test, decoder or runtime command ran. This packet supplies
 fixed collection data and review requirements; it does not supply a production
 launcher or claim launch readiness. The output
