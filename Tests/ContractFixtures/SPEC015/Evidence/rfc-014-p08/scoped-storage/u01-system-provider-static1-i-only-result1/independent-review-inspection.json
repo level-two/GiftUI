@@ -1,0 +1,118 @@
+{
+  "I_actual_exit": 0,
+  "I_attempt_marker_identity": [
+    16777234,
+    29652748
+  ],
+  "I_child_elapsed_seconds_upper_bound": 0.044018833999999174,
+  "I_output_semantically_parsed": false,
+  "I_pid": 93532,
+  "S_all_skipped_null_actual_exits": true,
+  "archive_members_match_live_manifest_git": {
+    "attempt-consumed.json": {
+      "bytes": 1340,
+      "sha256": "bbaed3ddb765de7835b231417be85b545e6cd45684dbdfdd7857651af5aae685"
+    },
+    "prelaunch-authentication.json": {
+      "bytes": 765,
+      "sha256": "5b8a632633c347b1bdf11b846ea0e8cf5716bc42c2a19933c052e30c0d6aec5b"
+    },
+    "provider-gate.json": {
+      "bytes": 1648,
+      "sha256": "0c92562bed54d6f7c59f217985e0fca5a39a11560d8204474551d5f0d0d6174e"
+    },
+    "system-c-body-data.exit.json": {
+      "bytes": 162,
+      "sha256": "0e637393d0470ef8217a5f1d32d6a3657faf1f19f407412e24be43f3ed2bcdca"
+    },
+    "system-image-identities-authentication.json": {
+      "bytes": 765,
+      "sha256": "7112be489343b1c883b46036249edddf7cace651e0b352abfafbf5591ffd3d2e"
+    },
+    "system-image-identities.claim.json": {
+      "bytes": 1418,
+      "sha256": "054f85ad167276ec53f49c4e81de7b766d020ac00fc37ba1421106c2ff77ad96"
+    },
+    "system-image-identities.exit.json": {
+      "bytes": 618,
+      "sha256": "eb0c61077b7fbef239c0dc6ec575eb0456a7b197245b11cf82906e6b0d0ca3c1"
+    },
+    "system-image-identities.record-check.json": {
+      "bytes": 164,
+      "sha256": "612754b5bb35abff682514792427100bf50a1bfc8172e5c2d30ebccb81c75777"
+    },
+    "system-image-identities.start.json": {
+      "bytes": 139,
+      "sha256": "852fbe263d006ccbcf66c4821e3811bdfd3bda9a2cc81752692a5489a1c287e2"
+    },
+    "system-image-identities.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "system-image-identities.stdout": {
+      "bytes": 2944589,
+      "sha256": "3c05b9f22facbe4e624915e637e13dfc9ba6bed21e92f89413db7f5a69f88cba"
+    },
+    "system-swift-body-data.exit.json": {
+      "bytes": 166,
+      "sha256": "16a580cde4970fb8ce059cfea3bfebd365ebdfd43b184d84f6dfdc18f3641161"
+    },
+    "terminal.json": {
+      "bytes": 1350,
+      "sha256": "f69e78cd43dfcee1689cb477d1bd082f9e88e0ce0544748a553b390b774d6319"
+    }
+  },
+  "archived_source_files": 13,
+  "archived_source_total_bytes": 2953124,
+  "attempt_consumed": 1,
+  "cache_file_sha256": {
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+  },
+  "cache_schema_established": false,
+  "complete_I_raw_bytes": 2944589,
+  "current_direct_inputs_verified": 203,
+  "external_review_pins_match": {
+    "commit": "2cb1f350b9aaa97210be36e8d24902673b49eb9b",
+    "files": {
+      "controller-accounting.json": "62e2204f0a802bb4f6622d8daf7c539dfaf4900a592dde32996f646e168759a0",
+      "controller-inputs.json": "09e28a314a7c7577c6e7bb67d53046ed89da4bef337c31b0f32bc8671a62f517",
+      "controller.py": "20cf83dd17ab2e8b98e686568b709ce82ec0746b31273e335e8f293311de6461",
+      "gate-policy.json": "054ebc1fa0acd67b89bf4ec7df04d40233be54806da05986dbe526c6de70f8f3",
+      "identity-verifier.py": "26bf41b769329917b4fd6a7f10dc4d53c6338b57be0acadcd8b47f83ddbe5497",
+      "inventory.json": "d23ce68798ff54c3796913097aa5303a3ef5649b5ad4b01ffb96996ad785e3d8",
+      "loader-policy.json": "3338d16f794b10b878013cb200ef51adc4723f6a34bcf3bd5384b3972a7be8f3",
+      "request.json": "9bdab0ec64452dec484a8f2698c6838d2f662bb475f745da3cac4efe4c9ab70a",
+      "reviewed-launch.py": "82a70ed3da8209bc674439dc8846330a1f3096a27d68f5eaa4a27abf9512ece6"
+    },
+    "packet_tree": "a5d8a26eb35778a5f104ff19cb2d6c44080c1007",
+    "repository_tree": "b5b60c6c9b2e27d2c7e6512d08281587f0dbf565"
+  },
+  "method": "Independent standard-library hash/JSON/receipt/timing and read-only Git inspection; no dyld_info/controller/verifier/decoder/runtime/build/test/acquisition invoked.",
+  "ordinary_counter_loaded_identity_complete": false,
+  "preserved_dirty_file_sha256": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+    "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+    "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+  },
+  "previous_consumed_marker_identities": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+      16777234,
+      29640436
+    ],
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+      16777234,
+      29650609
+    ]
+  },
+  "provider_proof_established": false,
+  "repairs": 0,
+  "retained_receipt_bytes": 8535,
+  "retained_receipt_count": 11,
+  "retries": 0,
+  "reviewed_archive_commit": "c44e5f52cd093bd287beeb8bd43f286ad6b1ba31",
+  "source42_hashes_match": true,
+  "strict_cold_eligible": false,
+  "verdict": "PASS_complete_I_only_capture_archive_and_STOP_disposition"
+}
