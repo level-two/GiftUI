@@ -1,5 +1,13 @@
 # U01 exact Git ref route 2 preparation — 2026-10-19
 
+**Current disposition: GO / independent readiness PASS** for exact correction
+`e9c7a059` and the external hashes frozen in the
+[independent re-review](full-stream-independent-review.md). Full GET equality
+now stops before parsing/POST; B01/B02 and all runtime/preservation checks pass.
+The fixed result directory is absent and no controller/network operation ran.
+Only the exact prepared one-session metadata boundary is ready; all no-follow,
+no-retry and P08-open dispositions remain. The checkpoint below is historical.
+
 **Offline B01 full-stream correction prepared; readiness NOT READY pending
 separate re-review.** Following [controller review](controller-independent-review.md)
 at `49228097`, every retained stream reaching CAP now forces STOP, including a

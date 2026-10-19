@@ -1,5 +1,14 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+Current P08 controller re-review — **GO / independent readiness PASS**.
+The [exact e9c7a059 re-review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/full-stream-independent-review.md)
+freezes controller/lock hashes and resolves B01 full-stream STOP before POST;
+B02 and the two-request/1MiB accepted-body/30s envelope remain verified.
+Runtime pins, five dirty files/cache, three 1/1 markers and consumed API 1/1 match;
+result directory absent, no controller import/execution/network. Readiness covers
+only the exact prepared metadata session/result boundary, with no retry/follow
+or P08 acceptance. Earlier preparation/STOP checkpoints below are historical.
+
 Current P08 controller correction — **offline B01 full-stream correction prepared; readiness NOT READY pending separate re-review**.
 The [revised packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/README.md)
 now stops for every retained stream at CAP, including GET before parsing/POST,
