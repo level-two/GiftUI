@@ -1,0 +1,615 @@
+U01 retained text excerpts; original one-based raw line numbers.
+
+=== actual-host.sil:598688-598706 ===
+598688:   store %448 to %449                              // id: %450
+598689:   %451 = struct $Int (%431)                       // user: %452
+598690:   store %451 to %442                              // id: %452
+598691:   br bb101                                        // id: %453
+598692:
+598693: // %454                                           // user: %459
+598694: bb100(%454 : $BoundedText):                       // Preds: bb97
+598695:   %455 = alloc_stack $()                          // users: %461, %459
+598696:   // function_ref closure #1 in static SemanticStandardPayloadCodec.primitive<A, B>(_:writer:wrapping:)
+598697:   %456 = function_ref @$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_ : $@convention(thin) @substituted <τ_0_0> (UnsafeBufferPointer<UInt8>, @inout_aliasable InlineArray<96, UInt32>, @inout_aliasable Int) -> (@out τ_0_0, @error any Error) for <()> // user: %457
+598698:   %457 = partial_apply [callee_guaranteed] [on_stack] %456(%424, %442) : $@convention(thin) @substituted <τ_0_0> (UnsafeBufferPointer<UInt8>, @inout_aliasable InlineArray<96, UInt32>, @inout_aliasable Int) -> (@out τ_0_0, @error any Error) for <()> // users: %460, %459
+598699:   // function_ref BoundedText.withUTF8<A>(_:)
+598700:   %458 = function_ref @$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF : $@convention(method) <τ_0_0> (@guaranteed @noescape @callee_guaranteed @substituted <τ_0_0> (UnsafeBufferPointer<UInt8>) -> (@out τ_0_0, @error any Error) for <τ_0_0>, BoundedText) -> (@out τ_0_0, @error any Error) // user: %459
+598701:   %459 = apply [nothrow] %458<()>(%455, %457, %454) : $@convention(method) <τ_0_0> (@guaranteed @noescape @callee_guaranteed @substituted <τ_0_0> (UnsafeBufferPointer<UInt8>) -> (@out τ_0_0, @error any Error) for <τ_0_0>, BoundedText) -> (@out τ_0_0, @error any Error)
+598702:   dealloc_stack %457                              // id: %460
+598703:   dealloc_stack %455                              // id: %461
+598704:   br bb101                                        // id: %462
+598705:
+598706: bb101:                                            // Preds: bb100 bb99
+
+=== actual-host.sil:600938-600956 ===
+600938:   store %36 to %37                                // id: %38
+600939:   %39 = struct $Int (%18)                         // user: %40
+600940:   store %39 to %30                                // id: %40
+600941:   br bb6                                          // id: %41
+600942:
+600943: // %42                                            // user: %47
+600944: bb5(%42 : $BoundedText):                          // Preds: bb2
+600945:   %43 = alloc_stack $()                           // users: %49, %47
+600946:   // function_ref closure #1 in static SemanticStandardPayloadCodec.primitive<A, B>(_:writer:wrapping:)
+600947:   %44 = function_ref @$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_ : $@convention(thin) @substituted <τ_0_0> (UnsafeBufferPointer<UInt8>, @inout_aliasable InlineArray<96, UInt32>, @inout_aliasable Int) -> (@out τ_0_0, @error any Error) for <()> // user: %45
+600948:   %45 = partial_apply [callee_guaranteed] [on_stack] %44(%11, %30) : $@convention(thin) @substituted <τ_0_0> (UnsafeBufferPointer<UInt8>, @inout_aliasable InlineArray<96, UInt32>, @inout_aliasable Int) -> (@out τ_0_0, @error any Error) for <()> // users: %48, %47
+600949:   // function_ref BoundedText.withUTF8<A>(_:)
+600950:   %46 = function_ref @$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF : $@convention(method) <τ_0_0> (@guaranteed @noescape @callee_guaranteed @substituted <τ_0_0> (UnsafeBufferPointer<UInt8>) -> (@out τ_0_0, @error any Error) for <τ_0_0>, BoundedText) -> (@out τ_0_0, @error any Error) // user: %47
+600951:   %47 = apply [nothrow] %46<()>(%43, %45, %42) : $@convention(method) <τ_0_0> (@guaranteed @noescape @callee_guaranteed @substituted <τ_0_0> (UnsafeBufferPointer<UInt8>) -> (@out τ_0_0, @error any Error) for <τ_0_0>, BoundedText) -> (@out τ_0_0, @error any Error)
+600952:   dealloc_stack %45                               // id: %48
+600953:   dealloc_stack %43                               // id: %49
+600954:   br bb6                                          // id: %50
+600955:
+600956: bb6:                                              // Preds: bb5 bb4
+
+=== actual-host.sil:601528-601696 ===
+601528: // closure #1 in static SemanticStandardPayloadCodec.primitive<A, B>(_:writer:wrapping:)
+601529: // Isolation: unspecified
+601530: sil shared @$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_ : $@convention(thin) @substituted <τ_0_0> (UnsafeBufferPointer<UInt8>, @inout_aliasable InlineArray<96, UInt32>, @inout_aliasable Int) -> (@out τ_0_0, @error any Error) for <()> {
+601531: [%1: noescape **, read v**.c*.v**]
+601532: [%2: write s0.b.i*.v**]
+601533: [%3: read s0.v**, write v**]
+601534: [global: read,deinit_barrier]
+601535: // %1                                             // users: %10, %5
+601536: // %2                                             // user: %17
+601537: // %3                                             // users: %105, %19
+601538: bb0(%0 : $*(), %1 : $UnsafeBufferPointer<UInt8>, %2 : @closureCapture $*InlineArray<96, UInt32>, %3 : @closureCapture $*Int):
+601539:   %4 = integer_literal $Builtin.Int64, 0          // users: %92, %65, %63, %59, %57, %53, %21, %7
+601540:   %5 = struct_extract %1, #UnsafeBufferPointer.count // user: %6
+601541:   %6 = struct_extract %5, #Int._value             // users: %106, %7
+601542:   %7 = builtin "cmp_slt_Int64"(%4, %6) : $Builtin.Int1 // user: %8
+601543:   cond_br %7, bb2, bb1                            // id: %8
+601544:
+601545: bb1:                                              // Preds: bb0
+601546:   br bb18                                         // id: %9
+601547:
+601548: bb2:                                              // Preds: bb0
+601549:   %10 = struct_extract %1, #UnsafeBufferPointer._position // user: %11
+601550:   %11 = unchecked_enum_data %10, #Optional.some!enumelt // user: %12
+601551:   %12 = struct_extract %11, #UnsafePointer._rawValue // user: %13
+601552:   %13 = pointer_to_address %12 to [strict] $*UInt8 // users: %73, %24
+601553:   %14 = integer_literal $Builtin.Int64, 1         // users: %100, %79, %69, %51, %27
+601554:   %15 = integer_literal $Builtin.Int1, -1         // users: %100, %79, %69, %27
+601555:   %16 = integer_literal $Builtin.Int8, -128       // user: %30
+601556:   %17 = struct_element_addr %2, #InlineArray._storage // user: %18
+601557:   %18 = vector_base_addr %17                      // user: %97
+601558:   %19 = struct_element_addr %3, #Int._value       // users: %99, %91
+601559:   %20 = integer_literal $Builtin.Int64, 96        // user: %93
+601560:   br bb3(%4)                                      // id: %21
+601561:
+601562: // %22                                            // users: %27, %23
+601563: // Loop header
+601564: bb3(%22 : $Builtin.Int64):                        // Preds: bb19 bb2
+601565:   %23 = builtin "truncOrBitCast_Int64_Word"(%22) : $Builtin.Word // user: %24
+601566:   %24 = index_addr [stack_protection] %13, %23    // user: %25
+601567:   %25 = struct_element_addr %24, #UInt8._value    // user: %26
+601568:   %26 = load %25                                  // users: %30, %33, %36, %39, %44, %49, %52
+601569:   %27 = builtin "sadd_with_overflow_Int64"(%22, %14, %15) : $(Builtin.Int64, Builtin.Int1) // users: %28, %56
+601570:   %28 = tuple_extract %27, 1                      // user: %29
+601571:   cond_fail %28, "arithmetic overflow"            // id: %29
+601572:   %30 = builtin "cmp_ult_Int8"(%26, %16) : $Builtin.Int1 // user: %31
+601573:   cond_br %30, bb9, bb4                           // id: %31
+601574:
+601575: bb4:                                              // Preds: bb3
+601576:   %32 = integer_literal $Builtin.Int8, -32        // user: %33
+601577:   %33 = builtin "cmp_ult_Int8"(%26, %32) : $Builtin.Int1 // user: %34
+601578:   cond_br %33, bb8, bb5                           // id: %34
+601579:
+601580: bb5:                                              // Preds: bb4
+601581:   %35 = integer_literal $Builtin.Int8, -16        // user: %36
+601582:   %36 = builtin "cmp_ult_Int8"(%26, %35) : $Builtin.Int1 // user: %37
+601583:   cond_br %36, bb7, bb6                           // id: %37
+601584:
+601585: bb6:                                              // Preds: bb5
+601586:   %38 = integer_literal $Builtin.Int8, 7          // user: %39
+601587:   %39 = builtin "and_Int8"(%26, %38) : $Builtin.Int8 // user: %40
+601588:   %40 = builtin "zextOrBitCast_Int8_Int32"(%39) : $Builtin.Int32 // user: %42
+601589:   %41 = integer_literal $Builtin.Int64, 3         // user: %42
+601590:   br bb10(%40, %41)                               // id: %42
+601591:
+601592: bb7:                                              // Preds: bb5
+601593:   %43 = integer_literal $Builtin.Int8, 15         // user: %44
+601594:   %44 = builtin "and_Int8"(%26, %43) : $Builtin.Int8 // user: %45
+601595:   %45 = builtin "zextOrBitCast_Int8_Int32"(%44) : $Builtin.Int32 // user: %47
+601596:   %46 = integer_literal $Builtin.Int64, 2         // user: %47
+601597:   br bb10(%45, %46)                               // id: %47
+601598:
+601599: bb8:                                              // Preds: bb4
+601600:   %48 = integer_literal $Builtin.Int8, 31         // user: %49
+601601:   %49 = builtin "and_Int8"(%26, %48) : $Builtin.Int8 // user: %50
+601602:   %50 = builtin "zextOrBitCast_Int8_Int32"(%49) : $Builtin.Int32 // user: %51
+601603:   br bb10(%50, %14)                               // id: %51
+601604:
+601605: bb9:                                              // Preds: bb3
+601606:   %52 = builtin "zextOrBitCast_Int8_Int32"(%26) : $Builtin.Int32 // user: %53
+601607:   br bb10(%52, %4)                                // id: %53
+601608:
+601609: // %54                                            // users: %87, %65
+601610: // %55                                            // users: %83, %63, %59, %57
+601611: bb10(%54 : $Builtin.Int32, %55 : $Builtin.Int64): // Preds: bb9 bb8 bb7 bb6
+601612:   %56 = tuple_extract %27, 0                      // users: %87, %65
+601613:   %57 = builtin "cmp_slt_Int64"(%55, %4) : $Builtin.Int1 // user: %58
+601614:   cond_fail %57, "Range requires lowerBound <= upperBound" // id: %58
+601615:   %59 = builtin "cmp_eq_Int64"(%55, %4) : $Builtin.Int1 // user: %60
+601616:   cond_br %59, bb15, bb11                         // id: %60
+601617:
+601618: bb11:                                             // Preds: bb10
+601619:   %61 = integer_literal $Builtin.Int32, 6         // user: %71
+601620:   %62 = integer_literal $Builtin.Int8, 63         // user: %76
+601621:   %63 = builtin "cmp_sge_Int64"(%4, %55) : $Builtin.Int1 // user: %64
+601622:   cond_fail %63, "loop induction variable overflowed" // id: %64
+601623:   br bb12(%56, %54, %4)                           // id: %65
+601624:
+601625: // %66                                            // users: %79, %72
+601626: // %67                                            // user: %71
+601627: // %68                                            // user: %69
+601628: // Loop header
+601629: bb12(%66 : $Builtin.Int64, %67 : $Builtin.Int32, %68 : $Builtin.Int64): // Preds: bb13 bb11
+601630:   %69 = builtin "sadd_with_overflow_Int64"(%68, %14, %15) : $(Builtin.Int64, Builtin.Int1) // user: %70
+601631:   %70 = tuple_extract %69, 0                      // users: %85, %83
+601632:   %71 = builtin "shl_Int32"(%67, %61) : $Builtin.Int32 // user: %78
+601633:   %72 = builtin "truncOrBitCast_Int64_Word"(%66) : $Builtin.Word // user: %73
+601634:   %73 = index_addr [stack_protection] %13, %72    // user: %74
+601635:   %74 = struct_element_addr %73, #UInt8._value    // user: %75
+601636:   %75 = load %74                                  // user: %76
+601637:   %76 = builtin "and_Int8"(%75, %62) : $Builtin.Int8 // user: %77
+601638:   %77 = builtin "zextOrBitCast_Int8_Int32"(%76) : $Builtin.Int32 // user: %78
+601639:   %78 = builtin "or_Int32"(%71, %77) : $Builtin.Int32 // users: %86, %85
+601640:   %79 = builtin "sadd_with_overflow_Int64"(%66, %14, %15) : $(Builtin.Int64, Builtin.Int1) // users: %81, %80
+601641:   %80 = tuple_extract %79, 0                      // users: %86, %85
+601642:   %81 = tuple_extract %79, 1                      // user: %82
+601643:   cond_fail %81, "arithmetic overflow"            // id: %82
+601644:   %83 = builtin "cmp_eq_Int64"(%70, %55) : $Builtin.Int1 // user: %84
+601645:   cond_br %83, bb14, bb13                         // id: %84
+601646:
+601647: bb13:                                             // Preds: bb12
+601648:   br bb12(%80, %78, %70)                          // id: %85
+601649:
+601650: bb14:                                             // Preds: bb12
+601651:   br bb16(%80, %78)                               // id: %86
+601652:
+601653: bb15:                                             // Preds: bb10
+601654:   br bb16(%56, %54)                               // id: %87
+601655:
+601656: // %88                                            // users: %111, %106
+601657: // %89                                            // user: %90
+601658: bb16(%88 : $Builtin.Int64, %89 : $Builtin.Int32): // Preds: bb15 bb14
+601659:   %90 = struct $UInt32 (%89)                      // user: %98
+601660:   %91 = load %19                                  // users: %93, %92, %96
+601661:   %92 = builtin "cmp_slt_Int64"(%91, %4) : $Builtin.Int1 // user: %94
+601662:   %93 = builtin "cmp_sge_Int64"(%91, %20) : $Builtin.Int1 // user: %94
+601663:   %94 = builtin "or_Int1"(%92, %93) : $Builtin.Int1 // user: %95
+601664:   cond_fail %94, "Index out of bounds"            // id: %95
+601665:   %96 = builtin "truncOrBitCast_Int64_Word"(%91) : $Builtin.Word // user: %97
+601666:   %97 = index_addr [stack_protection] %18, %96    // user: %98
+601667:   store %90 to %97                                // id: %98
+601668:   %99 = load %19                                  // user: %100
+601669:   %100 = builtin "sadd_with_overflow_Int64"(%99, %14, %15) : $(Builtin.Int64, Builtin.Int1) // users: %102, %101
+601670:   %101 = tuple_extract %100, 0                    // user: %104
+601671:   %102 = tuple_extract %100, 1                    // user: %103
+601672:   cond_fail %102, "arithmetic overflow"           // id: %103
+601673:   %104 = struct $Int (%101)                       // user: %105
+601674:   store %104 to %3                                // id: %105
+601675:   %106 = builtin "cmp_slt_Int64"(%88, %6) : $Builtin.Int1 // user: %107
+601676:   cond_br %106, bb19, bb17                        // id: %107
+601677:
+601678: bb17:                                             // Preds: bb16
+601679:   br bb18                                         // id: %108
+601680:
+601681: bb18:                                             // Preds: bb17 bb1
+601682:   %109 = tuple ()                                 // user: %110
+601683:   return %109                                     // id: %110
+601684:
+601685: bb19:                                             // Preds: bb16
+601686:   br bb3(%88)                                     // id: %111
+601687: } // end sil function '$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_'
+601688:
+601689: // BoundedText.withUTF8<A>(_:)
+601690: // Isolation: unspecified
+601691: sil @$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF : $@convention(method) <τ_0_0> (@guaranteed @noescape @callee_guaranteed @substituted <τ_0_0> (UnsafeBufferPointer<UInt8>) -> (@out τ_0_0, @error any Error) for <τ_0_0>, BoundedText) -> (@out τ_0_0, @error any Error) {
+601692: [%0: read v**, write v**, copy v**, destroy v**]
+601693: [%1: noescape v**, read v**.c*.v**, write v**.c*.v**, copy v**.**, destroy v**.c*.v**]
+601694: [global: read,write,copy,destroy,allocate,deinit_barrier]
+601695: } // end sil function '$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF'
+601696:
+
+=== GiftUI-disassembly.stdout:552-693 ===
+552: 000000000000077c <_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF>:
+553:      77c:      	sub	sp, sp, #0xf0
+554:      780:      	str	x25, [sp, #0xb0]
+555:      784:      	stp	x24, x23, [sp, #0xc0]
+556:      788:      	stp	x22, x19, [sp, #0xd0]
+557:      78c:      	stp	x29, x30, [sp, #0xe0]
+558:      790:      	add	x29, sp, #0xe0
+559:      794:      	mov	x19, x21
+560:      798:      	mov	x22, x2
+561:      79c:      	mov	x23, x1
+562:      7a0:      	mov	x24, x0
+563:      7a4:      	mov	x25, x8
+564:      7a8:      	bl	0x7a8 <_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF+0x2c>
+565: 		00000000000007a8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_72
+566:      7ac:      	add	x0, sp, #0x10
+567:      7b0:      	mov	x1, x20
+568:      7b4:      	mov	w2, #0x60               ; =96
+569:      7b8:      	bl	0x7b8 <_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF+0x3c>
+570: 		00000000000007b8:  ARM64_RELOC_BRANCH26	_memcpy
+571:      7bc:      	stp	x22, x24, [sp, #0x80]
+572:      7c0:      	stp	x23, x20, [sp, #0x90]
+573:      7c4:      	adrp	x0, 0x0 <ltmp0>
+574: 		00000000000007c4:  ARM64_RELOC_PAGE21	_$ss5Error_pMD
+575:      7c8:      	add	x0, x0, #0x0
+576: 		00000000000007c8:  ARM64_RELOC_PAGEOFF12	_$ss5Error_pMD
+577:      7cc:      	bl	0x7cc <_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF+0x50>
+578: 		00000000000007cc:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+579:      7d0:      	mov	x4, x0
+580:      7d4:      	adrp	x1, 0x0 <ltmp0>
+581: 		00000000000007d4:  ARM64_RELOC_PAGE21	_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlFxSWKXEfU_TA
+582:      7d8:      	add	x1, x1, #0x0
+583: 		00000000000007d8:  ARM64_RELOC_PAGEOFF12	_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlFxSWKXEfU_TA
+584:      7dc:      	adrp	x3, 0x0 <ltmp0>
+585: 		00000000000007dc:  ARM64_RELOC_ADDEND	0x10
+586: 		00000000000007dc:  ARM64_RELOC_PAGE21	_$s6GiftUI18BoundedTextStorage33_BB602396EDC20AAB4D9EC2A2122142EELLVMf
+587:      7e0:      	add	x3, x3, #0x0
+588: 		00000000000007e0:  ARM64_RELOC_ADDEND	0x10
+589: 		00000000000007e0:  ARM64_RELOC_PAGEOFF12	_$s6GiftUI18BoundedTextStorage33_BB602396EDC20AAB4D9EC2A2122142EELLVMf
+590:      7e4:      	adrp	x6, 0x0 <ltmp0>
+591: 		00000000000007e4:  ARM64_RELOC_GOT_LOAD_PAGE21	_$ss5ErrorWS
+592:      7e8:      	ldr	x6, [x6]
+593: 		00000000000007e8:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$ss5ErrorWS
+594:      7ec:      	add	x0, sp, #0x10
+595:      7f0:      	add	x2, sp, #0x70
+596:      7f4:      	add	x7, sp, #0x8
+597:      7f8:      	mov	x8, x25
+598:      7fc:      	mov	x5, x22
+599:      800:      	mov	x21, x19
+600:      804:      	bl	0x804 <_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF+0x88>
+601: 		0000000000000804:  ARM64_RELOC_BRANCH26	_$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF
+602:      808:      	cbz	x21, 0x810 <_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF+0x94>
+603:      80c:      	ldr	x21, [sp, #0x8]
+604:      810:      	ldur	x8, [x29, #-0x38]
+605:      814:      	bl	0x814 <_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF+0x98>
+606: 		0000000000000814:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_40
+607:      818:      	b.ne	0x834 <_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF+0xb8>
+608:      81c:      	ldp	x29, x30, [sp, #0xe0]
+609:      820:      	ldp	x22, x19, [sp, #0xd0]
+610:      824:      	ldp	x24, x23, [sp, #0xc0]
+611:      828:      	ldr	x25, [sp, #0xb0]
+612:      82c:      	add	sp, sp, #0xf0
+613:      830:      	ret
+614:      834:      	bl	0x834 <_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF+0xb8>
+615: 		0000000000000834:  ARM64_RELOC_BRANCH26	___stack_chk_fail
+616:
+617: 0000000000000838 <_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlFxSWKXEfU_TA>:
+618:      838:      	stp	x20, x19, [sp, #-0x20]!
+619:      83c:      	stp	x29, x30, [sp, #0x10]
+620:      840:      	add	x29, sp, #0x10
+621:      844:      	mov	x19, x2
+622:      848:      	ldp	x10, x9, [x20, #0x18]
+623:      84c:      	ldr	x11, [x20, #0x28]
+624:      850:      	ldrh	w1, [x11, #0x60]
+625:      854:      	mov	x20, x9
+626:      858:      	blr	x10
+627:      85c:      	cbz	x21, 0x868 <_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlFxSWKXEfU_TA+0x30>
+628:      860:      	str	x21, [x19]
+629:      864:      	mov	w21, #0x1               ; =1
+630:      868:      	ldp	x29, x30, [sp, #0x10]
+631:      86c:      	ldp	x20, x19, [sp], #0x20
+632:      870:      	ret
+633:
+634: 0000000000000874 <_$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF>:
+635:      874:      	str	x24, [sp, #-0x40]!
+636:      878:      	stp	x23, x22, [sp, #0x10]
+637:      87c:      	stp	x20, x19, [sp, #0x20]
+638:      880:      	stp	x29, x30, [sp, #0x30]
+639:      884:      	add	x29, sp, #0x30
+640:      888:      	mov	x22, x7
+641:      88c:      	mov	x19, x4
+642:      890:      	mov	x9, x1
+643:      894:      	ldur	x24, [x4, #-0x8]
+644:      898:      	ldr	x10, [x24, #0x40]
+645:      89c:      	mov	x11, sp
+646:      8a0:      	add	x10, x10, #0xf
+647:      8a4:      	and	x10, x10, #0xfffffffffffffff0
+648:      8a8:      	sub	x23, x11, x10
+649:      8ac:      	mov	sp, x23
+650:      8b0:      	ldur	x10, [x3, #-0x8]
+651:      8b4:      	ldr	x10, [x10, #0x40]
+652:      8b8:      	add	x1, x0, x10
+653:      8bc:      	mov	x20, x2
+654:      8c0:      	mov	x2, x23
+655:      8c4:      	blr	x9
+656:      8c8:      	cbz	x21, 0x8e4 <_$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF+0x70>
+657:      8cc:      	ldr	x8, [x24, #0x20]
+658:      8d0:      	mov	x0, x22
+659:      8d4:      	mov	x1, x23
+660:      8d8:      	mov	x2, x19
+661:      8dc:      	blr	x8
+662:      8e0:      	mov	w21, #0x1               ; =1
+663:      8e4:      	sub	sp, x29, #0x30
+664:      8e8:      	ldp	x29, x30, [sp, #0x30]
+665:      8ec:      	ldp	x20, x19, [sp, #0x20]
+666:      8f0:      	ldp	x23, x22, [sp, #0x10]
+667:      8f4:      	ldr	x24, [sp], #0x40
+668:      8f8:      	ret
+669:
+670: 00000000000008fc <___swift_instantiateConcreteTypeFromMangledName>:
+671:      8fc:      	stp	x20, x19, [sp, #-0x20]!
+672:      900:      	stp	x29, x30, [sp, #0x10]
+673:      904:      	add	x29, sp, #0x10
+674:      908:      	mov	x19, x0
+675:      90c:      	ldr	x0, [x0]
+676:      910:      	tbnz	x0, #0x3f, 0x920 <___swift_instantiateConcreteTypeFromMangledName+0x24>
+677:      914:      	ldp	x29, x30, [sp, #0x10]
+678:      918:      	ldp	x20, x19, [sp], #0x20
+679:      91c:      	ret
+680:      920:      	neg	x1, x0, asr #32
+681:      924:      	add	x0, x19, w0, sxtw
+682:      928:      	mov	x2, #0x0                ; =0
+683:      92c:      	mov	x3, #0x0                ; =0
+684:      930:      	bl	0x930 <___swift_instantiateConcreteTypeFromMangledName+0x34>
+685: 		0000000000000930:  ARM64_RELOC_BRANCH26	_swift_getTypeByMangledNameInContext2
+686:      934:      	str	x0, [x19]
+687:      938:      	b	0x914 <___swift_instantiateConcreteTypeFromMangledName+0x18>
+688:
+689: 000000000000093c <_$s6GiftUI11BoundedTextV2eeoiySbAC_ACtFZ>:
+690:      93c:      	sub	sp, sp, #0x110
+691:      940:      	stp	x28, x27, [sp, #0xd0]
+692:      944:      	stp	x22, x21, [sp, #0xe0]
+693:      948:      	stp	x20, x19, [sp, #0xf0]
+
+=== GiftUI-disassembly.stdout:18434-18441 ===
+18434: 000000000000c67c <_OUTLINED_FUNCTION_40>:
+18435:     c67c:      	adrp	x9, 0xc000 <_$s6GiftUI8LineJoinOSQAASQ2eeoiySbx_xtFZTW>
+18436: 		000000000000c67c:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+18437:     c680:      	ldr	x9, [x9]
+18438: 		000000000000c680:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+18439:     c684:      	ldr	x9, [x9]
+18440:     c688:      	cmp	x9, x8
+18441:     c68c:      	ret
+
+=== GiftUI-disassembly.stdout:18681-18688 ===
+18681: 000000000000c904 <_OUTLINED_FUNCTION_72>:
+18682:     c904:      	adrp	x8, 0xc000 <_$s6GiftUI8LineJoinOSQAASQ2eeoiySbx_xtFZTW>
+18683: 		000000000000c904:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+18684:     c908:      	ldr	x8, [x8]
+18685: 		000000000000c908:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+18686:     c90c:      	ldr	x8, [x8]
+18687:     c910:      	stur	x8, [x29, #-0x38]
+18688:     c914:      	ret
+
+=== P08CounterRuntime-disassembly.stdout:200608-200639 ===
+200608:    a2a84:      	cmp	w24, #0x1
+200609:    a2a88:      	b.ne	0xa2aa0 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x51c>
+200610:    a2a8c:      	mov	w8, #0xd800             ; =55296
+200611:    a2a90:      	str	w8, [sp, #0x278]
+200612:    a2a94:      	mov	w4, #0x1                ; =1
+200613:    a2a98:      	str	x4, [sp, #0x680]
+200614:    a2a9c:      	b	0xa2ae4 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x560>
+200615:    a2aa0:      	add	x0, sp, #0x2c
+200616:    a2aa4:      	mov	x1, x21
+200617:    a2aa8:      	mov	w2, #0x62               ; =98
+200618:    a2aac:      	bl	0xa2aac <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x528>
+200619: 		00000000000a2aac:  ARM64_RELOC_BRANCH26	_memcpy
+200620:    a2ab0:      	add	x8, sp, #0x680
+200621:    a2ab4:      	str	x20, [sp, #0x700]
+200622:    a2ab8:      	str	x8, [sp, #0x708]
+200623:    a2abc:      	adrp	x8, 0xa2000 <_$s21GiftUIObservableState20ObservableModelScopeVA2A0dcE0Rz6SchemaQzRs_Ri_zrlE8withRoot10identities7control6limits_qd_0_s11MutableSpanVyqd__SgGz_AA0dcI7ControlVzAA0dC6LimitsVqd_0_AA0dciF0Vyxqd__GAA0dC5ErrorOYKXEtAWYKSQRd__s8SendableRd__r0_lF17P08CounterRuntime0t5OwnedE0V_0stG00teG0O0A14UISemanticCore24SemanticCompleteIdentityVSiTg504$s17st17Runtime0B17Statici132StorageV10withFields33_D69EFE5C5B537970757923F9B4942B56LL9ownership6models10identities12registration6schema12needsCapture6limits_x21ab7State24de37OwnershipVz_s11InlineArrayVy$1_AA0B10ve15VSgGzAQy$1_0X14w6Core24yz31IdentityVSgGzAM010ObservablezE7o18Vzs6UInt16VSbAM010d2Z6p6VxAM20def18VyAS0aB6Schema0B11eg21OG_AM010ObservablezE5f12VyAsXGtAM010d2Z5Q53OYKXEtA15_YKlFZxA10_A15_YKXEfU_xA13_A15_YKXEfU_Si_TG5ACyA_A2_GATyA_A5_GxAWRi_zRi0_zlySiIsgggrzo_A7_Tf1nnncn_n04$s17st14Runtime03p08B8y8SiyFSi21ab7State20def7VyAA0b5v27J0V0aB6Schema0bjM0OG_AC0ih4i10K0VyAG0F14w8Core0E16z17IdentityVGtAC0iH5Q8OYKXEfU_Tf1nnnncn_n+0x13c>
+200624: 		00000000000a2abc:  ARM64_RELOC_GOT_LOAD_PAGE21	_$sytN
+200625:    a2ac0:      	ldr	x8, [x8]
+200626: 		00000000000a2ac0:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$sytN
+200627:    a2ac4:      	adrp	x0, 0xa2000 <_$s21GiftUIObservableState20ObservableModelScopeVA2A0dcE0Rz6SchemaQzRs_Ri_zrlE8withRoot10identities7control6limits_qd_0_s11MutableSpanVyqd__SgGz_AA0dcI7ControlVzAA0dC6LimitsVqd_0_AA0dciF0Vyxqd__GAA0dC5ErrorOYKXEtAWYKSQRd__s8SendableRd__r0_lF17P08CounterRuntime0t5OwnedE0V_0stG00teG0O0A14UISemanticCore24SemanticCompleteIdentityVSiTg504$s17st17Runtime0B17Statici132StorageV10withFields33_D69EFE5C5B537970757923F9B4942B56LL9ownership6models10identities12registration6schema12needsCapture6limits_x21ab7State24de37OwnershipVz_s11InlineArrayVy$1_AA0B10ve15VSgGzAQy$1_0X14w6Core24yz31IdentityVSgGzAM010ObservablezE7o18Vzs6UInt16VSbAM010d2Z6p6VxAM20def18VyAS0aB6Schema0B11eg21OG_AM010ObservablezE5f12VyAsXGtAM010d2Z5Q53OYKXEtA15_YKlFZxA10_A15_YKXEfU_xA13_A15_YKXEfU_Si_TG5ACyA_A2_GATyA_A5_GxAWRi_zRi0_zlySiIsgggrzo_A7_Tf1nnncn_n04$s17st14Runtime03p08B8y8SiyFSi21ab7State20def7VyAA0b5v27J0V0aB6Schema0bjM0OG_AC0ih4i10K0VyAG0F14w8Core0E16z17IdentityVGtAC0iH5Q8OYKXEfU_Tf1nnnncn_n+0x13c>
+200628: 		00000000000a2ac4:  ARM64_RELOC_PAGE21	_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA.65
+200629:    a2ac8:      	add	x0, x0, #0x0
+200630: 		00000000000a2ac8:  ARM64_RELOC_PAGEOFF12	_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA.65
+200631:    a2acc:      	add	x1, sp, #0x6f0
+200632:    a2ad0:      	add	x2, x8, #0x8
+200633:    a2ad4:      	add	x20, sp, #0x2c
+200634:    a2ad8:      	mov	x21, #0x0               ; =0
+200635:    a2adc:      	bl	0xa2adc <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x558>
+200636: 		00000000000a2adc:  ARM64_RELOC_BRANCH26	_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF
+200637:    a2ae0:      	ldr	x4, [sp, #0x680]
+200638:    a2ae4:      	ldp	q0, q1, [sp, #0x90]
+200639:    a2ae8:      	stur	q0, [x23, #0x8]
+
+=== P08CounterRuntime-disassembly.stdout:202029-202058 ===
+202029:    a3e20:      	mov	w8, #0xd800             ; =55296
+202030:    a3e24:      	str	w8, [sp, #0x80]
+202031:    a3e28:      	mov	w21, #0x1               ; =1
+202032:    a3e2c:      	str	x21, [sp, #0x10]
+202033:    a3e30:      	b	0xa3e74 <_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a6UITextE0VTt1g5+0xa4>
+202034:    a3e34:      	add	x0, sp, #0x1c
+202035:    a3e38:      	mov	x1, x20
+202036:    a3e3c:      	mov	w2, #0x62               ; =98
+202037:    a3e40:      	bl	0xa3e40 <_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a6UITextE0VTt1g5+0x70>
+202038: 		00000000000a3e40:  ARM64_RELOC_BRANCH26	_memcpy
+202039:    a3e44:      	add	x8, sp, #0x10
+202040:    a3e48:      	stp	x21, x8, [x29, #-0xa0]
+202041:    a3e4c:      	adrp	x8, 0xa3000 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAhIPAHE8disabledyQrSbFQOyAH6ButtonVy0qR12Presentation0R6ActionOAH4TextVyAYGG_Qo_Tg5+0x3e0>
+202042: 		00000000000a3e4c:  ARM64_RELOC_GOT_LOAD_PAGE21	_$sytN
+202043:    a3e50:      	ldr	x8, [x8]
+202044: 		00000000000a3e50:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$sytN
+202045:    a3e54:      	adrp	x0, 0xa3000 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAhIPAHE8disabledyQrSbFQOyAH6ButtonVy0qR12Presentation0R6ActionOAH4TextVyAYGG_Qo_Tg5+0x3e0>
+202046: 		00000000000a3e54:  ARM64_RELOC_PAGE21	_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA
+202047:    a3e58:      	add	x0, x0, #0x0
+202048: 		00000000000a3e58:  ARM64_RELOC_PAGEOFF12	_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA
+202049:    a3e5c:      	sub	x1, x29, #0xb0
+202050:    a3e60:      	add	x2, x8, #0x8
+202051:    a3e64:      	add	x20, sp, #0x1c
+202052:    a3e68:      	mov	x21, #0x0               ; =0
+202053:    a3e6c:      	bl	0xa3e6c <_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a6UITextE0VTt1g5+0x9c>
+202054: 		00000000000a3e6c:  ARM64_RELOC_BRANCH26	_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF
+202055:    a3e70:      	ldr	x21, [sp, #0x10]
+202056:    a3e74:      	stp	xzr, xzr, [x29, #-0x60]
+202057:    a3e78:      	mov	x8, #-0x4000000000000000 ; =-4611686018427387904
+202058:    a3e7c:      	stp	xzr, x8, [x29, #-0x50]
+
+=== P08CounterRuntime-disassembly.stdout:202368-202418 ===
+202368: 00000000000a429c <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_>:
+202369:    a429c:      	cmp	x1, #0x1
+202370:    a42a0:      	b.lt	0xa434c <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_+0xb0>
+202371:    a42a4:      	mov	x9, #0x0                ; =0
+202372:    a42a8:      	add	x8, x0, #0x1
+202373:    a42ac:      	mov	w10, #0x2               ; =2
+202374:    a42b0:      	mov	x11, #0x7ffffffffffffffe ; =9223372036854775806
+202375:    a42b4:      	mov	w12, #0x7               ; =7
+202376:    a42b8:      	mov	w13, #0xf               ; =15
+202377:    a42bc:      	mov	w14, #0x1f              ; =31
+202378:    a42c0:      	ldrsb	w16, [x0, x9]
+202379:    a42c4:      	and	w15, w16, #0xff
+202380:    a42c8:      	tbz	w16, #0x1f, 0xa4320 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_+0x84>
+202381:    a42cc:      	cmp	w15, #0xf0
+202382:    a42d0:      	cinc	x16, x10, hs
+202383:    a42d4:      	cmp	w15, #0xe0
+202384:    a42d8:      	csinc	x16, x16, xzr, hs
+202385:    a42dc:      	sub	x17, x16, #0x1
+202386:    a42e0:      	sub	x4, x11, x9
+202387:    a42e4:      	cmp	x4, x17
+202388:    a42e8:      	b.ls	0xa4358 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_+0xbc>
+202389:    a42ec:      	cmp	w15, #0xf0
+202390:    a42f0:      	csel	w17, w13, w12, lo
+202391:    a42f4:      	cmp	w15, #0xe0
+202392:    a42f8:      	csel	w17, w14, w17, lo
+202393:    a42fc:      	and	w15, w15, w17
+202394:    a4300:      	add	x17, x8, x9
+202395:    a4304:      	mov	x4, x16
+202396:    a4308:      	ldrb	w5, [x17], #0x1
+202397:    a430c:      	bfi	w5, w15, #6, #26
+202398:    a4310:      	mov	x15, x5
+202399:    a4314:      	subs	x4, x4, #0x1
+202400:    a4318:      	b.ne	0xa4308 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_+0x6c>
+202401:    a431c:      	add	x9, x16, x9
+202402:    a4320:      	add	x9, x9, #0x1
+202403:    a4324:      	ldr	x16, [x3]
+202404:    a4328:      	cmp	x16, #0x5f
+202405:    a432c:      	b.hi	0xa4350 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_+0xb4>
+202406:    a4330:      	str	w15, [x2, x16, lsl #2]
+202407:    a4334:      	ldr	x15, [x3]
+202408:    a4338:      	adds	x15, x15, #0x1
+202409:    a433c:      	b.vs	0xa4354 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_+0xb8>
+202410:    a4340:      	str	x15, [x3]
+202411:    a4344:      	cmp	x9, x1
+202412:    a4348:      	b.lt	0xa42c0 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_+0x24>
+202413:    a434c:      	ret
+202414:    a4350:      	brk	#0x1
+202415:    a4354:      	brk	#0x1
+202416:    a4358:      	brk	#0x1
+202417:
+202418: 00000000000a435c <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE9preserved_7ordinal5stateSbq__s6UInt16V0A2UI0C0Vy6SchemaQzGztAA0dC5ErrorOYKF17P08CounterRuntime0O10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5>:
+
+=== P08CounterRuntime-disassembly.stdout:222471-222478 ===
+222471: 00000000000b3700 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA>:
+222472:    b3700:      	stp	x29, x30, [sp, #-0x10]!
+222473:    b3704:      	mov	x29, sp
+222474:    b3708:      	ldp	x2, x3, [x20, #0x10]
+222475:    b370c:      	bl	0xb370c <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA+0xc>
+222476: 		00000000000b370c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_
+222477:    b3710:      	ldp	x29, x30, [sp], #0x10
+222478:    b3714:      	ret
+
+=== P08CounterRuntime-disassembly.stdout:226670-226676 ===
+226670: 00000000000b6928 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA.65>:
+226671:    b6928:      	stp	x29, x30, [sp, #-0x10]!
+226672:    b692c:      	mov	x29, sp
+226673:    b6930:      	bl	0xb6930 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA.65+0x8>
+226674: 		00000000000b6930:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA
+226675:    b6934:      	ldp	x29, x30, [sp], #0x10
+226676:    b6938:      	ret
+
+=== GiftUISemanticCore-disassembly.stdout:42293-42350 ===
+42293: 0000000000021e70 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_>:
+42294:    21e70:      	cmp	x1, #0x1
+42295:    21e74:      	b.lt	0x21f20 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_+0xb0>
+42296:    21e78:      	mov	x8, #0x0                ; =0
+42297:    21e7c:      	add	x9, x0, #0x1
+42298:    21e80:      	mov	w10, #0x2               ; =2
+42299:    21e84:      	mov	x11, #0x7ffffffffffffffe ; =9223372036854775806
+42300:    21e88:      	mov	w12, #0x7               ; =7
+42301:    21e8c:      	mov	w13, #0xf               ; =15
+42302:    21e90:      	mov	w14, #0x1f              ; =31
+42303:    21e94:      	ldrsb	w16, [x0, x8]
+42304:    21e98:      	and	w15, w16, #0xff
+42305:    21e9c:      	tbz	w16, #0x1f, 0x21ef4 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_+0x84>
+42306:    21ea0:      	cmp	w15, #0xf0
+42307:    21ea4:      	cinc	x16, x10, hs
+42308:    21ea8:      	cmp	w15, #0xe0
+42309:    21eac:      	csinc	x16, x16, xzr, hs
+42310:    21eb0:      	sub	x17, x16, #0x1
+42311:    21eb4:      	sub	x4, x11, x8
+42312:    21eb8:      	cmp	x4, x17
+42313:    21ebc:      	b.ls	0x21f2c <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_+0xbc>
+42314:    21ec0:      	cmp	w15, #0xf0
+42315:    21ec4:      	csel	w17, w13, w12, lo
+42316:    21ec8:      	cmp	w15, #0xe0
+42317:    21ecc:      	csel	w17, w14, w17, lo
+42318:    21ed0:      	and	w15, w15, w17
+42319:    21ed4:      	add	x17, x9, x8
+42320:    21ed8:      	mov	x4, x16
+42321:    21edc:      	ldrb	w5, [x17], #0x1
+42322:    21ee0:      	bfi	w5, w15, #6, #26
+42323:    21ee4:      	mov	x15, x5
+42324:    21ee8:      	subs	x4, x4, #0x1
+42325:    21eec:      	b.ne	0x21edc <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_+0x6c>
+42326:    21ef0:      	add	x8, x16, x8
+42327:    21ef4:      	add	x8, x8, #0x1
+42328:    21ef8:      	ldr	x16, [x3]
+42329:    21efc:      	cmp	x16, #0x5f
+42330:    21f00:      	b.hi	0x21f24 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_+0xb4>
+42331:    21f04:      	str	w15, [x2, x16, lsl #2]
+42332:    21f08:      	ldr	x15, [x3]
+42333:    21f0c:      	adds	x15, x15, #0x1
+42334:    21f10:      	b.vs	0x21f28 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_+0xb8>
+42335:    21f14:      	str	x15, [x3]
+42336:    21f18:      	cmp	x8, x1
+42337:    21f1c:      	b.lt	0x21e94 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_+0x24>
+42338:    21f20:      	ret
+42339:    21f24:      	brk	#0x1
+42340:    21f28:      	brk	#0x1
+42341:    21f2c:      	brk	#0x1
+42342:
+42343: 0000000000021f30 <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA>:
+42344:    21f30:      	stp	x29, x30, [sp, #-0x10]!
+42345:    21f34:      	mov	x29, sp
+42346:    21f38:      	ldp	x2, x3, [x20, #0x10]
+42347:    21f3c:      	bl	0x21f3c <_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA+0xc>
+42348: 		0000000000021f3c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_
+42349:    21f40:      	ldp	x29, x30, [sp], #0x10
+42350:    21f44:      	ret
+
+=== GiftUIReferenceTextResources-disassembly.stdout:21405-21441 ===
+21405: 000000000000af24 <_$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF>:
+21406:     af24:      	str	x24, [sp, #-0x40]!
+21407:     af28:      	stp	x23, x22, [sp, #0x10]
+21408:     af2c:      	stp	x20, x19, [sp, #0x20]
+21409:     af30:      	stp	x29, x30, [sp, #0x30]
+21410:     af34:      	add	x29, sp, #0x30
+21411:     af38:      	mov	x22, x7
+21412:     af3c:      	mov	x19, x4
+21413:     af40:      	mov	x9, x1
+21414:     af44:      	ldur	x24, [x4, #-0x8]
+21415:     af48:      	ldr	x10, [x24, #0x40]
+21416:     af4c:      	mov	x11, sp
+21417:     af50:      	add	x10, x10, #0xf
+21418:     af54:      	and	x10, x10, #0xfffffffffffffff0
+21419:     af58:      	sub	x23, x11, x10
+21420:     af5c:      	mov	sp, x23
+21421:     af60:      	ldur	x10, [x3, #-0x8]
+21422:     af64:      	ldr	x10, [x10, #0x40]
+21423:     af68:      	add	x1, x0, x10
+21424:     af6c:      	mov	x20, x2
+21425:     af70:      	mov	x2, x23
+21426:     af74:      	blr	x9
+21427:     af78:      	cbz	x21, 0xaf94 <_$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF+0x70>
+21428:     af7c:      	ldr	x8, [x24, #0x20]
+21429:     af80:      	mov	x0, x22
+21430:     af84:      	mov	x1, x23
+21431:     af88:      	mov	x2, x19
+21432:     af8c:      	blr	x8
+21433:     af90:      	mov	w21, #0x1               ; =1
+21434:     af94:      	sub	sp, x29, #0x30
+21435:     af98:      	ldp	x29, x30, [sp, #0x30]
+21436:     af9c:      	ldp	x20, x19, [sp, #0x20]
+21437:     afa0:      	ldp	x23, x22, [sp, #0x10]
+21438:     afa4:      	ldr	x24, [sp], #0x40
+21439:     afa8:      	ret
+21440:
+21441: 000000000000afac <_$s28GiftUIReferenceTextResources01_aB22GeneratedBitmapPayloadO15withRecordBytes3for17expectedByteCount_xSg0a6UITextD07GlyphIDV_s6UInt32VxSWKXEtKlFZAGSWKXEfU_Tm>:

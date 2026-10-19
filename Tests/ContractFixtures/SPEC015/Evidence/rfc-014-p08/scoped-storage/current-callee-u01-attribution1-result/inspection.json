@@ -1,0 +1,469 @@
+{
+  "bounded_attribution": "selected callback/local helper identity and selected no-throw feasibility resolved in retained emitted bodies; external cold/metadata/linked evidence unresolved",
+  "collection_boundary_unchanged": {
+    "automatic_source_repairs": 0,
+    "automatic_tooling_repairs": 0,
+    "collection_attempts": 1,
+    "marker_identity": [
+      16777234,
+      29640436
+    ],
+    "retries": 0
+  },
+  "current_callee_review": "STOP_required_complete_callee_and_safety_not_proved",
+  "five_preexisting_dirty_hashes_match": true,
+  "frozen_files": {
+    "Sources/GiftUI/BoundedText.swift": {
+      "bytes": 6445,
+      "sha256": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce"
+    },
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift": {
+      "bytes": 7509,
+      "sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-disassembly.stdout": {
+      "bytes": 965629,
+      "sha256": "c3e296adc9a2b91e7570999b440be1e6e2697188f0b0b0cb0dc51a998e02df7c"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-symbols.stdout": {
+      "bytes": 183317,
+      "sha256": "2c660b94df670062667b5ebbc9ddc781e2f02e816ee11420f4919bce8de5ec7d"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-disassembly.stdout": {
+      "bytes": 651238,
+      "sha256": "35d707d859d6029d113626344f7baaee8fe46b8a91d79813ca59403ba88fada2"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-symbols.stdout": {
+      "bytes": 85417,
+      "sha256": "6d36a8049cc68721dbbe77c47012793cf1e44eb143d343a8ea13260eb2eaeddc"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-disassembly.stdout": {
+      "bytes": 491299,
+      "sha256": "9f89a454e85ae8cdaf61b1a2a2cf6a4deeb9ab1b66e1edaeec9d6808422c9276"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-symbols.stdout": {
+      "bytes": 141167,
+      "sha256": "bed4f6d25c7e20721f0d4ad9d892e74d8d263ecde9d4a011f8b945c35a3ca667"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-disassembly.stdout": {
+      "bytes": 36644,
+      "sha256": "400c6d1d9644c8f1951b8dd87f5ddc52bb1970e0862707b9bfc84da79248c5b2"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-symbols.stdout": {
+      "bytes": 13694,
+      "sha256": "359b6b7b8392956274f0bcb52e89c71c08e44750fccdb03e0eb449f7fc8e220a"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-disassembly.stdout": {
+      "bytes": 655969,
+      "sha256": "c870475b0dc34e2ded57218052083151daa42b1c001e9941989fd92f4639bf91"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-symbols.stdout": {
+      "bytes": 65802,
+      "sha256": "2aea66575a9ec5572756f7d43b61fad53f4447cd9a746dda7dfc663b36040af6"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-disassembly.stdout": {
+      "bytes": 1748716,
+      "sha256": "3bc854e5ce88884be1933cf79079f628dc109116755a15e7fd1874adc4386735"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-symbols.stdout": {
+      "bytes": 324587,
+      "sha256": "a3fc2f35a2ab345fe9efdd7662a3416edc53805136929cf532a06e8cdf67bd13"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-disassembly.stdout": {
+      "bytes": 250009,
+      "sha256": "566c344c5b586802b2a25f1ca6ca7f5d641bb1510dc9630568f0a95636790c89"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-symbols.stdout": {
+      "bytes": 79565,
+      "sha256": "a4a06674a2c0ea1ad051b5a502e1c879413626adac77f6daa99ac9cb92b02443"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-disassembly.stdout": {
+      "bytes": 4019172,
+      "sha256": "c9590dcc1d56ad375ac85e18220adc78cb188c925292c44733ec354f9c5048f5"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-symbols.stdout": {
+      "bytes": 332487,
+      "sha256": "c6f037b559d3c77f35dc135f15726bf70ebcafb29b04394686cdd81bde4ebfa4"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-disassembly.stdout": {
+      "bytes": 905402,
+      "sha256": "771dc671e0b3780a1b9a67fef3ce02f12acaa4bba22a14b6a7fcb9cc929bf032"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-symbols.stdout": {
+      "bytes": 96219,
+      "sha256": "b67a2eace99806e37257f667f9a6f766451ff18f1aeb4c3d293ed311e46c043c"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-disassembly.stdout": {
+      "bytes": 1140821,
+      "sha256": "716854c7cc1a98bc02c16590b89744764fe8dd0c600aca0600fafda8abfcc137"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-symbols.stdout": {
+      "bytes": 73517,
+      "sha256": "ad92675dbf22f2790065f00c086bdab98e495876e70ee79a9731864d4217a194"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-disassembly.stdout": {
+      "bytes": 1254642,
+      "sha256": "9acd925d033115bd941debd5a226239949e97e4da77f3c187ddfa95f25cca97f"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-symbols.stdout": {
+      "bytes": 131444,
+      "sha256": "9e34f715c66f11f52359ed5457981f4c65cd8d9ef5c03a86d7780be1b22bfeb1"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-disassembly.stdout": {
+      "bytes": 673879,
+      "sha256": "d2235334b93d736c4cf9a6d4dfb03770b092e88afacf62f7fd5e54e48a5be31d"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-symbols.stdout": {
+      "bytes": 65797,
+      "sha256": "b3454ab96cac2d6b91dd2b681d875b90ec04a5437f0d7df4296c497a806a2dc6"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-disassembly.stdout": {
+      "bytes": 3635166,
+      "sha256": "e828edc7951785ef8d23e00f73fa74cc0be52c996870c40b845b498d89f4f5f6"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-symbols.stdout": {
+      "bytes": 564684,
+      "sha256": "0a2fcbc2a2427ac2c06af89ac0bfa8a0c728f76b94127a8046a22b5a213d8ffb"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-disassembly.stdout": {
+      "bytes": 124454,
+      "sha256": "dc8f9e5c44b8e2bf1d90767460ce3b4c383c206b374423a259f9990bfacab7f9"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-symbols.stdout": {
+      "bytes": 37432,
+      "sha256": "45497e731615ab4407a20c816cd33c3ac45452f315e6fc34f1bb60eef67570e2"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-disassembly.stdout": {
+      "bytes": 605963,
+      "sha256": "4cbfd465a411a90fe44af0a59b1f2a5f4e104ee1f4851f8eac96ecef20da0093"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-symbols.stdout": {
+      "bytes": 37907,
+      "sha256": "e6d4afa997fdff0ae91d18bc1cd26435828aeba4d32f53b6428ce764f8b897aa"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-disassembly.stdout": {
+      "bytes": 1237348,
+      "sha256": "06324e4dd7ea480371cbfcfc9f5395a033000ce7bcba002833d5b3725f89006c"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-symbols.stdout": {
+      "bytes": 176898,
+      "sha256": "911145ad5cd7f2a44f81dc4d97c220a12e681c5b0e576d4f576f409f3f3b0879"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-disassembly.stdout": {
+      "bytes": 1041632,
+      "sha256": "8f6a6fa8ed67e4e0699d55ff4c2242ab7d6e2f70253ea4ae3c2b6c9955984e1e"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-symbols.stdout": {
+      "bytes": 141101,
+      "sha256": "c2a6ae8c0765c3b4c5039fe4c9944714beee9a223e705fdb6d132966b9194179"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-disassembly.stdout": {
+      "bytes": 2592864,
+      "sha256": "54b77ee1c145f293a78fa8b18423f11efd8873b495eb67ef485a3059d2159b65"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-symbols.stdout": {
+      "bytes": 88104,
+      "sha256": "f518c968a3dd48413be74570954fe64d8feb97369f773ec1b154f6d49730c27e"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-disassembly.stdout": {
+      "bytes": 4035988,
+      "sha256": "808f12f81e643cc6c9bfebe1abed9fa2faedc4c2287d0fa6f1bb82ceb22306b6"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-symbols.stdout": {
+      "bytes": 213807,
+      "sha256": "368408887e33f34676d272044029ef16fc27cde82623054afb2d2e56d4800cc1"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-disassembly.stdout": {
+      "bytes": 18663,
+      "sha256": "9b362e3a97cbbf6392162f9e8cc183fc1e51b5406ec2f1631eb4662c5fe4589e"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-symbols.stdout": {
+      "bytes": 7481,
+      "sha256": "0be7989d8d408fc92f9c778e0ff9853325e4731f702ff4cbbbffdd5fed339f30"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-disassembly.stdout": {
+      "bytes": 420605,
+      "sha256": "c56b9e961a473e9d196c659b1851ffd3c8d91baba76f4fbc586850f903c2a8c3"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-symbols.stdout": {
+      "bytes": 53131,
+      "sha256": "3c4ac6df9682d2b1cf78862b80222cefcb0abec0d241af9960ac68cd834c2417"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-disassembly.stdout": {
+      "bytes": 181889,
+      "sha256": "7c3ad980048659206089608608efa458f825aa17911d7737f606f3c9eba4e927"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-symbols.stdout": {
+      "bytes": 25023,
+      "sha256": "331f22802cd15e56746c91476ff89651bf1f8d79913d03bb46b4ece4b2070918"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-disassembly.stdout": {
+      "bytes": 26255090,
+      "sha256": "8371140b87d30015cf0b277045ec1b8a5813c26ce5709d55e163917b3e4c3362"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-symbols.stdout": {
+      "bytes": 1201222,
+      "sha256": "b391ad57a0f68b4bec189bd154ba4952695fe39bb4eb18d6e62042cc1a0a2b90"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-disassembly.stdout": {
+      "bytes": 9188,
+      "sha256": "89f0249e070e57c36da79bba4ba4e2f8dc79660fb86e2385196791b52e81949f"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-symbols.stdout": {
+      "bytes": 4956,
+      "sha256": "53d0b6492a9eeb6e06805e540746eaa6a7d7e0993e26d56831f4daa3ff2e6ba4"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-disassembly.stdout": {
+      "bytes": 21973,
+      "sha256": "796eab16c92b4326e9a85f0a874856f38c76fa302dded343ec9eb93789836905"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-symbols.stdout": {
+      "bytes": 7312,
+      "sha256": "973a5273f10deb02e35524570d158ce73c79bde32358fb6b353db0616f82001a"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/actual-host.sil": {
+      "bytes": 62139693,
+      "sha256": "6cc9e7b6cecbeb46dd71b2ac8b6e023182354e7fcc08c814374b9c23303c71ed"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/boundary-physical-index.json": {
+      "bytes": 4690424,
+      "sha256": "9b67676aa047e5d4b8f654854f518acacde3c526f3c9229fdba4b4f2f7174298"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/required-bodies.json": {
+      "bytes": 151353,
+      "sha256": "907d583bc6b6a43457ec57d30d778dbed41e51682f96b41b2f1ef81ee6892070"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/terminal.json": {
+      "bytes": 680851,
+      "sha256": "41c38e4ececed6f5cbd91d6eb2387642e316752ff61d7928a7b1633302a8cf2a"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/README.md": {
+      "bytes": 20623,
+      "sha256": "e4dbd6e6e7facb2ba4832940c0c229ca2655f4b6c70d89ea057b756fcfd58b63"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review-inspection.json": {
+      "bytes": 14334,
+      "sha256": "b7e7575bcdb375e1068b1e4f648ecb154449c91da45c377dbd0bd2fa29ffa0cd"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review.md": {
+      "bytes": 9824,
+      "sha256": "c4374687e404be2e3c3de8e73f4ad199a7bed4219972f64d03aa2a97a2b6c2ee"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/inspect.py": {
+      "bytes": 15037,
+      "sha256": "3c57b50bfc4cc5147d4b1e1ed767e06b0a26d343315ef4c6e39d6b290a696d18"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/inspection-summary.json": {
+      "bytes": 1974,
+      "sha256": "409fc3fa3ddf82a9a53d8ff00a1c76bdf48e4eacf961e7a9a28eb7eb4a540a58"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/object-inventory.json.gz": {
+      "bytes": 1033539,
+      "sha256": "87df0a548b79008aa0935788900ccebad58d1676c6bc4118bc7939e6af1b7c0b"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/privacy-control-join.json": {
+      "bytes": 68231,
+      "sha256": "c56528a7688fce44b7e89a637fb344c2d24d5533df73e196848a237f30138072"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/required-body-join.json": {
+      "bytes": 70460,
+      "sha256": "c5b1b4d1057fe3aed16d5f72ff835be6b948fcaf282869069b490369251e3caa"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/sil-inventory.json.gz": {
+      "bytes": 345990,
+      "sha256": "e433fbd2a2eb08e248b65f1c605bb6be94e3f6086c08904170efc754a31f7b8a"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/preserved-dirty-files.json": {
+      "bytes": 942,
+      "sha256": "00e65144643e2ddc66cf923b902192eb8afc9e4a6ecd0afe4082af7fc4634489"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/source42.json": {
+      "bytes": 8366,
+      "sha256": "27248b41a5f120471f6b6092ff27c1b01e076a92d9e2c61561bada91d59b0df9"
+    }
+  },
+  "frozen_files_equal_baseline": 67,
+  "method": "Standard-library text/JSON/SHA-256 inspection and read-only Git show/rev-parse; no production execution.",
+  "ordinary_abi_serialized_index_matches": [
+    {
+      "basic_blocks": 0,
+      "function_id": 399,
+      "module": "GiftUI",
+      "name": "$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF",
+      "serialized_kind": 0
+    },
+    {
+      "basic_blocks": 0,
+      "function_id": 704,
+      "module": "GiftUISemanticCore",
+      "name": "$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF",
+      "serialized_kind": 0
+    }
+  ],
+  "preexisting_cache_file_sha256": {
+    "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+  },
+  "reviewed_baseline": "b1eb9ea2330f0fd2504c5bb2d2bb94854019fe88",
+  "selected_callback_targets": {
+    "ErrorWS": "external data witness symbol; loaded into x6 at 0x7e8, no x6 use/call in retained generic body",
+    "canvas_call": "P08CounterRuntime 0xa3e6c -> GiftUI 0x77c; captured callback local 0xb3700 -> same shared symbol",
+    "generic_blr_x9": "GiftUI thunk 0x838, supplied by relocations 0x7d4/0x7d8",
+    "generic_conditional_blr_x8": "*(*(Error_metadata-8)+0x20); exact code target absent, not called on selected normal-return callback path",
+    "thunk_blr_x10": "original selected callback pointer, stored at sp+0x88 and loaded through context+0x18",
+    "traversal_call": "P08CounterRuntime 0xa2adc -> GiftUI 0x77c; captured callback local 0xb6928 -> local 0xb3700 -> shared symbol with retained P08 body 0xa429c / GiftUISemanticCore body 0x21e70"
+  },
+  "sil_callback": {
+    "apply_family_sites": 0,
+    "blocks": 20,
+    "cond_fail_sites": [
+      601571,
+      601614,
+      601622,
+      601643,
+      601664,
+      601672
+    ],
+    "end_line": 601687,
+    "heap_allocation_instruction_sites": 0,
+    "line": 601530,
+    "symbol": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_",
+    "throw_sites": 0
+  },
+  "source42_hashes_match": true,
+  "strict_cold_eligible": false,
+  "target_disassembly_headers_across_25_objects": [
+    {
+      "address": "0000000000000874",
+      "line": 634,
+      "module": "GiftUI",
+      "symbol": "_$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF"
+    },
+    {
+      "address": "000000000000af24",
+      "line": 21405,
+      "module": "GiftUIReferenceTextResources",
+      "symbol": "_$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF"
+    },
+    {
+      "address": "0000000000021e70",
+      "line": 42293,
+      "module": "GiftUISemanticCore",
+      "symbol": "_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_"
+    },
+    {
+      "address": "00000000000a429c",
+      "line": 202368,
+      "module": "P08CounterRuntime",
+      "symbol": "_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_"
+    }
+  ],
+  "target_symbol_matches_across_25_objects": [
+    {
+      "line": 59,
+      "module": "GiftUI",
+      "text": "U _$ss5ErrorWS"
+    },
+    {
+      "line": 89,
+      "module": "GiftUI",
+      "text": "U _swift_getTypeByMangledNameInContext2"
+    },
+    {
+      "line": 109,
+      "module": "GiftUI",
+      "text": "0000000000000874 T _$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF"
+    },
+    {
+      "line": 2070,
+      "module": "GiftUI",
+      "text": "000000000000f970 D _$ss5Error_pMD"
+    },
+    {
+      "line": 99,
+      "module": "GiftUIBackendIntegration",
+      "text": "U _swift_getTypeByMangledNameInContext2"
+    },
+    {
+      "line": 49,
+      "module": "GiftUIRasterCore",
+      "text": "U _swift_getTypeByMangledNameInContext2"
+    },
+    {
+      "line": 9,
+      "module": "GiftUIReferenceTextResources",
+      "text": "U _$ss5ErrorWS"
+    },
+    {
+      "line": 16,
+      "module": "GiftUIReferenceTextResources",
+      "text": "U _swift_getTypeByMangledNameInContext2"
+    },
+    {
+      "line": 181,
+      "module": "GiftUIReferenceTextResources",
+      "text": "000000000000af24 T _$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF"
+    },
+    {
+      "line": 3786,
+      "module": "GiftUIReferenceTextResources",
+      "text": "000000000001be60 D _$ss5Error_pMD"
+    },
+    {
+      "line": 169,
+      "module": "GiftUIRuntimeCore",
+      "text": "U _swift_getTypeByMangledNameInContext2"
+    },
+    {
+      "line": 167,
+      "module": "GiftUIRuntimeDynamic",
+      "text": "U _swift_getTypeByMangledNameInContext2"
+    },
+    {
+      "line": 1206,
+      "module": "GiftUIRuntimeDynamic",
+      "text": "000000000000cd10 D _$ss5Error_pMD"
+    },
+    {
+      "line": 791,
+      "module": "GiftUISemanticCore",
+      "text": "0000000000021e70 T _$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_"
+    },
+    {
+      "line": 693,
+      "module": "P08CounterRuntime",
+      "text": "U _$ss5ErrorWS"
+    },
+    {
+      "line": 743,
+      "module": "P08CounterRuntime",
+      "text": "U _swift_getTypeByMangledNameInContext2"
+    },
+    {
+      "line": 4204,
+      "module": "P08CounterRuntime",
+      "text": "00000000000a429c T _$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_"
+    },
+    {
+      "line": 8954,
+      "module": "P08CounterRuntime",
+      "text": "00000000000c68c0 D _$ss5Error_pMD"
+    }
+  ],
+  "temporary_stack": {
+    "fixed_local_frames_bytes": {
+      "GiftUI_generic": 64,
+      "GiftUI_thunk": 32,
+      "GiftUI_withUTF8": 240,
+      "P08_callback_TA": 16,
+      "P08_callback_TA_65_additional": 16,
+      "P08_decoder": 0,
+      "metadata_helper_separate_phase": 32
+    },
+    "metadata_source": "0x7cc helper result for _$ss5Error_pMD, passed as x4",
+    "numeric_size_or_upper_bound_from_retained_text": null,
+    "reservation": "D = (S+15) & ~15; sp -= D, 0x89c-0x8ac, before callback/error test",
+    "size_load": "S = *(*(M-8)+0x40), GiftUI 0x894/0x898",
+    "whole_stack_bound_established": false
+  },
+  "u02_u05_status": "not investigated by this U01-only slice; prior open dispositions retained"
+}

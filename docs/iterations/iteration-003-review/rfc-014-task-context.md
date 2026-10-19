@@ -1,15 +1,16 @@
 # RFC-014 task context guide
 
-Current P08 boundary — **collection-only PASS; bounded current-callee/safety interpretation STOP**.
-The [interpretation result and exact edge inventories](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/README.md)
-resolve selected Static constructor/reset/helper paths but retain ordinary Text
-cold metadata, callback/value-witness attribution and complete safety obligations.
-`strict_cold_eligible` remains false. [Independent interpretation review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review.md)
-confirms this STOP; the first compiler-free attribution slice is U01 against
-the same retained bytes. No compiler,
-runtime, strict-cold, source repair or new collection allowance follows.
-Collection1/1 is consumed, repairs0/retries0; P08/R07/T8.1 and all remaining gates
-stay open. The collection marker and historical budgets remain unchanged.
+Current P08 boundary — **collection-only PASS; U01 local attribution completed; complete callee/safety proof STOP**.
+The [U01-only retained-byte result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/README.md)
+resolves both actual Text callbacks, local outlined helpers and selected no-throw
+error-transfer feasibility. The unconditional Error metadata lookup's cold path,
+numeric aligned temporary storage and linked/runtime/library evidence remain open.
+Independent U01 review, then separately bounded U01 residual preparation is next;
+U02–U05 retain the [independently reviewed interpretation's open dispositions](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review.md).
+`strict_cold_eligible` remains false. No compiler, runtime, strict-cold, source
+repair or new collection allowance follows. Collection1/1 is consumed,
+repairs0/retries0; P08/R07/T8.1 and all remaining gates stay open. The collection
+marker and historical budgets remain unchanged.
 
 Historical pre-collection checkpoint — **retained counter426 PASS; controller readiness PASS; collection unused 0/1**.
 The [retained macOS Static result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)
