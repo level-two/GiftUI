@@ -1,0 +1,50 @@
+{
+  "bootstrap_environment": {
+    "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+    "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
+    "HOME": "/Users/eugene",
+    "LC_CTYPE": "C.UTF-8",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "TMPDIR": "/private/tmp",
+    "USER": "eugene"
+  },
+  "controller_environment": {
+    "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+    "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
+    "HOME": "/Users/eugene",
+    "LC_CTYPE": "C.UTF-8",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "TMPDIR": "/private/tmp",
+    "USER": "eugene"
+  },
+  "interpreter_added_environment": {
+    "LC_CTYPE": "C.UTF-8",
+    "__CF_USER_TEXT_ENCODING": "0x1F5:0x7:0x3D"
+  },
+  "loader_roots": [
+    "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9",
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib",
+    "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib"
+  ],
+  "purpose": "Complete Python framework; conservative complete adjacent Xcode toolchain library root for Apple tool dependencies; complete explicit LLVM decoder library root. No developer framework override or HOME fallback search.",
+  "python_executable": "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+  "python_flags": [
+    "-I",
+    "-S",
+    "-B",
+    "-X",
+    "pycache_prefix=/dev/null"
+  ],
+  "schema": 1,
+  "system_trust": {
+    "boundary": "Installed Apple system loader and /usr/lib and /System/Library runtimes remain trusted; this is not a hermetic OS image or historical counter-runtime qualification.",
+    "framework_fallback": "/System/Library/Frameworks",
+    "library_fallback": "/usr/lib",
+    "roots_present": {
+      "/System/Library/Frameworks": true,
+      "/usr/lib": true
+    }
+  }
+}

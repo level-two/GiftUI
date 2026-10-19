@@ -1,23 +1,18 @@
 # RFC-014 task context guide
 
-Current P08 boundary — **U01 system-provider preparation independently PASS within bounds; full callee/safety STOP**.
-The [new identity-first request](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider1-preparation/README.md)
-pins an existing supplemental crash report and current 15-member system cache
-family. Historical supplemental Swift/C UUIDs, cache bytes and OS build correspond;
-ordinary-counter loaded identity remains missing. Three proposed static Apple
-`dyld_info` commands have [independent preparation PASS](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider1-preparation/independent-review.md).
-Next is a separate concrete controller/identity-verifier readiness packet; cache
-UUID field semantics and exact I→S joins must be reviewed or S stays closed.
-No launch clearance follows; existing P08 authorization can cover the exact
-static continuation after readiness PASS. No decoder/controller/acquisition/runtime/
-compiler/build/test ran; old B remains inapplicable/unexecuted. The
-[independently reviewed linked/provider result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/independent-review.md)
-retains its bounded PASS. R01–R04, numeric Error size, selected system implementation/
-cold costs and ordinary runtime applicability remain open; `strict_cold_eligible`
-stays false. Both consumed attempts remain1/1, repairs0/retries0: A-only marker
-[16777234,29650609], historical collection marker [16777234,29640436]. No new
-execution allowance or contract/scope decision follows; U02–U05, P08/R07/T8.1
-and remaining gates stay open.
+Current P08 boundary — **U01 I-only controller prepared; independent readiness pending; full callee/safety STOP**.
+The [concrete one-shot controller](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider1-preparation/CONTROLLER.md)
+authenticates full cache/report/linked/loader inputs with external final pins.
+Applicable cache-header schema remains unavailable; no heuristic UUID-field
+parser is introduced. Only exact I identity capture is proposed; both S commands
+are always skipped. The [independent preparation review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider1-preparation/independent-review.md)
+passed the inventory/request, requiring concrete readiness before launch. No
+controller/decoder/acquisition/runtime/compiler/build/test ran. Old B remains
+inapplicable/unexecuted. R01–R04, Error size, implementation/cold costs and ordinary
+loaded identity remain open; strict cold stays false. Both consumed attempts
+remain1/1, repairs0/retries0: A-only [16777234,29650609], historical collection
+[16777234,29640436]. No new launch clearance or contract/scope decision follows;
+U02–U05, P08/R07/T8.1 and remaining gates stay open.
 
 Historical pre-collection checkpoint — **retained counter426 PASS; controller readiness PASS; collection unused 0/1**.
 The [retained macOS Static result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)

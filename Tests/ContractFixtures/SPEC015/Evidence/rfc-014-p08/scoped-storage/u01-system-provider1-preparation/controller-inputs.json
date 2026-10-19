@@ -1,0 +1,1273 @@
+{
+  "absent_paths": [
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/include/swift/ABI/Metadata.h",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/include/swift/Runtime/ExistentialContainer.h",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/include/swift/Runtime/Metadata.h",
+    "/usr/include/swift/ABI/Metadata.h",
+    "/usr/include/swift/Runtime/ExistentialContainer.h",
+    "/usr/lib/libSystem.B.dylib",
+    "/usr/lib/swift/Swift.swiftmodule/arm64e-apple-macos.swiftinterface",
+    "/usr/lib/swift/libswiftCore.dylib",
+    "/usr/lib/system/libsystem_c.dylib"
+  ],
+  "cache_file_sha256": {
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+  },
+  "cache_membership": [
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.03.dyldreadonly",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.05",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.06.dylddata",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.07.dyldreadonly",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.08.dyldlinkedit",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.09",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.10.dylddata",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.11",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.12.dyldlinkedit",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.atlas",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.map"
+  ],
+  "cache_prefix": "dyld_shared_cache_arm64e",
+  "cache_root": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld",
+  "cache_root_resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld",
+  "consumed_markers": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+      16777234,
+      29640436
+    ],
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+      16777234,
+      29650609
+    ]
+  },
+  "files": {
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/SDKSettings.json": {
+      "bytes": 7774,
+      "is_symlink": false,
+      "resolved": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/SDKSettings.json",
+      "sha256": "f8d005f09381389167f9e0aeaa169bc9e7dff162ef22ca2fd8e98df7ff1acafe"
+    },
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/libSystem.tbd": {
+      "bytes": 334178,
+      "is_symlink": true,
+      "resolved": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libSystem.B.tbd",
+      "sha256": "20cfce043f11a083e2eb6111efe3579919a8082fa4cc912a7bd839af2010ec57",
+      "target": "libSystem.B.tbd"
+    },
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/swift/libswiftCore.tbd": {
+      "bytes": 882093,
+      "is_symlink": false,
+      "resolved": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/swift/libswiftCore.tbd",
+      "sha256": "cf3537a9f091358845ea7a754a05cbd9404eca53c77e203c5bb2e9b4adb67fcc"
+    },
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/system/libsystem_c.tbd": {
+      "bytes": 25552,
+      "is_symlink": false,
+      "resolved": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/system/libsystem_c.tbd",
+      "sha256": "5d5a6156b266b323b83366ab601a744639a2acb3235d11261f40e0dca6f1ea96"
+    },
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/system/libsystem_platform.tbd": {
+      "bytes": 6848,
+      "is_symlink": false,
+      "resolved": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/system/libsystem_platform.tbd",
+      "sha256": "6f8f7e88f0b594827e9946cc30e846936e65184e40b6c4e6c600f8fc89671064"
+    },
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dyld_info": {
+      "bytes": 354688,
+      "is_symlink": false,
+      "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dyld_info",
+      "sha256": "af56890ce0c564d0df60929914018f484a75db2a42011acda629b39ce2c66aeb"
+    },
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool-classic": {
+      "bytes": 472320,
+      "is_symlink": false,
+      "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool-classic",
+      "sha256": "6beb1ad9c4fb7edafd59fddcb093f358f9a250bfe1db2db9f04ed1aacd523a69"
+    },
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man/man1/dyld_info.1": {
+      "bytes": 3608,
+      "is_symlink": false,
+      "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man/man1/dyld_info.1",
+      "sha256": "73021b3c978396cb8193962278736844d6c7b533fb9ddea32edbfbf03c9f19fe"
+    },
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man/man1/otool-classic.1": {
+      "bytes": 7456,
+      "is_symlink": false,
+      "resolved": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man/man1/otool-classic.1",
+      "sha256": "d394dd994259505236aeb626f98a60de00ce8b870351dfde6b029529157457a3"
+    },
+    "/Applications/Xcode.app/Contents/Info.plist": {
+      "bytes": 33286,
+      "is_symlink": false,
+      "resolved": "/Applications/Xcode.app/Contents/Info.plist",
+      "sha256": "224c27a718df1d8b4e785d29d06259e0a9326c424e70d30efab9c587463f719a"
+    },
+    "/System/Library/CoreServices/SystemVersion.plist": {
+      "bytes": 603,
+      "is_symlink": false,
+      "resolved": "/System/Library/CoreServices/SystemVersion.plist",
+      "sha256": "6151cb883e5b48d43a33d4d41956405a1cd502e0c8622319388d943e2cb804a1"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e": {
+      "bytes": 573440,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e",
+      "sha256": "7a024959c8c14d46e2964f975f2256b3f9efc2da950a31067d26ac7ac16498d4"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01": {
+      "bytes": 1715355648,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "sha256": "2130d36b0a4a034cec46d44b9205e08d5bceca280509f90defe3d0ac3891496e"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata": {
+      "bytes": 234569728,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata",
+      "sha256": "dc6bf44cce543831717e158914166bffc8a98f7015e38c5b2ea50bb2566dc541"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.03.dyldreadonly": {
+      "bytes": 127057920,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.03.dyldreadonly",
+      "sha256": "9e5d46f5e4b5f3f719264c766910d523559dbee992322b21f684a89ba1884943"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit": {
+      "bytes": 601341952,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "sha256": "0a403732b86c08b39daf6669532c3f5bb10bb12ef288b597e366a06f1b981b0b"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.05": {
+      "bytes": 1819885568,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.05",
+      "sha256": "bfcb33596a2bde568376c39ba179f3666becddbda2153cc7e48e0ffd21237aa4"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.06.dylddata": {
+      "bytes": 237125632,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.06.dylddata",
+      "sha256": "996039f29c5f41941922ca54e7cfc249b707bcc1cfa4d9654945417027864e17"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.07.dyldreadonly": {
+      "bytes": 7290880,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.07.dyldreadonly",
+      "sha256": "a9c6dd008245e2d4e024dd54875f95a33c4b488680f7e3b3e825cfa79dac7550"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.08.dyldlinkedit": {
+      "bytes": 617381888,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.08.dyldlinkedit",
+      "sha256": "d9d696f6624da68fb4df4dca0f3ea1a5b4c76a7de1a2e6d107d1e36cee9e75dc"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.09": {
+      "bytes": 182812672,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.09",
+      "sha256": "99344558cc98e4155262495ba2f2132aaf1331a02a8e7d6a129c7cf0a31e72c5"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.10.dylddata": {
+      "bytes": 23199744,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.10.dylddata",
+      "sha256": "fb7f328058ad6f118592c1b7d81d67d431d8e73e4ed8ed3239de20eb65bd0e98"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.11": {
+      "bytes": 32768,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.11",
+      "sha256": "be38a6ebbd6b0a5cf4692e23e683f53dcbb478725aac5b1e0b8cfe02ac9edc5e"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.12.dyldlinkedit": {
+      "bytes": 254345216,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.12.dyldlinkedit",
+      "sha256": "f61b8530e5697eaa744b3f36ea1c1a26a2da1a469f1f5f0395162c2e172b8625"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.atlas": {
+      "bytes": 2372801,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.atlas",
+      "sha256": "ad196c5e2c1c0a3be152007906f1892861edaca96cbf4a8aa3bc581e07d684e2"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.map": {
+      "bytes": 1338214,
+      "is_symlink": false,
+      "resolved": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.map",
+      "sha256": "9486c0f76e880803a785925771d601d064fee8a7bec4279bd54c059db92adddd"
+    },
+    "/Users/eugene/Library/Logs/DiagnosticReports/so06-native-exclusivity-negative-2026-10-19-131150.ips": {
+      "bytes": 7394,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/Library/Logs/DiagnosticReports/so06-native-exclusivity-negative-2026-10-19-131150.ips",
+      "sha256": "f15190c81d022debc91037c07a4064a9d9d3f78e4130afffad65ce0cba420203"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIDrawing.o": {
+      "bytes": 135544,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIDrawing.o",
+      "sha256": "33562488b3ab1eed671758b8af57c4a107b434d33dec66755578168ef7ab780b"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIExecution.o": {
+      "bytes": 574800,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIExecution.o",
+      "sha256": "5fac42c75bf02129e4b56865d4a8cd3ffb5a63d126fbc9bd7cbbc418b28a2332"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIHostConfiguration.o": {
+      "bytes": 731488,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIHostConfiguration.o",
+      "sha256": "a053c1c00459783940052f6d4385ef897f6d21ad84d78cbd594d8e385370c835"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIInteraction.o": {
+      "bytes": 189024,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIInteraction.o",
+      "sha256": "7b7be8fda6c1198d570a5a092c479e9e1a91422d23333e9dd9a4b5ef543639dd"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUILayout.o": {
+      "bytes": 170544,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUILayout.o",
+      "sha256": "210985a98beb671ebdfc4d93512a92467641791e8f7d971ab6e5950f7dd13ebc"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIObservableState.o": {
+      "bytes": 254904,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIObservableState.o",
+      "sha256": "9cdc1ff0b65ad89e7895994a9042839030ddd19e87fbd3b953a1715591677b52"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIReferenceTextResources.o": {
+      "bytes": 1662280,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIReferenceTextResources.o",
+      "sha256": "ab35f5d97d11feed8e78053c0ea3921ff6b3fb43e313d754fca859638bbeea54"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRenderCore.o": {
+      "bytes": 62200,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRenderCore.o",
+      "sha256": "af38bc6e2ff9fc68395bcabfca71982be9e726a98a7ba59acd7ca969b462019b"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRenderLowering.o": {
+      "bytes": 78864,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRenderLowering.o",
+      "sha256": "66b522bfbc494980934847d0cb142514bc213af9d51860a588c5d4358f9382ec"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeCore.o": {
+      "bytes": 323040,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeCore.o",
+      "sha256": "cdf2603a4e5aa2bae6ace429ebff1971d88085176f8e4db625e6fce839fe72c6"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeDynamic.o": {
+      "bytes": 250280,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeDynamic.o",
+      "sha256": "997ac28acb8a683425cde8999e024e232f0b010ffac34acdffa4c99a463f4454"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeStatic.o": {
+      "bytes": 284984,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeStatic.o",
+      "sha256": "ade0e22d6dbb21af6e65f2bc62e82f7d0e6368d7ca8875a4d33662938a82f3e5"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.o": {
+      "bytes": 534488,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.o",
+      "sha256": "d1e6eb3af4d1566dc06f196d6a9154d781e2da0f046c4d920af68c1df56d3ea7"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUITextResources.o": {
+      "bytes": 102840,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUITextResources.o",
+      "sha256": "9aecc98947e6fcab6f740cd2372857180c9abbc49232036b6e8c4deb34f88eb4"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/Main.swift": {
+      "bytes": 276,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/Main.swift",
+      "sha256": "e246ce21f23bf84d3e6b9b3567f06eb57ece1ee78c50ad1058212226ffe3ec7a"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterPresentation.o": {
+      "bytes": 45736,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterPresentation.o",
+      "sha256": "5ab036fca58c51a27a91284a2b2abde88a0e2b5f81b21f2089187f9c6bad2929"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterRuntime.o": {
+      "bytes": 2543832,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterRuntime.o",
+      "sha256": "fa83a40d93b8aaca81c1f3ccf2a443cc51585695d1c5ca2b75fccdcdcee6b393"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterSchema.o": {
+      "bytes": 9392,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterSchema.o",
+      "sha256": "7ab6796784cb4e3e81e0a682f96b27335f522bce2a00b0c57ec07112e0bf679e"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterTable.o": {
+      "bytes": 12656,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterTable.o",
+      "sha256": "ebacc0b71773808fad2811f6ac13aa8127bffcbd5289b8ac2258f844684cd898"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter": {
+      "bytes": 6602168,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter",
+      "sha256": "12d51381b0a776a3a05c60aa3f97b732a0490434435194d6eda0e29ef0d89242"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/link.log": {
+      "bytes": 0,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/link.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/result.json": {
+      "bytes": 8548218,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/result.json",
+      "sha256": "6850a3f150938e2a755f2260c94c42d7f103b0110639599a27925ba377b8ecb8"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-negative": {
+      "bytes": 6670080,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-negative",
+      "sha256": "4c5b43de56613cb448d0772ae2e0e8ce4cd3496fb0a6538f719a79cfa5397cd1"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-negative-execute.log": {
+      "bytes": 1447,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-negative-execute.log",
+      "sha256": "e277a9c7eb12c0500ac32091d68a7657d9d4afe62901c56c60c74c9abad00f5f"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-positive": {
+      "bytes": 6670080,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-positive",
+      "sha256": "91ce67a8eac17a65edaa446f7a9a3d14e1af7c0aaf8d28db8482403c91ac0914"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-retained-evidence-counter384-successor1/launch.json": {
+      "bytes": 1576,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-retained-evidence-counter384-successor1/launch.json",
+      "sha256": "9175985761eae886507047699673c7ea98adc60f871c247645656bd69dd40cc5"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIBackendIntegration.o": {
+      "bytes": 153080,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIBackendIntegration.o",
+      "sha256": "724d1d0de5bc9bdced7ef331f21765ce20e51f134acd2e60986d6f94573e750e"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUICapabilities.o": {
+      "bytes": 226576,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUICapabilities.o",
+      "sha256": "e98b19e45be7d01036c429f5a204127e1c4b2f93406d464ba5611d20980e4613"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIDisplayCore.o": {
+      "bytes": 23896,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIDisplayCore.o",
+      "sha256": "7b6997af450252fc1dd59ac3e22f38d24f772d999a71de436baabdc51df992aa"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIFailureCore.o": {
+      "bytes": 127672,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIFailureCore.o",
+      "sha256": "14fec38758243fa9a9c78cc715149fbd88567d062532aae18c625f207b3647f9"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIRasterCore.o": {
+      "bytes": 128424,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIRasterCore.o",
+      "sha256": "95c0429c3fc91ef30b69b52930ad2ec9bf050ca9bffe68cfb74175b117c4b7cf"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUISurfaceCore.o": {
+      "bytes": 12144,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUISurfaceCore.o",
+      "sha256": "f22cbd684f69378a9e99bb1b0f93111109803fd022776db1c2dc8e60e2ceb82c"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.o": {
+      "bytes": 354032,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.o",
+      "sha256": "697e1435723ab9721bdcda4fe029a190cef1b7fa1d609381e5e0905c3163575c"
+    },
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/Info.plist": {
+      "bytes": 1015,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/Info.plist",
+      "sha256": "82fff11623e6bc7d72eb707cd422936f133218c026a862110f6379f1c714fc3a"
+    },
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/lib/swift/macosx/Swift.swiftmodule/arm64-apple-macos.swiftinterface": {
+      "bytes": 2461651,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/Swift.swiftmodule/arm64-apple-macos.swiftinterface",
+      "sha256": "41be0472aafe38a096c58c828399d75b21e46825d1e42132d269cea2ac745172"
+    },
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/lib/swift/macosx/libswiftCore.dylib": {
+      "bytes": 17395344,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/libswiftCore.dylib",
+      "sha256": "51358d2d79fcdcb739e28d050109b49047131f1001c32654904dbbd63cd6013a"
+    },
+    "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/libswiftCore.dylib": {
+      "bytes": 17395344,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/libswiftCore.dylib",
+      "sha256": "51358d2d79fcdcb739e28d050109b49047131f1001c32654904dbbd63cd6013a"
+    },
+    "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-nm-21": {
+      "bytes": 169024,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-nm-21",
+      "sha256": "96b2f58cd612d5489d23b75ec90da345f924cd8f893523c05a22b992a32360ff"
+    },
+    "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-objdump-21": {
+      "bytes": 939120,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-objdump-21",
+      "sha256": "d41e800c8ce1380a775ad42dbdbba85c022c53882af806bb5207fc928b188786"
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/BoundedText.swift": {
+      "bytes": 6445,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Sources/GiftUI/BoundedText.swift",
+      "sha256": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce"
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticStandardPayload.swift": {
+      "bytes": 7509,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e"
+    },
+    "/Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": {
+      "bytes": 9440,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+      "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581"
+    },
+    "/Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": {
+      "bytes": 2048,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+      "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-disassembly.stdout": {
+      "bytes": 965629,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-disassembly.stdout",
+      "sha256": "c3e296adc9a2b91e7570999b440be1e6e2697188f0b0b0cb0dc51a998e02df7c"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-symbols.stdout": {
+      "bytes": 183317,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-symbols.stdout",
+      "sha256": "2c660b94df670062667b5ebbc9ddc781e2f02e816ee11420f4919bce8de5ec7d"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-disassembly.stdout": {
+      "bytes": 651238,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-disassembly.stdout",
+      "sha256": "35d707d859d6029d113626344f7baaee8fe46b8a91d79813ca59403ba88fada2"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-symbols.stdout": {
+      "bytes": 85417,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-symbols.stdout",
+      "sha256": "6d36a8049cc68721dbbe77c47012793cf1e44eb143d343a8ea13260eb2eaeddc"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-disassembly.stdout": {
+      "bytes": 491299,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-disassembly.stdout",
+      "sha256": "9f89a454e85ae8cdaf61b1a2a2cf6a4deeb9ab1b66e1edaeec9d6808422c9276"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-symbols.stdout": {
+      "bytes": 141167,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-symbols.stdout",
+      "sha256": "bed4f6d25c7e20721f0d4ad9d892e74d8d263ecde9d4a011f8b945c35a3ca667"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-disassembly.stdout": {
+      "bytes": 36644,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-disassembly.stdout",
+      "sha256": "400c6d1d9644c8f1951b8dd87f5ddc52bb1970e0862707b9bfc84da79248c5b2"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-symbols.stdout": {
+      "bytes": 13694,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-symbols.stdout",
+      "sha256": "359b6b7b8392956274f0bcb52e89c71c08e44750fccdb03e0eb449f7fc8e220a"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-disassembly.stdout": {
+      "bytes": 655969,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-disassembly.stdout",
+      "sha256": "c870475b0dc34e2ded57218052083151daa42b1c001e9941989fd92f4639bf91"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-symbols.stdout": {
+      "bytes": 65802,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-symbols.stdout",
+      "sha256": "2aea66575a9ec5572756f7d43b61fad53f4447cd9a746dda7dfc663b36040af6"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-disassembly.stdout": {
+      "bytes": 1748716,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-disassembly.stdout",
+      "sha256": "3bc854e5ce88884be1933cf79079f628dc109116755a15e7fd1874adc4386735"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-symbols.stdout": {
+      "bytes": 324587,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-symbols.stdout",
+      "sha256": "a3fc2f35a2ab345fe9efdd7662a3416edc53805136929cf532a06e8cdf67bd13"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-disassembly.stdout": {
+      "bytes": 250009,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-disassembly.stdout",
+      "sha256": "566c344c5b586802b2a25f1ca6ca7f5d641bb1510dc9630568f0a95636790c89"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-symbols.stdout": {
+      "bytes": 79565,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-symbols.stdout",
+      "sha256": "a4a06674a2c0ea1ad051b5a502e1c879413626adac77f6daa99ac9cb92b02443"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-disassembly.stdout": {
+      "bytes": 4019172,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-disassembly.stdout",
+      "sha256": "c9590dcc1d56ad375ac85e18220adc78cb188c925292c44733ec354f9c5048f5"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-symbols.stdout": {
+      "bytes": 332487,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-symbols.stdout",
+      "sha256": "c6f037b559d3c77f35dc135f15726bf70ebcafb29b04394686cdd81bde4ebfa4"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-disassembly.stdout": {
+      "bytes": 905402,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-disassembly.stdout",
+      "sha256": "771dc671e0b3780a1b9a67fef3ce02f12acaa4bba22a14b6a7fcb9cc929bf032"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-symbols.stdout": {
+      "bytes": 96219,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-symbols.stdout",
+      "sha256": "b67a2eace99806e37257f667f9a6f766451ff18f1aeb4c3d293ed311e46c043c"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-disassembly.stdout": {
+      "bytes": 1140821,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-disassembly.stdout",
+      "sha256": "716854c7cc1a98bc02c16590b89744764fe8dd0c600aca0600fafda8abfcc137"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-symbols.stdout": {
+      "bytes": 73517,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-symbols.stdout",
+      "sha256": "ad92675dbf22f2790065f00c086bdab98e495876e70ee79a9731864d4217a194"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-disassembly.stdout": {
+      "bytes": 1254642,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-disassembly.stdout",
+      "sha256": "9acd925d033115bd941debd5a226239949e97e4da77f3c187ddfa95f25cca97f"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-symbols.stdout": {
+      "bytes": 131444,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-symbols.stdout",
+      "sha256": "9e34f715c66f11f52359ed5457981f4c65cd8d9ef5c03a86d7780be1b22bfeb1"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-disassembly.stdout": {
+      "bytes": 673879,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-disassembly.stdout",
+      "sha256": "d2235334b93d736c4cf9a6d4dfb03770b092e88afacf62f7fd5e54e48a5be31d"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-symbols.stdout": {
+      "bytes": 65797,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-symbols.stdout",
+      "sha256": "b3454ab96cac2d6b91dd2b681d875b90ec04a5437f0d7df4296c497a806a2dc6"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-disassembly.stdout": {
+      "bytes": 3635166,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-disassembly.stdout",
+      "sha256": "e828edc7951785ef8d23e00f73fa74cc0be52c996870c40b845b498d89f4f5f6"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-symbols.stdout": {
+      "bytes": 564684,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-symbols.stdout",
+      "sha256": "0a2fcbc2a2427ac2c06af89ac0bfa8a0c728f76b94127a8046a22b5a213d8ffb"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-disassembly.stdout": {
+      "bytes": 124454,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-disassembly.stdout",
+      "sha256": "dc8f9e5c44b8e2bf1d90767460ce3b4c383c206b374423a259f9990bfacab7f9"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-symbols.stdout": {
+      "bytes": 37432,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-symbols.stdout",
+      "sha256": "45497e731615ab4407a20c816cd33c3ac45452f315e6fc34f1bb60eef67570e2"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-disassembly.stdout": {
+      "bytes": 605963,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-disassembly.stdout",
+      "sha256": "4cbfd465a411a90fe44af0a59b1f2a5f4e104ee1f4851f8eac96ecef20da0093"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-symbols.stdout": {
+      "bytes": 37907,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-symbols.stdout",
+      "sha256": "e6d4afa997fdff0ae91d18bc1cd26435828aeba4d32f53b6428ce764f8b897aa"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-disassembly.stdout": {
+      "bytes": 1237348,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-disassembly.stdout",
+      "sha256": "06324e4dd7ea480371cbfcfc9f5395a033000ce7bcba002833d5b3725f89006c"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-symbols.stdout": {
+      "bytes": 176898,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-symbols.stdout",
+      "sha256": "911145ad5cd7f2a44f81dc4d97c220a12e681c5b0e576d4f576f409f3f3b0879"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-disassembly.stdout": {
+      "bytes": 1041632,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-disassembly.stdout",
+      "sha256": "8f6a6fa8ed67e4e0699d55ff4c2242ab7d6e2f70253ea4ae3c2b6c9955984e1e"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-symbols.stdout": {
+      "bytes": 141101,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-symbols.stdout",
+      "sha256": "c2a6ae8c0765c3b4c5039fe4c9944714beee9a223e705fdb6d132966b9194179"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-disassembly.stdout": {
+      "bytes": 2592864,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-disassembly.stdout",
+      "sha256": "54b77ee1c145f293a78fa8b18423f11efd8873b495eb67ef485a3059d2159b65"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-symbols.stdout": {
+      "bytes": 88104,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-symbols.stdout",
+      "sha256": "f518c968a3dd48413be74570954fe64d8feb97369f773ec1b154f6d49730c27e"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-disassembly.stdout": {
+      "bytes": 4035988,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-disassembly.stdout",
+      "sha256": "808f12f81e643cc6c9bfebe1abed9fa2faedc4c2287d0fa6f1bb82ceb22306b6"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-symbols.stdout": {
+      "bytes": 213807,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-symbols.stdout",
+      "sha256": "368408887e33f34676d272044029ef16fc27cde82623054afb2d2e56d4800cc1"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-disassembly.stdout": {
+      "bytes": 18663,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-disassembly.stdout",
+      "sha256": "9b362e3a97cbbf6392162f9e8cc183fc1e51b5406ec2f1631eb4662c5fe4589e"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-symbols.stdout": {
+      "bytes": 7481,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-symbols.stdout",
+      "sha256": "0be7989d8d408fc92f9c778e0ff9853325e4731f702ff4cbbbffdd5fed339f30"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-disassembly.stdout": {
+      "bytes": 420605,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-disassembly.stdout",
+      "sha256": "c56b9e961a473e9d196c659b1851ffd3c8d91baba76f4fbc586850f903c2a8c3"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-symbols.stdout": {
+      "bytes": 53131,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-symbols.stdout",
+      "sha256": "3c4ac6df9682d2b1cf78862b80222cefcb0abec0d241af9960ac68cd834c2417"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-disassembly.stdout": {
+      "bytes": 181889,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-disassembly.stdout",
+      "sha256": "7c3ad980048659206089608608efa458f825aa17911d7737f606f3c9eba4e927"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-symbols.stdout": {
+      "bytes": 25023,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-symbols.stdout",
+      "sha256": "331f22802cd15e56746c91476ff89651bf1f8d79913d03bb46b4ece4b2070918"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-disassembly.stdout": {
+      "bytes": 26255090,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-disassembly.stdout",
+      "sha256": "8371140b87d30015cf0b277045ec1b8a5813c26ce5709d55e163917b3e4c3362"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-symbols.stdout": {
+      "bytes": 1201222,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-symbols.stdout",
+      "sha256": "b391ad57a0f68b4bec189bd154ba4952695fe39bb4eb18d6e62042cc1a0a2b90"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-disassembly.stdout": {
+      "bytes": 9188,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-disassembly.stdout",
+      "sha256": "89f0249e070e57c36da79bba4ba4e2f8dc79660fb86e2385196791b52e81949f"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-symbols.stdout": {
+      "bytes": 4956,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-symbols.stdout",
+      "sha256": "53d0b6492a9eeb6e06805e540746eaa6a7d7e0993e26d56831f4daa3ff2e6ba4"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-disassembly.stdout": {
+      "bytes": 21973,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-disassembly.stdout",
+      "sha256": "796eab16c92b4326e9a85f0a874856f38c76fa302dded343ec9eb93789836905"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-symbols.stdout": {
+      "bytes": 7312,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-symbols.stdout",
+      "sha256": "973a5273f10deb02e35524570d158ce73c79bde32358fb6b353db0616f82001a"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/actual-host.sil": {
+      "bytes": 62139693,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/actual-host.sil",
+      "sha256": "6cc9e7b6cecbeb46dd71b2ac8b6e023182354e7fcc08c814374b9c23303c71ed"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/boundary-physical-index.json": {
+      "bytes": 4690424,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/boundary-physical-index.json",
+      "sha256": "9b67676aa047e5d4b8f654854f518acacde3c526f3c9229fdba4b4f2f7174298"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/required-bodies.json": {
+      "bytes": 151353,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/required-bodies.json",
+      "sha256": "907d583bc6b6a43457ec57d30d778dbed41e51682f96b41b2f1ef81ee6892070"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/terminal.json": {
+      "bytes": 680851,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/terminal.json",
+      "sha256": "41c38e4ececed6f5cbd91d6eb2387642e316752ff61d7928a7b1633302a8cf2a"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/README.md": {
+      "bytes": 20623,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/README.md",
+      "sha256": "e4dbd6e6e7facb2ba4832940c0c229ca2655f4b6c70d89ea057b756fcfd58b63"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review-inspection.json": {
+      "bytes": 14334,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review-inspection.json",
+      "sha256": "b7e7575bcdb375e1068b1e4f648ecb154449c91da45c377dbd0bd2fa29ffa0cd"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review.md": {
+      "bytes": 9824,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review.md",
+      "sha256": "c4374687e404be2e3c3de8e73f4ad199a7bed4219972f64d03aa2a97a2b6c2ee"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/inspect.py": {
+      "bytes": 15037,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/inspect.py",
+      "sha256": "3c57b50bfc4cc5147d4b1e1ed767e06b0a26d343315ef4c6e39d6b290a696d18"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/inspection-summary.json": {
+      "bytes": 1974,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/inspection-summary.json",
+      "sha256": "409fc3fa3ddf82a9a53d8ff00a1c76bdf48e4eacf961e7a9a28eb7eb4a540a58"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/object-inventory.json.gz": {
+      "bytes": 1033539,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/object-inventory.json.gz",
+      "sha256": "87df0a548b79008aa0935788900ccebad58d1676c6bc4118bc7939e6af1b7c0b"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/privacy-control-join.json": {
+      "bytes": 68231,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/privacy-control-join.json",
+      "sha256": "c56528a7688fce44b7e89a637fb344c2d24d5533df73e196848a237f30138072"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/required-body-join.json": {
+      "bytes": 70460,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/required-body-join.json",
+      "sha256": "c5b1b4d1057fe3aed16d5f72ff835be6b948fcaf282869069b490369251e3caa"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/sil-inventory.json.gz": {
+      "bytes": 345990,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/sil-inventory.json.gz",
+      "sha256": "e433fbd2a2eb08e248b65f1c605bb6be94e3f6086c08904170efc754a31f7b8a"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter384-successor1-preparation/retained-trees.json": {
+      "bytes": 12921943,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter384-successor1-preparation/retained-trees.json",
+      "sha256": "c2fbc28c6a9a193bb23f19dd020023d285f6e5be7d5afee61ae1f97330e7d1a3"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/collection-recipe.json": {
+      "bytes": 230060,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/collection-recipe.json",
+      "sha256": "594af7a9480c4bcefb6629e685b91a3da49ed579c0a7c7a3480fcc36c2c60bfe"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/input-freeze.json": {
+      "bytes": 65107,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/input-freeze.json",
+      "sha256": "f889a7acc4645760bd46b06f3a6c94f1489fde054e8fa5ce58f9d1593435d056"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/preserved-dirty-files.json": {
+      "bytes": 942,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/preserved-dirty-files.json",
+      "sha256": "00e65144643e2ddc66cf923b902192eb8afc9e4a6ecd0afe4082af7fc4634489"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/source42.json": {
+      "bytes": 8366,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/source42.json",
+      "sha256": "27248b41a5f120471f6b6092ff27c1b01e076a92d9e2c61561bada91d59b0df9"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/README.md": {
+      "bytes": 17382,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/README.md",
+      "sha256": "a2d66b770ecadaec9b487b7e1e7b9f84629807586631261a3dd81089498b7f65"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review-inspection.json": {
+      "bytes": 19924,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review-inspection.json",
+      "sha256": "d827454612ae7f6ede4d40d6bebfbd7f280fecb7e0126ef40a1284106928a874"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review.md": {
+      "bytes": 6776,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review.md",
+      "sha256": "0d6c514607ad62c4484482b0a1c5ed0fe4e65c3455d5efe7fcbf64b6705818d0"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/inspect.py": {
+      "bytes": 8240,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/inspect.py",
+      "sha256": "3d66799affbcc9b45d4885fc36d9ba687b1a3b38977dd04d150ad826da3a83ff"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/inspection.json": {
+      "bytes": 24426,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/inspection.json",
+      "sha256": "6d9fc972cfbe4825d1bffe508657b1ee8dbb6bf75e698e6f234fc16092383a44"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/retained-excerpts.txt": {
+      "bytes": 46504,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/retained-excerpts.txt",
+      "sha256": "6ffc059c6584521e885b6d2252f49a398513a5b90d7ce83bdf2dbed7421d7ff0"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/controller-inputs.json": {
+      "bytes": 76032,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/controller-inputs.json",
+      "sha256": "fa3316fc1df57c5e33f4cf1d41a4bb5ad056652829297063431abfe296c99122"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/loader-aliases.json": {
+      "bytes": 29574,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/loader-aliases.json",
+      "sha256": "0b89de91542996f265691146ca4cfd0add9b7a740b4680e83858e56b238aa05d"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/loader-policy.json": {
+      "bytes": 1892,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/loader-policy.json",
+      "sha256": "3338d16f794b10b878013cb200ef51adc4723f6a34bcf3bd5384b3972a7be8f3"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/loader-roots.json": {
+      "bytes": 1650794,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/loader-roots.json",
+      "sha256": "a4d838770cfbe08c24cabaa386e5654d9bc05b2e711af9011e618c72bb9c2229"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/request.json": {
+      "bytes": 12329,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/request.json",
+      "sha256": "f573f07ff8a1352e6f2d0a3d9866d4f01b8447edb8000e4ae1dea339f3714ea2"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/README.md": {
+      "bytes": 14243,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/README.md",
+      "sha256": "45166412a61e675f1319fe2187d31342c94fe8518b4d92a6cc9b775b213c9b75"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/independent-review.md": {
+      "bytes": 6744,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/independent-review.md",
+      "sha256": "fa92927b0acad2527e91a5a7cdd116830b9d32961c913d58f53390b963daac59"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/inspection.json": {
+      "bytes": 39120,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/inspection.json",
+      "sha256": "d184e9b4f6cdd96f246d9e23560a291be2b40aca607badc3d82115613eacca22"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/retained-excerpts.txt": {
+      "bytes": 19995,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/retained-excerpts.txt",
+      "sha256": "f2d0c74cce6f783e0e0bd80a0a079ecf63f99f0fe5f9f7026beb4ae5d2569a7d"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": {
+      "bytes": 15700,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+      "sha256": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": {
+      "bytes": 5901,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+      "sha256": "60d013e2570e5ea3ac6efbbadb97dd79d6b7fa0a47e680e72a7071909fddb686"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+      "bytes": 6503,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "sha256": "1129e33dcab9bb075d3c11dac16cedd72c26efad6da87adc204b68de25408ee7"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": {
+      "bytes": 24992,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+      "sha256": "342585dd23bc2916176535bfdb9efd7ba115a138047afe3fcda082acbf7adf8e"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift": {
+      "bytes": 10682,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+      "sha256": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift": {
+      "bytes": 1642,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+      "sha256": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift": {
+      "bytes": 14240,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift",
+      "sha256": "b1f575db79c688b2534ebe3681fea99864222715f8b9ef83dd3fcde16e261c9f"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift": {
+      "bytes": 1096,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift",
+      "sha256": "cf9f5467416298dd64f604f5d0edf436b1736dc5972d78721da38c61151cb588"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift": {
+      "bytes": 17027,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+      "sha256": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": {
+      "bytes": 8749,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+      "sha256": "be59651c2f7f657f1785f51fa31767f6319dc543c023d901057fa0deb4bace81"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": {
+      "bytes": 27426,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+      "sha256": "d084112a1ee54cc8c01fc5f24a7416ee3a6b23afdc6710f42635a76c370fea26"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": {
+      "bytes": 17169,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+      "sha256": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift": {
+      "bytes": 2755,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift",
+      "sha256": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift": {
+      "bytes": 3358,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift",
+      "sha256": "d6cdcf1f033a26225d856eb4dd4c5401b76b63d7f78040e111417cdb82bfa41c"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+      "bytes": 25371,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+      "sha256": "46ab40914dade59536f53650bd97ce8d74ee57da86a8a826330f629c64a89f9c"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "bytes": 73656,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "sha256": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift": {
+      "bytes": 4411,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift",
+      "sha256": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+      "bytes": 41983,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "sha256": "f7152c3e886322e482aaa040b98f15ac820d0aa9a15af86260229bc56df64010"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift": {
+      "bytes": 9577,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift",
+      "sha256": "b14a1667a899fc539c8a8d8011d2e377188ce0300012e464ac1f0d1203a999ab"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": {
+      "bytes": 1691,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "sha256": "bfcf074ec49455e7d5cc527b4a65cf9b9374da2c96914f8b8bdf8908ca90ec6b"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+      "bytes": 254803,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "sha256": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift": {
+      "bytes": 565,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift",
+      "sha256": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift": {
+      "bytes": 2115,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "sha256": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift": {
+      "bytes": 12910,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "sha256": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift": {
+      "bytes": 4999,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift",
+      "sha256": "c49cc7ad1d5de5bcc3a228defd78ce16a1d6e56c775d9227f5648339540eaa2c"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift": {
+      "bytes": 12814,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift",
+      "sha256": "abae5f87b3390863d8a68657c98b46a0fe9829f96a332affe44fbbb4fcce4d5a"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift": {
+      "bytes": 7999,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift",
+      "sha256": "6d713ae96bf4982c46f30289068dc97e5d4e32e3dae69f1874dd5e808d053d2b"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": {
+      "bytes": 25233,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift",
+      "sha256": "06b5775b618a78b757495de8c86a2352b8e8371e0c854f3d93463f685585f05e"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift": {
+      "bytes": 22685,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+      "sha256": "bfe4a208dd72fe47cb2a72331228cf9c9981114e03d49a91b99541957e7f80b5"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift": {
+      "bytes": 5050,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+      "sha256": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift": {
+      "bytes": 10654,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift",
+      "sha256": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift": {
+      "bytes": 12042,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift",
+      "sha256": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift": {
+      "bytes": 10872,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift",
+      "sha256": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": {
+      "bytes": 8215,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift",
+      "sha256": "36d137a0fdf0d6159dfc8502b86bd5bc78037fa1cfa5a86038513c9523b31677"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift": {
+      "bytes": 4288,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+      "sha256": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": {
+      "bytes": 19446,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift",
+      "sha256": "0e13001714af86c5f93cc150678c07c0b3a32c58b3a524fd43edb23eae19990b"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift": {
+      "bytes": 7294,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift",
+      "sha256": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift": {
+      "bytes": 8687,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift",
+      "sha256": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift": {
+      "bytes": 10957,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift",
+      "sha256": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift": {
+      "bytes": 5420,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift",
+      "sha256": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift": {
+      "bytes": 3860,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift",
+      "sha256": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift": {
+      "bytes": 11497,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift",
+      "sha256": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893"
+    },
+    "/Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": {
+      "bytes": 26018,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+      "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243"
+    },
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": {
+      "bytes": 44198,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
+      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+    },
+    "/Users/eugene/work/GiftUI/scripts/contracts/check-spec-015-counter.py": {
+      "bytes": 43222,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/scripts/contracts/check-spec-015-counter.py",
+      "sha256": "8150d2cbd864222dfba32bd91543d7f7d3ac3be81639b0a86fa00aacc6dcf970"
+    },
+    "/Users/eugene/work/GiftUI/scripts/contracts/p08_check_collection.py": {
+      "bytes": 20331,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/scripts/contracts/p08_check_collection.py",
+      "sha256": "d8d9fa4e92d7a0ad04173b401fbb332750337dd2d2e34bd72f3a7bbf396e1b41"
+    },
+    "/Users/eugene/work/GiftUI/scripts/nrf52840/build.sh": {
+      "bytes": 10914,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/scripts/nrf52840/build.sh",
+      "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72"
+    },
+    "/Users/eugene/work/GiftUI/scripts/raspberry-pi/build.sh": {
+      "bytes": 6433,
+      "is_symlink": false,
+      "resolved": "/Users/eugene/work/GiftUI/scripts/raspberry-pi/build.sh",
+      "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+    },
+    "/usr/lib/system/libsystem_kernel.dylib": {
+      "bytes": 1346496,
+      "is_symlink": false,
+      "resolved": "/usr/lib/system/libsystem_kernel.dylib",
+      "sha256": "fb1753efbfd41622f00757d89b57172984a7e4f6957b94a222ae8fd735e970f5"
+    },
+    "/usr/lib/system/libsystem_platform.dylib": {
+      "bytes": 514032,
+      "is_symlink": false,
+      "resolved": "/usr/lib/system/libsystem_platform.dylib",
+      "sha256": "0e4588f3c7e7f855acbfc0e540b9517b318545e8d60ccf5c31ddd04966fc791c"
+    }
+  },
+  "loader_manifests": {
+    "loader-aliases": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/loader-aliases.json",
+    "loader-policy": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/loader-policy.json",
+    "loader-roots": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/loader-roots.json"
+  },
+  "scope": "Frozen prior evidence, exact retained linked/object/runtime/tool/source inputs, preservation files/cache, complete loader trees and aliases. No producer code imported or executed."
+}

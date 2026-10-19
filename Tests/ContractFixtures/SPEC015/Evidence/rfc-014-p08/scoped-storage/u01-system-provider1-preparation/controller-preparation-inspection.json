@@ -1,0 +1,33 @@
+{
+  "AST_sources": [
+    "controller.py",
+    "identity-verifier.py",
+    "reviewed-launch.py",
+    "prepare-controller.py"
+  ],
+  "cache_members_verified": 15,
+  "direct_files_verified": 203,
+  "five_dirty_cache_preserved": true,
+  "gate": "I-only; S unconditionally closed; no cache UUID field parser",
+  "loader_aliases_verified": 72,
+  "loader_entries_verified": 8720,
+  "loader_entry_counts": {
+    "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9": 2004,
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib": 6682,
+    "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib": 34
+  },
+  "method": "Separate standard-library-only file/hash/AST/navigation inspection; no bootstrap/controller/verifier import or execution, no behavioral test",
+  "output_absent": true,
+  "permanent_historical_markers": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+      16777234,
+      29640436
+    ],
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+      16777234,
+      29650609
+    ]
+  },
+  "readiness": "Independent Strong review required; no self-approval",
+  "tools_launched": 0
+}

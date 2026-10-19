@@ -1,5 +1,13 @@
 # P08 U01 system-provider evidence request — preparation only
 
+
+Current concrete boundary: [I-only controller preparation](CONTROLLER.md), after
+[independent preparation review](independent-review.md), is unexecuted and awaits
+independent Strong readiness review. [Cache identity design](IDENTITY-DESIGN.md)
+freezes schema evidence unavailable and S permanently closed in this controller.
+Only one I child is proposed; both S commands remain skipped. The original
+three-command request below is retained as the historical request ceiling.
+
 Baseline: independent linked/provider review `8e3c74694f75a233221b32fe179ddfde9cf00fcb`.
 This is a new, bounded U01 R01–R04 static evidence request. No acquisition,
 extraction, decoder, controller, runtime, compiler, build or test ran. The old B
@@ -95,8 +103,8 @@ Proposed budget: one fresh attempt, at most three decoder commands, 60 seconds
 each, 240 seconds aggregate including bootstrap/authentication/provider gate,
 320 MiB total retained output including receipts. Acquisition/extraction/network,
 runtime/compiler/build/test, automatic repair and retry budgets are all zero.
-A separate concrete one-shot bootstrap/controller would need preparation and
-readiness review; none is supplied or executed here. New output root
+The concrete I-only controller is now prepared separately above; independent
+readiness review is pending and no controller ran. New output root
 `.build/contracts/p08-u01-system-provider-static1` is absent. No historical
 attempt marker or allowance can be reused.
 
@@ -136,9 +144,8 @@ acquisition, runtime observation, warmup, or a contract/scope exception goes bac
 to the parent for a separate decision. No actual contract/scope decision is made
 by this preparation.
 
-Next: independent Strong preparation review of identity/applicability, exact tool
-feasibility, budget, loader trust and fail-closed gate; then separately concrete
-controller/readiness and execution authorization. This packet does not approve
+Next: independent Strong readiness review of the concrete I-only controller,
+identity/applicability, exact tool feasibility, budget, loader trust and closed gate. This packet does not approve
 itself. R01–R04, U02–U05, P08/R07/T8.1 remain open and
 `strict_cold_eligible=false`. ADR-039/040 and SPEC-015 S15.1/S15.2 remain unchanged;
 this serves active ITERATION-003 counter dependency, with no closed ITERATION-001
