@@ -1,12 +1,15 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current P08 boundary — **U01 system-provider request prepared; independent review pending; full callee/safety STOP**.
+Current P08 boundary — **U01 system-provider preparation independently PASS within bounds; full callee/safety STOP**.
 The [new identity-first request](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider1-preparation/README.md)
 pins an existing supplemental crash report and current 15-member system cache
 family. Historical supplemental Swift/C UUIDs, cache bytes and OS build correspond;
 ordinary-counter loaded identity remains missing. Three proposed static Apple
-`dyld_info` commands require independent preparation review, then separate concrete
-controller/readiness and authorization. No decoder/controller/acquisition/runtime/
+`dyld_info` commands have [independent preparation PASS](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider1-preparation/independent-review.md).
+Next is a separate concrete controller/identity-verifier readiness packet; cache
+UUID field semantics and exact I→S joins must be reviewed or S stays closed.
+No launch clearance follows; existing P08 authorization can cover the exact
+static continuation after readiness PASS. No decoder/controller/acquisition/runtime/
 compiler/build/test ran; old B remains inapplicable/unexecuted. The
 [independently reviewed linked/provider result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/independent-review.md)
 retains its bounded PASS. R01–R04, numeric Error size, selected system implementation/

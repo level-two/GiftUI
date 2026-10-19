@@ -1,0 +1,116 @@
+{
+  "aggregate_seconds": 240,
+  "cache_field_semantics_qualified": false,
+  "cache_file_sha256": {
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+  },
+  "cache_members_verified": {
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e": {
+      "bytes": 573440,
+      "sha256": "7a024959c8c14d46e2964f975f2256b3f9efc2da950a31067d26ac7ac16498d4"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01": {
+      "bytes": 1715355648,
+      "sha256": "2130d36b0a4a034cec46d44b9205e08d5bceca280509f90defe3d0ac3891496e"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata": {
+      "bytes": 234569728,
+      "sha256": "dc6bf44cce543831717e158914166bffc8a98f7015e38c5b2ea50bb2566dc541"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.03.dyldreadonly": {
+      "bytes": 127057920,
+      "sha256": "9e5d46f5e4b5f3f719264c766910d523559dbee992322b21f684a89ba1884943"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit": {
+      "bytes": 601341952,
+      "sha256": "0a403732b86c08b39daf6669532c3f5bb10bb12ef288b597e366a06f1b981b0b"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.05": {
+      "bytes": 1819885568,
+      "sha256": "bfcb33596a2bde568376c39ba179f3666becddbda2153cc7e48e0ffd21237aa4"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.06.dylddata": {
+      "bytes": 237125632,
+      "sha256": "996039f29c5f41941922ca54e7cfc249b707bcc1cfa4d9654945417027864e17"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.07.dyldreadonly": {
+      "bytes": 7290880,
+      "sha256": "a9c6dd008245e2d4e024dd54875f95a33c4b488680f7e3b3e825cfa79dac7550"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.08.dyldlinkedit": {
+      "bytes": 617381888,
+      "sha256": "d9d696f6624da68fb4df4dca0f3ea1a5b4c76a7de1a2e6d107d1e36cee9e75dc"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.09": {
+      "bytes": 182812672,
+      "sha256": "99344558cc98e4155262495ba2f2132aaf1331a02a8e7d6a129c7cf0a31e72c5"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.10.dylddata": {
+      "bytes": 23199744,
+      "sha256": "fb7f328058ad6f118592c1b7d81d67d431d8e73e4ed8ed3239de20eb65bd0e98"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.11": {
+      "bytes": 32768,
+      "sha256": "be38a6ebbd6b0a5cf4692e23e683f53dcbb478725aac5b1e0b8cfe02ac9edc5e"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.12.dyldlinkedit": {
+      "bytes": 254345216,
+      "sha256": "f61b8530e5697eaa744b3f36ea1c1a26a2da1a469f1f5f0395162c2e172b8625"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.atlas": {
+      "bytes": 2372801,
+      "sha256": "ad196c5e2c1c0a3be152007906f1892861edaca96cbf4a8aa3bc581e07d684e2"
+    },
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.map": {
+      "bytes": 1338214,
+      "sha256": "9486c0f76e880803a785925771d601d064fee8a7bec4279bd54c059db92adddd"
+    }
+  },
+  "cache_total_bytes": 5824684071,
+  "cache_uuid_literal_offset": 88,
+  "command_raw_caps_sum_bytes": 285212672,
+  "commands_proposed": 3,
+  "complete_loader_entries_verified": 8720,
+  "consumed_marker_identities": {
+    "p08-current-callee-collection1": [
+      16777234,
+      29640436
+    ],
+    "p08-u01-residual-static1": [
+      16777234,
+      29650609
+    ]
+  },
+  "historical_report_sha256": "f15190c81d022debc91037c07a4064a9d9d3f78e4130afffad65ce0cba420203",
+  "launch_clearance": false,
+  "loader_aliases_verified": 72,
+  "matching_OS_build": "25G83",
+  "method": "Independent standard-library file/JSON/plist/text/hash/literal UUID reads, syntax parsing and read-only Git; author inventory read, not executed/imported; no decoder/controller/runtime/acquisition.",
+  "old_B_reused": false,
+  "ordinary_counter_loaded_identity_complete": false,
+  "output_absent": true,
+  "packet_sha256": {
+    "README.md": "58b0e19fbd8bb74a196c86996f5ee019ff367e4958b7f711a89f16dfe775d423",
+    "inventory.json": "d23ce68798ff54c3796913097aa5303a3ef5649b5ad4b01ffb96996ad785e3d8",
+    "inventory.py": "057013c3baf27f9a0271d95bea69a5e38a9592fc3f6b77c350829b2ff98c2471",
+    "request.json": "9bdab0ec64452dec484a8f2698c6838d2f662bb475f745da3cac4efe4c9ab70a"
+  },
+  "per_command_seconds": 60,
+  "preserved_dirty_file_sha256": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+    "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+    "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+  },
+  "prior_direct_inputs_verified": 180,
+  "report_is_ordinary_counter": false,
+  "report_map_common_slide_candidate": "0x2810000",
+  "report_process": "so06-native-exclusivity-negative",
+  "reviewed_commit": "37eb2bbdeaff2f0547891191123a6d56672bc5f0",
+  "source42_hashes_match": true,
+  "strict_cold_eligible": false,
+  "supplemental_executable_UUID_literal_offset": 2808,
+  "total_retained_with_receipts_cap_bytes": 335544320,
+  "verdict": "PASS_bounded_system_provider_preparation_controller_gate_readiness_required"
+}
