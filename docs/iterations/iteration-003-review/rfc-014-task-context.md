@@ -1,22 +1,16 @@
 # RFC-014 task context guide
 
-Current P08 boundary — **U01 attribution independently PASS within bounds; complete callee/safety proof STOP**.
-The [U01 attribution review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review.md)
-confirms selected callbacks/helpers/no-throw transfer attribution. The
-[R01–R04 identity-first evidence request](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/README.md)
-inventories the exact linked counter and frozen Swift runtime bytes, with
-unproved loader/provider, cold metadata, numeric Error size and library costs.
-The [concrete A-only controller](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/CONTROLLER.md)
-now prepares external final pins, authenticated complete fallback environments,
-fresh consumption and hard caps; it proposes at most three A captures, then STOP
-with all B commands skipped. The [independent Strong readiness review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/controller-independent-review.md)
-passes B1 correction and concrete controller/environment readiness. One exact
-A-only bootstrap is cleared under existing P08 authorization using final external
-review pins; no controller/decoder ran during review. Zero repair/retry, no B,
-acquisition/runtime/compiler/strict-cold launch or historical budget reset follows. U02–U05 retain their open
-interpretation dispositions. `strict_cold_eligible` remains false;
-collection1/1 is consumed, repairs0/retries0. P08/R07/T8.1, remaining gates,
-collection marker and historical budgets remain unchanged.
+Current P08 boundary — **A-only capture/archive independently PASS; complete callee/safety proof STOP**.
+The [independent A-only result review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/independent-review.md)
+verifies all 28 archived/live files, exact external pins and three actual exit-zero
+A captures totaling 33,770,366 complete raw bytes. The provider gate remains
+unestablished and all B commands are skipped; `strict_cold_eligible` stays false.
+Next is one U01-only retained-byte provider/linked interpretation using the
+review's exact handoff. No new decoder/controller/runtime/compiler/acquisition,
+repair/retry or B allowance follows. The A-only attempt1/1 is consumed with
+repairs0/retries0, marker [16777234,29650609]. Historical collection1/1 and marker
+[16777234,29640436] remain unchanged. R01–R04, U02–U05, P08/R07/T8.1 and all
+remaining gates stay open.
 
 Historical pre-collection checkpoint — **retained counter426 PASS; controller readiness PASS; collection unused 0/1**.
 The [retained macOS Static result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)
