@@ -1,0 +1,43 @@
+{
+  "compiler_launches": 0,
+  "consumed_ns": 1792411415570963000,
+  "counter_launches": 0,
+  "marker_identity": [
+    16777234,
+    29637821
+  ],
+  "provenance": {
+    "packet": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-preparation",
+    "recipe": {
+      "archive_commit": "160154132e887e5d2076509c065540ce60719f95",
+      "compiler_launches": 0,
+      "counter_launches": 0,
+      "driver_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2",
+      "output_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-retained-evidence-counter426-requalification1",
+      "prior_preparation": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter384-successor1-preparation",
+      "prior_preparation_commit": "065efeb6e52d57e3cf7e0c67f333c27ff7ac500f",
+      "prior_result": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter384-successor1-result",
+      "python_executable": "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "qualification_attempts": 1,
+      "repairs": 0,
+      "retries": 0,
+      "review_commit": "e64a9e708cddbfa9f2f3ca0225ecc9746edf30ec",
+      "runtime_root": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+      "schema": 1,
+      "schema4_launches": 0,
+      "schema4_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+      "wrapper_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-retained-evidence-counter384-successor1"
+    },
+    "working_tree": " M Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift\n M Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift\n M firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt\n M scripts/nrf52840/build.sh\n M scripts/raspberry-pi/build.sh\n?? .obsidian/\n?? scripts/contracts/__pycache__/\n"
+  },
+  "qualification_attempts": 1,
+  "repairs": 0,
+  "retries": 0,
+  "reviewed_pins": [
+    "8021c0965d06e34f1692afc61214c5f52b83c5f2",
+    "e6f0b59cead521bda88f63e6c33b823c7333ce20",
+    "ead3b1e8fdbc30487bf906b09330040d34c7cb10"
+  ],
+  "schema4_launches": 0,
+  "status": "CONSUMED_not_terminal"
+}
