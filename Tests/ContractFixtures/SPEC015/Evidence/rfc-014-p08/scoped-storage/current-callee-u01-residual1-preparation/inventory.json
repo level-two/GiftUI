@@ -1,0 +1,787 @@
+{
+  "baseline": "c91d82f977bd57b3b9600ea9e7cfd164c502abdd",
+  "cache_members_stat_only": [
+    {
+      "bytes": 573440,
+      "hashed_or_decoded": false,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e"
+    },
+    {
+      "bytes": 1715355648,
+      "hashed_or_decoded": false,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01"
+    },
+    {
+      "bytes": 234569728,
+      "hashed_or_decoded": false,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata"
+    },
+    {
+      "bytes": 127057920,
+      "hashed_or_decoded": false,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.03.dyldreadonly"
+    },
+    {
+      "bytes": 601341952,
+      "hashed_or_decoded": false,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit"
+    },
+    {
+      "bytes": 1819885568,
+      "hashed_or_decoded": false,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.05"
+    },
+    {
+      "bytes": 237125632,
+      "hashed_or_decoded": false,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.06.dylddata"
+    },
+    {
+      "bytes": 7290880,
+      "hashed_or_decoded": false,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.07.dyldreadonly"
+    },
+    {
+      "bytes": 617381888,
+      "hashed_or_decoded": false,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.08.dyldlinkedit"
+    },
+    {
+      "bytes": 182812672,
+      "hashed_or_decoded": false,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.09"
+    },
+    {
+      "bytes": 23199744,
+      "hashed_or_decoded": false,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.10.dylddata"
+    },
+    {
+      "bytes": 32768,
+      "hashed_or_decoded": false,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.11"
+    },
+    {
+      "bytes": 254345216,
+      "hashed_or_decoded": false,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.12.dyldlinkedit"
+    },
+    {
+      "bytes": 2372801,
+      "hashed_or_decoded": false,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.atlas"
+    }
+  ],
+  "collector_environment_join": "p08_check_collection.py:272 invokes subprocess.run without env; inherits sanitized launch environment. No historical loaded-image or OS-build capture identified in these receipts.",
+  "current_cache_map": {
+    "bytes": 1338214,
+    "exists": true,
+    "matches_historical_process_cache": false,
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.map",
+    "selected_entries": [
+      {
+        "entry": "/usr/lib/swift/libswiftCore.dylib\n\t          __TEXT 0x193C4F000 -> 0x1941F1800\n\t    __DATA_CONST 0x1E6E80C60 -> 0x1E6E83F50\n\t    __AUTH_CONST 0x1EFD460A8 -> 0x1EFD61790\n\t          __AUTH 0x1EDCEDAB0 -> 0x1EDCFC480\n\t          __DATA 0x1EA7E0000 -> 0x1EA7FECF0\n\t    __DATA_DIRTY 0x1ED050710 -> 0x1ED06BA50\n\t      __LINKEDIT 0x1FF96C000 -> 0x2235C4000\n",
+        "install_name": "/usr/lib/swift/libswiftCore.dylib"
+      },
+      {
+        "entry": "/usr/lib/system/libsystem_c.dylib\n\t          __TEXT 0x18038D000 -> 0x18040E1E8\n\t    __DATA_CONST 0x1E61CC590 -> 0x1E61CDE00\n\t    __AUTH_CONST 0x1EE5C4CC8 -> 0x1EE5C5658\n\t          __AUTH 0x1EDC04070 -> 0x1EDC04120\n\t          __DATA 0x1EA472C40 -> 0x1EA474D40\n\t    __DATA_DIRTY 0x1ECF45788 -> 0x1ECF48524\n\t      __LINKEDIT 0x1FF96C000 -> 0x2235C4000\n",
+        "install_name": "/usr/lib/system/libsystem_c.dylib"
+      },
+      {
+        "entry": "/usr/lib/system/libsystem_platform.dylib\n\t          __TEXT 0x180506000 -> 0x18050E964\n\t    __DATA_CONST 0x1E61D1BA0 -> 0x1E61D1BC0\n\t    __AUTH_CONST 0x1EE5CDD78 -> 0x1EE5CDFA0\n\t          __DATA 0x1EA48C000 -> 0x1EA494148\n\t    __DATA_DIRTY 0x1ECF5C018 -> 0x1ECF5C068\n\t      __LINKEDIT 0x1FF96C000 -> 0x2235C4000\n",
+        "install_name": "/usr/lib/system/libsystem_platform.dylib"
+      }
+    ],
+    "sha256": "9486c0f76e880803a785925771d601d064fee8a7bec4279bd54c059db92adddd"
+  },
+  "current_installation_metadata": [
+    {
+      "bytes": 1015,
+      "exists": true,
+      "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/Info.plist",
+      "selected_fields": {
+        "CFBundleIdentifier": "org.swift.640202609131a",
+        "CompatibilityVersion": 2,
+        "DisplayName": "Swift 6.4 Release 2026-09-13 (a)",
+        "OverrideBuildSettings": {
+          "OTHER_SWIFT_FLAGS": "$(inherited) -plugin-path $(TOOLCHAIN_DIR)/usr/lib/swift/host/plugins",
+          "SWIFT_DEVELOPMENT_TOOLCHAIN": "YES",
+          "SWIFT_USE_DEVELOPMENT_TOOLCHAIN_RUNTIME": "YES"
+        },
+        "ShortDisplayName": "Swift 6.4 Release",
+        "Version": "6.4.20260913101"
+      },
+      "sha256": "82fff11623e6bc7d72eb707cd422936f133218c026a862110f6379f1c714fc3a"
+    },
+    {
+      "bytes": 603,
+      "exists": true,
+      "path": "/System/Library/CoreServices/SystemVersion.plist",
+      "selected_fields": {
+        "BuildID": "900EF00A-96B9-11F1-9901-B394A77C0399",
+        "ProductBuildVersion": "25G83",
+        "ProductUserVisibleVersion": "26.6.2",
+        "ProductVersion": "26.6.2",
+        "iOSSupportVersion": "26.6"
+      },
+      "sha256": "6151cb883e5b48d43a33d4d41956405a1cd502e0c8622319388d943e2cb804a1"
+    },
+    {
+      "bytes": 33286,
+      "exists": true,
+      "path": "/Applications/Xcode.app/Contents/Info.plist",
+      "selected_fields": {
+        "BuildMachineOSBuild": "23A344014",
+        "CFBundleDisplayName": "Xcode",
+        "CFBundleIdentifier": "com.apple.dt.Xcode",
+        "CFBundleInfoDictionaryVersion": "6.0",
+        "CFBundleShortVersionString": "26.6",
+        "CFBundleVersion": "24959",
+        "DTPlatformBuild": "25E210a",
+        "DTPlatformVersion": "26.4",
+        "DTSDKBuild": "25E210a",
+        "DTXcodeBuild": "17F112",
+        "LSMinimumSystemVersion": "26.2"
+      },
+      "sha256": "224c27a718df1d8b4e785d29d06259e0a9326c424e70d30efab9c587463f719a"
+    },
+    {
+      "bytes": 7774,
+      "exists": true,
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/SDKSettings.json",
+      "selected_fields": {
+        "CanonicalName": "macosx26.5",
+        "DisplayName": "macOS 26.5",
+        "MinimalDisplayName": "26.5",
+        "Version": "26.5",
+        "VersionMap": {
+          "iOSMac_macOS": {
+            "13.1": "10.15",
+            "13.2": "10.15.1",
+            "13.3": "10.15.2",
+            "13.3.1": "10.15.3",
+            "13.4": "10.15.4",
+            "13.5": "10.15.5",
+            "14.0": "11.0",
+            "14.1": "11.0",
+            "14.2": "11.0",
+            "14.3": "11.1",
+            "14.4": "11.2",
+            "14.5": "11.3",
+            "14.6": "11.4",
+            "14.7": "11.5",
+            "15.0": "12.0",
+            "15.2": "12.1",
+            "15.3": "12.2",
+            "15.4": "12.3",
+            "15.5": "12.4",
+            "15.6": "12.5",
+            "16.0": "13.0",
+            "16.1": "13.0",
+            "16.2": "13.1",
+            "16.3": "13.2",
+            "16.4": "13.3",
+            "16.5": "13.4",
+            "16.6": "13.5",
+            "17.0": "14.0",
+            "17.1": "14.1",
+            "17.2": "14.2",
+            "17.3": "14.3",
+            "17.4": "14.4",
+            "17.5": "14.5",
+            "17.6": "14.6",
+            "18.0": "15.0",
+            "18.1": "15.1",
+            "18.2": "15.2",
+            "18.3": "15.3",
+            "18.4": "15.4",
+            "18.5": "15.5",
+            "18.6": "15.6",
+            "26.0": "26.0",
+            "26.1": "26.1",
+            "26.2": "26.2",
+            "26.3": "26.3",
+            "26.4": "26.4",
+            "26.5": "26.5"
+          },
+          "macOS_iOSMac": {
+            "10.15": "13.1",
+            "10.15.1": "13.2",
+            "10.15.2": "13.3",
+            "10.15.3": "13.3.1",
+            "10.15.4": "13.4",
+            "10.15.5": "13.5",
+            "11.0": "14.2",
+            "11.0.1": "14.2",
+            "11.1": "14.3",
+            "11.2": "14.4",
+            "11.3": "14.5",
+            "11.4": "14.6",
+            "11.5": "14.7",
+            "12.0": "15.0",
+            "12.0.1": "15.0",
+            "12.1": "15.2",
+            "12.2": "15.3",
+            "12.3": "15.4",
+            "12.4": "15.5",
+            "12.5": "15.6",
+            "13.0": "16.1",
+            "13.1": "16.2",
+            "13.2": "16.3",
+            "13.3": "16.4",
+            "13.4": "16.5",
+            "13.5": "16.6",
+            "14.0": "17.0",
+            "14.1": "17.1",
+            "14.2": "17.2",
+            "14.3": "17.3",
+            "14.4": "17.4",
+            "14.5": "17.5",
+            "14.6": "17.6",
+            "15.0": "18.0",
+            "15.1": "18.1",
+            "15.2": "18.2",
+            "15.3": "18.3",
+            "15.4": "18.4",
+            "15.5": "18.5",
+            "15.6": "18.6",
+            "26.0": "26.0",
+            "26.1": "26.1",
+            "26.2": "26.2",
+            "26.3": "26.3",
+            "26.4": "26.4",
+            "26.5": "26.5"
+          }
+        }
+      },
+      "sha256": "f8d005f09381389167f9e0aeaa169bc9e7dff162ef22ca2fd8e98df7ff1acafe"
+    }
+  ],
+  "decoder_dependencies_equal_frozen_tree": 34,
+  "exact_abi_header_candidates": [
+    {
+      "exists": false,
+      "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/include/swift/ABI/Metadata.h"
+    },
+    {
+      "exists": false,
+      "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/include/swift/Runtime/ExistentialContainer.h"
+    },
+    {
+      "exists": false,
+      "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/include/swift/Runtime/Metadata.h"
+    }
+  ],
+  "five_dirty_hashes_match": true,
+  "frozen_payload_runtime": {
+    "bytes": 17395344,
+    "exists": true,
+    "frozen_tree_record": {
+      "bytes": 17395344,
+      "kind": "file",
+      "sha256": "51358d2d79fcdcb739e28d050109b49047131f1001c32654904dbbd63cd6013a"
+    },
+    "path": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/libswiftCore.dylib",
+    "sha256": "51358d2d79fcdcb739e28d050109b49047131f1001c32654904dbbd63cd6013a"
+  },
+  "frozen_prior_inputs_match": 67,
+  "historical_execution_environment": {
+    "HOME": "/Users/eugene",
+    "LOGNAME": "eugene",
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONNOUSERSITE": "1",
+    "PYTHONPYCACHEPREFIX": "/dev/null",
+    "TMPDIR": "/var/folders/38/tc_rs_016rz5chj25dzt9nfm0000gn/T/",
+    "USER": "eugene"
+  },
+  "interface": {
+    "bytes": 2461651,
+    "exists": true,
+    "numeric_Error_existential_layout_established": false,
+    "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/lib/swift/macosx/Swift.swiftmodule/arm64-apple-macos.swiftinterface",
+    "sha256": "41be0472aafe38a096c58c828399d75b21e46825d1e42132d269cea2ac745172",
+    "version_header": [
+      "// swift-interface-format-version: 1.0",
+      "// swift-compiler-version: Apple Swift version 6.4 (swift-6.4-RELEASE)",
+      "// swift-module-flags: -disable-objc-attr-requires-foundation-module -target arm64-apple-macosx13.0 -enable-objc-interop -enable-library-evolution -module-link-name swiftCore -parse-stdlib -language-mode 5 -O -library-level api -enforce-exclusivity=unchecked -enable-experimental-concise-pound-file -target-min-inlining-version min -enable-experimental-feature SuppressedAssociatedTypesWithDefaults -enable-experimental-feature NonescapableTypes -enable-experimental-feature LifetimeDependence -enable-experimental-feature InoutLifetimeDependence -enable-experimental-feature LifetimeDependenceMutableAccessors -enable-experimental-feature Lifetimes -enable-upcoming-feature MemberImportVisibility -enable-experimental-feature Macros -enable-experimental-feature FreestandingMacros -enable-experimental-feature Extern -enable-experimental-feature BitwiseCopyable -enable-experimental-feature ValueGenerics -enable-experimental-feature AddressableParameters -enable-experimental-feature AddressableTypes -enable-experimental-feature AllowUnsafeAttribute -enable-experimental-feature SuppressedAssociatedTypesWithDefaults -enable-experimental-feature Reparenting -enable-experimental-feature Lifetimes -enable-experimental-feature BorrowAndMutateAccessors -enable-experimental-feature BorrowInout -module-name Swift",
+      "// swift-module-flags-ignorable: -enable-lexical-lifetimes=false -strict-memory-safety -formal-cxx-interoperability-mode=off -interface-compiler-version 6.4"
+    ]
+  },
+  "link_argv": [
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+    "-swift-version",
+    "6",
+    "-Osize",
+    "-whole-module-optimization",
+    "-enable-experimental-feature",
+    "LifetimeDependence",
+    "-enable-experimental-feature",
+    "Lifetimes",
+    "-package-name",
+    "giftui",
+    "-module-cache-path",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/cache",
+    "-disable-sandbox",
+    "-target",
+    "arm64-apple-macosx26.0",
+    "-sdk",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+    "-load-plugin-executable",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "-parse-as-library",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "-enable-testing",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/Main.swift",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIBackendIntegration.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUICapabilities.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIDisplayCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIFailureCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIRasterCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUISurfaceCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIDrawing.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIExecution.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIHostConfiguration.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIInteraction.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUILayout.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIObservableState.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIReferenceTextResources.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRenderCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRenderLowering.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeDynamic.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeStatic.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUITextResources.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterPresentation.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterRuntime.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterSchema.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterTable.o",
+    "-o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter"
+  ],
+  "link_command_index_zero_based": 405,
+  "link_objects_equal_collection_capture_set": [
+    {
+      "bytes": 354032,
+      "exists": true,
+      "path": ".build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.o",
+      "sha256": "697e1435723ab9721bdcda4fe029a190cef1b7fa1d609381e5e0905c3163575c"
+    },
+    {
+      "bytes": 153080,
+      "exists": true,
+      "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUIBackendIntegration.o",
+      "sha256": "724d1d0de5bc9bdced7ef331f21765ce20e51f134acd2e60986d6f94573e750e"
+    },
+    {
+      "bytes": 226576,
+      "exists": true,
+      "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUICapabilities.o",
+      "sha256": "e98b19e45be7d01036c429f5a204127e1c4b2f93406d464ba5611d20980e4613"
+    },
+    {
+      "bytes": 23896,
+      "exists": true,
+      "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUIDisplayCore.o",
+      "sha256": "7b6997af450252fc1dd59ac3e22f38d24f772d999a71de436baabdc51df992aa"
+    },
+    {
+      "bytes": 127672,
+      "exists": true,
+      "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUIFailureCore.o",
+      "sha256": "14fec38758243fa9a9c78cc715149fbd88567d062532aae18c625f207b3647f9"
+    },
+    {
+      "bytes": 128424,
+      "exists": true,
+      "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUIRasterCore.o",
+      "sha256": "95c0429c3fc91ef30b69b52930ad2ec9bf050ca9bffe68cfb74175b117c4b7cf"
+    },
+    {
+      "bytes": 12144,
+      "exists": true,
+      "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUISurfaceCore.o",
+      "sha256": "f22cbd684f69378a9e99bb1b0f93111109803fd022776db1c2dc8e60e2ceb82c"
+    },
+    {
+      "bytes": 135544,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUIDrawing.o",
+      "sha256": "33562488b3ab1eed671758b8af57c4a107b434d33dec66755578168ef7ab780b"
+    },
+    {
+      "bytes": 574800,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUIExecution.o",
+      "sha256": "5fac42c75bf02129e4b56865d4a8cd3ffb5a63d126fbc9bd7cbbc418b28a2332"
+    },
+    {
+      "bytes": 731488,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUIHostConfiguration.o",
+      "sha256": "a053c1c00459783940052f6d4385ef897f6d21ad84d78cbd594d8e385370c835"
+    },
+    {
+      "bytes": 189024,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUIInteraction.o",
+      "sha256": "7b7be8fda6c1198d570a5a092c479e9e1a91422d23333e9dd9a4b5ef543639dd"
+    },
+    {
+      "bytes": 170544,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUILayout.o",
+      "sha256": "210985a98beb671ebdfc4d93512a92467641791e8f7d971ab6e5950f7dd13ebc"
+    },
+    {
+      "bytes": 254904,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUIObservableState.o",
+      "sha256": "9cdc1ff0b65ad89e7895994a9042839030ddd19e87fbd3b953a1715591677b52"
+    },
+    {
+      "bytes": 1662280,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUIReferenceTextResources.o",
+      "sha256": "ab35f5d97d11feed8e78053c0ea3921ff6b3fb43e313d754fca859638bbeea54"
+    },
+    {
+      "bytes": 62200,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRenderCore.o",
+      "sha256": "af38bc6e2ff9fc68395bcabfca71982be9e726a98a7ba59acd7ca969b462019b"
+    },
+    {
+      "bytes": 78864,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRenderLowering.o",
+      "sha256": "66b522bfbc494980934847d0cb142514bc213af9d51860a588c5d4358f9382ec"
+    },
+    {
+      "bytes": 323040,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRuntimeCore.o",
+      "sha256": "cdf2603a4e5aa2bae6ace429ebff1971d88085176f8e4db625e6fce839fe72c6"
+    },
+    {
+      "bytes": 250280,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRuntimeDynamic.o",
+      "sha256": "997ac28acb8a683425cde8999e024e232f0b010ffac34acdffa4c99a463f4454"
+    },
+    {
+      "bytes": 284984,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRuntimeStatic.o",
+      "sha256": "ade0e22d6dbb21af6e65f2bc62e82f7d0e6368d7ca8875a4d33662938a82f3e5"
+    },
+    {
+      "bytes": 534488,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.o",
+      "sha256": "d1e6eb3af4d1566dc06f196d6a9154d781e2da0f046c4d920af68c1df56d3ea7"
+    },
+    {
+      "bytes": 102840,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUITextResources.o",
+      "sha256": "9aecc98947e6fcab6f740cd2372857180c9abbc49232036b6e8c4deb34f88eb4"
+    },
+    {
+      "bytes": 45736,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/P08CounterPresentation.o",
+      "sha256": "5ab036fca58c51a27a91284a2b2abde88a0e2b5f81b21f2089187f9c6bad2929"
+    },
+    {
+      "bytes": 2543832,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/P08CounterRuntime.o",
+      "sha256": "fa83a40d93b8aaca81c1f3ccf2a443cc51585695d1c5ca2b75fccdcdcee6b393"
+    },
+    {
+      "bytes": 9392,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/P08CounterSchema.o",
+      "sha256": "7ab6796784cb4e3e81e0a682f96b27335f522bce2a00b0c57ec07112e0bf679e"
+    },
+    {
+      "bytes": 12656,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/P08CounterTable.o",
+      "sha256": "ebacc0b71773808fad2811f6ac13aa8127bffcbd5289b8ac2258f844684cd898"
+    }
+  ],
+  "method": "Standard-library file membership/text/JSON/plist/SHA-256 inventory and read-only Git; no binary decoding/acquisition/runtime/tool launch.",
+  "preexisting_cache_sha256": {
+    "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+  },
+  "production_invocations": 0,
+  "proposed_output_absent": "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1",
+  "provenance_files": [
+    {
+      "bytes": 8548218,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/result.json",
+      "sha256": "6850a3f150938e2a755f2260c94c42d7f103b0110639599a27925ba377b8ecb8"
+    },
+    {
+      "bytes": 65107,
+      "exists": true,
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/input-freeze.json",
+      "sha256": "f889a7acc4645760bd46b06f3a6c94f1489fde054e8fa5ce58f9d1593435d056"
+    },
+    {
+      "bytes": 230060,
+      "exists": true,
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/collection-recipe.json",
+      "sha256": "594af7a9480c4bcefb6629e685b91a3da49ed579c0a7c7a3480fcc36c2c60bfe"
+    },
+    {
+      "bytes": 12921943,
+      "exists": true,
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter384-successor1-preparation/retained-trees.json",
+      "sha256": "c2fbc28c6a9a193bb23f19dd020023d285f6e5be7d5afee61ae1f97330e7d1a3"
+    },
+    {
+      "bytes": 1576,
+      "exists": true,
+      "path": ".build/contracts/p08-retained-evidence-counter384-successor1/launch.json",
+      "sha256": "9175985761eae886507047699673c7ea98adc60f871c247645656bd69dd40cc5"
+    },
+    {
+      "bytes": 20331,
+      "exists": true,
+      "path": "scripts/contracts/p08_check_collection.py",
+      "sha256": "d8d9fa4e92d7a0ad04173b401fbb332750337dd2d2e34bd72f3a7bbf396e1b41"
+    },
+    {
+      "bytes": 43222,
+      "exists": true,
+      "path": "scripts/contracts/check-spec-015-counter.py",
+      "sha256": "8150d2cbd864222dfba32bd91543d7f7d3ac3be81639b0a86fa00aacc6dcf970"
+    }
+  ],
+  "retained_counter_artifacts": [
+    {
+      "bytes": 6602168,
+      "exists": true,
+      "matches_frozen_counter_artifact": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/counter",
+      "sha256": "12d51381b0a776a3a05c60aa3f97b732a0490434435194d6eda0e29ef0d89242"
+    },
+    {
+      "bytes": 276,
+      "exists": true,
+      "matches_frozen_counter_artifact": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/Main.swift",
+      "sha256": "e246ce21f23bf84d3e6b9b3567f06eb57ece1ee78c50ad1058212226ffe3ec7a"
+    },
+    {
+      "bytes": 0,
+      "exists": true,
+      "matches_frozen_counter_artifact": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/link.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 6670080,
+      "exists": true,
+      "matches_frozen_counter_artifact": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-positive",
+      "sha256": "91ce67a8eac17a65edaa446f7a9a3d14e1af7c0aaf8d28db8482403c91ac0914"
+    },
+    {
+      "bytes": 6670080,
+      "exists": true,
+      "matches_frozen_counter_artifact": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-negative",
+      "sha256": "4c5b43de56613cb448d0772ae2e0e8ce4cd3496fb0a6538f719a79cfa5397cd1"
+    }
+  ],
+  "reviewed_u01_packet_files": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/README.md": {
+      "bytes": 17382,
+      "exists": true,
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/README.md",
+      "sha256": "a2d66b770ecadaec9b487b7e1e7b9f84629807586631261a3dd81089498b7f65"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review-inspection.json": {
+      "bytes": 19924,
+      "exists": true,
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review-inspection.json",
+      "sha256": "d827454612ae7f6ede4d40d6bebfbd7f280fecb7e0126ef40a1284106928a874"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review.md": {
+      "bytes": 6776,
+      "exists": true,
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review.md",
+      "sha256": "0d6c514607ad62c4484482b0a1c5ed0fe4e65c3455d5efe7fcbf64b6705818d0"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/inspect.py": {
+      "bytes": 8240,
+      "exists": true,
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/inspect.py",
+      "sha256": "3d66799affbcc9b45d4885fc36d9ba687b1a3b38977dd04d150ad826da3a83ff"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/inspection.json": {
+      "bytes": 24426,
+      "exists": true,
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/inspection.json",
+      "sha256": "6d9fc972cfbe4825d1bffe508657b1ee8dbb6bf75e698e6f234fc16092383a44"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/retained-excerpts.txt": {
+      "bytes": 46504,
+      "exists": true,
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/retained-excerpts.txt",
+      "sha256": "6ffc059c6584521e885b6d2252f49a398513a5b90d7ce83bdf2dbed7421d7ff0"
+    }
+  },
+  "runtime_candidate": {
+    "bytes": 17395344,
+    "exists": true,
+    "historical_provider_match_established": false,
+    "matches_frozen_predecessor_payload_bytes": true,
+    "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/lib/swift/macosx/libswiftCore.dylib",
+    "sha256": "51358d2d79fcdcb739e28d050109b49047131f1001c32654904dbbd63cd6013a"
+  },
+  "sdk_stubs": [
+    {
+      "bytes": 882093,
+      "exists": true,
+      "implementation_bytes": false,
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/swift/libswiftCore.tbd",
+      "selected_symbol_text": [
+        {
+          "line": 6128,
+          "text": "                       '_$ss5ErrorTL', '_$ss5ErrorWS', '_$ss5Int16V10bitPatternABs6UInt16V_tcfC', "
+        },
+        {
+          "line": 8159,
+          "text": "                       _swift_getTypeByMangledNameInContext, _swift_getTypeByMangledNameInContext2, "
+        }
+      ],
+      "sha256": "cf3537a9f091358845ea7a754a05cbd9404eca53c77e203c5bb2e9b4adb67fcc"
+    },
+    {
+      "bytes": 334178,
+      "exists": true,
+      "implementation_bytes": false,
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/libSystem.tbd",
+      "selected_symbol_text": [
+        {
+          "line": 1323,
+          "text": "                       ___srget, ___sseek, ___stack_chk_fail, ___stack_chk_guard, "
+        },
+        {
+          "line": 1552,
+          "text": "    symbols:         [ _bcmp, _bzero, _index, _memccpy, _memchr, _memcmp, _memcpy, "
+        },
+        {
+          "line": 3055,
+          "text": "    symbols:         [ ___sme_memchr, ___sme_memcpy, ___sme_memmove, ___sme_memset, "
+        },
+        {
+          "line": 3254,
+          "text": "                       ___asan_abi_load_n, ___asan_abi_memcpy, ___asan_abi_memmove, "
+        }
+      ],
+      "sha256": "20cfce043f11a083e2eb6111efe3579919a8082fa4cc912a7bd839af2010ec57"
+    },
+    {
+      "bytes": 25552,
+      "exists": true,
+      "implementation_bytes": false,
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/system/libsystem_c.tbd",
+      "selected_symbol_text": [
+        {
+          "line": 65,
+          "text": "                       ___srget, ___sseek, ___stack_chk_fail, ___stack_chk_guard, "
+        },
+        {
+          "line": 294,
+          "text": "    symbols:         [ _bcmp, _bzero, _index, _memccpy, _memchr, _memcmp, _memcpy, "
+        }
+      ],
+      "sha256": "5d5a6156b266b323b83366ab601a744639a2acb3235d11261f40e0dca6f1ea96"
+    },
+    {
+      "bytes": 6848,
+      "exists": true,
+      "implementation_bytes": false,
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/system/libsystem_platform.tbd",
+      "selected_symbol_text": [
+        {
+          "line": 79,
+          "text": "    symbols:         [ ___sme_memchr, ___sme_memcpy, ___sme_memmove, ___sme_memset, "
+        }
+      ],
+      "sha256": "6f8f7e88f0b594827e9946cc30e846936e65184e40b6c4e6c600f8fc89671064"
+    }
+  ],
+  "source42_hashes_match": true,
+  "strict_cold_eligible": false,
+  "system_standalone_candidates": [
+    {
+      "exists": false,
+      "path": "/usr/lib/swift/libswiftCore.dylib"
+    },
+    {
+      "exists": false,
+      "path": "/usr/lib/libSystem.B.dylib"
+    },
+    {
+      "exists": false,
+      "path": "/usr/lib/system/libsystem_c.dylib"
+    },
+    {
+      "bytes": 514032,
+      "exists": true,
+      "path": "/usr/lib/system/libsystem_platform.dylib",
+      "sha256": "0e4588f3c7e7f855acbfc0e540b9517b318545e8d60ccf5c31ddd04966fc791c"
+    },
+    {
+      "bytes": 1346496,
+      "exists": true,
+      "path": "/usr/lib/system/libsystem_kernel.dylib",
+      "sha256": "fb1753efbfd41622f00757d89b57172984a7e4f6957b94a222ae8fd735e970f5"
+    }
+  ],
+  "tools": [
+    {
+      "bytes": 472320,
+      "exists": true,
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool-classic",
+      "sha256": "6beb1ad9c4fb7edafd59fddcb093f358f9a250bfe1db2db9f04ed1aacd523a69"
+    },
+    {
+      "bytes": 169024,
+      "exists": true,
+      "path": ".toolchains/p08-serialization-decoder/prefix/bin/llvm-nm-21",
+      "sha256": "96b2f58cd612d5489d23b75ec90da345f924cd8f893523c05a22b992a32360ff"
+    },
+    {
+      "bytes": 939120,
+      "exists": true,
+      "path": ".toolchains/p08-serialization-decoder/prefix/bin/llvm-objdump-21",
+      "sha256": "d41e800c8ce1380a775ad42dbdbba85c022c53882af806bb5207fc928b188786"
+    },
+    {
+      "bytes": 7456,
+      "exists": true,
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man/man1/otool-classic.1",
+      "sha256": "d394dd994259505236aeb626f98a60de00ce8b870351dfde6b029529157457a3"
+    }
+  ]
+}

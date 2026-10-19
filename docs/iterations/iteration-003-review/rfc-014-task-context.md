@@ -1,18 +1,17 @@
 # RFC-014 task context guide
 
-Current P08 boundary — **collection-only PASS; U01 local attribution completed; complete callee/safety proof STOP**.
-The [U01-only retained-byte result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/README.md)
-resolves both actual Text callbacks, local outlined helpers and selected no-throw
-error-transfer feasibility. The unconditional Error metadata lookup's cold path,
-numeric aligned temporary storage and linked/runtime/library evidence remain open.
-The [independent U01 review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review.md)
-passes bounded attribution and the STOP disposition. One separate U01 R01–R04
-runtime/linked evidence request is next: preparation only, with no acquisition
-or execution allowance. U02–U05 retain the [independently reviewed interpretation's open dispositions](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review.md).
-`strict_cold_eligible` remains false. No compiler, runtime, strict-cold, source
-repair or new collection allowance follows. Collection1/1 is consumed,
-repairs0/retries0; P08/R07/T8.1 and all remaining gates stay open. The collection
-marker and historical budgets remain unchanged.
+Current P08 boundary — **U01 attribution independently PASS within bounds; complete callee/safety proof STOP**.
+The [U01 attribution review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review.md)
+confirms selected callbacks/helpers/no-throw transfer attribution. The
+[R01–R04 identity-first evidence request](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/README.md)
+inventories the exact linked counter and frozen Swift runtime bytes, with
+unproved loader/provider, cold metadata, numeric Error size and library costs.
+Six static commands maximum are proposed behind an explicit provider gate;
+none ran. Independent preparation review is next, with no acquisition/decoder/
+runtime/compiler/repair/strict-cold allowance. U02–U05 retain their open
+interpretation dispositions. `strict_cold_eligible` remains false;
+collection1/1 is consumed, repairs0/retries0. P08/R07/T8.1, remaining gates,
+collection marker and historical budgets remain unchanged.
 
 Historical pre-collection checkpoint — **retained counter426 PASS; controller readiness PASS; collection unused 0/1**.
 The [retained macOS Static result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)

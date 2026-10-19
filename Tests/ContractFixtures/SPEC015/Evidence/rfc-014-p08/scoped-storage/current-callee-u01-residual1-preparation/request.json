@@ -1,0 +1,267 @@
+{
+  "baseline": "c91d82f977bd57b3b9600ea9e7cfd164c502abdd",
+  "budgets": {
+    "attempts_proposed": 1,
+    "attempts_used": 0,
+    "maximum_acquisitions": 0,
+    "maximum_attempt_wall_seconds": 360,
+    "maximum_compiler_build_test_runtime_controller_strict_cold_launches": 0,
+    "maximum_decoder_commands": 6,
+    "maximum_total_output_bytes": 536870912,
+    "retries": 0,
+    "source_or_tooling_repairs": 0
+  },
+  "collection1_consumed": true,
+  "commands": [
+    {
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool-classic",
+        "-arch",
+        "arm64",
+        "-hv",
+        "-l",
+        "-L",
+        "-Iv",
+        "-dyld_info",
+        "-chained_fixups",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "environment": {
+        "HOME": "/Users/eugene",
+        "LC_CTYPE": "C.UTF-8",
+        "LOGNAME": "eugene",
+        "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+        "TMPDIR": "/private/tmp",
+        "USER": "eugene"
+      },
+      "executed": false,
+      "id": "counter-metadata",
+      "input": {
+        "bytes": 6602168,
+        "exists": true,
+        "path": ".build/contracts/p08-counter-npoej3u2/counter",
+        "sha256": "12d51381b0a776a3a05c60aa3f97b732a0490434435194d6eda0e29ef0d89242"
+      },
+      "max_combined_output_bytes": 8388608,
+      "max_wall_seconds": 60,
+      "stage": "A",
+      "tool": {
+        "bytes": 472320,
+        "exists": true,
+        "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool-classic",
+        "sha256": "6beb1ad9c4fb7edafd59fddcb093f358f9a250bfe1db2db9f04ed1aacd523a69"
+      }
+    },
+    {
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-nm-21",
+        "--numeric-sort",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "environment": {
+        "DYLD_LIBRARY_PATH": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
+        "HOME": "/Users/eugene",
+        "LC_CTYPE": "C.UTF-8",
+        "LOGNAME": "eugene",
+        "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+        "TMPDIR": "/private/tmp",
+        "USER": "eugene"
+      },
+      "executed": false,
+      "id": "counter-symbols",
+      "input": {
+        "bytes": 6602168,
+        "exists": true,
+        "path": ".build/contracts/p08-counter-npoej3u2/counter",
+        "sha256": "12d51381b0a776a3a05c60aa3f97b732a0490434435194d6eda0e29ef0d89242"
+      },
+      "max_combined_output_bytes": 16777216,
+      "max_wall_seconds": 60,
+      "stage": "A",
+      "tool": {
+        "bytes": 169024,
+        "exists": true,
+        "path": ".toolchains/p08-serialization-decoder/prefix/bin/llvm-nm-21",
+        "sha256": "96b2f58cd612d5489d23b75ec90da345f924cd8f893523c05a22b992a32360ff"
+      }
+    },
+    {
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-objdump-21",
+        "--macho",
+        "--arch=arm64",
+        "--disassemble",
+        "--reloc",
+        "--full-contents",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "environment": {
+        "DYLD_LIBRARY_PATH": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
+        "HOME": "/Users/eugene",
+        "LC_CTYPE": "C.UTF-8",
+        "LOGNAME": "eugene",
+        "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+        "TMPDIR": "/private/tmp",
+        "USER": "eugene"
+      },
+      "executed": false,
+      "id": "counter-body-data",
+      "input": {
+        "bytes": 6602168,
+        "exists": true,
+        "path": ".build/contracts/p08-counter-npoej3u2/counter",
+        "sha256": "12d51381b0a776a3a05c60aa3f97b732a0490434435194d6eda0e29ef0d89242"
+      },
+      "max_combined_output_bytes": 134217728,
+      "max_wall_seconds": 60,
+      "stage": "A",
+      "tool": {
+        "bytes": 939120,
+        "exists": true,
+        "path": ".toolchains/p08-serialization-decoder/prefix/bin/llvm-objdump-21",
+        "sha256": "d41e800c8ce1380a775ad42dbdbba85c022c53882af806bb5207fc928b188786"
+      }
+    },
+    {
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool-classic",
+        "-arch",
+        "arm64",
+        "-hv",
+        "-l",
+        "-L",
+        "-Iv",
+        "-dyld_info",
+        "-chained_fixups",
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/lib/swift/macosx/libswiftCore.dylib"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "environment": {
+        "HOME": "/Users/eugene",
+        "LC_CTYPE": "C.UTF-8",
+        "LOGNAME": "eugene",
+        "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+        "TMPDIR": "/private/tmp",
+        "USER": "eugene"
+      },
+      "executed": false,
+      "id": "toolchain-core-metadata",
+      "input": {
+        "bytes": 17395344,
+        "exists": true,
+        "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/lib/swift/macosx/libswiftCore.dylib",
+        "sha256": "51358d2d79fcdcb739e28d050109b49047131f1001c32654904dbbd63cd6013a"
+      },
+      "max_combined_output_bytes": 8388608,
+      "max_wall_seconds": 60,
+      "stage": "B",
+      "tool": {
+        "bytes": 472320,
+        "exists": true,
+        "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool-classic",
+        "sha256": "6beb1ad9c4fb7edafd59fddcb093f358f9a250bfe1db2db9f04ed1aacd523a69"
+      }
+    },
+    {
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-nm-21",
+        "--numeric-sort",
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/lib/swift/macosx/libswiftCore.dylib"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "environment": {
+        "DYLD_LIBRARY_PATH": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
+        "HOME": "/Users/eugene",
+        "LC_CTYPE": "C.UTF-8",
+        "LOGNAME": "eugene",
+        "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+        "TMPDIR": "/private/tmp",
+        "USER": "eugene"
+      },
+      "executed": false,
+      "id": "toolchain-core-symbols",
+      "input": {
+        "bytes": 17395344,
+        "exists": true,
+        "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/lib/swift/macosx/libswiftCore.dylib",
+        "sha256": "51358d2d79fcdcb739e28d050109b49047131f1001c32654904dbbd63cd6013a"
+      },
+      "max_combined_output_bytes": 16777216,
+      "max_wall_seconds": 60,
+      "stage": "B",
+      "tool": {
+        "bytes": 169024,
+        "exists": true,
+        "path": ".toolchains/p08-serialization-decoder/prefix/bin/llvm-nm-21",
+        "sha256": "96b2f58cd612d5489d23b75ec90da345f924cd8f893523c05a22b992a32360ff"
+      }
+    },
+    {
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-objdump-21",
+        "--macho",
+        "--arch=arm64",
+        "--disassemble",
+        "--reloc",
+        "--full-contents",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/lib/swift/macosx/libswiftCore.dylib"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "environment": {
+        "DYLD_LIBRARY_PATH": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
+        "HOME": "/Users/eugene",
+        "LC_CTYPE": "C.UTF-8",
+        "LOGNAME": "eugene",
+        "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+        "TMPDIR": "/private/tmp",
+        "USER": "eugene"
+      },
+      "executed": false,
+      "id": "toolchain-core-body-data",
+      "input": {
+        "bytes": 17395344,
+        "exists": true,
+        "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/lib/swift/macosx/libswiftCore.dylib",
+        "sha256": "51358d2d79fcdcb739e28d050109b49047131f1001c32654904dbbd63cd6013a"
+      },
+      "max_combined_output_bytes": 268435456,
+      "max_wall_seconds": 60,
+      "stage": "B",
+      "tool": {
+        "bytes": 939120,
+        "exists": true,
+        "path": ".toolchains/p08-serialization-decoder/prefix/bin/llvm-objdump-21",
+        "sha256": "d41e800c8ce1380a775ad42dbdbba85c022c53882af806bb5207fc928b188786"
+      }
+    }
+  ],
+  "interpretation_limit": "Only U01 callbacks/generic/metadata helper/cold runtime entry and their feasible transitive code/data, Error size, memcpy and stack-guard leaves; external/indirect/library/cache uncertainty is a residual, never permission to expand inputs or invoke more tools.",
+  "missing_not_command_ready": [
+    "Actual historical loaded runtime/system-cache UUID/build identity if static records cannot establish it",
+    "Selected libSystem/libsystem_c implementation bytes and memcpy resolver choice; SDK .tbd/map names are not code",
+    "Numeric Error metadata layout or exact applicable runtime data/constructor/source proof if static core capture cannot establish S",
+    "Additional transitive runtime/library bodies beyond selected pinned core; no recursive acquisition budget"
+  ],
+  "output_created": false,
+  "output_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1",
+  "permanent_marker_policy": "No existing collection/requalification marker is read for control, reused, modified or reset. Any later authorized launcher must create a new request-specific permanent attempt receipt; launcher/readiness is not supplied here.",
+  "receipt_requirements": "Authenticate inputs/tools/dependencies before each command; preserve exact argv/environment, raw stdout/stderr, actual start/exit/timeout/output-cap and hashes before interpretation. Record gated/skipped commands, permanent consumption and exact remaining R01-R04 rows. Failures cannot be relabelled PASS by output parsing.",
+  "scope": "U01 R01-R04 static identity/body/data request on existing pinned bytes only",
+  "stage_A": "Capture exact retained executable metadata/bind/fixup records, symbols and linked body/data; standard-library interpretation must prove architecture, object route joins and library resolution before B.",
+  "stage_B_gate": "Run B only if A establishes this exact pinned toolchain core as applicable under retained no-override environment, with an unambiguous arm64 image/binding join; never select it by compiler version or matching filename. Otherwise STOP with missing provider/cache identity.",
+  "status": "PREPARATION_ONLY_independent_review_and_explicit_execution_authorization_required",
+  "stop_conditions": [
+    "Any missing/hash-drifted input/tool/library/dependency/source/preservation/cache identity",
+    "Any nonzero exit, timeout, output cap, missing required record or unsupported decoder option/format",
+    "No unambiguous arm64 linked route/provider/binding join, or selected provider unavailable as pinned standalone bytes",
+    "Cold/runtime transitive target, selected library/IFUNC/cache resolver, metadata size or external leaf cannot be proved from the frozen captures",
+    "Need for cache extraction, downloaded ABI/runtime source, populated process metadata, runtime loader observation or additional tools/commands",
+    "Any contract/scope/ownership/privacy/heap/bound/warm-up exception choice"
+  ],
+  "strict_cold_eligible": false
+}
