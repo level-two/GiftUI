@@ -1,7 +1,12 @@
 # U01 exact Git ref route 2 preparation — 2026-10-19
 
-**Revised offline controller preparation; readiness NOT READY pending independent
-review.** The parent authorized preparing a concrete controller and revised
+**Independent controller review STOP; readiness NOT READY.** The
+[controller review](controller-independent-review.md) verifies the concrete
+request/body/time mechanisms, runtime pins and B02 isolation, but records one
+unresolved B01 prerequisite: the earlier full-stream STOP requirement has been
+replaced by an equality allowance. A full GET capability stream can permit POST
+emission. Reconcile and independently review this condition before any launch.
+The parent authorized preparing a concrete controller and revised
 packet after `8250f8ec` and the B01/B02 STOP review at `0625592a`. No network
 operation or controller execution/import ran. The prior API GET stays consumed.
 

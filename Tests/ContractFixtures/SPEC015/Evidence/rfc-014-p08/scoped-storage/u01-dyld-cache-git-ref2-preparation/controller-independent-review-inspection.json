@@ -1,0 +1,179 @@
+{
+  "cache_files": {
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": {
+      "matches_baseline": true,
+      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+    }
+  },
+  "cache_membership_matches": true,
+  "compiler_build_target_test_operations": 0,
+  "controller_executions": 0,
+  "controller_imports": 0,
+  "dirty_files": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": {
+      "matches_baseline": true,
+      "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": {
+      "matches_baseline": true,
+      "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3"
+    },
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": {
+      "matches_baseline": true,
+      "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243"
+    },
+    "scripts/nrf52840/build.sh": {
+      "matches_baseline": true,
+      "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72"
+    },
+    "scripts/raspberry-pi/build.sh": {
+      "matches_baseline": true,
+      "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+    }
+  },
+  "disposition": "STOP / readiness NOT READY; prior B01 full-stream condition unresolved",
+  "fixed_result_exists": false,
+  "header_bytes": 0,
+  "header_candidates": 0,
+  "imports": [
+    "import time",
+    "import hashlib",
+    "import json",
+    "import os",
+    "from pathlib import Path",
+    "import re",
+    "import resource",
+    "import signal",
+    "import socket",
+    "import ssl",
+    "import sys"
+  ],
+  "markers": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": {
+      "identity": [
+        16777234,
+        29640436
+      ],
+      "matches_baseline": true
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": {
+      "identity": [
+        16777234,
+        29650609
+      ],
+      "matches_baseline": true
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": {
+      "identity": [
+        16777234,
+        29652748
+      ],
+      "matches_baseline": true
+    }
+  },
+  "markers_each": "1/1 consumed",
+  "network_operations": 0,
+  "packet_blobs": {
+    "README.md": {
+      "bytes": 3432,
+      "matches_reviewed_blob": true,
+      "sha256": "e535b448227db45e0dee6f328f0bbb61c0ced01f0fc9703d5def1ef1922b4c72"
+    },
+    "controller-preparation-inspection.json": {
+      "bytes": 1748,
+      "matches_reviewed_blob": true,
+      "sha256": "b9fcb2df5419193597249c1a87466049291890129c0714fb364bd60009d09cdf"
+    },
+    "controller-preparation.md": {
+      "bytes": 6606,
+      "matches_reviewed_blob": true,
+      "sha256": "fb09e395cd64aa07226cb642f6601b99a59aefd7ea5919d9c0ac1a0cbb9cc10c"
+    },
+    "controller.py": {
+      "bytes": 19337,
+      "matches_reviewed_blob": true,
+      "sha256": "37ef2dafa0396d31cd71f162f0db1aada9487dfa5f7c4dce461034c1269fe901"
+    },
+    "independent-review-inspection.json": {
+      "bytes": 3932,
+      "matches_reviewed_blob": true,
+      "sha256": "bf7617f73b5268422a1dcb58e31ab406fd1a56b671310ad7ca7507cb7cefa30f"
+    },
+    "independent-review.md": {
+      "bytes": 9047,
+      "matches_reviewed_blob": true,
+      "sha256": "a41c365ddfdd3d2899463bd96e9b498b7d4c124f52eecfa5c0af89249bde8d22"
+    },
+    "inspection.json": {
+      "bytes": 2778,
+      "matches_reviewed_blob": true,
+      "sha256": "b458b2f4151e92d3f041e27eff495b44a6c493886100ca7c4f1f82f932019c8a"
+    },
+    "request.json": {
+      "bytes": 3373,
+      "matches_reviewed_blob": true,
+      "sha256": "dc01687cf5c74f2b70f8d1f90d3c9c08e102c1d42e057b6aa6b6468df10602c2"
+    },
+    "request.md": {
+      "bytes": 8923,
+      "matches_reviewed_blob": true,
+      "sha256": "80d247d1d64964f56e90902a8d9ed62d9d39c61bd20cfa63d3042e73381421a5"
+    },
+    "runtime-lock.json": {
+      "bytes": 725320,
+      "matches_reviewed_blob": true,
+      "sha256": "aec1718d0aa2b1574a7aa30010743dcad8fc2982c2bdac2b738c7539219c99fa"
+    }
+  },
+  "pins": {
+    "absent_paths_absent": {
+      "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python314.zip": true
+    },
+    "controller_matches_request": true,
+    "controller_sha256": "37ef2dafa0396d31cd71f162f0db1aada9487dfa5f7c4dce461034c1269fe901",
+    "executable_argv_matches": true,
+    "post_body_ASCII_hex_agree": true,
+    "post_body_size_agrees": true,
+    "runtime_files_checked": 2165,
+    "runtime_hash_mismatches": [],
+    "runtime_lock_matches_request": true,
+    "runtime_lock_sha256": "aec1718d0aa2b1574a7aa30010743dcad8fc2982c2bdac2b738c7539219c99fa",
+    "stdlib_membership_matches": true,
+    "stdlib_resolved_members": 2160
+  },
+  "prior_API_GET": "1/1 consumed; retained 403/rate-limit evidence unchanged",
+  "repairs": 0,
+  "retained_metadata": {
+    "u01-dyld-cache-macos-2662-ref1-result/macos-2662-ref.headers": {
+      "bytes": 1021,
+      "hash_matches_baseline": true,
+      "sha256": "d643282007c6eaacbc7190e8d5a59f7b990ffac8f9b69f1915cc2e6d754f4b21",
+      "size_matches_baseline": true
+    },
+    "u01-dyld-cache-macos-2662-ref1-result/macos-2662-ref.json": {
+      "bytes": 279,
+      "hash_matches_baseline": true,
+      "sha256": "16b605b4b536a18a4158a564f5f2f836d47da19bb8c3c5b201a226d528c20b15",
+      "size_matches_baseline": true
+    },
+    "u01-dyld-cache-schema-source1-preparation/distribution-tags.headers": {
+      "bytes": 1478,
+      "hash_matches_baseline": true,
+      "sha256": "0882476addc240934a7db06052073bc05633e2570422bee52a949be9023d8a6f",
+      "size_matches_baseline": true
+    },
+    "u01-dyld-cache-schema-source1-preparation/distribution-tags.json": {
+      "bytes": 55838,
+      "hash_matches_baseline": true,
+      "sha256": "8e52205de326cf31289a8443ae889bc44b0a16c39e867247a0bad828ee435105",
+      "size_matches_baseline": true
+    }
+  },
+  "retries": 0,
+  "reviewed_commits": [
+    "3af5a9f82e26b81cb7d12ec08372356d760ecf62",
+    "a61bb9e37e223d98e0eabbb76b0696383cf78926"
+  ],
+  "syntax_ast_parse": "PASS; controller not imported or executed",
+  "validation_limits": "Offline source/static byte, JSON, AST, stat and Git-blob inspection only. No transport or behavioral controller test."
+}
