@@ -1,5 +1,12 @@
 # RFC-014 task context guide
 
+Current P08 U02 B01 correction — **NOT READY / separate Strong re-review pending**.
+The [corrected packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/README.md)
+keeps 79 evidence inputs separate from 48 literal preservation-only reads:
+127 files / 127,570,100 payload bytes, with controls/diff/rereads charged to the
+unchanged 512 MiB aggregate. No attribution inputs/classifications or allowance
+are added; the historical B01 STOP and all P08 gates remain pending re-review.
+
 Current P08 U02 preparation independent review — **STOP / NOT READY: B01**.
 The [exact b8c45969 Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/independent-review.md)
 verifies all input identities, roots and 56/1,892 groups, but requires reconciling

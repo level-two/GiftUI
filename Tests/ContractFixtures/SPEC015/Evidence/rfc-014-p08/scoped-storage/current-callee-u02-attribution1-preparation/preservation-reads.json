@@ -1,0 +1,673 @@
+{
+  "status": "NOT_READY_pending_separate_Strong_re_review",
+  "finding": "B01 in e7ddd72c3eb4ac471686d66a5c32c5fab697c8db",
+  "files": [
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+      "bytes": 9440,
+      "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+      "purpose": "preexisting_dirty_file_preservation",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only",
+        "input_to_exact_frozen_diff_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+      "bytes": 2048,
+      "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+      "purpose": "preexisting_dirty_file_preservation",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only",
+        "input_to_exact_frozen_diff_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+      "sha256": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e",
+      "bytes": 15700,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+      "sha256": "60d013e2570e5ea3ac6efbbadb97dd79d6b7fa0a47e680e72a7071909fddb686",
+      "bytes": 5901,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "sha256": "1129e33dcab9bb075d3c11dac16cedd72c26efad6da87adc204b68de25408ee7",
+      "bytes": 6503,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+      "sha256": "342585dd23bc2916176535bfdb9efd7ba115a138047afe3fcda082acbf7adf8e",
+      "bytes": 24992,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+      "sha256": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df",
+      "bytes": 10682,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+      "sha256": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825",
+      "bytes": 1642,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift",
+      "sha256": "b1f575db79c688b2534ebe3681fea99864222715f8b9ef83dd3fcde16e261c9f",
+      "bytes": 14240,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift",
+      "sha256": "cf9f5467416298dd64f604f5d0edf436b1736dc5972d78721da38c61151cb588",
+      "bytes": 1096,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+      "sha256": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae",
+      "bytes": 17027,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+      "sha256": "be59651c2f7f657f1785f51fa31767f6319dc543c023d901057fa0deb4bace81",
+      "bytes": 8749,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+      "sha256": "d084112a1ee54cc8c01fc5f24a7416ee3a6b23afdc6710f42635a76c370fea26",
+      "bytes": 27426,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+      "sha256": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2",
+      "bytes": 17169,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift",
+      "sha256": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a",
+      "bytes": 2755,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift",
+      "sha256": "d6cdcf1f033a26225d856eb4dd4c5401b76b63d7f78040e111417cdb82bfa41c",
+      "bytes": 3358,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+      "sha256": "46ab40914dade59536f53650bd97ce8d74ee57da86a8a826330f629c64a89f9c",
+      "bytes": 25371,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "sha256": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+      "bytes": 73656,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift",
+      "sha256": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842",
+      "bytes": 4411,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "sha256": "f7152c3e886322e482aaa040b98f15ac820d0aa9a15af86260229bc56df64010",
+      "bytes": 41983,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift",
+      "sha256": "b14a1667a899fc539c8a8d8011d2e377188ce0300012e464ac1f0d1203a999ab",
+      "bytes": 9577,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "sha256": "bfcf074ec49455e7d5cc527b4a65cf9b9374da2c96914f8b8bdf8908ca90ec6b",
+      "bytes": 1691,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "sha256": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+      "bytes": 254803,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift",
+      "sha256": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f",
+      "bytes": 565,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "sha256": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653",
+      "bytes": 2115,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "sha256": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb",
+      "bytes": 12910,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift",
+      "sha256": "c49cc7ad1d5de5bcc3a228defd78ce16a1d6e56c775d9227f5648339540eaa2c",
+      "bytes": 4999,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift",
+      "sha256": "abae5f87b3390863d8a68657c98b46a0fe9829f96a332affe44fbbb4fcce4d5a",
+      "bytes": 12814,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift",
+      "sha256": "6d713ae96bf4982c46f30289068dc97e5d4e32e3dae69f1874dd5e808d053d2b",
+      "bytes": 7999,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift",
+      "sha256": "06b5775b618a78b757495de8c86a2352b8e8371e0c854f3d93463f685585f05e",
+      "bytes": 25233,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+      "sha256": "bfe4a208dd72fe47cb2a72331228cf9c9981114e03d49a91b99541957e7f80b5",
+      "bytes": 22685,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+      "sha256": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e",
+      "bytes": 5050,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift",
+      "sha256": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148",
+      "bytes": 10654,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift",
+      "sha256": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092",
+      "bytes": 12042,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift",
+      "sha256": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+      "bytes": 10872,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift",
+      "sha256": "36d137a0fdf0d6159dfc8502b86bd5bc78037fa1cfa5a86038513c9523b31677",
+      "bytes": 8215,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+      "sha256": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b",
+      "bytes": 4288,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift",
+      "sha256": "0e13001714af86c5f93cc150678c07c0b3a32c58b3a524fd43edb23eae19990b",
+      "bytes": 19446,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift",
+      "sha256": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06",
+      "bytes": 7294,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift",
+      "sha256": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c",
+      "bytes": 8687,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift",
+      "sha256": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a",
+      "bytes": 10957,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift",
+      "sha256": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34",
+      "bytes": 5420,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift",
+      "sha256": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0",
+      "bytes": 3860,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift",
+      "sha256": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893",
+      "bytes": 11497,
+      "purpose": "actual_host_source42_applicability",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+      "bytes": 26018,
+      "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+      "purpose": "preexisting_dirty_file_preservation",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only",
+        "input_to_exact_frozen_diff_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
+      "bytes": 44198,
+      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26",
+      "purpose": "preexisting_cache_preservation",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "scripts/nrf52840/build.sh",
+      "bytes": 10914,
+      "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+      "purpose": "preexisting_dirty_file_preservation",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only",
+        "input_to_exact_frozen_diff_only"
+      ],
+      "content_semantics": "forbidden"
+    },
+    {
+      "path": "scripts/raspberry-pi/build.sh",
+      "bytes": 6433,
+      "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea",
+      "purpose": "preexisting_dirty_file_preservation",
+      "permitted_operations": [
+        "lstat_path_components",
+        "read_opaque_bytes_for_size_and_SHA256_only",
+        "input_to_exact_frozen_diff_only"
+      ],
+      "content_semantics": "forbidden"
+    }
+  ],
+  "distinct_preservation_content_files": 48,
+  "distinct_preservation_content_bytes": 875385,
+  "combined_evidence_and_preservation_files": 127,
+  "combined_evidence_and_preservation_encoded_bytes": 127570100,
+  "semantic_read_permission": "NONE for all 48 preservation paths; does not widen evidence attribution allowlist",
+  "metadata_only_operations": {
+    "marker_lstat": {
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": {
+        "consumption": "1/1",
+        "identity": [
+          16777234,
+          29640436
+        ],
+        "matches_baseline": true
+      },
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": {
+        "consumption": "1/1",
+        "identity": [
+          16777234,
+          29650609
+        ],
+        "matches_baseline": true
+      },
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": {
+        "consumption": "1/1",
+        "identity": [
+          16777234,
+          29652748
+        ],
+        "matches_baseline": true
+      }
+    },
+    "cache_directory_list_once_per_preservation_check": {
+      "path": "scripts/contracts/__pycache__",
+      "exact_member_names": [
+        "p08_layout_facts.cpython-314.pyc"
+      ],
+      "no_recursion": true,
+      "child_content_reads": "only exact cache file in files above"
+    },
+    "result_destination_lstat_absent_only": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-result"
+  },
+  "preparation_control_metadata_reads": {
+    "paths": [
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/README.md",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/inputs.json",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/roots.json",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/selected-rows.json",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/preservation.json",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/preservation-reads.json"
+    ],
+    "combined_distinct_bytes_ceiling": 2097152,
+    "identity": "must equal exact independently re-reviewed preparation commit blobs; sizes/hashes recorded by that re-review; no other packet-directory file read implied",
+    "purpose": "control/allowlist/proof-rule interpretation only; no new attribution input"
+  },
+  "exact_diff_operation": {
+    "argv": [
+      "git",
+      "diff",
+      "--no-ext-diff",
+      "--no-textconv",
+      "--",
+      "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+      "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+      "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+      "scripts/nrf52840/build.sh",
+      "scripts/raspberry-pi/build.sh"
+    ],
+    "stdout_bytes": 5230,
+    "stdout_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+    "stderr_bytes": 0,
+    "worktree_payload_bytes_per_invocation": 54853,
+    "index_base_payload_bytes_per_invocation": 54304,
+    "base_blobs": [
+      {
+        "path": "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+        "exact_blob_commit": "f45edee87362572fb62826befaf5768c5d201110",
+        "bytes": 9325,
+        "sha256": "d1979fae46d376cb1402d3972e317f252898bc8bfbe1e025d1bf260d7469a8ec",
+        "purpose": "diff_index_base_authentication_only",
+        "index_must_equal_exact_blob": true
+      },
+      {
+        "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+        "exact_blob_commit": "f45edee87362572fb62826befaf5768c5d201110",
+        "bytes": 2056,
+        "sha256": "a4b58ce69220e2145480a90a202dfa820290d63b6af77618d65781a56522fac5",
+        "purpose": "diff_index_base_authentication_only",
+        "index_must_equal_exact_blob": true
+      },
+      {
+        "path": "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+        "exact_blob_commit": "f45edee87362572fb62826befaf5768c5d201110",
+        "bytes": 25632,
+        "sha256": "b128d3dbf201b6cca283e9efb515ff8f9c415ec422fd9a1a3bf82314696424d3",
+        "purpose": "diff_index_base_authentication_only",
+        "index_must_equal_exact_blob": true
+      },
+      {
+        "path": "scripts/nrf52840/build.sh",
+        "exact_blob_commit": "f45edee87362572fb62826befaf5768c5d201110",
+        "bytes": 10884,
+        "sha256": "12298bb6548b1e91157ee64893f1ba8970217e2d6d32d5b2cb7a6215a0013d0f",
+        "purpose": "diff_index_base_authentication_only",
+        "index_must_equal_exact_blob": true
+      },
+      {
+        "path": "scripts/raspberry-pi/build.sh",
+        "exact_blob_commit": "f45edee87362572fb62826befaf5768c5d201110",
+        "bytes": 6407,
+        "sha256": "5a7ff2a36b26b5aca0534d01256038d70136ae65d73c59491e6ff36b10bc795f",
+        "purpose": "diff_index_base_authentication_only",
+        "index_must_equal_exact_blob": true
+      }
+    ],
+    "note": "Charge worktree and index-base payload consumption on every invocation, plus every returned diff byte; explicit authentication reads are charged again."
+  },
+  "aggregate_accounting": {
+    "cumulative_input_processing_bytes_ceiling": 536870912,
+    "charge_units": "logical content bytes delivered/processed per read/materialization; not physical block-device I/O",
+    "charge_each_time": [
+      "all 79 evidence-file bytes including repeated authentication or semantic reads",
+      "all 48 preservation-only bytes including before/after hash rereads",
+      "every Git-show/index-base blob byte returned for authentication",
+      "each exact diff invocation worktree and index-base payload plus returned stdout/stderr bytes",
+      "all six literal preparation control-metadata bytes and their Git authentication/rereads",
+      "inflated gzip bytes when materialized, in addition to encoded compressed bytes",
+      "stat/list/read-only Git metadata output bytes accepted by the inspector"
+    ],
+    "count_before_accepting_or_materializing": "Reserve known size or bounded chunk against remaining 512 MiB before each file/blob read, diff operation, decompression or metadata response; do not launch an operation with no bounded reservation. Charge actual bytes; never refund repeated bytes.",
+    "no_resets": "one aggregate ledger for entire proposed session, including preservation checks, writing/accounting phase and rereads",
+    "other_limits_unchanged": true,
+    "preserve_terminal_verification_reservation": "Before semantic inspection, reserve the bytes needed for all remaining mandatory after-checks (127 payload hashes, control hashes, exact diff/base authentication and bounded metadata responses). Semantic reads cannot consume that reserve; limit exhaustion leaves rows unresolved and completes preservation/accounting without exceeding 512 MiB."
+  }
+}

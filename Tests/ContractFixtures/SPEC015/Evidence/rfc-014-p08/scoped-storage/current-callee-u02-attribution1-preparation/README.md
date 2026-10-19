@@ -1,6 +1,6 @@
 # P08 U02 retained-evidence attribution 1 preparation — 2026-10-19
 
-Disposition: **NOT READY — separate Strong preparation review pending.**
+Disposition: **NOT READY — B01 correction prepared; separate Strong re-review pending.**
 This is preparation only. No U02 attribution result, dependent inspection
 permission, evidence-producer execution allowance or P08 acceptance is created.
 The result destination below is absent. Complete current-callee and safety proof
@@ -39,15 +39,37 @@ preparation. The accepted contract, selected slice, expected evidence and stop
 rules are settled inputs. No new architecture, contract, source or optional
 deferred work is introduced. A required proof gap remains current work.
 
-## Reviewed provenance and literal input allowlist
+## Reviewed provenance and literal input allowlists
 
-[inputs.json](inputs.json) is the complete literal repository-relative read
-allowlist: **79 files / 126,694,715 distinct encoded bytes**. Every row freezes
-path, exact byte count, SHA-256, full exact-blob commit, equality to the current
-working file, provenance and access mode. No directory, wildcard, discovered
-path, symlink target or sibling is implicitly permitted. Repository root is
-literally `/Users/eugene/work/GiftUI`; resolve allowlisted relative paths only
-beneath it, reject symlinks and changed size/hash before semantic inspection.
+The [independent review](independent-review.md) at
+**e7ddd72c3eb4ac471686d66a5c32c5fab697c8db** stopped the original preparation
+for **B01**: its 79-file claim omitted mandatory preservation content reads.
+This correction supplies separate exact lists and aggregate accounting; the
+historical review remains unchanged. No attribution field or input is widened.
+
+[inputs.json](inputs.json) remains the unchanged literal **evidence** allowlist:
+**79 files / 126,694,715 distinct encoded bytes**, with each row's original
+attribution/authentication access mode. Every row freezes path, exact byte count,
+SHA-256, exact-blob commit, equality, provenance and access mode.
+[preservation-reads.json](preservation-reads.json) separately freezes **48
+preservation-only content paths / 875,385 bytes**: 42 actual-host sources
+(**776,334 bytes**), five dirty files and one cache (**99,051 bytes**).
+The two sets are disjoint. Their union is **127 files / 127,570,100 distinct
+encoded bytes**, before the separately bounded control metadata and diff
+materializations below. The 48 added paths permit only opaque byte hashing/size
+checks and the exact dirty-file diff operation; no semantic source/cache reads.
+
+The preservation manifest also enumerates the only non-content operations:
+three marker lstat identity checks, one nonrecursive listing of the literal
+cache directory per preservation check, and future-result absence lstat. It
+lists the exact six preparation control files separately, under a **2 MiB
+combined distinct-byte ceiling**; their identities must equal the exact
+independently re-reviewed preparation commit. These control records interpret
+allowlists/proof rules and do not become attribution evidence. No other packet
+file, directory, wildcard, discovered path, symlink target or sibling is
+implicitly permitted. Repository root is literally `/Users/eugene/work/GiftUI`;
+resolve allowlisted relative paths beneath it, rejecting symlink components and
+changed size/hash before semantic inspection.
 
 | Evidence chain | Frozen committed/reviewed identity and meaning |
 | --- | --- |
@@ -57,7 +79,7 @@ beneath it, reject symlinks and changed size/hash before semantic inspection.
 | Ref2 | Result `c081a421`, independent review `88b57086`: exact ref not advertised at lookup time only; no U02 proof |
 | This preparation | Exact snapshot `f45edee87362572fb62826befaf5768c5d201110`; authentication equality is recorded, no new attribution |
 
-All 79 exact frozen bytes are available in the stated baseline. The manifest's
+All 79 frozen evidence files are available in the stated baseline. The manifest's
 `evidence_review_commit` records the existing review provenance; it does not
 claim this preparation has independent review. The manifest includes actual-host
 SIL, 25 exact symbol/disassembly pairs, complete serialized index/reference and
@@ -116,12 +138,14 @@ A separately reviewed and authorized Strong attribution pass may use only
 standard-library read-only byte/SHA-256, UTF-8 text/JSON and bounded gzip
 inspection of `retained_attribution_read` inputs. Use `python3 -B` without
 repository imports or execution of old inspection programs; no child command
-except read-only Git blob authentication. Never use a decoder, demangler,
+except read-only Git blob/index authentication and the exact frozen dirty-diff
+operation below. Never use a decoder, demangler,
 compiler, target tool, runtime/controller, collector, qualifier or fixture driver.
 No network or external evidence is part of this slice. No executable launcher
 or inspection program is supplied by this preparation.
 
-1. Start a monotonic session clock; verify preparation commit, exact allowlist,
+1. Start a monotonic session clock and one cumulative byte ledger; verify the
+   preparation commit, both exact content allowlists, six control-file bounds,
    absent literal destination, preservation and all input sizes/hashes first.
    Establish actual model/reasoning setting, review verdict and separate human
    authorization in the new result record before semantic reads.
@@ -173,8 +197,11 @@ separate authorization; unused quantities create no successor permission.
 | Dimension | Maximum / exact boundary |
 | --- | --- |
 | Selected universe | 3 frozen roots; 56 symbol groups; 1,892 copied sites; 4,064 existing object context headers; no expansion |
-| Distinct encoded input | Exact 79 files, 126,694,715 bytes; input mismatch stops before attribution |
-| Total input byte processing | 512 MiB cumulatively, including hash/Git authentication and rereads; count before accepting bytes |
+| Distinct evidence input | Unchanged exact 79 files / 126,694,715 bytes in inputs.json; original per-file access modes |
+| Distinct preservation-only input | Exact disjoint 48 files / 875,385 bytes in preservation-reads.json; hash/size and exact frozen diff only |
+| Combined distinct payload | 127 files / 127,570,100 encoded bytes; mismatch stops before attribution; excludes separately counted controls/diff materializations |
+| Preparation controls | Only six literal paths in preservation-reads.json; combined distinct bytes at most 2 MiB; exact independently re-reviewed commit identities |
+| Total input byte processing | Unchanged 512 MiB cumulatively across every content/control read, Git blob authentication, diff input/output, inflated gzip bytes, metadata responses and every reread; reserve before accepting/materializing bytes |
 | Gzip | 2 literal inventory files only; at most 64 MiB inflated each, 128 MiB total; stop at ceiling, no unbounded decompress |
 | Context retained per selected group | At most 16,384 raw context lines and 1 MiB excerpts; do not print whole captures |
 | Output | At most 8 MiB total UTF-8 result files and 10,000 transcript bytes; no copied raw capture |
@@ -190,13 +217,41 @@ a different destination. Do not write outside these five files. A future
 independent result review is a separately bounded record, not an automatic sixth
 output. No new marker/control mechanism is inferred from this proposed directory.
 
+The **512 MiB** limit is one session-wide ledger, not separate budgets per
+allowlist or phase. The preservation manifest gives the exact charge rules.
+Charge every evidence and preservation read at its full accepted byte length,
+both before and after checks; each returned Git blob counts again. Charge every
+control-file read and Git authentication, compressed bytes plus each inflated
+materialization, and accepted stat/list/Git metadata output. Units are logical
+content bytes consumed/materialized, not physical block-device I/O. Reserve
+known sizes or bounded chunks before each operation; stop before exceeding the
+ceiling. Reserve enough of the remaining budget for every mandatory final
+payload/control hash, exact diff/base authentication and metadata check before
+semantic inspection; semantic reads cannot spend that reserve. There is no reset
+or refund for repeated bytes.
+
+The only permitted dirty-diff command is the literal argv in the preservation
+manifest (`git diff --no-ext-diff --no-textconv --` plus the exact five paths).
+Its current output is **5,230 bytes**, SHA-256
+`731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7`.
+For each invocation charge **54,853 worktree payload bytes + 54,304 exact index
+base payload bytes**, then every stdout/stderr byte. The five baseline Git blob
+sizes/hashes/commit are literal in the manifest; require the index to match them
+first and count those authentication blob reads separately. No external diff or
+textconv execution is permitted. Generated diff bytes are transient hash input,
+not additional semantic evidence; the existing output/transcript limits apply
+if retained. Metadata/control/diff bytes are additional materializations inside
+the same 512 MiB ceiling, not omitted from the 127-file payload accounting.
+
 ## Preservation and STOP
 
 [preservation.json](preservation.json) authenticates the five preexisting dirty
 files (sizes/SHA-256 plus exact diff hash), all 42 actual-host source hashes,
 the exact single cache file/membership, absent future destination and existing
-marker identities. Hash reads are permitted solely for preservation. Source and
-cache contents are never imported, executed, edited or staged.
+marker identities. The separate [literal preservation read list](preservation-reads.json)
+freezes every additional content path/size/hash and exact stat/list/diff operation.
+Hash reads are permitted solely for preservation. Source and cache contents are
+never semantically inspected, imported, executed, edited or staged.
 
 Collection, A-only and I-only markers remain **1/1 consumed**, respectively:
 `/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1`
@@ -241,11 +296,12 @@ Preparation performed documentation reads, parsing/copying the already reviewed
 inventories, and byte/hash/Git-blob authentication only. It did not semantically
 inspect raw SIL/object/source bodies for U02 attribution, follow source/header/
 object material, invoke any evidence producer or create the result destination.
-`inputs.json`, `roots.json`, `selected-rows.json` and `preservation.json` record
-that preparation; they are not results. Five tracked dirty files and the
-preexisting cache remain outside this documentation commit.
+`inputs.json`, `roots.json`, `selected-rows.json`, `preservation.json` and
+`preservation-reads.json` record that preparation; they are not results. Five
+tracked dirty files and the preexisting cache remain outside this documentation
+commit.
 
-Next is **separate Strong review of this exact committed preparation**, including
+Next is **separate Strong re-review of this exact B01 correction**, including
 invariants, complete per-row/site coverage, finite limits, applicability,
 preservation and stop rules. Record actual reviewer model/setting and exact
 reviewed commit. Any correction requires re-review of its concrete revision.
