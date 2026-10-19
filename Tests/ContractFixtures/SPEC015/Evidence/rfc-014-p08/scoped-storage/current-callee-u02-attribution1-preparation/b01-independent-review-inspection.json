@@ -1,0 +1,1288 @@
+{
+  "reviewed_commit": "3db4e1b13a728947569a700f35957bb4d17ef943",
+  "original_commit": "b8c459697098941a317aa0ec014e8a39a6b1206f",
+  "prior_review_commit": "e7ddd72c3eb4ac471686d66a5c32c5fab697c8db",
+  "reviewer_orchestrator_selected_model": "gpt-6.1-sol",
+  "reviewer_orchestrator_selected_reasoning": "high",
+  "runtime_identity_self_attested": false,
+  "verdict": "PASS_B01_RESOLVED_bounded_preparation_readiness_only",
+  "remaining_readiness_blockers": [],
+  "method": "Offline independent standard-library SHA256/JSON/gzip and read-only Git blob/index authentication plus exact frozen no-ext-diff/no-textconv diff. No packet code import/execution or attribution.",
+  "content_files_checked": [
+    {
+      "path": "Sources/GiftUI/BoundedText.swift",
+      "bytes": 6445,
+      "sha256": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "bytes": 7509,
+      "sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/README.md",
+      "bytes": 2175,
+      "sha256": "570df5a7a205332f5f55e73c615909941d18defca1de32098584334e738a111f",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/independent-review-inspection.json",
+      "bytes": 3018,
+      "sha256": "dbc39cec008ceb7bc3b6ca420da7bc3b2c778bdc11e30a05250795f42279c1e7",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/independent-review.md",
+      "bytes": 7656,
+      "sha256": "00d0004dfc86e383fd0a34d644c80cac5e5bec3268e38b2936dbb5fdd628e84e",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw-file-manifest.json",
+      "bytes": 140691,
+      "sha256": "8532be63e94df9f65a4b2eb7cfeb6fd224022c12fa165d29ba08b13b764398fd",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-disassembly.stdout",
+      "bytes": 965629,
+      "sha256": "c3e296adc9a2b91e7570999b440be1e6e2697188f0b0b0cb0dc51a998e02df7c",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-symbols.stdout",
+      "bytes": 183317,
+      "sha256": "2c660b94df670062667b5ebbc9ddc781e2f02e816ee11420f4919bce8de5ec7d",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-disassembly.stdout",
+      "bytes": 651238,
+      "sha256": "35d707d859d6029d113626344f7baaee8fe46b8a91d79813ca59403ba88fada2",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-symbols.stdout",
+      "bytes": 85417,
+      "sha256": "6d36a8049cc68721dbbe77c47012793cf1e44eb143d343a8ea13260eb2eaeddc",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-disassembly.stdout",
+      "bytes": 491299,
+      "sha256": "9f89a454e85ae8cdaf61b1a2a2cf6a4deeb9ab1b66e1edaeec9d6808422c9276",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-symbols.stdout",
+      "bytes": 141167,
+      "sha256": "bed4f6d25c7e20721f0d4ad9d892e74d8d263ecde9d4a011f8b945c35a3ca667",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-disassembly.stdout",
+      "bytes": 36644,
+      "sha256": "400c6d1d9644c8f1951b8dd87f5ddc52bb1970e0862707b9bfc84da79248c5b2",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-symbols.stdout",
+      "bytes": 13694,
+      "sha256": "359b6b7b8392956274f0bcb52e89c71c08e44750fccdb03e0eb449f7fc8e220a",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-disassembly.stdout",
+      "bytes": 655969,
+      "sha256": "c870475b0dc34e2ded57218052083151daa42b1c001e9941989fd92f4639bf91",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-symbols.stdout",
+      "bytes": 65802,
+      "sha256": "2aea66575a9ec5572756f7d43b61fad53f4447cd9a746dda7dfc663b36040af6",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-disassembly.stdout",
+      "bytes": 1748716,
+      "sha256": "3bc854e5ce88884be1933cf79079f628dc109116755a15e7fd1874adc4386735",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-symbols.stdout",
+      "bytes": 324587,
+      "sha256": "a3fc2f35a2ab345fe9efdd7662a3416edc53805136929cf532a06e8cdf67bd13",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-disassembly.stdout",
+      "bytes": 250009,
+      "sha256": "566c344c5b586802b2a25f1ca6ca7f5d641bb1510dc9630568f0a95636790c89",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-symbols.stdout",
+      "bytes": 79565,
+      "sha256": "a4a06674a2c0ea1ad051b5a502e1c879413626adac77f6daa99ac9cb92b02443",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-disassembly.stdout",
+      "bytes": 4019172,
+      "sha256": "c9590dcc1d56ad375ac85e18220adc78cb188c925292c44733ec354f9c5048f5",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-symbols.stdout",
+      "bytes": 332487,
+      "sha256": "c6f037b559d3c77f35dc135f15726bf70ebcafb29b04394686cdd81bde4ebfa4",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-disassembly.stdout",
+      "bytes": 905402,
+      "sha256": "771dc671e0b3780a1b9a67fef3ce02f12acaa4bba22a14b6a7fcb9cc929bf032",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-symbols.stdout",
+      "bytes": 96219,
+      "sha256": "b67a2eace99806e37257f667f9a6f766451ff18f1aeb4c3d293ed311e46c043c",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-disassembly.stdout",
+      "bytes": 1140821,
+      "sha256": "716854c7cc1a98bc02c16590b89744764fe8dd0c600aca0600fafda8abfcc137",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-symbols.stdout",
+      "bytes": 73517,
+      "sha256": "ad92675dbf22f2790065f00c086bdab98e495876e70ee79a9731864d4217a194",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-disassembly.stdout",
+      "bytes": 1254642,
+      "sha256": "9acd925d033115bd941debd5a226239949e97e4da77f3c187ddfa95f25cca97f",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-symbols.stdout",
+      "bytes": 131444,
+      "sha256": "9e34f715c66f11f52359ed5457981f4c65cd8d9ef5c03a86d7780be1b22bfeb1",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-disassembly.stdout",
+      "bytes": 673879,
+      "sha256": "d2235334b93d736c4cf9a6d4dfb03770b092e88afacf62f7fd5e54e48a5be31d",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-symbols.stdout",
+      "bytes": 65797,
+      "sha256": "b3454ab96cac2d6b91dd2b681d875b90ec04a5437f0d7df4296c497a806a2dc6",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-disassembly.stdout",
+      "bytes": 3635166,
+      "sha256": "e828edc7951785ef8d23e00f73fa74cc0be52c996870c40b845b498d89f4f5f6",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-symbols.stdout",
+      "bytes": 564684,
+      "sha256": "0a2fcbc2a2427ac2c06af89ac0bfa8a0c728f76b94127a8046a22b5a213d8ffb",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-disassembly.stdout",
+      "bytes": 124454,
+      "sha256": "dc8f9e5c44b8e2bf1d90767460ce3b4c383c206b374423a259f9990bfacab7f9",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-symbols.stdout",
+      "bytes": 37432,
+      "sha256": "45497e731615ab4407a20c816cd33c3ac45452f315e6fc34f1bb60eef67570e2",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-disassembly.stdout",
+      "bytes": 605963,
+      "sha256": "4cbfd465a411a90fe44af0a59b1f2a5f4e104ee1f4851f8eac96ecef20da0093",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-symbols.stdout",
+      "bytes": 37907,
+      "sha256": "e6d4afa997fdff0ae91d18bc1cd26435828aeba4d32f53b6428ce764f8b897aa",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-disassembly.stdout",
+      "bytes": 1237348,
+      "sha256": "06324e4dd7ea480371cbfcfc9f5395a033000ce7bcba002833d5b3725f89006c",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-symbols.stdout",
+      "bytes": 176898,
+      "sha256": "911145ad5cd7f2a44f81dc4d97c220a12e681c5b0e576d4f576f409f3f3b0879",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-disassembly.stdout",
+      "bytes": 1041632,
+      "sha256": "8f6a6fa8ed67e4e0699d55ff4c2242ab7d6e2f70253ea4ae3c2b6c9955984e1e",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-symbols.stdout",
+      "bytes": 141101,
+      "sha256": "c2a6ae8c0765c3b4c5039fe4c9944714beee9a223e705fdb6d132966b9194179",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-disassembly.stdout",
+      "bytes": 2592864,
+      "sha256": "54b77ee1c145f293a78fa8b18423f11efd8873b495eb67ef485a3059d2159b65",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-symbols.stdout",
+      "bytes": 88104,
+      "sha256": "f518c968a3dd48413be74570954fe64d8feb97369f773ec1b154f6d49730c27e",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-disassembly.stdout",
+      "bytes": 4035988,
+      "sha256": "808f12f81e643cc6c9bfebe1abed9fa2faedc4c2287d0fa6f1bb82ceb22306b6",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-symbols.stdout",
+      "bytes": 213807,
+      "sha256": "368408887e33f34676d272044029ef16fc27cde82623054afb2d2e56d4800cc1",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-disassembly.stdout",
+      "bytes": 18663,
+      "sha256": "9b362e3a97cbbf6392162f9e8cc183fc1e51b5406ec2f1631eb4662c5fe4589e",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-symbols.stdout",
+      "bytes": 7481,
+      "sha256": "0be7989d8d408fc92f9c778e0ff9853325e4731f702ff4cbbbffdd5fed339f30",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-disassembly.stdout",
+      "bytes": 420605,
+      "sha256": "c56b9e961a473e9d196c659b1851ffd3c8d91baba76f4fbc586850f903c2a8c3",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-symbols.stdout",
+      "bytes": 53131,
+      "sha256": "3c4ac6df9682d2b1cf78862b80222cefcb0abec0d241af9960ac68cd834c2417",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-disassembly.stdout",
+      "bytes": 181889,
+      "sha256": "7c3ad980048659206089608608efa458f825aa17911d7737f606f3c9eba4e927",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-symbols.stdout",
+      "bytes": 25023,
+      "sha256": "331f22802cd15e56746c91476ff89651bf1f8d79913d03bb46b4ece4b2070918",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-disassembly.stdout",
+      "bytes": 26255090,
+      "sha256": "8371140b87d30015cf0b277045ec1b8a5813c26ce5709d55e163917b3e4c3362",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-symbols.stdout",
+      "bytes": 1201222,
+      "sha256": "b391ad57a0f68b4bec189bd154ba4952695fe39bb4eb18d6e62042cc1a0a2b90",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-disassembly.stdout",
+      "bytes": 9188,
+      "sha256": "89f0249e070e57c36da79bba4ba4e2f8dc79660fb86e2385196791b52e81949f",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-symbols.stdout",
+      "bytes": 4956,
+      "sha256": "53d0b6492a9eeb6e06805e540746eaa6a7d7e0993e26d56831f4daa3ff2e6ba4",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-disassembly.stdout",
+      "bytes": 21973,
+      "sha256": "796eab16c92b4326e9a85f0a874856f38c76fa302dded343ec9eb93789836905",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-symbols.stdout",
+      "bytes": 7312,
+      "sha256": "973a5273f10deb02e35524570d158ce73c79bde32358fb6b353db0616f82001a",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/actual-host.sil",
+      "bytes": 62139693,
+      "sha256": "6cc9e7b6cecbeb46dd71b2ac8b6e023182354e7fcc08c814374b9c23303c71ed",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/boundary-physical-index.json",
+      "bytes": 4690424,
+      "sha256": "9b67676aa047e5d4b8f654854f518acacde3c526f3c9229fdba4b4f2f7174298",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/required-bodies.json",
+      "bytes": 151353,
+      "sha256": "907d583bc6b6a43457ec57d30d778dbed41e51682f96b41b2f1ef81ee6892070",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/terminal.json",
+      "bytes": 680851,
+      "sha256": "41c38e4ececed6f5cbd91d6eb2387642e316752ff61d7928a7b1633302a8cf2a",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/README.md",
+      "bytes": 20623,
+      "sha256": "e4dbd6e6e7facb2ba4832940c0c229ca2655f4b6c70d89ea057b756fcfd58b63",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review-inspection.json",
+      "bytes": 14334,
+      "sha256": "b7e7575bcdb375e1068b1e4f648ecb154449c91da45c377dbd0bd2fa29ffa0cd",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review.md",
+      "bytes": 9824,
+      "sha256": "c4374687e404be2e3c3de8e73f4ad199a7bed4219972f64d03aa2a97a2b6c2ee",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/inspect.py",
+      "bytes": 15037,
+      "sha256": "3c57b50bfc4cc5147d4b1e1ed767e06b0a26d343315ef4c6e39d6b290a696d18",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/inspection-summary.json",
+      "bytes": 1974,
+      "sha256": "409fc3fa3ddf82a9a53d8ff00a1c76bdf48e4eacf961e7a9a28eb7eb4a540a58",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/object-inventory.json.gz",
+      "bytes": 1033539,
+      "sha256": "87df0a548b79008aa0935788900ccebad58d1676c6bc4118bc7939e6af1b7c0b",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/privacy-control-join.json",
+      "bytes": 68231,
+      "sha256": "c56528a7688fce44b7e89a637fb344c2d24d5533df73e196848a237f30138072",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/required-body-join.json",
+      "bytes": 70460,
+      "sha256": "c5b1b4d1057fe3aed16d5f72ff835be6b948fcaf282869069b490369251e3caa",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/sil-inventory.json.gz",
+      "bytes": 345990,
+      "sha256": "e433fbd2a2eb08e248b65f1c605bb6be94e3f6086c08904170efc754a31f7b8a",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/preserved-dirty-files.json",
+      "bytes": 942,
+      "sha256": "00e65144643e2ddc66cf923b902192eb8afc9e4a6ecd0afe4082af7fc4634489",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/source42.json",
+      "bytes": 8366,
+      "sha256": "27248b41a5f120471f6b6092ff27c1b01e076a92d9e2c61561bada91d59b0df9",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/README.md",
+      "bytes": 17382,
+      "sha256": "a2d66b770ecadaec9b487b7e1e7b9f84629807586631261a3dd81089498b7f65",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review-inspection.json",
+      "bytes": 19924,
+      "sha256": "d827454612ae7f6ede4d40d6bebfbd7f280fecb7e0126ef40a1284106928a874",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review.md",
+      "bytes": 6776,
+      "sha256": "0d6c514607ad62c4484482b0a1c5ed0fe4e65c3455d5efe7fcbf64b6705818d0",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/inspection.json",
+      "bytes": 24426,
+      "sha256": "6d9fc972cfbe4825d1bffe508657b1ee8dbb6bf75e698e6f234fc16092383a44",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/retained-excerpts.txt",
+      "bytes": 46504,
+      "sha256": "6ffc059c6584521e885b6d2252f49a398513a5b90d7ce83bdf2dbed7421d7ff0",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-next-step-after-git-ref2.md",
+      "bytes": 6581,
+      "sha256": "38030db206b8d2fe0fbd6859928842a725440c37e6294d5d41281bbcddd0e472",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/result-independent-review-inspection.json",
+      "bytes": 19564,
+      "sha256": "7f7b8f1a3a459c934e2283158fcda801a19073b48bb650d532450859ede68081",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/result-independent-review.md",
+      "bytes": 8109,
+      "sha256": "6a22dfa6f833eaf7fd6f6a40dbf1295c3f241b89bcab5aabdeff637736220f47",
+      "set": "evidence",
+      "matches": true,
+      "no_symlink": true,
+      "baseline_blob_equal": true
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+      "bytes": 9440,
+      "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+      "bytes": 2048,
+      "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+      "bytes": 15700,
+      "sha256": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+      "bytes": 5901,
+      "sha256": "60d013e2570e5ea3ac6efbbadb97dd79d6b7fa0a47e680e72a7071909fddb686",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "bytes": 6503,
+      "sha256": "1129e33dcab9bb075d3c11dac16cedd72c26efad6da87adc204b68de25408ee7",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+      "bytes": 24992,
+      "sha256": "342585dd23bc2916176535bfdb9efd7ba115a138047afe3fcda082acbf7adf8e",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+      "bytes": 10682,
+      "sha256": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+      "bytes": 1642,
+      "sha256": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift",
+      "bytes": 14240,
+      "sha256": "b1f575db79c688b2534ebe3681fea99864222715f8b9ef83dd3fcde16e261c9f",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift",
+      "bytes": 1096,
+      "sha256": "cf9f5467416298dd64f604f5d0edf436b1736dc5972d78721da38c61151cb588",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+      "bytes": 17027,
+      "sha256": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+      "bytes": 8749,
+      "sha256": "be59651c2f7f657f1785f51fa31767f6319dc543c023d901057fa0deb4bace81",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+      "bytes": 27426,
+      "sha256": "d084112a1ee54cc8c01fc5f24a7416ee3a6b23afdc6710f42635a76c370fea26",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+      "bytes": 17169,
+      "sha256": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift",
+      "bytes": 2755,
+      "sha256": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift",
+      "bytes": 3358,
+      "sha256": "d6cdcf1f033a26225d856eb4dd4c5401b76b63d7f78040e111417cdb82bfa41c",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+      "bytes": 25371,
+      "sha256": "46ab40914dade59536f53650bd97ce8d74ee57da86a8a826330f629c64a89f9c",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "bytes": 73656,
+      "sha256": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift",
+      "bytes": 4411,
+      "sha256": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "bytes": 41983,
+      "sha256": "f7152c3e886322e482aaa040b98f15ac820d0aa9a15af86260229bc56df64010",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift",
+      "bytes": 9577,
+      "sha256": "b14a1667a899fc539c8a8d8011d2e377188ce0300012e464ac1f0d1203a999ab",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "bytes": 1691,
+      "sha256": "bfcf074ec49455e7d5cc527b4a65cf9b9374da2c96914f8b8bdf8908ca90ec6b",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "bytes": 254803,
+      "sha256": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift",
+      "bytes": 565,
+      "sha256": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "bytes": 2115,
+      "sha256": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "bytes": 12910,
+      "sha256": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift",
+      "bytes": 4999,
+      "sha256": "c49cc7ad1d5de5bcc3a228defd78ce16a1d6e56c775d9227f5648339540eaa2c",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift",
+      "bytes": 12814,
+      "sha256": "abae5f87b3390863d8a68657c98b46a0fe9829f96a332affe44fbbb4fcce4d5a",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift",
+      "bytes": 7999,
+      "sha256": "6d713ae96bf4982c46f30289068dc97e5d4e32e3dae69f1874dd5e808d053d2b",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift",
+      "bytes": 25233,
+      "sha256": "06b5775b618a78b757495de8c86a2352b8e8371e0c854f3d93463f685585f05e",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+      "bytes": 22685,
+      "sha256": "bfe4a208dd72fe47cb2a72331228cf9c9981114e03d49a91b99541957e7f80b5",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+      "bytes": 5050,
+      "sha256": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift",
+      "bytes": 10654,
+      "sha256": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift",
+      "bytes": 12042,
+      "sha256": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift",
+      "bytes": 10872,
+      "sha256": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift",
+      "bytes": 8215,
+      "sha256": "36d137a0fdf0d6159dfc8502b86bd5bc78037fa1cfa5a86038513c9523b31677",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+      "bytes": 4288,
+      "sha256": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift",
+      "bytes": 19446,
+      "sha256": "0e13001714af86c5f93cc150678c07c0b3a32c58b3a524fd43edb23eae19990b",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift",
+      "bytes": 7294,
+      "sha256": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift",
+      "bytes": 8687,
+      "sha256": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift",
+      "bytes": 10957,
+      "sha256": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift",
+      "bytes": 5420,
+      "sha256": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift",
+      "bytes": 3860,
+      "sha256": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift",
+      "bytes": 11497,
+      "sha256": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+      "bytes": 26018,
+      "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
+      "bytes": 44198,
+      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "scripts/nrf52840/build.sh",
+      "bytes": 10914,
+      "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    },
+    {
+      "path": "scripts/raspberry-pi/build.sh",
+      "bytes": 6433,
+      "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea",
+      "set": "preservation",
+      "matches": true,
+      "no_symlink": true
+    }
+  ],
+  "evidence_count": 79,
+  "evidence_bytes": 126694715,
+  "preservation_count": 48,
+  "preservation_bytes": 875385,
+  "disjoint_sets": true,
+  "combined_count": 127,
+  "combined_bytes": 127570100,
+  "preservation_manifest_equals_exact_source42_dirty_cache_union": true,
+  "control_files": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/README.md",
+      "bytes": 22022,
+      "sha256": "a8413884de82ee7d696fb81fa2d834ea8e2a60e0d61e1965799221596caf0301",
+      "reviewed_commit_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/inputs.json",
+      "bytes": 48197,
+      "sha256": "83535ca92bdefd3f132133d88a10a6ff65530f2219547009de9852f007fd23bf",
+      "reviewed_commit_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/roots.json",
+      "bytes": 70161,
+      "sha256": "ce9e7d4b62c885230f970d831ef84f3d1b3d02bf87de3e809415431777d259c0",
+      "reviewed_commit_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/selected-rows.json",
+      "bytes": 867601,
+      "sha256": "0c0953116114e7e5f1c61671faa07f125a6b9c33b5e00894fbf570822fdcc064",
+      "reviewed_commit_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/preservation.json",
+      "bytes": 2214,
+      "sha256": "4dc777db0f14d7ac00fb72e2a75dca5ee2c39420f3ff1bfddc4639d6928494ab",
+      "reviewed_commit_blob_equal": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/preservation-reads.json",
+      "bytes": 28190,
+      "sha256": "31ed4e23365cadc34891028651eb64962625d62a09e4501c8c4fe2093fdc250d",
+      "reviewed_commit_blob_equal": true
+    }
+  ],
+  "control_bytes": 1038385,
+  "control_ceiling_bytes": 2097152,
+  "original_payload_manifests_unchanged": {
+    "inputs.json": true,
+    "roots.json": true,
+    "selected-rows.json": true,
+    "preservation.json": true
+  },
+  "historical_review_unchanged": {
+    "independent-review.md": true,
+    "independent-review-inspection.json": true
+  },
+  "diff_index_base_authentication": [
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+      "bytes": 9325,
+      "sha256": "d1979fae46d376cb1402d3972e317f252898bc8bfbe1e025d1bf260d7469a8ec",
+      "exact_commit_and_index_equal": true
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+      "bytes": 2056,
+      "sha256": "a4b58ce69220e2145480a90a202dfa820290d63b6af77618d65781a56522fac5",
+      "exact_commit_and_index_equal": true
+    },
+    {
+      "path": "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+      "bytes": 25632,
+      "sha256": "b128d3dbf201b6cca283e9efb515ff8f9c415ec422fd9a1a3bf82314696424d3",
+      "exact_commit_and_index_equal": true
+    },
+    {
+      "path": "scripts/nrf52840/build.sh",
+      "bytes": 10884,
+      "sha256": "12298bb6548b1e91157ee64893f1ba8970217e2d6d32d5b2cb7a6215a0013d0f",
+      "exact_commit_and_index_equal": true
+    },
+    {
+      "path": "scripts/raspberry-pi/build.sh",
+      "bytes": 6407,
+      "sha256": "5a7ff2a36b26b5aca0534d01256038d70136ae65d73c59491e6ff36b10bc795f",
+      "exact_commit_and_index_equal": true
+    }
+  ],
+  "diff_stdout_bytes": 5230,
+  "diff_stdout_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+  "diff_stderr_bytes": 0,
+  "diff_argv": [
+    "git",
+    "diff",
+    "--no-ext-diff",
+    "--no-textconv",
+    "--",
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
+    "scripts/nrf52840/build.sh",
+    "scripts/raspberry-pi/build.sh"
+  ],
+  "diff_worktree_payload_bytes": 54853,
+  "diff_index_payload_bytes": 54304,
+  "rows": {
+    "symbols": 56,
+    "sites": 1892,
+    "exact_inventory_groups_equal": true,
+    "initially_unresolved_NOT_EXECUTED": true,
+    "root_memberships_and_joins_unchanged_equal_inventories": true
+  },
+  "preservation": {
+    "all_current_content_hashes_match": true,
+    "markers": {
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": {
+        "actual": [
+          16777234,
+          29640436
+        ],
+        "expected": [
+          16777234,
+          29640436
+        ]
+      },
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": {
+        "actual": [
+          16777234,
+          29650609
+        ],
+        "expected": [
+          16777234,
+          29650609
+        ]
+      },
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": {
+        "actual": [
+          16777234,
+          29652748
+        ],
+        "expected": [
+          16777234,
+          29652748
+        ]
+      }
+    },
+    "cache_membership": [
+      "p08_layout_facts.cpython-314.pyc"
+    ],
+    "future_result_destination_absent": true
+  },
+  "aggregate_ledger_review": {
+    "ceiling_bytes": 536870912,
+    "one_ledger_no_resets": true,
+    "all_payload_and_control_reads_and_authentication_rereads_included": true,
+    "diff_worktree_and_index_consumption_plus_stdout_stderr_included": true,
+    "encoded_plus_inflated_gzip_bytes_included": true,
+    "stat_list_Git_metadata_bytes_included": true,
+    "reservation_before_operation_required": true,
+    "mandatory_terminal_reservation_before_semantics_required": true,
+    "known_terminal_bytes_with_two_blob_authentication_reads_per_diff_base": 128831480,
+    "terminal_metadata_additional_bounded_reservation_required": true,
+    "terminal_formula": "127 payload hashes + six control hashes + diff worktree/index payloads + diff stdout/stderr + exact/index base authentication; bounded metadata responses are additional, not free",
+    "actual_inflated_inventory_bytes": {
+      "sil": 4629201,
+      "object": 18997145
+    },
+    "limits_unchanged": true
+  },
+  "limitations": "Technical readiness only. Separate human attribution authorization and independent Strong result review remain required; all U01-U05/callee/safety/P08 and strict-cold gates stay open.",
+  "post_review_checks": {
+    "all_127_content_hashes_match": true,
+    "six_control_hashes_match": true,
+    "exact_diff_match": true,
+    "markers_match": true,
+    "cache_membership_match": true,
+    "future_result_absent": true
+  }
+}

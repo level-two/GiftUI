@@ -1,5 +1,12 @@
 # RFC-014 task context guide
 
+Current P08 U02 preparation B01 re-review — **PASS / technical readiness**.
+The [exact 3db4e1b1 Strong re-review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/b01-independent-review.md)
+resolves B01: disjoint 79+48 content sets, six exact controls and one inclusive
+512 MiB ledger with terminal reserve. Original inputs/roots/56 rows/1,892 sites
+and preservation match. Separate human attribution authorization remains required;
+no execution allowance or P08 gate closure follows. Earlier checkpoints are historical.
+
 Current P08 U02 B01 correction — **NOT READY / separate Strong re-review pending**.
 The [corrected packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/README.md)
 keeps 79 evidence inputs separate from 48 literal preservation-only reads:
