@@ -105,3 +105,29 @@ the lock SHA-256 is retained. Only source/packet pins change. Validation is AST
 and byte/hash/JSON/stat inspection only, with no controller execution/import.
 Readiness remains NOT READY pending separate independent re-review. Historical
 review records are unchanged; all preservation and no-follow boundaries remain.
+
+
+## Startup-environment correction after diagnostic 9542d659
+
+Only the pre-marker environment predicate and its pins are revised. The exact
+launch still supplies `env -i LANG=C LC_ALL=C TZ=UTC` before the same absolute
+Python and -I/-S/-B flags. All inherited entries are discarded before Python
+starts. The standalone probe confirms the runtime then adds exactly
+`__CF_USER_TEXT_ENCODING=0x1F5:0x7:0x3D`. The controller ENV constant and runtime
+lock now pin that exact fourth key/value. The predicate requires exact equality
+of actual environment, ENV and lock startup_environment. It neither accepts
+arbitrary values nor removes/ignores unexpected keys; missing/different CF
+encoding or any extra entry stops before the marker. Launch receipt records the
+actual four-entry environment; request.json distinguishes the three-entry launch
+input from the four-entry startup state. No proxy, credential, cookie, tracing,
+Python/site or Git/config variable is introduced.
+
+[startup-environment-probe.py](startup-environment-probe.py) is a separate script
+that imports only the same stdlib modules in order and prints environment and
+runtime identity/flags. It never reads/imports/executes controller code, connects
+or creates a marker. Its exact command and retained stdout are in the correction
+inspection. All runtime dependency hashes/membership remain unchanged; only the
+lock's explicit environment metadata and resulting lock/source pins change.
+Readiness is NOT READY pending separate Strong review. The failed earlier
+attempt stays failed, with no automatic retry, session allowance or repair
+budget reset. A later launch needs separate authorization after review.

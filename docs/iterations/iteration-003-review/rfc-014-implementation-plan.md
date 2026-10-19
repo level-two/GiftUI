@@ -1,6 +1,17 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current P08 launch boundary — **STOP / failed pre-marker attempt; no retry**.
+Current P08 startup correction — **offline prepared; NOT READY pending separate Strong review**.
+The [startup-environment correction](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/startup-environment-correction.md)
+pins exactly the observed fourth __CF_USER_TEXT_ENCODING entry after the unchanged
+env -i three-entry input. A standalone non-controller probe reproduces the final
+expected environment. Source/lock/request pins are revised, dependency bytes and
+all request/body/full-stream/TLS/deadline/receipt boundaries remain binding.
+No controller import/execution, network or marker during correction; prior failed
+attempt remains failed. No retry/repair-budget reset or launch authorization.
+API 1/1, five dirty files/cache, three 1/1 markers and P08 open gates preserved.
+Separate Strong review then separate launch authorization are required.
+
+Prior P08 launch boundary — **STOP / failed pre-marker attempt; no retry**.
 The [offline diagnostic](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/failed-launch-diagnostic.md)
 reproduces an extra runtime environment entry failing the exact check before
 mkdir. Reported tool exit 1/empty output does not prove process start/exception.

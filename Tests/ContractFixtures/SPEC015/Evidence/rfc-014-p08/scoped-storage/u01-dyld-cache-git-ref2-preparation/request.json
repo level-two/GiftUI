@@ -28,10 +28,10 @@
   ],
   "network_execution_ready": false,
   "controller": "controller.py",
-  "controller_sha256": "50e71a68c2338711bab014489bc4aa039c0e6f93994fd40dc74471093df3b752",
+  "controller_sha256": "9125e13998120ae2f15d71948110b5141c0915e7939955595c6f41076057a374",
   "runtime_lock": "runtime-lock.json",
-  "runtime_lock_sha256": "aec1718d0aa2b1574a7aa30010743dcad8fc2982c2bdac2b738c7539219c99fa",
-  "controller_commit": "3af5a9f8 initial / a61bb9e3 packet; full-stream B01 correction in this commit",
+  "runtime_lock_sha256": "4e357ba8bc5ff1c41135ef25afeb76a03265577455dbf8390945c70caa72f33a",
+  "controller_commit": "offline startup-environment correction after diagnostic 9542d659; exact final bytes identified by external pins",
   "git_executable_used": false,
   "environment": {
     "LANG": "C",
@@ -49,8 +49,8 @@
     "-S",
     "-B",
     "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/controller.py",
-    "aec1718d0aa2b1574a7aa30010743dcad8fc2982c2bdac2b738c7539219c99fa",
-    "50e71a68c2338711bab014489bc4aa039c0e6f93994fd40dc74471093df3b752"
+    "4e357ba8bc5ff1c41135ef25afeb76a03265577455dbf8390945c70caa72f33a",
+    "9125e13998120ae2f15d71948110b5141c0915e7939955595c6f41076057a374"
   ],
   "fixed_result_directory": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-result",
   "one_shot_marker": "exclusive fixed result directory; never remove/replace/resume/change destination",
@@ -63,8 +63,15 @@
   "network_sessions_launched": 0,
   "HTTP_requests_emitted": 0,
   "automatic_repairs": 0,
-  "readiness": "NOT READY; separate independent re-review required",
+  "readiness": "NOT READY; separate Strong review required; no launch or retry authorization",
   "runtime_identity_limit": "System shared-cache dependencies identified by exact OS release/kernel build, not extracted/hashed or attested.",
-  "previous_review": "controller-independent-review.md at 49228097; B01 full-stream correction requires separate re-review",
-  "full_retained_stream_policy": "Every retained stream reaching CAP (1048576 bytes) is STOP, including complete framed GET before parsing/POST. Body bytes count before equality rejection. Supervisor retains size/hash and full-stream names while forcing STOP."
+  "previous_review": "failed-launch-diagnostic.md at 9542d659; earlier launch attempt remains failed; fresh Strong review and separate launch authorization required",
+  "full_retained_stream_policy": "Every retained stream reaching CAP (1048576 bytes) is STOP, including complete framed GET before parsing/POST. Body bytes count before equality rejection. Supervisor retains size/hash and full-stream names while forcing STOP.",
+  "startup_environment": {
+    "LANG": "C",
+    "LC_ALL": "C",
+    "TZ": "UTC",
+    "__CF_USER_TEXT_ENCODING": "0x1F5:0x7:0x3D"
+  },
+  "startup_environment_policy": "env -i supplies only LANG=C LC_ALL=C TZ=UTC; pinned runtime adds exactly __CF_USER_TEXT_ENCODING=0x1F5:0x7:0x3D. Require exact four-entry equality with controller and runtime lock; absence/difference/extra entries STOP. No arbitrary inherited value accepted."
 }

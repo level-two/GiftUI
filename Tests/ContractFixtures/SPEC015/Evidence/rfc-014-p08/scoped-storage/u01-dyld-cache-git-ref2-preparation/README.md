@@ -1,6 +1,16 @@
 # U01 exact Git ref route 2 preparation — 2026-10-19
 
-**Current disposition: STOP / failed pre-marker launch; no automatic retry.**
+**Current disposition: offline startup-environment correction prepared; NOT READY
+pending separate Strong review.** The [correction](startup-environment-correction.md)
+pins only the observed additional __CF_USER_TEXT_ENCODING value while retaining
+the exact env -i three-entry launch input and strict four-entry startup equality.
+A standalone non-controller probe reproduces the exact expected environment.
+Controller/request/lock pins are revised; no controller import/execution, network
+or marker occurred during this correction. The failed prior attempt remains
+failed, with no retry or repair-budget reset. Separate review and then separate
+launch authorization are required. Earlier checkpoints below are historical.
+
+**Prior disposition: STOP / failed pre-marker launch; no automatic retry.**
 The [offline diagnostic](failed-launch-diagnostic.md) reproduces an extra
 `__CF_USER_TEXT_ENCODING` entry in the exact clean Python invocation, causing
 the strict environment check to fail before the marker. The reported tool exit

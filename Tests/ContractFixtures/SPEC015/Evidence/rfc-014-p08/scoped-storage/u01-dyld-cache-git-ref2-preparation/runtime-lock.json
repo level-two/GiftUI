@@ -2170,9 +2170,20 @@
     "/opt/homebrew/opt/openssl@3/lib/libcrypto.3.dylib": "a12805a18cd5e4f733fa8727b91afa08b587f9da5a760517cd79cb508a3a3f71",
     "/opt/homebrew/opt/openssl@3/lib/libssl.3.dylib": "ffd8ac6981000def0928367924b6cb1e7a98712efbc06e2a2f3f750138bd89ca"
   },
+  "launch_environment": {
+    "LANG": "C",
+    "LC_ALL": "C",
+    "TZ": "UTC"
+  },
   "os_release": "25.6.0",
   "os_version": "Darwin Kernel Version 25.6.0: Fri Jul 31 19:16:36 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_T6030",
   "ssl_version": "OpenSSL 3.6.3 9 Jun 2026",
+  "startup_environment": {
+    "LANG": "C",
+    "LC_ALL": "C",
+    "TZ": "UTC",
+    "__CF_USER_TEXT_ENCODING": "0x1F5:0x7:0x3D"
+  },
   "stdlib": "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14",
   "stdlib_members": [
     "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/__future__.py",

@@ -1,7 +1,7 @@
 {
   "cache_membership_matches": true,
   "controller_executions": 0,
-  "controller_sha256": "50e71a68c2338711bab014489bc4aa039c0e6f93994fd40dc74471093df3b752",
+  "controller_sha256": "9125e13998120ae2f15d71948110b5141c0915e7939955595c6f41076057a374",
   "full_stream_correction": "full-stream-correction-inspection.json; offline only; separate re-review required",
   "header_bytes": 0,
   "header_candidates": 0,
@@ -36,7 +36,8 @@
   "repairs": 0,
   "result_directory_exists": false,
   "retries": 0,
-  "runtime_lock_sha256": "aec1718d0aa2b1574a7aa30010743dcad8fc2982c2bdac2b738c7539219c99fa",
+  "runtime_lock_sha256": "4e357ba8bc5ff1c41135ef25afeb76a03265577455dbf8390945c70caa72f33a",
+  "startup_environment_revision": "startup-environment-correction-inspection.json; offline only; separate Strong review required",
   "status": "offline source preparation only; readiness NOT READY",
   "stdlib_and_bytecode_membership_pinned": true,
   "syntax_ast_parse": "PASS; no import or execution of controller",

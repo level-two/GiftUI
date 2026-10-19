@@ -1,0 +1,26 @@
+{
+  "actual_environment": {
+    "LANG": "C",
+    "LC_ALL": "C",
+    "TZ": "UTC",
+    "__CF_USER_TEXT_ENCODING": "0x1F5:0x7:0x3D"
+  },
+  "controller_imports_or_executions": 0,
+  "exact_match": true,
+  "executable": "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+  "expected_environment": {
+    "LANG": "C",
+    "LC_ALL": "C",
+    "TZ": "UTC",
+    "__CF_USER_TEXT_ENCODING": "0x1F5:0x7:0x3D"
+  },
+  "flags": {
+    "dont_write_bytecode": 1,
+    "isolated": 1,
+    "no_site": 1
+  },
+  "network_operations": 0,
+  "scope": "standalone standard-library imports and environment observation only",
+  "ssl_version": "OpenSSL 3.6.3 9 Jun 2026",
+  "version": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]"
+}

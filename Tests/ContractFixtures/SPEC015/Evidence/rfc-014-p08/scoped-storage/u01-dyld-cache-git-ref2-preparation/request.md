@@ -97,7 +97,7 @@ No Git executable/library or repository discovery/configuration is used. There
 is no config/URL rewrite mechanism to isolate. No empty descendant directory is
 created or asserted as isolation. The pinned `env -i` invocation and `-I -S -B`
 remove inherited environment/Python/site effects before interpreter startup;
-the controller requires exactly LANG=C, LC_ALL=C and TZ=UTC. Direct sockets do
+the controller requires the exact four-entry startup environment below. Direct sockets do
 not read proxy settings, credential/cookie providers, Git config or tracing.
 Offline AST import inspection confirms no subprocess/HTTP-client imports;
 independent review must inspect the actual construction and call paths.
@@ -146,3 +146,27 @@ P08/R07/T8.1/conformance and I4-07/P09–P12 stay open. No architecture, contrac
 scope, criterion, resource exception, lifecycle or repair allowance changed.
 Actual contract/scope choices return to the parent for requested Astra Medium
 review. No such choice was needed for this preparation.
+
+
+## Current offline startup correction — NOT READY
+
+Diagnostic 9542d659 demonstrated that the prior invocation yields one additional
+OS/runtime-added entry, `__CF_USER_TEXT_ENCODING=0x1F5:0x7:0x3D`, before the strict
+check. The invocation remains exactly `env -i LANG=C LC_ALL=C TZ=UTC` with the
+pinned interpreter and -I/-S/-B. No inherited entry survives that prefix. The
+controller and runtime lock now require precisely those three supplied entries
+plus that exact CF key/value after imports. No wildcard, normalization, variable
+lookup/default, extra variable or arbitrary CF value is allowed. Missing/different
+values or additional entries stop before marker creation. The launch receipt's
+actual environment has four entries; request.json's environment is still the
+three-entry launch input and startup_environment pins the observed runtime state.
+
+The exact standalone [probe](startup-environment-probe.py), its
+[stdout](startup-environment-probe.stdout.json) and
+[offline inspection](startup-environment-correction-inspection.json) reproduce
+this state without controller execution/import. Source and runtime-lock external
+pins are revised. This correction does not replay the failed launch, grant a
+retry, create a marker, contact network or reset any repair budget. Separate
+Strong review and then separate launch authorization are required. All other
+request, byte/full-stream, TLS, deadline, protocol, receipt and no-follow rules
+remain binding. Earlier reviews/diagnostic remain unchanged historical evidence.

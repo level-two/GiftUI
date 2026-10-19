@@ -28,7 +28,10 @@ REF = b'refs/tags/macos-2662'
 CAP = 1048576
 HEADER_CAP = 65536
 FRAMING_CAP = 65536
-ENV = {'LANG': 'C', 'LC_ALL': 'C', 'TZ': 'UTC'}
+# env -i supplies only LANG/LC_ALL/TZ; this pinned macOS runtime adds exactly
+# this CoreFoundation value during startup. No inherited value is accepted.
+ENV = {'LANG': 'C', 'LC_ALL': 'C', 'TZ': 'UTC',
+       '__CF_USER_TEXT_ENCODING': '0x1F5:0x7:0x3D'}
 PYTHON = '/opt/homebrew/Cellar/python@3.14/3.14.6/bin/python3.14'
 CA = '/etc/ssl/cert.pem'
 
@@ -314,7 +317,8 @@ def verify_identity(expected_lock, expected_controller):
     require(sys.version == lock['version'] and ssl.OPENSSL_VERSION == lock['ssl_version'], 'runtime version')
     require(sys.flags.isolated and sys.flags.no_site and sys.flags.dont_write_bytecode,
             'require -I -S -B')
-    require(dict(os.environ) == ENV, 'require exact clean environment')
+    require(dict(os.environ) == ENV == lock['startup_environment'],
+            'require exact clean startup environment')
     require(os.uname().release == lock['os_release'] and os.uname().version == lock['os_version'], 'OS identity')
     require(sys.path == lock['sys_path'], 'runtime search path mismatch')
     require(all(not Path(path).exists() for path in lock['absent_sys_path']), 'new import archive/path')
