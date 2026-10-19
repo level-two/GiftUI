@@ -3,7 +3,8 @@
 **STOP — an applicable exact Apple dyld header revision is not established.**
 This packet records a bounded official metadata lookup, not a schema result.
 Header candidates selected **0/3**, header bytes read **0**. No field offset or
-semantics were inferred. Independent review is pending.
+semantics were inferred. [Independent review](independent-review.md) passes the
+bounded result/STOP and the exact successor metadata-read readiness only.
 
 ## Authority and retained target
 
@@ -116,9 +117,11 @@ P08/R07/T8.1 and later conformance remain open. No gate or lifecycle transition
 is claimed. No actual contract/scope choice arose; warm-up or
 heap/ownership/privacy/bound/scope relaxation goes upstream for Astra Medium.
 
-Next is an independent Strong review of this exact packet, metadata/hash
-interpretation, preservation and STOP. The reviewer must not run the proposed
-successor GET or treat the missing revision as permission to select another.
+The [independent Strong review](independent-review.md) verifies this exact packet,
+metadata/hash interpretation, preservation and STOP. It pins the successor's
+destination and recognizes the current human continuation authorization for
+that one metadata GET. The review ran no successor GET and clears no header,
+parser, body or controller read.
 
 Documentation whitespace verification excludes only the retained raw HTTP
 headers: their original CRLF/status-line space and terminal blank line trigger

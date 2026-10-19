@@ -1,18 +1,19 @@
 # RFC-014 task context guide
 
-Current P08 boundary — **official dyld schema-source preparation STOP; exact applicable revision missing; full callee/safety STOP**.
-The [bounded official-source preparation](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-schema-source1-preparation/README.md)
-starts at independent three-header absence review2e30b95a. One retained official
-metadata GET contains100 tags and no matching26.6.2/25G83 record on that page;
-no pagination/source substitution followed. Headers selected0/3, header bytes0;
-field semantics/build/cache applicability remain unestablished. Independent
-review is next; the exact single-ref successor is unexecuted and requires its
-own reviewed plan. No parser/controller/runtime/compiler/build/test/acquisition,
-repair/retry or new allowance follows. S and old B stay closed. R01–R04, ordinary
-loaded identity, Error size/body costs, U02–U05, strict cold and P08/R07/T8.1 stay
-open. Three markers [16777234,29640436]/[16777234,29650609]/[16777234,29652748]
-remain unchanged, each1/1 consumed, repairs0/retries0; five dirty files/cache
-match the prior review. No contract/scope or lifecycle change is proposed.
+Current P08 boundary — **official dyld schema-source preparation independently PASS/STOP; exact applicable revision missing; full callee/safety STOP**.
+The [independent metadata review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-schema-source1-preparation/independent-review.md)
+verifies the retained 100-tag page/hash/headers and page-limited missing 26.6.2/25G83
+result. Headers selected 0/3, bytes 0; field semantics/build/cache applicability
+remain unestablished. Readiness PASS plus the current human continuation covers
+one exact `macos-2662` ref metadata GET at the review's pinned destination,
+1 MiB / 30 seconds / no retries/redirects/pagination/fallback; it remains unexecuted.
+Commit/report at that result boundary; no returned-object/header/parser/body/
+controller read follows automatically. S and old B stay closed. R01–R04,
+ordinary loaded identity, Error size/body costs, U02–U05, strict cold and
+P08/R07/T8.1 stay open. Three markers
+[16777234,29640436]/[16777234,29650609]/[16777234,29652748] remain unchanged,
+each 1/1 consumed, repairs 0 / retries 0; five dirty files/cache match the baseline.
+No contract/scope or lifecycle change or target execution allowance is proposed.
 
 Historical pre-collection checkpoint — **retained counter426 PASS; controller readiness PASS; collection unused 0/1**.
 The [retained macOS Static result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)
