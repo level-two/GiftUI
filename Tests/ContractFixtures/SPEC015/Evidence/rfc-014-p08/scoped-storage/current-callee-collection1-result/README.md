@@ -24,3 +24,9 @@ test, decoder, or runtime was run for this archival step.
 See [`independent-strong-review-handoff.md`](independent-strong-review-handoff.md)
 for the requested independent Strong review scope. The handoff is not a review
 result or an acceptance decision.
+
+The [independent result review](independent-review.md) passes the collection
+evidence only. Its [inspection facts](independent-review-inspection.json)
+verify the archived/raw/live identities, 94 actual compiler exits and fixed
+capture/classifier inventory. Complete current-callee and safety interpretation
+is next; strict cold and P08/R07/T8.1 remain open, with no new allowance.

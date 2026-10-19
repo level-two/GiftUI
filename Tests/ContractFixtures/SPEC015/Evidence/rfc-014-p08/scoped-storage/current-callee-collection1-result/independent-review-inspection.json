@@ -1,0 +1,81 @@
+{
+  "reviewed_commit": "d1117295ed2bdee56f819bac57945de0b5ab202d",
+  "status": "PASS_collection_only_current_callee_interpretation_pending",
+  "method": "Independent stdlib file/JSON/hash/Git-blob and raw-record checks; no imported controller/interpreter or compiler/build/test/decoder/runtime execution. No callee-cost interpretation.",
+  "raw_files": 795,
+  "raw_bytes": 145304398,
+  "manifest": {
+    "bytes": 140691,
+    "sha256": "8532be63e94df9f65a4b2eb7cfeb6fd224022c12fa165d29ba08b13b764398fd"
+  },
+  "terminal": {
+    "bytes": 680851,
+    "sha256": "41c38e4ececed6f5cbd91d6eb2387642e316752ff61d7928a7b1633302a8cf2a"
+  },
+  "terminal_pre_manifest_files": 794,
+  "terminal_pre_manifest_directories": 2,
+  "live_marker_identity": [
+    16777234,
+    29640436
+  ],
+  "live_and_commit_raw_bytes_match": true,
+  "reviewed_launch_pins": [
+    "4b33eecc1763867b00d59ccbb843df40ca39fa93",
+    "903499d41840b626fc10028527631512212cff78",
+    "851bc71165e472ca98f1fbe6a46c140114bcc6fd"
+  ],
+  "stages": 156,
+  "compiler_actual_exits": 94,
+  "privacy_controls": {
+    "total": 93,
+    "positive_exit_zero": 32,
+    "negative_nonzero": 61,
+    "all_classifiers_match": true
+  },
+  "indexes": {
+    "modules": {
+      "GiftUIDrawing": 120,
+      "GiftUIHostConfiguration": 812,
+      "GiftUIInteraction": 224,
+      "GiftUILayout": 237,
+      "GiftUIRasterCore": 181,
+      "GiftUIRuntimeCore": 466,
+      "GiftUIExecution": 1104,
+      "GiftUIObservableState": 446,
+      "GiftUI": 464,
+      "GiftUISemanticCore": 725,
+      "P08CounterTable": 17
+    },
+    "total_functions": 4796,
+    "all_record_hash_offset_raw_prefix_block_checks_match": true,
+    "all_raw_identifier_name_bucket_membership_checks_match": true
+  },
+  "required_bodies": {
+    "total": 92,
+    "mangled": 91,
+    "demangled_exact": 1,
+    "all_unique_serialized_nonempty": true
+  },
+  "object_capture_commands": 50,
+  "distinct_matching_objects": 25,
+  "sil": {
+    "bytes": 62139693,
+    "sha256": "6cc9e7b6cecbeb46dd71b2ac8b6e023182354e7fcc08c814374b9c23303c71ed"
+  },
+  "sil_source_operands": 42,
+  "collection_attempts": 1,
+  "automatic_source_repairs": 0,
+  "automatic_tooling_repairs": 0,
+  "retries": 0,
+  "source_candidates": 0,
+  "termination_requests": [],
+  "preserved_dirty_files": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+    "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+    "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+  },
+  "findings": [],
+  "body_index_interpreter_receipt_argv_environment_match": true
+}
