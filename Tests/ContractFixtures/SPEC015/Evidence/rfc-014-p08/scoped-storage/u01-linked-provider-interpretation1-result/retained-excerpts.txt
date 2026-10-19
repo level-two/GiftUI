@@ -1,0 +1,490 @@
+U01 linked/provider retained excerpts; original one-based archived raw line numbers.
+
+=== counter-metadata.stdout:1-4 ===
+1: /Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter:
+2: Mach header
+3:       magic  cputype cpusubtype  caps    filetype ncmds sizeofcmds      flags
+4: MH_MAGIC_64    ARM64        ALL  0x00     EXECUTE    22       3232   NOUNDEFS DYLDLINK TWOLEVEL PIE
+
+=== counter-metadata.stdout:464-551 ===
+464:         nextrel 0
+465:       locreloff 0
+466:         nlocrel 0
+467: Load command 9
+468:           cmd LC_LOAD_DYLINKER
+469:       cmdsize 32
+470:          name /usr/lib/dyld (offset 12)
+471: Load command 10
+472:      cmd LC_UUID
+473:  cmdsize 24
+474:     uuid 3DEE5FE5-1F72-3C9A-8A36-4F30A2CE9ADF
+475: Load command 11
+476:       cmd LC_BUILD_VERSION
+477:   cmdsize 32
+478:  platform MACOS
+479:     minos 26.0
+480:       sdk 26.0
+481:    ntools 1
+482:      tool LD
+483:   version 1267.0
+484: Load command 12
+485:       cmd LC_SOURCE_VERSION
+486:   cmdsize 16
+487:   version 0.0
+488: Load command 13
+489:        cmd LC_MAIN
+490:    cmdsize 24
+491:   entryoff 3748
+492:  stacksize 0
+493: Load command 14
+494:           cmd LC_LOAD_DYLIB
+495:       cmdsize 56
+496:          name /usr/lib/libSystem.B.dylib (offset 24)
+497:    time stamp 2 Thu Jan  1 01:00:02 1970
+498:       current version 1356.0.0
+499: compatibility version 1.0.0
+500: Load command 15
+501:           cmd LC_LOAD_DYLIB
+502:       cmdsize 56
+503:          name /usr/lib/libobjc.A.dylib (offset 24)
+504:    time stamp 2 Thu Jan  1 01:00:02 1970
+505:       current version 228.0.0
+506: compatibility version 1.0.0
+507: Load command 16
+508:           cmd LC_LOAD_DYLIB
+509:       cmdsize 64
+510:          name /usr/lib/swift/libswiftCore.dylib (offset 24)
+511:    time stamp 2 Thu Jan  1 01:00:02 1970
+512:       current version 0.0.0
+513: compatibility version 1.0.0
+514: Load command 17
+515:           cmd LC_LOAD_WEAK_DYLIB
+516:       cmdsize 72
+517:          name /usr/lib/swift/libswift_Builtin_float.dylib (offset 24)
+518:    time stamp 2 Thu Jan  1 01:00:02 1970
+519:       current version 0.0.0
+520: compatibility version 1.0.0
+521: Load command 18
+522:           cmd LC_LOAD_DYLIB
+523:       cmdsize 72
+524:          name /usr/lib/swift/libswift_DarwinFoundation2.dylib (offset 24)
+525:    time stamp 2 Thu Jan  1 01:00:02 1970
+526:       current version 377.120.8
+527: compatibility version 1.0.0
+528: Load command 19
+529:       cmd LC_FUNCTION_STARTS
+530:   cmdsize 16
+531:   dataoff 3146736
+532:  datasize 26192
+533: Load command 20
+534:       cmd LC_DATA_IN_CODE
+535:   cmdsize 16
+536:   dataoff 3172928
+537:  datasize 0
+538: Load command 21
+539:       cmd LC_CODE_SIGNATURE
+540:   cmdsize 16
+541:   dataoff 6550848
+542:  datasize 51320
+543: 	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)
+544: 	time stamp 2 Thu Jan  1 01:00:02 1970
+545: 	/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)
+546: 	time stamp 2 Thu Jan  1 01:00:02 1970
+547: 	/usr/lib/swift/libswiftCore.dylib (compatibility version 1.0.0, current version 0.0.0)
+548: 	time stamp 2 Thu Jan  1 01:00:02 1970
+549: 	/usr/lib/swift/libswift_Builtin_float.dylib (compatibility version 1.0.0, current version 0.0.0, weak)
+550: 	time stamp 2 Thu Jan  1 01:00:02 1970
+551: 	/usr/lib/swift/libswift_DarwinFoundation2.dylib (compatibility version 1.0.0, current version 377.120.8)
+
+=== counter-metadata.stdout:12097-12100 ===
+12097: dyld chained import[1] = 0x00001601
+12098:   lib_ordinal = 1 (libSystem)
+12099:   weak_import = 0
+12100:   name_offset = 11 (___stack_chk_fail)
+
+=== counter-metadata.stdout:1142-1142 ===
+1142: __DATA_CONST __got        0x10025C548 0x8010000000000001 bind   0x0      libSystem                  ___stack_chk_fail
+
+=== counter-metadata.stdout:600-600 ===
+600: 0x00000001001d859c 35841 ___stack_chk_fail
+
+=== counter-metadata.stdout:829-829 ===
+829: 0x000000010025c548 35841 ___stack_chk_fail
+
+=== counter-metadata.stdout:12101-12104 ===
+12101: dyld chained import[2] = 0x00003a01
+12102:   lib_ordinal = 1 (libSystem)
+12103:   weak_import = 0
+12104:   name_offset = 29 (___stack_chk_guard)
+
+=== counter-metadata.stdout:1143-1143 ===
+1143: __DATA_CONST __got        0x10025C550 0x8010000000000002 bind   0x0      libSystem                  ___stack_chk_guard
+
+=== counter-metadata.stdout:830-830 ===
+830: 0x000000010025c550 35842 ___stack_chk_guard
+
+=== counter-metadata.stdout:12125-12128 ===
+12125: dyld chained import[8] = 0x0000ba01
+12126:   lib_ordinal = 1 (libSystem)
+12127:   weak_import = 0
+12128:   name_offset = 93 (_memcpy)
+
+=== counter-metadata.stdout:1149-1149 ===
+1149: __DATA_CONST __got        0x10025C580 0x8010000000000008 bind   0x0      libSystem                  _memcpy
+
+=== counter-metadata.stdout:607-607 ===
+607: 0x00000001001d85f0 35853 _memcpy
+
+=== counter-metadata.stdout:836-836 ===
+836: 0x000000010025c580 35853 _memcpy
+
+=== counter-metadata.stdout:12365-12368 ===
+12365: dyld chained import[68] = 0x000ca403
+12366:   lib_ordinal = 3 (libswiftCore)
+12367:   weak_import = 0
+12368:   name_offset = 1618 (_$ss5ErrorWS)
+
+=== counter-metadata.stdout:1209-1209 ===
+1209: __DATA_CONST __got        0x10025C760 0x8010000000000044 bind   0x0      libswiftCore               _$ss5ErrorWS
+
+=== counter-metadata.stdout:896-896 ===
+896: 0x000000010025c760 35810 _$ss5ErrorWS
+
+=== counter-metadata.stdout:12593-12596 ===
+12593: dyld chained import[125] = 0x0017bc03
+12594:   lib_ordinal = 3 (libswiftCore)
+12595:   weak_import = 0
+12596:   name_offset = 3038 (_swift_getTypeByMangledNameInContext2)
+
+=== counter-metadata.stdout:1266-1266 ===
+1266: __DATA_CONST __got        0x10025C928 0x801000000000007D bind   0x0      libswiftCore               _swift_getTypeByMangledNameInContext2
+
+=== counter-metadata.stdout:642-642 ===
+642: 0x00000001001d8794 35889 _swift_getTypeByMangledNameInContext2
+
+=== counter-metadata.stdout:953-953 ===
+953: 0x000000010025c928 35889 _swift_getTypeByMangledNameInContext2
+
+=== counter-body-data.stdout:97-113 ===
+97: ___swift_instantiateConcreteTypeFromMangledName:
+98: 100000e5c:	stp	x20, x19, [sp, #-0x20]!
+99: 100000e60:	stp	x29, x30, [sp, #0x10]
+100: 100000e64:	add	x29, sp, #0x10
+101: 100000e68:	mov	x19, x0
+102: 100000e6c:	ldr	x0, [x0]
+103: 100000e70:	tbnz	x0, #0x3f, 0x100000e80
+104: 100000e74:	ldp	x29, x30, [sp, #0x10]
+105: 100000e78:	ldp	x20, x19, [sp], #0x20
+106: 100000e7c:	ret
+107: 100000e80:	neg	x1, x0, asr #32
+108: 100000e84:	add	x0, x19, w0, sxtw
+109: 100000e88:	mov	x2, #0x0
+110: 100000e8c:	mov	x3, #0x0
+111: 100000e90:	bl	0x1001d8794 ; symbol stub for: _swift_getTypeByMangledNameInContext2
+112: 100000e94:	str	x0, [x19]
+113: 100000e98:	b	0x100000e74
+
+=== counter-body-data.stdout:619-666 ===
+619: _$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF:
+620: 100001648:	sub	sp, sp, #0xf0
+621: 10000164c:	str	x25, [sp, #0xb0]
+622: 100001650:	stp	x24, x23, [sp, #0xc0]
+623: 100001654:	stp	x22, x19, [sp, #0xd0]
+624: 100001658:	stp	x29, x30, [sp, #0xe0]
+625: 10000165c:	add	x29, sp, #0xe0
+626: 100001660:	mov	x19, x21
+627: 100001664:	mov	x22, x2
+628: 100001668:	mov	x23, x1
+629: 10000166c:	mov	x24, x0
+630: 100001670:	mov	x25, x8
+631: 100001674:	bl	_OUTLINED_FUNCTION_72
+632: 100001678:	add	x0, sp, #0x10
+633: 10000167c:	mov	x1, x20
+634: 100001680:	mov	w2, #0x60
+635: 100001684:	bl	0x1001d85f0 ; symbol stub for: _memcpy
+636: 100001688:	stp	x22, x24, [sp, #0x80]
+637: 10000168c:	stp	x23, x20, [sp, #0x90]
+638: 100001690:	adrp	x0, 651 ; 0x10028c000
+639: 100001694:	add	x0, x0, #0x200
+640: 100001698:	bl	___swift_instantiateConcreteTypeFromMangledName
+641: 10000169c:	mov	x4, x0
+642: 1000016a0:	adrp	x1, 0 ; 0x100001000
+643: 1000016a4:	add	x1, x1, #0x704
+644: 1000016a8:	adrp	x3, 605 ; 0x10025e000
+645: 1000016ac:	add	x3, x3, #0x7f0
+646: 1000016b0:	adrp	x6, 603 ; 0x10025c000
+647: 1000016b4:	ldr	x6, [x6, #0x760] ; literal pool symbol address: _$ss5ErrorWS
+648: 1000016b8:	add	x0, sp, #0x10
+649: 1000016bc:	add	x2, sp, #0x70
+650: 1000016c0:	add	x7, sp, #0x8
+651: 1000016c4:	mov	x8, x25
+652: 1000016c8:	mov	x5, x22
+653: 1000016cc:	mov	x21, x19
+654: 1000016d0:	bl	_$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF
+655: 1000016d4:	cbz	x21, 0x1000016dc
+656: 1000016d8:	ldr	x21, [sp, #0x8]
+657: 1000016dc:	ldur	x8, [x29, #-0x38]
+658: 1000016e0:	bl	_OUTLINED_FUNCTION_40
+659: 1000016e4:	b.ne	0x100001700
+660: 1000016e8:	ldp	x29, x30, [sp, #0xe0]
+661: 1000016ec:	ldp	x22, x19, [sp, #0xd0]
+662: 1000016f0:	ldp	x24, x23, [sp, #0xc0]
+663: 1000016f4:	ldr	x25, [sp, #0xb0]
+664: 1000016f8:	add	sp, sp, #0xf0
+665: 1000016fc:	ret
+666: 100001700:	bl	0x1001d859c ; symbol stub for: ___stack_chk_fail
+
+=== counter-body-data.stdout:667-682 ===
+667: _$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlFxSWKXEfU_TA:
+668: 100001704:	stp	x20, x19, [sp, #-0x20]!
+669: 100001708:	stp	x29, x30, [sp, #0x10]
+670: 10000170c:	add	x29, sp, #0x10
+671: 100001710:	mov	x19, x2
+672: 100001714:	ldp	x10, x9, [x20, #0x18]
+673: 100001718:	ldr	x11, [x20, #0x28]
+674: 10000171c:	ldrh	w1, [x11, #0x60]
+675: 100001720:	mov	x20, x9
+676: 100001724:	blr	x10
+677: 100001728:	cbz	x21, 0x100001734
+678: 10000172c:	str	x21, [x19]
+679: 100001730:	mov	w21, #0x1
+680: 100001734:	ldp	x29, x30, [sp, #0x10]
+681: 100001738:	ldp	x20, x19, [sp], #0x20
+682: 10000173c:	ret
+
+=== counter-body-data.stdout:683-717 ===
+683: _$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF:
+684: 100001740:	str	x24, [sp, #-0x40]!
+685: 100001744:	stp	x23, x22, [sp, #0x10]
+686: 100001748:	stp	x20, x19, [sp, #0x20]
+687: 10000174c:	stp	x29, x30, [sp, #0x30]
+688: 100001750:	add	x29, sp, #0x30
+689: 100001754:	mov	x22, x7
+690: 100001758:	mov	x19, x4
+691: 10000175c:	mov	x9, x1
+692: 100001760:	ldur	x24, [x4, #-0x8]
+693: 100001764:	ldr	x10, [x24, #0x40]
+694: 100001768:	mov	x11, sp
+695: 10000176c:	add	x10, x10, #0xf
+696: 100001770:	and	x10, x10, #0xfffffffffffffff0
+697: 100001774:	sub	x23, x11, x10
+698: 100001778:	mov	sp, x23
+699: 10000177c:	ldur	x10, [x3, #-0x8]
+700: 100001780:	ldr	x10, [x10, #0x40]
+701: 100001784:	add	x1, x0, x10
+702: 100001788:	mov	x20, x2
+703: 10000178c:	mov	x2, x23
+704: 100001790:	blr	x9
+705: 100001794:	cbz	x21, 0x1000017b0
+706: 100001798:	ldr	x8, [x24, #0x20]
+707: 10000179c:	mov	x0, x22
+708: 1000017a0:	mov	x1, x23
+709: 1000017a4:	mov	x2, x19
+710: 1000017a8:	blr	x8
+711: 1000017ac:	mov	w21, #0x1
+712: 1000017b0:	sub	sp, x29, #0x30
+713: 1000017b4:	ldp	x29, x30, [sp, #0x30]
+714: 1000017b8:	ldp	x20, x19, [sp, #0x20]
+715: 1000017bc:	ldp	x23, x22, [sp, #0x10]
+716: 1000017c0:	ldr	x24, [sp], #0x40
+717: 1000017c4:	ret
+
+=== counter-body-data.stdout:13960-13965 ===
+13960: _OUTLINED_FUNCTION_40:
+13961: 10000d508:	adrp	x9, 591 ; 0x10025c000
+13962: 10000d50c:	ldr	x9, [x9, #0x550] ; literal pool symbol address: ___stack_chk_guard
+13963: 10000d510:	ldr	x9, [x9]
+13964: 10000d514:	cmp	x9, x8
+13965: 10000d518:	ret
+
+=== counter-body-data.stdout:14154-14159 ===
+14154: _OUTLINED_FUNCTION_72:
+14155: 10000d790:	adrp	x8, 591 ; 0x10025c000
+14156: 10000d794:	ldr	x8, [x8, #0x550] ; literal pool symbol address: ___stack_chk_guard
+14157: 10000d798:	ldr	x8, [x8]
+14158: 10000d79c:	stur	x8, [x29, #-0x38]
+14159: 10000d7a0:	ret
+
+=== counter-body-data.stdout:282984-283032 ===
+282984: _$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_:
+282985: 100106574:	cmp	x1, #0x1
+282986: 100106578:	b.lt	0x100106624
+282987: 10010657c:	mov	x8, #0x0
+282988: 100106580:	add	x9, x0, #0x1
+282989: 100106584:	mov	w10, #0x2
+282990: 100106588:	mov	x11, #0x7ffffffffffffffe
+282991: 10010658c:	mov	w12, #0x7
+282992: 100106590:	mov	w13, #0xf
+282993: 100106594:	mov	w14, #0x1f
+282994: 100106598:	ldrsb	w16, [x0, x8]
+282995: 10010659c:	and	w15, w16, #0xff
+282996: 1001065a0:	tbz	w16, #0x1f, 0x1001065f8
+282997: 1001065a4:	cmp	w15, #0xf0
+282998: 1001065a8:	cinc	x16, x10, hs
+282999: 1001065ac:	cmp	w15, #0xe0
+283000: 1001065b0:	csinc	x16, x16, xzr, hs
+283001: 1001065b4:	sub	x17, x16, #0x1
+283002: 1001065b8:	sub	x4, x11, x8
+283003: 1001065bc:	cmp	x4, x17
+283004: 1001065c0:	b.ls	0x100106630
+283005: 1001065c4:	cmp	w15, #0xf0
+283006: 1001065c8:	csel	w17, w13, w12, lo
+283007: 1001065cc:	cmp	w15, #0xe0
+283008: 1001065d0:	csel	w17, w14, w17, lo
+283009: 1001065d4:	and	w15, w15, w17
+283010: 1001065d8:	add	x17, x9, x8
+283011: 1001065dc:	mov	x4, x16
+283012: 1001065e0:	ldrb	w5, [x17], #0x1
+283013: 1001065e4:	bfi	w5, w15, #6, #26
+283014: 1001065e8:	mov	x15, x5
+283015: 1001065ec:	subs	x4, x4, #0x1
+283016: 1001065f0:	b.ne	0x1001065e0
+283017: 1001065f4:	add	x8, x16, x8
+283018: 1001065f8:	add	x8, x8, #0x1
+283019: 1001065fc:	ldr	x16, [x3]
+283020: 100106600:	cmp	x16, #0x5f
+283021: 100106604:	b.hi	0x100106628
+283022: 100106608:	str	w15, [x2, x16, lsl #2]
+283023: 10010660c:	ldr	x15, [x3]
+283024: 100106610:	adds	x15, x15, #0x1
+283025: 100106614:	b.vs	0x10010662c
+283026: 100106618:	str	x15, [x3]
+283027: 10010661c:	cmp	x8, x1
+283028: 100106620:	b.lt	0x100106598
+283029: 100106624:	ret
+283030: 100106628:	brk	#0x1
+283031: 10010662c:	brk	#0x1
+283032: 100106630:	brk	#0x1
+
+=== counter-body-data.stdout:283033-283039 ===
+283033: _$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA:
+283034: 100106634:	stp	x29, x30, [sp, #-0x10]!
+283035: 100106638:	mov	x29, sp
+283036: 10010663c:	ldp	x2, x3, [x20, #0x10]
+283037: 100106640:	bl	_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_
+283038: 100106644:	ldp	x29, x30, [sp], #0x10
+283039: 100106648:	ret
+
+=== counter-body-data.stdout:487891-487897 ===
+487891: _$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA:
+487892: 1001c90cc:	stp	x29, x30, [sp, #-0x10]!
+487893: 1001c90d0:	mov	x29, sp
+487894: 1001c90d4:	ldp	x2, x3, [x20, #0x10]
+487895: 1001c90d8:	bl	_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_
+487896: 1001c90dc:	ldp	x29, x30, [sp], #0x10
+487897: 1001c90e0:	ret
+
+=== counter-body-data.stdout:491268-491273 ===
+491268: _$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA.65:
+491269: 1001cc2b0:	stp	x29, x30, [sp, #-0x10]!
+491270: 1001cc2b4:	mov	x29, sp
+491271: 1001cc2b8:	bl	_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA
+491272: 1001cc2bc:	ldp	x29, x30, [sp], #0x10
+491273: 1001cc2c0:	ret
+
+=== counter-body-data.stdout:470375-470391 ===
+470375: 1001b879c:	mov	x1, x21
+470376: 1001b87a0:	mov	w2, #0x62
+470377: 1001b87a4:	bl	0x1001d85f0 ; symbol stub for: _memcpy
+470378: 1001b87a8:	add	x8, sp, #0x680
+470379: 1001b87ac:	str	x20, [sp, #0x700]
+470380: 1001b87b0:	str	x8, [sp, #0x708]
+470381: 1001b87b4:	adrp	x8, 164 ; 0x10025c000
+470382: 1001b87b8:	ldr	x8, [x8, #0x818] ; literal pool symbol address: _$sytN
+470383: 1001b87bc:	adrp	x0, 20 ; 0x1001cc000
+470384: 1001b87c0:	add	x0, x0, #0x2b0
+470385: 1001b87c4:	add	x1, sp, #0x6f0
+470386: 1001b87c8:	add	x2, x8, #0x8
+470387: 1001b87cc:	add	x20, sp, #0x2c
+470388: 1001b87d0:	mov	x21, #0x0
+470389: 1001b87d4:	bl	_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF
+470390: 1001b87d8:	ldr	x4, [sp, #0x680]
+470391: 1001b87dc:	ldp	q0, q1, [sp, #0x90]
+
+=== counter-body-data.stdout:471632-471648 ===
+471632: 1001b9b2c:	add	x0, sp, #0x1c
+471633: 1001b9b30:	mov	x1, x20
+471634: 1001b9b34:	mov	w2, #0x62
+471635: 1001b9b38:	bl	0x1001d85f0 ; symbol stub for: _memcpy
+471636: 1001b9b3c:	add	x8, sp, #0x10
+471637: 1001b9b40:	stp	x21, x8, [x29, #-0xa0]
+471638: 1001b9b44:	adrp	x8, 163 ; 0x10025c000
+471639: 1001b9b48:	ldr	x8, [x8, #0x818] ; literal pool symbol address: _$sytN
+471640: 1001b9b4c:	adrp	x0, 16 ; 0x1001c9000
+471641: 1001b9b50:	add	x0, x0, #0xcc
+471642: 1001b9b54:	sub	x1, x29, #0xb0
+471643: 1001b9b58:	add	x2, x8, #0x8
+471644: 1001b9b5c:	add	x20, sp, #0x1c
+471645: 1001b9b60:	mov	x21, #0x0
+471646: 1001b9b64:	bl	_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF
+471647: 1001b9b68:	ldr	x21, [sp, #0x10]
+471648: 1001b9b6c:	stp	xzr, xzr, [x29, #-0x60]
+
+=== counter-body-data.stdout:506282-506282 ===
+506282:  100000e88 020080d2 030080d2 415e0794 600200f9  ........A^..`...
+
+=== counter-body-data.stdout:506408-506408 ===
+506408:  100001668 f70301aa f80300aa f90308aa 47300094  ............G0..
+
+=== counter-body-data.stdout:506409-506409 ===
+506409:  100001678 e0430091 e10314aa 020c8052 db5b0794  .C.........R.[..
+
+=== counter-body-data.stdout:506411-506411 ===
+506411:  100001698 f1fdff97 e40300aa 01000090 21101c91  ............!...
+
+=== counter-body-data.stdout:506414-506414 ===
+506414:  1000016c8 e50316aa f50313aa 1c000094 550000b4  ............U...
+
+=== counter-body-data.stdout:506415-506415 ===
+506415:  1000016d8 f50740f9 a8835cf8 8a2f0094 e1000054  ..@...\../.....T
+
+=== counter-body-data.stdout:506417-506417 ===
+506417:  1000016f8 ffc30391 c0035fd6 a75b0794 f44fbea9  ......_..[...O..
+
+=== counter-body-data.stdout:573221-573221 ===
+573221:  100106638 fd030091 820e41a9 cdffff97 fd7bc1a8  ......A......{..
+
+=== counter-body-data.stdout:618814-618814 ===
+618814:  1001b87c8 02210091 f4b30091 150080d2 9d23f997  .!...........#..
+
+=== counter-body-data.stdout:619127-619127 ===
+619127:  1001b9b58 02210091 f4730091 150080d2 b91ef997  .!...s..........
+
+=== counter-body-data.stdout:623055-623055 ===
+623055:  1001c90d8 27f5fc97 fd7bc1a8 c0035fd6 f44fbea9  '....{...._..O..
+
+=== counter-body-data.stdout:623853-623853 ===
+623853:  1001cc2b8 85f3ff97 fd7bc1a8 c0035fd6 8b4bfd17  .....{...._..K..
+
+=== counter-body-data.stdout:634250-634250 ===
+634250:  1001f4c50 02df7a06 005f7000 ff07620c e1ff0000  ..z.._p...b.....
+
+=== counter-body-data.stdout:671167-671167 ===
+671167:  10028c1f8 488af6ff f7ffffff 508af6ff f9ffffff  H.......P.......
+
+=== counter-symbols.stdout:207-207 ===
+207: 0000000100000e5c t ___swift_instantiateConcreteTypeFromMangledName
+
+=== counter-symbols.stdout:222-222 ===
+222: 0000000100001648 T _$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF
+
+=== counter-symbols.stdout:223-223 ===
+223: 0000000100001704 t _$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlFxSWKXEfU_TA
+
+=== counter-symbols.stdout:224-224 ===
+224: 0000000100001740 t _$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF
+
+=== counter-symbols.stdout:15376-15376 ===
+15376: 0000000100106574 t _$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_
+
+=== counter-symbols.stdout:15377-15377 ===
+15377: 0000000100106634 t _$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA
+
+=== counter-symbols.stdout:20901-20901 ===
+20901: 00000001001c90cc t _$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA
+
+=== counter-symbols.stdout:21085-21085 ===
+21085: 00000001001cc2b0 t _$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA.65
+
+=== counter-symbols.stdout:34452-34452 ===
+34452: 000000010028c200 d _$ss5Error_pMD

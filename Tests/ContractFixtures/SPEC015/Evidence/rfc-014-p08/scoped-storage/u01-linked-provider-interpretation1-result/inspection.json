@@ -1,0 +1,968 @@
+{
+  "B_applicable_or_authorized": false,
+  "Error_cache_file_image": {
+    "address": "0x10028c200",
+    "bytes": "508af6fff9ffffff",
+    "hex_source_lines": [
+      671167
+    ],
+    "name_address": "0x1001f4c50",
+    "name_hex_source_lines": [
+      634250
+    ],
+    "name_length": 7,
+    "negative_name_length": -7,
+    "numeric_Error_value_size": null,
+    "populated_metadata_pointer": null,
+    "relative_name_offset": -619952,
+    "runtime_cache_state_at_first_selected_Text": "not observed",
+    "sign_bit": 1,
+    "symbol": "_$ss5Error_pMD",
+    "symbolic_mangled_name_bytes": "02df7a06005f70",
+    "word": "0xfffffff9fff68a50"
+  },
+  "R01": "OPEN: exact system Swift install-name binding identified; selected runtime implementation/transitive cold/allocation/stack evidence absent",
+  "R02": "OPEN: linked unconditional round16(value-witness size) reservation resolved; numeric Error size and populated metadata absent; seven-byte mangled-name length is not value size",
+  "R03": "PARTIAL_RESOLVED: exact linked local definitions/branches and system install-name imports fixed; pinned toolchain core not selected; actual historical loaded system image UUID/bytes/cache identity unestablished",
+  "R04": "OPEN_COST: memcpy/guard/fail linked stubs/GOT/import ordinal1 fixed to libSystem; concrete reexport/resolver/implementation/cost and safety disposition unestablished",
+  "actual_caller_functions": [
+    {
+      "call_address": "0x1001b87d4",
+      "function_address": "0x1001b827c",
+      "instruction_line": 470389,
+      "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5"
+    },
+    {
+      "call_address": "0x1001b9b64",
+      "function_address": "0x1001b9ac8",
+      "instruction_line": 471646,
+      "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a6UITextE0VTt1g5"
+    }
+  ],
+  "archive_files_equal_baseline": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/README.md": {
+      "bytes": 715,
+      "sha256": "53800e2f66a00ba1e4b8ed29ad51f7f3e720b965f6e0cbaf7af0d745ac12ac92"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/attempt-consumed.json": {
+      "bytes": 1338,
+      "sha256": "14dfb3e954f0f73a23bc5a55c180d096c3550aabd1725c1032b9a640933c00b8"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-body-data-authentication.json": {
+      "bytes": 141,
+      "sha256": "01bddb8c623c9de2b172c9d79513f0477c6edd288f3608244d43b16bacf349da"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-body-data.claim.json": {
+      "bytes": 1550,
+      "sha256": "cb460648fda511af507a462141e00dadf916abc323e50ac3600d1c608cc382c6"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-body-data.exit.json": {
+      "bytes": 603,
+      "sha256": "6997b7013af991c1e86e6688e342de25a5eb095c8388de67929f39dc42a7720a"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-body-data.record-check.json": {
+      "bytes": 102,
+      "sha256": "f104730dc933a2a91f10b17778ae90adc1f581cb091fdcd9a721e8fc259aa2b6"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-body-data.start.json": {
+      "bytes": 139,
+      "sha256": "1076c55cb6390ac43650f52825d20460d7802fdf10139881bd3ec00410dba680"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-body-data.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-body-data.stdout": {
+      "bytes": 28978867,
+      "sha256": "914f309f3b54da8c36e5c29b520d049d2ea4e3c74c0653e751fc46cf41ecc5a7"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-metadata-authentication.json": {
+      "bytes": 142,
+      "sha256": "6fcd9e79651e5cf846a70eb42d462ad8e6d8bb95f6d985a9e97680dfdeacf08f"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-metadata.claim.json": {
+      "bytes": 1480,
+      "sha256": "ca4256f141bbefbe4cd8363a77d5bda64cd08379ae88c0c2324e6fa8e672f6dc"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-metadata.exit.json": {
+      "bytes": 597,
+      "sha256": "9c92cca57542612c467f1462202d495f241661010cf613a7320c997b4b1d6a1b"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-metadata.record-check.json": {
+      "bytes": 102,
+      "sha256": "f104730dc933a2a91f10b17778ae90adc1f581cb091fdcd9a721e8fc259aa2b6"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-metadata.start.json": {
+      "bytes": 137,
+      "sha256": "918f1cded1489df7c8dce1cc8c19710e5f0264d95921af125b7bfb8cc5a2c73b"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-metadata.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-metadata.stdout": {
+      "bytes": 1307519,
+      "sha256": "9aa429f57837b45c8c2c7f8afa2f360f6fc214a1390e2831a293572965e90aea"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-symbols-authentication.json": {
+      "bytes": 139,
+      "sha256": "2ec4c618f59ce4b0c6805c7a06926dbc4120e87341b3cb70a66dfefa05331217"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-symbols.claim.json": {
+      "bytes": 1427,
+      "sha256": "f7ade9126fb839453e3f210be2cf991c02d7fff8889c92ee0589efe271e0a56b"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-symbols.exit.json": {
+      "bytes": 594,
+      "sha256": "abc87c3469cc36f5c8e2c6a2c048e48646d43573c27899f7a62498dea51c27ab"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-symbols.record-check.json": {
+      "bytes": 102,
+      "sha256": "f104730dc933a2a91f10b17778ae90adc1f581cb091fdcd9a721e8fc259aa2b6"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-symbols.start.json": {
+      "bytes": 139,
+      "sha256": "5b7514533d5ad04d0d66393353dc4351a9ed20855ff3065e3e4a8e494b19ada9"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-symbols.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/counter-symbols.stdout": {
+      "bytes": 3483980,
+      "sha256": "604eeeaa71f1ac5b271f77d8e39820d55c879f6241284ab3cb642bef4761fdea"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/independent-review-inspection.json": {
+      "bytes": 7793,
+      "sha256": "d2c86980d310f93f42df4d2bfe2b347c0d592c1ad461cb66b96c44912adb51de"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/independent-review.md": {
+      "bytes": 5660,
+      "sha256": "da1d12a8a4819b1326ab54f4fdc0ee7e678d3bdd6b3b65237e55141c445baf2e"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/manifest.json": {
+      "bytes": 4974,
+      "sha256": "e020dea510a3acf5ea4c0448f892e62a6f71d19cb4c927a30ffefdc5aec7065f"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/prelaunch-authentication.json": {
+      "bytes": 142,
+      "sha256": "9c0d8b73a59d836d88e50eafa4ec227e48e1e33c8961e06d4e8297526015383b"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/provider-gate.json": {
+      "bytes": 1158,
+      "sha256": "4c05168ef6d6286883f56a586f5c55166e8cd9b52c4b6abb4a13f36612ac105b"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/terminal.json": {
+      "bytes": 2570,
+      "sha256": "a0c1d996789fc36b364ba7336fc94db28b2313563a37f0f44ebee0f33a0e7bb9"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/toolchain-core-body-data.exit.json": {
+      "bytes": 170,
+      "sha256": "6d7b3690c83f14fb5e844ff3accd49d01cf3613423c689cce9ba6e0575d9bf9c"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/toolchain-core-metadata.exit.json": {
+      "bytes": 169,
+      "sha256": "928106613fe204f2569409db92641a8dd262bf8ef47436efa3a3560d2a7e7f78"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-residual-static1-a-only-result1/toolchain-core-symbols.exit.json": {
+      "bytes": 168,
+      "sha256": "d022101fa60d738b5b99aba69ebf7678e1a6a34e7e051d3327e60bdfe7b1b106"
+    }
+  },
+  "baseline": "a298d71c526423d2376c416d2ad896b66c127a20",
+  "both_attempts_consumed": true,
+  "consumed_marker_identities_unchanged": {
+    "p08-current-callee-collection1": [
+      16777234,
+      29640436
+    ],
+    "p08-u01-residual-static1": [
+      16777234,
+      29650609
+    ]
+  },
+  "counter_artifact": {
+    "bytes": 6602168,
+    "sha256": "12d51381b0a776a3a05c60aa3f97b732a0490434435194d6eda0e29ef0d89242"
+  },
+  "counter_receipt_sha256": "6850a3f150938e2a755f2260c94c42d7f103b0110639599a27925ba377b8ecb8",
+  "current_callee_and_safety": "STOP_incomplete",
+  "direct_context_files_verified": 180,
+  "dyld_chained_import_count": 203,
+  "historical_invocation_zero_based": 406,
+  "library_ordinals": [
+    {
+      "command": "LC_LOAD_DYLIB",
+      "index": 14,
+      "line": 493,
+      "name": "/usr/lib/libSystem.B.dylib",
+      "ordinal": 1
+    },
+    {
+      "command": "LC_LOAD_DYLIB",
+      "index": 15,
+      "line": 500,
+      "name": "/usr/lib/libobjc.A.dylib",
+      "ordinal": 2
+    },
+    {
+      "command": "LC_LOAD_DYLIB",
+      "index": 16,
+      "line": 507,
+      "name": "/usr/lib/swift/libswiftCore.dylib",
+      "ordinal": 3
+    },
+    {
+      "command": "LC_LOAD_WEAK_DYLIB",
+      "index": 17,
+      "line": 514,
+      "name": "/usr/lib/swift/libswift_Builtin_float.dylib",
+      "ordinal": 4
+    },
+    {
+      "command": "LC_LOAD_DYLIB",
+      "index": 18,
+      "line": 521,
+      "name": "/usr/lib/swift/libswift_DarwinFoundation2.dylib",
+      "ordinal": 5
+    }
+  ],
+  "link_argv": [
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+    "-swift-version",
+    "6",
+    "-Osize",
+    "-whole-module-optimization",
+    "-enable-experimental-feature",
+    "LifetimeDependence",
+    "-enable-experimental-feature",
+    "Lifetimes",
+    "-package-name",
+    "giftui",
+    "-module-cache-path",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/cache",
+    "-disable-sandbox",
+    "-target",
+    "arm64-apple-macosx26.0",
+    "-sdk",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+    "-load-plugin-executable",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "-parse-as-library",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "-enable-testing",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/Main.swift",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIBackendIntegration.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUICapabilities.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIDisplayCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIFailureCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIRasterCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUISurfaceCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIDrawing.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIExecution.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIHostConfiguration.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIInteraction.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUILayout.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIObservableState.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIReferenceTextResources.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRenderCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRenderLowering.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeDynamic.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeStatic.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUITextResources.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterPresentation.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterRuntime.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterSchema.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterTable.o",
+    "-o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter"
+  ],
+  "link_command_zero_based": 405,
+  "link_objects_equal_original_capture_set": [
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.o",
+      "sha256": "697e1435723ab9721bdcda4fe029a190cef1b7fa1d609381e5e0905c3163575c"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIBackendIntegration.o",
+      "sha256": "724d1d0de5bc9bdced7ef331f21765ce20e51f134acd2e60986d6f94573e750e"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUICapabilities.o",
+      "sha256": "e98b19e45be7d01036c429f5a204127e1c4b2f93406d464ba5611d20980e4613"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIDisplayCore.o",
+      "sha256": "7b6997af450252fc1dd59ac3e22f38d24f772d999a71de436baabdc51df992aa"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIFailureCore.o",
+      "sha256": "14fec38758243fa9a9c78cc715149fbd88567d062532aae18c625f207b3647f9"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUIRasterCore.o",
+      "sha256": "95c0429c3fc91ef30b69b52930ad2ec9bf050ca9bffe68cfb74175b117c4b7cf"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl/GiftUISurfaceCore.o",
+      "sha256": "f22cbd684f69378a9e99bb1b0f93111109803fd022776db1c2dc8e60e2ceb82c"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIDrawing.o",
+      "sha256": "33562488b3ab1eed671758b8af57c4a107b434d33dec66755578168ef7ab780b"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIExecution.o",
+      "sha256": "5fac42c75bf02129e4b56865d4a8cd3ffb5a63d126fbc9bd7cbbc418b28a2332"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIHostConfiguration.o",
+      "sha256": "a053c1c00459783940052f6d4385ef897f6d21ad84d78cbd594d8e385370c835"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIInteraction.o",
+      "sha256": "7b7be8fda6c1198d570a5a092c479e9e1a91422d23333e9dd9a4b5ef543639dd"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUILayout.o",
+      "sha256": "210985a98beb671ebdfc4d93512a92467641791e8f7d971ab6e5950f7dd13ebc"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIObservableState.o",
+      "sha256": "9cdc1ff0b65ad89e7895994a9042839030ddd19e87fbd3b953a1715591677b52"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIReferenceTextResources.o",
+      "sha256": "ab35f5d97d11feed8e78053c0ea3921ff6b3fb43e313d754fca859638bbeea54"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRenderCore.o",
+      "sha256": "af38bc6e2ff9fc68395bcabfca71982be9e726a98a7ba59acd7ca969b462019b"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRenderLowering.o",
+      "sha256": "66b522bfbc494980934847d0cb142514bc213af9d51860a588c5d4358f9382ec"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeCore.o",
+      "sha256": "cdf2603a4e5aa2bae6ace429ebff1971d88085176f8e4db625e6fce839fe72c6"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeDynamic.o",
+      "sha256": "997ac28acb8a683425cde8999e024e232f0b010ffac34acdffa4c99a463f4454"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIRuntimeStatic.o",
+      "sha256": "ade0e22d6dbb21af6e65f2bc62e82f7d0e6368d7ca8875a4d33662938a82f3e5"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.o",
+      "sha256": "d1e6eb3af4d1566dc06f196d6a9154d781e2da0f046c4d920af68c1df56d3ea7"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUITextResources.o",
+      "sha256": "9aecc98947e6fcab6f740cd2372857180c9abbc49232036b6e8c4deb34f88eb4"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterPresentation.o",
+      "sha256": "5ab036fca58c51a27a91284a2b2abde88a0e2b5f81b21f2089187f9c6bad2929"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterRuntime.o",
+      "sha256": "fa83a40d93b8aaca81c1f3ccf2a443cc51585695d1c5ca2b75fccdcdcee6b393"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterSchema.o",
+      "sha256": "7ab6796784cb4e3e81e0a682f96b27335f522bce2a00b0c57ec07112e0bf679e"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/P08CounterTable.o",
+      "sha256": "ebacc0b71773808fad2811f6ac13aa8127bffcbd5289b8ac2258f844684cd898"
+    }
+  ],
+  "linked_definitions": [
+    {
+      "address": "0x100000e5c",
+      "instruction_count": 16,
+      "line": 97,
+      "symbol": "___swift_instantiateConcreteTypeFromMangledName"
+    },
+    {
+      "address": "0x100001648",
+      "instruction_count": 47,
+      "line": 619,
+      "symbol": "_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF"
+    },
+    {
+      "address": "0x100001704",
+      "instruction_count": 15,
+      "line": 667,
+      "symbol": "_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlFxSWKXEfU_TA"
+    },
+    {
+      "address": "0x100001740",
+      "instruction_count": 34,
+      "line": 683,
+      "symbol": "_$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF"
+    },
+    {
+      "address": "0x10000d508",
+      "instruction_count": 5,
+      "line": 13960,
+      "symbol": "_OUTLINED_FUNCTION_40"
+    },
+    {
+      "address": "0x10000d790",
+      "instruction_count": 5,
+      "line": 14154,
+      "symbol": "_OUTLINED_FUNCTION_72"
+    },
+    {
+      "address": "0x100106574",
+      "instruction_count": 48,
+      "line": 282984,
+      "symbol": "_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_"
+    },
+    {
+      "address": "0x100106634",
+      "instruction_count": 6,
+      "line": 283033,
+      "symbol": "_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA"
+    },
+    {
+      "address": "0x1001c90cc",
+      "instruction_count": 6,
+      "line": 487891,
+      "symbol": "_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA"
+    },
+    {
+      "address": "0x1001cc2b0",
+      "instruction_count": 5,
+      "line": 491268,
+      "symbol": "_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA.65"
+    }
+  ],
+  "literal_BL_target_joins": [
+    {
+      "address": "0x100001674",
+      "hex_source_lines": [
+        506408
+      ],
+      "instruction_line": 631,
+      "little_endian_bytes": "47300094",
+      "raw_word": "0x94003047",
+      "retained_rendering": "bl\t_OUTLINED_FUNCTION_72",
+      "signed_imm26": 12359,
+      "target": "0x10000d790",
+      "target_symbol": "_OUTLINED_FUNCTION_72"
+    },
+    {
+      "address": "0x100001698",
+      "hex_source_lines": [
+        506411
+      ],
+      "instruction_line": 640,
+      "little_endian_bytes": "f1fdff97",
+      "raw_word": "0x97fffdf1",
+      "retained_rendering": "bl\t___swift_instantiateConcreteTypeFromMangledName",
+      "signed_imm26": -527,
+      "target": "0x100000e5c",
+      "target_symbol": "___swift_instantiateConcreteTypeFromMangledName"
+    },
+    {
+      "address": "0x1000016d0",
+      "hex_source_lines": [
+        506414
+      ],
+      "instruction_line": 654,
+      "little_endian_bytes": "1c000094",
+      "raw_word": "0x9400001c",
+      "retained_rendering": "bl\t_$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF",
+      "signed_imm26": 28,
+      "target": "0x100001740",
+      "target_symbol": "_$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF"
+    },
+    {
+      "address": "0x1000016e0",
+      "hex_source_lines": [
+        506415
+      ],
+      "instruction_line": 658,
+      "little_endian_bytes": "8a2f0094",
+      "raw_word": "0x94002f8a",
+      "retained_rendering": "bl\t_OUTLINED_FUNCTION_40",
+      "signed_imm26": 12170,
+      "target": "0x10000d508",
+      "target_symbol": "_OUTLINED_FUNCTION_40"
+    },
+    {
+      "address": "0x1001b87d4",
+      "hex_source_lines": [
+        618814
+      ],
+      "instruction_line": 470389,
+      "little_endian_bytes": "9d23f997",
+      "raw_word": "0x97f9239d",
+      "retained_rendering": "bl\t_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF",
+      "signed_imm26": -449635,
+      "target": "0x100001648",
+      "target_symbol": "_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF"
+    },
+    {
+      "address": "0x1001b9b64",
+      "hex_source_lines": [
+        619127
+      ],
+      "instruction_line": 471646,
+      "little_endian_bytes": "b91ef997",
+      "raw_word": "0x97f91eb9",
+      "retained_rendering": "bl\t_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF",
+      "signed_imm26": -450887,
+      "target": "0x100001648",
+      "target_symbol": "_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF"
+    },
+    {
+      "address": "0x1001cc2b8",
+      "hex_source_lines": [
+        623853
+      ],
+      "instruction_line": 491271,
+      "little_endian_bytes": "85f3ff97",
+      "raw_word": "0x97fff385",
+      "retained_rendering": "bl\t_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA",
+      "signed_imm26": -3195,
+      "target": "0x1001c90cc",
+      "target_symbol": "_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA"
+    },
+    {
+      "address": "0x1001c90d8",
+      "hex_source_lines": [
+        623055
+      ],
+      "instruction_line": 487895,
+      "little_endian_bytes": "27f5fc97",
+      "raw_word": "0x97fcf527",
+      "retained_rendering": "bl\t_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_",
+      "signed_imm26": -199385,
+      "target": "0x100106574",
+      "target_symbol": "_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_"
+    },
+    {
+      "address": "0x100106640",
+      "hex_source_lines": [
+        573221
+      ],
+      "instruction_line": 283037,
+      "little_endian_bytes": "cdffff97",
+      "raw_word": "0x97ffffcd",
+      "retained_rendering": "bl\t_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_",
+      "signed_imm26": -51,
+      "target": "0x100106574",
+      "target_symbol": "_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_"
+    },
+    {
+      "address": "0x100000e90",
+      "hex_source_lines": [
+        506282
+      ],
+      "instruction_line": 111,
+      "little_endian_bytes": "415e0794",
+      "raw_word": "0x94075e41",
+      "retained_rendering": "bl\t0x1001d8794 ; symbol stub for: _swift_getTypeByMangledNameInContext2",
+      "signed_imm26": 482881,
+      "target": "0x1001d8794",
+      "target_symbol": null
+    },
+    {
+      "address": "0x100001684",
+      "hex_source_lines": [
+        506409
+      ],
+      "instruction_line": 635,
+      "little_endian_bytes": "db5b0794",
+      "raw_word": "0x94075bdb",
+      "retained_rendering": "bl\t0x1001d85f0 ; symbol stub for: _memcpy",
+      "signed_imm26": 482267,
+      "target": "0x1001d85f0",
+      "target_symbol": null
+    },
+    {
+      "address": "0x100001700",
+      "hex_source_lines": [
+        506417
+      ],
+      "instruction_line": 666,
+      "little_endian_bytes": "a75b0794",
+      "raw_word": "0x94075ba7",
+      "retained_rendering": "bl\t0x1001d859c ; symbol stub for: ___stack_chk_fail",
+      "signed_imm26": 482215,
+      "target": "0x1001d859c",
+      "target_symbol": null
+    }
+  ],
+  "load_commands": [
+    {
+      "command": "LC_SEGMENT_64",
+      "index": 0,
+      "line": 5
+    },
+    {
+      "command": "LC_SEGMENT_64",
+      "index": 1,
+      "line": 17
+    },
+    {
+      "command": "LC_SEGMENT_64",
+      "index": 2,
+      "line": 302
+    },
+    {
+      "command": "LC_SEGMENT_64",
+      "index": 3,
+      "line": 353
+    },
+    {
+      "command": "LC_SEGMENT_64",
+      "index": 4,
+      "line": 417
+    },
+    {
+      "command": "LC_DYLD_CHAINED_FIXUPS",
+      "index": 5,
+      "line": 429
+    },
+    {
+      "command": "LC_DYLD_EXPORTS_TRIE",
+      "index": 6,
+      "line": 434
+    },
+    {
+      "command": "LC_SYMTAB",
+      "index": 7,
+      "line": 439
+    },
+    {
+      "command": "LC_DYSYMTAB",
+      "index": 8,
+      "line": 446
+    },
+    {
+      "command": "LC_LOAD_DYLINKER",
+      "index": 9,
+      "line": 467,
+      "name": "/usr/lib/dyld"
+    },
+    {
+      "command": "LC_UUID",
+      "index": 10,
+      "line": 471,
+      "uuid": "3DEE5FE5-1F72-3C9A-8A36-4F30A2CE9ADF"
+    },
+    {
+      "command": "LC_BUILD_VERSION",
+      "index": 11,
+      "line": 475,
+      "minos": "26.0",
+      "platform": "MACOS",
+      "sdk": "26.0"
+    },
+    {
+      "command": "LC_SOURCE_VERSION",
+      "index": 12,
+      "line": 484
+    },
+    {
+      "command": "LC_MAIN",
+      "index": 13,
+      "line": 488
+    },
+    {
+      "command": "LC_LOAD_DYLIB",
+      "index": 14,
+      "line": 493,
+      "name": "/usr/lib/libSystem.B.dylib"
+    },
+    {
+      "command": "LC_LOAD_DYLIB",
+      "index": 15,
+      "line": 500,
+      "name": "/usr/lib/libobjc.A.dylib"
+    },
+    {
+      "command": "LC_LOAD_DYLIB",
+      "index": 16,
+      "line": 507,
+      "name": "/usr/lib/swift/libswiftCore.dylib"
+    },
+    {
+      "command": "LC_LOAD_WEAK_DYLIB",
+      "index": 17,
+      "line": 514,
+      "name": "/usr/lib/swift/libswift_Builtin_float.dylib"
+    },
+    {
+      "command": "LC_LOAD_DYLIB",
+      "index": 18,
+      "line": 521,
+      "name": "/usr/lib/swift/libswift_DarwinFoundation2.dylib"
+    },
+    {
+      "command": "LC_FUNCTION_STARTS",
+      "index": 19,
+      "line": 528
+    },
+    {
+      "command": "LC_DATA_IN_CODE",
+      "index": 20,
+      "line": 533
+    },
+    {
+      "command": "LC_CODE_SIGNATURE",
+      "index": 21,
+      "line": 538
+    }
+  ],
+  "mach_header": "MH_MAGIC_64    ARM64        ALL  0x00     EXECUTE    22       3232   NOUNDEFS DYLDLINK TWOLEVEL PIE",
+  "method": "Retained text/JSON/hex and SHA-256 reads, read-only Git; literal signed BL-immediate arithmetic disambiguates duplicate local names; no new decoder/production operation.",
+  "object_body_comparisons": [
+    {
+      "instruction_counts": [
+        48,
+        48
+      ],
+      "linked_address": "0x100106574",
+      "linked_normalized_sha256": "0f0b648b676c1a79e743dfccbbcff4cd72d44d708e16f0d22b895c982af0bc05",
+      "normalized_instruction_sequences_equal": true,
+      "object_address": "0x21e70",
+      "object_header_line": 42293,
+      "object_module": "GiftUISemanticCore",
+      "object_normalized_sha256": "0f0b648b676c1a79e743dfccbbcff4cd72d44d708e16f0d22b895c982af0bc05"
+    },
+    {
+      "instruction_counts": [
+        48,
+        48
+      ],
+      "linked_address": "0x100106574",
+      "linked_normalized_sha256": "0f0b648b676c1a79e743dfccbbcff4cd72d44d708e16f0d22b895c982af0bc05",
+      "normalized_instruction_sequences_equal": false,
+      "object_address": "0xa429c",
+      "object_header_line": 202368,
+      "object_module": "P08CounterRuntime",
+      "object_normalized_sha256": "6318fca1732e14f527abef763d0b9c2462d2d063af3d33b613b7d4ee95855a55"
+    },
+    {
+      "instruction_counts": [
+        34,
+        34
+      ],
+      "linked_address": "0x100001740",
+      "linked_normalized_sha256": "c884590a703a13a7894bb9821a5beb0fa663362e6978b20b1a0cdbd2180ed0c2",
+      "normalized_instruction_sequences_equal": true,
+      "object_address": "0x874",
+      "object_header_line": 634,
+      "object_module": "GiftUI",
+      "object_normalized_sha256": "c884590a703a13a7894bb9821a5beb0fa663362e6978b20b1a0cdbd2180ed0c2"
+    },
+    {
+      "instruction_counts": [
+        34,
+        34
+      ],
+      "linked_address": "0x100001740",
+      "linked_normalized_sha256": "c884590a703a13a7894bb9821a5beb0fa663362e6978b20b1a0cdbd2180ed0c2",
+      "normalized_instruction_sequences_equal": true,
+      "object_address": "0xaf24",
+      "object_header_line": 21405,
+      "object_module": "GiftUIReferenceTextResources",
+      "object_normalized_sha256": "c884590a703a13a7894bb9821a5beb0fa663362e6978b20b1a0cdbd2180ed0c2"
+    }
+  ],
+  "pinned_toolchain_core_selected_by_static_records": false,
+  "repairs": 0,
+  "retries": 0,
+  "rpaths": [],
+  "selected_imports_and_fixups": [
+    {
+      "encoded_import": "0x00001601",
+      "fixups": [
+        {
+          "line": 1142,
+          "text": "__DATA_CONST __got        0x10025C548 0x8010000000000001 bind   0x0      libSystem                  ___stack_chk_fail"
+        }
+      ],
+      "index": 1,
+      "indirect_symbols": [
+        {
+          "line": 600,
+          "text": "0x00000001001d859c 35841 ___stack_chk_fail"
+        },
+        {
+          "line": 829,
+          "text": "0x000000010025c548 35841 ___stack_chk_fail"
+        }
+      ],
+      "install_name": "/usr/lib/libSystem.B.dylib",
+      "line": 12097,
+      "name_offset": 11,
+      "ordinal": 1,
+      "provider_label": "libSystem",
+      "symbol": "___stack_chk_fail",
+      "weak_import": 0
+    },
+    {
+      "encoded_import": "0x00003a01",
+      "fixups": [
+        {
+          "line": 1143,
+          "text": "__DATA_CONST __got        0x10025C550 0x8010000000000002 bind   0x0      libSystem                  ___stack_chk_guard"
+        }
+      ],
+      "index": 2,
+      "indirect_symbols": [
+        {
+          "line": 830,
+          "text": "0x000000010025c550 35842 ___stack_chk_guard"
+        }
+      ],
+      "install_name": "/usr/lib/libSystem.B.dylib",
+      "line": 12101,
+      "name_offset": 29,
+      "ordinal": 1,
+      "provider_label": "libSystem",
+      "symbol": "___stack_chk_guard",
+      "weak_import": 0
+    },
+    {
+      "encoded_import": "0x0000ba01",
+      "fixups": [
+        {
+          "line": 1149,
+          "text": "__DATA_CONST __got        0x10025C580 0x8010000000000008 bind   0x0      libSystem                  _memcpy"
+        }
+      ],
+      "index": 8,
+      "indirect_symbols": [
+        {
+          "line": 607,
+          "text": "0x00000001001d85f0 35853 _memcpy"
+        },
+        {
+          "line": 836,
+          "text": "0x000000010025c580 35853 _memcpy"
+        }
+      ],
+      "install_name": "/usr/lib/libSystem.B.dylib",
+      "line": 12125,
+      "name_offset": 93,
+      "ordinal": 1,
+      "provider_label": "libSystem",
+      "symbol": "_memcpy",
+      "weak_import": 0
+    },
+    {
+      "encoded_import": "0x000ca403",
+      "fixups": [
+        {
+          "line": 1209,
+          "text": "__DATA_CONST __got        0x10025C760 0x8010000000000044 bind   0x0      libswiftCore               _$ss5ErrorWS"
+        }
+      ],
+      "index": 68,
+      "indirect_symbols": [
+        {
+          "line": 896,
+          "text": "0x000000010025c760 35810 _$ss5ErrorWS"
+        }
+      ],
+      "install_name": "/usr/lib/swift/libswiftCore.dylib",
+      "line": 12365,
+      "name_offset": 1618,
+      "ordinal": 3,
+      "provider_label": "libswiftCore",
+      "symbol": "_$ss5ErrorWS",
+      "weak_import": 0
+    },
+    {
+      "encoded_import": "0x0017bc03",
+      "fixups": [
+        {
+          "line": 1266,
+          "text": "__DATA_CONST __got        0x10025C928 0x801000000000007D bind   0x0      libswiftCore               _swift_getTypeByMangledNameInContext2"
+        }
+      ],
+      "index": 125,
+      "indirect_symbols": [
+        {
+          "line": 642,
+          "text": "0x00000001001d8794 35889 _swift_getTypeByMangledNameInContext2"
+        },
+        {
+          "line": 953,
+          "text": "0x000000010025c928 35889 _swift_getTypeByMangledNameInContext2"
+        }
+      ],
+      "install_name": "/usr/lib/swift/libswiftCore.dylib",
+      "line": 12593,
+      "name_offset": 3038,
+      "ordinal": 3,
+      "provider_label": "libswiftCore",
+      "symbol": "_swift_getTypeByMangledNameInContext2",
+      "weak_import": 0
+    }
+  ],
+  "selected_symbol_rows": [
+    {
+      "line": 207,
+      "text": "0000000100000e5c t ___swift_instantiateConcreteTypeFromMangledName"
+    },
+    {
+      "line": 222,
+      "text": "0000000100001648 T _$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF"
+    },
+    {
+      "line": 223,
+      "text": "0000000100001704 t _$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlFxSWKXEfU_TA"
+    },
+    {
+      "line": 224,
+      "text": "0000000100001740 t _$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF"
+    },
+    {
+      "line": 15376,
+      "text": "0000000100106574 t _$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_"
+    },
+    {
+      "line": 15377,
+      "text": "0000000100106634 t _$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA"
+    },
+    {
+      "line": 20901,
+      "text": "00000001001c90cc t _$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA"
+    },
+    {
+      "line": 21085,
+      "text": "00000001001cc2b0 t _$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA.65"
+    },
+    {
+      "line": 34452,
+      "text": "000000010028c200 d _$ss5Error_pMD"
+    }
+  ],
+  "source42_and_five_dirty_hashes_and_cache_preserved": true,
+  "source_packet_members_verified": 28,
+  "strict_cold_eligible": false,
+  "u02_u05": "Prior open dispositions; not investigated by this U01-only slice"
+}
