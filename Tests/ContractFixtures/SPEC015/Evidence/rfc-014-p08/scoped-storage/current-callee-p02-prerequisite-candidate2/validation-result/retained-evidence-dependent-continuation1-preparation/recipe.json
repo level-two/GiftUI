@@ -7,7 +7,8 @@
   "p07_terminal": "/Users/eugene/work/GiftUI/.build/contracts/p08-p07-cyclescene-correction-probe1/terminal.json",
   "output_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-retained-evidence-dependent-continuation1",
   "environment_overrides": {
-    "PYTHONDONTWRITEBYTECODE": "1"
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPYCACHEPREFIX": "/dev/null"
   },
   "source_candidates": 1,
   "retries": 0,
@@ -40,6 +41,8 @@
     "LOGNAME": "eugene",
     "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
     "PYTHONDONTWRITEBYTECODE": "1",
-    "PYTHONNOUSERSITE": "1"
-  }
+    "PYTHONNOUSERSITE": "1",
+    "PYTHONPYCACHEPREFIX": "/dev/null"
+  },
+  "python_executable": "/Applications/Xcode.app/Contents/Developer/usr/bin/python3"
 }

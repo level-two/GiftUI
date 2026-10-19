@@ -173,6 +173,10 @@ def receipt_checks(data, key='pass'):
 
 
 def verify_context(root, packet, recipe):
+    require(recipe['python_executable'] == '/Applications/Xcode.app/Contents/Developer/usr/bin/python3', 'absolute Python interpreter')
+    require(recipe['environment']['PYTHONPYCACHEPREFIX'] == '/dev/null' and recipe['environment']['PYTHONDONTWRITEBYTECODE'] == '1' and recipe['environment']['PYTHONNOUSERSITE'] == '1', 'Python import cache isolation')
+    require(set(recipe['environment']) == {'HOME','TMPDIR','USER','LOGNAME','PATH','PYTHONDONTWRITEBYTECODE','PYTHONNOUSERSITE','PYTHONPYCACHEPREFIX'}, 'fixed driver environment')
+    require(recipe['environment']['PATH'] == '/usr/bin:/bin:/usr/sbin:/sbin', 'fixed tool PATH')
     freeze = json.loads(actual(packet / 'source-freeze.json'))
     verify_files(root, freeze, json.loads(actual(packet / 'frozen-links.json')))
     verify_inventory(root, json.loads(actual(packet / 'source-inventory.json')))

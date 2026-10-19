@@ -63,7 +63,7 @@ def main():
             (out / 'launch.json').write_text(json.dumps(report, indent=2) + '\n')
             environment = dict(recipe['environment'])
             with (out / (stage + '.stdout')).open('wb') as stdout, (out / (stage + '.stderr')).open('wb') as stderr:
-                process = subprocess.Popen(argv, cwd=ROOT, env=environment, stdout=stdout, stderr=stderr, pass_fds=(lock.fileno(),))
+                process = subprocess.Popen(argv, executable=recipe['python_executable'], cwd=ROOT, env=environment, stdout=stdout, stderr=stderr, pass_fds=(lock.fileno(),))
                 def stop(signum, frame):
                     process.send_signal(signum)
                 for sig in (signal.SIGINT, signal.SIGTERM, signal.SIGHUP):

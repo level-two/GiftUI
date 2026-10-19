@@ -1,3 +1,4 @@
+test_ambient_pathlib_is_rejected_by_exact_bootstrap_startup (__main__.FilesystemTests) ... ok
 test_counter_384_aggregate_and_exact_dependencies (__main__.FilesystemTests) ... ok
 test_external_git_pins_and_packet_substitution (__main__.FilesystemTests) ... fatal: git cat-file 0000000000000000000000000000000000000000: bad file
 fatal: git cat-file 0000000000000000000000000000000000000000: bad file
@@ -10,8 +11,9 @@ test_receipt_source_artifact_and_traversal (__main__.FilesystemTests) ... ok
 test_schema4_required_joins_and_provenance (__main__.FilesystemTests) ... ok
 test_tree_bytes_additions_deletions_aliases (__main__.FilesystemTests) ... ok
 test_tree_directory_and_link_identity (__main__.FilesystemTests) ... ok
+test_valid_helper_bytecode_is_rejected_by_exact_driver_environment (__main__.FilesystemTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 9 tests in 13.916s
+Ran 11 tests in 15.246s
 
 OK

@@ -4,6 +4,12 @@ Status: compiler-free preparation; independent applicability and launch-readines
 review pending. No compiler, schema4 or counter invocation has run for this packet.
 This packet cannot resume, repair, retry or relabel campaign11.
 
+The independent readiness review blocked preparation `21d35968` because `-B`
+does not stop cache reads and ambient `PYTHONPATH` could replace an import before
+pin authentication. This revision adds the isolated absolute-interpreter launch,
+null cache namespace, actual Python runtime freeze and executable adversarial
+checks below. Independent readiness review of this revision remains pending.
+
 The implementation-executor skill applies. SPEC-013 and SPEC-015 remain
 implementing with active owner plans; P08/R07/T8.1 remain open. Approved RFC-014
 amendments, accepted ADR-036/039 and the approved Specifications supply authority.
@@ -47,7 +53,7 @@ invocation operands. No exclusion grants authority to consume changed bytes.
 
 `source-freeze.json`, `source-inventory.json`, `tools.json`,
 `retained-files.json` and `retained-trees.json` seal finite file names, bytes,
-complete directory membership and link identities. The 63 finite roots contain 68,865 entries. The full macOS and ARMv6
+complete directory membership and link identities. The 64 finite roots contain 70,869 entries. The full macOS and ARMv6
 SDKs, compiler executables/frontends, compiler Swift and Clang resources,
 SwiftSyntax/macro import search directories, producer and control roots are
 included. Compiler/SDK/target/optimization/lifetime flags remain the exact
@@ -85,7 +91,14 @@ holding its exclusive flock. The schema4 output receives a complete immutable
 snapshot before counter launch and is checked again after counter. The lock is
 inherited into each maintained driver. No environment assertion can claim lock
 ownership. A fixed minimal environment and PATH are recorded in `recipe.json`;
-Python and Ruby executable identities are sealed.
+The downstream process uses the absolute frozen Xcode Python executable via
+`Popen(executable=...)`, preserving both original argv recipes. The actual
+Xcode interpreter, its complete Python 3.9 framework runtime and Ruby executable
+identities are sealed; `/usr/bin/python3` alone is insufficient.
+`PYTHONPYCACHEPREFIX=/dev/null` prevents reading substituted local `.pyc` files;
+`PYTHONDONTWRITEBYTECODE=1` prevents cache writes. Exact Python-source membership discovery in `scripts/contracts`
+rejects added startup/import source files while leaving existing
+`__pycache__` outside the consumed cache namespace.
 
 The permanently consumed marker is
 `.build/contracts/p08-retained-evidence-dependent-continuation1`. Any existing
@@ -101,14 +114,16 @@ with zero automatic repairs, zero retries and no remaining dependent launch.
 Run from the repository root:
 
 ```sh
-PYTHONDONTWRITEBYTECODE=1 python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-dependent-continuation1-preparation/test_static.py
+/usr/bin/env -i HOME=/Users/eugene TMPDIR=/private/tmp PATH=/usr/bin:/bin:/usr/sbin:/sbin /Applications/Xcode.app/Contents/Developer/usr/bin/python3 -I -S -B -X pycache_prefix=/dev/null Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-dependent-continuation1-preparation/test_static.py
 ```
 
-Nine tests include real full-context authentication and actual temporary
+Eleven tests include real full-context authentication and actual temporary
 filesystem attacks: changed source/artifact/receipt, traversal, raw first-stage
 log and audit drift, additional object/module/cache entries, link and directory
 identity changes, absent activation joins, changed dependency hashes/operands,
-383/duplicate/failed counter labels, aggregate/focused flags, invalid external
+383/duplicate/failed counter labels, aggregate/focused flags, valid timestamp/size-matching
+substituted bytecode for `p08_check_collection` and `p08_layout_facts`, ambient
+`PYTHONPATH` substitution of `pathlib`, real interpreter/startup identity, invalid external
 Git pins, substituted packet code and extra packet members. No test calls a
 compiler, downstream driver or the actual continuation runner. The bootstrap
 fixture executes only a harmless Git-pinned marker writer in a temporary repository. `static-validation.json` and the raw
@@ -122,8 +137,13 @@ code. The verifier and runner execute directly from authenticated Git bytes;
 the readiness import is supplied from those same bytes. After that review only, the sole permitted launch form is:
 
 ```sh
-git --no-replace-objects show REVIEWED_COMMIT:Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-dependent-continuation1-preparation/reviewed-launch.py | PYTHONDONTWRITEBYTECODE=1 python3 - REVIEWED_COMMIT REVIEWED_REPOSITORY_TREE REVIEWED_PACKET_TREE
+git --no-replace-objects show REVIEWED_COMMIT:Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-dependent-continuation1-preparation/reviewed-launch.py | /usr/bin/env -i HOME=/Users/eugene TMPDIR=/private/tmp PATH=/usr/bin:/bin:/usr/sbin:/sbin /Applications/Xcode.app/Contents/Developer/usr/bin/python3 -I -S -B -X pycache_prefix=/dev/null - REVIEWED_COMMIT REVIEWED_REPOSITORY_TREE REVIEWED_PACKET_TREE
 ```
+
+The absolute interpreter starts with `env -i`, `-I`, `-S`, `-B` and the CLI
+cache prefix before any packet import. The bootstrap rejects startup without
+those flags before importing `pathlib`; ambient Python paths, site hooks and
+local bytecode cannot supply that import.
 
 The three pins must come from the completed independent review, never a mutable
 manifest, an abbreviated object ID or launch-time discovery. No reviewed pins

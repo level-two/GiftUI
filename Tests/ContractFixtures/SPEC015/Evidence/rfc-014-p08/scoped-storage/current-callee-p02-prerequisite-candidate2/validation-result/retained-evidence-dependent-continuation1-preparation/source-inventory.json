@@ -516,7 +516,38 @@
     "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34",
     "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0",
     "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893",
-    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": "42b14cf51ae9804414f6936d2c5f64dd55d6f2b5e8b8e2811adcccc9582158d6"
+    "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift": "42b14cf51ae9804414f6936d2c5f64dd55d6f2b5e8b8e2811adcccc9582158d6",
+    "scripts/contracts/build-spec-015-counter-image.py": "cccdd958a7f3645cf97656ea987553307f3cd441035df4e8d3d8c37006133243",
+    "scripts/contracts/check-nrf-source-selection.py": "db9bed2fc2eeb765d0edc77b0fb623047ac06b48c70d3c8b8dd2d2f9c9255d66",
+    "scripts/contracts/check-spec-001-executable-closures.py": "52cbfd8f00e257093895d711d4ce7cb47192bf85f57b274752006ab46c135d9c",
+    "scripts/contracts/check-spec-001-font-parity.py": "a954a355f196d6a7d47cb424a0843b5b55b3f1940394360e94de6c84f0b54aa3",
+    "scripts/contracts/check-spec-001-nrf-owner-isolation.py": "b81a9e8c833e1bd18a77a780b414ad79525240d8a9f33d4b9274aad7d79ba284",
+    "scripts/contracts/check-spec-001-nrf-topology.py": "733d9a7aedede779436d71571a4f9892533c4af10dda240e607aa423216969fa",
+    "scripts/contracts/check-spec-002-compiler-baseline.py": "d46da57a26e0f89f54294a931619a42b99544636986b1beb4fecdf80712b028a",
+    "scripts/contracts/check-spec-006-runtime-records.py": "d3dba1f79ad2eeed54b5fd0793442040a6a66c39a2af01911e407cd51301e125",
+    "scripts/contracts/check-spec-006-typed-lowering.py": "c5645b188daa539235fc1ac4d38d2a74fa3aa1822fef071652452de5e59ac5fb",
+    "scripts/contracts/check-spec-007-bank-layout.py": "6832eccfdd114406f2211232f88bfcd2bd08a4a2617f492e74db71896ec568a7",
+    "scripts/contracts/check-spec-010-model-identities.py": "2b143c416772297f58ab65792f6915971ecae3ce39aa6c79ff731862fe605a28",
+    "scripts/contracts/check-spec-011-owned-keys.py": "6e23a574bc803edbebbd884f98e73043cc2de82c8ef96bb6245effa43b9a8821",
+    "scripts/contracts/check-spec-012-protocol-canvas.py": "d1ea31ecb278368f856a8975409aa2203194ba6af371e6a2d2b8f9da0f9c2ade",
+    "scripts/contracts/check-spec-013-amended-carriers.py": "9b87a350525070c64e35c4437c18a0ca551dc6e1940f22e7d909eb9075b2de49",
+    "scripts/contracts/check-spec-013-runtime-cycle.py": "8e8bb63b15214a8da8a907c6705ee477f4aaddbd6aa6beaafe5ac092fddb5991",
+    "scripts/contracts/check-spec-015-counter.py": "8150d2cbd864222dfba32bd91543d7f7d3ac3be81639b0a86fa00aacc6dcf970",
+    "scripts/contracts/check-spec-015-schema4.py": "c248f4131bcc84196833ea0eaaabf5f40e3742cb9e7c7dd10dcdf4a7ddf67e6b",
+    "scripts/contracts/check-spec-015-scoped-host.py": "2f64eab33fb736a6d8ac1b90470d340fde2f5276165eef2dc91e95707d82c3c1",
+    "scripts/contracts/compile-spec-001-nrf-native-owners.py": "5e1c14d2ecee3365e8a56a71e4f92ba9137539fadeddcdf1cb92fa1c6eb237aa",
+    "scripts/contracts/current-spec-001-reference-traces.py": "695b2b971be1a041c7b235749583231f3626408adb992d16f6c4740d2c15f83e",
+    "scripts/contracts/generate-spec-001-nrf-topology.py": "dee4e002284f1c4eef21306212520531762623cc92f4caa9e31cbb18b7b806e3",
+    "scripts/contracts/generate-spec-012-raster-probe.py": "aacfee8e50a47aea08b685991c8724c1a8422eff45a1240bd294ff5e4a9e8a33",
+    "scripts/contracts/inventory-spec-001-production-sources.py": "63a71baab8b8f8dc116d2e562a64f9712e216e996dd9dbdfe55c96469c92e389",
+    "scripts/contracts/p08_check_collection.py": "d8d9fa4e92d7a0ad04173b401fbb332750337dd2d2e34bd72f3a7bbf396e1b41",
+    "scripts/contracts/p08_layout_facts.py": "e71ae7a24764f702fd55e52f5523b3876abfc9357fe22b962c3176a89ae3e905",
+    "scripts/contracts/render-spec-001-rasters.py": "2d1feba8ceaaf57ebcb44e36efc5cbc248a05bd13fecdb1e732405ab31ae5f9f",
+    "scripts/contracts/test_p08_backend_observation.py": "3c00f89f5b12078ace271762034b49259ee2bdab3ac661415b29da6c37b0e8f2",
+    "scripts/contracts/test_p08_check_collection.py": "8373d8d300969153a4033851a8284ea0b43d687cf545779e4fa90a56017955eb",
+    "scripts/contracts/test_p08_layout_facts.py": "1786307fe3c0efb76a44e561cc20bc9619d1971f4597fb92fd8cebf653904ad8",
+    "scripts/contracts/test_p08_layout_literal_proofs.py": "d9549ad5fc4aaa06958d91f359bdea55866ffd458f17d2b27a7524b55b9cc5b1",
+    "scripts/contracts/test_p08_layout_tail_proofs.py": "3e275f9fd0766724fa1131d81042c21a50fd3b7d57643d56ec1c708bf73e34e7"
   },
   "rules": [
     {
@@ -553,6 +584,11 @@
       "base": "Tests/ContractFixtures/SPEC013/RuntimeDerived",
       "recursive": true,
       "suffix": ".swift"
+    },
+    {
+      "base": "scripts/contracts",
+      "recursive": false,
+      "suffix": ".py"
     }
   ]
 }

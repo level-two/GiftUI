@@ -19,6 +19,10 @@
     "kind": "directory",
     "resolved": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
   },
+  "/Applications/Xcode.app/Contents/Developer/usr/bin/python3": {
+    "resolved": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "271143990bc83af0fb2404a255038f5faafb96df1584ed7f085e5018c0f33ffb"
+  },
   "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool": {
     "resolved": "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/arm64-apple-macosx/debug/GiftUIMacros-tool",
     "sha256": "651cf63bd8c07d18d143fd09370427fdacf8c6967c38e14c71d2ea5f7d9b2814"

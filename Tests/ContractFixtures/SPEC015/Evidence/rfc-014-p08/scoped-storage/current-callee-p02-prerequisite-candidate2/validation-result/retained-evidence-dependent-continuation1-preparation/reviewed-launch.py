@@ -1,8 +1,12 @@
 """Use only git show EXTERNALLY_REVIEWED_COMMIT:this/path | python3 - ... ."""
+import sys
+if not (sys.flags.isolated and sys.flags.no_site and sys.flags.dont_write_bytecode and sys.pycache_prefix == '/dev/null'):
+    raise SystemExit('isolated -I -S -B -X pycache_prefix=/dev/null startup required')
+if sys.executable != '/Applications/Xcode.app/Contents/Developer/usr/bin/python3':
+    raise SystemExit('absolute frozen Xcode Python required')
 from pathlib import Path
 import hashlib
 import subprocess
-import sys
 
 root = Path('/Users/eugene/work/GiftUI')
 relative = 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-dependent-continuation1-preparation'

@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from readiness import (actual, sha, tree_entries, verify_trees, verify_receipt,
                        verify_stage_captures, verify_reviewed_packet,
                        verify_context, qualify_schema4, qualify_counter, verify_archive)
@@ -140,13 +141,52 @@ class FilesystemTests(unittest.TestCase):
             # Only fixture-location constants differ from the real bootstrap.
             bootstrap=actual(PACKET/'reviewed-launch.py').decode().replace("root = Path('/Users/eugene/work/GiftUI')",'root = Path('+repr(str(root))+')')
             relative=str(PACKET.relative_to(ROOT));bootstrap=bootstrap.replace('relative = '+repr(relative),"relative = 'packet'")
-            def launch(values):return subprocess.run([sys.executable,'-',*values],input=bootstrap.encode(),cwd=root,capture_output=True,env=dict(os.environ,PYTHONDONTWRITEBYTECODE='1'))
+            def launch(values):return subprocess.run(['/Applications/Xcode.app/Contents/Developer/usr/bin/python3','-I','-S','-B','-X','pycache_prefix=/dev/null','-',*values],input=bootstrap.encode(),cwd=root,capture_output=True,env=dict(os.environ,PYTHONDONTWRITEBYTECODE='1'))
             result=launch(pins);self.assertEqual(result.returncode,0,result.stderr.decode());self.assertEqual(marker.read_text(),'reviewed fixture only');marker.unlink()
             saved=(packet/'run.py').read_bytes();(packet/'run.py').write_text("raise SystemExit('mutable runner executed')")
             self.assertNotEqual(launch(pins).returncode,0);self.assertFalse(marker.exists());(packet/'run.py').write_bytes(saved)
             (packet/'readiness.py').write_text("raise SystemExit('mutable verifier executed')")
             self.assertNotEqual(launch(pins).returncode,0);self.assertFalse(marker.exists())
             self.assertNotEqual(launch([pins[0],'0'*40,pins[2]]).returncode,0)
+
+
+    def test_valid_helper_bytecode_is_rejected_by_exact_driver_environment(self):
+        import importlib.util
+        import py_compile
+        with tempfile.TemporaryDirectory(dir='/private/tmp') as temp:
+            root=Path(temp);scripts=root/'scripts/contracts';scripts.mkdir(parents=True);poison_prefix=root/'poison-cache'
+            for module in ('p08_check_collection','p08_layout_facts'):
+                source=scripts/(module+'.py');source.write_bytes(actual(ROOT/'scripts/contracts'/(module+'.py')))
+                payload=("print('SUBSTITUTED_BYTECODE_"+module+"')\n").encode()
+                poison=root/(module+'-poison.py');poison.write_bytes(payload+b'#'*(source.stat().st_size-len(payload)))
+                os.utime(poison,ns=(source.stat().st_atime_ns,source.stat().st_mtime_ns))
+                cache=poison_prefix/str(source.parent).lstrip('/')/(module+'.cpython-39.pyc');cache.parent.mkdir(parents=True,exist_ok=True)
+                py_compile.compile(str(poison),cfile=str(cache),dfile=str(source),doraise=True)
+            driver=scripts/'import_helpers.py';driver.write_text("import p08_check_collection\nimport p08_layout_facts\nprint('IMPORTS_COMPLETE')\n")
+            recipe=json.loads(actual(PACKET/'recipe.json'));safe=dict(recipe['environment']);unsafe=dict(safe);unsafe['PYTHONPYCACHEPREFIX']=str(poison_prefix)
+            command=['python3',str(driver)]
+            before={str(x):sha(x.read_bytes()) for x in poison_prefix.rglob('*.pyc')}
+            baseline=subprocess.run(command,executable=recipe['python_executable'],cwd=root,env=unsafe,capture_output=True)
+            self.assertEqual(baseline.returncode,0,baseline.stderr.decode());self.assertEqual(baseline.stdout.count(b'SUBSTITUTED_BYTECODE_'),2)
+            protected=subprocess.run(command,executable=recipe['python_executable'],cwd=root,env=safe,capture_output=True)
+            self.assertEqual(protected.returncode,0,protected.stderr.decode());self.assertNotIn(b'SUBSTITUTED_BYTECODE_',protected.stdout);self.assertIn(b'IMPORTS_COMPLETE',protected.stdout)
+            self.assertEqual(before,{str(x):sha(x.read_bytes()) for x in poison_prefix.rglob('*.pyc')})
+
+    def test_ambient_pathlib_is_rejected_by_exact_bootstrap_startup(self):
+        with tempfile.TemporaryDirectory(dir='/private/tmp') as temp:
+            root=Path(temp);marker=root/'ambient-imported'
+            (root/'pathlib.py').write_text("open("+repr(str(marker))+",'w').write('ambient pathlib executed')\n")
+            interpreter='/Applications/Xcode.app/Contents/Developer/usr/bin/python3'
+            poison=dict(os.environ,PYTHONPATH=str(root),PYTHONDONTWRITEBYTECODE='1')
+            baseline=subprocess.run([interpreter,'-B','-c','import pathlib'],cwd=root,env=poison,capture_output=True)
+            self.assertEqual(baseline.returncode,0);self.assertTrue(marker.exists());marker.unlink()
+            # Same env -i/absolute interpreter/flags as the reviewed launch form.
+            command=['/usr/bin/env','-i','HOME=/Users/eugene','TMPDIR=/private/tmp','PATH=/usr/bin:/bin:/usr/sbin:/sbin',interpreter,'-I','-S','-B','-X','pycache_prefix=/dev/null','-','0'*40,'0'*40,'0'*40]
+            protected=subprocess.run(command,input=actual(PACKET/'reviewed-launch.py'),cwd=root,env=poison,capture_output=True)
+            self.assertNotEqual(protected.returncode,0);self.assertFalse(marker.exists());self.assertIn(b'bad file',protected.stderr)
+            identity=subprocess.run(command[:-4]+['-c',"import pathlib,sys,json;print(json.dumps(dict(executable=sys.executable,prefix=sys.prefix,path=sys.path,isolated=sys.flags.isolated,no_site=sys.flags.no_site,cache=sys.pycache_prefix)))"],cwd=root,env=poison,capture_output=True)
+            self.assertEqual(identity.returncode,0,identity.stderr.decode());facts=json.loads(identity.stdout)
+            self.assertEqual(facts['executable'],interpreter);self.assertEqual(facts['isolated'],1);self.assertEqual(facts['no_site'],1);self.assertEqual(facts['cache'],'/dev/null');self.assertNotIn(str(root),facts['path'])
 
 
 if __name__=='__main__':
