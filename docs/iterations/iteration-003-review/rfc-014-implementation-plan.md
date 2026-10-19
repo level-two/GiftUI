@@ -7,8 +7,11 @@ confirms selected callbacks/helpers/no-throw transfer attribution. The
 inventories the exact linked counter and frozen Swift runtime bytes, with
 unproved loader/provider, cold metadata, numeric Error size and library costs.
 Six static commands maximum are proposed behind an explicit provider gate;
-none ran. Independent preparation review is next, with no acquisition/decoder/
-runtime/compiler/repair/strict-cold allowance. U02–U05 retain their open
+none ran. The [independent preparation review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/independent-review.md)
+passes identity/scope/provider sequencing and records B1: complete loader
+fallback environments before a separate controller/readiness packet and explicit
+static-attempt authorization. No launch clearance or acquisition/decoder/runtime/
+compiler/repair/strict-cold allowance follows. U02–U05 retain their open
 interpretation dispositions. `strict_cold_eligible` remains false;
 collection1/1 is consumed, repairs0/retries0. P08/R07/T8.1, remaining gates,
 collection marker and historical budgets remain unchanged.
