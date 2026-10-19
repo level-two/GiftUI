@@ -1,0 +1,7 @@
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-schema.swift:7:216: error: cannot convert value of type 'ObservableModelScope<CycleOwnedModel, S>' to expected argument type 'ObservableModelScope<CycleOwnedModel, CycleOwnedModel.Schema>' (aka 'ObservableModelScope<CycleOwnedModel, CycleModelSchema>')
+5 | import CyclePresentation
+6 | import RuntimeCycleProbe
+7 | func reject<S>(_ models: borrowing ObservableModelScope<CycleOwnedModel, S>, _ root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>) { _ = ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CycleDomain.self) }
+  |                                                                                                                                                                                                                        |- error: cannot convert value of type 'ObservableModelScope<CycleOwnedModel, S>' to expected argument type 'ObservableModelScope<CycleOwnedModel, CycleOwnedModel.Schema>' (aka 'ObservableModelScope<CycleOwnedModel, CycleModelSchema>')
+  |                                                                                                                                                                                                                        `- note: arguments to generic parameter 'Schema' ('S' and 'CycleOwnedModel.Schema' (aka 'CycleModelSchema')) are expected to be equal
+8 | 

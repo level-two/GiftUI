@@ -1,0 +1,6 @@
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-action.swift:7:123: error: cannot convert value of type 'ForeignAction' to expected argument type 'CycleAction'
+5 | import CyclePresentation
+6 | import RuntimeCycleProbe
+7 | enum ForeignAction: UInt16, GiftUIAction { case increment = 1 }; func reject() { _ = CycleHandler.operation(ForeignAction.increment) }
+  |                                                                                                                           `- error: cannot convert value of type 'ForeignAction' to expected argument type 'CycleAction'
+8 | 

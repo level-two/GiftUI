@@ -1,0 +1,4 @@
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-semantic.swift:1:79: error: 'copy' cannot be applied to noncopyable types
+1 | func copySemantic<P>(_ owner: borrowing ScopedSemanticOwner<P>) { let other = copy owner; _ = other }
+  |                                                                               `- error: 'copy' cannot be applied to noncopyable types
+2 | 

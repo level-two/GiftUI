@@ -1,0 +1,4 @@
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-owner.swift:1:85: error: 'copy' cannot be applied to noncopyable types
+1 | func copyOwner<M: ~Copyable, S>(_ owner: borrowing ScopedOwner<M, S>) { let other = copy owner; _ = other }
+  |                                                                                     `- error: 'copy' cannot be applied to noncopyable types
+2 | 

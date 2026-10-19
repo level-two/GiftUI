@@ -1,0 +1,13 @@
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-semantic.swift:1:35: error: stored property 'owner' of 'Escapable'-conforming generic struct 'Escape' has non-Escapable type 'ScopedSemanticOwner<P>'
+1 | struct Escape<P>: ~Copyable { let owner: ScopedSemanticOwner<P> }
+  |        |                          `- error: stored property 'owner' of 'Escapable'-conforming generic struct 'Escape' has non-Escapable type 'ScopedSemanticOwner<P>'
+  |        `- note: consider adding '~Escapable' to generic struct 'Escape'
+2 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift:3:8: note: generic struct 'ScopedSemanticOwner' has '~Escapable' constraint preventing 'Escapable' conformance
+ 1 | import GiftUISemanticCore
+ 2 | 
+ 3 | struct ScopedSemanticOwner<Payload>: ~Copyable, ~Escapable {
+   |        `- note: generic struct 'ScopedSemanticOwner' has '~Escapable' constraint preventing 'Escapable' conformance
+ 4 |     let semantic: SemanticRecordStore<Payload>
+ 5 |     @_lifetime(copy semantic)

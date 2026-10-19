@@ -1,0 +1,24 @@
+{
+  "status": "STOP",
+  "source_candidates": 1,
+  "retries": 0,
+  "automatic_repairs": 0,
+  "reviewed_commit": "68d1854cc7f5f13d610223e71ab5d3950e6ac954",
+  "argv": [
+    "python3",
+    "scripts/contracts/check-spec-013-runtime-cycle.py",
+    "--profile",
+    "macos-static",
+    "--giftui-build",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static"
+  ],
+  "started_ns": 1792387533478293000,
+  "driver_parent_before": {
+    "tmp1smlxjvn": [
+      16777234,
+      29592708
+    ]
+  },
+  "working_tree_before": " M Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift\n M Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift\n M firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt\n M scripts/nrf52840/build.sh\n M scripts/raspberry-pi/build.sh\n?? scripts/contracts/__pycache__/\n",
+  "environment_sha256": "d749c51c1cc2b5f2aa0221d0609cecd1259907a7de53f0a8c21fab0a1ceed95d"
+}

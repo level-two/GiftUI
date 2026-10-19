@@ -1,0 +1,4 @@
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-coordinator.swift:1:103: error: 'copy' cannot be applied to noncopyable types
+1 | func copyCoordinator<M: ~Copyable, S>(_ coordinator: borrowing ScopedCoordinator<M, S>) { let other = copy coordinator; _ = other }
+  |                                                                                                       `- error: 'copy' cannot be applied to noncopyable types
+2 | 

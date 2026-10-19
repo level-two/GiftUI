@@ -1,0 +1,13 @@
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-coordinator.swift:1:49: error: stored property 'coordinator' of 'Escapable'-conforming generic struct 'Escape' has non-Escapable type 'ScopedCoordinator<M, S>'
+1 | struct Escape<M: ~Copyable, S>: ~Copyable { let coordinator: ScopedCoordinator<M, S> }
+  |        |                                        `- error: stored property 'coordinator' of 'Escapable'-conforming generic struct 'Escape' has non-Escapable type 'ScopedCoordinator<M, S>'
+  |        `- note: consider adding '~Escapable' to generic struct 'Escape'
+2 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift:7:8: note: generic struct 'ScopedCoordinator' has '~Escapable' constraint preventing 'Escapable' conformance
+ 5 | 
+ 6 | // Real P03 storage scope, not a pointer descriptor or mock read domain.
+ 7 | struct ScopedCoordinator<Model: ~Copyable, Schema>:
+   |        `- note: generic struct 'ScopedCoordinator' has '~Escapable' constraint preventing 'Escapable' conformance
+ 8 |     ~Copyable, ~Escapable, ExecutionAdmissionSink, ExecutionOpportunityRunner, RuntimeOpportunityQuiescence
+ 9 | {

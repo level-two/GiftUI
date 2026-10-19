@@ -1,0 +1,2411 @@
+{
+  "artifacts": {
+    "Cycle.swift": {
+      "bytes": 2581,
+      "sha256": "2459201faffadccb0926738bb6d0ffc90a64a47b95bee7dd3111861a0f070f62"
+    },
+    "CyclePresentation.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "CyclePresentation.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "CyclePresentation.o": {
+      "bytes": 45008,
+      "sha256": "9e23adf5e41925f62eefb6d7011972f1325fcb3c94909515dbba9cbc055fc77a"
+    },
+    "CyclePresentation.swiftdoc": {
+      "bytes": 384,
+      "sha256": "89fa56eb6eff791ebf5f46cfcefc96c0f369710d3b2e73ea28af0d33c12c03ae"
+    },
+    "CyclePresentation.swiftmodule": {
+      "bytes": 69236,
+      "sha256": "a53bf776343280f162b813b8b33759def4eadd06a86c0a7d7cfc387809d4bd88"
+    },
+    "CyclePresentation.swiftsourceinfo": {
+      "bytes": 4732,
+      "sha256": "4db6c3890c0cadbeb0fde515876c23a1df64b691d537b4c04db703452865f6d5"
+    },
+    "CycleSchema.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "CycleSchema.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "CycleSchema.o": {
+      "bytes": 9112,
+      "sha256": "8c24f785bb2825b65f63e1c1ae918080d62bdbec37967fdb5a94ce3b656d66d0"
+    },
+    "CycleSchema.swift": {
+      "bytes": 1418,
+      "sha256": "a321422f043de457b284604418dd4cb02e24b320e127fecace79040e82530a3f"
+    },
+    "CycleSchema.swiftdoc": {
+      "bytes": 376,
+      "sha256": "2ddb32a2c62043d037139ea0b0248634e38c82a64393e632944c0315ee56095f"
+    },
+    "CycleSchema.swiftmodule": {
+      "bytes": 26840,
+      "sha256": "cfdc62729d488c3d9df0f8c0b029c32b8650a9e7ecbc2b0d0df8f364884eb8b0"
+    },
+    "CycleSchema.swiftsourceinfo": {
+      "bytes": 3236,
+      "sha256": "b10e5a62f43af39e4020ed800779de78c55ef18e3b99c7f3bcfb3fc8a511b109"
+    },
+    "CycleTable.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "CycleTable.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "CycleTable.o": {
+      "bytes": 12296,
+      "sha256": "9a45fefba851a1832bf2939df3509fcccb1b53fcdd5f530612837796093b32ce"
+    },
+    "CycleTable.swift": {
+      "bytes": 1490,
+      "sha256": "b47fd1fe961a36a07937c8c8b20d2bedcf57eb00b2421c6a7b7b6dccd003179a"
+    },
+    "CycleTable.swiftdoc": {
+      "bytes": 376,
+      "sha256": "6623470d585feb878b09c69ffc7594ef17df811286ba4609f5423af36e97ee9a"
+    },
+    "CycleTable.swiftmodule": {
+      "bytes": 34488,
+      "sha256": "ec9a0f40ac6c4f8ae24d421ae93ba4f09d78e975aeae2aa32ea30f570c112bfc"
+    },
+    "CycleTable.swiftsourceinfo": {
+      "bytes": 2928,
+      "sha256": "bf54f716e5fadff70d2c937be549188b7cf37b3bf9414dc60216e8cc31be18a6"
+    },
+    "GiftUIDrawing.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "GiftUIDrawing.log": {
+      "bytes": 2749,
+      "sha256": "3619c373f70813fd97656514a3a2f0ed35f62bbc3220c11dec1a15789712ae25"
+    },
+    "GiftUIDrawing.o": {
+      "bytes": 135544,
+      "sha256": "3ef213831e97dad8051bc230d4cd76989594d0e97a234311addd057018e7d3b6"
+    },
+    "GiftUIDrawing.swiftdoc": {
+      "bytes": 1496,
+      "sha256": "211f7c78dc01779c87bc0cf44a04e8c84346fa01b0430e51dda90afd634b635e"
+    },
+    "GiftUIDrawing.swiftmodule": {
+      "bytes": 161584,
+      "sha256": "27b12699ddb3efbe0d6d510dbb5481689acb81cb4a56d8b123d3e6be75d93de5"
+    },
+    "GiftUIDrawing.swiftsourceinfo": {
+      "bytes": 33828,
+      "sha256": "c4df57eccc2ad8eacc5e425fe7d54621a26f0494fa75e3bfd5d79ec0e5a76611"
+    },
+    "GiftUIExecution.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "GiftUIExecution.log": {
+      "bytes": 1819,
+      "sha256": "6e7e6153fb4a0d6417703ec768f1f71a36053629c9e86acc7ff8daaf7a40b633"
+    },
+    "GiftUIExecution.o": {
+      "bytes": 574800,
+      "sha256": "e4f164640f2d3329676228a09c20df214ba541a9afccdeac4e5fe31c9fc8bdcf"
+    },
+    "GiftUIExecution.swiftdoc": {
+      "bytes": 380,
+      "sha256": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb"
+    },
+    "GiftUIExecution.swiftmodule": {
+      "bytes": 630224,
+      "sha256": "be305f612e79902dfc6e1c15e8556b2277cc8ec7e12a95f26f40c243a7ddb7ec"
+    },
+    "GiftUIExecution.swiftsourceinfo": {
+      "bytes": 123836,
+      "sha256": "3ac495a4919426a2c11ed01743ae6ea88cfaa466d3b5920ad30976b0845fec86"
+    },
+    "GiftUIInteraction.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "GiftUIInteraction.log": {
+      "bytes": 1105,
+      "sha256": "d30ce5cfc470ece7c6898495188c4f5c43e6f6212c93824d5274926cc1df57fa"
+    },
+    "GiftUIInteraction.o": {
+      "bytes": 189024,
+      "sha256": "ed0910dc73679c02d506bee8fa1f98cb3c55ebc4c983e7ec075b9ad10c4980d2"
+    },
+    "GiftUIInteraction.swiftdoc": {
+      "bytes": 3364,
+      "sha256": "30d00dc258251a48bb559f7bdf3436f452bde966fe685f607aec491339a30676"
+    },
+    "GiftUIInteraction.swiftmodule": {
+      "bytes": 196052,
+      "sha256": "8f7eb6d7cf510a199f25f8e62f50703fb000140086699b36d0d7d5f4c5220902"
+    },
+    "GiftUIInteraction.swiftsourceinfo": {
+      "bytes": 48360,
+      "sha256": "5736f403869d515922c539ff0f0a800fb67d6fafdb5311ac82e2ec6b90b88e49"
+    },
+    "GiftUILayout.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "GiftUILayout.log": {
+      "bytes": 908,
+      "sha256": "d8daa51c4c3b791790c0a980e7cf78c3ae1e0318ac6ffb463cf9c0daac9b071f"
+    },
+    "GiftUILayout.o": {
+      "bytes": 170544,
+      "sha256": "d5bc279f8477b84c2bfb632f52a2d5b81b974bbf82908a7953b2fdcc99df92cc"
+    },
+    "GiftUILayout.swiftdoc": {
+      "bytes": 376,
+      "sha256": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05"
+    },
+    "GiftUILayout.swiftmodule": {
+      "bytes": 325168,
+      "sha256": "0e46ae9a6a1946032bc0aa7ad32f23bed247c4ebba3f0666c155c2d9de8bba0a"
+    },
+    "GiftUILayout.swiftsourceinfo": {
+      "bytes": 52236,
+      "sha256": "d474b9ca3c1c3e11a522320f857dd5b4eff974a9bd9a1881c6dad673ebe85ab9"
+    },
+    "GiftUIObservableState.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "GiftUIObservableState.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIObservableState.o": {
+      "bytes": 254904,
+      "sha256": "726e0f56d33d0f233f7073077ff1b2ef1a02fef2378f29c2d30f88ee5cff6f2c"
+    },
+    "GiftUIObservableState.swiftdoc": {
+      "bytes": 9992,
+      "sha256": "766de0d9e31e4303181300612327f6cdbbd8a73cd081ef4d7582f4de51adacb1"
+    },
+    "GiftUIObservableState.swiftmodule": {
+      "bytes": 342192,
+      "sha256": "a2f068025db1c8705e7f7e7f3bc9b17041439fba6956a3697e8afbcbe7a2f4dc"
+    },
+    "GiftUIObservableState.swiftsourceinfo": {
+      "bytes": 69416,
+      "sha256": "7be417a8752b7730e63fd2da4e515af2ba2b1aa6d03bfc77e817c988e6a3c7d2"
+    },
+    "GiftUIReferenceTextResources.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "GiftUIReferenceTextResources.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIReferenceTextResources.o": {
+      "bytes": 1662280,
+      "sha256": "e7b9bf64e74f2d6dbb8c5f3fa959d24c1a03b8b975f75ff6d4249db72012a2a3"
+    },
+    "GiftUIReferenceTextResources.swiftdoc": {
+      "bytes": 924,
+      "sha256": "5b9ec28b8006d1ef6ab4fa01d3ed6ba5e09d65e51e94251294b726771da9fa54"
+    },
+    "GiftUIReferenceTextResources.swiftmodule": {
+      "bytes": 2763080,
+      "sha256": "c852bebd8ad7261ccacbe541b482c0696b291b3be58c9692fd0d55a5520aeda1"
+    },
+    "GiftUIReferenceTextResources.swiftsourceinfo": {
+      "bytes": 38712,
+      "sha256": "1dcabc447df0b83c2eee2dc32a4696b6d39738baa2040ebda0362aa3c0e8d188"
+    },
+    "GiftUIRenderCore.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "GiftUIRenderCore.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIRenderCore.o": {
+      "bytes": 62200,
+      "sha256": "a350e3c3a7149a0afc81ce881198e9d0100a44b729e5cdd959ca6a36970fa0ce"
+    },
+    "GiftUIRenderCore.swiftdoc": {
+      "bytes": 380,
+      "sha256": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570"
+    },
+    "GiftUIRenderCore.swiftmodule": {
+      "bytes": 85828,
+      "sha256": "b9e814e54286c6bd238cd62200fb1ba9d4ff8e75084689628a754d039fc71460"
+    },
+    "GiftUIRenderCore.swiftsourceinfo": {
+      "bytes": 20196,
+      "sha256": "dc33e2dce0e710a2f028d137392ae0289f2b42bdf4afd0ee6a415d5c3783a3df"
+    },
+    "GiftUIRenderLowering.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "GiftUIRenderLowering.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIRenderLowering.o": {
+      "bytes": 78864,
+      "sha256": "8783720fd68be6d684bed8e18dc0bc2f7d02ec6918dee4a073501013af0c5cc9"
+    },
+    "GiftUIRenderLowering.swiftdoc": {
+      "bytes": 384,
+      "sha256": "88210ce918b2b4e43c16186d30cf3755703c4d9901a27367fc0e11d225cd8c48"
+    },
+    "GiftUIRenderLowering.swiftmodule": {
+      "bytes": 78284,
+      "sha256": "2f78f910754d5b831679716b683f9b351909f6f65c2a35794808bee5638d5b53"
+    },
+    "GiftUIRenderLowering.swiftsourceinfo": {
+      "bytes": 18492,
+      "sha256": "962dec676d4aeabf64285ef9b8037ec53a20bbb235394a649da9983717a99f87"
+    },
+    "GiftUIRuntimeCore.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "GiftUIRuntimeCore.log": {
+      "bytes": 2096,
+      "sha256": "75e1d58702ae1c44c0d12e15b897678f2d299ab5bf4e30488881235df6f9108e"
+    },
+    "GiftUIRuntimeCore.o": {
+      "bytes": 323040,
+      "sha256": "033dc5496817bf5651302eb774789eebff093a4cdd13f961fab0ff7326222cfa"
+    },
+    "GiftUIRuntimeCore.swiftdoc": {
+      "bytes": 2168,
+      "sha256": "fd801775ac1f2cef4d70cc991745d39f0522ca7855ed356a87a3fbcb7947d5df"
+    },
+    "GiftUIRuntimeCore.swiftmodule": {
+      "bytes": 351324,
+      "sha256": "254a04d7f4e8083cb9f76160fa0b62c79c942765571dae94007fe230c83af3bd"
+    },
+    "GiftUIRuntimeCore.swiftsourceinfo": {
+      "bytes": 99028,
+      "sha256": "2d8218aeddd99b8848d3f8c96eb743035eb872ebab05c477706e91e0888afeb9"
+    },
+    "GiftUIRuntimeDynamic.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "GiftUIRuntimeDynamic.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIRuntimeDynamic.o": {
+      "bytes": 250280,
+      "sha256": "78a1df79c9e3a424e28d07dafd7ff87fed22cf9333ad5b78629c885c8b55f950"
+    },
+    "GiftUIRuntimeDynamic.swiftdoc": {
+      "bytes": 4868,
+      "sha256": "736a31d984c7fbc68c05b5a8662e030bb355b4b4dbc3e57898f9fae124155a88"
+    },
+    "GiftUIRuntimeDynamic.swiftmodule": {
+      "bytes": 232880,
+      "sha256": "f079602f5290c6473279413b7c885341c7c95b3fbe781a0f17a6eb4ce0fd618e"
+    },
+    "GiftUIRuntimeDynamic.swiftsourceinfo": {
+      "bytes": 52312,
+      "sha256": "f284aadb94173748c1c05579c217a7d07ad949b69cc7bf3725376c7d5eff7320"
+    },
+    "GiftUIRuntimeStatic.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "GiftUIRuntimeStatic.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIRuntimeStatic.o": {
+      "bytes": 284984,
+      "sha256": "14501e8b651f715e3d3091277b8075cb6b70da09243c1734d77f2b8332ebcd73"
+    },
+    "GiftUIRuntimeStatic.swiftdoc": {
+      "bytes": 3248,
+      "sha256": "90a7be7ea08c7933976744fd36b4edc83b88c50a5b30940b42a02d75296d5cdb"
+    },
+    "GiftUIRuntimeStatic.swiftmodule": {
+      "bytes": 134132,
+      "sha256": "16ba22bf3fcb8e8387dfae1aba144c9481034d3aabcce5f94ddc10ae79a2f1b8"
+    },
+    "GiftUIRuntimeStatic.swiftsourceinfo": {
+      "bytes": 28272,
+      "sha256": "92cae138f4f2ffae7c9f8572907d4614fd0cbd97cb57e787416d3e4c9c124f0b"
+    },
+    "GiftUISemanticCore.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "GiftUISemanticCore.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUISemanticCore.o": {
+      "bytes": 534488,
+      "sha256": "2852c9fe4bd572496b75e2591c2477a258cdb9a4a0dbd6bca4f37effa54c3e7b"
+    },
+    "GiftUISemanticCore.swiftdoc": {
+      "bytes": 8728,
+      "sha256": "6a1521379ea2f459e23301afeedfe8d96340526e6f44613aacde3465bac944a9"
+    },
+    "GiftUISemanticCore.swiftmodule": {
+      "bytes": 882308,
+      "sha256": "b4ceebdcec571b5f50e7762b83b9adeaa2c3bd43cf11f35dcb9ec5ebaffe4e97"
+    },
+    "GiftUISemanticCore.swiftsourceinfo": {
+      "bytes": 117304,
+      "sha256": "a86a4e9e971e1fe7199f2c414bbe642e7ffabce56a12f19d0eda44446bed7cee"
+    },
+    "GiftUITextResources.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "GiftUITextResources.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUITextResources.o": {
+      "bytes": 102840,
+      "sha256": "df202ce577d9cb25d9313be70ac39b2f1bad9dabd0f7dac675a7b7e7a9e66925"
+    },
+    "GiftUITextResources.swiftdoc": {
+      "bytes": 1720,
+      "sha256": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c"
+    },
+    "GiftUITextResources.swiftmodule": {
+      "bytes": 133944,
+      "sha256": "3a002fbde7c5f5e80e8ed7a54f9667fdf8d7a539d680bf22a4d0dddba6e63e5c"
+    },
+    "GiftUITextResources.swiftsourceinfo": {
+      "bytes": 25660,
+      "sha256": "2ff1d0c948349be2fd299e0de585398d4bd07bd520e96b7fa3778f1a716c623b"
+    },
+    "Main.swift": {
+      "bytes": 189,
+      "sha256": "ae350b2aaaf0ad1906a29438c5bc9ce54fc9391c5c3b64c0ceec00282666aa92"
+    },
+    "P07TargetWorkspace.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "P07TargetWorkspace.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "P07TargetWorkspace.o": {
+      "bytes": 156632,
+      "sha256": "d3937c225aa9caf826ab952b5d38813798c3cc46a9bf45b7dcfd5c6153025f21"
+    },
+    "P07TargetWorkspace.swiftdoc": {
+      "bytes": 4212,
+      "sha256": "744b550faa1bb36ffa48151b8d9bd62531b04e8d1be8ee66d3136193ba516d5c"
+    },
+    "P07TargetWorkspace.swiftmodule": {
+      "bytes": 212704,
+      "sha256": "9194d640f951f87545d9d3ca759f6b559fb1b78cfbebdeb1555d8f946006333b"
+    },
+    "P07TargetWorkspace.swiftsourceinfo": {
+      "bytes": 45828,
+      "sha256": "51868f0d39a17d929f9b5c4f22e29fdaa88bf3dbf95e4e7a69bc64f64361b1e5"
+    },
+    "RuntimeCycleProbe.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "RuntimeCycleProbe.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "RuntimeCycleProbe.o": {
+      "bytes": 1147664,
+      "sha256": "b780e849912a4f344d08d2c6aa02c985aee86a06e4f9d8eb2b7971407bef9a7e"
+    },
+    "RuntimeCycleProbe.swiftdoc": {
+      "bytes": 384,
+      "sha256": "4d515838ad0ea4af52058c8bd3a76db02e89c2cea90da011c303ef8105a79b5c"
+    },
+    "RuntimeCycleProbe.swiftmodule": {
+      "bytes": 610068,
+      "sha256": "3ed2a9243b6d26268a39075d9e6b69a0a2facc68f4c52478775b3c07047a682e"
+    },
+    "RuntimeCycleProbe.swiftsourceinfo": {
+      "bytes": 136704,
+      "sha256": "8fa2e073b40a4c9bb88d3313ef3f7ea00a56cc550d9ee613d2e3ec3dc01948b7"
+    },
+    "commands.txt": {
+      "bytes": 56309,
+      "sha256": "ba2054b31553dbb29933bd1893a2b6d94a5c78862d1ff39a2d4669cb9886842d"
+    },
+    "copy-coordinator.log": {
+      "bytes": 477,
+      "sha256": "e44c6de809a4923f368d73a5e12cb0fcfe86c081d5800e4c9b11769f388d8952"
+    },
+    "copy-coordinator.swift": {
+      "bytes": 132,
+      "sha256": "9a980abdd749a8ebd8f75aada3af504986146e60acb2d7110070b71b31793001"
+    },
+    "copy-owner.log": {
+      "bytes": 428,
+      "sha256": "b8c3082cc0fcb34d4a64a66f4042581c2ea9bcefc166e8e7001ae733d95ff844"
+    },
+    "copy-owner.swift": {
+      "bytes": 108,
+      "sha256": "2d24b18bf6488458e23f6de4e308329ac6f0ac4b09cfbe1d39668140d9ab3be3"
+    },
+    "copy-semantic.log": {
+      "bytes": 419,
+      "sha256": "54728e17f3190711e6ca37a23696468b61976ad0acb8a594b1f41668225aae8f"
+    },
+    "copy-semantic.swift": {
+      "bytes": 102,
+      "sha256": "2ff458ef1b764a16a63a4f7233d9af1bdc5e29447782b3345b03483a4b8f866e"
+    },
+    "cycle-lowering.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "escape-coordinator.log": {
+      "bytes": 1212,
+      "sha256": "5789261a939606b0e82d28e394b8809422806bd5b1431ccf4773be933d724626"
+    },
+    "escape-coordinator.swift": {
+      "bytes": 87,
+      "sha256": "47790eeaac37d683b9e6e69e3e14725a13f71c897c10197aaaa35c6152975798"
+    },
+    "escape-owner.log": {
+      "bytes": 1165,
+      "sha256": "cefb8c7c4bddd53a427bc294b558d66fad7e5c0a765ef68a347f0ca8321f5090"
+    },
+    "escape-owner.swift": {
+      "bytes": 75,
+      "sha256": "e8baa22fd55d1e10236f8b87ec2da3ef94ef4091533056594d72a0d0be29be2f"
+    },
+    "escape-semantic.log": {
+      "bytes": 1090,
+      "sha256": "e8ac2d8df9e6b2f4cf66968acd3d544837994037280b3692bf60e81c8e054673"
+    },
+    "escape-semantic.swift": {
+      "bytes": 66,
+      "sha256": "07303ddde75971950b92411f2f16305e1ec5e53cdfe7b9c2022993350f702811"
+    },
+    "execute.log": {
+      "bytes": 2940326,
+      "sha256": "16eccfd611e83e026da2d2fc52162b3b35994f65ebfc7e561ab9d65557217834"
+    },
+    "link.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logical-transcripts.json": {
+      "bytes": 2914060,
+      "sha256": "089e279edb96729b6b3dfa15c6faa800f27a51a0db55cd04b67203bab18f314e"
+    },
+    "mismatched-action.log": {
+      "bytes": 637,
+      "sha256": "090347ca99eb887ccf5e440a4249f90fe441e214281233a873f1bd1c88296c4f"
+    },
+    "mismatched-action.swift": {
+      "bytes": 273,
+      "sha256": "71447b820c9d437836066697719db3cb85145da276c8d8143ab50eb106aecec8"
+    },
+    "mismatched-model.log": {
+      "bytes": 5084,
+      "sha256": "8af5f82d5cdaeaa47195c992e3009b600be842099daa59661eb0b0a20b98eecd"
+    },
+    "mismatched-model.swift": {
+      "bytes": 452,
+      "sha256": "41309e5192e94c0eb88dc02d7c8300166dbe70d6537415490b4ce61caa251a42"
+    },
+    "mismatched-mutation.log": {
+      "bytes": 887,
+      "sha256": "a39abaa80f593f6df65a76dd6fd82fa95a5985198bc01cafcff79ac2ffe0659c"
+    },
+    "mismatched-mutation.swift": {
+      "bytes": 382,
+      "sha256": "aaee640f70bb9082afc69c24fafe7a6cb0a18089c61e39c1a916a2964e2136d1"
+    },
+    "mismatched-schema.log": {
+      "bytes": 1517,
+      "sha256": "b1f44ff4abdc5bf82f6c226b85a623219677e8603c35b1ace8551baaeb10360e"
+    },
+    "mismatched-schema.swift": {
+      "bytes": 425,
+      "sha256": "529272532b8ddd8ee862dfeb905fead08df1cfaca244c43e2278ea6c9e8b6a41"
+    },
+    "returned-owner-escape.log": {
+      "bytes": 1214,
+      "sha256": "9fc740907227b3010158a19d13a6f827475bfeea2a257dcd21a11061b1a2878b"
+    },
+    "returned-owner-escape.swift": {
+      "bytes": 321,
+      "sha256": "a1650d1bded969cdacc5152b39de98300b8089b5007574acdcaebd2d323faf63"
+    },
+    "returned-owner-use-after-consume.log": {
+      "bytes": 1016,
+      "sha256": "d4fe5a2ffebf85951628dbe280ba498c24f2688bc3f9c72145e94941c7a21778"
+    },
+    "returned-owner-use-after-consume.swift": {
+      "bytes": 310,
+      "sha256": "53f21ec6a1558aec8d6f289419cc5b8b1bfceddcd36f7353b38123747a6ce5b9"
+    },
+    "runtime-cycle": {
+      "bytes": 4517488,
+      "sha256": "995e95c69820407d9596af54c14c69d34ff400fda44fc34022842611ce9b8806"
+    },
+    "storage-regions.json": {
+      "bytes": 27503,
+      "sha256": "b3e1707107dbdf7f9e6fcda2d57bc82b466a86266afe7148e0b95fa36af0e251"
+    }
+  },
+  "checks": [
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUISemanticCore",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUITextResources",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIReferenceTextResources",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUILayout",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIRenderCore",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIExecution",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIInteraction",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIObservableState",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIRenderLowering",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIDrawing",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIRuntimeCore",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIRuntimeStatic",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIRuntimeDynamic",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "cycle-lowering",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "CycleSchema",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "CyclePresentation",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "CycleTable",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "P07TargetWorkspace",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "RuntimeCycleProbe",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "non-Escapable",
+      "name": "escape-owner",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "noncopyable",
+      "name": "copy-owner",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "non-Escapable",
+      "name": "escape-coordinator",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "noncopyable",
+      "name": "copy-coordinator",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "non-Escapable",
+      "name": "escape-semantic",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "noncopyable",
+      "name": "copy-semantic",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "used after consume",
+      "name": "returned-owner-use-after-consume",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "escapes",
+      "name": "returned-owner-escape",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "requires the types",
+      "name": "mismatched-model",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "cannot convert value",
+      "name": "mismatched-schema",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "cannot convert value",
+      "name": "mismatched-action",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "cannot convert value",
+      "name": "mismatched-mutation",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "link",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "execute",
+      "pass": true
+    }
+  ],
+  "commands": [
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name GiftUISemanticCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/GiftUISemanticCore.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordStore.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticStandardPayload.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutView.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRenderView.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordRenderView.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUISemanticCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUISemanticCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name GiftUITextResources -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUITextResources/GiftUITextResources.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUITextResources.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUITextResources.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name GiftUIReferenceTextResources -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/GiftUIPiCompactTextResources.swift /Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift /Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift /Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift /Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift /Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactBitmapPayload.generated.swift /Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactCatalogue.generated.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIReferenceTextResources.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIReferenceTextResources.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name GiftUILayout -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUILayout/Layout.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutCounters.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutError.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutGeometry.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutPublication.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutResultSink.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutSemanticValidation.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutValues.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutWorkspace.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/ResolvedRenderLayoutView.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUILayout.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUILayout.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name GiftUIRenderCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/DrawingOperationSink.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderOperationSink.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderRecordingSink.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRenderCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRenderCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name GiftUIExecution -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIExecution/AdmissionValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionController.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionSealTransaction.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionSealer.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionMutationBatch.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionOpportunityRunner.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionPhaseMachine.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionWakeAccumulator.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/FrameHandoffValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/FrameOfferNormalization.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/IdentityAllocators.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/InputSourceSequenceState.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ObservableTargetGeneration.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCandidateOfferCoordinator.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCycleCoordinator.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCycleFinalizer.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingDerivationRecovery.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingDerivationTransaction.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFocusedFailureSelection.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFrameCommitTransaction.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFrameEndpoint.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingMutationBatch.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingPresentationTerminalRecovery.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/RunCycleValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/WakeValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIExecution.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIExecution.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name GiftUIInteraction -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIInteraction/EffectiveActionEnabledState.swift /Users/eugene/work/GiftUI/Sources/GiftUIInteraction/ExecutionGestureAdapter.swift /Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionFailurePrecedence.swift /Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift /Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionState.swift /Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIInteraction.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIInteraction.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name GiftUIObservableState -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateProtocols.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelIdentity.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelOwnership.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelTicket.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelScope.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelMutation.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateModel.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIObservableState.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIObservableState.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name GiftUIRenderLowering -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderExtensions.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderPreflight.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderProducer.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderProductionValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderStreaming.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRenderLowering.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRenderLowering.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name GiftUIDrawing -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasRenderProducer.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasInvocationSource.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasPlanProducer.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingLimits.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingPlan.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StaticCanvasCallableTable.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StrokeSnapshot.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIDrawing.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIDrawing.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name GiftUIRuntimeCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileValidation.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeStorageRegistry.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileStorage.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name GiftUIRuntimeStatic -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeStatic.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeStatic.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name GiftUIRuntimeDynamic -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootTargetAccess.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableStateReconciler.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicDrawingPlanWorkspace.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLivePathStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeDynamic.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeDynamic.o",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/Cycle.schema.json /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/Cycle.swift /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleSchema.swift /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/Cycle.swift /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleTable.swift CyclePresentation",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name CycleSchema -emit-module -emit-object /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleSchema.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleSchema.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleSchema.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name CyclePresentation -emit-module -emit-object /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/Cycle.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CyclePresentation.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CyclePresentation.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name CycleTable -emit-module -emit-object /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleTable.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleTable.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleTable.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name P07TargetWorkspace -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutScopeCodec.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutTextCodec.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutWorkspace.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFResolvedLayout.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFRenderWorkspace.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanRecords.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanStorage.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLivePathStorage.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingWorkspace.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/P07TargetWorkspace.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/P07TargetWorkspace.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name RuntimeCycleProbe -emit-module -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ConcreteBindingProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageMeasurement.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageRegions.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleModel.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleDynamicDrawing.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStaticDrawing.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleRenderProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleGeometry.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineOwner.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/RuntimeCycleProbe.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/RuntimeCycleProbe.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name ScopedOwnerNegative -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-owner.swift -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-owner.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name ScopedOwnerNegative -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-owner.swift -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-owner.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name ScopedCoordinatorNegative -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-coordinator.swift -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-coordinator.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name ScopedCoordinatorNegative -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-coordinator.swift -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-coordinator.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name ScopedSemanticNegative -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-semantic.swift -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-semantic.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name ScopedSemanticNegative -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-semantic.swift -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-semantic.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name ReturnedOwnerNegative -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/returned-owner-use-after-consume.swift -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/returned-owner-use-after-consume.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name ReturnedOwnerNegative -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/returned-owner-escape.swift -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/returned-owner-escape.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name ConcreteBindingNegative -typecheck /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-model.swift",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name ConcreteBindingNegative -typecheck /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-schema.swift",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name ConcreteBindingNegative -typecheck /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-action.swift",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing -module-name ConcreteBindingNegative -typecheck /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-mutation.swift",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static -enable-testing /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/Main.swift /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CyclePresentation.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleSchema.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleTable.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIDrawing.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIExecution.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIInteraction.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUILayout.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIObservableState.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIReferenceTextResources.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRenderCore.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRenderLowering.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeCore.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeDynamic.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeStatic.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUISemanticCore.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUITextResources.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/P07TargetWorkspace.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/RuntimeCycleProbe.o -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/runtime-cycle",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/runtime-cycle"
+  ],
+  "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "core_receipt": ".build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/result.json",
+  "core_receipt_sha256": "f1ac3d8b44b2e187d98d3e2be55b1f82bcdd6a2c164ca47ac95459e6876353c1",
+  "execution": "P07 values assertions=5904 failures=0",
+  "inputs": {
+    ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/Cycle.swift": "2459201faffadccb0926738bb6d0ffc90a64a47b95bee7dd3111861a0f070f62",
+    ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleSchema.swift": "a321422f043de457b284604418dd4cb02e24b320e127fecace79040e82530a3f",
+    ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleTable.swift": "b47fd1fe961a36a07937c8c8b20d2bedcf57eb00b2421c6a7b7b6dccd003179a",
+    ".build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool": "651cf63bd8c07d18d143fd09370427fdacf8c6967c38e14c71d2ea5f7d9b2814",
+    "Package.swift": "56ec87fe0f47ed4cd93900f4a9d6ee46db079e7ecb55979e07658c29812797bd",
+    "Sources/GiftUIDrawing/CanvasInvocationSource.swift": "d4bf788e28878af88e9b8247f5b92a5d69c714b02b232e39ed3e80a0ad09b539",
+    "Sources/GiftUIDrawing/CanvasPlanProducer.swift": "1e1f16e886d672fe7bce48d469aa9faaf67ab3b2612c06a86c25feac11d9f436",
+    "Sources/GiftUIDrawing/CanvasRenderProducer.swift": "c98ac6df32afa04088b6958ed8f664db91dd111cd9d798b626c60adbed7ddf69",
+    "Sources/GiftUIDrawing/CanvasSemanticPayload.swift": "7c0348c6f27e2343ac33dc66e9e754b485e8dc5bfc7dd326d15f0c0b6569c951",
+    "Sources/GiftUIDrawing/CanvasStagedValues.swift": "ce95e9f298dbd3fbfd42bfdf7d689b5e81db40390d60e6ca9eff3a48e18b0dfc",
+    "Sources/GiftUIDrawing/DrawingLimits.swift": "b0536b67ce01bf07422ce132edd978b47e5fd1d5dc48b37ae3fac3e096658ee1",
+    "Sources/GiftUIDrawing/DrawingPlan.swift": "d6ea74257a8d24652392eb05fb0361907a3aa5b60a4f727d9ab11a7bcb9357ad",
+    "Sources/GiftUIDrawing/DrawingValues.swift": "b7f6e25dd6cc4830377134a4c76c24097c46c326136710a2e6cfe9b74d5ac842",
+    "Sources/GiftUIDrawing/PathConstruction.swift": "ff7780b55c1b33f6b00ad322a20bfe9d7408160a13a2908b6da9019cb0bfc68d",
+    "Sources/GiftUIDrawing/StaticCanvasCallableTable.swift": "cf495d6f53b2d92ca7543dd3cb78eaeb4774bad57a81974c3fbece650f59111f",
+    "Sources/GiftUIDrawing/StrokeSnapshot.swift": "3345b05fb9f6f219fb09e7aa4e7e7a9a18c70f77d192734c36a08d0f84836a51",
+    "Sources/GiftUIExecution/AdmissionValues.swift": "bb6920c6834232baf3047a47ebc5b353476cff818499246f76c37cf7fa82a696",
+    "Sources/GiftUIExecution/ExecutionAdmissionController.swift": "0aea5ab996e95104ce476aeb7188cc6bfde37d31f6db51b5ee10ae241524d4e2",
+    "Sources/GiftUIExecution/ExecutionAdmissionSealTransaction.swift": "7a88abcca9f437db94ea1f647ae8fd5ec3dbed82bd629b739ba3446ef8cf67d0",
+    "Sources/GiftUIExecution/ExecutionAdmissionSealer.swift": "54f3a7809c277a37cf8acfa931d62086ebc0ae1d3e77839ab6dcc28085885345",
+    "Sources/GiftUIExecution/ExecutionMutationBatch.swift": "a0464225588b3101249112a88f404a3258ccb87e8d9eea5e56671a4975501567",
+    "Sources/GiftUIExecution/ExecutionOpportunityRunner.swift": "d28b28c94e179c58805de37cc1a42736541cc26a7ba5bcb187571b8ad8e15a9e",
+    "Sources/GiftUIExecution/ExecutionPhaseMachine.swift": "f2047c05efd5f2f2f7c96f57e3b20fd9b3826635c2fa922bdd1c0d81f545da34",
+    "Sources/GiftUIExecution/ExecutionValues.swift": "7e67ecb69e8f1fdf82a0aca819f4c77253cfb9560b0047de83f81b97194f3252",
+    "Sources/GiftUIExecution/ExecutionWakeAccumulator.swift": "856db20ee149c555a4d0c33731be4d69980486033592181187d8465b60ecf2d2",
+    "Sources/GiftUIExecution/FrameHandoffValues.swift": "6936c7ee158fadd3241a6b2cac73e668b4b1a5bd5f9ec593932b9e4f967e0ac7",
+    "Sources/GiftUIExecution/FrameOfferNormalization.swift": "761740fdf6fb11cb54a52c2817d006ec75a9322e2c9a4351952f893711698a33",
+    "Sources/GiftUIExecution/IdentityAllocators.swift": "8f9bab781054456d49e210b3700200f10abc7a47c1a2f85e3de6013d9f6a3e35",
+    "Sources/GiftUIExecution/InputSourceSequenceState.swift": "b69a01de3871a80fa7b9f556bc7d93f12945c9edcc6569d00faa3569d963c5b3",
+    "Sources/GiftUIExecution/ObservableTargetGeneration.swift": "e37666935262923eb79378f29436756f79844a10d369c3ad8661ff38c17d6483",
+    "Sources/GiftUIExecution/PointerActionCapture.swift": "a88eec3e2176873a65c577ef6e47cf41873a8b9d8124250c5e45d8a83c53c605",
+    "Sources/GiftUIExecution/RecordingCandidateOfferCoordinator.swift": "66b7d07d657785ba0ebf9fbc46c3b1d983b715cf45d4a7dd27d46b856fecff23",
+    "Sources/GiftUIExecution/RecordingCycleCoordinator.swift": "ccfffb285dde8e73132ddba6a32fab791eb488b673b316c09b397d10d292a620",
+    "Sources/GiftUIExecution/RecordingCycleFinalizer.swift": "bc9318cd92c095b9473878c575996b8b0b1e500faa3cbf121df1ba774673ffc3",
+    "Sources/GiftUIExecution/RecordingDerivationRecovery.swift": "e71108078104eb3f294bad9231ee819c3ec77cf11b0c059d3d670a9c95fbef35",
+    "Sources/GiftUIExecution/RecordingDerivationTransaction.swift": "380f3d5ec84f4ab6e45aa1e6054677b3080105fb7c445f79cc3ee6b9558e5bca",
+    "Sources/GiftUIExecution/RecordingFocusedFailureSelection.swift": "c2f005577a0a33d1d46c74d77836ec5ef03857d5716523d8cf6f4ef07a32fb8f",
+    "Sources/GiftUIExecution/RecordingFrameCommitTransaction.swift": "2cf669bd232c7310fc9650d33ccc242fc717b1071877d8a1b2dcbce32ee7e7c8",
+    "Sources/GiftUIExecution/RecordingFrameEndpoint.swift": "43b75fbc4d7ff5a09db83693f6e557f7256bf62960ed3ab2f4c37f4caca5f849",
+    "Sources/GiftUIExecution/RecordingMutationBatch.swift": "229c26f04e85f737a0c6f41d7bbd76eb9c33ff0955bfa878d70bcf8f2984ff39",
+    "Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift": "45ce481da6c05b8509f596d6e2a9eac9961c261afe6cc6401b6035772c9370ed",
+    "Sources/GiftUIExecution/RecordingPresentationTerminalRecovery.swift": "c163ff5b21c6a9f920b4b70c0d150403ccd2900c20c212be04d2985be90c53d0",
+    "Sources/GiftUIExecution/RunCycleValues.swift": "5d677ef57ea144dba744b844123eda718bed46353128520650606c30f0fc478a",
+    "Sources/GiftUIExecution/WakeValues.swift": "8457b076dafb1cc26bddf6683a55ed1e906242c5c23883a6e8b20bcd50bf501d",
+    "Sources/GiftUIInteraction/EffectiveActionEnabledState.swift": "89e3dc5744fa9169605a04345ff52a3d483a72b80c7ff5ec56350520d0014f30",
+    "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift": "ee7d2b1db3604b904be3e3733c5eab4edf079fc7401d93a79035bb782fb82b8f",
+    "Sources/GiftUIInteraction/InteractionFailurePrecedence.swift": "ec6e49fd95484273c7fdf8408d1ebbad34d889e75eeb26bcfd923255ea9c644f",
+    "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": "d7dd023d67af67c748dacdaf876e45f634c646241c7469acada3b481d1678641",
+    "Sources/GiftUIInteraction/InteractionState.swift": "6773d303401927041ccb2601c11dc70adb35e1b5420a432cf3ef1df57a974b16",
+    "Sources/GiftUIInteraction/InteractionStorage.swift": "aeb5da061c64224b2273e27e96f6265da1aeffd406ea0d6e989ad6f8821117df",
+    "Sources/GiftUIInteraction/InteractionValues.swift": "513e9785291b7bc99e3fe7d90bbec8180038112126a51f5c5c0559624232c6ab",
+    "Sources/GiftUILayout/Layout.swift": "58a8adc56b26a09abdf9106e58dcf92dd5799971e94ccd5513469d12c1d24d5e",
+    "Sources/GiftUILayout/LayoutCounters.swift": "a5ebfd695e74c17574bba7f8de075c3f365d6ae9ca3dfd6266ec114df9157894",
+    "Sources/GiftUILayout/LayoutEngine.swift": "dd70e9816f6a4904dbec00a14b97bc0ba4466ead725f6e27953370bd1756b21a",
+    "Sources/GiftUILayout/LayoutError.swift": "a03c17620f835d6a2afd57c2aadf0b9e2ded17c1b25e0c5d94aa2be29d3a310a",
+    "Sources/GiftUILayout/LayoutGeometry.swift": "5349d9cf4af66e459bedca4f4004b571f2ad54b0727164b0685f1db55d0388ab",
+    "Sources/GiftUILayout/LayoutPublication.swift": "45f23eaf015a2501a061ab7d4d09a0a1a59c16d5a624225a658193f5486a58fb",
+    "Sources/GiftUILayout/LayoutResultSink.swift": "cbff5b124b0be92575091994c2ceb452cf504745021027bfff5c25be82adac13",
+    "Sources/GiftUILayout/LayoutSemanticValidation.swift": "02972a30aae2b9be0f97e3b0eb0782aba063b17eb3b643cfdc16af96574601ae",
+    "Sources/GiftUILayout/LayoutValues.swift": "29d40d755afff76ff779ca6b06a53c754fd0cd147ab6f551d62f6b2b6047c1c5",
+    "Sources/GiftUILayout/LayoutWorkspace.swift": "ebf9307a6123fd7e52e96c9a8caf0f5dcca20db12649d1243155c6124acd4e05",
+    "Sources/GiftUILayout/ResolvedRenderLayoutView.swift": "0b5bd48b5a34b20d2afc43a1f4e26e23242d72645e41cdc88543d6f7d532c29f",
+    "Sources/GiftUIObservableState/ObservableModelIdentity.swift": "b3100dea3f31eb0b508d07da66dc1aafb3da4235774502a36db9f46c9fd82a0a",
+    "Sources/GiftUIObservableState/ObservableModelMutation.swift": "d4edf05c126fa2ab43cb5cc073698fdaccb35c16dbd24f9282bef9ba3d9bb482",
+    "Sources/GiftUIObservableState/ObservableModelOwnership.swift": "0b1b73168a16d20cfcb3dd283e52af12aa414cdfe57e1720601198d9649b126d",
+    "Sources/GiftUIObservableState/ObservableModelScope.swift": "8fbcbae675ae704faebdd33e2aa3956e404ecfa0f75fe7c49d8bdd89c9a4c4d8",
+    "Sources/GiftUIObservableState/ObservableModelTicket.swift": "fbe273372d34c2535002a2465076559adb9b6c9239fbab7abda0b7587107ae82",
+    "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift": "578514c2224b9311fbfa51c3e58b87a9c6b3801af961ba3a1a18d316d681eec0",
+    "Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift": "b88f911561ac3405bd4ed7264122488162828c395a6668ad9b314f54c37b04d6",
+    "Sources/GiftUIObservableState/ObservableStateModel.swift": "f6add18fb5d078aa3fd749859a3421d86fe31e8fef0047aed34e90f39b46407e",
+    "Sources/GiftUIObservableState/ObservableStateProtocols.swift": "a192efc2b7be42a9c1950f11ec14a9bdf17dfe903c488c253dab9064e7b42629",
+    "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift": "b2d0ccffa645cc32c27a5fb26fb3e9e1aa2ffd16db2d5f37306c1afb0f1539e1",
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift": "1c7279188f67289665fff485c91e6d55a13e1f127bde6ba98928696cf3158639",
+    "Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift": "55067eca3c7cf1c64a5f50d715808e859565ee9c36d426fb6ca871356f6a662b",
+    "Sources/GiftUIObservableState/ObservableStateValues.swift": "494913f81669772d868fbf63ebbfb2cc151d8c0739fc8b28647f4cdfd5465c77",
+    "Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift": "c5cdf30474780eae3f27cec5c8d179bad0eaa5b5fa0a47c71de129e017322f14",
+    "Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift": "7a4085655de8b4738aeb9e27956922684c2d56235679b4775a7bd4f6de7ff70b",
+    "Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift": "77313fd03bd41cc977b4f63397d5ec119772c25eb18db48cf3fef81cc95577b8",
+    "Sources/GiftUIReferenceTextResources/GiftUIPiCompactTextResources.swift": "fadbaa0ad0a880800339390d1b3f9f3f151d93fba0e9107d9af24087f025cdce",
+    "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift": "c15131c18872115b83fe63d71247494092d29dfb31bbc05d208d5306572b89f4",
+    "Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactBitmapPayload.generated.swift": "6d9ae291e7c780cf049010cd8912742ccc36f8b89452db6132086776e0b7bca3",
+    "Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactCatalogue.generated.swift": "0f8900aaf2433a975276603039af1d4200759ec081394e193d149656d78c0c89",
+    "Sources/GiftUIRenderCore/DrawingOperationSink.swift": "4e333bec72c92fb2ab02a82c8f1381741f11cb2cc55a450434d97c968a8e2bc2",
+    "Sources/GiftUIRenderCore/RenderOperationSink.swift": "02ba1989d36434e1e7db7984acce9ccc4a7861857c53de7d49676968aaaf1f43",
+    "Sources/GiftUIRenderCore/RenderRecordingSink.swift": "3db5511a8127d03eb51c6e6bf232a817d0eb6a2768583433767a05267ebdead2",
+    "Sources/GiftUIRenderCore/RenderValues.swift": "760cb1dc1ed7144da8a181261d1e245c8f2dc07c3af7a8dd1e5721b4943a3a4c",
+    "Sources/GiftUIRenderLowering/RenderExtensions.swift": "b4b73e4193b61650d587b0134e626058da433b2c25176df35e3a9f74618fddf9",
+    "Sources/GiftUIRenderLowering/RenderPreflight.swift": "1c25158da80d1929699b9323c359ab5480e792bc6f34c6f783d46879194ef290",
+    "Sources/GiftUIRenderLowering/RenderProducer.swift": "0e25b626df694b56c95d6c444db1fbf40e45afd7c65c4b5b9253fe5a15226281",
+    "Sources/GiftUIRenderLowering/RenderProductionValues.swift": "0005e5774c9a7658547f91d79b685b2033d59928d01ecd07136b80eaab535bcc",
+    "Sources/GiftUIRenderLowering/RenderStreaming.swift": "4d06944c09c4ad685857df55e2577ff72a183cdfa8b03fb9e5f545a9ea10aa8f",
+    "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift": "0ed77324a09b25fcc683a61ef659abbc1c32709ae36f1e43ffaa54433fd89675",
+    "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift": "f2ff73faa06c4a41ace3510da6ef7039f6b6de19024c4282a7e5f1ad67b5b828",
+    "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift": "bf5551a5b012d8c1f8d9b3f3e79dc0f223005925998eedd26be14ef7c7920d73",
+    "Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift": "c19a8f8cb381a933dcb1d12d1cfc8df738f9408717d88b661e35a264b192bddb",
+    "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift": "0f7fa6459c15109beb85c66e931cc77b5c7528e42ba774945c46ba32ecda5a66",
+    "Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift": "bedb5fbc642516740f4804822c6b67da1ae0d2fe3d50def3068a61d5a0367d92",
+    "Sources/GiftUIRuntimeCore/RuntimeProfileStorage.swift": "9b00d9d6ced10e8b4868953e67c998fb9addf2e55a228c857c2cf317b0367f66",
+    "Sources/GiftUIRuntimeCore/RuntimeProfileValidation.swift": "770bdb08b6bec4f93e76109838a1e511d88779018fe817b48bb5326608fdb8d1",
+    "Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift": "570e74dc2c57f3e05ae9bdb7a845e2cbf6066be3ea9a3cb5eaa0c0f6fc9b5d36",
+    "Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift": "0ba4dd8df9fcb3989d6da1f59dde68587b4bf85818340ba3d5958419cab9a570",
+    "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift": "6c0fe638dbf5a00e2d88726be77b550013f1c2549a07ef1e9ee82c7264e72e65",
+    "Sources/GiftUIRuntimeCore/RuntimeStorageRegistry.swift": "6f907f1f1c49f5b705439616dfbc5d0f5f6f047998fbb2dc02b1517554fd731e",
+    "Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift": "280fb6c4fe28db1b436cf28c7cc808437c8c0d5aaed6803e7136b5c395695f61",
+    "Sources/GiftUIRuntimeDynamic/DynamicDrawingPlanWorkspace.swift": "641f0e6c5bddd6ffe9b9d2b5284c96e0067a460db745c631f0205478324f506d",
+    "Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift": "374c7412495790f1de8e7e336be2902d7012d223edb0130c15ad4e422fdba904",
+    "Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift": "43669b288fa4f6810faa2eafa9c3b4f0ef834a5d9bab662585053dde42cec9a0",
+    "Sources/GiftUIRuntimeDynamic/DynamicLivePathStorage.swift": "229031aa031794b5241bc70e946e734860ad4fdd7d908524a379770f9dd150d2",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift": "a8c02c2e638a1f0138d9efdbd0d25d2890d7c66c8f8c1a1ee64e5c7830840d07",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift": "f7696e18e764f65c137d19e4c39ae92614ee80b9a1e056a11b4c37b334927fe0",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift": "ff9290f45e2a7c009d55ca90244bf034f0e5f19a57942d638812cab75777def2",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableRootTargetAccess.swift": "30597cee8b751b2f5f27034080227a1bbb1738fa75d46f484a4596defbfd1539",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableStateReconciler.swift": "e59c15cac625661d5863a4aebbef756a7d68b3359cfe3170d1a14bf09222b953",
+    "Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift": "07e8dba114af4fcdaed8dc1c77545f4e1255b588c63a24782992e8d4479ec517",
+    "Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift": "96689a3086bf2bc22f158a6aac1c84163b641b4da0d8fdc1a382047da26b306b",
+    "Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift": "42357e32593459c879fa299b7a74bbcb787536fb176d147a0ebc2fbbf4200f9d",
+    "Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift": "5f49964bca470e962471968f1010570732425ebe45cad74ed4ab19c79839b09b",
+    "Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift": "dc3648560338f093f912b7e0bc812bdaa95e7a434a3bd836c903560bf3971219",
+    "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift": "eb63e6c191b8e1af24f19dd2fd523ddb315d04e36151471f534fe6063658e0a0",
+    "Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift": "f6bf84f47f4021eaa61dacd51da8e3a6b9d19066eb577934fc19b9dfd7785078",
+    "Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift": "f1bb6868e5f37e4deca9fe90707a2b985fda6cb0fa7c00c60ae01ac9b0847d4a",
+    "Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift": "42496e7873d81d55b2556699621885b04038b83d0d4941f250af000571ca6a45",
+    "Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift": "0dd731cdbefcca81360eb2ff896d2e757bedc9829faaaf5e4a4a75b2c48254bd",
+    "Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift": "db63a7743194b90fec3bc81c32f6280dbb487d40ba251358cfa639649e7be3cb",
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "c4a737e72288794967ca9892a2e515619c48d0ccecd86ad1a579da8f9ad75d60",
+    "Sources/GiftUISemanticCore/SemanticLayoutView.swift": "6fd6c725f82d0526064201f5121a14a91197d141fa338d7c9d0711d7872a0f48",
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": "e610496954dce3023b833fc07c785498025bf0e96372ab9430d8f7b5fc12c4a1",
+    "Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift": "6f2eb6c53e7849ed9cf489ac8b2165a3ab318ff89bb7253076043acfc42ea144",
+    "Sources/GiftUISemanticCore/SemanticRecordRenderView.swift": "5d0628083f3ebe29142f7c2245ae7831328ef93c40a28d27b2c2dd20dd029515",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": "4ffc05499e80646af0fb41bbe52f826b232a3bc8f3cb8654295a481819d9717c",
+    "Sources/GiftUISemanticCore/SemanticRenderView.swift": "53f052d9cf5f4dba04edecb9713a11518718f315da8d83855623e41d6e8ebaca",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "4b4b80e91880466ab3daecff7e1a3db2c1e966af4b1a76fd3fc1f334ef3c0feb",
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+    "Sources/GiftUITextResources/GiftUITextResources.swift": "b7eb4b8689ddda6077cfc3d0416a422c2207642ab1ab440d72b2c375a9aef3b4",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanRecords.swift": "d64b167157bcae57d20e1bae17c17e5c9d0e2fb554e63f150483366717ca93b2",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanStorage.swift": "2252d5740bed6d709574031d6862739050b340424192d0a9b8d17a2d6d2d7d53",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingWorkspace.swift": "a6df86e5431246dc0c967375043db24e43b23355c024ac0de73caa8a32c497b9",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutScopeCodec.swift": "e7bd705848cda2f0b14ae61599ae86202acaa9fb6d68cfc43a81893d0d212592",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutTextCodec.swift": "d95f7fb97b8db46781d3b798b82caa33c6faa6bd3e4e97594f9c10806d6f4bfe",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutWorkspace.swift": "2b3fed33ccfeedcb2d25780761089de408080fc328ee9909eb5f2940aa589918",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLivePathStorage.swift": "2e299cbed14b152ba41e46e0ac299d1d8bf5646205e452af0bc278712e62002a",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFRenderWorkspace.swift": "db981d8dbba39b10ff988eecc4dee43d90c0f92fd14db7939ffffe071daedaab",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFResolvedLayout.swift": "c693cff0f81714b57917da5bcf51ae9fe4ec1b81a2d0faef6f7c0782fb6bbf68",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/ConcreteBindingProbe.swift": "35d04114cbb9dc4a8c47c81eb9f1ad117ec0f876ba7d8ae7453990d0040470fb",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/Cycle.schema.json": "d9740f362b4330822777f498fad97a604e191ac985253cbf6123b8b4132f74bb",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/Cycle.swift": "1d55edcc8b865f76651557d90ebfa5e24561b55bc62f4c9807099e8d1bddaaa3",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift": "2524e1888c75e71e4ecd931a5fccd9468da764e5b17fd48db3d7171df93aeb0a",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleDynamicDrawing.swift": "ac5bb966de601ad44e4a3c17dc1013cee4eff864908487dc3a686743429a0b33",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleGeometry.swift": "e27c0117a605904ce8b0d9a749ebf41eec2d9654828e98c4b4d11ab9fd7fac4e",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleModel.swift": "74df0a4fb5fe981b0850414fe3ed9e82f6b43173e89efa4967622d231910c1c9",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineOwner.swift": "2b2dad9318f6573f2244a4d7eab6e6223e00f1f7ef25c160eaf831a36965cdd1",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift": "8e413600884a7eb5123fcebd404d9b15045d36cb1732dfa9c3a78353f14eee20",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift": "574193c25323b60ac8309d4149966b23a151c38f5b1ce5eccf8d77e9409833c3",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleRenderProbe.swift": "47b2eb5e389dc3c099a1ca223bbcf32b8f0f4f6e312f4f4eeeb24212a9bb0655",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift": "b7502debf7770fa3eaf6e5d2a8d7b89b332868a2d5b4328ed3cdce0eb0e15ddd",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStaticDrawing.swift": "ce22de98ab1909f1614e93fc6d5ef92b999d7a32b14a2efa1f55809bfa2eb366",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageMeasurement.swift": "91b46620a34dd5b329dec0ffec3535da9e933a3105e552e94c3e895f75b1af70",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageRegions.swift": "5eae8a4064c30601de2bdc747113146eeb2cf2a71fb9f38dc114e1cd91f3db55",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift": "2b9469c68fda07c6fa15e56a873b2946ca3377c7be709415212fb9ba33f2ff0d",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift": "0176021907686264e62b4e97e86507ec280d574406045ce6c63ee6e7c8dd8817",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift": "970f891c02e96987ab0718dc9203086e58640963aa06470a6f66d477994c1c16",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift": "f879327eaebbfee08829868fbbd72b5a8f8f1275add9a3494ccd8a8b47044da0",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift": "0e635444801b08c1ecfbf6c8a58d5b23b172a9f50ad39aea012a7fc4397d31ae",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f",
+    "scripts/contracts/check-spec-013-runtime-cycle.py": "8e8bb63b15214a8da8a907c6705ee477f4aaddbd6aa6beaafe5ac092fddb5991",
+    "scripts/contracts/driver-registry.tsv": "c66a36bd9378d0415bf2a3effb43bc2e03070d9b8b494d11d5ab798a0af1fb71",
+    "scripts/contracts/run-spec-013.sh": "671ea0535cbad14024e34778a81c4ba9b41791ad05096f46579495d464ad752b"
+  },
+  "logical_transcript_cases": 26,
+  "package": "P07",
+  "profile": "macos-static",
+  "source_commit": "68d1854cc7f5f13d610223e71ab5d3950e6ac954",
+  "source_dirty": true,
+  "step": "runtime-cycle-and-audited-storage",
+  "storage_reports": {
+    "dynamic": {
+      "checked_total_bytes": 166276,
+      "fields": [
+        {
+          "bytes": 7560,
+          "index": 0,
+          "name": "semanticCandidatePathBytes"
+        },
+        {
+          "bytes": 11020,
+          "index": 1,
+          "name": "semanticPublishedPathBytes"
+        },
+        {
+          "bytes": 4424,
+          "index": 2,
+          "name": "semanticCandidatePayloadBytes"
+        },
+        {
+          "bytes": 4720,
+          "index": 3,
+          "name": "semanticPublishedPayloadBytes"
+        },
+        {
+          "bytes": 1874,
+          "index": 4,
+          "name": "identityMatchWorkspaceBytes"
+        },
+        {
+          "bytes": 3708,
+          "index": 5,
+          "name": "interactionCandidateIdentityBytes"
+        },
+        {
+          "bytes": 2472,
+          "index": 6,
+          "name": "interactionCommittedIdentityBytes"
+        },
+        {
+          "bytes": 195,
+          "index": 7,
+          "name": "modelMetadataBytes"
+        },
+        {
+          "bytes": 64,
+          "index": 8,
+          "name": "modelOwnerBytes"
+        },
+        {
+          "bytes": 2,
+          "index": 9,
+          "name": "framePinBytes"
+        },
+        {
+          "bytes": 2653,
+          "index": 10,
+          "name": "semanticCandidateBytes"
+        },
+        {
+          "bytes": 2560,
+          "index": 11,
+          "name": "semanticPublishedBytes"
+        },
+        {
+          "bytes": 110570,
+          "index": 12,
+          "name": "layoutCandidateBytes"
+        },
+        {
+          "bytes": 359,
+          "index": 13,
+          "name": "renderWorkspaceBytes"
+        },
+        {
+          "bytes": 158,
+          "index": 14,
+          "name": "canvasCallableBytes"
+        },
+        {
+          "bytes": 1808,
+          "index": 15,
+          "name": "pathWorkspaceBytes"
+        },
+        {
+          "bytes": 7886,
+          "index": 16,
+          "name": "drawingPlanBytes"
+        },
+        {
+          "bytes": 501,
+          "index": 17,
+          "name": "observableLiveBytes"
+        },
+        {
+          "bytes": 81,
+          "index": 18,
+          "name": "observableCandidateBytes"
+        },
+        {
+          "bytes": 626,
+          "index": 19,
+          "name": "interactionCandidateBytes"
+        },
+        {
+          "bytes": 368,
+          "index": 20,
+          "name": "interactionCommittedBytes"
+        },
+        {
+          "bytes": 58,
+          "index": 21,
+          "name": "admissionQueueBytes"
+        },
+        {
+          "bytes": 277,
+          "index": 22,
+          "name": "sealedBatchBytes"
+        },
+        {
+          "bytes": 256,
+          "index": 23,
+          "name": "pointerStateBytes"
+        },
+        {
+          "bytes": 2055,
+          "index": 24,
+          "name": "coordinatorStateBytes"
+        },
+        {
+          "bytes": 21,
+          "index": 25,
+          "name": "failureStateBytes"
+        }
+      ],
+      "regions": [
+        {
+          "alignment": 2,
+          "charged_bytes": 7560,
+          "count": 378,
+          "family": 0,
+          "kind": 0,
+          "size": 22,
+          "stride": 22
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 11020,
+          "count": 551,
+          "family": 1,
+          "kind": 0,
+          "size": 22,
+          "stride": 22
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 3528,
+          "count": 98,
+          "family": 2,
+          "kind": 0,
+          "size": 33,
+          "stride": 36
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 896,
+          "count": 224,
+          "family": 2,
+          "kind": 0,
+          "size": 4,
+          "stride": 4
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 3600,
+          "count": 100,
+          "family": 3,
+          "kind": 0,
+          "size": 33,
+          "stride": 36
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 1120,
+          "count": 280,
+          "family": 3,
+          "kind": 0,
+          "size": 4,
+          "stride": 4
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 1858,
+          "count": 929,
+          "family": 4,
+          "kind": 0,
+          "size": 2,
+          "stride": 2
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 16,
+          "count": 4,
+          "family": 4,
+          "kind": 0,
+          "size": 4,
+          "stride": 4
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 183,
+          "count": 1,
+          "family": 7,
+          "kind": 2,
+          "size": 185,
+          "stride": 188
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 64,
+          "count": 2,
+          "family": 8,
+          "kind": 0,
+          "size": 32,
+          "stride": 32
+        },
+        {
+          "alignment": 1,
+          "charged_bytes": 2,
+          "count": 2,
+          "family": 9,
+          "kind": 0,
+          "size": 1,
+          "stride": 1
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 2520,
+          "count": 126,
+          "family": 10,
+          "kind": 0,
+          "size": 20,
+          "stride": 20
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 2,
+          "count": 1,
+          "family": 7,
+          "kind": 1,
+          "size": 2,
+          "stride": 2
+        },
+        {
+          "alignment": 1,
+          "charged_bytes": 2,
+          "count": 2,
+          "family": 7,
+          "kind": 0,
+          "size": 1,
+          "stride": 1
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 8,
+          "count": 1,
+          "family": 7,
+          "kind": 1,
+          "size": 8,
+          "stride": 8
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 80,
+          "count": 1,
+          "family": 10,
+          "kind": 2,
+          "size": 96,
+          "stride": 96
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 8,
+          "count": 1,
+          "family": 10,
+          "kind": 1,
+          "size": 8,
+          "stride": 8
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 8,
+          "count": 1,
+          "family": 10,
+          "kind": 1,
+          "size": 8,
+          "stride": 8
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 8,
+          "count": 1,
+          "family": 10,
+          "kind": 1,
+          "size": 8,
+          "stride": 8
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 8,
+          "count": 1,
+          "family": 10,
+          "kind": 1,
+          "size": 8,
+          "stride": 8
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 16,
+          "count": 1,
+          "family": 10,
+          "kind": 1,
+          "size": 16,
+          "stride": 16
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 4,
+          "count": 1,
+          "family": 10,
+          "kind": 1,
+          "size": 4,
+          "stride": 4
+        },
+        {
+          "alignment": 1,
+          "charged_bytes": 1,
+          "count": 1,
+          "family": 10,
+          "kind": 1,
+          "size": 1,
+          "stride": 1
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 2560,
+          "count": 128,
+          "family": 11,
+          "kind": 0,
+          "size": 20,
+          "stride": 20
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 194,
+          "count": 1,
+          "family": 12,
+          "kind": 3,
+          "size": 400,
+          "stride": 400
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 8160,
+          "count": 102,
+          "family": 12,
+          "kind": 0,
+          "size": 77,
+          "stride": 80
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 2016,
+          "count": 126,
+          "family": 12,
+          "kind": 0,
+          "size": 9,
+          "stride": 16
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 8120,
+          "count": 145,
+          "family": 12,
+          "kind": 0,
+          "size": 56,
+          "stride": 56
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 20400,
+          "count": 255,
+          "family": 12,
+          "kind": 0,
+          "size": 80,
+          "stride": 80
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 352,
+          "count": 22,
+          "family": 12,
+          "kind": 0,
+          "size": 14,
+          "stride": 16
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 5088,
+          "count": 106,
+          "family": 12,
+          "kind": 0,
+          "size": 48,
+          "stride": 48
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 10176,
+          "count": 159,
+          "family": 12,
+          "kind": 0,
+          "size": 62,
+          "stride": 64
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 20400,
+          "count": 255,
+          "family": 12,
+          "kind": 0,
+          "size": 80,
+          "stride": 80
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 5088,
+          "count": 106,
+          "family": 12,
+          "kind": 0,
+          "size": 48,
+          "stride": 48
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 10176,
+          "count": 159,
+          "family": 12,
+          "kind": 0,
+          "size": 62,
+          "stride": 64
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 20400,
+          "count": 255,
+          "family": 12,
+          "kind": 0,
+          "size": 80,
+          "stride": 80
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 40,
+          "count": 1,
+          "family": 13,
+          "kind": 1,
+          "size": 40,
+          "stride": 40
+        },
+        {
+          "alignment": 1,
+          "charged_bytes": 128,
+          "count": 128,
+          "family": 13,
+          "kind": 0,
+          "size": 1,
+          "stride": 1
+        },
+        {
+          "alignment": 1,
+          "charged_bytes": 128,
+          "count": 128,
+          "family": 13,
+          "kind": 0,
+          "size": 1,
+          "stride": 1
+        },
+        {
+          "alignment": 1,
+          "charged_bytes": 63,
+          "count": 21,
+          "family": 13,
+          "kind": 0,
+          "size": 3,
+          "stride": 3
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 1760,
+          "count": 220,
+          "family": 15,
+          "kind": 0,
+          "size": 8,
+          "stride": 8
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 48,
+          "count": 12,
+          "family": 15,
+          "kind": 0,
+          "size": 4,
+          "stride": 4
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 166,
+          "count": 1,
+          "family": 16,
+          "kind": 1,
+          "size": 166,
+          "stride": 168
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 80,
+          "count": 5,
+          "family": 16,
+          "kind": 0,
+          "size": 14,
+          "stride": 16
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 440,
+          "count": 5,
+          "family": 16,
+          "kind": 0,
+          "size": 88,
+          "stride": 88
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 7136,
+          "count": 892,
+          "family": 16,
+          "kind": 0,
+          "size": 8,
+          "stride": 8
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 64,
+          "count": 16,
+          "family": 16,
+          "kind": 0,
+          "size": 4,
+          "stride": 4
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 140,
+          "count": 5,
+          "family": 14,
+          "kind": 0,
+          "size": 28,
+          "stride": 28
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 18,
+          "count": 1,
+          "family": 14,
+          "kind": 1,
+          "size": 18,
+          "stride": 24
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 501,
+          "count": 1,
+          "family": 17,
+          "kind": 2,
+          "size": 582,
+          "stride": 584
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 81,
+          "count": 1,
+          "family": 18,
+          "kind": 2,
+          "size": 582,
+          "stride": 584
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 1236,
+          "count": 6,
+          "family": 5,
+          "kind": 0,
+          "size": 206,
+          "stride": 206
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 204,
+          "count": 6,
+          "family": 19,
+          "kind": 0,
+          "size": 240,
+          "stride": 240
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 16,
+          "count": 1,
+          "family": 19,
+          "kind": 1,
+          "size": 16,
+          "stride": 16
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 1236,
+          "count": 6,
+          "family": 5,
+          "kind": 0,
+          "size": 206,
+          "stride": 206
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 132,
+          "count": 6,
+          "family": 19,
+          "kind": 0,
+          "size": 226,
+          "stride": 228
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 16,
+          "count": 1,
+          "family": 19,
+          "kind": 1,
+          "size": 16,
+          "stride": 16
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 1236,
+          "count": 6,
+          "family": 5,
+          "kind": 0,
+          "size": 206,
+          "stride": 206
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 204,
+          "count": 6,
+          "family": 19,
+          "kind": 0,
+          "size": 240,
+          "stride": 240
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 16,
+          "count": 1,
+          "family": 19,
+          "kind": 1,
+          "size": 16,
+          "stride": 16
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 1236,
+          "count": 6,
+          "family": 6,
+          "kind": 0,
+          "size": 206,
+          "stride": 206
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 204,
+          "count": 6,
+          "family": 20,
+          "kind": 0,
+          "size": 240,
+          "stride": 240
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 16,
+          "count": 1,
+          "family": 20,
+          "kind": 1,
+          "size": 16,
+          "stride": 16
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 1236,
+          "count": 6,
+          "family": 6,
+          "kind": 0,
+          "size": 206,
+          "stride": 206
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 132,
+          "count": 6,
+          "family": 20,
+          "kind": 0,
+          "size": 226,
+          "stride": 228
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 16,
+          "count": 1,
+          "family": 20,
+          "kind": 1,
+          "size": 16,
+          "stride": 16
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 38,
+          "count": 1,
+          "family": 19,
+          "kind": 3,
+          "size": 118,
+          "stride": 120
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 56,
+          "count": 2,
+          "family": 21,
+          "kind": 0,
+          "size": 28,
+          "stride": 28
+        },
+        {
+          "alignment": 1,
+          "charged_bytes": 2,
+          "count": 1,
+          "family": 21,
+          "kind": 1,
+          "size": 2,
+          "stride": 2
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 277,
+          "count": 1,
+          "family": 22,
+          "kind": 2,
+          "size": 335,
+          "stride": 336
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 20,
+          "count": 1,
+          "family": 23,
+          "kind": 2,
+          "size": 104,
+          "stride": 104
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 236,
+          "count": 1,
+          "family": 23,
+          "kind": 1,
+          "size": 236,
+          "stride": 236
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 1875,
+          "count": 1,
+          "family": 24,
+          "kind": 3,
+          "size": 2509,
+          "stride": 2512
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 35,
+          "count": 1,
+          "family": 24,
+          "kind": 3,
+          "size": 627,
+          "stride": 628
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 145,
+          "count": 1,
+          "family": 24,
+          "kind": 3,
+          "size": 1397,
+          "stride": 1400
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 21,
+          "count": 1,
+          "family": 25,
+          "kind": 1,
+          "size": 21,
+          "stride": 24
+        }
+      ]
+    },
+    "static": {
+      "checked_total_bytes": 68543,
+      "fields": [
+        {
+          "bytes": 7560,
+          "index": 0,
+          "name": "semanticCandidatePathBytes"
+        },
+        {
+          "bytes": 7560,
+          "index": 1,
+          "name": "semanticPublishedPathBytes"
+        },
+        {
+          "bytes": 4424,
+          "index": 2,
+          "name": "semanticCandidatePayloadBytes"
+        },
+        {
+          "bytes": 4424,
+          "index": 3,
+          "name": "semanticPublishedPayloadBytes"
+        },
+        {
+          "bytes": 1528,
+          "index": 4,
+          "name": "identityMatchWorkspaceBytes"
+        },
+        {
+          "bytes": 3708,
+          "index": 5,
+          "name": "interactionCandidateIdentityBytes"
+        },
+        {
+          "bytes": 2472,
+          "index": 6,
+          "name": "interactionCommittedIdentityBytes"
+        },
+        {
+          "bytes": 194,
+          "index": 7,
+          "name": "modelMetadataBytes"
+        },
+        {
+          "bytes": 64,
+          "index": 8,
+          "name": "modelOwnerBytes"
+        },
+        {
+          "bytes": 2,
+          "index": 9,
+          "name": "framePinBytes"
+        },
+        {
+          "bytes": 2620,
+          "index": 10,
+          "name": "semanticCandidateBytes"
+        },
+        {
+          "bytes": 2520,
+          "index": 11,
+          "name": "semanticPublishedBytes"
+        },
+        {
+          "bytes": 10109,
+          "index": 12,
+          "name": "layoutCandidateBytes"
+        },
+        {
+          "bytes": 34,
+          "index": 13,
+          "name": "renderWorkspaceBytes"
+        },
+        {
+          "bytes": 144,
+          "index": 14,
+          "name": "canvasCallableBytes"
+        },
+        {
+          "bytes": 3280,
+          "index": 15,
+          "name": "pathWorkspaceBytes"
+        },
+        {
+          "bytes": 13731,
+          "index": 16,
+          "name": "drawingPlanBytes"
+        },
+        {
+          "bytes": 501,
+          "index": 17,
+          "name": "observableLiveBytes"
+        },
+        {
+          "bytes": 81,
+          "index": 18,
+          "name": "observableCandidateBytes"
+        },
+        {
+          "bytes": 592,
+          "index": 19,
+          "name": "interactionCandidateBytes"
+        },
+        {
+          "bytes": 342,
+          "index": 20,
+          "name": "interactionCommittedBytes"
+        },
+        {
+          "bytes": 58,
+          "index": 21,
+          "name": "admissionQueueBytes"
+        },
+        {
+          "bytes": 277,
+          "index": 22,
+          "name": "sealedBatchBytes"
+        },
+        {
+          "bytes": 256,
+          "index": 23,
+          "name": "pointerStateBytes"
+        },
+        {
+          "bytes": 2041,
+          "index": 24,
+          "name": "coordinatorStateBytes"
+        },
+        {
+          "bytes": 21,
+          "index": 25,
+          "name": "failureStateBytes"
+        }
+      ],
+      "regions": [
+        {
+          "alignment": 2,
+          "charged_bytes": 7560,
+          "count": 378,
+          "family": 0,
+          "kind": 0,
+          "size": 22,
+          "stride": 22
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 7560,
+          "count": 378,
+          "family": 1,
+          "kind": 0,
+          "size": 22,
+          "stride": 22
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 3528,
+          "count": 98,
+          "family": 2,
+          "kind": 0,
+          "size": 33,
+          "stride": 36
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 896,
+          "count": 224,
+          "family": 2,
+          "kind": 0,
+          "size": 4,
+          "stride": 4
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 3528,
+          "count": 98,
+          "family": 3,
+          "kind": 0,
+          "size": 33,
+          "stride": 36
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 896,
+          "count": 224,
+          "family": 3,
+          "kind": 0,
+          "size": 4,
+          "stride": 4
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 1512,
+          "count": 756,
+          "family": 4,
+          "kind": 0,
+          "size": 2,
+          "stride": 2
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 16,
+          "count": 4,
+          "family": 4,
+          "kind": 0,
+          "size": 4,
+          "stride": 4
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 194,
+          "count": 1,
+          "family": 7,
+          "kind": 3,
+          "size": 842,
+          "stride": 848
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 64,
+          "count": 2,
+          "family": 8,
+          "kind": 0,
+          "size": 32,
+          "stride": 32
+        },
+        {
+          "alignment": 1,
+          "charged_bytes": 2,
+          "count": 2,
+          "family": 9,
+          "kind": 0,
+          "size": 1,
+          "stride": 1
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 2520,
+          "count": 126,
+          "family": 10,
+          "kind": 0,
+          "size": 20,
+          "stride": 20
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 0,
+          "count": 1,
+          "family": 10,
+          "kind": 3,
+          "size": 30520,
+          "stride": 30520
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 100,
+          "count": 1,
+          "family": 10,
+          "kind": 2,
+          "size": 116,
+          "stride": 116
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 2520,
+          "count": 126,
+          "family": 11,
+          "kind": 0,
+          "size": 20,
+          "stride": 20
+        },
+        {
+          "alignment": 1,
+          "charged_bytes": 3136,
+          "count": 3136,
+          "family": 12,
+          "kind": 0,
+          "size": 1,
+          "stride": 1
+        },
+        {
+          "alignment": 1,
+          "charged_bytes": 4704,
+          "count": 4704,
+          "family": 12,
+          "kind": 0,
+          "size": 1,
+          "stride": 1
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 2269,
+          "count": 1,
+          "family": 12,
+          "kind": 3,
+          "size": 2498,
+          "stride": 2504
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 34,
+          "count": 1,
+          "family": 13,
+          "kind": 1,
+          "size": 34,
+          "stride": 40
+        },
+        {
+          "alignment": 1,
+          "charged_bytes": 3280,
+          "count": 3280,
+          "family": 15,
+          "kind": 0,
+          "size": 1,
+          "stride": 1
+        },
+        {
+          "alignment": 1,
+          "charged_bytes": 13536,
+          "count": 13536,
+          "family": 16,
+          "kind": 0,
+          "size": 1,
+          "stride": 1
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 195,
+          "count": 1,
+          "family": 16,
+          "kind": 1,
+          "size": 195,
+          "stride": 200
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 140,
+          "count": 5,
+          "family": 14,
+          "kind": 0,
+          "size": 28,
+          "stride": 28
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 4,
+          "count": 1,
+          "family": 14,
+          "kind": 1,
+          "size": 4,
+          "stride": 4
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 501,
+          "count": 1,
+          "family": 17,
+          "kind": 2,
+          "size": 582,
+          "stride": 584
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 81,
+          "count": 1,
+          "family": 18,
+          "kind": 2,
+          "size": 582,
+          "stride": 584
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 1236,
+          "count": 6,
+          "family": 5,
+          "kind": 0,
+          "size": 206,
+          "stride": 206
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 204,
+          "count": 6,
+          "family": 19,
+          "kind": 0,
+          "size": 240,
+          "stride": 240
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 4,
+          "count": 1,
+          "family": 19,
+          "kind": 3,
+          "size": 1444,
+          "stride": 1444
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 1236,
+          "count": 6,
+          "family": 5,
+          "kind": 0,
+          "size": 206,
+          "stride": 206
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 132,
+          "count": 6,
+          "family": 19,
+          "kind": 0,
+          "size": 226,
+          "stride": 228
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 2,
+          "count": 1,
+          "family": 19,
+          "kind": 3,
+          "size": 1370,
+          "stride": 1372
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 1236,
+          "count": 6,
+          "family": 5,
+          "kind": 0,
+          "size": 206,
+          "stride": 206
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 204,
+          "count": 6,
+          "family": 19,
+          "kind": 0,
+          "size": 240,
+          "stride": 240
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 4,
+          "count": 1,
+          "family": 19,
+          "kind": 3,
+          "size": 1444,
+          "stride": 1444
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 1236,
+          "count": 6,
+          "family": 6,
+          "kind": 0,
+          "size": 206,
+          "stride": 206
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 204,
+          "count": 6,
+          "family": 20,
+          "kind": 0,
+          "size": 240,
+          "stride": 240
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 4,
+          "count": 1,
+          "family": 20,
+          "kind": 3,
+          "size": 1444,
+          "stride": 1444
+        },
+        {
+          "alignment": 2,
+          "charged_bytes": 1236,
+          "count": 6,
+          "family": 6,
+          "kind": 0,
+          "size": 206,
+          "stride": 206
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 132,
+          "count": 6,
+          "family": 20,
+          "kind": 0,
+          "size": 226,
+          "stride": 228
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 2,
+          "count": 1,
+          "family": 20,
+          "kind": 3,
+          "size": 1370,
+          "stride": 1372
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 42,
+          "count": 1,
+          "family": 19,
+          "kind": 3,
+          "size": 7114,
+          "stride": 7116
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 56,
+          "count": 2,
+          "family": 21,
+          "kind": 0,
+          "size": 28,
+          "stride": 28
+        },
+        {
+          "alignment": 1,
+          "charged_bytes": 2,
+          "count": 1,
+          "family": 21,
+          "kind": 1,
+          "size": 2,
+          "stride": 2
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 277,
+          "count": 1,
+          "family": 22,
+          "kind": 2,
+          "size": 335,
+          "stride": 336
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 20,
+          "count": 1,
+          "family": 23,
+          "kind": 2,
+          "size": 104,
+          "stride": 104
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 236,
+          "count": 1,
+          "family": 23,
+          "kind": 1,
+          "size": 236,
+          "stride": 236
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 1877,
+          "count": 1,
+          "family": 24,
+          "kind": 3,
+          "size": 11605,
+          "stride": 11608
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 35,
+          "count": 1,
+          "family": 24,
+          "kind": 3,
+          "size": 627,
+          "stride": 628
+        },
+        {
+          "alignment": 8,
+          "charged_bytes": 129,
+          "count": 1,
+          "family": 24,
+          "kind": 3,
+          "size": 64237,
+          "stride": 64240
+        },
+        {
+          "alignment": 4,
+          "charged_bytes": 21,
+          "count": 1,
+          "family": 25,
+          "kind": 1,
+          "size": 21,
+          "stride": 24
+        }
+      ]
+    }
+  }
+}

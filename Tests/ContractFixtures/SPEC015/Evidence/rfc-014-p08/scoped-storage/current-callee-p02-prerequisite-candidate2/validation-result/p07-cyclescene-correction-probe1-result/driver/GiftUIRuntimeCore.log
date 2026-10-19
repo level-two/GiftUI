@@ -1,0 +1,29 @@
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift:42:13: warning: setter for property 'committedReservationCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+17 |     internal var pendingReservationCount: UInt32
+18 |     @usableFromInline
+19 |     package internal(set) var committedReservationCount: UInt32
+   |                               `- note: setter for property 'committedReservationCount' is not '@usableFromInline' or public
+20 |     @usableFromInline
+21 |     package internal(set) var retiredReservationCount: UInt32
+   :
+40 |     package mutating func resolveCandidate(committed: Bool) {
+41 |         if committed {
+42 |             committedReservationCount = adding(
+   |             `- warning: setter for property 'committedReservationCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+43 |                 pendingReservationCount,
+44 |                 to: committedReservationCount
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift:47:13: warning: setter for property 'retiredReservationCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+19 |     package internal(set) var committedReservationCount: UInt32
+20 |     @usableFromInline
+21 |     package internal(set) var retiredReservationCount: UInt32
+   |                               `- note: setter for property 'retiredReservationCount' is not '@usableFromInline' or public
+22 | 
+23 |     package init() {
+   :
+45 |             )
+46 |         } else {
+47 |             retiredReservationCount = adding(
+   |             `- warning: setter for property 'retiredReservationCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+48 |                 pendingReservationCount,
+49 |                 to: retiredReservationCount

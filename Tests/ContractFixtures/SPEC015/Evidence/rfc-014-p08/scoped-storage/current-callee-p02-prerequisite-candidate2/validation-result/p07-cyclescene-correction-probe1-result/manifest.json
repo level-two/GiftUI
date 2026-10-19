@@ -1,0 +1,377 @@
+{
+  "driver/Cycle.swift": {
+    "bytes": 2581,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/Cycle.swift",
+    "sha256": "2459201faffadccb0926738bb6d0ffc90a64a47b95bee7dd3111861a0f070f62"
+  },
+  "driver/CyclePresentation.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CyclePresentation.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/CyclePresentation.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CyclePresentation.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/CycleSchema.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleSchema.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/CycleSchema.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleSchema.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/CycleSchema.swift": {
+    "bytes": 1418,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleSchema.swift",
+    "sha256": "a321422f043de457b284604418dd4cb02e24b320e127fecace79040e82530a3f"
+  },
+  "driver/CycleTable.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleTable.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/CycleTable.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleTable.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/CycleTable.swift": {
+    "bytes": 1490,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/CycleTable.swift",
+    "sha256": "b47fd1fe961a36a07937c8c8b20d2bedcf57eb00b2421c6a7b7b6dccd003179a"
+  },
+  "driver/GiftUIDrawing.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIDrawing.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/GiftUIDrawing.log": {
+    "bytes": 2749,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIDrawing.log",
+    "sha256": "3619c373f70813fd97656514a3a2f0ed35f62bbc3220c11dec1a15789712ae25"
+  },
+  "driver/GiftUIExecution.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIExecution.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/GiftUIExecution.log": {
+    "bytes": 1819,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIExecution.log",
+    "sha256": "6e7e6153fb4a0d6417703ec768f1f71a36053629c9e86acc7ff8daaf7a40b633"
+  },
+  "driver/GiftUIInteraction.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIInteraction.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/GiftUIInteraction.log": {
+    "bytes": 1105,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIInteraction.log",
+    "sha256": "d30ce5cfc470ece7c6898495188c4f5c43e6f6212c93824d5274926cc1df57fa"
+  },
+  "driver/GiftUILayout.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUILayout.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/GiftUILayout.log": {
+    "bytes": 908,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUILayout.log",
+    "sha256": "d8daa51c4c3b791790c0a980e7cf78c3ae1e0318ac6ffb463cf9c0daac9b071f"
+  },
+  "driver/GiftUIObservableState.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIObservableState.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/GiftUIObservableState.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIObservableState.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/GiftUIReferenceTextResources.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIReferenceTextResources.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/GiftUIReferenceTextResources.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIReferenceTextResources.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/GiftUIRenderCore.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRenderCore.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/GiftUIRenderCore.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRenderCore.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/GiftUIRenderLowering.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRenderLowering.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/GiftUIRenderLowering.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRenderLowering.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/GiftUIRuntimeCore.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeCore.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/GiftUIRuntimeCore.log": {
+    "bytes": 2096,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeCore.log",
+    "sha256": "75e1d58702ae1c44c0d12e15b897678f2d299ab5bf4e30488881235df6f9108e"
+  },
+  "driver/GiftUIRuntimeDynamic.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeDynamic.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/GiftUIRuntimeDynamic.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeDynamic.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/GiftUIRuntimeStatic.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeStatic.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/GiftUIRuntimeStatic.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeStatic.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/GiftUISemanticCore.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUISemanticCore.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/GiftUISemanticCore.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUISemanticCore.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/GiftUITextResources.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUITextResources.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/GiftUITextResources.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUITextResources.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/Main.swift": {
+    "bytes": 189,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/Main.swift",
+    "sha256": "ae350b2aaaf0ad1906a29438c5bc9ce54fc9391c5c3b64c0ceec00282666aa92"
+  },
+  "driver/P07TargetWorkspace.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/P07TargetWorkspace.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/P07TargetWorkspace.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/P07TargetWorkspace.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/RuntimeCycleProbe.abi.json": {
+    "bytes": 149,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/RuntimeCycleProbe.abi.json",
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "driver/RuntimeCycleProbe.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/RuntimeCycleProbe.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/commands.txt": {
+    "bytes": 56309,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/commands.txt",
+    "sha256": "ba2054b31553dbb29933bd1893a2b6d94a5c78862d1ff39a2d4669cb9886842d"
+  },
+  "driver/copy-coordinator.log": {
+    "bytes": 477,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-coordinator.log",
+    "sha256": "e44c6de809a4923f368d73a5e12cb0fcfe86c081d5800e4c9b11769f388d8952"
+  },
+  "driver/copy-coordinator.swift": {
+    "bytes": 132,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-coordinator.swift",
+    "sha256": "9a980abdd749a8ebd8f75aada3af504986146e60acb2d7110070b71b31793001"
+  },
+  "driver/copy-owner.log": {
+    "bytes": 428,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-owner.log",
+    "sha256": "b8c3082cc0fcb34d4a64a66f4042581c2ea9bcefc166e8e7001ae733d95ff844"
+  },
+  "driver/copy-owner.swift": {
+    "bytes": 108,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-owner.swift",
+    "sha256": "2d24b18bf6488458e23f6de4e308329ac6f0ac4b09cfbe1d39668140d9ab3be3"
+  },
+  "driver/copy-semantic.log": {
+    "bytes": 419,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-semantic.log",
+    "sha256": "54728e17f3190711e6ca37a23696468b61976ad0acb8a594b1f41668225aae8f"
+  },
+  "driver/copy-semantic.swift": {
+    "bytes": 102,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/copy-semantic.swift",
+    "sha256": "2ff458ef1b764a16a63a4f7233d9af1bdc5e29447782b3345b03483a4b8f866e"
+  },
+  "driver/cycle-lowering.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/cycle-lowering.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/escape-coordinator.log": {
+    "bytes": 1212,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-coordinator.log",
+    "sha256": "5789261a939606b0e82d28e394b8809422806bd5b1431ccf4773be933d724626"
+  },
+  "driver/escape-coordinator.swift": {
+    "bytes": 87,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-coordinator.swift",
+    "sha256": "47790eeaac37d683b9e6e69e3e14725a13f71c897c10197aaaa35c6152975798"
+  },
+  "driver/escape-owner.log": {
+    "bytes": 1165,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-owner.log",
+    "sha256": "cefb8c7c4bddd53a427bc294b558d66fad7e5c0a765ef68a347f0ca8321f5090"
+  },
+  "driver/escape-owner.swift": {
+    "bytes": 75,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-owner.swift",
+    "sha256": "e8baa22fd55d1e10236f8b87ec2da3ef94ef4091533056594d72a0d0be29be2f"
+  },
+  "driver/escape-semantic.log": {
+    "bytes": 1090,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-semantic.log",
+    "sha256": "e8ac2d8df9e6b2f4cf66968acd3d544837994037280b3692bf60e81c8e054673"
+  },
+  "driver/escape-semantic.swift": {
+    "bytes": 66,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-semantic.swift",
+    "sha256": "07303ddde75971950b92411f2f16305e1ec5e53cdfe7b9c2022993350f702811"
+  },
+  "driver/execute.log": {
+    "bytes": 2940326,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/execute.log",
+    "sha256": "16eccfd611e83e026da2d2fc52162b3b35994f65ebfc7e561ab9d65557217834"
+  },
+  "driver/link.log": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/link.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "driver/logical-transcripts.json": {
+    "bytes": 2914060,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/logical-transcripts.json",
+    "sha256": "089e279edb96729b6b3dfa15c6faa800f27a51a0db55cd04b67203bab18f314e"
+  },
+  "driver/mismatched-action.log": {
+    "bytes": 637,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-action.log",
+    "sha256": "090347ca99eb887ccf5e440a4249f90fe441e214281233a873f1bd1c88296c4f"
+  },
+  "driver/mismatched-action.swift": {
+    "bytes": 273,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-action.swift",
+    "sha256": "71447b820c9d437836066697719db3cb85145da276c8d8143ab50eb106aecec8"
+  },
+  "driver/mismatched-model.log": {
+    "bytes": 5084,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-model.log",
+    "sha256": "8af5f82d5cdaeaa47195c992e3009b600be842099daa59661eb0b0a20b98eecd"
+  },
+  "driver/mismatched-model.swift": {
+    "bytes": 452,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-model.swift",
+    "sha256": "41309e5192e94c0eb88dc02d7c8300166dbe70d6537415490b4ce61caa251a42"
+  },
+  "driver/mismatched-mutation.log": {
+    "bytes": 887,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-mutation.log",
+    "sha256": "a39abaa80f593f6df65a76dd6fd82fa95a5985198bc01cafcff79ac2ffe0659c"
+  },
+  "driver/mismatched-mutation.swift": {
+    "bytes": 382,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-mutation.swift",
+    "sha256": "aaee640f70bb9082afc69c24fafe7a6cb0a18089c61e39c1a916a2964e2136d1"
+  },
+  "driver/mismatched-schema.log": {
+    "bytes": 1517,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-schema.log",
+    "sha256": "b1f44ff4abdc5bf82f6c226b85a623219677e8603c35b1ace8551baaeb10360e"
+  },
+  "driver/mismatched-schema.swift": {
+    "bytes": 425,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-schema.swift",
+    "sha256": "529272532b8ddd8ee862dfeb905fead08df1cfaca244c43e2278ea6c9e8b6a41"
+  },
+  "driver/result.json": {
+    "bytes": 135018,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/result.json",
+    "sha256": "c85ce3f88a88ff1fd798f54c59427202aa4301e26aacf4f7957b284fdd95cb3c"
+  },
+  "driver/returned-owner-escape.log": {
+    "bytes": 1214,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/returned-owner-escape.log",
+    "sha256": "9fc740907227b3010158a19d13a6f827475bfeea2a257dcd21a11061b1a2878b"
+  },
+  "driver/returned-owner-escape.swift": {
+    "bytes": 321,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/returned-owner-escape.swift",
+    "sha256": "a1650d1bded969cdacc5152b39de98300b8089b5007574acdcaebd2d323faf63"
+  },
+  "driver/returned-owner-use-after-consume.log": {
+    "bytes": 1016,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/returned-owner-use-after-consume.log",
+    "sha256": "d4fe5a2ffebf85951628dbe280ba498c24f2688bc3f9c72145e94941c7a21778"
+  },
+  "driver/returned-owner-use-after-consume.swift": {
+    "bytes": 310,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/returned-owner-use-after-consume.swift",
+    "sha256": "53f21ec6a1558aec8d6f289419cc5b8b1bfceddcd36f7353b38123747a6ce5b9"
+  },
+  "driver/storage-regions.json": {
+    "bytes": 27503,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/storage-regions.json",
+    "sha256": "b3e1707107dbdf7f9e6fcda2d57bc82b466a86266afe7148e0b95fa36af0e251"
+  },
+  "probe/launch.json": {
+    "bytes": 1012,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/p08-p07-cyclescene-correction-probe1/launch.json",
+    "sha256": "5fb7ba0c39f2b7994dec0eef75377c66575a3bc2442526dacd6f52bf00840bcd"
+  },
+  "probe/stderr": {
+    "bytes": 0,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/p08-p07-cyclescene-correction-probe1/stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "probe/stdout": {
+    "bytes": 160,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/p08-p07-cyclescene-correction-probe1/stdout",
+    "sha256": "05f77883457ca0721e5dbc52bffbd4c93f73d59604610c37762e3a6f23fdbb41"
+  },
+  "probe/terminal.json": {
+    "bytes": 16739,
+    "original": "/Users/eugene/work/GiftUI/.build/contracts/p08-p07-cyclescene-correction-probe1/terminal.json",
+    "sha256": "4b7c672d0e76ad5fe54ca5f9c0148597aabe24b944e71012c7e0ce9e3c074cc8"
+  }
+}

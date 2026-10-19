@@ -1,0 +1,37 @@
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-model.swift:7:198: error: generic struct 'ObservableSemanticBodyBinding' requires the types 'CycleDomain.Slot' (aka 'ObservableModelReadSlot<CycleOwnedModel>') and 'ObservableModelReadSlot<M>' be equivalent
+5 | import CyclePresentation
+6 | import RuntimeCycleProbe
+7 | func reject<M: ObservableStateModel & ~Copyable>(_ models: borrowing ObservableModelScope<M, M.Schema>, _ root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>) { _ = ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CycleDomain.self) }
+  |                                                                                                                                                                                                      `- error: generic struct 'ObservableSemanticBodyBinding' requires the types 'CycleDomain.Slot' (aka 'ObservableModelReadSlot<CycleOwnedModel>') and 'ObservableModelReadSlot<M>' be equivalent
+8 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift:7:16: note: where 'Domain.Slot' = 'CycleDomain.Slot' (aka 'ObservableModelReadSlot<CycleOwnedModel>'), 'ObservableModelReadSlot<Model>' = 'ObservableModelReadSlot<M>'
+ 5 | /// The bridge owns no model, read scope, or independent registration lifetime.
+ 6 | @usableFromInline
+ 7 | package struct ObservableSemanticBodyBinding<
+   |                `- note: where 'Domain.Slot' = 'CycleDomain.Slot' (aka 'ObservableModelReadSlot<CycleOwnedModel>'), 'ObservableModelReadSlot<Model>' = 'ObservableModelReadSlot<M>'
+ 8 |     Model: ObservableStateModel & ~Copyable,
+ 9 |     Identity: Equatable & Sendable,
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-model.swift:7:271: error: cannot convert value of type 'ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>' to expected argument type 'ObservableStateRootScope<M, SemanticCompleteIdentity>'
+5 | import CyclePresentation
+6 | import RuntimeCycleProbe
+7 | func reject<M: ObservableStateModel & ~Copyable>(_ models: borrowing ObservableModelScope<M, M.Schema>, _ root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>) { _ = ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CycleDomain.self) }
+  |                                                                                                                                                                                                                                                                               |- error: cannot convert value of type 'ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>' to expected argument type 'ObservableStateRootScope<M, SemanticCompleteIdentity>'
+  |                                                                                                                                                                                                                                                                               `- note: arguments to generic parameter 'Model' ('CycleOwnedModel' and 'M') are expected to be equal
+8 | 
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/mismatched-model.swift:7:198: error: generic struct 'ObservableSemanticBodyBinding' requires the types 'CycleDomain.Slot' (aka 'ObservableModelReadSlot<CycleOwnedModel>') and 'ObservableModelReadSlot<M>' be equivalent
+5 | import CyclePresentation
+6 | import RuntimeCycleProbe
+7 | func reject<M: ObservableStateModel & ~Copyable>(_ models: borrowing ObservableModelScope<M, M.Schema>, _ root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>) { _ = ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CycleDomain.self) }
+  |                                                                                                                                                                                                      `- error: generic struct 'ObservableSemanticBodyBinding' requires the types 'CycleDomain.Slot' (aka 'ObservableModelReadSlot<CycleOwnedModel>') and 'ObservableModelReadSlot<M>' be equivalent
+8 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift:7:16: note: where 'Domain.Slot' = 'CycleDomain.Slot' (aka 'ObservableModelReadSlot<CycleOwnedModel>'), 'ObservableModelReadSlot<Model>' = 'ObservableModelReadSlot<M>'
+ 5 | /// The bridge owns no model, read scope, or independent registration lifetime.
+ 6 | @usableFromInline
+ 7 | package struct ObservableSemanticBodyBinding<
+   |                `- note: where 'Domain.Slot' = 'CycleDomain.Slot' (aka 'ObservableModelReadSlot<CycleOwnedModel>'), 'ObservableModelReadSlot<Model>' = 'ObservableModelReadSlot<M>'
+ 8 |     Model: ObservableStateModel & ~Copyable,
+ 9 |     Identity: Equatable & Sendable,

@@ -1,0 +1,8 @@
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/returned-owner-use-after-consume.swift:4:32: error: 'coordinator' used after consume
+2 | import GiftUIObservableState
+3 | import GiftUIRuntimeStatic
+4 | func reject<M: ~Copyable, S>(_ coordinator: consuming StaticRuntimeExecutionCoordinator<ScopedBinding<M, S>, ScopedCoordinator<M, S>, ScopedCoordinator<M, S>>) { _ = coordinator.takeQuiescedOpportunity(); _ = coordinator.runOpportunity() }
+  |                                |                                                                                                                                                  |                                          `- note: used here
+  |                                |                                                                                                                                                  `- note: consumed here
+  |                                `- error: 'coordinator' used after consume
+5 | 

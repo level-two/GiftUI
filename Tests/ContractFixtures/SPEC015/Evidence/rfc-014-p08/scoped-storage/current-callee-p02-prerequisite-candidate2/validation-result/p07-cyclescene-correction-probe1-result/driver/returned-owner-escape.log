@@ -1,0 +1,8 @@
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/returned-owner-escape.swift:4:223: error: lifetime-dependent value escapes its scope
+2 | import GiftUIObservableState
+3 | import GiftUIRuntimeStatic
+4 | @_lifetime(immortal) func reject<M: ~Copyable, S>(_ coordinator: consuming StaticRuntimeExecutionCoordinator<ScopedBinding<M, S>, ScopedCoordinator<M, S>, ScopedCoordinator<M, S>>) -> ScopedCoordinator<M, S> { coordinator.takeQuiescedOpportunity()! }
+  |                                                     |                                                                                                                                                                         |                          `- note: this use causes the lifetime-dependent value to escape
+  |                                                     |                                                                                                                                                                         `- error: lifetime-dependent value escapes its scope
+  |                                                     `- note: it depends on the lifetime of argument 'coordinator'
+5 | 

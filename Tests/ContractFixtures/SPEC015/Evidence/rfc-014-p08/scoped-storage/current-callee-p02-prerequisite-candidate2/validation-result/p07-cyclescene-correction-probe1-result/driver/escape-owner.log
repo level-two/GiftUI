@@ -1,0 +1,13 @@
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/escape-owner.swift:1:49: error: stored property 'owner' of 'Escapable'-conforming generic struct 'Escape' has non-Escapable type 'ScopedOwner<M, S>'
+1 | struct Escape<M: ~Copyable, S>: ~Copyable { let owner: ScopedOwner<M, S> }
+  |        |                                        `- error: stored property 'owner' of 'Escapable'-conforming generic struct 'Escape' has non-Escapable type 'ScopedOwner<M, S>'
+  |        `- note: consider adding '~Escapable' to generic struct 'Escape'
+2 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift:6:8: note: generic struct 'ScopedOwner' has '~Escapable' constraint preventing 'Escapable' conformance
+ 4 | import GiftUIRuntimeCore
+ 5 | 
+ 6 | struct ScopedOwner<Model: ~Copyable, Schema>: ~Copyable, ~Escapable, RuntimeCompletePipelineOwner {
+   |        `- note: generic struct 'ScopedOwner' has '~Escapable' constraint preventing 'Escapable' conformance
+ 7 |     var hasAllocatedCandidateFrame: Bool { false }
+ 8 |     var presentationIntentState: PresentationIntentState { .satisfied }

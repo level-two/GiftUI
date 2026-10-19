@@ -1,0 +1,44 @@
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:140:9: warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 38 | package struct CanvasStagedMetadata {
+ 39 |     @usableFromInline
+ 40 |     package internal(set) var count: UInt16 = 0
+    |                               `- note: setter for property 'count' is not '@usableFromInline' or public
+ 41 |     @usableFromInline
+ 42 |     package internal(set) var releases: UInt16 = 0
+    :
+138 |         entries[Int(count)] = CanvasStagedEntry(
+139 |             identity: identity, witness: id, value: consume value)
+140 |         state.pointee.count += 1
+    |         `- warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+141 |     }
+142 |     @inlinable
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:163:13: warning: setter for property 'releases' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 40 |     package internal(set) var count: UInt16 = 0
+ 41 |     @usableFromInline
+ 42 |     package internal(set) var releases: UInt16 = 0
+    |                               `- note: setter for property 'releases' is not '@usableFromInline' or public
+ 43 |     @inlinable
+ 44 |     package init() {}
+    :
+161 |             guard entries[Int(index)]?.value != nil else { return }
+162 |             entries[Int(index)]!.value = nil
+163 |             state.pointee.releases += 1
+    |             `- warning: setter for property 'releases' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+164 |             return
+165 |         }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:173:9: warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 38 | package struct CanvasStagedMetadata {
+ 39 |     @usableFromInline
+ 40 |     package internal(set) var count: UInt16 = 0
+    |                               `- note: setter for property 'count' is not '@usableFromInline' or public
+ 41 |     @usableFromInline
+ 42 |     package internal(set) var releases: UInt16 = 0
+    :
+171 |             entries[Int(index)] = nil
+172 |         }
+173 |         state.pointee.count = 0
+    |         `- warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+174 |     }
+175 | }

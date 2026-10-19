@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:169:41: warning: setter for property 'committedComponents' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 27 |     internal var candidateComponents: UInt32 = 0
+ 28 |     @usableFromInline
+ 29 |     package internal(set) var committedComponents: UInt32 = 0
+    |                               `- note: setter for property 'committedComponents' is not '@usableFromInline' or public
+ 30 |     @usableFromInline
+ 31 |     internal var isStaging = false
+    :
+167 |         if case .commit = disposition, !ready { return }
+168 |         state.resolveCandidate(disposition)
+169 |         if case .commit = disposition { committedComponents = candidateComponents }
+    |                                         `- warning: setter for property 'committedComponents' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+170 |         candidateComponents = 0
+171 |         failure = nil
