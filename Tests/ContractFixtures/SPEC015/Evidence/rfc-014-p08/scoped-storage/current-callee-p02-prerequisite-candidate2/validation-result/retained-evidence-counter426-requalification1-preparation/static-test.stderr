@@ -1,0 +1,36 @@
+test_01_complete_real_context_without_production_claim (__main__.StaticTests) ... ok
+test_02_missing_label (__main__.StaticTests) ... ok
+test_03_duplicate_label (__main__.StaticTests) ... ok
+test_04_unknown_label (__main__.StaticTests) ... ok
+test_05_mispartitioned_driver_label (__main__.StaticTests) ... ok
+test_06_mispartitioned_frozen_label (__main__.StaticTests) ... ok
+test_07_bad_status_or_failed_boolean (__main__.StaticTests) ... ok
+test_08_positive_nonzero_exit (__main__.StaticTests) ... ok
+test_09_compiler_negative_zero_or_other_nonzero_exit (__main__.StaticTests) ... ok
+test_10_missing_or_wrong_diagnostic (__main__.StaticTests) ... ok
+test_11_wrong_diagnostic_location_even_with_resealed_log (__main__.StaticTests) ... ok
+test_12_wrong_diagnostic_filename_even_with_resealed_log (__main__.StaticTests) ... ok
+test_13_wrong_raw_log_hash (__main__.StaticTests) ... ok
+test_14_altered_generated_source (__main__.StaticTests) ... ok
+test_15_altered_per_command_source (__main__.StaticTests) ... ok
+test_16_altered_receipt_join (__main__.StaticTests) ... ok
+test_17_wrong_profile_flags_and_compiler (__main__.StaticTests) ... ok
+test_18_missing_or_altered_artifact_identity (__main__.StaticTests) ... ok
+test_19_altered_904th_artifact_bytes (__main__.StaticTests) ... ok
+test_20_observation_and_execution_are_not_inferred (__main__.StaticTests) ... ok
+test_21_native_runtime_failure_requires_qualified_named_diagnostic (__main__.StaticTests) ... ok
+test_22_historical_stop_and_stale_terminal (__main__.StaticTests) ... ok
+test_23_closed_recipe_no_new_launches (__main__.StaticTests) ... ok
+test_24_permanent_claim_success_and_replay (__main__.StaticTests) ... ok
+test_25_failure_after_claim_stays_consumed (__main__.StaticTests) ... ok
+test_26_atomic_terminal_cannot_overwrite_stale_receipt (__main__.StaticTests) ... ok
+test_27_lock_alias_or_replacement (__main__.StaticTests) ... ok
+test_28_review_pins_and_packet_inventory (__main__.StaticTests) ... ok
+test_29_negative_cannot_be_reclassified_as_positive (__main__.StaticTests) ... ok
+test_30_no_wildcard_or_wrong_named_control_diagnostic (__main__.StaticTests) ... ok
+test_31_python_and_git_environment_injection (__main__.StaticTests) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 45.993s
+
+OK

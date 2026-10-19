@@ -128,3 +128,25 @@ read only the new marker's claim and terminal. Eventual archival must use a new
 sibling result packet. Historical STOP, consumed budgets and all old packets
 remain intact even if this separate qualification later passes. P08/R07/T8.1,
 other profiles, resource bounds, images, full SO and conformance remain open.
+
+## Static verification
+
+`test_static.py` runs 31 compiler-free tests with the real complete retained
+context and temporary fixtures. It covers missing/duplicate/unknown/mispartitioned
+labels, incorrect status and exits, reclassified negatives, wrong/wildcard named
+diagnostics, wrong primary locations even after log resealing, altered logs and
+source identities, receipt/operand/profile/compiler/flag drift, missing artifact
+identity and changed artifact bytes, runtime observations and fatal-access
+qualification, preserved historical STOP, closed recipe budgets, permanent marker
+replay, failure after consumption, atomic terminal no-overwrite, lock inode
+replacement, external Git pins, code/inventory substitution, and Python/Git/dynamic
+loader environment injection. The test receipt records raw streams, exact command,
+exit, times and input hashes. All mutable adversarial fixtures use `/private/tmp`;
+production `main`, bootstrap, compiler, counter and schema4 are not invoked.
+The tests verify that the production marker remains absent and historical STOP
+bytes remain unchanged. These are preparation tests, not production qualification.
+
+Run from the repository root with the absolute Xcode Python and startup flags
+shown above, replacing the final bootstrap `-` and pins with the path to
+`test_static.py`. No repository Swift test gate or formatter is part of this
+compiler-free preparation; no maintained Swift source changes.
