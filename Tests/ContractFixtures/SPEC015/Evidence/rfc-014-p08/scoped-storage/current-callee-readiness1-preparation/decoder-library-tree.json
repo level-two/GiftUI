@@ -1,0 +1,156 @@
+{
+  "root": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
+  "entries": {
+    "libLLVM-21.dylib": {
+      "kind": "symlink",
+      "target": "libLLVM.21.1.dylib"
+    },
+    "libLLVM.21.1.dylib": {
+      "kind": "file",
+      "sha256": "fdd700d1a45d5b570b322835f1581a0cd3eb132718487df865a2f3c8c79053ed",
+      "bytes": 141051200
+    },
+    "libc++.1.0.dylib": {
+      "kind": "file",
+      "sha256": "7047f2d0fd7db7bed22b253229137ca1ea0c0d1a075f17e3cf19d8943b780786",
+      "bytes": 1173024
+    },
+    "libc++.1.dylib": {
+      "kind": "symlink",
+      "target": "libc++.1.0.dylib"
+    },
+    "libc++.dylib": {
+      "kind": "symlink",
+      "target": "libc++.1.0.dylib"
+    },
+    "libcharset.1.dylib": {
+      "kind": "file",
+      "sha256": "b301a4791a56bc4bc99af05c9b2e05f048c31380ec93bcb9c39958abfa28b8a0",
+      "bytes": 51360
+    },
+    "libcharset.dylib": {
+      "kind": "symlink",
+      "target": "libcharset.1.dylib"
+    },
+    "libiconv.2.dylib": {
+      "kind": "file",
+      "sha256": "6254ff68033b1b62ae44a57d5d83145f9a6602fb13dd232b8b29b8affb6b1f43",
+      "bytes": 1174832
+    },
+    "libiconv.dylib": {
+      "kind": "symlink",
+      "target": "libiconv.2.dylib"
+    },
+    "libicudata.78.3.dylib": {
+      "kind": "file",
+      "sha256": "bc00cc5bf0d5c45e562f47fe27f6a7b9e956c5d167c7e8233b4b2c3f22f8cbbc",
+      "bytes": 33389104
+    },
+    "libicudata.78.dylib": {
+      "kind": "symlink",
+      "target": "libicudata.78.3.dylib"
+    },
+    "libicudata.dylib": {
+      "kind": "symlink",
+      "target": "libicudata.78.3.dylib"
+    },
+    "libicui18n.78.3.dylib": {
+      "kind": "file",
+      "sha256": "6ac18c87f87887646b67fda4918b8a42901b4215570ce7292f295d3aa6e61b27",
+      "bytes": 3507376
+    },
+    "libicui18n.78.dylib": {
+      "kind": "symlink",
+      "target": "libicui18n.78.3.dylib"
+    },
+    "libicui18n.dylib": {
+      "kind": "symlink",
+      "target": "libicui18n.78.3.dylib"
+    },
+    "libicuio.78.3.dylib": {
+      "kind": "file",
+      "sha256": "e90f3e79263603eee061f0e8f386345e0b87694797d01e21961ba0106abec474",
+      "bytes": 117808
+    },
+    "libicuio.78.dylib": {
+      "kind": "symlink",
+      "target": "libicuio.78.3.dylib"
+    },
+    "libicuio.dylib": {
+      "kind": "symlink",
+      "target": "libicuio.78.3.dylib"
+    },
+    "libicutest.78.3.dylib": {
+      "kind": "file",
+      "sha256": "4b2460f4688c793f8ee280879173c1cfb70402d91782a216203c25809378b53e",
+      "bytes": 124624
+    },
+    "libicutest.78.dylib": {
+      "kind": "symlink",
+      "target": "libicutest.78.3.dylib"
+    },
+    "libicutest.dylib": {
+      "kind": "symlink",
+      "target": "libicutest.78.3.dylib"
+    },
+    "libicutu.78.3.dylib": {
+      "kind": "file",
+      "sha256": "261e3c45f7284a35ea4e787b3bd16902f2f7a5912e8bb5a07eb4ea8de984b9c1",
+      "bytes": 274416
+    },
+    "libicutu.78.dylib": {
+      "kind": "symlink",
+      "target": "libicutu.78.3.dylib"
+    },
+    "libicutu.dylib": {
+      "kind": "symlink",
+      "target": "libicutu.78.3.dylib"
+    },
+    "libicuuc.78.3.dylib": {
+      "kind": "file",
+      "sha256": "20062b2bd5de7f6ba8dbf053a68c04823d41992bd7783653dce2e574ec92b550",
+      "bytes": 2101856
+    },
+    "libicuuc.78.dylib": {
+      "kind": "symlink",
+      "target": "libicuuc.78.3.dylib"
+    },
+    "libicuuc.dylib": {
+      "kind": "symlink",
+      "target": "libicuuc.78.3.dylib"
+    },
+    "liblzma.5.dylib": {
+      "kind": "file",
+      "sha256": "bec041a8e5a3a8a5b83fb1c0b9ea6d9d5c8575ea046ce2489f2ef266b834e247",
+      "bytes": 201152
+    },
+    "libxml2.16.dylib": {
+      "kind": "file",
+      "sha256": "c5cbf100af59b3ea4d38eaae10311140d1fc9534f849ef2ba5691ac7addbd2cb",
+      "bytes": 1196992
+    },
+    "libz.1.3.2.dylib": {
+      "kind": "file",
+      "sha256": "8020844faf07e3a0a3058cf2eb8cc859ee3981297cdb3f3620db0714e2813b77",
+      "bytes": 124304
+    },
+    "libz.1.dylib": {
+      "kind": "symlink",
+      "target": "libz.1.3.2.dylib"
+    },
+    "libzstd.1.5.7.dylib": {
+      "kind": "file",
+      "sha256": "94dde7b52917a03b23b96d7ec895a814f246b3f16423bc9d51bf27a224af5625",
+      "bytes": 831824
+    },
+    "libzstd.1.dylib": {
+      "kind": "symlink",
+      "target": "libzstd.1.5.7.dylib"
+    },
+    "libzstd.dylib": {
+      "kind": "symlink",
+      "target": "libzstd.1.dylib"
+    }
+  },
+  "validation": "prepared snapshot only; independent review must check library closure and process loader environment before launch"
+}

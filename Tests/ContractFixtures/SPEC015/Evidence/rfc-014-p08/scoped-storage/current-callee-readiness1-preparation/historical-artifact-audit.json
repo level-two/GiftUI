@@ -1,0 +1,299 @@
+{
+  "observed_at_head": "cbf47d7ad59603c9b4fd9e94242e2f900ac5cd0d",
+  "old_freezes": [
+    {
+      "manifest": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/compile/input-freeze.json",
+      "entries": 340,
+      "differences": [
+        {
+          "path": "Sources/GiftUI/DeclarativeView.swift",
+          "expected_sha256": "e1acc57d20c5a0bc3d9707aebfa261e64158ae360a6c24254f9698b713cebfd9",
+          "actual_sha256": "1451f910208735955fe7f188800d639f024ac1cb75fdb7dd49c5a3d835672c24",
+          "state": "changed"
+        },
+        {
+          "path": ".build/contracts/p08-witness-annotation-compatibility/CounterTable.swift",
+          "expected_sha256": "9c1a50d90b57b9f625986cbb7a37fcefc56234bfb0f1e0b2a10abd7ab73efd54",
+          "state": "missing"
+        },
+        {
+          "path": ".build/contracts/p08-witness-annotation-compatibility/CounterSchema.swift",
+          "expected_sha256": "4a3d38814efb03b675f3748c6c7e57e9ee444839fa51486ea8bb13ef6826f763",
+          "state": "missing"
+        },
+        {
+          "path": ".build/contracts/p08-witness-annotation-compatibility/Counter.swift",
+          "expected_sha256": "b29408c44c2d4fa403c95abca82dc4a260780e236d7e3152805e02b298db3310",
+          "state": "missing"
+        },
+        {
+          "path": "Sources/GiftUIMacros/ObservableStateHostMacro.swift",
+          "expected_sha256": "e78ffc777fd3f3ea5dbc59befccc2fed294e0e9c002cbedd84c2a7efe8865a19",
+          "actual_sha256": "1b1a0e91b1694c11ec02e56af35ee861decec7b4662a0a0eca65e51029e0ad3d",
+          "state": "changed"
+        },
+        {
+          "path": "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift",
+          "expected_sha256": "4017f824182242e7b412cf5f0c98dece5758314557607845e51549b388da81d4",
+          "actual_sha256": "42b14cf51ae9804414f6936d2c5f64dd55d6f2b5e8b8e2811adcccc9582158d6",
+          "state": "changed"
+        },
+        {
+          "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/GiftUI-command.json",
+          "expected_sha256": "27f6a23ed79aa648f79c5c8510b7d8c3f58966634a411dbc59765a58df1843da",
+          "state": "missing"
+        },
+        {
+          "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/lower-command.json",
+          "expected_sha256": "d2216bd6510210cdc070c35263ff4157f170828f3f52dcd3791e87c404c4bf45",
+          "state": "missing"
+        },
+        {
+          "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-w700p_zi/checks.json",
+          "expected_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c",
+          "state": "missing"
+        },
+        {
+          "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-semantic-c-candidate1/macro-artifact-freeze.json",
+          "expected_sha256": "ea01f7d536048745fc6324abbeb7f077ca0b59848d9ab0d652536814004f91ca",
+          "state": "missing"
+        }
+      ]
+    },
+    {
+      "manifest": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/input-freeze.json",
+      "entries": 565,
+      "differences": [
+        {
+          "path": "Sources/GiftUI/DeclarativeView.swift",
+          "expected_sha256": "e1acc57d20c5a0bc3d9707aebfa261e64158ae360a6c24254f9698b713cebfd9",
+          "actual_sha256": "1451f910208735955fe7f188800d639f024ac1cb75fdb7dd49c5a3d835672c24",
+          "state": "changed"
+        },
+        {
+          "path": ".build/contracts/p08-witness-annotation-compatibility/CounterTable.swift",
+          "expected_sha256": "9c1a50d90b57b9f625986cbb7a37fcefc56234bfb0f1e0b2a10abd7ab73efd54",
+          "state": "missing"
+        },
+        {
+          "path": ".build/contracts/p08-witness-annotation-compatibility/CounterSchema.swift",
+          "expected_sha256": "4a3d38814efb03b675f3748c6c7e57e9ee444839fa51486ea8bb13ef6826f763",
+          "state": "missing"
+        },
+        {
+          "path": ".build/contracts/p08-witness-annotation-compatibility/Counter.swift",
+          "expected_sha256": "b29408c44c2d4fa403c95abca82dc4a260780e236d7e3152805e02b298db3310",
+          "state": "missing"
+        },
+        {
+          "path": "Sources/GiftUIMacros/ObservableStateHostMacro.swift",
+          "expected_sha256": "e78ffc777fd3f3ea5dbc59befccc2fed294e0e9c002cbedd84c2a7efe8865a19",
+          "actual_sha256": "1b1a0e91b1694c11ec02e56af35ee861decec7b4662a0a0eca65e51029e0ad3d",
+          "state": "changed"
+        },
+        {
+          "path": "Tests/GiftUIMacrosTests/ObservableStateHostMacroTests.swift",
+          "expected_sha256": "4017f824182242e7b412cf5f0c98dece5758314557607845e51549b388da81d4",
+          "actual_sha256": "42b14cf51ae9804414f6936d2c5f64dd55d6f2b5e8b8e2811adcccc9582158d6",
+          "state": "changed"
+        },
+        {
+          "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/GiftUI-command.json",
+          "expected_sha256": "27f6a23ed79aa648f79c5c8510b7d8c3f58966634a411dbc59765a58df1843da",
+          "state": "missing"
+        },
+        {
+          "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/lower-command.json",
+          "expected_sha256": "d2216bd6510210cdc070c35263ff4157f170828f3f52dcd3791e87c404c4bf45",
+          "state": "missing"
+        },
+        {
+          "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-w700p_zi/checks.json",
+          "expected_sha256": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c",
+          "state": "missing"
+        },
+        {
+          "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-observable-selector-continuation1/result.json",
+          "expected_sha256": "d20d13e7bd58f677c6a697623dd664b47ce395dd9aec084e15cbdb9755f2b81d",
+          "state": "missing"
+        },
+        {
+          "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-observable-candidate1/qualification/boundary-physical-index.json",
+          "expected_sha256": "17dda9ffb1aa359d5d93e537763a5215ac0781254e39f3d4aab7310a021f7a86",
+          "state": "missing"
+        },
+        {
+          "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-semantic-c-candidate1/macro-artifact-freeze.json",
+          "expected_sha256": "ea01f7d536048745fc6324abbeb7f077ca0b59848d9ab0d652536814004f91ca",
+          "state": "missing"
+        }
+      ]
+    }
+  ],
+  "old_next_group_inputs": [
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/qualification/actual-host.sil",
+      "expected_sha256": "04805fe1b1662f16e8aee8eb0b3c2eec6261d731468df977a1407976158706e6",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile-artifact-freeze.json",
+      "expected_sha256": "a83b92998f23f2f1b31492c9b70a136b2c2e93a75a518d61f4aa0f95cb32ffa4",
+      "state": "missing"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-candidate1/qualification/origin42-scope.json",
+      "expected_sha256": "5224b28a722fd0f340e2829ab2dc9b313ce8b6a7140e14b2b5353a2c6dc85db7",
+      "state": "matching"
+    },
+    {
+      "path": "scripts/contracts/check-spec-015-counter.py",
+      "expected_sha256": "8150d2cbd864222dfba32bd91543d7f7d3ac3be81639b0a86fa00aacc6dcf970",
+      "state": "matching"
+    },
+    {
+      "path": "scripts/contracts/check-spec-015-scoped-host.py",
+      "expected_sha256": "2f64eab33fb736a6d8ac1b90470d340fde2f5276165eef2dc91e95707d82c3c1",
+      "state": "matching"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "expected_sha256": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+      "state": "matching"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift",
+      "expected_sha256": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f",
+      "state": "matching"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUI/GiftUI.o",
+      "expected_sha256": "d5a06b8f5c97d6a712d896ed08b73e67849fad52fa3268a8eb902a98446fd9be",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIBackendIntegration/GiftUIBackendIntegration.o",
+      "expected_sha256": "0327270e93052ccb168f01180df7d6a7e55ed09f02d803dd4a33ca0ebcf9b490",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUICapabilities/GiftUICapabilities.o",
+      "expected_sha256": "b78a32c0773588fa967a3d1386711d16f3cd0034e5e54da95960d04ffd5fa640",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIDisplayCore/GiftUIDisplayCore.o",
+      "expected_sha256": "cd99dc96ae1717ffac50656eb4dccf1488ee87c1fb8610a0183a51414a5b5fb4",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIDrawing/GiftUIDrawing.o",
+      "expected_sha256": "bf13d1e73571eb4786ef54c778a6cd6dacf4a72a5ed32440b3e4d5700f650047",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIExecution/GiftUIExecution.o",
+      "expected_sha256": "08472d92c7b3f827164d922d0415cdf52f0e639e80dfced3f5f634d69140a0fc",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIFailureCore/GiftUIFailureCore.o",
+      "expected_sha256": "a9b669593b69bc6cc42cac54a1b989b5683588dd9b086cfd94920521b4f5cbf7",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIHostConfiguration/GiftUIHostConfiguration.o",
+      "expected_sha256": "f3b704572caaf9daab8b27aaccdbe7e2528fb7bf5297a82a62273281a5467790",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIInteraction/GiftUIInteraction.o",
+      "expected_sha256": "52b23896d9481de58f22f741ad7b4b2c912909ffcea61c2e21738809601d9de7",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUILayout/GiftUILayout.o",
+      "expected_sha256": "ac0086b5bb9c3e678030a3f7981ca485e6732f299f954fecd1aaaada651c8011",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIObservableState/GiftUIObservableState.o",
+      "expected_sha256": "56186bce1d38e972da3af7be59c5491fdc9d2692869cb16069643e1cc0051c13",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIRasterCore/GiftUIRasterCore.o",
+      "expected_sha256": "5c5c18f7872024462cb70c08ea1733e1066903cf2104d7a3548bbdcbc2b6b0e7",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIReferenceTextResources/GiftUIReferenceTextResources.o",
+      "expected_sha256": "126a323ea885662e0e90a88a43a3388579395ec115aeb5c645870eae7af5d4be",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIRenderCore/GiftUIRenderCore.o",
+      "expected_sha256": "51931122e7bde07549c4110adf2b57ba8995db8d2c6aa1a370372a2f2fcf0e96",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIRenderLowering/GiftUIRenderLowering.o",
+      "expected_sha256": "3cf3c16fee830a4feeabd2ed801008b0db189549ddb9a74b8ea5eefe70b3cfb2",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIRuntimeCore/GiftUIRuntimeCore.o",
+      "expected_sha256": "ef291f1fdbca3da62c2813bdc7429ae51622c18cc87b168a0fd3f535ee2ed411",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIRuntimeDynamic/GiftUIRuntimeDynamic.o",
+      "expected_sha256": "edafca2c17fe99216a3d6fbd4cf14fbe6cc366c79ce3c175836a5fce5804b3c5",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUIRuntimeStatic/GiftUIRuntimeStatic.o",
+      "expected_sha256": "b0f281fc70370997113485a08c72c93fcd6b08213f3f543db971a52f4c28fdbd",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUISemanticCore/GiftUISemanticCore.o",
+      "expected_sha256": "e468a119f158d32ab983616bad88eae05e1f0d8f3addd573d856ff2079711c3b",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUISurfaceCore/GiftUISurfaceCore.o",
+      "expected_sha256": "d8df2f520c3cbedfa20e9e4ec6af195484e48acb708554a3ba3223190404c0fa",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/GiftUITextResources/GiftUITextResources.o",
+      "expected_sha256": "d8a259cbfcec4c93997447d629a100768ff6312b1acfcb5b9e21921705ca6c03",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/P08CounterPresentation/P08CounterPresentation.o",
+      "expected_sha256": "734952d8c9ad66410fc3fd636c22d7086c1cbf988dfc1bd4a5b1cd85b0f75692",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/P08CounterRuntime/P08CounterRuntime.o",
+      "expected_sha256": "8ff9af1237b300f7453f09e8594ddff33c7eecf8ffdcbea307c49436629ae409",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/P08CounterSchema/P08CounterSchema.o",
+      "expected_sha256": "70a37d80919e345f4cea3a7b9d652a93c3db72218167e567ae82f8493064019d",
+      "state": "missing"
+    },
+    {
+      "path": ".build/contracts/p08-ef-resolution-candidate1/compile/owners/P08CounterTable/P08CounterTable.o",
+      "expected_sha256": "1308bd1ca4371ad4e76f4a45112774ad2138433b7959e56a8dcfdb0d15316174",
+      "state": "missing"
+    }
+  ],
+  "unique_inputs": 32,
+  "matching": 5,
+  "missing": 27,
+  "note": "Read/hash inspection only; missing does not revoke historical selected PASS or authorize regeneration/retry."
+}

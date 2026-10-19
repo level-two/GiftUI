@@ -1,0 +1,37 @@
+{
+  "package": "P08 / SO-07 to SO-08 complete current-callee preparation",
+  "criteria": [
+    "HC-SO-001",
+    "HC-SO-002",
+    "HC-SO-003",
+    "RP-SO-001",
+    "RP-SO-002",
+    "RP-SO-003",
+    "IN-SO-001",
+    "IN-SO-002",
+    "IN-SO-003",
+    "HC-RD-003",
+    "HC-015"
+  ],
+  "dependencies": "Retained macOS Static counter426 qualification PASS and independent result review complete. Complete callee/applicability, production controller, strict cold and P08 exit remain pending.",
+  "source_baseline": "cbf47d7ad59603c9b4fd9e94242e2f900ac5cd0d",
+  "allowed_output": [
+    "current-callee-readiness1-preparation data/README",
+    "current navigation in rfc-014 implementation plan/task context/progress and feature index"
+  ],
+  "source_edits_allowed": false,
+  "complexity": "C3",
+  "risk": "R3",
+  "tier": "Strong",
+  "actual_model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "reason": "actual compiled imports/private backing/lifetime/resource evidence applicability",
+  "reviewer_tier": "Strong",
+  "compiler_launches_run": 0,
+  "tests_run": 0,
+  "automatic_source_repairs": 0,
+  "automatic_tooling_repairs": 0,
+  "retries": 0,
+  "next_dependency": "Independent applicability/minimal-recipe review; prepare and review a permanent one-shot collection controller and complete process environment before any launch.",
+  "scope_or_contract_issue": "No new architectural/contract defect established; current source/artifact applicability and launch readiness remain evidence prerequisites."
+}

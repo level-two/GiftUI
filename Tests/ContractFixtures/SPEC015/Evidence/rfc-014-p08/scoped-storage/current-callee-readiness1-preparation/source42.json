@@ -1,0 +1,212 @@
+[
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift",
+    "sha256": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a",
+    "bytes": 2755
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift",
+    "sha256": "d6cdcf1f033a26225d856eb4dd4c5401b76b63d7f78040e111417cdb82bfa41c",
+    "bytes": 3358
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+    "sha256": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653",
+    "bytes": 2115
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+    "sha256": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb",
+    "bytes": 12910
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift",
+    "sha256": "b1f575db79c688b2534ebe3681fea99864222715f8b9ef83dd3fcde16e261c9f",
+    "bytes": 14240
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift",
+    "sha256": "c49cc7ad1d5de5bcc3a228defd78ce16a1d6e56c775d9227f5648339540eaa2c",
+    "bytes": 4999
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift",
+    "sha256": "b14a1667a899fc539c8a8d8011d2e377188ce0300012e464ac1f0d1203a999ab",
+    "bytes": 9577
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+    "sha256": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825",
+    "bytes": 1642
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift",
+    "sha256": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148",
+    "bytes": 10654
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift",
+    "sha256": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092",
+    "bytes": 12042
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift",
+    "sha256": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+    "bytes": 10872
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift",
+    "sha256": "36d137a0fdf0d6159dfc8502b86bd5bc78037fa1cfa5a86038513c9523b31677",
+    "bytes": 8215
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+    "sha256": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b",
+    "bytes": 4288
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift",
+    "sha256": "0e13001714af86c5f93cc150678c07c0b3a32c58b3a524fd43edb23eae19990b",
+    "bytes": 19446
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift",
+    "sha256": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06",
+    "bytes": 7294
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift",
+    "sha256": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c",
+    "bytes": 8687
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift",
+    "sha256": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a",
+    "bytes": 10957
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift",
+    "sha256": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34",
+    "bytes": 5420
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift",
+    "sha256": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0",
+    "bytes": 3860
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift",
+    "sha256": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893",
+    "bytes": 11497
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+    "sha256": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+    "bytes": 254803
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift",
+    "sha256": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f",
+    "bytes": 565
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+    "sha256": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e",
+    "bytes": 15700
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+    "sha256": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+    "bytes": 73656
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+    "sha256": "f7152c3e886322e482aaa040b98f15ac820d0aa9a15af86260229bc56df64010",
+    "bytes": 41983
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift",
+    "sha256": "abae5f87b3390863d8a68657c98b46a0fe9829f96a332affe44fbbb4fcce4d5a",
+    "bytes": 12814
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift",
+    "sha256": "6d713ae96bf4982c46f30289068dc97e5d4e32e3dae69f1874dd5e808d053d2b",
+    "bytes": 7999
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+    "sha256": "1129e33dcab9bb075d3c11dac16cedd72c26efad6da87adc204b68de25408ee7",
+    "bytes": 6503
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+    "sha256": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e",
+    "bytes": 5050
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+    "sha256": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae",
+    "bytes": 17027
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+    "sha256": "d084112a1ee54cc8c01fc5f24a7416ee3a6b23afdc6710f42635a76c370fea26",
+    "bytes": 27426
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+    "sha256": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2",
+    "bytes": 17169
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+    "sha256": "342585dd23bc2916176535bfdb9efd7ba115a138047afe3fcda082acbf7adf8e",
+    "bytes": 24992
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+    "sha256": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df",
+    "bytes": 10682
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+    "sha256": "be59651c2f7f657f1785f51fa31767f6319dc543c023d901057fa0deb4bace81",
+    "bytes": 8749
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+    "sha256": "46ab40914dade59536f53650bd97ce8d74ee57da86a8a826330f629c64a89f9c",
+    "bytes": 25371
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift",
+    "sha256": "06b5775b618a78b757495de8c86a2352b8e8371e0c854f3d93463f685585f05e",
+    "bytes": 25233
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift",
+    "sha256": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842",
+    "bytes": 4411
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+    "sha256": "60d013e2570e5ea3ac6efbbadb97dd79d6b7fa0a47e680e72a7071909fddb686",
+    "bytes": 5901
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+    "sha256": "bfe4a208dd72fe47cb2a72331228cf9c9981114e03d49a91b99541957e7f80b5",
+    "bytes": 22685
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift",
+    "sha256": "cf9f5467416298dd64f604f5d0edf436b1736dc5972d78721da38c61151cb588",
+    "bytes": 1096
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+    "sha256": "bfcf074ec49455e7d5cc527b4a65cf9b9374da2c96914f8b8bdf8908ca90ec6b",
+    "bytes": 1691
+  }
+]

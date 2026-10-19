@@ -1,6 +1,21 @@
 # RFC-014 task context guide
 
-Current bounded P08 counter384 successor — **preparation only; independent readiness pending**.
+Current P08 boundary — **retained counter426 PASS; complete current-callee preparation pending independent review**.
+The [retained macOS Static result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)
+and [independent result review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/independent-review.md)
+qualify 426 checks / 1,736,320 assertions / zero failures from retained evidence.
+The historical wrapper STOP and all consumed allowances remain unchanged.
+The [new compiler-free preparation](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/README.md)
+records missing old E/F artifacts and proposes retained current imports/objects,
+93 privacy controls and one exact 42-source optimized SIL collection. No compiler,
+build, test, decoder or runtime ran. Independent applicability review and a separately
+prepared/reviewed one-shot collection controller remain required before launch;
+this data packet supplies no launcher or execution-ready command. Zero automatic
+repairs/retries; no historical budget reset. Full current-callee/safety/strict cold,
+resources and P08/R07/T8.1 remain open. Earlier checkpoints below retain their
+historical dispositions.
+
+Historical bounded P08 counter384 successor — **preparation checkpoint before its consumed launch**.
 Eugene's “Please proceed” authorizes a separate counter-only initial **0/1**,
 automatic repairs **0/0**, retries **0/0**, after independent readiness PASS.
 The [successor packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter384-successor1-preparation/README.md)

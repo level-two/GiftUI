@@ -1,0 +1,29 @@
+{
+  "kind": "read-and-hash-inspection-only",
+  "json_files_parsed": [
+    "collection-recipe.json",
+    "decoder-library-tree.json",
+    "dispatch.json",
+    "historical-artifact-audit.json",
+    "import-trees.json",
+    "input-freeze.json",
+    "inspection.json",
+    "preserved-dirty-files.json",
+    "retained-module-selection.json",
+    "source42.json"
+  ],
+  "frozen_inputs": 388,
+  "frozen_input_differences": [],
+  "ordered_sources": 42,
+  "privacy_controls": 93,
+  "serialized_module_captures": 11,
+  "object_captures": 50,
+  "output_absent": true,
+  "production_launches": 0,
+  "compiler_launches": 0,
+  "builds": 0,
+  "tests": 0,
+  "decoder_launches": 0,
+  "runtime_launches": 0,
+  "review_status": "pending; data checks are not independent readiness or execution approval"
+}

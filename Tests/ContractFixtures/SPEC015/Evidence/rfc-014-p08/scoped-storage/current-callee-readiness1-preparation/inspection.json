@@ -1,0 +1,31 @@
+{
+  "head": "cbf47d7ad59603c9b4fd9e94242e2f900ac5cd0d",
+  "retained_counter_input_entries": 201,
+  "retained_counter_input_drift": [],
+  "retained_aggregate": {
+    "profile": "macos-static",
+    "passed": true,
+    "collection_complete": true,
+    "fresh_focused": false
+  },
+  "current_source42_equals_old_sil_source_set": true,
+  "same_source_order_as_retained_compilation": true,
+  "retained_module_count": 25,
+  "proposed_privacy_controls": 93,
+  "proposed_serialization_captures": 11,
+  "proposed_object_captures": 50,
+  "fresh_compiler_invocations_run": 0,
+  "builds_run": 0,
+  "tests_run": 0,
+  "decoder_commands_run": 0,
+  "runtime_runs": 0,
+  "out_root_absent": true,
+  "frozen_input_count": 388,
+  "import_tree_entries": 1407,
+  "notes": [
+    "Preparation inspected JSON, source lists, file bytes and directory membership only; no launch/controller readiness PASS is claimed.",
+    "Input tree/compiler/SDK manifests require complete independent reauthentication before any production boundary."
+  ],
+  "observed_working_tree_during_preparation": " M Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift\n M Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift\n M firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt\n M scripts/nrf52840/build.sh\n M scripts/raspberry-pi/build.sh\n?? Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/\n?? scripts/contracts/__pycache__/\n",
+  "preexisting_changes": " M Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift\n M Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift\n M firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt\n M scripts/nrf52840/build.sh\n M scripts/raspberry-pi/build.sh\n?? scripts/contracts/__pycache__/\n"
+}

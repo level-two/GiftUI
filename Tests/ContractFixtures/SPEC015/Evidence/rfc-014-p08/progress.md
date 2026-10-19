@@ -1,6 +1,21 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-Current resource boundary — **larger main stack alone fails unchanged total RAM**.
+Current P08 boundary — **retained counter426 PASS; complete current-callee preparation pending independent review**.
+The [retained macOS Static result](scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)
+and [independent result review](scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/independent-review.md)
+qualify 426 checks / 1,736,320 assertions / zero failures from retained evidence.
+The historical wrapper STOP and all consumed allowances remain unchanged.
+The [new compiler-free preparation](scoped-storage/current-callee-readiness1-preparation/README.md)
+records missing old E/F artifacts and proposes retained current imports/objects,
+93 privacy controls and one exact 42-source optimized SIL collection. No compiler,
+build, test, decoder or runtime ran. Independent applicability review and a separately
+prepared/reviewed one-shot collection controller remain required before launch;
+this data packet supplies no launcher or execution-ready command. Zero automatic
+repairs/retries; no historical budget reset. Full current-callee/safety/strict cold,
+resources and P08/R07/T8.1 remain open. Earlier checkpoints below retain their
+historical dispositions.
+
+Historical resource boundary — **larger main stack alone fails unchanged total RAM**.
 The [independent live-path review](scoped-storage/p08-current-firmware-live-ram-independent-review.md)
 confirms 47 simultaneous fixed entries totaling 56,888 plus other RAM 142,972:
 199,860 > 196,608 by 3,252 before omitted costs. A sufficient larger main stack

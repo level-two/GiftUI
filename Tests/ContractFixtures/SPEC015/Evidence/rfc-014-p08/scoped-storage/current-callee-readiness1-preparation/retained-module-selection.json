@@ -1,0 +1,476 @@
+{
+  "import_search_order": [
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static"
+  ],
+  "modules": [
+    {
+      "module": "GiftUI",
+      "selected_module": {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.swiftmodule",
+        "sha256": "aa0f91486d612c2506b569c0e81aecb1ae616c10ef050664055f969927e10c48",
+        "bytes": 347436
+      },
+      "selected_object": {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.o",
+        "sha256": "697e1435723ab9721bdcda4fe029a190cef1b7fa1d609381e5e0905c3163575c",
+        "bytes": 354032
+      },
+      "other_import_candidates": [],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUICapabilities",
+      "selected_module": {
+        "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUICapabilities.swiftmodule",
+        "sha256": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf",
+        "bytes": 320112
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUICapabilities.o",
+        "sha256": "e98b19e45be7d01036c429f5a204127e1c4b2f93406d464ba5611d20980e4613",
+        "bytes": 226576
+      },
+      "other_import_candidates": [],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIFailureCore",
+      "selected_module": {
+        "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUIFailureCore.swiftmodule",
+        "sha256": "ce7ffbc90a1067d01bc0eabf58048af72941c51cc2325a3573dcd2a30e25b465",
+        "bytes": 179604
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUIFailureCore.o",
+        "sha256": "14fec38758243fa9a9c78cc715149fbd88567d062532aae18c625f207b3647f9",
+        "bytes": 127672
+      },
+      "other_import_candidates": [],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUISemanticCore",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.swiftmodule",
+        "sha256": "b4ceebdcec571b5f50e7762b83b9adeaa2c3bd43cf11f35dcb9ec5ebaffe4e97",
+        "bytes": 882308
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.o",
+        "sha256": "d1e6eb3af4d1566dc06f196d6a9154d781e2da0f046c4d920af68c1df56d3ea7",
+        "bytes": 534488
+      },
+      "other_import_candidates": [
+        {
+          "path": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUISemanticCore.swiftmodule",
+          "sha256": "b4ceebdcec571b5f50e7762b83b9adeaa2c3bd43cf11f35dcb9ec5ebaffe4e97",
+          "bytes": 882308
+        }
+      ],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUITextResources",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUITextResources.swiftmodule",
+        "sha256": "3a002fbde7c5f5e80e8ed7a54f9667fdf8d7a539d680bf22a4d0dddba6e63e5c",
+        "bytes": 133944
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUITextResources.o",
+        "sha256": "9aecc98947e6fcab6f740cd2372857180c9abbc49232036b6e8c4deb34f88eb4",
+        "bytes": 102840
+      },
+      "other_import_candidates": [
+        {
+          "path": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUITextResources.swiftmodule",
+          "sha256": "3a002fbde7c5f5e80e8ed7a54f9667fdf8d7a539d680bf22a4d0dddba6e63e5c",
+          "bytes": 133944
+        }
+      ],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "P08CounterSchema",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/P08CounterSchema.swiftmodule",
+        "sha256": "0ca47e048d96177f97538d326fb8744ae3084095ac8503898b930dbae0bc4ba0",
+        "bytes": 26912
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/P08CounterSchema.o",
+        "sha256": "7ab6796784cb4e3e81e0a682f96b27335f522bce2a00b0c57ec07112e0bf679e",
+        "bytes": 9392
+      },
+      "other_import_candidates": [],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUILayout",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUILayout.swiftmodule",
+        "sha256": "0e46ae9a6a1946032bc0aa7ad32f23bed247c4ebba3f0666c155c2d9de8bba0a",
+        "bytes": 325168
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUILayout.o",
+        "sha256": "210985a98beb671ebdfc4d93512a92467641791e8f7d971ab6e5950f7dd13ebc",
+        "bytes": 170544
+      },
+      "other_import_candidates": [
+        {
+          "path": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUILayout.swiftmodule",
+          "sha256": "0e46ae9a6a1946032bc0aa7ad32f23bed247c4ebba3f0666c155c2d9de8bba0a",
+          "bytes": 325168
+        }
+      ],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIReferenceTextResources",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIReferenceTextResources.swiftmodule",
+        "sha256": "c852bebd8ad7261ccacbe541b482c0696b291b3be58c9692fd0d55a5520aeda1",
+        "bytes": 2763080
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIReferenceTextResources.o",
+        "sha256": "ab35f5d97d11feed8e78053c0ea3921ff6b3fb43e313d754fca859638bbeea54",
+        "bytes": 1662280
+      },
+      "other_import_candidates": [
+        {
+          "path": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIReferenceTextResources.swiftmodule",
+          "sha256": "c852bebd8ad7261ccacbe541b482c0696b291b3be58c9692fd0d55a5520aeda1",
+          "bytes": 2763080
+        }
+      ],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIRenderCore",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRenderCore.swiftmodule",
+        "sha256": "b9e814e54286c6bd238cd62200fb1ba9d4ff8e75084689628a754d039fc71460",
+        "bytes": 85828
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRenderCore.o",
+        "sha256": "af38bc6e2ff9fc68395bcabfca71982be9e726a98a7ba59acd7ca969b462019b",
+        "bytes": 62200
+      },
+      "other_import_candidates": [
+        {
+          "path": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRenderCore.swiftmodule",
+          "sha256": "b9e814e54286c6bd238cd62200fb1ba9d4ff8e75084689628a754d039fc71460",
+          "bytes": 85828
+        }
+      ],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "P08CounterPresentation",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/P08CounterPresentation.swiftmodule",
+        "sha256": "a8ac243abf300445ad59ff7257018f9b0c73a461a7a95c6b54e3058ec9a354c6",
+        "bytes": 70544
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/P08CounterPresentation.o",
+        "sha256": "5ab036fca58c51a27a91284a2b2abde88a0e2b5f81b21f2089187f9c6bad2929",
+        "bytes": 45736
+      },
+      "other_import_candidates": [],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIExecution",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIExecution.swiftmodule",
+        "sha256": "be305f612e79902dfc6e1c15e8556b2277cc8ec7e12a95f26f40c243a7ddb7ec",
+        "bytes": 630224
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIExecution.o",
+        "sha256": "5fac42c75bf02129e4b56865d4a8cd3ffb5a63d126fbc9bd7cbbc418b28a2332",
+        "bytes": 574800
+      },
+      "other_import_candidates": [
+        {
+          "path": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIExecution.swiftmodule",
+          "sha256": "be305f612e79902dfc6e1c15e8556b2277cc8ec7e12a95f26f40c243a7ddb7ec",
+          "bytes": 630224
+        }
+      ],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIRenderLowering",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRenderLowering.swiftmodule",
+        "sha256": "2f78f910754d5b831679716b683f9b351909f6f65c2a35794808bee5638d5b53",
+        "bytes": 78284
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRenderLowering.o",
+        "sha256": "66b522bfbc494980934847d0cb142514bc213af9d51860a588c5d4358f9382ec",
+        "bytes": 78864
+      },
+      "other_import_candidates": [
+        {
+          "path": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRenderLowering.swiftmodule",
+          "sha256": "2f78f910754d5b831679716b683f9b351909f6f65c2a35794808bee5638d5b53",
+          "bytes": 78284
+        }
+      ],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUISurfaceCore",
+      "selected_module": {
+        "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUISurfaceCore.swiftmodule",
+        "sha256": "ebfeb04dfebf4e6c2c5f1d36d50c670968f482fb5f1161362f686545b79373b1",
+        "bytes": 32204
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUISurfaceCore.o",
+        "sha256": "f22cbd684f69378a9e99bb1b0f93111109803fd022776db1c2dc8e60e2ceb82c",
+        "bytes": 12144
+      },
+      "other_import_candidates": [],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIDisplayCore",
+      "selected_module": {
+        "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUIDisplayCore.swiftmodule",
+        "sha256": "48a141edee55477ebf6fa2617e1aac66cf054a595c9384c0b5f9ca5d81edd014",
+        "bytes": 46672
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUIDisplayCore.o",
+        "sha256": "7b6997af450252fc1dd59ac3e22f38d24f772d999a71de436baabdc51df992aa",
+        "bytes": 23896
+      },
+      "other_import_candidates": [],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIDrawing",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIDrawing.swiftmodule",
+        "sha256": "27b12699ddb3efbe0d6d510dbb5481689acb81cb4a56d8b123d3e6be75d93de5",
+        "bytes": 161584
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIDrawing.o",
+        "sha256": "33562488b3ab1eed671758b8af57c4a107b434d33dec66755578168ef7ab780b",
+        "bytes": 135544
+      },
+      "other_import_candidates": [
+        {
+          "path": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIDrawing.swiftmodule",
+          "sha256": "27b12699ddb3efbe0d6d510dbb5481689acb81cb4a56d8b123d3e6be75d93de5",
+          "bytes": 161584
+        }
+      ],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIInteraction",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIInteraction.swiftmodule",
+        "sha256": "8f7eb6d7cf510a199f25f8e62f50703fb000140086699b36d0d7d5f4c5220902",
+        "bytes": 196052
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIInteraction.o",
+        "sha256": "7b7be8fda6c1198d570a5a092c479e9e1a91422d23333e9dd9a4b5ef543639dd",
+        "bytes": 189024
+      },
+      "other_import_candidates": [
+        {
+          "path": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIInteraction.swiftmodule",
+          "sha256": "8f7eb6d7cf510a199f25f8e62f50703fb000140086699b36d0d7d5f4c5220902",
+          "bytes": 196052
+        }
+      ],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIObservableState",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIObservableState.swiftmodule",
+        "sha256": "a2f068025db1c8705e7f7e7f3bc9b17041439fba6956a3697e8afbcbe7a2f4dc",
+        "bytes": 342192
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIObservableState.o",
+        "sha256": "9cdc1ff0b65ad89e7895994a9042839030ddd19e87fbd3b953a1715591677b52",
+        "bytes": 254904
+      },
+      "other_import_candidates": [
+        {
+          "path": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIObservableState.swiftmodule",
+          "sha256": "a2f068025db1c8705e7f7e7f3bc9b17041439fba6956a3697e8afbcbe7a2f4dc",
+          "bytes": 342192
+        }
+      ],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIRasterCore",
+      "selected_module": {
+        "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUIRasterCore.swiftmodule",
+        "sha256": "c907425f15ddf034389d40c6f1b7672c0e851820894c5c4889c7fbcc22f9e4af",
+        "bytes": 146232
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUIRasterCore.o",
+        "sha256": "95c0429c3fc91ef30b69b52930ad2ec9bf050ca9bffe68cfb74175b117c4b7cf",
+        "bytes": 128424
+      },
+      "other_import_candidates": [],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIBackendIntegration",
+      "selected_module": {
+        "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUIBackendIntegration.swiftmodule",
+        "sha256": "ced85e7082ae50be7163664c39d904e552e4718b934c8d7f23595a78b669ec83",
+        "bytes": 132748
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUIBackendIntegration.o",
+        "sha256": "724d1d0de5bc9bdced7ef331f21765ce20e51f134acd2e60986d6f94573e750e",
+        "bytes": 153080
+      },
+      "other_import_candidates": [],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIRuntimeCore",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRuntimeCore.swiftmodule",
+        "sha256": "254a04d7f4e8083cb9f76160fa0b62c79c942765571dae94007fe230c83af3bd",
+        "bytes": 351324
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRuntimeCore.o",
+        "sha256": "cdf2603a4e5aa2bae6ace429ebff1971d88085176f8e4db625e6fce839fe72c6",
+        "bytes": 323040
+      },
+      "other_import_candidates": [
+        {
+          "path": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeCore.swiftmodule",
+          "sha256": "254a04d7f4e8083cb9f76160fa0b62c79c942765571dae94007fe230c83af3bd",
+          "bytes": 351324
+        }
+      ],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "P08CounterTable",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/P08CounterTable.swiftmodule",
+        "sha256": "5a447e5a8b47cc267f20cf553b3e843e7c9bb26974b3a4624f8a972628c48e15",
+        "bytes": 34628
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/P08CounterTable.o",
+        "sha256": "ebacc0b71773808fad2811f6ac13aa8127bffcbd5289b8ac2258f844684cd898",
+        "bytes": 12656
+      },
+      "other_import_candidates": [],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIHostConfiguration",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIHostConfiguration.swiftmodule",
+        "sha256": "d672c74375745254d91c70a05e005ffaf35df05c51c72170d6aff925c301d282",
+        "bytes": 553092
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIHostConfiguration.o",
+        "sha256": "a053c1c00459783940052f6d4385ef897f6d21ad84d78cbd594d8e385370c835",
+        "bytes": 731488
+      },
+      "other_import_candidates": [
+        {
+          "path": ".build/contracts/p08-scoped-host-7gj3vxnl/GiftUIHostConfiguration.swiftmodule",
+          "sha256": "d672c74375745254d91c70a05e005ffaf35df05c51c72170d6aff925c301d282",
+          "bytes": 553092
+        }
+      ],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIRuntimeDynamic",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRuntimeDynamic.swiftmodule",
+        "sha256": "f079602f5290c6473279413b7c885341c7c95b3fbe781a0f17a6eb4ce0fd618e",
+        "bytes": 232880
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRuntimeDynamic.o",
+        "sha256": "997ac28acb8a683425cde8999e024e232f0b010ffac34acdffa4c99a463f4454",
+        "bytes": 250280
+      },
+      "other_import_candidates": [
+        {
+          "path": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeDynamic.swiftmodule",
+          "sha256": "f079602f5290c6473279413b7c885341c7c95b3fbe781a0f17a6eb4ce0fd618e",
+          "bytes": 232880
+        }
+      ],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "GiftUIRuntimeStatic",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRuntimeStatic.swiftmodule",
+        "sha256": "16ba22bf3fcb8e8387dfae1aba144c9481034d3aabcce5f94ddc10ae79a2f1b8",
+        "bytes": 134132
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/GiftUIRuntimeStatic.o",
+        "sha256": "ade0e22d6dbb21af6e65f2bc62e82f7d0e6368d7ca8875a4d33662938a82f3e5",
+        "bytes": 284984
+      },
+      "other_import_candidates": [
+        {
+          "path": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static/GiftUIRuntimeStatic.swiftmodule",
+          "sha256": "16ba22bf3fcb8e8387dfae1aba144c9481034d3aabcce5f94ddc10ae79a2f1b8",
+          "bytes": 134132
+        }
+      ],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    },
+    {
+      "module": "P08CounterRuntime",
+      "selected_module": {
+        "path": ".build/contracts/p08-counter-npoej3u2/P08CounterRuntime.swiftmodule",
+        "sha256": "0ba2801a0e1ae7c1991ccc0002a92bfc0975f8cba1719654c85f862afd5a0dc5",
+        "bytes": 1539328
+      },
+      "selected_object": {
+        "path": ".build/contracts/p08-counter-npoej3u2/P08CounterRuntime.o",
+        "sha256": "fa83a40d93b8aaca81c1f3ccf2a443cc51585695d1c5ca2b75fccdcdcee6b393",
+        "bytes": 2543832
+      },
+      "other_import_candidates": [],
+      "selection": "first exact module in unchanged retained compiler -I order"
+    }
+  ],
+  "source_identity": {
+    "path": ".build/contracts/p08-counter-npoej3u2/result.json",
+    "sha256": "6850a3f150938e2a755f2260c94c42d7f103b0110639599a27925ba377b8ecb8",
+    "bytes": 8548218
+  },
+  "retained_runtime_command_index": 18
+}
