@@ -1,0 +1,42 @@
+{
+  "cache_membership_matches": true,
+  "controller_executions": 0,
+  "controller_sha256": "addaec7dd91ed31c9faa3f2d0f81f085a59f6fd8a167f234cf98a11d7a483688",
+  "header_bytes": 0,
+  "header_candidates": 0,
+  "imports": [
+    "hashlib",
+    "json",
+    "os",
+    "re",
+    "resource",
+    "signal",
+    "socket",
+    "ssl",
+    "sys",
+    "time"
+  ],
+  "markers_each": "1/1 consumed",
+  "network_operations": 0,
+  "preserved_dirty_and_cache_hashes": {
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": true,
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": true,
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": true,
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": true,
+    "scripts/nrf52840/build.sh": true,
+    "scripts/raspberry-pi/build.sh": true
+  },
+  "preserved_marker_identities": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": true,
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": true,
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": true
+  },
+  "prior_API_GET": "1/1 consumed",
+  "repairs": 0,
+  "result_directory_exists": false,
+  "retries": 0,
+  "runtime_lock_sha256": "c01087dca4038901dd6f417d836345abb6ca45e35ac4006aaf65f23254abc59a",
+  "status": "offline source preparation only; readiness NOT READY",
+  "syntax_ast_parse": "PASS; no import or execution of controller",
+  "validation_limits": "Static syntax/import/preservation checks only; no behavioral controller tests or transport validation. Independent review required."
+}
