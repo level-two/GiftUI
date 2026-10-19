@@ -1,0 +1,23 @@
+{
+  "actual_exit": 0,
+  "bytes_observed": 2944589,
+  "bytes_retained": 2944589,
+  "condition": null,
+  "exception": null,
+  "finished_monotonic": 9.029059125,
+  "id": "system-image-identities",
+  "passed_capture_only": true,
+  "raw": {
+    "system-image-identities.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "system-image-identities.stdout": {
+      "bytes": 2944589,
+      "sha256": "3c05b9f22facbe4e624915e637e13dfc9ba6bed21e92f89413db7f5a69f88cba"
+    }
+  },
+  "raw_truncated_or_incomplete": false,
+  "spawned": true,
+  "stage": "I"
+}

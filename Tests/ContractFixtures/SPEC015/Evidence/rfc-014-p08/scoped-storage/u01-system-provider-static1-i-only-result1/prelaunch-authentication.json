@@ -1,0 +1,20 @@
+{
+  "all_source_dirty_cache_hashes_checked": true,
+  "cache_members": 15,
+  "direct_files": 203,
+  "identity_input_joins": {
+    "I_output_semantically_parsed": false,
+    "S_authorized": false,
+    "authenticated_retained_input_correspondence": true,
+    "cache_UUID_field_decoded": false,
+    "cache_header_schema_authenticated": false,
+    "linked_system_import_joins": true,
+    "ordinary_counter_loaded_identity_complete": false,
+    "reason": "No applicable independently justified cache-header schema; I raw requires independent interpretation; both S commands skipped regardless of I bytes.",
+    "strict_cold_eligible": false,
+    "supplemental_report_path_arch_UUID_OS_joins": true
+  },
+  "loader_roots": 3,
+  "monotonic": 5.028289208,
+  "passed": true
+}

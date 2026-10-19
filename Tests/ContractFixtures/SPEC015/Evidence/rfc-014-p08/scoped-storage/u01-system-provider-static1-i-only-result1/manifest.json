@@ -1,0 +1,75 @@
+{
+  "archive": "u01-system-provider-static1-i-only-result1",
+  "evidence_kind": "complete one-shot U01 system-provider I-only output",
+  "manifest_note": "Members enumerate every file copied from the source packet. This manifest and README are archive navigation metadata and are not source packet members.",
+  "members": [
+    {
+      "bytes": 1340,
+      "path": "attempt-consumed.json",
+      "sha256": "bbaed3ddb765de7835b231417be85b545e6cd45684dbdfdd7857651af5aae685"
+    },
+    {
+      "bytes": 765,
+      "path": "prelaunch-authentication.json",
+      "sha256": "5b8a632633c347b1bdf11b846ea0e8cf5716bc42c2a19933c052e30c0d6aec5b"
+    },
+    {
+      "bytes": 1648,
+      "path": "provider-gate.json",
+      "sha256": "0c92562bed54d6f7c59f217985e0fca5a39a11560d8204474551d5f0d0d6174e"
+    },
+    {
+      "bytes": 162,
+      "path": "system-c-body-data.exit.json",
+      "sha256": "0e637393d0470ef8217a5f1d32d6a3657faf1f19f407412e24be43f3ed2bcdca"
+    },
+    {
+      "bytes": 765,
+      "path": "system-image-identities-authentication.json",
+      "sha256": "7112be489343b1c883b46036249edddf7cace651e0b352abfafbf5591ffd3d2e"
+    },
+    {
+      "bytes": 1418,
+      "path": "system-image-identities.claim.json",
+      "sha256": "054f85ad167276ec53f49c4e81de7b766d020ac00fc37ba1421106c2ff77ad96"
+    },
+    {
+      "bytes": 618,
+      "path": "system-image-identities.exit.json",
+      "sha256": "eb0c61077b7fbef239c0dc6ec575eb0456a7b197245b11cf82906e6b0d0ca3c1"
+    },
+    {
+      "bytes": 164,
+      "path": "system-image-identities.record-check.json",
+      "sha256": "612754b5bb35abff682514792427100bf50a1bfc8172e5c2d30ebccb81c75777"
+    },
+    {
+      "bytes": 139,
+      "path": "system-image-identities.start.json",
+      "sha256": "852fbe263d006ccbcf66c4821e3811bdfd3bda9a2cc81752692a5489a1c287e2"
+    },
+    {
+      "bytes": 0,
+      "path": "system-image-identities.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 2944589,
+      "path": "system-image-identities.stdout",
+      "sha256": "3c05b9f22facbe4e624915e637e13dfc9ba6bed21e92f89413db7f5a69f88cba"
+    },
+    {
+      "bytes": 166,
+      "path": "system-swift-body-data.exit.json",
+      "sha256": "16a580cde4970fb8ce059cfea3bfebd365ebdfd43b184d84f6dfdc18f3641161"
+    },
+    {
+      "bytes": 1350,
+      "path": "terminal.json",
+      "sha256": "f69e78cd43dfcee1689cb477d1bd082f9e88e0ce0544748a553b390b774d6319"
+    }
+  ],
+  "raw_source_file_count": 13,
+  "raw_source_total_bytes": 2953124,
+  "source": ".build/contracts/p08-u01-system-provider-static1"
+}

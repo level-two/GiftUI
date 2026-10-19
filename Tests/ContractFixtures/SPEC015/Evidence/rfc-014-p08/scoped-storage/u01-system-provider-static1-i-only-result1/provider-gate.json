@@ -1,0 +1,37 @@
+{
+  "I_raw_receipts": [
+    "system-image-identities.exit.json"
+  ],
+  "S_authorized": false,
+  "identity_input_joins": {
+    "I_output_semantically_parsed": false,
+    "S_authorized": false,
+    "authenticated_retained_input_correspondence": true,
+    "cache_UUID_field_decoded": false,
+    "cache_header_schema_authenticated": false,
+    "linked_system_import_joins": true,
+    "ordinary_counter_loaded_identity_complete": false,
+    "reason": "No applicable independently justified cache-header schema; I raw requires independent interpretation; both S commands skipped regardless of I bytes.",
+    "strict_cold_eligible": false,
+    "supplemental_report_path_arch_UUID_OS_joins": true
+  },
+  "monotonic": 9.031178166,
+  "policy": {
+    "I_launch_enabled": true,
+    "S_launch_enabled": false,
+    "cache_header_schema_authenticated": false,
+    "cache_uuid_field_offset": null,
+    "cache_uuid_parser": null,
+    "expected_os_build": "25G83",
+    "expected_os_version": "26.6.2",
+    "expected_supplemental_cache_uuid": "f2e86c53-6052-388b-ba71-5a0c9b569413",
+    "mode": "STOP_AFTER_I_CACHE_SCHEMA_UNESTABLISHED",
+    "old_B_retargeted": false,
+    "ordinary_counter_loaded_identity_complete": false,
+    "reason": "Retained evidence authenticates literal known UUID bytes at 0x58, not applicable cache-header field semantics. No independently justified applicable schema is frozen. This controller cannot release S under any I output.",
+    "schema": 1,
+    "schema_evidence": []
+  },
+  "reason": "No applicable independently justified cache-header schema exists. I output cannot release S.",
+  "verdict": "STOP_cache_schema_unestablished"
+}

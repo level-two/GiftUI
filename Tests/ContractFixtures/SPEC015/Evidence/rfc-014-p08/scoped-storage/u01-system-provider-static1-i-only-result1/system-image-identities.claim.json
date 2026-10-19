@@ -1,0 +1,45 @@
+{
+  "aggregate_deadline": 240.007044083,
+  "authentication": "system-image-identities-authentication.json",
+  "command": {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dyld_info",
+      "-arch",
+      "arm64e",
+      "-uuid",
+      "-platform",
+      "-linked_dylibs",
+      "-exports",
+      "-imports",
+      "-function_starts",
+      "-function_variants",
+      "/usr/lib/swift/libswiftCore.dylib",
+      "/usr/lib/libSystem.B.dylib",
+      "/usr/lib/system/libsystem_c.dylib",
+      "/usr/lib/system/libsystem_platform.dylib"
+    ],
+    "cwd": "/Users/eugene/work/GiftUI",
+    "environment": {
+      "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+      "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
+      "HOME": "/Users/eugene",
+      "LC_CTYPE": "C.UTF-8",
+      "LOGNAME": "eugene",
+      "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+      "TMPDIR": "/private/tmp",
+      "USER": "eugene"
+    },
+    "executed": false,
+    "id": "system-image-identities",
+    "max_combined_output_bytes": 16777216,
+    "max_wall_seconds": 60,
+    "stage": "I",
+    "tool": {
+      "bytes": 354688,
+      "exists": true,
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dyld_info",
+      "sha256": "af56890ce0c564d0df60929914018f484a75db2a42011acda629b39ce2c66aeb"
+    }
+  },
+  "monotonic": 8.984728458
+}

@@ -1,0 +1,8 @@
+{
+  "actual_exit": null,
+  "id": "system-c-body-data",
+  "reason": "STOP_cache_schema_unestablished",
+  "spawned": false,
+  "stage": "S",
+  "status": "skipped"
+}
