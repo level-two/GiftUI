@@ -5,8 +5,10 @@ The [U01-only retained-byte result](../../../Tests/ContractFixtures/SPEC015/Evid
 resolves both actual Text callbacks, local outlined helpers and selected no-throw
 error-transfer feasibility. The unconditional Error metadata lookup's cold path,
 numeric aligned temporary storage and linked/runtime/library evidence remain open.
-Independent U01 review, then separately bounded U01 residual preparation is next;
-U02–U05 retain the [independently reviewed interpretation's open dispositions](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review.md).
+The [independent U01 review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review.md)
+passes bounded attribution and the STOP disposition. One separate U01 R01–R04
+runtime/linked evidence request is next: preparation only, with no acquisition
+or execution allowance. U02–U05 retain the [independently reviewed interpretation's open dispositions](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review.md).
 `strict_cold_eligible` remains false. No compiler, runtime, strict-cold, source
 repair or new collection allowance follows. Collection1/1 is consumed,
 repairs0/retries0; P08/R07/T8.1 and all remaining gates stay open. The collection

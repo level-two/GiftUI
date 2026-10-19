@@ -1,0 +1,241 @@
+{
+  "callback": {
+    "apply_or_throw_or_allocation_instructions": 0,
+    "blocks": 20,
+    "cond_fail_sites": 6,
+    "end_line": 601687,
+    "line": 601530,
+    "symbol": "$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_"
+  },
+  "collection_boundary_unchanged": {
+    "automatic_source_repairs": 0,
+    "automatic_tooling_repairs": 0,
+    "collection_attempts": 1,
+    "marker_identity": [
+      16777234,
+      29640436
+    ],
+    "retries": 0
+  },
+  "complete_emitted_decoder_checks": [
+    {
+      "calls": 0,
+      "error_register_references": 0,
+      "header_line": 202368,
+      "instruction_count": 48,
+      "module": "P08CounterRuntime",
+      "next_header_line": 202418,
+      "sp_references": 0
+    },
+    {
+      "calls": 0,
+      "error_register_references": 0,
+      "header_line": 42293,
+      "instruction_count": 48,
+      "module": "GiftUISemanticCore",
+      "next_header_line": 42343,
+      "sp_references": 0
+    }
+  ],
+  "exact_target_headers": [
+    {
+      "address": "0000000000000874",
+      "line": 634,
+      "module": "GiftUI",
+      "symbol": "_$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF"
+    },
+    {
+      "address": "000000000000af24",
+      "line": 21405,
+      "module": "GiftUIReferenceTextResources",
+      "symbol": "_$ss15withUnsafeBytes2of_q0_x_q0_SWq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF"
+    },
+    {
+      "address": "0000000000021e70",
+      "line": 42293,
+      "module": "GiftUISemanticCore",
+      "symbol": "_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_"
+    },
+    {
+      "address": "00000000000a429c",
+      "line": 202368,
+      "module": "P08CounterRuntime",
+      "symbol": "_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_"
+    }
+  ],
+  "exact_target_headers_match": true,
+  "exact_target_symbol_inventory_matches": true,
+  "frozen_file_sha256": {
+    "Sources/GiftUI/BoundedText.swift": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce",
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-disassembly.stdout": "c3e296adc9a2b91e7570999b440be1e6e2697188f0b0b0cb0dc51a998e02df7c",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-symbols.stdout": "2c660b94df670062667b5ebbc9ddc781e2f02e816ee11420f4919bce8de5ec7d",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-disassembly.stdout": "35d707d859d6029d113626344f7baaee8fe46b8a91d79813ca59403ba88fada2",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-symbols.stdout": "6d36a8049cc68721dbbe77c47012793cf1e44eb143d343a8ea13260eb2eaeddc",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-disassembly.stdout": "9f89a454e85ae8cdaf61b1a2a2cf6a4deeb9ab1b66e1edaeec9d6808422c9276",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-symbols.stdout": "bed4f6d25c7e20721f0d4ad9d892e74d8d263ecde9d4a011f8b945c35a3ca667",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-disassembly.stdout": "400c6d1d9644c8f1951b8dd87f5ddc52bb1970e0862707b9bfc84da79248c5b2",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-symbols.stdout": "359b6b7b8392956274f0bcb52e89c71c08e44750fccdb03e0eb449f7fc8e220a",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-disassembly.stdout": "c870475b0dc34e2ded57218052083151daa42b1c001e9941989fd92f4639bf91",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-symbols.stdout": "2aea66575a9ec5572756f7d43b61fad53f4447cd9a746dda7dfc663b36040af6",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-disassembly.stdout": "3bc854e5ce88884be1933cf79079f628dc109116755a15e7fd1874adc4386735",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-symbols.stdout": "a3fc2f35a2ab345fe9efdd7662a3416edc53805136929cf532a06e8cdf67bd13",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-disassembly.stdout": "566c344c5b586802b2a25f1ca6ca7f5d641bb1510dc9630568f0a95636790c89",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-symbols.stdout": "a4a06674a2c0ea1ad051b5a502e1c879413626adac77f6daa99ac9cb92b02443",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-disassembly.stdout": "c9590dcc1d56ad375ac85e18220adc78cb188c925292c44733ec354f9c5048f5",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-symbols.stdout": "c6f037b559d3c77f35dc135f15726bf70ebcafb29b04394686cdd81bde4ebfa4",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-disassembly.stdout": "771dc671e0b3780a1b9a67fef3ce02f12acaa4bba22a14b6a7fcb9cc929bf032",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-symbols.stdout": "b67a2eace99806e37257f667f9a6f766451ff18f1aeb4c3d293ed311e46c043c",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-disassembly.stdout": "716854c7cc1a98bc02c16590b89744764fe8dd0c600aca0600fafda8abfcc137",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-symbols.stdout": "ad92675dbf22f2790065f00c086bdab98e495876e70ee79a9731864d4217a194",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-disassembly.stdout": "9acd925d033115bd941debd5a226239949e97e4da77f3c187ddfa95f25cca97f",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-symbols.stdout": "9e34f715c66f11f52359ed5457981f4c65cd8d9ef5c03a86d7780be1b22bfeb1",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-disassembly.stdout": "d2235334b93d736c4cf9a6d4dfb03770b092e88afacf62f7fd5e54e48a5be31d",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-symbols.stdout": "b3454ab96cac2d6b91dd2b681d875b90ec04a5437f0d7df4296c497a806a2dc6",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-disassembly.stdout": "e828edc7951785ef8d23e00f73fa74cc0be52c996870c40b845b498d89f4f5f6",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-symbols.stdout": "0a2fcbc2a2427ac2c06af89ac0bfa8a0c728f76b94127a8046a22b5a213d8ffb",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-disassembly.stdout": "dc8f9e5c44b8e2bf1d90767460ce3b4c383c206b374423a259f9990bfacab7f9",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-symbols.stdout": "45497e731615ab4407a20c816cd33c3ac45452f315e6fc34f1bb60eef67570e2",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-disassembly.stdout": "4cbfd465a411a90fe44af0a59b1f2a5f4e104ee1f4851f8eac96ecef20da0093",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-symbols.stdout": "e6d4afa997fdff0ae91d18bc1cd26435828aeba4d32f53b6428ce764f8b897aa",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-disassembly.stdout": "06324e4dd7ea480371cbfcfc9f5395a033000ce7bcba002833d5b3725f89006c",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-symbols.stdout": "911145ad5cd7f2a44f81dc4d97c220a12e681c5b0e576d4f576f409f3f3b0879",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-disassembly.stdout": "8f6a6fa8ed67e4e0699d55ff4c2242ab7d6e2f70253ea4ae3c2b6c9955984e1e",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-symbols.stdout": "c2a6ae8c0765c3b4c5039fe4c9944714beee9a223e705fdb6d132966b9194179",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-disassembly.stdout": "54b77ee1c145f293a78fa8b18423f11efd8873b495eb67ef485a3059d2159b65",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-symbols.stdout": "f518c968a3dd48413be74570954fe64d8feb97369f773ec1b154f6d49730c27e",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-disassembly.stdout": "808f12f81e643cc6c9bfebe1abed9fa2faedc4c2287d0fa6f1bb82ceb22306b6",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-symbols.stdout": "368408887e33f34676d272044029ef16fc27cde82623054afb2d2e56d4800cc1",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-disassembly.stdout": "9b362e3a97cbbf6392162f9e8cc183fc1e51b5406ec2f1631eb4662c5fe4589e",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-symbols.stdout": "0be7989d8d408fc92f9c778e0ff9853325e4731f702ff4cbbbffdd5fed339f30",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-disassembly.stdout": "c56b9e961a473e9d196c659b1851ffd3c8d91baba76f4fbc586850f903c2a8c3",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-symbols.stdout": "3c4ac6df9682d2b1cf78862b80222cefcb0abec0d241af9960ac68cd834c2417",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-disassembly.stdout": "7c3ad980048659206089608608efa458f825aa17911d7737f606f3c9eba4e927",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-symbols.stdout": "331f22802cd15e56746c91476ff89651bf1f8d79913d03bb46b4ece4b2070918",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-disassembly.stdout": "8371140b87d30015cf0b277045ec1b8a5813c26ce5709d55e163917b3e4c3362",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-symbols.stdout": "b391ad57a0f68b4bec189bd154ba4952695fe39bb4eb18d6e62042cc1a0a2b90",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-disassembly.stdout": "89f0249e070e57c36da79bba4ba4e2f8dc79660fb86e2385196791b52e81949f",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-symbols.stdout": "53d0b6492a9eeb6e06805e540746eaa6a7d7e0993e26d56831f4daa3ff2e6ba4",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-disassembly.stdout": "796eab16c92b4326e9a85f0a874856f38c76fa302dded343ec9eb93789836905",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-symbols.stdout": "973a5273f10deb02e35524570d158ce73c79bde32358fb6b353db0616f82001a",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/actual-host.sil": "6cc9e7b6cecbeb46dd71b2ac8b6e023182354e7fcc08c814374b9c23303c71ed",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/boundary-physical-index.json": "9b67676aa047e5d4b8f654854f518acacde3c526f3c9229fdba4b4f2f7174298",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/required-bodies.json": "907d583bc6b6a43457ec57d30d778dbed41e51682f96b41b2f1ef81ee6892070",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/terminal.json": "41c38e4ececed6f5cbd91d6eb2387642e316752ff61d7928a7b1633302a8cf2a",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/README.md": "e4dbd6e6e7facb2ba4832940c0c229ca2655f4b6c70d89ea057b756fcfd58b63",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review-inspection.json": "b7e7575bcdb375e1068b1e4f648ecb154449c91da45c377dbd0bd2fa29ffa0cd",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review.md": "c4374687e404be2e3c3de8e73f4ad199a7bed4219972f64d03aa2a97a2b6c2ee",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/inspect.py": "3c57b50bfc4cc5147d4b1e1ed767e06b0a26d343315ef4c6e39d6b290a696d18",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/inspection-summary.json": "409fc3fa3ddf82a9a53d8ff00a1c76bdf48e4eacf961e7a9a28eb7eb4a540a58",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/object-inventory.json.gz": "87df0a548b79008aa0935788900ccebad58d1676c6bc4118bc7939e6af1b7c0b",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/privacy-control-join.json": "c56528a7688fce44b7e89a637fb344c2d24d5533df73e196848a237f30138072",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/required-body-join.json": "c5b1b4d1057fe3aed16d5f72ff835be6b948fcaf282869069b490369251e3caa",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/sil-inventory.json.gz": "e433fbd2a2eb08e248b65f1c605bb6be94e3f6086c08904170efc754a31f7b8a",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/preserved-dirty-files.json": "00e65144643e2ddc66cf923b902192eb8afc9e4a6ecd0afe4082af7fc4634489",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/source42.json": "27248b41a5f120471f6b6092ff27c1b01e076a92d9e2c61561bada91d59b0df9"
+  },
+  "method": "Independent standard-library SHA-256/JSON/raw text parsing, read-only Git blob comparison, and manual complete instruction/dataflow review; author extractor read only, not executed or imported.",
+  "numbered_excerpt_spans_verified": [
+    [
+      "actual-host.sil",
+      598688,
+      598706
+    ],
+    [
+      "actual-host.sil",
+      600938,
+      600956
+    ],
+    [
+      "actual-host.sil",
+      601528,
+      601696
+    ],
+    [
+      "GiftUI-disassembly.stdout",
+      552,
+      693
+    ],
+    [
+      "GiftUI-disassembly.stdout",
+      18434,
+      18441
+    ],
+    [
+      "GiftUI-disassembly.stdout",
+      18681,
+      18688
+    ],
+    [
+      "P08CounterRuntime-disassembly.stdout",
+      200608,
+      200639
+    ],
+    [
+      "P08CounterRuntime-disassembly.stdout",
+      202029,
+      202058
+    ],
+    [
+      "P08CounterRuntime-disassembly.stdout",
+      202368,
+      202418
+    ],
+    [
+      "P08CounterRuntime-disassembly.stdout",
+      222471,
+      222478
+    ],
+    [
+      "P08CounterRuntime-disassembly.stdout",
+      226670,
+      226676
+    ],
+    [
+      "GiftUISemanticCore-disassembly.stdout",
+      42293,
+      42350
+    ],
+    [
+      "GiftUIReferenceTextResources-disassembly.stdout",
+      21405,
+      21441
+    ]
+  ],
+  "ordinary_abi_serialized_index_matches": [
+    {
+      "basic_blocks": 0,
+      "function_id": 399,
+      "module": "GiftUI",
+      "name": "$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF",
+      "serialized_kind": 0
+    },
+    {
+      "basic_blocks": 0,
+      "function_id": 704,
+      "module": "GiftUISemanticCore",
+      "name": "$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF",
+      "serialized_kind": 0
+    }
+  ],
+  "packet_file_sha256": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/README.md": "a2d66b770ecadaec9b487b7e1e7b9f84629807586631261a3dd81089498b7f65",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/inspect.py": "3d66799affbcc9b45d4885fc36d9ba687b1a3b38977dd04d150ad826da3a83ff",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/inspection.json": "6d9fc972cfbe4825d1bffe508657b1ee8dbb6bf75e698e6f234fc16092383a44",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/retained-excerpts.txt": "6ffc059c6584521e885b6d2252f49a398513a5b90d7ce83bdf2dbed7421d7ff0"
+  },
+  "preexisting_cache_file_sha256": {
+    "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+  },
+  "preserved_dirty_file_sha256": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+    "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+    "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+  },
+  "reviewed_commit": "008ffe6b7d5b1d193c95136181034ffcba88e23e",
+  "source42_hashes_match": true,
+  "strict_cold_eligible": false,
+  "verdict": "PASS_bounded_U01_attribution_and_STOP_disposition"
+}
