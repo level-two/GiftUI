@@ -1,0 +1,47 @@
+{
+  "aggregate_deadline": 360.007089375,
+  "authentication": "counter-metadata-authentication.json",
+  "command": {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool-classic",
+      "-arch",
+      "arm64",
+      "-hv",
+      "-l",
+      "-L",
+      "-Iv",
+      "-dyld_info",
+      "-chained_fixups",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter"
+    ],
+    "cwd": "/Users/eugene/work/GiftUI",
+    "environment": {
+      "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+      "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
+      "HOME": "/Users/eugene",
+      "LC_CTYPE": "C.UTF-8",
+      "LOGNAME": "eugene",
+      "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+      "TMPDIR": "/private/tmp",
+      "USER": "eugene"
+    },
+    "executed": false,
+    "id": "counter-metadata",
+    "input": {
+      "bytes": 6602168,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/counter",
+      "sha256": "12d51381b0a776a3a05c60aa3f97b732a0490434435194d6eda0e29ef0d89242"
+    },
+    "max_combined_output_bytes": 8388608,
+    "max_wall_seconds": 60,
+    "stage": "A",
+    "tool": {
+      "bytes": 472320,
+      "exists": true,
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool-classic",
+      "sha256": "6beb1ad9c4fb7edafd59fddcb093f358f9a250bfe1db2db9f04ed1aacd523a69"
+    }
+  },
+  "monotonic": 4.924077375
+}

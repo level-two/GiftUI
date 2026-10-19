@@ -1,0 +1,41 @@
+{
+  "aggregate_deadline": 360.007089375,
+  "authentication": "counter-symbols-authentication.json",
+  "command": {
+    "argv": [
+      "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/bin/llvm-nm-21",
+      "--numeric-sort",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/counter"
+    ],
+    "cwd": "/Users/eugene/work/GiftUI",
+    "environment": {
+      "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+      "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
+      "DYLD_LIBRARY_PATH": "/Users/eugene/work/GiftUI/.toolchains/p08-serialization-decoder/prefix/lib",
+      "HOME": "/Users/eugene",
+      "LC_CTYPE": "C.UTF-8",
+      "LOGNAME": "eugene",
+      "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+      "TMPDIR": "/private/tmp",
+      "USER": "eugene"
+    },
+    "executed": false,
+    "id": "counter-symbols",
+    "input": {
+      "bytes": 6602168,
+      "exists": true,
+      "path": ".build/contracts/p08-counter-npoej3u2/counter",
+      "sha256": "12d51381b0a776a3a05c60aa3f97b732a0490434435194d6eda0e29ef0d89242"
+    },
+    "max_combined_output_bytes": 16777216,
+    "max_wall_seconds": 60,
+    "stage": "A",
+    "tool": {
+      "bytes": 169024,
+      "exists": true,
+      "path": ".toolchains/p08-serialization-decoder/prefix/bin/llvm-nm-21",
+      "sha256": "96b2f58cd612d5489d23b75ec90da345f924cd8f893523c05a22b992a32360ff"
+    }
+  },
+  "monotonic": 6.687971666
+}

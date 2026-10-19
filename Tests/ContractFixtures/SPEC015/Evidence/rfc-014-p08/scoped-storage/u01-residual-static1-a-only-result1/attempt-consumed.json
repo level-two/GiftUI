@@ -1,0 +1,28 @@
+{
+  "aggregate_deadline": 360.007089375,
+  "attempts_consumed": 1,
+  "external_pins": {
+    "commit": "09bdc1f9b3d45628c830234834146fd8492a526e",
+    "files": {
+      "controller-accounting.json": "897069c9d215bdf07ed176778e08fb64b0b4c5c41026d142eba54b4e065a866f",
+      "controller-inputs.json": "fa3316fc1df57c5e33f4cf1d41a4bb5ad056652829297063431abfe296c99122",
+      "controller.py": "b4c791218df1377f75fa0c1969e1ae0870e7071a7a21791a1397ff5644266b30",
+      "gate-policy.json": "24589ec26a5a91c378449453e14711f2bbedd78c991f1fac700c763262f8feb5",
+      "loader-aliases.json": "0b89de91542996f265691146ca4cfd0add9b7a740b4680e83858e56b238aa05d",
+      "loader-policy.json": "3338d16f794b10b878013cb200ef51adc4723f6a34bcf3bd5384b3972a7be8f3",
+      "loader-roots.json": "a4d838770cfbe08c24cabaa386e5654d9bc05b2e711af9011e618c72bb9c2229",
+      "request.json": "f573f07ff8a1352e6f2d0a3d9866d4f01b8447edb8000e4ae1dea339f3714ea2",
+      "reviewed-launch.py": "69b5953ae80715ddc633859353b18a8ae2d857be18969118e3e2a45ddb99ac58"
+    },
+    "packet_tree": "eb6cec9c672c2584575f12cffcf579477e5e5a8d",
+    "repository_tree": "be198347f9455de4d531028f739b72af931d1cca"
+  },
+  "historical_collection_marker_untouched": true,
+  "marker_identity": [
+    16777234,
+    29650609
+  ],
+  "repairs": 0,
+  "retries": 0,
+  "started_monotonic": 0.007089375
+}

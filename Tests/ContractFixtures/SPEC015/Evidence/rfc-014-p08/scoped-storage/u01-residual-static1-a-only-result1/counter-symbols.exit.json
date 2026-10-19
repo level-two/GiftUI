@@ -1,0 +1,23 @@
+{
+  "actual_exit": 0,
+  "bytes_observed": 3483980,
+  "bytes_retained": 3483980,
+  "condition": null,
+  "exception": null,
+  "finished_monotonic": 6.768478958,
+  "id": "counter-symbols",
+  "passed_capture_only": true,
+  "raw": {
+    "counter-symbols.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "counter-symbols.stdout": {
+      "bytes": 3483980,
+      "sha256": "604eeeaa71f1ac5b271f77d8e39820d55c879f6241284ab3cb642bef4761fdea"
+    }
+  },
+  "raw_truncated_or_incomplete": false,
+  "spawned": true,
+  "stage": "A"
+}

@@ -1,0 +1,88 @@
+{
+  "B_commands_skipped": true,
+  "aggregate_work_deadline_seconds": 360,
+  "attempts_consumed": 1,
+  "bytes_observed": 33770366,
+  "bytes_retained": 33770366,
+  "current_callee_pass": false,
+  "decoder_commands_spawned": 3,
+  "elapsed_seconds_including_authentication_and_gate": 9.26094675,
+  "outcomes": [
+    {
+      "actual_exit": 0,
+      "bytes_observed": 1307519,
+      "bytes_retained": 1307519,
+      "condition": null,
+      "exception": null,
+      "finished_monotonic": 4.935706666,
+      "id": "counter-metadata",
+      "passed_capture_only": true,
+      "raw": {
+        "counter-metadata.stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "counter-metadata.stdout": {
+          "bytes": 1307519,
+          "sha256": "9aa429f57837b45c8c2c7f8afa2f360f6fc214a1390e2831a293572965e90aea"
+        }
+      },
+      "raw_truncated_or_incomplete": false,
+      "spawned": true,
+      "stage": "A"
+    },
+    {
+      "actual_exit": 0,
+      "bytes_observed": 3483980,
+      "bytes_retained": 3483980,
+      "condition": null,
+      "exception": null,
+      "finished_monotonic": 6.768478958,
+      "id": "counter-symbols",
+      "passed_capture_only": true,
+      "raw": {
+        "counter-symbols.stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "counter-symbols.stdout": {
+          "bytes": 3483980,
+          "sha256": "604eeeaa71f1ac5b271f77d8e39820d55c879f6241284ab3cb642bef4761fdea"
+        }
+      },
+      "raw_truncated_or_incomplete": false,
+      "spawned": true,
+      "stage": "A"
+    },
+    {
+      "actual_exit": 0,
+      "bytes_observed": 28978867,
+      "bytes_retained": 28978867,
+      "condition": null,
+      "exception": null,
+      "finished_monotonic": 9.264901125,
+      "id": "counter-body-data",
+      "passed_capture_only": true,
+      "raw": {
+        "counter-body-data.stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "counter-body-data.stdout": {
+          "bytes": 28978867,
+          "sha256": "914f309f3b54da8c36e5c29b520d049d2ea4e3c74c0653e751fc46cf41ecc5a7"
+        }
+      },
+      "raw_truncated_or_incomplete": false,
+      "spawned": true,
+      "stage": "A"
+    }
+  ],
+  "p08_closed": false,
+  "r07_closed": false,
+  "repairs": 0,
+  "retries": 0,
+  "status": "STOP_provider_proof_unestablished",
+  "strict_cold_eligible": false,
+  "t8_1_closed": false
+}

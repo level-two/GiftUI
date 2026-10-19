@@ -1,0 +1,8 @@
+{
+  "actual_exit": null,
+  "id": "toolchain-core-body-data",
+  "reason": "STOP_provider_proof_unestablished",
+  "spawned": false,
+  "stage": "B",
+  "status": "skipped"
+}
