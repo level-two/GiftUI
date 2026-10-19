@@ -1,16 +1,18 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current P08 boundary — **three exact dyld header candidates absent; independent presence review PASS; full callee/safety STOP**.
-The [independent bounded presence review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-header-presence1/independent-review.md)
-confirms stat/lstat ENOENT at all three authorized candidates, zero candidate
-bytes read and no broader search. The three-path inventory is finished; no
-cache schema/provider/ordinary loaded identity proof follows. Further schema
-evidence requires a separate concrete source/revision/provenance/applicability
-preparation with bounded operations/review/stops; no replacement source, broader
-hunt/acquisition, parser or execution is authorized here. S and old B stay closed.
-R01–R04, Error size/body costs, U02–U05, strict cold and P08/R07/T8.1 remain open.
-Three markers [16777234,29640436]/[16777234,29650609]/[16777234,29652748]
-remain unchanged, each1/1 consumed, repairs0/retries0; no allowance reset.
+Current P08 boundary — **official dyld schema-source preparation STOP; exact applicable revision missing; full callee/safety STOP**.
+The [bounded official-source preparation](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-schema-source1-preparation/README.md)
+starts at independent three-header absence review2e30b95a. One retained official
+metadata GET contains100 tags and no matching26.6.2/25G83 record on that page;
+no pagination/source substitution followed. Headers selected0/3, header bytes0;
+field semantics/build/cache applicability remain unestablished. Independent
+review is next; the exact single-ref successor is unexecuted and requires its
+own reviewed plan. No parser/controller/runtime/compiler/build/test/acquisition,
+repair/retry or new allowance follows. S and old B stay closed. R01–R04, ordinary
+loaded identity, Error size/body costs, U02–U05, strict cold and P08/R07/T8.1 stay
+open. Three markers [16777234,29640436]/[16777234,29650609]/[16777234,29652748]
+remain unchanged, each1/1 consumed, repairs0/retries0; five dirty files/cache
+match the prior review. No contract/scope or lifecycle change is proposed.
 
 Historical pre-collection checkpoint — **retained counter426 PASS; controller readiness PASS; collection unused 0/1**.
 The [retained macOS Static result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)

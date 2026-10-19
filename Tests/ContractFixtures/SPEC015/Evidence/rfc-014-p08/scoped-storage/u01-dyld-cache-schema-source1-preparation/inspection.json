@@ -1,0 +1,138 @@
+{
+  "baseline_commit": "2e30b95adc855546cd4547a739727c9d37cf5b76",
+  "cache_files": {
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": {
+      "matches_baseline": true,
+      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+    }
+  },
+  "cache_membership_matches_baseline": true,
+  "curl_exit_code": 0,
+  "curl_tool_reported_wall_seconds": 0.281097291,
+  "dirty_files": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": {
+      "matches_baseline": true,
+      "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": {
+      "matches_baseline": true,
+      "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3"
+    },
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": {
+      "matches_baseline": true,
+      "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243"
+    },
+    "scripts/nrf52840/build.sh": {
+      "matches_baseline": true,
+      "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72"
+    },
+    "scripts/raspberry-pi/build.sh": {
+      "matches_baseline": true,
+      "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+    }
+  },
+  "field_semantics_established": false,
+  "header_bytes_read": 0,
+  "header_candidates_selected": 0,
+  "markers": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": {
+      "identity": [
+        16777234,
+        29640436
+      ],
+      "matches_baseline": true
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": {
+      "identity": [
+        16777234,
+        29650609
+      ],
+      "matches_baseline": true
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": {
+      "identity": [
+        16777234,
+        29652748
+      ],
+      "matches_baseline": true
+    }
+  },
+  "matching_requested_release_tag_present": false,
+  "metadata_get_count": 1,
+  "metadata_response": {
+    "distribution-tags.headers": {
+      "bytes": 1478,
+      "sha256": "0882476addc240934a7db06052073bc05633e2570422bee52a949be9023d8a6f"
+    },
+    "distribution-tags.json": {
+      "bytes": 55838,
+      "sha256": "8e52205de326cf31289a8443ae889bc44b0a16c39e867247a0bad828ee435105"
+    }
+  },
+  "page_followed": false,
+  "relevant_26_tags": [
+    {
+      "commit": {
+        "sha": "83390100289cedfe669c31a96c94326d31afa1ed",
+        "url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/commits/83390100289cedfe669c31a96c94326d31afa1ed"
+      },
+      "name": "macos-265",
+      "node_id": "REF_kwDOGKbi-LNyZWZzL3RhZ3MvbWFjb3MtMjY1",
+      "tarball_url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/tarball/refs/tags/macos-265",
+      "zipball_url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/zipball/refs/tags/macos-265"
+    },
+    {
+      "commit": {
+        "sha": "9c3c91eadd7417bc51c2d6c7bdaf8ce7dd902101",
+        "url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/commits/9c3c91eadd7417bc51c2d6c7bdaf8ce7dd902101"
+      },
+      "name": "macos-264",
+      "node_id": "REF_kwDOGKbi-LNyZWZzL3RhZ3MvbWFjb3MtMjY0",
+      "tarball_url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/tarball/refs/tags/macos-264",
+      "zipball_url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/zipball/refs/tags/macos-264"
+    },
+    {
+      "commit": {
+        "sha": "2bd8ce075077e903664f8e54ab9321c4a5157053",
+        "url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/commits/2bd8ce075077e903664f8e54ab9321c4a5157053"
+      },
+      "name": "macos-263",
+      "node_id": "REF_kwDOGKbi-LNyZWZzL3RhZ3MvbWFjb3MtMjYz",
+      "tarball_url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/tarball/refs/tags/macos-263",
+      "zipball_url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/zipball/refs/tags/macos-263"
+    },
+    {
+      "commit": {
+        "sha": "412b1a8fa79a210830c8993e8b98755f90ff29ba",
+        "url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/commits/412b1a8fa79a210830c8993e8b98755f90ff29ba"
+      },
+      "name": "macos-262",
+      "node_id": "REF_kwDOGKbi-LNyZWZzL3RhZ3MvbWFjb3MtMjYy",
+      "tarball_url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/tarball/refs/tags/macos-262",
+      "zipball_url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/zipball/refs/tags/macos-262"
+    },
+    {
+      "commit": {
+        "sha": "21486ba58953d99b1d57aaf2e2476b3b6ee1afda",
+        "url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/commits/21486ba58953d99b1d57aaf2e2476b3b6ee1afda"
+      },
+      "name": "macos-261",
+      "node_id": "REF_kwDOGKbi-LNyZWZzL3RhZ3MvbWFjb3MtMjYx",
+      "tarball_url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/tarball/refs/tags/macos-261",
+      "zipball_url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/zipball/refs/tags/macos-261"
+    },
+    {
+      "commit": {
+        "sha": "4e290a9b9d3723c65d2a606223d41eb90ecdbf99",
+        "url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/commits/4e290a9b9d3723c65d2a606223d41eb90ecdbf99"
+      },
+      "name": "macos-260",
+      "node_id": "REF_kwDOGKbi-LNyZWZzL3RhZ3MvbWFjb3MtMjYw",
+      "tarball_url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/tarball/refs/tags/macos-260",
+      "zipball_url": "https://api.github.com/repos/apple-oss-distributions/distribution-macOS/zipball/refs/tags/macos-260"
+    }
+  ],
+  "retries": 0,
+  "schema_applicability_established": false,
+  "tag_count": 100
+}
